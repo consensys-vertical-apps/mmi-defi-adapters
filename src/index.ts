@@ -7,9 +7,10 @@ import { Protocol } from './core/constants/protocols'
 import { chainProviders } from './core/utils/chainProviders'
 import { fulfilledPromises } from './core/utils/filters'
 import { logger } from './core/utils/logger'
-import { IProtocolAdapter, DefiProfitsResponse } from './types/adapter'
+import { IProtocolAdapter } from './types/adapter'
 import {
   DefiPositionResponse,
+  DefiProfitsResponse,
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'

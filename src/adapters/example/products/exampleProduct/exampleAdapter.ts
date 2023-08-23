@@ -7,18 +7,16 @@ import {
   GetProfitsInput,
   GetTotalValueLockedInput,
   IProtocolAdapter,
-  DefiProfitsResponse,
   ProtocolDetails,
   TradeEvent,
   PositionType,
   TokenType,
-} from '../../../../types/adapter'
-import { ethers } from 'ethers'
-import {
+  ProfitsTokensWithRange,
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
-} from '../../../../types/response'
+} from '../../../../types/adapter'
+import { ethers } from 'ethers'
 import { Json } from '../../../../types/json'
 
 export class ExampleAdapter implements IProtocolAdapter {
@@ -82,7 +80,9 @@ export class ExampleAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getOneDayProfit(_input: GetProfitsInput): Promise<DefiProfitsResponse> {
+  async getOneDayProfit(
+    _input: GetProfitsInput,
+  ): Promise<ProfitsTokensWithRange> {
     return {
       fromBlock: 111,
       toBlock: 112,

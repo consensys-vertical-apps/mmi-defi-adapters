@@ -16,17 +16,15 @@ import {
   GetProfitsInput,
   GetTotalValueLockedInput,
   IProtocolAdapter,
-  DefiProfitsResponse,
   ProtocolDetails,
   TradeEvent,
   PositionType,
   TokenType,
-} from '../../../../types/adapter'
-import {
+  ProfitsTokensWithRange,
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
-} from '../../../../types/response'
+} from '../../../../types/adapter'
 import { StargatePoolMetadata } from '../../buildMetadata'
 
 export class StargatePoolAdapter implements IProtocolAdapter {
@@ -208,7 +206,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   async getOneDayProfit({
     userAddress,
     blockNumber,
-  }: GetProfitsInput): Promise<DefiProfitsResponse> {
+  }: GetProfitsInput): Promise<ProfitsTokensWithRange> {
     const toBlock = blockNumber
     const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[this.chainId]
 

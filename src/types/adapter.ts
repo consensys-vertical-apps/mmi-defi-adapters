@@ -1,13 +1,7 @@
+import { ethers } from 'ethers'
 import { Chain } from '../core/constants/chains'
 import { Protocol } from '../core/constants/protocols'
 import { ERC20 } from '../core/utils/getTokenMetadata'
-import type {
-  ProtocolPricePerShareToken,
-  ProtocolToken,
-  ProtocolTotalValueLockedToken,
-} from './response'
-
-import { ethers } from 'ethers'
 
 export const TokenType = {
   Protocol: 'protocol',
@@ -78,20 +72,60 @@ export type GetTotalValueLockedInput = {
   blockNumber?: number
 }
 
-export type DefiProfitsResponse = {
+export type TokenBalance = ERC20 & {
+  balanceRaw: bigint
+  balance: string
+}
+
+export type BaseToken = TokenBalance & {
+  type: typeof TokenType.Underlying | typeof TokenType.Claimable
+  tokens?: BaseToken[]
+}
+
+export type ProtocolToken = TokenBalance & {
+  type: typeof TokenType.Protocol
+  tokens?: BaseToken[]
+}
+
+export type BasePricePerShareToken = ERC20 & {
+  pricePerShare: number
+  type: typeof TokenType.Underlying
+}
+
+export type ProtocolPricePerShareToken = ERC20 & {
+  share: number
+  type: typeof TokenType.Protocol
+  tokens?: BasePricePerShareToken[]
+}
+
+export type TokenTotalValueLock = ERC20 & {
+  totalSupplyRaw: bigint
+  totalSupply: string
+}
+
+export type BaseTotalValueLockToken = TokenTotalValueLock & {
+  type: typeof TokenType.Underlying
+}
+
+export type ProtocolTotalValueLockedToken = TokenTotalValueLock & {
+  type: typeof TokenType.Protocol
+  tokens?: BaseTotalValueLockToken[]
+}
+
+export type ProfitsTokensWithRange = {
   fromBlock: number
   toBlock: number
-  tokens: Profits[]
+  tokens: ProtocolProfitsToken[]
 }
 
-export type Profits = ERC20 & {
-  tokens: UnderlyingProfits[]
-  type: typeof TokenType.Protocol
-}
-
-export type UnderlyingProfits = ERC20 & {
-  profit: number
+export type BaseProfitsToken = ERC20 & {
   type: typeof TokenType.Underlying | typeof TokenType.Claimable
+  profit: number
+}
+
+export type ProtocolProfitsToken = ERC20 & {
+  type: typeof TokenType.Protocol
+  tokens: BaseProfitsToken[]
 }
 
 export interface IProtocolAdapter {
@@ -104,5 +138,5 @@ export interface IProtocolAdapter {
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]>
-  getOneDayProfit: (input: GetProfitsInput) => Promise<DefiProfitsResponse>
+  getOneDayProfit: (input: GetProfitsInput) => Promise<ProfitsTokensWithRange>
 }
