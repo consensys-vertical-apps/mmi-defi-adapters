@@ -4,7 +4,7 @@ import { ERC20 } from '../core/utils/getTokenMetadata'
 import type {
   ProtocolPricePerShareToken,
   ProtocolToken,
-  ProtocolTotalValueLockToken,
+  ProtocolTotalValueLockedToken,
 } from './response'
 
 import { ethers } from 'ethers'
@@ -26,7 +26,7 @@ export type PositionType = (typeof PositionType)[keyof typeof PositionType]
 export type GetBalancesInput = GetPositionsInput & {
   provider: ethers.providers.StaticJsonRpcProvider
   chainId: Chain
-  lpTokens: ERC20[]
+  tokens: ERC20[]
 }
 
 export type GetPricesInput = {
@@ -74,7 +74,7 @@ export type GetPositionsInput = {
 export type GetPricePerShareInput = {
   blockNumber?: number
 }
-export type GetTotalValueLockInput = {
+export type GetTotalValueLockedInput = {
   blockNumber?: number
 }
 
@@ -100,8 +100,9 @@ export interface IProtocolAdapter {
   getPricePerShare(input: GetPricesInput): Promise<ProtocolPricePerShareToken[]>
   getWithdrawals(input: GetEventsInput): Promise<TradeEvent[]>
   getDeposits(input: GetEventsInput): Promise<TradeEvent[]>
-  getTotalValueLock(
-    input: GetTotalValueLockInput,
-  ): Promise<ProtocolTotalValueLockToken[]>
+  getClaimedRewards(input: GetEventsInput): Promise<TradeEvent[]>
+  getTotalValueLocked(
+    input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTotalValueLockedToken[]>
   getOneDayProfit: (input: GetProfitsInput) => Promise<DefiProfitsResponse>
 }

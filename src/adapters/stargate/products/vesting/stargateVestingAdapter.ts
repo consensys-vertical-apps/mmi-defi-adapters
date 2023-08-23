@@ -9,14 +9,14 @@ import {
   TradeEvent,
   DefiProfitsResponse,
   GetPositionsInput,
-  GetTotalValueLockInput,
+  GetTotalValueLockedInput,
   PositionType,
   TokenType,
 } from '../../../../types/adapter'
 import {
   ProtocolPricePerShareToken,
   ProtocolToken,
-  ProtocolTotalValueLockToken,
+  ProtocolTotalValueLockedToken,
 } from '../../../../types/response'
 import { StargateVestingMetadata } from '../../buildMetadata'
 
@@ -65,6 +65,11 @@ export class StargateVestingAdapter implements IProtocolAdapter {
   }
 
   async getDeposits(): Promise<TradeEvent[]> {
+    // TODO
+    return []
+  }
+
+  async getClaimedRewards(): Promise<TradeEvent[]> {
     // TODO
     return []
   }
@@ -121,9 +126,9 @@ export class StargateVestingAdapter implements IProtocolAdapter {
     return tokens
   }
 
-  async getTotalValueLock(
-    _input: GetTotalValueLockInput,
-  ): Promise<ProtocolTotalValueLockToken[]> {
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTotalValueLockedToken[]> {
     // TODO
     return []
   }

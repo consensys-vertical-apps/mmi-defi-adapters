@@ -1,7 +1,7 @@
 {
   "0x892785f33cdee22a30aef750f285e18c18040c3e": {
     "poolId": 1,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x892785f33cdee22a30aef750f285e18c18040c3e",
       "name": "USD Coin (Arb1)-LP",
       "symbol": "S*USDC",
@@ -16,7 +16,7 @@
   },
   "0xb6cfcf89a7b22988bfc96632ac2a9d6dab60d641": {
     "poolId": 2,
-    "lpToken": {
+    "protocolToken": {
       "address": "0xb6cfcf89a7b22988bfc96632ac2a9d6dab60d641",
       "name": "Tether USD-LP",
       "symbol": "S*USDT",
@@ -31,7 +31,7 @@
   },
   "0x915a55e36a01285a14f05de6e81ed9ce89772f8e": {
     "poolId": 13,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x915a55e36a01285a14f05de6e81ed9ce89772f8e",
       "name": "Stargate Ether Vault-LP",
       "symbol": "S*SGETH",
@@ -46,7 +46,7 @@
   },
   "0xaa4bf442f024820b2c28cd0fd72b82c63e66f56c": {
     "poolId": 7,
-    "lpToken": {
+    "protocolToken": {
       "address": "0xaa4bf442f024820b2c28cd0fd72b82c63e66f56c",
       "name": "Frax-LP",
       "symbol": "S*FRAX",
@@ -61,7 +61,7 @@
   },
   "0xf39b7be294cb36de8c510e267b82bb588705d977": {
     "poolId": 16,
-    "lpToken": {
+    "protocolToken": {
       "address": "0xf39b7be294cb36de8c510e267b82bb588705d977",
       "name": "Mai Stablecoin-LP",
       "symbol": "S*MAI",
@@ -76,7 +76,7 @@
   },
   "0x600e576f9d853c95d58029093a16ee49646f3ca5": {
     "poolId": 15,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x600e576f9d853c95d58029093a16ee49646f3ca5",
       "name": "LUSD Stablecoin-LP",
       "symbol": "S*LUSD",
@@ -91,7 +91,7 @@
   },
   "0x1ae7ca4092c0027bbbb1ce99934528acf6e7074b": {
     "poolId": 20,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x1ae7ca4092c0027bbbb1ce99934528acf6e7074b",
       "name": "Wootrade Network-LP",
       "symbol": "S*WOO",

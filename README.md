@@ -124,7 +124,7 @@ After adding your protocol:
 4. Copy and paste the example adapter from `src/adapters/example/products/exampleProduct/exampleAdapter.ts` to your product folder.
 5. Replace hardcoded responses with your adapter code.
 6. Add your adapter to `supportedProtocols` in `src/adapters/index.ts`.
-7. Test your adapter (change useAddress accordingly):
+7. Test your adapter (change userAddress accordingly):
    - Positions: `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
    - Profits: `npm run profits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
    - Prices: `npm run prices 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
