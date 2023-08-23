@@ -19,9 +19,10 @@ import {
   ProtocolToken,
   ProtocolTotalValueLockedToken,
 } from '../../../../types/response'
+import { Json } from '../../../../types/json'
 
 export class ExampleAdapter implements IProtocolAdapter {
-  private metadata: any
+  private metadata: Json
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain
 
@@ -30,7 +31,7 @@ export class ExampleAdapter implements IProtocolAdapter {
     provider,
     chainId,
   }: {
-    metadata: any
+    metadata: Json
     provider: ethers.providers.StaticJsonRpcProvider
     chainId: Chain
   }) {
