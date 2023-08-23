@@ -13,6 +13,8 @@ export type TotalValueLockResponse = ProtocolDetails & {
   tokens: ProtocolTotalValueLockedToken[]
 }
 
+export type DefiProfitsResponse = ProtocolDetails & ProfitsTokensWithRange
+
 export type TokenBalance = ERC20 & {
   balanceRaw: bigint
   balance: string
@@ -51,4 +53,20 @@ export type BaseTotalValueLockToken = TokenTotalValueLock & {
 export type ProtocolTotalValueLockedToken = TokenTotalValueLock & {
   type: typeof TokenType.Protocol
   tokens?: BaseTotalValueLockToken[]
+}
+
+export type ProfitsTokensWithRange = {
+  fromBlock: number
+  toBlock: number
+  tokens: ProtocolProfitsToken[]
+}
+
+export type ProtocolProfitsToken = ERC20 & {
+  type: typeof TokenType.Protocol
+  tokens: BaseProfitsToken[]
+}
+
+export type BaseProfitsToken = ERC20 & {
+  type: typeof TokenType.Underlying | typeof TokenType.Claimable
+  profit: number
 }

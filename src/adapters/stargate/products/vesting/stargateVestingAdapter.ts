@@ -7,13 +7,13 @@ import {
   IProtocolAdapter,
   ProtocolDetails,
   TradeEvent,
-  DefiProfitsResponse,
   GetPositionsInput,
   GetTotalValueLockedInput,
   PositionType,
   TokenType,
 } from '../../../../types/adapter'
 import {
+  ProfitsTokensWithRange,
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
@@ -56,7 +56,7 @@ export class StargateVestingAdapter implements IProtocolAdapter {
     // TODO
     return []
   }
-  async getOneDayProfit(): Promise<DefiProfitsResponse> {
+  async getOneDayProfit(): Promise<ProfitsTokensWithRange> {
     return {
       tokens: [],
       fromBlock: 0,

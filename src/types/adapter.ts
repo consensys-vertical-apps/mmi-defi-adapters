@@ -2,6 +2,7 @@ import { Chain } from '../core/constants/chains'
 import { Protocol } from '../core/constants/protocols'
 import { ERC20 } from '../core/utils/getTokenMetadata'
 import type {
+  ProfitsTokensWithRange,
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
@@ -78,22 +79,6 @@ export type GetTotalValueLockedInput = {
   blockNumber?: number
 }
 
-export type DefiProfitsResponse = {
-  fromBlock: number
-  toBlock: number
-  tokens: Profits[]
-}
-
-export type Profits = ERC20 & {
-  tokens: UnderlyingProfits[]
-  type: typeof TokenType.Protocol
-}
-
-export type UnderlyingProfits = ERC20 & {
-  profit: number
-  type: typeof TokenType.Underlying | typeof TokenType.Claimable
-}
-
 export interface IProtocolAdapter {
   getProtocolDetails(): ProtocolDetails
   getPositions(input: GetPositionsInput): Promise<ProtocolToken[]>
@@ -104,5 +89,5 @@ export interface IProtocolAdapter {
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]>
-  getOneDayProfit: (input: GetProfitsInput) => Promise<DefiProfitsResponse>
+  getOneDayProfit: (input: GetProfitsInput) => Promise<ProfitsTokensWithRange>
 }
