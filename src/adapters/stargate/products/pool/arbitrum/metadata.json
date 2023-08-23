@@ -1,0 +1,107 @@
+{
+  "0x892785f33cdee22a30aef750f285e18c18040c3e": {
+    "poolId": 1,
+    "lpToken": {
+      "address": "0x892785f33cdee22a30aef750f285e18c18040c3e",
+      "name": "USD Coin (Arb1)-LP",
+      "symbol": "S*USDC",
+      "decimals": 6
+    },
+    "underlying": {
+      "address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+      "name": "USD Coin (Arb1)",
+      "symbol": "USDC.E",
+      "decimals": 6
+    }
+  },
+  "0xb6cfcf89a7b22988bfc96632ac2a9d6dab60d641": {
+    "poolId": 2,
+    "lpToken": {
+      "address": "0xb6cfcf89a7b22988bfc96632ac2a9d6dab60d641",
+      "name": "Tether USD-LP",
+      "symbol": "S*USDT",
+      "decimals": 6
+    },
+    "underlying": {
+      "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x915a55e36a01285a14f05de6e81ed9ce89772f8e": {
+    "poolId": 13,
+    "lpToken": {
+      "address": "0x915a55e36a01285a14f05de6e81ed9ce89772f8e",
+      "name": "Stargate Ether Vault-LP",
+      "symbol": "S*SGETH",
+      "decimals": 18
+    },
+    "underlying": {
+      "address": "0x82cbecf39bee528b5476fe6d1550af59a9db6fc0",
+      "name": "Stargate Ether Vault",
+      "symbol": "SGETH",
+      "decimals": 18
+    }
+  },
+  "0xaa4bf442f024820b2c28cd0fd72b82c63e66f56c": {
+    "poolId": 7,
+    "lpToken": {
+      "address": "0xaa4bf442f024820b2c28cd0fd72b82c63e66f56c",
+      "name": "Frax-LP",
+      "symbol": "S*FRAX",
+      "decimals": 6
+    },
+    "underlying": {
+      "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    }
+  },
+  "0xf39b7be294cb36de8c510e267b82bb588705d977": {
+    "poolId": 16,
+    "lpToken": {
+      "address": "0xf39b7be294cb36de8c510e267b82bb588705d977",
+      "name": "Mai Stablecoin-LP",
+      "symbol": "S*MAI",
+      "decimals": 6
+    },
+    "underlying": {
+      "address": "0x3f56e0c36d275367b8c502090edf38289b3dea0d",
+      "name": "Mai Stablecoin",
+      "symbol": "MAI",
+      "decimals": 18
+    }
+  },
+  "0x600e576f9d853c95d58029093a16ee49646f3ca5": {
+    "poolId": 15,
+    "lpToken": {
+      "address": "0x600e576f9d853c95d58029093a16ee49646f3ca5",
+      "name": "LUSD Stablecoin-LP",
+      "symbol": "S*LUSD",
+      "decimals": 6
+    },
+    "underlying": {
+      "address": "0x93b346b6bc2548da6a1e7d98e9a421b42541425b",
+      "name": "Liquity USD",
+      "symbol": "LUSD",
+      "decimals": 18
+    }
+  },
+  "0x1ae7ca4092c0027bbbb1ce99934528acf6e7074b": {
+    "poolId": 20,
+    "lpToken": {
+      "address": "0x1ae7ca4092c0027bbbb1ce99934528acf6e7074b",
+      "name": "Wootrade Network-LP",
+      "symbol": "S*WOO",
+      "decimals": 18
+    },
+    "underlying": {
+      "address": "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b",
+      "name": "Wootrade Network",
+      "symbol": "WOO",
+      "decimals": 18
+    }
+  }
+}

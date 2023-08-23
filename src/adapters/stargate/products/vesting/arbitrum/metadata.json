@@ -1,0 +1,14 @@
+{
+  "contractToken": {
+    "address": "0xfbd849e6007f9bc3cc2d6eb159c045b8dc660268",
+    "name": "veSTG",
+    "symbol": "veSTG",
+    "decimals": 18
+  },
+  "underlyingToken": {
+    "address": "0x6694340fc020c5e6b96567843da2df01b2ce1eb6",
+    "name": "StargateToken",
+    "symbol": "STG",
+    "decimals": 18
+  }
+}
