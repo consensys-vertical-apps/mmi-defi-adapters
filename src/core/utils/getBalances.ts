@@ -10,10 +10,10 @@ const BALANCE_CHECKER_CONTRACT_ADDRESS: Record<Chain, string | undefined> = {
   [Chain.Bsc]: '0x2352c63A83f9Fd126af8676146721Fa00924d7e4',
   [Chain.Polygon]: '0x2352c63A83f9Fd126af8676146721Fa00924d7e4',
   [Chain.Fantom]: '0x07f697424ABe762bB808c109860c04eA488ff92B',
-  [Chain.Base]: undefined,
+  [Chain.Base]: '0xd70e1fa2ae720f585259bc6691feaeeb64fc7cc3',
   [Chain.Arbitrum]: '0x151E24A486D7258dd7C33Fb67E4bB01919B7B32c',
   [Chain.Avalanche]: '0xD023D153a0DFa485130ECFdE2FAA7e612EF94818',
-  [Chain.Linea]: undefined,
+  [Chain.Linea]: '0xd70e1fa2ae720f585259bc6691feaeeb64fc7cc3',
 }
 
 export async function getAddressesBalances({
