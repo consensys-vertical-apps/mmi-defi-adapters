@@ -90,11 +90,11 @@ export class ExampleAdapter implements IProtocolAdapter {
 
   async getOneDayProfit({
     userAddress,
-    blockNumbers,
+    blockNumber,
   }: GetProfitsInput): Promise<DefiProfitsResponse> {
     console.log({
       userAddress,
-      blockNumbers,
+      blockNumber,
     })
     return {
       fromBlock: 111,

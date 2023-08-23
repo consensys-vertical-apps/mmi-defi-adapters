@@ -47,7 +47,7 @@ export type GetEventsInput = {
 }
 export interface GetProfitsInput {
   userAddress: string
-  blockNumbers?: Record<Chain, number>
+  blockNumber: number
 }
 
 export type GetTradeEvents = {
