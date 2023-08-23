@@ -84,7 +84,7 @@ export async function getPrices({
   })
 }
 
-export async function getTotalValueLocks({
+export async function getTotalValueLocked({
   filterProtocolId,
   filterChainId,
 }: {
@@ -92,7 +92,7 @@ export async function getTotalValueLocks({
   filterChainId?: Chain
 }): Promise<TotalValueLockResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
-    const tokens = await adapter.getTotalValueLock({})
+    const tokens = await adapter.getTotalValueLocked({})
     return { ...adapter.getProtocolDetails(), tokens }
   }
 
