@@ -1,13 +1,12 @@
+import { ethers } from 'ethers'
 import { Chain } from '../core/constants/chains'
-import { chainProviders } from '../core/utils/chainProviders'
+import { IProtocolAdapter } from '../types/adapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
 import { ExampleAdapter } from './example/products/exampleProduct/exampleAdapter'
 import ETHEREUM_VESTING_METADATA from './stargate/products/vesting/ethereum/metadata.json'
 import ETHEREUM_POOL_METADATA from './stargate/products/pool/ethereum/metadata.json'
 import ARBITRUM_POOL_METADATA from './stargate/products/pool/arbitrum/metadata.json'
-import { IProtocolAdapter } from '../types/adapter'
-import { ethers } from 'ethers'
 
 // Add new protocols names below
 export const Protocol = {
