@@ -11,14 +11,12 @@ import {
   TradeEvent,
   PositionType,
   TokenType,
-} from '../../../../types/adapter'
-import { ethers } from 'ethers'
-import {
   ProfitsTokensWithRange,
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
-} from '../../../../types/response'
+} from '../../../../types/adapter'
+import { ethers } from 'ethers'
 import { Json } from '../../../../types/json'
 
 export class ExampleAdapter implements IProtocolAdapter {

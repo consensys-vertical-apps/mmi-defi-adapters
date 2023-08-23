@@ -11,13 +11,11 @@ import {
   GetTotalValueLockedInput,
   PositionType,
   TokenType,
-} from '../../../../types/adapter'
-import {
   ProfitsTokensWithRange,
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
-} from '../../../../types/response'
+} from '../../../../types/adapter'
 import { StargateVestingMetadata } from '../../buildMetadata'
 
 export class StargateVestingAdapter implements IProtocolAdapter {

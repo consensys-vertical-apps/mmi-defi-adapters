@@ -1,11 +1,8 @@
-import { filterMap } from './filters'
-import { getAddressesBalances } from './getBalances'
-
-import { TokenBalance } from '../../types/response'
-
 import { BigNumber } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
-import { GetBalancesInput } from '../../types/adapter'
+import { filterMap } from './filters'
+import { getAddressesBalances } from './getBalances'
+import { GetBalancesInput, TokenBalance } from '../../types/adapter'
 
 export const getBalances = async ({
   chainId,
