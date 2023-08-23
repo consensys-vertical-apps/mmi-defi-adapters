@@ -40,15 +40,15 @@ export type ProtocolPricePerShareToken = ERC20 & {
 }
 
 export type TokenTotalValueLock = ERC20 & {
-  totalValueLockRaw: bigint
-  totalValueLock: string
+  totalSupplyRaw: bigint
+  totalSupply: string
 }
 
-export type UnderlyingTotalValueLockToken = TokenTotalValueLock & {
+export type BaseTotalValueLockToken = TokenTotalValueLock & {
   type: typeof TokenType.Underlying
 }
 
 export type ProtocolTotalValueLockToken = TokenTotalValueLock & {
   type: typeof TokenType.Protocol
-  tokens?: UnderlyingTotalValueLockToken[]
+  tokens?: BaseTotalValueLockToken[]
 }

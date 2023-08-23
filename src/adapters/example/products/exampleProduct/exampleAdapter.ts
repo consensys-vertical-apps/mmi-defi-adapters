@@ -193,8 +193,8 @@ export class ExampleAdapter implements IProtocolAdapter {
         name: 'Coin-LP',
         symbol: 'S*USDC',
         decimals: 6,
-        totalValueLockRaw: 31468548033n,
-        totalValueLock: '31468.548033',
+        totalSupplyRaw: 31468548033n,
+        totalSupply: '31468.548033',
         type: 'protocol',
         tokens: [
           {
@@ -202,8 +202,8 @@ export class ExampleAdapter implements IProtocolAdapter {
             name: 'USD Coin',
             symbol: 'USDC',
             decimals: 6,
-            totalValueLock: '31492.408006',
-            totalValueLockRaw: 31492408006n,
+            totalSupply: '31492.408006',
+            totalSupplyRaw: 31492408006n,
             type: 'underlying',
           },
         ],
