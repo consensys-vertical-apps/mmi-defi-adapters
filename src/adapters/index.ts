@@ -15,9 +15,11 @@ export const Protocol = {
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
 
-
-// Add your adapters below 
-export const supportedProtocols: Record<Protocol, Partial<Record<Chain, IProtocolAdapter[]>>> = {
+// Add your adapters below
+export const supportedProtocols: Record<
+  Protocol,
+  Partial<Record<Chain, IProtocolAdapter[]>>
+> = {
   [Protocol.Stargate]: {
     [Chain.Ethereum]: [
       new StargatePoolAdapter({
