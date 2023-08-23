@@ -84,10 +84,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
 
   async getOneDayProfit({
     userAddress,
-    blockNumbers,
+    blockNumber,
   }: GetProfitsInput): Promise<DefiProfitsResponse> {
-    const toBlock =
-      blockNumbers?.[this.chainId] ?? (await this.provider.getBlockNumber())
+    const toBlock = blockNumber
     const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[this.chainId]
 
     const [currentValues, previousValues] = await Promise.all([

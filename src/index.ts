@@ -1,9 +1,12 @@
 import 'dotenv/config'
 
+import { ethers } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Chain } from './core/constants/chains'
 import { Protocol } from './core/constants/protocols'
+import { chainProviders } from './core/utils/chainProviders'
 import { fulfilledPromises } from './core/utils/filters'
+import { logger } from './core/utils/logger'
 import { IProtocolAdapter, DefiProfitsResponse } from './types/adapter'
 import {
   DefiPositionResponse,
@@ -43,9 +46,14 @@ export async function getTodaysProfits({
   filterProtocolId?: Protocol
   filterChainId?: Chain
 }): Promise<DefiProfitsResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
+  const runner = async (
+    adapter: IProtocolAdapter,
+    provider: ethers.providers.StaticJsonRpcProvider,
+  ) => {
+    const blockNumber = await provider.getBlockNumber()
     const profits = await adapter.getOneDayProfit({
       userAddress,
+      blockNumber,
     })
     return { ...adapter.getProtocolDetails(), ...profits }
   }
@@ -100,7 +108,10 @@ async function runForAllProtocolsAndChains<ReturnType>({
   filterProtocolId,
   filterChainId,
 }: {
-  runner: (adapter: IProtocolAdapter) => ReturnType
+  runner: (
+    adapter: IProtocolAdapter,
+    provider: ethers.providers.StaticJsonRpcProvider,
+  ) => ReturnType
   filterProtocolId?: Protocol
   filterChainId?: Chain
 }) {
@@ -113,9 +124,16 @@ async function runForAllProtocolsAndChains<ReturnType>({
         .filter(([chainId, _]) => {
           return !filterChainId || filterChainId.toString() === chainId
         })
-        .flatMap(([_, adapters]) => {
+        .flatMap(([chainId, adapters]) => {
+          const provider = chainProviders[chainId as unknown as Chain]
+
+          if (!provider) {
+            logger.error({ chainId }, 'No provider found for chain')
+            throw new Error('No provider found for chain')
+          }
+
           return adapters.map(async (adapter) => {
-            return await runner(adapter)
+            return await runner(adapter, provider)
           })
         })
     })
