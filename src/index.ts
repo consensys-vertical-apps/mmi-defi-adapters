@@ -132,8 +132,8 @@ async function runForAllProtocolsAndChains<ReturnType>({
             throw new Error('No provider found for chain')
           }
 
-          return adapters.map(async (adapter) => {
-            return await runner(adapter, provider)
+          return adapters.map(async (adapterFactory) => {
+            return await runner(adapterFactory(provider), provider)
           })
         })
     })
