@@ -1,7 +1,7 @@
-import { getTotalValueLocks } from '..'
+import { getTotalValueLocked } from '..'
 
 async function run() {
-  const data = await getTotalValueLocks({})
+  const data = await getTotalValueLocked({})
 
   console.log(
     JSON.stringify(

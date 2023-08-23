@@ -1,7 +1,7 @@
 {
   "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56": {
     "poolId": 1,
-    "lpToken": {
+    "protocolToken": {
       "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
       "name": "USD Coin-LP",
       "symbol": "S*USDC",
@@ -16,7 +16,7 @@
   },
   "0x38ea452219524bb87e18de1c24d3bb59510bd783": {
     "poolId": 2,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x38ea452219524bb87e18de1c24d3bb59510bd783",
       "name": "Tether USD-LP",
       "symbol": "S*USDT",
@@ -31,7 +31,7 @@
   },
   "0x692953e758c3669290cb1677180c64183cee374e": {
     "poolId": 11,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x692953e758c3669290cb1677180c64183cee374e",
       "name": "Decentralized USD-LP",
       "symbol": "S*USDD",
@@ -46,7 +46,7 @@
   },
   "0x101816545f6bd2b1076434b54383a1e633390a2e": {
     "poolId": 13,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x101816545f6bd2b1076434b54383a1e633390a2e",
       "name": "Stargate Ether Vault-LP",
       "symbol": "S*SGETH",
@@ -61,7 +61,7 @@
   },
   "0x0faf1d2d3ced330824de3b8200fc8dc6e397850d": {
     "poolId": 3,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x0faf1d2d3ced330824de3b8200fc8dc6e397850d",
       "name": "Dai Stablecoin-LP",
       "symbol": "S*DAI",
@@ -76,7 +76,7 @@
   },
   "0xfa0f307783ac21c39e939acff795e27b650f6e68": {
     "poolId": 7,
-    "lpToken": {
+    "protocolToken": {
       "address": "0xfa0f307783ac21c39e939acff795e27b650f6e68",
       "name": "Frax-LP",
       "symbol": "S*FRAX",
@@ -91,7 +91,7 @@
   },
   "0x590d4f8a68583639f215f675f3a259ed84790580": {
     "poolId": 14,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x590d4f8a68583639f215f675f3a259ed84790580",
       "name": "Synth sUSD-LP",
       "symbol": "S*sUSD",
@@ -106,7 +106,7 @@
   },
   "0xe8f55368c82d38bbbbdb5533e7f56afc2e978cc2": {
     "poolId": 15,
-    "lpToken": {
+    "protocolToken": {
       "address": "0xe8f55368c82d38bbbbdb5533e7f56afc2e978cc2",
       "name": "LUSD Stablecoin-LP",
       "symbol": "S*LUSD",
@@ -121,7 +121,7 @@
   },
   "0x9cef9a0b1be0d289ac9f4a98ff317c33eaa84eb8": {
     "poolId": 16,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x9cef9a0b1be0d289ac9f4a98ff317c33eaa84eb8",
       "name": "Mai Stablecoin-LP",
       "symbol": "S*MAI",
@@ -136,7 +136,7 @@
   },
   "0xd8772edbf88bba2667ed011542343b0eddacda47": {
     "poolId": 17,
-    "lpToken": {
+    "protocolToken": {
       "address": "0xd8772edbf88bba2667ed011542343b0eddacda47",
       "name": "Metis Token-LP",
       "symbol": "S*Metis",
@@ -151,7 +151,7 @@
   },
   "0x430ebff5e3e80a6c58e7e6ada1d90f5c28aa116d": {
     "poolId": 19,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x430ebff5e3e80a6c58e7e6ada1d90f5c28aa116d",
       "name": "Tether USD-LP",
       "symbol": "S*USDT",
@@ -166,7 +166,7 @@
   },
   "0x1ce66c52c36757daf6551edc04800a0ec9983a09": {
     "poolId": 20,
-    "lpToken": {
+    "protocolToken": {
       "address": "0x1ce66c52c36757daf6551edc04800a0ec9983a09",
       "name": "Wootrade Network-LP",
       "symbol": "S*WOO",

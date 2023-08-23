@@ -10,7 +10,7 @@ export type PricePerShareResponse = ProtocolDetails & {
 }
 
 export type TotalValueLockResponse = ProtocolDetails & {
-  tokens: ProtocolTotalValueLockToken[]
+  tokens: ProtocolTotalValueLockedToken[]
 }
 
 export type TokenBalance = ERC20 & {
@@ -48,7 +48,7 @@ export type BaseTotalValueLockToken = TokenTotalValueLock & {
   type: typeof TokenType.Underlying
 }
 
-export type ProtocolTotalValueLockToken = TokenTotalValueLock & {
+export type ProtocolTotalValueLockedToken = TokenTotalValueLock & {
   type: typeof TokenType.Protocol
   tokens?: BaseTotalValueLockToken[]
 }

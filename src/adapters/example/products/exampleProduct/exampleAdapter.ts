@@ -5,7 +5,7 @@ import {
   GetPositionsInput,
   GetPricesInput,
   GetProfitsInput,
-  GetTotalValueLockInput,
+  GetTotalValueLockedInput,
   IProtocolAdapter,
   DefiProfitsResponse,
   ProtocolDetails,
@@ -17,7 +17,7 @@ import { ethers } from 'ethers'
 import {
   ProtocolPricePerShareToken,
   ProtocolToken,
-  ProtocolTotalValueLockToken,
+  ProtocolTotalValueLockedToken,
 } from '../../../../types/response'
 
 export class ExampleAdapter implements IProtocolAdapter {
@@ -51,13 +51,7 @@ export class ExampleAdapter implements IProtocolAdapter {
     }
   }
 
-  async getWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<TradeEvent[]> {
-    console.log({ userAddress, protocolTokenAddress, fromBlock, toBlock })
+  async getWithdrawals(_input: GetEventsInput): Promise<TradeEvent[]> {
     return [
       {
         trades: { '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': 101 },
@@ -67,18 +61,7 @@ export class ExampleAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getDeposits({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<TradeEvent[]> {
-    console.log({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-    })
+  async getDeposits(_input: GetEventsInput): Promise<TradeEvent[]> {
     return [
       {
         trades: { '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': 100 },
@@ -88,14 +71,17 @@ export class ExampleAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getOneDayProfit({
-    userAddress,
-    blockNumber,
-  }: GetProfitsInput): Promise<DefiProfitsResponse> {
-    console.log({
-      userAddress,
-      blockNumber,
-    })
+  async getClaimedRewards(_input: GetEventsInput): Promise<TradeEvent[]> {
+    return [
+      {
+        trades: { '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': 100 },
+        protocolTokenAddress: '0x892785f33cdee22a30aef750f285e18c18040c3e',
+        blockNumber: 17970000,
+      },
+    ]
+  }
+
+  async getOneDayProfit(_input: GetProfitsInput): Promise<DefiProfitsResponse> {
     return {
       fromBlock: 111,
       toBlock: 112,
@@ -129,12 +115,9 @@ export class ExampleAdapter implements IProtocolAdapter {
     }
   }
 
-  async getPricePerShare({
-    blockNumber,
-  }: GetPricesInput): Promise<ProtocolPricePerShareToken[]> {
-    console.log({
-      blockNumber,
-    })
+  async getPricePerShare(
+    _input: GetPricesInput,
+  ): Promise<ProtocolPricePerShareToken[]> {
     return [
       {
         name: 'Tether USD-LP',
@@ -159,14 +142,7 @@ export class ExampleAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getPositions({
-    userAddress,
-    blockNumber,
-  }: GetPositionsInput): Promise<ProtocolToken[]> {
-    console.log({
-      userAddress,
-      blockNumber,
-    })
+  async getPositions(_input: GetPositionsInput): Promise<ProtocolToken[]> {
     return [
       {
         address: '0xprotocolTokenAddress',
@@ -210,10 +186,9 @@ export class ExampleAdapter implements IProtocolAdapter {
       },
     ]
   }
-  async getTotalValueLock({
-    blockNumber,
-  }: GetTotalValueLockInput): Promise<ProtocolTotalValueLockToken[]> {
-    console.log({ blockNumber })
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTotalValueLockedToken[]> {
     return [
       {
         address: '0xprotocolTokenAddress',
