@@ -75,8 +75,7 @@ mmi-defi-adapters/
     │   │   │       ├── arbitrum/                       # Folder with protocol specific metadata and code
     │   │   │       └── protocolNameVestingAdapter.ts   # Implementation of IProtocolAdapter
     │   │   │
-    │   │   ├── buildMetadata.ts                        # Metadata builder script
-    │   │   └── index.ts                                # Exports object of type SupportedChains
+    │   │   └── buildMetadata.ts                        # Metadata builder script
     │   │
     │   ├── index.ts                                    # Exports supportedProtocols object
     │   └── metadataBuilders.ts                         # Exports protocolMetadataBuilders object
@@ -88,19 +87,32 @@ mmi-defi-adapters/
                 └── example-staking-contract.json       # Abi for the protocol staking contract
 ```
 
-## Initialise folder and constant
-- Create a new folder within `src/adapters` folder with the name of the protocol using kebab-case.
-  - Use kebab-case for the folder name
-- Create an entry in the `Protocol` object within `src/core/constants/protocols.ts`
-  - Use CamelCase for the key
-  - Use kebab-case for the value (it should match the folder name)
+## How to contribute to repo
+To-do
 
-## Adapter
-A new entry needs to be added to the `supportedProtocols` object in `src/adapters/index.ts`.
 
-The key is the entry created for the `Protocol` object.
+## Adding a new Protocol
 
-The value should be of type `SupportedChains`, which is an object with a `Chain` for key and a `IProtocolAdapter[]` for value.
+Follow these steps to integrate a new protocol into our DeFi platform. 
+
+1. Add entry to the `Protocol` object in `src/adapters/index.ts`. Use CamelCase for the key, Use kebab-case for the value (it should match the folder name).
+2. Create a new folder within `src/adapters` folder with the name of the protocol using kebab-case. Full example or route `src/${protocolName}/products/${productName}/productAdapter.ts`.
+3. Add protocol to the `supportedProtocols` object in `src/adapters/index.ts`.
+
+## Adding a new Adapter for your Protocol
+
+Once you have added your protocol (see above) you are ready to add your first adapter for your product(s). Note that some steps like creating a metadata script may not be mandatory for your adapter while others might be needed on a per-chain basis.
+
+1. Generate metadata json file to support your product adapter. Example file src/adapters/stargate/products/pool/arbitrum/metadata.json example script src/adapters/stargate/buildMetadata.ts 
+2. Add product folder within `src/${protocolName}/products/${productName}`
+3. Copy example protocol adapter and save within your above product folder. Example can be found here `src/adapters/example/products/exampleProduct/exampleAdapter.ts`
+4. Add your adapter code replacing the hardcoded responses 
+5. Add your adapter to the `supportedProtocols` object in `src/adapters/index.ts`
+6. Run your adapter using `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`. Note: replace address with one that has a position.
+7. Also you can run profits `npm run profits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`
+8. Finally, you can run prices `npm run prices 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`
+
+
 
 ## Contract Factories
 Add a JSON file with the abi of any new contract to the folder `src/contracts/abis/<protocol-name>`.
