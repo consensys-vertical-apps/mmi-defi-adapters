@@ -91,7 +91,7 @@ export type Profits = ERC20 & {
 
 export type UnderlyingProfits = ERC20 & {
   profit: number
-  type: typeof TokenType.Underlying
+  type: typeof TokenType.Underlying | typeof TokenType.Claimable
 }
 
 export interface IProtocolAdapter {

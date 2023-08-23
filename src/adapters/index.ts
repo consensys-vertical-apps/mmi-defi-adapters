@@ -1,19 +1,63 @@
 import { Chain } from '../core/constants/chains'
-import { Protocol } from '../core/constants/protocols'
+import { chainProviders } from '../core/utils/chainProviders'
+import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
+import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
+import { ExampleAdapter } from './example/products/exampleProduct/exampleAdapter'
+import ETHEREUM_VESTING_METADATA from './stargate/products/vesting/ethereum/metadata.json'
+import ETHEREUM_POOL_METADATA from './stargate/products/pool/ethereum/metadata.json'
+import ARBITRUM_POOL_METADATA from './stargate/products/pool/arbitrum/metadata.json'
 import { IProtocolAdapter } from '../types/adapter'
-import { stargateAdapters } from './stargate'
-
-import { exampleAdapter } from './example'
 import { ethers } from 'ethers'
 
-export type SupportedChains = {
-  [key in Chain]?: ((
-    provider: ethers.providers.StaticJsonRpcProvider,
-    ...props: unknown[]
-  ) => IProtocolAdapter)[]
-}
+// Add new protocols names below
+export const Protocol = {
+  Stargate: 'stargate',
+  Example: 'example',
+} as const
+export type Protocol = (typeof Protocol)[keyof typeof Protocol]
 
-export const supportedProtocols: Record<Protocol, SupportedChains> = {
-  [Protocol.Stargate]: stargateAdapters,
-  [Protocol.Example]: exampleAdapter,
+// Add your adapters below
+export const supportedProtocols: Record<
+  Protocol,
+  Partial<
+    Record<
+      Chain,
+      ((provider: ethers.providers.StaticJsonRpcProvider) => IProtocolAdapter)[]
+    >
+  >
+> = {
+  [Protocol.Stargate]: {
+    [Chain.Ethereum]: [
+      (provider) =>
+        new StargatePoolAdapter({
+          metadata: ETHEREUM_POOL_METADATA,
+          chainId: Chain.Ethereum,
+          provider,
+        }),
+      (provider) =>
+        new StargateVestingAdapter({
+          metadata: ETHEREUM_VESTING_METADATA,
+          chainId: Chain.Ethereum,
+          provider,
+        }),
+    ],
+    [Chain.Arbitrum]: [
+      (provider) =>
+        new StargatePoolAdapter({
+          metadata: ARBITRUM_POOL_METADATA,
+          chainId: Chain.Arbitrum,
+          provider,
+        }),
+    ],
+  },
+  [Protocol.Example]: {
+    [Chain.Ethereum]: [
+      (provider) =>
+        new ExampleAdapter({
+          metadata: {},
+          chainId: Chain.Ethereum,
+          provider,
+        }),
+    ],
+  },
 }
