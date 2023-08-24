@@ -101,9 +101,9 @@ mmi-defi-adapters/
                 └── example-staking-contract.json       # Abi for the protocol staking contract
 ```
 
-## How to contribute to repo
+## Contributing
 
-To-do
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Adding a New Protocol
 
