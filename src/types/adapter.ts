@@ -143,6 +143,7 @@ export type ProfitsTokensWithRange = {
 
 export type BaseProfitsToken = ERC20 & {
   type: typeof TokenType.Underlying | typeof TokenType.Claimable
+  profitRaw: bigint
   profit: string
 }
 

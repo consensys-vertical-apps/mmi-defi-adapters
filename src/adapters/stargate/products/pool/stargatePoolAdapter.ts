@@ -259,6 +259,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
               (underlyingToken) => {
                 return {
                   ...underlyingToken,
+                  profitRaw: profits[underlyingToken.address],
                   profit: formatUnits(
                     profits[underlyingToken.address],
                     underlyingToken.decimals,

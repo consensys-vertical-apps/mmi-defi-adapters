@@ -158,6 +158,7 @@ export class ExampleAdapter implements IProtocolAdapter {
               name: 'Frax',
               symbol: 'FRAX',
               decimals: 18,
+              profitRaw: 100n,
               profit: '100',
             },
             {
@@ -166,6 +167,7 @@ export class ExampleAdapter implements IProtocolAdapter {
               name: 'Frax',
               symbol: 'FRAX',
               decimals: 18,
+              profitRaw: 100n,
               profit: '100',
             },
           ],
