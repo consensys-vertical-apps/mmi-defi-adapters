@@ -38,7 +38,7 @@ Follow the steps below to contribute changes:
    and so on.
 7. Before pushing, fix any linting issues by running:
    ```bash
-   npm run lint
+   npm run fix
    ```
 8. Push your changes to your fork.
 9. Open a pull request from within GitHub. Allow maintainer edits and populate the pull request template. If you're unsure about any sections, feel free to leave them blank or mention your uncertainty.

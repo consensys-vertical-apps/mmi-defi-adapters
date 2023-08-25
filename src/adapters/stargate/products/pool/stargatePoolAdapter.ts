@@ -17,20 +17,26 @@ import {
   GetTotalValueLockedInput,
   IProtocolAdapter,
   ProtocolDetails,
-  TradeEvent,
+  MovementsByBlock,
   PositionType,
   TokenType,
   ProfitsTokensWithRange,
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
+  ProtocolAprToken,
+  GetAprInput,
+  GetApyInput,
+  ProtocolApyToken,
 } from '../../../../types/adapter'
 import { StargatePoolMetadata } from '../../buildMetadata'
+import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 
 export class StargatePoolAdapter implements IProtocolAdapter {
   private metadata: StargatePoolMetadata
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain
+  private protocolTokens: ERC20[]
 
   constructor({
     metadata,
@@ -44,6 +50,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     this.metadata = metadata
     this.provider = provider
     this.chainId = chainId
+    this.protocolTokens = Object.values(this.metadata).map(
+      ({ protocolToken }) => protocolToken,
+    )
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -59,20 +68,20 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     }
   }
 
+  async getProtocolTokens(): Promise<ERC20[]> {
+    return this.protocolTokens
+  }
+
   async getPositions({
     userAddress,
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolToken[]> {
-    const protocolToken = Object.values(this.metadata).map(
-      ({ protocolToken }) => protocolToken,
-    )
-
     const protocolTokensBalances = await getBalances({
       chainId: this.chainId,
       provider: this.provider,
       userAddress,
       blockNumber,
-      tokens: protocolToken,
+      tokens: this.protocolTokens,
     })
 
     const underlying = await Promise.all(
@@ -105,54 +114,49 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   }
   async getPricePerShare({
     blockNumber,
-  }: GetPricesInput): Promise<ProtocolPricePerShareToken[]> {
+    protocolTokenAddress,
+  }: GetPricesInput): Promise<ProtocolPricePerShareToken> {
     const protocolTokenAddresses = Object.keys(this.metadata)
 
-    const tokens = await Promise.all(
-      protocolTokenAddresses.map(async (address) => {
-        const underlyingToken = this.metadata[address].underlying
-        const protocolToken = this.metadata[address].protocolToken
+    const underlyingToken = this.metadata[protocolTokenAddress].underlying
+    const protocolToken = this.metadata[protocolTokenAddress].protocolToken
 
-        const oneToken = BigInt(1 * 10 ** protocolToken.decimals)
+    const oneToken = BigInt(1 * 10 ** protocolToken.decimals)
 
-        const pricePerShareRaw = await this.stargateTokenContract(
-          address,
-        ).amountLPtoLD(oneToken, {
-          blockTag: blockNumber,
-        })
+    const pricePerShareRaw = await this.stargateTokenContract(
+      protocolTokenAddress,
+    ).amountLPtoLD(oneToken, {
+      blockTag: blockNumber,
+    })
 
-        const pricePerShare = +formatUnits(
-          pricePerShareRaw,
-          underlyingToken.decimals,
-        )
-
-        const { name, iconUrl, decimals, symbol } =
-          this.metadata[address]?.protocolToken || {}
-
-        return {
-          name,
-          iconUrl: iconUrl ?? '',
-          decimals,
-          symbol,
-          address: protocolToken.address,
-          share: 1,
-          type: TokenType.Protocol,
-          tokens: [
-            {
-              type: TokenType.Underlying,
-              pricePerShare,
-              decimals: underlyingToken.decimals,
-              name: underlyingToken.name,
-              iconUrl: iconUrl ?? '',
-              symbol: underlyingToken.symbol,
-              address: underlyingToken.address,
-            },
-          ],
-        }
-      }),
+    const pricePerShare = +formatUnits(
+      pricePerShareRaw,
+      underlyingToken.decimals,
     )
 
-    return tokens
+    const { name, iconUrl, decimals, symbol } =
+      this.metadata[protocolTokenAddress]?.protocolToken || {}
+
+    return {
+      name,
+      iconUrl: iconUrl ?? '',
+      decimals,
+      symbol,
+      address: protocolToken.address,
+      share: 1,
+      type: TokenType.Protocol,
+      tokens: [
+        {
+          type: TokenType.Underlying,
+          pricePerShare,
+          decimals: underlyingToken.decimals,
+          name: underlyingToken.name,
+          iconUrl: iconUrl ?? '',
+          symbol: underlyingToken.symbol,
+          address: underlyingToken.address,
+        },
+      ],
+    }
   }
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
@@ -166,7 +170,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     fromBlock,
     toBlock,
-  }: GetEventsInput): Promise<TradeEvent[]> {
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
     const contractFilter = this.stargateTokenContract(
       protocolTokenAddress,
     ).filters.Transfer(userAddress, ZERO_ADDRESS)
@@ -187,7 +191,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     protocolTokenAddress,
     fromBlock,
     toBlock,
-  }: GetEventsInput): Promise<TradeEvent[]> {
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
     const contractFilter = this.stargateTokenContract(
       protocolTokenAddress,
     ).filters.Transfer(ZERO_ADDRESS, userAddress)
@@ -272,7 +276,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     return { tokens, fromBlock, toBlock }
   }
 
-  async getClaimedRewards(_input: GetEventsInput): Promise<TradeEvent[]> {
+  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return []
   }
 
@@ -284,7 +288,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     protocolTokenAddress: string
     eventResults: TransferEvent[]
     metadata: StargatePoolMetadata
-  }): Promise<TradeEvent[]> {
+  }): Promise<MovementsByBlock[]> {
     return Promise.all(
       eventResults.map(async (transferEvent) => {
         const {
@@ -292,31 +296,35 @@ export class StargatePoolAdapter implements IProtocolAdapter {
           args: { value },
         } = transferEvent
 
-        const lpPrices = await this.getPricePerShare({ blockNumber })
+        const protocolTokenPrice = await this.getPricePerShare({
+          blockNumber,
+          protocolTokenAddress,
+        })
 
-        const tradeEventValue = lpPrices.find(
-          (prices) => prices.address == protocolTokenAddress,
-        )
+        const { address, decimals } = metadata[protocolTokenAddress].underlying
 
-        const { address } = metadata[protocolTokenAddress].underlying
-        const { decimals } = metadata[protocolTokenAddress].protocolToken
-
-        if (!tradeEventValue?.tokens?.[0]?.pricePerShare) {
+        if (!protocolTokenPrice?.tokens?.[0]?.pricePerShare) {
           throw new Error('No price for events at this time')
         }
 
         return {
-          trades: {
+          movements: {
             [address]:
               +formatUnits(value, decimals) *
-                tradeEventValue?.tokens?.[0]?.pricePerShare ?? 0,
+                protocolTokenPrice?.tokens?.[0]?.pricePerShare ?? 0,
           },
-          protocolTokenAddress:
-            metadata[protocolTokenAddress].protocolToken.address,
           blockNumber,
         }
       }),
     )
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+    return {} as ProtocolAprToken
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+    return {} as ProtocolApyToken
   }
 
   private stargateTokenContract(address: string) {

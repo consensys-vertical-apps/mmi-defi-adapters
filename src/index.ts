@@ -9,6 +9,9 @@ import { fulfilledPromises } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { IProtocolAdapter } from './types/adapter'
 import {
+  APRResponse,
+  APYResponse,
+  DefiMovementsResponse,
   DefiPositionResponse,
   DefiProfitsResponse,
   PricePerShareResponse,
@@ -74,7 +77,13 @@ export async function getPrices({
   filterChainId?: Chain
 }): Promise<PricePerShareResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
-    const tokens = await adapter.getPricePerShare({})
+    const protocolTokens = await adapter.getProtocolTokens()
+    const tokens = await Promise.all(
+      protocolTokens.map(({ address: protocolTokenAddress }) =>
+        adapter.getPricePerShare({ protocolTokenAddress }),
+      ),
+    )
+
     return { ...adapter.getProtocolDetails(), tokens }
   }
 
@@ -95,6 +104,154 @@ export async function getTotalValueLocked({
   const runner = async (adapter: IProtocolAdapter) => {
     const tokens = await adapter.getTotalValueLocked({})
     return { ...adapter.getProtocolDetails(), tokens }
+  }
+
+  return runForAllProtocolsAndChains({
+    runner,
+    filterProtocolId,
+    filterChainId,
+  })
+}
+
+export async function getApy({
+  filterProtocolId,
+  filterChainId,
+}: {
+  filterProtocolId?: Protocol
+  filterChainId?: Chain
+}): Promise<APYResponse[]> {
+  const runner = async (adapter: IProtocolAdapter) => {
+    const protocolTokens = await adapter.getProtocolTokens()
+    const tokens = await Promise.all(
+      protocolTokens.map(({ address: protocolTokenAddress }) =>
+        adapter.getApy({ protocolTokenAddress }),
+      ),
+    )
+
+    return {
+      ...adapter.getProtocolDetails(),
+      tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
+    }
+  }
+
+  return runForAllProtocolsAndChains({
+    runner,
+    filterProtocolId,
+    filterChainId,
+  })
+}
+
+export async function getDeposits({
+  filterProtocolId,
+  filterChainId,
+  userAddress,
+  fromBlock,
+  toBlock,
+}: {
+  filterProtocolId?: Protocol
+  filterChainId?: Chain
+  userAddress: string
+  fromBlock: number
+  toBlock: number
+}): Promise<DefiMovementsResponse[]> {
+  const runner = async (adapter: IProtocolAdapter) => {
+    const protocolTokens = await adapter.getProtocolTokens()
+    const movementsByBlock = await Promise.all(
+      protocolTokens.map(({ address: protocolTokenAddress }) =>
+        adapter.getDeposits({
+          protocolTokenAddress,
+          fromBlock,
+          toBlock,
+          userAddress,
+        }),
+      ),
+    )
+
+    const result = movementsByBlock.map((movementsByBlock, index) => {
+      return {
+        protocolToken: protocolTokens[index],
+        movementsByBlock,
+      }
+    })
+
+    return {
+      ...adapter.getProtocolDetails(),
+      movementsByBlock: result,
+    }
+  }
+
+  return runForAllProtocolsAndChains({
+    runner,
+    filterProtocolId,
+    filterChainId,
+  })
+}
+
+export async function getWithdrawals({
+  filterProtocolId,
+  filterChainId,
+  userAddress,
+  fromBlock,
+  toBlock,
+}: {
+  filterProtocolId?: Protocol
+  filterChainId?: Chain
+  userAddress: string
+  fromBlock: number
+  toBlock: number
+}): Promise<DefiMovementsResponse[]> {
+  const runner = async (adapter: IProtocolAdapter) => {
+    const protocolTokens = await adapter.getProtocolTokens()
+    const movementsByBlock = await Promise.all(
+      protocolTokens.map(({ address: protocolTokenAddress }) =>
+        adapter.getWithdrawals({
+          protocolTokenAddress,
+          fromBlock,
+          toBlock,
+          userAddress,
+        }),
+      ),
+    )
+
+    const result = movementsByBlock.map((movementsByBlock, index) => {
+      return {
+        protocolToken: protocolTokens[index],
+        movementsByBlock,
+      }
+    })
+
+    return {
+      ...adapter.getProtocolDetails(),
+      movementsByBlock: result,
+    }
+  }
+
+  return runForAllProtocolsAndChains({
+    runner,
+    filterProtocolId,
+    filterChainId,
+  })
+}
+
+export async function getApr({
+  filterProtocolId,
+  filterChainId,
+}: {
+  filterProtocolId?: Protocol
+  filterChainId?: Chain
+}): Promise<APRResponse[]> {
+  const runner = async (adapter: IProtocolAdapter) => {
+    const protocolTokens = await adapter.getProtocolTokens()
+    const tokens = await Promise.all(
+      protocolTokens.map(({ address: protocolTokenAddress }) =>
+        adapter.getApr({ protocolTokenAddress }),
+      ),
+    )
+
+    return {
+      ...adapter.getProtocolDetails(),
+      tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
+    }
   }
 
   return runForAllProtocolsAndChains({

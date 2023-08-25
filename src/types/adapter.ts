@@ -25,11 +25,19 @@ export type GetBalancesInput = GetPositionsInput & {
 
 export type GetPricesInput = {
   blockNumber?: number
+  protocolTokenAddress: string
+}
+export type GetApyInput = {
+  blockNumber?: number
+  protocolTokenAddress: string
+}
+export type GetAprInput = {
+  blockNumber?: number
+  protocolTokenAddress: string
 }
 
-export type TradeEvent = {
-  trades: Record<string, number>
-  protocolTokenAddress: string
+export type MovementsByBlock = {
+  movements: Record<string, number>
   blockNumber: number
 }
 
@@ -97,6 +105,12 @@ export type ProtocolPricePerShareToken = ERC20 & {
   type: typeof TokenType.Protocol
   tokens?: BasePricePerShareToken[]
 }
+export type ProtocolApyToken = ERC20 & {
+  apyDecimal: string
+}
+export type ProtocolAprToken = ERC20 & {
+  aprDecimal: string
+}
 
 export type TokenTotalValueLock = ERC20 & {
   totalSupplyRaw: bigint
@@ -130,13 +144,16 @@ export type ProtocolProfitsToken = ERC20 & {
 
 export interface IProtocolAdapter {
   getProtocolDetails(): ProtocolDetails
+  getProtocolTokens(): Promise<ERC20[]>
   getPositions(input: GetPositionsInput): Promise<ProtocolToken[]>
-  getPricePerShare(input: GetPricesInput): Promise<ProtocolPricePerShareToken[]>
-  getWithdrawals(input: GetEventsInput): Promise<TradeEvent[]>
-  getDeposits(input: GetEventsInput): Promise<TradeEvent[]>
-  getClaimedRewards(input: GetEventsInput): Promise<TradeEvent[]>
+  getPricePerShare(input: GetPricesInput): Promise<ProtocolPricePerShareToken>
+  getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]>
+  getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]>
+  getClaimedRewards(input: GetEventsInput): Promise<MovementsByBlock[]>
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]>
   getOneDayProfit: (input: GetProfitsInput) => Promise<ProfitsTokensWithRange>
+  getApy(input: GetApyInput): Promise<ProtocolApyToken>
+  getApr(input: GetAprInput): Promise<ProtocolAprToken>
 }
