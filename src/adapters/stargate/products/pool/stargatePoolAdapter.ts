@@ -210,23 +210,16 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     const toBlock = blockNumber
     const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[this.chainId]
 
-    const [currentValues, previousValues] = (await Promise.all(
-      [
-        this.getPositions({
-          userAddress,
-          blockNumber: toBlock,
-        }),
-        this.getPositions({
-          userAddress,
-          blockNumber: fromBlock,
-        }),
-      ].map(async (positions) =>
-        formatProtocolTokenArrayToMap(await positions),
-      ),
-    )) as [
-      ReturnType<typeof formatProtocolTokenArrayToMap>,
-      ReturnType<typeof formatProtocolTokenArrayToMap>,
-    ]
+    const [currentValues, previousValues] = await Promise.all([
+      this.getPositions({
+        userAddress,
+        blockNumber: toBlock,
+      }).then((positions) => formatProtocolTokenArrayToMap(positions)),
+      this.getPositions({
+        userAddress,
+        blockNumber: fromBlock,
+      }).then((positions) => formatProtocolTokenArrayToMap(positions)),
+    ])
 
     const tokens = await Promise.all(
       Object.values(currentValues).map(
@@ -238,15 +231,14 @@ export class StargatePoolAdapter implements IProtocolAdapter {
             toBlock,
           }
 
-          const [withdrawal, deposits] = (await Promise.all(
-            [
-              this.getWithdrawals(getEventsInput),
-              this.getDeposits(getEventsInput),
-            ].map(async (tradeEvents) => aggregateTrades(await tradeEvents)),
-          )) as [
-            ReturnType<typeof aggregateTrades>,
-            ReturnType<typeof aggregateTrades>,
-          ]
+          const [withdrawal, deposits] = await Promise.all([
+            this.getWithdrawals(getEventsInput).then((movements) =>
+              aggregateTrades(movements),
+            ),
+            this.getDeposits(getEventsInput).then((movements) =>
+              aggregateTrades(movements),
+            ),
+          ])
 
           const profits = calculateProfit(
             deposits,
