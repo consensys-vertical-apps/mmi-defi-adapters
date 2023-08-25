@@ -6,7 +6,7 @@ import { AVERAGE_BLOCKS_PER_DAY } from '../../../../core/constants/AVERAGE_BLOCK
 import { Chain } from '../../../../core/constants/chains'
 import { Protocol } from '../../../../core/constants/protocols'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { getBalances } from '../../../../core/utils/getBalancesFactory'
+import { getBalances } from '../../../../core/utils/getBalances'
 import { calculateProfit } from '../../../../core/utils/calculateProfit'
 import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import {
