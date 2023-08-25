@@ -59,10 +59,9 @@ export class ExampleAdapter implements IProtocolAdapter {
     return [
       {
         address: '0xprotocolTokenAddress',
-        decimals: 8,
-        symbol: 'stUSD',
-
-        name: 'stUSD',
+        name: 'Coin-LP',
+        symbol: 'S*USDC',
+        decimals: 6,
       },
     ]
   }
@@ -71,24 +70,22 @@ export class ExampleAdapter implements IProtocolAdapter {
     return [
       {
         movements: {
-          '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': {
-            token: {
-              address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
-              name: '',
-              symbol: '',
-              decimals: 0,
-            },
-            movementValue: '101',
-            movementValueRaw: 101n,
+          '0xunderlyingTokenAddress': {
+            address: '0xunderlyingTokenAddress',
+            name: 'USD Coin',
+            symbol: 'USDC',
+            decimals: 6,
+            movementValueRaw: 100n,
+            movementValue: '100',
           },
         },
         protocolToken: {
-          address: '0x892785f33cdee22a30aef750f285e18c18040c3e',
-          name: '',
-          symbol: '',
-          decimals: 0,
+          address: '0xprotocolTokenAddress',
+          name: 'Coin-LP',
+          symbol: 'S*USDC',
+          decimals: 6,
         },
-        blockNumber: 17970876,
+        blockNumber: 17970000,
       },
     ]
   }
@@ -97,22 +94,20 @@ export class ExampleAdapter implements IProtocolAdapter {
     return [
       {
         movements: {
-          '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': {
-            token: {
-              address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
-              name: '',
-              symbol: '',
-              decimals: 0,
-            },
-            movementValue: '100',
+          '0xunderlyingTokenAddress': {
+            address: '0xunderlyingTokenAddress',
+            name: 'USD Coin',
+            symbol: 'USDC',
+            decimals: 6,
             movementValueRaw: 100n,
+            movementValue: '100',
           },
         },
         protocolToken: {
-          address: '0x892785f33cdee22a30aef750f285e18c18040c3e',
-          name: '',
-          symbol: '',
-          decimals: 0,
+          address: '0xprotocolTokenAddress',
+          name: 'Coin-LP',
+          symbol: 'S*USDC',
+          decimals: 6,
         },
         blockNumber: 17970000,
       },
@@ -123,22 +118,20 @@ export class ExampleAdapter implements IProtocolAdapter {
     return [
       {
         movements: {
-          '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': {
-            token: {
-              address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
-              name: '',
-              symbol: '',
-              decimals: 0,
-            },
-            movementValue: '100',
+          '0xunderlyingTokenAddress': {
+            address: '0xunderlyingTokenAddress',
+            name: 'USD Coin',
+            symbol: 'USDC',
+            decimals: 6,
             movementValueRaw: 100n,
+            movementValue: '100',
           },
         },
         protocolToken: {
-          address: '0x892785f33cdee22a30aef750f285e18c18040c3e',
-          name: '',
-          symbol: '',
-          decimals: 0,
+          address: '0xprotocolTokenAddress',
+          name: 'Coin-LP',
+          symbol: 'S*USDC',
+          decimals: 6,
         },
         blockNumber: 17970000,
       },
