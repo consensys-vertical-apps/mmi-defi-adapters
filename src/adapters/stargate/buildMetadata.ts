@@ -1,4 +1,4 @@
-import { ethers, logger } from 'ethers'
+import { ethers } from 'ethers'
 import { promises as fs } from 'fs'
 import path from 'path'
 import {
@@ -11,6 +11,7 @@ import { Protocol } from '../../core/constants/protocols'
 import { chainProviders } from '../../core/utils/chainProviders'
 import { ERC20, getTokenMetadata } from '../../core/utils/getTokenMetadata'
 import { Json } from '../../types/json'
+import { logger } from '../../core/utils/logger'
 
 export type StargatePoolMetadata = Record<
   string,
