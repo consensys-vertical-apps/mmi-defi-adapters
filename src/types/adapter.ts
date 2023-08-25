@@ -28,7 +28,7 @@ export type GetPricesInput = {
 }
 
 export type TradeEvent = {
-  trades: Record<string, number>
+  trades: Record<string, string>
   protocolTokenAddress: string
   blockNumber: number
 }

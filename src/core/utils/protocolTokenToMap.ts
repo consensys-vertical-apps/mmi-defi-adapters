@@ -1,10 +1,10 @@
 import { BaseToken, ProtocolToken } from '../../types/adapter'
 import { ERC20 } from './getTokenMetadata'
 
-export function protocolTokenToMap(tokens: ProtocolToken[]) {
+export function formatProtocolTokenArrayToMap(tokens: ProtocolToken[]) {
   return tokens.reduce(
     (
-      acc,
+      accumulator,
       { address, name, symbol, decimals, tokens: underlyingTokens = [] },
     ) => {
       return {
@@ -15,17 +15,9 @@ export function protocolTokenToMap(tokens: ProtocolToken[]) {
             symbol,
             decimals,
           },
-          underlyingTokens: underlyingTokens.reduce(
-            (acc, underlyingToken) => {
-              return {
-                [underlyingToken.address]: underlyingToken,
-                ...acc,
-              }
-            },
-            {} as Record<string, BaseToken>,
-          ),
+          underlyingTokens: formatTokenArrayToMap(underlyingTokens),
         },
-        ...acc,
+        ...accumulator,
       }
     },
     {} as Record<
@@ -35,5 +27,17 @@ export function protocolTokenToMap(tokens: ProtocolToken[]) {
         underlyingTokens: Record<string, BaseToken>
       }
     >,
+  )
+}
+
+export function formatTokenArrayToMap<T extends ERC20>(tokens: T[]) {
+  return tokens.reduce(
+    (accumulator, currentToken) => {
+      return {
+        [currentToken.address]: currentToken,
+        ...accumulator,
+      }
+    },
+    {} as Record<string, T>,
   )
 }

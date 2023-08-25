@@ -26,7 +26,7 @@ import {
   ProtocolTotalValueLockedToken,
 } from '../../../../types/adapter'
 import { StargatePoolMetadata } from '../../buildMetadata'
-import { protocolTokenToMap } from '../../../../core/utils/protocolTokenToMap'
+import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 
 export class StargatePoolAdapter implements IProtocolAdapter {
   private metadata: StargatePoolMetadata
@@ -208,7 +208,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
           userAddress,
           blockNumber: fromBlock,
         }),
-      ].map(async (positions) => protocolTokenToMap(await positions)),
+      ].map(async (positions) =>
+        formatProtocolTokenArrayToMap(await positions),
+      ),
     )
 
     const tokens = await Promise.all(
@@ -293,7 +295,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
 
         return {
           trades: {
-            [address]: +formatUnits(
+            [address]: formatUnits(
               BigInt(value.toString()) * pricePerShareRaw,
               decimals,
             ),
