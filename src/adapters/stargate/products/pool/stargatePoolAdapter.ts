@@ -116,8 +116,6 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddress,
   }: GetPricesInput): Promise<ProtocolPricePerShareToken> {
-    const protocolTokenAddresses = Object.keys(this.metadata)
-
     const underlyingToken = this.metadata[protocolTokenAddress].underlying
     const protocolToken = this.metadata[protocolTokenAddress].protocolToken
 
