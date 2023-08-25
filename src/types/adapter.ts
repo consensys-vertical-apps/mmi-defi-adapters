@@ -88,7 +88,8 @@ export type ProtocolToken = TokenBalance & {
 }
 
 export type BasePricePerShareToken = ERC20 & {
-  pricePerShare: number
+  pricePerShareRaw: bigint
+  pricePerShare: string
   type: typeof TokenType.Underlying
 }
 
@@ -120,7 +121,7 @@ export type ProfitsTokensWithRange = {
 
 export type BaseProfitsToken = ERC20 & {
   type: typeof TokenType.Underlying | typeof TokenType.Claimable
-  profit: number
+  profit: string
 }
 
 export type ProtocolProfitsToken = ERC20 & {

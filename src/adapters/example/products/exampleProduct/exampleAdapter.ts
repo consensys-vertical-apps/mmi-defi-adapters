@@ -100,7 +100,7 @@ export class ExampleAdapter implements IProtocolAdapter {
               name: 'Frax',
               symbol: 'FRAX',
               decimals: 18,
-              profit: 100,
+              profit: '100',
             },
             {
               type: TokenType.Claimable,
@@ -108,7 +108,7 @@ export class ExampleAdapter implements IProtocolAdapter {
               name: 'Frax',
               symbol: 'FRAX',
               decimals: 18,
-              profit: 100,
+              profit: '100',
             },
           ],
         },
@@ -122,7 +122,6 @@ export class ExampleAdapter implements IProtocolAdapter {
     return [
       {
         name: 'Tether USD-LP',
-        iconUrl: '',
         decimals: 6,
         symbol: 'S*USDT',
         address: '0xprotocolTokenAddress',
@@ -131,10 +130,10 @@ export class ExampleAdapter implements IProtocolAdapter {
         tokens: [
           {
             type: 'underlying',
-            pricePerShare: 1.000154,
+            pricePerShareRaw: 1000154n,
+            pricePerShare: '1.000154',
             decimals: 6,
             name: 'Tether USD',
-            iconUrl: '',
             symbol: 'USDT',
             address: '0xunderlyingTokenAddress',
           },
