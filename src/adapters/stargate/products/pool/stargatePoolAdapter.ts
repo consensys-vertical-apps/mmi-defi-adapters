@@ -27,6 +27,7 @@ import {
 } from '../../../../types/adapter'
 import { StargatePoolMetadata } from '../../buildMetadata'
 import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
+import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 
 export class StargatePoolAdapter implements IProtocolAdapter {
   private metadata: StargatePoolMetadata
@@ -155,6 +156,12 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<TradeEvent[]> {
+    const stargateProtocolTokenMetadata = this.metadata[protocolTokenAddress]
+
+    if (!stargateProtocolTokenMetadata) {
+      throw new Error('No protocol token')
+    }
+
     const contractFilter = this.stargateTokenContract(
       protocolTokenAddress,
     ).filters.Transfer(userAddress, ZERO_ADDRESS)
@@ -164,9 +171,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     ).queryFilter<TransferEvent>(contractFilter, fromBlock, toBlock)
 
     return await this.eventUtil({
-      protocolTokenAddress,
+      protocolToken: stargateProtocolTokenMetadata.protocolToken,
+      underlyingToken: stargateProtocolTokenMetadata.underlying,
       eventResults,
-      metadata: this.metadata,
     })
   }
 
@@ -176,6 +183,12 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<TradeEvent[]> {
+    const stargateProtocolTokenMetadata = this.metadata[protocolTokenAddress]
+
+    if (!stargateProtocolTokenMetadata) {
+      throw new Error('No protocol token')
+    }
+
     const contractFilter = this.stargateTokenContract(
       protocolTokenAddress,
     ).filters.Transfer(ZERO_ADDRESS, userAddress)
@@ -185,9 +198,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     ).queryFilter<TransferEvent>(contractFilter, fromBlock, toBlock)
 
     return await this.eventUtil({
-      protocolTokenAddress,
+      protocolToken: stargateProtocolTokenMetadata.protocolToken,
+      underlyingToken: stargateProtocolTokenMetadata.underlying,
       eventResults,
-      metadata: this.metadata,
     })
   }
 
@@ -215,7 +228,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
 
     const tokens = await Promise.all(
       Object.values(currentValues).map(
-        async ({ protocolTokenMetadata, underlyingTokens }) => {
+        async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
           const getEventsInput: GetEventsInput = {
             userAddress,
             protocolTokenAddress: protocolTokenMetadata.address,
@@ -233,24 +246,26 @@ export class StargatePoolAdapter implements IProtocolAdapter {
           const profits = calculateProfit(
             deposits,
             withdrawal,
-            underlyingTokens,
-            previousValues[protocolTokenMetadata.address]?.underlyingTokens ??
-              {},
+            underlyingTokenPositions,
+            previousValues[protocolTokenMetadata.address]
+              ?.underlyingTokenPositions ?? {},
           )
 
           return {
             ...protocolTokenMetadata,
             type: TokenType.Protocol,
-            tokens: Object.values(underlyingTokens).map((underlyingToken) => {
-              return {
-                ...underlyingToken,
-                profit: formatUnits(
-                  profits[underlyingToken.address],
-                  underlyingToken.decimals,
-                ),
-                type: TokenType.Underlying,
-              }
-            }),
+            tokens: Object.values(underlyingTokenPositions).map(
+              (underlyingToken) => {
+                return {
+                  ...underlyingToken,
+                  profit: formatUnits(
+                    profits[underlyingToken.address],
+                    underlyingToken.decimals,
+                  ),
+                  type: TokenType.Underlying,
+                }
+              },
+            ),
           }
         },
       ),
@@ -263,14 +278,14 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     return []
   }
 
-  eventUtil({
-    protocolTokenAddress,
+  private eventUtil({
+    protocolToken,
+    underlyingToken,
     eventResults,
-    metadata,
   }: {
-    protocolTokenAddress: string
+    protocolToken: ERC20
+    underlyingToken: ERC20
     eventResults: TransferEvent[]
-    metadata: StargatePoolMetadata
   }): Promise<TradeEvent[]> {
     return Promise.all(
       eventResults.map(async (transferEvent) => {
@@ -282,11 +297,8 @@ export class StargatePoolAdapter implements IProtocolAdapter {
         const lpPrices = await this.getPricePerShare({ blockNumber })
 
         const tradeEventValue = lpPrices.find(
-          (prices) => prices.address == protocolTokenAddress,
+          (prices) => prices.address == protocolToken.address,
         )
-
-        const { protocolToken, underlying: underlyingToken } =
-          metadata[protocolTokenAddress]
 
         const pricePerShareRaw = tradeEventValue?.tokens?.[0]?.pricePerShareRaw
         if (!pricePerShareRaw) {

@@ -15,7 +15,7 @@ export function formatProtocolTokenArrayToMap(tokens: ProtocolToken[]) {
             symbol,
             decimals,
           },
-          underlyingTokens: formatTokenArrayToMap(underlyingTokens),
+          underlyingTokenPositions: formatTokenArrayToMap(underlyingTokens),
         },
         ...accumulator,
       }
@@ -24,7 +24,7 @@ export function formatProtocolTokenArrayToMap(tokens: ProtocolToken[]) {
       string,
       {
         protocolTokenMetadata: ERC20
-        underlyingTokens: Record<string, BaseToken>
+        underlyingTokenPositions: Record<string, BaseToken>
       }
     >,
   )
