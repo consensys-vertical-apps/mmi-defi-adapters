@@ -306,13 +306,16 @@ export class StargatePoolAdapter implements IProtocolAdapter {
           throw new Error('No price for events at this time')
         }
 
-        const valueRaw = BigInt(value.toString()) * pricePerShareRaw
+        const movementValueRaw = BigInt(value.toString()) * pricePerShareRaw
         return {
           movements: {
             [underlyingToken.address]: {
-              token: underlyingToken,
-              value: formatUnits(valueRaw, underlyingToken.decimals),
-              valueRaw,
+              ...underlyingToken,
+              movementValue: formatUnits(
+                movementValueRaw,
+                underlyingToken.decimals,
+              ),
+              movementValueRaw,
             },
           },
           protocolToken: protocolToken,

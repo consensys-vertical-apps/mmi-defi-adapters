@@ -78,8 +78,8 @@ export class ExampleAdapter implements IProtocolAdapter {
               symbol: '',
               decimals: 0,
             },
-            value: '101',
-            valueRaw: 101n,
+            movementValue: '101',
+            movementValueRaw: 101n,
           },
         },
         protocolToken: {
@@ -104,8 +104,8 @@ export class ExampleAdapter implements IProtocolAdapter {
               symbol: '',
               decimals: 0,
             },
-            value: '100',
-            valueRaw: 100n,
+            movementValue: '100',
+            movementValueRaw: 100n,
           },
         },
         protocolToken: {
@@ -130,8 +130,8 @@ export class ExampleAdapter implements IProtocolAdapter {
               symbol: '',
               decimals: 0,
             },
-            value: '100',
-            valueRaw: 100n,
+            movementValue: '100',
+            movementValueRaw: 100n,
           },
         },
         protocolToken: {

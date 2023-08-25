@@ -6,7 +6,7 @@ export function aggregateTrades(
   return events.reduce(
     (acc, event) => {
       return Object.entries(event.movements).reduce(
-        (innerAcc, [address, { valueRaw }]) => {
+        (innerAcc, [address, { movementValueRaw: valueRaw }]) => {
           innerAcc[address] =
             (innerAcc[address] ?? BigInt(0)) + BigInt(valueRaw)
           return innerAcc
