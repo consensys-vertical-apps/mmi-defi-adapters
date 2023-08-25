@@ -93,7 +93,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
         ).amountLPtoLD(protocolTokenBalance.balanceRaw)
 
         const underlyingTokenMetadata =
-          this.metadata[protocolTokenBalance.address]!.underlying
+          this.metadata[protocolTokenBalance.address]!.underlyingToken
 
         const underlyingTokenBalance = {
           ...underlyingTokenMetadata,
@@ -117,7 +117,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddress,
   }: GetPricesInput): Promise<ProtocolPricePerShareToken> {
-    const { protocolToken, underlying: underlyingToken } =
+    const { protocolToken, underlyingToken } =
       this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const oneToken = BigInt(1 * 10 ** protocolToken.decimals)
@@ -161,7 +161,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const { protocolToken, underlying: underlyingToken } =
+    const { protocolToken, underlyingToken } =
       this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const contractFilter = this.stargateTokenContract(
@@ -185,7 +185,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const { protocolToken, underlying: underlyingToken } =
+    const { protocolToken, underlyingToken } =
       this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const contractFilter = this.stargateTokenContract(

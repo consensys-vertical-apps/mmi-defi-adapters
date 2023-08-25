@@ -24,11 +24,9 @@ const CHAIN_METADATA: Partial<
 export const getTokenMetadata = async ({
   tokenAddress,
   chainId,
-  throwOnFailure = false,
 }: {
   tokenAddress: string
   chainId: Chain
-  throwOnFailure?: boolean
 }): Promise<ERC20> => {
   const fileMetadata = CHAIN_METADATA[chainId]
   if (fileMetadata) {
@@ -52,18 +50,8 @@ export const getTokenMetadata = async ({
   }
 
   const errorMessage = 'Cannot find token metadata for token'
-  if (throwOnFailure) {
-    logger.error({ tokenAddress, chainId }, errorMessage)
-    throw new Error(errorMessage)
-  }
-
-  logger.warn({ tokenAddress, chainId }, errorMessage)
-  return {
-    address: tokenAddress,
-    name: '',
-    symbol: '',
-    decimals: 18,
-  }
+  logger.error({ tokenAddress, chainId }, errorMessage)
+  throw new Error(errorMessage)
 }
 
 const getOnChainTokenMetadata = async (

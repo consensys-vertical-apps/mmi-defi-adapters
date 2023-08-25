@@ -17,7 +17,7 @@ export type StargatePoolMetadata = Record<
   {
     poolId: number
     protocolToken: ERC20
-    underlying: ERC20
+    underlyingToken: ERC20
   }
 >
 
@@ -127,7 +127,7 @@ async function lpMetadata({
     const underlyingTokenAddress = (await poolContract.token()).toLowerCase()
 
     const protocolToken = await getThinTokenMetadata(poolAddress, chainId)
-    const underlying = await getThinTokenMetadata(
+    const underlyingToken = await getThinTokenMetadata(
       underlyingTokenAddress,
       chainId,
     )
@@ -135,7 +135,7 @@ async function lpMetadata({
     metadataObject[poolAddress] = {
       poolId,
       protocolToken,
-      underlying,
+      underlyingToken,
     }
   }
 
@@ -181,7 +181,6 @@ async function getThinTokenMetadata(tokenAddress: string, chainId: Chain) {
   const { iconUrl: _, ...token } = await getTokenMetadata({
     tokenAddress,
     chainId,
-    throwOnFailure: true,
   })
 
   return token

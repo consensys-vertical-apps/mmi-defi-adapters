@@ -4,7 +4,7 @@ import { BigNumber, Contract, ethers } from 'ethers'
 import { Chain } from '../constants/chains'
 
 // Addresses extracted from https://github.com/wbobeirne/eth-balance-checker
-const BALANCE_CHECKER_CONTRACT_ADDRESS: Record<Chain, string | undefined> = {
+const BALANCE_CHECKER_CONTRACT_ADDRESS: Record<Chain, string> = {
   [Chain.Ethereum]: '0xb1f8e55c7f64d203c1400b9d8555d050f94adf39',
   [Chain.Optimism]: '0xB1c568e9C3E6bdaf755A60c7418C269eb11524FC',
   [Chain.Bsc]: '0x2352c63A83f9Fd126af8676146721Fa00924d7e4',
