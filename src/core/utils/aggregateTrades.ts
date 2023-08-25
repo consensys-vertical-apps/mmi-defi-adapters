@@ -4,8 +4,9 @@ export function aggregateTrades(events: TradeEvent[]): Record<string, bigint> {
   return events.reduce(
     (acc, event) => {
       return Object.entries(event.trades).reduce(
-        (innerAcc, [address, number]) => {
-          innerAcc[address] = (innerAcc[address] || BigInt(0)) + BigInt(number)
+        (innerAcc, [address, { valueRaw }]) => {
+          innerAcc[address] =
+            (innerAcc[address] ?? BigInt(0)) + BigInt(valueRaw)
           return innerAcc
         },
         acc,

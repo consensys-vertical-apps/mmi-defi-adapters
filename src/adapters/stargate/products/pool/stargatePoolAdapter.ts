@@ -285,23 +285,24 @@ export class StargatePoolAdapter implements IProtocolAdapter {
           (prices) => prices.address == protocolTokenAddress,
         )
 
-        const { address } = metadata[protocolTokenAddress].underlying
-        const { decimals } = metadata[protocolTokenAddress].protocolToken
+        const { protocolToken, underlying: underlyingToken } =
+          metadata[protocolTokenAddress]
 
         const pricePerShareRaw = tradeEventValue?.tokens?.[0]?.pricePerShareRaw
         if (!pricePerShareRaw) {
           throw new Error('No price for events at this time')
         }
 
+        const valueRaw = BigInt(value.toString()) * pricePerShareRaw
         return {
           trades: {
-            [address]: formatUnits(
-              BigInt(value.toString()) * pricePerShareRaw,
-              decimals,
-            ),
+            [underlyingToken.address]: {
+              token: underlyingToken,
+              value: formatUnits(valueRaw, underlyingToken.decimals),
+              valueRaw,
+            },
           },
-          protocolTokenAddress:
-            metadata[protocolTokenAddress].protocolToken.address,
+          protocolToken: protocolToken,
           blockNumber,
         }
       }),

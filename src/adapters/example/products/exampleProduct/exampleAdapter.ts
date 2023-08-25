@@ -53,8 +53,24 @@ export class ExampleAdapter implements IProtocolAdapter {
   async getWithdrawals(_input: GetEventsInput): Promise<TradeEvent[]> {
     return [
       {
-        trades: { '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': '101' },
-        protocolTokenAddress: '0x892785f33cdee22a30aef750f285e18c18040c3e',
+        trades: {
+          '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': {
+            token: {
+              address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
+              name: '',
+              symbol: '',
+              decimals: 0,
+            },
+            value: '101',
+            valueRaw: 101n,
+          },
+        },
+        protocolToken: {
+          address: '0x892785f33cdee22a30aef750f285e18c18040c3e',
+          name: '',
+          symbol: '',
+          decimals: 0,
+        },
         blockNumber: 17970876,
       },
     ]
@@ -63,8 +79,24 @@ export class ExampleAdapter implements IProtocolAdapter {
   async getDeposits(_input: GetEventsInput): Promise<TradeEvent[]> {
     return [
       {
-        trades: { '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': '100' },
-        protocolTokenAddress: '0x892785f33cdee22a30aef750f285e18c18040c3e',
+        trades: {
+          '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': {
+            token: {
+              address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
+              name: '',
+              symbol: '',
+              decimals: 0,
+            },
+            value: '100',
+            valueRaw: 100n,
+          },
+        },
+        protocolToken: {
+          address: '0x892785f33cdee22a30aef750f285e18c18040c3e',
+          name: '',
+          symbol: '',
+          decimals: 0,
+        },
         blockNumber: 17970000,
       },
     ]
@@ -73,8 +105,24 @@ export class ExampleAdapter implements IProtocolAdapter {
   async getClaimedRewards(_input: GetEventsInput): Promise<TradeEvent[]> {
     return [
       {
-        trades: { '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': '100' },
-        protocolTokenAddress: '0x892785f33cdee22a30aef750f285e18c18040c3e',
+        trades: {
+          '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': {
+            token: {
+              address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
+              name: '',
+              symbol: '',
+              decimals: 0,
+            },
+            value: '100',
+            valueRaw: 100n,
+          },
+        },
+        protocolToken: {
+          address: '0x892785f33cdee22a30aef750f285e18c18040c3e',
+          name: '',
+          symbol: '',
+          decimals: 0,
+        },
         blockNumber: 17970000,
       },
     ]

@@ -28,8 +28,8 @@ export type GetPricesInput = {
 }
 
 export type TradeEvent = {
-  trades: Record<string, string>
-  protocolTokenAddress: string
+  trades: Record<string, { token: ERC20; value: string; valueRaw: bigint }>
+  protocolToken: ERC20
   blockNumber: number
 }
 
