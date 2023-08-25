@@ -1,23 +1,33 @@
-export function calculateProfit(
-  deposits: Record<string, number | undefined> | undefined,
-  withdrawals: Record<string, number | undefined> | undefined,
-  currentValues: Record<string, number | undefined> | undefined,
-  previousVales: Record<string, number | undefined> | undefined,
-): Record<string, number> {
+import { BaseToken } from '../../types/adapter'
+
+export function calculateProfit({
+  deposits,
+  withdrawals,
+  currentValues,
+  previousVales,
+}: {
+  deposits: Record<string, bigint>
+  withdrawals: Record<string, bigint>
+  currentValues: Record<string, BaseToken>
+  previousVales: Record<string, BaseToken>
+}): Record<string, bigint> {
   return Object.keys({
     ...deposits,
     ...withdrawals,
     ...currentValues,
     ...previousVales,
   }).reduce(
-    (acc, address) => {
-      acc[address] =
-        (currentValues?.[address] || 0) +
-        (withdrawals?.[address] || 0) -
-        (deposits?.[address] || 0) -
-        (previousVales?.[address] || 0)
-      return acc
+    (accumulator, address) => {
+      const currentValue = currentValues[address]?.balanceRaw ?? BigInt(0)
+      const withdrawalsValue = withdrawals[address] ?? BigInt(0)
+      const depositsValue = deposits[address] ?? BigInt(0)
+      const previousValue = previousVales[address]?.balanceRaw ?? BigInt(0)
+
+      accumulator[address] =
+        currentValue + withdrawalsValue - depositsValue - previousValue
+
+      return accumulator
     },
-    {} as Record<string, number>,
+    {} as Record<string, bigint>,
   )
 }

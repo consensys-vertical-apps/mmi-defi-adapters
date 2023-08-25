@@ -156,27 +156,25 @@ export async function getDeposits({
 }): Promise<DefiMovementsResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const protocolTokens = await adapter.getProtocolTokens()
-    const movementsByBlock = await Promise.all(
-      protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getDeposits({
-          protocolTokenAddress,
+    const movements = await Promise.all(
+      protocolTokens.map(async (protocolToken) => {
+        const positionMovements = await adapter.getDeposits({
+          protocolTokenAddress: protocolToken.address,
           fromBlock,
           toBlock,
           userAddress,
-        }),
-      ),
-    )
+        })
 
-    const result = movementsByBlock.map((movementsByBlock, index) => {
-      return {
-        protocolToken: protocolTokens[index],
-        movementsByBlock,
-      }
-    })
+        return {
+          protocolToken,
+          positionMovements,
+        }
+      }),
+    )
 
     return {
       ...adapter.getProtocolDetails(),
-      movementsByBlock: result,
+      movements,
     }
   }
 
@@ -202,27 +200,25 @@ export async function getWithdrawals({
 }): Promise<DefiMovementsResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const protocolTokens = await adapter.getProtocolTokens()
-    const movementsByBlock = await Promise.all(
-      protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getWithdrawals({
-          protocolTokenAddress,
+    const movements = await Promise.all(
+      protocolTokens.map(async (protocolToken) => {
+        const positionMovements = await adapter.getWithdrawals({
+          protocolTokenAddress: protocolToken.address,
           fromBlock,
           toBlock,
           userAddress,
-        }),
-      ),
-    )
+        })
 
-    const result = movementsByBlock.map((movementsByBlock, index) => {
-      return {
-        protocolToken: protocolTokens[index],
-        movementsByBlock,
-      }
-    })
+        return {
+          protocolToken,
+          positionMovements,
+        }
+      }),
+    )
 
     return {
       ...adapter.getProtocolDetails(),
-      movementsByBlock: result,
+      movements,
     }
   }
 

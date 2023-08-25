@@ -59,10 +59,9 @@ export class ExampleAdapter implements IProtocolAdapter {
     return [
       {
         address: '0xprotocolTokenAddress',
-        decimals: 8,
-        symbol: 'stUSD',
-
-        name: 'stUSD',
+        name: 'Coin-LP',
+        symbol: 'S*USDC',
+        decimals: 6,
       },
     ]
   }
@@ -70,8 +69,17 @@ export class ExampleAdapter implements IProtocolAdapter {
   async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
-        movements: { '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': 101 },
-        blockNumber: 17970876,
+        underlyingTokensMovement: {
+          '0xunderlyingTokenAddress': {
+            address: '0xunderlyingTokenAddress',
+            name: 'USD Coin',
+            symbol: 'USDC',
+            decimals: 6,
+            movementValueRaw: 100n,
+            movementValue: '100',
+          },
+        },
+        blockNumber: 17970000,
       },
     ]
   }
@@ -79,7 +87,16 @@ export class ExampleAdapter implements IProtocolAdapter {
   async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
-        movements: { '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': 100 },
+        underlyingTokensMovement: {
+          '0xunderlyingTokenAddress': {
+            address: '0xunderlyingTokenAddress',
+            name: 'USD Coin',
+            symbol: 'USDC',
+            decimals: 6,
+            movementValueRaw: 100n,
+            movementValue: '100',
+          },
+        },
         blockNumber: 17970000,
       },
     ]
@@ -88,7 +105,16 @@ export class ExampleAdapter implements IProtocolAdapter {
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
-        movements: { '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': 100 },
+        underlyingTokensMovement: {
+          '0xunderlyingTokenAddress': {
+            address: '0xunderlyingTokenAddress',
+            name: 'USD Coin',
+            symbol: 'USDC',
+            decimals: 6,
+            movementValueRaw: 100n,
+            movementValue: '100',
+          },
+        },
         blockNumber: 17970000,
       },
     ]
@@ -114,7 +140,8 @@ export class ExampleAdapter implements IProtocolAdapter {
               name: 'Frax',
               symbol: 'FRAX',
               decimals: 18,
-              profit: 100,
+              profitRaw: 100n,
+              profit: '100',
             },
             {
               type: TokenType.Claimable,
@@ -122,7 +149,8 @@ export class ExampleAdapter implements IProtocolAdapter {
               name: 'Frax',
               symbol: 'FRAX',
               decimals: 18,
-              profit: 100,
+              profitRaw: 100n,
+              profit: '100',
             },
           ],
         },
@@ -144,7 +172,8 @@ export class ExampleAdapter implements IProtocolAdapter {
       tokens: [
         {
           type: 'underlying',
-          pricePerShare: 1.000154,
+          pricePerShareRaw: 1000154n,
+          pricePerShare: '1.000154',
           decimals: 6,
           name: 'Tether USD',
           iconUrl: '',

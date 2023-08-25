@@ -36,11 +36,6 @@ export type GetAprInput = {
   protocolTokenAddress: string
 }
 
-export type MovementsByBlock = {
-  movements: Record<string, number>
-  blockNumber: number
-}
-
 export type GetEventsInput = {
   userAddress: string
   protocolTokenAddress: string
@@ -96,7 +91,8 @@ export type ProtocolToken = TokenBalance & {
 }
 
 export type BasePricePerShareToken = ERC20 & {
-  pricePerShare: number
+  pricePerShareRaw: bigint
+  pricePerShare: string
   type: typeof TokenType.Underlying
 }
 
@@ -105,9 +101,21 @@ export type ProtocolPricePerShareToken = ERC20 & {
   type: typeof TokenType.Protocol
   tokens?: BasePricePerShareToken[]
 }
+
+export type BaseTokenMovement = ERC20 & {
+  movementValue: string
+  movementValueRaw: bigint
+}
+
+export type MovementsByBlock = {
+  underlyingTokensMovement: Record<string, BaseTokenMovement>
+  blockNumber: number
+}
+
 export type ProtocolApyToken = ERC20 & {
   apyDecimal: string
 }
+
 export type ProtocolAprToken = ERC20 & {
   aprDecimal: string
 }
@@ -134,7 +142,8 @@ export type ProfitsTokensWithRange = {
 
 export type BaseProfitsToken = ERC20 & {
   type: typeof TokenType.Underlying | typeof TokenType.Claimable
-  profit: number
+  profitRaw: bigint
+  profit: string
 }
 
 export type ProtocolProfitsToken = ERC20 & {

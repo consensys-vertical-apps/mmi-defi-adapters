@@ -31,8 +31,8 @@ export type TotalValueLockResponse = ProtocolDetails & {
 export type DefiProfitsResponse = ProtocolDetails & ProfitsTokensWithRange
 
 export type DefiMovementsResponse = ProtocolDetails & {
-  movementsByBlock: {
+  movements: {
     protocolToken: ERC20
-    movementsByBlock: MovementsByBlock[]
+    positionMovements: MovementsByBlock[]
   }[]
 }
