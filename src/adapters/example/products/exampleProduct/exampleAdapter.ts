@@ -8,16 +8,21 @@ import {
   GetTotalValueLockedInput,
   IProtocolAdapter,
   ProtocolDetails,
-  TradeEvent,
+  MovementsByBlock,
   PositionType,
   TokenType,
   ProfitsTokensWithRange,
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
+  GetAprInput,
+  GetApyInput,
+  ProtocolAprToken,
+  ProtocolApyToken,
 } from '../../../../types/adapter'
 import { ethers } from 'ethers'
 import { Json } from '../../../../types/json'
+import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 
 export class ExampleAdapter implements IProtocolAdapter {
   private metadata: Json
@@ -50,10 +55,22 @@ export class ExampleAdapter implements IProtocolAdapter {
     }
   }
 
-  async getWithdrawals(_input: GetEventsInput): Promise<TradeEvent[]> {
+  async getProtocolTokens(): Promise<ERC20[]> {
     return [
       {
-        trades: {
+        address: '0xprotocolTokenAddress',
+        decimals: 8,
+        symbol: 'stUSD',
+
+        name: 'stUSD',
+      },
+    ]
+  }
+
+  async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return [
+      {
+        movements: {
           '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': {
             token: {
               address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
@@ -76,10 +93,10 @@ export class ExampleAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getDeposits(_input: GetEventsInput): Promise<TradeEvent[]> {
+  async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
-        trades: {
+        movements: {
           '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': {
             token: {
               address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
@@ -102,10 +119,10 @@ export class ExampleAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getClaimedRewards(_input: GetEventsInput): Promise<TradeEvent[]> {
+  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
-        trades: {
+        movements: {
           '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599': {
             token: {
               address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
@@ -166,28 +183,28 @@ export class ExampleAdapter implements IProtocolAdapter {
 
   async getPricePerShare(
     _input: GetPricesInput,
-  ): Promise<ProtocolPricePerShareToken[]> {
-    return [
-      {
-        name: 'Tether USD-LP',
-        decimals: 6,
-        symbol: 'S*USDT',
-        address: '0xprotocolTokenAddress',
-        share: 1,
-        type: 'protocol',
-        tokens: [
-          {
-            type: 'underlying',
-            pricePerShareRaw: 1000154n,
-            pricePerShare: '1.000154',
-            decimals: 6,
-            name: 'Tether USD',
-            symbol: 'USDT',
-            address: '0xunderlyingTokenAddress',
-          },
-        ],
-      },
-    ]
+  ): Promise<ProtocolPricePerShareToken> {
+    return {
+      name: 'Tether USD-LP',
+      iconUrl: '',
+      decimals: 6,
+      symbol: 'S*USDT',
+      address: '0xprotocolTokenAddress',
+      share: 1,
+      type: 'protocol',
+      tokens: [
+        {
+          type: 'underlying',
+          pricePerShareRaw: 1000154n,
+          pricePerShare: '1.000154',
+          decimals: 6,
+          name: 'Tether USD',
+          iconUrl: '',
+          symbol: 'USDT',
+          address: '0xunderlyingTokenAddress',
+        },
+      ],
+    }
   }
 
   async getPositions(_input: GetPositionsInput): Promise<ProtocolToken[]> {
@@ -234,6 +251,27 @@ export class ExampleAdapter implements IProtocolAdapter {
       },
     ]
   }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+    return {
+      address: '0xprotocolTokenAddress',
+      decimals: 8,
+      symbol: 'stUSD',
+      aprDecimal: '0.1', // 10%
+      name: 'stUSD',
+    }
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+    return {
+      address: '0xprotocolTokenAddress',
+      decimals: 8,
+      symbol: 'stUSD',
+      apyDecimal: '0.1', // 10%
+      name: 'stUSD',
+    }
+  }
+
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]> {

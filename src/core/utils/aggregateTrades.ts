@@ -1,9 +1,11 @@
-import { TradeEvent } from '../../types/adapter'
+import { MovementsByBlock } from '../../types/adapter'
 
-export function aggregateTrades(events: TradeEvent[]): Record<string, bigint> {
+export function aggregateTrades(
+  events: MovementsByBlock[],
+): Record<string, bigint> {
   return events.reduce(
     (acc, event) => {
-      return Object.entries(event.trades).reduce(
+      return Object.entries(event.movements).reduce(
         (innerAcc, [address, { valueRaw }]) => {
           innerAcc[address] =
             (innerAcc[address] ?? BigInt(0)) + BigInt(valueRaw)

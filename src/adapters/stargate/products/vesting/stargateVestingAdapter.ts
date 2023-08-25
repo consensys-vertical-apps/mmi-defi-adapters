@@ -6,7 +6,7 @@ import { Protocol } from '../../../../core/constants/protocols'
 import {
   IProtocolAdapter,
   ProtocolDetails,
-  TradeEvent,
+  MovementsByBlock,
   GetPositionsInput,
   GetTotalValueLockedInput,
   PositionType,
@@ -15,13 +15,19 @@ import {
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
+  ProtocolAprToken,
+  GetAprInput,
+  ProtocolApyToken,
+  GetApyInput,
 } from '../../../../types/adapter'
 import { StargateVestingMetadata } from '../../buildMetadata'
+import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 
 export class StargateVestingAdapter implements IProtocolAdapter {
   private metadata: StargateVestingMetadata
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain
+  private protocolTokens: ERC20[]
 
   constructor({
     metadata,
@@ -35,6 +41,7 @@ export class StargateVestingAdapter implements IProtocolAdapter {
     this.metadata = metadata
     this.provider = provider
     this.chainId = chainId
+    this.protocolTokens = [this.metadata.contractToken]
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -50,31 +57,42 @@ export class StargateVestingAdapter implements IProtocolAdapter {
     }
   }
 
-  async getWithdrawals(): Promise<TradeEvent[]> {
+  async getProtocolTokens(): Promise<ERC20[]> {
+    return this.protocolTokens
+  }
+
+  async getWithdrawals(): Promise<MovementsByBlock[]> {
     // TODO
     return []
   }
   async getOneDayProfit(): Promise<ProfitsTokensWithRange> {
-    return {
-      tokens: [],
-      fromBlock: 0,
-      toBlock: 0,
-    }
+    // TODO
+    return {} as ProfitsTokensWithRange
   }
 
-  async getDeposits(): Promise<TradeEvent[]> {
+  async getDeposits(): Promise<MovementsByBlock[]> {
     // TODO
     return []
   }
 
-  async getClaimedRewards(): Promise<TradeEvent[]> {
+  async getClaimedRewards(): Promise<MovementsByBlock[]> {
     // TODO
     return []
   }
 
-  async getPricePerShare(): Promise<ProtocolPricePerShareToken[]> {
+  async getPricePerShare(): Promise<ProtocolPricePerShareToken> {
     // TODO
-    return []
+    return {} as ProtocolPricePerShareToken
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+    // TODO
+    return {} as ProtocolAprToken
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+    // TODO
+    return {} as ProtocolApyToken
   }
 
   async getPositions({
