@@ -69,7 +69,7 @@ export class ExampleAdapter implements IProtocolAdapter {
   async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
-        movements: {
+        underlyingTokensMovement: {
           '0xunderlyingTokenAddress': {
             address: '0xunderlyingTokenAddress',
             name: 'USD Coin',
@@ -87,7 +87,7 @@ export class ExampleAdapter implements IProtocolAdapter {
   async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
-        movements: {
+        underlyingTokensMovement: {
           '0xunderlyingTokenAddress': {
             address: '0xunderlyingTokenAddress',
             name: 'USD Coin',
@@ -105,7 +105,7 @@ export class ExampleAdapter implements IProtocolAdapter {
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
-        movements: {
+        underlyingTokensMovement: {
           '0xunderlyingTokenAddress': {
             address: '0xunderlyingTokenAddress',
             name: 'USD Coin',

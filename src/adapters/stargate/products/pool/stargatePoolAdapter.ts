@@ -214,11 +214,11 @@ export class StargatePoolAdapter implements IProtocolAdapter {
       this.getPositions({
         userAddress,
         blockNumber: toBlock,
-      }).then((positions) => formatProtocolTokenArrayToMap(positions)),
+      }).then(formatProtocolTokenArrayToMap),
       this.getPositions({
         userAddress,
         blockNumber: fromBlock,
-      }).then((positions) => formatProtocolTokenArrayToMap(positions)),
+      }).then(formatProtocolTokenArrayToMap),
     ])
 
     const tokens = await Promise.all(
@@ -232,12 +232,8 @@ export class StargatePoolAdapter implements IProtocolAdapter {
           }
 
           const [withdrawal, deposits] = await Promise.all([
-            this.getWithdrawals(getEventsInput).then((movements) =>
-              aggregateTrades(movements),
-            ),
-            this.getDeposits(getEventsInput).then((movements) =>
-              aggregateTrades(movements),
-            ),
+            this.getWithdrawals(getEventsInput).then(aggregateTrades),
+            this.getDeposits(getEventsInput).then(aggregateTrades),
           ])
 
           const profits = calculateProfit(
@@ -313,7 +309,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
 
         const movementValueRaw = BigInt(value.toString()) * pricePerShareRaw
         return {
-          movements: {
+          underlyingTokensMovement: {
             [underlyingToken.address]: {
               ...underlyingToken,
               movementValue: formatUnits(

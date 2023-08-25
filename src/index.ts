@@ -158,7 +158,7 @@ export async function getDeposits({
     const protocolTokens = await adapter.getProtocolTokens()
     const movements = await Promise.all(
       protocolTokens.map(async (protocolToken) => {
-        const protocolTokenMovements = await adapter.getDeposits({
+        const positionMovements = await adapter.getDeposits({
           protocolTokenAddress: protocolToken.address,
           fromBlock,
           toBlock,
@@ -167,7 +167,7 @@ export async function getDeposits({
 
         return {
           protocolToken,
-          protocolTokenMovements,
+          positionMovements,
         }
       }),
     )
@@ -202,7 +202,7 @@ export async function getWithdrawals({
     const protocolTokens = await adapter.getProtocolTokens()
     const movements = await Promise.all(
       protocolTokens.map(async (protocolToken) => {
-        const protocolTokenMovements = await adapter.getWithdrawals({
+        const positionMovements = await adapter.getWithdrawals({
           protocolTokenAddress: protocolToken.address,
           fromBlock,
           toBlock,
@@ -211,7 +211,7 @@ export async function getWithdrawals({
 
         return {
           protocolToken,
-          protocolTokenMovements,
+          positionMovements,
         }
       }),
     )

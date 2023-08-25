@@ -33,6 +33,6 @@ export type DefiProfitsResponse = ProtocolDetails & ProfitsTokensWithRange
 export type DefiMovementsResponse = ProtocolDetails & {
   movements: {
     protocolToken: ERC20
-    protocolTokenMovements: MovementsByBlock[]
+    positionMovements: MovementsByBlock[]
   }[]
 }
