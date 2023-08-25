@@ -79,12 +79,6 @@ export class ExampleAdapter implements IProtocolAdapter {
             movementValue: '100',
           },
         },
-        protocolToken: {
-          address: '0xprotocolTokenAddress',
-          name: 'Coin-LP',
-          symbol: 'S*USDC',
-          decimals: 6,
-        },
         blockNumber: 17970000,
       },
     ]
@@ -103,12 +97,6 @@ export class ExampleAdapter implements IProtocolAdapter {
             movementValue: '100',
           },
         },
-        protocolToken: {
-          address: '0xprotocolTokenAddress',
-          name: 'Coin-LP',
-          symbol: 'S*USDC',
-          decimals: 6,
-        },
         blockNumber: 17970000,
       },
     ]
@@ -126,12 +114,6 @@ export class ExampleAdapter implements IProtocolAdapter {
             movementValueRaw: 100n,
             movementValue: '100',
           },
-        },
-        protocolToken: {
-          address: '0xprotocolTokenAddress',
-          name: 'Coin-LP',
-          symbol: 'S*USDC',
-          decimals: 6,
         },
         blockNumber: 17970000,
       },

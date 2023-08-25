@@ -109,7 +109,6 @@ export type BaseTokenMovement = ERC20 & {
 
 export type MovementsByBlock = {
   movements: Record<string, BaseTokenMovement>
-  protocolToken: ERC20
   blockNumber: number
 }
 

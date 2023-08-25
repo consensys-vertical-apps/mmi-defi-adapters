@@ -323,7 +323,6 @@ export class StargatePoolAdapter implements IProtocolAdapter {
               movementValueRaw,
             },
           },
-          protocolToken: protocolToken,
           blockNumber,
         }
       }),
