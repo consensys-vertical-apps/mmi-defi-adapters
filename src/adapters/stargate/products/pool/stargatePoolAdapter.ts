@@ -231,18 +231,19 @@ export class StargatePoolAdapter implements IProtocolAdapter {
             toBlock,
           }
 
-          const [withdrawal, deposits] = await Promise.all([
+          const [withdrawals, deposits] = await Promise.all([
             this.getWithdrawals(getEventsInput).then(aggregateTrades),
             this.getDeposits(getEventsInput).then(aggregateTrades),
           ])
 
-          const profits = calculateProfit(
+          const profits = calculateProfit({
             deposits,
-            withdrawal,
-            underlyingTokenPositions,
-            previousValues[protocolTokenMetadata.address]
-              ?.underlyingTokenPositions ?? {},
-          )
+            withdrawals,
+            currentValues: underlyingTokenPositions,
+            previousVales:
+              previousValues[protocolTokenMetadata.address]
+                ?.underlyingTokenPositions ?? {},
+          })
 
           return {
             ...protocolTokenMetadata,

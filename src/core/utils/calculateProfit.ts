@@ -1,11 +1,16 @@
 import { BaseToken } from '../../types/adapter'
 
-export function calculateProfit(
-  deposits: Record<string, bigint>,
-  withdrawals: Record<string, bigint>,
-  currentValues: Record<string, BaseToken>,
-  previousVales: Record<string, BaseToken>,
-): Record<string, bigint> {
+export function calculateProfit({
+  deposits,
+  withdrawals,
+  currentValues,
+  previousVales,
+}: {
+  deposits: Record<string, bigint>
+  withdrawals: Record<string, bigint>
+  currentValues: Record<string, BaseToken>
+  previousVales: Record<string, BaseToken>
+}): Record<string, bigint> {
   return Object.keys({
     ...deposits,
     ...withdrawals,
