@@ -30,7 +30,7 @@ export function formatProtocolTokenArrayToMap(tokens: ProtocolToken[]) {
   )
 }
 
-export function formatTokenArrayToMap<T extends ERC20>(tokens: T[]) {
+export function formatTokenArrayToMap<Token extends ERC20>(tokens: Token[]) {
   return tokens.reduce(
     (accumulator, currentToken) => {
       return {
@@ -38,6 +38,6 @@ export function formatTokenArrayToMap<T extends ERC20>(tokens: T[]) {
         ...accumulator,
       }
     },
-    {} as Record<string, T>,
+    {} as Record<string, Token>,
   )
 }
