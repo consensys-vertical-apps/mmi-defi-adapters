@@ -86,31 +86,29 @@ export class StargatePoolAdapter implements IProtocolAdapter {
       tokens: this.protocolTokens,
     })
 
-    const underlying = await Promise.all(
+    const tokens = await Promise.all(
       protocolTokensBalances.map(async (protocolTokenBalance) => {
         const amountLPtoLD = await this.stargateTokenContract(
           protocolTokenBalance.address,
         ).amountLPtoLD(protocolTokenBalance.balanceRaw)
 
         const underlyingTokenMetadata =
-          this.metadata[protocolTokenBalance.address].underlying
+          this.metadata[protocolTokenBalance.address]!.underlying
 
-        return {
+        const underlyingTokenBalance = {
           ...underlyingTokenMetadata,
           balanceRaw: BigInt(amountLPtoLD.toString()),
           balance: formatUnits(amountLPtoLD, underlyingTokenMetadata.decimals),
           type: TokenType.Underlying,
         }
+
+        return {
+          ...protocolTokenBalance,
+          type: TokenType.Protocol,
+          tokens: [underlyingTokenBalance],
+        }
       }),
     )
-
-    const tokens = protocolTokensBalances.map((protocolTokenBalance, index) => {
-      return {
-        ...protocolTokenBalance,
-        type: TokenType.Protocol,
-        tokens: [underlying[index]],
-      }
-    })
 
     return tokens
   }
@@ -212,7 +210,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     const toBlock = blockNumber
     const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[this.chainId]
 
-    const [currentValues, previousValues] = await Promise.all(
+    const [currentValues, previousValues] = (await Promise.all(
       [
         this.getPositions({
           userAddress,
@@ -225,7 +223,10 @@ export class StargatePoolAdapter implements IProtocolAdapter {
       ].map(async (positions) =>
         formatProtocolTokenArrayToMap(await positions),
       ),
-    )
+    )) as [
+      ReturnType<typeof formatProtocolTokenArrayToMap>,
+      ReturnType<typeof formatProtocolTokenArrayToMap>,
+    ]
 
     const tokens = await Promise.all(
       Object.values(currentValues).map(
@@ -237,12 +238,15 @@ export class StargatePoolAdapter implements IProtocolAdapter {
             toBlock,
           }
 
-          const [withdrawal, deposits] = await Promise.all(
+          const [withdrawal, deposits] = (await Promise.all(
             [
               this.getWithdrawals(getEventsInput),
               this.getDeposits(getEventsInput),
             ].map(async (tradeEvents) => aggregateTrades(await tradeEvents)),
-          )
+          )) as [
+            ReturnType<typeof aggregateTrades>,
+            ReturnType<typeof aggregateTrades>,
+          ]
 
           const profits = calculateProfit(
             deposits,
@@ -259,9 +263,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
               (underlyingToken) => {
                 return {
                   ...underlyingToken,
-                  profitRaw: profits[underlyingToken.address],
+                  profitRaw: profits[underlyingToken.address]!,
                   profit: formatUnits(
-                    profits[underlyingToken.address],
+                    profits[underlyingToken.address]!,
                     underlyingToken.decimals,
                   ),
                   type: TokenType.Underlying,
