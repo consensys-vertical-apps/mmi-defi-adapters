@@ -276,6 +276,14 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     return []
   }
 
+  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+    return {} as ProtocolAprToken
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+    return {} as ProtocolApyToken
+  }
+
   private eventUtil({
     protocolToken,
     underlyingToken,
@@ -322,18 +330,6 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     )
   }
 
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
-    return {} as ProtocolAprToken
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
-    return {} as ProtocolApyToken
-  }
-
-  private stargateTokenContract(address: string) {
-    return StargateToken__factory.connect(address, this.provider)
-  }
-
   private fetchProtocolTokenMetadata(protocolTokenAddress: string) {
     const protocolTokenMetadata = this.metadata[protocolTokenAddress]
 
@@ -343,5 +339,9 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     }
 
     return protocolTokenMetadata
+  }
+
+  private stargateTokenContract(address: string) {
+    return StargateToken__factory.connect(address, this.provider)
   }
 }
