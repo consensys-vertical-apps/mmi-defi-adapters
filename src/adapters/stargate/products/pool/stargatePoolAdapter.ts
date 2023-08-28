@@ -6,7 +6,6 @@ import { AVERAGE_BLOCKS_PER_DAY } from '../../../../core/constants/AVERAGE_BLOCK
 import { Chain } from '../../../../core/constants/chains'
 import { Protocol } from '../../../../core/constants/protocols'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { getBalances } from '../../../../core/utils/getBalances'
 import { calculateProfit } from '../../../../core/utils/calculateProfit'
 import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import {
@@ -33,6 +32,7 @@ import { StargatePoolMetadata } from '../../buildMetadata'
 import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { getBalances } from '../../../../core/utils/multicall-balances'
 
 export class StargatePoolAdapter implements IProtocolAdapter {
   private metadata: StargatePoolMetadata
@@ -79,7 +79,6 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolToken[]> {
     const protocolTokensBalances = await getBalances({
-      chainId: this.chainId,
       provider: this.provider,
       userAddress,
       blockNumber,

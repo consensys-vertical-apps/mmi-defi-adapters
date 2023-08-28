@@ -1,4 +1,3 @@
-import { ethers } from 'ethers'
 import { Chain } from '../core/constants/chains'
 import { Protocol } from '../core/constants/protocols'
 import { ERC20 } from '../core/utils/getTokenMetadata'
@@ -16,12 +15,6 @@ export const PositionType = {
   Staked: 'stake',
 } as const
 export type PositionType = (typeof PositionType)[keyof typeof PositionType]
-
-export type GetBalancesInput = GetPositionsInput & {
-  provider: ethers.providers.StaticJsonRpcProvider
-  chainId: Chain
-  tokens: ERC20[]
-}
 
 export type GetPricesInput = {
   blockNumber?: number
