@@ -7,21 +7,66 @@ import {
   getPrices,
   getTodaysProfits,
   getTotalValueLocked,
+  getWithdrawals,
 } from '..'
+import { Protocol } from '../core/constants/protocols'
+import { Chain } from '../core/constants/chains'
 
 export function addFeatureCommands(program: Command) {
+  addressCommand(
+    program,
+    'positions',
+    getPositions,
+    '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
+  )
+  addressCommand(
+    program,
+    'profits',
+    getTodaysProfits,
+    '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
+  )
+
+  addressEventsCommand(
+    program,
+    'deposits',
+    getDeposits,
+    '0x2C5D4A0943e9cF4C597a76464396B0bF84C24C45',
+    17719334,
+    17719336,
+  )
+  addressEventsCommand(
+    program,
+    'withdrawals',
+    getWithdrawals,
+    '0x4Ffc5F22770ab6046c8D66DABAe3A9CD1E7A03e7',
+    17979753,
+    17979755,
+  )
+
+  protocolCommand(program, 'prices', getPrices)
+  protocolCommand(program, 'tvl', getTotalValueLocked)
+  protocolCommand(program, 'apr', getApr)
+  protocolCommand(program, 'apy', getApy)
+}
+
+function addressCommand(
+  program: Command,
+  commandName: string,
+  feature: (input: {
+    userAddress: string
+    filterProtocolId?: Protocol
+    filterChainId?: Chain
+  }) => Promise<unknown>,
+  defaultAddress: string,
+) {
   program
-    .command('positions')
-    .argument(
-      '[userAddress]',
-      'Address of the target account',
-      '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
-    )
+    .command(commandName)
+    .argument('[userAddress]', 'Address of the target account', defaultAddress)
     .option('-p, --protocol <protocolId>', 'protocol filter')
     .option('-c, --chain <chainId>', 'chain filter')
     .showHelpAfterError()
     .action(async (userAddress, { protocol, chain }) => {
-      const data = await getPositions({
+      const data = await feature({
         userAddress,
         filterProtocolId: protocol,
         filterChainId: chain,
@@ -29,41 +74,32 @@ export function addFeatureCommands(program: Command) {
 
       beautifyJsonOutput(data)
     })
+}
 
+function addressEventsCommand(
+  program: Command,
+  commandName: string,
+  feature: (input: {
+    userAddress: string
+    fromBlock: number
+    toBlock: number
+    filterProtocolId?: Protocol
+    filterChainId?: Chain
+  }) => Promise<unknown>,
+  defaultAddress: string,
+  defaultFromBlock: number,
+  defaultToBlock: number,
+) {
   program
-    .command('profits')
-    .argument(
-      '[userAddress]',
-      'Address of the target account',
-      '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
-    )
-    .option('-p, --protocol <protocolId>', 'protocol filter')
-    .option('-c, --chain <chainId>', 'chain filter')
-    .showHelpAfterError()
-    .action(async (userAddress, { protocol, chain }) => {
-      const data = await getTodaysProfits({
-        userAddress,
-        filterProtocolId: protocol,
-        filterChainId: chain,
-      })
-
-      beautifyJsonOutput(data)
-    })
-
-  program
-    .command('deposits')
-    .argument(
-      '[userAddress]',
-      'Address of the target account',
-      '0x2C5D4A0943e9cF4C597a76464396B0bF84C24C45',
-    )
-    .argument('[fromBlock]', 'From block', 17719334)
-    .argument('[toBlock]', 'To block', 17719336)
+    .command(commandName)
+    .argument('[userAddress]', 'Address of the target account', defaultAddress)
+    .argument('[fromBlock]', 'From block', defaultFromBlock)
+    .argument('[toBlock]', 'To block', defaultToBlock)
     .option('-p, --protocol <protocolId>', 'protocol filter')
     .option('-c, --chain <chainId>', 'chain filter')
     .showHelpAfterError()
     .action(async (userAddress, fromBlock, toBlock, { protocol, chain }) => {
-      const data = await getDeposits({
+      const data = await feature({
         userAddress,
         filterProtocolId: protocol,
         filterChainId: chain,
@@ -73,80 +109,23 @@ export function addFeatureCommands(program: Command) {
 
       beautifyJsonOutput(data)
     })
+}
 
+function protocolCommand(
+  program: Command,
+  commandName: string,
+  feature: (input: {
+    filterProtocolId?: Protocol
+    filterChainId?: Chain
+  }) => Promise<unknown>,
+) {
   program
-    .command('withdrawals')
-    .argument(
-      '[userAddress]',
-      'Address of the target account',
-      '0x4Ffc5F22770ab6046c8D66DABAe3A9CD1E7A03e7',
-    )
-    .argument('[fromBlock]', 'From block', 17979753)
-    .argument('[toBlock]', 'To block', 17979755)
-    .option('-p, --protocol <protocolId>', 'protocol filter')
-    .option('-c, --chain <chainId>', 'chain filter')
-    .showHelpAfterError()
-    .action(async (userAddress, fromBlock, toBlock, { protocol, chain }) => {
-      const data = await getDeposits({
-        userAddress,
-        filterProtocolId: protocol,
-        filterChainId: chain,
-        fromBlock,
-        toBlock,
-      })
-
-      beautifyJsonOutput(data)
-    })
-
-  program
-    .command('prices')
+    .command(commandName)
     .option('-p, --protocol <protocolId>', 'protocol filter')
     .option('-c, --chain <chainId>', 'chain filter')
     .showHelpAfterError()
     .action(async ({ protocol, chain }) => {
-      const data = await getPrices({
-        filterProtocolId: protocol,
-        filterChainId: chain,
-      })
-
-      beautifyJsonOutput(data)
-    })
-
-  program
-    .command('tvl')
-    .option('-p, --protocol <protocolId>', 'protocol filter')
-    .option('-c, --chain <chainId>', 'chain filter')
-    .showHelpAfterError()
-    .action(async ({ protocol, chain }) => {
-      const data = await getTotalValueLocked({
-        filterProtocolId: protocol,
-        filterChainId: chain,
-      })
-
-      beautifyJsonOutput(data)
-    })
-
-  program
-    .command('apy')
-    .option('-p, --protocol <protocolId>', 'protocol filter')
-    .option('-c, --chain <chainId>', 'chain filter')
-    .showHelpAfterError()
-    .action(async ({ protocol, chain }) => {
-      const data = await getApy({
-        filterProtocolId: protocol,
-        filterChainId: chain,
-      })
-
-      beautifyJsonOutput(data)
-    })
-
-  program
-    .command('apr')
-    .option('-p, --protocol <protocolId>', 'protocol filter')
-    .option('-c, --chain <chainId>', 'chain filter')
-    .showHelpAfterError()
-    .action(async ({ protocol, chain }) => {
-      const data = await getApr({
+      const data = await feature({
         filterProtocolId: protocol,
         filterChainId: chain,
       })
