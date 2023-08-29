@@ -9,8 +9,8 @@ import {
   getTotalValueLocked,
   getWithdrawals,
 } from '..'
-import { Protocol } from '../core/constants/protocols'
 import { Chain } from '../core/constants/chains'
+import { Protocol } from '../adapters'
 
 export function addFeatureCommands(program: Command) {
   addressCommand(

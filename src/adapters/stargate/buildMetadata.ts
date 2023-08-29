@@ -7,11 +7,11 @@ import {
   StargateVotingEscrow__factory,
 } from '../../contracts'
 import { Chain, ChainNames } from '../../core/constants/chains'
-import { Protocol } from '../../core/constants/protocols'
 import { chainProviders } from '../../core/utils/chainProviders'
 import { ERC20, getTokenMetadata } from '../../core/utils/getTokenMetadata'
 import { Json } from '../../types/json'
 import { logger } from '../../core/utils/logger'
+import { Protocol } from '..'
 
 export type StargatePoolMetadata = Record<
   string,

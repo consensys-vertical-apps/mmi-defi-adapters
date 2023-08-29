@@ -2,7 +2,6 @@ import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
 import { StargateVotingEscrow__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
-import { Protocol } from '../../../../core/constants/protocols'
 import {
   IProtocolAdapter,
   ProtocolDetails,
@@ -22,6 +21,7 @@ import {
 } from '../../../../types/adapter'
 import { StargateVestingMetadata } from '../../buildMetadata'
 import { ERC20 } from '../../../../core/utils/getTokenMetadata'
+import { Protocol } from '../../..'
 
 export class StargateVestingAdapter implements IProtocolAdapter {
   private metadata: StargateVestingMetadata

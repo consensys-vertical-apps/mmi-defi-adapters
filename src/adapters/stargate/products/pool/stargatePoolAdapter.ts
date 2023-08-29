@@ -4,7 +4,6 @@ import { StargateToken__factory } from '../../../../contracts'
 import { TransferEvent } from '../../../../contracts/Erc20'
 import { AVERAGE_BLOCKS_PER_DAY } from '../../../../core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain } from '../../../../core/constants/chains'
-import { Protocol } from '../../../../core/constants/protocols'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { getBalances } from '../../../../core/utils/getBalances'
 import { calculateProfit } from '../../../../core/utils/calculateProfit'
@@ -33,6 +32,7 @@ import { StargatePoolMetadata } from '../../buildMetadata'
 import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { Protocol } from '../../..'
 
 export class StargatePoolAdapter implements IProtocolAdapter {
   private metadata: StargatePoolMetadata
