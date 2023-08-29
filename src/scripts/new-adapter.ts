@@ -31,14 +31,26 @@ export function addNewAdapterCommand(program: Command) {
         fs.mkdirSync(productPath)
       }
 
-      newAdapterTemplate(productPath, productName)
+      const adapterFilePath = newAdapterTemplate(productPath, productName)
+
+      exportAdapter(adapterFilePath)
     })
 }
 
-function newAdapterTemplate(productPath: string, productName: string) {
+function newAdapterTemplate(productPath: string, productName: string): string {
   const productNameCamelCase = camelCase(productName)
-  fs.writeFileSync(
-    path.resolve(productPath, `${productNameCamelCase}Adapter.ts`),
-    adapterTemplate(productNameCamelCase),
+
+  const adapterFilePath = path.resolve(
+    productPath,
+    `${productNameCamelCase}Adapter.ts`,
   )
+
+  fs.writeFileSync(adapterFilePath, adapterTemplate(productNameCamelCase))
+
+  return adapterFilePath
+}
+
+function exportAdapter(_adapterFilePath: string) {
+  // TODO Add new adapter to list in src/adapters/index.ts
+  // Try recast
 }
