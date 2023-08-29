@@ -1,4 +1,4 @@
-export function adapterTemplate(protocolName: string) {
+export function adapterTemplate(protocolName: string, productName: string) {
   return `import { Chain } from '../../../../core/constants/chains'
 import {
   GetEventsInput,
@@ -25,7 +25,7 @@ import { Json } from '../../../../types/json'
 import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 import { Protocol } from '../../..'
 
-export class ${protocolName}Adapter implements IProtocolAdapter {
+export class ${productName}Adapter implements IProtocolAdapter {
   private metadata: Json
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain
@@ -46,9 +46,9 @@ export class ${protocolName}Adapter implements IProtocolAdapter {
 
   getProtocolDetails(): ProtocolDetails {
     return {
-      protocolId: Protocol.Example,
-      name: 'Example',
-      description: 'Example defi adapter',
+      protocolId: Protocol.${protocolName},
+      name: '${protocolName}',
+      description: '${protocolName} defi adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
       positionType: PositionType.Supply,

@@ -24,7 +24,7 @@ import { Json } from '../../../../types/json'
 import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 import { Protocol } from '../../..'
 
-export class ExampleAdapter implements IProtocolAdapter {
+export class ExampleProductAdapter implements IProtocolAdapter {
   private metadata: Json
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain

@@ -3,7 +3,7 @@ import { Chain } from '../core/constants/chains'
 import { IProtocolAdapter } from '../types/adapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
-import { ExampleAdapter } from './example/products/exampleProduct/exampleAdapter'
+import { ExampleProductAdapter } from './example/products/example-product/exampleProductAdapter'
 import ETHEREUM_VESTING_METADATA from './stargate/products/vesting/ethereum/metadata.json'
 import ETHEREUM_POOL_METADATA from './stargate/products/pool/ethereum/metadata.json'
 import ARBITRUM_POOL_METADATA from './stargate/products/pool/arbitrum/metadata.json'
@@ -52,7 +52,7 @@ export const supportedProtocols: Record<
   [Protocol.Example]: {
     [Chain.Ethereum]: [
       (provider) =>
-        new ExampleAdapter({
+        new ExampleProductAdapter({
           metadata: {},
           chainId: Chain.Ethereum,
           provider,
