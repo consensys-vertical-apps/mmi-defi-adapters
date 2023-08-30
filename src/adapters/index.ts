@@ -55,7 +55,7 @@ export const supportedProtocols: Record<
         new ExampleProductAdapter({
           metadata: {},
           chainId: Chain.Ethereum,
-          provider,
+          provider: provider,
         }),
     ],
   },
