@@ -97,12 +97,12 @@ function exportAdapter(_adapterFilePath: string) {
 
         if (protocolName === 'Example') {
           const protocolChainEntries = properties.value as n.ObjectExpression
-          console.log(protocolChainEntries)
-          console.log('BEGIN LEVEL 1')
-          const chainNode = protocolChainEntries
-            .properties[0] as n.ObjectProperty
-          console.log(chainNode)
-          console.log('END LEVEL 1')
+          // console.log(protocolChainEntries)
+          // console.log('BEGIN LEVEL 1')
+          // const chainNode = protocolChainEntries
+          //   .properties[0] as n.ObjectProperty
+          // console.log(chainNode)
+          // console.log('END LEVEL 1')
           // console.log('BEGIN LEVEL 2 (ARRAY)')
           // const arrayNode = chainNode.value as n.ArrayExpression
           // console.log(arrayNode)
@@ -129,7 +129,7 @@ function exportAdapter(_adapterFilePath: string) {
           //   adapterArgumentsNode3,
           // )
           // console.log('END LEVEL 5 (Adapeter argument nodes)')
-          const newEntry = newChainEntry()
+          const newEntry = newChainEntry('Ethereum', 'ExampleProduct')
           protocolChainEntries.properties = [
             ...protocolChainEntries.properties,
             newEntry,
@@ -147,28 +147,25 @@ function exportAdapter(_adapterFilePath: string) {
   //console.log('XXXXXXXXXX', ast.program.body.at(-1))
 }
 
-function newChainEntry() {
-  const key = b.memberExpression(
-    b.identifier('Chain'),
-    b.identifier('Ethereum'),
-  )
-  const value = b.arrayExpression([newFactoryEntry()])
+function newChainEntry(chainName: string, productName: string) {
+  const key = b.memberExpression(b.identifier('Chain'), b.identifier(chainName))
+  const value = b.arrayExpression([newFactoryEntry(chainName, productName)])
 
-  const temp = b.objectProperty(key, value)
-  temp.computed = true
-  console.log('AAAAAAAAA', temp)
-  return temp
+  const newEntry = b.objectProperty(key, value)
+  newEntry.computed = true
+
+  return newEntry
 }
 
-function newFactoryEntry() {
+function newFactoryEntry(chainName: string, productName: string) {
   return b.arrowFunctionExpression(
     [b.identifier('provider')],
-    b.newExpression(b.identifier('ExampleProductAdapter'), [
+    b.newExpression(b.identifier(`${productName}Adapter`), [
       b.objectExpression([
         b.objectProperty(b.identifier('metadata'), b.objectExpression([])),
         b.objectProperty(
           b.identifier('chainId'),
-          b.memberExpression(b.identifier('Chain'), b.identifier('Ethereum')),
+          b.memberExpression(b.identifier('Chain'), b.identifier(chainName)),
         ),
         b.objectProperty(b.identifier('provider'), b.identifier('provider')),
       ]),
