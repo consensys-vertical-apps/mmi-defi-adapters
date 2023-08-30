@@ -1,8 +1,11 @@
 import { Command } from 'commander'
 import * as fs from 'fs'
 import * as path from 'path'
-import { camelCase, startCase } from 'lodash'
+import * as recast from 'recast'
+import { camelCase, forEach, startCase } from 'lodash'
 import { adapterTemplate } from './templates/adapter'
+
+import n = recast.types.namedTypes
 
 export function addNewAdapterCommand(program: Command) {
   program
@@ -68,5 +71,31 @@ function newAdapterTemplate(
 
 function exportAdapter(_adapterFilePath: string) {
   // TODO Add new adapter to list in src/adapters/index.ts
-  // Try recast
+  const contents = fs.readFileSync('./src/adapters/index.ts', 'utf-8')
+  const ast = recast.parse(contents, {
+    parser: require('recast/parsers/typescript'),
+  })
+
+  recast.visit(ast, {
+    visitVariableDeclarator(path) {
+      const node = path.node
+      if ((node.id as n.Identifier).name !== 'supportedProtocols') {
+        return false
+      }
+
+      console.log((node.id as n.Identifier).name)
+
+      for (const temp of (node.init as n.ObjectExpression).properties) {
+        const protocolName = (
+          ((temp as n.ObjectProperty).key as n.MemberExpression)
+            .property as n.Identifier
+        ).name
+        console.log(protocolName)
+      }
+
+      this.traverse(path)
+    },
+  })
+
+  //console.log('XXXXXXXXXX', ast.program.body.at(-1))
 }
