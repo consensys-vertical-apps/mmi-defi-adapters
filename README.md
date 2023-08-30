@@ -44,6 +44,23 @@ npm run build:watch
 ```
 
 # Running the app
+## CLI help
+Specific details on what commands are available can be shown running:
+```
+npm run adapters-cli
+```
+For getting the arguments and options for specific commands:
+```
+npm run positions -- --help
+```
+
+## Filtering
+It is possible to get results for specific protocols and chains for every command by adding `--chain <chainId>` and/or `--protocol <protocolName>`
+
+For example:
+```
+npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocol stargate --chain 1
+```
 
 ## Get positions
 
@@ -67,6 +84,30 @@ npm run prices
 
 ```
 npm run tvl
+```
+
+## Get APR
+
+```
+npm run apr
+```
+
+## Get APY
+
+```
+npm run apy
+```
+
+## Get deposits
+
+```
+npm run deposits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336
+```
+
+## Get withdrawals
+
+```
+npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336
 ```
 
 # Support for a new protocol

@@ -7,7 +7,7 @@ import {
   StargateVotingEscrow__factory,
 } from '../../contracts'
 import { Chain, ChainNames } from '../../core/constants/chains'
-import { Protocol } from '../../core/constants/protocols'
+import { Protocol } from '..'
 import { chainProviders } from '../../core/utils/chainProviders'
 import { ERC20, getTokenMetadata } from '../../core/utils/getTokenMetadata'
 import { Json } from '../../types/json'
