@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
+import { Protocol } from '../adapters'
 import { Chain } from '../core/constants/chains'
-import { Protocol } from '../core/constants/protocols'
 import { ERC20 } from '../core/utils/getTokenMetadata'
 
 export const TokenType = {

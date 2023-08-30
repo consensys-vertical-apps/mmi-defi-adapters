@@ -1,9 +1,8 @@
 import 'dotenv/config'
 
 import { ethers } from 'ethers'
-import { supportedProtocols } from './adapters'
+import { Protocol, supportedProtocols } from './adapters'
 import { Chain } from './core/constants/chains'
-import { Protocol } from './core/constants/protocols'
 import { chainProviders } from './core/utils/chainProviders'
 import { fulfilledPromises } from './core/utils/filters'
 import { logger } from './core/utils/logger'

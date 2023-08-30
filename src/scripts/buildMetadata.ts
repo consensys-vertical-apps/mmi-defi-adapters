@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import { protocolMetadataBuilders } from '../adapters/metadataBuilders'
-import { Protocol } from '../core/constants/protocols'
+import { Protocol } from '../adapters'
 
 const buildMetadata = async ({ protocolId }: { protocolId?: Protocol }) => {
   const metadataBuilders = Object.entries(protocolMetadataBuilders)

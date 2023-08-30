@@ -1,5 +1,5 @@
 import { Chain } from '../core/constants/chains'
-import { Protocol } from '../core/constants/protocols'
+import { Protocol } from '.'
 import { buildMetadata } from './stargate/buildMetadata'
 
 export type ProtocolMetadataBuilders = {

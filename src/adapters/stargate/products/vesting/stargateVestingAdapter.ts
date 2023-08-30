@@ -2,7 +2,7 @@ import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
 import { StargateVotingEscrow__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
-import { Protocol } from '../../../../core/constants/protocols'
+import { Protocol } from '../../..'
 import {
   IProtocolAdapter,
   ProtocolDetails,
