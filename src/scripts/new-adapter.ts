@@ -13,8 +13,8 @@ import { writeCodeFile } from './writeCodeFile'
 export function addNewAdapterCommand(program: Command) {
   program
     .command('new-adapter')
-    .argument('<protocol>', 'Protocol id')
-    .argument('<product>', 'Product name')
+    .argument('<protocol>', 'Protocol name')
+    .argument('<product>', 'Product name (kebab-case)')
     .argument(
       '[chains]',
       'Chain separated by commas (e.g. Ethereum,Arbitrum,Optimism)',

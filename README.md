@@ -146,7 +146,19 @@ mmi-defi-adapters/
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Adding a New Protocol
+## Adding a new Adapter (CLI)
+
+Run the following command to add a new adapter
+```
+npm run new-adapter <Example> <example-product> [Chains]
+```
+
+Where:
+- `<Example>` is the name of your protocol as you'd like it to appear.
+- `<example-product>` is the name of the product for the adapter in kebab-case
+- `[Chains]` is an optional argument with a comma separated list of supported chains (e.g. `Ethereum,Arbitrum,Optimism`). Default: `Ethereum`
+
+## Adding a New Protocol (manual)
 
 To integrate a new protocol:
 
@@ -155,14 +167,14 @@ To integrate a new protocol:
    - Add to `supportedProtocols` object.
 2. Create a new folder in `src/adapters`, named in kebab-case, e.g., `src/${protocolName}/products/${productName}/productAdapter.ts`.
 
-## Adding an Adapter
+## Adding an Adapter (manual)
 
 After adding your protocol:
 
 1. Generate metadata: e.g., `src/adapters/stargate/products/pool/arbitrum/metadata.json` using `src/adapters/stargate/buildMetadata.ts`.
 2. Add metadata script to `protocolMetadataBuilders` object in `src/adapters/metadataBuilders.ts` and test `npm run metadata`
 3. Create product folder: `src/${protocolName}/products/${productName}`.
-4. Copy and paste the example adapter from `src/adapters/example/products/exampleProduct/exampleAdapter.ts` to your product folder.
+4. Copy and paste the example adapter from `src/adapters/example/products/example-product/exampleProductAdapter.ts` to your product folder.
 5. Replace hardcoded responses with your adapter code.
 6. Add your adapter to `supportedProtocols` in `src/adapters/index.ts`.
 7. Test your adapter (change userAddress accordingly):
