@@ -10,7 +10,7 @@ import n = types.namedTypes
 import b = types.builders
 import { writeCodeFile } from './writeCodeFile'
 
-export function addNewAdapterCommand(program: Command) {
+export function newAdapterCommand(program: Command) {
   program
     .command('new-adapter')
     .argument('<protocol>', 'Protocol name')

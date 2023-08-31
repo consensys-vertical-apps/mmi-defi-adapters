@@ -2,12 +2,12 @@
 
 import { Command } from 'commander'
 import { featureCommands } from './featureCommands'
-import { addNewAdapterCommand } from './new-adapter'
+import { newAdapterCommand } from './newAdapterCommand'
 
 const program = new Command('mmi-adapters')
 
 featureCommands(program)
 
-addNewAdapterCommand(program)
+newAdapterCommand(program)
 
 program.parseAsync()
