@@ -8,53 +8,49 @@ import { partition } from 'lodash'
 
 import n = types.namedTypes
 import b = types.builders
+import { writeCodeFile } from './writeCodeFile'
 
 export function addNewAdapterCommand(program: Command) {
   program
     .command('new-adapter')
-    .argument('<protocol>', 'Protocol id (kebab-case)')
-    .argument('<product>', 'Product name (kebab-case)')
+    .argument('<protocol>', 'Protocol id')
+    .argument('<product>', 'Product name')
+    .argument(
+      '[chains]',
+      'Chain separated by commas (e.g. Ethereum,Arbitrum,Optimism)',
+      'Ethereum',
+    )
     .showHelpAfterError()
-    .action(async (protocol: string, product: string) => {
-      console.log('Add new adapter for protocol', protocol, product)
-
-      const protocolProductsPath = path.resolve(
-        `./src/adapters/${protocol}/products`,
-      )
-
-      if (!fs.existsSync(protocolProductsPath)) {
-        // TODO Call method to create a protocol folder
-        console.error(`Protocol folder does not exist: ${protocolProductsPath}`)
-        return
-      }
-
-      const productPath = path.resolve(protocolProductsPath, product)
-
-      if (!fs.existsSync(productPath)) {
-        console.log(`create folder ${productPath}`)
-        fs.mkdirSync(productPath)
-      }
-
-      newAdapterTemplate(protocol, product, productPath)
-
-      exportAdapter(protocol, product, ['Ethereum'])
+    .action(async (protocol: string, product: string, chains: string) => {
+      newAdapterTemplate(protocol, product)
+      exportAdapter(protocol, product, chains.split(','))
     })
 }
 
-function newAdapterTemplate(
-  protocol: string,
-  product: string,
-  productPath: string,
-) {
+function newAdapterTemplate(protocol: string, product: string) {
+  const protocolProductsPath = path.resolve(
+    `./src/adapters/${kebabCase(protocol)}/products`,
+  )
+
+  if (!fs.existsSync(protocolProductsPath)) {
+    // TODO Call method to create a protocol folder
+    console.error(`Protocol folder does not exist: ${protocolProductsPath}`)
+    return
+  }
+
+  const productPath = path.resolve(protocolProductsPath, kebabCase(product))
+
+  if (!fs.existsSync(productPath)) {
+    console.log(`create folder ${productPath}`)
+    fs.mkdirSync(productPath)
+  }
+
   const adapterFilePath = path.resolve(
     productPath,
     `${camelCase(product)}Adapter.ts`,
   )
 
-  fs.writeFileSync(
-    adapterFilePath,
-    adapterTemplate(pascalCase(protocol), pascalCase(product)),
-  )
+  writeCodeFile(adapterFilePath, adapterTemplate(protocol, product))
 }
 
 function exportAdapter(protocol: string, product: string, chains: string[]) {
@@ -73,12 +69,7 @@ function exportAdapter(protocol: string, product: string, chains: string[]) {
         (node) => n.ImportDeclaration.check(node),
       )
 
-      const newImportEntry = buildImportEntry(
-        pascalCase(product),
-        `./${kebabCase(protocol)}/products/${kebabCase(product)}/${camelCase(
-          product,
-        )}Adapter`,
-      )
+      const newImportEntry = buildImportEntry(protocol, product)
 
       programNode.body = [...importNodes, newImportEntry, ...codeAfterImports]
 
@@ -116,13 +107,8 @@ function exportAdapter(protocol: string, product: string, chains: string[]) {
       }
 
       const newEntries = chains.map((chain) => {
-        const newAdapterEntry = buildAdapterEntry(
-          pascalCase(chain),
-          pascalCase(product),
-        )
-        const newChainEntry = buildChainEntry(pascalCase(chain), [
-          newAdapterEntry,
-        ])
+        const newAdapterEntry = buildAdapterEntry(chain, product)
+        const newChainEntry = buildChainEntry(chain, [newAdapterEntry])
 
         return newChainEntry
       })
@@ -137,13 +123,20 @@ function exportAdapter(protocol: string, product: string, chains: string[]) {
   })
 
   const content = print(ast).code
-  fs.writeFileSync('./src/adapters/index.ts', content, 'utf-8')
+  writeCodeFile('./src/adapters/index.ts', content)
 }
 
-function buildImportEntry(product: string, adapterFilePath: string) {
+/*
+import { <Product>Adapter } from './<protocol>/products/<product>/<product>Adapter'
+*/
+function buildImportEntry(protocol: string, product: string) {
   return b.importDeclaration(
-    [b.importSpecifier(b.identifier(`${product}Adapter`))],
-    b.literal(adapterFilePath),
+    [b.importSpecifier(b.identifier(`${pascalCase(product)}Adapter`))],
+    b.literal(
+      `./${kebabCase(protocol)}/products/${kebabCase(product)}/${camelCase(
+        product,
+      )}Adapter`,
+    ),
   )
 }
 
@@ -170,7 +163,10 @@ function buildChainEntry(
   chain: string,
   adapterEntries: n.ArrowFunctionExpression[],
 ) {
-  const key = b.memberExpression(b.identifier('Chain'), b.identifier(chain))
+  const key = b.memberExpression(
+    b.identifier('Chain'),
+    b.identifier(pascalCase(chain)),
+  )
   const value = b.arrayExpression(adapterEntries)
 
   const newEntry = b.objectProperty(key, value)
@@ -191,12 +187,15 @@ function buildChainEntry(
 */
 function buildAdapterEntry(chain: string, product: string) {
   const params = [b.identifier('provider')]
-  const body = b.newExpression(b.identifier(`${product}Adapter`), [
+  const body = b.newExpression(b.identifier(`${pascalCase(product)}Adapter`), [
     b.objectExpression([
       b.objectProperty(b.identifier('metadata'), b.objectExpression([])),
       b.objectProperty(
         b.identifier('chainId'),
-        b.memberExpression(b.identifier('Chain'), b.identifier(chain)),
+        b.memberExpression(
+          b.identifier('Chain'),
+          b.identifier(pascalCase(chain)),
+        ),
       ),
       b.objectProperty(b.identifier('provider'), b.identifier('provider')),
     ]),

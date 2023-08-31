@@ -1,5 +1,8 @@
+import { pascalCase } from '../../core/utils/caseConversion'
+
 export function adapterTemplate(protocolName: string, productName: string) {
-  return `import { Chain } from '../../../../core/constants/chains'
+  return `
+import { Chain } from '../../../../core/constants/chains'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -25,7 +28,7 @@ import { Json } from '../../../../types/json'
 import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 import { Protocol } from '../../..'
 
-export class ${productName}Adapter implements IProtocolAdapter {
+export class ${pascalCase(productName)}Adapter implements IProtocolAdapter {
   private metadata: Json
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain
@@ -46,7 +49,7 @@ export class ${productName}Adapter implements IProtocolAdapter {
 
   getProtocolDetails(): ProtocolDetails {
     return {
-      protocolId: Protocol.${protocolName},
+      protocolId: Protocol.${pascalCase(protocolName)},
       name: '${protocolName}',
       description: '${protocolName} defi adapter',
       siteUrl: 'https:',
