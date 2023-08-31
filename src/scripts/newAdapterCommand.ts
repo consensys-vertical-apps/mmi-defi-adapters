@@ -1,14 +1,16 @@
 import { Command } from 'commander'
 import { promises as fs } from 'fs'
+import { partition } from 'lodash'
 import * as path from 'path'
 import { parse, visit, types, print } from 'recast'
-import { adapterTemplate } from './templates/adapter'
+import { Chain } from '../core/constants/chains'
 import { camelCase, kebabCase, pascalCase } from '../core/utils/caseConversion'
-import { partition } from 'lodash'
+import { filterMap } from '../core/utils/filters'
+import { adapterTemplate } from './templates/adapter'
+import { writeCodeFile } from './writeCodeFile'
 
 import n = types.namedTypes
 import b = types.builders
-import { writeCodeFile } from './writeCodeFile'
 
 export function newAdapterCommand(program: Command) {
   program
@@ -21,10 +23,21 @@ export function newAdapterCommand(program: Command) {
       'Ethereum',
     )
     .showHelpAfterError()
-    .action(async (protocol: string, product: string, chains: string) => {
-      // TODO: Validate that chains exist
+    .action(async (protocol: string, product: string, chainsInput: string) => {
+      const chains = filterMap(chainsInput.split(','), (chainInput) => {
+        const chain = Object.keys(Chain).find((chainKey) => {
+          return chainKey.toLowerCase() === chainInput.toLowerCase()
+        })
+
+        if (!chain) {
+          console.warn(`Cannot find corresponding chain for ${chainInput}`)
+        }
+
+        return chain
+      }) as (keyof typeof Chain)[]
+
       await buildAdapterFromTemplate(protocol, product)
-      await exportAdapter(protocol, product, chains.split(','))
+      await exportAdapter(protocol, product, chains)
     })
 }
 
@@ -69,7 +82,7 @@ async function buildAdapterFromTemplate(protocol: string, product: string) {
 async function exportAdapter(
   protocol: string,
   product: string,
-  chains: string[],
+  chains: (keyof typeof Chain)[],
 ) {
   const adaptersFile = path.resolve('./src/adapters/index.ts')
   const contents = await fs.readFile(adaptersFile, 'utf-8')
@@ -171,7 +184,7 @@ function addAdapterEntries(
   supportedProtocolsDeclaratorNode: n.VariableDeclarator,
   protocol: string,
   product: string,
-  chains: string[],
+  chains: (keyof typeof Chain)[],
 ) {
   const supportedProtocolsObjectNode = supportedProtocolsDeclaratorNode.init
   if (!n.ObjectExpression.check(supportedProtocolsObjectNode)) {
@@ -296,23 +309,30 @@ function buildChainEntry(chain: string) {
   new <ProductName>Adapter({
     metadata: {},
     chainId: Chain.<ChainName>,
-    provider: provider,
+    provider,
   }),
 */
 function buildAdapterEntry(chain: string, product: string) {
   const params = [b.identifier('provider')]
+
+  const metadataProperty = b.objectProperty(
+    b.identifier('metadata'),
+    b.objectExpression([]),
+  )
+
+  const chainIdProperty = b.objectProperty(
+    b.identifier('chainId'),
+    b.memberExpression(b.identifier('Chain'), b.identifier(pascalCase(chain))),
+  )
+
+  const providerProperty = b.objectProperty(
+    b.identifier('provider'),
+    b.identifier('provider'),
+  )
+  providerProperty.shorthand = true
+
   const body = b.newExpression(b.identifier(`${pascalCase(product)}Adapter`), [
-    b.objectExpression([
-      b.objectProperty(b.identifier('metadata'), b.objectExpression([])),
-      b.objectProperty(
-        b.identifier('chainId'),
-        b.memberExpression(
-          b.identifier('Chain'),
-          b.identifier(pascalCase(chain)),
-        ),
-      ),
-      b.objectProperty(b.identifier('provider'), b.identifier('provider')),
-    ]),
+    b.objectExpression([metadataProperty, chainIdProperty, providerProperty]),
   ])
 
   return b.arrowFunctionExpression(params, body)
