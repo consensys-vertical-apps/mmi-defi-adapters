@@ -1,5 +1,5 @@
 import { Command } from 'commander'
-import * as fs from 'fs'
+import { promises as fs } from 'fs'
 import * as path from 'path'
 import { parse, visit, types, print } from 'recast'
 import { adapterTemplate } from './templates/adapter'
@@ -22,40 +22,44 @@ export function addNewAdapterCommand(program: Command) {
     )
     .showHelpAfterError()
     .action(async (protocol: string, product: string, chains: string) => {
-      newAdapterTemplate(protocol, product)
-      exportAdapter(protocol, product, chains.split(','))
+      // TODO: Validate that chains exist
+      await buildAdapterFromTemplate(protocol, product)
+      await exportAdapter(protocol, product, chains.split(','))
     })
 }
 
-function newAdapterTemplate(protocol: string, product: string) {
-  const protocolProductsPath = path.resolve(
-    `./src/adapters/${kebabCase(protocol)}/products`,
+async function buildAdapterFromTemplate(protocol: string, product: string) {
+  const productPath = path.resolve(
+    `./src/adapters/${kebabCase(protocol)}/products/${kebabCase(product)}`,
   )
 
-  if (!fs.existsSync(protocolProductsPath)) {
-    // TODO Call method to create a protocol folder
-    console.error(`Protocol folder does not exist: ${protocolProductsPath}`)
-    return
-  }
-
-  const productPath = path.resolve(protocolProductsPath, kebabCase(product))
-
-  if (!fs.existsSync(productPath)) {
-    console.log(`create folder ${productPath}`)
-    fs.mkdirSync(productPath)
-  }
+  await fs.mkdir(productPath, { recursive: true })
 
   const adapterFilePath = path.resolve(
     productPath,
     `${camelCase(product)}Adapter.ts`,
   )
 
+  const fileExists = await fs
+    .access(adapterFilePath, fs.constants.F_OK)
+    .then(() => true)
+    .catch(() => false)
+
+  if (fileExists) {
+    // TODO Find or ask for a new name instead of throwing
+    throw new Error('An adapter for that product already exists')
+  }
+
   writeCodeFile(adapterFilePath, adapterTemplate(protocol, product))
 }
 
-function exportAdapter(protocol: string, product: string, chains: string[]) {
-  // TODO Add new adapter to list in src/adapters/index.ts
-  const contents = fs.readFileSync('./src/adapters/index.ts', 'utf-8')
+async function exportAdapter(
+  protocol: string,
+  product: string,
+  chains: string[],
+) {
+  const adaptersFile = path.resolve('./src/adapters/index.ts')
+  const contents = await fs.readFile(adaptersFile, 'utf-8')
   const ast = parse(contents, {
     parser: require('recast/parsers/typescript'),
   })
@@ -76,58 +80,117 @@ function exportAdapter(protocol: string, product: string, chains: string[]) {
       this.traverse(path)
     },
     visitVariableDeclarator(path) {
-      const supportedProtocolsDeclarationNode = path.node
-      if (
-        !n.Identifier.check(supportedProtocolsDeclarationNode.id) ||
-        supportedProtocolsDeclarationNode.id.name !== 'supportedProtocols' ||
-        !n.ObjectExpression.assert(supportedProtocolsDeclarationNode.init)
-      ) {
+      const node = path.node
+      if (!n.Identifier.check(node.id)) {
         return false
       }
 
-      const supportedProtocolsObjectNode =
-        supportedProtocolsDeclarationNode.init
-
-      const protocolObjectPropertyNode =
-        (supportedProtocolsObjectNode.properties.find((property) => {
-          if (
-            !n.ObjectProperty.check(property) ||
-            !n.MemberExpression.check(property.key) ||
-            !n.Identifier.check(property.key.property)
-          ) {
-            throw new Error('Incorrectly typed supportedProtocols object')
-          }
-
-          return property.key.property.name === pascalCase(protocol)
-        }) as n.ObjectProperty) ?? buildProtocolEntry(protocol)
-
-      const protocolChainEntries = protocolObjectPropertyNode.value
-      if (!n.ObjectExpression.check(protocolChainEntries)) {
-        throw new Error('Incorrectly typed supportedProtocols object')
+      if (node.id.name === 'supportedProtocols') {
+        addAdapterEntries(node, protocol, product, chains)
+      } else if (node.id.name === 'Protocol') {
+        addProtocol(node, protocol)
       }
-
-      const newEntries = chains.map((chain) => {
-        const newAdapterEntry = buildAdapterEntry(chain, product)
-        const newChainEntry = buildChainEntry(chain, [newAdapterEntry])
-
-        return newChainEntry
-      })
-
-      protocolChainEntries.properties = [
-        ...protocolChainEntries.properties,
-        ...newEntries,
-      ]
 
       this.traverse(path)
     },
   })
 
-  const content = print(ast).code
-  writeCodeFile('./src/adapters/index.ts', content)
+  await writeCodeFile(adaptersFile, print(ast).code)
+}
+
+function addProtocol(
+  protocolListDeclaratorNode: n.VariableDeclarator,
+  protocol: string,
+) {
+  const protocolListObjectNode = protocolListDeclaratorNode.init
+  if (
+    !n.TSAsExpression.check(protocolListObjectNode) ||
+    !n.ObjectExpression.check(protocolListObjectNode.expression)
+  ) {
+    throw new Error('Incorrectly typed Protocol object')
+  }
+
+  const protocolEntryObjectNode =
+    protocolListObjectNode.expression.properties.find((property) => {
+      if (
+        !n.ObjectProperty.check(property) ||
+        !n.Identifier.check(property.key)
+      ) {
+        throw new Error('Incorrectly typed Protocol object')
+      }
+
+      return property.key.name === pascalCase(protocol)
+    })
+
+  if (!protocolEntryObjectNode) {
+    protocolListObjectNode.expression.properties.push(
+      buildProtocolEntry(protocol),
+    )
+  }
+}
+
+function addAdapterEntries(
+  supportedProtocolsDeclaratorNode: n.VariableDeclarator,
+  protocol: string,
+  product: string,
+  chains: string[],
+) {
+  const supportedProtocolsObjectNode = supportedProtocolsDeclaratorNode.init
+  if (!n.ObjectExpression.check(supportedProtocolsObjectNode)) {
+    throw new Error('Incorrectly typed supportedProtocols object')
+  }
+
+  let protocolChainsObjectPropertyNode =
+    supportedProtocolsObjectNode.properties.find((property) => {
+      if (
+        !n.ObjectProperty.check(property) ||
+        !n.MemberExpression.check(property.key) ||
+        !n.Identifier.check(property.key.property)
+      ) {
+        throw new Error('Incorrectly typed supportedProtocols object')
+      }
+
+      return property.key.property.name === pascalCase(protocol)
+    }) as n.ObjectProperty
+
+  if (!protocolChainsObjectPropertyNode) {
+    protocolChainsObjectPropertyNode = buildSupportedProtocolEntry(protocol)
+
+    supportedProtocolsObjectNode.properties.push(
+      protocolChainsObjectPropertyNode,
+    )
+  }
+
+  const protocolChainEntries = protocolChainsObjectPropertyNode.value
+  if (!n.ObjectExpression.check(protocolChainEntries)) {
+    throw new Error('Incorrectly typed supportedProtocols object')
+  }
+
+  const newEntries = chains.map((chain) => {
+    const newAdapterEntry = buildAdapterEntry(chain, product)
+    const newChainEntry = buildChainEntry(chain, [newAdapterEntry])
+
+    return newChainEntry
+  })
+
+  protocolChainEntries.properties = [
+    ...protocolChainEntries.properties,
+    ...newEntries,
+  ]
 }
 
 /*
-import { <Product>Adapter } from './<protocol>/products/<product>/<product>Adapter'
+<ProtocolName>: 'protocol-name'
+*/
+function buildProtocolEntry(protocol: string) {
+  const key = b.identifier(pascalCase(protocol))
+  const value = b.stringLiteral(kebabCase(protocol))
+
+  return b.objectProperty(key, value)
+}
+
+/*
+import { <ProductName>Adapter } from './<protocol-name>/products/<product-name>/<productName>Adapter'
 */
 function buildImportEntry(protocol: string, product: string) {
   return b.importDeclaration(
@@ -141,9 +204,9 @@ function buildImportEntry(protocol: string, product: string) {
 }
 
 /*
-[Protocol.<Protocol>]: {}
+[Protocol.<ProtocolName>]: {}
 */
-function buildProtocolEntry(protocol: string) {
+function buildSupportedProtocolEntry(protocol: string) {
   const key = b.memberExpression(
     b.identifier('Protocol'),
     b.identifier(pascalCase(protocol)),
@@ -157,7 +220,7 @@ function buildProtocolEntry(protocol: string) {
 }
 
 /*
-[Chain.<Chain>]: [...adapterEntries],
+[Chain.<ChainName>]: [...adapterEntries],
 */
 function buildChainEntry(
   chain: string,
@@ -181,7 +244,7 @@ function buildChainEntry(
 (provider) =>
   new <ProductName>Adapter({
     metadata: {},
-    chainId: Chain.<Chain>,
+    chainId: Chain.<ChainName>,
     provider: provider,
   }),
 */
