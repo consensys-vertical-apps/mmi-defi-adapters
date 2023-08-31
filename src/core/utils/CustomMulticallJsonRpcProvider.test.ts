@@ -11,7 +11,7 @@ describe('CustomMultiCallProvider', () => {
       CustomMulticallJsonRpcProvider,
     )
   })
-  it('Should queue calls', async () => {
+  it('queues calls', async () => {
     const spy = jest.fn().mockResolvedValue('success')
 
     const multicallQueue = { queueCall: spy } as unknown as MulticallQueue
@@ -28,7 +28,7 @@ describe('CustomMultiCallProvider', () => {
     expect(result).toBe('success')
   })
 
-  it('Should not queue calls', async () => {
+  it('sends normal eth_call', async () => {
     const provider = new CustomMulticallJsonRpcProvider({
       url: 'www.oioi.com',
       network: 1,

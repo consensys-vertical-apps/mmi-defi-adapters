@@ -5,7 +5,7 @@ import { logger } from './logger'
 interface PendingCall {
   callParams: { target: string; callData: BytesLike; allowFailure: boolean }
   resolve: (value: string) => void
-  reject: (reason: string) => void
+  reject: (reason: string | undefined) => void
 }
 
 export class MulticallQueue {
@@ -68,18 +68,17 @@ export class MulticallQueue {
     const callsToProcess = [...this.pendingCalls]
     this.pendingCalls = []
 
-    logger.info(
-      {
-        batchRequests: callsToProcess.length,
-      },
-      'Sending multicall batch ',
-    )
+    const batchSize = callsToProcess.length
+    logger.info({ batchSize }, 'Sending multicall batch ')
 
     const results = await this.multicallContract.callStatic.aggregate3(
       callsToProcess.map(({ callParams }) => callParams),
     )
 
-    if (results.length !== callsToProcess.length) {
+    const resultLength = results.length
+    const callsToProcessLength = callsToProcess.length
+
+    if (resultLength !== callsToProcessLength) {
       // reject all to be on safe side
       callsToProcess.forEach(({ reject }) => {
         reject('Multicall batch failed')
@@ -87,20 +86,23 @@ export class MulticallQueue {
 
       logger.error(
         {
-          resultLength: results.length,
-          callsToProcessLength: callsToProcess.length,
+          resultLength,
+          callsToProcessLength,
         },
         'Multicall response length differs from batch sent',
       )
       return
     }
 
-    results.forEach(({ success, returnData }, i) => {
-      if (!success) {
-        logger.error(returnData, 'A request inside a multicall batch failed')
-        callsToProcess[i]?.reject(returnData)
+    callsToProcess.forEach(({ resolve, reject }, i) => {
+      const returnedData = results[i]?.returnData
+      const success = results[i]?.success
+      if (!success || !returnedData) {
+        logger.error(returnedData, 'A request inside a multicall batch failed')
+        reject(returnedData)
+      } else {
+        resolve(returnedData)
       }
-      callsToProcess[i]?.resolve(returnData)
     })
   }
 }
