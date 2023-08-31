@@ -1,8 +1,0 @@
-
-> mmi-defi-adapters@0.0.1 adapters-cli
-> ts-node src/scripts/index.ts new-adapter example example-product
-
-Add new adapter for protocol example example-product
-supportedProtocols
-Stargate
-Example
