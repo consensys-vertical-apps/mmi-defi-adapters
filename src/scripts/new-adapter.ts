@@ -2,8 +2,9 @@ import { Command } from 'commander'
 import * as fs from 'fs'
 import * as path from 'path'
 import { parse, visit, types, print } from 'recast'
-import { camelCase, startCase } from 'lodash'
 import { adapterTemplate } from './templates/adapter'
+import { camelCase, kebabCase, pascalCase } from '../core/utils/caseConversion'
+import { partition } from 'lodash'
 
 import n = types.namedTypes
 import b = types.builders
@@ -14,12 +15,11 @@ export function addNewAdapterCommand(program: Command) {
     .argument('<protocol>', 'Protocol id (kebab-case)')
     .argument('<product>', 'Product name (kebab-case)')
     .showHelpAfterError()
-    .action(async (protocol: string, productName: string) => {
-      console.log('Add new adapter for protocol', protocol, productName)
+    .action(async (protocol: string, product: string) => {
+      console.log('Add new adapter for protocol', protocol, product)
 
       const protocolProductsPath = path.resolve(
-        __dirname,
-        `../adapters/${protocol}/products`,
+        `./src/adapters/${protocol}/products`,
       )
 
       if (!fs.existsSync(protocolProductsPath)) {
@@ -28,49 +28,36 @@ export function addNewAdapterCommand(program: Command) {
         return
       }
 
-      const productPath = path.resolve(protocolProductsPath, productName)
+      const productPath = path.resolve(protocolProductsPath, product)
 
       if (!fs.existsSync(productPath)) {
         console.log(`create folder ${productPath}`)
         fs.mkdirSync(productPath)
       }
 
-      const adapterFilePath = newAdapterTemplate(
-        protocol,
-        productPath,
-        productName,
-      )
+      newAdapterTemplate(protocol, product, productPath)
 
-      exportAdapter(adapterFilePath)
+      exportAdapter(protocol, product, ['Ethereum'])
     })
 }
 
 function newAdapterTemplate(
   protocol: string,
+  product: string,
   productPath: string,
-  productName: string,
-): string {
-  const productNameCamelCase = camelCase(productName)
-  const productNamePascalCase = startCase(productNameCamelCase).replace(
-    / /g,
-    '',
-  )
-  const protocolPascalCase = startCase(camelCase(protocol)).replace(/ /g, '')
-
+) {
   const adapterFilePath = path.resolve(
     productPath,
-    `${productNameCamelCase}Adapter.ts`,
+    `${camelCase(product)}Adapter.ts`,
   )
 
   fs.writeFileSync(
     adapterFilePath,
-    adapterTemplate(protocolPascalCase, productNamePascalCase),
+    adapterTemplate(pascalCase(protocol), pascalCase(product)),
   )
-
-  return adapterFilePath
 }
 
-function exportAdapter(_adapterFilePath: string) {
+function exportAdapter(protocol: string, product: string, chains: string[]) {
   // TODO Add new adapter to list in src/adapters/index.ts
   const contents = fs.readFileSync('./src/adapters/index.ts', 'utf-8')
   const ast = parse(contents, {
@@ -78,64 +65,72 @@ function exportAdapter(_adapterFilePath: string) {
   })
 
   visit(ast, {
+    visitProgram(path) {
+      const programNode = path.value as n.Program
+
+      const [importNodes, codeAfterImports] = partition(
+        programNode.body,
+        (node) => n.ImportDeclaration.check(node),
+      )
+
+      const newImportEntry = buildImportEntry(
+        pascalCase(product),
+        `./${kebabCase(protocol)}/products/${kebabCase(product)}/${camelCase(
+          product,
+        )}Adapter`,
+      )
+
+      programNode.body = [...importNodes, newImportEntry, ...codeAfterImports]
+
+      this.traverse(path)
+    },
     visitVariableDeclarator(path) {
-      const node = path.node
-      if ((node.id as n.Identifier).name !== 'supportedProtocols') {
+      const supportedProtocolsDeclarationNode = path.node
+      if (
+        !n.Identifier.check(supportedProtocolsDeclarationNode.id) ||
+        supportedProtocolsDeclarationNode.id.name !== 'supportedProtocols' ||
+        !n.ObjectExpression.assert(supportedProtocolsDeclarationNode.init)
+      ) {
         return false
       }
 
-      console.log((node.id as n.Identifier).name)
+      const supportedProtocolsObjectNode =
+        supportedProtocolsDeclarationNode.init
 
-      for (const properties of (node.init as n.ObjectExpression).properties) {
-        if (!n.ObjectProperty.assert(properties)) {
-          continue
-        }
-        const protocolName = (
-          (properties.key as n.MemberExpression).property as n.Identifier
-        ).name
-        console.log(protocolName)
+      const protocolObjectPropertyNode =
+        (supportedProtocolsObjectNode.properties.find((property) => {
+          if (
+            !n.ObjectProperty.check(property) ||
+            !n.MemberExpression.check(property.key) ||
+            !n.Identifier.check(property.key.property)
+          ) {
+            throw new Error('Incorrectly typed supportedProtocols object')
+          }
 
-        if (protocolName === 'Example') {
-          const protocolChainEntries = properties.value as n.ObjectExpression
-          // console.log(protocolChainEntries)
-          // console.log('BEGIN LEVEL 1')
-          // const chainNode = protocolChainEntries
-          //   .properties[0] as n.ObjectProperty
-          // console.log(chainNode)
-          // console.log('END LEVEL 1')
-          // console.log('BEGIN LEVEL 2 (ARRAY)')
-          // const arrayNode = chainNode.value as n.ArrayExpression
-          // console.log(arrayNode)
-          // console.log('END LEVEL 2 (ARRAY)')
-          // console.log('BEGIN LEVEL 3 (FACTORY)')
-          // const factoryNode = arrayNode.elements[0] as n.ArrowFunctionExpression
-          // console.log(factoryNode)
-          // console.log('END LEVEL 3 (FACTORY)')
-          // console.log('BEGIN LEVEL 4 (Adapeter arguments)')
-          // const adapterArgumentsNode = (factoryNode.body as n.NewExpression)
-          //   .arguments[0] as n.ObjectExpression
-          // console.log(adapterArgumentsNode)
-          // console.log('END LEVEL 4 (Adapeter arguments)')
-          // console.log('BEGIN LEVEL 5 (Adapeter argument nodes)')
-          // const adapterArgumentsNode1 = adapterArgumentsNode
-          //   .properties[0] as n.ObjectProperty
-          // const adapterArgumentsNode2 = adapterArgumentsNode
-          //   .properties[1] as n.ObjectProperty
-          // const adapterArgumentsNode3 = adapterArgumentsNode
-          //   .properties[2] as n.ObjectProperty
-          // console.log(
-          //   adapterArgumentsNode1,
-          //   adapterArgumentsNode2,
-          //   adapterArgumentsNode3,
-          // )
-          // console.log('END LEVEL 5 (Adapeter argument nodes)')
-          const newEntry = newChainEntry('Ethereum', 'ExampleProduct')
-          protocolChainEntries.properties = [
-            ...protocolChainEntries.properties,
-            newEntry,
-          ]
-        }
+          return property.key.property.name === pascalCase(protocol)
+        }) as n.ObjectProperty) ?? buildProtocolEntry(protocol)
+
+      const protocolChainEntries = protocolObjectPropertyNode.value
+      if (!n.ObjectExpression.check(protocolChainEntries)) {
+        throw new Error('Incorrectly typed supportedProtocols object')
       }
+
+      const newEntries = chains.map((chain) => {
+        const newAdapterEntry = buildAdapterEntry(
+          pascalCase(chain),
+          pascalCase(product),
+        )
+        const newChainEntry = buildChainEntry(pascalCase(chain), [
+          newAdapterEntry,
+        ])
+
+        return newChainEntry
+      })
+
+      protocolChainEntries.properties = [
+        ...protocolChainEntries.properties,
+        ...newEntries,
+      ]
 
       this.traverse(path)
     },
@@ -143,13 +138,24 @@ function exportAdapter(_adapterFilePath: string) {
 
   const content = print(ast).code
   fs.writeFileSync('./src/adapters/index.ts', content, 'utf-8')
-
-  //console.log('XXXXXXXXXX', ast.program.body.at(-1))
 }
 
-function newChainEntry(chainName: string, productName: string) {
-  const key = b.memberExpression(b.identifier('Chain'), b.identifier(chainName))
-  const value = b.arrayExpression([newFactoryEntry(chainName, productName)])
+function buildImportEntry(product: string, adapterFilePath: string) {
+  return b.importDeclaration(
+    [b.importSpecifier(b.identifier(`${product}Adapter`))],
+    b.literal(adapterFilePath),
+  )
+}
+
+/*
+[Protocol.<Protocol>]: {}
+*/
+function buildProtocolEntry(protocol: string) {
+  const key = b.memberExpression(
+    b.identifier('Protocol'),
+    b.identifier(pascalCase(protocol)),
+  )
+  const value = b.objectExpression([])
 
   const newEntry = b.objectProperty(key, value)
   newEntry.computed = true
@@ -157,18 +163,44 @@ function newChainEntry(chainName: string, productName: string) {
   return newEntry
 }
 
-function newFactoryEntry(chainName: string, productName: string) {
-  return b.arrowFunctionExpression(
-    [b.identifier('provider')],
-    b.newExpression(b.identifier(`${productName}Adapter`), [
-      b.objectExpression([
-        b.objectProperty(b.identifier('metadata'), b.objectExpression([])),
-        b.objectProperty(
-          b.identifier('chainId'),
-          b.memberExpression(b.identifier('Chain'), b.identifier(chainName)),
-        ),
-        b.objectProperty(b.identifier('provider'), b.identifier('provider')),
-      ]),
+/*
+[Chain.<Chain>]: [...adapterEntries],
+*/
+function buildChainEntry(
+  chain: string,
+  adapterEntries: n.ArrowFunctionExpression[],
+) {
+  const key = b.memberExpression(b.identifier('Chain'), b.identifier(chain))
+  const value = b.arrayExpression(adapterEntries)
+
+  const newEntry = b.objectProperty(key, value)
+  newEntry.computed = true
+
+  return newEntry as n.ObjectProperty & {
+    value: n.ArrayExpression
+  }
+}
+
+/*
+(provider) =>
+  new <ProductName>Adapter({
+    metadata: {},
+    chainId: Chain.<Chain>,
+    provider: provider,
+  }),
+*/
+function buildAdapterEntry(chain: string, product: string) {
+  const params = [b.identifier('provider')]
+  const body = b.newExpression(b.identifier(`${product}Adapter`), [
+    b.objectExpression([
+      b.objectProperty(b.identifier('metadata'), b.objectExpression([])),
+      b.objectProperty(
+        b.identifier('chainId'),
+        b.memberExpression(b.identifier('Chain'), b.identifier(chain)),
+      ),
+      b.objectProperty(b.identifier('provider'), b.identifier('provider')),
     ]),
-  )
+  ])
+
+  return b.arrowFunctionExpression(params, body)
 }
