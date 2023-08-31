@@ -1,32 +1,32 @@
-import { providers } from 'ethers'
+import { BytesLike, providers } from 'ethers'
 import { Multicall } from '../../contracts/Multicall'
 import { logger } from './logger'
 
 interface PendingCall {
-  callParams: providers.TransactionRequest
-  resolve: (value: any) => void
-  reject: (reason: any) => void
+  callParams: { target: string; callData: BytesLike; allowFailure: boolean }
+  resolve: (value: string) => void
+  reject: (reason: string) => void
 }
 
 export class MulticallQueue {
   private pendingCalls: PendingCall[] = []
   private multicallContract: Multicall
-  private batchIntervalMs: number
+  private flushTimeoutMs: number
 
-  private requestThreshold: number
+  private maxBatchSize: number
   private _timer: NodeJS.Timeout | null = null
 
   constructor({
-    batchIntervalMs,
+    flushTimeoutMs,
     maxBatchSize,
     multicallContract,
   }: {
-    batchIntervalMs: number
+    flushTimeoutMs: number
     maxBatchSize: number
     multicallContract: Multicall
   }) {
-    this.batchIntervalMs = batchIntervalMs
-    this.requestThreshold = maxBatchSize
+    this.flushTimeoutMs = flushTimeoutMs
+    this.maxBatchSize = maxBatchSize
     this.multicallContract = multicallContract
   }
 
@@ -35,30 +35,36 @@ export class MulticallQueue {
     this._timer = value
   }
 
-  get timer() {
+  private get timer() {
     return this._timer
   }
 
   async queueCall(callParams: providers.TransactionRequest): Promise<string> {
+    const { to, data } = callParams
+
+    if (!to || !data) {
+      throw new Error('To and Data are required when using multicall')
+    }
+
     return new Promise((resolve, reject) => {
       this.pendingCalls.push({
-        callParams,
+        callParams: { target: to, callData: data, allowFailure: true },
         resolve,
         reject,
       })
 
-      if (this.pendingCalls.length >= this.requestThreshold) {
-        this.flush()
+      if (this.pendingCalls.length >= this.maxBatchSize) {
+        this._flush()
       } else if (!this.timer) {
         this.timer = setTimeout(() => {
-          this.flush()
+          this._flush()
           this.timer = null
-        }, this.batchIntervalMs)
+        }, this.flushTimeoutMs)
       }
     })
   }
 
-  private async flush() {
+  private async _flush() {
     const callsToProcess = [...this.pendingCalls]
     this.pendingCalls = []
 
@@ -70,16 +76,25 @@ export class MulticallQueue {
     )
 
     const results = await this.multicallContract.callStatic.aggregate3(
-      callsToProcess.map((calls) => {
-        return {
-          allowFailure: true,
-          target: calls.callParams.to as string,
-          callData: calls.callParams.data as string,
-        }
-      }),
+      callsToProcess.map(({ callParams }) => callParams),
     )
 
-    // Decode the responses.
+    if (results.length !== callsToProcess.length) {
+      // reject all to be on safe side
+      callsToProcess.forEach(({ reject }) => {
+        reject('Multicall batch failed')
+      })
+
+      logger.error(
+        {
+          resultLength: results.length,
+          callsToProcessLength: callsToProcess.length,
+        },
+        'Multicall response length differs from batch sent',
+      )
+      return
+    }
+
     results.forEach(({ success, returnData }, i) => {
       if (!success) {
         logger.error(returnData, 'A request inside a multicall batch failed')

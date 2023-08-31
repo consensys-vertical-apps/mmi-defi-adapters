@@ -10,51 +10,56 @@ describe('Multicall Configuration', () => {
     jest.useRealTimers() // reset timers
   })
 
-  it('Instance of', () => {
+  it('is a instance of', () => {
     const multicall = new MulticallQueue({
-      batchIntervalMs: 1000,
+      flushTimeoutMs: 1000,
       maxBatchSize: 10,
-      multicallContract: {} as any,
+      multicallContract: {} as Multicall,
     })
 
     expect(multicall).toBeInstanceOf(MulticallQueue)
   })
-  it('Multicall should be called 2 times', async () => {
-    const spy = jest
-      .fn()
-      .mockResolvedValue([{ success: true, returnData: '0x' }])
+  it('sends batch size of 10', async () => {
+    const maxBatchSize = 10
+    const spy = jest.fn().mockResolvedValue(
+      Array(maxBatchSize).fill({
+        success: true,
+        returnData: '0x',
+      }),
+    )
 
     const multicall = new MulticallQueue({
-      batchIntervalMs: 1000000,
-      maxBatchSize: 10,
+      flushTimeoutMs: 1000000,
+      maxBatchSize,
       multicallContract: {
         callStatic: { aggregate3: spy },
       } as unknown as Multicall,
     })
 
-    const promises = []
-    for (let i = 0; i < 22; i++) {
-      promises.push(multicall.queueCall({ to: '0x', data: '0x' }))
-    }
+    Array.from({ length: 22 }, () =>
+      multicall.queueCall({ to: '0x', data: '0x' }),
+    )
 
     expect(spy).toBeCalledTimes(2)
   })
-  it('calls the async function only after 1 second', () => {
-    const spy = jest
-      .fn()
-      .mockResolvedValue([{ success: true, returnData: '0x' }])
+  it('queues calls for 1 second', () => {
+    const spy = jest.fn().mockResolvedValue(
+      Array(2).fill({
+        success: true,
+        returnData: '0x',
+      }),
+    )
     const multicall = new MulticallQueue({
-      batchIntervalMs: 1000,
+      flushTimeoutMs: 1000,
       maxBatchSize: 10,
       multicallContract: {
         callStatic: { aggregate3: spy },
       } as unknown as Multicall,
     })
 
-    const promises = []
-    for (let i = 0; i < 2; i++) {
-      promises.push(multicall.queueCall({ to: '0x', data: '0x' }))
-    }
+    Array.from({ length: 2 }, () =>
+      multicall.queueCall({ to: '0x', data: '0x' }),
+    )
     expect(spy).not.toHaveBeenCalled()
     jest.advanceTimersByTime(999)
     expect(spy).not.toHaveBeenCalled()
@@ -63,13 +68,13 @@ describe('Multicall Configuration', () => {
     expect(spy).toHaveBeenCalled()
   })
 
-  it('returns result', async () => {
-    const spy = jest.fn().mockResolvedValue([
-      { success: true, returnData: '0x1' },
-      { success: true, returnData: '0x2' },
-    ])
+  it('returns results', async () => {
+    const spy = jest
+      .fn()
+      .mockResolvedValueOnce([{ success: true, returnData: '0x1' }])
+      .mockResolvedValueOnce([{ success: true, returnData: '0x2' }])
     const multicall = new MulticallQueue({
-      batchIntervalMs: 10,
+      flushTimeoutMs: 10,
       maxBatchSize: 1,
       multicallContract: {
         callStatic: { aggregate3: spy },
@@ -80,16 +85,37 @@ describe('Multicall Configuration', () => {
     const result2 = multicall.queueCall({ to: '0x', data: '0x' })
     expect(spy).toHaveBeenCalled()
     expect(await result).toEqual('0x1')
-    expect(await result2).toEqual('0x1')
+    expect(await result2).toEqual('0x2')
   })
 
-  it('throws result', async () => {
+  it('throws mismatch multicall result length', async () => {
+    expect.assertions(2)
+    const spy = jest.fn().mockResolvedValue([
+      { success: true, returnData: '0x1' },
+      { success: true, returnData: '0x2' },
+    ])
+
+    const multicall = new MulticallQueue({
+      flushTimeoutMs: 10,
+      maxBatchSize: 1,
+      multicallContract: {
+        callStatic: { aggregate3: spy },
+      } as unknown as Multicall,
+    })
+    await multicall.queueCall({ to: '0x', data: '0x' }).catch((error) => {
+      expect(error).toEqual('Multicall batch failed')
+    })
+
+    expect(spy).toHaveBeenCalled()
+  })
+
+  it('throws result from rejected call', async () => {
     const spy = jest.fn().mockResolvedValueOnce([
-      { success: false, returnData: '0x1' },
-      { success: false, returnData: '0x2' },
+      { success: false, returnData: 'protected smart contract method' },
+      { success: false, returnData: 'protected smart contract method 2' },
     ])
     const multicall = new MulticallQueue({
-      batchIntervalMs: 1000,
+      flushTimeoutMs: 1000,
       maxBatchSize: 2,
       multicallContract: {
         callStatic: { aggregate3: spy },
@@ -98,10 +124,14 @@ describe('Multicall Configuration', () => {
 
     multicall
       .queueCall({ to: '0x', data: '0x' })
-      .catch((result) => expect(result).toEqual('0x1'))
+      .catch((result) =>
+        expect(result).toEqual('protected smart contract method'),
+      )
 
     multicall
       .queueCall({ to: '0x', data: '0x' })
-      .catch((result) => expect(result).toEqual('0x2'))
+      .catch((result) =>
+        expect(result).toEqual('protected smart contract method 2'),
+      )
   })
 })

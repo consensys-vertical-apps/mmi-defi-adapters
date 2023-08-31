@@ -6,6 +6,7 @@ import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider
 import { MulticallQueue } from './multicall'
 import multicallAbi from '../../contracts/abis/multicall.json'
 import { Multicall } from '../../contracts'
+import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
 
 const provider = ({
   url,
@@ -27,13 +28,13 @@ const provider = ({
     // deployed on 100+ chains at address
     // https://www.multicall3.com/deployments
     const multicallContract = new Contract(
-      '0xcA11bde05977b3631167028862bE2a173976CA11',
+      MULTICALL_ADDRESS,
       multicallAbi,
       provider,
     ) as Multicall
 
     const multicallQueue = new MulticallQueue({
-      batchIntervalMs: 2,
+      flushTimeoutMs: 2,
       maxBatchSize: 100,
       multicallContract,
     })
