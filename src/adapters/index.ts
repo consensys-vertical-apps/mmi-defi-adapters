@@ -9,10 +9,13 @@ import ARBITRUM_POOL_METADATA from './stargate/products/pool/arbitrum/metadata.j
 
 import { ExampleProductAdapter } from './example/products/example-product/exampleProductAdapter'
 
+import { AaveV2PoolAdapter } from './aave-v2/products/pool/aaveV2PoolAdapter'
+
 // Add new protocols names below
 export const Protocol = {
   Stargate: 'stargate',
   Example: 'example',
+  AaveV2: 'aave-v2',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
 
@@ -55,6 +58,17 @@ export const supportedProtocols: Record<
     [Chain.Ethereum]: [
       (provider) =>
         new ExampleProductAdapter({
+          metadata: {},
+          chainId: Chain.Ethereum,
+          provider,
+        }),
+    ],
+  },
+
+  [Protocol.AaveV2]: {
+    [Chain.Ethereum]: [
+      (provider) =>
+        new AaveV2PoolAdapter({
           metadata: {},
           chainId: Chain.Ethereum,
           provider,
