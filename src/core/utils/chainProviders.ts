@@ -11,46 +11,45 @@ import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
 const provider = ({
   url,
   chainId,
-  enableMulticall,
+  enableMulticallQueue,
 }: {
   url: string | undefined
   chainId: Chain
-  enableMulticall: boolean
+  enableMulticallQueue: boolean
 }) => {
-  logger.info('Using multicall queue providers')
   if (!url) return undefined
 
-  if (enableMulticall) {
-    logger.info('Using multicall queue providers')
-
-    const provider = new ethers.providers.StaticJsonRpcProvider(url, chainId)
-
-    // deployed on 100+ chains at address
-    // https://www.multicall3.com/deployments
-    const multicallContract = new Contract(
-      MULTICALL_ADDRESS,
-      multicallAbi,
-      provider,
-    ) as Multicall
-
-    const multicallQueue = new MulticallQueue({
-      flushTimeoutMs: 2,
-      maxBatchSize: 100,
-      multicallContract,
-    })
-
-    return new CustomMulticallJsonRpcProvider({
-      url,
-      network: chainId,
-      multicallQueue,
-    })
+  if (!enableMulticallQueue) {
+    logger.info({ chainId }, `Using standard provider`)
+    return new ethers.providers.StaticJsonRpcProvider(url, chainId)
   }
 
-  logger.info('Using standard providers')
-  return new ethers.providers.StaticJsonRpcProvider(url, chainId)
+  logger.info({ chainId }, 'Using multicall queue provider')
+
+  const provider = new ethers.providers.StaticJsonRpcProvider(url, chainId)
+
+  // deployed on 100+ chains at address
+  // https://www.multicall3.com/deployments
+  const multicallContract = new Contract(
+    MULTICALL_ADDRESS,
+    multicallAbi,
+    provider,
+  ) as Multicall
+
+  const multicallQueue = new MulticallQueue({
+    flushTimeoutMs: 2,
+    maxBatchSize: 100,
+    multicallContract,
+  })
+
+  return new CustomMulticallJsonRpcProvider({
+    url,
+    network: chainId,
+    multicallQueue,
+  })
 }
 
-const enableMulticall = process.env.ENABLE_MULTICALL === 'true'
+const enableMulticallQueue = process.env.ENABLE_MULTICALL_QUEUE === 'true'
 
 export const chainProviders: Record<
   Chain,
@@ -59,46 +58,46 @@ export const chainProviders: Record<
   [Chain.Ethereum]: provider({
     url: process.env.ETHEREUM_PROVIDER_URL,
     chainId: Chain.Ethereum,
-    enableMulticall,
+    enableMulticallQueue,
   }),
   [Chain.Optimism]: provider({
     url: process.env.OPTIMISM_PROVIDER_URL,
     chainId: Chain.Optimism,
-    enableMulticall,
+    enableMulticallQueue,
   }),
   [Chain.Bsc]: provider({
     url: process.env.BSC_PROVIDER_URL,
     chainId: Chain.Bsc,
-    enableMulticall,
+    enableMulticallQueue,
   }),
   [Chain.Polygon]: provider({
     url: process.env.POLYGON_PROVIDER_URL,
     chainId: Chain.Polygon,
-    enableMulticall,
+    enableMulticallQueue,
   }),
   [Chain.Fantom]: provider({
     url: process.env.FANTOM_PROVIDER_URL,
     chainId: Chain.Fantom,
-    enableMulticall,
+    enableMulticallQueue,
   }),
   [Chain.Arbitrum]: provider({
     url: process.env.ARBITRUM_PROVIDER_URL,
     chainId: Chain.Arbitrum,
-    enableMulticall,
+    enableMulticallQueue,
   }),
   [Chain.Avalanche]: provider({
     url: process.env.AVALANCHE_PROVIDER_URL,
     chainId: Chain.Avalanche,
-    enableMulticall,
+    enableMulticallQueue,
   }),
   [Chain.Linea]: provider({
     url: process.env.LINEA_PROVIDER_URL,
     chainId: Chain.Linea,
-    enableMulticall,
+    enableMulticallQueue,
   }),
   [Chain.Base]: provider({
     url: process.env.BASE_PROVIDER_URL,
     chainId: Chain.Base,
-    enableMulticall,
+    enableMulticallQueue,
   }),
 }

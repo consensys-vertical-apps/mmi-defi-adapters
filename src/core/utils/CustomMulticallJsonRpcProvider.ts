@@ -1,5 +1,6 @@
 import { providers } from 'ethers'
 import { MulticallQueue } from './multicall'
+import { logger } from './logger'
 
 export class CustomMulticallJsonRpcProvider extends providers.StaticJsonRpcProvider {
   private multicallQueue: MulticallQueue
@@ -20,11 +21,12 @@ export class CustomMulticallJsonRpcProvider extends providers.StaticJsonRpcProvi
     transaction: providers.TransactionRequest,
     blockTag?: providers.BlockTag | Promise<providers.BlockTag>,
   ): Promise<string> {
-    console.log('Intercepted eth_call')
-
     if (blockTag) {
+      logger.debug('Intercepted eth_call, using multicall queue implementation')
       return super.call(transaction, blockTag)
     }
+
+    logger.debug('Intercepted eth_call, using multicall queue implementation')
 
     return this.multicallQueue.queueCall(transaction)
   }

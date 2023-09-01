@@ -40,10 +40,20 @@ export class MulticallQueue {
   }
 
   async queueCall(callParams: providers.TransactionRequest): Promise<string> {
-    const { to, data } = callParams
+    const { to, data, from } = callParams
+
+    if (from) {
+      logger.error(
+        'MulticallQueue unable to handle from parameter, use standard json rpc provider instead',
+      )
+      throw new Error(
+        'MulticallQueue unable to handle from parameter, use standard json rpc provider instead',
+      )
+    }
 
     if (!to || !data) {
-      throw new Error('To and Data are required when using multicall')
+      logger.error('To and Data are required when using MulticallQueue')
+      throw new Error('To and Data are required when using MulticallQueue')
     }
 
     return new Promise((resolve, reject) => {
@@ -95,13 +105,16 @@ export class MulticallQueue {
     }
 
     callsToProcess.forEach(({ resolve, reject }, i) => {
-      const returnedData = results[i]?.returnData
-      const success = results[i]?.success
-      if (!success || !returnedData) {
-        logger.error(returnedData, 'A request inside a multicall batch failed')
-        reject(returnedData)
+      const result = results[i]
+      if (!result) return
+
+      const { returnData, success } = result
+
+      if (!success) {
+        logger.error(returnData, 'A request inside a multicall batch failed')
+        reject(returnData)
       } else {
-        resolve(returnedData)
+        resolve(returnData)
       }
     })
   }
