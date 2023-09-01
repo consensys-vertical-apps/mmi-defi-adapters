@@ -1,14 +1,13 @@
 import { Chain } from './chains'
 
-// TODO - Fill average blocks per day
 export const AVERAGE_BLOCKS_PER_DAY: Record<Chain, number> = {
-  [Chain.Ethereum]: 7163,
-  [Chain.Optimism]: 0,
-  [Chain.Bsc]: 0,
-  [Chain.Polygon]: 0,
-  [Chain.Fantom]: 0,
-  [Chain.Base]: 0,
-  [Chain.Arbitrum]: 340000,
-  [Chain.Avalanche]: 0,
-  [Chain.Linea]: 0,
+  [Chain.Ethereum]: 7146,
+  [Chain.Optimism]: 43200,
+  [Chain.Bsc]: 28692,
+  [Chain.Polygon]: 39871,
+  [Chain.Fantom]: 38541,
+  [Chain.Base]: 43200,
+  [Chain.Arbitrum]: 320280,
+  [Chain.Avalanche]: 41414,
+  [Chain.Linea]: 7187,
 }

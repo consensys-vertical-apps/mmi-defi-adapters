@@ -1,5 +1,3 @@
-import 'dotenv/config'
-
 import { ethers } from 'ethers'
 import { Protocol, supportedProtocols } from './adapters'
 import { Chain } from './core/constants/chains'

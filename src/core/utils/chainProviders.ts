@@ -20,11 +20,11 @@ const provider = ({
   if (!url) return undefined
 
   if (!enableMulticallQueue) {
-    logger.info({ chainId }, `Using standard provider`)
+    logger.debug({ chainId }, `Using standard provider`)
     return new ethers.providers.StaticJsonRpcProvider(url, chainId)
   }
 
-  logger.info({ chainId }, 'Using multicall queue provider')
+  logger.debug({ chainId }, 'Using multicall queue provider')
 
   const provider = new ethers.providers.StaticJsonRpcProvider(url, chainId)
 
