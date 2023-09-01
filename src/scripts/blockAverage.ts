@@ -25,7 +25,7 @@ export function blockAverage(program: Command) {
           return {
             chainId,
             averageBlocksPerDay,
-          } as { chainId: Chain; averageBlocksPerDay: number }
+          }
         })
         .reduce(
           async (accumulator, current) => {
