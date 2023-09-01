@@ -74,6 +74,7 @@ async function updateAverages(
   })
 
   visit(ast, {
+    // Iterates over every entry of AVERAGE_BLOCKS_PER_DAY and updates it
     visitObjectProperty(path) {
       if (
         !n.MemberExpression.check(path.node.key) ||
