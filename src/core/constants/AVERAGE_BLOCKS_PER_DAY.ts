@@ -1,5 +1,6 @@
 import { Chain } from './chains'
 
+// This file is updated automatically
 export const AVERAGE_BLOCKS_PER_DAY: Record<Chain, number> = {
   [Chain.Ethereum]: 7146,
   [Chain.Optimism]: 43200,
