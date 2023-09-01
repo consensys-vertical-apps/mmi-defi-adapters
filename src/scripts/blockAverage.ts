@@ -14,11 +14,20 @@ export function blockAverage(program: Command) {
     .command('block-average')
     .option('-c, --chain <chainId>', 'chain filter')
     .showHelpAfterError()
-    .action(async ({ chain: chainFilter }) => {
+    .action(async ({ chain: chainIdFilterInput }) => {
       const averageBlocksPerDayMap = await Object.values(Chain)
-        .filter(
-          (chainId) => !chainFilter || chainId === parseInt(chainFilter, 10),
-        )
+        .filter((chainId) => {
+          if (!chainIdFilterInput) {
+            return true
+          }
+
+          const chainIdFilter = Number(chainIdFilterInput)
+          if (isNaN(chainIdFilter)) {
+            throw new Error('Chain value needs to be a number')
+          }
+
+          return chainId === chainIdFilter
+        })
         .map(async (chainId) => {
           const averageBlocksPerDay = await getAverageBlocksPerDay(chainId)
 
