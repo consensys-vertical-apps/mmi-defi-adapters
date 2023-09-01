@@ -3,3 +3,4 @@
 /* eslint-disable */
 export * as stargate from "./stargate";
 export { Erc20__factory } from "./Erc20__factory";
+export { Multicall__factory } from "./Multicall__factory";
