@@ -1,14 +1,13 @@
-import { Command } from 'commander'
 import { promises as fs } from 'fs'
-import { partition } from 'lodash'
 import * as path from 'path'
+import { Command } from 'commander'
+import partition from 'lodash/partition'
 import { parse, visit, types, print } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { camelCase, kebabCase, pascalCase } from '../core/utils/caseConversion'
 import { filterMap } from '../core/utils/filters'
 import { adapterTemplate } from './templates/adapter'
 import { writeCodeFile } from './writeCodeFile'
-
 import n = types.namedTypes
 import b = types.builders
 

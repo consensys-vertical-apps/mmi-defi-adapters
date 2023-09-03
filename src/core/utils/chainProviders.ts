@@ -1,12 +1,11 @@
 import { ethers, Contract } from 'ethers'
-import { Chain } from '../constants/chains'
-import { logger } from './logger'
-import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
-
-import { MulticallQueue } from './multicall'
-import multicallAbi from '../../contracts/abis/multicall.json'
 import { Multicall } from '../../contracts'
+import multicallAbi from '../../contracts/abis/multicall.json'
+import { Chain } from '../constants/chains'
 import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
+import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
+import { logger } from './logger'
+import { MulticallQueue } from './multicall'
 
 const provider = ({
   url,

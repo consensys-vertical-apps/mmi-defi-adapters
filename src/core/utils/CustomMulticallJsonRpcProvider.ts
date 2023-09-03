@@ -1,6 +1,6 @@
 import { providers } from 'ethers'
-import { MulticallQueue } from './multicall'
 import { logger } from './logger'
+import { MulticallQueue } from './multicall'
 
 export class CustomMulticallJsonRpcProvider extends providers.StaticJsonRpcProvider {
   private multicallQueue: MulticallQueue

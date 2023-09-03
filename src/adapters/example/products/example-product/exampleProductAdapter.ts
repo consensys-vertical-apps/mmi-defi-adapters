@@ -1,4 +1,7 @@
+import { ethers } from 'ethers'
+import { Protocol } from '../../..'
 import { Chain } from '../../../../core/constants/chains'
+import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -19,10 +22,7 @@ import {
   ProtocolAprToken,
   ProtocolApyToken,
 } from '../../../../types/adapter'
-import { ethers } from 'ethers'
 import { Json } from '../../../../types/json'
-import { ERC20 } from '../../../../core/utils/getTokenMetadata'
-import { Protocol } from '../../..'
 
 export class ExampleProductAdapter implements IProtocolAdapter {
   private metadata: Json

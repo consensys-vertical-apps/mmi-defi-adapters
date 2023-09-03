@@ -1,6 +1,11 @@
-import { camelCase, upperFirst } from 'lodash'
-export { kebabCase, camelCase, lowerCase, upperCase } from 'lodash'
+import camelCase from 'lodash/camelCase'
+import kebabCase from 'lodash/kebabCase'
+import lowerCase from 'lodash/lowerCase'
+import upperCase from 'lodash/upperCase'
+import upperFirst from 'lodash/upperFirst'
 
-export function pascalCase(string?: string) {
+function pascalCase(string?: string) {
   return upperFirst(camelCase(string))
 }
+
+export { camelCase, kebabCase, lowerCase, pascalCase, upperCase }
