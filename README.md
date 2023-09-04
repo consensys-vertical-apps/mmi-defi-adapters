@@ -110,6 +110,19 @@ npm run deposits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336
 npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336
 ```
 
+## Update Average blocks per day
+
+Run the following command to update all averages
+```
+npm run adapters-cli block-average
+```
+
+Run the following command to update a specific chain
+
+```
+npm run adapters-cli block-average -- --chain 1
+```
+
 # Support for a new protocol
 
 ```
