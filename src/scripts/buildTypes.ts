@@ -1,5 +1,5 @@
 import path from 'path'
-import { runTypeChain, glob } from 'typechain'
+import { glob, runTypeChain } from 'typechain'
 import { logger } from '../core/utils/logger'
 
 export const main = async () => {

@@ -1,38 +1,38 @@
 import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
+import { Protocol } from '../../..'
 import { StargateToken__factory } from '../../../../contracts'
 import { TransferEvent } from '../../../../contracts/Erc20'
 import { AVERAGE_BLOCKS_PER_DAY } from '../../../../core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain } from '../../../../core/constants/chains'
-import { Protocol } from '../../..'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { getBalances } from '../../../../core/utils/getBalances'
-import { calculateProfit } from '../../../../core/utils/calculateProfit'
+import { Chain } from '../../../../core/constants/chains'
 import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
+import { calculateProfit } from '../../../../core/utils/calculateProfit'
+import { getBalances } from '../../../../core/utils/getBalances'
+import { ERC20 } from '../../../../core/utils/getTokenMetadata'
+import { logger } from '../../../../core/utils/logger'
+import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
+  GetAprInput,
+  GetApyInput,
   GetEventsInput,
   GetPositionsInput,
   GetPricesInput,
   GetProfitsInput,
   GetTotalValueLockedInput,
   IProtocolAdapter,
-  ProtocolDetails,
   MovementsByBlock,
   PositionType,
-  TokenType,
   ProfitsTokensWithRange,
+  ProtocolAprToken,
+  ProtocolApyToken,
+  ProtocolDetails,
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
-  ProtocolAprToken,
-  GetAprInput,
-  GetApyInput,
-  ProtocolApyToken,
+  TokenType,
 } from '../../../../types/adapter'
 import { StargatePoolMetadata } from '../../buildMetadata'
-import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
-import { ERC20 } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 
 export class StargatePoolAdapter implements IProtocolAdapter {
   private metadata: StargatePoolMetadata
