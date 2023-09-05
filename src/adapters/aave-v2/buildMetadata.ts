@@ -1,13 +1,13 @@
 import { ethers } from 'ethers'
+import { promises as fs } from 'fs'
+import * as path from 'path'
 import { Protocol } from '..'
 import { Chain, ChainNames } from '../../core/constants/chains'
 import { chainProviders } from '../../core/utils/chainProviders'
-import { logger } from '../../core/utils/logger'
-import { ProtocolDataProvider__factory } from './contracts'
-import * as path from 'path'
-import { promises as fs } from 'fs'
-import { Json } from '../../types/json'
 import { ERC20, getTokenMetadata } from '../../core/utils/getTokenMetadata'
+import { logger } from '../../core/utils/logger'
+import { Json } from '../../types/json'
+import { ProtocolDataProvider__factory } from './contracts'
 
 export type AaveV2PoolMetadata = Record<
   string,

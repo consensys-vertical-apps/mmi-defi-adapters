@@ -1,6 +1,6 @@
-import { protocolMetadataBuilders } from '../adapters/metadataBuilders'
-import { Protocol } from '../adapters'
 import { Command } from 'commander'
+import { Protocol } from '../adapters'
+import { protocolMetadataBuilders } from '../adapters/metadataBuilders'
 
 export function buildMetadata(program: Command) {
   program

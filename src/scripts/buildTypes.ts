@@ -1,8 +1,8 @@
-import * as path from 'path'
-import fs from 'fs'
-import { runTypeChain, glob } from 'typechain'
-import { logger } from '../core/utils/logger'
 import { Command } from 'commander'
+import fs from 'fs'
+import * as path from 'path'
+import { glob, runTypeChain } from 'typechain'
+import { logger } from '../core/utils/logger'
 
 export function buildContractTypes(program: Command) {
   program

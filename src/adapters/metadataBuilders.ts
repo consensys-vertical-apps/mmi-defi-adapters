@@ -1,7 +1,7 @@
 import { Protocol } from '.'
-import { buildMetadata as buildStargateMetadata } from './stargate/buildMetadata'
 import { Chain } from '../core/constants/chains'
 import { buildMetadata as buildAave2Metadata } from './aave-v2/buildMetadata'
+import { buildMetadata as buildStargateMetadata } from './stargate/buildMetadata'
 
 export type ProtocolMetadataBuilders = {
   [key in Chain]?: () => Promise<void>
