@@ -9,15 +9,22 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # set this token manually
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18.x
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
+          registry-url: "https://registry.npmjs.org"
+      # - name: Install dependencies
+      #   run: npm ci
+      # - name: Build
+      #   run: npm run build
+      - name: Echo
+        run: echo $NPM_TOKEN
+      - name: Check if able to publish changes
+        run: npm whoami
       - name: Publish
         run: npm publish
         env:
