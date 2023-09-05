@@ -1,63 +1,23 @@
-# Contributing to MMI-Defi-Adapters
+## Adding a New Protocol (manual)
 
-👍🎉 First and foremost, thank you for considering a contribution! 🎉👍
+To integrate a new protocol:
 
-## Dependencies
+1. Update `src/adapters/index.ts`:
+   - Add to `Protocol` object: key in CamelCase, value in kebab-case (matching folder name).
+   - Add to `supportedProtocols` object.
+2. Create a new folder in `src/adapters`, named in kebab-case, e.g., `src/${protocolName}/products/${productName}/productAdapter.ts`.
 
-We aim to keep this project lightweight and prioritize fetching DeFi data directly from the standard node JSON-RPC endpoints.
+## Adding an Adapter (manual)
 
-## Requirement
+After adding your protocol:
 
-Our goal is to show in-depth protocol data for your protocol to the MMI and MetaMask Portfolio users.
-
-We expect some protocols to have more than one product (e.g. farming, staking, pools) and as result will have more than one adapter
-
-Task:
-
-- Add adapters implementing our interface IProtocolAdapter to support your products
-
-Example sub tasks:
-
-- Run "add adapter CLI" described in readme section "Adding a new Adapter (CLI)"
-- Create a metadata script and file to get protocol data for your lp tokens [example metadata file](src/adapters/stargate/products/pool/arbitrum/metadata.json)
-- Implement your adapter logic
-
-## Issues
-
-We welcome issues for:
-
-- General questions or assistance
-- Enhancement suggestions
-- Bug reports
-
-## Pull Requests
-
-Follow the steps below to contribute changes:
-
-1. Fork this project and clone your fork to your local machine.
-2. Create a new branch for your work:
-   ```bash
-   git checkout -b feature-or-fix-description
-   ```
-3. Implement your changes. Please avoid introducing new third-party APIs or libraries.
-4. Commit your changes. Ideally, keep each change in an individual commit. Squash commits if necessary.
-5. Before pushing, ensure your branch is up-to-date with the latest changes from `/consensys-vertical-apps/mmi-defi-adapters`:
-   ```bash
-   git fetch upstream HEAD
-   git rebase FETCH_HEAD
-   ```
-6. Test your new adapter by running the scripts detailed in the README, e.g.,
-   ```bash
-   npm run positions ${userAddress}
-   npm run prices
-   ```
-   and so on.
-7. Before pushing, fix any linting issues by running:
-   ```bash
-   npm run fix
-   ```
-8. Push your changes to your fork.
-9. Open a pull request from within GitHub. Allow maintainer edits and populate the pull request template. If you're unsure about any sections, feel free to leave them blank or mention your uncertainty.
-10. We may request changes. If so, add the changes to your local branch in a new commit and push them to your fork.
-
-Thank you for your contribution!
+1. Generate metadata: e.g., `src/adapters/stargate/products/pool/arbitrum/metadata.json` using `src/adapters/stargate/buildMetadata.ts`.
+2. Add metadata script to `protocolMetadataBuilders` object in `src/adapters/metadataBuilders.ts` and test `npm run metadata`
+3. Create product folder: `src/${protocolName}/products/${productName}`.
+4. Copy and paste the example adapter from `src/adapters/example/products/example-product/exampleProductAdapter.ts` to your product folder.
+5. Replace hardcoded responses with your adapter code.
+6. Add your adapter to `supportedProtocols` in `src/adapters/index.ts`.
+7. Test your adapter (change userAddress accordingly):
+   - Positions: `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
+   - Profits: `npm run profits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
+   - Prices: `npm run prices 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
