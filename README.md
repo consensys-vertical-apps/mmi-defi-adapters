@@ -44,20 +44,27 @@ npm run build:watch
 ```
 
 # Running the app
+
 ## CLI help
+
 Specific details on what commands are available can be shown running:
+
 ```
 npm run adapters-cli
 ```
+
 For getting the arguments and options for specific commands:
+
 ```
 npm run positions -- --help
 ```
 
 ## Filtering
+
 It is possible to get results for specific protocols and chains for every command by adding `--chain <chainId>` and/or `--protocol <protocolName>`
 
 For example:
+
 ```
 npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocol stargate --chain 1
 ```
@@ -110,6 +117,19 @@ npm run deposits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336
 npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336
 ```
 
+## Update Average blocks per day
+
+Run the following command to update all averages
+```
+npm run adapters-cli block-average
+```
+
+Run the following command to update a specific chain
+
+```
+npm run adapters-cli block-average -- --chain 1
+```
+
 # Support for a new protocol
 
 ```
@@ -149,11 +169,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 ## Adding a new Adapter (CLI)
 
 Run the following command to add a new adapter
+
 ```
 npm run new-adapter <Example> <example-product> [Chains]
 ```
 
 Where:
+
 - `<Example>` is the name of your protocol as you'd like it to appear.
 - `<example-product>` is the name of the product for the adapter in kebab-case
 - `[Chains]` is an optional argument with a comma separated list of supported chains (e.g. `Ethereum,Arbitrum,Optimism`). Default: `Ethereum`
@@ -190,6 +212,17 @@ Run the following command to generate factories and abis for those contracts aut
 
 ```
 npm run build-types
+```
+
+## Versioning and Publishing (internal use only)
+
+On your branch, bump the package version by running the below. The publish_ci pipeline will automatically-run when merged to main.
+
+npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]
+
+```
+npm version patch
+git push
 ```
 
 # Contributors ✨
