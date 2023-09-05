@@ -6,18 +6,60 @@
     </b>
 </h1>
 
-# Description
+# Introduction
 
-MMI Defi adapter library
+Welcome to our defi-adapter library, often defi-protocols have their own unique interfaces and data structures posing challenges while fetching or interacting with them.
+This library of adapters takes care of fetching and transforming underlying protocol data into a standardized format which can be used by portfolio dashboards.
 
-We have created an open source DeFi adapater library. The aim of this library is to provide the tools and scaffolding for a DeFi protocol to build an adapter. This adapter will provide read and write capabilities within the MMI and MetaMask portfolio dashboards.
-Our goal is to (i) connect users with DeFi protocols (ii) benefit the wider ecosystem (iii) simplify and standardize adapter building.
+Our goal is to (i) connect users with DeFi protocols (ii) benefit the wider ecosystem (iii) simplify and standardize adapters building (iv) provide the following data in a standardized format:
+
+- Defi positions by address. Results should include the balance of the underlying token(s) such as USDC, WETH etc.
+- Total value locked by pool
+- APY/APY by pool
+- Daily profit and loss by address
+- Price of LP token
+- Deposits by address
+- Withdrawals by address
+- Claimed rewards by address
+
+## Overview of this library
+
+From left to right, get onchain data and standardize.
+
+![Alt text](high-level.png)
+
+## Overview of getPositions function
+
+![Alt text](get-positions.png)
 
 # Getting Started
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Requirements
 
 - Node v18
+
+## Quick start
+
+To run project and run adapters in default mode with our test addresses follow the below.
+
+```
+1 . Create a copy of `.env.example` as `.env`.
+2. npm i
+3. npm run build:watch
+4. npm run positions
+5. npm run profits
+6. npm run tvl
+7. npm run prices
+8. npm run apr
+9. npm run apy
+10. npm run withdrawals
+11. npm run deposits
+
+```
 
 ## Installation
 
@@ -120,6 +162,7 @@ npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336
 ## Update Average blocks per day
 
 Run the following command to update all averages
+
 ```
 npm run adapters-cli block-average
 ```
@@ -130,7 +173,7 @@ Run the following command to update a specific chain
 npm run adapters-cli block-average -- --chain 1
 ```
 
-# Support for a new protocol
+# Repo topology
 
 ```
 mmi-defi-adapters/
@@ -162,10 +205,6 @@ mmi-defi-adapters/
                 └── example-staking-contract.json       # Abi for the protocol staking contract
 ```
 
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
-
 ## Adding a new Adapter (CLI)
 
 Run the following command to add a new adapter
@@ -180,29 +219,9 @@ Where:
 - `<example-product>` is the name of the product for the adapter in kebab-case
 - `[Chains]` is an optional argument with a comma separated list of supported chains (e.g. `Ethereum,Arbitrum,Optimism`). Default: `Ethereum`
 
-## Adding a New Protocol (manual)
+## Adding a New Protocol or Adapter manually
 
-To integrate a new protocol:
-
-1. Update `src/adapters/index.ts`:
-   - Add to `Protocol` object: key in CamelCase, value in kebab-case (matching folder name).
-   - Add to `supportedProtocols` object.
-2. Create a new folder in `src/adapters`, named in kebab-case, e.g., `src/${protocolName}/products/${productName}/productAdapter.ts`.
-
-## Adding an Adapter (manual)
-
-After adding your protocol:
-
-1. Generate metadata: e.g., `src/adapters/stargate/products/pool/arbitrum/metadata.json` using `src/adapters/stargate/buildMetadata.ts`.
-2. Add metadata script to `protocolMetadataBuilders` object in `src/adapters/metadataBuilders.ts` and test `npm run metadata`
-3. Create product folder: `src/${protocolName}/products/${productName}`.
-4. Copy and paste the example adapter from `src/adapters/example/products/example-product/exampleProductAdapter.ts` to your product folder.
-5. Replace hardcoded responses with your adapter code.
-6. Add your adapter to `supportedProtocols` in `src/adapters/index.ts`.
-7. Test your adapter (change userAddress accordingly):
-   - Positions: `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
-   - Profits: `npm run profits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
-   - Prices: `npm run prices 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
+See [NON-CLI-ADAPTER.md](NON-CLI-ADAPTER).
 
 ## Contract Factories
 
