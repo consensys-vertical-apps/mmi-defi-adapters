@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/mmi-defi-adapters",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Defi adapters for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
