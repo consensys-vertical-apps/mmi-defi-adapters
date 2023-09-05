@@ -1,9 +1,16 @@
 {
-  "name": "mmi-defi-adapters",
-  "version": "0.0.1",
+  "name": "@metamask-institutional/defi-adapters",
+  "version": "0.2.4",
   "description": "Defi adapters for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/consensys-vertical-apps/mmi-defi-adapters"
+  },
   "main": "lib/main/index.js",
   "types": "lib/main/index.d.ts",
   "files": [

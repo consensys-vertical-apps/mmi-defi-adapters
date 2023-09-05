@@ -393,3 +393,4 @@ lib
 junit.xml
 test-report.xml
 .env
+.secrets

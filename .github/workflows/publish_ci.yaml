@@ -1,0 +1,30 @@
+name: publish:ci
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+    - main
+  push:
+    tags:
+    - '*'
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          registry-url: "https://registry.npmjs.org"
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Publish
+        run: npm publish
