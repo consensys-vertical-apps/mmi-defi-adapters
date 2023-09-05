@@ -1,19 +1,17 @@
 name: publish:ci
 
 on:
-  pull_request:
-    types: [closed]
-    branches:
-    - main
   push:
+    branches:
+      - main
     tags:
-    - '*'
+      - '*'
+
 
 jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
