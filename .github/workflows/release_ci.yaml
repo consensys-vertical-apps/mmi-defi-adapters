@@ -1,4 +1,4 @@
-name: release:ci
+name: publish:ci
 
 on:
   pull_request:
@@ -6,8 +6,8 @@ on:
     - main
 
 jobs:
-  release:
-    name: Release
+  publish:
+    name: Publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,16 +18,7 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Configure
-        run: |
-          npm config set @codefi:registry ${NPM_PRIVATE_REGISTRY_URL}
-          npm config set ${NPM_PRIVATE_REGISTRY_URL#http*:}:_authToken $NPM_PRIVATE_REGISTRY_TOKEN
-        env:
-          NPM_PRIVATE_REGISTRY_URL: ${{ secrets.NPM_PRIVATE_REGISTRY_URL }}    
-      - name: Configure 2
-        run: npm config set ${NPM_PRIVATE_REGISTRY_URL#http*:}:_authToken $NPM_PRIVATE_REGISTRY_TOKEN
-        env:
-          NPM_PRIVATE_REGISTRY_URL: ${{ secrets.NPM_PRIVATE_REGISTRY_URL }}
-          NPM_PRIVATE_REGISTRY_TOKEN: ${{ secrets.NPM_PRIVATE_REGISTRY_TOKEN }}
       - name: Publish
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
