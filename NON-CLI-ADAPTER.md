@@ -19,10 +19,8 @@ Task:
 Example sub tasks:
 
 - Run "add adapter CLI" described in readme section "Adding a new Adapter (CLI)"
-- Create "ethers contracts" to interact with your smart-contracts, see section "Contract Factories" in readme for instructions
-- Create a metadata script and file to get token reference data for your lp tokens [example metadata file](src/adapters/stargate/products/pool/arbitrum/metadata.json)
-- Implement your adapter logic so that the result follows our interface (IProtocolAdapter) standard
-- Run/Test your adapter(s) using commands described in readme
+- Create a metadata script and file to get protocol data for your lp tokens [example metadata file](src/adapters/stargate/products/pool/arbitrum/metadata.json)
+- Implement your adapter logic
 
 ## Issues
 
