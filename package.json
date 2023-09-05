@@ -16,7 +16,7 @@
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
     "adapters-cli": "ts-node src/scripts/index.ts",
-    "metadata": "ts-node src/scripts/buildMetadata.ts",
+    "build-metadata": "npm run adapters-cli build-metadata --",
     "build-types": "npm run adapters-cli build-types --",
     "new-adapter": "npm run adapters-cli new-adapter --",
     "positions": "npm run adapters-cli positions --",

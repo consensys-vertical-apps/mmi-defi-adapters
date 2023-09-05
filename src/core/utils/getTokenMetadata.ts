@@ -1,4 +1,5 @@
-import { Erc20__factory } from '../../contracts'
+import { ethers } from 'ethers'
+import { Erc20, Erc20__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
 import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
 import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
@@ -66,8 +67,8 @@ const getOnChainTokenMetadata = async (
   const tokenContract = Erc20__factory.connect(tokenAddress, provider)
 
   try {
-    const name = await tokenContract.name()
-    const symbol = await tokenContract.symbol()
+    const name = await getTokenName(tokenContract)
+    const symbol = await getTokenSymbol(tokenContract)
     const decimals = await tokenContract.decimals()
     return {
       address: tokenContract.address.toLowerCase(),
@@ -84,3 +85,50 @@ const getOnChainTokenMetadata = async (
     return undefined
   }
 }
+
+const getTokenName = async (tokenContract: Erc20) => {
+  try {
+    return await tokenContract.name()
+  } catch (error) {
+    if (!isCallExceptionCodeError(error)) {
+      throw error
+    }
+
+    logger.warn(
+      { address: tokenContract.address },
+      'Failed to fetch token name as a string. Using bytes32 fallback',
+    )
+
+    // Fallback for contracts that return bytes32 instead of string
+    const result = await tokenContract.provider.call({
+      to: tokenContract.address,
+      data: '0x06fdde03', // Function signature for name()
+    })
+    return ethers.utils.parseBytes32String(result)
+  }
+}
+
+const getTokenSymbol = async (tokenContract: Erc20) => {
+  try {
+    return await tokenContract.symbol()
+  } catch (error) {
+    if (!isCallExceptionCodeError(error)) {
+      throw error
+    }
+
+    logger.warn(
+      { address: tokenContract.address },
+      'Failed to fetch token symbol as a string. Using bytes32 fallback',
+    )
+
+    // Fallback for contracts that return bytes32 instead of string
+    const result = await tokenContract.provider.call({
+      to: tokenContract.address,
+      data: '0x95d89b41', // Function signature for symbol()
+    })
+    return ethers.utils.parseBytes32String(result)
+  }
+}
+
+const isCallExceptionCodeError = (error: unknown): boolean =>
+  error instanceof Error && 'code' in error && error.code === 'CALL_EXCEPTION'

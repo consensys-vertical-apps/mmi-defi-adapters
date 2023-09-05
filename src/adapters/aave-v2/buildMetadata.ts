@@ -1,9 +1,21 @@
 import { ethers } from 'ethers'
 import { Protocol } from '..'
-import { Chain } from '../../core/constants/chains'
+import { Chain, ChainNames } from '../../core/constants/chains'
 import { chainProviders } from '../../core/utils/chainProviders'
 import { logger } from '../../core/utils/logger'
 import { ProtocolDataProvider__factory } from './contracts'
+import * as path from 'path'
+import { promises as fs } from 'fs'
+import { Json } from '../../types/json'
+import { ERC20, getTokenMetadata } from '../../core/utils/getTokenMetadata'
+
+export type AaveV2PoolMetadata = Record<
+  string,
+  {
+    protocolToken: ERC20
+    underlyingToken: ERC20
+  }
+>
 
 type ChainDetails = {
   chainId: Chain
@@ -46,12 +58,6 @@ export const buildMetadata = async (chainId: Chain) => {
     protocolDataProvider: contractAddresses.protocolDataProvider,
   })
 
-  // await vestingMetadata({
-  //   chainId,
-  //   provider,
-  //   vestingContractAddress: contractAddresses.vestingContractAddress,
-  // })
-
   logger.info(
     {
       protocol: Protocol.AaveV2,
@@ -74,5 +80,96 @@ async function lpMetadata({
   const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
     protocolDataProvider,
     provider,
+  )
+
+  const reserveTokens =
+    await protocolDataProviderContract.getAllReservesTokens()
+
+  const aTokenMetadataObject: AaveV2PoolMetadata = {}
+  const stableDebtTokenMetadataObject: AaveV2PoolMetadata = {}
+  const variableDebtTokenMetadataObject: AaveV2PoolMetadata = {}
+
+  for (const { tokenAddress } of reserveTokens) {
+    const reserveTokenAddresses =
+      await protocolDataProviderContract.getReserveTokensAddresses(tokenAddress)
+
+    const underlyingTokenMetadata = await getThinTokenMetadata(
+      tokenAddress,
+      chainId,
+    )
+
+    const setProtocolToken = async (
+      tokenAddress: string,
+      tokenMetadataObject: AaveV2PoolMetadata,
+    ) => {
+      const protocolTokenMetadata = await getThinTokenMetadata(
+        tokenAddress,
+        chainId,
+      )
+      tokenMetadataObject[protocolTokenMetadata.address] = {
+        protocolToken: protocolTokenMetadata,
+        underlyingToken: underlyingTokenMetadata,
+      }
+    }
+
+    setProtocolToken(reserveTokenAddresses.aTokenAddress, aTokenMetadataObject)
+    setProtocolToken(
+      reserveTokenAddresses.stableDebtTokenAddress,
+      stableDebtTokenMetadataObject,
+    )
+    setProtocolToken(
+      reserveTokenAddresses.variableDebtTokenAddress,
+      variableDebtTokenMetadataObject,
+    )
+  }
+
+  await writeMetadataToFile(
+    'pool',
+    chainId,
+    aTokenMetadataObject,
+    'a-token-pool-metadata.json',
+  )
+
+  await writeMetadataToFile(
+    'pool',
+    chainId,
+    stableDebtTokenMetadataObject,
+    'stable-debt-token-pool-metadata.json',
+  )
+
+  await writeMetadataToFile(
+    'pool',
+    chainId,
+    variableDebtTokenMetadataObject,
+    'variable-debt-token-pool-metadata.json',
+  )
+}
+
+async function getThinTokenMetadata(tokenAddress: string, chainId: Chain) {
+  const { iconUrl: _, ...token } = await getTokenMetadata({
+    tokenAddress,
+    chainId,
+  })
+
+  return token
+}
+
+async function writeMetadataToFile<MetadataObject extends Json>(
+  product: string,
+  chainId: Chain,
+  metadataObject: MetadataObject,
+  fileName: string,
+) {
+  const filePath = path.resolve(
+    __dirname,
+    `./products/${product}/${ChainNames[chainId]}/${fileName}`,
+  )
+
+  await fs.mkdir(path.dirname(filePath), { recursive: true })
+
+  return fs.writeFile(
+    filePath,
+    JSON.stringify(metadataObject, null, 2),
+    'utf-8',
   )
 }

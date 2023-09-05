@@ -6,10 +6,15 @@ import { StargateVestingAdapter } from './stargate/products/vesting/stargateVest
 import ETHEREUM_VESTING_METADATA from './stargate/products/vesting/ethereum/metadata.json'
 import ETHEREUM_POOL_METADATA from './stargate/products/pool/ethereum/metadata.json'
 import ARBITRUM_POOL_METADATA from './stargate/products/pool/arbitrum/metadata.json'
+import AAVE_V2_A_TOKEN_POOL_METADATA from './aave-v2/products/pool/ethereum/a-token-pool-metadata.json'
+import AAVE_V2_STABLE_DEBT_TOKEN_POOL_METADATA from './aave-v2/products/pool/ethereum/stable-debt-token-pool-metadata.json'
+import AAVE_V2_VARIABLE_DEBT_TOKEN_POOL_METADATA from './aave-v2/products/pool/ethereum/variable-debt-token-pool-metadata.json'
 
 import { ExampleProductAdapter } from './example/products/example-product/exampleProductAdapter'
 
-import { AaveV2PoolAdapter } from './aave-v2/products/pool/aaveV2PoolAdapter'
+import { AaveV2ATokenPoolAdapter } from './aave-v2/products/pool/aaveV2ATokenPoolAdapter'
+import { AaveV2StableDebtTokenPoolAdapter } from './aave-v2/products/pool/aaveV2StableDebtTokenPoolAdapter'
+import { AaveV2StableVariableTokenPoolAdapter } from './aave-v2/products/pool/aaveV2StableVariableTokenPoolAdapter'
 
 // Add new protocols names below
 export const Protocol = {
@@ -68,8 +73,20 @@ export const supportedProtocols: Record<
   [Protocol.AaveV2]: {
     [Chain.Ethereum]: [
       (provider) =>
-        new AaveV2PoolAdapter({
-          metadata: {},
+        new AaveV2ATokenPoolAdapter({
+          metadata: AAVE_V2_A_TOKEN_POOL_METADATA,
+          chainId: Chain.Ethereum,
+          provider,
+        }),
+      (provider) =>
+        new AaveV2StableDebtTokenPoolAdapter({
+          metadata: AAVE_V2_STABLE_DEBT_TOKEN_POOL_METADATA,
+          chainId: Chain.Ethereum,
+          provider,
+        }),
+      (provider) =>
+        new AaveV2StableVariableTokenPoolAdapter({
+          metadata: AAVE_V2_VARIABLE_DEBT_TOKEN_POOL_METADATA,
           chainId: Chain.Ethereum,
           provider,
         }),
