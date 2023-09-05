@@ -1,27 +1,27 @@
 import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
+import { Protocol } from '../../..'
 import { StargateVotingEscrow__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
-import { Protocol } from '../../..'
+import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 import {
-  IProtocolAdapter,
-  ProtocolDetails,
-  MovementsByBlock,
+  GetAprInput,
+  GetApyInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
+  IProtocolAdapter,
+  MovementsByBlock,
   PositionType,
-  TokenType,
   ProfitsTokensWithRange,
+  ProtocolAprToken,
+  ProtocolApyToken,
+  ProtocolDetails,
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
-  ProtocolAprToken,
-  GetAprInput,
-  ProtocolApyToken,
-  GetApyInput,
+  TokenType,
 } from '../../../../types/adapter'
 import { StargateVestingMetadata } from '../../buildMetadata'
-import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 
 export class StargateVestingAdapter implements IProtocolAdapter {
   private metadata: StargateVestingMetadata

@@ -1,5 +1,6 @@
 import { ERC20 } from '../core/utils/getTokenMetadata'
 import {
+  MovementsByBlock,
   ProfitsTokensWithRange,
   ProtocolAprToken,
   ProtocolApyToken,
@@ -7,7 +8,6 @@ import {
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
-  MovementsByBlock,
 } from './adapter'
 
 export type DefiPositionResponse = ProtocolDetails & {

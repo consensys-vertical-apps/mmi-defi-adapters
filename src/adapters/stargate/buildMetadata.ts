@@ -1,17 +1,17 @@
 import { ethers } from 'ethers'
 import { promises as fs } from 'fs'
 import path from 'path'
+import { Protocol } from '..'
 import {
   StargateFactory__factory,
   StargateToken__factory,
   StargateVotingEscrow__factory,
 } from '../../contracts'
 import { Chain, ChainNames } from '../../core/constants/chains'
-import { Protocol } from '..'
 import { chainProviders } from '../../core/utils/chainProviders'
 import { ERC20, getTokenMetadata } from '../../core/utils/getTokenMetadata'
-import { Json } from '../../types/json'
 import { logger } from '../../core/utils/logger'
+import { Json } from '../../types/json'
 
 export type StargatePoolMetadata = Record<
   string,
