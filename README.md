@@ -203,7 +203,7 @@ npm run build-types
 
 ## Versioning and Publishing (internal use only)
 
-Bump the package version then the publish_ci pipeline will automatically publish to npm
+On your branch, bump the package version by running the below. The publish_ci pipeline will automatically-run when merged to main.
 
 npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]
 
