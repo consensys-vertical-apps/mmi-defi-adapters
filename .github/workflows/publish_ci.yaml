@@ -24,7 +24,5 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Check if able to publish changes
-        run: npm whoami
       - name: Publish
         run: npm publish
