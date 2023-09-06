@@ -161,8 +161,7 @@ async function writeMetadataToFile<MetadataObject extends Json>(
   fileName: string,
 ) {
   const filePath = path.resolve(
-    __dirname,
-    `./products/${product}/${ChainNames[chainId]}/${fileName}`,
+    `src/adapters/aave-v2/products/${product}/${ChainNames[chainId]}/${fileName}`,
   )
 
   await fs.mkdir(path.dirname(filePath), { recursive: true })

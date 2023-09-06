@@ -15,7 +15,7 @@ export function buildContractTypes(program: Command) {
 }
 
 async function buildGlobalContractTypes() {
-  const contractsDirectory = path.resolve(__dirname, '../contracts')
+  const contractsDirectory = path.resolve('src/contracts')
   await buildContractTypesForFolder(contractsDirectory)
 }
 
