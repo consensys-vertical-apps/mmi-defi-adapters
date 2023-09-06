@@ -2,7 +2,7 @@ import { Protocol } from '../../..'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { AaveV2BasePoolAdapter } from './aaveV2BasePoolAdapter'
 
-export class AaveV2StableVariableTokenPoolAdapter extends AaveV2BasePoolAdapter {
+export class AaveV2VariableDebtTokenPoolAdapter extends AaveV2BasePoolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: Protocol.AaveV2,

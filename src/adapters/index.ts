@@ -3,7 +3,7 @@ import { Chain } from '../core/constants/chains'
 import { IProtocolAdapter } from '../types/adapter'
 import { AaveV2ATokenPoolAdapter } from './aave-v2/products/pool/aaveV2ATokenPoolAdapter'
 import { AaveV2StableDebtTokenPoolAdapter } from './aave-v2/products/pool/aaveV2StableDebtTokenPoolAdapter'
-import { AaveV2StableVariableTokenPoolAdapter } from './aave-v2/products/pool/aaveV2StableVariableTokenPoolAdapter'
+import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/pool/aaveV2VariableDebtTokenPoolAdapter'
 import AAVE_V2_AVALANCHE_A_TOKEN_POOL_METADATA from './aave-v2/products/pool/avalanche/a-token-pool-metadata.json'
 import AAVE_V2_AVALANCHE_STABLE_DEBT_TOKEN_POOL_METADATA from './aave-v2/products/pool/avalanche/stable-debt-token-pool-metadata.json'
 import AAVE_V2_AVALANCHE_VARIABLE_DEBT_TOKEN_POOL_METADATA from './aave-v2/products/pool/avalanche/variable-debt-token-pool-metadata.json'
@@ -89,7 +89,7 @@ export const supportedProtocols: Record<
           provider,
         }),
       (provider) =>
-        new AaveV2StableVariableTokenPoolAdapter({
+        new AaveV2VariableDebtTokenPoolAdapter({
           metadata: AAVE_V2_ETHEREUM_VARIABLE_DEBT_TOKEN_POOL_METADATA,
           chainId: Chain.Ethereum,
           provider,
@@ -109,7 +109,7 @@ export const supportedProtocols: Record<
           provider,
         }),
       (provider) =>
-        new AaveV2StableVariableTokenPoolAdapter({
+        new AaveV2VariableDebtTokenPoolAdapter({
           metadata: AAVE_V2_POLYGON_VARIABLE_DEBT_TOKEN_POOL_METADATA,
           chainId: Chain.Polygon,
           provider,
@@ -129,7 +129,7 @@ export const supportedProtocols: Record<
           provider,
         }),
       (provider) =>
-        new AaveV2StableVariableTokenPoolAdapter({
+        new AaveV2VariableDebtTokenPoolAdapter({
           metadata: AAVE_V2_AVALANCHE_VARIABLE_DEBT_TOKEN_POOL_METADATA,
           chainId: Chain.Avalanche,
           provider,
