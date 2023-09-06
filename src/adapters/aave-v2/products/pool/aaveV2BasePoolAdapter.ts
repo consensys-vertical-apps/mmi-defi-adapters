@@ -129,18 +129,31 @@ export abstract class AaveV2BasePoolAdapter implements IProtocolAdapter {
     }
   }
 
-  async getPricePerShare(
-    _input: GetPricesInput,
-  ): Promise<ProtocolPricePerShareToken> {
+  async getPricePerShare({
+    protocolTokenAddress,
+  }: GetPricesInput): Promise<ProtocolPricePerShareToken> {
+    const { protocolToken, underlyingToken } =
+      this.fetchProtocolTokenMetadata(protocolTokenAddress)
+
+    const pricePerShareRaw = BigInt(1 * 10 ** protocolToken.decimals)
+
+    const pricePerShare = formatUnits(
+      pricePerShareRaw,
+      underlyingToken.decimals,
+    )
+
     return {
-      name: 'Tether USD-LP',
-      iconUrl: '',
-      decimals: 6,
-      symbol: 'S*USDT',
-      address: '0xprotocolTokenAddress',
+      ...protocolToken,
       share: 1,
-      type: 'protocol',
-      tokens: [],
+      type: TokenType.Protocol,
+      tokens: [
+        {
+          ...underlyingToken,
+          type: TokenType.Underlying,
+          pricePerShareRaw,
+          pricePerShare,
+        },
+      ],
     }
   }
 
