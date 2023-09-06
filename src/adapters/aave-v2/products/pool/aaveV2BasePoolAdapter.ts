@@ -2,11 +2,15 @@ import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
 import { Erc20__factory } from '../../../../contracts'
 import { TransferEvent } from '../../../../contracts/Erc20'
+import { AVERAGE_BLOCKS_PER_DAY } from '../../../../core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
+import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
+import { calculateProfit } from '../../../../core/utils/calculateProfit'
 import { getBalances } from '../../../../core/utils/getBalances'
 import { ERC20 } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
   GetAprInput,
   GetApyInput,
@@ -27,10 +31,6 @@ import {
   TokenType,
 } from '../../../../types/adapter'
 import { AaveV2PoolMetadata } from '../../buildMetadata'
-import { AVERAGE_BLOCKS_PER_DAY } from '../../../../core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
-import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
-import { calculateProfit } from '../../../../core/utils/calculateProfit'
 
 export abstract class AaveV2BasePoolAdapter implements IProtocolAdapter {
   private metadata: AaveV2PoolMetadata
