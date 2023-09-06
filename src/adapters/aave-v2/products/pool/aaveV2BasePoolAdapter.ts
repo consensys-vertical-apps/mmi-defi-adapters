@@ -1,7 +1,12 @@
 import { ethers } from 'ethers'
+import { formatUnits } from 'ethers/lib/utils'
+import { Erc20__factory } from '../../../../contracts'
+import { TransferEvent } from '../../../../contracts/Erc20'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
 import { getBalances } from '../../../../core/utils/getBalances'
 import { ERC20 } from '../../../../core/utils/getTokenMetadata'
+import { logger } from '../../../../core/utils/logger'
 import {
   GetAprInput,
   GetApyInput,
@@ -50,12 +55,64 @@ export abstract class AaveV2BasePoolAdapter implements IProtocolAdapter {
     )
   }
 
-  async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return []
+  async getWithdrawals({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const { protocolToken, underlyingToken } =
+      this.fetchProtocolTokenMetadata(protocolTokenAddress)
+
+    const protocolTokenContract =
+      this.protocolTokenContract(protocolTokenAddress)
+
+    const filter = protocolTokenContract.filters.Transfer(
+      userAddress,
+      ZERO_ADDRESS,
+    )
+
+    const eventResults = await protocolTokenContract.queryFilter<TransferEvent>(
+      filter,
+      fromBlock,
+      toBlock,
+    )
+
+    return await this.eventUtil({
+      protocolToken,
+      underlyingToken,
+      eventResults,
+    })
   }
 
-  async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return []
+  async getDeposits({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const { protocolToken, underlyingToken } =
+      this.fetchProtocolTokenMetadata(protocolTokenAddress)
+
+    const protocolTokenContract =
+      this.protocolTokenContract(protocolTokenAddress)
+
+    const filter = protocolTokenContract.filters.Transfer(
+      ZERO_ADDRESS,
+      userAddress,
+    )
+
+    const eventResults = await protocolTokenContract.queryFilter<TransferEvent>(
+      filter,
+      fromBlock,
+      toBlock,
+    )
+
+    return await this.eventUtil({
+      protocolToken,
+      underlyingToken,
+      eventResults,
+    })
   }
 
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
@@ -167,5 +224,65 @@ export abstract class AaveV2BasePoolAdapter implements IProtocolAdapter {
         ],
       },
     ]
+  }
+
+  private eventUtil({
+    protocolToken,
+    underlyingToken,
+    eventResults,
+  }: {
+    protocolToken: ERC20
+    underlyingToken: ERC20
+    eventResults: TransferEvent[]
+  }): Promise<MovementsByBlock[]> {
+    return Promise.all(
+      eventResults.map(async (transferEvent) => {
+        const {
+          blockNumber,
+          args: { value },
+        } = transferEvent
+
+        const protocolTokenPrice = await this.getPricePerShare({
+          blockNumber,
+          protocolTokenAddress: protocolToken.address,
+        })
+
+        const pricePerShareRaw =
+          protocolTokenPrice.tokens?.[0]?.pricePerShareRaw
+        if (!pricePerShareRaw) {
+          throw new Error('No price for events at this time')
+        }
+
+        const movementValueRaw = BigInt(value.toString()) * pricePerShareRaw
+        return {
+          underlyingTokensMovement: {
+            [underlyingToken.address]: {
+              ...underlyingToken,
+              movementValue: formatUnits(
+                movementValueRaw,
+                underlyingToken.decimals,
+              ),
+              movementValueRaw,
+            },
+          },
+          blockNumber,
+        }
+      }),
+    )
+  }
+
+  private fetchProtocolTokenMetadata(protocolTokenAddress: string) {
+    const protocolTokenMetadata = this.metadata[protocolTokenAddress]
+
+    if (!protocolTokenMetadata) {
+      logger.error({ protocolTokenAddress }, 'Protocol token not found')
+      throw new Error('Protocol token not found')
+    }
+
+    return protocolTokenMetadata
+  }
+
+  private protocolTokenContract(address: string) {
+    return Erc20__factory.connect(address, this.provider)
   }
 }
