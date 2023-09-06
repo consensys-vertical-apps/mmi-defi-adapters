@@ -16,5 +16,7 @@ export const protocolMetadataBuilders: Partial<
   },
   [Protocol.AaveV2]: {
     [Chain.Ethereum]: () => buildAave2Metadata(Chain.Ethereum),
+    [Chain.Polygon]: () => buildAave2Metadata(Chain.Polygon),
+    [Chain.Avalanche]: () => buildAave2Metadata(Chain.Avalanche),
   },
 }

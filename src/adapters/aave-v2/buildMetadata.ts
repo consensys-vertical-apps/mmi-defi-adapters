@@ -33,6 +33,12 @@ const CONTRACT_ADDRESSES: Partial<
   [Chain.Ethereum]: {
     protocolDataProvider: '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
   },
+  [Chain.Polygon]: {
+    protocolDataProvider: '0x7551b5D2763519d4e37e8B81929D336De671d46d',
+  },
+  [Chain.Avalanche]: {
+    protocolDataProvider: '0x65285E9dfab318f57051ab2b139ccCf232945451',
+  },
 }
 
 export const buildMetadata = async (chainId: Chain) => {
@@ -52,7 +58,7 @@ export const buildMetadata = async (chainId: Chain) => {
     'Metadata extraction script started',
   )
 
-  await lpMetadata({
+  await poolsMetadata({
     chainId,
     provider,
     protocolDataProvider: contractAddresses.protocolDataProvider,
@@ -68,7 +74,7 @@ export const buildMetadata = async (chainId: Chain) => {
   )
 }
 
-async function lpMetadata({
+async function poolsMetadata({
   chainId,
   provider,
   protocolDataProvider,

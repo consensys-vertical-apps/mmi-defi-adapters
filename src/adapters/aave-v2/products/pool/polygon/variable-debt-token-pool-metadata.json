@@ -1,0 +1,170 @@
+{
+  "0x75c4d1fb84429023170086f06e682dcbbf537b7d": {
+    "protocolToken": {
+      "address": "0x75c4d1fb84429023170086f06e682dcbbf537b7d",
+      "name": "Aave Matic Market variable debt mDAI",
+      "symbol": "variableDebtmDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+      "name": "(PoS) Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x248960a9d75edfa3de94f7193eae3161eb349a12": {
+    "protocolToken": {
+      "address": "0x248960a9d75edfa3de94f7193eae3161eb349a12",
+      "name": "Aave Matic Market variable debt mUSDC",
+      "symbol": "variableDebtmUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+      "name": "USD Coin (PoS)",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x8038857fd47108a07d1f6bf652ef1cbec279a2f3": {
+    "protocolToken": {
+      "address": "0x8038857fd47108a07d1f6bf652ef1cbec279a2f3",
+      "name": "Aave Matic Market variable debt mUSDT",
+      "symbol": "variableDebtmUSDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xf664f50631a6f0d72ecdaa0e49b0c019fa72a8dc": {
+    "protocolToken": {
+      "address": "0xf664f50631a6f0d72ecdaa0e49b0c019fa72a8dc",
+      "name": "Aave Matic Market variable debt mWBTC",
+      "symbol": "variableDebtmWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
+      "name": "(PoS) Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0xede17e9d79fc6f9ff9250d9eefbdb88cc18038b5": {
+    "protocolToken": {
+      "address": "0xede17e9d79fc6f9ff9250d9eefbdb88cc18038b5",
+      "name": "Aave Matic Market variable debt mWETH",
+      "symbol": "variableDebtmWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x59e8e9100cbfcbcbadf86b9279fa61526bbb8765": {
+    "protocolToken": {
+      "address": "0x59e8e9100cbfcbcbadf86b9279fa61526bbb8765",
+      "name": "Aave Matic Market variable debt mWMATIC",
+      "symbol": "variableDebtmWMATIC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    }
+  },
+  "0x1c313e9d0d826662f5ce692134d938656f681350": {
+    "protocolToken": {
+      "address": "0x1c313e9d0d826662f5ce692134d938656f681350",
+      "name": "Aave Matic Market variable debt mAAVE",
+      "symbol": "variableDebtmAAVE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+      "name": "Aave (PoS)",
+      "symbol": "AAVE",
+      "decimals": 18
+    }
+  },
+  "0x36e988a38542c3482013bb54ee46ac1fb1efedcd": {
+    "protocolToken": {
+      "address": "0x36e988a38542c3482013bb54ee46ac1fb1efedcd",
+      "name": "Aave Matic Market variable debt GHST",
+      "symbol": "variableDebtmGHST",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
+      "name": "Aavegotchi GHST Token (PoS)",
+      "symbol": "GHST",
+      "decimals": 18
+    }
+  },
+  "0x773e0e32e7b6a00b7ca9daa85dfba9d61b7f2574": {
+    "protocolToken": {
+      "address": "0x773e0e32e7b6a00b7ca9daa85dfba9d61b7f2574",
+      "name": "Aave Matic Market variable debt BAL",
+      "symbol": "variableDebtmBAL",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
+      "name": "Balancer (PoS)",
+      "symbol": "BAL",
+      "decimals": 18
+    }
+  },
+  "0x43150aa0b7e19293d935a412c8607f9172d3d3f3": {
+    "protocolToken": {
+      "address": "0x43150aa0b7e19293d935a412c8607f9172d3d3f3",
+      "name": "Aave Matic Market variable debt DPI",
+      "symbol": "variableDebtmDPI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
+      "name": "DefiPulse Index (PoS)",
+      "symbol": "DPI",
+      "decimals": 18
+    }
+  },
+  "0x780bbcbcda2cdb0d2c61fd9bc68c9046b18f3229": {
+    "protocolToken": {
+      "address": "0x780bbcbcda2cdb0d2c61fd9bc68c9046b18f3229",
+      "name": "Aave Matic Market variable debt CRV",
+      "symbol": "variableDebtmCRV",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x172370d5cd63279efa6d502dab29171933a610af",
+      "name": "CRV (PoS)",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x9cb9feafa73bf392c905eebf5669ad3d073c3dfc": {
+    "protocolToken": {
+      "address": "0x9cb9feafa73bf392c905eebf5669ad3d073c3dfc",
+      "name": "Aave Matic Market variable debt SUSHI",
+      "symbol": "variableDebtmSUSHI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
+      "name": "SushiToken (PoS)",
+      "symbol": "SUSHI",
+      "decimals": 18
+    }
+  }
+}
