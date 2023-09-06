@@ -1,0 +1,86 @@
+{
+  "0x53f7c5869a859f0aec3d334ee8b4cf01e3492f21": {
+    "protocolToken": {
+      "address": "0x53f7c5869a859f0aec3d334ee8b4cf01e3492f21",
+      "name": "Aave Avalanche Market WETH",
+      "symbol": "avWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab",
+      "name": "Wrapped Ether",
+      "symbol": "WETH.e",
+      "decimals": 18
+    }
+  },
+  "0x47afa96cdc9fab46904a55a6ad4bf6660b53c38a": {
+    "protocolToken": {
+      "address": "0x47afa96cdc9fab46904a55a6ad4bf6660b53c38a",
+      "name": "Aave Avalanche Market DAI",
+      "symbol": "avDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xd586e7f844cea2f87f50152665bcbc2c279d8d70",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI.e",
+      "decimals": 18
+    }
+  },
+  "0x532e6537fea298397212f09a61e03311686f548e": {
+    "protocolToken": {
+      "address": "0x532e6537fea298397212f09a61e03311686f548e",
+      "name": "Aave Avalanche Market USDT",
+      "symbol": "avUSDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xc7198437980c041c805a1edcba50c1ce5db95118",
+      "name": "Tether USD",
+      "symbol": "USDT.e",
+      "decimals": 6
+    }
+  },
+  "0x46a51127c3ce23fb7ab1de06226147f446e4a857": {
+    "protocolToken": {
+      "address": "0x46a51127c3ce23fb7ab1de06226147f446e4a857",
+      "name": "Aave Avalanche Market USDC",
+      "symbol": "avUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664",
+      "name": "USD Coin",
+      "symbol": "USDC.e",
+      "decimals": 6
+    }
+  },
+  "0xd45b7c061016102f9fa220502908f2c0f1add1d7": {
+    "protocolToken": {
+      "address": "0xd45b7c061016102f9fa220502908f2c0f1add1d7",
+      "name": "Aave Avalanche Market AAVE",
+      "symbol": "avAAVE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x63a72806098bd3d9520cc43356dd78afe5d386d9",
+      "name": "Aave Token",
+      "symbol": "AAVE.e",
+      "decimals": 18
+    }
+  },
+  "0x686bef2417b6dc32c50a3cbfbcc3bb60e1e9a15d": {
+    "protocolToken": {
+      "address": "0x686bef2417b6dc32c50a3cbfbcc3bb60e1e9a15d",
+      "name": "Aave Avalanche Market WBTC",
+      "symbol": "avWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x50b7545627a5162f82a992c33b87adc75187b218",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC.e",
+      "decimals": 8
+    }
+  }
+}

@@ -1,2 +1,2 @@
-src/contracts/*
-!src/cuntracts/abis
+src/**/contracts/*
+!src/**/contracts/abis/*

@@ -1,0 +1,170 @@
+{
+  "0x27f8d03b3a2196956ed754badc28d73be8830a6e": {
+    "protocolToken": {
+      "address": "0x27f8d03b3a2196956ed754badc28d73be8830a6e",
+      "name": "Aave Matic Market DAI",
+      "symbol": "amDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+      "name": "(PoS) Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x1a13f4ca1d028320a707d99520abfefca3998b7f": {
+    "protocolToken": {
+      "address": "0x1a13f4ca1d028320a707d99520abfefca3998b7f",
+      "name": "Aave Matic Market USDC",
+      "symbol": "amUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+      "name": "USD Coin (PoS)",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x60d55f02a771d515e077c9c2403a1ef324885cec": {
+    "protocolToken": {
+      "address": "0x60d55f02a771d515e077c9c2403a1ef324885cec",
+      "name": "Aave Matic Market USDT",
+      "symbol": "amUSDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x5c2ed810328349100a66b82b78a1791b101c9d61": {
+    "protocolToken": {
+      "address": "0x5c2ed810328349100a66b82b78a1791b101c9d61",
+      "name": "Aave Matic Market WBTC",
+      "symbol": "amWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
+      "name": "(PoS) Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390": {
+    "protocolToken": {
+      "address": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390",
+      "name": "Aave Matic Market WETH",
+      "symbol": "amWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x8df3aad3a84da6b69a4da8aec3ea40d9091b2ac4": {
+    "protocolToken": {
+      "address": "0x8df3aad3a84da6b69a4da8aec3ea40d9091b2ac4",
+      "name": "Aave Matic Market WMATIC",
+      "symbol": "amWMATIC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    }
+  },
+  "0x1d2a0e5ec8e5bbdca5cb219e649b565d8e5c3360": {
+    "protocolToken": {
+      "address": "0x1d2a0e5ec8e5bbdca5cb219e649b565d8e5c3360",
+      "name": "Aave Matic Market AAVE",
+      "symbol": "amAAVE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+      "name": "Aave (PoS)",
+      "symbol": "AAVE",
+      "decimals": 18
+    }
+  },
+  "0x080b5bf8f360f624628e0fb961f4e67c9e3c7cf1": {
+    "protocolToken": {
+      "address": "0x080b5bf8f360f624628e0fb961f4e67c9e3c7cf1",
+      "name": "Aave Matic Market GHST",
+      "symbol": "amGHST",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
+      "name": "Aavegotchi GHST Token (PoS)",
+      "symbol": "GHST",
+      "decimals": 18
+    }
+  },
+  "0xc4195d4060daeac44058ed668aa5efec50d77ff6": {
+    "protocolToken": {
+      "address": "0xc4195d4060daeac44058ed668aa5efec50d77ff6",
+      "name": "Aave Matic Market BAL",
+      "symbol": "amBAL",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
+      "name": "Balancer (PoS)",
+      "symbol": "BAL",
+      "decimals": 18
+    }
+  },
+  "0x81fb82aacb4abe262fc57f06fd4c1d2de347d7b1": {
+    "protocolToken": {
+      "address": "0x81fb82aacb4abe262fc57f06fd4c1d2de347d7b1",
+      "name": "Aave Matic Market DPI",
+      "symbol": "amDPI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
+      "name": "DefiPulse Index (PoS)",
+      "symbol": "DPI",
+      "decimals": 18
+    }
+  },
+  "0x3df8f92b7e798820ddcca2ebea7babda2c90c4ad": {
+    "protocolToken": {
+      "address": "0x3df8f92b7e798820ddcca2ebea7babda2c90c4ad",
+      "name": "Aave Matic Market CRV",
+      "symbol": "amCRV",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x172370d5cd63279efa6d502dab29171933a610af",
+      "name": "CRV (PoS)",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x21ec9431b5b55c5339eb1ae7582763087f98fac2": {
+    "protocolToken": {
+      "address": "0x21ec9431b5b55c5339eb1ae7582763087f98fac2",
+      "name": "Aave Matic Market SUSHI",
+      "symbol": "amSUSHI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
+      "name": "SushiToken (PoS)",
+      "symbol": "SUSHI",
+      "decimals": 18
+    }
+  }
+}

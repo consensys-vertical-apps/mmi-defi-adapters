@@ -193,8 +193,7 @@ async function writeMetadataToFile<MetadataObject extends Json>(
   metadataObject: MetadataObject,
 ) {
   const filePath = path.resolve(
-    __dirname,
-    `./products/${product}/${ChainNames[chainId]}/metadata.json`,
+    `src/adapters/stargate/products/${product}/${ChainNames[chainId]}/metadata.json`,
   )
 
   await fs.mkdir(path.dirname(filePath), { recursive: true })
