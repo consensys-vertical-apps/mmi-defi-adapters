@@ -1,4 +1,2 @@
-lib
-
-src/**/contracts
-!src/**/contracts/abis
+src/**/contracts/*
+!src/**/contracts/abis/*
