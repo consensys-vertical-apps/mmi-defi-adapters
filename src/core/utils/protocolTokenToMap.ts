@@ -1,5 +1,5 @@
 import { BaseToken, ProtocolToken } from '../../types/adapter'
-import { ERC20 } from './getTokenMetadata'
+import { ERC20Metadata } from './getTokenMetadata'
 
 export function formatProtocolTokenArrayToMap(tokens: ProtocolToken[]) {
   return tokens.reduce(
@@ -23,14 +23,14 @@ export function formatProtocolTokenArrayToMap(tokens: ProtocolToken[]) {
     {} as Record<
       string,
       {
-        protocolTokenMetadata: ERC20
+        protocolTokenMetadata: ERC20Metadata
         underlyingTokenPositions: Record<string, BaseToken>
       }
     >,
   )
 }
 
-export function formatTokenArrayToMap<Token extends ERC20>(tokens: Token[]) {
+export function formatTokenArrayToMap<Token extends ERC20Metadata>(tokens: Token[]) {
   return tokens.reduce(
     (accumulator, currentToken) => {
       return {

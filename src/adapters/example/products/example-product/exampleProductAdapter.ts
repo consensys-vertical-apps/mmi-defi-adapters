@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import { Protocol } from '../../..'
 import { Chain } from '../../../../core/constants/chains'
-import { ERC20 } from '../../../../core/utils/getTokenMetadata'
+import { ERC20Metadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
   GetApyInput,
@@ -55,7 +55,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<ERC20[]> {
+  async getProtocolTokens(): Promise<ERC20Metadata[]> {
     return [
       {
         address: '0xprotocolTokenAddress',

@@ -1,4 +1,4 @@
-import { ERC20 } from '../core/utils/getTokenMetadata'
+import { ERC20Metadata } from '../core/utils/getTokenMetadata'
 import {
   MovementsByBlock,
   ProfitsTokensWithRange,
@@ -32,7 +32,7 @@ export type DefiProfitsResponse = ProtocolDetails & ProfitsTokensWithRange
 
 export type DefiMovementsResponse = ProtocolDetails & {
   movements: {
-    protocolToken: ERC20
+    protocolToken: ERC20Metadata
     positionMovements: MovementsByBlock[]
   }[]
 }

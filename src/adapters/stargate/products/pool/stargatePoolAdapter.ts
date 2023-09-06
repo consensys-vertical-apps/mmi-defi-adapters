@@ -1,17 +1,16 @@
 import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
 import { Protocol } from '../../..'
-import { StargateToken__factory } from '../../../../contracts'
-import { TransferEvent } from '../../../../contracts/Erc20'
-import { AVERAGE_BLOCKS_PER_DAY } from '../../../../core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { Erc20__factory, StargateToken__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
-import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
-import { calculateProfit } from '../../../../core/utils/calculateProfit'
 import { getBalances } from '../../../../core/utils/getBalances'
-import { ERC20 } from '../../../../core/utils/getTokenMetadata'
+import {
+  getDeposits,
+  getWithdrawals,
+} from '../../../../core/utils/getMovements'
+import { getOneDayProfit } from '../../../../core/utils/getOneDayProfit'
+import { ERC20Metadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
-import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
   GetAprInput,
   GetApyInput,
@@ -38,7 +37,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   private metadata: StargatePoolMetadata
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain
-  private protocolTokens: ERC20[]
+  private protocolTokens: ERC20Metadata[]
 
   constructor({
     metadata,
@@ -70,7 +69,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<ERC20[]> {
+  async getProtocolTokens(): Promise<ERC20Metadata[]> {
     return this.protocolTokens
   }
 
@@ -164,18 +163,19 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     const { protocolToken, underlyingToken } =
       this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
-    const contractFilter = this.stargateTokenContract(
+    const protocolTokenContract = Erc20__factory.connect(
       protocolTokenAddress,
-    ).filters.Transfer(userAddress, ZERO_ADDRESS)
+      this.provider,
+    )
 
-    const eventResults = await this.stargateTokenContract(
-      protocolTokenAddress,
-    ).queryFilter<TransferEvent>(contractFilter, fromBlock, toBlock)
-
-    return await this.eventUtil({
+    return await getWithdrawals({
+      userAddress,
+      fromBlock,
+      toBlock,
       protocolToken,
-      underlyingToken,
-      eventResults,
+      underlyingTokens: [underlyingToken],
+      protocolTokenContract,
+      getPricePerShare: this.getPricePerShare.bind(this),
     })
   }
 
@@ -188,85 +188,32 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     const { protocolToken, underlyingToken } =
       this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
-    const contractFilter = this.stargateTokenContract(
+    const protocolTokenContract = Erc20__factory.connect(
       protocolTokenAddress,
-    ).filters.Transfer(ZERO_ADDRESS, userAddress)
+      this.provider,
+    )
 
-    const eventResults = await this.stargateTokenContract(
-      protocolTokenAddress,
-    ).queryFilter<TransferEvent>(contractFilter, fromBlock, toBlock)
-
-    return await this.eventUtil({
+    return await getDeposits({
+      userAddress,
+      fromBlock,
+      toBlock,
       protocolToken,
-      underlyingToken,
-      eventResults,
+      underlyingTokens: [underlyingToken],
+      protocolTokenContract,
+      getPricePerShare: this.getPricePerShare.bind(this),
     })
   }
 
-  async getOneDayProfit({
-    userAddress,
-    blockNumber,
-  }: GetProfitsInput): Promise<ProfitsTokensWithRange> {
-    const toBlock = blockNumber
-    const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[this.chainId]
-
-    const [currentValues, previousValues] = await Promise.all([
-      this.getPositions({
-        userAddress,
-        blockNumber: toBlock,
-      }).then(formatProtocolTokenArrayToMap),
-      this.getPositions({
-        userAddress,
-        blockNumber: fromBlock,
-      }).then(formatProtocolTokenArrayToMap),
-    ])
-
-    const tokens = await Promise.all(
-      Object.values(currentValues).map(
-        async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
-          const getEventsInput: GetEventsInput = {
-            userAddress,
-            protocolTokenAddress: protocolTokenMetadata.address,
-            fromBlock,
-            toBlock,
-          }
-
-          const [withdrawals, deposits] = await Promise.all([
-            this.getWithdrawals(getEventsInput).then(aggregateTrades),
-            this.getDeposits(getEventsInput).then(aggregateTrades),
-          ])
-
-          const profits = calculateProfit({
-            deposits,
-            withdrawals,
-            currentValues: underlyingTokenPositions,
-            previousVales:
-              previousValues[protocolTokenMetadata.address]
-                ?.underlyingTokenPositions ?? {},
-          })
-
-          return {
-            ...protocolTokenMetadata,
-            type: TokenType.Protocol,
-            tokens: Object.values(underlyingTokenPositions).map(
-              (underlyingToken) => {
-                return {
-                  ...underlyingToken,
-                  profitRaw: profits[underlyingToken.address]!,
-                  profit: formatUnits(
-                    profits[underlyingToken.address]!,
-                    underlyingToken.decimals,
-                  ),
-                  type: TokenType.Underlying,
-                }
-              },
-            ),
-          }
-        },
-      ),
-    )
-
-    return { tokens, fromBlock, toBlock }
+  async getOneDayProfit(
+    input: GetProfitsInput,
+  ): Promise<ProfitsTokensWithRange> {
+    return await getOneDayProfit({
+      ...input,
+      chainId: this.chainId,
+      getPositions: this.getPositions.bind(this),
+      getWithdrawals: this.getWithdrawals.bind(this),
+      getDeposits: this.getDeposits.bind(this),
+    })
   }
 
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
@@ -279,51 +226,6 @@ export class StargatePoolAdapter implements IProtocolAdapter {
 
   async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
     return {} as ProtocolApyToken
-  }
-
-  private eventUtil({
-    protocolToken,
-    underlyingToken,
-    eventResults,
-  }: {
-    protocolToken: ERC20
-    underlyingToken: ERC20
-    eventResults: TransferEvent[]
-  }): Promise<MovementsByBlock[]> {
-    return Promise.all(
-      eventResults.map(async (transferEvent) => {
-        const {
-          blockNumber,
-          args: { value },
-        } = transferEvent
-
-        const protocolTokenPrice = await this.getPricePerShare({
-          blockNumber,
-          protocolTokenAddress: protocolToken.address,
-        })
-
-        const pricePerShareRaw =
-          protocolTokenPrice.tokens?.[0]?.pricePerShareRaw
-        if (!pricePerShareRaw) {
-          throw new Error('No price for events at this time')
-        }
-
-        const movementValueRaw = BigInt(value.toString()) * pricePerShareRaw
-        return {
-          underlyingTokensMovement: {
-            [underlyingToken.address]: {
-              ...underlyingToken,
-              movementValue: formatUnits(
-                movementValueRaw,
-                underlyingToken.decimals,
-              ),
-              movementValueRaw,
-            },
-          },
-          blockNumber,
-        }
-      }),
-    )
   }
 
   private fetchProtocolTokenMetadata(protocolTokenAddress: string) {
