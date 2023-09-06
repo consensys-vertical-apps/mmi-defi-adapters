@@ -27,6 +27,10 @@ import {
   TokenType,
 } from '../../../../types/adapter'
 import { AaveV2PoolMetadata } from '../../buildMetadata'
+import { AVERAGE_BLOCKS_PER_DAY } from '../../../../core/constants/AVERAGE_BLOCKS_PER_DAY'
+import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
+import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
+import { calculateProfit } from '../../../../core/utils/calculateProfit'
 
 export abstract class AaveV2BasePoolAdapter implements IProtocolAdapter {
   private metadata: AaveV2PoolMetadata
@@ -119,14 +123,70 @@ export abstract class AaveV2BasePoolAdapter implements IProtocolAdapter {
     return []
   }
 
-  async getOneDayProfit(
-    _input: GetProfitsInput,
-  ): Promise<ProfitsTokensWithRange> {
-    return {
-      fromBlock: 0,
-      toBlock: 0,
-      tokens: [],
-    }
+  async getOneDayProfit({
+    userAddress,
+    blockNumber,
+  }: GetProfitsInput): Promise<ProfitsTokensWithRange> {
+    const toBlock = blockNumber
+    const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[this.chainId]
+
+    const [currentValues, previousValues] = await Promise.all([
+      this.getPositions({
+        userAddress,
+        blockNumber: toBlock,
+      }).then(formatProtocolTokenArrayToMap),
+      this.getPositions({
+        userAddress,
+        blockNumber: fromBlock,
+      }).then(formatProtocolTokenArrayToMap),
+    ])
+
+    const tokens = await Promise.all(
+      Object.values(currentValues).map(
+        async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
+          const getEventsInput: GetEventsInput = {
+            userAddress,
+            protocolTokenAddress: protocolTokenMetadata.address,
+            fromBlock,
+            toBlock,
+          }
+
+          const [withdrawals, deposits] = await Promise.all([
+            this.getWithdrawals(getEventsInput).then(aggregateTrades),
+            this.getDeposits(getEventsInput).then(aggregateTrades),
+          ])
+
+          const profits = calculateProfit({
+            deposits,
+            withdrawals,
+            currentValues: underlyingTokenPositions,
+            previousVales:
+              previousValues[protocolTokenMetadata.address]
+                ?.underlyingTokenPositions ?? {},
+          })
+
+          return {
+            ...protocolTokenMetadata,
+            type: TokenType.Protocol,
+            tokens: Object.values(underlyingTokenPositions).map(
+              (underlyingToken) => {
+                return {
+                  ...underlyingToken,
+                  profitRaw: profits[underlyingToken.address]!,
+                  profit: formatUnits(
+                    profits[underlyingToken.address]!,
+                    underlyingToken.decimals,
+                  ),
+                  type: TokenType.Underlying,
+                }
+              },
+            ),
+          }
+        },
+      ),
+    )
+
+    return { tokens, fromBlock, toBlock }
   }
 
   async getPricePerShare({
