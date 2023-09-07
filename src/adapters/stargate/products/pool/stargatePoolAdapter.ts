@@ -1,28 +1,62 @@
+import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
 import { Protocol } from '../../..'
 import { StargateToken__factory } from '../../../../contracts'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { TransferEvent } from '../../../../contracts/Erc20'
+import { AVERAGE_BLOCKS_PER_DAY } from '../../../../core/constants/AVERAGE_BLOCKS_PER_DAY'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { Chain } from '../../../../core/constants/chains'
+import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
+import { calculateProfit } from '../../../../core/utils/calculateProfit'
+import { getBalances } from '../../../../core/utils/getBalances'
 import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
-  BasePricePerShareToken,
-  BaseToken,
   GetAprInput,
   GetApyInput,
   GetEventsInput,
+  GetPositionsInput,
+  GetPricesInput,
+  GetProfitsInput,
   GetTotalValueLockedInput,
+  IProtocolAdapter,
   MovementsByBlock,
   PositionType,
+  ProfitsTokensWithRange,
   ProtocolAprToken,
   ProtocolApyToken,
   ProtocolDetails,
+  ProtocolPricePerShareToken,
+  ProtocolToken,
   ProtocolTotalValueLockedToken,
-  TokenBalance,
   TokenType,
 } from '../../../../types/adapter'
 import { StargatePoolMetadata } from '../../buildMetadata'
 
-export class StargatePoolAdapter extends SimplePoolAdapter<StargatePoolMetadata> {
+export class StargatePoolAdapter implements IProtocolAdapter {
+  private metadata: StargatePoolMetadata
+  private provider: ethers.providers.StaticJsonRpcProvider
+  private chainId: Chain
+  private protocolTokens: Erc20Metadata[]
+
+  constructor({
+    metadata,
+    provider,
+    chainId,
+  }: {
+    metadata: StargatePoolMetadata
+    provider: ethers.providers.StaticJsonRpcProvider
+    chainId: Chain
+  }) {
+    this.metadata = metadata
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolTokens = Object.values(this.metadata).map(
+      ({ protocolToken }) => protocolToken,
+    )
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: Protocol.Stargate,
@@ -37,106 +71,270 @@ export class StargatePoolAdapter extends SimplePoolAdapter<StargatePoolMetadata>
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(this.metadata).map(
-      ({ protocolToken }) => protocolToken,
+    return this.protocolTokens
+  }
+
+  async getPositions({
+    userAddress,
+    blockNumber,
+  }: GetPositionsInput): Promise<ProtocolToken[]> {
+    const protocolTokensBalances = await getBalances({
+      chainId: this.chainId,
+      provider: this.provider,
+      userAddress,
+      blockNumber,
+      tokens: this.protocolTokens,
+    })
+
+    const tokens = await Promise.all(
+      protocolTokensBalances.map(async (protocolTokenBalance) => {
+        const amountLPtoLD = await this.stargateTokenContract(
+          protocolTokenBalance.address,
+        ).amountLPtoLD(protocolTokenBalance.balanceRaw)
+
+        const underlyingTokenMetadata =
+          this.metadata[protocolTokenBalance.address]!.underlyingToken
+
+        const underlyingTokenBalance = {
+          ...underlyingTokenMetadata,
+          balanceRaw: BigInt(amountLPtoLD.toString()),
+          balance: formatUnits(amountLPtoLD, underlyingTokenMetadata.decimals),
+          type: TokenType.Underlying,
+        }
+
+        return {
+          ...protocolTokenBalance,
+          type: TokenType.Protocol,
+          tokens: [underlyingTokenBalance],
+        }
+      }),
     )
+
+    return tokens
   }
 
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]> {
-    throw new Error('Not implemented')
-  }
+  async getPricePerShare({
+    blockNumber,
+    protocolTokenAddress,
+  }: GetPricesInput): Promise<ProtocolPricePerShareToken> {
+    const { protocolToken, underlyingToken } =
+      this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new Error('Not implemented')
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
-    throw new Error('Not implemented')
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
-    throw new Error('Not implemented')
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const poolMetadata = this.fetchPoolMetadata(protocolTokenAddress)
-
-    return poolMetadata.protocolToken
-  }
-
-  protected async getUnderlyingTokens(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const poolMetadata = this.fetchPoolMetadata(protocolTokenAddress)
-
-    return [poolMetadata.underlyingToken]
-  }
-
-  protected async getUnderlyingTokenBalances(
-    protocolTokenBalance: TokenBalance,
-  ): Promise<BaseToken[]> {
-    const underlyingTokenMetadata = this.fetchPoolMetadata(
-      protocolTokenBalance.address,
-    ).underlyingToken
-
-    const amountLPtoLD = await this.stargateTokenContract(
-      protocolTokenBalance.address,
-    ).amountLPtoLD(protocolTokenBalance.balanceRaw)
-
-    const underlyingTokenBalance = {
-      ...underlyingTokenMetadata,
-      balanceRaw: BigInt(amountLPtoLD.toString()),
-      balance: formatUnits(amountLPtoLD, underlyingTokenMetadata.decimals),
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
-  }
-
-  protected async getUnderlyingTokenPricesPerShare(
-    protocolTokenMetadata: Erc20Metadata,
-    blockNumber?: number | undefined,
-  ): Promise<BasePricePerShareToken[]> {
-    const underlyingTokenMetadata = this.fetchPoolMetadata(
-      protocolTokenMetadata.address,
-    ).underlyingToken
-
-    const oneToken = BigInt(1 * 10 ** protocolTokenMetadata.decimals)
+    const oneToken = BigInt(1 * 10 ** protocolToken.decimals)
 
     const pricePerShareRaw = await this.stargateTokenContract(
-      protocolTokenMetadata.address,
+      protocolToken.address,
     ).amountLPtoLD(oneToken, {
       blockTag: blockNumber,
     })
 
     const pricePerShare = formatUnits(
       pricePerShareRaw,
-      underlyingTokenMetadata.decimals,
+      underlyingToken.decimals,
     )
 
-    return [
-      {
-        ...underlyingTokenMetadata,
-        type: TokenType.Underlying,
-        pricePerShareRaw: BigInt(pricePerShareRaw.toString()),
-        pricePerShare,
-      },
-    ]
+    return {
+      ...protocolToken,
+      share: 1,
+      type: TokenType.Protocol,
+      tokens: [
+        {
+          ...underlyingToken,
+          type: TokenType.Underlying,
+          pricePerShareRaw: BigInt(pricePerShareRaw.toString()),
+          pricePerShare,
+        },
+      ],
+    }
   }
 
-  private fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = this.metadata[protocolTokenAddress]
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTotalValueLockedToken[]> {
+    // TODO
+    return []
+  }
 
-    if (!poolMetadata) {
-      logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
-      throw new Error('Protocol token pool not found')
+  async getWithdrawals({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const { protocolToken, underlyingToken } =
+      this.fetchProtocolTokenMetadata(protocolTokenAddress)
+
+    const contractFilter = this.stargateTokenContract(
+      protocolTokenAddress,
+    ).filters.Transfer(userAddress, ZERO_ADDRESS)
+
+    const eventResults = await this.stargateTokenContract(
+      protocolTokenAddress,
+    ).queryFilter<TransferEvent>(contractFilter, fromBlock, toBlock)
+
+    return await this.eventUtil({
+      protocolToken,
+      underlyingToken,
+      eventResults,
+    })
+  }
+
+  async getDeposits({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const { protocolToken, underlyingToken } =
+      this.fetchProtocolTokenMetadata(protocolTokenAddress)
+
+    const contractFilter = this.stargateTokenContract(
+      protocolTokenAddress,
+    ).filters.Transfer(ZERO_ADDRESS, userAddress)
+
+    const eventResults = await this.stargateTokenContract(
+      protocolTokenAddress,
+    ).queryFilter<TransferEvent>(contractFilter, fromBlock, toBlock)
+
+    return await this.eventUtil({
+      protocolToken,
+      underlyingToken,
+      eventResults,
+    })
+  }
+
+  async getOneDayProfit({
+    userAddress,
+    blockNumber,
+  }: GetProfitsInput): Promise<ProfitsTokensWithRange> {
+    const toBlock = blockNumber
+    const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[this.chainId]
+
+    const [currentValues, previousValues] = await Promise.all([
+      this.getPositions({
+        userAddress,
+        blockNumber: toBlock,
+      }).then(formatProtocolTokenArrayToMap),
+      this.getPositions({
+        userAddress,
+        blockNumber: fromBlock,
+      }).then(formatProtocolTokenArrayToMap),
+    ])
+
+    const tokens = await Promise.all(
+      Object.values(currentValues).map(
+        async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
+          const getEventsInput: GetEventsInput = {
+            userAddress,
+            protocolTokenAddress: protocolTokenMetadata.address,
+            fromBlock,
+            toBlock,
+          }
+
+          const [withdrawals, deposits] = await Promise.all([
+            this.getWithdrawals(getEventsInput).then(aggregateTrades),
+            this.getDeposits(getEventsInput).then(aggregateTrades),
+          ])
+
+          const profits = calculateProfit({
+            deposits,
+            withdrawals,
+            currentValues: underlyingTokenPositions,
+            previousVales:
+              previousValues[protocolTokenMetadata.address]
+                ?.underlyingTokenPositions ?? {},
+          })
+
+          return {
+            ...protocolTokenMetadata,
+            type: TokenType.Protocol,
+            tokens: Object.values(underlyingTokenPositions).map(
+              (underlyingToken) => {
+                return {
+                  ...underlyingToken,
+                  profitRaw: profits[underlyingToken.address]!,
+                  profit: formatUnits(
+                    profits[underlyingToken.address]!,
+                    underlyingToken.decimals,
+                  ),
+                  type: TokenType.Underlying,
+                }
+              },
+            ),
+          }
+        },
+      ),
+    )
+
+    return { tokens, fromBlock, toBlock }
+  }
+
+  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return []
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+    return {} as ProtocolAprToken
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+    return {} as ProtocolApyToken
+  }
+
+  private eventUtil({
+    protocolToken,
+    underlyingToken,
+    eventResults,
+  }: {
+    protocolToken: Erc20Metadata
+    underlyingToken: Erc20Metadata
+    eventResults: TransferEvent[]
+  }): Promise<MovementsByBlock[]> {
+    return Promise.all(
+      eventResults.map(async (transferEvent) => {
+        const {
+          blockNumber,
+          args: { value },
+        } = transferEvent
+
+        const protocolTokenPrice = await this.getPricePerShare({
+          blockNumber,
+          protocolTokenAddress: protocolToken.address,
+        })
+
+        const pricePerShareRaw =
+          protocolTokenPrice.tokens?.[0]?.pricePerShareRaw
+        if (!pricePerShareRaw) {
+          throw new Error('No price for events at this time')
+        }
+
+        const movementValueRaw = BigInt(value.toString()) * pricePerShareRaw
+        return {
+          underlyingTokensMovement: {
+            [underlyingToken.address]: {
+              ...underlyingToken,
+              movementValue: formatUnits(
+                movementValueRaw,
+                underlyingToken.decimals,
+              ),
+              movementValueRaw,
+            },
+          },
+          blockNumber,
+        }
+      }),
+    )
+  }
+
+  private fetchProtocolTokenMetadata(protocolTokenAddress: string) {
+    const protocolTokenMetadata = this.metadata[protocolTokenAddress]
+
+    if (!protocolTokenMetadata) {
+      logger.error({ protocolTokenAddress }, 'Protocol token not found')
+      throw new Error('Protocol token not found')
     }
 
-    return poolMetadata
+    return protocolTokenMetadata
   }
 
   private stargateTokenContract(address: string) {
