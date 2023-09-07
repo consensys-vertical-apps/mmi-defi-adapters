@@ -1,12 +1,11 @@
-import { Command } from 'commander'
-import EthDater from 'ethereum-block-by-date'
 import { promises as fs } from 'fs'
 import * as path from 'path'
+import { Command } from 'commander'
+import EthDater from 'ethereum-block-by-date'
 import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { chainProviders } from '../core/utils/chainProviders'
 import { writeCodeFile } from './writeCodeFile'
-
 import n = types.namedTypes
 
 export function blockAverage(program: Command) {

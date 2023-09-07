@@ -1,7 +1,7 @@
-import { Command } from 'commander'
 import { promises as fs } from 'fs'
-import { partition } from 'lodash'
 import * as path from 'path'
+import { Command } from 'commander'
+import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { camelCase, kebabCase, pascalCase } from '../core/utils/caseConversion'
@@ -9,7 +9,6 @@ import { filterMap } from '../core/utils/filters'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import { writeCodeFile } from './writeCodeFile'
-
 import n = types.namedTypes
 import b = types.builders
 

@@ -1,6 +1,6 @@
-import { ethers } from 'ethers'
 import { promises as fs } from 'fs'
 import * as path from 'path'
+import { ethers } from 'ethers'
 import { Protocol } from '..'
 import { Chain, ChainNames } from '../../core/constants/chains'
 import { chainProviders } from '../../core/utils/chainProviders'

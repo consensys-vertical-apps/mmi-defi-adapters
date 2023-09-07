@@ -1,6 +1,6 @@
-import { ethers } from 'ethers'
 import { promises as fs } from 'fs'
 import path from 'path'
+import { ethers } from 'ethers'
 import { Protocol } from '..'
 import {
   StargateFactory__factory,
