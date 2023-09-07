@@ -210,14 +210,15 @@ mmi-defi-adapters/
 Run the following command to add a new adapter
 
 ```
-npm run new-adapter <Example> <example-product> [Chains]
+npm run new-adapter -- <Example> <example-product> -t [template] -c [chains]
 ```
 
 Where:
 
 - `<Example>` is the name of your protocol as you'd like it to appear.
 - `<example-product>` is the name of the product for the adapter in kebab-case
-- `[Chains]` is an optional argument with a comma separated list of supported chains (e.g. `Ethereum,Arbitrum,Optimism`). Default: `Ethereum`
+- `[template]` is the template that will be used (e.g. `SimplePoolAdapter``). Default: `DefaulAdapterTemplate`
+- `[chains]` is a list of comma separated list of supported chains (e.g. `Ethereum,Arbitrum,Optimism`). Default: `Ethereum`
 
 ## Adding a New Protocol or Adapter manually
 

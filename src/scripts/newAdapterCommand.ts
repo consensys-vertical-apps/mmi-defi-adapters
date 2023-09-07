@@ -6,39 +6,64 @@ import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { camelCase, kebabCase, pascalCase } from '../core/utils/caseConversion'
 import { filterMap } from '../core/utils/filters'
-import { adapterTemplate } from './templates/adapter'
+import { defaultAdapterTemplate } from './templates/defaultAdapter'
+import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import { writeCodeFile } from './writeCodeFile'
 
 import n = types.namedTypes
 import b = types.builders
+
+type TemplateBuilder = (protocolName: string, adapterName: string) => string
+
+const Templates: Record<string, TemplateBuilder> = {
+  ['DefaulAdapter']: defaultAdapterTemplate,
+  ['SimplePoolAdapter']: simplePoolAdapterTemplate,
+}
 
 export function newAdapterCommand(program: Command) {
   program
     .command('new-adapter')
     .argument('<protocol>', 'Protocol name')
     .argument('<product>', 'Product name (kebab-case)')
-    .argument(
-      '[chains]',
-      'Chain separated by commas (e.g. Ethereum,Arbitrum,Optimism)',
-      'Ethereum',
-    )
+    .option('-t, --template <template>', 'Template to use', 'DefaulAdapter')
+    .option('-c, --chains <chainIds>', 'Chains separated by commas', 'Ethereum')
     .showHelpAfterError()
-    .action(async (protocol: string, product: string, chainsInput: string) => {
-      const chains = filterMap(chainsInput.split(','), (chainInput) => {
-        const chain = Object.keys(Chain).find((chainKey) => {
-          return chainKey.toLowerCase() === chainInput.toLowerCase()
-        })
+    .action(
+      async (
+        protocol: string,
+        product: string,
+        { chains, template }: { chains: string; template: string },
+      ) => {
+        const chainKeys = filterMap(chains.split(','), (chain) => {
+          const chainKey = Object.keys(Chain).find((chainKey) => {
+            return chainKey.toLowerCase() === chain.toLowerCase()
+          })
 
-        if (!chain) {
-          console.warn(`Cannot find corresponding chain for ${chainInput}`)
+          if (!chainKey) {
+            console.warn(`Cannot find corresponding chain for ${chain}`)
+          }
+
+          return chainKey
+        }) as (keyof typeof Chain)[]
+
+        const templateBuilder = Templates[template]
+
+        if (!templateBuilder) {
+          throw new Error(`Invalid template name: ${template}`)
         }
 
-        return chain
-      }) as (keyof typeof Chain)[]
+        // TODO Ask user for the following details (inquirer):
+        // - Template that will be used
+        // - Chains that will be used
+        // - Protocol PascalCase key
+        // - Protocol kebab-case value (for folders)
+        // - Product kebab-case value (for folders)
+        // - Adapter PascalCase name
 
-      await buildAdapterFromTemplate(protocol, product)
-      await exportAdapter(protocol, product, chains)
-    })
+        await buildAdapterFromTemplate(protocol, product, templateBuilder)
+        await exportAdapter(protocol, product, chainKeys)
+      },
+    )
 }
 
 /**
@@ -47,7 +72,11 @@ export function newAdapterCommand(program: Command) {
  * @param protocol Name of the protocol
  * @param product Name of the product
  */
-async function buildAdapterFromTemplate(protocol: string, product: string) {
+async function buildAdapterFromTemplate(
+  protocol: string,
+  product: string,
+  templateBuilder: TemplateBuilder,
+) {
   const productPath = path.resolve(
     `./src/adapters/${kebabCase(protocol)}/products/${kebabCase(product)}`,
   )
@@ -69,7 +98,7 @@ async function buildAdapterFromTemplate(protocol: string, product: string) {
     throw new Error('An adapter for that product already exists')
   }
 
-  writeCodeFile(adapterFilePath, adapterTemplate(protocol, product))
+  writeCodeFile(adapterFilePath, templateBuilder(protocol, `${product}Adapter`))
 }
 
 /**
@@ -77,12 +106,12 @@ async function buildAdapterFromTemplate(protocol: string, product: string) {
  *
  * @param protocol Name of the protocol
  * @param product Name of the product
- * @param chains List of chain names
+ * @param chainKeys List of chain names
  */
 async function exportAdapter(
   protocol: string,
   product: string,
-  chains: (keyof typeof Chain)[],
+  chainKeys: (keyof typeof Chain)[],
 ) {
   const adaptersFile = path.resolve('./src/adapters/index.ts')
   const contents = await fs.readFile(adaptersFile, 'utf-8')
@@ -106,7 +135,7 @@ async function exportAdapter(
       }
 
       if (node.id.name === 'supportedProtocols') {
-        addAdapterEntries(node, protocol, product, chains)
+        addAdapterEntries(node, protocol, product, chainKeys)
       } else if (node.id.name === 'Protocol') {
         addProtocol(node, protocol)
       }
