@@ -9,7 +9,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { calculateProfit } from '../../../../core/utils/calculateProfit'
 import { getBalances } from '../../../../core/utils/getBalances'
-import { ERC20 } from '../../../../core/utils/getTokenMetadata'
+import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
@@ -38,7 +38,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   private metadata: StargatePoolMetadata
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain
-  private protocolTokens: ERC20[]
+  private protocolTokens: Erc20Metadata[]
 
   constructor({
     metadata,
@@ -70,7 +70,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<ERC20[]> {
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return this.protocolTokens
   }
 
@@ -286,8 +286,8 @@ export class StargatePoolAdapter implements IProtocolAdapter {
     underlyingToken,
     eventResults,
   }: {
-    protocolToken: ERC20
-    underlyingToken: ERC20
+    protocolToken: Erc20Metadata
+    underlyingToken: Erc20Metadata
     eventResults: TransferEvent[]
   }): Promise<MovementsByBlock[]> {
     return Promise.all(
