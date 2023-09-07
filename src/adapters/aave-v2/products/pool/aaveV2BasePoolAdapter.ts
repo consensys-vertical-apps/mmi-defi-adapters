@@ -8,7 +8,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { calculateProfit } from '../../../../core/utils/calculateProfit'
 import { getBalances } from '../../../../core/utils/getBalances'
-import { ERC20 } from '../../../../core/utils/getTokenMetadata'
+import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
@@ -53,7 +53,7 @@ export abstract class AaveV2BasePoolAdapter implements IProtocolAdapter {
 
   abstract getProtocolDetails(): ProtocolDetails
 
-  async getProtocolTokens(): Promise<ERC20[]> {
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(this.metadata).map(
       ({ protocolToken }) => protocolToken,
     )
@@ -304,8 +304,8 @@ export abstract class AaveV2BasePoolAdapter implements IProtocolAdapter {
     underlyingToken,
     eventResults,
   }: {
-    protocolToken: ERC20
-    underlyingToken: ERC20
+    protocolToken: Erc20Metadata
+    underlyingToken: Erc20Metadata
     eventResults: TransferEvent[]
   }): Promise<MovementsByBlock[]> {
     return Promise.all(

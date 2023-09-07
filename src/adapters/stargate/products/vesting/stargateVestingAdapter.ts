@@ -3,7 +3,7 @@ import { formatUnits } from 'ethers/lib/utils'
 import { Protocol } from '../../..'
 import { StargateVotingEscrow__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
-import { ERC20 } from '../../../../core/utils/getTokenMetadata'
+import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
   GetApyInput,
@@ -27,7 +27,7 @@ export class StargateVestingAdapter implements IProtocolAdapter {
   private metadata: StargateVestingMetadata
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain
-  private protocolTokens: ERC20[]
+  private protocolTokens: Erc20Metadata[]
 
   constructor({
     metadata,
@@ -57,7 +57,7 @@ export class StargateVestingAdapter implements IProtocolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<ERC20[]> {
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return this.protocolTokens
   }
 

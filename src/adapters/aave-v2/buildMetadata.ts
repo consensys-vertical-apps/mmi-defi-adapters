@@ -4,7 +4,10 @@ import * as path from 'path'
 import { Protocol } from '..'
 import { Chain, ChainNames } from '../../core/constants/chains'
 import { chainProviders } from '../../core/utils/chainProviders'
-import { ERC20, getTokenMetadata } from '../../core/utils/getTokenMetadata'
+import {
+  Erc20Metadata,
+  getTokenMetadata,
+} from '../../core/utils/getTokenMetadata'
 import { logger } from '../../core/utils/logger'
 import { Json } from '../../types/json'
 import { ProtocolDataProvider__factory } from './contracts'
@@ -12,8 +15,8 @@ import { ProtocolDataProvider__factory } from './contracts'
 export type AaveV2PoolMetadata = Record<
   string,
   {
-    protocolToken: ERC20
-    underlyingToken: ERC20
+    protocolToken: Erc20Metadata
+    underlyingToken: Erc20Metadata
   }
 >
 
