@@ -162,7 +162,7 @@ export interface IProtocolAdapter {
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]>
-  getOneDayProfit: (input: GetProfitsInput) => Promise<ProfitsTokensWithRange>
+  getOneDayProfit(input: GetProfitsInput): Promise<ProfitsTokensWithRange>
   getApy(input: GetApyInput): Promise<ProtocolApyToken>
   getApr(input: GetAprInput): Promise<ProtocolAprToken>
 }
