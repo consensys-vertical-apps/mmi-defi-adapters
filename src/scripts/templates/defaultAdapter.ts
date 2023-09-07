@@ -1,6 +1,9 @@
 import { pascalCase } from '../../core/utils/caseConversion'
 
-export function adapterTemplate(protocolName: string, productName: string) {
+export function defaultAdapterTemplate(
+  protocolName: string,
+  adapterName: string,
+) {
   return `
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -25,10 +28,10 @@ import {
 } from '../../../../types/adapter'
 import { ethers } from 'ethers'
 import { Json } from '../../../../types/json'
-import { ERC20 } from '../../../../core/utils/getTokenMetadata'
+import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
 import { Protocol } from '../../..'
 
-export class ${pascalCase(productName)}Adapter implements IProtocolAdapter {
+export class ${pascalCase(adapterName)} implements IProtocolAdapter {
   private metadata: Json
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain
@@ -59,7 +62,7 @@ export class ${pascalCase(productName)}Adapter implements IProtocolAdapter {
     }
   }
 
-  async getProtocolTokens(): Promise<ERC20[]> {
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return [
       {
         address: '0xprotocolTokenAddress',
