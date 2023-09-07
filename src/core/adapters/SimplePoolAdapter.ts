@@ -26,16 +26,20 @@ import {
   TokenType,
 } from '../../types/adapter'
 import { Json } from '../../types/json'
+import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { Chain } from '../constants/chains'
+import { aggregateTrades } from '../utils/aggregateTrades'
+import { calculateProfit } from '../utils/calculateProfit'
 import { getBalances } from '../utils/getBalances'
 import { ERC20Metadata } from '../utils/getTokenMetadata'
+import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 
 export abstract class SimplePoolAdapter<AdapterMetadata extends Json>
   implements IProtocolAdapter
 {
-  private metadata: AdapterMetadata
-  private provider: ethers.providers.StaticJsonRpcProvider
+  protected metadata: AdapterMetadata
+  protected provider: ethers.providers.StaticJsonRpcProvider
   protected chainId: Chain
 
   constructor({
@@ -55,14 +59,6 @@ export abstract class SimplePoolAdapter<AdapterMetadata extends Json>
   abstract getProtocolDetails(): ProtocolDetails
 
   abstract getProtocolTokens(): Promise<ERC20Metadata[]>
-
-  abstract getUnderlyingTokens(
-    protocolTokenAddress: string,
-  ): Promise<ERC20Metadata[]>
-
-  abstract getUnderlyingTokenBalances(
-    protocolTokenBalance: TokenBalance,
-  ): Promise<BaseToken[]>
 
   async getPositions({
     userAddress,
@@ -92,13 +88,6 @@ export abstract class SimplePoolAdapter<AdapterMetadata extends Json>
 
     return protocolTokens
   }
-
-  abstract fetchProtocolTokenMetadata(address: string): Promise<ERC20Metadata>
-
-  abstract getUnderlyingTokenPricesPerShare(
-    protocolTokenMetadata: ERC20Metadata,
-    blockNumber?: number,
-  ): Promise<BasePricePerShareToken[]>
 
   async getPricePerShare({
     blockNumber,
@@ -160,13 +149,92 @@ export abstract class SimplePoolAdapter<AdapterMetadata extends Json>
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]>
 
-  abstract getOneDayProfit(
-    input: GetProfitsInput,
-  ): Promise<ProfitsTokensWithRange>
+  async getOneDayProfit({
+    userAddress,
+    blockNumber,
+  }: GetProfitsInput): Promise<ProfitsTokensWithRange> {
+    const toBlock = blockNumber
+    const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[this.chainId]
+
+    const [currentValues, previousValues] = await Promise.all([
+      this.getPositions({
+        userAddress,
+        blockNumber: toBlock,
+      }).then(formatProtocolTokenArrayToMap),
+      this.getPositions({
+        userAddress,
+        blockNumber: fromBlock,
+      }).then(formatProtocolTokenArrayToMap),
+    ])
+
+    const tokens = await Promise.all(
+      Object.values(currentValues).map(
+        async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
+          const getEventsInput: GetEventsInput = {
+            userAddress,
+            protocolTokenAddress: protocolTokenMetadata.address,
+            fromBlock,
+            toBlock,
+          }
+
+          const [withdrawals, deposits] = await Promise.all([
+            this.getWithdrawals(getEventsInput).then(aggregateTrades),
+            this.getDeposits(getEventsInput).then(aggregateTrades),
+          ])
+
+          const profits = calculateProfit({
+            deposits,
+            withdrawals,
+            currentValues: underlyingTokenPositions,
+            previousVales:
+              previousValues[protocolTokenMetadata.address]
+                ?.underlyingTokenPositions ?? {},
+          })
+
+          return {
+            ...protocolTokenMetadata,
+            type: TokenType.Protocol,
+            tokens: Object.values(underlyingTokenPositions).map(
+              (underlyingToken) => {
+                return {
+                  ...underlyingToken,
+                  profitRaw: profits[underlyingToken.address]!,
+                  profit: formatUnits(
+                    profits[underlyingToken.address]!,
+                    underlyingToken.decimals,
+                  ),
+                  type: TokenType.Underlying,
+                }
+              },
+            ),
+          }
+        },
+      ),
+    )
+
+    return { tokens, fromBlock, toBlock }
+  }
 
   abstract getApy(input: GetApyInput): Promise<ProtocolApyToken>
 
   abstract getApr(input: GetAprInput): Promise<ProtocolAprToken>
+
+  protected abstract fetchProtocolTokenMetadata(
+    protocolTokenAddress: string,
+  ): Promise<ERC20Metadata>
+
+  protected abstract getUnderlyingTokens(
+    protocolTokenAddress: string,
+  ): Promise<ERC20Metadata[]>
+
+  protected abstract getUnderlyingTokenBalances(
+    protocolTokenBalance: TokenBalance,
+  ): Promise<BaseToken[]>
+
+  protected abstract getUnderlyingTokenPricesPerShare(
+    protocolTokenMetadata: ERC20Metadata,
+    blockNumber?: number,
+  ): Promise<BasePricePerShareToken[]>
 
   private async getMovements({
     protocolTokenAddress,

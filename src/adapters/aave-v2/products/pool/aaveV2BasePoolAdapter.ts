@@ -1,190 +1,32 @@
-import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
-import { Erc20__factory } from '../../../../contracts'
-import { Chain } from '../../../../core/constants/chains'
-import { getBalances } from '../../../../core/utils/getBalances'
-import {
-  getDeposits,
-  getWithdrawals,
-} from '../../../../core/utils/getMovements'
-import { getOneDayProfit } from '../../../../core/utils/getOneDayProfit'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ERC20Metadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
+  BasePricePerShareToken,
+  BaseToken,
   GetAprInput,
   GetApyInput,
   GetEventsInput,
-  GetPositionsInput,
-  GetPricesInput,
-  GetProfitsInput,
   GetTotalValueLockedInput,
-  IProtocolAdapter,
   MovementsByBlock,
-  ProfitsTokensWithRange,
   ProtocolAprToken,
   ProtocolApyToken,
-  ProtocolDetails,
-  ProtocolPricePerShareToken,
-  ProtocolToken,
   ProtocolTotalValueLockedToken,
+  TokenBalance,
   TokenType,
 } from '../../../../types/adapter'
 import { AaveV2PoolMetadata } from '../../buildMetadata'
 
-export abstract class AaveV2BasePoolAdapter implements IProtocolAdapter {
-  private metadata: AaveV2PoolMetadata
-  private provider: ethers.providers.StaticJsonRpcProvider
-  protected chainId: Chain
-
-  constructor({
-    metadata,
-    provider,
-    chainId,
-  }: {
-    metadata: AaveV2PoolMetadata
-    provider: ethers.providers.StaticJsonRpcProvider
-    chainId: Chain
-  }) {
-    this.metadata = metadata
-    this.provider = provider
-    this.chainId = chainId
-  }
-
-  abstract getProtocolDetails(): ProtocolDetails
-
+export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter<AaveV2PoolMetadata> {
   async getProtocolTokens(): Promise<ERC20Metadata[]> {
     return Object.values(this.metadata).map(
       ({ protocolToken }) => protocolToken,
     )
   }
 
-  async getWithdrawals({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const { protocolToken, underlyingToken } =
-      this.fetchProtocolTokenMetadata(protocolTokenAddress)
-
-    const protocolTokenContract = Erc20__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    return await getWithdrawals({
-      userAddress,
-      fromBlock,
-      toBlock,
-      protocolToken,
-      underlyingTokens: [underlyingToken],
-      protocolTokenContract,
-      getPricePerShare: this.getPricePerShare.bind(this),
-    })
-  }
-
-  async getDeposits({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const { protocolToken, underlyingToken } =
-      this.fetchProtocolTokenMetadata(protocolTokenAddress)
-
-    const protocolTokenContract = Erc20__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    return await getDeposits({
-      userAddress,
-      fromBlock,
-      toBlock,
-      protocolToken,
-      underlyingTokens: [underlyingToken],
-      protocolTokenContract,
-      getPricePerShare: this.getPricePerShare.bind(this),
-    })
-  }
-
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return []
-  }
-
-  async getOneDayProfit(
-    input: GetProfitsInput,
-  ): Promise<ProfitsTokensWithRange> {
-    return await getOneDayProfit({
-      ...input,
-      chainId: this.chainId,
-      getPositions: this.getPositions.bind(this),
-      getWithdrawals: this.getWithdrawals.bind(this),
-      getDeposits: this.getDeposits.bind(this),
-    })
-  }
-
-  async getPricePerShare({
-    protocolTokenAddress,
-  }: GetPricesInput): Promise<ProtocolPricePerShareToken> {
-    const { protocolToken, underlyingToken } =
-      this.fetchProtocolTokenMetadata(protocolTokenAddress)
-
-    const pricePerShareRaw = BigInt(1 * 10 ** protocolToken.decimals)
-
-    const pricePerShare = formatUnits(
-      pricePerShareRaw,
-      underlyingToken.decimals,
-    )
-
-    return {
-      ...protocolToken,
-      share: 1,
-      type: TokenType.Protocol,
-      tokens: [
-        {
-          ...underlyingToken,
-          type: TokenType.Underlying,
-          pricePerShareRaw,
-          pricePerShare,
-        },
-      ],
-    }
-  }
-
-  async getPositions({
-    userAddress,
-    blockNumber,
-  }: GetPositionsInput): Promise<ProtocolToken[]> {
-    const protocolTokensBalances = await getBalances({
-      chainId: this.chainId,
-      provider: this.provider,
-      userAddress,
-      blockNumber,
-      tokens: await this.getProtocolTokens(),
-    })
-
-    const tokens = await Promise.all(
-      protocolTokensBalances.map(async (protocolTokenBalance) => {
-        const underlyingTokenMetadata =
-          this.metadata[protocolTokenBalance.address]!.underlyingToken
-
-        const underlyingTokenBalance = {
-          ...underlyingTokenMetadata,
-          balanceRaw: protocolTokenBalance.balanceRaw,
-          balance: protocolTokenBalance.balance,
-          type: TokenType.Underlying,
-        }
-
-        return {
-          ...protocolTokenBalance,
-          type: TokenType.Protocol,
-          tokens: [underlyingTokenBalance],
-        }
-      }),
-    )
-
-    return tokens
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
@@ -234,14 +76,72 @@ export abstract class AaveV2BasePoolAdapter implements IProtocolAdapter {
     ]
   }
 
-  private fetchProtocolTokenMetadata(protocolTokenAddress: string) {
-    const protocolTokenMetadata = this.metadata[protocolTokenAddress]
+  protected async fetchProtocolTokenMetadata(
+    protocolTokenAddress: string,
+  ): Promise<ERC20Metadata> {
+    const poolMetadata = this.fetchPoolMetadata(protocolTokenAddress)
 
-    if (!protocolTokenMetadata) {
-      logger.error({ protocolTokenAddress }, 'Protocol token not found')
-      throw new Error('Protocol token not found')
+    return poolMetadata.protocolToken
+  }
+
+  protected async getUnderlyingTokens(
+    protocolTokenAddress: string,
+  ): Promise<ERC20Metadata[]> {
+    const poolMetadata = this.fetchPoolMetadata(protocolTokenAddress)
+
+    return [poolMetadata.underlyingToken]
+  }
+
+  protected async getUnderlyingTokenBalances(
+    protocolTokenBalance: TokenBalance,
+  ): Promise<BaseToken[]> {
+    const underlyingTokenMetadata = this.fetchPoolMetadata(
+      protocolTokenBalance.address,
+    ).underlyingToken
+
+    const underlyingTokenBalance = {
+      ...underlyingTokenMetadata,
+      balanceRaw: protocolTokenBalance.balanceRaw,
+      balance: protocolTokenBalance.balance,
+      type: TokenType.Underlying,
     }
 
-    return protocolTokenMetadata
+    return [underlyingTokenBalance]
+  }
+
+  protected async getUnderlyingTokenPricesPerShare(
+    protocolTokenMetadata: ERC20Metadata,
+    _blockNumber?: number | undefined,
+  ): Promise<BasePricePerShareToken[]> {
+    const underlyingTokenMetadata = this.fetchPoolMetadata(
+      protocolTokenMetadata.address,
+    ).underlyingToken
+
+    const pricePerShareRaw = BigInt(1 * 10 ** protocolTokenMetadata.decimals)
+
+    const pricePerShare = formatUnits(
+      pricePerShareRaw,
+      underlyingTokenMetadata.decimals,
+    )
+
+    return [
+      {
+        ...underlyingTokenMetadata,
+        type: TokenType.Underlying,
+        pricePerShareRaw,
+        pricePerShare,
+      },
+    ]
+  }
+
+  private fetchPoolMetadata(protocolTokenAddress: string) {
+    const poolMetadata = this.metadata[protocolTokenAddress]
+
+    if (!poolMetadata) {
+      logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
+      throw new Error('Protocol token pool not found')
+    }
+
+    return poolMetadata
   }
 }
