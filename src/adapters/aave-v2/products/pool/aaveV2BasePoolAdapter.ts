@@ -1,6 +1,6 @@
 import { formatUnits } from 'ethers/lib/utils'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { ERC20Metadata } from '../../../../core/utils/getTokenMetadata'
+import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   BasePricePerShareToken,
@@ -19,7 +19,7 @@ import {
 import { AaveV2PoolMetadata } from '../../buildMetadata'
 
 export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter<AaveV2PoolMetadata> {
-  async getProtocolTokens(): Promise<ERC20Metadata[]> {
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(this.metadata).map(
       ({ protocolToken }) => protocolToken,
     )
@@ -78,7 +78,7 @@ export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter<AaveV2Pool
 
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
-  ): Promise<ERC20Metadata> {
+  ): Promise<Erc20Metadata> {
     const poolMetadata = this.fetchPoolMetadata(protocolTokenAddress)
 
     return poolMetadata.protocolToken
@@ -86,7 +86,7 @@ export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter<AaveV2Pool
 
   protected async getUnderlyingTokens(
     protocolTokenAddress: string,
-  ): Promise<ERC20Metadata[]> {
+  ): Promise<Erc20Metadata[]> {
     const poolMetadata = this.fetchPoolMetadata(protocolTokenAddress)
 
     return [poolMetadata.underlyingToken]
@@ -110,7 +110,7 @@ export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter<AaveV2Pool
   }
 
   protected async getUnderlyingTokenPricesPerShare(
-    protocolTokenMetadata: ERC20Metadata,
+    protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<BasePricePerShareToken[]> {
     const underlyingTokenMetadata = this.fetchPoolMetadata(

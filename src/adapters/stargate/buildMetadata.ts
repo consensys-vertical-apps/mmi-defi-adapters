@@ -10,7 +10,7 @@ import {
 import { Chain, ChainNames } from '../../core/constants/chains'
 import { chainProviders } from '../../core/utils/chainProviders'
 import {
-  ERC20Metadata,
+  Erc20Metadata,
   getTokenMetadata,
 } from '../../core/utils/getTokenMetadata'
 import { logger } from '../../core/utils/logger'
@@ -20,14 +20,14 @@ export type StargatePoolMetadata = Record<
   string,
   {
     poolId: number
-    protocolToken: ERC20Metadata
-    underlyingToken: ERC20Metadata
+    protocolToken: Erc20Metadata
+    underlyingToken: Erc20Metadata
   }
 >
 
 export type StargateVestingMetadata = {
-  contractToken: ERC20Metadata
-  underlyingToken: ERC20Metadata
+  contractToken: Erc20Metadata
+  underlyingToken: Erc20Metadata
 }
 
 type ChainDetails = {

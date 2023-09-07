@@ -32,7 +32,7 @@ import { Chain } from '../constants/chains'
 import { aggregateTrades } from '../utils/aggregateTrades'
 import { calculateProfit } from '../utils/calculateProfit'
 import { getBalances } from '../utils/getBalances'
-import { ERC20Metadata } from '../utils/getTokenMetadata'
+import { Erc20Metadata } from '../utils/getTokenMetadata'
 import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 
 export abstract class SimplePoolAdapter<AdapterMetadata extends Json>
@@ -58,7 +58,7 @@ export abstract class SimplePoolAdapter<AdapterMetadata extends Json>
 
   abstract getProtocolDetails(): ProtocolDetails
 
-  abstract getProtocolTokens(): Promise<ERC20Metadata[]>
+  abstract getProtocolTokens(): Promise<Erc20Metadata[]>
 
   async getPositions({
     userAddress,
@@ -221,18 +221,18 @@ export abstract class SimplePoolAdapter<AdapterMetadata extends Json>
 
   protected abstract fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
-  ): Promise<ERC20Metadata>
+  ): Promise<Erc20Metadata>
 
   protected abstract getUnderlyingTokens(
     protocolTokenAddress: string,
-  ): Promise<ERC20Metadata[]>
+  ): Promise<Erc20Metadata[]>
 
   protected abstract getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
   ): Promise<BaseToken[]>
 
   protected abstract getUnderlyingTokenPricesPerShare(
-    protocolTokenMetadata: ERC20Metadata,
+    protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
   ): Promise<BasePricePerShareToken[]>
 
@@ -245,7 +245,7 @@ export abstract class SimplePoolAdapter<AdapterMetadata extends Json>
     to,
   }: {
     protocolTokenAddress: string
-    underlyingTokens: ERC20Metadata[]
+    underlyingTokens: Erc20Metadata[]
     fromBlock: number
     toBlock: number
     from: string

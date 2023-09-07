@@ -5,7 +5,7 @@ import { Protocol } from '..'
 import { Chain, ChainNames } from '../../core/constants/chains'
 import { chainProviders } from '../../core/utils/chainProviders'
 import {
-  ERC20Metadata,
+  Erc20Metadata,
   getTokenMetadata,
 } from '../../core/utils/getTokenMetadata'
 import { logger } from '../../core/utils/logger'
@@ -15,8 +15,8 @@ import { ProtocolDataProvider__factory } from './contracts'
 export type AaveV2PoolMetadata = Record<
   string,
   {
-    protocolToken: ERC20Metadata
-    underlyingToken: ERC20Metadata
+    protocolToken: Erc20Metadata
+    underlyingToken: Erc20Metadata
   }
 >
 

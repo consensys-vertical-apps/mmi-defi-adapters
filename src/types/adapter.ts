@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import { Protocol } from '../adapters'
 import { Chain } from '../core/constants/chains'
-import { ERC20Metadata } from '../core/utils/getTokenMetadata'
+import { Erc20Metadata } from '../core/utils/getTokenMetadata'
 
 export const TokenType = {
   Protocol: 'protocol',
@@ -20,7 +20,7 @@ export type PositionType = (typeof PositionType)[keyof typeof PositionType]
 export type GetBalancesInput = GetPositionsInput & {
   provider: ethers.providers.StaticJsonRpcProvider
   chainId: Chain
-  tokens: ERC20Metadata[]
+  tokens: Erc20Metadata[]
 }
 
 export type GetPricesInput = {
@@ -75,7 +75,7 @@ export type GetTotalValueLockedInput = {
   blockNumber?: number
 }
 
-export type TokenBalance = ERC20Metadata & {
+export type TokenBalance = Erc20Metadata & {
   balanceRaw: bigint
   balance: string
 }
@@ -90,19 +90,19 @@ export type ProtocolToken = TokenBalance & {
   tokens?: BaseToken[]
 }
 
-export type BasePricePerShareToken = ERC20Metadata & {
+export type BasePricePerShareToken = Erc20Metadata & {
   pricePerShareRaw: bigint
   pricePerShare: string
   type: typeof TokenType.Underlying
 }
 
-export type ProtocolPricePerShareToken = ERC20Metadata & {
+export type ProtocolPricePerShareToken = Erc20Metadata & {
   share: number
   type: typeof TokenType.Protocol
   tokens?: BasePricePerShareToken[]
 }
 
-export type BaseTokenMovement = ERC20Metadata & {
+export type BaseTokenMovement = Erc20Metadata & {
   movementValue: string
   movementValueRaw: bigint
 }
@@ -112,15 +112,15 @@ export type MovementsByBlock = {
   blockNumber: number
 }
 
-export type ProtocolApyToken = ERC20Metadata & {
+export type ProtocolApyToken = Erc20Metadata & {
   apyDecimal: string
 }
 
-export type ProtocolAprToken = ERC20Metadata & {
+export type ProtocolAprToken = Erc20Metadata & {
   aprDecimal: string
 }
 
-export type TokenTotalValueLock = ERC20Metadata & {
+export type TokenTotalValueLock = Erc20Metadata & {
   totalSupplyRaw: bigint
   totalSupply: string
 }
@@ -140,20 +140,20 @@ export type ProfitsTokensWithRange = {
   tokens: ProtocolProfitsToken[]
 }
 
-export type BaseProfitsToken = ERC20Metadata & {
+export type BaseProfitsToken = Erc20Metadata & {
   type: typeof TokenType.Underlying | typeof TokenType.Claimable
   profitRaw: bigint
   profit: string
 }
 
-export type ProtocolProfitsToken = ERC20Metadata & {
+export type ProtocolProfitsToken = Erc20Metadata & {
   type: typeof TokenType.Protocol
   tokens: BaseProfitsToken[]
 }
 
 export interface IProtocolAdapter {
   getProtocolDetails(): ProtocolDetails
-  getProtocolTokens(): Promise<ERC20Metadata[]>
+  getProtocolTokens(): Promise<Erc20Metadata[]>
   getPositions(input: GetPositionsInput): Promise<ProtocolToken[]>
   getPricePerShare(input: GetPricesInput): Promise<ProtocolPricePerShareToken>
   getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]>

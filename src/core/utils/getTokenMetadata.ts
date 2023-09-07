@@ -7,7 +7,7 @@ import { chainProviders } from './chainProviders'
 import { extractErrorMessage } from './error'
 import { logger } from './logger'
 
-export type ERC20Metadata = {
+export type Erc20Metadata = {
   address: string
   name: string
   symbol: string
@@ -16,7 +16,7 @@ export type ERC20Metadata = {
 }
 
 const CHAIN_METADATA: Partial<
-  Record<Chain, Record<string, ERC20Metadata | undefined>>
+  Record<Chain, Record<string, Erc20Metadata | undefined>>
 > = {
   [Chain.Ethereum]: TOKEN_METADATA_ETHEREUM,
   [Chain.Arbitrum]: TOKEN_METADATA_ARBITRUM,
@@ -28,7 +28,7 @@ export const getTokenMetadata = async ({
 }: {
   tokenAddress: string
   chainId: Chain
-}): Promise<ERC20Metadata> => {
+}): Promise<Erc20Metadata> => {
   const fileMetadata = CHAIN_METADATA[chainId]
   if (fileMetadata) {
     const fileTokenMetadata = fileMetadata[tokenAddress]
@@ -58,7 +58,7 @@ export const getTokenMetadata = async ({
 const getOnChainTokenMetadata = async (
   tokenAddress: string,
   chainId: Chain,
-): Promise<ERC20Metadata | undefined> => {
+): Promise<Erc20Metadata | undefined> => {
   const provider = chainProviders[chainId]
   if (!provider) {
     return undefined
