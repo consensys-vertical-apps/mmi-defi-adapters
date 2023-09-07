@@ -9,7 +9,10 @@ import {
 } from '../../contracts'
 import { Chain, ChainNames } from '../../core/constants/chains'
 import { chainProviders } from '../../core/utils/chainProviders'
-import { ERC20Metadata, getTokenMetadata } from '../../core/utils/getTokenMetadata'
+import {
+  ERC20Metadata,
+  getTokenMetadata,
+} from '../../core/utils/getTokenMetadata'
 import { logger } from '../../core/utils/logger'
 import { Json } from '../../types/json'
 
