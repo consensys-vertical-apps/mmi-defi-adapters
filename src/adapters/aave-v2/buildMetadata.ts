@@ -20,11 +20,6 @@ export type AaveV2PoolMetadata = Record<
   }
 >
 
-type ChainDetails = {
-  chainId: Chain
-  provider: ethers.providers.StaticJsonRpcProvider
-}
-
 const CONTRACT_ADDRESSES: Partial<
   Record<
     Chain,
@@ -81,7 +76,11 @@ async function poolsMetadata({
   chainId,
   provider,
   protocolDataProvider,
-}: ChainDetails & { protocolDataProvider: string | undefined }) {
+}: {
+  chainId: Chain
+  provider: ethers.providers.StaticJsonRpcProvider
+  protocolDataProvider: string | undefined
+}) {
   if (!protocolDataProvider) {
     return
   }

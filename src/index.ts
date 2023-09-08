@@ -267,24 +267,27 @@ async function runForAllProtocolsAndChains<ReturnType>({
   filterChainId?: Chain
 }) {
   const protocolPromises = Object.entries(supportedProtocols)
-    .filter(
-      ([protocolId, _]) => !filterProtocolId || filterProtocolId === protocolId,
-    )
+    .filter(([key, _]) => !filterProtocolId || filterProtocolId === key)
     .flatMap(([_, supportedChains]) => {
       return Object.entries(supportedChains)
-        .filter(([chainId, _]) => {
-          return !filterChainId || filterChainId.toString() === chainId
+        .filter(([key, _]) => {
+          return !filterChainId || filterChainId.toString() === key
         })
-        .flatMap(([chainId, adapters]) => {
-          const provider = chainProviders[chainId as unknown as Chain]
+        .flatMap(([key, adapterClasses]) => {
+          // Object.entries casts the numeric key as a string. This reverses it
+          const chainId = +key as Chain
+          const provider = chainProviders[chainId]
 
           if (!provider) {
             logger.error({ chainId }, 'No provider found for chain')
             throw new Error('No provider found for chain')
           }
 
-          return adapters.map(async (adapterFactory) => {
-            return await runner(adapterFactory(provider), provider)
+          return adapterClasses.map(async (adapterClass) => {
+            return await runner(
+              new adapterClass({ chainId, provider }),
+              provider,
+            )
           })
         })
     })

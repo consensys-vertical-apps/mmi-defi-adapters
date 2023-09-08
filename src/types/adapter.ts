@@ -166,3 +166,8 @@ export interface IProtocolAdapter {
   getApy(input: GetApyInput): Promise<ProtocolApyToken>
   getApr(input: GetAprInput): Promise<ProtocolAprToken>
 }
+
+export type ProtocolAdapterParams = {
+  provider: ethers.providers.StaticJsonRpcProvider
+  chainId: Chain
+}

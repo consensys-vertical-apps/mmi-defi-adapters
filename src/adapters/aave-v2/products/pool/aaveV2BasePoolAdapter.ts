@@ -10,6 +10,7 @@ import {
   GetEventsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
+  ProtocolAdapterParams,
   ProtocolAprToken,
   ProtocolApyToken,
   ProtocolTotalValueLockedToken,
@@ -18,7 +19,18 @@ import {
 } from '../../../../types/adapter'
 import { AaveV2PoolMetadata } from '../../buildMetadata'
 
-export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter<AaveV2PoolMetadata> {
+export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter {
+  protected metadata: AaveV2PoolMetadata
+
+  constructor({
+    provider,
+    chainId,
+    metadata,
+  }: ProtocolAdapterParams & { metadata: AaveV2PoolMetadata }) {
+    super({ provider, chainId })
+    this.metadata = metadata
+  }
+
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(this.metadata).map(
       ({ protocolToken }) => protocolToken,

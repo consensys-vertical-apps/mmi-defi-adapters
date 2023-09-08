@@ -16,6 +16,7 @@ import {
   IProtocolAdapter,
   MovementsByBlock,
   ProfitsTokensWithRange,
+  ProtocolAdapterParams,
   ProtocolAprToken,
   ProtocolApyToken,
   ProtocolDetails,
@@ -25,7 +26,6 @@ import {
   TokenBalance,
   TokenType,
 } from '../../types/adapter'
-import { Json } from '../../types/json'
 import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
@@ -35,23 +35,11 @@ import { getBalances } from '../utils/getBalances'
 import { Erc20Metadata } from '../utils/getTokenMetadata'
 import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 
-export abstract class SimplePoolAdapter<AdapterMetadata extends Json>
-  implements IProtocolAdapter
-{
-  protected metadata: AdapterMetadata
+export abstract class SimplePoolAdapter implements IProtocolAdapter {
   protected provider: ethers.providers.StaticJsonRpcProvider
   protected chainId: Chain
 
-  constructor({
-    metadata,
-    provider,
-    chainId,
-  }: {
-    metadata: AdapterMetadata
-    provider: ethers.providers.StaticJsonRpcProvider
-    chainId: Chain
-  }) {
-    this.metadata = metadata
+  constructor({ provider, chainId }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
   }
@@ -71,7 +59,6 @@ export abstract class SimplePoolAdapter<AdapterMetadata extends Json>
       blockNumber,
       tokens: await this.getProtocolTokens(),
     })
-
     const protocolTokens: ProtocolToken[] = await Promise.all(
       protocolTokensBalances.map(async (protocolTokenBalance) => {
         const underlyingTokenBalances = await this.getUnderlyingTokenBalances(
