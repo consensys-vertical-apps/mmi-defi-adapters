@@ -34,13 +34,7 @@ import {
   TokenType,
 } from '../../../../types/adapter'
 import { StargatePoolMetadata } from '../../buildMetadata'
-import ARBITRUM_METADATA from './arbitrum/metadata.json'
-import ETHEREUM_METADATA from './ethereum/metadata.json'
-
-const Metadata: Partial<Record<Chain, StargatePoolMetadata>> = {
-  [Chain.Ethereum]: ETHEREUM_METADATA,
-  [Chain.Arbitrum]: ARBITRUM_METADATA,
-}
+import { fetchStargatePoolMetadata } from '../../stargateMetadataFetcher'
 
 export class StargatePoolAdapter implements IProtocolAdapter {
   private metadata: StargatePoolMetadata
@@ -49,7 +43,7 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   private protocolTokens: Erc20Metadata[]
 
   constructor({ provider, chainId }: ProtocolAdapterParams) {
-    this.metadata = Metadata[chainId]!
+    this.metadata = fetchStargatePoolMetadata(chainId)
     this.provider = provider
     this.chainId = chainId
     this.protocolTokens = Object.values(this.metadata).map(

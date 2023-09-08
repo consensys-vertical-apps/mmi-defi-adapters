@@ -2,17 +2,8 @@ import { ethers } from 'ethers'
 import { Protocol } from '../../..'
 import { Chain } from '../../../../core/constants/chains'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { AaveV2PoolMetadata } from '../../buildMetadata'
+import { fetchAaveV2VariableDebtTokenMetadata } from '../../aaveV2MetadataFetcher'
 import { AaveV2BasePoolAdapter } from './aaveV2BasePoolAdapter'
-import AVALANCHE_METADATA from './avalanche/variable-debt-token-pool-metadata.json'
-import ETHEREUM_METADATA from './ethereum/variable-debt-token-pool-metadata.json'
-import POLYGON_METADATA from './polygon/variable-debt-token-pool-metadata.json'
-
-const Metadata: Partial<Record<Chain, AaveV2PoolMetadata>> = {
-  [Chain.Ethereum]: ETHEREUM_METADATA,
-  [Chain.Polygon]: POLYGON_METADATA,
-  [Chain.Avalanche]: AVALANCHE_METADATA,
-}
 
 export class AaveV2VariableDebtTokenPoolAdapter extends AaveV2BasePoolAdapter {
   constructor({
@@ -25,7 +16,7 @@ export class AaveV2VariableDebtTokenPoolAdapter extends AaveV2BasePoolAdapter {
     super({
       provider,
       chainId,
-      metadata: Metadata[chainId]!,
+      metadata: fetchAaveV2VariableDebtTokenMetadata(chainId),
     })
   }
 
