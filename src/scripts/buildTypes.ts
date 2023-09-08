@@ -1,6 +1,6 @@
-import { Command } from 'commander'
 import fs from 'fs'
 import * as path from 'path'
+import { Command } from 'commander'
 import { glob, runTypeChain } from 'typechain'
 import { logger } from '../core/utils/logger'
 
