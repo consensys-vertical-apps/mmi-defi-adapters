@@ -14,6 +14,7 @@ import {
   MovementsByBlock,
   PositionType,
   ProfitsTokensWithRange,
+  ProtocolAdapterParams,
   ProtocolAprToken,
   ProtocolApyToken,
   ProtocolDetails,
@@ -29,16 +30,8 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   private provider: ethers.providers.StaticJsonRpcProvider
   private chainId: Chain
 
-  constructor({
-    metadata,
-    provider,
-    chainId,
-  }: {
-    metadata: Json
-    provider: ethers.providers.StaticJsonRpcProvider
-    chainId: Chain
-  }) {
-    this.metadata = metadata
+  constructor({ provider, chainId }: ProtocolAdapterParams) {
+    this.metadata = {}
     this.provider = provider
     this.chainId = chainId
   }

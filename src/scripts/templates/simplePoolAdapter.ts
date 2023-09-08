@@ -24,11 +24,8 @@ export function simplePoolAdapterTemplate(
     TokenBalance,
     TokenType,
   } from '../../../../types/adapter'
-  import { Json } from '../../../../types/json'
   
-  export abstract class ${pascalCase(
-    adapterName,
-  )} extends SimplePoolAdapter<Json> {
+  export class ${pascalCase(adapterName)} extends SimplePoolAdapter {
     getProtocolDetails(): ProtocolDetails {
       return {
         protocolId: Protocol.${pascalCase(protocolName)},

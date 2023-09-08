@@ -24,6 +24,7 @@ import {
   MovementsByBlock,
   PositionType,
   ProfitsTokensWithRange,
+  ProtocolAdapterParams,
   ProtocolAprToken,
   ProtocolApyToken,
   ProtocolDetails,
@@ -33,6 +34,13 @@ import {
   TokenType,
 } from '../../../../types/adapter'
 import { StargatePoolMetadata } from '../../buildMetadata'
+import ARBITRUM_METADATA from './arbitrum/metadata.json'
+import ETHEREUM_METADATA from './ethereum/metadata.json'
+
+const Metadata: Partial<Record<Chain, StargatePoolMetadata>> = {
+  [Chain.Ethereum]: ETHEREUM_METADATA,
+  [Chain.Arbitrum]: ARBITRUM_METADATA,
+}
 
 export class StargatePoolAdapter implements IProtocolAdapter {
   private metadata: StargatePoolMetadata
@@ -40,16 +48,8 @@ export class StargatePoolAdapter implements IProtocolAdapter {
   private chainId: Chain
   private protocolTokens: Erc20Metadata[]
 
-  constructor({
-    metadata,
-    provider,
-    chainId,
-  }: {
-    metadata: StargatePoolMetadata
-    provider: ethers.providers.StaticJsonRpcProvider
-    chainId: Chain
-  }) {
-    this.metadata = metadata
+  constructor({ provider, chainId }: ProtocolAdapterParams) {
+    this.metadata = Metadata[chainId]!
     this.provider = provider
     this.chainId = chainId
     this.protocolTokens = Object.values(this.metadata).map(

@@ -246,8 +246,6 @@ function addAdapterEntries(
   }
 
   for (const chain of chains) {
-    const newAdapterEntry = buildAdapterEntry(chain, product)
-
     let protocolChainEntryNode = protocolChainEntries.properties.find(
       (property) => {
         if (
@@ -272,6 +270,7 @@ function addAdapterEntries(
       throw new Error('Incorrectly typed supportedProtocols object')
     }
 
+    const newAdapterEntry = buildAdapterEntry(product)
     protocolChainEntryNode.value.elements.push(newAdapterEntry)
   }
 }
@@ -333,35 +332,8 @@ function buildChainEntry(chain: string) {
 }
 
 /*
-(provider) =>
-  new <ProductName>Adapter({
-    metadata: {},
-    chainId: Chain.<ChainName>,
-    provider,
-  }),
+<ProductName>Adapter
 */
-function buildAdapterEntry(chain: string, product: string) {
-  const params = [b.identifier('provider')]
-
-  const metadataProperty = b.objectProperty(
-    b.identifier('metadata'),
-    b.objectExpression([]),
-  )
-
-  const chainIdProperty = b.objectProperty(
-    b.identifier('chainId'),
-    b.memberExpression(b.identifier('Chain'), b.identifier(pascalCase(chain))),
-  )
-
-  const providerProperty = b.objectProperty(
-    b.identifier('provider'),
-    b.identifier('provider'),
-  )
-  providerProperty.shorthand = true
-
-  const body = b.newExpression(b.identifier(`${pascalCase(product)}Adapter`), [
-    b.objectExpression([metadataProperty, chainIdProperty, providerProperty]),
-  ])
-
-  return b.arrowFunctionExpression(params, body)
+function buildAdapterEntry(product: string) {
+  return b.identifier(`${pascalCase(product)}Adapter`)
 }
