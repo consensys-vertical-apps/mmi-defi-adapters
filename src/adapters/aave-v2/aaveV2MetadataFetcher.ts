@@ -11,39 +11,13 @@ import POLYGON_A_TOKEN_METADATA from './products/pool/polygon/a-token-pool-metad
 import POLYGON_STABLE_DEBT_TOKEN_METADATA from './products/pool/polygon/stable-debt-token-pool-metadata.json'
 import POLYGON_VARIABLE_DEBT_TOKEN_METADATA from './products/pool/polygon/variable-debt-token-pool-metadata.json'
 
-const ATokenMetadata: Partial<Record<Chain, AaveV2PoolMetadata>> = {
-  [Chain.Ethereum]: ETHEREUM_A_TOKEN_METADATA,
-  [Chain.Polygon]: POLYGON_A_TOKEN_METADATA,
-  [Chain.Avalanche]: AVALANCHE_A_TOKEN_METADATA,
-}
-
-const StableDebtMetadata: Partial<Record<Chain, AaveV2PoolMetadata>> = {
-  [Chain.Ethereum]: ETHEREUM_STABLE_DEBT_TOKEN_METADATA,
-  [Chain.Polygon]: POLYGON_STABLE_DEBT_TOKEN_METADATA,
-  [Chain.Avalanche]: AVALANCHE_STABLE_DEBT_TOKEN_METADATA,
-}
-
-const VariableDebtMetadata: Partial<Record<Chain, AaveV2PoolMetadata>> = {
-  [Chain.Ethereum]: ETHEREUM_VARIABLE_DEBT_TOKEN_METADATA,
-  [Chain.Polygon]: POLYGON_VARIABLE_DEBT_TOKEN_METADATA,
-  [Chain.Avalanche]: AVALANCHE_VARIABLE_DEBT_TOKEN_METADATA,
-}
-
-export function fetchAaveV2ATokenMetadata(chainId: Chain) {
-  return fetchMetadata(chainId, ATokenMetadata)
-}
-
-export function fetchAaveV2StableDebtTokenMetadata(chainId: Chain) {
-  return fetchMetadata(chainId, StableDebtMetadata)
-}
-
-export function fetchAaveV2VariableDebtTokenMetadata(chainId: Chain) {
-  return fetchMetadata(chainId, VariableDebtMetadata)
-}
+type ChainMetadata<AdapterMetadata extends Json> = Partial<
+  Record<Chain, AdapterMetadata>
+>
 
 function fetchMetadata<AdapterMetadata extends Json>(
   chainId: Chain,
-  chainMetadata: Partial<Record<Chain, AdapterMetadata>>,
+  chainMetadata: ChainMetadata<AdapterMetadata>,
 ) {
   const metadata = chainMetadata[chainId]
   if (!metadata) {
@@ -51,4 +25,34 @@ function fetchMetadata<AdapterMetadata extends Json>(
   }
 
   return metadata
+}
+
+export function fetchAaveV2ATokenMetadata(chainId: Chain) {
+  const chainMetadata: ChainMetadata<AaveV2PoolMetadata> = {
+    [Chain.Ethereum]: ETHEREUM_A_TOKEN_METADATA,
+    [Chain.Polygon]: POLYGON_A_TOKEN_METADATA,
+    [Chain.Avalanche]: AVALANCHE_A_TOKEN_METADATA,
+  }
+
+  return fetchMetadata(chainId, chainMetadata)
+}
+
+export function fetchAaveV2StableDebtTokenMetadata(chainId: Chain) {
+  const chainMetadata: ChainMetadata<AaveV2PoolMetadata> = {
+    [Chain.Ethereum]: ETHEREUM_STABLE_DEBT_TOKEN_METADATA,
+    [Chain.Polygon]: POLYGON_STABLE_DEBT_TOKEN_METADATA,
+    [Chain.Avalanche]: AVALANCHE_STABLE_DEBT_TOKEN_METADATA,
+  }
+
+  return fetchMetadata(chainId, chainMetadata)
+}
+
+export function fetchAaveV2VariableDebtTokenMetadata(chainId: Chain) {
+  const chainMetadata: ChainMetadata<AaveV2PoolMetadata> = {
+    [Chain.Ethereum]: ETHEREUM_VARIABLE_DEBT_TOKEN_METADATA,
+    [Chain.Polygon]: POLYGON_VARIABLE_DEBT_TOKEN_METADATA,
+    [Chain.Avalanche]: AVALANCHE_VARIABLE_DEBT_TOKEN_METADATA,
+  }
+
+  return fetchMetadata(chainId, chainMetadata)
 }
