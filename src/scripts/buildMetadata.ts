@@ -3,6 +3,8 @@ import { Protocol, supportedProtocols } from '../adapters'
 import { Chain } from '../core/constants/chains'
 import { chainProviders } from '../core/utils/chainProviders'
 import { logger } from '../core/utils/logger'
+import { IMetadataBuilder } from '../core/utils/metadata'
+import { IProtocolAdapter } from '../types/adapter'
 
 export function buildMetadata(program: Command) {
   program
@@ -19,9 +21,10 @@ export function buildMetadata(program: Command) {
         ([key, value]) => key === chain || value === Number(chain),
       )?.[1]
 
-      for (const [protocolId, supportedChains] of Object.entries(
+      for (const [protocolIdString, supportedChains] of Object.entries(
         supportedProtocols,
       )) {
+        const protocolId = protocolIdString as Protocol
         if (protocolEntry && protocolEntry !== protocolId) {
           continue
         }
@@ -45,19 +48,24 @@ export function buildMetadata(program: Command) {
             const adapter = new adapterClass({
               provider,
               chainId,
-              protocolId: protocolId as Protocol,
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            }) as any
+              protocolId,
+            }) as IProtocolAdapter
 
-            if (adapter['fetchMetadata']) {
+            if (isIMetadataBuilder(adapter)) {
               logger.info(
                 { protocolId, chainId, adapter: adapterClass.name },
                 'FETCHING METADATA',
               )
-              await adapter.fetchMetadata()
+              await adapter.buildMetadata()
             }
           }
         }
       }
     })
+}
+
+function isIMetadataBuilder(object: object): object is IMetadataBuilder {
+  return (
+    'buildMetadata' in object && typeof object['buildMetadata'] === 'function'
+  )
 }

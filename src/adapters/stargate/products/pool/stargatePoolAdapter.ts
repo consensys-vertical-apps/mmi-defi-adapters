@@ -6,12 +6,16 @@ import {
 } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { cachedMetadata } from '../../../../core/decorators/cacheMetadata'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
 } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import {
+  IMetadataBuilder,
+  fetchMetadata,
+  writeMetadataToFile,
+} from '../../../../core/utils/metadata'
 import {
   BasePricePerShareToken,
   BaseToken,
@@ -38,7 +42,10 @@ type StargatePoolMetadata = Record<
   }
 >
 
-export class StargatePoolAdapter extends SimplePoolAdapter {
+export class StargatePoolAdapter
+  extends SimplePoolAdapter
+  implements IMetadataBuilder
+{
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: Protocol.Stargate,
@@ -52,12 +59,31 @@ export class StargatePoolAdapter extends SimplePoolAdapter {
     }
   }
 
-  protected getMetadataFileName(): string {
-    return 'lp-token'
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+    return Object.values(await this.fetchMetadata()).map(
+      ({ protocolToken }) => protocolToken,
+    )
   }
 
-  @cachedMetadata(__dirname)
-  async fetchMetadata(): Promise<StargatePoolMetadata> {
+  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new Error('Not Implemented')
+  }
+
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTotalValueLockedToken[]> {
+    throw new Error('Not Implemented')
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+    throw new Error('Not Implemented')
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+    throw new Error('Not Implemented')
+  }
+
+  async buildMetadata() {
     const contractAddresses: Partial<Record<Chain, string>> = {
       [Chain.Ethereum]: '0x06D538690AF257Da524f25D0CD52fD85b1c2173E',
       [Chain.Arbitrum]: '0x55bDb4164D28FBaF0898e0eF14a589ac09Ac9970',
@@ -99,31 +125,13 @@ export class StargatePoolAdapter extends SimplePoolAdapter {
       }
     }
 
-    return metadataObject
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.fetchMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
-
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new Error('Not Implemented')
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
-    throw new Error('Not Implemented')
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
-    throw new Error('Not Implemented')
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]> {
-    throw new Error('Not Implemented')
+    await writeMetadataToFile({
+      protocolId: this.protocolId,
+      product: 'pool',
+      chainId: this.chainId,
+      fileName: this.getMetadataFileName(),
+      metadataObject,
+    })
   }
 
   protected async fetchProtocolTokenMetadata(
@@ -134,6 +142,7 @@ export class StargatePoolAdapter extends SimplePoolAdapter {
 
     return protocolTokenMetadata
   }
+
   protected async getUnderlyingTokens(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
@@ -199,5 +208,17 @@ export class StargatePoolAdapter extends SimplePoolAdapter {
     }
 
     return poolMetadata
+  }
+
+  private async fetchMetadata(): Promise<StargatePoolMetadata> {
+    return fetchMetadata({
+      productDir: __dirname,
+      fileName: this.getMetadataFileName(),
+      chainId: this.chainId,
+    })
+  }
+
+  private getMetadataFileName(): string {
+    return 'lp-token'
   }
 }

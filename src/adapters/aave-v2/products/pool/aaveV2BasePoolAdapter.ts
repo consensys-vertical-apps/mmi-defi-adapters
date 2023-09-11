@@ -1,12 +1,16 @@
 import { formatUnits } from 'ethers/lib/utils'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { cachedMetadata } from '../../../../core/decorators/cacheMetadata'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
 } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import {
+  IMetadataBuilder,
+  fetchMetadata,
+  writeMetadataToFile,
+} from '../../../../core/utils/metadata'
 import {
   BasePricePerShareToken,
   BaseToken,
@@ -34,16 +38,35 @@ type AaveV2PoolMetadata = Record<
   }
 >
 
-export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter {
-  protected abstract getMetadataFileName(): string
-  protected abstract getReserveTokenAddress(
-    reserveTokenAddresses: Awaited<
-      ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
-    >,
-  ): string
+export abstract class AaveV2BasePoolAdapter
+  extends SimplePoolAdapter
+  implements IMetadataBuilder
+{
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+    return Object.values(await this.fetchMetadata()).map(
+      ({ protocolToken }) => protocolToken,
+    )
+  }
 
-  @cachedMetadata(__dirname)
-  protected async fetchMetadata(): Promise<AaveV2PoolMetadata> {
+  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new Error('Not Implemented')
+  }
+
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTotalValueLockedToken[]> {
+    throw new Error('Not Implemented')
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+    throw new Error('Not Implemented')
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+    throw new Error('Not Implemented')
+  }
+
+  async buildMetadata() {
     const contractAddresses: Partial<Record<Chain, string>> = {
       [Chain.Ethereum]: '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
       [Chain.Polygon]: '0x7551b5D2763519d4e37e8B81929D336De671d46d',
@@ -90,31 +113,13 @@ export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter {
       )
     }
 
-    return metadataObject
-  }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.fetchMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
-
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new Error('Not Implemented')
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
-    throw new Error('Not Implemented')
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
-    throw new Error('Not Implemented')
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]> {
-    throw new Error('Not Implemented')
+    await writeMetadataToFile({
+      protocolId: this.protocolId,
+      product: 'pool',
+      chainId: this.chainId,
+      fileName: this.getMetadataFileName(),
+      metadataObject,
+    })
   }
 
   protected async fetchProtocolTokenMetadata(
@@ -175,6 +180,14 @@ export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter {
     ]
   }
 
+  protected abstract getMetadataFileName(): string
+
+  protected abstract getReserveTokenAddress(
+    reserveTokenAddresses: Awaited<
+      ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
+    >,
+  ): string
+
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.fetchMetadata())[protocolTokenAddress]
 
@@ -184,5 +197,13 @@ export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter {
     }
 
     return poolMetadata
+  }
+
+  private async fetchMetadata(): Promise<AaveV2PoolMetadata> {
+    return fetchMetadata({
+      productDir: __dirname,
+      fileName: this.getMetadataFileName(),
+      chainId: this.chainId,
+    })
   }
 }

@@ -4,18 +4,6 @@ import { ProtocolDataProvider } from '../../contracts'
 import { AaveV2BasePoolAdapter } from './aaveV2BasePoolAdapter'
 
 export class AaveV2ATokenPoolAdapter extends AaveV2BasePoolAdapter {
-  protected getMetadataFileName(): string {
-    return 'a-token'
-  }
-
-  protected getReserveTokenAddress(
-    reserveTokenAddresses: Awaited<
-      ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
-    >,
-  ): string {
-    return reserveTokenAddresses.aTokenAddress
-  }
-
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: Protocol.AaveV2,
@@ -26,5 +14,17 @@ export class AaveV2ATokenPoolAdapter extends AaveV2BasePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
     }
+  }
+
+  protected getMetadataFileName(): string {
+    return 'a-token'
+  }
+
+  protected getReserveTokenAddress(
+    reserveTokenAddresses: Awaited<
+      ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
+    >,
+  ): string {
+    return reserveTokenAddresses.aTokenAddress
   }
 }
