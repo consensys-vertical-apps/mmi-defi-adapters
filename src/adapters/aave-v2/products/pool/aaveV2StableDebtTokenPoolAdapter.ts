@@ -1,19 +1,19 @@
 import { Protocol } from '../../..'
-import {
-  PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-} from '../../../../types/adapter'
-import { fetchAaveV2StableDebtTokenMetadata } from '../../aaveV2MetadataFetcher'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import { ProtocolDataProvider } from '../../contracts'
 import { AaveV2BasePoolAdapter } from './aaveV2BasePoolAdapter'
 
 export class AaveV2StableDebtTokenPoolAdapter extends AaveV2BasePoolAdapter {
-  constructor({ provider, chainId }: ProtocolAdapterParams) {
-    super({
-      provider,
-      chainId,
-      metadata: fetchAaveV2StableDebtTokenMetadata(chainId),
-    })
+  protected getMetadataFileName(): string {
+    return 'stable-debt-token'
+  }
+
+  protected getReserveTokenAddress(
+    reserveTokenAddresses: Awaited<
+      ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
+    >,
+  ): string {
+    return reserveTokenAddresses.stableDebtTokenAddress
   }
 
   getProtocolDetails(): ProtocolDetails {

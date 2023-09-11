@@ -23,17 +23,17 @@ import {
   ProtocolTotalValueLockedToken,
   TokenType,
 } from '../../../../types/adapter'
-import { Json } from '../../../../types/json'
 
 export class ExampleProductAdapter implements IProtocolAdapter {
-  private metadata: Json
-  private provider: ethers.providers.StaticJsonRpcProvider
-  private chainId: Chain
+  protocolId: Protocol
+  chainId: Chain
 
-  constructor({ provider, chainId }: ProtocolAdapterParams) {
-    this.metadata = {}
+  private provider: ethers.providers.StaticJsonRpcProvider
+
+  constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
+    this.protocolId = protocolId
   }
 
   getProtocolDetails(): ProtocolDetails {

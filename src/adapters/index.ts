@@ -24,7 +24,7 @@ export const supportedProtocols: Record<
 > = {
   [Protocol.Stargate]: {
     [Chain.Ethereum]: [StargatePoolAdapter, StargateVestingAdapter],
-    [Chain.Arbitrum]: [StargatePoolAdapter],
+    [Chain.Arbitrum]: [StargatePoolAdapter, StargateVestingAdapter],
   },
 
   [Protocol.Example]: {

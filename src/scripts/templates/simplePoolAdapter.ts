@@ -28,13 +28,13 @@ export function simplePoolAdapterTemplate(
   export class ${pascalCase(adapterName)} extends SimplePoolAdapter {
     getProtocolDetails(): ProtocolDetails {
       return {
-        protocolId: Protocol.${pascalCase(protocolName)},
-      name: '${protocolName}',
-      description: '${protocolName} pool adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
-      positionType: PositionType.Supply,
-      chainId: this.chainId,
+        protocolId: this.protocolId,
+        name: '${protocolName}',
+        description: '${protocolName} pool adapter',
+        siteUrl: 'https:',
+        iconUrl: 'https://',
+        positionType: PositionType.Supply,
+        chainId: this.chainId,
       }
     }
   

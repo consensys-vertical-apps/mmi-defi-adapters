@@ -1,19 +1,19 @@
 import { Protocol } from '../../..'
-import {
-  PositionType,
-  ProtocolAdapterParams,
-  ProtocolDetails,
-} from '../../../../types/adapter'
-import { fetchAaveV2ATokenMetadata } from '../../aaveV2MetadataFetcher'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import { ProtocolDataProvider } from '../../contracts'
 import { AaveV2BasePoolAdapter } from './aaveV2BasePoolAdapter'
 
 export class AaveV2ATokenPoolAdapter extends AaveV2BasePoolAdapter {
-  constructor({ provider, chainId }: ProtocolAdapterParams) {
-    super({
-      provider,
-      chainId,
-      metadata: fetchAaveV2ATokenMetadata(chainId),
-    })
+  protected getMetadataFileName(): string {
+    return 'a-token'
+  }
+
+  protected getReserveTokenAddress(
+    reserveTokenAddresses: Awaited<
+      ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
+    >,
+  ): string {
+    return reserveTokenAddresses.aTokenAddress
   }
 
   getProtocolDetails(): ProtocolDetails {

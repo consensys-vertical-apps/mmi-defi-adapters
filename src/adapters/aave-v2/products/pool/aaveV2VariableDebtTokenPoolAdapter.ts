@@ -1,23 +1,19 @@
-import { ethers } from 'ethers'
 import { Protocol } from '../../..'
-import { Chain } from '../../../../core/constants/chains'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { fetchAaveV2VariableDebtTokenMetadata } from '../../aaveV2MetadataFetcher'
+import { ProtocolDataProvider } from '../../contracts'
 import { AaveV2BasePoolAdapter } from './aaveV2BasePoolAdapter'
 
 export class AaveV2VariableDebtTokenPoolAdapter extends AaveV2BasePoolAdapter {
-  constructor({
-    provider,
-    chainId,
-  }: {
-    provider: ethers.providers.StaticJsonRpcProvider
-    chainId: Chain
-  }) {
-    super({
-      provider,
-      chainId,
-      metadata: fetchAaveV2VariableDebtTokenMetadata(chainId),
-    })
+  protected getMetadataFileName(): string {
+    return 'variable-debt-token'
+  }
+
+  protected getReserveTokenAddress(
+    reserveTokenAddresses: Awaited<
+      ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
+    >,
+  ): string {
+    return reserveTokenAddresses.variableDebtTokenAddress
   }
 
   getProtocolDetails(): ProtocolDetails {

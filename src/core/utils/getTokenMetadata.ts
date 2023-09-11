@@ -22,6 +22,18 @@ const CHAIN_METADATA: Partial<
   [Chain.Arbitrum]: TOKEN_METADATA_ARBITRUM,
 }
 
+export const getThinTokenMetadata = async (
+  tokenAddress: string,
+  chainId: Chain,
+) => {
+  const { iconUrl: _, ...token } = await getTokenMetadata({
+    tokenAddress,
+    chainId,
+  })
+
+  return token
+}
+
 export const getTokenMetadata = async ({
   tokenAddress,
   chainId,

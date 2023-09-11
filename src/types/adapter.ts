@@ -152,6 +152,9 @@ export type ProtocolProfitsToken = Erc20Metadata & {
 }
 
 export interface IProtocolAdapter {
+  protocolId: Protocol
+  chainId: Chain
+
   getProtocolDetails(): ProtocolDetails
   getProtocolTokens(): Promise<Erc20Metadata[]>
   getPositions(input: GetPositionsInput): Promise<ProtocolToken[]>
@@ -170,4 +173,5 @@ export interface IProtocolAdapter {
 export type ProtocolAdapterParams = {
   provider: ethers.providers.StaticJsonRpcProvider
   chainId: Chain
+  protocolId: Protocol
 }

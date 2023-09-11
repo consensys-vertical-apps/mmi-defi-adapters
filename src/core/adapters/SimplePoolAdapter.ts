@@ -1,5 +1,6 @@
 import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
+import { Protocol } from '../../adapters'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
 import {
@@ -36,12 +37,15 @@ import { Erc20Metadata } from '../utils/getTokenMetadata'
 import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
-  protected provider: ethers.providers.StaticJsonRpcProvider
-  protected chainId: Chain
+  chainId: Chain
+  protocolId: Protocol
 
-  constructor({ provider, chainId }: ProtocolAdapterParams) {
+  protected provider: ethers.providers.StaticJsonRpcProvider
+
+  constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
+    this.protocolId = protocolId
   }
 
   abstract getProtocolDetails(): ProtocolDetails

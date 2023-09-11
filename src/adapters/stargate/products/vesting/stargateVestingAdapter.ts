@@ -3,7 +3,11 @@ import { formatUnits } from 'ethers/lib/utils'
 import { Protocol } from '../../..'
 import { StargateVotingEscrow__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
-import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
+import { cachedMetadata } from '../../../../core/decorators/cacheMetadata'
+import {
+  Erc20Metadata,
+  getThinTokenMetadata,
+} from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
   GetApyInput,
@@ -22,20 +26,22 @@ import {
   ProtocolTotalValueLockedToken,
   TokenType,
 } from '../../../../types/adapter'
-import { StargateVestingMetadata } from '../../buildMetadata'
-import { fetchStargateVestingMetadata } from '../../stargateMetadataFetcher'
+
+type StargateVestingMetadata = {
+  contractToken: Erc20Metadata
+  underlyingToken: Erc20Metadata
+}
 
 export class StargateVestingAdapter implements IProtocolAdapter {
-  private metadata: StargateVestingMetadata
-  private provider: ethers.providers.StaticJsonRpcProvider
-  private chainId: Chain
-  private protocolTokens: Erc20Metadata[]
+  protocolId: Protocol
+  chainId: Chain
 
-  constructor({ provider, chainId }: ProtocolAdapterParams) {
-    this.metadata = fetchStargateVestingMetadata(chainId)
+  private provider: ethers.providers.StaticJsonRpcProvider
+
+  constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
-    this.protocolTokens = [this.metadata.contractToken]
+    this.protocolId = protocolId
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -51,42 +57,73 @@ export class StargateVestingAdapter implements IProtocolAdapter {
     }
   }
 
+  protected getMetadataFileName(): string {
+    return 'vesting-token'
+  }
+
+  @cachedMetadata(__dirname)
+  async fetchMetadata(): Promise<StargateVestingMetadata> {
+    const contractAddresses: Partial<Record<Chain, string>> = {
+      [Chain.Ethereum]: '0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E',
+      [Chain.Arbitrum]: '0xfBd849E6007f9BC3CC2D6Eb159c045B8dc660268',
+    }
+
+    const votingEscrowContract = StargateVotingEscrow__factory.connect(
+      contractAddresses[this.chainId]!,
+      this.provider,
+    )
+
+    const underlyingTokenAddress = (
+      await votingEscrowContract.token()
+    ).toLowerCase()
+
+    const contractToken = await getThinTokenMetadata(
+      contractAddresses[this.chainId]!,
+      this.chainId,
+    )
+    const underlyingToken = await getThinTokenMetadata(
+      underlyingTokenAddress,
+      this.chainId,
+    )
+
+    const metadataObject: StargateVestingMetadata = {
+      contractToken,
+      underlyingToken,
+    }
+
+    return metadataObject
+  }
+
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return this.protocolTokens
+    return [(await this.fetchMetadata()).contractToken]
   }
 
   async getWithdrawals(): Promise<MovementsByBlock[]> {
-    // TODO
-    return []
+    throw new Error('Not Implemented')
   }
+
   async getOneDayProfit(): Promise<ProfitsTokensWithRange> {
-    // TODO
-    return {} as ProfitsTokensWithRange
+    throw new Error('Not Implemented')
   }
 
   async getDeposits(): Promise<MovementsByBlock[]> {
-    // TODO
-    return []
+    throw new Error('Not Implemented')
   }
 
   async getClaimedRewards(): Promise<MovementsByBlock[]> {
-    // TODO
-    return []
+    throw new Error('Not Implemented')
   }
 
   async getPricePerShare(): Promise<ProtocolPricePerShareToken> {
-    // TODO
-    return {} as ProtocolPricePerShareToken
+    throw new Error('Not Implemented')
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
-    // TODO
-    return {} as ProtocolAprToken
+    throw new Error('Not Implemented')
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
-    // TODO
-    return {} as ProtocolApyToken
+    throw new Error('Not Implemented')
   }
 
   async getPositions({
@@ -96,10 +133,11 @@ export class StargateVestingAdapter implements IProtocolAdapter {
     const {
       contractToken: contractTokenMetadata,
       underlyingToken: underlyingTokenMetadata,
-    } = this.metadata
+    } = await this.fetchMetadata()
 
-    const votingEscrowContract = this.stargateVotingEscrowContract(
+    const votingEscrowContract = StargateVotingEscrow__factory.connect(
       contractTokenMetadata.address,
+      this.provider,
     )
 
     const { amount: lockedAmount } = await votingEscrowContract.locked(
@@ -139,11 +177,6 @@ export class StargateVestingAdapter implements IProtocolAdapter {
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]> {
-    // TODO
-    return []
-  }
-
-  private stargateVotingEscrowContract(address: string) {
-    return StargateVotingEscrow__factory.connect(address, this.provider)
+    throw new Error('Not Implemented')
   }
 }

@@ -32,27 +32,29 @@ import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
 import { Protocol } from '../../..'
 
 export class ${pascalCase(adapterName)} implements IProtocolAdapter {
+  protocolId: Protocol
+  chainId: Chain
+
   private metadata: Json
   private provider: ethers.providers.StaticJsonRpcProvider
-  private chainId: Chain
 
   constructor({
-    metadata,
     provider,
     chainId,
+    protocolId,
   }: {
-    metadata: Json
     provider: ethers.providers.StaticJsonRpcProvider
     chainId: Chain
+    protocolId: Protocol
   }) {
-    this.metadata = metadata
     this.provider = provider
     this.chainId = chainId
+    this.protocolId = protocolId
   }
 
   getProtocolDetails(): ProtocolDetails {
     return {
-      protocolId: Protocol.${pascalCase(protocolName)},
+      protocolId: this.protocolId,
       name: '${protocolName}',
       description: '${protocolName} defi adapter',
       siteUrl: 'https:',
