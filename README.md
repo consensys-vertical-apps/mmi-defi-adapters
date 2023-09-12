@@ -124,7 +124,7 @@ Where:
 
 - `<Example>` is the name of your protocol as you'd like it to appear.
 - `<example-product>` is the name of the product for the adapter in kebab-case
-- `[template]` is the template that will be used (e.g. `SimplePoolAdapter``). Default: `DefaulAdapterTemplate`
+- `[template]` is the template that will be used (e.g. `SimplePoolAdapter``). Default: `DefaultAdapterTemplate`
 - `[chains]` is a list of comma separated list of supported chains (e.g. `Ethereum,Arbitrum,Optimism`). Default: `Ethereum`
 
 ## Adding a New Protocol or Adapter manually
