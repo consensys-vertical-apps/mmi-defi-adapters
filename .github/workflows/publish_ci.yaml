@@ -1,14 +1,13 @@
 name: publish:ci
 
 on:
-  pull_request: 
-    types: [closed]
+  pull_request:
     branches:
-      - main
+    - main
+
 
 jobs:
   version-and-publish:
-    if: github.event.pull_request.merged == true
     name: Version and Publish
     runs-on: ubuntu-latest
     steps:
@@ -26,25 +25,50 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Version bump
+      - name: Version bump with logs
         run: |
-          if echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "major"; then
-            npm version major -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "minor"; then
-            npm version minor -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "patch"; then
-            npm version patch -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "premajor"; then
-            npm version premajor -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "preminor"; then
-            npm version preminor -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "prepatch"; then
-            npm version prepatch -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "prerelease"; then
-            npm version prerelease -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "from-git"; then
-            npm version from-git -m "chore: version bump to %s [skip ci]"
-          fi
+          LABELS="${{ github.event.pull_request.labels.*.name }}"
+          echo "PR labels: $LABELS"
+          
+          IFS=',' read -ra LABEL_ARRAY <<< "$LABELS"
+          
+          for label in "${LABEL_ARRAY[@]}"; do
+            echo "Processing label: $label"
+            case $label in
+              major)
+                npm version major -m "chore: version bump to %s [skip ci]"
+                ;;
+              minor)
+                npm version minor -m "chore: version bump to %s [skip ci]"
+                ;;
+              patch)
+                npm version patch -m "chore: version bump to %s [skip ci]"
+                ;;
+              premajor)
+                npm version premajor -m "chore: version bump to %s [skip ci]"
+                ;;
+              preminor)
+                npm version preminor -m "chore: version bump to %s [skip ci]"
+                ;;
+              prepatch)
+                npm version prepatch -m "chore: version bump to %s [skip ci]"
+                ;;
+              prerelease)
+                npm version prerelease -m "chore: version bump to %s [skip ci]"
+                ;;
+              from-git)
+                npm version from-git -m "chore: version bump to %s [skip ci]"
+                ;;
+              *)
+                echo "Label $label not recognized for versioning."
+                ;;
+            esac
+          done
+        shell: /usr/bin/bash -e {0}
+        env:
+          NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
 
 
       - name: Push changes
