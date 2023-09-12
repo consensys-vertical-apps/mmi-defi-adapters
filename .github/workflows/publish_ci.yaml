@@ -25,6 +25,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Debug labels
+        run: echo "${{ toJson(github.event.pull_request.labels) }}"
+
+
       - name: Version bump with logs
         run: |
           LABELS="${{ github.event.pull_request.labels.*.name }}"
