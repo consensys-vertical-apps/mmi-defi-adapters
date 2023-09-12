@@ -6,25 +6,28 @@
     </b>
 </h1>
 
-# Introduction
+# Welcome to our DeFi Adapter Library! 🚀
 
-Welcome to our defi-adapter library, often defi-protocols have their own unique interfaces and data structures posing challenges while fetching or interacting with them.
-This library of adapters takes care of fetching and transforming underlying protocol data into a standardized format which can be used by portfolio dashboards.
+This library is designed to simplify and standardize the process of fetching and interacting with data from various DeFi protocols, which often have unique interfaces and data structures. Our adapters fetch and transform underlying protocol data into a standardized format that can be easily used by portfolio dashboards.
 
-Our goal is to (i) connect users with DeFi protocols (ii) benefit the wider ecosystem (iii) simplify and standardize adapters building (iv) provide the following data in a standardized format:
+## Our Goals 🎯
 
-- Defi positions by address. Results should include the balance of the underlying token(s) such as USDC, WETH etc.
-- Total value locked by pool
-- APY/APY by pool
-- Daily profit and loss by address
-- Price of LP token
-- Deposits by address
-- Withdrawals by address
-- Claimed rewards by address
+1. Connect users with DeFi protocols
+2. Benefit the wider ecosystem
+3. Simplify and standardize adapter building
+4. Provide the following data in a standardized format:
+   - DeFi positions by address, including the balance of underlying tokens such as USDC, WETH, etc.
+   - Total Value Locked (TVL) by pool
+   - APY/APR by pool
+   - Daily profit and loss by address
+   - Price of LP token
+   - Deposits by address
+   - Withdrawals by address
+   - Claimed rewards by address
 
 ## Overview of this library
 
-From left to right, get onchain data and standardize.
+From left to right, get-onchain-data and convert to standardize format.
 
 ![Alt text](high-level.png)
 
@@ -32,7 +35,7 @@ From left to right, get onchain data and standardize.
 
 ![Alt text](get-positions.png)
 
-# Getting Started
+## Getting Started 🏁
 
 ## Contributing
 
@@ -42,176 +45,84 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 - Node v18
 
-## Quick start
+### Quick Start
 
-To run project and run adapters in default mode with our test addresses follow the below.
+To run the project and execute adapters in default mode with our test addresses, follow these steps:
 
-```
-1 . Create a copy of `.env.example` as `.env`.
-2. npm i
-3. npm run build:watch
-4. npm run positions
-5. npm run profits
-6. npm run tvl
-7. npm run prices
-8. npm run apr
-9. npm run apy
-10. npm run withdrawals
-11. npm run deposits
-
-```
+1. Create a copy of `.env.example` as `.env`.
+2. Install the necessary packages with `npm i`
+3. Build the project with `npm run build:watch`
+4. Run the following commands to execute various functions:
+   - `npm run positions`
+   - `npm run profits`
+   - `npm run tvl`
+   - `npm run prices`
+   - `npm run apr`
+   - `npm run apy`
+   - `npm run withdrawals`
+   - `npm run deposits`
 
 ## Installation
 
-Create a copy of `.env.example` as `.env`.
-
-Run the following command:
-
-```
-npm i
-```
+Create a copy of `.env.example` as `.env` and run `npm i` to install the necessary packages.
 
 ## Building
 
-Run the following command for building the app once
+Use `npm run build` to build the app once, or `npm run build:watch` to constantly build the app during development.
 
-```
-npm run build
-```
+# Running the App 🏃‍♂️
 
-Run the following command for constantly building the app during development
+### CLI Help
 
-```
-npm run build:watch
-```
+To get specific details on available commands, run `npm run adapters-cli`. For arguments and options for specific commands, use `npm run positions -- --help`.
 
-# Running the app
+### Filtering
 
-## CLI help
+You can get results for specific protocols and chains for every command by adding `--chain <chainId>` and/or `--protocol <protocolName>`. For example, `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocol stargate --chain 1`.
 
-Specific details on what commands are available can be shown running:
+### Get Positions
 
-```
-npm run adapters-cli
-```
+To get positions, run `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
 
-For getting the arguments and options for specific commands:
+### Get PnL
 
-```
-npm run positions -- --help
-```
+To get profit and loss, run `npm run profits 0xB0D502E938ed5f4df2E681fE6E419ff29631d62b`.
 
-## Filtering
+### Get Positions
 
-It is possible to get results for specific protocols and chains for every command by adding `--chain <chainId>` and/or `--protocol <protocolName>`
+To get positions, run `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
 
-For example:
+### Get PnL
 
-```
-npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocol stargate --chain 1
-```
+To get profit and loss, run `npm run profits 0xB0D502E938ed5f4df2E681fE6E419ff29631d62b`.
 
-## Get positions
+### Get Price Per Share
 
-```
-npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255
-```
+To get price per share, run `npm run prices`.
 
-## Get PnL
+### Get Total Value Locked (TVL)
 
-```
-npm run profits 0xB0D502E938ed5f4df2E681fE6E419ff29631d62b
-```
+To get TVL, run `npm run tvl`.
 
-## Get price per share
+### Get APR
 
-```
-npm run prices
-```
+To get APR, run `npm run apr`.
 
-## Get total value lock
+### Get APY
 
-```
-npm run tvl
-```
+To get APY, run `npm run apy`.
 
-## Get APR
+### Get Deposits
 
-```
-npm run apr
-```
+To get deposits, run `npm run deposits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336`.
 
-## Get APY
+### Get Withdrawals
 
-```
-npm run apy
-```
-
-## Get deposits
-
-```
-npm run deposits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336
-```
-
-## Get withdrawals
-
-```
-npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336
-```
-
-## Update Average blocks per day
-
-Run the following command to update all averages
-
-```
-npm run adapters-cli block-average
-```
-
-Run the following command to update a specific chain
-
-```
-npm run adapters-cli block-average -- --chain 1
-```
-
-# Repo topology
-
-```
-mmi-defi-adapters/
-│
-└── src/
-    ├── adapters/                                       # Folder for all the protocol adapters and code
-    │   ├── example-protocol/                           # Folder for the new protocol called example-protocol
-    │   │   ├── products/                               # Folder for the different protocol product
-    │   │   │   ├── pool/                               # Folder for the pool product
-    │   │   │   │   ├── ethereum/                       # Folder with protocol specific metadata and code
-    │   │   │   │   ├── optimism/                       # Folder with protocol specific metadata and code
-    │   │   │   │   ├── arbitrum/                       # Folder with protocol specific metadata and code
-    │   │   │   │   └── protocolNamePoolAdapter.ts      # Implementation of IProtocolAdapter
-    │   │   │   │
-    │   │   │   └── vesting/                            # Folder for the staking product
-    │   │   │       ├── ethereum/                       # Folder with protocol specific metadata and code
-    │   │   │       ├── arbitrum/                       # Folder with protocol specific metadata and code
-    │   │   │       └── protocolNameVestingAdapter.ts   # Implementation of IProtocolAdapter
-    │   │   │
-    │   │   └── buildMetadata.ts                        # Metadata builder script
-    │   │
-    │   ├── index.ts                                    # Exports supportedProtocols object
-    │   └── metadataBuilders.ts                         # Exports protocolMetadataBuilders object
-    │
-    └── contracts/
-        └── abis/
-            └── example-protocol/                       # Folder to place all the protocol contract abis
-                ├── example-lp-factory-contract.json    # Abi for the protocol lp-factory contract
-                └── example-staking-contract.json       # Abi for the protocol staking contract
-```
+To get withdrawals, run `npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336`.
 
 ## Adding a new Adapter (CLI)
 
-Run the following command to add a new adapter
-
-```
-npm run new-adapter <Example> <example-product> [Chains]
-```
+Run the following command to add a new adapter `npm run new-adapter <Example> <example-product> [Chains]`
 
 Where:
 
@@ -225,24 +136,15 @@ See [NON-CLI-ADAPTER.md](NON-CLI-ADAPTER).
 
 ## Contract Factories
 
-Add a JSON file with the abi of any new contract to the folder `src/contracts/abis/<protocol-name>`.
+Add a JSON file with the ABI of any new contract to the folder `src/contracts/abis/<protocol-name>`. Run `npm run build-types` to generate factories and ABIs for those contracts automatically.
 
-Run the following command to generate factories and abis for those contracts automatically:
+### Versioning and Publishing (internal use only)
 
-```
-npm run build-types
-```
+On your branch, bump the package version by running `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]`. The publish_ci pipeline will automatically run when merged to main.
 
-## Versioning and Publishing (internal use only)
+### Update Average Blocks Per Day (internal use only)
 
-On your branch, bump the package version by running the below. The publish_ci pipeline will automatically-run when merged to main.
-
-npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]
-
-```
-npm version patch
-git push
-```
+To update all averages, run `npm run adapters-cli block-average`. To update a specific chain, run `npm run adapters-cli block-average -- --chain 1`.
 
 # Contributors ✨
 
