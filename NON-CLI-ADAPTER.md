@@ -1,4 +1,4 @@
-## Adding a New Protocol (manual)
+## Adding a New Protocol (manual copy and paste)
 
 To integrate a new protocol:
 
@@ -7,7 +7,7 @@ To integrate a new protocol:
    - Add to `supportedProtocols` object.
 2. Create a new folder in `src/adapters`, named in kebab-case, e.g., `src/${protocolName}/products/${productName}/productAdapter.ts`.
 
-## Adding an Adapter (manual)
+## Adding an Adapter (manual copy and paste)
 
 After adding your protocol:
 

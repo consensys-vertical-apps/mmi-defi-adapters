@@ -2,11 +2,8 @@ name: publish:ci
 
 on:
   push:
-    branches:
-      - main
     tags:
       - '*'
-
 
 jobs:
   publish:
@@ -16,6 +13,12 @@ jobs:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v3
+      - name: Check if branch is main
+        id: check_branch
+        run: echo "::set-output name=branch::$(git symbolic-ref --short HEAD)"
+      - name: Cancel job if branch is not main
+        if: steps.check_branch.outputs.branch != 'main'
+        run: echo "Not on main branch, cancelling job" && exit 1
       - uses: actions/setup-node@v3
         with:
           node-version: 18.x
