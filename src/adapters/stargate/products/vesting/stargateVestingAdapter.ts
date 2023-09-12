@@ -52,7 +52,7 @@ export class StargateVestingAdapter
 
   getProtocolDetails(): ProtocolDetails {
     return {
-      protocolId: Protocol.Stargate,
+      protocolId: this.protocolId,
       name: 'Stargate',
       description:
         'Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi',
@@ -71,13 +71,10 @@ export class StargateVestingAdapter
     userAddress,
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolToken[]> {
-    const {
-      contractToken: contractTokenMetadata,
-      underlyingToken: underlyingTokenMetadata,
-    } = await this.buildMetadata()
+    const { contractToken, underlyingToken } = await this.buildMetadata()
 
     const votingEscrowContract = StargateVotingEscrow__factory.connect(
-      contractTokenMetadata.address,
+      contractToken.address,
       this.provider,
     )
 
@@ -94,19 +91,16 @@ export class StargateVestingAdapter
 
     const tokens = [
       {
-        ...contractTokenMetadata,
+        ...contractToken,
         type: TokenType.Protocol,
         balanceRaw: BigInt(userBalance.toString()),
-        balance: formatUnits(userBalance, contractTokenMetadata.decimals),
+        balance: formatUnits(userBalance, contractToken.decimals),
         tokens: [
           {
-            ...underlyingTokenMetadata,
+            ...underlyingToken,
             type: TokenType.Underlying,
             balanceRaw: BigInt(lockedAmount.toString()),
-            balance: formatUnits(
-              lockedAmount,
-              underlyingTokenMetadata.decimals,
-            ),
+            balance: formatUnits(lockedAmount, underlyingToken.decimals),
           },
         ],
       },

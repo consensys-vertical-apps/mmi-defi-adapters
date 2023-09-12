@@ -117,29 +117,30 @@ export abstract class AaveV2BasePoolAdapter
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
-    const { protocolToken: protocolTokenMetadata } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
 
-    return protocolTokenMetadata
+    return protocolToken
   }
 
   protected async getUnderlyingTokens(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken: underlyingTokenMetadata } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
 
-    return [underlyingTokenMetadata]
+    return [underlyingToken]
   }
 
   protected async getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
   ): Promise<BaseToken[]> {
-    const { underlyingToken: underlyingTokenMetadata } =
-      await this.fetchPoolMetadata(protocolTokenBalance.address)
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenBalance.address,
+    )
 
     const underlyingTokenBalance = {
-      ...underlyingTokenMetadata,
+      ...underlyingToken,
       balanceRaw: protocolTokenBalance.balanceRaw,
       balance: protocolTokenBalance.balance,
       type: TokenType.Underlying,
@@ -152,19 +153,20 @@ export abstract class AaveV2BasePoolAdapter
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<BasePricePerShareToken[]> {
-    const { underlyingToken: underlyingTokenMetadata } =
-      await this.fetchPoolMetadata(protocolTokenMetadata.address)
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenMetadata.address,
+    )
 
     const pricePerShareRaw = BigInt(1 * 10 ** protocolTokenMetadata.decimals)
 
     const pricePerShare = formatUnits(
       pricePerShareRaw,
-      underlyingTokenMetadata.decimals,
+      underlyingToken.decimals,
     )
 
     return [
       {
-        ...underlyingTokenMetadata,
+        ...underlyingToken,
         type: TokenType.Underlying,
         pricePerShareRaw,
         pricePerShare,

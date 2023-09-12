@@ -1,5 +1,4 @@
 import { formatUnits } from 'ethers/lib/utils'
-import { Protocol } from '../../..'
 import {
   StargateFactory__factory,
   StargateToken__factory,
@@ -49,7 +48,7 @@ export class StargatePoolAdapter
 
   getProtocolDetails(): ProtocolDetails {
     return {
-      protocolId: Protocol.Stargate,
+      protocolId: this.protocolId,
       name: 'Stargate',
       description:
         'Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi',
@@ -133,29 +132,30 @@ export class StargatePoolAdapter
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
-    const { protocolToken: protocolTokenMetadata } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
 
-    return protocolTokenMetadata
+    return protocolToken
   }
 
   protected async getUnderlyingTokens(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken: underlyingTokenMetadata } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
 
-    return [underlyingTokenMetadata]
+    return [underlyingToken]
   }
 
   protected async getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
   ): Promise<BaseToken[]> {
-    const { underlyingToken: underlyingTokenMetadata } =
-      await this.fetchPoolMetadata(protocolTokenBalance.address)
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenBalance.address,
+    )
 
     const underlyingTokenBalance = {
-      ...underlyingTokenMetadata,
+      ...underlyingToken,
       balanceRaw: protocolTokenBalance.balanceRaw,
       balance: protocolTokenBalance.balance,
       type: TokenType.Underlying,
@@ -168,8 +168,9 @@ export class StargatePoolAdapter
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
   ): Promise<BasePricePerShareToken[]> {
-    const { underlyingToken: underlyingTokenMetadata } =
-      await this.fetchPoolMetadata(protocolTokenMetadata.address)
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenMetadata.address,
+    )
 
     const oneToken = BigInt(1 * 10 ** protocolTokenMetadata.decimals)
 
@@ -182,12 +183,12 @@ export class StargatePoolAdapter
 
     const pricePerShare = formatUnits(
       pricePerShareRaw,
-      underlyingTokenMetadata.decimals,
+      underlyingToken.decimals,
     )
 
     return [
       {
-        ...underlyingTokenMetadata,
+        ...underlyingToken,
         type: TokenType.Underlying,
         pricePerShareRaw: pricePerShareRaw.toBigInt(),
         pricePerShare,
