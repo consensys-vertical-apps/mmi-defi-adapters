@@ -1,31 +1,62 @@
 name: publish:ci
 
 on:
-  push:
-    tags:
-      - '*'
+  pull_request: 
+    types: [closed]
+    branches:
+      - main
 
 jobs:
-  publish:
-    name: Publish
+  version-and-publish:
+    if: github.event.pull_request.merged == true
+    name: Version and Publish
     runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
-      - uses: actions/checkout@v3
-      - name: Check if branch is main
-        id: check_branch
-        run: echo "::set-output name=branch::$(git symbolic-ref --short HEAD)"
-      - name: Cancel job if branch is not main
-        if: steps.check_branch.outputs.branch != 'main'
-        run: echo "Not on main branch, cancelling job" && exit 1
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Important: This ensures all tags are fetched as well
+
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
+
       - name: Install dependencies
         run: npm ci
+
+      - name: Version bump
+        run: |
+          if echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "major"; then
+            npm version major -m "chore: version bump to %s [skip ci]"
+          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "minor"; then
+            npm version minor -m "chore: version bump to %s [skip ci]"
+          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "patch"; then
+            npm version patch -m "chore: version bump to %s [skip ci]"
+          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "premajor"; then
+            npm version premajor -m "chore: version bump to %s [skip ci]"
+          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "preminor"; then
+            npm version preminor -m "chore: version bump to %s [skip ci]"
+          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "prepatch"; then
+            npm version prepatch -m "chore: version bump to %s [skip ci]"
+          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "prerelease"; then
+            npm version prerelease -m "chore: version bump to %s [skip ci]"
+          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "from-git"; then
+            npm version from-git -m "chore: version bump to %s [skip ci]"
+          fi
+
+
+      - name: Push changes
+        run: |
+          git push origin HEAD:main
+          git push --tags
+
       - name: Build
         run: npm run build
+
       - name: Publish
+        if: startsWith(github.ref, 'refs/tags/')
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
