@@ -6,6 +6,7 @@ on:
     branches:
       - main
 
+
 jobs:
   version-and-publish:
     if: github.event.pull_request.merged == true
@@ -26,12 +27,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Version bump
+      - name: Version bump with logs
         run: |
-          LABELS="${{ github.event.pull_request.labels.*.name }}"
-          IFS=',' read -ra LABEL_ARRAY <<< "$LABELS"
-          
+          LABELS="${{ toJson(github.event.pull_request.labels.*.name) }}"
+          echo "PR labels: $LABELS"
+        
+          IFS=', ' read -ra LABEL_ARRAY <<< "$LABELS"
+        
           for label in "${LABEL_ARRAY[@]}"; do
+            # Removing surrounding quotes from label
+            label=$(echo $label | tr -d \")
+            echo "Processing label: $label"
             case $label in
               major)
                 npm version major -m "chore: version bump to %s [skip ci]"
@@ -57,10 +63,11 @@ jobs:
               from-git)
                 npm version from-git -m "chore: version bump to %s [skip ci]"
                 ;;
+              *)
+                echo "Label $label not recognized for versioning."
+                ;;
             esac
           done
-
-
 
       - name: Push changes
         run: |
@@ -75,3 +82,4 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
