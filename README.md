@@ -137,7 +137,14 @@ Add a JSON file with the ABI of any new contract to the folder `src/contracts/ab
 
 ### Versioning and Publishing (internal use only)
 
-On your branch, bump the package version by running `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]`. The publish_ci pipeline will automatically run when merged to main.
+To version and publish:
+
+1. Create a pull request with your changes.
+2. Apply one of the labels: `major`, `minor`, `patch`, `premajor`, `preminor`, `prepatch`, or `prerelease` to the pull request. This label will determine how the package version is bumped.
+3. Once your pull request is approved, merge it into `main`.
+4. The GitHub Action workflow will automatically bump the package version based on the label, push the new version and associated tag, and then publish the package.
+
+Please note: You no longer need to manually bump the package version or push tags.
 
 ### Update Average Blocks Per Day (internal use only)
 
