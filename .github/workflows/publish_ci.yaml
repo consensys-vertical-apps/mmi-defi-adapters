@@ -25,18 +25,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Debug labels
-        run: echo "${{ toJson(github.event.pull_request.labels) }}"
-
-
       - name: Version bump with logs
         run: |
-          LABELS="${{ github.event.pull_request.labels.*.name }}"
+          LABELS="${{ toJson(github.event.pull_request.labels.*.name) }}"
           echo "PR labels: $LABELS"
-          
-          IFS=',' read -ra LABEL_ARRAY <<< "$LABELS"
-          
+        
+          IFS=', ' read -ra LABEL_ARRAY <<< "$LABELS"
+        
           for label in "${LABEL_ARRAY[@]}"; do
+            # Removing surrounding quotes from label
+            label=$(echo $label | tr -d \")
             echo "Processing label: $label"
             case $label in
               major)
@@ -68,12 +66,6 @@ jobs:
                 ;;
             esac
           done
-        shell: /usr/bin/bash -e {0}
-        env:
-          NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-
 
       - name: Push changes
         run: |
