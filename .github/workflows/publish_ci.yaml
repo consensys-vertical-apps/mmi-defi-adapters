@@ -28,23 +28,38 @@ jobs:
 
       - name: Version bump
         run: |
-          if echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "major"; then
-            npm version major -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "minor"; then
-            npm version minor -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "patch"; then
-            npm version patch -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "premajor"; then
-            npm version premajor -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "preminor"; then
-            npm version preminor -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "prepatch"; then
-            npm version prepatch -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "prerelease"; then
-            npm version prerelease -m "chore: version bump to %s [skip ci]"
-          elif echo "${{ github.event.pull_request.labels.*.name }}" | grep -q "from-git"; then
-            npm version from-git -m "chore: version bump to %s [skip ci]"
-          fi
+          LABELS="${{ github.event.pull_request.labels.*.name }}"
+          IFS=',' read -ra LABEL_ARRAY <<< "$LABELS"
+          
+          for label in "${LABEL_ARRAY[@]}"; do
+            case $label in
+              major)
+                npm version major -m "chore: version bump to %s [skip ci]"
+                ;;
+              minor)
+                npm version minor -m "chore: version bump to %s [skip ci]"
+                ;;
+              patch)
+                npm version patch -m "chore: version bump to %s [skip ci]"
+                ;;
+              premajor)
+                npm version premajor -m "chore: version bump to %s [skip ci]"
+                ;;
+              preminor)
+                npm version preminor -m "chore: version bump to %s [skip ci]"
+                ;;
+              prepatch)
+                npm version prepatch -m "chore: version bump to %s [skip ci]"
+                ;;
+              prerelease)
+                npm version prerelease -m "chore: version bump to %s [skip ci]"
+                ;;
+              from-git)
+                npm version from-git -m "chore: version bump to %s [skip ci]"
+                ;;
+            esac
+          done
+
 
 
       - name: Push changes
