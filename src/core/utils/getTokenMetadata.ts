@@ -128,7 +128,7 @@ const getTokenSymbol = async (tokenContract: Erc20) => {
       throw error
     }
 
-    logger.warn(
+    logger.debug(
       { address: tokenContract.address },
       'Failed to fetch token symbol as a string. Using bytes32 fallback',
     )

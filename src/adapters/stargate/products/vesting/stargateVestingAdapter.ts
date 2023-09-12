@@ -3,15 +3,13 @@ import { formatUnits } from 'ethers/lib/utils'
 import { Protocol } from '../../..'
 import { StargateVotingEscrow__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
+import { Adapter } from '../../../../core/decorators/adapter'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
 } from '../../../../core/utils/getTokenMetadata'
-import {
-  IMetadataBuilder,
-  fetchMetadata,
-  writeMetadataToFile,
-} from '../../../../core/utils/metadata'
+import { IMetadataBuilder } from '../../../../core/utils/metadata'
 import {
   GetAprInput,
   GetApyInput,
@@ -36,9 +34,11 @@ type StargateVestingMetadata = {
   underlyingToken: Erc20Metadata
 }
 
+@Adapter
 export class StargateVestingAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
+  product!: string
   protocolId: Protocol
   chainId: Chain
 
@@ -64,7 +64,7 @@ export class StargateVestingAdapter
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [(await this.fetchMetadata()).contractToken]
+    return [(await this.buildMetadata()).contractToken]
   }
 
   async getPositions({
@@ -74,7 +74,7 @@ export class StargateVestingAdapter
     const {
       contractToken: contractTokenMetadata,
       underlyingToken: underlyingTokenMetadata,
-    } = await this.fetchMetadata()
+    } = await this.buildMetadata()
 
     const votingEscrowContract = StargateVotingEscrow__factory.connect(
       contractTokenMetadata.address,
@@ -149,6 +149,7 @@ export class StargateVestingAdapter
     throw new Error('Not Implemented')
   }
 
+  @CacheToFile({ fileKey: 'vesting-token' })
   async buildMetadata() {
     const contractAddresses: Partial<Record<Chain, string>> = {
       [Chain.Ethereum]: '0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E',
@@ -178,24 +179,6 @@ export class StargateVestingAdapter
       underlyingToken,
     }
 
-    await writeMetadataToFile({
-      protocolId: this.protocolId,
-      product: 'vesting',
-      chainId: this.chainId,
-      fileName: this.getMetadataFileName(),
-      metadataObject,
-    })
-  }
-
-  private async fetchMetadata(): Promise<StargateVestingMetadata> {
-    return fetchMetadata({
-      productDir: __dirname,
-      fileName: this.getMetadataFileName(),
-      chainId: this.chainId,
-    })
-  }
-
-  private getMetadataFileName(): string {
-    return 'vesting-token'
+    return metadataObject
   }
 }

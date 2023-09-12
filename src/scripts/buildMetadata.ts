@@ -52,11 +52,7 @@ export function buildMetadata(program: Command) {
             }) as IProtocolAdapter
 
             if (isIMetadataBuilder(adapter)) {
-              logger.info(
-                { protocolId, chainId, adapter: adapterClass.name },
-                'FETCHING METADATA',
-              )
-              await adapter.buildMetadata()
+              await adapter.buildMetadata(true)
             }
           }
         }

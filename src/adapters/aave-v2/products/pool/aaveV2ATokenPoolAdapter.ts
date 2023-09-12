@@ -1,12 +1,14 @@
-import { Protocol } from '../../..'
+import { Adapter } from '../../../../core/decorators/adapter'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { ProtocolDataProvider } from '../../contracts'
 import { AaveV2BasePoolAdapter } from './aaveV2BasePoolAdapter'
 
+@Adapter
 export class AaveV2ATokenPoolAdapter extends AaveV2BasePoolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
-      protocolId: Protocol.AaveV2,
+      protocolId: this.protocolId,
       name: 'Aave v2 AToken',
       description: 'Aave v2 defi adapter for yield-generating token',
       siteUrl: 'https://aave.com/',
@@ -16,8 +18,9 @@ export class AaveV2ATokenPoolAdapter extends AaveV2BasePoolAdapter {
     }
   }
 
-  protected getMetadataFileName(): string {
-    return 'a-token'
+  @CacheToFile({ fileKey: 'a-token' })
+  async buildMetadata() {
+    return super.buildMetadata()
   }
 
   protected getReserveTokenAddress(

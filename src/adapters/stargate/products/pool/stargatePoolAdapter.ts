@@ -6,16 +6,14 @@ import {
 } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { Adapter } from '../../../../core/decorators/adapter'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
 } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
-import {
-  IMetadataBuilder,
-  fetchMetadata,
-  writeMetadataToFile,
-} from '../../../../core/utils/metadata'
+import { IMetadataBuilder } from '../../../../core/utils/metadata'
 import {
   BasePricePerShareToken,
   BaseToken,
@@ -42,10 +40,13 @@ type StargatePoolMetadata = Record<
   }
 >
 
+@Adapter
 export class StargatePoolAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
+  product!: string
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: Protocol.Stargate,
@@ -60,7 +61,7 @@ export class StargatePoolAdapter
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.fetchMetadata()).map(
+    return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
   }
@@ -83,6 +84,7 @@ export class StargatePoolAdapter
     throw new Error('Not Implemented')
   }
 
+  @CacheToFile({ fileKey: 'lp-token' })
   async buildMetadata() {
     const contractAddresses: Partial<Record<Chain, string>> = {
       [Chain.Ethereum]: '0x06D538690AF257Da524f25D0CD52fD85b1c2173E',
@@ -125,13 +127,7 @@ export class StargatePoolAdapter
       }
     }
 
-    await writeMetadataToFile({
-      protocolId: this.protocolId,
-      product: 'pool',
-      chainId: this.chainId,
-      fileName: this.getMetadataFileName(),
-      metadataObject,
-    })
+    return metadataObject
   }
 
   protected async fetchProtocolTokenMetadata(
@@ -200,7 +196,7 @@ export class StargatePoolAdapter
   }
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.fetchMetadata())[protocolTokenAddress]
+    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
     if (!poolMetadata) {
       logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
@@ -208,17 +204,5 @@ export class StargatePoolAdapter
     }
 
     return poolMetadata
-  }
-
-  private async fetchMetadata(): Promise<StargatePoolMetadata> {
-    return fetchMetadata({
-      productDir: __dirname,
-      fileName: this.getMetadataFileName(),
-      chainId: this.chainId,
-    })
-  }
-
-  private getMetadataFileName(): string {
-    return 'lp-token'
   }
 }

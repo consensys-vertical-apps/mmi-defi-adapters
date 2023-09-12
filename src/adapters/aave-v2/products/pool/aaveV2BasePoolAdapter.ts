@@ -6,11 +6,7 @@ import {
   getThinTokenMetadata,
 } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
-import {
-  IMetadataBuilder,
-  fetchMetadata,
-  writeMetadataToFile,
-} from '../../../../core/utils/metadata'
+import { IMetadataBuilder } from '../../../../core/utils/metadata'
 import {
   BasePricePerShareToken,
   BaseToken,
@@ -42,8 +38,10 @@ export abstract class AaveV2BasePoolAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
+  product!: string
+
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.fetchMetadata()).map(
+    return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
   }
@@ -113,13 +111,7 @@ export abstract class AaveV2BasePoolAdapter
       )
     }
 
-    await writeMetadataToFile({
-      protocolId: this.protocolId,
-      product: 'pool',
-      chainId: this.chainId,
-      fileName: this.getMetadataFileName(),
-      metadataObject,
-    })
+    return metadataObject
   }
 
   protected async fetchProtocolTokenMetadata(
@@ -180,8 +172,6 @@ export abstract class AaveV2BasePoolAdapter
     ]
   }
 
-  protected abstract getMetadataFileName(): string
-
   protected abstract getReserveTokenAddress(
     reserveTokenAddresses: Awaited<
       ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
@@ -189,7 +179,7 @@ export abstract class AaveV2BasePoolAdapter
   ): string
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.fetchMetadata())[protocolTokenAddress]
+    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
     if (!poolMetadata) {
       logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
@@ -197,13 +187,5 @@ export abstract class AaveV2BasePoolAdapter
     }
 
     return poolMetadata
-  }
-
-  private async fetchMetadata(): Promise<AaveV2PoolMetadata> {
-    return fetchMetadata({
-      productDir: __dirname,
-      fileName: this.getMetadataFileName(),
-      chainId: this.chainId,
-    })
   }
 }
