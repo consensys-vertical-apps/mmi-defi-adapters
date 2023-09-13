@@ -6,6 +6,8 @@ on:
     branches:
       - main
 
+      
+
 permissions:
   contents: write # for checkout and tag
   pull-requests: write # for comments
@@ -65,6 +67,8 @@ jobs:
         run: |
           git push origin HEAD:main
           git push --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.DEFI_ADAPTERS_SERVICE_ACCOUNT_GITHUB_PAT }}  
 
       - name: Build
         run: npm run build
