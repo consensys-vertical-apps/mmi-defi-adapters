@@ -6,10 +6,9 @@ on:
     branches:
       - main
 
-
 jobs:
   version-and-publish:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     name: Version and Publish
     runs-on: ubuntu-latest
     steps:
@@ -27,47 +26,30 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Version bump with logs
+      - name: Get PR labels
+        id: pr-labels
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data: pullRequest } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+
+            const labels = pullRequest.labels.map(label => label.name);
+            console.log(`PR labels: ${labels}`);
+            
+            const validLabels = ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'];
+            const versionLabel = labels.find(label => validLabels.includes(label));
+
+            return versionLabel;
+
+      - name: Version bump
         run: |
-          LABELS="${{ toJson(github.event.pull_request.labels.*.name) }}"
-          echo "PR labels: $LABELS"
-        
-          IFS=', ' read -ra LABEL_ARRAY <<< "$LABELS"
-        
-          for label in "${LABEL_ARRAY[@]}"; do
-            # Removing surrounding quotes from label
-            label=$(echo $label | tr -d \")
-            echo "Processing label: $label"
-            case $label in
-              major)
-                npm version major -m "chore: version bump to %s [skip ci]"
-                ;;
-              minor)
-                npm version minor -m "chore: version bump to %s [skip ci]"
-                ;;
-              patch)
-                npm version patch -m "chore: version bump to %s [skip ci]"
-                ;;
-              premajor)
-                npm version premajor -m "chore: version bump to %s [skip ci]"
-                ;;
-              preminor)
-                npm version preminor -m "chore: version bump to %s [skip ci]"
-                ;;
-              prepatch)
-                npm version prepatch -m "chore: version bump to %s [skip ci]"
-                ;;
-              prerelease)
-                npm version prerelease -m "chore: version bump to %s [skip ci]"
-                ;;
-              from-git)
-                npm version from-git -m "chore: version bump to %s [skip ci]"
-                ;;
-              *)
-                echo "Label $label not recognized for versioning."
-                ;;
-            esac
-          done
+          if [[ "${{ steps.pr-labels.outputs.result }}" != "" ]]; then
+            npm version ${{ steps.pr-labels.outputs.result }} -m "chore: version bump to %s [skip ci]"
+          fi
 
       - name: Push changes
         run: |
@@ -82,4 +64,3 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
