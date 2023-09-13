@@ -6,6 +6,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write # for checkout and tag
+  pull-requests: write # for comments
+  packages: write # for publish
+
 jobs:
   version-and-publish:
     if: github.event.pull_request.merged == true
@@ -45,10 +50,10 @@ jobs:
 
             return versionLabel;
 
-      - name: Set git config
+      - name: Configure Git User
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name "${GITHUB_ACTOR}"
 
       - name: Version bump
         run: |
