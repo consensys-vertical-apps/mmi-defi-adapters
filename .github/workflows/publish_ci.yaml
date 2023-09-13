@@ -8,7 +8,7 @@ on:
 
 jobs:
   version-and-publish:
-    # if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     name: Version and Publish
     runs-on: ubuntu-latest
     steps:
@@ -44,6 +44,11 @@ jobs:
             const versionLabel = labels.find(label => validLabels.includes(label));
 
             return versionLabel;
+
+      - name: Set git config
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
 
       - name: Version bump
         run: |
