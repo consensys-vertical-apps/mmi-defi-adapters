@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 import { Command } from 'commander'
+import { prompt, QuestionCollection } from 'inquirer'
 import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
@@ -22,8 +23,8 @@ const Templates: Record<string, TemplateBuilder> = {
 export function newAdapterCommand(program: Command) {
   program
     .command('new-adapter')
-    .argument('<protocol>', 'Protocol name')
-    .argument('<product>', 'Product name (kebab-case)')
+    .option('-p, --protocol <protocol>', 'Protocol name for the adapter')
+    .option('--product <product>', 'Product name')
     .option('-t, --template <template>', 'Template to use', 'DefaulAdapter')
     .option(
       '-c, --chains <chains>',
@@ -32,17 +33,61 @@ export function newAdapterCommand(program: Command) {
     )
     .showHelpAfterError()
     .action(
-      async (
-        protocol: string,
-        product: string,
-        { chains, template }: { chains: string; template: string },
-      ) => {
+      async ({
+        protocol,
+        product,
+        template,
+        chains,
+      }: {
+        protocol: string
+        product: string
+        template: string
+        chains: string
+      }) => {
         const chainIds = multiChainFilter(chains)!
         const chainKeys = chainIds.map((chainId) => {
           return Object.keys(Chain).find((chainKey) => {
             return Chain[chainKey as keyof typeof Chain] === chainId
           })
         }) as (keyof typeof Chain)[]
+
+        const questions: QuestionCollection = [
+          {
+            type: 'input',
+            name: 'protocolKey',
+            message:
+              'What PascalCase name should be used as this protocol key?',
+            default: protocol ? pascalCase(protocol) : undefined,
+            validate: (input: string) => {
+              return isPascalCase(input) || 'Value must be PascalCase'
+            },
+          },
+          {
+            type: 'input',
+            name: 'protocolId',
+            message:
+              'What kebab-case name should be used for this protocol folder?',
+            default: (answers: { protocolKey: string }) =>
+              kebabCase(protocol ? protocol : answers.protocolKey),
+            validate: (input: string) => {
+              return isKebabCase(input) || 'Value must be kebab-case'
+            },
+          },
+          {
+            type: 'input',
+            name: 'productName',
+            message:
+              'What kebab-case name should be used for this adapter product?',
+            default: product ? kebabCase(product) : undefined,
+            validate: (input: string) => {
+              return isKebabCase(input) || 'Value must be kebab-case'
+            },
+          },
+        ]
+
+        const answers = await prompt(questions)
+
+        console.log('RESULT', answers)
 
         const templateBuilder = Templates[template]
 
@@ -51,15 +96,15 @@ export function newAdapterCommand(program: Command) {
         }
 
         // TODO Ask user for the following details (inquirer):
+        // X Protocol PascalCase key
+        // X Protocol kebab-case value (for folders)
+        // - Product kebab-case value (for folders)
         // - Template that will be used
         // - Chains that will be used
-        // - Protocol PascalCase key
-        // - Protocol kebab-case value (for folders)
-        // - Product kebab-case value (for folders)
         // - Adapter PascalCase name
 
-        await buildAdapterFromTemplate(protocol, product, templateBuilder)
-        await exportAdapter(protocol, product, chainKeys)
+        // await buildAdapterFromTemplate(protocol, product, templateBuilder)
+        // await exportAdapter(protocol, product, chainKeys)
       },
     )
 }
@@ -335,4 +380,14 @@ function buildChainEntry(chain: string) {
 */
 function buildAdapterEntry(product: string) {
   return b.identifier(`${pascalCase(product)}Adapter`)
+}
+
+function isPascalCase(input: string) {
+  const regex = /^[A-Z][a-z0-9]*(?:[A-Z][a-z0-9]*)*$/
+  return regex.test(input)
+}
+
+function isKebabCase(input: string) {
+  const regex = /^[a-z0-9]+(-[a-z0-9]+)*$/
+  return regex.test(input)
 }
