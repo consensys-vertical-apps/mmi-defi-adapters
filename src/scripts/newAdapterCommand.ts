@@ -5,8 +5,8 @@ import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { camelCase, kebabCase, pascalCase } from '../core/utils/caseConversion'
-import { filterMap } from '../core/utils/filters'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { multiChainFilter } from './commandFilters'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import n = types.namedTypes
@@ -25,7 +25,11 @@ export function newAdapterCommand(program: Command) {
     .argument('<protocol>', 'Protocol name')
     .argument('<product>', 'Product name (kebab-case)')
     .option('-t, --template <template>', 'Template to use', 'DefaulAdapter')
-    .option('-c, --chains <chainIds>', 'Chains separated by commas', 'Ethereum')
+    .option(
+      '-c, --chains <chains>',
+      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+      'Ethereum',
+    )
     .showHelpAfterError()
     .action(
       async (
@@ -33,16 +37,11 @@ export function newAdapterCommand(program: Command) {
         product: string,
         { chains, template }: { chains: string; template: string },
       ) => {
-        const chainKeys = filterMap(chains.split(','), (chain) => {
-          const chainKey = Object.keys(Chain).find((chainKey) => {
-            return chainKey.toLowerCase() === chain.toLowerCase()
+        const chainIds = multiChainFilter(chains)!
+        const chainKeys = chainIds.map((chainId) => {
+          return Object.keys(Chain).find((chainKey) => {
+            return Chain[chainKey as keyof typeof Chain] === chainId
           })
-
-          if (!chainKey) {
-            console.warn(`Cannot find corresponding chain for ${chain}`)
-          }
-
-          return chainKey
         }) as (keyof typeof Chain)[]
 
         const templateBuilder = Templates[template]

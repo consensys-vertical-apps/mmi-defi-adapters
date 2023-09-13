@@ -1,6 +1,6 @@
 import { Protocol } from '../adapters'
 import { Chain, ChainName } from '../core/constants/chains'
-import { chainFilter, protocolFilter } from './filters'
+import { chainFilter, protocolFilter } from './commandFilters'
 
 describe('chainFilter', () => {
   it.each(Object.values(Chain).map((chainId) => [chainId]))(

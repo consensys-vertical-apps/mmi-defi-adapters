@@ -5,31 +5,37 @@ import { chainProviders } from '../core/utils/chainProviders'
 import { logger } from '../core/utils/logger'
 import { IMetadataBuilder } from '../core/utils/metadata'
 import { IProtocolAdapter } from '../types/adapter'
-import { chainFilter, protocolFilter } from './filters'
+import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function buildMetadata(program: Command) {
   program
     .command('build-metadata')
-    .option('-p, --protocol <protocol>', 'protocol filter (name or id)')
-    .option('-c, --chain <chain>', 'chain filter (name or id)')
+    .option(
+      '-p, --protocols <protocols>',
+      'comma-separated protocols filter (e.g. stargate,aave-v2)',
+    )
+    .option(
+      '-c, --chains <chains>',
+      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+    )
     .showHelpAfterError()
-    .action(async ({ protocol, chain }) => {
-      const filterProtocolId = protocolFilter(protocol)
-      const filterChainId = chainFilter(chain)
+    .action(async ({ protocols, chains }) => {
+      const filterProtocolIds = multiProtocolFilter(protocols)
+      const filterChainIds = multiChainFilter(chains)
 
-      for (const [protocolIdString, supportedChains] of Object.entries(
+      for (const [protocolIdKey, supportedChains] of Object.entries(
         supportedProtocols,
       )) {
-        const protocolId = protocolIdString as Protocol
-        if (filterProtocolId && filterProtocolId !== protocolId) {
+        const protocolId = protocolIdKey as Protocol
+        if (filterProtocolIds && !filterProtocolIds.includes(protocolId)) {
           continue
         }
 
-        for (const [chainIdString, adapterClasses] of Object.entries(
+        for (const [chainIdKey, adapterClasses] of Object.entries(
           supportedChains,
         )) {
-          const chainId = +chainIdString as Chain
-          if (filterChainId && filterChainId !== chainId) {
+          const chainId = +chainIdKey as Chain
+          if (filterChainIds && !filterChainIds.includes(chainId)) {
             continue
           }
 

@@ -11,7 +11,7 @@ import {
 } from '..'
 import { Protocol } from '../adapters'
 import { Chain } from '../core/constants/chains'
-import { protocolFilter, chainFilter } from './filters'
+import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function featureCommands(program: Command) {
   addressCommand(
@@ -55,25 +55,31 @@ function addressCommand(
   commandName: string,
   feature: (input: {
     userAddress: string
-    filterProtocolId?: Protocol
-    filterChainId?: Chain
+    filterProtocolIds?: Protocol[]
+    filterChainIds?: Chain[]
   }) => Promise<unknown>,
   defaultAddress: string,
 ) {
   program
     .command(commandName)
     .argument('[userAddress]', 'Address of the target account', defaultAddress)
-    .option('-p, --protocol <protocolId>', 'protocol filter')
-    .option('-c, --chain <chainId>', 'chain filter')
+    .option(
+      '-p, --protocols <protocols>',
+      'comma-separated protocols filter (e.g. stargate,aave-v2)',
+    )
+    .option(
+      '-c, --chains <chains>',
+      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+    )
     .showHelpAfterError()
-    .action(async (userAddress, { protocol, chain }) => {
-      const filterProtocolId = protocolFilter(protocol)
-      const filterChainId = chainFilter(chain)
+    .action(async (userAddress, { protocols, chains }) => {
+      const filterProtocolIds = multiProtocolFilter(protocols)
+      const filterChainIds = multiChainFilter(chains)
 
       const data = await feature({
         userAddress,
-        filterProtocolId,
-        filterChainId,
+        filterProtocolIds,
+        filterChainIds,
       })
 
       beautifyJsonOutput(data)
@@ -87,8 +93,8 @@ function addressEventsCommand(
     userAddress: string
     fromBlock: number
     toBlock: number
-    filterProtocolId?: Protocol
-    filterChainId?: Chain
+    filterProtocolIds?: Protocol[]
+    filterChainIds?: Chain[]
   }) => Promise<unknown>,
   defaultAddress: string,
   defaultFromBlock: number,
@@ -99,17 +105,23 @@ function addressEventsCommand(
     .argument('[userAddress]', 'Address of the target account', defaultAddress)
     .argument('[fromBlock]', 'From block', defaultFromBlock)
     .argument('[toBlock]', 'To block', defaultToBlock)
-    .option('-p, --protocol <protocolId>', 'protocol filter')
-    .option('-c, --chain <chainId>', 'chain filter')
+    .option(
+      '-p, --protocols <protocols>',
+      'comma-separated protocols filter (e.g. stargate,aave-v2)',
+    )
+    .option(
+      '-c, --chains <chains>',
+      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+    )
     .showHelpAfterError()
-    .action(async (userAddress, fromBlock, toBlock, { protocol, chain }) => {
-      const filterProtocolId = protocolFilter(protocol)
-      const filterChainId = chainFilter(chain)
+    .action(async (userAddress, fromBlock, toBlock, { protocols, chains }) => {
+      const filterProtocolIds = multiProtocolFilter(protocols)
+      const filterChainIds = multiChainFilter(chains)
 
       const data = await feature({
         userAddress,
-        filterProtocolId,
-        filterChainId,
+        filterProtocolIds,
+        filterChainIds,
         fromBlock: parseInt(fromBlock, 10),
         toBlock: parseInt(toBlock, 10),
       })
@@ -122,22 +134,28 @@ function protocolCommand(
   program: Command,
   commandName: string,
   feature: (input: {
-    filterProtocolId?: Protocol
-    filterChainId?: Chain
+    filterProtocolIds?: Protocol[]
+    filterChainIds?: Chain[]
   }) => Promise<unknown>,
 ) {
   program
     .command(commandName)
-    .option('-p, --protocol <protocolId>', 'protocol filter')
-    .option('-c, --chain <chainId>', 'chain filter')
+    .option(
+      '-p, --protocols <protocols>',
+      'comma-separated protocols filter (e.g. stargate,aave-v2)',
+    )
+    .option(
+      '-c, --chains <chains>',
+      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+    )
     .showHelpAfterError()
-    .action(async ({ protocol, chain }) => {
-      const filterProtocolId = protocolFilter(protocol)
-      const filterChainId = chainFilter(chain)
+    .action(async ({ protocols, chains }) => {
+      const filterProtocolIds = multiProtocolFilter(protocols)
+      const filterChainIds = multiChainFilter(chains)
 
       const data = await feature({
-        filterProtocolId,
-        filterChainId,
+        filterProtocolIds,
+        filterChainIds,
       })
 
       beautifyJsonOutput(data)

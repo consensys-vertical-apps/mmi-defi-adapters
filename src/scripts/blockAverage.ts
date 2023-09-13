@@ -6,20 +6,23 @@ import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { chainProviders } from '../core/utils/chainProviders'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
-import { chainFilter } from './filters'
+import { multiChainFilter } from './commandFilters'
 import n = types.namedTypes
 
 export function blockAverage(program: Command) {
   program
     .command('block-average')
-    .option('-c, --chain <chainId>', 'chain filter')
+    .option(
+      '-c, --chains <chains>',
+      'comma-separated chain filter (e.g. ethereum,arbitrum,linea)',
+    )
     .showHelpAfterError()
-    .action(async ({ chain: chainFilterInput }) => {
-      const filterChainId = chainFilter(chainFilterInput)
+    .action(async ({ chains: chainFilterInput }) => {
+      const filterChainIds = multiChainFilter(chainFilterInput)
 
       const averageBlocksPerDayMap = await Object.values(Chain)
         .filter((chainId) => {
-          return !filterChainId || chainId === filterChainId
+          return !filterChainIds || filterChainIds.includes(chainId)
         })
         .map(async (chainId) => {
           const averageBlocksPerDay = await getAverageBlocksPerDay(chainId)
