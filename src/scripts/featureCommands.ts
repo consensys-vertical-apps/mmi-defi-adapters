@@ -11,6 +11,7 @@ import {
 } from '..'
 import { Protocol } from '../adapters'
 import { Chain } from '../core/constants/chains'
+import { protocolFilter, chainFilter } from './filters'
 
 export function featureCommands(program: Command) {
   addressCommand(
@@ -66,10 +67,13 @@ function addressCommand(
     .option('-c, --chain <chainId>', 'chain filter')
     .showHelpAfterError()
     .action(async (userAddress, { protocol, chain }) => {
+      const filterProtocolId = protocolFilter(protocol)
+      const filterChainId = chainFilter(chain)
+
       const data = await feature({
         userAddress,
-        filterProtocolId: protocol,
-        filterChainId: chain,
+        filterProtocolId,
+        filterChainId,
       })
 
       beautifyJsonOutput(data)
@@ -99,10 +103,13 @@ function addressEventsCommand(
     .option('-c, --chain <chainId>', 'chain filter')
     .showHelpAfterError()
     .action(async (userAddress, fromBlock, toBlock, { protocol, chain }) => {
+      const filterProtocolId = protocolFilter(protocol)
+      const filterChainId = chainFilter(chain)
+
       const data = await feature({
         userAddress,
-        filterProtocolId: protocol,
-        filterChainId: chain,
+        filterProtocolId,
+        filterChainId,
         fromBlock: parseInt(fromBlock, 10),
         toBlock: parseInt(toBlock, 10),
       })
@@ -125,9 +132,12 @@ function protocolCommand(
     .option('-c, --chain <chainId>', 'chain filter')
     .showHelpAfterError()
     .action(async ({ protocol, chain }) => {
+      const filterProtocolId = protocolFilter(protocol)
+      const filterChainId = chainFilter(chain)
+
       const data = await feature({
-        filterProtocolId: protocol,
-        filterChainId: chain,
+        filterProtocolId,
+        filterChainId,
       })
 
       beautifyJsonOutput(data)

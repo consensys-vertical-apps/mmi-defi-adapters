@@ -6,9 +6,9 @@ import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { camelCase, kebabCase, pascalCase } from '../core/utils/caseConversion'
 import { filterMap } from '../core/utils/filters'
+import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
-import { writeCodeFile } from './writeCodeFile'
 import n = types.namedTypes
 import b = types.builders
 

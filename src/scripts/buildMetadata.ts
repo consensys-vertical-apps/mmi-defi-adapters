@@ -5,27 +5,23 @@ import { chainProviders } from '../core/utils/chainProviders'
 import { logger } from '../core/utils/logger'
 import { IMetadataBuilder } from '../core/utils/metadata'
 import { IProtocolAdapter } from '../types/adapter'
+import { chainFilter, protocolFilter } from './filters'
 
 export function buildMetadata(program: Command) {
   program
     .command('build-metadata')
-    .option('-p, --protocol <protocolId>', 'protocol filter')
-    .option('-c, --chain <chainId>', 'chain filter')
+    .option('-p, --protocol <protocol>', 'protocol filter (name or id)')
+    .option('-c, --chain <chain>', 'chain filter (name or id)')
     .showHelpAfterError()
     .action(async ({ protocol, chain }) => {
-      const protocolEntry = Object.entries(Protocol).find(
-        ([key, value]) => key === protocol || value === protocol,
-      )?.[1]
-
-      const chainEntry = Object.entries(Chain).find(
-        ([key, value]) => key === chain || value === Number(chain),
-      )?.[1]
+      const filterProtocolId = protocolFilter(protocol)
+      const filterChainId = chainFilter(chain)
 
       for (const [protocolIdString, supportedChains] of Object.entries(
         supportedProtocols,
       )) {
         const protocolId = protocolIdString as Protocol
-        if (protocolEntry && protocolEntry !== protocolId) {
+        if (filterProtocolId && filterProtocolId !== protocolId) {
           continue
         }
 
@@ -33,7 +29,7 @@ export function buildMetadata(program: Command) {
           supportedChains,
         )) {
           const chainId = +chainIdString as Chain
-          if (chainEntry && chainEntry !== chainId) {
+          if (filterChainId && filterChainId !== chainId) {
             continue
           }
 

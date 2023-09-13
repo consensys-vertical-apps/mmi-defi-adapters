@@ -5,7 +5,8 @@ import EthDater from 'ethereum-block-by-date'
 import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { chainProviders } from '../core/utils/chainProviders'
-import { writeCodeFile } from './writeCodeFile'
+import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { chainFilter } from './filters'
 import n = types.namedTypes
 
 export function blockAverage(program: Command) {
@@ -13,19 +14,12 @@ export function blockAverage(program: Command) {
     .command('block-average')
     .option('-c, --chain <chainId>', 'chain filter')
     .showHelpAfterError()
-    .action(async ({ chain: chainIdFilterInput }) => {
+    .action(async ({ chain: chainFilterInput }) => {
+      const filterChainId = chainFilter(chainFilterInput)
+
       const averageBlocksPerDayMap = await Object.values(Chain)
         .filter((chainId) => {
-          if (!chainIdFilterInput) {
-            return true
-          }
-
-          const chainIdFilter = Number(chainIdFilterInput)
-          if (isNaN(chainIdFilter)) {
-            throw new Error('Chain value needs to be a number')
-          }
-
-          return chainId === chainIdFilter
+          return !filterChainId || chainId === filterChainId
         })
         .map(async (chainId) => {
           const averageBlocksPerDay = await getAverageBlocksPerDay(chainId)

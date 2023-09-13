@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { Protocol } from '../../adapters'
 import { Json } from '../../types/json'
-import { Chain, ChainNames } from '../constants/chains'
+import { Chain, ChainName } from '../constants/chains'
 
 export interface IMetadataBuilder {
   product: string
@@ -20,7 +20,7 @@ export async function fetchMetadata<AdapterMetadata extends Json>({
 }): Promise<AdapterMetadata> {
   const filePath = path.resolve(
     productDir,
-    `./metadata/${ChainNames[chainId]}.${fileKey}.json`,
+    `./metadata/${ChainName[chainId]}.${fileKey}.json`,
   )
 
   if (!fs.existsSync(filePath)) {
@@ -44,7 +44,7 @@ export async function writeMetadataToFile({
   metadataObject: Json
 }) {
   const newFilePath = path.resolve(
-    `src/adapters/${protocolId}/products/${product}/metadata/${ChainNames[chainId]}.${fileKey}.json`,
+    `src/adapters/${protocolId}/products/${product}/metadata/${ChainName[chainId]}.${fileKey}.json`,
   )
 
   fs.mkdirSync(path.dirname(newFilePath), { recursive: true })

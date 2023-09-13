@@ -11,7 +11,7 @@ export const Chain = {
 } as const
 export type Chain = (typeof Chain)[keyof typeof Chain]
 
-export const ChainNames: Record<Chain, string> = {
+export const ChainName: Record<Chain, string> = {
   [Chain.Ethereum]: 'ethereum',
   [Chain.Optimism]: 'optimism',
   [Chain.Bsc]: 'bsc',
