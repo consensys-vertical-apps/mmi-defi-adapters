@@ -1,6 +1,11 @@
 import { Protocol } from '../adapters'
 import { Chain, ChainName } from '../core/constants/chains'
-import { chainFilter, protocolFilter } from './commandFilters'
+import {
+  chainFilter,
+  multiChainFilter,
+  multiProtocolFilter,
+  protocolFilter,
+} from './commandFilters'
 
 describe('chainFilter', () => {
   it.each(Object.values(Chain).map((chainId) => [chainId]))(
@@ -38,7 +43,7 @@ describe('chainFilter', () => {
     },
   )
 
-  it('throws when the filter provided cannot return a chainId', () => {
+  it('throws when the filter provided fails to match a chain', () => {
     const filterInput = 'invalidChainFilter'
     expect(() => chainFilter(filterInput)).toThrow(
       `No chain matches the given filter: ${filterInput}`,
@@ -71,10 +76,65 @@ describe('protocolFilter', () => {
     },
   )
 
-  it('throws when the filter provided cannot return a protocolId', () => {
+  it('throws when the filter provided fails to match a protocol', () => {
     const filterInput = 'invalidProtocolFilter'
     expect(() => protocolFilter(filterInput)).toThrow(
       `No protocol matches the given filter: ${filterInput}`,
+    )
+  })
+})
+
+describe('multiChainFilter', () => {
+  it('returns an array of chainIds when a valid filterInput is provided', () => {
+    const filterInput = 'ethereum,LINEA,250'
+    const expectedOutput = [Chain.Ethereum, Chain.Linea, Chain.Fantom]
+
+    expect(multiChainFilter(filterInput)).toEqual(expectedOutput)
+  })
+
+  it.each([
+    ["''", ''],
+    ['undefined', undefined],
+  ])(
+    'returns undefined if an empty string or undefined is provided as a filter: %s',
+    (_, filterInput) => {
+      expect(multiChainFilter(filterInput)).toBeUndefined()
+    },
+  )
+
+  it.each([['invalidChain'], ['2387163678']])(
+    'throws when the filter provided fails to match a chain: %s',
+    (invalidChain) => {
+      const filterInput = `ethereum,${invalidChain},linea`
+      expect(() => multiChainFilter(filterInput)).toThrow(
+        `No chain matches the given filter: ${invalidChain}`,
+      )
+    },
+  )
+})
+
+describe('multiProtocolFilter', () => {
+  it('returns an array of protocolIds when a valid filterInput is provided', () => {
+    const filterInput = 'stargate,AAVE-v2'
+    const expectedOutput = [Protocol.Stargate, Protocol.AaveV2]
+
+    expect(multiProtocolFilter(filterInput)).toEqual(expectedOutput)
+  })
+
+  it.each([
+    ["''", ''],
+    ['undefined', undefined],
+  ])(
+    'returns undefined if an empty string or undefined is provided as a filter: %s',
+    (_, filterInput) => {
+      expect(multiProtocolFilter(filterInput)).toBeUndefined()
+    },
+  )
+
+  it('throws when the filter provided fails to match a protocol', () => {
+    const filterInput = 'stargate,invalidProtocol'
+    expect(() => multiProtocolFilter(filterInput)).toThrow(
+      'No protocol matches the given filter: invalidProtocol',
     )
   })
 })
