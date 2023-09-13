@@ -1,17 +1,10 @@
-name: dev:ci
+name: publish:ci
+
 on:
-  pull_request:
+  pull_request: 
+    types: [closed]
     branches:
-    - main
-
-
-# name: publish:ci
-
-# on:
-#   pull_request: 
-#     types: [closed]
-#     branches:
-#       - main
+      - main
 
 jobs:
   version-and-publish:
@@ -52,22 +45,22 @@ jobs:
 
             return versionLabel;
 
-      # - name: Version bump
-      #   run: |
-      #     if [[ "${{ steps.pr-labels.outputs.result }}" != "" ]]; then
-      #       npm version ${{ steps.pr-labels.outputs.result }} -m "chore: version bump to %s [skip ci]"
-      #     fi
+      - name: Version bump
+        run: |
+          if [[ "${{ steps.pr-labels.outputs.result }}" != "" ]]; then
+            npm version ${{ steps.pr-labels.outputs.result }} -m "chore: version bump to %s [skip ci]"
+          fi
 
-      # - name: Push changes
-      #   run: |
-      #     git push origin HEAD:main
-      #     git push --tags
+      - name: Push changes
+        run: |
+          git push origin HEAD:main
+          git push --tags
 
-      # - name: Build
-      #   run: npm run build
+      - name: Build
+        run: npm run build
 
-      # - name: Publish
-      #   if: startsWith(github.ref, 'refs/tags/')
-      #   run: npm publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Publish
+        if: startsWith(github.ref, 'refs/tags/')
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
