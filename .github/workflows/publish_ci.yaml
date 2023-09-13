@@ -14,7 +14,7 @@ on:
 
 jobs:
   version-and-publish:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     name: Version and Publish
     runs-on: ubuntu-latest
     steps:
