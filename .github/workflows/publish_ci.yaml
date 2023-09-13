@@ -4,6 +4,7 @@ on:
     branches:
     - main
 
+
 # name: publish:ci
 
 # on:
@@ -32,8 +33,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Get PR labels and version bump
-        uses: actions/github-script@v5
+      - name: Get PR labels
+        id: pr-labels
+        uses: actions/github-script@v6
         with:
           script: |
             const { data: pullRequest } = await github.rest.pulls.get({
@@ -43,14 +45,18 @@ jobs:
             });
 
             const labels = pullRequest.labels.map(label => label.name);
+            console.log(`PR labels: ${labels}`);
+            
             const validLabels = ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'];
+            const versionLabel = labels.find(label => validLabels.includes(label));
 
-            for (const label of labels) {
-              if (validLabels.includes(label)) {
-                await exec(`npm version ${label} -m "chore: version bump to %s [skip ci]"`);
-                break;
-              }
-            }
+            return versionLabel;
+
+      # - name: Version bump
+      #   run: |
+      #     if [[ "${{ steps.pr-labels.outputs.result }}" != "" ]]; then
+      #       npm version ${{ steps.pr-labels.outputs.result }} -m "chore: version bump to %s [skip ci]"
+      #     fi
 
       # - name: Push changes
       #   run: |
