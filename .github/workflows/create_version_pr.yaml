@@ -1,26 +1,24 @@
-name: publish:ci
+name: Create Version PR
 
 on:
-  pull_request: 
+  pull_request:
     types: [closed]
     branches:
       - main
 
 permissions:
-  contents: write # for checkout and tag
-  pull-requests: write # for comments
-  packages: write # for publish
+  contents: write
+  pull-requests: write
 
 jobs:
-  version-and-publish:
+  version-and-create-pr:
     if: github.event.pull_request.merged == true
-    name: Version and Publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Important: This ensures all tags are fetched as well
+          fetch-depth: 0
 
       - name: Setup node
         uses: actions/setup-node@v3
@@ -43,8 +41,6 @@ jobs:
             });
 
             const labels = pullRequest.labels.map(label => label.name);
-            console.log(`PR labels: ${labels}`);
-            
             const validLabels = ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'];
             const versionLabel = labels.find(label => validLabels.includes(label));
 
@@ -56,23 +52,19 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
 
       - name: Version bump
+        if: steps.pr-labels.outputs.result != ''
         run: |
-          if [[ "${{ steps.pr-labels.outputs.result }}" != "" ]]; then
-            npm version ${{ steps.pr-labels.outputs.result }} -m "chore: version bump to %s [skip ci]"
-          fi
-
-      - name: Push changes
-        run: |
-          git push origin HEAD:main
+          npm version ${{ steps.pr-labels.outputs.result }} -m "chore: version bump to %s [skip ci]"
+          git push origin HEAD:version-change-${{ steps.pr-labels.outputs.result }}-${{ github.run_number }}
           git push --tags
-        env:
-          GITHUB_TOKEN: ${{ secrets.DEFI_ADAPTERS_SERVICE_ACCOUNT_GITHUB_PAT }}  
 
-      - name: Build
-        run: npm run build
-
-      - name: Publish
-        if: startsWith(github.ref, 'refs/tags/')
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      # Create a PR for the version change
+      - name: Create Version PR
+        if: steps.pr-labels.outputs.result != ''
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: version-change-${{ steps.pr-labels.outputs.result }}-${{ github.run_number }}
+          destination_branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_title: "Version Bump"
+          pr_body: "Automated version bump based on merged PR labels. Please review."
