@@ -1,8 +1,6 @@
-import { pascalCase } from '../../core/utils/caseConversion'
-
 export function defaultAdapterTemplate(
-  protocolName: string,
-  adapterName: string,
+  protocolKey: string,
+  adapterClassName: string,
 ) {
   return `
 import { ethers } from 'ethers'
@@ -35,7 +33,7 @@ import {
 } from '../../../../types/adapter'
 
 @Adapter
-export class ${pascalCase(adapterName)}
+export class ${adapterClassName}
   implements IProtocolAdapter, IMetadataBuilder
 {
   product!: string
@@ -53,8 +51,8 @@ export class ${pascalCase(adapterName)}
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: '${protocolName}',
-      description: '${protocolName} defi adapter',
+      name: '${protocolKey}',
+      description: '${protocolKey} defi adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
       positionType: PositionType.Supply,

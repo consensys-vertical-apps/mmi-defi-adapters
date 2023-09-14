@@ -17,12 +17,12 @@ import {
 
 export async function getPositions({
   userAddress,
-  filterProtocolId,
-  filterChainId,
+  filterProtocolIds,
+  filterChainIds,
 }: {
   userAddress: string
-  filterProtocolId?: Protocol
-  filterChainId?: Chain
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
 }): Promise<DefiPositionResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const tokens = await adapter.getPositions({
@@ -33,19 +33,19 @@ export async function getPositions({
 
   return runForAllProtocolsAndChains({
     runner,
-    filterProtocolId,
-    filterChainId,
+    filterProtocolIds,
+    filterChainIds,
   })
 }
 
 export async function getTodaysProfits({
   userAddress,
-  filterProtocolId,
-  filterChainId,
+  filterProtocolIds,
+  filterChainIds,
 }: {
   userAddress: string
-  filterProtocolId?: Protocol
-  filterChainId?: Chain
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
 }): Promise<DefiProfitsResponse[]> {
   const runner = async (
     adapter: IProtocolAdapter,
@@ -61,17 +61,17 @@ export async function getTodaysProfits({
 
   return runForAllProtocolsAndChains({
     runner,
-    filterProtocolId,
-    filterChainId,
+    filterProtocolIds,
+    filterChainIds,
   })
 }
 
 export async function getPrices({
-  filterProtocolId,
-  filterChainId,
+  filterProtocolIds,
+  filterChainIds,
 }: {
-  filterProtocolId?: Protocol
-  filterChainId?: Chain
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
 }): Promise<PricePerShareResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const protocolTokens = await adapter.getProtocolTokens()
@@ -86,17 +86,17 @@ export async function getPrices({
 
   return runForAllProtocolsAndChains({
     runner,
-    filterProtocolId,
-    filterChainId,
+    filterProtocolIds,
+    filterChainIds,
   })
 }
 
 export async function getTotalValueLocked({
-  filterProtocolId,
-  filterChainId,
+  filterProtocolIds,
+  filterChainIds,
 }: {
-  filterProtocolId?: Protocol
-  filterChainId?: Chain
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
 }): Promise<TotalValueLockResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const tokens = await adapter.getTotalValueLocked({})
@@ -105,17 +105,17 @@ export async function getTotalValueLocked({
 
   return runForAllProtocolsAndChains({
     runner,
-    filterProtocolId,
-    filterChainId,
+    filterProtocolIds,
+    filterChainIds,
   })
 }
 
 export async function getApy({
-  filterProtocolId,
-  filterChainId,
+  filterProtocolIds,
+  filterChainIds,
 }: {
-  filterProtocolId?: Protocol
-  filterChainId?: Chain
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
 }): Promise<APYResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const protocolTokens = await adapter.getProtocolTokens()
@@ -133,20 +133,20 @@ export async function getApy({
 
   return runForAllProtocolsAndChains({
     runner,
-    filterProtocolId,
-    filterChainId,
+    filterProtocolIds,
+    filterChainIds,
   })
 }
 
 export async function getDeposits({
-  filterProtocolId,
-  filterChainId,
+  filterProtocolIds,
+  filterChainIds,
   userAddress,
   fromBlock,
   toBlock,
 }: {
-  filterProtocolId?: Protocol
-  filterChainId?: Chain
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
   userAddress: string
   fromBlock: number
   toBlock: number
@@ -177,20 +177,20 @@ export async function getDeposits({
 
   return runForAllProtocolsAndChains({
     runner,
-    filterProtocolId,
-    filterChainId,
+    filterProtocolIds,
+    filterChainIds,
   })
 }
 
 export async function getWithdrawals({
-  filterProtocolId,
-  filterChainId,
+  filterProtocolIds,
+  filterChainIds,
   userAddress,
   fromBlock,
   toBlock,
 }: {
-  filterProtocolId?: Protocol
-  filterChainId?: Chain
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
   userAddress: string
   fromBlock: number
   toBlock: number
@@ -221,17 +221,17 @@ export async function getWithdrawals({
 
   return runForAllProtocolsAndChains({
     runner,
-    filterProtocolId,
-    filterChainId,
+    filterProtocolIds,
+    filterChainIds,
   })
 }
 
 export async function getApr({
-  filterProtocolId,
-  filterChainId,
+  filterProtocolIds,
+  filterChainIds,
 }: {
-  filterProtocolId?: Protocol
-  filterChainId?: Chain
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
 }): Promise<APRResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const protocolTokens = await adapter.getProtocolTokens()
@@ -249,35 +249,38 @@ export async function getApr({
 
   return runForAllProtocolsAndChains({
     runner,
-    filterProtocolId,
-    filterChainId,
+    filterProtocolIds,
+    filterChainIds,
   })
 }
 
 async function runForAllProtocolsAndChains<ReturnType>({
   runner,
-  filterProtocolId,
-  filterChainId,
+  filterProtocolIds,
+  filterChainIds,
 }: {
   runner: (
     adapter: IProtocolAdapter,
     provider: ethers.providers.StaticJsonRpcProvider,
   ) => ReturnType
-  filterProtocolId?: Protocol
-  filterChainId?: Chain
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
 }) {
   const protocolPromises = Object.entries(supportedProtocols)
     .filter(
       ([protocolIdKey, _]) =>
-        !filterProtocolId || filterProtocolId === protocolIdKey,
+        !filterProtocolIds ||
+        filterProtocolIds.includes(protocolIdKey as Protocol),
     )
     .flatMap(([protocolIdKey, supportedChains]) => {
+      // Object.entries casts the numeric key as a string. This reverses it
       return Object.entries(supportedChains)
         .filter(([chainIdKey, _]) => {
-          return !filterChainId || filterChainId.toString() === chainIdKey
+          return (
+            !filterChainIds || filterChainIds.includes(+chainIdKey as Chain)
+          )
         })
         .flatMap(([chainIdKey, adapterClasses]) => {
-          // Object.entries casts the numeric key as a string. This reverses it
           const chainId = +chainIdKey as Chain
           const provider = chainProviders[chainId]
 

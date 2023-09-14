@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { IProtocolAdapter } from '../../types/adapter'
-import { ChainNames } from '../constants/chains'
+import { ChainName } from '../constants/chains'
 import { logger } from '../utils/logger'
 import { IMetadataBuilder, writeMetadataToFile } from '../utils/metadata'
 
@@ -43,7 +43,7 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
         __dirname,
         '../../adapters',
         `${this.protocolId}/products/${this.product}/metadata`,
-        `${ChainNames[this.chainId]}.${fileKey}.json`,
+        `${ChainName[this.chainId]}.${fileKey}.json`,
       )
 
       if (!fs.existsSync(filePath)) {

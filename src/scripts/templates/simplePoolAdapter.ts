@@ -1,8 +1,6 @@
-import { pascalCase } from '../../core/utils/caseConversion'
-
 export function simplePoolAdapterTemplate(
-  protocolName: string,
-  adapterName: string,
+  protocolKey: string,
+  adapterClassName: string,
 ) {
   return `
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
@@ -28,7 +26,7 @@ import {
   TokenType,
 } from '../../../../types/adapter'
 
-type ${pascalCase(adapterName)}Metadata = Record<
+type ${adapterClassName}Metadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
@@ -37,7 +35,7 @@ type ${pascalCase(adapterName)}Metadata = Record<
 >
 
 @Adapter
-export class ${pascalCase(adapterName)}
+export class ${adapterClassName}
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
@@ -46,8 +44,8 @@ export class ${pascalCase(adapterName)}
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: '${protocolName}',
-      description: '${protocolName} pool adapter',
+      name: '${protocolKey}',
+      description: '${protocolKey} pool adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
       positionType: PositionType.Supply,
@@ -145,7 +143,7 @@ export class ${pascalCase(adapterName)}
           },
         ],
       },
-    } as ${pascalCase(adapterName)}Metadata
+    } as ${adapterClassName}Metadata
   }
 
   protected async fetchProtocolTokenMetadata(
