@@ -49,7 +49,7 @@ export async function getTodaysProfits({
 }): Promise<DefiProfitsResponse[]> {
   const runner = async (
     adapter: IProtocolAdapter,
-    provider: ethers.providers.StaticJsonRpcProvider,
+    provider: ethers.JsonRpcProvider,
   ) => {
     const blockNumber = await provider.getBlockNumber()
     const profits = await adapter.getOneDayProfit({
@@ -261,7 +261,7 @@ async function runForAllProtocolsAndChains<ReturnType>({
 }: {
   runner: (
     adapter: IProtocolAdapter,
-    provider: ethers.providers.StaticJsonRpcProvider,
+    provider: ethers.JsonRpcProvider,
   ) => ReturnType
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]

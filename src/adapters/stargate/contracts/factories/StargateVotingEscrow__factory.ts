@@ -2,8 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import type { Provider } from "@ethersproject/providers";
+import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   StargateVotingEscrow,
   StargateVotingEscrowInterface,
@@ -812,16 +811,16 @@ const _abi = [
 export class StargateVotingEscrow__factory {
   static readonly abi = _abi;
   static createInterface(): StargateVotingEscrowInterface {
-    return new utils.Interface(_abi) as StargateVotingEscrowInterface;
+    return new Interface(_abi) as StargateVotingEscrowInterface;
   }
   static connect(
     address: string,
-    signerOrProvider: Signer | Provider
+    runner?: ContractRunner | null
   ): StargateVotingEscrow {
     return new Contract(
       address,
       _abi,
-      signerOrProvider
-    ) as StargateVotingEscrow;
+      runner
+    ) as unknown as StargateVotingEscrow;
   }
 }

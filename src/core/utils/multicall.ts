@@ -1,9 +1,13 @@
-import { BytesLike, providers } from 'ethers'
+import { AddressLike, BytesLike, TransactionRequest } from 'ethers'
 import { Multicall } from '../../contracts/Multicall'
 import { logger } from './logger'
 
 interface PendingCall {
-  callParams: { target: string; callData: BytesLike; allowFailure: boolean }
+  callParams: {
+    target: AddressLike
+    callData: BytesLike
+    allowFailure: boolean
+  }
   resolve: (value: string) => void
   reject: (reason: string | undefined) => void
 }
@@ -39,7 +43,7 @@ export class MulticallQueue {
     return this._timer
   }
 
-  async queueCall(callParams: providers.TransactionRequest): Promise<string> {
+  async queueCall(callParams: TransactionRequest): Promise<string> {
     const { to, data, from } = callParams
 
     if (from) {
@@ -81,7 +85,7 @@ export class MulticallQueue {
     const batchSize = callsToProcess.length
     logger.debug({ batchSize }, 'Sending multicall batch ')
 
-    const results = await this.multicallContract.callStatic.aggregate3(
+    const results = await this.multicallContract.aggregate3.staticCall(
       callsToProcess.map(({ callParams }) => callParams),
     )
 

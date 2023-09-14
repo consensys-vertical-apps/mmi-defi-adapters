@@ -3,45 +3,29 @@
 /* eslint-disable */
 import type {
   BaseContract,
-  BigNumber,
   BigNumberish,
   BytesLike,
-  CallOverrides,
-  ContractTransaction,
-  Overrides,
-  PopulatedTransaction,
-  Signer,
-  utils,
-} from "ethers";
-import type {
   FunctionFragment,
   Result,
+  Interface,
   EventFragment,
-} from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
+  AddressLike,
+  ContractRunner,
+  ContractMethod,
+  Listener,
+} from "ethers";
 import type {
-  TypedEventFilter,
-  TypedEvent,
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+  TypedEventLog,
+  TypedLogDescription,
   TypedListener,
-  OnEvent,
+  TypedContractMethod,
 } from "./common";
 
-export interface StargateFactoryInterface extends utils.Interface {
-  functions: {
-    "allPools(uint256)": FunctionFragment;
-    "allPoolsLength()": FunctionFragment;
-    "createPool(uint256,address,uint8,uint8,string,string)": FunctionFragment;
-    "defaultFeeLibrary()": FunctionFragment;
-    "getPool(uint256)": FunctionFragment;
-    "owner()": FunctionFragment;
-    "renounceOwnership()": FunctionFragment;
-    "router()": FunctionFragment;
-    "setDefaultFeeLibrary(address)": FunctionFragment;
-    "transferOwnership(address)": FunctionFragment;
-  };
-
+export interface StargateFactoryInterface extends Interface {
   getFunction(
-    nameOrSignatureOrTopic:
+    nameOrSignature:
       | "allPools"
       | "allPoolsLength"
       | "createPool"
@@ -54,6 +38,8 @@ export interface StargateFactoryInterface extends utils.Interface {
       | "transferOwnership"
   ): FunctionFragment;
 
+  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
+
   encodeFunctionData(
     functionFragment: "allPools",
     values: [BigNumberish]
@@ -64,7 +50,14 @@ export interface StargateFactoryInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "createPool",
-    values: [BigNumberish, string, BigNumberish, BigNumberish, string, string]
+    values: [
+      BigNumberish,
+      AddressLike,
+      BigNumberish,
+      BigNumberish,
+      string,
+      string
+    ]
   ): string;
   encodeFunctionData(
     functionFragment: "defaultFeeLibrary",
@@ -82,11 +75,11 @@ export interface StargateFactoryInterface extends utils.Interface {
   encodeFunctionData(functionFragment: "router", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "setDefaultFeeLibrary",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
-    values: [string]
+    values: [AddressLike]
   ): string;
 
   decodeFunctionResult(functionFragment: "allPools", data: BytesLike): Result;
@@ -114,252 +107,171 @@ export interface StargateFactoryInterface extends utils.Interface {
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
-
-  events: {
-    "OwnershipTransferred(address,address)": EventFragment;
-  };
-
-  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
 }
 
-export interface OwnershipTransferredEventObject {
-  previousOwner: string;
-  newOwner: string;
+export namespace OwnershipTransferredEvent {
+  export type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
+  export type OutputTuple = [previousOwner: string, newOwner: string];
+  export interface OutputObject {
+    previousOwner: string;
+    newOwner: string;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type OwnershipTransferredEvent = TypedEvent<
-  [string, string],
-  OwnershipTransferredEventObject
->;
-
-export type OwnershipTransferredEventFilter =
-  TypedEventFilter<OwnershipTransferredEvent>;
 
 export interface StargateFactory extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(runner?: ContractRunner | null): StargateFactory;
+  waitForDeployment(): Promise<this>;
 
   interface: StargateFactoryInterface;
 
-  queryFilter<TEvent extends TypedEvent>(
-    event: TypedEventFilter<TEvent>,
+  queryFilter<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TEvent>>;
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+  queryFilter<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
 
-  listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
-  listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
-  removeAllListeners(eventName?: string): this;
-  off: OnEvent<this>;
-  on: OnEvent<this>;
-  once: OnEvent<this>;
-  removeListener: OnEvent<this>;
+  on<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  on<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
 
-  functions: {
-    allPools(arg0: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
+  once<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  once<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
 
-    allPoolsLength(overrides?: CallOverrides): Promise<[BigNumber]>;
+  listeners<TCEvent extends TypedContractEvent>(
+    event: TCEvent
+  ): Promise<Array<TypedListener<TCEvent>>>;
+  listeners(eventName?: string): Promise<Array<Listener>>;
+  removeAllListeners<TCEvent extends TypedContractEvent>(
+    event?: TCEvent
+  ): Promise<this>;
 
-    createPool(
+  allPools: TypedContractMethod<[arg0: BigNumberish], [string], "view">;
+
+  allPoolsLength: TypedContractMethod<[], [bigint], "view">;
+
+  createPool: TypedContractMethod<
+    [
       _poolId: BigNumberish,
-      _token: string,
+      _token: AddressLike,
       _sharedDecimals: BigNumberish,
       _localDecimals: BigNumberish,
       _name: string,
-      _symbol: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
+      _symbol: string
+    ],
+    [string],
+    "nonpayable"
+  >;
 
-    defaultFeeLibrary(overrides?: CallOverrides): Promise<[string]>;
+  defaultFeeLibrary: TypedContractMethod<[], [string], "view">;
 
-    getPool(arg0: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
+  getPool: TypedContractMethod<[arg0: BigNumberish], [string], "view">;
 
-    owner(overrides?: CallOverrides): Promise<[string]>;
+  owner: TypedContractMethod<[], [string], "view">;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
+  renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
 
-    router(overrides?: CallOverrides): Promise<[string]>;
+  router: TypedContractMethod<[], [string], "view">;
 
-    setDefaultFeeLibrary(
-      _defaultFeeLibrary: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
+  setDefaultFeeLibrary: TypedContractMethod<
+    [_defaultFeeLibrary: AddressLike],
+    [void],
+    "nonpayable"
+  >;
 
-    transferOwnership(
-      newOwner: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-  };
+  transferOwnership: TypedContractMethod<
+    [newOwner: AddressLike],
+    [void],
+    "nonpayable"
+  >;
 
-  allPools(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
+  getFunction<T extends ContractMethod = ContractMethod>(
+    key: string | FunctionFragment
+  ): T;
 
-  allPoolsLength(overrides?: CallOverrides): Promise<BigNumber>;
-
-  createPool(
-    _poolId: BigNumberish,
-    _token: string,
-    _sharedDecimals: BigNumberish,
-    _localDecimals: BigNumberish,
-    _name: string,
-    _symbol: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  defaultFeeLibrary(overrides?: CallOverrides): Promise<string>;
-
-  getPool(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
-
-  owner(overrides?: CallOverrides): Promise<string>;
-
-  renounceOwnership(
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  router(overrides?: CallOverrides): Promise<string>;
-
-  setDefaultFeeLibrary(
-    _defaultFeeLibrary: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  transferOwnership(
-    newOwner: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  callStatic: {
-    allPools(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
-
-    allPoolsLength(overrides?: CallOverrides): Promise<BigNumber>;
-
-    createPool(
+  getFunction(
+    nameOrSignature: "allPools"
+  ): TypedContractMethod<[arg0: BigNumberish], [string], "view">;
+  getFunction(
+    nameOrSignature: "allPoolsLength"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "createPool"
+  ): TypedContractMethod<
+    [
       _poolId: BigNumberish,
-      _token: string,
+      _token: AddressLike,
       _sharedDecimals: BigNumberish,
       _localDecimals: BigNumberish,
       _name: string,
-      _symbol: string,
-      overrides?: CallOverrides
-    ): Promise<string>;
+      _symbol: string
+    ],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "defaultFeeLibrary"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "getPool"
+  ): TypedContractMethod<[arg0: BigNumberish], [string], "view">;
+  getFunction(
+    nameOrSignature: "owner"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "renounceOwnership"
+  ): TypedContractMethod<[], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "router"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "setDefaultFeeLibrary"
+  ): TypedContractMethod<
+    [_defaultFeeLibrary: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "transferOwnership"
+  ): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
 
-    defaultFeeLibrary(overrides?: CallOverrides): Promise<string>;
-
-    getPool(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
-
-    owner(overrides?: CallOverrides): Promise<string>;
-
-    renounceOwnership(overrides?: CallOverrides): Promise<void>;
-
-    router(overrides?: CallOverrides): Promise<string>;
-
-    setDefaultFeeLibrary(
-      _defaultFeeLibrary: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    transferOwnership(
-      newOwner: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
-  };
+  getEvent(
+    key: "OwnershipTransferred"
+  ): TypedContractEvent<
+    OwnershipTransferredEvent.InputTuple,
+    OwnershipTransferredEvent.OutputTuple,
+    OwnershipTransferredEvent.OutputObject
+  >;
 
   filters: {
-    "OwnershipTransferred(address,address)"(
-      previousOwner?: string | null,
-      newOwner?: string | null
-    ): OwnershipTransferredEventFilter;
-    OwnershipTransferred(
-      previousOwner?: string | null,
-      newOwner?: string | null
-    ): OwnershipTransferredEventFilter;
-  };
-
-  estimateGas: {
-    allPools(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
-
-    allPoolsLength(overrides?: CallOverrides): Promise<BigNumber>;
-
-    createPool(
-      _poolId: BigNumberish,
-      _token: string,
-      _sharedDecimals: BigNumberish,
-      _localDecimals: BigNumberish,
-      _name: string,
-      _symbol: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    defaultFeeLibrary(overrides?: CallOverrides): Promise<BigNumber>;
-
-    getPool(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
-
-    owner(overrides?: CallOverrides): Promise<BigNumber>;
-
-    renounceOwnership(
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    router(overrides?: CallOverrides): Promise<BigNumber>;
-
-    setDefaultFeeLibrary(
-      _defaultFeeLibrary: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    transferOwnership(
-      newOwner: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-  };
-
-  populateTransaction: {
-    allPools(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    allPoolsLength(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    createPool(
-      _poolId: BigNumberish,
-      _token: string,
-      _sharedDecimals: BigNumberish,
-      _localDecimals: BigNumberish,
-      _name: string,
-      _symbol: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    defaultFeeLibrary(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    getPool(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    renounceOwnership(
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    router(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    setDefaultFeeLibrary(
-      _defaultFeeLibrary: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    transferOwnership(
-      newOwner: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
+    "OwnershipTransferred(address,address)": TypedContractEvent<
+      OwnershipTransferredEvent.InputTuple,
+      OwnershipTransferredEvent.OutputTuple,
+      OwnershipTransferredEvent.OutputObject
+    >;
+    OwnershipTransferred: TypedContractEvent<
+      OwnershipTransferredEvent.InputTuple,
+      OwnershipTransferredEvent.OutputTuple,
+      OwnershipTransferredEvent.OutputObject
+    >;
   };
 }

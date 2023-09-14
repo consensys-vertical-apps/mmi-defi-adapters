@@ -1,4 +1,4 @@
-import { formatUnits } from 'ethers/lib/utils'
+import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { Adapter } from '../../../../core/decorators/adapter'
@@ -95,7 +95,7 @@ export class StargatePoolAdapter
       this.provider,
     )
 
-    const poolsLength = (await lpFactoryContract.allPoolsLength()).toNumber()
+    const poolsLength = Number(await lpFactoryContract.allPoolsLength())
 
     const metadataObject: StargatePoolMetadata = {}
 
@@ -107,7 +107,7 @@ export class StargatePoolAdapter
         this.provider,
       )
 
-      const poolId = (await poolContract.poolId()).toNumber()
+      const poolId = Number(await poolContract.poolId())
       const underlyingTokenAddress = (await poolContract.token()).toLowerCase()
 
       const protocolToken = await getThinTokenMetadata(
@@ -190,7 +190,7 @@ export class StargatePoolAdapter
       {
         ...underlyingToken,
         type: TokenType.Underlying,
-        pricePerShareRaw: pricePerShareRaw.toBigInt(),
+        pricePerShareRaw,
         pricePerShare,
       },
     ]

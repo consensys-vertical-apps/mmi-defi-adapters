@@ -3,77 +3,29 @@
 /* eslint-disable */
 import type {
   BaseContract,
-  BigNumber,
   BigNumberish,
   BytesLike,
-  CallOverrides,
-  ContractTransaction,
-  Overrides,
-  PopulatedTransaction,
-  Signer,
-  utils,
-} from "ethers";
-import type {
   FunctionFragment,
   Result,
+  Interface,
   EventFragment,
-} from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
+  AddressLike,
+  ContractRunner,
+  ContractMethod,
+  Listener,
+} from "ethers";
 import type {
-  TypedEventFilter,
-  TypedEvent,
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+  TypedEventLog,
+  TypedLogDescription,
   TypedListener,
-  OnEvent,
+  TypedContractMethod,
 } from "./common";
 
-export interface StargateVotingEscrowInterface extends utils.Interface {
-  functions: {
-    "MAXTIME()": FunctionFragment;
-    "MINTIME()": FunctionFragment;
-    "add_to_whitelist(address)": FunctionFragment;
-    "balanceOf(address)": FunctionFragment;
-    "balanceOfAt(address,uint256)": FunctionFragment;
-    "balanceOfAtT(address,uint256)": FunctionFragment;
-    "changeController(address)": FunctionFragment;
-    "checkpoint()": FunctionFragment;
-    "contracts_whitelist(address)": FunctionFragment;
-    "controller()": FunctionFragment;
-    "create_lock(uint256,uint256)": FunctionFragment;
-    "decimals()": FunctionFragment;
-    "deposit_for(address,uint256)": FunctionFragment;
-    "epoch()": FunctionFragment;
-    "get_last_user_slope(address)": FunctionFragment;
-    "increase_amount(uint256)": FunctionFragment;
-    "increase_amount_and_time(uint256,uint256)": FunctionFragment;
-    "increase_unlock_time(uint256)": FunctionFragment;
-    "locked(address)": FunctionFragment;
-    "locked__end(address)": FunctionFragment;
-    "name()": FunctionFragment;
-    "owner()": FunctionFragment;
-    "point_history(uint256)": FunctionFragment;
-    "remove_from_whitelist(address)": FunctionFragment;
-    "renounceOwnership()": FunctionFragment;
-    "slope_changes(uint256)": FunctionFragment;
-    "supply()": FunctionFragment;
-    "symbol()": FunctionFragment;
-    "token()": FunctionFragment;
-    "totalSupply()": FunctionFragment;
-    "totalSupplyAt(uint256)": FunctionFragment;
-    "totalSupplyAtT(uint256)": FunctionFragment;
-    "transferOwnership(address)": FunctionFragment;
-    "transfersEnabled()": FunctionFragment;
-    "unlock()": FunctionFragment;
-    "unlocked()": FunctionFragment;
-    "user_point_epoch(address)": FunctionFragment;
-    "user_point_history(address,uint256)": FunctionFragment;
-    "user_point_history__ts(address,uint256)": FunctionFragment;
-    "version()": FunctionFragment;
-    "withdraw()": FunctionFragment;
-    "withdraw_and_create_lock(uint256,uint256)": FunctionFragment;
-  };
-
+export interface StargateVotingEscrowInterface extends Interface {
   getFunction(
-    nameOrSignatureOrTopic:
+    nameOrSignature:
       | "MAXTIME"
       | "MINTIME"
       | "add_to_whitelist"
@@ -118,24 +70,35 @@ export interface StargateVotingEscrowInterface extends utils.Interface {
       | "withdraw_and_create_lock"
   ): FunctionFragment;
 
+  getEvent(
+    nameOrSignatureOrTopic:
+      | "Deposit"
+      | "OwnershipTransferred"
+      | "Supply"
+      | "Withdraw"
+  ): EventFragment;
+
   encodeFunctionData(functionFragment: "MAXTIME", values?: undefined): string;
   encodeFunctionData(functionFragment: "MINTIME", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "add_to_whitelist",
-    values: [string]
+    values: [AddressLike]
   ): string;
-  encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "balanceOf",
+    values: [AddressLike]
+  ): string;
   encodeFunctionData(
     functionFragment: "balanceOfAt",
-    values: [string, BigNumberish]
+    values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "balanceOfAtT",
-    values: [string, BigNumberish]
+    values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "changeController",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "checkpoint",
@@ -143,7 +106,7 @@ export interface StargateVotingEscrowInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "contracts_whitelist",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "controller",
@@ -156,12 +119,12 @@ export interface StargateVotingEscrowInterface extends utils.Interface {
   encodeFunctionData(functionFragment: "decimals", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "deposit_for",
-    values: [string, BigNumberish]
+    values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "epoch", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "get_last_user_slope",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "increase_amount",
@@ -175,8 +138,11 @@ export interface StargateVotingEscrowInterface extends utils.Interface {
     functionFragment: "increase_unlock_time",
     values: [BigNumberish]
   ): string;
-  encodeFunctionData(functionFragment: "locked", values: [string]): string;
-  encodeFunctionData(functionFragment: "locked__end", values: [string]): string;
+  encodeFunctionData(functionFragment: "locked", values: [AddressLike]): string;
+  encodeFunctionData(
+    functionFragment: "locked__end",
+    values: [AddressLike]
+  ): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
@@ -185,7 +151,7 @@ export interface StargateVotingEscrowInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "remove_from_whitelist",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "renounceOwnership",
@@ -212,7 +178,7 @@ export interface StargateVotingEscrowInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "transfersEnabled",
@@ -222,15 +188,15 @@ export interface StargateVotingEscrowInterface extends utils.Interface {
   encodeFunctionData(functionFragment: "unlocked", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "user_point_epoch",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "user_point_history",
-    values: [string, BigNumberish]
+    values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "user_point_history__ts",
-    values: [string, BigNumberish]
+    values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "version", values?: undefined): string;
   encodeFunctionData(functionFragment: "withdraw", values?: undefined): string;
@@ -356,995 +322,550 @@ export interface StargateVotingEscrowInterface extends utils.Interface {
     functionFragment: "withdraw_and_create_lock",
     data: BytesLike
   ): Result;
-
-  events: {
-    "Deposit(address,uint256,uint256,uint8,uint256)": EventFragment;
-    "OwnershipTransferred(address,address)": EventFragment;
-    "Supply(uint256,uint256)": EventFragment;
-    "Withdraw(address,uint256,uint256)": EventFragment;
-  };
-
-  getEvent(nameOrSignatureOrTopic: "Deposit"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Supply"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Withdraw"): EventFragment;
 }
 
-export interface DepositEventObject {
-  provider: string;
-  value: BigNumber;
-  locktime: BigNumber;
-  deposit_type: number;
-  ts: BigNumber;
+export namespace DepositEvent {
+  export type InputTuple = [
+    provider: AddressLike,
+    value: BigNumberish,
+    locktime: BigNumberish,
+    deposit_type: BigNumberish,
+    ts: BigNumberish
+  ];
+  export type OutputTuple = [
+    provider: string,
+    value: bigint,
+    locktime: bigint,
+    deposit_type: bigint,
+    ts: bigint
+  ];
+  export interface OutputObject {
+    provider: string;
+    value: bigint;
+    locktime: bigint;
+    deposit_type: bigint;
+    ts: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type DepositEvent = TypedEvent<
-  [string, BigNumber, BigNumber, number, BigNumber],
-  DepositEventObject
->;
 
-export type DepositEventFilter = TypedEventFilter<DepositEvent>;
-
-export interface OwnershipTransferredEventObject {
-  previousOwner: string;
-  newOwner: string;
+export namespace OwnershipTransferredEvent {
+  export type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
+  export type OutputTuple = [previousOwner: string, newOwner: string];
+  export interface OutputObject {
+    previousOwner: string;
+    newOwner: string;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type OwnershipTransferredEvent = TypedEvent<
-  [string, string],
-  OwnershipTransferredEventObject
->;
 
-export type OwnershipTransferredEventFilter =
-  TypedEventFilter<OwnershipTransferredEvent>;
-
-export interface SupplyEventObject {
-  prevSupply: BigNumber;
-  supply: BigNumber;
+export namespace SupplyEvent {
+  export type InputTuple = [prevSupply: BigNumberish, supply: BigNumberish];
+  export type OutputTuple = [prevSupply: bigint, supply: bigint];
+  export interface OutputObject {
+    prevSupply: bigint;
+    supply: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type SupplyEvent = TypedEvent<[BigNumber, BigNumber], SupplyEventObject>;
 
-export type SupplyEventFilter = TypedEventFilter<SupplyEvent>;
-
-export interface WithdrawEventObject {
-  provider: string;
-  value: BigNumber;
-  ts: BigNumber;
+export namespace WithdrawEvent {
+  export type InputTuple = [
+    provider: AddressLike,
+    value: BigNumberish,
+    ts: BigNumberish
+  ];
+  export type OutputTuple = [provider: string, value: bigint, ts: bigint];
+  export interface OutputObject {
+    provider: string;
+    value: bigint;
+    ts: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type WithdrawEvent = TypedEvent<
-  [string, BigNumber, BigNumber],
-  WithdrawEventObject
->;
-
-export type WithdrawEventFilter = TypedEventFilter<WithdrawEvent>;
 
 export interface StargateVotingEscrow extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(runner?: ContractRunner | null): StargateVotingEscrow;
+  waitForDeployment(): Promise<this>;
 
   interface: StargateVotingEscrowInterface;
 
-  queryFilter<TEvent extends TypedEvent>(
-    event: TypedEventFilter<TEvent>,
+  queryFilter<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TEvent>>;
-
-  listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
-  listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
-  removeAllListeners(eventName?: string): this;
-  off: OnEvent<this>;
-  on: OnEvent<this>;
-  once: OnEvent<this>;
-  removeListener: OnEvent<this>;
-
-  functions: {
-    MAXTIME(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    MINTIME(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    add_to_whitelist(
-      addr: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    balanceOf(addr: string, overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    balanceOfAt(
-      addr: string,
-      _block: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    balanceOfAtT(
-      addr: string,
-      _t: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    changeController(
-      _newController: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    checkpoint(
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    contracts_whitelist(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
-
-    controller(overrides?: CallOverrides): Promise<[string]>;
-
-    create_lock(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    decimals(overrides?: CallOverrides): Promise<[number]>;
-
-    deposit_for(
-      _addr: string,
-      _value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    epoch(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    get_last_user_slope(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    increase_amount(
-      _value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    increase_amount_and_time(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    increase_unlock_time(
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    locked(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber, BigNumber] & { amount: BigNumber; end: BigNumber }>;
-
-    locked__end(_addr: string, overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    name(overrides?: CallOverrides): Promise<[string]>;
-
-    owner(overrides?: CallOverrides): Promise<[string]>;
-
-    point_history(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        bias: BigNumber;
-        slope: BigNumber;
-        ts: BigNumber;
-        blk: BigNumber;
-      }
-    >;
-
-    remove_from_whitelist(
-      addr: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    renounceOwnership(
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    slope_changes(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    supply(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    symbol(overrides?: CallOverrides): Promise<[string]>;
-
-    token(overrides?: CallOverrides): Promise<[string]>;
-
-    totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    totalSupplyAt(
-      _block: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    totalSupplyAtT(
-      t: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    transferOwnership(
-      newOwner: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    transfersEnabled(overrides?: CallOverrides): Promise<[boolean]>;
-
-    unlock(
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    unlocked(overrides?: CallOverrides): Promise<[boolean]>;
-
-    user_point_epoch(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    user_point_history(
-      arg0: string,
-      arg1: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        bias: BigNumber;
-        slope: BigNumber;
-        ts: BigNumber;
-        blk: BigNumber;
-      }
-    >;
-
-    user_point_history__ts(
-      _addr: string,
-      _idx: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    version(overrides?: CallOverrides): Promise<[string]>;
-
-    withdraw(
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    withdraw_and_create_lock(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-  };
-
-  MAXTIME(overrides?: CallOverrides): Promise<BigNumber>;
-
-  MINTIME(overrides?: CallOverrides): Promise<BigNumber>;
-
-  add_to_whitelist(
-    addr: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  balanceOf(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-  balanceOfAt(
-    addr: string,
-    _block: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  balanceOfAtT(
-    addr: string,
-    _t: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  changeController(
-    _newController: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  checkpoint(
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  contracts_whitelist(
-    arg0: string,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
-  controller(overrides?: CallOverrides): Promise<string>;
-
-  create_lock(
-    _value: BigNumberish,
-    _unlock_time: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  decimals(overrides?: CallOverrides): Promise<number>;
-
-  deposit_for(
-    _addr: string,
-    _value: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  epoch(overrides?: CallOverrides): Promise<BigNumber>;
-
-  get_last_user_slope(
-    addr: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  increase_amount(
-    _value: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  increase_amount_and_time(
-    _value: BigNumberish,
-    _unlock_time: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  increase_unlock_time(
-    _unlock_time: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  locked(
-    arg0: string,
-    overrides?: CallOverrides
-  ): Promise<[BigNumber, BigNumber] & { amount: BigNumber; end: BigNumber }>;
-
-  locked__end(_addr: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-  name(overrides?: CallOverrides): Promise<string>;
-
-  owner(overrides?: CallOverrides): Promise<string>;
-
-  point_history(
-    arg0: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<
-    [BigNumber, BigNumber, BigNumber, BigNumber] & {
-      bias: BigNumber;
-      slope: BigNumber;
-      ts: BigNumber;
-      blk: BigNumber;
-    }
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+  queryFilter<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+
+  on<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  on<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+
+  once<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  once<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+
+  listeners<TCEvent extends TypedContractEvent>(
+    event: TCEvent
+  ): Promise<Array<TypedListener<TCEvent>>>;
+  listeners(eventName?: string): Promise<Array<Listener>>;
+  removeAllListeners<TCEvent extends TypedContractEvent>(
+    event?: TCEvent
+  ): Promise<this>;
+
+  MAXTIME: TypedContractMethod<[], [bigint], "view">;
+
+  MINTIME: TypedContractMethod<[], [bigint], "view">;
+
+  add_to_whitelist: TypedContractMethod<
+    [addr: AddressLike],
+    [void],
+    "nonpayable"
   >;
 
-  remove_from_whitelist(
-    addr: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
+  balanceOf: TypedContractMethod<[addr: AddressLike], [bigint], "view">;
 
-  renounceOwnership(
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  slope_changes(
-    arg0: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  supply(overrides?: CallOverrides): Promise<BigNumber>;
-
-  symbol(overrides?: CallOverrides): Promise<string>;
-
-  token(overrides?: CallOverrides): Promise<string>;
-
-  totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
-
-  totalSupplyAt(
-    _block: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  totalSupplyAtT(
-    t: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  transferOwnership(
-    newOwner: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  transfersEnabled(overrides?: CallOverrides): Promise<boolean>;
-
-  unlock(
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  unlocked(overrides?: CallOverrides): Promise<boolean>;
-
-  user_point_epoch(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-  user_point_history(
-    arg0: string,
-    arg1: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<
-    [BigNumber, BigNumber, BigNumber, BigNumber] & {
-      bias: BigNumber;
-      slope: BigNumber;
-      ts: BigNumber;
-      blk: BigNumber;
-    }
+  balanceOfAt: TypedContractMethod<
+    [addr: AddressLike, _block: BigNumberish],
+    [bigint],
+    "view"
   >;
 
-  user_point_history__ts(
-    _addr: string,
-    _idx: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  balanceOfAtT: TypedContractMethod<
+    [addr: AddressLike, _t: BigNumberish],
+    [bigint],
+    "view"
+  >;
 
-  version(overrides?: CallOverrides): Promise<string>;
+  changeController: TypedContractMethod<
+    [_newController: AddressLike],
+    [void],
+    "nonpayable"
+  >;
 
-  withdraw(
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
+  checkpoint: TypedContractMethod<[], [void], "nonpayable">;
 
-  withdraw_and_create_lock(
-    _value: BigNumberish,
-    _unlock_time: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
+  contracts_whitelist: TypedContractMethod<
+    [arg0: AddressLike],
+    [boolean],
+    "view"
+  >;
 
-  callStatic: {
-    MAXTIME(overrides?: CallOverrides): Promise<BigNumber>;
+  controller: TypedContractMethod<[], [string], "view">;
 
-    MINTIME(overrides?: CallOverrides): Promise<BigNumber>;
+  create_lock: TypedContractMethod<
+    [_value: BigNumberish, _unlock_time: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
 
-    add_to_whitelist(addr: string, overrides?: CallOverrides): Promise<void>;
+  decimals: TypedContractMethod<[], [bigint], "view">;
 
-    balanceOf(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+  deposit_for: TypedContractMethod<
+    [_addr: AddressLike, _value: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
 
-    balanceOfAt(
-      addr: string,
-      _block: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+  epoch: TypedContractMethod<[], [bigint], "view">;
 
-    balanceOfAtT(
-      addr: string,
-      _t: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+  get_last_user_slope: TypedContractMethod<
+    [addr: AddressLike],
+    [bigint],
+    "view"
+  >;
 
-    changeController(
-      _newController: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+  increase_amount: TypedContractMethod<
+    [_value: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
 
-    checkpoint(overrides?: CallOverrides): Promise<void>;
+  increase_amount_and_time: TypedContractMethod<
+    [_value: BigNumberish, _unlock_time: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
 
-    contracts_whitelist(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+  increase_unlock_time: TypedContractMethod<
+    [_unlock_time: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
 
-    controller(overrides?: CallOverrides): Promise<string>;
+  locked: TypedContractMethod<
+    [arg0: AddressLike],
+    [[bigint, bigint] & { amount: bigint; end: bigint }],
+    "view"
+  >;
 
-    create_lock(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+  locked__end: TypedContractMethod<[_addr: AddressLike], [bigint], "view">;
 
-    decimals(overrides?: CallOverrides): Promise<number>;
+  name: TypedContractMethod<[], [string], "view">;
 
-    deposit_for(
-      _addr: string,
-      _value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+  owner: TypedContractMethod<[], [string], "view">;
 
-    epoch(overrides?: CallOverrides): Promise<BigNumber>;
-
-    get_last_user_slope(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    increase_amount(
-      _value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    increase_amount_and_time(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    increase_unlock_time(
-      _unlock_time: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    locked(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber, BigNumber] & { amount: BigNumber; end: BigNumber }>;
-
-    locked__end(_addr: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    name(overrides?: CallOverrides): Promise<string>;
-
-    owner(overrides?: CallOverrides): Promise<string>;
-
-    point_history(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        bias: BigNumber;
-        slope: BigNumber;
-        ts: BigNumber;
-        blk: BigNumber;
+  point_history: TypedContractMethod<
+    [arg0: BigNumberish],
+    [
+      [bigint, bigint, bigint, bigint] & {
+        bias: bigint;
+        slope: bigint;
+        ts: bigint;
+        blk: bigint;
       }
-    >;
+    ],
+    "view"
+  >;
 
-    remove_from_whitelist(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+  remove_from_whitelist: TypedContractMethod<
+    [addr: AddressLike],
+    [void],
+    "nonpayable"
+  >;
 
-    renounceOwnership(overrides?: CallOverrides): Promise<void>;
+  renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
 
-    slope_changes(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+  slope_changes: TypedContractMethod<[arg0: BigNumberish], [bigint], "view">;
 
-    supply(overrides?: CallOverrides): Promise<BigNumber>;
+  supply: TypedContractMethod<[], [bigint], "view">;
 
-    symbol(overrides?: CallOverrides): Promise<string>;
+  symbol: TypedContractMethod<[], [string], "view">;
 
-    token(overrides?: CallOverrides): Promise<string>;
+  token: TypedContractMethod<[], [string], "view">;
 
-    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+  totalSupply: TypedContractMethod<[], [bigint], "view">;
 
-    totalSupplyAt(
-      _block: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+  totalSupplyAt: TypedContractMethod<[_block: BigNumberish], [bigint], "view">;
 
-    totalSupplyAtT(
-      t: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+  totalSupplyAtT: TypedContractMethod<[t: BigNumberish], [bigint], "view">;
 
-    transferOwnership(
-      newOwner: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+  transferOwnership: TypedContractMethod<
+    [newOwner: AddressLike],
+    [void],
+    "nonpayable"
+  >;
 
-    transfersEnabled(overrides?: CallOverrides): Promise<boolean>;
+  transfersEnabled: TypedContractMethod<[], [boolean], "view">;
 
-    unlock(overrides?: CallOverrides): Promise<void>;
+  unlock: TypedContractMethod<[], [void], "nonpayable">;
 
-    unlocked(overrides?: CallOverrides): Promise<boolean>;
+  unlocked: TypedContractMethod<[], [boolean], "view">;
 
-    user_point_epoch(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+  user_point_epoch: TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
 
-    user_point_history(
-      arg0: string,
-      arg1: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        bias: BigNumber;
-        slope: BigNumber;
-        ts: BigNumber;
-        blk: BigNumber;
+  user_point_history: TypedContractMethod<
+    [arg0: AddressLike, arg1: BigNumberish],
+    [
+      [bigint, bigint, bigint, bigint] & {
+        bias: bigint;
+        slope: bigint;
+        ts: bigint;
+        blk: bigint;
       }
-    >;
+    ],
+    "view"
+  >;
 
-    user_point_history__ts(
-      _addr: string,
-      _idx: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+  user_point_history__ts: TypedContractMethod<
+    [_addr: AddressLike, _idx: BigNumberish],
+    [bigint],
+    "view"
+  >;
 
-    version(overrides?: CallOverrides): Promise<string>;
+  version: TypedContractMethod<[], [string], "view">;
 
-    withdraw(overrides?: CallOverrides): Promise<void>;
+  withdraw: TypedContractMethod<[], [void], "nonpayable">;
 
-    withdraw_and_create_lock(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-  };
+  withdraw_and_create_lock: TypedContractMethod<
+    [_value: BigNumberish, _unlock_time: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
+
+  getFunction<T extends ContractMethod = ContractMethod>(
+    key: string | FunctionFragment
+  ): T;
+
+  getFunction(
+    nameOrSignature: "MAXTIME"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "MINTIME"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "add_to_whitelist"
+  ): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "balanceOf"
+  ): TypedContractMethod<[addr: AddressLike], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "balanceOfAt"
+  ): TypedContractMethod<
+    [addr: AddressLike, _block: BigNumberish],
+    [bigint],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "balanceOfAtT"
+  ): TypedContractMethod<
+    [addr: AddressLike, _t: BigNumberish],
+    [bigint],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "changeController"
+  ): TypedContractMethod<[_newController: AddressLike], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "checkpoint"
+  ): TypedContractMethod<[], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "contracts_whitelist"
+  ): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "controller"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "create_lock"
+  ): TypedContractMethod<
+    [_value: BigNumberish, _unlock_time: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "decimals"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "deposit_for"
+  ): TypedContractMethod<
+    [_addr: AddressLike, _value: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "epoch"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "get_last_user_slope"
+  ): TypedContractMethod<[addr: AddressLike], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "increase_amount"
+  ): TypedContractMethod<[_value: BigNumberish], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "increase_amount_and_time"
+  ): TypedContractMethod<
+    [_value: BigNumberish, _unlock_time: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "increase_unlock_time"
+  ): TypedContractMethod<[_unlock_time: BigNumberish], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "locked"
+  ): TypedContractMethod<
+    [arg0: AddressLike],
+    [[bigint, bigint] & { amount: bigint; end: bigint }],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "locked__end"
+  ): TypedContractMethod<[_addr: AddressLike], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "name"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "owner"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "point_history"
+  ): TypedContractMethod<
+    [arg0: BigNumberish],
+    [
+      [bigint, bigint, bigint, bigint] & {
+        bias: bigint;
+        slope: bigint;
+        ts: bigint;
+        blk: bigint;
+      }
+    ],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "remove_from_whitelist"
+  ): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "renounceOwnership"
+  ): TypedContractMethod<[], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "slope_changes"
+  ): TypedContractMethod<[arg0: BigNumberish], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "supply"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "symbol"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "token"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "totalSupply"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "totalSupplyAt"
+  ): TypedContractMethod<[_block: BigNumberish], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "totalSupplyAtT"
+  ): TypedContractMethod<[t: BigNumberish], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "transferOwnership"
+  ): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "transfersEnabled"
+  ): TypedContractMethod<[], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "unlock"
+  ): TypedContractMethod<[], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "unlocked"
+  ): TypedContractMethod<[], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "user_point_epoch"
+  ): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "user_point_history"
+  ): TypedContractMethod<
+    [arg0: AddressLike, arg1: BigNumberish],
+    [
+      [bigint, bigint, bigint, bigint] & {
+        bias: bigint;
+        slope: bigint;
+        ts: bigint;
+        blk: bigint;
+      }
+    ],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "user_point_history__ts"
+  ): TypedContractMethod<
+    [_addr: AddressLike, _idx: BigNumberish],
+    [bigint],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "version"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "withdraw"
+  ): TypedContractMethod<[], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "withdraw_and_create_lock"
+  ): TypedContractMethod<
+    [_value: BigNumberish, _unlock_time: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
+
+  getEvent(
+    key: "Deposit"
+  ): TypedContractEvent<
+    DepositEvent.InputTuple,
+    DepositEvent.OutputTuple,
+    DepositEvent.OutputObject
+  >;
+  getEvent(
+    key: "OwnershipTransferred"
+  ): TypedContractEvent<
+    OwnershipTransferredEvent.InputTuple,
+    OwnershipTransferredEvent.OutputTuple,
+    OwnershipTransferredEvent.OutputObject
+  >;
+  getEvent(
+    key: "Supply"
+  ): TypedContractEvent<
+    SupplyEvent.InputTuple,
+    SupplyEvent.OutputTuple,
+    SupplyEvent.OutputObject
+  >;
+  getEvent(
+    key: "Withdraw"
+  ): TypedContractEvent<
+    WithdrawEvent.InputTuple,
+    WithdrawEvent.OutputTuple,
+    WithdrawEvent.OutputObject
+  >;
 
   filters: {
-    "Deposit(address,uint256,uint256,uint8,uint256)"(
-      provider?: string | null,
-      value?: null,
-      locktime?: BigNumberish | null,
-      deposit_type?: null,
-      ts?: null
-    ): DepositEventFilter;
-    Deposit(
-      provider?: string | null,
-      value?: null,
-      locktime?: BigNumberish | null,
-      deposit_type?: null,
-      ts?: null
-    ): DepositEventFilter;
-
-    "OwnershipTransferred(address,address)"(
-      previousOwner?: string | null,
-      newOwner?: string | null
-    ): OwnershipTransferredEventFilter;
-    OwnershipTransferred(
-      previousOwner?: string | null,
-      newOwner?: string | null
-    ): OwnershipTransferredEventFilter;
-
-    "Supply(uint256,uint256)"(
-      prevSupply?: null,
-      supply?: null
-    ): SupplyEventFilter;
-    Supply(prevSupply?: null, supply?: null): SupplyEventFilter;
-
-    "Withdraw(address,uint256,uint256)"(
-      provider?: string | null,
-      value?: null,
-      ts?: null
-    ): WithdrawEventFilter;
-    Withdraw(
-      provider?: string | null,
-      value?: null,
-      ts?: null
-    ): WithdrawEventFilter;
-  };
-
-  estimateGas: {
-    MAXTIME(overrides?: CallOverrides): Promise<BigNumber>;
-
-    MINTIME(overrides?: CallOverrides): Promise<BigNumber>;
-
-    add_to_whitelist(
-      addr: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    balanceOf(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    balanceOfAt(
-      addr: string,
-      _block: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    balanceOfAtT(
-      addr: string,
-      _t: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    changeController(
-      _newController: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    checkpoint(overrides?: Overrides & { from?: string }): Promise<BigNumber>;
-
-    contracts_whitelist(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    controller(overrides?: CallOverrides): Promise<BigNumber>;
-
-    create_lock(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    decimals(overrides?: CallOverrides): Promise<BigNumber>;
-
-    deposit_for(
-      _addr: string,
-      _value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    epoch(overrides?: CallOverrides): Promise<BigNumber>;
-
-    get_last_user_slope(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    increase_amount(
-      _value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    increase_amount_and_time(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    increase_unlock_time(
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    locked(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    locked__end(_addr: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    name(overrides?: CallOverrides): Promise<BigNumber>;
-
-    owner(overrides?: CallOverrides): Promise<BigNumber>;
-
-    point_history(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    remove_from_whitelist(
-      addr: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    renounceOwnership(
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    slope_changes(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    supply(overrides?: CallOverrides): Promise<BigNumber>;
-
-    symbol(overrides?: CallOverrides): Promise<BigNumber>;
-
-    token(overrides?: CallOverrides): Promise<BigNumber>;
-
-    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
-
-    totalSupplyAt(
-      _block: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    totalSupplyAtT(
-      t: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    transferOwnership(
-      newOwner: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    transfersEnabled(overrides?: CallOverrides): Promise<BigNumber>;
-
-    unlock(overrides?: Overrides & { from?: string }): Promise<BigNumber>;
-
-    unlocked(overrides?: CallOverrides): Promise<BigNumber>;
-
-    user_point_epoch(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    user_point_history(
-      arg0: string,
-      arg1: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    user_point_history__ts(
-      _addr: string,
-      _idx: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    version(overrides?: CallOverrides): Promise<BigNumber>;
-
-    withdraw(overrides?: Overrides & { from?: string }): Promise<BigNumber>;
-
-    withdraw_and_create_lock(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-  };
-
-  populateTransaction: {
-    MAXTIME(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    MINTIME(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    add_to_whitelist(
-      addr: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    balanceOf(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    balanceOfAt(
-      addr: string,
-      _block: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    balanceOfAtT(
-      addr: string,
-      _t: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    changeController(
-      _newController: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    checkpoint(
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    contracts_whitelist(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    controller(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    create_lock(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    decimals(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    deposit_for(
-      _addr: string,
-      _value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    epoch(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    get_last_user_slope(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    increase_amount(
-      _value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    increase_amount_and_time(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    increase_unlock_time(
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    locked(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    locked__end(
-      _addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    point_history(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    remove_from_whitelist(
-      addr: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    renounceOwnership(
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    slope_changes(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    supply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    token(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    totalSupplyAt(
-      _block: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    totalSupplyAtT(
-      t: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    transferOwnership(
-      newOwner: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    transfersEnabled(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    unlock(
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    unlocked(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    user_point_epoch(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    user_point_history(
-      arg0: string,
-      arg1: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    user_point_history__ts(
-      _addr: string,
-      _idx: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    version(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    withdraw(
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    withdraw_and_create_lock(
-      _value: BigNumberish,
-      _unlock_time: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
+    "Deposit(address,uint256,uint256,uint8,uint256)": TypedContractEvent<
+      DepositEvent.InputTuple,
+      DepositEvent.OutputTuple,
+      DepositEvent.OutputObject
+    >;
+    Deposit: TypedContractEvent<
+      DepositEvent.InputTuple,
+      DepositEvent.OutputTuple,
+      DepositEvent.OutputObject
+    >;
+
+    "OwnershipTransferred(address,address)": TypedContractEvent<
+      OwnershipTransferredEvent.InputTuple,
+      OwnershipTransferredEvent.OutputTuple,
+      OwnershipTransferredEvent.OutputObject
+    >;
+    OwnershipTransferred: TypedContractEvent<
+      OwnershipTransferredEvent.InputTuple,
+      OwnershipTransferredEvent.OutputTuple,
+      OwnershipTransferredEvent.OutputObject
+    >;
+
+    "Supply(uint256,uint256)": TypedContractEvent<
+      SupplyEvent.InputTuple,
+      SupplyEvent.OutputTuple,
+      SupplyEvent.OutputObject
+    >;
+    Supply: TypedContractEvent<
+      SupplyEvent.InputTuple,
+      SupplyEvent.OutputTuple,
+      SupplyEvent.OutputObject
+    >;
+
+    "Withdraw(address,uint256,uint256)": TypedContractEvent<
+      WithdrawEvent.InputTuple,
+      WithdrawEvent.OutputTuple,
+      WithdrawEvent.OutputObject
+    >;
+    Withdraw: TypedContractEvent<
+      WithdrawEvent.InputTuple,
+      WithdrawEvent.OutputTuple,
+      WithdrawEvent.OutputObject
+    >;
   };
 }

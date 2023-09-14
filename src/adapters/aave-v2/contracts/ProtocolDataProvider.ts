@@ -3,44 +3,35 @@
 /* eslint-disable */
 import type {
   BaseContract,
-  BigNumber,
   BytesLike,
-  CallOverrides,
-  PopulatedTransaction,
-  Signer,
-  utils,
+  FunctionFragment,
+  Result,
+  Interface,
+  AddressLike,
+  ContractRunner,
+  ContractMethod,
+  Listener,
 } from "ethers";
-import type { FunctionFragment, Result } from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
 import type {
-  TypedEventFilter,
-  TypedEvent,
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+  TypedEventLog,
   TypedListener,
-  OnEvent,
+  TypedContractMethod,
 } from "./common";
 
 export declare namespace AaveProtocolDataProvider {
-  export type TokenDataStruct = { symbol: string; tokenAddress: string };
+  export type TokenDataStruct = { symbol: string; tokenAddress: AddressLike };
 
-  export type TokenDataStructOutput = [string, string] & {
+  export type TokenDataStructOutput = [symbol: string, tokenAddress: string] & {
     symbol: string;
     tokenAddress: string;
   };
 }
 
-export interface ProtocolDataProviderInterface extends utils.Interface {
-  functions: {
-    "ADDRESSES_PROVIDER()": FunctionFragment;
-    "getAllATokens()": FunctionFragment;
-    "getAllReservesTokens()": FunctionFragment;
-    "getReserveConfigurationData(address)": FunctionFragment;
-    "getReserveData(address)": FunctionFragment;
-    "getReserveTokensAddresses(address)": FunctionFragment;
-    "getUserReserveData(address,address)": FunctionFragment;
-  };
-
+export interface ProtocolDataProviderInterface extends Interface {
   getFunction(
-    nameOrSignatureOrTopic:
+    nameOrSignature:
       | "ADDRESSES_PROVIDER"
       | "getAllATokens"
       | "getAllReservesTokens"
@@ -64,19 +55,19 @@ export interface ProtocolDataProviderInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "getReserveConfigurationData",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "getReserveData",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "getReserveTokensAddresses",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "getUserReserveData",
-    values: [string, string]
+    values: [AddressLike, AddressLike]
   ): string;
 
   decodeFunctionResult(
@@ -107,422 +98,290 @@ export interface ProtocolDataProviderInterface extends utils.Interface {
     functionFragment: "getUserReserveData",
     data: BytesLike
   ): Result;
-
-  events: {};
 }
 
 export interface ProtocolDataProvider extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(runner?: ContractRunner | null): ProtocolDataProvider;
+  waitForDeployment(): Promise<this>;
 
   interface: ProtocolDataProviderInterface;
 
-  queryFilter<TEvent extends TypedEvent>(
-    event: TypedEventFilter<TEvent>,
+  queryFilter<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TEvent>>;
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+  queryFilter<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
 
-  listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
-  listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
-  removeAllListeners(eventName?: string): this;
-  off: OnEvent<this>;
-  on: OnEvent<this>;
-  once: OnEvent<this>;
-  removeListener: OnEvent<this>;
+  on<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  on<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
 
-  functions: {
-    ADDRESSES_PROVIDER(overrides?: CallOverrides): Promise<[string]>;
+  once<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  once<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
 
-    getAllATokens(
-      overrides?: CallOverrides
-    ): Promise<[AaveProtocolDataProvider.TokenDataStructOutput[]]>;
+  listeners<TCEvent extends TypedContractEvent>(
+    event: TCEvent
+  ): Promise<Array<TypedListener<TCEvent>>>;
+  listeners(eventName?: string): Promise<Array<Listener>>;
+  removeAllListeners<TCEvent extends TypedContractEvent>(
+    event?: TCEvent
+  ): Promise<this>;
 
-    getAllReservesTokens(
-      overrides?: CallOverrides
-    ): Promise<[AaveProtocolDataProvider.TokenDataStructOutput[]]>;
+  ADDRESSES_PROVIDER: TypedContractMethod<[], [string], "view">;
 
-    getReserveConfigurationData(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<
+  getAllATokens: TypedContractMethod<
+    [],
+    [AaveProtocolDataProvider.TokenDataStructOutput[]],
+    "view"
+  >;
+
+  getAllReservesTokens: TypedContractMethod<
+    [],
+    [AaveProtocolDataProvider.TokenDataStructOutput[]],
+    "view"
+  >;
+
+  getReserveConfigurationData: TypedContractMethod<
+    [asset: AddressLike],
+    [
       [
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
         boolean,
         boolean,
         boolean,
         boolean,
         boolean
       ] & {
-        decimals: BigNumber;
-        ltv: BigNumber;
-        liquidationThreshold: BigNumber;
-        liquidationBonus: BigNumber;
-        reserveFactor: BigNumber;
+        decimals: bigint;
+        ltv: bigint;
+        liquidationThreshold: bigint;
+        liquidationBonus: bigint;
+        reserveFactor: bigint;
         usageAsCollateralEnabled: boolean;
         borrowingEnabled: boolean;
         stableBorrowRateEnabled: boolean;
         isActive: boolean;
         isFrozen: boolean;
       }
-    >;
+    ],
+    "view"
+  >;
 
-    getReserveData(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<
+  getReserveData: TypedContractMethod<
+    [asset: AddressLike],
+    [
       [
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        number
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint
       ] & {
-        availableLiquidity: BigNumber;
-        totalStableDebt: BigNumber;
-        totalVariableDebt: BigNumber;
-        liquidityRate: BigNumber;
-        variableBorrowRate: BigNumber;
-        stableBorrowRate: BigNumber;
-        averageStableBorrowRate: BigNumber;
-        liquidityIndex: BigNumber;
-        variableBorrowIndex: BigNumber;
-        lastUpdateTimestamp: number;
+        availableLiquidity: bigint;
+        totalStableDebt: bigint;
+        totalVariableDebt: bigint;
+        liquidityRate: bigint;
+        variableBorrowRate: bigint;
+        stableBorrowRate: bigint;
+        averageStableBorrowRate: bigint;
+        liquidityIndex: bigint;
+        variableBorrowIndex: bigint;
+        lastUpdateTimestamp: bigint;
       }
-    >;
+    ],
+    "view"
+  >;
 
-    getReserveTokensAddresses(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<
+  getReserveTokensAddresses: TypedContractMethod<
+    [asset: AddressLike],
+    [
       [string, string, string] & {
         aTokenAddress: string;
         stableDebtTokenAddress: string;
         variableDebtTokenAddress: string;
       }
-    >;
+    ],
+    "view"
+  >;
 
-    getUserReserveData(
-      asset: string,
-      user: string,
-      overrides?: CallOverrides
-    ): Promise<
+  getUserReserveData: TypedContractMethod<
+    [asset: AddressLike, user: AddressLike],
+    [
       [
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        number,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
         boolean
       ] & {
-        currentATokenBalance: BigNumber;
-        currentStableDebt: BigNumber;
-        currentVariableDebt: BigNumber;
-        principalStableDebt: BigNumber;
-        scaledVariableDebt: BigNumber;
-        stableBorrowRate: BigNumber;
-        liquidityRate: BigNumber;
-        stableRateLastUpdated: number;
+        currentATokenBalance: bigint;
+        currentStableDebt: bigint;
+        currentVariableDebt: bigint;
+        principalStableDebt: bigint;
+        scaledVariableDebt: bigint;
+        stableBorrowRate: bigint;
+        liquidityRate: bigint;
+        stableRateLastUpdated: bigint;
         usageAsCollateralEnabled: boolean;
       }
-    >;
-  };
+    ],
+    "view"
+  >;
 
-  ADDRESSES_PROVIDER(overrides?: CallOverrides): Promise<string>;
+  getFunction<T extends ContractMethod = ContractMethod>(
+    key: string | FunctionFragment
+  ): T;
 
-  getAllATokens(
-    overrides?: CallOverrides
-  ): Promise<AaveProtocolDataProvider.TokenDataStructOutput[]>;
-
-  getAllReservesTokens(
-    overrides?: CallOverrides
-  ): Promise<AaveProtocolDataProvider.TokenDataStructOutput[]>;
-
-  getReserveConfigurationData(
-    asset: string,
-    overrides?: CallOverrides
-  ): Promise<
+  getFunction(
+    nameOrSignature: "ADDRESSES_PROVIDER"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "getAllATokens"
+  ): TypedContractMethod<
+    [],
+    [AaveProtocolDataProvider.TokenDataStructOutput[]],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "getAllReservesTokens"
+  ): TypedContractMethod<
+    [],
+    [AaveProtocolDataProvider.TokenDataStructOutput[]],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "getReserveConfigurationData"
+  ): TypedContractMethod<
+    [asset: AddressLike],
     [
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      boolean,
-      boolean,
-      boolean,
-      boolean,
-      boolean
-    ] & {
-      decimals: BigNumber;
-      ltv: BigNumber;
-      liquidationThreshold: BigNumber;
-      liquidationBonus: BigNumber;
-      reserveFactor: BigNumber;
-      usageAsCollateralEnabled: boolean;
-      borrowingEnabled: boolean;
-      stableBorrowRateEnabled: boolean;
-      isActive: boolean;
-      isFrozen: boolean;
-    }
-  >;
-
-  getReserveData(
-    asset: string,
-    overrides?: CallOverrides
-  ): Promise<
-    [
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      number
-    ] & {
-      availableLiquidity: BigNumber;
-      totalStableDebt: BigNumber;
-      totalVariableDebt: BigNumber;
-      liquidityRate: BigNumber;
-      variableBorrowRate: BigNumber;
-      stableBorrowRate: BigNumber;
-      averageStableBorrowRate: BigNumber;
-      liquidityIndex: BigNumber;
-      variableBorrowIndex: BigNumber;
-      lastUpdateTimestamp: number;
-    }
-  >;
-
-  getReserveTokensAddresses(
-    asset: string,
-    overrides?: CallOverrides
-  ): Promise<
-    [string, string, string] & {
-      aTokenAddress: string;
-      stableDebtTokenAddress: string;
-      variableDebtTokenAddress: string;
-    }
-  >;
-
-  getUserReserveData(
-    asset: string,
-    user: string,
-    overrides?: CallOverrides
-  ): Promise<
-    [
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      number,
-      boolean
-    ] & {
-      currentATokenBalance: BigNumber;
-      currentStableDebt: BigNumber;
-      currentVariableDebt: BigNumber;
-      principalStableDebt: BigNumber;
-      scaledVariableDebt: BigNumber;
-      stableBorrowRate: BigNumber;
-      liquidityRate: BigNumber;
-      stableRateLastUpdated: number;
-      usageAsCollateralEnabled: boolean;
-    }
-  >;
-
-  callStatic: {
-    ADDRESSES_PROVIDER(overrides?: CallOverrides): Promise<string>;
-
-    getAllATokens(
-      overrides?: CallOverrides
-    ): Promise<AaveProtocolDataProvider.TokenDataStructOutput[]>;
-
-    getAllReservesTokens(
-      overrides?: CallOverrides
-    ): Promise<AaveProtocolDataProvider.TokenDataStructOutput[]>;
-
-    getReserveConfigurationData(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<
       [
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
         boolean,
         boolean,
         boolean,
         boolean,
         boolean
       ] & {
-        decimals: BigNumber;
-        ltv: BigNumber;
-        liquidationThreshold: BigNumber;
-        liquidationBonus: BigNumber;
-        reserveFactor: BigNumber;
+        decimals: bigint;
+        ltv: bigint;
+        liquidationThreshold: bigint;
+        liquidationBonus: bigint;
+        reserveFactor: bigint;
         usageAsCollateralEnabled: boolean;
         borrowingEnabled: boolean;
         stableBorrowRateEnabled: boolean;
         isActive: boolean;
         isFrozen: boolean;
       }
-    >;
-
-    getReserveData(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<
+    ],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "getReserveData"
+  ): TypedContractMethod<
+    [asset: AddressLike],
+    [
       [
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        number
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint
       ] & {
-        availableLiquidity: BigNumber;
-        totalStableDebt: BigNumber;
-        totalVariableDebt: BigNumber;
-        liquidityRate: BigNumber;
-        variableBorrowRate: BigNumber;
-        stableBorrowRate: BigNumber;
-        averageStableBorrowRate: BigNumber;
-        liquidityIndex: BigNumber;
-        variableBorrowIndex: BigNumber;
-        lastUpdateTimestamp: number;
+        availableLiquidity: bigint;
+        totalStableDebt: bigint;
+        totalVariableDebt: bigint;
+        liquidityRate: bigint;
+        variableBorrowRate: bigint;
+        stableBorrowRate: bigint;
+        averageStableBorrowRate: bigint;
+        liquidityIndex: bigint;
+        variableBorrowIndex: bigint;
+        lastUpdateTimestamp: bigint;
       }
-    >;
-
-    getReserveTokensAddresses(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<
+    ],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "getReserveTokensAddresses"
+  ): TypedContractMethod<
+    [asset: AddressLike],
+    [
       [string, string, string] & {
         aTokenAddress: string;
         stableDebtTokenAddress: string;
         variableDebtTokenAddress: string;
       }
-    >;
-
-    getUserReserveData(
-      asset: string,
-      user: string,
-      overrides?: CallOverrides
-    ): Promise<
+    ],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "getUserReserveData"
+  ): TypedContractMethod<
+    [asset: AddressLike, user: AddressLike],
+    [
       [
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        number,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
+        bigint,
         boolean
       ] & {
-        currentATokenBalance: BigNumber;
-        currentStableDebt: BigNumber;
-        currentVariableDebt: BigNumber;
-        principalStableDebt: BigNumber;
-        scaledVariableDebt: BigNumber;
-        stableBorrowRate: BigNumber;
-        liquidityRate: BigNumber;
-        stableRateLastUpdated: number;
+        currentATokenBalance: bigint;
+        currentStableDebt: bigint;
+        currentVariableDebt: bigint;
+        principalStableDebt: bigint;
+        scaledVariableDebt: bigint;
+        stableBorrowRate: bigint;
+        liquidityRate: bigint;
+        stableRateLastUpdated: bigint;
         usageAsCollateralEnabled: boolean;
       }
-    >;
-  };
+    ],
+    "view"
+  >;
 
   filters: {};
-
-  estimateGas: {
-    ADDRESSES_PROVIDER(overrides?: CallOverrides): Promise<BigNumber>;
-
-    getAllATokens(overrides?: CallOverrides): Promise<BigNumber>;
-
-    getAllReservesTokens(overrides?: CallOverrides): Promise<BigNumber>;
-
-    getReserveConfigurationData(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    getReserveData(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    getReserveTokensAddresses(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    getUserReserveData(
-      asset: string,
-      user: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-  };
-
-  populateTransaction: {
-    ADDRESSES_PROVIDER(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    getAllATokens(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    getAllReservesTokens(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    getReserveConfigurationData(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    getReserveData(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    getReserveTokensAddresses(
-      asset: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    getUserReserveData(
-      asset: string,
-      user: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-  };
 }

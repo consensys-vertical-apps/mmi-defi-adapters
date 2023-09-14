@@ -1,7 +1,6 @@
-import { ethers } from 'ethers'
-import { formatUnits } from 'ethers/lib/utils'
+import type { ethers } from 'ethers'
+import { formatUnits } from 'ethers'
 import { Protocol } from '../../..'
-// import { StargateVotingEscrow__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
 import { Adapter } from '../../../../core/decorators/adapter'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -43,7 +42,7 @@ export class StargateVestingAdapter
   protocolId: Protocol
   chainId: Chain
 
-  private provider: ethers.providers.StaticJsonRpcProvider
+  private provider: ethers.JsonRpcProvider
 
   constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider

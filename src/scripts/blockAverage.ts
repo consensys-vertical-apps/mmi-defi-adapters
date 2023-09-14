@@ -54,16 +54,20 @@ async function getAverageBlocksPerDay(chainId: Chain) {
     throw new Error('No provider for chain')
   }
 
+  // TODO FIX ts-ignore
+  //@ts-ignore
   const dater = new EthDater(provider)
 
   const currentBlock = await provider.getBlock('latest')
 
   // 30 days * 24 hours/day * 60 minutes/hour * 60 seconds/minute
+  //@ts-ignore
   const thirtyDaysTimestamp = currentBlock.timestamp - 30 * 24 * 60 * 60
 
   // Value needs to be given in milliseconds, thus the * 1000
   const thirtyDaysBlock = await dater.getDate(thirtyDaysTimestamp * 1000)
 
+  //@ts-ignore
   return Math.round((currentBlock.number - thirtyDaysBlock.block) / 30)
 }
 

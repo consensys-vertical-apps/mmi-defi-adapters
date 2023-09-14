@@ -1,8 +1,13 @@
-import { providers } from 'ethers'
+import {
+  BlockTag,
+  JsonRpcProvider,
+  Networkish,
+  TransactionRequest,
+} from 'ethers'
 import { logger } from './logger'
 import { MulticallQueue } from './multicall'
 
-export class CustomMulticallJsonRpcProvider extends providers.StaticJsonRpcProvider {
+export class CustomMulticallJsonRpcProvider extends JsonRpcProvider {
   private multicallQueue: MulticallQueue
   constructor({
     url,
@@ -10,7 +15,7 @@ export class CustomMulticallJsonRpcProvider extends providers.StaticJsonRpcProvi
     multicallQueue,
   }: {
     url: string
-    network: providers.Networkish
+    network: Networkish
     multicallQueue: MulticallQueue
   }) {
     super(url, network)
@@ -18,8 +23,8 @@ export class CustomMulticallJsonRpcProvider extends providers.StaticJsonRpcProvi
   }
 
   async call(
-    transaction: providers.TransactionRequest,
-    blockTag?: providers.BlockTag | Promise<providers.BlockTag>,
+    transaction: TransactionRequest,
+    blockTag?: BlockTag | Promise<BlockTag>,
   ): Promise<string> {
     if (blockTag) {
       logger.debug('Intercepted eth_call, using multicall queue implementation')

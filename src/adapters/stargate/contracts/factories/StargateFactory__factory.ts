@@ -2,8 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import type { Provider } from "@ethersproject/providers";
+import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   StargateFactory,
   StargateFactoryInterface,
@@ -212,12 +211,12 @@ const _abi = [
 export class StargateFactory__factory {
   static readonly abi = _abi;
   static createInterface(): StargateFactoryInterface {
-    return new utils.Interface(_abi) as StargateFactoryInterface;
+    return new Interface(_abi) as StargateFactoryInterface;
   }
   static connect(
     address: string,
-    signerOrProvider: Signer | Provider
+    runner?: ContractRunner | null
   ): StargateFactory {
-    return new Contract(address, _abi, signerOrProvider) as StargateFactory;
+    return new Contract(address, _abi, runner) as unknown as StargateFactory;
   }
 }
