@@ -57,6 +57,7 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
 
     - name: Bump version and create branch
+      id: bump-version
       run: |
         if [[ "${{ steps.pr-labels.outputs.result }}" != "" ]]; then
             # Bump version without creating a git tag or commit
@@ -66,12 +67,14 @@ jobs:
             git checkout -b $branch_name
             git commit -am "chore: version bump to ${NEW_VERSION}"
             git push origin HEAD:$branch_name
+            
+            echo "::set-output name=new_version::$NEW_VERSION"
         fi
 
     - name: Create PR for version bump
       uses: repo-sync/pull-request@v2
       with:
-        source_branch: "${{ steps.pr-labels.outputs.result }}-${NEW_VERSION}"
+        source_branch: "${{ steps.pr-labels.outputs.result }}-${{ steps.bump-version.outputs.new_version }}"
         destination_branch: main
         github_token: ${{ secrets.GITHUB_TOKEN }}
         pr_title: "Version Bump"
