@@ -1,7 +1,14 @@
-import BalanceCheckerABI from 'eth-balance-checker/abis/BalanceChecker.abi.json'
-import { formatAddressBalances } from 'eth-balance-checker/lib/common'
-import { BigNumber, Contract, ethers } from 'ethers'
+import { BigNumber, ethers } from 'ethers'
+import { BalanceChecker__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
+
+type AddressBalanceMap = {
+  [address: string]: BalanceMap
+}
+
+type BalanceMap = {
+  [tokenAddress: string]: string
+}
 
 // Addresses extracted from https://github.com/wbobeirne/eth-balance-checker
 const BALANCE_CHECKER_CONTRACT_ADDRESS: Record<Chain, string> = {
@@ -34,11 +41,27 @@ export async function getAddressesBalances({
     throw new Error('Multicall balance checker not supported for this chain')
   }
 
-  const contract = new Contract(contractAddress, BalanceCheckerABI, provider)
+  const contract = BalanceChecker__factory.connect(contractAddress, provider)
 
   const balances = await contract.balances(addresses, tokens, {
     blockTag: blockNumber,
   })
 
-  return formatAddressBalances<BigNumber>(balances, addresses, tokens)
+  return formatAddressBalances(balances, addresses, tokens)
+}
+
+function formatAddressBalances(
+  values: BigNumber[],
+  addresses: string[],
+  tokens: string[],
+): AddressBalanceMap {
+  const balances: AddressBalanceMap = {}
+  addresses.forEach((addr, addrIdx) => {
+    balances[addr] = {}
+    tokens.forEach((tokenAddr, tokenIdx) => {
+      const balance = values[addrIdx * tokens.length + tokenIdx]
+      balances[addr]![tokenAddr] = balance!.toString()
+    })
+  })
+  return balances
 }
