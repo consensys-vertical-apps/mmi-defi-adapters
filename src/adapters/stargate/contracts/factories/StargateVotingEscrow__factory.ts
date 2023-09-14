@@ -7,7 +7,7 @@ import type { Provider } from "@ethersproject/providers";
 import type {
   StargateVotingEscrow,
   StargateVotingEscrowInterface,
-} from "../../stargate/StargateVotingEscrow";
+} from "../StargateVotingEscrow";
 
 const _abi = [
   {

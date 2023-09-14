@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
 import { Protocol } from '../../..'
-import { StargateVotingEscrow__factory } from '../../../../contracts'
+// import { StargateVotingEscrow__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
 import { Adapter } from '../../../../core/decorators/adapter'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -28,6 +28,7 @@ import {
   ProtocolTotalValueLockedToken,
   TokenType,
 } from '../../../../types/adapter'
+import { StargateVotingEscrow__factory } from '../../contracts'
 
 type StargateVestingMetadata = {
   contractToken: Erc20Metadata

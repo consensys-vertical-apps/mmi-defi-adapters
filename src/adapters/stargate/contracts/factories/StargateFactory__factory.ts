@@ -7,7 +7,7 @@ import type { Provider } from "@ethersproject/providers";
 import type {
   StargateFactory,
   StargateFactoryInterface,
-} from "../../stargate/StargateFactory";
+} from "../StargateFactory";
 
 const _abi = [
   {
