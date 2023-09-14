@@ -7,9 +7,10 @@ name: Create Version Bump PR
 #       - main
 
 on:
-  push:
+  pull_request:
     branches:
-      - main
+    - main
+
 
 permissions:
   contents: write # for checkout and tag
