@@ -1,9 +1,11 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
+import chalk from 'chalk'
 import { Command } from 'commander'
 import { prompt, QuestionCollection } from 'inquirer'
 import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
+import { Protocol } from '../adapters'
 import { Chain } from '../core/constants/chains'
 import {
   isKebabCase,
@@ -15,7 +17,7 @@ import {
 import { filterMap } from '../core/utils/filters'
 import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
-import { chainFilter } from './commandFilters'
+import { chainFilter, protocolFilter } from './commandFilters'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import n = types.namedTypes
@@ -42,11 +44,10 @@ export function newAdapterCommand(program: Command) {
     .command('new-adapter')
     .option('-p, --protocol <protocol>', 'Protocol name for the adapter')
     .option('-pd, --product <product>', 'Product name')
-    .option('-t, --template <template>', 'Template to use', 'DefaulAdapter')
+    .option('-t, --template <template>', 'Template to use')
     .option(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
-      'Ethereum',
     )
     .showHelpAfterError()
     .action(
@@ -61,7 +62,7 @@ export function newAdapterCommand(program: Command) {
         template: string
         chains: string
       }) => {
-        const chainKeys = filterMap(chains?.split(','), (filterInput) => {
+        const chainKeys = filterMap(chains?.split(',') ?? [], (filterInput) => {
           try {
             const chainId = chainFilter(filterInput)
             return Object.keys(Chain).find((chainKey) => {
@@ -72,6 +73,20 @@ export function newAdapterCommand(program: Command) {
           }
         }) as (keyof typeof Chain)[]
 
+        const inputProtocolId = (() => {
+          try {
+            return protocolFilter(protocol)
+          } catch (e) {
+            return undefined
+          }
+        })()
+
+        const inputProtocolKey = inputProtocolId
+          ? Object.entries(Protocol).find(
+              ([_, value]) => value === inputProtocolId,
+            )![0]
+          : undefined
+
         const questions: QuestionCollection = [
           {
             type: 'input',
@@ -81,6 +96,7 @@ export function newAdapterCommand(program: Command) {
             default: protocol ? pascalCase(protocol) : undefined,
             validate: (input: string) =>
               isPascalCase(input) || 'Value must be PascalCase',
+            when: !inputProtocolId,
           },
           {
             type: 'input',
@@ -91,6 +107,7 @@ export function newAdapterCommand(program: Command) {
               kebabCase(protocol ? protocol : protocolKey),
             validate: (input: string) =>
               isKebabCase(input) || 'Value must be kebab-case',
+            when: !inputProtocolId,
           },
           {
             type: 'input',
@@ -100,37 +117,6 @@ export function newAdapterCommand(program: Command) {
             default: product ? kebabCase(product) : undefined,
             validate: (input: string) =>
               isKebabCase(input) || 'Value must be kebab-case',
-          },
-          {
-            type: 'input',
-            name: 'adapterClassName',
-            message:
-              'What PascalCase name should be used for the adapter class?',
-            default: ({
-              protocolKey,
-              productId,
-            }: {
-              protocolKey: string
-              productId: string
-            }) => `${protocolKey}${pascalCase(productId)}`,
-            validate: async (
-              input: string,
-              {
-                protocolId,
-                productId,
-              }: { protocolId: string; productId: string },
-            ) => {
-              if (!isPascalCase(input)) {
-                return 'Value must be PascalCase'
-              }
-
-              if (await adapterFileExists(protocolId, productId, input)) {
-                return 'An adapter with that name already exists'
-              }
-
-              return true
-            },
-            filter: (input: string) => `${input}Adapter`,
           },
           {
             type: 'list',
@@ -145,25 +131,76 @@ export function newAdapterCommand(program: Command) {
             name: 'chainKeys',
             message: 'What chains will the adapter be valid for?',
             choices: Object.keys(Chain),
-            default: chainKeys,
+            default: chainKeys.length ? chainKeys : ['Ethereum'],
+          },
+          {
+            type: 'input',
+            name: 'adapterClassName',
+            message:
+              'What PascalCase name should be used for the adapter class?',
+            default: ({
+              protocolKey,
+              productId,
+            }: {
+              protocolKey: string
+              productId: string
+            }) =>
+              `${inputProtocolKey ?? protocolKey}${pascalCase(
+                productId,
+              )}Adapter`,
+            validate: async (
+              input: string,
+              {
+                protocolId,
+                productId,
+              }: { protocolId: string; productId: string },
+            ) => {
+              if (!isPascalCase(input)) {
+                return 'Value must be PascalCase'
+              }
+
+              if (!input.endsWith('Adapter')) {
+                return 'The adapter class should end up with the word Adapter'
+              }
+
+              if (
+                await adapterFileExists(
+                  inputProtocolId ?? protocolId,
+                  productId,
+                  input,
+                )
+              ) {
+                return 'An adapter with that name already exists'
+              }
+
+              return true
+            },
           },
         ]
 
-        const answers = await prompt<NewAdapterAnswers>(questions)
+        const answers = {
+          ...{ protocolId: inputProtocolId, protocolKey: inputProtocolKey },
+          ...(await prompt<NewAdapterAnswers>(questions)),
+        }
 
-        logger.info(answers, 'Create new adapter')
+        logger.debug(answers, 'Create new adapter')
 
         await buildAdapterFromTemplate(answers)
         await exportAdapter(answers)
+
+        console.log(
+          chalk`\n{bold New adapter created at: {bgBlack.red src/adapters/${
+            answers.protocolId
+          }/products/${answers.productId}/${lowerFirst(
+            answers.adapterClassName,
+          )}.ts}}\n`,
+        )
       },
     )
 }
 
 /**
  * @description Creates a new adapter using the template
- *
- * @param protocol Name of the protocol
- * @param product Name of the product
  */
 async function buildAdapterFromTemplate({
   protocolKey,
@@ -183,10 +220,6 @@ async function buildAdapterFromTemplate({
 
 /**
  * @description Writes changes to include new adapter in src/adapters/index.ts file
- *
- * @param protocol Name of the protocol
- * @param product Name of the product
- * @param chainKeys List of chain names
  */
 async function exportAdapter({
   protocolKey,
@@ -219,7 +252,7 @@ async function exportAdapter({
       if (node.id.name === 'supportedProtocols') {
         addAdapterEntries(node, protocolKey, adapterClassName, chainKeys)
       } else if (node.id.name === 'Protocol') {
-        addProtocol(node, protocolKey, productId)
+        addProtocol(node, protocolKey, protocolId)
       }
 
       this.traverse(path)
@@ -233,8 +266,6 @@ async function exportAdapter({
  * @description Adds a new entry to the imports for the new adapter
  *
  * @param programNode AST node for the Protocol program
- * @param protocolKey Name of the protocol
- * @param productId Name of the product
  */
 function addImport(
   programNode: n.Program,
@@ -259,12 +290,11 @@ function addImport(
  * @description Adds a new entry to the Protocol constant if it does not exist.
  *
  * @param protocolListDeclaratorNode AST node for the Protocol declarator
- * @param productId Name of the protocol
  */
 function addProtocol(
   protocolListDeclaratorNode: n.VariableDeclarator,
   protocolKey: string,
-  productId: string,
+  protocolId: string,
 ) {
   const protocolListObjectNode = protocolListDeclaratorNode.init
   if (
@@ -288,7 +318,7 @@ function addProtocol(
 
   if (!protocolEntryObjectNode) {
     protocolListObjectNode.expression.properties.push(
-      buildProtocolEntry(protocolKey, productId),
+      buildProtocolEntry(protocolKey, protocolId),
     )
   }
 }
@@ -297,9 +327,6 @@ function addProtocol(
  * @description Adds chain entries for the adapter to the supportedProtocols constant
  *
  * @param supportedProtocolsDeclaratorNode AST node for the supportedProtocols declarator
- * @param protocoKey Name of the protocol
- * @param adapterClassName Name of the product
- * @param chainKeys List of chain names
  */
 function addAdapterEntries(
   supportedProtocolsDeclaratorNode: n.VariableDeclarator,
