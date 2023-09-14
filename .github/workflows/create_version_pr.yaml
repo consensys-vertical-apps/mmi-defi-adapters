@@ -51,6 +51,11 @@ jobs:
           const versionLabel = labels.find(label => validLabels.includes(label));
           return versionLabel;
 
+    - name: Configure Git User
+      run: |
+          git config --global user.email "${GITHUB_ACTOR}"
+          git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+
     - name: Bump version and create branch
       run: |
         if [[ "${{ steps.pr-labels.outputs.result }}" != "" ]]; then
