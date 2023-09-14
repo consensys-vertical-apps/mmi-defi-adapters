@@ -1,4 +1,4 @@
-name: Update and publish package
+name: Tag and publish package
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
         required: true
 
 jobs:
-  publish:
+  tag-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Validate input
