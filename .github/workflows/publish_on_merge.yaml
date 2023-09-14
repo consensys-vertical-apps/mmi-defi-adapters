@@ -1,4 +1,4 @@
-name: Publish on Version PR Merge
+name: Publish CI
 
 on:
   pull_request:
@@ -8,30 +8,29 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
   packages: write
 
 jobs:
-  build-and-publish:
-    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'version-change-')
+  publish:
+    if: startsWith(github.head_ref, 'version-change-')
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-          registry-url: 'https://registry.npmjs.org'
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        registry-url: 'https://registry.npmjs.org'
 
-      - name: Install dependencies
-        run: npm ci
+    - name: Install dependencies
+      run: npm ci
 
-      - name: Build
-        run: npm run build
+    - name: Build
+      run: npm run build
 
-      - name: Publish
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Publish
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

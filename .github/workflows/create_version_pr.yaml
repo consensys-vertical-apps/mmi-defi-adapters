@@ -11,60 +11,56 @@ permissions:
   pull-requests: write
 
 jobs:
-  version-and-create-pr:
+  create-version-pr:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-          registry-url: 'https://registry.npmjs.org'
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
 
-      - name: Install dependencies
-        run: npm ci
+    - name: Install dependencies
+      run: npm ci
 
-      - name: Get PR labels
-        id: pr-labels
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const { data: pullRequest } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number
-            });
+    - name: Get PR labels
+      id: pr-labels
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const { data: pullRequest } = await github.rest.pulls.get({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number
+          });
+          const labels = pullRequest.labels.map(label => label.name);
+          const validLabels = ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'];
+          const versionLabel = labels.find(label => validLabels.includes(label));
+          return versionLabel;
 
-            const labels = pullRequest.labels.map(label => label.name);
-            const validLabels = ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'];
-            const versionLabel = labels.find(label => validLabels.includes(label));
+    - name: Configure Git User
+      run: |
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git config --global user.name "${GITHUB_ACTOR}"
 
-            return versionLabel;
-
-      - name: Configure Git User
-        run: |
-          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git config --global user.name "${GITHUB_ACTOR}"
-
-      - name: Version bump
-        if: steps.pr-labels.outputs.result != ''
-        run: |
-          npm version ${{ steps.pr-labels.outputs.result }} -m "chore: version bump to %s [skip ci]"
+    - name: Version bump and create branch
+      run: |
+        if [[ "${{ steps.pr-labels.outputs.result }}" != "" ]]; then
+          git checkout -b version-change-${{ steps.pr-labels.outputs.result }}-${{ github.run_number }}
+          npm version ${{ steps.pr-labels.outputs.result }} -m "chore: version bump to %s"
           git push origin HEAD:version-change-${{ steps.pr-labels.outputs.result }}-${{ github.run_number }}
-          git push --tags
+        fi
 
-      # Create a PR for the version change
-      - name: Create Version PR
-        if: steps.pr-labels.outputs.result != ''
-        uses: repo-sync/pull-request@v2
-        with:
-          source_branch: version-change-${{ steps.pr-labels.outputs.result }}-${{ github.run_number }}
-          destination_branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pr_title: "Version Bump"
-          pr_body: "Automated version bump based on merged PR labels. Please review."
+    - name: Create PR
+      uses: repo-sync/pull-request@v2
+      with:
+        source_branch: version-change-${{ steps.pr-labels.outputs.result }}-${{ github.run_number }}
+        destination_branch: main
+        github_token: ${{ secrets.DEFI_ADAPTERS_SERVICE_ACCOUNT_GITHUB_PAT }}
+        pr_title: Version Bump
+        pr_body: Automated version bump based on merged PR labels. Please review.
