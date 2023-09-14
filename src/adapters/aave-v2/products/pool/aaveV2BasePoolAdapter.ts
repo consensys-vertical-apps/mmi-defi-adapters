@@ -1,7 +1,12 @@
 import { formatUnits } from 'ethers/lib/utils'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
+import { Chain } from '../../../../core/constants/chains'
+import {
+  Erc20Metadata,
+  getThinTokenMetadata,
+} from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { IMetadataBuilder } from '../../../../core/utils/metadata'
 import {
   BasePricePerShareToken,
   BaseToken,
@@ -16,91 +21,126 @@ import {
   TokenBalance,
   TokenType,
 } from '../../../../types/adapter'
-import { AaveV2PoolMetadata } from '../../buildMetadata'
+import {
+  ProtocolDataProvider,
+  ProtocolDataProvider__factory,
+} from '../../contracts'
 
-export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter<AaveV2PoolMetadata> {
+type AaveV2PoolMetadata = Record<
+  string,
+  {
+    protocolToken: Erc20Metadata
+    underlyingToken: Erc20Metadata
+  }
+>
+
+export abstract class AaveV2BasePoolAdapter
+  extends SimplePoolAdapter
+  implements IMetadataBuilder
+{
+  product!: string
+
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(this.metadata).map(
+    return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
   }
 
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return []
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
-    return {
-      address: '0xprotocolTokenAddress',
-      decimals: 8,
-      symbol: 'stUSD',
-      aprDecimal: '0.1', // 10%
-      name: 'stUSD',
-    }
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
-    return {
-      address: '0xprotocolTokenAddress',
-      decimals: 8,
-      symbol: 'stUSD',
-      apyDecimal: '0.1', // 10%
-      name: 'stUSD',
-    }
+    throw new Error('Not Implemented')
   }
 
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]> {
-    return [
-      {
-        address: '0xprotocolTokenAddress',
-        name: 'Coin-LP',
-        symbol: 'S*USDC',
-        decimals: 6,
-        totalSupplyRaw: 31468548033n,
-        totalSupply: '31468.548033',
-        type: 'protocol',
-        tokens: [
-          {
-            address: '0xunderlyingTokenAddress',
-            name: 'USD Coin',
-            symbol: 'USDC',
-            decimals: 6,
-            totalSupply: '31492.408006',
-            totalSupplyRaw: 31492408006n,
-            type: 'underlying',
-          },
-        ],
-      },
-    ]
+    throw new Error('Not Implemented')
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+    throw new Error('Not Implemented')
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+    throw new Error('Not Implemented')
+  }
+
+  async buildMetadata() {
+    const contractAddresses: Partial<Record<Chain, string>> = {
+      [Chain.Ethereum]: '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
+      [Chain.Polygon]: '0x7551b5D2763519d4e37e8B81929D336De671d46d',
+      [Chain.Avalanche]: '0x65285E9dfab318f57051ab2b139ccCf232945451',
+    }
+
+    const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
+      contractAddresses[this.chainId]!,
+      this.provider,
+    )
+
+    const reserveTokens =
+      await protocolDataProviderContract.getAllReservesTokens()
+
+    const metadataObject: AaveV2PoolMetadata = {}
+    for (const { tokenAddress } of reserveTokens) {
+      const reserveTokenAddresses =
+        await protocolDataProviderContract.getReserveTokensAddresses(
+          tokenAddress,
+        )
+
+      const underlyingTokenMetadata = await getThinTokenMetadata(
+        tokenAddress,
+        this.chainId,
+      )
+
+      const setProtocolToken = async (
+        tokenAddress: string,
+        tokenMetadataObject: AaveV2PoolMetadata,
+      ) => {
+        const protocolTokenMetadata = await getThinTokenMetadata(
+          tokenAddress,
+          this.chainId,
+        )
+        tokenMetadataObject[protocolTokenMetadata.address] = {
+          protocolToken: protocolTokenMetadata,
+          underlyingToken: underlyingTokenMetadata,
+        }
+      }
+
+      setProtocolToken(
+        this.getReserveTokenAddress(reserveTokenAddresses),
+        metadataObject,
+      )
+    }
+
+    return metadataObject
   }
 
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
-    const poolMetadata = this.fetchPoolMetadata(protocolTokenAddress)
+    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
 
-    return poolMetadata.protocolToken
+    return protocolToken
   }
 
   protected async getUnderlyingTokens(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const poolMetadata = this.fetchPoolMetadata(protocolTokenAddress)
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
 
-    return [poolMetadata.underlyingToken]
+    return [underlyingToken]
   }
 
   protected async getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
   ): Promise<BaseToken[]> {
-    const underlyingTokenMetadata = this.fetchPoolMetadata(
+    const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenBalance.address,
-    ).underlyingToken
+    )
 
     const underlyingTokenBalance = {
-      ...underlyingTokenMetadata,
+      ...underlyingToken,
       balanceRaw: protocolTokenBalance.balanceRaw,
       balance: protocolTokenBalance.balance,
       type: TokenType.Underlying,
@@ -113,20 +153,20 @@ export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter<AaveV2Pool
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<BasePricePerShareToken[]> {
-    const underlyingTokenMetadata = this.fetchPoolMetadata(
+    const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
-    ).underlyingToken
+    )
 
     const pricePerShareRaw = BigInt(1 * 10 ** protocolTokenMetadata.decimals)
 
     const pricePerShare = formatUnits(
       pricePerShareRaw,
-      underlyingTokenMetadata.decimals,
+      underlyingToken.decimals,
     )
 
     return [
       {
-        ...underlyingTokenMetadata,
+        ...underlyingToken,
         type: TokenType.Underlying,
         pricePerShareRaw,
         pricePerShare,
@@ -134,8 +174,14 @@ export abstract class AaveV2BasePoolAdapter extends SimplePoolAdapter<AaveV2Pool
     ]
   }
 
-  private fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = this.metadata[protocolTokenAddress]
+  protected abstract getReserveTokenAddress(
+    reserveTokenAddresses: Awaited<
+      ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
+    >,
+  ): string
+
+  private async fetchPoolMetadata(protocolTokenAddress: string) {
+    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
     if (!poolMetadata) {
       logger.error({ protocolTokenAddress }, 'Protocol token pool not found')

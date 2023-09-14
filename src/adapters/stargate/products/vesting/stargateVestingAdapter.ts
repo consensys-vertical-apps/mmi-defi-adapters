@@ -3,7 +3,13 @@ import { formatUnits } from 'ethers/lib/utils'
 import { Protocol } from '../../..'
 import { StargateVotingEscrow__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
-import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
+import { Adapter } from '../../../../core/decorators/adapter'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import {
+  Erc20Metadata,
+  getThinTokenMetadata,
+} from '../../../../core/utils/getTokenMetadata'
+import { IMetadataBuilder } from '../../../../core/utils/metadata'
 import {
   GetAprInput,
   GetApyInput,
@@ -13,6 +19,7 @@ import {
   MovementsByBlock,
   PositionType,
   ProfitsTokensWithRange,
+  ProtocolAdapterParams,
   ProtocolAprToken,
   ProtocolApyToken,
   ProtocolDetails,
@@ -21,32 +28,31 @@ import {
   ProtocolTotalValueLockedToken,
   TokenType,
 } from '../../../../types/adapter'
-import { StargateVestingMetadata } from '../../buildMetadata'
 
-export class StargateVestingAdapter implements IProtocolAdapter {
-  private metadata: StargateVestingMetadata
+type StargateVestingMetadata = {
+  contractToken: Erc20Metadata
+  underlyingToken: Erc20Metadata
+}
+
+@Adapter
+export class StargateVestingAdapter
+  implements IProtocolAdapter, IMetadataBuilder
+{
+  product!: string
+  protocolId: Protocol
+  chainId: Chain
+
   private provider: ethers.providers.StaticJsonRpcProvider
-  private chainId: Chain
-  private protocolTokens: Erc20Metadata[]
 
-  constructor({
-    metadata,
-    provider,
-    chainId,
-  }: {
-    metadata: StargateVestingMetadata
-    provider: ethers.providers.StaticJsonRpcProvider
-    chainId: Chain
-  }) {
-    this.metadata = metadata
+  constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
-    this.protocolTokens = [this.metadata.contractToken]
+    this.protocolId = protocolId
   }
 
   getProtocolDetails(): ProtocolDetails {
     return {
-      protocolId: Protocol.Stargate,
+      protocolId: this.protocolId,
       name: 'Stargate',
       description:
         'Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi',
@@ -58,54 +64,18 @@ export class StargateVestingAdapter implements IProtocolAdapter {
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return this.protocolTokens
-  }
-
-  async getWithdrawals(): Promise<MovementsByBlock[]> {
-    // TODO
-    return []
-  }
-  async getOneDayProfit(): Promise<ProfitsTokensWithRange> {
-    // TODO
-    return {} as ProfitsTokensWithRange
-  }
-
-  async getDeposits(): Promise<MovementsByBlock[]> {
-    // TODO
-    return []
-  }
-
-  async getClaimedRewards(): Promise<MovementsByBlock[]> {
-    // TODO
-    return []
-  }
-
-  async getPricePerShare(): Promise<ProtocolPricePerShareToken> {
-    // TODO
-    return {} as ProtocolPricePerShareToken
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
-    // TODO
-    return {} as ProtocolAprToken
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
-    // TODO
-    return {} as ProtocolApyToken
+    return [(await this.buildMetadata()).contractToken]
   }
 
   async getPositions({
     userAddress,
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolToken[]> {
-    const {
-      contractToken: contractTokenMetadata,
-      underlyingToken: underlyingTokenMetadata,
-    } = this.metadata
+    const { contractToken, underlyingToken } = await this.buildMetadata()
 
-    const votingEscrowContract = this.stargateVotingEscrowContract(
-      contractTokenMetadata.address,
+    const votingEscrowContract = StargateVotingEscrow__factory.connect(
+      contractToken.address,
+      this.provider,
     )
 
     const { amount: lockedAmount } = await votingEscrowContract.locked(
@@ -121,19 +91,16 @@ export class StargateVestingAdapter implements IProtocolAdapter {
 
     const tokens = [
       {
-        ...contractTokenMetadata,
+        ...contractToken,
         type: TokenType.Protocol,
         balanceRaw: BigInt(userBalance.toString()),
-        balance: formatUnits(userBalance, contractTokenMetadata.decimals),
+        balance: formatUnits(userBalance, contractToken.decimals),
         tokens: [
           {
-            ...underlyingTokenMetadata,
+            ...underlyingToken,
             type: TokenType.Underlying,
             balanceRaw: BigInt(lockedAmount.toString()),
-            balance: formatUnits(
-              lockedAmount,
-              underlyingTokenMetadata.decimals,
-            ),
+            balance: formatUnits(lockedAmount, underlyingToken.decimals),
           },
         ],
       },
@@ -142,14 +109,70 @@ export class StargateVestingAdapter implements IProtocolAdapter {
     return tokens
   }
 
+  async getPricePerShare(): Promise<ProtocolPricePerShareToken> {
+    throw new Error('Not Implemented')
+  }
+
+  async getWithdrawals(): Promise<MovementsByBlock[]> {
+    throw new Error('Not Implemented')
+  }
+
+  async getDeposits(): Promise<MovementsByBlock[]> {
+    throw new Error('Not Implemented')
+  }
+
+  async getClaimedRewards(): Promise<MovementsByBlock[]> {
+    throw new Error('Not Implemented')
+  }
+
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]> {
-    // TODO
-    return []
+    throw new Error('Not Implemented')
   }
 
-  private stargateVotingEscrowContract(address: string) {
-    return StargateVotingEscrow__factory.connect(address, this.provider)
+  async getOneDayProfit(): Promise<ProfitsTokensWithRange> {
+    throw new Error('Not Implemented')
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+    throw new Error('Not Implemented')
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+    throw new Error('Not Implemented')
+  }
+
+  @CacheToFile({ fileKey: 'vesting-token' })
+  async buildMetadata() {
+    const contractAddresses: Partial<Record<Chain, string>> = {
+      [Chain.Ethereum]: '0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E',
+      [Chain.Arbitrum]: '0xfBd849E6007f9BC3CC2D6Eb159c045B8dc660268',
+    }
+
+    const votingEscrowContract = StargateVotingEscrow__factory.connect(
+      contractAddresses[this.chainId]!,
+      this.provider,
+    )
+
+    const underlyingTokenAddress = (
+      await votingEscrowContract.token()
+    ).toLowerCase()
+
+    const contractToken = await getThinTokenMetadata(
+      contractAddresses[this.chainId]!,
+      this.chainId,
+    )
+    const underlyingToken = await getThinTokenMetadata(
+      underlyingTokenAddress,
+      this.chainId,
+    )
+
+    const metadataObject: StargateVestingMetadata = {
+      contractToken,
+      underlyingToken,
+    }
+
+    return metadataObject
   }
 }

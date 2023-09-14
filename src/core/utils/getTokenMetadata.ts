@@ -22,6 +22,18 @@ const CHAIN_METADATA: Partial<
   [Chain.Arbitrum]: TOKEN_METADATA_ARBITRUM,
 }
 
+export const getThinTokenMetadata = async (
+  tokenAddress: string,
+  chainId: Chain,
+) => {
+  const { iconUrl: _, ...token } = await getTokenMetadata({
+    tokenAddress,
+    chainId,
+  })
+
+  return token
+}
+
 export const getTokenMetadata = async ({
   tokenAddress,
   chainId,
@@ -116,7 +128,7 @@ const getTokenSymbol = async (tokenContract: Erc20) => {
       throw error
     }
 
-    logger.warn(
+    logger.debug(
       { address: tokenContract.address },
       'Failed to fetch token symbol as a string. Using bytes32 fallback',
     )

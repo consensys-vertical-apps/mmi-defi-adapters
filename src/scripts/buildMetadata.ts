@@ -1,29 +1,67 @@
 import { Command } from 'commander'
-import { Protocol } from '../adapters'
-import { protocolMetadataBuilders } from '../adapters/metadataBuilders'
+import { Protocol, supportedProtocols } from '../adapters'
+import { Chain } from '../core/constants/chains'
+import { chainProviders } from '../core/utils/chainProviders'
+import { logger } from '../core/utils/logger'
+import { IMetadataBuilder } from '../core/utils/metadata'
+import { IProtocolAdapter } from '../types/adapter'
 
 export function buildMetadata(program: Command) {
   program
     .command('build-metadata')
-    .argument('[protocol]', 'Protocol filter')
+    .option('-p, --protocol <protocolId>', 'protocol filter')
+    .option('-c, --chain <chainId>', 'chain filter')
     .showHelpAfterError()
-    .action(async (protocolFilter: string) => {
-      const protocol = Object.entries(Protocol).find(
-        ([key, _]) => key === protocolFilter,
-      )
+    .action(async ({ protocol, chain }) => {
+      const protocolEntry = Object.entries(Protocol).find(
+        ([key, value]) => key === protocol || value === protocol,
+      )?.[1]
 
-      const metadataBuilders = Object.entries(protocolMetadataBuilders)
-        .filter(
-          ([supportedProtocolId, _]) =>
-            !protocol || protocol[1] === supportedProtocolId,
-        )
-        .flatMap(([_, supportedChains]) => {
-          return Object.values(supportedChains)
-        })
+      const chainEntry = Object.entries(Chain).find(
+        ([key, value]) => key === chain || value === Number(chain),
+      )?.[1]
 
-      // Runs sequentially so that it doesn't overwhelm the RPC provider
-      for (const metadataBuilder of metadataBuilders) {
-        await metadataBuilder()
+      for (const [protocolIdString, supportedChains] of Object.entries(
+        supportedProtocols,
+      )) {
+        const protocolId = protocolIdString as Protocol
+        if (protocolEntry && protocolEntry !== protocolId) {
+          continue
+        }
+
+        for (const [chainIdString, adapterClasses] of Object.entries(
+          supportedChains,
+        )) {
+          const chainId = +chainIdString as Chain
+          if (chainEntry && chainEntry !== chainId) {
+            continue
+          }
+
+          const provider = chainProviders[chainId]
+
+          if (!provider) {
+            logger.error({ chainId }, 'No provider found for chain')
+            throw new Error('No provider found for chain')
+          }
+
+          for (const adapterClass of adapterClasses) {
+            const adapter = new adapterClass({
+              provider,
+              chainId,
+              protocolId,
+            }) as IProtocolAdapter
+
+            if (isIMetadataBuilder(adapter)) {
+              await adapter.buildMetadata(true)
+            }
+          }
+        }
       }
     })
+}
+
+function isIMetadataBuilder(object: object): object is IMetadataBuilder {
+  return (
+    'buildMetadata' in object && typeof object['buildMetadata'] === 'function'
+  )
 }
