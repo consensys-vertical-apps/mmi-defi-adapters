@@ -1,18 +1,25 @@
-name: Create Version PR
+name: Create Version Bump PR
+
+# on:
+#   pull_request:
+#     types: [closed]
+#     branches:
+#       - main
 
 on:
   pull_request:
-    types: [closed]
     branches:
-      - main
+    - main
+
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: write # for checkout and tag
+  pull-requests: write # for comments
 
 jobs:
-  create-version-pr:
-    if: github.event.pull_request.merged == true
+  create-version-bump-pr:
+    # if: github.event.pull_request.merged == true
+    name: Create Version Bump PR
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -38,6 +45,7 @@ jobs:
             repo: context.repo.repo,
             pull_number: context.issue.number
           });
+          
           const labels = pullRequest.labels.map(label => label.name);
           const validLabels = ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'];
           const versionLabel = labels.find(label => validLabels.includes(label));
@@ -45,22 +53,26 @@ jobs:
 
     - name: Configure Git User
       run: |
-        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-        git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}"
+          git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
 
-    - name: Version bump and create branch
+    - name: Bump version and create branch
       run: |
         if [[ "${{ steps.pr-labels.outputs.result }}" != "" ]]; then
-          git checkout -b version-change-${{ steps.pr-labels.outputs.result }}-${{ github.run_number }}
-          npm version ${{ steps.pr-labels.outputs.result }} -m "chore: version bump to %s"
-          git push origin HEAD:version-change-${{ steps.pr-labels.outputs.result }}-${{ github.run_number }}
+            # Bump version without creating a git tag or commit
+            NEW_VERSION=$(npm version ${{ steps.pr-labels.outputs.result }} --no-git-tag-version)
+            branch_name="${{ steps.pr-labels.outputs.result }}-${NEW_VERSION}"
+            
+            git checkout -b $branch_name
+            git commit -am "chore: version bump to ${NEW_VERSION}"
+            git push origin HEAD:$branch_name
         fi
 
-    - name: Create PR
+    - name: Create PR for version bump
       uses: repo-sync/pull-request@v2
       with:
-        source_branch: version-change-${{ steps.pr-labels.outputs.result }}-${{ github.run_number }}
+        source_branch: "${{ steps.pr-labels.outputs.result }}-${NEW_VERSION}"
         destination_branch: main
-        github_token: ${{ secrets.DEFI_ADAPTERS_SERVICE_ACCOUNT_GITHUB_PAT }}
-        pr_title: Version Bump
-        pr_body: Automated version bump based on merged PR labels. Please review.
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        pr_title: "Version Bump"
+        pr_body: "Automated version bump based on merged PR labels. Please review."
