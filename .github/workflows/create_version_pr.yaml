@@ -1,8 +1,13 @@
 name: Create Version Bump PR
 
+# on:
+#   pull_request:
+#     types: [closed]
+#     branches:
+#       - main
+
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - main
 
@@ -12,7 +17,7 @@ permissions:
 
 jobs:
   create-version-bump-pr:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     name: Create Version Bump PR
     runs-on: ubuntu-latest
     steps:
