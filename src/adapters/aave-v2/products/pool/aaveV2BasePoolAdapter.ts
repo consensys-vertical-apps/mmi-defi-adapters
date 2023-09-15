@@ -1,4 +1,4 @@
-import { formatUnits } from 'ethers/lib/utils'
+import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {

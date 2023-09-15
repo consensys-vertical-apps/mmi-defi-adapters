@@ -18,7 +18,7 @@ export const PositionType = {
 export type PositionType = (typeof PositionType)[keyof typeof PositionType]
 
 export type GetBalancesInput = GetPositionsInput & {
-  provider: ethers.providers.StaticJsonRpcProvider
+  provider: ethers.JsonRpcProvider
   chainId: Chain
   tokens: Erc20Metadata[]
 }
@@ -171,7 +171,7 @@ export interface IProtocolAdapter {
 }
 
 export type ProtocolAdapterParams = {
-  provider: ethers.providers.StaticJsonRpcProvider
+  provider: ethers.JsonRpcProvider
   chainId: Chain
   protocolId: Protocol
 }

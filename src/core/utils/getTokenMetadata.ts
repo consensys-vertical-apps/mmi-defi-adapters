@@ -79,11 +79,11 @@ const getOnChainTokenMetadata = async (
   const tokenContract = Erc20__factory.connect(tokenAddress, provider)
 
   try {
-    const name = await getTokenName(tokenContract)
-    const symbol = await getTokenSymbol(tokenContract)
-    const decimals = await tokenContract.decimals()
+    const name = await getTokenName(tokenContract, provider)
+    const symbol = await getTokenSymbol(tokenContract, provider)
+    const decimals = Number(await tokenContract.decimals())
     return {
-      address: tokenContract.address.toLowerCase(),
+      address: (await tokenContract.getAddress()).toLowerCase(),
       name,
       symbol,
       decimals,
@@ -98,7 +98,10 @@ const getOnChainTokenMetadata = async (
   }
 }
 
-const getTokenName = async (tokenContract: Erc20) => {
+const getTokenName = async (
+  tokenContract: Erc20,
+  provider: ethers.JsonRpcProvider,
+) => {
   try {
     return await tokenContract.name()
   } catch (error) {
@@ -106,21 +109,26 @@ const getTokenName = async (tokenContract: Erc20) => {
       throw error
     }
 
+    const contractAddress = await tokenContract.getAddress()
+
     logger.warn(
-      { address: tokenContract.address },
+      { contractAddress },
       'Failed to fetch token name as a string. Using bytes32 fallback',
     )
 
     // Fallback for contracts that return bytes32 instead of string
-    const result = await tokenContract.provider.call({
-      to: tokenContract.address,
+    const result = await provider.call({
+      to: contractAddress,
       data: '0x06fdde03', // Function signature for name()
     })
-    return ethers.utils.parseBytes32String(result)
+    return ethers.decodeBytes32String(result)
   }
 }
 
-const getTokenSymbol = async (tokenContract: Erc20) => {
+const getTokenSymbol = async (
+  tokenContract: Erc20,
+  provider: ethers.JsonRpcProvider,
+) => {
   try {
     return await tokenContract.symbol()
   } catch (error) {
@@ -128,17 +136,19 @@ const getTokenSymbol = async (tokenContract: Erc20) => {
       throw error
     }
 
+    const contractAddress = await tokenContract.getAddress()
+
     logger.debug(
-      { address: tokenContract.address },
+      { contractAddress },
       'Failed to fetch token symbol as a string. Using bytes32 fallback',
     )
 
     // Fallback for contracts that return bytes32 instead of string
-    const result = await tokenContract.provider.call({
-      to: tokenContract.address,
+    const result = await provider.call({
+      to: contractAddress,
       data: '0x95d89b41', // Function signature for symbol()
     })
-    return ethers.utils.parseBytes32String(result)
+    return ethers.decodeBytes32String(result)
   }
 }
 

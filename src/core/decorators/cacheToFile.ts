@@ -50,7 +50,7 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
         throw new Error('Metadata not found')
       }
 
-      logger.info(
+      logger.debug(
         {
           protocolId: this.protocolId,
           product: this.product,

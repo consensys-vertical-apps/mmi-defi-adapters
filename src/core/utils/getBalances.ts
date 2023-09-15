@@ -1,5 +1,4 @@
-import { BigNumber } from 'ethers'
-import { formatUnits } from 'ethers/lib/utils'
+import { formatUnits } from 'ethers'
 import { GetBalancesInput, TokenBalance } from '../../types/adapter'
 import { filterMap } from './filters'
 import { getAddressesBalances } from './getAddressesBalances'
@@ -28,7 +27,7 @@ export const getBalances = async ({
     return {
       ...token,
       balanceRaw: BigInt(balance),
-      balance: formatUnits(BigNumber.from(balance), token.decimals),
+      balance: formatUnits(balance, token.decimals),
     }
   })
 }

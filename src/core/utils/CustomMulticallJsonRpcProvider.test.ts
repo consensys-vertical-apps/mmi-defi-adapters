@@ -14,10 +14,7 @@ describe('CustomMulticallJsonRpcProvider', () => {
         multicallQueue,
       })
 
-      const result = await provider.call(
-        { to: '0x83', data: 'oioi' },
-        undefined,
-      )
+      const result = await provider.call({ to: '0x83', data: 'oioi' })
 
       expect(spy).toBeCalled()
       expect(result).toBe('success')
@@ -32,7 +29,11 @@ describe('CustomMulticallJsonRpcProvider', () => {
 
       provider.call = jest.fn().mockResolvedValue('success')
 
-      const result = await provider.call({ to: '0x83', data: 'oioi' }, 1000303)
+      const result = await provider.call({
+        to: '0x83',
+        data: 'oioi',
+        blockTag: 1000303,
+      })
 
       expect(provider.call).toBeCalled()
       expect(result).toBe('success')

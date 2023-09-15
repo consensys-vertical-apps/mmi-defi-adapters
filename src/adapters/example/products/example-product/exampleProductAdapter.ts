@@ -28,7 +28,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   protocolId: Protocol
   chainId: Chain
 
-  private provider: ethers.providers.StaticJsonRpcProvider
+  private provider: ethers.JsonRpcProvider
 
   constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider

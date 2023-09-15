@@ -1,5 +1,5 @@
-import { ethers } from 'ethers'
-import { formatUnits } from 'ethers/lib/utils'
+import type { ethers } from 'ethers'
+import { formatUnits } from 'ethers'
 import { Protocol } from '../../adapters'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
@@ -40,7 +40,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   chainId: Chain
   protocolId: Protocol
 
-  protected provider: ethers.providers.StaticJsonRpcProvider
+  protected provider: ethers.JsonRpcProvider
 
   constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider
@@ -249,11 +249,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
     const filter = protocolTokenContract.filters.Transfer(from, to)
 
-    const eventResults = await protocolTokenContract.queryFilter<TransferEvent>(
-      filter,
-      fromBlock,
-      toBlock,
-    )
+    const eventResults =
+      await protocolTokenContract.queryFilter<TransferEvent.Event>(
+        filter,
+        fromBlock,
+        toBlock,
+      )
 
     return await Promise.all(
       eventResults.map(async (transferEvent) => {

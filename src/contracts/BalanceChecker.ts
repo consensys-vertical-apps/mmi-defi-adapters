@@ -3,39 +3,33 @@
 /* eslint-disable */
 import type {
   BaseContract,
-  BigNumber,
   BytesLike,
-  CallOverrides,
-  PopulatedTransaction,
-  Signer,
-  utils,
+  FunctionFragment,
+  Result,
+  Interface,
+  AddressLike,
+  ContractRunner,
+  ContractMethod,
+  Listener,
 } from "ethers";
-import type { FunctionFragment, Result } from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
 import type {
-  TypedEventFilter,
-  TypedEvent,
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+  TypedEventLog,
   TypedListener,
-  OnEvent,
+  TypedContractMethod,
 } from "./common";
 
-export interface BalanceCheckerInterface extends utils.Interface {
-  functions: {
-    "tokenBalance(address,address)": FunctionFragment;
-    "balances(address[],address[])": FunctionFragment;
-  };
-
-  getFunction(
-    nameOrSignatureOrTopic: "tokenBalance" | "balances"
-  ): FunctionFragment;
+export interface BalanceCheckerInterface extends Interface {
+  getFunction(nameOrSignature: "tokenBalance" | "balances"): FunctionFragment;
 
   encodeFunctionData(
     functionFragment: "tokenBalance",
-    values: [string, string]
+    values: [AddressLike, AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "balances",
-    values: [string[], string[]]
+    values: [AddressLike[], AddressLike[]]
   ): string;
 
   decodeFunctionResult(
@@ -43,103 +37,81 @@ export interface BalanceCheckerInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "balances", data: BytesLike): Result;
-
-  events: {};
 }
 
 export interface BalanceChecker extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(runner?: ContractRunner | null): BalanceChecker;
+  waitForDeployment(): Promise<this>;
 
   interface: BalanceCheckerInterface;
 
-  queryFilter<TEvent extends TypedEvent>(
-    event: TypedEventFilter<TEvent>,
+  queryFilter<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TEvent>>;
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+  queryFilter<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
 
-  listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
-  listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
-  removeAllListeners(eventName?: string): this;
-  off: OnEvent<this>;
-  on: OnEvent<this>;
-  once: OnEvent<this>;
-  removeListener: OnEvent<this>;
+  on<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  on<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
 
-  functions: {
-    tokenBalance(
-      user: string,
-      token: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+  once<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  once<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
 
-    balances(
-      users: string[],
-      tokens: string[],
-      overrides?: CallOverrides
-    ): Promise<[BigNumber[]]>;
-  };
+  listeners<TCEvent extends TypedContractEvent>(
+    event: TCEvent
+  ): Promise<Array<TypedListener<TCEvent>>>;
+  listeners(eventName?: string): Promise<Array<Listener>>;
+  removeAllListeners<TCEvent extends TypedContractEvent>(
+    event?: TCEvent
+  ): Promise<this>;
 
-  tokenBalance(
-    user: string,
-    token: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  tokenBalance: TypedContractMethod<
+    [user: AddressLike, token: AddressLike],
+    [bigint],
+    "view"
+  >;
 
-  balances(
-    users: string[],
-    tokens: string[],
-    overrides?: CallOverrides
-  ): Promise<BigNumber[]>;
+  balances: TypedContractMethod<
+    [users: AddressLike[], tokens: AddressLike[]],
+    [bigint[]],
+    "view"
+  >;
 
-  callStatic: {
-    tokenBalance(
-      user: string,
-      token: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+  getFunction<T extends ContractMethod = ContractMethod>(
+    key: string | FunctionFragment
+  ): T;
 
-    balances(
-      users: string[],
-      tokens: string[],
-      overrides?: CallOverrides
-    ): Promise<BigNumber[]>;
-  };
+  getFunction(
+    nameOrSignature: "tokenBalance"
+  ): TypedContractMethod<
+    [user: AddressLike, token: AddressLike],
+    [bigint],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "balances"
+  ): TypedContractMethod<
+    [users: AddressLike[], tokens: AddressLike[]],
+    [bigint[]],
+    "view"
+  >;
 
   filters: {};
-
-  estimateGas: {
-    tokenBalance(
-      user: string,
-      token: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    balances(
-      users: string[],
-      tokens: string[],
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-  };
-
-  populateTransaction: {
-    tokenBalance(
-      user: string,
-      token: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    balances(
-      users: string[],
-      tokens: string[],
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-  };
 }

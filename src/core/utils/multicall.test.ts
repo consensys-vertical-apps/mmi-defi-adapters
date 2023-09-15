@@ -24,7 +24,7 @@ describe('MulticallQueue', () => {
         flushTimeoutMs: 1000000,
         maxBatchSize,
         multicallContract: {
-          callStatic: { aggregate3: spy },
+          aggregate3: { staticCall: spy },
         } as unknown as Multicall,
       })
 
@@ -46,7 +46,7 @@ describe('MulticallQueue', () => {
         flushTimeoutMs: 1000,
         maxBatchSize: 10,
         multicallContract: {
-          callStatic: { aggregate3: spy },
+          aggregate3: { staticCall: spy },
         } as unknown as Multicall,
       })
 
@@ -66,7 +66,7 @@ describe('MulticallQueue', () => {
         flushTimeoutMs: 10,
         maxBatchSize: 1,
         multicallContract: {
-          callStatic: { aggregate3: {} },
+          aggregate3: { staticCall: {} },
         } as unknown as Multicall,
       })
 
@@ -82,7 +82,7 @@ describe('MulticallQueue', () => {
         flushTimeoutMs: 10,
         maxBatchSize: 1,
         multicallContract: {
-          callStatic: { aggregate3: {} },
+          aggregate3: { staticCall: {} },
         } as unknown as Multicall,
       })
 
@@ -114,7 +114,7 @@ describe('MulticallQueue', () => {
         flushTimeoutMs: 10,
         maxBatchSize: 1,
         multicallContract: {
-          callStatic: { aggregate3: spy },
+          aggregate3: { staticCall: spy },
         } as unknown as Multicall,
       })
 
@@ -136,7 +136,7 @@ describe('MulticallQueue', () => {
         flushTimeoutMs: 10,
         maxBatchSize: 1,
         multicallContract: {
-          callStatic: { aggregate3: spy },
+          aggregate3: { staticCall: spy },
         } as unknown as Multicall,
       })
       await multicall.queueCall({ to: '0x', data: '0x' }).catch((error) => {
@@ -155,7 +155,7 @@ describe('MulticallQueue', () => {
         flushTimeoutMs: 1000,
         maxBatchSize: 2,
         multicallContract: {
-          callStatic: { aggregate3: spy },
+          aggregate3: { staticCall: spy },
         } as unknown as Multicall,
       })
 

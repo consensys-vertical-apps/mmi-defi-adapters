@@ -1,4 +1,4 @@
-import { BigNumber, ethers } from 'ethers'
+import type { ethers } from 'ethers'
 import { BalanceChecker__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
 
@@ -31,7 +31,7 @@ export async function getAddressesBalances({
   blockNumber,
 }: {
   chainId: Chain
-  provider: ethers.providers.StaticJsonRpcProvider
+  provider: ethers.JsonRpcProvider
   addresses: string[]
   tokens: string[]
   blockNumber?: number
@@ -51,7 +51,7 @@ export async function getAddressesBalances({
 }
 
 function formatAddressBalances(
-  values: BigNumber[],
+  values: bigint[],
   addresses: string[],
   tokens: string[],
 ): AddressBalanceMap {

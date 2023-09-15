@@ -2,8 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import type { Provider } from "@ethersproject/providers";
+import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
   BalanceChecker,
   BalanceCheckerInterface,
@@ -66,12 +65,12 @@ const _abi = [
 export class BalanceChecker__factory {
   static readonly abi = _abi;
   static createInterface(): BalanceCheckerInterface {
-    return new utils.Interface(_abi) as BalanceCheckerInterface;
+    return new Interface(_abi) as BalanceCheckerInterface;
   }
   static connect(
     address: string,
-    signerOrProvider: Signer | Provider
+    runner?: ContractRunner | null
   ): BalanceChecker {
-    return new Contract(address, _abi, signerOrProvider) as BalanceChecker;
+    return new Contract(address, _abi, runner) as unknown as BalanceChecker;
   }
 }

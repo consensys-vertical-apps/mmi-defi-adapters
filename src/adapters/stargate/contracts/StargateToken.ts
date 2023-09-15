@@ -3,27 +3,24 @@
 /* eslint-disable */
 import type {
   BaseContract,
-  BigNumber,
   BigNumberish,
   BytesLike,
-  CallOverrides,
-  ContractTransaction,
-  Overrides,
-  PopulatedTransaction,
-  Signer,
-  utils,
-} from "ethers";
-import type {
   FunctionFragment,
   Result,
+  Interface,
   EventFragment,
-} from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
+  AddressLike,
+  ContractRunner,
+  ContractMethod,
+  Listener,
+} from "ethers";
 import type {
-  TypedEventFilter,
-  TypedEvent,
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+  TypedEventLog,
+  TypedLogDescription,
   TypedListener,
-  OnEvent,
+  TypedContractMethod,
 } from "./common";
 
 export declare namespace Pool {
@@ -32,10 +29,10 @@ export declare namespace Pool {
     idealBalance: BigNumberish;
   };
 
-  export type CreditObjStructOutput = [BigNumber, BigNumber] & {
-    credits: BigNumber;
-    idealBalance: BigNumber;
-  };
+  export type CreditObjStructOutput = [
+    credits: bigint,
+    idealBalance: bigint
+  ] & { credits: bigint; idealBalance: bigint };
 
   export type ChainPathStruct = {
     ready: boolean;
@@ -49,23 +46,23 @@ export declare namespace Pool {
   };
 
   export type ChainPathStructOutput = [
-    boolean,
-    number,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber
+    ready: boolean,
+    dstChainId: bigint,
+    dstPoolId: bigint,
+    weight: bigint,
+    balance: bigint,
+    lkb: bigint,
+    credits: bigint,
+    idealBalance: bigint
   ] & {
     ready: boolean;
-    dstChainId: number;
-    dstPoolId: BigNumber;
-    weight: BigNumber;
-    balance: BigNumber;
-    lkb: BigNumber;
-    credits: BigNumber;
-    idealBalance: BigNumber;
+    dstChainId: bigint;
+    dstPoolId: bigint;
+    weight: bigint;
+    balance: bigint;
+    lkb: bigint;
+    credits: bigint;
+    idealBalance: bigint;
   };
 
   export type SwapObjStruct = {
@@ -78,89 +75,25 @@ export declare namespace Pool {
   };
 
   export type SwapObjStructOutput = [
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber
+    amount: bigint,
+    eqFee: bigint,
+    eqReward: bigint,
+    lpFee: bigint,
+    protocolFee: bigint,
+    lkbRemove: bigint
   ] & {
-    amount: BigNumber;
-    eqFee: BigNumber;
-    eqReward: BigNumber;
-    lpFee: BigNumber;
-    protocolFee: BigNumber;
-    lkbRemove: BigNumber;
+    amount: bigint;
+    eqFee: bigint;
+    eqReward: bigint;
+    lpFee: bigint;
+    protocolFee: bigint;
+    lkbRemove: bigint;
   };
 }
 
-export interface StargateTokenInterface extends utils.Interface {
-  functions: {
-    "BP_DENOMINATOR()": FunctionFragment;
-    "DOMAIN_SEPARATOR()": FunctionFragment;
-    "PERMIT_TYPEHASH()": FunctionFragment;
-    "activateChainPath(uint16,uint256)": FunctionFragment;
-    "allowance(address,address)": FunctionFragment;
-    "amountLPtoLD(uint256)": FunctionFragment;
-    "approve(address,uint256)": FunctionFragment;
-    "balanceOf(address)": FunctionFragment;
-    "batched()": FunctionFragment;
-    "callDelta(bool)": FunctionFragment;
-    "chainPathIndexLookup(uint16,uint256)": FunctionFragment;
-    "chainPaths(uint256)": FunctionFragment;
-    "convertRate()": FunctionFragment;
-    "createChainPath(uint16,uint256,uint256)": FunctionFragment;
-    "creditChainPath(uint16,uint256,(uint256,uint256))": FunctionFragment;
-    "decimals()": FunctionFragment;
-    "decreaseAllowance(address,uint256)": FunctionFragment;
-    "defaultLPMode()": FunctionFragment;
-    "defaultSwapMode()": FunctionFragment;
-    "deltaCredit()": FunctionFragment;
-    "eqFeePool()": FunctionFragment;
-    "feeLibrary()": FunctionFragment;
-    "getChainPath(uint16,uint256)": FunctionFragment;
-    "getChainPathsLength()": FunctionFragment;
-    "increaseAllowance(address,uint256)": FunctionFragment;
-    "instantRedeemLocal(address,uint256,address)": FunctionFragment;
-    "localDecimals()": FunctionFragment;
-    "lpDeltaBP()": FunctionFragment;
-    "mint(address,uint256)": FunctionFragment;
-    "mintFeeBP()": FunctionFragment;
-    "mintFeeBalance()": FunctionFragment;
-    "name()": FunctionFragment;
-    "nonces(address)": FunctionFragment;
-    "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
-    "poolId()": FunctionFragment;
-    "protocolFeeBalance()": FunctionFragment;
-    "redeemLocal(address,uint256,uint16,uint256,bytes)": FunctionFragment;
-    "redeemLocalCallback(uint16,uint256,address,uint256,uint256)": FunctionFragment;
-    "redeemLocalCheckOnRemote(uint16,uint256,uint256)": FunctionFragment;
-    "redeemRemote(uint16,uint256,address,uint256)": FunctionFragment;
-    "router()": FunctionFragment;
-    "sendCredits(uint16,uint256)": FunctionFragment;
-    "setDeltaParam(bool,uint256,uint256,bool,bool)": FunctionFragment;
-    "setFee(uint256)": FunctionFragment;
-    "setFeeLibrary(address)": FunctionFragment;
-    "setSwapStop(bool)": FunctionFragment;
-    "setWeightForChainPath(uint16,uint256,uint16)": FunctionFragment;
-    "sharedDecimals()": FunctionFragment;
-    "stopSwap()": FunctionFragment;
-    "swap(uint16,uint256,address,uint256,uint256,bool)": FunctionFragment;
-    "swapDeltaBP()": FunctionFragment;
-    "swapRemote(uint16,uint256,address,(uint256,uint256,uint256,uint256,uint256,uint256))": FunctionFragment;
-    "symbol()": FunctionFragment;
-    "token()": FunctionFragment;
-    "totalLiquidity()": FunctionFragment;
-    "totalSupply()": FunctionFragment;
-    "totalWeight()": FunctionFragment;
-    "transfer(address,uint256)": FunctionFragment;
-    "transferFrom(address,address,uint256)": FunctionFragment;
-    "withdrawMintFeeBalance(address)": FunctionFragment;
-    "withdrawProtocolFeeBalance(address)": FunctionFragment;
-  };
-
+export interface StargateTokenInterface extends Interface {
   getFunction(
-    nameOrSignatureOrTopic:
+    nameOrSignature:
       | "BP_DENOMINATOR"
       | "DOMAIN_SEPARATOR"
       | "PERMIT_TYPEHASH"
@@ -224,6 +157,30 @@ export interface StargateTokenInterface extends utils.Interface {
       | "withdrawProtocolFeeBalance"
   ): FunctionFragment;
 
+  getEvent(
+    nameOrSignatureOrTopic:
+      | "Approval"
+      | "Burn"
+      | "ChainPathUpdate"
+      | "CreditChainPath"
+      | "DeltaParamUpdated"
+      | "FeeLibraryUpdated"
+      | "FeesUpdated"
+      | "InstantRedeemLocal"
+      | "Mint"
+      | "RedeemLocal"
+      | "RedeemLocalCallback"
+      | "RedeemRemote"
+      | "SendCredits"
+      | "StopSwapUpdated"
+      | "Swap"
+      | "SwapRemote"
+      | "Transfer"
+      | "WithdrawMintFeeBalance"
+      | "WithdrawProtocolFeeBalance"
+      | "WithdrawRemote"
+  ): EventFragment;
+
   encodeFunctionData(
     functionFragment: "BP_DENOMINATOR",
     values?: undefined
@@ -242,7 +199,7 @@ export interface StargateTokenInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "allowance",
-    values: [string, string]
+    values: [AddressLike, AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "amountLPtoLD",
@@ -250,9 +207,12 @@ export interface StargateTokenInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "approve",
-    values: [string, BigNumberish]
+    values: [AddressLike, BigNumberish]
   ): string;
-  encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "balanceOf",
+    values: [AddressLike]
+  ): string;
   encodeFunctionData(functionFragment: "batched", values?: undefined): string;
   encodeFunctionData(functionFragment: "callDelta", values: [boolean]): string;
   encodeFunctionData(
@@ -278,7 +238,7 @@ export interface StargateTokenInterface extends utils.Interface {
   encodeFunctionData(functionFragment: "decimals", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "decreaseAllowance",
-    values: [string, BigNumberish]
+    values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "defaultLPMode",
@@ -307,11 +267,11 @@ export interface StargateTokenInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "increaseAllowance",
-    values: [string, BigNumberish]
+    values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "instantRedeemLocal",
-    values: [string, BigNumberish, string]
+    values: [AddressLike, BigNumberish, AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "localDecimals",
@@ -320,7 +280,7 @@ export interface StargateTokenInterface extends utils.Interface {
   encodeFunctionData(functionFragment: "lpDeltaBP", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "mint",
-    values: [string, BigNumberish]
+    values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "mintFeeBP", values?: undefined): string;
   encodeFunctionData(
@@ -328,12 +288,12 @@ export interface StargateTokenInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
-  encodeFunctionData(functionFragment: "nonces", values: [string]): string;
+  encodeFunctionData(functionFragment: "nonces", values: [AddressLike]): string;
   encodeFunctionData(
     functionFragment: "permit",
     values: [
-      string,
-      string,
+      AddressLike,
+      AddressLike,
       BigNumberish,
       BigNumberish,
       BigNumberish,
@@ -348,11 +308,17 @@ export interface StargateTokenInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "redeemLocal",
-    values: [string, BigNumberish, BigNumberish, BigNumberish, BytesLike]
+    values: [AddressLike, BigNumberish, BigNumberish, BigNumberish, BytesLike]
   ): string;
   encodeFunctionData(
     functionFragment: "redeemLocalCallback",
-    values: [BigNumberish, BigNumberish, string, BigNumberish, BigNumberish]
+    values: [
+      BigNumberish,
+      BigNumberish,
+      AddressLike,
+      BigNumberish,
+      BigNumberish
+    ]
   ): string;
   encodeFunctionData(
     functionFragment: "redeemLocalCheckOnRemote",
@@ -360,7 +326,7 @@ export interface StargateTokenInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "redeemRemote",
-    values: [BigNumberish, BigNumberish, string, BigNumberish]
+    values: [BigNumberish, BigNumberish, AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "router", values?: undefined): string;
   encodeFunctionData(
@@ -377,7 +343,7 @@ export interface StargateTokenInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "setFeeLibrary",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "setSwapStop",
@@ -397,7 +363,7 @@ export interface StargateTokenInterface extends utils.Interface {
     values: [
       BigNumberish,
       BigNumberish,
-      string,
+      AddressLike,
       BigNumberish,
       BigNumberish,
       boolean
@@ -409,7 +375,7 @@ export interface StargateTokenInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "swapRemote",
-    values: [BigNumberish, BigNumberish, string, Pool.SwapObjStruct]
+    values: [BigNumberish, BigNumberish, AddressLike, Pool.SwapObjStruct]
   ): string;
   encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
   encodeFunctionData(functionFragment: "token", values?: undefined): string;
@@ -427,19 +393,19 @@ export interface StargateTokenInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "transfer",
-    values: [string, BigNumberish]
+    values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "transferFrom",
-    values: [string, string, BigNumberish]
+    values: [AddressLike, AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "withdrawMintFeeBalance",
-    values: [string]
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "withdrawProtocolFeeBalance",
-    values: [string]
+    values: [AddressLike]
   ): string;
 
   decodeFunctionResult(
@@ -614,1966 +580,1503 @@ export interface StargateTokenInterface extends utils.Interface {
     functionFragment: "withdrawProtocolFeeBalance",
     data: BytesLike
   ): Result;
-
-  events: {
-    "Approval(address,address,uint256)": EventFragment;
-    "Burn(address,uint256,uint256)": EventFragment;
-    "ChainPathUpdate(uint16,uint256,uint256)": EventFragment;
-    "CreditChainPath(uint16,uint256,uint256,uint256)": EventFragment;
-    "DeltaParamUpdated(bool,uint256,uint256,bool,bool)": EventFragment;
-    "FeeLibraryUpdated(address)": EventFragment;
-    "FeesUpdated(uint256)": EventFragment;
-    "InstantRedeemLocal(address,uint256,uint256,address)": EventFragment;
-    "Mint(address,uint256,uint256,uint256)": EventFragment;
-    "RedeemLocal(address,uint256,uint256,uint16,uint256,bytes)": EventFragment;
-    "RedeemLocalCallback(address,uint256,uint256)": EventFragment;
-    "RedeemRemote(uint16,uint256,address,uint256,uint256)": EventFragment;
-    "SendCredits(uint16,uint256,uint256,uint256)": EventFragment;
-    "StopSwapUpdated(bool)": EventFragment;
-    "Swap(uint16,uint256,address,uint256,uint256,uint256,uint256,uint256)": EventFragment;
-    "SwapRemote(address,uint256,uint256,uint256)": EventFragment;
-    "Transfer(address,address,uint256)": EventFragment;
-    "WithdrawMintFeeBalance(address,uint256)": EventFragment;
-    "WithdrawProtocolFeeBalance(address,uint256)": EventFragment;
-    "WithdrawRemote(uint16,uint256,uint256,uint256)": EventFragment;
-  };
-
-  getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Burn"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ChainPathUpdate"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "CreditChainPath"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "DeltaParamUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "FeeLibraryUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "FeesUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "InstantRedeemLocal"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Mint"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "RedeemLocal"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "RedeemLocalCallback"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "RedeemRemote"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "SendCredits"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "StopSwapUpdated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Swap"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "SwapRemote"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "WithdrawMintFeeBalance"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "WithdrawProtocolFeeBalance"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "WithdrawRemote"): EventFragment;
 }
 
-export interface ApprovalEventObject {
-  owner: string;
-  spender: string;
-  value: BigNumber;
+export namespace ApprovalEvent {
+  export type InputTuple = [
+    owner: AddressLike,
+    spender: AddressLike,
+    value: BigNumberish
+  ];
+  export type OutputTuple = [owner: string, spender: string, value: bigint];
+  export interface OutputObject {
+    owner: string;
+    spender: string;
+    value: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type ApprovalEvent = TypedEvent<
-  [string, string, BigNumber],
-  ApprovalEventObject
->;
 
-export type ApprovalEventFilter = TypedEventFilter<ApprovalEvent>;
-
-export interface BurnEventObject {
-  from: string;
-  amountLP: BigNumber;
-  amountSD: BigNumber;
+export namespace BurnEvent {
+  export type InputTuple = [
+    from: AddressLike,
+    amountLP: BigNumberish,
+    amountSD: BigNumberish
+  ];
+  export type OutputTuple = [from: string, amountLP: bigint, amountSD: bigint];
+  export interface OutputObject {
+    from: string;
+    amountLP: bigint;
+    amountSD: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type BurnEvent = TypedEvent<
-  [string, BigNumber, BigNumber],
-  BurnEventObject
->;
 
-export type BurnEventFilter = TypedEventFilter<BurnEvent>;
-
-export interface ChainPathUpdateEventObject {
-  dstChainId: number;
-  dstPoolId: BigNumber;
-  weight: BigNumber;
+export namespace ChainPathUpdateEvent {
+  export type InputTuple = [
+    dstChainId: BigNumberish,
+    dstPoolId: BigNumberish,
+    weight: BigNumberish
+  ];
+  export type OutputTuple = [
+    dstChainId: bigint,
+    dstPoolId: bigint,
+    weight: bigint
+  ];
+  export interface OutputObject {
+    dstChainId: bigint;
+    dstPoolId: bigint;
+    weight: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type ChainPathUpdateEvent = TypedEvent<
-  [number, BigNumber, BigNumber],
-  ChainPathUpdateEventObject
->;
 
-export type ChainPathUpdateEventFilter = TypedEventFilter<ChainPathUpdateEvent>;
-
-export interface CreditChainPathEventObject {
-  chainId: number;
-  srcPoolId: BigNumber;
-  amountSD: BigNumber;
-  idealBalance: BigNumber;
+export namespace CreditChainPathEvent {
+  export type InputTuple = [
+    chainId: BigNumberish,
+    srcPoolId: BigNumberish,
+    amountSD: BigNumberish,
+    idealBalance: BigNumberish
+  ];
+  export type OutputTuple = [
+    chainId: bigint,
+    srcPoolId: bigint,
+    amountSD: bigint,
+    idealBalance: bigint
+  ];
+  export interface OutputObject {
+    chainId: bigint;
+    srcPoolId: bigint;
+    amountSD: bigint;
+    idealBalance: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type CreditChainPathEvent = TypedEvent<
-  [number, BigNumber, BigNumber, BigNumber],
-  CreditChainPathEventObject
->;
 
-export type CreditChainPathEventFilter = TypedEventFilter<CreditChainPathEvent>;
-
-export interface DeltaParamUpdatedEventObject {
-  batched: boolean;
-  swapDeltaBP: BigNumber;
-  lpDeltaBP: BigNumber;
-  defaultSwapMode: boolean;
-  defaultLPMode: boolean;
+export namespace DeltaParamUpdatedEvent {
+  export type InputTuple = [
+    batched: boolean,
+    swapDeltaBP: BigNumberish,
+    lpDeltaBP: BigNumberish,
+    defaultSwapMode: boolean,
+    defaultLPMode: boolean
+  ];
+  export type OutputTuple = [
+    batched: boolean,
+    swapDeltaBP: bigint,
+    lpDeltaBP: bigint,
+    defaultSwapMode: boolean,
+    defaultLPMode: boolean
+  ];
+  export interface OutputObject {
+    batched: boolean;
+    swapDeltaBP: bigint;
+    lpDeltaBP: bigint;
+    defaultSwapMode: boolean;
+    defaultLPMode: boolean;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type DeltaParamUpdatedEvent = TypedEvent<
-  [boolean, BigNumber, BigNumber, boolean, boolean],
-  DeltaParamUpdatedEventObject
->;
 
-export type DeltaParamUpdatedEventFilter =
-  TypedEventFilter<DeltaParamUpdatedEvent>;
-
-export interface FeeLibraryUpdatedEventObject {
-  feeLibraryAddr: string;
+export namespace FeeLibraryUpdatedEvent {
+  export type InputTuple = [feeLibraryAddr: AddressLike];
+  export type OutputTuple = [feeLibraryAddr: string];
+  export interface OutputObject {
+    feeLibraryAddr: string;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type FeeLibraryUpdatedEvent = TypedEvent<
-  [string],
-  FeeLibraryUpdatedEventObject
->;
 
-export type FeeLibraryUpdatedEventFilter =
-  TypedEventFilter<FeeLibraryUpdatedEvent>;
-
-export interface FeesUpdatedEventObject {
-  mintFeeBP: BigNumber;
+export namespace FeesUpdatedEvent {
+  export type InputTuple = [mintFeeBP: BigNumberish];
+  export type OutputTuple = [mintFeeBP: bigint];
+  export interface OutputObject {
+    mintFeeBP: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type FeesUpdatedEvent = TypedEvent<[BigNumber], FeesUpdatedEventObject>;
 
-export type FeesUpdatedEventFilter = TypedEventFilter<FeesUpdatedEvent>;
-
-export interface InstantRedeemLocalEventObject {
-  from: string;
-  amountLP: BigNumber;
-  amountSD: BigNumber;
-  to: string;
+export namespace InstantRedeemLocalEvent {
+  export type InputTuple = [
+    from: AddressLike,
+    amountLP: BigNumberish,
+    amountSD: BigNumberish,
+    to: AddressLike
+  ];
+  export type OutputTuple = [
+    from: string,
+    amountLP: bigint,
+    amountSD: bigint,
+    to: string
+  ];
+  export interface OutputObject {
+    from: string;
+    amountLP: bigint;
+    amountSD: bigint;
+    to: string;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type InstantRedeemLocalEvent = TypedEvent<
-  [string, BigNumber, BigNumber, string],
-  InstantRedeemLocalEventObject
->;
 
-export type InstantRedeemLocalEventFilter =
-  TypedEventFilter<InstantRedeemLocalEvent>;
-
-export interface MintEventObject {
-  to: string;
-  amountLP: BigNumber;
-  amountSD: BigNumber;
-  mintFeeAmountSD: BigNumber;
+export namespace MintEvent {
+  export type InputTuple = [
+    to: AddressLike,
+    amountLP: BigNumberish,
+    amountSD: BigNumberish,
+    mintFeeAmountSD: BigNumberish
+  ];
+  export type OutputTuple = [
+    to: string,
+    amountLP: bigint,
+    amountSD: bigint,
+    mintFeeAmountSD: bigint
+  ];
+  export interface OutputObject {
+    to: string;
+    amountLP: bigint;
+    amountSD: bigint;
+    mintFeeAmountSD: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type MintEvent = TypedEvent<
-  [string, BigNumber, BigNumber, BigNumber],
-  MintEventObject
->;
 
-export type MintEventFilter = TypedEventFilter<MintEvent>;
-
-export interface RedeemLocalEventObject {
-  from: string;
-  amountLP: BigNumber;
-  amountSD: BigNumber;
-  chainId: number;
-  dstPoolId: BigNumber;
-  to: string;
+export namespace RedeemLocalEvent {
+  export type InputTuple = [
+    from: AddressLike,
+    amountLP: BigNumberish,
+    amountSD: BigNumberish,
+    chainId: BigNumberish,
+    dstPoolId: BigNumberish,
+    to: BytesLike
+  ];
+  export type OutputTuple = [
+    from: string,
+    amountLP: bigint,
+    amountSD: bigint,
+    chainId: bigint,
+    dstPoolId: bigint,
+    to: string
+  ];
+  export interface OutputObject {
+    from: string;
+    amountLP: bigint;
+    amountSD: bigint;
+    chainId: bigint;
+    dstPoolId: bigint;
+    to: string;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type RedeemLocalEvent = TypedEvent<
-  [string, BigNumber, BigNumber, number, BigNumber, string],
-  RedeemLocalEventObject
->;
 
-export type RedeemLocalEventFilter = TypedEventFilter<RedeemLocalEvent>;
-
-export interface RedeemLocalCallbackEventObject {
-  _to: string;
-  _amountSD: BigNumber;
-  _amountToMintSD: BigNumber;
+export namespace RedeemLocalCallbackEvent {
+  export type InputTuple = [
+    _to: AddressLike,
+    _amountSD: BigNumberish,
+    _amountToMintSD: BigNumberish
+  ];
+  export type OutputTuple = [
+    _to: string,
+    _amountSD: bigint,
+    _amountToMintSD: bigint
+  ];
+  export interface OutputObject {
+    _to: string;
+    _amountSD: bigint;
+    _amountToMintSD: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type RedeemLocalCallbackEvent = TypedEvent<
-  [string, BigNumber, BigNumber],
-  RedeemLocalCallbackEventObject
->;
 
-export type RedeemLocalCallbackEventFilter =
-  TypedEventFilter<RedeemLocalCallbackEvent>;
-
-export interface RedeemRemoteEventObject {
-  chainId: number;
-  dstPoolId: BigNumber;
-  from: string;
-  amountLP: BigNumber;
-  amountSD: BigNumber;
+export namespace RedeemRemoteEvent {
+  export type InputTuple = [
+    chainId: BigNumberish,
+    dstPoolId: BigNumberish,
+    from: AddressLike,
+    amountLP: BigNumberish,
+    amountSD: BigNumberish
+  ];
+  export type OutputTuple = [
+    chainId: bigint,
+    dstPoolId: bigint,
+    from: string,
+    amountLP: bigint,
+    amountSD: bigint
+  ];
+  export interface OutputObject {
+    chainId: bigint;
+    dstPoolId: bigint;
+    from: string;
+    amountLP: bigint;
+    amountSD: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type RedeemRemoteEvent = TypedEvent<
-  [number, BigNumber, string, BigNumber, BigNumber],
-  RedeemRemoteEventObject
->;
 
-export type RedeemRemoteEventFilter = TypedEventFilter<RedeemRemoteEvent>;
-
-export interface SendCreditsEventObject {
-  dstChainId: number;
-  dstPoolId: BigNumber;
-  credits: BigNumber;
-  idealBalance: BigNumber;
+export namespace SendCreditsEvent {
+  export type InputTuple = [
+    dstChainId: BigNumberish,
+    dstPoolId: BigNumberish,
+    credits: BigNumberish,
+    idealBalance: BigNumberish
+  ];
+  export type OutputTuple = [
+    dstChainId: bigint,
+    dstPoolId: bigint,
+    credits: bigint,
+    idealBalance: bigint
+  ];
+  export interface OutputObject {
+    dstChainId: bigint;
+    dstPoolId: bigint;
+    credits: bigint;
+    idealBalance: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type SendCreditsEvent = TypedEvent<
-  [number, BigNumber, BigNumber, BigNumber],
-  SendCreditsEventObject
->;
 
-export type SendCreditsEventFilter = TypedEventFilter<SendCreditsEvent>;
-
-export interface StopSwapUpdatedEventObject {
-  swapStop: boolean;
+export namespace StopSwapUpdatedEvent {
+  export type InputTuple = [swapStop: boolean];
+  export type OutputTuple = [swapStop: boolean];
+  export interface OutputObject {
+    swapStop: boolean;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type StopSwapUpdatedEvent = TypedEvent<
-  [boolean],
-  StopSwapUpdatedEventObject
->;
 
-export type StopSwapUpdatedEventFilter = TypedEventFilter<StopSwapUpdatedEvent>;
-
-export interface SwapEventObject {
-  chainId: number;
-  dstPoolId: BigNumber;
-  from: string;
-  amountSD: BigNumber;
-  eqReward: BigNumber;
-  eqFee: BigNumber;
-  protocolFee: BigNumber;
-  lpFee: BigNumber;
+export namespace SwapEvent {
+  export type InputTuple = [
+    chainId: BigNumberish,
+    dstPoolId: BigNumberish,
+    from: AddressLike,
+    amountSD: BigNumberish,
+    eqReward: BigNumberish,
+    eqFee: BigNumberish,
+    protocolFee: BigNumberish,
+    lpFee: BigNumberish
+  ];
+  export type OutputTuple = [
+    chainId: bigint,
+    dstPoolId: bigint,
+    from: string,
+    amountSD: bigint,
+    eqReward: bigint,
+    eqFee: bigint,
+    protocolFee: bigint,
+    lpFee: bigint
+  ];
+  export interface OutputObject {
+    chainId: bigint;
+    dstPoolId: bigint;
+    from: string;
+    amountSD: bigint;
+    eqReward: bigint;
+    eqFee: bigint;
+    protocolFee: bigint;
+    lpFee: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type SwapEvent = TypedEvent<
-  [
-    number,
-    BigNumber,
-    string,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber
-  ],
-  SwapEventObject
->;
 
-export type SwapEventFilter = TypedEventFilter<SwapEvent>;
-
-export interface SwapRemoteEventObject {
-  to: string;
-  amountSD: BigNumber;
-  protocolFee: BigNumber;
-  dstFee: BigNumber;
+export namespace SwapRemoteEvent {
+  export type InputTuple = [
+    to: AddressLike,
+    amountSD: BigNumberish,
+    protocolFee: BigNumberish,
+    dstFee: BigNumberish
+  ];
+  export type OutputTuple = [
+    to: string,
+    amountSD: bigint,
+    protocolFee: bigint,
+    dstFee: bigint
+  ];
+  export interface OutputObject {
+    to: string;
+    amountSD: bigint;
+    protocolFee: bigint;
+    dstFee: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type SwapRemoteEvent = TypedEvent<
-  [string, BigNumber, BigNumber, BigNumber],
-  SwapRemoteEventObject
->;
 
-export type SwapRemoteEventFilter = TypedEventFilter<SwapRemoteEvent>;
-
-export interface TransferEventObject {
-  from: string;
-  to: string;
-  value: BigNumber;
+export namespace TransferEvent {
+  export type InputTuple = [
+    from: AddressLike,
+    to: AddressLike,
+    value: BigNumberish
+  ];
+  export type OutputTuple = [from: string, to: string, value: bigint];
+  export interface OutputObject {
+    from: string;
+    to: string;
+    value: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type TransferEvent = TypedEvent<
-  [string, string, BigNumber],
-  TransferEventObject
->;
 
-export type TransferEventFilter = TypedEventFilter<TransferEvent>;
-
-export interface WithdrawMintFeeBalanceEventObject {
-  to: string;
-  amountSD: BigNumber;
+export namespace WithdrawMintFeeBalanceEvent {
+  export type InputTuple = [to: AddressLike, amountSD: BigNumberish];
+  export type OutputTuple = [to: string, amountSD: bigint];
+  export interface OutputObject {
+    to: string;
+    amountSD: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type WithdrawMintFeeBalanceEvent = TypedEvent<
-  [string, BigNumber],
-  WithdrawMintFeeBalanceEventObject
->;
 
-export type WithdrawMintFeeBalanceEventFilter =
-  TypedEventFilter<WithdrawMintFeeBalanceEvent>;
-
-export interface WithdrawProtocolFeeBalanceEventObject {
-  to: string;
-  amountSD: BigNumber;
+export namespace WithdrawProtocolFeeBalanceEvent {
+  export type InputTuple = [to: AddressLike, amountSD: BigNumberish];
+  export type OutputTuple = [to: string, amountSD: bigint];
+  export interface OutputObject {
+    to: string;
+    amountSD: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type WithdrawProtocolFeeBalanceEvent = TypedEvent<
-  [string, BigNumber],
-  WithdrawProtocolFeeBalanceEventObject
->;
 
-export type WithdrawProtocolFeeBalanceEventFilter =
-  TypedEventFilter<WithdrawProtocolFeeBalanceEvent>;
-
-export interface WithdrawRemoteEventObject {
-  srcChainId: number;
-  srcPoolId: BigNumber;
-  swapAmount: BigNumber;
-  mintAmount: BigNumber;
+export namespace WithdrawRemoteEvent {
+  export type InputTuple = [
+    srcChainId: BigNumberish,
+    srcPoolId: BigNumberish,
+    swapAmount: BigNumberish,
+    mintAmount: BigNumberish
+  ];
+  export type OutputTuple = [
+    srcChainId: bigint,
+    srcPoolId: bigint,
+    swapAmount: bigint,
+    mintAmount: bigint
+  ];
+  export interface OutputObject {
+    srcChainId: bigint;
+    srcPoolId: bigint;
+    swapAmount: bigint;
+    mintAmount: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
-export type WithdrawRemoteEvent = TypedEvent<
-  [number, BigNumber, BigNumber, BigNumber],
-  WithdrawRemoteEventObject
->;
-
-export type WithdrawRemoteEventFilter = TypedEventFilter<WithdrawRemoteEvent>;
 
 export interface StargateToken extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(runner?: ContractRunner | null): StargateToken;
+  waitForDeployment(): Promise<this>;
 
   interface: StargateTokenInterface;
 
-  queryFilter<TEvent extends TypedEvent>(
-    event: TypedEventFilter<TEvent>,
+  queryFilter<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TEvent>>;
-
-  listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
-  listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
-  removeAllListeners(eventName?: string): this;
-  off: OnEvent<this>;
-  on: OnEvent<this>;
-  once: OnEvent<this>;
-  removeListener: OnEvent<this>;
-
-  functions: {
-    BP_DENOMINATOR(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    DOMAIN_SEPARATOR(overrides?: CallOverrides): Promise<[string]>;
-
-    PERMIT_TYPEHASH(overrides?: CallOverrides): Promise<[string]>;
-
-    activateChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    allowance(
-      arg0: string,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    amountLPtoLD(
-      _amountLP: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    approve(
-      spender: string,
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    balanceOf(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    batched(overrides?: CallOverrides): Promise<[boolean]>;
-
-    callDelta(
-      _fullMode: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    chainPathIndexLookup(
-      arg0: BigNumberish,
-      arg1: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    chainPaths(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<
-      [
-        boolean,
-        number,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber
-      ] & {
-        ready: boolean;
-        dstChainId: number;
-        dstPoolId: BigNumber;
-        weight: BigNumber;
-        balance: BigNumber;
-        lkb: BigNumber;
-        credits: BigNumber;
-        idealBalance: BigNumber;
-      }
-    >;
-
-    convertRate(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    createChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _weight: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    creditChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _c: Pool.CreditObjStruct,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    decimals(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    decreaseAllowance(
-      spender: string,
-      subtractedValue: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    defaultLPMode(overrides?: CallOverrides): Promise<[boolean]>;
-
-    defaultSwapMode(overrides?: CallOverrides): Promise<[boolean]>;
-
-    deltaCredit(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    eqFeePool(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    feeLibrary(overrides?: CallOverrides): Promise<[string]>;
-
-    getChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[Pool.ChainPathStructOutput]>;
-
-    getChainPathsLength(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    increaseAllowance(
-      spender: string,
-      addedValue: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    instantRedeemLocal(
-      _from: string,
-      _amountLP: BigNumberish,
-      _to: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    localDecimals(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    lpDeltaBP(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    mint(
-      _to: string,
-      _amountLD: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    mintFeeBP(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    mintFeeBalance(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    name(overrides?: CallOverrides): Promise<[string]>;
-
-    nonces(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    permit(
-      owner: string,
-      spender: string,
-      value: BigNumberish,
-      deadline: BigNumberish,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    poolId(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    protocolFeeBalance(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    redeemLocal(
-      _from: string,
-      _amountLP: BigNumberish,
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _to: BytesLike,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    redeemLocalCallback(
-      _srcChainId: BigNumberish,
-      _srcPoolId: BigNumberish,
-      _to: string,
-      _amountSD: BigNumberish,
-      _amountToMintSD: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    redeemLocalCheckOnRemote(
-      _srcChainId: BigNumberish,
-      _srcPoolId: BigNumberish,
-      _amountSD: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    redeemRemote(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _from: string,
-      _amountLP: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    router(overrides?: CallOverrides): Promise<[string]>;
-
-    sendCredits(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    setDeltaParam(
-      _batched: boolean,
-      _swapDeltaBP: BigNumberish,
-      _lpDeltaBP: BigNumberish,
-      _defaultSwapMode: boolean,
-      _defaultLPMode: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    setFee(
-      _mintFeeBP: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    setFeeLibrary(
-      _feeLibraryAddr: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    setSwapStop(
-      _swapStop: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    setWeightForChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _weight: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    sharedDecimals(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    stopSwap(overrides?: CallOverrides): Promise<[boolean]>;
-
-    swap(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _from: string,
-      _amountLD: BigNumberish,
-      _minAmountLD: BigNumberish,
-      newLiquidity: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    swapDeltaBP(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    swapRemote(
-      _srcChainId: BigNumberish,
-      _srcPoolId: BigNumberish,
-      _to: string,
-      _s: Pool.SwapObjStruct,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    symbol(overrides?: CallOverrides): Promise<[string]>;
-
-    token(overrides?: CallOverrides): Promise<[string]>;
-
-    totalLiquidity(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    totalWeight(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    transfer(
-      to: string,
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    transferFrom(
-      from: string,
-      to: string,
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    withdrawMintFeeBalance(
-      _to: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-
-    withdrawProtocolFeeBalance(
-      _to: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<ContractTransaction>;
-  };
-
-  BP_DENOMINATOR(overrides?: CallOverrides): Promise<BigNumber>;
-
-  DOMAIN_SEPARATOR(overrides?: CallOverrides): Promise<string>;
-
-  PERMIT_TYPEHASH(overrides?: CallOverrides): Promise<string>;
-
-  activateChainPath(
-    _dstChainId: BigNumberish,
-    _dstPoolId: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  allowance(
-    arg0: string,
-    arg1: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  amountLPtoLD(
-    _amountLP: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  approve(
-    spender: string,
-    value: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  balanceOf(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-  batched(overrides?: CallOverrides): Promise<boolean>;
-
-  callDelta(
-    _fullMode: boolean,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  chainPathIndexLookup(
-    arg0: BigNumberish,
-    arg1: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  chainPaths(
-    arg0: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<
-    [
-      boolean,
-      number,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber
-    ] & {
-      ready: boolean;
-      dstChainId: number;
-      dstPoolId: BigNumber;
-      weight: BigNumber;
-      balance: BigNumber;
-      lkb: BigNumber;
-      credits: BigNumber;
-      idealBalance: BigNumber;
-    }
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+  queryFilter<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEventLog<TCEvent>>>;
+
+  on<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  on<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+
+  once<TCEvent extends TypedContractEvent>(
+    event: TCEvent,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+  once<TCEvent extends TypedContractEvent>(
+    filter: TypedDeferredTopicFilter<TCEvent>,
+    listener: TypedListener<TCEvent>
+  ): Promise<this>;
+
+  listeners<TCEvent extends TypedContractEvent>(
+    event: TCEvent
+  ): Promise<Array<TypedListener<TCEvent>>>;
+  listeners(eventName?: string): Promise<Array<Listener>>;
+  removeAllListeners<TCEvent extends TypedContractEvent>(
+    event?: TCEvent
+  ): Promise<this>;
+
+  BP_DENOMINATOR: TypedContractMethod<[], [bigint], "view">;
+
+  DOMAIN_SEPARATOR: TypedContractMethod<[], [string], "view">;
+
+  PERMIT_TYPEHASH: TypedContractMethod<[], [string], "view">;
+
+  activateChainPath: TypedContractMethod<
+    [_dstChainId: BigNumberish, _dstPoolId: BigNumberish],
+    [void],
+    "nonpayable"
   >;
 
-  convertRate(overrides?: CallOverrides): Promise<BigNumber>;
+  allowance: TypedContractMethod<
+    [arg0: AddressLike, arg1: AddressLike],
+    [bigint],
+    "view"
+  >;
 
-  createChainPath(
-    _dstChainId: BigNumberish,
-    _dstPoolId: BigNumberish,
-    _weight: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
+  amountLPtoLD: TypedContractMethod<
+    [_amountLP: BigNumberish],
+    [bigint],
+    "view"
+  >;
 
-  creditChainPath(
-    _dstChainId: BigNumberish,
-    _dstPoolId: BigNumberish,
-    _c: Pool.CreditObjStruct,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
+  approve: TypedContractMethod<
+    [spender: AddressLike, value: BigNumberish],
+    [boolean],
+    "nonpayable"
+  >;
 
-  decimals(overrides?: CallOverrides): Promise<BigNumber>;
+  balanceOf: TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
 
-  decreaseAllowance(
-    spender: string,
-    subtractedValue: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
+  batched: TypedContractMethod<[], [boolean], "view">;
 
-  defaultLPMode(overrides?: CallOverrides): Promise<boolean>;
+  callDelta: TypedContractMethod<[_fullMode: boolean], [void], "nonpayable">;
 
-  defaultSwapMode(overrides?: CallOverrides): Promise<boolean>;
+  chainPathIndexLookup: TypedContractMethod<
+    [arg0: BigNumberish, arg1: BigNumberish],
+    [bigint],
+    "view"
+  >;
 
-  deltaCredit(overrides?: CallOverrides): Promise<BigNumber>;
-
-  eqFeePool(overrides?: CallOverrides): Promise<BigNumber>;
-
-  feeLibrary(overrides?: CallOverrides): Promise<string>;
-
-  getChainPath(
-    _dstChainId: BigNumberish,
-    _dstPoolId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<Pool.ChainPathStructOutput>;
-
-  getChainPathsLength(overrides?: CallOverrides): Promise<BigNumber>;
-
-  increaseAllowance(
-    spender: string,
-    addedValue: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  instantRedeemLocal(
-    _from: string,
-    _amountLP: BigNumberish,
-    _to: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  localDecimals(overrides?: CallOverrides): Promise<BigNumber>;
-
-  lpDeltaBP(overrides?: CallOverrides): Promise<BigNumber>;
-
-  mint(
-    _to: string,
-    _amountLD: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  mintFeeBP(overrides?: CallOverrides): Promise<BigNumber>;
-
-  mintFeeBalance(overrides?: CallOverrides): Promise<BigNumber>;
-
-  name(overrides?: CallOverrides): Promise<string>;
-
-  nonces(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-  permit(
-    owner: string,
-    spender: string,
-    value: BigNumberish,
-    deadline: BigNumberish,
-    v: BigNumberish,
-    r: BytesLike,
-    s: BytesLike,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  poolId(overrides?: CallOverrides): Promise<BigNumber>;
-
-  protocolFeeBalance(overrides?: CallOverrides): Promise<BigNumber>;
-
-  redeemLocal(
-    _from: string,
-    _amountLP: BigNumberish,
-    _dstChainId: BigNumberish,
-    _dstPoolId: BigNumberish,
-    _to: BytesLike,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  redeemLocalCallback(
-    _srcChainId: BigNumberish,
-    _srcPoolId: BigNumberish,
-    _to: string,
-    _amountSD: BigNumberish,
-    _amountToMintSD: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  redeemLocalCheckOnRemote(
-    _srcChainId: BigNumberish,
-    _srcPoolId: BigNumberish,
-    _amountSD: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  redeemRemote(
-    _dstChainId: BigNumberish,
-    _dstPoolId: BigNumberish,
-    _from: string,
-    _amountLP: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  router(overrides?: CallOverrides): Promise<string>;
-
-  sendCredits(
-    _dstChainId: BigNumberish,
-    _dstPoolId: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  setDeltaParam(
-    _batched: boolean,
-    _swapDeltaBP: BigNumberish,
-    _lpDeltaBP: BigNumberish,
-    _defaultSwapMode: boolean,
-    _defaultLPMode: boolean,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  setFee(
-    _mintFeeBP: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  setFeeLibrary(
-    _feeLibraryAddr: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  setSwapStop(
-    _swapStop: boolean,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  setWeightForChainPath(
-    _dstChainId: BigNumberish,
-    _dstPoolId: BigNumberish,
-    _weight: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  sharedDecimals(overrides?: CallOverrides): Promise<BigNumber>;
-
-  stopSwap(overrides?: CallOverrides): Promise<boolean>;
-
-  swap(
-    _dstChainId: BigNumberish,
-    _dstPoolId: BigNumberish,
-    _from: string,
-    _amountLD: BigNumberish,
-    _minAmountLD: BigNumberish,
-    newLiquidity: boolean,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  swapDeltaBP(overrides?: CallOverrides): Promise<BigNumber>;
-
-  swapRemote(
-    _srcChainId: BigNumberish,
-    _srcPoolId: BigNumberish,
-    _to: string,
-    _s: Pool.SwapObjStruct,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  symbol(overrides?: CallOverrides): Promise<string>;
-
-  token(overrides?: CallOverrides): Promise<string>;
-
-  totalLiquidity(overrides?: CallOverrides): Promise<BigNumber>;
-
-  totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
-
-  totalWeight(overrides?: CallOverrides): Promise<BigNumber>;
-
-  transfer(
-    to: string,
-    value: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  transferFrom(
-    from: string,
-    to: string,
-    value: BigNumberish,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  withdrawMintFeeBalance(
-    _to: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  withdrawProtocolFeeBalance(
-    _to: string,
-    overrides?: Overrides & { from?: string }
-  ): Promise<ContractTransaction>;
-
-  callStatic: {
-    BP_DENOMINATOR(overrides?: CallOverrides): Promise<BigNumber>;
-
-    DOMAIN_SEPARATOR(overrides?: CallOverrides): Promise<string>;
-
-    PERMIT_TYPEHASH(overrides?: CallOverrides): Promise<string>;
-
-    activateChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    allowance(
-      arg0: string,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    amountLPtoLD(
-      _amountLP: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    approve(
-      spender: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    balanceOf(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    batched(overrides?: CallOverrides): Promise<boolean>;
-
-    callDelta(_fullMode: boolean, overrides?: CallOverrides): Promise<void>;
-
-    chainPathIndexLookup(
-      arg0: BigNumberish,
-      arg1: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    chainPaths(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<
-      [
-        boolean,
-        number,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber
-      ] & {
+  chainPaths: TypedContractMethod<
+    [arg0: BigNumberish],
+    [
+      [boolean, bigint, bigint, bigint, bigint, bigint, bigint, bigint] & {
         ready: boolean;
-        dstChainId: number;
-        dstPoolId: BigNumber;
-        weight: BigNumber;
-        balance: BigNumber;
-        lkb: BigNumber;
-        credits: BigNumber;
-        idealBalance: BigNumber;
+        dstChainId: bigint;
+        dstPoolId: bigint;
+        weight: bigint;
+        balance: bigint;
+        lkb: bigint;
+        credits: bigint;
+        idealBalance: bigint;
       }
-    >;
+    ],
+    "view"
+  >;
 
-    convertRate(overrides?: CallOverrides): Promise<BigNumber>;
+  convertRate: TypedContractMethod<[], [bigint], "view">;
 
-    createChainPath(
+  createChainPath: TypedContractMethod<
+    [
       _dstChainId: BigNumberish,
       _dstPoolId: BigNumberish,
-      _weight: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+      _weight: BigNumberish
+    ],
+    [void],
+    "nonpayable"
+  >;
 
-    creditChainPath(
+  creditChainPath: TypedContractMethod<
+    [
       _dstChainId: BigNumberish,
       _dstPoolId: BigNumberish,
-      _c: Pool.CreditObjStruct,
-      overrides?: CallOverrides
-    ): Promise<void>;
+      _c: Pool.CreditObjStruct
+    ],
+    [void],
+    "nonpayable"
+  >;
 
-    decimals(overrides?: CallOverrides): Promise<BigNumber>;
+  decimals: TypedContractMethod<[], [bigint], "view">;
 
-    decreaseAllowance(
-      spender: string,
-      subtractedValue: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+  decreaseAllowance: TypedContractMethod<
+    [spender: AddressLike, subtractedValue: BigNumberish],
+    [boolean],
+    "nonpayable"
+  >;
 
-    defaultLPMode(overrides?: CallOverrides): Promise<boolean>;
+  defaultLPMode: TypedContractMethod<[], [boolean], "view">;
 
-    defaultSwapMode(overrides?: CallOverrides): Promise<boolean>;
+  defaultSwapMode: TypedContractMethod<[], [boolean], "view">;
 
-    deltaCredit(overrides?: CallOverrides): Promise<BigNumber>;
+  deltaCredit: TypedContractMethod<[], [bigint], "view">;
 
-    eqFeePool(overrides?: CallOverrides): Promise<BigNumber>;
+  eqFeePool: TypedContractMethod<[], [bigint], "view">;
 
-    feeLibrary(overrides?: CallOverrides): Promise<string>;
+  feeLibrary: TypedContractMethod<[], [string], "view">;
 
-    getChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<Pool.ChainPathStructOutput>;
+  getChainPath: TypedContractMethod<
+    [_dstChainId: BigNumberish, _dstPoolId: BigNumberish],
+    [Pool.ChainPathStructOutput],
+    "view"
+  >;
 
-    getChainPathsLength(overrides?: CallOverrides): Promise<BigNumber>;
+  getChainPathsLength: TypedContractMethod<[], [bigint], "view">;
 
-    increaseAllowance(
-      spender: string,
-      addedValue: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+  increaseAllowance: TypedContractMethod<
+    [spender: AddressLike, addedValue: BigNumberish],
+    [boolean],
+    "nonpayable"
+  >;
 
-    instantRedeemLocal(
-      _from: string,
-      _amountLP: BigNumberish,
-      _to: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+  instantRedeemLocal: TypedContractMethod<
+    [_from: AddressLike, _amountLP: BigNumberish, _to: AddressLike],
+    [bigint],
+    "nonpayable"
+  >;
 
-    localDecimals(overrides?: CallOverrides): Promise<BigNumber>;
+  localDecimals: TypedContractMethod<[], [bigint], "view">;
 
-    lpDeltaBP(overrides?: CallOverrides): Promise<BigNumber>;
+  lpDeltaBP: TypedContractMethod<[], [bigint], "view">;
 
-    mint(
-      _to: string,
-      _amountLD: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+  mint: TypedContractMethod<
+    [_to: AddressLike, _amountLD: BigNumberish],
+    [bigint],
+    "nonpayable"
+  >;
 
-    mintFeeBP(overrides?: CallOverrides): Promise<BigNumber>;
+  mintFeeBP: TypedContractMethod<[], [bigint], "view">;
 
-    mintFeeBalance(overrides?: CallOverrides): Promise<BigNumber>;
+  mintFeeBalance: TypedContractMethod<[], [bigint], "view">;
 
-    name(overrides?: CallOverrides): Promise<string>;
+  name: TypedContractMethod<[], [string], "view">;
 
-    nonces(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+  nonces: TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
 
-    permit(
-      owner: string,
-      spender: string,
+  permit: TypedContractMethod<
+    [
+      owner: AddressLike,
+      spender: AddressLike,
       value: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
-      s: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<void>;
+      s: BytesLike
+    ],
+    [void],
+    "nonpayable"
+  >;
 
-    poolId(overrides?: CallOverrides): Promise<BigNumber>;
+  poolId: TypedContractMethod<[], [bigint], "view">;
 
-    protocolFeeBalance(overrides?: CallOverrides): Promise<BigNumber>;
+  protocolFeeBalance: TypedContractMethod<[], [bigint], "view">;
 
-    redeemLocal(
-      _from: string,
+  redeemLocal: TypedContractMethod<
+    [
+      _from: AddressLike,
       _amountLP: BigNumberish,
       _dstChainId: BigNumberish,
       _dstPoolId: BigNumberish,
-      _to: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+      _to: BytesLike
+    ],
+    [bigint],
+    "nonpayable"
+  >;
 
-    redeemLocalCallback(
+  redeemLocalCallback: TypedContractMethod<
+    [
       _srcChainId: BigNumberish,
       _srcPoolId: BigNumberish,
-      _to: string,
+      _to: AddressLike,
       _amountSD: BigNumberish,
-      _amountToMintSD: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+      _amountToMintSD: BigNumberish
+    ],
+    [void],
+    "nonpayable"
+  >;
 
-    redeemLocalCheckOnRemote(
+  redeemLocalCheckOnRemote: TypedContractMethod<
+    [
       _srcChainId: BigNumberish,
       _srcPoolId: BigNumberish,
-      _amountSD: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { swapAmount: BigNumber; mintAmount: BigNumber }
-    >;
+      _amountSD: BigNumberish
+    ],
+    [[bigint, bigint] & { swapAmount: bigint; mintAmount: bigint }],
+    "nonpayable"
+  >;
 
-    redeemRemote(
+  redeemRemote: TypedContractMethod<
+    [
       _dstChainId: BigNumberish,
       _dstPoolId: BigNumberish,
-      _from: string,
-      _amountLP: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+      _from: AddressLike,
+      _amountLP: BigNumberish
+    ],
+    [void],
+    "nonpayable"
+  >;
 
-    router(overrides?: CallOverrides): Promise<string>;
+  router: TypedContractMethod<[], [string], "view">;
 
-    sendCredits(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<Pool.CreditObjStructOutput>;
+  sendCredits: TypedContractMethod<
+    [_dstChainId: BigNumberish, _dstPoolId: BigNumberish],
+    [Pool.CreditObjStructOutput],
+    "nonpayable"
+  >;
 
-    setDeltaParam(
+  setDeltaParam: TypedContractMethod<
+    [
       _batched: boolean,
       _swapDeltaBP: BigNumberish,
       _lpDeltaBP: BigNumberish,
       _defaultSwapMode: boolean,
-      _defaultLPMode: boolean,
-      overrides?: CallOverrides
-    ): Promise<void>;
+      _defaultLPMode: boolean
+    ],
+    [void],
+    "nonpayable"
+  >;
 
-    setFee(_mintFeeBP: BigNumberish, overrides?: CallOverrides): Promise<void>;
+  setFee: TypedContractMethod<[_mintFeeBP: BigNumberish], [void], "nonpayable">;
 
-    setFeeLibrary(
-      _feeLibraryAddr: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+  setFeeLibrary: TypedContractMethod<
+    [_feeLibraryAddr: AddressLike],
+    [void],
+    "nonpayable"
+  >;
 
-    setSwapStop(_swapStop: boolean, overrides?: CallOverrides): Promise<void>;
+  setSwapStop: TypedContractMethod<[_swapStop: boolean], [void], "nonpayable">;
 
-    setWeightForChainPath(
+  setWeightForChainPath: TypedContractMethod<
+    [
       _dstChainId: BigNumberish,
       _dstPoolId: BigNumberish,
-      _weight: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+      _weight: BigNumberish
+    ],
+    [void],
+    "nonpayable"
+  >;
 
-    sharedDecimals(overrides?: CallOverrides): Promise<BigNumber>;
+  sharedDecimals: TypedContractMethod<[], [bigint], "view">;
 
-    stopSwap(overrides?: CallOverrides): Promise<boolean>;
+  stopSwap: TypedContractMethod<[], [boolean], "view">;
 
-    swap(
+  swap: TypedContractMethod<
+    [
       _dstChainId: BigNumberish,
       _dstPoolId: BigNumberish,
-      _from: string,
+      _from: AddressLike,
       _amountLD: BigNumberish,
       _minAmountLD: BigNumberish,
-      newLiquidity: boolean,
-      overrides?: CallOverrides
-    ): Promise<Pool.SwapObjStructOutput>;
+      newLiquidity: boolean
+    ],
+    [Pool.SwapObjStructOutput],
+    "nonpayable"
+  >;
 
-    swapDeltaBP(overrides?: CallOverrides): Promise<BigNumber>;
+  swapDeltaBP: TypedContractMethod<[], [bigint], "view">;
 
-    swapRemote(
+  swapRemote: TypedContractMethod<
+    [
       _srcChainId: BigNumberish,
       _srcPoolId: BigNumberish,
-      _to: string,
-      _s: Pool.SwapObjStruct,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+      _to: AddressLike,
+      _s: Pool.SwapObjStruct
+    ],
+    [bigint],
+    "nonpayable"
+  >;
 
-    symbol(overrides?: CallOverrides): Promise<string>;
+  symbol: TypedContractMethod<[], [string], "view">;
 
-    token(overrides?: CallOverrides): Promise<string>;
+  token: TypedContractMethod<[], [string], "view">;
 
-    totalLiquidity(overrides?: CallOverrides): Promise<BigNumber>;
+  totalLiquidity: TypedContractMethod<[], [bigint], "view">;
 
-    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+  totalSupply: TypedContractMethod<[], [bigint], "view">;
 
-    totalWeight(overrides?: CallOverrides): Promise<BigNumber>;
+  totalWeight: TypedContractMethod<[], [bigint], "view">;
 
-    transfer(
-      to: string,
+  transfer: TypedContractMethod<
+    [to: AddressLike, value: BigNumberish],
+    [boolean],
+    "nonpayable"
+  >;
+
+  transferFrom: TypedContractMethod<
+    [from: AddressLike, to: AddressLike, value: BigNumberish],
+    [boolean],
+    "nonpayable"
+  >;
+
+  withdrawMintFeeBalance: TypedContractMethod<
+    [_to: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+
+  withdrawProtocolFeeBalance: TypedContractMethod<
+    [_to: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+
+  getFunction<T extends ContractMethod = ContractMethod>(
+    key: string | FunctionFragment
+  ): T;
+
+  getFunction(
+    nameOrSignature: "BP_DENOMINATOR"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "DOMAIN_SEPARATOR"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "PERMIT_TYPEHASH"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "activateChainPath"
+  ): TypedContractMethod<
+    [_dstChainId: BigNumberish, _dstPoolId: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "allowance"
+  ): TypedContractMethod<
+    [arg0: AddressLike, arg1: AddressLike],
+    [bigint],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "amountLPtoLD"
+  ): TypedContractMethod<[_amountLP: BigNumberish], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "approve"
+  ): TypedContractMethod<
+    [spender: AddressLike, value: BigNumberish],
+    [boolean],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "balanceOf"
+  ): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "batched"
+  ): TypedContractMethod<[], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "callDelta"
+  ): TypedContractMethod<[_fullMode: boolean], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "chainPathIndexLookup"
+  ): TypedContractMethod<
+    [arg0: BigNumberish, arg1: BigNumberish],
+    [bigint],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "chainPaths"
+  ): TypedContractMethod<
+    [arg0: BigNumberish],
+    [
+      [boolean, bigint, bigint, bigint, bigint, bigint, bigint, bigint] & {
+        ready: boolean;
+        dstChainId: bigint;
+        dstPoolId: bigint;
+        weight: bigint;
+        balance: bigint;
+        lkb: bigint;
+        credits: bigint;
+        idealBalance: bigint;
+      }
+    ],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "convertRate"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "createChainPath"
+  ): TypedContractMethod<
+    [
+      _dstChainId: BigNumberish,
+      _dstPoolId: BigNumberish,
+      _weight: BigNumberish
+    ],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "creditChainPath"
+  ): TypedContractMethod<
+    [
+      _dstChainId: BigNumberish,
+      _dstPoolId: BigNumberish,
+      _c: Pool.CreditObjStruct
+    ],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "decimals"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "decreaseAllowance"
+  ): TypedContractMethod<
+    [spender: AddressLike, subtractedValue: BigNumberish],
+    [boolean],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "defaultLPMode"
+  ): TypedContractMethod<[], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "defaultSwapMode"
+  ): TypedContractMethod<[], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "deltaCredit"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "eqFeePool"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "feeLibrary"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "getChainPath"
+  ): TypedContractMethod<
+    [_dstChainId: BigNumberish, _dstPoolId: BigNumberish],
+    [Pool.ChainPathStructOutput],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "getChainPathsLength"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "increaseAllowance"
+  ): TypedContractMethod<
+    [spender: AddressLike, addedValue: BigNumberish],
+    [boolean],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "instantRedeemLocal"
+  ): TypedContractMethod<
+    [_from: AddressLike, _amountLP: BigNumberish, _to: AddressLike],
+    [bigint],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "localDecimals"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "lpDeltaBP"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "mint"
+  ): TypedContractMethod<
+    [_to: AddressLike, _amountLD: BigNumberish],
+    [bigint],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "mintFeeBP"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "mintFeeBalance"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "name"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "nonces"
+  ): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "permit"
+  ): TypedContractMethod<
+    [
+      owner: AddressLike,
+      spender: AddressLike,
       value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+      deadline: BigNumberish,
+      v: BigNumberish,
+      r: BytesLike,
+      s: BytesLike
+    ],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "poolId"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "protocolFeeBalance"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "redeemLocal"
+  ): TypedContractMethod<
+    [
+      _from: AddressLike,
+      _amountLP: BigNumberish,
+      _dstChainId: BigNumberish,
+      _dstPoolId: BigNumberish,
+      _to: BytesLike
+    ],
+    [bigint],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "redeemLocalCallback"
+  ): TypedContractMethod<
+    [
+      _srcChainId: BigNumberish,
+      _srcPoolId: BigNumberish,
+      _to: AddressLike,
+      _amountSD: BigNumberish,
+      _amountToMintSD: BigNumberish
+    ],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "redeemLocalCheckOnRemote"
+  ): TypedContractMethod<
+    [
+      _srcChainId: BigNumberish,
+      _srcPoolId: BigNumberish,
+      _amountSD: BigNumberish
+    ],
+    [[bigint, bigint] & { swapAmount: bigint; mintAmount: bigint }],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "redeemRemote"
+  ): TypedContractMethod<
+    [
+      _dstChainId: BigNumberish,
+      _dstPoolId: BigNumberish,
+      _from: AddressLike,
+      _amountLP: BigNumberish
+    ],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "router"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "sendCredits"
+  ): TypedContractMethod<
+    [_dstChainId: BigNumberish, _dstPoolId: BigNumberish],
+    [Pool.CreditObjStructOutput],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "setDeltaParam"
+  ): TypedContractMethod<
+    [
+      _batched: boolean,
+      _swapDeltaBP: BigNumberish,
+      _lpDeltaBP: BigNumberish,
+      _defaultSwapMode: boolean,
+      _defaultLPMode: boolean
+    ],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "setFee"
+  ): TypedContractMethod<[_mintFeeBP: BigNumberish], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "setFeeLibrary"
+  ): TypedContractMethod<[_feeLibraryAddr: AddressLike], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "setSwapStop"
+  ): TypedContractMethod<[_swapStop: boolean], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "setWeightForChainPath"
+  ): TypedContractMethod<
+    [
+      _dstChainId: BigNumberish,
+      _dstPoolId: BigNumberish,
+      _weight: BigNumberish
+    ],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "sharedDecimals"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "stopSwap"
+  ): TypedContractMethod<[], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "swap"
+  ): TypedContractMethod<
+    [
+      _dstChainId: BigNumberish,
+      _dstPoolId: BigNumberish,
+      _from: AddressLike,
+      _amountLD: BigNumberish,
+      _minAmountLD: BigNumberish,
+      newLiquidity: boolean
+    ],
+    [Pool.SwapObjStructOutput],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "swapDeltaBP"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "swapRemote"
+  ): TypedContractMethod<
+    [
+      _srcChainId: BigNumberish,
+      _srcPoolId: BigNumberish,
+      _to: AddressLike,
+      _s: Pool.SwapObjStruct
+    ],
+    [bigint],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "symbol"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "token"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "totalLiquidity"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "totalSupply"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "totalWeight"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "transfer"
+  ): TypedContractMethod<
+    [to: AddressLike, value: BigNumberish],
+    [boolean],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "transferFrom"
+  ): TypedContractMethod<
+    [from: AddressLike, to: AddressLike, value: BigNumberish],
+    [boolean],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "withdrawMintFeeBalance"
+  ): TypedContractMethod<[_to: AddressLike], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "withdrawProtocolFeeBalance"
+  ): TypedContractMethod<[_to: AddressLike], [void], "nonpayable">;
 
-    transferFrom(
-      from: string,
-      to: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    withdrawMintFeeBalance(
-      _to: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    withdrawProtocolFeeBalance(
-      _to: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
-  };
+  getEvent(
+    key: "Approval"
+  ): TypedContractEvent<
+    ApprovalEvent.InputTuple,
+    ApprovalEvent.OutputTuple,
+    ApprovalEvent.OutputObject
+  >;
+  getEvent(
+    key: "Burn"
+  ): TypedContractEvent<
+    BurnEvent.InputTuple,
+    BurnEvent.OutputTuple,
+    BurnEvent.OutputObject
+  >;
+  getEvent(
+    key: "ChainPathUpdate"
+  ): TypedContractEvent<
+    ChainPathUpdateEvent.InputTuple,
+    ChainPathUpdateEvent.OutputTuple,
+    ChainPathUpdateEvent.OutputObject
+  >;
+  getEvent(
+    key: "CreditChainPath"
+  ): TypedContractEvent<
+    CreditChainPathEvent.InputTuple,
+    CreditChainPathEvent.OutputTuple,
+    CreditChainPathEvent.OutputObject
+  >;
+  getEvent(
+    key: "DeltaParamUpdated"
+  ): TypedContractEvent<
+    DeltaParamUpdatedEvent.InputTuple,
+    DeltaParamUpdatedEvent.OutputTuple,
+    DeltaParamUpdatedEvent.OutputObject
+  >;
+  getEvent(
+    key: "FeeLibraryUpdated"
+  ): TypedContractEvent<
+    FeeLibraryUpdatedEvent.InputTuple,
+    FeeLibraryUpdatedEvent.OutputTuple,
+    FeeLibraryUpdatedEvent.OutputObject
+  >;
+  getEvent(
+    key: "FeesUpdated"
+  ): TypedContractEvent<
+    FeesUpdatedEvent.InputTuple,
+    FeesUpdatedEvent.OutputTuple,
+    FeesUpdatedEvent.OutputObject
+  >;
+  getEvent(
+    key: "InstantRedeemLocal"
+  ): TypedContractEvent<
+    InstantRedeemLocalEvent.InputTuple,
+    InstantRedeemLocalEvent.OutputTuple,
+    InstantRedeemLocalEvent.OutputObject
+  >;
+  getEvent(
+    key: "Mint"
+  ): TypedContractEvent<
+    MintEvent.InputTuple,
+    MintEvent.OutputTuple,
+    MintEvent.OutputObject
+  >;
+  getEvent(
+    key: "RedeemLocal"
+  ): TypedContractEvent<
+    RedeemLocalEvent.InputTuple,
+    RedeemLocalEvent.OutputTuple,
+    RedeemLocalEvent.OutputObject
+  >;
+  getEvent(
+    key: "RedeemLocalCallback"
+  ): TypedContractEvent<
+    RedeemLocalCallbackEvent.InputTuple,
+    RedeemLocalCallbackEvent.OutputTuple,
+    RedeemLocalCallbackEvent.OutputObject
+  >;
+  getEvent(
+    key: "RedeemRemote"
+  ): TypedContractEvent<
+    RedeemRemoteEvent.InputTuple,
+    RedeemRemoteEvent.OutputTuple,
+    RedeemRemoteEvent.OutputObject
+  >;
+  getEvent(
+    key: "SendCredits"
+  ): TypedContractEvent<
+    SendCreditsEvent.InputTuple,
+    SendCreditsEvent.OutputTuple,
+    SendCreditsEvent.OutputObject
+  >;
+  getEvent(
+    key: "StopSwapUpdated"
+  ): TypedContractEvent<
+    StopSwapUpdatedEvent.InputTuple,
+    StopSwapUpdatedEvent.OutputTuple,
+    StopSwapUpdatedEvent.OutputObject
+  >;
+  getEvent(
+    key: "Swap"
+  ): TypedContractEvent<
+    SwapEvent.InputTuple,
+    SwapEvent.OutputTuple,
+    SwapEvent.OutputObject
+  >;
+  getEvent(
+    key: "SwapRemote"
+  ): TypedContractEvent<
+    SwapRemoteEvent.InputTuple,
+    SwapRemoteEvent.OutputTuple,
+    SwapRemoteEvent.OutputObject
+  >;
+  getEvent(
+    key: "Transfer"
+  ): TypedContractEvent<
+    TransferEvent.InputTuple,
+    TransferEvent.OutputTuple,
+    TransferEvent.OutputObject
+  >;
+  getEvent(
+    key: "WithdrawMintFeeBalance"
+  ): TypedContractEvent<
+    WithdrawMintFeeBalanceEvent.InputTuple,
+    WithdrawMintFeeBalanceEvent.OutputTuple,
+    WithdrawMintFeeBalanceEvent.OutputObject
+  >;
+  getEvent(
+    key: "WithdrawProtocolFeeBalance"
+  ): TypedContractEvent<
+    WithdrawProtocolFeeBalanceEvent.InputTuple,
+    WithdrawProtocolFeeBalanceEvent.OutputTuple,
+    WithdrawProtocolFeeBalanceEvent.OutputObject
+  >;
+  getEvent(
+    key: "WithdrawRemote"
+  ): TypedContractEvent<
+    WithdrawRemoteEvent.InputTuple,
+    WithdrawRemoteEvent.OutputTuple,
+    WithdrawRemoteEvent.OutputObject
+  >;
 
   filters: {
-    "Approval(address,address,uint256)"(
-      owner?: string | null,
-      spender?: string | null,
-      value?: null
-    ): ApprovalEventFilter;
-    Approval(
-      owner?: string | null,
-      spender?: string | null,
-      value?: null
-    ): ApprovalEventFilter;
-
-    "Burn(address,uint256,uint256)"(
-      from?: null,
-      amountLP?: null,
-      amountSD?: null
-    ): BurnEventFilter;
-    Burn(from?: null, amountLP?: null, amountSD?: null): BurnEventFilter;
-
-    "ChainPathUpdate(uint16,uint256,uint256)"(
-      dstChainId?: null,
-      dstPoolId?: null,
-      weight?: null
-    ): ChainPathUpdateEventFilter;
-    ChainPathUpdate(
-      dstChainId?: null,
-      dstPoolId?: null,
-      weight?: null
-    ): ChainPathUpdateEventFilter;
-
-    "CreditChainPath(uint16,uint256,uint256,uint256)"(
-      chainId?: null,
-      srcPoolId?: null,
-      amountSD?: null,
-      idealBalance?: null
-    ): CreditChainPathEventFilter;
-    CreditChainPath(
-      chainId?: null,
-      srcPoolId?: null,
-      amountSD?: null,
-      idealBalance?: null
-    ): CreditChainPathEventFilter;
-
-    "DeltaParamUpdated(bool,uint256,uint256,bool,bool)"(
-      batched?: null,
-      swapDeltaBP?: null,
-      lpDeltaBP?: null,
-      defaultSwapMode?: null,
-      defaultLPMode?: null
-    ): DeltaParamUpdatedEventFilter;
-    DeltaParamUpdated(
-      batched?: null,
-      swapDeltaBP?: null,
-      lpDeltaBP?: null,
-      defaultSwapMode?: null,
-      defaultLPMode?: null
-    ): DeltaParamUpdatedEventFilter;
-
-    "FeeLibraryUpdated(address)"(
-      feeLibraryAddr?: null
-    ): FeeLibraryUpdatedEventFilter;
-    FeeLibraryUpdated(feeLibraryAddr?: null): FeeLibraryUpdatedEventFilter;
-
-    "FeesUpdated(uint256)"(mintFeeBP?: null): FeesUpdatedEventFilter;
-    FeesUpdated(mintFeeBP?: null): FeesUpdatedEventFilter;
-
-    "InstantRedeemLocal(address,uint256,uint256,address)"(
-      from?: null,
-      amountLP?: null,
-      amountSD?: null,
-      to?: null
-    ): InstantRedeemLocalEventFilter;
-    InstantRedeemLocal(
-      from?: null,
-      amountLP?: null,
-      amountSD?: null,
-      to?: null
-    ): InstantRedeemLocalEventFilter;
-
-    "Mint(address,uint256,uint256,uint256)"(
-      to?: null,
-      amountLP?: null,
-      amountSD?: null,
-      mintFeeAmountSD?: null
-    ): MintEventFilter;
-    Mint(
-      to?: null,
-      amountLP?: null,
-      amountSD?: null,
-      mintFeeAmountSD?: null
-    ): MintEventFilter;
-
-    "RedeemLocal(address,uint256,uint256,uint16,uint256,bytes)"(
-      from?: null,
-      amountLP?: null,
-      amountSD?: null,
-      chainId?: null,
-      dstPoolId?: null,
-      to?: null
-    ): RedeemLocalEventFilter;
-    RedeemLocal(
-      from?: null,
-      amountLP?: null,
-      amountSD?: null,
-      chainId?: null,
-      dstPoolId?: null,
-      to?: null
-    ): RedeemLocalEventFilter;
-
-    "RedeemLocalCallback(address,uint256,uint256)"(
-      _to?: null,
-      _amountSD?: null,
-      _amountToMintSD?: null
-    ): RedeemLocalCallbackEventFilter;
-    RedeemLocalCallback(
-      _to?: null,
-      _amountSD?: null,
-      _amountToMintSD?: null
-    ): RedeemLocalCallbackEventFilter;
-
-    "RedeemRemote(uint16,uint256,address,uint256,uint256)"(
-      chainId?: null,
-      dstPoolId?: null,
-      from?: null,
-      amountLP?: null,
-      amountSD?: null
-    ): RedeemRemoteEventFilter;
-    RedeemRemote(
-      chainId?: null,
-      dstPoolId?: null,
-      from?: null,
-      amountLP?: null,
-      amountSD?: null
-    ): RedeemRemoteEventFilter;
-
-    "SendCredits(uint16,uint256,uint256,uint256)"(
-      dstChainId?: null,
-      dstPoolId?: null,
-      credits?: null,
-      idealBalance?: null
-    ): SendCreditsEventFilter;
-    SendCredits(
-      dstChainId?: null,
-      dstPoolId?: null,
-      credits?: null,
-      idealBalance?: null
-    ): SendCreditsEventFilter;
-
-    "StopSwapUpdated(bool)"(swapStop?: null): StopSwapUpdatedEventFilter;
-    StopSwapUpdated(swapStop?: null): StopSwapUpdatedEventFilter;
-
-    "Swap(uint16,uint256,address,uint256,uint256,uint256,uint256,uint256)"(
-      chainId?: null,
-      dstPoolId?: null,
-      from?: null,
-      amountSD?: null,
-      eqReward?: null,
-      eqFee?: null,
-      protocolFee?: null,
-      lpFee?: null
-    ): SwapEventFilter;
-    Swap(
-      chainId?: null,
-      dstPoolId?: null,
-      from?: null,
-      amountSD?: null,
-      eqReward?: null,
-      eqFee?: null,
-      protocolFee?: null,
-      lpFee?: null
-    ): SwapEventFilter;
-
-    "SwapRemote(address,uint256,uint256,uint256)"(
-      to?: null,
-      amountSD?: null,
-      protocolFee?: null,
-      dstFee?: null
-    ): SwapRemoteEventFilter;
-    SwapRemote(
-      to?: null,
-      amountSD?: null,
-      protocolFee?: null,
-      dstFee?: null
-    ): SwapRemoteEventFilter;
-
-    "Transfer(address,address,uint256)"(
-      from?: string | null,
-      to?: string | null,
-      value?: null
-    ): TransferEventFilter;
-    Transfer(
-      from?: string | null,
-      to?: string | null,
-      value?: null
-    ): TransferEventFilter;
-
-    "WithdrawMintFeeBalance(address,uint256)"(
-      to?: null,
-      amountSD?: null
-    ): WithdrawMintFeeBalanceEventFilter;
-    WithdrawMintFeeBalance(
-      to?: null,
-      amountSD?: null
-    ): WithdrawMintFeeBalanceEventFilter;
-
-    "WithdrawProtocolFeeBalance(address,uint256)"(
-      to?: null,
-      amountSD?: null
-    ): WithdrawProtocolFeeBalanceEventFilter;
-    WithdrawProtocolFeeBalance(
-      to?: null,
-      amountSD?: null
-    ): WithdrawProtocolFeeBalanceEventFilter;
-
-    "WithdrawRemote(uint16,uint256,uint256,uint256)"(
-      srcChainId?: null,
-      srcPoolId?: null,
-      swapAmount?: null,
-      mintAmount?: null
-    ): WithdrawRemoteEventFilter;
-    WithdrawRemote(
-      srcChainId?: null,
-      srcPoolId?: null,
-      swapAmount?: null,
-      mintAmount?: null
-    ): WithdrawRemoteEventFilter;
-  };
-
-  estimateGas: {
-    BP_DENOMINATOR(overrides?: CallOverrides): Promise<BigNumber>;
-
-    DOMAIN_SEPARATOR(overrides?: CallOverrides): Promise<BigNumber>;
-
-    PERMIT_TYPEHASH(overrides?: CallOverrides): Promise<BigNumber>;
-
-    activateChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    allowance(
-      arg0: string,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    amountLPtoLD(
-      _amountLP: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    approve(
-      spender: string,
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    balanceOf(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    batched(overrides?: CallOverrides): Promise<BigNumber>;
-
-    callDelta(
-      _fullMode: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    chainPathIndexLookup(
-      arg0: BigNumberish,
-      arg1: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    chainPaths(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    convertRate(overrides?: CallOverrides): Promise<BigNumber>;
-
-    createChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _weight: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    creditChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _c: Pool.CreditObjStruct,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    decimals(overrides?: CallOverrides): Promise<BigNumber>;
-
-    decreaseAllowance(
-      spender: string,
-      subtractedValue: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    defaultLPMode(overrides?: CallOverrides): Promise<BigNumber>;
-
-    defaultSwapMode(overrides?: CallOverrides): Promise<BigNumber>;
-
-    deltaCredit(overrides?: CallOverrides): Promise<BigNumber>;
-
-    eqFeePool(overrides?: CallOverrides): Promise<BigNumber>;
-
-    feeLibrary(overrides?: CallOverrides): Promise<BigNumber>;
-
-    getChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    getChainPathsLength(overrides?: CallOverrides): Promise<BigNumber>;
-
-    increaseAllowance(
-      spender: string,
-      addedValue: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    instantRedeemLocal(
-      _from: string,
-      _amountLP: BigNumberish,
-      _to: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    localDecimals(overrides?: CallOverrides): Promise<BigNumber>;
-
-    lpDeltaBP(overrides?: CallOverrides): Promise<BigNumber>;
-
-    mint(
-      _to: string,
-      _amountLD: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    mintFeeBP(overrides?: CallOverrides): Promise<BigNumber>;
-
-    mintFeeBalance(overrides?: CallOverrides): Promise<BigNumber>;
-
-    name(overrides?: CallOverrides): Promise<BigNumber>;
-
-    nonces(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    permit(
-      owner: string,
-      spender: string,
-      value: BigNumberish,
-      deadline: BigNumberish,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    poolId(overrides?: CallOverrides): Promise<BigNumber>;
-
-    protocolFeeBalance(overrides?: CallOverrides): Promise<BigNumber>;
-
-    redeemLocal(
-      _from: string,
-      _amountLP: BigNumberish,
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _to: BytesLike,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    redeemLocalCallback(
-      _srcChainId: BigNumberish,
-      _srcPoolId: BigNumberish,
-      _to: string,
-      _amountSD: BigNumberish,
-      _amountToMintSD: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    redeemLocalCheckOnRemote(
-      _srcChainId: BigNumberish,
-      _srcPoolId: BigNumberish,
-      _amountSD: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    redeemRemote(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _from: string,
-      _amountLP: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    router(overrides?: CallOverrides): Promise<BigNumber>;
-
-    sendCredits(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    setDeltaParam(
-      _batched: boolean,
-      _swapDeltaBP: BigNumberish,
-      _lpDeltaBP: BigNumberish,
-      _defaultSwapMode: boolean,
-      _defaultLPMode: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    setFee(
-      _mintFeeBP: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    setFeeLibrary(
-      _feeLibraryAddr: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    setSwapStop(
-      _swapStop: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    setWeightForChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _weight: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    sharedDecimals(overrides?: CallOverrides): Promise<BigNumber>;
-
-    stopSwap(overrides?: CallOverrides): Promise<BigNumber>;
-
-    swap(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _from: string,
-      _amountLD: BigNumberish,
-      _minAmountLD: BigNumberish,
-      newLiquidity: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    swapDeltaBP(overrides?: CallOverrides): Promise<BigNumber>;
-
-    swapRemote(
-      _srcChainId: BigNumberish,
-      _srcPoolId: BigNumberish,
-      _to: string,
-      _s: Pool.SwapObjStruct,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    symbol(overrides?: CallOverrides): Promise<BigNumber>;
-
-    token(overrides?: CallOverrides): Promise<BigNumber>;
-
-    totalLiquidity(overrides?: CallOverrides): Promise<BigNumber>;
-
-    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
-
-    totalWeight(overrides?: CallOverrides): Promise<BigNumber>;
-
-    transfer(
-      to: string,
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    transferFrom(
-      from: string,
-      to: string,
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    withdrawMintFeeBalance(
-      _to: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-
-    withdrawProtocolFeeBalance(
-      _to: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<BigNumber>;
-  };
-
-  populateTransaction: {
-    BP_DENOMINATOR(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    DOMAIN_SEPARATOR(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    PERMIT_TYPEHASH(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    activateChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    allowance(
-      arg0: string,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    amountLPtoLD(
-      _amountLP: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    approve(
-      spender: string,
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    balanceOf(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    batched(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    callDelta(
-      _fullMode: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    chainPathIndexLookup(
-      arg0: BigNumberish,
-      arg1: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    chainPaths(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    convertRate(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    createChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _weight: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    creditChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _c: Pool.CreditObjStruct,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    decimals(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    decreaseAllowance(
-      spender: string,
-      subtractedValue: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    defaultLPMode(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    defaultSwapMode(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    deltaCredit(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    eqFeePool(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    feeLibrary(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    getChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    getChainPathsLength(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    increaseAllowance(
-      spender: string,
-      addedValue: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    instantRedeemLocal(
-      _from: string,
-      _amountLP: BigNumberish,
-      _to: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    localDecimals(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    lpDeltaBP(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    mint(
-      _to: string,
-      _amountLD: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    mintFeeBP(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    mintFeeBalance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    nonces(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    permit(
-      owner: string,
-      spender: string,
-      value: BigNumberish,
-      deadline: BigNumberish,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    poolId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    protocolFeeBalance(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    redeemLocal(
-      _from: string,
-      _amountLP: BigNumberish,
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _to: BytesLike,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    redeemLocalCallback(
-      _srcChainId: BigNumberish,
-      _srcPoolId: BigNumberish,
-      _to: string,
-      _amountSD: BigNumberish,
-      _amountToMintSD: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    redeemLocalCheckOnRemote(
-      _srcChainId: BigNumberish,
-      _srcPoolId: BigNumberish,
-      _amountSD: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    redeemRemote(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _from: string,
-      _amountLP: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    router(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    sendCredits(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    setDeltaParam(
-      _batched: boolean,
-      _swapDeltaBP: BigNumberish,
-      _lpDeltaBP: BigNumberish,
-      _defaultSwapMode: boolean,
-      _defaultLPMode: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    setFee(
-      _mintFeeBP: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    setFeeLibrary(
-      _feeLibraryAddr: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    setSwapStop(
-      _swapStop: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    setWeightForChainPath(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _weight: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    sharedDecimals(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    stopSwap(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    swap(
-      _dstChainId: BigNumberish,
-      _dstPoolId: BigNumberish,
-      _from: string,
-      _amountLD: BigNumberish,
-      _minAmountLD: BigNumberish,
-      newLiquidity: boolean,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    swapDeltaBP(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    swapRemote(
-      _srcChainId: BigNumberish,
-      _srcPoolId: BigNumberish,
-      _to: string,
-      _s: Pool.SwapObjStruct,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    token(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    totalLiquidity(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    totalWeight(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    transfer(
-      to: string,
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    transferFrom(
-      from: string,
-      to: string,
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    withdrawMintFeeBalance(
-      _to: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
-
-    withdrawProtocolFeeBalance(
-      _to: string,
-      overrides?: Overrides & { from?: string }
-    ): Promise<PopulatedTransaction>;
+    "Approval(address,address,uint256)": TypedContractEvent<
+      ApprovalEvent.InputTuple,
+      ApprovalEvent.OutputTuple,
+      ApprovalEvent.OutputObject
+    >;
+    Approval: TypedContractEvent<
+      ApprovalEvent.InputTuple,
+      ApprovalEvent.OutputTuple,
+      ApprovalEvent.OutputObject
+    >;
+
+    "Burn(address,uint256,uint256)": TypedContractEvent<
+      BurnEvent.InputTuple,
+      BurnEvent.OutputTuple,
+      BurnEvent.OutputObject
+    >;
+    Burn: TypedContractEvent<
+      BurnEvent.InputTuple,
+      BurnEvent.OutputTuple,
+      BurnEvent.OutputObject
+    >;
+
+    "ChainPathUpdate(uint16,uint256,uint256)": TypedContractEvent<
+      ChainPathUpdateEvent.InputTuple,
+      ChainPathUpdateEvent.OutputTuple,
+      ChainPathUpdateEvent.OutputObject
+    >;
+    ChainPathUpdate: TypedContractEvent<
+      ChainPathUpdateEvent.InputTuple,
+      ChainPathUpdateEvent.OutputTuple,
+      ChainPathUpdateEvent.OutputObject
+    >;
+
+    "CreditChainPath(uint16,uint256,uint256,uint256)": TypedContractEvent<
+      CreditChainPathEvent.InputTuple,
+      CreditChainPathEvent.OutputTuple,
+      CreditChainPathEvent.OutputObject
+    >;
+    CreditChainPath: TypedContractEvent<
+      CreditChainPathEvent.InputTuple,
+      CreditChainPathEvent.OutputTuple,
+      CreditChainPathEvent.OutputObject
+    >;
+
+    "DeltaParamUpdated(bool,uint256,uint256,bool,bool)": TypedContractEvent<
+      DeltaParamUpdatedEvent.InputTuple,
+      DeltaParamUpdatedEvent.OutputTuple,
+      DeltaParamUpdatedEvent.OutputObject
+    >;
+    DeltaParamUpdated: TypedContractEvent<
+      DeltaParamUpdatedEvent.InputTuple,
+      DeltaParamUpdatedEvent.OutputTuple,
+      DeltaParamUpdatedEvent.OutputObject
+    >;
+
+    "FeeLibraryUpdated(address)": TypedContractEvent<
+      FeeLibraryUpdatedEvent.InputTuple,
+      FeeLibraryUpdatedEvent.OutputTuple,
+      FeeLibraryUpdatedEvent.OutputObject
+    >;
+    FeeLibraryUpdated: TypedContractEvent<
+      FeeLibraryUpdatedEvent.InputTuple,
+      FeeLibraryUpdatedEvent.OutputTuple,
+      FeeLibraryUpdatedEvent.OutputObject
+    >;
+
+    "FeesUpdated(uint256)": TypedContractEvent<
+      FeesUpdatedEvent.InputTuple,
+      FeesUpdatedEvent.OutputTuple,
+      FeesUpdatedEvent.OutputObject
+    >;
+    FeesUpdated: TypedContractEvent<
+      FeesUpdatedEvent.InputTuple,
+      FeesUpdatedEvent.OutputTuple,
+      FeesUpdatedEvent.OutputObject
+    >;
+
+    "InstantRedeemLocal(address,uint256,uint256,address)": TypedContractEvent<
+      InstantRedeemLocalEvent.InputTuple,
+      InstantRedeemLocalEvent.OutputTuple,
+      InstantRedeemLocalEvent.OutputObject
+    >;
+    InstantRedeemLocal: TypedContractEvent<
+      InstantRedeemLocalEvent.InputTuple,
+      InstantRedeemLocalEvent.OutputTuple,
+      InstantRedeemLocalEvent.OutputObject
+    >;
+
+    "Mint(address,uint256,uint256,uint256)": TypedContractEvent<
+      MintEvent.InputTuple,
+      MintEvent.OutputTuple,
+      MintEvent.OutputObject
+    >;
+    Mint: TypedContractEvent<
+      MintEvent.InputTuple,
+      MintEvent.OutputTuple,
+      MintEvent.OutputObject
+    >;
+
+    "RedeemLocal(address,uint256,uint256,uint16,uint256,bytes)": TypedContractEvent<
+      RedeemLocalEvent.InputTuple,
+      RedeemLocalEvent.OutputTuple,
+      RedeemLocalEvent.OutputObject
+    >;
+    RedeemLocal: TypedContractEvent<
+      RedeemLocalEvent.InputTuple,
+      RedeemLocalEvent.OutputTuple,
+      RedeemLocalEvent.OutputObject
+    >;
+
+    "RedeemLocalCallback(address,uint256,uint256)": TypedContractEvent<
+      RedeemLocalCallbackEvent.InputTuple,
+      RedeemLocalCallbackEvent.OutputTuple,
+      RedeemLocalCallbackEvent.OutputObject
+    >;
+    RedeemLocalCallback: TypedContractEvent<
+      RedeemLocalCallbackEvent.InputTuple,
+      RedeemLocalCallbackEvent.OutputTuple,
+      RedeemLocalCallbackEvent.OutputObject
+    >;
+
+    "RedeemRemote(uint16,uint256,address,uint256,uint256)": TypedContractEvent<
+      RedeemRemoteEvent.InputTuple,
+      RedeemRemoteEvent.OutputTuple,
+      RedeemRemoteEvent.OutputObject
+    >;
+    RedeemRemote: TypedContractEvent<
+      RedeemRemoteEvent.InputTuple,
+      RedeemRemoteEvent.OutputTuple,
+      RedeemRemoteEvent.OutputObject
+    >;
+
+    "SendCredits(uint16,uint256,uint256,uint256)": TypedContractEvent<
+      SendCreditsEvent.InputTuple,
+      SendCreditsEvent.OutputTuple,
+      SendCreditsEvent.OutputObject
+    >;
+    SendCredits: TypedContractEvent<
+      SendCreditsEvent.InputTuple,
+      SendCreditsEvent.OutputTuple,
+      SendCreditsEvent.OutputObject
+    >;
+
+    "StopSwapUpdated(bool)": TypedContractEvent<
+      StopSwapUpdatedEvent.InputTuple,
+      StopSwapUpdatedEvent.OutputTuple,
+      StopSwapUpdatedEvent.OutputObject
+    >;
+    StopSwapUpdated: TypedContractEvent<
+      StopSwapUpdatedEvent.InputTuple,
+      StopSwapUpdatedEvent.OutputTuple,
+      StopSwapUpdatedEvent.OutputObject
+    >;
+
+    "Swap(uint16,uint256,address,uint256,uint256,uint256,uint256,uint256)": TypedContractEvent<
+      SwapEvent.InputTuple,
+      SwapEvent.OutputTuple,
+      SwapEvent.OutputObject
+    >;
+    Swap: TypedContractEvent<
+      SwapEvent.InputTuple,
+      SwapEvent.OutputTuple,
+      SwapEvent.OutputObject
+    >;
+
+    "SwapRemote(address,uint256,uint256,uint256)": TypedContractEvent<
+      SwapRemoteEvent.InputTuple,
+      SwapRemoteEvent.OutputTuple,
+      SwapRemoteEvent.OutputObject
+    >;
+    SwapRemote: TypedContractEvent<
+      SwapRemoteEvent.InputTuple,
+      SwapRemoteEvent.OutputTuple,
+      SwapRemoteEvent.OutputObject
+    >;
+
+    "Transfer(address,address,uint256)": TypedContractEvent<
+      TransferEvent.InputTuple,
+      TransferEvent.OutputTuple,
+      TransferEvent.OutputObject
+    >;
+    Transfer: TypedContractEvent<
+      TransferEvent.InputTuple,
+      TransferEvent.OutputTuple,
+      TransferEvent.OutputObject
+    >;
+
+    "WithdrawMintFeeBalance(address,uint256)": TypedContractEvent<
+      WithdrawMintFeeBalanceEvent.InputTuple,
+      WithdrawMintFeeBalanceEvent.OutputTuple,
+      WithdrawMintFeeBalanceEvent.OutputObject
+    >;
+    WithdrawMintFeeBalance: TypedContractEvent<
+      WithdrawMintFeeBalanceEvent.InputTuple,
+      WithdrawMintFeeBalanceEvent.OutputTuple,
+      WithdrawMintFeeBalanceEvent.OutputObject
+    >;
+
+    "WithdrawProtocolFeeBalance(address,uint256)": TypedContractEvent<
+      WithdrawProtocolFeeBalanceEvent.InputTuple,
+      WithdrawProtocolFeeBalanceEvent.OutputTuple,
+      WithdrawProtocolFeeBalanceEvent.OutputObject
+    >;
+    WithdrawProtocolFeeBalance: TypedContractEvent<
+      WithdrawProtocolFeeBalanceEvent.InputTuple,
+      WithdrawProtocolFeeBalanceEvent.OutputTuple,
+      WithdrawProtocolFeeBalanceEvent.OutputObject
+    >;
+
+    "WithdrawRemote(uint16,uint256,uint256,uint256)": TypedContractEvent<
+      WithdrawRemoteEvent.InputTuple,
+      WithdrawRemoteEvent.OutputTuple,
+      WithdrawRemoteEvent.OutputObject
+    >;
+    WithdrawRemote: TypedContractEvent<
+      WithdrawRemoteEvent.InputTuple,
+      WithdrawRemoteEvent.OutputTuple,
+      WithdrawRemoteEvent.OutputObject
+    >;
   };
 }

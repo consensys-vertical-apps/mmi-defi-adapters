@@ -56,7 +56,7 @@ async function buildContractTypesForFolder(contractsDirectory: string) {
     filesToProcess: allFiles,
     allFiles,
     outDir: contractsDirectory,
-    target: 'ethers-v5',
+    target: 'ethers-v6',
   })
 
   logger.debug(
