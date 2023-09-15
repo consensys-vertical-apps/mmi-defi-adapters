@@ -8,9 +8,12 @@ import { IProtocolAdapter } from './types/adapter'
 import {
   APRResponse,
   APYResponse,
+  AdapterResponse,
   DefiMovementsResponse,
   DefiPositionResponse,
+  DefiPositions,
   DefiProfitsResponse,
+  AdapterError,
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
@@ -24,14 +27,15 @@ export async function getPositions({
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
 }): Promise<DefiPositionResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
-    const tokens = await adapter.getPositions({
-      userAddress,
-    })
-    return { ...adapter.getProtocolDetails(), tokens }
+  const runner = async (adapter: IProtocolAdapter): Promise<DefiPositions> => {
+    return {
+      tokens: await adapter.getPositions({
+        userAddress,
+      }),
+    }
   }
 
-  return runForAllProtocolsAndChains({
+  return runForAllProtocolsAndChains2({
     runner,
     filterProtocolIds,
     filterChainIds,
@@ -254,6 +258,90 @@ export async function getApr({
   })
 }
 
+async function runForAllProtocolsAndChains2<ReturnType extends object>({
+  runner,
+  filterProtocolIds,
+  filterChainIds,
+}: {
+  runner: (
+    adapter: IProtocolAdapter,
+    provider: ethers.providers.StaticJsonRpcProvider,
+  ) => ReturnType
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
+}): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
+  const protocolPromises = Object.entries(supportedProtocols)
+    .filter(
+      ([protocolIdKey, _]) =>
+        !filterProtocolIds ||
+        filterProtocolIds.includes(protocolIdKey as Protocol),
+    )
+    .flatMap(([protocolIdKey, supportedChains]) => {
+      // Object.entries casts the numeric key as a string. This reverses it
+      return Object.entries(supportedChains)
+        .filter(([chainIdKey, _]) => {
+          return (
+            !filterChainIds || filterChainIds.includes(+chainIdKey as Chain)
+          )
+        })
+        .flatMap(([chainIdKey, adapterClasses]) => {
+          const chainId = +chainIdKey as Chain
+          const provider = chainProviders[chainId]
+
+          if (!provider) {
+            logger.error({ chainId }, 'No provider found for chain')
+            throw new Error(`No provider found for chain: ${chainId}`)
+          }
+
+          return adapterClasses.map(async (adapterClass) => {
+            const adapter = new adapterClass({
+              provider,
+              chainId,
+              protocolId: protocolIdKey as Protocol,
+            })
+
+            try {
+              const adapterResult = await runner(adapter, provider)
+              return {
+                ...adapter.getProtocolDetails(),
+                ...adapterResult,
+              }
+            } catch (error) {
+              let adapterError: AdapterError['error']
+
+              if (error instanceof Error) {
+                adapterError = {
+                  message: error.message,
+                  details: { name: error.name },
+                }
+              } else if (typeof error === 'string') {
+                adapterError = {
+                  message: error,
+                }
+              } else if (error && typeof error.toString === 'function') {
+                adapterError = {
+                  message: error.toString(),
+                }
+              } else {
+                adapterError = {
+                  message: 'Error message cannot be extracted',
+                }
+              }
+
+              return {
+                ...adapter.getProtocolDetails(),
+                error: adapterError,
+              }
+            }
+          })
+        })
+    })
+
+  const results = await Promise.all(protocolPromises)
+
+  return results
+}
+
 async function runForAllProtocolsAndChains<ReturnType>({
   runner,
   filterProtocolIds,
@@ -286,7 +374,7 @@ async function runForAllProtocolsAndChains<ReturnType>({
 
           if (!provider) {
             logger.error({ chainId }, 'No provider found for chain')
-            throw new Error('No provider found for chain')
+            throw new Error(`No provider found for chain: ${chainId}`)
           }
 
           return adapterClasses.map(async (adapterClass) => {
