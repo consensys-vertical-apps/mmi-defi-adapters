@@ -75,7 +75,6 @@
   },
   "dependencies": {
     "dotenv": "^16.3.1",
-    "eth-balance-checker": "^0.2.0",
     "ethers": "^5.7.2",
     "pino": "^8.15.0"
   }

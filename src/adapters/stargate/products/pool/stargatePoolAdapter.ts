@@ -1,8 +1,4 @@
 import { formatUnits } from 'ethers/lib/utils'
-import {
-  StargateFactory__factory,
-  StargateToken__factory,
-} from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { Adapter } from '../../../../core/decorators/adapter'
@@ -29,6 +25,10 @@ import {
   TokenBalance,
   TokenType,
 } from '../../../../types/adapter'
+import {
+  StargateFactory__factory,
+  StargateToken__factory,
+} from '../../contracts'
 
 type StargatePoolMetadata = Record<
   string,

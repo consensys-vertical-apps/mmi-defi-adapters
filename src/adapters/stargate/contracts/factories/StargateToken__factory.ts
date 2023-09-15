@@ -4,10 +4,7 @@
 
 import { Contract, Signer, utils } from "ethers";
 import type { Provider } from "@ethersproject/providers";
-import type {
-  StargateToken,
-  StargateTokenInterface,
-} from "../../stargate/StargateToken";
+import type { StargateToken, StargateTokenInterface } from "../StargateToken";
 
 const _abi = [
   {
