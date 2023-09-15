@@ -51,23 +51,25 @@ async function getAverageBlocksPerDay(chainId: Chain) {
   const provider = chainProviders[chainId]
 
   if (!provider) {
-    throw new Error('No provider for chain')
+    throw new Error(`No provider for chain: ${chainId}`)
   }
 
-  // TODO FIX ts-ignore
-  //@ts-ignore
-  const dater = new EthDater(provider)
-
   const currentBlock = await provider.getBlock('latest')
+  if (!currentBlock) {
+    throw new Error(`No block data for chain: ${chainId}`)
+  }
+
+  // EthDater types throw when using an ethersv6 provider, it is supported though
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const dater = new EthDater(provider as any)
 
   // 30 days * 24 hours/day * 60 minutes/hour * 60 seconds/minute
-  //@ts-ignore
   const thirtyDaysTimestamp = currentBlock.timestamp - 30 * 24 * 60 * 60
 
   // Value needs to be given in milliseconds, thus the * 1000
+  // EthDater.getDate returns a promise, the type is wrong
   const thirtyDaysBlock = await dater.getDate(thirtyDaysTimestamp * 1000)
 
-  //@ts-ignore
   return Math.round((currentBlock.number - thirtyDaysBlock.block) / 30)
 }
 
