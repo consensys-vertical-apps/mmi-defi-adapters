@@ -2,9 +2,8 @@ import { ethers } from 'ethers'
 import { Protocol, supportedProtocols } from './adapters'
 import { Chain } from './core/constants/chains'
 import { chainProviders } from './core/utils/chainProviders'
-import { fulfilledPromises } from './core/utils/filters'
 import { logger } from './core/utils/logger'
-import { IProtocolAdapter } from './types/adapter'
+import { IProtocolAdapter, ProfitsTokensWithRange } from './types/adapter'
 import {
   APRResponse,
   APYResponse,
@@ -16,6 +15,11 @@ import {
   AdapterError,
   PricePerShareResponse,
   TotalValueLockResponse,
+  PricePerShare,
+  APR,
+  DefiMovements,
+  APY,
+  TotalValueLock,
 } from './types/response'
 
 export async function getPositions({
@@ -28,14 +32,14 @@ export async function getPositions({
   filterChainIds?: Chain[]
 }): Promise<DefiPositionResponse[]> {
   const runner = async (adapter: IProtocolAdapter): Promise<DefiPositions> => {
-    return {
-      tokens: await adapter.getPositions({
-        userAddress,
-      }),
-    }
+    const tokens = await adapter.getPositions({
+      userAddress,
+    })
+
+    return { tokens }
   }
 
-  return runForAllProtocolsAndChains2({
+  return runForAllProtocolsAndChains({
     runner,
     filterProtocolIds,
     filterChainIds,
@@ -54,13 +58,12 @@ export async function getTodaysProfits({
   const runner = async (
     adapter: IProtocolAdapter,
     provider: ethers.JsonRpcProvider,
-  ) => {
+  ): Promise<ProfitsTokensWithRange> => {
     const blockNumber = await provider.getBlockNumber()
-    const profits = await adapter.getOneDayProfit({
+    return await adapter.getOneDayProfit({
       userAddress,
       blockNumber,
     })
-    return { ...adapter.getProtocolDetails(), ...profits }
   }
 
   return runForAllProtocolsAndChains({
@@ -77,7 +80,7 @@ export async function getPrices({
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
 }): Promise<PricePerShareResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
+  const runner = async (adapter: IProtocolAdapter): Promise<PricePerShare> => {
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>
@@ -85,7 +88,7 @@ export async function getPrices({
       ),
     )
 
-    return { ...adapter.getProtocolDetails(), tokens }
+    return { tokens }
   }
 
   return runForAllProtocolsAndChains({
@@ -102,9 +105,10 @@ export async function getTotalValueLocked({
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
 }): Promise<TotalValueLockResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
+  const runner = async (adapter: IProtocolAdapter): Promise<TotalValueLock> => {
     const tokens = await adapter.getTotalValueLocked({})
-    return { ...adapter.getProtocolDetails(), tokens }
+
+    return { tokens }
   }
 
   return runForAllProtocolsAndChains({
@@ -121,7 +125,7 @@ export async function getApy({
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
 }): Promise<APYResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
+  const runner = async (adapter: IProtocolAdapter): Promise<APY> => {
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>
@@ -130,7 +134,6 @@ export async function getApy({
     )
 
     return {
-      ...adapter.getProtocolDetails(),
       tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
     }
   }
@@ -155,7 +158,7 @@ export async function getDeposits({
   fromBlock: number
   toBlock: number
 }): Promise<DefiMovementsResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
+  const runner = async (adapter: IProtocolAdapter): Promise<DefiMovements> => {
     const protocolTokens = await adapter.getProtocolTokens()
     const movements = await Promise.all(
       protocolTokens.map(async (protocolToken) => {
@@ -174,7 +177,6 @@ export async function getDeposits({
     )
 
     return {
-      ...adapter.getProtocolDetails(),
       movements,
     }
   }
@@ -199,7 +201,7 @@ export async function getWithdrawals({
   fromBlock: number
   toBlock: number
 }): Promise<DefiMovementsResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
+  const runner = async (adapter: IProtocolAdapter): Promise<DefiMovements> => {
     const protocolTokens = await adapter.getProtocolTokens()
     const movements = await Promise.all(
       protocolTokens.map(async (protocolToken) => {
@@ -218,7 +220,6 @@ export async function getWithdrawals({
     )
 
     return {
-      ...adapter.getProtocolDetails(),
       movements,
     }
   }
@@ -237,7 +238,7 @@ export async function getApr({
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
 }): Promise<APRResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
+  const runner = async (adapter: IProtocolAdapter): Promise<APR> => {
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>
@@ -246,7 +247,6 @@ export async function getApr({
     )
 
     return {
-      ...adapter.getProtocolDetails(),
       tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
     }
   }
@@ -258,14 +258,14 @@ export async function getApr({
   })
 }
 
-async function runForAllProtocolsAndChains2<ReturnType extends object>({
+async function runForAllProtocolsAndChains<ReturnType extends object>({
   runner,
   filterProtocolIds,
   filterChainIds,
 }: {
   runner: (
     adapter: IProtocolAdapter,
-    provider: ethers.providers.StaticJsonRpcProvider,
+    provider: ethers.JsonRpcProvider,
   ) => ReturnType
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
@@ -300,10 +300,12 @@ async function runForAllProtocolsAndChains2<ReturnType extends object>({
               protocolId: protocolIdKey as Protocol,
             })
 
+            const protocolDetails = adapter.getProtocolDetails()
+
             try {
               const adapterResult = await runner(adapter, provider)
               return {
-                ...adapter.getProtocolDetails(),
+                ...protocolDetails,
                 ...adapterResult,
               }
             } catch (error) {
@@ -329,7 +331,7 @@ async function runForAllProtocolsAndChains2<ReturnType extends object>({
               }
 
               return {
-                ...adapter.getProtocolDetails(),
+                ...protocolDetails,
                 error: adapterError,
               }
             }
@@ -340,57 +342,4 @@ async function runForAllProtocolsAndChains2<ReturnType extends object>({
   const results = await Promise.all(protocolPromises)
 
   return results
-}
-
-async function runForAllProtocolsAndChains<ReturnType>({
-  runner,
-  filterProtocolIds,
-  filterChainIds,
-}: {
-  runner: (
-    adapter: IProtocolAdapter,
-    provider: ethers.JsonRpcProvider,
-  ) => ReturnType
-  filterProtocolIds?: Protocol[]
-  filterChainIds?: Chain[]
-}) {
-  const protocolPromises = Object.entries(supportedProtocols)
-    .filter(
-      ([protocolIdKey, _]) =>
-        !filterProtocolIds ||
-        filterProtocolIds.includes(protocolIdKey as Protocol),
-    )
-    .flatMap(([protocolIdKey, supportedChains]) => {
-      // Object.entries casts the numeric key as a string. This reverses it
-      return Object.entries(supportedChains)
-        .filter(([chainIdKey, _]) => {
-          return (
-            !filterChainIds || filterChainIds.includes(+chainIdKey as Chain)
-          )
-        })
-        .flatMap(([chainIdKey, adapterClasses]) => {
-          const chainId = +chainIdKey as Chain
-          const provider = chainProviders[chainId]
-
-          if (!provider) {
-            logger.error({ chainId }, 'No provider found for chain')
-            throw new Error(`No provider found for chain: ${chainId}`)
-          }
-
-          return adapterClasses.map(async (adapterClass) => {
-            return await runner(
-              new adapterClass({
-                provider,
-                chainId,
-                protocolId: protocolIdKey as Protocol,
-              }),
-              provider,
-            )
-          })
-        })
-    })
-
-  const protocolResults = await Promise.allSettled(protocolPromises)
-
-  return fulfilledPromises(protocolResults)
 }
