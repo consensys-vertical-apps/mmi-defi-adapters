@@ -1,9 +1,10 @@
 import fs from 'fs'
 import path from 'path'
-import { IProtocolAdapter } from '../../types/adapter'
-import { ChainName } from '../constants/chains'
-import { logger } from '../utils/logger'
-import { IMetadataBuilder, writeMetadataToFile } from '../utils/metadata'
+import { fileURLToPath } from 'url'
+import { IProtocolAdapter } from '../../types/adapter.js'
+import { ChainName } from '../constants/chains.js'
+import { logger } from '../utils/logger.js'
+import { IMetadataBuilder, writeMetadataToFile } from '../utils/metadata.js'
 
 export function CacheToFile({ fileKey }: { fileKey: string }) {
   return function actualDecorator(
@@ -39,6 +40,7 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
         return metadataObject
       }
 
+      const __dirname = fileURLToPath(new URL('.', import.meta.url))
       const filePath = path.resolve(
         __dirname,
         '../../adapters',

@@ -1,4 +1,4 @@
-import { logger } from './logger'
+import { logger } from './logger.js'
 
 export const fulfilledPromises = <Return>(
   results: PromiseSettledResult<Return>[],

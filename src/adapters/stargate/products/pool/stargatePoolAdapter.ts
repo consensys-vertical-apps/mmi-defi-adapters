@@ -1,14 +1,14 @@
 import { formatUnits } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { Adapter } from '../../../../core/decorators/adapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { Adapter } from '../../../../core/decorators/adapter.js'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile.js'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
-} from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
-import { IMetadataBuilder } from '../../../../core/utils/metadata'
+} from '../../../../core/utils/getTokenMetadata.js'
+import { logger } from '../../../../core/utils/logger.js'
+import { IMetadataBuilder } from '../../../../core/utils/metadata.js'
 import {
   BasePricePerShareToken,
   BaseToken,
@@ -24,11 +24,11 @@ import {
   ProtocolTotalValueLockedToken,
   TokenBalance,
   TokenType,
-} from '../../../../types/adapter'
+} from '../../../../types/adapter.js'
 import {
   StargateFactory__factory,
   StargateToken__factory,
-} from '../../contracts'
+} from '../../contracts/index.js'
 
 type StargatePoolMetadata = Record<
   string,

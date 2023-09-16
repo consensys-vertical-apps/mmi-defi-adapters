@@ -3,10 +3,10 @@ import * as path from 'path'
 import { Command } from 'commander'
 import EthDater from 'ethereum-block-by-date'
 import { parse, print, types, visit } from 'recast'
-import { Chain } from '../core/constants/chains'
-import { chainProviders } from '../core/utils/chainProviders'
-import { writeCodeFile } from '../core/utils/writeCodeFile'
-import { multiChainFilter } from './commandFilters'
+import { Chain } from '../core/constants/chains.js'
+import { chainProviders } from '../core/utils/chainProviders.js'
+import { writeCodeFile } from '../core/utils/writeCodeFile.js'
+import { multiChainFilter } from './commandFilters.js'
 import n = types.namedTypes
 
 export function blockAverage(program: Command) {

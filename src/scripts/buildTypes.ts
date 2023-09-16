@@ -1,8 +1,8 @@
 import fs from 'fs'
 import * as path from 'path'
 import { Command } from 'commander'
-import { glob, runTypeChain } from 'typechain'
-import { logger } from '../core/utils/logger'
+import { DEFAULT_FLAGS, glob, runTypeChain } from 'typechain'
+import { logger } from '../core/utils/logger.js'
 
 export function buildContractTypes(program: Command) {
   program
@@ -57,6 +57,10 @@ async function buildContractTypesForFolder(contractsDirectory: string) {
     allFiles,
     outDir: contractsDirectory,
     target: 'ethers-v6',
+    flags: {
+      ...DEFAULT_FLAGS,
+      node16Modules: true,
+    },
   })
 
   logger.debug(

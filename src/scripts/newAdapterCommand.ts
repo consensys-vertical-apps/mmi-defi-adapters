@@ -2,24 +2,24 @@ import { promises as fs } from 'fs'
 import * as path from 'path'
 import chalk from 'chalk'
 import { Command } from 'commander'
-import { prompt, QuestionCollection } from 'inquirer'
-import partition from 'lodash/partition'
+import inquirer from 'inquirer'
+import _ from 'lodash'
 import { parse, print, types, visit } from 'recast'
-import { Protocol } from '../adapters'
-import { Chain } from '../core/constants/chains'
+import { Protocol } from '../adapters/index.js'
+import { Chain } from '../core/constants/chains.js'
 import {
   isKebabCase,
   isPascalCase,
   kebabCase,
   lowerFirst,
   pascalCase,
-} from '../core/utils/caseConversion'
-import { filterMap } from '../core/utils/filters'
-import { logger } from '../core/utils/logger'
-import { writeCodeFile } from '../core/utils/writeCodeFile'
-import { chainFilter, protocolFilter } from './commandFilters'
-import { defaultAdapterTemplate } from './templates/defaultAdapter'
-import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
+} from '../core/utils/caseConversion.js'
+import { filterMap } from '../core/utils/filters.js'
+import { logger } from '../core/utils/logger.js'
+import { writeCodeFile } from '../core/utils/writeCodeFile.js'
+import { chainFilter, protocolFilter } from './commandFilters.js'
+import { defaultAdapterTemplate } from './templates/defaultAdapter.js'
+import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter.js'
 import n = types.namedTypes
 import b = types.builders
 
@@ -87,7 +87,7 @@ export function newAdapterCommand(program: Command) {
             )![0]
           : undefined
 
-        const questions: QuestionCollection = [
+        const questions: inquirer.QuestionCollection = [
           {
             type: 'input',
             name: 'protocolKey',
@@ -180,7 +180,7 @@ export function newAdapterCommand(program: Command) {
 
         const answers = {
           ...{ protocolId: inputProtocolId, protocolKey: inputProtocolKey },
-          ...(await prompt<NewAdapterAnswers>(questions)),
+          ...(await inquirer.prompt<NewAdapterAnswers>(questions)),
         }
 
         logger.debug(answers, 'Create new adapter')
@@ -273,8 +273,9 @@ function addImport(
   productId: string,
   adapterClassName: string,
 ) {
-  const [importNodes, codeAfterImports] = partition(programNode.body, (node) =>
-    n.ImportDeclaration.check(node),
+  const [importNodes, codeAfterImports] = _.partition(
+    programNode.body,
+    (node) => n.ImportDeclaration.check(node),
   )
 
   const newImportEntry = buildImportEntry(
@@ -406,7 +407,7 @@ function buildProtocolEntry(protocolKey: string, protocolId: string) {
 }
 
 /*
-import { <AdapterClassName> } from './<protocol-id>/products/<product-id>/<adapterClassName>'
+import { <AdapterClassName> } from './<protocol-id>/products/<product-id>/<adapterClassName>.js'
 */
 function buildImportEntry(
   protocolId: string,

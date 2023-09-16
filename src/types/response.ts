@@ -1,4 +1,4 @@
-import { Erc20Metadata } from '../core/utils/getTokenMetadata'
+import { Erc20Metadata } from '../core/utils/getTokenMetadata.js'
 import {
   MovementsByBlock,
   ProfitsTokensWithRange,
@@ -8,7 +8,7 @@ import {
   ProtocolPricePerShareToken,
   ProtocolToken,
   ProtocolTotalValueLockedToken,
-} from './adapter'
+} from './adapter.js'
 
 export type DefiPositionResponse = ProtocolDetails & {
   tokens: ProtocolToken[]

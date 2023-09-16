@@ -1,4 +1,4 @@
-import { BaseToken } from '../../types/adapter'
+import { BaseToken } from '../../types/adapter.js'
 
 export function calculateProfit({
   deposits,

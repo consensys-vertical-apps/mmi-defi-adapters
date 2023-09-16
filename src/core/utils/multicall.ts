@@ -1,6 +1,6 @@
 import { AddressLike, BytesLike, TransactionRequest } from 'ethers'
-import { Multicall } from '../../contracts/Multicall'
-import { logger } from './logger'
+import { Multicall } from '../../contracts/Multicall.js'
+import { logger } from './logger.js'
 
 interface PendingCall {
   callParams: {

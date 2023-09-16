@@ -1,4 +1,4 @@
-import { Chain } from './chains'
+import { Chain } from './chains.js'
 
 // This file is updated automatically
 export const AVERAGE_BLOCKS_PER_DAY: Record<Chain, number> = {

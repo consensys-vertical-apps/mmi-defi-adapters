@@ -1,9 +1,6 @@
-import camelCase from 'lodash/camelCase'
-import kebabCase from 'lodash/kebabCase'
-import lowerCase from 'lodash/lowerCase'
-import lowerFirst from 'lodash/lowerFirst'
-import upperCase from 'lodash/upperCase'
-import upperFirst from 'lodash/upperFirst'
+import _ from 'lodash'
+
+const { camelCase, kebabCase, lowerCase, lowerFirst, upperCase, upperFirst } = _
 
 function pascalCase(string?: string) {
   return upperFirst(camelCase(string))

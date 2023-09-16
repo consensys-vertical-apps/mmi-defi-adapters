@@ -1,8 +1,8 @@
 import type { ethers } from 'ethers'
 import { formatUnits } from 'ethers'
-import { Protocol } from '../../adapters'
-import { Erc20__factory } from '../../contracts'
-import { TransferEvent } from '../../contracts/Erc20'
+import { Protocol } from '../../adapters/index.js'
+import { TransferEvent } from '../../contracts/Erc20.js'
+import { Erc20__factory } from '../../contracts/index.js'
 import {
   BasePricePerShareToken,
   BaseToken,
@@ -26,15 +26,15 @@ import {
   ProtocolTotalValueLockedToken,
   TokenBalance,
   TokenType,
-} from '../../types/adapter'
-import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain } from '../constants/chains'
-import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
-import { aggregateTrades } from '../utils/aggregateTrades'
-import { calculateProfit } from '../utils/calculateProfit'
-import { getBalances } from '../utils/getBalances'
-import { Erc20Metadata } from '../utils/getTokenMetadata'
-import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
+} from '../../types/adapter.js'
+import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY.js'
+import { Chain } from '../constants/chains.js'
+import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS.js'
+import { aggregateTrades } from '../utils/aggregateTrades.js'
+import { calculateProfit } from '../utils/calculateProfit.js'
+import { getBalances } from '../utils/getBalances.js'
+import { Erc20Metadata } from '../utils/getTokenMetadata.js'
+import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap.js'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
   chainId: Chain
@@ -63,6 +63,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       blockNumber,
       tokens: await this.getProtocolTokens(),
     })
+
     const protocolTokens: ProtocolToken[] = await Promise.all(
       protocolTokensBalances.map(async (protocolTokenBalance) => {
         const underlyingTokenBalances = await this.getUnderlyingTokenBalances(

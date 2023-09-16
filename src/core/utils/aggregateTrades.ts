@@ -1,4 +1,4 @@
-import { MovementsByBlock } from '../../types/adapter'
+import { MovementsByBlock } from '../../types/adapter.js'
 
 export function aggregateTrades(
   events: MovementsByBlock[],

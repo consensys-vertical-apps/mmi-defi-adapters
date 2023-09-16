@@ -1,14 +1,13 @@
 import type { ethers } from 'ethers'
 import { formatUnits } from 'ethers'
-import { Protocol } from '../../..'
-import { Chain } from '../../../../core/constants/chains'
-import { Adapter } from '../../../../core/decorators/adapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { Chain } from '../../../../core/constants/chains.js'
+import { Adapter } from '../../../../core/decorators/adapter.js'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile.js'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
-} from '../../../../core/utils/getTokenMetadata'
-import { IMetadataBuilder } from '../../../../core/utils/metadata'
+} from '../../../../core/utils/getTokenMetadata.js'
+import { IMetadataBuilder } from '../../../../core/utils/metadata.js'
 import {
   GetAprInput,
   GetApyInput,
@@ -26,8 +25,9 @@ import {
   ProtocolToken,
   ProtocolTotalValueLockedToken,
   TokenType,
-} from '../../../../types/adapter'
-import { StargateVotingEscrow__factory } from '../../contracts'
+} from '../../../../types/adapter.js'
+import { Protocol } from '../../../index.js'
+import { StargateVotingEscrow__factory } from '../../contracts/index.js'
 
 type StargateVestingMetadata = {
   contractToken: Erc20Metadata

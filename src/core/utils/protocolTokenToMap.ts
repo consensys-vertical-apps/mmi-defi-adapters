@@ -1,5 +1,5 @@
-import { BaseToken, ProtocolToken } from '../../types/adapter'
-import { Erc20Metadata } from './getTokenMetadata'
+import { BaseToken, ProtocolToken } from '../../types/adapter.js'
+import { Erc20Metadata } from './getTokenMetadata.js'
 
 export function formatProtocolTokenArrayToMap(tokens: ProtocolToken[]) {
   return tokens.reduce(

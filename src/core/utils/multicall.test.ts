@@ -1,5 +1,5 @@
-import { Multicall } from '../../contracts'
-import { MulticallQueue } from './multicall'
+import { Multicall } from '../../contracts/index.js'
+import { MulticallQueue } from './multicall.js'
 
 describe('MulticallQueue', () => {
   beforeEach(() => {

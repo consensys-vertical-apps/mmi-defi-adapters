@@ -1,11 +1,11 @@
-import { Chain } from '../core/constants/chains'
-import { IProtocolAdapter, ProtocolAdapterParams } from '../types/adapter'
-import { AaveV2ATokenPoolAdapter } from './aave-v2/products/pool/aaveV2ATokenPoolAdapter'
-import { AaveV2StableDebtTokenPoolAdapter } from './aave-v2/products/pool/aaveV2StableDebtTokenPoolAdapter'
-import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/pool/aaveV2VariableDebtTokenPoolAdapter'
-import { ExampleProductAdapter } from './example/products/example-product/exampleProductAdapter'
-import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
-import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
+import { Chain } from '../core/constants/chains.js'
+import { IProtocolAdapter, ProtocolAdapterParams } from '../types/adapter.js'
+import { AaveV2ATokenPoolAdapter } from './aave-v2/products/pool/aaveV2ATokenPoolAdapter.js'
+import { AaveV2StableDebtTokenPoolAdapter } from './aave-v2/products/pool/aaveV2StableDebtTokenPoolAdapter.js'
+import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/pool/aaveV2VariableDebtTokenPoolAdapter.js'
+import { ExampleProductAdapter } from './example/products/example-product/exampleProductAdapter.js'
+import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter.js'
+import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter.js'
 
 // Add new protocols names below
 export const Protocol = {

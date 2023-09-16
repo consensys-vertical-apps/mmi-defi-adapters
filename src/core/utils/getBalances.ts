@@ -1,7 +1,7 @@
 import { formatUnits } from 'ethers'
-import { GetBalancesInput, TokenBalance } from '../../types/adapter'
-import { filterMap } from './filters'
-import { getAddressesBalances } from './getAddressesBalances'
+import { GetBalancesInput, TokenBalance } from '../../types/adapter.js'
+import { filterMap } from './filters.js'
+import { getAddressesBalances } from './getAddressesBalances.js'
 
 export const getBalances = async ({
   chainId,

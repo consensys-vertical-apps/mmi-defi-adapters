@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
-import { Protocol } from '../../adapters'
-import { Json } from '../../types/json'
-import { Chain, ChainName } from '../constants/chains'
+import { Protocol } from '../../adapters/index.js'
+import { Json } from '../../types/json.js'
+import { Chain, ChainName } from '../constants/chains.js'
 
 export interface IMetadataBuilder {
   product: string

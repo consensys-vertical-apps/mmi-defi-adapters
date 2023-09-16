@@ -1,6 +1,6 @@
 import { JsonRpcProvider, Networkish, TransactionRequest } from 'ethers'
-import { logger } from './logger'
-import { MulticallQueue } from './multicall'
+import { logger } from './logger.js'
+import { MulticallQueue } from './multicall.js'
 
 export class CustomMulticallJsonRpcProvider extends JsonRpcProvider {
   private multicallQueue: MulticallQueue

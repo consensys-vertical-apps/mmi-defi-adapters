@@ -1,8 +1,8 @@
-import { Adapter } from '../../../../core/decorators/adapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { ProtocolDataProvider } from '../../contracts'
-import { AaveV2BasePoolAdapter } from './aaveV2BasePoolAdapter'
+import { Adapter } from '../../../../core/decorators/adapter.js'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile.js'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter.js'
+import { ProtocolDataProvider } from '../../contracts/index.js'
+import { AaveV2BasePoolAdapter } from './aaveV2BasePoolAdapter.js'
 
 @Adapter
 export class AaveV2VariableDebtTokenPoolAdapter extends AaveV2BasePoolAdapter {

@@ -1,11 +1,11 @@
 import { Command } from 'commander'
-import { Protocol, supportedProtocols } from '../adapters'
-import { Chain } from '../core/constants/chains'
-import { chainProviders } from '../core/utils/chainProviders'
-import { logger } from '../core/utils/logger'
-import { IMetadataBuilder } from '../core/utils/metadata'
-import { IProtocolAdapter } from '../types/adapter'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+import { Protocol, supportedProtocols } from '../adapters/index.js'
+import { Chain } from '../core/constants/chains.js'
+import { chainProviders } from '../core/utils/chainProviders.js'
+import { logger } from '../core/utils/logger.js'
+import { IMetadataBuilder } from '../core/utils/metadata.js'
+import { IProtocolAdapter } from '../types/adapter.js'
+import { multiChainFilter, multiProtocolFilter } from './commandFilters.js'
 
 export function buildMetadata(program: Command) {
   program

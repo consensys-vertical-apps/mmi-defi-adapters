@@ -1,12 +1,12 @@
 import { formatUnits } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { Chain } from '../../../../core/constants/chains.js'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
-} from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
-import { IMetadataBuilder } from '../../../../core/utils/metadata'
+} from '../../../../core/utils/getTokenMetadata.js'
+import { logger } from '../../../../core/utils/logger.js'
+import { IMetadataBuilder } from '../../../../core/utils/metadata.js'
 import {
   BasePricePerShareToken,
   BaseToken,
@@ -20,11 +20,11 @@ import {
   ProtocolTotalValueLockedToken,
   TokenBalance,
   TokenType,
-} from '../../../../types/adapter'
+} from '../../../../types/adapter.js'
 import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
-} from '../../contracts'
+} from '../../contracts/index.js'
 
 type AaveV2PoolMetadata = Record<
   string,

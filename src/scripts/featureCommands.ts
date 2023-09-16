@@ -1,4 +1,6 @@
 import { Command } from 'commander'
+import { Protocol } from '../adapters/index.js'
+import { Chain } from '../core/constants/chains.js'
 import {
   getApr,
   getApy,
@@ -8,10 +10,8 @@ import {
   getTodaysProfits,
   getTotalValueLocked,
   getWithdrawals,
-} from '..'
-import { Protocol } from '../adapters'
-import { Chain } from '../core/constants/chains'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+} from '../index.js'
+import { multiChainFilter, multiProtocolFilter } from './commandFilters.js'
 
 export function featureCommands(program: Command) {
   addressCommand(

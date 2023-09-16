@@ -4,12 +4,12 @@ export function defaultAdapterTemplate(
 ) {
   return `
 import { ethers } from 'ethers'
-import { Protocol } from '../../..'
-import { Chain } from '../../../../core/constants/chains'
-import { Adapter } from '../../../../core/decorators/adapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
-import { IMetadataBuilder } from '../../../../core/utils/metadata'
+import { Protocol } from '../../...js'
+import { Chain } from '../../../../core/constants/chains.js'
+import { Adapter } from '../../../../core/decorators/adapter.js'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile.js'
+import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata.js'
+import { IMetadataBuilder } from '../../../../core/utils/metadata.js'
 import {
   GetEventsInput,
   GetPositionsInput,
@@ -30,7 +30,7 @@ import {
   ProtocolAprToken,
   ProtocolApyToken,
   ProtocolAdapterParams,
-} from '../../../../types/adapter'
+} from '../../../../types/adapter.js'
 
 @Adapter
 export class ${adapterClassName}

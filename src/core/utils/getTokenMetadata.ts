@@ -1,11 +1,11 @@
 import { ethers } from 'ethers'
-import { Erc20, Erc20__factory } from '../../contracts'
-import { Chain } from '../constants/chains'
-import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
-import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
-import { chainProviders } from './chainProviders'
-import { extractErrorMessage } from './error'
-import { logger } from './logger'
+import { Erc20, Erc20__factory } from '../../contracts/index.js'
+import { Chain } from '../constants/chains.js'
+import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json' assert { type: 'json' }
+import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json' assert { type: 'json' }
+import { chainProviders } from './chainProviders.js'
+import { extractErrorMessage } from './error.js'
+import { logger } from './logger.js'
 
 export type Erc20Metadata = {
   address: string

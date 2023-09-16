@@ -1,6 +1,6 @@
 import type { ethers } from 'ethers'
-import { BalanceChecker__factory } from '../../contracts'
-import { Chain } from '../constants/chains'
+import { BalanceChecker__factory } from '../../contracts/index.js'
+import { Chain } from '../constants/chains.js'
 
 type AddressBalanceMap = {
   [address: string]: BalanceMap

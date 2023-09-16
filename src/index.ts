@@ -1,10 +1,10 @@
 import { ethers } from 'ethers'
-import { Protocol, supportedProtocols } from './adapters'
-import { Chain } from './core/constants/chains'
-import { chainProviders } from './core/utils/chainProviders'
-import { fulfilledPromises } from './core/utils/filters'
-import { logger } from './core/utils/logger'
-import { IProtocolAdapter } from './types/adapter'
+import { Protocol, supportedProtocols } from './adapters/index.js'
+import { Chain } from './core/constants/chains.js'
+import { chainProviders } from './core/utils/chainProviders.js'
+import { fulfilledPromises } from './core/utils/filters.js'
+import { logger } from './core/utils/logger.js'
+import { IProtocolAdapter } from './types/adapter.js'
 import {
   APRResponse,
   APYResponse,
@@ -13,7 +13,7 @@ import {
   DefiProfitsResponse,
   PricePerShareResponse,
   TotalValueLockResponse,
-} from './types/response'
+} from './types/response.js'
 
 export async function getPositions({
   userAddress,

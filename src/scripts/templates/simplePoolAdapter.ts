@@ -3,12 +3,12 @@ export function simplePoolAdapterTemplate(
   adapterClassName: string,
 ) {
   return `
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Adapter } from '../../../../core/decorators/adapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
-import { IMetadataBuilder } from '../../../../core/utils/metadata'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter.js'
+import { Adapter } from '../../../../core/decorators/adapter.js'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile.js'
+import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata.js'
+import { logger } from '../../../../core/utils/logger.js'
+import { IMetadataBuilder } from '../../../../core/utils/metadata.js'
 import {
   BasePricePerShareToken,
   BaseToken,
@@ -24,7 +24,7 @@ import {
   ProtocolTotalValueLockedToken,
   TokenBalance,
   TokenType,
-} from '../../../../types/adapter'
+} from '../../../../types/adapter.js'
 
 type ${adapterClassName}Metadata = Record<
   string,

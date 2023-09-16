@@ -1,10 +1,10 @@
 import { Network, ethers } from 'ethers'
-import { Multicall__factory } from '../../contracts'
-import { Chain } from '../constants/chains'
-import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
-import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
-import { logger } from './logger'
-import { MulticallQueue } from './multicall'
+import { Multicall__factory } from '../../contracts/index.js'
+import { Chain } from '../constants/chains.js'
+import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS.js'
+import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider.js'
+import { logger } from './logger.js'
+import { MulticallQueue } from './multicall.js'
 
 const provider = ({
   url,

@@ -11,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/consensys-vertical-apps/mmi-defi-adapters"
   },
+  "type": "module",
   "main": "lib/main/index.js",
   "types": "lib/main/index.d.ts",
   "files": [
@@ -52,7 +53,7 @@
     "@types/node": "^18.17.1",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
-    "chalk": "^4.1.2",
+    "chalk": "^5.3.0",
     "commander": "^11.0.0",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
@@ -60,7 +61,7 @@
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-prettier": "^5.0.0",
     "ethereum-block-by-date": "^1.4.9",
-    "inquirer": "^8.2.6",
+    "inquirer": "^9.2.11",
     "jest": "^29.6.4",
     "lodash": "^4.17.21",
     "npm-run-all": "^4.1.5",

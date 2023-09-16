@@ -1,7 +1,6 @@
 import { ethers } from 'ethers'
-import { Protocol } from '../../..'
-import { Chain } from '../../../../core/constants/chains'
-import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
+import { Chain } from '../../../../core/constants/chains.js'
+import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata.js'
 import {
   GetAprInput,
   GetApyInput,
@@ -22,7 +21,8 @@ import {
   ProtocolToken,
   ProtocolTotalValueLockedToken,
   TokenType,
-} from '../../../../types/adapter'
+} from '../../../../types/adapter.js'
+import { Protocol } from '../../../index.js'
 
 export class ExampleProductAdapter implements IProtocolAdapter {
   protocolId: Protocol
