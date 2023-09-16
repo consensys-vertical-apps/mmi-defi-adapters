@@ -1,4 +1,4 @@
-import { ethers } from 'ethers'
+import { ethers, isError } from 'ethers'
 import { Erc20, Erc20__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
 import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
@@ -22,10 +22,10 @@ const CHAIN_METADATA: Partial<
   [Chain.Arbitrum]: TOKEN_METADATA_ARBITRUM,
 }
 
-export const getThinTokenMetadata = async (
+export async function getThinTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
-) => {
+) {
   const { iconUrl: _, ...token } = await getTokenMetadata({
     tokenAddress,
     chainId,
@@ -34,13 +34,13 @@ export const getThinTokenMetadata = async (
   return token
 }
 
-export const getTokenMetadata = async ({
+export async function getTokenMetadata({
   tokenAddress,
   chainId,
 }: {
   tokenAddress: string
   chainId: Chain
-}): Promise<Erc20Metadata> => {
+}): Promise<Erc20Metadata> {
   const fileMetadata = CHAIN_METADATA[chainId]
   if (fileMetadata) {
     const fileTokenMetadata = fileMetadata[tokenAddress]
@@ -67,10 +67,10 @@ export const getTokenMetadata = async ({
   throw new Error(errorMessage)
 }
 
-const getOnChainTokenMetadata = async (
+async function getOnChainTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
-): Promise<Erc20Metadata | undefined> => {
+): Promise<Erc20Metadata | undefined> {
   const provider = chainProviders[chainId]
   if (!provider) {
     return undefined
@@ -79,8 +79,8 @@ const getOnChainTokenMetadata = async (
   const tokenContract = Erc20__factory.connect(tokenAddress, provider)
 
   try {
-    const name = await getTokenName(tokenContract, provider)
-    const symbol = await getTokenSymbol(tokenContract, provider)
+    const name = await fetchStringTokenData(tokenContract, provider, 'name')
+    const symbol = await fetchStringTokenData(tokenContract, provider, 'symbol')
     const decimals = Number(await tokenContract.decimals())
     return {
       address: (await tokenContract.getAddress()).toLowerCase(),
@@ -98,59 +98,30 @@ const getOnChainTokenMetadata = async (
   }
 }
 
-const getTokenName = async (
+async function fetchStringTokenData(
   tokenContract: Erc20,
   provider: ethers.JsonRpcProvider,
-) => {
+  functionName: 'name' | 'symbol',
+): Promise<string> {
   try {
-    return await tokenContract.name()
+    return await tokenContract[functionName]()
   } catch (error) {
-    if (!isCallExceptionCodeError(error)) {
-      throw error
-    }
-
-    const contractAddress = await tokenContract.getAddress()
-
-    logger.warn(
-      { contractAddress },
-      'Failed to fetch token name as a string. Using bytes32 fallback',
-    )
-
-    // Fallback for contracts that return bytes32 instead of string
-    const result = await provider.call({
-      to: contractAddress,
-      data: '0x06fdde03', // Function signature for name()
-    })
-    return ethers.decodeBytes32String(result)
-  }
-}
-
-const getTokenSymbol = async (
-  tokenContract: Erc20,
-  provider: ethers.JsonRpcProvider,
-) => {
-  try {
-    return await tokenContract.symbol()
-  } catch (error) {
-    if (!isCallExceptionCodeError(error)) {
+    if (!isError(error, 'BAD_DATA')) {
       throw error
     }
 
     const contractAddress = await tokenContract.getAddress()
 
     logger.debug(
-      { contractAddress },
-      'Failed to fetch token symbol as a string. Using bytes32 fallback',
+      { contractAddress, ...error },
+      `Failed to fetch token ${functionName} as a string. Using bytes32 fallback`,
     )
 
     // Fallback for contracts that return bytes32 instead of string
     const result = await provider.call({
       to: contractAddress,
-      data: '0x95d89b41', // Function signature for symbol()
+      data: tokenContract[functionName].fragment.selector,
     })
     return ethers.decodeBytes32String(result)
   }
 }
-
-const isCallExceptionCodeError = (error: unknown): boolean =>
-  error instanceof Error && 'code' in error && error.code === 'CALL_EXCEPTION'
