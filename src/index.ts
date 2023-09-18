@@ -11,7 +11,7 @@ import {
   DefiMovementsResponse,
   DefiPositionResponse,
   DefiProfitsResponse,
-  AdapterError,
+  AdapterErrorResponse,
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
@@ -303,7 +303,7 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
                 ...adapterResult,
               }
             } catch (error) {
-              let adapterError: AdapterError['error']
+              let adapterError: AdapterErrorResponse['error']
 
               if (error instanceof Error) {
                 adapterError = {

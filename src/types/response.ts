@@ -10,14 +10,14 @@ import {
   ProtocolTotalValueLockedToken,
 } from './adapter'
 
-export type AdapterError = {
+export type AdapterErrorResponse = {
   error: {
     message: string
     details?: object
   }
 }
 
-export type AdapterResponse<T> = ProtocolDetails & (T | AdapterError)
+export type AdapterResponse<T> = ProtocolDetails & (T | AdapterErrorResponse)
 
 export type DefiPositionResponse = AdapterResponse<{
   tokens: ProtocolToken[]
