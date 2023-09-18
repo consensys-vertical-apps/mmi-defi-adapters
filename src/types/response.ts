@@ -17,7 +17,8 @@ export type AdapterErrorResponse = {
   }
 }
 
-export type AdapterResponse<T> = ProtocolDetails & (T | AdapterErrorResponse)
+export type AdapterResponse<ProtocolResponse> = ProtocolDetails &
+  (ProtocolResponse | AdapterErrorResponse)
 
 export type DefiPositionResponse = AdapterResponse<{
   tokens: ProtocolToken[]
