@@ -19,37 +19,31 @@ export type AdapterError = {
 
 export type AdapterResponse<T> = ProtocolDetails & (T | AdapterError)
 
-export type DefiPositions = {
+export type DefiPositionResponse = AdapterResponse<{
   tokens: ProtocolToken[]
-}
-export type DefiPositionResponse = AdapterResponse<DefiPositions>
+}>
 
-export type PricePerShare = {
+export type PricePerShareResponse = AdapterResponse<{
   tokens: ProtocolPricePerShareToken[]
-}
-export type PricePerShareResponse = AdapterResponse<PricePerShare>
+}>
 
-export type APR = {
+export type APRResponse = AdapterResponse<{
   tokens: ProtocolAprToken[]
-}
-export type APRResponse = AdapterResponse<APR>
+}>
 
-export type APY = {
+export type APYResponse = AdapterResponse<{
   tokens: ProtocolApyToken[]
-}
-export type APYResponse = AdapterResponse<APY>
+}>
 
-export type TotalValueLock = {
+export type TotalValueLockResponse = AdapterResponse<{
   tokens: ProtocolTotalValueLockedToken[]
-}
-export type TotalValueLockResponse = AdapterResponse<TotalValueLock>
+}>
 
 export type DefiProfitsResponse = AdapterResponse<ProfitsTokensWithRange>
 
-export type DefiMovements = {
+export type DefiMovementsResponse = AdapterResponse<{
   movements: {
     protocolToken: Erc20Metadata
     positionMovements: MovementsByBlock[]
   }[]
-}
-export type DefiMovementsResponse = AdapterResponse<DefiMovements>
+}>
