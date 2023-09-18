@@ -14,5 +14,6 @@
     "noUncheckedIndexedAccess": true,
     "types": ["node", "jest"]
   },
-  "include": ["src/**/*.ts", "src/adapters/**/metadata/*.json"]
+  "include": ["src/**/*.ts", "src/adapters/**/metadata/*.json"],
+  "exclude": ["./src/server"]
 }
