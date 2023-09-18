@@ -1,0 +1,256 @@
+[
+  {
+    "protocolId": "stargate",
+    "name": "Stargate",
+    "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+    "siteUrl": "https://stargate.finance/",
+    "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+    "positionType": "supply",
+    "chainId": 1,
+    "tokens": [
+      {
+        "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+        "name": "USD Coin-LP",
+        "symbol": "S*USDC",
+        "decimals": 6,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "type": "underlying",
+            "pricePerShareRaw": "1000758n",
+            "pricePerShare": "1.000758"
+          }
+        ]
+      },
+      {
+        "address": "0x38ea452219524bb87e18de1c24d3bb59510bd783",
+        "name": "Tether USD-LP",
+        "symbol": "S*USDT",
+        "decimals": 6,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 6,
+            "type": "underlying",
+            "pricePerShareRaw": "1001056n",
+            "pricePerShare": "1.001056"
+          }
+        ]
+      },
+      {
+        "address": "0x692953e758c3669290cb1677180c64183cee374e",
+        "name": "Decentralized USD-LP",
+        "symbol": "S*USDD",
+        "decimals": 18,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0x0c10bf8fcb7bf5412187a595ab97a3609160b5c6",
+            "name": "Decentralized USD",
+            "symbol": "USDD",
+            "decimals": 18,
+            "type": "underlying",
+            "pricePerShareRaw": "1000153539319485939n",
+            "pricePerShare": "1.000153539319485939"
+          }
+        ]
+      },
+      {
+        "address": "0x101816545f6bd2b1076434b54383a1e633390a2e",
+        "name": "Stargate Ether Vault-LP",
+        "symbol": "S*SGETH",
+        "decimals": 18,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0x72e2f4830b9e45d52f80ac08cb2bec0fef72ed9c",
+            "name": "Stargate Ether Vault",
+            "symbol": "SGETH",
+            "decimals": 18,
+            "type": "underlying",
+            "pricePerShareRaw": "1000116849159443584n",
+            "pricePerShare": "1.000116849159443584"
+          }
+        ]
+      },
+      {
+        "address": "0x0faf1d2d3ced330824de3b8200fc8dc6e397850d",
+        "name": "Dai Stablecoin-LP",
+        "symbol": "S*DAI",
+        "decimals": 6,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+            "name": "Dai Stablecoin",
+            "symbol": "DAI",
+            "decimals": 18,
+            "type": "underlying",
+            "pricePerShareRaw": "1000021000000000000n",
+            "pricePerShare": "1.000021"
+          }
+        ]
+      },
+      {
+        "address": "0xfa0f307783ac21c39e939acff795e27b650f6e68",
+        "name": "Frax-LP",
+        "symbol": "S*FRAX",
+        "decimals": 6,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+            "name": "Frax",
+            "symbol": "FRAX",
+            "decimals": 18,
+            "type": "underlying",
+            "pricePerShareRaw": "1000014000000000000n",
+            "pricePerShare": "1.000014"
+          }
+        ]
+      },
+      {
+        "address": "0x590d4f8a68583639f215f675f3a259ed84790580",
+        "name": "Synth sUSD-LP",
+        "symbol": "S*sUSD",
+        "decimals": 6,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+            "name": "Synth sUSD",
+            "symbol": "SUSD",
+            "decimals": 18,
+            "type": "underlying",
+            "pricePerShareRaw": "1000198000000000000n",
+            "pricePerShare": "1.000198"
+          }
+        ]
+      },
+      {
+        "address": "0xe8f55368c82d38bbbbdb5533e7f56afc2e978cc2",
+        "name": "LUSD Stablecoin-LP",
+        "symbol": "S*LUSD",
+        "decimals": 6,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+            "name": "Liquity USD",
+            "symbol": "LUSD",
+            "decimals": 18,
+            "type": "underlying",
+            "pricePerShareRaw": "1000185000000000000n",
+            "pricePerShare": "1.000185"
+          }
+        ]
+      },
+      {
+        "address": "0x9cef9a0b1be0d289ac9f4a98ff317c33eaa84eb8",
+        "name": "Mai Stablecoin-LP",
+        "symbol": "S*MAI",
+        "decimals": 6,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0x8d6cebd76f18e1558d4db88138e2defb3909fad6",
+            "name": "Mai Stablecoin",
+            "symbol": "MAI",
+            "decimals": 18,
+            "type": "underlying",
+            "pricePerShareRaw": "1000438000000000000n",
+            "pricePerShare": "1.000438"
+          }
+        ]
+      },
+      {
+        "address": "0xd8772edbf88bba2667ed011542343b0eddacda47",
+        "name": "Metis Token-LP",
+        "symbol": "S*Metis",
+        "decimals": 18,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0x9e32b13ce7f2e80a01932b42553652e053d6ed8e",
+            "name": "Metis",
+            "symbol": "METIS",
+            "decimals": 18,
+            "type": "underlying",
+            "pricePerShareRaw": "1000458018722986854n",
+            "pricePerShare": "1.000458018722986854"
+          }
+        ]
+      },
+      {
+        "address": "0x430ebff5e3e80a6c58e7e6ada1d90f5c28aa116d",
+        "name": "Tether USD-LP",
+        "symbol": "S*USDT",
+        "decimals": 6,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 6,
+            "type": "underlying",
+            "pricePerShareRaw": "1000195n",
+            "pricePerShare": "1.000195"
+          }
+        ]
+      },
+      {
+        "address": "0x1ce66c52c36757daf6551edc04800a0ec9983a09",
+        "name": "Wootrade Network-LP",
+        "symbol": "S*WOO",
+        "decimals": 18,
+        "share": 1,
+        "type": "protocol",
+        "tokens": [
+          {
+            "address": "0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
+            "name": "Wootrade Network",
+            "symbol": "WOO",
+            "decimals": 18,
+            "type": "underlying",
+            "pricePerShareRaw": "1000803627705731217n",
+            "pricePerShare": "1.000803627705731217"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "protocolId": "stargate",
+    "name": "Stargate",
+    "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+    "siteUrl": "https://stargate.finance/",
+    "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+    "positionType": "stake",
+    "chainId": 1,
+    "error": {
+      "message": "Not Implemented",
+      "details": {
+        "name": "Error"
+      }
+    }
+  }
+]

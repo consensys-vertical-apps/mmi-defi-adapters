@@ -19,14 +19,17 @@ export async function getPositions({
   userAddress,
   filterProtocolIds,
   filterChainIds,
+  blockNumber,
 }: {
   userAddress: string
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  blockNumber?: number
 }): Promise<DefiPositionResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const tokens = await adapter.getPositions({
       userAddress,
+      blockNumber,
     })
 
     return { tokens }
@@ -43,19 +46,20 @@ export async function getTodaysProfits({
   userAddress,
   filterProtocolIds,
   filterChainIds,
+  blockNumber,
 }: {
   userAddress: string
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  blockNumber?: number
 }): Promise<DefiProfitsResponse[]> {
   const runner = async (
     adapter: IProtocolAdapter,
     provider: ethers.JsonRpcProvider,
   ) => {
-    const blockNumber = await provider.getBlockNumber()
     return await adapter.getOneDayProfit({
       userAddress,
-      blockNumber,
+      blockNumber: blockNumber ?? (await provider.getBlockNumber()),
     })
   }
 
@@ -69,15 +73,17 @@ export async function getTodaysProfits({
 export async function getPrices({
   filterProtocolIds,
   filterChainIds,
+  blockNumber,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  blockNumber?: number
 }): Promise<PricePerShareResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getPricePerShare({ protocolTokenAddress }),
+        adapter.getPricePerShare({ protocolTokenAddress, blockNumber }),
       ),
     )
 
@@ -91,43 +97,39 @@ export async function getPrices({
   })
 }
 
-export async function getTotalValueLocked({
+export async function getWithdrawals({
   filterProtocolIds,
   filterChainIds,
+  userAddress,
+  fromBlock,
+  toBlock,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-}): Promise<TotalValueLockResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
-    const tokens = await adapter.getTotalValueLocked({})
-
-    return { tokens }
-  }
-
-  return runForAllProtocolsAndChains({
-    runner,
-    filterProtocolIds,
-    filterChainIds,
-  })
-}
-
-export async function getApy({
-  filterProtocolIds,
-  filterChainIds,
-}: {
-  filterProtocolIds?: Protocol[]
-  filterChainIds?: Chain[]
-}): Promise<APYResponse[]> {
+  userAddress: string
+  fromBlock: number
+  toBlock: number
+}): Promise<DefiMovementsResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const protocolTokens = await adapter.getProtocolTokens()
-    const tokens = await Promise.all(
-      protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getApy({ protocolTokenAddress }),
-      ),
+    const movements = await Promise.all(
+      protocolTokens.map(async (protocolToken) => {
+        const positionMovements = await adapter.getWithdrawals({
+          protocolTokenAddress: protocolToken.address,
+          fromBlock,
+          toBlock,
+          userAddress,
+        })
+
+        return {
+          protocolToken,
+          positionMovements,
+        }
+      }),
     )
 
     return {
-      tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
+      movements,
     }
   }
 
@@ -181,39 +183,43 @@ export async function getDeposits({
   })
 }
 
-export async function getWithdrawals({
+export async function getTotalValueLocked({
   filterProtocolIds,
   filterChainIds,
-  userAddress,
-  fromBlock,
-  toBlock,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-  userAddress: string
-  fromBlock: number
-  toBlock: number
-}): Promise<DefiMovementsResponse[]> {
+}): Promise<TotalValueLockResponse[]> {
+  const runner = async (adapter: IProtocolAdapter) => {
+    const tokens = await adapter.getTotalValueLocked({})
+
+    return { tokens }
+  }
+
+  return runForAllProtocolsAndChains({
+    runner,
+    filterProtocolIds,
+    filterChainIds,
+  })
+}
+
+export async function getApy({
+  filterProtocolIds,
+  filterChainIds,
+}: {
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
+}): Promise<APYResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const protocolTokens = await adapter.getProtocolTokens()
-    const movements = await Promise.all(
-      protocolTokens.map(async (protocolToken) => {
-        const positionMovements = await adapter.getWithdrawals({
-          protocolTokenAddress: protocolToken.address,
-          fromBlock,
-          toBlock,
-          userAddress,
-        })
-
-        return {
-          protocolToken,
-          positionMovements,
-        }
-      }),
+    const tokens = await Promise.all(
+      protocolTokens.map(({ address: protocolTokenAddress }) =>
+        adapter.getApy({ protocolTokenAddress }),
+      ),
     )
 
     return {
-      movements,
+      tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
     }
   }
 
