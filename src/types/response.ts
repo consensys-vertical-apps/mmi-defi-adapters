@@ -10,29 +10,41 @@ import {
   ProtocolTotalValueLockedToken,
 } from './adapter'
 
-export type DefiPositionResponse = ProtocolDetails & {
+export type AdapterErrorResponse = {
+  error: {
+    message: string
+    details?: object
+  }
+}
+
+export type AdapterResponse<ProtocolResponse> = ProtocolDetails &
+  (ProtocolResponse | AdapterErrorResponse)
+
+export type DefiPositionResponse = AdapterResponse<{
   tokens: ProtocolToken[]
-}
+}>
 
-export type PricePerShareResponse = ProtocolDetails & {
+export type PricePerShareResponse = AdapterResponse<{
   tokens: ProtocolPricePerShareToken[]
-}
-export type APRResponse = ProtocolDetails & {
+}>
+
+export type APRResponse = AdapterResponse<{
   tokens: ProtocolAprToken[]
-}
-export type APYResponse = ProtocolDetails & {
+}>
+
+export type APYResponse = AdapterResponse<{
   tokens: ProtocolApyToken[]
-}
+}>
 
-export type TotalValueLockResponse = ProtocolDetails & {
+export type TotalValueLockResponse = AdapterResponse<{
   tokens: ProtocolTotalValueLockedToken[]
-}
+}>
 
-export type DefiProfitsResponse = ProtocolDetails & ProfitsTokensWithRange
+export type DefiProfitsResponse = AdapterResponse<ProfitsTokensWithRange>
 
-export type DefiMovementsResponse = ProtocolDetails & {
+export type DefiMovementsResponse = AdapterResponse<{
   movements: {
     protocolToken: Erc20Metadata
     positionMovements: MovementsByBlock[]
   }[]
-}
+}>
