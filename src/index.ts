@@ -1,8 +1,7 @@
 import { ethers } from 'ethers'
 import { Protocol, supportedProtocols } from './adapters'
-import { Chain } from './core/constants/chains'
+import { Chain, ChainName } from './core/constants/chains'
 import { chainProviders } from './core/utils/chainProviders'
-import { logger } from './core/utils/logger'
 import { IProtocolAdapter } from './types/adapter'
 import {
   APRResponse,
@@ -282,19 +281,27 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
           const chainId = +chainIdKey as Chain
           const provider = chainProviders[chainId]
 
-          if (!provider) {
-            logger.error({ chainId }, 'No provider found for chain')
-            throw new Error(`No provider found for chain: ${chainId}`)
-          }
-
           return adapterClasses.map(async (adapterClass) => {
             const adapter = new adapterClass({
-              provider,
+              provider: provider!,
               chainId,
               protocolId: protocolIdKey as Protocol,
             })
 
             const protocolDetails = adapter.getProtocolDetails()
+
+            if (!provider) {
+              return {
+                ...protocolDetails,
+                error: {
+                  message: 'No provider found for chain',
+                  details: {
+                    chainId,
+                    chainName: ChainName[chainId],
+                  },
+                },
+              }
+            }
 
             try {
               const adapterResult = await runner(adapter, provider)
