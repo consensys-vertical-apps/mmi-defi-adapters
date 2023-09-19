@@ -35,12 +35,10 @@ export async function getPositions({
   userAddress: string
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-  blockNumbers?: Record<Chain, number | undefined>
+  blockNumbers?: Partial<Record<Chain, number>>
 }): Promise<DefiPositionResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
-    const chainId = adapter.getProtocolDetails().chainId
-
-    const blockNumber = blockNumbers?.[chainId]
+    const blockNumber = blockNumbers?.[adapter.chainId]
 
     const tokens = await adapter.getPositions({
       userAddress,
@@ -68,17 +66,17 @@ export async function getProfits({
   timePeriod?: TimePeriod
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-  toBlockNumbersOverride?: Record<Chain, number | undefined>
+  toBlockNumbersOverride?: Partial<Record<Chain, number>>
 }): Promise<DefiProfitsResponse[]> {
   const runner = async (
     adapter: IProtocolAdapter,
     provider: ethers.JsonRpcProvider,
   ) => {
-    const chainId = adapter.getProtocolDetails().chainId
-
     const toBlock =
-      toBlockNumbersOverride?.[chainId] || (await provider.getBlockNumber())
-    const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[chainId] * timePeriod
+      toBlockNumbersOverride?.[adapter.chainId] ??
+      (await provider.getBlockNumber())
+    const fromBlock =
+      toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
     return adapter.getProfits({
       userAddress,
       toBlock,
