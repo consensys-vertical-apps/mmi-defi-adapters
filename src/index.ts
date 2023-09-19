@@ -16,7 +16,7 @@ import {
   TotalValueLockResponse,
 } from './types/response'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { TimePeriod } from './core/constants/TimePeriod'
+import { TimePeriod } from './core/constants/timePeriod'
 
 export {
   Chain,

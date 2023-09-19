@@ -2,7 +2,6 @@ import { ethers } from 'ethers'
 import { Protocol } from '../adapters'
 import { Chain } from '../core/constants/chains'
 import { Erc20Metadata } from '../core/utils/getTokenMetadata'
-import { TimePeriod } from '../core/constants/TimePeriod'
 
 export const TokenType = {
   Protocol: 'protocol',
