@@ -23,6 +23,7 @@ export {
   DefiProfitsResponse,
   PositionType,
   Protocol,
+  TimePeriod,
 }
 
 export async function getPositions({
@@ -34,7 +35,7 @@ export async function getPositions({
   userAddress: string
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-  blockNumbers?: Record<string, number | undefined>
+  blockNumbers?: Record<Chain, number | undefined>
 }): Promise<DefiPositionResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const chainId = adapter.getProtocolDetails().chainId
@@ -58,13 +59,13 @@ export async function getPositions({
 
 export async function getProfits({
   userAddress,
+  timePeriod = TimePeriod.sevenDays,
   filterProtocolIds,
   filterChainIds,
   toBlockNumbersOverride,
-  filterTimePeriod = TimePeriod.sevenDays,
 }: {
   userAddress: string
-  filterTimePeriod?: TimePeriod
+  timePeriod?: TimePeriod
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
   toBlockNumbersOverride?: Record<Chain, number | undefined>
@@ -77,8 +78,7 @@ export async function getProfits({
 
     const toBlock =
       toBlockNumbersOverride?.[chainId] || (await provider.getBlockNumber())
-    const fromBlock =
-      toBlock - AVERAGE_BLOCKS_PER_DAY[chainId] * filterTimePeriod
+    const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[chainId] * timePeriod
     return adapter.getProfits({
       userAddress,
       toBlock,
