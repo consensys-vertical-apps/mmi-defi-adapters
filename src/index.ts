@@ -281,62 +281,69 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
           const chainId = +chainIdKey as Chain
           const provider = chainProviders[chainId]
 
-          return adapterClasses.map(async (adapterClass) => {
-            const adapter = new adapterClass({
-              provider: provider!,
-              chainId,
-              protocolId: protocolIdKey as Protocol,
-            })
+          return adapterClasses.map(
+            async (
+              adapterClass,
+            ): Promise<AdapterResponse<Awaited<ReturnType>>> => {
+              const adapter = new adapterClass({
+                provider: provider!,
+                chainId,
+                protocolId: protocolIdKey as Protocol,
+              })
 
-            const protocolDetails = adapter.getProtocolDetails()
+              const protocolDetails = adapter.getProtocolDetails()
 
-            if (!provider) {
-              return {
-                ...protocolDetails,
-                error: {
-                  message: 'No provider found for chain',
-                  details: {
-                    chainId,
-                    chainName: ChainName[chainId],
+              if (!provider) {
+                return {
+                  ...protocolDetails,
+                  success: false,
+                  error: {
+                    message: 'No provider found for chain',
+                    details: {
+                      chainId,
+                      chainName: ChainName[chainId],
+                    },
                   },
-                },
-              }
-            }
-
-            try {
-              const adapterResult = await runner(adapter, provider)
-              return {
-                ...protocolDetails,
-                ...adapterResult,
-              }
-            } catch (error) {
-              let adapterError: AdapterErrorResponse['error']
-
-              if (error instanceof Error) {
-                adapterError = {
-                  message: error.message,
-                  details: { name: error.name },
-                }
-              } else if (typeof error === 'string') {
-                adapterError = {
-                  message: error,
-                }
-              } else if (error && typeof error.toString === 'function') {
-                adapterError = {
-                  message: error.toString(),
-                }
-              } else {
-                adapterError = {
-                  message: 'Error message cannot be extracted',
                 }
               }
 
-              return {
-                ...protocolDetails,
-                error: adapterError,
+              try {
+                const adapterResult = await runner(adapter, provider)
+                return {
+                  ...protocolDetails,
+                  success: true,
+                  ...adapterResult,
+                }
+              } catch (error) {
+                let adapterError: AdapterErrorResponse['error']
+
+                if (error instanceof Error) {
+                  adapterError = {
+                    message: error.message,
+                    details: { name: error.name },
+                  }
+                } else if (typeof error === 'string') {
+                  adapterError = {
+                    message: error,
+                  }
+                } else if (error && typeof error.toString === 'function') {
+                  adapterError = {
+                    message: error.toString(),
+                  }
+                } else {
+                  adapterError = {
+                    message: 'Error message cannot be extracted',
+                  }
+                }
+
+                return {
+                  ...protocolDetails,
+                  success: false,
+                  error: adapterError,
+                }
               }
-            }
-          })
+            },
+          )
         })
     })
 
