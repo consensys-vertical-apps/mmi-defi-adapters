@@ -131,7 +131,7 @@ export class StargateVestingAdapter
     throw new Error('Not Implemented')
   }
 
-  async getOneDayProfit(): Promise<ProfitsTokensWithRange> {
+  async getProfits(): Promise<ProfitsTokensWithRange> {
     throw new Error('Not Implemented')
   }
 

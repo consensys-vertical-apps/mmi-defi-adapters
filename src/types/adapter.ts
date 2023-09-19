@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { Protocol } from '../adapters'
 import { Chain } from '../core/constants/chains'
 import { Erc20Metadata } from '../core/utils/getTokenMetadata'
+import { TimePeriod } from '../core/constants/TimePeriod'
 
 export const TokenType = {
   Protocol: 'protocol',
@@ -12,6 +13,7 @@ export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
 export const PositionType = {
   Supply: 'supply',
+  Lend: 'lend',
   Borrow: 'borrow',
   Staked: 'stake',
 } as const
@@ -44,7 +46,8 @@ export type GetEventsInput = {
 }
 export interface GetProfitsInput {
   userAddress: string
-  blockNumber: number
+  fromBlock: number
+  toBlock: number
 }
 
 export type GetTradeEvents = {
@@ -165,7 +168,7 @@ export interface IProtocolAdapter {
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]>
-  getOneDayProfit(input: GetProfitsInput): Promise<ProfitsTokensWithRange>
+  getProfits(input: GetProfitsInput): Promise<ProfitsTokensWithRange>
   getApy(input: GetApyInput): Promise<ProtocolApyToken>
   getApr(input: GetAprInput): Promise<ProtocolAprToken>
 }

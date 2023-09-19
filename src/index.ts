@@ -2,7 +2,8 @@ import { ethers } from 'ethers'
 import { Protocol, supportedProtocols } from './adapters'
 import { Chain, ChainName } from './core/constants/chains'
 import { chainProviders } from './core/utils/chainProviders'
-import { IProtocolAdapter } from './types/adapter'
+
+import { IProtocolAdapter, PositionType } from './types/adapter'
 import {
   APRResponse,
   APYResponse,
@@ -14,19 +15,44 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
+import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
+import { TimePeriod } from './core/constants/TimePeriod'
+
+export {
+  APRResponse,
+  APYResponse,
+  DefiMovementsResponse,
+  DefiPositionResponse,
+  DefiProfitsResponse,
+  PricePerShareResponse,
+  TotalValueLockResponse,
+  Chain,
+  chainProviders,
+  Protocol,
+  supportedProtocols,
+  PositionType,
+  AVERAGE_BLOCKS_PER_DAY,
+}
 
 export async function getPositions({
   userAddress,
   filterProtocolIds,
   filterChainIds,
+  blockNumbers,
 }: {
   userAddress: string
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  blockNumbers?: Record<string, number | undefined>
 }): Promise<DefiPositionResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
+    const chainId = adapter.getProtocolDetails().chainId
+
+    const blockNumber = blockNumbers?.[chainId]
+
     const tokens = await adapter.getPositions({
       userAddress,
+      blockNumber,
     })
 
     return { tokens }
@@ -39,23 +65,33 @@ export async function getPositions({
   })
 }
 
-export async function getTodaysProfits({
+export async function getProfits({
   userAddress,
   filterProtocolIds,
   filterChainIds,
+  toBlockNumbersOverride: filterToBlockNumbers,
+  filterTimePeriod = TimePeriod.sevenDays,
 }: {
   userAddress: string
+  filterTimePeriod?: TimePeriod
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  toBlockNumbersOverride?: Record<Chain, number | undefined>
 }): Promise<DefiProfitsResponse[]> {
   const runner = async (
     adapter: IProtocolAdapter,
     provider: ethers.JsonRpcProvider,
   ) => {
-    const blockNumber = await provider.getBlockNumber()
-    return await adapter.getOneDayProfit({
+    const chainId = adapter.getProtocolDetails().chainId
+
+    const toBlock =
+      filterToBlockNumbers?.[chainId] || (await provider.getBlockNumber())
+    const fromBlock =
+      toBlock - AVERAGE_BLOCKS_PER_DAY[chainId] * filterTimePeriod
+    return adapter.getProfits({
       userAddress,
-      blockNumber,
+      toBlock,
+      fromBlock,
     })
   }
 

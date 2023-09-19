@@ -140,13 +140,11 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]>
 
-  async getOneDayProfit({
+  async getProfits({
     userAddress,
-    blockNumber,
+    toBlock,
+    fromBlock,
   }: GetProfitsInput): Promise<ProfitsTokensWithRange> {
-    const toBlock = blockNumber
-    const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[this.chainId]
-
     const [currentValues, previousValues] = await Promise.all([
       this.getPositions({
         userAddress,
