@@ -19,19 +19,11 @@ import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { TimePeriod } from './core/constants/TimePeriod'
 
 export {
-  APRResponse,
-  APYResponse,
-  DefiMovementsResponse,
+  Chain,
   DefiPositionResponse,
   DefiProfitsResponse,
-  PricePerShareResponse,
-  TotalValueLockResponse,
-  Chain,
-  chainProviders,
-  Protocol,
-  supportedProtocols,
   PositionType,
-  AVERAGE_BLOCKS_PER_DAY,
+  Protocol,
 }
 
 export async function getPositions({
