@@ -1,8 +1,10 @@
 import { ethers } from 'ethers'
 import { Protocol, supportedProtocols } from './adapters'
+import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
+import { TimePeriod } from './core/constants/timePeriod'
 import { chainProviders } from './core/utils/chainProviders'
-import { IProtocolAdapter } from './types/adapter'
+import { IProtocolAdapter, PositionType } from './types/adapter'
 import {
   APRResponse,
   APYResponse,
@@ -15,18 +17,32 @@ import {
   TotalValueLockResponse,
 } from './types/response'
 
+export {
+  Chain,
+  DefiPositionResponse,
+  DefiProfitsResponse,
+  PositionType,
+  Protocol,
+  TimePeriod,
+}
+
 export async function getPositions({
   userAddress,
   filterProtocolIds,
   filterChainIds,
+  blockNumbers,
 }: {
   userAddress: string
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  blockNumbers?: Partial<Record<Chain, number>>
 }): Promise<DefiPositionResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
+    const blockNumber = blockNumbers?.[adapter.chainId]
+
     const tokens = await adapter.getPositions({
       userAddress,
+      blockNumber,
     })
 
     return { tokens }
@@ -39,23 +55,32 @@ export async function getPositions({
   })
 }
 
-export async function getTodaysProfits({
+export async function getProfits({
   userAddress,
+  timePeriod = TimePeriod.sevenDays,
   filterProtocolIds,
   filterChainIds,
+  toBlockNumbersOverride,
 }: {
   userAddress: string
+  timePeriod?: TimePeriod
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  toBlockNumbersOverride?: Partial<Record<Chain, number>>
 }): Promise<DefiProfitsResponse[]> {
   const runner = async (
     adapter: IProtocolAdapter,
     provider: ethers.JsonRpcProvider,
   ) => {
-    const blockNumber = await provider.getBlockNumber()
-    return await adapter.getOneDayProfit({
+    const toBlock =
+      toBlockNumbersOverride?.[adapter.chainId] ??
+      (await provider.getBlockNumber())
+    const fromBlock =
+      toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
+    return adapter.getProfits({
       userAddress,
-      blockNumber,
+      toBlock,
+      fromBlock,
     })
   }
 

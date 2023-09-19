@@ -10,7 +10,6 @@ export const Chain = {
   Linea: 59144,
 } as const
 export type Chain = (typeof Chain)[keyof typeof Chain]
-
 export const ChainName: Record<Chain, string> = {
   [Chain.Ethereum]: 'ethereum',
   [Chain.Optimism]: 'optimism',
