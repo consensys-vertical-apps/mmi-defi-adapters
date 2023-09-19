@@ -1,8 +1,9 @@
 import { ethers } from 'ethers'
 import { Protocol, supportedProtocols } from './adapters'
+import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
+import { TimePeriod } from './core/constants/timePeriod'
 import { chainProviders } from './core/utils/chainProviders'
-
 import { IProtocolAdapter, PositionType } from './types/adapter'
 import {
   APRResponse,
@@ -15,8 +16,6 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
-import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { TimePeriod } from './core/constants/timePeriod'
 
 export {
   Chain,
@@ -61,7 +60,7 @@ export async function getProfits({
   userAddress,
   filterProtocolIds,
   filterChainIds,
-  toBlockNumbersOverride: filterToBlockNumbers,
+  toBlockNumbersOverride,
   filterTimePeriod = TimePeriod.sevenDays,
 }: {
   userAddress: string
@@ -77,7 +76,7 @@ export async function getProfits({
     const chainId = adapter.getProtocolDetails().chainId
 
     const toBlock =
-      filterToBlockNumbers?.[chainId] || (await provider.getBlockNumber())
+      toBlockNumbersOverride?.[chainId] || (await provider.getBlockNumber())
     const fromBlock =
       toBlock - AVERAGE_BLOCKS_PER_DAY[chainId] * filterTimePeriod
     return adapter.getProfits({
