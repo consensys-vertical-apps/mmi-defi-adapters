@@ -13,7 +13,7 @@ import {
 export type AdapterErrorResponse = {
   error: {
     message: string
-    details?: object
+    details?: Record<string, unknown>
   }
 }
 

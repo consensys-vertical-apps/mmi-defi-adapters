@@ -15,7 +15,7 @@ export const getBalances = async ({
     provider,
     addresses: [userAddress],
     tokens: tokens.map(({ address }) => address),
-    blockNumber: blockNumber,
+    blockNumber,
   })
 
   return filterMap(tokens, (token) => {

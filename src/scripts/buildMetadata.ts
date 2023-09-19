@@ -62,8 +62,11 @@ export function buildMetadata(program: Command) {
     })
 }
 
-function isIMetadataBuilder(object: object): object is IMetadataBuilder {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isIMetadataBuilder(value: any): value is IMetadataBuilder {
   return (
-    'buildMetadata' in object && typeof object['buildMetadata'] === 'function'
+    typeof value === 'object' &&
+    'buildMetadata' in value &&
+    typeof value['buildMetadata'] === 'function'
   )
 }

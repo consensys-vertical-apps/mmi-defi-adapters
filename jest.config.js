@@ -8,6 +8,7 @@ const config = {
     '!src/contracts/**',
     '!src/adapters/**/contracts/**',
   ],
+  setupFiles: ['dotenv/config'],
 }
 
 module.exports = config

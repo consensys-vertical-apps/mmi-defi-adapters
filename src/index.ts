@@ -19,14 +19,16 @@ export async function getPositions({
   userAddress,
   filterProtocolIds,
   filterChainIds,
-  blockNumber,
+  blockNumbers,
 }: {
   userAddress: string
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-  blockNumber?: number
+  blockNumbers?: Partial<Record<Chain, number>>
 }): Promise<DefiPositionResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
+    const blockNumber = blockNumbers?.[adapter.chainId]
+
     const tokens = await adapter.getPositions({
       userAddress,
       blockNumber,
@@ -46,17 +48,19 @@ export async function getTodaysProfits({
   userAddress,
   filterProtocolIds,
   filterChainIds,
-  blockNumber,
+  blockNumbers,
 }: {
   userAddress: string
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-  blockNumber?: number
+  blockNumbers?: Partial<Record<Chain, number>>
 }): Promise<DefiProfitsResponse[]> {
   const runner = async (
     adapter: IProtocolAdapter,
     provider: ethers.JsonRpcProvider,
   ) => {
+    const blockNumber = blockNumbers?.[adapter.chainId]
+
     return await adapter.getOneDayProfit({
       userAddress,
       blockNumber: blockNumber ?? (await provider.getBlockNumber()),
@@ -73,13 +77,15 @@ export async function getTodaysProfits({
 export async function getPrices({
   filterProtocolIds,
   filterChainIds,
-  blockNumber,
+  blockNumbers,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-  blockNumber?: number
+  blockNumbers?: Partial<Record<Chain, number>>
 }): Promise<PricePerShareResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
+    const blockNumber = blockNumbers?.[adapter.chainId]
+
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>

@@ -1,5 +1,4 @@
 import { promises as fs } from 'fs'
-import * as path from 'path'
 import { Command } from 'commander'
 import EthDater from 'ethereum-block-by-date'
 import { parse, print, types, visit } from 'recast'
@@ -76,9 +75,7 @@ async function getAverageBlocksPerDay(chainId: Chain) {
 async function updateAverages(
   averageBlocksPerDayMap: Partial<Record<Chain, number>>,
 ) {
-  const averageBlocksFile = path.resolve(
-    './src/core/constants/AVERAGE_BLOCKS_PER_DAY.ts',
-  )
+  const averageBlocksFile = './src/core/constants/AVERAGE_BLOCKS_PER_DAY.ts'
   const contents = await fs.readFile(averageBlocksFile, 'utf-8')
   const ast = parse(contents, {
     parser: require('recast/parsers/typescript'),
