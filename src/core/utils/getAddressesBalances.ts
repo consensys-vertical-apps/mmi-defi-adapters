@@ -7,7 +7,7 @@ type AddressBalanceMap = {
 }
 
 type BalanceMap = {
-  [tokenAddress: string]: string
+  [tokenAddress: string]: bigint
 }
 
 // Addresses extracted from https://github.com/wbobeirne/eth-balance-checker
@@ -60,7 +60,7 @@ function formatAddressBalances(
     balances[addr] = {}
     tokens.forEach((tokenAddr, tokenIdx) => {
       const balance = values[addrIdx * tokens.length + tokenIdx]
-      balances[addr]![tokenAddr] = balance!.toString()
+      balances[addr]![tokenAddr] = balance!
     })
   })
   return balances

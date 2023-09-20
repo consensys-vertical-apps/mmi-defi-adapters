@@ -78,28 +78,30 @@ export class StargateVestingAdapter
       this.provider,
     )
 
-    const { amount: lockedAmount } = await votingEscrowContract.locked(
-      userAddress,
-      {
+    const [{ amount: lockedAmount }, userBalance] = await Promise.all([
+      votingEscrowContract.locked(userAddress, {
         blockTag: blockNumber,
-      },
-    )
+      }),
+      votingEscrowContract.balanceOf(userAddress, {
+        blockTag: blockNumber,
+      }),
+    ])
 
-    const userBalance = await votingEscrowContract.balanceOf(userAddress, {
-      blockTag: blockNumber,
-    })
+    if (!userBalance && !lockedAmount) {
+      return []
+    }
 
     const tokens = [
       {
         ...contractToken,
         type: TokenType.Protocol,
-        balanceRaw: BigInt(userBalance.toString()),
+        balanceRaw: userBalance,
         balance: formatUnits(userBalance, contractToken.decimals),
         tokens: [
           {
             ...underlyingToken,
             type: TokenType.Underlying,
-            balanceRaw: BigInt(lockedAmount.toString()),
+            balanceRaw: lockedAmount,
             balance: formatUnits(lockedAmount, underlyingToken.decimals),
           },
         ],
