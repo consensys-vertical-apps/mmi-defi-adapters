@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 import { Protocol } from '../..'
-import { Chain, ChainName } from '../../../core/constants/chains'
+import { ChainName } from '../../../core/constants/chains'
 import { bigintJsonParse } from '../../../core/utils/bigint-json'
 import {
   getDeposits,
@@ -21,18 +21,18 @@ describe('stargate', () => {
     it.each(
       testCases
         .filter(
-          (test): test is TestCase & { method: 'positions' } =>
-            test.method === 'positions',
+          (testCase): testCase is TestCase & { method: 'positions' } =>
+            testCase.method === 'positions',
         )
-        .map((test) => [test.id, test.chainId, test.method, test.input]),
-    )('positions match: %s', async (id, chainId, method, input) => {
-      const { snapshot, blockNumber } = await fetchSnapshot(chainId, method, id)
+        .map((testCase) => [testKey(testCase), testCase]),
+    )('positions for test %s match', async (_, testCase) => {
+      const { snapshot, blockNumber } = await fetchSnapshot(testCase)
 
       const response = await getPositions({
-        ...input,
+        ...testCase.input,
         filterProtocolIds: [Protocol.Stargate],
-        filterChainIds: [chainId],
-        blockNumbers: { [chainId]: blockNumber },
+        filterChainIds: [testCase.chainId],
+        blockNumbers: { [testCase.chainId]: blockNumber },
       })
 
       expect(response).toEqual(snapshot)
@@ -46,15 +46,15 @@ describe('stargate', () => {
           (test): test is TestCase & { method: 'profits' } =>
             test.method === 'profits',
         )
-        .map((test) => [test.id, test.chainId, test.method, test.input]),
-    )('profits match: %s', async (id, chainId, method, input) => {
-      const { snapshot, blockNumber } = await fetchSnapshot(chainId, method, id)
+        .map((testCase) => [testKey(testCase), testCase]),
+    )('profits for test %s match', async (_, testCase) => {
+      const { snapshot, blockNumber } = await fetchSnapshot(testCase)
 
       const response = await getTodaysProfits({
-        ...input,
+        ...testCase.input,
         filterProtocolIds: [Protocol.Stargate],
-        filterChainIds: [chainId],
-        blockNumbers: { [chainId]: blockNumber },
+        filterChainIds: [testCase.chainId],
+        blockNumbers: { [testCase.chainId]: blockNumber },
       })
 
       expect(response).toEqual(snapshot)
@@ -68,14 +68,14 @@ describe('stargate', () => {
           (test): test is TestCase & { method: 'deposits' } =>
             test.method === 'deposits',
         )
-        .map((test) => [test.id, test.chainId, test.method, test.input]),
-    )('deposits match: %s', async (id, chainId, method, input) => {
-      const { snapshot } = await fetchSnapshot(chainId, method, id)
+        .map((testCase) => [testKey(testCase), testCase]),
+    )('deposits for test %s match', async (_, testCase) => {
+      const { snapshot } = await fetchSnapshot(testCase)
 
       const response = await getDeposits({
-        ...input,
+        ...testCase.input,
         filterProtocolIds: [Protocol.Stargate],
-        filterChainIds: [chainId],
+        filterChainIds: [testCase.chainId],
       })
 
       expect(response).toEqual(snapshot)
@@ -89,14 +89,14 @@ describe('stargate', () => {
           (test): test is TestCase & { method: 'withdrawals' } =>
             test.method === 'withdrawals',
         )
-        .map((test) => [test.id, test.chainId, test.method, test.input]),
-    )('withdrawals match: %s', async (id, chainId, method, input) => {
-      const { snapshot } = await fetchSnapshot(chainId, method, id)
+        .map((testCase) => [testKey(testCase), testCase]),
+    )('withdrawals for test %s match', async (_, testCase) => {
+      const { snapshot } = await fetchSnapshot(testCase)
 
       const response = await getWithdrawals({
-        ...input,
+        ...testCase.input,
         filterProtocolIds: [Protocol.Stargate],
-        filterChainIds: [chainId],
+        filterChainIds: [testCase.chainId],
       })
 
       expect(response).toEqual(snapshot)
@@ -110,14 +110,14 @@ describe('stargate', () => {
           (test): test is TestCase & { method: 'prices' } =>
             test.method === 'prices',
         )
-        .map((test) => [test.id, test.chainId, test.method]),
-    )('prices match: %s', async (id, chainId, method) => {
-      const { snapshot, blockNumber } = await fetchSnapshot(chainId, method, id)
+        .map((testCase) => [testKey(testCase), testCase]),
+    )('prices for test %s match', async (_, testCase) => {
+      const { snapshot, blockNumber } = await fetchSnapshot(testCase)
 
       const response = await getPrices({
         filterProtocolIds: [Protocol.Stargate],
-        filterChainIds: [chainId],
-        blockNumbers: { [chainId]: blockNumber },
+        filterChainIds: [testCase.chainId],
+        blockNumbers: { [testCase.chainId]: blockNumber },
       })
 
       expect(response).toEqual(snapshot)
@@ -125,12 +125,13 @@ describe('stargate', () => {
   })
 })
 
-async function fetchSnapshot(chainId: Chain, method: string, id: string) {
+function testKey({ chainId, method, key }: TestCase) {
+  return `${ChainName[chainId]}.${method}${key ? `.${key}` : ''}`
+}
+
+async function fetchSnapshot(testCase: TestCase) {
   const expectedString = await fs.readFile(
-    path.resolve(
-      __dirname,
-      `./snapshots/${ChainName[chainId]}.${method}.${id}.json`,
-    ),
+    path.resolve(__dirname, `./snapshots/${testKey(testCase)}.json`),
     'utf-8',
   )
 

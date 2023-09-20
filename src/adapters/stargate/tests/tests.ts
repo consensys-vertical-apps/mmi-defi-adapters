@@ -3,7 +3,6 @@ import { TestCase } from '../../test'
 
 export const testCases: TestCase[] = [
   {
-    id: '1',
     chainId: Chain.Ethereum,
     method: 'positions',
     input: {
@@ -12,7 +11,6 @@ export const testCases: TestCase[] = [
     blockNumber: 18163124,
   },
   {
-    id: '1',
     chainId: Chain.Ethereum,
     method: 'profits',
     input: {
@@ -21,7 +19,6 @@ export const testCases: TestCase[] = [
     blockNumber: 18163965,
   },
   {
-    id: '1',
     chainId: Chain.Ethereum,
     method: 'deposits',
     input: {
@@ -31,7 +28,6 @@ export const testCases: TestCase[] = [
     },
   },
   {
-    id: '1',
     chainId: Chain.Ethereum,
     method: 'withdrawals',
     input: {
@@ -41,7 +37,6 @@ export const testCases: TestCase[] = [
     },
   },
   {
-    id: '1',
     chainId: Chain.Ethereum,
     method: 'prices',
     blockNumber: 18163124,

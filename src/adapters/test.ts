@@ -1,7 +1,7 @@
 import { Chain } from '../core/constants/chains'
 
 export type TestCase = {
-  id: string
+  key?: string
   chainId: Chain
 } & (
   | {

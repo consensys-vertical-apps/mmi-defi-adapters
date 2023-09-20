@@ -117,7 +117,7 @@ export function buildSnapshots(program: Command) {
           await fs.writeFile(
             `./src/adapters/${protocolId}/tests/snapshots/${
               ChainName[testCase.chainId]
-            }.${testCase.method}.${testCase.id}.json`,
+            }.${testCase.method}${testCase.key ? `.${testCase.key}` : ''}.json`,
             bigintJsonStringify(snapshotFileContent, 2),
             'utf-8',
           )
