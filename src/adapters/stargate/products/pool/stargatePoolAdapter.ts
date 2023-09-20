@@ -149,15 +149,25 @@ export class StargatePoolAdapter
 
   protected async getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
+    blockNumber?: number,
   ): Promise<BaseToken[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenBalance.address,
     )
 
+    const balanceRaw = await StargateToken__factory.connect(
+      protocolTokenBalance.address,
+      this.provider,
+    ).amountLPtoLD(protocolTokenBalance.balanceRaw, {
+      blockTag: blockNumber,
+    })
+
+    const balance = formatUnits(balanceRaw, underlyingToken.decimals)
+
     const underlyingTokenBalance = {
       ...underlyingToken,
-      balanceRaw: protocolTokenBalance.balanceRaw,
-      balance: protocolTokenBalance.balance,
+      balanceRaw,
+      balance,
       type: TokenType.Underlying,
     }
 

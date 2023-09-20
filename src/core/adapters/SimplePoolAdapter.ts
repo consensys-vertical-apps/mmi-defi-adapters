@@ -62,10 +62,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       blockNumber,
       tokens: await this.getProtocolTokens(),
     })
+
     const protocolTokens: ProtocolToken[] = await Promise.all(
       protocolTokensBalances.map(async (protocolTokenBalance) => {
         const underlyingTokenBalances = await this.getUnderlyingTokenBalances(
           protocolTokenBalance,
+          blockNumber,
         )
 
         return {
@@ -218,6 +220,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
   protected abstract getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
+    blockNumber?: number,
   ): Promise<BaseToken[]>
 
   protected abstract getUnderlyingTokenPricesPerShare(
