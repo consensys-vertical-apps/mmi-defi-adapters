@@ -284,7 +284,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
               const movementValueRaw =
                 (protocolTokenMovementValueRaw *
                   currentTokenPrice.pricePerShareRaw) /
-                BigInt(currentTokenPrice.decimals)
+                BigInt(10 ** currentTokenPrice.decimals)
 
               return {
                 ...accumulator,
