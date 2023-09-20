@@ -11,7 +11,6 @@ export const testCases: TestCase[] = [
   //   input: {
   //     userAddress: '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
   //   },
-  //   blockNumber: 18163124,
   // },
   // {
   //   chainId: Chain.Ethereum,
@@ -20,7 +19,6 @@ export const testCases: TestCase[] = [
   //     userAddress: '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
   //     timePeriod: TimePeriod.oneDay,
   //   },
-  //   blockNumber: 18163965,
   // },
 ]
 `
