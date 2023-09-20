@@ -5,7 +5,7 @@ import {
   getDeposits,
   getPositions,
   getPrices,
-  getTodaysProfits,
+  getProfits,
   getTotalValueLocked,
   getWithdrawals,
 } from '..'
@@ -24,7 +24,7 @@ export function featureCommands(program: Command) {
   addressCommand(
     program,
     'profits',
-    getTodaysProfits,
+    getProfits,
     '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
   )
 

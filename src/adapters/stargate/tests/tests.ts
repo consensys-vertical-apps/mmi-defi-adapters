@@ -1,4 +1,5 @@
 import { Chain } from '../../../core/constants/chains'
+import { TimePeriod } from '../../../core/constants/timePeriod'
 import { TestCase } from '../../snapshotTestFramework'
 
 export const testCases: TestCase[] = [
@@ -15,6 +16,7 @@ export const testCases: TestCase[] = [
     method: 'profits',
     input: {
       userAddress: '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
+      timePeriod: TimePeriod.oneDay,
     },
     blockNumber: 18163965,
   },

@@ -27,7 +27,6 @@ import {
   TokenBalance,
   TokenType,
 } from '../../types/adapter'
-import { AVERAGE_BLOCKS_PER_DAY } from '../constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { aggregateTrades } from '../utils/aggregateTrades'
@@ -140,13 +139,11 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]>
 
-  async getOneDayProfit({
+  async getProfits({
     userAddress,
-    blockNumber,
+    fromBlock,
+    toBlock,
   }: GetProfitsInput): Promise<ProfitsTokensWithRange> {
-    const toBlock = blockNumber
-    const fromBlock = toBlock - AVERAGE_BLOCKS_PER_DAY[this.chainId]
-
     const [currentValues, previousValues] = await Promise.all([
       this.getPositions({
         userAddress,

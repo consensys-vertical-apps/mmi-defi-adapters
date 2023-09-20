@@ -12,6 +12,7 @@ export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
 export const PositionType = {
   Supply: 'supply',
+  Lend: 'lend',
   Borrow: 'borrow',
   Staked: 'stake',
 } as const
@@ -44,7 +45,8 @@ export type GetEventsInput = {
 }
 export interface GetProfitsInput {
   userAddress: string
-  blockNumber: number
+  fromBlock: number
+  toBlock: number
 }
 
 export type ProtocolDetails = {
@@ -158,7 +160,7 @@ export interface IProtocolAdapter {
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTotalValueLockedToken[]>
-  getOneDayProfit(input: GetProfitsInput): Promise<ProfitsTokensWithRange>
+  getProfits(input: GetProfitsInput): Promise<ProfitsTokensWithRange>
   getApy(input: GetApyInput): Promise<ProtocolApyToken>
   getApr(input: GetAprInput): Promise<ProtocolAprToken>
 }

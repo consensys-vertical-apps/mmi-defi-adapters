@@ -13,7 +13,7 @@ export class AaveV2ATokenPoolAdapter extends AaveV2BasePoolAdapter {
       description: 'Aave v2 defi adapter for yield-generating token',
       siteUrl: 'https://aave.com/',
       iconUrl: 'https://aave.com/favicon.ico',
-      positionType: PositionType.Supply,
+      positionType: PositionType.Lend,
       chainId: this.chainId,
     }
   }

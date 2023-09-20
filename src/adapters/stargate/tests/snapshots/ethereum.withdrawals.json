@@ -8,6 +8,7 @@
       "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
       "positionType": "supply",
       "chainId": 1,
+      "success": true,
       "movements": [
         {
           "protocolToken": {
@@ -141,6 +142,7 @@
       "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
       "positionType": "stake",
       "chainId": 1,
+      "success": false,
       "error": {
         "message": "Not Implemented",
         "details": {

@@ -5,7 +5,7 @@ import {
   getDeposits,
   getPositions,
   getPrices,
-  getTodaysProfits,
+  getProfits,
   getWithdrawals,
 } from '..'
 import { Protocol } from '../adapters'
@@ -65,11 +65,11 @@ export function buildSnapshots(program: Command) {
 
                 return {
                   blockNumber,
-                  snapshot: await getTodaysProfits({
+                  snapshot: await getProfits({
                     ...testCase.input,
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
-                    blockNumbers: {
+                    toBlockNumbersOverride: {
                       [chainId]: blockNumber,
                     },
                   }),

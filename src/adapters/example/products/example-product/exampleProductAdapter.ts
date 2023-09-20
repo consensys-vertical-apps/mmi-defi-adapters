@@ -113,9 +113,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getOneDayProfit(
-    _input: GetProfitsInput,
-  ): Promise<ProfitsTokensWithRange> {
+  async getProfits(_input: GetProfitsInput): Promise<ProfitsTokensWithRange> {
     return {
       fromBlock: 111,
       toBlock: 112,

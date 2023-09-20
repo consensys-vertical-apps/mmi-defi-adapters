@@ -1,8 +1,10 @@
 import { ethers } from 'ethers'
 import { Protocol, supportedProtocols } from './adapters'
+import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
+import { TimePeriod } from './core/constants/timePeriod'
 import { chainProviders } from './core/utils/chainProviders'
-import { IProtocolAdapter } from './types/adapter'
+import { IProtocolAdapter, PositionType } from './types/adapter'
 import {
   APRResponse,
   APYResponse,
@@ -14,6 +16,15 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
+
+export {
+  Chain,
+  DefiPositionResponse,
+  DefiProfitsResponse,
+  PositionType,
+  Protocol,
+  TimePeriod,
+}
 
 export async function getPositions({
   userAddress,
@@ -44,26 +55,32 @@ export async function getPositions({
   })
 }
 
-export async function getTodaysProfits({
+export async function getProfits({
   userAddress,
+  timePeriod = TimePeriod.sevenDays,
   filterProtocolIds,
   filterChainIds,
-  blockNumbers,
+  toBlockNumbersOverride,
 }: {
   userAddress: string
+  timePeriod?: TimePeriod
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-  blockNumbers?: Partial<Record<Chain, number>>
+  toBlockNumbersOverride?: Partial<Record<Chain, number>>
 }): Promise<DefiProfitsResponse[]> {
   const runner = async (
     adapter: IProtocolAdapter,
     provider: ethers.JsonRpcProvider,
   ) => {
-    const blockNumber = blockNumbers?.[adapter.chainId]
-
-    return await adapter.getOneDayProfit({
+    const toBlock =
+      toBlockNumbersOverride?.[adapter.chainId] ??
+      (await provider.getBlockNumber())
+    const fromBlock =
+      toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
+    return adapter.getProfits({
       userAddress,
-      blockNumber: blockNumber ?? (await provider.getBlockNumber()),
+      toBlock,
+      fromBlock,
     })
   }
 
@@ -293,62 +310,69 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
           const chainId = +chainIdKey as Chain
           const provider = chainProviders[chainId]
 
-          return adapterClasses.map(async (adapterClass) => {
-            const adapter = new adapterClass({
-              provider: provider!,
-              chainId,
-              protocolId: protocolIdKey as Protocol,
-            })
+          return adapterClasses.map(
+            async (
+              adapterClass,
+            ): Promise<AdapterResponse<Awaited<ReturnType>>> => {
+              const adapter = new adapterClass({
+                provider: provider!,
+                chainId,
+                protocolId: protocolIdKey as Protocol,
+              })
 
-            const protocolDetails = adapter.getProtocolDetails()
+              const protocolDetails = adapter.getProtocolDetails()
 
-            if (!provider) {
-              return {
-                ...protocolDetails,
-                error: {
-                  message: 'No provider found for chain',
-                  details: {
-                    chainId,
-                    chainName: ChainName[chainId],
+              if (!provider) {
+                return {
+                  ...protocolDetails,
+                  success: false,
+                  error: {
+                    message: 'No provider found for chain',
+                    details: {
+                      chainId,
+                      chainName: ChainName[chainId],
+                    },
                   },
-                },
-              }
-            }
-
-            try {
-              const adapterResult = await runner(adapter, provider)
-              return {
-                ...protocolDetails,
-                ...adapterResult,
-              }
-            } catch (error) {
-              let adapterError: AdapterErrorResponse['error']
-
-              if (error instanceof Error) {
-                adapterError = {
-                  message: error.message,
-                  details: { name: error.name },
-                }
-              } else if (typeof error === 'string') {
-                adapterError = {
-                  message: error,
-                }
-              } else if (error && typeof error.toString === 'function') {
-                adapterError = {
-                  message: error.toString(),
-                }
-              } else {
-                adapterError = {
-                  message: 'Error message cannot be extracted',
                 }
               }
 
-              return {
-                ...protocolDetails,
-                error: adapterError,
+              try {
+                const adapterResult = await runner(adapter, provider)
+                return {
+                  ...protocolDetails,
+                  success: true,
+                  ...adapterResult,
+                }
+              } catch (error) {
+                let adapterError: AdapterErrorResponse['error']
+
+                if (error instanceof Error) {
+                  adapterError = {
+                    message: error.message,
+                    details: { name: error.name },
+                  }
+                } else if (typeof error === 'string') {
+                  adapterError = {
+                    message: error,
+                  }
+                } else if (error && typeof error.toString === 'function') {
+                  adapterError = {
+                    message: error.toString(),
+                  }
+                } else {
+                  adapterError = {
+                    message: 'Error message cannot be extracted',
+                  }
+                }
+
+                return {
+                  ...protocolDetails,
+                  success: false,
+                  error: adapterError,
+                }
               }
-            }
-          })
+            },
+          )
         })
     })
 

@@ -2,10 +2,11 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import {
   getPositions,
-  getTodaysProfits,
+  getProfits,
   getDeposits,
   getWithdrawals,
   getPrices,
+  TimePeriod,
 } from '..'
 import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigint-json'
@@ -22,7 +23,7 @@ export type TestCase = {
     }
   | {
       method: 'profits'
-      input: { userAddress: string }
+      input: { userAddress: string; timePeriod?: TimePeriod }
       blockNumber?: number
     }
   | {
@@ -89,11 +90,11 @@ export function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await getTodaysProfits({
+            const response = await getProfits({
               ...testCase.input,
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
-              blockNumbers: { [testCase.chainId]: blockNumber },
+              toBlockNumbersOverride: { [testCase.chainId]: blockNumber },
             })
 
             expect(response).toEqual(snapshot)

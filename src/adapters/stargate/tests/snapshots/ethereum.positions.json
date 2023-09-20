@@ -9,6 +9,7 @@
       "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
       "positionType": "supply",
       "chainId": 1,
+      "success": true,
       "tokens": [
         {
           "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
@@ -40,6 +41,7 @@
       "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
       "positionType": "stake",
       "chainId": 1,
+      "success": true,
       "tokens": [
         {
           "address": "0x0e42acbd23faee03249daff896b78d7e79fbd58e",
