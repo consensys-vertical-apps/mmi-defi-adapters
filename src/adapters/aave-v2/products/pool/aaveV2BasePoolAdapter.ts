@@ -34,6 +34,8 @@ type AaveV2PoolMetadata = Record<
   }
 >
 
+// Aave tokens always pegged one to one to underlying
+const PRICE_PEGGED_TO_ONE = 1
 export abstract class AaveV2BasePoolAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
@@ -157,7 +159,10 @@ export abstract class AaveV2BasePoolAdapter
       protocolTokenMetadata.address,
     )
 
-    const pricePerShareRaw = BigInt(1 * 10 ** protocolTokenMetadata.decimals)
+    // Aave tokens always pegged one to one to underlying
+    const pricePerShareRaw = BigInt(
+      PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
+    )
 
     const pricePerShare = formatUnits(
       pricePerShareRaw,
@@ -168,7 +173,6 @@ export abstract class AaveV2BasePoolAdapter
       {
         ...underlyingToken,
         type: TokenType.Underlying,
-        pricePerShareRaw,
         pricePerShare,
       },
     ]

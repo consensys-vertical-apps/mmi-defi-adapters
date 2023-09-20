@@ -190,7 +190,6 @@ export class StargatePoolAdapter
       {
         ...underlyingToken,
         type: TokenType.Underlying,
-        pricePerShareRaw,
         pricePerShare,
       },
     ]

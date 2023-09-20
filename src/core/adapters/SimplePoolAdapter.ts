@@ -16,6 +16,7 @@ import {
   GetTotalValueLockedInput,
   IProtocolAdapter,
   MovementsByBlock,
+  PositionType,
   ProfitsTokensWithRange,
   ProtocolAdapterParams,
   ProtocolAprToken,
@@ -155,6 +156,9 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       }).then(formatProtocolTokenArrayToMap),
     ])
 
+    const isBorrowPosition =
+      this.getProtocolDetails().positionType == PositionType.Borrow
+
     const tokens = await Promise.all(
       Object.values(currentValues).map(
         async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
@@ -184,13 +188,16 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
             type: TokenType.Protocol,
             tokens: Object.values(underlyingTokenPositions).map(
               (underlyingToken) => {
+                const profit = formatUnits(
+                  profits[underlyingToken.address]!,
+                  underlyingToken.decimals,
+                )
+
                 return {
                   ...underlyingToken,
-                  profitRaw: profits[underlyingToken.address]!,
-                  profit: formatUnits(
-                    profits[underlyingToken.address]!,
-                    underlyingToken.decimals,
-                  ),
+                  profit: isBorrowPosition
+                    ? (-profit).toString()
+                    : profit.toString(),
                   type: TokenType.Underlying,
                 }
               },
@@ -244,6 +251,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       this.provider,
     )
 
+    const protocolTokenMetadata = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
+
     const filter = protocolTokenContract.filters.Transfer(from, to)
 
     const eventResults =
@@ -257,7 +268,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       eventResults.map(async (transferEvent) => {
         const {
           blockNumber,
-          args: { value },
+          args: { value: protocolTokenMovementValueRaw },
         } = transferEvent
 
         const protocolTokenPrice = await this.getPricePerShare({
@@ -265,25 +276,36 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           protocolTokenAddress,
         })
 
-        const pricePerShareRaw =
-          protocolTokenPrice.tokens?.[0]?.pricePerShareRaw
-        if (!pricePerShareRaw) {
-          throw new Error('No price for events at this time')
-        }
-
-        const movementValueRaw = BigInt(value.toString()) * pricePerShareRaw
         return {
           underlyingTokensMovement: underlyingTokens.reduce(
-            (accummulator, currentToken) => {
+            (accumulator, currentToken) => {
+              const currentTokenPrice = protocolTokenPrice.tokens?.find(
+                (price) => price.address === currentToken.address,
+              )
+
+              if (!currentTokenPrice) {
+                throw new Error('No price for underlying token at this time')
+              }
+
+              const protocolTokenMovementValue = formatUnits(
+                protocolTokenMovementValueRaw,
+                protocolTokenMetadata.decimals,
+              )
+
+              const movementValue =
+                +protocolTokenMovementValue * +currentTokenPrice.pricePerShare
+
+              const movementValueRaw = BigInt(
+                movementValue * 10 ** currentToken.decimals,
+              )
+
               return {
-                ...accummulator,
+                ...accumulator,
                 [currentToken.address]: {
                   ...currentToken,
+
+                  movementValue: movementValue.toString(),
                   movementValueRaw,
-                  movementValue: formatUnits(
-                    movementValueRaw,
-                    currentToken.decimals,
-                  ),
                 },
               }
             },
