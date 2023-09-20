@@ -245,6 +245,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       this.provider,
     )
 
+    const protocolTokenMetadata = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
+
     const filter = protocolTokenContract.filters.Transfer(from, to)
 
     const eventResults =
@@ -288,7 +292,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
                   ...currentToken,
                   movementValue: formatUnits(
                     movementValueRaw,
-                    currentToken.decimals,
+                    protocolTokenMetadata.decimals,
                   ),
                   movementValueRaw,
                 },
