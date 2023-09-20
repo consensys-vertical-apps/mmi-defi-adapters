@@ -20,10 +20,10 @@ export function calculateProfit({
     ...previousVales,
   }).reduce(
     (accumulator, address) => {
-      const currentValue = currentValues[address]?.balanceRaw ?? BigInt(0)
-      const withdrawalsValue = withdrawals[address] ?? BigInt(0)
-      const depositsValue = deposits[address] ?? BigInt(0)
-      const previousValue = previousVales[address]?.balanceRaw ?? BigInt(0)
+      const currentValue = currentValues[address]?.balanceRaw ?? 0n
+      const withdrawalsValue = withdrawals[address] ?? 0n
+      const depositsValue = deposits[address] ?? 0n
+      const previousValue = previousVales[address]?.balanceRaw ?? 0n
 
       accumulator[address] =
         currentValue + withdrawalsValue - depositsValue - previousValue

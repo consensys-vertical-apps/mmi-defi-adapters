@@ -20,13 +20,13 @@ export const getBalances = async ({
 
   return filterMap(tokens, (token) => {
     const balance = balances[userAddress]?.[token.address]
-    if (!balance || balance === '0') {
+    if (!balance || balance === 0n) {
       return undefined
     }
 
     return {
       ...token,
-      balanceRaw: BigInt(balance),
+      balanceRaw: balance,
       balance: formatUnits(balance, token.decimals),
     }
   })
