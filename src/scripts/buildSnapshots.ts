@@ -114,10 +114,14 @@ export function buildSnapshots(program: Command) {
             }
           })()
 
+          const filePath = `./src/adapters/${protocolId}/tests/snapshots/${
+            ChainName[testCase.chainId]
+          }.${testCase.method}${testCase.key ? `.${testCase.key}` : ''}.json`
+
+          await fs.mkdir(path.dirname(filePath), { recursive: true })
+
           await fs.writeFile(
-            `./src/adapters/${protocolId}/tests/snapshots/${
-              ChainName[testCase.chainId]
-            }.${testCase.method}${testCase.key ? `.${testCase.key}` : ''}.json`,
+            filePath,
             bigintJsonStringify(snapshotFileContent, 2),
             'utf-8',
           )
