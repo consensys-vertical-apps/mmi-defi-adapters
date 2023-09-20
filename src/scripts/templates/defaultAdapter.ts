@@ -125,6 +125,7 @@ export class ${adapterClassName}
       tokens: [
         {
           type: 'underlying',
+          pricePerShareRaw: 1000154n,
           pricePerShare: '1.000154',
           decimals: 6,
           name: 'Tether USD',
@@ -237,6 +238,7 @@ export class ${adapterClassName}
               name: 'Frax',
               symbol: 'FRAX',
               decimals: 18,
+              profitRaw: 100n,
               profit: '100',
             },
             {
@@ -245,6 +247,7 @@ export class ${adapterClassName}
               name: 'Frax',
               symbol: 'FRAX',
               decimals: 18,
+              profitRaw: 100n,
               profit: '100',
             },
           ],

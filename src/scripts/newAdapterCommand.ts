@@ -260,15 +260,6 @@ async function buildIntegrationTests({
       }
 
       if (node.id.name === 'runAllTests') {
-        console.log('BBBBBBBB', node.body.body[0])
-        console.log(
-          'CCCCCCC',
-          (
-            (node.body.body[0] as n.ExpressionStatement)
-              .expression as n.CallExpression
-          ).arguments,
-        )
-
         const runProtocolTestsNode = b.expressionStatement(
           b.callExpression(b.identifier('runProtocolTests'), [
             b.memberExpression(

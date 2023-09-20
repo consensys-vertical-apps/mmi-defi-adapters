@@ -26,6 +26,7 @@
     "build-metadata": "npm run adapters-cli build-metadata --",
     "build-types": "npm run adapters-cli build-types --",
     "new-adapter": "npm run adapters-cli new-adapter --",
+    "build-snapshots": "npm run adapters-cli build-snapshots --",
     "positions": "npm run adapters-cli positions --",
     "profits": "npm run adapters-cli profits --",
     "prices": "npm run adapters-cli prices --",
