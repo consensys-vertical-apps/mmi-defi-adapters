@@ -1,5 +1,5 @@
 import { Chain } from '../../../core/constants/chains'
-import { TestCase } from '../../test'
+import { TestCase } from '../../testCase'
 
 export const testCases: TestCase[] = [
   {

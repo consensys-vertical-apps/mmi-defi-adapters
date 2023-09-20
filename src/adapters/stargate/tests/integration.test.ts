@@ -10,7 +10,7 @@ import {
   getTodaysProfits,
   getWithdrawals,
 } from '../../../index'
-import { TestCase } from '../../test'
+import { TestCase } from '../../testCase'
 import { testCases } from './tests'
 
 const TEN_SECONDS = 10000

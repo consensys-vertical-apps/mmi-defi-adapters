@@ -9,7 +9,7 @@ import {
 } from '..'
 import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigint-json'
-import { TestCase } from './test'
+import { TestCase } from './testCase'
 import { Protocol } from '.'
 
 const TEN_SECONDS = 10000
