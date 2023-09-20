@@ -15,7 +15,11 @@ import { Protocol } from '.'
 
 const TEST_TIMEOUT = 10000
 
-runProtocolTests(Protocol.Stargate, stargateTestCases)
+runAllTests()
+
+function runAllTests() {
+  runProtocolTests(Protocol.Stargate, stargateTestCases)
+}
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
   describe(protocolId, () => {

@@ -218,7 +218,7 @@ export class ${adapterClassName}
     ]
   }
 
-  async getOneDayProfit(
+  async getProfits(
     _input: GetProfitsInput,
   ): Promise<ProfitsTokensWithRange> {
     return {
