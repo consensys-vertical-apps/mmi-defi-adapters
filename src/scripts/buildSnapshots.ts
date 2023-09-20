@@ -9,7 +9,7 @@ import {
   getWithdrawals,
 } from '..'
 import { Protocol } from '../adapters'
-import { TestCase } from '../adapters/snapshotTestFramework'
+import { TestCase } from '../adapters/testCase'
 import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigint-json'
 import { chainProviders } from '../core/utils/chainProviders'
@@ -33,7 +33,7 @@ export function buildSnapshots(program: Command) {
 
         const testCases: TestCase[] = (
           await import(
-            path.resolve(__dirname, `../adapters/${protocolId}/tests/tests`)
+            path.resolve(__dirname, `../adapters/${protocolId}/tests/testCases`)
           )
         ).testCases
 

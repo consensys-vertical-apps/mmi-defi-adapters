@@ -1,6 +1,6 @@
 import { Chain } from '../../../core/constants/chains'
 import { TimePeriod } from '../../../core/constants/timePeriod'
-import { TestCase } from '../../snapshotTestFramework'
+import type { TestCase } from '../../testCase'
 
 export const testCases: TestCase[] = [
   {

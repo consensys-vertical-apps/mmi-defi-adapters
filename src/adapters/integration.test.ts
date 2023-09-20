@@ -6,41 +6,16 @@ import {
   getDeposits,
   getWithdrawals,
   getPrices,
-  TimePeriod,
 } from '..'
-import { Chain, ChainName } from '../core/constants/chains'
+import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigint-json'
+import { testCases } from './stargate/tests/testCases'
+import { TestCase } from './testCase'
 import { Protocol } from '.'
 
-export type TestCase = {
-  key?: string
-  chainId: Chain
-} & (
-  | {
-      method: 'positions'
-      input: { userAddress: string }
-      blockNumber?: number
-    }
-  | {
-      method: 'profits'
-      input: { userAddress: string; timePeriod?: TimePeriod }
-      blockNumber?: number
-    }
-  | {
-      method: 'deposits'
-      input: { userAddress: string; fromBlock: number; toBlock: number }
-    }
-  | {
-      method: 'withdrawals'
-      input: { userAddress: string; fromBlock: number; toBlock: number }
-    }
-  | {
-      method: 'prices'
-      blockNumber?: number
-    }
-)
-
 const TEST_TIMEOUT = 10000
+
+runProtocolTests(Protocol.Stargate, testCases)
 
 export function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
   describe(protocolId, () => {
