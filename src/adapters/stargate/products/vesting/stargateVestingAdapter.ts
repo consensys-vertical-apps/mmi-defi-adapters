@@ -89,6 +89,10 @@ export class StargateVestingAdapter
       blockTag: blockNumber,
     })
 
+    if (!userBalance && !lockedAmount) {
+      return []
+    }
+
     const tokens = [
       {
         ...contractToken,
