@@ -1,5 +1,5 @@
-import { Chain } from '../core/constants/chains'
-import { TimePeriod } from '../core/constants/timePeriod'
+import type { Chain } from '../core/constants/chains'
+import type { TimePeriod } from '../core/constants/timePeriod'
 
 export type TestCase = {
   key?: string

@@ -9,15 +9,15 @@ import {
 } from '..'
 import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigint-json'
-import { testCases } from './stargate/tests/testCases'
-import { TestCase } from './testCase'
+import { TestCase } from '../types/testCase'
+import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { Protocol } from '.'
 
 const TEST_TIMEOUT = 10000
 
-runProtocolTests(Protocol.Stargate, testCases)
+runProtocolTests(Protocol.Stargate, stargateTestCases)
 
-export function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
+function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
   describe(protocolId, () => {
     const positionsTestCases = testCases.filter(
       (testCase): testCase is TestCase & { method: 'positions' } =>

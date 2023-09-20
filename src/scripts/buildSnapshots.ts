@@ -9,10 +9,10 @@ import {
   getWithdrawals,
 } from '..'
 import { Protocol } from '../adapters'
-import { TestCase } from '../adapters/testCase'
 import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigint-json'
 import { chainProviders } from '../core/utils/chainProviders'
+import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 
 export function buildSnapshots(program: Command) {
