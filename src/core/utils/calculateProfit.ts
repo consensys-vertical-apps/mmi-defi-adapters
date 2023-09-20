@@ -1,15 +1,17 @@
-import { BaseToken } from '../../types/adapter'
+import { BaseToken, PositionType } from '../../types/adapter'
 
 export function calculateProfit({
   deposits,
   withdrawals,
   currentValues,
   previousVales,
+  positionType,
 }: {
   deposits: Record<string, bigint>
   withdrawals: Record<string, bigint>
   currentValues: Record<string, BaseToken>
   previousVales: Record<string, BaseToken>
+  positionType: PositionType
 }): Record<string, bigint> {
   return Object.keys({
     ...deposits,
@@ -25,6 +27,10 @@ export function calculateProfit({
 
       accumulator[address] =
         currentValue + withdrawalsValue - depositsValue - previousValue
+
+      if (positionType === PositionType.Borrow) {
+        accumulator[address] *= -1n
+      }
 
       return accumulator
     },

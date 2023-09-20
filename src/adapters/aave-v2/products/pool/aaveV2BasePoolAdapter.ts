@@ -173,6 +173,7 @@ export abstract class AaveV2BasePoolAdapter
       {
         ...underlyingToken,
         type: TokenType.Underlying,
+        pricePerShareRaw,
         pricePerShare,
       },
     ]

@@ -186,10 +186,13 @@ export class StargatePoolAdapter
       underlyingToken.decimals,
     )
 
+    console.log('XXXXXXX', pricePerShare, pricePerShareRaw)
+
     return [
       {
         ...underlyingToken,
         type: TokenType.Underlying,
+        pricePerShareRaw,
         pricePerShare,
       },
     ]
