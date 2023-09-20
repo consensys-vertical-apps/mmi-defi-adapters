@@ -39,64 +39,80 @@ export function buildSnapshots(program: Command) {
 
         for (const testCase of testCases) {
           const chainId = testCase.chainId
-          const blockNumber = await getLatestBlock(chainId)
 
-          const snapshot = await (async () => {
+          const snapshotFileContent = await (async () => {
             switch (testCase.method) {
               case 'positions': {
-                return getPositions({
-                  ...testCase.input,
-                  filterChainIds: [chainId],
-                  filterProtocolIds: [protocolId],
-                  blockNumbers: {
-                    [chainId]: blockNumber,
-                  },
-                })
+                const blockNumber =
+                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+
+                return {
+                  blockNumber,
+                  snapshot: await getPositions({
+                    ...testCase.input,
+                    filterChainIds: [chainId],
+                    filterProtocolIds: [protocolId],
+                    blockNumbers: {
+                      [chainId]: blockNumber,
+                    },
+                  }),
+                }
               }
 
               case 'profits': {
-                return getTodaysProfits({
-                  ...testCase.input,
-                  filterChainIds: [chainId],
-                  filterProtocolIds: [protocolId],
-                  blockNumbers: {
-                    [chainId]: blockNumber,
-                  },
-                })
+                const blockNumber =
+                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+
+                return {
+                  blockNumber,
+                  snapshot: await getTodaysProfits({
+                    ...testCase.input,
+                    filterChainIds: [chainId],
+                    filterProtocolIds: [protocolId],
+                    blockNumbers: {
+                      [chainId]: blockNumber,
+                    },
+                  }),
+                }
               }
 
               case 'deposits': {
-                return getDeposits({
-                  ...testCase.input,
-                  filterChainIds: [chainId],
-                  filterProtocolIds: [protocolId],
-                })
+                return {
+                  snapshot: await getDeposits({
+                    ...testCase.input,
+                    filterChainIds: [chainId],
+                    filterProtocolIds: [protocolId],
+                  }),
+                }
               }
 
               case 'withdrawals': {
-                return getWithdrawals({
-                  ...testCase.input,
-                  filterChainIds: [chainId],
-                  filterProtocolIds: [protocolId],
-                })
+                return {
+                  snapshot: await getWithdrawals({
+                    ...testCase.input,
+                    filterChainIds: [chainId],
+                    filterProtocolIds: [protocolId],
+                  }),
+                }
               }
 
               case 'prices': {
-                return getPrices({
-                  filterChainIds: [chainId],
-                  filterProtocolIds: [protocolId],
-                  blockNumbers: {
-                    [chainId]: blockNumber,
-                  },
-                })
+                const blockNumber =
+                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+
+                return {
+                  blockNumber,
+                  snapshot: await getPrices({
+                    filterChainIds: [chainId],
+                    filterProtocolIds: [protocolId],
+                    blockNumbers: {
+                      [chainId]: blockNumber,
+                    },
+                  }),
+                }
               }
             }
           })()
-
-          const snapshotFileContent = {
-            blockNumber,
-            snapshot,
-          }
 
           await fs.writeFile(
             `./src/adapters/${protocolId}/tests/snapshots/${

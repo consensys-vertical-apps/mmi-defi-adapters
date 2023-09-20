@@ -7,10 +7,12 @@ export type TestCase = {
   | {
       method: 'positions'
       input: { userAddress: string }
+      blockNumber?: number
     }
   | {
       method: 'profits'
       input: { userAddress: string }
+      blockNumber?: number
     }
   | {
       method: 'deposits'
@@ -22,5 +24,6 @@ export type TestCase = {
     }
   | {
       method: 'prices'
+      blockNumber?: number
     }
 )

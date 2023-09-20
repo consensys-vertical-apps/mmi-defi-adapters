@@ -9,6 +9,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
     },
+    blockNumber: 18163124,
   },
   {
     id: '1',
@@ -17,6 +18,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
     },
+    blockNumber: 18163965,
   },
   {
     id: '1',
@@ -42,5 +44,6 @@ export const testCases: TestCase[] = [
     id: '1',
     chainId: Chain.Ethereum,
     method: 'prices',
+    blockNumber: 18163124,
   },
 ]
