@@ -9,7 +9,7 @@ import {
   getWithdrawals,
 } from '..'
 import { Protocol } from '../adapters'
-import { TestCase } from '../adapters/testCase'
+import { TestCase } from '../adapters/snapshotTestFramework'
 import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigint-json'
 import { chainProviders } from '../core/utils/chainProviders'
