@@ -95,13 +95,13 @@ export class StargateVestingAdapter
       {
         ...contractToken,
         type: TokenType.Protocol,
-        balanceRaw: BigInt(userBalance.toString()),
+        balanceRaw: userBalance,
         balance: formatUnits(userBalance, contractToken.decimals),
         tokens: [
           {
             ...underlyingToken,
             type: TokenType.Underlying,
-            balanceRaw: BigInt(lockedAmount.toString()),
+            balanceRaw: lockedAmount,
             balance: formatUnits(lockedAmount, underlyingToken.decimals),
           },
         ],

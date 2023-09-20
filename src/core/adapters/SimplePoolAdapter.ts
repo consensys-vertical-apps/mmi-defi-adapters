@@ -16,7 +16,6 @@ import {
   GetTotalValueLockedInput,
   IProtocolAdapter,
   MovementsByBlock,
-  PositionType,
   ProfitsTokensWithRange,
   ProtocolAdapterParams,
   ProtocolAprToken,
@@ -156,9 +155,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       }).then(formatProtocolTokenArrayToMap),
     ])
 
-    const isBorrowPosition =
-      this.getProtocolDetails().positionType == PositionType.Borrow
-
     const tokens = await Promise.all(
       Object.values(currentValues).map(
         async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
@@ -181,6 +177,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
             previousVales:
               previousValues[protocolTokenMetadata.address]
                 ?.underlyingTokenPositions ?? {},
+            positionType: this.getProtocolDetails().positionType,
           })
 
           return {
@@ -188,14 +185,13 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
             type: TokenType.Protocol,
             tokens: Object.values(underlyingTokenPositions).map(
               (underlyingToken) => {
-                const profit = formatUnits(
-                  profits[underlyingToken.address]!,
-                  underlyingToken.decimals,
-                )
+                const profitRaw = profits[underlyingToken.address]!
+                const profit = formatUnits(profitRaw, underlyingToken.decimals)
 
                 return {
                   ...underlyingToken,
-                  profit: isBorrowPosition ? (-profit).toString() : profit,
+                  profitRaw,
+                  profit,
                   type: TokenType.Underlying,
                 }
               },
@@ -285,24 +281,19 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
                 throw new Error('No price for underlying token at this time')
               }
 
-              const protocolTokenMovementValue = formatUnits(
-                protocolTokenMovementValueRaw,
-                protocolTokenMetadata.decimals,
-              )
-
-              const movementValue =
-                +protocolTokenMovementValue * +currentTokenPrice.pricePerShare
-
-              const movementValueRaw = BigInt(
-                movementValue * 10 ** currentToken.decimals,
-              )
+              const movementValueRaw =
+                (protocolTokenMovementValueRaw *
+                  currentTokenPrice.pricePerShareRaw) /
+                BigInt(10 ** currentTokenPrice.decimals)
 
               return {
                 ...accumulator,
                 [currentToken.address]: {
                   ...currentToken,
-
-                  movementValue: movementValue.toString(),
+                  movementValue: formatUnits(
+                    movementValueRaw,
+                    protocolTokenMetadata.decimals,
+                  ),
                   movementValueRaw,
                 },
               }
