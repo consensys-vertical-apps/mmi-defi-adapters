@@ -195,9 +195,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
                 return {
                   ...underlyingToken,
-                  profit: isBorrowPosition
-                    ? (-profit).toString()
-                    : profit,
+                  profit: isBorrowPosition ? (-profit).toString() : profit,
                   type: TokenType.Underlying,
                 }
               },
