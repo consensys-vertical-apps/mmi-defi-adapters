@@ -78,16 +78,14 @@ export class StargateVestingAdapter
       this.provider,
     )
 
-    const { amount: lockedAmount } = await votingEscrowContract.locked(
-      userAddress,
-      {
+    const [{ amount: lockedAmount }, userBalance] = await Promise.all([
+      votingEscrowContract.locked(userAddress, {
         blockTag: blockNumber,
-      },
-    )
-
-    const userBalance = await votingEscrowContract.balanceOf(userAddress, {
-      blockTag: blockNumber,
-    })
+      }),
+      votingEscrowContract.balanceOf(userAddress, {
+        blockTag: blockNumber,
+      }),
+    ])
 
     if (!userBalance && !lockedAmount) {
       return []
