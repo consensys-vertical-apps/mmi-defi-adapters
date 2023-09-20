@@ -189,7 +189,6 @@ export class ${adapterClassName}
         name: 'USD Coin',
         symbol: 'USDC',
         decimals: 6,
-        pricePerShareRaw: 1000154n,
         pricePerShare: '1.000154',
       },
     ]
