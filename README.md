@@ -74,15 +74,9 @@ To get specific details on available commands, run `npm run adapters-cli`. For a
 
 ### Filtering
 
-You can get results for specific protocols and chains for every command by adding `--chain <chainId>` and/or `--protocol <protocolName>`. For example, `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocol stargate --chain 1`.
+You can get results for specific protocols and chains for every command by adding `--chains <chains>` and/or `--protocols <protocols>`. Values can be provided individually or as a comma-separated array.
 
-### Get Positions
-
-To get positions, run `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
-
-### Get PnL
-
-To get profit and loss, run `npm run profits 0xB0D502E938ed5f4df2E681fE6E419ff29631d62b`.
+For example, `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocol stargate --chain 1,arbitrum`.
 
 ### Get Positions
 
@@ -118,14 +112,9 @@ To get withdrawals, run `npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76E
 
 ## Adding a new Adapter (CLI)
 
-Run the following command to add a new adapter `npm run new-adapter <Example> <example-product> [Chains]`
+Run the following command to add a new adapter `npm run new-adapter`
 
-Where:
-
-- `<Example>` is the name of your protocol as you'd like it to appear.
-- `<example-product>` is the name of the product for the adapter in kebab-case
-- `[template]` is the template that will be used (e.g. `SimplePoolAdapter``). Default: `DefaultAdapterTemplate`
-- `[chains]` is a list of comma separated list of supported chains (e.g. `Ethereum,Arbitrum,Optimism`). Default: `Ethereum`
+This will start an interactive process in the command line to create a new adapter. Running `npm run new-adapter -- --help` shows available options for defaults.
 
 ## Adding a New Protocol or Adapter manually
 
