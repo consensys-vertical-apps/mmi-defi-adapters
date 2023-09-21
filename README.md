@@ -74,15 +74,9 @@ To get specific details on available commands, run `npm run adapters-cli`. For a
 
 ### Filtering
 
-You can get results for specific protocols and chains for every command by adding `--chain <chainId>` and/or `--protocol <protocolName>`. For example, `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocol stargate --chain 1`.
+You can get results for specific protocols and chains for every command by adding `--chains <chains>` and/or `--protocols <protocols>`. Values can be provided individually or as a comma-separated array.
 
-### Get Positions
-
-To get positions, run `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
-
-### Get PnL
-
-To get profit and loss, run `npm run profits 0xB0D502E938ed5f4df2E681fE6E419ff29631d62b`.
+For example, `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocol stargate --chain 1,arbitrum`.
 
 ### Get Positions
 
@@ -118,14 +112,9 @@ To get withdrawals, run `npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76E
 
 ## Adding a new Adapter (CLI)
 
-Run the following command to add a new adapter `npm run new-adapter <Example> <example-product> [Chains]`
+Run the following command to add a new adapter `npm run new-adapter`
 
-Where:
-
-- `<Example>` is the name of your protocol as you'd like it to appear.
-- `<example-product>` is the name of the product for the adapter in kebab-case
-- `[template]` is the template that will be used (e.g. `SimplePoolAdapter``). Default: `DefaultAdapterTemplate`
-- `[chains]` is a list of comma separated list of supported chains (e.g. `Ethereum,Arbitrum,Optimism`). Default: `Ethereum`
+This will start an interactive process in the command line to create a new adapter. Running `npm run new-adapter -- --help` shows available options for defaults.
 
 ## Adding a New Protocol or Adapter manually
 
@@ -134,6 +123,23 @@ See [NON-CLI-ADAPTER.md](NON-CLI-ADAPTER).
 ## Contract Factories
 
 Add a JSON file with the ABI of any new contract to the folder `src/contracts/abis/<protocol-name>`. Run `npm run build-types` to generate factories and ABIs for those contracts automatically.
+
+## Test Snapshots
+
+In order to maintain integrity, it is possible to create test snapshots.
+
+Tests can be added to `src/adapters/<protocol-name>/tests/testCases.ts` by adding them to the exported `testCases` array. The test object is fully typed.
+
+A test needs to include:
+- `chainId`: Chain for which the test will run
+- `method`: One of the available public methods of the library
+- `input`: If the test `method` requires input, such as an user address, it needs to be specified here.
+- `blockNumber`: For some tests, it is possible to specify which block number should be used. If it's not provided, the snapshot will be created with the latest block number, which will be stored along with the snapshot.
+- `key`: When there are multiple tests for the same `chainId` and `method`, but with different inputs (e.g. testing multiple user addresses), a key is necessary for the system to identify them.
+
+Once the tests are defined, running `npm run build-snapshots -- -p <protocol-name>` will generate snapshots for them.
+
+Running `npm run test` validates snapshots match results.
 
 ### Versioning and Publishing (internal use only)
 
