@@ -11,6 +11,7 @@ import {
 import { Protocol } from '../adapters'
 import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigint-json'
+import { kebabCase } from '../core/utils/caseConversion'
 import { chainProviders } from '../core/utils/chainProviders'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
@@ -116,7 +117,9 @@ export function buildSnapshots(program: Command) {
 
           const filePath = `./src/adapters/${protocolId}/tests/snapshots/${
             ChainName[testCase.chainId]
-          }.${testCase.method}${testCase.key ? `.${testCase.key}` : ''}.json`
+          }.${testCase.method}${
+            testCase.key ? `.${kebabCase(testCase.key)}` : ''
+          }.json`
 
           await fs.mkdir(path.dirname(filePath), { recursive: true })
 
