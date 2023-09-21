@@ -27,4 +27,16 @@ export type TestCase = {
       method: 'prices'
       blockNumber?: number
     }
+  | {
+      method: 'tvl'
+      blockNumber?: number
+    }
+  | {
+      method: 'apy'
+      blockNumber?: number
+    }
+  | {
+      method: 'apr'
+      blockNumber?: number
+    }
 )

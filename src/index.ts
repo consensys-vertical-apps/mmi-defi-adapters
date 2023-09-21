@@ -209,12 +209,16 @@ export async function getDeposits({
 export async function getTotalValueLocked({
   filterProtocolIds,
   filterChainIds,
+  blockNumbers,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  blockNumbers?: Partial<Record<Chain, number>>
 }): Promise<TotalValueLockResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
-    const tokens = await adapter.getTotalValueLocked({})
+    const blockNumber = blockNumbers?.[adapter.chainId]
+
+    const tokens = await adapter.getTotalValueLocked({ blockNumber })
 
     return { tokens }
   }
@@ -229,15 +233,19 @@ export async function getTotalValueLocked({
 export async function getApy({
   filterProtocolIds,
   filterChainIds,
+  blockNumbers,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  blockNumbers?: Partial<Record<Chain, number>>
 }): Promise<APYResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
+    const blockNumber = blockNumbers?.[adapter.chainId]
+
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getApy({ protocolTokenAddress }),
+        adapter.getApy({ protocolTokenAddress, blockNumber }),
       ),
     )
 
@@ -256,15 +264,19 @@ export async function getApy({
 export async function getApr({
   filterProtocolIds,
   filterChainIds,
+  blockNumbers,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  blockNumbers?: Partial<Record<Chain, number>>
 }): Promise<APRResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
+    const blockNumber = blockNumbers?.[adapter.chainId]
+
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getApr({ protocolTokenAddress }),
+        adapter.getApr({ protocolTokenAddress, blockNumber }),
       ),
     )
 

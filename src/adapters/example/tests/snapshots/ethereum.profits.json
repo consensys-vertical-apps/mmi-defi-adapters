@@ -1,0 +1,46 @@
+{
+  "blockNumber": 18183880,
+  "snapshot": [
+    {
+      "protocolId": "example",
+      "name": "Example",
+      "description": "Example defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "success": true,
+      "fromBlock": 111,
+      "toBlock": 112,
+      "tokens": [
+        {
+          "address": "0xaa4bf442f024820b2c28cd0fd72b82c63e66f56c",
+          "name": "Frax-LP",
+          "symbol": "S*FRAX",
+          "decimals": 6,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "underlying",
+              "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
+              "name": "Frax",
+              "symbol": "FRAX",
+              "decimals": 18,
+              "profitRaw": "100n",
+              "profit": "100"
+            },
+            {
+              "type": "claimable",
+              "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
+              "name": "Frax",
+              "symbol": "FRAX",
+              "decimals": 18,
+              "profitRaw": "100n",
+              "profit": "100"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

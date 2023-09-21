@@ -1,0 +1,24 @@
+{
+  "blockNumber": 18183880,
+  "snapshot": [
+    {
+      "protocolId": "example",
+      "name": "Example",
+      "description": "Example defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xprotocolTokenAddress",
+          "decimals": 8,
+          "symbol": "stUSD",
+          "apyDecimal": "0.1",
+          "name": "stUSD"
+        }
+      ]
+    }
+  ]
+}

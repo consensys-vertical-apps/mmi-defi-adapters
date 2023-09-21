@@ -1,0 +1,38 @@
+{
+  "blockNumber": 18183880,
+  "snapshot": [
+    {
+      "protocolId": "example",
+      "name": "Example",
+      "description": "Example defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "success": true,
+      "tokens": [
+        {
+          "name": "Tether USD-LP",
+          "iconUrl": "",
+          "decimals": 6,
+          "symbol": "S*USDT",
+          "address": "0xprotocolTokenAddress",
+          "share": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "underlying",
+              "pricePerShareRaw": "1000154n",
+              "pricePerShare": "1.000154",
+              "decimals": 6,
+              "name": "Tether USD",
+              "iconUrl": "",
+              "symbol": "USDT",
+              "address": "0xunderlyingTokenAddress"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

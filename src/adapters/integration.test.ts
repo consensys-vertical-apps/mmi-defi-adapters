@@ -6,12 +6,16 @@ import {
   getDeposits,
   getWithdrawals,
   getPrices,
+  getTotalValueLocked,
+  getApy,
+  getApr,
 } from '..'
 import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigint-json'
 import { kebabCase } from '../core/utils/caseConversion'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
+import { testCases as exampleTestCases } from './example/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { Protocol } from '.'
 
@@ -20,6 +24,7 @@ const TEST_TIMEOUT = 10000
 runAllTests()
 
 function runAllTests() {
+  runProtocolTests(Protocol.Example, exampleTestCases)
   runProtocolTests(Protocol.Stargate, stargateTestCases)
   runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
 }
@@ -155,6 +160,87 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             )
 
             const response = await getPrices({
+              filterProtocolIds: [protocolId],
+              filterChainIds: [testCase.chainId],
+              blockNumbers: { [testCase.chainId]: blockNumber },
+            })
+
+            expect(response).toEqual(snapshot)
+          },
+          TEST_TIMEOUT,
+        )
+      })
+    }
+
+    const tvlTestCases = testCases.filter(
+      (testCase): testCase is TestCase & { method: 'tvl' } =>
+        testCase.method === 'tvl',
+    )
+    if (tvlTestCases.length) {
+      describe('getTotalValueLocked', () => {
+        it.each(tvlTestCases.map((testCase) => [testKey(testCase), testCase]))(
+          'tvl for test %s match',
+          async (_, testCase) => {
+            const { snapshot, blockNumber } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
+
+            const response = await getTotalValueLocked({
+              filterProtocolIds: [protocolId],
+              filterChainIds: [testCase.chainId],
+              blockNumbers: { [testCase.chainId]: blockNumber },
+            })
+
+            expect(response).toEqual(snapshot)
+          },
+          TEST_TIMEOUT,
+        )
+      })
+    }
+
+    const apyTestCases = testCases.filter(
+      (testCase): testCase is TestCase & { method: 'apy' } =>
+        testCase.method === 'apy',
+    )
+    if (apyTestCases.length) {
+      describe('getApy', () => {
+        it.each(apyTestCases.map((testCase) => [testKey(testCase), testCase]))(
+          'apy for test %s match',
+          async (_, testCase) => {
+            const { snapshot, blockNumber } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
+
+            const response = await getApy({
+              filterProtocolIds: [protocolId],
+              filterChainIds: [testCase.chainId],
+              blockNumbers: { [testCase.chainId]: blockNumber },
+            })
+
+            expect(response).toEqual(snapshot)
+          },
+          TEST_TIMEOUT,
+        )
+      })
+    }
+
+    const aprTestCases = testCases.filter(
+      (testCase): testCase is TestCase & { method: 'apr' } =>
+        testCase.method === 'apr',
+    )
+    if (aprTestCases.length) {
+      describe('getApr', () => {
+        it.each(aprTestCases.map((testCase) => [testKey(testCase), testCase]))(
+          'apr for test %s match',
+          async (_, testCase) => {
+            const { snapshot, blockNumber } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
+
+            const response = await getApr({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               blockNumbers: { [testCase.chainId]: blockNumber },

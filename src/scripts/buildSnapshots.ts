@@ -2,10 +2,13 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { Command } from 'commander'
 import {
+  getApr,
+  getApy,
   getDeposits,
   getPositions,
   getPrices,
   getProfits,
+  getTotalValueLocked,
   getWithdrawals,
 } from '..'
 import { Protocol } from '../adapters'
@@ -104,6 +107,54 @@ export function buildSnapshots(program: Command) {
                 return {
                   blockNumber,
                   snapshot: await getPrices({
+                    filterChainIds: [chainId],
+                    filterProtocolIds: [protocolId],
+                    blockNumbers: {
+                      [chainId]: blockNumber,
+                    },
+                  }),
+                }
+              }
+
+              case 'tvl': {
+                const blockNumber =
+                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+
+                return {
+                  blockNumber,
+                  snapshot: await getTotalValueLocked({
+                    filterChainIds: [chainId],
+                    filterProtocolIds: [protocolId],
+                    blockNumbers: {
+                      [chainId]: blockNumber,
+                    },
+                  }),
+                }
+              }
+
+              case 'apy': {
+                const blockNumber =
+                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+
+                return {
+                  blockNumber,
+                  snapshot: await getApy({
+                    filterChainIds: [chainId],
+                    filterProtocolIds: [protocolId],
+                    blockNumbers: {
+                      [chainId]: blockNumber,
+                    },
+                  }),
+                }
+              }
+
+              case 'apr': {
+                const blockNumber =
+                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+
+                return {
+                  blockNumber,
+                  snapshot: await getApr({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
                     blockNumbers: {
