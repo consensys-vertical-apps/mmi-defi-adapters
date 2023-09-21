@@ -3,6 +3,7 @@ import { Command } from 'commander'
 import 'dotenv/config'
 import { blockAverage } from './blockAverage'
 import { buildMetadata } from './buildMetadata'
+import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
 import { featureCommands } from './featureCommands'
 import { newAdapterCommand } from './newAdapterCommand'
@@ -18,5 +19,7 @@ blockAverage(program)
 buildContractTypes(program)
 
 buildMetadata(program)
+
+buildSnapshots(program)
 
 program.parseAsync()

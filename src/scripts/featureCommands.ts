@@ -11,6 +11,7 @@ import {
 } from '..'
 import { Protocol } from '../adapters'
 import { Chain } from '../core/constants/chains'
+import { bigintJsonStringify } from '../core/utils/bigint-json'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function featureCommands(program: Command) {
@@ -82,7 +83,7 @@ function addressCommand(
         filterChainIds,
       })
 
-      beautifyJsonOutput(data)
+      printResponse(data)
     })
 }
 
@@ -126,7 +127,7 @@ function addressEventsCommand(
         toBlock: parseInt(toBlock, 10),
       })
 
-      beautifyJsonOutput(data)
+      printResponse(data)
     })
 }
 
@@ -158,16 +159,11 @@ function protocolCommand(
         filterChainIds,
       })
 
-      beautifyJsonOutput(data)
+      printResponse(data)
     })
 }
 
-function beautifyJsonOutput<T>(jsonString: T) {
-  console.log(
-    JSON.stringify(
-      jsonString,
-      (_, value) => (typeof value === 'bigint' ? value.toString() : value),
-      2,
-    ),
-  )
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function printResponse(data: any) {
+  console.log(bigintJsonStringify(data, 2))
 }

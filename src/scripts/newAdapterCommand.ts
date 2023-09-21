@@ -20,6 +20,7 @@ import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { chainFilter, protocolFilter } from './commandFilters'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
+import { testCases } from './templates/testCases'
 import n = types.namedTypes
 import b = types.builders
 
@@ -186,6 +187,7 @@ export function newAdapterCommand(program: Command) {
         logger.debug(answers, 'Create new adapter')
 
         await buildAdapterFromTemplate(answers)
+        await buildIntegrationTests(answers)
         await exportAdapter(answers)
 
         console.log(
@@ -215,7 +217,101 @@ async function buildAdapterFromTemplate({
     adapterClassName,
   )
 
-  writeCodeFile(adapterFilePath, templateBuilder(protocolKey, adapterClassName))
+  await writeCodeFile(
+    adapterFilePath,
+    templateBuilder(protocolKey, adapterClassName),
+  )
+}
+
+/**
+ * @description Creates a new file for integration tests if it doesn't exist
+ */
+async function buildIntegrationTests({
+  protocolId,
+  protocolKey,
+}: NewAdapterAnswers) {
+  const testCasesFilePath = `./src/adapters/${protocolId}/tests/testCases.ts`
+
+  if (await fileExists(testCasesFilePath)) {
+    return
+  }
+
+  await writeCodeFile(testCasesFilePath, testCases())
+
+  const testsFile = path.resolve('./src/adapters/integration.test.ts')
+  const contents = await fs.readFile(testsFile, 'utf-8')
+  const ast = parse(contents, {
+    parser: require('recast/parsers/typescript'),
+  })
+
+  visit(ast, {
+    visitProgram(path) {
+      const programNode = path.value as n.Program
+
+      addTestCasesImport(programNode, protocolId, protocolKey)
+
+      this.traverse(path)
+    },
+    visitFunctionDeclaration(path) {
+      const node = path.node
+      if (!n.Identifier.check(node.id)) {
+        // Skips any other declaration
+        return false
+      }
+
+      if (node.id.name === 'runAllTests') {
+        const runProtocolTestsNode = b.expressionStatement(
+          b.callExpression(b.identifier('runProtocolTests'), [
+            b.memberExpression(
+              b.identifier('Protocol'),
+              b.identifier(protocolKey),
+            ),
+            b.identifier(`${lowerFirst(protocolKey)}TestCases`),
+          ]),
+        )
+
+        node.body.body = [...node.body.body, runProtocolTestsNode]
+      }
+
+      this.traverse(path)
+    },
+  })
+
+  await writeCodeFile(testsFile, print(ast).code)
+}
+
+/**
+ * @description Adds a new entry to the imports for the test cases
+ *
+ * @param programNode AST node for the Protocol program
+ */
+function addTestCasesImport(
+  programNode: n.Program,
+  protocolId: string,
+  protocolKey: string,
+) {
+  const [importNodes, codeAfterImports] = partition(programNode.body, (node) =>
+    n.ImportDeclaration.check(node),
+  )
+
+  const newImportEntry = buildImportTestCasesEntry(protocolId, protocolKey)
+
+  programNode.body = [...importNodes, newImportEntry, ...codeAfterImports]
+}
+
+/*
+import { testCases as <protocolId>TestCases } from './<protocolId>/tests/testCases'
+*/
+function buildImportTestCasesEntry(protocolId: string, protocolKey: string) {
+  return b.importDeclaration(
+    [
+      b.importSpecifier(
+        b.identifier('testCases'),
+        b.identifier(`${lowerFirst(protocolKey)}TestCases`),
+      ),
+    ],
+    b.literal(`./${protocolId}/tests/testCases`),
+  )
 }
 
 /**
@@ -238,7 +334,7 @@ async function exportAdapter({
     visitProgram(path) {
       const programNode = path.value as n.Program
 
-      addImport(programNode, protocolId, productId, adapterClassName)
+      addAdapterImport(programNode, protocolId, productId, adapterClassName)
 
       this.traverse(path)
     },
@@ -267,7 +363,7 @@ async function exportAdapter({
  *
  * @param programNode AST node for the Protocol program
  */
-function addImport(
+function addAdapterImport(
   programNode: n.Program,
   protocolId: string,
   productId: string,
@@ -277,7 +373,7 @@ function addImport(
     n.ImportDeclaration.check(node),
   )
 
-  const newImportEntry = buildImportEntry(
+  const newImportEntry = buildImportAdapterEntry(
     protocolId,
     productId,
     adapterClassName,
@@ -408,7 +504,7 @@ function buildProtocolEntry(protocolKey: string, protocolId: string) {
 /*
 import { <AdapterClassName> } from './<protocol-id>/products/<product-id>/<adapterClassName>'
 */
-function buildImportEntry(
+function buildImportAdapterEntry(
   protocolId: string,
   productId: string,
   adapterClassName: string,
@@ -480,8 +576,12 @@ async function adapterFileExists(
     adapterClassName,
   )
 
+  return fileExists(adapterFilePath)
+}
+
+async function fileExists(filePath: string) {
   return fs
-    .access(adapterFilePath, fs.constants.F_OK)
+    .access(filePath, fs.constants.F_OK)
     .then(() => true)
     .catch(() => false)
 }

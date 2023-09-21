@@ -1,0 +1,37 @@
+{
+  "blockNumber": 18183880,
+  "snapshot": [
+    {
+      "protocolId": "example",
+      "name": "Example",
+      "description": "Example defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xprotocolTokenAddress",
+          "name": "Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6,
+          "totalSupplyRaw": "31468548033n",
+          "totalSupply": "31468.548033",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xunderlyingTokenAddress",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "totalSupply": "31492.408006",
+              "totalSupplyRaw": "31492408006n",
+              "type": "underlying"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

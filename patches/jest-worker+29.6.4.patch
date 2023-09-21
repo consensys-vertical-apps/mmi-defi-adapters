@@ -1,0 +1,14 @@
+diff --git a/node_modules/jest-worker/build/workers/messageParent.js b/node_modules/jest-worker/build/workers/messageParent.js
+index 62e2cce..547650b 100644
+--- a/node_modules/jest-worker/build/workers/messageParent.js
++++ b/node_modules/jest-worker/build/workers/messageParent.js
+@@ -1,5 +1,9 @@
+ 'use strict';
+ 
++BigInt.prototype.toJSON = function () {
++  return this.toString();
++};
++
+ Object.defineProperty(exports, '__esModule', {
+   value: true
+ });

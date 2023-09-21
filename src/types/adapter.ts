@@ -49,13 +49,6 @@ export interface GetProfitsInput {
   toBlock: number
 }
 
-export type GetTradeEvents = {
-  userAddress: string
-  smartContractAddress: string
-  fromBlock: number
-  toBlock: number
-}
-
 export type ProtocolDetails = {
   protocolId: Protocol
   chainId: Chain

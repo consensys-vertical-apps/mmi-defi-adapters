@@ -94,15 +94,19 @@ export async function getProfits({
 export async function getPrices({
   filterProtocolIds,
   filterChainIds,
+  blockNumbers,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  blockNumbers?: Partial<Record<Chain, number>>
 }): Promise<PricePerShareResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
+    const blockNumber = blockNumbers?.[adapter.chainId]
+
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getPricePerShare({ protocolTokenAddress }),
+        adapter.getPricePerShare({ protocolTokenAddress, blockNumber }),
       ),
     )
 
@@ -116,43 +120,39 @@ export async function getPrices({
   })
 }
 
-export async function getTotalValueLocked({
+export async function getWithdrawals({
   filterProtocolIds,
   filterChainIds,
+  userAddress,
+  fromBlock,
+  toBlock,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-}): Promise<TotalValueLockResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
-    const tokens = await adapter.getTotalValueLocked({})
-
-    return { tokens }
-  }
-
-  return runForAllProtocolsAndChains({
-    runner,
-    filterProtocolIds,
-    filterChainIds,
-  })
-}
-
-export async function getApy({
-  filterProtocolIds,
-  filterChainIds,
-}: {
-  filterProtocolIds?: Protocol[]
-  filterChainIds?: Chain[]
-}): Promise<APYResponse[]> {
+  userAddress: string
+  fromBlock: number
+  toBlock: number
+}): Promise<DefiMovementsResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
     const protocolTokens = await adapter.getProtocolTokens()
-    const tokens = await Promise.all(
-      protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getApy({ protocolTokenAddress }),
-      ),
+    const movements = await Promise.all(
+      protocolTokens.map(async (protocolToken) => {
+        const positionMovements = await adapter.getWithdrawals({
+          protocolTokenAddress: protocolToken.address,
+          fromBlock,
+          toBlock,
+          userAddress,
+        })
+
+        return {
+          protocolToken,
+          positionMovements,
+        }
+      }),
     )
 
     return {
-      tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
+      movements,
     }
   }
 
@@ -206,39 +206,51 @@ export async function getDeposits({
   })
 }
 
-export async function getWithdrawals({
+export async function getTotalValueLocked({
   filterProtocolIds,
   filterChainIds,
-  userAddress,
-  fromBlock,
-  toBlock,
+  blockNumbers,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
-  userAddress: string
-  fromBlock: number
-  toBlock: number
-}): Promise<DefiMovementsResponse[]> {
+  blockNumbers?: Partial<Record<Chain, number>>
+}): Promise<TotalValueLockResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
-    const protocolTokens = await adapter.getProtocolTokens()
-    const movements = await Promise.all(
-      protocolTokens.map(async (protocolToken) => {
-        const positionMovements = await adapter.getWithdrawals({
-          protocolTokenAddress: protocolToken.address,
-          fromBlock,
-          toBlock,
-          userAddress,
-        })
+    const blockNumber = blockNumbers?.[adapter.chainId]
 
-        return {
-          protocolToken,
-          positionMovements,
-        }
-      }),
+    const tokens = await adapter.getTotalValueLocked({ blockNumber })
+
+    return { tokens }
+  }
+
+  return runForAllProtocolsAndChains({
+    runner,
+    filterProtocolIds,
+    filterChainIds,
+  })
+}
+
+export async function getApy({
+  filterProtocolIds,
+  filterChainIds,
+  blockNumbers,
+}: {
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
+  blockNumbers?: Partial<Record<Chain, number>>
+}): Promise<APYResponse[]> {
+  const runner = async (adapter: IProtocolAdapter) => {
+    const blockNumber = blockNumbers?.[adapter.chainId]
+
+    const protocolTokens = await adapter.getProtocolTokens()
+    const tokens = await Promise.all(
+      protocolTokens.map(({ address: protocolTokenAddress }) =>
+        adapter.getApy({ protocolTokenAddress, blockNumber }),
+      ),
     )
 
     return {
-      movements,
+      tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
     }
   }
 
@@ -252,15 +264,19 @@ export async function getWithdrawals({
 export async function getApr({
   filterProtocolIds,
   filterChainIds,
+  blockNumbers,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
+  blockNumbers?: Partial<Record<Chain, number>>
 }): Promise<APRResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
+    const blockNumber = blockNumbers?.[adapter.chainId]
+
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getApr({ protocolTokenAddress }),
+        adapter.getApr({ protocolTokenAddress, blockNumber }),
       ),
     )
 

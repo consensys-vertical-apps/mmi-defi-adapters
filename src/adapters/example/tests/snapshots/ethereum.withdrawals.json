@@ -1,0 +1,39 @@
+{
+  "snapshot": [
+    {
+      "protocolId": "example",
+      "name": "Example",
+      "description": "Example defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "success": true,
+      "movements": [
+        {
+          "protocolToken": {
+            "address": "0xprotocolTokenAddress",
+            "name": "Coin-LP",
+            "symbol": "S*USDC",
+            "decimals": 6
+          },
+          "positionMovements": [
+            {
+              "underlyingTokensMovement": {
+                "0xunderlyingTokenAddress": {
+                  "address": "0xunderlyingTokenAddress",
+                  "name": "USD Coin",
+                  "symbol": "USDC",
+                  "decimals": 6,
+                  "movementValueRaw": "100n",
+                  "movementValue": "100"
+                }
+              },
+              "blockNumber": 17970000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
