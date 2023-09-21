@@ -2,13 +2,15 @@ import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { Adapter } from '../../../../core/decorators/adapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import {
+  CacheToFile,
+  IMetadataBuilder,
+} from '../../../../core/decorators/cacheToFile'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
 } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
-import { IMetadataBuilder } from '../../../../core/utils/metadata'
 import {
   BasePricePerShareToken,
   BaseToken,

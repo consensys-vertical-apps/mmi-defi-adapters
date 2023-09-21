@@ -367,10 +367,6 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
                   adapterError = {
                     message: error,
                   }
-                } else if (error && typeof error.toString === 'function') {
-                  adapterError = {
-                    message: error.toString(),
-                  }
                 } else {
                   adapterError = {
                     message: 'Error message cannot be extracted',

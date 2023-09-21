@@ -4,7 +4,7 @@ import { Chain } from '../constants/chains'
 import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
 import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
 import { chainProviders } from './chainProviders'
-import { extractErrorMessage } from './error'
+import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
 
 export type Erc20Metadata = {
