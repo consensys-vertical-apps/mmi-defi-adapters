@@ -124,6 +124,23 @@ See [NON-CLI-ADAPTER.md](NON-CLI-ADAPTER).
 
 Add a JSON file with the ABI of any new contract to the folder `src/contracts/abis/<protocol-name>`. Run `npm run build-types` to generate factories and ABIs for those contracts automatically.
 
+## Test Snapshots
+
+In order to maintain integrity, it is possible to create test snapshots.
+
+Tests can be added to `src/adapters/<protocol-name>/tests/testCases.ts` by adding them to the exported `testCases` array. The test object is fully typed.
+
+A test needs to include:
+- `chainId`: Chain for which the test will run
+- `method`: One of the available public methods of the library
+- `input`: If the test `method` requires input, such as an user address, it needs to be specified here.
+- `blockNumber`: For some tests, it is possible to specify which block number should be used. If it's not provided, the snapshot will be created with the latest block number, which will be stored along with the snapshot.
+- `key`: When there are multiple tests for the same `chainId` and `method`, but with different inputs (e.g. testing multiple user addresses), a key is necessary for the system to identify them.
+
+Once the tests are defined, running `npm run build-snapshots -- -p <protocol-name>` will generate snapshots for them.
+
+Running `npm run test` validates snapshots match results.
+
 ### Versioning and Publishing (internal use only)
 
 To version and publish:
