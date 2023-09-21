@@ -25,8 +25,8 @@
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "balanceRaw": "31468548033n",
-              "balance": "31468.548033",
+              "balanceRaw": "31492408006n",
+              "balance": "31492.408006",
               "type": "underlying"
             }
           ]

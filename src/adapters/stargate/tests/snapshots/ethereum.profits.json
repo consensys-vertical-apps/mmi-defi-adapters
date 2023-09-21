@@ -23,8 +23,8 @@
               "name": "Liquity USD",
               "symbol": "LUSD",
               "decimals": 18,
-              "balanceRaw": "8623598918n",
-              "balance": "8623.598918",
+              "balanceRaw": "8625195334000000000000n",
+              "balance": "8625.195334",
               "type": "underlying",
               "profitRaw": "0n",
               "profit": "0.0"
@@ -43,8 +43,8 @@
               "name": "Synth sUSD",
               "symbol": "SUSD",
               "decimals": 18,
-              "balanceRaw": "2264074514n",
-              "balance": "2264.074514",
+              "balanceRaw": "2264523735000000000000n",
+              "balance": "2264.523735",
               "type": "underlying",
               "profitRaw": "0n",
               "profit": "0.0"
@@ -63,8 +63,8 @@
               "name": "Frax",
               "symbol": "FRAX",
               "decimals": 18,
-              "balanceRaw": "167948235287n",
-              "balance": "167948.235287",
+              "balanceRaw": "167950623569000000000000n",
+              "balance": "167950.623569",
               "type": "underlying",
               "profitRaw": "0n",
               "profit": "0.0"
@@ -83,11 +83,11 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "balanceRaw": "171791486872n",
-              "balance": "171791.486872",
+              "balanceRaw": "171795121075000000000000n",
+              "balance": "171795.121075",
               "type": "underlying",
-              "profitRaw": "-18179568n",
-              "profit": "-0.000000000018179568"
+              "profitRaw": "-18179953000000000000n",
+              "profit": "-18.179953"
             }
           ]
         },
@@ -103,11 +103,11 @@
               "name": "Stargate Ether Vault",
               "symbol": "SGETH",
               "decimals": 18,
-              "balanceRaw": "9380261860022777581071n",
-              "balance": "9380.261860022777581071",
+              "balanceRaw": "9381358299480289089736n",
+              "balance": "9381.358299480289089736",
               "type": "underlying",
-              "profitRaw": "218097370757194893686n",
-              "profit": "218.097370757194893686"
+              "profitRaw": "218137753604566988974n",
+              "profit": "218.137753604566988974"
             }
           ]
         },
@@ -123,11 +123,11 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "balanceRaw": "35967813972604n",
-              "balance": "35967813.972604",
+              "balanceRaw": "36005822296628n",
+              "balance": "36005822.296628",
               "type": "underlying",
-              "profitRaw": "-4258927991936n",
-              "profit": "-4258927.991936"
+              "profitRaw": "-4263428509510n",
+              "profit": "-4263428.50951"
             }
           ]
         },
@@ -143,11 +143,11 @@
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "balanceRaw": "40884065556222n",
-              "balance": "40884065.556222",
+              "balanceRaw": "40915064530967n",
+              "balance": "40915064.530967",
               "type": "underlying",
-              "profitRaw": "11857567004n",
-              "profit": "11857.567004"
+              "profitRaw": "11866557618n",
+              "profit": "11866.557618"
             }
           ]
         }
