@@ -9,7 +9,9 @@ import {
 } from '..'
 import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigint-json'
+import { kebabCase } from '../core/utils/caseConversion'
 import { TestCase } from '../types/testCase'
+import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { Protocol } from '.'
 
@@ -19,6 +21,7 @@ runAllTests()
 
 function runAllTests() {
   runProtocolTests(Protocol.Stargate, stargateTestCases)
+  runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
@@ -167,7 +170,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
 }
 
 function testKey({ chainId, method, key }: TestCase) {
-  return `${ChainName[chainId]}.${method}${key ? `.${key}` : ''}`
+  return `${ChainName[chainId]}.${method}${key ? `.${kebabCase(key)}` : ''}`
 }
 
 async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
