@@ -3,12 +3,14 @@ import { formatUnits } from 'ethers'
 import { Protocol } from '../../..'
 import { Chain } from '../../../../core/constants/chains'
 import { Adapter } from '../../../../core/decorators/adapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import {
+  CacheToFile,
+  IMetadataBuilder,
+} from '../../../../core/decorators/cacheToFile'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
 } from '../../../../core/utils/getTokenMetadata'
-import { IMetadataBuilder } from '../../../../core/utils/metadata'
 import {
   GetAprInput,
   GetApyInput,

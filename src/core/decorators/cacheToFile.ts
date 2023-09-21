@@ -1,9 +1,15 @@
 import fs from 'fs'
 import path from 'path'
+import { Protocol } from '../../adapters'
 import { IProtocolAdapter } from '../../types/adapter'
-import { ChainName } from '../constants/chains'
+import { Json } from '../../types/json'
+import { Chain, ChainName } from '../constants/chains'
 import { logger } from '../utils/logger'
-import { IMetadataBuilder, writeMetadataToFile } from '../utils/metadata'
+
+export interface IMetadataBuilder {
+  product: string
+  buildMetadata(writeToFile?: boolean): Promise<Json>
+}
 
 export function CacheToFile({ fileKey }: { fileKey: string }) {
   return function actualDecorator(
@@ -65,4 +71,30 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
 
     return replacementMethod
   }
+}
+
+async function writeMetadataToFile({
+  protocolId,
+  product,
+  chainId,
+  fileKey,
+  metadataObject,
+}: {
+  protocolId: Protocol
+  product: string
+  chainId: Chain
+  fileKey: string
+  metadataObject: Json
+}) {
+  const newFilePath = path.resolve(
+    `src/adapters/${protocolId}/products/${product}/metadata/${ChainName[chainId]}.${fileKey}.json`,
+  )
+
+  fs.mkdirSync(path.dirname(newFilePath), { recursive: true })
+
+  fs.writeFileSync(
+    newFilePath,
+    JSON.stringify(metadataObject, null, 2),
+    'utf-8',
+  )
 }

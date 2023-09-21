@@ -11,7 +11,7 @@ import {
   getApr,
 } from '..'
 import { ChainName } from '../core/constants/chains'
-import { bigintJsonParse } from '../core/utils/bigint-json'
+import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'

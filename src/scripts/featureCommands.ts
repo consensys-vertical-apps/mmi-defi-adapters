@@ -11,7 +11,7 @@ import {
 } from '..'
 import { Protocol } from '../adapters'
 import { Chain } from '../core/constants/chains'
-import { bigintJsonStringify } from '../core/utils/bigint-json'
+import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function featureCommands(program: Command) {

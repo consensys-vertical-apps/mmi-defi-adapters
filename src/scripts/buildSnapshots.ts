@@ -13,7 +13,7 @@ import {
 } from '..'
 import { Protocol } from '../adapters'
 import { Chain, ChainName } from '../core/constants/chains'
-import { bigintJsonStringify } from '../core/utils/bigint-json'
+import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { chainProviders } from '../core/utils/chainProviders'
 import type { TestCase } from '../types/testCase'
