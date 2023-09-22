@@ -1,11 +1,11 @@
-import { Adapter } from '../../../../core/decorators/adapter'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 import { ProtocolDataProvider } from '../../contracts'
 import { AaveV2BasePoolAdapter } from './aaveV2BasePoolAdapter'
 
-@Adapter
 export class AaveV2VariableDebtTokenPoolAdapter extends AaveV2BasePoolAdapter {
+  product = 'pool'
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

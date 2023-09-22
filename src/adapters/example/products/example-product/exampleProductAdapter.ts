@@ -1,6 +1,5 @@
 import { ethers } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
-import { Adapter } from '../../../../core/decorators/adapter'
 import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
@@ -25,7 +24,6 @@ import {
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
 
-@Adapter
 export class ExampleProductAdapter implements IProtocolAdapter {
   protocolId: Protocol
   chainId: Chain
