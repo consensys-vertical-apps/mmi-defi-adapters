@@ -42,7 +42,7 @@
     "prettier": "prettier \"src/**/*.ts\" --check",
     "test": "jest",
     "test:cov": "jest src --ci --coverage",
-    "postinstall": "patch-package"
+    "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package"
   },
   "devDependencies": {
     "@typechain/ethers-v6": "^0.5.0",
