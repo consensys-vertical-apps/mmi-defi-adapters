@@ -1,4 +1,4 @@
-import { Protocol } from '../adapters'
+import { Protocol } from '../adapters/protocols'
 import { Chain, ChainName } from '../core/constants/chains'
 import {
   chainFilter,
