@@ -49,6 +49,13 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
           metadataObject,
         })
 
+        addStaticImport({
+          protocolId: this.protocolId,
+          productId: this.product,
+          chainId: this.chainId,
+          fileKey,
+        })
+
         return metadataObject
       }
 
@@ -115,11 +122,9 @@ async function writeMetadataToFile({
     JSON.stringify(metadataObject, null, 2),
     'utf-8',
   )
-
-  postProcess({ protocolId, productId, chainId, fileKey })
 }
 
-async function postProcess({
+async function addStaticImport({
   protocolId,
   productId,
   chainId,
