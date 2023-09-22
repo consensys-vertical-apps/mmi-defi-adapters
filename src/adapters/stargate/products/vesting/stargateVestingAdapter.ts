@@ -1,7 +1,6 @@
 import type { ethers } from 'ethers'
 import { formatUnits } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
-import { Adapter } from '../../../../core/decorators/adapter'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -36,11 +35,10 @@ type StargateVestingMetadata = {
   underlyingToken: Erc20Metadata
 }
 
-@Adapter
 export class StargateVestingAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
-  product!: string
+  product = 'vesting'
   protocolId: Protocol
   chainId: Chain
 

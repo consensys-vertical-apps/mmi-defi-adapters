@@ -1,7 +1,6 @@
 import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { Adapter } from '../../../../core/decorators/adapter'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -41,12 +40,11 @@ type StargatePoolMetadata = Record<
   }
 >
 
-@Adapter
 export class StargatePoolAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
-  product!: string
+  product = 'pool'
 
   getProtocolDetails(): ProtocolDetails {
     return {
