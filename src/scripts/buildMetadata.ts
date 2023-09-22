@@ -1,5 +1,6 @@
 import { Command } from 'commander'
-import { Protocol, supportedProtocols } from '../adapters'
+import { supportedProtocols } from '../adapters'
+import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { IMetadataBuilder } from '../core/decorators/cacheToFile'
 import { chainProviders } from '../core/utils/chainProviders'

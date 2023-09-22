@@ -1,5 +1,6 @@
 import { ethers } from 'ethers'
-import { Protocol, supportedProtocols } from './adapters'
+import { supportedProtocols } from './adapters'
+import { Protocol } from './adapters/protocols'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
