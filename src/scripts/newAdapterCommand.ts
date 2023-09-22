@@ -5,7 +5,7 @@ import { Command } from 'commander'
 import { prompt, QuestionCollection } from 'inquirer'
 import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
-import { Protocol } from '../adapters'
+import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import {
   isKebabCase,
@@ -188,6 +188,7 @@ export function newAdapterCommand(program: Command) {
 
         await buildAdapterFromTemplate(answers)
         await buildIntegrationTests(answers)
+        await addProtocol(answers)
         await exportAdapter(answers)
 
         console.log(
@@ -315,6 +316,35 @@ function buildImportTestCasesEntry(protocolId: string, protocolKey: string) {
 }
 
 /**
+ * @description Writes changes to include new adapter in src/adapters/protocols.ts file
+ */
+async function addProtocol({ protocolKey, protocolId }: NewAdapterAnswers) {
+  const protocolsFile = path.resolve('./src/adapters/protocols.ts')
+  const contents = await fs.readFile(protocolsFile, 'utf-8')
+  const ast = parse(contents, {
+    parser: require('recast/parsers/typescript'),
+  })
+
+  visit(ast, {
+    visitVariableDeclarator(path) {
+      const node = path.node
+      if (!n.Identifier.check(node.id)) {
+        // Skips any other declaration
+        return false
+      }
+
+      if (node.id.name === 'Protocol') {
+        addProtocolEntry(node, protocolKey, protocolId)
+      }
+
+      this.traverse(path)
+    },
+  })
+
+  await writeCodeFile(protocolsFile, print(ast).code)
+}
+
+/**
  * @description Writes changes to include new adapter in src/adapters/index.ts file
  */
 async function exportAdapter({
@@ -347,8 +377,6 @@ async function exportAdapter({
 
       if (node.id.name === 'supportedProtocols') {
         addAdapterEntries(node, protocolKey, adapterClassName, chainKeys)
-      } else if (node.id.name === 'Protocol') {
-        addProtocol(node, protocolKey, protocolId)
       }
 
       this.traverse(path)
@@ -387,7 +415,7 @@ function addAdapterImport(
  *
  * @param protocolListDeclaratorNode AST node for the Protocol declarator
  */
-function addProtocol(
+function addProtocolEntry(
   protocolListDeclaratorNode: n.VariableDeclarator,
   protocolKey: string,
   protocolId: string,

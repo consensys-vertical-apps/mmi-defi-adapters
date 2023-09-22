@@ -9,7 +9,7 @@ import {
   getTotalValueLocked,
   getWithdrawals,
 } from '..'
-import { Protocol } from '../adapters'
+import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'

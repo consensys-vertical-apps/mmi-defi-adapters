@@ -1,6 +1,6 @@
 import type { ethers } from 'ethers'
 import { formatUnits } from 'ethers'
-import { Protocol } from '../../adapters'
+import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
 import {

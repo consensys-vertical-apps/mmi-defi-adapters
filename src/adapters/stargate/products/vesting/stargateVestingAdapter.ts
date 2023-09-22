@@ -1,6 +1,5 @@
 import type { ethers } from 'ethers'
 import { formatUnits } from 'ethers'
-import { Protocol } from '../../..'
 import { Chain } from '../../../../core/constants/chains'
 import { Adapter } from '../../../../core/decorators/adapter'
 import {
@@ -29,6 +28,7 @@ import {
   ProtocolTotalValueLockedToken,
   TokenType,
 } from '../../../../types/adapter'
+import { Protocol } from '../../../protocols'
 import { StargateVotingEscrow__factory } from '../../contracts'
 
 type StargateVestingMetadata = {
