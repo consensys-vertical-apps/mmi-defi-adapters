@@ -13,7 +13,6 @@
       "tokens": [
         {
           "name": "Tether USD-LP",
-          "iconUrl": "",
           "decimals": 6,
           "symbol": "S*USDT",
           "address": "0xprotocolTokenAddress",
