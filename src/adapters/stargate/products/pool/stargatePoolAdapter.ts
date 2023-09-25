@@ -1,10 +1,11 @@
 import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain, ChainName } from '../../../../core/constants/chains'
+import { Chain } from '../../../../core/constants/chains'
 import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
@@ -30,7 +31,6 @@ import {
   StargateFactory__factory,
   StargateToken__factory,
 } from '../../contracts'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 
 type StargatePoolMetadata = Record<
   string,

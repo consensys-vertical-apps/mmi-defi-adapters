@@ -2,6 +2,7 @@ import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
@@ -25,7 +26,6 @@ import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../../contracts'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 
 type AaveV2PoolMetadata = Record<
   string,

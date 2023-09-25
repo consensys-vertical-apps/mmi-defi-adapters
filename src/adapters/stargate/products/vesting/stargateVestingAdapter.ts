@@ -5,6 +5,7 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import {
   Erc20Metadata,
   getThinTokenMetadata,
@@ -29,7 +30,6 @@ import {
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
 import { StargateVotingEscrow__factory } from '../../contracts'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 
 type StargateVestingMetadata = {
   contractToken: Erc20Metadata
