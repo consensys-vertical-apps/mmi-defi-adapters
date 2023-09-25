@@ -75,10 +75,13 @@ export type TokenBalance = Erc20Metadata & {
   balance: string
 }
 
-export type BaseToken = TokenBalance & {
-  type: typeof TokenType.Underlying | typeof TokenType.Claimable
-  tokens?: BaseToken[]
-}
+export type BaseToken = TokenBalance &
+  (
+    | { type: typeof TokenType.Underlying; iconUrl: string }
+    | { type: typeof TokenType.Claimable }
+  ) & {
+    tokens?: BaseToken[]
+  }
 
 export type ProtocolToken = TokenBalance & {
   type: typeof TokenType.Protocol
@@ -89,6 +92,7 @@ export type BasePricePerShareToken = Erc20Metadata & {
   pricePerShareRaw: bigint
   pricePerShare: string
   type: typeof TokenType.Underlying
+  iconUrl: string
 }
 
 export type ProtocolPricePerShareToken = Erc20Metadata & {
@@ -139,11 +143,23 @@ export type BaseProfitsToken = Erc20Metadata & {
   type: typeof TokenType.Underlying | typeof TokenType.Claimable
   profitRaw: bigint
   profit: string
+  calculationData: CalculationData
 }
 
 export type ProtocolProfitsToken = Erc20Metadata & {
   type: typeof TokenType.Protocol
   tokens: BaseProfitsToken[]
+}
+
+export type CalculationData = {
+  withdrawalsRaw: bigint
+  withdrawals: string
+  depositsRaw: bigint
+  deposits: string
+  startPositionValueRaw: bigint
+  startPositionValue: string
+  endPositionValueRaw: bigint
+  endPositionValue: string
 }
 
 export interface IProtocolAdapter {

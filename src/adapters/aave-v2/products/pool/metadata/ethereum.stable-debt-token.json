@@ -10,7 +10,8 @@
       "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
       "name": "Tether USD",
       "symbol": "USDT",
-      "decimals": 6
+      "decimals": 6,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
     }
   },
   "0x51b039b9afe64b78758f8ef091211b5387ea717c": {
@@ -24,7 +25,8 @@
       "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
       "name": "Wrapped BTC",
       "symbol": "WBTC",
-      "decimals": 8
+      "decimals": 8,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
     }
   },
   "0x4e977830ba4bd783c0bb7f15d3e243f73ff57121": {
@@ -38,7 +40,8 @@
       "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
       "name": "Wrapped Ether",
       "symbol": "WETH",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
     }
   },
   "0xca823f78c2dd38993284bb42ba9b14152082f7bd": {
@@ -52,7 +55,8 @@
       "address": "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
       "name": "yearn.finance",
       "symbol": "YFI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.png"
     }
   },
   "0x071b4323a24e73a5afeebe34118cd21b8faaf7c3": {
@@ -66,7 +70,8 @@
       "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
       "name": "0x Protocol Token",
       "symbol": "ZRX",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xE41d2489571d322189246DaFA5ebDe1F4699F498/logo.png"
     }
   },
   "0xd939f7430dc8d5a427f156de1012a56c18acb6aa": {
@@ -80,7 +85,8 @@
       "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
       "name": "Uniswap",
       "symbol": "UNI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png"
     }
   },
   "0x079d6a3e844bcecf5720478a718edb6575362c5f": {
@@ -94,7 +100,8 @@
       "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
       "name": "Aave Token",
       "symbol": "AAVE",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
     }
   },
   "0x277f8676facf4daa5a6ea38ba511b7f65aa02f9f": {
@@ -108,7 +115,8 @@
       "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
       "name": "Basic Attention Token",
       "symbol": "BAT",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0D8775F648430679A709E98d2b0Cb6250d2887EF/logo.png"
     }
   },
   "0x4a7a63909a72d268b1d8a93a9395d098688e0e5c": {
@@ -122,7 +130,8 @@
       "address": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
       "name": "BUSD",
       "symbol": "BUSD",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4Fabb145d64652a948d72533023f6E7A623C7C53/logo.png"
     }
   },
   "0x778a13d3eeb110a4f7bb6529f99c000119a08e92": {
@@ -136,7 +145,8 @@
       "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
       "name": "Dai Stablecoin",
       "symbol": "DAI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
     }
   },
   "0x943dcca156b5312aa24c1a08769d67fece4ac14c": {
@@ -150,7 +160,8 @@
       "address": "0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c",
       "name": "Enjin Coin",
       "symbol": "ENJ",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c/logo.png"
     }
   },
   "0x9915dfb872778b2890a117da1f35f335eb06b54f": {
@@ -164,7 +175,8 @@
       "address": "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
       "name": "Kyber Network Crystal",
       "symbol": "KNC",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdd974D5C2e2928deA5F71b9825b8b646686BD200/logo.png"
     }
   },
   "0xfb4aec4cc858f2539ebd3d37f2a43eae5b15b98a": {
@@ -178,7 +190,8 @@
       "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
       "name": "ChainLink Token",
       "symbol": "LINK",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png"
     }
   },
   "0xd86c74ea2224f4b8591560652b50035e4e5c0a3b": {
@@ -192,7 +205,8 @@
       "address": "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
       "name": "Decentraland MANA",
       "symbol": "MANA",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0F5D2fB29fb7d3CFeE444a200298f468908cC942/logo.png"
     }
   },
   "0xc01c8e4b12a89456a9fd4e4e75b72546bf53f0b5": {
@@ -206,7 +220,8 @@
       "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
       "name": "Maker",
       "symbol": "MKR",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2/logo.png"
     }
   },
   "0x3356ec1efa75d9d150da1ec7d944d9edf73703b7": {
@@ -220,7 +235,8 @@
       "address": "0x408e41876cccdc0f92210600ef50372656052a38",
       "name": "Republic Token",
       "symbol": "REN",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x408e41876cCCDC0F92210600ef50372656052a38/logo.png"
     }
   },
   "0x8575c8ae70bdb71606a53aea1c6789cb0fbf3166": {
@@ -234,7 +250,8 @@
       "address": "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
       "name": "Synthetix Network Token",
       "symbol": "SNX",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F/logo.png"
     }
   },
   "0x30b0f7324fedf89d8eff397275f8983397efe4af": {
@@ -248,7 +265,8 @@
       "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
       "name": "Synth sUSD",
       "symbol": "sUSD",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
     }
   },
   "0x7f38d60d94652072b2c44a18c0e14a481ec3c0dd": {
@@ -262,7 +280,8 @@
       "address": "0x0000000000085d4780b73119b644ae5ecd22b376",
       "name": "TrueUSD",
       "symbol": "TUSD",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0000000000085d4780B73119b644AE5ecd22b376/logo.png"
     }
   },
   "0xe4922afab0bbadd8ab2a88e0c79d884ad337fca6": {
@@ -276,7 +295,8 @@
       "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
       "name": "USD Coin",
       "symbol": "USDC",
-      "decimals": 6
+      "decimals": 6,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
     }
   },
   "0x9288059a74f589c919c7cf1db433251cdfeb874b": {
@@ -290,7 +310,8 @@
       "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
     }
   },
   "0xf8ac64ec6ff8e0028b37eb89772d21865321bce0": {
@@ -304,7 +325,8 @@
       "address": "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd",
       "name": "Gemini dollar",
       "symbol": "GUSD",
-      "decimals": 2
+      "decimals": 2,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo.png"
     }
   },
   "0xe569d31590307d05da3812964f1edd551d665a0b": {
@@ -318,7 +340,8 @@
       "address": "0xba100000625a3754423978a60c9317c58a424e3d",
       "name": "Balancer",
       "symbol": "BAL",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xba100000625a3754423978a60c9317c58a424e3D/logo.png"
     }
   },
   "0x73bfb81d7dba75c904f430ea8bae82db0d41187b": {
@@ -332,7 +355,8 @@
       "address": "0x8798249c2e607446efb7ad49ec89dd1865ff4272",
       "name": "SushiBar",
       "symbol": "xSUSHI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272/logo.png"
     }
   },
   "0xcaad05c49e14075077915cb5c820eb3245afb950": {
@@ -346,7 +370,8 @@
       "address": "0xd5147bc8e386d91cc5dbe72099dac6c9b99276f5",
       "name": "renFIL",
       "symbol": "renFIL",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD5147bc8e386d91Cc5DBE72099DAC6C9b99276F5/logo.png"
     }
   },
   "0x9c72b8476c33ae214ee3e8c20f0bc28496a62032": {
@@ -360,7 +385,8 @@
       "address": "0x03ab458634910aad20ef5f1c8ee96f1d6ac54919",
       "name": "Rai Reflex Index",
       "symbol": "RAI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/logo.png"
     }
   },
   "0x18152c9f77dadc737006e9430db913159645fa87": {
@@ -374,7 +400,8 @@
       "address": "0xd46ba6d942050d489dbd938a2c909a5d5039a161",
       "name": "Ampleforth",
       "symbol": "AMPL",
-      "decimals": 9
+      "decimals": 9,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD46bA6D942050d489DBd938a2C909A5d5039A161/logo.png"
     }
   },
   "0x2387119bc85a74e0bbcbe190d80676cb16f10d4f": {
@@ -388,7 +415,8 @@
       "address": "0x8e870d67f660d95d5be530380d0ec0bd388289e1",
       "name": "Pax Dollar",
       "symbol": "USDP",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
     }
   },
   "0xa3953f07f389d719f99fc378ebdb9276177d8a6e": {
@@ -402,7 +430,8 @@
       "address": "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
       "name": "DefiPulse Index",
       "symbol": "DPI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b/logo.png"
     }
   },
   "0x3916e3b6c84b161df1b2733dffc9569a1da710c2": {
@@ -416,7 +445,8 @@
       "address": "0x853d955acef822db058eb8505911ed77f175b99e",
       "name": "Frax",
       "symbol": "FRAX",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
     }
   },
   "0xd89cf9e8a858f8b4b31faf793505e112d6c17449": {
@@ -430,7 +460,8 @@
       "address": "0x956f47f50a910163d8bf957cf5846d573e7f87ca",
       "name": "Fei USD",
       "symbol": "FEI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x956F47F50A910163D8BF957Cf5846D573E7f87CA/logo.png"
     }
   },
   "0x66457616dd8489df5d0afd8678f4a260088aaf55": {
@@ -444,7 +475,8 @@
       "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
       "name": "Liquid staked Ether 2.0",
       "symbol": "stETH",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
     }
   },
   "0x34441ffd1948e49dc7a607882d0c38efd0083815": {
@@ -458,7 +490,8 @@
       "address": "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
       "name": "Ethereum Name Service",
       "symbol": "ENS",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72/logo.png"
     }
   },
   "0x7fdbfb0412700d94403c42ca3caeeea183f07b26": {
@@ -472,7 +505,8 @@
       "address": "0xa693b19d2931d498c5b318df961919bb4aee87a5",
       "name": "UST",
       "symbol": "UST",
-      "decimals": 6
+      "decimals": 6,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xa693B19d2931d498c5B318dF961919BB4aee87a5/logo.png"
     }
   },
   "0xb01eb1ce1da06179136d561766fc2d609c5f55eb": {
@@ -486,7 +520,8 @@
       "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
       "name": "Convex Token",
       "symbol": "CVX",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
     }
   },
   "0x1278d6ed804d59d2d18a5aa5638dfd591a79af0a": {
@@ -500,7 +535,8 @@
       "address": "0x111111111117dc0aa78b770fa6a738034120c302",
       "name": "1INCH Token",
       "symbol": "1INCH",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x111111111117dC0aa78b770fA6A738034120C302/logo.png"
     }
   }
 }

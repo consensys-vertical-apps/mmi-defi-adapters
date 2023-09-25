@@ -29,10 +29,11 @@ import {
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
 import { StargateVotingEscrow__factory } from '../../contracts'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 
 type StargateVestingMetadata = {
   contractToken: Erc20Metadata
-  underlyingToken: Erc20Metadata
+  underlyingToken: Erc20Metadata & { iconUrl: string }
 }
 
 export class StargateVestingAdapter
@@ -172,7 +173,10 @@ export class StargateVestingAdapter
 
     const metadataObject: StargateVestingMetadata = {
       contractToken,
-      underlyingToken,
+      underlyingToken: {
+        ...underlyingToken,
+        iconUrl: buildTrustAssetIconUrl(this.chainId, underlyingToken.address),
+      },
     }
 
     return metadataObject

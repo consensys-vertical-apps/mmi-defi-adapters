@@ -16,6 +16,7 @@ import {
   GetTotalValueLockedInput,
   IProtocolAdapter,
   MovementsByBlock,
+  PositionType,
   ProfitsTokensWithRange,
   ProtocolAdapterParams,
   ProtocolAprToken,
@@ -30,7 +31,6 @@ import {
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { aggregateTrades } from '../utils/aggregateTrades'
-import { calculateProfit } from '../utils/calculateProfit'
 import { getBalances } from '../utils/getBalances'
 import { Erc20Metadata } from '../utils/getTokenMetadata'
 import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
@@ -172,29 +172,80 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
             this.getDeposits(getEventsInput).then(aggregateTrades),
           ])
 
-          const profits = calculateProfit({
-            deposits,
-            withdrawals,
-            currentValues: underlyingTokenPositions,
-            previousVales:
-              previousValues[protocolTokenMetadata.address]
-                ?.underlyingTokenPositions ?? {},
-            positionType: this.getProtocolDetails().positionType,
-          })
-
           return {
             ...protocolTokenMetadata,
             type: TokenType.Protocol,
             tokens: Object.values(underlyingTokenPositions).map(
-              (underlyingToken) => {
-                const profitRaw = profits[underlyingToken.address]!
-                const profit = formatUnits(profitRaw, underlyingToken.decimals)
+              ({
+                address,
+                decimals,
+                balanceRaw: startPositionValueRaw,
+                ...underlyingMetadata
+              }) => {
+                const endPositionValueRaw =
+                  previousValues[protocolTokenMetadata.address]
+                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
+
+                const calculationData = {
+                  withdrawalsRaw: withdrawals[address] ?? 0n,
+                  withdrawals: formatUnits(
+                    withdrawals[address] ?? 0n,
+                    decimals,
+                  ),
+                  depositsRaw: deposits[address] ?? 0n,
+                  deposits: formatUnits(deposits[address] ?? 0n, decimals),
+                  startPositionValueRaw: startPositionValueRaw ?? 0n,
+                  startPositionValue: formatUnits(
+                    startPositionValueRaw ?? 0n,
+                    decimals,
+                  ),
+                  endPositionValueRaw,
+                  endPositionValue: formatUnits(
+                    endPositionValueRaw ?? 0n,
+                    decimals,
+                  ),
+                }
+
+                let profitRaw =
+                  calculationData.startPositionValueRaw +
+                  calculationData.withdrawalsRaw -
+                  calculationData.depositsRaw -
+                  calculationData.endPositionValueRaw
+
+                if (
+                  this.getProtocolDetails().positionType === PositionType.Borrow
+                ) {
+                  profitRaw *= -1n
+                }
+
+                const profit = formatUnits(profitRaw, decimals)
 
                 return {
-                  ...underlyingToken,
+                  ...underlyingMetadata,
+                  address,
+                  decimals,
                   profitRaw,
                   profit,
                   type: TokenType.Underlying,
+                  calculationData: {
+                    withdrawalsRaw: withdrawals[address] ?? 0n,
+                    withdrawals: formatUnits(
+                      withdrawals[address] ?? 0n,
+                      decimals,
+                    ),
+                    depositsRaw: deposits[address] ?? 0n,
+                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
+                    startPositionValueRaw: startPositionValueRaw ?? 0n,
+                    startPositionValue: formatUnits(
+                      startPositionValueRaw ?? 0n,
+                      decimals,
+                    ),
+                    endPositionValueRaw,
+                    endPositionValue: formatUnits(
+                      endPositionValueRaw ?? 0n,
+                      decimals,
+                    ),
+                  },
                 }
               },
             ),

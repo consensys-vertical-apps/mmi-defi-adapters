@@ -12,7 +12,6 @@ export type Erc20Metadata = {
   name: string
   symbol: string
   decimals: number
-  iconUrl?: string
 }
 
 const CHAIN_METADATA: Partial<
@@ -26,7 +25,7 @@ export async function getThinTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
 ) {
-  const { iconUrl: _, ...token } = await getTokenMetadata({
+  const token = await getTokenMetadata({
     tokenAddress,
     chainId,
   })

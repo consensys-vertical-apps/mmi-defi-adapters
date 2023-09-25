@@ -1,6 +1,6 @@
 import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
+import { Chain, ChainName } from '../../../../core/constants/chains'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -30,13 +30,14 @@ import {
   StargateFactory__factory,
   StargateToken__factory,
 } from '../../contracts'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 
 type StargatePoolMetadata = Record<
   string,
   {
     poolId: number
     protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
+    underlyingToken: Erc20Metadata & { iconUrl: string }
   }
 >
 
@@ -122,7 +123,13 @@ export class StargatePoolAdapter
       metadataObject[poolAddress] = {
         poolId,
         protocolToken,
-        underlyingToken,
+        underlyingToken: {
+          ...underlyingToken,
+          iconUrl: buildTrustAssetIconUrl(
+            this.chainId,
+            underlyingToken.address,
+          ),
+        },
       }
     }
 
