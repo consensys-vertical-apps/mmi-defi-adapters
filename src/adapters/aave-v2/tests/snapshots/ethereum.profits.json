@@ -19,15 +19,24 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
               "name": "Maker",
               "symbol": "MKR",
-              "decimals": 18,
-              "balanceRaw": "10019229339844049763n",
               "balance": "10.019229339844049763",
               "type": "underlying",
+              "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+              "decimals": 18,
               "profitRaw": "7186772652009n",
-              "profit": "0.000007186772652009"
+              "profit": "0.000007186772652009",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "10019229339844049763n",
+                "startPositionValue": "10.019229339844049763",
+                "endPositionValueRaw": "10019222153071397754n",
+                "endPositionValue": "10.019222153071397754"
+              }
             }
           ]
         },
@@ -39,15 +48,24 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
               "name": "ChainLink Token",
               "symbol": "LINK",
-              "decimals": 18,
-              "balanceRaw": "18121685158743570658769n",
               "balance": "18121.685158743570658769",
               "type": "underlying",
+              "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+              "decimals": 18,
               "profitRaw": "188554794925199188n",
-              "profit": "0.188554794925199188"
+              "profit": "0.188554794925199188",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "18121685158743570658769n",
+                "startPositionValue": "18121.685158743570658769",
+                "endPositionValueRaw": "18121496603948645459581n",
+                "endPositionValue": "18121.496603948645459581"
+              }
             }
           ]
         },
@@ -59,15 +77,24 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
               "name": "Uniswap",
               "symbol": "UNI",
-              "decimals": 18,
-              "balanceRaw": "22041922521807358255464n",
               "balance": "22041.922521807358255464",
               "type": "underlying",
+              "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+              "decimals": 18,
               "profitRaw": "212198186777522n",
-              "profit": "0.000212198186777522"
+              "profit": "0.000212198186777522",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "22041922521807358255464n",
+                "startPositionValue": "22041.922521807358255464",
+                "endPositionValueRaw": "22041922309609171477942n",
+                "endPositionValue": "22041.922309609171477942"
+              }
             }
           ]
         },
@@ -79,15 +106,24 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
               "name": "Wrapped Ether",
               "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "812596572491727080972n",
               "balance": "812.596572491727080972",
               "type": "underlying",
+              "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+              "decimals": 18,
               "profitRaw": "29562354894247369n",
-              "profit": "0.029562354894247369"
+              "profit": "0.029562354894247369",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "812596572491727080972n",
+                "startPositionValue": "812.596572491727080972",
+                "endPositionValueRaw": "812567010136832833603n",
+                "endPositionValue": "812.567010136832833603"
+              }
             }
           ]
         },
@@ -99,15 +135,24 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
-              "decimals": 8,
-              "balanceRaw": "38951892054n",
               "balance": "389.51892054",
               "type": "underlying",
+              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+              "decimals": 8,
               "profitRaw": "189241n",
-              "profit": "0.00189241"
+              "profit": "0.00189241",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "38951892054n",
+                "startPositionValue": "389.51892054",
+                "endPositionValueRaw": "38951702813n",
+                "endPositionValue": "389.51702813"
+              }
             }
           ]
         }
@@ -146,15 +191,24 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
               "name": "USD Coin",
               "symbol": "USDC",
-              "decimals": 6,
-              "balanceRaw": "3012871992483n",
               "balance": "3012871.992483",
               "type": "underlying",
+              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+              "decimals": 6,
               "profitRaw": "-325487807n",
-              "profit": "-325.487807"
+              "profit": "-325.487807",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "3012871992483n",
+                "startPositionValue": "3012871.992483",
+                "endPositionValueRaw": "3012546504676n",
+                "endPositionValue": "3012546.504676"
+              }
             }
           ]
         },
@@ -166,15 +220,24 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
-              "decimals": 18,
-              "balanceRaw": "366385813220365993540948n",
               "balance": "366385.813220365993540948",
               "type": "underlying",
+              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+              "decimals": 18,
               "profitRaw": "-46743793676617492896n",
-              "profit": "-46.743793676617492896"
+              "profit": "-46.743793676617492896",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "366385813220365993540948n",
+                "startPositionValue": "366385.813220365993540948",
+                "endPositionValueRaw": "366339069426689376048052n",
+                "endPositionValue": "366339.069426689376048052"
+              }
             }
           ]
         },
@@ -186,15 +249,24 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
-              "decimals": 8,
-              "balanceRaw": "300026251n",
               "balance": "3.00026251",
               "type": "underlying",
+              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+              "decimals": 8,
               "profitRaw": "-8667n",
-              "profit": "-0.00008667"
+              "profit": "-0.00008667",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "300026251n",
+                "startPositionValue": "3.00026251",
+                "endPositionValueRaw": "300017584n",
+                "endPositionValue": "3.00017584"
+              }
             }
           ]
         },
@@ -206,15 +278,24 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
               "name": "Tether USD",
               "symbol": "USDT",
-              "decimals": 6,
-              "balanceRaw": "5306571196169n",
               "balance": "5306571.196169",
               "type": "underlying",
+              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "decimals": 6,
               "profitRaw": "-718134686n",
-              "profit": "-718.134686"
+              "profit": "-718.134686",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "35000000000n",
+                "deposits": "35000.0",
+                "startPositionValueRaw": "5306571196169n",
+                "startPositionValue": "5306571.196169",
+                "endPositionValueRaw": "5270853061483n",
+                "endPositionValue": "5270853.061483"
+              }
             }
           ]
         }

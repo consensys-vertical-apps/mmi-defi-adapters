@@ -27,7 +27,8 @@
               "symbol": "FRAX",
               "decimals": 18,
               "profitRaw": "100n",
-              "profit": "100"
+              "profit": "100",
+              "calculationData": {}
             },
             {
               "type": "claimable",
@@ -36,7 +37,8 @@
               "symbol": "FRAX",
               "decimals": 18,
               "profitRaw": "100n",
-              "profit": "100"
+              "profit": "100",
+              "calculationData": {}
             }
           ]
         }

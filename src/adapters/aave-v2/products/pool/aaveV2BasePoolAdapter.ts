@@ -25,12 +25,13 @@ import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../../contracts'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 
 type AaveV2PoolMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
+    underlyingToken: Erc20Metadata & { iconUrl: string }
   }
 >
 
@@ -103,7 +104,13 @@ export abstract class AaveV2BasePoolAdapter
         )
         tokenMetadataObject[protocolTokenMetadata.address] = {
           protocolToken: protocolTokenMetadata,
-          underlyingToken: underlyingTokenMetadata,
+          underlyingToken: {
+            ...underlyingTokenMetadata,
+            iconUrl: buildTrustAssetIconUrl(
+              this.chainId,
+              underlyingTokenMetadata.address,
+            ),
+          },
         }
       }
 
@@ -146,6 +153,7 @@ export abstract class AaveV2BasePoolAdapter
       balanceRaw: protocolTokenBalance.balanceRaw,
       balance: protocolTokenBalance.balance,
       type: TokenType.Underlying,
+      iconUrl: underlyingToken.iconUrl,
     }
 
     return [underlyingTokenBalance]

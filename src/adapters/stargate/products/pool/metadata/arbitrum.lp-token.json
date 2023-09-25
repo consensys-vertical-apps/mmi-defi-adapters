@@ -11,7 +11,8 @@
       "address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
       "name": "USD Coin (Arb1)",
       "symbol": "USDC.E",
-      "decimals": 6
+      "decimals": 6,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
     }
   },
   "0xb6cfcf89a7b22988bfc96632ac2a9d6dab60d641": {
@@ -26,7 +27,8 @@
       "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
       "name": "Tether USD",
       "symbol": "USDT",
-      "decimals": 6
+      "decimals": 6,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
     }
   },
   "0x915a55e36a01285a14f05de6e81ed9ce89772f8e": {
@@ -41,7 +43,8 @@
       "address": "0x82cbecf39bee528b5476fe6d1550af59a9db6fc0",
       "name": "Stargate Ether Vault",
       "symbol": "SGETH",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82CbeCF39bEe528B5476FE6d1550af59a9dB6Fc0/logo.png"
     }
   },
   "0xaa4bf442f024820b2c28cd0fd72b82c63e66f56c": {
@@ -56,7 +59,8 @@
       "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
       "name": "Frax",
       "symbol": "FRAX",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
     }
   },
   "0xf39b7be294cb36de8c510e267b82bb588705d977": {
@@ -71,7 +75,8 @@
       "address": "0x3f56e0c36d275367b8c502090edf38289b3dea0d",
       "name": "Mai Stablecoin",
       "symbol": "MAI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x3F56e0c36d275367b8C502090EDF38289b3dEa0d/logo.png"
     }
   },
   "0x600e576f9d853c95d58029093a16ee49646f3ca5": {
@@ -86,7 +91,8 @@
       "address": "0x93b346b6bc2548da6a1e7d98e9a421b42541425b",
       "name": "Liquity USD",
       "symbol": "LUSD",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x93b346b6BC2548dA6A1E7d98E9a421B42541425b/logo.png"
     }
   },
   "0x1ae7ca4092c0027bbbb1ce99934528acf6e7074b": {
@@ -101,7 +107,8 @@
       "address": "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b",
       "name": "Wootrade Network",
       "symbol": "WOO",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xcAFcD85D8ca7Ad1e1C6F82F651fA15E33AEfD07b/logo.png"
     }
   }
 }

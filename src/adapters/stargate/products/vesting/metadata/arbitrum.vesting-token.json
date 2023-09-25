@@ -9,6 +9,7 @@
     "address": "0x6694340fc020c5e6b96567843da2df01b2ce1eb6",
     "name": "StargateToken",
     "symbol": "STG",
-    "decimals": 18
+    "decimals": 18,
+    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6694340fc020c5E6B96567843da2df01b2CE1eb6/logo.png"
   }
 }

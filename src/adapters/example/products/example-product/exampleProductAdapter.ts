@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
 import {
+  CalculationData,
   GetAprInput,
   GetApyInput,
   GetEventsInput,
@@ -133,6 +134,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
               decimals: 18,
               profitRaw: 100n,
               profit: '100',
+              calculationData: {} as CalculationData,
             },
             {
               type: TokenType.Claimable,
@@ -142,6 +144,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
               decimals: 18,
               profitRaw: 100n,
               profit: '100',
+              calculationData: {} as CalculationData,
             },
           ],
         },
@@ -154,7 +157,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   ): Promise<ProtocolPricePerShareToken> {
     return {
       name: 'Tether USD-LP',
-      iconUrl: '',
+
       decimals: 6,
       symbol: 'S*USDT',
       address: '0xprotocolTokenAddress',
@@ -193,6 +196,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
             decimals: 6,
             balanceRaw: 31492408006n,
             balance: '31492.408006',
+            iconUrl: '',
             type: 'underlying',
           },
           {
@@ -208,6 +212,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
                 address: '0xunderlyingRewardTokenAddress',
                 name: 'USD Coin',
                 symbol: 'USDC',
+                iconUrl: '',
                 decimals: 6,
                 balanceRaw: 31492408006n,
                 balance: '31492.408006',

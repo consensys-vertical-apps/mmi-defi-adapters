@@ -10,7 +10,8 @@
       "address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
       "name": "(PoS) Dai Stablecoin",
       "symbol": "DAI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063/logo.png"
     }
   },
   "0xdeb05676db0db85cecafe8933c903466bf20c572": {
@@ -24,7 +25,8 @@
       "address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
       "name": "USD Coin (PoS)",
       "symbol": "USDC",
-      "decimals": 6
+      "decimals": 6,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174/logo.png"
     }
   },
   "0xe590cfca10e81fed9b0e4496381f02256f5d2f61": {
@@ -38,7 +40,8 @@
       "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
       "name": "(PoS) Tether USD",
       "symbol": "USDT",
-      "decimals": 6
+      "decimals": 6,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0xc2132D05D31c914a87C6611C10748AEb04B58e8F/logo.png"
     }
   },
   "0x2551b15db740db8348bfadfe06830210ec2c2f13": {
@@ -52,7 +55,8 @@
       "address": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
       "name": "(PoS) Wrapped BTC",
       "symbol": "WBTC",
-      "decimals": 8
+      "decimals": 8,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6/logo.png"
     }
   },
   "0xc478cbbeb590c76b01ce658f8c4dda04f30e2c6f": {
@@ -66,7 +70,8 @@
       "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
       "name": "Wrapped Ether",
       "symbol": "WETH",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619/logo.png"
     }
   },
   "0xb9a6e29fb540c5f1243ef643eb39b0acbc2e68e3": {
@@ -80,7 +85,8 @@
       "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
       "name": "Wrapped Matic",
       "symbol": "WMATIC",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png"
     }
   },
   "0x17912140e780b29ba01381f088f21e8d75f954f9": {
@@ -94,7 +100,8 @@
       "address": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
       "name": "Aave (PoS)",
       "symbol": "AAVE",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0xD6DF932A45C0f255f85145f286eA0b292B21C90B/logo.png"
     }
   },
   "0x6a01db46ae51b19a6b85be38f1aa102d8735d05b": {
@@ -108,7 +115,8 @@
       "address": "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
       "name": "Aavegotchi GHST Token (PoS)",
       "symbol": "GHST",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x385Eeac5cB85A38A9a07A70c73e0a3271CfB54A7/logo.png"
     }
   },
   "0xbc30bbe0472e0e86b6f395f9876b950a13b23923": {
@@ -122,7 +130,8 @@
       "address": "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
       "name": "Balancer (PoS)",
       "symbol": "BAL",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3/logo.png"
     }
   },
   "0xa742710c0244a8ebcf533368e3f0b956b6e53f7b": {
@@ -136,7 +145,8 @@
       "address": "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
       "name": "DefiPulse Index (PoS)",
       "symbol": "DPI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369/logo.png"
     }
   },
   "0x807c97744e6c9452e7c2914d78f49d171a9974a0": {
@@ -150,7 +160,8 @@
       "address": "0x172370d5cd63279efa6d502dab29171933a610af",
       "name": "CRV (PoS)",
       "symbol": "CRV",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x172370d5Cd63279eFa6d502DAB29171933a610AF/logo.png"
     }
   },
   "0x7ed588dcb30ea11a54d8a5e9645960262a97cd54": {
@@ -164,7 +175,8 @@
       "address": "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
       "name": "SushiToken (PoS)",
       "symbol": "SUSHI",
-      "decimals": 18
+      "decimals": 18,
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a/logo.png"
     }
   }
 }
