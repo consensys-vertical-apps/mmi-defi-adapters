@@ -14,7 +14,6 @@ import {
   GetPricesInput,
   GetProfitsInput,
   GetTotalValueLockedInput,
-  IProtocolAdapter,
   MovementsByBlock,
   PositionType,
   ProfitsTokensWithRange,
@@ -28,6 +27,7 @@ import {
   TokenBalance,
   TokenType,
 } from '../../types/adapter'
+import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { aggregateTrades } from '../utils/aggregateTrades'

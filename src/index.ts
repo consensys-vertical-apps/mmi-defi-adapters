@@ -5,7 +5,8 @@ import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { chainProviders } from './core/utils/chainProviders'
-import { IProtocolAdapter, PositionType } from './types/adapter'
+import { PositionType } from './types/adapter'
+import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
   APYResponse,

@@ -162,25 +162,6 @@ export type CalculationData = {
   endPositionValue: string
 }
 
-export interface IProtocolAdapter {
-  protocolId: Protocol
-  chainId: Chain
-
-  getProtocolDetails(): ProtocolDetails
-  getProtocolTokens(): Promise<Erc20Metadata[]>
-  getPositions(input: GetPositionsInput): Promise<ProtocolToken[]>
-  getPricePerShare(input: GetPricesInput): Promise<ProtocolPricePerShareToken>
-  getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]>
-  getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]>
-  getClaimedRewards(input: GetEventsInput): Promise<MovementsByBlock[]>
-  getTotalValueLocked(
-    input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]>
-  getProfits(input: GetProfitsInput): Promise<ProfitsTokensWithRange>
-  getApy(input: GetApyInput): Promise<ProtocolApyToken>
-  getApr(input: GetAprInput): Promise<ProtocolAprToken>
-}
-
 export type ProtocolAdapterParams = {
   provider: ethers.JsonRpcProvider
   chainId: Chain

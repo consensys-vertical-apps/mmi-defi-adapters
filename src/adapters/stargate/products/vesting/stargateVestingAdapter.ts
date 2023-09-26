@@ -15,7 +15,6 @@ import {
   GetApyInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
-  IProtocolAdapter,
   MovementsByBlock,
   PositionType,
   ProfitsTokensWithRange,
@@ -28,6 +27,7 @@ import {
   ProtocolTotalValueLockedToken,
   TokenType,
 } from '../../../../types/adapter'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { StargateVotingEscrow__factory } from '../../contracts'
 

@@ -10,7 +10,6 @@ import {
   GetPricesInput,
   GetProfitsInput,
   GetTotalValueLockedInput,
-  IProtocolAdapter,
   MovementsByBlock,
   PositionType,
   ProfitsTokensWithRange,
@@ -23,6 +22,7 @@ import {
   ProtocolTotalValueLockedToken,
   TokenType,
 } from '../../../../types/adapter'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 
 export class ExampleProductAdapter implements IProtocolAdapter {

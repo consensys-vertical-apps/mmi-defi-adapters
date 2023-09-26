@@ -1,3 +1,5 @@
+@metamask-institutional/defi-adapters / [Exports](modules.md)
+
 <p align="center">
   <img src="https://images.ctfassets.net/9sy2a0egs6zh/2XUXAYxxFFVjPlZABUoiLg/d0ff82237d3e5d9bd1097a98e0754453/MMI-icon.svg" width="500">
 </p>
