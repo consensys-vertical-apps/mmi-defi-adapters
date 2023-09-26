@@ -2,7 +2,7 @@
 
 ## Properties
 
-### <a id="protocolid" name="protocolid"></a> protocolId
+### protocolId
 
 • **protocolId**: `Protocol`
 
@@ -10,11 +10,11 @@ Unique identifier of the protocol
 
 #### Defined in
 
-[IProtocolAdapter.ts:26](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L26)
+[IProtocolAdapter.ts:26](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L26)
 
 ___
 
-### <a id="chainid" name="chainid"></a> chainId
+### chainId
 
 • **chainId**: `Chain`
 
@@ -22,11 +22,11 @@ Unique identifier of the blockchain network
 
 #### Defined in
 
-[IProtocolAdapter.ts:31](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L31)
+[IProtocolAdapter.ts:31](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L31)
 
 ## Methods
 
-### <a id="getprotocoldetails" name="getprotocoldetails"></a> getProtocolDetails
+### getProtocolDetails
 
 ▸ **getProtocolDetails**(): `ProtocolDetails`
 
@@ -41,11 +41,11 @@ An object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:38](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L38)
+[IProtocolAdapter.ts:38](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L38)
 
 ___
 
-### <a id="getprotocoltokens" name="getprotocoltokens"></a> getProtocolTokens
+### getProtocolTokens
 
 ▸ **getProtocolTokens**(): `Promise`<`Erc20Metadata`[]\>
 
@@ -60,11 +60,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:45](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L45)
+[IProtocolAdapter.ts:45](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L45)
 
 ___
 
-### <a id="getpositions" name="getpositions"></a> getPositions
+### getPositions
 
 ▸ **getPositions**(`input`): `Promise`<`ProtocolToken`[]\>
 
@@ -85,11 +85,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:53](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L53)
+[IProtocolAdapter.ts:53](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L53)
 
 ___
 
-### <a id="getpricepershare" name="getpricepershare"></a> getPricePerShare
+### getPricePerShare
 
 ▸ **getPricePerShare**(`input`): `Promise`<`ProtocolPricePerShareToken`\>
 
@@ -110,11 +110,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:61](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L61)
+[IProtocolAdapter.ts:61](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L61)
 
 ___
 
-### <a id="getwithdrawals" name="getwithdrawals"></a> getWithdrawals
+### getWithdrawals
 
 ▸ **getWithdrawals**(`input`): `Promise`<`MovementsByBlock`[]\>
 
@@ -137,11 +137,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:71](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L71)
+[IProtocolAdapter.ts:71](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L71)
 
 ___
 
-### <a id="getdeposits" name="getdeposits"></a> getDeposits
+### getDeposits
 
 ▸ **getDeposits**(`input`): `Promise`<`MovementsByBlock`[]\>
 
@@ -164,11 +164,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:81](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L81)
+[IProtocolAdapter.ts:81](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L81)
 
 ___
 
-### <a id="getclaimedrewards" name="getclaimedrewards"></a> getClaimedRewards
+### getClaimedRewards
 
 ▸ **getClaimedRewards**(`input`): `Promise`<`MovementsByBlock`[]\>
 
@@ -191,11 +191,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:91](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L91)
+[IProtocolAdapter.ts:91](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L91)
 
 ___
 
-### <a id="gettotalvaluelocked" name="gettotalvaluelocked"></a> getTotalValueLocked
+### getTotalValueLocked
 
 ▸ **getTotalValueLocked**(`input`): `Promise`<`ProtocolTotalValueLockedToken`[]\>
 
@@ -216,11 +216,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:99](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L99)
+[IProtocolAdapter.ts:99](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L99)
 
 ___
 
-### <a id="getprofits" name="getprofits"></a> getProfits
+### getProfits
 
 ▸ **getProfits**(`input`): `Promise`<`ProfitsTokensWithRange`\>
 
@@ -249,11 +249,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:122](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L122)
+[IProtocolAdapter.ts:122](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L122)
 
 ___
 
-### <a id="getapy" name="getapy"></a> getApy
+### getApy
 
 ▸ **getApy**(`input`): `Promise`<`ProtocolApyToken`\>
 
@@ -274,11 +274,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:130](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L130)
+[IProtocolAdapter.ts:130](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L130)
 
 ___
 
-### <a id="getrewardapy" name="getrewardapy"></a> getRewardApy
+### getRewardApy
 
 ▸ `Optional` **getRewardApy**(`input`): `Promise`<`ProtocolApyToken`\>
 
@@ -299,11 +299,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:138](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L138)
+[IProtocolAdapter.ts:138](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L138)
 
 ___
 
-### <a id="getapr" name="getapr"></a> getApr
+### getApr
 
 ▸ **getApr**(`input`): `Promise`<`ProtocolAprToken`\>
 
@@ -324,11 +324,11 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:146](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L146)
+[IProtocolAdapter.ts:146](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L146)
 
 ___
 
-### <a id="getrewardapr" name="getrewardapr"></a> getRewardApr
+### getRewardApr
 
 ▸ `Optional` **getRewardApr**(`input`): `Promise`<`ProtocolAprToken`\>
 
@@ -349,4 +349,4 @@ A promise that resolves with an object containing:
 
 #### Defined in
 
-[IProtocolAdapter.ts:154](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/c011d0e/src/types/IProtocolAdapter.ts#L154)
+[IProtocolAdapter.ts:154](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/2d07a12/src/types/IProtocolAdapter.ts#L154)
