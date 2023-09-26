@@ -43,7 +43,7 @@
     "test": "jest",
     "test:cov": "jest src --ci --coverage",
     "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package",
-    "build:docs": "typedoc --plugin typedoc-plugin-markdown --theme markdown --out ./docs --sort source-order src/types/IProtocolAdapter.ts"
+    "build:docs": "typedoc --plugin typedoc-plugin-markdown --theme markdown --hideBreadcrumbs true --hideInPageTOC true --namedAnchors true --out ./docs --sort source-order src/types/IProtocolAdapter.ts"
   },
   "devDependencies": {
     "@typechain/ethers-v6": "^0.5.0",
