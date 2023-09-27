@@ -7,7 +7,6 @@ import {
 } from '../../../../core/decorators/cacheToFile'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
   GetAprInput,
   GetApyInput,
@@ -27,6 +26,7 @@ import {
   ProtocolRewardPosition,
   GetClaimableRewardsInput,
 } from '../../../../types/adapter'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/iProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { StargateVotingEscrow__factory } from '../../contracts'

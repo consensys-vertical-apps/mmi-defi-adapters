@@ -7,7 +7,6 @@ import {
 } from '../../../../core/decorators/cacheToFile'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   UnderlyingTokenRate,
@@ -27,6 +26,7 @@ import {
   GetClaimableRewardsInput,
   ProtocolRewardPosition,
 } from '../../../../types/adapter'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
   StargateFactory__factory,
   StargateToken__factory,

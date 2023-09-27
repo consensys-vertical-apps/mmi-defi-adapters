@@ -1,6 +1,5 @@
 import { ethers } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
   CalculationData,
   GetAprInput,
@@ -23,6 +22,7 @@ import {
   TokenType,
   ProtocolRewardPosition,
 } from '../../../../types/adapter'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/iProtocolAdapter'
 import { Protocol } from '../../../protocols'
 

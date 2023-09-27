@@ -29,27 +29,6 @@
               "balance": "31492.408006",
               "iconUrl": "",
               "type": "underlying"
-            },
-            {
-              "address": "0xrewardContractAddress",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "balanceRaw": "31492408006n",
-              "balance": "31492.408006",
-              "type": "claimable",
-              "tokens": [
-                {
-                  "address": "0xunderlyingRewardTokenAddress",
-                  "name": "USD Coin",
-                  "symbol": "USDC",
-                  "iconUrl": "",
-                  "decimals": 6,
-                  "balanceRaw": "31492408006n",
-                  "balance": "31492.408006",
-                  "type": "underlying"
-                }
-              ]
             }
           ]
         }

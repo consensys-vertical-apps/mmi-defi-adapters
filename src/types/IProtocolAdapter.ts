@@ -1,6 +1,5 @@
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
-import { Erc20Metadata } from './erc20Metadata'
 import {
   ProtocolDetails,
   GetPositionsInput,
@@ -20,6 +19,7 @@ import {
   GetClaimableRewardsInput,
   ProtocolRewardPosition,
 } from './adapter'
+import { Erc20Metadata } from './erc20Metadata'
 
 export interface IProtocolAdapter {
   /**

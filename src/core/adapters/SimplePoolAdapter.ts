@@ -28,12 +28,12 @@ import {
   TokenType,
   ProtocolRewardPosition,
 } from '../../types/adapter'
+import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/iProtocolAdapter'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { aggregateTrades } from '../utils/aggregateTrades'
 import { getBalances } from '../utils/getBalances'
-import { Erc20Metadata } from '../../types/erc20Metadata'
 import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {

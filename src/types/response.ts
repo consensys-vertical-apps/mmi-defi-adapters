@@ -1,4 +1,3 @@
-import { Erc20Metadata } from './erc20Metadata'
 import {
   MovementsByBlock,
   ProfitsWithRange,
@@ -9,6 +8,7 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
 } from './adapter'
+import { Erc20Metadata } from './erc20Metadata'
 
 export type AdapterErrorResponse = {
   error: {

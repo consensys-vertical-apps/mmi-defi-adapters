@@ -1,12 +1,12 @@
 import { ethers, isError } from 'ethers'
 import { Erc20, Erc20__factory } from '../../contracts'
+import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
 import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
 import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
 import { chainProviders } from './chainProviders'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
-import { Erc20Metadata } from '../../types/erc20Metadata'
 
 const CHAIN_METADATA: Partial<
   Record<Chain, Record<string, Erc20Metadata | undefined>>
