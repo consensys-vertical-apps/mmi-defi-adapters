@@ -25,15 +25,19 @@ This library is designed to simplify and standardize the process of fetching and
 
 Detailed documentation on the adapter methods can be found [here](./docs/interfaces/iProtocolAdapter.IProtocolAdapter.md).
 
+## Portfolio dashboard
+
+The DeFi adapter library is the engine behind MetaMask's retail and institutional portfolio dashboards 🦊.
+
+In this example, the user holds positions in both Stargate and Uniswap.
+
+![Alt text](dashboard.png)
+
 ## Overview of this library
 
 From left to right, get-onchain-data and convert to standardize format.
 
 ![Alt text](high-level.png)
-
-## Overview of getPositions function
-
-![Alt text](get-positions.png)
 
 ## Getting Started 🏁
 
