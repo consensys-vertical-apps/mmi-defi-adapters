@@ -1,13 +1,13 @@
-import { Erc20Metadata } from '../core/utils/getTokenMetadata'
+import { Erc20Metadata } from './erc20Metadata'
 import {
   MovementsByBlock,
-  ProfitsTokensWithRange,
-  ProtocolAprToken,
-  ProtocolApyToken,
+  ProfitsWithRange,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
   ProtocolDetails,
-  ProtocolPricePerShareToken,
-  ProtocolToken,
-  ProtocolTotalValueLockedToken,
+  ProtocolTokenUnderlyingRate,
+  ProtocolPosition,
+  ProtocolTokenTvl,
 } from './adapter'
 
 export type AdapterErrorResponse = {
@@ -24,26 +24,26 @@ export type AdapterResponse<ProtocolResponse> = ProtocolDetails &
   )
 
 export type DefiPositionResponse = AdapterResponse<{
-  tokens: ProtocolToken[]
+  tokens: ProtocolPosition[]
 }>
 
 export type PricePerShareResponse = AdapterResponse<{
-  tokens: ProtocolPricePerShareToken[]
+  tokens: ProtocolTokenUnderlyingRate[]
 }>
 
 export type APRResponse = AdapterResponse<{
-  tokens: ProtocolAprToken[]
+  tokens: ProtocolTokenApr[]
 }>
 
 export type APYResponse = AdapterResponse<{
-  tokens: ProtocolApyToken[]
+  tokens: ProtocolTokenApy[]
 }>
 
 export type TotalValueLockResponse = AdapterResponse<{
-  tokens: ProtocolTotalValueLockedToken[]
+  tokens: ProtocolTokenTvl[]
 }>
 
-export type DefiProfitsResponse = AdapterResponse<ProfitsTokensWithRange>
+export type DefiProfitsResponse = AdapterResponse<ProfitsWithRange>
 
 export type DefiMovementsResponse = AdapterResponse<{
   movements: {

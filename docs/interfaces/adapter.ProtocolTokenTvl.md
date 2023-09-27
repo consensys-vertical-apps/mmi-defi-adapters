@@ -1,0 +1,132 @@
+[@metamask-institutional/defi-adapters](../README.md) / [adapter](../modules/adapter.md) / ProtocolTokenTvl
+
+# Interface: ProtocolTokenTvl
+
+[adapter](../modules/adapter.md).ProtocolTokenTvl
+
+## Hierarchy
+
+- [`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata)
+
+  ↳ **`ProtocolTokenTvl`**
+
+## Table of contents
+
+### Properties
+
+- [totalSupplyRaw](adapter.ProtocolTokenTvl.md#totalsupplyraw)
+- [totalSupply](adapter.ProtocolTokenTvl.md#totalsupply)
+- [type](adapter.ProtocolTokenTvl.md#type)
+- [tokens](adapter.ProtocolTokenTvl.md#tokens)
+- [address](adapter.ProtocolTokenTvl.md#address)
+- [name](adapter.ProtocolTokenTvl.md#name)
+- [symbol](adapter.ProtocolTokenTvl.md#symbol)
+- [decimals](adapter.ProtocolTokenTvl.md#decimals)
+
+## Properties
+
+### totalSupplyRaw
+
+• **totalSupplyRaw**: `bigint`
+
+Total underlying token locked in pool raw
+
+#### Defined in
+
+[adapter.ts:304](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L304)
+
+___
+
+### totalSupply
+
+• **totalSupply**: `string`
+
+Total underlying token locked in pool
+
+#### Defined in
+
+[adapter.ts:308](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L308)
+
+___
+
+### type
+
+• **type**: ``"protocol"``
+
+#### Defined in
+
+[adapter.ts:309](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L309)
+
+___
+
+### tokens
+
+• `Optional` **tokens**: [`UnderlyingTokenTvl`](adapter.UnderlyingTokenTvl.md)[]
+
+#### Defined in
+
+[adapter.ts:310](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L310)
+
+___
+
+### address
+
+• **address**: `string`
+
+Token address
+
+#### Inherited from
+
+Erc20Metadata.address
+
+#### Defined in
+
+erc20Metadata.ts:5
+
+___
+
+### name
+
+• **name**: `string`
+
+Name of token
+
+#### Inherited from
+
+Erc20Metadata.name
+
+#### Defined in
+
+erc20Metadata.ts:10
+
+___
+
+### symbol
+
+• **symbol**: `string`
+
+Token symbol
+
+#### Inherited from
+
+Erc20Metadata.symbol
+
+#### Defined in
+
+erc20Metadata.ts:15
+
+___
+
+### decimals
+
+• **decimals**: `number`
+
+Token decimals
+
+#### Inherited from
+
+Erc20Metadata.decimals
+
+#### Defined in
+
+erc20Metadata.ts:20

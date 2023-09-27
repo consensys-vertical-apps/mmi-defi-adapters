@@ -6,26 +6,26 @@ import {
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import {
-  Erc20Metadata,
-  getThinTokenMetadata,
-} from '../../../../core/utils/getTokenMetadata'
+import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { logger } from '../../../../core/utils/logger'
 import {
-  BasePricePerShareToken,
-  BaseToken,
+  UnderlyingTokenRate,
+  Underlying,
   GetAprInput,
   GetApyInput,
   GetEventsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
-  ProtocolAprToken,
-  ProtocolApyToken,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
   ProtocolDetails,
-  ProtocolTotalValueLockedToken,
+  ProtocolTokenTvl,
   TokenBalance,
   TokenType,
+  GetClaimableRewardsInput,
+  ProtocolRewardPosition,
 } from '../../../../types/adapter'
 import {
   StargateFactory__factory,
@@ -72,15 +72,28 @@ export class StargatePoolAdapter
 
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]> {
+  ): Promise<ProtocolTokenTvl[]> {
     throw new Error('Not Implemented')
   }
 
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new Error('Not Implemented')
   }
 
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new Error('Not Implemented')
+  }
+  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new Error('Not Implemented')
+  }
+
+  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new Error('Not Implemented')
+  }
+
+  async getClaimableRewards(
+    _input: GetClaimableRewardsInput,
+  ): Promise<ProtocolRewardPosition[]> {
     throw new Error('Not Implemented')
   }
 
@@ -157,7 +170,7 @@ export class StargatePoolAdapter
   protected async getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
     blockNumber?: number,
-  ): Promise<BaseToken[]> {
+  ): Promise<Underlying[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenBalance.address,
     )
@@ -184,7 +197,7 @@ export class StargatePoolAdapter
   protected async getUnderlyingTokenPricesPerShare(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<BasePricePerShareToken[]> {
+  ): Promise<UnderlyingTokenRate[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )
@@ -207,8 +220,8 @@ export class StargatePoolAdapter
       {
         ...underlyingToken,
         type: TokenType.Underlying,
-        pricePerShareRaw,
-        pricePerShare,
+        underlyingRateRaw: pricePerShareRaw,
+        underlyingRate: pricePerShare,
       },
     ]
   }

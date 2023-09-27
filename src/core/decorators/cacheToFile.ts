@@ -1,4 +1,4 @@
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { IProtocolAdapter } from '../../types/iProtocolAdapter'
 import { Json } from '../../types/json'
 import { MetadataFiles, metadataKey } from '../metadata/AdapterMetadata'
 import { logger } from '../utils/logger'

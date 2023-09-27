@@ -6,13 +6,7 @@ import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
 import { chainProviders } from './chainProviders'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
-
-export type Erc20Metadata = {
-  address: string
-  name: string
-  symbol: string
-  decimals: number
-}
+import { Erc20Metadata } from '../../types/erc20Metadata'
 
 const CHAIN_METADATA: Partial<
   Record<Chain, Record<string, Erc20Metadata | undefined>>

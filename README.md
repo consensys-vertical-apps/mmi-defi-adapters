@@ -23,7 +23,7 @@ This library is designed to simplify and standardize the process of fetching and
 
 ## Documentation 📖
 
-Detailed documentation for the interfaces and functions can be found [here](./docs/interfaces/IProtocolAdapter.md).
+Detailed documentation on the adapter methods can be found [here](./docs/interfaces/iProtocolAdapter.IProtocolAdapter.md).
 
 ## Overview of this library
 

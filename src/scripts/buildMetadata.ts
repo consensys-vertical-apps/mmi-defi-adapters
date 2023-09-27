@@ -11,7 +11,7 @@ import { pascalCase } from '../core/utils/caseConversion'
 import { chainProviders } from '../core/utils/chainProviders'
 import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
-import { IProtocolAdapter } from '../types/IProtocolAdapter'
+import { IProtocolAdapter } from '../types/iProtocolAdapter'
 import { Json } from '../types/json'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes

@@ -1,155 +1,162 @@
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
-import { Erc20Metadata } from '../core/utils/getTokenMetadata'
+import { Erc20Metadata } from './erc20Metadata'
 import {
   ProtocolDetails,
   GetPositionsInput,
-  ProtocolToken,
+  ProtocolPosition,
   GetPricesInput,
-  ProtocolPricePerShareToken,
+  ProtocolTokenUnderlyingRate,
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  ProtocolTotalValueLockedToken,
+  ProtocolTokenTvl,
   GetProfitsInput,
-  ProfitsTokensWithRange,
+  ProfitsWithRange,
   GetApyInput,
-  ProtocolApyToken,
+  ProtocolTokenApy,
   GetAprInput,
-  ProtocolAprToken,
+  ProtocolTokenApr,
+  GetClaimableRewardsInput,
+  ProtocolRewardPosition,
 } from './adapter'
 
 export interface IProtocolAdapter {
   /**
-   * Unique identifier of the protocol
+   * Unique identifier of the protocol.
    */
   protocolId: Protocol
 
   /**
-   * Unique identifier of the blockchain network
+   * Unique identifier of the blockchain network.
    */
   chainId: Chain
 
   /**
-   * Returns details about the protocol such as name and description.
-   * @returns An object containing:
-   *  - `tokens`: An array of `ProtocolDetails` objects detailing the protocol.
+   * @remarks Returns high level metadata for the protocol
+   *
+   * @returns {ProtocolDetails} Object containing details about the protocol such as name and description.
    */
   getProtocolDetails(): ProtocolDetails
 
   /**
-   * Returns an array of protocol tokens.
-   * @returns A promise that resolves with an object containing:
-   *  - `tokens`: An array of `Erc20Metadata` objects detailing the protocol tokens.
+   * @remarks Returns array of pool tokens (lp tokens) for the protocol
+   *
+   * @returns {Promise<Erc20Metadata[]>} An array of objects detailing the protocol tokens.
    */
   getProtocolTokens(): Promise<Erc20Metadata[]>
 
   /**
-   * Returns array of positions for a given user-address.
-   * @param input - The input parameters to get positions.
-   * @returns A promise that resolves with an object containing:
-   *  - `tokens`: An array of `ProtocolToken` objects detailing the positions.
+   *
+   * @remarks Returns array of user positions opened in this protocol
+   *
+   * @param {GetPositionsInput} input - Object with user-address and optional blockNumber override.
+   * @returns {Promise<ProtocolPosition[]>} An array of objects detailing the user positions.
    */
-  getPositions(input: GetPositionsInput): Promise<ProtocolToken[]>
+  getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]>
 
   /**
-   * Returns the price per share of the protocol token (pool).
-   * @param input - The input parameters to get price per share.
-   * @returns A promise that resolves with an object containing:
-   *  - `tokens`: An array of `ProtocolPricePerShareToken` objects detailing the price per share of the protocol token.
+   *
+   * @remarks Returns array of claimable rewards owed to the user
+   *
+   * @param {GetClaimableRewardsInput} input - Object with user-address and optional blockNumber override.
+   * @returns {Promise<ClaimableRewards[]>} An array of objects detailing the user positions.
    */
-  getPricePerShare(input: GetPricesInput): Promise<ProtocolPricePerShareToken>
+  getClaimableRewards(
+    input: GetClaimableRewardsInput,
+  ): Promise<ProtocolRewardPosition[]>
 
   /**
-   * Returns array of withdrawal events for a given user-address and given protocol-token-address (pool).
-   * @param input - The input parameters to get withdrawals.
-   * @returns A promise that resolves with an object containing:
-   *  - `fromBlock`: The starting block number for the range.
-   *  - `toBlock`: The ending block number for the range.
-   *  - `tokens`: An array of `MovementsByBlock` objects detailing withdrawal events.
+   *
+   * @remarks Returns "price" of lp-tokens in the form of the underlying tokens
+   *
+   * @param {GetPricesInput} input - Object with protocol-token-address and optional blockNumber override.
+   * @returns {Promise<ProtocolTokenUnderlyingRate>} Object detailing the price per share of the protocol token.
+   */
+  getUnderlyingTokenRate(
+    input: GetPricesInput,
+  ): Promise<ProtocolTokenUnderlyingRate>
+
+  /**
+   *
+   * @remarks Returns the user's withdrawals from a position
+   *
+   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
+   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing withdrawal events within the specified block range.
    */
   getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]>
 
   /**
-   * Returns array of deposit events for a given user-address and given protocol-token-address (pool).
-   * @param input - The input parameters to get deposits.
-   * @returns A promise that resolves with an object containing:
-   *  - `fromBlock`: The starting block number for the range.
-   *  - `toBlock`: The ending block number for the range.
-   *  - `tokens`: An array of `MovementsByBlock` objects detailing deposit events.
+   *
+   * @remarks Returns the user's deposits to a position
+   *
+   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
+   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing deposit events within the specified block range.
    */
   getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]>
 
   /**
-   * Returns array of claimed reward events for a given user-address and given protocol-token-address (pool).
-   * @param input - The input parameters to get claimed rewards.
-   * @returns A promise that resolves with an object containing:
-   *  - `fromBlock`: The starting block number for the range.
-   *  - `toBlock`: The ending block number for the range.
-   *  - `tokens`: An array of `MovementsByBlock` objects detailing claimed reward events.
+   *
+   * @remarks Returns the user's claimed rewards from a position
+   *
+   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
+   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing claimed reward events within the specified block range.
    */
   getClaimedRewards(input: GetEventsInput): Promise<MovementsByBlock[]>
 
   /**
-   * Returns an array of total value locked results in each protocol pool.
-   * @param input - The input parameters to get total value locked.
-   * @returns A promise that resolves with an object containing:
-   *  - `tokens`: An array of `ProtocolTotalValueLockedToken` objects detailing the total value locked in each protocol pool.
+   *
+   * @remarks Returns the Tvl per pool defined in the underlying token
+   *
+   * @param {GetTotalValueLockedInput} input - Object with optional blockNumber override.
+   * @returns {Promise<ProtocolTokenTvl[]>} An array of objects detailing the total value locked in each protocol pool.
    */
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]>
+  ): Promise<ProtocolTokenTvl[]>
 
   /**
-   * Returns the profits made from the protocol within a specified block range.
-   * The profit is calculated as the difference between the end position value and the start position value,
-   * taking into account any deposits and withdrawals made within the block range.
    *
-   * @param input - An object containing:
-   *  - `userAddress`: The address of the user.
-   *  - `fromBlock`: The starting block number for the range.
-   *  - `toBlock`: The ending block number for the range.
+   * @remarks Returns the user's profits made on open positions. Accepts blockNumber override.
    *
-   * @returns A promise that resolves with an object containing:
-   *  - `fromBlock`: The starting block number for the range.
-   *  - `toBlock`: The ending block number for the range.
-   *  - `tokens`: An array of `ProtocolProfitsToken` objects, each containing:
-   *    - The token metadata.
-   *    - The type of the token.
-   *    - The profit made from the token, in raw and formatted form.
-   *    - The calculation data used to calculate the profit, including the start and end position values, and the total deposits and withdrawals.
+   * @param {GetProfitsInput} input - Object specifying user-address and the block range for the profit calculation.
+   * @returns {Promise<ProfitsWithRange>} Object containing the starting and ending block numbers, and an array of objects detailing the profit information for each token.
    */
-  getProfits(input: GetProfitsInput): Promise<ProfitsTokensWithRange>
+  getProfits(input: GetProfitsInput): Promise<ProfitsWithRange>
 
   /**
-   * Returns an array of Annual Percentage Yield (APY) for each protocol pool not including reward APY.
-   * @param input - The input parameters to get APY.
-   * @returns A promise that resolves with an object containing:
-   *  - `tokens`: An array of `ProtocolApyToken` objects detailing the Annual Percentage Yield for each protocol pool.
+   *
+   * @remarks Returns Apy per pool
+   *
+   * @param {GetApyInput} input - Object with protocol-token-address and optional blockNumber override.
+   * @returns {Promise<ProtocolTokenApy>} Object detailing the Annual Percentage Yield for each protocol pool without reward APY.
    */
-  getApy(input: GetApyInput): Promise<ProtocolApyToken>
+  getApy(input: GetApyInput): Promise<ProtocolTokenApy>
 
   /**
-   * Returns an array of Reward Annual Percentage Yield (APY) for each protocol pool.
-   * @param input - The input parameters to get APY.
-   * @returns A promise that resolves with an object containing:
-   *  - `tokens`: An array of `ProtocolApyToken` objects detailing the Annual Percentage Yield for each protocol pool.
+   *
+   * @remarks Returns Apy made by the reward token(s) per pool
+   *
+   * @param {GetApyInput} input - Object with protocol-token-address and optional blockNumber override.
+   * @returns {Promise<ProtocolTokenApy>} Object detailing the Annual Percentage Yield, including rewards, for each protocol pool.
    */
-  getRewardApy?(input: GetApyInput): Promise<ProtocolApyToken>
+  getRewardApy(input: GetApyInput): Promise<ProtocolTokenApy>
 
   /**
-   * Returns an array of Annual Percentage Rate (APR) for each protocol pool, not including reward APR.
-   * @param input - The input parameters to get APR.
-   * @returns A promise that resolves with an object containing:
-   *  - `tokens`: An array of `ProtocolAprToken` objects detailing the Annual Percentage Rate for each protocol pool.
+   *
+   * @remarks Returns Apr made per pool
+   *
+   * @param {GetAprInput} input - Object with protocol-token-address and optional blockNumber override.
+   * @returns {Promise<ProtocolTokenApr>} Object detailing the Annual Percentage Rate without reward APR for each protocol pool.
    */
-  getApr(input: GetAprInput): Promise<ProtocolAprToken>
+  getApr(input: GetAprInput): Promise<ProtocolTokenApr>
 
   /**
-   * Returns an array of Reward Annual Percentage Rate (APR) for each protocol pool.
-   * @param input - The input parameters to get APR.
-   * @returns A promise that resolves with an object containing:
-   *  - `tokens`: An array of `ProtocolAprToken` objects detailing the Annual Percentage Rate for each protocol pool.
+   *
+   * @remarks Returns reward Apr made per pool
+   *
+   * @param {GetAprInput} input - Object with protocol-token-address and optional blockNumber override.
+   * @returns {Promise<ProtocolTokenApr>} Object detailing the Annual Percentage Rate, including rewards, for each protocol pool.
    */
-  getRewardApr?(input: GetAprInput): Promise<ProtocolAprToken>
+  getRewardApr(input: GetAprInput): Promise<ProtocolTokenApr>
 }

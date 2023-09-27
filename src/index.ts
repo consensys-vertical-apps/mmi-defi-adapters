@@ -6,7 +6,7 @@ import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { chainProviders } from './core/utils/chainProviders'
 import { PositionType } from './types/adapter'
-import { IProtocolAdapter } from './types/IProtocolAdapter'
+import { IProtocolAdapter } from './types/iProtocolAdapter'
 import {
   APRResponse,
   APYResponse,
@@ -108,7 +108,7 @@ export async function getPrices({
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getPricePerShare({ protocolTokenAddress, blockNumber }),
+        adapter.getUnderlyingTokenRate({ protocolTokenAddress, blockNumber }),
       ),
     )
 

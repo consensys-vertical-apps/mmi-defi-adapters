@@ -4,8 +4,8 @@ import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
 import {
-  BasePricePerShareToken,
-  BaseToken,
+  UnderlyingTokenRate,
+  Underlying,
   BaseTokenMovement,
   GetAprInput,
   GetApyInput,
@@ -16,23 +16,24 @@ import {
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
-  ProfitsTokensWithRange,
+  ProfitsWithRange,
   ProtocolAdapterParams,
-  ProtocolAprToken,
-  ProtocolApyToken,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
   ProtocolDetails,
-  ProtocolPricePerShareToken,
-  ProtocolToken,
-  ProtocolTotalValueLockedToken,
+  ProtocolTokenUnderlyingRate,
+  ProtocolPosition,
+  ProtocolTokenTvl,
   TokenBalance,
   TokenType,
+  ProtocolRewardPosition,
 } from '../../types/adapter'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { IProtocolAdapter } from '../../types/iProtocolAdapter'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { aggregateTrades } from '../utils/aggregateTrades'
 import { getBalances } from '../utils/getBalances'
-import { Erc20Metadata } from '../utils/getTokenMetadata'
+import { Erc20Metadata } from '../../types/erc20Metadata'
 import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
@@ -54,7 +55,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   async getPositions({
     userAddress,
     blockNumber,
-  }: GetPositionsInput): Promise<ProtocolToken[]> {
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokensBalances = await getBalances({
       chainId: this.chainId,
       provider: this.provider,
@@ -63,7 +64,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       tokens: await this.getProtocolTokens(),
     })
 
-    const protocolTokens: ProtocolToken[] = await Promise.all(
+    const protocolTokens: ProtocolPosition[] = await Promise.all(
       protocolTokensBalances.map(async (protocolTokenBalance) => {
         const underlyingTokenBalances = await this.getUnderlyingTokenBalances(
           protocolTokenBalance,
@@ -80,11 +81,15 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
     return protocolTokens
   }
+  abstract getClaimableRewards({
+    userAddress,
+    blockNumber,
+  }: GetPositionsInput): Promise<ProtocolRewardPosition[]>
 
-  async getPricePerShare({
+  async getUnderlyingTokenRate({
     blockNumber,
     protocolTokenAddress,
-  }: GetPricesInput): Promise<ProtocolPricePerShareToken> {
+  }: GetPricesInput): Promise<ProtocolTokenUnderlyingRate> {
     const protocolTokenMetadata = await this.fetchProtocolTokenMetadata(
       protocolTokenAddress,
     )
@@ -97,7 +102,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
     return {
       ...protocolTokenMetadata,
-      share: 1,
+      baseRate: 1,
       type: TokenType.Protocol,
       tokens: underlyingTokenPricesPerShare,
     }
@@ -139,13 +144,13 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
   abstract getTotalValueLocked(
     input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]>
+  ): Promise<ProtocolTokenTvl[]>
 
   async getProfits({
     userAddress,
     fromBlock,
     toBlock,
-  }: GetProfitsInput): Promise<ProfitsTokensWithRange> {
+  }: GetProfitsInput): Promise<ProfitsWithRange> {
     const [currentValues, previousValues] = await Promise.all([
       this.getPositions({
         userAddress,
@@ -257,9 +262,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     return { tokens, fromBlock, toBlock }
   }
 
-  abstract getApy(input: GetApyInput): Promise<ProtocolApyToken>
+  abstract getApy(input: GetApyInput): Promise<ProtocolTokenApy>
 
-  abstract getApr(input: GetAprInput): Promise<ProtocolAprToken>
+  abstract getApr(input: GetAprInput): Promise<ProtocolTokenApr>
+  abstract getRewardApy(input: GetApyInput): Promise<ProtocolTokenApy>
+
+  abstract getRewardApr(input: GetAprInput): Promise<ProtocolTokenApr>
 
   protected abstract fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
@@ -272,12 +280,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   protected abstract getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
     blockNumber?: number,
-  ): Promise<BaseToken[]>
+  ): Promise<Underlying[]>
 
   protected abstract getUnderlyingTokenPricesPerShare(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
-  ): Promise<BasePricePerShareToken[]>
+  ): Promise<UnderlyingTokenRate[]>
 
   private async getMovements({
     protocolTokenAddress,
@@ -319,7 +327,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           args: { value: protocolTokenMovementValueRaw },
         } = transferEvent
 
-        const protocolTokenPrice = await this.getPricePerShare({
+        const protocolTokenPrice = await this.getUnderlyingTokenRate({
           blockNumber,
           protocolTokenAddress,
         })
@@ -337,7 +345,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
               const movementValueRaw =
                 (protocolTokenMovementValueRaw *
-                  currentTokenPrice.pricePerShareRaw) /
+                  currentTokenPrice.underlyingRateRaw) /
                 BigInt(10 ** currentTokenPrice.decimals)
 
               return {

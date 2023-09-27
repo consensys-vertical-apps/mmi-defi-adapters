@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
-import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
   CalculationData,
   GetAprInput,
@@ -12,17 +12,18 @@ import {
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
-  ProfitsTokensWithRange,
+  ProfitsWithRange,
   ProtocolAdapterParams,
-  ProtocolAprToken,
-  ProtocolApyToken,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
   ProtocolDetails,
-  ProtocolPricePerShareToken,
-  ProtocolToken,
-  ProtocolTotalValueLockedToken,
+  ProtocolTokenUnderlyingRate,
+  ProtocolPosition,
+  ProtocolTokenTvl,
   TokenType,
+  ProtocolRewardPosition,
 } from '../../../../types/adapter'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import { IProtocolAdapter } from '../../../../types/iProtocolAdapter'
 import { Protocol } from '../../../protocols'
 
 export class ExampleProductAdapter implements IProtocolAdapter {
@@ -114,7 +115,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getProfits(_input: GetProfitsInput): Promise<ProfitsTokensWithRange> {
+  async getProfits(_input: GetProfitsInput): Promise<ProfitsWithRange> {
     return {
       fromBlock: 111,
       toBlock: 112,
@@ -137,7 +138,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
               calculationData: {} as CalculationData,
             },
             {
-              type: TokenType.Claimable,
+              type: TokenType.Reward,
               address: '0x17fc002b466eec40dae837fc4be5c67993ddbd6f',
               name: 'Frax',
               symbol: 'FRAX',
@@ -152,22 +153,22 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     }
   }
 
-  async getPricePerShare(
+  async getUnderlyingTokenRate(
     _input: GetPricesInput,
-  ): Promise<ProtocolPricePerShareToken> {
+  ): Promise<ProtocolTokenUnderlyingRate> {
     return {
       name: 'Tether USD-LP',
 
       decimals: 6,
       symbol: 'S*USDT',
       address: '0xprotocolTokenAddress',
-      share: 1,
+      baseRate: 1,
       type: 'protocol',
       tokens: [
         {
           type: 'underlying',
-          pricePerShareRaw: 1000154n,
-          pricePerShare: '1.000154',
+          underlyingRateRaw: 1000154n,
+          underlyingRate: '1.000154',
           decimals: 6,
           name: 'Tether USD',
           iconUrl: '',
@@ -178,7 +179,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     }
   }
 
-  async getPositions(_input: GetPositionsInput): Promise<ProtocolToken[]> {
+  async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
     return [
       {
         address: '0xprotocolTokenAddress',
@@ -199,6 +200,22 @@ export class ExampleProductAdapter implements IProtocolAdapter {
             iconUrl: '',
             type: 'underlying',
           },
+        ],
+      },
+    ]
+  }
+  async getClaimableRewards(
+    _input: GetPositionsInput,
+  ): Promise<ProtocolRewardPosition[]> {
+    return [
+      {
+        address: '0xprotocolTokenAddress',
+        name: 'Coin-LP',
+        symbol: 'S*USDC',
+        decimals: 6,
+
+        type: 'protocol',
+        tokens: [
           {
             address: '0xrewardContractAddress',
             name: 'USD Coin',
@@ -225,7 +242,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     ]
   }
 
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     return {
       address: '0xprotocolTokenAddress',
       decimals: 8,
@@ -235,7 +252,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     }
   }
 
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     return {
       address: '0xprotocolTokenAddress',
       decimals: 8,
@@ -244,10 +261,28 @@ export class ExampleProductAdapter implements IProtocolAdapter {
       name: 'stUSD',
     }
   }
+  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    return {
+      address: '0xprotocolTokenAddress',
+      decimals: 8,
+      symbol: 'stUSD',
+      apyDecimal: '0.1', // 10%
+      name: 'stUSD',
+    }
+  }
+  async getRewardApr(_input: GetApyInput): Promise<ProtocolTokenApr> {
+    return {
+      address: '0xprotocolTokenAddress',
+      decimals: 8,
+      symbol: 'stUSD',
+      aprDecimal: '0.1', // 10%
+      name: 'stUSD',
+    }
+  }
 
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]> {
+  ): Promise<ProtocolTokenTvl[]> {
     return [
       {
         address: '0xprotocolTokenAddress',

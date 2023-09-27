@@ -1,0 +1,13 @@
+{
+  "plugin": ["typedoc-plugin-markdown", "typedoc-plugin-mdn-links"],
+  "theme": "markdown",
+  "hideBreadcrumbs": false,
+  "hideInPageTOC": false,
+  "readme": "none",
+  "out": "./docs",
+  "sort": "source-order",
+  "entryPoints": ["src/types/"],
+  "entryPointStrategy": "expand",
+  "excludePrivate": false
+}
+
