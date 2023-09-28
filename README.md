@@ -33,6 +33,74 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
 ![Alt text](dashboard.png)
 
+## Example adapter user story
+
+> ## 🎫 User Story: Implement New DeFi Adapter for [Your Protocol Name]
+>
+> **📜 As a** adapter developer,  
+> **🖱️ I want to** implement a new DeFi adapter that follows the IProtocolAdapter interface,  
+> **🎯 So that** MMI and MetaMask Portfolio users can view in-depth data related to the protocol.
+>
+> ---
+>
+> ### 📋 Acceptance Criteria:
+>
+> 1. **Multiple Products Consideration:** Ensure that protocols with multiple products (e.g., farming, staking, pools) are supported by one adapter each.
+> 2. **Adapter Implementation:** Successfully add a new DeFi adapter implementing the IProtocolAdapter to support the product.
+> 3. **Add Adapter using CLI:**
+>    - Follow instructions in the "Adding a new Adapter (CLI)" section of the readme.
+>    - Use the "add adapter CLI".
+> 4. **Ethers Contracts Creation:**
+>    - Create ethers contracts to interact with the smart contracts of the protocol.
+>    - Refer to the "Contract Factories" section in the readme for guidance.
+> 5. **LP Token Metadata Building:** Implement the `buildMetadata()` logic in the adapter to retrieve the LP token reference data. (e.g., [example](src/adapters/stargate/products/pool/arbitrum/metadata.json)).
+> 6. **Testing:** Test the adapter(s) using the commands specified in the readme.
+>
+> ---
+>
+> ### 📝 Additional Notes/Comments:
+>
+> The IProtocolAdapter interface has been documented with tsDocs, detailed descriptions of the methods and properties can be found [here](./docs/interfaces/iProtocolAdapter.IProtocolAdapter.md).
+
+## FAQ section
+
+1. What do these adapters do?
+   They power the MetaMask portfolio dashboards, displaying users' DeFi positions.
+
+2. What experience do I need to map an adapter?
+   Ideally experience in Typescript, Ethers library, and be familiar with the DeFi protocol.
+
+3. I'm not familiar with the protocol. Can I still map?
+   Yes. Refer to protocol docs, smart contracts, find example open positions and review deposits and withdrawals to the position. Although it might take longer.
+
+4. How long to map?
+   A few hours for those with knowledge of Typescript, Ethers, and the protocol.
+
+5. What is getProfits?
+   It returns profit on individual open positions by considering weekly changes and transactions in and out of the position.
+
+6. How do you calculate profits?
+
+   - We capture users' positions from 7 days ago using the `get positions` adapter method with a `blocknumber override`.
+   - We then obtain the current positions.
+   - To account for deposits and withdrawals in this period, we examine `mint` and `burn` events of LP tokens and convert these back to underlying tokens.
+   - We found this method works for the majority of protocols. However, adapt as necessary for your protocol. For example, if there are better event logs available for your protocol, use them.
+
+7. Some adapter methods don't make sense for my defi-protocol?
+   Throw an error: new Error('Does not apply').
+
+8. Can I use an API for results?
+   We recommend getting data directly from the blockchain over centralized APIs.
+
+9. My protocol only has a few pools, can I hardcode the buildMetadata() result?
+   Yes. Feel free to hardcode this result if it doesn't make sense to fetch pool data on chain.
+
+10. My protocol has more than one product, should I create separate adapters?
+    Yes. We find this reduces complexity.
+
+11. How can I share feedback or proposals?
+    Please reach out to us directly. We value feedback.
+
 ## Overview of this library
 
 From left to right, get-onchain-data and convert to standardize format.
