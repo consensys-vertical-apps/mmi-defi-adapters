@@ -6,7 +6,7 @@ import {
   GetApyInput,
   GetEventsInput,
   GetPositionsInput,
-  GetPricesInput,
+  GetConversionRateInput,
   GetProfitsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
@@ -153,8 +153,8 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     }
   }
 
-  async getUnderlyingTokenRate(
-    _input: GetPricesInput,
+  async getProtocolTokenToUnderlyingTokenRate(
+    _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
     return {
       name: 'Tether USD-LP',

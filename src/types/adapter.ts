@@ -39,7 +39,7 @@ export type GetBalancesInput = GetPositionsInput & {
   tokens: Erc20Metadata[]
 }
 
-export type GetPricesInput = {
+export type GetConversionRateInput = {
   /**
    * Optional override param
    */

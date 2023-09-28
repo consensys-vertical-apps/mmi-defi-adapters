@@ -108,7 +108,10 @@ export async function getPrices({
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getUnderlyingTokenRate({ protocolTokenAddress, blockNumber }),
+        adapter.getProtocolTokenToUnderlyingTokenRate({
+          protocolTokenAddress,
+          blockNumber,
+        }),
       ),
     )
 

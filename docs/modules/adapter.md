@@ -35,7 +35,7 @@
 - [TokenType](adapter.md#tokentype-1)
 - [PositionType](adapter.md#positiontype-1)
 - [GetBalancesInput](adapter.md#getbalancesinput)
-- [GetPricesInput](adapter.md#getpricesinput)
+- [GetConversionRateInput](adapter.md#getconversionrateinput)
 - [GetApyInput](adapter.md#getapyinput)
 - [GetAprInput](adapter.md#getaprinput)
 - [GetEventsInput](adapter.md#geteventsinput)
@@ -82,9 +82,9 @@ ___
 
 ___
 
-### GetPricesInput
+### GetConversionRateInput
 
-Ƭ **GetPricesInput**: `Object`
+Ƭ **GetConversionRateInput**: `Object`
 
 #### Type declaration
 

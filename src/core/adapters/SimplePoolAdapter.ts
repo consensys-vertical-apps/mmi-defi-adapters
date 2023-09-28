@@ -11,7 +11,7 @@ import {
   GetApyInput,
   GetEventsInput,
   GetPositionsInput,
-  GetPricesInput,
+  GetConversionRateInput,
   GetProfitsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
@@ -86,10 +86,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolRewardPosition[]>
 
-  async getUnderlyingTokenRate({
+  async getProtocolTokenToUnderlyingTokenRate({
     blockNumber,
     protocolTokenAddress,
-  }: GetPricesInput): Promise<ProtocolTokenUnderlyingRate> {
+  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
     const protocolTokenMetadata = await this.fetchProtocolTokenMetadata(
       protocolTokenAddress,
     )
@@ -327,10 +327,11 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           args: { value: protocolTokenMovementValueRaw },
         } = transferEvent
 
-        const protocolTokenPrice = await this.getUnderlyingTokenRate({
-          blockNumber,
-          protocolTokenAddress,
-        })
+        const protocolTokenPrice =
+          await this.getProtocolTokenToUnderlyingTokenRate({
+            blockNumber,
+            protocolTokenAddress,
+          })
 
         return {
           underlyingTokensMovement: underlyingTokens.reduce(

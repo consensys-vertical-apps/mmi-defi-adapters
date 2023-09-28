@@ -17,7 +17,7 @@
 - [getProtocolTokens](iProtocolAdapter.IProtocolAdapter.md#getprotocoltokens)
 - [getPositions](iProtocolAdapter.IProtocolAdapter.md#getpositions)
 - [getClaimableRewards](iProtocolAdapter.IProtocolAdapter.md#getclaimablerewards)
-- [getUnderlyingTokenRate](iProtocolAdapter.IProtocolAdapter.md#getunderlyingtokenrate)
+- [getProtocolTokenToUnderlyingTokenRate](iProtocolAdapter.IProtocolAdapter.md#getprotocoltokentounderlyingtokenrate)
 - [getWithdrawals](iProtocolAdapter.IProtocolAdapter.md#getwithdrawals)
 - [getDeposits](iProtocolAdapter.IProtocolAdapter.md#getdeposits)
 - [getClaimedRewards](iProtocolAdapter.IProtocolAdapter.md#getclaimedrewards)
@@ -146,15 +146,15 @@ iProtocolAdapter.ts:65
 
 ___
 
-### getUnderlyingTokenRate
+### getProtocolTokenToUnderlyingTokenRate
 
-▸ **getUnderlyingTokenRate**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProtocolTokenUnderlyingRate`](adapter.ProtocolTokenUnderlyingRate.md)\>
+▸ **getProtocolTokenToUnderlyingTokenRate**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProtocolTokenUnderlyingRate`](adapter.ProtocolTokenUnderlyingRate.md)\>
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `input` | [`GetPricesInput`](../modules/adapter.md#getpricesinput) | Object with protocol-token-address and optional blockNumber override. |
+| `input` | [`GetConversionRateInput`](../modules/adapter.md#getconversionrateinput) | Object with protocol-token-address and optional blockNumber override. |
 
 #### Returns
 

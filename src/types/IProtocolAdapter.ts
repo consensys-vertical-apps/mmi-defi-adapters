@@ -4,7 +4,7 @@ import {
   ProtocolDetails,
   GetPositionsInput,
   ProtocolPosition,
-  GetPricesInput,
+  GetConversionRateInput,
   ProtocolTokenUnderlyingRate,
   GetEventsInput,
   MovementsByBlock,
@@ -70,11 +70,11 @@ export interface IProtocolAdapter {
    *
    * @remarks Returns "price" of lp-tokens in the form of the underlying tokens
    *
-   * @param {GetPricesInput} input - Object with protocol-token-address and optional blockNumber override.
+   * @param {GetConversionRateInput} input - Object with protocol-token-address and optional blockNumber override.
    * @returns {Promise<ProtocolTokenUnderlyingRate>} Object detailing the price per share of the protocol token.
    */
-  getUnderlyingTokenRate(
-    input: GetPricesInput,
+  getProtocolTokenToUnderlyingTokenRate(
+    input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate>
 
   /**
