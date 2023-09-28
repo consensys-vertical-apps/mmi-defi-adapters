@@ -94,8 +94,8 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       protocolTokenAddress,
     )
 
-    const underlyingTokenPricesPerShare =
-      await this.getUnderlyingTokenPricesPerShare(
+    const underlyingTokenConversionRate =
+      await this.getUnderlyingTokenConversionRate(
         protocolTokenMetadata,
         blockNumber,
       )
@@ -104,7 +104,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       ...protocolTokenMetadata,
       baseRate: 1,
       type: TokenType.Protocol,
-      tokens: underlyingTokenPricesPerShare,
+      tokens: underlyingTokenConversionRate,
     }
   }
 
@@ -116,7 +116,9 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getMovements({
       protocolTokenAddress,
-      underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
+        protocolTokenAddress,
+      ),
       fromBlock,
       toBlock,
       from: ZERO_ADDRESS,
@@ -132,7 +134,9 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getMovements({
       protocolTokenAddress,
-      underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
+        protocolTokenAddress,
+      ),
       fromBlock,
       toBlock,
       from: userAddress,
@@ -263,30 +267,52 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   }
 
   abstract getApy(input: GetApyInput): Promise<ProtocolTokenApy>
-
   abstract getApr(input: GetAprInput): Promise<ProtocolTokenApr>
   abstract getRewardApy(input: GetApyInput): Promise<ProtocolTokenApy>
-
   abstract getRewardApr(input: GetAprInput): Promise<ProtocolTokenApr>
 
+  /**
+   * Fetches the protocol-token metadata
+   * @param protocolTokenAddress
+   */
   protected abstract fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata>
 
-  protected abstract getUnderlyingTokens(
+  /**
+   * Fetches the protocol-token's underlying token details
+   * @param protocolTokenAddress
+   */
+  protected abstract fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]>
 
+  /**
+   * Calculates the user's underlying token balances.
+   * We pass here the LP token balance and find the underlying token balances
+   * Refer to dashboard screenshot located here ./dashboard.png for example
+   *
+   * @param protocolTokenBalance
+   * @param blockNumber
+   */
   protected abstract getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
     blockNumber?: number,
   ): Promise<Underlying[]>
 
-  protected abstract getUnderlyingTokenPricesPerShare(
+  /**
+   * Fetches the LP token to underlying tokens exchange rate
+   * @param protocolTokenMetadata
+   * @param blockNumber
+   */
+  protected abstract getUnderlyingTokenConversionRate(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
   ): Promise<UnderlyingTokenRate[]>
 
+  /**
+   * Util used by both getDeposits and getWithdrawals
+   */
   private async getMovements({
     protocolTokenAddress,
     underlyingTokens,

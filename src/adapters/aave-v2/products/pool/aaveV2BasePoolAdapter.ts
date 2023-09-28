@@ -144,7 +144,7 @@ export abstract class AaveV2BasePoolAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokens(
+  protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
@@ -172,7 +172,7 @@ export abstract class AaveV2BasePoolAdapter
     return [underlyingTokenBalance]
   }
 
-  protected async getUnderlyingTokenPricesPerShare(
+  protected async getUnderlyingTokenConversionRate(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {

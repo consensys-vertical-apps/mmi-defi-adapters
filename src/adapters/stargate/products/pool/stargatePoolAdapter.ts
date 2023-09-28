@@ -60,43 +60,6 @@ export class StargatePoolAdapter
     }
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
-
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new Error('Not Implemented')
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new Error('Not Implemented')
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new Error('Not Implemented')
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new Error('Not Implemented')
-  }
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new Error('Not Implemented')
-  }
-
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new Error('Not Implemented')
-  }
-
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new Error('Not Implemented')
-  }
-
   @CacheToFile({ fileKey: 'lp-token' })
   async buildMetadata() {
     const contractAddresses: Partial<Record<Chain, string>> = {
@@ -149,24 +112,6 @@ export class StargatePoolAdapter
     return metadataObject
   }
 
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
-  protected async getUnderlyingTokens(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
-
-    return [underlyingToken]
-  }
-
   protected async getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
     blockNumber?: number,
@@ -194,7 +139,7 @@ export class StargatePoolAdapter
     return [underlyingTokenBalance]
   }
 
-  protected async getUnderlyingTokenPricesPerShare(
+  protected async getUnderlyingTokenConversionRate(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
@@ -224,6 +169,61 @@ export class StargatePoolAdapter
         underlyingRate: pricePerShare,
       },
     ]
+  }
+
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+    return Object.values(await this.buildMetadata()).map(
+      ({ protocolToken }) => protocolToken,
+    )
+  }
+
+  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new Error('Implement me')
+  }
+
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTokenTvl[]> {
+    throw new Error('Implement me')
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new Error('Implement me')
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new Error('Implement me')
+  }
+  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new Error('Implement me')
+  }
+
+  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new Error('Implement me')
+  }
+
+  async getClaimableRewards(
+    _input: GetClaimableRewardsInput,
+  ): Promise<ProtocolRewardPosition[]> {
+    throw new Error('Implement me')
+  }
+
+  protected async fetchProtocolTokenMetadata(
+    protocolTokenAddress: string,
+  ): Promise<Erc20Metadata> {
+    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+
+    return protocolToken
+  }
+
+  protected async fetchUnderlyingTokensMetadata(
+    protocolTokenAddress: string,
+  ): Promise<Erc20Metadata[]> {
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
+
+    return [underlyingToken]
   }
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
