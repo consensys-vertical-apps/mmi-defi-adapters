@@ -29,7 +29,7 @@ import {
   ProtocolRewardPosition,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../types/iProtocolAdapter'
+import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { aggregateTrades } from '../utils/aggregateTrades'

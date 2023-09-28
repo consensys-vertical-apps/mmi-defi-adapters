@@ -27,7 +27,7 @@ import {
   GetClaimableRewardsInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/iProtocolAdapter'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { StargateVotingEscrow__factory } from '../../contracts'
 

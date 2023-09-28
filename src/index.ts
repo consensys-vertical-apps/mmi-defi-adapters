@@ -6,7 +6,7 @@ import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { chainProviders } from './core/utils/chainProviders'
 import { PositionType } from './types/adapter'
-import { IProtocolAdapter } from './types/iProtocolAdapter'
+import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
   APYResponse,

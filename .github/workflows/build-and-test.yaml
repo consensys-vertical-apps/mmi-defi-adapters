@@ -33,6 +33,7 @@ jobs:
           ARBITRUM_PROVIDER_URL: ${{ secrets.ARBITRUM_PROVIDER_URL }}
           AVALANCHE_PROVIDER_URL: ${{ secrets.AVALANCHE_PROVIDER_URL }}
           LINEA_PROVIDER_URL: ${{ secrets.LINEA_PROVIDER_URL }}
+          ENABLE_MULTICALL_QUEUE: true
 
       - name: Verify eslint config
         run: npm run lint

@@ -1,7 +1,0 @@
-{
-  "plugins": ["plugins/markdown"],
-  "source": {
-    "include": ["src/types/IProtocolAdapter.ts"],
-    "includePattern": ".+\\.ts?$"
-  }
-}

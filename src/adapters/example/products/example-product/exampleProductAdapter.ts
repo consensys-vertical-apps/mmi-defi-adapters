@@ -23,7 +23,7 @@ import {
   ProtocolRewardPosition,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/iProtocolAdapter'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 
 export class ExampleProductAdapter implements IProtocolAdapter {
