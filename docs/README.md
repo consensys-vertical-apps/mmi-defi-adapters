@@ -6,9 +6,9 @@
 
 ### Modules
 
+- [IProtocolAdapter](modules/IProtocolAdapter.md)
 - [adapter](modules/adapter.md)
 - [erc20Metadata](modules/erc20Metadata.md)
-- [iProtocolAdapter](modules/iProtocolAdapter.md)
 - [json](modules/json.md)
 - [response](modules/response.md)
 - [testCase](modules/testCase.md)

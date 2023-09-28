@@ -1,9 +1,9 @@
-[@metamask-institutional/defi-adapters](../README.md) / iProtocolAdapter
+[@metamask-institutional/defi-adapters](../README.md) / IProtocolAdapter
 
-# Module: iProtocolAdapter
+# Module: IProtocolAdapter
 
 ## Table of contents
 
 ### Interfaces
 
-- [IProtocolAdapter](../interfaces/iProtocolAdapter.IProtocolAdapter.md)
+- [IProtocolAdapter](../interfaces/IProtocolAdapter.IProtocolAdapter.md)

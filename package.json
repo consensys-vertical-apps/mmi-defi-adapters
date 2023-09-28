@@ -43,7 +43,7 @@
     "test": "jest",
     "test:cov": "jest src --ci --coverage",
     "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package",
-    "build-docs": "typedoc"
+    "build-docs": "typedoc --plugin typedoc-plugin-markdown --plugin typedoc-plugin-mdn-links --theme markdown --hideBreadcrumbs false --hideInPageTOC false --readme none --gitRemote origin --gitRevision main --out ./docs --sort source-order --entryPoints src/types/ --entryPointStrategy expand --excludePrivate false"
   },
   "devDependencies": {
     "@typechain/ethers-v6": "^0.5.0",

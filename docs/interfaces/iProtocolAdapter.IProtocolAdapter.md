@@ -1,32 +1,32 @@
-[@metamask-institutional/defi-adapters](../README.md) / [iProtocolAdapter](../modules/iProtocolAdapter.md) / IProtocolAdapter
+[@metamask-institutional/defi-adapters](../README.md) / [IProtocolAdapter](../modules/IProtocolAdapter.md) / IProtocolAdapter
 
 # Interface: IProtocolAdapter
 
-[iProtocolAdapter](../modules/iProtocolAdapter.md).IProtocolAdapter
+[IProtocolAdapter](../modules/IProtocolAdapter.md).IProtocolAdapter
 
 ## Table of contents
 
 ### Properties
 
-- [protocolId](iProtocolAdapter.IProtocolAdapter.md#protocolid)
-- [chainId](iProtocolAdapter.IProtocolAdapter.md#chainid)
+- [protocolId](IProtocolAdapter.IProtocolAdapter.md#protocolid)
+- [chainId](IProtocolAdapter.IProtocolAdapter.md#chainid)
 
 ### Methods
 
-- [getProtocolDetails](iProtocolAdapter.IProtocolAdapter.md#getprotocoldetails)
-- [getProtocolTokens](iProtocolAdapter.IProtocolAdapter.md#getprotocoltokens)
-- [getPositions](iProtocolAdapter.IProtocolAdapter.md#getpositions)
-- [getClaimableRewards](iProtocolAdapter.IProtocolAdapter.md#getclaimablerewards)
-- [getProtocolTokenToUnderlyingTokenRate](iProtocolAdapter.IProtocolAdapter.md#getprotocoltokentounderlyingtokenrate)
-- [getWithdrawals](iProtocolAdapter.IProtocolAdapter.md#getwithdrawals)
-- [getDeposits](iProtocolAdapter.IProtocolAdapter.md#getdeposits)
-- [getClaimedRewards](iProtocolAdapter.IProtocolAdapter.md#getclaimedrewards)
-- [getTotalValueLocked](iProtocolAdapter.IProtocolAdapter.md#gettotalvaluelocked)
-- [getProfits](iProtocolAdapter.IProtocolAdapter.md#getprofits)
-- [getApy](iProtocolAdapter.IProtocolAdapter.md#getapy)
-- [getRewardApy](iProtocolAdapter.IProtocolAdapter.md#getrewardapy)
-- [getApr](iProtocolAdapter.IProtocolAdapter.md#getapr)
-- [getRewardApr](iProtocolAdapter.IProtocolAdapter.md#getrewardapr)
+- [getProtocolDetails](IProtocolAdapter.IProtocolAdapter.md#getprotocoldetails)
+- [getProtocolTokens](IProtocolAdapter.IProtocolAdapter.md#getprotocoltokens)
+- [getPositions](IProtocolAdapter.IProtocolAdapter.md#getpositions)
+- [getClaimableRewards](IProtocolAdapter.IProtocolAdapter.md#getclaimablerewards)
+- [getProtocolTokenToUnderlyingTokenRate](IProtocolAdapter.IProtocolAdapter.md#getprotocoltokentounderlyingtokenrate)
+- [getWithdrawals](IProtocolAdapter.IProtocolAdapter.md#getwithdrawals)
+- [getDeposits](IProtocolAdapter.IProtocolAdapter.md#getdeposits)
+- [getClaimedRewards](IProtocolAdapter.IProtocolAdapter.md#getclaimedrewards)
+- [getTotalValueLocked](IProtocolAdapter.IProtocolAdapter.md#gettotalvaluelocked)
+- [getProfits](IProtocolAdapter.IProtocolAdapter.md#getprofits)
+- [getApy](IProtocolAdapter.IProtocolAdapter.md#getapy)
+- [getRewardApy](IProtocolAdapter.IProtocolAdapter.md#getrewardapy)
+- [getApr](IProtocolAdapter.IProtocolAdapter.md#getapr)
+- [getRewardApr](IProtocolAdapter.IProtocolAdapter.md#getrewardapr)
 
 ## Properties
 
@@ -38,7 +38,7 @@ Unique identifier of the protocol.
 
 #### Defined in
 
-iProtocolAdapter.ts:28
+[IProtocolAdapter.ts:28](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L28)
 
 ___
 
@@ -50,7 +50,7 @@ Unique identifier of the blockchain network.
 
 #### Defined in
 
-iProtocolAdapter.ts:33
+[IProtocolAdapter.ts:33](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L33)
 
 ## Methods
 
@@ -70,7 +70,7 @@ Returns high level metadata for the protocol
 
 #### Defined in
 
-iProtocolAdapter.ts:40
+[IProtocolAdapter.ts:40](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L40)
 
 ___
 
@@ -90,7 +90,7 @@ Returns array of pool tokens (lp tokens) for the protocol
 
 #### Defined in
 
-iProtocolAdapter.ts:47
+[IProtocolAdapter.ts:47](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L47)
 
 ___
 
@@ -116,7 +116,7 @@ Returns array of user positions opened in this protocol
 
 #### Defined in
 
-iProtocolAdapter.ts:56
+[IProtocolAdapter.ts:56](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L56)
 
 ___
 
@@ -142,7 +142,7 @@ Returns array of claimable rewards owed to the user
 
 #### Defined in
 
-iProtocolAdapter.ts:65
+[IProtocolAdapter.ts:65](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L65)
 
 ___
 
@@ -168,7 +168,7 @@ Returns "price" of lp-tokens in the form of the underlying tokens
 
 #### Defined in
 
-iProtocolAdapter.ts:76
+[IProtocolAdapter.ts:76](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L76)
 
 ___
 
@@ -194,7 +194,7 @@ Returns the user's withdrawals from a position
 
 #### Defined in
 
-iProtocolAdapter.ts:87
+[IProtocolAdapter.ts:87](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L87)
 
 ___
 
@@ -220,7 +220,7 @@ Returns the user's deposits to a position
 
 #### Defined in
 
-iProtocolAdapter.ts:96
+[IProtocolAdapter.ts:96](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L96)
 
 ___
 
@@ -246,7 +246,7 @@ Returns the user's claimed rewards from a position
 
 #### Defined in
 
-iProtocolAdapter.ts:105
+[IProtocolAdapter.ts:105](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L105)
 
 ___
 
@@ -272,7 +272,7 @@ Returns the Tvl per pool defined in the underlying token
 
 #### Defined in
 
-iProtocolAdapter.ts:114
+[IProtocolAdapter.ts:114](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L114)
 
 ___
 
@@ -298,7 +298,7 @@ Returns the user's profits made on open positions. Accepts blockNumber override.
 
 #### Defined in
 
-iProtocolAdapter.ts:125
+[IProtocolAdapter.ts:125](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L125)
 
 ___
 
@@ -324,7 +324,7 @@ Returns Apy per pool
 
 #### Defined in
 
-iProtocolAdapter.ts:134
+[IProtocolAdapter.ts:134](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L134)
 
 ___
 
@@ -350,7 +350,7 @@ Returns Apy made by the reward token(s) per pool
 
 #### Defined in
 
-iProtocolAdapter.ts:143
+[IProtocolAdapter.ts:143](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L143)
 
 ___
 
@@ -376,7 +376,7 @@ Returns Apr made per pool
 
 #### Defined in
 
-iProtocolAdapter.ts:152
+[IProtocolAdapter.ts:152](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L152)
 
 ___
 
@@ -402,4 +402,4 @@ Returns reward Apr made per pool
 
 #### Defined in
 
-iProtocolAdapter.ts:161
+[IProtocolAdapter.ts:161](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L161)
