@@ -65,24 +65,31 @@ In this example, the user holds positions in both Stargate and Uniswap.
 ## FAQ section
 
 1. What is a DeFi adapter?
+
    A DeFi adapter is code that standardizes DeFi protocol data and positions, allowing for consistent data retrieval and interaction. It acts as a connector (a.k.a translator) between our dashboards and your DeFi products.
 
 2. What do these adapters do?
+
    They power the MetaMask portfolio dashboards, displaying users' DeFi positions.
 
 3. What experience do I need to map an adapter?
+
    Ideally experience in Typescript, Ethers library, and be familiar with the DeFi protocol.
 
 4. Are these adapters deployed onchain?
+
    No this adapter library is installed and deployed in microservices. The adapters are written in TypeScript (not solidity).
 
 5. I'm not familiar with the protocol. Can I still map an adapter?
+
    Yes. To assist you refer to the protocol docs, smart contracts, find example open positions and review deposits and withdrawals to the position.
 
 6. How long does it take to map an adapter?
+
    A few hours for those with knowledge of Typescript, Ethers, and the DeFi protocol.
 
 7. What is the getProfits method?
+
    It returns profit on individual open positions by considering weekly changes and transactions in and out of the position.
 
 8. How do you calculate profits?
@@ -93,18 +100,23 @@ In this example, the user holds positions in both Stargate and Uniswap.
    - We found this method works for the majority of protocols. However, adapt as necessary for your protocol. For example, if there are better event logs available for your protocol, use them.
 
 9. Some adapter methods don't make sense for my DeFi-protocol?
+
    Throw an error: new Error('Does not apply').
 
 10. Can I use an API for results?
+
     We recommend getting data directly from the blockchain over centralized APIs.
 
 11. My protocol only has a few pools, can I hardcode the buildMetadata() result?
+
     Yes. Feel free to hardcode this result if it doesn't make sense to fetch pool data on chain.
 
 12. My protocol has more than one product, should I create separate adapters?
+
     Yes. We find this reduces complexity.
 
 13. How can I share feedback or proposals?
+
     Please reach out to us directly. We value feedback.
 
 ## Overview of this library
