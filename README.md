@@ -115,6 +115,10 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
     Yes. We find this reduces complexity.
 
+13. Im getting `>> TypeError: Cannot read properties of undefined (reading 'F_OK')` error when running `npm run new-adapter`
+
+Make sure you are using Node 18. Run `nvm use`
+
 13. How can I share feedback or proposals?
 
     Please reach out to us directly. We value feedback.
@@ -136,6 +140,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 - Node v18
 
 ### Quick Start
+
+This project requires Node 18. Ensure you're using the correct version (e.g. run `nvm use`)
 
 To run the project and execute adapters in default mode with our test addresses, follow these steps:
 
@@ -205,6 +211,8 @@ To get deposits, run `npm run deposits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c25
 To get withdrawals, run `npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336`.
 
 ## Adding a new Adapter (CLI)
+
+This project requires Node 18. Ensure you're using the correct version (e.g. run `nvm use`)
 
 Run the following command to add a new adapter `npm run new-adapter`
 

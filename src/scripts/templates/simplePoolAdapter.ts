@@ -1,212 +1,196 @@
 export function simplePoolAdapterTemplate(
   protocolKey: string,
   adapterClassName: string,
+  productId: string,
 ) {
-  return `
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Adapter } from '../../../../core/decorators/adapter'
-import {
-  CacheToFile,
-  IMetadataBuilder,
-} from '../../../../core/decorators/cacheToFile'
-import { Erc20Metadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
-import {
-  BasePricePerShareToken,
-  BaseToken,
-  GetAprInput,
-  GetApyInput,
-  GetEventsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
-  PositionType,
-  ProtocolAprToken,
-  ProtocolApyToken,
-  ProtocolDetails,
-  ProtocolTotalValueLockedToken,
-  TokenBalance,
-  TokenType,
-} from '../../../../types/adapter'
-
-type ${adapterClassName}Metadata = Record<
-  string,
+  return `import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+  import {
+    IMetadataBuilder,
+    CacheToFile,
+  } from '../../../../core/decorators/cacheToFile'
+  import { logger } from '../../../../core/utils/logger'
+  import {
+    ProtocolDetails,
+    PositionType,
+    GetEventsInput,
+    MovementsByBlock,
+    GetAprInput,
+    GetApyInput,
+    GetTotalValueLockedInput,
+    TokenBalance,
+    ProtocolTokenApr,
+    ProtocolTokenApy,
+    ProtocolTokenTvl,
+    UnderlyingTokenRate,
+    Underlying,
+    ProtocolRewardPosition,
+    GetClaimableRewardsInput,
+  } from '../../../../types/adapter'
+  import { Erc20Metadata } from '../../../../types/erc20Metadata'
+  
+  type ${adapterClassName}Metadata = Record<
+    string,
+    {
+      protocolToken: Erc20Metadata
+      underlyingTokens: Erc20Metadata[]
+    }
+  >
+  
+  export class ${adapterClassName}
+    extends SimplePoolAdapter
+    implements IMetadataBuilder
   {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
-
-@Adapter
-export class ${adapterClassName}
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
-  product!: string
-
-  getProtocolDetails(): ProtocolDetails {
-    return {
-      protocolId: this.protocolId,
-      name: '${protocolKey}',
-      description: '${protocolKey} pool adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
-      positionType: PositionType.Supply,
-      chainId: this.chainId,
+    product = '${productId}'
+  
+    /**
+     * Update me.
+     * Add your protocol details
+     */
+    getProtocolDetails(): ProtocolDetails {
+      return {
+        protocolId: this.protocolId,
+        name: '${protocolKey}',
+        description: '${protocolKey} pool adapter',
+        siteUrl: 'https:',
+        iconUrl: 'https://',
+        positionType: PositionType.Supply,
+        chainId: this.chainId,
+      }
+    }
+  
+    /**
+     * Update me.
+     * Add logic to build protocol token metadata
+     * For context see dashboard example ./dashboard.png
+     * We need protocol token names, decimals, and also linked underlying tokens
+     */
+    @CacheToFile({ fileKey: 'protocol-token' })
+    async buildMetadata() {
+      throw new Error('Implement me')
+      return {} as ${adapterClassName}Metadata
+    }
+  
+    /**
+     * Update me.
+     * Below implementation might fit your metadata if not update it.
+     */
+    async getProtocolTokens(): Promise<Erc20Metadata[]> {
+      return Object.values(await this.buildMetadata()).map(
+        ({ protocolToken }) => protocolToken,
+      )
+    }
+  
+    /**
+     * Update me.
+     * Add logic to turn the LP token balance into the correct underlying token(s) balance
+     * For context see dashboard example ./dashboard.png
+     */
+    protected async getUnderlyingTokenBalances(
+      _protocolTokenBalance: TokenBalance,
+      _blockNumber?: number,
+    ): Promise<Underlying[]> {
+      throw new Error('Implement me')
+    }
+  
+    /**
+     * Update me.
+     * Add logic to return current claimable rewards.
+     * Ensure you support blocknumber override param
+     *
+     */
+    async getClaimableRewards(
+      _input: GetClaimableRewardsInput,
+    ): Promise<ProtocolRewardPosition[]> {
+      throw new Error('Implement me')
+    }
+  
+    /**
+     * Update me.
+     * Add logic to return claimed rewards between blocknumber range
+     * Implement as you wish, use event logs or chain data if possible
+     *
+     */
+    async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+      throw new Error('Implement me')
+    }
+  
+    /**
+     * Update me.
+     * Add logic to find tvl in a pool
+     *
+     */
+    async getTotalValueLocked(
+      _input: GetTotalValueLockedInput,
+    ): Promise<ProtocolTokenTvl[]> {
+      throw new Error('Implement me')
+    }
+  
+    /**
+     * Update me.
+     * Below implementation might fit your metadata if not update it.
+     */
+    protected async fetchProtocolTokenMetadata(
+      protocolTokenAddress: string,
+    ): Promise<Erc20Metadata> {
+      const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+  
+      return protocolToken
+    }
+  
+    /**
+     * Update me.
+     * Add logic that finds the underlying token rates for 1 protocol token
+     */
+    protected async getUnderlyingTokenConversionRate(
+      _protocolTokenMetadata: Erc20Metadata,
+      _blockNumber?: number | undefined,
+    ): Promise<UnderlyingTokenRate[]> {
+      throw new Error('Implement me')
+    }
+  
+    async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+      throw new Error('Implement me')
+    }
+  
+    async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+      throw new Error('Implement me')
+    }
+    async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+      throw new Error('Implement me')
+    }
+  
+    async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+      throw new Error('Implement me')
+    }
+  
+    /**
+     * Update me.
+     * Below implementation might fit your metadata if not update it.
+     */
+    protected async fetchUnderlyingTokensMetadata(
+      protocolTokenAddress: string,
+    ): Promise<Erc20Metadata[]> {
+      const { underlyingTokens } = await this.fetchPoolMetadata(
+        protocolTokenAddress,
+      )
+  
+      return underlyingTokens
+    }
+  
+    /**
+     * Update me.
+     * Below implementation might fit your metadata if not update it.
+     */
+    private async fetchPoolMetadata(protocolTokenAddress: string) {
+      const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
+  
+      if (!poolMetadata) {
+        logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
+        throw new Error('Protocol token pool not found')
+      }
+  
+      return poolMetadata
     }
   }
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
-
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return [
-      {
-        underlyingTokensMovement: {
-          '0xunderlyingTokenAddress': {
-            address: '0xunderlyingTokenAddress',
-            name: 'USD Coin',
-            symbol: 'USDC',
-            decimals: 6,
-            movementValueRaw: 100n,
-            movementValue: '100',
-          },
-        },
-        blockNumber: 17970000,
-      },
-    ]
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
-    return {
-      address: '0xprotocolTokenAddress',
-      decimals: 8,
-      symbol: 'stUSD',
-      aprDecimal: '0.1', // 10%
-      name: 'stUSD',
-    }
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
-    return {
-      address: '0xprotocolTokenAddress',
-      decimals: 8,
-      symbol: 'stUSD',
-      apyDecimal: '0.1', // 10%
-      name: 'stUSD',
-    }
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]> {
-    return [
-      {
-        address: '0xprotocolTokenAddress',
-        name: 'Coin-LP',
-        symbol: 'S*USDC',
-        decimals: 6,
-        totalSupplyRaw: 31468548033n,
-        totalSupply: '31468.548033',
-        type: 'protocol',
-        tokens: [
-          {
-            address: '0xunderlyingTokenAddress',
-            name: 'USD Coin',
-            symbol: 'USDC',
-            decimals: 6,
-            totalSupply: '31492.408006',
-            totalSupplyRaw: 31492408006n,
-            type: 'underlying',
-          },
-        ],
-      },
-    ]
-  }
-
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    return {
-      '0xprotocolTokenAddress': {
-        protocolToken: {
-          address: '0xprotocolTokenAddress',
-          name: 'Coin-LP',
-          symbol: 'S*USDC',
-          decimals: 6,
-        },
-        underlyingTokens: [
-          {
-            address: '0xunderlyingTokenAddress',
-            name: 'USD Coin',
-            symbol: 'USDC',
-            decimals: 6,
-          },
-        ],
-      },
-    } as ${adapterClassName}Metadata
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
-  protected async getUnderlyingTokens(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return underlyingTokens
-  }
-
-  protected async getUnderlyingTokenBalances(
-    _protocolTokenBalance: TokenBalance,
-  ): Promise<BaseToken[]> {
-    return [
-      {
-        type: TokenType.Underlying,
-        address: '0xunderlyingTokenAddress',
-        name: 'USD Coin',
-        symbol: 'USDC',
-        decimals: 6,
-        balanceRaw: 31492408006n,
-        balance: '31492.408006',
-      },
-    ]
-  }
-
-  protected async getUnderlyingTokenPricesPerShare(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<BasePricePerShareToken[]> {
-    return [
-      {
-        type: TokenType.Underlying,
-        address: '0xunderlyingTokenAddress',
-        name: 'USD Coin',
-        symbol: 'USDC',
-        decimals: 6,
-        pricePerShareRaw: 1000154n,
-        pricePerShare: '1.000154',
-      },
-    ]
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
-  }
-}
-`
+  `
 }
