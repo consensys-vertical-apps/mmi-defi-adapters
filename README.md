@@ -21,15 +21,109 @@ This library is designed to simplify and standardize the process of fetching and
    - Withdrawals by address
    - Claimed rewards by address
 
+## Documentation 📖
+
+Detailed documentation on the adapter methods can be found [here](./docs/interfaces/iProtocolAdapter.IProtocolAdapter.md).
+
+## Portfolio dashboard
+
+The DeFi adapter library is the engine behind MetaMask's retail and institutional portfolio dashboards 🦊.
+
+In this example, the user holds positions in both Stargate and Uniswap.
+
+![Alt text](dashboard.png)
+
+## Example adapter user story
+
+> ## User Story: Implement New DeFi Adapter for [Your Protocol Name]
+>
+> **As a** adapter developer,  
+> **I want to** implement a new DeFi adapter that follows the IProtocolAdapter interface,  
+> **So that** MMI and MetaMask Portfolio users can view in-depth data related to their positions.
+>
+> ---
+>
+> ### Acceptance Criteria:
+>
+> 1. **Multiple Products Consideration:** Ensure that protocols with multiple products (e.g., farming, staking, pools) are supported by one adapter each.
+> 2. **Adapter Implementation:** Successfully add a new DeFi adapter implementing the IProtocolAdapter to support the product.
+> 3. **Add Adapter using CLI:**
+>    - Follow instructions in the "Adding a new Adapter (CLI)" section of the readme.
+> 4. **Ethers Contracts Creation:**
+>    - Create ethers contracts to interact with the smart contracts of the protocol.
+>    - Refer to the "Contract Factories" section in the readme for guidance.
+> 5. **LP Token Metadata Building:** Implement the `buildMetadata()` logic in the adapter to retrieve the LP token reference data and run `npm run build-metadata`. (e.g., Check out the `buildMetadata()` method in the [`StargatePoolAdapter` class](https://github.com/consensys-vertical-apps/mmi-DeFi-adapters/blob/main/src/adapters/stargate/products/pool/stargatePoolAdapter.ts).
+>    [output example](src/adapters/stargate/products/pool/metadata/ethereum.lp-token.json)).
+> 6. **Testing:** Test the adapter(s) using the commands specified in the readme.
+>
+> ---
+>
+> ### Additional Notes/Comments:
+>
+> The IProtocolAdapter interface has been documented with TSDocs, detailed descriptions of the methods and properties can be found [here](./docs/interfaces/iProtocolAdapter.IProtocolAdapter.md).
+
+## FAQ section
+
+1. What is a DeFi adapter?
+
+   A DeFi adapter is code that standardizes DeFi protocol data and positions, allowing for consistent data retrieval and interaction. It acts as a connector (a.k.a translator) between our dashboards and your DeFi products.
+
+2. What do these adapters do?
+
+   They power the MetaMask portfolio dashboards, displaying users' DeFi positions.
+
+3. What experience do I need to map an adapter?
+
+   Ideally experience in Typescript, Ethers library, and be familiar with the DeFi protocol.
+
+4. Are these adapters deployed onchain?
+
+   No this adapter library is installed and deployed in microservices. The adapters are written in TypeScript (not solidity).
+
+5. I'm not familiar with the protocol. Can I still map an adapter?
+
+   Yes. To assist you refer to the protocol docs, smart contracts, find example open positions and review deposits and withdrawals to the position.
+
+6. How long does it take to map an adapter?
+
+   A few hours for those with knowledge of Typescript, Ethers, and the DeFi protocol.
+
+7. What is the getProfits method?
+
+   It returns profit on individual open positions by considering weekly changes and transactions in and out of the position.
+
+8. How do you calculate profits?
+
+   - We capture users' positions from 7 days ago using the `get positions` adapter method with a `blocknumber override`.
+   - We then obtain the current positions.
+   - To account for deposits and withdrawals in this period, we examine `mint` and `burn` events of LP tokens and convert these back to underlying tokens.
+   - We found this method works for the majority of protocols. However, adapt as necessary for your protocol. For example, if there are better event logs available for your protocol, use them.
+
+9. Some adapter methods don't make sense for my DeFi-protocol?
+
+   Throw an error: new Error('Does not apply').
+
+10. Can I use an API for results?
+
+    We recommend getting data directly from the blockchain over centralized APIs.
+
+11. My protocol only has a few pools, can I hardcode the buildMetadata() result?
+
+    Yes. Feel free to hardcode this result if it doesn't make sense to fetch pool data on chain.
+
+12. My protocol has more than one product, should I create separate adapters?
+
+    Yes. We find this reduces complexity.
+
+13. How can I share feedback or proposals?
+
+    Please reach out to us directly. We value feedback.
+
 ## Overview of this library
 
 From left to right, get-onchain-data and convert to standardize format.
 
 ![Alt text](high-level.png)
-
-## Overview of getPositions function
-
-![Alt text](get-positions.png)
 
 ## Getting Started 🏁
 
@@ -131,13 +225,14 @@ In order to maintain integrity, it is possible to create test snapshots.
 Tests can be added to `src/adapters/<protocol-name>/tests/testCases.ts` by adding them to the exported `testCases` array. The test object is fully typed.
 
 A test needs to include:
+
 - `chainId`: Chain for which the test will run
 - `method`: One of the available public methods of the library
 - `input`: If the test `method` requires input, such as an user address, it needs to be specified here.
 - `blockNumber`: For some tests, it is possible to specify which block number should be used. If it's not provided, the snapshot will be created with the latest block number, which will be stored along with the snapshot.
 - `key`: When there are multiple tests for the same `chainId` and `method`, but with different inputs (e.g. testing multiple user addresses), a key is necessary for the system to identify them.
 
-Once the tests are defined, running `npm run build-snapshots -- -p <protocol-name>` will generate snapshots for them.
+Once the tests are DeFined, running `npm run build-snapshots -- -p <protocol-name>` will generate snapshots for them.
 
 Running `npm run test` validates snapshots match results.
 

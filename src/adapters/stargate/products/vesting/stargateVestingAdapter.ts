@@ -6,28 +6,28 @@ import {
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import {
-  Erc20Metadata,
-  getThinTokenMetadata,
-} from '../../../../core/utils/getTokenMetadata'
+import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
   GetApyInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
-  IProtocolAdapter,
   MovementsByBlock,
   PositionType,
-  ProfitsTokensWithRange,
+  ProfitsWithRange,
   ProtocolAdapterParams,
-  ProtocolAprToken,
-  ProtocolApyToken,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
   ProtocolDetails,
-  ProtocolPricePerShareToken,
-  ProtocolToken,
-  ProtocolTotalValueLockedToken,
+  ProtocolTokenUnderlyingRate,
+  ProtocolPosition,
+  ProtocolTokenTvl,
   TokenType,
+  ProtocolRewardPosition,
+  GetClaimableRewardsInput,
 } from '../../../../types/adapter'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { StargateVotingEscrow__factory } from '../../contracts'
 
@@ -71,7 +71,7 @@ export class StargateVestingAdapter
   async getPositions({
     userAddress,
     blockNumber,
-  }: GetPositionsInput): Promise<ProtocolToken[]> {
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const { contractToken, underlyingToken } = await this.buildMetadata()
 
     const votingEscrowContract = StargateVotingEscrow__factory.connect(
@@ -112,7 +112,7 @@ export class StargateVestingAdapter
     return tokens
   }
 
-  async getPricePerShare(): Promise<ProtocolPricePerShareToken> {
+  async getProtocolTokenToUnderlyingTokenRate(): Promise<ProtocolTokenUnderlyingRate> {
     throw new Error('Not Implemented')
   }
 
@@ -130,19 +130,32 @@ export class StargateVestingAdapter
 
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]> {
+  ): Promise<ProtocolTokenTvl[]> {
     throw new Error('Not Implemented')
   }
 
-  async getProfits(): Promise<ProfitsTokensWithRange> {
+  async getProfits(): Promise<ProfitsWithRange> {
     throw new Error('Not Implemented')
   }
 
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+  async getClaimableRewards(
+    _input: GetClaimableRewardsInput,
+  ): Promise<ProtocolRewardPosition[]> {
     throw new Error('Not Implemented')
   }
 
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new Error('Not Implemented')
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new Error('Not Implemented')
+  }
+  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new Error('Not Implemented')
+  }
+
+  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new Error('Not Implemented')
   }
 

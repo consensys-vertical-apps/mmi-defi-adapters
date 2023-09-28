@@ -3,25 +3,25 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import {
-  Erc20Metadata,
-  getThinTokenMetadata,
-} from '../../../../core/utils/getTokenMetadata'
+import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
-  BasePricePerShareToken,
-  BaseToken,
+  UnderlyingTokenRate,
+  Underlying,
   GetAprInput,
   GetApyInput,
   GetEventsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
-  ProtocolAprToken,
-  ProtocolApyToken,
-  ProtocolTotalValueLockedToken,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
+  ProtocolTokenTvl,
   TokenBalance,
   TokenType,
+  GetClaimableRewardsInput,
+  ProtocolRewardPosition,
 } from '../../../../types/adapter'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
@@ -53,17 +53,30 @@ export abstract class AaveV2BasePoolAdapter
     throw new Error('Not Implemented')
   }
 
+  async getClaimableRewards(
+    _input: GetClaimableRewardsInput,
+  ): Promise<ProtocolRewardPosition[]> {
+    throw new Error('Not Implemented')
+  }
+
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]> {
+  ): Promise<ProtocolTokenTvl[]> {
     throw new Error('Not Implemented')
   }
 
-  async getApy(_input: GetApyInput): Promise<ProtocolApyToken> {
+  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new Error('Not Implemented')
   }
 
-  async getApr(_input: GetAprInput): Promise<ProtocolAprToken> {
+  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new Error('Not Implemented')
+  }
+  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new Error('Not Implemented')
+  }
+
+  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new Error('Not Implemented')
   }
 
@@ -131,7 +144,7 @@ export abstract class AaveV2BasePoolAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokens(
+  protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
@@ -143,7 +156,7 @@ export abstract class AaveV2BasePoolAdapter
 
   protected async getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
-  ): Promise<BaseToken[]> {
+  ): Promise<Underlying[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenBalance.address,
     )
@@ -159,10 +172,10 @@ export abstract class AaveV2BasePoolAdapter
     return [underlyingTokenBalance]
   }
 
-  protected async getUnderlyingTokenPricesPerShare(
+  protected async getUnderlyingTokenConversionRate(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<BasePricePerShareToken[]> {
+  ): Promise<UnderlyingTokenRate[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )
@@ -181,8 +194,8 @@ export abstract class AaveV2BasePoolAdapter
       {
         ...underlyingToken,
         type: TokenType.Underlying,
-        pricePerShareRaw,
-        pricePerShare,
+        underlyingRateRaw: pricePerShareRaw,
+        underlyingRate: pricePerShare,
       },
     ]
   }

@@ -16,13 +16,13 @@
           "decimals": 6,
           "symbol": "S*USDT",
           "address": "0xprotocolTokenAddress",
-          "share": 1,
+          "baseRate": 1,
           "type": "protocol",
           "tokens": [
             {
               "type": "underlying",
-              "pricePerShareRaw": "1000154n",
-              "pricePerShare": "1.000154",
+              "underlyingRateRaw": "1000154n",
+              "underlyingRate": "1.000154",
               "decimals": 6,
               "name": "Tether USD",
               "iconUrl": "",

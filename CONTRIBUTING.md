@@ -6,24 +6,6 @@
 
 We aim to keep this project lightweight and prioritize fetching DeFi data directly from the standard node JSON-RPC endpoints.
 
-## Requirement
-
-Our goal is to show in-depth protocol data for your protocol to the MMI and MetaMask Portfolio users.
-
-We expect some protocols to have more than one product (e.g. farming, staking, pools) and as result will have more than one adapter
-
-Task:
-
-- Add adapters implementing our interface IProtocolAdapter to support your products
-
-Example sub tasks:
-
-- Run "add adapter CLI" described in readme section "Adding a new Adapter (CLI)"
-- Create "ethers contracts" to interact with your smart-contracts, see section "Contract Factories" in readme for instructions
-- Create a metadata script and file to get token reference data for your lp tokens [example metadata file](src/adapters/stargate/products/pool/arbitrum/metadata.json)
-- Implement your adapter logic so that the result follows our interface (IProtocolAdapter) standard
-- Run/Test your adapter(s) using commands described in readme
-
 ## Issues
 
 We welcome issues for:

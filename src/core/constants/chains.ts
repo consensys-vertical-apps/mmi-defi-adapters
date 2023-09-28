@@ -1,3 +1,6 @@
+/**
+ * Unique chain id of the blockchain
+ */
 export const Chain = {
   Ethereum: 1,
   Optimism: 10,
@@ -10,6 +13,10 @@ export const Chain = {
   Linea: 59144,
 } as const
 export type Chain = (typeof Chain)[keyof typeof Chain]
+
+/**
+ * Chain name map
+ */
 export const ChainName: Record<Chain, string> = {
   [Chain.Ethereum]: 'ethereum',
   [Chain.Optimism]: 'optimism',

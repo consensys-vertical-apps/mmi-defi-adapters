@@ -1,0 +1,106 @@
+[@metamask-institutional/defi-adapters](../README.md) / [adapter](../modules/adapter.md) / BaseTokenMovement
+
+# Interface: BaseTokenMovement
+
+[adapter](../modules/adapter.md).BaseTokenMovement
+
+## Hierarchy
+
+- [`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata)
+
+  ↳ **`BaseTokenMovement`**
+
+## Table of contents
+
+### Properties
+
+- [movementValue](adapter.BaseTokenMovement.md#movementvalue)
+- [movementValueRaw](adapter.BaseTokenMovement.md#movementvalueraw)
+- [address](adapter.BaseTokenMovement.md#address)
+- [name](adapter.BaseTokenMovement.md#name)
+- [symbol](adapter.BaseTokenMovement.md#symbol)
+- [decimals](adapter.BaseTokenMovement.md#decimals)
+
+## Properties
+
+### movementValue
+
+• **movementValue**: `string`
+
+#### Defined in
+
+[adapter.ts:258](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L258)
+
+___
+
+### movementValueRaw
+
+• **movementValueRaw**: `bigint`
+
+#### Defined in
+
+[adapter.ts:259](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L259)
+
+___
+
+### address
+
+• **address**: `string`
+
+Token address
+
+#### Inherited from
+
+Erc20Metadata.address
+
+#### Defined in
+
+[erc20Metadata.ts:5](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L5)
+
+___
+
+### name
+
+• **name**: `string`
+
+Name of token
+
+#### Inherited from
+
+Erc20Metadata.name
+
+#### Defined in
+
+[erc20Metadata.ts:10](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L10)
+
+___
+
+### symbol
+
+• **symbol**: `string`
+
+Token symbol
+
+#### Inherited from
+
+Erc20Metadata.symbol
+
+#### Defined in
+
+[erc20Metadata.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L15)
+
+___
+
+### decimals
+
+• **decimals**: `number`
+
+Token decimals
+
+#### Inherited from
+
+Erc20Metadata.decimals
+
+#### Defined in
+
+[erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)

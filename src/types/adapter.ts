@@ -1,19 +1,34 @@
 import { ethers } from 'ethers'
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
-import { Erc20Metadata } from '../core/utils/getTokenMetadata'
+import { Erc20Metadata } from './erc20Metadata'
 
 export const TokenType = {
   Protocol: 'protocol',
-  Claimable: 'claimable',
+  Reward: 'claimable',
   Underlying: 'underlying',
 } as const
 export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
 export const PositionType = {
+  /**
+   * Liquidity position e.g. a dex pool
+   */
   Supply: 'supply',
+
+  /**
+   * Providing liquidity to a lending and borrow protocol
+   */
   Lend: 'lend',
+
+  /**
+   * Getting a loan from a lending and borrow protocol
+   */
   Borrow: 'borrow',
+
+  /**
+   * Staking a token e.g. staking eth or staking an lp token
+   */
   Staked: 'stake',
 } as const
 export type PositionType = (typeof PositionType)[keyof typeof PositionType]
@@ -24,134 +39,318 @@ export type GetBalancesInput = GetPositionsInput & {
   tokens: Erc20Metadata[]
 }
 
-export type GetPricesInput = {
+export type GetConversionRateInput = {
+  /**
+   * Optional override param
+   */
   blockNumber?: number
+  /**
+   * Protocol token address (LP token address).
+   */
   protocolTokenAddress: string
 }
 export type GetApyInput = {
+  /**
+   * Optional override param
+   */
   blockNumber?: number
+
+  /**
+   * Protocol token address (LP token address).
+   */
   protocolTokenAddress: string
 }
 export type GetAprInput = {
+  /**
+   * Optional override param
+   */
   blockNumber?: number
+  /**
+   * Protocol token address (LP token address).
+   */
   protocolTokenAddress: string
 }
 
 export type GetEventsInput = {
+  /**
+   * User address we want to get events for
+   */
   userAddress: string
+
+  /**
+   * Protocol token we want to check related events for
+   */
   protocolTokenAddress: string
+
+  /**
+   * Starting blocknumber to check from
+   */
   fromBlock: number
+
+  /**
+   * End blocknumber we want to check to e.g. current blocknumber
+   */
   toBlock: number
 }
 export interface GetProfitsInput {
+  /**
+   * User address we want to get earned profits for
+   */
   userAddress: string
+  /**
+   * Starting blocknumber to check profits earned from
+   */
   fromBlock: number
+
+  /**
+   * Starting blocknumber to check profits earned to
+   */
   toBlock: number
 }
 
 export type ProtocolDetails = {
+  /**
+   * Unique protocol id
+   */
   protocolId: Protocol
+
+  /**
+   * Chain this adapter is for
+   */
   chainId: Chain
+
+  /**
+   * Name of protocol
+   */
   name: string
+
+  /**
+   * Description of protocol
+   */
   description: string
+
+  /**
+   * Protocol icon
+   */
   iconUrl: string
+
+  /**
+   * Protocol website
+   */
   siteUrl: string
+
+  /**
+   * Type of position
+   * One adapter per type
+   */
   positionType: PositionType
 }
 
-export type GetPositionsInput = {
+export interface GetPositionsInput {
+  /**
+   * Address of the user can be any type of address EOA/Contract
+   */
   userAddress: string
+
+  /**
+   * Optional override param
+   */
   blockNumber?: number
 }
-export type GetPricePerShareInput = {
+export interface GetClaimableRewardsInput {
+  /**
+   * Address of the user can be any type of address EOA/Contract
+   */
+  userAddress: string
+
+  /**
+   * Optional override param
+   */
   blockNumber?: number
 }
-export type GetTotalValueLockedInput = {
+export interface GetPricePerShareInput {
+  /**
+   * Optional override param
+   */
+  blockNumber?: number
+}
+export interface GetTotalValueLockedInput {
+  /**
+   * Optional override param
+   */
   blockNumber?: number
 }
 
-export type TokenBalance = Erc20Metadata & {
+export interface TokenBalance extends Erc20Metadata {
+  /**
+   * User's balance raw
+   */
   balanceRaw: bigint
+  /**
+   * User's balance formatted using token decimals
+   */
   balance: string
 }
 
-export type BaseToken = TokenBalance &
-  (
-    | { type: typeof TokenType.Underlying; iconUrl: string }
-    | { type: typeof TokenType.Claimable }
-  ) & {
-    tokens?: BaseToken[]
-  }
-
-export type ProtocolToken = TokenBalance & {
-  type: typeof TokenType.Protocol
-  tokens?: BaseToken[]
+/**
+ * Underlying token balances of a position
+ * The underlying token may be a simple erc20 such as Dai.
+ * Should the underlying token be another protocol token then we expect that to be resolved down into the underlying simple erc20 tokens
+ */
+export interface Underlying extends TokenBalance {
+  type: typeof TokenType.Underlying
+  iconUrl: string
+  tokens?: Underlying[]
 }
 
-export type BasePricePerShareToken = Erc20Metadata & {
-  pricePerShareRaw: bigint
-  pricePerShare: string
+/**
+ * User's position, includes balance of protocol token related underlying token balances
+ */
+export interface ProtocolRewardPosition extends Erc20Metadata {
+  type: typeof TokenType.Protocol
+
+  /**
+   * Underlying token balances
+   */
+  tokens?: ClaimableRewards[]
+}
+
+/**
+ *
+ * Claimable rewards are mapped one to one to the underlying "reward" token
+ * Therefore they always have a underlying-token which is the reward token
+ */
+export interface ClaimableRewards extends TokenBalance {
+  type: typeof TokenType.Reward
+  tokens: Underlying[]
+}
+
+/**
+ * User's position, includes balance of protocol token related underlying token balances
+ */
+export interface ProtocolPosition extends TokenBalance {
+  type: typeof TokenType.Protocol
+
+  /**
+   * Underlying token balances
+   */
+  tokens?: Underlying[]
+}
+
+export interface UnderlyingTokenRate extends Erc20Metadata {
+  underlyingRateRaw: bigint
+  underlyingRate: string
   type: typeof TokenType.Underlying
   iconUrl: string
 }
 
-export type ProtocolPricePerShareToken = Erc20Metadata & {
-  share: number
+export interface ProtocolTokenUnderlyingRate extends Erc20Metadata {
+  /**
+   * Always equal to 1
+   * We are finding the underlying value of 1 LP token
+   */
+  baseRate: 1
   type: typeof TokenType.Protocol
-  tokens?: BasePricePerShareToken[]
+  tokens?: UnderlyingTokenRate[]
 }
 
-export type BaseTokenMovement = Erc20Metadata & {
+export interface BaseTokenMovement extends Erc20Metadata {
   movementValue: string
   movementValueRaw: bigint
 }
 
-export type MovementsByBlock = {
+export interface MovementsByBlock {
+  /**
+   * Movements in or out of a protocol position
+   */
   underlyingTokensMovement: Record<string, BaseTokenMovement>
+
+  /**
+   * Blocknumber movement was executed
+   */
   blockNumber: number
 }
 
-export type ProtocolApyToken = Erc20Metadata & {
+export interface ProtocolTokenApy extends Erc20Metadata {
+  /**
+   * Current apy of protocol pool
+   */
   apyDecimal: string
 }
 
-export type ProtocolAprToken = Erc20Metadata & {
+export interface ProtocolTokenApr extends Erc20Metadata {
+  /**
+   * Current apr of protocol pool
+   */
   aprDecimal: string
 }
 
-export type TokenTotalValueLock = Erc20Metadata & {
+export interface UnderlyingTokenTvl extends Erc20Metadata {
+  type: typeof TokenType.Underlying
+  /**
+   * Total underlying token locked in pool raw
+   */
   totalSupplyRaw: bigint
+  /**
+   * Total underlying token locked in pool
+   */
   totalSupply: string
 }
 
-export type BaseTotalValueLockToken = TokenTotalValueLock & {
-  type: typeof TokenType.Underlying
-}
-
-export type ProtocolTotalValueLockedToken = TokenTotalValueLock & {
+export interface ProtocolTokenTvl extends Erc20Metadata {
+  /**
+   * Total underlying token locked in pool raw
+   */
+  totalSupplyRaw: bigint
+  /**
+   * Total underlying token locked in pool
+   */
+  totalSupply: string
   type: typeof TokenType.Protocol
-  tokens?: BaseTotalValueLockToken[]
+  tokens?: UnderlyingTokenTvl[]
 }
 
-export type ProfitsTokensWithRange = {
+export interface ProfitsWithRange {
+  /**
+   * Calculated profits from this block number
+   */
   fromBlock: number
+
+  /**
+   * Calculated profits to this block number
+   */
   toBlock: number
-  tokens: ProtocolProfitsToken[]
+  /**
+   * Profits earned by user address
+   */
+  tokens: PositionProfits[]
 }
 
-export type BaseProfitsToken = Erc20Metadata & {
-  type: typeof TokenType.Underlying | typeof TokenType.Claimable
+export interface UnderlyingProfitValues extends Erc20Metadata {
+  type: typeof TokenType.Underlying | typeof TokenType.Reward
+
+  /**
+   * Profit made in this token for this period
+   */
   profitRaw: bigint
+
+  /**
+   * Profit made in this token for this period
+   */
   profit: string
+
+  /**
+   * Numbers used to calculate profit value
+   */
   calculationData: CalculationData
 }
 
-export type ProtocolProfitsToken = Erc20Metadata & {
+export interface PositionProfits extends Erc20Metadata {
   type: typeof TokenType.Protocol
-  tokens: BaseProfitsToken[]
+  tokens: UnderlyingProfitValues[]
 }
 
-export type CalculationData = {
+export interface CalculationData {
   withdrawalsRaw: bigint
   withdrawals: string
   depositsRaw: bigint
@@ -162,26 +361,7 @@ export type CalculationData = {
   endPositionValue: string
 }
 
-export interface IProtocolAdapter {
-  protocolId: Protocol
-  chainId: Chain
-
-  getProtocolDetails(): ProtocolDetails
-  getProtocolTokens(): Promise<Erc20Metadata[]>
-  getPositions(input: GetPositionsInput): Promise<ProtocolToken[]>
-  getPricePerShare(input: GetPricesInput): Promise<ProtocolPricePerShareToken>
-  getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]>
-  getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]>
-  getClaimedRewards(input: GetEventsInput): Promise<MovementsByBlock[]>
-  getTotalValueLocked(
-    input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTotalValueLockedToken[]>
-  getProfits(input: GetProfitsInput): Promise<ProfitsTokensWithRange>
-  getApy(input: GetApyInput): Promise<ProtocolApyToken>
-  getApr(input: GetAprInput): Promise<ProtocolAprToken>
-}
-
-export type ProtocolAdapterParams = {
+export interface ProtocolAdapterParams {
   provider: ethers.JsonRpcProvider
   chainId: Chain
   protocolId: Protocol
