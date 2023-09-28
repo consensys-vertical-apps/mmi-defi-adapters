@@ -24,7 +24,11 @@ import { testCases } from './templates/testCases'
 import n = types.namedTypes
 import b = types.builders
 
-type TemplateBuilder = (protocolName: string, adapterName: string) => string
+type TemplateBuilder = (
+  protocolName: string,
+  adapterName: string,
+  productId: string,
+) => string
 
 type NewAdapterAnswers = {
   protocolKey: string
@@ -220,7 +224,7 @@ async function buildAdapterFromTemplate({
 
   await writeCodeFile(
     adapterFilePath,
-    templateBuilder(protocolKey, adapterClassName),
+    templateBuilder(protocolKey, adapterClassName, productId),
   )
 }
 
