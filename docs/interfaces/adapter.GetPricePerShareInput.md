@@ -20,4 +20,4 @@ Optional override param
 
 #### Defined in
 
-[adapter.ts:175](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L175)
+[adapter.ts:175](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L175)

@@ -35,32 +35,32 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
 ## Example adapter user story
 
-> ## 🎫 User Story: Implement New DeFi Adapter for [Your Protocol Name]
+> ## User Story: Implement New DeFi Adapter for [Your Protocol Name]
 >
-> **📜 As a** adapter developer,  
-> **🖱️ I want to** implement a new DeFi adapter that follows the IProtocolAdapter interface,  
-> **🎯 So that** MMI and MetaMask Portfolio users can view in-depth data related to the protocol.
+> **As a** adapter developer,  
+> **I want to** implement a new DeFi adapter that follows the IProtocolAdapter interface,  
+> **So that** MMI and MetaMask Portfolio users can view in-depth data related to their positions.
 >
 > ---
 >
-> ### 📋 Acceptance Criteria:
+> ### Acceptance Criteria:
 >
 > 1. **Multiple Products Consideration:** Ensure that protocols with multiple products (e.g., farming, staking, pools) are supported by one adapter each.
 > 2. **Adapter Implementation:** Successfully add a new DeFi adapter implementing the IProtocolAdapter to support the product.
 > 3. **Add Adapter using CLI:**
 >    - Follow instructions in the "Adding a new Adapter (CLI)" section of the readme.
->    - Use the "add adapter CLI".
 > 4. **Ethers Contracts Creation:**
 >    - Create ethers contracts to interact with the smart contracts of the protocol.
 >    - Refer to the "Contract Factories" section in the readme for guidance.
-> 5. **LP Token Metadata Building:** Implement the `buildMetadata()` logic in the adapter to retrieve the LP token reference data. (e.g., [example](src/adapters/stargate/products/pool/arbitrum/metadata.json)).
+> 5. **LP Token Metadata Building:** Implement the `buildMetadata()` logic in the adapter to retrieve the LP token reference data and run `npm run build-metadata`. (e.g., Check out the `buildMetadata()` method in the [`StargatePoolAdapter` class](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/adapters/stargate/products/pool/stargatePoolAdapter.ts).
+>    [output example](src/adapters/stargate/products/pool/metadata/ethereum.lp-token.json)).
 > 6. **Testing:** Test the adapter(s) using the commands specified in the readme.
 >
 > ---
 >
-> ### 📝 Additional Notes/Comments:
+> ### Additional Notes/Comments:
 >
-> The IProtocolAdapter interface has been documented with tsDocs, detailed descriptions of the methods and properties can be found [here](./docs/interfaces/iProtocolAdapter.IProtocolAdapter.md).
+> The IProtocolAdapter interface has been documented with TSDocs, detailed descriptions of the methods and properties can be found [here](./docs/interfaces/iProtocolAdapter.IProtocolAdapter.md).
 
 ## FAQ section
 

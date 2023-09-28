@@ -25,7 +25,7 @@
 
 #### Defined in
 
-[adapter.ts:354](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L354)
+[adapter.ts:354](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L354)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:355](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L355)
+[adapter.ts:355](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L355)
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:356](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L356)
+[adapter.ts:356](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L356)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:357](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L357)
+[adapter.ts:357](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L357)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:358](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L358)
+[adapter.ts:358](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L358)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:359](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L359)
+[adapter.ts:359](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L359)
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:360](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L360)
+[adapter.ts:360](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L360)
 
 ___
 
@@ -95,4 +95,4 @@ ___
 
 #### Defined in
 
-[adapter.ts:361](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L361)
+[adapter.ts:361](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L361)

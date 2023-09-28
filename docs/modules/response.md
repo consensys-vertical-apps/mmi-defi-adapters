@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[response.ts:13](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/response.ts#L13)
+[response.ts:13](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L13)
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 #### Defined in
 
-[response.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/response.ts#L20)
+[response.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L20)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 #### Defined in
 
-[response.ts:26](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/response.ts#L26)
+[response.ts:26](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L26)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-[response.ts:30](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/response.ts#L30)
+[response.ts:30](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L30)
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-[response.ts:34](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/response.ts#L34)
+[response.ts:34](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L34)
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 #### Defined in
 
-[response.ts:38](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/response.ts#L38)
+[response.ts:38](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L38)
 
 ___
 
@@ -98,7 +98,7 @@ ___
 
 #### Defined in
 
-[response.ts:42](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/response.ts#L42)
+[response.ts:42](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L42)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Defined in
 
-[response.ts:46](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/response.ts#L46)
+[response.ts:46](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L46)
 
 ___
 
@@ -118,4 +118,4 @@ ___
 
 #### Defined in
 
-[response.ts:48](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/response.ts#L48)
+[response.ts:48](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L48)

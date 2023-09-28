@@ -30,7 +30,7 @@ Current apy of protocol pool
 
 #### Defined in
 
-[adapter.ts:278](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L278)
+[adapter.ts:278](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L278)
 
 ___
 
@@ -46,7 +46,7 @@ Erc20Metadata.address
 
 #### Defined in
 
-erc20Metadata.ts:5
+[erc20Metadata.ts:5](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L5)
 
 ___
 
@@ -62,7 +62,7 @@ Erc20Metadata.name
 
 #### Defined in
 
-erc20Metadata.ts:10
+[erc20Metadata.ts:10](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L10)
 
 ___
 
@@ -78,7 +78,7 @@ Erc20Metadata.symbol
 
 #### Defined in
 
-erc20Metadata.ts:15
+[erc20Metadata.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L15)
 
 ___
 
@@ -94,4 +94,4 @@ Erc20Metadata.decimals
 
 #### Defined in
 
-erc20Metadata.ts:20
+[erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)

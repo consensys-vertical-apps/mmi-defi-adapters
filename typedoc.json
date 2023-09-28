@@ -4,6 +4,8 @@
   "hideBreadcrumbs": false,
   "hideInPageTOC": false,
   "readme": "none",
+  "gitRemote": "origin",
+  "gitRevision": "main",
   "out": "./docs",
   "sort": "source-order",
   "entryPoints": ["src/types/"],

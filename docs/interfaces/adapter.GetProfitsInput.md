@@ -22,7 +22,7 @@ User address we want to get earned profits for
 
 #### Defined in
 
-[adapter.ts:99](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L99)
+[adapter.ts:99](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L99)
 
 ___
 
@@ -34,7 +34,7 @@ Starting blocknumber to check profits earned from
 
 #### Defined in
 
-[adapter.ts:103](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L103)
+[adapter.ts:103](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L103)
 
 ___
 
@@ -46,4 +46,4 @@ Starting blocknumber to check profits earned to
 
 #### Defined in
 
-[adapter.ts:108](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/adapter.ts#L108)
+[adapter.ts:108](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L108)

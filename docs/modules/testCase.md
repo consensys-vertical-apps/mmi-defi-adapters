@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[testCase.ts:4](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/e9d45bd/src/types/testCase.ts#L4)
+[testCase.ts:4](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/testCase.ts#L4)
