@@ -6,7 +6,7 @@ import {
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
   GetApyInput,
@@ -175,14 +175,14 @@ export class StargateVestingAdapter
       await votingEscrowContract.token()
     ).toLowerCase()
 
-    const contractToken = await getThinTokenMetadata(
-      contractAddresses[this.chainId]!,
-      this.chainId,
-    )
-    const underlyingToken = await getThinTokenMetadata(
-      underlyingTokenAddress,
-      this.chainId,
-    )
+    const contractToken = await getTokenMetadata({
+      tokenAddress: contractAddresses[this.chainId]!,
+      chainId: this.chainId,
+    })
+    const underlyingToken = await getTokenMetadata({
+      tokenAddress: underlyingTokenAddress,
+      chainId: this.chainId,
+    })
 
     const metadataObject: StargateVestingMetadata = {
       contractToken,
