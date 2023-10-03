@@ -134,7 +134,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
               symbol: 'FRAX',
               decimals: 18,
               profitRaw: 100n,
-              profit: '100',
               calculationData: {} as CalculationData,
             },
             {
@@ -144,7 +143,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
               symbol: 'FRAX',
               decimals: 18,
               profitRaw: 100n,
-              profit: '100',
               calculationData: {} as CalculationData,
             },
           ],
@@ -168,7 +166,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
         {
           type: 'underlying',
           underlyingRateRaw: 1000154n,
-          underlyingRate: '1.000154',
           decimals: 6,
           name: 'Tether USD',
           iconUrl: '',

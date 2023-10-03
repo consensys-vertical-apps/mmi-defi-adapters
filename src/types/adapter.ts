@@ -235,7 +235,6 @@ export interface ProtocolPosition extends TokenBalance {
 
 export interface UnderlyingTokenRate extends Erc20Metadata {
   underlyingRateRaw: bigint
-  underlyingRate: string
   type: typeof TokenType.Underlying
   iconUrl: string
 }
@@ -329,11 +328,6 @@ export interface UnderlyingProfitValues extends Erc20Metadata {
    * Profit made in this token for this period
    */
   profitRaw: bigint
-
-  /**
-   * Profit made in this token for this period
-   */
-  profit: string
 
   /**
    * Numbers used to calculate profit value

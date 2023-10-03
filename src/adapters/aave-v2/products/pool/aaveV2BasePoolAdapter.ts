@@ -1,4 +1,3 @@
-import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
@@ -184,17 +183,11 @@ export abstract class AaveV2BasePoolAdapter
       PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
     )
 
-    const pricePerShare = formatUnits(
-      pricePerShareRaw,
-      underlyingToken.decimals,
-    )
-
     return [
       {
         ...underlyingToken,
         type: TokenType.Underlying,
         underlyingRateRaw: pricePerShareRaw,
-        underlyingRate: pricePerShare,
       },
     ]
   }

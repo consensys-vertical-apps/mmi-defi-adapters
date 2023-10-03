@@ -187,9 +187,11 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
             tokens: Object.values(underlyingTokenPositions).map(
               ({
                 address,
+                name,
+                symbol,
                 decimals,
+                iconUrl,
                 balanceRaw: startPositionValueRaw,
-                ...underlyingMetadata
               }) => {
                 const endPositionValueRaw =
                   previousValues[protocolTokenMetadata.address]
@@ -227,14 +229,13 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
                   profitRaw *= -1n
                 }
 
-                const profit = formatUnits(profitRaw, decimals)
-
                 return {
-                  ...underlyingMetadata,
                   address,
+                  name,
+                  symbol,
                   decimals,
+                  iconUrl,
                   profitRaw,
-                  profit,
                   type: TokenType.Underlying,
                   calculationData: {
                     withdrawalsRaw: withdrawals[address] ?? 0n,

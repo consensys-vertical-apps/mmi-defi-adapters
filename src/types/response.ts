@@ -8,6 +8,9 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   Underlying,
+  UnderlyingTokenRate,
+  PositionProfits,
+  UnderlyingProfitValues,
 } from './adapter'
 import { Erc20Metadata } from './erc20Metadata'
 
@@ -39,7 +42,10 @@ export type DefiPositionResponse = AdapterResponse<{
 }>
 
 export type PricePerShareResponse = AdapterResponse<{
-  tokens: ProtocolTokenUnderlyingRate[]
+  tokens: Omit<ProtocolTokenUnderlyingRate, 'tokens'> &
+    {
+      tokens: (UnderlyingTokenRate & { underlyingRate: string })[]
+    }[]
 }>
 
 export type APRResponse = AdapterResponse<{
@@ -53,6 +59,22 @@ export type APYResponse = AdapterResponse<{
 export type TotalValueLockResponse = AdapterResponse<{
   tokens: ProtocolTokenTvl[]
 }>
+
+export type AddUnderlyingProfitsBalance<T> = T extends {
+  tokens: UnderlyingProfitValues[]
+}
+  ? Omit<T, 'tokens'> & {
+      tokens: (UnderlyingProfitValues & { profit: string })[]
+    }
+  : T
+
+export type AddProfitsBalance<T> = T extends {
+  tokens: PositionProfits[]
+}
+  ? Omit<T, 'tokens'> & {
+      tokens: AddUnderlyingProfitsBalance<PositionProfits>[]
+    }
+  : T
 
 export type DefiProfitsResponse = AdapterResponse<ProfitsWithRange>
 

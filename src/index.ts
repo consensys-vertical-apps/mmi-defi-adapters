@@ -5,7 +5,14 @@ import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { chainProviders } from './core/utils/chainProviders'
-import { PositionType, TokenBalance, Underlying } from './types/adapter'
+import {
+  PositionProfits,
+  PositionType,
+  ProtocolTokenUnderlyingRate,
+  TokenBalance,
+  Underlying,
+  UnderlyingTokenRate,
+} from './types/adapter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
@@ -18,6 +25,7 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
   AddPositionsBalance,
+  AddProfitsBalance,
 } from './types/response'
 
 export {
@@ -27,22 +35,6 @@ export {
   PositionType,
   Protocol,
   TimePeriod,
-}
-
-function addPositionsBalance<
-  T extends TokenBalance & { tokens?: Underlying[] },
->(balance: T): AddPositionsBalance<T> {
-  return {
-    ...balance,
-    balance: formatUnits(balance.balanceRaw, balance.decimals),
-    ...(balance.tokens
-      ? {
-          tokens: balance.tokens?.map((underlyingBalance) =>
-            addPositionsBalance(underlyingBalance),
-          ),
-        }
-      : {}),
-  } as AddPositionsBalance<T>
 }
 
 export async function getPositions({
@@ -65,7 +57,7 @@ export async function getPositions({
     })
 
     const tokens = protocolPositions.map((protocolPosition) =>
-      addPositionsBalance(protocolPosition),
+      enrichPositionsResponse(protocolPosition),
     )
 
     return { tokens }
@@ -76,6 +68,22 @@ export async function getPositions({
     filterProtocolIds,
     filterChainIds,
   })
+}
+
+function enrichPositionsResponse<
+  T extends TokenBalance & { tokens?: Underlying[] },
+>(balance: T): AddPositionsBalance<T> {
+  return {
+    ...balance,
+    balance: formatUnits(balance.balanceRaw, balance.decimals),
+    ...(balance.tokens
+      ? {
+          tokens: balance.tokens?.map((underlyingBalance) =>
+            enrichPositionsResponse(underlyingBalance),
+          ),
+        }
+      : {}),
+  } as AddPositionsBalance<T>
 }
 
 export async function getProfits({
@@ -100,11 +108,13 @@ export async function getProfits({
       (await provider.getBlockNumber())
     const fromBlock =
       toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
-    return adapter.getProfits({
+    const profits = await adapter.getProfits({
       userAddress,
       toBlock,
       fromBlock,
     })
+
+    return enrichProfitsResponse(profits)
   }
 
   return runForAllProtocolsAndChains({
@@ -112,6 +122,32 @@ export async function getProfits({
     filterProtocolIds,
     filterChainIds,
   })
+}
+
+function enrichProfitsResponse<T extends { tokens?: PositionProfits[] }>(
+  profit: T,
+): AddProfitsBalance<T> {
+  return {
+    ...profit,
+    ...(profit.tokens
+      ? {
+          tokens: profit.tokens?.map((positionProfit) => {
+            return {
+              ...positionProfit,
+              tokens: positionProfit.tokens.map((underlyingProfitValue) => {
+                return {
+                  ...underlyingProfitValue,
+                  profit: formatUnits(
+                    underlyingProfitValue.profitRaw,
+                    underlyingProfitValue.decimals,
+                  ),
+                }
+              }),
+            }
+          }),
+        }
+      : {}),
+  } as AddProfitsBalance<T>
 }
 
 export async function getPrices({
@@ -128,12 +164,13 @@ export async function getPrices({
 
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
-      protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getProtocolTokenToUnderlyingTokenRate({
+      protocolTokens.map(({ address: protocolTokenAddress }) => {
+        const temp = adapter.getProtocolTokenToUnderlyingTokenRate({
           protocolTokenAddress,
           blockNumber,
-        }),
-      ),
+        })
+        return temp
+      }),
     )
 
     return { tokens }
@@ -144,6 +181,34 @@ export async function getPrices({
     filterProtocolIds,
     filterChainIds,
   })
+}
+
+function enrichPricesResponse<
+  T extends { tokens?: ProtocolTokenUnderlyingRate[] },
+>(pricePerShare: T): AddProfitsBalance<T> {
+  return {
+    ...pricePerShare,
+    ...(pricePerShare.tokens
+      ? {
+          tokens: pricePerShare.tokens?.map((protocolTokenUnderlyingRate) => {
+            return {
+              ...protocolTokenUnderlyingRate,
+              tokens: protocolTokenUnderlyingRate.tokens?.map(
+                (underlyingTokenRate) => {
+                  return {
+                    ...underlyingTokenRate,
+                    underlyingRate: formatUnits(
+                      underlyingTokenRate.underlyingRateRaw,
+                      underlyingTokenRate.decimals,
+                    ),
+                  }
+                },
+              ),
+            }
+          }),
+        }
+      : {}),
+  } as AddProfitsBalance<T>
 }
 
 export async function getWithdrawals({

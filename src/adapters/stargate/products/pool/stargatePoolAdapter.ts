@@ -1,4 +1,3 @@
-import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -153,17 +152,11 @@ export class StargatePoolAdapter
       blockTag: blockNumber,
     })
 
-    const pricePerShare = formatUnits(
-      pricePerShareRaw,
-      underlyingToken.decimals,
-    )
-
     return [
       {
         ...underlyingToken,
         type: TokenType.Underlying,
         underlyingRateRaw: pricePerShareRaw,
-        underlyingRate: pricePerShare,
       },
     ]
   }
