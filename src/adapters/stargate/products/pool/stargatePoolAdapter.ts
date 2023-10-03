@@ -127,12 +127,9 @@ export class StargatePoolAdapter
       blockTag: blockNumber,
     })
 
-    const balance = formatUnits(balanceRaw, underlyingToken.decimals)
-
     const underlyingTokenBalance = {
       ...underlyingToken,
       balanceRaw,
-      balance,
       type: TokenType.Underlying,
     }
 

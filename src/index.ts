@@ -1,11 +1,11 @@
-import { ethers } from 'ethers'
+import { ethers, formatUnits } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { chainProviders } from './core/utils/chainProviders'
-import { PositionType } from './types/adapter'
+import { PositionType, TokenBalance, Underlying } from './types/adapter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
@@ -17,6 +17,7 @@ import {
   AdapterErrorResponse,
   PricePerShareResponse,
   TotalValueLockResponse,
+  AddBalance,
 } from './types/response'
 
 export {
@@ -26,6 +27,23 @@ export {
   PositionType,
   Protocol,
   TimePeriod,
+}
+
+function addBalance<T extends TokenBalance>(
+  position: T & { tokens?: Underlying[] },
+): AddBalance<T & { tokens?: Underlying[] }> {
+  return {
+    ...position,
+    balance: formatUnits(position.balanceRaw, position.decimals),
+    ...(position.tokens
+      ? {
+          tokens: position.tokens.map(
+            (underlyingPosition) => addBalance(underlyingPosition),
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ) as any,
+        }
+      : {}),
+  }
 }
 
 export async function getPositions({
@@ -42,10 +60,14 @@ export async function getPositions({
   const runner = async (adapter: IProtocolAdapter) => {
     const blockNumber = blockNumbers?.[adapter.chainId]
 
-    const tokens = await adapter.getPositions({
+    const protocolPositions = await adapter.getPositions({
       userAddress,
       blockNumber,
     })
+
+    const tokens = protocolPositions.map((protocolPosition) =>
+      addBalance(protocolPosition),
+    )
 
     return { tokens }
   }

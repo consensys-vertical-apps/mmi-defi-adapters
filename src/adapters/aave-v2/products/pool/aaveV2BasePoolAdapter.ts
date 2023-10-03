@@ -164,7 +164,6 @@ export abstract class AaveV2BasePoolAdapter
     const underlyingTokenBalance = {
       ...underlyingToken,
       balanceRaw: protocolTokenBalance.balanceRaw,
-      balance: protocolTokenBalance.balance,
       type: TokenType.Underlying,
       iconUrl: underlyingToken.iconUrl,
     }

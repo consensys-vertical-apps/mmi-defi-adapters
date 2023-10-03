@@ -23,8 +23,16 @@ export type AdapterResponse<ProtocolResponse> = ProtocolDetails &
     | (AdapterErrorResponse & { success: false })
   )
 
+export type AddBalance<T> = {
+  [K in keyof T]: K extends 'balanceRaw'
+    ? T[K] & { balance: string }
+    : T[K] extends object
+    ? AddBalance<T[K]>
+    : T[K]
+}
+
 export type DefiPositionResponse = AdapterResponse<{
-  tokens: ProtocolPosition[]
+  tokens: AddBalance<ProtocolPosition>[]
 }>
 
 export type PricePerShareResponse = AdapterResponse<{

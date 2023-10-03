@@ -186,10 +186,6 @@ export interface TokenBalance extends Erc20Metadata {
    * User's balance raw
    */
   balanceRaw: bigint
-  /**
-   * User's balance formatted using token decimals
-   */
-  balance: string
 }
 
 /**

@@ -187,7 +187,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
         symbol: 'S*USDC',
         decimals: 6,
         balanceRaw: 31468548033n,
-        balance: '31468.548033',
         type: 'protocol',
         tokens: [
           {
@@ -196,7 +195,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
             symbol: 'USDC',
             decimals: 6,
             balanceRaw: 31492408006n,
-            balance: '31492.408006',
             iconUrl: '',
             type: 'underlying',
           },
@@ -222,7 +220,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
             symbol: 'USDC',
             decimals: 6,
             balanceRaw: 31492408006n,
-            balance: '31492.408006',
             type: 'claimable',
             tokens: [
               {
@@ -232,7 +229,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
                 iconUrl: '',
                 decimals: 6,
                 balanceRaw: 31492408006n,
-                balance: '31492.408006',
                 type: 'underlying',
               },
             ],

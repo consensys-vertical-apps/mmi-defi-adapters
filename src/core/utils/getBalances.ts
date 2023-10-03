@@ -1,4 +1,3 @@
-import { formatUnits } from 'ethers'
 import { GetBalancesInput, TokenBalance } from '../../types/adapter'
 import { filterMap } from './filters'
 import { getAddressesBalances } from './getAddressesBalances'
@@ -27,7 +26,6 @@ export const getBalances = async ({
     return {
       ...token,
       balanceRaw: balance,
-      balance: formatUnits(balance, token.decimals),
     }
   })
 }

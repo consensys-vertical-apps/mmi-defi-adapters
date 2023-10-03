@@ -1,5 +1,4 @@
 import type { ethers } from 'ethers'
-import { formatUnits } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import {
   CacheToFile,
@@ -97,13 +96,11 @@ export class StargateVestingAdapter
         ...contractToken,
         type: TokenType.Protocol,
         balanceRaw: userBalance,
-        balance: formatUnits(userBalance, contractToken.decimals),
         tokens: [
           {
             ...underlyingToken,
             type: TokenType.Underlying,
             balanceRaw: lockedAmount,
-            balance: formatUnits(lockedAmount, underlyingToken.decimals),
           },
         ],
       },
