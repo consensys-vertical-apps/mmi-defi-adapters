@@ -17,7 +17,7 @@ import {
   AdapterErrorResponse,
   PricePerShareResponse,
   TotalValueLockResponse,
-  AddBalance,
+  AddPositionsBalance,
 } from './types/response'
 
 export {
@@ -29,21 +29,20 @@ export {
   TimePeriod,
 }
 
-function addBalance<T extends TokenBalance>(
-  position: T & { tokens?: Underlying[] },
-): AddBalance<T & { tokens?: Underlying[] }> {
+function addPositionsBalance<
+  T extends TokenBalance & { tokens?: Underlying[] },
+>(balance: T): AddPositionsBalance<T> {
   return {
-    ...position,
-    balance: formatUnits(position.balanceRaw, position.decimals),
-    ...(position.tokens
+    ...balance,
+    balance: formatUnits(balance.balanceRaw, balance.decimals),
+    ...(balance.tokens
       ? {
-          tokens: position.tokens.map(
-            (underlyingPosition) => addBalance(underlyingPosition),
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ) as any,
+          tokens: balance.tokens?.map((underlyingBalance) =>
+            addPositionsBalance(underlyingBalance),
+          ),
         }
       : {}),
-  }
+  } as AddPositionsBalance<T>
 }
 
 export async function getPositions({
@@ -66,7 +65,7 @@ export async function getPositions({
     })
 
     const tokens = protocolPositions.map((protocolPosition) =>
-      addBalance(protocolPosition),
+      addPositionsBalance(protocolPosition),
     )
 
     return { tokens }

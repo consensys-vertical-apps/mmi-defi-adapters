@@ -7,6 +7,7 @@ import {
   ProtocolTokenUnderlyingRate,
   ProtocolPosition,
   ProtocolTokenTvl,
+  Underlying,
 } from './adapter'
 import { Erc20Metadata } from './erc20Metadata'
 
@@ -23,16 +24,18 @@ export type AdapterResponse<ProtocolResponse> = ProtocolDetails &
     | (AdapterErrorResponse & { success: false })
   )
 
-export type AddBalance<T> = {
-  [K in keyof T]: K extends 'balanceRaw'
-    ? T[K] & { balance: string }
-    : T[K] extends object
-    ? AddBalance<T[K]>
-    : T[K]
+export type AddPositionsBalance<T> = T extends {
+  balanceRaw: bigint
+  tokens?: Underlying[]
 }
+  ? Omit<T, 'tokens'> & {
+      balance: string
+      tokens: AddPositionsBalance<Underlying>[]
+    }
+  : T
 
 export type DefiPositionResponse = AdapterResponse<{
-  tokens: AddBalance<ProtocolPosition>[]
+  tokens: AddPositionsBalance<ProtocolPosition>[]
 }>
 
 export type PricePerShareResponse = AdapterResponse<{
