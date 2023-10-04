@@ -1,7 +1,6 @@
 import { ethers } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  CalculationData,
   GetAprInput,
   GetApyInput,
   GetEventsInput,

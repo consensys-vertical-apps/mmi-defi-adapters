@@ -14,7 +14,6 @@ import {
   TokenBalance,
   Underlying,
   UnderlyingTokenRate,
-  UnderlyingTokenTvl,
 } from './types/adapter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
