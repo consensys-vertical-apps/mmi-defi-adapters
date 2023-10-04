@@ -1,21 +1,18 @@
-import { ethers, formatUnits } from 'ethers'
+import { ethers } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
-import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import { chainProviders } from './core/utils/chainProviders'
 import {
-  MovementsByBlock,
-  PositionProfits,
-  PositionType,
-  ProtocolTokenTvl,
-  ProtocolTokenUnderlyingRate,
-  TokenBalance,
-  Underlying,
-  UnderlyingTokenRate,
-} from './types/adapter'
+  enrichPositionBalance,
+  enrichProfitsWithRange,
+  enrichUnderlyingTokenRates,
+  enrichMovements,
+  enrichTotalValueLocked,
+} from './responseAdapters'
+import { PositionType } from './types/adapter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
@@ -27,8 +24,6 @@ import {
   AdapterErrorResponse,
   PricePerShareResponse,
   TotalValueLockResponse,
-  AddPositionsBalance,
-  AddProfitsBalance,
 } from './types/response'
 
 export {
@@ -60,7 +55,7 @@ export async function getPositions({
     })
 
     const tokens = protocolPositions.map((protocolPosition) =>
-      enrichPositionsResponse(protocolPosition, adapter.chainId),
+      enrichPositionBalance(protocolPosition, adapter.chainId),
     )
 
     return { tokens }
@@ -71,24 +66,6 @@ export async function getPositions({
     filterProtocolIds,
     filterChainIds,
   })
-}
-
-function enrichPositionsResponse<
-  T extends TokenBalance & { tokens?: Underlying[] },
->(balance: T, chainId: Chain): AddPositionsBalance<T> {
-  return {
-    ...balance,
-    balance: formatUnits(balance.balanceRaw, balance.decimals),
-    ...(balance.tokens
-      ? {
-          tokens: balance.tokens?.map((underlyingBalance) =>
-            enrichPositionsResponse(underlyingBalance, chainId),
-          ),
-        }
-      : {
-          iconUrl: buildTrustAssetIconUrl(chainId, balance.address),
-        }),
-  } as AddPositionsBalance<T>
 }
 
 export async function getProfits({
@@ -119,7 +96,7 @@ export async function getProfits({
       fromBlock,
     })
 
-    return enrichProfitsResponse(profits, adapter.chainId)
+    return enrichProfitsWithRange(profits, adapter.chainId)
   }
 
   return runForAllProtocolsAndChains({
@@ -127,59 +104,6 @@ export async function getProfits({
     filterProtocolIds,
     filterChainIds,
   })
-}
-
-function enrichProfitsResponse<T extends { tokens?: PositionProfits[] }>(
-  profit: T,
-  chainId: Chain,
-): AddProfitsBalance<T> {
-  return {
-    ...profit,
-    ...(profit.tokens
-      ? {
-          tokens: profit.tokens?.map((positionProfit) => {
-            return {
-              ...positionProfit,
-              tokens: positionProfit.tokens.map((underlyingProfitValue) => {
-                return {
-                  ...underlyingProfitValue,
-                  profit: formatUnits(
-                    underlyingProfitValue.profitRaw,
-                    underlyingProfitValue.decimals,
-                  ),
-                  iconUrl: buildTrustAssetIconUrl(
-                    chainId,
-                    underlyingProfitValue.address,
-                  ),
-                  calculationData: {
-                    ...underlyingProfitValue.calculationData,
-                    withdrawals: formatUnits(
-                      underlyingProfitValue.calculationData.withdrawalsRaw ??
-                        0n,
-                      underlyingProfitValue.decimals,
-                    ),
-                    deposits: formatUnits(
-                      underlyingProfitValue.calculationData.depositsRaw ?? 0n,
-                      underlyingProfitValue.decimals,
-                    ),
-                    startPositionValue: formatUnits(
-                      underlyingProfitValue.calculationData
-                        .startPositionValueRaw ?? 0n,
-                      underlyingProfitValue.decimals,
-                    ),
-                    endPositionValue: formatUnits(
-                      underlyingProfitValue.calculationData
-                        .endPositionValueRaw ?? 0n,
-                      underlyingProfitValue.decimals,
-                    ),
-                  },
-                }
-              }),
-            }
-          }),
-        }
-      : {}),
-  } as AddProfitsBalance<T>
 }
 
 export async function getPrices({
@@ -216,37 +140,7 @@ export async function getPrices({
     runner,
     filterProtocolIds,
     filterChainIds,
-  }) as any
-}
-
-function enrichUnderlyingTokenRates(
-  pricePerShare: ProtocolTokenUnderlyingRate,
-  chainId: Chain,
-): Omit<ProtocolTokenUnderlyingRate, 'tokens'> & {
-  tokens?: (UnderlyingTokenRate & { underlyingRate: string })[]
-} {
-  return {
-    ...pricePerShare,
-    ...(pricePerShare.tokens
-      ? {
-          tokens: pricePerShare.tokens.map((underlyingTokenRate) => {
-            return {
-              ...underlyingTokenRate,
-              underlyingRate: formatUnits(
-                underlyingTokenRate.underlyingRateRaw,
-                underlyingTokenRate.decimals,
-              ),
-              iconUrl: buildTrustAssetIconUrl(
-                chainId,
-                underlyingTokenRate.address,
-              ),
-            }
-          }),
-        }
-      : {}),
-  } as Omit<ProtocolTokenUnderlyingRate, 'tokens'> & {
-    tokens?: (UnderlyingTokenRate & { underlyingRate: string })[]
-  }
+  })
 }
 
 export async function getWithdrawals({
@@ -339,24 +233,6 @@ export async function getDeposits({
   })
 }
 
-function enrichMovements(movementsByBlock: MovementsByBlock): any {
-  const temp = Object.entries(movementsByBlock.underlyingTokensMovement).reduce(
-    (accumulator, [key, value]) => {
-      accumulator[key] = {
-        ...value,
-        movementValue: formatUnits(value.movementValueRaw, value.decimals),
-      }
-
-      return accumulator
-    },
-    {} as any,
-  )
-  return {
-    ...movementsByBlock,
-    underlyingTokensMovement: temp,
-  }
-}
-
 export async function getTotalValueLocked({
   filterProtocolIds,
   filterChainIds,
@@ -383,26 +259,6 @@ export async function getTotalValueLocked({
     filterProtocolIds,
     filterChainIds,
   })
-}
-
-function enrichTotalValueLocked(
-  protocolTokenTvl: ProtocolTokenTvl,
-  chainId: Chain,
-): any {
-  return {
-    ...protocolTokenTvl,
-    totalSupply: formatUnits(
-      protocolTokenTvl.totalSupplyRaw,
-      protocolTokenTvl.decimals,
-    ),
-    tokens: protocolTokenTvl.tokens?.map((value) => {
-      return {
-        ...value,
-        totalSupply: formatUnits(value.totalSupplyRaw, value.decimals),
-        iconUrl: buildTrustAssetIconUrl(chainId, value.address),
-      }
-    }),
-  }
 }
 
 export async function getApy({
