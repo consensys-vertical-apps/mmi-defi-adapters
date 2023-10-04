@@ -21,6 +21,7 @@
 - [name](adapter.ProtocolTokenUnderlyingRate.md#name)
 - [symbol](adapter.ProtocolTokenUnderlyingRate.md#symbol)
 - [decimals](adapter.ProtocolTokenUnderlyingRate.md#decimals)
+- [iconUrl](adapter.ProtocolTokenUnderlyingRate.md#iconurl)
 
 ## Properties
 
@@ -33,7 +34,7 @@ We are finding the underlying value of 1 LP token
 
 #### Defined in
 
-[adapter.ts:252](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L252)
+[adapter.ts:245](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L245)
 
 ___
 
@@ -43,7 +44,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:253](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L253)
+[adapter.ts:246](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L246)
 
 ___
 
@@ -53,7 +54,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:254](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L254)
+[adapter.ts:247](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L247)
 
 ___
 
@@ -118,3 +119,19 @@ Erc20Metadata.decimals
 #### Defined in
 
 [erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+
+___
+
+### iconUrl
+
+• `Optional` **iconUrl**: `string`
+
+Url for token icon
+
+#### Inherited from
+
+Erc20Metadata.iconUrl
+
+#### Defined in
+
+[erc20Metadata.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L25)

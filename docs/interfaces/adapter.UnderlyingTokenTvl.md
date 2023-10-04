@@ -16,11 +16,11 @@
 
 - [type](adapter.UnderlyingTokenTvl.md#type)
 - [totalSupplyRaw](adapter.UnderlyingTokenTvl.md#totalsupplyraw)
-- [totalSupply](adapter.UnderlyingTokenTvl.md#totalsupply)
 - [address](adapter.UnderlyingTokenTvl.md#address)
 - [name](adapter.UnderlyingTokenTvl.md#name)
 - [symbol](adapter.UnderlyingTokenTvl.md#symbol)
 - [decimals](adapter.UnderlyingTokenTvl.md#decimals)
+- [iconUrl](adapter.UnderlyingTokenTvl.md#iconurl)
 
 ## Properties
 
@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[adapter.ts:289](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L289)
+[adapter.ts:281](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L281)
 
 ___
 
@@ -42,19 +42,7 @@ Total underlying token locked in pool raw
 
 #### Defined in
 
-[adapter.ts:293](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L293)
-
-___
-
-### totalSupply
-
-• **totalSupply**: `string`
-
-Total underlying token locked in pool
-
-#### Defined in
-
-[adapter.ts:297](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L297)
+[adapter.ts:285](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L285)
 
 ___
 
@@ -119,3 +107,19 @@ Erc20Metadata.decimals
 #### Defined in
 
 [erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+
+___
+
+### iconUrl
+
+• `Optional` **iconUrl**: `string`
+
+Url for token icon
+
+#### Inherited from
+
+Erc20Metadata.iconUrl
+
+#### Defined in
+
+[erc20Metadata.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L25)

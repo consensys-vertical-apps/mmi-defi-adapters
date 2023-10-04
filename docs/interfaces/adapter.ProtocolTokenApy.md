@@ -19,6 +19,7 @@
 - [name](adapter.ProtocolTokenApy.md#name)
 - [symbol](adapter.ProtocolTokenApy.md#symbol)
 - [decimals](adapter.ProtocolTokenApy.md#decimals)
+- [iconUrl](adapter.ProtocolTokenApy.md#iconurl)
 
 ## Properties
 
@@ -30,7 +31,7 @@ Current apy of protocol pool
 
 #### Defined in
 
-[adapter.ts:278](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L278)
+[adapter.ts:270](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L270)
 
 ___
 
@@ -95,3 +96,19 @@ Erc20Metadata.decimals
 #### Defined in
 
 [erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+
+___
+
+### iconUrl
+
+• `Optional` **iconUrl**: `string`
+
+Url for token icon
+
+#### Inherited from
+
+Erc20Metadata.iconUrl
+
+#### Defined in
+
+[erc20Metadata.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L25)

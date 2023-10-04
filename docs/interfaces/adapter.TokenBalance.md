@@ -21,11 +21,11 @@
 ### Properties
 
 - [balanceRaw](adapter.TokenBalance.md#balanceraw)
-- [balance](adapter.TokenBalance.md#balance)
 - [address](adapter.TokenBalance.md#address)
 - [name](adapter.TokenBalance.md#name)
 - [symbol](adapter.TokenBalance.md#symbol)
 - [decimals](adapter.TokenBalance.md#decimals)
+- [iconUrl](adapter.TokenBalance.md#iconurl)
 
 ## Properties
 
@@ -38,18 +38,6 @@ User's balance raw
 #### Defined in
 
 [adapter.ts:188](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L188)
-
-___
-
-### balance
-
-• **balance**: `string`
-
-User's balance formatted using token decimals
-
-#### Defined in
-
-[adapter.ts:192](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L192)
 
 ___
 
@@ -114,3 +102,19 @@ Erc20Metadata.decimals
 #### Defined in
 
 [erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+
+___
+
+### iconUrl
+
+• `Optional` **iconUrl**: `string`
+
+Url for token icon
+
+#### Inherited from
+
+Erc20Metadata.iconUrl
+
+#### Defined in
+
+[erc20Metadata.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L25)

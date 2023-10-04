@@ -14,16 +14,26 @@
 
 ### Properties
 
-- [totalSupplyRaw](adapter.ProtocolTokenTvl.md#totalsupplyraw)
-- [totalSupply](adapter.ProtocolTokenTvl.md#totalsupply)
 - [type](adapter.ProtocolTokenTvl.md#type)
+- [totalSupplyRaw](adapter.ProtocolTokenTvl.md#totalsupplyraw)
 - [tokens](adapter.ProtocolTokenTvl.md#tokens)
 - [address](adapter.ProtocolTokenTvl.md#address)
 - [name](adapter.ProtocolTokenTvl.md#name)
 - [symbol](adapter.ProtocolTokenTvl.md#symbol)
 - [decimals](adapter.ProtocolTokenTvl.md#decimals)
+- [iconUrl](adapter.ProtocolTokenTvl.md#iconurl)
 
 ## Properties
+
+### type
+
+• **type**: ``"protocol"``
+
+#### Defined in
+
+[adapter.ts:289](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L289)
+
+___
 
 ### totalSupplyRaw
 
@@ -33,29 +43,7 @@ Total underlying token locked in pool raw
 
 #### Defined in
 
-[adapter.ts:304](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L304)
-
-___
-
-### totalSupply
-
-• **totalSupply**: `string`
-
-Total underlying token locked in pool
-
-#### Defined in
-
-[adapter.ts:308](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L308)
-
-___
-
-### type
-
-• **type**: ``"protocol"``
-
-#### Defined in
-
-[adapter.ts:309](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L309)
+[adapter.ts:293](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L293)
 
 ___
 
@@ -65,7 +53,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:310](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L310)
+[adapter.ts:294](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L294)
 
 ___
 
@@ -130,3 +118,19 @@ Erc20Metadata.decimals
 #### Defined in
 
 [erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+
+___
+
+### iconUrl
+
+• `Optional` **iconUrl**: `string`
+
+Url for token icon
+
+#### Inherited from
+
+Erc20Metadata.iconUrl
+
+#### Defined in
+
+[erc20Metadata.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L25)

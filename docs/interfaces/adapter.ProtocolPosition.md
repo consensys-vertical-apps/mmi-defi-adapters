@@ -17,13 +17,13 @@ User's position, includes balance of protocol token related underlying token bal
 ### Properties
 
 - [balanceRaw](adapter.ProtocolPosition.md#balanceraw)
-- [balance](adapter.ProtocolPosition.md#balance)
 - [type](adapter.ProtocolPosition.md#type)
 - [tokens](adapter.ProtocolPosition.md#tokens)
 - [address](adapter.ProtocolPosition.md#address)
 - [name](adapter.ProtocolPosition.md#name)
 - [symbol](adapter.ProtocolPosition.md#symbol)
 - [decimals](adapter.ProtocolPosition.md#decimals)
+- [iconUrl](adapter.ProtocolPosition.md#iconurl)
 
 ## Properties
 
@@ -43,29 +43,13 @@ User's balance raw
 
 ___
 
-### balance
-
-• **balance**: `string`
-
-User's balance formatted using token decimals
-
-#### Inherited from
-
-[TokenBalance](adapter.TokenBalance.md).[balance](adapter.TokenBalance.md#balance)
-
-#### Defined in
-
-[adapter.ts:192](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L192)
-
-___
-
 ### type
 
 • **type**: ``"protocol"``
 
 #### Defined in
 
-[adapter.ts:232](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L232)
+[adapter.ts:227](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L227)
 
 ___
 
@@ -77,7 +61,7 @@ Underlying token balances
 
 #### Defined in
 
-[adapter.ts:237](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L237)
+[adapter.ts:232](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L232)
 
 ___
 
@@ -142,3 +126,19 @@ Token decimals
 #### Defined in
 
 [erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+
+___
+
+### iconUrl
+
+• `Optional` **iconUrl**: `string`
+
+Url for token icon
+
+#### Inherited from
+
+[TokenBalance](adapter.TokenBalance.md).[iconUrl](adapter.TokenBalance.md#iconurl)
+
+#### Defined in
+
+[erc20Metadata.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L25)

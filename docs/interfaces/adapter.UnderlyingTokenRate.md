@@ -14,36 +14,15 @@
 
 ### Properties
 
-- [underlyingRateRaw](adapter.UnderlyingTokenRate.md#underlyingrateraw)
-- [underlyingRate](adapter.UnderlyingTokenRate.md#underlyingrate)
 - [type](adapter.UnderlyingTokenRate.md#type)
-- [iconUrl](adapter.UnderlyingTokenRate.md#iconurl)
+- [underlyingRateRaw](adapter.UnderlyingTokenRate.md#underlyingrateraw)
 - [address](adapter.UnderlyingTokenRate.md#address)
 - [name](adapter.UnderlyingTokenRate.md#name)
 - [symbol](adapter.UnderlyingTokenRate.md#symbol)
 - [decimals](adapter.UnderlyingTokenRate.md#decimals)
+- [iconUrl](adapter.UnderlyingTokenRate.md#iconurl)
 
 ## Properties
-
-### underlyingRateRaw
-
-• **underlyingRateRaw**: `bigint`
-
-#### Defined in
-
-[adapter.ts:241](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L241)
-
-___
-
-### underlyingRate
-
-• **underlyingRate**: `string`
-
-#### Defined in
-
-[adapter.ts:242](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L242)
-
-___
 
 ### type
 
@@ -51,17 +30,17 @@ ___
 
 #### Defined in
 
-[adapter.ts:243](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L243)
+[adapter.ts:236](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L236)
 
 ___
 
-### iconUrl
+### underlyingRateRaw
 
-• **iconUrl**: `string`
+• **underlyingRateRaw**: `bigint`
 
 #### Defined in
 
-[adapter.ts:244](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L244)
+[adapter.ts:237](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L237)
 
 ___
 
@@ -126,3 +105,19 @@ Erc20Metadata.decimals
 #### Defined in
 
 [erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+
+___
+
+### iconUrl
+
+• `Optional` **iconUrl**: `string`
+
+Url for token icon
+
+#### Inherited from
+
+Erc20Metadata.iconUrl
+
+#### Defined in
+
+[erc20Metadata.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L25)

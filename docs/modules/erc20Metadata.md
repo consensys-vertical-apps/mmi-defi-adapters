@@ -22,6 +22,7 @@
 | `name` | `string` | Name of token |
 | `symbol` | `string` | Token symbol |
 | `decimals` | `number` | Token decimals |
+| `iconUrl?` | `string` | Url for token icon |
 
 #### Defined in
 

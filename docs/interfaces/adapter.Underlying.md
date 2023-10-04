@@ -19,14 +19,13 @@ Should the underlying token be another protocol token then we expect that to be 
 ### Properties
 
 - [balanceRaw](adapter.Underlying.md#balanceraw)
-- [balance](adapter.Underlying.md#balance)
 - [type](adapter.Underlying.md#type)
-- [iconUrl](adapter.Underlying.md#iconurl)
 - [tokens](adapter.Underlying.md#tokens)
 - [address](adapter.Underlying.md#address)
 - [name](adapter.Underlying.md#name)
 - [symbol](adapter.Underlying.md#symbol)
 - [decimals](adapter.Underlying.md#decimals)
+- [iconUrl](adapter.Underlying.md#iconurl)
 
 ## Properties
 
@@ -46,39 +45,13 @@ User's balance raw
 
 ___
 
-### balance
-
-• **balance**: `string`
-
-User's balance formatted using token decimals
-
-#### Inherited from
-
-[TokenBalance](adapter.TokenBalance.md).[balance](adapter.TokenBalance.md#balance)
-
-#### Defined in
-
-[adapter.ts:192](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L192)
-
-___
-
 ### type
 
 • **type**: ``"underlying"``
 
 #### Defined in
 
-[adapter.ts:201](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L201)
-
-___
-
-### iconUrl
-
-• **iconUrl**: `string`
-
-#### Defined in
-
-[adapter.ts:202](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L202)
+[adapter.ts:197](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L197)
 
 ___
 
@@ -88,7 +61,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:203](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L203)
+[adapter.ts:198](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L198)
 
 ___
 
@@ -153,3 +126,19 @@ Token decimals
 #### Defined in
 
 [erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+
+___
+
+### iconUrl
+
+• `Optional` **iconUrl**: `string`
+
+Url for token icon
+
+#### Inherited from
+
+[TokenBalance](adapter.TokenBalance.md).[iconUrl](adapter.TokenBalance.md#iconurl)
+
+#### Defined in
+
+[erc20Metadata.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L25)
