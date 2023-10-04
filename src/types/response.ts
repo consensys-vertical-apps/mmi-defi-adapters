@@ -49,7 +49,7 @@ export type DisplayProfitsWithRange = Omit<ProfitsWithRange, 'tokens'> & {
   tokens: DisplayPositionProfits[]
 }
 
-export type DisplayPositionProfits = Omit<PositionProfits, 'tokens'> & {
+type DisplayPositionProfits = Omit<PositionProfits, 'tokens'> & {
   tokens: (UnderlyingProfitValues & { profit: string })[]
 }
 
@@ -57,7 +57,7 @@ export type PricePerShareResponse = AdapterResponse<{
   tokens: DisplayProtocolTokenUnderlyingRate[]
 }>
 
-export type DisplayProtocolTokenUnderlyingRate = Omit<
+type DisplayProtocolTokenUnderlyingRate = Omit<
   ProtocolTokenUnderlyingRate,
   'tokens'
 > & {
