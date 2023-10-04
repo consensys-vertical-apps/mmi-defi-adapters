@@ -18,4 +18,9 @@ export type Erc20Metadata = {
    * Token decimals
    */
   decimals: number
+
+  /**
+   * Url for token icon
+   */
+  iconUrl?: string
 }

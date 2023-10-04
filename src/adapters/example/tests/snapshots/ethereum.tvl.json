@@ -12,24 +12,25 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xprotocolTokenAddress",
+          "address": "0x1000000000000000000000000000000000000001",
           "name": "Coin-LP",
           "symbol": "S*USDC",
           "decimals": 6,
           "totalSupplyRaw": "31468548033n",
-          "totalSupply": "31468.548033",
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xunderlyingTokenAddress",
+              "address": "0x0000000000000000000000000000000000000001",
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "totalSupply": "31492.408006",
               "totalSupplyRaw": "31492408006n",
-              "type": "underlying"
+              "type": "underlying",
+              "totalSupply": "31492.408006",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0000000000000000000000000000000000000001/logo.png"
             }
-          ]
+          ],
+          "totalSupply": "31468.548033"
         }
       ]
     }

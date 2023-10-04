@@ -17,7 +17,6 @@
           "symbol": "S*USDC",
           "decimals": 6,
           "balanceRaw": "31468548033n",
-          "balance": "31468.548033",
           "type": "protocol",
           "tokens": [
             {
@@ -27,10 +26,11 @@
               "decimals": 6,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
               "balanceRaw": "31492408006n",
-              "balance": "31492.408006",
-              "type": "underlying"
+              "type": "underlying",
+              "balance": "31492.408006"
             }
-          ]
+          ],
+          "balance": "31468.548033"
         }
       ]
     },
@@ -51,7 +51,6 @@
           "decimals": 18,
           "type": "protocol",
           "balanceRaw": "7629566315744923838948n",
-          "balance": "7629.566315744923838948",
           "tokens": [
             {
               "address": "0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6",
@@ -63,7 +62,8 @@
               "balanceRaw": "10000000000000000000000n",
               "balance": "10000.0"
             }
-          ]
+          ],
+          "balance": "7629.566315744923838948"
         }
       ]
     }

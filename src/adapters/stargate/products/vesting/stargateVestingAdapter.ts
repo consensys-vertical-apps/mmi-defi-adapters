@@ -4,7 +4,6 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
@@ -32,7 +31,7 @@ import { StargateVotingEscrow__factory } from '../../contracts'
 
 type StargateVestingMetadata = {
   contractToken: Erc20Metadata
-  underlyingToken: Erc20Metadata & { iconUrl: string }
+  underlyingToken: Erc20Metadata
 }
 
 export class StargateVestingAdapter
@@ -183,10 +182,7 @@ export class StargateVestingAdapter
 
     const metadataObject: StargateVestingMetadata = {
       contractToken,
-      underlyingToken: {
-        ...underlyingToken,
-        iconUrl: buildTrustAssetIconUrl(this.chainId, underlyingToken.address),
-      },
+      underlyingToken,
     }
 
     return metadataObject

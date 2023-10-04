@@ -195,7 +195,6 @@ export interface TokenBalance extends Erc20Metadata {
  */
 export interface Underlying extends TokenBalance {
   type: typeof TokenType.Underlying
-  iconUrl: string
   tokens?: Underlying[]
 }
 
@@ -234,9 +233,8 @@ export interface ProtocolPosition extends TokenBalance {
 }
 
 export interface UnderlyingTokenRate extends Erc20Metadata {
-  underlyingRateRaw: bigint
   type: typeof TokenType.Underlying
-  iconUrl: string
+  underlyingRateRaw: bigint
 }
 
 export interface ProtocolTokenUnderlyingRate extends Erc20Metadata {

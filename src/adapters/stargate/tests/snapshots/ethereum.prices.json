@@ -224,7 +224,7 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "iconUrl": "https://raw.githubusexrcontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png",
               "type": "underlying",
               "underlyingRateRaw": "1000195n",
               "underlyingRate": "1.000195"

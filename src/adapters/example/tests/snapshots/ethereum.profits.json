@@ -27,17 +27,18 @@
               "symbol": "FRAX",
               "decimals": 6,
               "profitRaw": "100000000n",
-              "profit": "100.0",
               "calculationData": {
-                "deposits": "0.0",
+                "withdrawalsRaw": "0n",
                 "depositsRaw": "0n",
-                "endPositionValue": "0.0",
-                "endPositionValueRaw": "0n",
-                "startPositionValue": "0.0",
                 "startPositionValueRaw": "0n",
+                "endPositionValueRaw": "0n",
                 "withdrawals": "0.0",
-                "withdrawalsRaw": "0n"
-              }
+                "deposits": "0.0",
+                "startPositionValue": "0.0",
+                "endPositionValue": "0.0"
+              },
+              "profit": "100.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             },
             {
               "type": "claimable",
@@ -46,17 +47,18 @@
               "symbol": "FRAX",
               "decimals": 6,
               "profitRaw": "100000000n",
-              "profit": "100.0",
               "calculationData": {
-                "deposits": "0.0",
+                "withdrawalsRaw": "0n",
                 "depositsRaw": "0n",
-                "endPositionValue": "0.0",
-                "endPositionValueRaw": "0n",
-                "startPositionValue": "0.0",
                 "startPositionValueRaw": "0n",
+                "endPositionValueRaw": "0n",
                 "withdrawals": "0.0",
-                "withdrawalsRaw": "0n"
-              }
+                "deposits": "0.0",
+                "startPositionValue": "0.0",
+                "endPositionValue": "0.0"
+              },
+              "profit": "100.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             }
           ]
         }

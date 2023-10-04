@@ -19,14 +19,13 @@
           "type": "protocol",
           "tokens": [
             {
+              "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
               "name": "Liquity USD",
               "symbol": "LUSD",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png",
-              "type": "underlying",
-              "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
               "decimals": 18,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png",
               "profitRaw": "0n",
-              "profit": "0.0",
+              "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
@@ -36,7 +35,8 @@
                 "startPositionValue": "8625.195334",
                 "endPositionValueRaw": "8625195334000000000000n",
                 "endPositionValue": "8625.195334"
-              }
+              },
+              "profit": "0.0"
             }
           ]
         },
@@ -48,14 +48,13 @@
           "type": "protocol",
           "tokens": [
             {
+              "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
               "name": "Synth sUSD",
               "symbol": "SUSD",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png",
-              "type": "underlying",
-              "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
               "decimals": 18,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png",
               "profitRaw": "0n",
-              "profit": "0.0",
+              "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
@@ -65,7 +64,8 @@
                 "startPositionValue": "2264.523735",
                 "endPositionValueRaw": "2264523735000000000000n",
                 "endPositionValue": "2264.523735"
-              }
+              },
+              "profit": "0.0"
             }
           ]
         },
@@ -77,14 +77,13 @@
           "type": "protocol",
           "tokens": [
             {
+              "address": "0x853d955acef822db058eb8505911ed77f175b99e",
               "name": "Frax",
               "symbol": "FRAX",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png",
-              "type": "underlying",
-              "address": "0x853d955acef822db058eb8505911ed77f175b99e",
               "decimals": 18,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png",
               "profitRaw": "0n",
-              "profit": "0.0",
+              "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
@@ -94,7 +93,8 @@
                 "startPositionValue": "167950.623569",
                 "endPositionValueRaw": "167950623569000000000000n",
                 "endPositionValue": "167950.623569"
-              }
+              },
+              "profit": "0.0"
             }
           ]
         },
@@ -106,14 +106,13 @@
           "type": "protocol",
           "tokens": [
             {
+              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png",
-              "type": "underlying",
-              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
               "decimals": 18,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png",
               "profitRaw": "-18179953000000000000n",
-              "profit": "-18.179953",
+              "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
@@ -123,7 +122,8 @@
                 "startPositionValue": "171795.121075",
                 "endPositionValueRaw": "171813301028000000000000n",
                 "endPositionValue": "171813.301028"
-              }
+              },
+              "profit": "-18.179953"
             }
           ]
         },
@@ -135,14 +135,13 @@
           "type": "protocol",
           "tokens": [
             {
+              "address": "0x72e2f4830b9e45d52f80ac08cb2bec0fef72ed9c",
               "name": "Stargate Ether Vault",
               "symbol": "SGETH",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x72E2F4830b9E45d52F80aC08CB2bEC0FeF72eD9c/logo.png",
-              "type": "underlying",
-              "address": "0x72e2f4830b9e45d52f80ac08cb2bec0fef72ed9c",
               "decimals": 18,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x72E2F4830b9E45d52F80aC08CB2bEC0FeF72eD9c/logo.png",
               "profitRaw": "218137753604566988974n",
-              "profit": "218.137753604566988974",
+              "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
@@ -152,7 +151,8 @@
                 "startPositionValue": "9381.358299480289089736",
                 "endPositionValueRaw": "9163220545875722100762n",
                 "endPositionValue": "9163.220545875722100762"
-              }
+              },
+              "profit": "218.137753604566988974"
             }
           ]
         },
@@ -164,14 +164,13 @@
           "type": "protocol",
           "tokens": [
             {
+              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
               "name": "Tether USD",
               "symbol": "USDT",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png",
-              "type": "underlying",
-              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
               "decimals": 6,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png",
               "profitRaw": "-4263428509510n",
-              "profit": "-4263428.50951",
+              "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
@@ -181,7 +180,8 @@
                 "startPositionValue": "36005822.296628",
                 "endPositionValueRaw": "40269250806138n",
                 "endPositionValue": "40269250.806138"
-              }
+              },
+              "profit": "-4263428.50951"
             }
           ]
         },
@@ -193,14 +193,13 @@
           "type": "protocol",
           "tokens": [
             {
+              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
               "name": "USD Coin",
               "symbol": "USDC",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
-              "type": "underlying",
-              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
               "decimals": 6,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
               "profitRaw": "11866557618n",
-              "profit": "11866.557618",
+              "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
@@ -210,7 +209,8 @@
                 "startPositionValue": "40915064.530967",
                 "endPositionValueRaw": "40903197973349n",
                 "endPositionValue": "40903197.973349"
-              }
+              },
+              "profit": "11866.557618"
             }
           ]
         }

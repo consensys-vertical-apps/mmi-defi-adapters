@@ -4,6 +4,7 @@ import { Protocol } from './adapters/protocols'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
+import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import { chainProviders } from './core/utils/chainProviders'
 import {
   MovementsByBlock,
@@ -59,7 +60,7 @@ export async function getPositions({
     })
 
     const tokens = protocolPositions.map((protocolPosition) =>
-      enrichPositionsResponse(protocolPosition),
+      enrichPositionsResponse(protocolPosition, adapter.chainId),
     )
 
     return { tokens }
@@ -74,17 +75,19 @@ export async function getPositions({
 
 function enrichPositionsResponse<
   T extends TokenBalance & { tokens?: Underlying[] },
->(balance: T): AddPositionsBalance<T> {
+>(balance: T, chainId: Chain): AddPositionsBalance<T> {
   return {
     ...balance,
     balance: formatUnits(balance.balanceRaw, balance.decimals),
     ...(balance.tokens
       ? {
           tokens: balance.tokens?.map((underlyingBalance) =>
-            enrichPositionsResponse(underlyingBalance),
+            enrichPositionsResponse(underlyingBalance, chainId),
           ),
         }
-      : {}),
+      : {
+          iconUrl: buildTrustAssetIconUrl(chainId, balance.address),
+        }),
   } as AddPositionsBalance<T>
 }
 
@@ -116,7 +119,7 @@ export async function getProfits({
       fromBlock,
     })
 
-    return enrichProfitsResponse(profits)
+    return enrichProfitsResponse(profits, adapter.chainId)
   }
 
   return runForAllProtocolsAndChains({
@@ -128,6 +131,7 @@ export async function getProfits({
 
 function enrichProfitsResponse<T extends { tokens?: PositionProfits[] }>(
   profit: T,
+  chainId: Chain,
 ): AddProfitsBalance<T> {
   return {
     ...profit,
@@ -142,6 +146,10 @@ function enrichProfitsResponse<T extends { tokens?: PositionProfits[] }>(
                   profit: formatUnits(
                     underlyingProfitValue.profitRaw,
                     underlyingProfitValue.decimals,
+                  ),
+                  iconUrl: buildTrustAssetIconUrl(
+                    chainId,
+                    underlyingProfitValue.address,
                   ),
                   calculationData: {
                     ...underlyingProfitValue.calculationData,
@@ -194,7 +202,10 @@ export async function getPrices({
             protocolTokenAddress,
             blockNumber,
           })
-        return enrichUnderlyingTokenRates(protocolTokenUnderlyingRate)
+        return enrichUnderlyingTokenRates(
+          protocolTokenUnderlyingRate,
+          adapter.chainId,
+        )
       }),
     )
 
@@ -210,6 +221,7 @@ export async function getPrices({
 
 function enrichUnderlyingTokenRates(
   pricePerShare: ProtocolTokenUnderlyingRate,
+  chainId: Chain,
 ): Omit<ProtocolTokenUnderlyingRate, 'tokens'> & {
   tokens?: (UnderlyingTokenRate & { underlyingRate: string })[]
 } {
@@ -223,6 +235,10 @@ function enrichUnderlyingTokenRates(
               underlyingRate: formatUnits(
                 underlyingTokenRate.underlyingRateRaw,
                 underlyingTokenRate.decimals,
+              ),
+              iconUrl: buildTrustAssetIconUrl(
+                chainId,
+                underlyingTokenRate.address,
               ),
             }
           }),
@@ -355,7 +371,11 @@ export async function getTotalValueLocked({
 
     const tokens = await adapter.getTotalValueLocked({ blockNumber })
 
-    return { tokens: tokens.map((value) => enrichTotalValueLocked(value)) }
+    return {
+      tokens: tokens.map((value) =>
+        enrichTotalValueLocked(value, adapter.chainId),
+      ),
+    }
   }
 
   return runForAllProtocolsAndChains({
@@ -365,7 +385,10 @@ export async function getTotalValueLocked({
   })
 }
 
-function enrichTotalValueLocked(protocolTokenTvl: ProtocolTokenTvl): any {
+function enrichTotalValueLocked(
+  protocolTokenTvl: ProtocolTokenTvl,
+  chainId: Chain,
+): any {
   return {
     ...protocolTokenTvl,
     totalSupply: formatUnits(
@@ -376,6 +399,7 @@ function enrichTotalValueLocked(protocolTokenTvl: ProtocolTokenTvl): any {
       return {
         ...value,
         totalSupply: formatUnits(value.totalSupplyRaw, value.decimals),
+        iconUrl: buildTrustAssetIconUrl(chainId, value.address),
       }
     }),
   }

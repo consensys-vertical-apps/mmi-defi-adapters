@@ -4,7 +4,6 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
@@ -36,7 +35,7 @@ type StargatePoolMetadata = Record<
   {
     poolId: number
     protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata & { iconUrl: string }
+    underlyingToken: Erc20Metadata
   }
 >
 
@@ -98,13 +97,7 @@ export class StargatePoolAdapter
       metadataObject[poolAddress] = {
         poolId,
         protocolToken,
-        underlyingToken: {
-          ...underlyingToken,
-          iconUrl: buildTrustAssetIconUrl(
-            this.chainId,
-            underlyingToken.address,
-          ),
-        },
+        underlyingToken,
       }
     }
 

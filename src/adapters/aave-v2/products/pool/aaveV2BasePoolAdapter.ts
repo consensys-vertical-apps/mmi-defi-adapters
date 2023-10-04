@@ -1,7 +1,6 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
@@ -30,7 +29,7 @@ type AaveV2PoolMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata & { iconUrl: string }
+    underlyingToken: Erc20Metadata
   }
 >
 
@@ -116,13 +115,7 @@ export abstract class AaveV2BasePoolAdapter
         )
         tokenMetadataObject[protocolTokenMetadata.address] = {
           protocolToken: protocolTokenMetadata,
-          underlyingToken: {
-            ...underlyingTokenMetadata,
-            iconUrl: buildTrustAssetIconUrl(
-              this.chainId,
-              underlyingTokenMetadata.address,
-            ),
-          },
+          underlyingToken: underlyingTokenMetadata,
         }
       }
 
