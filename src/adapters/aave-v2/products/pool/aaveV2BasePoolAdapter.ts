@@ -100,12 +100,12 @@ export abstract class AaveV2BasePoolAdapter
           tokenAddress,
         )
 
-      const underlyingToken = await getTokenMetadata(tokenAddress, this.chainId)
-
       const protocolToken = await getTokenMetadata(
         this.getReserveTokenAddress(reserveTokenAddresses),
         this.chainId,
       )
+
+      const underlyingToken = await getTokenMetadata(tokenAddress, this.chainId)
 
       metadataObject[protocolToken.address] = {
         protocolToken,
