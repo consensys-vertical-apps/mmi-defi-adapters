@@ -165,11 +165,12 @@ export async function getPrices({
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
       protocolTokens.map(async ({ address: protocolTokenAddress }) => {
-        const temp = await adapter.getProtocolTokenToUnderlyingTokenRate({
-          protocolTokenAddress,
-          blockNumber,
-        })
-        return enrichPricesResponse(temp)
+        const protocolTokenUnderlyingRate =
+          await adapter.getProtocolTokenToUnderlyingTokenRate({
+            protocolTokenAddress,
+            blockNumber,
+          })
+        return enrichUnderlyingTokenRates(protocolTokenUnderlyingRate)
       }),
     )
 
@@ -183,7 +184,9 @@ export async function getPrices({
   }) as any
 }
 
-function enrichPricesResponse(pricePerShare: ProtocolTokenUnderlyingRate): any {
+function enrichUnderlyingTokenRates(
+  pricePerShare: ProtocolTokenUnderlyingRate,
+): any {
   return {
     ...pricePerShare,
     ...(pricePerShare.tokens

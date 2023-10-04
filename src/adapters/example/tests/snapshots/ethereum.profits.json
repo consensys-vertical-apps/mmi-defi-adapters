@@ -27,7 +27,7 @@
               "symbol": "FRAX",
               "decimals": 6,
               "profitRaw": "100000000n",
-              "profit": "100",
+              "profit": "100.0",
               "calculationData": {}
             },
             {
@@ -37,7 +37,7 @@
               "symbol": "FRAX",
               "decimals": 6,
               "profitRaw": "100000000n",
-              "profit": "100",
+              "profit": "100.0",
               "calculationData": {}
             }
           ]
