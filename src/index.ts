@@ -6,6 +6,7 @@ import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { chainProviders } from './core/utils/chainProviders'
 import {
+  MovementsByBlock,
   PositionProfits,
   PositionType,
   ProtocolTokenUnderlyingRate,
@@ -181,7 +182,7 @@ export async function getPrices({
     runner,
     filterProtocolIds,
     filterChainIds,
-  })
+  }) as any
 }
 
 function enrichUnderlyingTokenRates(
@@ -235,7 +236,9 @@ export async function getWithdrawals({
 
         return {
           protocolToken,
-          positionMovements,
+          positionMovements: positionMovements.map((value) =>
+            enrichMovements(value),
+          ),
         }
       }),
     )
@@ -278,7 +281,9 @@ export async function getDeposits({
 
         return {
           protocolToken,
-          positionMovements,
+          positionMovements: positionMovements.map((value) =>
+            enrichMovements(value),
+          ),
         }
       }),
     )
@@ -293,6 +298,24 @@ export async function getDeposits({
     filterProtocolIds,
     filterChainIds,
   })
+}
+
+function enrichMovements(movementsByBlock: MovementsByBlock): any {
+  const temp = Object.entries(movementsByBlock.underlyingTokensMovement).reduce(
+    (accumulator, [key, value]) => {
+      accumulator[key] = {
+        ...value,
+        movementValue: formatUnits(value.movementValueRaw, value.decimals),
+      }
+
+      return accumulator
+    },
+    {} as any,
+  )
+  return {
+    ...movementsByBlock,
+    underlyingTokensMovement: temp,
+  }
 }
 
 export async function getTotalValueLocked({

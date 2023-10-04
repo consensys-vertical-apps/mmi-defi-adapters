@@ -250,7 +250,6 @@ export interface ProtocolTokenUnderlyingRate extends Erc20Metadata {
 }
 
 export interface BaseTokenMovement extends Erc20Metadata {
-  movementValue: string
   movementValueRaw: bigint
 }
 

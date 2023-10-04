@@ -25,8 +25,8 @@
                   "name": "USD Coin",
                   "symbol": "USDC",
                   "decimals": 6,
-                  "movementValueRaw": "100n",
-                  "movementValue": "100"
+                  "movementValueRaw": "100000000n",
+                  "movementValue": "100.0"
                 }
               },
               "blockNumber": 17970000
