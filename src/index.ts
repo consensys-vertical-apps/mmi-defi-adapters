@@ -164,12 +164,12 @@ export async function getPrices({
 
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
-      protocolTokens.map(({ address: protocolTokenAddress }) => {
-        const temp = adapter.getProtocolTokenToUnderlyingTokenRate({
+      protocolTokens.map(async ({ address: protocolTokenAddress }) => {
+        const temp = await adapter.getProtocolTokenToUnderlyingTokenRate({
           protocolTokenAddress,
           blockNumber,
         })
-        return temp
+        return enrichPricesResponse(temp)
       }),
     )
 
@@ -180,35 +180,26 @@ export async function getPrices({
     runner,
     filterProtocolIds,
     filterChainIds,
-  })
+  }) as any
 }
 
-function enrichPricesResponse<
-  T extends { tokens?: ProtocolTokenUnderlyingRate[] },
->(pricePerShare: T): AddProfitsBalance<T> {
+function enrichPricesResponse(pricePerShare: ProtocolTokenUnderlyingRate): any {
   return {
     ...pricePerShare,
     ...(pricePerShare.tokens
       ? {
-          tokens: pricePerShare.tokens?.map((protocolTokenUnderlyingRate) => {
+          tokens: pricePerShare.tokens.map((underlyingTokenRate) => {
             return {
-              ...protocolTokenUnderlyingRate,
-              tokens: protocolTokenUnderlyingRate.tokens?.map(
-                (underlyingTokenRate) => {
-                  return {
-                    ...underlyingTokenRate,
-                    underlyingRate: formatUnits(
-                      underlyingTokenRate.underlyingRateRaw,
-                      underlyingTokenRate.decimals,
-                    ),
-                  }
-                },
+              ...underlyingTokenRate,
+              underlyingRate: formatUnits(
+                underlyingTokenRate.underlyingRateRaw,
+                underlyingTokenRate.decimals,
               ),
             }
           }),
         }
       : {}),
-  } as AddProfitsBalance<T>
+  }
 }
 
 export async function getWithdrawals({

@@ -25,8 +25,8 @@
               "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
               "name": "Frax",
               "symbol": "FRAX",
-              "decimals": 18,
-              "profitRaw": "100n",
+              "decimals": 6,
+              "profitRaw": "100000000n",
               "profit": "100",
               "calculationData": {}
             },
@@ -35,8 +35,8 @@
               "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
               "name": "Frax",
               "symbol": "FRAX",
-              "decimals": 18,
-              "profitRaw": "100n",
+              "decimals": 6,
+              "profitRaw": "100000000n",
               "profit": "100",
               "calculationData": {}
             }
