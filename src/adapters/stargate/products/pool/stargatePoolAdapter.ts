@@ -4,7 +4,7 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   UnderlyingTokenRate,
@@ -85,11 +85,8 @@ export class StargatePoolAdapter
       const poolId = Number(await poolContract.poolId())
       const underlyingTokenAddress = (await poolContract.token()).toLowerCase()
 
-      const protocolToken = await getThinTokenMetadata(
-        poolAddress,
-        this.chainId,
-      )
-      const underlyingToken = await getThinTokenMetadata(
+      const protocolToken = await getTokenMetadata(poolAddress, this.chainId)
+      const underlyingToken = await getTokenMetadata(
         underlyingTokenAddress,
         this.chainId,
       )

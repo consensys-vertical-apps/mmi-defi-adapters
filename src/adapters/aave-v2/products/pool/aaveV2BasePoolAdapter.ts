@@ -1,7 +1,7 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
-import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   UnderlyingTokenRate,
@@ -100,7 +100,7 @@ export abstract class AaveV2BasePoolAdapter
           tokenAddress,
         )
 
-      const underlyingTokenMetadata = await getThinTokenMetadata(
+      const underlyingTokenMetadata = await getTokenMetadata(
         tokenAddress,
         this.chainId,
       )
@@ -109,7 +109,7 @@ export abstract class AaveV2BasePoolAdapter
         tokenAddress: string,
         tokenMetadataObject: AaveV2PoolMetadata,
       ) => {
-        const protocolTokenMetadata = await getThinTokenMetadata(
+        const protocolTokenMetadata = await getTokenMetadata(
           tokenAddress,
           this.chainId,
         )

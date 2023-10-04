@@ -4,7 +4,7 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
   GetApyInput,
@@ -171,11 +171,11 @@ export class StargateVestingAdapter
       await votingEscrowContract.token()
     ).toLowerCase()
 
-    const contractToken = await getThinTokenMetadata(
+    const contractToken = await getTokenMetadata(
       contractAddresses[this.chainId]!,
       this.chainId,
     )
-    const underlyingToken = await getThinTokenMetadata(
+    const underlyingToken = await getTokenMetadata(
       underlyingTokenAddress,
       this.chainId,
     )
