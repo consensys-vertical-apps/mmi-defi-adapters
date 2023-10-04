@@ -9,10 +9,12 @@ import {
   MovementsByBlock,
   PositionProfits,
   PositionType,
+  ProtocolTokenTvl,
   ProtocolTokenUnderlyingRate,
   TokenBalance,
   Underlying,
   UnderlyingTokenRate,
+  UnderlyingTokenTvl,
 } from './types/adapter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
@@ -142,6 +144,28 @@ function enrichProfitsResponse<T extends { tokens?: PositionProfits[] }>(
                     underlyingProfitValue.profitRaw,
                     underlyingProfitValue.decimals,
                   ),
+                  calculationData: {
+                    ...underlyingProfitValue.calculationData,
+                    withdrawals: formatUnits(
+                      underlyingProfitValue.calculationData.withdrawalsRaw ??
+                        0n,
+                      underlyingProfitValue.decimals,
+                    ),
+                    deposits: formatUnits(
+                      underlyingProfitValue.calculationData.depositsRaw ?? 0n,
+                      underlyingProfitValue.decimals,
+                    ),
+                    startPositionValue: formatUnits(
+                      underlyingProfitValue.calculationData
+                        .startPositionValueRaw ?? 0n,
+                      underlyingProfitValue.decimals,
+                    ),
+                    endPositionValue: formatUnits(
+                      underlyingProfitValue.calculationData
+                        .endPositionValueRaw ?? 0n,
+                      underlyingProfitValue.decimals,
+                    ),
+                  },
                 }
               }),
             }
@@ -332,7 +356,7 @@ export async function getTotalValueLocked({
 
     const tokens = await adapter.getTotalValueLocked({ blockNumber })
 
-    return { tokens }
+    return { tokens: tokens.map((value) => enrichTotalValueLocked(value)) }
   }
 
   return runForAllProtocolsAndChains({
@@ -340,6 +364,22 @@ export async function getTotalValueLocked({
     filterProtocolIds,
     filterChainIds,
   })
+}
+
+function enrichTotalValueLocked(protocolTokenTvl: ProtocolTokenTvl): any {
+  return {
+    ...protocolTokenTvl,
+    totalSupply: formatUnits(
+      protocolTokenTvl.totalSupplyRaw,
+      protocolTokenTvl.decimals,
+    ),
+    tokens: protocolTokenTvl.tokens?.map((value) => {
+      return {
+        ...value,
+        totalSupply: formatUnits(value.totalSupplyRaw, value.decimals),
+      }
+    }),
+  }
 }
 
 export async function getApy({

@@ -28,7 +28,16 @@
               "decimals": 6,
               "profitRaw": "100000000n",
               "profit": "100.0",
-              "calculationData": {}
+              "calculationData": {
+                "deposits": "0.0",
+                "depositsRaw": "0n",
+                "endPositionValue": "0.0",
+                "endPositionValueRaw": "0n",
+                "startPositionValue": "0.0",
+                "startPositionValueRaw": "0n",
+                "withdrawals": "0.0",
+                "withdrawalsRaw": "0n"
+              }
             },
             {
               "type": "claimable",
@@ -38,7 +47,16 @@
               "decimals": 6,
               "profitRaw": "100000000n",
               "profit": "100.0",
-              "calculationData": {}
+              "calculationData": {
+                "deposits": "0.0",
+                "depositsRaw": "0n",
+                "endPositionValue": "0.0",
+                "endPositionValueRaw": "0n",
+                "startPositionValue": "0.0",
+                "startPositionValueRaw": "0n",
+                "withdrawals": "0.0",
+                "withdrawalsRaw": "0n"
+              }
             }
           ]
         }

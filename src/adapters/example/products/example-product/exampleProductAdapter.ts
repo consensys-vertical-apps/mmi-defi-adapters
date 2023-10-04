@@ -131,7 +131,12 @@ export class ExampleProductAdapter implements IProtocolAdapter {
               symbol: 'FRAX',
               decimals: 6,
               profitRaw: 100000000n,
-              calculationData: {} as CalculationData,
+              calculationData: {
+                withdrawalsRaw: 0n,
+                depositsRaw: 0n,
+                startPositionValueRaw: 0n,
+                endPositionValueRaw: 0n,
+              },
             },
             {
               type: TokenType.Reward,
@@ -140,7 +145,12 @@ export class ExampleProductAdapter implements IProtocolAdapter {
               symbol: 'FRAX',
               decimals: 6,
               profitRaw: 100000000n,
-              calculationData: {} as CalculationData,
+              calculationData: {
+                withdrawalsRaw: 0n,
+                depositsRaw: 0n,
+                startPositionValueRaw: 0n,
+                endPositionValueRaw: 0n,
+              },
             },
           ],
         },
@@ -280,7 +290,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
         symbol: 'S*USDC',
         decimals: 6,
         totalSupplyRaw: 31468548033n,
-        totalSupply: '31468.548033',
         type: 'protocol',
         tokens: [
           {
@@ -288,7 +297,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
             name: 'USD Coin',
             symbol: 'USDC',
             decimals: 6,
-            totalSupply: '31492.408006',
             totalSupplyRaw: 31492408006n,
             type: 'underlying',
           },

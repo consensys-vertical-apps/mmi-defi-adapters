@@ -285,22 +285,14 @@ export interface UnderlyingTokenTvl extends Erc20Metadata {
    * Total underlying token locked in pool raw
    */
   totalSupplyRaw: bigint
-  /**
-   * Total underlying token locked in pool
-   */
-  totalSupply: string
 }
 
 export interface ProtocolTokenTvl extends Erc20Metadata {
+  type: typeof TokenType.Protocol
   /**
    * Total underlying token locked in pool raw
    */
   totalSupplyRaw: bigint
-  /**
-   * Total underlying token locked in pool
-   */
-  totalSupply: string
-  type: typeof TokenType.Protocol
   tokens?: UnderlyingTokenTvl[]
 }
 
@@ -341,13 +333,9 @@ export interface PositionProfits extends Erc20Metadata {
 
 export interface CalculationData {
   withdrawalsRaw: bigint
-  withdrawals: string
   depositsRaw: bigint
-  deposits: string
   startPositionValueRaw: bigint
-  startPositionValue: string
   endPositionValueRaw: bigint
-  endPositionValue: string
 }
 
 export interface ProtocolAdapterParams {

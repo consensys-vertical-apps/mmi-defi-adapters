@@ -199,22 +199,9 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
                 const calculationData = {
                   withdrawalsRaw: withdrawals[address] ?? 0n,
-                  withdrawals: formatUnits(
-                    withdrawals[address] ?? 0n,
-                    decimals,
-                  ),
                   depositsRaw: deposits[address] ?? 0n,
-                  deposits: formatUnits(deposits[address] ?? 0n, decimals),
                   startPositionValueRaw: startPositionValueRaw ?? 0n,
-                  startPositionValue: formatUnits(
-                    startPositionValueRaw ?? 0n,
-                    decimals,
-                  ),
                   endPositionValueRaw,
-                  endPositionValue: formatUnits(
-                    endPositionValueRaw ?? 0n,
-                    decimals,
-                  ),
                 }
 
                 let profitRaw =
