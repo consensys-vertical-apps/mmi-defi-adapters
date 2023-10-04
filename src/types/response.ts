@@ -44,7 +44,7 @@ export type DefiPositionResponse = AdapterResponse<{
 export type PricePerShareResponse = AdapterResponse<{
   tokens: Omit<ProtocolTokenUnderlyingRate, 'tokens'> &
     {
-      tokens: (UnderlyingTokenRate & { underlyingRate: string })[]
+      tokens?: (UnderlyingTokenRate & { underlyingRate: string })[]
     }[]
 }>
 

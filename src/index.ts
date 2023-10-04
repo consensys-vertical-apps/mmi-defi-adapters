@@ -181,12 +181,14 @@ export async function getPrices({
     runner,
     filterProtocolIds,
     filterChainIds,
-  }) as any
+  })
 }
 
 function enrichUnderlyingTokenRates(
   pricePerShare: ProtocolTokenUnderlyingRate,
-): any {
+): Omit<ProtocolTokenUnderlyingRate, 'tokens'> & {
+  tokens?: (UnderlyingTokenRate & { underlyingRate: string })[]
+} {
   return {
     ...pricePerShare,
     ...(pricePerShare.tokens
@@ -202,6 +204,8 @@ function enrichUnderlyingTokenRates(
           }),
         }
       : {}),
+  } as Omit<ProtocolTokenUnderlyingRate, 'tokens'> & {
+    tokens?: (UnderlyingTokenRate & { underlyingRate: string })[]
   }
 }
 
