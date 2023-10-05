@@ -1,0 +1,285 @@
+{
+  "blockNumber": 18163124,
+  "snapshot": [
+    {
+      "protocolId": "stargate",
+      "name": "Stargate",
+      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+      "siteUrl": "https://stargate.finance/",
+      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "47364742450882n",
+          "tokens": [
+            {
+              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "23824093926381n",
+              "totalSupply": "23824093.926381",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "totalSupply": "47364742.450882"
+        },
+        {
+          "address": "0x38ea452219524bb87e18de1c24d3bb59510bd783",
+          "name": "Tether USD-LP",
+          "symbol": "S*USDT",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "37315360433940n",
+          "tokens": [
+            {
+              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "45812089888105n",
+              "totalSupply": "45812089.888105",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "totalSupply": "37315360.43394"
+        },
+        {
+          "address": "0x692953e758c3669290cb1677180c64183cee374e",
+          "name": "Decentralized USD-LP",
+          "symbol": "S*USDD",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "1001019686904712145454530n",
+          "tokens": [
+            {
+              "address": "0x0c10bf8fcb7bf5412187a595ab97a3609160b5c6",
+              "name": "Decentralized USD",
+              "symbol": "USDD",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "1004586288537203080725216n",
+              "totalSupply": "1004586.288537203080725216",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0C10bF8FcB7Bf5412187A595ab97a3609160b5c6/logo.png"
+            }
+          ],
+          "totalSupply": "1001019.68690471214545453"
+        },
+        {
+          "address": "0x101816545f6bd2b1076434b54383a1e633390a2e",
+          "name": "Stargate Ether Vault-LP",
+          "symbol": "S*SGETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "9682246399452301562955n",
+          "tokens": [
+            {
+              "address": "0x72e2f4830b9e45d52f80ac08cb2bec0fef72ed9c",
+              "name": "Stargate Ether Vault",
+              "symbol": "SGETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "5289724847875587688200n",
+              "totalSupply": "5289.7248478755876882",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x72E2F4830b9E45d52F80aC08CB2bEC0FeF72eD9c/logo.png"
+            }
+          ],
+          "totalSupply": "9682.246399452301562955"
+        },
+        {
+          "address": "0x0faf1d2d3ced330824de3b8200fc8dc6e397850d",
+          "name": "Dai Stablecoin-LP",
+          "symbol": "S*DAI",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "387295236872n",
+          "tokens": [
+            {
+              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "163650869538000000000000n",
+              "totalSupply": "163650.869538",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            }
+          ],
+          "totalSupply": "387295.236872"
+        },
+        {
+          "address": "0xfa0f307783ac21c39e939acff795e27b650f6e68",
+          "name": "Frax-LP",
+          "symbol": "S*FRAX",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "172413843941n",
+          "tokens": [
+            {
+              "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+              "name": "Frax",
+              "symbol": "FRAX",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "45359233678000000000000n",
+              "totalSupply": "45359.233678",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
+            }
+          ],
+          "totalSupply": "172413.843941"
+        },
+        {
+          "address": "0x590d4f8a68583639f215f675f3a259ed84790580",
+          "name": "Synth sUSD-LP",
+          "symbol": "S*sUSD",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "81713290846n",
+          "tokens": [
+            {
+              "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+              "name": "Synth sUSD",
+              "symbol": "SUSD",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "29576241571000000000000n",
+              "totalSupply": "29576.241571",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
+            }
+          ],
+          "totalSupply": "81713.290846"
+        },
+        {
+          "address": "0xe8f55368c82d38bbbbdb5533e7f56afc2e978cc2",
+          "name": "LUSD Stablecoin-LP",
+          "symbol": "S*LUSD",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "106850400320n",
+          "tokens": [
+            {
+              "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+              "name": "Liquity USD",
+              "symbol": "LUSD",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "17458226997000000000000n",
+              "totalSupply": "17458.226997",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
+            }
+          ],
+          "totalSupply": "106850.40032"
+        },
+        {
+          "address": "0x9cef9a0b1be0d289ac9f4a98ff317c33eaa84eb8",
+          "name": "Mai Stablecoin-LP",
+          "symbol": "S*MAI",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "501750539885n",
+          "tokens": [
+            {
+              "address": "0x8d6cebd76f18e1558d4db88138e2defb3909fad6",
+              "name": "Mai Stablecoin",
+              "symbol": "MAI",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "402526188871000000000000n",
+              "totalSupply": "402526.188871",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8D6CeBD76f18E1558D4DB88138e2DeFB3909fAD6/logo.png"
+            }
+          ],
+          "totalSupply": "501750.539885"
+        },
+        {
+          "address": "0xd8772edbf88bba2667ed011542343b0eddacda47",
+          "name": "Metis Token-LP",
+          "symbol": "S*Metis",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "860994849545252698285n",
+          "tokens": [
+            {
+              "address": "0x9e32b13ce7f2e80a01932b42553652e053d6ed8e",
+              "name": "Metis",
+              "symbol": "METIS",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "322882450684313402636n",
+              "totalSupply": "322.882450684313402636",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9E32b13ce7f2E80A01932B42553652E053D6ed8e/logo.png"
+            }
+          ],
+          "totalSupply": "860.994849545252698285"
+        },
+        {
+          "address": "0x430ebff5e3e80a6c58e7e6ada1d90f5c28aa116d",
+          "name": "Tether USD-LP",
+          "symbol": "S*USDT",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "369071503749n",
+          "tokens": [
+            {
+              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "42867913057n",
+              "totalSupply": "42867.913057",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "totalSupply": "369071.503749"
+        },
+        {
+          "address": "0x1ce66c52c36757daf6551edc04800a0ec9983a09",
+          "name": "Wootrade Network-LP",
+          "symbol": "S*WOO",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "30535466279488727042769n",
+          "tokens": [
+            {
+              "address": "0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
+              "name": "Wootrade Network",
+              "symbol": "WOO",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "143415601044067481912402n",
+              "totalSupply": "143415.601044067481912402",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4691937a7508860F876c9c0a2a617E7d9E945D4B/logo.png"
+            }
+          ],
+          "totalSupply": "30535.466279488727042769"
+        }
+      ]
+    },
+    {
+      "protocolId": "stargate",
+      "name": "Stargate",
+      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+      "siteUrl": "https://stargate.finance/",
+      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "success": false,
+      "error": {
+        "message": "Not Implemented",
+        "details": {
+          "name": "Error"
+        }
+      }
+    }
+  ]
+}
