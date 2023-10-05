@@ -170,17 +170,16 @@ export class UniswapV3PoolAdapter
         ),
     )
 
-    const claimableFeesPromises = nonZeroPositions.map(
-      ({ tokenId }) =>
-        positionsManagerContract.collect.staticCall(
-          {
-            tokenId: tokenId as bigint,
-            recipient: userAddress,
-            amount0Max: maxUint128,
-            amount1Max: maxUint128,
-          },
-          { from: userAddress, blockTag: blockNumber },
-        ) ,
+    const claimableFeesPromises = nonZeroPositions.map(({ tokenId }) =>
+      positionsManagerContract.collect.staticCall(
+        {
+          tokenId: tokenId as bigint,
+          recipient: userAddress,
+          amount0Max: maxUint128,
+          amount1Max: maxUint128,
+        },
+        { from: userAddress, blockTag: blockNumber },
+      ),
     )
 
     const erc20MetadataPromises = nonZeroPositions.map(({ token0, token1 }) =>
@@ -197,12 +196,16 @@ export class UniswapV3PoolAdapter
     ])
 
     return nonZeroPositions.map((pos, index) => {
-
       const tokenBalance = tokenBalances[index]
       const claimableFee = claimableFees[index]
       const token0Metadata = erc20Metadata[index]![0]
       const token1Metadata = erc20Metadata[index]![1]
-      if(!tokenBalance || !claimableFee || !token0Metadata || !token1Metadata){
+      if (
+        !tokenBalance ||
+        !claimableFee ||
+        !token0Metadata ||
+        !token1Metadata
+      ) {
         throw new Error('Error occurred while getting Uniswap positions')
       }
 
@@ -213,7 +216,6 @@ export class UniswapV3PoolAdapter
       const token0FeeRawBalance = claimableFee.amount0
 
       const token1FeeRawBalance = claimableFee.amount1
-
 
       const FEE_DECIMALS = 4
       const nftName = `${token0Metadata.symbol} / ${

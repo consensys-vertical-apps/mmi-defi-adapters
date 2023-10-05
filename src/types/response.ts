@@ -43,7 +43,9 @@ export type DisplayPosition<
 > = Omit<PositionBalance, 'tokens'> & {
   balance: string
   tokens?: DisplayPosition<Underlying>[]
-} & (PositionBalance['type'] extends typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimableFee
+} & (PositionBalance['type'] extends
+    | typeof TokenType.Underlying
+    | typeof TokenType.UnderlyingClaimableFee
     ? { iconUrl: string }
     : Record<string, never>)
 
