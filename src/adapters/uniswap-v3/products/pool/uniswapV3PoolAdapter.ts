@@ -1,0 +1,357 @@
+import { ethers, formatUnits } from 'ethers'
+import { Chain } from '../../../../core/constants/chains'
+import {
+  IMetadataBuilder,
+  CacheToFile,
+} from '../../../../core/decorators/cacheToFile'
+import {
+  ProtocolAdapterParams,
+  ProtocolDetails,
+  PositionType,
+  GetPositionsInput,
+  GetEventsInput,
+  MovementsByBlock,
+  GetTotalValueLockedInput,
+  GetProfitsInput,
+  GetApyInput,
+  GetAprInput,
+  GetClaimableRewardsInput,
+  GetConversionRateInput,
+  ProtocolRewardPosition,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
+  ProtocolTokenUnderlyingRate,
+  ProfitsWithRange,
+  ProtocolTokenTvl,
+  ProtocolPosition,
+  TokenType,
+  Underlying,
+} from '../../../../types/adapter'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import { Protocol } from '../../../protocols'
+import {
+  PositionManager__factory,
+  UniswapPoolFactory__factory,
+  UniswapPool__factory,
+} from '../../contracts'
+import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { filterMap } from '../../../../core/utils/filters'
+
+const EXAMPLE_USER_WITH_POSITION = '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5'
+const deadline = Math.floor(Date.now() - 1000) + 60 * 10
+
+const positionManagerCommonAddress = '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
+
+const contractAddresses : Partial<Record<Chain, {positionManager: string}>>  = {
+  [Chain.Ethereum]: {
+    positionManager: positionManagerCommonAddress
+  },
+  [Chain.Arbitrum]: {
+    positionManager: positionManagerCommonAddress
+  },
+  [Chain.Optimism]: {
+    positionManager: positionManagerCommonAddress
+  },
+  [Chain.Polygon]: {
+    positionManager: positionManagerCommonAddress
+  },
+  [Chain.Bsc]: {
+    positionManager: '0x7b8A01B39D58278b5DE7e48c8449c9f4F5170613'
+  },
+  [Chain.Base]: {
+    positionManager: '0x03a520b32C04BF3bEEf7BEb72E919cf822Ed34f1'
+  },
+}
+
+const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
+
+export class UniswapV3PoolAdapter
+  implements IProtocolAdapter, IMetadataBuilder
+{
+  product = 'pool'
+  protocolId: Protocol
+  chainId: Chain
+
+  private provider: ethers.JsonRpcProvider
+
+  constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolId = protocolId
+  }
+
+  getProtocolDetails(): ProtocolDetails {
+    return {
+      protocolId: this.protocolId,
+      name: 'UniswapV3',
+      description: 'UniswapV3 defi adapter',
+      siteUrl: 'https://uniswap.org/',
+      iconUrl: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png',
+      positionType: PositionType.Supply,
+      chainId: this.chainId,
+    }
+  }
+
+  /**
+   * Update me.
+   * Add logic to build protocol token metadata
+   * For context see dashboard example ./dashboard.png
+   * We need protocol token names, decimals, and also linked underlying tokens
+   */
+  @CacheToFile({ fileKey: 'protocol-token' })
+  async buildMetadata() {
+    throw new Error('Implement me')
+
+    return {}
+  }
+
+  /**
+   * Update me.
+   * Returning an array of your protocol tokens.
+   */
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+    throw new Error('Implement me')
+  }
+
+  /**
+   * Update me.
+   * Add logic to get userAddress positions in your protocol
+   */
+  async getPositions({
+    userAddress,
+    blockNumber,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const positionsManagerContract = PositionManager__factory.connect(
+      contractAddresses[this.chainId]!.positionManager,
+      this.provider,
+    )
+
+    const balanceOf = await positionsManagerContract.balanceOf(userAddress, {
+      blockTag: blockNumber,
+    })
+
+    const tokenIds = await Promise.all(
+      [...Array(Number(balanceOf)).keys()].map((index) =>
+        positionsManagerContract.tokenOfOwnerByIndex(userAddress, index, {
+          blockTag: blockNumber,
+        }),
+      ),
+    )
+
+    const positionMetadata = await Promise.all(
+      tokenIds.map((tokenId) =>
+        positionsManagerContract.positions(tokenId, { blockTag: blockNumber }),
+      ),
+    )
+
+    const nonZeroPositions = filterMap(positionMetadata, (position, index) => {
+      if (position.liquidity == 0n) return undefined
+
+      return {
+        liquidity: position.liquidity,
+        token0: position.token0,
+        token1: position.token1,
+        fee: position.fee,
+        tokenId: tokenIds[index],
+      }
+    })
+
+    if (nonZeroPositions.length == 0) return []
+
+
+
+    const tokenBalancesPromises = nonZeroPositions.map(
+      ({ liquidity, tokenId }) =>
+        positionsManagerContract.decreaseLiquidity.staticCallResult(
+          {
+            tokenId: tokenId as bigint,
+            liquidity,
+            amount0Min: 0n,
+            amount1Min: 0n,
+            deadline,
+          },
+          { from: userAddress, blockTag: blockNumber },
+        ),
+    )
+
+    const claimableFeesPromises = nonZeroPositions.map(({ tokenId }) =>
+      positionsManagerContract.collect.staticCallResult(
+        {
+          tokenId: tokenId as bigint,
+          recipient: userAddress,
+          amount0Max: maxUint128,
+          amount1Max: maxUint128,
+        },
+        { from: userAddress, blockTag: blockNumber },
+      ),
+    )
+
+    const erc20MetadataPromises = nonZeroPositions.map(({ token0, token1 }) =>
+      Promise.all([
+        getThinTokenMetadata(token0, 1),
+        getThinTokenMetadata(token1, 1),
+      ]),
+    )
+
+    const [tokenBalances, claimableFees, erc20Metadata] = await Promise.all([
+      Promise.all(tokenBalancesPromises),
+      Promise.all(claimableFeesPromises),
+      Promise.all(erc20MetadataPromises),
+    ])
+
+    return nonZeroPositions.map((pos, index) => {
+ 
+
+      const token0 = 0
+      const token1 = 1
+
+
+      const token0RawBalance = tokenBalances[index]?.[token0]
+      // @ts-ignore // Type issue - ethers or typechain has an issue imo here
+      const token1RawBalance = tokenBalances[index]?.[token1]
+
+      const token0FeeRawBalance = claimableFees[index]?.[token0]
+      // @ts-ignore // Type issue - ethers or typechain has an issue imo here
+      const token1FeeRawBalance = claimableFees[index]?.[token1]
+
+      const nftName = `${erc20Metadata[index]?.[token0]
+        ?.symbol} / ${erc20Metadata[index]?.[token1]?.symbol} - ${formatUnits(
+        pos.fee,
+        4,
+      )}%`
+      return {
+        address: positionManagerCommonAddress,
+        name: nftName,
+        symbol: nftName,
+        decimals: 18,
+        balanceRaw: pos.liquidity,
+        balance: '-1',
+        type: TokenType.Protocol,
+        tokens: [
+          this.createUnderlyingToken(
+            pos.token0,
+            erc20Metadata[index]?.[token0],
+            token0RawBalance,
+            TokenType.Underlying,
+          ),
+          this.createUnderlyingToken(
+            pos.token0,
+            erc20Metadata[index]?.[token0],
+            token0FeeRawBalance,
+            TokenType.UnderlyingClaimableFee,
+          ),
+          this.createUnderlyingToken(
+            pos.token1,
+            erc20Metadata[index]?.[token1],
+            token1RawBalance,
+            TokenType.Underlying,
+          ),
+          this.createUnderlyingToken(
+            pos.token1,
+            erc20Metadata[index]?.[token1],
+            token1FeeRawBalance,
+            TokenType.UnderlyingClaimableFee,
+          ),
+        ],
+      } as any // to be removed when bernardo changes merged
+    })
+  }
+
+  /**
+   * Update me.
+   * Add logic to get userAddress claimable rewards per position
+   */
+  async getClaimableRewards(
+    _input: GetClaimableRewardsInput,
+  ): Promise<ProtocolRewardPosition[]> {
+    throw new Error('Implement me')
+  }
+
+  /**
+   * Update me.
+   * Add logic to get user's withdrawals per position by block range
+   */
+  async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new Error('Implement me')
+  }
+
+  /**
+   * Update me.
+   * Add logic to get user's deposits per position by block range
+   */
+  async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new Error('Implement me')
+  }
+
+  /**
+   * Update me.
+   * Add logic to get user's claimed rewards per position by block range
+   */
+  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new Error('Implement me')
+  }
+
+  /**
+   * Update me.
+   * Add logic to get tvl in a pool
+   *
+   */
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTokenTvl[]> {
+    throw new Error('Implement me')
+  }
+
+  /**
+   * Update me.
+   * Add logic to calculate the underlying token rate of 1 protocol token
+   */
+  async getProtocolTokenToUnderlyingTokenRate({
+    blockNumber,
+    protocolTokenAddress,
+  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+    throw new Error('Implement me')
+  }
+
+  /**
+   * Update me.
+   * Add logic to calculate the users profits
+   */
+  async getProfits(_input: GetProfitsInput): Promise<ProfitsWithRange> {
+    throw new Error('Implement me')
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new Error('Implement me')
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new Error('Implement me')
+  }
+  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new Error('Implement me')
+  }
+
+  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new Error('Implement me')
+  }
+
+  private createUnderlyingToken(
+    address: string,
+    metadata: any,
+    balanceRaw: any,
+    type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimableFee,
+  ): Underlying {
+    return {
+      address,
+      iconUrl: '',
+      balance: '-1',
+      name: metadata?.name,
+      symbol: metadata?.symbol,
+      decimals: metadata?.decimals,
+      balanceRaw,
+      type,
+    }
+  }
+}

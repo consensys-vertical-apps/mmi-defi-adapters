@@ -9,6 +9,7 @@ import { ExampleProductAdapter } from './example/products/example-product/exampl
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
+import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -41,5 +42,10 @@ export const supportedProtocols: Record<
       AaveV2StableDebtTokenPoolAdapter,
       AaveV2VariableDebtTokenPoolAdapter,
     ],
+  },
+
+  [Protocol.UniswapV3]: {
+    [Chain.Ethereum]: [UniswapV3PoolAdapter],
+    [Chain.Polygon]: [UniswapV3PoolAdapter],
   },
 }

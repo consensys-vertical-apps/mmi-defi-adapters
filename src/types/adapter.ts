@@ -7,6 +7,7 @@ export const TokenType = {
   Protocol: 'protocol',
   Reward: 'claimable',
   Underlying: 'underlying',
+  UnderlyingClaimableFee: 'underlying-claimable-fee',
 } as const
 export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
@@ -194,7 +195,8 @@ export interface TokenBalance extends Erc20Metadata {
  * Should the underlying token be another protocol token then we expect that to be resolved down into the underlying simple erc20 tokens
  */
 export interface Underlying extends TokenBalance {
-  type: typeof TokenType.Underlying
+  type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimableFee
+  iconUrl: string
   tokens?: Underlying[]
 }
 
