@@ -196,17 +196,7 @@ export interface TokenBalance extends Erc20Metadata {
  */
 export interface Underlying extends TokenBalance {
   type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimableFee
-  iconUrl: string
-  tokens?: Underlying[]
-}
-/**
- * Underlying token balances of a position
- * The underlying token may be a simple erc20 such as Dai.
- * Should the underlying token be another protocol token then we expect that to be resolved down into the underlying simple erc20 tokens
- */
-export interface Underlying extends TokenBalance {
-  type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimableFee
-  iconUrl: string
+
   tokens?: Underlying[]
 }
 

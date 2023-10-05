@@ -4,6 +4,8 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
+import { filterMap } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -30,14 +32,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
-import {
-  PositionManager__factory,
-  UniswapPoolFactory__factory,
-  UniswapPool__factory,
-} from '../../contracts'
-import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { filterMap } from '../../../../core/utils/filters'
-
+import { PositionManager__factory } from '../../contracts'
 
 const deadline = Math.floor(Date.now() - 1000) + 60 * 10
 
@@ -194,8 +189,8 @@ export class UniswapV3PoolAdapter
 
     const erc20MetadataPromises = nonZeroPositions.map(({ token0, token1 }) =>
       Promise.all([
-        getThinTokenMetadata(token0, this.chainId),
-        getThinTokenMetadata(token1, this.chainId),
+        getTokenMetadata(token0, this.chainId),
+        getTokenMetadata(token1, this.chainId),
       ]),
     )
 
@@ -216,16 +211,16 @@ export class UniswapV3PoolAdapter
 
       const token0Index = 0
       const token1Index = 1
+      const FEE_DECIMALS = 4
       const nftName = `${erc20Metadata[index]![token0Index].symbol} / ${
         erc20Metadata[index]![token1Index].symbol
-      } - ${formatUnits(pos.fee, 4)}%`
+      } - ${formatUnits(pos.fee, FEE_DECIMALS)}%`
       return {
         address: positionManagerCommonAddress,
         name: nftName,
         symbol: nftName,
         decimals: 18,
         balanceRaw: pos.liquidity,
-        balance: '-1',
         type: TokenType.Protocol,
         tokens: [
           this.createUnderlyingToken(
@@ -253,7 +248,7 @@ export class UniswapV3PoolAdapter
             TokenType.UnderlyingClaimableFee,
           ),
         ],
-      } as any // to be removed when bernardo changes merged
+      }
     })
   }
 
@@ -306,10 +301,9 @@ export class UniswapV3PoolAdapter
    * Update me.
    * Add logic to calculate the underlying token rate of 1 protocol token
    */
-  async getProtocolTokenToUnderlyingTokenRate({
-    blockNumber,
-    protocolTokenAddress,
-  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+  async getProtocolTokenToUnderlyingTokenRate(
+    _input: GetConversionRateInput,
+  ): Promise<ProtocolTokenUnderlyingRate> {
     throw new Error('Implement me')
   }
 
@@ -338,14 +332,12 @@ export class UniswapV3PoolAdapter
 
   private createUnderlyingToken(
     address: string,
-    metadata: any,
-    balanceRaw: any,
+    metadata: Erc20Metadata,
+    balanceRaw: bigint,
     type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimableFee,
   ): Underlying {
     return {
       address,
-      iconUrl: '',
-      balance: '-1',
       name: metadata?.name,
       symbol: metadata?.symbol,
       decimals: metadata?.decimals,

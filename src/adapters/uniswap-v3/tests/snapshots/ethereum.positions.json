@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18283951,
+  "blockNumber": 18284076,
   "snapshot": [
     {
       "protocolId": "uniswap-v3",
@@ -17,50 +17,48 @@
           "symbol": "WAGMI / WETH - 1.0%",
           "decimals": 18,
           "balanceRaw": "26541672142114225144722n",
-          "balance": "-1",
           "type": "protocol",
           "tokens": [
             {
               "address": "0x92CC36D66e9d739D50673d1f27929a371FB83a67",
-              "iconUrl": "",
-              "balance": "-1",
               "name": "Wagmi",
               "symbol": "WAGMI",
               "decimals": 18,
               "balanceRaw": "137879720104358891618656n",
-              "type": "underlying"
+              "type": "underlying",
+              "balance": "137879.720104358891618656",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x92CC36D66e9d739D50673d1f27929a371FB83a67/logo.png"
             },
             {
               "address": "0x92CC36D66e9d739D50673d1f27929a371FB83a67",
-              "iconUrl": "",
-              "balance": "-1",
               "name": "Wagmi",
               "symbol": "WAGMI",
               "decimals": 18,
               "balanceRaw": "6257767925451742748908n",
-              "type": "underlying-claimable-fee"
+              "type": "underlying-claimable-fee",
+              "balance": "6257.767925451742748908"
             },
             {
               "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "iconUrl": "",
-              "balance": "-1",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
               "balanceRaw": "0n",
-              "type": "underlying"
+              "type": "underlying",
+              "balance": "0.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             },
             {
               "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "iconUrl": "",
-              "balance": "-1",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
               "balanceRaw": "92742886944754249n",
-              "type": "underlying-claimable-fee"
+              "type": "underlying-claimable-fee",
+              "balance": "0.092742886944754249"
             }
-          ]
+          ],
+          "balance": "26541.672142114225144722"
         },
         {
           "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
@@ -68,50 +66,48 @@
           "symbol": "ARB / WETH - 1.0%",
           "decimals": 18,
           "balanceRaw": "17521394682890000402966n",
-          "balance": "-1",
           "type": "protocol",
           "tokens": [
             {
               "address": "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1",
-              "iconUrl": "",
-              "balance": "-1",
               "name": "Arbitrum",
               "symbol": "ARB",
               "decimals": 18,
               "balanceRaw": "21577833278514999999999n",
-              "type": "underlying"
+              "type": "underlying",
+              "balance": "21577.833278514999999999",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1/logo.png"
             },
             {
               "address": "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1",
-              "iconUrl": "",
-              "balance": "-1",
               "name": "Arbitrum",
               "symbol": "ARB",
               "decimals": 18,
               "balanceRaw": "0n",
-              "type": "underlying-claimable-fee"
+              "type": "underlying-claimable-fee",
+              "balance": "0.0"
             },
             {
               "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "iconUrl": "",
-              "balance": "-1",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
               "balanceRaw": "0n",
-              "type": "underlying"
+              "type": "underlying",
+              "balance": "0.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             },
             {
               "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "iconUrl": "",
-              "balance": "-1",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
               "balanceRaw": "0n",
-              "type": "underlying-claimable-fee"
+              "type": "underlying-claimable-fee",
+              "balance": "0.0"
             }
-          ]
+          ],
+          "balance": "17521.394682890000402966"
         }
       ]
     }
