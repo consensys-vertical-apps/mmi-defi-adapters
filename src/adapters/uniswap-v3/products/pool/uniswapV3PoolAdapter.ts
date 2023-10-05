@@ -38,29 +38,30 @@ import {
 import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { filterMap } from '../../../../core/utils/filters'
 
-const EXAMPLE_USER_WITH_POSITION = '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5'
+
 const deadline = Math.floor(Date.now() - 1000) + 60 * 10
 
-const positionManagerCommonAddress = '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
+const positionManagerCommonAddress =
+  '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
 
-const contractAddresses : Partial<Record<Chain, {positionManager: string}>>  = {
+const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
   [Chain.Ethereum]: {
-    positionManager: positionManagerCommonAddress
+    positionManager: positionManagerCommonAddress,
   },
   [Chain.Arbitrum]: {
-    positionManager: positionManagerCommonAddress
+    positionManager: positionManagerCommonAddress,
   },
   [Chain.Optimism]: {
-    positionManager: positionManagerCommonAddress
+    positionManager: positionManagerCommonAddress,
   },
   [Chain.Polygon]: {
-    positionManager: positionManagerCommonAddress
+    positionManager: positionManagerCommonAddress,
   },
   [Chain.Bsc]: {
-    positionManager: '0x7b8A01B39D58278b5DE7e48c8449c9f4F5170613'
+    positionManager: '0x7b8A01B39D58278b5DE7e48c8449c9f4F5170613',
   },
   [Chain.Base]: {
-    positionManager: '0x03a520b32C04BF3bEEf7BEb72E919cf822Ed34f1'
+    positionManager: '0x03a520b32C04BF3bEEf7BEb72E919cf822Ed34f1',
   },
 }
 
@@ -87,7 +88,8 @@ export class UniswapV3PoolAdapter
       name: 'UniswapV3',
       description: 'UniswapV3 defi adapter',
       siteUrl: 'https://uniswap.org/',
-      iconUrl: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png',
+      iconUrl:
+        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png',
       positionType: PositionType.Supply,
       chainId: this.chainId,
     }
@@ -159,8 +161,6 @@ export class UniswapV3PoolAdapter
 
     if (nonZeroPositions.length == 0) return []
 
-
-
     const tokenBalancesPromises = nonZeroPositions.map(
       ({ liquidity, tokenId }) =>
         positionsManagerContract.decreaseLiquidity.staticCallResult(
@@ -172,25 +172,30 @@ export class UniswapV3PoolAdapter
             deadline,
           },
           { from: userAddress, blockTag: blockNumber },
-        ),
+        ) as unknown as Promise<
+          [bigint, bigint] & { amount0: bigint; amount1: bigint }
+        >, // IMO typechain has an bug here, incorrect type being returned
     )
 
-    const claimableFeesPromises = nonZeroPositions.map(({ tokenId }) =>
-      positionsManagerContract.collect.staticCallResult(
-        {
-          tokenId: tokenId as bigint,
-          recipient: userAddress,
-          amount0Max: maxUint128,
-          amount1Max: maxUint128,
-        },
-        { from: userAddress, blockTag: blockNumber },
-      ),
+    const claimableFeesPromises = nonZeroPositions.map(
+      ({ tokenId }) =>
+        positionsManagerContract.collect.staticCallResult(
+          {
+            tokenId: tokenId as bigint,
+            recipient: userAddress,
+            amount0Max: maxUint128,
+            amount1Max: maxUint128,
+          },
+          { from: userAddress, blockTag: blockNumber },
+        ) as unknown as Promise<
+          [bigint, bigint] & { amount0: bigint; amount1: bigint }
+        >, // IMO typechain has an bug here, incorrect type being returned
     )
 
     const erc20MetadataPromises = nonZeroPositions.map(({ token0, token1 }) =>
       Promise.all([
-        getThinTokenMetadata(token0, 1),
-        getThinTokenMetadata(token1, 1),
+        getThinTokenMetadata(token0, this.chainId),
+        getThinTokenMetadata(token1, this.chainId),
       ]),
     )
 
@@ -201,25 +206,19 @@ export class UniswapV3PoolAdapter
     ])
 
     return nonZeroPositions.map((pos, index) => {
- 
+      const token0RawBalance = tokenBalances[index]!.amount0
 
-      const token0 = 0
-      const token1 = 1
+      const token1RawBalance = tokenBalances[index]!.amount1
 
+      const token0FeeRawBalance = claimableFees[index]!.amount0
 
-      const token0RawBalance = tokenBalances[index]?.[token0]
-      // @ts-ignore // Type issue - ethers or typechain has an issue imo here
-      const token1RawBalance = tokenBalances[index]?.[token1]
+      const token1FeeRawBalance = claimableFees[index]!.amount1
 
-      const token0FeeRawBalance = claimableFees[index]?.[token0]
-      // @ts-ignore // Type issue - ethers or typechain has an issue imo here
-      const token1FeeRawBalance = claimableFees[index]?.[token1]
-
-      const nftName = `${erc20Metadata[index]?.[token0]
-        ?.symbol} / ${erc20Metadata[index]?.[token1]?.symbol} - ${formatUnits(
-        pos.fee,
-        4,
-      )}%`
+      const token0Index = 0
+      const token1Index = 1
+      const nftName = `${erc20Metadata[index]![token0Index].symbol} / ${
+        erc20Metadata[index]![token1Index].symbol
+      } - ${formatUnits(pos.fee, 4)}%`
       return {
         address: positionManagerCommonAddress,
         name: nftName,
@@ -231,25 +230,25 @@ export class UniswapV3PoolAdapter
         tokens: [
           this.createUnderlyingToken(
             pos.token0,
-            erc20Metadata[index]?.[token0],
+            erc20Metadata[index]?.[token0Index],
             token0RawBalance,
             TokenType.Underlying,
           ),
           this.createUnderlyingToken(
             pos.token0,
-            erc20Metadata[index]?.[token0],
+            erc20Metadata[index]?.[token0Index],
             token0FeeRawBalance,
             TokenType.UnderlyingClaimableFee,
           ),
           this.createUnderlyingToken(
             pos.token1,
-            erc20Metadata[index]?.[token1],
+            erc20Metadata[index]?.[token1Index],
             token1RawBalance,
             TokenType.Underlying,
           ),
           this.createUnderlyingToken(
             pos.token1,
-            erc20Metadata[index]?.[token1],
+            erc20Metadata[index]?.[token1Index],
             token1FeeRawBalance,
             TokenType.UnderlyingClaimableFee,
           ),

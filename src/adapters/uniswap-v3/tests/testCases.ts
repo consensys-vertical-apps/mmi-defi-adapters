@@ -3,13 +3,13 @@ import { TimePeriod } from '../../../core/constants/timePeriod'
 import type { TestCase } from '../../../types/testCase'
 
 export const testCases: TestCase[] = [
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'positions',
-  //   input: {
-  //     userAddress: '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
-  //   },
-  // },
+  {
+    chainId: Chain.Ethereum,
+    method: 'positions',
+    input: {
+      userAddress: '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
+    },
+  },
   // {
   //   chainId: Chain.Ethereum,
   //   method: 'profits',
