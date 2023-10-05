@@ -20,7 +20,6 @@
 - [name](adapter.PositionProfits.md#name)
 - [symbol](adapter.PositionProfits.md#symbol)
 - [decimals](adapter.PositionProfits.md#decimals)
-- [iconUrl](adapter.PositionProfits.md#iconurl)
 
 ## Properties
 
@@ -105,19 +104,3 @@ Erc20Metadata.decimals
 #### Defined in
 
 [erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
-
-___
-
-### iconUrl
-
-• `Optional` **iconUrl**: `string`
-
-Url for token icon
-
-#### Inherited from
-
-Erc20Metadata.iconUrl
-
-#### Defined in
-
-[erc20Metadata.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L25)

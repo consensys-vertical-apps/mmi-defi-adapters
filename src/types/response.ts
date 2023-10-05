@@ -13,6 +13,8 @@ import {
   UnderlyingProfitValues,
   BaseTokenMovement,
   UnderlyingTokenTvl,
+  TokenType,
+  TokenBalance,
 } from './adapter'
 import { Erc20Metadata } from './erc20Metadata'
 
@@ -34,14 +36,16 @@ export type DefiPositionResponse = AdapterResponse<{
 }>
 
 export type DisplayPosition<
-  PositionBalance extends {
-    balanceRaw: bigint
+  PositionBalance extends TokenBalance & {
+    type: TokenType
     tokens?: Underlying[]
   },
 > = Omit<PositionBalance, 'tokens'> & {
   balance: string
   tokens?: DisplayPosition<Underlying>[]
-}
+} & (PositionBalance['type'] extends typeof TokenType.Underlying
+    ? { iconUrl: string }
+    : Record<string, never>)
 
 export type DefiProfitsResponse = AdapterResponse<DisplayProfitsWithRange>
 
@@ -50,18 +54,18 @@ export type DisplayProfitsWithRange = Omit<ProfitsWithRange, 'tokens'> & {
 }
 
 type DisplayPositionProfits = Omit<PositionProfits, 'tokens'> & {
-  tokens: (UnderlyingProfitValues & { profit: string })[]
+  tokens: (UnderlyingProfitValues & { profit: string; iconUrl: string })[]
 }
 
 export type PricePerShareResponse = AdapterResponse<{
   tokens: DisplayProtocolTokenUnderlyingRate[]
 }>
 
-type DisplayProtocolTokenUnderlyingRate = Omit<
+export type DisplayProtocolTokenUnderlyingRate = Omit<
   ProtocolTokenUnderlyingRate,
   'tokens'
 > & {
-  tokens?: (UnderlyingTokenRate & { underlyingRate: string })[]
+  tokens?: (UnderlyingTokenRate & { underlyingRate: string; iconUrl: string })[]
 }
 
 export type APRResponse = AdapterResponse<{
@@ -78,7 +82,7 @@ export type TotalValueLockResponse = AdapterResponse<{
 
 export type DisplayProtocolTokenTvl = Omit<ProtocolTokenTvl, 'tokens'> & {
   totalSupply: string
-  tokens?: (UnderlyingTokenTvl & { totalSupply: string })[]
+  tokens?: (UnderlyingTokenTvl & { totalSupply: string; iconUrl: string })[]
 }
 
 export type DefiMovementsResponse = AdapterResponse<{

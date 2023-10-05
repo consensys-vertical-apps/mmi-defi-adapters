@@ -6,20 +6,24 @@ import {
   BaseTokenMovement,
   ProtocolTokenTvl,
   ProtocolTokenUnderlyingRate,
-  UnderlyingTokenRate,
   ProfitsWithRange,
   TokenBalance,
   Underlying,
+  TokenType,
 } from './types/adapter'
 import {
   DisplayMovementsByBlock,
   DisplayPosition,
   DisplayProfitsWithRange,
   DisplayProtocolTokenTvl,
+  DisplayProtocolTokenUnderlyingRate,
 } from './types/response'
 
 export function enrichPositionBalance<
-  PositionBalance extends TokenBalance & { tokens?: Underlying[] },
+  PositionBalance extends TokenBalance & {
+    type: TokenType
+    tokens?: Underlying[]
+  },
 >(balance: PositionBalance, chainId: Chain): DisplayPosition<PositionBalance> {
   return {
     ...balance,
@@ -30,10 +34,10 @@ export function enrichPositionBalance<
             enrichPositionBalance(underlyingBalance, chainId),
           ),
         }
-      : {
-          // Only add iconUrl for underlying tokens
-          iconUrl: buildTrustAssetIconUrl(chainId, balance.address),
-        }),
+      : {}),
+    ...(balance.type === TokenType.Underlying
+      ? { iconUrl: buildTrustAssetIconUrl(chainId, balance.address) }
+      : {}),
   } as DisplayPosition<PositionBalance>
 }
 
@@ -85,33 +89,31 @@ export function enrichProfitsWithRange(
 }
 
 export function enrichUnderlyingTokenRates(
-  pricePerShare: ProtocolTokenUnderlyingRate,
+  protocolTokenUnderlyingRate: ProtocolTokenUnderlyingRate,
   chainId: Chain,
-): Omit<ProtocolTokenUnderlyingRate, 'tokens'> & {
-  tokens?: (UnderlyingTokenRate & { underlyingRate: string })[]
-} {
+): DisplayProtocolTokenUnderlyingRate {
   return {
-    ...pricePerShare,
-    ...(pricePerShare.tokens
+    ...protocolTokenUnderlyingRate,
+    ...(protocolTokenUnderlyingRate.tokens
       ? {
-          tokens: pricePerShare.tokens.map((underlyingTokenRate) => {
-            return {
-              ...underlyingTokenRate,
-              underlyingRate: formatUnits(
-                underlyingTokenRate.underlyingRateRaw,
-                underlyingTokenRate.decimals,
-              ),
-              iconUrl: buildTrustAssetIconUrl(
-                chainId,
-                underlyingTokenRate.address,
-              ),
-            }
-          }),
+          tokens: protocolTokenUnderlyingRate.tokens.map(
+            (underlyingTokenRate) => {
+              return {
+                ...underlyingTokenRate,
+                underlyingRate: formatUnits(
+                  underlyingTokenRate.underlyingRateRaw,
+                  underlyingTokenRate.decimals,
+                ),
+                iconUrl: buildTrustAssetIconUrl(
+                  chainId,
+                  underlyingTokenRate.address,
+                ),
+              }
+            },
+          ),
         }
       : {}),
-  } as Omit<ProtocolTokenUnderlyingRate, 'tokens'> & {
-    tokens?: (UnderlyingTokenRate & { underlyingRate: string })[]
-  }
+  } as DisplayProtocolTokenUnderlyingRate
 }
 
 export function enrichMovements(

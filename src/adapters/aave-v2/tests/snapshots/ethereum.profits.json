@@ -23,7 +23,6 @@
               "name": "Maker",
               "symbol": "MKR",
               "decimals": 18,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2/logo.png",
               "profitRaw": "7186772652009n",
               "type": "underlying",
               "calculationData": {
@@ -36,7 +35,8 @@
                 "endPositionValueRaw": "10019222153071397754n",
                 "endPositionValue": "10.019222153071397754"
               },
-              "profit": "0.000007186772652009"
+              "profit": "0.000007186772652009",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2/logo.png"
             }
           ]
         },
@@ -52,7 +52,6 @@
               "name": "ChainLink Token",
               "symbol": "LINK",
               "decimals": 18,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png",
               "profitRaw": "188554794925199188n",
               "type": "underlying",
               "calculationData": {
@@ -65,7 +64,8 @@
                 "endPositionValueRaw": "18121496603948645459581n",
                 "endPositionValue": "18121.496603948645459581"
               },
-              "profit": "0.188554794925199188"
+              "profit": "0.188554794925199188",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png"
             }
           ]
         },
@@ -81,7 +81,6 @@
               "name": "Uniswap",
               "symbol": "UNI",
               "decimals": 18,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
               "profitRaw": "212198186777522n",
               "type": "underlying",
               "calculationData": {
@@ -94,7 +93,8 @@
                 "endPositionValueRaw": "22041922309609171477942n",
                 "endPositionValue": "22041.922309609171477942"
               },
-              "profit": "0.000212198186777522"
+              "profit": "0.000212198186777522",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png"
             }
           ]
         },
@@ -110,7 +110,6 @@
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
               "profitRaw": "29562354894247369n",
               "type": "underlying",
               "calculationData": {
@@ -123,7 +122,8 @@
                 "endPositionValueRaw": "812567010136832833603n",
                 "endPositionValue": "812.567010136832833603"
               },
-              "profit": "0.029562354894247369"
+              "profit": "0.029562354894247369",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ]
         },
@@ -139,7 +139,6 @@
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png",
               "profitRaw": "189241n",
               "type": "underlying",
               "calculationData": {
@@ -152,7 +151,8 @@
                 "endPositionValueRaw": "38951702813n",
                 "endPositionValue": "389.51702813"
               },
-              "profit": "0.00189241"
+              "profit": "0.00189241",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ]
         }
@@ -195,7 +195,6 @@
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
               "profitRaw": "-325487807n",
               "type": "underlying",
               "calculationData": {
@@ -208,7 +207,8 @@
                 "endPositionValueRaw": "3012546504676n",
                 "endPositionValue": "3012546.504676"
               },
-              "profit": "-325.487807"
+              "profit": "-325.487807",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ]
         },
@@ -224,7 +224,6 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png",
               "profitRaw": "-46743793676617492896n",
               "type": "underlying",
               "calculationData": {
@@ -237,7 +236,8 @@
                 "endPositionValueRaw": "366339069426689376048052n",
                 "endPositionValue": "366339.069426689376048052"
               },
-              "profit": "-46.743793676617492896"
+              "profit": "-46.743793676617492896",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ]
         },
@@ -253,7 +253,6 @@
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png",
               "profitRaw": "-8667n",
               "type": "underlying",
               "calculationData": {
@@ -266,7 +265,8 @@
                 "endPositionValueRaw": "300017584n",
                 "endPositionValue": "3.00017584"
               },
-              "profit": "-0.00008667"
+              "profit": "-0.00008667",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ]
         },
@@ -282,7 +282,6 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png",
               "profitRaw": "-718134686n",
               "type": "underlying",
               "calculationData": {
@@ -295,7 +294,8 @@
                 "endPositionValueRaw": "5270853061483n",
                 "endPositionValue": "5270853.061483"
               },
-              "profit": "-718.134686"
+              "profit": "-718.134686",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ]
         }

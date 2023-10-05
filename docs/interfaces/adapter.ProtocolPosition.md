@@ -23,7 +23,6 @@ User's position, includes balance of protocol token related underlying token bal
 - [name](adapter.ProtocolPosition.md#name)
 - [symbol](adapter.ProtocolPosition.md#symbol)
 - [decimals](adapter.ProtocolPosition.md#decimals)
-- [iconUrl](adapter.ProtocolPosition.md#iconurl)
 
 ## Properties
 
@@ -126,19 +125,3 @@ Token decimals
 #### Defined in
 
 [erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
-
-___
-
-### iconUrl
-
-• `Optional` **iconUrl**: `string`
-
-Url for token icon
-
-#### Inherited from
-
-[TokenBalance](adapter.TokenBalance.md).[iconUrl](adapter.TokenBalance.md#iconurl)
-
-#### Defined in
-
-[erc20Metadata.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L25)

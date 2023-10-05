@@ -145,7 +145,6 @@ export abstract class AaveV2BasePoolAdapter
       ...underlyingToken,
       balanceRaw: protocolTokenBalance.balanceRaw,
       type: TokenType.Underlying,
-      iconUrl: underlyingToken.iconUrl,
     }
 
     return [underlyingTokenBalance]

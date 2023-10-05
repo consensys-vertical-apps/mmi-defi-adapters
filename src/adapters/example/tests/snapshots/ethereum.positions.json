@@ -25,9 +25,9 @@
               "symbol": "USDC",
               "decimals": 6,
               "balanceRaw": "31492408006n",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0000000000000000000000000000000000000001/logo.png",
               "type": "underlying",
-              "balance": "31492.408006"
+              "balance": "31492.408006",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0000000000000000000000000000000000000001/logo.png"
             }
           ],
           "balance": "31468.548033"

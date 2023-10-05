@@ -190,7 +190,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
                 name,
                 symbol,
                 decimals,
-                iconUrl,
                 balanceRaw: startPositionValueRaw,
               }) => {
                 const endPositionValueRaw =
@@ -221,7 +220,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
                   name,
                   symbol,
                   decimals,
-                  iconUrl,
                   profitRaw,
                   type: TokenType.Underlying,
                   calculationData: {

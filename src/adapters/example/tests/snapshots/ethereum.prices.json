@@ -24,10 +24,10 @@
               "underlyingRateRaw": "1000154n",
               "decimals": 6,
               "name": "Tether USD",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0000000000000000000000000000000000000002/logo.png",
               "symbol": "USDT",
               "address": "0x0000000000000000000000000000000000000002",
-              "underlyingRate": "1.000154"
+              "underlyingRate": "1.000154",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0000000000000000000000000000000000000002/logo.png"
             }
           ]
         }
