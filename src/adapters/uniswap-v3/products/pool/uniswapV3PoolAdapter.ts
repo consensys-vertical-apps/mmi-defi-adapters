@@ -197,19 +197,27 @@ export class UniswapV3PoolAdapter
     ])
 
     return nonZeroPositions.map((pos, index) => {
-      const token0RawBalance = tokenBalances[index]!.amount0
 
-      const token1RawBalance = tokenBalances[index]!.amount1
+      const tokenBalance = tokenBalances[index]
+      const claimableFee = claimableFees[index]
+      const token0Metadata = erc20Metadata[index]![0]
+      const token1Metadata = erc20Metadata[index]![1]
+      if(!tokenBalance || !claimableFee || !token0Metadata || !token1Metadata){
+        throw new Error('Error occurred while getting Uniswap positions')
+      }
 
-      const token0FeeRawBalance = claimableFees[index]!.amount0
+      const token0RawBalance = tokenBalance.amount0
 
-      const token1FeeRawBalance = claimableFees[index]!.amount1
+      const token1RawBalance = tokenBalance.amount1
 
-      const token0Index = 0
-      const token1Index = 1
+      const token0FeeRawBalance = claimableFee.amount0
+
+      const token1FeeRawBalance = claimableFee.amount1
+
+
       const FEE_DECIMALS = 4
-      const nftName = `${erc20Metadata[index]![token0Index].symbol} / ${
-        erc20Metadata[index]![token1Index].symbol
+      const nftName = `${token0Metadata.symbol} / ${
+        token1Metadata.symbol
       } - ${formatUnits(pos.fee, FEE_DECIMALS)}%`
       return {
         address: positionManagerCommonAddress,
@@ -221,25 +229,25 @@ export class UniswapV3PoolAdapter
         tokens: [
           this.createUnderlyingToken(
             pos.token0,
-            erc20Metadata[index]![token0Index],
+            token0Metadata,
             token0RawBalance,
             TokenType.Underlying,
           ),
           this.createUnderlyingToken(
             pos.token0,
-            erc20Metadata[index]![token0Index],
+            token0Metadata,
             token0FeeRawBalance,
             TokenType.UnderlyingClaimableFee,
           ),
           this.createUnderlyingToken(
             pos.token1,
-            erc20Metadata[index]![token1Index],
+            token1Metadata,
             token1RawBalance,
             TokenType.Underlying,
           ),
           this.createUnderlyingToken(
             pos.token1,
-            erc20Metadata[index]![token1Index],
+            token1Metadata,
             token1FeeRawBalance,
             TokenType.UnderlyingClaimableFee,
           ),
@@ -334,9 +342,9 @@ export class UniswapV3PoolAdapter
   ): Underlying {
     return {
       address,
-      name: metadata?.name,
-      symbol: metadata?.symbol,
-      decimals: metadata?.decimals,
+      name: metadata.name,
+      symbol: metadata.symbol,
+      decimals: metadata.decimals,
       balanceRaw,
       type,
     }
