@@ -186,10 +186,6 @@ export interface TokenBalance extends Erc20Metadata {
    * User's balance raw
    */
   balanceRaw: bigint
-  /**
-   * User's balance formatted using token decimals
-   */
-  balance: string
 }
 
 /**
@@ -199,7 +195,6 @@ export interface TokenBalance extends Erc20Metadata {
  */
 export interface Underlying extends TokenBalance {
   type: typeof TokenType.Underlying
-  iconUrl: string
   tokens?: Underlying[]
 }
 
@@ -238,10 +233,8 @@ export interface ProtocolPosition extends TokenBalance {
 }
 
 export interface UnderlyingTokenRate extends Erc20Metadata {
-  underlyingRateRaw: bigint
-  underlyingRate: string
   type: typeof TokenType.Underlying
-  iconUrl: string
+  underlyingRateRaw: bigint
 }
 
 export interface ProtocolTokenUnderlyingRate extends Erc20Metadata {
@@ -255,7 +248,6 @@ export interface ProtocolTokenUnderlyingRate extends Erc20Metadata {
 }
 
 export interface BaseTokenMovement extends Erc20Metadata {
-  movementValue: string
   movementValueRaw: bigint
 }
 
@@ -291,22 +283,14 @@ export interface UnderlyingTokenTvl extends Erc20Metadata {
    * Total underlying token locked in pool raw
    */
   totalSupplyRaw: bigint
-  /**
-   * Total underlying token locked in pool
-   */
-  totalSupply: string
 }
 
 export interface ProtocolTokenTvl extends Erc20Metadata {
+  type: typeof TokenType.Protocol
   /**
    * Total underlying token locked in pool raw
    */
   totalSupplyRaw: bigint
-  /**
-   * Total underlying token locked in pool
-   */
-  totalSupply: string
-  type: typeof TokenType.Protocol
   tokens?: UnderlyingTokenTvl[]
 }
 
@@ -335,11 +319,6 @@ export interface UnderlyingProfitValues extends Erc20Metadata {
   profitRaw: bigint
 
   /**
-   * Profit made in this token for this period
-   */
-  profit: string
-
-  /**
    * Numbers used to calculate profit value
    */
   calculationData: CalculationData
@@ -352,13 +331,9 @@ export interface PositionProfits extends Erc20Metadata {
 
 export interface CalculationData {
   withdrawalsRaw: bigint
-  withdrawals: string
   depositsRaw: bigint
-  deposits: string
   startPositionValueRaw: bigint
-  startPositionValue: string
   endPositionValueRaw: bigint
-  endPositionValue: string
 }
 
 export interface ProtocolAdapterParams {

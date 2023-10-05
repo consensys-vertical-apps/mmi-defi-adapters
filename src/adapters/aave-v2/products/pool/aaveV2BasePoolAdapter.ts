@@ -1,9 +1,7 @@
-import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   UnderlyingTokenRate,
@@ -31,7 +29,7 @@ type AaveV2PoolMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata & { iconUrl: string }
+    underlyingToken: Erc20Metadata
   }
 >
 
@@ -102,35 +100,17 @@ export abstract class AaveV2BasePoolAdapter
           tokenAddress,
         )
 
-      const underlyingTokenMetadata = await getThinTokenMetadata(
-        tokenAddress,
+      const protocolToken = await getTokenMetadata(
+        this.getReserveTokenAddress(reserveTokenAddresses),
         this.chainId,
       )
 
-      const setProtocolToken = async (
-        tokenAddress: string,
-        tokenMetadataObject: AaveV2PoolMetadata,
-      ) => {
-        const protocolTokenMetadata = await getThinTokenMetadata(
-          tokenAddress,
-          this.chainId,
-        )
-        tokenMetadataObject[protocolTokenMetadata.address] = {
-          protocolToken: protocolTokenMetadata,
-          underlyingToken: {
-            ...underlyingTokenMetadata,
-            iconUrl: buildTrustAssetIconUrl(
-              this.chainId,
-              underlyingTokenMetadata.address,
-            ),
-          },
-        }
-      }
+      const underlyingToken = await getTokenMetadata(tokenAddress, this.chainId)
 
-      setProtocolToken(
-        this.getReserveTokenAddress(reserveTokenAddresses),
-        metadataObject,
-      )
+      metadataObject[protocolToken.address] = {
+        protocolToken,
+        underlyingToken,
+      }
     }
 
     return metadataObject
@@ -164,9 +144,7 @@ export abstract class AaveV2BasePoolAdapter
     const underlyingTokenBalance = {
       ...underlyingToken,
       balanceRaw: protocolTokenBalance.balanceRaw,
-      balance: protocolTokenBalance.balance,
       type: TokenType.Underlying,
-      iconUrl: underlyingToken.iconUrl,
     }
 
     return [underlyingTokenBalance]
@@ -185,17 +163,11 @@ export abstract class AaveV2BasePoolAdapter
       PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
     )
 
-    const pricePerShare = formatUnits(
-      pricePerShareRaw,
-      underlyingToken.decimals,
-    )
-
     return [
       {
         ...underlyingToken,
         type: TokenType.Underlying,
         underlyingRateRaw: pricePerShareRaw,
-        underlyingRate: pricePerShare,
       },
     ]
   }

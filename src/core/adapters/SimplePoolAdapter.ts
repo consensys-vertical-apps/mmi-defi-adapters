@@ -187,9 +187,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
             tokens: Object.values(underlyingTokenPositions).map(
               ({
                 address,
+                name,
+                symbol,
                 decimals,
                 balanceRaw: startPositionValueRaw,
-                ...underlyingMetadata
               }) => {
                 const endPositionValueRaw =
                   previousValues[protocolTokenMetadata.address]
@@ -197,22 +198,9 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
                 const calculationData = {
                   withdrawalsRaw: withdrawals[address] ?? 0n,
-                  withdrawals: formatUnits(
-                    withdrawals[address] ?? 0n,
-                    decimals,
-                  ),
                   depositsRaw: deposits[address] ?? 0n,
-                  deposits: formatUnits(deposits[address] ?? 0n, decimals),
                   startPositionValueRaw: startPositionValueRaw ?? 0n,
-                  startPositionValue: formatUnits(
-                    startPositionValueRaw ?? 0n,
-                    decimals,
-                  ),
                   endPositionValueRaw,
-                  endPositionValue: formatUnits(
-                    endPositionValueRaw ?? 0n,
-                    decimals,
-                  ),
                 }
 
                 let profitRaw =
@@ -227,14 +215,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
                   profitRaw *= -1n
                 }
 
-                const profit = formatUnits(profitRaw, decimals)
-
                 return {
-                  ...underlyingMetadata,
                   address,
+                  name,
+                  symbol,
                   decimals,
                   profitRaw,
-                  profit,
                   type: TokenType.Underlying,
                   calculationData: {
                     withdrawalsRaw: withdrawals[address] ?? 0n,
@@ -333,10 +319,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       this.provider,
     )
 
-    const protocolTokenMetadata = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
-
     const filter = protocolTokenContract.filters.Transfer(from, to)
 
     const eventResults =
@@ -379,10 +361,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
                 ...accumulator,
                 [currentToken.address]: {
                   ...currentToken,
-                  movementValue: formatUnits(
-                    movementValueRaw,
-                    protocolTokenMetadata.decimals,
-                  ),
                   movementValueRaw,
                 },
               }

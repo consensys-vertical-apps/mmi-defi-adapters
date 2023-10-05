@@ -21,7 +21,6 @@
 ### Properties
 
 - [balanceRaw](adapter.TokenBalance.md#balanceraw)
-- [balance](adapter.TokenBalance.md#balance)
 - [address](adapter.TokenBalance.md#address)
 - [name](adapter.TokenBalance.md#name)
 - [symbol](adapter.TokenBalance.md#symbol)
@@ -38,18 +37,6 @@ User's balance raw
 #### Defined in
 
 [adapter.ts:188](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L188)
-
-___
-
-### balance
-
-• **balance**: `string`
-
-User's balance formatted using token decimals
-
-#### Defined in
-
-[adapter.ts:192](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L192)
 
 ___
 

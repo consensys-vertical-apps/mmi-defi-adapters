@@ -5,6 +5,13 @@ import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { chainProviders } from './core/utils/chainProviders'
+import {
+  enrichPositionBalance,
+  enrichProfitsWithRange,
+  enrichUnderlyingTokenRates,
+  enrichMovements,
+  enrichTotalValueLocked,
+} from './responseAdapters'
 import { PositionType } from './types/adapter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
@@ -42,10 +49,14 @@ export async function getPositions({
   const runner = async (adapter: IProtocolAdapter) => {
     const blockNumber = blockNumbers?.[adapter.chainId]
 
-    const tokens = await adapter.getPositions({
+    const protocolPositions = await adapter.getPositions({
       userAddress,
       blockNumber,
     })
+
+    const tokens = protocolPositions.map((protocolPosition) =>
+      enrichPositionBalance(protocolPosition, adapter.chainId),
+    )
 
     return { tokens }
   }
@@ -79,11 +90,13 @@ export async function getProfits({
       (await provider.getBlockNumber())
     const fromBlock =
       toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
-    return adapter.getProfits({
+    const profits = await adapter.getProfits({
       userAddress,
       toBlock,
       fromBlock,
     })
+
+    return enrichProfitsWithRange(profits, adapter.chainId)
   }
 
   return runForAllProtocolsAndChains({
@@ -107,12 +120,17 @@ export async function getPrices({
 
     const protocolTokens = await adapter.getProtocolTokens()
     const tokens = await Promise.all(
-      protocolTokens.map(({ address: protocolTokenAddress }) =>
-        adapter.getProtocolTokenToUnderlyingTokenRate({
-          protocolTokenAddress,
-          blockNumber,
-        }),
-      ),
+      protocolTokens.map(async ({ address: protocolTokenAddress }) => {
+        const protocolTokenUnderlyingRate =
+          await adapter.getProtocolTokenToUnderlyingTokenRate({
+            protocolTokenAddress,
+            blockNumber,
+          })
+        return enrichUnderlyingTokenRates(
+          protocolTokenUnderlyingRate,
+          adapter.chainId,
+        )
+      }),
     )
 
     return { tokens }
@@ -151,7 +169,9 @@ export async function getWithdrawals({
 
         return {
           protocolToken,
-          positionMovements,
+          positionMovements: positionMovements.map((value) =>
+            enrichMovements(value),
+          ),
         }
       }),
     )
@@ -194,7 +214,9 @@ export async function getDeposits({
 
         return {
           protocolToken,
-          positionMovements,
+          positionMovements: positionMovements.map((value) =>
+            enrichMovements(value),
+          ),
         }
       }),
     )
@@ -225,7 +247,11 @@ export async function getTotalValueLocked({
 
     const tokens = await adapter.getTotalValueLocked({ blockNumber })
 
-    return { tokens }
+    return {
+      tokens: tokens.map((value) =>
+        enrichTotalValueLocked(value, adapter.chainId),
+      ),
+    }
   }
 
   return runForAllProtocolsAndChains({

@@ -25,20 +25,40 @@
               "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
               "name": "Frax",
               "symbol": "FRAX",
-              "decimals": 18,
-              "profitRaw": "100n",
-              "profit": "100",
-              "calculationData": {}
+              "decimals": 6,
+              "profitRaw": "100000000n",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "depositsRaw": "0n",
+                "startPositionValueRaw": "0n",
+                "endPositionValueRaw": "0n",
+                "withdrawals": "0.0",
+                "deposits": "0.0",
+                "startPositionValue": "0.0",
+                "endPositionValue": "0.0"
+              },
+              "profit": "100.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             },
             {
               "type": "claimable",
               "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
               "name": "Frax",
               "symbol": "FRAX",
-              "decimals": 18,
-              "profitRaw": "100n",
-              "profit": "100",
-              "calculationData": {}
+              "decimals": 6,
+              "profitRaw": "100000000n",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "depositsRaw": "0n",
+                "startPositionValueRaw": "0n",
+                "endPositionValueRaw": "0n",
+                "withdrawals": "0.0",
+                "deposits": "0.0",
+                "startPositionValue": "0.0",
+                "endPositionValue": "0.0"
+              },
+              "profit": "100.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             }
           ]
         }

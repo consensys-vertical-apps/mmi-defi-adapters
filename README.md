@@ -23,7 +23,7 @@ This library is designed to simplify and standardize the process of fetching and
 
 ## Documentation 📖
 
-Detailed documentation on the adapter methods can be found [here](./docs/interfaces/iProtocolAdapter.IProtocolAdapter.md).
+Detailed documentation on the adapter methods can be found [here](./docs/interfaces/IProtocolAdapter.IProtocolAdapter.md).
 
 ## Portfolio dashboard
 

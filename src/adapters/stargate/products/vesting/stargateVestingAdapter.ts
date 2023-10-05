@@ -1,12 +1,10 @@
 import type { ethers } from 'ethers'
-import { formatUnits } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
   GetApyInput,
@@ -33,7 +31,7 @@ import { StargateVotingEscrow__factory } from '../../contracts'
 
 type StargateVestingMetadata = {
   contractToken: Erc20Metadata
-  underlyingToken: Erc20Metadata & { iconUrl: string }
+  underlyingToken: Erc20Metadata
 }
 
 export class StargateVestingAdapter
@@ -97,13 +95,11 @@ export class StargateVestingAdapter
         ...contractToken,
         type: TokenType.Protocol,
         balanceRaw: userBalance,
-        balance: formatUnits(userBalance, contractToken.decimals),
         tokens: [
           {
             ...underlyingToken,
             type: TokenType.Underlying,
             balanceRaw: lockedAmount,
-            balance: formatUnits(lockedAmount, underlyingToken.decimals),
           },
         ],
       },
@@ -175,21 +171,18 @@ export class StargateVestingAdapter
       await votingEscrowContract.token()
     ).toLowerCase()
 
-    const contractToken = await getThinTokenMetadata(
+    const contractToken = await getTokenMetadata(
       contractAddresses[this.chainId]!,
       this.chainId,
     )
-    const underlyingToken = await getThinTokenMetadata(
+    const underlyingToken = await getTokenMetadata(
       underlyingTokenAddress,
       this.chainId,
     )
 
     const metadataObject: StargateVestingMetadata = {
       contractToken,
-      underlyingToken: {
-        ...underlyingToken,
-        iconUrl: buildTrustAssetIconUrl(this.chainId, underlyingToken.address),
-      },
+      underlyingToken,
     }
 
     return metadataObject

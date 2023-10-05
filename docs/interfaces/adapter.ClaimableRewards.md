@@ -18,7 +18,6 @@ Therefore they always have a underlying-token which is the reward token
 ### Properties
 
 - [balanceRaw](adapter.ClaimableRewards.md#balanceraw)
-- [balance](adapter.ClaimableRewards.md#balance)
 - [type](adapter.ClaimableRewards.md#type)
 - [tokens](adapter.ClaimableRewards.md#tokens)
 - [address](adapter.ClaimableRewards.md#address)
@@ -44,29 +43,13 @@ User's balance raw
 
 ___
 
-### balance
-
-• **balance**: `string`
-
-User's balance formatted using token decimals
-
-#### Inherited from
-
-[TokenBalance](adapter.TokenBalance.md).[balance](adapter.TokenBalance.md#balance)
-
-#### Defined in
-
-[adapter.ts:192](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L192)
-
-___
-
 ### type
 
 • **type**: ``"claimable"``
 
 #### Defined in
 
-[adapter.ts:224](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L224)
+[adapter.ts:219](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L219)
 
 ___
 
@@ -76,7 +59,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:225](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L225)
+[adapter.ts:220](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L220)
 
 ___
 

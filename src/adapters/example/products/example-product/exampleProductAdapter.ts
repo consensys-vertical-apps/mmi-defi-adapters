@@ -1,7 +1,6 @@
 import { ethers } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  CalculationData,
   GetAprInput,
   GetApyInput,
   GetEventsInput,
@@ -53,7 +52,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return [
       {
-        address: '0xprotocolTokenAddress',
+        address: '0x1000000000000000000000000000000000000001',
         name: 'Coin-LP',
         symbol: 'S*USDC',
         decimals: 6,
@@ -65,13 +64,12 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     return [
       {
         underlyingTokensMovement: {
-          '0xunderlyingTokenAddress': {
-            address: '0xunderlyingTokenAddress',
+          '0x0000000000000000000000000000000000000001': {
+            address: '0x0000000000000000000000000000000000000001',
             name: 'USD Coin',
             symbol: 'USDC',
             decimals: 6,
-            movementValueRaw: 100n,
-            movementValue: '100',
+            movementValueRaw: 100000000n,
           },
         },
         blockNumber: 17970000,
@@ -83,13 +81,12 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     return [
       {
         underlyingTokensMovement: {
-          '0xunderlyingTokenAddress': {
-            address: '0xunderlyingTokenAddress',
+          '0x0000000000000000000000000000000000000001': {
+            address: '0x0000000000000000000000000000000000000001',
             name: 'USD Coin',
             symbol: 'USDC',
             decimals: 6,
-            movementValueRaw: 100n,
-            movementValue: '100',
+            movementValueRaw: 100000000n,
           },
         },
         blockNumber: 17970000,
@@ -101,13 +98,12 @@ export class ExampleProductAdapter implements IProtocolAdapter {
     return [
       {
         underlyingTokensMovement: {
-          '0xunderlyingTokenAddress': {
-            address: '0xunderlyingTokenAddress',
+          '0x0000000000000000000000000000000000000001': {
+            address: '0x0000000000000000000000000000000000000001',
             name: 'USD Coin',
             symbol: 'USDC',
             decimals: 6,
-            movementValueRaw: 100n,
-            movementValue: '100',
+            movementValueRaw: 100000000n,
           },
         },
         blockNumber: 17970000,
@@ -132,20 +128,28 @@ export class ExampleProductAdapter implements IProtocolAdapter {
               address: '0x17fc002b466eec40dae837fc4be5c67993ddbd6f',
               name: 'Frax',
               symbol: 'FRAX',
-              decimals: 18,
-              profitRaw: 100n,
-              profit: '100',
-              calculationData: {} as CalculationData,
+              decimals: 6,
+              profitRaw: 100000000n,
+              calculationData: {
+                withdrawalsRaw: 0n,
+                depositsRaw: 0n,
+                startPositionValueRaw: 0n,
+                endPositionValueRaw: 0n,
+              },
             },
             {
               type: TokenType.Reward,
               address: '0x17fc002b466eec40dae837fc4be5c67993ddbd6f',
               name: 'Frax',
               symbol: 'FRAX',
-              decimals: 18,
-              profitRaw: 100n,
-              profit: '100',
-              calculationData: {} as CalculationData,
+              decimals: 6,
+              profitRaw: 100000000n,
+              calculationData: {
+                withdrawalsRaw: 0n,
+                depositsRaw: 0n,
+                startPositionValueRaw: 0n,
+                endPositionValueRaw: 0n,
+              },
             },
           ],
         },
@@ -161,19 +165,17 @@ export class ExampleProductAdapter implements IProtocolAdapter {
 
       decimals: 6,
       symbol: 'S*USDT',
-      address: '0xprotocolTokenAddress',
+      address: '0x2000000000000000000000000000000000000002',
       baseRate: 1,
       type: 'protocol',
       tokens: [
         {
           type: 'underlying',
           underlyingRateRaw: 1000154n,
-          underlyingRate: '1.000154',
           decimals: 6,
           name: 'Tether USD',
-          iconUrl: '',
           symbol: 'USDT',
-          address: '0xunderlyingTokenAddress',
+          address: '0x0000000000000000000000000000000000000002',
         },
       ],
     }
@@ -182,22 +184,19 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
     return [
       {
-        address: '0xprotocolTokenAddress',
+        address: '0x1000000000000000000000000000000000000001',
         name: 'Coin-LP',
         symbol: 'S*USDC',
         decimals: 6,
         balanceRaw: 31468548033n,
-        balance: '31468.548033',
         type: 'protocol',
         tokens: [
           {
-            address: '0xunderlyingTokenAddress',
+            address: '0x0000000000000000000000000000000000000001',
             name: 'USD Coin',
             symbol: 'USDC',
             decimals: 6,
             balanceRaw: 31492408006n,
-            balance: '31492.408006',
-            iconUrl: '',
             type: 'underlying',
           },
         ],
@@ -209,7 +208,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   ): Promise<ProtocolRewardPosition[]> {
     return [
       {
-        address: '0xprotocolTokenAddress',
+        address: '0x1000000000000000000000000000000000000001',
         name: 'Coin-LP',
         symbol: 'S*USDC',
         decimals: 6,
@@ -222,17 +221,14 @@ export class ExampleProductAdapter implements IProtocolAdapter {
             symbol: 'USDC',
             decimals: 6,
             balanceRaw: 31492408006n,
-            balance: '31492.408006',
             type: 'claimable',
             tokens: [
               {
                 address: '0xunderlyingRewardTokenAddress',
                 name: 'USD Coin',
                 symbol: 'USDC',
-                iconUrl: '',
                 decimals: 6,
                 balanceRaw: 31492408006n,
-                balance: '31492.408006',
                 type: 'underlying',
               },
             ],
@@ -244,39 +240,39 @@ export class ExampleProductAdapter implements IProtocolAdapter {
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     return {
-      address: '0xprotocolTokenAddress',
-      decimals: 8,
-      symbol: 'stUSD',
+      address: '0x1000000000000000000000000000000000000001',
+      name: 'Coin-LP',
+      symbol: 'S*USDC',
+      decimals: 6,
       aprDecimal: '0.1', // 10%
-      name: 'stUSD',
     }
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     return {
-      address: '0xprotocolTokenAddress',
-      decimals: 8,
-      symbol: 'stUSD',
+      address: '0x1000000000000000000000000000000000000001',
+      name: 'Coin-LP',
+      symbol: 'S*USDC',
+      decimals: 6,
       apyDecimal: '0.1', // 10%
-      name: 'stUSD',
     }
   }
   async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     return {
-      address: '0xprotocolTokenAddress',
-      decimals: 8,
-      symbol: 'stUSD',
+      address: '0x1000000000000000000000000000000000000001',
+      name: 'Coin-LP',
+      symbol: 'S*USDC',
+      decimals: 6,
       apyDecimal: '0.1', // 10%
-      name: 'stUSD',
     }
   }
   async getRewardApr(_input: GetApyInput): Promise<ProtocolTokenApr> {
     return {
-      address: '0xprotocolTokenAddress',
-      decimals: 8,
-      symbol: 'stUSD',
+      address: '0x1000000000000000000000000000000000000001',
+      name: 'Coin-LP',
+      symbol: 'S*USDC',
+      decimals: 6,
       aprDecimal: '0.1', // 10%
-      name: 'stUSD',
     }
   }
 
@@ -285,20 +281,18 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   ): Promise<ProtocolTokenTvl[]> {
     return [
       {
-        address: '0xprotocolTokenAddress',
+        address: '0x1000000000000000000000000000000000000001',
         name: 'Coin-LP',
         symbol: 'S*USDC',
         decimals: 6,
         totalSupplyRaw: 31468548033n,
-        totalSupply: '31468.548033',
         type: 'protocol',
         tokens: [
           {
-            address: '0xunderlyingTokenAddress',
+            address: '0x0000000000000000000000000000000000000001',
             name: 'USD Coin',
             symbol: 'USDC',
             decimals: 6,
-            totalSupply: '31492.408006',
             totalSupplyRaw: 31492408006n,
             type: 'underlying',
           },

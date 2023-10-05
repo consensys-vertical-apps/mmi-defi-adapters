@@ -9,13 +9,9 @@
 ### Properties
 
 - [withdrawalsRaw](adapter.CalculationData.md#withdrawalsraw)
-- [withdrawals](adapter.CalculationData.md#withdrawals)
 - [depositsRaw](adapter.CalculationData.md#depositsraw)
-- [deposits](adapter.CalculationData.md#deposits)
 - [startPositionValueRaw](adapter.CalculationData.md#startpositionvalueraw)
-- [startPositionValue](adapter.CalculationData.md#startpositionvalue)
 - [endPositionValueRaw](adapter.CalculationData.md#endpositionvalueraw)
-- [endPositionValue](adapter.CalculationData.md#endpositionvalue)
 
 ## Properties
 
@@ -25,17 +21,7 @@
 
 #### Defined in
 
-[adapter.ts:354](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L354)
-
-___
-
-### withdrawals
-
-• **withdrawals**: `string`
-
-#### Defined in
-
-[adapter.ts:355](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L355)
+[adapter.ts:333](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L333)
 
 ___
 
@@ -45,17 +31,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:356](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L356)
-
-___
-
-### deposits
-
-• **deposits**: `string`
-
-#### Defined in
-
-[adapter.ts:357](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L357)
+[adapter.ts:334](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L334)
 
 ___
 
@@ -65,17 +41,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:358](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L358)
-
-___
-
-### startPositionValue
-
-• **startPositionValue**: `string`
-
-#### Defined in
-
-[adapter.ts:359](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L359)
+[adapter.ts:335](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L335)
 
 ___
 
@@ -85,14 +51,4 @@ ___
 
 #### Defined in
 
-[adapter.ts:360](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L360)
-
-___
-
-### endPositionValue
-
-• **endPositionValue**: `string`
-
-#### Defined in
-
-[adapter.ts:361](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L361)
+[adapter.ts:336](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L336)

@@ -1,12 +1,10 @@
-import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { getThinTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   UnderlyingTokenRate,
@@ -37,7 +35,7 @@ type StargatePoolMetadata = Record<
   {
     poolId: number
     protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata & { iconUrl: string }
+    underlyingToken: Erc20Metadata
   }
 >
 
@@ -87,11 +85,8 @@ export class StargatePoolAdapter
       const poolId = Number(await poolContract.poolId())
       const underlyingTokenAddress = (await poolContract.token()).toLowerCase()
 
-      const protocolToken = await getThinTokenMetadata(
-        poolAddress,
-        this.chainId,
-      )
-      const underlyingToken = await getThinTokenMetadata(
+      const protocolToken = await getTokenMetadata(poolAddress, this.chainId)
+      const underlyingToken = await getTokenMetadata(
         underlyingTokenAddress,
         this.chainId,
       )
@@ -99,13 +94,7 @@ export class StargatePoolAdapter
       metadataObject[poolAddress] = {
         poolId,
         protocolToken,
-        underlyingToken: {
-          ...underlyingToken,
-          iconUrl: buildTrustAssetIconUrl(
-            this.chainId,
-            underlyingToken.address,
-          ),
-        },
+        underlyingToken,
       }
     }
 
@@ -127,12 +116,9 @@ export class StargatePoolAdapter
       blockTag: blockNumber,
     })
 
-    const balance = formatUnits(balanceRaw, underlyingToken.decimals)
-
     const underlyingTokenBalance = {
       ...underlyingToken,
       balanceRaw,
-      balance,
       type: TokenType.Underlying,
     }
 
@@ -156,17 +142,11 @@ export class StargatePoolAdapter
       blockTag: blockNumber,
     })
 
-    const pricePerShare = formatUnits(
-      pricePerShareRaw,
-      underlyingToken.decimals,
-    )
-
     return [
       {
         ...underlyingToken,
         type: TokenType.Underlying,
         underlyingRateRaw: pricePerShareRaw,
-        underlyingRate: pricePerShare,
       },
     ]
   }

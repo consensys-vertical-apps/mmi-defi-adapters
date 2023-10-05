@@ -15,19 +15,19 @@
           "name": "Tether USD-LP",
           "decimals": 6,
           "symbol": "S*USDT",
-          "address": "0xprotocolTokenAddress",
+          "address": "0x2000000000000000000000000000000000000002",
           "baseRate": 1,
           "type": "protocol",
           "tokens": [
             {
               "type": "underlying",
               "underlyingRateRaw": "1000154n",
-              "underlyingRate": "1.000154",
               "decimals": 6,
               "name": "Tether USD",
-              "iconUrl": "",
               "symbol": "USDT",
-              "address": "0xunderlyingTokenAddress"
+              "address": "0x0000000000000000000000000000000000000002",
+              "underlyingRate": "1.000154",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0000000000000000000000000000000000000002/logo.png"
             }
           ]
         }

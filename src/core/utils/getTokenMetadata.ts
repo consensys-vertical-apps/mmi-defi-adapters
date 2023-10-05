@@ -15,25 +15,10 @@ const CHAIN_METADATA: Partial<
   [Chain.Arbitrum]: TOKEN_METADATA_ARBITRUM,
 }
 
-export async function getThinTokenMetadata(
+export async function getTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
-) {
-  const token = await getTokenMetadata({
-    tokenAddress,
-    chainId,
-  })
-
-  return token
-}
-
-export async function getTokenMetadata({
-  tokenAddress,
-  chainId,
-}: {
-  tokenAddress: string
-  chainId: Chain
-}): Promise<Erc20Metadata> {
+): Promise<Erc20Metadata> {
   const fileMetadata = CHAIN_METADATA[chainId]
   if (fileMetadata) {
     const fileTokenMetadata = fileMetadata[tokenAddress]
@@ -42,7 +27,12 @@ export async function getTokenMetadata({
         { tokenAddress, chainId },
         'Token metadata found on cached file',
       )
-      return fileTokenMetadata
+      return {
+        address: fileTokenMetadata.address,
+        name: fileTokenMetadata.name,
+        symbol: fileTokenMetadata.symbol,
+        decimals: fileTokenMetadata.decimals,
+      }
     }
   }
 

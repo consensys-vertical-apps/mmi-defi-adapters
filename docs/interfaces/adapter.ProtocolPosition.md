@@ -17,7 +17,6 @@ User's position, includes balance of protocol token related underlying token bal
 ### Properties
 
 - [balanceRaw](adapter.ProtocolPosition.md#balanceraw)
-- [balance](adapter.ProtocolPosition.md#balance)
 - [type](adapter.ProtocolPosition.md#type)
 - [tokens](adapter.ProtocolPosition.md#tokens)
 - [address](adapter.ProtocolPosition.md#address)
@@ -43,29 +42,13 @@ User's balance raw
 
 ___
 
-### balance
-
-• **balance**: `string`
-
-User's balance formatted using token decimals
-
-#### Inherited from
-
-[TokenBalance](adapter.TokenBalance.md).[balance](adapter.TokenBalance.md#balance)
-
-#### Defined in
-
-[adapter.ts:192](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L192)
-
-___
-
 ### type
 
 • **type**: ``"protocol"``
 
 #### Defined in
 
-[adapter.ts:232](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L232)
+[adapter.ts:227](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L227)
 
 ___
 
@@ -77,7 +60,7 @@ Underlying token balances
 
 #### Defined in
 
-[adapter.ts:237](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L237)
+[adapter.ts:232](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L232)
 
 ___
 

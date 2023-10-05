@@ -7,6 +7,14 @@ import {
   ProtocolTokenUnderlyingRate,
   ProtocolPosition,
   ProtocolTokenTvl,
+  Underlying,
+  UnderlyingTokenRate,
+  PositionProfits,
+  UnderlyingProfitValues,
+  BaseTokenMovement,
+  UnderlyingTokenTvl,
+  TokenType,
+  TokenBalance,
 } from './adapter'
 import { Erc20Metadata } from './erc20Metadata'
 
@@ -24,12 +32,41 @@ export type AdapterResponse<ProtocolResponse> = ProtocolDetails &
   )
 
 export type DefiPositionResponse = AdapterResponse<{
-  tokens: ProtocolPosition[]
+  tokens: DisplayPosition<ProtocolPosition>[]
 }>
 
+export type DisplayPosition<
+  PositionBalance extends TokenBalance & {
+    type: TokenType
+    tokens?: Underlying[]
+  },
+> = Omit<PositionBalance, 'tokens'> & {
+  balance: string
+  tokens?: DisplayPosition<Underlying>[]
+} & (PositionBalance['type'] extends typeof TokenType.Underlying
+    ? { iconUrl: string }
+    : Record<string, never>)
+
+export type DefiProfitsResponse = AdapterResponse<DisplayProfitsWithRange>
+
+export type DisplayProfitsWithRange = Omit<ProfitsWithRange, 'tokens'> & {
+  tokens: DisplayPositionProfits[]
+}
+
+type DisplayPositionProfits = Omit<PositionProfits, 'tokens'> & {
+  tokens: (UnderlyingProfitValues & { profit: string; iconUrl: string })[]
+}
+
 export type PricePerShareResponse = AdapterResponse<{
-  tokens: ProtocolTokenUnderlyingRate[]
+  tokens: DisplayProtocolTokenUnderlyingRate[]
 }>
+
+export type DisplayProtocolTokenUnderlyingRate = Omit<
+  ProtocolTokenUnderlyingRate,
+  'tokens'
+> & {
+  tokens?: (UnderlyingTokenRate & { underlyingRate: string; iconUrl: string })[]
+}
 
 export type APRResponse = AdapterResponse<{
   tokens: ProtocolTokenApr[]
@@ -40,14 +77,27 @@ export type APYResponse = AdapterResponse<{
 }>
 
 export type TotalValueLockResponse = AdapterResponse<{
-  tokens: ProtocolTokenTvl[]
+  tokens: DisplayProtocolTokenTvl[]
 }>
 
-export type DefiProfitsResponse = AdapterResponse<ProfitsWithRange>
+export type DisplayProtocolTokenTvl = Omit<ProtocolTokenTvl, 'tokens'> & {
+  totalSupply: string
+  tokens?: (UnderlyingTokenTvl & { totalSupply: string; iconUrl: string })[]
+}
 
 export type DefiMovementsResponse = AdapterResponse<{
   movements: {
     protocolToken: Erc20Metadata
-    positionMovements: MovementsByBlock[]
+    positionMovements: DisplayMovementsByBlock[]
   }[]
 }>
+
+export type DisplayMovementsByBlock = Omit<
+  MovementsByBlock,
+  'underlyingTokensMovement'
+> & {
+  underlyingTokensMovement: Record<
+    string,
+    BaseTokenMovement & { movementValue: string }
+  >
+}

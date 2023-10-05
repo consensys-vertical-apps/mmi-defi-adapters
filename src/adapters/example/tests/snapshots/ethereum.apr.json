@@ -12,11 +12,11 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xprotocolTokenAddress",
-          "decimals": 8,
-          "symbol": "stUSD",
-          "aprDecimal": "0.1",
-          "name": "stUSD"
+          "address": "0x1000000000000000000000000000000000000001",
+          "name": "Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6,
+          "aprDecimal": "0.1"
         }
       ]
     }

@@ -14,9 +14,8 @@
 
 ### Properties
 
-- [totalSupplyRaw](adapter.ProtocolTokenTvl.md#totalsupplyraw)
-- [totalSupply](adapter.ProtocolTokenTvl.md#totalsupply)
 - [type](adapter.ProtocolTokenTvl.md#type)
+- [totalSupplyRaw](adapter.ProtocolTokenTvl.md#totalsupplyraw)
 - [tokens](adapter.ProtocolTokenTvl.md#tokens)
 - [address](adapter.ProtocolTokenTvl.md#address)
 - [name](adapter.ProtocolTokenTvl.md#name)
@@ -24,6 +23,16 @@
 - [decimals](adapter.ProtocolTokenTvl.md#decimals)
 
 ## Properties
+
+### type
+
+• **type**: ``"protocol"``
+
+#### Defined in
+
+[adapter.ts:289](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L289)
+
+___
 
 ### totalSupplyRaw
 
@@ -33,29 +42,7 @@ Total underlying token locked in pool raw
 
 #### Defined in
 
-[adapter.ts:304](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L304)
-
-___
-
-### totalSupply
-
-• **totalSupply**: `string`
-
-Total underlying token locked in pool
-
-#### Defined in
-
-[adapter.ts:308](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L308)
-
-___
-
-### type
-
-• **type**: ``"protocol"``
-
-#### Defined in
-
-[adapter.ts:309](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L309)
+[adapter.ts:293](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L293)
 
 ___
 
@@ -65,7 +52,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:310](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L310)
+[adapter.ts:294](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L294)
 
 ___
 

@@ -14,7 +14,6 @@
 
 ### Properties
 
-- [movementValue](adapter.BaseTokenMovement.md#movementvalue)
 - [movementValueRaw](adapter.BaseTokenMovement.md#movementvalueraw)
 - [address](adapter.BaseTokenMovement.md#address)
 - [name](adapter.BaseTokenMovement.md#name)
@@ -23,23 +22,13 @@
 
 ## Properties
 
-### movementValue
-
-• **movementValue**: `string`
-
-#### Defined in
-
-[adapter.ts:258](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L258)
-
-___
-
 ### movementValueRaw
 
 • **movementValueRaw**: `bigint`
 
 #### Defined in
 
-[adapter.ts:259](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L259)
+[adapter.ts:251](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L251)
 
 ___
 
