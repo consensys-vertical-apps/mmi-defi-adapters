@@ -1,5 +1,5 @@
-import { Chain } from '@metamask-institutional/defi-adapters'
 import { formatUnits } from 'ethers'
+import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
   MovementsByBlock,

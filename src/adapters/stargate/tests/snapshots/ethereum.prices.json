@@ -84,10 +84,10 @@
               "name": "Stargate Ether Vault",
               "symbol": "SGETH",
               "decimals": 18,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x72E2F4830b9E45d52F80aC08CB2bEC0FeF72eD9c/logo.png",
               "type": "underlying",
               "underlyingRateRaw": "1000116849159443584n",
-              "underlyingRate": "1.000116849159443584"
+              "underlyingRate": "1.000116849159443584",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x72E2F4830b9E45d52F80aC08CB2bEC0FeF72eD9c/logo.png"
             }
           ]
         },

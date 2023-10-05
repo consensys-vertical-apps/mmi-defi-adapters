@@ -27,7 +27,12 @@ export async function getTokenMetadata(
         { tokenAddress, chainId },
         'Token metadata found on cached file',
       )
-      return fileTokenMetadata
+      return {
+        address: fileTokenMetadata.address,
+        name: fileTokenMetadata.name,
+        symbol: fileTokenMetadata.symbol,
+        decimals: fileTokenMetadata.decimals,
+      }
     }
   }
 
