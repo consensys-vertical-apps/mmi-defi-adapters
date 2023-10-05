@@ -158,7 +158,7 @@ export class UniswapV3PoolAdapter
 
     const tokenBalancesPromises = nonZeroPositions.map(
       ({ liquidity, tokenId }) =>
-        positionsManagerContract.decreaseLiquidity.staticCallResult(
+        positionsManagerContract.decreaseLiquidity.staticCall(
           {
             tokenId: tokenId as bigint,
             liquidity,
@@ -167,14 +167,12 @@ export class UniswapV3PoolAdapter
             deadline,
           },
           { from: userAddress, blockTag: blockNumber },
-        ) as unknown as Promise<
-          [bigint, bigint] & { amount0: bigint; amount1: bigint }
-        >, // IMO typechain has an bug here, incorrect type being returned
+        ),
     )
 
     const claimableFeesPromises = nonZeroPositions.map(
       ({ tokenId }) =>
-        positionsManagerContract.collect.staticCallResult(
+        positionsManagerContract.collect.staticCall(
           {
             tokenId: tokenId as bigint,
             recipient: userAddress,
@@ -182,9 +180,7 @@ export class UniswapV3PoolAdapter
             amount1Max: maxUint128,
           },
           { from: userAddress, blockTag: blockNumber },
-        ) as unknown as Promise<
-          [bigint, bigint] & { amount0: bigint; amount1: bigint }
-        >, // IMO typechain has an bug here, incorrect type being returned
+        ) ,
     )
 
     const erc20MetadataPromises = nonZeroPositions.map(({ token0, token1 }) =>
@@ -225,25 +221,25 @@ export class UniswapV3PoolAdapter
         tokens: [
           this.createUnderlyingToken(
             pos.token0,
-            erc20Metadata[index]?.[token0Index],
+            erc20Metadata[index]![token0Index],
             token0RawBalance,
             TokenType.Underlying,
           ),
           this.createUnderlyingToken(
             pos.token0,
-            erc20Metadata[index]?.[token0Index],
+            erc20Metadata[index]![token0Index],
             token0FeeRawBalance,
             TokenType.UnderlyingClaimableFee,
           ),
           this.createUnderlyingToken(
             pos.token1,
-            erc20Metadata[index]?.[token1Index],
+            erc20Metadata[index]![token1Index],
             token1RawBalance,
             TokenType.Underlying,
           ),
           this.createUnderlyingToken(
             pos.token1,
-            erc20Metadata[index]?.[token1Index],
+            erc20Metadata[index]![token1Index],
             token1FeeRawBalance,
             TokenType.UnderlyingClaimableFee,
           ),
