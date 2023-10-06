@@ -41,48 +41,6 @@
       "decimals": 18
     }
   },
-  "0x5165d24277cd063f5ac44efd447b27025e888f37": {
-    "protocolToken": {
-      "address": "0x5165d24277cd063f5ac44efd447b27025e888f37",
-      "name": "Aave interest bearing YFI",
-      "symbol": "aYFI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
-      "name": "yearn.finance",
-      "symbol": "YFI",
-      "decimals": 18
-    }
-  },
-  "0xdf7ff54aacacbff42dfe29dd6144a69b629f8c9e": {
-    "protocolToken": {
-      "address": "0xdf7ff54aacacbff42dfe29dd6144a69b629f8c9e",
-      "name": "Aave interest bearing ZRX",
-      "symbol": "aZRX",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
-      "name": "0x Protocol Token",
-      "symbol": "ZRX",
-      "decimals": 18
-    }
-  },
-  "0xb9d7cb55f463405cdfbe4e90a6d2df01c2b92bf1": {
-    "protocolToken": {
-      "address": "0xb9d7cb55f463405cdfbe4e90a6d2df01c2b92bf1",
-      "name": "Aave interest bearing UNI",
-      "symbol": "aUNI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-      "name": "Uniswap",
-      "symbol": "UNI",
-      "decimals": 18
-    }
-  },
   "0xffc97d72e13e01096502cb8eb52dee56f74dad7b": {
     "protocolToken": {
       "address": "0xffc97d72e13e01096502cb8eb52dee56f74dad7b",
@@ -94,34 +52,6 @@
       "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
       "name": "Aave Token",
       "symbol": "AAVE",
-      "decimals": 18
-    }
-  },
-  "0x05ec93c0365baaeabf7aeffb0972ea7ecdd39cf1": {
-    "protocolToken": {
-      "address": "0x05ec93c0365baaeabf7aeffb0972ea7ecdd39cf1",
-      "name": "Aave interest bearing BAT",
-      "symbol": "aBAT",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
-      "name": "Basic Attention Token",
-      "symbol": "BAT",
-      "decimals": 18
-    }
-  },
-  "0xa361718326c15715591c299427c62086f69923d9": {
-    "protocolToken": {
-      "address": "0xa361718326c15715591c299427c62086f69923d9",
-      "name": "Aave interest bearing BUSD",
-      "symbol": "aBUSD",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
-      "name": "BUSD",
-      "symbol": "BUSD",
       "decimals": 18
     }
   },
@@ -139,104 +69,6 @@
       "decimals": 18
     }
   },
-  "0xac6df26a590f08dcc95d5a4705ae8abbc88509ef": {
-    "protocolToken": {
-      "address": "0xac6df26a590f08dcc95d5a4705ae8abbc88509ef",
-      "name": "Aave interest bearing ENJ",
-      "symbol": "aENJ",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c",
-      "name": "Enjin Coin",
-      "symbol": "ENJ",
-      "decimals": 18
-    }
-  },
-  "0x39c6b3e42d6a679d7d776778fe880bc9487c2eda": {
-    "protocolToken": {
-      "address": "0x39c6b3e42d6a679d7d776778fe880bc9487c2eda",
-      "name": "Aave interest bearing KNC",
-      "symbol": "aKNC",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
-      "name": "Kyber Network Crystal",
-      "symbol": "KNC",
-      "decimals": 18
-    }
-  },
-  "0xa06bc25b5805d5f8d82847d191cb4af5a3e873e0": {
-    "protocolToken": {
-      "address": "0xa06bc25b5805d5f8d82847d191cb4af5a3e873e0",
-      "name": "Aave interest bearing LINK",
-      "symbol": "aLINK",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
-      "name": "ChainLink Token",
-      "symbol": "LINK",
-      "decimals": 18
-    }
-  },
-  "0xa685a61171bb30d4072b338c80cb7b2c865c873e": {
-    "protocolToken": {
-      "address": "0xa685a61171bb30d4072b338c80cb7b2c865c873e",
-      "name": "Aave interest bearing MANA",
-      "symbol": "aMANA",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
-      "name": "Decentraland MANA",
-      "symbol": "MANA",
-      "decimals": 18
-    }
-  },
-  "0xc713e5e149d5d0715dcd1c156a020976e7e56b88": {
-    "protocolToken": {
-      "address": "0xc713e5e149d5d0715dcd1c156a020976e7e56b88",
-      "name": "Aave interest bearing MKR",
-      "symbol": "aMKR",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
-      "name": "Maker",
-      "symbol": "MKR",
-      "decimals": 18
-    }
-  },
-  "0xcc12abe4ff81c9378d670de1b57f8e0dd228d77a": {
-    "protocolToken": {
-      "address": "0xcc12abe4ff81c9378d670de1b57f8e0dd228d77a",
-      "name": "Aave interest bearing REN",
-      "symbol": "aREN",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x408e41876cccdc0f92210600ef50372656052a38",
-      "name": "Republic Token",
-      "symbol": "REN",
-      "decimals": 18
-    }
-  },
-  "0x35f6b052c598d933d69a4eec4d04c73a191fe6c2": {
-    "protocolToken": {
-      "address": "0x35f6b052c598d933d69a4eec4d04c73a191fe6c2",
-      "name": "Aave interest bearing SNX",
-      "symbol": "aSNX",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
-      "name": "Synthetix Network Token",
-      "symbol": "SNX",
-      "decimals": 18
-    }
-  },
   "0x6c5024cd4f8a59110119c56f8933403a539555eb": {
     "protocolToken": {
       "address": "0x6c5024cd4f8a59110119c56f8933403a539555eb",
@@ -248,20 +80,6 @@
       "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
       "name": "Synth sUSD",
       "symbol": "sUSD",
-      "decimals": 18
-    }
-  },
-  "0x101cc05f4a51c0319f570d5e146a8c625198e636": {
-    "protocolToken": {
-      "address": "0x101cc05f4a51c0319f570d5e146a8c625198e636",
-      "name": "Aave interest bearing TUSD",
-      "symbol": "aTUSD",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x0000000000085d4780b73119b644ae5ecd22b376",
-      "name": "TrueUSD",
-      "symbol": "TUSD",
       "decimals": 18
     }
   },
@@ -279,20 +97,6 @@
       "decimals": 6
     }
   },
-  "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1": {
-    "protocolToken": {
-      "address": "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1",
-      "name": "Aave interest bearing CRV",
-      "symbol": "aCRV",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
-      "name": "Curve DAO Token",
-      "symbol": "CRV",
-      "decimals": 18
-    }
-  },
   "0xd37ee7e4f452c6638c96536e68090de8cbcdb583": {
     "protocolToken": {
       "address": "0xd37ee7e4f452c6638c96536e68090de8cbcdb583",
@@ -307,76 +111,6 @@
       "decimals": 2
     }
   },
-  "0x272f97b7a56a387ae942350bbc7df5700f8a4576": {
-    "protocolToken": {
-      "address": "0x272f97b7a56a387ae942350bbc7df5700f8a4576",
-      "name": "Aave interest bearing BAL",
-      "symbol": "aBAL",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xba100000625a3754423978a60c9317c58a424e3d",
-      "name": "Balancer",
-      "symbol": "BAL",
-      "decimals": 18
-    }
-  },
-  "0xf256cc7847e919fac9b808cc216cac87ccf2f47a": {
-    "protocolToken": {
-      "address": "0xf256cc7847e919fac9b808cc216cac87ccf2f47a",
-      "name": "Aave interest bearing XSUSHI",
-      "symbol": "aXSUSHI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x8798249c2e607446efb7ad49ec89dd1865ff4272",
-      "name": "SushiBar",
-      "symbol": "xSUSHI",
-      "decimals": 18
-    }
-  },
-  "0x514cd6756ccbe28772d4cb81bc3156ba9d1744aa": {
-    "protocolToken": {
-      "address": "0x514cd6756ccbe28772d4cb81bc3156ba9d1744aa",
-      "name": "Aave interest bearing RENFIL",
-      "symbol": "aRENFIL",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xd5147bc8e386d91cc5dbe72099dac6c9b99276f5",
-      "name": "renFIL",
-      "symbol": "renFIL",
-      "decimals": 18
-    }
-  },
-  "0xc9bc48c72154ef3e5425641a3c747242112a46af": {
-    "protocolToken": {
-      "address": "0xc9bc48c72154ef3e5425641a3c747242112a46af",
-      "name": "Aave interest bearing RAI",
-      "symbol": "aRAI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x03ab458634910aad20ef5f1c8ee96f1d6ac54919",
-      "name": "Rai Reflex Index",
-      "symbol": "RAI",
-      "decimals": 18
-    }
-  },
-  "0x1e6bb68acec8fefbd87d192be09bb274170a0548": {
-    "protocolToken": {
-      "address": "0x1e6bb68acec8fefbd87d192be09bb274170a0548",
-      "name": "Aave interest bearing AMPL",
-      "symbol": "aAMPL",
-      "decimals": 9
-    },
-    "underlyingToken": {
-      "address": "0xd46ba6d942050d489dbd938a2c909a5d5039a161",
-      "name": "Ampleforth",
-      "symbol": "AMPL",
-      "decimals": 9
-    }
-  },
   "0x2e8f4bdbe3d47d7d7de490437aea9915d930f1a3": {
     "protocolToken": {
       "address": "0x2e8f4bdbe3d47d7d7de490437aea9915d930f1a3",
@@ -388,20 +122,6 @@
       "address": "0x8e870d67f660d95d5be530380d0ec0bd388289e1",
       "name": "Pax Dollar",
       "symbol": "USDP",
-      "decimals": 18
-    }
-  },
-  "0x6f634c6135d2ebd550000ac92f494f9cb8183dae": {
-    "protocolToken": {
-      "address": "0x6f634c6135d2ebd550000ac92f494f9cb8183dae",
-      "name": "Aave interest bearing DPI",
-      "symbol": "aDPI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
-      "name": "DefiPulse Index",
-      "symbol": "DPI",
       "decimals": 18
     }
   },
@@ -419,20 +139,6 @@
       "decimals": 18
     }
   },
-  "0x683923db55fead99a79fa01a27eec3cb19679cc3": {
-    "protocolToken": {
-      "address": "0x683923db55fead99a79fa01a27eec3cb19679cc3",
-      "name": "Aave interest bearing FEI",
-      "symbol": "aFEI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x956f47f50a910163d8bf957cf5846d573e7f87ca",
-      "name": "Fei USD",
-      "symbol": "FEI",
-      "decimals": 18
-    }
-  },
   "0x1982b2f5814301d4e9a8b0201555376e62f82428": {
     "protocolToken": {
       "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
@@ -444,62 +150,6 @@
       "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
       "name": "Liquid staked Ether 2.0",
       "symbol": "stETH",
-      "decimals": 18
-    }
-  },
-  "0x9a14e23a58edf4efdcb360f68cd1b95ce2081a2f": {
-    "protocolToken": {
-      "address": "0x9a14e23a58edf4efdcb360f68cd1b95ce2081a2f",
-      "name": "Aave interest bearing ENS",
-      "symbol": "aENS",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
-      "name": "Ethereum Name Service",
-      "symbol": "ENS",
-      "decimals": 18
-    }
-  },
-  "0xc2e2152647f4c26028482efaf64b2aa28779efc4": {
-    "protocolToken": {
-      "address": "0xc2e2152647f4c26028482efaf64b2aa28779efc4",
-      "name": "Aave interest bearing UST",
-      "symbol": "aUST",
-      "decimals": 6
-    },
-    "underlyingToken": {
-      "address": "0xa693b19d2931d498c5b318df961919bb4aee87a5",
-      "name": "UST",
-      "symbol": "UST",
-      "decimals": 6
-    }
-  },
-  "0x952749e07d7157bb9644a894dfaf3bad5ef6d918": {
-    "protocolToken": {
-      "address": "0x952749e07d7157bb9644a894dfaf3bad5ef6d918",
-      "name": "Aave interest bearing CVX",
-      "symbol": "aCVX",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
-      "name": "Convex Token",
-      "symbol": "CVX",
-      "decimals": 18
-    }
-  },
-  "0xb29130cbcc3f791f077eade0266168e808e5151e": {
-    "protocolToken": {
-      "address": "0xb29130cbcc3f791f077eade0266168e808e5151e",
-      "name": "Aave interest bearing 1INCH",
-      "symbol": "a1INCH",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x111111111117dc0aa78b770fa6a738034120c302",
-      "name": "1INCH Token",
-      "symbol": "1INCH",
       "decimals": 18
     }
   },

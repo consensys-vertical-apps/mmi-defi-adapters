@@ -1,3 +1,3 @@
-export function aprToApy(apr: number, compound: number): number {
-  return (1 + apr / compound) ** compound - 1
+export function aprToApy(apr: number, compoundingsPerYear: number): number {
+  return Math.pow(1 + apr / compoundingsPerYear, compoundingsPerYear) - 1
 }

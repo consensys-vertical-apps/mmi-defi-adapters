@@ -69,13 +69,16 @@ export abstract class AaveV2BasePoolAdapter
     protocolTokenAddress,
     blockNumber,
   }: GetApyInput): Promise<ProtocolTokenApy> {
-    const apr = await this.getTokenApr({ protocolTokenAddress, blockNumber })
+    const apr = await this.getProtocolTokenApr({
+      protocolTokenAddress,
+      blockNumber,
+    })
 
     const apy = aprToApy(apr, SECONDS_PER_YEAR)
 
     return {
       ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      apyDecimal: apy.toFixed(2),
+      apyDecimal: apy * 100,
     }
   }
 
@@ -83,11 +86,14 @@ export abstract class AaveV2BasePoolAdapter
     protocolTokenAddress,
     blockNumber,
   }: GetAprInput): Promise<ProtocolTokenApr> {
-    const apr = await this.getTokenApr({ protocolTokenAddress, blockNumber })
+    const apr = await this.getProtocolTokenApr({
+      protocolTokenAddress,
+      blockNumber,
+    })
 
     return {
       ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      aprDecimal: apr.toFixed(2),
+      aprDecimal: apr * 100,
     }
   }
 
@@ -110,6 +116,18 @@ export abstract class AaveV2BasePoolAdapter
 
     const metadataObject: AaveV2PoolMetadata = {}
     for (const { tokenAddress } of reserveTokens) {
+      const reserveConfigurationData =
+        await protocolDataProviderContract.getReserveConfigurationData(
+          tokenAddress,
+        )
+
+      if (
+        !reserveConfigurationData.isActive ||
+        reserveConfigurationData.isFrozen
+      ) {
+        continue
+      }
+
       const reserveTokenAddresses =
         await protocolDataProviderContract.getReserveTokensAddresses(
           tokenAddress,
@@ -208,7 +226,7 @@ export abstract class AaveV2BasePoolAdapter
     return poolMetadata
   }
 
-  private async getTokenApr({
+  private async getProtocolTokenApr({
     protocolTokenAddress,
     blockNumber,
   }: GetAprInput): Promise<number> {
@@ -228,8 +246,6 @@ export abstract class AaveV2BasePoolAdapter
 
     const aprRaw = this.getReserveTokenRate(reserveData)
 
-    const apr = (Number(aprRaw) * 100) / RAY
-
-    return apr
+    return Number(aprRaw) / RAY
   }
 }
