@@ -9,11 +9,9 @@ import {
   GetAprInput,
   GetApyInput,
   GetEventsInput,
-  GetTotalValueLockedInput,
   MovementsByBlock,
   ProtocolTokenApr,
   ProtocolTokenApy,
-  ProtocolTokenTvl,
   TokenBalance,
   TokenType,
   GetClaimableRewardsInput,
@@ -54,12 +52,6 @@ export abstract class AaveV2BasePoolAdapter
   async getClaimableRewards(
     _input: GetClaimableRewardsInput,
   ): Promise<ProtocolRewardPosition[]> {
-    throw new Error('Not Implemented')
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
     throw new Error('Not Implemented')
   }
 

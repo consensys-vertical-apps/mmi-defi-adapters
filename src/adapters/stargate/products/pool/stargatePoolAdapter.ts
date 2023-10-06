@@ -12,13 +12,11 @@ import {
   GetAprInput,
   GetApyInput,
   GetEventsInput,
-  GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolDetails,
-  ProtocolTokenTvl,
   TokenBalance,
   TokenType,
   GetClaimableRewardsInput,
@@ -158,12 +156,6 @@ export class StargatePoolAdapter
   }
 
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new Error('Implement me')
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
     throw new Error('Implement me')
   }
 

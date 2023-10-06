@@ -146,9 +146,55 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
   abstract getClaimedRewards(input: GetEventsInput): Promise<MovementsByBlock[]>
 
-  abstract getTotalValueLocked(
-    input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]>
+  async getTotalValueLocked({
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    return Promise.all(
+      protocolTokens.map(async (protocolTokenMetadata) => {
+        const protocolTokenContact = Erc20__factory.connect(
+          protocolTokenMetadata.address,
+          this.provider,
+        )
+        const protocolTokenTotalSupply = await protocolTokenContact.totalSupply(
+          { blockTag: blockNumber },
+        )
+
+        const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
+          protocolTokenMetadata.address,
+        )
+
+        const underlyingTokenTvls = await Promise.all(
+          underlyingTokens.map(async (underlyingTokenMetadata) => {
+            const underlyingTokenContract = Erc20__factory.connect(
+              underlyingTokenMetadata.address,
+              this.provider,
+            )
+
+            const underlyingTokenBalance =
+              await underlyingTokenContract.balanceOf(
+                protocolTokenMetadata.address,
+                { blockTag: blockNumber },
+              )
+
+            return {
+              ...underlyingTokenMetadata,
+              type: TokenType.Underlying,
+              totalSupplyRaw: underlyingTokenBalance,
+            }
+          }),
+        )
+
+        return {
+          ...protocolTokenMetadata,
+          type: TokenType.Protocol,
+          totalSupplyRaw: protocolTokenTotalSupply,
+          tokens: underlyingTokenTvls,
+        }
+      }),
+    )
+  }
 
   async getProfits({
     userAddress,
