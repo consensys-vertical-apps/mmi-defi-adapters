@@ -1,6 +1,8 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { SECONDS_PER_YEAR } from '../../../../core/constants/SECONDS_PER_YEAR'
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
+import { aprToApy } from '../../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
@@ -31,6 +33,14 @@ type AaveV2PoolMetadata = Record<
   }
 >
 
+const protocolDataProviderContractAddresses: Partial<Record<Chain, string>> = {
+  [Chain.Ethereum]: '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
+  [Chain.Polygon]: '0x7551b5D2763519d4e37e8B81929D336De671d46d',
+  [Chain.Avalanche]: '0x65285E9dfab318f57051ab2b139ccCf232945451',
+}
+
+const RAY = 10 ** 27
+
 // Aave tokens always pegged one to one to underlying
 const PRICE_PEGGED_TO_ONE = 1
 export abstract class AaveV2BasePoolAdapter
@@ -55,13 +65,32 @@ export abstract class AaveV2BasePoolAdapter
     throw new Error('Not Implemented')
   }
 
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new Error('Not Implemented')
+  async getApy({
+    protocolTokenAddress,
+    blockNumber,
+  }: GetApyInput): Promise<ProtocolTokenApy> {
+    const apr = await this.getTokenApr({ protocolTokenAddress, blockNumber })
+
+    const apy = aprToApy(apr, SECONDS_PER_YEAR)
+
+    return {
+      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+      apyDecimal: apy.toFixed(2),
+    }
   }
 
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new Error('Not Implemented')
+  async getApr({
+    protocolTokenAddress,
+    blockNumber,
+  }: GetAprInput): Promise<ProtocolTokenApr> {
+    const apr = await this.getTokenApr({ protocolTokenAddress, blockNumber })
+
+    return {
+      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+      aprDecimal: apr.toFixed(2),
+    }
   }
+
   async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new Error('Not Implemented')
   }
@@ -71,14 +100,8 @@ export abstract class AaveV2BasePoolAdapter
   }
 
   async buildMetadata() {
-    const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Ethereum]: '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
-      [Chain.Polygon]: '0x7551b5D2763519d4e37e8B81929D336De671d46d',
-      [Chain.Avalanche]: '0x65285E9dfab318f57051ab2b139ccCf232945451',
-    }
-
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
-      contractAddresses[this.chainId]!,
+      protocolDataProviderContractAddresses[this.chainId]!,
       this.provider,
     )
 
@@ -170,6 +193,10 @@ export abstract class AaveV2BasePoolAdapter
     >,
   ): string
 
+  protected abstract getReserveTokenRate(
+    reserveData: Awaited<ReturnType<ProtocolDataProvider['getReserveData']>>,
+  ): bigint
+
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
@@ -179,5 +206,30 @@ export abstract class AaveV2BasePoolAdapter
     }
 
     return poolMetadata
+  }
+
+  private async getTokenApr({
+    protocolTokenAddress,
+    blockNumber,
+  }: GetAprInput): Promise<number> {
+    const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
+      protocolDataProviderContractAddresses[this.chainId]!,
+      this.provider,
+    )
+
+    const underlyingTokenMetadata = (
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
+    )[0]!
+
+    const reserveData = await protocolDataProviderContract.getReserveData(
+      underlyingTokenMetadata.address,
+      { blockTag: blockNumber },
+    )
+
+    const aprRaw = this.getReserveTokenRate(reserveData)
+
+    const apr = (Number(aprRaw) * 100) / RAY
+
+    return apr
   }
 }
