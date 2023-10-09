@@ -167,7 +167,7 @@ export class UniswapV3PoolAdapter
           ),
           positionsManagerContract.collect.staticCall(
             {
-              tokenId: tokenId as bigint,
+              tokenId,
               recipient: userAddress,
               amount0Max: maxUint128,
               amount1Max: maxUint128,
