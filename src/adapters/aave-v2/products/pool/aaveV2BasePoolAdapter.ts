@@ -39,6 +39,7 @@ const protocolDataProviderContractAddresses: Partial<Record<Chain, string>> = {
   [Chain.Avalanche]: '0x65285E9dfab318f57051ab2b139ccCf232945451',
 }
 
+// A RAY unit represents 27 decimal places
 const RAY = 10 ** 27
 
 // Aave tokens always pegged one to one to underlying
