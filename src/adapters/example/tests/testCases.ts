@@ -27,6 +27,7 @@ export const testCases: TestCase[] = [
       userAddress: '0x0000000000000000000000000000000000000001',
       fromBlock: 18183580,
       toBlock: 18183880,
+      protocolTokenAddress: '0x1000000000000000000000000000000000000001',
     },
   },
   {
@@ -36,6 +37,7 @@ export const testCases: TestCase[] = [
       userAddress: '0x0000000000000000000000000000000000000001',
       fromBlock: 18183580,
       toBlock: 18183880,
+      protocolTokenAddress: '0x1000000000000000000000000000000000000001',
     },
   },
   {

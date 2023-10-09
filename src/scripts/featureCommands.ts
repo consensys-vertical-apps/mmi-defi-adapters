@@ -35,6 +35,7 @@ export function featureCommands(program: Command) {
     '0x2C5D4A0943e9cF4C597a76464396B0bF84C24C45',
     17719334,
     17719336,
+    '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
   )
   addressEventsCommand(
     program,
@@ -43,6 +44,7 @@ export function featureCommands(program: Command) {
     '0x4Ffc5F22770ab6046c8D66DABAe3A9CD1E7A03e7',
     17979753,
     17979755,
+    '0xdf0770df86a8034b3efef0a1bb3c889b8332ff56',
   )
 
   protocolCommand(program, 'prices', getPrices)
@@ -96,16 +98,23 @@ function addressEventsCommand(
     toBlock: number
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
+    protocolTokenAddress: string
   }) => Promise<unknown>,
   defaultAddress: string,
   defaultFromBlock: number,
   defaultToBlock: number,
+  defaultProtocolTokenAddress: string,
 ) {
   program
     .command(commandName)
     .argument('[userAddress]', 'Address of the target account', defaultAddress)
     .argument('[fromBlock]', 'From block', defaultFromBlock)
     .argument('[toBlock]', 'To block', defaultToBlock)
+    .argument(
+      '[protocolTokenAddress]',
+      'Address of the protocol token',
+      defaultProtocolTokenAddress,
+    )
     .option(
       '-p, --protocols <protocols>',
       'comma-separated protocols filter (e.g. stargate,aave-v2)',
@@ -115,20 +124,29 @@ function addressEventsCommand(
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
     .showHelpAfterError()
-    .action(async (userAddress, fromBlock, toBlock, { protocols, chains }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
-
-      const data = await feature({
+    .action(
+      async (
         userAddress,
-        filterProtocolIds,
-        filterChainIds,
-        fromBlock: parseInt(fromBlock, 10),
-        toBlock: parseInt(toBlock, 10),
-      })
+        fromBlock,
+        toBlock,
+        protocolTokenAddress,
+        { protocols, chains },
+      ) => {
+        const filterProtocolIds = multiProtocolFilter(protocols)
+        const filterChainIds = multiChainFilter(chains)
 
-      printResponse(data)
-    })
+        const data = await feature({
+          userAddress,
+          filterProtocolIds,
+          filterChainIds,
+          fromBlock: parseInt(fromBlock, 10),
+          toBlock: parseInt(toBlock, 10),
+          protocolTokenAddress,
+        })
+
+        printResponse(data)
+      },
+    )
 }
 
 function protocolCommand(

@@ -13,25 +13,21 @@
         {
           "protocolToken": {
             "address": "0x1000000000000000000000000000000000000001",
-            "name": "Coin-LP",
-            "symbol": "S*USDC",
+            "name": "LP USD Coin",
+            "symbol": "LP USDC",
             "decimals": 6
           },
-          "positionMovements": [
-            {
-              "underlyingTokensMovement": {
-                "0x0000000000000000000000000000000000000001": {
-                  "address": "0x0000000000000000000000000000000000000001",
-                  "name": "USD Coin",
-                  "symbol": "USDC",
-                  "decimals": 6,
-                  "movementValueRaw": "100000000n",
-                  "movementValue": "100.0"
-                }
-              },
-              "blockNumber": 17970000
+          "underlyingTokensMovement": {
+            "0x0000000000000000000000000000000000000001": {
+              "address": "0x0000000000000000000000000000000000000001",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "movementValueRaw": "100000000n",
+              "movementValue": "100.0"
             }
-          ]
+          },
+          "blockNumber": 17970000
         }
       ]
     }

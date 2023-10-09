@@ -27,6 +27,7 @@ export const testCases: TestCase[] = [
       userAddress: '0x2C5D4A0943e9cF4C597a76464396B0bF84C24C45',
       fromBlock: 17719334,
       toBlock: 17719336,
+      protocolTokenAddress: '0xdf0770df86a8034b3efef0a1bb3c889b8332ff56',
     },
   },
   {
@@ -36,6 +37,7 @@ export const testCases: TestCase[] = [
       userAddress: '0x4Ffc5F22770ab6046c8D66DABAe3A9CD1E7A03e7',
       fromBlock: 17979753,
       toBlock: 17979755,
+      protocolTokenAddress: '0xdf0770df86a8034b3efef0a1bb3c889b8332ff56',
     },
   },
   {

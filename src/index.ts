@@ -149,35 +149,25 @@ export async function getWithdrawals({
   userAddress,
   fromBlock,
   toBlock,
+  protocolTokenAddress,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
   userAddress: string
   fromBlock: number
   toBlock: number
+  protocolTokenAddress: string
 }): Promise<DefiMovementsResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
-    const protocolTokens = await adapter.getProtocolTokens()
-    const movements = await Promise.all(
-      protocolTokens.map(async (protocolToken) => {
-        const positionMovements = await adapter.getWithdrawals({
-          protocolTokenAddress: protocolToken.address,
-          fromBlock,
-          toBlock,
-          userAddress,
-        })
-
-        return {
-          protocolToken,
-          positionMovements: positionMovements.map((value) =>
-            enrichMovements(value),
-          ),
-        }
-      }),
-    )
+    const positionMovements = await adapter.getWithdrawals({
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+      userAddress,
+    })
 
     return {
-      movements,
+      movements: positionMovements.map((value) => enrichMovements(value)),
     }
   }
 
@@ -194,35 +184,25 @@ export async function getDeposits({
   userAddress,
   fromBlock,
   toBlock,
+  protocolTokenAddress,
 }: {
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
   userAddress: string
   fromBlock: number
   toBlock: number
+  protocolTokenAddress: string
 }): Promise<DefiMovementsResponse[]> {
   const runner = async (adapter: IProtocolAdapter) => {
-    const protocolTokens = await adapter.getProtocolTokens()
-    const movements = await Promise.all(
-      protocolTokens.map(async (protocolToken) => {
-        const positionMovements = await adapter.getDeposits({
-          protocolTokenAddress: protocolToken.address,
-          fromBlock,
-          toBlock,
-          userAddress,
-        })
-
-        return {
-          protocolToken,
-          positionMovements: positionMovements.map((value) =>
-            enrichMovements(value),
-          ),
-        }
-      }),
-    )
+    const positionMovements = await adapter.getDeposits({
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+      userAddress,
+    })
 
     return {
-      movements,
+      movements: positionMovements.map((value) => enrichMovements(value)),
     }
   }
 

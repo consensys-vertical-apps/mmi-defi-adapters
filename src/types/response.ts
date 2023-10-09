@@ -88,10 +88,7 @@ export type DisplayProtocolTokenTvl = Omit<ProtocolTokenTvl, 'tokens'> & {
 }
 
 export type DefiMovementsResponse = AdapterResponse<{
-  movements: {
-    protocolToken: Erc20Metadata
-    positionMovements: DisplayMovementsByBlock[]
-  }[]
+  movements: DisplayMovementsByBlock[]
 }>
 
 export type DisplayMovementsByBlock = Omit<
