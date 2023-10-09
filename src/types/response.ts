@@ -16,7 +16,6 @@ import {
   TokenType,
   TokenBalance,
 } from './adapter'
-import { Erc20Metadata } from './erc20Metadata'
 
 export type AdapterErrorResponse = {
   error: {
