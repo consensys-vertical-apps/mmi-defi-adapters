@@ -206,13 +206,25 @@ export async function getDeposits({
   userAddress,
   fromBlock,
   toBlock,
-  protocolTokenAddress,
-  tokenId,
-  protocolId,
-  chainId,
-  product,
-}: GetEventsRequestInput): Promise<DefiMovementsResponse> {
-  const provider = chainProviders[chainId]
+}: {
+  filterProtocolIds?: Protocol[]
+  filterChainIds?: Chain[]
+  userAddress: string
+  fromBlock: number
+  toBlock: number
+}): Promise<DefiMovementsResponse[]> {
+  const runner = async (adapter: IProtocolAdapter) => {
+    const protocolTokens = [
+      { address: '573046', name: 'name', decimals: 18, symbol: 'symbol' },
+    ] // await adapter.getProtocolTokens()
+    const movements = await Promise.all(
+      protocolTokens.map(async (protocolToken) => {
+        const positionMovements = await adapter.getDeposits({
+          protocolTokenAddress: protocolToken.address,
+          fromBlock,
+          toBlock,
+          userAddress,
+        })
 
   const adapterClass = supportedProtocols?.[protocolId]?.[chainId]?.find(
     (adapter) =>
