@@ -1,6 +1,6 @@
 import { Protocol } from '../adapters/protocols'
 import { Chain, ChainName } from '../core/constants/chains'
-import { filterMap } from '../core/utils/filters'
+import { filterMapSync } from '../core/utils/filters'
 
 export function chainFilter(filterInput?: string): Chain | undefined {
   if (!filterInput) {
@@ -57,7 +57,7 @@ export function multiChainFilter(filterInput?: string): Chain[] | undefined {
     return
   }
 
-  return filterMap(filterInput?.split(','), (filter) => {
+  return filterMapSync(filterInput?.split(','), (filter) => {
     const cleanFilter = filter.trim()
     return cleanFilter ? chainFilter(cleanFilter) : undefined
   })
@@ -70,7 +70,7 @@ export function multiProtocolFilter(
     return
   }
 
-  return filterMap(filterInput?.split(','), (filter) => {
+  return filterMapSync(filterInput?.split(','), (filter) => {
     const cleanFilter = filter.trim()
     return cleanFilter ? protocolFilter(cleanFilter) : undefined
   })

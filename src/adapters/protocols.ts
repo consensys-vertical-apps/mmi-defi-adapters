@@ -3,5 +3,6 @@ export const Protocol = {
   Stargate: 'stargate',
   Example: 'example',
   AaveV2: 'aave-v2',
+  UniswapV3: 'uniswap-v3',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]

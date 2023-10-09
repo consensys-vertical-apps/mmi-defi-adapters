@@ -35,7 +35,8 @@ export function enrichPositionBalance<
           ),
         }
       : {}),
-    ...(balance.type === TokenType.Underlying
+    ...(balance.type === TokenType.Underlying ||
+    balance.type === TokenType.UnderlyingClaimableFee
       ? { iconUrl: buildTrustAssetIconUrl(chainId, balance.address) }
       : {}),
   } as DisplayPosition<PositionBalance>
