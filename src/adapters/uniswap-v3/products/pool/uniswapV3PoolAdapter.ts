@@ -189,7 +189,7 @@ export class UniswapV3PoolAdapter
         } - ${formatUnits(position.fee, FEE_DECIMALS)}%`
 
         return {
-          address: tokenId,
+          address: tokenId.toString(),
           name: nftName,
           symbol: nftName,
           decimals: 18,
