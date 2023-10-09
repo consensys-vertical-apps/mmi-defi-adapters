@@ -12,6 +12,8 @@ import {
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
+import { filterMapSync } from '../core/utils/filters'
+import { AdapterResponse } from '../types/response'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function featureCommands(program: Command) {
@@ -58,7 +60,7 @@ function addressCommand(
     userAddress: string
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
-  }) => Promise<unknown>,
+  }) => Promise<AdapterResponse<unknown>[]>,
   defaultAddress: string,
 ) {
   program
@@ -96,7 +98,7 @@ function addressEventsCommand(
     toBlock: number
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
-  }) => Promise<unknown>,
+  }) => Promise<AdapterResponse<unknown>[]>,
   defaultAddress: string,
   defaultFromBlock: number,
   defaultToBlock: number,
@@ -137,7 +139,7 @@ function protocolCommand(
   feature: (input: {
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
-  }) => Promise<unknown>,
+  }) => Promise<AdapterResponse<unknown>[]>,
 ) {
   program
     .command(commandName)
@@ -163,7 +165,16 @@ function protocolCommand(
     })
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function printResponse(data: any) {
-  console.log(bigintJsonStringify(data, 2))
+function printResponse(data: AdapterResponse<unknown>[]) {
+  const processedData = filterMapSync(data, (adapterResponse) => {
+    if (
+      !adapterResponse.success &&
+      adapterResponse.error.details?.name === 'NotApplicableError'
+    ) {
+      return undefined
+    }
+
+    return adapterResponse
+  })
+  console.log(bigintJsonStringify(processedData, 2))
 }

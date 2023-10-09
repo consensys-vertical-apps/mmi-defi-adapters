@@ -2,8 +2,9 @@ import { ethers } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain, ChainName } from './core/constants/chains'
+import { Chain } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
+import { ProviderMissingError } from './core/errors/errors'
 import { chainProviders } from './core/utils/chainProviders'
 import {
   enrichPositionBalance,
@@ -365,21 +366,11 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
 
               const protocolDetails = adapter.getProtocolDetails()
 
-              if (!provider) {
-                return {
-                  ...protocolDetails,
-                  success: false,
-                  error: {
-                    message: 'No provider found for chain',
-                    details: {
-                      chainId,
-                      chainName: ChainName[chainId],
-                    },
-                  },
-                }
-              }
-
               try {
+                if (!provider) {
+                  throw new ProviderMissingError(chainId)
+                }
+
                 const adapterResult = await runner(adapter, provider)
                 return {
                   ...protocolDetails,

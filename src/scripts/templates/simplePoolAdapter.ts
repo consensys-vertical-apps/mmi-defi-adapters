@@ -66,7 +66,7 @@ export function simplePoolAdapterTemplate(
      */
     @CacheToFile({ fileKey: 'protocol-token' })
     async buildMetadata() {
-      throw new Error('Implement me')
+      throw new NotImplementedError()
       return {} as ${adapterClassName}Metadata
     }
   
@@ -89,7 +89,7 @@ export function simplePoolAdapterTemplate(
       _protocolTokenBalance: TokenBalance,
       _blockNumber?: number,
     ): Promise<Underlying[]> {
-      throw new Error('Implement me')
+      throw new NotImplementedError()
     }
   
     /**
@@ -101,7 +101,7 @@ export function simplePoolAdapterTemplate(
     async getClaimableRewards(
       _input: GetClaimableRewardsInput,
     ): Promise<ProtocolRewardPosition[]> {
-      throw new Error('Implement me')
+      throw new NotImplementedError()
     }
   
     /**
@@ -111,7 +111,7 @@ export function simplePoolAdapterTemplate(
      *
      */
     async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-      throw new Error('Implement me')
+      throw new NotImplementedError()
     }
   
     /**
@@ -122,7 +122,7 @@ export function simplePoolAdapterTemplate(
     async getTotalValueLocked(
       _input: GetTotalValueLockedInput,
     ): Promise<ProtocolTokenTvl[]> {
-      throw new Error('Implement me')
+      throw new NotImplementedError()
     }
   
     /**
@@ -145,22 +145,22 @@ export function simplePoolAdapterTemplate(
       _protocolTokenMetadata: Erc20Metadata,
       _blockNumber?: number | undefined,
     ): Promise<UnderlyingTokenRate[]> {
-      throw new Error('Implement me')
+      throw new NotImplementedError()
     }
   
     async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-      throw new Error('Implement me')
+      throw new NotImplementedError()
     }
   
     async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-      throw new Error('Implement me')
+      throw new NotImplementedError()
     }
     async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-      throw new Error('Implement me')
+      throw new NotImplementedError()
     }
   
     async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-      throw new Error('Implement me')
+      throw new NotImplementedError()
     }
   
     /**
