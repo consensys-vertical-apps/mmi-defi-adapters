@@ -4,7 +4,7 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { filterMap } from '../../../../core/utils/filters'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   ProtocolAdapterParams,
@@ -34,6 +34,8 @@ import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
 
+// Parameter needed for static call request
+// Set the date in the future to ensure the static call request doesn't trigger smart contract validation
 const deadline = Math.floor(Date.now() - 1000) + 60 * 10
 
 const positionManagerCommonAddress =
@@ -128,134 +130,95 @@ export class UniswapV3PoolAdapter
       blockTag: blockNumber,
     })
 
-    const tokenIds = await Promise.all(
-      [...Array(Number(balanceOf)).keys()].map((index) =>
-        positionsManagerContract.tokenOfOwnerByIndex(userAddress, index, {
-          blockTag: blockNumber,
-        }),
-      ),
-    )
-
-    const positionMetadata = await Promise.all(
-      tokenIds.map((tokenId) =>
-        positionsManagerContract.positions(tokenId, { blockTag: blockNumber }),
-      ),
-    )
-
-    const nonZeroPositions = filterMap(positionMetadata, (position, index) => {
-      if (position.liquidity == 0n) return undefined
-
-      return {
-        liquidity: position.liquidity,
-        token0: position.token0,
-        token1: position.token1,
-        fee: position.fee,
-        tokenId: tokenIds[index],
-      }
-    })
-
-    if (nonZeroPositions.length == 0) return []
-
-    const tokenBalancesPromises = nonZeroPositions.map(
-      ({ liquidity, tokenId }) =>
-        positionsManagerContract.decreaseLiquidity.staticCall(
+    return filterMapAsync(
+      [...Array(Number(balanceOf)).keys()],
+      async (index) => {
+        const tokenId = await positionsManagerContract.tokenOfOwnerByIndex(
+          userAddress,
+          index,
           {
-            tokenId: tokenId as bigint,
-            liquidity,
-            amount0Min: 0n,
-            amount1Min: 0n,
-            deadline,
+            blockTag: blockNumber,
           },
-          { from: userAddress, blockTag: blockNumber },
-        ),
+        )
+
+        const position = await positionsManagerContract.positions(tokenId, {
+          blockTag: blockNumber,
+        })
+
+        if (position.liquidity == 0n) {
+          return undefined
+        }
+
+        const [
+          { amount0, amount1 },
+          { amount0: amount0Fee, amount1: amount1Fee },
+          token0Metadata,
+          token1Metadata,
+        ] = await Promise.all([
+          positionsManagerContract.decreaseLiquidity.staticCall(
+            {
+              tokenId: tokenId,
+              liquidity: position.liquidity,
+              amount0Min: 0n,
+              amount1Min: 0n,
+              deadline,
+            },
+            { from: userAddress, blockTag: blockNumber },
+          ),
+          positionsManagerContract.collect.staticCall(
+            {
+              tokenId: tokenId as bigint,
+              recipient: userAddress,
+              amount0Max: maxUint128,
+              amount1Max: maxUint128,
+            },
+            { from: userAddress, blockTag: blockNumber },
+          ),
+          getTokenMetadata(position.token0, this.chainId),
+          getTokenMetadata(position.token1, this.chainId),
+        ])
+
+        const FEE_DECIMALS = 4
+        const nftName = `${token0Metadata.symbol} / ${
+          token1Metadata.symbol
+        } - ${formatUnits(position.fee, FEE_DECIMALS)}%`
+
+        return {
+          address: positionManagerCommonAddress,
+          name: nftName,
+          symbol: nftName,
+          decimals: 18,
+          balanceRaw: position.liquidity,
+          type: TokenType.Protocol,
+          tokens: [
+            this.createUnderlyingToken(
+              position.token0,
+              token0Metadata,
+              amount0,
+              TokenType.Underlying,
+            ),
+            this.createUnderlyingToken(
+              position.token0,
+              token0Metadata,
+              amount0Fee,
+              TokenType.UnderlyingClaimableFee,
+            ),
+            this.createUnderlyingToken(
+              position.token1,
+              token1Metadata,
+              amount1,
+              TokenType.Underlying,
+            ),
+            this.createUnderlyingToken(
+              position.token1,
+              token1Metadata,
+              amount1Fee,
+              TokenType.UnderlyingClaimableFee,
+            ),
+          ],
+        }
+      },
     )
-
-    const claimableFeesPromises = nonZeroPositions.map(({ tokenId }) =>
-      positionsManagerContract.collect.staticCall(
-        {
-          tokenId: tokenId as bigint,
-          recipient: userAddress,
-          amount0Max: maxUint128,
-          amount1Max: maxUint128,
-        },
-        { from: userAddress, blockTag: blockNumber },
-      ),
-    )
-
-    const erc20MetadataPromises = nonZeroPositions.map(({ token0, token1 }) =>
-      Promise.all([
-        getTokenMetadata(token0, this.chainId),
-        getTokenMetadata(token1, this.chainId),
-      ]),
-    )
-
-    const [tokenBalances, claimableFees, erc20Metadata] = await Promise.all([
-      Promise.all(tokenBalancesPromises),
-      Promise.all(claimableFeesPromises),
-      Promise.all(erc20MetadataPromises),
-    ])
-
-    return nonZeroPositions.map((pos, index) => {
-      const tokenBalance = tokenBalances[index]
-      const claimableFee = claimableFees[index]
-      const token0Metadata = erc20Metadata[index]![0]
-      const token1Metadata = erc20Metadata[index]![1]
-      if (
-        !tokenBalance ||
-        !claimableFee ||
-        !token0Metadata ||
-        !token1Metadata
-      ) {
-        throw new Error('Error occurred while getting Uniswap positions')
-      }
-
-      const token0RawBalance = tokenBalance.amount0
-
-      const token1RawBalance = tokenBalance.amount1
-
-      const token0FeeRawBalance = claimableFee.amount0
-
-      const token1FeeRawBalance = claimableFee.amount1
-
-      const FEE_DECIMALS = 4
-      const nftName = `${token0Metadata.symbol} / ${
-        token1Metadata.symbol
-      } - ${formatUnits(pos.fee, FEE_DECIMALS)}%`
-      return {
-        address: positionManagerCommonAddress,
-        name: nftName,
-        symbol: nftName,
-        decimals: 18,
-        balanceRaw: pos.liquidity,
-        type: TokenType.Protocol,
-        tokens: [
-          this.createUnderlyingToken(
-            pos.token0,
-            token0Metadata,
-            token0RawBalance,
-            TokenType.Underlying,
-          ),
-          this.createUnderlyingToken(
-            pos.token0,
-            token0Metadata,
-            token0FeeRawBalance,
-            TokenType.UnderlyingClaimableFee,
-          ),
-          this.createUnderlyingToken(
-            pos.token1,
-            token1Metadata,
-            token1RawBalance,
-            TokenType.Underlying,
-          ),
-          this.createUnderlyingToken(
-            pos.token1,
-            token1Metadata,
-            token1FeeRawBalance,
-            TokenType.UnderlyingClaimableFee,
-          ),
-        ],
-      }
-    })
   }
 
   /**

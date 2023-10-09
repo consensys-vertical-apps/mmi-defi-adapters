@@ -14,7 +14,7 @@ import {
   lowerFirst,
   pascalCase,
 } from '../core/utils/caseConversion'
-import { filterMap } from '../core/utils/filters'
+import { filterMapSync } from '../core/utils/filters'
 import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { chainFilter, protocolFilter } from './commandFilters'
@@ -67,16 +67,19 @@ export function newAdapterCommand(program: Command) {
         template: string
         chains: string
       }) => {
-        const chainKeys = filterMap(chains?.split(',') ?? [], (filterInput) => {
-          try {
-            const chainId = chainFilter(filterInput)
-            return Object.keys(Chain).find((chainKey) => {
-              return Chain[chainKey as keyof typeof Chain] === chainId
-            })
-          } catch (e) {
-            return undefined
-          }
-        }) as (keyof typeof Chain)[]
+        const chainKeys = filterMapSync(
+          chains?.split(',') ?? [],
+          (filterInput) => {
+            try {
+              const chainId = chainFilter(filterInput)
+              return Object.keys(Chain).find((chainKey) => {
+                return Chain[chainKey as keyof typeof Chain] === chainId
+              })
+            } catch (e) {
+              return undefined
+            }
+          },
+        ) as (keyof typeof Chain)[]
 
         const inputProtocolId = (() => {
           try {

@@ -1,5 +1,5 @@
 import { GetBalancesInput, TokenBalance } from '../../types/adapter'
-import { filterMap } from './filters'
+import { filterMapSync } from './filters'
 import { getAddressesBalances } from './getAddressesBalances'
 
 export const getBalances = async ({
@@ -17,7 +17,7 @@ export const getBalances = async ({
     blockNumber,
   })
 
-  return filterMap(tokens, (token) => {
+  return filterMapSync(tokens, (token) => {
     const balance = balances[userAddress]?.[token.address]
     if (!balance || balance === 0n) {
       return undefined

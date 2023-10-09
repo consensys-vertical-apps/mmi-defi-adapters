@@ -2,5 +2,3 @@
 /* tslint:disable */
 /* eslint-disable */
 export { PositionManager__factory } from "./PositionManager__factory";
-export { UniswapPool__factory } from "./UniswapPool__factory";
-export { UniswapPoolFactory__factory } from "./UniswapPoolFactory__factory";
