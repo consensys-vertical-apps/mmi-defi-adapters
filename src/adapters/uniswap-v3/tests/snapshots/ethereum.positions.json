@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18284076,
+  "blockNumber": 18312464,
   "snapshot": [
     {
       "protocolId": "uniswap-v3",
@@ -36,7 +36,8 @@
               "decimals": 18,
               "balanceRaw": "6257767925451742748908n",
               "type": "underlying-claimable-fee",
-              "balance": "6257.767925451742748908"
+              "balance": "6257.767925451742748908",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x92CC36D66e9d739D50673d1f27929a371FB83a67/logo.png"
             },
             {
               "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -55,7 +56,8 @@
               "decimals": 18,
               "balanceRaw": "92742886944754249n",
               "type": "underlying-claimable-fee",
-              "balance": "0.092742886944754249"
+              "balance": "0.092742886944754249",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
           "balance": "26541.672142114225144722"
@@ -85,7 +87,8 @@
               "decimals": 18,
               "balanceRaw": "0n",
               "type": "underlying-claimable-fee",
-              "balance": "0.0"
+              "balance": "0.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1/logo.png"
             },
             {
               "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -104,7 +107,8 @@
               "decimals": 18,
               "balanceRaw": "0n",
               "type": "underlying-claimable-fee",
-              "balance": "0.0"
+              "balance": "0.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
           "balance": "17521.394682890000402966"
