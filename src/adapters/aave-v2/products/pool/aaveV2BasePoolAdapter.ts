@@ -236,8 +236,8 @@ export abstract class AaveV2BasePoolAdapter
     )
 
     const underlyingTokenMetadata = (
-      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
-    )[0]!
+      await this.fetchPoolMetadata(protocolTokenAddress)
+    ).underlyingToken
 
     const reserveData = await protocolDataProviderContract.getReserveData(
       underlyingTokenMetadata.address,
