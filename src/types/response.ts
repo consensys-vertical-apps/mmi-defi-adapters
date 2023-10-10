@@ -24,11 +24,13 @@ export type AdapterErrorResponse = {
   }
 }
 
-export type AdapterResponse<ProtocolResponse> = ProtocolDetails &
-  (
-    | (ProtocolResponse & { success: true })
-    | (AdapterErrorResponse & { success: false })
-  )
+export type AdapterResponse<ProtocolResponse> =
+  | (ProtocolDetails &
+      (
+        | (ProtocolResponse & { success: true })
+        | (AdapterErrorResponse & { success: false })
+      ))
+  | (AdapterErrorResponse & { success: false })
 
 export type DefiPositionResponse = AdapterResponse<{
   tokens: DisplayPosition<ProtocolPosition>[]

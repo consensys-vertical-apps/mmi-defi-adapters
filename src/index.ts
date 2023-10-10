@@ -154,12 +154,8 @@ export async function getWithdrawals({
   product,
 }: GetEventsInput): Promise<DefiMovementsResponse> {
   const provider = chainProviders[chainId]
-  //@ts-ignore
 
-  const adapterClass = supportedProtocols?.[protocolId]?.[
-    chainId.toString()
-  ]?.find(
-    //@ts-ignore
+  const adapterClass = supportedProtocols?.[protocolId]?.[chainId]?.find(
     (adapter) =>
       new adapter({
         provider: provider!,
@@ -227,11 +223,8 @@ export async function getDeposits({
   product,
 }: GetEventsInput): Promise<DefiMovementsResponse> {
   const provider = chainProviders[chainId]
-  //@ts-ignore
-  const adapterClass = supportedProtocols?.[protocolId]?.[
-    chainId.toString()
-  ]?.find(
-    //@ts-ignore
+
+  const adapterClass = supportedProtocols?.[protocolId]?.[chainId]?.find(
     (adapter) =>
       new adapter({
         provider: provider!,
@@ -252,7 +245,7 @@ export async function getDeposits({
           chainName: ChainName[chainId],
         },
       },
-    } as any
+    }
   }
 
   const runner = async (adapter: IProtocolAdapter) => {
