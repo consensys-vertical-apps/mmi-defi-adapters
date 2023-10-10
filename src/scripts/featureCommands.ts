@@ -1,5 +1,6 @@
 import { Command } from 'commander'
 import {
+  GetEventsInput,
   getApr,
   getApy,
   getDeposits,
@@ -36,6 +37,8 @@ export function featureCommands(program: Command) {
     17719334,
     17719336,
     '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
+    '177790',
+    'pool',
   )
   addressEventsCommand(
     program,
@@ -45,6 +48,8 @@ export function featureCommands(program: Command) {
     17979753,
     17979755,
     '0xdf0770df86a8034b3efef0a1bb3c889b8332ff56',
+    '177790',
+    'pool',
   )
 
   protocolCommand(program, 'prices', getPrices)
@@ -92,18 +97,13 @@ function addressCommand(
 function addressEventsCommand(
   program: Command,
   commandName: string,
-  feature: (input: {
-    userAddress: string
-    fromBlock: number
-    toBlock: number
-    filterProtocolIds?: Protocol[]
-    filterChainIds?: Chain[]
-    protocolTokenAddress: string
-  }) => Promise<unknown>,
+  feature: (input: GetEventsInput) => Promise<unknown>,
   defaultAddress: string,
   defaultFromBlock: number,
   defaultToBlock: number,
   defaultProtocolTokenAddress: string,
+  defaultTokenId: string,
+  defaultProduct: string,
 ) {
   program
     .command(commandName)
@@ -115,14 +115,8 @@ function addressEventsCommand(
       'Address of the protocol token',
       defaultProtocolTokenAddress,
     )
-    .option(
-      '-p, --protocols <protocols>',
-      'comma-separated protocols filter (e.g. stargate,aave-v2)',
-    )
-    .option(
-      '-c, --chains <chains>',
-      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
-    )
+    .argument('[tokenId]', 'Token Id of the position', defaultTokenId)
+    .argument('[product]', 'Name of product', defaultProduct)
     .showHelpAfterError()
     .action(
       async (
@@ -130,18 +124,20 @@ function addressEventsCommand(
         fromBlock,
         toBlock,
         protocolTokenAddress,
-        { protocols, chains },
+        tokenId,
+        product,
+        protocolId,
+        chainId,
       ) => {
-        const filterProtocolIds = multiProtocolFilter(protocols)
-        const filterChainIds = multiChainFilter(chains)
-
         const data = await feature({
           userAddress,
-          filterProtocolIds,
-          filterChainIds,
           fromBlock: parseInt(fromBlock, 10),
           toBlock: parseInt(toBlock, 10),
           protocolTokenAddress,
+          tokenId,
+          product,
+          protocolId,
+          chainId,
         })
 
         printResponse(data)

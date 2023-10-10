@@ -144,26 +144,52 @@ export async function getPrices({
 }
 
 export async function getWithdrawals({
-  filterProtocolIds,
-  filterChainIds,
   userAddress,
   fromBlock,
   toBlock,
   protocolTokenAddress,
-}: {
-  filterProtocolIds?: Protocol[]
-  filterChainIds?: Chain[]
-  userAddress: string
-  fromBlock: number
-  toBlock: number
-  protocolTokenAddress: string
-}): Promise<DefiMovementsResponse[]> {
+  tokenId,
+  protocolId,
+  chainId,
+  product,
+}: GetEventsInput): Promise<DefiMovementsResponse> {
+  const provider = chainProviders[chainId]
+  //@ts-ignore
+
+  const adapterClass = supportedProtocols?.[protocolId]?.[
+    chainId.toString()
+  ]?.find(
+    //@ts-ignore
+    (adapter) =>
+      new adapter({
+        provider: provider!,
+        chainId,
+        protocolId,
+      }).getProtocolDetails().product == product,
+  )
+
+  if (!adapterClass) {
+    return {
+      success: false,
+      error: {
+        message: 'No adapter found',
+        details: {
+          product,
+          protocolId,
+          chainId: chainId,
+          chainName: ChainName[chainId],
+        },
+      },
+    } as any
+  }
+
   const runner = async (adapter: IProtocolAdapter) => {
     const positionMovements = await adapter.getWithdrawals({
       protocolTokenAddress,
       fromBlock,
       toBlock,
       userAddress,
+      tokenId,
     })
 
     return {
@@ -171,34 +197,71 @@ export async function getWithdrawals({
     }
   }
 
-  return runForAllProtocolsAndChains({
-    runner,
-    filterProtocolIds,
-    filterChainIds,
+  const adapter = new adapterClass({
+    provider: provider!,
+    chainId,
+    protocolId,
   })
+  return runTaskForAdapter(adapter, provider!, runner)
 }
 
-export async function getDeposits({
-  filterProtocolIds,
-  filterChainIds,
-  userAddress,
-  fromBlock,
-  toBlock,
-  protocolTokenAddress,
-}: {
-  filterProtocolIds?: Protocol[]
-  filterChainIds?: Chain[]
+export type GetEventsInput = {
   userAddress: string
   fromBlock: number
   toBlock: number
   protocolTokenAddress: string
-}): Promise<DefiMovementsResponse[]> {
+  tokenId?: string
+  protocolId: Protocol
+  chainId: Chain
+  product: string
+}
+
+export async function getDeposits({
+  userAddress,
+  fromBlock,
+  toBlock,
+  protocolTokenAddress,
+  tokenId,
+  protocolId,
+  chainId,
+  product,
+}: GetEventsInput): Promise<DefiMovementsResponse> {
+  const provider = chainProviders[chainId]
+  //@ts-ignore
+  const adapterClass = supportedProtocols?.[protocolId]?.[
+    chainId.toString()
+  ]?.find(
+    //@ts-ignore
+    (adapter) =>
+      new adapter({
+        provider: provider!,
+        chainId,
+        protocolId,
+      }).getProtocolDetails().product == product,
+  )
+
+  if (!adapterClass) {
+    return {
+      success: false,
+      error: {
+        message: 'No adapter found',
+        details: {
+          product,
+          protocolId,
+          chainId: chainId,
+          chainName: ChainName[chainId],
+        },
+      },
+    } as any
+  }
+
   const runner = async (adapter: IProtocolAdapter) => {
     const positionMovements = await adapter.getDeposits({
       protocolTokenAddress,
       fromBlock,
       toBlock,
       userAddress,
+      tokenId,
     })
 
     return {
@@ -206,11 +269,12 @@ export async function getDeposits({
     }
   }
 
-  return runForAllProtocolsAndChains({
-    runner,
-    filterProtocolIds,
-    filterChainIds,
+  const adapter = new adapterClass({
+    provider: chainProviders[chainId]!,
+    chainId,
+    protocolId,
   })
+  return runTaskForAdapter(adapter, provider!, runner)
 }
 
 export async function getTotalValueLocked({
@@ -331,7 +395,7 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
         })
         .flatMap(([chainIdKey, adapterClasses]) => {
           const chainId = +chainIdKey as Chain
-          const provider = chainProviders[chainId]
+          const provider = chainProviders[chainId]!
 
           return adapterClasses.map(
             async (
@@ -343,57 +407,68 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
                 protocolId: protocolIdKey as Protocol,
               })
 
-              const protocolDetails = adapter.getProtocolDetails()
-
-              if (!provider) {
-                return {
-                  ...protocolDetails,
-                  success: false,
-                  error: {
-                    message: 'No provider found for chain',
-                    details: {
-                      chainId,
-                      chainName: ChainName[chainId],
-                    },
-                  },
-                }
-              }
-
-              try {
-                const adapterResult = await runner(adapter, provider)
-                return {
-                  ...protocolDetails,
-                  success: true,
-                  ...adapterResult,
-                }
-              } catch (error) {
-                let adapterError: AdapterErrorResponse['error']
-
-                if (error instanceof Error) {
-                  adapterError = {
-                    message: error.message,
-                    details: { name: error.name },
-                  }
-                } else if (typeof error === 'string') {
-                  adapterError = {
-                    message: error,
-                  }
-                } else {
-                  adapterError = {
-                    message: 'Error message cannot be extracted',
-                  }
-                }
-
-                return {
-                  ...protocolDetails,
-                  success: false,
-                  error: adapterError,
-                }
-              }
+              return runTaskForAdapter(adapter, provider, runner)
             },
           )
         })
     })
 
   return Promise.all(protocolPromises)
+}
+
+async function runTaskForAdapter<ReturnType>(
+  adapter: IProtocolAdapter,
+  provider: ethers.JsonRpcProvider,
+  runner: (
+    adapter: IProtocolAdapter,
+    provider: ethers.JsonRpcProvider,
+  ) => ReturnType,
+): Promise<AdapterResponse<Awaited<ReturnType>>> {
+  const protocolDetails = adapter.getProtocolDetails()
+
+  if (!provider) {
+    return {
+      ...protocolDetails,
+      success: false,
+      error: {
+        message: 'No provider found for chain',
+        details: {
+          chainId: adapter.chainId,
+          chainName: ChainName[adapter.chainId],
+        },
+      },
+    }
+  }
+
+  try {
+    const adapterResult = await runner(adapter, provider)
+    return {
+      ...protocolDetails,
+      success: true,
+      ...adapterResult,
+    }
+  } catch (error) {
+    let adapterError: AdapterErrorResponse['error']
+
+    if (error instanceof Error) {
+      adapterError = {
+        message: error.message,
+        details: { name: error.name },
+      }
+    } else if (typeof error === 'string') {
+      adapterError = {
+        message: error,
+      }
+    } else {
+      adapterError = {
+        message: 'Error message cannot be extracted',
+      }
+    }
+
+    return {
+      ...protocolDetails,
+      success: false,
+      error: adapterError,
+    }
+  }
 }

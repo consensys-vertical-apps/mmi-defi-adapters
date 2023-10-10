@@ -108,8 +108,8 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
 
             const response = await getDeposits({
               ...testCase.input,
-              filterProtocolIds: [protocolId],
-              filterChainIds: [testCase.chainId],
+              protocolId: protocolId,
+              chainId: testCase.chainId,
             })
 
             expect(response).toEqual(snapshot)
@@ -134,8 +134,8 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
 
             const response = await getWithdrawals({
               ...testCase.input,
-              filterProtocolIds: [protocolId],
-              filterChainIds: [testCase.chainId],
+              chainId: testCase.chainId,
+              protocolId,
             })
 
             expect(response).toEqual(snapshot)

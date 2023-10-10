@@ -53,6 +53,7 @@ export class StargatePoolAdapter
       iconUrl: 'https://stargate.finance/favicons/favicon-light.svg',
       positionType: PositionType.Supply,
       chainId: this.chainId,
+      product: this.product,
     }
   }
 

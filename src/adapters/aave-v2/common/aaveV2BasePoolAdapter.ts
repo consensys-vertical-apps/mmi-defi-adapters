@@ -1,8 +1,8 @@
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
-import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
+import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
+import { Chain } from '../../../core/constants/chains'
+import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
+import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
+import { logger } from '../../../core/utils/logger'
 import {
   UnderlyingTokenRate,
   Underlying,
@@ -16,12 +16,12 @@ import {
   TokenType,
   GetClaimableRewardsInput,
   ProtocolRewardPosition,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
+} from '../../../types/adapter'
+import { Erc20Metadata } from '../../../types/erc20Metadata'
 import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
-} from '../../contracts'
+} from '../contracts'
 
 type AaveV2PoolMetadata = Record<
   string,

@@ -9,6 +9,7 @@
       "iconUrl": "https://aave.com/favicon.ico",
       "positionType": "lend",
       "chainId": 1,
+      "product": "a-token",
       "success": true,
       "tokens": [
         {
@@ -168,6 +169,7 @@
       "iconUrl": "https://aave.com/favicon.ico",
       "positionType": "borrow",
       "chainId": 1,
+      "product": "stable-debt-token",
       "success": true,
       "tokens": [],
       "fromBlock": 18176734,
@@ -181,6 +183,7 @@
       "iconUrl": "https://aave.com/favicon.ico",
       "positionType": "borrow",
       "chainId": 1,
+      "product": "variable-debt-token",
       "success": true,
       "tokens": [
         {

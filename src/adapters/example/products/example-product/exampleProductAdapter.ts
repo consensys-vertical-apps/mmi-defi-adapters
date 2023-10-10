@@ -29,6 +29,8 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   protocolId: Protocol
   chainId: Chain
 
+  product = 'example-pool'
+
   private provider: ethers.JsonRpcProvider
 
   constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
@@ -46,6 +48,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
       iconUrl: 'https://',
       positionType: PositionType.Supply,
       chainId: this.chainId,
+      product: this.product,
     }
   }
 
