@@ -9,6 +9,7 @@ export function defaultAdapterTemplate(
     IMetadataBuilder,
     CacheToFile,
   } from '../../../../core/decorators/cacheToFile'
+  import { NotImplementedError } from '../../../../core/errors/errors'
   import {
     ProtocolAdapterParams,
     ProtocolDetails,
@@ -141,10 +142,9 @@ export function defaultAdapterTemplate(
      * Update me.
      * Add logic to calculate the underlying token rate of 1 protocol token
      */
-    async getProtocolTokenToUnderlyingTokenRate({
-      blockNumber,
-      protocolTokenAddress,
-    }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+    async getProtocolTokenToUnderlyingTokenRate(
+      _input: GetConversionRateInput,
+    ): Promise<ProtocolTokenUnderlyingRate> {
       throw new NotImplementedError()
     }
   

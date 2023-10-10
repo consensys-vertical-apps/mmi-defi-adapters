@@ -8,6 +8,7 @@ export function simplePoolAdapterTemplate(
     IMetadataBuilder,
     CacheToFile,
   } from '../../../../core/decorators/cacheToFile'
+  import { NotImplementedError } from '../../../../core/errors/errors'
   import { logger } from '../../../../core/utils/logger'
   import {
     ProtocolDetails,
@@ -66,7 +67,6 @@ export function simplePoolAdapterTemplate(
      */
     @CacheToFile({ fileKey: 'protocol-token' })
     async buildMetadata() {
-      throw new NotImplementedError()
       return {} as ${adapterClassName}Metadata
     }
   
