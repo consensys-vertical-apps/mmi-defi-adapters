@@ -269,14 +269,14 @@ export interface ProtocolTokenApy extends Erc20Metadata {
   /**
    * Current apy of protocol pool
    */
-  apyDecimal: string
+  apyDecimal: number
 }
 
 export interface ProtocolTokenApr extends Erc20Metadata {
   /**
    * Current apr of protocol pool
    */
-  aprDecimal: string
+  aprDecimal: number
 }
 
 export interface UnderlyingTokenTvl extends Erc20Metadata {

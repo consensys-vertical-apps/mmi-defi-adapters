@@ -16,7 +16,7 @@
           "name": "Coin-LP",
           "symbol": "S*USDC",
           "decimals": 6,
-          "aprDecimal": "0.1"
+          "aprDecimal": 0.1
         }
       ]
     }
