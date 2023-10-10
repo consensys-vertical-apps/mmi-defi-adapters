@@ -1,5 +1,4 @@
-import { Chain } from '@metamask-institutional/defi-adapters'
-import { ChainName } from '../constants/chains'
+import { Chain, ChainName } from '../constants/chains'
 
 export class NotApplicableError extends Error {
   constructor(message = 'Not Applicable') {
