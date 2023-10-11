@@ -2,7 +2,7 @@ import { ethers } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain } from './core/constants/chains'
+import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
 import { chainProviders } from './core/utils/chainProviders'
@@ -25,6 +25,7 @@ import {
   AdapterErrorResponse,
   PricePerShareResponse,
   TotalValueLockResponse,
+  GetEventsRequestInput,
 } from './types/response'
 
 export {
@@ -145,93 +146,119 @@ export async function getPrices({
 }
 
 export async function getWithdrawals({
-  filterProtocolIds,
-  filterChainIds,
   userAddress,
   fromBlock,
   toBlock,
-}: {
-  filterProtocolIds?: Protocol[]
-  filterChainIds?: Chain[]
-  userAddress: string
-  fromBlock: number
-  toBlock: number
-}): Promise<DefiMovementsResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
-    const protocolTokens = await adapter.getProtocolTokens()
-    const movements = await Promise.all(
-      protocolTokens.map(async (protocolToken) => {
-        const positionMovements = await adapter.getWithdrawals({
-          protocolTokenAddress: protocolToken.address,
-          fromBlock,
-          toBlock,
-          userAddress,
-        })
+  protocolTokenAddress,
+  tokenId,
+  protocolId,
+  chainId,
+  product,
+}: GetEventsRequestInput): Promise<DefiMovementsResponse> {
+  const provider = chainProviders[chainId]
 
-        return {
-          protocolToken,
-          positionMovements: positionMovements.map((value) =>
-            enrichMovements(value),
-          ),
-        }
-      }),
-    )
+  const adapterClass = supportedProtocols?.[protocolId]?.[chainId]?.find(
+    (adapter) =>
+      new adapter({
+        provider: provider!,
+        chainId,
+        protocolId,
+      }).getProtocolDetails().product == product,
+  )
 
+  if (!adapterClass) {
     return {
-      movements,
+      success: false,
+      error: {
+        message: 'No adapter found',
+        details: {
+          product,
+          protocolId,
+          chainId: chainId,
+          chainName: ChainName[chainId],
+        },
+      },
     }
   }
 
-  return runForAllProtocolsAndChains({
-    runner,
-    filterProtocolIds,
-    filterChainIds,
+  const runner = async (adapter: IProtocolAdapter) => {
+    const positionMovements = await adapter.getWithdrawals({
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+      userAddress,
+      tokenId,
+    })
+
+    return {
+      movements: positionMovements.map((value) => enrichMovements(value)),
+    }
+  }
+
+  const adapter = new adapterClass({
+    provider: provider!,
+    chainId,
+    protocolId,
   })
+  return runTaskForAdapter(adapter, provider!, runner)
 }
 
 export async function getDeposits({
-  filterProtocolIds,
-  filterChainIds,
   userAddress,
   fromBlock,
   toBlock,
-}: {
-  filterProtocolIds?: Protocol[]
-  filterChainIds?: Chain[]
-  userAddress: string
-  fromBlock: number
-  toBlock: number
-}): Promise<DefiMovementsResponse[]> {
-  const runner = async (adapter: IProtocolAdapter) => {
-    const protocolTokens = await adapter.getProtocolTokens()
-    const movements = await Promise.all(
-      protocolTokens.map(async (protocolToken) => {
-        const positionMovements = await adapter.getDeposits({
-          protocolTokenAddress: protocolToken.address,
-          fromBlock,
-          toBlock,
-          userAddress,
-        })
+  protocolTokenAddress,
+  tokenId,
+  protocolId,
+  chainId,
+  product,
+}: GetEventsRequestInput): Promise<DefiMovementsResponse> {
+  const provider = chainProviders[chainId]
 
-        return {
-          protocolToken,
-          positionMovements: positionMovements.map((value) =>
-            enrichMovements(value),
-          ),
-        }
-      }),
-    )
+  const adapterClass = supportedProtocols?.[protocolId]?.[chainId]?.find(
+    (adapter) =>
+      new adapter({
+        provider: provider!,
+        chainId,
+        protocolId,
+      }).getProtocolDetails().product == product,
+  )
 
+  if (!adapterClass) {
     return {
-      movements,
+      success: false,
+      error: {
+        message: 'No adapter found',
+        details: {
+          product,
+          protocolId,
+          chainId: chainId,
+          chainName: ChainName[chainId],
+        },
+      },
     }
   }
 
-  return runForAllProtocolsAndChains({
-    runner,
-    filterProtocolIds,
-    filterChainIds,
+  const runner = async (adapter: IProtocolAdapter) => {
+    const positionMovements = await adapter.getDeposits({
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+      userAddress,
+      tokenId,
+    })
+
+    return {
+      movements: positionMovements.map((value) => enrichMovements(value)),
+    }
+  }
+
+  const adapter = new adapterClass({
+    provider: chainProviders[chainId]!,
+    chainId,
+    protocolId,
   })
+  return runTaskForAdapter(adapter, provider!, runner)
 }
 
 export async function getTotalValueLocked({
@@ -352,7 +379,7 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
         })
         .flatMap(([chainIdKey, adapterClasses]) => {
           const chainId = +chainIdKey as Chain
-          const provider = chainProviders[chainId]
+          const provider = chainProviders[chainId]!
 
           return adapterClasses.map(
             async (
@@ -364,47 +391,58 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
                 protocolId: protocolIdKey as Protocol,
               })
 
-              const protocolDetails = adapter.getProtocolDetails()
-
-              try {
-                if (!provider) {
-                  throw new ProviderMissingError(chainId)
-                }
-
-                const adapterResult = await runner(adapter, provider)
-                return {
-                  ...protocolDetails,
-                  success: true,
-                  ...adapterResult,
-                }
-              } catch (error) {
-                let adapterError: AdapterErrorResponse['error']
-
-                if (error instanceof Error) {
-                  adapterError = {
-                    message: error.message,
-                    details: { name: error.name },
-                  }
-                } else if (typeof error === 'string') {
-                  adapterError = {
-                    message: error,
-                  }
-                } else {
-                  adapterError = {
-                    message: 'Error message cannot be extracted',
-                  }
-                }
-
-                return {
-                  ...protocolDetails,
-                  success: false,
-                  error: adapterError,
-                }
-              }
+              return runTaskForAdapter(adapter, provider, runner)
             },
           )
         })
     })
 
   return Promise.all(protocolPromises)
+}
+
+async function runTaskForAdapter<ReturnType>(
+  adapter: IProtocolAdapter,
+  provider: ethers.JsonRpcProvider,
+  runner: (
+    adapter: IProtocolAdapter,
+    provider: ethers.JsonRpcProvider,
+  ) => ReturnType,
+): Promise<AdapterResponse<Awaited<ReturnType>>> {
+  const protocolDetails = adapter.getProtocolDetails()
+
+  try {
+    if (!provider) {
+      throw new ProviderMissingError(adapter.chainId)
+    }
+
+    const adapterResult = await runner(adapter, provider)
+    return {
+      ...protocolDetails,
+      success: true,
+      ...adapterResult,
+    }
+  } catch (error) {
+    let adapterError: AdapterErrorResponse['error']
+
+    if (error instanceof Error) {
+      adapterError = {
+        message: error.message,
+        details: { name: error.name },
+      }
+    } else if (typeof error === 'string') {
+      adapterError = {
+        message: error,
+      }
+    } else {
+      adapterError = {
+        message: 'Error message cannot be extracted',
+      }
+    }
+
+    return {
+      ...protocolDetails,
+      success: false,
+      error: adapterError,
+    }
+  }
 }

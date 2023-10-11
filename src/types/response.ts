@@ -1,3 +1,5 @@
+import { Protocol } from '../adapters/protocols'
+import { Chain } from '../core/constants/chains'
 import {
   MovementsByBlock,
   ProfitsWithRange,
@@ -16,7 +18,17 @@ import {
   TokenType,
   TokenBalance,
 } from './adapter'
-import { Erc20Metadata } from './erc20Metadata'
+
+export type GetEventsRequestInput = {
+  userAddress: string
+  fromBlock: number
+  toBlock: number
+  protocolTokenAddress: string
+  tokenId?: string
+  protocolId: Protocol
+  chainId: Chain
+  product: string
+}
 
 export type AdapterErrorResponse = {
   error: {
@@ -26,11 +38,13 @@ export type AdapterErrorResponse = {
   }
 }
 
-export type AdapterResponse<ProtocolResponse> = ProtocolDetails &
-  (
-    | (ProtocolResponse & { success: true })
-    | (AdapterErrorResponse & { success: false })
-  )
+export type AdapterResponse<ProtocolResponse> =
+  | (ProtocolDetails &
+      (
+        | (ProtocolResponse & { success: true })
+        | (AdapterErrorResponse & { success: false })
+      ))
+  | (AdapterErrorResponse & { success: false })
 
 export type DefiPositionResponse = AdapterResponse<{
   tokens: DisplayPosition<ProtocolPosition>[]
@@ -89,10 +103,7 @@ export type DisplayProtocolTokenTvl = Omit<ProtocolTokenTvl, 'tokens'> & {
 }
 
 export type DefiMovementsResponse = AdapterResponse<{
-  movements: {
-    protocolToken: Erc20Metadata
-    positionMovements: DisplayMovementsByBlock[]
-  }[]
+  movements: DisplayMovementsByBlock[]
 }>
 
 export type DisplayMovementsByBlock = Omit<

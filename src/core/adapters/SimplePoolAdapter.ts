@@ -365,6 +365,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       this.provider,
     )
 
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
+
     const filter = protocolTokenContract.filters.Transfer(from, to)
 
     const eventResults =
@@ -388,6 +392,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           })
 
         return {
+          protocolToken: {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+          },
           underlyingTokensMovement: underlyingTokens.reduce(
             (accumulator, currentToken) => {
               const currentTokenPrice = protocolTokenPrice.tokens?.find(

@@ -85,8 +85,8 @@ export function buildSnapshots(program: Command) {
                 return {
                   snapshot: await getDeposits({
                     ...testCase.input,
-                    filterChainIds: [chainId],
-                    filterProtocolIds: [protocolId],
+                    chainId: chainId,
+                    protocolId: protocolId,
                   }),
                 }
               }
@@ -95,8 +95,8 @@ export function buildSnapshots(program: Command) {
                 return {
                   snapshot: await getWithdrawals({
                     ...testCase.input,
-                    filterChainIds: [chainId],
-                    filterProtocolIds: [protocolId],
+                    chainId: chainId,
+                    protocolId: protocolId,
                   }),
                 }
               }

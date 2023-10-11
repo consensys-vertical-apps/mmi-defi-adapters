@@ -13,7 +13,7 @@ import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
-import { AdapterResponse } from '../types/response'
+import { AdapterResponse, GetEventsRequestInput } from '../types/response'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function featureCommands(program: Command) {
@@ -37,6 +37,9 @@ export function featureCommands(program: Command) {
     '0x2C5D4A0943e9cF4C597a76464396B0bF84C24C45',
     17719334,
     17719336,
+    '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
+    '177790',
+    'pool',
   )
   addressEventsCommand(
     program,
@@ -45,6 +48,9 @@ export function featureCommands(program: Command) {
     '0x4Ffc5F22770ab6046c8D66DABAe3A9CD1E7A03e7',
     17979753,
     17979755,
+    '0xdf0770df86a8034b3efef0a1bb3c889b8332ff56',
+    '177790',
+    'pool',
   )
 
   protocolCommand(program, 'prices', getPrices)
@@ -92,45 +98,52 @@ function addressCommand(
 function addressEventsCommand(
   program: Command,
   commandName: string,
-  feature: (input: {
-    userAddress: string
-    fromBlock: number
-    toBlock: number
-    filterProtocolIds?: Protocol[]
-    filterChainIds?: Chain[]
-  }) => Promise<AdapterResponse<unknown>[]>,
+  feature: (input: GetEventsRequestInput) => Promise<AdapterResponse<unknown>>,
   defaultAddress: string,
   defaultFromBlock: number,
   defaultToBlock: number,
+  defaultProtocolTokenAddress: string,
+  defaultTokenId: string,
+  defaultProduct: string,
 ) {
   program
     .command(commandName)
     .argument('[userAddress]', 'Address of the target account', defaultAddress)
     .argument('[fromBlock]', 'From block', defaultFromBlock)
     .argument('[toBlock]', 'To block', defaultToBlock)
-    .option(
-      '-p, --protocols <protocols>',
-      'comma-separated protocols filter (e.g. stargate,aave-v2)',
+    .argument(
+      '[protocolTokenAddress]',
+      'Address of the protocol token',
+      defaultProtocolTokenAddress,
     )
-    .option(
-      '-c, --chains <chains>',
-      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
-    )
+    .argument('[tokenId]', 'Token Id of the position', defaultTokenId)
+    .argument('[product]', 'Name of product', defaultProduct)
     .showHelpAfterError()
-    .action(async (userAddress, fromBlock, toBlock, { protocols, chains }) => {
-      const filterProtocolIds = multiProtocolFilter(protocols)
-      const filterChainIds = multiChainFilter(chains)
-
-      const data = await feature({
+    .action(
+      async (
         userAddress,
-        filterProtocolIds,
-        filterChainIds,
-        fromBlock: parseInt(fromBlock, 10),
-        toBlock: parseInt(toBlock, 10),
-      })
+        fromBlock,
+        toBlock,
+        protocolTokenAddress,
+        tokenId,
+        product,
+        protocolId,
+        chainId,
+      ) => {
+        const data = await feature({
+          userAddress,
+          fromBlock: parseInt(fromBlock, 10),
+          toBlock: parseInt(toBlock, 10),
+          protocolTokenAddress,
+          tokenId,
+          product,
+          protocolId,
+          chainId,
+        })
 
-      printResponse(data)
-    })
+        printResponse([data])
+      },
+    )
 }
 
 function protocolCommand(
@@ -166,7 +179,7 @@ function protocolCommand(
 }
 
 function printResponse(data: AdapterResponse<unknown>[]) {
-  const processedData = filterMapSync(data, (adapterResponse) => {
+  const filteredData = filterMapSync(data, (adapterResponse) => {
     if (
       !adapterResponse.success &&
       adapterResponse.error.details?.name === 'NotApplicableError'
@@ -176,5 +189,5 @@ function printResponse(data: AdapterResponse<unknown>[]) {
 
     return adapterResponse
   })
-  console.log(bigintJsonStringify(processedData, 2))
+  console.log(bigintJsonStringify(filteredData, 2))
 }

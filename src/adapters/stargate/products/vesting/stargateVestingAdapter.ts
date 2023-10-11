@@ -60,6 +60,7 @@ export class StargateVestingAdapter
       iconUrl: 'https://stargate.finance/favicons/favicon-light.svg',
       positionType: PositionType.Staked,
       chainId: this.chainId,
+      product: this.product,
     }
   }
 
