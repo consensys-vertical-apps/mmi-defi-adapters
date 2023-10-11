@@ -12,8 +12,8 @@ import {
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import { GetEventsRequestInput } from '../types/response'
+import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function featureCommands(program: Command) {
   addressCommand(

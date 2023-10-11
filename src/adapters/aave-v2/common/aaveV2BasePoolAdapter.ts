@@ -1,11 +1,10 @@
 import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
-import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { Chain } from '../../../core/constants/chains'
+import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { aprToApy } from '../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
-
 import {
   UnderlyingTokenRate,
   Underlying,

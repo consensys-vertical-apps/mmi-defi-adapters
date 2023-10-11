@@ -177,7 +177,7 @@ export async function getWithdrawals({
           chainName: ChainName[chainId],
         },
       },
-    } as any
+    }
   }
 
   const runner = async (adapter: IProtocolAdapter) => {

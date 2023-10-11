@@ -1,7 +1,7 @@
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { ProtocolDataProvider } from '../../contracts'
 import { AaveV2BasePoolAdapter } from '../../common/aaveV2BasePoolAdapter'
+import { ProtocolDataProvider } from '../../contracts'
 
 export class AaveV2StableDebtTokenPoolAdapter extends AaveV2BasePoolAdapter {
   product = 'stable-debt-token'

@@ -2,7 +2,6 @@
 import AaveV2ATokenAvalancheAToken from '../../adapters/aave-v2/products/a-token/metadata/avalanche.a-token.json'
 import AaveV2ATokenEthereumAToken from '../../adapters/aave-v2/products/a-token/metadata/ethereum.a-token.json'
 import AaveV2ATokenPolygonAToken from '../../adapters/aave-v2/products/a-token/metadata/polygon.a-token.json'
-
 import AaveV2StableDebtTokenAvalancheStableDebtToken from '../../adapters/aave-v2/products/stable-debt-token/metadata/avalanche.stable-debt-token.json'
 import AaveV2StableDebtTokenEthereumStableDebtToken from '../../adapters/aave-v2/products/stable-debt-token/metadata/ethereum.stable-debt-token.json'
 import AaveV2StableDebtTokenPolygonStableDebtToken from '../../adapters/aave-v2/products/stable-debt-token/metadata/polygon.stable-debt-token.json'
