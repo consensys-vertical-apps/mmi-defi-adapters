@@ -34,7 +34,7 @@ export function featureCommands(program: Command) {
     'deposits',
     getDeposits,
     '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
-    18262162,
+    18262163,
     18262164,
     '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
     'pool',

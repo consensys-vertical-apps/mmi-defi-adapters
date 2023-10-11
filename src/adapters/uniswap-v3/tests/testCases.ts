@@ -15,7 +15,7 @@ export const testCases: TestCase[] = [
     method: 'deposits',
     input: {
       userAddress: '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
-      fromBlock: 18262162,
+      fromBlock: 18262163,
       toBlock: 18262164,
       protocolTokenAddress: '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
       product: 'pool',
