@@ -1,3 +1,5 @@
+import { Protocol } from '../adapters/protocols'
+import { Chain } from '../core/constants/chains'
 import {
   MovementsByBlock,
   ProfitsWithRange,
@@ -16,6 +18,17 @@ import {
   TokenType,
   TokenBalance,
 } from './adapter'
+
+export type GetEventsInput = {
+  userAddress: string
+  fromBlock: number
+  toBlock: number
+  protocolTokenAddress: string
+  tokenId?: string
+  protocolId: Protocol
+  chainId: Chain
+  product: string
+}
 
 export type AdapterErrorResponse = {
   error: {

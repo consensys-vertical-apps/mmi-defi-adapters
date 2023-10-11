@@ -24,6 +24,7 @@ import {
   AdapterErrorResponse,
   PricePerShareResponse,
   TotalValueLockResponse,
+  GetEventsInput,
 } from './types/response'
 
 export {
@@ -199,17 +200,6 @@ export async function getWithdrawals({
     protocolId,
   })
   return runTaskForAdapter(adapter, provider!, runner)
-}
-
-export type GetEventsInput = {
-  userAddress: string
-  fromBlock: number
-  toBlock: number
-  protocolTokenAddress: string
-  tokenId?: string
-  protocolId: Protocol
-  chainId: Chain
-  product: string
 }
 
 export async function getDeposits({

@@ -1,6 +1,5 @@
 import { Command } from 'commander'
 import {
-  GetEventsInput,
   getApr,
   getApy,
   getDeposits,
@@ -14,6 +13,7 @@ import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+import { GetEventsInput } from '../types/response'
 
 export function featureCommands(program: Command) {
   addressCommand(
