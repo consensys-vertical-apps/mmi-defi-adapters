@@ -49,9 +49,8 @@ To build an adapter follow these steps:
    - `npm run prices`
    - `npm run apr`
    - `npm run apy`
-   - `npm run deposits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336`
-   - `npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336`
    - `npm run deposits 0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5 18262162 18262164 0xC36442b4a4522E871399CD717aBDD847Ab11FE88 573046 pool uniswap-v3 1`
+   - `npm run withdrawals 0x1d201a9B9f136dE7e7fF4A80a27e96Af7789D9BE 18274545 18274547 0xC36442b4a4522E871399CD717aBDD847Ab11FE88 573517 pool uniswap-v3 1`
 
 ## Documentation 📖
 
