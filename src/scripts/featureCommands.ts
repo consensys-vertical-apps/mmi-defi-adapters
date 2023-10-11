@@ -91,7 +91,7 @@ function addressCommand(
         filterChainIds,
       })
 
-      printResponse(data)
+      printResponse(filterResponse(data))
     })
 }
 
@@ -174,12 +174,14 @@ function protocolCommand(
         filterChainIds,
       })
 
-      printResponse(data)
+      printResponse(filterResponse(data))
     })
 }
 
-function printResponse(data: AdapterResponse<unknown>[]) {
-  const filteredData = filterMapSync(data, (adapterResponse) => {
+function filterResponse(
+  data: AdapterResponse<unknown>[],
+): AdapterResponse<unknown>[] {
+  return filterMapSync(data, (adapterResponse) => {
     if (
       !adapterResponse.success &&
       adapterResponse.error.details?.name === 'NotApplicableError'
@@ -189,5 +191,8 @@ function printResponse(data: AdapterResponse<unknown>[]) {
 
     return adapterResponse
   })
-  console.log(bigintJsonStringify(filteredData, 2))
+}
+
+function printResponse(data: unknown) {
+  console.log(bigintJsonStringify(data, 2))
 }
