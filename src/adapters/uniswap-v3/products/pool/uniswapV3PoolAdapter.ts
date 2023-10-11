@@ -378,17 +378,11 @@ export class UniswapV3PoolAdapter
                   endPositionValueRaw,
                 }
 
-                let profitRaw =
+                const profitRaw =
                   calculationData.startPositionValueRaw +
                   calculationData.withdrawalsRaw -
                   calculationData.depositsRaw -
                   calculationData.endPositionValueRaw
-
-                if (
-                  this.getProtocolDetails().positionType === PositionType.Borrow
-                ) {
-                  profitRaw *= -1n
-                }
 
                 return {
                   address,
@@ -486,7 +480,7 @@ export class UniswapV3PoolAdapter
 
     const { token0, token1, fee } = await positionsManagerContract.positions(
       tokenId,
-      { blockTag: toBlock },
+      { blockTag: fromBlock },
     )
     const [token0Metadata, token1Metadata] = await Promise.all([
       getTokenMetadata(token0, this.chainId),
