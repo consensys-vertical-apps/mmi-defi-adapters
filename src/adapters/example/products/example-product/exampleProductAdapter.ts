@@ -265,7 +265,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
       name: 'Coin-LP',
       symbol: 'S*USDC',
       decimals: 6,
-      aprDecimal: '0.1', // 10%
+      aprDecimal: 0.1, // 10%
     }
   }
 
@@ -275,7 +275,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
       name: 'Coin-LP',
       symbol: 'S*USDC',
       decimals: 6,
-      apyDecimal: '0.1', // 10%
+      apyDecimal: 0.1, // 10%
     }
   }
   async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
@@ -284,7 +284,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
       name: 'Coin-LP',
       symbol: 'S*USDC',
       decimals: 6,
-      apyDecimal: '0.1', // 10%
+      apyDecimal: 0.1, // 10%
     }
   }
   async getRewardApr(_input: GetApyInput): Promise<ProtocolTokenApr> {
@@ -293,7 +293,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
       name: 'Coin-LP',
       symbol: 'S*USDC',
       decimals: 6,
-      aprDecimal: '0.1', // 10%
+      aprDecimal: 0.1, // 10%
     }
   }
 

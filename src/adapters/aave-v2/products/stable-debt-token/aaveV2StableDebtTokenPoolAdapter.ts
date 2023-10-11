@@ -31,4 +31,10 @@ export class AaveV2StableDebtTokenPoolAdapter extends AaveV2BasePoolAdapter {
   ): string {
     return reserveTokenAddresses.stableDebtTokenAddress
   }
+
+  protected getReserveTokenRate(
+    reserveData: Awaited<ReturnType<ProtocolDataProvider['getReserveData']>>,
+  ): bigint {
+    return reserveData.stableBorrowRate
+  }
 }
