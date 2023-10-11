@@ -1,9 +1,6 @@
 import { ethers, formatUnits } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  IMetadataBuilder,
-  CacheToFile,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -69,9 +66,7 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
 
 const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 
-export class UniswapV3PoolAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export class UniswapV3PoolAdapter implements IProtocolAdapter {
   product = 'pool'
   protocolId: Protocol
   chainId: Chain
@@ -116,13 +111,9 @@ export class UniswapV3PoolAdapter
    * Returning an array of your protocol tokens.
    */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    throw new Error('Implement me d')
+    throw new Error('Implement me')
   }
 
-  /**
-   * Update me.
-   * Add logic to get userAddress positions in your protocol
-   */
   async getPositions({
     userAddress,
     blockNumber,
@@ -250,10 +241,6 @@ export class UniswapV3PoolAdapter
     throw new Error('Implement me')
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's withdrawals per position by block range
-   */
   async getWithdrawals({
     protocolTokenAddress,
     fromBlock,
@@ -320,10 +307,6 @@ export class UniswapV3PoolAdapter
     throw new Error('Implement me')
   }
 
-  /**
-   * Update me.
-   * Add logic to calculate the users profits
-   */
   async getProfits({
     userAddress,
     fromBlock,
@@ -452,9 +435,6 @@ export class UniswapV3PoolAdapter
     }
   }
 
-  /**
-   * Util used by both getDeposits and getWithdrawals
-   */
   private async getMovements({
     protocolTokenAddress,
     eventType,
