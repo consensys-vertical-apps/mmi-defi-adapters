@@ -24,7 +24,7 @@ import {
   AdapterErrorResponse,
   PricePerShareResponse,
   TotalValueLockResponse,
-  GetEventsInput,
+  GetEventsRequestInput,
 } from './types/response'
 
 export {
@@ -153,7 +153,7 @@ export async function getWithdrawals({
   protocolId,
   chainId,
   product,
-}: GetEventsInput): Promise<DefiMovementsResponse> {
+}: GetEventsRequestInput): Promise<DefiMovementsResponse> {
   const provider = chainProviders[chainId]
 
   const adapterClass = supportedProtocols?.[protocolId]?.[chainId]?.find(
@@ -211,7 +211,7 @@ export async function getDeposits({
   protocolId,
   chainId,
   product,
-}: GetEventsInput): Promise<DefiMovementsResponse> {
+}: GetEventsRequestInput): Promise<DefiMovementsResponse> {
   const provider = chainProviders[chainId]
 
   const adapterClass = supportedProtocols?.[protocolId]?.[chainId]?.find(

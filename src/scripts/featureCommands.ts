@@ -13,7 +13,7 @@ import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
-import { GetEventsInput } from '../types/response'
+import { GetEventsRequestInput } from '../types/response'
 
 export function featureCommands(program: Command) {
   addressCommand(
@@ -97,7 +97,7 @@ function addressCommand(
 function addressEventsCommand(
   program: Command,
   commandName: string,
-  feature: (input: GetEventsInput) => Promise<unknown>,
+  feature: (input: GetEventsRequestInput) => Promise<unknown>,
   defaultAddress: string,
   defaultFromBlock: number,
   defaultToBlock: number,

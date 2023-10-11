@@ -19,7 +19,7 @@ import {
   TokenBalance,
 } from './adapter'
 
-export type GetEventsInput = {
+export type GetEventsRequestInput = {
   userAddress: string
   fromBlock: number
   toBlock: number
