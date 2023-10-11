@@ -14,10 +14,7 @@ import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse, bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { TestCase } from '../types/testCase'
-import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
-import { testCases as exampleTestCases } from './example/tests/testCases'
 import { Protocol } from './protocols'
-import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
 const TEST_TIMEOUT = 10000

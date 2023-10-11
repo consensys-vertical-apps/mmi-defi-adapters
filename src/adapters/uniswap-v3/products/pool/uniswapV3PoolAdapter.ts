@@ -4,8 +4,10 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
+import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -28,19 +30,18 @@ import {
   ProtocolPosition,
   TokenType,
   Underlying,
-  BaseTokenMovement,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
-import { TransferEvent } from '../../contracts/PositionManager'
-import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
-import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 
 // Parameter needed for static call request
 // Set the date in the future to ensure the static call request doesn't trigger smart contract validation
 const deadline = Math.floor(Date.now() - 1000) + 60 * 10
+
+// Uniswap has different pools per fee e.g. 1%, 0.5%
+const FEE_DECIMALS = 4
 
 const positionManagerCommonAddress =
   '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
@@ -183,13 +184,15 @@ export class UniswapV3PoolAdapter
           getTokenMetadata(position.token1, this.chainId),
         ])
 
-        const FEE_DECIMALS = 4
-        const nftName = `${token0Metadata.symbol} / ${
-          token1Metadata.symbol
-        } - ${formatUnits(position.fee, FEE_DECIMALS)}%`
+        const nftName = this.protocolTokenName(
+          token0Metadata.symbol,
+          token1Metadata.symbol,
+          position.fee,
+        )
 
         return {
-          address: tokenId.toString(),
+          address: contractAddresses[this.chainId]!.positionManager,
+          tokenId: tokenId.toString(),
           name: nftName,
           symbol: nftName,
           decimals: 18,
@@ -226,6 +229,17 @@ export class UniswapV3PoolAdapter
     )
   }
 
+  private protocolTokenName(
+    token0Symbol: string,
+    token1Symbol: string,
+    fee: bigint,
+  ) {
+    return `${token0Symbol} / ${token1Symbol} - ${formatUnits(
+      fee,
+      FEE_DECIMALS,
+    )}%`
+  }
+
   /**
    * Update me.
    * Add logic to get userAddress claimable rewards per position
@@ -244,12 +258,18 @@ export class UniswapV3PoolAdapter
     protocolTokenAddress,
     fromBlock,
     toBlock,
+    tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
+    if (!tokenId) {
+      throw new Error('TokenId required for uniswap withdrawals')
+    }
+
     return await this.getMovements({
       protocolTokenAddress,
       fromBlock,
       toBlock,
       eventType: 'withdrawals',
+      tokenId,
     })
   }
 
@@ -257,13 +277,17 @@ export class UniswapV3PoolAdapter
     protocolTokenAddress,
     fromBlock,
     toBlock,
+    tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    console.log('1')
+    if (!tokenId) {
+      throw new Error('TokenId required for uniswap deposits')
+    }
     return await this.getMovements({
       protocolTokenAddress,
       fromBlock,
       toBlock,
       eventType: 'deposit',
+      tokenId,
     })
   }
 
@@ -309,11 +333,11 @@ export class UniswapV3PoolAdapter
       this.getPositions({
         userAddress,
         blockNumber: toBlock,
-      }).then(formatProtocolTokenArrayToMap),
+      }).then((result) => formatProtocolTokenArrayToMap(result, true)),
       this.getPositions({
         userAddress,
         blockNumber: fromBlock,
-      }).then(formatProtocolTokenArrayToMap),
+      }).then((result) => formatProtocolTokenArrayToMap(result, true)),
     ])
 
     const tokens = await Promise.all(
@@ -324,6 +348,7 @@ export class UniswapV3PoolAdapter
             protocolTokenAddress: protocolTokenMetadata.address,
             fromBlock,
             toBlock,
+            tokenId: protocolTokenMetadata.tokenId,
           }
 
           const [withdrawals, deposits] = await Promise.all([
@@ -343,7 +368,7 @@ export class UniswapV3PoolAdapter
                 balanceRaw: startPositionValueRaw,
               }) => {
                 const endPositionValueRaw =
-                  previousValues[protocolTokenMetadata.address]
+                  previousValues[protocolTokenMetadata.tokenId!]
                     ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
 
                 const calculationData = {
@@ -441,28 +466,26 @@ export class UniswapV3PoolAdapter
     eventType,
     fromBlock,
     toBlock,
+    tokenId,
   }: {
     protocolTokenAddress: string
     eventType: 'withdrawals' | 'deposit'
     fromBlock: number
     toBlock: number
+    tokenId: string
   }): Promise<MovementsByBlock[]> {
     const positionsManagerContract = PositionManager__factory.connect(
-      contractAddresses[this.chainId]!.positionManager,
+      protocolTokenAddress,
       this.provider,
     )
 
     const eventFilters = {
-      deposit:
-        positionsManagerContract.filters.IncreaseLiquidity(
-          protocolTokenAddress,
-        ),
-      withdrawals:
-        positionsManagerContract.filters.Collect(protocolTokenAddress),
+      deposit: positionsManagerContract.filters.IncreaseLiquidity(tokenId),
+      withdrawals: positionsManagerContract.filters.Collect(tokenId),
     }
 
-    const { token0, token1 } = await positionsManagerContract.positions(
-      protocolTokenAddress,
+    const { token0, token1, fee } = await positionsManagerContract.positions(
+      tokenId,
       { blockTag: toBlock },
     )
     const [token0Metadata, token1Metadata] = await Promise.all([
@@ -484,6 +507,21 @@ export class UniswapV3PoolAdapter
         } = transferEvent
 
         return {
+          protocolToken: {
+            address: protocolTokenAddress,
+            name: this.protocolTokenName(
+              token0Metadata.symbol,
+              token1Metadata.symbol,
+              fee,
+            ),
+            symbol: this.protocolTokenName(
+              token0Metadata.symbol,
+              token1Metadata.symbol,
+              fee,
+            ),
+            decimals: 18,
+            tokenId,
+          },
           underlyingTokensMovement: {
             [token0]: { movementValueRaw: amount0, ...token0Metadata },
             [token1]: { movementValueRaw: amount1, ...token1Metadata },

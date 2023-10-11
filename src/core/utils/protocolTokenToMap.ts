@@ -1,19 +1,32 @@
 import { Underlying, ProtocolPosition } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 
-export function formatProtocolTokenArrayToMap(tokens: ProtocolPosition[]) {
+export function formatProtocolTokenArrayToMap(
+  tokens: ProtocolPosition[],
+  useTokenIdAsIndex = false,
+) {
   return tokens.reduce(
     (
       accumulator,
-      { address, name, symbol, decimals, tokens: underlyingTokens = [] },
+      {
+        address,
+        name,
+        symbol,
+        decimals,
+        tokens: underlyingTokens = [],
+        tokenId,
+      },
     ) => {
+      const assetIdentifier = useTokenIdAsIndex ? tokenId! : address
+
       return {
-        [address]: {
+        [assetIdentifier]: {
           protocolTokenMetadata: {
             address,
             name,
             symbol,
             decimals,
+            tokenId,
           },
           underlyingTokenPositions: formatTokenArrayToMap(underlyingTokens),
         },
@@ -23,7 +36,7 @@ export function formatProtocolTokenArrayToMap(tokens: ProtocolPosition[]) {
     {} as Record<
       string,
       {
-        protocolTokenMetadata: Erc20Metadata
+        protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
         underlyingTokenPositions: Record<string, Underlying>
       }
     >,
