@@ -29,6 +29,8 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   protocolId: Protocol
   chainId: Chain
 
+  product = 'example-pool'
+
   private provider: ethers.JsonRpcProvider
 
   constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
@@ -46,6 +48,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
       iconUrl: 'https://',
       positionType: PositionType.Supply,
       chainId: this.chainId,
+      product: this.product,
     }
   }
 
@@ -63,6 +66,12 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
+        protocolToken: {
+          address: '0x1000000000000000000000000000000000000001',
+          name: 'LP USD Coin',
+          symbol: 'LP USDC',
+          decimals: 6,
+        },
         underlyingTokensMovement: {
           '0x0000000000000000000000000000000000000001': {
             address: '0x0000000000000000000000000000000000000001',
@@ -80,6 +89,12 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
+        protocolToken: {
+          address: '0x1000000000000000000000000000000000000001',
+          name: 'LP USD Coin',
+          symbol: 'LP USDC',
+          decimals: 6,
+        },
         underlyingTokensMovement: {
           '0x0000000000000000000000000000000000000001': {
             address: '0x0000000000000000000000000000000000000001',
@@ -97,6 +112,12 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
+        protocolToken: {
+          address: '0x1000000000000000000000000000000000000001',
+          name: 'LP USD Coin',
+          symbol: 'LP USDC',
+          decimals: 6,
+        },
         underlyingTokensMovement: {
           '0x0000000000000000000000000000000000000001': {
             address: '0x0000000000000000000000000000000000000001',

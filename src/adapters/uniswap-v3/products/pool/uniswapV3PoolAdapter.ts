@@ -89,6 +89,7 @@ export class UniswapV3PoolAdapter
         'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png',
       positionType: PositionType.Supply,
       chainId: this.chainId,
+      product: this.product,
     }
   }
 

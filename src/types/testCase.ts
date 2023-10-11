@@ -17,11 +17,23 @@ export type TestCase = {
     }
   | {
       method: 'deposits'
-      input: { userAddress: string; fromBlock: number; toBlock: number }
+      input: {
+        userAddress: string
+        fromBlock: number
+        toBlock: number
+        protocolTokenAddress: string
+        product: string
+      }
     }
   | {
       method: 'withdrawals'
-      input: { userAddress: string; fromBlock: number; toBlock: number }
+      input: {
+        userAddress: string
+        fromBlock: number
+        toBlock: number
+        protocolTokenAddress: string
+        product: string
+      }
     }
   | {
       method: 'prices'

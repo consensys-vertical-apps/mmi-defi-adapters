@@ -92,6 +92,11 @@ export type GetEventsInput = {
    * End blocknumber we want to check to e.g. current blocknumber
    */
   toBlock: number
+
+  /**
+   * Used by NFT Defi Positions, e.g. uniswapV3
+   */
+  tokenId?: string
 }
 export interface GetProfitsInput {
   /**
@@ -145,6 +150,11 @@ export type ProtocolDetails = {
    * One adapter per type
    */
   positionType: PositionType
+
+  /**
+   * Unique protocol-product name
+   */
+  product: string
 }
 
 export interface GetPositionsInput {
@@ -229,6 +239,11 @@ export interface ProtocolPosition extends TokenBalance {
   type: typeof TokenType.Protocol
 
   /**
+   * Used by NFT Defi Positions, e.g. uniswapV3
+   */
+  tokenId?: string
+
+  /**
    * Underlying token balances
    */
   tokens?: Underlying[]
@@ -254,6 +269,7 @@ export interface BaseTokenMovement extends Erc20Metadata {
 }
 
 export interface MovementsByBlock {
+  protocolToken: Erc20Metadata
   /**
    * Movements in or out of a protocol position
    */
