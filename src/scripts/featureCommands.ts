@@ -37,10 +37,10 @@ export function featureCommands(program: Command) {
     18262162,
     18262164,
     '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
-    '573046',
     'pool',
     Protocol.UniswapV3,
     Chain.Ethereum.toString(),
+    '573046',
   )
   addressEventsCommand(
     program,
@@ -50,10 +50,10 @@ export function featureCommands(program: Command) {
     18274545,
     18274547,
     '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
-    '573517',
     'pool',
     Protocol.UniswapV3,
     Chain.Ethereum.toString(),
+    '573517',
   )
 
   protocolCommand(program, 'prices', getPrices)
@@ -108,10 +108,11 @@ function addressEventsCommand(
   defaultFromBlock: number,
   defaultToBlock: number,
   defaultProtocolTokenAddress: string,
-  defaultTokenId: string,
+
   defaultProduct: string,
   defaultProtocolId: Protocol,
   defaultChainId: string,
+  defaultTokenId: string,
 ) {
   program
     .command(commandName)
@@ -123,10 +124,10 @@ function addressEventsCommand(
       'Address of the protocol token',
       defaultProtocolTokenAddress,
     )
-    .argument('[tokenId]', 'Token Id of the position', defaultTokenId)
     .argument('[product]', 'Name of product', defaultProduct)
     .argument('[protocolId]', 'Name of product', defaultProtocolId)
     .argument('[chainId]', 'Name of product', defaultChainId)
+    .argument('[tokenId]', 'Token Id of the position', defaultTokenId)
     .showHelpAfterError()
     .action(
       async (
@@ -134,20 +135,22 @@ function addressEventsCommand(
         fromBlock,
         toBlock,
         protocolTokenAddress,
-        tokenId,
+
         product,
         protocolId,
         chainId,
+        tokenId,
       ) => {
         const data = await feature({
           userAddress,
           fromBlock: parseInt(fromBlock, 10),
           toBlock: parseInt(toBlock, 10),
           protocolTokenAddress,
-          tokenId,
+
           product,
           protocolId,
           chainId: parseInt(chainId) as Chain,
+          tokenId,
         })
 
         printResponse(data)
