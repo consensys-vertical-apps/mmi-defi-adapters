@@ -141,7 +141,7 @@ function addressEventsCommand(
           chainId,
         })
 
-        printResponse([data])
+        printResponse(data)
       },
     )
 }
