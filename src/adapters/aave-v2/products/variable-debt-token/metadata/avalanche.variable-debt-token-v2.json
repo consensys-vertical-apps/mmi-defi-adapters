@@ -1,0 +1,100 @@
+{
+  "0x4e575cacb37bc1b5afec68a0462c4165a5268983": {
+    "protocolToken": {
+      "address": "0x4e575cacb37bc1b5afec68a0462c4165a5268983",
+      "name": "Aave Avalanche Market variable debt vWETH",
+      "symbol": "variableDebtvWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab",
+      "name": "Wrapped Ether",
+      "symbol": "WETH.e",
+      "decimals": 18
+    }
+  },
+  "0x1852dc24d1a8956a0b356aa18ede954c7a0ca5ae": {
+    "protocolToken": {
+      "address": "0x1852dc24d1a8956a0b356aa18ede954c7a0ca5ae",
+      "name": "Aave Avalanche Market variable debt vDAI",
+      "symbol": "variableDebtvDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xd586e7f844cea2f87f50152665bcbc2c279d8d70",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI.e",
+      "decimals": 18
+    }
+  },
+  "0xfc1ada7a288d6fce0d29ccfaaa57bc9114bb2dbe": {
+    "protocolToken": {
+      "address": "0xfc1ada7a288d6fce0d29ccfaaa57bc9114bb2dbe",
+      "name": "Aave Avalanche Market variable debt vUSDT",
+      "symbol": "variableDebtvUSDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xc7198437980c041c805a1edcba50c1ce5db95118",
+      "name": "Tether USD",
+      "symbol": "USDT.e",
+      "decimals": 6
+    }
+  },
+  "0x848c080d2700cbe1b894a3374ad5e887e5ccb89c": {
+    "protocolToken": {
+      "address": "0x848c080d2700cbe1b894a3374ad5e887e5ccb89c",
+      "name": "Aave Avalanche Market variable debt vUSDC",
+      "symbol": "variableDebtvUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664",
+      "name": "USD Coin",
+      "symbol": "USDC.e",
+      "decimals": 6
+    }
+  },
+  "0x8352e3fd18b8d84d3c8a1b538d788899073c7a8e": {
+    "protocolToken": {
+      "address": "0x8352e3fd18b8d84d3c8a1b538d788899073c7a8e",
+      "name": "Aave Avalanche Market variable debt vAAVE",
+      "symbol": "variableDebtvAAVE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x63a72806098bd3d9520cc43356dd78afe5d386d9",
+      "name": "Aave Token",
+      "symbol": "AAVE.e",
+      "decimals": 18
+    }
+  },
+  "0x2dc0e35ec3ab070b8a175c829e23650ee604a9eb": {
+    "protocolToken": {
+      "address": "0x2dc0e35ec3ab070b8a175c829e23650ee604a9eb",
+      "name": "Aave Avalanche Market variable debt vWBTC",
+      "symbol": "variableDebtvWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x50b7545627a5162f82a992c33b87adc75187b218",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC.e",
+      "decimals": 8
+    }
+  },
+  "0x66a0fe52fb629a6cb4d10b8580afdffe888f5fd4": {
+    "protocolToken": {
+      "address": "0x66a0fe52fb629a6cb4d10b8580afdffe888f5fd4",
+      "name": "Aave Avalanche Market variable debt vWAVAX",
+      "symbol": "variableDebtvWAVAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  }
+}

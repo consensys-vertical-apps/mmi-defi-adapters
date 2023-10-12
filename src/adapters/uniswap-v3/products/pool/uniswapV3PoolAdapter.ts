@@ -65,9 +65,7 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
 
 const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 
-export class UniswapV3PoolAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export class UniswapV3PoolAdapter implements IProtocolAdapter {
   product = 'pool'
   protocolId: Protocol
   chainId: Chain
@@ -92,19 +90,6 @@ export class UniswapV3PoolAdapter
       chainId: this.chainId,
       product: this.product,
     }
-  }
-
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    throw new NotImplementedError()
-
-    return {}
   }
 
   /**

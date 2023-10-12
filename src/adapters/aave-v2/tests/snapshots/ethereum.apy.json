@@ -13,88 +13,165 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
-          "name": "Aave interest bearing USDT",
-          "symbol": "aUSDT",
-          "decimals": 6,
-          "apyDecimal": 2.7633242406614578
+          "address": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+          "name": "Aave Ethereum WETH",
+          "symbol": "aEthWETH",
+          "decimals": 18,
+          "apyDecimal": 0
         },
         {
-          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
-          "name": "Aave interest bearing WBTC",
-          "symbol": "aWBTC",
+          "address": "0x0b925ed163218f6662a35e0f0371ac234f9e9371",
+          "name": "Aave Ethereum wstETH",
+          "symbol": "aEthwstETH",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x5ee5bf7ae06d1be5997a1a72006fe6c607ec6de8",
+          "name": "Aave Ethereum WBTC",
+          "symbol": "aEthWBTC",
           "decimals": 8,
-          "apyDecimal": 0.17754639160827423
-        },
-        {
-          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
-          "name": "Aave interest bearing WETH",
-          "symbol": "aWETH",
-          "decimals": 18,
-          "apyDecimal": 1.3184141058877996
-        },
-        {
-          "address": "0xffc97d72e13e01096502cb8eb52dee56f74dad7b",
-          "name": "Aave interest bearing AAVE",
-          "symbol": "aAAVE",
-          "decimals": 18,
           "apyDecimal": 0
         },
         {
-          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
-          "name": "Aave interest bearing DAI",
-          "symbol": "aDAI",
-          "decimals": 18,
-          "apyDecimal": 2.713691732467427
-        },
-        {
-          "address": "0x6c5024cd4f8a59110119c56f8933403a539555eb",
-          "name": "Aave interest bearing SUSD",
-          "symbol": "aSUSD",
-          "decimals": 18,
-          "apyDecimal": 0.8774019445602965
-        },
-        {
-          "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
-          "name": "Aave interest bearing USDC",
-          "symbol": "aUSDC",
+          "address": "0x98c23e9d8f34fefb1b7bd6a91b7ff122f4e16f5c",
+          "name": "Aave Ethereum USDC",
+          "symbol": "aEthUSDC",
           "decimals": 6,
-          "apyDecimal": 2.9068962475552462
+          "apyDecimal": 0
         },
         {
-          "address": "0xd37ee7e4f452c6638c96536e68090de8cbcdb583",
-          "name": "Aave interest bearing GUSD",
-          "symbol": "aGUSD",
-          "decimals": 2,
-          "apyDecimal": 2.228192697819309
-        },
-        {
-          "address": "0x2e8f4bdbe3d47d7d7de490437aea9915d930f1a3",
-          "name": "Aave interest bearing USDP",
-          "symbol": "aUSDP",
-          "decimals": 18,
-          "apyDecimal": 2.5022998698006393
-        },
-        {
-          "address": "0xd4937682df3c8aef4fe912a96a74121c0829e664",
-          "name": "Aave interest bearing FRAX",
-          "symbol": "aFRAX",
-          "decimals": 18,
-          "apyDecimal": 2.1609263535043777
-        },
-        {
-          "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
-          "name": "Aave interest bearing STETH",
-          "symbol": "aSTETH",
+          "address": "0x018008bfb33d285247a21d44e50697654f754e63",
+          "name": "Aave Ethereum DAI",
+          "symbol": "aEthDAI",
           "decimals": 18,
           "apyDecimal": 0
         },
         {
-          "address": "0xce1871f791548600cb59efbeffc9c38719142079",
-          "name": "Aave interest bearing LUSD",
-          "symbol": "aLUSD",
+          "address": "0x5e8c8a7243651db1384c0ddfdbe39761e8e7e51a",
+          "name": "Aave Ethereum LINK",
+          "symbol": "aEthLINK",
           "decimals": 18,
-          "apyDecimal": 1.894167666710067
+          "apyDecimal": 0
+        },
+        {
+          "address": "0xa700b4eb416be35b2911fd5dee80678ff64ff6c9",
+          "name": "Aave Ethereum AAVE",
+          "symbol": "aEthAAVE",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x977b6fc5de62598b08c85ac8cf2b745874e8b78c",
+          "name": "Aave Ethereum cbETH",
+          "symbol": "aEthcbETH",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x23878914efe38d27c4d67ab83ed1b93a74d4086a",
+          "name": "Aave Ethereum USDT",
+          "symbol": "aEthUSDT",
+          "decimals": 6,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0xcc9ee9483f662091a1de4795249e24ac0ac2630f",
+          "name": "Aave Ethereum rETH",
+          "symbol": "aEthrETH",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x3fe6a295459fae07df8a0cecc36f37160fe86aa9",
+          "name": "Aave Ethereum LUSD",
+          "symbol": "aEthLUSD",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x7b95ec873268a6bfc6427e7a28e396db9d0ebc65",
+          "name": "Aave Ethereum CRV",
+          "symbol": "aEthCRV",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0xc7b4c17861357b8abb91f25581e7263e08dcb59c",
+          "name": "Aave Ethereum SNX",
+          "symbol": "aEthSNX",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x2516e7b3f76294e03c42aa4c5b5b4dce9c436fb8",
+          "name": "Aave Ethereum BAL",
+          "symbol": "aEthBAL",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0xf6d2224916ddfbbab6e6bd0d1b7034f4ae0cab18",
+          "name": "Aave Ethereum UNI",
+          "symbol": "aEthUNI",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x9a44fd41566876a39655f74971a3a6ea0a17a454",
+          "name": "Aave Ethereum LDO",
+          "symbol": "aEthLDO",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x545bd6c032efdde65a377a6719def2796c8e0f2e",
+          "name": "Aave Ethereum ENS",
+          "symbol": "aEthENS",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x71aef7b30728b9bb371578f36c5a1f1502a5723e",
+          "name": "Aave Ethereum 1INCH",
+          "symbol": "aEth1INCH",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0xd4e245848d6e1220dbe62e155d89fa327e43cb06",
+          "name": "Aave Ethereum FRAX",
+          "symbol": "aEthFRAX",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x00907f9921424583e7ffbfedf84f92b7b2be4977",
+          "name": "Aave Ethereum GHO",
+          "symbol": "aEthGHO",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0xb76cf92076adbf1d9c39294fa8e7a67579fde357",
+          "name": "Aave Ethereum RPL",
+          "symbol": "aEthRPL",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x4c612e3b15b96ff9a6faed838f8d07d479a8dd4c",
+          "name": "Aave Ethereum sDAI",
+          "symbol": "aEthsDAI",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x8a458a9dc9048e005d22849f470891b840296619",
+          "name": "Aave Ethereum MKR",
+          "symbol": "aEthMKR",
+          "decimals": 18,
+          "apyDecimal": 0
         }
       ]
     },
@@ -110,88 +187,165 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xe91d55ab2240594855abd11b3faae801fd4c4687",
-          "name": "Aave stable debt bearing USDT",
-          "symbol": "stableDebtUSDT",
-          "decimals": 6,
-          "apyDecimal": 12.9520132165325
+          "address": "0x102633152313c81cd80419b6ecf66d14ad68949a",
+          "name": "Aave Ethereum Stable Debt WETH",
+          "symbol": "stableDebtEthWETH",
+          "decimals": 18,
+          "apyDecimal": 1.972511209091099
         },
         {
-          "address": "0x51b039b9afe64b78758f8ef091211b5387ea717c",
-          "name": "Aave stable debt bearing WBTC",
-          "symbol": "stableDebtWBTC",
+          "address": "0x39739943199c0fbfe9e5f1b5b160cd73a64cb85d",
+          "name": "Aave Ethereum Stable Debt wstETH",
+          "symbol": "stableDebtEthwstETH",
+          "decimals": 18,
+          "apyDecimal": 0.00273377380413109
+        },
+        {
+          "address": "0xa1773f1ccf6db192ad8fe826d15fe1d328b03284",
+          "name": "Aave Ethereum Stable Debt WBTC",
+          "symbol": "stableDebtEthWBTC",
           "decimals": 8,
-          "apyDecimal": 5.7986802841441865
+          "apyDecimal": 0.08446287022341181
         },
         {
-          "address": "0x4e977830ba4bd783c0bb7f15d3e243f73ff57121",
-          "name": "Aave stable debt bearing WETH",
-          "symbol": "stableDebtWETH",
-          "decimals": 18,
-          "apyDecimal": 5.707101180308594
-        },
-        {
-          "address": "0x079d6a3e844bcecf5720478a718edb6575362c5f",
-          "name": "Aave stable debt bearing AAVE",
-          "symbol": "stableDebtAAVE",
-          "decimals": 18,
-          "apyDecimal": 0
-        },
-        {
-          "address": "0x778a13d3eeb110a4f7bb6529f99c000119a08e92",
-          "name": "Aave stable debt bearing DAI",
-          "symbol": "stableDebtDAI",
-          "decimals": 18,
-          "apyDecimal": 12.619589306803958
-        },
-        {
-          "address": "0x30b0f7324fedf89d8eff397275f8983397efe4af",
-          "name": "Aave stable debt bearing SUSD",
-          "symbol": "stableDebtSUSD",
-          "decimals": 18,
-          "apyDecimal": 0
-        },
-        {
-          "address": "0xe4922afab0bbadd8ab2a88e0c79d884ad337fca6",
-          "name": "Aave stable debt bearing USDC",
-          "symbol": "stableDebtUSDC",
+          "address": "0xb0fe3d292f4bd50de902ba5bdf120ad66e9d7a39",
+          "name": "Aave Ethereum Stable Debt USDC",
+          "symbol": "stableDebtEthUSDC",
           "decimals": 6,
-          "apyDecimal": 11.598270495908114
+          "apyDecimal": 2.8630083958651076
         },
         {
-          "address": "0xf8ac64ec6ff8e0028b37eb89772d21865321bce0",
-          "name": "Aave stable debt bearing GUSD",
-          "symbol": "stableDebtGUSD",
-          "decimals": 2,
-          "apyDecimal": 8.293489782259723
+          "address": "0x413adac9e2ef8683adf5ddaece8f19613d60d1bb",
+          "name": "Aave Ethereum Stable Debt DAI",
+          "symbol": "stableDebtEthDAI",
+          "decimals": 18,
+          "apyDecimal": 3.5855055273973813
         },
         {
-          "address": "0x2387119bc85a74e0bbcbe190d80676cb16f10d4f",
-          "name": "Aave stable debt bearing PAX",
-          "symbol": "stableDebtPAX",
+          "address": "0x63b1129ca97d2b9f97f45670787ac12a9df1110a",
+          "name": "Aave Ethereum Stable Debt LINK",
+          "symbol": "stableDebtEthLINK",
+          "decimals": 18,
+          "apyDecimal": 0.011163847056239184
+        },
+        {
+          "address": "0x268497bf083388b1504270d0e717222d3a87d6f2",
+          "name": "Aave Ethereum Stable Debt AAVE",
+          "symbol": "stableDebtEthAAVE",
           "decimals": 18,
           "apyDecimal": 0
         },
         {
-          "address": "0x3916e3b6c84b161df1b2733dffc9569a1da710c2",
-          "name": "Aave stable debt bearing FRAX",
-          "symbol": "stableDebtFRAX",
+          "address": "0x82be6012cea6d147b968ebaea5ceecf6a5b4f493",
+          "name": "Aave Ethereum Stable Debt cbETH",
+          "symbol": "stableDebtEthcbETH",
+          "decimals": 18,
+          "apyDecimal": 0.1875605635948574
+        },
+        {
+          "address": "0x822fa72df1f229c3900f5ad6c3fa2c424d691622",
+          "name": "Aave Ethereum Stable Debt USDT",
+          "symbol": "stableDebtEthUSDT",
+          "decimals": 6,
+          "apyDecimal": 2.832300629236828
+        },
+        {
+          "address": "0x1d1906f909cae494c7441604dafdddbd0485a925",
+          "name": "Aave Ethereum Stable Debt rETH",
+          "symbol": "stableDebtEthrETH",
+          "decimals": 18,
+          "apyDecimal": 0.11865666294088584
+        },
+        {
+          "address": "0x37a6b708fdb1483c231961b9a7f145261e815fc3",
+          "name": "Aave Ethereum Stable Debt LUSD",
+          "symbol": "stableDebtEthLUSD",
+          "decimals": 18,
+          "apyDecimal": 1.5991437537823616
+        },
+        {
+          "address": "0x90d9cd005e553111eb8c9c31abe9706a186b6048",
+          "name": "Aave Ethereum Stable Debt CRV",
+          "symbol": "stableDebtEthCRV",
+          "decimals": 18,
+          "apyDecimal": 1.9769577089296497
+        },
+        {
+          "address": "0x478e1ec1a2beed94c1407c951e4b9e22d53b2501",
+          "name": "Aave Ethereum Stable Debt SNX",
+          "symbol": "stableDebtEthSNX",
+          "decimals": 18,
+          "apyDecimal": 4.857813442745873
+        },
+        {
+          "address": "0xb368d45aaaa07ee2c6275cb320d140b22de43cdd",
+          "name": "Aave Ethereum Stable Debt BAL",
+          "symbol": "stableDebtEthBAL",
+          "decimals": 18,
+          "apyDecimal": 3.4773192543379183
+        },
+        {
+          "address": "0x2fec76324a0463c46f32e74a86d1cf94c02158dc",
+          "name": "Aave Ethereum Stable Debt UNI",
+          "symbol": "stableDebtEthUNI",
+          "decimals": 18,
+          "apyDecimal": 0.01572442211084102
+        },
+        {
+          "address": "0xa0a5bf5781aeb548db9d4226363b9e89287c5fd2",
+          "name": "Aave Ethereum Stable Debt LDO",
+          "symbol": "stableDebtEthLDO",
+          "decimals": 18,
+          "apyDecimal": 0.9821791295338
+        },
+        {
+          "address": "0x7617d02e311cde347a0cb45bb7df2926bbaf5347",
+          "name": "Aave Ethereum Stable Debt ENS",
+          "symbol": "stableDebtEthENS",
+          "decimals": 18,
+          "apyDecimal": 0.013799178560369718
+        },
+        {
+          "address": "0x4b62bfaff61ab3985798e5202d2d167f567d0bcd",
+          "name": "Aave Ethereum Stable Debt 1INCH",
+          "symbol": "stableDebtEth1INCH",
+          "decimals": 18,
+          "apyDecimal": 0.03758613447151227
+        },
+        {
+          "address": "0x219640546c0dfddcb9ab3bcda89b324e0a376367",
+          "name": "Aave Ethereum Stable Debt FRAX",
+          "symbol": "stableDebtEthFRAX",
+          "decimals": 18,
+          "apyDecimal": 2.9174571107885017
+        },
+        {
+          "address": "0x3f3df7266da30102344a813f1a3d07f5f041b5ac",
+          "name": "Aave Ethereum Stable Debt GHO",
+          "symbol": "stableDebtEthGHO",
           "decimals": 18,
           "apyDecimal": 0
         },
         {
-          "address": "0x66457616dd8489df5d0afd8678f4a260088aaf55",
-          "name": "Aave stable debt bearing STETH",
-          "symbol": "stableDebtSTETH",
+          "address": "0x41e330fd8f7ea31e2e8f02cc0c9392d1403597b4",
+          "name": "Aave Ethereum Stable Debt RPL",
+          "symbol": "stableDebtEthRPL",
+          "decimals": 18,
+          "apyDecimal": 0.5297192529149841
+        },
+        {
+          "address": "0x48bc45f084988bc01933ea93eeffebc0416534f6",
+          "name": "Aave Ethereum Stable Debt sDAI",
+          "symbol": "stableDebtEthsDAI",
           "decimals": 18,
           "apyDecimal": 0
         },
         {
-          "address": "0x39f010127274b2dbdb770b45e1de54d974974526",
-          "name": "Aave stable debt bearing LUSD",
-          "symbol": "stableDebtLUSD",
+          "address": "0x0496372be7e426d28e89debf01f19f014d5938be",
+          "name": "Aave Ethereum Stable Debt MKR",
+          "symbol": "stableDebtEthMKR",
           "decimals": 18,
-          "apyDecimal": 11.942669409228257
+          "apyDecimal": 0.21108921231336453
         }
       ]
     },
@@ -207,88 +361,165 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x531842cebbdd378f8ee36d171d6cc9c4fcf475ec",
-          "name": "Aave variable debt bearing USDT",
-          "symbol": "variableDebtUSDT",
-          "decimals": 6,
-          "apyDecimal": 4.26785020911411
+          "address": "0xea51d7853eefb32b6ee06b1c12e6dcca88be0ffe",
+          "name": "Aave Ethereum Variable Debt WETH",
+          "symbol": "variableDebtEthWETH",
+          "decimals": 18,
+          "apyDecimal": 0.026786361303399175
         },
         {
-          "address": "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
-          "name": "Aave variable debt bearing WBTC",
-          "symbol": "variableDebtWBTC",
+          "address": "0xc96113eed8cab59cd8a66813bcb0ceb29f06d2e4",
+          "name": "Aave Ethereum Variable Debt wstETH",
+          "symbol": "variableDebtEthwstETH",
+          "decimals": 18,
+          "apyDecimal": 0.0005573924868329527
+        },
+        {
+          "address": "0x40aabef1aa8f0eec637e0e7d92fbffb2f26a8b7b",
+          "name": "Aave Ethereum Variable Debt WBTC",
+          "symbol": "variableDebtEthWBTC",
           "decimals": 8,
-          "apyDecimal": 1.0602963115085906
-        },
-        {
-          "address": "0xf63b34710400cad3e044cffdcab00a0f32e33ecf",
-          "name": "Aave variable debt bearing WETH",
-          "symbol": "variableDebtWETH",
-          "decimals": 18,
-          "apyDecimal": 3.4819270211803532
-        },
-        {
-          "address": "0xf7dba49d571745d9d7fcb56225b05bea803ebf3c",
-          "name": "Aave variable debt bearing AAVE",
-          "symbol": "variableDebtAAVE",
-          "decimals": 18,
           "apyDecimal": 0
         },
         {
-          "address": "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d",
-          "name": "Aave variable debt bearing DAI",
-          "symbol": "variableDebtDAI",
-          "decimals": 18,
-          "apyDecimal": 4.824120168306023
-        },
-        {
-          "address": "0xdc6a3ab17299d9c2a412b0e0a4c1f55446ae0817",
-          "name": "Aave variable debt bearing SUSD",
-          "symbol": "variableDebtSUSD",
-          "decimals": 18,
-          "apyDecimal": 2.5294240938973367
-        },
-        {
-          "address": "0x619beb58998ed2278e08620f97007e1116d5d25b",
-          "name": "Aave variable debt bearing USDC",
-          "symbol": "variableDebtUSDC",
+          "address": "0x72e95b8931767c79ba4eee721354d6e99a61d004",
+          "name": "Aave Ethereum Variable Debt USDC",
+          "symbol": "variableDebtEthUSDC",
           "decimals": 6,
-          "apyDecimal": 4.026005586896875
+          "apyDecimal": 0
         },
         {
-          "address": "0x279af5b99540c1a3a7e3cdd326e19659401ef99e",
-          "name": "Aave variable debt bearing GUSD",
-          "symbol": "variableDebtGUSD",
-          "decimals": 2,
-          "apyDecimal": 4.047240805594954
-        },
-        {
-          "address": "0xfdb93b3b10936cf81fa59a02a7523b6e2149b2b7",
-          "name": "Aave variable debt bearing USDP",
-          "symbol": "variableDebtUSDP",
+          "address": "0xcf8d0c70c850859266f5c338b38f9d663181c314",
+          "name": "Aave Ethereum Variable Debt DAI",
+          "symbol": "variableDebtEthDAI",
           "decimals": 18,
-          "apyDecimal": 4.008511588800401
+          "apyDecimal": 4.567108069904968
         },
         {
-          "address": "0xfe8f19b17ffef0fdbfe2671f248903055afaa8ca",
-          "name": "Aave variable debt bearing FRAX",
-          "symbol": "variableDebtFRAX",
+          "address": "0x4228f8895c7dda20227f6a5c6751b8ebf19a6ba8",
+          "name": "Aave Ethereum Variable Debt LINK",
+          "symbol": "variableDebtEthLINK",
           "decimals": 18,
-          "apyDecimal": 3.985142776686934
+          "apyDecimal": 0.008853524528329437
         },
         {
-          "address": "0xa9deac9f00dc4310c35603fcd9d34d1a750f81db",
-          "name": "Aave variable debt bearing STETH",
-          "symbol": "variableDebtSTETH",
+          "address": "0xbae535520abd9f8c85e58929e0006a2c8b372f74",
+          "name": "Aave Ethereum Variable Debt AAVE",
+          "symbol": "variableDebtEthAAVE",
           "decimals": 18,
           "apyDecimal": 0
         },
         {
-          "address": "0x411066489ab40442d6fc215ad7c64224120d33f2",
-          "name": "Aave variable debt bearing LUSD",
-          "symbol": "variableDebtLUSD",
+          "address": "0x0c91bca95b5fe69164ce583a2ec9429a569798ed",
+          "name": "Aave Ethereum Variable Debt cbETH",
+          "symbol": "variableDebtEthcbETH",
           "decimals": 18,
-          "apyDecimal": 2.5964704056514742
+          "apyDecimal": 0.0001183406074023452
+        },
+        {
+          "address": "0x6df1c1e379bc5a00a7b4c6e67a203333772f45a8",
+          "name": "Aave Ethereum Variable Debt USDT",
+          "symbol": "variableDebtEthUSDT",
+          "decimals": 6,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0xae8593dd575fe29a9745056aa91c4b746eee62c8",
+          "name": "Aave Ethereum Variable Debt rETH",
+          "symbol": "variableDebtEthrETH",
+          "decimals": 18,
+          "apyDecimal": 0.0003207103729474525
+        },
+        {
+          "address": "0x33652e48e4b74d18520f11bfe58edd2ed2cec5a2",
+          "name": "Aave Ethereum Variable Debt LUSD",
+          "symbol": "variableDebtEthLUSD",
+          "decimals": 18,
+          "apyDecimal": 0.3057142178516603
+        },
+        {
+          "address": "0x1b7d3f4b3c032a5ae656e30eea4e8e1ba376068f",
+          "name": "Aave Ethereum Variable Debt CRV",
+          "symbol": "variableDebtEthCRV",
+          "decimals": 18,
+          "apyDecimal": 0.13870508693656358
+        },
+        {
+          "address": "0x8d0de040e8aad872ec3c33a3776de9152d3c34ca",
+          "name": "Aave Ethereum Variable Debt SNX",
+          "symbol": "variableDebtEthSNX",
+          "decimals": 18,
+          "apyDecimal": 0.01703268442003747
+        },
+        {
+          "address": "0x3d3efceb4ff0966d34d9545d3a2fa2dcdbf451f2",
+          "name": "Aave Ethereum Variable Debt BAL",
+          "symbol": "variableDebtEthBAL",
+          "decimals": 18,
+          "apyDecimal": 0.005382888722893497
+        },
+        {
+          "address": "0xf64178ebd2e2719f2b1233bcb5ef6db4bcc4d09a",
+          "name": "Aave Ethereum Variable Debt UNI",
+          "symbol": "variableDebtEthUNI",
+          "decimals": 18,
+          "apyDecimal": 0.0029557561563864354
+        },
+        {
+          "address": "0xc30808705c01289a3d306ca9cab081ba9114ec82",
+          "name": "Aave Ethereum Variable Debt LDO",
+          "symbol": "variableDebtEthLDO",
+          "decimals": 18,
+          "apyDecimal": 0.03061357002365206
+        },
+        {
+          "address": "0xd180d7fdd4092f07428efe801e17bc03576b3192",
+          "name": "Aave Ethereum Variable Debt ENS",
+          "symbol": "variableDebtEthENS",
+          "decimals": 18,
+          "apyDecimal": 0.000039913680338621305
+        },
+        {
+          "address": "0xa38fca8c6bf9bda52e76eb78f08caa3be7c5a970",
+          "name": "Aave Ethereum Variable Debt 1INCH",
+          "symbol": "variableDebtEth1INCH",
+          "decimals": 18,
+          "apyDecimal": 0.005904596865335954
+        },
+        {
+          "address": "0x88b8358f5bc87c2d7e116cca5b65a9eeb2c5ea3f",
+          "name": "Aave Ethereum Variable Debt FRAX",
+          "symbol": "variableDebtEthFRAX",
+          "decimals": 18,
+          "apyDecimal": 0.037129407519542745
+        },
+        {
+          "address": "0x786dbff3f1292ae8f92ea68cf93c30b34b1ed04b",
+          "name": "Aave Ethereum Variable Debt GHO",
+          "symbol": "variableDebtEthGHO",
+          "decimals": 18,
+          "apyDecimal": 2.309614256922865
+        },
+        {
+          "address": "0x8988eca19d502fd8b9ccd03fa3bd20a6f599bc2a",
+          "name": "Aave Ethereum Variable Debt RPL",
+          "symbol": "variableDebtEthRPL",
+          "decimals": 18,
+          "apyDecimal": 0.010474736479193503
+        },
+        {
+          "address": "0x8db9d35e117d8b93c6ca9b644b25bad5d9908141",
+          "name": "Aave Ethereum Variable Debt sDAI",
+          "symbol": "variableDebtEthsDAI",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x6efc73e54e41b27d2134ff9f98f15550f30df9b1",
+          "name": "Aave Ethereum Variable Debt MKR",
+          "symbol": "variableDebtEthMKR",
+          "decimals": 18,
+          "apyDecimal": 0.00012674349607610935
         }
       ]
     }

@@ -1,0 +1,100 @@
+{
+  "0x2238101b7014c279aaf6b408a284e49cdbd5db55": {
+    "protocolToken": {
+      "address": "0x2238101b7014c279aaf6b408a284e49cdbd5db55",
+      "name": "Aave Matic Market stable debt DAI",
+      "symbol": "stableDebtmDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+      "name": "(PoS) Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0xdeb05676db0db85cecafe8933c903466bf20c572": {
+    "protocolToken": {
+      "address": "0xdeb05676db0db85cecafe8933c903466bf20c572",
+      "name": "Aave Matic Market stable debt USDC",
+      "symbol": "stableDebtmUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+      "name": "USD Coin (PoS)",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0xe590cfca10e81fed9b0e4496381f02256f5d2f61": {
+    "protocolToken": {
+      "address": "0xe590cfca10e81fed9b0e4496381f02256f5d2f61",
+      "name": "Aave Matic Market stable debt USDT",
+      "symbol": "stableDebtmUSDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x2551b15db740db8348bfadfe06830210ec2c2f13": {
+    "protocolToken": {
+      "address": "0x2551b15db740db8348bfadfe06830210ec2c2f13",
+      "name": "Aave Matic Market stable debt WBTC",
+      "symbol": "stableDebtmWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
+      "name": "(PoS) Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0xc478cbbeb590c76b01ce658f8c4dda04f30e2c6f": {
+    "protocolToken": {
+      "address": "0xc478cbbeb590c76b01ce658f8c4dda04f30e2c6f",
+      "name": "Aave Matic Market stable debt WETH",
+      "symbol": "stableDebtmWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xb9a6e29fb540c5f1243ef643eb39b0acbc2e68e3": {
+    "protocolToken": {
+      "address": "0xb9a6e29fb540c5f1243ef643eb39b0acbc2e68e3",
+      "name": "Aave Matic Market stable debt WMATIC",
+      "symbol": "stableDebtmWMATIC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    }
+  },
+  "0x17912140e780b29ba01381f088f21e8d75f954f9": {
+    "protocolToken": {
+      "address": "0x17912140e780b29ba01381f088f21e8d75f954f9",
+      "name": "Aave Matic Market stable debt AAVE",
+      "symbol": "stableDebtmAAVE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+      "name": "Aave (PoS)",
+      "symbol": "AAVE",
+      "decimals": 18
+    }
+  }
+}

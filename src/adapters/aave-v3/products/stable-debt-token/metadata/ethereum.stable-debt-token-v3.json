@@ -167,20 +167,6 @@
       "decimals": 18
     }
   },
-  "0x0496372be7e426d28e89debf01f19f014d5938be": {
-    "protocolToken": {
-      "address": "0x0496372be7e426d28e89debf01f19f014d5938be",
-      "name": "Aave Ethereum Stable Debt MKR",
-      "symbol": "stableDebtEthMKR",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
-      "name": "Maker",
-      "symbol": "MKR",
-      "decimals": 18
-    }
-  },
   "0x478e1ec1a2beed94c1407c951e4b9e22d53b2501": {
     "protocolToken": {
       "address": "0x478e1ec1a2beed94c1407c951e4b9e22d53b2501",
@@ -318,6 +304,20 @@
       "address": "0x83f20f44975d03b1b09e64809b757c47f942beea",
       "name": "Savings Dai",
       "symbol": "sDAI",
+      "decimals": 18
+    }
+  },
+  "0x0496372be7e426d28e89debf01f19f014d5938be": {
+    "protocolToken": {
+      "address": "0x0496372be7e426d28e89debf01f19f014d5938be",
+      "name": "Aave Ethereum Stable Debt MKR",
+      "symbol": "stableDebtEthMKR",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+      "name": "Maker",
+      "symbol": "MKR",
       "decimals": 18
     }
   }
