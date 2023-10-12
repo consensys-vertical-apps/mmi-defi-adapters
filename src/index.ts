@@ -351,6 +351,24 @@ export async function getApr({
   })
 }
 
+function buildAdaptersForChain(chainId: Chain): IProtocolAdapter[] {
+  const provider = chainProviders[chainId]!
+
+  return Object.entries(supportedProtocols)
+    .flatMap(
+      ([protocolIdKey, supportedChains]) =>
+        supportedChains[chainId]?.map(
+          (adapterClass) =>
+            new adapterClass({
+              provider: provider,
+              chainId,
+              protocolId: protocolIdKey as Protocol,
+            }),
+        ),
+    )
+    .filter(Boolean)
+}
+
 async function runForAllProtocolsAndChains<ReturnType extends object>({
   runner,
   filterProtocolIds,
@@ -386,7 +404,7 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
               adapterClass,
             ): Promise<AdapterResponse<Awaited<ReturnType>>> => {
               const adapter = new adapterClass({
-                provider: provider!,
+                provider,
                 chainId,
                 protocolId: protocolIdKey as Protocol,
               })
