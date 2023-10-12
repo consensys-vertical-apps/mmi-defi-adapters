@@ -3,16 +3,11 @@ import AaveV2ATokenAvalancheATokenV2 from '../../adapters/aave-v2/products/a-tok
 import AaveV2ATokenEthereumATokenV2 from '../../adapters/aave-v2/products/a-token/metadata/ethereum.a-token-v2.json'
 import AaveV2ATokenPolygonATokenV2 from '../../adapters/aave-v2/products/a-token/metadata/polygon.a-token-v2.json'
 import AaveV2StableDebtTokenAvalancheStableDebtTokenV2 from '../../adapters/aave-v2/products/stable-debt-token/metadata/avalanche.stable-debt-token-v2.json'
-import AaveV2StableDebtTokenAvalancheStableDebtToken from '../../adapters/aave-v2/products/stable-debt-token/metadata/avalanche.stable-debt-token.json'
 import AaveV2StableDebtTokenEthereumStableDebtTokenV2 from '../../adapters/aave-v2/products/stable-debt-token/metadata/ethereum.stable-debt-token-v2.json'
-import AaveV2StableDebtTokenEthereumStableDebtToken from '../../adapters/aave-v2/products/stable-debt-token/metadata/ethereum.stable-debt-token.json'
 import AaveV2StableDebtTokenPolygonStableDebtTokenV2 from '../../adapters/aave-v2/products/stable-debt-token/metadata/polygon.stable-debt-token-v2.json'
-import AaveV2StableDebtTokenPolygonStableDebtToken from '../../adapters/aave-v2/products/stable-debt-token/metadata/polygon.stable-debt-token.json'
 import AaveV2VariableDebtTokenAvalancheVariableDebtTokenV2 from '../../adapters/aave-v2/products/variable-debt-token/metadata/avalanche.variable-debt-token-v2.json'
 import AaveV2VariableDebtTokenEthereumVariableDebtTokenV2 from '../../adapters/aave-v2/products/variable-debt-token/metadata/ethereum.variable-debt-token-v2.json'
-import AaveV2VariableDebtTokenEthereumVariableDebtToken from '../../adapters/aave-v2/products/variable-debt-token/metadata/ethereum.variable-debt-token.json'
 import AaveV2VariableDebtTokenPolygonVariableDebtTokenV2 from '../../adapters/aave-v2/products/variable-debt-token/metadata/polygon.variable-debt-token-v2.json'
-import AaveV2VariableDebtTokenPolygonVariableDebtToken from '../../adapters/aave-v2/products/variable-debt-token/metadata/polygon.variable-debt-token.json'
 import AaveV3ATokenArbitrumATokenV3 from '../../adapters/aave-v3/products/a-token/metadata/arbitrum.a-token-v3.json'
 import AaveV3ATokenAvalancheATokenV3 from '../../adapters/aave-v3/products/a-token/metadata/avalanche.a-token-v3.json'
 import AaveV3ATokenBaseATokenV3 from '../../adapters/aave-v3/products/a-token/metadata/base.a-token-v3.json'
@@ -79,51 +74,7 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargateVestingArbitrumVestingToken,
   ],
-  [
-    metadataKey({
-      protocolId: Protocol.AaveV2,
-      productId: 'stable-debt-token',
-      chainId: Chain.Ethereum,
-      fileKey: 'stable-debt-token',
-    }),
-    AaveV2StableDebtTokenEthereumStableDebtToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.AaveV2,
-      productId: 'variable-debt-token',
-      chainId: Chain.Ethereum,
-      fileKey: 'variable-debt-token',
-    }),
-    AaveV2VariableDebtTokenEthereumVariableDebtToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.AaveV2,
-      productId: 'stable-debt-token',
-      chainId: Chain.Polygon,
-      fileKey: 'stable-debt-token',
-    }),
-    AaveV2StableDebtTokenPolygonStableDebtToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.AaveV2,
-      productId: 'variable-debt-token',
-      chainId: Chain.Polygon,
-      fileKey: 'variable-debt-token',
-    }),
-    AaveV2VariableDebtTokenPolygonVariableDebtToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.AaveV2,
-      productId: 'stable-debt-token',
-      chainId: Chain.Avalanche,
-      fileKey: 'stable-debt-token',
-    }),
-    AaveV2StableDebtTokenAvalancheStableDebtToken,
-  ],
+
   [
     metadataKey({
       protocolId: Protocol.AaveV2,
