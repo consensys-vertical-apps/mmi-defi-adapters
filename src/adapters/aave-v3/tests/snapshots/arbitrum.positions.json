@@ -1,5 +1,5 @@
 {
-  "blockNumber": 140015233,
+  "blockNumber": 140018911,
   "snapshot": [
     {
       "protocolId": "aave-v3",
@@ -38,7 +38,7 @@
           "name": "Aave Arbitrum WETH",
           "symbol": "aArbWETH",
           "decimals": 18,
-          "balanceRaw": "75358384890886577n",
+          "balanceRaw": "75358410748107960n",
           "type": "protocol",
           "tokens": [
             {
@@ -46,13 +46,13 @@
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "balanceRaw": "75358384890886577n",
+              "balanceRaw": "75358410748107960n",
               "type": "underlying",
-              "balance": "0.075358384890886577",
+              "balance": "0.07535841074810796",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
-          "balance": "0.075358384890886577"
+          "balance": "0.07535841074810796"
         }
       ]
     },
@@ -84,7 +84,7 @@
           "name": "Aave Arbitrum Variable Debt DAI",
           "symbol": "variableDebtArbDAI",
           "decimals": 18,
-          "balanceRaw": "204535462769731162337n",
+          "balanceRaw": "204535720098347000472n",
           "type": "protocol",
           "tokens": [
             {
@@ -92,13 +92,13 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "balanceRaw": "204535462769731162337n",
+              "balanceRaw": "204535720098347000472n",
               "type": "underlying",
-              "balance": "204.535462769731162337",
+              "balance": "204.535720098347000472",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ],
-          "balance": "204.535462769731162337"
+          "balance": "204.535720098347000472"
         }
       ]
     }

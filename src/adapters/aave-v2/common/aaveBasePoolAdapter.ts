@@ -39,7 +39,7 @@ const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
 > = {
   [Protocol.AaveV2]: {
-    [Chain.Ethereum]: '0x7B4EB56E7CD4b454BA8ff71E4518426369a138a3',
+    [Chain.Ethereum]: '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
     [Chain.Polygon]: '0x7551b5D2763519d4e37e8B81929D336De671d46d',
     [Chain.Avalanche]: '0x65285E9dfab318f57051ab2b139ccCf232945451',
   },
