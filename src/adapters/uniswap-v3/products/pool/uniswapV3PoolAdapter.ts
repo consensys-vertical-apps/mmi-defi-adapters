@@ -4,6 +4,7 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -101,7 +102,7 @@ export class UniswapV3PoolAdapter
    */
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
 
     return {}
   }
@@ -111,7 +112,7 @@ export class UniswapV3PoolAdapter
    * Returning an array of your protocol tokens.
    */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   /**
@@ -229,7 +230,7 @@ export class UniswapV3PoolAdapter
   async getClaimableRewards(
     _input: GetClaimableRewardsInput,
   ): Promise<ProtocolRewardPosition[]> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   /**
@@ -237,7 +238,7 @@ export class UniswapV3PoolAdapter
    * Add logic to get user's withdrawals per position by block range
    */
   async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   /**
@@ -245,7 +246,7 @@ export class UniswapV3PoolAdapter
    * Add logic to get user's deposits per position by block range
    */
   async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   /**
@@ -253,7 +254,7 @@ export class UniswapV3PoolAdapter
    * Add logic to get user's claimed rewards per position by block range
    */
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   /**
@@ -264,7 +265,7 @@ export class UniswapV3PoolAdapter
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   /**
@@ -274,7 +275,7 @@ export class UniswapV3PoolAdapter
   async getProtocolTokenToUnderlyingTokenRate(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   /**
@@ -282,22 +283,22 @@ export class UniswapV3PoolAdapter
    * Add logic to calculate the users profits
    */
   async getProfits(_input: GetProfitsInput): Promise<ProfitsWithRange> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
   async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   private createUnderlyingToken(

@@ -3,6 +3,7 @@ import { Command } from 'commander'
 import EthDater from 'ethereum-block-by-date'
 import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
+import { ProviderMissingError } from '../core/errors/errors'
 import { chainProviders } from '../core/utils/chainProviders'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { multiChainFilter } from './commandFilters'
@@ -50,7 +51,7 @@ async function getAverageBlocksPerDay(chainId: Chain) {
   const provider = chainProviders[chainId]
 
   if (!provider) {
-    throw new Error(`No provider for chain: ${chainId}`)
+    throw new ProviderMissingError(chainId)
   }
 
   const currentBlock = await provider.getBlock('latest')

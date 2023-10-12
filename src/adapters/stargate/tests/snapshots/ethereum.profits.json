@@ -232,7 +232,7 @@
       "error": {
         "message": "Not Implemented",
         "details": {
-          "name": "Error"
+          "name": "NotImplementedError"
         }
       }
     }

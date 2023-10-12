@@ -33,7 +33,8 @@ export type GetEventsRequestInput = {
 export type AdapterErrorResponse = {
   error: {
     message: string
-    details?: Record<string, unknown>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    details?: any
   }
 }
 
