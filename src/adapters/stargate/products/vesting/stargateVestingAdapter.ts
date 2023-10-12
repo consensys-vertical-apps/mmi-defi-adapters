@@ -4,6 +4,7 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
@@ -110,50 +111,50 @@ export class StargateVestingAdapter
   }
 
   async getProtocolTokenToUnderlyingTokenRate(): Promise<ProtocolTokenUnderlyingRate> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
 
   async getWithdrawals(): Promise<MovementsByBlock[]> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
 
   async getDeposits(): Promise<MovementsByBlock[]> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
 
   async getClaimedRewards(): Promise<MovementsByBlock[]> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
 
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
 
   async getProfits(): Promise<ProfitsWithRange> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
 
   async getClaimableRewards(
     _input: GetClaimableRewardsInput,
   ): Promise<ProtocolRewardPosition[]> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
   async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
 
   async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new Error('Not Implemented')
+    throw new NotImplementedError()
   }
 
   @CacheToFile({ fileKey: 'vesting-token' })

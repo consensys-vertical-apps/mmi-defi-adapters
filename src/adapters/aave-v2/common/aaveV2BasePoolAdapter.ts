@@ -2,6 +2,7 @@ import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../core/constants/chains'
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
+import { NotApplicableError } from '../../../core/errors/errors'
 import { aprToApy } from '../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
@@ -57,13 +58,13 @@ export abstract class AaveV2BasePoolAdapter
   }
 
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new Error('Not Implemented')
+    throw new NotApplicableError()
   }
 
   async getClaimableRewards(
     _input: GetClaimableRewardsInput,
   ): Promise<ProtocolRewardPosition[]> {
-    throw new Error('Not Implemented')
+    throw new NotApplicableError()
   }
 
   async getApy({
@@ -99,11 +100,11 @@ export abstract class AaveV2BasePoolAdapter
   }
 
   async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new Error('Not Implemented')
+    throw new NotApplicableError()
   }
 
   async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new Error('Not Implemented')
+    throw new NotApplicableError()
   }
 
   async buildMetadata() {

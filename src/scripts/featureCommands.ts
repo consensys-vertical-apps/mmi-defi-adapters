@@ -12,7 +12,8 @@ import {
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
-import { GetEventsRequestInput } from '../types/response'
+import { filterMapSync } from '../core/utils/filters'
+import { AdapterResponse, GetEventsRequestInput } from '../types/response'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
 export function featureCommands(program: Command) {
@@ -69,7 +70,7 @@ function addressCommand(
     userAddress: string
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
-  }) => Promise<unknown>,
+  }) => Promise<AdapterResponse<unknown>[]>,
   defaultAddress: string,
 ) {
   program
@@ -94,7 +95,7 @@ function addressCommand(
         filterChainIds,
       })
 
-      printResponse(data)
+      printResponse(filterResponse(data))
     })
 }
 
@@ -103,7 +104,7 @@ function addressCommand(
 function addressEventsCommand(
   program: Command,
   commandName: string,
-  feature: (input: GetEventsRequestInput) => Promise<unknown>,
+  feature: (input: GetEventsRequestInput) => Promise<AdapterResponse<unknown>>,
   defaultAddress: string,
   defaultFromBlock: number,
   defaultToBlock: number,
@@ -164,7 +165,7 @@ function protocolCommand(
   feature: (input: {
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
-  }) => Promise<unknown>,
+  }) => Promise<AdapterResponse<unknown>[]>,
 ) {
   program
     .command(commandName)
@@ -186,11 +187,25 @@ function protocolCommand(
         filterChainIds,
       })
 
-      printResponse(data)
+      printResponse(filterResponse(data))
     })
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function printResponse(data: any) {
+function filterResponse(
+  data: AdapterResponse<unknown>[],
+): AdapterResponse<unknown>[] {
+  return filterMapSync(data, (adapterResponse) => {
+    if (
+      !adapterResponse.success &&
+      adapterResponse.error.details?.name === 'NotApplicableError'
+    ) {
+      return undefined
+    }
+
+    return adapterResponse
+  })
+}
+
+function printResponse(data: unknown) {
   console.log(bigintJsonStringify(data, 2))
 }

@@ -7,6 +7,7 @@ import { supportedProtocols } from '../adapters'
 import { Protocol } from '../adapters/protocols'
 import { Chain, ChainName } from '../core/constants/chains'
 import { IMetadataBuilder } from '../core/decorators/cacheToFile'
+import { ProviderMissingError } from '../core/errors/errors'
 import { pascalCase } from '../core/utils/caseConversion'
 import { chainProviders } from '../core/utils/chainProviders'
 import { logger } from '../core/utils/logger'
@@ -53,7 +54,7 @@ export function buildMetadata(program: Command) {
 
           if (!provider) {
             logger.error({ chainId }, 'No provider found for chain')
-            throw new Error('No provider found for chain')
+            throw new ProviderMissingError(chainId)
           }
 
           for (const adapterClass of adapterClasses) {

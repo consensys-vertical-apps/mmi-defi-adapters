@@ -4,6 +4,7 @@ import { Protocol } from './adapters/protocols'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
+import { ProviderMissingError } from './core/errors/errors'
 import { chainProviders } from './core/utils/chainProviders'
 import {
   enrichPositionBalance,
@@ -409,21 +410,11 @@ async function runTaskForAdapter<ReturnType>(
 ): Promise<AdapterResponse<Awaited<ReturnType>>> {
   const protocolDetails = adapter.getProtocolDetails()
 
-  if (!provider) {
-    return {
-      ...protocolDetails,
-      success: false,
-      error: {
-        message: 'No provider found for chain',
-        details: {
-          chainId: adapter.chainId,
-          chainName: ChainName[adapter.chainId],
-        },
-      },
-    }
-  }
-
   try {
+    if (!provider) {
+      throw new ProviderMissingError(adapter.chainId)
+    }
+
     const adapterResult = await runner(adapter, provider)
     return {
       ...protocolDetails,

@@ -4,6 +4,7 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
@@ -157,28 +158,28 @@ export class StargatePoolAdapter
   }
 
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
   async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   async getClaimableRewards(
     _input: GetClaimableRewardsInput,
   ): Promise<ProtocolRewardPosition[]> {
-    throw new Error('Implement me')
+    throw new NotImplementedError()
   }
 
   protected async fetchProtocolTokenMetadata(

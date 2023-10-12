@@ -13,6 +13,7 @@ import {
 } from '..'
 import { Protocol } from '../adapters/protocols'
 import { Chain, ChainName } from '../core/constants/chains'
+import { ProviderMissingError } from '../core/errors/errors'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { chainProviders } from '../core/utils/chainProviders'
@@ -188,7 +189,7 @@ async function getLatestBlock(chainId: Chain): Promise<number> {
   const provider = chainProviders[chainId]
 
   if (!provider) {
-    throw new Error(`Provider missing for chain ${chainId}`)
+    throw new ProviderMissingError(chainId)
   }
 
   return provider.getBlockNumber()
