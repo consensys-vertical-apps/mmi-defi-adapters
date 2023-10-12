@@ -61,6 +61,7 @@ export function defaultAdapterTemplate(
         iconUrl: 'https://',
         positionType: PositionType.Supply,
         chainId: this.chainId,
+        product: this.product,
       }
     }
   
