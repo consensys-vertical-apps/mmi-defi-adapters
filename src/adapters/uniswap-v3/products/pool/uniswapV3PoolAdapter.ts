@@ -1,9 +1,5 @@
 import { ethers, formatUnits } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  IMetadataBuilder,
-  CacheToFile,
-} from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
