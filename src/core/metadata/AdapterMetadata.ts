@@ -7,6 +7,9 @@ import AaveV2StableDebtTokenEthereumStableDebtToken from '../../adapters/aave-v2
 import AaveV2StableDebtTokenPolygonStableDebtToken from '../../adapters/aave-v2/products/stable-debt-token/metadata/polygon.stable-debt-token.json'
 import AaveV2VariableDebtTokenEthereumVariableDebtToken from '../../adapters/aave-v2/products/variable-debt-token/metadata/ethereum.variable-debt-token.json'
 import AaveV2VariableDebtTokenPolygonVariableDebtToken from '../../adapters/aave-v2/products/variable-debt-token/metadata/polygon.variable-debt-token.json'
+import LidoStackingEthereumStEthToken from '../../adapters/lido/products/st-eth/metadata/ethereum.st-eth-token.json'
+import LidoStEthEthereumStEthToken from '../../adapters/lido/products/st-eth/metadata/ethereum.st-eth-token.json'
+import LidoWstEthEthereumWstEthToken from '../../adapters/lido/products/wst-eth/metadata/ethereum.wst-eth-token.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -52,7 +55,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargateVestingArbitrumVestingToken,
   ],
-
   [
     metadataKey({
       protocolId: Protocol.AaveV2,
@@ -124,6 +126,33 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'stable-debt-token',
     }),
     AaveV2StableDebtTokenAvalancheStableDebtToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Lido,
+      productId: 'stacking',
+      chainId: Chain.Ethereum,
+      fileKey: 'st-eth-token',
+    }),
+    LidoStackingEthereumStEthToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Lido,
+      productId: 'st-eth',
+      chainId: Chain.Ethereum,
+      fileKey: 'st-eth-token',
+    }),
+    LidoStEthEthereumStEthToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Lido,
+      productId: 'wst-eth',
+      chainId: Chain.Ethereum,
+      fileKey: 'wst-eth-token',
+    }),
+    LidoWstEthEthereumWstEthToken,
   ],
 ])
 

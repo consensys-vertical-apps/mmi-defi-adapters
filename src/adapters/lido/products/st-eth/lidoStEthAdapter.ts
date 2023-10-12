@@ -1,10 +1,13 @@
 import { ethers } from 'ethers'
+import { Erc20__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -25,13 +28,19 @@ import {
   ProfitsWithRange,
   ProtocolTokenTvl,
   ProtocolPosition,
+  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 
-export class LidoStackingAdapter implements IProtocolAdapter, IMetadataBuilder {
-  product = 'stacking'
+export type LidoStEthMetadata = {
+  contractToken: Erc20Metadata
+  underlyingToken: Erc20Metadata
+}
+
+export class LidoStEthAdapter implements IProtocolAdapter, IMetadataBuilder {
+  product = 'st-eth'
   protocolId: Protocol
   chainId: Chain
 
@@ -43,15 +52,11 @@ export class LidoStackingAdapter implements IProtocolAdapter, IMetadataBuilder {
     this.protocolId = protocolId
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Lido',
-      description: 'Lido defi adapter',
+      name: 'Lido stEth',
+      description: 'Lido defi adapter for stEth',
       siteUrl: 'https:',
       iconUrl: 'https://',
       positionType: PositionType.Supply,
@@ -60,33 +65,61 @@ export class LidoStackingAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToFile({ fileKey: 'st-eth-token' })
   async buildMetadata() {
-    throw new NotImplementedError()
+    const contractAddresses: Partial<Record<Chain, string>> = {
+      [Chain.Ethereum]: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
+    }
 
-    return {}
+    const contractToken = await getTokenMetadata(
+      contractAddresses[this.chainId]!,
+      this.chainId,
+    )
+    const underlyingToken = await getTokenMetadata(ZERO_ADDRESS, this.chainId)
+
+    const metadataObject: LidoStEthMetadata = {
+      contractToken,
+      underlyingToken,
+    }
+
+    return metadataObject
   }
 
-  /**
-   * Update me.
-   * Returning an array of your protocol tokens.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    throw new NotImplementedError()
+    return [(await this.buildMetadata()).contractToken]
   }
 
-  /**
-   * Update me.
-   * Add logic to get userAddress positions in your protocol
-   */
-  async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    throw new NotImplementedError()
+  async getPositions({
+    userAddress,
+    blockNumber,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const { contractToken, underlyingToken } = await this.buildMetadata()
+
+    const stEthContract = Erc20__factory.connect(
+      contractToken.address,
+      this.provider,
+    )
+
+    const stEthBalance = await stEthContract.balanceOf(userAddress, {
+      blockTag: blockNumber,
+    })
+
+    const tokens = [
+      {
+        ...contractToken,
+        type: TokenType.Protocol,
+        balanceRaw: stEthBalance,
+        tokens: [
+          {
+            ...underlyingToken,
+            type: TokenType.Underlying,
+            balanceRaw: stEthBalance,
+          },
+        ],
+      },
+    ]
+
+    return tokens
   }
 
   /**
@@ -134,14 +167,26 @@ export class LidoStackingAdapter implements IProtocolAdapter, IMetadataBuilder {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to calculate the underlying token rate of 1 protocol token
-   */
   async getProtocolTokenToUnderlyingTokenRate(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
-    throw new NotImplementedError()
+    const { contractToken, underlyingToken } = await this.buildMetadata()
+
+    // Always pegged one to one to underlying
+    const pricePerShareRaw = BigInt(10 ** contractToken.decimals)
+
+    return {
+      ...contractToken,
+      baseRate: 1,
+      type: TokenType.Protocol,
+      tokens: [
+        {
+          ...underlyingToken,
+          type: TokenType.Underlying,
+          underlyingRateRaw: pricePerShareRaw,
+        },
+      ],
+    }
   }
 
   /**
