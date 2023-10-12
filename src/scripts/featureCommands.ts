@@ -34,23 +34,27 @@ export function featureCommands(program: Command) {
     program,
     'deposits',
     getDeposits,
-    '0x2C5D4A0943e9cF4C597a76464396B0bF84C24C45',
-    17719334,
-    17719336,
     '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
-    '177790',
+    18262163,
+    18262164,
+    '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
     'pool',
+    Protocol.UniswapV3,
+    Chain.Ethereum.toString(),
+    '573046',
   )
   addressEventsCommand(
     program,
     'withdrawals',
     getWithdrawals,
-    '0x4Ffc5F22770ab6046c8D66DABAe3A9CD1E7A03e7',
-    17979753,
-    17979755,
-    '0xdf0770df86a8034b3efef0a1bb3c889b8332ff56',
-    '177790',
+    '0x1d201a9B9f136dE7e7fF4A80a27e96Af7789D9BE',
+    18274545,
+    18274547,
+    '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
     'pool',
+    Protocol.UniswapV3,
+    Chain.Ethereum.toString(),
+    '573517',
   )
 
   protocolCommand(program, 'prices', getPrices)
@@ -95,6 +99,8 @@ function addressCommand(
     })
 }
 
+// npm run deposits 0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5 18262162 18262163 0xC36442b4a4522E871399CD717aBDD847Ab11FE88 567587 uniswapV3 1 pool
+
 function addressEventsCommand(
   program: Command,
   commandName: string,
@@ -103,8 +109,11 @@ function addressEventsCommand(
   defaultFromBlock: number,
   defaultToBlock: number,
   defaultProtocolTokenAddress: string,
-  defaultTokenId: string,
+
   defaultProduct: string,
+  defaultProtocolId: Protocol,
+  defaultChainId: string,
+  defaultTokenId: string,
 ) {
   program
     .command(commandName)
@@ -116,8 +125,10 @@ function addressEventsCommand(
       'Address of the protocol token',
       defaultProtocolTokenAddress,
     )
-    .argument('[tokenId]', 'Token Id of the position', defaultTokenId)
     .argument('[product]', 'Name of product', defaultProduct)
+    .argument('[protocolId]', 'Name of product', defaultProtocolId)
+    .argument('[chainId]', 'Name of product', defaultChainId)
+    .argument('[tokenId]', 'Token Id of the position', defaultTokenId)
     .showHelpAfterError()
     .action(
       async (
@@ -125,20 +136,22 @@ function addressEventsCommand(
         fromBlock,
         toBlock,
         protocolTokenAddress,
-        tokenId,
+
         product,
         protocolId,
         chainId,
+        tokenId,
       ) => {
         const data = await feature({
           userAddress,
           fromBlock: parseInt(fromBlock, 10),
           toBlock: parseInt(toBlock, 10),
           protocolTokenAddress,
-          tokenId,
+
           product,
           protocolId,
-          chainId,
+          chainId: parseInt(chainId) as Chain,
+          tokenId,
         })
 
         printResponse(data)

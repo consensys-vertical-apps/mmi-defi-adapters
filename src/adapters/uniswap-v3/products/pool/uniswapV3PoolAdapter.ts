@@ -1,12 +1,11 @@
 import { ethers, formatUnits } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  IMetadataBuilder,
-  CacheToFile,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -39,6 +38,9 @@ import { PositionManager__factory } from '../../contracts'
 // Set the date in the future to ensure the static call request doesn't trigger smart contract validation
 const deadline = Math.floor(Date.now() - 1000) + 60 * 10
 
+// Uniswap has different pools per fee e.g. 1%, 0.5%
+const FEE_DECIMALS = 4
+
 const positionManagerCommonAddress =
   '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
 
@@ -65,9 +67,7 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
 
 const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 
-export class UniswapV3PoolAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export class UniswapV3PoolAdapter implements IProtocolAdapter {
   product = 'pool'
   protocolId: Protocol
   chainId: Chain
@@ -115,10 +115,6 @@ export class UniswapV3PoolAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get userAddress positions in your protocol
-   */
   async getPositions({
     userAddress,
     blockNumber,
@@ -180,13 +176,15 @@ export class UniswapV3PoolAdapter
           getTokenMetadata(position.token1, this.chainId),
         ])
 
-        const FEE_DECIMALS = 4
-        const nftName = `${token0Metadata.symbol} / ${
-          token1Metadata.symbol
-        } - ${formatUnits(position.fee, FEE_DECIMALS)}%`
+        const nftName = this.protocolTokenName(
+          token0Metadata.symbol,
+          token1Metadata.symbol,
+          position.fee,
+        )
 
         return {
-          address: positionManagerCommonAddress,
+          address: contractAddresses[this.chainId]!.positionManager,
+          tokenId: tokenId.toString(),
           name: nftName,
           symbol: nftName,
           decimals: 18,
@@ -223,6 +221,17 @@ export class UniswapV3PoolAdapter
     )
   }
 
+  private protocolTokenName(
+    token0Symbol: string,
+    token1Symbol: string,
+    fee: bigint,
+  ) {
+    return `${token0Symbol} / ${token1Symbol} - ${formatUnits(
+      fee,
+      FEE_DECIMALS,
+    )}%`
+  }
+
   /**
    * Update me.
    * Add logic to get userAddress claimable rewards per position
@@ -233,20 +242,41 @@ export class UniswapV3PoolAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's withdrawals per position by block range
-   */
-  async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+  async getWithdrawals({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    tokenId,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    if (!tokenId) {
+      throw new Error('TokenId required for uniswap withdrawals')
+    }
+
+    return await this.getMovements({
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+      eventType: 'withdrawals',
+      tokenId,
+    })
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's deposits per position by block range
-   */
-  async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+  async getDeposits({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    tokenId,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    if (!tokenId) {
+      throw new Error('TokenId required for uniswap deposits')
+    }
+    return await this.getMovements({
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+      eventType: 'deposit',
+      tokenId,
+    })
   }
 
   /**
@@ -278,12 +308,101 @@ export class UniswapV3PoolAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to calculate the users profits
-   */
-  async getProfits(_input: GetProfitsInput): Promise<ProfitsWithRange> {
-    throw new NotImplementedError()
+  async getProfits({
+    userAddress,
+    fromBlock,
+    toBlock,
+  }: GetProfitsInput): Promise<ProfitsWithRange> {
+    const [currentValues, previousValues] = await Promise.all([
+      this.getPositions({
+        userAddress,
+        blockNumber: toBlock,
+      }).then((result) => formatProtocolTokenArrayToMap(result, true)),
+      this.getPositions({
+        userAddress,
+        blockNumber: fromBlock,
+      }).then((result) => formatProtocolTokenArrayToMap(result, true)),
+    ])
+
+    const tokens = await Promise.all(
+      Object.values(currentValues).map(
+        async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
+          const getEventsInput: GetEventsInput = {
+            userAddress,
+            protocolTokenAddress: protocolTokenMetadata.address,
+            fromBlock,
+            toBlock,
+            tokenId: protocolTokenMetadata.tokenId,
+          }
+
+          const [withdrawals, deposits] = await Promise.all([
+            this.getWithdrawals(getEventsInput).then(aggregateTrades),
+            this.getDeposits(getEventsInput).then(aggregateTrades),
+          ])
+
+          return {
+            ...protocolTokenMetadata,
+            type: TokenType.Protocol,
+            tokens: Object.values(underlyingTokenPositions).map(
+              ({
+                address,
+                name,
+                symbol,
+                decimals,
+                balanceRaw: startPositionValueRaw,
+              }) => {
+                const endPositionValueRaw =
+                  previousValues[protocolTokenMetadata.tokenId!]
+                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
+
+                const calculationData = {
+                  withdrawalsRaw: withdrawals[address] ?? 0n,
+                  depositsRaw: deposits[address] ?? 0n,
+                  startPositionValueRaw: startPositionValueRaw ?? 0n,
+                  endPositionValueRaw,
+                }
+
+                const profitRaw =
+                  calculationData.startPositionValueRaw +
+                  calculationData.withdrawalsRaw -
+                  calculationData.depositsRaw -
+                  calculationData.endPositionValueRaw
+
+                return {
+                  address,
+                  name,
+                  symbol,
+                  decimals,
+                  profitRaw,
+                  type: TokenType.Underlying,
+                  calculationData: {
+                    withdrawalsRaw: withdrawals[address] ?? 0n,
+                    withdrawals: formatUnits(
+                      withdrawals[address] ?? 0n,
+                      decimals,
+                    ),
+                    depositsRaw: deposits[address] ?? 0n,
+                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
+                    startPositionValueRaw: startPositionValueRaw ?? 0n,
+                    startPositionValue: formatUnits(
+                      startPositionValueRaw ?? 0n,
+                      decimals,
+                    ),
+                    endPositionValueRaw,
+                    endPositionValue: formatUnits(
+                      endPositionValueRaw ?? 0n,
+                      decimals,
+                    ),
+                  },
+                }
+              },
+            ),
+          }
+        },
+      ),
+    )
+
+    return { tokens, fromBlock, toBlock }
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
@@ -315,5 +434,83 @@ export class UniswapV3PoolAdapter
       balanceRaw,
       type,
     }
+  }
+
+  private async getMovements({
+    protocolTokenAddress,
+    eventType,
+    fromBlock,
+    toBlock,
+    tokenId,
+  }: {
+    protocolTokenAddress: string
+    eventType: 'withdrawals' | 'deposit'
+    fromBlock: number
+    toBlock: number
+    tokenId: string
+  }): Promise<MovementsByBlock[]> {
+    const positionsManagerContract = PositionManager__factory.connect(
+      protocolTokenAddress,
+      this.provider,
+    )
+
+    const eventFilters = {
+      deposit: positionsManagerContract.filters.IncreaseLiquidity(tokenId),
+      withdrawals: positionsManagerContract.filters.Collect(tokenId),
+    }
+
+    const { token0, token1, fee } = await positionsManagerContract
+      .positions(tokenId, { blockTag: fromBlock })
+      .catch((error) => {
+        if (error.message.includes('Invalid token ID')) {
+          throw new Error(
+            `Uniswap tokenId: ${tokenId} at blocknumber: ${fromBlock} does not exist, has position been minted yet or burned?`,
+          )
+        }
+
+        throw new Error(error)
+      })
+    const [token0Metadata, token1Metadata] = await Promise.all([
+      getTokenMetadata(token0, this.chainId),
+      getTokenMetadata(token1, this.chainId),
+    ])
+
+    const eventResults = await positionsManagerContract.queryFilter(
+      eventFilters[eventType],
+      fromBlock,
+      toBlock,
+    )
+
+    return await Promise.all(
+      eventResults.map(async (transferEvent) => {
+        const {
+          blockNumber,
+          args: { amount0, amount1 },
+        } = transferEvent
+
+        return {
+          protocolToken: {
+            address: protocolTokenAddress,
+            name: this.protocolTokenName(
+              token0Metadata.symbol,
+              token1Metadata.symbol,
+              fee,
+            ),
+            symbol: this.protocolTokenName(
+              token0Metadata.symbol,
+              token1Metadata.symbol,
+              fee,
+            ),
+            decimals: 18,
+            tokenId,
+          },
+          underlyingTokensMovement: {
+            [token0]: { movementValueRaw: amount0, ...token0Metadata },
+            [token1]: { movementValueRaw: amount1, ...token1Metadata },
+          },
+          blockNumber,
+        }
+      }),
+    )
   }
 }

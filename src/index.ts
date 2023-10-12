@@ -150,10 +150,10 @@ export async function getWithdrawals({
   fromBlock,
   toBlock,
   protocolTokenAddress,
-  tokenId,
   protocolId,
   chainId,
   product,
+  tokenId,
 }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
   const provider = chainProviders[chainId]
 
@@ -208,10 +208,10 @@ export async function getDeposits({
   fromBlock,
   toBlock,
   protocolTokenAddress,
-  tokenId,
   protocolId,
   chainId,
   product,
+  tokenId,
 }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
   const provider = chainProviders[chainId]
 
