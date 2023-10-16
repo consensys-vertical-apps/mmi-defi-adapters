@@ -84,6 +84,10 @@ export const supportedProtocols: Record<
   },
   [Protocol.UniswapV3]: {
     [Chain.Ethereum]: [UniswapV3PoolAdapter],
+    [Chain.Arbitrum]: [UniswapV3PoolAdapter],
+    [Chain.Optimism]: [UniswapV3PoolAdapter],
     [Chain.Polygon]: [UniswapV3PoolAdapter],
+    [Chain.Bsc]: [UniswapV3PoolAdapter],
+    [Chain.Base]: [UniswapV3PoolAdapter],
   },
 }

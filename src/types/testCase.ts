@@ -23,6 +23,7 @@ export type TestCase = {
         toBlock: number
         protocolTokenAddress: string
         product: string
+        tokenId?: string
       }
     }
   | {
@@ -33,6 +34,7 @@ export type TestCase = {
         toBlock: number
         protocolTokenAddress: string
         product: string
+        tokenId?: string
       }
     }
   | {
