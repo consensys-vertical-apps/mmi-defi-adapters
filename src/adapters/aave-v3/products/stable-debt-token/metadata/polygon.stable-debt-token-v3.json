@@ -1,0 +1,254 @@
+{
+  "0xd94112b5b62d53c9402e7a60289c6810def1dc9b": {
+    "protocolToken": {
+      "address": "0xd94112b5b62d53c9402e7a60289c6810def1dc9b",
+      "name": "Aave Polygon Stable Debt DAI",
+      "symbol": "stableDebtPolDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+      "name": "(PoS) Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x89d976629b7055ff1ca02b927ba3e020f22a44e4": {
+    "protocolToken": {
+      "address": "0x89d976629b7055ff1ca02b927ba3e020f22a44e4",
+      "name": "Aave Polygon Stable Debt LINK",
+      "symbol": "stableDebtPolLINK",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39",
+      "name": "ChainLink Token",
+      "symbol": "LINK",
+      "decimals": 18
+    }
+  },
+  "0x307ffe186f84a3bc2613d1ea417a5737d69a7007": {
+    "protocolToken": {
+      "address": "0x307ffe186f84a3bc2613d1ea417a5737d69a7007",
+      "name": "Aave Polygon Stable Debt USDC",
+      "symbol": "stableDebtPolUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+      "name": "USD Coin (PoS)",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x633b207dd676331c413d4c013a6294b0fe47cd0e": {
+    "protocolToken": {
+      "address": "0x633b207dd676331c413d4c013a6294b0fe47cd0e",
+      "name": "Aave Polygon Stable Debt WBTC",
+      "symbol": "stableDebtPolWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
+      "name": "(PoS) Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0xd8ad37849950903571df17049516a5cd4cbe55f6": {
+    "protocolToken": {
+      "address": "0xd8ad37849950903571df17049516a5cd4cbe55f6",
+      "name": "Aave Polygon Stable Debt WETH",
+      "symbol": "stableDebtPolWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x70effc565db6eef7b927610155602d31b670e802": {
+    "protocolToken": {
+      "address": "0x70effc565db6eef7b927610155602d31b670e802",
+      "name": "Aave Polygon Stable Debt USDT",
+      "symbol": "stableDebtPolUSDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xfaef6a702d15428e588d4c0614aefb4348d83d48": {
+    "protocolToken": {
+      "address": "0xfaef6a702d15428e588d4c0614aefb4348d83d48",
+      "name": "Aave Polygon Stable Debt AAVE",
+      "symbol": "stableDebtPolAAVE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+      "name": "Aave (PoS)",
+      "symbol": "AAVE",
+      "decimals": 18
+    }
+  },
+  "0xf15f26710c827dde8acba678682f3ce24f2fb56e": {
+    "protocolToken": {
+      "address": "0xf15f26710c827dde8acba678682f3ce24f2fb56e",
+      "name": "Aave Polygon Stable Debt WMATIC",
+      "symbol": "stableDebtPolWMATIC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    }
+  },
+  "0x08cb71192985e936c7cd166a8b268035e400c3c3": {
+    "protocolToken": {
+      "address": "0x08cb71192985e936c7cd166a8b268035e400c3c3",
+      "name": "Aave Polygon Stable Debt CRV",
+      "symbol": "stableDebtPolCRV",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x172370d5cd63279efa6d502dab29171933a610af",
+      "name": "CRV (PoS)",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x78246294a4c6fbf614ed73ccc9f8b875ca8ee841": {
+    "protocolToken": {
+      "address": "0x78246294a4c6fbf614ed73ccc9f8b875ca8ee841",
+      "name": "Aave Polygon Stable Debt SUSHI",
+      "symbol": "stableDebtPolSUSHI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
+      "name": "SushiToken (PoS)",
+      "symbol": "SUSHI",
+      "decimals": 18
+    }
+  },
+  "0x3ef10dff4928279c004308ebadc4db8b7620d6fc": {
+    "protocolToken": {
+      "address": "0x3ef10dff4928279c004308ebadc4db8b7620d6fc",
+      "name": "Aave Polygon Stable Debt GHST",
+      "symbol": "stableDebtPolGHST",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
+      "name": "Aavegotchi GHST Token (PoS)",
+      "symbol": "GHST",
+      "decimals": 18
+    }
+  },
+  "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd": {
+    "protocolToken": {
+      "address": "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd",
+      "name": "Aave Polygon Stable Debt BAL",
+      "symbol": "stableDebtPolBAL",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
+      "name": "Balancer (PoS)",
+      "symbol": "BAL",
+      "decimals": 18
+    }
+  },
+  "0xdc1fad70953bb3918592b6fcc374fe05f5811b6a": {
+    "protocolToken": {
+      "address": "0xdc1fad70953bb3918592b6fcc374fe05f5811b6a",
+      "name": "Aave Polygon Stable Debt DPI",
+      "symbol": "stableDebtPolDPI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
+      "name": "DefiPulse Index (PoS)",
+      "symbol": "DPI",
+      "decimals": 18
+    }
+  },
+  "0x8a9fde6925a839f6b1932d16b36ac026f8d3fbdb": {
+    "protocolToken": {
+      "address": "0x8a9fde6925a839f6b1932d16b36ac026f8d3fbdb",
+      "name": "Aave Polygon Stable Debt EURS",
+      "symbol": "stableDebtPolEURS",
+      "decimals": 2
+    },
+    "underlyingToken": {
+      "address": "0xe111178a87a3bff0c8d18decba5798827539ae99",
+      "name": "STASIS EURS Token (PoS)",
+      "symbol": "EURS",
+      "decimals": 2
+    }
+  },
+  "0x40b4baecc69b882e8804f9286b12228c27f8c9bf": {
+    "protocolToken": {
+      "address": "0x40b4baecc69b882e8804f9286b12228c27f8c9bf",
+      "name": "Aave Polygon Stable Debt AGEUR",
+      "symbol": "stableDebtPolAGEUR",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xe0b52e49357fd4daf2c15e02058dce6bc0057db4",
+      "name": "agEUR",
+      "symbol": "agEUR",
+      "decimals": 18
+    }
+  },
+  "0x1ffd28689da7d0148ff0fcb669e9f9f0fc13a219": {
+    "protocolToken": {
+      "address": "0x1ffd28689da7d0148ff0fcb669e9f9f0fc13a219",
+      "name": "Aave Polygon Stable Debt STMATIC",
+      "symbol": "stableDebtPolSTMATIC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x3a58a54c066fdc0f2d55fc9c89f0415c92ebf3c4",
+      "name": "Staked MATIC (PoS)",
+      "symbol": "stMATIC",
+      "decimals": 18
+    }
+  },
+  "0x62fc96b27a510cf4977b59ff952dc32378cc221d": {
+    "protocolToken": {
+      "address": "0x62fc96b27a510cf4977b59ff952dc32378cc221d",
+      "name": "Aave Polygon Stable Debt MATICX",
+      "symbol": "stableDebtPolMATICX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xfa68fb4628dff1028cfec22b4162fccd0d45efb6",
+      "name": "Liquid Staking Matic (PoS)",
+      "symbol": "MaticX",
+      "decimals": 18
+    }
+  },
+  "0x173e54325ae58b072985dbf232436961981ea000": {
+    "protocolToken": {
+      "address": "0x173e54325ae58b072985dbf232436961981ea000",
+      "name": "Aave Polygon Stable Debt wstETH",
+      "symbol": "stableDebtPolwstETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
+      "name": "Wrapped liquid staked Ether 2.0 (PoS)",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  }
+}

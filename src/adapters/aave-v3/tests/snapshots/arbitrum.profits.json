@@ -1,0 +1,136 @@
+{
+  "blockNumber": 140029883,
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 AToken",
+      "description": "Aave v3 defi adapter for yield-generating token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "lend",
+      "chainId": 42161,
+      "product": "a-token",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xe50fa9b3c56ffb159cb0fca61f5c9d750e8128c8",
+          "name": "Aave Arbitrum WETH",
+          "symbol": "aArbWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "profitRaw": "2482173018002n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "75358504565038906n",
+                "startPositionValue": "0.075358504565038906",
+                "endPositionValueRaw": "75356022392020904n",
+                "endPositionValue": "0.075356022392020904"
+              },
+              "profit": "0.000002482173018002",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x078f358208685046a11c85e8ad32895ded33a249",
+          "name": "Aave Arbitrum WBTC",
+          "symbol": "aArbWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "profitRaw": "2n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "768772n",
+                "startPositionValue": "0.00768772",
+                "endPositionValueRaw": "768770n",
+                "endPositionValue": "0.0076877"
+              },
+              "profit": "0.00000002",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 139709605,
+      "toBlock": 140029883
+    },
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 StableDebtToken",
+      "description": "Aave v3 defi adapter for stable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 42161,
+      "product": "stable-debt-token",
+      "success": true,
+      "tokens": [],
+      "fromBlock": 139709605,
+      "toBlock": 140029883
+    },
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 VariableDebtToken",
+      "description": "Aave v3 defi adapter for variable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 42161,
+      "product": "variable-debt-token",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x8619d80fb0141ba7f184cbf22fd724116d9f7ffc",
+          "name": "Aave Arbitrum Variable Debt DAI",
+          "symbol": "variableDebtArbDAI",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "profitRaw": "-23023461360375721n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "204536484729450930267n",
+                "startPositionValue": "204.536484729450930267",
+                "endPositionValueRaw": "204513461268090554546n",
+                "endPositionValue": "204.513461268090554546"
+              },
+              "profit": "-0.023023461360375721",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 139709605,
+      "toBlock": 140029883
+    }
+  ]
+}

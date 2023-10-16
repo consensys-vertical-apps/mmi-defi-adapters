@@ -1,6 +1,5 @@
 import { ethers, formatUnits } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { filterMapAsync } from '../../../../core/utils/filters'
@@ -92,19 +91,6 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
       chainId: this.chainId,
       product: this.product,
     }
-  }
-
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    throw new NotImplementedError()
-
-    return {}
   }
 
   /**

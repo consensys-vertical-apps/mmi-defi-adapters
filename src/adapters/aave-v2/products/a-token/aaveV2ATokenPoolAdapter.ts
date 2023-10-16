@@ -1,9 +1,9 @@
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { AaveV2BasePoolAdapter } from '../../common/aaveV2BasePoolAdapter'
+import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'
 
-export class AaveV2ATokenPoolAdapter extends AaveV2BasePoolAdapter {
+export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
   product = 'a-token'
 
   getProtocolDetails(): ProtocolDetails {
@@ -19,7 +19,7 @@ export class AaveV2ATokenPoolAdapter extends AaveV2BasePoolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'a-token' })
+  @CacheToFile({ fileKey: 'a-token-v2' })
   async buildMetadata() {
     return super.buildMetadata()
   }
