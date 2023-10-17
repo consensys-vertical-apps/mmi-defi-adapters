@@ -29,20 +29,19 @@ This project requires Node 18. Ensure you're using the correct version (e.g. run
 
 To build an adapter follow these steps:
 
-1. Create a copy of `.env.example` as `.env`.
-2. Install the necessary packages with `npm i`
-3. Build the project with `npm run build:watch`
-4. To build an adapter run:
+1. Install the necessary packages with `npm i`
+2. Build the project with `npm run build:watch`
+3. To build an adapter run:
    - `npm run new-adapter`
-5. To create a typescript-smart-contract class create a json file with your abi and add it to your ${protocolName}/contracts/abis/ folder, then run:
+4. To create a typescript-smart-contract class create a json file with your abi and add it to your ${protocolName}/contracts/abis/ folder, then run:
    - `npm run new-adapter`
-6. To build metadata files run:
+5. To build metadata files run:
    - `npm run build-metadata`
-7. To build snapshot tests run:
+6. To build snapshot tests run:
    - `npm run build-snapshots`
-8. To run tests run:
+7. To run tests run:
    - `npm run test`
-9. To test your adapter further you can use the following commands, update userAddress and other params accordingly:
+8. To test your adapter further you can use the following commands, update userAddress and other params accordingly:
    - `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocols stargate --chains 1,arbitrum`
    - `npm run profits 0xB0D502E938ed5f4df2E681fE6E419ff29631d62b`
    - `npm run tvl`

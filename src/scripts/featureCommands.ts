@@ -1,39 +1,30 @@
 import { Command } from 'commander'
-import {
-  getApr,
-  getApy,
-  getDeposits,
-  getPositions,
-  getPrices,
-  getProfits,
-  getTotalValueLocked,
-  getWithdrawals,
-} from '..'
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
+import { DefiAdapter } from '../defi-adapters'
 import { AdapterResponse, GetEventsRequestInput } from '../types/response'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
-export function featureCommands(program: Command) {
+export function featureCommands(program: Command, defiAdapter: DefiAdapter) {
   addressCommand(
     program,
     'positions',
-    getPositions,
+    defiAdapter.getPositions,
     '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
   )
   addressCommand(
     program,
     'profits',
-    getProfits,
+    defiAdapter.getProfits,
     '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
   )
 
   addressEventsCommand(
     program,
     'deposits',
-    getDeposits,
+    defiAdapter.getDeposits,
     '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
     18262163,
     18262164,
@@ -46,7 +37,7 @@ export function featureCommands(program: Command) {
   addressEventsCommand(
     program,
     'withdrawals',
-    getWithdrawals,
+    defiAdapter.getWithdrawals,
     '0x1d201a9B9f136dE7e7fF4A80a27e96Af7789D9BE',
     18274545,
     18274547,
@@ -57,10 +48,10 @@ export function featureCommands(program: Command) {
     '573517',
   )
 
-  protocolCommand(program, 'prices', getPrices)
-  protocolCommand(program, 'tvl', getTotalValueLocked)
-  protocolCommand(program, 'apr', getApr)
-  protocolCommand(program, 'apy', getApy)
+  protocolCommand(program, 'prices', defiAdapter.getPrices)
+  protocolCommand(program, 'tvl', defiAdapter.getTotalValueLocked)
+  protocolCommand(program, 'apr', defiAdapter.getApr)
+  protocolCommand(program, 'apy', defiAdapter.getApy)
 }
 
 function addressCommand(

@@ -176,10 +176,12 @@ export class StargateVestingAdapter
     const contractToken = await getTokenMetadata(
       contractAddresses[this.chainId]!,
       this.chainId,
+      this.provider,
     )
     const underlyingToken = await getTokenMetadata(
       underlyingTokenAddress,
       this.chainId,
+      this.provider,
     )
 
     const metadataObject: StargateVestingMetadata = {

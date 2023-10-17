@@ -9,16 +9,16 @@ import { Chain, ChainName } from '../core/constants/chains'
 import { IMetadataBuilder } from '../core/decorators/cacheToFile'
 import { ProviderMissingError } from '../core/errors/errors'
 import { pascalCase } from '../core/utils/caseConversion'
-import { chainProviders } from '../core/utils/chainProviders'
 import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { DefiAdapter } from '../defi-adapters'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Json } from '../types/json'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
 
-export function buildMetadata(program: Command) {
+export function buildMetadata(program: Command, defiAdapter: DefiAdapter) {
   program
     .command('build-metadata')
     .option(
@@ -50,7 +50,7 @@ export function buildMetadata(program: Command) {
             continue
           }
 
-          const provider = chainProviders[chainId]
+          const provider = defiAdapter.chainProvider.providers[chainId]
 
           if (!provider) {
             logger.error({ chainId }, 'No provider found for chain')

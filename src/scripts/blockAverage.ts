@@ -4,12 +4,12 @@ import EthDater from 'ethereum-block-by-date'
 import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
-import { chainProviders } from '../core/utils/chainProviders'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { DefiAdapter } from '../defi-adapters'
 import { multiChainFilter } from './commandFilters'
 import n = types.namedTypes
 
-export function blockAverage(program: Command) {
+export function blockAverage(program: Command, defiAdapters: DefiAdapter) {
   program
     .command('block-average')
     .option(
@@ -25,7 +25,10 @@ export function blockAverage(program: Command) {
           return !filterChainIds || filterChainIds.includes(chainId)
         })
         .map(async (chainId) => {
-          const averageBlocksPerDay = await getAverageBlocksPerDay(chainId)
+          const averageBlocksPerDay = await getAverageBlocksPerDay(
+            chainId,
+            defiAdapters,
+          )
 
           return {
             chainId,
@@ -47,8 +50,11 @@ export function blockAverage(program: Command) {
     })
 }
 
-async function getAverageBlocksPerDay(chainId: Chain) {
-  const provider = chainProviders[chainId]
+async function getAverageBlocksPerDay(
+  chainId: Chain,
+  defiAdapters: DefiAdapter,
+) {
+  const provider = defiAdapters.chainProvider.providers[chainId]
 
   if (!provider) {
     throw new ProviderMissingError(chainId)

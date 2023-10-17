@@ -158,8 +158,8 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
             },
             { from: userAddress, blockTag: blockNumber },
           ),
-          getTokenMetadata(position.token0, this.chainId),
-          getTokenMetadata(position.token1, this.chainId),
+          getTokenMetadata(position.token0, this.chainId, this.provider),
+          getTokenMetadata(position.token1, this.chainId, this.provider),
         ])
 
         const nftName = this.protocolTokenName(
@@ -457,8 +457,8 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
         throw new Error(error)
       })
     const [token0Metadata, token1Metadata] = await Promise.all([
-      getTokenMetadata(token0, this.chainId),
-      getTokenMetadata(token1, this.chainId),
+      getTokenMetadata(token0, this.chainId, this.provider),
+      getTokenMetadata(token1, this.chainId, this.provider),
     ])
 
     const eventResults = await positionsManagerContract.queryFilter(
