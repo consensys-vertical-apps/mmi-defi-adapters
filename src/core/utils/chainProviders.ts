@@ -124,5 +124,3 @@ export class ChainProvider {
     }
   }
 }
-
-export default ChainProvider
