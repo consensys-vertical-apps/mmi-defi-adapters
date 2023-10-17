@@ -153,7 +153,7 @@ export async function getWithdrawals({
   tokenId,
   protocolId,
   chainId,
-  product,
+  productId,
 }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
   const provider = chainProviders[chainId]
 
@@ -163,7 +163,7 @@ export async function getWithdrawals({
         provider: provider!,
         chainId,
         protocolId,
-      }).getProtocolDetails().product == product,
+      }).getProtocolDetails().productId == productId,
   )
 
   if (!adapterClass) {
@@ -172,7 +172,7 @@ export async function getWithdrawals({
       error: {
         message: 'No adapter found',
         details: {
-          product,
+          productId,
           protocolId,
           chainId: chainId,
           chainName: ChainName[chainId],
@@ -211,7 +211,7 @@ export async function getDeposits({
   tokenId,
   protocolId,
   chainId,
-  product,
+  productId,
 }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
   const provider = chainProviders[chainId]
 
@@ -221,7 +221,7 @@ export async function getDeposits({
         provider: provider!,
         chainId,
         protocolId,
-      }).getProtocolDetails().product == product,
+      }).getProtocolDetails().productId == productId,
   )
 
   if (!adapterClass) {
@@ -230,7 +230,7 @@ export async function getDeposits({
       error: {
         message: 'No adapter found',
         details: {
-          product,
+          productId,
           protocolId,
           chainId: chainId,
           chainName: ChainName[chainId],
@@ -381,6 +381,16 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
 }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
+  const chainAdapters = Object.values(Chain).reduce(
+    (accumulator, current) => {
+      return {
+        ...accumulator,
+        [current]: buildAdaptersForChain(current),
+      }
+    },
+    {} as Record<Chain, IProtocolAdapter[]>,
+  )
+
   const protocolPromises = Object.entries(supportedProtocols)
     .filter(
       ([protocolIdKey, _]) =>
@@ -407,6 +417,7 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
                 provider,
                 chainId,
                 protocolId: protocolIdKey as Protocol,
+                adapters: chainAdapters[chainId],
               })
 
               return runTaskForAdapter(adapter, provider, runner)

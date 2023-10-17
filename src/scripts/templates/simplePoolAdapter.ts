@@ -41,7 +41,7 @@ export function simplePoolAdapterTemplate(
     extends SimplePoolAdapter
     implements IMetadataBuilder
   {
-    product = '${productId}'
+    productId = '${productId}'
   
     /**
      * Update me.
@@ -56,7 +56,7 @@ export function simplePoolAdapterTemplate(
         iconUrl: 'https://',
         positionType: PositionType.Supply,
         chainId: this.chainId,
-        product: this.product,
+        productId: this.productId,
       }
     }
   

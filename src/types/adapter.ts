@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { Erc20Metadata } from './erc20Metadata'
+import { IProtocolAdapter } from './IProtocolAdapter'
 
 export const TokenType = {
   Protocol: 'protocol',
@@ -154,7 +155,7 @@ export type ProtocolDetails = {
   /**
    * Unique protocol-product name
    */
-  product: string
+  productId: string
 }
 
 export interface GetPositionsInput {
@@ -358,4 +359,5 @@ export interface ProtocolAdapterParams {
   provider: ethers.JsonRpcProvider
   chainId: Chain
   protocolId: Protocol
+  adapters: IProtocolAdapter[]
 }

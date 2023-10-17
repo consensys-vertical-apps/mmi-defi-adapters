@@ -4,7 +4,6 @@ import { MetadataFiles, metadataKey } from '../metadata/AdapterMetadata'
 import { logger } from '../utils/logger'
 
 export interface IMetadataBuilder {
-  product: string
   buildMetadata(writeToFile?: boolean): Promise<Json>
 }
 
@@ -23,7 +22,7 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
         logger.info(
           {
             protocolId: this.protocolId,
-            productId: this.product,
+            productId: this.productId,
             chainId: this.chainId,
             fileKey,
           },
@@ -35,7 +34,7 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
           metadata: metadataObject,
           fileDetails: {
             protocolId: this.protocolId,
-            productId: this.product,
+            productId: this.productId,
             chainId: this.chainId,
             fileKey,
           },
@@ -46,7 +45,7 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
       const metadata = MetadataFiles.get(
         metadataKey({
           protocolId: this.protocolId,
-          productId: this.product,
+          productId: this.productId,
           chainId: this.chainId,
           fileKey,
         }),
@@ -56,7 +55,7 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
         logger.error(
           {
             protocolId: this.protocolId,
-            productId: this.product,
+            productId: this.productId,
             chainId: this.chainId,
             fileKey,
           },
@@ -68,7 +67,7 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
       logger.debug(
         {
           protocolId: this.protocolId,
-          productId: this.product,
+          productId: this.productId,
           chainId: this.chainId,
           fileKey,
         },

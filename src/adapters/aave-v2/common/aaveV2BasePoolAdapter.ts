@@ -49,8 +49,6 @@ export abstract class AaveV2BasePoolAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
-  product!: string
-
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,

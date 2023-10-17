@@ -104,7 +104,7 @@ function addressEventsCommand(
   defaultToBlock: number,
   defaultProtocolTokenAddress: string,
   defaultTokenId: string,
-  defaultProduct: string,
+  defaultProductId: string,
 ) {
   program
     .command(commandName)
@@ -117,7 +117,7 @@ function addressEventsCommand(
       defaultProtocolTokenAddress,
     )
     .argument('[tokenId]', 'Token Id of the position', defaultTokenId)
-    .argument('[product]', 'Name of product', defaultProduct)
+    .argument('[productId]', 'Id of product', defaultProductId)
     .showHelpAfterError()
     .action(
       async (
@@ -126,7 +126,7 @@ function addressEventsCommand(
         toBlock,
         protocolTokenAddress,
         tokenId,
-        product,
+        productId,
         protocolId,
         chainId,
       ) => {
@@ -136,7 +136,7 @@ function addressEventsCommand(
           toBlock: parseInt(toBlock, 10),
           protocolTokenAddress,
           tokenId,
-          product,
+          productId,
           protocolId,
           chainId,
         })

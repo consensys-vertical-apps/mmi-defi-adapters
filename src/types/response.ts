@@ -27,7 +27,7 @@ export type GetEventsRequestInput = {
   tokenId?: string
   protocolId: Protocol
   chainId: Chain
-  product: string
+  productId: string
 }
 
 export type AdapterErrorResponse = {

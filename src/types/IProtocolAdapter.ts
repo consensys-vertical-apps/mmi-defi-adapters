@@ -33,6 +33,11 @@ export interface IProtocolAdapter {
   chainId: Chain
 
   /**
+   * Unique identifier for this protocol adapter
+   */
+  productId: string
+
+  /**
    * @remarks Returns high level metadata for the protocol
    *
    * @returns {ProtocolDetails} Object containing details about the protocol such as name and description.

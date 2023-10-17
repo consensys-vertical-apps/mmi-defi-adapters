@@ -40,7 +40,7 @@ export type LidoWstEthMetadata = {
 }
 
 export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
-  product = 'wst-eth'
+  productId = 'wst-eth'
   protocolId: Protocol
   chainId: Chain
 
@@ -65,7 +65,7 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
       iconUrl: 'https://',
       positionType: PositionType.Supply,
       chainId: this.chainId,
-      product: this.product,
+      productId: this.productId,
     }
   }
 

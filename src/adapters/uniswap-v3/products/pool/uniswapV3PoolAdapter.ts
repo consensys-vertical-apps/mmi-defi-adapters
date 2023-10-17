@@ -68,7 +68,7 @@ const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 export class UniswapV3PoolAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
-  product = 'pool'
+  productId = 'pool'
   protocolId: Protocol
   chainId: Chain
 
@@ -90,7 +90,7 @@ export class UniswapV3PoolAdapter
         'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png',
       positionType: PositionType.Supply,
       chainId: this.chainId,
-      product: this.product,
+      productId: this.productId,
     }
   }
 

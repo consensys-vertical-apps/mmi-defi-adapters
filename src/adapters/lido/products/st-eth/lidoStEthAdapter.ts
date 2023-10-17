@@ -40,7 +40,7 @@ export type LidoStEthMetadata = {
 }
 
 export class LidoStEthAdapter implements IProtocolAdapter, IMetadataBuilder {
-  product = 'st-eth'
+  productId = 'st-eth'
   protocolId: Protocol
   chainId: Chain
 
@@ -61,7 +61,7 @@ export class LidoStEthAdapter implements IProtocolAdapter, IMetadataBuilder {
       iconUrl: 'https://',
       positionType: PositionType.Supply,
       chainId: this.chainId,
-      product: this.product,
+      productId: this.productId,
     }
   }
 
