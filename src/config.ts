@@ -1,6 +1,6 @@
 import convict, { Schema } from 'convict'
 
-export interface IConfigInput {
+export interface IConfig {
   provider: {
     ethereum: string
     optimism: string
@@ -17,18 +17,16 @@ export interface IConfigInput {
   logPretty: boolean
 }
 
-type IConfig = convict.Config<IConfigInput>
-
 /**
  * Config class is responsible for managing the application configuration.
  * It can load configuration from a provided object.
  * Environment variables have the highest precedence and can override other settings.
  */
 export class Config {
-  private defaultConfig: Schema<IConfigInput>
-  private config: IConfig
+  private defaultConfig: Schema<IConfig>
+  private config: convict.Config<IConfig>
 
-  constructor(config?: IConfigInput) {
+  constructor(config?: IConfig) {
     this.defaultConfig = {
       provider: {
         ethereum: {
@@ -121,7 +119,11 @@ export class Config {
     this.config.validate({ allowed: 'strict' })
   }
 
-  getConfigObject() {
-    return this.config
+  /**
+   * Get the entire configuration as a typed object.
+   * @returns The configuration object.
+   */
+  get values(): IConfig {
+    return this.config.getProperties()
   }
 }

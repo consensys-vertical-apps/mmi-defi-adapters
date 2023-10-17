@@ -59,67 +59,49 @@ export class ChainProvider {
   private initializeProviders() {
     return {
       [Chain.Ethereum]: this.provider({
-        url: this.config.getConfigObject().get('provider.ethereum'),
+        url: this.config.values.provider.ethereum,
         chainId: Chain.Ethereum,
-        enableMulticallQueue: this.config
-          .getConfigObject()
-          .get('useMulticallInterceptor'),
+        enableMulticallQueue: this.config.values.useMulticallInterceptor,
       }),
       [Chain.Optimism]: this.provider({
-        url: this.config.getConfigObject().get('provider.optimism'),
+        url: this.config.values.provider.optimism,
         chainId: Chain.Optimism,
-        enableMulticallQueue: this.config
-          .getConfigObject()
-          .get('useMulticallInterceptor'),
+        enableMulticallQueue: this.config.values.useMulticallInterceptor,
       }),
       [Chain.Bsc]: this.provider({
-        url: this.config.getConfigObject().get('provider.bsc'),
+        url: this.config.values.provider.bsc,
         chainId: Chain.Bsc,
-        enableMulticallQueue: this.config
-          .getConfigObject()
-          .get('useMulticallInterceptor'),
+        enableMulticallQueue: this.config.values.useMulticallInterceptor,
       }),
       [Chain.Polygon]: this.provider({
-        url: this.config.getConfigObject().get('provider.polygon'),
+        url: this.config.values.provider.polygon,
         chainId: Chain.Polygon,
-        enableMulticallQueue: this.config
-          .getConfigObject()
-          .get('useMulticallInterceptor'),
+        enableMulticallQueue: this.config.values.useMulticallInterceptor,
       }),
       [Chain.Fantom]: this.provider({
-        url: this.config.getConfigObject().get('provider.fantom'),
+        url: this.config.values.provider.fantom,
         chainId: Chain.Fantom,
-        enableMulticallQueue: this.config
-          .getConfigObject()
-          .get('useMulticallInterceptor'),
+        enableMulticallQueue: this.config.values.useMulticallInterceptor,
       }),
       [Chain.Arbitrum]: this.provider({
-        url: this.config.getConfigObject().get('provider.arbitrum'),
+        url: this.config.values.provider.arbitrum,
         chainId: Chain.Arbitrum,
-        enableMulticallQueue: this.config
-          .getConfigObject()
-          .get('useMulticallInterceptor'),
+        enableMulticallQueue: this.config.values.useMulticallInterceptor,
       }),
       [Chain.Avalanche]: this.provider({
-        url: this.config.getConfigObject().get('provider.avalanche'),
+        url: this.config.values.provider.avalanche,
         chainId: Chain.Avalanche,
-        enableMulticallQueue: this.config
-          .getConfigObject()
-          .get('useMulticallInterceptor'),
+        enableMulticallQueue: this.config.values.useMulticallInterceptor,
       }),
       [Chain.Linea]: this.provider({
-        url: this.config.getConfigObject().get('provider.linea'),
+        url: this.config.values.provider.linea,
         chainId: Chain.Linea,
-        enableMulticallQueue: this.config
-          .getConfigObject()
-          .get('useMulticallInterceptor'),
+        enableMulticallQueue: this.config.values.useMulticallInterceptor,
       }),
       [Chain.Base]: this.provider({
-        url: this.config.getConfigObject().get('provider.base'),
+        url: this.config.values.provider.base,
         chainId: Chain.Base,
-        enableMulticallQueue: this.config
-          .getConfigObject()
-          .get('useMulticallInterceptor'),
+        enableMulticallQueue: this.config.values.useMulticallInterceptor,
       }),
     }
   }

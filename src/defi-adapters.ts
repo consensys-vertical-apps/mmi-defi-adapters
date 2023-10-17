@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
-import { Config, IConfigInput } from './config'
+import { Config, IConfig } from './config'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
@@ -41,11 +41,11 @@ export class DefiAdapter {
   private config: Config
   chainProvider: ChainProvider
 
-  constructor(config?: IConfigInput) {
+  constructor(config?: IConfig) {
     this.config = new Config(config)
     this.chainProvider = new ChainProvider(this.config)
 
-    console.log(this.config.getConfigObject().getProperties())
+    console.log(this.config.values)
   }
 
   async getPositions({
