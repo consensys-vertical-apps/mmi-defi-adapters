@@ -3,7 +3,6 @@ import { Protocol } from '../adapters/protocols'
 import { AdaptersController } from '../core/adaptersController'
 import { Chain } from '../core/constants/chains'
 import { Erc20Metadata } from './erc20Metadata'
-import { IProtocolAdapter } from './IProtocolAdapter'
 
 export const TokenType = {
   Protocol: 'protocol',

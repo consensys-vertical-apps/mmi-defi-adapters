@@ -2,13 +2,14 @@ import { supportedProtocols } from '../adapters'
 import { Protocol } from '../adapters/protocols'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Chain } from './constants/chains'
+import { AdapterMissingError } from './errors/errors'
 import { chainProviders } from './utils/chainProviders'
 
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
     new Map()
 
-  buildAdapters(): void {
+  constructor() {
     Object.entries(supportedProtocols).forEach(
       ([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol
@@ -26,36 +27,30 @@ export class AdaptersController {
                 adaptersController: this,
               })
 
-              this.addAdapter(adapter)
+              const productId = adapter.productId
+
+              if (!this.adapters.has(chainId)) {
+                this.adapters.set(chainId, new Map())
+              }
+
+              const chainAdapters = this.adapters.get(chainId)!
+
+              if (!chainAdapters.has(protocolId)) {
+                chainAdapters.set(protocolId, new Map())
+              }
+
+              const protocolAdapters = chainAdapters.get(protocolId)!
+
+              if (protocolAdapters.has(productId)) {
+                throw new Error('Duplicated adapter')
+              }
+
+              protocolAdapters.set(productId, adapter)
             })
           },
         )
       },
     )
-  }
-
-  private addAdapter(adapter: IProtocolAdapter): void {
-    const chainId = adapter.chainId
-    const protocolId = adapter.protocolId
-    const productId = adapter.productId
-
-    if (!this.adapters.has(chainId)) {
-      this.adapters.set(chainId, new Map())
-    }
-
-    const chainAdapters = this.adapters.get(chainId)!
-
-    if (!chainAdapters.has(protocolId)) {
-      chainAdapters.set(protocolId, new Map())
-    }
-
-    const protocolAdapters = chainAdapters.get(protocolId)!
-
-    if (protocolAdapters.has(productId)) {
-      throw new Error('Duplicated adapter')
-    }
-
-    protocolAdapters.set(productId, adapter)
   }
 
   fetchAdapter(
@@ -66,9 +61,22 @@ export class AdaptersController {
     const adapter = this.adapters.get(chainId)?.get(protocolId)?.get(productId)
 
     if (!adapter) {
-      throw new Error('No Adapter')
+      throw new AdapterMissingError(chainId, protocolId, productId)
     }
 
     return adapter
+  }
+
+  fetchChainProtocolAdapters(
+    chainId: Chain,
+    protocolId: Protocol,
+  ): Map<string, IProtocolAdapter> {
+    const adapters = this.adapters.get(chainId)?.get(protocolId)
+
+    if (!adapters) {
+      throw new AdapterMissingError(chainId, protocolId)
+    }
+
+    return adapters
   }
 }
