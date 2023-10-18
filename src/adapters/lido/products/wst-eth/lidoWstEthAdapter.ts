@@ -152,7 +152,12 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
                 symbol: underlying.symbol,
                 decimals: underlying.decimals,
                 type: TokenType.Underlying,
-                balanceRaw: underlying.underlyingRateRaw * stEthBalance,
+                balanceRaw:
+                  stEthBalance *
+                  BigInt(
+                    Number(underlying.underlyingRateRaw) /
+                      10 ** contractToken.decimals,
+                  ),
               }
             }),
           },

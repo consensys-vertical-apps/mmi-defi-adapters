@@ -28,7 +28,7 @@
               "type": "underlying",
               "underlyingRateRaw": "1000000000000000000n",
               "underlyingRate": "1.0",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0000000000000000000000000000000000000000/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ]
         }
