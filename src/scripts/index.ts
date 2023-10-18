@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
 import 'dotenv/config'
-import { DefiAdapter } from '../defi-adapters'
+import { DefiProvider } from '../defiProvider'
 import { blockAverage } from './blockAverage'
 import { buildMetadata } from './buildMetadata'
 import { buildSnapshots } from './buildSnapshots'
@@ -11,7 +11,7 @@ import { newAdapterCommand } from './newAdapterCommand'
 
 const program = new Command('mmi-adapters')
 
-const defiAdapter = new DefiAdapter()
+const defiAdapter = new DefiProvider()
 const chainProviders = defiAdapter.chainProvider.providers
 
 featureCommands(program, defiAdapter)

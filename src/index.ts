@@ -1,3 +1,5 @@
-import * as defiAdapters from './defi-adapters'
+import * as defiAdapters from './defiProvider'
 
 export { defiAdapters }
+
+export * from './defiProvider'

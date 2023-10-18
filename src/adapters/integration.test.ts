@@ -3,7 +3,7 @@ import path from 'path'
 import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
-import { DefiAdapter } from '../defi-adapters'
+import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as exampleTestCases } from './example/tests/testCases'
@@ -13,7 +13,7 @@ import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
 const TEST_TIMEOUT = 10000
 
-const defiAdapter = new DefiAdapter()
+const defiAdapter = new DefiProvider()
 
 runAllTests()
 

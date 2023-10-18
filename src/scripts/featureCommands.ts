@@ -3,11 +3,11 @@ import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
-import { DefiAdapter } from '../defi-adapters'
+import { DefiProvider } from '../defiProvider'
 import { AdapterResponse, GetEventsRequestInput } from '../types/response'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
-export function featureCommands(program: Command, defiAdapter: DefiAdapter) {
+export function featureCommands(program: Command, defiAdapter: DefiProvider) {
   addressCommand(
     program,
     'positions',

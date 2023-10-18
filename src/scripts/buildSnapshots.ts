@@ -5,11 +5,11 @@ import { Protocol } from '../adapters/protocols'
 import { ChainName } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
-import { DefiAdapter } from '../defi-adapters'
+import { DefiProvider } from '../defiProvider'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 
-export function buildSnapshots(program: Command, defiAdapters: DefiAdapter) {
+export function buildSnapshots(program: Command, defiAdapters: DefiProvider) {
   program
     .command('build-snapshots')
     .option(

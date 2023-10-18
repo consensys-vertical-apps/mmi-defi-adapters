@@ -37,7 +37,7 @@ export {
   Protocol,
   TimePeriod,
 }
-export class DefiAdapter {
+export class DefiProvider {
   private config: Config
   chainProvider: ChainProvider
 

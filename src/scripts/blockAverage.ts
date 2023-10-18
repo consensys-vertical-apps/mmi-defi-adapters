@@ -5,7 +5,7 @@ import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
-import { DefiAdapter } from '../defi-adapters'
+import { DefiProvider } from '../defiProvider'
 import { multiChainFilter } from './commandFilters'
 import n = types.namedTypes
 import { ethers } from 'ethers'
