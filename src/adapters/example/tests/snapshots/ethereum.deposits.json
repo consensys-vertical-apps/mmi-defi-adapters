@@ -7,7 +7,7 @@
     "iconUrl": "https://",
     "positionType": "supply",
     "chainId": 1,
-    "product": "example-pool",
+    "productId": "example-pool",
     "success": true,
     "movements": [
       {

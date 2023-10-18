@@ -1,0 +1,39 @@
+{
+  "blockNumber": 18377483,
+  "snapshot": [
+    {
+      "protocolId": "lido",
+      "name": "Lido stEth",
+      "description": "Lido defi adapter for stEth",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "st-eth",
+      "success": false,
+      "error": {
+        "message": "invalid ENS name (disallowed character: \" \"‎ {20}) (argument=\"name\", value=\" 0x9fcc67d7db763787bb1c7f3bc7f34d3c548c19fe\", code=INVALID_ARGUMENT, version=6.7.1)",
+        "details": {
+          "name": "TypeError"
+        }
+      }
+    },
+    {
+      "protocolId": "lido",
+      "name": "Lido wstEth",
+      "description": "Lido defi adapter for wstEth",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "wst-eth",
+      "success": false,
+      "error": {
+        "message": "invalid ENS name (disallowed character: \" \"‎ {20}) (argument=\"name\", value=\" 0x9fcc67d7db763787bb1c7f3bc7f34d3c548c19fe\", code=INVALID_ARGUMENT, version=6.7.1)",
+        "details": {
+          "name": "TypeError"
+        }
+      }
+    }
+  ]
+}

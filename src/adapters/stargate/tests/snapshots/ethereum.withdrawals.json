@@ -7,7 +7,7 @@
     "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
     "positionType": "supply",
     "chainId": 1,
-    "product": "pool",
+    "productId": "pool",
     "success": true,
     "movements": [
       {

@@ -1,6 +1,5 @@
 import { ethers } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
@@ -44,12 +43,24 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
   protocolId: Protocol
   chainId: Chain
 
+  stEthAdapter: IProtocolAdapter
+
   private provider: ethers.JsonRpcProvider
 
-  constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+  }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
+    this.stEthAdapter = adaptersController.fetchAdapter(
+      chainId,
+      protocolId,
+      'st-eth',
+    )
   }
 
   /**
@@ -116,9 +127,13 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
       blockTag: blockNumber,
     })
 
-    const underlyingStEthBalance = await wstEthContract.getStETHByWstETH(
-      wstEthBalance,
-    )
+    const stEthBalance = await wstEthContract.getStETHByWstETH(wstEthBalance)
+
+    const stEthTokenUnderlyingRate =
+      await this.stEthAdapter.getProtocolTokenToUnderlyingTokenRate({
+        protocolTokenAddress: underlyingToken.address,
+        blockNumber,
+      })
 
     const tokens = [
       {
@@ -129,17 +144,17 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
           {
             ...underlyingToken,
             type: TokenType.Underlying,
-            balanceRaw: underlyingStEthBalance,
-            tokens: [
-              {
-                address: ZERO_ADDRESS,
-                name: 'Ethereum',
-                symbol: 'ETH',
-                decimals: 18,
+            balanceRaw: stEthBalance,
+            tokens: stEthTokenUnderlyingRate.tokens?.map((underlying) => {
+              return {
+                address: underlying.address,
+                name: underlying.name,
+                symbol: underlying.symbol,
+                decimals: underlying.decimals,
                 type: TokenType.Underlying,
-                balanceRaw: underlyingStEthBalance,
-              },
-            ],
+                balanceRaw: underlying.underlyingRateRaw * stEthBalance,
+              }
+            }),
           },
         ],
       },
