@@ -8,8 +8,12 @@ import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { DefiAdapter } from '../defi-adapters'
 import { multiChainFilter } from './commandFilters'
 import n = types.namedTypes
+import { ethers } from 'ethers'
 
-export function blockAverage(program: Command, defiAdapters: DefiAdapter) {
+export function blockAverage(
+  program: Command,
+  chainProviders: Record<Chain, ethers.JsonRpcApiProvider>,
+) {
   program
     .command('block-average')
     .option(
@@ -27,7 +31,7 @@ export function blockAverage(program: Command, defiAdapters: DefiAdapter) {
         .map(async (chainId) => {
           const averageBlocksPerDay = await getAverageBlocksPerDay(
             chainId,
-            defiAdapters,
+            chainProviders,
           )
 
           return {
@@ -52,9 +56,9 @@ export function blockAverage(program: Command, defiAdapters: DefiAdapter) {
 
 async function getAverageBlocksPerDay(
   chainId: Chain,
-  defiAdapters: DefiAdapter,
+  chainProviders: Record<Chain, ethers.JsonRpcApiProvider>,
 ) {
-  const provider = defiAdapters.chainProvider.providers[chainId]
+  const provider = chainProviders[chainId]
 
   if (!provider) {
     throw new ProviderMissingError(chainId)

@@ -179,13 +179,3 @@ export function buildSnapshots(program: Command, defiAdapters: DefiAdapter) {
       }
     })
 }
-
-// async function getLatestBlock(chainId: Chain): Promise<number> {
-//   const provider = chainProviders[chainId]
-
-//   if (!provider) {
-//     throw new ProviderMissingError(chainId)
-//   }
-
-//   return provider.getBlockNumber()
-// }

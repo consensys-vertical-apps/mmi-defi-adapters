@@ -11,18 +11,19 @@ import { newAdapterCommand } from './newAdapterCommand'
 
 const program = new Command('mmi-adapters')
 
-const defiAdapers = new DefiAdapter()
+const defiAdapter = new DefiAdapter()
+const chainProviders = defiAdapter.chainProvider.providers
 
-featureCommands(program, defiAdapers)
+featureCommands(program, defiAdapter)
 
 newAdapterCommand(program)
 
-blockAverage(program, defiAdapers)
+blockAverage(program, chainProviders)
 
 buildContractTypes(program)
 
-buildMetadata(program, defiAdapers)
+buildMetadata(program, chainProviders)
 
-buildSnapshots(program, defiAdapers)
+buildSnapshots(program, defiAdapter)
 
 program.parseAsync()

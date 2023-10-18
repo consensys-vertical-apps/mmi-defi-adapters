@@ -17,8 +17,12 @@ import { Json } from '../types/json'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
+import { ethers } from 'ethers'
 
-export function buildMetadata(program: Command, defiAdapter: DefiAdapter) {
+export function buildMetadata(
+  program: Command,
+  chainProviders: Record<Chain, ethers.JsonRpcProvider>,
+) {
   program
     .command('build-metadata')
     .option(
@@ -50,7 +54,7 @@ export function buildMetadata(program: Command, defiAdapter: DefiAdapter) {
             continue
           }
 
-          const provider = defiAdapter.chainProvider.providers[chainId]
+          const provider = chainProviders[chainId]
 
           if (!provider) {
             logger.error({ chainId }, 'No provider found for chain')
