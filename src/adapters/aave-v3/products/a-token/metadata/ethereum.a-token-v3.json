@@ -307,6 +307,34 @@
       "decimals": 18
     }
   },
+  "0x1ba9843bd4327c6c77011406de5fa8749f7e3479": {
+    "protocolToken": {
+      "address": "0x1ba9843bd4327c6c77011406de5fa8749f7e3479",
+      "name": "Aave Ethereum STG",
+      "symbol": "aEthSTG",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "decimals": 18
+    }
+  },
+  "0x5b502e3796385e1e9755d7043b9c945c3accec9c": {
+    "protocolToken": {
+      "address": "0x5b502e3796385e1e9755d7043b9c945c3accec9c",
+      "name": "Aave Ethereum KNC",
+      "symbol": "aEthKNC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202",
+      "name": "Kyber Network Crystal v2",
+      "symbol": "KNC",
+      "decimals": 18
+    }
+  },
   "0x8a458a9dc9048e005d22849f470891b840296619": {
     "protocolToken": {
       "address": "0x8a458a9dc9048e005d22849f470891b840296619",
