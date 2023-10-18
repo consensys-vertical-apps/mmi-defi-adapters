@@ -381,16 +381,6 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
 }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
-  const chainAdapters = Object.values(Chain).reduce(
-    (accumulator, current) => {
-      return {
-        ...accumulator,
-        [current]: buildAdaptersForChain(current),
-      }
-    },
-    {} as Record<Chain, IProtocolAdapter[]>,
-  )
-
   const protocolPromises = Object.entries(supportedProtocols)
     .filter(
       ([protocolIdKey, _]) =>
@@ -417,7 +407,6 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
                 provider,
                 chainId,
                 protocolId: protocolIdKey as Protocol,
-                adapters: chainAdapters[chainId],
               })
 
               return runTaskForAdapter(adapter, provider, runner)

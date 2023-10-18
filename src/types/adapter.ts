@@ -1,5 +1,6 @@
 import { ethers } from 'ethers'
 import { Protocol } from '../adapters/protocols'
+import { AdaptersController } from '../core/adaptersController'
 import { Chain } from '../core/constants/chains'
 import { Erc20Metadata } from './erc20Metadata'
 import { IProtocolAdapter } from './IProtocolAdapter'
@@ -359,5 +360,5 @@ export interface ProtocolAdapterParams {
   provider: ethers.JsonRpcProvider
   chainId: Chain
   protocolId: Protocol
-  adapters: IProtocolAdapter[]
+  adaptersController: AdaptersController
 }
