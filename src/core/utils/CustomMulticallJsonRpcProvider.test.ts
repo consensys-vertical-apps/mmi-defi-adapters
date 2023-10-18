@@ -1,4 +1,4 @@
-import { CustomMulticallJsonRpcProvider } from './customMulticallJsonRpcProvider'
+import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
 import { MulticallQueue } from './multicall'
 
 describe('CustomMulticallJsonRpcProvider', () => {
