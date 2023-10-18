@@ -1,4 +1,4 @@
-import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
+import { CustomMulticallJsonRpcProvider } from './customMulticallJsonRpcProvider'
 import { MulticallQueue } from './multicall'
 
 describe('CustomMulticallJsonRpcProvider', () => {
@@ -10,7 +10,7 @@ describe('CustomMulticallJsonRpcProvider', () => {
 
       const provider = new CustomMulticallJsonRpcProvider({
         url: 'www.oioi.com',
-        network: 1,
+        chainId: 1,
         multicallQueue,
       })
 
@@ -23,7 +23,7 @@ describe('CustomMulticallJsonRpcProvider', () => {
     it('sends normal eth_call', async () => {
       const provider = new CustomMulticallJsonRpcProvider({
         url: 'www.oioi.com',
-        network: 1,
+        chainId: 1,
         multicallQueue: {} as MulticallQueue,
       })
 

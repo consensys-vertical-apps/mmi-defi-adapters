@@ -49,7 +49,7 @@ export function buildSnapshots(program: Command) {
             switch (testCase.method) {
               case 'positions': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
 
                 return {
                   blockNumber,
@@ -66,7 +66,7 @@ export function buildSnapshots(program: Command) {
 
               case 'profits': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
 
                 return {
                   blockNumber,
@@ -103,7 +103,7 @@ export function buildSnapshots(program: Command) {
 
               case 'prices': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
 
                 return {
                   blockNumber,
@@ -119,7 +119,7 @@ export function buildSnapshots(program: Command) {
 
               case 'tvl': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
 
                 return {
                   blockNumber,
@@ -135,7 +135,7 @@ export function buildSnapshots(program: Command) {
 
               case 'apy': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
 
                 return {
                   blockNumber,
@@ -151,7 +151,7 @@ export function buildSnapshots(program: Command) {
 
               case 'apr': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestBlock(chainId))
+                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
 
                 return {
                   blockNumber,
@@ -185,12 +185,12 @@ export function buildSnapshots(program: Command) {
     })
 }
 
-async function getLatestBlock(chainId: Chain): Promise<number> {
+async function getLatestStableBlock(chainId: Chain): Promise<number> {
   const provider = chainProviders[chainId]
 
   if (!provider) {
     throw new ProviderMissingError(chainId)
   }
 
-  return provider.getBlockNumber()
+  return provider.getStableBlockNumber()
 }

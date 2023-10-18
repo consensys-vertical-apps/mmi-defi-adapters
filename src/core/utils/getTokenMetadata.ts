@@ -5,6 +5,7 @@ import { Chain } from '../constants/chains'
 import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
 import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
 import { chainProviders } from './chainProviders'
+import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
 
@@ -83,7 +84,7 @@ async function getOnChainTokenMetadata(
 
 async function fetchStringTokenData(
   tokenContract: Erc20,
-  provider: ethers.JsonRpcProvider,
+  provider: CustomJsonRpcProvider,
   functionName: 'name' | 'symbol',
 ): Promise<string> {
   try {

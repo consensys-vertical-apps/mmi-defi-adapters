@@ -1,6 +1,6 @@
-import { ethers } from 'ethers'
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
+import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
 import { Erc20Metadata } from './erc20Metadata'
 
 export const TokenType = {
@@ -35,7 +35,7 @@ export const PositionType = {
 export type PositionType = (typeof PositionType)[keyof typeof PositionType]
 
 export type GetBalancesInput = GetPositionsInput & {
-  provider: ethers.JsonRpcProvider
+  provider: CustomJsonRpcProvider
   chainId: Chain
   tokens: Erc20Metadata[]
 }
@@ -355,7 +355,7 @@ export interface CalculationData {
 }
 
 export interface ProtocolAdapterParams {
-  provider: ethers.JsonRpcProvider
+  provider: CustomJsonRpcProvider
   chainId: Chain
   protocolId: Protocol
 }
