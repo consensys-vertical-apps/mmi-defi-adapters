@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 import { Command } from 'commander'
+import { ethers } from 'ethers'
 import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
 import { supportedProtocols } from '../adapters'
@@ -11,13 +12,11 @@ import { ProviderMissingError } from '../core/errors/errors'
 import { pascalCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
-import { DefiProvider } from '../defiProvider'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Json } from '../types/json'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
-import { ethers } from 'ethers'
 
 export function buildMetadata(
   program: Command,

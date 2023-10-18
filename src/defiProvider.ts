@@ -44,8 +44,6 @@ export class DefiProvider {
   constructor(config?: IConfig) {
     this.config = new Config(config)
     this.chainProvider = new ChainProvider(this.config)
-
-    console.log(this.config.values)
   }
 
   async getPositions({
