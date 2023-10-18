@@ -9,7 +9,7 @@ import { DefiProvider } from '../defiProvider'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 
-export function buildSnapshots(program: Command, defiAdapters: DefiProvider) {
+export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
     .command('build-snapshots')
     .option(
@@ -39,11 +39,11 @@ export function buildSnapshots(program: Command, defiAdapters: DefiProvider) {
               case 'positions': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiAdapters.getLatestBlock(chainId))
+                  (await defiProvider.getLatestBlock(chainId))
 
                 return {
                   blockNumber,
-                  snapshot: await defiAdapters.getPositions({
+                  snapshot: await defiProvider.getPositions({
                     ...testCase.input,
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
@@ -57,11 +57,11 @@ export function buildSnapshots(program: Command, defiAdapters: DefiProvider) {
               case 'profits': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiAdapters.getLatestBlock(chainId))
+                  (await defiProvider.getLatestBlock(chainId))
 
                 return {
                   blockNumber,
-                  snapshot: await defiAdapters.getProfits({
+                  snapshot: await defiProvider.getProfits({
                     ...testCase.input,
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
@@ -74,7 +74,7 @@ export function buildSnapshots(program: Command, defiAdapters: DefiProvider) {
 
               case 'deposits': {
                 return {
-                  snapshot: await defiAdapters.getDeposits({
+                  snapshot: await defiProvider.getDeposits({
                     ...testCase.input,
                     chainId: chainId,
                     protocolId: protocolId,
@@ -84,7 +84,7 @@ export function buildSnapshots(program: Command, defiAdapters: DefiProvider) {
 
               case 'withdrawals': {
                 return {
-                  snapshot: await defiAdapters.getWithdrawals({
+                  snapshot: await defiProvider.getWithdrawals({
                     ...testCase.input,
                     chainId: chainId,
                     protocolId: protocolId,
@@ -95,11 +95,11 @@ export function buildSnapshots(program: Command, defiAdapters: DefiProvider) {
               case 'prices': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiAdapters.getLatestBlock(chainId))
+                  (await defiProvider.getLatestBlock(chainId))
 
                 return {
                   blockNumber,
-                  snapshot: await defiAdapters.getPrices({
+                  snapshot: await defiProvider.getPrices({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
                     blockNumbers: {
@@ -112,11 +112,11 @@ export function buildSnapshots(program: Command, defiAdapters: DefiProvider) {
               case 'tvl': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiAdapters.getLatestBlock(chainId))
+                  (await defiProvider.getLatestBlock(chainId))
 
                 return {
                   blockNumber,
-                  snapshot: await defiAdapters.getTotalValueLocked({
+                  snapshot: await defiProvider.getTotalValueLocked({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
                     blockNumbers: {
@@ -129,11 +129,11 @@ export function buildSnapshots(program: Command, defiAdapters: DefiProvider) {
               case 'apy': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiAdapters.getLatestBlock(chainId))
+                  (await defiProvider.getLatestBlock(chainId))
 
                 return {
                   blockNumber,
-                  snapshot: await defiAdapters.getApy({
+                  snapshot: await defiProvider.getApy({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
                     blockNumbers: {
@@ -146,11 +146,11 @@ export function buildSnapshots(program: Command, defiAdapters: DefiProvider) {
               case 'apr': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiAdapters.getLatestBlock(chainId))
+                  (await defiProvider.getLatestBlock(chainId))
 
                 return {
                   blockNumber,
-                  snapshot: await defiAdapters.getApr({
+                  snapshot: await defiProvider.getApr({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
                     blockNumbers: {

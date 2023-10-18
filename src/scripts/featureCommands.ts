@@ -7,24 +7,24 @@ import { DefiProvider } from '../defiProvider'
 import { AdapterResponse, GetEventsRequestInput } from '../types/response'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 
-export function featureCommands(program: Command, defiAdapter: DefiProvider) {
+export function featureCommands(program: Command, defiProvider: DefiProvider) {
   addressCommand(
     program,
     'positions',
-    defiAdapter.getPositions,
+    defiProvider.getPositions,
     '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
   )
   addressCommand(
     program,
     'profits',
-    defiAdapter.getProfits,
+    defiProvider.getProfits,
     '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
   )
 
   addressEventsCommand(
     program,
     'deposits',
-    defiAdapter.getDeposits,
+    defiProvider.getDeposits,
     '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
     18262163,
     18262164,
@@ -37,7 +37,7 @@ export function featureCommands(program: Command, defiAdapter: DefiProvider) {
   addressEventsCommand(
     program,
     'withdrawals',
-    defiAdapter.getWithdrawals,
+    defiProvider.getWithdrawals,
     '0x1d201a9B9f136dE7e7fF4A80a27e96Af7789D9BE',
     18274545,
     18274547,
@@ -48,10 +48,10 @@ export function featureCommands(program: Command, defiAdapter: DefiProvider) {
     '573517',
   )
 
-  protocolCommand(program, 'prices', defiAdapter.getPrices)
-  protocolCommand(program, 'tvl', defiAdapter.getTotalValueLocked)
-  protocolCommand(program, 'apr', defiAdapter.getApr)
-  protocolCommand(program, 'apy', defiAdapter.getApy)
+  protocolCommand(program, 'prices', defiProvider.getPrices)
+  protocolCommand(program, 'tvl', defiProvider.getTotalValueLocked)
+  protocolCommand(program, 'apr', defiProvider.getApr)
+  protocolCommand(program, 'apy', defiProvider.getApy)
 }
 
 function addressCommand(

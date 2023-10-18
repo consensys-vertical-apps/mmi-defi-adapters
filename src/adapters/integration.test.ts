@@ -13,7 +13,7 @@ import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
 const TEST_TIMEOUT = 10000
 
-const defiAdapter = new DefiProvider()
+const defiProvider = new DefiProvider()
 
 runAllTests()
 
@@ -42,7 +42,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await defiAdapter.getPositions({
+            const response = await defiProvider.getPositions({
               ...testCase.input,
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
@@ -72,7 +72,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await defiAdapter.getProfits({
+            const response = await defiProvider.getProfits({
               ...testCase.input,
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
@@ -99,7 +99,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           async (_, testCase) => {
             const { snapshot } = await fetchSnapshot(testCase, protocolId)
 
-            const response = await defiAdapter.getDeposits({
+            const response = await defiProvider.getDeposits({
               ...testCase.input,
               protocolId: protocolId,
               chainId: testCase.chainId,
@@ -125,7 +125,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           async (_, testCase) => {
             const { snapshot } = await fetchSnapshot(testCase, protocolId)
 
-            const response = await defiAdapter.getWithdrawals({
+            const response = await defiProvider.getWithdrawals({
               ...testCase.input,
               chainId: testCase.chainId,
               protocolId,
@@ -154,7 +154,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await defiAdapter.getPrices({
+            const response = await defiProvider.getPrices({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               blockNumbers: { [testCase.chainId]: blockNumber },
@@ -181,7 +181,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await defiAdapter.getTotalValueLocked({
+            const response = await defiProvider.getTotalValueLocked({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               blockNumbers: { [testCase.chainId]: blockNumber },
@@ -208,7 +208,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await defiAdapter.getApy({
+            const response = await defiProvider.getApy({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               blockNumbers: { [testCase.chainId]: blockNumber },
@@ -235,7 +235,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await defiAdapter.getApr({
+            const response = await defiProvider.getApr({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               blockNumbers: { [testCase.chainId]: blockNumber },
