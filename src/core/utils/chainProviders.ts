@@ -38,6 +38,8 @@ export class ChainProvider {
 
     const provider = new ethers.JsonRpcProvider(url, chainId)
 
+    // deployed on 100+ chains at address
+    // https://www.multicall3.com/deployments
     const multicallContract = Multicall__factory.connect(
       MULTICALL_ADDRESS,
       provider,
