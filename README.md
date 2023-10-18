@@ -21,6 +21,37 @@ This library is designed to simplify and standardize the process of fetching and
    - Withdrawals by address
    - Claimed rewards by address
 
+Sure, here's your updated Quick Start section:
+
+## Quick Start
+
+This project requires Node 18. Ensure you're using the correct version (e.g. run `nvm use`)
+
+To build an adapter follow these steps:
+
+1. Create a copy of `.env.example` as `.env`.
+2. Install the necessary packages with `npm i`
+3. Build the project with `npm run build:watch`
+4. To build an adapter run:
+   - `npm run new-adapter`
+5. To create a typescript-smart-contract class create a json file with your abi and add it to your ${protocolName}/contracts/abis/ folder, then run:
+   - `npm run new-adapter`
+6. To build metadata files run:
+   - `npm run build-metadata`
+7. To build snapshot tests run:
+   - `npm run build-snapshots`
+8. To run tests run:
+   - `npm run test`
+9. To test your adapter further you can use the following commands, update userAddress and other params accordingly:
+   - `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocols stargate --chains 1,arbitrum`
+   - `npm run profits 0xB0D502E938ed5f4df2E681fE6E419ff29631d62b`
+   - `npm run tvl`
+   - `npm run prices`
+   - `npm run apr`
+   - `npm run apy`
+   - `npm run deposits 0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5 18262162 18262164 0xC36442b4a4522E871399CD717aBDD847Ab11FE88 pool uniswap-v3 1 573046`
+   - `npm run withdrawals 0x4Ffc5F22770ab6046c8D66DABAe3A9CD1E7A03e7 17979753 17979755 0xdf0770df86a8034b3efef0a1bb3c889b8332ff56 pool stargate 1`
+
 ## Documentation 📖
 
 Detailed documentation on the adapter methods can be found [here](./docs/interfaces/IProtocolAdapter.IProtocolAdapter.md).
@@ -139,76 +170,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 - Node v18
 
-### Quick Start
-
-This project requires Node 18. Ensure you're using the correct version (e.g. run `nvm use`)
-
-To run the project and execute adapters in default mode with our test addresses, follow these steps:
-
-1. Create a copy of `.env.example` as `.env`.
-2. Install the necessary packages with `npm i`
-3. Build the project with `npm run build:watch`
-4. Run the following commands to execute various functions:
-   - `npm run positions`
-   - `npm run profits`
-   - `npm run tvl`
-   - `npm run prices`
-   - `npm run apr`
-   - `npm run apy`
-   - `npm run withdrawals`
-   - `npm run deposits`
-
-## Installation
-
-Create a copy of `.env.example` as `.env` and run `npm i` to install the necessary packages.
-
-## Building
-
-Use `npm run build` to build the app once, or `npm run build:watch` to constantly build the app during development.
-
-# Running the App 🏃‍♂️
-
 ### CLI Help
 
 To get specific details on available commands, run `npm run adapters-cli`. For arguments and options for specific commands, use `npm run positions -- --help`.
-
-### Filtering
-
-You can get results for specific protocols and chains for every command by adding `--chains <chains>` and/or `--protocols <protocols>`. Values can be provided individually or as a comma-separated array.
-
-For example, `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocol stargate --chain 1,arbitrum`.
-
-### Get Positions
-
-To get positions, run `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255`.
-
-### Get PnL
-
-To get profit and loss, run `npm run profits 0xB0D502E938ed5f4df2E681fE6E419ff29631d62b`.
-
-### Get Price Per Share
-
-To get price per share, run `npm run prices`.
-
-### Get Total Value Locked (TVL)
-
-To get TVL, run `npm run tvl`.
-
-### Get APR
-
-To get APR, run `npm run apr`.
-
-### Get APY
-
-To get APY, run `npm run apy`.
-
-### Get Deposits
-
-To get deposits, run `npm run deposits 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336`.
-
-### Get Withdrawals
-
-To get withdrawals, run `npm run withdrawals 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 17719334 17719336`.
 
 ## Adding a new Adapter (CLI)
 
@@ -218,13 +182,9 @@ Run the following command to add a new adapter `npm run new-adapter`
 
 This will start an interactive process in the command line to create a new adapter. Running `npm run new-adapter -- --help` shows available options for defaults.
 
-## Adding a New Protocol or Adapter manually
-
-See [NON-CLI-ADAPTER.md](NON-CLI-ADAPTER).
-
 ## Contract Factories
 
-Add a JSON file with the ABI of any new contract to the folder `src/contracts/abis/<protocol-name>`. Run `npm run build-types` to generate factories and ABIs for those contracts automatically.
+Add a JSON file with the ABI of any new contract to the folder `src/adapter/<protocol-name>/contracts/abis`. Run `npm run build-types` to generate factories and ABIs for those contracts automatically.
 
 ## Test Snapshots
 

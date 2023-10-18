@@ -1,0 +1,43 @@
+{
+  "snapshot": {
+    "protocolId": "uniswap-v3",
+    "name": "UniswapV3",
+    "description": "UniswapV3 defi adapter",
+    "siteUrl": "https://uniswap.org/",
+    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "product": "pool",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "name": "LDO / WETH - 0.3%",
+          "symbol": "LDO / WETH - 0.3%",
+          "decimals": 18,
+          "tokenId": "573517"
+        },
+        "underlyingTokensMovement": {
+          "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32": {
+            "movementValueRaw": "6050612623457024522962n",
+            "address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+            "name": "Lido DAO Token",
+            "symbol": "LDO",
+            "decimals": 18,
+            "movementValue": "6050.612623457024522962"
+          },
+          "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2": {
+            "movementValueRaw": "29079681341117729741n",
+            "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+            "name": "Wrapped Ether",
+            "symbol": "WETH",
+            "decimals": 18,
+            "movementValue": "29.079681341117729741"
+          }
+        },
+        "blockNumber": 18274547
+      }
+    ]
+  }
+}

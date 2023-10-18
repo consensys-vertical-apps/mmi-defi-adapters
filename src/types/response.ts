@@ -24,10 +24,10 @@ export type GetEventsRequestInput = {
   fromBlock: number
   toBlock: number
   protocolTokenAddress: string
-  tokenId?: string
   protocolId: Protocol
   chainId: Chain
   productId: string
+  tokenId?: string
 }
 
 export type AdapterErrorResponse = {

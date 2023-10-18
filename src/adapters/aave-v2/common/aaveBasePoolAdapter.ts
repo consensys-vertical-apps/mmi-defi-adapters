@@ -21,6 +21,7 @@ import {
   ProtocolRewardPosition,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
+import { Protocol } from '../../protocols'
 import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
@@ -34,10 +35,23 @@ type AaveV2PoolMetadata = Record<
   }
 >
 
-const protocolDataProviderContractAddresses: Partial<Record<Chain, string>> = {
-  [Chain.Ethereum]: '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
-  [Chain.Polygon]: '0x7551b5D2763519d4e37e8B81929D336De671d46d',
-  [Chain.Avalanche]: '0x65285E9dfab318f57051ab2b139ccCf232945451',
+const protocolDataProviderContractAddresses: Partial<
+  Record<Protocol, Partial<Record<Chain, string>>>
+> = {
+  [Protocol.AaveV2]: {
+    [Chain.Ethereum]: '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
+    [Chain.Polygon]: '0x7551b5D2763519d4e37e8B81929D336De671d46d',
+    [Chain.Avalanche]: '0x65285E9dfab318f57051ab2b139ccCf232945451',
+  },
+  [Protocol.AaveV3]: {
+    [Chain.Ethereum]: '0x7B4EB56E7CD4b454BA8ff71E4518426369a138a3',
+    [Chain.Optimism]: '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
+    [Chain.Arbitrum]: '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
+    [Chain.Polygon]: '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
+    [Chain.Fantom]: '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
+    [Chain.Avalanche]: '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
+    [Chain.Base]: '0x2d8A3C5677189723C4cB8873CfC9C8976FDF38Ac',
+  },
 }
 
 // A RAY unit represents 27 decimal places
@@ -45,7 +59,7 @@ const RAY = 10 ** 27
 
 // Aave tokens always pegged one to one to underlying
 const PRICE_PEGGED_TO_ONE = 1
-export abstract class AaveV2BasePoolAdapter
+export abstract class AaveBasePoolAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
@@ -107,7 +121,7 @@ export abstract class AaveV2BasePoolAdapter
 
   async buildMetadata() {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
-      protocolDataProviderContractAddresses[this.chainId]!,
+      protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
     )
 
@@ -115,7 +129,8 @@ export abstract class AaveV2BasePoolAdapter
       await protocolDataProviderContract.getAllReservesTokens()
 
     const metadataObject: AaveV2PoolMetadata = {}
-    for (const { tokenAddress } of reserveTokens) {
+
+    const promises = reserveTokens.map(async ({ tokenAddress }) => {
       const reserveConfigurationData =
         await protocolDataProviderContract.getReserveConfigurationData(
           tokenAddress,
@@ -125,7 +140,7 @@ export abstract class AaveV2BasePoolAdapter
         !reserveConfigurationData.isActive ||
         reserveConfigurationData.isFrozen
       ) {
-        continue
+        return
       }
 
       const reserveTokenAddresses =
@@ -133,18 +148,27 @@ export abstract class AaveV2BasePoolAdapter
           tokenAddress,
         )
 
-      const protocolToken = await getTokenMetadata(
+      const protocolTokenPromise = getTokenMetadata(
         this.getReserveTokenAddress(reserveTokenAddresses),
         this.chainId,
       )
+      const underlyingTokenPromise = getTokenMetadata(
+        tokenAddress,
+        this.chainId,
+      )
 
-      const underlyingToken = await getTokenMetadata(tokenAddress, this.chainId)
+      const [protocolToken, underlyingToken] = await Promise.all([
+        protocolTokenPromise,
+        underlyingTokenPromise,
+      ])
 
       metadataObject[protocolToken.address] = {
         protocolToken,
         underlyingToken,
       }
-    }
+    })
+
+    await Promise.all(promises)
 
     return metadataObject
   }
@@ -231,7 +255,7 @@ export abstract class AaveV2BasePoolAdapter
     blockNumber,
   }: GetAprInput): Promise<number> {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
-      protocolDataProviderContractAddresses[this.chainId]!,
+      protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
     )
 

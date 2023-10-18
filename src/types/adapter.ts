@@ -270,7 +270,7 @@ export interface BaseTokenMovement extends Erc20Metadata {
 }
 
 export interface MovementsByBlock {
-  protocolToken: Erc20Metadata
+  protocolToken: Erc20Metadata & { tokenId?: string }
   /**
    * Movements in or out of a protocol position
    */

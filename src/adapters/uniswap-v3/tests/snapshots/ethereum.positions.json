@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18326120,
+  "blockNumber": 18328210,
   "snapshot": [
     {
       "protocolId": "uniswap-v3",
@@ -14,6 +14,7 @@
       "tokens": [
         {
           "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "tokenId": "567587",
           "name": "WAGMI / WETH - 1.0%",
           "symbol": "WAGMI / WETH - 1.0%",
           "decimals": 18,
@@ -65,6 +66,7 @@
         },
         {
           "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "tokenId": "573046",
           "name": "ARB / WETH - 1.0%",
           "symbol": "ARB / WETH - 1.0%",
           "decimals": 18,

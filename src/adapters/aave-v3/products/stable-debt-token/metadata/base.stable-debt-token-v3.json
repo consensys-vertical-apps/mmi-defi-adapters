@@ -1,0 +1,44 @@
+{
+  "0xaed3b56fea82e809665f02acbcdec0816c75f4d9": {
+    "protocolToken": {
+      "address": "0xaed3b56fea82e809665f02acbcdec0816c75f4d9",
+      "name": "Aave Base Stable Debt WETH",
+      "symbol": "stableDebtBasWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xa9df5c62d16d3f496673f4d736852017b086eca0": {
+    "protocolToken": {
+      "address": "0xa9df5c62d16d3f496673f4d736852017b086eca0",
+      "name": "Aave Base Stable Debt cbETH",
+      "symbol": "stableDebtBascbETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22",
+      "name": "Coinbase Wrapped Staked ETH",
+      "symbol": "cbETH",
+      "decimals": 18
+    }
+  },
+  "0xbbadd47fbafa9de717fe203e4707deb893c64654": {
+    "protocolToken": {
+      "address": "0xbbadd47fbafa9de717fe203e4707deb893c64654",
+      "name": "Aave Base Stable Debt USDbC",
+      "symbol": "stableDebtBasUSDbC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca",
+      "name": "USD Base Coin",
+      "symbol": "USDbC",
+      "decimals": 6
+    }
+  }
+}

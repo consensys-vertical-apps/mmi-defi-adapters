@@ -1,16 +1,16 @@
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { PositionType, ProtocolDetails } from '../../../../types/adapter'
-import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter'
-import { ProtocolDataProvider } from '../../contracts'
+import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
+import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 
-export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
-  productId = 'stable-debt-token'
+export class AaveV3VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
+  productId = 'variable-debt-token'
 
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Aave v2 StableDebtToken',
-      description: 'Aave v2 defi adapter for stable interest-accruing token',
+      name: 'Aave v3 VariableDebtToken',
+      description: 'Aave v3 defi adapter for variable interest-accruing token',
       siteUrl: 'https://aave.com/',
       iconUrl: 'https://aave.com/favicon.ico',
       positionType: PositionType.Borrow,
@@ -19,7 +19,7 @@ export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
     }
   }
 
-  @CacheToFile({ fileKey: 'stable-debt-token-v2' })
+  @CacheToFile({ fileKey: 'variable-debt-token-v3' })
   async buildMetadata() {
     return super.buildMetadata()
   }
@@ -29,12 +29,12 @@ export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
       ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
     >,
   ): string {
-    return reserveTokenAddresses.stableDebtTokenAddress
+    return reserveTokenAddresses.variableDebtTokenAddress
   }
 
   protected getReserveTokenRate(
     reserveData: Awaited<ReturnType<ProtocolDataProvider['getReserveData']>>,
   ): bigint {
-    return reserveData.stableBorrowRate
+    return reserveData.variableBorrowRate
   }
 }

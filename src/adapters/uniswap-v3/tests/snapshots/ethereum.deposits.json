@@ -1,0 +1,43 @@
+{
+  "snapshot": {
+    "protocolId": "uniswap-v3",
+    "name": "UniswapV3",
+    "description": "UniswapV3 defi adapter",
+    "siteUrl": "https://uniswap.org/",
+    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "product": "pool",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "name": "ARB / WETH - 1.0%",
+          "symbol": "ARB / WETH - 1.0%",
+          "decimals": 18,
+          "tokenId": "573046"
+        },
+        "underlyingTokensMovement": {
+          "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1": {
+            "movementValueRaw": "43155666557030000000000n",
+            "address": "0xb50721bcf8d664c30412cfbc6cf7a15145234ad1",
+            "name": "Arbitrum",
+            "symbol": "ARB",
+            "decimals": 18,
+            "movementValue": "43155.66655703"
+          },
+          "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2": {
+            "movementValueRaw": "0n",
+            "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+            "name": "Wrapped Ether",
+            "symbol": "WETH",
+            "decimals": 18,
+            "movementValue": "0.0"
+          }
+        },
+        "blockNumber": 18262163
+      }
+    ]
+  }
+}

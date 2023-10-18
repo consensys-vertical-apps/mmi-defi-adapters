@@ -74,7 +74,7 @@ export class StargatePoolAdapter
 
     const metadataObject: StargatePoolMetadata = {}
 
-    for (let i = 0; i < poolsLength; i++) {
+    const promises = Array.from({ length: poolsLength }, async (_, i) => {
       const poolAddress = (await lpFactoryContract.allPools(i)).toLowerCase()
 
       const poolContract = StargateToken__factory.connect(
@@ -82,21 +82,33 @@ export class StargatePoolAdapter
         this.provider,
       )
 
-      const poolId = Number(await poolContract.poolId())
-      const underlyingTokenAddress = (await poolContract.token()).toLowerCase()
+      const poolIdPromise = poolContract.poolId()
+      const underlyingTokenAddressPromise = poolContract.token()
 
-      const protocolToken = await getTokenMetadata(poolAddress, this.chainId)
-      const underlyingToken = await getTokenMetadata(
-        underlyingTokenAddress,
+      const [poolId, underlyingTokenAddress] = await Promise.all([
+        poolIdPromise,
+        underlyingTokenAddressPromise,
+      ])
+
+      const protocolTokenPromise = getTokenMetadata(poolAddress, this.chainId)
+      const underlyingTokenPromise = getTokenMetadata(
+        underlyingTokenAddress.toLowerCase(),
         this.chainId,
       )
 
+      const [protocolToken, underlyingToken] = await Promise.all([
+        protocolTokenPromise,
+        underlyingTokenPromise,
+      ])
+
       metadataObject[poolAddress] = {
-        poolId,
+        poolId: Number(poolId),
         protocolToken,
         underlyingToken,
       }
-    }
+    })
+
+    await Promise.all(promises)
 
     return metadataObject
   }
