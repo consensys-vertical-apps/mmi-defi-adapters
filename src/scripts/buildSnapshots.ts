@@ -1,26 +1,17 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 import { Command } from 'commander'
-import {
-  getApr,
-  getApy,
-  getDeposits,
-  getPositions,
-  getPrices,
-  getProfits,
-  getTotalValueLocked,
-  getWithdrawals,
-} from '..'
 import { Protocol } from '../adapters/protocols'
 import { Chain, ChainName } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
-import { chainProviders } from '../core/utils/chainProviders'
+import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
+import { DefiProvider } from '../defiProvider'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 
-export function buildSnapshots(program: Command) {
+export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
     .command('build-snapshots')
     .option(
@@ -49,11 +40,15 @@ export function buildSnapshots(program: Command) {
             switch (testCase.method) {
               case 'positions': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
+                  testCase.blockNumber ??
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
-                  snapshot: await getPositions({
+                  snapshot: await defiProvider.getPositions({
                     ...testCase.input,
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
@@ -66,11 +61,15 @@ export function buildSnapshots(program: Command) {
 
               case 'profits': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
+                  testCase.blockNumber ??
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
-                  snapshot: await getProfits({
+                  snapshot: await defiProvider.getProfits({
                     ...testCase.input,
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
@@ -83,7 +82,7 @@ export function buildSnapshots(program: Command) {
 
               case 'deposits': {
                 return {
-                  snapshot: await getDeposits({
+                  snapshot: await defiProvider.getDeposits({
                     ...testCase.input,
                     chainId: chainId,
                     protocolId: protocolId,
@@ -93,7 +92,7 @@ export function buildSnapshots(program: Command) {
 
               case 'withdrawals': {
                 return {
-                  snapshot: await getWithdrawals({
+                  snapshot: await defiProvider.getWithdrawals({
                     ...testCase.input,
                     chainId: chainId,
                     protocolId: protocolId,
@@ -103,11 +102,15 @@ export function buildSnapshots(program: Command) {
 
               case 'prices': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
+                  testCase.blockNumber ??
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
-                  snapshot: await getPrices({
+                  snapshot: await defiProvider.getPrices({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
                     blockNumbers: {
@@ -119,11 +122,15 @@ export function buildSnapshots(program: Command) {
 
               case 'tvl': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
+                  testCase.blockNumber ??
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
-                  snapshot: await getTotalValueLocked({
+                  snapshot: await defiProvider.getTotalValueLocked({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
                     blockNumbers: {
@@ -135,11 +142,15 @@ export function buildSnapshots(program: Command) {
 
               case 'apy': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
+                  testCase.blockNumber ??
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
-                  snapshot: await getApy({
+                  snapshot: await defiProvider.getApy({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
                     blockNumbers: {
@@ -151,11 +162,15 @@ export function buildSnapshots(program: Command) {
 
               case 'apr': {
                 const blockNumber =
-                  testCase.blockNumber ?? (await getLatestStableBlock(chainId))
+                  testCase.blockNumber ??
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
-                  snapshot: await getApr({
+                  snapshot: await defiProvider.getApr({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
                     blockNumbers: {
@@ -185,9 +200,10 @@ export function buildSnapshots(program: Command) {
     })
 }
 
-async function getLatestStableBlock(chainId: Chain): Promise<number> {
-  const provider = chainProviders[chainId]
-
+async function getLatestStableBlock(
+  provider: CustomJsonRpcProvider,
+  chainId: Chain,
+): Promise<number> {
   if (!provider) {
     throw new ProviderMissingError(chainId)
   }

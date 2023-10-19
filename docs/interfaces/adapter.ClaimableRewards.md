@@ -39,7 +39,7 @@ User's balance raw
 
 #### Defined in
 
-[adapter.ts:188](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L188)
+[adapter.ts:199](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L199)
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:219](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L219)
+[adapter.ts:231](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L231)
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:220](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L220)
+[adapter.ts:232](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L232)
 
 ___
 

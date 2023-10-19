@@ -18,6 +18,7 @@ User's position, includes balance of protocol token related underlying token bal
 
 - [balanceRaw](adapter.ProtocolPosition.md#balanceraw)
 - [type](adapter.ProtocolPosition.md#type)
+- [tokenId](adapter.ProtocolPosition.md#tokenid)
 - [tokens](adapter.ProtocolPosition.md#tokens)
 - [address](adapter.ProtocolPosition.md#address)
 - [name](adapter.ProtocolPosition.md#name)
@@ -38,7 +39,7 @@ User's balance raw
 
 #### Defined in
 
-[adapter.ts:188](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L188)
+[adapter.ts:199](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L199)
 
 ___
 
@@ -48,7 +49,19 @@ ___
 
 #### Defined in
 
-[adapter.ts:227](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L227)
+[adapter.ts:239](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L239)
+
+___
+
+### tokenId
+
+• `Optional` **tokenId**: `string`
+
+Used by NFT Defi Positions, e.g. uniswapV3
+
+#### Defined in
+
+[adapter.ts:244](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L244)
 
 ___
 
@@ -60,7 +73,7 @@ Underlying token balances
 
 #### Defined in
 
-[adapter.ts:232](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L232)
+[adapter.ts:249](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L249)
 
 ___
 

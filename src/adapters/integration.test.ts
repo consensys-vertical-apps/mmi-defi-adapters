@@ -1,18 +1,9 @@
 import { promises as fs } from 'fs'
 import path from 'path'
-import {
-  getPositions,
-  getProfits,
-  getDeposits,
-  getWithdrawals,
-  getPrices,
-  getTotalValueLocked,
-  getApy,
-  getApr,
-} from '..'
 import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
+import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as exampleTestCases } from './example/tests/testCases'
@@ -21,6 +12,8 @@ import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
 const TEST_TIMEOUT = 10000
+
+const defiProvider = new DefiProvider()
 
 runAllTests()
 
@@ -49,7 +42,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await getPositions({
+            const response = await defiProvider.getPositions({
               ...testCase.input,
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
@@ -79,7 +72,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await getProfits({
+            const response = await defiProvider.getProfits({
               ...testCase.input,
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
@@ -106,7 +99,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           async (_, testCase) => {
             const { snapshot } = await fetchSnapshot(testCase, protocolId)
 
-            const response = await getDeposits({
+            const response = await defiProvider.getDeposits({
               ...testCase.input,
               protocolId: protocolId,
               chainId: testCase.chainId,
@@ -132,7 +125,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           async (_, testCase) => {
             const { snapshot } = await fetchSnapshot(testCase, protocolId)
 
-            const response = await getWithdrawals({
+            const response = await defiProvider.getWithdrawals({
               ...testCase.input,
               chainId: testCase.chainId,
               protocolId,
@@ -161,7 +154,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await getPrices({
+            const response = await defiProvider.getPrices({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               blockNumbers: { [testCase.chainId]: blockNumber },
@@ -188,7 +181,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await getTotalValueLocked({
+            const response = await defiProvider.getTotalValueLocked({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               blockNumbers: { [testCase.chainId]: blockNumber },
@@ -215,7 +208,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await getApy({
+            const response = await defiProvider.getApy({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               blockNumbers: { [testCase.chainId]: blockNumber },
@@ -242,7 +235,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               protocolId,
             )
 
-            const response = await getApr({
+            const response = await defiProvider.getApr({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               blockNumbers: { [testCase.chainId]: blockNumber },

@@ -4,7 +4,6 @@ import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
 import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
 import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
-import { chainProviders } from './chainProviders'
 import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
@@ -19,6 +18,7 @@ const CHAIN_METADATA: Partial<
 export async function getTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
+  provider: CustomJsonRpcProvider,
 ): Promise<Erc20Metadata> {
   const fileMetadata = CHAIN_METADATA[chainId]
   if (fileMetadata) {
@@ -40,6 +40,7 @@ export async function getTokenMetadata(
   const onChainTokenMetadata = await getOnChainTokenMetadata(
     tokenAddress,
     chainId,
+    provider,
   )
   if (onChainTokenMetadata) {
     logger.debug({ tokenAddress, chainId }, 'Token metadata found on chain')
@@ -54,12 +55,8 @@ export async function getTokenMetadata(
 async function getOnChainTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
+  provider: CustomJsonRpcProvider,
 ): Promise<Erc20Metadata | undefined> {
-  const provider = chainProviders[chainId]
-  if (!provider) {
-    return undefined
-  }
-
   const tokenContract = Erc20__factory.connect(tokenAddress, provider)
 
   try {

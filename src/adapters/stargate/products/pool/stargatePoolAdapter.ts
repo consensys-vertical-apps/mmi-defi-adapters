@@ -90,10 +90,15 @@ export class StargatePoolAdapter
         underlyingTokenAddressPromise,
       ])
 
-      const protocolTokenPromise = getTokenMetadata(poolAddress, this.chainId)
+      const protocolTokenPromise = getTokenMetadata(
+        poolAddress,
+        this.chainId,
+        this.provider,
+      )
       const underlyingTokenPromise = getTokenMetadata(
         underlyingTokenAddress.toLowerCase(),
         this.chainId,
+        this.provider,
       )
 
       const [protocolToken, underlyingToken] = await Promise.all([

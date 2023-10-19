@@ -24,13 +24,13 @@
 
 ### apyDecimal
 
-• **apyDecimal**: `string`
+• **apyDecimal**: `number`
 
 Current apy of protocol pool
 
 #### Defined in
 
-[adapter.ts:270](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L270)
+[adapter.ts:288](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L288)
 
 ___
 

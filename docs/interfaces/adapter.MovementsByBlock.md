@@ -8,10 +8,21 @@
 
 ### Properties
 
+- [protocolToken](adapter.MovementsByBlock.md#protocoltoken)
 - [underlyingTokensMovement](adapter.MovementsByBlock.md#underlyingtokensmovement)
 - [blockNumber](adapter.MovementsByBlock.md#blocknumber)
 
 ## Properties
+
+### protocolToken
+
+• **protocolToken**: [`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata) & { `tokenId?`: `string`  }
+
+#### Defined in
+
+[adapter.ts:272](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L272)
+
+___
 
 ### underlyingTokensMovement
 
@@ -21,7 +32,7 @@ Movements in or out of a protocol position
 
 #### Defined in
 
-[adapter.ts:258](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L258)
+[adapter.ts:276](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L276)
 
 ___
 
@@ -33,4 +44,4 @@ Blocknumber movement was executed
 
 #### Defined in
 
-[adapter.ts:263](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L263)
+[adapter.ts:281](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L281)
