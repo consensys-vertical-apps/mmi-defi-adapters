@@ -1,4 +1,3 @@
-import { ethers } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
@@ -7,6 +6,7 @@ import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
 import { ChainProvider } from './core/utils/chainProviders'
+import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
 import {
   enrichPositionBalance,
   enrichProfitsWithRange,
@@ -28,7 +28,6 @@ import {
   TotalValueLockResponse,
   GetEventsRequestInput,
 } from './types/response'
-import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
 
 export {
   Chain,

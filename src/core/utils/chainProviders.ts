@@ -1,5 +1,5 @@
-import { Network, ethers } from 'ethers'
-import { Config, IConfig } from '../../config'
+import { Network } from 'ethers'
+import { IConfig } from '../../config'
 import { Multicall__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
 import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'

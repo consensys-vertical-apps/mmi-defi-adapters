@@ -1,7 +1,6 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 import { Command } from 'commander'
-import { ethers } from 'ethers'
 import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
 import { supportedProtocols } from '../adapters'
@@ -10,6 +9,7 @@ import { Chain, ChainName } from '../core/constants/chains'
 import { IMetadataBuilder } from '../core/decorators/cacheToFile'
 import { ProviderMissingError } from '../core/errors/errors'
 import { pascalCase } from '../core/utils/caseConversion'
+import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
 import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
@@ -17,7 +17,6 @@ import { Json } from '../types/json'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
-import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
 
 export function buildMetadata(
   program: Command,

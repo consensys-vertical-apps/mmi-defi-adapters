@@ -4,9 +4,9 @@ import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
 import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
 import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
+import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
-import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 
 const CHAIN_METADATA: Partial<
   Record<Chain, Record<string, Erc20Metadata | undefined>>

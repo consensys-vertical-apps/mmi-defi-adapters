@@ -3,13 +3,13 @@ import path from 'path'
 import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
 import { Chain, ChainName } from '../core/constants/chains'
+import { ProviderMissingError } from '../core/errors/errors'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
+import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
 import { DefiProvider } from '../defiProvider'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
-import { ProviderMissingError } from '../core/errors/errors'
-import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
