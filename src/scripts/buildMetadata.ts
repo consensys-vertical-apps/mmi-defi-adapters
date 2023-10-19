@@ -21,7 +21,7 @@ import b = types.builders
 export function buildMetadata(
   program: Command,
   chainProviders: Record<Chain, CustomJsonRpcProvider>,
-  adaptersController: AdaptersController
+  adaptersController: AdaptersController,
 ) {
   program
     .command('build-metadata')

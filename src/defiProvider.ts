@@ -3,7 +3,7 @@ import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain, ChainName } from './core/constants/chains'
+import { Chain } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
 import { ChainProvider } from './core/utils/chainProviders'
@@ -45,7 +45,9 @@ export class DefiProvider {
   constructor(config?: IConfig) {
     const parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(parsedConfig.values)
-    this.adaptersController = new AdaptersController(this.chainProvider.providers)
+    this.adaptersController = new AdaptersController(
+      this.chainProvider.providers,
+    )
   }
 
   async getPositions({
@@ -210,7 +212,11 @@ export class DefiProvider {
 
     let adapter: IProtocolAdapter
     try {
-      adapter = this.adaptersController.fetchAdapter(chainId, protocolId, productId)
+      adapter = this.adaptersController.fetchAdapter(
+        chainId,
+        protocolId,
+        productId,
+      )
     } catch (error) {
       return this.handleError(error)
     }
