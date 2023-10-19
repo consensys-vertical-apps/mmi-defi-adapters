@@ -1,7 +1,8 @@
-import { Network, ethers } from 'ethers'
+import { Network } from 'ethers'
 import { Multicall__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
 import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
+import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
 import { logger } from './logger'
 import { MulticallQueue } from './multicall'
@@ -19,14 +20,25 @@ const provider = ({
 
   if (!enableMulticallQueue) {
     logger.debug({ chainId }, `Using standard provider`)
-    return new ethers.JsonRpcProvider(url, chainId, {
-      staticNetwork: Network.from(chainId),
+
+    return new CustomJsonRpcProvider({
+      url,
+      chainId,
+      options: {
+        staticNetwork: Network.from(chainId),
+      },
     })
   }
 
   logger.debug({ chainId }, 'Using multicall queue provider')
 
-  const provider = new ethers.JsonRpcProvider(url, chainId)
+  const provider = new CustomJsonRpcProvider({
+    url,
+    chainId,
+    options: {
+      staticNetwork: Network.from(chainId),
+    },
+  })
 
   // deployed on 100+ chains at address
   // https://www.multicall3.com/deployments
@@ -43,14 +55,14 @@ const provider = ({
 
   return new CustomMulticallJsonRpcProvider({
     url,
-    network: chainId,
+    chainId: chainId,
     multicallQueue,
   })
 }
 
 const enableMulticallQueue = process.env.ENABLE_MULTICALL_QUEUE === 'true'
 
-export const chainProviders: Record<Chain, ethers.JsonRpcProvider | undefined> =
+export const chainProviders: Record<Chain, CustomJsonRpcProvider | undefined> =
   {
     [Chain.Ethereum]: provider({
       url: process.env.ETHEREUM_PROVIDER_URL,

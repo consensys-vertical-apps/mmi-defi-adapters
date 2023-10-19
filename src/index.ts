@@ -1,4 +1,3 @@
-import { ethers } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
@@ -6,6 +5,7 @@ import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
 import { chainProviders } from './core/utils/chainProviders'
+import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
 import {
   enrichPositionBalance,
   enrichProfitsWithRange,
@@ -85,11 +85,11 @@ export async function getProfits({
 }): Promise<DefiProfitsResponse[]> {
   const runner = async (
     adapter: IProtocolAdapter,
-    provider: ethers.JsonRpcProvider,
+    provider: CustomJsonRpcProvider,
   ) => {
     const toBlock =
       toBlockNumbersOverride?.[adapter.chainId] ??
-      (await provider.getBlockNumber())
+      (await provider.getStableBlockNumber())
     const fromBlock =
       toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
     const profits = await adapter.getProfits({
@@ -358,7 +358,7 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
 }: {
   runner: (
     adapter: IProtocolAdapter,
-    provider: ethers.JsonRpcProvider,
+    provider: CustomJsonRpcProvider,
   ) => ReturnType
   filterProtocolIds?: Protocol[]
   filterChainIds?: Chain[]
@@ -402,10 +402,10 @@ async function runForAllProtocolsAndChains<ReturnType extends object>({
 
 async function runTaskForAdapter<ReturnType>(
   adapter: IProtocolAdapter,
-  provider: ethers.JsonRpcProvider,
+  provider: CustomJsonRpcProvider,
   runner: (
     adapter: IProtocolAdapter,
-    provider: ethers.JsonRpcProvider,
+    provider: CustomJsonRpcProvider,
   ) => ReturnType,
 ): Promise<AdapterResponse<Awaited<ReturnType>>> {
   const protocolDetails = adapter.getProtocolDetails()

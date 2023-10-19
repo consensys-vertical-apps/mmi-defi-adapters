@@ -28,6 +28,7 @@ export const supportedProtocols: Record<
   [Protocol.Example]: {
     [Chain.Ethereum]: [ExampleProductAdapter],
   },
+
   [Protocol.AaveV2]: {
     [Chain.Ethereum]: [
       AaveV2ATokenPoolAdapter,
@@ -45,6 +46,7 @@ export const supportedProtocols: Record<
       AaveV2VariableDebtTokenPoolAdapter,
     ],
   },
+
   [Protocol.AaveV3]: {
     [Chain.Ethereum]: [
       AaveV3ATokenPoolAdapter,
@@ -82,6 +84,7 @@ export const supportedProtocols: Record<
       AaveV3VariableDebtTokenPoolAdapter,
     ],
   },
+
   [Protocol.UniswapV3]: {
     [Chain.Ethereum]: [UniswapV3PoolAdapter],
     [Chain.Arbitrum]: [UniswapV3PoolAdapter],

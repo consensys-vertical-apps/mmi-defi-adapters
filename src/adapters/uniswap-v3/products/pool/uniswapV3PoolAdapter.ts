@@ -1,7 +1,8 @@
-import { ethers, formatUnits } from 'ethers'
+import { formatUnits } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
+import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
@@ -71,7 +72,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
   protocolId: Protocol
   chainId: Chain
 
-  private provider: ethers.JsonRpcProvider
+  private provider: CustomJsonRpcProvider
 
   constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider

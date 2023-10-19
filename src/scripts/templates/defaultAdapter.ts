@@ -3,13 +3,13 @@ export function defaultAdapterTemplate(
   adapterClassName: string,
   productId: string,
 ) {
-  return `import { ethers } from 'ethers'
-  import { Chain } from '../../../../core/constants/chains'
+  return `import { Chain } from '../../../../core/constants/chains'
   import {
     IMetadataBuilder,
     CacheToFile,
   } from '../../../../core/decorators/cacheToFile'
   import { NotImplementedError } from '../../../../core/errors/errors'
+  import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
   import {
     ProtocolAdapterParams,
     ProtocolDetails,
@@ -40,7 +40,7 @@ export function defaultAdapterTemplate(
     protocolId: Protocol
     chainId: Chain
   
-    private provider: ethers.JsonRpcProvider
+    private provider: CustomJsonRpcProvider
   
     constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
       this.provider = provider
