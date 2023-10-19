@@ -3,12 +3,13 @@ import { Config, IConfig } from '../../config'
 import { Multicall__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
 import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
+import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
 import { logger } from './logger'
 import { MulticallQueue } from './multicall'
 
 export class ChainProvider {
-  providers: Record<Chain, ethers.JsonRpcProvider>
+  providers: Record<Chain, CustomJsonRpcProvider>
 
   constructor(config: IConfig) {
     this.providers = this.initializeProviders(config)
@@ -22,21 +23,31 @@ export class ChainProvider {
     url: string
     chainId: Chain
     enableMulticallQueue: boolean
-  }): ethers.JsonRpcProvider {
+  }): CustomJsonRpcProvider {
     if (!url) {
       throw new Error('Url missing')
     }
 
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, `Using standard provider`)
-      return new ethers.JsonRpcProvider(url, chainId, {
-        staticNetwork: Network.from(chainId),
+      return new CustomJsonRpcProvider({
+        url,
+        chainId,
+        options: {
+          staticNetwork: Network.from(chainId),
+        },
       })
     }
 
     logger.debug({ chainId }, 'Using multicall queue provider')
 
-    const provider = new ethers.JsonRpcProvider(url, chainId)
+    const provider = new CustomJsonRpcProvider({
+      url,
+      chainId,
+      options: {
+        staticNetwork: Network.from(chainId),
+      },
+    })
 
     // deployed on 100+ chains at address
     // https://www.multicall3.com/deployments
@@ -53,7 +64,7 @@ export class ChainProvider {
 
     return new CustomMulticallJsonRpcProvider({
       url,
-      network: chainId,
+      chainId,
       multicallQueue,
     })
   }

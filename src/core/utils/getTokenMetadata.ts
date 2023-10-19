@@ -6,6 +6,7 @@ import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
 import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
+import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 
 const CHAIN_METADATA: Partial<
   Record<Chain, Record<string, Erc20Metadata | undefined>>
@@ -17,7 +18,7 @@ const CHAIN_METADATA: Partial<
 export async function getTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
-  provider: ethers.JsonRpcProvider,
+  provider: CustomJsonRpcProvider,
 ): Promise<Erc20Metadata> {
   const fileMetadata = CHAIN_METADATA[chainId]
   if (fileMetadata) {
@@ -54,7 +55,7 @@ export async function getTokenMetadata(
 async function getOnChainTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
-  provider: ethers.JsonRpcProvider,
+  provider: CustomJsonRpcProvider,
 ): Promise<Erc20Metadata | undefined> {
   const tokenContract = Erc20__factory.connect(tokenAddress, provider)
 
@@ -80,7 +81,7 @@ async function getOnChainTokenMetadata(
 
 async function fetchStringTokenData(
   tokenContract: Erc20,
-  provider: ethers.JsonRpcProvider,
+  provider: CustomJsonRpcProvider,
   functionName: 'name' | 'symbol',
 ): Promise<string> {
   try {

@@ -1,5 +1,5 @@
-import { ethers } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
+import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import {
   GetAprInput,
   GetApyInput,
@@ -31,7 +31,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
 
   product = 'example-pool'
 
-  private provider: ethers.JsonRpcProvider
+  private provider: CustomJsonRpcProvider
 
   constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider

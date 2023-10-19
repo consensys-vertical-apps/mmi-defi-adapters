@@ -17,10 +17,11 @@ import { Json } from '../types/json'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
+import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
 
 export function buildMetadata(
   program: Command,
-  chainProviders: Record<Chain, ethers.JsonRpcProvider>,
+  chainProviders: Record<Chain, CustomJsonRpcProvider>,
 ) {
   program
     .command('build-metadata')

@@ -1,10 +1,10 @@
-import type { ethers } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
@@ -42,7 +42,7 @@ export class StargateVestingAdapter
   protocolId: Protocol
   chainId: Chain
 
-  private provider: ethers.JsonRpcProvider
+  private provider: CustomJsonRpcProvider
 
   constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider

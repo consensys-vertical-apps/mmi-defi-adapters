@@ -58,7 +58,7 @@
 
 [adapter.ts:11](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L11)
 
-___
+---
 
 ### PositionType
 
@@ -70,17 +70,17 @@ ___
 
 [adapter.ts:34](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L34)
 
-___
+---
 
 ### GetBalancesInput
 
-Ƭ **GetBalancesInput**: [`GetPositionsInput`](../interfaces/adapter.GetPositionsInput.md) & { `provider`: `ethers.JsonRpcProvider` ; `chainId`: `Chain` ; `tokens`: [`Erc20Metadata`](erc20Metadata.md#erc20metadata)[]  }
+Ƭ **GetBalancesInput**: [`GetPositionsInput`](../interfaces/adapter.GetPositionsInput.md) & { `provider`: `CustomJsonRpcProvider ; `chainId`: `Chain`;`tokens`: [`Erc20Metadata`](erc20Metadata.md#erc20metadata)[] }
 
 #### Defined in
 
 [adapter.ts:36](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L36)
 
-___
+---
 
 ### GetConversionRateInput
 
@@ -88,16 +88,16 @@ ___
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `blockNumber?` | `number` | Optional override param |
+| Name                   | Type     | Description                                |
+| :--------------------- | :------- | :----------------------------------------- |
+| `blockNumber?`         | `number` | Optional override param                    |
 | `protocolTokenAddress` | `string` | Protocol token address (LP token address). |
 
 #### Defined in
 
 [adapter.ts:42](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L42)
 
-___
+---
 
 ### GetApyInput
 
@@ -105,16 +105,16 @@ ___
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `blockNumber?` | `number` | Optional override param |
+| Name                   | Type     | Description                                |
+| :--------------------- | :------- | :----------------------------------------- |
+| `blockNumber?`         | `number` | Optional override param                    |
 | `protocolTokenAddress` | `string` | Protocol token address (LP token address). |
 
 #### Defined in
 
 [adapter.ts:52](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L52)
 
-___
+---
 
 ### GetAprInput
 
@@ -122,16 +122,16 @@ ___
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `blockNumber?` | `number` | Optional override param |
+| Name                   | Type     | Description                                |
+| :--------------------- | :------- | :----------------------------------------- |
+| `blockNumber?`         | `number` | Optional override param                    |
 | `protocolTokenAddress` | `string` | Protocol token address (LP token address). |
 
 #### Defined in
 
 [adapter.ts:63](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L63)
 
-___
+---
 
 ### GetEventsInput
 
@@ -139,18 +139,18 @@ ___
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `userAddress` | `string` | User address we want to get events for |
-| `protocolTokenAddress` | `string` | Protocol token we want to check related events for |
-| `fromBlock` | `number` | Starting blocknumber to check from |
-| `toBlock` | `number` | End blocknumber we want to check to e.g. current blocknumber |
+| Name                   | Type     | Description                                                  |
+| :--------------------- | :------- | :----------------------------------------------------------- |
+| `userAddress`          | `string` | User address we want to get events for                       |
+| `protocolTokenAddress` | `string` | Protocol token we want to check related events for           |
+| `fromBlock`            | `number` | Starting blocknumber to check from                           |
+| `toBlock`              | `number` | End blocknumber we want to check to e.g. current blocknumber |
 
 #### Defined in
 
 [adapter.ts:74](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L74)
 
-___
+---
 
 ### ProtocolDetails
 
@@ -158,14 +158,14 @@ ___
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `protocolId` | `Protocol` | Unique protocol id |
-| `chainId` | `Chain` | Chain this adapter is for |
-| `name` | `string` | Name of protocol |
-| `description` | `string` | Description of protocol |
-| `iconUrl` | `string` | Protocol icon |
-| `siteUrl` | `string` | Protocol website |
+| Name           | Type                                      | Description                           |
+| :------------- | :---------------------------------------- | :------------------------------------ |
+| `protocolId`   | `Protocol`                                | Unique protocol id                    |
+| `chainId`      | `Chain`                                   | Chain this adapter is for             |
+| `name`         | `string`                                  | Name of protocol                      |
+| `description`  | `string`                                  | Description of protocol               |
+| `iconUrl`      | `string`                                  | Protocol icon                         |
+| `siteUrl`      | `string`                                  | Protocol website                      |
 | `positionType` | [`PositionType`](adapter.md#positiontype) | Type of position One adapter per type |
 
 #### Defined in
@@ -180,11 +180,11 @@ ___
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `Protocol` | ``"protocol"`` |
-| `Reward` | ``"claimable"`` |
-| `Underlying` | ``"underlying"`` |
+| Name         | Type           |
+| :----------- | :------------- |
+| `Protocol`   | `"protocol"`   |
+| `Reward`     | `"claimable"`  |
+| `Underlying` | `"underlying"` |
 
 #### Defined in
 
@@ -192,7 +192,7 @@ ___
 
 [adapter.ts:11](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L11)
 
-___
+---
 
 ### PositionType
 
@@ -200,12 +200,12 @@ ___
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `Supply` | ``"supply"`` | Liquidity position e.g. a dex pool |
-| `Lend` | ``"lend"`` | Providing liquidity to a lending and borrow protocol |
-| `Borrow` | ``"borrow"`` | Getting a loan from a lending and borrow protocol |
-| `Staked` | ``"stake"`` | Staking a token e.g. staking eth or staking an lp token |
+| Name     | Type       | Description                                             |
+| :------- | :--------- | :------------------------------------------------------ |
+| `Supply` | `"supply"` | Liquidity position e.g. a dex pool                      |
+| `Lend`   | `"lend"`   | Providing liquidity to a lending and borrow protocol    |
+| `Borrow` | `"borrow"` | Getting a loan from a lending and borrow protocol       |
+| `Staked` | `"stake"`  | Staking a token e.g. staking eth or staking an lp token |
 
 #### Defined in
 

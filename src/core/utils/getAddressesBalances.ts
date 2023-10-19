@@ -1,6 +1,6 @@
-import type { ethers } from 'ethers'
 import { BalanceChecker__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
+import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 
 type AddressBalanceMap = {
   [address: string]: BalanceMap
@@ -31,7 +31,7 @@ export async function getAddressesBalances({
   blockNumber,
 }: {
   chainId: Chain
-  provider: ethers.JsonRpcProvider
+  provider: CustomJsonRpcProvider
   addresses: string[]
   tokens: string[]
   blockNumber?: number

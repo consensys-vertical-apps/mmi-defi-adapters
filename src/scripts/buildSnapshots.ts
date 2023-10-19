@@ -2,12 +2,14 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
-import { ChainName } from '../core/constants/chains'
+import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { DefiProvider } from '../defiProvider'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
+import { ProviderMissingError } from '../core/errors/errors'
+import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
@@ -39,7 +41,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               case 'positions': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiProvider.getLatestBlock(chainId))
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
@@ -57,7 +62,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               case 'profits': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiProvider.getLatestBlock(chainId))
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
@@ -95,7 +103,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               case 'prices': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiProvider.getLatestBlock(chainId))
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
@@ -112,7 +123,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               case 'tvl': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiProvider.getLatestBlock(chainId))
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
@@ -129,7 +143,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               case 'apy': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiProvider.getLatestBlock(chainId))
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
@@ -146,7 +163,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               case 'apr': {
                 const blockNumber =
                   testCase.blockNumber ??
-                  (await defiProvider.getLatestBlock(chainId))
+                  (await getLatestStableBlock(
+                    defiProvider.chainProvider.providers[chainId],
+                    chainId,
+                  ))
 
                 return {
                   blockNumber,
@@ -178,4 +198,15 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
         }
       }
     })
+}
+
+async function getLatestStableBlock(
+  provider: CustomJsonRpcProvider,
+  chainId: Chain,
+): Promise<number> {
+  if (!provider) {
+    throw new ProviderMissingError(chainId)
+  }
+
+  return provider.getStableBlockNumber()
 }

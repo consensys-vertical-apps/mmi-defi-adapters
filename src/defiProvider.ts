@@ -28,6 +28,7 @@ import {
   TotalValueLockResponse,
   GetEventsRequestInput,
 } from './types/response'
+import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
 
 export {
   Chain,
@@ -93,7 +94,7 @@ export class DefiProvider {
   }): Promise<DefiProfitsResponse[]> {
     const runner = async (
       adapter: IProtocolAdapter,
-      provider: ethers.JsonRpcProvider,
+      provider: CustomJsonRpcProvider,
     ) => {
       const toBlock =
         toBlockNumbersOverride?.[adapter.chainId] ??
@@ -376,7 +377,7 @@ export class DefiProvider {
   }: {
     runner: (
       adapter: IProtocolAdapter,
-      provider: ethers.JsonRpcProvider,
+      provider: CustomJsonRpcProvider,
     ) => ReturnType
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
@@ -420,10 +421,10 @@ export class DefiProvider {
 
   private async runTaskForAdapter<ReturnType>(
     adapter: IProtocolAdapter,
-    provider: ethers.JsonRpcProvider,
+    provider: CustomJsonRpcProvider,
     runner: (
       adapter: IProtocolAdapter,
-      provider: ethers.JsonRpcProvider,
+      provider: CustomJsonRpcProvider,
     ) => ReturnType,
   ): Promise<AdapterResponse<Awaited<ReturnType>>> {
     const protocolDetails = adapter.getProtocolDetails()
