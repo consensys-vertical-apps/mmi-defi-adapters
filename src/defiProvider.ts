@@ -38,12 +38,11 @@ export {
   TimePeriod,
 }
 export class DefiProvider {
-  private config: Config
   chainProvider: ChainProvider
 
   constructor(config?: IConfig) {
-    this.config = new Config(config)
-    this.chainProvider = new ChainProvider(this.config)
+    const parsedConfig = new Config(config)
+    this.chainProvider = new ChainProvider(parsedConfig.values)
   }
 
   async getPositions({

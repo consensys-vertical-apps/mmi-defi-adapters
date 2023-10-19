@@ -11,20 +11,20 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
   addressCommand(
     program,
     'positions',
-    defiProvider.getPositions,
+    defiProvider.getPositions.bind(defiProvider),
     '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
   )
   addressCommand(
     program,
     'profits',
-    defiProvider.getProfits,
+    defiProvider.getProfits.bind(defiProvider),
     '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
   )
 
   addressEventsCommand(
     program,
     'deposits',
-    defiProvider.getDeposits,
+    defiProvider.getDeposits.bind(defiProvider),
     '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
     18262163,
     18262164,
@@ -37,7 +37,7 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
   addressEventsCommand(
     program,
     'withdrawals',
-    defiProvider.getWithdrawals,
+    defiProvider.getWithdrawals.bind(defiProvider),
     '0x1d201a9B9f136dE7e7fF4A80a27e96Af7789D9BE',
     18274545,
     18274547,
@@ -48,10 +48,14 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
     '573517',
   )
 
-  protocolCommand(program, 'prices', defiProvider.getPrices)
-  protocolCommand(program, 'tvl', defiProvider.getTotalValueLocked)
-  protocolCommand(program, 'apr', defiProvider.getApr)
-  protocolCommand(program, 'apy', defiProvider.getApy)
+  protocolCommand(program, 'prices', defiProvider.getPrices.bind(defiProvider))
+  protocolCommand(
+    program,
+    'tvl',
+    defiProvider.getTotalValueLocked.bind(defiProvider),
+  )
+  protocolCommand(program, 'apr', defiProvider.getApr.bind(defiProvider))
+  protocolCommand(program, 'apy', defiProvider.getApy.bind(defiProvider))
 }
 
 function addressCommand(

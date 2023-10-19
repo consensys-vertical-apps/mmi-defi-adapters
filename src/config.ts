@@ -13,8 +13,6 @@ export interface IConfig {
     linea: string
   }
   useMulticallInterceptor: boolean
-  logLevel: string
-  logPretty: boolean
 }
 
 /**
@@ -95,18 +93,6 @@ export class Config {
         format: Boolean,
         default: false,
         env: 'DEFI_ADAPTERS_USE_MULTICALL_INTERCEPTOR',
-      },
-      logLevel: {
-        doc: 'Log level',
-        format: ['debug', 'info', 'warn', 'error'],
-        default: 'error',
-        env: 'DEFI_ADAPTERS_LOG_LEVEL',
-      },
-      logPretty: {
-        doc: 'Log in pretty format',
-        format: Boolean,
-        default: false,
-        env: 'DEFI_ADAPTERS_LOG_PRETTY',
       },
     }
 

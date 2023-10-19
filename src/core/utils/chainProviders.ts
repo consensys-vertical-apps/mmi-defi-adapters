@@ -1,5 +1,5 @@
 import { Network, ethers } from 'ethers'
-import { Config } from '../../config'
+import { Config, IConfig } from '../../config'
 import { Multicall__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
 import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
@@ -8,12 +8,10 @@ import { logger } from './logger'
 import { MulticallQueue } from './multicall'
 
 export class ChainProvider {
-  private config: Config
   providers: Record<Chain, ethers.JsonRpcProvider>
 
-  constructor(config: Config) {
-    this.config = config
-    this.providers = this.initializeProviders()
+  constructor(config: IConfig) {
+    this.providers = this.initializeProviders(config)
   }
 
   private provider({
@@ -25,7 +23,9 @@ export class ChainProvider {
     chainId: Chain
     enableMulticallQueue: boolean
   }): ethers.JsonRpcProvider {
-    if (!url) throw new Error('Url missing')
+    if (!url) {
+      throw new Error('Url missing')
+    }
 
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, `Using standard provider`)
@@ -58,52 +58,52 @@ export class ChainProvider {
     })
   }
 
-  private initializeProviders() {
+  private initializeProviders(config: IConfig) {
     return {
       [Chain.Ethereum]: this.provider({
-        url: this.config.values.provider.ethereum,
+        url: config.provider.ethereum,
         chainId: Chain.Ethereum,
-        enableMulticallQueue: this.config.values.useMulticallInterceptor,
+        enableMulticallQueue: config.useMulticallInterceptor,
       }),
       [Chain.Optimism]: this.provider({
-        url: this.config.values.provider.optimism,
+        url: config.provider.optimism,
         chainId: Chain.Optimism,
-        enableMulticallQueue: this.config.values.useMulticallInterceptor,
+        enableMulticallQueue: config.useMulticallInterceptor,
       }),
       [Chain.Bsc]: this.provider({
-        url: this.config.values.provider.bsc,
+        url: config.provider.bsc,
         chainId: Chain.Bsc,
-        enableMulticallQueue: this.config.values.useMulticallInterceptor,
+        enableMulticallQueue: config.useMulticallInterceptor,
       }),
       [Chain.Polygon]: this.provider({
-        url: this.config.values.provider.polygon,
+        url: config.provider.polygon,
         chainId: Chain.Polygon,
-        enableMulticallQueue: this.config.values.useMulticallInterceptor,
+        enableMulticallQueue: config.useMulticallInterceptor,
       }),
       [Chain.Fantom]: this.provider({
-        url: this.config.values.provider.fantom,
+        url: config.provider.fantom,
         chainId: Chain.Fantom,
-        enableMulticallQueue: this.config.values.useMulticallInterceptor,
+        enableMulticallQueue: config.useMulticallInterceptor,
       }),
       [Chain.Arbitrum]: this.provider({
-        url: this.config.values.provider.arbitrum,
+        url: config.provider.arbitrum,
         chainId: Chain.Arbitrum,
-        enableMulticallQueue: this.config.values.useMulticallInterceptor,
+        enableMulticallQueue: config.useMulticallInterceptor,
       }),
       [Chain.Avalanche]: this.provider({
-        url: this.config.values.provider.avalanche,
+        url: config.provider.avalanche,
         chainId: Chain.Avalanche,
-        enableMulticallQueue: this.config.values.useMulticallInterceptor,
+        enableMulticallQueue: config.useMulticallInterceptor,
       }),
       [Chain.Linea]: this.provider({
-        url: this.config.values.provider.linea,
+        url: config.provider.linea,
         chainId: Chain.Linea,
-        enableMulticallQueue: this.config.values.useMulticallInterceptor,
+        enableMulticallQueue: config.useMulticallInterceptor,
       }),
       [Chain.Base]: this.provider({
-        url: this.config.values.provider.base,
+        url: config.provider.base,
         chainId: Chain.Base,
-        enableMulticallQueue: this.config.values.useMulticallInterceptor,
+        enableMulticallQueue: config.useMulticallInterceptor,
       }),
     }
   }
