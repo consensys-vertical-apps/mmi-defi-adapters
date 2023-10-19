@@ -24,13 +24,13 @@
 
 ### aprDecimal
 
-• **aprDecimal**: `string`
+• **aprDecimal**: `number`
 
 Current apr of protocol pool
 
 #### Defined in
 
-[adapter.ts:277](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L277)
+[adapter.ts:295](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L295)
 
 ___
 
