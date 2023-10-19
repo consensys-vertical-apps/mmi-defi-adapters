@@ -1,4 +1,3 @@
-import type { ethers } from 'ethers'
 import { formatUnits } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
@@ -33,6 +32,7 @@ import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { aggregateTrades } from '../utils/aggregateTrades'
+import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { getBalances } from '../utils/getBalances'
 import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 
@@ -41,7 +41,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   protocolId: Protocol
   abstract productId: string
 
-  protected provider: ethers.JsonRpcProvider
+  protected provider: CustomJsonRpcProvider
 
   constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider

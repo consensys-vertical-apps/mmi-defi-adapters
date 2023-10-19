@@ -1,100 +1,121 @@
-import { Network, ethers } from 'ethers'
+import { Network } from 'ethers'
+import { IConfig } from '../../config'
 import { Multicall__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
 import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
+import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
 import { logger } from './logger'
 import { MulticallQueue } from './multicall'
 
-const provider = ({
-  url,
-  chainId,
-  enableMulticallQueue,
-}: {
-  url: string | undefined
-  chainId: Chain
-  enableMulticallQueue: boolean
-}) => {
-  if (!url) return undefined
+export class ChainProvider {
+  providers: Record<Chain, CustomJsonRpcProvider>
 
-  if (!enableMulticallQueue) {
-    logger.debug({ chainId }, `Using standard provider`)
-    return new ethers.JsonRpcProvider(url, chainId, {
-      staticNetwork: Network.from(chainId),
+  constructor(config: IConfig) {
+    this.providers = this.initializeProviders(config)
+  }
+
+  private provider({
+    url,
+    chainId,
+    enableMulticallQueue,
+  }: {
+    url: string
+    chainId: Chain
+    enableMulticallQueue: boolean
+  }): CustomJsonRpcProvider {
+    if (!url) {
+      throw new Error('Url missing')
+    }
+
+    if (!enableMulticallQueue) {
+      logger.debug({ chainId }, `Using standard provider`)
+      return new CustomJsonRpcProvider({
+        url,
+        chainId,
+        options: {
+          staticNetwork: Network.from(chainId),
+        },
+      })
+    }
+
+    logger.debug({ chainId }, 'Using multicall queue provider')
+
+    const provider = new CustomJsonRpcProvider({
+      url,
+      chainId,
+      options: {
+        staticNetwork: Network.from(chainId),
+      },
+    })
+
+    // deployed on 100+ chains at address
+    // https://www.multicall3.com/deployments
+    const multicallContract = Multicall__factory.connect(
+      MULTICALL_ADDRESS,
+      provider,
+    )
+
+    const multicallQueue = new MulticallQueue({
+      flushTimeoutMs: 2,
+      maxBatchSize: 100,
+      multicallContract,
+    })
+
+    return new CustomMulticallJsonRpcProvider({
+      url,
+      chainId,
+      multicallQueue,
     })
   }
 
-  logger.debug({ chainId }, 'Using multicall queue provider')
-
-  const provider = new ethers.JsonRpcProvider(url, chainId)
-
-  // deployed on 100+ chains at address
-  // https://www.multicall3.com/deployments
-  const multicallContract = Multicall__factory.connect(
-    MULTICALL_ADDRESS,
-    provider,
-  )
-
-  const multicallQueue = new MulticallQueue({
-    flushTimeoutMs: 2,
-    maxBatchSize: 100,
-    multicallContract,
-  })
-
-  return new CustomMulticallJsonRpcProvider({
-    url,
-    network: chainId,
-    multicallQueue,
-  })
-}
-
-const enableMulticallQueue = process.env.ENABLE_MULTICALL_QUEUE === 'true'
-
-export const chainProviders: Record<Chain, ethers.JsonRpcProvider | undefined> =
-  {
-    [Chain.Ethereum]: provider({
-      url: process.env.ETHEREUM_PROVIDER_URL,
-      chainId: Chain.Ethereum,
-      enableMulticallQueue,
-    }),
-    [Chain.Optimism]: provider({
-      url: process.env.OPTIMISM_PROVIDER_URL,
-      chainId: Chain.Optimism,
-      enableMulticallQueue,
-    }),
-    [Chain.Bsc]: provider({
-      url: process.env.BSC_PROVIDER_URL,
-      chainId: Chain.Bsc,
-      enableMulticallQueue,
-    }),
-    [Chain.Polygon]: provider({
-      url: process.env.POLYGON_PROVIDER_URL,
-      chainId: Chain.Polygon,
-      enableMulticallQueue,
-    }),
-    [Chain.Fantom]: provider({
-      url: process.env.FANTOM_PROVIDER_URL,
-      chainId: Chain.Fantom,
-      enableMulticallQueue,
-    }),
-    [Chain.Arbitrum]: provider({
-      url: process.env.ARBITRUM_PROVIDER_URL,
-      chainId: Chain.Arbitrum,
-      enableMulticallQueue,
-    }),
-    [Chain.Avalanche]: provider({
-      url: process.env.AVALANCHE_PROVIDER_URL,
-      chainId: Chain.Avalanche,
-      enableMulticallQueue,
-    }),
-    [Chain.Linea]: provider({
-      url: process.env.LINEA_PROVIDER_URL,
-      chainId: Chain.Linea,
-      enableMulticallQueue,
-    }),
-    [Chain.Base]: provider({
-      url: process.env.BASE_PROVIDER_URL,
-      chainId: Chain.Base,
-      enableMulticallQueue,
-    }),
+  private initializeProviders(config: IConfig) {
+    return {
+      [Chain.Ethereum]: this.provider({
+        url: config.provider.ethereum,
+        chainId: Chain.Ethereum,
+        enableMulticallQueue: config.useMulticallInterceptor,
+      }),
+      [Chain.Optimism]: this.provider({
+        url: config.provider.optimism,
+        chainId: Chain.Optimism,
+        enableMulticallQueue: config.useMulticallInterceptor,
+      }),
+      [Chain.Bsc]: this.provider({
+        url: config.provider.bsc,
+        chainId: Chain.Bsc,
+        enableMulticallQueue: config.useMulticallInterceptor,
+      }),
+      [Chain.Polygon]: this.provider({
+        url: config.provider.polygon,
+        chainId: Chain.Polygon,
+        enableMulticallQueue: config.useMulticallInterceptor,
+      }),
+      [Chain.Fantom]: this.provider({
+        url: config.provider.fantom,
+        chainId: Chain.Fantom,
+        enableMulticallQueue: config.useMulticallInterceptor,
+      }),
+      [Chain.Arbitrum]: this.provider({
+        url: config.provider.arbitrum,
+        chainId: Chain.Arbitrum,
+        enableMulticallQueue: config.useMulticallInterceptor,
+      }),
+      [Chain.Avalanche]: this.provider({
+        url: config.provider.avalanche,
+        chainId: Chain.Avalanche,
+        enableMulticallQueue: config.useMulticallInterceptor,
+      }),
+      [Chain.Linea]: this.provider({
+        url: config.provider.linea,
+        chainId: Chain.Linea,
+        enableMulticallQueue: config.useMulticallInterceptor,
+      }),
+      [Chain.Base]: this.provider({
+        url: config.provider.base,
+        chainId: Chain.Base,
+        enableMulticallQueue: config.useMulticallInterceptor,
+      }),
+    }
   }
+}

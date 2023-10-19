@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[adapter.ts:251](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L251)
+[adapter.ts:268](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L268)
 
 ___
 

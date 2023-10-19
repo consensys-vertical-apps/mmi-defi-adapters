@@ -31,7 +31,7 @@ User's position, includes balance of protocol token related underlying token bal
 
 #### Defined in
 
-[adapter.ts:205](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L205)
+[adapter.ts:217](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L217)
 
 ___
 
@@ -43,7 +43,7 @@ Underlying token balances
 
 #### Defined in
 
-[adapter.ts:210](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L210)
+[adapter.ts:222](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L222)
 
 ___
 

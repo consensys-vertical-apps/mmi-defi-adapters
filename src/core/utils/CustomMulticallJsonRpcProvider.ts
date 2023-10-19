@@ -1,19 +1,21 @@
-import { JsonRpcProvider, Networkish, TransactionRequest } from 'ethers'
+import { TransactionRequest } from 'ethers'
+import { Chain } from '../constants/chains'
+import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 import { logger } from './logger'
 import { MulticallQueue } from './multicall'
 
-export class CustomMulticallJsonRpcProvider extends JsonRpcProvider {
+export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   private multicallQueue: MulticallQueue
   constructor({
     url,
-    network,
+    chainId,
     multicallQueue,
   }: {
     url: string
-    network: Networkish
+    chainId: Chain
     multicallQueue: MulticallQueue
   }) {
-    super(url, network)
+    super({ url, chainId })
     this.multicallQueue = multicallQueue
   }
 

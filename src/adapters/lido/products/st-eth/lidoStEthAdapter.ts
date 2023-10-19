@@ -1,4 +1,3 @@
-import { ethers } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
 import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
@@ -33,6 +32,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
+import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 
 export type LidoStEthMetadata = {
   contractToken: Erc20Metadata
@@ -44,7 +44,7 @@ export class LidoStEthAdapter implements IProtocolAdapter, IMetadataBuilder {
   protocolId: Protocol
   chainId: Chain
 
-  private provider: ethers.JsonRpcProvider
+  private provider: CustomJsonRpcProvider
 
   constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
     this.provider = provider
@@ -74,8 +74,13 @@ export class LidoStEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     const contractToken = await getTokenMetadata(
       contractAddresses[this.chainId]!,
       this.chainId,
+      this.provider,
     )
-    const underlyingToken = await getTokenMetadata(ZERO_ADDRESS, this.chainId)
+    const underlyingToken = await getTokenMetadata(
+      ZERO_ADDRESS,
+      this.chainId,
+      this.provider,
+    )
 
     const metadataObject: LidoStEthMetadata = {
       contractToken,

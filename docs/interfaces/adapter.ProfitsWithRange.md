@@ -22,7 +22,7 @@ Calculated profits from this block number
 
 #### Defined in
 
-[adapter.ts:301](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L301)
+[adapter.ts:319](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L319)
 
 ___
 
@@ -34,7 +34,7 @@ Calculated profits to this block number
 
 #### Defined in
 
-[adapter.ts:306](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L306)
+[adapter.ts:324](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L324)
 
 ___
 
@@ -46,4 +46,4 @@ Profits earned by user address
 
 #### Defined in
 
-[adapter.ts:310](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L310)
+[adapter.ts:328](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L328)

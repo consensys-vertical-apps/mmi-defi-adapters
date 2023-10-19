@@ -151,10 +151,12 @@ export abstract class AaveBasePoolAdapter
       const protocolTokenPromise = getTokenMetadata(
         this.getReserveTokenAddress(reserveTokenAddresses),
         this.chainId,
+        this.provider,
       )
       const underlyingTokenPromise = getTokenMetadata(
         tokenAddress,
         this.chainId,
+        this.provider,
       )
 
       const [protocolToken, underlyingToken] = await Promise.all([

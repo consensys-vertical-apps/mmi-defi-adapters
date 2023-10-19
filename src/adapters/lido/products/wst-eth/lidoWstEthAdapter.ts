@@ -1,4 +1,3 @@
-import { ethers } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
@@ -32,6 +31,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { WstEthToken__factory } from '../../contracts'
+import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 
 export type LidoWstEthMetadata = {
   contractToken: Erc20Metadata
@@ -45,7 +45,7 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
 
   stEthAdapter: IProtocolAdapter
 
-  private provider: ethers.JsonRpcProvider
+  private provider: CustomJsonRpcProvider
 
   constructor({
     provider,
@@ -94,10 +94,15 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     )
     const stEthContractAddress = await wstEthContract.stETH()
 
-    const contractToken = await getTokenMetadata(contractAddress, this.chainId)
+    const contractToken = await getTokenMetadata(
+      contractAddress,
+      this.chainId,
+      this.provider,
+    )
     const underlyingToken = await getTokenMetadata(
       stEthContractAddress,
       this.chainId,
+      this.provider,
     )
 
     const metadataObject: LidoWstEthMetadata = {
@@ -127,7 +132,9 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
       blockTag: blockNumber,
     })
 
-    const stEthBalance = await wstEthContract.getStETHByWstETH(wstEthBalance)
+    const stEthBalance = await wstEthContract.getStETHByWstETH(wstEthBalance, {
+      blockTag: blockNumber,
+    })
 
     const stEthTokenUnderlyingRate =
       await this.stEthAdapter.getProtocolTokenToUnderlyingTokenRate({

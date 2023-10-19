@@ -10,7 +10,7 @@ import { Chain, ChainName } from '../core/constants/chains'
 import { IMetadataBuilder } from '../core/decorators/cacheToFile'
 import { ProviderMissingError } from '../core/errors/errors'
 import { pascalCase } from '../core/utils/caseConversion'
-import { chainProviders } from '../core/utils/chainProviders'
+import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
 import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { Json } from '../types/json'
@@ -18,9 +18,11 @@ import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
 
-const adaptersController = new AdaptersController()
-
-export function buildMetadata(program: Command) {
+export function buildMetadata(
+  program: Command,
+  chainProviders: Record<Chain, CustomJsonRpcProvider>,
+  adaptersController: AdaptersController
+) {
   program
     .command('build-metadata')
     .option(

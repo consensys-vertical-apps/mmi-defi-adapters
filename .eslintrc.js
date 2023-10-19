@@ -2,7 +2,7 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'import', 'prettier'],
+  plugins: ['@typescript-eslint', 'import', 'prettier','unused-imports'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -17,14 +17,22 @@ module.exports = {
     'prettier/prettier': 'error',
     'arrow-body-style': 'off', // Disabled as per eslint-plugin-prettier recommendation
     'prefer-arrow-callback': 'off', // Disabled as per eslint-plugin-prettier recommendation
-    '@typescript-eslint/no-unused-vars': [
+
+    // Disable the original rule
+    '@typescript-eslint/no-unused-vars': 'off',
+
+    // Add the auto-fixable rules from 'eslint-plugin-unused-imports'
+    'unused-imports/no-unused-imports-ts': 'error',
+    'unused-imports/no-unused-vars-ts': [
       'error',
       {
-        argsIgnorePattern: '^_',
-        destructuredArrayIgnorePattern: '^_',
+        vars: 'all',
         varsIgnorePattern: '^_',
-      },
+        args: 'after-used',
+        argsIgnorePattern: '^_'
+      }
     ],
+
     'import/order': [
       'error',
       {
