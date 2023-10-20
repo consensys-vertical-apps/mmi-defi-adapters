@@ -36,7 +36,7 @@ export function defaultAdapterTemplate(
   import { Protocol } from '../../../protocols'
   
   export class ${adapterClassName} implements IProtocolAdapter, IMetadataBuilder {
-    product = '${productId}'
+    productId = '${productId}'
     protocolId: Protocol
     chainId: Chain
   
@@ -61,7 +61,7 @@ export function defaultAdapterTemplate(
         iconUrl: 'https://',
         positionType: PositionType.Supply,
         chainId: this.chainId,
-        product: this.product,
+        productId: this.productId,
       }
     }
   

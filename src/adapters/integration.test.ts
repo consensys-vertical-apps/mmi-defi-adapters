@@ -7,6 +7,7 @@ import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as exampleTestCases } from './example/tests/testCases'
+import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
@@ -22,6 +23,7 @@ function runAllTests() {
   runProtocolTests(Protocol.Stargate, stargateTestCases)
   runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
+  runProtocolTests(Protocol.Lido, lidoTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

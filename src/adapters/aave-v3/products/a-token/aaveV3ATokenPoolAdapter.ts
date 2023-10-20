@@ -4,7 +4,7 @@ import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 
 export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
-  product = 'a-token'
+  productId = 'a-token'
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -15,7 +15,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
       iconUrl: 'https://aave.com/favicon.ico',
       positionType: PositionType.Lend,
       chainId: this.chainId,
-      product: this.product,
+      productId: this.productId,
     }
   }
 

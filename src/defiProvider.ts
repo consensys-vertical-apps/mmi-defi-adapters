@@ -1,8 +1,9 @@
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
+import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain, ChainName } from './core/constants/chains'
+import { Chain } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
 import { ChainProvider } from './core/utils/chainProviders'
@@ -39,10 +40,14 @@ export {
 }
 export class DefiProvider {
   chainProvider: ChainProvider
+  adaptersController: AdaptersController
 
   constructor(config?: IConfig) {
     const parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(parsedConfig.values)
+    this.adaptersController = new AdaptersController(
+      this.chainProvider.providers,
+    )
   }
 
   async getPositions({
@@ -160,33 +165,20 @@ export class DefiProvider {
     protocolTokenAddress,
     protocolId,
     chainId,
-    product,
+    productId,
     tokenId,
   }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
     const provider = this.chainProvider.providers[chainId]
 
-    const adapterClass = supportedProtocols?.[protocolId]?.[chainId]?.find(
-      (adapter) =>
-        new adapter({
-          provider: provider!,
-          chainId,
-          protocolId,
-        }).getProtocolDetails().product == product,
-    )
-
-    if (!adapterClass) {
-      return {
-        success: false,
-        error: {
-          message: 'No adapter found',
-          details: {
-            product,
-            protocolId,
-            chainId: chainId,
-            chainName: ChainName[chainId],
-          },
-        },
-      }
+    let adapter: IProtocolAdapter
+    try {
+      adapter = this.adaptersController.fetchAdapter(
+        chainId,
+        protocolId,
+        productId,
+      )
+    } catch (error) {
+      return this.handleError(error)
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
@@ -203,11 +195,6 @@ export class DefiProvider {
       }
     }
 
-    const adapter = new adapterClass({
-      provider: provider!,
-      chainId,
-      protocolId,
-    })
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
@@ -218,33 +205,20 @@ export class DefiProvider {
     protocolTokenAddress,
     protocolId,
     chainId,
-    product,
+    productId,
     tokenId,
   }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
     const provider = this.chainProvider.providers[chainId]
 
-    const adapterClass = supportedProtocols?.[protocolId]?.[chainId]?.find(
-      (adapter) =>
-        new adapter({
-          provider: provider!,
-          chainId,
-          protocolId,
-        }).getProtocolDetails().product == product,
-    )
-
-    if (!adapterClass) {
-      return {
-        success: false,
-        error: {
-          message: 'No adapter found',
-          details: {
-            product,
-            protocolId,
-            chainId: chainId,
-            chainName: ChainName[chainId],
-          },
-        },
-      }
+    let adapter: IProtocolAdapter
+    try {
+      adapter = this.adaptersController.fetchAdapter(
+        chainId,
+        protocolId,
+        productId,
+      )
+    } catch (error) {
+      return this.handleError(error)
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
@@ -261,11 +235,6 @@ export class DefiProvider {
       }
     }
 
-    const adapter = new adapterClass({
-      provider: this.chainProvider.providers[chainId]!,
-      chainId,
-      protocolId,
-    })
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
@@ -388,6 +357,8 @@ export class DefiProvider {
           filterProtocolIds.includes(protocolIdKey as Protocol),
       )
       .flatMap(([protocolIdKey, supportedChains]) => {
+        const protocolId = protocolIdKey as Protocol
+
         // Object.entries casts the numeric key as a string. This reverses it
         return Object.entries(supportedChains)
           .filter(([chainIdKey, _]) => {
@@ -395,23 +366,19 @@ export class DefiProvider {
               !filterChainIds || filterChainIds.includes(+chainIdKey as Chain)
             )
           })
-          .flatMap(([chainIdKey, adapterClasses]) => {
+          .flatMap(([chainIdKey, _]) => {
             const chainId = +chainIdKey as Chain
             const provider = this.chainProvider.providers[chainId]!
 
-            return adapterClasses.map(
-              async (
-                adapterClass,
-              ): Promise<AdapterResponse<Awaited<ReturnType>>> => {
-                const adapter = new adapterClass({
-                  provider: provider!,
-                  chainId,
-                  protocolId: protocolIdKey as Protocol,
-                })
+            const chainProtocolAdapters =
+              this.adaptersController.fetchChainProtocolAdapters(
+                chainId,
+                protocolId,
+              )
 
-                return this.runTaskForAdapter(adapter, provider, runner)
-              },
-            )
+            return Array.from(chainProtocolAdapters, async ([_, adapter]) => {
+              return this.runTaskForAdapter(adapter, provider, runner)
+            })
           })
       })
 
@@ -440,28 +407,36 @@ export class DefiProvider {
         ...adapterResult,
       }
     } catch (error) {
-      let adapterError: AdapterErrorResponse['error']
-
-      if (error instanceof Error) {
-        adapterError = {
-          message: error.message,
-          details: { name: error.name },
-        }
-      } else if (typeof error === 'string') {
-        adapterError = {
-          message: error,
-        }
-      } else {
-        adapterError = {
-          message: 'Error message cannot be extracted',
-        }
-      }
-
       return {
         ...protocolDetails,
-        success: false,
-        error: adapterError,
+        ...this.handleError(error),
       }
+    }
+  }
+
+  private handleError(error: unknown): {
+    success: false
+  } & AdapterErrorResponse {
+    let adapterError: AdapterErrorResponse['error']
+
+    if (error instanceof Error) {
+      adapterError = {
+        message: error.message,
+        details: { name: error.name },
+      }
+    } else if (typeof error === 'string') {
+      adapterError = {
+        message: error,
+      }
+    } else {
+      adapterError = {
+        message: 'Error message cannot be extracted',
+      }
+    }
+
+    return {
+      success: false,
+      error: adapterError,
     }
   }
 }

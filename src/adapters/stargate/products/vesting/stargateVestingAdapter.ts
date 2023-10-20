@@ -38,7 +38,7 @@ type StargateVestingMetadata = {
 export class StargateVestingAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
-  product = 'vesting'
+  productId = 'vesting'
   protocolId: Protocol
   chainId: Chain
 
@@ -60,7 +60,7 @@ export class StargateVestingAdapter
       iconUrl: 'https://stargate.finance/favicons/favicon-light.svg',
       positionType: PositionType.Staked,
       chainId: this.chainId,
-      product: this.product,
+      productId: this.productId,
     }
   }
 

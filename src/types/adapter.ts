@@ -1,4 +1,5 @@
 import { Protocol } from '../adapters/protocols'
+import { AdaptersController } from '../core/adaptersController'
 import { Chain } from '../core/constants/chains'
 import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
 import { Erc20Metadata } from './erc20Metadata'
@@ -154,7 +155,7 @@ export type ProtocolDetails = {
   /**
    * Unique protocol-product name
    */
-  product: string
+  productId: string
 }
 
 export interface GetPositionsInput {
@@ -358,4 +359,5 @@ export interface ProtocolAdapterParams {
   provider: CustomJsonRpcProvider
   chainId: Chain
   protocolId: Protocol
+  adaptersController: AdaptersController
 }

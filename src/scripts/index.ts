@@ -13,6 +13,7 @@ const program = new Command('mmi-adapters')
 
 const defiProvider = new DefiProvider()
 const chainProviders = defiProvider.chainProvider.providers
+const adaptersController = defiProvider.adaptersController
 
 featureCommands(program, defiProvider)
 
@@ -22,7 +23,7 @@ blockAverage(program, chainProviders)
 
 buildContractTypes(program)
 
-buildMetadata(program, chainProviders)
+buildMetadata(program, chainProviders, adaptersController)
 
 buildSnapshots(program, defiProvider)
 

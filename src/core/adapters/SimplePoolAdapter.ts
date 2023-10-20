@@ -39,6 +39,7 @@ import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
   chainId: Chain
   protocolId: Protocol
+  abstract productId: string
 
   protected provider: CustomJsonRpcProvider
 

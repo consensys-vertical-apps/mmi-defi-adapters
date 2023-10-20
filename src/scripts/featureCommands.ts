@@ -104,8 +104,7 @@ function addressEventsCommand(
   defaultFromBlock: number,
   defaultToBlock: number,
   defaultProtocolTokenAddress: string,
-
-  defaultProduct: string,
+  defaultProductId: string,
   defaultProtocolId: Protocol,
   defaultChainId: string,
   defaultTokenId: string,
@@ -120,7 +119,7 @@ function addressEventsCommand(
       'Address of the protocol token',
       defaultProtocolTokenAddress,
     )
-    .argument('[product]', 'Name of product', defaultProduct)
+    .argument('[productId]', 'Name of product', defaultProductId)
     .argument('[protocolId]', 'Name of product', defaultProtocolId)
     .argument('[chainId]', 'Name of product', defaultChainId)
     .argument('[tokenId]', 'Token Id of the position', defaultTokenId)
@@ -131,8 +130,7 @@ function addressEventsCommand(
         fromBlock,
         toBlock,
         protocolTokenAddress,
-
-        product,
+        productId,
         protocolId,
         chainId,
         tokenId,
@@ -142,8 +140,7 @@ function addressEventsCommand(
           fromBlock: parseInt(fromBlock, 10),
           toBlock: parseInt(toBlock, 10),
           protocolTokenAddress,
-
-          product,
+          productId,
           protocolId,
           chainId: parseInt(chainId) as Chain,
           tokenId,

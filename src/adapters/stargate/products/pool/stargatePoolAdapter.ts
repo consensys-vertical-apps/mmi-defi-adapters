@@ -42,7 +42,7 @@ export class StargatePoolAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
-  product = 'pool'
+  productId = 'pool'
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -54,7 +54,7 @@ export class StargatePoolAdapter
       iconUrl: 'https://stargate.finance/favicons/favicon-light.svg',
       positionType: PositionType.Supply,
       chainId: this.chainId,
-      product: this.product,
+      productId: this.productId,
     }
   }
 

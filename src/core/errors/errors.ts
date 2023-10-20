@@ -1,8 +1,9 @@
+import { Protocol } from '../../adapters/protocols'
 import { Chain, ChainName } from '../constants/chains'
 
 export class NotApplicableError extends Error {
-  constructor(message = 'Not Applicable') {
-    super(message)
+  constructor() {
+    super('Not Applicable')
 
     Error.captureStackTrace(this, NotApplicableError)
 
@@ -11,8 +12,8 @@ export class NotApplicableError extends Error {
 }
 
 export class NotImplementedError extends Error {
-  constructor(message = 'Not Implemented') {
-    super(message)
+  constructor() {
+    super('Not Implemented')
 
     Error.captureStackTrace(this, NotImplementedError)
 
@@ -24,13 +25,32 @@ export class ProviderMissingError extends Error {
   chainId: Chain
   chainName: string
 
-  constructor(chainId: Chain, message = 'No provider found for chain') {
-    super(message)
+  constructor(chainId: Chain) {
+    super('No provider found for chain')
 
     Error.captureStackTrace(this, ProviderMissingError)
 
     this.name = 'ProviderMissingError'
     this.chainId = chainId
     this.chainName = ChainName[chainId]
+  }
+}
+
+export class AdapterMissingError extends Error {
+  chainId: Chain
+  chainName: string
+  protocolId: Protocol
+  productId?: string
+
+  constructor(chainId: Chain, protocolId: Protocol, productId?: string) {
+    super('No adapter found')
+
+    Error.captureStackTrace(this, AdapterMissingError)
+
+    this.name = 'AdapterMissingError'
+    this.chainId = chainId
+    this.chainName = ChainName[chainId]
+    this.protocolId = protocolId
+    this.productId = productId
   }
 }

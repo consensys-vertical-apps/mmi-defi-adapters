@@ -22,7 +22,7 @@ export type TestCase = {
         fromBlock: number
         toBlock: number
         protocolTokenAddress: string
-        product: string
+        productId: string
         tokenId?: string
       }
     }
@@ -33,7 +33,7 @@ export type TestCase = {
         fromBlock: number
         toBlock: number
         protocolTokenAddress: string
-        product: string
+        productId: string
         tokenId?: string
       }
     }

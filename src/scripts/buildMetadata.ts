@@ -5,6 +5,7 @@ import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
 import { supportedProtocols } from '../adapters'
 import { Protocol } from '../adapters/protocols'
+import { AdaptersController } from '../core/adaptersController'
 import { Chain, ChainName } from '../core/constants/chains'
 import { IMetadataBuilder } from '../core/decorators/cacheToFile'
 import { ProviderMissingError } from '../core/errors/errors'
@@ -12,7 +13,6 @@ import { pascalCase } from '../core/utils/caseConversion'
 import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
 import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
-import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Json } from '../types/json'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
@@ -21,6 +21,7 @@ import b = types.builders
 export function buildMetadata(
   program: Command,
   chainProviders: Record<Chain, CustomJsonRpcProvider>,
+  adaptersController: AdaptersController,
 ) {
   program
     .command('build-metadata')
@@ -45,9 +46,7 @@ export function buildMetadata(
           continue
         }
 
-        for (const [chainIdKey, adapterClasses] of Object.entries(
-          supportedChains,
-        )) {
+        for (const [chainIdKey, _] of Object.entries(supportedChains)) {
           const chainId = +chainIdKey as Chain
           if (filterChainIds && !filterChainIds.includes(chainId)) {
             continue
@@ -60,13 +59,10 @@ export function buildMetadata(
             throw new ProviderMissingError(chainId)
           }
 
-          for (const adapterClass of adapterClasses) {
-            const adapter = new adapterClass({
-              provider,
-              chainId,
-              protocolId,
-            }) as IProtocolAdapter
+          const chainProtocolAdapters =
+            adaptersController.fetchChainProtocolAdapters(chainId, protocolId)
 
+          for (const [_, adapter] of chainProtocolAdapters) {
             if (isIMetadataBuilder(adapter)) {
               const { metadata, fileDetails } = (await adapter.buildMetadata(
                 true,

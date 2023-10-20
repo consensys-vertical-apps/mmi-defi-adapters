@@ -26,7 +26,7 @@ export type GetEventsRequestInput = {
   protocolTokenAddress: string
   protocolId: Protocol
   chainId: Chain
-  product: string
+  productId: string
   tokenId?: string
 }
 

@@ -9,7 +9,7 @@
       "iconUrl": "https://aave.com/favicon.ico",
       "positionType": "lend",
       "chainId": 42161,
-      "product": "a-token",
+      "productId": "a-token",
       "success": true,
       "tokens": [
         {
@@ -120,7 +120,7 @@
       "iconUrl": "https://aave.com/favicon.ico",
       "positionType": "borrow",
       "chainId": 42161,
-      "product": "stable-debt-token",
+      "productId": "stable-debt-token",
       "success": true,
       "tokens": [
         {
@@ -231,7 +231,7 @@
       "iconUrl": "https://aave.com/favicon.ico",
       "positionType": "borrow",
       "chainId": 42161,
-      "product": "variable-debt-token",
+      "productId": "variable-debt-token",
       "success": true,
       "tokens": [
         {

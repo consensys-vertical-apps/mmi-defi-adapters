@@ -9,7 +9,7 @@
       "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
       "positionType": "supply",
       "chainId": 1,
-      "product": "pool",
+      "productId": "pool",
       "success": true,
       "tokens": [
         {
@@ -43,7 +43,7 @@
       "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
       "positionType": "stake",
       "chainId": 1,
-      "product": "vesting",
+      "productId": "vesting",
       "success": true,
       "tokens": [
         {

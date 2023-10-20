@@ -5,5 +5,6 @@ export const Protocol = {
   AaveV2: 'aave-v2',
   AaveV3: 'aave-v3',
   UniswapV3: 'uniswap-v3',
+  Lido: 'lido',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
