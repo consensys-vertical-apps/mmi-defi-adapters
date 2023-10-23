@@ -1,5 +1,5 @@
 {
-  "blockNumber": 140029883,
+  "blockNumber": 142290717,
   "snapshot": [
     {
       "protocolId": "aave-v3",
@@ -24,19 +24,19 @@
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "profitRaw": "2482173018002n",
+              "profitRaw": "1770405211141n",
               "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "75356022392020904n",
-                "startPositionValue": "0.075356022392020904",
-                "endPositionValueRaw": "75358504565038906n",
-                "endPositionValue": "0.075358504565038906"
+                "startPositionValueRaw": "75374552376746320n",
+                "startPositionValue": "0.07537455237674632",
+                "endPositionValueRaw": "75372781971535179n",
+                "endPositionValue": "0.075372781971535179"
               },
-              "profit": "0.000002482173018002",
+              "profit": "0.000001770405211141",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ]
@@ -60,10 +60,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "768770n",
-                "startPositionValue": "0.0076877",
-                "endPositionValueRaw": "768772n",
-                "endPositionValue": "0.00768772"
+                "startPositionValueRaw": "768788n",
+                "startPositionValue": "0.00768788",
+                "endPositionValueRaw": "768786n",
+                "endPositionValue": "0.00768786"
               },
               "profit": "0.00000002",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
@@ -71,8 +71,8 @@
           ]
         }
       ],
-      "fromBlock": 139709605,
-      "toBlock": 140029883
+      "fromBlock": 141970439,
+      "toBlock": 142290717
     },
     {
       "protocolId": "aave-v3",
@@ -85,8 +85,8 @@
       "productId": "stable-debt-token",
       "success": true,
       "tokens": [],
-      "fromBlock": 139709605,
-      "toBlock": 140029883
+      "fromBlock": 141970439,
+      "toBlock": 142290717
     },
     {
       "protocolId": "aave-v3",
@@ -111,26 +111,26 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "profitRaw": "-23023461360375721n",
+              "profitRaw": "-62033352316150878n",
               "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "204513461268090554546n",
-                "startPositionValue": "204.513461268090554546",
-                "endPositionValueRaw": "204536484729450930267n",
-                "endPositionValue": "204.536484729450930267"
+                "startPositionValueRaw": "204818507090799477514n",
+                "startPositionValue": "204.818507090799477514",
+                "endPositionValueRaw": "204756473738483326636n",
+                "endPositionValue": "204.756473738483326636"
               },
-              "profit": "-0.023023461360375721",
+              "profit": "-0.062033352316150878",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ]
         }
       ],
-      "fromBlock": 139709605,
-      "toBlock": 140029883
+      "fromBlock": 141970439,
+      "toBlock": 142290717
     }
   ]
 }

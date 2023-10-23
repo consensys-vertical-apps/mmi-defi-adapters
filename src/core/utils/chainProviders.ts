@@ -39,7 +39,7 @@ export class ChainProvider {
       })
     }
 
-    logger.debug({ chainId }, 'Using multicall queue provider')
+    logger.debug({ chainId, url }, 'Using multicall queue provider')
 
     const provider = new CustomJsonRpcProvider({
       url,
@@ -57,7 +57,7 @@ export class ChainProvider {
     )
 
     const multicallQueue = new MulticallQueue({
-      flushTimeoutMs: 2,
+      flushTimeoutMs: 0.1,
       maxBatchSize: 100,
       multicallContract,
     })
@@ -66,6 +66,9 @@ export class ChainProvider {
       url,
       chainId,
       multicallQueue,
+      options: {
+        staticNetwork: Network.from(chainId),
+      },
     })
   }
 

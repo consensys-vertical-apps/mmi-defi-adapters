@@ -1,0 +1,22 @@
+{
+  "blockNumber": 18412988,
+  "snapshot": [
+    {
+      "protocolId": "uniswap-v3",
+      "name": "UniswapV3",
+      "description": "UniswapV3 defi adapter",
+      "siteUrl": "https://uniswap.org/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "product": "pool",
+      "success": false,
+      "error": {
+        "message": "Uniswap tokenId: 587543 at blocknumber: 18362966 does not exist, has position been minted yet or burned?",
+        "details": {
+          "name": "Error"
+        }
+      }
+    }
+  ]
+}

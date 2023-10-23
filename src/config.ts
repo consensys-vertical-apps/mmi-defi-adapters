@@ -24,7 +24,7 @@ export class Config {
   private defaultConfig: Schema<IConfig>
   private config: convict.Config<IConfig>
 
-  constructor(config?: IConfig) {
+  constructor(config?: Partial<IConfig>) {
     this.defaultConfig = {
       provider: {
         ethereum: {

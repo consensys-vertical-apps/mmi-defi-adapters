@@ -1,6 +1,47 @@
 import { Multicall } from '../../contracts'
 import { MulticallQueue } from './multicall'
 
+type TestCaseType = [
+  string,
+  {
+    paramsArray: {
+      to: string
+      data: string
+      blockTag?: number
+      from?: string
+    }[]
+
+    mockResponseLength: number[] // to ensure error not triggered
+  },
+]
+
+const testCases: TestCaseType[] = [
+  [
+    'sends separate batches',
+    {
+      paramsArray: [
+        { to: '0x', data: '0x', blockTag: undefined },
+        { to: '0x', data: '0x', blockTag: 100 },
+      ],
+
+      mockResponseLength: [1, 1],
+    },
+  ],
+
+  [
+    'sends 2 batches',
+    {
+      paramsArray: [
+        { to: '0x', data: '0x', blockTag: undefined },
+        { to: '0x', data: '0x', blockTag: undefined },
+        { to: '0x', data: '0x', blockTag: 100 },
+        { to: '0x', data: '0x', blockTag: 100 },
+      ],
+
+      mockResponseLength: [2, 2],
+    },
+  ],
+]
 describe('MulticallQueue', () => {
   beforeEach(() => {
     jest.useFakeTimers() // mock timers
@@ -11,29 +52,43 @@ describe('MulticallQueue', () => {
   })
 
   describe('queueCall', () => {
-    it('sends batch size of 10', async () => {
-      const maxBatchSize = 10
-      const spy = jest.fn().mockResolvedValue(
-        Array(maxBatchSize).fill({
-          success: true,
-          returnData: '0x',
-        }),
-      )
+    it.each(testCases)(
+      '%s',
+      async (_description, { paramsArray, mockResponseLength }) => {
+        const flushTimeoutMs = 1
 
-      const multicall = new MulticallQueue({
-        flushTimeoutMs: 1000000,
-        maxBatchSize,
-        multicallContract: {
-          aggregate3: { staticCall: spy },
-        } as unknown as Multicall,
-      })
+        const spy = jest.fn()
+        mockResponseLength.forEach((length) => {
+          spy.mockResolvedValueOnce(
+            Array(length).fill({
+              success: true,
+              returnData: '0x',
+            }),
+          )
+        })
 
-      Array.from({ length: 22 }, () =>
-        multicall.queueCall({ to: '0x', data: '0x' }),
-      )
+        const multicall = new MulticallQueue({
+          flushTimeoutMs,
+          maxBatchSize: 3,
+          multicallContract: {
+            aggregate3: { staticCall: spy },
+          } as unknown as Multicall,
+        })
 
-      expect(spy).toBeCalledTimes(2)
-    })
+        const resultsPromises = paramsArray.map((params) => {
+          const { to, data, blockTag, from } = params
+          multicall.queueCall({ to, data, blockTag, from })
+        })
+
+        await Promise.all(resultsPromises)
+
+        expect(spy).not.toHaveBeenCalled()
+        // Await the timers properly
+        jest.runAllTimers()
+        await Promise.resolve() // Ensuring any micro-tasks are also completed
+        expect(spy).toHaveBeenCalled()
+      },
+    )
 
     it('queues calls for 1 second', () => {
       const spy = jest.fn().mockResolvedValue(
@@ -61,19 +116,31 @@ describe('MulticallQueue', () => {
       expect(spy).toHaveBeenCalled()
     })
 
-    it('throws when "from" value populated', async () => {
+    it('blockTag sent with request', async () => {
+      const spy = jest.fn().mockResolvedValue(
+        Array(1).fill({
+          success: true,
+          returnData: '0x',
+        }),
+      )
+
       const multicall = new MulticallQueue({
         flushTimeoutMs: 10,
         maxBatchSize: 1,
         multicallContract: {
-          aggregate3: { staticCall: {} },
+          aggregate3: { staticCall: spy },
         } as unknown as Multicall,
       })
 
-      expect(
-        multicall.queueCall({ to: '0x', data: '0x', from: '0x' }),
-      ).rejects.toThrowError(
-        'MulticallQueue unable to handle from parameter, use standard json rpc provider instead',
+      await multicall.queueCall({
+        to: 'to',
+        data: '0x',
+        blockTag: 100,
+      })
+
+      expect(spy).toBeCalledWith(
+        [{ allowFailure: true, callData: '0x', target: 'to' }],
+        { blockTag: '0x64' },
       )
     })
 
@@ -88,14 +155,10 @@ describe('MulticallQueue', () => {
 
       expect(
         multicall.queueCall({ to: undefined, data: '0x' }),
-      ).rejects.toThrowError(
-        'To and Data are required when using MulticallQueue',
-      )
+      ).rejects.toThrowError('To is required when using MulticallQueue')
       expect(
         multicall.queueCall({ to: '0x', data: undefined }),
-      ).rejects.toThrowError(
-        'To and Data are required when using MulticallQueue',
-      )
+      ).rejects.toThrowError('Data is required when using MulticallQueue')
       expect(
         multicall.queueCall({ to: undefined, data: undefined }),
       ).rejects.toThrowError(

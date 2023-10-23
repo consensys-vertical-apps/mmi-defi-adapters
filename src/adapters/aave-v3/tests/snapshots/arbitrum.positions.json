@@ -1,5 +1,5 @@
 {
-  "blockNumber": 140029880,
+  "blockNumber": 142290717,
   "snapshot": [
     {
       "protocolId": "aave-v3",
@@ -17,7 +17,7 @@
           "name": "Aave Arbitrum WBTC",
           "symbol": "aArbWBTC",
           "decimals": 8,
-          "balanceRaw": "768772n",
+          "balanceRaw": "768788n",
           "type": "protocol",
           "tokens": [
             {
@@ -25,20 +25,20 @@
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
-              "balanceRaw": "768772n",
+              "balanceRaw": "768788n",
               "type": "underlying",
-              "balance": "0.00768772",
+              "balance": "0.00768788",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
           ],
-          "balance": "0.00768772"
+          "balance": "0.00768788"
         },
         {
           "address": "0xe50fa9b3c56ffb159cb0fca61f5c9d750e8128c8",
           "name": "Aave Arbitrum WETH",
           "symbol": "aArbWETH",
           "decimals": 18,
-          "balanceRaw": "75358504539274089n",
+          "balanceRaw": "75374552376746320n",
           "type": "protocol",
           "tokens": [
             {
@@ -46,13 +46,13 @@
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "balanceRaw": "75358504539274089n",
+              "balanceRaw": "75374552376746320n",
               "type": "underlying",
-              "balance": "0.075358504539274089",
+              "balance": "0.07537455237674632",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
-          "balance": "0.075358504539274089"
+          "balance": "0.07537455237674632"
         }
       ]
     },
@@ -84,7 +84,7 @@
           "name": "Aave Arbitrum Variable Debt DAI",
           "symbol": "variableDebtArbDAI",
           "decimals": 18,
-          "balanceRaw": "204536484473502408267n",
+          "balanceRaw": "204818507090799477514n",
           "type": "protocol",
           "tokens": [
             {
@@ -92,13 +92,13 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "balanceRaw": "204536484473502408267n",
+              "balanceRaw": "204818507090799477514n",
               "type": "underlying",
-              "balance": "204.536484473502408267",
+              "balance": "204.818507090799477514",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ],
-          "balance": "204.536484473502408267"
+          "balance": "204.818507090799477514"
         }
       ]
     }

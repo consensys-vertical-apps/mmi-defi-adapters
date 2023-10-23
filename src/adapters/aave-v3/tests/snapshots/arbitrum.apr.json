@@ -1,5 +1,5 @@
 {
-  "blockNumber": 140029892,
+  "blockNumber": 142290717,
   "snapshot": [
     {
       "protocolId": "aave-v3",
@@ -17,7 +17,7 @@
           "name": "Aave Arbitrum DAI",
           "symbol": "aArbDAI",
           "decimals": 18,
-          "aprDecimal": 0.10000215717487361
+          "aprDecimal": 0.12399164023867812
         },
         {
           "address": "0x191c10aa4af7c30e871e70c95db0e4eb77237530",
@@ -31,7 +31,7 @@
           "name": "Aave Arbitrum USDC",
           "symbol": "aArbUSDC",
           "decimals": 6,
-          "aprDecimal": 3.061178382048e-13
+          "aprDecimal": 3.248155974761e-13
         },
         {
           "address": "0x078f358208685046a11c85e8ad32895ded33a249",
@@ -52,7 +52,7 @@
           "name": "Aave Arbitrum USDT",
           "symbol": "aArbUSDT",
           "decimals": 6,
-          "aprDecimal": 2.882556990624e-13
+          "aprDecimal": 2.936785322611e-13
         },
         {
           "address": "0xf329e36c7bf6e5e86ce2150875a84ce77f477375",
@@ -66,7 +66,7 @@
           "name": "Aave Arbitrum EURS",
           "symbol": "aArbEURS",
           "decimals": 2,
-          "aprDecimal": 1.178178e-19
+          "aprDecimal": 1.179895e-19
         },
         {
           "address": "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff",
@@ -128,42 +128,42 @@
           "name": "Aave Arbitrum Stable Debt DAI",
           "symbol": "stableDebtArbDAI",
           "decimals": 18,
-          "aprDecimal": 3.028288251667798
+          "aprDecimal": 10.430627574180717
         },
         {
           "address": "0x89d976629b7055ff1ca02b927ba3e020f22a44e4",
           "name": "Aave Arbitrum Stable Debt LINK",
           "symbol": "stableDebtArbLINK",
           "decimals": 18,
-          "aprDecimal": 0.14548735839515053
+          "aprDecimal": 0.04536613779269939
         },
         {
           "address": "0x307ffe186f84a3bc2613d1ea417a5737d69a7007",
           "name": "Aave Arbitrum Stable Debt USDC",
           "symbol": "stableDebtArbUSDC",
           "decimals": 6,
-          "aprDecimal": 2.8943635408760704
+          "aprDecimal": 6.10651123432323
         },
         {
           "address": "0x633b207dd676331c413d4c013a6294b0fe47cd0e",
           "name": "Aave Arbitrum Stable Debt WBTC",
           "symbol": "stableDebtArbWBTC",
           "decimals": 8,
-          "aprDecimal": 0.07875503213803177
+          "aprDecimal": 0.05758384437787751
         },
         {
           "address": "0xd8ad37849950903571df17049516a5cd4cbe55f6",
           "name": "Aave Arbitrum Stable Debt WETH",
           "symbol": "stableDebtArbWETH",
           "decimals": 18,
-          "aprDecimal": 1.0782052269283655
+          "aprDecimal": 0.7525814878384431
         },
         {
           "address": "0x70effc565db6eef7b927610155602d31b670e802",
           "name": "Aave Arbitrum Stable Debt USDT",
           "symbol": "stableDebtArbUSDT",
           "decimals": 6,
-          "aprDecimal": 2.864958892569874
+          "aprDecimal": 7.10077559319201
         },
         {
           "address": "0xfaef6a702d15428e588d4c0614aefb4348d83d48",
@@ -177,49 +177,49 @@
           "name": "Aave Arbitrum Stable Debt EURS",
           "symbol": "stableDebtArbEURS",
           "decimals": 2,
-          "aprDecimal": 2.5764848414643193
+          "aprDecimal": 2.584100648214023
         },
         {
           "address": "0x08cb71192985e936c7cd166a8b268035e400c3c3",
           "name": "Aave Arbitrum Stable Debt wstETH",
           "symbol": "stableDebtArbwstETH",
           "decimals": 18,
-          "aprDecimal": 0.009250609370445266
+          "aprDecimal": 0.007322212858521532
         },
         {
           "address": "0x3ef10dff4928279c004308ebadc4db8b7620d6fc",
           "name": "Aave Arbitrum Stable Debt rETH",
           "symbol": "stableDebtArbrETH",
           "decimals": 18,
-          "aprDecimal": 0.23339428343296997
+          "aprDecimal": 0.2443625766800557
         },
         {
           "address": "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd",
           "name": "Aave Arbitrum Stable Debt LUSD",
           "symbol": "stableDebtArbLUSD",
           "decimals": 18,
-          "aprDecimal": 1.718899780859065
+          "aprDecimal": 1.4196473068212416
         },
         {
           "address": "0xdc1fad70953bb3918592b6fcc374fe05f5811b6a",
           "name": "Aave Arbitrum Stable Debt USDCn",
           "symbol": "stableDebtArbUSDCn",
           "decimals": 6,
-          "aprDecimal": 2.630280083446672
+          "aprDecimal": 5.1944802097530465
         },
         {
           "address": "0x8a9fde6925a839f6b1932d16b36ac026f8d3fbdb",
           "name": "Aave Arbitrum Stable Debt FRAX",
           "symbol": "stableDebtArbFRAX",
           "decimals": 18,
-          "aprDecimal": 0.058819901219566165
+          "aprDecimal": 2.3540174242914174
         },
         {
           "address": "0x6b4b37618d85db2a7b469983c888040f7f05ea3d",
           "name": "Aave Arbitrum Stable Debt ARB",
           "symbol": "stableDebtArbARB",
           "decimals": 18,
-          "aprDecimal": 0.8444690109059084
+          "aprDecimal": 0.42820520530462963
         }
       ]
     },
@@ -239,42 +239,42 @@
           "name": "Aave Arbitrum Variable Debt DAI",
           "symbol": "variableDebtArbDAI",
           "decimals": 18,
-          "aprDecimal": 0.406139625719732
+          "aprDecimal": 0.39412515942332677
         },
         {
           "address": "0x953a573793604af8d41f306feb8274190db4ae0e",
           "name": "Aave Arbitrum Variable Debt LINK",
           "symbol": "variableDebtArbLINK",
           "decimals": 18,
-          "aprDecimal": 0.01109810044090392
+          "aprDecimal": 0.006703863872310088
         },
         {
           "address": "0xfccf3cabbe80101232d343252614b6a3ee81c989",
           "name": "Aave Arbitrum Variable Debt USDC",
           "symbol": "variableDebtArbUSDC",
           "decimals": 6,
-          "aprDecimal": 2.5354533801935997e-12
+          "aprDecimal": 2.6022073569735e-12
         },
         {
           "address": "0x92b42c66840c7ad907b4bf74879ff3ef7c529473",
           "name": "Aave Arbitrum Variable Debt WBTC",
           "symbol": "variableDebtArbWBTC",
           "decimals": 8,
-          "aprDecimal": 1.9276219352e-15
+          "aprDecimal": 1.7009363539000002e-15
         },
         {
           "address": "0x0c84331e39d6658cd6e6b9ba04736cc4c4734351",
           "name": "Aave Arbitrum Variable Debt WETH",
           "symbol": "variableDebtArbWETH",
           "decimals": 18,
-          "aprDecimal": 0.0019092435608885625
+          "aprDecimal": 0.0019907131776987688
         },
         {
           "address": "0xfb00ac187a8eb5afae4eace434f493eb62672df7",
           "name": "Aave Arbitrum Variable Debt USDT",
           "symbol": "variableDebtArbUSDT",
           "decimals": 6,
-          "aprDecimal": 9.72727937629e-13
+          "aprDecimal": 1.0741742655639999e-12
         },
         {
           "address": "0xe80761ea617f66f96274ea5e8c37f03960ecc679",
@@ -288,49 +288,49 @@
           "name": "Aave Arbitrum Variable Debt EURS",
           "symbol": "variableDebtArbEURS",
           "decimals": 2,
-          "aprDecimal": 9.01625e-20
+          "aprDecimal": 9.018499999999999e-20
         },
         {
           "address": "0x77ca01483f379e58174739308945f044e1a764dc",
           "name": "Aave Arbitrum Variable Debt wstETH",
           "symbol": "variableDebtArbwstETH",
           "decimals": 18,
-          "aprDecimal": 0.00006248919909549313
+          "aprDecimal": 0.00005633558922336004
         },
         {
           "address": "0xce186f6cccb0c955445bb9d10c59cae488fea559",
           "name": "Aave Arbitrum Variable Debt rETH",
           "symbol": "variableDebtArbrETH",
           "decimals": 18,
-          "aprDecimal": 0.000022086185836889807
+          "aprDecimal": 0.00002531530466996661
         },
         {
           "address": "0xa8669021776bc142dfca87c21b4a52595bcbb40a",
           "name": "Aave Arbitrum Variable Debt LUSD",
           "symbol": "variableDebtArbLUSD",
           "decimals": 18,
-          "aprDecimal": 0.08046769914321376
+          "aprDecimal": 0.09577385522524254
         },
         {
           "address": "0xf611aeb5013fd2c0511c9cd55c7dc5c1140741a6",
           "name": "Aave Arbitrum Variable Debt USDCn",
           "symbol": "variableDebtArbUSDCn",
           "decimals": 6,
-          "aprDecimal": 1.1690010323486e-12
+          "aprDecimal": 1.3041448501189e-12
         },
         {
           "address": "0x5d557b07776d12967914379c71a1310e917c7555",
           "name": "Aave Arbitrum Variable Debt FRAX",
           "symbol": "variableDebtArbFRAX",
           "decimals": 18,
-          "aprDecimal": 0.0013970959870374688
+          "aprDecimal": 0.0015736510044422705
         },
         {
           "address": "0x44705f578135cc5d703b4c9c122528c73eb87145",
           "name": "Aave Arbitrum Variable Debt ARB",
           "symbol": "variableDebtArbARB",
           "decimals": 18,
-          "aprDecimal": 0.1594497251191085
+          "aprDecimal": 0.20028233798868866
         }
       ]
     }

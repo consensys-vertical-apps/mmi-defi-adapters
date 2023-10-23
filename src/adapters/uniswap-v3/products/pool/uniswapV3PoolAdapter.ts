@@ -449,7 +449,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     const { token0, token1, fee } = await positionsManagerContract
       .positions(tokenId, { blockTag: fromBlock })
       .catch((error) => {
-        if (error.message.includes('Invalid token ID')) {
+        if (error?.message?.includes('Invalid token ID')) {
           throw new Error(
             `Uniswap tokenId: ${tokenId} at blocknumber: ${fromBlock} does not exist, has position been minted yet or burned?`,
           )
