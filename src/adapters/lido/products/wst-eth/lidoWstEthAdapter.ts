@@ -1,4 +1,7 @@
+import { Erc20__factory } from '../../../../contracts'
+import { TransferEvent } from '../../../../contracts/Erc20'
 import { Chain } from '../../../../core/constants/chains'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
@@ -27,6 +30,7 @@ import {
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
+  BaseTokenMovement,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -182,12 +186,36 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     throw new NotImplementedError()
   }
 
-  async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+  async getDeposits({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      protocolTokenAddress,
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(),
+      fromBlock,
+      toBlock,
+      from: ZERO_ADDRESS,
+      to: userAddress,
+    })
   }
 
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+  async getClaimedRewards({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      protocolTokenAddress,
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(),
+      fromBlock,
+      toBlock,
+      from: userAddress,
+      to: ZERO_ADDRESS,
+    })
   }
 
   async getTotalValueLocked(
@@ -241,5 +269,102 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
 
   async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
+  }
+
+  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
+    const { contractToken } = await this.buildMetadata()
+
+    return contractToken
+  }
+
+  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
+    const { underlyingToken } = await this.buildMetadata()
+
+    return [underlyingToken]
+  }
+
+  /**
+   * Util used by both getDeposits and getWithdrawals
+   */
+  private async getMovements({
+    protocolTokenAddress,
+    underlyingTokens,
+    fromBlock,
+    toBlock,
+    from,
+    to,
+  }: {
+    protocolTokenAddress: string
+    underlyingTokens: Erc20Metadata[]
+    fromBlock: number
+    toBlock: number
+    from: string
+    to: string
+  }): Promise<MovementsByBlock[]> {
+    const protocolTokenContract = Erc20__factory.connect(
+      protocolTokenAddress,
+      this.provider,
+    )
+
+    const protocolToken = await this.fetchProtocolTokenMetadata()
+
+    const filter = protocolTokenContract.filters.Transfer(from, to)
+
+    const eventResults =
+      await protocolTokenContract.queryFilter<TransferEvent.Event>(
+        filter,
+        fromBlock,
+        toBlock,
+      )
+
+    return await Promise.all(
+      eventResults.map(async (transferEvent) => {
+        const {
+          blockNumber,
+          args: { value: protocolTokenMovementValueRaw },
+        } = transferEvent
+
+        const protocolTokenPrice =
+          await this.getProtocolTokenToUnderlyingTokenRate({
+            blockNumber,
+            protocolTokenAddress,
+          })
+
+        return {
+          protocolToken: {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+          },
+          underlyingTokensMovement: underlyingTokens.reduce(
+            (accumulator, currentToken) => {
+              const currentTokenPrice = protocolTokenPrice.tokens?.find(
+                (price) => price.address === currentToken.address,
+              )
+
+              if (!currentTokenPrice) {
+                throw new Error('No price for underlying token at this time')
+              }
+
+              const movementValueRaw =
+                (protocolTokenMovementValueRaw *
+                  currentTokenPrice.underlyingRateRaw) /
+                BigInt(10 ** currentTokenPrice.decimals)
+
+              return {
+                ...accumulator,
+                [currentToken.address]: {
+                  ...currentToken,
+                  movementValueRaw,
+                },
+              }
+            },
+            {} as Record<string, BaseTokenMovement>,
+          ),
+          blockNumber,
+        }
+      }),
+    )
   }
 }
