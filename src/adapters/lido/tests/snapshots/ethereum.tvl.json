@@ -10,30 +10,13 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "st-eth",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
-          "name": "Liquid staked Ether 2.0",
-          "symbol": "STETH",
-          "decimals": 18,
-          "balanceRaw": "4944483824413014n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x0000000000000000000000000000000000000000",
-              "name": "Ethereum",
-              "symbol": "ETH",
-              "decimals": 18,
-              "balanceRaw": "4944483824413014n",
-              "type": "underlying",
-              "balance": "0.004944483824413014",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-            }
-          ],
-          "balance": "0.004944483824413014"
+      "success": false,
+      "error": {
+        "message": "could not decode result data (value=\"0x\", info={ \"method\": \"balanceOf\", \"signature\": \"balanceOf(address)\" }, code=BAD_DATA, version=6.7.1)",
+        "details": {
+          "name": "Error"
         }
-      ]
+      }
     },
     {
       "protocolId": "lido",
@@ -51,8 +34,8 @@
           "name": "Wrapped liquid staked Ether 2.0",
           "symbol": "WSTETH",
           "decimals": 18,
-          "balanceRaw": "78871459289748529074876n",
           "type": "protocol",
+          "totalSupplyRaw": "3205621796701989888280098n",
           "tokens": [
             {
               "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
@@ -60,24 +43,12 @@
               "symbol": "stETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "90177902840852853190524n",
-              "tokens": [
-                {
-                  "address": "0x0000000000000000000000000000000000000000",
-                  "name": "Ethereum",
-                  "symbol": "ETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "90177902840852853190524n",
-                  "balance": "90177.902840852853190524",
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                }
-              ],
-              "balance": "90177.902840852853190524",
+              "totalSupplyRaw": "3665156618272929270930708n",
+              "totalSupply": "3665156.618272929270930708",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "balance": "78871.459289748529074876"
+          "totalSupply": "3205621.796701989888280098"
         }
       ]
     }
