@@ -33,6 +33,7 @@ import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { aggregateTrades } from '../utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
+import { getAddressesBalances } from '../utils/getAddressesBalances'
 import { getBalances } from '../utils/getBalances'
 import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 
@@ -166,12 +167,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
         const [protocolTokenTotalSupply, underlyingTokenBalances] =
           await Promise.all([
             protocolTokenContact.totalSupply({ blockTag: blockNumber }),
-            getBalances({
+            getAddressesBalances({
               chainId: this.chainId,
               provider: this.provider,
-              userAddress: protocolTokenMetadata.address,
+              addresses: [protocolTokenMetadata.address],
+              tokens: underlyingTokens.map((token) => token.address),
               blockNumber,
-              tokens: underlyingTokens,
             }),
           ])
 
@@ -179,18 +180,18 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           ...protocolTokenMetadata,
           type: TokenType.Protocol,
           totalSupplyRaw: protocolTokenTotalSupply,
-          tokens: underlyingTokenBalances.map(
-            ({ address, name, symbol, decimals, balanceRaw }) => {
-              return {
-                address: address,
-                name: name,
-                symbol: symbol,
-                decimals: decimals,
-                type: TokenType.Underlying,
-                totalSupplyRaw: balanceRaw,
-              }
-            },
-          ),
+          tokens: underlyingTokens.map((underlyingToken) => {
+            const balance =
+              underlyingTokenBalances[protocolTokenMetadata.address]?.[
+                underlyingToken.address
+              ]
+
+            return {
+              ...underlyingToken,
+              type: TokenType.Underlying,
+              totalSupplyRaw: balance ?? 0n,
+            }
+          }),
         }
       }),
     )
