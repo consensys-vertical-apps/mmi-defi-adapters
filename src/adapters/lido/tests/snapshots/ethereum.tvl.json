@@ -10,13 +10,30 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "st-eth",
-      "success": false,
-      "error": {
-        "message": "could not decode result data (value=\"0x\", info={ \"method\": \"balanceOf\", \"signature\": \"balanceOf(address)\" }, code=BAD_DATA, version=6.7.1)",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "name": "Liquid staked Ether 2.0",
+          "symbol": "STETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "8827483127693819205147046n",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "661021422603205147046n",
+              "totalSupply": "661.021422603205147046",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "totalSupply": "8827483.127693819205147046"
         }
-      }
+      ]
     },
     {
       "protocolId": "lido",

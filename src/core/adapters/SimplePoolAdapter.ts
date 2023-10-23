@@ -158,40 +158,39 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           protocolTokenMetadata.address,
           this.provider,
         )
-        const protocolTokenTotalSupply = await protocolTokenContact.totalSupply(
-          { blockTag: blockNumber },
-        )
 
         const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
           protocolTokenMetadata.address,
         )
 
-        const underlyingTokenTvls = await Promise.all(
-          underlyingTokens.map(async (underlyingTokenMetadata) => {
-            const underlyingTokenContract = Erc20__factory.connect(
-              underlyingTokenMetadata.address,
-              this.provider,
-            )
-
-            const underlyingTokenBalance =
-              await underlyingTokenContract.balanceOf(
-                protocolTokenMetadata.address,
-                { blockTag: blockNumber },
-              )
-
-            return {
-              ...underlyingTokenMetadata,
-              type: TokenType.Underlying,
-              totalSupplyRaw: underlyingTokenBalance,
-            }
-          }),
-        )
+        const [protocolTokenTotalSupply, underlyingTokenBalances] =
+          await Promise.all([
+            protocolTokenContact.totalSupply({ blockTag: blockNumber }),
+            getBalances({
+              chainId: this.chainId,
+              provider: this.provider,
+              userAddress: protocolTokenMetadata.address,
+              blockNumber,
+              tokens: underlyingTokens,
+            }),
+          ])
 
         return {
           ...protocolTokenMetadata,
           type: TokenType.Protocol,
           totalSupplyRaw: protocolTokenTotalSupply,
-          tokens: underlyingTokenTvls,
+          tokens: underlyingTokenBalances.map(
+            ({ address, name, symbol, decimals, balanceRaw }) => {
+              return {
+                address: address,
+                name: name,
+                symbol: symbol,
+                decimals: decimals,
+                type: TokenType.Underlying,
+                totalSupplyRaw: balanceRaw,
+              }
+            },
+          ),
         }
       }),
     )
