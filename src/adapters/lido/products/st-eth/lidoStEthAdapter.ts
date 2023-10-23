@@ -18,11 +18,6 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 
-export type LidoStEthMetadata = {
-  contractToken: Erc20Metadata
-  underlyingToken: Erc20Metadata
-}
-
 export class LidoStEthAdapter extends SimplePoolAdapter {
   productId = 'st-eth'
 
