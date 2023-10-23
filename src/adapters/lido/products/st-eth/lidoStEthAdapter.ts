@@ -20,7 +20,6 @@ import {
   GetApyInput,
   GetAprInput,
   GetClaimableRewardsInput,
-  GetConversionRateInput,
   ProtocolRewardPosition,
   ProtocolTokenApr,
   ProtocolTokenApy,
@@ -57,8 +56,9 @@ export class LidoStEthAdapter implements IProtocolAdapter, IMetadataBuilder {
       protocolId: this.protocolId,
       name: 'Lido stEth',
       description: 'Lido defi adapter for stEth',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
+      siteUrl: 'https://stake.lido.fi/',
+      iconUrl:
+        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
@@ -172,9 +172,7 @@ export class LidoStEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     throw new NotImplementedError()
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
+  async getProtocolTokenToUnderlyingTokenRate(): Promise<ProtocolTokenUnderlyingRate> {
     const { contractToken, underlyingToken } = await this.buildMetadata()
 
     // Always pegged one to one to underlying

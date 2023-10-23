@@ -63,17 +63,14 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     )
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
       name: 'Lido wstEth',
       description: 'Lido defi adapter for wstEth',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
+      siteUrl: 'https://stake.lido.fi/wrap',
+      iconUrl:
+        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
@@ -175,58 +172,33 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     return tokens
   }
 
-  /**
-   * Update me.
-   * Add logic to get userAddress claimable rewards per position
-   */
   async getClaimableRewards(
     _input: GetClaimableRewardsInput,
   ): Promise<ProtocolRewardPosition[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's withdrawals per position by block range
-   */
   async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's deposits per position by block range
-   */
   async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's claimed rewards per position by block range
-   */
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to calculate the underlying token rate of 1 protocol token
-   */
-  async getProtocolTokenToUnderlyingTokenRate(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
+  async getProtocolTokenToUnderlyingTokenRate({
+    blockNumber,
+  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
     const { contractToken, underlyingToken } = await this.buildMetadata()
 
     const wstEthContract = WstEthToken__factory.connect(
@@ -234,7 +206,9 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
       this.provider,
     )
 
-    const pricePerShareRaw = await wstEthContract.stEthPerToken()
+    const pricePerShareRaw = await wstEthContract.stEthPerToken({
+      blockTag: blockNumber,
+    })
 
     return {
       ...contractToken,
@@ -250,10 +224,6 @@ export class LidoWstEthAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to calculate the users profits
-   */
   async getProfits(_input: GetProfitsInput): Promise<ProfitsWithRange> {
     throw new NotImplementedError()
   }
