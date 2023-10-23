@@ -1,4 +1,5 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   ProtocolDetails,
@@ -76,7 +77,7 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
   protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
     return [
       {
-        address: '0x0000000000000000000000000000000000000000',
+        address: ZERO_ADDRESS,
         name: 'Ethereum',
         symbol: 'ETH',
         decimals: 18,
