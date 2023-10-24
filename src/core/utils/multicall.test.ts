@@ -219,7 +219,7 @@ describe('MulticallQueue', () => {
         } as unknown as Multicall,
       })
       await multicall.queueCall({ to: '0x', data: '0x' }).catch((error) => {
-        expect(error).toEqual({ message: 'Multicall batch failed' })
+        expect(error).toEqual(new Error('Multicall batch failed'))
       })
 
       expect(spy).toHaveBeenCalled()
