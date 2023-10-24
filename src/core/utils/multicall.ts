@@ -10,12 +10,11 @@ interface PendingCall {
     allowFailure: boolean
   }
   resolve: (value: string) => void
-  reject: (reason: { message: string }) => void
+  reject: (reason: Error) => void
 }
-
-type PendingCallsMap = Record<string | 'latest', PendingCall[]>
-
 const LATEST = 'latest'
+type PendingCallsMap = Record<string | typeof LATEST, PendingCall[]>
+
 export class MulticallQueue {
   private pendingCalls: PendingCallsMap = {}
   private multicallContract: Multicall
@@ -102,7 +101,7 @@ export class MulticallQueue {
       if (resultLength !== batchSize) {
         // reject all to be on safe side
         callsToProcess.forEach(({ reject }) => {
-          reject({ message: 'Multicall batch failed' })
+          reject(new Error('Multicall batch failed'))
         })
 
         logger.error(
