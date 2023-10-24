@@ -446,9 +446,8 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
       withdrawals: positionsManagerContract.filters.Collect(tokenId),
     }
 
-    const GET_LATEST_BLOCK = undefined
     const { token0, token1, fee } = await positionsManagerContract
-      .positions(tokenId, { blockTag: GET_LATEST_BLOCK })
+      .positions(tokenId, { blockTag: toBlock }) // Encountered failures if nft not yet minted
       .catch((error) => {
         if (error?.message?.includes('Invalid token ID')) {
           throw new Error(

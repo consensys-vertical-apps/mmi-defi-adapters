@@ -10,6 +10,9 @@ import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as exampleTestCases } from './example/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { Protocol } from './protocols'
+import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
+import { testCases as exampleTestCases } from './example/tests/testCases'
+import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
 const TEST_TIMEOUT = 10000
@@ -19,9 +22,9 @@ const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
 runAllTests()
 
 function runAllTests() {
-  // runProtocolTests(Protocol.Example, exampleTestCases)
-  // runProtocolTests(Protocol.Stargate, stargateTestCases)
-  // runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
+  runProtocolTests(Protocol.Example, exampleTestCases)
+  runProtocolTests(Protocol.Stargate, stargateTestCases)
+  runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
   runProtocolTests(Protocol.Lido, lidoTestCases)
 }
