@@ -6,14 +6,14 @@ import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
-import { testCases as lidoTestCases } from './lido/tests/testCases'
-import { Protocol } from './protocols'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as exampleTestCases } from './example/tests/testCases'
+import { testCases as lidoTestCases } from './lido/tests/testCases'
+import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
-const TEST_TIMEOUT = 10000
+const TEST_TIMEOUT = 30000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
 

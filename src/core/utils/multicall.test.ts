@@ -1,4 +1,3 @@
-import { ethers, hexlify, toUtf8Bytes } from 'ethers'
 import { Multicall } from '../../contracts'
 import { MulticallQueue } from './multicall'
 
@@ -227,12 +226,12 @@ describe('MulticallQueue', () => {
     })
 
     it('throws result from rejected call', async () => {
-      const str = 'protected smart contract method'
-      const hex = 'A'.repeat(136) + hexlify(toUtf8Bytes(str)).substring(2)
+      const invalidTokenIdBytesError =
+        '0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000010496e76616c696420746f6b656e20494400000000000000000000000000000000'
 
       const spy = jest.fn().mockResolvedValueOnce([
-        { success: false, returnData: hex },
-        { success: false, returnData: hex },
+        { success: false, returnData: invalidTokenIdBytesError },
+        { success: false, returnData: invalidTokenIdBytesError },
       ])
       const multicall = new MulticallQueue({
         flushTimeoutMs: 1000,
@@ -242,17 +241,13 @@ describe('MulticallQueue', () => {
         } as unknown as Multicall,
       })
 
-      multicall.queueCall({ to: '0x', data: '0x' }).catch((result) =>
-        expect(result).toEqual({
-          message: 'protected smart contract method',
-        }),
-      )
+      multicall
+        .queueCall({ to: '0x', data: '0x' })
+        .catch((error) => expect(error.reason).toEqual('Invalid token ID'))
 
-      multicall.queueCall({ to: '0x', data: '0x' }).catch((result) =>
-        expect(result).toEqual({
-          message: 'protected smart contract method',
-        }),
-      )
+      multicall
+        .queueCall({ to: '0x', data: '0x' })
+        .catch((error) => expect(error.reason).toEqual('Invalid token ID'))
     })
   })
 })

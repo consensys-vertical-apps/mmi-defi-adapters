@@ -1,4 +1,4 @@
-import { AddressLike, BytesLike, toUtf8String } from 'ethers'
+import { AbiCoder, AddressLike, BytesLike } from 'ethers'
 import { Multicall } from '../../contracts/Multicall'
 import { CustomTransactionRequest } from './CustomMulticallJsonRpcProvider'
 import { logger } from './logger'
@@ -128,7 +128,13 @@ export class MulticallQueue {
               'A request inside a multicall batch failed',
             )
 
-            reject({ message: toUtf8String('0x' + returnData.substring(136)) })
+            const error = AbiCoder.getBuiltinCallException(
+              'call',
+              {},
+              returnData,
+            )
+
+            reject(error)
           } else {
             resolve(returnData)
           }
