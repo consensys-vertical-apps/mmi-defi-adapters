@@ -1,5 +1,6 @@
-import { AddressLike, BytesLike, TransactionRequest } from 'ethers'
+import { AbiCoder, AddressLike, BytesLike } from 'ethers'
 import { Multicall } from '../../contracts/Multicall'
+import { CustomTransactionRequest } from './CustomMulticallJsonRpcProvider'
 import { logger } from './logger'
 
 interface PendingCall {
@@ -9,11 +10,13 @@ interface PendingCall {
     allowFailure: boolean
   }
   resolve: (value: string) => void
-  reject: (reason: string | undefined) => void
+  reject: (reason: Error) => void
 }
+const LATEST = 'latest'
+type PendingCallsMap = Record<string | typeof LATEST, PendingCall[]>
 
 export class MulticallQueue {
-  private pendingCalls: PendingCall[] = []
+  private pendingCalls: PendingCallsMap = {}
   private multicallContract: Multicall
   private flushTimeoutMs: number
 
@@ -43,10 +46,8 @@ export class MulticallQueue {
     return this._timer
   }
 
-  async queueCall(callParams: TransactionRequest): Promise<string> {
-    const { to, data, from } = callParams
-
-    if (from) {
+  async queueCall(callParams: CustomTransactionRequest): Promise<string> {
+    if (callParams.from) {
       logger.error(
         'MulticallQueue unable to handle from parameter, use standard json rpc provider instead',
       )
@@ -54,20 +55,20 @@ export class MulticallQueue {
         'MulticallQueue unable to handle from parameter, use standard json rpc provider instead',
       )
     }
-
-    if (!to || !data) {
-      logger.error('To and Data are required when using MulticallQueue')
-      throw new Error('To and Data are required when using MulticallQueue')
-    }
+    const { to, data, blockTag } = this.getParams(callParams)
 
     return new Promise((resolve, reject) => {
-      this.pendingCalls.push({
+      if (!this.pendingCalls[blockTag]) {
+        this.pendingCalls[blockTag] = []
+      }
+
+      this.pendingCalls[blockTag]!.push({
         callParams: { target: to, callData: data, allowFailure: true },
         resolve,
         reject,
       })
 
-      if (this.pendingCalls.length >= this.maxBatchSize) {
+      if (this.pendingCalls[blockTag]!.length >= this.maxBatchSize) {
         this._flush()
       } else if (!this.timer) {
         this.timer = setTimeout(() => {
@@ -79,47 +80,89 @@ export class MulticallQueue {
   }
 
   private async _flush() {
-    const callsToProcess = [...this.pendingCalls]
-    this.pendingCalls = []
+    const currentPendingCalls: PendingCallsMap = this.pendingCalls
+    this.pendingCalls = {}
 
-    const batchSize = callsToProcess.length
-    logger.debug({ batchSize }, 'Sending multicall batch ')
+    for (const [blockTag, callsToProcess] of Object.entries(
+      currentPendingCalls,
+    )) {
+      const batchSize = callsToProcess.length
+      logger.debug({ batchSize }, 'Sending multicall batch ')
 
-    const results = await this.multicallContract.aggregate3.staticCall(
-      callsToProcess.map(({ callParams }) => callParams),
-    )
-
-    const resultLength = results.length
-    const callsToProcessLength = callsToProcess.length
-
-    if (resultLength !== callsToProcessLength) {
-      // reject all to be on safe side
-      callsToProcess.forEach(({ reject }) => {
-        reject('Multicall batch failed')
-      })
-
-      logger.error(
+      const results = await this.multicallContract.aggregate3.staticCall(
+        callsToProcess.map(({ callParams }) => callParams),
         {
-          resultLength,
-          callsToProcessLength,
+          blockTag: blockTag == LATEST ? undefined : blockTag,
         },
-        'Multicall response length differs from batch sent',
       )
-      return
+
+      const resultLength = results.length
+
+      if (resultLength !== batchSize) {
+        // reject all to be on safe side
+        callsToProcess.forEach(({ reject }) => {
+          reject(new Error('Multicall batch failed'))
+        })
+
+        logger.error(
+          {
+            resultLength,
+            batchSize,
+          },
+          'Multicall response length differs from batch sent',
+        )
+        return
+      }
+
+      callsToProcess.forEach(
+        ({ callParams: { target, callData }, resolve, reject }, i) => {
+          const result = results[i]
+          if (!result) return
+
+          const { returnData, success } = result
+
+          if (!success) {
+            logger.debug(
+              { contractAddress: target, callData },
+              'A request inside a multicall batch failed',
+            )
+
+            const error = AbiCoder.getBuiltinCallException(
+              'call',
+              {},
+              returnData,
+            )
+
+            reject(error)
+          } else {
+            resolve(returnData)
+          }
+        },
+      )
+    }
+  }
+
+  private getParams(callParams: CustomTransactionRequest) {
+    const { to, data, blockTag } = callParams
+
+    if (!to && !data) {
+      logger.error(
+        callParams,
+        'To and Data is required when using MulticallQueue',
+      )
+      throw new Error('To and Data are required when using MulticallQueue')
     }
 
-    callsToProcess.forEach(({ resolve, reject }, i) => {
-      const result = results[i]
-      if (!result) return
+    if (!to) {
+      logger.error(callParams, 'To is required when using MulticallQueue')
+      throw new Error('To is required when using MulticallQueue')
+    }
+    if (!data) {
+      logger.error(callParams, 'Data is required when using MulticallQueue')
+      throw new Error('Data is required when using MulticallQueue')
+    }
+    const blockTagStr = blockTag ? '0x' + blockTag.toString(16) : LATEST
 
-      const { returnData, success } = result
-
-      if (!success) {
-        logger.error(returnData, 'A request inside a multicall batch failed')
-        reject(returnData)
-      } else {
-        resolve(returnData)
-      }
-    })
+    return { to, data, blockTag: blockTagStr }
   }
 }

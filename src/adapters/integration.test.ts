@@ -3,6 +3,7 @@ import path from 'path'
 import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
+import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
@@ -12,9 +13,9 @@ import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
-const TEST_TIMEOUT = 10000
+const TEST_TIMEOUT = 30000
 
-const defiProvider = new DefiProvider()
+const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
 
 runAllTests()
 
@@ -55,6 +56,12 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           },
           TEST_TIMEOUT,
         )
+
+        afterAll(() => {
+          logger.debug(
+            `[Integration test] getPositions for ${protocolId} finished`,
+          )
+        })
       })
     }
 
@@ -85,6 +92,12 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           },
           TEST_TIMEOUT,
         )
+
+        afterAll(() => {
+          logger.debug(
+            `[Integration test] getProfits for ${protocolId} finished`,
+          )
+        })
       })
     }
 
@@ -111,6 +124,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           },
           TEST_TIMEOUT,
         )
+
+        afterAll(() => {
+          logger.debug(`[Integration test] deposits for ${protocolId} finished`)
+        })
       })
     }
 
@@ -137,6 +154,12 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           },
           TEST_TIMEOUT,
         )
+
+        afterAll(() => {
+          logger.debug(
+            `[Integration test] withdrawals for ${protocolId} finished`,
+          )
+        })
       })
     }
 
@@ -166,6 +189,12 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           },
           TEST_TIMEOUT,
         )
+
+        afterAll(() => {
+          logger.debug(
+            `[Integration test] getPrices for ${protocolId} finished`,
+          )
+        })
       })
     }
 
@@ -193,6 +222,12 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           },
           TEST_TIMEOUT,
         )
+
+        afterAll(() => {
+          logger.debug(
+            `[Integration test] getTotalValueLocked for ${protocolId} finished`,
+          )
+        })
       })
     }
 
@@ -220,6 +255,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           },
           TEST_TIMEOUT,
         )
+
+        afterAll(() => {
+          logger.debug(`[Integration test] getApy for ${protocolId} finished`)
+        })
       })
     }
 
@@ -247,6 +286,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           },
           TEST_TIMEOUT,
         )
+
+        afterAll(() => {
+          logger.debug(`[Integration test] getApr for ${protocolId} finished`)
+        })
       })
     }
   })

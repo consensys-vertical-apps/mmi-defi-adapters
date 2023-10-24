@@ -10,7 +10,6 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     options,
   }: {
     url: string
-
     options?: JsonRpcApiProviderOptions
     chainId: Chain
   }) {

@@ -37,11 +37,22 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
+    key: 'profit1',
     method: 'profits',
     input: {
       userAddress: '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
       timePeriod: TimePeriod.sevenDays,
     },
     blockNumber: 18241163,
+  },
+  {
+    chainId: Chain.Ethereum,
+    key: 'profit2',
+    method: 'profits',
+    input: {
+      userAddress: '0x69D727a5F4731271C36DC600AE9fa3E6F3Ae29B6',
+      timePeriod: TimePeriod.sevenDays,
+    },
+    blockNumber: 18412988,
   },
 ]

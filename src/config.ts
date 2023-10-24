@@ -24,7 +24,7 @@ export class Config {
   private defaultConfig: Schema<IConfig>
   private config: convict.Config<IConfig>
 
-  constructor(config?: IConfig) {
+  constructor(config?: Partial<IConfig>) {
     this.defaultConfig = {
       provider: {
         ethereum: {
@@ -91,7 +91,7 @@ export class Config {
       useMulticallInterceptor: {
         doc: 'Use Multicall Interceptor',
         format: Boolean,
-        default: false,
+        default: true,
         env: 'DEFI_ADAPTERS_USE_MULTICALL_INTERCEPTOR',
       },
     }

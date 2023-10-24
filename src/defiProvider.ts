@@ -42,7 +42,7 @@ export class DefiProvider {
   chainProvider: ChainProvider
   adaptersController: AdaptersController
 
-  constructor(config?: IConfig) {
+  constructor(config?: Partial<IConfig>) {
     const parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(parsedConfig.values)
     this.adaptersController = new AdaptersController(

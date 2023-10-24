@@ -1,8 +1,11 @@
-import { TransactionRequest } from 'ethers'
+import { JsonRpcApiProviderOptions, TransactionRequest } from 'ethers'
 import { Chain } from '../constants/chains'
 import { CustomJsonRpcProvider } from './customJsonRpcProvider'
-import { logger } from './logger'
 import { MulticallQueue } from './multicall'
+
+export interface CustomTransactionRequest extends TransactionRequest {
+  blockTag?: number
+}
 
 export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   private multicallQueue: MulticallQueue
@@ -10,21 +13,19 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     url,
     chainId,
     multicallQueue,
+    options,
   }: {
     url: string
     chainId: Chain
     multicallQueue: MulticallQueue
+    options?: JsonRpcApiProviderOptions
   }) {
-    super({ url, chainId })
+    super({ url, chainId, options })
     this.multicallQueue = multicallQueue
   }
 
-  async call(transaction: TransactionRequest): Promise<string> {
-    logger.debug(
-      transaction,
-      'Intercepted eth_call, using multicall queue implementation',
-    )
-    if (transaction.blockTag) {
+  async call(transaction: CustomTransactionRequest): Promise<string> {
+    if (transaction.from) {
       return super.call(transaction)
     }
 
