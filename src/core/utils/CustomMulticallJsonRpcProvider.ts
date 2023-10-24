@@ -1,7 +1,6 @@
 import { JsonRpcApiProviderOptions, TransactionRequest } from 'ethers'
 import { Chain } from '../constants/chains'
 import { CustomJsonRpcProvider } from './customJsonRpcProvider'
-import { logger } from './logger'
 import { MulticallQueue } from './multicall'
 
 export interface CustomTransactionRequest extends TransactionRequest {

@@ -1,4 +1,4 @@
-import { AddressLike, BytesLike, hexlify, toUtf8String } from 'ethers'
+import { AddressLike, BytesLike, toUtf8String } from 'ethers'
 import { Multicall } from '../../contracts/Multicall'
 import { CustomTransactionRequest } from './CustomMulticallJsonRpcProvider'
 import { logger } from './logger'
