@@ -7,7 +7,7 @@
       "description": "Lido defi adapter for stEth",
       "siteUrl": "https://stake.lido.fi/",
       "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
-      "positionType": "supply",
+      "positionType": "stake",
       "chainId": 1,
       "productId": "st-eth",
       "success": true,
@@ -31,10 +31,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "4944483824413014n",
-                "startPositionValue": "0.004944483824413014",
-                "endPositionValueRaw": "4941068362889284n",
-                "endPositionValue": "0.004941068362889284"
+                "startPositionValueRaw": "4941068362889284n",
+                "startPositionValue": "0.004941068362889284",
+                "endPositionValueRaw": "4944483824413014n",
+                "endPositionValue": "0.004944483824413014"
               },
               "profit": "0.00000341546152373",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
@@ -51,7 +51,7 @@
       "description": "Lido defi adapter for wstEth",
       "siteUrl": "https://stake.lido.fi/wrap",
       "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
-      "positionType": "supply",
+      "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
       "success": true,
@@ -75,10 +75,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "90177902840852853190524n",
-                "startPositionValue": "90177.902840852853190524",
-                "endPositionValueRaw": "90115611372545721887865n",
-                "endPositionValue": "90115.611372545721887865"
+                "startPositionValueRaw": "90115611372545721887865n",
+                "startPositionValue": "90115.611372545721887865",
+                "endPositionValueRaw": "90177902840852853190524n",
+                "endPositionValue": "90177.902840852853190524"
               },
               "profit": "62.291468307131302659",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"

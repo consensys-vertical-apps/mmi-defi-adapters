@@ -30,7 +30,7 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
       siteUrl: 'https://stake.lido.fi/',
       iconUrl:
         'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png',
-      positionType: PositionType.Supply,
+      positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
     }

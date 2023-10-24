@@ -118,10 +118,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "171795121075000000000000n",
-                "startPositionValue": "171795.121075",
-                "endPositionValueRaw": "171813301028000000000000n",
-                "endPositionValue": "171813.301028"
+                "startPositionValueRaw": "171813301028000000000000n",
+                "startPositionValue": "171813.301028",
+                "endPositionValueRaw": "171795121075000000000000n",
+                "endPositionValue": "171795.121075"
               },
               "profit": "-18.179953",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
@@ -147,10 +147,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "9381358299480289089736n",
-                "startPositionValue": "9381.358299480289089736",
-                "endPositionValueRaw": "9163220545875722100762n",
-                "endPositionValue": "9163.220545875722100762"
+                "startPositionValueRaw": "9163220545875722100762n",
+                "startPositionValue": "9163.220545875722100762",
+                "endPositionValueRaw": "9381358299480289089736n",
+                "endPositionValue": "9381.358299480289089736"
               },
               "profit": "218.137753604566988974",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x72E2F4830b9E45d52F80aC08CB2bEC0FeF72eD9c/logo.png"
@@ -176,10 +176,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "36005822296628n",
-                "startPositionValue": "36005822.296628",
-                "endPositionValueRaw": "40269250806138n",
-                "endPositionValue": "40269250.806138"
+                "startPositionValueRaw": "40269250806138n",
+                "startPositionValue": "40269250.806138",
+                "endPositionValueRaw": "36005822296628n",
+                "endPositionValue": "36005822.296628"
               },
               "profit": "-4263428.50951",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
@@ -205,10 +205,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "40915064530967n",
-                "startPositionValue": "40915064.530967",
-                "endPositionValueRaw": "40903197973349n",
-                "endPositionValue": "40903197.973349"
+                "startPositionValueRaw": "40903197973349n",
+                "startPositionValue": "40903197.973349",
+                "endPositionValueRaw": "40915064530967n",
+                "endPositionValue": "40915064.530967"
               },
               "profit": "11866.557618",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"

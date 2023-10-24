@@ -202,7 +202,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetProfitsInput): Promise<ProfitsWithRange> {
-    const [currentValues, previousValues] = await Promise.all([
+    const [endPositionValues, startPositionValues] = await Promise.all([
       this.getPositions({
         userAddress,
         blockNumber: toBlock,
@@ -214,8 +214,11 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     ])
 
     const tokens = await Promise.all(
-      Object.values(currentValues).map(
-        async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
+      Object.values(endPositionValues).map(
+        async ({
+          protocolTokenMetadata,
+          underlyingTokenPositions: underlyingEndPositions,
+        }) => {
           const getEventsInput: GetEventsInput = {
             userAddress,
             protocolTokenAddress: protocolTokenMetadata.address,
@@ -231,30 +234,30 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           return {
             ...protocolTokenMetadata,
             type: TokenType.Protocol,
-            tokens: Object.values(underlyingTokenPositions).map(
+            tokens: Object.values(underlyingEndPositions).map(
               ({
                 address,
                 name,
                 symbol,
                 decimals,
-                balanceRaw: startPositionValueRaw,
+                balanceRaw: endPositionValueRaw,
               }) => {
-                const endPositionValueRaw =
-                  previousValues[protocolTokenMetadata.address]
+                const startPositionValueRaw =
+                  startPositionValues[protocolTokenMetadata.address]
                     ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
 
                 const calculationData = {
                   withdrawalsRaw: withdrawals[address] ?? 0n,
                   depositsRaw: deposits[address] ?? 0n,
-                  startPositionValueRaw: startPositionValueRaw ?? 0n,
-                  endPositionValueRaw,
+                  endPositionValueRaw: endPositionValueRaw ?? 0n,
+                  startPositionValueRaw,
                 }
 
                 let profitRaw =
-                  calculationData.startPositionValueRaw +
+                  calculationData.endPositionValueRaw +
                   calculationData.withdrawalsRaw -
                   calculationData.depositsRaw -
-                  calculationData.endPositionValueRaw
+                  calculationData.startPositionValueRaw
 
                 if (
                   this.getProtocolDetails().positionType === PositionType.Borrow
