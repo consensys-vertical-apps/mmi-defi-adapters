@@ -226,12 +226,12 @@ describe('MulticallQueue', () => {
     })
 
     it('throws result from rejected call', async () => {
-      const invalidTokenIdBytesError =
+      const INVALID_TOKEN_ID_RESPONSE =
         '0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000010496e76616c696420746f6b656e20494400000000000000000000000000000000'
 
       const spy = jest.fn().mockResolvedValueOnce([
-        { success: false, returnData: invalidTokenIdBytesError },
-        { success: false, returnData: invalidTokenIdBytesError },
+        { success: false, returnData: INVALID_TOKEN_ID_RESPONSE },
+        { success: false, returnData: INVALID_TOKEN_ID_RESPONSE },
       ])
       const multicall = new MulticallQueue({
         flushTimeoutMs: 1000,
