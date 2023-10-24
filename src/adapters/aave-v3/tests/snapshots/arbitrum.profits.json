@@ -31,10 +31,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "75358504565038906n",
-                "startPositionValue": "0.075358504565038906",
-                "endPositionValueRaw": "75356022392020904n",
-                "endPositionValue": "0.075356022392020904"
+                "startPositionValueRaw": "75356022392020904n",
+                "startPositionValue": "0.075356022392020904",
+                "endPositionValueRaw": "75358504565038906n",
+                "endPositionValue": "0.075358504565038906"
               },
               "profit": "0.000002482173018002",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
@@ -60,10 +60,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "768772n",
-                "startPositionValue": "0.00768772",
-                "endPositionValueRaw": "768770n",
-                "endPositionValue": "0.0076877"
+                "startPositionValueRaw": "768770n",
+                "startPositionValue": "0.0076877",
+                "endPositionValueRaw": "768772n",
+                "endPositionValue": "0.00768772"
               },
               "profit": "0.00000002",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
@@ -118,10 +118,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "204536484729450930267n",
-                "startPositionValue": "204.536484729450930267",
-                "endPositionValueRaw": "204513461268090554546n",
-                "endPositionValue": "204.513461268090554546"
+                "startPositionValueRaw": "204513461268090554546n",
+                "startPositionValue": "204.513461268090554546",
+                "endPositionValueRaw": "204536484729450930267n",
+                "endPositionValue": "204.536484729450930267"
               },
               "profit": "-0.023023461360375721",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"

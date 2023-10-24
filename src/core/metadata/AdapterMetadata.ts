@@ -29,8 +29,6 @@ import AaveV3VariableDebtTokenEthereumVariableDebtTokenV3 from '../../adapters/a
 import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/fantom.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
-import LidoStEthEthereumStEthToken from '../../adapters/lido/products/st-eth/metadata/ethereum.st-eth-token.json'
-import LidoWstEthEthereumWstEthToken from '../../adapters/lido/products/wst-eth/metadata/ethereum.wst-eth-token.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -345,24 +343,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'a-token-v2',
     }),
     AaveV2ATokenEthereumATokenV2,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Lido,
-      productId: 'st-eth',
-      chainId: Chain.Ethereum,
-      fileKey: 'st-eth-token',
-    }),
-    LidoStEthEthereumStEthToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Lido,
-      productId: 'wst-eth',
-      chainId: Chain.Ethereum,
-      fileKey: 'wst-eth-token',
-    }),
-    LidoWstEthEthereumWstEthToken,
   ],
 ])
 

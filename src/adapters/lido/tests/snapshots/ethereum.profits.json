@@ -17,7 +17,6 @@
           "name": "Liquid staked Ether 2.0",
           "symbol": "STETH",
           "decimals": 18,
-          "balanceRaw": "4944483824413014n",
           "type": "protocol",
           "tokens": [
             {
@@ -25,15 +24,26 @@
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "4944483824413014n",
+              "profitRaw": "3415461523730n",
               "type": "underlying",
-              "balance": "0.004944483824413014",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "4941068362889284n",
+                "startPositionValue": "0.004941068362889284",
+                "endPositionValueRaw": "4944483824413014n",
+                "endPositionValue": "0.004944483824413014"
+              },
+              "profit": "0.00000341546152373",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
-          ],
-          "balance": "0.004944483824413014"
+          ]
         }
-      ]
+      ],
+      "fromBlock": 18327461,
+      "toBlock": 18377483
     },
     {
       "protocolId": "lido",
@@ -51,7 +61,6 @@
           "name": "Wrapped liquid staked Ether 2.0",
           "symbol": "WSTETH",
           "decimals": 18,
-          "balanceRaw": "78871459289748529074876n",
           "type": "protocol",
           "tokens": [
             {
@@ -59,27 +68,26 @@
               "name": "Liquid staked Ether 2.0",
               "symbol": "stETH",
               "decimals": 18,
+              "profitRaw": "62291468307131302659n",
               "type": "underlying",
-              "balanceRaw": "90177902840852853190524n",
-              "tokens": [
-                {
-                  "address": "0x0000000000000000000000000000000000000000",
-                  "name": "Ethereum",
-                  "symbol": "ETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "90177902840852853190524n",
-                  "balance": "90177.902840852853190524",
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                }
-              ],
-              "balance": "90177.902840852853190524",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "90115611372545721887865n",
+                "startPositionValue": "90115.611372545721887865",
+                "endPositionValueRaw": "90177902840852853190524n",
+                "endPositionValue": "90177.902840852853190524"
+              },
+              "profit": "62.291468307131302659",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
-          ],
-          "balance": "78871.459289748529074876"
+          ]
         }
-      ]
+      ],
+      "fromBlock": 18327461,
+      "toBlock": 18377483
     }
   ]
 }
