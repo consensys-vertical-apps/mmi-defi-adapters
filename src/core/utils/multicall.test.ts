@@ -1,3 +1,4 @@
+import { ethers, hexlify, toUtf8Bytes } from 'ethers'
 import { Multicall } from '../../contracts'
 import { MulticallQueue } from './multicall'
 
@@ -89,6 +90,22 @@ describe('MulticallQueue', () => {
         expect(spy).toHaveBeenCalled()
       },
     )
+
+    it('throws when "from" value populated', async () => {
+      const multicall = new MulticallQueue({
+        flushTimeoutMs: 10,
+        maxBatchSize: 1,
+        multicallContract: {
+          aggregate3: { staticCall: {} },
+        } as unknown as Multicall,
+      })
+
+      expect(
+        multicall.queueCall({ to: '0x', data: '0x', from: '0x' }),
+      ).rejects.toThrowError(
+        'MulticallQueue unable to handle from parameter, use standard json rpc provider instead',
+      )
+    })
 
     it('queues calls for 1 second', () => {
       const spy = jest.fn().mockResolvedValue(
@@ -203,16 +220,19 @@ describe('MulticallQueue', () => {
         } as unknown as Multicall,
       })
       await multicall.queueCall({ to: '0x', data: '0x' }).catch((error) => {
-        expect(error).toEqual('Multicall batch failed')
+        expect(error).toEqual({ message: 'Multicall batch failed' })
       })
 
       expect(spy).toHaveBeenCalled()
     })
 
     it('throws result from rejected call', async () => {
+      const str = 'protected smart contract method'
+      const hex = 'A'.repeat(136) + hexlify(toUtf8Bytes(str)).substring(2)
+
       const spy = jest.fn().mockResolvedValueOnce([
-        { success: false, returnData: 'protected smart contract method' },
-        { success: false, returnData: 'protected smart contract method 2' },
+        { success: false, returnData: hex },
+        { success: false, returnData: hex },
       ])
       const multicall = new MulticallQueue({
         flushTimeoutMs: 1000,
@@ -222,17 +242,17 @@ describe('MulticallQueue', () => {
         } as unknown as Multicall,
       })
 
-      multicall
-        .queueCall({ to: '0x', data: '0x' })
-        .catch((result) =>
-          expect(result).toEqual('protected smart contract method'),
-        )
+      multicall.queueCall({ to: '0x', data: '0x' }).catch((result) =>
+        expect(result).toEqual({
+          message: 'protected smart contract method',
+        }),
+      )
 
-      multicall
-        .queueCall({ to: '0x', data: '0x' })
-        .catch((result) =>
-          expect(result).toEqual('protected smart contract method 2'),
-        )
+      multicall.queueCall({ to: '0x', data: '0x' }).catch((result) =>
+        expect(result).toEqual({
+          message: 'protected smart contract method',
+        }),
+      )
     })
   })
 })
