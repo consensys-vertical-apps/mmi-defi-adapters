@@ -123,7 +123,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       ),
       fromBlock,
       toBlock,
-      from: ZERO_ADDRESS,
+      from: undefined,
       to: userAddress,
     })
   }
@@ -142,7 +142,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       fromBlock,
       toBlock,
       from: userAddress,
-      to: ZERO_ADDRESS,
+      to: undefined,
     })
   }
 
@@ -361,8 +361,8 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     underlyingTokens: Erc20Metadata[]
     fromBlock: number
     toBlock: number
-    from: string
-    to: string
+    from?: string
+    to?: string
   }): Promise<MovementsByBlock[]> {
     const protocolTokenContract = Erc20__factory.connect(
       protocolTokenAddress,
