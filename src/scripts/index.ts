@@ -17,7 +17,7 @@ const adaptersController = defiProvider.adaptersController
 
 featureCommands(program, defiProvider)
 
-newAdapterCommand(program)
+newAdapterCommand(program, defiProvider)
 
 blockAverage(program, chainProviders)
 
