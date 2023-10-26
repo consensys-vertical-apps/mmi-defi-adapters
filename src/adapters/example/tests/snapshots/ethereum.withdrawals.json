@@ -24,6 +24,7 @@
             "symbol": "USDC",
             "decimals": 6,
             "movementValueRaw": "100000000n",
+            "transactionHash": "0x333",
             "movementValue": "100.0"
           }
         },

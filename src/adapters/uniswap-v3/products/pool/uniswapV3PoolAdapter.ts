@@ -473,6 +473,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
         const {
           blockNumber,
           args: { amount0, amount1 },
+          transactionHash,
         } = transferEvent
 
         return {
@@ -492,8 +493,16 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
             tokenId,
           },
           underlyingTokensMovement: {
-            [token0]: { movementValueRaw: amount0, ...token0Metadata },
-            [token1]: { movementValueRaw: amount1, ...token1Metadata },
+            [token0]: {
+              movementValueRaw: amount0,
+              ...token0Metadata,
+              transactionHash,
+            },
+            [token1]: {
+              movementValueRaw: amount1,
+              ...token1Metadata,
+              transactionHash,
+            },
           },
           blockNumber,
         }

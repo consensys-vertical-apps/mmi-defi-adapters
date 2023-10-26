@@ -361,8 +361,8 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     underlyingTokens: Erc20Metadata[]
     fromBlock: number
     toBlock: number
-    from: string
-    to: string
+    from?: string
+    to?: string
   }): Promise<MovementsByBlock[]> {
     const protocolTokenContract = Erc20__factory.connect(
       protocolTokenAddress,
@@ -387,6 +387,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
         const {
           blockNumber,
           args: { value: protocolTokenMovementValueRaw },
+          transactionHash,
         } = transferEvent
 
         const protocolTokenPrice =
@@ -419,8 +420,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
               return {
                 ...accumulator,
+
                 [currentToken.address]: {
                   ...currentToken,
+                  transactionHash,
                   movementValueRaw,
                 },
               }

@@ -23,6 +23,7 @@
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
+            "transactionHash": "0x4d1b8d3c31ae59d1e422d18f60865fe988f212aff2ec6de00da2d271c18df59c",
             "movementValueRaw": "649535096n",
             "movementValue": "649.535096"
           }
