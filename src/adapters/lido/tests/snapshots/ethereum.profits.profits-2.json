@@ -24,11 +24,11 @@
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "profitRaw": "-70819350317881834n",
+              "profitRaw": "1n",
               "type": "underlying",
               "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
+                "withdrawalsRaw": "70819350317881835n",
+                "withdrawals": "0.070819350317881835",
                 "depositsRaw": "70819350317881834n",
                 "deposits": "0.070819350317881834",
                 "startPositionValueRaw": "1n",
@@ -36,7 +36,7 @@
                 "endPositionValueRaw": "1n",
                 "endPositionValue": "0.000000000000000001"
               },
-              "profit": "-0.070819350317881834",
+              "profit": "0.000000000000000001",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ]

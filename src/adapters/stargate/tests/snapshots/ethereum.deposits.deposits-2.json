@@ -1,0 +1,335 @@
+{
+  "snapshot": {
+    "protocolId": "stargate",
+    "name": "Stargate",
+    "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+    "siteUrl": "https://stargate.finance/",
+    "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "pool",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x0a715c0fcee86976c4611c2c753047a54d44c5e4f80d969dcb5f3e206630cc34",
+            "movementValueRaw": "49999988n",
+            "movementValue": "49.999988"
+          }
+        },
+        "blockNumber": 18157923
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x33ced68b79f73116b863199f4ae41ab9b35dcc46747bdd57852d1bba45e41ab7",
+            "movementValueRaw": "2190646467n",
+            "movementValue": "2190.646467"
+          }
+        },
+        "blockNumber": 18158326
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x9c1ebf5a8bd1977086c8043761c0c84b68f746ed2a10e0770366ad6e7475ec2b",
+            "movementValueRaw": "14999996n",
+            "movementValue": "14.999996"
+          }
+        },
+        "blockNumber": 18158656
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x26e7e2363d63bde8eaf680e002ea7bc2ad95ff74f601aee395a4b0a31118fbee",
+            "movementValueRaw": "14999996n",
+            "movementValue": "14.999996"
+          }
+        },
+        "blockNumber": 18158660
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x65f5b86457c74180b0614e67ef005dcddc4dec5c34bafb0dbf333ad76102844d",
+            "movementValueRaw": "11040164n",
+            "movementValue": "11.040164"
+          }
+        },
+        "blockNumber": 18158816
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x28312ea48af590070abdcbfc3600f8c1ec60f5170f0251f7be7eef0f4ad2a373",
+            "movementValueRaw": "10540164n",
+            "movementValue": "10.540164"
+          }
+        },
+        "blockNumber": 18158816
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0xf2bc4eabe93e729a595d41aca764a19f8a963a7ce665d0de9543900449ce1fa9",
+            "movementValueRaw": "10540164n",
+            "movementValue": "10.540164"
+          }
+        },
+        "blockNumber": 18158840
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x71117e0c8aa11d51c7a8495493e81c06cf6b6c0de0558f4143042b10337d4b66",
+            "movementValueRaw": "10540164n",
+            "movementValue": "10.540164"
+          }
+        },
+        "blockNumber": 18158946
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x88481d443431570f1b07084abb6871dd8ce7003614af192be333f01147004176",
+            "movementValueRaw": "0n",
+            "movementValue": "0.0"
+          }
+        },
+        "blockNumber": 18159007
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x2f920f6b0a984c9760923e75dd93b65e808c2d74ffa2861ce7c41160da2f6e25",
+            "movementValueRaw": "9999n",
+            "movementValue": "0.009999"
+          }
+        },
+        "blockNumber": 18159047
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x1e0c02372993f853bad47334a55d269141f8d1c39e61cbf5d20939272f7b5526",
+            "movementValueRaw": "0n",
+            "movementValue": "0.0"
+          }
+        },
+        "blockNumber": 18159653
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x685791d91d8d119c5448a167826aec57cddf27e8024b6d3e3ac57b1d2a67d316",
+            "movementValueRaw": "8969139030n",
+            "movementValue": "8969.13903"
+          }
+        },
+        "blockNumber": 18160263
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x9a13b9388a52afc58c6d3f02d7d0d6994261b03b350d65ba69e6267a57d452c5",
+            "movementValueRaw": "0n",
+            "movementValue": "0.0"
+          }
+        },
+        "blockNumber": 18161255
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x935c9e07b3b640ee4b9b379ac93ae08a55af06e2f32277497e5d961cdbaca490",
+            "movementValueRaw": "1999999566n",
+            "movementValue": "1999.999566"
+          }
+        },
+        "blockNumber": 18162103
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0xbc8a3da8e590a664e8e0e651124e0d7abe660c56dbe480fe0d35fa9cfef6a1ac",
+            "movementValueRaw": "0n",
+            "movementValue": "0.0"
+          }
+        },
+        "blockNumber": 18162649
+      },
+      {
+        "protocolToken": {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6
+        },
+        "underlyingTokensMovement": {
+          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x06f6dc2e7c7d120c7b9016b35bf8f438955096e3bd4f1451e48a1ca5ae79a363",
+            "movementValueRaw": "1005886958n",
+            "movementValue": "1005.886958"
+          }
+        },
+        "blockNumber": 18162805
+      }
+    ]
+  }
+}

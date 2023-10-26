@@ -123,7 +123,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       ),
       fromBlock,
       toBlock,
-      from: ZERO_ADDRESS,
+      from: undefined,
       to: userAddress,
     })
   }
@@ -142,7 +142,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       fromBlock,
       toBlock,
       from: userAddress,
-      to: ZERO_ADDRESS,
+      to: undefined,
     })
   }
 

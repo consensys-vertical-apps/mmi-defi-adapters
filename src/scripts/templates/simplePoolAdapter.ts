@@ -35,7 +35,7 @@ export function simplePoolAdapterTemplate(
       protocolToken: Erc20Metadata
       underlyingTokens: Erc20Metadata[]
     }
-  >
+  >P
   
   export class ${adapterClassName}
     extends SimplePoolAdapter

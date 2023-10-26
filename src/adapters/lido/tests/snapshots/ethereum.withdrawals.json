@@ -1,0 +1,35 @@
+{
+  "snapshot": {
+    "protocolId": "lido",
+    "name": "Lido stEth",
+    "description": "Lido defi adapter for stEth",
+    "siteUrl": "https://stake.lido.fi/",
+    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
+    "positionType": "stake",
+    "chainId": 1,
+    "productId": "st-eth",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "name": "Liquid staked Ether 2.0",
+          "symbol": "STETH",
+          "decimals": 18
+        },
+        "underlyingTokensMovement": {
+          "0x0000000000000000000000000000000000000000": {
+            "address": "0x0000000000000000000000000000000000000000",
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18,
+            "transactionHash": "0x779025a8260db4601f74506e6af804edcb7344b606f9bad07c59e3706c82f144",
+            "movementValueRaw": "70819350317881835n",
+            "movementValue": "0.070819350317881835"
+          }
+        },
+        "blockNumber": 16738529
+      }
+    ]
+  }
+}
