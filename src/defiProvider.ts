@@ -45,9 +45,10 @@ export class DefiProvider {
   constructor(config?: Partial<IConfig>) {
     const parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(parsedConfig.values)
-    this.adaptersController = new AdaptersController(
-      this.chainProvider.providers,
-    )
+    this.adaptersController = new AdaptersController({
+      providers: this.chainProvider.providers,
+      supportedProtocols,
+    })
   }
 
   async getPositions({
