@@ -123,7 +123,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       ),
       fromBlock,
       toBlock,
-      from: undefined,
+      from: ZERO_ADDRESS,
       to: userAddress,
     })
   }
@@ -142,7 +142,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       fromBlock,
       toBlock,
       from: userAddress,
-      to: undefined,
+      to: ZERO_ADDRESS,
     })
   }
 
@@ -387,6 +387,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
         const {
           blockNumber,
           args: { value: protocolTokenMovementValueRaw },
+          transactionHash,
         } = transferEvent
 
         const protocolTokenPrice =
@@ -419,8 +420,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
               return {
                 ...accumulator,
+
                 [currentToken.address]: {
                   ...currentToken,
+                  transactionHash,
                   movementValueRaw,
                 },
               }
