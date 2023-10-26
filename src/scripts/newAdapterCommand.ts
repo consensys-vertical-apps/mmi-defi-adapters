@@ -17,6 +17,7 @@ import {
 import { filterMapSync } from '../core/utils/filters'
 import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { DefiProvider } from '../defiProvider'
 import { chainFilter, protocolFilter } from './commandFilters'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
@@ -44,7 +45,10 @@ const Templates: Record<string, TemplateBuilder> = {
   ['SimplePoolAdapter']: simplePoolAdapterTemplate,
 }
 
-export function newAdapterCommand(program: Command) {
+export function newAdapterCommand(
+  program: Command,
+  defiProvider: DefiProvider,
+) {
   program
     .command('new-adapter')
     .option('-p, --protocol <protocol>', 'Protocol name for the adapter')
@@ -118,13 +122,51 @@ export function newAdapterCommand(program: Command) {
             when: !inputProtocolId,
           },
           {
+            type: 'checkbox',
+            name: 'chainKeys',
+            message: 'What chains will the adapter be valid for?',
+            choices: Object.keys(Chain),
+            default: chainKeys.length ? chainKeys : ['Ethereum'],
+          },
+          {
             type: 'input',
             name: 'productId',
             message:
               'What kebab-case name should be used for this adapter product?',
             default: product ? kebabCase(product) : undefined,
-            validate: (input: string) =>
-              isKebabCase(input) || 'Value must be kebab-case',
+            validate: (
+              input: string,
+              { chainKeys }: { chainKeys: (keyof typeof Chain)[] },
+            ) => {
+              if (!isKebabCase(input)) {
+                return 'Value must be kebab-case'
+              }
+
+              if (!inputProtocolId) {
+                return true
+              }
+
+              // Check if that productId already exists for that protocol
+              const productExists = chainKeys.some((chainKey) => {
+                const chainId = Chain[chainKey]
+
+                try {
+                  return defiProvider.adaptersController.fetchAdapter(
+                    chainId,
+                    inputProtocolId,
+                    input,
+                  )
+                } catch (_) {
+                  return false
+                }
+              })
+
+              if (productExists) {
+                return 'ProductId already exists for that Protocol and one of the chains selected'
+              }
+
+              return true
+            },
           },
           {
             type: 'list',
@@ -133,13 +175,6 @@ export function newAdapterCommand(program: Command) {
             choices: Object.keys(Templates),
             default: template ? template : undefined,
             filter: (input: string) => Templates[input],
-          },
-          {
-            type: 'checkbox',
-            name: 'chainKeys',
-            message: 'What chains will the adapter be valid for?',
-            choices: Object.keys(Chain),
-            default: chainKeys.length ? chainKeys : ['Ethereum'],
           },
           {
             type: 'input',

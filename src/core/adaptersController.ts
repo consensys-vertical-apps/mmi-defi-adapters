@@ -1,5 +1,5 @@
-import { supportedProtocols } from '../adapters'
 import { Protocol } from '../adapters/protocols'
+import { ProtocolAdapterParams } from '../types/adapter'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Chain } from './constants/chains'
 import { AdapterMissingError } from './errors/errors'
@@ -9,7 +9,21 @@ export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
     new Map()
 
-  constructor(chainProviders: Record<Chain, CustomJsonRpcProvider>) {
+  constructor({
+    providers,
+    supportedProtocols,
+  }: {
+    providers: Record<Chain, CustomJsonRpcProvider>
+    supportedProtocols: Record<
+      Protocol,
+      Partial<
+        Record<
+          Chain,
+          (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
+        >
+      >
+    >
+  }) {
     Object.entries(supportedProtocols).forEach(
       ([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol
@@ -17,7 +31,7 @@ export class AdaptersController {
         Object.entries(supportedChains).forEach(
           ([chainIdKey, adapterClasses]) => {
             const chainId = +chainIdKey as Chain
-            const provider = chainProviders[chainId]!
+            const provider = providers[chainId]!
 
             adapterClasses.forEach((adapterClass) => {
               const adapter = new adapterClass({
