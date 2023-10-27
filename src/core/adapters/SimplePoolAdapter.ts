@@ -30,7 +30,6 @@ import {
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { Chain } from '../constants/chains'
-import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { aggregateTrades } from '../utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { getAddressesBalances } from '../utils/getAddressesBalances'
@@ -123,7 +122,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       ),
       fromBlock,
       toBlock,
-      from: ZERO_ADDRESS,
+      from: undefined,
       to: userAddress,
     })
   }
@@ -142,7 +141,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       fromBlock,
       toBlock,
       from: userAddress,
-      to: ZERO_ADDRESS,
+      to: undefined,
     })
   }
 
