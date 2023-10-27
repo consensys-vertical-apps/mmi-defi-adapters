@@ -34,7 +34,7 @@ To build an adapter follow these steps:
 3. To build an adapter run:
    - `npm run new-adapter`
 4. To create a typescript-smart-contract class create a json file with your abi and add it to your ${protocolName}/contracts/abis/ folder, then run:
-   - `npm run new-adapter`
+   - `npm run build-types`
 5. To build metadata files run:
    - `npm run build-metadata`
 6. To build snapshot tests run:
