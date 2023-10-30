@@ -21,6 +21,12 @@ This library is designed to simplify and standardize the process of fetching and
    - Withdrawals by address
    - Claimed rewards by address
 
+## 🎥 DeFi Adapter Tutorial
+
+For a hands-on guide on using our DeFi adapter, check out the tutorial video:
+
+[![DeFi Adapter Tutorial](video-thumbnail.png)](https://drive.google.com/file/d/1EL5PEOQa_OgscANi3mAxBXdT25LqMsKv/view)
+
 ## Quick Start
 
 This project requires Node 18. Ensure you're using the correct version (e.g. run `nvm use`)
