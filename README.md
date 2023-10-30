@@ -21,8 +21,6 @@ This library is designed to simplify and standardize the process of fetching and
    - Withdrawals by address
    - Claimed rewards by address
 
-Sure, here's your updated Quick Start section:
-
 ## Quick Start
 
 This project requires Node 18. Ensure you're using the correct version (e.g. run `nvm use`)
