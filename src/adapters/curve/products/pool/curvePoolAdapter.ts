@@ -1,11 +1,16 @@
-import { ethers, formatUnits } from 'ethers'
+import { formatUnits } from 'ethers'
+import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { filterMapSync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { Chain } from '../../../../defiProvider'
 import {
   ProtocolDetails,
   PositionType,
@@ -26,14 +31,6 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { MetaRegistry__factory } from '../../contracts'
-import ERC20_ABI from '../../../../contracts/abis/erc20.json'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { Chain } from '../../../../defiProvider'
-import { filterMapSync } from '../../../../core/utils/filters'
-import { Erc20__factory } from '../../../../contracts'
-
-const ETHEREUM_ADDRESS = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
 
 // Details https://github.com/curvefi/metaregistry
 export const CURVE_META_REGISTRY_CONTRACT =
@@ -54,10 +51,6 @@ export class CurvePoolAdapter
 {
   productId = 'pool'
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

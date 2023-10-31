@@ -6,7 +6,7 @@
       "name": "Curve",
       "description": "Curve pool adapter",
       "siteUrl": "https://curve.fi/",
-      "iconUrl": "https://",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
