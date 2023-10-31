@@ -86,7 +86,7 @@ export class DefiProvider {
 
   async getProfits({
     userAddress,
-    timePeriod = TimePeriod.sevenDays,
+    timePeriod = TimePeriod.oneDay,
     filterProtocolIds,
     filterChainIds,
     toBlockNumbersOverride,

@@ -27,6 +27,7 @@ function runAllTests() {
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
   runProtocolTests(Protocol.Lido, lidoTestCases)
   runProtocolTests(Protocol.Curve, curveTestCases)
+  runProtocolTests(Protocol.Curve, curveTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
