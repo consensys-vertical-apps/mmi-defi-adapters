@@ -23,7 +23,7 @@ This library is designed to simplify and standardize the process of fetching and
 
 ## 🎥 DeFi Adapter Tutorial
 
-For a hands-on guide on using our DeFi adapter, check out the tutorial video:
+Check out the tutorial video below for an intro to our library and how to build an adapter:
 
 [![DeFi Adapter Tutorial](video-thumbnail.png)](https://drive.google.com/file/d/1EL5PEOQa_OgscANi3mAxBXdT25LqMsKv/view)
 
