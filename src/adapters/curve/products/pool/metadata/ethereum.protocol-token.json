@@ -26,7 +26,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7"
+    "poolAddress": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+    "stakingToken": "0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A"
   },
   "0xFd2a8fA60Abd58Efe3EeE34dd494cD491dC14900": {
     "protocolToken": {
@@ -55,7 +56,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xDeBF20617708857ebe4F679508E7b7863a8A8EeE"
+    "poolAddress": "0xDeBF20617708857ebe4F679508E7b7863a8A8EeE",
+    "stakingToken": "0xd662908ADA2Ea1916B3318327A97eB18aD588b5d"
   },
   "0xaA17A236F2bAdc98DDc0Cf999AbB47D47Fc0A6Cf": {
     "protocolToken": {
@@ -72,7 +74,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xA96A65c051bF88B4095Ee1f2451C2A9d43F53Ae2"
+    "poolAddress": "0xA96A65c051bF88B4095Ee1f2451C2A9d43F53Ae2",
+    "stakingToken": "0x6d10ed2cF043E6fcf51A0e7b4C2Af3Fa06695707"
   },
   "0x3B3Ac5386837Dc563660FB6a0937DFAa5924333B": {
     "protocolToken": {
@@ -107,7 +110,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x79a8C46DeA5aDa233ABaFFD40F3A0A2B1e5A4F27"
+    "poolAddress": "0x79a8C46DeA5aDa233ABaFFD40F3A0A2B1e5A4F27",
+    "stakingToken": "0x69Fb7c45726cfE2baDeE8317005d3F94bE838840"
   },
   "0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2": {
     "protocolToken": {
@@ -130,7 +134,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xA2B47E3D5c44877cca798226B7B8118F9BFb7A56"
+    "poolAddress": "0xA2B47E3D5c44877cca798226B7B8118F9BFb7A56",
+    "stakingToken": "0x7ca5b0a2910B33e9759DC7dDB0413949071D7575"
   },
   "0x194eBd173F6cDacE046C53eACcE9B953F28411d1": {
     "protocolToken": {
@@ -153,7 +158,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x0Ce6a5fF5217e38315f87032CF90686C96627CAA"
+    "poolAddress": "0x0Ce6a5fF5217e38315f87032CF90686C96627CAA",
+    "stakingToken": "0x90Bb609649E0451E5aD952683D64BD2d1f245840"
   },
   "0xb19059ebb43466C323583928285a49f558E572Fd": {
     "protocolToken": {
@@ -176,7 +182,8 @@
         "decimals": 8
       }
     ],
-    "poolAddress": "0x4CA9b3063Ec5866A4B82E437059D2C43d1be596F"
+    "poolAddress": "0x4CA9b3063Ec5866A4B82E437059D2C43d1be596F",
+    "stakingToken": "0x4c18E409Dc8619bFb6a1cB56D114C3f592E0aE79"
   },
   "0x5282a4eF67D9C33135340fB3289cc1711c13638C": {
     "protocolToken": {
@@ -205,7 +212,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x2dded6Da1BF5DBdF597C45fcFaa3194e53EcfeAF"
+    "poolAddress": "0x2dded6Da1BF5DBdF597C45fcFaa3194e53EcfeAF",
+    "stakingToken": "0xF5194c3325202F456c95c1Cf0cA36f8475C1949F"
   },
   "0xcee60cFa923170e4f8204AE08B4fA6A3F5656F3a": {
     "protocolToken": {
@@ -228,7 +236,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xF178C0b5Bb7e7aBF4e12A4838C7b7c5bA2C623c0"
+    "poolAddress": "0xF178C0b5Bb7e7aBF4e12A4838C7b7c5bA2C623c0",
+    "stakingToken": "0xFD4D8a17df4C27c1dD245d153ccf4499e806C87D"
   },
   "0xD905e2eaeBe188fc92179b6350807D8bd91Db0D8": {
     "protocolToken": {
@@ -263,7 +272,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x06364f10B501e868329afBc005b3492902d6C763"
+    "poolAddress": "0x06364f10B501e868329afBc005b3492902d6C763",
+    "stakingToken": "0x64E3C23bfc40722d3B649844055F1D51c1ac041d"
   },
   "0x49849C98ae39Fff122806C06791Fa73784FB3675": {
     "protocolToken": {
@@ -280,7 +290,8 @@
         "decimals": 8
       }
     ],
-    "poolAddress": "0x93054188d876f558f4a66B2EF1d97d16eDf0895B"
+    "poolAddress": "0x93054188d876f558f4a66B2EF1d97d16eDf0895B",
+    "stakingToken": "0xB1F2cdeC61db658F091671F5f199635aEF202CAC"
   },
   "0x02d341CcB60fAaf662bC0554d13778015d1b285C": {
     "protocolToken": {
@@ -303,7 +314,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xEB16Ae0052ed37f479f7fe63849198Df1765a733"
+    "poolAddress": "0xEB16Ae0052ed37f479f7fe63849198Df1765a733",
+    "stakingToken": "0x462253b8F74B72304c145DB0e4Eebd326B22ca39"
   },
   "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3": {
     "protocolToken": {
@@ -326,7 +338,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714"
+    "poolAddress": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+    "stakingToken": "0x705350c4BcD35c9441419DdD5d2f097d7a55410F"
   },
   "0xA3D87FffcE63B53E0d54fAa1cc983B7eB0b74A9c": {
     "protocolToken": {
@@ -349,7 +362,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xc5424B857f758E906013F3555Dad202e4bdB4567"
+    "poolAddress": "0xc5424B857f758E906013F3555Dad202e4bdB4567",
+    "stakingToken": "0x3C0FFFF15EA30C35d7A85B85c0782D6c94e1d238"
   },
   "0x06325440D014e39736583c165C2963BA99fAf14E": {
     "protocolToken": {
@@ -372,7 +386,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022"
+    "poolAddress": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+    "stakingToken": "0x182B723a58739a9c974cFDB385ceaDb237453c28"
   },
   "0xC25a3A3b969415c80451098fa907EC722572917F": {
     "protocolToken": {
@@ -407,7 +422,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xA5407eAE9Ba41422680e2e00537571bcC53efBfD"
+    "poolAddress": "0xA5407eAE9Ba41422680e2e00537571bcC53efBfD",
+    "stakingToken": "0xA90996896660DEcC6E997655E065b23788857849"
   },
   "0x9fC689CCaDa600B6DF723D9E47D84d76664a1F23": {
     "protocolToken": {
@@ -436,7 +452,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x52EA46506B9CC5Ef470C5bf89f17Dc28bB35D85C"
+    "poolAddress": "0x52EA46506B9CC5Ef470C5bf89f17Dc28bB35D85C",
+    "stakingToken": "0xBC89cd85491d81C6AD2954E6d0362Ee29fCa8F53"
   },
   "0xdF5e0e81Dff6FAF3A7e52BA697820c5e32D806A8": {
     "protocolToken": {
@@ -471,7 +488,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51"
+    "poolAddress": "0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51",
+    "stakingToken": "0xFA712EE4788C042e2B7BB55E6cb8ec569C4530c1"
   },
   "0x3a664Ab939FD8482048609f652f9a0B0677337B9": {
     "protocolToken": {
@@ -506,7 +524,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x8038C01A0390a8c547446a0b2c18fc9aEFEcc10c"
+    "poolAddress": "0x8038C01A0390a8c547446a0b2c18fc9aEFEcc10c",
+    "stakingToken": "0xAEA6c312f4b3E04D752946d329693F7293bC2e6D"
   },
   "0xD2967f45c4f384DEEa880F807Be904762a3DeA07": {
     "protocolToken": {
@@ -541,7 +560,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x4f062658EaAF2C1ccf8C8e36D6824CDf41167956"
+    "poolAddress": "0x4f062658EaAF2C1ccf8C8e36D6824CDf41167956",
+    "stakingToken": "0xC5cfaDA84E902aD92DD40194f0883ad49639b023"
   },
   "0x5B5CFE992AdAC0C9D48E05854B2d91C73a003858": {
     "protocolToken": {
@@ -576,7 +596,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x3eF6A01A0f81D6046290f3e2A8c5b843e738E604"
+    "poolAddress": "0x3eF6A01A0f81D6046290f3e2A8c5b843e738E604",
+    "stakingToken": "0x2db0E83599a91b508Ac268a6197b8B14F5e72840"
   },
   "0x6D65b498cb23deAba52db31c93Da9BFFb340FB8F": {
     "protocolToken": {
@@ -611,7 +632,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xE7a24EF0C5e95Ffb0f6684b813A78F2a3AD7D171"
+    "poolAddress": "0xE7a24EF0C5e95Ffb0f6684b813A78F2a3AD7D171",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x1AEf73d49Dedc4b1778d0706583995958Dc862e6": {
     "protocolToken": {
@@ -646,7 +668,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x8474DdbE98F5aA3179B3B3F5942D724aFcdec9f6"
+    "poolAddress": "0x8474DdbE98F5aA3179B3B3F5942D724aFcdec9f6",
+    "stakingToken": "0x5f626c30EC1215f4EdCc9982265E8b1F411D1352"
   },
   "0xC2Ee6b0334C261ED60C72f6054450b61B8f18E35": {
     "protocolToken": {
@@ -681,7 +704,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xC18cC39da8b11dA8c3541C598eE022258F9744da"
+    "poolAddress": "0xC18cC39da8b11dA8c3541C598eE022258F9744da",
+    "stakingToken": "0x4dC4A289a8E33600D8bD4cf5F6313E43a37adec7"
   },
   "0x97E2768e8E73511cA874545DC5Ff8067eB19B787": {
     "protocolToken": {
@@ -716,7 +740,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x3E01dD8a5E1fb3481F0F589056b428Fc308AF0Fb"
+    "poolAddress": "0x3E01dD8a5E1fb3481F0F589056b428Fc308AF0Fb",
+    "stakingToken": "0xC2b1DF84112619D190193E48148000e3990Bf627"
   },
   "0x4f3E8F405CF5aFC05D68142F3783bDfE13811522": {
     "protocolToken": {
@@ -751,7 +776,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1"
+    "poolAddress": "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1",
+    "stakingToken": "0xF98450B5602fa59CC66e1379DFfB6FDDc724CfC4"
   },
   "0x7Eb40E450b9655f4B3cC4259BCC731c63ff55ae6": {
     "protocolToken": {
@@ -786,7 +812,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x42d7025938bEc20B69cBae5A77421082407f053A"
+    "poolAddress": "0x42d7025938bEc20B69cBae5A77421082407f053A",
+    "stakingToken": "0x055be5DDB7A925BfEF3417FC157f53CA77cA7222"
   },
   "0x94e131324b6054c0D789b190b2dAC504e4361b53": {
     "protocolToken": {
@@ -821,7 +848,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x890f4e345B1dAED0367A877a1612f86A1f86985f"
+    "poolAddress": "0x890f4e345B1dAED0367A877a1612f86A1f86985f",
+    "stakingToken": "0x3B7020743Bc2A4ca9EaF9D0722d42E20d6935855"
   },
   "0x410e3E86ef427e30B9235497143881f717d93c2A": {
     "protocolToken": {
@@ -856,7 +884,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x071c661B4DeefB59E2a3DdB20Db036821eeE8F4b"
+    "poolAddress": "0x071c661B4DeefB59E2a3DdB20Db036821eeE8F4b",
+    "stakingToken": "0xdFc7AdFa664b08767b735dE28f9E84cd30492aeE"
   },
   "0x2fE94ea3d5d4a175184081439753DE15AeF9d614": {
     "protocolToken": {
@@ -891,7 +920,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xd81dA8D904b52208541Bade1bD6595D8a251F8dd"
+    "poolAddress": "0xd81dA8D904b52208541Bade1bD6595D8a251F8dd",
+    "stakingToken": "0x11137B10C210b579405c21A07489e28F3c040AB1"
   },
   "0xDE5331AC4B3630f94853Ff322B66407e0D6331E8": {
     "protocolToken": {
@@ -926,7 +956,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x7F55DDe206dbAD629C080068923b36fe9D6bDBeF"
+    "poolAddress": "0x7F55DDe206dbAD629C080068923b36fe9D6bDBeF",
+    "stakingToken": "0xd7d147c6Bb90A718c3De8C0568F9B560C79fa416"
   },
   "0x64eda51d3Ad40D56b9dFc5554E06F94e1Dd786Fd": {
     "protocolToken": {
@@ -961,7 +992,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xC25099792E9349C7DD09759744ea681C7de2cb66"
+    "poolAddress": "0xC25099792E9349C7DD09759744ea681C7de2cb66",
+    "stakingToken": "0x6828bcF74279eE32f2723eC536c22c51Eed383C6"
   },
   "0xEcd5e75AFb02eFa118AF914515D6521aaBd189F1": {
     "protocolToken": {
@@ -996,7 +1028,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xEcd5e75AFb02eFa118AF914515D6521aaBd189F1"
+    "poolAddress": "0xEcd5e75AFb02eFa118AF914515D6521aaBd189F1",
+    "stakingToken": "0x359FD5d6417aE3D8D6497d9B2e7A890798262BA4"
   },
   "0xEd279fDD11cA84bEef15AF5D39BB4d4bEE23F0cA": {
     "protocolToken": {
@@ -1031,7 +1064,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xEd279fDD11cA84bEef15AF5D39BB4d4bEE23F0cA"
+    "poolAddress": "0xEd279fDD11cA84bEef15AF5D39BB4d4bEE23F0cA",
+    "stakingToken": "0x9B8519A9a00100720CCdC8a120fBeD319cA47a14"
   },
   "0xd632f22692FaC7611d2AA1C0D552930D43CAEd3B": {
     "protocolToken": {
@@ -1066,7 +1100,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xd632f22692FaC7611d2AA1C0D552930D43CAEd3B"
+    "poolAddress": "0xd632f22692FaC7611d2AA1C0D552930D43CAEd3B",
+    "stakingToken": "0x72E158d38dbd50A483501c24f792bDAAA3e7D55C"
   },
   "0x4807862AA8b2bF68830e4C8dc86D0e9A998e085a": {
     "protocolToken": {
@@ -1101,7 +1136,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x4807862AA8b2bF68830e4C8dc86D0e9A998e085a"
+    "poolAddress": "0x4807862AA8b2bF68830e4C8dc86D0e9A998e085a",
+    "stakingToken": "0xd4B22fEdcA85E684919955061fDf353b9d38389b"
   },
   "0x53a901d48795C58f485cBB38df08FA96a24669D5": {
     "protocolToken": {
@@ -1118,7 +1154,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xF9440930043eb3997fc70e1339dBb11F341de7A8"
+    "poolAddress": "0xF9440930043eb3997fc70e1339dBb11F341de7A8",
+    "stakingToken": "0x824F13f1a2F29cFEEa81154b46C0fc820677A637"
   },
   "0x43b4FdFD4Ff969587185cDB6f0BD875c5Fc83f8c": {
     "protocolToken": {
@@ -1153,7 +1190,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x43b4FdFD4Ff969587185cDB6f0BD875c5Fc83f8c"
+    "poolAddress": "0x43b4FdFD4Ff969587185cDB6f0BD875c5Fc83f8c",
+    "stakingToken": "0x9582C4ADACB3BCE56Fea3e590F05c3ca2fb9C477"
   },
   "0xcA3d75aC011BF5aD07a98d02f18225F9bD9A6BDF": {
     "protocolToken": {
@@ -1182,7 +1220,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5"
+    "poolAddress": "0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5",
+    "stakingToken": "0x6955a55416a06839309018A8B0cB72c4DDC11f15"
   },
   "0x6BA5b4e438FA0aAf7C1bD179285aF65d13bD3D90": {
     "protocolToken": {
@@ -1217,7 +1256,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x618788357D0EBd8A37e763ADab3bc575D54c2C7d"
+    "poolAddress": "0x618788357D0EBd8A37e763ADab3bc575D54c2C7d",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x5a6A4D54456819380173272A5E8E9B9904BdF41B": {
     "protocolToken": {
@@ -1252,7 +1292,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x5a6A4D54456819380173272A5E8E9B9904BdF41B"
+    "poolAddress": "0x5a6A4D54456819380173272A5E8E9B9904BdF41B",
+    "stakingToken": "0xd8b712d29381748dB89c36BCa0138d7c75866ddF"
   },
   "0xFD5dB7463a3aB53fD211b4af195c5BCCC1A03890": {
     "protocolToken": {
@@ -1275,7 +1316,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xFD5dB7463a3aB53fD211b4af195c5BCCC1A03890"
+    "poolAddress": "0xFD5dB7463a3aB53fD211b4af195c5BCCC1A03890",
+    "stakingToken": "0xe8060Ad8971450E624d5289A10017dD30F5dA85F"
   },
   "0x4e0915C88bC70750D68C481540F081fEFaF22273": {
     "protocolToken": {
@@ -1310,7 +1352,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x4e0915C88bC70750D68C481540F081fEFaF22273"
+    "poolAddress": "0x4e0915C88bC70750D68C481540F081fEFaF22273",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x1005F7406f32a61BD760CfA14aCCd2737913d546": {
     "protocolToken": {
@@ -1333,7 +1376,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x1005F7406f32a61BD760CfA14aCCd2737913d546"
+    "poolAddress": "0x1005F7406f32a61BD760CfA14aCCd2737913d546",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC": {
     "protocolToken": {
@@ -1356,7 +1400,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2"
+    "poolAddress": "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2",
+    "stakingToken": "0xCFc25170633581Bf896CB6CDeE170e3E3Aa59503"
   },
   "0xf43211935C781D5ca1a41d2041F397B8A7366C7A": {
     "protocolToken": {
@@ -1379,7 +1424,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xa1F8A6807c402E4A15ef4EBa36528A3FED24E577"
+    "poolAddress": "0xa1F8A6807c402E4A15ef4EBa36528A3FED24E577",
+    "stakingToken": "0x2932a86df44Fe8D2A706d8e9c5d51c24883423F5"
   },
   "0x051d7e5609917Bd9b73f04BAc0DED8Dd46a74301": {
     "protocolToken": {
@@ -1402,7 +1448,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xf253f83AcA21aAbD2A20553AE0BF7F65C755A07F"
+    "poolAddress": "0xf253f83AcA21aAbD2A20553AE0BF7F65C755A07F",
+    "stakingToken": "0x6D787113F23bED1D5e1530402B3f364D0A6e5Af3"
   },
   "0xFC2838a17D8e8B1D5456E0a351B0708a09211147": {
     "protocolToken": {
@@ -1425,7 +1472,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xaE34574AC03A15cd58A92DC79De7B1A0800F1CE3"
+    "poolAddress": "0xaE34574AC03A15cd58A92DC79De7B1A0800F1CE3",
+    "stakingToken": "0xfb860600F1bE1f1c72A89B2eF5CAF345aff7D39d"
   },
   "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6": {
     "protocolToken": {
@@ -1448,7 +1496,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6"
+    "poolAddress": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x8461A004b50d321CB22B7d034969cE6803911899": {
     "protocolToken": {
@@ -1471,7 +1520,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x8461A004b50d321CB22B7d034969cE6803911899"
+    "poolAddress": "0x8461A004b50d321CB22B7d034969cE6803911899",
+    "stakingToken": "0x1750a3a3d80A3F5333BBe9c4695B0fAd41061ab1"
   },
   "0x19b080FE1ffA0553469D20Ca36219F17Fcf03859": {
     "protocolToken": {
@@ -1494,7 +1544,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x19b080FE1ffA0553469D20Ca36219F17Fcf03859"
+    "poolAddress": "0x19b080FE1ffA0553469D20Ca36219F17Fcf03859",
+    "stakingToken": "0x99fb76F75501039089AAC8f20f487bf84E51d76F"
   },
   "0xDa5B670CcD418a187a3066674A8002Adc9356Ad1": {
     "protocolToken": {
@@ -1529,7 +1580,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xDa5B670CcD418a187a3066674A8002Adc9356Ad1"
+    "poolAddress": "0xDa5B670CcD418a187a3066674A8002Adc9356Ad1",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x87650D7bbfC3A9F10587d7778206671719d9910D": {
     "protocolToken": {
@@ -1564,7 +1616,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x87650D7bbfC3A9F10587d7778206671719d9910D"
+    "poolAddress": "0x87650D7bbfC3A9F10587d7778206671719d9910D",
+    "stakingToken": "0x25f0cE4E2F8dbA112D9b115710AC297F816087CD"
   },
   "0x6A274dE3e2462c7614702474D64d376729831dCa": {
     "protocolToken": {
@@ -1587,7 +1640,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x6A274dE3e2462c7614702474D64d376729831dCa"
+    "poolAddress": "0x6A274dE3e2462c7614702474D64d376729831dCa",
+    "stakingToken": "0xD81370Cad41b244B8D2129153997E26CeeAB3bEf"
   },
   "0x06cb22615BA53E60D67Bf6C341a0fD5E718E1655": {
     "protocolToken": {
@@ -1622,7 +1676,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x06cb22615BA53E60D67Bf6C341a0fD5E718E1655"
+    "poolAddress": "0x06cb22615BA53E60D67Bf6C341a0fD5E718E1655",
+    "stakingToken": "0xdC69D4cB5b86388Fff0b51885677e258883534ae"
   },
   "0xf5A95ccDe486B5fE98852bB02d8eC80a4b9422BD": {
     "protocolToken": {
@@ -1657,7 +1712,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xf5A95ccDe486B5fE98852bB02d8eC80a4b9422BD"
+    "poolAddress": "0xf5A95ccDe486B5fE98852bB02d8eC80a4b9422BD",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x67d9eAe741944D4402eB0D1cB3bC3a168EC1764c": {
     "protocolToken": {
@@ -1692,7 +1748,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x67d9eAe741944D4402eB0D1cB3bC3a168EC1764c"
+    "poolAddress": "0x67d9eAe741944D4402eB0D1cB3bC3a168EC1764c",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x9D0464996170c6B9e75eED71c68B99dDEDf279e8": {
     "protocolToken": {
@@ -1715,7 +1772,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9D0464996170c6B9e75eED71c68B99dDEDf279e8"
+    "poolAddress": "0x9D0464996170c6B9e75eED71c68B99dDEDf279e8",
+    "stakingToken": "0x903dA6213a5A12B61c821598154EfAd98C3B20E4"
   },
   "0x5B3b5DF2BF2B6543f78e053bD91C4Bdd820929f1": {
     "protocolToken": {
@@ -1750,7 +1808,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x5B3b5DF2BF2B6543f78e053bD91C4Bdd820929f1"
+    "poolAddress": "0x5B3b5DF2BF2B6543f78e053bD91C4Bdd820929f1",
+    "stakingToken": "0x9AF13a7B1f1Bbf1A2B05c6fBF23ac23A9E573b4E"
   },
   "0x3CFAa1596777CAD9f5004F9a0c443d912E262243": {
     "protocolToken": {
@@ -1785,7 +1844,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x3CFAa1596777CAD9f5004F9a0c443d912E262243"
+    "poolAddress": "0x3CFAa1596777CAD9f5004F9a0c443d912E262243",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x9f6664205988C3bf4B12B851c075102714869535": {
     "protocolToken": {
@@ -1820,7 +1880,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x9f6664205988C3bf4B12B851c075102714869535"
+    "poolAddress": "0x9f6664205988C3bf4B12B851c075102714869535",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xAA5A67c256e27A5d80712c51971408db3370927D": {
     "protocolToken": {
@@ -1855,7 +1916,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xAA5A67c256e27A5d80712c51971408db3370927D"
+    "poolAddress": "0xAA5A67c256e27A5d80712c51971408db3370927D",
+    "stakingToken": "0x8Fa728F393588E8D8dD1ca397E9a710E53fA553a"
   },
   "0x8818a9bb44Fbf33502bE7c15c500d0C783B73067": {
     "protocolToken": {
@@ -1878,7 +1940,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x8818a9bb44Fbf33502bE7c15c500d0C783B73067"
+    "poolAddress": "0x8818a9bb44Fbf33502bE7c15c500d0C783B73067",
+    "stakingToken": "0xeFF437A56A22D7dD86C1202A308536ED8C7da7c1"
   },
   "0x3F1B0278A9ee595635B61817630cC19DE792f506": {
     "protocolToken": {
@@ -1901,7 +1964,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x3F1B0278A9ee595635B61817630cC19DE792f506"
+    "poolAddress": "0x3F1B0278A9ee595635B61817630cC19DE792f506",
+    "stakingToken": "0x05ca5c01629a8E5845f12ea3A03fF7331932233A"
   },
   "0xD6Ac1CB9019137a896343Da59dDE6d097F710538": {
     "protocolToken": {
@@ -1924,7 +1988,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xD6Ac1CB9019137a896343Da59dDE6d097F710538"
+    "poolAddress": "0xD6Ac1CB9019137a896343Da59dDE6d097F710538",
+    "stakingToken": "0x63d9f3aB7d0c528797A12a0684E50C397E9e79dC"
   },
   "0x9c2C8910F113181783c249d8F6Aa41b51Cde0f0c": {
     "protocolToken": {
@@ -1947,7 +2012,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9c2C8910F113181783c249d8F6Aa41b51Cde0f0c"
+    "poolAddress": "0x9c2C8910F113181783c249d8F6Aa41b51Cde0f0c",
+    "stakingToken": "0x2fA53e8fa5fAdb81f4332C8EcE39Fe62eA2f919E"
   },
   "0xc8a7C1c4B748970F57cA59326BcD49F5c9dc43E3": {
     "protocolToken": {
@@ -1970,7 +2036,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xc8a7C1c4B748970F57cA59326BcD49F5c9dc43E3"
+    "poolAddress": "0xc8a7C1c4B748970F57cA59326BcD49F5c9dc43E3",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x3Fb78e61784C9c637D560eDE23Ad57CA1294c14a": {
     "protocolToken": {
@@ -1993,7 +2060,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x3Fb78e61784C9c637D560eDE23Ad57CA1294c14a"
+    "poolAddress": "0x3Fb78e61784C9c637D560eDE23Ad57CA1294c14a",
+    "stakingToken": "0xD9277b0D007464eFF133622eC0d42081c93Cef02"
   },
   "0xAc5f019a302c4c8caAC0a7F28183ac62E6e80034": {
     "protocolToken": {
@@ -2028,7 +2096,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xAc5f019a302c4c8caAC0a7F28183ac62E6e80034"
+    "poolAddress": "0xAc5f019a302c4c8caAC0a7F28183ac62E6e80034",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xbcb91E689114B9Cc865AD7871845C95241Df4105": {
     "protocolToken": {
@@ -2063,7 +2132,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xbcb91E689114B9Cc865AD7871845C95241Df4105"
+    "poolAddress": "0xbcb91E689114B9Cc865AD7871845C95241Df4105",
+    "stakingToken": "0xb07d00e0eE9b1b2eb9f1B483924155Af7AF0c8Fa"
   },
   "0xC2F5FeA5197a3d92736500Fd7733Fcc7a3bBDf3F": {
     "protocolToken": {
@@ -2098,7 +2168,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xC2F5FeA5197a3d92736500Fd7733Fcc7a3bBDf3F"
+    "poolAddress": "0xC2F5FeA5197a3d92736500Fd7733Fcc7a3bBDf3F",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x6870F9b4DD5d34C7FC53D0d85D9dBd1aAB339BF7": {
     "protocolToken": {
@@ -2133,7 +2204,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x6870F9b4DD5d34C7FC53D0d85D9dBd1aAB339BF7"
+    "poolAddress": "0x6870F9b4DD5d34C7FC53D0d85D9dBd1aAB339BF7",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x55A8a39bc9694714E2874c1ce77aa1E599461E18": {
     "protocolToken": {
@@ -2156,7 +2228,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x55A8a39bc9694714E2874c1ce77aa1E599461E18"
+    "poolAddress": "0x55A8a39bc9694714E2874c1ce77aa1E599461E18",
+    "stakingToken": "0xB518f5e3242393d4eC792BD3f44946A3b98d0E48"
   },
   "0x04c90C198b2eFF55716079bc06d7CCc4aa4d7512": {
     "protocolToken": {
@@ -2179,7 +2252,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x04c90C198b2eFF55716079bc06d7CCc4aa4d7512"
+    "poolAddress": "0x04c90C198b2eFF55716079bc06d7CCc4aa4d7512",
+    "stakingToken": "0x1b759A88543931F4Bb983bCA4194306039cb979C"
   },
   "0xCEAF7747579696A2F0bb206a14210e3c9e6fB269": {
     "protocolToken": {
@@ -2214,7 +2288,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xCEAF7747579696A2F0bb206a14210e3c9e6fB269"
+    "poolAddress": "0xCEAF7747579696A2F0bb206a14210e3c9e6fB269",
+    "stakingToken": "0xb0f5d00e5916c8b8981e99191A1458704B587b2b"
   },
   "0xBaaa1F5DbA42C3389bDbc2c9D2dE134F5cD0Dc89": {
     "protocolToken": {
@@ -2243,7 +2318,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xBaaa1F5DbA42C3389bDbc2c9D2dE134F5cD0Dc89"
+    "poolAddress": "0xBaaa1F5DbA42C3389bDbc2c9D2dE134F5cD0Dc89",
+    "stakingToken": "0x16C2beE6f55dAB7F494dBa643fF52ef2D47FBA36"
   },
   "0xc270b3B858c335B6BA5D5b10e2Da8a09976005ad": {
     "protocolToken": {
@@ -2278,7 +2354,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xc270b3B858c335B6BA5D5b10e2Da8a09976005ad"
+    "poolAddress": "0xc270b3B858c335B6BA5D5b10e2Da8a09976005ad",
+    "stakingToken": "0xC95bdf13A08A547E4dD9f29B00aB7fF08C5d093d"
   },
   "0xFbdCA68601f835b27790D98bbb8eC7f05FDEaA9B": {
     "protocolToken": {
@@ -2313,7 +2390,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xFbdCA68601f835b27790D98bbb8eC7f05FDEaA9B"
+    "poolAddress": "0xFbdCA68601f835b27790D98bbb8eC7f05FDEaA9B",
+    "stakingToken": "0x346C7BB1A7a6A30c8e81c14e90FC2f0FBddc54d8"
   },
   "0xcbD5cC53C5b846671C6434Ab301AD4d210c21184": {
     "protocolToken": {
@@ -2336,7 +2414,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xcbD5cC53C5b846671C6434Ab301AD4d210c21184"
+    "poolAddress": "0xcbD5cC53C5b846671C6434Ab301AD4d210c21184",
+    "stakingToken": "0xDB190E4d9c9A95fdF066b258892b8D6Bb107434e"
   },
   "0xb9446c4Ef5EBE66268dA6700D26f96273DE3d571": {
     "protocolToken": {
@@ -2365,7 +2444,8 @@
         "decimals": 2
       }
     ],
-    "poolAddress": "0xb9446c4Ef5EBE66268dA6700D26f96273DE3d571"
+    "poolAddress": "0xb9446c4Ef5EBE66268dA6700D26f96273DE3d571",
+    "stakingToken": "0x1E212e054d74ed136256fc5a5DDdB4867c6E003F"
   },
   "0x1033812EFeC8716BBaE0c19e5678698D25E26eDf": {
     "protocolToken": {
@@ -2400,7 +2480,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x1033812EFeC8716BBaE0c19e5678698D25E26eDf"
+    "poolAddress": "0x1033812EFeC8716BBaE0c19e5678698D25E26eDf",
+    "stakingToken": "0xb3D8e2a22A28dc55B26236c45Cc1DF75E5081eF5"
   },
   "0x6d8fF88973b15dF3e2dc6ABb9aF29Cad8C2B5Ef5": {
     "protocolToken": {
@@ -2435,7 +2516,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x6d8fF88973b15dF3e2dc6ABb9aF29Cad8C2B5Ef5"
+    "poolAddress": "0x6d8fF88973b15dF3e2dc6ABb9aF29Cad8C2B5Ef5",
+    "stakingToken": "0x63093C86472469F55C4F6C7cBFF83ec18CD8a94B"
   },
   "0x3b22B869ba3c0a495Cead0B8A009b70886d37fAC": {
     "protocolToken": {
@@ -2470,7 +2552,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x3b22B869ba3c0a495Cead0B8A009b70886d37fAC"
+    "poolAddress": "0x3b22B869ba3c0a495Cead0B8A009b70886d37fAC",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xbB2dC673E1091abCA3eaDB622b18f6D4634b2CD9": {
     "protocolToken": {
@@ -2493,7 +2576,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xbB2dC673E1091abCA3eaDB622b18f6D4634b2CD9"
+    "poolAddress": "0xbB2dC673E1091abCA3eaDB622b18f6D4634b2CD9",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xf083FBa98dED0f9C970e5a418500bad08D8b9732": {
     "protocolToken": {
@@ -2516,7 +2600,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xf083FBa98dED0f9C970e5a418500bad08D8b9732"
+    "poolAddress": "0xf083FBa98dED0f9C970e5a418500bad08D8b9732",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x76264772707c8Bc24261516b560cBF3Cbe6F7819": {
     "protocolToken": {
@@ -2551,7 +2636,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x76264772707c8Bc24261516b560cBF3Cbe6F7819"
+    "poolAddress": "0x76264772707c8Bc24261516b560cBF3Cbe6F7819",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xB37D6c07482Bc11cd28a1f11f1a6ad7b66Dec933": {
     "protocolToken": {
@@ -2574,7 +2660,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xB37D6c07482Bc11cd28a1f11f1a6ad7b66Dec933"
+    "poolAddress": "0xB37D6c07482Bc11cd28a1f11f1a6ad7b66Dec933",
+    "stakingToken": "0x38039dD47636154273b287F74C432Cac83Da97e2"
   },
   "0x694650a0B2866472c2EEA27827CE6253C1D13074": {
     "protocolToken": {
@@ -2597,7 +2684,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x694650a0B2866472c2EEA27827CE6253C1D13074"
+    "poolAddress": "0x694650a0B2866472c2EEA27827CE6253C1D13074",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x8ed10E4e307822b969BCDaffD49095235f6F892b": {
     "protocolToken": {
@@ -2632,7 +2720,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x8ed10E4e307822b969BCDaffD49095235f6F892b"
+    "poolAddress": "0x8ed10E4e307822b969BCDaffD49095235f6F892b",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x3a70DfA7d2262988064A2D051dd47521E43c9BdD": {
     "protocolToken": {
@@ -2667,7 +2756,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x3a70DfA7d2262988064A2D051dd47521E43c9BdD"
+    "poolAddress": "0x3a70DfA7d2262988064A2D051dd47521E43c9BdD",
+    "stakingToken": "0x6F98dA2D5098604239C07875C6B7Fd583BC520b9"
   },
   "0x7abD51BbA7f9F6Ae87aC77e1eA1C5783adA56e5c": {
     "protocolToken": {
@@ -2702,7 +2792,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x7abD51BbA7f9F6Ae87aC77e1eA1C5783adA56e5c"
+    "poolAddress": "0x7abD51BbA7f9F6Ae87aC77e1eA1C5783adA56e5c",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x0FaFaFD3C393ead5F5129cFC7e0E12367088c473": {
     "protocolToken": {
@@ -2737,7 +2828,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x0FaFaFD3C393ead5F5129cFC7e0E12367088c473"
+    "poolAddress": "0x0FaFaFD3C393ead5F5129cFC7e0E12367088c473",
+    "stakingToken": "0xB496615f6Fc4729fFa547281F95F5DBdC3d41b6a"
   },
   "0x9462F2b3C9bEeA8afc334Cdb1D1382B072e494eA": {
     "protocolToken": {
@@ -2760,7 +2852,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9462F2b3C9bEeA8afc334Cdb1D1382B072e494eA"
+    "poolAddress": "0x9462F2b3C9bEeA8afc334Cdb1D1382B072e494eA",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x50B0D9171160d6EB8Aa39E090Da51E7e078E81c4": {
     "protocolToken": {
@@ -2783,7 +2876,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x50B0D9171160d6EB8Aa39E090Da51E7e078E81c4"
+    "poolAddress": "0x50B0D9171160d6EB8Aa39E090Da51E7e078E81c4",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x447Ddd4960d9fdBF6af9a790560d0AF76795CB08": {
     "protocolToken": {
@@ -2806,7 +2900,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x447Ddd4960d9fdBF6af9a790560d0AF76795CB08"
+    "poolAddress": "0x447Ddd4960d9fdBF6af9a790560d0AF76795CB08",
+    "stakingToken": "0x8aD7e0e6EDc61bC48ca0DD07f9021c249044eD30"
   },
   "0xCaf8703f8664731cEd11f63bB0570E53Ab4600A9": {
     "protocolToken": {
@@ -2829,7 +2924,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xCaf8703f8664731cEd11f63bB0570E53Ab4600A9"
+    "poolAddress": "0xCaf8703f8664731cEd11f63bB0570E53Ab4600A9",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xC250B22d15e43d95fBE27B12d98B6098f8493eaC": {
     "protocolToken": {
@@ -2852,7 +2948,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xC250B22d15e43d95fBE27B12d98B6098f8493eaC"
+    "poolAddress": "0xC250B22d15e43d95fBE27B12d98B6098f8493eaC",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x0437ac6109e8A366A1F4816edF312A36952DB856": {
     "protocolToken": {
@@ -2875,7 +2972,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x0437ac6109e8A366A1F4816edF312A36952DB856"
+    "poolAddress": "0x0437ac6109e8A366A1F4816edF312A36952DB856",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x9001a452d39A8710D27ED5c2E10431C13F5Fba74": {
     "protocolToken": {
@@ -2898,7 +2996,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9001a452d39A8710D27ED5c2E10431C13F5Fba74"
+    "poolAddress": "0x9001a452d39A8710D27ED5c2E10431C13F5Fba74",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x961226B64AD373275130234145b96D100Dc0b655": {
     "protocolToken": {
@@ -2921,7 +3020,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x961226B64AD373275130234145b96D100Dc0b655"
+    "poolAddress": "0x961226B64AD373275130234145b96D100Dc0b655",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xe7E4366f6ED6aFd23e88154C00B532BDc0352333": {
     "protocolToken": {
@@ -2944,7 +3044,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xe7E4366f6ED6aFd23e88154C00B532BDc0352333"
+    "poolAddress": "0xe7E4366f6ED6aFd23e88154C00B532BDc0352333",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x04EcD49246bf5143E43e2305136c46AeB6fAd400": {
     "protocolToken": {
@@ -2967,7 +3068,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x04EcD49246bf5143E43e2305136c46AeB6fAd400"
+    "poolAddress": "0x04EcD49246bf5143E43e2305136c46AeB6fAd400",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x8c524635d52bd7b1Bd55E062303177a7d916C046": {
     "protocolToken": {
@@ -2990,7 +3092,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x8c524635d52bd7b1Bd55E062303177a7d916C046"
+    "poolAddress": "0x8c524635d52bd7b1Bd55E062303177a7d916C046",
+    "stakingToken": "0xa9A9BC60fc80478059A83f516D5215185eeC2fc0"
   },
   "0x48fF31bBbD8Ab553Ebe7cBD84e1eA3dBa8f54957": {
     "protocolToken": {
@@ -3013,7 +3116,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x48fF31bBbD8Ab553Ebe7cBD84e1eA3dBa8f54957"
+    "poolAddress": "0x48fF31bBbD8Ab553Ebe7cBD84e1eA3dBa8f54957",
+    "stakingToken": "0x03fFC218C7A9306D21193565CbDc4378952faA8c"
   },
   "0x9CA41a2DaB3CEE15308998868ca644e2e3be5C59": {
     "protocolToken": {
@@ -3036,7 +3140,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9CA41a2DaB3CEE15308998868ca644e2e3be5C59"
+    "poolAddress": "0x9CA41a2DaB3CEE15308998868ca644e2e3be5C59",
+    "stakingToken": "0xa5f483571C126B173E33c327e8A293A3492E4566"
   },
   "0xDB8Cc7eCeD700A4bfFdE98013760Ff31FF9408D8": {
     "protocolToken": {
@@ -3071,7 +3176,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xDB8Cc7eCeD700A4bfFdE98013760Ff31FF9408D8"
+    "poolAddress": "0xDB8Cc7eCeD700A4bfFdE98013760Ff31FF9408D8",
+    "stakingToken": "0x71c5dC1B395b02834A97Ecf5a0CA062bf8801B07"
   },
   "0xf7b55C3732aD8b2c2dA7c24f30A69f55c54FB717": {
     "protocolToken": {
@@ -3094,7 +3200,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xf7b55C3732aD8b2c2dA7c24f30A69f55c54FB717"
+    "poolAddress": "0xf7b55C3732aD8b2c2dA7c24f30A69f55c54FB717",
+    "stakingToken": "0x663FC22e92f26C377Ddf3C859b560C4732ee639a"
   },
   "0x5a59Fd6018186471727FAAeAE4e57890aBC49B08": {
     "protocolToken": {
@@ -3117,7 +3224,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x5a59Fd6018186471727FAAeAE4e57890aBC49B08"
+    "poolAddress": "0x5a59Fd6018186471727FAAeAE4e57890aBC49B08",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x8EE017541375F6Bcd802ba119bdDC94dad6911A1": {
     "protocolToken": {
@@ -3152,7 +3260,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x8EE017541375F6Bcd802ba119bdDC94dad6911A1"
+    "poolAddress": "0x8EE017541375F6Bcd802ba119bdDC94dad6911A1",
+    "stakingToken": "0x89664D561E79Ca22Fd2eA4076b3e5deF0b219C15"
   },
   "0xe6b5CC1B4b47305c58392CE3D359B10282FC36Ea": {
     "protocolToken": {
@@ -3187,7 +3296,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xe6b5CC1B4b47305c58392CE3D359B10282FC36Ea"
+    "poolAddress": "0xe6b5CC1B4b47305c58392CE3D359B10282FC36Ea",
+    "stakingToken": "0xd5d3efC90fFB38987005FdeA303B68306aA5C624"
   },
   "0x828b154032950C8ff7CF8085D841723Db2696056": {
     "protocolToken": {
@@ -3210,7 +3320,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x828b154032950C8ff7CF8085D841723Db2696056"
+    "poolAddress": "0x828b154032950C8ff7CF8085D841723Db2696056",
+    "stakingToken": "0xF668E6D326945d499e5B35E7CD2E82aCFbcFE6f0"
   },
   "0x1977870a4c18a728C19Dd4eB6542451DF06e0A4b": {
     "protocolToken": {
@@ -3233,7 +3344,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x1977870a4c18a728C19Dd4eB6542451DF06e0A4b"
+    "poolAddress": "0x1977870a4c18a728C19Dd4eB6542451DF06e0A4b",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x5c6A6Cf9Ae657A73b98454D17986AF41fC7b44ee": {
     "protocolToken": {
@@ -3268,7 +3380,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x5c6A6Cf9Ae657A73b98454D17986AF41fC7b44ee"
+    "poolAddress": "0x5c6A6Cf9Ae657A73b98454D17986AF41fC7b44ee",
+    "stakingToken": "0xE277Dd681d966e83F68e5bC7FBfeAf5f1341195F"
   },
   "0xeE98d56f60A5905CbB52348c8719B247DaFe60ec": {
     "protocolToken": {
@@ -3291,7 +3404,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xeE98d56f60A5905CbB52348c8719B247DaFe60ec"
+    "poolAddress": "0xeE98d56f60A5905CbB52348c8719B247DaFe60ec",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x8116E7c29f60FdacF3954891A038f845565EF5A0": {
     "protocolToken": {
@@ -3326,7 +3440,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x8116E7c29f60FdacF3954891A038f845565EF5A0"
+    "poolAddress": "0x8116E7c29f60FdacF3954891A038f845565EF5A0",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xdE495223F7cD7EE0cDe1AddbD6836046bBdf3ad3": {
     "protocolToken": {
@@ -3361,7 +3476,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xdE495223F7cD7EE0cDe1AddbD6836046bBdf3ad3"
+    "poolAddress": "0xdE495223F7cD7EE0cDe1AddbD6836046bBdf3ad3",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x63594B2011a0F2616586Bf3EeF8096d42272F916": {
     "protocolToken": {
@@ -3396,7 +3512,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x63594B2011a0F2616586Bf3EeF8096d42272F916"
+    "poolAddress": "0x63594B2011a0F2616586Bf3EeF8096d42272F916",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x67C7f0a63BA70a2dAc69477B716551FC921aed00": {
     "protocolToken": {
@@ -3431,7 +3548,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x67C7f0a63BA70a2dAc69477B716551FC921aed00"
+    "poolAddress": "0x67C7f0a63BA70a2dAc69477B716551FC921aed00",
+    "stakingToken": "0x427AA775edAb0f2d9301CD988a5A99ba6cC792E6"
   },
   "0x4606326b4Db89373F5377C316d3b0F6e55Bc6A20": {
     "protocolToken": {
@@ -3460,7 +3578,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x4606326b4Db89373F5377C316d3b0F6e55Bc6A20"
+    "poolAddress": "0x4606326b4Db89373F5377C316d3b0F6e55Bc6A20",
+    "stakingToken": "0xb8b9dfCB48614FA873ccEC72c79D728d39EC9a5c"
   },
   "0xe3c190c57b5959Ae62EfE3B6797058B76bA2f5eF": {
     "protocolToken": {
@@ -3489,7 +3608,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xe3c190c57b5959Ae62EfE3B6797058B76bA2f5eF"
+    "poolAddress": "0xe3c190c57b5959Ae62EfE3B6797058B76bA2f5eF",
+    "stakingToken": "0xf6D7087D4Ae4dCf85956d743406E63cDA74D99AD"
   },
   "0x497CE58F34605B9944E6b15EcafE6b001206fd25": {
     "protocolToken": {
@@ -3518,7 +3638,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x497CE58F34605B9944E6b15EcafE6b001206fd25"
+    "poolAddress": "0x497CE58F34605B9944E6b15EcafE6b001206fd25",
+    "stakingToken": "0x389Fc079a15354E9cbcE8258433CC0F85B755A42"
   },
   "0x04b727C7e246CA70d496ecF52E6b6280f3c8077D": {
     "protocolToken": {
@@ -3547,7 +3668,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x04b727C7e246CA70d496ecF52E6b6280f3c8077D"
+    "poolAddress": "0x04b727C7e246CA70d496ecF52E6b6280f3c8077D",
+    "stakingToken": "0xD6e48Cc0597a1Ee12a8BeEB88e22bFDb81777164"
   },
   "0x4e43151b78b5fbb16298C1161fcbF7531d5F8D93": {
     "protocolToken": {
@@ -3576,7 +3698,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x4e43151b78b5fbb16298C1161fcbF7531d5F8D93"
+    "poolAddress": "0x4e43151b78b5fbb16298C1161fcbF7531d5F8D93",
+    "stakingToken": "0xda7F9DD286577cC338047B040c289463743a474e"
   },
   "0x8fdb0bB9365a46B145Db80D0B1C5C5e979C84190": {
     "protocolToken": {
@@ -3605,7 +3728,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x8fdb0bB9365a46B145Db80D0B1C5C5e979C84190"
+    "poolAddress": "0x8fdb0bB9365a46B145Db80D0B1C5C5e979C84190",
+    "stakingToken": "0xAeac6Dcd12CC0BE74c8f99EfE4bB5205a1f9A608"
   },
   "0x33baeDa08b8afACc4d3d07cf31d49FC1F1f3E893": {
     "protocolToken": {
@@ -3634,7 +3758,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x33baeDa08b8afACc4d3d07cf31d49FC1F1f3E893"
+    "poolAddress": "0x33baeDa08b8afACc4d3d07cf31d49FC1F1f3E893",
+    "stakingToken": "0xf865FDd6a5F307F398a94Dc40687995Cfaa77BC9"
   },
   "0xe7A3b38c39F97E977723bd1239C3470702568e7B": {
     "protocolToken": {
@@ -3663,7 +3788,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xe7A3b38c39F97E977723bd1239C3470702568e7B"
+    "poolAddress": "0xe7A3b38c39F97E977723bd1239C3470702568e7B",
+    "stakingToken": "0x9f57569EaA61d427dEEebac8D9546A745160391C"
   },
   "0xB30dA2376F63De30b42dC055C93fa474F31330A5": {
     "protocolToken": {
@@ -3692,7 +3818,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xB30dA2376F63De30b42dC055C93fa474F31330A5"
+    "poolAddress": "0xB30dA2376F63De30b42dC055C93fa474F31330A5",
+    "stakingToken": "0x740BA8aa0052E07b925908B380248cb03f3DE5cB"
   },
   "0xC69b00366F07840fF939cc9fdF866C3dCCB10804": {
     "protocolToken": {
@@ -3715,7 +3842,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xC69b00366F07840fF939cc9fdF866C3dCCB10804"
+    "poolAddress": "0xC69b00366F07840fF939cc9fdF866C3dCCB10804",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xc9C32cd16Bf7eFB85Ff14e0c8603cc90F6F2eE49": {
     "protocolToken": {
@@ -3750,7 +3878,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xc9C32cd16Bf7eFB85Ff14e0c8603cc90F6F2eE49"
+    "poolAddress": "0xc9C32cd16Bf7eFB85Ff14e0c8603cc90F6F2eE49",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x83D78bf3f861e898cCA47BD076b3839Ab5469d70": {
     "protocolToken": {
@@ -3773,7 +3902,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x83D78bf3f861e898cCA47BD076b3839Ab5469d70"
+    "poolAddress": "0x83D78bf3f861e898cCA47BD076b3839Ab5469d70",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x0AaCe9b6c491d5cD9F80665A2fCc1af09e9CCf00": {
     "protocolToken": {
@@ -3802,7 +3932,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x0AaCe9b6c491d5cD9F80665A2fCc1af09e9CCf00"
+    "poolAddress": "0x0AaCe9b6c491d5cD9F80665A2fCc1af09e9CCf00",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x92Da88e2e6f96cC7c667Cd1367BD090ADF3c6053": {
     "protocolToken": {
@@ -3837,7 +3968,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x92Da88e2e6f96cC7c667Cd1367BD090ADF3c6053"
+    "poolAddress": "0x92Da88e2e6f96cC7c667Cd1367BD090ADF3c6053",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xBa3436Fd341F2C8A928452Db3C5A3670d1d5Cc73": {
     "protocolToken": {
@@ -3860,7 +3992,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xBa3436Fd341F2C8A928452Db3C5A3670d1d5Cc73"
+    "poolAddress": "0xBa3436Fd341F2C8A928452Db3C5A3670d1d5Cc73",
+    "stakingToken": "0xF9F46eF781b9C7B76e8B505226d5E0e0E7FE2f04"
   },
   "0x6788f608CfE5CfCD02e6152eC79505341E0774be": {
     "protocolToken": {
@@ -3883,7 +4016,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x6788f608CfE5CfCD02e6152eC79505341E0774be"
+    "poolAddress": "0x6788f608CfE5CfCD02e6152eC79505341E0774be",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xC47EBd6c0f68fD5963005D28D0ba533750E5C11B": {
     "protocolToken": {
@@ -3912,7 +4046,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xC47EBd6c0f68fD5963005D28D0ba533750E5C11B"
+    "poolAddress": "0xC47EBd6c0f68fD5963005D28D0ba533750E5C11B",
+    "stakingToken": "0x28216318D85b2D6d8c2cB38eed08001d9348803b"
   },
   "0x66E335622ad7a6C9c72c98dbfCCE684996a20Ef9": {
     "protocolToken": {
@@ -3941,7 +4076,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x66E335622ad7a6C9c72c98dbfCCE684996a20Ef9"
+    "poolAddress": "0x66E335622ad7a6C9c72c98dbfCCE684996a20Ef9",
+    "stakingToken": "0xB3783f527B7704DeeD4993f7c1c779E426A04368"
   },
   "0xE57180685E3348589E9521aa53Af0BCD497E884d": {
     "protocolToken": {
@@ -3970,7 +4106,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xE57180685E3348589E9521aa53Af0BCD497E884d"
+    "poolAddress": "0xE57180685E3348589E9521aa53Af0BCD497E884d",
+    "stakingToken": "0xBE266d68Ce3dDFAb366Bb866F4353B6FC42BA43c"
   },
   "0x9d259cA698746586107C234e9E9461d385ca1041": {
     "protocolToken": {
@@ -3993,7 +4130,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9d259cA698746586107C234e9E9461d385ca1041"
+    "poolAddress": "0x9d259cA698746586107C234e9E9461d385ca1041",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x453D92C7d4263201C69aACfaf589Ed14202d83a4": {
     "protocolToken": {
@@ -4016,7 +4154,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x453D92C7d4263201C69aACfaf589Ed14202d83a4"
+    "poolAddress": "0x453D92C7d4263201C69aACfaf589Ed14202d83a4",
+    "stakingToken": "0x5980d25B4947594c26255C0BF301193ab64ba803"
   },
   "0xd0E24cB3e766581952dBf258b78e89c63A37f5fb": {
     "protocolToken": {
@@ -4039,7 +4178,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xd0E24cB3e766581952dBf258b78e89c63A37f5fb"
+    "poolAddress": "0xd0E24cB3e766581952dBf258b78e89c63A37f5fb",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xF9078Fb962A7D13F55d40d49C8AA6472aBD1A5a6": {
     "protocolToken": {
@@ -4062,7 +4202,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xF9078Fb962A7D13F55d40d49C8AA6472aBD1A5a6"
+    "poolAddress": "0xF9078Fb962A7D13F55d40d49C8AA6472aBD1A5a6",
+    "stakingToken": "0x7970489a543FB237ABab63d62524d8A5CE165B86"
   },
   "0xC0Ec468c1B6B94a107B0A83c7a0f6529B388f43A": {
     "protocolToken": {
@@ -4097,7 +4238,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xC0Ec468c1B6B94a107B0A83c7a0f6529B388f43A"
+    "poolAddress": "0xC0Ec468c1B6B94a107B0A83c7a0f6529B388f43A",
+    "stakingToken": "0x72150e9d1562512e32e7b25e0efeB519cFEe4406"
   },
   "0xbeDca4252b27cc12ed7DaF393F331886F86cd3CE": {
     "protocolToken": {
@@ -4132,7 +4274,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xbeDca4252b27cc12ed7DaF393F331886F86cd3CE"
+    "poolAddress": "0xbeDca4252b27cc12ed7DaF393F331886F86cd3CE",
+    "stakingToken": "0xf476d99F892C23b3ec828762eBA2b46c3fDa949F"
   },
   "0x8D35ECe39566d65d06c9207C571934DD3C3a3916": {
     "protocolToken": {
@@ -4167,7 +4310,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x8D35ECe39566d65d06c9207C571934DD3C3a3916"
+    "poolAddress": "0x8D35ECe39566d65d06c9207C571934DD3C3a3916",
+    "stakingToken": "0x5770f9a1d363b1a309cc348acbe6fFFa899f8Ceb"
   },
   "0x326290A1B0004eeE78fa6ED4F1d8f4b2523ab669": {
     "protocolToken": {
@@ -4196,7 +4340,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x326290A1B0004eeE78fa6ED4F1d8f4b2523ab669"
+    "poolAddress": "0x326290A1B0004eeE78fa6ED4F1d8f4b2523ab669",
+    "stakingToken": "0xa8Ea11465A1375BF42463C3B613dFC54248b9C7B"
   },
   "0xA77d09743F77052950C4eb4e6547E9665299BecD": {
     "protocolToken": {
@@ -4231,7 +4376,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xA77d09743F77052950C4eb4e6547E9665299BecD"
+    "poolAddress": "0xA77d09743F77052950C4eb4e6547E9665299BecD",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x413928a25D6ea1A26F2625d633207755f67Bf97c": {
     "protocolToken": {
@@ -4254,7 +4400,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x413928a25D6ea1A26F2625d633207755f67Bf97c"
+    "poolAddress": "0x413928a25D6ea1A26F2625d633207755f67Bf97c",
+    "stakingToken": "0xb87Ec044152C49E52F7c429B2B9DBAcb7Ea8FB15"
   },
   "0x84997FAFC913f1613F51Bb0E2b5854222900514B": {
     "protocolToken": {
@@ -4289,7 +4436,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x84997FAFC913f1613F51Bb0E2b5854222900514B"
+    "poolAddress": "0x84997FAFC913f1613F51Bb0E2b5854222900514B",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xAf25fFe6bA5A8a29665adCfA6D30C5Ae56CA0Cd3": {
     "protocolToken": {
@@ -4324,7 +4472,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xAf25fFe6bA5A8a29665adCfA6D30C5Ae56CA0Cd3"
+    "poolAddress": "0xAf25fFe6bA5A8a29665adCfA6D30C5Ae56CA0Cd3",
+    "stakingToken": "0xCa202F87A13aB9B68C05ad18168E1Ba8725C9CdE"
   },
   "0x84C333e94AEA4a51a21F6cf0C7F528C50Dc7592C": {
     "protocolToken": {
@@ -4353,7 +4502,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x84C333e94AEA4a51a21F6cf0C7F528C50Dc7592C"
+    "poolAddress": "0x84C333e94AEA4a51a21F6cf0C7F528C50Dc7592C",
+    "stakingToken": "0xA6f106d5AcFc6f7AC5d4aB84c3D7A8DaE658345F"
   },
   "0x79E281BC69A03DaBCcD66858c65EF6724e50aebe": {
     "protocolToken": {
@@ -4376,7 +4526,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x79E281BC69A03DaBCcD66858c65EF6724e50aebe"
+    "poolAddress": "0x79E281BC69A03DaBCcD66858c65EF6724e50aebe",
+    "stakingToken": "0x6a69FfD1353Fa129f7F9932BB68Fa7bE88F3888A"
   },
   "0x1c899dED01954d0959E034b62a728e7fEbE593b0": {
     "protocolToken": {
@@ -4399,7 +4550,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x1c899dED01954d0959E034b62a728e7fEbE593b0"
+    "poolAddress": "0x1c899dED01954d0959E034b62a728e7fEbE593b0",
+    "stakingToken": "0xD90a01c487564Ba6CEF5c3870C1251afF0c49E53"
   },
   "0x0AD66FeC8dB84F8A3365ADA04aB23ce607ac6E24": {
     "protocolToken": {
@@ -4422,7 +4574,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x0AD66FeC8dB84F8A3365ADA04aB23ce607ac6E24"
+    "poolAddress": "0x0AD66FeC8dB84F8A3365ADA04aB23ce607ac6E24",
+    "stakingToken": "0x6Aba93E10147f86744bb9A50238d25F49eD4F342"
   },
   "0x2863a328A0B7fC6040f11614FA0728587DB8e353": {
     "protocolToken": {
@@ -4451,7 +4604,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x2863a328A0B7fC6040f11614FA0728587DB8e353"
+    "poolAddress": "0x2863a328A0B7fC6040f11614FA0728587DB8e353",
+    "stakingToken": "0x0A13654e7846Fbbd6fBc9F409AA453739bBADb74"
   },
   "0xF95AAa7EBB1620e46221B73588502960Ef63dBa0": {
     "protocolToken": {
@@ -4480,7 +4634,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xF95AAa7EBB1620e46221B73588502960Ef63dBa0"
+    "poolAddress": "0xF95AAa7EBB1620e46221B73588502960Ef63dBa0",
+    "stakingToken": "0x0eC3d1f5d737593ff4aEDB8E22EB33a1886ddB9a"
   },
   "0xc3b19502F8c02be75F3f77fd673503520DEB51dD": {
     "protocolToken": {
@@ -4509,7 +4664,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xc3b19502F8c02be75F3f77fd673503520DEB51dD"
+    "poolAddress": "0xc3b19502F8c02be75F3f77fd673503520DEB51dD",
+    "stakingToken": "0xd5f2e6612E41bE48461FDBA20061E3c778Fe6EC4"
   },
   "0xB657B895B265C38c53FFF00166cF7F6A3C70587d": {
     "protocolToken": {
@@ -4532,7 +4688,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xB657B895B265C38c53FFF00166cF7F6A3C70587d"
+    "poolAddress": "0xB657B895B265C38c53FFF00166cF7F6A3C70587d",
+    "stakingToken": "0x415F30505368fa1dB82Feea02EB778be04e75907"
   },
   "0xEC0de6A9da9cc464Da0011214D586C21f1Fbe6D4": {
     "protocolToken": {
@@ -4567,7 +4724,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xEC0de6A9da9cc464Da0011214D586C21f1Fbe6D4"
+    "poolAddress": "0xEC0de6A9da9cc464Da0011214D586C21f1Fbe6D4",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xcD0148e3f3350f4B98A48535f63A38fC630e80f1": {
     "protocolToken": {
@@ -4602,7 +4760,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xcD0148e3f3350f4B98A48535f63A38fC630e80f1"
+    "poolAddress": "0xcD0148e3f3350f4B98A48535f63A38fC630e80f1",
+    "stakingToken": "0x6108066b126969D26526A3c8f8744a8c6DA8d036"
   },
   "0xfC8c34a3B3CFE1F1Dd6DBCCEC4BC5d3103b80FF0": {
     "protocolToken": {
@@ -4625,7 +4784,8 @@
         "decimals": 2
       }
     ],
-    "poolAddress": "0xfC8c34a3B3CFE1F1Dd6DBCCEC4BC5d3103b80FF0"
+    "poolAddress": "0xfC8c34a3B3CFE1F1Dd6DBCCEC4BC5d3103b80FF0",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x6D09C6513e620778632D36784F5C3b4b2309bd96": {
     "protocolToken": {
@@ -4654,7 +4814,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x6D09C6513e620778632D36784F5C3b4b2309bd96"
+    "poolAddress": "0x6D09C6513e620778632D36784F5C3b4b2309bd96",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xC61557C5d177bd7DC889A3b621eEC333e168f68A": {
     "protocolToken": {
@@ -4689,7 +4850,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xC61557C5d177bd7DC889A3b621eEC333e168f68A"
+    "poolAddress": "0xC61557C5d177bd7DC889A3b621eEC333e168f68A",
+    "stakingToken": "0xd3dFD8f308c9e6d88d7C09c9a6575C691c810407"
   },
   "0xe9123CBC5d1EA65301D417193c40A72Ac8D53501": {
     "protocolToken": {
@@ -4724,7 +4886,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xe9123CBC5d1EA65301D417193c40A72Ac8D53501"
+    "poolAddress": "0xe9123CBC5d1EA65301D417193c40A72Ac8D53501",
+    "stakingToken": "0xf2cBa59952cc09EB23d6F7baa2C47aB79B9F2945"
   },
   "0x3685646651FCcC80e7CCE7Ee24c5f47Ed9b434ac": {
     "protocolToken": {
@@ -4759,7 +4922,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x3685646651FCcC80e7CCE7Ee24c5f47Ed9b434ac"
+    "poolAddress": "0x3685646651FCcC80e7CCE7Ee24c5f47Ed9b434ac",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x4d9f9D15101EEC665F77210cB999639f760F831E": {
     "protocolToken": {
@@ -4782,7 +4946,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x4d9f9D15101EEC665F77210cB999639f760F831E"
+    "poolAddress": "0x4d9f9D15101EEC665F77210cB999639f760F831E",
+    "stakingToken": "0x821529Bb07c83803C9CC7763e5974386e9eFEdC7"
   },
   "0x663aC72a1c3E1C4186CD3dCb184f216291F4878C": {
     "protocolToken": {
@@ -4805,7 +4970,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x663aC72a1c3E1C4186CD3dCb184f216291F4878C"
+    "poolAddress": "0x663aC72a1c3E1C4186CD3dCb184f216291F4878C",
+    "stakingToken": "0x77ef5D544FF6C739E7E10a549f64Dd08055538d1"
   },
   "0xAEda92e6A3B1028edc139A4ae56Ec881f3064D4F": {
     "protocolToken": {
@@ -4834,7 +5000,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xAEda92e6A3B1028edc139A4ae56Ec881f3064D4F"
+    "poolAddress": "0xAEda92e6A3B1028edc139A4ae56Ec881f3064D4F",
+    "stakingToken": "0x8605dc0C339a2e7e85EEA043bD29d42DA2c6D784"
   },
   "0x892D701d94a43bDBCB5eA28891DaCA2Fa22A690b": {
     "protocolToken": {
@@ -4869,7 +5036,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x892D701d94a43bDBCB5eA28891DaCA2Fa22A690b"
+    "poolAddress": "0x892D701d94a43bDBCB5eA28891DaCA2Fa22A690b",
+    "stakingToken": "0x4B6911E1aE9519640d417AcE509B9928D2F8377B"
   },
   "0x99f5aCc8EC2Da2BC0771c32814EFF52b712de1E5": {
     "protocolToken": {
@@ -4892,7 +5060,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x99f5aCc8EC2Da2BC0771c32814EFF52b712de1E5"
+    "poolAddress": "0x99f5aCc8EC2Da2BC0771c32814EFF52b712de1E5",
+    "stakingToken": "0xEEBC06d495c96E57542A6d829184A907A02ef602"
   },
   "0xE60986759872393a8360A4a7abEAb3A6e0BA7848": {
     "protocolToken": {
@@ -4921,7 +5090,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xE60986759872393a8360A4a7abEAb3A6e0BA7848"
+    "poolAddress": "0xE60986759872393a8360A4a7abEAb3A6e0BA7848",
+    "stakingToken": "0xcb7CEB005dce5743026cDDaD2364d74f594b95A4"
   },
   "0x971add32Ea87f10bD192671630be3BE8A11b8623": {
     "protocolToken": {
@@ -4944,7 +5114,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x971add32Ea87f10bD192671630be3BE8A11b8623"
+    "poolAddress": "0x971add32Ea87f10bD192671630be3BE8A11b8623",
+    "stakingToken": "0xfB18127c1471131468a1AaD4785c19678e521D86"
   },
   "0x68934F60758243eafAf4D2cFeD27BF8010bede3a": {
     "protocolToken": {
@@ -4973,7 +5144,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x68934F60758243eafAf4D2cFeD27BF8010bede3a"
+    "poolAddress": "0x68934F60758243eafAf4D2cFeD27BF8010bede3a",
+    "stakingToken": "0xBdCA4F610e7101Cc172E2135ba025737B99AbD30"
   },
   "0xfBB481A443382416357fA81F16dB5A725DC6ceC8": {
     "protocolToken": {
@@ -4996,7 +5168,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xfBB481A443382416357fA81F16dB5A725DC6ceC8"
+    "poolAddress": "0xfBB481A443382416357fA81F16dB5A725DC6ceC8",
+    "stakingToken": "0x66915f81deaFcFbA171aEaa914c76A607437Dd4a"
   },
   "0x7C0d189E1FecB124487226dCbA3748bD758F98E4": {
     "protocolToken": {
@@ -5019,7 +5192,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x7C0d189E1FecB124487226dCbA3748bD758F98E4"
+    "poolAddress": "0x7C0d189E1FecB124487226dCbA3748bD758F98E4",
+    "stakingToken": "0x688Eb2C49D352c9448049A2263CFcE63D0918d3e"
   },
   "0x06c21B5d004604250a7f9639c4A3C28e73742261": {
     "protocolToken": {
@@ -5042,7 +5216,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x06c21B5d004604250a7f9639c4A3C28e73742261"
+    "poolAddress": "0x06c21B5d004604250a7f9639c4A3C28e73742261",
+    "stakingToken": "0xA665F3600cdDCC8B2C712D9d2F0e1260441E2dd8"
   },
   "0x2d600BbBcC3F1B6Cb9910A70BaB59eC9d5F81B9A": {
     "protocolToken": {
@@ -5065,7 +5240,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x2d600BbBcC3F1B6Cb9910A70BaB59eC9d5F81B9A"
+    "poolAddress": "0x2d600BbBcC3F1B6Cb9910A70BaB59eC9d5F81B9A",
+    "stakingToken": "0xB7A3C519889a916C5ecB54101E69ECf11DE60d0b"
   },
   "0x2448ec833EbAf2958330f91E5Fbe4F9C70C9e572": {
     "protocolToken": {
@@ -5088,7 +5264,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x2448ec833EbAf2958330f91E5Fbe4F9C70C9e572"
+    "poolAddress": "0x2448ec833EbAf2958330f91E5Fbe4F9C70C9e572",
+    "stakingToken": "0x9AF8fbBa318aDeaCeA010b8d7C0190D443Ee1a85"
   },
   "0xfcc067EFb7bE2EEbD32615F14fC22195abB68e9B": {
     "protocolToken": {
@@ -5111,7 +5288,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xfcc067EFb7bE2EEbD32615F14fC22195abB68e9B"
+    "poolAddress": "0xfcc067EFb7bE2EEbD32615F14fC22195abB68e9B",
+    "stakingToken": "0xb0549599d8446A196541dE11008eF5e79fA14F57"
   },
   "0x4424b4A37ba0088D8a718b8fc2aB7952C7e695F5": {
     "protocolToken": {
@@ -5134,7 +5312,8 @@
         "decimals": 8
       }
     ],
-    "poolAddress": "0x4424b4A37ba0088D8a718b8fc2aB7952C7e695F5"
+    "poolAddress": "0x4424b4A37ba0088D8a718b8fc2aB7952C7e695F5",
+    "stakingToken": "0x39Bd19d2e9450b9e5BCdBc7501B828D86cE95fe0"
   },
   "0xF05CFb8b4382c69f3B451C5FB55210B232E0edFA": {
     "protocolToken": {
@@ -5157,7 +5336,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xF05CFb8b4382c69f3B451C5FB55210B232E0edFA"
+    "poolAddress": "0xF05CFb8b4382c69f3B451C5FB55210B232E0edFA",
+    "stakingToken": "0x0f83875a00a52898dA26eEF0bca2b8a21541CfAb"
   },
   "0x94B17476A93b3262d87B9a326965D1E91f9c13E7": {
     "protocolToken": {
@@ -5180,7 +5360,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x94B17476A93b3262d87B9a326965D1E91f9c13E7"
+    "poolAddress": "0x94B17476A93b3262d87B9a326965D1E91f9c13E7",
+    "stakingToken": "0xd03BE91b1932715709e18021734fcB91BB431715"
   },
   "0x96AAE323E111A19b1E0e26F55e8De21F1dD01f26": {
     "protocolToken": {
@@ -5203,7 +5384,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x96AAE323E111A19b1E0e26F55e8De21F1dD01f26"
+    "poolAddress": "0x96AAE323E111A19b1E0e26F55e8De21F1dD01f26",
+    "stakingToken": "0x5fDdB41cF566F6305293B2c9ad0fAf70dEAF7992"
   },
   "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0": {
     "protocolToken": {
@@ -5226,7 +5408,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0"
+    "poolAddress": "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0",
+    "stakingToken": "0x26F7786de3E6D9Bd37Fcf47BE6F2bC455a21b74A"
   },
   "0x71c91B173984d3955f7756914bBF9a7332538595": {
     "protocolToken": {
@@ -5249,7 +5432,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x71c91B173984d3955f7756914bBF9a7332538595"
+    "poolAddress": "0x71c91B173984d3955f7756914bBF9a7332538595",
+    "stakingToken": "0x0060E266c2AF65bfc4fd51b04c93d952DF805630"
   },
   "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8": {
     "protocolToken": {
@@ -5272,7 +5456,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8"
+    "poolAddress": "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8",
+    "stakingToken": "0x7292AfC5d77F988c873ca18F73CD96636c4Ac145"
   },
   "0x21E27a5E5513D6e65C4f830167390997aA84843a": {
     "protocolToken": {
@@ -5295,7 +5480,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x21E27a5E5513D6e65C4f830167390997aA84843a"
+    "poolAddress": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+    "stakingToken": "0x79F21BC30632cd40d2aF8134B469a0EB4C9574AA"
   },
   "0x400d4C984779A747462e88373c3fE369EF9F5b50": {
     "protocolToken": {
@@ -5324,7 +5510,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x400d4C984779A747462e88373c3fE369EF9F5b50"
+    "poolAddress": "0x400d4C984779A747462e88373c3fE369EF9F5b50",
+    "stakingToken": "0x218E4678318ab5527e41135713193E5EAd73337f"
   },
   "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0": {
     "protocolToken": {
@@ -5347,7 +5534,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0"
+    "poolAddress": "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0",
+    "stakingToken": "0x785dFF4aD2b6e55D150D335B46D567D854053dC8"
   },
   "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc": {
     "protocolToken": {
@@ -5376,7 +5564,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc"
+    "poolAddress": "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc",
+    "stakingToken": "0x8d5AF1F5DD3dC4B73e3A9Af682aDC3641FADE9a5"
   },
   "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b": {
     "protocolToken": {
@@ -5411,7 +5600,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b"
+    "poolAddress": "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b",
+    "stakingToken": "0x4afE040E63A4be4ff09D75cE91B0B9B04ED50cd9"
   },
   "0x35dd22fC3eC5a82D207BEDd8FA1F658915F97C33": {
     "protocolToken": {
@@ -5446,7 +5636,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x35dd22fC3eC5a82D207BEDd8FA1F658915F97C33"
+    "poolAddress": "0x35dd22fC3eC5a82D207BEDd8FA1F658915F97C33",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xfC89b519658967fCBE1f525f1b8f4bf62d9b9018": {
     "protocolToken": {
@@ -5469,7 +5660,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xfC89b519658967fCBE1f525f1b8f4bf62d9b9018"
+    "poolAddress": "0xfC89b519658967fCBE1f525f1b8f4bf62d9b9018",
+    "stakingToken": "0xB3627140BEacb97f9CA52b34090352FdAfC77d72"
   },
   "0xd82C2eB10F4895CABED6EDa6eeee234bd1A9838B": {
     "protocolToken": {
@@ -5492,7 +5684,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xd82C2eB10F4895CABED6EDa6eeee234bd1A9838B"
+    "poolAddress": "0xd82C2eB10F4895CABED6EDa6eeee234bd1A9838B",
+    "stakingToken": "0x696d31431E543Ffb36BE77DF95B73bAb95828233"
   },
   "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0": {
     "protocolToken": {
@@ -5515,7 +5708,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0"
+    "poolAddress": "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0",
+    "stakingToken": "0x0c58c509305a8a7fE9a6a60CEaAC6185B96ECBb7"
   },
   "0xc1F6110D42781aaccD16d716Ca7B814F2aEee18F": {
     "protocolToken": {
@@ -5550,7 +5744,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xc1F6110D42781aaccD16d716Ca7B814F2aEee18F"
+    "poolAddress": "0xc1F6110D42781aaccD16d716Ca7B814F2aEee18F",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3": {
     "protocolToken": {
@@ -5579,7 +5774,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3"
+    "poolAddress": "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3",
+    "stakingToken": "0x1Db233c2D10e6076d347f5FC87d575b4F8b88Ca7"
   },
   "0x4029f7DcBdF6059ed80DA6856526E7510D64fA21": {
     "protocolToken": {
@@ -5602,7 +5798,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x4029f7DcBdF6059ed80DA6856526E7510D64fA21"
+    "poolAddress": "0x4029f7DcBdF6059ed80DA6856526E7510D64fA21",
+    "stakingToken": "0x8771b3537e31774613F395566c6E43DEBFA6B54a"
   },
   "0xD4cEdEf74fB8885b8e1dE21fBA5a2E2F33F21f58": {
     "protocolToken": {
@@ -5625,7 +5822,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xD4cEdEf74fB8885b8e1dE21fBA5a2E2F33F21f58"
+    "poolAddress": "0xD4cEdEf74fB8885b8e1dE21fBA5a2E2F33F21f58",
+    "stakingToken": "0x2712E14F1C4819f7aeC4ba21e321C3E4662cf6De"
   },
   "0x6f3388c40A7d063b5E17Cc4213B7674b5DE44C32": {
     "protocolToken": {
@@ -5648,7 +5846,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x6f3388c40A7d063b5E17Cc4213B7674b5DE44C32"
+    "poolAddress": "0x6f3388c40A7d063b5E17Cc4213B7674b5DE44C32",
+    "stakingToken": "0x10A29439C8eB742114a1E3d6e89E3302039706f0"
   },
   "0xbC90FEC043e6DF6A084E18Df9435Ee037C940B2d": {
     "protocolToken": {
@@ -5677,7 +5876,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xbC90FEC043e6DF6A084E18Df9435Ee037C940B2d"
+    "poolAddress": "0xbC90FEC043e6DF6A084E18Df9435Ee037C940B2d",
+    "stakingToken": "0x4A325E066A1C4d76fec4778464Bed15a2772D93D"
   },
   "0x5D4D6836260c116B959E7E25a1735B6C7C328f47": {
     "protocolToken": {
@@ -5700,7 +5900,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x5D4D6836260c116B959E7E25a1735B6C7C328f47"
+    "poolAddress": "0x5D4D6836260c116B959E7E25a1735B6C7C328f47",
+    "stakingToken": "0x16F780aEd4E5cAa1b0c9A3AE6F67460D4d0cfEb5"
   },
   "0x20955CB69Ae1515962177D164dfC9522feef567E": {
     "protocolToken": {
@@ -5735,7 +5936,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x20955CB69Ae1515962177D164dfC9522feef567E"
+    "poolAddress": "0x20955CB69Ae1515962177D164dfC9522feef567E",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4": {
     "protocolToken": {
@@ -5758,7 +5960,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4"
+    "poolAddress": "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4",
+    "stakingToken": "0x4e227d29b33B77113F84bcC189a6F886755a1f24"
   },
   "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B": {
     "protocolToken": {
@@ -5781,7 +5984,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B"
+    "poolAddress": "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B",
+    "stakingToken": "0x8b87c8d75a620Df2271eD06B161de6cf811221b6"
   },
   "0x2673099769201c08E9A5e63b25FBaF25541A6557": {
     "protocolToken": {
@@ -5816,7 +6020,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x2673099769201c08E9A5e63b25FBaF25541A6557"
+    "poolAddress": "0x2673099769201c08E9A5e63b25FBaF25541A6557",
+    "stakingToken": "0x59063699125def4aA6D3Dbf384E1144BBb1083a1"
   },
   "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492": {
     "protocolToken": {
@@ -5839,7 +6044,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492"
+    "poolAddress": "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492",
+    "stakingToken": "0x7671299eA7B4bbE4f3fD305A994e6443b4be680E"
   },
   "0xb2C57D651dB0FcCc96cABda11191DF25E05B88b6": {
     "protocolToken": {
@@ -5862,7 +6068,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xb2C57D651dB0FcCc96cABda11191DF25E05B88b6"
+    "poolAddress": "0xb2C57D651dB0FcCc96cABda11191DF25E05B88b6",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x9A6F2FfA30CDDBB6156B98AC88a546E81205f6Ba": {
     "protocolToken": {
@@ -5885,7 +6092,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9A6F2FfA30CDDBB6156B98AC88a546E81205f6Ba"
+    "poolAddress": "0x9A6F2FfA30CDDBB6156B98AC88a546E81205f6Ba",
+    "stakingToken": "0x150EF43F6378eDFdEC096cd9f3293E4DF818DaeF"
   },
   "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7": {
     "protocolToken": {
@@ -5914,7 +6122,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7"
+    "poolAddress": "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7",
+    "stakingToken": "0x5439Dda1cE6A4A5222dB85bB2cAf0AB32c815Be6"
   },
   "0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5": {
     "protocolToken": {
@@ -5943,7 +6152,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5"
+    "poolAddress": "0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5",
+    "stakingToken": "0xF184d80915Ba7d835D941BA70cDdf93DE36517ee"
   },
   "0x0ce6e42EDadA12C4D862415aEa7C82bce93426d5": {
     "protocolToken": {
@@ -5978,7 +6188,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x0ce6e42EDadA12C4D862415aEa7C82bce93426d5"
+    "poolAddress": "0x0ce6e42EDadA12C4D862415aEa7C82bce93426d5",
+    "stakingToken": "0xc41cA7342a4225B9a6ae6484999EC4333382BA6B"
   },
   "0x9978c6B08d28d3B74437c917c5dD7C026df9d55C": {
     "protocolToken": {
@@ -6001,7 +6212,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9978c6B08d28d3B74437c917c5dD7C026df9d55C"
+    "poolAddress": "0x9978c6B08d28d3B74437c917c5dD7C026df9d55C",
+    "stakingToken": "0x66F65323bdE835B109A92045Aa7c655559dbf863"
   },
   "0x69ACcb968B19a53790f43e57558F5E443A91aF22": {
     "protocolToken": {
@@ -6024,7 +6236,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x69ACcb968B19a53790f43e57558F5E443A91aF22"
+    "poolAddress": "0x69ACcb968B19a53790f43e57558F5E443A91aF22",
+    "stakingToken": "0x138cC21D15b7A06F929Fc6CFC88d2b830796F4f1"
   },
   "0x857110B5f8eFD66CC3762abb935315630AC770B5": {
     "protocolToken": {
@@ -6047,7 +6260,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x857110B5f8eFD66CC3762abb935315630AC770B5"
+    "poolAddress": "0x857110B5f8eFD66CC3762abb935315630AC770B5",
+    "stakingToken": "0x100Ce95A26E644ee941db8e8e493B99AEB2a9afb"
   },
   "0x5eC58c7DEF28e0C2470cb8bd7Ab9C4ebEd0a86b7": {
     "protocolToken": {
@@ -6076,7 +6290,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x5eC58c7DEF28e0C2470cb8bd7Ab9C4ebEd0a86b7"
+    "poolAddress": "0x5eC58c7DEF28e0C2470cb8bd7Ab9C4ebEd0a86b7",
+    "stakingToken": "0x4647aF642408AF64fD3Cd5d9C8366f56f4dF3dd2"
   },
   "0xfa0BBB0A5815F6648241C9221027b70914dd8949": {
     "protocolToken": {
@@ -6099,7 +6314,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xfa0BBB0A5815F6648241C9221027b70914dd8949"
+    "poolAddress": "0xfa0BBB0A5815F6648241C9221027b70914dd8949",
+    "stakingToken": "0x8584d7F7bf9803d45e8df75Afe824f1Ae83C6256"
   },
   "0xC3FE3EEdd7002842f2971183B5e87F89CC1ee848": {
     "protocolToken": {
@@ -6134,7 +6350,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xC3FE3EEdd7002842f2971183B5e87F89CC1ee848"
+    "poolAddress": "0xC3FE3EEdd7002842f2971183B5e87F89CC1ee848",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xFFa66f6985215fDd2907B21145d1F9C91aC62f80": {
     "protocolToken": {
@@ -6157,7 +6374,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xFFa66f6985215fDd2907B21145d1F9C91aC62f80"
+    "poolAddress": "0xFFa66f6985215fDd2907B21145d1F9C91aC62f80",
+    "stakingToken": "0x641ab0176d9D8fDCE8E4C174Bb7D6c5D566D5204"
   },
   "0x8e9De7E69424c848972870798286E8bc5EcB295F": {
     "protocolToken": {
@@ -6186,7 +6404,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x8e9De7E69424c848972870798286E8bc5EcB295F"
+    "poolAddress": "0x8e9De7E69424c848972870798286E8bc5EcB295F",
+    "stakingToken": "0xA812C37122046ebff408C90Db8065E36F0586A36"
   },
   "0x1062FD8eD633c1f080754c19317cb3912810B5e5": {
     "protocolToken": {
@@ -6209,7 +6428,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x1062FD8eD633c1f080754c19317cb3912810B5e5"
+    "poolAddress": "0x1062FD8eD633c1f080754c19317cb3912810B5e5",
+    "stakingToken": "0x724476f141ED2DE4DA22eBDF435905dEf1118317"
   },
   "0x28Ca243dc0aC075dD012fCf9375C25D18A844d96": {
     "protocolToken": {
@@ -6232,7 +6452,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x28Ca243dc0aC075dD012fCf9375C25D18A844d96"
+    "poolAddress": "0x28Ca243dc0aC075dD012fCf9375C25D18A844d96",
+    "stakingToken": "0xA6762d10D6471F778C9c6Ce21A38245e9387915e"
   },
   "0x2237Ea7577cdE4c818c99a2e2A1C92794cBA2b7E": {
     "protocolToken": {
@@ -6267,7 +6488,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x2237Ea7577cdE4c818c99a2e2A1C92794cBA2b7E"
+    "poolAddress": "0x2237Ea7577cdE4c818c99a2e2A1C92794cBA2b7E",
+    "stakingToken": "0x8943179A925aec1Be3eA3D8E5F57c3fED5E7b5fE"
   },
   "0x212a60171E22988492B7C38a1A3553c60F1892BE": {
     "protocolToken": {
@@ -6302,7 +6524,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x212a60171E22988492B7C38a1A3553c60F1892BE"
+    "poolAddress": "0x212a60171E22988492B7C38a1A3553c60F1892BE",
+    "stakingToken": "0x528bED8b1E95549694519dbF8cFBdD54e274Cd48"
   },
   "0xDd9E687c73A2031A8f5058B596d740f53c1cb220": {
     "protocolToken": {
@@ -6325,7 +6548,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xDd9E687c73A2031A8f5058B596d740f53c1cb220"
+    "poolAddress": "0xDd9E687c73A2031A8f5058B596d740f53c1cb220",
+    "stakingToken": "0x42427Bb483f20b2722300Bc4E60DE2EFB00A869a"
   },
   "0xc4AD29ba4B3c580e6D59105FFf484999997675Ff": {
     "protocolToken": {
@@ -6354,7 +6578,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46"
+    "poolAddress": "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46",
+    "stakingToken": "0xDeFd8FdD20e0f34115C7018CCfb655796F6B2168"
   },
   "0x3b6831c0077a1e44ED0a21841C3bC4dC11bCE833": {
     "protocolToken": {
@@ -6389,7 +6614,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x9838eCcC42659FA8AA7daF2aD134b53984c9427b"
+    "poolAddress": "0x9838eCcC42659FA8AA7daF2aD134b53984c9427b",
+    "stakingToken": "0x4Fd86Ce7Ecea88F7E0aA78DC12625996Fb3a04bC"
   },
   "0x3D229E1B4faab62F621eF2F6A610961f7BD7b23B": {
     "protocolToken": {
@@ -6412,7 +6638,8 @@
         "decimals": 2
       }
     ],
-    "poolAddress": "0x98a7F18d4E56Cfe84E3D081B40001B3d5bD3eB8B"
+    "poolAddress": "0x98a7F18d4E56Cfe84E3D081B40001B3d5bD3eB8B",
+    "stakingToken": "0x65CA7Dc5CB661fC58De57B1E1aF404649a27AD35"
   },
   "0xEd4064f376cB8d68F770FB1Ff088a3d0F3FF5c4d": {
     "protocolToken": {
@@ -6435,7 +6662,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x8301AE4fc9c624d1D396cbDAa1ed877821D7C511"
+    "poolAddress": "0x8301AE4fc9c624d1D396cbDAa1ed877821D7C511",
+    "stakingToken": "0x1cEBdB0856dd985fAe9b8fEa2262469360B8a3a6"
   },
   "0x3A283D9c08E8b55966afb64C515f5143cf907611": {
     "protocolToken": {
@@ -6458,7 +6686,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4"
+    "poolAddress": "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4",
+    "stakingToken": "0x7E1444BA99dcdFfE8fBdb42C02F0005D14f13BE1"
   },
   "0x8484673cA7BfF40F82B041916881aeA15ee84834": {
     "protocolToken": {
@@ -6493,7 +6722,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xAdCFcf9894335dC340f6Cd182aFA45999F45Fc44"
+    "poolAddress": "0xAdCFcf9894335dC340f6Cd182aFA45999F45Fc44",
+    "stakingToken": "0x1B3E14157ED33F60668f2103bCd5Db39a1573E5B"
   },
   "0x8282BD15dcA2EA2bDf24163E8f2781B30C43A2ef": {
     "protocolToken": {
@@ -6516,7 +6746,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x98638FAcf9a3865cd033F36548713183f6996122"
+    "poolAddress": "0x98638FAcf9a3865cd033F36548713183f6996122",
+    "stakingToken": "0x08380a4999Be1a958E2abbA07968d703C7A3027C"
   },
   "0xCb08717451aaE9EF950a2524E33B6DCaBA60147B": {
     "protocolToken": {
@@ -6539,7 +6770,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x752eBeb79963cf0732E9c0fec72a49FD1DEfAEAC"
+    "poolAddress": "0x752eBeb79963cf0732E9c0fec72a49FD1DEfAEAC",
+    "stakingToken": "0x6070fBD4E608ee5391189E7205d70cc4A274c017"
   },
   "0x70fc957eb90E37Af82ACDbd12675699797745F68": {
     "protocolToken": {
@@ -6574,7 +6806,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xE84f5b1582BA325fDf9cE6B0c1F087ccfC924e54"
+    "poolAddress": "0xE84f5b1582BA325fDf9cE6B0c1F087ccfC924e54",
+    "stakingToken": "0x4329c8F09725c0e3b6884C1daB1771bcE17934F9"
   },
   "0x90244F43D548a4f8dFecfAD91a193465B1fad6F7": {
     "protocolToken": {
@@ -6597,7 +6830,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x941Eb6F616114e4Ecaa85377945EA306002612FE"
+    "poolAddress": "0x941Eb6F616114e4Ecaa85377945EA306002612FE",
+    "stakingToken": "0x009aCD89535DAbC270C93F9b39D3232105Fef453"
   },
   "0x137469B55D1f15651BA46A89D0588e97dD0B6562": {
     "protocolToken": {
@@ -6620,7 +6854,8 @@
         "decimals": 8
       }
     ],
-    "poolAddress": "0x50f3752289e1456BfA505afd37B241bca23e685d"
+    "poolAddress": "0x50f3752289e1456BfA505afd37B241bca23e685d",
+    "stakingToken": "0x02246583870b36Be0fEf2819E1d3A771d6C07546"
   },
   "0x29059568bB40344487d62f7450E78b8E6C74e0e5": {
     "protocolToken": {
@@ -6643,7 +6878,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xC26b89A667578ec7b3f11b2F98d6Fd15C07C54ba"
+    "poolAddress": "0xC26b89A667578ec7b3f11b2F98d6Fd15C07C54ba",
+    "stakingToken": "0x05255C5BD33672b9FEA4129C13274D1E6193312d"
   },
   "0x6085deF4343a0b5d97820F131a362Dae9fE59841": {
     "protocolToken": {
@@ -6666,7 +6902,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x48536EC5233297C367fd0b6979B75d9270bB6B15"
+    "poolAddress": "0x48536EC5233297C367fd0b6979B75d9270bB6B15",
+    "stakingToken": "0x82d0aDea8C4CF2fc84A499b568F4C1194d63113d"
   },
   "0x4aCc1BF7D6a591016641325aA6664A1Cd178F002": {
     "protocolToken": {
@@ -6689,7 +6926,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x8b0aFa4b63a3581b731dA9D79774a3eaE63B5ABD"
+    "poolAddress": "0x8b0aFa4b63a3581b731dA9D79774a3eaE63B5ABD",
+    "stakingToken": "0xB81465Ac19B9a57158a79754bDaa91C60fDA91ff"
   },
   "0x6359B6d3e327c497453d4376561eE276c6933323": {
     "protocolToken": {
@@ -6712,7 +6950,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xfB8814D005C5f32874391e888da6eB2fE7a27902"
+    "poolAddress": "0xfB8814D005C5f32874391e888da6eB2fE7a27902",
+    "stakingToken": "0x60355587a8D4aa67c2E64060Ab36e566B9bCC000"
   },
   "0x1054Ff2ffA34c055a13DCD9E0b4c0cA5b3aecEB9": {
     "protocolToken": {
@@ -6735,7 +6974,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xE07BDe9Eb53DEFfa979daE36882014B758111a78"
+    "poolAddress": "0xE07BDe9Eb53DEFfa979daE36882014B758111a78",
+    "stakingToken": "0xE786Df7076AFeECC3faCD841ED4AD20d0F04CF19"
   },
   "0x030cAFAE2EcE75eD411aeb53633FBeD3092C3e32": {
     "protocolToken": {
@@ -6758,7 +6998,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xDaD60C5B748306BA5a0c9a3c3482A8D1153DAd2a"
+    "poolAddress": "0xDaD60C5B748306BA5a0c9a3c3482A8D1153DAd2a",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x91f2f1b9D9c7D838c87B687d2AcCD1f0bE8FaE5d": {
     "protocolToken": {
@@ -6781,7 +7022,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xd8C49617e6A2C7584Ddbeab652368ee84954BF5c"
+    "poolAddress": "0xd8C49617e6A2C7584Ddbeab652368ee84954BF5c",
+    "stakingToken": "0x474D83Fc6c358242d8638Cb0f733E7B3a457a109"
   },
   "0xE160364FD8407FFc8b163e278300c6C5D18Ff61d": {
     "protocolToken": {
@@ -6804,7 +7046,8 @@
         "decimals": 9
       }
     ],
-    "poolAddress": "0xF43b15Ab692fDe1F9c24a9FCE700AdCC809D5391"
+    "poolAddress": "0xF43b15Ab692fDe1F9c24a9FCE700AdCC809D5391",
+    "stakingToken": "0x5AC6886Edd18ED0AD01C0B0910660637c551FBd6"
   },
   "0xF3A43307DcAFa93275993862Aae628fCB50dC768": {
     "protocolToken": {
@@ -6827,7 +7070,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xd658A338613198204DCa1143Ac3F01A722b5d94A"
+    "poolAddress": "0xd658A338613198204DCa1143Ac3F01A722b5d94A",
+    "stakingToken": "0xAB1927160EC7414C6Fa71763E2a9f3D107c126dd"
   },
   "0x3660BD168494d61ffDac21E403d0F6356cF90fD7": {
     "protocolToken": {
@@ -6850,7 +7094,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x6ec38b3228251a0C5D491Faf66858e2E23d7728B"
+    "poolAddress": "0x6ec38b3228251a0C5D491Faf66858e2E23d7728B",
+    "stakingToken": "0x8dF6FdAe05C9405853dd4cF2809D5dc2b5E77b0C"
   },
   "0x2302aaBe69e6E7A1b0Aa23aAC68fcCB8A4D2B460": {
     "protocolToken": {
@@ -6873,7 +7118,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9a22CDB1CA1cdd2371cD5BB5199564C4E89465eb"
+    "poolAddress": "0x9a22CDB1CA1cdd2371cD5BB5199564C4E89465eb",
+    "stakingToken": "0x784342E983E9283A7108F20FcA21995534b3fE65"
   },
   "0x42ec68ca5c2C80036044f3EeAd675447aB3A8065": {
     "protocolToken": {
@@ -6896,7 +7142,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x80aa1a80a30055DAA084E599836532F3e58c95E2"
+    "poolAddress": "0x80aa1a80a30055DAA084E599836532F3e58c95E2",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x8682Fbf0CbF312C891532BA9F1A91e44f81ad7DF": {
     "protocolToken": {
@@ -6919,7 +7166,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x1570af3dF649Fc74872c5B8F280A162a3bdD4EB6"
+    "poolAddress": "0x1570af3dF649Fc74872c5B8F280A162a3bdD4EB6",
+    "stakingToken": "0xE1D520B1263D6Be5678568BD699c84F7f9086023"
   },
   "0x54c8Ecf46A81496eEB0608BD3353388b5D7a2a33": {
     "protocolToken": {
@@ -6942,7 +7190,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x5b692073F141C31384faE55856CfB6CBfFE91E60"
+    "poolAddress": "0x5b692073F141C31384faE55856CfB6CBfFE91E60",
+    "stakingToken": "0x1779AEB087C5BdBe48749ab03575f5f25D1DEeaF"
   },
   "0x08ceA8E5B4551722dEB97113C139Dd83C26c5398": {
     "protocolToken": {
@@ -6965,7 +7214,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x6Df0D77F0496CE44e72D695943950D8641fcA5Cf"
+    "poolAddress": "0x6Df0D77F0496CE44e72D695943950D8641fcA5Cf",
+    "stakingToken": "0x36C66bC294fEf4e94B3e40A1801d0AB0085Fe96e"
   },
   "0x22CF19EB64226e0E1A79c69b345b31466fD273A7": {
     "protocolToken": {
@@ -6988,7 +7238,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xAcCe4Fe9Ce2A6FE9af83e7CF321a3fF7675e0AB6"
+    "poolAddress": "0xAcCe4Fe9Ce2A6FE9af83e7CF321a3fF7675e0AB6",
+    "stakingToken": "0x1Ba86c33509013c937344f6e231DA2E63ea45197"
   },
   "0x127091edE112aEd7Bae281747771b3150Bb047bB": {
     "protocolToken": {
@@ -7011,7 +7262,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xEB0265938c1190Ab4E3E1f6583bC956dF47C0F93"
+    "poolAddress": "0xEB0265938c1190Ab4E3E1f6583bC956dF47C0F93",
+    "stakingToken": "0x3A748A2F4765BDFB119Cb7143b884Db7594a68c3"
   },
   "0x80CAcCdBD3f07BbdB558DB4a9e146D099933D677": {
     "protocolToken": {
@@ -7034,7 +7286,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xef04f337fCB2ea220B6e8dB5eDbE2D774837581c"
+    "poolAddress": "0xef04f337fCB2ea220B6e8dB5eDbE2D774837581c",
+    "stakingToken": "0xb6d7C2bda5a907832d4556AE5f7bA800FF084C2a"
   },
   "0xdf55670e27bE5cDE7228dD0A6849181891c9ebA1": {
     "protocolToken": {
@@ -7057,7 +7310,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x3211C6cBeF1429da3D0d58494938299C92Ad5860"
+    "poolAddress": "0x3211C6cBeF1429da3D0d58494938299C92Ad5860",
+    "stakingToken": "0x95d16646311fDe101Eb9F897fE06AC881B7Db802"
   },
   "0xbE4f3AD6C9458b901C81b734CB22D9eaE9Ad8b50": {
     "protocolToken": {
@@ -7080,7 +7334,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x75A6787C7EE60424358B449B539A8b774c9B4862"
+    "poolAddress": "0x75A6787C7EE60424358B449B539A8b774c9B4862",
+    "stakingToken": "0x4fb13b55D6535584841dbBdb14EDC0258F7aC414"
   },
   "0x4647B6D835f3B393C7A955df51EEfcf0db961606": {
     "protocolToken": {
@@ -7103,7 +7358,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x21410232B484136404911780bC32756D5d1a9Fa9"
+    "poolAddress": "0x21410232B484136404911780bC32756D5d1a9Fa9",
+    "stakingToken": "0x6d3328F0333f6FB0B2FaC87cF5a0FFa7e77beB60"
   },
   "0x401322B9FDdba8c0a8D40fbCECE1D1752C12316B": {
     "protocolToken": {
@@ -7126,7 +7382,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xfE4A08f22FE65759Ba91dB2E2CADa09B4415B0d7"
+    "poolAddress": "0xfE4A08f22FE65759Ba91dB2E2CADa09B4415B0d7",
+    "stakingToken": "0x46521Db0D31A62A2CBF8D1A7Cdc6bBBBC441A1fc"
   },
   "0x34eD182D0812D119c92907852D2B429f095A9b07": {
     "protocolToken": {
@@ -7149,7 +7406,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x7E050cf658777cc1Da4a4508E79d71859044B60E"
+    "poolAddress": "0x7E050cf658777cc1Da4a4508E79d71859044B60E",
+    "stakingToken": "0xFA49B2a5D9E77f6748bf05801aa22356D514137b"
   },
   "0xF9835375f6b268743Ea0a54d742Aa156947f8C06": {
     "protocolToken": {
@@ -7172,7 +7430,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x838af967537350D2C44ABB8c010E49E32673ab94"
+    "poolAddress": "0x838af967537350D2C44ABB8c010E49E32673ab94",
+    "stakingToken": "0x5A8fa46ebb404494D718786e55c4E043337B10bF"
   },
   "0x4704aB1fb693ce163F7c9D3A31b3FF4eaF797714": {
     "protocolToken": {
@@ -7195,7 +7454,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xf861483fa7E511fbc37487D91B6FAa803aF5d37c"
+    "poolAddress": "0xf861483fa7E511fbc37487D91B6FAa803aF5d37c",
+    "stakingToken": "0xdB7cbbb1d5D5124F86E92001C9dFDC068C05801D"
   },
   "0x94f6C0201E1BFcba290345338C3C4aBC1901d336": {
     "protocolToken": {
@@ -7218,7 +7478,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xD0a1D2a9350824516ae8729b8311557BA7E55BFF"
+    "poolAddress": "0xD0a1D2a9350824516ae8729b8311557BA7E55BFF",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x1979F8296492fF9E6527ECA47FC44BB30c391139": {
     "protocolToken": {
@@ -7241,7 +7502,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x5D898FD41875b14c1781fb497AeCAb8E9B24dfC9"
+    "poolAddress": "0x5D898FD41875b14c1781fb497AeCAb8E9B24dfC9",
+    "stakingToken": "0x14b421BDA47D0ac5c32449b294431D0301c6A25F"
   },
   "0x70A03471B4F2dEe5174AdE1165742E2d3fEd2E27": {
     "protocolToken": {
@@ -7264,7 +7526,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x4535913573D299A6372ca43b90aA6Be1CF68f779"
+    "poolAddress": "0x4535913573D299A6372ca43b90aA6Be1CF68f779",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x7ea4aD8C803653498bF6AC1D2dEbc04DCe8Fd2aD": {
     "protocolToken": {
@@ -7287,7 +7550,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xe0e970a99bc4F53804D8145beBBc7eBc9422Ba7F"
+    "poolAddress": "0xe0e970a99bc4F53804D8145beBBc7eBc9422Ba7F",
+    "stakingToken": "0xa0C08C0Aede65a0306F7dD042D2560dA174c91fC"
   },
   "0x7657Ceb382013f1Ce9Ac7b08Dd8db4F28D3a7538": {
     "protocolToken": {
@@ -7310,7 +7574,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xA148BD19E26Ff9604f6A608E22BFb7B772D0d1A3"
+    "poolAddress": "0xA148BD19E26Ff9604f6A608E22BFb7B772D0d1A3",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x517E47a2e8c38E5A96708ED866A39CcbAA105640": {
     "protocolToken": {
@@ -7333,7 +7598,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x6E77889Ff348A16547cABa3Ce011cB120Ed73bFc"
+    "poolAddress": "0x6E77889Ff348A16547cABa3Ce011cB120Ed73bFc",
+    "stakingToken": "0x25530F3C929d3f4137A766dE3d37700d2Fc00FF8"
   },
   "0x2C97c40C24E2FF11c6965dc40Ca77967bCeC4719": {
     "protocolToken": {
@@ -7356,7 +7622,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x95f3672a418230c5664b7154Dfce0ACfa7EEd68D"
+    "poolAddress": "0x95f3672a418230c5664b7154Dfce0ACfa7EEd68D",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x38f730B5A96FD79B97bb64210021FA67db1eD147": {
     "protocolToken": {
@@ -7379,7 +7646,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xb2c248C0B0DB7d28dfa0123438B40Bb31FB8AA05"
+    "poolAddress": "0xb2c248C0B0DB7d28dfa0123438B40Bb31FB8AA05",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x359b630eF33A40b0AbEEeED5467fE839F9f7E561": {
     "protocolToken": {
@@ -7402,7 +7670,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x799D141e83D88996C48B98A4f8EB3D96AB422DD3"
+    "poolAddress": "0x799D141e83D88996C48B98A4f8EB3D96AB422DD3",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x7483Dd57f6488b0e194A151C57Df6Ec85C00aCE9": {
     "protocolToken": {
@@ -7425,7 +7694,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x6e314039f4C56000F4ebb3a7854A84cC6225Fb92"
+    "poolAddress": "0x6e314039f4C56000F4ebb3a7854A84cC6225Fb92",
+    "stakingToken": "0x72D36D0EAd377425BD6DB66Fe334a42fdCebff28"
   },
   "0xD29f1A967441AE1a4ff2EA35EdE54fe01CF6B95f": {
     "protocolToken": {
@@ -7448,7 +7718,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xc58fDB8A50AB921A73535656A7c69387Dd863ff6"
+    "poolAddress": "0xc58fDB8A50AB921A73535656A7c69387Dd863ff6",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xB83e5Af00b321d2280382B8634625826fbd75c5b": {
     "protocolToken": {
@@ -7471,7 +7742,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xD4e2fdC354c5DFfb865798Ca98c2b9d5382F687C"
+    "poolAddress": "0xD4e2fdC354c5DFfb865798Ca98c2b9d5382F687C",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x5b6C539b224014A09B3388e51CaAA8e354c959C8": {
     "protocolToken": {
@@ -7494,7 +7766,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x5FAE7E604FC3e24fd43A72867ceBaC94c65b404A"
+    "poolAddress": "0x5FAE7E604FC3e24fd43A72867ceBaC94c65b404A",
+    "stakingToken": "0xAd96E10123Fa34a01cf2314C42D75150849C9295"
   },
   "0x22e859Ee894c2068920858A60b51DC03ac5581c1": {
     "protocolToken": {
@@ -7523,7 +7796,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x58257e4291F95165184b4beA7793a1d6F8e7b627"
+    "poolAddress": "0x58257e4291F95165184b4beA7793a1d6F8e7b627",
+    "stakingToken": "0xf74175aCe638E612a0a3B09E6bE89795ff48E06D"
   },
   "0xF57ccaD8122B898A147Cc8601B1ECA88B1662c7E": {
     "protocolToken": {
@@ -7552,7 +7826,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x21d158d95C2e150e144c36FC64E3653B8D6c6267"
+    "poolAddress": "0x21d158d95C2e150e144c36FC64E3653B8D6c6267",
+    "stakingToken": "0xc7A770dE69479bEEEEf22b2C9851760BaC3630Da"
   },
   "0x7F17A6C77C3938D235b014818092eb6305BdA110": {
     "protocolToken": {
@@ -7581,7 +7856,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xBEc570d92AFB7fFc553bdD9d4B4638121000b10D"
+    "poolAddress": "0xBEc570d92AFB7fFc553bdD9d4B4638121000b10D",
+    "stakingToken": "0xaa386EF96A910Ee2F9cbEf7B139e99A88DF3b2ba"
   },
   "0xf985005a3793DbA4cCe241B3C19ddcd3Fe069ff4": {
     "protocolToken": {
@@ -7610,7 +7886,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x4149d1038575CE235E03E03B39487a80FD709D31"
+    "poolAddress": "0x4149d1038575CE235E03E03B39487a80FD709D31",
+    "stakingToken": "0xD5bE6A05B45aEd524730B6d1CC05F59b021f6c87"
   },
   "0x527331F3F550f6f85ACFEcAB9Cc0889180C6f1d5": {
     "protocolToken": {
@@ -7639,7 +7916,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x31c325A01861c7dBd331a9270296a31296D797A0"
+    "poolAddress": "0x31c325A01861c7dBd331a9270296a31296D797A0",
+    "stakingToken": "0xa47d0837F84Fb2d1aA08077D10d10101316a959d"
   },
   "0xbb839df3b6Dfbc5956bCb484f91F1C555075A642": {
     "protocolToken": {
@@ -7662,7 +7940,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x611a95bf3cc0EF593f22c4E4D8EB4d6C937E006C"
+    "poolAddress": "0x611a95bf3cc0EF593f22c4E4D8EB4d6C937E006C",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x09b2E090531228d1b8E3d948C73b990Cb6e60720": {
     "protocolToken": {
@@ -7691,7 +7970,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x13B876C26Ad6d21cb87AE459EaF6d7A1b788A113"
+    "poolAddress": "0x13B876C26Ad6d21cb87AE459EaF6d7A1b788A113",
+    "stakingToken": "0x455279344f84a496615DC0ffa0511D2E19ec19d8"
   },
   "0x0d1d69876b55080e92119C9e2c3C8FF46667e7fe": {
     "protocolToken": {
@@ -7714,7 +7994,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x4D19E7fD118FD751fEa7c0324D7E7b0A3D05EbA4"
+    "poolAddress": "0x4D19E7fD118FD751fEa7c0324D7E7b0A3D05EbA4",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xbb23C0361D3e436Fb7942a0E103EdeCAb3AfA917": {
     "protocolToken": {
@@ -7743,7 +8024,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x02dFA5C793A9CE4d767a86259245A162a57f2dB4"
+    "poolAddress": "0x02dFA5C793A9CE4d767a86259245A162a57f2dB4",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x025D7DcE7ad345bd55C4c972614E720ab67E1B2b": {
     "protocolToken": {
@@ -7766,7 +8048,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x27A8697fBD2ed137d88E74132a5558FA43656175"
+    "poolAddress": "0x27A8697fBD2ed137d88E74132a5558FA43656175",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x0852035A7CB0c67C5f3A3A1eD38f3E673Dc01158": {
     "protocolToken": {
@@ -7789,7 +8072,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xF039050dC36fD59Ff1117B14BFdFf92dFA9dE9Fc"
+    "poolAddress": "0xF039050dC36fD59Ff1117B14BFdFf92dFA9dE9Fc",
+    "stakingToken": "0x524112c63458644bc8bC1429e055eEa3D320bf12"
   },
   "0x82aBdc39E7207555bc81ad58E8AeDCD6fcC96B98": {
     "protocolToken": {
@@ -7812,7 +8096,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xFEB0784F5D0940686143b3A025Af731Ee6A81197"
+    "poolAddress": "0xFEB0784F5D0940686143b3A025Af731Ee6A81197",
+    "stakingToken": "0x37ffEE1C3C321663f7fe0FF90fc44f8ce5f731ff"
   },
   "0x8Bc3F1e82Ca3d63987dc12F90538c6bF818FcD0f": {
     "protocolToken": {
@@ -7847,7 +8132,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xDcb11E81C8B8a1e06BF4b50d4F6f3bb31f7478C3"
+    "poolAddress": "0xDcb11E81C8B8a1e06BF4b50d4F6f3bb31f7478C3",
+    "stakingToken": "0xb0a6F55a758C8F035C067672e89903d76A5AbE9b"
   },
   "0xEeb7a7120CdF4440f08A9FD646Cca9D78e463f01": {
     "protocolToken": {
@@ -7870,7 +8156,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xF4A3cca34470b5Ba21E2bb1eD365ACf68B4d4598"
+    "poolAddress": "0xF4A3cca34470b5Ba21E2bb1eD365ACf68B4d4598",
+    "stakingToken": "0x8bCf6C7A49045E9f78648F9969c4bd2f12F8C504"
   },
   "0x5ca0313D44551e32e0d7a298EC024321c4BC59B4": {
     "protocolToken": {
@@ -7893,7 +8180,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x74ED5d42203806c8CDCf2F04Ca5F60DC777b901c"
+    "poolAddress": "0x74ED5d42203806c8CDCf2F04Ca5F60DC777b901c",
+    "stakingToken": "0xdA0DD1798BE66E17d5aB1Dc476302b56689C2DB4"
   },
   "0x893DA8A02b487FEF2F7e3F35DF49d7625aE549a3": {
     "protocolToken": {
@@ -7922,7 +8210,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x3e3C6c7db23cdDEF80B694679aaF1bCd9517D0Ae"
+    "poolAddress": "0x3e3C6c7db23cdDEF80B694679aaF1bCd9517D0Ae",
+    "stakingToken": "0x805Aef679B1379Ee1d24c52158E7F56098D199D9"
   },
   "0x3F436954afb722F5D14D868762a23faB6b0DAbF0": {
     "protocolToken": {
@@ -7951,7 +8240,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x6a6283aB6e31C2AeC3fA08697A8F806b740660b2"
+    "poolAddress": "0x6a6283aB6e31C2AeC3fA08697A8F806b740660b2",
+    "stakingToken": "0xCf79921D99b99FEe3DcF1A4657fCDA95195B46d1"
   },
   "0x6C280dB098dB673d30d5B34eC04B6387185D3620": {
     "protocolToken": {
@@ -7974,7 +8264,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x342D1C4Aa76EA6F5E5871b7f11A019a0eB713A4f"
+    "poolAddress": "0x342D1C4Aa76EA6F5E5871b7f11A019a0eB713A4f",
+    "stakingToken": "0x4767841D4CC3567A2a7a8f55e08b03a9dEb0bfD5"
   },
   "0xbCCEb5b710E3eB07d1AC6a079e87D799bE30A71f": {
     "protocolToken": {
@@ -8009,7 +8300,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x96f34Bb82fcA57e475e6ad218b0dd0C5c78DF423"
+    "poolAddress": "0x96f34Bb82fcA57e475e6ad218b0dd0C5c78DF423",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xf1A0b0A0e9Ec8faA8F43CBcBb3D7EeeFF39D4d55": {
     "protocolToken": {
@@ -8032,7 +8324,8 @@
         "decimals": 0
       }
     ],
-    "poolAddress": "0x1628E0A42682570c815da52480734a8c2A2Ca2DD"
+    "poolAddress": "0x1628E0A42682570c815da52480734a8c2A2Ca2DD",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x0BA6D8e30a13b7692d88368c79FAf68ceD356859": {
     "protocolToken": {
@@ -8055,7 +8348,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x4E6706889d519ba6e6CED330D76582f875DF3C9c"
+    "poolAddress": "0x4E6706889d519ba6e6CED330D76582f875DF3C9c",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x4f018C06810Ea979F0E8a5D73CB8aa977Ba17aBA": {
     "protocolToken": {
@@ -8078,7 +8372,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x29b2178F5f9FB4f775A2f1a7fEA685FFbA0fAe32"
+    "poolAddress": "0x29b2178F5f9FB4f775A2f1a7fEA685FFbA0fAe32",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x3f0e7916681452D23Cd36B1281457DA721F2E5dF": {
     "protocolToken": {
@@ -8101,7 +8396,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xf2f12B364F614925aB8E2C8BFc606edB9282Ba09"
+    "poolAddress": "0xf2f12B364F614925aB8E2C8BFc606edB9282Ba09",
+    "stakingToken": "0x2B917214c5d6F057FBdaF9a3aAE201e9f484FdAE"
   },
   "0x23E7817bC73645063FB2fa85c1d098EfFE84bE90": {
     "protocolToken": {
@@ -8124,7 +8420,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x808dB6E464279C6A77a1164E0b34d64Bd6fB526E"
+    "poolAddress": "0x808dB6E464279C6A77a1164E0b34d64Bd6fB526E",
+    "stakingToken": "0x762648808EF8B25C6D92270b1C84Ec97dF3bED6B"
   },
   "0x5271045F7B73c17825A7A7aee6917eE46b0B7520": {
     "protocolToken": {
@@ -8153,7 +8450,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xFc1e8bf3E81383Ef07Be24c3FD146745719DE48D"
+    "poolAddress": "0xFc1e8bf3E81383Ef07Be24c3FD146745719DE48D",
+    "stakingToken": "0x06f691180F643B35E3644a2296a4097E1f577d0d"
   },
   "0x9de1c3D446237ab9BaFF74127eb4F303802a2683": {
     "protocolToken": {
@@ -8182,7 +8480,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x867fe27FC2462cff8890B54DfD64E6d42a9D1aC8"
+    "poolAddress": "0x867fe27FC2462cff8890B54DfD64E6d42a9D1aC8",
+    "stakingToken": "0x8133e6B0B2420bBa10574A6668ea275f5E7Ed253"
   },
   "0xD8eb58D76aF99547333cfEeb6a0f9bd1A63b6492": {
     "protocolToken": {
@@ -8205,7 +8504,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x6bfE880Ed1d639bF80167b93cc9c56a39C1Ba2dC"
+    "poolAddress": "0x6bfE880Ed1d639bF80167b93cc9c56a39C1Ba2dC",
+    "stakingToken": "0xC25836AD05F14B7161638eDC67FD9C65B19F0C5A"
   },
   "0xdf34bad1D3B16c8F28c9Cf95f15001949243A038": {
     "protocolToken": {
@@ -8228,7 +8528,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xB4018CB02E264C3FCfe0f21A1F5cfbCAAba9F61F"
+    "poolAddress": "0xB4018CB02E264C3FCfe0f21A1F5cfbCAAba9F61F",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xe824ef3c821cB0337c3DCfB90364B7c87Fb413B0": {
     "protocolToken": {
@@ -8251,7 +8552,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xd18712370F840b1563D85eA6bD221f53d766ffA8"
+    "poolAddress": "0xd18712370F840b1563D85eA6bD221f53d766ffA8",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x5Be6C45e2d074fAa20700C49aDA3E88a1cc0025d": {
     "protocolToken": {
@@ -8274,7 +8576,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x0E9B5B092caD6F1c5E6bc7f89Ffe1abb5c95F1C2"
+    "poolAddress": "0x0E9B5B092caD6F1c5E6bc7f89Ffe1abb5c95F1C2",
+    "stakingToken": "0x37Efc3f05D659B30A83cf0B07522C9d08513Ca9d"
   },
   "0x6E0e681441BE6cB1d8405752462488BD4D691E3A": {
     "protocolToken": {
@@ -8309,7 +8612,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x51Bcba35e5fa277592Cea83Ad14408A0963b86f8"
+    "poolAddress": "0x51Bcba35e5fa277592Cea83Ad14408A0963b86f8",
+    "stakingToken": "0xACc9F5CEDC631180a2aD4C945377930fCFCC782F"
   },
   "0xad38bF1c9f3726C50B187A419B97E8B2fFcbAF8f": {
     "protocolToken": {
@@ -8338,7 +8642,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x4CC9385d9909d2Bf529A4c1E847Dc4eE01F4927A"
+    "poolAddress": "0x4CC9385d9909d2Bf529A4c1E847Dc4eE01F4927A",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xc6CBbdE700D1972468e727981cfe838d718B66D1": {
     "protocolToken": {
@@ -8367,7 +8672,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x50e29cD32BEdf8ADF6C58cF0f8F2c64CB98C62ac"
+    "poolAddress": "0x50e29cD32BEdf8ADF6C58cF0f8F2c64CB98C62ac",
+    "stakingToken": "0x1cB6134A152C8c61016c4691a31137f23B66f770"
   },
   "0xb79565c01b7Ae53618d9B847b9443aAf4f9011e7": {
     "protocolToken": {
@@ -8390,7 +8696,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9409280DC1e6D33AB7A8C6EC03e5763FB61772B5"
+    "poolAddress": "0x9409280DC1e6D33AB7A8C6EC03e5763FB61772B5",
+    "stakingToken": "0xe5d5Aa1Bbe72F68dF42432813485cA1Fc998DE32"
   },
   "0x8109A51542294cDBB489AE5516f42FfBD92177aa": {
     "protocolToken": {
@@ -8413,7 +8720,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xB5ae2A6b084f59ff9EF6b2E79302A1878306D58c"
+    "poolAddress": "0xB5ae2A6b084f59ff9EF6b2E79302A1878306D58c",
+    "stakingToken": "0x98ff4EE7524c501F582C48b828277D2B42bbc894"
   },
   "0x6663b6D50992ef4fc0380199397c87C2f5256075": {
     "protocolToken": {
@@ -8436,7 +8744,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xBDFAe7D2cF2E69E27b75a5287ECD3808F62B5a76"
+    "poolAddress": "0xBDFAe7D2cF2E69E27b75a5287ECD3808F62B5a76",
+    "stakingToken": "0x710d677830f7D7337C428ABf0E368e09B7B5Ce6A"
   },
   "0x6c38cE8984a890F5e46e6dF6117C26b3F1EcfC9C": {
     "protocolToken": {
@@ -8459,7 +8768,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x0f3159811670c117c372428D4E69AC32325e4D0F"
+    "poolAddress": "0x0f3159811670c117c372428D4E69AC32325e4D0F",
+    "stakingToken": "0x9d4D981d8a9066f5db8532A5816543dE8819d4A8"
   },
   "0x0012940cf77a3cB5BADE409B96A60E22506CF7d0": {
     "protocolToken": {
@@ -8482,7 +8792,8 @@
         "decimals": 8
       }
     ],
-    "poolAddress": "0xEcB16535477F9cc6Db8D8Ea70b36D5020499d91c"
+    "poolAddress": "0xEcB16535477F9cc6Db8D8Ea70b36D5020499d91c",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x7988292D0FB141085c092132e2a70B30aA1eccAB": {
     "protocolToken": {
@@ -8505,7 +8816,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x9a81f5a6Ea7e60632f659F3f4e772Ba977d80Bd5"
+    "poolAddress": "0x9a81f5a6Ea7e60632f659F3f4e772Ba977d80Bd5",
+    "stakingToken": "0x36B4F618507e671a8118aF0D2ffc430D68680Ee3"
   },
   "0xc34993c9aDf6a5AB3b4cA27dC71b9c7894A53974": {
     "protocolToken": {
@@ -8528,7 +8840,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x442F37cfD85D3f35e576AD7D63bBa7Bb36fCFe4a"
+    "poolAddress": "0x442F37cfD85D3f35e576AD7D63bBa7Bb36fCFe4a",
+    "stakingToken": "0x266cE172a1180134cf6C7836C516bd6A58b1f619"
   },
   "0xbA6c373992AD8ec1f7520E5878E5540Eb36DeBf1": {
     "protocolToken": {
@@ -8551,7 +8864,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xe7c6E0A739021CdbA7aAC21b4B728779EeF974D9"
+    "poolAddress": "0xe7c6E0A739021CdbA7aAC21b4B728779EeF974D9",
+    "stakingToken": "0xF20bd4D5A4112d5f9c64aDF53726F3ef1b7d0D61"
   },
   "0xa8e14F03124Ea156A4fc416537c82ff91a647D50": {
     "protocolToken": {
@@ -8574,7 +8888,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x41eA4045de2676727883aa0B4E43D7e32261f559"
+    "poolAddress": "0x41eA4045de2676727883aa0B4E43D7e32261f559",
+    "stakingToken": "0x86f8d7Ced9A8F5563C1198466968B02238E05917"
   },
   "0x548E063CE6F3BaC31457E4f5b4e2345286274257": {
     "protocolToken": {
@@ -8597,7 +8912,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x73069892f6750CCaaAbabaDC54b6b6b36B3A057D"
+    "poolAddress": "0x73069892f6750CCaaAbabaDC54b6b6b36B3A057D",
+    "stakingToken": "0xD10C17D82053DD0AB65851a9A93a0abE0C4F4794"
   },
   "0x3E7402817e4F8eFc41381D7E6AE533EF2cf3388B": {
     "protocolToken": {
@@ -8620,7 +8936,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xf514a54693Db2f3b4C43f78088d361b3F3A317A9"
+    "poolAddress": "0xf514a54693Db2f3b4C43f78088d361b3F3A317A9",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x4de2ab8177fC5fFAFB7aD11FB8BeB1e5fB95F71C": {
     "protocolToken": {
@@ -8643,7 +8960,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x72725C0C879489986D213A9A6D2116dE45624c1c"
+    "poolAddress": "0x72725C0C879489986D213A9A6D2116dE45624c1c",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x03c256C6717f4982e882DfA2B944d729a00118e1": {
     "protocolToken": {
@@ -8678,7 +8996,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xf5Ed6024c08fca91F85A20aD364a4F3994f3ecae"
+    "poolAddress": "0xf5Ed6024c08fca91F85A20aD364a4F3994f3ecae",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x0a6B1d9F920019BAbc4De3F10c94ECB822106104": {
     "protocolToken": {
@@ -8701,7 +9020,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x056ef502C1Fc5335172bc95EC4cAE16C2eB9b5b6"
+    "poolAddress": "0x056ef502C1Fc5335172bc95EC4cAE16C2eB9b5b6",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x6e52cCe4EaFDf77091dD1c82183b2D97b776b397": {
     "protocolToken": {
@@ -8724,7 +9044,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x47D5E1679Fe5f0D9f0A657c6715924e33Ce05093"
+    "poolAddress": "0x47D5E1679Fe5f0D9f0A657c6715924e33Ce05093",
+    "stakingToken": "0xc2075702490F0426E84E00d8B328119027813AC5"
   },
   "0x8C88538688aca3b733aD08b12BEe4574c0C00907": {
     "protocolToken": {
@@ -8747,7 +9068,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x5ac4fceE123dcaDfAe22bc814c4Cc72b96c93F38"
+    "poolAddress": "0x5ac4fceE123dcaDfAe22bc814c4Cc72b96c93F38",
+    "stakingToken": "0x8c1DFF7B6c20240C31f4F5BdFbC09ec6fF788d7a"
   },
   "0xb85010193FD15aF8390dbD62790Da70F46c1126B": {
     "protocolToken": {
@@ -8776,7 +9098,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xAF4264916B467e2c9C8aCF07Acc22b9EDdDaDF33"
+    "poolAddress": "0xAF4264916B467e2c9C8aCF07Acc22b9EDdDaDF33",
+    "stakingToken": "0x06B30D5F2341C2FB3F6B48b109685997022Bd272"
   },
   "0x6412759C0bc8BeC1665F9b85B12CaF4b6C0Cc384": {
     "protocolToken": {
@@ -8799,7 +9122,8 @@
         "decimals": 8
       }
     ],
-    "poolAddress": "0x5105a9E847965421a8C81cA33Ea682948694A6F4"
+    "poolAddress": "0x5105a9E847965421a8C81cA33Ea682948694A6F4",
+    "stakingToken": "0x15d380dE3ccf0B42aa65b10b3aaB73199799bEB3"
   },
   "0x596b330fA8AB2b449973309af6D6ddc002CaA52D": {
     "protocolToken": {
@@ -8822,7 +9146,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x7bbE7a17E501BB6542e975D8A163950149487fa3"
+    "poolAddress": "0x7bbE7a17E501BB6542e975D8A163950149487fa3",
+    "stakingToken": "0xfA30482CB759165a56Ccf4a992C85C847bE5a618"
   },
   "0xDB04924fD3FaCEAEA8DEc7F88DdC91a4f49C2745": {
     "protocolToken": {
@@ -8851,7 +9176,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x7E650c700b0801e717B352E55a582AFd928aa094"
+    "poolAddress": "0x7E650c700b0801e717B352E55a582AFd928aa094",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xb2C35aC676F4A002669e195CF4dc50DDeDF6F0fA": {
     "protocolToken": {
@@ -8874,7 +9200,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x880F2fB3704f1875361DE6ee59629c6c6497a5E3"
+    "poolAddress": "0x880F2fB3704f1875361DE6ee59629c6c6497a5E3",
+    "stakingToken": "0x2e1419Ba23F560260013ECa54FDa0e4d8C91Ab29"
   },
   "0xe49AdDc2D1A131c6b8145F0EBa1C946B7198e0BA": {
     "protocolToken": {
@@ -8897,7 +9224,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x67e0bDbe0A2C5999A60D048f50e794218056b767"
+    "poolAddress": "0x67e0bDbe0A2C5999A60D048f50e794218056b767",
+    "stakingToken": "0xE6A9fd148Ad624a5A8700c6366e23E3cD308DFcB"
   },
   "0xdB09B79AfA65825939b8cE963b56d94d389e153F": {
     "protocolToken": {
@@ -8920,7 +9248,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x02498De890c66fA387E86E04d75AdaB9df4802F6"
+    "poolAddress": "0x02498De890c66fA387E86E04d75AdaB9df4802F6",
+    "stakingToken": "0xF2FFccFfab6A9116D4F9206A543BC94726f5302A"
   },
   "0xc794C6A95f30d0ebF7B3Bbe85e8a0A95C9e411c1": {
     "protocolToken": {
@@ -8943,7 +9272,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x8a8434A5952aC2CF4927bbEa3ace255c6dd165CD"
+    "poolAddress": "0x8a8434A5952aC2CF4927bbEa3ace255c6dd165CD",
+    "stakingToken": "0x27cace18f661161661683bBA43933B2E6eB1741E"
   },
   "0xe8a5677171c87fCB65b76957f2852515B404C7b1": {
     "protocolToken": {
@@ -8966,7 +9296,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x7fb53345f1B21aB5d9510ADB38F7d3590BE6364b"
+    "poolAddress": "0x7fb53345f1B21aB5d9510ADB38F7d3590BE6364b",
+    "stakingToken": "0x298bf7b80a6343214634aF16EB41Bb5B9fC6A1F1"
   },
   "0x490217Ea1e69042A56716698d803DeABE8B9B148": {
     "protocolToken": {
@@ -8995,7 +9326,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x031af153eFbc75a88110CB3b94eafBEC847a526f"
+    "poolAddress": "0x031af153eFbc75a88110CB3b94eafBEC847a526f",
+    "stakingToken": "0x98c05bb51B202d8EFEFaAe3Eb8D9eC6b497Dc8B0"
   },
   "0xde5ea2328957AA7F256907b6594131AF8eb6ddD5": {
     "protocolToken": {
@@ -9018,7 +9350,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xb1d9b4574077eb6ed75B791c7d090Ea1F8c93474"
+    "poolAddress": "0xb1d9b4574077eb6ed75B791c7d090Ea1F8c93474",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xD531a9e82e468042c78C737A3e450EC87B829c8b": {
     "protocolToken": {
@@ -9041,7 +9374,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xB0973f4FB4e1280D6bDDBa5b18aE00576a6E78f4"
+    "poolAddress": "0xB0973f4FB4e1280D6bDDBa5b18aE00576a6E78f4",
+    "stakingToken": "0xD6dbe11d0A07bc554e732aA7cE30f40ea19A9075"
   },
   "0xd398820b9BCEec18aBB87c9bb34905B771c43f25": {
     "protocolToken": {
@@ -9064,7 +9398,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x0CE863FBB67A6a532323D1f81B8f0FCD5f5099FF"
+    "poolAddress": "0x0CE863FBB67A6a532323D1f81B8f0FCD5f5099FF",
+    "stakingToken": "0x5776664D3353376EC0913e1Ba223b2c3f4142a4C"
   },
   "0x9270348f5058BeaF84F5e88aD9A7b399582282f9": {
     "protocolToken": {
@@ -9087,7 +9422,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xA551F34fc641f76F17498840C0ABFEC608410065"
+    "poolAddress": "0xA551F34fc641f76F17498840C0ABFEC608410065",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0x7021DBC7C9E50AB1161e04c1e7FF752F166cDF39": {
     "protocolToken": {
@@ -9110,7 +9446,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x3081cfFCAc989cb6F3Af01DC5BC309D70F6C2884"
+    "poolAddress": "0x3081cfFCAc989cb6F3Af01DC5BC309D70F6C2884",
+    "stakingToken": "0xae1e33c3F28f89E8c37B36F1dDAe375D932d764f"
   },
   "0xb7844D51d96A51c140f04bb757802bE44D6A143C": {
     "protocolToken": {
@@ -9133,7 +9470,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x02D7f419D731F718bDB22a3b03874C600bEC3a40"
+    "poolAddress": "0x02D7f419D731F718bDB22a3b03874C600bEC3a40",
+    "stakingToken": "0xfD37a834438E99c7DD8F27CbC7c0502DC3444358"
   },
   "0xaf0778339A2F3Df9F3bc95024BD170B5021C03Ef": {
     "protocolToken": {
@@ -9156,7 +9494,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xd6f6fA524D4C9f7a5cBC8Fb9145a70d8D7Ed6073"
+    "poolAddress": "0xd6f6fA524D4C9f7a5cBC8Fb9145a70d8D7Ed6073",
+    "stakingToken": "0x54f63C84C4AD9ccDB95fc9C811D6E33a7FcfF674"
   },
   "0xf4835Ff8f54af7a83d154e4B62c8398ed359f71B": {
     "protocolToken": {
@@ -9179,7 +9518,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x84b209Ab30081322F124A0e3C96332F66652F9a9"
+    "poolAddress": "0x84b209Ab30081322F124A0e3C96332F66652F9a9",
+    "stakingToken": "0xCE0f01618036317DeF45643B522BA7A07b909d31"
   },
   "0x358dAA6E147284F6bF9Be5E0C90991993feCeaEd": {
     "protocolToken": {
@@ -9202,7 +9542,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xAceeA24a09209a8e240C2751845F02627A201b5c"
+    "poolAddress": "0xAceeA24a09209a8e240C2751845F02627A201b5c",
+    "stakingToken": "0x6e29950aF526333d7E8664bcC2d5938251fF2647"
   },
   "0x8024EFf599bf95E1E858E75dA6fD56A866FDCaC7": {
     "protocolToken": {
@@ -9225,7 +9566,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xB581299623520687B483CCFfd04BEe52e94B82A6"
+    "poolAddress": "0xB581299623520687B483CCFfd04BEe52e94B82A6",
+    "stakingToken": "0xDf2931ae1f3f3b29dF9e97ee5b25cCD83BC69B17"
   },
   "0xbA64afA5573eA7c09e216BF8fD0dfb87c58b0193": {
     "protocolToken": {
@@ -9248,7 +9590,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x96421Bb962c47fE5CF784161f850F83d77919996"
+    "poolAddress": "0x96421Bb962c47fE5CF784161f850F83d77919996",
+    "stakingToken": "0x28EcEFc120e1022Cc255BF04f488DbdfdB1faE49"
   },
   "0xA6e3b73452fD323b41A657c9d92859bE1ECe1d4b": {
     "protocolToken": {
@@ -9271,7 +9614,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xcc659BBEA1E1580e9a9C89d8f268101F67A881E9"
+    "poolAddress": "0xcc659BBEA1E1580e9a9C89d8f268101F67A881E9",
+    "stakingToken": "0x3ae694f8DBB28d51D0C88529caf98fe151d8E3eE"
   },
   "0xb035Ab5c47aeD0e725A5fa3089e22D5a741cf0D6": {
     "protocolToken": {
@@ -9294,7 +9638,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x7D00230379B18eBDCaf0104DA2bB59556dFE3CA4"
+    "poolAddress": "0x7D00230379B18eBDCaf0104DA2bB59556dFE3CA4",
+    "stakingToken": "0x40ca4E671B8c487000D2EA2f293B706D27119155"
   },
   "0xEBa0E8Ff5B90576886A01679E140E00Df5E47a0a": {
     "protocolToken": {
@@ -9317,7 +9662,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x50AC42817A6De2997fA012C444896ab78A7e8DEa"
+    "poolAddress": "0x50AC42817A6De2997fA012C444896ab78A7e8DEa",
+    "stakingToken": "0xd4430498E632F4614c8A83ba4a8cbB3918288800"
   },
   "0x42c22ad951827b8cf01B49B3d57F77A1267f9c0F": {
     "protocolToken": {
@@ -9346,7 +9692,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xBC41EFCacbd94241F2C89443E2832b31fbE6eb22"
+    "poolAddress": "0xBC41EFCacbd94241F2C89443E2832b31fbE6eb22",
+    "stakingToken": "0x7431A536415261032b47Ff5F41E3bffc2Db2d0c7"
   },
   "0x40928E9af1Ff90093670daA60C1E34249D68A69B": {
     "protocolToken": {
@@ -9375,7 +9722,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xe7a59B3b44AcacFD8A5Ba9259d6913f097946409"
+    "poolAddress": "0xe7a59B3b44AcacFD8A5Ba9259d6913f097946409",
+    "stakingToken": "0xeA7368019a686320927298Cda56E389a23a9bc63"
   },
   "0x59E256fbCFb261C805Bb0d6145d3395823EAEFfC": {
     "protocolToken": {
@@ -9404,7 +9752,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xce756104D10E1FDC60C9c32A84B1BB19712E52bA"
+    "poolAddress": "0xce756104D10E1FDC60C9c32A84B1BB19712E52bA",
+    "stakingToken": "0xD6f5605eb0a5B189F10Dc376d68d5fE45474D0Ac"
   },
   "0x75aEa8E2b1546854214030AC38368609506Aa15A": {
     "protocolToken": {
@@ -9433,7 +9782,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0xee3Dd0cb1A8175b69E1Cd6e354B9dC1629f3e8B5"
+    "poolAddress": "0xee3Dd0cb1A8175b69E1Cd6e354B9dC1629f3e8B5",
+    "stakingToken": "0x248E3660c5838a3BAbC645aB0f1e0b199BEB5dBa"
   },
   "0x19033d99A7b7010157b81e5eE5A8E63A583fB735": {
     "protocolToken": {
@@ -9456,7 +9806,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xE7e86c6055B964C7894d33e037eaD34F2b62795d"
+    "poolAddress": "0xE7e86c6055B964C7894d33e037eaD34F2b62795d",
+    "stakingToken": "0x4426027fEeb7d958498766A792AFE595b64bbFa1"
   },
   "0x3d28f9192E34e51414e69FBEE5b11B35590FB9Fb": {
     "protocolToken": {
@@ -9485,7 +9836,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x5f5Fe47fEd55eAe627386995198294C39e1d17a5"
+    "poolAddress": "0x5f5Fe47fEd55eAe627386995198294C39e1d17a5",
+    "stakingToken": "0x378e249F4F7007Bd90c2186240374D512B839770"
   },
   "0x16eAd9a10b1A77007E6E329B076aD1Fe97a6F7C0": {
     "protocolToken": {
@@ -9508,7 +9860,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x053D5be7C653325B58D88B942fB2454f8Ffd8673"
+    "poolAddress": "0x053D5be7C653325B58D88B942fB2454f8Ffd8673",
+    "stakingToken": "0xD491639539c7434F3a788f6C88e818e5d7a552e9"
   },
   "0xDA68f66fC0f10Ee61048E70106Df4BDB26bAF595": {
     "protocolToken": {
@@ -9531,7 +9884,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x69f23488e0f5789238F101d976B852C129e682dC"
+    "poolAddress": "0x69f23488e0f5789238F101d976B852C129e682dC",
+    "stakingToken": "0x839d92046F1e62A51A2b5705ecaE41DF152545ec"
   },
   "0x8ac9c4CEBeF17A1F295D453895a892A9755e8eEc": {
     "protocolToken": {
@@ -9560,7 +9914,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x5F2Bb3ded5De76644E2A033ACEDce6E93b4A3EfC"
+    "poolAddress": "0x5F2Bb3ded5De76644E2A033ACEDce6E93b4A3EfC",
+    "stakingToken": "0x4bf3bC9446702a4c2F12A104A9C4e82C4Ccbd2f0"
   },
   "0x0BBFC5A53245517812790A798328D88Be7F513E4": {
     "protocolToken": {
@@ -9595,7 +9950,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x713060278D13dfDBA6c7B58adebAf8B57213c904"
+    "poolAddress": "0x713060278D13dfDBA6c7B58adebAf8B57213c904",
+    "stakingToken": "0xF560DFF6554A00Ab83db8914272AF7c4ADC6764f"
   },
   "0x65f228ED6a6001eD6485535e0Dc33E525734f54c": {
     "protocolToken": {
@@ -9618,7 +9974,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xc89570207c5BA1B0E3cD372172cCaEFB173DB270"
+    "poolAddress": "0xc89570207c5BA1B0E3cD372172cCaEFB173DB270",
+    "stakingToken": "0x0df268355a2d8c985dCE76EA0B2f8009BB98D757"
   },
   "0x4AE86d8732390d852A13cb918463BC6e5775FaDD": {
     "protocolToken": {
@@ -9641,7 +9998,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xa7952f6A36cAfF9b7699D1d5a46Fc3b401a255Cb"
+    "poolAddress": "0xa7952f6A36cAfF9b7699D1d5a46Fc3b401a255Cb",
+    "stakingToken": "0x7845031a8327885c5f14e0473dbbd5aD38C8c8BC"
   },
   "0xb4Aba105Be67B9D88CcEDb5b748f4e25189d2501": {
     "protocolToken": {
@@ -9664,7 +10022,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x7E96AE239b9328aCB57AF401D1f2B6Cf5b4Ab8de"
+    "poolAddress": "0x7E96AE239b9328aCB57AF401D1f2B6Cf5b4Ab8de",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xE06A65e09Ae18096B99770A809BA175FA05960e2": {
     "protocolToken": {
@@ -9687,7 +10046,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xC15F285679a1Ef2d25F53D4CbD0265E1D02F2A92"
+    "poolAddress": "0xC15F285679a1Ef2d25F53D4CbD0265E1D02F2A92",
+    "stakingToken": "0xF42E2b73Ea79812a7c3E4bA8ed052c523765719f"
   },
   "0xfed2B54453F75634bcdaEA5e5b11a3f99b9C28Fa": {
     "protocolToken": {
@@ -9710,7 +10070,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xF2B25362a03f6EACCa8De8d5350A9f37944c1e59"
+    "poolAddress": "0xF2B25362a03f6EACCa8De8d5350A9f37944c1e59",
+    "stakingToken": "0x20e783242415A589B7E533a46A24FDA240590a18"
   },
   "0xB694cc10A7947fAdb968093C763a20C7a467755F": {
     "protocolToken": {
@@ -9733,7 +10094,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x66A0962628BdE82Cb3ddA560f05264407f187827"
+    "poolAddress": "0x66A0962628BdE82Cb3ddA560f05264407f187827",
+    "stakingToken": "0xfb678775EACE73dDA2a5315a64A3CEf9a6471147"
   },
   "0x24bE153a0e3e2c0712416942d227D40644ED5e26": {
     "protocolToken": {
@@ -9756,7 +10118,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x8e6A81e03310A32d49D501D5d41eA20cDc204e74"
+    "poolAddress": "0x8e6A81e03310A32d49D501D5d41eA20cDc204e74",
+    "stakingToken": "0x5Fb343B70acc6794a497c638DD83E66f5Aa9145E"
   },
   "0x0dE8692a8bC62008600c4C5fBa7eC9Dd5be4a5A3": {
     "protocolToken": {
@@ -9779,7 +10142,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x429cCFCCa8ee06D2B41DAa6ee0e4F0EdBB77dFad"
+    "poolAddress": "0x429cCFCCa8ee06D2B41DAa6ee0e4F0EdBB77dFad",
+    "stakingToken": "0xEfB7471eB9A858b92438356216dD0c19b1D43300"
   },
   "0xE8449F1495012eE18dB7Aa18cD5706b47e69627c": {
     "protocolToken": {
@@ -9802,7 +10166,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x8aC64Ba8E440cE5c2d08688f4020698b1826152E"
+    "poolAddress": "0x8aC64Ba8E440cE5c2d08688f4020698b1826152E",
+    "stakingToken": "0xAb1BB9811B99D04E356FCb7D3af106Ae4EE2F06d"
   },
   "0x9b77bd0a665F05995b68e36fC1053AFFfAf0d4B5": {
     "protocolToken": {
@@ -9825,7 +10190,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xF1B0382A141040601Bd4c98Ee1A05b44A7392A80"
+    "poolAddress": "0xF1B0382A141040601Bd4c98Ee1A05b44A7392A80",
+    "stakingToken": "0x9CeD5fC96F6f28530BBBbBf34c3634De50b682b7"
   },
   "0x680f8abdA81B4db9219665EeAB814785Bf8AcEc6": {
     "protocolToken": {
@@ -9848,7 +10214,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xFF186c2ed2092c0AB0696292c51Ccd2C8d1C0795"
+    "poolAddress": "0xFF186c2ed2092c0AB0696292c51Ccd2C8d1C0795",
+    "stakingToken": "0x8014083AD9A7e8e78bd2f5f2A5419E0a28d94369"
   },
   "0xfffAE954601cFF1195a8E20342db7EE66d56436B": {
     "protocolToken": {
@@ -9871,7 +10238,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x14756A5eD229265F86990e749285bDD39Fe0334F"
+    "poolAddress": "0x14756A5eD229265F86990e749285bDD39Fe0334F",
+    "stakingToken": "0xc1394d6c89cf8F553da8c8256674C778ccFf3E80"
   },
   "0xB6B64698a098BAFD70cE1Eb9A49eF3376Caad288": {
     "protocolToken": {
@@ -9894,7 +10262,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xC1BF385575E5FfC81e476d2346f050f139Ee9e38"
+    "poolAddress": "0xC1BF385575E5FfC81e476d2346f050f139Ee9e38",
+    "stakingToken": "0x0000000000000000000000000000000000000000"
   },
   "0xd39de8FcEcb7f2e0c3dEb198D8e33663AFA0e977": {
     "protocolToken": {
@@ -9917,7 +10286,8 @@
         "decimals": 6
       }
     ],
-    "poolAddress": "0x1e098B32944292969fB58c85bDC85545DA397117"
+    "poolAddress": "0x1e098B32944292969fB58c85bDC85545DA397117",
+    "stakingToken": "0xa8c8fad10b3F6CCcB7e8A450D4721717313d0A53"
   },
   "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E": {
     "protocolToken": {
@@ -9940,7 +10310,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E"
+    "poolAddress": "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E",
+    "stakingToken": "0x95f00391cB5EebCd190EB58728B4CE23DbFa6ac1"
   },
   "0x390f3595bCa2Df7d23783dFd126427CCeb997BF4": {
     "protocolToken": {
@@ -9963,7 +10334,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x390f3595bCa2Df7d23783dFd126427CCeb997BF4"
+    "poolAddress": "0x390f3595bCa2Df7d23783dFd126427CCeb997BF4",
+    "stakingToken": "0x4e6bB6B7447B7B2Aa268C16AB87F4Bb48BF57939"
   },
   "0xCa978A0528116DDA3cbA9ACD3e68bc6191CA53D0": {
     "protocolToken": {
@@ -9986,7 +10358,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xCa978A0528116DDA3cbA9ACD3e68bc6191CA53D0"
+    "poolAddress": "0xCa978A0528116DDA3cbA9ACD3e68bc6191CA53D0",
+    "stakingToken": "0x5c07440a172805d566Faf7eBAf16EF068aC05f43"
   },
   "0x34D655069F4cAc1547E4C8cA284FfFF5ad4A8db0": {
     "protocolToken": {
@@ -10009,7 +10382,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x34D655069F4cAc1547E4C8cA284FfFF5ad4A8db0"
+    "poolAddress": "0x34D655069F4cAc1547E4C8cA284FfFF5ad4A8db0",
+    "stakingToken": "0xfcAf4EC80a94a5409141Af16a1DcA950a6973a39"
   },
   "0x0CD6f267b2086bea681E922E19D40512511BE538": {
     "protocolToken": {
@@ -10032,7 +10406,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x0CD6f267b2086bea681E922E19D40512511BE538"
+    "poolAddress": "0x0CD6f267b2086bea681E922E19D40512511BE538",
+    "stakingToken": "0x96424E6b5eaafe0c3B36CA82068d574D44BE4e3c"
   },
   "0xBe426b0f37c112dd20d5866769c8034171567b31": {
     "protocolToken": {
@@ -10055,7 +10430,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xBe426b0f37c112dd20d5866769c8034171567b31"
+    "poolAddress": "0xBe426b0f37c112dd20d5866769c8034171567b31",
+    "stakingToken": "0x533B5AeE744647C20e33653F03676c471bb8e67B"
   },
   "0x94cC50e4521bD271C1a997a3A4Dc815C2F920b41": {
     "protocolToken": {
@@ -10078,7 +10454,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x94cC50e4521bD271C1a997a3A4Dc815C2F920b41"
+    "poolAddress": "0x94cC50e4521bD271C1a997a3A4Dc815C2F920b41",
+    "stakingToken": "0x512a68DD5433563Bad526C8C2838c39deBc9a756"
   },
   "0x86152dF0a0E321Afb3B0B9C4deb813184F365ADa": {
     "protocolToken": {
@@ -10101,7 +10478,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x86152dF0a0E321Afb3B0B9C4deb813184F365ADa"
+    "poolAddress": "0x86152dF0a0E321Afb3B0B9C4deb813184F365ADa",
+    "stakingToken": "0xFc58C946A2D541cfA29Ad8c16FC2994323e34458"
   },
   "0x1982Fe483f4bff067A2183c98fA231423d41E92B": {
     "protocolToken": {
@@ -10124,7 +10502,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x1982Fe483f4bff067A2183c98fA231423d41E92B"
+    "poolAddress": "0x1982Fe483f4bff067A2183c98fA231423d41E92B",
+    "stakingToken": "0x71873000399dB5FDDcD8d953E0e6570a0cb4c50C"
   },
   "0xA8a02c7D9ada50444F8c658F43Dc440675B21797": {
     "protocolToken": {
@@ -10147,7 +10526,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xA8a02c7D9ada50444F8c658F43Dc440675B21797"
+    "poolAddress": "0xA8a02c7D9ada50444F8c658F43Dc440675B21797",
+    "stakingToken": "0x9dC22Ca10BB8210C8788827204Da091eb6cA04a5"
   },
   "0xfC636D819d1a98433402eC9dEC633d864014F28C": {
     "protocolToken": {
@@ -10170,7 +10550,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xfC636D819d1a98433402eC9dEC633d864014F28C"
+    "poolAddress": "0xfC636D819d1a98433402eC9dEC633d864014F28C",
+    "stakingToken": "0xe39c817fe25Ac1A8Bd343A74037E3C90b09bEeEF"
   },
   "0x8272E1A3dBef607C04AA6e5BD3a1A134c8ac063B": {
     "protocolToken": {
@@ -10193,7 +10574,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x8272E1A3dBef607C04AA6e5BD3a1A134c8ac063B"
+    "poolAddress": "0x8272E1A3dBef607C04AA6e5BD3a1A134c8ac063B",
+    "stakingToken": "0xEcAD6745058377744c09747b2715c0170B5699e5"
   },
   "0xeCDd0cE505da71cd9dE855CD6804BA1e8C7bdB07": {
     "protocolToken": {
@@ -10216,7 +10598,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xeCDd0cE505da71cd9dE855CD6804BA1e8C7bdB07"
+    "poolAddress": "0xeCDd0cE505da71cd9dE855CD6804BA1e8C7bdB07",
+    "stakingToken": "0xDe14d2B848a7a1373E155Cc4db9B649f4BE24296"
   },
   "0x9c3B46C0Ceb5B9e304FCd6D88Fc50f7DD24B31Bc": {
     "protocolToken": {
@@ -10239,7 +10622,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9c3B46C0Ceb5B9e304FCd6D88Fc50f7DD24B31Bc"
+    "poolAddress": "0x9c3B46C0Ceb5B9e304FCd6D88Fc50f7DD24B31Bc",
+    "stakingToken": "0x4E21418095d32d15c6e2B96A9910772613A50d50"
   },
   "0xB7ECB2AA52AA64a717180E030241bC75Cd946726": {
     "protocolToken": {
@@ -10262,7 +10646,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xB7ECB2AA52AA64a717180E030241bC75Cd946726"
+    "poolAddress": "0xB7ECB2AA52AA64a717180E030241bC75Cd946726",
+    "stakingToken": "0x5010263AC1978297F56048C7D2B02316a3435404"
   },
   "0x3de254A0f838a844F727fee81040e0FA7884B935": {
     "protocolToken": {
@@ -10285,7 +10670,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x3de254A0f838a844F727fee81040e0FA7884B935"
+    "poolAddress": "0x3de254A0f838a844F727fee81040e0FA7884B935",
+    "stakingToken": "0x0e5bdb5afe132D1c6A6C67f6D8eB6133dD607e36"
   },
   "0xB9eC78Bd89d3Ef17537f130CC72750FD4DE85f82": {
     "protocolToken": {
@@ -10308,7 +10694,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xB9eC78Bd89d3Ef17537f130CC72750FD4DE85f82"
+    "poolAddress": "0xB9eC78Bd89d3Ef17537f130CC72750FD4DE85f82",
+    "stakingToken": "0x188a85362CC5e245A377294aa270C7758A203918"
   },
   "0x707EAe1CcFee0B8fef07D3F18EAFD1246762d587": {
     "protocolToken": {
@@ -10331,7 +10718,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x707EAe1CcFee0B8fef07D3F18EAFD1246762d587"
+    "poolAddress": "0x707EAe1CcFee0B8fef07D3F18EAFD1246762d587",
+    "stakingToken": "0xd32F4bE8f777Ac27c6AAd544457de6d4f17a1BFA"
   },
   "0x2dabF79E16ceb92B651651f47b6E835C9DB5828A": {
     "protocolToken": {
@@ -10354,7 +10742,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x2dabF79E16ceb92B651651f47b6E835C9DB5828A"
+    "poolAddress": "0x2dabF79E16ceb92B651651f47b6E835C9DB5828A",
+    "stakingToken": "0xdF901BE65847AaCED69319394835E7Dce5740556"
   },
   "0x5DAC17902066D261e3701e6f52150A614cd8bdE7": {
     "protocolToken": {
@@ -10377,7 +10766,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x5DAC17902066D261e3701e6f52150A614cd8bdE7"
+    "poolAddress": "0x5DAC17902066D261e3701e6f52150A614cd8bdE7",
+    "stakingToken": "0x511819E6Ab018106087A1a0f398244a38CEc5B62"
   },
   "0x69B6dA941E6A8960f480709281b87B1C32fF8366": {
     "protocolToken": {
@@ -10400,7 +10790,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x69B6dA941E6A8960f480709281b87B1C32fF8366"
+    "poolAddress": "0x69B6dA941E6A8960f480709281b87B1C32fF8366",
+    "stakingToken": "0xab8cfA88FAD8B1dd34DC32bB31b5c0cEEA10aFdc"
   },
   "0xfEF79304C80A694dFd9e603D624567D470e1a0e7": {
     "protocolToken": {
@@ -10423,7 +10814,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xfEF79304C80A694dFd9e603D624567D470e1a0e7"
+    "poolAddress": "0xfEF79304C80A694dFd9e603D624567D470e1a0e7",
+    "stakingToken": "0x62B8DA8f1546a092500c457452fC2d45fa1777c4"
   },
   "0x1539c2461d7432cc114b0903f1824079BfCA2C92": {
     "protocolToken": {
@@ -10446,7 +10838,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x1539c2461d7432cc114b0903f1824079BfCA2C92"
+    "poolAddress": "0x1539c2461d7432cc114b0903f1824079BfCA2C92",
+    "stakingToken": "0x2B5a5e182768a18C70EDd265240578a72Ca475ae"
   },
   "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B": {
     "protocolToken": {
@@ -10475,7 +10868,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B"
+    "poolAddress": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
+    "stakingToken": "0x85D44861D024CB7603Ba906F2Dc9569fC02083F6"
   },
   "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4": {
     "protocolToken": {
@@ -10504,7 +10898,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4"
+    "poolAddress": "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4",
+    "stakingToken": "0xF29FfF074f5cF755b55FbB3eb10A29203ac91EA2"
   },
   "0x2889302a794dA87fBF1D6Db415C1492194663D13": {
     "protocolToken": {
@@ -10533,7 +10928,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x2889302a794dA87fBF1D6Db415C1492194663D13"
+    "poolAddress": "0x2889302a794dA87fBF1D6Db415C1492194663D13",
+    "stakingToken": "0x60d3d7eBBC44Dc810A743703184f062d00e6dB7e"
   },
   "0x5426178799ee0a0181A89b4f57eFddfAb49941Ec": {
     "protocolToken": {
@@ -10562,7 +10958,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x5426178799ee0a0181A89b4f57eFddfAb49941Ec"
+    "poolAddress": "0x5426178799ee0a0181A89b4f57eFddfAb49941Ec",
+    "stakingToken": "0x4Fc86cd0F9b650280Fa783e3116258e0E0496A2c"
   },
   "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14": {
     "protocolToken": {
@@ -10591,7 +10988,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14"
+    "poolAddress": "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14",
+    "stakingToken": "0x8D867BEf70C6733ff25Cc0D1caa8aA6c38B24817"
   },
   "0x9847a74fB7C3c4362220f616E15b83A58527F7E4": {
     "protocolToken": {
@@ -10620,7 +11018,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x9847a74fB7C3c4362220f616E15b83A58527F7E4"
+    "poolAddress": "0x9847a74fB7C3c4362220f616E15b83A58527F7E4",
+    "stakingToken": "0x5832c01C465E7C51B22ECb4f02D63081DBed2b28"
   },
   "0xdcafD1914afDBC5788B701F47283CaeEAa5FBAed": {
     "protocolToken": {
@@ -10649,7 +11048,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xdcafD1914afDBC5788B701F47283CaeEAa5FBAed"
+    "poolAddress": "0xdcafD1914afDBC5788B701F47283CaeEAa5FBAed",
+    "stakingToken": "0xfb3fd2825fE128c3AA7576A2B87Be19880015cAE"
   },
   "0x86bF09aCB47AB31686bE413d614E9ded3666a1d3": {
     "protocolToken": {
@@ -10678,7 +11078,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x86bF09aCB47AB31686bE413d614E9ded3666a1d3"
+    "poolAddress": "0x86bF09aCB47AB31686bE413d614E9ded3666a1d3",
+    "stakingToken": "0xb901a92F2c385AfA0A019e8A307a59A570239ca4"
   },
   "0x50120e3348287C6d001E455f5b00FeA07A875541": {
     "protocolToken": {
@@ -10707,7 +11108,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x50120e3348287C6d001E455f5b00FeA07A875541"
+    "poolAddress": "0x50120e3348287C6d001E455f5b00FeA07A875541",
+    "stakingToken": "0x2b7822e663c856153ea1a36AceAd03DD3b7C6561"
   },
   "0x6A62EE3e5c4b412Cd9167D3aFd5E481e1E30715a": {
     "protocolToken": {
@@ -10736,7 +11138,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x6A62EE3e5c4b412Cd9167D3aFd5E481e1E30715a"
+    "poolAddress": "0x6A62EE3e5c4b412Cd9167D3aFd5E481e1E30715a",
+    "stakingToken": "0x8C94E9a3B68316fba06bA6666ACDFc2dc7B7F623"
   },
   "0x2570f1bD5D2735314FC102eb12Fc1aFe9e6E7193": {
     "protocolToken": {
@@ -10765,7 +11168,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x2570f1bD5D2735314FC102eb12Fc1aFe9e6E7193"
+    "poolAddress": "0x2570f1bD5D2735314FC102eb12Fc1aFe9e6E7193",
+    "stakingToken": "0xeA012f5b25Fa0D8e46123B85f585d0A5075e96b5"
   },
   "0x954313005C56b555bdC41B84D6c63B69049d7847": {
     "protocolToken": {
@@ -10794,7 +11198,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x954313005C56b555bdC41B84D6c63B69049d7847"
+    "poolAddress": "0x954313005C56b555bdC41B84D6c63B69049d7847",
+    "stakingToken": "0x2DD2b7E07dD433B758B98A3889a63cbF48ef0D99"
   },
   "0xC7DE47b9Ca2Fc753D6a2F167D8b3e19c6D18b19a": {
     "protocolToken": {
@@ -10823,7 +11228,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xC7DE47b9Ca2Fc753D6a2F167D8b3e19c6D18b19a"
+    "poolAddress": "0xC7DE47b9Ca2Fc753D6a2F167D8b3e19c6D18b19a",
+    "stakingToken": "0x5ccDe4BEC0F4006c3826b51EDF0D227D12EA33FA"
   },
   "0x5b3BA844b3859f56524e99Ae54857b36c8Ae3eFE": {
     "protocolToken": {
@@ -10852,7 +11258,8 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x5b3BA844b3859f56524e99Ae54857b36c8Ae3eFE"
+    "poolAddress": "0x5b3BA844b3859f56524e99Ae54857b36c8Ae3eFE",
+    "stakingToken": "0xaB79226E4fbd6d299316C0964Be9F417c8f920C9"
   },
   "0xDB6925eA42897ca786a045B252D95aA7370f44b4": {
     "protocolToken": {
@@ -10881,7 +11288,38 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0xDB6925eA42897ca786a045B252D95aA7370f44b4"
+    "poolAddress": "0xDB6925eA42897ca786a045B252D95aA7370f44b4",
+    "stakingToken": "0x331d6F25A382B4961A983d6ddc6974A48E51462c"
+  },
+  "0x4D1941a887eC788F059b3bfcC8eE1E97b968825B": {
+    "protocolToken": {
+      "name": "TricryptoFRAX",
+      "decimals": 18,
+      "symbol": "crvFRAXTBTCFRXETH",
+      "address": "0x4D1941a887eC788F059b3bfcC8eE1E97b968825B"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x18084fba666a33d37592fa2633fd49a74dd93a88",
+        "name": "tBTC v2",
+        "symbol": "tBTC",
+        "decimals": 18
+      },
+      {
+        "address": "0x5e8422345238f34275888049021821e8e08caa1f",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x4D1941a887eC788F059b3bfcC8eE1E97b968825B",
+    "stakingToken": "0x4B43fEaB8f5ccD38Ac0831DD7eC797330114F058"
   },
   "0x35B269Fe0106d3645d9780C5aaD97C8eb8041c40": {
     "protocolToken": {
@@ -10910,6 +11348,7 @@
         "decimals": 18
       }
     ],
-    "poolAddress": "0x35B269Fe0106d3645d9780C5aaD97C8eb8041c40"
+    "poolAddress": "0x35B269Fe0106d3645d9780C5aaD97C8eb8041c40",
+    "stakingToken": "0xBE2c62b8aEDb54165FDAe22733Cfb5DBE55d061b"
   }
 }

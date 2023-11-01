@@ -31,12 +31,14 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { MetaRegistry__factory } from '../../contracts'
+import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
+import { getPoolData } from '../../common/getPoolData'
 
 // Details https://github.com/curvefi/metaregistry
 export const CURVE_META_REGISTRY_CONTRACT =
   '0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC'
 
-type CurvePoolAdapterMetadata = Record<
+export type CurvePoolAdapterMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
@@ -75,7 +77,7 @@ export class CurvePoolAdapter
     const metadataObject: CurvePoolAdapterMetadata = {}
     const poolCount = Number(await metaRegistryContract.pool_count())
     const poolDataPromises = Array.from({ length: poolCount }, (_, i) =>
-      this.getPoolData(i),
+      getPoolData(i, this.chainId, this.provider),
     )
     const results = await Promise.all(poolDataPromises)
 
@@ -98,7 +100,7 @@ export class CurvePoolAdapter
 
   protected async getUnderlyingTokenBalances(
     protocolTokenBalance: TokenBalance,
-    blockNumber: number,
+    blockNumber?: number,
   ): Promise<Underlying[]> {
     const protocolToken = await this.fetchProtocolTokenMetadata(
       protocolTokenBalance.address,

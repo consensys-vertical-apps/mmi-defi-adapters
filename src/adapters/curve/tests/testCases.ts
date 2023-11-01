@@ -19,4 +19,14 @@ export const testCases: TestCase[] = [
       timePeriod: TimePeriod.oneDay,
     },
   },
+  {
+    chainId: Chain.Ethereum,
+    key: 'profits2',
+    method: 'profits',
+    blockNumber: 17265356,
+    input: {
+      userAddress: '0x492d896d2244026a60cf3c46ec742d041a34c4cb',
+      timePeriod: TimePeriod.oneDay,
+    },
+  },
 ]
