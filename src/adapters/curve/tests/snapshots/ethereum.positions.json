@@ -26,8 +26,8 @@
               "symbol": "DAI",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "1242929497396560530984n",
-              "balance": "1242.929497396560530984",
+              "balanceRaw": "1242929498145530978879n",
+              "balance": "1242.929498145530978879",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             },
             {
@@ -36,8 +36,8 @@
               "symbol": "USDC",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "1258264407n",
-              "balance": "1258.264407",
+              "balanceRaw": "1258261297n",
+              "balance": "1258.261297",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             },
             {

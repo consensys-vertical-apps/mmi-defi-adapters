@@ -24,19 +24,19 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "profitRaw": "62741431n",
+              "profitRaw": "62744399n",
               "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "559050875n",
-                "startPositionValue": "559.050875",
+                "startPositionValueRaw": "559047907n",
+                "startPositionValue": "559.047907",
                 "endPositionValueRaw": "621792306n",
                 "endPositionValue": "621.792306"
               },
-              "profit": "62.741431",
+              "profit": "62.744399",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             },
             {
@@ -51,10 +51,10 @@
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "1249939790n",
-                "startPositionValue": "1249.93979",
-                "endPositionValueRaw": "1142450899n",
-                "endPositionValue": "1142.450899"
+                "startPositionValueRaw": "1249936822n",
+                "startPositionValue": "1249.936822",
+                "endPositionValueRaw": "1142447931n",
+                "endPositionValue": "1142.447931"
               },
               "profit": "-107.488891",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
@@ -64,19 +64,19 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "profitRaw": "44776983518375196359n",
+              "profitRaw": "44776984642616844853n",
               "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "1230144986513553192113n",
-                "startPositionValue": "1230.144986513553192113",
-                "endPositionValueRaw": "1274921970031928388472n",
-                "endPositionValue": "1274.921970031928388472"
+                "startPositionValueRaw": "1230144986543388171749n",
+                "startPositionValue": "1230.144986543388171749",
+                "endPositionValueRaw": "1274921971186005016602n",
+                "endPositionValue": "1274.921971186005016602"
               },
-              "profit": "44.776983518375196359",
+              "profit": "44.776984642616844853",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ]

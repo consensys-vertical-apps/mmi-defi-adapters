@@ -100,7 +100,7 @@ export class CurvePoolAdapter
     protocolTokenBalance: TokenBalance,
     blockNumber: number,
   ): Promise<Underlying[]> {
-    const { protocolToken } = await this.fetchPoolMetadata(
+    const protocolToken = await this.fetchProtocolTokenMetadata(
       protocolTokenBalance.address,
     )
 
@@ -110,10 +110,10 @@ export class CurvePoolAdapter
     )
 
     return prices.map((underlyingTokenPriceObject) => {
-      const underlyingRateRawBigInt = BigInt(
-        underlyingTokenPriceObject.underlyingRateRaw,
-      )
-      const balanceRawBigInt = BigInt(protocolTokenBalance.balanceRaw)
+      const underlyingRateRawBigInt =
+        underlyingTokenPriceObject.underlyingRateRaw
+
+      const balanceRawBigInt = protocolTokenBalance.balanceRaw
       const decimalsBigInt = BigInt(10 ** protocolTokenBalance.decimals)
 
       const balanceRaw =
@@ -195,19 +195,16 @@ export class CurvePoolAdapter
 
     const supply = await lpTokenContract.totalSupply({ blockTag: blockNumber })
 
-    return balances.slice(0, underlyingTokens.length).map((balance, index) => {
-      const underlyingToken = underlyingTokens[index]!
+    // note balances array not same size as underlying array, might be a vyper: no dynamic array limitation
+    return underlyingTokens.map((underlyingToken, index) => {
+      const balance = balances[index]!
 
-      const formattedBalance = formatUnits(balance, underlyingToken.decimals)
-      const formattedSupply = formatUnits(supply, protocolToken.decimals)
-
-      const price = +formattedBalance / +formattedSupply
+      const underlyingRateRaw =
+        balance / (supply / 10n ** BigInt(protocolToken.decimals))
 
       return {
         type: TokenType.Underlying,
-        underlyingRateRaw: BigInt(
-          Math.round(price * 10 ** underlyingToken.decimals),
-        ),
+        underlyingRateRaw,
         ...underlyingToken,
       }
     })
