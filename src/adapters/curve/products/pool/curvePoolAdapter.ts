@@ -1,10 +1,16 @@
+import { formatUnits } from 'ethers'
+import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { filterMapSync } from '../../../../core/utils/filters'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { Chain } from '../../../../defiProvider'
 import {
   ProtocolDetails,
   PositionType,
@@ -21,14 +27,21 @@ import {
   Underlying,
   ProtocolRewardPosition,
   GetClaimableRewardsInput,
+  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { MetaRegistry__factory } from '../../contracts'
+
+// Details https://github.com/curvefi/metaregistry
+export const CURVE_META_REGISTRY_CONTRACT =
+  '0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC'
 
 type CurvePoolAdapterMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
     underlyingTokens: Erc20Metadata[]
+    poolAddress: string
   }
 >
 
@@ -38,54 +51,83 @@ export class CurvePoolAdapter
 {
   productId = 'pool'
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
       name: 'Curve',
       description: 'Curve pool adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
+      siteUrl: 'https://curve.fi/',
+      iconUrl:
+        'https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    return {} as CurvePoolAdapterMetadata
+    const metaRegistryContract = MetaRegistry__factory.connect(
+      CURVE_META_REGISTRY_CONTRACT,
+      this.provider,
+    )
+
+    const metadataObject: CurvePoolAdapterMetadata = {}
+    const poolCount = Number(await metaRegistryContract.pool_count())
+    const poolDataPromises = Array.from({ length: poolCount }, (_, i) =>
+      this.getPoolData(i),
+    )
+    const results = await Promise.all(poolDataPromises)
+
+    filterMapSync(results, (token) => {
+      if (!token) {
+        return undefined
+      }
+
+      metadataObject[token.protocolToken.address] = token
+    })
+
+    return metadataObject
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
   }
 
-  /**
-   * Update me.
-   * Add logic to turn the LP token balance into the correct underlying token(s) balance
-   * For context see dashboard example ./dashboard.png
-   */
   protected async getUnderlyingTokenBalances(
-    _protocolTokenBalance: TokenBalance,
-    _blockNumber?: number,
+    protocolTokenBalance: TokenBalance,
+    blockNumber: number,
   ): Promise<Underlying[]> {
-    throw new NotImplementedError()
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenBalance.address,
+    )
+
+    const prices = await this.getUnderlyingTokenConversionRate(
+      protocolToken,
+      blockNumber,
+    )
+
+    return prices.map((underlyingTokenPriceObject) => {
+      const underlyingRateRawBigInt =
+        underlyingTokenPriceObject.underlyingRateRaw
+
+      const balanceRawBigInt = protocolTokenBalance.balanceRaw
+      const decimalsBigInt = BigInt(10 ** protocolTokenBalance.decimals)
+
+      const balanceRaw =
+        (balanceRawBigInt * underlyingRateRawBigInt) / decimalsBigInt
+
+      return {
+        address: underlyingTokenPriceObject.address,
+        name: underlyingTokenPriceObject.name,
+        symbol: underlyingTokenPriceObject.symbol,
+        decimals: underlyingTokenPriceObject.decimals,
+        type: TokenType.Underlying,
+        balanceRaw,
+      }
+    })
   }
 
   /**
@@ -121,10 +163,6 @@ export class CurvePoolAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
@@ -133,15 +171,43 @@ export class CurvePoolAdapter
     return protocolToken
   }
 
-  /**
-   * Update me.
-   * Add logic that finds the underlying token rates for 1 protocol token
-   */
   protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
+    protocolTokenMetadata: Erc20Metadata,
+    blockNumber: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
+    const { poolAddress, underlyingTokens, protocolToken } =
+      await this.fetchPoolMetadata(protocolTokenMetadata.address)
+
+    const metaRegistryContract = MetaRegistry__factory.connect(
+      CURVE_META_REGISTRY_CONTRACT,
+      this.provider,
+    )
+
+    const balances = await metaRegistryContract['get_balances(address)'](
+      poolAddress,
+      { blockTag: blockNumber },
+    )
+
+    const lpTokenContract = Erc20__factory.connect(
+      protocolToken.address,
+      this.provider,
+    )
+
+    const supply = await lpTokenContract.totalSupply({ blockTag: blockNumber })
+
+    // note balances array not same size as underlying array, might be a vyper: no dynamic array limitation
+    return underlyingTokens.map((underlyingToken, index) => {
+      const balance = balances[index]!
+
+      const underlyingRateRaw =
+        balance / (supply / 10n ** BigInt(protocolToken.decimals))
+
+      return {
+        type: TokenType.Underlying,
+        underlyingRateRaw,
+        ...underlyingToken,
+      }
+    })
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
@@ -159,10 +225,6 @@ export class CurvePoolAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
@@ -173,10 +235,6 @@ export class CurvePoolAdapter
     return underlyingTokens
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
@@ -186,5 +244,59 @@ export class CurvePoolAdapter
     }
 
     return poolMetadata
+  }
+
+  private async getPoolData(i: number): Promise<
+    | {
+        protocolToken: Erc20Metadata
+        underlyingTokens: Erc20Metadata[]
+        poolAddress: string
+      }
+    | undefined
+  > {
+    const metaRegistryContract = MetaRegistry__factory.connect(
+      CURVE_META_REGISTRY_CONTRACT,
+      this.provider,
+    )
+    const poolAddress = await metaRegistryContract.pool_list(i)
+    const lpToken = await metaRegistryContract['get_lp_token(address)'](
+      poolAddress,
+    )
+    const lpTokenContract = Erc20__factory.connect(lpToken, this.provider)
+
+    const underlyingCoins = (
+      await metaRegistryContract['get_underlying_coins(address)'](poolAddress)
+    ).filter((address) => address !== ZERO_ADDRESS)
+
+    const [
+      { name: poolName, decimals: poolDecimals, symbol: poolSymbol },
+      totalSupply,
+    ] = await Promise.all([
+      getTokenMetadata(lpToken, this.chainId, this.provider),
+      lpTokenContract.totalSupply(),
+    ])
+
+    const totalSupplyFormatted = Number(formatUnits(totalSupply, poolDecimals))
+
+    if (+totalSupplyFormatted < 1) {
+      return undefined
+    }
+
+    const underlyingTokens = await Promise.all(
+      underlyingCoins.map((result) =>
+        getTokenMetadata(result, Chain.Ethereum, this.provider),
+      ),
+    )
+
+    return {
+      protocolToken: {
+        name: poolName,
+        decimals: Number(poolDecimals),
+        symbol: poolSymbol,
+        address: lpToken,
+      },
+      underlyingTokens,
+      poolAddress: poolAddress,
+    }
   }
 }

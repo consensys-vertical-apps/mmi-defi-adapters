@@ -13,6 +13,13 @@
     "decimals": 18,
     "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/synthetix.svg"
   },
+  "0x29b41fE7d754B8b43D4060BB43734E436B0b9a33": {
+    "address": "0x29b41fE7d754B8b43D4060BB43734E436B0b9a33",
+    "name": "Real Estate USD (REUSD)",
+    "symbol": "REUSD",
+    "decimals": 0,
+    "iconUrl": ""
+  },
   "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984": {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     "name": "Uniswap",
@@ -74298,8 +74305,8 @@
     "decimals": 18,
     "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/Genieswap.svg"
   },
-  "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
-    "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE": {
+    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
     "name": "Ethereum",
     "symbol": "ETH",
     "decimals": 18,
