@@ -54,6 +54,18 @@
           "balance": "3110.412272531542389506"
         }
       ]
+    },
+    {
+      "protocolId": "curve",
+      "name": "Curve staking",
+      "description": "Curve pool adapter",
+      "siteUrl": "https://curve.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "staking",
+      "success": true,
+      "tokens": []
     }
   ]
 }

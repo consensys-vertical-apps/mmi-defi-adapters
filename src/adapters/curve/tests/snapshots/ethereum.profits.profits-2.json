@@ -1,5 +1,5 @@
 {
-  "blockNumber": 16628151,
+  "blockNumber": 17265356,
   "snapshot": [
     {
       "protocolId": "curve",
@@ -24,19 +24,19 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "profitRaw": "62744399n",
+              "profitRaw": "499322735833417655n",
               "type": "underlying",
               "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "559047907n",
-                "startPositionValue": "559.047907",
-                "endPositionValueRaw": "621792306n",
-                "endPositionValue": "621.792306"
+                "withdrawalsRaw": "1428009188117123602n",
+                "withdrawals": "1428009188117.123602",
+                "depositsRaw": "928686452283354580n",
+                "deposits": "928686452283.35458",
+                "startPositionValueRaw": "1392439n",
+                "startPositionValue": "1.392439",
+                "endPositionValueRaw": "1041072n",
+                "endPositionValue": "1.041072"
               },
-              "profit": "62.744399",
+              "profit": "499322735833.417655",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             },
             {
@@ -44,19 +44,19 @@
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "profitRaw": "-107488891n",
+              "profitRaw": "890255072645699199n",
               "type": "underlying",
               "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "1249936822n",
-                "startPositionValue": "1249.936822",
-                "endPositionValueRaw": "1142447931n",
-                "endPositionValue": "1142.447931"
+                "withdrawalsRaw": "2546033521555113960n",
+                "withdrawals": "2546033521555.11396",
+                "depositsRaw": "1655778448908400041n",
+                "deposits": "1655778448908.400041",
+                "startPositionValueRaw": "2575067n",
+                "startPositionValue": "2.575067",
+                "endPositionValueRaw": "1560347n",
+                "endPositionValue": "1.560347"
               },
-              "profit": "-107.488891",
+              "profit": "890255072645.699199",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             },
             {
@@ -64,26 +64,26 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "profitRaw": "44776984642616844853n",
+              "profitRaw": "-23513212489115420n",
               "type": "underlying",
               "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "1230144986543388171749n",
-                "startPositionValue": "1230.144986543388171749",
-                "endPositionValueRaw": "1274921971186005016602n",
-                "endPositionValue": "1274.921971186005016602"
+                "withdrawalsRaw": "2547318688719457717n",
+                "withdrawals": "2.547318688719457717",
+                "depositsRaw": "1656614239983399463n",
+                "deposits": "1.656614239983399463",
+                "startPositionValueRaw": "2553861045424664875n",
+                "startPositionValue": "2.553861045424664875",
+                "endPositionValueRaw": "1639643384199491201n",
+                "endPositionValue": "1.639643384199491201"
               },
-              "profit": "44.776984642616844853",
+              "profit": "-0.02351321248911542",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ]
         }
       ],
-      "fromBlock": 16621005,
-      "toBlock": 16628151
+      "fromBlock": 17258210,
+      "toBlock": 17265356
     },
     {
       "protocolId": "curve",

@@ -4,6 +4,10 @@ import {
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import {
+  bigintJsonParse,
+  bigintJsonStringify,
+} from '../../../../core/utils/bigintJson'
 import { filterMapSync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
@@ -25,6 +29,7 @@ import {
   ProtocolRewardPosition,
   GetClaimableRewardsInput,
   ProtocolAdapterParams,
+  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { getPoolData } from '../../common/getPoolData'
@@ -41,7 +46,7 @@ type CurveStakingAdapterMetadata = Record<
     underlyingTokens: Erc20Metadata[]
   }
 >
-
+const PRICE_PEGGED_TO_ONE = 1
 export class CurveStakingAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
@@ -67,11 +72,12 @@ export class CurveStakingAdapter
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Curve',
+      name: 'Curve staking',
       description: 'Curve pool adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
-      positionType: PositionType.Supply,
+      siteUrl: 'https://curve.fi/',
+      iconUrl:
+        'https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg',
+      positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
     }
@@ -104,10 +110,10 @@ export class CurveStakingAdapter
         return undefined
       }
 
-      metadata[token.protocolToken.address] = {
+      metadata[token.stakingToken] = {
         protocolToken: {
           ...token.protocolToken, // curve staking tokens dont have name, decimals, and symbol on their token contracts
-          address: token.protocolToken.address,
+          address: token.stakingToken,
         },
         underlyingTokens: [token.protocolToken],
       }
@@ -126,16 +132,61 @@ export class CurveStakingAdapter
     )
   }
 
-  /**
-   * Update me.
-   * Add logic to turn the LP token balance into the correct underlying token(s) balance
-   * For context see dashboard example ./dashboard.png
-   */
   protected async getUnderlyingTokenBalances(
-    _protocolTokenBalance: TokenBalance,
-    _blockNumber?: number,
+    protocolTokenBalance: TokenBalance,
+    blockNumber?: number | undefined,
   ): Promise<Underlying[]> {
-    throw new NotImplementedError()
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenBalance.address,
+    )
+
+    const curveLPTokenUnderlyingRates =
+      await this.poolAdapter.getProtocolTokenToUnderlyingTokenRate({
+        protocolTokenAddress: underlyingToken!.address,
+        blockNumber,
+      })
+
+    return [
+      {
+        ...underlyingToken!,
+        type: TokenType.Underlying,
+        balanceRaw: protocolTokenBalance.balanceRaw,
+        tokens: curveLPTokenUnderlyingRates.tokens!.map((underlying) => {
+          return {
+            address: underlying.address,
+            name: underlying.name,
+            symbol: underlying.symbol,
+            decimals: underlying.decimals,
+            type: TokenType.Underlying,
+            balanceRaw:
+              (protocolTokenBalance.balanceRaw * underlying.underlyingRateRaw) /
+              BigInt(10) ** BigInt(protocolTokenBalance.decimals),
+          }
+        }),
+      },
+    ]
+  }
+
+  protected async getUnderlyingTokenConversionRate(
+    protocolTokenMetadata: Erc20Metadata,
+    _blockNumber?: number | undefined,
+  ): Promise<UnderlyingTokenRate[]> {
+    const { underlyingTokens } = await this.fetchPoolMetadata(
+      protocolTokenMetadata.address,
+    )
+
+    // Aave tokens always pegged one to one to underlying
+    const pricePerShareRaw = BigInt(
+      PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
+    )
+
+    return [
+      {
+        ...underlyingTokens[0]!,
+        type: TokenType.Underlying,
+        underlyingRateRaw: pricePerShareRaw,
+      },
+    ]
   }
 
   /**
@@ -181,17 +232,6 @@ export class CurveStakingAdapter
     const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
 
     return protocolToken
-  }
-
-  /**
-   * Update me.
-   * Add logic that finds the underlying token rates for 1 protocol token
-   */
-  protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
