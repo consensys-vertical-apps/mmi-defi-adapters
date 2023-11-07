@@ -83,6 +83,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
     return protocolTokens
   }
+
   abstract getClaimableRewards({
     userAddress,
     blockNumber,
