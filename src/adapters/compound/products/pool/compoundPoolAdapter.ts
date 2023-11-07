@@ -117,11 +117,6 @@ export class CompoundPoolAdapter
     )
   }
 
-  /**
-   * Update me.
-   * Add logic to turn the LP token balance into the correct underlying token(s) balance
-   * For context see dashboard example ./dashboard.png
-   */
   protected async getUnderlyingTokenBalances({
     userAddress,
     protocolTokenBalance,
@@ -185,15 +180,34 @@ export class CompoundPoolAdapter
     return protocolToken
   }
 
-  /**
-   * Update me.
-   * Add logic that finds the underlying token rates for 1 protocol token
-   */
   protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
+    protocolTokenMetadata: Erc20Metadata,
+    blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenMetadata.address,
+    )
+
+    const poolContract = Cerc20__factory.connect(
+      protocolTokenMetadata.address,
+      this.provider,
+    )
+
+    const exchangeRateCurrent =
+      await poolContract.exchangeRateCurrent.staticCall({
+        blockTag: blockNumber,
+      })
+
+    // The current exchange rate is scaled by 1 * 10^(18 - 8 + Underlying Token Decimals).
+    const adjustedExchangeRate = exchangeRateCurrent / 10n ** 10n
+
+    return [
+      {
+        ...underlyingToken,
+        type: TokenType.Underlying,
+        underlyingRateRaw: adjustedExchangeRate,
+      },
+    ]
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
