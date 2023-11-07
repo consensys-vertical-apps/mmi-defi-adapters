@@ -118,10 +118,14 @@ export class StargatePoolAdapter
     return metadataObject
   }
 
-  protected async getUnderlyingTokenBalances(
-    protocolTokenBalance: TokenBalance,
-    blockNumber?: number,
-  ): Promise<Underlying[]> {
+  protected async getUnderlyingTokenBalances({
+    protocolTokenBalance,
+    blockNumber,
+  }: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number
+  }): Promise<Underlying[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenBalance.address,
     )

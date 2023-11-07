@@ -96,10 +96,14 @@ export class CurvePoolAdapter
     )
   }
 
-  protected async getUnderlyingTokenBalances(
-    protocolTokenBalance: TokenBalance,
-    blockNumber: number,
-  ): Promise<Underlying[]> {
+  protected async getUnderlyingTokenBalances({
+    protocolTokenBalance,
+    blockNumber,
+  }: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number
+  }): Promise<Underlying[]> {
     const protocolToken = await this.fetchProtocolTokenMetadata(
       protocolTokenBalance.address,
     )

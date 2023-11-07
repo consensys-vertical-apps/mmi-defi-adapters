@@ -43,10 +43,6 @@ export class CompoundPoolAdapter
 {
   productId = 'pool'
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -105,7 +101,7 @@ export class CompoundPoolAdapter
           underlyingTokenPromise,
         ])
 
-        metadataObject[poolContractAddress] = {
+        metadataObject[poolContractAddress.toLowerCase()] = {
           protocolToken,
           underlyingToken,
         }
@@ -126,10 +122,15 @@ export class CompoundPoolAdapter
    * Add logic to turn the LP token balance into the correct underlying token(s) balance
    * For context see dashboard example ./dashboard.png
    */
-  protected async getUnderlyingTokenBalances(
-    protocolTokenBalance: TokenBalance,
-    blockNumber?: number,
-  ): Promise<Underlying[]> {
+  protected async getUnderlyingTokenBalances({
+    userAddress,
+    protocolTokenBalance,
+    blockNumber,
+  }: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number
+  }): Promise<Underlying[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenBalance.address,
     )
@@ -139,16 +140,16 @@ export class CompoundPoolAdapter
       this.provider,
     )
 
-    // const temp = await poolContract.balanceOfUnderlying()
-
-    // const xxx = underlyingToken.decimals + 10
-
-    // const [rateRaw, mantissa] = await Promise.all([this.getExchangeRate(params), this.getExchangeRateMantissa(params)]);
-    // return [Number(rateRaw) / 10 ** mantissa];
+    const underlyingBalance = await poolContract.balanceOfUnderlying.staticCall(
+      userAddress,
+      {
+        blockTag: blockNumber,
+      },
+    )
 
     const underlyingTokenBalance = {
       ...underlyingToken,
-      balanceRaw: 0n,
+      balanceRaw: underlyingBalance,
       type: TokenType.Underlying,
     }
 
