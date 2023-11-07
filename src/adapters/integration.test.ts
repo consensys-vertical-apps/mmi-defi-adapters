@@ -7,6 +7,7 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
+import { testCases as compoundTestCases } from './compound/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
 import { testCases as exampleTestCases } from './example/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
@@ -27,6 +28,7 @@ function runAllTests() {
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
   runProtocolTests(Protocol.Lido, lidoTestCases)
   runProtocolTests(Protocol.Curve, curveTestCases)
+  runProtocolTests(Protocol.Compound, compoundTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

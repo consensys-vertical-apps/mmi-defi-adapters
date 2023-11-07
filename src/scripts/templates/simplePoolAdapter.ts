@@ -86,10 +86,11 @@ export function simplePoolAdapterTemplate(
      * Add logic to turn the LP token balance into the correct underlying token(s) balance
      * For context see dashboard example ./dashboard.png
      */
-    protected async getUnderlyingTokenBalances(
-      _protocolTokenBalance: TokenBalance,
-      _blockNumber?: number,
-    ): Promise<Underlying[]> {
+    protected async getUnderlyingTokenBalances(_input: {
+      userAddress: string
+      protocolTokenBalance: TokenBalance
+      blockNumber?: number
+    }): Promise<Underlying[]> {
       throw new NotImplementedError()
     }
   

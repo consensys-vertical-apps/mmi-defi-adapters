@@ -1,0 +1,60 @@
+{
+  "blockNumber": 18520799,
+  "snapshot": [
+    {
+      "protocolId": "compound",
+      "name": "Compound",
+      "description": "Compound pool adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e",
+          "name": "Compound Basic Attention Token",
+          "symbol": "cBAT",
+          "decimals": 8,
+          "balanceRaw": "10607293252022023n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+              "name": "Basic Attention Token",
+              "symbol": "BAT",
+              "decimals": 18,
+              "balanceRaw": "2193271589245231369078245n",
+              "type": "underlying",
+              "balance": "2193271.589245231369078245",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0D8775F648430679A709E98d2b0Cb6250d2887EF/logo.png"
+            }
+          ],
+          "balance": "106072932.52022023"
+        },
+        {
+          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+          "name": "Compound Ether",
+          "symbol": "cETH",
+          "decimals": 8,
+          "balanceRaw": "144443726284n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "balanceRaw": "29018606991707722623n",
+              "type": "underlying",
+              "balance": "29.018606991707722623",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "balance": "1444.43726284"
+        }
+      ]
+    }
+  ]
+}

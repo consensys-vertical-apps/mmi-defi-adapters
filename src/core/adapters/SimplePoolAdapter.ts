@@ -67,10 +67,11 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
     const protocolTokens: ProtocolPosition[] = await Promise.all(
       protocolTokensBalances.map(async (protocolTokenBalance) => {
-        const underlyingTokenBalances = await this.getUnderlyingTokenBalances(
+        const underlyingTokenBalances = await this.getUnderlyingTokenBalances({
+          userAddress,
           protocolTokenBalance,
           blockNumber,
-        )
+        })
 
         return {
           ...protocolTokenBalance,
@@ -82,6 +83,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
     return protocolTokens
   }
+
   abstract getClaimableRewards({
     userAddress,
     blockNumber,
@@ -330,10 +332,11 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
    * @param protocolTokenBalance
    * @param blockNumber
    */
-  protected abstract getUnderlyingTokenBalances(
-    protocolTokenBalance: TokenBalance,
-    blockNumber?: number,
-  ): Promise<Underlying[]>
+  protected abstract getUnderlyingTokenBalances(input: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number
+  }): Promise<Underlying[]>
 
   /**
    * Fetches the LP token to underlying tokens exchange rate

@@ -193,9 +193,13 @@ export abstract class AaveBasePoolAdapter
     return [underlyingToken]
   }
 
-  protected async getUnderlyingTokenBalances(
-    protocolTokenBalance: TokenBalance,
-  ): Promise<Underlying[]> {
+  protected async getUnderlyingTokenBalances({
+    protocolTokenBalance,
+  }: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number
+  }): Promise<Underlying[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenBalance.address,
     )
