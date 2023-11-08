@@ -1,5 +1,6 @@
 import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../core/constants/chains'
+import { RAY } from '../../../core/constants/RAY'
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotApplicableError } from '../../../core/errors/errors'
@@ -53,9 +54,6 @@ const protocolDataProviderContractAddresses: Partial<
     [Chain.Base]: '0x2d8A3C5677189723C4cB8873CfC9C8976FDF38Ac',
   },
 }
-
-// A RAY unit represents 27 decimal places
-const RAY = 10 ** 27
 
 // Aave tokens always pegged one to one to underlying
 const PRICE_PEGGED_TO_ONE = 1

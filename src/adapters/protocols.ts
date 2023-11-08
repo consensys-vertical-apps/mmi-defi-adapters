@@ -8,5 +8,6 @@ export const Protocol = {
   Lido: 'lido',
   Curve: 'curve',
   Compound: 'compound',
+  Maker: 'maker',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
