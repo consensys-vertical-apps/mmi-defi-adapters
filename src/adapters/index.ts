@@ -13,6 +13,7 @@ import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { ExampleProductAdapter } from './example/products/example-product/exampleProductAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
+import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
@@ -108,5 +109,9 @@ export const supportedProtocols: Record<
 
   [Protocol.Compound]: {
     [Chain.Ethereum]: [CompoundPoolAdapter],
+  },
+
+  [Protocol.Maker]: {
+    [Chain.Ethereum]: [SDaiAdapter],
   },
 }

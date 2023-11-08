@@ -11,6 +11,7 @@ import { testCases as compoundTestCases } from './compound/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
 import { testCases as exampleTestCases } from './example/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
+import { testCases as makerTestCases } from './maker/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
@@ -29,6 +30,7 @@ function runAllTests() {
   runProtocolTests(Protocol.Lido, lidoTestCases)
   runProtocolTests(Protocol.Curve, curveTestCases)
   runProtocolTests(Protocol.Compound, compoundTestCases)
+  runProtocolTests(Protocol.Maker, makerTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
