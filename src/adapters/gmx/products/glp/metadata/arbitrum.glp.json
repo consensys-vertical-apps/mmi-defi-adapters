@@ -1,0 +1,72 @@
+{
+  "0x4277f8F2c384827B5273592FF7CeBd9f2C1ac258": {
+    "protocolToken": {
+      "address": "0x4277f8f2c384827b5273592ff7cebd9f2c1ac258",
+      "name": "GMX LP",
+      "symbol": "GLP",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+        "name": "USD Coin (Arb1)",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xf97f4df75117a78c1a5a0dbb814af92458539fb4",
+        "name": "ChainLink Token",
+        "symbol": "LINK",
+        "decimals": 18
+      },
+      {
+        "address": "0xfa7f8980b0f1e64a2062791cc3b0871572f1f7f0",
+        "name": "Uniswap",
+        "symbol": "UNI",
+        "decimals": 18
+      },
+      {
+        "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+        "name": "Magic Internet Money",
+        "symbol": "MIM",
+        "decimals": 18
+      },
+      {
+        "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  }
+}

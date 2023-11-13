@@ -10,6 +10,7 @@ import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as compoundTestCases } from './compound/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
 import { testCases as exampleTestCases } from './example/tests/testCases'
+import { testCases as gMXTestCases } from './gmx/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { Protocol } from './protocols'
@@ -31,6 +32,7 @@ function runAllTests() {
   runProtocolTests(Protocol.Curve, curveTestCases)
   runProtocolTests(Protocol.Compound, compoundTestCases)
   runProtocolTests(Protocol.Maker, makerTestCases)
+  runProtocolTests(Protocol.GMX, gMXTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
