@@ -6,7 +6,6 @@ import {
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
@@ -23,17 +22,16 @@ import {
   Underlying,
   ProtocolRewardPosition,
   GetClaimableRewardsInput,
+  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { GlpManager__factory, Vault__factory } from '../../contracts'
 
-type GMXGlpAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
+type GMXGlpAdapterMetadata = {
+  vaultAddress: string
+  protocolToken: Erc20Metadata
+  underlyingTokens: Erc20Metadata[]
+}
 
 export class GMXGlpAdapter
   extends SimplePoolAdapter
@@ -103,21 +101,14 @@ export class GMXGlpAdapter
     )
 
     return {
-      [glpTokenAddress]: {
-        protocolToken,
-        underlyingTokens,
-      },
+      vaultAddress,
+      protocolToken,
+      underlyingTokens,
     }
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
+    return [(await this.buildMetadata()).protocolToken]
   }
 
   /**
@@ -166,27 +157,36 @@ export class GMXGlpAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+  protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
+    const { protocolToken } = await this.buildMetadata()
 
     return protocolToken
   }
 
-  /**
-   * Update me.
-   * Add logic that finds the underlying token rates for 1 protocol token
-   */
   protected async getUnderlyingTokenConversionRate(
     _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
+    blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
+    const { vaultAddress, underlyingTokens } = await this.buildMetadata()
+    const vaultContract = Vault__factory.connect(vaultAddress, this.provider)
+
+    return Promise.all(
+      underlyingTokens.map(async (underlyingToken) => {
+        const redemptionCollateral =
+          await vaultContract.getRedemptionCollateral(underlyingToken.address, {
+            blockTag: blockNumber,
+          })
+
+        const underlyingRateRaw =
+          redemptionCollateral / 10n ** BigInt(underlyingToken.decimals)
+
+        return {
+          ...underlyingToken,
+          underlyingRateRaw,
+          type: TokenType.Underlying,
+        }
+      }),
+    )
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
@@ -204,32 +204,9 @@ export class GMXGlpAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+  protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
+    const { underlyingTokens } = await this.buildMetadata()
 
     return underlyingTokens
-  }
-
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 }
