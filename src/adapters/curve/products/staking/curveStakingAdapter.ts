@@ -7,7 +7,6 @@ import {
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { filterMapSync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   ProtocolDetails,
   PositionType,
@@ -28,6 +27,7 @@ import {
   TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { getPoolData } from '../../common/getPoolData'
 import { MetaRegistry__factory } from '../../contracts'
 import { CURVE_META_REGISTRY_CONTRACT } from '../pool/curvePoolAdapter'
@@ -93,7 +93,7 @@ export class CurveStakingAdapter
     const results = await Promise.all(poolDataPromises)
 
     filterMapSync(results, async (token) => {
-      if (!token || !token.stakingToken ||token.stakingToken == ZERO_ADDRESS ) {
+      if (!token || !token.stakingToken || token.stakingToken == ZERO_ADDRESS) {
         return undefined
       }
 
@@ -108,7 +108,6 @@ export class CurveStakingAdapter
 
     return metadata
   }
-
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
@@ -243,7 +242,6 @@ export class CurveStakingAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-
     const [underlyingLpToken] = await this.fetchUnderlyingTokensMetadata(
       protocolTokenAddress,
     )
@@ -256,7 +254,7 @@ export class CurveStakingAdapter
         protocolTokenAddress,
       ),
       filter: {
-        smartContractAddress: underlyingLpToken!.address,  // curve staking contracts dont have transfer events
+        smartContractAddress: underlyingLpToken!.address, // curve staking contracts dont have transfer events
         fromBlock,
         toBlock,
         from: userAddress,
@@ -265,14 +263,12 @@ export class CurveStakingAdapter
     })
   }
 
-
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-
     const [underlyingLpToken] = await this.fetchUnderlyingTokensMetadata(
       protocolTokenAddress,
     )
@@ -292,7 +288,6 @@ export class CurveStakingAdapter
       },
     })
   }
-
 
   /**
    * Update me.
