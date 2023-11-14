@@ -108,6 +108,10 @@ export const supportedProtocols: Record<
     [Chain.Ethereum]: [CurvePoolAdapter, CurveStakingAdapter],
   },
 
+  // [Protocol.Curve]: {
+  //   [Chain.Ethereum]: [CurveStakingAdapter],
+  // },
+
   [Protocol.Compound]: {
     [Chain.Ethereum]: [CompoundPoolAdapter],
   },

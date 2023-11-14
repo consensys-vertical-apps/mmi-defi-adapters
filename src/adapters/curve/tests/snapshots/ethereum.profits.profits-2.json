@@ -1,5 +1,5 @@
 {
-  "blockNumber": 17265356,
+  "blockNumber": 17260449,
   "snapshot": [
     {
       "protocolId": "curve",
@@ -11,79 +11,9 @@
       "chainId": 1,
       "productId": "pool",
       "success": true,
-      "tokens": [
-        {
-          "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-          "name": "Curve.fi DAI/USDC/USDT",
-          "symbol": "3Crv",
-          "decimals": 18,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "profitRaw": "499322735833417655n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "1428009188117123602n",
-                "withdrawals": "1428009188117.123602",
-                "depositsRaw": "928686452283354580n",
-                "deposits": "928686452283.35458",
-                "startPositionValueRaw": "1392439n",
-                "startPositionValue": "1.392439",
-                "endPositionValueRaw": "1041072n",
-                "endPositionValue": "1.041072"
-              },
-              "profit": "499322735833.417655",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
-            },
-            {
-              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "profitRaw": "890255072645699199n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "2546033521555113960n",
-                "withdrawals": "2546033521555.11396",
-                "depositsRaw": "1655778448908400041n",
-                "deposits": "1655778448908.400041",
-                "startPositionValueRaw": "2575067n",
-                "startPositionValue": "2.575067",
-                "endPositionValueRaw": "1560347n",
-                "endPositionValue": "1.560347"
-              },
-              "profit": "890255072645.699199",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            },
-            {
-              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
-              "name": "Dai Stablecoin",
-              "symbol": "DAI",
-              "decimals": 18,
-              "profitRaw": "-23513212489115420n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "2547318688719457717n",
-                "withdrawals": "2.547318688719457717",
-                "depositsRaw": "1656614239983399463n",
-                "deposits": "1.656614239983399463",
-                "startPositionValueRaw": "2553861045424664875n",
-                "startPositionValue": "2.553861045424664875",
-                "endPositionValueRaw": "1639643384199491201n",
-                "endPositionValue": "1.639643384199491201"
-              },
-              "profit": "-0.02351321248911542",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
-            }
-          ]
-        }
-      ],
-      "fromBlock": 17258210,
-      "toBlock": 17265356
+      "tokens": [],
+      "fromBlock": 17253303,
+      "toBlock": 17260449
     },
     {
       "protocolId": "curve",
@@ -94,13 +24,40 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "staking",
-      "success": false,
-      "error": {
-        "message": "execution reverted: \"no registry\" (action=\"call\", data=\"0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b6e6f207265676973747279000000000000000000000000000000000000000000\", reason=\"no registry\", transaction={ \"data\": \"0x92e3cc2d000000000000000000000000c1bf385575e5ffc81e476d2346f050f139ee9e38\", \"to\": \"0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC\" }, invocation=null, revert={ \"args\": [ \"no registry\" ], \"name\": \"Error\", \"signature\": \"Error(string)\" }, code=CALL_EXCEPTION, version=6.7.1)",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A",
+          "name": "Curve.fi DAI/USDC/USDT",
+          "symbol": "3Crv",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "symbol": "3Crv",
+              "decimals": 18,
+              "profitRaw": "0n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "6357359611959254406n",
+                "deposits": "6.357359611959254406",
+                "startPositionValueRaw": "0n",
+                "startPositionValue": "0.0",
+                "endPositionValueRaw": "6357359611959254406n",
+                "endPositionValue": "6.357359611959254406"
+              },
+              "profit": "0.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
+            }
+          ]
         }
-      }
+      ],
+      "fromBlock": 17253303,
+      "toBlock": 17260449
     }
   ]
 }

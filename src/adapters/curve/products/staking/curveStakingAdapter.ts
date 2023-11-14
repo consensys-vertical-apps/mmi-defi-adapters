@@ -1,4 +1,5 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
@@ -29,9 +30,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { getPoolData } from '../../common/getPoolData'
 import { MetaRegistry__factory } from '../../contracts'
-import {
-  CURVE_META_REGISTRY_CONTRACT,
-} from '../pool/curvePoolAdapter'
+import { CURVE_META_REGISTRY_CONTRACT } from '../pool/curvePoolAdapter'
 
 type CurveStakingAdapterMetadata = Record<
   string,
@@ -100,7 +99,7 @@ export class CurveStakingAdapter
     const results = await Promise.all(poolDataPromises)
 
     filterMapSync(results, async (token) => {
-      if (!token || !token.stakingToken) {
+      if (!token || !token.stakingToken ||token.stakingToken == ZERO_ADDRESS ) {
         return undefined
       }
 
@@ -134,8 +133,6 @@ export class CurveStakingAdapter
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-
-    
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
       protocolTokenBalance.address,
     )
@@ -249,6 +246,63 @@ export class CurveStakingAdapter
     throw new NotImplementedError()
   }
 
+  async getDeposits({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+
+    const [underlyingLpToken] = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenAddress,
+    )
+
+    return await this.getMovements({
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
+        protocolTokenAddress,
+      ),
+      filter: {
+        smartContractAddress: underlyingLpToken!.address,
+        fromBlock,
+        toBlock,
+        from: userAddress,
+        to: protocolTokenAddress,
+      },
+    })
+  }
+
+
+  async getWithdrawals({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+
+    const [underlyingLpToken] = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenAddress,
+    )
+    return await this.getMovements({
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
+        protocolTokenAddress,
+      ),
+      filter: {
+        smartContractAddress: underlyingLpToken!.address,
+        fromBlock,
+        toBlock,
+        from: protocolTokenAddress,
+        to: userAddress,
+      },
+    })
+  }
+
+
   /**
    * Update me.
    * Below implementation might fit your metadata if not update it.
@@ -268,6 +322,7 @@ export class CurveStakingAdapter
    * Below implementation might fit your metadata if not update it.
    */
   private async fetchPoolMetadata(protocolTokenAddress: string) {
+    console.log({ protocolTokenAddress })
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
     if (!poolMetadata) {

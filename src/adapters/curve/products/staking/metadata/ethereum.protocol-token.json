@@ -335,22 +335,6 @@
       }
     ]
   },
-  "0x0000000000000000000000000000000000000000": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Crypto Pool: fETH/SILO",
-      "decimals": 18,
-      "symbol": "fETH/SILO-f",
-      "address": "0x0000000000000000000000000000000000000000"
-    },
-    "underlyingTokens": [
-      {
-        "name": "Curve.fi Factory Crypto Pool: fETH/SILO",
-        "decimals": 18,
-        "symbol": "fETH/SILO-f",
-        "address": "0xB6B64698a098BAFD70cE1Eb9A49eF3376Caad288"
-      }
-    ]
-  },
   "0x5f626c30EC1215f4EdCc9982265E8b1F411D1352": {
     "protocolToken": {
       "name": "Curve.fi MUSD/3Crv",
@@ -2463,22 +2447,6 @@
       }
     ]
   },
-  "0x150EF43F6378eDFdEC096cd9f3293E4DF818DaeF": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Plain Pool: LETH/WETH",
-      "decimals": 18,
-      "symbol": "LETH-f",
-      "address": "0x150EF43F6378eDFdEC096cd9f3293E4DF818DaeF"
-    },
-    "underlyingTokens": [
-      {
-        "name": "Curve.fi Factory Plain Pool: LETH/WETH",
-        "decimals": 18,
-        "symbol": "LETH-f",
-        "address": "0x9A6F2FfA30CDDBB6156B98AC88a546E81205f6Ba"
-      }
-    ]
-  },
   "0x5439Dda1cE6A4A5222dB85bB2cAf0AB32c815Be6": {
     "protocolToken": {
       "name": "Curve.fi Factory USD Metapool: PAYPALFRAXBP",
@@ -2716,6 +2684,38 @@
         "decimals": 18,
         "symbol": "crvUSDthUS-f",
         "address": "0xDd9E687c73A2031A8f5058B596d740f53c1cb220"
+      }
+    ]
+  },
+  "0x13E58C7b1147385D735a06D14F0456E54C2dEBC8": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Plain Pool: cvxPrisma/Prisma",
+      "decimals": 18,
+      "symbol": "cvxprismlp-f",
+      "address": "0x13E58C7b1147385D735a06D14F0456E54C2dEBC8"
+    },
+    "underlyingTokens": [
+      {
+        "name": "Curve.fi Factory Plain Pool: cvxPrisma/Prisma",
+        "decimals": 18,
+        "symbol": "cvxprismlp-f",
+        "address": "0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B"
+      }
+    ]
+  },
+  "0xf1ce237a1E1a88F6e289CD7998A826138AEB30b0": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Plain Pool: PRISMA/yPRISMA",
+      "decimals": 18,
+      "symbol": "yPRISMA-f",
+      "address": "0xf1ce237a1E1a88F6e289CD7998A826138AEB30b0"
+    },
+    "underlyingTokens": [
+      {
+        "name": "Curve.fi Factory Plain Pool: PRISMA/yPRISMA",
+        "decimals": 18,
+        "symbol": "yPRISMA-f",
+        "address": "0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7"
       }
     ]
   },
@@ -3951,22 +3951,6 @@
       }
     ]
   },
-  "0xF2FFccFfab6A9116D4F9206A543BC94726f5302A": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Crypto Pool: safETH/ETH",
-      "decimals": 18,
-      "symbol": "safETHETH-f",
-      "address": "0xF2FFccFfab6A9116D4F9206A543BC94726f5302A"
-    },
-    "underlyingTokens": [
-      {
-        "name": "Curve.fi Factory Crypto Pool: safETH/ETH",
-        "decimals": 18,
-        "symbol": "safETHETH-f",
-        "address": "0xdB09B79AfA65825939b8cE963b56d94d389e153F"
-      }
-    ]
-  },
   "0x27cace18f661161661683bBA43933B2E6eB1741E": {
     "protocolToken": {
       "name": "Curve.fi Factory Crypto Pool: hyUSD/eUSD",
@@ -4556,6 +4540,54 @@
         "decimals": 18,
         "symbol": "MMX/USDT-f",
         "address": "0xd39de8FcEcb7f2e0c3dEb198D8e33663AFA0e977"
+      }
+    ]
+  },
+  "0x9A3dCece0968b8a94AfF643C9c72127a2C1D80dc": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: PRISMA/ETH",
+      "decimals": 18,
+      "symbol": "PRISMAETH-f",
+      "address": "0x9A3dCece0968b8a94AfF643C9c72127a2C1D80dc"
+    },
+    "underlyingTokens": [
+      {
+        "name": "Curve.fi Factory Crypto Pool: PRISMA/ETH",
+        "decimals": 18,
+        "symbol": "PRISMAETH-f",
+        "address": "0xb34e1a3D07f9D180Bc2FDb9Fd90B8994423e33c1"
+      }
+    ]
+  },
+  "0xE38a5795e8A61acCa38affa86176372C07084B9A": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: cvxPrisma/PRISMA",
+      "decimals": 18,
+      "symbol": "cvxPrisma-f",
+      "address": "0xE38a5795e8A61acCa38affa86176372C07084B9A"
+    },
+    "underlyingTokens": [
+      {
+        "name": "Curve.fi Factory Crypto Pool: cvxPrisma/PRISMA",
+        "decimals": 18,
+        "symbol": "cvxPrisma-f",
+        "address": "0x7Be76a89fe1e95995164EEb8e0f18B4431474D3A"
+      }
+    ]
+  },
+  "0x40485f9cF65557b3c04C47201cAC8c3d15399e7D": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: UBDN/USDT",
+      "decimals": 18,
+      "symbol": "UBDNUSDT-f",
+      "address": "0x40485f9cF65557b3c04C47201cAC8c3d15399e7D"
+    },
+    "underlyingTokens": [
+      {
+        "name": "Curve.fi Factory Crypto Pool: UBDN/USDT",
+        "decimals": 18,
+        "symbol": "UBDNUSDT-f",
+        "address": "0x8d57F42b2aA884F064c0069B8Ba580518821754D"
       }
     ]
   },

@@ -94,13 +94,10 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "staking",
-      "success": false,
-      "error": {
-        "message": "execution reverted: \"no registry\" (action=\"call\", data=\"0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b6e6f207265676973747279000000000000000000000000000000000000000000\", reason=\"no registry\", transaction={ \"data\": \"0x92e3cc2d000000000000000000000000c1bf385575e5ffc81e476d2346f050f139ee9e38\", \"to\": \"0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC\" }, invocation=null, revert={ \"args\": [ \"no registry\" ], \"name\": \"Error\", \"signature\": \"Error(string)\" }, code=CALL_EXCEPTION, version=6.7.1)",
-        "details": {
-          "name": "Error"
-        }
-      }
+      "success": true,
+      "tokens": [],
+      "fromBlock": 16621005,
+      "toBlock": 16628151
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18571044,
+  "blockNumber": 18571794,
   "snapshot": [
     {
       "protocolId": "curve",
@@ -26,8 +26,8 @@
               "symbol": "DAI",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "4505586246732918958n",
-              "balance": "4.505586246732918958",
+              "balanceRaw": "4325074814209985236n",
+              "balance": "4.325074814209985236",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             },
             {
@@ -36,8 +36,8 @@
               "symbol": "USDC",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "3935600n",
-              "balance": "3.9356",
+              "balanceRaw": "3741621n",
+              "balance": "3.741621",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             },
             {
@@ -46,8 +46,8 @@
               "symbol": "USDT",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "2752026n",
-              "balance": "2.752026",
+              "balanceRaw": "3126472n",
+              "balance": "3.126472",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
@@ -88,8 +88,8 @@
                   "symbol": "DAI",
                   "decimals": 18,
                   "type": "underlying",
-                  "balanceRaw": "2630619862129934852n",
-                  "balance": "2.630619862129934852",
+                  "balanceRaw": "2525226926841950030n",
+                  "balance": "2.52522692684195003",
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
                 },
                 {
@@ -98,8 +98,8 @@
                   "symbol": "USDC",
                   "decimals": 6,
                   "type": "underlying",
-                  "balanceRaw": "2297829n",
-                  "balance": "2.297829",
+                  "balanceRaw": "2184573n",
+                  "balance": "2.184573",
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
                 },
                 {
@@ -108,8 +108,8 @@
                   "symbol": "USDT",
                   "decimals": 6,
                   "type": "underlying",
-                  "balanceRaw": "1606790n",
-                  "balance": "1.60679",
+                  "balanceRaw": "1825414n",
+                  "balance": "1.825414",
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
                 }
               ],
@@ -118,49 +118,6 @@
             }
           ],
           "balance": "6.357359611959254406"
-        },
-        {
-          "name": "Curve.fi Factory Crypto Pool: fETH/SILO",
-          "decimals": 18,
-          "symbol": "fETH/SILO-f",
-          "address": "0x0000000000000000000000000000000000000000",
-          "balanceRaw": "1304986137246605n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "name": "Curve.fi Factory Crypto Pool: fETH/SILO",
-              "decimals": 18,
-              "symbol": "fETH/SILO-f",
-              "address": "0xB6B64698a098BAFD70cE1Eb9A49eF3376Caad288",
-              "type": "underlying",
-              "balanceRaw": "1304986137246605n",
-              "tokens": [
-                {
-                  "address": "0x6f80310ca7f2c654691d1383149fa1a57d8ab1f8",
-                  "name": "Silo Governance Token",
-                  "symbol": "Silo",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "4704086326089611n",
-                  "balance": "0.004704086326089611",
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6f80310CA7F2C654691D1383149Fa1A57d8AB1f8/logo.png"
-                },
-                {
-                  "address": "0x53805a76e1f5ebbfe7115f16f9c87c2f7e633726",
-                  "name": "Fractional ETH",
-                  "symbol": "fETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "361690084667523n",
-                  "balance": "0.000361690084667523",
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x53805A76E1f5ebbFE7115F16f9c87C2f7e633726/logo.png"
-                }
-              ],
-              "balance": "0.001304986137246605",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xB6B64698a098BAFD70cE1Eb9A49eF3376Caad288/logo.png"
-            }
-          ],
-          "balance": "0.001304986137246605"
         }
       ]
     }
