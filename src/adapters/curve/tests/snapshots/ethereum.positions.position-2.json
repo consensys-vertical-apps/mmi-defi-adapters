@@ -1,0 +1,168 @@
+{
+  "blockNumber": 18571044,
+  "snapshot": [
+    {
+      "protocolId": "curve",
+      "name": "Curve",
+      "description": "Curve pool adapter",
+      "siteUrl": "https://curve.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "success": true,
+      "tokens": [
+        {
+          "name": "Curve.fi DAI/USDC/USDT",
+          "decimals": 18,
+          "symbol": "3Crv",
+          "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+          "balanceRaw": "10888548530150245327n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "4505586246732918958n",
+              "balance": "4.505586246732918958",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            },
+            {
+              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "3935600n",
+              "balance": "3.9356",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            },
+            {
+              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "2752026n",
+              "balance": "2.752026",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": "10.888548530150245327"
+        }
+      ]
+    },
+    {
+      "protocolId": "curve",
+      "name": "Curve staking",
+      "description": "Curve staking adapter",
+      "siteUrl": "https://curve.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "staking",
+      "success": true,
+      "tokens": [
+        {
+          "name": "Curve.fi DAI/USDC/USDT",
+          "decimals": 18,
+          "symbol": "3Crv",
+          "address": "0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A",
+          "balanceRaw": "6357359611959254406n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": 18,
+              "symbol": "3Crv",
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "type": "underlying",
+              "balanceRaw": "6357359611959254406n",
+              "tokens": [
+                {
+                  "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+                  "name": "Dai Stablecoin",
+                  "symbol": "DAI",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "2630619862129934852n",
+                  "balance": "2.630619862129934852",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                },
+                {
+                  "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                  "name": "USD Coin",
+                  "symbol": "USDC",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "2297829n",
+                  "balance": "2.297829",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                },
+                {
+                  "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+                  "name": "Tether USD",
+                  "symbol": "USDT",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "1606790n",
+                  "balance": "1.60679",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                }
+              ],
+              "balance": "6.357359611959254406",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
+            }
+          ],
+          "balance": "6.357359611959254406"
+        },
+        {
+          "name": "Curve.fi Factory Crypto Pool: fETH/SILO",
+          "decimals": 18,
+          "symbol": "fETH/SILO-f",
+          "address": "0x0000000000000000000000000000000000000000",
+          "balanceRaw": "1304986137246605n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "name": "Curve.fi Factory Crypto Pool: fETH/SILO",
+              "decimals": 18,
+              "symbol": "fETH/SILO-f",
+              "address": "0xB6B64698a098BAFD70cE1Eb9A49eF3376Caad288",
+              "type": "underlying",
+              "balanceRaw": "1304986137246605n",
+              "tokens": [
+                {
+                  "address": "0x6f80310ca7f2c654691d1383149fa1a57d8ab1f8",
+                  "name": "Silo Governance Token",
+                  "symbol": "Silo",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "4704086326089611n",
+                  "balance": "0.004704086326089611",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6f80310CA7F2C654691D1383149Fa1A57d8AB1f8/logo.png"
+                },
+                {
+                  "address": "0x53805a76e1f5ebbfe7115f16f9c87c2f7e633726",
+                  "name": "Fractional ETH",
+                  "symbol": "fETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "361690084667523n",
+                  "balance": "0.000361690084667523",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x53805A76E1f5ebbFE7115F16f9c87C2f7e633726/logo.png"
+                }
+              ],
+              "balance": "0.001304986137246605",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xB6B64698a098BAFD70cE1Eb9A49eF3376Caad288/logo.png"
+            }
+          ],
+          "balance": "0.001304986137246605"
+        }
+      ]
+    }
+  ]
+}

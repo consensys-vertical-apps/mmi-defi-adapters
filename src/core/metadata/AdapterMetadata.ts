@@ -31,6 +31,7 @@ import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/a
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
 import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
 import CurvePoolEthereumProtocolToken from '../../adapters/curve/products/pool/metadata/ethereum.protocol-token.json'
+import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -354,6 +355,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CurvePoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'staking',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    CurveStakingEthereumProtocolToken,
   ],
   [
     metadataKey({
