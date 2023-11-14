@@ -76,12 +76,6 @@ export class CurveStakingAdapter
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
     const metadata = {} as CurveStakingAdapterMetadata
@@ -115,10 +109,7 @@ export class CurveStakingAdapter
     return metadata
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
+
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
@@ -172,7 +163,7 @@ export class CurveStakingAdapter
       protocolTokenMetadata.address,
     )
 
-    // Aave tokens always pegged one to one to underlying
+    // Stake tokens always pegged one to one to underlying
     const pricePerShareRaw = BigInt(
       PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
     )
@@ -265,7 +256,7 @@ export class CurveStakingAdapter
         protocolTokenAddress,
       ),
       filter: {
-        smartContractAddress: underlyingLpToken!.address,
+        smartContractAddress: underlyingLpToken!.address,  // curve staking contracts dont have transfer events
         fromBlock,
         toBlock,
         from: userAddress,
@@ -293,7 +284,7 @@ export class CurveStakingAdapter
         protocolTokenAddress,
       ),
       filter: {
-        smartContractAddress: underlyingLpToken!.address,
+        smartContractAddress: underlyingLpToken!.address, // curve staking contracts dont have transfer events
         fromBlock,
         toBlock,
         from: protocolTokenAddress,
