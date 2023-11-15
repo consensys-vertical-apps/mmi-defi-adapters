@@ -2,7 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { GlpManager } from "./GlpManager";
+export type { RewardReader } from "./RewardReader";
 export type { Vault } from "./Vault";
 export * as factories from "./factories";
 export { GlpManager__factory } from "./factories/GlpManager__factory";
+export { RewardReader__factory } from "./factories/RewardReader__factory";
 export { Vault__factory } from "./factories/Vault__factory";

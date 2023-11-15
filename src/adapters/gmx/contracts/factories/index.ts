@@ -2,4 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export { GlpManager__factory } from "./GlpManager__factory";
+export { RewardReader__factory } from "./RewardReader__factory";
 export { Vault__factory } from "./Vault__factory";

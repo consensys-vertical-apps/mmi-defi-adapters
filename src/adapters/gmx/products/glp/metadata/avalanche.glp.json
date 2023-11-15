@@ -1,5 +1,6 @@
 {
   "vaultAddress": "0x9ab2De34A33fB459b538c43f251eB825645e8595",
+  "rewardReaderAddress": "0x04Fc11Bd28763872d143637a7c768bD96E44c1b6",
   "protocolToken": {
     "address": "0x01234181085565ed162a948b6a5e88758cd7c7b8",
     "name": "GMX LP",
