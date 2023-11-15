@@ -90,10 +90,11 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
         rewardReaderAddress: '0x8BFb8e82Ee4569aee78D03235ff465Bd436D40E0',
         rewardTrackerAddress: '0x4e971a87900b931fF39d1Aad67697F49835400b6',
       },
-      // [Chain.Avalanche]: {
-      //   glpManagerContractAddress: '0xD152c7F25db7F4B95b7658323c5F33d176818EE4',
-      //   rewardReaderAddress: '0x04Fc11Bd28763872d143637a7c768bD96E44c1b6',
-      // },
+      [Chain.Avalanche]: {
+        glpManagerContractAddress: '0xD152c7F25db7F4B95b7658323c5F33d176818EE4',
+        rewardReaderAddress: '0x04Fc11Bd28763872d143637a7c768bD96E44c1b6',
+        rewardTrackerAddress: '0xd2D1162512F927a7e282Ef43a362659E4F2a728F',
+      },
     }
 
     const {
@@ -160,7 +161,6 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const {
-      vaultAddress,
       rewardReaderAddress,
       rewardTrackerAddress,
       protocolToken,
