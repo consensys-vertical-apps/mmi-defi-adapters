@@ -289,7 +289,6 @@ export class CurveStakingAdapter
     })
   }
 
-
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
@@ -299,7 +298,6 @@ export class CurveStakingAdapter
 
     return underlyingTokens
   }
-
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     console.log({ protocolTokenAddress })
