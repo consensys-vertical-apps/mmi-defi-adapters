@@ -113,12 +113,7 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
       this.provider,
     )
 
-    const [vaultAddressPromise, glpTokenAddressPromise] = [
-      glpManagerContract.vault(),
-      glpManagerContract.glp(),
-    ]
-
-    const vaultAddress = await vaultAddressPromise
+    const vaultAddress = await glpManagerContract.vault()
     const vaultContract = Vault__factory.connect(vaultAddress, this.provider)
 
     const allWhitelistedTokensLength =
@@ -141,9 +136,8 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
       ),
     )
 
-    const glpTokenAddress = await glpTokenAddressPromise
     const protocolToken = await getTokenMetadata(
-      glpTokenAddress,
+      await glpManagerContract.glp(),
       this.chainId,
       this.provider,
     )
