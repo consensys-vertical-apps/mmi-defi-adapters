@@ -224,7 +224,9 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
       this.provider,
     )
 
-    const protocolTokenSupply = await protocolTokenContract.totalSupply()
+    const protocolTokenSupply = await protocolTokenContract.totalSupply({
+      blockTag: blockNumber,
+    })
 
     const underlyingTokenRates = await Promise.all(
       underlyingTokens.map(async (underlyingToken) => {
