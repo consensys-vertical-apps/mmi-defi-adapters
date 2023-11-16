@@ -41,7 +41,8 @@ import {
 type GMXGlpAdapterMetadata = {
   vaultAddress: string
   rewardReaderAddress: string
-  rewardTrackerAddress: string
+  feeTokenAddress: string
+  stakedTokenAddress: string
   protocolToken: Erc20Metadata
   underlyingTokens: Erc20Metadata[]
 }
@@ -81,26 +82,30 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
         {
           glpManagerContractAddress: string
           rewardReaderAddress: string
-          rewardTrackerAddress: string
+          feeTokenAddress: string
+          stakedTokenAddress: string
         }
       >
     > = {
       [Chain.Arbitrum]: {
         glpManagerContractAddress: '0x3963FfC9dff443c2A94f21b129D429891E32ec18',
         rewardReaderAddress: '0x8BFb8e82Ee4569aee78D03235ff465Bd436D40E0',
-        rewardTrackerAddress: '0x4e971a87900b931fF39d1Aad67697F49835400b6',
+        feeTokenAddress: '0x4e971a87900b931fF39d1Aad67697F49835400b6',
+        stakedTokenAddress: '0x1aDDD80E6039594eE970E5872D247bf0414C8903',
       },
       [Chain.Avalanche]: {
         glpManagerContractAddress: '0xD152c7F25db7F4B95b7658323c5F33d176818EE4',
         rewardReaderAddress: '0x04Fc11Bd28763872d143637a7c768bD96E44c1b6',
-        rewardTrackerAddress: '0xd2D1162512F927a7e282Ef43a362659E4F2a728F',
+        feeTokenAddress: '0xd2D1162512F927a7e282Ef43a362659E4F2a728F',
+        stakedTokenAddress: 'TODO',
       },
     }
 
     const {
       glpManagerContractAddress,
       rewardReaderAddress,
-      rewardTrackerAddress,
+      feeTokenAddress,
+      stakedTokenAddress,
     } = glpAddresses[this.chainId]!
 
     const glpManagerContract = GlpManager__factory.connect(
@@ -146,7 +151,8 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
     return {
       vaultAddress,
       rewardReaderAddress,
-      rewardTrackerAddress,
+      feeTokenAddress,
+      stakedTokenAddress,
       protocolToken,
       underlyingTokens,
     }
@@ -162,7 +168,7 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const {
       rewardReaderAddress,
-      rewardTrackerAddress,
+      feeTokenAddress: positionContractAddress,
       protocolToken,
       underlyingTokens,
     } = await this.buildMetadata()
@@ -176,7 +182,7 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
       rewardReaderContract.getDepositBalances(
         userAddress,
         [protocolToken.address],
-        [rewardTrackerAddress],
+        [positionContractAddress],
         { blockTag: blockNumber },
       ),
       this.getProtocolTokenToUnderlyingTokenRate({
@@ -269,6 +275,82 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
     _input: GetClaimableRewardsInput,
   ): Promise<ProtocolRewardPosition[]> {
     throw new NotImplementedError()
+    // const {
+    //   rewardReaderAddress,
+    //   feeTokenAddress,
+    //   stakedTokenAddress,
+    //   protocolToken,
+    // } = await this.buildMetadata()
+
+    // const rewardReaderContract = RewardReader__factory.connect(
+    //   rewardReaderAddress,
+    //   this.provider,
+    // )
+
+    // const feeTokenContract = RewardTracker__factory.connect(
+    //   feeTokenAddress,
+    //   this.provider,
+    // )
+
+    // const stakedTokenContract = RewardTracker__factory.connect(
+    //   stakedTokenAddress,
+    //   this.provider,
+    // )
+
+    // const [feeTokenRewardAddress, stakedTokenRewardAddress] = await Promise.all(
+    //   [feeTokenContract.rewardToken(), stakedTokenContract.rewardToken()],
+    // )
+
+    // const [
+    //   feeTokenMetadata,
+    //   feeTokenRewardMetadata,
+    //   stakedTokenMetadata,
+    //   stakedTokenRewardMetadata,
+    //   stakingInfo,
+    // ] = await Promise.all([
+    //   getTokenMetadata(feeTokenAddress, this.chainId, this.provider),
+    //   getTokenMetadata(feeTokenRewardAddress, this.chainId, this.provider),
+    //   getTokenMetadata(stakedTokenAddress, this.chainId, this.provider),
+    //   getTokenMetadata(stakedTokenRewardAddress, this.chainId, this.provider),
+    //   rewardReaderContract.getStakingInfo(
+    //     userAddress,
+    //     [feeTokenAddress, stakedTokenAddress],
+    //     { blockTag: blockNumber },
+    //   ),
+    // ])
+
+    // return [
+    //   {
+    //     ...protocolToken,
+    //     type: TokenType.Protocol,
+    //     tokens: [
+    //       {
+    //         ...feeTokenMetadata,
+    //         type: TokenType.Reward,
+    //         balanceRaw: 0n,
+    //         tokens: [
+    //           {
+    //             ...feeTokenRewardMetadata,
+    //             type: TokenType.Underlying,
+    //             balanceRaw: stakingInfo[0]!,
+    //           },
+    //         ],
+    //       },
+    //       {
+    //         ...stakedTokenMetadata,
+    //         type: TokenType.Reward,
+    //         balanceRaw: 0n,
+    //         tokens: [
+    //           {
+    //             ...stakedTokenRewardMetadata,
+    //             type: TokenType.Underlying,
+    //             balanceRaw: stakingInfo[5]!,
+    //           },
+    //         ],
+    //       },
+    //     ],
+    //   },
+    // ]
   }
 
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
