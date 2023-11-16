@@ -35,9 +35,9 @@
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "underlyingRateRaw": "133609215852238n",
+              "underlyingRateRaw": "133609214910330n",
               "type": "underlying",
-              "underlyingRate": "0.000133609215852238",
+              "underlyingRate": "0.00013360921491033",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             },
             {
@@ -55,9 +55,9 @@
               "name": "ChainLink Token",
               "symbol": "LINK",
               "decimals": 18,
-              "underlyingRateRaw": "1239997559352337n",
+              "underlyingRateRaw": "1239997550610700n",
               "type": "underlying",
-              "underlyingRate": "0.001239997559352337",
+              "underlyingRate": "0.0012399975506107",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             },
             {
@@ -65,9 +65,9 @@
               "name": "Uniswap",
               "symbol": "UNI",
               "decimals": 18,
-              "underlyingRateRaw": "1645503072629092n",
+              "underlyingRateRaw": "1645503061028754n",
               "type": "underlying",
-              "underlyingRate": "0.001645503072629092",
+              "underlyingRate": "0.001645503061028754",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFa7F8980b0f1E64A2062791cc3b0871572f1F7f0/logo.png"
             },
             {
@@ -85,9 +85,9 @@
               "name": "Magic Internet Money",
               "symbol": "MIM",
               "decimals": 18,
-              "underlyingRateRaw": "2406881585n",
+              "underlyingRateRaw": "2406881568n",
               "type": "underlying",
-              "underlyingRate": "0.000000002406881585",
+              "underlyingRate": "0.000000002406881568",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A/logo.png"
             },
             {
@@ -95,9 +95,9 @@
               "name": "Frax",
               "symbol": "FRAX",
               "decimals": 18,
-              "underlyingRateRaw": "37961410645613700n",
+              "underlyingRateRaw": "37961410377996330n",
               "type": "underlying",
-              "underlyingRate": "0.0379614106456137",
+              "underlyingRate": "0.03796141037799633",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             },
             {
@@ -105,9 +105,9 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "underlyingRateRaw": "33936561204167003n",
+              "underlyingRateRaw": "33936560964923701n",
               "type": "underlying",
-              "underlyingRate": "0.033936561204167003",
+              "underlyingRate": "0.033936560964923701",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             },
             {

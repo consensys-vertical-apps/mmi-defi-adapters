@@ -36,8 +36,8 @@
               "symbol": "WETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "238921833699546064940n",
-              "balance": "238.92183369954606494",
+              "balanceRaw": "238921832015213250764n",
+              "balance": "238.921832015213250764",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             },
             {
@@ -56,8 +56,8 @@
               "symbol": "LINK",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "2217380655770532045575n",
-              "balance": "2217.380655770532045575",
+              "balanceRaw": "2217380640138616774957n",
+              "balance": "2217.380640138616774957",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             },
             {
@@ -66,8 +66,8 @@
               "symbol": "UNI",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "2942511180557869047985n",
-              "balance": "2942.511180557869047985",
+              "balanceRaw": "2942511159813985410799n",
+              "balance": "2942.511159813985410799",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFa7F8980b0f1E64A2062791cc3b0871572f1F7f0/logo.png"
             },
             {
@@ -86,8 +86,8 @@
               "symbol": "MIM",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "4304018687018118n",
-              "balance": "0.004304018687018118",
+              "balanceRaw": "4304018656618485n",
+              "balance": "0.004304018656618485",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A/logo.png"
             },
             {
@@ -96,8 +96,8 @@
               "symbol": "FRAX",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "67883115572671566113240n",
-              "balance": "67883.11557267156611324",
+              "balanceRaw": "67883115094114511778287n",
+              "balance": "67883.115094114511778287",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             },
             {
@@ -106,8 +106,8 @@
               "symbol": "DAI",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "60685824556619763796769n",
-              "balance": "60685.824556619763796769",
+              "balanceRaw": "60685824128801607320277n",
+              "balance": "60685.824128801607320277",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             },
             {
