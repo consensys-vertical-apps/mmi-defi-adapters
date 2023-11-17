@@ -1,0 +1,255 @@
+{
+  "0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc": {
+    "protocolToken": {
+      "name": "USDC-WETH Uniswap V2 LP Token",
+      "symbol": "USDC-WETH Uniswap V2",
+      "decimals": 18,
+      "address": "0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc"
+  },
+  "0x3139Ffc91B99aa94DA8A2dc13f1fC36F9BDc98eE": {
+    "protocolToken": {
+      "name": "USDP-USDC Uniswap V2 LP Token",
+      "symbol": "USDP-USDC Uniswap V2",
+      "decimals": 18,
+      "address": "0x3139Ffc91B99aa94DA8A2dc13f1fC36F9BDc98eE"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8e870d67f660d95d5be530380d0ec0bd388289e1",
+        "name": "Pax Dollar",
+        "symbol": "USDP",
+        "decimals": 18
+      },
+      {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "poolAddress": "0x3139Ffc91B99aa94DA8A2dc13f1fC36F9BDc98eE"
+  },
+  "0x12EDE161c702D1494612d19f05992f43aa6A26FB": {
+    "protocolToken": {
+      "name": "CHAI-WETH Uniswap V2 LP Token",
+      "symbol": "CHAI-WETH Uniswap V2",
+      "decimals": 18,
+      "address": "0x12EDE161c702D1494612d19f05992f43aa6A26FB"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x06af07097c9eeb7fd685c692751d5c66db49c215",
+        "name": "Chai",
+        "symbol": "CHAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x12EDE161c702D1494612d19f05992f43aa6A26FB"
+  },
+  "0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11": {
+    "protocolToken": {
+      "name": "DAI-WETH Uniswap V2 LP Token",
+      "symbol": "DAI-WETH Uniswap V2",
+      "decimals": 18,
+      "address": "0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11"
+  },
+  "0x07F068ca326a469Fc1d87d85d448990C8cBa7dF9": {
+    "protocolToken": {
+      "name": "REN-USDC Uniswap V2 LP Token",
+      "symbol": "REN-USDC Uniswap V2",
+      "decimals": 18,
+      "address": "0x07F068ca326a469Fc1d87d85d448990C8cBa7dF9"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x408e41876cccdc0f92210600ef50372656052a38",
+        "name": "Republic Token",
+        "symbol": "REN",
+        "decimals": 18
+      },
+      {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "poolAddress": "0x07F068ca326a469Fc1d87d85d448990C8cBa7dF9"
+  },
+  "0xAE461cA67B15dc8dc81CE7615e0320dA1A9aB8D5": {
+    "protocolToken": {
+      "name": "DAI-USDC Uniswap V2 LP Token",
+      "symbol": "DAI-USDC Uniswap V2",
+      "decimals": 18,
+      "address": "0xAE461cA67B15dc8dc81CE7615e0320dA1A9aB8D5"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "poolAddress": "0xAE461cA67B15dc8dc81CE7615e0320dA1A9aB8D5"
+  },
+  "0xCe407CD7b95B39d3B4d53065E711e713dd5C5999": {
+    "protocolToken": {
+      "name": "WETH-HAY Uniswap V2 LP Token",
+      "symbol": "WETH-HAY Uniswap V2",
+      "decimals": 18,
+      "address": "0xCe407CD7b95B39d3B4d53065E711e713dd5C5999"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xfa3e941d1f6b7b10ed84a0c211bfa8aee907965e",
+        "name": "HayCoin",
+        "symbol": "HAY",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0xCe407CD7b95B39d3B4d53065E711e713dd5C5999"
+  },
+  "0x33C2d48Bc95FB7D0199C5C693e7a9F527145a9Af": {
+    "protocolToken": {
+      "name": "BNT-DAI Uniswap V2 LP Token",
+      "symbol": "BNT-DAI Uniswap V2",
+      "decimals": 18,
+      "address": "0x33C2d48Bc95FB7D0199C5C693e7a9F527145a9Af"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
+        "name": "Bancor Network Token",
+        "symbol": "BNT",
+        "decimals": 18
+      },
+      {
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x33C2d48Bc95FB7D0199C5C693e7a9F527145a9Af"
+  },
+  "0xB6909B960DbbE7392D405429eB2b3649752b4838": {
+    "protocolToken": {
+      "name": "BAT-WETH Uniswap V2 LP Token",
+      "symbol": "BAT-WETH Uniswap V2",
+      "decimals": 18,
+      "address": "0xB6909B960DbbE7392D405429eB2b3649752b4838"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+        "name": "Basic Attention Token",
+        "symbol": "BAT",
+        "decimals": 18
+      },
+      {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0xB6909B960DbbE7392D405429eB2b3649752b4838"
+  },
+  "0x30EB5E15476E6a80F4F3cd8479749b4881DAB1b8": {
+    "protocolToken": {
+      "name": "cUSDC-cDAI Uniswap V2 LP Token",
+      "symbol": "cUSDC-cDAI Uniswap V2",
+      "decimals": 18,
+      "address": "0x30EB5E15476E6a80F4F3cd8479749b4881DAB1b8"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
+        "name": "Compound USD Coin",
+        "symbol": "cUSDC",
+        "decimals": 8
+      },
+      {
+        "address": "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
+        "name": "Compound Dai",
+        "symbol": "cDAI",
+        "decimals": 8
+      }
+    ],
+    "poolAddress": "0x30EB5E15476E6a80F4F3cd8479749b4881DAB1b8"
+  },
+  "0xBb2b8038a1640196FbE3e38816F3e67Cba72D940": {
+    "protocolToken": {
+      "name": "WBTC-WETH Uniswap V2 LP Token",
+      "symbol": "WBTC-WETH Uniswap V2",
+      "decimals": 18,
+      "address": "0xBb2b8038a1640196FbE3e38816F3e67Cba72D940"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0xBb2b8038a1640196FbE3e38816F3e67Cba72D940"
+  }
+}

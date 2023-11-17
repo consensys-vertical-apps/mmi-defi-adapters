@@ -9,5 +9,6 @@ export const Protocol = {
   Curve: 'curve',
   Compound: 'compound',
   Maker: 'maker',
+  UniswapV2PoolAdapter: 'uniswap-v-2-pool-adapter',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
