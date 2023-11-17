@@ -8,7 +8,7 @@ export const TokenType = {
   Protocol: 'protocol',
   Reward: 'claimable',
   Underlying: 'underlying',
-  UnderlyingClaimableFee: 'underlying-claimable-fee',
+  UnderlyingClaimable: 'underlying-claimable',
 } as const
 export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
@@ -32,6 +32,10 @@ export const PositionType = {
    * Staking a token e.g. staking eth or staking an lp token
    */
   Staked: 'stake',
+  /**
+   * Claimable rewards, these type of positions will be merged with the equivalent lp position
+   */
+  Reward: 'reward',
 } as const
 export type PositionType = (typeof PositionType)[keyof typeof PositionType]
 
@@ -196,7 +200,7 @@ export interface TokenBalance extends Erc20Metadata {
  * Should the underlying token be another protocol token then we expect that to be resolved down into the underlying simple erc20 tokens
  */
 export interface Underlying extends TokenBalance {
-  type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimableFee
+  type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimable
 
   tokens?: Underlying[]
 }
@@ -205,7 +209,7 @@ export interface Underlying extends TokenBalance {
  * User's position, includes balance of protocol token related underlying token balances
  */
 export interface ProtocolPosition extends TokenBalance {
-  type: typeof TokenType.Protocol
+  type: typeof TokenType.Protocol | typeof TokenType.Reward
 
   /**
    * Used by NFT Defi Positions, e.g. uniswapV3
@@ -234,7 +238,7 @@ export interface ProtocolTokenUnderlyingRate extends Erc20Metadata {
 }
 
 export interface BaseTokenMovement extends Erc20Metadata {
-  transactionHash: string
+  transactionHash?: string
   movementValueRaw: bigint
 }
 

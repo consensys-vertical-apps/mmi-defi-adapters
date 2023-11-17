@@ -186,7 +186,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
               position.token0,
               token0Metadata,
               amount0Fee,
-              TokenType.UnderlyingClaimableFee,
+              TokenType.UnderlyingClaimable,
             ),
             this.createUnderlyingToken(
               position.token1,
@@ -198,7 +198,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
               position.token1,
               token1Metadata,
               amount1Fee,
-              TokenType.UnderlyingClaimableFee,
+              TokenType.UnderlyingClaimable,
             ),
           ],
         }
@@ -384,7 +384,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     address: string,
     metadata: Erc20Metadata,
     balanceRaw: bigint,
-    type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimableFee,
+    type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimable,
   ): Underlying {
     return {
       address,

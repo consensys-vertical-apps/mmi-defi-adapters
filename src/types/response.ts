@@ -40,10 +40,10 @@ export type AdapterErrorResponse = {
 
 export type AdapterResponse<ProtocolResponse> =
   | (ProtocolDetails &
-      (
-        | (ProtocolResponse & { success: true })
-        | (AdapterErrorResponse & { success: false })
-      ))
+    (
+      | (ProtocolResponse & { success: true })
+      | (AdapterErrorResponse & { success: false })
+    ))
   | (AdapterErrorResponse & { success: false })
 
 export type DefiPositionResponse = AdapterResponse<{
@@ -59,10 +59,10 @@ export type DisplayPosition<
   balance: string
   tokens?: DisplayPosition<Underlying>[]
 } & (PositionBalance['type'] extends
-    | typeof TokenType.Underlying
-    | typeof TokenType.UnderlyingClaimableFee
-    ? { iconUrl: string }
-    : Record<string, never>)
+  | typeof TokenType.Underlying
+  | typeof TokenType.UnderlyingClaimable
+  ? { iconUrl: string }
+  : Record<string, never>)
 
 export type DefiProfitsResponse = AdapterResponse<DisplayProfitsWithRange>
 

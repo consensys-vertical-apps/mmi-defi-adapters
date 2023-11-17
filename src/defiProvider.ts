@@ -8,6 +8,7 @@ import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
 import { ChainProvider } from './core/utils/chainProviders'
 import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
+import { mergeClaimableWithProtocol } from './core/utils/mergeClaimableWithProtocol'
 import {
   enrichPositionBalance,
   enrichProfitsWithRange,
@@ -38,6 +39,7 @@ export {
   Protocol,
   TimePeriod,
 }
+
 export class DefiProvider {
   chainProvider: ChainProvider
   adaptersController: AdaptersController
@@ -77,11 +79,14 @@ export class DefiProvider {
       return { tokens }
     }
 
-    return this.runForAllProtocolsAndChains({
+    const results = await this.runForAllProtocolsAndChains({
       runner,
       filterProtocolIds,
       filterChainIds,
     })
+
+    const mergedData = mergeClaimableWithProtocol(results)
+    return mergedData
   }
 
   async getProfits({
