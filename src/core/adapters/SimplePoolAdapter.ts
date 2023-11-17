@@ -118,14 +118,19 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getMovements({
-      protocolTokenAddress,
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
       underlyingTokens: await this.fetchUnderlyingTokensMetadata(
         protocolTokenAddress,
       ),
-      fromBlock,
-      toBlock,
-      from: undefined,
-      to: userAddress,
+      filter: {
+        smartContractAddress: protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        from: undefined,
+        to: userAddress,
+      },
     })
   }
 
@@ -136,14 +141,19 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getMovements({
-      protocolTokenAddress,
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
       underlyingTokens: await this.fetchUnderlyingTokensMetadata(
         protocolTokenAddress,
       ),
-      fromBlock,
-      toBlock,
-      from: userAddress,
-      to: undefined,
+      filter: {
+        smartContractAddress: protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        from: userAddress,
+        to: undefined,
+      },
     })
   }
 
@@ -351,28 +361,24 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   /**
    * Util used by both getDeposits and getWithdrawals
    */
-  private async getMovements({
-    protocolTokenAddress,
+  async getMovements({
+    protocolToken,
     underlyingTokens,
-    fromBlock,
-    toBlock,
-    from,
-    to,
+    filter: { smartContractAddress, fromBlock, toBlock, from, to },
   }: {
-    protocolTokenAddress: string
+    protocolToken: Erc20Metadata
     underlyingTokens: Erc20Metadata[]
-    fromBlock: number
-    toBlock: number
-    from?: string
-    to?: string
+    filter: {
+      smartContractAddress: string
+      fromBlock: number
+      toBlock: number
+      from?: string
+      to?: string
+    }
   }): Promise<MovementsByBlock[]> {
     const protocolTokenContract = Erc20__factory.connect(
-      protocolTokenAddress,
+      smartContractAddress,
       this.provider,
-    )
-
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
     )
 
     const filter = protocolTokenContract.filters.Transfer(from, to)
@@ -395,7 +401,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
         const protocolTokenPrice =
           await this.getProtocolTokenToUnderlyingTokenRate({
             blockNumber,
-            protocolTokenAddress,
+            protocolTokenAddress: protocolToken.address,
           })
 
         return {
