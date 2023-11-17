@@ -1,12 +1,16 @@
+import { formatUnits } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
+import { TransferEvent } from '../../../../contracts/Erc20'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
   ProtocolDetails,
   PositionType,
@@ -28,6 +32,7 @@ import {
   ProfitsWithRange,
   ProtocolPosition,
   ProtocolTokenUnderlyingRate,
+  BaseTokenMovement,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -255,18 +260,6 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
   }
 
-  getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  getProfits(_input: GetProfitsInput): Promise<ProfitsWithRange> {
-    throw new NotImplementedError()
-  }
-
   async getClaimableRewards(
     _input: GetClaimableRewardsInput,
   ): Promise<ProtocolRewardPosition[]> {
@@ -372,5 +365,251 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
 
   async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
+  }
+
+  async getDeposits({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
+        protocolTokenAddress,
+      ),
+      filter: {
+        smartContractAddress: protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        from: undefined,
+        to: userAddress,
+      },
+    })
+  }
+
+  async getWithdrawals({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
+        protocolTokenAddress,
+      ),
+      filter: {
+        smartContractAddress: protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        from: userAddress,
+        to: undefined,
+      },
+    })
+  }
+
+  async getMovements({
+    protocolToken,
+    underlyingTokens,
+    filter: { smartContractAddress, fromBlock, toBlock, from, to },
+  }: {
+    protocolToken: Erc20Metadata
+    underlyingTokens: Erc20Metadata[]
+    filter: {
+      smartContractAddress: string
+      fromBlock: number
+      toBlock: number
+      from?: string
+      to?: string
+    }
+  }): Promise<MovementsByBlock[]> {
+    const protocolTokenContract = Erc20__factory.connect(
+      smartContractAddress,
+      this.provider,
+    )
+
+    const filter = protocolTokenContract.filters.Transfer(from, to)
+
+    const eventResults =
+      await protocolTokenContract.queryFilter<TransferEvent.Event>(
+        filter,
+        fromBlock,
+        toBlock,
+      )
+
+    return await Promise.all(
+      eventResults.map(async (transferEvent) => {
+        const {
+          blockNumber,
+          args: { value: protocolTokenMovementValueRaw },
+          transactionHash,
+        } = transferEvent
+
+        const protocolTokenPrice =
+          await this.getProtocolTokenToUnderlyingTokenRate({
+            blockNumber,
+            protocolTokenAddress: protocolToken.address,
+          })
+
+        return {
+          protocolToken: {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+          },
+          underlyingTokensMovement: underlyingTokens.reduce(
+            (accumulator, currentToken) => {
+              const currentTokenPrice = protocolTokenPrice.tokens?.find(
+                (price) => price.address === currentToken.address,
+              )
+
+              if (!currentTokenPrice) {
+                throw new Error('No price for underlying token at this time')
+              }
+
+              const movementValueRaw =
+                (protocolTokenMovementValueRaw *
+                  currentTokenPrice.underlyingRateRaw) /
+                BigInt(10 ** currentTokenPrice.decimals)
+
+              return {
+                ...accumulator,
+
+                [currentToken.address]: {
+                  ...currentToken,
+                  transactionHash,
+                  movementValueRaw,
+                },
+              }
+            },
+            {} as Record<string, BaseTokenMovement>,
+          ),
+          blockNumber,
+        }
+      }),
+    )
+  }
+
+  async getProfits({
+    userAddress,
+    fromBlock,
+    toBlock,
+  }: GetProfitsInput): Promise<ProfitsWithRange> {
+    const [endPositionValues, startPositionValues] = await Promise.all([
+      this.getPositions({
+        userAddress,
+        blockNumber: toBlock,
+      }).then(formatProtocolTokenArrayToMap),
+      this.getPositions({
+        userAddress,
+        blockNumber: fromBlock,
+      }).then(formatProtocolTokenArrayToMap),
+    ])
+
+    const tokens = await Promise.all(
+      Object.values(endPositionValues).map(
+        async ({
+          protocolTokenMetadata,
+          underlyingTokenPositions: underlyingEndPositions,
+        }) => {
+          const getEventsInput: GetEventsInput = {
+            userAddress,
+            protocolTokenAddress: protocolTokenMetadata.address,
+            fromBlock,
+            toBlock,
+          }
+
+          const [withdrawals, deposits] = await Promise.all([
+            this.getWithdrawals(getEventsInput).then(aggregateTrades),
+            this.getDeposits(getEventsInput).then(aggregateTrades),
+          ])
+
+          return {
+            ...protocolTokenMetadata,
+            type: TokenType.Protocol,
+            tokens: Object.values(underlyingEndPositions).map(
+              ({
+                address,
+                name,
+                symbol,
+                decimals,
+                balanceRaw: endPositionValueRaw,
+              }) => {
+                const startPositionValueRaw =
+                  startPositionValues[protocolTokenMetadata.address]
+                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
+
+                const calculationData = {
+                  withdrawalsRaw: withdrawals[address] ?? 0n,
+                  depositsRaw: deposits[address] ?? 0n,
+                  endPositionValueRaw: endPositionValueRaw ?? 0n,
+                  startPositionValueRaw,
+                }
+
+                let profitRaw =
+                  calculationData.endPositionValueRaw +
+                  calculationData.withdrawalsRaw -
+                  calculationData.depositsRaw -
+                  calculationData.startPositionValueRaw
+
+                if (
+                  this.getProtocolDetails().positionType === PositionType.Borrow
+                ) {
+                  profitRaw *= -1n
+                }
+
+                return {
+                  address,
+                  name,
+                  symbol,
+                  decimals,
+                  profitRaw,
+                  type: TokenType.Underlying,
+                  calculationData: {
+                    withdrawalsRaw: withdrawals[address] ?? 0n,
+                    withdrawals: formatUnits(
+                      withdrawals[address] ?? 0n,
+                      decimals,
+                    ),
+                    depositsRaw: deposits[address] ?? 0n,
+                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
+                    startPositionValueRaw: startPositionValueRaw ?? 0n,
+                    startPositionValue: formatUnits(
+                      startPositionValueRaw ?? 0n,
+                      decimals,
+                    ),
+                    endPositionValueRaw,
+                    endPositionValue: formatUnits(
+                      endPositionValueRaw ?? 0n,
+                      decimals,
+                    ),
+                  },
+                }
+              },
+            ),
+          }
+        },
+      ),
+    )
+
+    return { tokens, fromBlock, toBlock }
+  }
+
+  private async fetchProtocolTokenMetadata(
+    _protocolTokenAddress: string,
+  ): Promise<Erc20Metadata> {
+    return (await this.buildMetadata()).protocolToken
+  }
+
+  private async fetchUnderlyingTokensMetadata(
+    _protocolTokenAddress: string,
+  ): Promise<Erc20Metadata[]> {
+    return (await this.buildMetadata()).underlyingTokens
   }
 }
