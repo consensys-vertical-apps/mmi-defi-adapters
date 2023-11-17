@@ -1,0 +1,22 @@
+{
+  "blockNumber": 18594536,
+  "snapshot": [
+    {
+      "protocolId": "uniswap-v-2-pool-adapter",
+      "name": "UniswapV2PoolAdapter",
+      "description": "UniswapV2PoolAdapter pool adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "success": false,
+      "error": {
+        "message": "overflow (argument=\"value\", value=1000000000000000000, code=INVALID_ARGUMENT, version=6.7.1)",
+        "details": {
+          "name": "TypeError"
+        }
+      }
+    }
+  ]
+}

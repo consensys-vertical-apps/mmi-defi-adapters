@@ -37,6 +37,7 @@ import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/m
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
 import StargateVestingArbitrumVestingToken from '../../adapters/stargate/products/vesting/metadata/arbitrum.vesting-token.json'
 import StargateVestingEthereumVestingToken from '../../adapters/stargate/products/vesting/metadata/ethereum.vesting-token.json'
+import UniswapV2PoolAdapterPoolEthereumProtocolToken from '../../adapters/uniswap-v-2-pool-adapter/products/pool/metadata/ethereum.protocol-token.json'
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
@@ -373,6 +374,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CompoundPoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2PoolAdapter,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolAdapterPoolEthereumProtocolToken,
   ],
 ])
 

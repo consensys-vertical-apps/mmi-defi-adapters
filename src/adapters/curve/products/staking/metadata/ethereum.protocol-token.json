@@ -2719,6 +2719,22 @@
       }
     ]
   },
+  "0xc33098ceB5C5A3d471802333Cfc98Ac78acAb4CA": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Plain Pool: MIM/USDV",
+      "decimals": 18,
+      "symbol": "MIMUSDV-f",
+      "address": "0xc33098ceB5C5A3d471802333Cfc98Ac78acAb4CA"
+    },
+    "underlyingTokens": [
+      {
+        "name": "Curve.fi Factory Plain Pool: MIM/USDV",
+        "decimals": 18,
+        "symbol": "MIMUSDV-f",
+        "address": "0x21B45B2c1C53fDFe378Ed1955E8Cc29aE8cE0132"
+      }
+    ]
+  },
   "0xDeFd8FdD20e0f34115C7018CCfb655796F6B2168": {
     "protocolToken": {
       "name": "Curve.fi USD-BTC-ETH",
@@ -4588,6 +4604,22 @@
         "decimals": 18,
         "symbol": "UBDNUSDT-f",
         "address": "0x8d57F42b2aA884F064c0069B8Ba580518821754D"
+      }
+    ]
+  },
+  "0x02C26E2013D7476E69aD3B453F025A43116B448D": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: PRISMA/mkUSD",
+      "decimals": 18,
+      "symbol": "mkPRISMA-f",
+      "address": "0x02C26E2013D7476E69aD3B453F025A43116B448D"
+    },
+    "underlyingTokens": [
+      {
+        "name": "Curve.fi Factory Crypto Pool: PRISMA/mkUSD",
+        "decimals": 18,
+        "symbol": "mkPRISMA-f",
+        "address": "0x067079c14B85169e6a29703769dadDef90816f4C"
       }
     ]
   },
