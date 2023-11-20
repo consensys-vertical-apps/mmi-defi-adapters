@@ -11,8 +11,6 @@ import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
-  GetEventsInput,
-  MovementsByBlock,
   GetAprInput,
   GetApyInput,
   GetTotalValueLockedInput,
@@ -22,8 +20,6 @@ import {
   ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
-  ProtocolRewardPosition,
-  GetClaimableRewardsInput,
   TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -151,16 +147,6 @@ export class CompoundPoolAdapter
     return [underlyingTokenBalance]
   }
 
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
-  }
-
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
   /**
    * Update me.
    * Add logic to find tvl in a pool
@@ -215,13 +201,6 @@ export class CompoundPoolAdapter
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 

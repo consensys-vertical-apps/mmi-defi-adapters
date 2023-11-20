@@ -14,6 +14,7 @@
 
 ### Properties
 
+- [transactionHash](adapter.BaseTokenMovement.md#transactionhash)
 - [movementValueRaw](adapter.BaseTokenMovement.md#movementvalueraw)
 - [address](adapter.BaseTokenMovement.md#address)
 - [name](adapter.BaseTokenMovement.md#name)
@@ -22,13 +23,23 @@
 
 ## Properties
 
+### transactionHash
+
+• **transactionHash**: `string`
+
+#### Defined in
+
+[adapter.ts:237](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L237)
+
+___
+
 ### movementValueRaw
 
 • **movementValueRaw**: `bigint`
 
 #### Defined in
 
-[adapter.ts:268](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L268)
+[adapter.ts:238](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L238)
 
 ___
 

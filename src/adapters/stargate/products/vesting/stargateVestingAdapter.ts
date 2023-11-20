@@ -22,8 +22,6 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  ProtocolRewardPosition,
-  GetClaimableRewardsInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -122,10 +120,6 @@ export class StargateVestingAdapter
     throw new NotImplementedError()
   }
 
-  async getClaimedRewards(): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
@@ -136,24 +130,11 @@ export class StargateVestingAdapter
     throw new NotImplementedError()
   }
 
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
-  }
-
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

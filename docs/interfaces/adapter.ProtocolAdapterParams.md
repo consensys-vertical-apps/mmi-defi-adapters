@@ -11,6 +11,7 @@
 - [provider](adapter.ProtocolAdapterParams.md#provider)
 - [chainId](adapter.ProtocolAdapterParams.md#chainid)
 - [protocolId](adapter.ProtocolAdapterParams.md#protocolid)
+- [adaptersController](adapter.ProtocolAdapterParams.md#adapterscontroller)
 
 ## Properties
 
@@ -20,7 +21,7 @@
 
 #### Defined in
 
-[adapter.ts:358](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L358)
+[adapter.ts:328](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L328)
 
 ___
 
@@ -30,7 +31,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:359](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L359)
+[adapter.ts:329](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L329)
 
 ___
 
@@ -40,4 +41,14 @@ ___
 
 #### Defined in
 
-[adapter.ts:360](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L360)
+[adapter.ts:330](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L330)
+
+___
+
+### adaptersController
+
+• **adaptersController**: `AdaptersController`
+
+#### Defined in
+
+[adapter.ts:331](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L331)

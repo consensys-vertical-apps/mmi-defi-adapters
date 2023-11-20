@@ -169,17 +169,7 @@ export interface GetPositionsInput {
    */
   blockNumber?: number
 }
-export interface GetClaimableRewardsInput {
-  /**
-   * Address of the user can be any type of address EOA/Contract
-   */
-  userAddress: string
 
-  /**
-   * Optional override param
-   */
-  blockNumber?: number
-}
 export interface GetPricePerShareInput {
   /**
    * Optional override param
@@ -209,28 +199,6 @@ export interface Underlying extends TokenBalance {
   type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimableFee
 
   tokens?: Underlying[]
-}
-
-/**
- * User's position, includes balance of protocol token related underlying token balances
- */
-export interface ProtocolRewardPosition extends Erc20Metadata {
-  type: typeof TokenType.Protocol
-
-  /**
-   * Underlying token balances
-   */
-  tokens?: ClaimableRewards[]
-}
-
-/**
- *
- * Claimable rewards are mapped one to one to the underlying "reward" token
- * Therefore they always have a underlying-token which is the reward token
- */
-export interface ClaimableRewards extends TokenBalance {
-  type: typeof TokenType.Reward
-  tokens: Underlying[]
 }
 
 /**

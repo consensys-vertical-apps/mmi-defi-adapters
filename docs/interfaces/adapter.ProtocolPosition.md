@@ -39,7 +39,7 @@ User's balance raw
 
 #### Defined in
 
-[adapter.ts:199](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L199)
+[adapter.ts:190](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L190)
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:239](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L239)
+[adapter.ts:208](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L208)
 
 ___
 
@@ -61,7 +61,7 @@ Used by NFT Defi Positions, e.g. uniswapV3
 
 #### Defined in
 
-[adapter.ts:244](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L244)
+[adapter.ts:213](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L213)
 
 ___
 
@@ -73,7 +73,7 @@ Underlying token balances
 
 #### Defined in
 
-[adapter.ts:249](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L249)
+[adapter.ts:218](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L218)
 
 ___
 

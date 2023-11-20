@@ -4,8 +4,6 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   ProtocolDetails,
   PositionType,
-  GetEventsInput,
-  MovementsByBlock,
   GetAprInput,
   GetApyInput,
   GetTotalValueLockedInput,
@@ -15,8 +13,6 @@ import {
   ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
-  ProtocolRewardPosition,
-  GetClaimableRewardsInput,
   TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -71,16 +67,6 @@ export class SDaiAdapter extends SimplePoolAdapter {
         type: TokenType.Underlying,
       },
     ]
-  }
-
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
-  }
-
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
   }
 
   async getTotalValueLocked(
@@ -144,13 +130,6 @@ export class SDaiAdapter extends SimplePoolAdapter {
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 }

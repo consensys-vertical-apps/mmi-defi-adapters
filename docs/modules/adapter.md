@@ -8,13 +8,10 @@
 
 - [GetProfitsInput](../interfaces/adapter.GetProfitsInput.md)
 - [GetPositionsInput](../interfaces/adapter.GetPositionsInput.md)
-- [GetClaimableRewardsInput](../interfaces/adapter.GetClaimableRewardsInput.md)
 - [GetPricePerShareInput](../interfaces/adapter.GetPricePerShareInput.md)
 - [GetTotalValueLockedInput](../interfaces/adapter.GetTotalValueLockedInput.md)
 - [TokenBalance](../interfaces/adapter.TokenBalance.md)
 - [Underlying](../interfaces/adapter.Underlying.md)
-- [ProtocolRewardPosition](../interfaces/adapter.ProtocolRewardPosition.md)
-- [ClaimableRewards](../interfaces/adapter.ClaimableRewards.md)
 - [ProtocolPosition](../interfaces/adapter.ProtocolPosition.md)
 - [UnderlyingTokenRate](../interfaces/adapter.UnderlyingTokenRate.md)
 - [ProtocolTokenUnderlyingRate](../interfaces/adapter.ProtocolTokenUnderlyingRate.md)
@@ -54,9 +51,9 @@
 
 #### Defined in
 
-[adapter.ts:6](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L6)
+[adapter.ts:7](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L7)
 
-[adapter.ts:12](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L12)
+[adapter.ts:13](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L13)
 
 ___
 
@@ -66,9 +63,9 @@ ___
 
 #### Defined in
 
-[adapter.ts:14](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L14)
+[adapter.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L15)
 
-[adapter.ts:35](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L35)
+[adapter.ts:36](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L36)
 
 ___
 
@@ -78,7 +75,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:37](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L37)
+[adapter.ts:38](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L38)
 
 ___
 
@@ -95,7 +92,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:43](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L43)
+[adapter.ts:44](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L44)
 
 ___
 
@@ -112,7 +109,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:53](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L53)
+[adapter.ts:54](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L54)
 
 ___
 
@@ -129,7 +126,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:64](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L64)
+[adapter.ts:65](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L65)
 
 ___
 
@@ -149,7 +146,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:75](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L75)
+[adapter.ts:76](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L76)
 
 ___
 
@@ -168,11 +165,11 @@ ___
 | `iconUrl` | `string` | Protocol icon |
 | `siteUrl` | `string` | Protocol website |
 | `positionType` | [`PositionType`](adapter.md#positiontype) | Type of position One adapter per type |
-| `product` | `string` | Unique protocol-product name |
+| `productId` | `string` | Unique protocol-product name |
 
 #### Defined in
 
-[adapter.ts:117](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L117)
+[adapter.ts:118](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L118)
 
 ## Variables
 
@@ -191,9 +188,9 @@ ___
 
 #### Defined in
 
-[adapter.ts:6](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L6)
+[adapter.ts:7](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L7)
 
-[adapter.ts:12](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L12)
+[adapter.ts:13](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L13)
 
 ___
 
@@ -212,6 +209,6 @@ ___
 
 #### Defined in
 
-[adapter.ts:14](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L14)
+[adapter.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L15)
 
-[adapter.ts:35](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L35)
+[adapter.ts:36](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L36)

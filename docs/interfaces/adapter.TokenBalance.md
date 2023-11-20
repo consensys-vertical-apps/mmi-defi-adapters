@@ -12,8 +12,6 @@
 
   ↳↳ [`Underlying`](adapter.Underlying.md)
 
-  ↳↳ [`ClaimableRewards`](adapter.ClaimableRewards.md)
-
   ↳↳ [`ProtocolPosition`](adapter.ProtocolPosition.md)
 
 ## Table of contents
@@ -36,7 +34,7 @@ User's balance raw
 
 #### Defined in
 
-[adapter.ts:199](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L199)
+[adapter.ts:190](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L190)
 
 ___
 
