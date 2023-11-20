@@ -12,8 +12,6 @@ import {
   Underlying,
   GetAprInput,
   GetApyInput,
-  GetEventsInput,
-  MovementsByBlock,
   PositionType,
   ProtocolTokenApr,
   ProtocolTokenApy,
@@ -176,22 +174,11 @@ export class StargatePoolAdapter
     )
   }
 
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

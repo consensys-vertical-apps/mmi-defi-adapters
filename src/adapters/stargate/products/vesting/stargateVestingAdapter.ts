@@ -120,10 +120,6 @@ export class StargateVestingAdapter
     throw new NotImplementedError()
   }
 
-  async getClaimedRewards(): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
@@ -139,13 +135,6 @@ export class StargateVestingAdapter
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

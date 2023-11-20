@@ -256,14 +256,6 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
 
   /**
    * Update me.
-   * Add logic to get user's claimed rewards per position by block range
-   */
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  /**
-   * Update me.
    * Add logic to get tvl in a pool
    *
    */
@@ -385,13 +377,6 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

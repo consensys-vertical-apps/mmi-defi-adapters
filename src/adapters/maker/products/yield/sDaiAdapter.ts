@@ -4,8 +4,6 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   ProtocolDetails,
   PositionType,
-  GetEventsInput,
-  MovementsByBlock,
   GetAprInput,
   GetApyInput,
   GetTotalValueLockedInput,
@@ -71,10 +69,6 @@ export class SDaiAdapter extends SimplePoolAdapter {
     ]
   }
 
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
@@ -136,13 +130,6 @@ export class SDaiAdapter extends SimplePoolAdapter {
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 }
