@@ -4,12 +4,8 @@ import {
   ProtocolAdapterParams,
   ProtocolDetails,
   PositionType,
-  GetEventsInput,
-  MovementsByBlock,
   GetApyInput,
   GetAprInput,
-  GetClaimableRewardsInput,
-  ProtocolRewardPosition,
   ProtocolTokenApr,
   ProtocolTokenApy,
   TokenType,
@@ -54,29 +50,11 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
     return [await this.fetchProtocolTokenMetadata()]
   }
 
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
-  }
-
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

@@ -21,7 +21,7 @@ Address of the user can be any type of address EOA/Contract
 
 #### Defined in
 
-[adapter.ts:164](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L164)
+[adapter.ts:165](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L165)
 
 ___
 
@@ -33,4 +33,4 @@ Optional override param
 
 #### Defined in
 
-[adapter.ts:169](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L169)
+[adapter.ts:170](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L170)

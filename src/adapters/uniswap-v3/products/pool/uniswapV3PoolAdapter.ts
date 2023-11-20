@@ -17,9 +17,7 @@ import {
   GetProfitsInput,
   GetApyInput,
   GetAprInput,
-  GetClaimableRewardsInput,
   GetConversionRateInput,
-  ProtocolRewardPosition,
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
@@ -219,16 +217,6 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     )}%`
   }
 
-  /**
-   * Update me.
-   * Add logic to get userAddress claimable rewards per position
-   */
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
-  }
-
   async getWithdrawals({
     protocolTokenAddress,
     fromBlock,
@@ -264,14 +252,6 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
       eventType: 'deposit',
       tokenId,
     })
-  }
-
-  /**
-   * Update me.
-   * Add logic to get user's claimed rewards per position by block range
-   */
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
   }
 
   /**
@@ -397,13 +377,6 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

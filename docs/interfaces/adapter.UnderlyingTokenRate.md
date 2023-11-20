@@ -29,7 +29,7 @@
 
 #### Defined in
 
-[adapter.ts:253](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L253)
+[adapter.ts:222](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L222)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:254](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L254)
+[adapter.ts:223](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L223)
 
 ___
 

@@ -24,8 +24,6 @@ export function simplePoolAdapterTemplate(
     ProtocolTokenTvl,
     UnderlyingTokenRate,
     Underlying,
-    ProtocolRewardPosition,
-    GetClaimableRewardsInput,
   } from '../../../../types/adapter'
   import { Erc20Metadata } from '../../../../types/erc20Metadata'
   
@@ -96,28 +94,6 @@ export function simplePoolAdapterTemplate(
   
     /**
      * Update me.
-     * Add logic to return current claimable rewards.
-     * Ensure you support blocknumber override param
-     *
-     */
-    async getClaimableRewards(
-      _input: GetClaimableRewardsInput,
-    ): Promise<ProtocolRewardPosition[]> {
-      throw new NotImplementedError()
-    }
-  
-    /**
-     * Update me.
-     * Add logic to return claimed rewards between blocknumber range
-     * Implement as you wish, use event logs or chain data if possible
-     *
-     */
-    async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-      throw new NotImplementedError()
-    }
-  
-    /**
-     * Update me.
      * Add logic to find tvl in a pool
      *
      */
@@ -155,13 +131,6 @@ export function simplePoolAdapterTemplate(
     }
   
     async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-      throw new NotImplementedError()
-    }
-    async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-      throw new NotImplementedError()
-    }
-  
-    async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
       throw new NotImplementedError()
     }
   

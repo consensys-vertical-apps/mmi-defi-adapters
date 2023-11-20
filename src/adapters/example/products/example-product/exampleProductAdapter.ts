@@ -19,7 +19,6 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  ProtocolRewardPosition,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -104,30 +103,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
             decimals: 6,
             movementValueRaw: 100000000n,
             transactionHash: '0x33',
-          },
-        },
-        blockNumber: 17970000,
-      },
-    ]
-  }
-
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return [
-      {
-        protocolToken: {
-          address: '0x1000000000000000000000000000000000000001',
-          name: 'LP USD Coin',
-          symbol: 'LP USDC',
-          decimals: 6,
-        },
-        underlyingTokensMovement: {
-          '0x0000000000000000000000000000000000000001': {
-            address: '0x0000000000000000000000000000000000000001',
-            name: 'USD Coin',
-            symbol: 'USDC',
-            decimals: 6,
-            movementValueRaw: 100000000n,
-            transactionHash: '0x333',
           },
         },
         blockNumber: 17970000,
@@ -227,40 +202,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
       },
     ]
   }
-  async getClaimableRewards(
-    _input: GetPositionsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    return [
-      {
-        address: '0x1000000000000000000000000000000000000001',
-        name: 'Coin-LP',
-        symbol: 'S*USDC',
-        decimals: 6,
-
-        type: 'protocol',
-        tokens: [
-          {
-            address: '0xrewardContractAddress',
-            name: 'USD Coin',
-            symbol: 'USDC',
-            decimals: 6,
-            balanceRaw: 31492408006n,
-            type: 'claimable',
-            tokens: [
-              {
-                address: '0xunderlyingRewardTokenAddress',
-                name: 'USD Coin',
-                symbol: 'USDC',
-                decimals: 6,
-                balanceRaw: 31492408006n,
-                type: 'underlying',
-              },
-            ],
-          },
-        ],
-      },
-    ]
-  }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     return {
@@ -279,24 +220,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
       symbol: 'S*USDC',
       decimals: 6,
       apyDecimal: 0.1, // 10%
-    }
-  }
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    return {
-      address: '0x1000000000000000000000000000000000000001',
-      name: 'Coin-LP',
-      symbol: 'S*USDC',
-      decimals: 6,
-      apyDecimal: 0.1, // 10%
-    }
-  }
-  async getRewardApr(_input: GetApyInput): Promise<ProtocolTokenApr> {
-    return {
-      address: '0x1000000000000000000000000000000000000001',
-      name: 'Coin-LP',
-      symbol: 'S*USDC',
-      decimals: 6,
-      aprDecimal: 0.1, // 10%
     }
   }
 

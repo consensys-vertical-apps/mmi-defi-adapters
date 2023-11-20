@@ -19,7 +19,6 @@ This library is designed to simplify and standardize the process of fetching and
    - Price of LP token
    - Deposits by address
    - Withdrawals by address
-   - Claimed rewards by address
 
 ## 🎥 DeFi Adapter Tutorial
 

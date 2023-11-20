@@ -16,8 +16,6 @@ import {
   ProtocolTokenApy,
   GetAprInput,
   ProtocolTokenApr,
-  GetClaimableRewardsInput,
-  ProtocolRewardPosition,
 } from './adapter'
 import { Erc20Metadata } from './erc20Metadata'
 
@@ -62,17 +60,6 @@ export interface IProtocolAdapter {
 
   /**
    *
-   * @remarks Returns array of claimable rewards owed to the user
-   *
-   * @param {GetClaimableRewardsInput} input - Object with user-address and optional blockNumber override.
-   * @returns {Promise<ClaimableRewards[]>} An array of objects detailing the user positions.
-   */
-  getClaimableRewards(
-    input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]>
-
-  /**
-   *
    * @remarks Returns "price" of lp-tokens in the form of the underlying tokens
    *
    * @param {GetConversionRateInput} input - Object with protocol-token-address and optional blockNumber override.
@@ -99,15 +86,6 @@ export interface IProtocolAdapter {
    * @returns {Promise<MovementsByBlock[]>} Array of objects detailing deposit events within the specified block range.
    */
   getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]>
-
-  /**
-   *
-   * @remarks Returns the user's claimed rewards from a position
-   *
-   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
-   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing claimed reward events within the specified block range.
-   */
-  getClaimedRewards(input: GetEventsInput): Promise<MovementsByBlock[]>
 
   /**
    *
@@ -140,28 +118,10 @@ export interface IProtocolAdapter {
 
   /**
    *
-   * @remarks Returns Apy made by the reward token(s) per pool
-   *
-   * @param {GetApyInput} input - Object with protocol-token-address and optional blockNumber override.
-   * @returns {Promise<ProtocolTokenApy>} Object detailing the Annual Percentage Yield, including rewards, for each protocol pool.
-   */
-  getRewardApy(input: GetApyInput): Promise<ProtocolTokenApy>
-
-  /**
-   *
    * @remarks Returns Apr made per pool
    *
    * @param {GetAprInput} input - Object with protocol-token-address and optional blockNumber override.
    * @returns {Promise<ProtocolTokenApr>} Object detailing the Annual Percentage Rate without reward APR for each protocol pool.
    */
   getApr(input: GetAprInput): Promise<ProtocolTokenApr>
-
-  /**
-   *
-   * @remarks Returns reward Apr made per pool
-   *
-   * @param {GetAprInput} input - Object with protocol-token-address and optional blockNumber override.
-   * @returns {Promise<ProtocolTokenApr>} Object detailing the Annual Percentage Rate, including rewards, for each protocol pool.
-   */
-  getRewardApr(input: GetAprInput): Promise<ProtocolTokenApr>
 }

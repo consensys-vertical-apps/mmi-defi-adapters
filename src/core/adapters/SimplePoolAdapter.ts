@@ -25,7 +25,6 @@ import {
   ProtocolTokenTvl,
   TokenBalance,
   TokenType,
-  ProtocolRewardPosition,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
@@ -83,11 +82,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
     return protocolTokens
   }
-
-  abstract getClaimableRewards({
-    userAddress,
-    blockNumber,
-  }: GetPositionsInput): Promise<ProtocolRewardPosition[]>
 
   async getProtocolTokenToUnderlyingTokenRate({
     blockNumber,
@@ -156,8 +150,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       },
     })
   }
-
-  abstract getClaimedRewards(input: GetEventsInput): Promise<MovementsByBlock[]>
 
   async getTotalValueLocked({
     blockNumber,
@@ -315,8 +307,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
   abstract getApy(input: GetApyInput): Promise<ProtocolTokenApy>
   abstract getApr(input: GetAprInput): Promise<ProtocolTokenApr>
-  abstract getRewardApy(input: GetApyInput): Promise<ProtocolTokenApy>
-  abstract getRewardApr(input: GetAprInput): Promise<ProtocolTokenApr>
 
   /**
    * Fetches the protocol-token metadata

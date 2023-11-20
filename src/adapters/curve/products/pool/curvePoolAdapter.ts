@@ -14,8 +14,6 @@ import { Chain } from '../../../../defiProvider'
 import {
   ProtocolDetails,
   PositionType,
-  GetEventsInput,
-  MovementsByBlock,
   GetAprInput,
   GetApyInput,
   GetTotalValueLockedInput,
@@ -25,8 +23,6 @@ import {
   ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
-  ProtocolRewardPosition,
-  GetClaimableRewardsInput,
   TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -136,28 +132,6 @@ export class CurvePoolAdapter
 
   /**
    * Update me.
-   * Add logic to return current claimable rewards.
-   * Ensure you support blocknumber override param
-   *
-   */
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
-  }
-
-  /**
-   * Update me.
-   * Add logic to return claimed rewards between blocknumber range
-   * Implement as you wish, use event logs or chain data if possible
-   *
-   */
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  /**
-   * Update me.
    * Add logic to find tvl in a pool
    *
    */
@@ -219,13 +193,6 @@ export class CurvePoolAdapter
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 

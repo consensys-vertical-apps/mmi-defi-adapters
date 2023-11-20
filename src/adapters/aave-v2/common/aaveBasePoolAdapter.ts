@@ -3,7 +3,6 @@ import { Chain } from '../../../core/constants/chains'
 import { RAY } from '../../../core/constants/RAY'
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
-import { NotApplicableError } from '../../../core/errors/errors'
 import { aprToApy } from '../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
@@ -12,14 +11,10 @@ import {
   Underlying,
   GetAprInput,
   GetApyInput,
-  GetEventsInput,
-  MovementsByBlock,
   ProtocolTokenApr,
   ProtocolTokenApy,
   TokenBalance,
   TokenType,
-  GetClaimableRewardsInput,
-  ProtocolRewardPosition,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
@@ -67,16 +62,6 @@ export abstract class AaveBasePoolAdapter
     )
   }
 
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotApplicableError()
-  }
-
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotApplicableError()
-  }
-
   async getApy({
     protocolTokenAddress,
     blockNumber,
@@ -107,14 +92,6 @@ export abstract class AaveBasePoolAdapter
       ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
       aprDecimal: apr * 100,
     }
-  }
-
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotApplicableError()
-  }
-
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotApplicableError()
   }
 
   async buildMetadata() {

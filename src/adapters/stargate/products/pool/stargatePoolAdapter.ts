@@ -12,16 +12,12 @@ import {
   Underlying,
   GetAprInput,
   GetApyInput,
-  GetEventsInput,
-  MovementsByBlock,
   PositionType,
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolDetails,
   TokenBalance,
   TokenType,
-  GetClaimableRewardsInput,
-  ProtocolRewardPosition,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
@@ -178,28 +174,11 @@ export class StargatePoolAdapter
     )
   }
 
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
     throw new NotImplementedError()
   }
 
