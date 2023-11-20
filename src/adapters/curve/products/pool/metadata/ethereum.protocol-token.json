@@ -5864,29 +5864,6 @@
     ],
     "poolAddress": "0xb2C57D651dB0FcCc96cABda11191DF25E05B88b6"
   },
-  "0x9A6F2FfA30CDDBB6156B98AC88a546E81205f6Ba": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Plain Pool: LETH/WETH",
-      "decimals": 18,
-      "symbol": "LETH-f",
-      "address": "0x9A6F2FfA30CDDBB6156B98AC88a546E81205f6Ba"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x401e5761bd48b8326d5f1072c0b66f13ecdcbeae",
-        "name": "Looper ETH",
-        "symbol": "LETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      }
-    ],
-    "poolAddress": "0x9A6F2FfA30CDDBB6156B98AC88a546E81205f6Ba"
-  },
   "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7": {
     "protocolToken": {
       "name": "Curve.fi Factory USD Metapool: PAYPALFRAXBP",
@@ -6326,6 +6303,75 @@
       }
     ],
     "poolAddress": "0xDd9E687c73A2031A8f5058B596d740f53c1cb220"
+  },
+  "0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Plain Pool: cvxPrisma/Prisma",
+      "decimals": 18,
+      "symbol": "cvxprismlp-f",
+      "address": "0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xda47862a83dac0c112ba89c6abc2159b95afd71c",
+        "name": "Prisma Governance Token",
+        "symbol": "PRISMA",
+        "decimals": 18
+      },
+      {
+        "address": "0x34635280737b5bfe6c7dc2fc3065d60d66e78185",
+        "name": "Convex Prisma",
+        "symbol": "cvxPrisma",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B"
+  },
+  "0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Plain Pool: PRISMA/yPRISMA",
+      "decimals": 18,
+      "symbol": "yPRISMA-f",
+      "address": "0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xda47862a83dac0c112ba89c6abc2159b95afd71c",
+        "name": "Prisma Governance Token",
+        "symbol": "PRISMA",
+        "decimals": 18
+      },
+      {
+        "address": "0xe3668873d944e4a949da05fc8bde419eff543882",
+        "name": "Yearn PRISMA",
+        "symbol": "yPRISMA",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7"
+  },
+  "0x21B45B2c1C53fDFe378Ed1955E8Cc29aE8cE0132": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Plain Pool: MIM/USDV",
+      "decimals": 18,
+      "symbol": "MIMUSDV-f",
+      "address": "0x21B45B2c1C53fDFe378Ed1955E8Cc29aE8cE0132"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3",
+        "name": "Magic Internet Money",
+        "symbol": "MIM",
+        "decimals": 18
+      },
+      {
+        "address": "0x0e573ce2736dd9637a0b21058352e1667925c7a8",
+        "name": "USDV",
+        "symbol": "USDV",
+        "decimals": 6
+      }
+    ],
+    "poolAddress": "0x21B45B2c1C53fDFe378Ed1955E8Cc29aE8cE0132"
   },
   "0xc4AD29ba4B3c580e6D59105FFf484999997675Ff": {
     "protocolToken": {
@@ -8899,29 +8945,6 @@
     ],
     "poolAddress": "0x67e0bDbe0A2C5999A60D048f50e794218056b767"
   },
-  "0xdB09B79AfA65825939b8cE963b56d94d389e153F": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Crypto Pool: safETH/ETH",
-      "decimals": 18,
-      "symbol": "safETHETH-f",
-      "address": "0xdB09B79AfA65825939b8cE963b56d94d389e153F"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x6732efaf6f39926346bef8b821a04b6361c4f3e5",
-        "name": "Simple Asymmetry Finance ETH",
-        "symbol": "safETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      }
-    ],
-    "poolAddress": "0x02498De890c66fA387E86E04d75AdaB9df4802F6"
-  },
   "0xc794C6A95f30d0ebF7B3Bbe85e8a0A95C9e411c1": {
     "protocolToken": {
       "name": "Curve.fi Factory Crypto Pool: hyUSD/eUSD",
@@ -9919,6 +9942,75 @@
     ],
     "poolAddress": "0x1e098B32944292969fB58c85bDC85545DA397117"
   },
+  "0xb34e1a3D07f9D180Bc2FDb9Fd90B8994423e33c1": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: PRISMA/ETH",
+      "decimals": 18,
+      "symbol": "PRISMAETH-f",
+      "address": "0xb34e1a3D07f9D180Bc2FDb9Fd90B8994423e33c1"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xda47862a83dac0c112ba89c6abc2159b95afd71c",
+        "name": "Prisma Governance Token",
+        "symbol": "PRISMA",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x322135Dd9cBAE8Afa84727d9aE1434b5B3EBA44B"
+  },
+  "0x7Be76a89fe1e95995164EEb8e0f18B4431474D3A": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: cvxPrisma/PRISMA",
+      "decimals": 18,
+      "symbol": "cvxPrisma-f",
+      "address": "0x7Be76a89fe1e95995164EEb8e0f18B4431474D3A"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x34635280737b5bfe6c7dc2fc3065d60d66e78185",
+        "name": "Convex Prisma",
+        "symbol": "cvxPrisma",
+        "decimals": 18
+      },
+      {
+        "address": "0xda47862a83dac0c112ba89c6abc2159b95afd71c",
+        "name": "Prisma Governance Token",
+        "symbol": "PRISMA",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0xc6cA529b988267602C86aE3D54ed3A3c9b48B909"
+  },
+  "0x8d57F42b2aA884F064c0069B8Ba580518821754D": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: UBDN/USDT",
+      "decimals": 18,
+      "symbol": "UBDNUSDT-f",
+      "address": "0x8d57F42b2aA884F064c0069B8Ba580518821754D"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd624e5c89466a15812c1d45ce1533be1f16c1702",
+        "name": "UBD Network",
+        "symbol": "UBDN",
+        "decimals": 18
+      },
+      {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "poolAddress": "0xa476bbe03eE08b1B9a15c72f752F22631657bb45"
+  },
   "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E": {
     "protocolToken": {
       "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
@@ -10448,6 +10540,29 @@
     ],
     "poolAddress": "0x1539c2461d7432cc114b0903f1824079BfCA2C92"
   },
+  "0xaECB72D65EC91D2be82753fC1D7de04245891117": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Plain Pool: FRAX-sDAI",
+      "decimals": 18,
+      "symbol": "FRAXsDAI-f",
+      "address": "0xaECB72D65EC91D2be82753fC1D7de04245891117"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x83f20f44975d03b1b09e64809b757c47f942beea",
+        "name": "Savings Dai",
+        "symbol": "sDAI",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0xaECB72D65EC91D2be82753fC1D7de04245891117"
+  },
   "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B": {
     "protocolToken": {
       "name": "TricryptoUSDC",
@@ -10882,6 +10997,35 @@
       }
     ],
     "poolAddress": "0xDB6925eA42897ca786a045B252D95aA7370f44b4"
+  },
+  "0x4D1941a887eC788F059b3bfcC8eE1E97b968825B": {
+    "protocolToken": {
+      "name": "TricryptoFRAX",
+      "decimals": 18,
+      "symbol": "crvFRAXTBTCFRXETH",
+      "address": "0x4D1941a887eC788F059b3bfcC8eE1E97b968825B"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x18084fba666a33d37592fa2633fd49a74dd93a88",
+        "name": "tBTC v2",
+        "symbol": "tBTC",
+        "decimals": 18
+      },
+      {
+        "address": "0x5e8422345238f34275888049021821e8e08caa1f",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x4D1941a887eC788F059b3bfcC8eE1E97b968825B"
   },
   "0x35B269Fe0106d3645d9780C5aaD97C8eb8041c40": {
     "protocolToken": {
