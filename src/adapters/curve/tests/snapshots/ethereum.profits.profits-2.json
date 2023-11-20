@@ -1,0 +1,63 @@
+{
+  "blockNumber": 17260449,
+  "snapshot": [
+    {
+      "protocolId": "curve",
+      "name": "Curve",
+      "description": "Curve pool adapter",
+      "siteUrl": "https://curve.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "success": true,
+      "tokens": [],
+      "fromBlock": 17253303,
+      "toBlock": 17260449
+    },
+    {
+      "protocolId": "curve",
+      "name": "Curve staking",
+      "description": "Curve staking adapter",
+      "siteUrl": "https://curve.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "staking",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A",
+          "name": "Curve.fi DAI/USDC/USDT",
+          "symbol": "3Crv",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "symbol": "3Crv",
+              "decimals": 18,
+              "profitRaw": "0n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "6357359611959254406n",
+                "deposits": "6.357359611959254406",
+                "startPositionValueRaw": "0n",
+                "startPositionValue": "0.0",
+                "endPositionValueRaw": "6357359611959254406n",
+                "endPositionValue": "6.357359611959254406"
+              },
+              "profit": "0.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 17253303,
+      "toBlock": 17260449
+    }
+  ]
+}

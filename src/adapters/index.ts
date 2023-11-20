@@ -10,6 +10,7 @@ import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenPoolAdapter'
 import { CompoundPoolAdapter } from './compound/products/pool/compoundPoolAdapter'
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
+import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { ExampleProductAdapter } from './example/products/example-product/exampleProductAdapter'
 import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
@@ -105,7 +106,7 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Curve]: {
-    [Chain.Ethereum]: [CurvePoolAdapter],
+    [Chain.Ethereum]: [CurvePoolAdapter, CurveStakingAdapter],
   },
 
   [Protocol.Compound]: {
