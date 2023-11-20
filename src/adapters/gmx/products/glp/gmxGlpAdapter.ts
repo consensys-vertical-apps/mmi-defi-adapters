@@ -19,8 +19,6 @@ import {
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenTvl,
-  ProtocolRewardPosition,
-  GetClaimableRewardsInput,
   TokenType,
   GetConversionRateInput,
   GetPositionsInput,
@@ -207,56 +205,8 @@ export class GMXGlpAdapter
         tokens: underlyingTokenBalances,
       },
     ]
-  }
 
-  async getProtocolTokenToUnderlyingTokenRate({
-    blockNumber,
-  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
-    const { protocolToken, vaultAddress, underlyingTokens } =
-      await this.buildMetadata()
-
-    const vaultContract = Vault__factory.connect(vaultAddress, this.provider)
-
-    const protocolTokenContract = Erc20__factory.connect(
-      protocolToken.address,
-      this.provider,
-    )
-
-    const protocolTokenSupply = await protocolTokenContract.totalSupply({
-      blockTag: blockNumber,
-    })
-
-    const underlyingTokenRates = await Promise.all(
-      underlyingTokens.map(async (underlyingToken) => {
-        const redemptionCollateral =
-          await vaultContract.getRedemptionCollateral(underlyingToken.address, {
-            blockTag: blockNumber,
-          })
-
-        const underlyingRateRaw =
-          redemptionCollateral /
-          (protocolTokenSupply / 10n ** BigInt(protocolToken.decimals))
-
-        return {
-          ...underlyingToken,
-          underlyingRateRaw,
-          type: TokenType.Underlying,
-        }
-      }),
-    )
-
-    return {
-      ...protocolToken,
-      type: TokenType.Protocol,
-      baseRate: 1,
-      tokens: underlyingTokenRates,
-    }
-  }
-
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
+    // PRELIMINARY CODE FOR REWARDS
     // const {
     //   rewardReaderAddress,
     //   feeTokenAddress,
@@ -335,8 +285,48 @@ export class GMXGlpAdapter
     // ]
   }
 
-  async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+  async getProtocolTokenToUnderlyingTokenRate({
+    blockNumber,
+  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+    const { protocolToken, vaultAddress, underlyingTokens } =
+      await this.buildMetadata()
+
+    const vaultContract = Vault__factory.connect(vaultAddress, this.provider)
+
+    const protocolTokenContract = Erc20__factory.connect(
+      protocolToken.address,
+      this.provider,
+    )
+
+    const protocolTokenSupply = await protocolTokenContract.totalSupply({
+      blockTag: blockNumber,
+    })
+
+    const underlyingTokenRates = await Promise.all(
+      underlyingTokens.map(async (underlyingToken) => {
+        const redemptionCollateral =
+          await vaultContract.getRedemptionCollateral(underlyingToken.address, {
+            blockTag: blockNumber,
+          })
+
+        const underlyingRateRaw =
+          redemptionCollateral /
+          (protocolTokenSupply / 10n ** BigInt(protocolToken.decimals))
+
+        return {
+          ...underlyingToken,
+          underlyingRateRaw,
+          type: TokenType.Underlying,
+        }
+      }),
+    )
+
+    return {
+      ...protocolToken,
+      type: TokenType.Protocol,
+      baseRate: 1,
+      tokens: underlyingTokenRates,
+    }
   }
 
   async getTotalValueLocked(
@@ -350,13 +340,6 @@ export class GMXGlpAdapter
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-  async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 
