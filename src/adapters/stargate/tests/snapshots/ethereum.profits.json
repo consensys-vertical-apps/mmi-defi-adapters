@@ -111,11 +111,11 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "profitRaw": "-18179952999981820051n",
+              "profitRaw": "-3229072000000n",
               "type": "underlying",
               "calculationData": {
-                "withdrawalsRaw": "18179949n",
-                "withdrawals": "0.000000000018179949",
+                "withdrawalsRaw": "18179949770928000000n",
+                "withdrawals": "18.179949770928",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
                 "startPositionValueRaw": "171813301028000000000000n",
@@ -123,7 +123,7 @@
                 "endPositionValueRaw": "171795121075000000000000n",
                 "endPositionValue": "171795.121075"
               },
-              "profit": "-18.179952999981820051",
+              "profit": "-0.000003229072",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ]
