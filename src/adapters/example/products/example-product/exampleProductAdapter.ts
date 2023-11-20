@@ -19,7 +19,6 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  ProtocolRewardPosition,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -222,40 +221,6 @@ export class ExampleProductAdapter implements IProtocolAdapter {
             decimals: 6,
             balanceRaw: 31492408006n,
             type: 'underlying',
-          },
-        ],
-      },
-    ]
-  }
-  async getClaimableRewards(
-    _input: GetPositionsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    return [
-      {
-        address: '0x1000000000000000000000000000000000000001',
-        name: 'Coin-LP',
-        symbol: 'S*USDC',
-        decimals: 6,
-
-        type: 'protocol',
-        tokens: [
-          {
-            address: '0xrewardContractAddress',
-            name: 'USD Coin',
-            symbol: 'USDC',
-            decimals: 6,
-            balanceRaw: 31492408006n,
-            type: 'claimable',
-            tokens: [
-              {
-                address: '0xunderlyingRewardTokenAddress',
-                name: 'USD Coin',
-                symbol: 'USDC',
-                decimals: 6,
-                balanceRaw: 31492408006n,
-                type: 'underlying',
-              },
-            ],
           },
         ],
       },

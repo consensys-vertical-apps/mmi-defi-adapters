@@ -17,9 +17,7 @@ import {
   GetProfitsInput,
   GetApyInput,
   GetAprInput,
-  GetClaimableRewardsInput,
   GetConversionRateInput,
-  ProtocolRewardPosition,
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
@@ -217,16 +215,6 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
       fee,
       FEE_DECIMALS,
     )}%`
-  }
-
-  /**
-   * Update me.
-   * Add logic to get userAddress claimable rewards per position
-   */
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
   }
 
   async getWithdrawals({

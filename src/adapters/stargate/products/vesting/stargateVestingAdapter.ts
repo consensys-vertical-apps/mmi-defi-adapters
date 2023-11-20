@@ -22,8 +22,6 @@ import {
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
-  ProtocolRewardPosition,
-  GetClaimableRewardsInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -133,12 +131,6 @@ export class StargateVestingAdapter
   }
 
   async getProfits(): Promise<ProfitsWithRange> {
-    throw new NotImplementedError()
-  }
-
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
     throw new NotImplementedError()
   }
 

@@ -15,8 +15,6 @@ import {
   ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
-  ProtocolRewardPosition,
-  GetClaimableRewardsInput,
   TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -71,12 +69,6 @@ export class SDaiAdapter extends SimplePoolAdapter {
         type: TokenType.Underlying,
       },
     ]
-  }
-
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
   }
 
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {

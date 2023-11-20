@@ -21,8 +21,6 @@ import {
   ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
-  ProtocolRewardPosition,
-  GetClaimableRewardsInput,
   ProtocolAdapterParams,
   TokenType,
 } from '../../../../types/adapter'
@@ -174,18 +172,6 @@ export class CurveStakingAdapter
         underlyingRateRaw: pricePerShareRaw,
       },
     ]
-  }
-
-  /**
-   * Update me.
-   * Add logic to return current claimable rewards.
-   * Ensure you support blocknumber override param
-   *
-   */
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
   }
 
   /**

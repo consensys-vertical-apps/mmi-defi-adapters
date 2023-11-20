@@ -25,8 +25,6 @@ import {
   ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
-  ProtocolRewardPosition,
-  GetClaimableRewardsInput,
   TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -132,18 +130,6 @@ export class CurvePoolAdapter
         balanceRaw,
       }
     })
-  }
-
-  /**
-   * Update me.
-   * Add logic to return current claimable rewards.
-   * Ensure you support blocknumber override param
-   *
-   */
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
-    throw new NotImplementedError()
   }
 
   /**

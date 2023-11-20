@@ -20,8 +20,6 @@ import {
   ProtocolDetails,
   TokenBalance,
   TokenType,
-  GetClaimableRewardsInput,
-  ProtocolRewardPosition,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
@@ -194,12 +192,6 @@ export class StargatePoolAdapter
   }
 
   async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
     throw new NotImplementedError()
   }
 

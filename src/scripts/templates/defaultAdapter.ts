@@ -21,9 +21,7 @@ export function defaultAdapterTemplate(
     GetProfitsInput,
     GetApyInput,
     GetAprInput,
-    GetClaimableRewardsInput,
     GetConversionRateInput,
-    ProtocolRewardPosition,
     ProtocolTokenApr,
     ProtocolTokenApy,
     ProtocolTokenUnderlyingRate,
@@ -96,16 +94,6 @@ export function defaultAdapterTemplate(
   
     /**
      * Update me.
-     * Add logic to get userAddress claimable rewards per position
-     */
-    async getClaimableRewards(
-      _input: GetClaimableRewardsInput,
-    ): Promise<ProtocolRewardPosition[]> {
-      throw new NotImplementedError()
-    }
-  
-    /**
-     * Update me.
      * Add logic to get user's withdrawals per position by block range
      */
     async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
@@ -117,14 +105,6 @@ export function defaultAdapterTemplate(
      * Add logic to get user's deposits per position by block range
      */
     async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-      throw new NotImplementedError()
-    }
-  
-    /**
-     * Update me.
-     * Add logic to get user's claimed rewards per position by block range
-     */
-    async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
       throw new NotImplementedError()
     }
   
@@ -162,13 +142,6 @@ export function defaultAdapterTemplate(
     }
   
     async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-      throw new NotImplementedError()
-    }
-    async getRewardApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-      throw new NotImplementedError()
-    }
-  
-    async getRewardApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
       throw new NotImplementedError()
     }
   }`

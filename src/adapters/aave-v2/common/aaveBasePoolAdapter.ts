@@ -18,8 +18,6 @@ import {
   ProtocolTokenApy,
   TokenBalance,
   TokenType,
-  GetClaimableRewardsInput,
-  ProtocolRewardPosition,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
@@ -68,12 +66,6 @@ export abstract class AaveBasePoolAdapter
   }
 
   async getClaimedRewards(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotApplicableError()
-  }
-
-  async getClaimableRewards(
-    _input: GetClaimableRewardsInput,
-  ): Promise<ProtocolRewardPosition[]> {
     throw new NotApplicableError()
   }
 
