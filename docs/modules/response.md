@@ -38,7 +38,7 @@
 | `protocolTokenAddress` | `string` |
 | `protocolId` | `Protocol` |
 | `chainId` | `Chain` |
-| `product` | `string` |
+| `productId` | `string` |
 | `tokenId?` | `string` |
 
 #### Defined in

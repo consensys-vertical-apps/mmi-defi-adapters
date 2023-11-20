@@ -29,7 +29,7 @@
 
 #### Defined in
 
-[adapter.ts:299](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L299)
+[adapter.ts:269](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L269)
 
 ___
 
@@ -41,7 +41,7 @@ Total underlying token locked in pool raw
 
 #### Defined in
 
-[adapter.ts:303](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L303)
+[adapter.ts:273](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L273)
 
 ___
 
