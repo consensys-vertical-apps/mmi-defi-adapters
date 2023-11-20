@@ -1,16 +1,13 @@
-import { formatUnits } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
-import { TransferEvent } from '../../../../contracts/Erc20'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
-import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
   ProtocolDetails,
   PositionType,
@@ -25,18 +22,15 @@ import {
   ProtocolRewardPosition,
   GetClaimableRewardsInput,
   TokenType,
-  ProtocolAdapterParams,
   GetConversionRateInput,
   GetPositionsInput,
-  GetProfitsInput,
-  ProfitsWithRange,
   ProtocolPosition,
   ProtocolTokenUnderlyingRate,
-  BaseTokenMovement,
+  TokenBalance,
+  Underlying,
+  UnderlyingTokenRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
-import { Protocol } from '../../../protocols'
 import {
   GlpManager__factory,
   RewardReader__factory,
@@ -44,6 +38,7 @@ import {
 } from '../../contracts'
 
 type GMXGlpAdapterMetadata = {
+  glpRewardRouter: string
   vaultAddress: string
   rewardReaderAddress: string
   feeTokenAddress: string
@@ -52,18 +47,11 @@ type GMXGlpAdapterMetadata = {
   underlyingTokens: Erc20Metadata[]
 }
 
-export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
+export class GMXGlpAdapter
+  extends SimplePoolAdapter
+  implements IMetadataBuilder
+{
   productId = 'glp'
-  protocolId: Protocol
-  chainId: Chain
-
-  private provider: CustomJsonRpcProvider
-
-  constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
-    this.provider = provider
-    this.chainId = chainId
-    this.protocolId = protocolId
-  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -85,6 +73,7 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
       Record<
         Chain,
         {
+          glpRewardRouter: string
           glpManagerContractAddress: string
           rewardReaderAddress: string
           feeTokenAddress: string
@@ -93,12 +82,14 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
       >
     > = {
       [Chain.Arbitrum]: {
+        glpRewardRouter: '0xB95DB5B167D75e6d04227CfFFA61069348d271F5',
         glpManagerContractAddress: '0x3963FfC9dff443c2A94f21b129D429891E32ec18',
         rewardReaderAddress: '0x8BFb8e82Ee4569aee78D03235ff465Bd436D40E0',
         feeTokenAddress: '0x4e971a87900b931fF39d1Aad67697F49835400b6',
         stakedTokenAddress: '0x1aDDD80E6039594eE970E5872D247bf0414C8903',
       },
       [Chain.Avalanche]: {
+        glpRewardRouter: '0xB70B91CE0771d3f4c81D87660f71Da31d48eB3B3',
         glpManagerContractAddress: '0xD152c7F25db7F4B95b7658323c5F33d176818EE4',
         rewardReaderAddress: '0x04Fc11Bd28763872d143637a7c768bD96E44c1b6',
         feeTokenAddress: '0xd2D1162512F927a7e282Ef43a362659E4F2a728F',
@@ -107,6 +98,7 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
 
     const {
+      glpRewardRouter,
       glpManagerContractAddress,
       rewardReaderAddress,
       feeTokenAddress,
@@ -148,6 +140,7 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
     )
 
     return {
+      glpRewardRouter,
       vaultAddress,
       rewardReaderAddress,
       feeTokenAddress,
@@ -384,7 +377,7 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
         smartContractAddress: protocolTokenAddress,
         fromBlock,
         toBlock,
-        from: undefined,
+        from: ZERO_ADDRESS,
         to: userAddress,
       },
     })
@@ -408,208 +401,34 @@ export class GMXGlpAdapter implements IProtocolAdapter, IMetadataBuilder {
         fromBlock,
         toBlock,
         from: userAddress,
-        to: undefined,
+        to: ZERO_ADDRESS,
       },
     })
   }
 
-  async getMovements({
-    protocolToken,
-    underlyingTokens,
-    filter: { smartContractAddress, fromBlock, toBlock, from, to },
-  }: {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-    filter: {
-      smartContractAddress: string
-      fromBlock: number
-      toBlock: number
-      from?: string
-      to?: string
-    }
-  }): Promise<MovementsByBlock[]> {
-    const protocolTokenContract = Erc20__factory.connect(
-      smartContractAddress,
-      this.provider,
-    )
-
-    const filter = protocolTokenContract.filters.Transfer(from, to)
-
-    const eventResults =
-      await protocolTokenContract.queryFilter<TransferEvent.Event>(
-        filter,
-        fromBlock,
-        toBlock,
-      )
-
-    return await Promise.all(
-      eventResults.map(async (transferEvent) => {
-        const {
-          blockNumber,
-          args: { value: protocolTokenMovementValueRaw },
-          transactionHash,
-        } = transferEvent
-
-        const protocolTokenPrice =
-          await this.getProtocolTokenToUnderlyingTokenRate({
-            blockNumber,
-            protocolTokenAddress: protocolToken.address,
-          })
-
-        return {
-          protocolToken: {
-            address: protocolToken.address,
-            name: protocolToken.name,
-            symbol: protocolToken.symbol,
-            decimals: protocolToken.decimals,
-          },
-          underlyingTokensMovement: underlyingTokens.reduce(
-            (accumulator, currentToken) => {
-              const currentTokenPrice = protocolTokenPrice.tokens?.find(
-                (price) => price.address === currentToken.address,
-              )
-
-              if (!currentTokenPrice) {
-                throw new Error('No price for underlying token at this time')
-              }
-
-              const movementValueRaw =
-                (protocolTokenMovementValueRaw *
-                  currentTokenPrice.underlyingRateRaw) /
-                BigInt(10 ** currentTokenPrice.decimals)
-
-              return {
-                ...accumulator,
-
-                [currentToken.address]: {
-                  ...currentToken,
-                  transactionHash,
-                  movementValueRaw,
-                },
-              }
-            },
-            {} as Record<string, BaseTokenMovement>,
-          ),
-          blockNumber,
-        }
-      }),
-    )
-  }
-
-  async getProfits({
-    userAddress,
-    fromBlock,
-    toBlock,
-  }: GetProfitsInput): Promise<ProfitsWithRange> {
-    const [endPositionValues, startPositionValues] = await Promise.all([
-      this.getPositions({
-        userAddress,
-        blockNumber: toBlock,
-      }).then(formatProtocolTokenArrayToMap),
-      this.getPositions({
-        userAddress,
-        blockNumber: fromBlock,
-      }).then(formatProtocolTokenArrayToMap),
-    ])
-
-    const tokens = await Promise.all(
-      Object.values(endPositionValues).map(
-        async ({
-          protocolTokenMetadata,
-          underlyingTokenPositions: underlyingEndPositions,
-        }) => {
-          const getEventsInput: GetEventsInput = {
-            userAddress,
-            protocolTokenAddress: protocolTokenMetadata.address,
-            fromBlock,
-            toBlock,
-          }
-
-          const [withdrawals, deposits] = await Promise.all([
-            this.getWithdrawals(getEventsInput).then(aggregateTrades),
-            this.getDeposits(getEventsInput).then(aggregateTrades),
-          ])
-
-          return {
-            ...protocolTokenMetadata,
-            type: TokenType.Protocol,
-            tokens: Object.values(underlyingEndPositions).map(
-              ({
-                address,
-                name,
-                symbol,
-                decimals,
-                balanceRaw: endPositionValueRaw,
-              }) => {
-                const startPositionValueRaw =
-                  startPositionValues[protocolTokenMetadata.address]
-                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
-
-                const calculationData = {
-                  withdrawalsRaw: withdrawals[address] ?? 0n,
-                  depositsRaw: deposits[address] ?? 0n,
-                  endPositionValueRaw: endPositionValueRaw ?? 0n,
-                  startPositionValueRaw,
-                }
-
-                let profitRaw =
-                  calculationData.endPositionValueRaw +
-                  calculationData.withdrawalsRaw -
-                  calculationData.depositsRaw -
-                  calculationData.startPositionValueRaw
-
-                if (
-                  this.getProtocolDetails().positionType === PositionType.Borrow
-                ) {
-                  profitRaw *= -1n
-                }
-
-                return {
-                  address,
-                  name,
-                  symbol,
-                  decimals,
-                  profitRaw,
-                  type: TokenType.Underlying,
-                  calculationData: {
-                    withdrawalsRaw: withdrawals[address] ?? 0n,
-                    withdrawals: formatUnits(
-                      withdrawals[address] ?? 0n,
-                      decimals,
-                    ),
-                    depositsRaw: deposits[address] ?? 0n,
-                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
-                    startPositionValueRaw: startPositionValueRaw ?? 0n,
-                    startPositionValue: formatUnits(
-                      startPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                    endPositionValueRaw,
-                    endPositionValue: formatUnits(
-                      endPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                  },
-                }
-              },
-            ),
-          }
-        },
-      ),
-    )
-
-    return { tokens, fromBlock, toBlock }
-  }
-
-  private async fetchProtocolTokenMetadata(
+  protected async fetchProtocolTokenMetadata(
     _protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     return (await this.buildMetadata()).protocolToken
   }
 
-  private async fetchUnderlyingTokensMetadata(
+  protected async fetchUnderlyingTokensMetadata(
     _protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
     return (await this.buildMetadata()).underlyingTokens
+  }
+
+  protected getUnderlyingTokenBalances(_input: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number | undefined
+  }): Promise<Underlying[]> {
+    throw new NotImplementedError()
+  }
+  protected getUnderlyingTokenConversionRate(
+    _protocolTokenMetadata: Erc20Metadata,
+    _blockNumber?: number | undefined,
+  ): Promise<UnderlyingTokenRate[]> {
+    throw new NotImplementedError()
   }
 }
