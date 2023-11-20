@@ -12,6 +12,7 @@ import { CompoundPoolAdapter } from './compound/products/pool/compoundPoolAdapte
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { ExampleProductAdapter } from './example/products/example-product/exampleProductAdapter'
+import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
@@ -114,5 +115,10 @@ export const supportedProtocols: Record<
 
   [Protocol.Maker]: {
     [Chain.Ethereum]: [SDaiAdapter],
+  },
+
+  [Protocol.GMX]: {
+    [Chain.Arbitrum]: [GMXGlpAdapter],
+    [Chain.Avalanche]: [GMXGlpAdapter],
   },
 }

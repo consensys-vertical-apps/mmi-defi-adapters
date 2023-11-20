@@ -32,6 +32,8 @@ import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aa
 import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
 import CurvePoolEthereumProtocolToken from '../../adapters/curve/products/pool/metadata/ethereum.protocol-token.json'
 import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
+import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
+import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -373,6 +375,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CompoundPoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.GMX,
+      productId: 'glp',
+      chainId: Chain.Arbitrum,
+      fileKey: 'glp',
+    }),
+    GMXGlpArbitrumGlp,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.GMX,
+      productId: 'glp',
+      chainId: Chain.Avalanche,
+      fileKey: 'glp',
+    }),
+    GMXGlpAvalancheGlp,
   ],
 ])
 

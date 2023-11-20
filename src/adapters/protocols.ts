@@ -9,5 +9,6 @@ export const Protocol = {
   Curve: 'curve',
   Compound: 'compound',
   Maker: 'maker',
+  GMX: 'gmx',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
