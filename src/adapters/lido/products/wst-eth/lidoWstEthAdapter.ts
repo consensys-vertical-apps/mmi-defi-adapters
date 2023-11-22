@@ -1,7 +1,6 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import {
-  ProtocolAdapterParams,
   ProtocolDetails,
   PositionType,
   GetApyInput,
@@ -14,23 +13,10 @@ import {
   UnderlyingTokenRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { WstEthToken__factory } from '../../contracts'
 
 export class LidoWstEthAdapter extends SimplePoolAdapter {
   productId = 'wst-eth'
-
-  stEthAdapter: IProtocolAdapter
-
-  constructor(params: ProtocolAdapterParams) {
-    super(params)
-
-    this.stEthAdapter = params.adaptersController.fetchAdapter(
-      params.chainId,
-      params.protocolId,
-      'st-eth',
-    )
-  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -100,32 +86,11 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
       },
     )
 
-    const stEthTokenUnderlyingRate =
-      await this.stEthAdapter.getProtocolTokenToUnderlyingTokenRate({
-        protocolTokenAddress: underlyingToken!.address,
-        blockNumber,
-      })
-
     return [
       {
         ...underlyingToken!,
         type: TokenType.Underlying,
         balanceRaw: stEthBalance,
-        tokens: stEthTokenUnderlyingRate.tokens!.map((underlying) => {
-          return {
-            address: underlying.address,
-            name: underlying.name,
-            symbol: underlying.symbol,
-            decimals: underlying.decimals,
-            type: TokenType.Underlying,
-            balanceRaw:
-              stEthBalance *
-              BigInt(
-                Number(underlying.underlyingRateRaw) /
-                  10 ** protocolTokenBalance.decimals,
-              ),
-          }
-        }),
       },
     ]
   }

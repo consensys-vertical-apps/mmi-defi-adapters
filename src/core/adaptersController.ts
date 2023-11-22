@@ -1,8 +1,9 @@
 import { Protocol } from '../adapters/protocols'
 import { ProtocolAdapterParams } from '../types/adapter'
+import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Chain } from './constants/chains'
-import { AdapterMissingError } from './errors/errors'
+import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './utils/customJsonRpcProvider'
 
 export class AdaptersController {
@@ -73,22 +74,40 @@ export class AdaptersController {
     chainId: Chain,
     tokenAddress: string,
   ): Promise<IProtocolAdapter | undefined> {
-    // TODO Memoize this
-    for (const [chainId, chainAdapters] of this.adapters) {
-      this.protocolTokens.set(chainId, new Map())
-      const chainAdaptersMap = this.protocolTokens.get(chainId)!
+    // Only run this first time
+    if (this.protocolTokens.size === 0) {
+      for (const [chainId, chainAdapters] of this.adapters) {
+        this.protocolTokens.set(chainId, new Map())
+        const chainAdaptersMap = this.protocolTokens.get(chainId)!
 
-      for (const [_protocolId, protocolAdapters] of chainAdapters) {
-        for (const [_productId, adapter] of protocolAdapters) {
-          const protocolTokens = await adapter.getProtocolTokens()
+        for (const [_protocolId, protocolAdapters] of chainAdapters) {
+          for (const [_productId, adapter] of protocolAdapters) {
+            // TODO Uncomment when new type is merged
+            // const { positionType } = adapter.getProtocolDetails()
 
-          for (const protocolToken of protocolTokens) {
-            if (chainAdaptersMap.has(protocolToken.address)) {
-              // TODO THIS WON'T WORK WITH CURRENT REWARDS SYSTEM
-              throw Error('Duplicated protocol token')
+            // if (positionType === PositionType.Reward) {
+            //   continue
+            // }
+
+            let protocolTokens: Erc20Metadata[]
+            try {
+              protocolTokens = await adapter.getProtocolTokens()
+            } catch (error) {
+              if (!(error instanceof NotImplementedError)) {
+                throw error
+              }
+              protocolTokens = []
             }
 
-            chainAdaptersMap.set(protocolToken.address, adapter)
+            for (const protocolToken of protocolTokens) {
+              if (chainAdaptersMap.has(protocolToken.address)) {
+                throw Error(
+                  `Duplicated protocol token ${protocolToken.address}`,
+                )
+              }
+
+              chainAdaptersMap.set(protocolToken.address, adapter)
+            }
           }
         }
       }
