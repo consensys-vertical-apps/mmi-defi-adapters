@@ -30,6 +30,10 @@ import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aav
 import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
 import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
+import ConvexExtraRewardEthereumProtocolToken from '../../adapters/convex/products/extra-reward/metadata/ethereum.protocol-token.json'
+import ConvexPoolEthereumProtocolToken from '../../adapters/convex/products/pool/metadata/ethereum.protocol-token.json'
+import ConvexRewardsEthereumProtocolToken from '../../adapters/convex/products/rewards/metadata/ethereum.protocol-token.json'
+import ConvexStakingEthereumProtocolToken from '../../adapters/convex/products/staking/metadata/ethereum.protocol-token.json'
 import CurvePoolEthereumProtocolToken from '../../adapters/curve/products/pool/metadata/ethereum.protocol-token.json'
 import CurveRewardEthereumProtocolToken from '../../adapters/curve/products/reward/metadata/ethereum.protocol-token.json'
 import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
@@ -403,6 +407,42 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CurveRewardEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'staking',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexStakingEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexPoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'rewards',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexRewardsEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'extra-reward',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexExtraRewardEthereumProtocolToken,
   ],
 ])
 

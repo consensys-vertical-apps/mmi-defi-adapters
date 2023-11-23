@@ -9,6 +9,10 @@ import { AaveV3ATokenPoolAdapter } from './aave-v3/products/a-token/aaveV3AToken
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenPoolAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenPoolAdapter'
 import { CompoundPoolAdapter } from './compound/products/pool/compoundPoolAdapter'
+import { ConvexExtraRewardAdapter } from './convex/products/extra-reward/convexExtraRewardAdapter'
+import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
+import { ConvexRewardsAdapter } from './convex/products/rewards/convexRewardsAdapter'
+import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAdapter'
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
@@ -130,5 +134,13 @@ export const supportedProtocols: Record<
 
   [Protocol.Swell]: {
     [Chain.Ethereum]: [SwellSwEthAdapter],
+  },
+  [Protocol.Convex]: {
+    [Chain.Ethereum]: [
+      ConvexPoolAdapter,
+      ConvexStakingAdapter,
+      ConvexRewardsAdapter,
+      ConvexExtraRewardAdapter,
+    ],
   },
 }

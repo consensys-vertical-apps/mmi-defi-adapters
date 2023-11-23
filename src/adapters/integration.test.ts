@@ -8,6 +8,7 @@ import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as compoundTestCases } from './compound/tests/testCases'
+import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
 import { testCases as exampleTestCases } from './example/tests/testCases'
 import { testCases as gMXTestCases } from './gmx/tests/testCases'
@@ -25,7 +26,7 @@ const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
 runAllTests()
 
 function runAllTests() {
-  runProtocolTests(Protocol.Example, exampleTestCases)
+  // runProtocolTests(Protocol.Example, exampleTestCases)
   runProtocolTests(Protocol.Stargate, stargateTestCases)
   runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
@@ -35,6 +36,14 @@ function runAllTests() {
   runProtocolTests(Protocol.Maker, makerTestCases)
   runProtocolTests(Protocol.GMX, gMXTestCases)
   runProtocolTests(Protocol.Swell, swellTestCases)
+  // runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
+  // runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
+  // runProtocolTests(Protocol.Lido, lidoTestCases)
+  // runProtocolTests(Protocol.Curve, curveTestCases)
+  // runProtocolTests(Protocol.Compound, compoundTestCases)
+  // runProtocolTests(Protocol.Maker, makerTestCases)
+  // runProtocolTests(Protocol.GMX, gMXTestCases)
+  // runProtocolTests(Protocol.Convex, convexTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
