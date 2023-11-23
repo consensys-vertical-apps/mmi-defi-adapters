@@ -1,4 +1,3 @@
-
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
@@ -41,7 +40,8 @@ type CurveStakingAdapterMetadata = Record<
 const PRICE_PEGGED_TO_ONE = 1
 export class CurveStakingAdapter
   extends SimplePoolAdapter
-  implements IMetadataBuilder {
+  implements IMetadataBuilder
+{
   productId = 'staking'
 
   poolAdapter: IProtocolAdapter & IMetadataBuilder

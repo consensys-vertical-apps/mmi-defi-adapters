@@ -1,3 +1,4 @@
+import { DefiPositionResponse } from '../../types/response'
 import { mergeClaimableWithProtocol } from './mergeClaimableWithProtocol'
 
 describe('mergeClaimableWithProtocol', () => {
@@ -30,7 +31,11 @@ describe('mergeClaimableWithProtocol', () => {
       },
     ]
 
-    expect(mergeClaimableWithProtocol(positions as any)).toEqual(expected)
+    expect(
+      mergeClaimableWithProtocol(
+        positions as unknown as DefiPositionResponse[],
+      ),
+    ).toEqual(expected)
   })
 
   it('should return non-reward positions as is if there are no corresponding rewards', () => {
@@ -43,7 +48,11 @@ describe('mergeClaimableWithProtocol', () => {
       },
     ]
 
-    expect(mergeClaimableWithProtocol(positions as any)).toEqual(positions)
+    expect(
+      mergeClaimableWithProtocol(
+        positions as unknown as DefiPositionResponse[],
+      ),
+    ).toEqual(positions)
   })
 
   it('should return rewards if there are no matching non-reward positions', () => {
@@ -58,6 +67,10 @@ describe('mergeClaimableWithProtocol', () => {
       },
     ]
 
-    expect(mergeClaimableWithProtocol(positions as any)).toEqual(positions)
+    expect(
+      mergeClaimableWithProtocol(
+        positions as unknown as DefiPositionResponse[],
+      ),
+    ).toEqual(positions)
   })
 })
