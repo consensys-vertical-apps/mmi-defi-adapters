@@ -91,59 +91,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       }),
     )
 
-    // for (const protocolTokenPosition of protocolTokens) {
-    //   if (!protocolTokenPosition.tokens) {
-    //     continue
-    //   }
-
-    //   for (const underlyingTokenPosition of protocolTokenPosition.tokens) {
-    //     const underlyingTokenAdapter =
-    //       await this.adaptersController.fetchTokenAdapter(
-    //         this.chainId,
-    //         underlyingTokenPosition.address,
-    //       )
-
-    //     if (!underlyingTokenAdapter) {
-    //       continue
-    //     }
-
-    //     const protocolTokenUnderlyingRate =
-    //       await underlyingTokenAdapter.getProtocolTokenToUnderlyingTokenRate({
-    //         protocolTokenAddress: underlyingTokenPosition.address,
-    //         blockNumber,
-    //       })
-
-    //     console.log('INSIDE NEW ADAPTER', {
-    //       currentProtocolId: this.protocolId,
-    //       currentProductId: this.productId,
-    //       protocolId: underlyingTokenAdapter.protocolId,
-    //       productId: underlyingTokenAdapter.productId,
-    //       protocolTokenUnderlyingRate,
-    //       xxx: protocolTokenUnderlyingRate.tokens![0],
-    //     })
-
-    //     const computedUnderlyingPositions: Underlying[] =
-    //       protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
-    //         return {
-    //           address: underlyingTokenRate.address,
-    //           name: underlyingTokenRate.name,
-    //           symbol: underlyingTokenRate.symbol,
-    //           decimals: underlyingTokenRate.decimals,
-    //           type: TokenType.Underlying,
-    //           balanceRaw:
-    //             (underlyingTokenPosition.balanceRaw *
-    //               underlyingTokenRate.underlyingRateRaw) /
-    //             10n ** BigInt(underlyingTokenRate.decimals),
-    //         }
-    //       }) || []
-
-    //     underlyingTokenPosition.tokens = [
-    //       ...(underlyingTokenPosition.tokens || []),
-    //       ...computedUnderlyingPositions,
-    //     ]
-    //   }
-    // }
-
     return protocolTokens
   }
 
