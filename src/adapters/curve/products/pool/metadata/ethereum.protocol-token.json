@@ -10011,6 +10011,29 @@
     ],
     "poolAddress": "0xa476bbe03eE08b1B9a15c72f752F22631657bb45"
   },
+  "0x067079c14B85169e6a29703769dadDef90816f4C": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: PRISMA/mkUSD",
+      "decimals": 18,
+      "symbol": "mkPRISMA-f",
+      "address": "0x067079c14B85169e6a29703769dadDef90816f4C"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+        "name": "Prisma mkUSD",
+        "symbol": "mkUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xda47862a83dac0c112ba89c6abc2159b95afd71c",
+        "name": "Prisma Governance Token",
+        "symbol": "PRISMA",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x9D8108DDD8aD1Ee89d527C0C9e928Cb9D2BBa2d3"
+  },
   "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E": {
     "protocolToken": {
       "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",

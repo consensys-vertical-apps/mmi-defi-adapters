@@ -30,13 +30,13 @@ export function enrichPositionBalance<
     balance: formatUnits(balance.balanceRaw, balance.decimals),
     ...(balance.tokens
       ? {
-          tokens: balance.tokens?.map((underlyingBalance) =>
-            enrichPositionBalance(underlyingBalance, chainId),
-          ),
-        }
+        tokens: balance.tokens?.map((underlyingBalance) =>
+          enrichPositionBalance(underlyingBalance, chainId),
+        ),
+      }
       : {}),
     ...(balance.type === TokenType.Underlying ||
-    balance.type === TokenType.UnderlyingClaimableFee
+      balance.type === TokenType.UnderlyingClaimable
       ? { iconUrl: buildTrustAssetIconUrl(chainId, balance.address) }
       : {}),
   } as DisplayPosition<PositionBalance>
@@ -74,7 +74,7 @@ export function enrichProfitsWithRange(
               ),
               startPositionValue: formatUnits(
                 underlyingProfitValue.calculationData.startPositionValueRaw ??
-                  0n,
+                0n,
                 underlyingProfitValue.decimals,
               ),
               endPositionValue: formatUnits(
@@ -97,22 +97,22 @@ export function enrichUnderlyingTokenRates(
     ...protocolTokenUnderlyingRate,
     ...(protocolTokenUnderlyingRate.tokens
       ? {
-          tokens: protocolTokenUnderlyingRate.tokens.map(
-            (underlyingTokenRate) => {
-              return {
-                ...underlyingTokenRate,
-                underlyingRate: formatUnits(
-                  underlyingTokenRate.underlyingRateRaw,
-                  underlyingTokenRate.decimals,
-                ),
-                iconUrl: buildTrustAssetIconUrl(
-                  chainId,
-                  underlyingTokenRate.address,
-                ),
-              }
-            },
-          ),
-        }
+        tokens: protocolTokenUnderlyingRate.tokens.map(
+          (underlyingTokenRate) => {
+            return {
+              ...underlyingTokenRate,
+              underlyingRate: formatUnits(
+                underlyingTokenRate.underlyingRateRaw,
+                underlyingTokenRate.decimals,
+              ),
+              iconUrl: buildTrustAssetIconUrl(
+                chainId,
+                underlyingTokenRate.address,
+              ),
+            }
+          },
+        ),
+      }
       : {}),
   } as DisplayProtocolTokenUnderlyingRate
 }
