@@ -6,10 +6,11 @@ export function ResolveUnderlyingPositions(
   originalMethod: any,
   _context: ClassMethodDecoratorContext,
 ) {
-  async function replacementMethod(this: IProtocolAdapter, ...args: unknown[]) {
-    const protocolTokens = await originalMethod.call(this, ...args)
-
-    const { blockNumber } = args[0] as GetPositionsInput
+  async function replacementMethod(
+    this: IProtocolAdapter,
+    input: GetPositionsInput,
+  ) {
+    const protocolTokens = await originalMethod.call(this, input)
 
     for (const protocolTokenPosition of protocolTokens) {
       if (!protocolTokenPosition.tokens) {
@@ -30,7 +31,7 @@ export function ResolveUnderlyingPositions(
         const protocolTokenUnderlyingRate =
           await underlyingTokenAdapter.getProtocolTokenToUnderlyingTokenRate({
             protocolTokenAddress: underlyingTokenPosition.address,
-            blockNumber,
+            blockNumber: input.blockNumber,
           })
 
         console.log('INSIDE NEW ADAPTER', {
