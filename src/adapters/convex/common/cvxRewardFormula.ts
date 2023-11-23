@@ -1,11 +1,13 @@
-// https://docs.convexfinance.com/convexfinanceintegration/cvx-minting
-// taken from here
+// taken from here: https://docs.convexfinance.com/convexfinanceintegration/cvx-minting
 
 const cliffSize = BigInt(100000 * 1e18) //new cliff every 100,000 tokens
 const cliffCount = BigInt(1000) // 1,000 cliffs
 const maxSupply = BigInt(100000000 * 1e18) //100 mil max supply
 
-export function GetCVXMintAmount(crvEarned: bigint, cvxTotalSupply: bigint) {
+export function GetCVXMintAmount(
+  crvEarned: bigint,
+  cvxTotalSupply: bigint,
+): bigint {
   //get current cliff
   const currentCliff = cvxTotalSupply / cliffSize
 
