@@ -1,9 +1,9 @@
 import { GetPositionsInput, TokenType, Underlying } from '../../types/adapter'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { SimplePoolAdapter } from '../adapters/SimplePoolAdapter'
 
 export function ResolveUnderlyingPositions(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  originalMethod: any,
+  originalMethod: SimplePoolAdapter['getPositions'],
   _context: ClassMethodDecoratorContext,
 ) {
   async function replacementMethod(
