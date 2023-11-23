@@ -1,0 +1,17 @@
+{
+  "blockNumber": 18633627,
+  "snapshot": [
+    {
+      "protocolId": "swell",
+      "name": "Swell swETH",
+      "description": "Swell pool adapter",
+      "siteUrl": "https://app.swellnetwork.io/",
+      "iconUrl": "https://app.swellnetwork.io/logo.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "sw-eth",
+      "success": true,
+      "tokens": []
+    }
+  ]
+}
