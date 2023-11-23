@@ -58,12 +58,6 @@ async function recursivePositionSolver({
         continue
       }
 
-      console.log(
-        'XXXX',
-        underlyingProtocolTokenPosition,
-        underlyingProtocolTokenAdapter,
-      )
-
       const protocolTokenUnderlyingRate =
         await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
           {
