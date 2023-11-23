@@ -25,7 +25,8 @@ const CRV_TOKEN = {
 
 export class CurveRewardAdapter
   extends CurveStakingAdapter
-  implements IMetadataBuilder {
+  implements IMetadataBuilder
+{
   productId = 'reward'
 
   /**
@@ -53,19 +54,16 @@ export class CurveRewardAdapter
     const stakingContracts = await this.getProtocolTokens()
 
     return await filterMapAsync(stakingContracts, async (protcolToken) => {
-
       const { address } = protcolToken
-
 
       const stakingContract = StakingContract__factory.connect(
         address,
         this.provider,
       )
 
-      const balanceRaw = await stakingContract.claimable_tokens.staticCall(
-        userAddress,
-        { blockTag: blockNumber },
-      ).catch(e => 0n)
+      const balanceRaw = await stakingContract.claimable_tokens
+        .staticCall(userAddress, { blockTag: blockNumber })
+        .catch(() => 0n)
 
       if (balanceRaw == 0n) {
         return undefined
@@ -87,8 +85,6 @@ export class CurveRewardAdapter
   }
 
   async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-
-
     return [] // cant deposit rewards can only withdraw e.g. claimRewards()
   }
 
@@ -98,16 +94,28 @@ export class CurveRewardAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-
-    const crvMiniter = CrvMinter__factory.connect(CRV_MINTER_ADDRESS, this.provider)
+    const crvMiniter = CrvMinter__factory.connect(
+      CRV_MINTER_ADDRESS,
+      this.provider,
+    )
 
     try {
-      const startBalance = await crvMiniter.minted(userAddress, protocolTokenAddress, { blockTag: fromBlock })
-      const endBalance = await crvMiniter.minted(userAddress, protocolTokenAddress, { blockTag: toBlock })
+      const startBalance = await crvMiniter.minted(
+        userAddress,
+        protocolTokenAddress,
+        { blockTag: fromBlock },
+      )
+      const endBalance = await crvMiniter.minted(
+        userAddress,
+        protocolTokenAddress,
+        { blockTag: toBlock },
+      )
 
       const withdrawn = endBalance - startBalance
 
-      const protocolToken = await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+      const protocolToken = await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      )
 
       return [
         {
@@ -125,6 +133,5 @@ export class CurveRewardAdapter
     } catch (error) {
       return []
     }
-
   }
 }
