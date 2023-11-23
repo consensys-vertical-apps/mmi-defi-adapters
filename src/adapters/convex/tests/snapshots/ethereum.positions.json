@@ -6,7 +6,7 @@
       "name": "Convex",
       "description": "Convex pool adapter",
       "siteUrl": "https://www.convexfinance.com/",
-      "iconUrl": "https://",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
@@ -40,7 +40,7 @@
       "name": "Convex",
       "description": "Convex pool adapter",
       "siteUrl": "https://www.convexfinance.com/",
-      "iconUrl": "https://",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
       "positionType": "supply",
       "chainId": 1,
       "productId": "staking",
@@ -73,8 +73,8 @@
       "protocolId": "convex",
       "name": "Convex",
       "description": "Convex pool adapter",
-      "siteUrl": "https:",
-      "iconUrl": "https://",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
       "positionType": "supply",
       "chainId": 1,
       "productId": "rewards",
@@ -117,13 +117,67 @@
       "protocolId": "convex",
       "name": "Convex",
       "description": "Convex pool adapter",
-      "siteUrl": "https:",
-      "iconUrl": "https://",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
       "positionType": "supply",
       "chainId": 1,
       "productId": "extra-reward",
       "success": true,
       "tokens": []
+    },
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "cvxcrv-wrapper",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "name": "Staked CvxCrv",
+          "symbol": "stkCvxCrv",
+          "decimals": 18,
+          "balanceRaw": "0n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable-fee",
+              "balance": "0.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+            },
+            {
+              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable-fee",
+              "balance": "0.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "symbol": "3Crv",
+              "decimals": 18,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable-fee",
+              "balance": "0.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
+            }
+          ],
+          "balance": "0.0"
+        }
+      ]
     }
   ]
 }

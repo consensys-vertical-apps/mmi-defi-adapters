@@ -4,8 +4,10 @@ import {
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
+import { Chain } from '../../../../defiProvider'
 import {
   ProtocolDetails,
   PositionType,
@@ -22,6 +24,7 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ConvexFactory__factory } from '../../contracts'
+import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
 
 type ConvexStakingAdapterMetadata = Record<
   string,
@@ -39,29 +42,19 @@ export class ConvexPoolAdapter
 {
   productId = 'pool'
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
       name: 'Convex',
       description: 'Convex pool adapter',
       siteUrl: 'https://www.convexfinance.com/',
-      iconUrl: 'https://',
+      iconUrl: buildTrustAssetIconUrl(Chain.Ethereum, CONVEX_TOKEN.address),
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
     const convexFactory = ConvexFactory__factory.connect(
@@ -91,10 +84,6 @@ export class ConvexPoolAdapter
     return metadata
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
@@ -121,21 +110,12 @@ export class ConvexPoolAdapter
     return [underlyingTokenBalance]
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
@@ -174,10 +154,6 @@ export class ConvexPoolAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
@@ -188,10 +164,6 @@ export class ConvexPoolAdapter
     return [underlyingTokens]
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 

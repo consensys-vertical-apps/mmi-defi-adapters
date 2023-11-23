@@ -25,67 +25,46 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x0a760466e1b4621579a82a39cb56dda2f4e70f03",
-          "name": "Curve.fi ETH/stETH Convex Deposit",
-          "symbol": "cvxsteCRV",
+          "address": "0xf34dff761145ff0b05e917811d488b441f33a968",
+          "name": "Curve.fi cDAI/cUSDC Convex Deposit",
+          "symbol": "cvxcDAI+cUSDC",
           "decimals": 18,
-          "balanceRaw": "28941976633661456319n",
+          "balanceRaw": "128997493050015238077933n",
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x06325440d014e39736583c165c2963ba99faf14e",
-              "name": "Curve.fi ETH/stETH",
-              "symbol": "steCRV",
+              "address": "0x845838df265dcd2c412a1dc9e959c7d08537f8a2",
+              "name": "Curve.fi cDAI/cUSDC",
+              "symbol": "cDAI+cUSDC",
               "decimals": 18,
-              "balanceRaw": "28941976633661456319n",
+              "balanceRaw": "128997493050015238077933n",
               "type": "underlying",
-              "balance": "28.941976633661456319",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x06325440D014e39736583c165C2963BA99fAf14E/logo.png"
+              "balance": "128997.493050015238077933",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2/logo.png"
             }
           ],
-          "balance": "28.941976633661456319"
+          "balance": "128997.493050015238077933"
         },
         {
-          "address": "0xa84f2187371e8a61fa6634ecb3ff6d89df299e0e",
-          "name": "Curve.fi Factory Plain Pool: sdFXS Convex Deposit",
-          "symbol": "cvxsdFXSFXS-f",
+          "address": "0x44d8fab7cd8b7877d5f79974c2f501af6e65abba",
+          "name": "Curve.fi Factory Plain Pool: crvUSD/USDC Convex Deposit",
+          "symbol": "cvxcrvUSDUSDC-f",
           "decimals": 18,
-          "balanceRaw": "188410388268517482240n",
+          "balanceRaw": "24451518302618481212814n",
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x8c524635d52bd7b1bd55e062303177a7d916c046",
-              "name": "Curve.fi Factory Plain Pool: sdFXS",
-              "symbol": "sdFXSFXS-f",
+              "address": "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+              "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
+              "symbol": "crvUSDUSDC-f",
               "decimals": 18,
-              "balanceRaw": "188410388268517482240n",
+              "balanceRaw": "24451518302618481212814n",
               "type": "underlying",
-              "balance": "188.41038826851748224",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8c524635d52bd7b1Bd55E062303177a7d916C046/logo.png"
+              "balance": "24451.518302618481212814",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E/logo.png"
             }
           ],
-          "balance": "188.41038826851748224"
-        },
-        {
-          "address": "0x39d78f11b246ea4a1f68573c3a5b64e83cff2cae",
-          "name": "Curve.fi Factory Plain Pool: cvxCrv/Crv Convex Deposit",
-          "symbol": "cvxcvxcrv-crv-f",
-          "decimals": 18,
-          "balanceRaw": "117268239564571004535759n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x971add32ea87f10bd192671630be3be8a11b8623",
-              "name": "Curve.fi Factory Plain Pool: cvxCrv/Crv",
-              "symbol": "cvxcrv-crv-f",
-              "decimals": 18,
-              "balanceRaw": "117268239564571004535759n",
-              "type": "underlying",
-              "balance": "117268.239564571004535759",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x971add32Ea87f10bD192671630be3BE8A11b8623/logo.png"
-            }
-          ],
-          "balance": "117268.239564571004535759"
+          "balance": "24451.518302618481212814"
         }
       ]
     },
@@ -101,9 +80,9 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x0a760466e1b4621579a82a39cb56dda2f4e70f03",
-          "name": "Curve.fi ETH/stETH Convex Deposit",
-          "symbol": "cvxsteCRV",
+          "address": "0xf34dff761145ff0b05e917811d488b441f33a968",
+          "name": "Curve.fi cDAI/cUSDC Convex Deposit",
+          "symbol": "cvxcDAI+cUSDC",
           "decimals": 18,
           "type": "protocol",
           "balanceRaw": "0n",
@@ -114,8 +93,8 @@
               "symbol": "CRV",
               "decimals": 18,
               "type": "underlying-claimable-fee",
-              "balanceRaw": "1043405431419158695n",
-              "balance": "1.043405431419158695",
+              "balanceRaw": "372044214451447016728n",
+              "balance": "372.044214451447016728",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
             },
             {
@@ -124,17 +103,17 @@
               "symbol": "CVX",
               "decimals": 18,
               "type": "underlying-claimable-fee",
-              "balanceRaw": "9390648882772428n",
-              "balance": "0.009390648882772428",
+              "balanceRaw": "3348397930063023150n",
+              "balance": "3.34839793006302315",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             }
           ],
           "balance": "0.0"
         },
         {
-          "address": "0xa84f2187371e8a61fa6634ecb3ff6d89df299e0e",
-          "name": "Curve.fi Factory Plain Pool: sdFXS Convex Deposit",
-          "symbol": "cvxsdFXSFXS-f",
+          "address": "0x7e880867363a7e321f5d260cade2b0bb2f717b02",
+          "name": "Curve.fi FRAX/USDC Convex Deposit",
+          "symbol": "cvxcrvFRAX",
           "decimals": 18,
           "type": "protocol",
           "balanceRaw": "0n",
@@ -145,8 +124,8 @@
               "symbol": "CRV",
               "decimals": 18,
               "type": "underlying-claimable-fee",
-              "balanceRaw": "33094921401535085673n",
-              "balance": "33.094921401535085673",
+              "balanceRaw": "127861748763264549n",
+              "balance": "0.127861748763264549",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
             },
             {
@@ -155,17 +134,17 @@
               "symbol": "CVX",
               "decimals": 18,
               "type": "underlying-claimable-fee",
-              "balanceRaw": "297854292613815771n",
-              "balance": "0.297854292613815771",
+              "balanceRaw": "1150755738869380n",
+              "balance": "0.00115075573886938",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             }
           ],
           "balance": "0.0"
         },
         {
-          "address": "0x39d78f11b246ea4a1f68573c3a5b64e83cff2cae",
-          "name": "Curve.fi Factory Plain Pool: cvxCrv/Crv Convex Deposit",
-          "symbol": "cvxcvxcrv-crv-f",
+          "address": "0x44d8fab7cd8b7877d5f79974c2f501af6e65abba",
+          "name": "Curve.fi Factory Plain Pool: crvUSD/USDC Convex Deposit",
+          "symbol": "cvxcrvUSDUSDC-f",
           "decimals": 18,
           "type": "protocol",
           "balanceRaw": "0n",
@@ -176,8 +155,8 @@
               "symbol": "CRV",
               "decimals": 18,
               "type": "underlying-claimable-fee",
-              "balanceRaw": "483359561688613180123n",
-              "balance": "483.359561688613180123",
+              "balanceRaw": "413964457384170678506n",
+              "balance": "413.964457384170678506",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
             },
             {
@@ -186,8 +165,8 @@
               "symbol": "CVX",
               "decimals": 18,
               "type": "underlying-claimable-fee",
-              "balanceRaw": "4350236055197518621n",
-              "balance": "4.350236055197518621",
+              "balanceRaw": "3725680116457536106n",
+              "balance": "3.725680116457536106",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             }
           ],
@@ -205,29 +184,7 @@
       "chainId": 1,
       "productId": "extra-reward",
       "success": true,
-      "tokens": [
-        {
-          "address": "0x0a760466e1b4621579a82a39cb56dda2f4e70f03",
-          "name": "Curve.fi ETH/stETH Convex Deposit",
-          "symbol": "cvxsteCRV",
-          "decimals": 18,
-          "type": "protocol",
-          "balanceRaw": "0n",
-          "tokens": [
-            {
-              "type": "underlying-claimable-fee",
-              "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
-              "symbol": "wstETH",
-              "decimals": 18,
-              "name": "Wrapped liquid staked Ether 2.0",
-              "balanceRaw": "27258448877792235n",
-              "balance": "0.027258448877792235",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
-            }
-          ],
-          "balance": "0.0"
-        }
-      ]
+      "tokens": []
     },
     {
       "protocolId": "convex",
@@ -245,7 +202,7 @@
           "name": "Staked CvxCrv",
           "symbol": "stkCvxCrv",
           "decimals": 18,
-          "balanceRaw": "2896784225702225128583n",
+          "balanceRaw": "6399036031308907252576n",
           "type": "protocol",
           "tokens": [
             {
@@ -253,9 +210,9 @@
               "name": "Curve DAO Token",
               "symbol": "CRV",
               "decimals": 18,
-              "balanceRaw": "257556168468440905445n",
+              "balanceRaw": "42571127366382811945n",
               "type": "underlying-claimable-fee",
-              "balance": "257.556168468440905445",
+              "balance": "42.571127366382811945",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
             },
             {
@@ -263,9 +220,9 @@
               "name": "Convex Token",
               "symbol": "CVX",
               "decimals": 18,
-              "balanceRaw": "31457158657542342582n",
+              "balanceRaw": "5100813534806061084n",
               "type": "underlying-claimable-fee",
-              "balance": "31.457158657542342582",
+              "balance": "5.100813534806061084",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             },
             {
@@ -273,13 +230,13 @@
               "name": "Curve.fi DAI/USDC/USDT",
               "symbol": "3Crv",
               "decimals": 18,
-              "balanceRaw": "0n",
+              "balanceRaw": "107897204776540558069n",
               "type": "underlying-claimable-fee",
-              "balance": "0.0",
+              "balance": "107.897204776540558069",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
             }
           ],
-          "balance": "2896.784225702225128583"
+          "balance": "6399.036031308907252576"
         }
       ]
     }

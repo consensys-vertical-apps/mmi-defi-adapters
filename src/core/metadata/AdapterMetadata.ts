@@ -30,6 +30,7 @@ import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aav
 import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
 import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
+import ConvexCvxcrvWrapperEthereumProtocolToken from '../../adapters/convex/products/cvxcrv-wrapper/metadata/ethereum.protocol-token.json'
 import ConvexExtraRewardEthereumProtocolToken from '../../adapters/convex/products/extra-reward/metadata/ethereum.protocol-token.json'
 import ConvexPoolEthereumProtocolToken from '../../adapters/convex/products/pool/metadata/ethereum.protocol-token.json'
 import ConvexRewardsEthereumProtocolToken from '../../adapters/convex/products/rewards/metadata/ethereum.protocol-token.json'
@@ -443,6 +444,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     ConvexExtraRewardEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'cvxcrv-wrapper',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexCvxcrvWrapperEthereumProtocolToken,
   ],
 ])
 

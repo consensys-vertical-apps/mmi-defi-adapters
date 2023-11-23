@@ -15,10 +15,10 @@ export function GetCVXMintAmount(crvEarned: bigint, cvxTotalSupply: bigint) {
     const remaining = cliffCount - currentCliff
 
     //multiply ratio of remaining cliffs to total cliffs against amount CRV received
-    var cvxEarned = (crvEarned * remaining) / cliffCount
+    let cvxEarned = (crvEarned * remaining) / cliffCount
 
     //double check we have not gone over the max supply
-    var amountTillMax = maxSupply - cvxTotalSupply
+    const amountTillMax = maxSupply - cvxTotalSupply
     if (cvxEarned > amountTillMax) {
       cvxEarned = amountTillMax
     }

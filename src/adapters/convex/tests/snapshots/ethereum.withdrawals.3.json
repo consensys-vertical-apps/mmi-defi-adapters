@@ -1,0 +1,75 @@
+{
+  "snapshot": {
+    "protocolId": "convex",
+    "name": "Convex",
+    "description": "Convex pool adapter",
+    "siteUrl": "https://www.convexfinance.com/",
+    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "cvxcrv-wrapper",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "name": "Staked CvxCrv",
+          "symbol": "stkCvxCrv",
+          "decimals": 18
+        },
+        "underlyingTokensMovement": {
+          "0xd533a949740bb3306d119cc777fa900ba034cd52": {
+            "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+            "name": "Curve DAO Token",
+            "symbol": "CRV",
+            "decimals": 18,
+            "movementValueRaw": "2955753991471436954276n",
+            "transactionHash": "0xaa707b5056fd3de39bdfcae1164eeffadde064000302ffce2b5b0aa2b601ee5b",
+            "movementValue": "2955.753991471436954276"
+          }
+        },
+        "blockNumber": 18632773
+      },
+      {
+        "protocolToken": {
+          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "name": "Staked CvxCrv",
+          "symbol": "stkCvxCrv",
+          "decimals": 18
+        },
+        "underlyingTokensMovement": {
+          "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b": {
+            "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+            "name": "Convex Token",
+            "symbol": "CVX",
+            "decimals": 18,
+            "movementValueRaw": "390488348790686281236n",
+            "transactionHash": "0xaa707b5056fd3de39bdfcae1164eeffadde064000302ffce2b5b0aa2b601ee5b",
+            "movementValue": "390.488348790686281236"
+          }
+        },
+        "blockNumber": 18632773
+      },
+      {
+        "protocolToken": {
+          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "name": "Staked CvxCrv",
+          "symbol": "stkCvxCrv",
+          "decimals": 18
+        },
+        "underlyingTokensMovement": {
+          "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490": {
+            "address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "decimals": 18,
+            "movementValueRaw": "1419767977106002257650n",
+            "transactionHash": "0xaa707b5056fd3de39bdfcae1164eeffadde064000302ffce2b5b0aa2b601ee5b",
+            "movementValue": "1419.76797710600225765"
+          }
+        },
+        "blockNumber": 18632773
+      }
+    ]
+  }
+}
