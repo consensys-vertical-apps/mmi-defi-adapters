@@ -31,6 +31,7 @@ import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/a
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
 import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
 import CurvePoolEthereumProtocolToken from '../../adapters/curve/products/pool/metadata/ethereum.protocol-token.json'
+import CurveRewardEthereumProtocolToken from '../../adapters/curve/products/reward/metadata/ethereum.protocol-token.json'
 import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
 import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
@@ -393,6 +394,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'glp',
     }),
     GMXGlpAvalancheGlp,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'reward',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    CurveRewardEthereumProtocolToken,
   ],
 ])
 

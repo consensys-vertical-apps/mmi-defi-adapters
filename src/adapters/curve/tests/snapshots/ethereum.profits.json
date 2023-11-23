@@ -98,6 +98,20 @@
       "tokens": [],
       "fromBlock": 16621005,
       "toBlock": 16628151
+    },
+    {
+      "protocolId": "curve",
+      "name": "Curve reward",
+      "description": "Curve reward adapter",
+      "siteUrl": "https://curve.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
+      "positionType": "reward",
+      "chainId": 1,
+      "productId": "reward",
+      "success": true,
+      "tokens": [],
+      "fromBlock": 16621005,
+      "toBlock": 16628151
     }
   ]
 }

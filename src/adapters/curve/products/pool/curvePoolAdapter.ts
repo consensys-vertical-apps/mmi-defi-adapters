@@ -1,6 +1,6 @@
 import { formatUnits } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
@@ -27,6 +27,7 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { MetaRegistry__factory } from '../../contracts'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 
 // Details https://github.com/curvefi/metaregistry
 export const CURVE_META_REGISTRY_CONTRACT =
@@ -43,8 +44,7 @@ type CurvePoolAdapterMetadata = Record<
 
 export class CurvePoolAdapter
   extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+  implements IMetadataBuilder {
   productId = 'pool'
 
   getProtocolDetails(): ProtocolDetails {
@@ -219,10 +219,10 @@ export class CurvePoolAdapter
 
   private async getPoolData(i: number): Promise<
     | {
-        protocolToken: Erc20Metadata
-        underlyingTokens: Erc20Metadata[]
-        poolAddress: string
-      }
+      protocolToken: Erc20Metadata
+      underlyingTokens: Erc20Metadata[]
+      poolAddress: string
+    }
     | undefined
   > {
     const metaRegistryContract = MetaRegistry__factory.connect(
