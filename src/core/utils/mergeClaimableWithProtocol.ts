@@ -1,7 +1,11 @@
-import { DefiPositionResponse } from "../../defiProvider"
-import { Underlying, ProtocolPosition } from "../../types/adapter"
-import { DisplayPosition } from "../../types/response"
-
+import { DefiPositionResponse } from '../../defiProvider'
+import {
+  Underlying,
+  ProtocolPosition,
+  PositionType,
+  TokenType,
+} from '../../types/adapter'
+import { DisplayPosition } from '../../types/response'
 
 export function mergeClaimableWithProtocol(positions: DefiPositionResponse[]) {
   const rewardMap: Record<string, DisplayPosition<Underlying>[]> = {}
@@ -11,9 +15,9 @@ export function mergeClaimableWithProtocol(positions: DefiPositionResponse[]) {
   // Build the reward map and separate non-reward positions
   positions.forEach((position) => {
     if (position.success) {
-      if (position.positionType === 'reward') {
+      if (position.positionType === PositionType.Reward) {
         position.tokens.forEach(({ address: lpTokenAddress, tokens, type }) => {
-          if (type === 'claimable') {
+          if (type === TokenType.Reward) {
             rewardMap[lpTokenAddress] = [
               ...(rewardMap[lpTokenAddress] || []),
               ...(tokens || []),
@@ -69,7 +73,9 @@ export function mergeClaimableWithProtocol(positions: DefiPositionResponse[]) {
           mergedResponse.push({
             ...miscellaneousPosition,
             success: true,
-            tokens: [{ ...lpToken, tokens: rewardMap[lpTokenAddress] }] as DisplayPosition<ProtocolPosition>[],
+            tokens: [
+              { ...lpToken, tokens: rewardMap[lpTokenAddress] },
+            ] as DisplayPosition<ProtocolPosition>[],
           })
         }
       }

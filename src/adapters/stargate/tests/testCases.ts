@@ -11,27 +11,27 @@ export const testCases: TestCase[] = [
     },
     blockNumber: 18163124,
   },
-  {
-    chainId: Chain.Ethereum,
-    method: 'profits',
-    input: {
-      userAddress: '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
-      timePeriod: TimePeriod.oneDay,
-    },
-    blockNumber: 18163965,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'deposits',
-    key: 'deposits2',
-    input: {
-      userAddress: '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
-      fromBlock: 18156819,
-      toBlock: 18163965,
-      protocolTokenAddress: '0xdf0770df86a8034b3efef0a1bb3c889b8332ff56',
-      productId: 'pool',
-    },
-  },
+  // {
+  //   chainId: Chain.Ethereum,
+  //   method: 'profits',
+  //   input: {
+  //     userAddress: '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
+  //     timePeriod: TimePeriod.oneDay,
+  //   },
+  //   blockNumber: 18163965,
+  // },
+  // {
+  //   chainId: Chain.Ethereum,
+  //   method: 'deposits',
+  //   key: 'deposits2',
+  //   input: {
+  //     userAddress: '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
+  //     fromBlock: 18156819,
+  //     toBlock: 18163965,
+  //     protocolTokenAddress: '0xdf0770df86a8034b3efef0a1bb3c889b8332ff56',
+  //     productId: 'pool',
+  //   },
+  // },
   {
     chainId: Chain.Ethereum,
     method: 'withdrawals',

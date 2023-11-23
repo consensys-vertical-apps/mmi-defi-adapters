@@ -335,6 +335,20 @@
       "decimals": 18
     }
   },
+  "0x68e9f0ad4e6f8f5db70f6923d4d6d5b225b83b16": {
+    "protocolToken": {
+      "address": "0x68e9f0ad4e6f8f5db70f6923d4d6d5b225b83b16",
+      "name": "Aave Ethereum Variable Debt FXS",
+      "symbol": "variableDebtEthFXS",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+      "name": "Frax Share",
+      "symbol": "FXS",
+      "decimals": 18
+    }
+  },
   "0x6efc73e54e41b27d2134ff9f98f15550f30df9b1": {
     "protocolToken": {
       "address": "0x6efc73e54e41b27d2134ff9f98f15550f30df9b1",
