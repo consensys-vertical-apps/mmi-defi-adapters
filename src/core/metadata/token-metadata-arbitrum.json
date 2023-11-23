@@ -464,7 +464,7 @@
   "0x5979d7b546e38e414f7e9822514be443a4800529": {
     "address": "0x5979d7b546e38e414f7e9822514be443a4800529",
     "name": "Wrapped liquid staked Ether 2.0",
-    "symbol": "wstETH",
+    "symbol": "WSTETH",
     "decimals": 18,
     "iconUrl": "https://tokens.1inch.io/0x5979d7b546e38e414f7e9822514be443a4800529.png"
   },

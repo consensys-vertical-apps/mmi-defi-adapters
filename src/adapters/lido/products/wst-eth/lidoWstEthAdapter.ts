@@ -48,7 +48,7 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
     return {
       address: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
       name: 'Wrapped liquid staked Ether 2.0',
-      symbol: 'wstETH',
+      symbol: 'WSTETH',
       decimals: 18,
     }
   }
@@ -58,7 +58,7 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
       {
         address: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
         name: 'Liquid staked Ether 2.0',
-        symbol: 'stETH',
+        symbol: 'STETH',
         decimals: 18,
       },
     ]
