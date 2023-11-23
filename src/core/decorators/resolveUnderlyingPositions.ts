@@ -17,31 +17,24 @@ export function ResolveUnderlyingPositions(
         continue
       }
 
-      for (const underlyingTokenPosition of protocolTokenPosition.tokens) {
-        const underlyingTokenAdapter =
+      for (const underlyingProtocolTokenPosition of protocolTokenPosition.tokens) {
+        const underlyingProtocolTokenAdapter =
           await this.adaptersController.fetchTokenAdapter(
             this.chainId,
-            underlyingTokenPosition.address,
+            underlyingProtocolTokenPosition.address,
           )
 
-        if (!underlyingTokenAdapter) {
+        if (!underlyingProtocolTokenAdapter) {
           continue
         }
 
         const protocolTokenUnderlyingRate =
-          await underlyingTokenAdapter.getProtocolTokenToUnderlyingTokenRate({
-            protocolTokenAddress: underlyingTokenPosition.address,
-            blockNumber: input.blockNumber,
-          })
-
-        console.log('INSIDE NEW ADAPTER', {
-          currentProtocolId: this.protocolId,
-          currentProductId: this.productId,
-          protocolId: underlyingTokenAdapter.protocolId,
-          productId: underlyingTokenAdapter.productId,
-          protocolTokenUnderlyingRate,
-          xxx: protocolTokenUnderlyingRate.tokens![0],
-        })
+          await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
+            {
+              protocolTokenAddress: underlyingProtocolTokenPosition.address,
+              blockNumber: input.blockNumber,
+            },
+          )
 
         const computedUnderlyingPositions: Underlying[] =
           protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
@@ -52,14 +45,14 @@ export function ResolveUnderlyingPositions(
               decimals: underlyingTokenRate.decimals,
               type: TokenType.Underlying,
               balanceRaw:
-                (underlyingTokenPosition.balanceRaw *
+                (underlyingProtocolTokenPosition.balanceRaw *
                   underlyingTokenRate.underlyingRateRaw) /
-                10n ** BigInt(underlyingTokenRate.decimals),
+                10n ** BigInt(underlyingProtocolTokenPosition.decimals),
             }
           }) || []
 
-        underlyingTokenPosition.tokens = [
-          ...(underlyingTokenPosition.tokens || []),
+        underlyingProtocolTokenPosition.tokens = [
+          ...(underlyingProtocolTokenPosition.tokens || []),
           ...computedUnderlyingPositions,
         ]
       }
