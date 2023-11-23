@@ -1,4 +1,5 @@
 import { Protocol } from '../adapters/protocols'
+import { AdaptersController } from '../core/adaptersController'
 import { Chain } from '../core/constants/chains'
 import {
   ProtocolDetails,
@@ -34,6 +35,8 @@ export interface IProtocolAdapter {
    * Unique identifier for this protocol adapter
    */
   productId: string
+
+  adaptersController: AdaptersController
 
   /**
    * @remarks Returns high level metadata for the protocol
