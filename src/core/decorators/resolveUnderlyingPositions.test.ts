@@ -11,7 +11,7 @@ describe('ResolveUnderlyingPositions', () => {
       {
         address: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
         name: 'Liquid staked Ether 2.0',
-        symbol: 'STETH',
+        symbol: 'stETH',
         decimals: 18,
         balanceRaw: 4944483824413014n,
         type: 'protocol',
@@ -58,7 +58,7 @@ describe('ResolveUnderlyingPositions', () => {
       {
         address: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
         name: 'Wrapped liquid staked Ether 2.0',
-        symbol: 'WSTETH',
+        symbol: 'wstETH',
         decimals: 18,
         balanceRaw: 78871459289748529074876n,
         type: 'protocol',
@@ -66,7 +66,7 @@ describe('ResolveUnderlyingPositions', () => {
           {
             address: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
             name: 'Liquid staked Ether 2.0',
-            symbol: 'STETH',
+            symbol: 'stETH',
             decimals: 18,
             type: 'underlying',
             balanceRaw: 90177902840852853190524n,
@@ -101,7 +101,7 @@ describe('ResolveUnderlyingPositions', () => {
       .mockResolvedValue({
         address: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
         name: 'Liquid staked Ether 2.0',
-        symbol: 'STETH',
+        symbol: 'stETH',
         decimals: 18,
         baseRate: 1,
         type: 'protocol',
@@ -175,7 +175,7 @@ describe('ResolveUnderlyingPositions', () => {
           {
             address: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
             name: 'Wrapped liquid staked Ether 2.0',
-            symbol: 'WSTETH',
+            symbol: 'wstETH',
             decimals: 18,
             balanceRaw: 10000000000000000000000n,
             type: 'underlying',
@@ -194,7 +194,7 @@ describe('ResolveUnderlyingPositions', () => {
               {
                 address: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
                 name: 'Liquid staked Ether 2.0',
-                symbol: 'STETH',
+                symbol: 'stETH',
                 decimals: 18,
                 balanceRaw: 15000000000000000000000n,
                 type: 'underlying',
@@ -224,7 +224,7 @@ describe('ResolveUnderlyingPositions', () => {
               return {
                 address: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
                 name: 'Liquid staked Ether 2.0',
-                symbol: 'STETH',
+                symbol: 'stETH',
                 decimals: 18,
                 baseRate: 1,
                 type: 'protocol',
@@ -243,7 +243,7 @@ describe('ResolveUnderlyingPositions', () => {
               return {
                 address: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
                 name: 'Wrapped liquid staked Ether 2.0',
-                symbol: 'WSTETH',
+                symbol: 'wstETH',
                 decimals: 18,
                 baseRate: 1,
                 type: 'protocol',
@@ -251,7 +251,7 @@ describe('ResolveUnderlyingPositions', () => {
                   {
                     address: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
                     name: 'Liquid staked Ether 2.0',
-                    symbol: 'STETH',
+                    symbol: 'stETH',
                     decimals: 18,
                     type: 'underlying',
                     underlyingRateRaw: 1500000000000000000n,
