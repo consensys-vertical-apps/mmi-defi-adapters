@@ -1,3 +1,4 @@
+import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import {
@@ -30,12 +31,20 @@ export class ExampleProductAdapter implements IProtocolAdapter {
 
   productId = 'example-pool'
 
+  adaptersController: AdaptersController
+
   private provider: CustomJsonRpcProvider
 
-  constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+  }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
+    this.adaptersController = adaptersController
   }
 
   getProtocolDetails(): ProtocolDetails {
