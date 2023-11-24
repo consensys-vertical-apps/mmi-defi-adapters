@@ -46,6 +46,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
 
   protected async getUnderlyingTokenBalances({
     protocolTokenBalance,
+    blockNumber,
   }: {
     userAddress: string
     protocolTokenBalance: TokenBalance
@@ -54,6 +55,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
     const [underlyingTokenRate] = await this.getUnderlyingTokenConversionRate(
       protocolTokenBalance,
+      blockNumber,
     )
 
     const underlyingTokenBalanceRaw =
