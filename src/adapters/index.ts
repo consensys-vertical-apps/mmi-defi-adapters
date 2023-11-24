@@ -22,6 +22,7 @@ import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
+import { PricesPricesAdapter } from './prices/products/prices/pricesPricesAdapter'
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
@@ -144,5 +145,8 @@ export const supportedProtocols: Record<
       ConvexExtraRewardAdapter,
       ConvexCvxcrvWrapperAdapter,
     ],
+  },
+  [Protocol.Prices]: {
+    [Chain.Ethereum]: [PricesPricesAdapter],
   },
 }
