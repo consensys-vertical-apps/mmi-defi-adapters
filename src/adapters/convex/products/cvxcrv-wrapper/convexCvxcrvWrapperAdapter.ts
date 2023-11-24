@@ -99,7 +99,7 @@ export class ConvexCvxcrvWrapperAdapter
             ...rewardTokenMetadata!,
             address: result.token,
             balanceRaw: result.amount,
-            type: TokenType.UnderlyingClaimableFee,
+            type: TokenType.UnderlyingClaimable,
           }
         }),
       },

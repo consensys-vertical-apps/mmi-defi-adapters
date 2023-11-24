@@ -61,7 +61,7 @@ export class ConvexRewardsAdapter
       description: 'Convex pool adapter',
       siteUrl: 'https://www.convexfinance.com/',
       iconUrl: buildTrustAssetIconUrl(Chain.Ethereum, CONVEX_TOKEN.address),
-      positionType: PositionType.Supply,
+      positionType: PositionType.Reward,
       chainId: this.chainId,
       productId: this.productId,
     }
@@ -180,18 +180,18 @@ export class ConvexRewardsAdapter
 
         const result: ProtocolPosition = {
           ...protocolToken,
-          type: TokenType.Protocol, // update to reward
+          type: TokenType.Reward,
 
-          balanceRaw: 0n, // I think I should remove this from type, makes no sense here
+          balanceRaw: 0n,
           tokens: [
             {
               ...crvRewardMetadata!,
-              type: TokenType.UnderlyingClaimableFee,
+              type: TokenType.UnderlyingClaimable,
               balanceRaw: crvRewardBalance,
             },
             {
               ...CONVEX_TOKEN,
-              type: TokenType.UnderlyingClaimableFee,
+              type: TokenType.UnderlyingClaimable,
               balanceRaw: cvxBalance,
             },
           ],

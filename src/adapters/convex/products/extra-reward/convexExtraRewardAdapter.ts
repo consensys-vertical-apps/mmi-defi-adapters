@@ -59,7 +59,7 @@ export class ConvexExtraRewardAdapter
       description: 'Convex pool adapter',
       siteUrl: 'https://www.convexfinance.com/',
       iconUrl: buildTrustAssetIconUrl(Chain.Ethereum, CONVEX_TOKEN.address),
-      positionType: PositionType.Supply,
+      positionType: PositionType.Reward,
       chainId: this.chainId,
       productId: this.productId,
     }
@@ -103,7 +103,7 @@ export class ConvexExtraRewardAdapter
             if (balance == 0n) return
 
             return {
-              type: TokenType.UnderlyingClaimableFee,
+              type: TokenType.UnderlyingClaimable,
               address,
               symbol,
               decimals,
