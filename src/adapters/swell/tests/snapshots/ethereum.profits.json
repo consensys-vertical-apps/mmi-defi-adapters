@@ -1,0 +1,49 @@
+{
+  "blockNumber": 18642232,
+  "snapshot": [
+    {
+      "protocolId": "swell",
+      "name": "Swell swETH",
+      "description": "Swell pool adapter",
+      "siteUrl": "https://app.swellnetwork.io/",
+      "iconUrl": "https://app.swellnetwork.io/logo.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "sw-eth",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
+          "name": "Swell Ethereum",
+          "symbol": "SWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "profitRaw": "86417416164668292n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "28044477076709988992n",
+                "deposits": "28.044477076709988992",
+                "startPositionValueRaw": "124035450444322781089n",
+                "startPositionValue": "124.035450444322781089",
+                "endPositionValueRaw": "152166344937197438373n",
+                "endPositionValue": "152.166344937197438373"
+              },
+              "profit": "0.086417416164668292",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 18592210,
+      "toBlock": 18642232
+    }
+  ]
+}

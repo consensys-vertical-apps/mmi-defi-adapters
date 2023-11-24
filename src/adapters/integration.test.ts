@@ -15,6 +15,7 @@ import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
+import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
 const TEST_TIMEOUT = 30000
@@ -33,6 +34,7 @@ function runAllTests() {
   runProtocolTests(Protocol.Compound, compoundTestCases)
   runProtocolTests(Protocol.Maker, makerTestCases)
   runProtocolTests(Protocol.GMX, gMXTestCases)
+  runProtocolTests(Protocol.Swell, swellTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

@@ -20,6 +20,7 @@ import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
+import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 
 export const supportedProtocols: Record<
@@ -125,5 +126,9 @@ export const supportedProtocols: Record<
   [Protocol.GMX]: {
     [Chain.Arbitrum]: [GMXGlpAdapter],
     [Chain.Avalanche]: [GMXGlpAdapter],
+  },
+
+  [Protocol.Swell]: {
+    [Chain.Ethereum]: [SwellSwEthAdapter],
   },
 }
