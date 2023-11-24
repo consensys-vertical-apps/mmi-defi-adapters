@@ -1,7 +1,7 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  ProtocolAdapterParams,
   ProtocolDetails,
   PositionType,
   GetApyInput,
@@ -14,23 +14,10 @@ import {
   UnderlyingTokenRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { WstEthToken__factory } from '../../contracts'
 
 export class LidoWstEthAdapter extends SimplePoolAdapter {
   productId = 'wst-eth'
-
-  stEthAdapter: IProtocolAdapter
-
-  constructor(params: ProtocolAdapterParams) {
-    super(params)
-
-    this.stEthAdapter = params.adaptersController.fetchAdapter(
-      params.chainId,
-      params.protocolId,
-      'st-eth',
-    )
-  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -59,23 +46,13 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
   }
 
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    return {
-      address: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
-      name: 'Wrapped liquid staked Ether 2.0',
-      symbol: 'WSTETH',
-      decimals: 18,
-    }
+    const wstEthAddress = '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0'
+    return await getTokenMetadata(wstEthAddress, this.chainId, this.provider)
   }
 
   protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
-    return [
-      {
-        address: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
-        name: 'Liquid staked Ether 2.0',
-        symbol: 'stETH',
-        decimals: 18,
-      },
-    ]
+    const stEthAddress = '0xae7ab96520de3a18e5e111b5eaab095312d7fe84'
+    return [await getTokenMetadata(stEthAddress, this.chainId, this.provider)]
   }
 
   protected async getUnderlyingTokenBalances({
@@ -100,32 +77,11 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
       },
     )
 
-    const stEthTokenUnderlyingRate =
-      await this.stEthAdapter.getProtocolTokenToUnderlyingTokenRate({
-        protocolTokenAddress: underlyingToken!.address,
-        blockNumber,
-      })
-
     return [
       {
         ...underlyingToken!,
         type: TokenType.Underlying,
         balanceRaw: stEthBalance,
-        tokens: stEthTokenUnderlyingRate.tokens!.map((underlying) => {
-          return {
-            address: underlying.address,
-            name: underlying.name,
-            symbol: underlying.symbol,
-            decimals: underlying.decimals,
-            type: TokenType.Underlying,
-            balanceRaw:
-              stEthBalance *
-              BigInt(
-                Number(underlying.underlyingRateRaw) /
-                  10 ** protocolTokenBalance.decimals,
-              ),
-          }
-        }),
       },
     ]
   }

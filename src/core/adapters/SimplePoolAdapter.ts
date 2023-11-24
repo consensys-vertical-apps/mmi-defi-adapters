@@ -28,7 +28,9 @@ import {
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
+import { ResolveUnderlyingPositions } from '../decorators/resolveUnderlyingPositions'
 import { aggregateTrades } from '../utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { getAddressesBalances } from '../utils/getAddressesBalances'
@@ -42,16 +44,25 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
   protected provider: CustomJsonRpcProvider
 
-  constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
+  adaptersController: AdaptersController
+
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+  }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
+    this.adaptersController = adaptersController
   }
 
   abstract getProtocolDetails(): ProtocolDetails
 
   abstract getProtocolTokens(): Promise<Erc20Metadata[]>
 
+  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,

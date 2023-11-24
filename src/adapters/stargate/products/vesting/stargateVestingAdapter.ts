@@ -1,3 +1,4 @@
+import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
   CacheToFile,
@@ -40,12 +41,20 @@ export class StargateVestingAdapter
   protocolId: Protocol
   chainId: Chain
 
+  adaptersController: AdaptersController
+
   private provider: CustomJsonRpcProvider
 
-  constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+  }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
+    this.adaptersController = adaptersController
   }
 
   getProtocolDetails(): ProtocolDetails {

@@ -115,7 +115,6 @@ export class CurveStakingAdapter
 
   protected async getUnderlyingTokenBalances({
     protocolTokenBalance,
-    blockNumber,
   }: {
     userAddress: string
     protocolTokenBalance: TokenBalance
@@ -125,29 +124,11 @@ export class CurveStakingAdapter
       protocolTokenBalance.address,
     )
 
-    const curveLPTokenUnderlyingRates =
-      await this.poolAdapter.getProtocolTokenToUnderlyingTokenRate({
-        protocolTokenAddress: underlyingToken!.address,
-        blockNumber,
-      })
-
     return [
       {
         ...underlyingToken!,
         type: TokenType.Underlying,
         balanceRaw: protocolTokenBalance.balanceRaw,
-        tokens: curveLPTokenUnderlyingRates.tokens!.map((underlying) => {
-          return {
-            address: underlying.address,
-            name: underlying.name,
-            symbol: underlying.symbol,
-            decimals: underlying.decimals,
-            type: TokenType.Underlying,
-            balanceRaw:
-              (protocolTokenBalance.balanceRaw * underlying.underlyingRateRaw) /
-              BigInt(10) ** BigInt(protocolTokenBalance.decimals),
-          }
-        }),
       },
     ]
   }
