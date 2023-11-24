@@ -1,5 +1,5 @@
 import { Protocol } from '../adapters/protocols'
-import { ProtocolAdapterParams } from '../types/adapter'
+import { PositionType, ProtocolAdapterParams } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Chain } from './constants/chains'
@@ -82,12 +82,11 @@ export class AdaptersController {
 
         for (const [_protocolId, protocolAdapters] of chainAdapters) {
           for (const [_productId, adapter] of protocolAdapters) {
-            // TODO Uncomment when new type is merged
-            // const { positionType } = adapter.getProtocolDetails()
+            const { positionType } = adapter.getProtocolDetails()
 
-            // if (positionType === PositionType.Reward) {
-            //   continue
-            // }
+            if (positionType === PositionType.Reward) {
+              continue
+            }
 
             let protocolTokens: Erc20Metadata[]
             try {
