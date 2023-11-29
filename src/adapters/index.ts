@@ -17,6 +17,8 @@ import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
+import { MorphoAaveV2OptimizerBorrowAdapter } from './morpho-aave-v2/products/optimizer-borrow/morphoAaveV2OptimizerBorrowAdapter'
+import { MorphoAaveV2OptimizerSupplyAdapter } from './morpho-aave-v2/products/optimizer-supply/morphoAaveV2OptimizerSupplyAdapter'
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
@@ -29,6 +31,12 @@ export const supportedProtocols: Record<
     Record<Chain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
   >
 > = {
+  [Protocol.MorphoAaveV2]: {
+    [Chain.Ethereum]: [
+      MorphoAaveV2OptimizerBorrowAdapter,
+      MorphoAaveV2OptimizerSupplyAdapter,
+    ],
+  },
   [Protocol.Stargate]: {
     [Chain.Ethereum]: [StargatePoolAdapter, StargateVestingAdapter],
     [Chain.Arbitrum]: [StargatePoolAdapter, StargateVestingAdapter],

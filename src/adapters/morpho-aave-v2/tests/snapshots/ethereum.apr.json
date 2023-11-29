@@ -1,0 +1,129 @@
+{
+  "blockNumber": 18670429,
+  "snapshot": [
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the borrow side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "name": "Aave interest bearing DAI",
+          "symbol": "aDAI",
+          "decimals": 18,
+          "aprDecimal": 5.148576798007189
+        },
+        {
+          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
+          "decimals": 18,
+          "aprDecimal": 2.5061429578037093
+        },
+        {
+          "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
+          "decimals": 6,
+          "aprDecimal": 8.526336568382318
+        },
+        {
+          "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
+          "decimals": 6,
+          "aprDecimal": 4.381019599807985
+        },
+        {
+          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
+          "decimals": 8,
+          "aprDecimal": 0.4972630407052222
+        },
+        {
+          "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
+          "name": "Aave interest bearing STETH",
+          "symbol": "aSTETH",
+          "decimals": 18,
+          "aprDecimal": 0
+        },
+        {
+          "address": "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1",
+          "name": "Aave interest bearing CRV",
+          "symbol": "aCRV",
+          "decimals": 18,
+          "aprDecimal": 9.990169509680184
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the supply side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "name": "Aave interest bearing DAI",
+          "symbol": "aDAI",
+          "decimals": 18,
+          "aprDecimal": 4.551036144453538
+        },
+        {
+          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
+          "decimals": 18,
+          "aprDecimal": 2.4247227078511577
+        },
+        {
+          "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
+          "decimals": 6,
+          "aprDecimal": 8.065971639536812
+        },
+        {
+          "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
+          "decimals": 6,
+          "aprDecimal": 4.313235827849153
+        },
+        {
+          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
+          "decimals": 8,
+          "aprDecimal": 0.1378991977550822
+        },
+        {
+          "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
+          "name": "Aave interest bearing STETH",
+          "symbol": "aSTETH",
+          "decimals": 18,
+          "aprDecimal": 0
+        },
+        {
+          "address": "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1",
+          "name": "Aave interest bearing CRV",
+          "symbol": "aCRV",
+          "decimals": 18,
+          "aprDecimal": 1.5712420118198185
+        }
+      ]
+    }
+  ]
+}

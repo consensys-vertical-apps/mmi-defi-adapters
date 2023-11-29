@@ -35,6 +35,8 @@ import CurveRewardEthereumProtocolToken from '../../adapters/curve/products/rewa
 import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
 import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
+import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
+import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -403,6 +405,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CurveRewardEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoAaveV2,
+      productId: 'optimizer-borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-borrow',
+    }),
+    MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoAaveV2,
+      productId: 'optimizer-supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-supply',
+    }),
+    MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply,
   ],
 ])
 

@@ -13,6 +13,7 @@ import { testCases as exampleTestCases } from './example/tests/testCases'
 import { testCases as gMXTestCases } from './gmx/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
+import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
@@ -35,6 +36,7 @@ function runAllTests() {
   runProtocolTests(Protocol.Maker, makerTestCases)
   runProtocolTests(Protocol.GMX, gMXTestCases)
   runProtocolTests(Protocol.Swell, swellTestCases)
+  runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

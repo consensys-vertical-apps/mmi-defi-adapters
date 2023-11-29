@@ -1,0 +1,93 @@
+{
+  "blockNumber": 18670429,
+  "snapshot": [
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the borrow side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "name": "Aave interest bearing DAI",
+          "symbol": "aDAI",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "profitRaw": "-217572704298144366592n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "1461440401593554985549824n",
+                "startPositionValue": "1461440.401593554985549824",
+                "endPositionValueRaw": "1461657974297853129916416n",
+                "endPositionValue": "1461657.974297853129916416"
+              },
+              "profit": "-217.572704298144366592",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 18663283,
+      "toBlock": 18670429
+    },
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the supply side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "profitRaw": "19405n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "6025621997n",
+                "startPositionValue": "60.25621997",
+                "endPositionValueRaw": "6025641402n",
+                "endPositionValue": "60.25641402"
+              },
+              "profit": "0.00019405",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 18663283,
+      "toBlock": 18670429
+    }
+  ]
+}

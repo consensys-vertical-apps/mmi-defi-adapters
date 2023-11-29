@@ -1,0 +1,129 @@
+{
+  "blockNumber": 18670429,
+  "snapshot": [
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the borrow side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "name": "Aave interest bearing DAI",
+          "symbol": "aDAI",
+          "decimals": 18,
+          "apyDecimal": 5.283420048904919
+        },
+        {
+          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
+          "decimals": 18,
+          "apyDecimal": 2.5378108330497584
+        },
+        {
+          "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
+          "decimals": 6,
+          "apyDecimal": 8.90038319451072
+        },
+        {
+          "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
+          "decimals": 6,
+          "apyDecimal": 4.478403510365547
+        },
+        {
+          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
+          "decimals": 8,
+          "apyDecimal": 0.49850113954859054
+        },
+        {
+          "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
+          "name": "Aave interest bearing STETH",
+          "symbol": "aSTETH",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1",
+          "name": "Aave interest bearing CRV",
+          "symbol": "aCRV",
+          "decimals": 18,
+          "apyDecimal": 10.506227960411252
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the supply side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "name": "Aave interest bearing DAI",
+          "symbol": "aDAI",
+          "decimals": 18,
+          "apyDecimal": 4.656184743177927
+        },
+        {
+          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
+          "decimals": 18,
+          "apyDecimal": 2.4543581255669578
+        },
+        {
+          "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
+          "decimals": 6,
+          "apyDecimal": 8.400196935082892
+        },
+        {
+          "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
+          "decimals": 6,
+          "apyDecimal": 4.407607950478476
+        },
+        {
+          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
+          "decimals": 8,
+          "apyDecimal": 0.13799406137060544
+        },
+        {
+          "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
+          "name": "Aave interest bearing STETH",
+          "symbol": "aSTETH",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1",
+          "name": "Aave interest bearing CRV",
+          "symbol": "aCRV",
+          "decimals": 18,
+          "apyDecimal": 1.583651244701767
+        }
+      ]
+    }
+  ]
+}
