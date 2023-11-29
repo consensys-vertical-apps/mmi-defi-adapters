@@ -32,6 +32,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
+import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 
 // Parameter needed for static call request
 // Set the date in the future to ensure the static call request doesn't trigger smart contract validation
@@ -109,6 +110,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
+  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,

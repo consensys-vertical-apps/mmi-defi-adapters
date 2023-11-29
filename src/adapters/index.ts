@@ -22,7 +22,7 @@ import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
-import { PricesPricesAdapter } from './prices/products/prices/pricesPricesAdapter'
+import { PricesUSDAdapter } from './prices/products/usd/pricesPricesAdapter'
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
@@ -147,6 +147,6 @@ export const supportedProtocols: Record<
     ],
   },
   [Protocol.Prices]: {
-    [Chain.Ethereum]: [PricesPricesAdapter],
+    [Chain.Ethereum]: [PricesUSDAdapter],
   },
 }

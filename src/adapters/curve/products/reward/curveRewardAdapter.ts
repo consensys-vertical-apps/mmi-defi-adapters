@@ -1,4 +1,5 @@
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
+import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import {
   ProtocolDetails,
@@ -47,6 +48,7 @@ export class CurveRewardAdapter
     }
   }
 
+  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,

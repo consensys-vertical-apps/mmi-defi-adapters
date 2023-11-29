@@ -105,10 +105,13 @@ export function enrichUnderlyingTokenRates(
                   underlyingTokenRate.underlyingRateRaw,
                   underlyingTokenRate.decimals,
                 ),
-                iconUrl: buildTrustAssetIconUrl(
-                  chainId,
-                  underlyingTokenRate.address,
-                ),
+                iconUrl:
+                  underlyingTokenRate.type != TokenType.Fiat
+                    ? buildTrustAssetIconUrl(
+                        chainId,
+                        underlyingTokenRate.address,
+                      )
+                    : undefined,
               }
             },
           ),

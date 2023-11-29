@@ -6,6 +6,7 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
+import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -152,6 +153,7 @@ export class GMXGlpAdapter
     return [(await this.buildMetadata()).protocolToken]
   }
 
+  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,

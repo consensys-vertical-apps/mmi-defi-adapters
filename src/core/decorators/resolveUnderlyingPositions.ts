@@ -6,6 +6,7 @@ import {
 } from '../../types/adapter'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { SimplePoolAdapter } from '../adapters/SimplePoolAdapter'
+import { logger } from '../utils/logger'
 
 export function ResolveUnderlyingPositions(
   originalMethod: SimplePoolAdapter['getPositions'],
@@ -42,55 +43,63 @@ async function recursivePositionSolver({
   tokenPositions: (TokenBalance & { tokens?: Underlying[] })[]
   blockNumber?: number
 }) {
-  for (const tokenPosition of tokenPositions) {
-    if (!tokenPosition.tokens) {
-      continue
-    }
-
-    for (const underlyingProtocolTokenPosition of tokenPosition.tokens) {
-      const underlyingProtocolTokenAdapter =
-        await adapter.adaptersController.fetchTokenAdapter(
-          adapter.chainId,
-          underlyingProtocolTokenPosition.address,
-        )
-
-      if (!underlyingProtocolTokenAdapter) {
+  try {
+    for (const tokenPosition of tokenPositions) {
+      if (!tokenPosition.tokens) {
         continue
       }
 
-      const protocolTokenUnderlyingRate =
-        await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
-          {
-            protocolTokenAddress: underlyingProtocolTokenPosition.address,
-            blockNumber: blockNumber,
-          },
-        )
+      for (const underlyingProtocolTokenPosition of tokenPosition.tokens) {
+        const underlyingProtocolTokenAdapter =
+          await adapter.adaptersController.fetchTokenAdapter(
+            adapter.chainId,
+            underlyingProtocolTokenPosition.address,
+          )
 
-      const computedUnderlyingPositions: Underlying[] =
-        protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
-          return {
-            address: underlyingTokenRate.address,
-            name: underlyingTokenRate.name,
-            symbol: underlyingTokenRate.symbol,
-            decimals: underlyingTokenRate.decimals,
-            type: TokenType.Underlying,
-            balanceRaw:
-              (underlyingProtocolTokenPosition.balanceRaw *
-                underlyingTokenRate.underlyingRateRaw) /
-              10n ** BigInt(underlyingProtocolTokenPosition.decimals),
-          }
-        }) || []
+        if (!underlyingProtocolTokenAdapter) {
+          continue
+        }
 
-      underlyingProtocolTokenPosition.tokens = [
-        ...(underlyingProtocolTokenPosition.tokens || []),
-        ...computedUnderlyingPositions,
-      ]
+        const protocolTokenUnderlyingRate =
+          await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
+            {
+              protocolTokenAddress: underlyingProtocolTokenPosition.address,
+              blockNumber: blockNumber,
+            },
+          )
+
+        const computedUnderlyingPositions: Underlying[] =
+          protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
+            return {
+              address: underlyingTokenRate.address,
+              name: underlyingTokenRate.name,
+              symbol: underlyingTokenRate.symbol,
+              decimals: underlyingTokenRate.decimals,
+              type:
+                underlyingTokenRate.type == TokenType.Fiat
+                  ? TokenType.Fiat
+                  : TokenType.Underlying,
+              balanceRaw:
+                (underlyingProtocolTokenPosition.balanceRaw *
+                  underlyingTokenRate.underlyingRateRaw) /
+                10n ** BigInt(underlyingProtocolTokenPosition.decimals),
+            }
+          }) || []
+
+        underlyingProtocolTokenPosition.tokens = [
+          ...(underlyingProtocolTokenPosition.tokens || []),
+          ...computedUnderlyingPositions,
+        ]
+      }
+
+      await recursivePositionSolver({
+        adapter,
+        tokenPositions: tokenPosition.tokens,
+        blockNumber,
+      })
     }
-
-    await recursivePositionSolver({
-      adapter,
-      tokenPositions: tokenPosition.tokens,
-      blockNumber,
-    })
+  } catch (error) {
+    logger.error(error, 'Error while resolving tokens')
+    throw new Error('Error while resolving tokens')
   }
 }
