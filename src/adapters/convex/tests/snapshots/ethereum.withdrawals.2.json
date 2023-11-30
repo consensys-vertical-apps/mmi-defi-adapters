@@ -1,0 +1,36 @@
+{
+  "snapshot": {
+    "protocolId": "convex",
+    "name": "Convex",
+    "description": "Convex pool adapter",
+    "siteUrl": "https://www.convexfinance.com/",
+    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+    "positionType": "reward",
+    "chainId": 1,
+    "productId": "extra-reward",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0x22ee18aca7f3ee920d01f25da85840d12d98e8ca",
+          "name": "Curve.fi DAI/USDC/USDT/sUSD Convex Deposit",
+          "symbol": "cvxcrvPlain3andSUSD",
+          "decimals": 18
+        },
+        "underlyingTokensMovement": {
+          "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f": {
+            "address": "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
+            "name": "Synthetix Network Token",
+            "symbol": "SNX",
+            "decimals": 18,
+            "claimableTrackerAddress": "0x81fCe3E10D12Da6c7266a1A169c4C96813435263",
+            "movementValueRaw": "15995934878803391102n",
+            "transactionHash": "0x99d2d0067d85c4c4f643d0017b2ada6a7d4a289a6f1eabeb6c89205acff91a7d",
+            "movementValue": "15.995934878803391102"
+          }
+        },
+        "blockNumber": 18157201
+      }
+    ]
+  }
+}

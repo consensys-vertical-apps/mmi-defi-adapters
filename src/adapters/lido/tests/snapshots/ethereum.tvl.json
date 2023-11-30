@@ -25,8 +25,8 @@
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "661021422603205147046n",
+              "type": "underlying",
               "totalSupply": "661.021422603205147046",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
@@ -59,8 +59,8 @@
               "name": "Liquid staked Ether 2.0",
               "symbol": "stETH",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "3665156618272929270930708n",
+              "type": "underlying",
               "totalSupply": "3665156.618272929270930708",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }

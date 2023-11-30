@@ -1,0 +1,30 @@
+{
+  "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434": {
+    "protocolToken": {
+      "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+      "name": "Staked CvxCrv",
+      "symbol": "stkCvxCrv",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+        "name": "Curve DAO Token",
+        "symbol": "CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+        "name": "Convex Token",
+        "symbol": "CVX",
+        "decimals": 18
+      },
+      {
+        "address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+        "name": "Curve.fi DAI/USDC/USDT",
+        "symbol": "3Crv",
+        "decimals": 18
+      }
+    ]
+  }
+}
