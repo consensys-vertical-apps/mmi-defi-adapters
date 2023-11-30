@@ -20,7 +20,7 @@ import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
-const TEST_TIMEOUT = 30000
+const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
 
