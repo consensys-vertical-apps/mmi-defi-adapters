@@ -1,11 +1,13 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
+import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -29,15 +31,8 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
-import { promises as fs } from 'fs'
-
-import tokenMetadata from '../../../../core/metadata/token-metadata-ethereum.json'
+import COINGECKO_LIST from '../../common/coingecko-list.json'
 import { ChainLink__factory } from '../../contracts'
-import path from 'path'
-import { bigintJsonStringify } from '../../../../core/utils/bigintJson'
-import { COINGECKO_LIST } from '../../common/coingecko-list'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { logger } from '../../../../core/utils/logger'
 
 const Denominations = {
   USD: '0x0000000000000000000000000000000000000348',
