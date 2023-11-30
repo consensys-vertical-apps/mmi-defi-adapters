@@ -57,8 +57,8 @@ export class ChainProvider {
     )
 
     const multicallQueue = new MulticallQueue({
-      flushTimeoutMs: 0.1,
-      maxBatchSize: 100,
+      flushTimeoutMs: 0.01,
+      maxBatchSize: 1000,
       multicallContract,
     })
 
