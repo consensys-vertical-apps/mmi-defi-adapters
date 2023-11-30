@@ -1,0 +1,1215 @@
+{
+  "blockNumber": 18677865,
+  "snapshot": [
+    {
+      "protocolId": "prices",
+      "name": "Prices",
+      "description": "Prices defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "usd",
+      "success": true,
+      "tokens": [
+        {
+          "name": "Ethereum",
+          "decimals": 18,
+          "symbol": "ETH",
+          "address": "0x0000000000000000000000000000000000000000",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "205719697249n",
+              "decimals": 18,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.000000205719697249"
+            }
+          ]
+        },
+        {
+          "name": "The Graph",
+          "decimals": 8,
+          "symbol": "grt",
+          "address": "0xc944e90c64b2c07662a292be6244bdf05cda44a7",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "14674900n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.146749"
+            }
+          ]
+        },
+        {
+          "name": "The Sandbox",
+          "decimals": 8,
+          "symbol": "sand",
+          "address": "0x3845badade8e6dff049820680d1f14bd3903a5d0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "41535201n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.41535201"
+            }
+          ]
+        },
+        {
+          "name": "TrueUSD",
+          "decimals": 8,
+          "symbol": "tusd",
+          "address": "0x0000000000085d4780b73119b644ae5ecd22b376",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "99718910n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.9971891"
+            }
+          ]
+        },
+        {
+          "name": "Uniswap",
+          "decimals": 8,
+          "symbol": "uni",
+          "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "616958000n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "6.16958"
+            }
+          ]
+        },
+        {
+          "name": "USDC",
+          "decimals": 8,
+          "symbol": "usdc",
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "99991968n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.99991968"
+            }
+          ]
+        },
+        {
+          "name": "WETH",
+          "decimals": 8,
+          "symbol": "weth",
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "205719697249n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "2057.19697249"
+            }
+          ]
+        },
+        {
+          "name": "Wrapped Bitcoin",
+          "decimals": 8,
+          "symbol": "wbtc",
+          "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "3816768390892n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "38167.68390892"
+            }
+          ]
+        },
+        {
+          "name": "Wrapped USTC",
+          "decimals": 8,
+          "symbol": "ustc",
+          "address": "0xa47c8bf37f92abed4a126bda807a7b7498661acd",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "5237542n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.05237542"
+            }
+          ]
+        },
+        {
+          "name": "yearn.finance",
+          "decimals": 8,
+          "symbol": "yfi",
+          "address": "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "832111630000n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "8321.1163"
+            }
+          ]
+        },
+        {
+          "name": "Immutable",
+          "decimals": 8,
+          "symbol": "imx",
+          "address": "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "127820700n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "1.278207"
+            }
+          ]
+        },
+        {
+          "name": "Kyber Network Crystal Legacy",
+          "decimals": 8,
+          "symbol": "kncl",
+          "address": "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "70599000n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.70599"
+            }
+          ]
+        },
+        {
+          "name": "Liquity USD",
+          "decimals": 8,
+          "symbol": "lusd",
+          "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "99493531n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.99493531"
+            }
+          ]
+        },
+        {
+          "name": "Magic Internet Money",
+          "decimals": 8,
+          "symbol": "mim",
+          "address": "0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "99042188n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.99042188"
+            }
+          ]
+        },
+        {
+          "name": "Maker",
+          "decimals": 8,
+          "symbol": "mkr",
+          "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "153959601264n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "1539.59601264"
+            }
+          ]
+        },
+        {
+          "name": "Polygon",
+          "decimals": 8,
+          "symbol": "matic",
+          "address": "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "76148153n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.76148153"
+            }
+          ]
+        },
+        {
+          "name": "Numeraire",
+          "decimals": 8,
+          "symbol": "nmr",
+          "address": "0x1776e1f26f98b1a5df9cd347953a26dd3cb46671",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "1130862600n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "11.308626"
+            }
+          ]
+        },
+        {
+          "name": "Pax Dollar",
+          "decimals": 8,
+          "symbol": "usdp",
+          "address": "0x8e870d67f660d95d5be530380d0ec0bd388289e1",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "99982412n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.99982412"
+            }
+          ]
+        },
+        {
+          "name": "Perpetual Protocol",
+          "decimals": 8,
+          "symbol": "perp",
+          "address": "0xbc396689893d065f41bc2c6ecbee5e0085233447",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "65554761n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.65554761"
+            }
+          ]
+        },
+        {
+          "name": "Phala",
+          "decimals": 8,
+          "symbol": "pha",
+          "address": "0x6c5ba91642f10282b576d91922ae6448c9d52f4e",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "8159570n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.0815957"
+            }
+          ]
+        },
+        {
+          "name": "Rai Reflex Index",
+          "decimals": 8,
+          "symbol": "rai",
+          "address": "0x03ab458634910aad20ef5f1c8ee96f1d6ac54919",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "275933739n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "2.75933739"
+            }
+          ]
+        },
+        {
+          "name": "Ren",
+          "decimals": 8,
+          "symbol": "ren",
+          "address": "0x408e41876cccdc0f92210600ef50372656052a38",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "4810703n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.04810703"
+            }
+          ]
+        },
+        {
+          "name": "Request",
+          "decimals": 8,
+          "symbol": "req",
+          "address": "0x8f8221afbb33998d8584a2b05749ba73c37a938a",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "6464039n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.06464039"
+            }
+          ]
+        },
+        {
+          "name": "Reserve Rights",
+          "decimals": 8,
+          "symbol": "rsr",
+          "address": "0x320623b8e4ff03373931769a31fc52a4e78b5d70",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "272758n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.00272758"
+            }
+          ]
+        },
+        {
+          "name": "Rocket Pool",
+          "decimals": 8,
+          "symbol": "rpl",
+          "address": "0xd33526068d116ce69f19a9ee46f0bd304f21a51f",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "2758543553n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "27.58543553"
+            }
+          ]
+        },
+        {
+          "name": "ShapeShift FOX",
+          "decimals": 8,
+          "symbol": "fox",
+          "address": "0xc770eefad204b5180df6a14ee197d99d808ee52d",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "2196386n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.02196386"
+            }
+          ]
+        },
+        {
+          "name": "Spell",
+          "decimals": 8,
+          "symbol": "spell",
+          "address": "0x090185f2135308bad17527004364ebcc2d37e5f6",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "57910n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.0005791"
+            }
+          ]
+        },
+        {
+          "name": "Stargate Finance",
+          "decimals": 8,
+          "symbol": "stg",
+          "address": "0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "54181687n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.54181687"
+            }
+          ]
+        },
+        {
+          "name": "Sushi",
+          "decimals": 8,
+          "symbol": "sushi",
+          "address": "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "120123631n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "1.20123631"
+            }
+          ]
+        },
+        {
+          "name": "SXP",
+          "decimals": 8,
+          "symbol": "sxp",
+          "address": "0x8ce9137d39326ad0cd6491fb5cc0cba0e089b6a9",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "34808438n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.34808438"
+            }
+          ]
+        },
+        {
+          "name": "Tether",
+          "decimals": 8,
+          "symbol": "usdt",
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "100033000n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "1.00033"
+            }
+          ]
+        },
+        {
+          "name": "Euro Tether",
+          "decimals": 8,
+          "symbol": "eurt",
+          "address": "0xc581b735a1688071a1746c968e0798d642ede491",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "109834764n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "1.09834764"
+            }
+          ]
+        },
+        {
+          "name": "0x Protocol",
+          "decimals": 8,
+          "symbol": "zrx",
+          "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "39789700n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.397897"
+            }
+          ]
+        },
+        {
+          "name": "1inch",
+          "decimals": 8,
+          "symbol": "1inch",
+          "address": "0x111111111117dc0aa78b770fa6a738034120c302",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "34038646n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.34038646"
+            }
+          ]
+        },
+        {
+          "name": "Aave",
+          "decimals": 8,
+          "symbol": "aave",
+          "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "9752982350n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "97.5298235"
+            }
+          ]
+        },
+        {
+          "name": "Alchemix",
+          "decimals": 8,
+          "symbol": "alcx",
+          "address": "0xdbdb4d16eda451d0503b854cf79d55697f90c8df",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "1117385099n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "11.17385099"
+            }
+          ]
+        },
+        {
+          "name": "Ampleforth",
+          "decimals": 18,
+          "symbol": "ampl",
+          "address": "0xd46ba6d942050d489dbd938a2c909a5d5039a161",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "1148095000000000000n",
+              "decimals": 18,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "1.148095"
+            }
+          ]
+        },
+        {
+          "name": "Ampleforth Governance",
+          "decimals": 8,
+          "symbol": "forth",
+          "address": "0x77fba179c79de5b7653f68b5039af940ada60ce0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "266559113n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "2.66559113"
+            }
+          ]
+        },
+        {
+          "name": "Ankr Network",
+          "decimals": 8,
+          "symbol": "ankr",
+          "address": "0x8290333cef9e6d528dd5618fb97a76f268f3edd4",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "2446726n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.02446726"
+            }
+          ]
+        },
+        {
+          "name": "ApeCoin",
+          "decimals": 8,
+          "symbol": "ape",
+          "address": "0x4d224452801aced8b2f0aebe155379bb5d594381",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "155283345n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "1.55283345"
+            }
+          ]
+        },
+        {
+          "name": "Audius",
+          "decimals": 8,
+          "symbol": "audio",
+          "address": "0x18aaa7115705e8be94bffebde57af9bfc265b998",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "15113952n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.15113952"
+            }
+          ]
+        },
+        {
+          "name": "Balancer",
+          "decimals": 8,
+          "symbol": "bal",
+          "address": "0xba100000625a3754423978a60c9317c58a424e3d",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "372652807n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "3.72652807"
+            }
+          ]
+        },
+        {
+          "name": "Basic Attention",
+          "decimals": 8,
+          "symbol": "bat",
+          "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "22710884n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.22710884"
+            }
+          ]
+        },
+        {
+          "name": "BUSD",
+          "decimals": 8,
+          "symbol": "busd",
+          "address": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "100049379n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "1.00049379"
+            }
+          ]
+        },
+        {
+          "name": "BitDAO",
+          "decimals": 8,
+          "symbol": "bit",
+          "address": "0x1a4b46696b2bb4794eb3d4c26f1c55f9170fa4c5",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "44960000n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.4496"
+            }
+          ]
+        },
+        {
+          "name": "Onyxcoin",
+          "decimals": 8,
+          "symbol": "xcn",
+          "address": "0xa2cd3d43c775978a96bdbf12d733d5a1ed94fb18",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "99000n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.00099"
+            }
+          ]
+        },
+        {
+          "name": "Chainlink",
+          "decimals": 8,
+          "symbol": "link",
+          "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "1469847518n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "14.69847518"
+            }
+          ]
+        },
+        {
+          "name": "Compound",
+          "decimals": 8,
+          "symbol": "comp",
+          "address": "0xc00e94cb662c3520282e6f5717214004a7f26888",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "5072631772n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "50.72631772"
+            }
+          ]
+        },
+        {
+          "name": "Convex Finance",
+          "decimals": 8,
+          "symbol": "cvx",
+          "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "360028036n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "3.60028036"
+            }
+          ]
+        },
+        {
+          "name": "crvUSD",
+          "decimals": 8,
+          "symbol": "crvusd",
+          "address": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "99706423n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.99706423"
+            }
+          ]
+        },
+        {
+          "name": "Cronos",
+          "decimals": 8,
+          "symbol": "cro",
+          "address": "0xa0b73e1ff0b80914ab6fe0444e65848c4c34450b",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "5112042n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.05112042"
+            }
+          ]
+        },
+        {
+          "name": "Curve DAO",
+          "decimals": 8,
+          "symbol": "crv",
+          "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "55969503n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.55969503"
+            }
+          ]
+        },
+        {
+          "name": "Dai",
+          "decimals": 8,
+          "symbol": "dai",
+          "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "99982357n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.99982357"
+            }
+          ]
+        },
+        {
+          "name": "DeFi Pulse Index",
+          "decimals": 8,
+          "symbol": "dpi",
+          "address": "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "9034238302n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "90.34238302"
+            }
+          ]
+        },
+        {
+          "name": "dYdX",
+          "decimals": 8,
+          "symbol": "ethdydx",
+          "address": "0x92d6c1e31e14520e676a687f0a93788b716beff5",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "314954252n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "3.14954252"
+            }
+          ]
+        },
+        {
+          "name": "Ethereum Name Service",
+          "decimals": 8,
+          "symbol": "ens",
+          "address": "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "847720882n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "8.47720882"
+            }
+          ]
+        },
+        {
+          "name": "Fei USD",
+          "decimals": 8,
+          "symbol": "fei",
+          "address": "0x956f47f50a910163d8bf957cf5846d573e7f87ca",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "96095571n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.96095571"
+            }
+          ]
+        },
+        {
+          "name": "Frax",
+          "decimals": 8,
+          "symbol": "frax",
+          "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "99906321n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.99906321"
+            }
+          ]
+        },
+        {
+          "name": "Frax Share",
+          "decimals": 8,
+          "symbol": "fxs",
+          "address": "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "710483418n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "7.10483418"
+            }
+          ]
+        },
+        {
+          "name": "Gemini Dollar",
+          "decimals": 8,
+          "symbol": "gusd",
+          "address": "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "99935884n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.99935884"
+            }
+          ]
+        },
+        {
+          "name": "GHO",
+          "decimals": 8,
+          "symbol": "gho",
+          "address": "0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "98740445n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.98740445"
+            }
+          ]
+        },
+        {
+          "name": "Golem",
+          "decimals": 8,
+          "symbol": "glm",
+          "address": "0x7dd9c5cba05e151c895fde1cf355c9a1d5da6429",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "16879783n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.16879783"
+            }
+          ]
+        },
+        {
+          "name": "Synthetix Network",
+          "decimals": 8,
+          "symbol": "snx",
+          "address": "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "335336000n",
+              "decimals": 8,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "3.35336"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

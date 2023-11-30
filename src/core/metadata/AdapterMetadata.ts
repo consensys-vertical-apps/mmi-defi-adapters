@@ -40,6 +40,7 @@ import CurveRewardEthereumProtocolToken from '../../adapters/curve/products/rewa
 import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
 import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
+import PricesUsdEthereumProtocolToken from '../../adapters/prices/products/usd/metadata/ethereum.protocol-token.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -453,6 +454,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     ConvexCvxcrvWrapperEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Prices,
+      productId: 'usd',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    PricesUsdEthereumProtocolToken,
   ],
 ])
 
