@@ -5,7 +5,6 @@ import {
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
-import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import { Chain } from '../../../../defiProvider'
@@ -34,14 +33,6 @@ import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
 
 const CVXCRV_WRAPPER_ADDRESS =
   '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434'.toLowerCase() as string
-
-type ConvexCvxcrvWrapperAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
 
 export class ConvexCvxcrvWrapperAdapter
   extends SimplePoolAdapter

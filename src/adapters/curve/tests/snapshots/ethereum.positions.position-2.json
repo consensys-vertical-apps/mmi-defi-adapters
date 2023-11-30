@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18637609,
+  "blockNumber": 18571794,
   "snapshot": [
     {
       "protocolId": "curve",
@@ -26,8 +26,8 @@
               "symbol": "DAI",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "3833739395703736367n",
-              "balance": "3.833739395703736367",
+              "balanceRaw": "4325074814209985236n",
+              "balance": "4.325074814209985236",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             },
             {
@@ -36,8 +36,8 @@
               "symbol": "USDC",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "4063050n",
-              "balance": "4.06305",
+              "balanceRaw": "3741621n",
+              "balance": "3.741621",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             },
             {
@@ -46,8 +46,8 @@
               "symbol": "USDT",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "3297433n",
-              "balance": "3.297433",
+              "balanceRaw": "3126472n",
+              "balance": "3.126472",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
@@ -80,9 +80,9 @@
               "symbol": "CRV",
               "decimals": 18,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png",
-              "balanceRaw": "104230228502004075n",
+              "balanceRaw": "97118831066726817n",
               "type": "underlying-claimable",
-              "balance": "0.104230228502004075"
+              "balance": "0.097118831066726817"
             },
             {
               "name": "Curve.fi DAI/USDC/USDT",
@@ -98,8 +98,8 @@
                   "symbol": "DAI",
                   "decimals": 18,
                   "type": "underlying",
-                  "balanceRaw": "2238357107886050742n",
-                  "balance": "2.238357107886050742",
+                  "balanceRaw": "2525226926841950030n",
+                  "balance": "2.52522692684195003",
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
                 },
                 {
@@ -108,8 +108,8 @@
                   "symbol": "USDC",
                   "decimals": 6,
                   "type": "underlying",
-                  "balanceRaw": "2372242n",
-                  "balance": "2.372242",
+                  "balanceRaw": "2184573n",
+                  "balance": "2.184573",
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
                 },
                 {
@@ -118,8 +118,8 @@
                   "symbol": "USDT",
                   "decimals": 6,
                   "type": "underlying",
-                  "balanceRaw": "1925230n",
-                  "balance": "1.92523",
+                  "balanceRaw": "1825414n",
+                  "balance": "1.825414",
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
                 }
               ],

@@ -25,8 +25,8 @@
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "type": "underlying",
               "totalSupplyRaw": "23824093926381n",
+              "type": "underlying",
               "totalSupply": "23824093.926381",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
@@ -46,8 +46,8 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "type": "underlying",
               "totalSupplyRaw": "45812089888105n",
+              "type": "underlying",
               "totalSupply": "45812089.888105",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
@@ -67,8 +67,8 @@
               "name": "Decentralized USD",
               "symbol": "USDD",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "1004586288537203080725216n",
+              "type": "underlying",
               "totalSupply": "1004586.288537203080725216",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0C10bF8FcB7Bf5412187A595ab97a3609160b5c6/logo.png"
             }
@@ -88,8 +88,8 @@
               "name": "Stargate Ether Vault",
               "symbol": "SGETH",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "5289724847875587688200n",
+              "type": "underlying",
               "totalSupply": "5289.7248478755876882",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x72E2F4830b9E45d52F80aC08CB2bEC0FeF72eD9c/logo.png"
             }
@@ -109,8 +109,8 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "163650869538000000000000n",
+              "type": "underlying",
               "totalSupply": "163650.869538",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
@@ -130,8 +130,8 @@
               "name": "Frax",
               "symbol": "FRAX",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "45359233678000000000000n",
+              "type": "underlying",
               "totalSupply": "45359.233678",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
@@ -151,8 +151,8 @@
               "name": "Synth sUSD",
               "symbol": "SUSD",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "29576241571000000000000n",
+              "type": "underlying",
               "totalSupply": "29576.241571",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
@@ -172,8 +172,8 @@
               "name": "Liquity USD",
               "symbol": "LUSD",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "17458226997000000000000n",
+              "type": "underlying",
               "totalSupply": "17458.226997",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
@@ -193,8 +193,8 @@
               "name": "Mai Stablecoin",
               "symbol": "MAI",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "402526188871000000000000n",
+              "type": "underlying",
               "totalSupply": "402526.188871",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8D6CeBD76f18E1558D4DB88138e2DeFB3909fAD6/logo.png"
             }
@@ -214,8 +214,8 @@
               "name": "Metis",
               "symbol": "METIS",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "322882450684313402636n",
+              "type": "underlying",
               "totalSupply": "322.882450684313402636",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9E32b13ce7f2E80A01932B42553652E053D6ed8e/logo.png"
             }
@@ -235,8 +235,8 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "type": "underlying",
               "totalSupplyRaw": "42867913057n",
+              "type": "underlying",
               "totalSupply": "42867.913057",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
@@ -256,8 +256,8 @@
               "name": "Wootrade Network",
               "symbol": "WOO",
               "decimals": 18,
-              "type": "underlying",
               "totalSupplyRaw": "143415601044067481912402n",
+              "type": "underlying",
               "totalSupply": "143415.601044067481912402",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4691937a7508860F876c9c0a2a617E7d9E945D4B/logo.png"
             }
