@@ -82,5 +82,12 @@ export function mergeClaimableWithProtocol(positions: DefiPositionResponse[]) {
     }
   })
 
+  // push failed requests to response
+  positions.forEach((position) => {
+    if (!position.success) {
+      mergedResponse.push(position)
+    }
+  })
+
   return mergedResponse
 }
