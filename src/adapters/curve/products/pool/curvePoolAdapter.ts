@@ -1,6 +1,7 @@
 import { formatUnits } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
@@ -10,7 +11,6 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { filterMapSync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
-import { Chain } from '../../../../defiProvider'
 import {
   ProtocolDetails,
   PositionType,
