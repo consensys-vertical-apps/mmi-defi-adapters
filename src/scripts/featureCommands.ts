@@ -18,7 +18,7 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
     program,
     'profits',
     defiProvider.getProfits.bind(defiProvider),
-    '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
+    '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
   )
 
   addressEventsCommand(

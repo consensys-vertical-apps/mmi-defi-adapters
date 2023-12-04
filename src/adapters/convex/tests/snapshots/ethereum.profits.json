@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18685717,
+  "blockNumber": 18713643,
   "snapshot": [
     {
       "protocolId": "convex",
@@ -12,8 +12,8 @@
       "productId": "pool",
       "success": true,
       "tokens": [],
-      "fromBlock": 18678571,
-      "toBlock": 18685717
+      "fromBlock": 18706497,
+      "toBlock": 18713643
     },
     {
       "protocolId": "convex",
@@ -85,8 +85,8 @@
           ]
         }
       ],
-      "fromBlock": 18678571,
-      "toBlock": 18685717
+      "fromBlock": 18706497,
+      "toBlock": 18713643
     },
     {
       "protocolId": "convex",
@@ -111,19 +111,19 @@
               "name": "Convex Token",
               "symbol": "CVX",
               "decimals": 18,
-              "profitRaw": "68314338414183814n",
+              "profitRaw": "67682167707030290n",
               "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "4128746134435417471n",
-                "startPositionValue": "4.128746134435417471",
-                "endPositionValueRaw": "4197060472849601285n",
-                "endPositionValue": "4.197060472849601285"
+                "startPositionValueRaw": "4369301750281418230n",
+                "startPositionValue": "4.36930175028141823",
+                "endPositionValueRaw": "4436983917988448520n",
+                "endPositionValue": "4.43698391798844852"
               },
-              "profit": "0.068314338414183814",
+              "profit": "0.06768216770703029",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             },
             {
@@ -131,19 +131,19 @@
               "name": "Curve DAO Token",
               "symbol": "CRV",
               "decimals": 18,
-              "profitRaw": "7590482046020423690n",
+              "profitRaw": "7520240856336698825n",
               "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "458749570492824163552n",
-                "startPositionValue": "458.749570492824163552",
-                "endPositionValueRaw": "466340052538844587242n",
-                "endPositionValue": "466.340052538844587242"
+                "startPositionValueRaw": "485477972253490914520n",
+                "startPositionValue": "485.47797225349091452",
+                "endPositionValueRaw": "492998213109827613345n",
+                "endPositionValue": "492.998213109827613345"
               },
-              "profit": "7.59048204602042369",
+              "profit": "7.520240856336698825",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
             }
           ]
@@ -247,8 +247,8 @@
           ]
         }
       ],
-      "fromBlock": 18678571,
-      "toBlock": 18685717
+      "fromBlock": 18706497,
+      "toBlock": 18713643
     },
     {
       "protocolId": "convex",
@@ -261,8 +261,8 @@
       "productId": "extra-reward",
       "success": true,
       "tokens": [],
-      "fromBlock": 18678571,
-      "toBlock": 18685717
+      "fromBlock": 18706497,
+      "toBlock": 18713643
     },
     {
       "protocolId": "convex",
@@ -287,19 +287,19 @@
               "name": "Curve.fi DAI/USDC/USDT",
               "symbol": "3Crv",
               "decimals": 18,
-              "profitRaw": "1788551611397759802n",
+              "profitRaw": "1931806838428916600n",
               "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "118872916157285702073n",
-                "startPositionValue": "118.872916157285702073",
-                "endPositionValueRaw": "120661467768683461875n",
-                "endPositionValue": "120.661467768683461875"
+                "startPositionValueRaw": "126234298727985746240n",
+                "startPositionValue": "126.23429872798574624",
+                "endPositionValueRaw": "128166105566414662840n",
+                "endPositionValue": "128.16610556641466284"
               },
-              "profit": "1.788551611397759802",
+              "profit": "1.9318068384289166",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
             },
             {
@@ -345,8 +345,8 @@
           ]
         }
       ],
-      "fromBlock": 18678571,
-      "toBlock": 18685717
+      "fromBlock": 18706497,
+      "toBlock": 18713643
     }
   ]
 }

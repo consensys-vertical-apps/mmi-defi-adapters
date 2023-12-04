@@ -87,7 +87,10 @@ export class MulticallQueue {
       currentPendingCalls,
     )) {
       const batchSize = callsToProcess.length
-      logger.debug({ batchSize }, 'Sending multicall batch ')
+      logger.debug(
+        { batchSize, chain: this.multicallContract.getChainId },
+        'Sending multicall batch ',
+      )
 
       const results = await this.multicallContract.aggregate3.staticCall(
         callsToProcess.map(({ callParams }) => callParams),
