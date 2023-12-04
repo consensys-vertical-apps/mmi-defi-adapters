@@ -6,7 +6,6 @@ import {
 } from '../../types/adapter'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { SimplePoolAdapter } from '../adapters/SimplePoolAdapter'
-import { logger } from '../utils/logger'
 
 export function ResolveUnderlyingPositions(
   originalMethod: SimplePoolAdapter['getPositions'],

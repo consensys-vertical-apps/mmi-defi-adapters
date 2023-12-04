@@ -32,11 +32,11 @@ import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { ResolveUnderlyingPositions } from '../decorators/resolveUnderlyingPositions'
+import { MaxMovementLimitExceededError } from '../errors/errors'
 import { aggregateTrades } from '../utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
-import { MaxMovementLimitExceededError } from '../errors/errors'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
   chainId: Chain
