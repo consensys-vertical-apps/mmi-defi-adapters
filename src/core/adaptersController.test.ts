@@ -1,5 +1,5 @@
 import { ExampleProductAdapter } from '../adapters/example/products/example-product/exampleProductAdapter'
-import { Protocol } from '../defiProvider'
+import { Protocol } from '../adapters/protocols'
 import { ProtocolAdapterParams } from '../types/adapter'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { AdaptersController } from './adaptersController'
