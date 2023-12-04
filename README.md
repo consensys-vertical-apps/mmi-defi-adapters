@@ -46,7 +46,7 @@ To build an adapter follow these steps:
    - `npm run test`
 8. To test your adapter further you can use the following commands, update userAddress and other params accordingly:
    - `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocols stargate --chains 1,arbitrum`
-   - `npm run profits 0xB0D502E938ed5f4df2E681fE6E419ff29631d62b`
+   - `npm run profits 0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a`
    - `npm run tvl`
    - `npm run prices`
    - `npm run apr`

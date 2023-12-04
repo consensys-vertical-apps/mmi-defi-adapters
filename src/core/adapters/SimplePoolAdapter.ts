@@ -32,6 +32,7 @@ import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { ResolveUnderlyingPositions } from '../decorators/resolveUnderlyingPositions'
+import { MaxMovementLimitExceededError } from '../errors/errors'
 import { aggregateTrades } from '../utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
@@ -411,6 +412,14 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
         fromBlock,
         toBlock,
       )
+
+    // Temp fix to avoid timeouts
+    // Remember these are on per pool basis.
+    // We should monitor number
+    // 20 interactions with same pool feels a healthy limit
+    if (eventResults.length > 20) {
+      throw new MaxMovementLimitExceededError()
+    }
 
     return await Promise.all(
       eventResults.map(async (transferEvent) => {

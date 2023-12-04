@@ -16,7 +16,7 @@ export const testCases: TestCase[] = [
   //   chainId: Chain.Ethereum,
   //   method: 'profits',
   //   input: {
-  //     userAddress: '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
+  //     userAddress: '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
   //     timePeriod: TimePeriod.oneDay,
   //   },
   // },
