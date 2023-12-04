@@ -43,63 +43,58 @@ async function recursivePositionSolver({
   tokenPositions: (TokenBalance & { tokens?: Underlying[] })[]
   blockNumber?: number
 }) {
-  try {
-    for (const tokenPosition of tokenPositions) {
-      if (!tokenPosition.tokens) {
+  for (const tokenPosition of tokenPositions) {
+    if (!tokenPosition.tokens) {
+      continue
+    }
+
+    for (const underlyingProtocolTokenPosition of tokenPosition.tokens) {
+      const underlyingProtocolTokenAdapter =
+        await adapter.adaptersController.fetchTokenAdapter(
+          adapter.chainId,
+          underlyingProtocolTokenPosition.address,
+        )
+
+      if (!underlyingProtocolTokenAdapter) {
         continue
       }
 
-      for (const underlyingProtocolTokenPosition of tokenPosition.tokens) {
-        const underlyingProtocolTokenAdapter =
-          await adapter.adaptersController.fetchTokenAdapter(
-            adapter.chainId,
-            underlyingProtocolTokenPosition.address,
-          )
+      const protocolTokenUnderlyingRate =
+        await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
+          {
+            protocolTokenAddress: underlyingProtocolTokenPosition.address,
+            blockNumber: blockNumber,
+          },
+        )
 
-        if (!underlyingProtocolTokenAdapter) {
-          continue
-        }
+      const computedUnderlyingPositions: Underlying[] =
+        protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
+          return {
+            address: underlyingTokenRate.address,
+            name: underlyingTokenRate.name,
+            symbol: underlyingTokenRate.symbol,
+            decimals: underlyingTokenRate.decimals,
+            type:
+              underlyingTokenRate.type == TokenType.Fiat
+                ? TokenType.Fiat
+                : TokenType.Underlying,
+            balanceRaw:
+              (underlyingProtocolTokenPosition.balanceRaw *
+                underlyingTokenRate.underlyingRateRaw) /
+              10n ** BigInt(underlyingProtocolTokenPosition.decimals),
+          }
+        }) || []
 
-        const protocolTokenUnderlyingRate =
-          await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
-            {
-              protocolTokenAddress: underlyingProtocolTokenPosition.address,
-              blockNumber: blockNumber,
-            },
-          )
-
-        const computedUnderlyingPositions: Underlying[] =
-          protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
-            return {
-              address: underlyingTokenRate.address,
-              name: underlyingTokenRate.name,
-              symbol: underlyingTokenRate.symbol,
-              decimals: underlyingTokenRate.decimals,
-              type:
-                underlyingTokenRate.type == TokenType.Fiat
-                  ? TokenType.Fiat
-                  : TokenType.Underlying,
-              balanceRaw:
-                (underlyingProtocolTokenPosition.balanceRaw *
-                  underlyingTokenRate.underlyingRateRaw) /
-                10n ** BigInt(underlyingProtocolTokenPosition.decimals),
-            }
-          }) || []
-
-        underlyingProtocolTokenPosition.tokens = [
-          ...(underlyingProtocolTokenPosition.tokens || []),
-          ...computedUnderlyingPositions,
-        ]
-      }
-
-      await recursivePositionSolver({
-        adapter,
-        tokenPositions: tokenPosition.tokens,
-        blockNumber,
-      })
+      underlyingProtocolTokenPosition.tokens = [
+        ...(underlyingProtocolTokenPosition.tokens || []),
+        ...computedUnderlyingPositions,
+      ]
     }
-  } catch (error) {
-    logger.error(error, 'Error while resolving tokens')
-    throw new Error('Error while resolving tokens')
+
+    await recursivePositionSolver({
+      adapter,
+      tokenPositions: tokenPosition.tokens,
+      blockNumber,
+    })
   }
 }
