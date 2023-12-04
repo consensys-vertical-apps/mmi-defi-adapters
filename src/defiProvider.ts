@@ -16,7 +16,6 @@ import {
   enrichMovements,
   enrichTotalValueLocked,
 } from './responseAdapters'
-import { PositionType } from './types/adapter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
@@ -30,15 +29,6 @@ import {
   TotalValueLockResponse,
   GetEventsRequestInput,
 } from './types/response'
-
-export {
-  Chain,
-  DefiPositionResponse,
-  DefiProfitsResponse,
-  PositionType,
-  Protocol,
-  TimePeriod,
-}
 
 export class DefiProvider {
   chainProvider: ChainProvider
