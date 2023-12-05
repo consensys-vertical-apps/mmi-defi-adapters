@@ -1,11 +1,10 @@
-import { DefiPositionResponse } from '../../defiProvider'
 import {
   Underlying,
   ProtocolPosition,
   PositionType,
   TokenType,
 } from '../../types/adapter'
-import { DisplayPosition } from '../../types/response'
+import { DefiPositionResponse, DisplayPosition } from '../../types/response'
 
 export function mergeClaimableWithProtocol(positions: DefiPositionResponse[]) {
   const rewardMap: Record<string, DisplayPosition<Underlying>[]> = {}

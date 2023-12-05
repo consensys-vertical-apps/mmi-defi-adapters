@@ -183,13 +183,17 @@ export class GMXGlpAdapter
       }),
     ])
 
+    if (!protocolTokenBalance || protocolTokenBalance === 0n) {
+      return []
+    }
+
     const underlyingTokenBalances = underlyingTokens.map((underlyingToken) => {
       const underlyingTokenRate = underlyingTokenRates.tokens?.find(
         (tokenRate) => tokenRate.address === underlyingToken.address,
       )
 
       const underlyingBalanceRaw =
-        (protocolTokenBalance! * underlyingTokenRate!.underlyingRateRaw) /
+        (protocolTokenBalance * underlyingTokenRate!.underlyingRateRaw) /
         10n ** BigInt(protocolToken.decimals)
 
       return {
@@ -203,7 +207,7 @@ export class GMXGlpAdapter
       {
         ...protocolToken,
         type: TokenType.Protocol,
-        balanceRaw: protocolTokenBalance!,
+        balanceRaw: protocolTokenBalance,
         tokens: underlyingTokenBalances,
       },
     ]

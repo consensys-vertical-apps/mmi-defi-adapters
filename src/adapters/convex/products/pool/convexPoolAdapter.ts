@@ -1,4 +1,5 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
   CacheToFile,
@@ -7,7 +8,6 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
-import { Chain } from '../../../../defiProvider'
 import {
   ProtocolDetails,
   PositionType,

@@ -1,4 +1,5 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
   CacheToFile,
@@ -8,7 +9,6 @@ import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
-import { Chain } from '../../../../defiProvider'
 import {
   ProtocolDetails,
   PositionType,

@@ -1,5 +1,9 @@
-import * as defiAdapters from './defiProvider'
-
-export { defiAdapters }
-
-export * from './defiProvider'
+export { Protocol } from './adapters/protocols'
+export { Chain } from './core/constants/chains'
+export { TimePeriod } from './core/constants/timePeriod'
+export { DefiProvider } from './defiProvider'
+export { PositionType } from './types/adapter'
+export type {
+  DefiPositionResponse,
+  DefiProfitsResponse,
+} from './types/response'
