@@ -17,6 +17,7 @@ import {
   UnderlyingTokenTvl,
   TokenType,
   TokenBalance,
+  CalculationData,
 } from './adapter'
 
 export type GetEventsRequestInput = {
@@ -71,7 +72,16 @@ export type DisplayProfitsWithRange = Omit<ProfitsWithRange, 'tokens'> & {
 }
 
 type DisplayPositionProfits = Omit<PositionProfits, 'tokens'> & {
-  tokens: (UnderlyingProfitValues & { profit: string; iconUrl: string })[]
+  tokens: (UnderlyingProfitValues & {
+    profit: string
+    iconUrl: string
+    calculationData: CalculationData & {
+      withdrawals: string
+      deposits: string
+      startPositionValue: string
+      endPositionValue: string
+    }
+  })[]
 }
 
 export type PricePerShareResponse = AdapterResponse<{
