@@ -125,13 +125,6 @@
     "decimals": 8,
     "baseAssetId": "0x8e870d67f660d95d5be530380d0ec0bd388289e1"
   },
-  "0x6c3ea9036406852006290770bedfcaba0e23a0e8": {
-    "name": "PayPal USD",
-    "address": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
-    "symbol": "pyusd",
-    "decimals": 8,
-    "baseAssetId": "0x6c3ea9036406852006290770bedfcaba0e23a0e8"
-  },
   "0xbc396689893d065f41bc2c6ecbee5e0085233447": {
     "name": "Perpetual Protocol",
     "address": "0xbc396689893d065f41bc2c6ecbee5e0085233447",
@@ -446,12 +439,5 @@
     "symbol": "snx",
     "decimals": 8,
     "baseAssetId": "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f"
-  },
-  "0x71ab77b7dbb4fa7e017bc15090b2163221420282": {
-    "name": "Highstreet",
-    "address": "0x71ab77b7dbb4fa7e017bc15090b2163221420282",
-    "symbol": "high",
-    "decimals": 8,
-    "baseAssetId": "0x71ab77b7dbb4fa7e017bc15090b2163221420282"
   }
 }

@@ -83,5 +83,6 @@ export const testCases: TestCase[] = [
       userAddress: '0x8654a995426e775f3ef023cd6e1b5681e774ffa1',
       timePeriod: TimePeriod.oneDay,
     },
+    blockNumber: 18713643,
   },
 ]
