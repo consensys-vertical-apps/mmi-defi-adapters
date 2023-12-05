@@ -10,7 +10,9 @@ export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
     new Map()
 
-  private protocolTokens: Map<Chain, Map<string, IProtocolAdapter>> = new Map()
+  private protocolTokensPromise:
+    | Promise<Map<Chain, Map<string, IProtocolAdapter>>>
+    | undefined
 
   constructor({
     providers,
@@ -74,45 +76,56 @@ export class AdaptersController {
     chainId: Chain,
     tokenAddress: string,
   ): Promise<IProtocolAdapter | undefined> {
-    // Only run this first time
-    if (this.protocolTokens.size === 0) {
-      for (const [chainId, chainAdapters] of this.adapters) {
-        this.protocolTokens.set(chainId, new Map())
-        const chainAdaptersMap = this.protocolTokens.get(chainId)!
+    // Deferred promise so that only one execution path resolves it
+    if (!this.protocolTokensPromise) {
+      // eslint-disable-next-line no-async-promise-executor
+      this.protocolTokensPromise = new Promise(async (resolve, reject) => {
+        const protocolTokens: Map<
+          Chain,
+          Map<string, IProtocolAdapter>
+        > = new Map()
 
-        for (const [_protocolId, protocolAdapters] of chainAdapters) {
-          for (const [_productId, adapter] of protocolAdapters) {
-            const { positionType } = adapter.getProtocolDetails()
+        for (const [chainId, chainAdapters] of this.adapters) {
+          protocolTokens.set(chainId, new Map())
+          const chainAdaptersMap = protocolTokens.get(chainId)!
 
-            if (positionType === PositionType.Reward) {
-              continue
-            }
+          for (const [_protocolId, protocolAdapters] of chainAdapters) {
+            for (const [_productId, adapter] of protocolAdapters) {
+              const { positionType } = adapter.getProtocolDetails()
 
-            let protocolTokens: Erc20Metadata[]
-            try {
-              protocolTokens = await adapter.getProtocolTokens()
-            } catch (error) {
-              if (!(error instanceof NotImplementedError)) {
-                throw error
-              }
-              protocolTokens = []
-            }
-
-            for (const protocolToken of protocolTokens) {
-              if (chainAdaptersMap.has(protocolToken.address)) {
-                throw Error(
-                  `Duplicated protocol token ${protocolToken.address}`,
-                )
+              if (positionType === PositionType.Reward) {
+                continue
               }
 
-              chainAdaptersMap.set(protocolToken.address, adapter)
+              let protocolTokens: Erc20Metadata[]
+              try {
+                protocolTokens = await adapter.getProtocolTokens()
+              } catch (error) {
+                if (!(error instanceof NotImplementedError)) {
+                  reject(error)
+                }
+                protocolTokens = []
+              }
+
+              for (const protocolToken of protocolTokens) {
+                if (chainAdaptersMap.has(protocolToken.address)) {
+                  reject(
+                    Error(`Duplicated protocol token ${protocolToken.address}`),
+                  )
+                }
+                chainAdaptersMap.set(protocolToken.address, adapter)
+              }
             }
           }
         }
-      }
+
+        resolve(protocolTokens)
+      })
     }
 
-    return this.protocolTokens.get(chainId)?.get(tokenAddress)
+    const protocolTokens = await this.protocolTokensPromise
+
+    return protocolTokens.get(chainId)?.get(tokenAddress)
   }
 
   fetchAdapter(
