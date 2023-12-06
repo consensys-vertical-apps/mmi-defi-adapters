@@ -85,7 +85,13 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
   abstract getProtocolDetails(): ProtocolDetails
 
+  private _metadataCache: MorphoAaveV2PeerToPoolAdapterMetadata | null = null
+
   async buildMetadata() {
+    if (this._metadataCache) {
+      return this._metadataCache
+    }
+
     const morphoAaveV2Contract = MorphoAaveV2__factory.connect(
       morphoAaveV2ContractAddresses[this.protocolId]![this.chainId]!,
       this._provider,
@@ -122,6 +128,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       }),
     )
 
+    this._metadataCache = metadataObject
     return metadataObject
   }
 
