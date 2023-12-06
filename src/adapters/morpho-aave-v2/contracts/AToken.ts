@@ -23,7 +23,7 @@ import type {
   TypedContractMethod,
 } from "./common";
 
-export interface MorphoATokenInterface extends Interface {
+export interface ATokenInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "ATOKEN_REVISION"
@@ -371,11 +371,11 @@ export namespace TransferEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export interface MorphoAToken extends BaseContract {
-  connect(runner?: ContractRunner | null): MorphoAToken;
+export interface AToken extends BaseContract {
+  connect(runner?: ContractRunner | null): AToken;
   waitForDeployment(): Promise<this>;
 
-  interface: MorphoATokenInterface;
+  interface: ATokenInterface;
 
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,

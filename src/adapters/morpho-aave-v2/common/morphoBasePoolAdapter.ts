@@ -40,10 +40,10 @@ import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
 import {
   MorphoAaveV2__factory,
-  MorphoAToken__factory,
+  AToken__factory,
   MorphoAaveV2Lens__factory,
 } from '../contracts'
-import { TransferEvent } from '../contracts/MorphoAToken'
+import { TransferEvent } from '../contracts/AToken'
 
 type MorphoAaveV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -97,7 +97,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     await Promise.all(
       markets.map(async (marketAddress) => {
-        const aTokenContract = MorphoAToken__factory.connect(
+        const aTokenContract = AToken__factory.connect(
           marketAddress,
           this._provider,
         )
@@ -340,8 +340,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         return {
           ...tokenMetadata,
           type: TokenType.Protocol,
-          totalSupplyRaw:
-            totalValueRaw !== undefined ? totalValueRaw : BigInt(0),
+          totalSupplyRaw: totalValueRaw !== undefined ? totalValueRaw : 0n,
         }
       }),
     )
@@ -355,7 +354,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       protocolTokenMetadata.address,
     )
 
-    // Aave tokens always pegged one to one to underlying
+    // 'balanceOf' of 'aTokens' is already scaled with the exchange rate
     const PRICE_PEGGED_TO_ONE = 1
     const pricePerShareRaw = BigInt(
       PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
@@ -496,7 +495,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       to?: string
     }
   }): Promise<MovementsByBlock[]> {
-    const protocolTokenContract = MorphoAToken__factory.connect(
+    const protocolTokenContract = AToken__factory.connect(
       smartContractAddress,
       this._provider,
     )
