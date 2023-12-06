@@ -138,6 +138,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     const result: PriceMetadata = {
       [NATIVE_ETH.address]: {
         ...NATIVE_ETH,
+        decimals: 8,
         baseAssetId: TOKEN_BASEID_MAPPING[NATIVE_ETH.address]!,
       },
     }

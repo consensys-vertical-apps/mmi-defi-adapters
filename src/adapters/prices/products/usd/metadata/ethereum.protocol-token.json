@@ -3,7 +3,7 @@
     "address": "0x0000000000000000000000000000000000000000",
     "name": "Ethereum",
     "symbol": "ETH",
-    "decimals": 18,
+    "decimals": 8,
     "baseAssetId": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
   },
   "0xc944e90c64b2c07662a292be6244bdf05cda44a7": {
