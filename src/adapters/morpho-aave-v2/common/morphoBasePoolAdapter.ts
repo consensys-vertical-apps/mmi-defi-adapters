@@ -13,7 +13,6 @@ import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import { formatProtocolTokenArrayToMap } from '../../../core/utils/protocolTokenToMap'
 import {
-  BaseTokenMovement,
   GetPositionsInput,
   GetEventsInput,
   GetApyInput,
@@ -35,6 +34,7 @@ import {
   TokenType,
   Underlying,
   UnderlyingTokenRate,
+  BaseTokenMovement,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
@@ -43,7 +43,12 @@ import {
   AToken__factory,
   MorphoAaveV2Lens__factory,
 } from '../contracts'
-import { TransferEvent } from '../contracts/AToken'
+import {
+  SuppliedEvent,
+  WithdrawnEvent,
+  BorrowedEvent,
+  RepaidEvent,
+} from '../contracts/MorphoAaveV2'
 
 type MorphoAaveV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -276,20 +281,12 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
-      filter: {
-        smartContractAddress: protocolTokenAddress,
-        fromBlock,
-        toBlock,
-        from: userAddress,
-        to: undefined,
-      },
+    return this.getMovements({
+      userAddress,
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+      eventType: 'withdrawn',
     })
   }
 
@@ -299,21 +296,155 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
-      filter: {
-        smartContractAddress: protocolTokenAddress,
-        fromBlock,
-        toBlock,
-        from: undefined,
-        to: userAddress,
-      },
+    return this.getMovements({
+      userAddress,
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+      eventType: 'supplied',
     })
+  }
+  async getBorrows({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.getMovements({
+      userAddress,
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+      eventType: 'borrowed',
+    })
+  }
+  async getRepays({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.getMovements({
+      userAddress,
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+      eventType: 'repaid',
+    })
+  }
+
+  async getProfits({
+    userAddress,
+    fromBlock,
+    toBlock,
+  }: GetProfitsInput): Promise<ProfitsWithRange> {
+    // Fetch end and start position values
+    const [endPositionValues, startPositionValues] = await Promise.all([
+      this.getPositions({
+        userAddress,
+        blockNumber: toBlock,
+      }).then(formatProtocolTokenArrayToMap),
+      this.getPositions({
+        userAddress,
+        blockNumber: fromBlock,
+      }).then(formatProtocolTokenArrayToMap),
+    ])
+
+    // Fetch and process each token's movements
+    const tokens = await Promise.all(
+      Object.values(endPositionValues).map(
+        async ({
+          protocolTokenMetadata,
+          underlyingTokenPositions: underlyingEndPositions,
+        }) => {
+          const getEventsInput: GetEventsInput = {
+            userAddress,
+            protocolTokenAddress: protocolTokenMetadata.address,
+            fromBlock,
+            toBlock,
+          }
+
+          // Fetch withdrawals and deposits
+          const [withdrawals, deposits /*, repays, borrows*/] =
+            await Promise.all([
+              this.getWithdrawals(getEventsInput).then(aggregateTrades),
+              this.getDeposits(getEventsInput).then(aggregateTrades),
+              // this.getRepays(getEventsInput).then(aggregateTrades), // depends on what we want to do
+              // this.getBorrows(getEventsInput).then(aggregateTrades),
+            ])
+
+          // Calculate profit for each token
+          return {
+            ...protocolTokenMetadata,
+            type: TokenType.Protocol,
+            tokens: Object.values(underlyingEndPositions).map(
+              ({
+                address,
+                name,
+                symbol,
+                decimals,
+                balanceRaw: endPositionValueRaw,
+              }) => {
+                const startPositionValueRaw =
+                  startPositionValues[protocolTokenMetadata.address]
+                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
+
+                const calculationData = {
+                  withdrawalsRaw: withdrawals[address] ?? 0n,
+                  depositsRaw: deposits[address] ?? 0n,
+                  // repaysRaw: repays[address] ?? 0n,
+                  // borrowsRaw: borrows[address] ?? 0n,
+                  endPositionValueRaw: endPositionValueRaw ?? 0n,
+                  startPositionValueRaw,
+                }
+
+                let profitRaw =
+                  calculationData.endPositionValueRaw +
+                  calculationData.withdrawalsRaw -
+                  calculationData.depositsRaw -
+                  calculationData.startPositionValueRaw
+
+                if (
+                  this.getProtocolDetails().positionType === PositionType.Borrow
+                ) {
+                  profitRaw *= -1n
+                }
+
+                return {
+                  address,
+                  name,
+                  symbol,
+                  decimals,
+                  profitRaw,
+                  type: TokenType.Underlying,
+                  calculationData: {
+                    withdrawalsRaw: withdrawals[address] ?? 0n,
+                    withdrawals: formatUnits(
+                      withdrawals[address] ?? 0n,
+                      decimals,
+                    ),
+                    depositsRaw: deposits[address] ?? 0n,
+                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
+                    startPositionValueRaw: startPositionValueRaw ?? 0n,
+                    startPositionValue: formatUnits(
+                      startPositionValueRaw ?? 0n,
+                      decimals,
+                    ),
+                    endPositionValueRaw,
+                    endPositionValue: formatUnits(
+                      endPositionValueRaw ?? 0n,
+                      decimals,
+                    ),
+                  },
+                }
+              },
+            ),
+          }
+        },
+      ),
+    )
+
+    return { tokens, fromBlock, toBlock }
   }
 
   async getTotalValueLocked({
@@ -382,192 +513,102 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     throw new NotImplementedError()
   }
 
-  async getProfits({
-    userAddress,
-    fromBlock,
-    toBlock,
-  }: GetProfitsInput): Promise<ProfitsWithRange> {
-    const [endPositionValues, startPositionValues] = await Promise.all([
-      this.getPositions({
-        userAddress,
-        blockNumber: toBlock,
-      }).then(formatProtocolTokenArrayToMap),
-      this.getPositions({
-        userAddress,
-        blockNumber: fromBlock,
-      }).then(formatProtocolTokenArrayToMap),
-    ])
-
-    const tokens = await Promise.all(
-      Object.values(endPositionValues).map(
-        async ({
-          protocolTokenMetadata,
-          underlyingTokenPositions: underlyingEndPositions,
-        }) => {
-          const getEventsInput: GetEventsInput = {
-            userAddress,
-            protocolTokenAddress: protocolTokenMetadata.address,
-            fromBlock,
-            toBlock,
-          }
-
-          const [withdrawals, deposits] = await Promise.all([
-            this.getWithdrawals(getEventsInput).then(aggregateTrades),
-            this.getDeposits(getEventsInput).then(aggregateTrades),
-          ])
-
-          return {
-            ...protocolTokenMetadata,
-            type: TokenType.Protocol,
-            tokens: Object.values(underlyingEndPositions).map(
-              ({
-                address,
-                name,
-                symbol,
-                decimals,
-                balanceRaw: endPositionValueRaw,
-              }) => {
-                const startPositionValueRaw =
-                  startPositionValues[protocolTokenMetadata.address]
-                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
-
-                const calculationData = {
-                  withdrawalsRaw: withdrawals[address] ?? 0n,
-                  depositsRaw: deposits[address] ?? 0n,
-                  endPositionValueRaw: endPositionValueRaw ?? 0n,
-                  startPositionValueRaw,
-                }
-
-                let profitRaw =
-                  calculationData.endPositionValueRaw +
-                  calculationData.withdrawalsRaw -
-                  calculationData.depositsRaw -
-                  calculationData.startPositionValueRaw
-
-                if (
-                  this.getProtocolDetails().positionType === PositionType.Borrow
-                ) {
-                  profitRaw *= -1n
-                }
-
-                return {
-                  address,
-                  name,
-                  symbol,
-                  decimals,
-                  profitRaw,
-                  type: TokenType.Underlying,
-                  calculationData: {
-                    withdrawalsRaw: withdrawals[address] ?? 0n,
-                    withdrawals: formatUnits(
-                      withdrawals[address] ?? 0n,
-                      decimals,
-                    ),
-                    depositsRaw: deposits[address] ?? 0n,
-                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
-                    startPositionValueRaw: startPositionValueRaw ?? 0n,
-                    startPositionValue: formatUnits(
-                      startPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                    endPositionValueRaw,
-                    endPositionValue: formatUnits(
-                      endPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                  },
-                }
-              },
-            ),
-          }
-        },
-      ),
-    )
-
-    return { tokens, fromBlock, toBlock }
+  protected extractEventData(
+    event: any,
+    eventType: string,
+  ):
+    | SuppliedEvent.OutputObject
+    | WithdrawnEvent.OutputObject
+    | RepaidEvent.OutputObject
+    | BorrowedEvent.OutputObject
+    | undefined {
+    switch (eventType) {
+      case 'supplied':
+        return event.args as SuppliedEvent.OutputObject
+      case 'withdrawn':
+        return event.args as WithdrawnEvent.OutputObject
+      case 'repaid':
+        return event.args as RepaidEvent.OutputObject
+      case 'borrowed':
+        return event.args as BorrowedEvent.OutputObject
+    }
   }
 
   async getMovements({
-    protocolToken,
-    underlyingTokens,
-    filter: { smartContractAddress, fromBlock, toBlock, from, to },
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    eventType,
   }: {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-    filter: {
-      smartContractAddress: string
-      fromBlock: number
-      toBlock: number
-      from?: string
-      to?: string
-    }
+    userAddress: string
+    protocolTokenAddress: string
+    fromBlock: number
+    toBlock: number
+    eventType: 'supplied' | 'withdrawn' | 'repaid' | 'borrowed'
   }): Promise<MovementsByBlock[]> {
-    const protocolTokenContract = AToken__factory.connect(
-      smartContractAddress,
+    const morphoAaveV2Contract = MorphoAaveV2__factory.connect(
+      protocolTokenAddress,
       this._provider,
     )
 
-    const filter = protocolTokenContract.filters.Transfer(from, to)
+    let filter
+    switch (eventType) {
+      case 'supplied':
+        filter = morphoAaveV2Contract.filters.Supplied(undefined, userAddress)
+        break
+      case 'withdrawn':
+        filter = morphoAaveV2Contract.filters.Withdrawn(userAddress)
+        break
+      case 'repaid':
+        filter = morphoAaveV2Contract.filters.Repaid(undefined, userAddress)
+        break
+      case 'borrowed':
+        filter = morphoAaveV2Contract.filters.Borrowed(userAddress)
+        break
+    }
 
-    const eventResults =
-      await protocolTokenContract.queryFilter<TransferEvent.Event>(
-        filter,
-        fromBlock,
-        toBlock,
-      )
+    const eventResults = await morphoAaveV2Contract.queryFilter(
+      filter,
+      fromBlock,
+      toBlock,
+    )
 
-    return await Promise.all(
-      eventResults.map(async (transferEvent) => {
-        const {
-          blockNumber,
-          args: { value: protocolTokenMovementValueRaw },
-          transactionHash,
-        } = transferEvent
+    const movements = await Promise.all(
+      eventResults.map(async (event) => {
+        const eventData = this.extractEventData(event, eventType)
+        if (!eventData) {
+          return null
+        }
 
-        const protocolTokenPrice =
-          await this.getProtocolTokenToUnderlyingTokenRate({
-            blockNumber,
-            protocolTokenAddress: protocolToken.address,
-          })
+        const protocolToken = await this.fetchProtocolTokenMetadata(
+          eventData._poolToken,
+        )
+        const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
+          eventData._poolToken,
+        )
+
+        const underlyingTokensMovement: Record<string, BaseTokenMovement> = {}
+        underlyingTokens.forEach((underlyingToken) => {
+          underlyingTokensMovement[underlyingToken.address] = {
+            ...underlyingToken,
+            transactionHash: event.transactionHash,
+            movementValueRaw: eventData._amount,
+          }
+        })
 
         return {
           protocolToken: {
-            address: protocolToken.address,
-            name: protocolToken.name,
-            symbol: protocolToken.symbol,
-            decimals: protocolToken.decimals,
+            ...protocolToken,
           },
-          underlyingTokensMovement: underlyingTokens.reduce(
-            (accumulator, currentToken) => {
-              const currentTokenPrice = protocolTokenPrice.tokens?.find(
-                (price) => price.address === currentToken.address,
-              )
-
-              if (!currentTokenPrice) {
-                throw new Error('No price for underlying token at this time')
-              }
-
-              const movementValueRaw =
-                (protocolTokenMovementValueRaw *
-                  currentTokenPrice.underlyingRateRaw) /
-                BigInt(10 ** protocolToken.decimals)
-
-              return {
-                ...accumulator,
-
-                [currentToken.address]: {
-                  ...currentToken,
-                  transactionHash,
-                  movementValueRaw,
-                },
-              }
-            },
-            {} as Record<string, BaseTokenMovement>,
-          ),
-          blockNumber,
+          underlyingTokensMovement,
+          blockNumber: event.blockNumber,
         }
       }),
     )
+    return movements.filter(
+      (movement): movement is MovementsByBlock => movement !== null,
+    ) as MovementsByBlock[]
   }
 
   protected async getProtocolTokenApr({
