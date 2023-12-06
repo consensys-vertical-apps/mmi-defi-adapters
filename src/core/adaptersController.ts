@@ -10,7 +10,7 @@ export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
     new Map()
 
-  private protocolTokensPromise:
+  private protocolTokens:
     | Promise<Map<Chain, Map<string, IProtocolAdapter>>>
     | undefined
 
@@ -76,56 +76,56 @@ export class AdaptersController {
     chainId: Chain,
     tokenAddress: string,
   ): Promise<IProtocolAdapter | undefined> {
-    // Deferred promise so that only one execution path resolves it
-    if (!this.protocolTokensPromise) {
-      // eslint-disable-next-line no-async-promise-executor
-      this.protocolTokensPromise = new Promise(async (resolve, reject) => {
-        const protocolTokens: Map<
-          Chain,
-          Map<string, IProtocolAdapter>
-        > = new Map()
-
-        for (const [chainId, chainAdapters] of this.adapters) {
-          protocolTokens.set(chainId, new Map())
-          const chainAdaptersMap = protocolTokens.get(chainId)!
-
-          for (const [_protocolId, protocolAdapters] of chainAdapters) {
-            for (const [_productId, adapter] of protocolAdapters) {
-              const { positionType } = adapter.getProtocolDetails()
-
-              if (positionType === PositionType.Reward) {
-                continue
-              }
-
-              let protocolTokens: Erc20Metadata[]
-              try {
-                protocolTokens = await adapter.getProtocolTokens()
-              } catch (error) {
-                if (!(error instanceof NotImplementedError)) {
-                  reject(error)
-                }
-                protocolTokens = []
-              }
-
-              for (const protocolToken of protocolTokens) {
-                if (chainAdaptersMap.has(protocolToken.address)) {
-                  reject(
-                    Error(`Duplicated protocol token ${protocolToken.address}`),
-                  )
-                }
-                chainAdaptersMap.set(protocolToken.address, adapter)
-              }
-            }
-          }
-        }
-
-        resolve(protocolTokens)
-      })
+    // Deferred promise so that only the first execution path does the work
+    if (!this.protocolTokens) {
+      this.protocolTokens = this.buildProtocolTokens()
     }
 
-    const protocolTokens = await this.protocolTokensPromise
+    const protocolTokens = await this.protocolTokens
 
     return protocolTokens.get(chainId)?.get(tokenAddress)
+  }
+
+  private async buildProtocolTokens(): Promise<
+    Map<Chain, Map<string, IProtocolAdapter>>
+  > {
+    const protocolTokens: Map<Chain, Map<string, IProtocolAdapter>> = new Map()
+
+    for (const [chainId, chainAdapters] of this.adapters) {
+      protocolTokens.set(chainId, new Map())
+      const chainAdaptersMap = protocolTokens.get(chainId)!
+
+      for (const [_protocolId, protocolAdapters] of chainAdapters) {
+        for (const [_productId, adapter] of protocolAdapters) {
+          const { positionType } = adapter.getProtocolDetails()
+
+          if (positionType === PositionType.Reward) {
+            continue
+          }
+
+          let protocolTokens: Erc20Metadata[]
+          try {
+            protocolTokens = await adapter.getProtocolTokens()
+          } catch (error) {
+            if (!(error instanceof NotImplementedError)) {
+              throw error
+            }
+            protocolTokens = []
+          }
+
+          for (const protocolToken of protocolTokens) {
+            if (chainAdaptersMap.has(protocolToken.address)) {
+              throw new Error(
+                `Duplicated protocol token ${protocolToken.address}`,
+              )
+            }
+            chainAdaptersMap.set(protocolToken.address, adapter)
+          }
+        }
+      }
+    }
+
+    return protocolTokens
   }
 
   fetchAdapter(
