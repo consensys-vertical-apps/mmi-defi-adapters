@@ -195,7 +195,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       market: Erc20Metadata,
       userAddress: string,
       blockNumber: number,
-    ): Promise<number> => {
+    ): Promise<bigint> => {
       let balanceRaw
       if (positionType === PositionType.Supply) {
         ;[, , balanceRaw] = await lensContract.getCurrentSupplyBalanceInOf(
@@ -210,7 +210,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           { blockTag: blockNumber },
         )
       }
-      return Number(balanceRaw)
+      return balanceRaw
     }
 
     const protocolTokensBalances = await Promise.all(
@@ -218,7 +218,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         const amount = await getBalance(market, userAddress, blockNumber!)
         return {
           address: market.address,
-          balance: amount,
+          balance: Number(amount),
         }
       }),
     )
