@@ -14,7 +14,7 @@
       "tokens": [
         {
           "name": "Ethereum",
-          "decimals": 18,
+          "decimals": 8,
           "symbol": "ETH",
           "address": "0x0000000000000000000000000000000000000000",
           "baseRate": 1,
@@ -23,11 +23,11 @@
             {
               "type": "fiat",
               "underlyingRateRaw": "205719697249n",
-              "decimals": 18,
+              "decimals": 8,
               "name": "USD",
               "symbol": "USD",
               "address": "TheUnitedStatesMint",
-              "underlyingRate": "0.000000205719697249"
+              "underlyingRate": "2057.19697249"
             }
           ]
         },
