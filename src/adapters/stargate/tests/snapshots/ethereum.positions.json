@@ -7,6 +7,40 @@
       "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
       "siteUrl": "https://stargate.finance/",
       "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "name": "USD Coin-LP",
+          "symbol": "S*USDC",
+          "decimals": 6,
+          "balanceRaw": "31468548033n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "31492408006n",
+              "type": "underlying",
+              "balance": "31492.408006",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "balance": "31468.548033"
+        }
+      ]
+    },
+    {
+      "protocolId": "stargate",
+      "name": "Stargate",
+      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
+      "siteUrl": "https://stargate.finance/",
+      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
       "positionType": "stake",
       "chainId": 1,
       "productId": "vesting",
