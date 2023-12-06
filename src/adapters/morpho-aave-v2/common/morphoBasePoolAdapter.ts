@@ -65,7 +65,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   protocolId: Protocol
   chainId: Chain
 
-  protected provider: CustomJsonRpcProvider
+  protected _provider: CustomJsonRpcProvider
 
   constructor({
     provider,
@@ -73,7 +73,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     protocolId,
     adaptersController,
   }: ProtocolAdapterParams) {
-    this.provider = provider
+    this._provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
@@ -88,7 +88,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   async buildMetadata() {
     const morphoAaveV2Contract = MorphoAaveV2__factory.connect(
       morphoAaveV2ContractAddresses[this.protocolId]![this.chainId]!,
-      this.provider,
+      this._provider,
     )
 
     const metadataObject: MorphoAaveV2PeerToPoolAdapterMetadata = {}
@@ -98,7 +98,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     const promises = markets.map(async (marketAddress) => {
       const aTokenContract = MorphoAToken__factory.connect(
         marketAddress,
-        this.provider,
+        this._provider,
       )
 
       const supplyTokenAddress = await aTokenContract
@@ -111,12 +111,12 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       const underlyingTokenPromise = getTokenMetadata(
         supplyTokenAddress,
         this.chainId,
-        this.provider,
+        this._provider,
       )
       const protocolTokenPromise = getTokenMetadata(
         marketAddress,
         this.chainId,
-        this.provider,
+        this._provider,
       )
       const [protocolToken, underlyingToken] = await Promise.all([
         protocolTokenPromise,
@@ -195,7 +195,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const lensContract = MorphoAaveV2Lens__factory.connect(
       this.lensAddress,
-      this.provider,
+      this._provider,
     )
     const tokens = await this.getProtocolTokens()
     const positionType = this.getProtocolDetails().positionType
@@ -324,7 +324,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     const tokens = await this.getProtocolTokens()
     const lensContract = MorphoAaveV2Lens__factory.connect(
       this.lensAddress,
-      this.provider,
+      this._provider,
     )
     const positionType = this.getProtocolDetails().positionType
     return Promise.all(
@@ -507,7 +507,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   }): Promise<MovementsByBlock[]> {
     const protocolTokenContract = MorphoAToken__factory.connect(
       smartContractAddress,
-      this.provider,
+      this._provider,
     )
 
     const filter = protocolTokenContract.filters.Transfer(from, to)
@@ -579,7 +579,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   }: GetAprInput): Promise<number> {
     const lensContract = MorphoAaveV2Lens__factory.connect(
       this.lensAddress,
-      this.provider,
+      this._provider,
     )
     const positionType = this.getProtocolDetails().positionType
     let rate: bigint
