@@ -4,6 +4,7 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
+import { ResolveUnderlyingMovements } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
@@ -128,6 +129,7 @@ export class ConvexExtraRewardAdapter
     return balances
   }
 
+  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -165,14 +167,15 @@ export class ConvexExtraRewardAdapter
           } = event
 
           return {
+            transactionHash: transactionHash,
             protocolToken,
-            underlyingTokensMovement: {
-              [extraRewardToken.address]: {
+            tokens: [
+              {
                 ...extraRewardToken,
-                movementValueRaw: protocolTokenMovementValueRaw,
-                transactionHash: transactionHash,
+                balanceRaw: protocolTokenMovementValueRaw,
+                type: TokenType.Underlying,
               },
-            },
+            ],
             blockNumber: blockNumber,
           }
         })

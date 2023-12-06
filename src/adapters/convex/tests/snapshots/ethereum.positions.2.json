@@ -59,6 +59,51 @@
               "decimals": 18,
               "balanceRaw": "28941976633661456319n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "15643227056808779789n",
+                  "balance": "15.643227056808779789",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png"
+                },
+                {
+                  "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+                  "name": "Liquid staked Ether 2.0",
+                  "symbol": "stETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "15732549123430871794n",
+                  "tokens": [
+                    {
+                      "address": "0x0000000000000000000000000000000000000000",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "15732549123430871794n",
+                      "tokens": [
+                        {
+                          "address": "TheUnitedStatesMint",
+                          "name": "USD",
+                          "symbol": "USD",
+                          "decimals": 8,
+                          "type": "fiat",
+                          "balanceRaw": "3234595737926n",
+                          "balance": "32345.95737926"
+                        }
+                      ],
+                      "balance": "15.732549123430871794",
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "balance": "15.732549123430871794",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                }
+              ],
               "balance": "28.941976633661456319",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x06325440D014e39736583c165C2963BA99fAf14E/logo.png"
             }
@@ -100,6 +145,39 @@
               "decimals": 18,
               "balanceRaw": "188410388268517482240n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+                  "name": "Frax Share",
+                  "symbol": "FXS",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "80002735232666995572n",
+                  "tokens": [
+                    {
+                      "address": "TheUnitedStatesMint",
+                      "name": "USD",
+                      "symbol": "USD",
+                      "decimals": 8,
+                      "type": "fiat",
+                      "balanceRaw": "57324149789n",
+                      "balance": "573.24149789"
+                    }
+                  ],
+                  "balance": "80.002735232666995572",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0/logo.png"
+                },
+                {
+                  "address": "0x402f878bdd1f5c66fdaf0fababcf74741b68ac36",
+                  "name": "Stake DAO FXS",
+                  "symbol": "sdFXS",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "108997039509973680283n",
+                  "balance": "108.997039509973680283",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x402F878BDd1f5C66FdAF0fabaBcF74741B68ac36/logo.png"
+                }
+              ],
               "balance": "188.41038826851748224",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8c524635d52bd7b1Bd55E062303177a7d916C046/logo.png"
             }
@@ -141,6 +219,39 @@
               "decimals": 18,
               "balanceRaw": "117268239564571004535759n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+                  "name": "Curve DAO Token",
+                  "symbol": "CRV",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "27408754032933563095579n",
+                  "tokens": [
+                    {
+                      "address": "TheUnitedStatesMint",
+                      "name": "USD",
+                      "symbol": "USD",
+                      "decimals": 8,
+                      "type": "fiat",
+                      "balanceRaw": "1575839452544n",
+                      "balance": "15758.39452544"
+                    }
+                  ],
+                  "balance": "27408.754032933563095579",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+                },
+                {
+                  "address": "0x62b9c7356a2dc64a1969e19c23e4f579f9810aa7",
+                  "name": "Convex CRV",
+                  "symbol": "cvxCRV",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "90931027527400117054550n",
+                  "balance": "90931.02752740011705455",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7/logo.png"
+                }
+              ],
               "balance": "117268.239564571004535759",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x971add32Ea87f10bD192671630be3BE8A11b8623/logo.png"
             }

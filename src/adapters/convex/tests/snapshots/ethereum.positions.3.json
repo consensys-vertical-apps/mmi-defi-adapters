@@ -59,6 +59,50 @@
               "decimals": 18,
               "balanceRaw": "128997493050015238077933n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+                  "name": "Dai Stablecoin",
+                  "symbol": "DAI",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "234729545460895n",
+                  "tokens": [
+                    {
+                      "address": "TheUnitedStatesMint",
+                      "name": "USD",
+                      "symbol": "USD",
+                      "decimals": 8,
+                      "type": "fiat",
+                      "balanceRaw": "23469n",
+                      "balance": "0.00023469"
+                    }
+                  ],
+                  "balance": "0.000234729545460895",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                },
+                {
+                  "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                  "name": "USD Coin",
+                  "symbol": "USDC",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "403379116862514n",
+                  "tokens": [
+                    {
+                      "address": "TheUnitedStatesMint",
+                      "name": "USD",
+                      "symbol": "USD",
+                      "decimals": 8,
+                      "type": "fiat",
+                      "balanceRaw": "40340291623040888n",
+                      "balance": "403402916.23040888"
+                    }
+                  ],
+                  "balance": "403379116.862514",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                }
+              ],
               "balance": "128997.493050015238077933",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2/logo.png"
             }
@@ -100,6 +144,50 @@
               "decimals": 18,
               "balanceRaw": "24451518302618481212814n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                  "name": "USD Coin",
+                  "symbol": "USDC",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "5971843218n",
+                  "tokens": [
+                    {
+                      "address": "TheUnitedStatesMint",
+                      "name": "USD",
+                      "symbol": "USD",
+                      "decimals": 8,
+                      "type": "fiat",
+                      "balanceRaw": "597219555674n",
+                      "balance": "5972.19555674"
+                    }
+                  ],
+                  "balance": "5971.843218",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                },
+                {
+                  "address": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+                  "name": "Curve.Fi USD Stablecoin",
+                  "symbol": "crvUSD",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "18608423485479526652734n",
+                  "tokens": [
+                    {
+                      "address": "TheUnitedStatesMint",
+                      "name": "USD",
+                      "symbol": "USD",
+                      "decimals": 8,
+                      "type": "fiat",
+                      "balanceRaw": "1850998678608n",
+                      "balance": "18509.98678608"
+                    }
+                  ],
+                  "balance": "18608.423485479526652734",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E/logo.png"
+                }
+              ],
               "balance": "24451.518302618481212814",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E/logo.png"
             }

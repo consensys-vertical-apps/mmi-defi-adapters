@@ -36,9 +36,7 @@
                 "startPositionValue": "0.0",
                 "endPositionValueRaw": "54079263753026286n",
                 "endPositionValue": "0.054079263753026286"
-              },
-              "profit": "-0.054079263753026286",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+              }
             },
             {
               "address": "0x92CC36D66e9d739D50673d1f27929a371FB83a67",
@@ -56,9 +54,7 @@
                 "startPositionValue": "137879.720104358891618656",
                 "endPositionValueRaw": "134159254313605234468003n",
                 "endPositionValue": "134159.254313605234468003"
-              },
-              "profit": "3720.465790753657150653",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x92CC36D66e9d739D50673d1f27929a371FB83a67/logo.png"
+              }
             }
           ]
         }

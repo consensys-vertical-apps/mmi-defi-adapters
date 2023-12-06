@@ -18,28 +18,14 @@
           "symbol": "stETH",
           "decimals": 18,
           "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x0000000000000000000000000000000000000000",
-              "name": "Ethereum",
-              "symbol": "ETH",
-              "decimals": 18,
-              "profitRaw": "1n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "70819350317881835n",
-                "withdrawals": "0.070819350317881835",
-                "depositsRaw": "70819350317881834n",
-                "deposits": "0.070819350317881834",
-                "startPositionValueRaw": "1n",
-                "startPositionValue": "0.000000000000000001",
-                "endPositionValueRaw": "1n",
-                "endPositionValue": "0.000000000000000001"
-              },
-              "profit": "0.000000000000000001",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-            }
-          ]
+          "profit": "0",
+          "performance": "0n",
+          "calculationData": {
+            "withdrawals": "116.7881906",
+            "deposits": "116.7881906",
+            "startPositionValue": "0",
+            "endPositionValue": "0"
+          }
         }
       ],
       "fromBlock": 16690437,
@@ -54,40 +40,13 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
-          "name": "Wrapped liquid staked Ether 2.0",
-          "symbol": "wstETH",
-          "decimals": 18,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
-              "name": "Liquid staked Ether 2.0",
-              "symbol": "stETH",
-              "decimals": 18,
-              "profitRaw": "678913907347586n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "70819350317881833n",
-                "deposits": "0.070819350317881833",
-                "startPositionValueRaw": "782015590950316496n",
-                "startPositionValue": "0.782015590950316496",
-                "endPositionValueRaw": "853513855175545915n",
-                "endPositionValue": "0.853513855175545915"
-              },
-              "profit": "0.000678913907347586",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
-            }
-          ]
+      "success": false,
+      "error": {
+        "message": "Non-Fiat token found at the base of the nested structure: 0x0000000000000000000000000000000000000000",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 16690437,
-      "toBlock": 16740459
+      }
     }
   ]
 }

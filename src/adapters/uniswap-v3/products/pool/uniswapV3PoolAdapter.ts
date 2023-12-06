@@ -1,7 +1,10 @@
 import { formatUnits } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
@@ -228,6 +231,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     )}%`
   }
 
+  @ResolveUnderlyingMovements
   async getWithdrawals({
     protocolTokenAddress,
     fromBlock,
@@ -247,6 +251,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     })
   }
 
+  @ResolveUnderlyingMovements
   async getDeposits({
     protocolTokenAddress,
     fromBlock,
@@ -380,7 +385,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
       ),
     )
 
-    return { tokens, fromBlock, toBlock }
+    return { tokens: tokens, fromBlock, toBlock }
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
@@ -461,6 +466,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
         } = transferEvent
 
         return {
+          transactionHash,
           protocolToken: {
             address: protocolTokenAddress,
             name: this.protocolTokenName(
@@ -476,18 +482,22 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
             decimals: 18,
             tokenId,
           },
-          underlyingTokensMovement: {
-            [token0]: {
-              movementValueRaw: amount0,
+          tokens: [
+            {
+              type: TokenType.Underlying,
+              balanceRaw: amount0,
               ...token0Metadata,
               transactionHash,
+              blockNumber,
             },
-            [token1]: {
-              movementValueRaw: amount1,
+            {
+              type: TokenType.Underlying,
+              balanceRaw: amount1,
               ...token1Metadata,
               transactionHash,
+              blockNumber,
             },
-          },
+          ],
           blockNumber,
         }
       }),

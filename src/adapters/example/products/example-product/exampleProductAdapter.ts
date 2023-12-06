@@ -74,22 +74,23 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
+        transactionHash: '0x333',
         protocolToken: {
           address: '0x1000000000000000000000000000000000000001',
           name: 'LP USD Coin',
           symbol: 'LP USDC',
           decimals: 6,
         },
-        underlyingTokensMovement: {
-          '0x0000000000000000000000000000000000000001': {
+        tokens: [
+          {
             address: '0x0000000000000000000000000000000000000001',
             name: 'USD Coin',
             symbol: 'USDC',
             decimals: 6,
-            movementValueRaw: 100000000n,
-            transactionHash: '0x333',
+            balanceRaw: 100000000n,
+            type: TokenType.Underlying,
           },
-        },
+        ],
         blockNumber: 17970000,
       },
     ]
@@ -98,22 +99,23 @@ export class ExampleProductAdapter implements IProtocolAdapter {
   async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     return [
       {
+        transactionHash: '0x33',
         protocolToken: {
           address: '0x1000000000000000000000000000000000000001',
           name: 'LP USD Coin',
           symbol: 'LP USDC',
           decimals: 6,
         },
-        underlyingTokensMovement: {
-          '0x0000000000000000000000000000000000000001': {
+        tokens: [
+          {
             address: '0x0000000000000000000000000000000000000001',
             name: 'USD Coin',
             symbol: 'USDC',
             decimals: 6,
-            movementValueRaw: 100000000n,
-            transactionHash: '0x33',
+            balanceRaw: 100000000n,
+            type: TokenType.Underlying,
           },
-        },
+        ],
         blockNumber: 17970000,
       },
     ]
@@ -130,36 +132,13 @@ export class ExampleProductAdapter implements IProtocolAdapter {
           symbol: 'S*FRAX',
           decimals: 6,
           type: TokenType.Protocol,
-          tokens: [
-            {
-              type: TokenType.Underlying,
-              address: '0x17fc002b466eec40dae837fc4be5c67993ddbd6f',
-              name: 'Frax',
-              symbol: 'FRAX',
-              decimals: 6,
-              profitRaw: 100000000n,
-              calculationData: {
-                withdrawalsRaw: 0n,
-                depositsRaw: 0n,
-                startPositionValueRaw: 0n,
-                endPositionValueRaw: 0n,
-              },
-            },
-            {
-              type: TokenType.Reward,
-              address: '0x17fc002b466eec40dae837fc4be5c67993ddbd6f',
-              name: 'Frax',
-              symbol: 'FRAX',
-              decimals: 6,
-              profitRaw: 100000000n,
-              calculationData: {
-                withdrawalsRaw: 0n,
-                depositsRaw: 0n,
-                startPositionValueRaw: 0n,
-                endPositionValueRaw: 0n,
-              },
-            },
-          ],
+          profit: '100000000',
+          calculationData: {
+            withdrawals: '1',
+            deposits: '1',
+            startPositionValue: '1',
+            endPositionValue: '1',
+          },
         },
       ],
     }

@@ -241,22 +241,19 @@ export interface ProtocolTokenUnderlyingRate extends Erc20Metadata {
   tokens?: UnderlyingTokenRate[]
 }
 
-export interface BaseTokenMovement extends Erc20Metadata {
-  transactionHash?: string
-  movementValueRaw: bigint
-}
-
 export interface MovementsByBlock {
   protocolToken: Erc20Metadata & { tokenId?: string }
   /**
    * Movements in or out of a protocol position
    */
-  underlyingTokensMovement: Record<string, BaseTokenMovement>
+  tokens: Underlying[]
 
   /**
    * Blocknumber movement was executed
    */
   blockNumber: number
+
+  transactionHash: string
 }
 
 export interface ProtocolTokenApy extends Erc20Metadata {
@@ -307,12 +304,10 @@ export interface ProfitsWithRange {
 }
 
 export interface UnderlyingProfitValues extends Erc20Metadata {
-  type: typeof TokenType.Underlying | typeof TokenType.Reward
-
   /**
    * Profit made in this token for this period
    */
-  profitRaw: bigint
+  profit: string
 
   /**
    * Numbers used to calculate profit value
@@ -320,16 +315,15 @@ export interface UnderlyingProfitValues extends Erc20Metadata {
   calculationData: CalculationData
 }
 
-export interface PositionProfits extends Erc20Metadata {
+export interface PositionProfits extends Erc20Metadata, UnderlyingProfitValues {
   type: typeof TokenType.Protocol
-  tokens: UnderlyingProfitValues[]
 }
 
 export interface CalculationData {
-  withdrawalsRaw: bigint
-  depositsRaw: bigint
-  startPositionValueRaw: bigint
-  endPositionValueRaw: bigint
+  withdrawals: string
+  deposits: string
+  startPositionValue: string
+  endPositionValue: string
 }
 
 export interface ProtocolAdapterParams {

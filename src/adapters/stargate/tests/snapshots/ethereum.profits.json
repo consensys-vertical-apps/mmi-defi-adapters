@@ -18,28 +18,14 @@
           "symbol": "S*LUSD",
           "decimals": 6,
           "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
-              "name": "Liquity USD",
-              "symbol": "LUSD",
-              "decimals": 18,
-              "profitRaw": "0n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "100003000000000000n",
-                "startPositionValue": "0.100003",
-                "endPositionValueRaw": "100003000000000000n",
-                "endPositionValue": "0.100003"
-              },
-              "profit": "0.0",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
-            }
-          ]
+          "profit": "0.00006121000000000598",
+          "performance": 0.0006146220400793214,
+          "calculationData": {
+            "withdrawals": "0",
+            "deposits": "0",
+            "startPositionValue": "0.09958966",
+            "endPositionValue": "0.09965087"
+          }
         }
       ],
       "fromBlock": 18156819,

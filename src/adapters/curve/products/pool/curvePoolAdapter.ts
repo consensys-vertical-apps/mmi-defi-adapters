@@ -80,7 +80,13 @@ export class CurvePoolAdapter
         return undefined
       }
 
-      metadataObject[token.protocolToken.address] = token
+      metadataObject[token.protocolToken.address.toLowerCase()] = {
+        ...token,
+        protocolToken: {
+          ...token.protocolToken,
+          address: token.protocolToken.address.toLowerCase(),
+        },
+      }
     })
 
     return metadataObject
@@ -160,6 +166,10 @@ export class CurvePoolAdapter
       CURVE_META_REGISTRY_CONTRACT,
       this.provider,
     )
+
+    if (this.chainId == 1 && blockNumber && blockNumber < 15732062) {
+      throw new Error('Curve meta registry not deployed at this block number')
+    }
 
     const balances = await metaRegistryContract['get_balances(address)'](
       poolAddress,

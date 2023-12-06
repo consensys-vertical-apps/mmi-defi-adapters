@@ -11,23 +11,36 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0x779025a8260db4601f74506e6af804edcb7344b606f9bad07c59e3706c82f144",
         "protocolToken": {
           "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
           "name": "Liquid staked Ether 2.0",
           "symbol": "stETH",
           "decimals": 18
         },
-        "underlyingTokensMovement": {
-          "0x0000000000000000000000000000000000000000": {
+        "tokens": [
+          {
             "address": "0x0000000000000000000000000000000000000000",
             "name": "Ethereum",
             "symbol": "ETH",
             "decimals": 18,
-            "transactionHash": "0x779025a8260db4601f74506e6af804edcb7344b606f9bad07c59e3706c82f144",
-            "movementValueRaw": "70819350317881835n",
-            "movementValue": "0.070819350317881835"
+            "balanceRaw": "70819350317881835n",
+            "type": "underlying",
+            "blockNumber": 16738529,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 8,
+                "type": "fiat",
+                "balanceRaw": "11678819060n",
+                "balance": "116.7881906"
+              }
+            ],
+            "balance": "0.070819350317881835"
           }
-        },
+        ],
         "blockNumber": 16738529
       }
     ]

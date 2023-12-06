@@ -114,12 +114,12 @@ export class AdaptersController {
           }
 
           for (const protocolToken of protocolTokens) {
-            if (chainAdaptersMap.has(protocolToken.address)) {
+            if (chainAdaptersMap.has(protocolToken.address.toLowerCase())) {
               throw new Error(
                 `Duplicated protocol token ${protocolToken.address}`,
               )
             }
-            chainAdaptersMap.set(protocolToken.address, adapter)
+            chainAdaptersMap.set(protocolToken.address.toLowerCase(), adapter)
           }
         }
       }

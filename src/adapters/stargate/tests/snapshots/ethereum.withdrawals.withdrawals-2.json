@@ -11,63 +11,102 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0x78969b0b8cf5bf73518d22c1ab23e16ffa06034aacb2c8e3ca291607592808dc",
         "protocolToken": {
           "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
           "name": "USD Coin-LP",
           "symbol": "S*USDC",
           "decimals": 6
         },
-        "underlyingTokensMovement": {
-          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+        "tokens": [
+          {
             "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
-            "transactionHash": "0x78969b0b8cf5bf73518d22c1ab23e16ffa06034aacb2c8e3ca291607592808dc",
-            "movementValueRaw": "316787401n",
-            "movementValue": "316.787401"
+            "balanceRaw": "316787401n",
+            "type": "underlying",
+            "blockNumber": 18158890,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 8,
+                "type": "fiat",
+                "balanceRaw": "31679042315n",
+                "balance": "316.79042315"
+              }
+            ],
+            "balance": "316.787401"
           }
-        },
+        ],
         "blockNumber": 18158890
       },
       {
+        "transactionHash": "0x29d940b75ad88a018c92bdb3c4c37ffea76b2bf1ee15d92f80769b82fde90595",
         "protocolToken": {
           "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
           "name": "USD Coin-LP",
           "symbol": "S*USDC",
           "decimals": 6
         },
-        "underlyingTokensMovement": {
-          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+        "tokens": [
+          {
             "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
-            "transactionHash": "0x29d940b75ad88a018c92bdb3c4c37ffea76b2bf1ee15d92f80769b82fde90595",
-            "movementValueRaw": "105000653n",
-            "movementValue": "105.000653"
+            "balanceRaw": "105000653n",
+            "type": "underlying",
+            "blockNumber": 18161904,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 8,
+                "type": "fiat",
+                "balanceRaw": "10500771849n",
+                "balance": "105.00771849"
+              }
+            ],
+            "balance": "105.000653"
           }
-        },
+        ],
         "blockNumber": 18161904
       },
       {
+        "transactionHash": "0x27eaf5751cd48efa8388f4fe73e3c4149b874c1f1d404749cfccdb1bf0cc0560",
         "protocolToken": {
           "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
           "name": "USD Coin-LP",
           "symbol": "S*USDC",
           "decimals": 6
         },
-        "underlyingTokensMovement": {
-          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+        "tokens": [
+          {
             "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
-            "transactionHash": "0x27eaf5751cd48efa8388f4fe73e3c4149b874c1f1d404749cfccdb1bf0cc0560",
-            "movementValueRaw": "1999999566n",
-            "movementValue": "1999.999566"
+            "balanceRaw": "1999999566n",
+            "type": "underlying",
+            "blockNumber": 18162402,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 8,
+                "type": "fiat",
+                "balanceRaw": "200013414597n",
+                "balance": "2000.13414597"
+              }
+            ],
+            "balance": "1999.999566"
           }
-        },
+        ],
         "blockNumber": 18162402
       }
     ]
