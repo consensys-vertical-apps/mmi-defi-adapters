@@ -95,41 +95,32 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     const markets = await morphoAaveV2Contract.getMarketsCreated()
 
-    const promises = markets.map(async (marketAddress) => {
-      const aTokenContract = MorphoAToken__factory.connect(
-        marketAddress,
-        this._provider,
-      )
+    await Promise.all(
+      markets.map(async (marketAddress) => {
+        const aTokenContract = MorphoAToken__factory.connect(
+          marketAddress,
+          this._provider,
+        )
 
-      const supplyTokenAddress = await aTokenContract
-        .UNDERLYING_ASSET_ADDRESS()
-        .catch((err) => {
-          if (err) return ZERO_ADDRESS
-          throw err
-        })
+        const supplyTokenAddress = await aTokenContract
+          .UNDERLYING_ASSET_ADDRESS()
+          .catch((err) => {
+            if (err) return ZERO_ADDRESS
+            throw err
+          })
 
-      const underlyingTokenPromise = getTokenMetadata(
-        supplyTokenAddress,
-        this.chainId,
-        this._provider,
-      )
-      const protocolTokenPromise = getTokenMetadata(
-        marketAddress,
-        this.chainId,
-        this._provider,
-      )
-      const [protocolToken, underlyingToken] = await Promise.all([
-        protocolTokenPromise,
-        underlyingTokenPromise,
-      ])
+        // Await the promises directly within Promise.all
+        const [protocolToken, underlyingToken] = await Promise.all([
+          getTokenMetadata(marketAddress, this.chainId, this._provider),
+          getTokenMetadata(supplyTokenAddress, this.chainId, this._provider),
+        ])
 
-      metadataObject[protocolToken.address] = {
-        protocolToken,
-        underlyingToken,
-      }
-    })
-
-    await Promise.all(promises)
+        metadataObject[protocolToken.address] = {
+          protocolToken,
+          underlyingToken,
+        }
+      }),
+    )
 
     return metadataObject
   }
