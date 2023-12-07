@@ -43,6 +43,7 @@ import {
   AToken__factory,
   MorphoAaveV2Lens__factory,
 } from '../contracts'
+import { TypedContractEvent, TypedEventLog } from '../contracts/common'
 import {
   SuppliedEvent,
   WithdrawnEvent,
@@ -521,7 +522,35 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   }
 
   protected _extractEventData(
-    event: any,
+    event:
+      | TypedEventLog<
+          TypedContractEvent<
+            SuppliedEvent.InputTuple,
+            SuppliedEvent.OutputTuple,
+            SuppliedEvent.OutputObject
+          >
+        >
+      | TypedEventLog<
+          TypedContractEvent<
+            WithdrawnEvent.InputTuple,
+            WithdrawnEvent.OutputTuple,
+            WithdrawnEvent.OutputObject
+          >
+        >
+      | TypedEventLog<
+          TypedContractEvent<
+            RepaidEvent.InputTuple,
+            RepaidEvent.OutputTuple,
+            RepaidEvent.OutputObject
+          >
+        >
+      | TypedEventLog<
+          TypedContractEvent<
+            BorrowedEvent.InputTuple,
+            BorrowedEvent.OutputTuple,
+            BorrowedEvent.OutputObject
+          >
+        >,
     eventType: string,
   ):
     | SuppliedEvent.OutputObject
