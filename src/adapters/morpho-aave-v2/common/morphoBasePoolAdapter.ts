@@ -304,6 +304,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       eventType: 'supplied',
     })
   }
+
   async getBorrows({
     userAddress,
     protocolTokenAddress,
@@ -318,6 +319,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       eventType: 'borrowed',
     })
   }
+
   async getRepays({
     userAddress,
     protocolTokenAddress,
@@ -339,6 +341,8 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     toBlock,
   }: GetProfitsInput): Promise<ProfitsWithRange> {
     // Fetch end and start position values
+    const positionType = this.getProtocolDetails().positionType
+
     const [endPositionValues, startPositionValues] = await Promise.all([
       this.getPositions({
         userAddress,
@@ -363,17 +367,21 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
             fromBlock,
             toBlock,
           }
+          let eventsOut: Record<string, bigint>
+          let eventsIn: Record<string, bigint>
 
-          // Fetch withdrawals and deposits
-          const [withdrawals, deposits /*, repays, borrows*/] =
-            await Promise.all([
+          if (positionType === PositionType.Supply) {
+            ;[eventsOut, eventsIn] = await Promise.all([
               this.getWithdrawals(getEventsInput).then(aggregateTrades),
               this.getDeposits(getEventsInput).then(aggregateTrades),
-              // this.getRepays(getEventsInput).then(aggregateTrades), // depends on what we want to do
-              // this.getBorrows(getEventsInput).then(aggregateTrades),
             ])
+          } else {
+            ;[eventsOut, eventsIn] = await Promise.all([
+              this.getBorrows(getEventsInput).then(aggregateTrades),
+              this.getRepays(getEventsInput).then(aggregateTrades),
+            ])
+          }
 
-          // Calculate profit for each token
           return {
             ...protocolTokenMetadata,
             type: TokenType.Protocol,
@@ -390,18 +398,16 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
                     ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
 
                 const calculationData = {
-                  withdrawalsRaw: withdrawals[address] ?? 0n,
-                  depositsRaw: deposits[address] ?? 0n,
-                  // repaysRaw: repays[address] ?? 0n,
-                  // borrowsRaw: borrows[address] ?? 0n,
+                  outRaw: eventsOut[address] ?? 0n,
+                  inRaw: eventsIn[address] ?? 0n,
                   endPositionValueRaw: endPositionValueRaw ?? 0n,
                   startPositionValueRaw,
                 }
 
                 let profitRaw =
                   calculationData.endPositionValueRaw +
-                  calculationData.withdrawalsRaw -
-                  calculationData.depositsRaw -
+                  calculationData.outRaw -
+                  calculationData.inRaw -
                   calculationData.startPositionValueRaw
 
                 if (
@@ -418,13 +424,13 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
                   profitRaw,
                   type: TokenType.Underlying,
                   calculationData: {
-                    withdrawalsRaw: withdrawals[address] ?? 0n,
+                    withdrawalsRaw: eventsOut[address] ?? 0n,
                     withdrawals: formatUnits(
-                      withdrawals[address] ?? 0n,
+                      eventsOut[address] ?? 0n,
                       decimals,
                     ),
-                    depositsRaw: deposits[address] ?? 0n,
-                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
+                    depositsRaw: eventsIn[address] ?? 0n,
+                    deposits: formatUnits(eventsIn[address] ?? 0n, decimals),
                     startPositionValueRaw: startPositionValueRaw ?? 0n,
                     startPositionValue: formatUnits(
                       startPositionValueRaw ?? 0n,
