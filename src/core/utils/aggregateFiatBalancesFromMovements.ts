@@ -24,7 +24,7 @@ export function aggregateFiatBalancesFromMovements(
   ): bigint => {
     if (currentToken.type === TokenType.Fiat) {
       // Aggregate balance for Fiat type tokens
-      const key = protocolToken.address
+      const key = protocolToken.tokenId ?? protocolToken.address
       const currentBalance = currentToken.balanceRaw
 
       result[key] = {
@@ -51,7 +51,7 @@ export function aggregateFiatBalancesFromMovements(
 
     // Throw an error if a non-Fiat token is found at the base
     throw new Error(
-      `Non-Fiat token found at the base of the nested structure: ${currentToken.address}`,
+      `Unable to calculate profits, no USD price found for token: ${currentToken.address}`,
     )
   }
 

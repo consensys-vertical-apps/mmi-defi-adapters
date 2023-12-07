@@ -21,10 +21,10 @@
           "profit": "0.00006121000000000598",
           "performance": 0.0006146220400793214,
           "calculationData": {
-            "withdrawals": "0",
-            "deposits": "0",
-            "startPositionValue": "0.09958966",
-            "endPositionValue": "0.09965087"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0.09958966,
+            "endPositionValue": 0.09965087
           }
         }
       ],

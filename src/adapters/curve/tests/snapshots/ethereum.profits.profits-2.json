@@ -26,7 +26,7 @@
       "productId": "staking",
       "success": false,
       "error": {
-        "message": "Non-Fiat token found at the base of the nested structure: 0x6b175474e89094c44da98b954eedeac495271d0f",
+        "message": "Unable to calculate profits, no USD price found for token: 0x6b175474e89094c44da98b954eedeac495271d0f",
         "details": {
           "name": "Error"
         }
@@ -49,18 +49,13 @@
           "symbol": "3Crv",
           "decimals": 18,
           "type": "protocol",
-          "profitRaw": "3n",
-          "profit": "0.00000003",
+          "profit": "3e-8",
           "performance": "0n",
           "calculationData": {
-            "withdrawalsRaw": "0n",
-            "withdrawals": "0.0",
-            "depositsRaw": "0n",
-            "deposits": "0.0",
-            "startPositionValueRaw": "0n",
-            "startPositionValue": "0.0",
-            "endPositionValueRaw": "3n",
-            "endPositionValue": "0.00000003"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 3e-8
           }
         }
       ],

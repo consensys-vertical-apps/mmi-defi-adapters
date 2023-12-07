@@ -21,10 +21,10 @@
           "profit": "-146748.0891132392",
           "performance": -0.013917949136359931,
           "calculationData": {
-            "withdrawals": "0",
-            "deposits": "0",
-            "startPositionValue": "10543801.22211162",
-            "endPositionValue": "10397053.13299838"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 10543801.22211162,
+            "endPositionValue": 10397053.13299838
           }
         },
         {
@@ -36,10 +36,10 @@
           "profit": "-27259.159758980153",
           "performance": -0.020597452767289633,
           "calculationData": {
-            "withdrawals": "0",
-            "deposits": "0",
-            "startPositionValue": "1323423.8265748",
-            "endPositionValue": "1296164.66681582"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 1323423.8265748,
+            "endPositionValue": 1296164.66681582
           }
         }
       ],
@@ -80,10 +80,10 @@
           "profit": "116.0115371895954",
           "performance": 0.00002186015577371676,
           "calculationData": {
-            "withdrawals": "0",
-            "deposits": "35003.5",
-            "startPositionValue": "5271982.34175142",
-            "endPositionValue": "5307101.85328861"
+            "withdrawals": 0,
+            "deposits": 35003.5,
+            "startPositionValue": 5271982.34175142,
+            "endPositionValue": 5307101.85328861
           }
         },
         {
@@ -95,10 +95,10 @@
           "profit": "-1128.3730293599947",
           "performance": -0.013894253742331277,
           "calculationData": {
-            "withdrawals": "0",
-            "deposits": "0",
-            "startPositionValue": "81211.48859706",
-            "endPositionValue": "80083.1155677"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 81211.48859706,
+            "endPositionValue": 80083.1155677
           }
         },
         {
@@ -110,10 +110,10 @@
           "profit": "-32.10538620996522",
           "performance": -0.000087637111555456,
           "calculationData": {
-            "withdrawals": "0",
-            "deposits": "0",
-            "startPositionValue": "366344.64144393",
-            "endPositionValue": "366312.53605772"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 366344.64144393,
+            "endPositionValue": 366312.53605772
           }
         },
         {
@@ -125,10 +125,10 @@
           "profit": "84.71331419982016",
           "performance": 0.000028118938203954163,
           "calculationData": {
-            "withdrawals": "0",
-            "deposits": "0",
-            "startPositionValue": "3012678.27346011",
-            "endPositionValue": "3012762.98677431"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 3012678.27346011,
+            "endPositionValue": 3012762.98677431
           }
         }
       ],

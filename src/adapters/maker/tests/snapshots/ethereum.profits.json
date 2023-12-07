@@ -18,18 +18,13 @@
           "symbol": "sDAI",
           "decimals": 18,
           "type": "protocol",
-          "profitRaw": "-41425540169n",
-          "profit": "-414.25540169",
-          "performance": -0.00007386112408495388,
+          "profit": "-414.2554016895592",
+          "performance": -0.0000738611240848753,
           "calculationData": {
-            "withdrawalsRaw": "0n",
-            "withdrawals": "0.0",
-            "depositsRaw": "0n",
-            "deposits": "0.0",
-            "startPositionValueRaw": "560857158379461n",
-            "startPositionValue": "5608571.58379461",
-            "endPositionValueRaw": "560815732839292n",
-            "endPositionValue": "5608157.32839292"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 5608571.58379461,
+            "endPositionValue": 5608157.32839292
           }
         }
       ],

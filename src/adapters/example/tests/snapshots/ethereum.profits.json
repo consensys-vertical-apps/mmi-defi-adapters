@@ -22,10 +22,10 @@
           "type": "protocol",
           "profit": "100000000",
           "calculationData": {
-            "withdrawals": "1",
-            "deposits": "1",
-            "startPositionValue": "1",
-            "endPositionValue": "1"
+            "withdrawals": 1,
+            "deposits": 1,
+            "startPositionValue": 1,
+            "endPositionValue": 1
           }
         }
       ]

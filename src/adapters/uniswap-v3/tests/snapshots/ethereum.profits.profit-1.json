@@ -10,57 +10,13 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
-          "name": "WAGMI / WETH - 1.0%",
-          "symbol": "WAGMI / WETH - 1.0%",
-          "decimals": 18,
-          "tokenId": "567587",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "profitRaw": "-54079263753026286n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "0n",
-                "startPositionValue": "0.0",
-                "endPositionValueRaw": "54079263753026286n",
-                "endPositionValue": "0.054079263753026286"
-              }
-            },
-            {
-              "address": "0x92CC36D66e9d739D50673d1f27929a371FB83a67",
-              "name": "Wagmi",
-              "symbol": "WAGMI",
-              "decimals": 18,
-              "profitRaw": "3720465790753657150653n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "137879720104358891618656n",
-                "startPositionValue": "137879.720104358891618656",
-                "endPositionValueRaw": "134159254313605234468003n",
-                "endPositionValue": "134159.254313605234468003"
-              }
-            }
-          ]
+      "success": false,
+      "error": {
+        "message": "Non-Fiat token found at the base of the nested structure: 0x92CC36D66e9d739D50673d1f27929a371FB83a67",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 18191141,
-      "toBlock": 18241163
+      }
     }
   ]
 }

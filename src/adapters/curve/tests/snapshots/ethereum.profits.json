@@ -18,18 +18,13 @@
           "symbol": "3Crv",
           "decimals": 18,
           "type": "protocol",
-          "profitRaw": "843671n",
-          "profit": "0.00843671",
-          "performance": 0.0000027760137173628607,
+          "profit": "0.008436710000296443",
+          "performance": 0.000002776013717460402,
           "calculationData": {
-            "withdrawalsRaw": "0n",
-            "withdrawals": "0.0",
-            "depositsRaw": "0n",
-            "deposits": "0.0",
-            "startPositionValueRaw": "303914564515n",
-            "startPositionValue": "3039.14564515",
-            "endPositionValueRaw": "303915408186n",
-            "endPositionValue": "3039.15408186"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 3039.14564515,
+            "endPositionValue": 3039.15408186
           }
         }
       ],

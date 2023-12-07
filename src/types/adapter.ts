@@ -320,10 +320,10 @@ export interface PositionProfits extends Erc20Metadata, UnderlyingProfitValues {
 }
 
 export interface CalculationData {
-  withdrawals: string
-  deposits: string
-  startPositionValue: string
-  endPositionValue: string
+  withdrawals: number
+  deposits: number
+  startPositionValue: number
+  endPositionValue: number
 }
 
 export interface ProtocolAdapterParams {

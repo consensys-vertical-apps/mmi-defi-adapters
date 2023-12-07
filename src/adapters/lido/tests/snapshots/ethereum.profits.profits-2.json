@@ -21,10 +21,10 @@
           "profit": "0",
           "performance": "0n",
           "calculationData": {
-            "withdrawals": "116.7881906",
-            "deposits": "116.7881906",
-            "startPositionValue": "0",
-            "endPositionValue": "0"
+            "withdrawals": 116.7881906,
+            "deposits": 116.7881906,
+            "startPositionValue": 0,
+            "endPositionValue": 0
           }
         }
       ],
@@ -42,7 +42,7 @@
       "productId": "wst-eth",
       "success": false,
       "error": {
-        "message": "Non-Fiat token found at the base of the nested structure: 0x0000000000000000000000000000000000000000",
+        "message": "Unable to calculate profits, no USD price found for token: 0x0000000000000000000000000000000000000000",
         "details": {
           "name": "Error"
         }

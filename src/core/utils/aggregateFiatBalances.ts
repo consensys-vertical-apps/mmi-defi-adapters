@@ -23,7 +23,7 @@ export function aggregateFiatBalances(
     topLevelTokenMetadata: Erc20Metadata & { tokenId?: string },
   ): bigint => {
     if (currentToken.type === TokenType.Fiat) {
-      const key = topLevelTokenMetadata.address
+      const key = topLevelTokenMetadata.tokenId ?? topLevelTokenMetadata.address
       const currentBalance = currentToken.balanceRaw
 
       result[key] = {

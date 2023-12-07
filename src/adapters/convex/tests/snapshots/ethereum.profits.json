@@ -32,18 +32,13 @@
           "symbol": "cvxcDAI+cUSDC",
           "decimals": 18,
           "type": "protocol",
-          "profitRaw": "594283604616n",
-          "profit": "5942.83604616",
-          "performance": 0.000014861339452973557,
+          "profit": "5942.836046159267",
+          "performance": 0.000014861339452971727,
           "calculationData": {
-            "withdrawalsRaw": "0n",
-            "withdrawals": "0.0",
-            "depositsRaw": "0n",
-            "deposits": "0.0",
-            "startPositionValueRaw": "39988562706377836n",
-            "startPositionValue": "399885627.06377836",
-            "endPositionValueRaw": "39989156989982452n",
-            "endPositionValue": "399891569.89982452"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 399885627.06377834,
+            "endPositionValue": 399891569.8998245
           }
         },
         {
@@ -52,18 +47,13 @@
           "symbol": "cvxcrvUSDUSDC-f",
           "decimals": 18,
           "type": "protocol",
-          "profitRaw": "-734371513n",
-          "profit": "-7.34371513",
-          "performance": -0.0002996204858785715,
+          "profit": "-7.3437151299986",
+          "performance": -0.0002996204858785144,
           "calculationData": {
-            "withdrawalsRaw": "0n",
-            "withdrawals": "0.0",
-            "depositsRaw": "0n",
-            "deposits": "0.0",
-            "startPositionValueRaw": "2451005680892n",
-            "startPositionValue": "24510.05680892",
-            "endPositionValueRaw": "2450271309379n",
-            "endPositionValue": "24502.71309379"
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 24510.05680892,
+            "endPositionValue": 24502.71309379
           }
         }
       ],

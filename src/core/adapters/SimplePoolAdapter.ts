@@ -272,20 +272,17 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
             ),
           ])
 
+          const key =
+            protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
+
           const endPositionValue = +formatUnits(
-            endPositionValues[protocolTokenMetadata.address]?.usdRaw ?? 0n,
+            endPositionValues[key]?.usdRaw ?? 0n,
             8,
           )
-          const withdrawal = +formatUnits(
-            withdrawals[protocolTokenMetadata.address]?.usdRaw ?? 0n,
-            8,
-          )
-          const deposit = +formatUnits(
-            deposits[protocolTokenMetadata.address]?.usdRaw ?? 0n,
-            8,
-          )
+          const withdrawal = +formatUnits(withdrawals[key]?.usdRaw ?? 0n, 8)
+          const deposit = +formatUnits(deposits[key]?.usdRaw ?? 0n, 8)
           const startPositionValue = +formatUnits(
-            startPositionValues[protocolTokenMetadata.address]?.usdRaw ?? 0n,
+            startPositionValues[key]?.usdRaw ?? 0n,
             8,
           )
 
@@ -303,10 +300,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
               startPositionValue,
             }),
             calculationData: {
-              withdrawals: withdrawal.toString(),
-              deposits: deposit.toString(),
-              startPositionValue: startPositionValue.toString(),
-              endPositionValue: endPositionValue.toString(),
+              withdrawals: withdrawal,
+              deposits: deposit,
+              startPositionValue: startPositionValue,
+              endPositionValue: endPositionValue,
             },
           }
         },
