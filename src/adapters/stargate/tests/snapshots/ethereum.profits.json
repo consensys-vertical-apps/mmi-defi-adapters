@@ -18,7 +18,7 @@
           "symbol": "S*LUSD",
           "decimals": 6,
           "type": "protocol",
-          "profit": "0.00006121000000000598",
+          "profit": 0.00006121000000000598,
           "performance": 0.0006146220400793214,
           "calculationData": {
             "withdrawals": 0,

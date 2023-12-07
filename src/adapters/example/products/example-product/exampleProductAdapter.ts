@@ -132,7 +132,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
           symbol: 'S*FRAX',
           decimals: 6,
           type: TokenType.Protocol,
-          profit: '100000000',
+          profit: 111,
           calculationData: {
             withdrawals: 1,
             deposits: 1,

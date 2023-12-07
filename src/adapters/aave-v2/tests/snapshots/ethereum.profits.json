@@ -18,7 +18,7 @@
           "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": "-146748.0891132392",
+          "profit": -146748.0891132392,
           "performance": -0.013917949136359931,
           "calculationData": {
             "withdrawals": 0,
@@ -33,7 +33,7 @@
           "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": "-27259.159758980153",
+          "profit": -27259.159758980153,
           "performance": -0.020597452767289633,
           "calculationData": {
             "withdrawals": 0,
@@ -77,7 +77,7 @@
           "symbol": "variableDebtUSDT",
           "decimals": 6,
           "type": "protocol",
-          "profit": "116.0115371895954",
+          "profit": 116.0115371895954,
           "performance": 0.00002186015577371676,
           "calculationData": {
             "withdrawals": 0,
@@ -92,7 +92,7 @@
           "symbol": "variableDebtWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": "-1128.3730293599947",
+          "profit": -1128.3730293599947,
           "performance": -0.013894253742331277,
           "calculationData": {
             "withdrawals": 0,
@@ -107,7 +107,7 @@
           "symbol": "variableDebtDAI",
           "decimals": 18,
           "type": "protocol",
-          "profit": "-32.10538620996522",
+          "profit": -32.10538620996522,
           "performance": -0.000087637111555456,
           "calculationData": {
             "withdrawals": 0,
@@ -122,7 +122,7 @@
           "symbol": "variableDebtUSDC",
           "decimals": 6,
           "type": "protocol",
-          "profit": "84.71331419982016",
+          "profit": 84.71331419982016,
           "performance": 0.000028118938203954163,
           "calculationData": {
             "withdrawals": 0,

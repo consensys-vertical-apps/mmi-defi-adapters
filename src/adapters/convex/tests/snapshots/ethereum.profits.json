@@ -32,7 +32,7 @@
           "symbol": "cvxcDAI+cUSDC",
           "decimals": 18,
           "type": "protocol",
-          "profit": "5942.836046159267",
+          "profit": 5942.836046159267,
           "performance": 0.000014861339452971727,
           "calculationData": {
             "withdrawals": 0,
@@ -47,7 +47,7 @@
           "symbol": "cvxcrvUSDUSDC-f",
           "decimals": 18,
           "type": "protocol",
-          "profit": "-7.3437151299986",
+          "profit": -7.3437151299986,
           "performance": -0.0002996204858785144,
           "calculationData": {
             "withdrawals": 0,

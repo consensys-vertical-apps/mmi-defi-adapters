@@ -20,7 +20,7 @@
           "symbol": "S*FRAX",
           "decimals": 6,
           "type": "protocol",
-          "profit": "100000000",
+          "profit": 111,
           "calculationData": {
             "withdrawals": 1,
             "deposits": 1,

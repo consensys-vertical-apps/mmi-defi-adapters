@@ -18,7 +18,7 @@
           "symbol": "cBAT",
           "decimals": 8,
           "type": "protocol",
-          "profit": "-5615.818366840016",
+          "profit": -5615.818366840016,
           "performance": -0.011770137720693097,
           "calculationData": {
             "withdrawals": 0,
@@ -33,7 +33,7 @@
           "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
-          "profit": "-975.8534720099997",
+          "profit": -975.8534720099997,
           "performance": -0.017636775349719046,
           "calculationData": {
             "withdrawals": 0,

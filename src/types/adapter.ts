@@ -307,7 +307,7 @@ export interface UnderlyingProfitValues extends Erc20Metadata {
   /**
    * Profit made in this token for this period
    */
-  profit: string
+  profit: number
 
   /**
    * Numbers used to calculate profit value

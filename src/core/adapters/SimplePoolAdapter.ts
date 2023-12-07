@@ -261,6 +261,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
             protocolTokenAddress: protocolTokenMetadata.address,
             fromBlock,
             toBlock,
+            tokenId: protocolTokenMetadata.tokenId,
           }
 
           const [withdrawals, deposits] = await Promise.all([
@@ -292,7 +293,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           return {
             ...protocolTokenMetadata,
             type: TokenType.Protocol,
-            profit: profit.toString(),
+            profit: profit,
             performance: calculateDeFiAttributionPerformance({
               profit,
               withdrawal,

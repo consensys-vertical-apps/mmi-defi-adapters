@@ -18,7 +18,7 @@
           "symbol": "3Crv",
           "decimals": 18,
           "type": "protocol",
-          "profit": "0.008436710000296443",
+          "profit": 0.008436710000296443,
           "performance": 0.000002776013717460402,
           "calculationData": {
             "withdrawals": 0,

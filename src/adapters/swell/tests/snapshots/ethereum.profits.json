@@ -18,7 +18,7 @@
           "symbol": "SWETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": "22424.67918117001",
+          "profit": 22424.67918117001,
           "performance": 0.07532001535334899,
           "calculationData": {
             "withdrawals": 0,
