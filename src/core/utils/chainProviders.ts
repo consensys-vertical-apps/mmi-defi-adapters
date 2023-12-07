@@ -8,6 +8,23 @@ import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider
 import { logger } from './logger'
 import { MulticallQueue } from './multicall'
 
+const ChainMulticallSettings: Record<
+  Chain,
+  { flushTimeoutMs: number; maxBatchSize: number }
+> = Object.values(Chain).reduce(
+  (accumulator, chainId) => {
+    return {
+      [chainId]: {
+        flushTimeoutMs: 0.1,
+        // Allow a bigger batch size for mainnet
+        maxBatchSize: Chain.Ethereum ? 200 : 100,
+      },
+      ...accumulator,
+    }
+  },
+  {} as Record<Chain, { flushTimeoutMs: number; maxBatchSize: number }>,
+)
+
 export class ChainProvider {
   providers: Record<Chain, CustomJsonRpcProvider>
 
@@ -57,8 +74,7 @@ export class ChainProvider {
     )
 
     const multicallQueue = new MulticallQueue({
-      flushTimeoutMs: 0.1,
-      maxBatchSize: 200,
+      ...ChainMulticallSettings[chainId],
       multicallContract,
       chainId,
     })
