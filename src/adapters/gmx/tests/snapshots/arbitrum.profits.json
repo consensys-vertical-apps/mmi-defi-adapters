@@ -12,7 +12,7 @@
       "productId": "glp",
       "success": false,
       "error": {
-        "message": "Non-Fiat token found at the base of the nested structure: 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+        "message": "Unable to calculate profits, missing USD price for token position 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
         "details": {
           "name": "Error"
         }

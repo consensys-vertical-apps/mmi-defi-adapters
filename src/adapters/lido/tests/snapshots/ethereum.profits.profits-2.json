@@ -40,13 +40,26 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, no USD price found for token: 0x0000000000000000000000000000000000000000",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "name": "Wrapped liquid staked Ether 2.0",
+          "symbol": "wstETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -19.566504590000022,
+          "performance": -0.013792430218210857,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 116.7881906,
+            "startPositionValue": 1301.85263487,
+            "endPositionValue": 1399.07432088
+          }
         }
-      }
+      ],
+      "fromBlock": 16690437,
+      "toBlock": 16740459
     }
   ]
 }

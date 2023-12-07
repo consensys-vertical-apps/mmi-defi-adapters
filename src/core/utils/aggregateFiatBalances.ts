@@ -51,7 +51,7 @@ export function aggregateFiatBalances(
 
     // Throw an error if a non-Fiat token is found at the base
     throw new Error(
-      `Non-Fiat token found at the base of the nested structure: ${currentToken.address}`,
+      `Unable to calculate profits, missing USD price for token position ${currentToken.address}`,
     )
   }
 

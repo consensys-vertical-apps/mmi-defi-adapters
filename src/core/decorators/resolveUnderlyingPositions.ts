@@ -43,13 +43,19 @@ export function ResolveUnderlyingMovements(
 
     for (let i = 0; i < protocolTokens.length; i++) {
       const tokens = protocolTokens[i]?.tokens
+      const blockNumber = protocolTokens[i]?.blockNumber
       if (!tokens) {
         continue
       }
       await resolveUnderlying({
-        adapter: this,
         underlying: tokens,
-        blockNumber: protocolTokens[i]?.blockNumber,
+        adapter: this,
+        blockNumber,
+      })
+      await recursivePositionSolver({
+        adapter: this,
+        tokenPositions: tokens,
+        blockNumber: blockNumber,
       })
     }
 

@@ -12,7 +12,7 @@
       "productId": "a-token",
       "success": false,
       "error": {
-        "message": "Non-Fiat token found at the base of the nested structure: 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+        "message": "Unable to calculate profits, missing USD price for token position 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
         "details": {
           "name": "Error"
         }
@@ -43,7 +43,7 @@
       "productId": "variable-debt-token",
       "success": false,
       "error": {
-        "message": "Non-Fiat token found at the base of the nested structure: 0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+        "message": "Unable to calculate profits, missing USD price for token position 0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
         "details": {
           "name": "Error"
         }

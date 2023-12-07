@@ -12,7 +12,7 @@
       "productId": "pool",
       "success": false,
       "error": {
-        "message": "Non-Fiat token found at the base of the nested structure: 0x92CC36D66e9d739D50673d1f27929a371FB83a67",
+        "message": "Unable to calculate profits, missing USD price for token position 0x92CC36D66e9d739D50673d1f27929a371FB83a67",
         "details": {
           "name": "Error"
         }

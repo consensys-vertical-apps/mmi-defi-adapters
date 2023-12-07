@@ -51,7 +51,7 @@ export function aggregateFiatBalancesFromMovements(
 
     // Throw an error if a non-Fiat token is found at the base
     throw new Error(
-      `Unable to calculate profits, no USD price found for token: ${currentToken.address}`,
+      `Unable to calculate profits, missing USD price for token movement: ${currentToken.address}`,
     )
   }
 
