@@ -60,6 +60,7 @@ export class ChainProvider {
       flushTimeoutMs: 0.1,
       maxBatchSize: 200,
       multicallContract,
+      chainId,
     })
 
     return new CustomMulticallJsonRpcProvider({
