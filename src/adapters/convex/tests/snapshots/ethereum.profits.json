@@ -100,13 +100,26 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "cvxcrv-wrapper",
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0xD533a949740bb3306d119CC777fa900bA034cd52",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "name": "Staked CvxCrv",
+          "symbol": "stkCvxCrv",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 2.3742332699999906,
+          "performance": 0.013623894947119814,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 174.26978696,
+            "endPositionValue": 176.64402023
+          }
         }
-      }
+      ],
+      "fromBlock": 18706497,
+      "toBlock": 18713643
     }
   ]
 }

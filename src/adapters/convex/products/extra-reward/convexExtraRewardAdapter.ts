@@ -4,7 +4,10 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { ResolveUnderlyingMovements } from '../../../../core/decorators/resolveUnderlyingPositions'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
@@ -66,6 +69,7 @@ export class ConvexExtraRewardAdapter
     }
   }
 
+  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
