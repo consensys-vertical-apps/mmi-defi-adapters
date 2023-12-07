@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18670429,
+  "blockNumber": 18733080,
   "snapshot": [
     {
       "protocolId": "morpho-aave-v2",
@@ -18,8 +18,8 @@
           "symbol": "aDAI",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "15093372386083692443897473n",
-          "totalSupply": "15093372.386083692443897473"
+          "totalSupplyRaw": "14108347668472664311575318n",
+          "totalSupply": "14108347.668472664311575318"
         },
         {
           "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
@@ -27,8 +27,8 @@
           "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "106261477838070100685411n",
-          "totalSupply": "106261.477838070100685411"
+          "totalSupplyRaw": "95466645205577799437151n",
+          "totalSupply": "95466.645205577799437151"
         },
         {
           "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
@@ -36,8 +36,8 @@
           "symbol": "aUSDC",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "25094983328184n",
-          "totalSupply": "25094983.328184"
+          "totalSupplyRaw": "27400854481208n",
+          "totalSupply": "27400854.481208"
         },
         {
           "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
@@ -45,8 +45,8 @@
           "symbol": "aUSDT",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "8548640994638n",
-          "totalSupply": "8548640.994638"
+          "totalSupplyRaw": "9766196933267n",
+          "totalSupply": "9766196.933267"
         },
         {
           "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
@@ -54,8 +54,8 @@
           "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "10539131450n",
-          "totalSupply": "105.3913145"
+          "totalSupplyRaw": "10240456994n",
+          "totalSupply": "102.40456994"
         },
         {
           "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
@@ -72,8 +72,8 @@
           "symbol": "aCRV",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "59504972904941814229n",
-          "totalSupply": "59.504972904941814229"
+          "totalSupplyRaw": "59645261177539135889n",
+          "totalSupply": "59.645261177539135889"
         }
       ]
     },
@@ -94,8 +94,8 @@
           "symbol": "aDAI",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "9801071886742998516908745n",
-          "totalSupply": "9801071.886742998516908745"
+          "totalSupplyRaw": "8583350166495660434659976n",
+          "totalSupply": "8583350.166495660434659976"
         },
         {
           "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
@@ -103,8 +103,8 @@
           "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "92270155614809884654352n",
-          "totalSupply": "92270.155614809884654352"
+          "totalSupplyRaw": "96103087774780755413223n",
+          "totalSupply": "96103.087774780755413223"
         },
         {
           "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
@@ -112,8 +112,8 @@
           "symbol": "aUSDC",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "37501506510459n",
-          "totalSupply": "37501506.510459"
+          "totalSupplyRaw": "38059539237938n",
+          "totalSupply": "38059539.237938"
         },
         {
           "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
@@ -121,8 +121,8 @@
           "symbol": "aUSDT",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "8987174124074n",
-          "totalSupply": "8987174.124074"
+          "totalSupplyRaw": "11051901314525n",
+          "totalSupply": "11051901.314525"
         },
         {
           "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
@@ -130,8 +130,8 @@
           "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "131427158404n",
-          "totalSupply": "1314.27158404"
+          "totalSupplyRaw": "124054343678n",
+          "totalSupply": "1240.54343678"
         },
         {
           "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
@@ -139,8 +139,8 @@
           "symbol": "aSTETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "140249105481737028536129n",
-          "totalSupply": "140249.105481737028536129"
+          "totalSupplyRaw": "129175888255285633192883n",
+          "totalSupply": "129175.888255285633192883"
         },
         {
           "address": "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1",
@@ -148,8 +148,8 @@
           "symbol": "aCRV",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "1090877027989152661401189n",
-          "totalSupply": "1090877.027989152661401189"
+          "totalSupplyRaw": "1091271170480326156203435n",
+          "totalSupply": "1091271.170480326156203435"
         }
       ]
     }

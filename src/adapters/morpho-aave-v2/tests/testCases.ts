@@ -7,32 +7,32 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     method: 'positions',
     input: {
-      userAddress: '0x1ADB67a4C80A760579378624714DC01b89E69549',
+      userAddress: '0x4C09DD7c598b12c781C4B5d74D245a1784a2E148',
     },
-    blockNumber: 18670429,
+    blockNumber: 18733080,
   },
   {
     chainId: Chain.Ethereum,
     method: 'profits',
     input: {
-      userAddress: '0x1ADB67a4C80A760579378624714DC01b89E69549',
+      userAddress: '0x4C09DD7c598b12c781C4B5d74D245a1784a2E148',
       timePeriod: TimePeriod.oneDay,
     },
-    blockNumber: 18670429,
+    blockNumber: 18733080,
   },
   {
     chainId: Chain.Ethereum,
     method: 'tvl',
-    blockNumber: 18670429,
+    blockNumber: 18733080,
   },
   {
     chainId: Chain.Ethereum,
     method: 'apr',
-    blockNumber: 18670429,
+    blockNumber: 18733080,
   },
   {
     chainId: Chain.Ethereum,
     method: 'apy',
-    blockNumber: 18670429,
+    blockNumber: 18733080,
   },
 ]
