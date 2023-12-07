@@ -136,6 +136,7 @@ describe('aggregateFiatBalances', () => {
       aggregateFiatBalances(
         testData as unknown as (Underlying | ProtocolPosition)[],
       )
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       expect(error.message).toEqual(
         'Non-Fiat token found at the base of the nested structure: 0x',

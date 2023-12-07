@@ -1,16 +1,15 @@
 import { formatUnits } from 'ethers'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  ResolveUnderlyingMovements,
   ResolveUnderlyingPositions,
+  ResolveUnderlyingMovements,
 } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -19,14 +18,12 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetProfitsInput,
   GetApyInput,
   GetAprInput,
   GetConversionRateInput,
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
-  ProfitsWithRange,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
@@ -35,10 +32,8 @@ import {
   UnderlyingTokenRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 
 // Parameter needed for static call request
 // Set the date in the future to ensure the static call request doesn't trigger smart contract validation
@@ -253,10 +248,6 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
         }
       },
     )
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    throw new NotImplementedError()
   }
 
   private protocolTokenName(

@@ -324,6 +324,7 @@ describe('aggregateFiatBalancesFromMovements', () => {
       await aggregateFiatBalancesFromMovements(
         testData as unknown as MovementsByBlock[],
       )
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       expect(error.message).toEqual(
         'Unable to calculate profits, no USD price found for token: non-fiat',

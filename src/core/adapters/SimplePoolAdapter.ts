@@ -30,8 +30,8 @@ import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import {
-  ResolveUnderlyingMovements,
   ResolveUnderlyingPositions,
+  ResolveUnderlyingMovements,
 } from '../decorators/resolveUnderlyingPositions'
 import { MaxMovementLimitExceededError } from '../errors/errors'
 import { aggregateFiatBalances } from '../utils/aggregateFiatBalances'

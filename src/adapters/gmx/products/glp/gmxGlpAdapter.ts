@@ -7,8 +7,8 @@ import {
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import {
-  ResolveUnderlyingMovements,
   ResolveUnderlyingPositions,
+  ResolveUnderlyingMovements,
 } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
