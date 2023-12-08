@@ -13,62 +13,34 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
-          "name": "Compound Ether",
-          "symbol": "cETH",
-          "decimals": 8,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x0000000000000000000000000000000000000000",
-              "name": "Ethereum",
-              "symbol": "ETH",
-              "decimals": 18,
-              "profitRaw": "22174676775893n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "29018584817030946730n",
-                "startPositionValue": "29.01858481703094673",
-                "endPositionValueRaw": "29018606991707722623n",
-                "endPositionValue": "29.018606991707722623"
-              },
-              "profit": "0.000022174676775893",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-            }
-          ]
-        },
-        {
           "address": "0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e",
           "name": "Compound Basic Attention Token",
           "symbol": "cBAT",
           "decimals": 8,
           "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
-              "name": "Basic Attention Token",
-              "symbol": "BAT",
-              "decimals": 18,
-              "profitRaw": "145282237192068948n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "2193271443962994177009297n",
-                "startPositionValue": "2193271.443962994177009297",
-                "endPositionValueRaw": "2193271589245231369078245n",
-                "endPositionValue": "2193271.589245231369078245"
-              },
-              "profit": "0.145282237192068948",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0D8775F648430679A709E98d2b0Cb6250d2887EF/logo.png"
-            }
-          ]
+          "profit": -5615.818366840016,
+          "performance": -0.011770137720693097,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 477124.2699197,
+            "endPositionValue": 471508.45155286
+          }
+        },
+        {
+          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+          "name": "Compound Ether",
+          "symbol": "cETH",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": -975.8534720099997,
+          "performance": -0.017636775349719046,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 55330.60622817,
+            "endPositionValue": 54354.75275616
+          }
         }
       ],
       "fromBlock": 18513653,

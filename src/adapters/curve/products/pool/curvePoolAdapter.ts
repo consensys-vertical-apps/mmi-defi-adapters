@@ -43,8 +43,7 @@ type CurvePoolAdapterMetadata = Record<
 
 export class CurvePoolAdapter
   extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+  implements IMetadataBuilder {
   productId = 'pool'
 
   getProtocolDetails(): ProtocolDetails {
@@ -80,7 +79,13 @@ export class CurvePoolAdapter
         return undefined
       }
 
-      metadataObject[token.protocolToken.address] = token
+      metadataObject[token.protocolToken.address.toLowerCase()] = {
+        ...token,
+        protocolToken: {
+          ...token.protocolToken,
+          address: token.protocolToken.address.toLowerCase(),
+        },
+      }
     })
 
     return metadataObject
@@ -161,6 +166,10 @@ export class CurvePoolAdapter
       this.provider,
     )
 
+    if (this.chainId == Chain.Ethereum && blockNumber && blockNumber < 15732062) {
+      throw new Error('Curve meta registry not deployed at this block number')
+    }
+
     const balances = await metaRegistryContract['get_balances(address)'](
       poolAddress,
       { blockTag: blockNumber },
@@ -219,10 +228,10 @@ export class CurvePoolAdapter
 
   private async getPoolData(i: number): Promise<
     | {
-        protocolToken: Erc20Metadata
-        underlyingTokens: Erc20Metadata[]
-        poolAddress: string
-      }
+      protocolToken: Erc20Metadata
+      underlyingTokens: Erc20Metadata[]
+      poolAddress: string
+    }
     | undefined
   > {
     const metaRegistryContract = MetaRegistry__factory.connect(

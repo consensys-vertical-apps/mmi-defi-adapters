@@ -32,28 +32,14 @@
           "symbol": "3Crv",
           "decimals": 18,
           "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-              "name": "Curve.fi DAI/USDC/USDT",
-              "symbol": "3Crv",
-              "decimals": 18,
-              "profitRaw": "0n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "6357359611959254406n",
-                "deposits": "6.357359611959254406",
-                "startPositionValueRaw": "0n",
-                "startPositionValue": "0.0",
-                "endPositionValueRaw": "6357359611959254406n",
-                "endPositionValue": "6.357359611959254406"
-              },
-              "profit": "0.0",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
-            }
-          ]
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 6.52182106,
+            "startPositionValue": 0,
+            "endPositionValue": 6.52182106
+          }
         }
       ],
       "fromBlock": 17253303,
@@ -76,28 +62,14 @@
           "symbol": "3Crv",
           "decimals": 18,
           "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
-              "name": "Curve DAO Token",
-              "symbol": "CRV",
-              "decimals": 18,
-              "profitRaw": "39823558887n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "0n",
-                "startPositionValue": "0.0",
-                "endPositionValueRaw": "39823558887n",
-                "endPositionValue": "0.000000039823558887"
-              },
-              "profit": "0.000000039823558887",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
-            }
-          ]
+          "profit": 3e-8,
+          "performance": "0n",
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 3e-8
+          }
         }
       ],
       "fromBlock": 17253303,

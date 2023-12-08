@@ -11,13 +11,9 @@ import {
   ProtocolTokenTvl,
   Underlying,
   UnderlyingTokenRate,
-  PositionProfits,
-  UnderlyingProfitValues,
-  BaseTokenMovement,
   UnderlyingTokenTvl,
   TokenType,
   TokenBalance,
-  CalculationData,
 } from './adapter'
 
 export type GetEventsRequestInput = {
@@ -65,24 +61,7 @@ export type DisplayPosition<
     ? { iconUrl: string }
     : Record<string, never>)
 
-export type DefiProfitsResponse = AdapterResponse<DisplayProfitsWithRange>
-
-export type DisplayProfitsWithRange = Omit<ProfitsWithRange, 'tokens'> & {
-  tokens: DisplayPositionProfits[]
-}
-
-type DisplayPositionProfits = Omit<PositionProfits, 'tokens'> & {
-  tokens: (UnderlyingProfitValues & {
-    profit: string
-    iconUrl: string
-    calculationData: CalculationData & {
-      withdrawals: string
-      deposits: string
-      startPositionValue: string
-      endPositionValue: string
-    }
-  })[]
-}
+export type DefiProfitsResponse = AdapterResponse<ProfitsWithRange>
 
 export type PricePerShareResponse = AdapterResponse<{
   tokens: DisplayProtocolTokenUnderlyingRate[]
@@ -116,12 +95,6 @@ export type DefiMovementsResponse = AdapterResponse<{
   movements: DisplayMovementsByBlock[]
 }>
 
-export type DisplayMovementsByBlock = Omit<
-  MovementsByBlock,
-  'underlyingTokensMovement'
-> & {
-  underlyingTokensMovement: Record<
-    string,
-    BaseTokenMovement & { movementValue: string }
-  >
+export type DisplayMovementsByBlock = Omit<MovementsByBlock, 'tokens'> & {
+  tokens?: (Underlying & { balance: string })[]
 }

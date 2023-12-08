@@ -18,28 +18,14 @@
           "symbol": "stETH",
           "decimals": 18,
           "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x0000000000000000000000000000000000000000",
-              "name": "Ethereum",
-              "symbol": "ETH",
-              "decimals": 18,
-              "profitRaw": "3415461523730n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "4941068362889284n",
-                "startPositionValue": "0.004941068362889284",
-                "endPositionValueRaw": "4944483824413014n",
-                "endPositionValue": "0.004944483824413014"
-              },
-              "profit": "0.00000341546152373",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-            }
-          ]
+          "profit": 0.03334191000000075,
+          "performance": 0.004292972910344731,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 7.76662483,
+            "endPositionValue": 7.79996674
+          }
         }
       ],
       "fromBlock": 18327461,
@@ -62,28 +48,14 @@
           "symbol": "wstETH",
           "decimals": 18,
           "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
-              "name": "Liquid staked Ether 2.0",
-              "symbol": "stETH",
-              "decimals": 18,
-              "profitRaw": "62291468307131302659n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "90115611372545721887865n",
-                "startPositionValue": "90115.611372545721887865",
-                "endPositionValueRaw": "90177902840852853190524n",
-                "endPositionValue": "90177.902840852853190524"
-              },
-              "profit": "62.291468307131302659",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
-            }
-          ]
+          "profit": 608092.4498438835,
+          "performance": 0.004292972565870958,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 141648342.84714648,
+            "endPositionValue": 142256435.29699036
+          }
         }
       ],
       "fromBlock": 18327461,

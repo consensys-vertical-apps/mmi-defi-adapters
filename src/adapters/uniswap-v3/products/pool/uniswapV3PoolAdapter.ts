@@ -1,13 +1,15 @@
 import { formatUnits } from 'ethers'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
+import {
+  ResolveUnderlyingPositions,
+  ResolveUnderlyingMovements,
+} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -16,21 +18,20 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetProfitsInput,
   GetApyInput,
   GetAprInput,
   GetConversionRateInput,
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
-  ProfitsWithRange,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
   Underlying,
+  TokenBalance,
+  UnderlyingTokenRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { PositionManager__factory } from '../../contracts'
 
@@ -67,14 +68,14 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
 
 const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 
-export class UniswapV3PoolAdapter implements IProtocolAdapter {
+export class UniswapV3PoolAdapter extends SimplePoolAdapter {
   productId = 'pool'
   protocolId: Protocol
   chainId: Chain
 
   adaptersController: AdaptersController
 
-  private provider: CustomJsonRpcProvider
+  provider: CustomJsonRpcProvider
 
   constructor({
     provider,
@@ -82,10 +83,42 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     protocolId,
     adaptersController,
   }: ProtocolAdapterParams) {
+    super({
+      provider,
+      chainId,
+      protocolId,
+      adaptersController,
+    })
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+  }
+
+  protected async fetchProtocolTokenMetadata(
+    _protocolTokenAddress: string,
+  ): Promise<Erc20Metadata> {
+    throw new NotImplementedError()
+  }
+
+  protected async fetchUnderlyingTokensMetadata(
+    _protocolTokenAddress: string,
+  ): Promise<Erc20Metadata[]> {
+    throw new NotImplementedError()
+  }
+
+  protected async getUnderlyingTokenBalances(_input: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number
+  }): Promise<Underlying[]> {
+    throw new NotImplementedError()
+  }
+  protected async getUnderlyingTokenConversionRate(
+    _protocolTokenMetadata: Erc20Metadata,
+    _blockNumber?: number | undefined,
+  ): Promise<UnderlyingTokenRate[]> {
+    throw new NotImplementedError()
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -228,6 +261,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     )}%`
   }
 
+  @ResolveUnderlyingMovements
   async getWithdrawals({
     protocolTokenAddress,
     fromBlock,
@@ -238,7 +272,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
       throw new Error('TokenId required for uniswap withdrawals')
     }
 
-    return await this.getMovements({
+    return await this.getUniswapMovements({
       protocolTokenAddress,
       fromBlock,
       toBlock,
@@ -247,6 +281,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     })
   }
 
+  @ResolveUnderlyingMovements
   async getDeposits({
     protocolTokenAddress,
     fromBlock,
@@ -256,7 +291,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     if (!tokenId) {
       throw new Error('TokenId required for uniswap deposits')
     }
-    return await this.getMovements({
+    return await this.getUniswapMovements({
       protocolTokenAddress,
       fromBlock,
       toBlock,
@@ -286,103 +321,6 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
-  async getProfits({
-    userAddress,
-    fromBlock,
-    toBlock,
-  }: GetProfitsInput): Promise<ProfitsWithRange> {
-    const [currentValues, previousValues] = await Promise.all([
-      this.getPositions({
-        userAddress,
-        blockNumber: toBlock,
-      }).then((result) => formatProtocolTokenArrayToMap(result, true)),
-      this.getPositions({
-        userAddress,
-        blockNumber: fromBlock,
-      }).then((result) => formatProtocolTokenArrayToMap(result, true)),
-    ])
-
-    const tokens = await Promise.all(
-      Object.values(currentValues).map(
-        async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
-          const getEventsInput: GetEventsInput = {
-            userAddress,
-            protocolTokenAddress: protocolTokenMetadata.address,
-            fromBlock,
-            toBlock,
-            tokenId: protocolTokenMetadata.tokenId,
-          }
-
-          const [withdrawals, deposits] = await Promise.all([
-            this.getWithdrawals(getEventsInput).then(aggregateTrades),
-            this.getDeposits(getEventsInput).then(aggregateTrades),
-          ])
-
-          return {
-            ...protocolTokenMetadata,
-            type: TokenType.Protocol,
-            tokens: Object.values(underlyingTokenPositions).map(
-              ({
-                address,
-                name,
-                symbol,
-                decimals,
-                balanceRaw: startPositionValueRaw,
-              }) => {
-                const endPositionValueRaw =
-                  previousValues[protocolTokenMetadata.tokenId!]
-                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
-
-                const calculationData = {
-                  withdrawalsRaw: withdrawals[address] ?? 0n,
-                  depositsRaw: deposits[address] ?? 0n,
-                  startPositionValueRaw: startPositionValueRaw ?? 0n,
-                  endPositionValueRaw,
-                }
-
-                const profitRaw =
-                  calculationData.startPositionValueRaw +
-                  calculationData.withdrawalsRaw -
-                  calculationData.depositsRaw -
-                  calculationData.endPositionValueRaw
-
-                return {
-                  address,
-                  name,
-                  symbol,
-                  decimals,
-                  profitRaw,
-                  type: TokenType.Underlying,
-                  calculationData: {
-                    withdrawalsRaw: withdrawals[address] ?? 0n,
-                    withdrawals: formatUnits(
-                      withdrawals[address] ?? 0n,
-                      decimals,
-                    ),
-                    depositsRaw: deposits[address] ?? 0n,
-                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
-                    startPositionValueRaw: startPositionValueRaw ?? 0n,
-                    startPositionValue: formatUnits(
-                      startPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                    endPositionValueRaw,
-                    endPositionValue: formatUnits(
-                      endPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                  },
-                }
-              },
-            ),
-          }
-        },
-      ),
-    )
-
-    return { tokens, fromBlock, toBlock }
-  }
-
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
@@ -407,7 +345,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     }
   }
 
-  private async getMovements({
+  private async getUniswapMovements({
     protocolTokenAddress,
     eventType,
     fromBlock,
@@ -461,6 +399,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
         } = transferEvent
 
         return {
+          transactionHash,
           protocolToken: {
             address: protocolTokenAddress,
             name: this.protocolTokenName(
@@ -476,18 +415,22 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
             decimals: 18,
             tokenId,
           },
-          underlyingTokensMovement: {
-            [token0]: {
-              movementValueRaw: amount0,
+          tokens: [
+            {
+              type: TokenType.Underlying,
+              balanceRaw: amount0,
               ...token0Metadata,
               transactionHash,
+              blockNumber,
             },
-            [token1]: {
-              movementValueRaw: amount1,
+            {
+              type: TokenType.Underlying,
+              balanceRaw: amount1,
               ...token1Metadata,
               transactionHash,
+              blockNumber,
             },
-          },
+          ],
           blockNumber,
         }
       }),

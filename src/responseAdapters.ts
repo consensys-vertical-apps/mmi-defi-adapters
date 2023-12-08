@@ -3,10 +3,8 @@ import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
   MovementsByBlock,
-  BaseTokenMovement,
   ProtocolTokenTvl,
   ProtocolTokenUnderlyingRate,
-  ProfitsWithRange,
   TokenBalance,
   Underlying,
   TokenType,
@@ -14,7 +12,6 @@ import {
 import {
   DisplayMovementsByBlock,
   DisplayPosition,
-  DisplayProfitsWithRange,
   DisplayProtocolTokenTvl,
   DisplayProtocolTokenUnderlyingRate,
 } from './types/response'
@@ -40,53 +37,6 @@ export function enrichPositionBalance<
       ? { iconUrl: buildTrustAssetIconUrl(chainId, balance.address) }
       : {}),
   } as DisplayPosition<PositionBalance>
-}
-
-export function enrichProfitsWithRange(
-  profitsWithRange: ProfitsWithRange,
-  chainId: Chain,
-): DisplayProfitsWithRange {
-  return {
-    ...profitsWithRange,
-    tokens: profitsWithRange.tokens?.map((positionProfit) => {
-      return {
-        ...positionProfit,
-        tokens: positionProfit.tokens.map((underlyingProfitValue) => {
-          return {
-            ...underlyingProfitValue,
-            profit: formatUnits(
-              underlyingProfitValue.profitRaw,
-              underlyingProfitValue.decimals,
-            ),
-            iconUrl: buildTrustAssetIconUrl(
-              chainId,
-              underlyingProfitValue.address,
-            ),
-            calculationData: {
-              ...underlyingProfitValue.calculationData,
-              withdrawals: formatUnits(
-                underlyingProfitValue.calculationData.withdrawalsRaw ?? 0n,
-                underlyingProfitValue.decimals,
-              ),
-              deposits: formatUnits(
-                underlyingProfitValue.calculationData.depositsRaw ?? 0n,
-                underlyingProfitValue.decimals,
-              ),
-              startPositionValue: formatUnits(
-                underlyingProfitValue.calculationData.startPositionValueRaw ??
-                  0n,
-                underlyingProfitValue.decimals,
-              ),
-              endPositionValue: formatUnits(
-                underlyingProfitValue.calculationData.endPositionValueRaw ?? 0n,
-                underlyingProfitValue.decimals,
-              ),
-            },
-          }
-        }),
-      }
-    }),
-  }
 }
 
 export function enrichUnderlyingTokenRates(
@@ -122,24 +72,28 @@ export function enrichUnderlyingTokenRates(
 
 export function enrichMovements(
   movementsByBlock: MovementsByBlock,
+  chainId: Chain,
 ): DisplayMovementsByBlock {
   return {
     ...movementsByBlock,
-    underlyingTokensMovement: Object.entries(
-      movementsByBlock.underlyingTokensMovement,
-    ).reduce(
-      (accumulator, [baseTokenAddress, baseTokenMovement]) => {
-        accumulator[baseTokenAddress] = {
-          ...baseTokenMovement,
-          movementValue: formatUnits(
-            baseTokenMovement.movementValueRaw,
-            baseTokenMovement.decimals,
-          ),
-        }
-
-        return accumulator
+    tokens: movementsByBlock.tokens.reduce(
+      (accumulator, token) => {
+        return [
+          ...accumulator,
+          {
+            ...token,
+            balance: formatUnits(token.balanceRaw, token.decimals),
+            ...(token.tokens
+              ? {
+                  tokens: token.tokens?.map((underlyingBalance) =>
+                    enrichPositionBalance(underlyingBalance, chainId),
+                  ),
+                }
+              : {}),
+          },
+        ]
       },
-      {} as Record<string, BaseTokenMovement & { movementValue: string }>,
+      [] as (Underlying & { balance: string })[],
     ),
   }
 }

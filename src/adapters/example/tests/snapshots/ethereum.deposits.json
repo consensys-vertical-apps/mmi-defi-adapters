@@ -11,23 +11,24 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0x33",
         "protocolToken": {
           "address": "0x1000000000000000000000000000000000000001",
           "name": "LP USD Coin",
           "symbol": "LP USDC",
           "decimals": 6
         },
-        "underlyingTokensMovement": {
-          "0x0000000000000000000000000000000000000001": {
+        "tokens": [
+          {
             "address": "0x0000000000000000000000000000000000000001",
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
-            "movementValueRaw": "100000000n",
-            "transactionHash": "0x33",
-            "movementValue": "100.0"
+            "balanceRaw": "100000000n",
+            "type": "underlying",
+            "balance": "100.0"
           }
-        },
+        ],
         "blockNumber": 17970000
       }
     ]

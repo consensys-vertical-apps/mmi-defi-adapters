@@ -11,104 +11,115 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
         "protocolToken": {
           "address": "0x4277f8f2c384827b5273592ff7cebd9f2c1ac258",
           "name": "GMX LP",
           "symbol": "GLP",
           "decimals": 18
         },
-        "underlyingTokensMovement": {
-          "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f": {
+        "tokens": [
+          {
             "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
             "name": "Wrapped BTC",
             "symbol": "WBTC",
             "decimals": 8,
-            "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
-            "movementValueRaw": "71215n",
-            "movementValue": "0.00071215"
+            "balanceRaw": "71215n",
+            "type": "underlying",
+            "blockNumber": 151045026,
+            "balance": "0.00071215"
           },
-          "0x82af49447d8a07e3bd95bd0d56f35241523fbab1": {
+          {
             "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
             "name": "Wrapped Ether",
             "symbol": "WETH",
             "decimals": 18,
-            "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
-            "movementValueRaw": "10038547891110371n",
-            "movementValue": "0.010038547891110371"
+            "balanceRaw": "10038547891110371n",
+            "type": "underlying",
+            "blockNumber": 151045026,
+            "balance": "0.010038547891110371"
           },
-          "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8": {
+          {
             "address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
             "name": "USD Coin (Arb1)",
             "symbol": "USDC",
             "decimals": 6,
-            "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
-            "movementValueRaw": "17080993n",
-            "movementValue": "17.080993"
+            "balanceRaw": "17080993n",
+            "type": "underlying",
+            "blockNumber": 151045026,
+            "balance": "17.080993"
           },
-          "0xf97f4df75117a78c1a5a0dbb814af92458539fb4": {
+          {
             "address": "0xf97f4df75117a78c1a5a0dbb814af92458539fb4",
             "name": "ChainLink Token",
             "symbol": "LINK",
             "decimals": 18,
-            "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
-            "movementValueRaw": "93796384015845796n",
-            "movementValue": "0.093796384015845796"
+            "balanceRaw": "93796384015845796n",
+            "type": "underlying",
+            "blockNumber": 151045026,
+            "balance": "0.093796384015845796"
           },
-          "0xfa7f8980b0f1e64a2062791cc3b0871572f1f7f0": {
+          {
             "address": "0xfa7f8980b0f1e64a2062791cc3b0871572f1f7f0",
             "name": "Uniswap",
             "symbol": "UNI",
             "decimals": 18,
-            "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
-            "movementValueRaw": "129026456615526018n",
-            "movementValue": "0.129026456615526018"
+            "balanceRaw": "129026456615526018n",
+            "type": "underlying",
+            "blockNumber": 151045026,
+            "balance": "0.129026456615526018"
           },
-          "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9": {
+          {
             "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
             "name": "Tether USD",
             "symbol": "USDT",
             "decimals": 6,
-            "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
-            "movementValueRaw": "1314137n",
-            "movementValue": "1.314137"
+            "balanceRaw": "1314137n",
+            "type": "underlying",
+            "blockNumber": 151045026,
+            "balance": "1.314137"
           },
-          "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a": {
+          {
             "address": "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
             "name": "Magic Internet Money",
             "symbol": "MIM",
             "decimals": 18,
-            "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
-            "movementValueRaw": "181390928614n",
-            "movementValue": "0.000000181390928614"
+            "balanceRaw": "181390928614n",
+            "type": "underlying",
+            "blockNumber": 151045026,
+            "balance": "0.000000181390928614"
           },
-          "0x17fc002b466eec40dae837fc4be5c67993ddbd6f": {
+          {
             "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
             "name": "Frax",
             "symbol": "FRAX",
             "decimals": 18,
-            "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
-            "movementValueRaw": "2873490716046510717n",
-            "movementValue": "2.873490716046510717"
+            "balanceRaw": "2873490716046510717n",
+            "type": "underlying",
+            "blockNumber": 151045026,
+            "balance": "2.873490716046510717"
           },
-          "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1": {
+          {
             "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
             "name": "Dai Stablecoin",
             "symbol": "DAI",
             "decimals": 18,
-            "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
-            "movementValueRaw": "2558921389742661495n",
-            "movementValue": "2.558921389742661495"
+            "balanceRaw": "2558921389742661495n",
+            "type": "underlying",
+            "blockNumber": 151045026,
+            "balance": "2.558921389742661495"
           },
-          "0xaf88d065e77c8cc2239327c5edb3a432268e5831": {
+          {
             "address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
-            "transactionHash": "0x47fbf2b3e9fc2c56d266469cb39f25b5e1404d96ad2d2a54d9f3838cb834e095",
-            "movementValueRaw": "9597541n",
-            "movementValue": "9.597541"
+            "balanceRaw": "9597541n",
+            "type": "underlying",
+            "blockNumber": 151045026,
+            "balance": "9.597541"
           }
-        },
+        ],
         "blockNumber": 151045026
       }
     ]

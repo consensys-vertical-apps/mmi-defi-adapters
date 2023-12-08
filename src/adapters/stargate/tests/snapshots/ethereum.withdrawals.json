@@ -11,23 +11,36 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0x4d1b8d3c31ae59d1e422d18f60865fe988f212aff2ec6de00da2d271c18df59c",
         "protocolToken": {
           "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
           "name": "USD Coin-LP",
           "symbol": "S*USDC",
           "decimals": 6
         },
-        "underlyingTokensMovement": {
-          "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
+        "tokens": [
+          {
             "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
-            "transactionHash": "0x4d1b8d3c31ae59d1e422d18f60865fe988f212aff2ec6de00da2d271c18df59c",
-            "movementValueRaw": "649535096n",
-            "movementValue": "649.535096"
+            "balanceRaw": "649535096n",
+            "type": "underlying",
+            "blockNumber": 17979754,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 8,
+                "type": "fiat",
+                "balanceRaw": "64958172612n",
+                "balance": "649.58172612"
+              }
+            ],
+            "balance": "649.535096"
           }
-        },
+        ],
         "blockNumber": 17979754
       }
     ]

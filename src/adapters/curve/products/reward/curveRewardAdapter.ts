@@ -1,5 +1,8 @@
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
-import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import {
   ProtocolDetails,
@@ -90,6 +93,7 @@ export class CurveRewardAdapter
     return [] // cant deposit rewards can only withdraw e.g. claimRewards()
   }
 
+  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -121,14 +125,15 @@ export class CurveRewardAdapter
 
       return [
         {
+          transactionHash: '0x',
           protocolToken,
-          underlyingTokensMovement: {
-            [CRV_TOKEN.address]: {
+          tokens: [
+            {
               ...CRV_TOKEN,
-              movementValueRaw: withdrawn,
-              transactionHash: undefined,
+              balanceRaw: withdrawn,
+              type: TokenType.Underlying,
             },
-          },
+          ],
           blockNumber: toBlock,
         },
       ]
