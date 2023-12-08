@@ -1,0 +1,70 @@
+{
+  "blockNumber": 1105311,
+  "snapshot": [
+    {
+      "protocolId": "iziswap",
+      "name": "IZiSwap",
+      "description": "IZiSwap defi adapter",
+      "siteUrl": "https://izumi.finance",
+      "iconUrl": "https://izumi.finance/assets/sidebar/logo.svg",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "iziswap",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c",
+          "name": "USDC / WETH - 3000",
+          "symbol": "USDC / WETH - 3000",
+          "decimals": 18,
+          "tokenId": "20000",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "profitRaw": "278597675422123n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "6789560037742775n",
+                "startPositionValue": "0.006789560037742775",
+                "endPositionValueRaw": "6510962362320652n",
+                "endPositionValue": "0.006510962362320652"
+              },
+              "profit": "0.000278597675422123",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "profitRaw": "-629251n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "14468902n",
+                "startPositionValue": "14.468902",
+                "endPositionValueRaw": "15098153n",
+                "endPositionValue": "15.098153"
+              },
+              "profit": "-0.629251",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 1098124,
+      "toBlock": 1105311
+    }
+  ]
+}
