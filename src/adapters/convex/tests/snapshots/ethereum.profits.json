@@ -69,13 +69,56 @@
       "positionType": "reward",
       "chainId": 1,
       "productId": "rewards",
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0xd533a949740bb3306d119cc777fa900ba034cd52",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf34dff761145ff0b05e917811d488b441f33a968",
+          "name": "Curve.fi cDAI/cUSDC Convex Deposit",
+          "symbol": "cvxcDAI+cUSDC",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.29800215999995316,
+          "performance": 0.0008341997471356759,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 357.23117997,
+            "endPositionValue": 357.52918213
+          }
+        },
+        {
+          "address": "0x7e880867363a7e321f5d260cade2b0bb2f717b02",
+          "name": "Curve.fi FRAX/USDC Convex Deposit",
+          "symbol": "cvxcrvFRAX",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.0000665700000000019,
+          "performance": 0.0008341724763432083,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0.07980364,
+            "endPositionValue": 0.07987021
+          }
+        },
+        {
+          "address": "0x44d8fab7cd8b7877d5f79974c2f501af6e65abba",
+          "name": "Curve.fi Factory Plain Pool: crvUSD/USDC Convex Deposit",
+          "symbol": "cvxcrvUSDUSDC-f",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 4.950367690000007,
+          "performance": 0.016337507146380173,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 303.00630602,
+            "endPositionValue": 307.95667371
+          }
         }
-      }
+      ],
+      "fromBlock": 18706497,
+      "toBlock": 18713643
     },
     {
       "protocolId": "convex",

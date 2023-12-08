@@ -327,7 +327,7 @@ describe('aggregateFiatBalancesFromMovements', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       expect(error.message).toEqual(
-        'Unable to calculate profits, no USD price found for token: non-fiat',
+        'Unable to calculate profits, missing USD price for token movement: non-fiat',
       )
     }
   })

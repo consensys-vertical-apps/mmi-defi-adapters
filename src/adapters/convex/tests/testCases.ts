@@ -39,7 +39,7 @@ export const testCases: TestCase[] = [
       protocolTokenAddress: '0x30d9410ed1d5da1f6c8391af5338c93ab8d4035c',
       productId: 'pool',
     },
-  }, //  npm run deposits 0xdf286De6d3de10A6aD6452d0BA94Af7AD7B68F9B 14443070 14443071 0x30d9410ed1d5da1f6c8391af5338c93ab8d4035c pool curve 1
+  },
   {
     chainId: Chain.Ethereum,
     method: 'withdrawals',

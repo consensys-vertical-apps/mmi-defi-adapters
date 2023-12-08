@@ -9,7 +9,7 @@ export function calculateDeFiAttributionPerformance({
   deposit: number
   startPositionValue: number
 }) {
-  const denominator = +startPositionValue - +withdrawal + +deposit
+  const denominator = startPositionValue - withdrawal + deposit
 
   if (!denominator) return 0n
 
