@@ -63,3 +63,32 @@ export class AdapterMissingError extends Error {
     this.productId = productId
   }
 }
+
+export class MulticallError extends Error {
+  chainId: Chain
+  chainName: string
+  flushTimeoutMs: number
+  maxBatchSize: number
+
+  constructor({
+    message,
+    chainId,
+    flushTimeoutMs,
+    maxBatchSize,
+  }: {
+    message: string
+    chainId: Chain
+    flushTimeoutMs: number
+    maxBatchSize: number
+  }) {
+    super(`Multicall batch failed: ${message}`)
+
+    Error.captureStackTrace(this, MulticallError)
+
+    this.name = 'MulticallError'
+    this.chainId = chainId
+    this.chainName = ChainName[chainId]
+    this.flushTimeoutMs = flushTimeoutMs
+    this.maxBatchSize = maxBatchSize
+  }
+}

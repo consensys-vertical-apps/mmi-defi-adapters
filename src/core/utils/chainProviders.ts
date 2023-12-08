@@ -57,9 +57,11 @@ export class ChainProvider {
     )
 
     const multicallQueue = new MulticallQueue({
+      // Allow a bigger batch size for mainnet
+      maxBatchSize: Chain.Ethereum ? 200 : 100,
       flushTimeoutMs: 0.1,
-      maxBatchSize: 200,
       multicallContract,
+      chainId,
     })
 
     return new CustomMulticallJsonRpcProvider({
