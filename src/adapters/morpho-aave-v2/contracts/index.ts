@@ -2,11 +2,15 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { AToken } from "./AToken";
+export type { AaveV3Oracle } from "./AaveV3Oracle";
+export type { AaveV3Pool } from "./AaveV3Pool";
 export type { MorphoAaveV2 } from "./MorphoAaveV2";
 export type { MorphoAaveV2Lens } from "./MorphoAaveV2Lens";
 export type { MorphoAaveV3 } from "./MorphoAaveV3";
 export * as factories from "./factories";
 export { AToken__factory } from "./factories/AToken__factory";
+export { AaveV3Oracle__factory } from "./factories/AaveV3Oracle__factory";
+export { AaveV3Pool__factory } from "./factories/AaveV3Pool__factory";
 export { MorphoAaveV2Lens__factory } from "./factories/MorphoAaveV2Lens__factory";
 export { MorphoAaveV2__factory } from "./factories/MorphoAaveV2__factory";
 export { MorphoAaveV3__factory } from "./factories/MorphoAaveV3__factory";
