@@ -73,7 +73,10 @@ async function recursivePositionSolver({
             name: underlyingTokenRate.name,
             symbol: underlyingTokenRate.symbol,
             decimals: underlyingTokenRate.decimals,
-            type: TokenType.Underlying,
+            type:
+              underlyingTokenRate.type == TokenType.Fiat
+                ? TokenType.Fiat
+                : TokenType.Underlying,
             balanceRaw:
               (underlyingProtocolTokenPosition.balanceRaw *
                 underlyingTokenRate.underlyingRateRaw) /

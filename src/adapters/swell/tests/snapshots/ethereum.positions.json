@@ -27,6 +27,17 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "152166344937197438373n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 8,
+                  "type": "fiat",
+                  "balanceRaw": "32015004575165n",
+                  "balance": "320150.04575165"
+                }
+              ],
               "balance": "152.166344937197438373",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }

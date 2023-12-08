@@ -8,18 +8,20 @@ import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as compoundTestCases } from './compound/tests/testCases'
+import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
 import { testCases as exampleTestCases } from './example/tests/testCases'
 import { testCases as gMXTestCases } from './gmx/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
+import { testCases as pricesTestCases } from './prices/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
-const TEST_TIMEOUT = 30000
+const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
 
@@ -37,6 +39,8 @@ function runAllTests() {
   runProtocolTests(Protocol.GMX, gMXTestCases)
   runProtocolTests(Protocol.Swell, swellTestCases)
   runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
+  runProtocolTests(Protocol.Convex, convexTestCases)
+  runProtocolTests(Protocol.Prices, pricesTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

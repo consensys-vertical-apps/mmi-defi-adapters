@@ -1,11 +1,10 @@
-import { DefiPositionResponse } from '../../defiProvider'
 import {
   Underlying,
   ProtocolPosition,
   PositionType,
   TokenType,
 } from '../../types/adapter'
-import { DisplayPosition } from '../../types/response'
+import { DefiPositionResponse, DisplayPosition } from '../../types/response'
 
 export function mergeClaimableWithProtocol(positions: DefiPositionResponse[]) {
   const rewardMap: Record<string, DisplayPosition<Underlying>[]> = {}
@@ -79,6 +78,13 @@ export function mergeClaimableWithProtocol(positions: DefiPositionResponse[]) {
           })
         }
       }
+    }
+  })
+
+  // push failed requests to response
+  positions.forEach((position) => {
+    if (!position.success) {
+      mergedResponse.push(position)
     }
   })
 

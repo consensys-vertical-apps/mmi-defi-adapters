@@ -1,6 +1,7 @@
 import { formatUnits } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
@@ -109,6 +110,7 @@ export class UniswapV3PoolAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
+  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,

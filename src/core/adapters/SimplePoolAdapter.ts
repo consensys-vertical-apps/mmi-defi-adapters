@@ -30,11 +30,12 @@ import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
+import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { ResolveUnderlyingPositions } from '../decorators/resolveUnderlyingPositions'
+import { MaxMovementLimitExceededError } from '../errors/errors'
 import { aggregateTrades } from '../utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
-import { getAddressesBalances } from '../utils/getAddressesBalances'
-import { getBalances } from '../utils/getBalances'
+import { filterMapAsync } from '../utils/filters'
 import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
@@ -67,31 +68,37 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     userAddress,
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const protocolTokensBalances = await getBalances({
-      chainId: this.chainId,
-      provider: this.provider,
-      userAddress,
-      blockNumber,
-      tokens: await this.getProtocolTokens(),
-    })
+    const protocolTokens = await this.getProtocolTokens()
 
-    const protocolTokens: ProtocolPosition[] = await Promise.all(
-      protocolTokensBalances.map(async (protocolTokenBalance) => {
-        const underlyingTokenBalances = await this.getUnderlyingTokenBalances({
-          userAddress,
-          protocolTokenBalance,
-          blockNumber,
+    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+      const tokenContract = Erc20__factory.connect(
+        protocolToken.address,
+        this.provider,
+      )
+
+      const balanceOf = await tokenContract
+        .balanceOf(userAddress, {
+          blockTag: blockNumber,
         })
+        .catch(() => 0n) // contract might not be deployed at requested blockNumber
 
-        return {
-          ...protocolTokenBalance,
-          type: TokenType.Protocol,
-          tokens: underlyingTokenBalances,
-        }
-      }),
-    )
+      if (balanceOf == 0n) {
+        return undefined
+      }
 
-    return protocolTokens
+      const underlyingTokenBalances = await this.getUnderlyingTokenBalances({
+        userAddress,
+        protocolTokenBalance: { balanceRaw: balanceOf, ...protocolToken },
+        blockNumber,
+      })
+
+      return {
+        ...protocolToken,
+        balanceRaw: balanceOf,
+        type: TokenType.Protocol,
+        tokens: underlyingTokenBalances,
+      }
+    })
   }
 
   async getProtocolTokenToUnderlyingTokenRate({
@@ -178,34 +185,49 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           protocolTokenMetadata.address,
         )
 
-        const [protocolTokenTotalSupply, underlyingTokenBalances] =
-          await Promise.all([
-            protocolTokenContact.totalSupply({ blockTag: blockNumber }),
-            getAddressesBalances({
-              chainId: this.chainId,
-              provider: this.provider,
-              addresses: [protocolTokenMetadata.address],
-              tokens: underlyingTokens.map((token) => token.address),
-              blockNumber,
-            }),
-          ])
+        const underlyingTokenBalances = filterMapAsync(
+          underlyingTokens,
+          async (underlyingToken) => {
+            if (underlyingToken.address == ZERO_ADDRESS) {
+              const balanceOf = await this.provider
+                .getBalance(protocolTokenMetadata.address, blockNumber)
+                .catch(() => 0n)
+              return {
+                ...underlyingToken,
+                totalSupplyRaw: balanceOf,
+                type: TokenType.Underlying,
+              }
+            }
+
+            const contract = Erc20__factory.connect(
+              underlyingToken.address,
+              this.provider,
+            )
+
+            const balanceOf = await contract
+              .balanceOf(protocolTokenMetadata.address, {
+                blockTag: blockNumber,
+              })
+              .catch(() => 0n)
+
+            return {
+              ...underlyingToken,
+              totalSupplyRaw: balanceOf,
+              type: TokenType.Underlying,
+            }
+          },
+        )
+
+        const [protocolTokenTotalSupply, tokens] = await Promise.all([
+          protocolTokenContact.totalSupply({ blockTag: blockNumber }),
+          underlyingTokenBalances,
+        ])
 
         return {
           ...protocolTokenMetadata,
           type: TokenType.Protocol,
           totalSupplyRaw: protocolTokenTotalSupply,
-          tokens: underlyingTokens.map((underlyingToken) => {
-            const balance =
-              underlyingTokenBalances[protocolTokenMetadata.address]?.[
-                underlyingToken.address
-              ]
-
-            return {
-              ...underlyingToken,
-              type: TokenType.Underlying,
-              totalSupplyRaw: balance ?? 0n,
-            }
-          }),
+          tokens,
         }
       }),
     )
@@ -390,6 +412,14 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
         fromBlock,
         toBlock,
       )
+
+    // Temp fix to avoid timeouts
+    // Remember these are on per pool basis.
+    // We should monitor number
+    // 20 interactions with same pool feels a healthy limit
+    if (eventResults.length > 20) {
+      throw new MaxMovementLimitExceededError()
+    }
 
     return await Promise.all(
       eventResults.map(async (transferEvent) => {

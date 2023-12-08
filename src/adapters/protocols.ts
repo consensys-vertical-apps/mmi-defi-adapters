@@ -12,5 +12,7 @@ export const Protocol = {
   GMX: 'gmx',
   Swell: 'swell',
   MorphoAaveV2: 'morpho-aave-v2',
+  Convex: 'convex',
+  Prices: 'prices',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]

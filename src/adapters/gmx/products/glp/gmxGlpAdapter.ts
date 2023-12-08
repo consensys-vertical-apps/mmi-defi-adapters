@@ -6,6 +6,7 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
+import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -152,6 +153,7 @@ export class GMXGlpAdapter
     return [(await this.buildMetadata()).protocolToken]
   }
 
+  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -181,13 +183,17 @@ export class GMXGlpAdapter
       }),
     ])
 
+    if (!protocolTokenBalance || protocolTokenBalance === 0n) {
+      return []
+    }
+
     const underlyingTokenBalances = underlyingTokens.map((underlyingToken) => {
       const underlyingTokenRate = underlyingTokenRates.tokens?.find(
         (tokenRate) => tokenRate.address === underlyingToken.address,
       )
 
       const underlyingBalanceRaw =
-        (protocolTokenBalance! * underlyingTokenRate!.underlyingRateRaw) /
+        (protocolTokenBalance * underlyingTokenRate!.underlyingRateRaw) /
         10n ** BigInt(protocolToken.decimals)
 
       return {
@@ -201,7 +207,7 @@ export class GMXGlpAdapter
       {
         ...protocolToken,
         type: TokenType.Protocol,
-        balanceRaw: protocolTokenBalance!,
+        balanceRaw: protocolTokenBalance,
         tokens: underlyingTokenBalances,
       },
     ]

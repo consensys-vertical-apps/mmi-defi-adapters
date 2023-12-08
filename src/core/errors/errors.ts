@@ -20,6 +20,15 @@ export class NotImplementedError extends Error {
     this.name = 'NotImplementedError'
   }
 }
+export class MaxMovementLimitExceededError extends Error {
+  constructor() {
+    super('Max Movement Limit Exceeded')
+
+    Error.captureStackTrace(this, MaxMovementLimitExceededError)
+
+    this.name = 'MaxMovementLimitExceededError'
+  }
+}
 
 export class ProviderMissingError extends Error {
   chainId: Chain

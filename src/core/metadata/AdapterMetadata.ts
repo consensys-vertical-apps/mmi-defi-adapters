@@ -30,6 +30,11 @@ import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aav
 import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
 import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
+import ConvexCvxcrvWrapperEthereumProtocolToken from '../../adapters/convex/products/cvxcrv-wrapper/metadata/ethereum.protocol-token.json'
+import ConvexExtraRewardEthereumProtocolToken from '../../adapters/convex/products/extra-reward/metadata/ethereum.protocol-token.json'
+import ConvexPoolEthereumProtocolToken from '../../adapters/convex/products/pool/metadata/ethereum.protocol-token.json'
+import ConvexRewardsEthereumProtocolToken from '../../adapters/convex/products/rewards/metadata/ethereum.protocol-token.json'
+import ConvexStakingEthereumProtocolToken from '../../adapters/convex/products/staking/metadata/ethereum.protocol-token.json'
 import CurvePoolEthereumProtocolToken from '../../adapters/curve/products/pool/metadata/ethereum.protocol-token.json'
 import CurveRewardEthereumProtocolToken from '../../adapters/curve/products/reward/metadata/ethereum.protocol-token.json'
 import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
@@ -37,6 +42,7 @@ import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import PricesUsdEthereumProtocolToken from '../../adapters/prices/products/usd/metadata/ethereum.protocol-token.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -423,6 +429,59 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-supply',
     }),
     MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply,
+    ],
+  [metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'staking',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexStakingEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexPoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'rewards',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexRewardsEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'extra-reward',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexExtraRewardEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'cvxcrv-wrapper',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexCvxcrvWrapperEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Prices,
+      productId: 'usd',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    PricesUsdEthereumProtocolToken,
   ],
 ])
 

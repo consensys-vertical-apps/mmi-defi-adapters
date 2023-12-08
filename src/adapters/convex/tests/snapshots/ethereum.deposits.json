@@ -1,0 +1,35 @@
+{
+  "snapshot": {
+    "protocolId": "convex",
+    "name": "Convex",
+    "description": "Convex pool adapter",
+    "siteUrl": "https://www.convexfinance.com/",
+    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "pool",
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0x30d9410ed1d5da1f6c8391af5338c93ab8d4035c",
+          "name": "Curve.fi DAI/USDC/USDT Convex Deposit",
+          "symbol": "cvx3Crv",
+          "decimals": 18
+        },
+        "underlyingTokensMovement": {
+          "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490": {
+            "address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "decimals": 18,
+            "transactionHash": "0x5f582f63ab541de7775da96d5c3269c25272ef7b114090be9d6e4c83b91fc65b",
+            "movementValueRaw": "20000000000000000000n",
+            "movementValue": "20.0"
+          }
+        },
+        "blockNumber": 14443070
+      }
+    ]
+  }
+}

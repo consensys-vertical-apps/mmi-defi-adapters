@@ -73,4 +73,30 @@ describe('mergeClaimableWithProtocol', () => {
       ),
     ).toEqual(positions)
   })
+  it('should return failed requests', () => {
+    const positions = [
+      // Reward position without a corresponding non-reward position
+      {
+        success: true,
+        positionType: 'reward',
+        tokens: [
+          { address: 'token3', tokens: ['reward3-data'], type: 'claimable' },
+        ],
+      },
+      {
+        success: false,
+        positionType: 'reward',
+        error: {
+          message: 'Failed',
+          details: 'Failed',
+        },
+      },
+    ]
+
+    expect(
+      mergeClaimableWithProtocol(
+        positions as unknown as DefiPositionResponse[],
+      ),
+    ).toEqual(positions)
+  })
 })
