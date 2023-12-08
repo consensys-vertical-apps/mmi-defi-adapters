@@ -233,24 +233,22 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         const amount = await getBalance(market, userAddress, blockNumber!)
         return {
           address: market.address,
-          balance: Number(amount),
+          balance: amount,
         }
       }),
     )
 
     const protocolTokens: ProtocolPosition[] = await Promise.all(
       protocolTokensBalances
-        .filter((protocolTokenBalance) => protocolTokenBalance.balance !== 0) // Filter out balances equal to 0
+        .filter((protocolTokenBalance) => protocolTokenBalance.balance !== 0n) // Filter out balances equal to 0
         .map(async (protocolTokenBalance) => {
-          const balanceRaw = BigInt(protocolTokenBalance.balance)
-
           const tokenMetadata = await this._fetchProtocolTokenMetadata(
             protocolTokenBalance.address,
           )
 
           const completeTokenBalance: TokenBalance = {
             address: protocolTokenBalance.address,
-            balanceRaw,
+            balanceRaw: protocolTokenBalance.balance,
             name: tokenMetadata.name,
             symbol: tokenMetadata.symbol,
             decimals: tokenMetadata.decimals,
@@ -265,7 +263,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
           return {
             ...protocolTokenBalance,
-            balanceRaw,
+            balanceRaw: protocolTokenBalance.balance,
             name: tokenMetadata.name,
             symbol: tokenMetadata.symbol,
             decimals: tokenMetadata.decimals,
@@ -522,51 +520,34 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   }
 
   protected _extractEventData(
-    event:
-      | TypedEventLog<
-          TypedContractEvent<
-            SuppliedEvent.InputTuple,
-            SuppliedEvent.OutputTuple,
-            SuppliedEvent.OutputObject
-          >
-        >
-      | TypedEventLog<
-          TypedContractEvent<
-            WithdrawnEvent.InputTuple,
-            WithdrawnEvent.OutputTuple,
-            WithdrawnEvent.OutputObject
-          >
-        >
-      | TypedEventLog<
-          TypedContractEvent<
-            RepaidEvent.InputTuple,
-            RepaidEvent.OutputTuple,
-            RepaidEvent.OutputObject
-          >
-        >
-      | TypedEventLog<
-          TypedContractEvent<
-            BorrowedEvent.InputTuple,
-            BorrowedEvent.OutputTuple,
-            BorrowedEvent.OutputObject
-          >
-        >,
-    eventType: string,
+    eventLog:
+      | SuppliedEvent.Log
+      | WithdrawnEvent.Log
+      | RepaidEvent.Log
+      | BorrowedEvent.Log,
+  ) {
+    return eventLog.args
+  }
+
+  protected _castEventToLogType(
+    event: unknown,
+    eventType: 'supplied' | 'withdrawn' | 'repaid' | 'borrowed',
   ):
-    | SuppliedEvent.OutputObject
-    | WithdrawnEvent.OutputObject
-    | RepaidEvent.OutputObject
-    | BorrowedEvent.OutputObject
-    | undefined {
+    | SuppliedEvent.Log
+    | WithdrawnEvent.Log
+    | RepaidEvent.Log
+    | BorrowedEvent.Log {
     switch (eventType) {
       case 'supplied':
-        return event.args as SuppliedEvent.OutputObject
+        return event as SuppliedEvent.Log
       case 'withdrawn':
-        return event.args as WithdrawnEvent.OutputObject
+        return event as WithdrawnEvent.Log
       case 'repaid':
-        return event.args as RepaidEvent.OutputObject
+        return event as RepaidEvent.Log
       case 'borrowed':
-        return event.args as BorrowedEvent.OutputObject
+        return event as BorrowedEvent.Log
+      default:
+        throw new Error('Invalid event type')
     }
   }
 
@@ -612,7 +593,8 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     const movements = await Promise.all(
       eventResults.map(async (event) => {
-        const eventData = this._extractEventData(event, eventType)
+        const castedEvent = this._castEventToLogType(event, eventType)
+        const eventData = this._extractEventData(castedEvent)
         if (!eventData) {
           return null
         }

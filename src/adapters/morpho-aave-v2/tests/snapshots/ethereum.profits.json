@@ -24,19 +24,19 @@
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "profitRaw": "-95602153837297664n",
+              "profitRaw": "-95602153837365848n",
               "type": "underlying",
               "calculationData": {
                 "withdrawalsRaw": "0n",
                 "withdrawals": "0.0",
                 "depositsRaw": "0n",
                 "deposits": "0.0",
-                "startPositionValueRaw": "1500251298264201297920n",
-                "startPositionValue": "1500.25129826420129792",
-                "endPositionValueRaw": "1500346900418038595584n",
-                "endPositionValue": "1500.346900418038595584"
+                "startPositionValueRaw": "1500251298264201313462n",
+                "startPositionValue": "1500.251298264201313462",
+                "endPositionValueRaw": "1500346900418038679310n",
+                "endPositionValue": "1500.34690041803867931"
               },
-              "profit": "-0.095602153837297664",
+              "profit": "-0.095602153837365848",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ]

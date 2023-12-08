@@ -14,8 +14,8 @@
       "tokens": [
         {
           "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
-          "balance": "1500.346900418038595584",
-          "balanceRaw": "1500346900418038595584n",
+          "balance": "1500.34690041803867931",
+          "balanceRaw": "1500346900418038679310n",
           "name": "Aave interest bearing WETH",
           "symbol": "aWETH",
           "decimals": 18,
@@ -26,9 +26,9 @@
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "balanceRaw": "1500346900418038595584n",
+              "balanceRaw": "1500346900418038679310n",
               "type": "underlying",
-              "balance": "1500.346900418038595584",
+              "balance": "1500.34690041803867931",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ]
