@@ -43,7 +43,6 @@ import {
   AToken__factory,
   MorphoAaveV2Lens__factory,
 } from '../contracts'
-import { TypedContractEvent, TypedEventLog } from '../contracts/common'
 import {
   SuppliedEvent,
   WithdrawnEvent,
