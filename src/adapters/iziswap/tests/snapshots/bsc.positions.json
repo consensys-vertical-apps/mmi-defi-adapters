@@ -1,0 +1,70 @@
+{
+  "blockNumber": 34136095,
+  "snapshot": [
+    {
+      "protocolId": "iziswap",
+      "name": "IZiSwap",
+      "description": "IZiSwap defi adapter",
+      "siteUrl": "https://izumi.finance",
+      "iconUrl": "https://izumi.finance/assets/sidebar/logo.svg",
+      "positionType": "supply",
+      "chainId": 56,
+      "productId": "iziswap",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453",
+          "tokenId": "80",
+          "name": "USDT / WBNB - 2000",
+          "symbol": "USDT / WBNB - 2000",
+          "decimals": 18,
+          "balanceRaw": "446406655496n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x55d398326f99059fF775485246999027B3197955",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 18,
+              "balanceRaw": "39671504390072318n",
+              "type": "underlying",
+              "balance": "0.039671504390072318",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
+            },
+            {
+              "address": "0x55d398326f99059fF775485246999027B3197955",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 18,
+              "balanceRaw": "8779912488666n",
+              "type": "underlying-claimable",
+              "balance": "0.000008779912488666",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
+            },
+            {
+              "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+              "name": "Wrapped BNB",
+              "symbol": "WBNB",
+              "decimals": 18,
+              "balanceRaw": "172718783941848n",
+              "type": "underlying",
+              "balance": "0.000172718783941848",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
+            },
+            {
+              "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+              "name": "Wrapped BNB",
+              "symbol": "WBNB",
+              "decimals": 18,
+              "balanceRaw": "39741796024n",
+              "type": "underlying-claimable",
+              "balance": "0.000000039741796024",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
+            }
+          ],
+          "balance": "0.000000446406655496"
+        }
+      ]
+    }
+  ]
+}

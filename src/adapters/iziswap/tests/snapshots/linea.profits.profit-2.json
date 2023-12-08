@@ -1,0 +1,70 @@
+{
+  "blockNumber": 1105311,
+  "snapshot": [
+    {
+      "protocolId": "iziswap",
+      "name": "IZiSwap",
+      "description": "IZiSwap defi adapter",
+      "siteUrl": "https://izumi.finance",
+      "iconUrl": "https://izumi.finance/assets/sidebar/logo.svg",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "iziswap",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c",
+          "name": "USDC / LAB - 10000",
+          "symbol": "USDC / LAB - 10000",
+          "decimals": 18,
+          "tokenId": "20001",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xB97F21D1f2508fF5c73E7B5AF02847640B1ff75d",
+              "name": "LineaBank Token",
+              "symbol": "LAB",
+              "decimals": 18,
+              "profitRaw": "-18788840058408973125n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "583899350554147773323n",
+                "startPositionValue": "583.899350554147773323",
+                "endPositionValueRaw": "602688190612556746448n",
+                "endPositionValue": "602.688190612556746448"
+              },
+              "profit": "-18.788840058408973125",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB97F21D1f2508fF5c73E7B5AF02847640B1ff75d/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "profitRaw": "488506n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "14870116n",
+                "startPositionValue": "14.870116",
+                "endPositionValueRaw": "14381610n",
+                "endPositionValue": "14.38161"
+              },
+              "profit": "0.488506",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 1098124,
+      "toBlock": 1105311
+    }
+  ]
+}
