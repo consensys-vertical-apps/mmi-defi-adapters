@@ -11,6 +11,7 @@ export const Protocol = {
   Maker: 'maker',
   GMX: 'gmx',
   Swell: 'swell',
+  MorphoAaveV2: 'morpho-aave-v2',
   Convex: 'convex',
   Prices: 'prices',
 } as const
