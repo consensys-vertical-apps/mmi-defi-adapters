@@ -133,6 +133,7 @@ export class ExampleProductAdapter implements IProtocolAdapter {
           decimals: 6,
           type: TokenType.Protocol,
           profit: 111,
+          performance: 1,
           calculationData: {
             withdrawals: 1,
             deposits: 1,

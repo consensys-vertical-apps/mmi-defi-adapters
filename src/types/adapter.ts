@@ -202,9 +202,9 @@ export interface TokenBalance extends Erc20Metadata {
  */
 export interface Underlying extends TokenBalance {
   type:
-    | typeof TokenType.Underlying
-    | typeof TokenType.UnderlyingClaimable
-    | typeof TokenType.Fiat
+  | typeof TokenType.Underlying
+  | typeof TokenType.UnderlyingClaimable
+  | typeof TokenType.Fiat
 
   tokens?: Underlying[]
 }
@@ -308,6 +308,8 @@ export interface UnderlyingProfitValues extends Erc20Metadata {
    * Profit made in this token for this period
    */
   profit: number
+
+  performance: number
 
   /**
    * Numbers used to calculate profit value

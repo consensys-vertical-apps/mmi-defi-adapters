@@ -11,7 +11,7 @@ export function calculateDeFiAttributionPerformance({
 }) {
   const denominator = startPositionValue - withdrawal + deposit
 
-  if (!denominator) return 0n
+  if (!denominator) return 0
 
   return +profit / denominator
 }
