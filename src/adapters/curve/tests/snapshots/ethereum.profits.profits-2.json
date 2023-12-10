@@ -63,7 +63,7 @@
           "decimals": 18,
           "type": "protocol",
           "profit": 3e-8,
-          "performance": "0n",
+          "performance": 0,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
