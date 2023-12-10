@@ -202,9 +202,9 @@ export interface TokenBalance extends Erc20Metadata {
  */
 export interface Underlying extends TokenBalance {
   type:
-  | typeof TokenType.Underlying
-  | typeof TokenType.UnderlyingClaimable
-  | typeof TokenType.Fiat
+    | typeof TokenType.Underlying
+    | typeof TokenType.UnderlyingClaimable
+    | typeof TokenType.Fiat
 
   tokens?: Underlying[]
 }

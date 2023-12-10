@@ -21,6 +21,7 @@
           "decimals": 6,
           "type": "protocol",
           "profit": 111,
+          "performance": 1,
           "calculationData": {
             "withdrawals": 1,
             "deposits": 1,
