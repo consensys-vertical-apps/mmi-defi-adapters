@@ -17,7 +17,6 @@ import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAda
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
-import { ExampleProductAdapter } from './example/products/example-product/exampleProductAdapter'
 import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
@@ -38,10 +37,6 @@ export const supportedProtocols: Record<
   [Protocol.Stargate]: {
     [Chain.Ethereum]: [StargatePoolAdapter, StargateVestingAdapter],
     [Chain.Arbitrum]: [StargatePoolAdapter, StargateVestingAdapter],
-  },
-
-  [Protocol.Example]: {
-    [Chain.Ethereum]: [ExampleProductAdapter],
   },
 
   [Protocol.AaveV2]: {
