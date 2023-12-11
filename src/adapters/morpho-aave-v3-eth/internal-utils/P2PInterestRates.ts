@@ -1,13 +1,18 @@
-import * as RayMath from 'evm-maths/lib/ray'
-import * as WadMath from 'evm-maths/lib/wad'
-import * as PercentMath from 'evm-maths/lib/percent'
-import { min } from 'evm-maths/lib/utils'
 import * as constants from 'evm-maths/lib/constants'
-
+import * as PercentMath from 'evm-maths/lib/percent'
+import * as RayMath from 'evm-maths/lib/ray'
+import { min } from 'evm-maths/lib/utils'
 import { MorphoAaveMath } from './AaveV3.maths'
 
-type MarketSideDeltaStruct = any
-type DeltasStruct = any
+export interface MarketSideDelta {
+  scaledDelta: bigint // The delta amount in pool unit.
+  scaledP2PTotal: bigint // The total peer-to-peer amount in peer-to-peer unit.
+}
+
+export interface DeltasStruct {
+  supply: MarketSideDelta // The `MarketSideDelta` related to the supply side.
+  borrow: MarketSideDelta // The `MarketSideDelta` related to the borrow side.
+}
 
 export interface MarketSizeIndexes {
   /** The pool index (in ray). */
@@ -71,7 +76,7 @@ export interface RateParams {
   p2pIndex: bigint
 
   /** The delta and peer-to-peer amount. */
-  delta: MarketSideDeltaStruct
+  delta: MarketSideDelta
 
   /** The index cursor of the given market (in bps). */
   p2pIndexCursor: bigint

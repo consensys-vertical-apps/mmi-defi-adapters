@@ -4,7 +4,7 @@
     {
       "protocolId": "morpho-aave-v3-eth",
       "name": "MorphoAaveV3",
-      "description": "MorphoAaveV3 defi adapter on the supply side",
+      "description": "MorphoAaveV3 DeFi adapter on the supply side",
       "siteUrl": "https://aavev3.morpho.org/",
       "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
       "positionType": "supply",
@@ -51,6 +51,40 @@
               "type": "underlying",
               "balance": "41533.387615117669604647",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-aave-v3-eth",
+      "name": "MorphoAaveV3",
+      "description": "MorphoAaveV3 DeFi adapter on the borrow side",
+      "siteUrl": "https://aavev3.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+          "balance": "42174.167390474606959957",
+          "balanceRaw": "42174167390474606959957n",
+          "name": "Aave Ethereum WETH",
+          "symbol": "aEthWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "42174167390474606959957n",
+              "type": "underlying",
+              "balance": "42174.167390474606959957",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ]
         }

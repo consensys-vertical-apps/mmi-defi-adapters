@@ -4,7 +4,7 @@
     {
       "protocolId": "morpho-aave-v3-eth",
       "name": "MorphoAaveV3",
-      "description": "MorphoAaveV3 defi adapter on the supply side",
+      "description": "MorphoAaveV3 DeFi adapter on the supply side",
       "siteUrl": "https://aavev3.morpho.org/",
       "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
       "positionType": "supply",
@@ -66,6 +66,50 @@
                 "endPositionValue": "198.062231603688201347"
               },
               "profit": "0.015149453098172881",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 18754084,
+      "toBlock": 18761230
+    },
+    {
+      "protocolId": "morpho-aave-v3-eth",
+      "name": "MorphoAaveV3",
+      "description": "MorphoAaveV3 DeFi adapter on the borrow side",
+      "siteUrl": "https://aavev3.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+          "name": "Aave Ethereum WETH",
+          "symbol": "aEthWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "profitRaw": "-3304334710420996734n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "42170863055764185963223n",
+                "startPositionValue": "42170.863055764185963223",
+                "endPositionValueRaw": "42174167390474606959957n",
+                "endPositionValue": "42174.167390474606959957"
+              },
+              "profit": "-3.304334710420996734",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ]

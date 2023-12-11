@@ -1,8 +1,9 @@
 import { formatUnits } from 'ethers'
-import * as constants from 'evm-maths/lib/constants'
 import * as RayMath from 'evm-maths/lib/ray'
+import { min } from 'evm-maths/lib/utils'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
+import { RAY } from '../../../core/constants/RAY'
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
@@ -38,7 +39,6 @@ import {
   BaseTokenMovement,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
-import { Protocol } from '../../protocols'
 import {
   MorphoAaveV3__factory,
   AToken__factory,
@@ -52,15 +52,10 @@ import {
   BorrowedEvent,
   RepaidEvent,
 } from '../../morpho-aave-v2/contracts/MorphoAaveV3'
+import { Protocol } from '../../protocols'
 import { MorphoAaveMath } from '../internal-utils/AaveV3.maths'
 import P2PInterestRates from '../internal-utils/P2PInterestRates'
-import { min } from 'evm-maths/lib/utils'
-import { rayToPercent } from 'evm-maths/lib/ray'
-import { RAY } from '../../../core/constants/RAY'
 
-// TODOs:
-// - clean useless variables
-// - sort for lint
 type MorphoAaveV3PeerToPoolAdapterMetadata = Record<
   string,
   {
@@ -106,7 +101,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
   private _metadataCache: MorphoAaveV3PeerToPoolAdapterMetadata | null = null
 
-  // ok
   async buildMetadata() {
     if (this._metadataCache) {
       return this._metadataCache
@@ -120,37 +114,56 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     const metadataObject: MorphoAaveV3PeerToPoolAdapterMetadata = {}
 
     const markets = await morphoAaveV3Contract.marketsCreated()
-
+    const positionType = this.getProtocolDetails().positionType
     await Promise.all(
       markets.map(async (marketAddress) => {
-        const pool = AaveV3Pool__factory.connect(
-          this.poolAddress,
-          this._provider,
-        )
-        const aTokenAddress = (await pool.getReserveData(marketAddress))
-          .aTokenAddress
+        // Morpho AaveV3-ETH Optimizer allows a borrow only on WETH
+        if (positionType === PositionType.Borrow) {
+          const [protocolToken, underlyingToken] = await Promise.all([
+            getTokenMetadata(
+              '0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8',
+              this.chainId,
+              this._provider,
+            ),
+            getTokenMetadata(
+              '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+              this.chainId,
+              this._provider,
+            ),
+          ])
+          metadataObject[protocolToken.address] = {
+            protocolToken,
+            underlyingToken,
+          }
+        } else {
+          const pool = AaveV3Pool__factory.connect(
+            this.poolAddress,
+            this._provider,
+          )
+          const aTokenAddress = (await pool.getReserveData(marketAddress))
+            .aTokenAddress
 
-        const aTokenContract = AToken__factory.connect(
-          aTokenAddress,
-          this._provider,
-        )
+          const aTokenContract = AToken__factory.connect(
+            aTokenAddress,
+            this._provider,
+          )
 
-        const supplyTokenAddress = await aTokenContract
-          .UNDERLYING_ASSET_ADDRESS()
-          .catch((err) => {
-            if (err) return ZERO_ADDRESS
-            throw err
-          })
+          const supplyTokenAddress = await aTokenContract
+            .UNDERLYING_ASSET_ADDRESS()
+            .catch((err) => {
+              if (err) return ZERO_ADDRESS
+              throw err
+            })
 
-        // Await the promises directly within Promise.all
-        const [protocolToken, underlyingToken] = await Promise.all([
-          getTokenMetadata(aTokenAddress, this.chainId, this._provider),
-          getTokenMetadata(supplyTokenAddress, this.chainId, this._provider),
-        ])
+          const [protocolToken, underlyingToken] = await Promise.all([
+            getTokenMetadata(aTokenAddress, this.chainId, this._provider),
+            getTokenMetadata(supplyTokenAddress, this.chainId, this._provider),
+          ])
 
-        metadataObject[protocolToken.address] = {
-          protocolToken,
-          underlyingToken,
+          metadataObject[protocolToken.address] = {
+            protocolToken,
+            underlyingToken,
+          }
         }
       }),
     )
@@ -159,14 +172,12 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return metadataObject
   }
 
-  // ok
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
   }
 
-  // ok
   protected async _fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
@@ -176,7 +187,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     return protocolToken
   }
-  // ok
+
   private async _fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
@@ -187,7 +198,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     return poolMetadata
   }
-  // ok
+
   protected async _getUnderlyingTokenBalances({
     protocolTokenBalance,
   }: {
@@ -207,7 +218,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     return [underlyingTokenBalance]
   }
-  // ok
+
   protected async _fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
@@ -218,7 +229,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return [underlyingToken]
   }
 
-  // ok
   async getPositions({
     userAddress,
     blockNumber,
@@ -227,8 +237,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,
       this._provider,
     )
-
-    // const pool = AaveV3Pool__factory.connect(this.poolAddress, this._provider)
 
     const tokens = await this.getProtocolTokens()
     const positionType = this.getProtocolDetails().positionType
@@ -271,7 +279,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           userAddress,
           blockNumber!,
         )
-        console.log(amount)
         return {
           address: market.address,
           balance: amount,
@@ -346,7 +353,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  // OK
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -377,7 +383,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  // ok
   async getBorrows({
     userAddress,
     protocolTokenAddress,
@@ -393,7 +398,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  // ok
   async getRepays({
     userAddress,
     protocolTokenAddress,
@@ -409,7 +413,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  // OK
   async getProfits({
     userAddress,
     fromBlock,
@@ -539,7 +542,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return { tokens, fromBlock, toBlock }
   }
 
-  // OK & tested
   async getTotalValueLocked({
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
@@ -632,15 +634,14 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
               deltas,
               p2pIndexCursor,
               reserveFactor,
-              aToken: aTokenAddress,
               variableDebtToken: variableDebtTokenAddress,
             },
             { liquidityIndex, variableBorrowIndex },
           ] = await Promise.all([
-            morphoAaveV3.market(tokenMetadata.address, {
+            morphoAaveV3.market(underlyingToken.address, {
               blockTag: blockNumber,
             }),
-            pool.getReserveData(tokenMetadata.address, {
+            pool.getReserveData(underlyingToken.address, {
               blockTag: blockNumber,
             }),
           ])
@@ -705,7 +706,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     )
   }
 
-  // ok
   protected async _getUnderlyingTokenConversionRate(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
@@ -735,7 +735,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     throw new NotImplementedError()
   }
 
-  // ok
   protected _extractEventData(
     eventLog:
       | SuppliedEvent.Log
@@ -748,7 +747,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return eventLog.args
   }
 
-  // ok
   protected _castEventToLogType(
     event: unknown,
     eventType:
@@ -760,14 +758,16 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       | 'borrowed',
   ):
     | SuppliedEvent.Log
+    | CollateralSuppliedEvent.Log
     | WithdrawnEvent.Log
+    | CollateralWithdrawnEvent.Log
     | RepaidEvent.Log
     | BorrowedEvent.Log {
     switch (eventType) {
       case 'supplied':
         return event as SuppliedEvent.Log
       case 'collat-supplied':
-        return event as SuppliedEvent.Log
+        return event as CollateralSuppliedEvent.Log
       case 'withdrawn':
         return event as WithdrawnEvent.Log
       case 'collat-withdrawn':
@@ -781,7 +781,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     }
   }
 
-  //ok
   protected async _getMovements({
     userAddress,
     protocolTokenAddress,
@@ -825,6 +824,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           undefined,
           userAddress,
         )
+        break
       case 'repaid':
         filter = morphoAaveV3Contract.filters.Repaid(undefined, userAddress)
         break
@@ -877,7 +877,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     ) as MovementsByBlock[]
   }
 
-  // ok, clean useless variables
   protected async _getProtocolTokenApr({
     protocolTokenAddress,
     blockNumber,
@@ -983,8 +982,8 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         totalSupply == 0n
           ? currentLiquidityRate
           : RayMath.rayDiv(
-              RayMath.rayMul(p2pSupplyRate, supplyInP2P) +
-                RayMath.rayMul(currentLiquidityRate, supplyOnPool),
+              this.__MATH__.indexMul(p2pSupplyRate, supplyInP2P) +
+                this.__MATH__.indexMul(currentLiquidityRate, supplyOnPool),
               totalSupply,
             )
     } else {
@@ -995,7 +994,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           deltas,
           p2pIndexCursor,
           reserveFactor,
-          aToken: aTokenAddress,
           variableDebtToken: variableDebtTokenAddress,
         },
         {
@@ -1005,10 +1003,10 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           variableBorrowIndex,
         },
       ] = await Promise.all([
-        morphoAaveV3.market(protocolTokenAddress, {
+        morphoAaveV3.market(underlyingToken.address, {
           blockTag: blockNumber,
         }),
-        pool.getReserveData(protocolTokenAddress, {
+        pool.getReserveData(underlyingToken.address, {
           blockTag: blockNumber,
         }),
       ])
@@ -1076,15 +1074,14 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         totalBorrow == 0n
           ? currentVariableBorrowRate
           : RayMath.rayDiv(
-              RayMath.rayMul(p2pBorrowRate, borrowInP2P) +
-                RayMath.rayMul(currentVariableBorrowRate, borrowOnPool),
+              this.__MATH__.indexMul(p2pBorrowRate, borrowInP2P) +
+                this.__MATH__.indexMul(currentVariableBorrowRate, borrowOnPool),
               totalBorrow,
             )
     }
     return Number(rate) / RAY
   }
 
-  // ok
   async getApr({
     protocolTokenAddress,
     blockNumber,
@@ -1099,7 +1096,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     }
   }
 
-  // ok
   async getApy({
     protocolTokenAddress,
     blockNumber,

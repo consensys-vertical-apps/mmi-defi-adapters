@@ -1,9 +1,8 @@
+import { formatUnits, parseUnits } from 'ethers'
+import * as constants from 'evm-maths/lib/constants'
+import * as PercentMath from 'evm-maths/lib/percent'
 import * as RayMath from 'evm-maths/lib/ray'
 import * as WadMath from 'evm-maths/lib/wad'
-import * as PercentMath from 'evm-maths/lib/percent'
-import * as constants from 'evm-maths/lib/constants'
-
-import { formatUnits, parseUnits } from 'ethers'
 
 export const SECONDS_PER_YEAR = 3600 * 24 * 365
 

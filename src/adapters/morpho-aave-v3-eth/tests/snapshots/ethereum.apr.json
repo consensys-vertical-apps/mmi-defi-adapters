@@ -4,7 +4,7 @@
     {
       "protocolId": "morpho-aave-v3-eth",
       "name": "MorphoAaveV3",
-      "description": "MorphoAaveV3 defi adapter on the supply side",
+      "description": "MorphoAaveV3 DeFi adapter on the supply side",
       "siteUrl": "https://aavev3.morpho.org/",
       "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
       "positionType": "supply",
@@ -74,6 +74,26 @@
           "symbol": "aEthUSDT",
           "decimals": 6,
           "aprDecimal": 3.902439024390244
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-aave-v3-eth",
+      "name": "MorphoAaveV3",
+      "description": "MorphoAaveV3 DeFi adapter on the borrow side",
+      "siteUrl": "https://aavev3.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+          "name": "Aave Ethereum WETH",
+          "symbol": "aEthWETH",
+          "decimals": 18,
+          "aprDecimal": 2.660163890275722
         }
       ]
     }
