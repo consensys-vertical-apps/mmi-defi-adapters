@@ -1,4 +1,3 @@
-import { ExampleProductAdapter } from '../adapters/example/products/example-product/exampleProductAdapter'
 import { Protocol } from '../adapters/protocols'
 import { ProtocolAdapterParams } from '../types/adapter'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
@@ -17,9 +16,15 @@ const providers = Object.values(Chain).reduce(
   {} as Record<Chain, CustomJsonRpcProvider>,
 )
 
+class MockProtocolAdapter {
+  productId = 'example-pool'
+}
+
+const protocolIdMock = 'protocol-mock' as Protocol
+
 const supportedProtocols = {
-  [Protocol.Example]: {
-    [Chain.Ethereum]: [ExampleProductAdapter],
+  [protocolIdMock]: {
+    [Chain.Ethereum]: [MockProtocolAdapter],
   },
 } as unknown as Record<
   Protocol,
@@ -48,8 +53,8 @@ describe('AdaptersController', () => {
         new AdaptersController({
           providers,
           supportedProtocols: {
-            [Protocol.Example]: {
-              [Chain.Ethereum]: [ExampleProductAdapter, ExampleProductAdapter],
+            [protocolIdMock]: {
+              [Chain.Ethereum]: [MockProtocolAdapter, MockProtocolAdapter],
             },
           } as unknown as Record<
             Protocol,
@@ -70,7 +75,7 @@ describe('AdaptersController', () => {
     it('returns adapter if it exists', () => {
       const adapter = adaptersController.fetchAdapter(
         Chain.Ethereum,
-        Protocol.Example,
+        protocolIdMock,
         'example-pool',
       )
 
@@ -81,7 +86,7 @@ describe('AdaptersController', () => {
       const codeThatThrows = () =>
         adaptersController.fetchAdapter(
           Chain.Ethereum,
-          Protocol.Example,
+          protocolIdMock,
           'no-product',
         )
 
@@ -93,11 +98,11 @@ describe('AdaptersController', () => {
     it('returns all adapters for a specific chain and protocol', () => {
       const adapters = adaptersController.fetchChainProtocolAdapters(
         Chain.Ethereum,
-        Protocol.Example,
+        protocolIdMock,
       )
 
       expect(adapters.size).toEqual(1)
-      expect(adapters.get('example-pool')).toBeInstanceOf(ExampleProductAdapter)
+      expect(adapters.get('example-pool')).toBeInstanceOf(MockProtocolAdapter)
     })
   })
 })
