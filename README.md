@@ -28,7 +28,7 @@ Check out the tutorial video below for an intro to our library and how to build 
 
 ## Quick Start
 
-This project requires Node 18. Ensure you're using the correct version (e.g. run `nvm use`)
+This project requires Node 20. Ensure you're using the correct version (e.g. run `nvm use`)
 
 To build an adapter follow these steps:
 
@@ -150,7 +150,7 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
 13. Im getting `>> TypeError: Cannot read properties of undefined (reading 'F_OK')` error when running `npm run new-adapter`
 
-Make sure you are using Node 18. Run `nvm use`
+Make sure you are using Node 20. Run `nvm use`
 
 13. How can I share feedback or proposals?
 
@@ -170,7 +170,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Requirements
 
-- Node v18
+- Node v20
 
 ### CLI Help
 
