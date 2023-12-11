@@ -38,6 +38,9 @@ export const supportedProtocols: Record<
     Record<Chain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
   >
 > = {
+  [Protocol.MorphoAaveV3ETHOptimizer]: {
+    [Chain.Ethereum]: [MorphoAaveV3ETHOptimizerOptimizerSupplyAdapter],
+  },
   [Protocol.MorphoAaveV2]: {
     [Chain.Ethereum]: [
       MorphoAaveV2OptimizerBorrowAdapter,
@@ -160,9 +163,5 @@ export const supportedProtocols: Record<
 
   [Protocol.Prices]: {
     [Chain.Ethereum]: [PricesUSDAdapter],
-  },
-
-  [Protocol.MorphoAaveV3ETHOptimizer]: {
-    [Chain.Ethereum]: [MorphoAaveV3ETHOptimizerOptimizerSupplyAdapter],
   },
 }

@@ -1,19 +1,38 @@
+import { Chain } from '../../../core/constants/chains'
+import { TimePeriod } from '../../../core/constants/timePeriod'
 import type { TestCase } from '../../../types/testCase'
 
 export const testCases: TestCase[] = [
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'positions',
-  //   input: {
-  //     userAddress: '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
-  //   },
-  // },
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'profits',
-  //   input: {
-  //     userAddress: '0xB0D502E938ed5f4df2E681fE6E419ff29631d62b',
-  //     timePeriod: TimePeriod.oneDay,
-  //   },
-  // },
+  {
+    chainId: Chain.Ethereum,
+    method: 'positions',
+    input: {
+      userAddress: '0xb5b29320d2Dde5BA5BAFA1EbcD270052070483ec',
+    },
+    blockNumber: 18761230,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'profits',
+    input: {
+      userAddress: '0xb5b29320d2Dde5BA5BAFA1EbcD270052070483ec',
+      timePeriod: TimePeriod.oneDay,
+    },
+    blockNumber: 18761230,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'tvl',
+    blockNumber: 18761230,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'apr',
+    blockNumber: 18761230,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'apy',
+    blockNumber: 18761230,
+  },
 ]
