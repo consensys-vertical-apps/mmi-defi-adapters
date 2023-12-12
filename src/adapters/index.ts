@@ -26,6 +26,7 @@ import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
+import { SyncswapPoolAdapter } from './syncswap/products/pool/syncswapPoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 
 export const supportedProtocols: Record<
@@ -143,5 +144,8 @@ export const supportedProtocols: Record<
   },
   [Protocol.Prices]: {
     [Chain.Ethereum]: [PricesUSDAdapter],
+  },
+  [Protocol.SyncSwap]: {
+    [Chain.Linea]: [SyncswapPoolAdapter],
   },
 }

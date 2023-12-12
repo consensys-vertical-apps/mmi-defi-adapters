@@ -1,0 +1,49 @@
+{
+  "snapshot": {
+    "protocolId": "syncswap",
+    "name": "SyncSwap",
+    "description": "SyncSwap defi adapter",
+    "siteUrl": "https://syncswap.xyz",
+    "iconUrl": "https://syncswap.xyz/images/syncswap.svg",
+    "positionType": "supply",
+    "chainId": 59144,
+    "productId": "pool",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x3e6e902df0504ec8a14bb041ea382bcfbb86020d0d4a65974015da4bf5b5c3ec",
+        "protocolToken": {
+          "address": "0x7f72e0d8e9abf9133a92322b8b50bd8e0f9dcfcb",
+          "name": "SyncSwap BUSD/WETH Classic LP",
+          "symbol": "BUSD/WETH cSLP",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "type": "underlying",
+            "balanceRaw": "1008274432116777057n",
+            "address": "0x7d43aabc515c356145049227cee54b608342c0ad",
+            "name": "Binance USD",
+            "symbol": "BUSD",
+            "decimals": 18,
+            "transactionHash": "0x3e6e902df0504ec8a14bb041ea382bcfbb86020d0d4a65974015da4bf5b5c3ec",
+            "blockNumber": 71112,
+            "balance": "1.008274432116777057"
+          },
+          {
+            "type": "underlying",
+            "balanceRaw": "537632176917093n",
+            "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
+            "name": "Wrapped Ether",
+            "symbol": "WETH",
+            "decimals": 18,
+            "transactionHash": "0x3e6e902df0504ec8a14bb041ea382bcfbb86020d0d4a65974015da4bf5b5c3ec",
+            "blockNumber": 71112,
+            "balance": "0.000537632176917093"
+          }
+        ],
+        "blockNumber": 71112
+      }
+    ]
+  }
+}
