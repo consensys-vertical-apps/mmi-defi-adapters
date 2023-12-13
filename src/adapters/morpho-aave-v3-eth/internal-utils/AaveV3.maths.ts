@@ -3,7 +3,6 @@ import * as constants from 'evm-maths/lib/constants'
 import * as PercentMath from 'evm-maths/lib/percent'
 import * as RayMath from 'evm-maths/lib/ray'
 import * as WadMath from 'evm-maths/lib/wad'
-
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 
 export class MorphoAaveMath {
