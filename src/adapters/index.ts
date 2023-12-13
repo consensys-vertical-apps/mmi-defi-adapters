@@ -24,6 +24,8 @@ import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
 import { MorphoAaveV2OptimizerBorrowAdapter } from './morpho-aave-v2/products/optimizer-borrow/morphoAaveV2OptimizerBorrowAdapter'
 import { MorphoAaveV2OptimizerSupplyAdapter } from './morpho-aave-v2/products/optimizer-supply/morphoAaveV2OptimizerSupplyAdapter'
+import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
+import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
 import { PricesUSDAdapter } from './prices/products/usd/pricesUSDAdapter'
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
@@ -41,6 +43,13 @@ export const supportedProtocols: Record<
     [Chain.Ethereum]: [
       MorphoAaveV2OptimizerBorrowAdapter,
       MorphoAaveV2OptimizerSupplyAdapter,
+    ],
+  },
+
+  [Protocol.MorphoCompoundV2]: {
+    [Chain.Ethereum]: [
+      MorphoCompoundV2OptimizerSupplyAdapter,
+      MorphoCompoundV2OptimizerBorrowAdapter,
     ],
   },
   [Protocol.Stargate]: {
@@ -145,6 +154,7 @@ export const supportedProtocols: Record<
   [Protocol.Swell]: {
     [Chain.Ethereum]: [SwellSwEthAdapter],
   },
+
   [Protocol.Convex]: {
     [Chain.Ethereum]: [
       ConvexPoolAdapter,
@@ -154,6 +164,7 @@ export const supportedProtocols: Record<
       ConvexCvxcrvWrapperAdapter,
     ],
   },
+
   [Protocol.Prices]: {
     [Chain.Ethereum]: [PricesUSDAdapter],
   },

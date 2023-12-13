@@ -42,6 +42,8 @@ import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
+import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import PricesUsdEthereumProtocolToken from '../../adapters/prices/products/usd/metadata/ethereum.protocol-token.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
@@ -429,8 +431,9 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-supply',
     }),
     MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply,
-    ],
-  [metadataKey({
+  ],
+  [
+    metadataKey({
       protocolId: Protocol.Convex,
       productId: 'staking',
       chainId: Chain.Ethereum,
@@ -482,6 +485,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     PricesUsdEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoCompoundV2,
+      productId: 'optimizer-supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-supply',
+    }),
+    MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoCompoundV2,
+      productId: 'optimizer-borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-borrow',
+    }),
+    MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow,
   ],
 ])
 
