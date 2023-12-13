@@ -24,8 +24,8 @@ import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
 import { MorphoAaveV2OptimizerBorrowAdapter } from './morpho-aave-v2/products/optimizer-borrow/morphoAaveV2OptimizerBorrowAdapter'
 import { MorphoAaveV2OptimizerSupplyAdapter } from './morpho-aave-v2/products/optimizer-supply/morphoAaveV2OptimizerSupplyAdapter'
-import { MorphoAaveV3ETHOptimizerOptimizerBorrowAdapter } from './morpho-aave-v3-eth/products/optimizer-borrow/morphoAaveV3ETHOptimizerOptimizerBorrowAdapter'
-import { MorphoAaveV3ETHOptimizerOptimizerSupplyAdapter } from './morpho-aave-v3-eth/products/optimizer-supply/morphoAaveV3ETHOptimizerOptimizerSupplyAdapter'
+import { MorphoAaveV3ETHOptimizerBorrowAdapter } from './morpho-aave-v3-eth/products/optimizer-borrow/morphoAaveV3ETHOptimizerBorrowAdapter'
+import { MorphoAaveV3ETHOptimizerSupplyAdapter } from './morpho-aave-v3-eth/products/optimizer-supply/morphoAaveV3ETHOptimizerSupplyAdapter'
 import { PricesUSDAdapter } from './prices/products/usd/pricesUSDAdapter'
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
@@ -41,8 +41,8 @@ export const supportedProtocols: Record<
 > = {
   [Protocol.MorphoAaveV3ETHOptimizer]: {
     [Chain.Ethereum]: [
-      MorphoAaveV3ETHOptimizerOptimizerSupplyAdapter,
-      MorphoAaveV3ETHOptimizerOptimizerBorrowAdapter,
+      MorphoAaveV3ETHOptimizerSupplyAdapter,
+      MorphoAaveV3ETHOptimizerBorrowAdapter,
     ],
   },
   [Protocol.MorphoAaveV2]: {

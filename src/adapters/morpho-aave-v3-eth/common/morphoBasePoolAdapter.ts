@@ -659,7 +659,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           )
 
           const proportionIdle =
-            idleSupply == 0n
+            idleSupply === 0n
               ? 0n
               : min(
                   // To avoid proportionIdle > 1 with rounding errors
@@ -930,7 +930,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       )
 
       const proportionIdle =
-        idleSupply == 0n
+        idleSupply === 0n
           ? 0n
           : min(
               // To avoid proportionIdle > 1 with rounding errors
@@ -979,7 +979,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         poolIndex: liquidityIndex,
       })
       rate =
-        totalSupply == 0n
+        totalSupply === 0n
           ? currentLiquidityRate
           : RayMath.rayDiv(
               this.__MATH__.indexMul(p2pSupplyRate, supplyInP2P) +
@@ -1024,7 +1024,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       )
 
       const proportionIdle =
-        idleSupply == 0n
+        idleSupply === 0n
           ? 0n
           : min(
               // To avoid proportionIdle > 1 with rounding errors
@@ -1071,7 +1071,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         proportionIdle,
       })
       rate =
-        totalBorrow == 0n
+        totalBorrow === 0n
           ? currentVariableBorrowRate
           : RayMath.rayDiv(
               this.__MATH__.indexMul(p2pBorrowRate, borrowInP2P) +
