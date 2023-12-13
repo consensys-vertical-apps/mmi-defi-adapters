@@ -482,6 +482,16 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           totalValueRaw = poolBorrow + p2pBorrow
         }
 
+        totalValueRaw = totalValueRaw / BigInt(10 ** tokenMetadata.decimals)
+
+        const cTokenContract = CToken__factory.connect(
+          tokenMetadata.address,
+          this._provider,
+        )
+        let exchangeRate = await cTokenContract.exchangeRateStored()
+
+        totalValueRaw = WadMath.wadDiv(totalValueRaw, exchangeRate)
+
         return {
           ...tokenMetadata,
           type: TokenType.Protocol,
@@ -490,20 +500,22 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       }),
     )
   }
-  //ok
+  // 1ETH = 0.02 cETH -> from the nb of cETH, how many ETH?
   protected async _getUnderlyingTokenConversionRate(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
+    const cTokenContract = CToken__factory.connect(
+      protocolTokenMetadata.address,
+      this._provider,
+    )
+    let exchangeRate = await cTokenContract.exchangeRateStored()
+
     const { underlyingToken } = await this._fetchPoolMetadata(
       protocolTokenMetadata.address,
     )
-
-    // 'balanceOf' of 'aTokens' is already scaled with the exchange rate
-    const PRICE_PEGGED_TO_ONE = 1
-    const pricePerShareRaw = BigInt(
-      PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
-    )
+    const pricePerShareRaw =
+      1n / (exchangeRate * BigInt(10 ** (10 - underlyingToken.decimals)))
 
     return [
       {
