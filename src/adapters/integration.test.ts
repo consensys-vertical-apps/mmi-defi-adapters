@@ -16,6 +16,7 @@ import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
 import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
+import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3-eth/tests/testCases'
 import { testCases as pricesTestCases } from './prices/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
@@ -42,10 +43,8 @@ function runAllTests() {
   runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
   runProtocolTests(Protocol.Convex, convexTestCases)
   runProtocolTests(Protocol.Prices, pricesTestCases)
-  runProtocolTests(
-    Protocol.MorphoCompoundV2,
-    morphoCompoundV2OptimizerTestCases,
-  )
+  runProtocolTests(Protocol.MorphoCompoundV2,morphoCompoundV2OptimizerTestCases)
+  runProtocolTests(Protocol.MorphoAaveV3ETHOptimizer,morphoAaveV3ETHOptimizerTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

@@ -15,5 +15,6 @@ export const Protocol = {
   Convex: 'convex',
   Prices: 'prices',
   MorphoCompoundV2: 'morpho-compound-v2',
+  MorphoAaveV3ETHOptimizer: 'morpho-aave-v3-eth',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
