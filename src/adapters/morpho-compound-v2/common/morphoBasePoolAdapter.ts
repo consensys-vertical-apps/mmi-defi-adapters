@@ -689,7 +689,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       blockNumber,
     })
 
-    const apy = aprToApy(apr, SECONDS_PER_YEAR)
+    const apy = aprToApy(apr * 86400, 365)
 
     return {
       ...(await this._fetchProtocolTokenMetadata(protocolTokenAddress)),
