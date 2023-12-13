@@ -11,6 +11,7 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0xc54b543d82804a8f69596bac329f8cda24cacf7f619fc3c1823bbb684373d551",
         "protocolToken": {
           "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
           "name": "ARB / WETH - 1.0%",
@@ -18,26 +19,41 @@
           "decimals": 18,
           "tokenId": "573046"
         },
-        "underlyingTokensMovement": {
-          "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1": {
-            "movementValueRaw": "43155666557030000000000n",
+        "tokens": [
+          {
+            "type": "underlying",
+            "balanceRaw": "43155666557030000000000n",
             "address": "0xb50721bcf8d664c30412cfbc6cf7a15145234ad1",
             "name": "Arbitrum",
             "symbol": "ARB",
             "decimals": 18,
             "transactionHash": "0xc54b543d82804a8f69596bac329f8cda24cacf7f619fc3c1823bbb684373d551",
-            "movementValue": "43155.66655703"
+            "blockNumber": 18262163,
+            "balance": "43155.66655703"
           },
-          "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2": {
-            "movementValueRaw": "0n",
+          {
+            "type": "underlying",
+            "balanceRaw": "0n",
             "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
             "name": "Wrapped Ether",
             "symbol": "WETH",
             "decimals": 18,
             "transactionHash": "0xc54b543d82804a8f69596bac329f8cda24cacf7f619fc3c1823bbb684373d551",
-            "movementValue": "0.0"
+            "blockNumber": 18262163,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 8,
+                "type": "fiat",
+                "balanceRaw": "0n",
+                "balance": "0.0"
+              }
+            ],
+            "balance": "0.0"
           }
-        },
+        ],
         "blockNumber": 18262163
       }
     ]

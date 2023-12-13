@@ -18,28 +18,14 @@
           "symbol": "sDAI",
           "decimals": 18,
           "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
-              "name": "Dai Stablecoin",
-              "symbol": "DAI",
-              "decimals": 18,
-              "profitRaw": "726245939550908783469n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "5607954316263026673787787n",
-                "startPositionValue": "5607954.316263026673787787",
-                "endPositionValueRaw": "5608680562202577582571256n",
-                "endPositionValue": "5608680.562202577582571256"
-              },
-              "profit": "726.245939550908783469",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
-            }
-          ]
+          "profit": -414.2554016895592,
+          "performance": -0.0000738611240848753,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 5608571.58379461,
+            "endPositionValue": 5608157.32839292
+          }
         }
       ],
       "fromBlock": 18520676,

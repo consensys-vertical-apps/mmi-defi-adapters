@@ -11,32 +11,55 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0x9692d3ab0181a4c0017666e2ca49e9d10fee6b7eef3d05de3460caae4072d1fc",
         "protocolToken": {
           "address": "0xf34dff761145ff0b05e917811d488b441f33a968",
           "name": "Curve.fi cDAI/cUSDC Convex Deposit",
           "symbol": "cvxcDAI+cUSDC",
           "decimals": 18
         },
-        "underlyingTokensMovement": {
-          "0xd533a949740bb3306d119cc777fa900ba034cd52": {
+        "tokens": [
+          {
             "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
             "name": "Curve DAO Token",
             "symbol": "CRV",
             "decimals": 18,
-            "movementValueRaw": "901431379832780966661n",
-            "transactionHash": "0x9692d3ab0181a4c0017666e2ca49e9d10fee6b7eef3d05de3460caae4072d1fc",
-            "movementValue": "901.431379832780966661"
+            "balanceRaw": "901431379832780966661n",
+            "type": "underlying",
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 8,
+                "type": "fiat",
+                "balanceRaw": "49227167652n",
+                "balance": "492.27167652"
+              }
+            ],
+            "balance": "901.431379832780966661"
           },
-          "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b": {
+          {
             "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
             "name": "Convex Token",
             "symbol": "CVX",
             "decimals": 18,
-            "movementValueRaw": "8112882418495028699n",
-            "transactionHash": "0x9692d3ab0181a4c0017666e2ca49e9d10fee6b7eef3d05de3460caae4072d1fc",
-            "movementValue": "8.112882418495028699"
+            "balanceRaw": "8112882418495028699n",
+            "type": "underlying",
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 8,
+                "type": "fiat",
+                "balanceRaw": "2782535164n",
+                "balance": "27.82535164"
+              }
+            ],
+            "balance": "8.112882418495028699"
           }
-        },
+        ],
         "blockNumber": 18596961
       }
     ]

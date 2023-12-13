@@ -1,5 +1,7 @@
 import {
+  GetEventsInput,
   GetPositionsInput,
+  MovementsByBlock,
   TokenBalance,
   TokenType,
   Underlying,
@@ -28,6 +30,32 @@ export function ResolveUnderlyingPositions(
 
   return replacementMethod
 }
+export function ResolveUnderlyingMovements(
+  originalMethod:
+    | SimplePoolAdapter['getWithdrawals']
+    | SimplePoolAdapter['getDeposits'],
+  _context: ClassMethodDecoratorContext,
+) {
+  async function replacementMethod(
+    this: IProtocolAdapter,
+    input: GetEventsInput,
+  ) {
+    const protocolTokens = await originalMethod.call(this, input)
+
+    const promises = []
+    for (const protocolToken of protocolTokens) {
+      const blockNumber = protocolToken?.blockNumber
+
+      promises.push(getUnderlyingAndRecurse(protocolToken, this, blockNumber))
+    }
+
+    await Promise.all(promises)
+
+    return protocolTokens
+  }
+
+  return replacementMethod
+}
 
 /**
  * Iterates though a list of token positions, identifies if any of them are a protocol token
@@ -42,58 +70,105 @@ async function recursivePositionSolver({
   tokenPositions: (TokenBalance & { tokens?: Underlying[] })[]
   blockNumber?: number
 }) {
+  const promises = []
   for (const tokenPosition of tokenPositions) {
-    if (!tokenPosition.tokens) {
-      continue
-    }
-
-    for (const underlyingProtocolTokenPosition of tokenPosition.tokens) {
-      const underlyingProtocolTokenAdapter =
-        await adapter.adaptersController.fetchTokenAdapter(
-          adapter.chainId,
-          underlyingProtocolTokenPosition.address,
-        )
-
-      if (!underlyingProtocolTokenAdapter) {
-        continue
-      }
-
-      const protocolTokenUnderlyingRate =
-        await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
-          {
-            protocolTokenAddress: underlyingProtocolTokenPosition.address,
-            blockNumber: blockNumber,
-          },
-        )
-
-      const computedUnderlyingPositions: Underlying[] =
-        protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
-          return {
-            address: underlyingTokenRate.address,
-            name: underlyingTokenRate.name,
-            symbol: underlyingTokenRate.symbol,
-            decimals: underlyingTokenRate.decimals,
-            type:
-              underlyingTokenRate.type == TokenType.Fiat
-                ? TokenType.Fiat
-                : TokenType.Underlying,
-            balanceRaw:
-              (underlyingProtocolTokenPosition.balanceRaw *
-                underlyingTokenRate.underlyingRateRaw) /
-              10n ** BigInt(underlyingProtocolTokenPosition.decimals),
-          }
-        }) || []
-
-      underlyingProtocolTokenPosition.tokens = [
-        ...(underlyingProtocolTokenPosition.tokens || []),
-        ...computedUnderlyingPositions,
-      ]
-    }
-
-    await recursivePositionSolver({
-      adapter,
-      tokenPositions: tokenPosition.tokens,
-      blockNumber,
-    })
+    promises.push(getUnderlyingAndRecurse(tokenPosition, adapter, blockNumber))
   }
+
+  await Promise.all(promises)
+}
+
+async function getUnderlyingAndRecurse(
+  tokenPosition: (TokenBalance & { tokens?: Underlying[] }) | MovementsByBlock,
+  adapter: IProtocolAdapter,
+  blockNumber: number | undefined,
+) {
+  if (!tokenPosition.tokens) {
+    return
+  }
+
+  await resolveUnderlying({
+    underlying: tokenPosition.tokens,
+    adapter,
+    blockNumber,
+  })
+
+  await recursivePositionSolver({
+    adapter,
+    tokenPositions: tokenPosition.tokens,
+    blockNumber,
+  })
+}
+
+async function resolveUnderlying({
+  underlying,
+  adapter,
+  blockNumber,
+}: {
+  underlying: Underlying[]
+  adapter: IProtocolAdapter
+  blockNumber: number | undefined
+}) {
+  if (!underlying) {
+    return
+  }
+
+  const promises = []
+
+  for (const underlyingProtocolTokenPosition of underlying) {
+    promises.push(
+      computeUnderlyingTokenBalances(
+        adapter,
+        underlyingProtocolTokenPosition,
+        blockNumber,
+      ),
+    )
+  }
+
+  await Promise.all(promises)
+}
+
+async function computeUnderlyingTokenBalances(
+  adapter: IProtocolAdapter,
+  underlyingProtocolTokenPosition: Underlying,
+  blockNumber: number | undefined,
+) {
+  const underlyingProtocolTokenAdapter =
+    await adapter.adaptersController.fetchTokenAdapter(
+      adapter.chainId,
+      underlyingProtocolTokenPosition.address.toLowerCase(),
+    )
+
+  if (!underlyingProtocolTokenAdapter) {
+    return
+  }
+  const protocolTokenUnderlyingRate =
+    await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate({
+      protocolTokenAddress:
+        underlyingProtocolTokenPosition.address.toLowerCase(),
+      blockNumber: blockNumber,
+    })
+
+  const computedUnderlyingPositions: Underlying[] =
+    protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
+      return {
+        address: underlyingTokenRate.address,
+        name: underlyingTokenRate.name,
+        symbol: underlyingTokenRate.symbol,
+        decimals: underlyingTokenRate.decimals,
+        type:
+          underlyingTokenRate.type == TokenType.Fiat
+            ? TokenType.Fiat
+            : TokenType.Underlying,
+        balanceRaw:
+          (underlyingProtocolTokenPosition.balanceRaw *
+            underlyingTokenRate.underlyingRateRaw) /
+          10n ** BigInt(underlyingProtocolTokenPosition.decimals),
+      }
+    }) || []
+
+  underlyingProtocolTokenPosition.tokens = [
+    ...(underlyingProtocolTokenPosition.tokens || []),
+    ...computedUnderlyingPositions,
+  ]
 }

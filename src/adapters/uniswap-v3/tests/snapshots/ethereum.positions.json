@@ -48,6 +48,17 @@
               "decimals": 18,
               "balanceRaw": "0n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 8,
+                  "type": "fiat",
+                  "balanceRaw": "0n",
+                  "balance": "0.0"
+                }
+              ],
               "balance": "0.0",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             },
@@ -58,6 +69,17 @@
               "decimals": 18,
               "balanceRaw": "92742886944754249n",
               "type": "underlying-claimable",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 8,
+                  "type": "fiat",
+                  "balanceRaw": "14440867643n",
+                  "balance": "144.40867643"
+                }
+              ],
               "balance": "0.092742886944754249",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
@@ -100,6 +122,17 @@
               "decimals": 18,
               "balanceRaw": "0n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 8,
+                  "type": "fiat",
+                  "balanceRaw": "0n",
+                  "balance": "0.0"
+                }
+              ],
               "balance": "0.0",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             },
@@ -110,6 +143,17 @@
               "decimals": 18,
               "balanceRaw": "0n",
               "type": "underlying-claimable",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 8,
+                  "type": "fiat",
+                  "balanceRaw": "0n",
+                  "balance": "0.0"
+                }
+              ],
               "balance": "0.0",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }

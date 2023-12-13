@@ -11,7 +11,6 @@ import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
 import { mergeClaimableWithProtocol } from './core/utils/mergeClaimableWithProtocol'
 import {
   enrichPositionBalance,
-  enrichProfitsWithRange,
   enrichUnderlyingTokenRates,
   enrichMovements,
   enrichTotalValueLocked,
@@ -107,7 +106,7 @@ export class DefiProvider {
         fromBlock,
       })
 
-      return enrichProfitsWithRange(profits, adapter.chainId)
+      return profits
     }
 
     return this.runForAllProtocolsAndChains({
@@ -187,7 +186,9 @@ export class DefiProvider {
       })
 
       return {
-        movements: positionMovements.map((value) => enrichMovements(value)),
+        movements: positionMovements.map((value) =>
+          enrichMovements(value, chainId),
+        ),
       }
     }
 
@@ -227,7 +228,9 @@ export class DefiProvider {
       })
 
       return {
-        movements: positionMovements.map((value) => enrichMovements(value)),
+        movements: positionMovements.map((value) =>
+          enrichMovements(value, chainId),
+        ),
       }
     }
 

@@ -18,28 +18,14 @@
           "symbol": "SWETH",
           "decimals": 18,
           "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x0000000000000000000000000000000000000000",
-              "name": "Ethereum",
-              "symbol": "ETH",
-              "decimals": 18,
-              "profitRaw": "86417416164668292n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "28044477076709988992n",
-                "deposits": "28.044477076709988992",
-                "startPositionValueRaw": "124035450444322781089n",
-                "startPositionValue": "124.035450444322781089",
-                "endPositionValueRaw": "152166344937197438373n",
-                "endPositionValue": "152.166344937197438373"
-              },
-              "profit": "0.086417416164668292",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-            }
-          ]
+          "profit": 22424.67918117001,
+          "performance": 0.07532001535334899,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 55574.05755429,
+            "startPositionValue": 242151.30901619,
+            "endPositionValue": 320150.04575165
+          }
         }
       ],
       "fromBlock": 18592210,

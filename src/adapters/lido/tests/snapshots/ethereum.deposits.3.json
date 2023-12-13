@@ -1,0 +1,60 @@
+{
+  "snapshot": {
+    "protocolId": "lido",
+    "name": "Lido wstEth",
+    "description": "Lido defi adapter for wstEth",
+    "siteUrl": "https://stake.lido.fi/wrap",
+    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png",
+    "positionType": "stake",
+    "chainId": 1,
+    "productId": "wst-eth",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x779025a8260db4601f74506e6af804edcb7344b606f9bad07c59e3706c82f144",
+        "protocolToken": {
+          "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "name": "Wrapped liquid staked Ether 2.0",
+          "symbol": "wstETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+            "name": "Liquid staked Ether 2.0",
+            "symbol": "stETH",
+            "decimals": 18,
+            "balanceRaw": "70819350317881833n",
+            "type": "underlying",
+            "blockNumber": 16738529,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "70819350317881833n",
+                "tokens": [
+                  {
+                    "address": "TheUnitedStatesMint",
+                    "name": "USD",
+                    "symbol": "USD",
+                    "decimals": 8,
+                    "type": "fiat",
+                    "balanceRaw": "11678819060n",
+                    "balance": "116.7881906"
+                  }
+                ],
+                "balance": "0.070819350317881833",
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": "0.070819350317881833"
+          }
+        ],
+        "blockNumber": 16738529
+      }
+    ]
+  }
+}

@@ -11,6 +11,7 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0xe256790dc30e6dfdaccf03ef96da1e845500971ec648a513558e369a950ba28b",
         "protocolToken": {
           "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
           "name": "LDO / WETH - 0.3%",
@@ -18,26 +19,41 @@
           "decimals": 18,
           "tokenId": "573517"
         },
-        "underlyingTokensMovement": {
-          "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32": {
-            "movementValueRaw": "6050612623457024522962n",
+        "tokens": [
+          {
+            "type": "underlying",
+            "balanceRaw": "6050612623457024522962n",
             "address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
             "name": "Lido DAO Token",
             "symbol": "LDO",
             "decimals": 18,
             "transactionHash": "0xe256790dc30e6dfdaccf03ef96da1e845500971ec648a513558e369a950ba28b",
-            "movementValue": "6050.612623457024522962"
+            "blockNumber": 18274547,
+            "balance": "6050.612623457024522962"
           },
-          "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2": {
-            "movementValueRaw": "29079681341117729741n",
+          {
+            "type": "underlying",
+            "balanceRaw": "29079681341117729741n",
             "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
             "name": "Wrapped Ether",
             "symbol": "WETH",
             "decimals": 18,
             "transactionHash": "0xe256790dc30e6dfdaccf03ef96da1e845500971ec648a513558e369a950ba28b",
-            "movementValue": "29.079681341117729741"
+            "blockNumber": 18274547,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 8,
+                "type": "fiat",
+                "balanceRaw": "4776514673649n",
+                "balance": "47765.14673649"
+              }
+            ],
+            "balance": "29.079681341117729741"
           }
-        },
+        ],
         "blockNumber": 18274547
       }
     ]

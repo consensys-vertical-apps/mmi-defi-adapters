@@ -5,7 +5,6 @@ import { TransferEvent } from '../../contracts/Erc20'
 import {
   UnderlyingTokenRate,
   Underlying,
-  BaseTokenMovement,
   GetAprInput,
   GetApyInput,
   GetEventsInput,
@@ -14,7 +13,6 @@ import {
   GetProfitsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
-  PositionType,
   ProfitsWithRange,
   ProtocolAdapterParams,
   ProtocolTokenApr,
@@ -31,12 +29,16 @@ import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
-import { ResolveUnderlyingPositions } from '../decorators/resolveUnderlyingPositions'
+import {
+  ResolveUnderlyingPositions,
+  ResolveUnderlyingMovements,
+} from '../decorators/resolveUnderlyingPositions'
 import { MaxMovementLimitExceededError } from '../errors/errors'
-import { aggregateTrades } from '../utils/aggregateTrades'
+import { aggregateFiatBalances } from '../utils/aggregateFiatBalances'
+import { aggregateFiatBalancesFromMovements } from '../utils/aggregateFiatBalancesFromMovements'
+import { calculateDeFiAttributionPerformance } from '../utils/calculateDeFiAttributionPerformance'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
-import { formatProtocolTokenArrayToMap } from '../utils/protocolTokenToMap'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
   chainId: Chain
@@ -123,6 +125,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     }
   }
 
+  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -146,6 +149,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     })
   }
 
+  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -242,94 +246,66 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       this.getPositions({
         userAddress,
         blockNumber: toBlock,
-      }).then(formatProtocolTokenArrayToMap),
+      }).then(aggregateFiatBalances),
       this.getPositions({
         userAddress,
         blockNumber: fromBlock,
-      }).then(formatProtocolTokenArrayToMap),
+      }).then(aggregateFiatBalances),
     ])
 
     const tokens = await Promise.all(
       Object.values(endPositionValues).map(
-        async ({
-          protocolTokenMetadata,
-          underlyingTokenPositions: underlyingEndPositions,
-        }) => {
+        async ({ protocolTokenMetadata }) => {
           const getEventsInput: GetEventsInput = {
             userAddress,
             protocolTokenAddress: protocolTokenMetadata.address,
             fromBlock,
             toBlock,
+            tokenId: protocolTokenMetadata.tokenId,
           }
 
           const [withdrawals, deposits] = await Promise.all([
-            this.getWithdrawals(getEventsInput).then(aggregateTrades),
-            this.getDeposits(getEventsInput).then(aggregateTrades),
+            this.getWithdrawals(getEventsInput).then(
+              aggregateFiatBalancesFromMovements,
+            ),
+            this.getDeposits(getEventsInput).then(
+              aggregateFiatBalancesFromMovements,
+            ),
           ])
+
+          const key =
+            protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
+
+          const endPositionValue = +formatUnits(
+            endPositionValues[key]?.usdRaw ?? 0n,
+            8,
+          )
+          const withdrawal = +formatUnits(withdrawals[key]?.usdRaw ?? 0n, 8)
+          const deposit = +formatUnits(deposits[key]?.usdRaw ?? 0n, 8)
+          const startPositionValue = +formatUnits(
+            startPositionValues[key]?.usdRaw ?? 0n,
+            8,
+          )
+
+          const profit =
+            endPositionValue + withdrawal - deposit - startPositionValue
 
           return {
             ...protocolTokenMetadata,
             type: TokenType.Protocol,
-            tokens: Object.values(underlyingEndPositions).map(
-              ({
-                address,
-                name,
-                symbol,
-                decimals,
-                balanceRaw: endPositionValueRaw,
-              }) => {
-                const startPositionValueRaw =
-                  startPositionValues[protocolTokenMetadata.address]
-                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
-
-                const calculationData = {
-                  withdrawalsRaw: withdrawals[address] ?? 0n,
-                  depositsRaw: deposits[address] ?? 0n,
-                  endPositionValueRaw: endPositionValueRaw ?? 0n,
-                  startPositionValueRaw,
-                }
-
-                let profitRaw =
-                  calculationData.endPositionValueRaw +
-                  calculationData.withdrawalsRaw -
-                  calculationData.depositsRaw -
-                  calculationData.startPositionValueRaw
-
-                if (
-                  this.getProtocolDetails().positionType === PositionType.Borrow
-                ) {
-                  profitRaw *= -1n
-                }
-
-                return {
-                  address,
-                  name,
-                  symbol,
-                  decimals,
-                  profitRaw,
-                  type: TokenType.Underlying,
-                  calculationData: {
-                    withdrawalsRaw: withdrawals[address] ?? 0n,
-                    withdrawals: formatUnits(
-                      withdrawals[address] ?? 0n,
-                      decimals,
-                    ),
-                    depositsRaw: deposits[address] ?? 0n,
-                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
-                    startPositionValueRaw: startPositionValueRaw ?? 0n,
-                    startPositionValue: formatUnits(
-                      startPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                    endPositionValueRaw,
-                    endPositionValue: formatUnits(
-                      endPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                  },
-                }
-              },
-            ),
+            profit: profit,
+            performance: calculateDeFiAttributionPerformance({
+              profit,
+              withdrawal,
+              deposit,
+              startPositionValue,
+            }),
+            calculationData: {
+              withdrawals: withdrawal,
+              deposits: deposit,
+              startPositionValue: startPositionValue,
+              endPositionValue: endPositionValue,
+            },
           }
         },
       ),
@@ -436,39 +412,37 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           })
 
         return {
+          transactionHash,
           protocolToken: {
             address: protocolToken.address,
             name: protocolToken.name,
             symbol: protocolToken.symbol,
             decimals: protocolToken.decimals,
           },
-          underlyingTokensMovement: underlyingTokens.reduce(
-            (accumulator, currentToken) => {
-              const currentTokenPrice = protocolTokenPrice.tokens?.find(
-                (price) => price.address === currentToken.address,
-              )
+          tokens: underlyingTokens.reduce((accumulator, currentToken) => {
+            const currentTokenPrice = protocolTokenPrice.tokens?.find(
+              (price) => price.address === currentToken.address,
+            )
 
-              if (!currentTokenPrice) {
-                throw new Error('No price for underlying token at this time')
-              }
+            if (!currentTokenPrice) {
+              throw new Error('No price for underlying token at this time')
+            }
 
-              const movementValueRaw =
-                (protocolTokenMovementValueRaw *
-                  currentTokenPrice.underlyingRateRaw) /
-                BigInt(10 ** protocolToken.decimals)
+            const movementValueRaw =
+              (protocolTokenMovementValueRaw *
+                currentTokenPrice.underlyingRateRaw) /
+              BigInt(10 ** protocolToken.decimals)
 
-              return {
-                ...accumulator,
-
-                [currentToken.address]: {
-                  ...currentToken,
-                  transactionHash,
-                  movementValueRaw,
-                },
-              }
-            },
-            {} as Record<string, BaseTokenMovement>,
-          ),
+            return [
+              ...accumulator,
+              {
+                ...currentToken,
+                balanceRaw: movementValueRaw,
+                type: TokenType.Underlying,
+                blockNumber,
+              },
+            ]
+          }, [] as Underlying[]),
           blockNumber,
         }
       }),

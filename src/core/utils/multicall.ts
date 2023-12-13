@@ -1,5 +1,7 @@
 import { AbiCoder, AddressLike, BytesLike } from 'ethers'
-import { Multicall } from '../../contracts/Multicall'
+import { Multicall, Multicall3 } from '../../contracts/Multicall'
+import { Chain } from '../constants/chains'
+import { MulticallError } from '../errors/errors'
 import { CustomTransactionRequest } from './CustomMulticallJsonRpcProvider'
 import { logger } from './logger'
 
@@ -16,10 +18,10 @@ const LATEST = 'latest'
 type PendingCallsMap = Record<string | typeof LATEST, PendingCall[]>
 
 export class MulticallQueue {
+  private chainId: Chain
   private pendingCalls: PendingCallsMap = {}
   private multicallContract: Multicall
   private flushTimeoutMs: number
-
   private maxBatchSize: number
   private _timer: NodeJS.Timeout | null = null
 
@@ -27,14 +29,17 @@ export class MulticallQueue {
     flushTimeoutMs,
     maxBatchSize,
     multicallContract,
+    chainId,
   }: {
     flushTimeoutMs: number
     maxBatchSize: number
     multicallContract: Multicall
+    chainId: Chain
   }) {
     this.flushTimeoutMs = flushTimeoutMs
     this.maxBatchSize = maxBatchSize
     this.multicallContract = multicallContract
+    this.chainId = chainId
   }
 
   private set timer(value: NodeJS.Timeout | null) {
@@ -89,28 +94,67 @@ export class MulticallQueue {
       const batchSize = callsToProcess.length
       logger.debug({ batchSize }, 'Sending multicall batch ')
 
-      const results = await this.multicallContract.aggregate3.staticCall(
-        callsToProcess.map(({ callParams }) => callParams),
-        {
-          blockTag: blockTag == LATEST ? undefined : blockTag,
-        },
-      )
+      let results: Multicall3.ResultStructOutput[]
+      try {
+        results = await this.multicallContract.aggregate3.staticCall(
+          callsToProcess.map(({ callParams }) => callParams),
+          {
+            blockTag: blockTag == LATEST ? undefined : blockTag,
+          },
+        )
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
+        callsToProcess.forEach(({ reject }) => {
+          reject(
+            new MulticallError({
+              message: 'RPC provider error',
+              chainId: this.chainId,
+              flushTimeoutMs: this.flushTimeoutMs,
+              maxBatchSize: this.maxBatchSize,
+            }),
+          )
+        })
+
+        logger.error(
+          {
+            chainId: this.chainId,
+            flushTimeoutMs: this.flushTimeoutMs,
+            maxBatchSize: this.maxBatchSize,
+            batchSize,
+            error: error?.info?.error,
+          },
+          'Multicall error when sending a batch',
+        )
+
+        return
+      }
 
       const resultLength = results.length
 
       if (resultLength !== batchSize) {
         // reject all to be on safe side
         callsToProcess.forEach(({ reject }) => {
-          reject(new Error('Multicall batch failed'))
+          reject(
+            new MulticallError({
+              message: 'Response length mismatch',
+              chainId: this.chainId,
+              flushTimeoutMs: this.flushTimeoutMs,
+              maxBatchSize: this.maxBatchSize,
+            }),
+          )
         })
 
         logger.error(
           {
+            chainId: this.chainId,
+            flushTimeoutMs: this.flushTimeoutMs,
+            maxBatchSize: this.maxBatchSize,
             resultLength,
             batchSize,
           },
           'Multicall response length differs from batch sent',
         )
+
         return
       }
 

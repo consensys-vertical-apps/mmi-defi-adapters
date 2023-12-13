@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/defi-adapters",
-  "version": "0.6.2",
+  "version": "0.6.6",
   "description": "Defi adapters for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
@@ -22,7 +22,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
-    "adapters-cli": "node lib/main/scripts/index.js",
+    "adapters-cli": "node --env-file=.env lib/main/scripts/index.js",
     "build-metadata": "npm run adapters-cli build-metadata --",
     "build-types": "npm run adapters-cli build-types --",
     "new-adapter": "npm run adapters-cli new-adapter --",
@@ -48,13 +48,12 @@
   },
   "devDependencies": {
     "@typechain/ethers-v6": "^0.5.0",
-    "@types/convict": "^6.1.4",
     "@types/eslint": "^8.44.1",
     "@types/ethereum-block-by-date": "^1.4.1",
     "@types/inquirer": "^8.2.6",
     "@types/jest": "^29.5.6",
     "@types/lodash": "^4.14.197",
-    "@types/node": "^18.17.1",
+    "@types/node": "^20.10.4",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
     "chalk": "^4.1.2",
@@ -85,10 +84,10 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "convict": "^6.2.4",
     "dotenv": "^16.3.1",
     "ethers": "^6.7.1",
     "evm-maths": "^6.0.0",
     "pino": "^8.15.0"
+    "zod": "^3.22.4"
   }
 }

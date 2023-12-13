@@ -1,4 +1,6 @@
 import { Multicall } from '../../contracts'
+import { Chain } from '../constants/chains'
+import { MulticallError } from '../errors/errors'
 import { MulticallQueue } from './multicall'
 
 type TestCaseType = [
@@ -73,6 +75,7 @@ describe('MulticallQueue', () => {
           multicallContract: {
             aggregate3: { staticCall: spy },
           } as unknown as Multicall,
+          chainId: Chain.Ethereum,
         })
 
         const resultsPromises = paramsArray.map((params) => {
@@ -97,6 +100,7 @@ describe('MulticallQueue', () => {
         multicallContract: {
           aggregate3: { staticCall: {} },
         } as unknown as Multicall,
+        chainId: Chain.Ethereum,
       })
 
       expect(
@@ -119,6 +123,7 @@ describe('MulticallQueue', () => {
         multicallContract: {
           aggregate3: { staticCall: spy },
         } as unknown as Multicall,
+        chainId: Chain.Ethereum,
       })
 
       Array.from({ length: 2 }, () =>
@@ -146,6 +151,7 @@ describe('MulticallQueue', () => {
         multicallContract: {
           aggregate3: { staticCall: spy },
         } as unknown as Multicall,
+        chainId: Chain.Ethereum,
       })
 
       await multicall.queueCall({
@@ -167,6 +173,7 @@ describe('MulticallQueue', () => {
         multicallContract: {
           aggregate3: { staticCall: {} },
         } as unknown as Multicall,
+        chainId: Chain.Ethereum,
       })
 
       expect(
@@ -195,6 +202,7 @@ describe('MulticallQueue', () => {
         multicallContract: {
           aggregate3: { staticCall: spy },
         } as unknown as Multicall,
+        chainId: Chain.Ethereum,
       })
 
       const result = multicall.queueCall({ to: '0x', data: '0x' })
@@ -217,10 +225,12 @@ describe('MulticallQueue', () => {
         multicallContract: {
           aggregate3: { staticCall: spy },
         } as unknown as Multicall,
+        chainId: Chain.Ethereum,
       })
-      await multicall.queueCall({ to: '0x', data: '0x' }).catch((error) => {
-        expect(error).toEqual(new Error('Multicall batch failed'))
-      })
+
+      await expect(
+        multicall.queueCall({ to: '0x', data: '0x' }),
+      ).rejects.toThrowError(MulticallError)
 
       expect(spy).toHaveBeenCalled()
     })
@@ -239,6 +249,7 @@ describe('MulticallQueue', () => {
         multicallContract: {
           aggregate3: { staticCall: spy },
         } as unknown as Multicall,
+        chainId: Chain.Ethereum,
       })
 
       multicall
@@ -248,6 +259,26 @@ describe('MulticallQueue', () => {
       multicall
         .queueCall({ to: '0x', data: '0x' })
         .catch((error) => expect(error.reason).toEqual('Invalid token ID'))
+    })
+
+    it('throws when multicall provider call fails', async () => {
+      expect.assertions(2)
+      const spy = jest.fn().mockRejectedValueOnce(new Error())
+
+      const multicall = new MulticallQueue({
+        flushTimeoutMs: 10,
+        maxBatchSize: 1,
+        multicallContract: {
+          aggregate3: { staticCall: spy },
+        } as unknown as Multicall,
+        chainId: Chain.Ethereum,
+      })
+
+      await expect(
+        multicall.queueCall({ to: '0x', data: '0x' }),
+      ).rejects.toThrowError(MulticallError)
+
+      expect(spy).toHaveBeenCalled()
     })
   })
 })

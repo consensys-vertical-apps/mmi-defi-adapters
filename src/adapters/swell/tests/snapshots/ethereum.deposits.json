@@ -11,23 +11,36 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0x1d8129408e609055e9faae1d4deeeeb37a13cdbfb9dad65af0fbfb0718af5af8",
         "protocolToken": {
           "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
           "name": "Swell Ethereum",
           "symbol": "SWETH",
           "decimals": 18
         },
-        "underlyingTokensMovement": {
-          "0x0000000000000000000000000000000000000000": {
+        "tokens": [
+          {
             "address": "0x0000000000000000000000000000000000000000",
             "name": "Ethereum",
             "symbol": "ETH",
             "decimals": 18,
-            "transactionHash": "0x1d8129408e609055e9faae1d4deeeeb37a13cdbfb9dad65af0fbfb0718af5af8",
-            "movementValueRaw": "2499999999999999997n",
-            "movementValue": "2.499999999999999997"
+            "balanceRaw": "2499999999999999997n",
+            "type": "underlying",
+            "blockNumber": 18640807,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 8,
+                "type": "fiat",
+                "balanceRaw": "527264999999n",
+                "balance": "5272.64999999"
+              }
+            ],
+            "balance": "2.499999999999999997"
           }
-        },
+        ],
         "blockNumber": 18640807
       }
     ]
