@@ -17,21 +17,21 @@
           "name": "Compound Dai",
           "symbol": "cDAI",
           "decimals": 8,
-          "aprDecimal": 1559757017300
+          "aprDecimal": 4.068298630653417
         },
         {
           "address": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
           "name": "Compound Collateral",
           "symbol": "cCOMP",
           "decimals": 8,
-          "aprDecimal": 102216551200
+          "aprDecimal": 0.266610408329448
         },
         {
           "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
           "name": "Compound Ether",
           "symbol": "cETH",
           "decimals": 8,
-          "aprDecimal": 16851372000
+          "aprDecimal": 0.04395326507388
         },
         {
           "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
@@ -45,28 +45,28 @@
           "name": "Compound Uniswap",
           "symbol": "cUNI",
           "decimals": 8,
-          "aprDecimal": 85347587700
+          "aprDecimal": 0.22261125952203303
         },
         {
           "address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
           "name": "Compound USD Coin",
           "symbol": "cUSDC",
           "decimals": 8,
-          "aprDecimal": 2923510309300
+          "aprDecimal": 7.625362704644098
         },
         {
           "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
           "name": "Compound USDT",
           "symbol": "cUSDT",
           "decimals": 8,
-          "aprDecimal": 2706014897500
+          "aprDecimal": 7.058071597000275
         },
         {
           "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
           "name": "Compound Wrapped BTC",
           "symbol": "cWBTC",
           "decimals": 8,
-          "aprDecimal": 2441957200
+          "aprDecimal": 0.006369332545188001
         }
       ]
     },
@@ -86,56 +86,56 @@
           "name": "Compound Dai",
           "symbol": "cDAI",
           "decimals": 8,
-          "aprDecimal": 2273433268500
+          "aprDecimal": 5.929773259895865
         },
         {
           "address": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
           "name": "Compound Collateral",
           "symbol": "cCOMP",
           "decimals": 8,
-          "aprDecimal": 2055243619400
+          "aprDecimal": 5.360671380044826
         },
         {
           "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
           "name": "Compound Ether",
           "symbol": "cETH",
           "decimals": 8,
-          "aprDecimal": 950726130300
+          "aprDecimal": 2.4797694584001873
         },
         {
           "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
           "name": "Compound Fei USD",
           "symbol": "cFEI",
           "decimals": 8,
-          "aprDecimal": 490435558100
+          "aprDecimal": 1.279198161836649
         },
         {
           "address": "0x35a18000230da775cac24873d00ff85bccded550",
           "name": "Compound Uniswap",
           "symbol": "cUNI",
           "decimals": 8,
-          "aprDecimal": 1677353736800
+          "aprDecimal": 4.375024978158073
         },
         {
           "address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
           "name": "Compound USD Coin",
           "symbol": "cUSDC",
           "decimals": 8,
-          "aprDecimal": 6041398158000
+          "aprDecimal": 15.757718401529822
         },
         {
           "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
           "name": "Compound USDT",
           "symbol": "cUSDT",
           "decimals": 8,
-          "aprDecimal": 3120096995600
+          "aprDecimal": 8.138117792653524
         },
         {
           "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
           "name": "Compound Wrapped BTC",
           "symbol": "cWBTC",
           "decimals": 8,
-          "aprDecimal": 984476326400
+          "aprDecimal": 2.5677997573858558
         }
       ]
     }

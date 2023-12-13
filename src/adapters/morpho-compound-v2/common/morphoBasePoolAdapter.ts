@@ -1,7 +1,10 @@
 import { formatUnits } from 'ethers'
+import * as WadMath from 'evm-maths/lib/wad'
 import { AdaptersController } from '../../../core/adaptersController'
-import { Chain } from '../../../core/constants/chains'
 import { AVERAGE_BLOCKS_PER_DAY } from '../../../core/constants/AVERAGE_BLOCKS_PER_DAY'
+import { Chain } from '../../../core/constants/chains'
+import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
+import { WAD } from '../../../core/constants/WAD'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
@@ -92,7 +95,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
   private _metadataCache: MorphoCompoundV2PeerToPoolAdapterMetadata | null =
     null
 
-  //ok
   async buildMetadata() {
     if (this._metadataCache) {
       return this._metadataCache
@@ -121,7 +123,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
             throw err
           })
 
-        // Await the promises directly within Promise.all
         const [protocolToken, underlyingToken] = await Promise.all([
           getTokenMetadata(marketAddress, this.chainId, this._provider),
           getTokenMetadata(supplyTokenAddress, this.chainId, this._provider),
@@ -137,13 +138,13 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     this._metadataCache = metadataObject
     return metadataObject
   }
-  //ok
+
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
   }
-  //ok
+
   protected async _fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
@@ -153,7 +154,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     return protocolToken
   }
-  //ok
+
   private async _fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
@@ -164,7 +165,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     return poolMetadata
   }
-  //ok
+
   protected async _getUnderlyingTokenBalances({
     protocolTokenBalance,
   }: {
@@ -184,7 +185,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     return [underlyingTokenBalance]
   }
-  //ok
+
   protected async _fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
@@ -194,7 +195,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     return [underlyingToken]
   }
-  //ok
+
   async getPositions({
     userAddress,
     blockNumber,
@@ -275,7 +276,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return protocolTokens
   }
 
-  //ok
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -290,7 +290,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       eventType: 'withdrawn',
     })
   }
-  //ok
+
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -305,7 +305,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       eventType: 'supplied',
     })
   }
-  //ok
+
   async getBorrows({
     userAddress,
     protocolTokenAddress,
@@ -320,7 +320,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       eventType: 'borrowed',
     })
   }
-  //ok
+
   async getRepays({
     userAddress,
     protocolTokenAddress,
@@ -335,7 +335,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       eventType: 'repaid',
     })
   }
-  //ok
+
   async getProfits({
     userAddress,
     fromBlock,
@@ -453,7 +453,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     return { tokens, fromBlock, toBlock }
   }
-  //ok
+
   async getTotalValueLocked({
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
@@ -474,7 +474,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
             })
           totalValueRaw = poolSupply + p2pSupply
         } else {
-          // Assuming LensType.Borrow or other types
           const [p2pBorrow, poolBorrow] =
             await lensContract.getTotalMarketBorrow(tokenMetadata.address, {
               blockTag: blockNumber,
@@ -482,13 +481,11 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           totalValueRaw = poolBorrow + p2pBorrow
         }
 
-        totalValueRaw = totalValueRaw / BigInt(10 ** tokenMetadata.decimals)
-
         const cTokenContract = CToken__factory.connect(
           tokenMetadata.address,
           this._provider,
         )
-        let exchangeRate = await cTokenContract.exchangeRateStored()
+        const exchangeRate = await cTokenContract.exchangeRateStored()
 
         totalValueRaw = WadMath.wadDiv(totalValueRaw, exchangeRate)
 
@@ -500,7 +497,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       }),
     )
   }
-  // 1ETH = 0.02 cETH -> from the nb of cETH, how many ETH?
+
   protected async _getUnderlyingTokenConversionRate(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
@@ -509,14 +506,12 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       protocolTokenMetadata.address,
       this._provider,
     )
-    let exchangeRate = await cTokenContract.exchangeRateStored()
+    const exchangeRate = await cTokenContract.exchangeRateStored()
 
     const { underlyingToken } = await this._fetchPoolMetadata(
       protocolTokenMetadata.address,
     )
-    const pricePerShareRaw =
-      1n / (exchangeRate * BigInt(10 ** (10 - underlyingToken.decimals)))
-
+    const pricePerShareRaw = 1n / exchangeRate // as is is expected the underlyingRateRaw, we do not scale back as stated in the compound doc: https://docs.compound.finance/v2/ctokens/#exchange-rate
     return [
       {
         ...underlyingToken,
@@ -667,7 +662,8 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         },
       )
     }
-    return Number(rate)
+    rate = rate * BigInt(AVERAGE_BLOCKS_PER_DAY[this.chainId]) * 365n
+    return Number(rate) / WAD
   }
 
   async getApr({
@@ -680,7 +676,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
     return {
       ...(await this._fetchProtocolTokenMetadata(protocolTokenAddress)),
-      aprDecimal: apr * 100,
+      aprDecimal: Number(apr) * 100,
     }
   }
 
@@ -692,7 +688,8 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       protocolTokenAddress,
       blockNumber,
     })
-    const apy = aprToApy(apr, AVERAGE_BLOCKS_PER_DAY[this.chainId])
+
+    const apy = aprToApy(apr, SECONDS_PER_YEAR)
 
     return {
       ...(await this._fetchProtocolTokenMetadata(protocolTokenAddress)),
