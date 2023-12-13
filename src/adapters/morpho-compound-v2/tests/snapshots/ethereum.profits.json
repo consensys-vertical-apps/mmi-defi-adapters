@@ -1,0 +1,151 @@
+{
+  "blockNumber": 18776256,
+  "snapshot": [
+    {
+      "protocolId": "morpho-compound-v2",
+      "name": "MorphoCompoundV2",
+      "description": "MorphoCompoundV2 defi adapter on the supply side",
+      "siteUrl": "https://compound.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
+          "name": "Compound Wrapped BTC",
+          "symbol": "cWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "profitRaw": "46n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "267849059n",
+                "startPositionValue": "2.67849059",
+                "endPositionValueRaw": "267849105n",
+                "endPositionValue": "2.67849105"
+              },
+              "profit": "0.00000046",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
+          "name": "Compound Dai",
+          "symbol": "cDAI",
+          "decimals": 8,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "profitRaw": "18505081365994530484n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "150046529032154171915340n",
+                "startPositionValue": "150046.52903215417191534",
+                "endPositionValueRaw": "150065034113520166445824n",
+                "endPositionValue": "150065.034113520166445824"
+              },
+              "profit": "18.505081365994530484",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 18769110,
+      "toBlock": 18776256
+    },
+    {
+      "protocolId": "morpho-compound-v2",
+      "name": "MorphoCompoundV2",
+      "description": "MorphoCompoundV2 defi adapter on the borrow side",
+      "siteUrl": "https://compound.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
+          "name": "Compound USDT",
+          "symbol": "cUSDT",
+          "decimals": 8,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "profitRaw": "-27249187n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "115027888005n",
+                "startPositionValue": "115027.888005",
+                "endPositionValueRaw": "115055137192n",
+                "endPositionValue": "115055.137192"
+              },
+              "profit": "-27.249187",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+          "name": "Compound Ether",
+          "symbol": "cETH",
+          "decimals": 8,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "profitRaw": "-1570781087239906n",
+              "type": "underlying",
+              "calculationData": {
+                "withdrawalsRaw": "0n",
+                "withdrawals": "0.0",
+                "depositsRaw": "0n",
+                "deposits": "0.0",
+                "startPositionValueRaw": "23192494524997766013n",
+                "startPositionValue": "23.192494524997766013",
+                "endPositionValueRaw": "23194065306085005919n",
+                "endPositionValue": "23.194065306085005919"
+              },
+              "profit": "-0.001570781087239906",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ]
+        }
+      ],
+      "fromBlock": 18769110,
+      "toBlock": 18776256
+    }
+  ]
+}

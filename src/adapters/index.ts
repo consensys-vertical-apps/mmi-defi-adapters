@@ -21,6 +21,12 @@ import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
+import { MorphoAaveV2OptimizerBorrowAdapter } from './morpho-aave-v2/products/optimizer-borrow/morphoAaveV2OptimizerBorrowAdapter'
+import { MorphoAaveV2OptimizerSupplyAdapter } from './morpho-aave-v2/products/optimizer-supply/morphoAaveV2OptimizerSupplyAdapter'
+import { MorphoAaveV3ETHOptimizerBorrowAdapter } from './morpho-aave-v3-eth/products/optimizer-borrow/morphoAaveV3ETHOptimizerBorrowAdapter'
+import { MorphoAaveV3ETHOptimizerSupplyAdapter } from './morpho-aave-v3-eth/products/optimizer-supply/morphoAaveV3ETHOptimizerSupplyAdapter'
+import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
+import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
 import { PricesUSDAdapter } from './prices/products/usd/pricesUSDAdapter'
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
@@ -34,6 +40,24 @@ export const supportedProtocols: Record<
     Record<Chain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
   >
 > = {
+  [Protocol.MorphoAaveV3ETHOptimizer]: {
+    [Chain.Ethereum]: [
+      MorphoAaveV3ETHOptimizerSupplyAdapter,
+      MorphoAaveV3ETHOptimizerBorrowAdapter,
+    ],
+  },
+  [Protocol.MorphoAaveV2]: {
+    [Chain.Ethereum]: [
+      MorphoAaveV2OptimizerBorrowAdapter,
+      MorphoAaveV2OptimizerSupplyAdapter,
+    ],
+  },
+  [Protocol.MorphoCompoundV2]: {
+    [Chain.Ethereum]: [
+      MorphoCompoundV2OptimizerSupplyAdapter,
+      MorphoCompoundV2OptimizerBorrowAdapter,
+    ],
+  },
   [Protocol.Stargate]: {
     [Chain.Ethereum]: [StargatePoolAdapter, StargateVestingAdapter],
     [Chain.Arbitrum]: [StargatePoolAdapter, StargateVestingAdapter],
@@ -132,6 +156,7 @@ export const supportedProtocols: Record<
   [Protocol.Swell]: {
     [Chain.Ethereum]: [SwellSwEthAdapter],
   },
+
   [Protocol.Convex]: {
     [Chain.Ethereum]: [
       ConvexPoolAdapter,
@@ -141,6 +166,7 @@ export const supportedProtocols: Record<
       ConvexCvxcrvWrapperAdapter,
     ],
   },
+
   [Protocol.Prices]: {
     [Chain.Ethereum]: [PricesUSDAdapter],
   },

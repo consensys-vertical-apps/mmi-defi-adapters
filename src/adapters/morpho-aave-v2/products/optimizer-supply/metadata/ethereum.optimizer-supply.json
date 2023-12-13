@@ -1,0 +1,100 @@
+{
+  "0x028171bca77440897b824ca71d1c56cac55b68a3": {
+    "protocolToken": {
+      "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+      "name": "Aave interest bearing DAI",
+      "symbol": "aDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x030ba81f1c18d280636f32af80b9aad02cf0854e": {
+    "protocolToken": {
+      "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+      "name": "Aave interest bearing WETH",
+      "symbol": "aWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xbcca60bb61934080951369a648fb03df4f96263c": {
+    "protocolToken": {
+      "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
+      "name": "Aave interest bearing USDC",
+      "symbol": "aUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x3ed3b47dd13ec9a98b44e6204a523e766b225811": {
+    "protocolToken": {
+      "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
+      "name": "Aave interest bearing USDT",
+      "symbol": "aUSDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656": {
+    "protocolToken": {
+      "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+      "name": "Aave interest bearing WBTC",
+      "symbol": "aWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x1982b2f5814301d4e9a8b0201555376e62f82428": {
+    "protocolToken": {
+      "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
+      "name": "Aave interest bearing STETH",
+      "symbol": "aSTETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+      "name": "Liquid staked Ether 2.0",
+      "symbol": "stETH",
+      "decimals": 18
+    }
+  },
+  "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1": {
+    "protocolToken": {
+      "address": "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1",
+      "name": "Aave interest bearing CRV",
+      "symbol": "aCRV",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  }
+}
