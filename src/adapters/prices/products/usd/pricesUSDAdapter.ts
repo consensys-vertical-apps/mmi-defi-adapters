@@ -49,11 +49,6 @@ const chainlinUsdEthFeeds = {
   [Chain.Linea]: '0x3c6Cd9Cc7c7a4c2Cf5a82734CD249D7D593354dA',
 }
 
-const CHAINLINK_IDS = {
-  USD: '0x0000000000000000000000000000000000000348',
-  ETH: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
-}
-
 export const USD_DECIMALS = 18
 
 const WETH = {
@@ -74,9 +69,6 @@ export const nativeTokenWappedTokenId: Record<Chain, string> = {
   [Chain.Avalanche]: 'avalanche',
   [Chain.Linea]: 'linea',
 }
-
-const CHAINLINK_RESOLVER_ADDRESS_MAINNET =
-  '0x47Fb2585D2C56Fe188D0E6ec628a38b74fCeeeDf'
 
 type PriceMetadata = Record<
   string,
@@ -328,7 +320,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
 
     const contract = ChainLink__factory.connect(
-      CHAINLINK_RESOLVER_ADDRESS_MAINNET,
+      chainlinUsdEthFeeds[this.chainId],
       this.provider,
     )
 
@@ -338,10 +330,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
         blockTag: blockNumber,
       })
       .catch((err) => {
-        logger.error(
-          { err, CHAINLINK_RESOLVER_ADDRESS_MAINNET },
-          'Error calling USD oracle',
-        )
+        logger.error({ err }, 'Error calling USD oracle')
         return false
       })
 

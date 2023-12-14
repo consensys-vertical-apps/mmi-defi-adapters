@@ -27,6 +27,17 @@
               "decimals": 8,
               "balanceRaw": "768788n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "201918205188325409145n",
+                  "balance": "201.918205188325409145"
+                }
+              ],
               "balance": "0.00768788",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
@@ -48,6 +59,17 @@
               "decimals": 18,
               "balanceRaw": "75374552376746320n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "121994491302458219776n",
+                  "balance": "121.994491302458219776"
+                }
+              ],
               "balance": "0.07537455237674632",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
@@ -94,6 +116,17 @@
               "decimals": 18,
               "balanceRaw": "204818507090799477514n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "203881888194620399232n",
+                  "balance": "203.881888194620399232"
+                }
+              ],
               "balance": "204.818507090799477514",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
