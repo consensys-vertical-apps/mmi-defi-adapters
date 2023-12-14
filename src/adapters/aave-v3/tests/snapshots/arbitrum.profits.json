@@ -10,13 +10,41 @@
       "positionType": "lend",
       "chainId": 42161,
       "productId": "a-token",
-      "success": false,
-      "error": {
-        "message": "Multicall batch failed: RPC provider error",
-        "details": {
-          "name": "MulticallError"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x078f358208685046a11c85e8ad32895ded33a249",
+          "name": "Aave Arbitrum WBTC",
+          "symbol": "aArbWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 8.860284061575328,
+          "performance": 0.045894434218828065,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 193.05792112675007,
+            "endPositionValue": 201.9182051883254
+          }
+        },
+        {
+          "address": "0xe50fa9b3c56ffb159cb0fca61f5c9d750e8128c8",
+          "name": "Aave Arbitrum WETH",
+          "symbol": "aArbWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 5.148628987072982,
+          "performance": 0.04406342582483604,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 116.84586231538523,
+            "endPositionValue": 121.99449130245821
+          }
         }
-      }
+      ],
+      "fromBlock": 141970439,
+      "toBlock": 142290717
     },
     {
       "protocolId": "aave-v3",
@@ -41,13 +69,26 @@
       "positionType": "borrow",
       "chainId": 42161,
       "productId": "variable-debt-token",
-      "success": false,
-      "error": {
-        "message": "Not Implemented",
-        "details": {
-          "name": "NotImplementedError"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x8619d80fb0141ba7f184cbf22fd724116d9f7ffc",
+          "name": "Aave Arbitrum Variable Debt DAI",
+          "symbol": "variableDebtArbDAI",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 2.5449722434735804,
+          "performance": 0.01264036568480617,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 201.3369159511468,
+            "endPositionValue": 203.8818881946204
+          }
         }
-      }
+      ],
+      "fromBlock": 141970439,
+      "toBlock": 142290717
     }
   ]
 }
