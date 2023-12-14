@@ -19,6 +19,7 @@
     "LICENSE",
     "README.md"
   ],
+  "sideEffects": false,
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",

@@ -1,6 +1,6 @@
-import { Protocol } from '../adapters/protocols'
-import { Chain } from '../core/constants/chains'
-import {
+import type { Protocol } from '../adapters/protocols'
+import type { Chain } from '../core/constants/chains'
+import type {
   MovementsByBlock,
   ProfitsWithRange,
   ProtocolTokenApr,

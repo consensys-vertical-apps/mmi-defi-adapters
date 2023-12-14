@@ -1,7 +1,7 @@
-import { Protocol } from '../adapters/protocols'
-import { AdaptersController } from '../core/adaptersController'
-import { Chain } from '../core/constants/chains'
-import {
+import type { Protocol } from '../adapters/protocols'
+import type { AdaptersController } from '../core/adaptersController'
+import type { Chain } from '../core/constants/chains'
+import type {
   ProtocolDetails,
   GetPositionsInput,
   ProtocolPosition,
@@ -18,7 +18,7 @@ import {
   GetAprInput,
   ProtocolTokenApr,
 } from './adapter'
-import { Erc20Metadata } from './erc20Metadata'
+import type { Erc20Metadata } from './erc20Metadata'
 
 export interface IProtocolAdapter {
   /**
