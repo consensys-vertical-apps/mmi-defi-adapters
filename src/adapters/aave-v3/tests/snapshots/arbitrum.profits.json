@@ -12,9 +12,9 @@
       "productId": "a-token",
       "success": false,
       "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+        "message": "Multicall batch failed: RPC provider error",
         "details": {
-          "name": "Error"
+          "name": "MulticallError"
         }
       }
     },
@@ -43,9 +43,9 @@
       "productId": "variable-debt-token",
       "success": false,
       "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+        "message": "Not Implemented",
         "details": {
-          "name": "Error"
+          "name": "NotImplementedError"
         }
       }
     }

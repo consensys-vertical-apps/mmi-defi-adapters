@@ -142,12 +142,20 @@ async function computeUnderlyingTokenBalances(
   if (!underlyingProtocolTokenAdapter) {
     return
   }
-  const protocolTokenUnderlyingRate =
-    await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate({
-      protocolTokenAddress:
-        underlyingProtocolTokenPosition.address.toLowerCase(),
-      blockNumber: blockNumber,
-    })
+
+  let protocolTokenUnderlyingRate
+  try {
+    protocolTokenUnderlyingRate =
+      await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
+        {
+          protocolTokenAddress:
+            underlyingProtocolTokenPosition.address.toLowerCase(),
+          blockNumber: blockNumber,
+        },
+      )
+  } catch (error) {
+    return
+  }
 
   const computedUnderlyingPositions: Underlying[] =
     protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {

@@ -23,6 +23,7 @@ import {
   ProtocolTokenTvl,
   TokenBalance,
   TokenType,
+  PositionType,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
@@ -39,6 +40,7 @@ import { aggregateFiatBalancesFromMovements } from '../utils/aggregateFiatBalanc
 import { calculateDeFiAttributionPerformance } from '../utils/calculateDeFiAttributionPerformance'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
+import { USD_DECIMALS } from '../../adapters/prices/products/usd/pricesUSDAdapter'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
   chainId: Chain
@@ -278,17 +280,27 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
           const endPositionValue = +formatUnits(
             endPositionValues[key]?.usdRaw ?? 0n,
-            8,
+            USD_DECIMALS,
           )
-          const withdrawal = +formatUnits(withdrawals[key]?.usdRaw ?? 0n, 8)
-          const deposit = +formatUnits(deposits[key]?.usdRaw ?? 0n, 8)
+          const withdrawal = +formatUnits(
+            withdrawals[key]?.usdRaw ?? 0n,
+            USD_DECIMALS,
+          )
+          const deposit = +formatUnits(
+            deposits[key]?.usdRaw ?? 0n,
+            USD_DECIMALS,
+          )
           const startPositionValue = +formatUnits(
             startPositionValues[key]?.usdRaw ?? 0n,
-            8,
+            USD_DECIMALS,
           )
 
-          const profit =
+          let profit =
             endPositionValue + withdrawal - deposit - startPositionValue
+
+          if (this.getProtocolDetails().positionType == PositionType.Borrow) {
+            profit * -1
+          }
 
           return {
             ...protocolTokenMetadata,

@@ -104,7 +104,8 @@ export class MulticallQueue {
         )
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
-        callsToProcess.forEach(({ reject }) => {
+        callsToProcess.forEach(({ reject, callParams }) => {
+          console.log({ callParams })
           reject(
             new MulticallError({
               message: 'RPC provider error',

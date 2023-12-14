@@ -1,0 +1,1437 @@
+{
+  "0x53691596d1bce8cea565b84d4915e69e03d9c99d": {
+    "address": "0x53691596d1bce8cea565b84d4915e69e03d9c99d",
+    "name": "Across Protocol",
+    "symbol": "ACX",
+    "decimals": 18,
+    "addressOnMainnet": "0x44108f0223a3c3028f5fe7aec7f9bb2e66bef82f"
+  },
+  "0xc4be0798e5b5b1c15eda36d9b2d8c1a60717fa92": {
+    "address": "0xc4be0798e5b5b1c15eda36d9b2d8c1a60717fa92",
+    "name": "Adventurer Gold",
+    "symbol": "GOLD",
+    "decimals": 18,
+    "addressOnMainnet": "0x486f4641ef2b50cc130dadbd27b6f271723873b8"
+  },
+  "0xfa5ed56a203466cbbc2430a43c66b9d8723528e7": {
+    "address": "0xfa5ed56a203466cbbc2430a43c66b9d8723528e7",
+    "name": "agEUR",
+    "symbol": "AGEUR",
+    "decimals": 18,
+    "addressOnMainnet": "0x1a7e4e63778b4f12a199c062f3efdd288afcbce8"
+  },
+  "0xebf1f92d4384118bfb91b4496660a95931c92861": {
+    "address": "0xebf1f92d4384118bfb91b4496660a95931c92861",
+    "name": "Aladdin cvxCRV",
+    "symbol": "ACRV",
+    "decimals": 18,
+    "addressOnMainnet": "0x2b95a1dcc3d405535f9ed33c219ab38e8d7e0884"
+  },
+  "0x498c620c7c91c6eba2e3cd5485383f41613b7eb6": {
+    "address": "0x498c620c7c91c6eba2e3cd5485383f41613b7eb6",
+    "name": "Alongside Crypto Market Index",
+    "symbol": "AMKT",
+    "decimals": 18,
+    "addressOnMainnet": "0xf17a3fe536f8f7847f1385ec1bc967b2ca9cae8d"
+  },
+  "0x9b3fa2a7c3eb36d048a5d38d81e7fafc6bc47b25": {
+    "address": "0x9b3fa2a7c3eb36d048a5d38d81e7fafc6bc47b25",
+    "name": "Aluna",
+    "symbol": "ALN",
+    "decimals": 18,
+    "addressOnMainnet": "0x8185bc4757572da2a610f887561c32298f1a5748"
+  },
+  "0x10663b695b8f75647bd3ff0ff609e16d35bbd1ec": {
+    "address": "0x10663b695b8f75647bd3ff0ff609e16d35bbd1ec",
+    "name": "AmpliFi DAO",
+    "symbol": "AGG",
+    "decimals": 18,
+    "addressOnMainnet": "0x492798fb464e77cb3cda62b9a2c3c65162db198e"
+  },
+  "0xaeaeed23478c3a4b798e4ed40d8b7f41366ae861": {
+    "address": "0xaeaeed23478c3a4b798e4ed40d8b7f41366ae861",
+    "name": "Ankr Network",
+    "symbol": "ANKR",
+    "decimals": 18,
+    "addressOnMainnet": "0x8290333cef9e6d528dd5618fb97a76f268f3edd4"
+  },
+  "0xe05a08226c49b636acf99c40da8dc6af83ce5bb3": {
+    "address": "0xe05a08226c49b636acf99c40da8dc6af83ce5bb3",
+    "name": "Ankr Staked ETH",
+    "symbol": "ANKRETH",
+    "decimals": 18,
+    "addressOnMainnet": "0xe95a203b1a91a908f9b9ce46459d101078c2c3cb"
+  },
+  "0xfb9fbcb328317123f5275cda30b6589d5841216b": {
+    "address": "0xfb9fbcb328317123f5275cda30b6589d5841216b",
+    "name": "Antfarm Token",
+    "symbol": "ATF",
+    "decimals": 18,
+    "addressOnMainnet": "0x518b63da813d46556fea041a88b52e3caa8c16a8"
+  },
+  "0xaaa62d9584cbe8e4d68a43ec91bff4ff1fadb202": {
+    "address": "0xaaa62d9584cbe8e4d68a43ec91bff4ff1fadb202",
+    "name": "Antimatter",
+    "symbol": "MATTER",
+    "decimals": 18,
+    "addressOnMainnet": "0x9b99cca871be05119b2012fd4474731dd653febe"
+  },
+  "0xd978f8489e1245568704407a479a71fcce2afe8f": {
+    "address": "0xd978f8489e1245568704407a479a71fcce2afe8f",
+    "name": "ApeSwap",
+    "symbol": "BANANA",
+    "decimals": 18,
+    "addressOnMainnet": "0x92df60c51c710a1b1c20e42d85e221f3a1bfc7f2"
+  },
+  "0x61a1ff55c5216b636a294a07d77c6f4df10d3b56": {
+    "address": "0x61a1ff55c5216b636a294a07d77c6f4df10d3b56",
+    "name": "ApeX",
+    "symbol": "APEX",
+    "decimals": 18,
+    "addressOnMainnet": "0x52a8845df664d76c69d2eea607cd793565af42b8"
+  },
+  "0x5f006745a9a192a7cd1236089f704f9b35d3b9cd": {
+    "address": "0x5f006745a9a192a7cd1236089f704f9b35d3b9cd",
+    "name": "Arable Protocol",
+    "symbol": "ACRE",
+    "decimals": 18,
+    "addressOnMainnet": "0xb2cabf797bc907b049e4ccb5b84d13be3a8cfc21"
+  },
+  "0x912ce59144191c1204e64559fe8253a0e49e6548": {
+    "address": "0x912ce59144191c1204e64559fe8253a0e49e6548",
+    "name": "Arbitrum",
+    "symbol": "ARB",
+    "decimals": 18,
+    "addressOnMainnet": "0xb50721bcf8d664c30412cfbc6cf7a15145234ad1"
+  },
+  "0x5441695f4445e40900b4c4b0fb3ed2b9e51601a6": {
+    "address": "0x5441695f4445e40900b4c4b0fb3ed2b9e51601a6",
+    "name": "ARTH Valuecoin",
+    "symbol": "ARTH",
+    "decimals": 18,
+    "addressOnMainnet": "0x8cc0f052fff7ead7f2edcccac895502e884a8a71"
+  },
+  "0xea986d33ef8a20a96120ecc44dbdd49830192043": {
+    "address": "0xea986d33ef8a20a96120ecc44dbdd49830192043",
+    "name": "Auctus",
+    "symbol": "AUC",
+    "decimals": 18,
+    "addressOnMainnet": "0xc12d099be31567add4e4e4d0d45691c3f58f5663"
+  },
+  "0x23ee2343b892b1bb63503a4fabc840e0e2c6810f": {
+    "address": "0x23ee2343b892b1bb63503a4fabc840e0e2c6810f",
+    "name": "Axelar",
+    "symbol": "AXL",
+    "decimals": 6,
+    "addressOnMainnet": "0x467719ad09025fcc6cf6f8311755809d45a5e5f3"
+  },
+  "0xbfa641051ba0a0ad1b0acf549a89536a0d76472e": {
+    "address": "0xbfa641051ba0a0ad1b0acf549a89536a0d76472e",
+    "name": "BADGER",
+    "symbol": "BADGER",
+    "decimals": 18,
+    "addressOnMainnet": "0x3472a5a71965499acd81997a54bba8d852c6e53d"
+  },
+  "0x040d1edc9569d4bab2d15287dc5a4f10f56a56b8": {
+    "address": "0x040d1edc9569d4bab2d15287dc5a4f10f56a56b8",
+    "name": "Balancer (BAL)",
+    "symbol": "BAL",
+    "decimals": 18,
+    "addressOnMainnet": "0xba100000625a3754423978a60c9317c58a424e3d"
+  },
+  "0x0d81e50bc677fa67341c44d7eaa9228dee64a4e1": {
+    "address": "0x0d81e50bc677fa67341c44d7eaa9228dee64a4e1",
+    "name": "BarnBridge Governance Token",
+    "symbol": "BOND",
+    "decimals": 18,
+    "addressOnMainnet": "0x0391d2021f89dc339f60fff84546ea23e337750f"
+  },
+  "0x43c25f828390de5a3648864eb485cc523e039e67": {
+    "address": "0x43c25f828390de5a3648864eb485cc523e039e67",
+    "name": "Hello Pets",
+    "symbol": "PET",
+    "decimals": 18,
+    "addressOnMainnet": "0xb870679a7fa65b924026f496de7f27c1dd0e5c5f"
+  },
+  "0xa68ec98d7ca870cf1dd0b00ebbb7c4bf60a8e74d": {
+    "address": "0xa68ec98d7ca870cf1dd0b00ebbb7c4bf60a8e74d",
+    "name": "Biconomy",
+    "symbol": "BICO",
+    "decimals": 18,
+    "addressOnMainnet": "0xf17e65822b568b3903685a7c9f496cf7656cc6c2"
+  },
+  "0x8626264b6a1b4e920905efd381002aba52ea0eea": {
+    "address": "0x8626264b6a1b4e920905efd381002aba52ea0eea",
+    "name": "BlackHat Coin",
+    "symbol": "BLKC",
+    "decimals": 8,
+    "addressOnMainnet": "0x8bcd06492416a749c9369009b3429861b7f27f6e"
+  },
+  "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b": {
+    "address": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
+    "name": "BOB",
+    "symbol": "BOB",
+    "decimals": 18,
+    "addressOnMainnet": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b"
+  },
+  "0x81de4945807bb31425362f8f7109c18e3dc4f8f0": {
+    "address": "0x81de4945807bb31425362f8f7109c18e3dc4f8f0",
+    "name": "Bolide",
+    "symbol": "BLID",
+    "decimals": 18,
+    "addressOnMainnet": "0x8a7adc1b690e81c758f1bd0f72dfe27ae6ec56a5"
+  },
+  "0x09199d9a5f4448d0848e4395d065e1ad9c4a1f74": {
+    "address": "0x09199d9a5f4448d0848e4395d065e1ad9c4a1f74",
+    "name": "Bonk",
+    "symbol": "BONK",
+    "decimals": 5,
+    "addressOnMainnet": "0x1151cb3d861920e07a38e03eead12c32178567f6"
+  },
+  "0xc9c4fd7579133701fa2769b6955e7e56bb386db1": {
+    "address": "0xc9c4fd7579133701fa2769b6955e7e56bb386db1",
+    "name": "Bridge Oracle",
+    "symbol": "BRG",
+    "decimals": 18,
+    "addressOnMainnet": "0xc9c4fd7579133701fa2769b6955e7e56bb386db1"
+  },
+  "0x031d35296154279dc1984dcd93e392b1f946737b": {
+    "address": "0x031d35296154279dc1984dcd93e392b1f946737b",
+    "name": "Cap",
+    "symbol": "CAP",
+    "decimals": 18,
+    "addressOnMainnet": "0x43044f861ec040db59a7e324c40507addb673142"
+  },
+  "0x319f865b287fcc10b30d8ce6144e8b6d1b476999": {
+    "address": "0x319f865b287fcc10b30d8ce6144e8b6d1b476999",
+    "name": "Cartesi Token",
+    "symbol": "CTSI",
+    "decimals": 18,
+    "addressOnMainnet": "0x491604c0fdf08347dd1fa4ee062a822a5dd06b5d"
+  },
+  "0x3a8b787f78d775aecfeea15706d4221b40f345ab": {
+    "address": "0x3a8b787f78d775aecfeea15706d4221b40f345ab",
+    "name": "Celer Network Token",
+    "symbol": "CELR",
+    "decimals": 18,
+    "addressOnMainnet": "0x4f9254c83eb525f9fcf346490bbb3ed28a81c667"
+  },
+  "0xf97f4df75117a78c1a5a0dbb814af92458539fb4": {
+    "address": "0xf97f4df75117a78c1a5a0dbb814af92458539fb4",
+    "name": "Chainlink Token",
+    "symbol": "LINK",
+    "decimals": 18,
+    "addressOnMainnet": "0x514910771af9ca656af840dff83e8264ecf986ca"
+  },
+  "0x0cbd6fadcf8096cc9a43d90b45f65826102e3ece": {
+    "address": "0x0cbd6fadcf8096cc9a43d90b45f65826102e3ece",
+    "name": "CheckDot",
+    "symbol": "CDT",
+    "decimals": 18,
+    "addressOnMainnet": "0xcdb37a4fbc2da5b78aa4e41a432792f9533e85cc"
+  },
+  "0x1debd73e752beaf79865fd6446b0c970eae7732f": {
+    "address": "0x1debd73e752beaf79865fd6446b0c970eae7732f",
+    "name": "Coinbase Wrapped Staked ETH",
+    "symbol": "CBETH",
+    "decimals": 18,
+    "addressOnMainnet": "0xbe9895146f7af43049ca1c1ae358b0541ea49704"
+  },
+  "0x354a6da3fcde098f8389cad84b0182725c6c91de": {
+    "address": "0x354a6da3fcde098f8389cad84b0182725c6c91de",
+    "name": "Compound",
+    "symbol": "COMP",
+    "decimals": 18,
+    "addressOnMainnet": "0xc00e94cb662c3520282e6f5717214004a7f26888"
+  },
+  "0x6f5401c53e2769c858665621d22ddbf53d8d27c5": {
+    "address": "0x6f5401c53e2769c858665621d22ddbf53d8d27c5",
+    "name": "Connect Financial",
+    "symbol": "CNFI",
+    "decimals": 18,
+    "addressOnMainnet": "0xeabb8996ea1662cad2f7fb715127852cd3262ae9"
+  },
+  "0x6fe14d3cc2f7bddffba5cdb3bbe7467dd81ea101": {
+    "address": "0x6fe14d3cc2f7bddffba5cdb3bbe7467dd81ea101",
+    "name": "COTI",
+    "symbol": "COTI",
+    "decimals": 18,
+    "addressOnMainnet": "0xddb3422497e61e13543bea06989c0789117555c5"
+  },
+  "0xf4d48ce3ee1ac3651998971541badbb9a14d7234": {
+    "address": "0xf4d48ce3ee1ac3651998971541badbb9a14d7234",
+    "name": "Cream",
+    "symbol": "CREAM",
+    "decimals": 18,
+    "addressOnMainnet": "0x2ba592f78db6436527729929aaf6c908497cb200"
+  },
+  "0x11cdb42b0eb46d95f990bedd4695a6e3fa034978": {
+    "address": "0x11cdb42b0eb46d95f990bedd4695a6e3fa034978",
+    "name": "Curve DAO Token",
+    "symbol": "CRV",
+    "decimals": 18,
+    "addressOnMainnet": "0xd533a949740bb3306d119cc777fa900ba034cd52"
+  },
+  "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1": {
+    "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+    "name": "Dai Stablecoin",
+    "symbol": "DAI",
+    "decimals": 18,
+    "addressOnMainnet": "0x6b175474e89094c44da98b954eedeac495271d0f"
+  },
+  "0xcaa38bcc8fb3077975bbe217acfaa449e6596a84": {
+    "address": "0xcaa38bcc8fb3077975bbe217acfaa449e6596a84",
+    "name": "DAO Maker",
+    "symbol": "DAO",
+    "decimals": 18,
+    "addressOnMainnet": "0x0f51bb10119727a7e5ea3538074fb341f56b09ad"
+  },
+  "0x9e523234d36973f9e38642886197d023c88e307e": {
+    "address": "0x9e523234d36973f9e38642886197d023c88e307e",
+    "name": "Darwinia Network Native Token",
+    "symbol": "RING",
+    "decimals": 18,
+    "addressOnMainnet": "0x9469d013805bffb7d3debe5e7839237e535ec483"
+  },
+  "0x21e60ee73f17ac0a411ae5d690f908c3ed66fe12": {
+    "address": "0x21e60ee73f17ac0a411ae5d690f908c3ed66fe12",
+    "name": "Deri Protocol",
+    "symbol": "DERI",
+    "decimals": 18,
+    "addressOnMainnet": "0xa487bf43cf3b10dffc97a9a744cbb7036965d3b9"
+  },
+  "0xae6aab43c4f3e0cea4ab83752c278f8debaba689": {
+    "address": "0xae6aab43c4f3e0cea4ab83752c278f8debaba689",
+    "name": "dForce",
+    "symbol": "DF",
+    "decimals": 18,
+    "addressOnMainnet": "0x431ad2ff6a9c365805ebad47ee021148d6f7dbe0"
+  },
+  "0xa4914b824ef261d4ed0ccecec29500862d57c0a1": {
+    "address": "0xa4914b824ef261d4ed0ccecec29500862d57c0a1",
+    "name": "DFX Finance",
+    "symbol": "DFX",
+    "decimals": 18,
+    "addressOnMainnet": "0x888888435fde8e7d4c54cab67f206e4199454c60"
+  },
+  "0x8038f3c971414fd1fc220ba727f2d4a0fc98cb65": {
+    "address": "0x8038f3c971414fd1fc220ba727f2d4a0fc98cb65",
+    "name": "dHEDGE DAO Token",
+    "symbol": "DHT",
+    "decimals": 18,
+    "addressOnMainnet": "0xca1207647ff814039530d7d35df0e1dd2e91fa84"
+  },
+  "0x2b089381f53525451fe5115f23e9d2cc92d7ff1d": {
+    "address": "0x2b089381f53525451fe5115f23e9d2cc92d7ff1d",
+    "name": "Digital Reserve Currency",
+    "symbol": "DRC",
+    "decimals": 0,
+    "addressOnMainnet": "0xa150db9b1fa65b44799d4dd949d922c0a33ee606"
+  },
+  "0x69eb4fa4a2fbd498c257c57ea8b7655a2559a581": {
+    "address": "0x69eb4fa4a2fbd498c257c57ea8b7655a2559a581",
+    "name": "DODO bird",
+    "symbol": "DODO",
+    "decimals": 18,
+    "addressOnMainnet": "0x43dfc4159d86f3a37a5a4b3d4580b888ad7d4ddd"
+  },
+  "0x6a7661795c374c0bfc635934efaddff3a7ee23b6": {
+    "address": "0x6a7661795c374c0bfc635934efaddff3a7ee23b6",
+    "name": "DOLA",
+    "symbol": "DOLA",
+    "decimals": 18,
+    "addressOnMainnet": "0x865377367054516e17014ccded1e7d814edc9ce4"
+  },
+  "0x6c2c06790b3e3e3c38e12ee22f8183b37a13ee55": {
+    "address": "0x6c2c06790b3e3e3c38e12ee22f8183b37a13ee55",
+    "name": "Dopex",
+    "symbol": "DPX",
+    "decimals": 18,
+    "addressOnMainnet": "0xeec2be5c91ae7f8a338e1e5f3b5de49d07afdc81"
+  },
+  "0x32eb7902d4134bf98a28b963d26de779af92a212": {
+    "address": "0x32eb7902d4134bf98a28b963d26de779af92a212",
+    "name": "Dopex Rebate",
+    "symbol": "RDPX",
+    "decimals": 18,
+    "addressOnMainnet": "0x0ff5a8451a839f5f0bb3562689d9a44089738d11"
+  },
+  "0xc3ae0333f0f34aa734d5493276223d95b8f9cb37": {
+    "address": "0xc3ae0333f0f34aa734d5493276223d95b8f9cb37",
+    "name": "DXdao",
+    "symbol": "DXD",
+    "decimals": 18,
+    "addressOnMainnet": "0xa1d65e8fb6e87b60feccbc582f7f97804b725521"
+  },
+  "0x123389c2f0e9194d9ba98c21e63c375b67614108": {
+    "address": "0x123389c2f0e9194d9ba98c21e63c375b67614108",
+    "name": "EthereumMax",
+    "symbol": "EMAX",
+    "decimals": 18,
+    "addressOnMainnet": "0x15874d65e649880c2614e7a480cb7c9a55787ff6"
+  },
+  "0xa334884bf6b0a066d553d19e507315e839409e62": {
+    "address": "0xa334884bf6b0a066d553d19e507315e839409e62",
+    "name": "Ethos Reserve Note",
+    "symbol": "ERN",
+    "decimals": 18,
+    "addressOnMainnet": "0x91a69021b0baef3445e51726458a0ce601471846"
+  },
+  "0xcf985aba4647a432e60efceeb8054bbd64244305": {
+    "address": "0xcf985aba4647a432e60efceeb8054bbd64244305",
+    "name": "EUROe Stablecoin",
+    "symbol": "EUROE",
+    "decimals": 6,
+    "addressOnMainnet": "0x820802fa8a99901f52e39acd21177b0be6ee2974"
+  },
+  "0x9f6abbf0ba6b5bfa27f4deb6597cc6ec20573fda": {
+    "address": "0x9f6abbf0ba6b5bfa27f4deb6597cc6ec20573fda",
+    "name": "Ferrum Network Token",
+    "symbol": "FRM",
+    "decimals": 6,
+    "addressOnMainnet": "0xe5caef4af8780e59df925470b050fb23c43ca68c"
+  },
+  "0xe2105bea3819d3131b5b2306d44eb3271bfcfe0e": {
+    "address": "0xe2105bea3819d3131b5b2306d44eb3271bfcfe0e",
+    "name": "Fief",
+    "symbol": "FIEF",
+    "decimals": 18,
+    "addressOnMainnet": "0xea068fba19ce95f12d252ad8cb2939225c4ea02d"
+  },
+  "0xc628534100180582e43271448098cb2c185795bd": {
+    "address": "0xc628534100180582e43271448098cb2c185795bd",
+    "name": "Flashstake",
+    "symbol": "FLASH",
+    "decimals": 18,
+    "addressOnMainnet": "0xb1f1f47061a7be15c69f378cb3f69423bd58f2f8"
+  },
+  "0x4cfa50b7ce747e2d61724fcac57f24b748ff2b2a": {
+    "address": "0x4cfa50b7ce747e2d61724fcac57f24b748ff2b2a",
+    "name": "Fluid USDC",
+    "symbol": "FUSDC",
+    "decimals": 6,
+    "addressOnMainnet": "0x9d1089802ee608ba84c5c98211afe5f37f96b36c"
+  },
+  "0xf80d589b3dbe130c270a69f1a69d050f268786df": {
+    "address": "0xf80d589b3dbe130c270a69f1a69d050f268786df",
+    "name": "Datamine FLUX",
+    "symbol": "FLUX",
+    "decimals": 18,
+    "addressOnMainnet": "0x469eda64aed3a3ad6f868c44564291aa415cb1d9"
+  },
+  "0x17fc002b466eec40dae837fc4be5c67993ddbd6f": {
+    "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
+    "name": "Frax",
+    "symbol": "FRAX",
+    "decimals": 18,
+    "addressOnMainnet": "0x853d955acef822db058eb8505911ed77f175b99e"
+  },
+  "0x178412e79c25968a32e89b11f63b33f733770c2a": {
+    "address": "0x178412e79c25968a32e89b11f63b33f733770c2a",
+    "name": "Frax Ether",
+    "symbol": "FRXETH",
+    "decimals": 18,
+    "addressOnMainnet": "0x5e8422345238f34275888049021821e8e08caa1f"
+  },
+  "0x1b01514a2b3cdef16fd3c680a818a0ab97da8a09": {
+    "address": "0x1b01514a2b3cdef16fd3c680a818a0ab97da8a09",
+    "name": "Frax Price Index",
+    "symbol": "FPI",
+    "decimals": 18,
+    "addressOnMainnet": "0x5ca135cb8527d76e932f34b5145575f9d8cbe08e"
+  },
+  "0x3405e88af759992937b84e58f2fe691ef0eea320": {
+    "address": "0x3405e88af759992937b84e58f2fe691ef0eea320",
+    "name": "Frax Price Index Share",
+    "symbol": "FPIS",
+    "decimals": 18,
+    "addressOnMainnet": "0xc2544a32872a91f4a553b404c6950e89de901fdb"
+  },
+  "0x9d2f299715d94d8a7e6f5eaa8e654e8c74a988a7": {
+    "address": "0x9d2f299715d94d8a7e6f5eaa8e654e8c74a988a7",
+    "name": "Frax Share",
+    "symbol": "FXS",
+    "decimals": 18,
+    "addressOnMainnet": "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0"
+  },
+  "0x6b021b3f68491974be6d4009fee61a4e3c708fd6": {
+    "address": "0x6b021b3f68491974be6d4009fee61a4e3c708fd6",
+    "name": "Fuse Token",
+    "symbol": "FUSE",
+    "decimals": 18,
+    "addressOnMainnet": "0x970b9bb2c0444f5e81e9d0efb84c8ccdcdcaf84d"
+  },
+  "0x488cc08935458403a0458e45e20c0159c8ab2c92": {
+    "address": "0x488cc08935458403a0458e45e20c0159c8ab2c92",
+    "name": "Futureswap",
+    "symbol": "FST",
+    "decimals": 18,
+    "addressOnMainnet": "0x0e192d382a36de7011f795acc4391cd302003606"
+  },
+  "0x59a729658e9245b0cf1f8cb9fb37945d2b06ea27": {
+    "address": "0x59a729658e9245b0cf1f8cb9fb37945d2b06ea27",
+    "name": "GenomesDAO",
+    "symbol": "GENE",
+    "decimals": 18,
+    "addressOnMainnet": "0x21413c119b0c11c5d96ae1bd328917bc5c8ed67e"
+  },
+  "0xa0b862f60edef4452f25b4160f177db44deb6cf1": {
+    "address": "0xa0b862f60edef4452f25b4160f177db44deb6cf1",
+    "name": "Gnosis Token",
+    "symbol": "GNO",
+    "decimals": 18,
+    "addressOnMainnet": "0x6810e776880c02933d47db1b9fc05908e5386b96"
+  },
+  "0x8d9ba570d6cb60c7e3e0f31343efe75ab8e65fb1": {
+    "address": "0x8d9ba570d6cb60c7e3e0f31343efe75ab8e65fb1",
+    "name": "Governance OHM",
+    "symbol": "GOHM",
+    "decimals": 18,
+    "addressOnMainnet": "0x0ab87046fbb341d058f17cbc4c1133f25a20a52f"
+  },
+  "0x07e49d5de43dda6162fa28d24d5935c151875283": {
+    "address": "0x07e49d5de43dda6162fa28d24d5935c151875283",
+    "name": "CVI",
+    "symbol": "GOVI",
+    "decimals": 18,
+    "addressOnMainnet": "0xeeaa40b28a2d1b0b08f6f97bb1dd4b75316c6107"
+  },
+  "0x80bb30d62a16e1f2084deae84dc293531c3ac3a1": {
+    "address": "0x80bb30d62a16e1f2084deae84dc293531c3ac3a1",
+    "name": "Granary",
+    "symbol": "GRAIN",
+    "decimals": 18,
+    "addressOnMainnet": "0xf88baf18fab7e330fa0c4f83949e23f52fececce"
+  },
+  "0x589d35656641d6ab57a545f08cf473ecd9b6d5f7": {
+    "address": "0x589d35656641d6ab57a545f08cf473ecd9b6d5f7",
+    "name": "GYEN",
+    "symbol": "GYEN",
+    "decimals": 6,
+    "addressOnMainnet": "0xc08512927d12348f6620a698105e1baac6ecd911"
+  },
+  "0xdb298285fe4c5410b05390ca80e8fbe9de1f259b": {
+    "address": "0xdb298285fe4c5410b05390ca80e8fbe9de1f259b",
+    "name": "handle fi",
+    "symbol": "FOREX",
+    "decimals": 18,
+    "addressOnMainnet": "0xdb298285fe4c5410b05390ca80e8fbe9de1f259b"
+  },
+  "0x8616e8ea83f048ab9a5ec513c9412dd2993bce3f": {
+    "address": "0x8616e8ea83f048ab9a5ec513c9412dd2993bce3f",
+    "name": "handleUSD",
+    "symbol": "FXUSD",
+    "decimals": 18,
+    "addressOnMainnet": "0x8616e8ea83f048ab9a5ec513c9412dd2993bce3f"
+  },
+  "0x431402e8b9de9aa016c743880e04e517074d8cec": {
+    "address": "0x431402e8b9de9aa016c743880e04e517074d8cec",
+    "name": "Hegic",
+    "symbol": "HEGIC",
+    "decimals": 18,
+    "addressOnMainnet": "0x584bc13c7d411c00c01a62e8019472de68768430"
+  },
+  "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc": {
+    "address": "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc",
+    "name": "Hop Protocol",
+    "symbol": "HOP",
+    "decimals": 18,
+    "addressOnMainnet": "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc"
+  },
+  "0xb1bc21f748ae2be95674876710bc6d78235480e0": {
+    "address": "0xb1bc21f748ae2be95674876710bc6d78235480e0",
+    "name": "Hord",
+    "symbol": "HORD",
+    "decimals": 18,
+    "addressOnMainnet": "0x43a96962254855f16b925556f9e97be436a43448"
+  },
+  "0x10010078a54396f62c96df8532dc2b4847d47ed3": {
+    "address": "0x10010078a54396f62c96df8532dc2b4847d47ed3",
+    "name": "Hundred Finance",
+    "symbol": "HND",
+    "decimals": 18,
+    "addressOnMainnet": "0x10010078a54396f62c96df8532dc2b4847d47ed3"
+  },
+  "0xadf5dd3e51bf28ab4f07e684ecf5d00691818790": {
+    "address": "0xadf5dd3e51bf28ab4f07e684ecf5d00691818790",
+    "name": "ICHI",
+    "symbol": "ICHI",
+    "decimals": 18,
+    "addressOnMainnet": "0x111111517e4929d3dcbdfa7cce55d30d4b6bc4d6"
+  },
+  "0x9dca587dc65ac0a043828b0acd946d71eb8d46c1": {
+    "address": "0x9dca587dc65ac0a043828b0acd946d71eb8d46c1",
+    "name": "iFARM",
+    "symbol": "IFARM",
+    "decimals": 18,
+    "addressOnMainnet": "0x1571ed0bed4d987fe2b498ddbae7dfa19519f651"
+  },
+  "0x56659245931cb6920e39c189d2a0e7dd0da2d57b": {
+    "address": "0x56659245931cb6920e39c189d2a0e7dd0da2d57b",
+    "name": "Impermax",
+    "symbol": "IBEX",
+    "decimals": 18,
+    "addressOnMainnet": "0xf655c8567e0f213e6c634cd2a68d992152161dc6"
+  },
+  "0xb965029343d55189c25a7f3e0c9394dc0f5d41b1": {
+    "address": "0xb965029343d55189c25a7f3e0c9394dc0f5d41b1",
+    "name": "Indexed",
+    "symbol": "NDX",
+    "decimals": 18,
+    "addressOnMainnet": "0x86772b1409b61c639eaac9ba0acfbb6e238e5f83"
+  },
+  "0x0a3bb08b3a15a19b4de82f8acfc862606fb69a2d": {
+    "address": "0x0a3bb08b3a15a19b4de82f8acfc862606fb69a2d",
+    "name": "iZUMi Bond USD",
+    "symbol": "IUSD",
+    "decimals": 18,
+    "addressOnMainnet": "0x0a3bb08b3a15a19b4de82f8acfc862606fb69a2d"
+  },
+  "0x6aa395f06986ea4efe0a4630c7865c1eb08d5e7e": {
+    "address": "0x6aa395f06986ea4efe0a4630c7865c1eb08d5e7e",
+    "name": "Jarvis Reward Token",
+    "symbol": "JRT",
+    "decimals": 18,
+    "addressOnMainnet": "0x8a9c67fee641579deba04928c4bc45f66e26343a"
+  },
+  "0xafdefd913286a1cec75aca503938c6bba01a5445": {
+    "address": "0xafdefd913286a1cec75aca503938c6bba01a5445",
+    "name": "JPG NFT Index",
+    "symbol": "JPG",
+    "decimals": 18,
+    "addressOnMainnet": "0x02e7ac540409d32c90bfb51114003a9e1ff0249c"
+  },
+  "0x965d00aa7abc62ca10132e641d08593435ac811d": {
+    "address": "0x965d00aa7abc62ca10132e641d08593435ac811d",
+    "name": "Kapital DAO",
+    "symbol": "KAP",
+    "decimals": 18,
+    "addressOnMainnet": "0x9625ce7753ace1fa1865a47aae2c5c2ce4418569"
+  },
+  "0x55ff62567f09906a85183b866df84bf599a4bf70": {
+    "address": "0x55ff62567f09906a85183b866df84bf599a4bf70",
+    "name": "Kromatika",
+    "symbol": "KROM",
+    "decimals": 18,
+    "addressOnMainnet": "0x3af33bef05c2dcb3c7288b77fe1c8d2aeba4d789"
+  },
+  "0x3a18dcc9745edcd1ef33ecb93b0b6eba5671e7ca": {
+    "address": "0x3a18dcc9745edcd1ef33ecb93b0b6eba5671e7ca",
+    "name": "Kujira",
+    "symbol": "KUJI",
+    "decimals": 6,
+    "addressOnMainnet": "0x96543ef8d2c75c26387c1a319ae69c0bee6f3fe7"
+  },
+  "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb": {
+    "address": "0xe4dddfe67e7164b0fe14e218d80dc4c08edc01cb",
+    "name": "Kyber Network Crystal v2",
+    "symbol": "KNC",
+    "decimals": 18,
+    "addressOnMainnet": "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202"
+  },
+  "0x13ad51ed4f1b7e9dc168d8a00cb3f4ddd85efa60": {
+    "address": "0x13ad51ed4f1b7e9dc168d8a00cb3f4ddd85efa60",
+    "name": "Lido DAO Token",
+    "symbol": "LDO",
+    "decimals": 18,
+    "addressOnMainnet": "0x5a98fcbea516cf06857215779fd812ca3bef1b32"
+  },
+  "0xfb9e5d956d889d91a82737b9bfcdac1dce3e1449": {
+    "address": "0xfb9e5d956d889d91a82737b9bfcdac1dce3e1449",
+    "name": "LQTY",
+    "symbol": "LQTY",
+    "decimals": 18,
+    "addressOnMainnet": "0x6dea81c8171d0ba574754ef6f8b412f2ed88c54d"
+  },
+  "0x93b346b6bc2548da6a1e7d98e9a421b42541425b": {
+    "address": "0x93b346b6bc2548da6a1e7d98e9a421b42541425b",
+    "name": "Liquity USD",
+    "symbol": "LUSD",
+    "decimals": 18,
+    "addressOnMainnet": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0"
+  },
+  "0x289ba1701c2f088cf0faf8b3705246331cb8a839": {
+    "address": "0x289ba1701c2f088cf0faf8b3705246331cb8a839",
+    "name": "Livepeer",
+    "symbol": "LPT",
+    "decimals": 18,
+    "addressOnMainnet": "0x58b6a8a3302369daec383334672404ee733ab239"
+  },
+  "0x46d0ce7de6247b0a95f67b43b589b4041bae7fbe": {
+    "address": "0x46d0ce7de6247b0a95f67b43b589b4041bae7fbe",
+    "name": "Loopring",
+    "symbol": "LRC",
+    "decimals": 18,
+    "addressOnMainnet": "0xbbbbca6a901c926f240b89eacb641d8aec7aeafd"
+  },
+  "0x079504b86d38119f859c4194765029f692b7b7aa": {
+    "address": "0x079504b86d38119f859c4194765029f692b7b7aa",
+    "name": "Lyra Token",
+    "symbol": "LYRA",
+    "decimals": 18,
+    "addressOnMainnet": "0x01ba67aac7f75f647d94220cc98fb30fcc5105bf"
+  },
+  "0x539bde0d7dbd336b79148aa742883198bbf60342": {
+    "address": "0x539bde0d7dbd336b79148aa742883198bbf60342",
+    "name": "Magic",
+    "symbol": "MAGIC",
+    "decimals": 18,
+    "addressOnMainnet": "0xb0c7a3ba49c7a6eaba6cd4a96c55a1391070ac9a"
+  },
+  "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a": {
+    "address": "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+    "name": "Magic Internet Money",
+    "symbol": "MIM",
+    "decimals": 18,
+    "addressOnMainnet": "0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3"
+  },
+  "0xedd6ca8a4202d4a36611e2fff109648c4863ae19": {
+    "address": "0xedd6ca8a4202d4a36611e2fff109648c4863ae19",
+    "name": "MahaDAO",
+    "symbol": "MAHA",
+    "decimals": 18,
+    "addressOnMainnet": "0x745407c86df8db893011912d3ab28e68b62e49b0"
+  },
+  "0xda0a57b710768ae17941a9fa33f8b720c8bd9ddd": {
+    "address": "0xda0a57b710768ae17941a9fa33f8b720c8bd9ddd",
+    "name": "Marlin",
+    "symbol": "POND",
+    "decimals": 18,
+    "addressOnMainnet": "0x57b946008913b82e4df85f501cbaed910e58d26c"
+  },
+  "0x99f40b01ba9c469193b360f72740e416b17ac332": {
+    "address": "0x99f40b01ba9c469193b360f72740e416b17ac332",
+    "name": "MATH",
+    "symbol": "MATH",
+    "decimals": 18,
+    "addressOnMainnet": "0x08d967bb0134f2d07f7cfb6e246680c53927dd30"
+  },
+  "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42": {
+    "address": "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42",
+    "name": "MCDEX",
+    "symbol": "MCB",
+    "decimals": 18,
+    "addressOnMainnet": "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42"
+  },
+  "0x15a808ed3846d25e88ae868de79f1bcb1ac382b5": {
+    "address": "0x15a808ed3846d25e88ae868de79f1bcb1ac382b5",
+    "name": "Metavault DAO",
+    "symbol": "MVD",
+    "decimals": 9,
+    "addressOnMainnet": "0x788b6d2b37aa51d916f2837ae25b05f0e61339d1"
+  },
+  "0x3b60ff35d3f7f62d636b067dd0dc0dfdad670e4e": {
+    "address": "0x3b60ff35d3f7f62d636b067dd0dc0dfdad670e4e",
+    "name": "Milady Meme Coin",
+    "symbol": "LADYS",
+    "decimals": 18,
+    "addressOnMainnet": "0x12970e6868f88f6557b76120662c1b3e50a646bf"
+  },
+  "0x3f56e0c36d275367b8c502090edf38289b3dea0d": {
+    "address": "0x3f56e0c36d275367b8c502090edf38289b3dea0d",
+    "name": "Mai Stablecoin",
+    "symbol": "MAI",
+    "decimals": 18,
+    "addressOnMainnet": "0x8d6cebd76f18e1558d4db88138e2defb3909fad6"
+  },
+  "0xf0dfad1817b5ba73726b02ab34dd4b4b00bcd392": {
+    "address": "0xf0dfad1817b5ba73726b02ab34dd4b4b00bcd392",
+    "name": "Minato",
+    "symbol": "MNTO",
+    "decimals": 18,
+    "addressOnMainnet": "0x97a9bac06f90940bce9caec2b880ff17707519e4"
+  },
+  "0x9fb9a33956351cf4fa040f65a13b835a3c8764e3": {
+    "address": "0x9fb9a33956351cf4fa040f65a13b835a3c8764e3",
+    "name": "Multichain",
+    "symbol": "MULTI",
+    "decimals": 18,
+    "addressOnMainnet": "0x65ef703f5594d2573eb71aaf55bc0cb548492df4"
+  },
+  "0xc74fe4c715510ec2f8c61d70d397b32043f55abe": {
+    "address": "0xc74fe4c715510ec2f8c61d70d397b32043f55abe",
+    "name": "Mycelium",
+    "symbol": "MYC",
+    "decimals": 18,
+    "addressOnMainnet": "0x4b13006980acb09645131b91d259eaa111eaf5ba"
+  },
+  "0xadd5620057336f868eae78a451c503ae7b576bad": {
+    "address": "0xadd5620057336f868eae78a451c503ae7b576bad",
+    "name": "noiseGPT",
+    "symbol": "NOISEGPT",
+    "decimals": 18,
+    "addressOnMainnet": "0xf23a2bf7619ad93300499c3fc7d7145a06cca562"
+  },
+  "0xa970af1a584579b618be4d69ad6f73459d112f95": {
+    "address": "0xa970af1a584579b618be4d69ad6f73459d112f95",
+    "name": "Synth sUSD",
+    "symbol": "SUSD",
+    "decimals": 18,
+    "addressOnMainnet": "0x57ab1ec28d129707052df4df418d58a2d46d5f51"
+  },
+  "0xee9801669c6138e84bd50deb500827b776777d28": {
+    "address": "0xee9801669c6138e84bd50deb500827b776777d28",
+    "name": "O3 Swap",
+    "symbol": "O3",
+    "decimals": 18,
+    "addressOnMainnet": "0xee9801669c6138e84bd50deb500827b776777d28"
+  },
+  "0x6cc5b1fb8c2fd7af1d2858f916f274b8faac82e1": {
+    "address": "0x6cc5b1fb8c2fd7af1d2858f916f274b8faac82e1",
+    "name": "Ojamu",
+    "symbol": "OJA",
+    "decimals": 18,
+    "addressOnMainnet": "0x0aa7efe4945db24d95ca6e117bba65ed326e291a"
+  },
+  "0xd3ac016b1b8c80eeadde4d186a9138c9324e4189": {
+    "address": "0xd3ac016b1b8c80eeadde4d186a9138c9324e4189",
+    "name": "Okcash",
+    "symbol": "OK",
+    "decimals": 18,
+    "addressOnMainnet": "0xd3ac016b1b8c80eeadde4d186a9138c9324e4189"
+  },
+  "0xf0cb2dc0db5e6c66b9a70ac27b06b878da017028": {
+    "address": "0xf0cb2dc0db5e6c66b9a70ac27b06b878da017028",
+    "name": "Olympus",
+    "symbol": "OHM",
+    "decimals": 9,
+    "addressOnMainnet": "0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5"
+  },
+  "0xc72633f995e98ac3bb8a89e6a9c4af335c3d6e44": {
+    "address": "0xc72633f995e98ac3bb8a89e6a9c4af335c3d6e44",
+    "name": "Omnisea",
+    "symbol": "OSEA",
+    "decimals": 18,
+    "addressOnMainnet": "0xc72633f995e98ac3bb8a89e6a9c4af335c3d6e44"
+  },
+  "0x188fb5f5ae5bbe4154d5778f2bbb2fb985c94d25": {
+    "address": "0x188fb5f5ae5bbe4154d5778f2bbb2fb985c94d25",
+    "name": "OpenBlox",
+    "symbol": "OBX",
+    "decimals": 18,
+    "addressOnMainnet": "0x188fb5f5ae5bbe4154d5778f2bbb2fb985c94d25"
+  },
+  "0xf3c091ed43de9c270593445163a41a876a0bb3dd": {
+    "address": "0xf3c091ed43de9c270593445163a41a876a0bb3dd",
+    "name": "Orbs",
+    "symbol": "ORBS",
+    "decimals": 18,
+    "addressOnMainnet": "0xff56cc6b1e6ded347aa0b7676c85ab0b3d08b0fa"
+  },
+  "0x7cb16cb78ea464ad35c8a50abf95dff3c9e09d5d": {
+    "address": "0x7cb16cb78ea464ad35c8a50abf95dff3c9e09d5d",
+    "name": "0xBitcoin Token",
+    "symbol": "0XBTC",
+    "decimals": 8,
+    "addressOnMainnet": "0xb6ed7644c69416d67b522e20bc294a9a9b405b31"
+  },
+  "0xbad58ed9b5f26a002ea250d7a60dc6729a4a2403": {
+    "address": "0xbad58ed9b5f26a002ea250d7a60dc6729a4a2403",
+    "name": "Paribus",
+    "symbol": "PBX",
+    "decimals": 18,
+    "addressOnMainnet": "0xd528cf2e081f72908e086f8800977df826b5a483"
+  },
+  "0x0c880f6761f1af8d9aa9c466984b80dab9a8c9e8": {
+    "address": "0x0c880f6761f1af8d9aa9c466984b80dab9a8c9e8",
+    "name": "Pendle",
+    "symbol": "PENDLE",
+    "decimals": 18,
+    "addressOnMainnet": "0x808507121b80c02388fad14726482e061b8da827"
+  },
+  "0x2ac2b254bc18cd4999f64773a966e4f4869c34ee": {
+    "address": "0x2ac2b254bc18cd4999f64773a966e4f4869c34ee",
+    "name": "Penpie",
+    "symbol": "PNP",
+    "decimals": 18,
+    "addressOnMainnet": "0x7dedbce5a2e31e4c75f87fea60bf796c17718715"
+  },
+  "0x25d887ce7a35172c62febfd67a1856f20faebb00": {
+    "address": "0x25d887ce7a35172c62febfd67a1856f20faebb00",
+    "name": "Pepe",
+    "symbol": "PEPE",
+    "decimals": 18,
+    "addressOnMainnet": "0x6982508145454ce325ddbe47a25d4ec3d2311933"
+  },
+  "0x753d224bcf9aafacd81558c32341416df61d3dac": {
+    "address": "0x753d224bcf9aafacd81558c32341416df61d3dac",
+    "name": "Perpetual",
+    "symbol": "PERP",
+    "decimals": 18,
+    "addressOnMainnet": "0xbc396689893d065f41bc2c6ecbee5e0085233447"
+  },
+  "0x39a49bc5017fc668299cd32e734c9269acc35295": {
+    "address": "0x39a49bc5017fc668299cd32e734c9269acc35295",
+    "name": "Phonon DAO",
+    "symbol": "PHONON",
+    "decimals": 18,
+    "addressOnMainnet": "0x758b4684be769e92eefea93f60dda0181ea303ec"
+  },
+  "0x965772e0e9c84b6f359c8597c891108dcf1c5b1a": {
+    "address": "0x965772e0e9c84b6f359c8597c891108dcf1c5b1a",
+    "name": "Pickle Finance",
+    "symbol": "PICKLE",
+    "decimals": 18,
+    "addressOnMainnet": "0x429881672b9ae42b8eba0e26cd9c73711b891ca5"
+  },
+  "0x68ead55c258d6fa5e46d67fc90f53211eab885be": {
+    "address": "0x68ead55c258d6fa5e46d67fc90f53211eab885be",
+    "name": "Popcorn",
+    "symbol": "POP",
+    "decimals": 18,
+    "addressOnMainnet": "0xd0cd466b34a24fcb2f87676278af2005ca8a78c4"
+  },
+  "0x51fc0f6660482ea73330e414efd7808811a57fa2": {
+    "address": "0x51fc0f6660482ea73330e414efd7808811a57fa2",
+    "name": "Premia",
+    "symbol": "PREMIA",
+    "decimals": 18,
+    "addressOnMainnet": "0x6399c842dd2be3de30bf99bc7d1bbf6fa3650e70"
+  },
+  "0xb25ea095997f5bbaa6cea962c4fbf3bfc3c09776": {
+    "address": "0xb25ea095997f5bbaa6cea962c4fbf3bfc3c09776",
+    "name": "Promethios",
+    "symbol": "FIRE",
+    "decimals": 9,
+    "addressOnMainnet": "0xb25ea095997f5bbaa6cea962c4fbf3bfc3c09776"
+  },
+  "0x115d8bf0a53e751f8a472f88d587944ec1c8ca6d": {
+    "address": "0x115d8bf0a53e751f8a472f88d587944ec1c8ca6d",
+    "name": "pTokens BTC",
+    "symbol": "PBTC",
+    "decimals": 18,
+    "addressOnMainnet": "0x62199b909fb8b8cf870f97bef2ce6783493c4908"
+  },
+  "0xef888bca6ab6b1d26dbec977c455388ecd794794": {
+    "address": "0xef888bca6ab6b1d26dbec977c455388ecd794794",
+    "name": "Rari Governance Token",
+    "symbol": "RGT",
+    "decimals": 18,
+    "addressOnMainnet": "0xd291e7a03283640fdc51b121ac401383a46cc623"
+  },
+  "0x1426cf37caa89628c4da2864e40cf75e6d66ac6b": {
+    "address": "0x1426cf37caa89628c4da2864e40cf75e6d66ac6b",
+    "name": "Relay Chain",
+    "symbol": "RELAY",
+    "decimals": 18,
+    "addressOnMainnet": "0x5d843fa9495d23de997c394296ac7b4d721e841c"
+  },
+  "0x9ed7e4b1bff939ad473da5e7a218c771d1569456": {
+    "address": "0x9ed7e4b1bff939ad473da5e7a218c771d1569456",
+    "name": "Reunit Wallet",
+    "symbol": "REUNI",
+    "decimals": 6,
+    "addressOnMainnet": "0x9ed7e4b1bff939ad473da5e7a218c771d1569456"
+  },
+  "0xa7aa2921618e3d63da433829d448b58c9445a4c3": {
+    "address": "0xa7aa2921618e3d63da433829d448b58c9445a4c3",
+    "name": "Rhino fi",
+    "symbol": "DVF",
+    "decimals": 18,
+    "addressOnMainnet": "0xdddddd4301a082e62e84e43f474f044423921918"
+  },
+  "0x7f4638a58c0615037decc86f1dae60e55fe92874": {
+    "address": "0x7f4638a58c0615037decc86f1dae60e55fe92874",
+    "name": "Rigo Token",
+    "symbol": "GRG",
+    "decimals": 18,
+    "addressOnMainnet": "0x4fbb350052bca5417566f188eb2ebce5b19bc964"
+  },
+  "0x7d86f1eaff29f076576b2ff09ce3bcc7533fd2c5": {
+    "address": "0x7d86f1eaff29f076576b2ff09ce3bcc7533fd2c5",
+    "name": "Risitas",
+    "symbol": "RISITA",
+    "decimals": 18,
+    "addressOnMainnet": "0xe6f47303032a09c8c0f8ebb713c00e6ed345e8c3"
+  },
+  "0xb766039cc6db368759c1e56b79affe831d0cc507": {
+    "address": "0xb766039cc6db368759c1e56b79affe831d0cc507",
+    "name": "Rocket Pool",
+    "symbol": "RPL",
+    "decimals": 18,
+    "addressOnMainnet": "0xd33526068d116ce69f19a9ee46f0bd304f21a51f"
+  },
+  "0xec70dcb4a1efa46b8f2d97c310c9c4790ba5ffa8": {
+    "address": "0xec70dcb4a1efa46b8f2d97c310c9c4790ba5ffa8",
+    "name": "Rocket Pool ETH",
+    "symbol": "RETH",
+    "decimals": 18,
+    "addressOnMainnet": "0xae78736cd615f374d3085123a210448e74fc6393"
+  },
+  "0x3bd2dfd03bc7c3011ed7fb8c4d0949b382726cee": {
+    "address": "0x3bd2dfd03bc7c3011ed7fb8c4d0949b382726cee",
+    "name": "ROOBEE",
+    "symbol": "ROOBEE",
+    "decimals": 18,
+    "addressOnMainnet": "0xa31b1767e09f842ecfd4bc471fe44f830e3891aa"
+  },
+  "0x11bbf12363dc8375b78d2719395d505f52a02f68": {
+    "address": "0x11bbf12363dc8375b78d2719395d505f52a02f68",
+    "name": "Route",
+    "symbol": "ROUTE",
+    "decimals": 18,
+    "addressOnMainnet": "0x16eccfdbb4ee1a85a33f3a9b21175cd7ae753db4"
+  },
+  "0x75c9bc761d88f70156daf83aa010e84680baf131": {
+    "address": "0x75c9bc761d88f70156daf83aa010e84680baf131",
+    "name": "Saddle Finance",
+    "symbol": "SDL",
+    "decimals": 18,
+    "addressOnMainnet": "0xf1dc500fde233a4055e25e5bbf516372bc4f6871"
+  },
+  "0xaa54e84a3e6e5a80288d2c2f8e36ea5ca3a3ca30": {
+    "address": "0xaa54e84a3e6e5a80288d2c2f8e36ea5ca3a3ca30",
+    "name": "Sharbi",
+    "symbol": "SHARBI",
+    "decimals": 9,
+    "addressOnMainnet": "0xf3a3023e6dede84ad88a656a3269f2a36e83c9a9"
+  },
+  "0x0341c0c0ec423328621788d4854119b97f44e391": {
+    "address": "0x0341c0c0ec423328621788d4854119b97f44e391",
+    "name": "Silo Governance Token",
+    "symbol": "SILO",
+    "decimals": 18,
+    "addressOnMainnet": "0x6f80310ca7f2c654691d1383149fa1a57d8ab1f8"
+  },
+  "0xabd587f2607542723b17f14d00d99b987c29b074": {
+    "address": "0xabd587f2607542723b17f14d00d99b987c29b074",
+    "name": "SmarDex",
+    "symbol": "SDEX",
+    "decimals": 18,
+    "addressOnMainnet": "0x5de8ab7e27f6e7a1fff3e5b337584aa43961beef"
+  },
+  "0x3e6648c5a70a150a88bce65f4ad4d506fe15d2af": {
+    "address": "0x3e6648c5a70a150a88bce65f4ad4d506fe15d2af",
+    "name": "Spell Token",
+    "symbol": "SPELL",
+    "decimals": 18,
+    "addressOnMainnet": "0x090185f2135308bad17527004364ebcc2d37e5f6"
+  },
+  "0x5575552988a3a80504bbaeb1311674fcfd40ad4b": {
+    "address": "0x5575552988a3a80504bbaeb1311674fcfd40ad4b",
+    "name": "Sperax",
+    "symbol": "SPA",
+    "decimals": 18,
+    "addressOnMainnet": "0xb4a3b0faf0ab53df58001804dda5bfc6a3d59008"
+  },
+  "0xeca14f81085e5b8d1c9d32dcb596681574723561": {
+    "address": "0xeca14f81085e5b8d1c9d32dcb596681574723561",
+    "name": "Spool",
+    "symbol": "SPOOL",
+    "decimals": 18,
+    "addressOnMainnet": "0x40803cea2b2a32bda1be61d3604af6a814e70976"
+  },
+  "0x097bf766e427f5ccd306f21ba05632e0be849b0e": {
+    "address": "0x097bf766e427f5ccd306f21ba05632e0be849b0e",
+    "name": "StableUSD",
+    "symbol": "USDS",
+    "decimals": 6,
+    "addressOnMainnet": "0xa4bdb11dc0a2bec88d24a3aa1e6bb17201112ebe"
+  },
+  "0x7ce746b45eabd0c4321538dec1b849c79a9a8476": {
+    "address": "0x7ce746b45eabd0c4321538dec1b849c79a9a8476",
+    "name": "DSLA",
+    "symbol": "DSLA",
+    "decimals": 18,
+    "addressOnMainnet": "0x3affcca64c2a6f4e3b6bd9c64cd2c969efd1ecbe"
+  },
+  "0x7ac168c81f4f3820fa3f22603ce5864d6ab3c547": {
+    "address": "0x7ac168c81f4f3820fa3f22603ce5864d6ab3c547",
+    "name": "Staked ACME",
+    "symbol": "STACME",
+    "decimals": 8,
+    "addressOnMainnet": "0x7ac168c81f4f3820fa3f22603ce5864d6ab3c547"
+  },
+  "0x7ba4a00d54a07461d9db2aef539e91409943adc9": {
+    "address": "0x7ba4a00d54a07461d9db2aef539e91409943adc9",
+    "name": "Stake DAO",
+    "symbol": "SDT",
+    "decimals": 18,
+    "addressOnMainnet": "0x73968b9a57c6e53d41345fd57a6e6ae27d6cdb2f"
+  },
+  "0x95ab45875cffdba1e5f451b950bc2e42c0053f39": {
+    "address": "0x95ab45875cffdba1e5f451b950bc2e42c0053f39",
+    "name": "Staked Frax Ether",
+    "symbol": "SFRXETH",
+    "decimals": 18,
+    "addressOnMainnet": "0xac3e018457b222d93114458476f3e3416abbe38f"
+  },
+  "0x37596f20adef5cc9618c8b6ddfa9dcb6329cb0fd": {
+    "address": "0x37596f20adef5cc9618c8b6ddfa9dcb6329cb0fd",
+    "name": "Starfish Finance",
+    "symbol": "SEAN",
+    "decimals": 18,
+    "addressOnMainnet": "0xa719cb79af39a9c10eda2755e0938bce35e9de24"
+  },
+  "0x6694340fc020c5e6b96567843da2df01b2ce1eb6": {
+    "address": "0x6694340fc020c5e6b96567843da2df01b2ce1eb6",
+    "name": "Stargate Finance",
+    "symbol": "STG",
+    "decimals": 18,
+    "addressOnMainnet": "0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6"
+  },
+  "0x7dd747d63b094971e6638313a6a2685e80c7fb2e": {
+    "address": "0x7dd747d63b094971e6638313a6a2685e80c7fb2e",
+    "name": "STFX",
+    "symbol": "STFX",
+    "decimals": 18,
+    "addressOnMainnet": "0x9343e24716659a3551eb10aff9472a2dcad5db2d"
+  },
+  "0x326c33fd1113c1f29b35b4407f3d6312a8518431": {
+    "address": "0x326c33fd1113c1f29b35b4407f3d6312a8518431",
+    "name": "Strips Finance",
+    "symbol": "STRP",
+    "decimals": 18,
+    "addressOnMainnet": "0x97872eafd79940c7b24f7bcc1eadb1457347adc9"
+  },
+  "0xd4d42f0b6def4ce0383636770ef773390d85c61a": {
+    "address": "0xd4d42f0b6def4ce0383636770ef773390d85c61a",
+    "name": "SushiSwap",
+    "symbol": "SUSHI",
+    "decimals": 18,
+    "addressOnMainnet": "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2"
+  },
+  "0xde903e2712288a1da82942dddf2c20529565ac30": {
+    "address": "0xde903e2712288a1da82942dddf2c20529565ac30",
+    "name": "Swapr",
+    "symbol": "SWPR",
+    "decimals": 18,
+    "addressOnMainnet": "0x6cacdb97e3fc8136805a9e7c342d866ab77d0957"
+  },
+  "0xbc011a12da28e8f0f528d9ee5e7039e22f91cf18": {
+    "address": "0xbc011a12da28e8f0f528d9ee5e7039e22f91cf18",
+    "name": "Swell Ethereum",
+    "symbol": "SWETH",
+    "decimals": 18,
+    "addressOnMainnet": "0xf951e335afb289353dc249e82926178eac7ded78"
+  },
+  "0x9e758b8a98a42d612b3d38b66a22074dc03d7370": {
+    "address": "0x9e758b8a98a42d612b3d38b66a22074dc03d7370",
+    "name": "Symbiosis Finance",
+    "symbol": "SIS",
+    "decimals": 18,
+    "addressOnMainnet": "0xd38bb40815d2b0c2d2c866e0c72c5728ffc76dd9"
+  },
+  "0x080f6aed32fc474dd5717105dba5ea57268f46eb": {
+    "address": "0x080f6aed32fc474dd5717105dba5ea57268f46eb",
+    "name": "Synapse",
+    "symbol": "SYN",
+    "decimals": 18,
+    "addressOnMainnet": "0x0f2d719407fdbeff09d87557abb7232601fd9f29"
+  },
+  "0x6688b00f0c23a4a546beaae51a7c90c439895d48": {
+    "address": "0x6688b00f0c23a4a546beaae51a7c90c439895d48",
+    "name": "Tarot",
+    "symbol": "TAROT",
+    "decimals": 18,
+    "addressOnMainnet": "0x837d904a3799c0769079be9ecbaddf1abd4ccd6e"
+  },
+  "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40": {
+    "address": "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40",
+    "name": "tBTC",
+    "symbol": "TBTC",
+    "decimals": 18,
+    "addressOnMainnet": "0x18084fba666a33d37592fa2633fd49a74dd93a88"
+  },
+  "0xd58d345fd9c82262e087d2d0607624b410d88242": {
+    "address": "0xd58d345fd9c82262e087d2d0607624b410d88242",
+    "name": "Tellor Tributes",
+    "symbol": "TRB",
+    "decimals": 18,
+    "addressOnMainnet": "0x88df592f8eb5d7bd38bfef7deb0fbc02cf3778a0"
+  },
+  "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9": {
+    "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+    "name": "Tether USD",
+    "symbol": "USDT",
+    "decimals": 6,
+    "addressOnMainnet": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+  },
+  "0xe85b662fe97e8562f4099d8a1d5a92d4b453bf30": {
+    "address": "0xe85b662fe97e8562f4099d8a1d5a92d4b453bf30",
+    "name": "Thales DAO Token",
+    "symbol": "THALES",
+    "decimals": 18,
+    "addressOnMainnet": "0x8947da500eb47f82df21143d0c01a29862a8c3c5"
+  },
+  "0x4425742f1ec8d98779690b5a3a6276db85ddc01a": {
+    "address": "0x4425742f1ec8d98779690b5a3a6276db85ddc01a",
+    "name": "The Doge NFT",
+    "symbol": "DOG",
+    "decimals": 18,
+    "addressOnMainnet": "0xbaac2b4491727d78d2b78815144570b9f2fe8899"
+  },
+  "0x9623063377ad1b27544c965ccd7342f7ea7e88c7": {
+    "address": "0x9623063377ad1b27544c965ccd7342f7ea7e88c7",
+    "name": "Graph Token",
+    "symbol": "GRT",
+    "decimals": 18,
+    "addressOnMainnet": "0xc944e90c64b2c07662a292be6244bdf05cda44a7"
+  },
+  "0x643b34980e635719c15a2d4ce69571a258f940e9": {
+    "address": "0x643b34980e635719c15a2d4ce69571a258f940e9",
+    "name": "Standard Euro",
+    "symbol": "SEURO",
+    "decimals": 18,
+    "addressOnMainnet": "0xb399511642fe1666c6a07f83483e6e4feaed9a00"
+  },
+  "0x641441c631e2f909700d2f41fd87f0aa6a6b4edb": {
+    "address": "0x641441c631e2f909700d2f41fd87f0aa6a6b4edb",
+    "name": "dForce USD",
+    "symbol": "USX",
+    "decimals": 18,
+    "addressOnMainnet": "0x0a5e677a6a24b2f1a2bf4f3bffc443231d2fdec8"
+  },
+  "0x55678cd083fcdc2947a0df635c93c838c89454a3": {
+    "address": "0x55678cd083fcdc2947a0df635c93c838c89454a3",
+    "name": "Tokenlon",
+    "symbol": "LON",
+    "decimals": 18,
+    "addressOnMainnet": "0x0000000000095413afc295d19edeb1ad7b71c952"
+  },
+  "0xa72159fc390f0e3c6d415e658264c7c4051e9b87": {
+    "address": "0xa72159fc390f0e3c6d415e658264c7c4051e9b87",
+    "name": "Tracer DAO",
+    "symbol": "TCR",
+    "decimals": 18,
+    "addressOnMainnet": "0x9c4a4204b79dd291d6b6571c5be8bbcd0622f050"
+  },
+  "0xfa7f8980b0f1e64a2062791cc3b0871572f1f7f0": {
+    "address": "0xfa7f8980b0f1e64a2062791cc3b0871572f1f7f0",
+    "name": "Uniswap",
+    "symbol": "UNI",
+    "decimals": 18,
+    "addressOnMainnet": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
+  },
+  "0x51a80238b5738725128d3a3e06ab41c1d4c05c74": {
+    "address": "0x51a80238b5738725128d3a3e06ab41c1d4c05c74",
+    "name": "unshETHing Token",
+    "symbol": "USH",
+    "decimals": 18,
+    "addressOnMainnet": "0xe60779cc1b2c1d0580611c526a8df0e3f870ec48"
+  },
+  "0x0ae38f7e10a43b5b2fb064b42a2f4514cba909ef": {
+    "address": "0x0ae38f7e10a43b5b2fb064b42a2f4514cba909ef",
+    "name": "unshETH Ether",
+    "symbol": "UNSHETH",
+    "decimals": 18,
+    "addressOnMainnet": "0x0ae38f7e10a43b5b2fb064b42a2f4514cba909ef"
+  },
+  "0xaf88d065e77c8cc2239327c5edb3a432268e5831": {
+    "address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+    "name": "USD Coin",
+    "symbol": "USDC",
+    "decimals": 6,
+    "addressOnMainnet": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+  },
+  "0x680447595e8b7b3aa1b43beb9f6098c79ac2ab3f": {
+    "address": "0x680447595e8b7b3aa1b43beb9f6098c79ac2ab3f",
+    "name": "Decentralized USD",
+    "symbol": "USDD",
+    "decimals": 18,
+    "addressOnMainnet": "0x0c10bf8fcb7bf5412187a595ab97a3609160b5c6"
+  },
+  "0x7d05d38e6109a3aeeebf0a570eb8f6856cb4b55e": {
+    "address": "0x7d05d38e6109a3aeeebf0a570eb8f6856cb4b55e",
+    "name": "MintMe com Coin",
+    "symbol": "MINTME",
+    "decimals": 18,
+    "addressOnMainnet": "0x772722b55cdc2a086abd064267a17855eb15e8b3"
+  },
+  "0xffa188493c15dfaf2c206c97d8633377847b6a52": {
+    "address": "0xffa188493c15dfaf2c206c97d8633377847b6a52",
+    "name": "Wefi Finance",
+    "symbol": "WEFI",
+    "decimals": 18,
+    "addressOnMainnet": "0xffa188493c15dfaf2c206c97d8633377847b6a52"
+  },
+  "0x82af49447d8a07e3bd95bd0d56f35241523fbab1": {
+    "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "name": "Wrapped Ether",
+    "symbol": "WETH",
+    "decimals": 18,
+    "addressOnMainnet": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+  },
+  "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b": {
+    "address": "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b",
+    "name": "Wootrade Network",
+    "symbol": "WOO",
+    "decimals": 18,
+    "addressOnMainnet": "0x4691937a7508860f876c9c0a2a617e7d9e945d4b"
+  },
+  "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034": {
+    "address": "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034",
+    "name": "Banano",
+    "symbol": "BAN",
+    "decimals": 18,
+    "addressOnMainnet": "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034"
+  },
+  "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f": {
+    "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+    "name": "Wrapped BTC",
+    "symbol": "WBTC",
+    "decimals": 8,
+    "addressOnMainnet": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+  },
+  "0xecf2adaff1de8a512f6e8bfe67a2c836edb25da3": {
+    "address": "0xecf2adaff1de8a512f6e8bfe67a2c836edb25da3",
+    "name": "Wonderful Memories",
+    "symbol": "WMEMO",
+    "decimals": 18,
+    "addressOnMainnet": "0x3b79a28264fc52c7b4cea90558aa0b162f7faf57"
+  },
+  "0x5979d7b546e38e414f7e9822514be443a4800529": {
+    "address": "0x5979d7b546e38e414f7e9822514be443a4800529",
+    "name": "Wrapped liquid staked Ether 2.0",
+    "symbol": "wstETH",
+    "decimals": 18,
+    "addressOnMainnet": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+  },
+  "0x71eeba415a523f5c952cc2f06361d5443545ad28": {
+    "address": "0x71eeba415a523f5c952cc2f06361d5443545ad28",
+    "name": "XDAO",
+    "symbol": "XDAO",
+    "decimals": 18,
+    "addressOnMainnet": "0x71eeba415a523f5c952cc2f06361d5443545ad28"
+  },
+  "0xf0a5717ec0883ee56438932b0fe4a20822735fba": {
+    "address": "0xf0a5717ec0883ee56438932b0fe4a20822735fba",
+    "name": "xToken",
+    "symbol": "XTK",
+    "decimals": 18,
+    "addressOnMainnet": "0x7f3edcdd180dbe4819bd98fee8929b5cedb3adeb"
+  },
+  "0xeb4d25db65dcef52380c99ba7e1344c820ecb1fc": {
+    "address": "0xeb4d25db65dcef52380c99ba7e1344c820ecb1fc",
+    "name": "X World Games",
+    "symbol": "XWG",
+    "decimals": 18,
+    "addressOnMainnet": "0x0a77ef9bf662d62fbf9ba4cf861eaa83f9cc4fec"
+  },
+  "0x82e3a8f066a6989666b031d916c43672085b1582": {
+    "address": "0x82e3a8f066a6989666b031d916c43672085b1582",
+    "name": "yearn.finance",
+    "symbol": "YFI",
+    "decimals": 18,
+    "addressOnMainnet": "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e"
+  },
+  "0xf061956612b3dc79fd285d3d51bc128f2ea87740": {
+    "address": "0xf061956612b3dc79fd285d3d51bc128f2ea87740",
+    "name": "YFDAI.FINANCE",
+    "symbol": "YF-DAI",
+    "decimals": 18,
+    "addressOnMainnet": "0xf4cd3d3fda8d7fd6c5a500203e38640a70bf9577"
+  },
+  "0x30dcba0405004cf124045793e1933c798af9e66a": {
+    "address": "0x30dcba0405004cf124045793e1933c798af9e66a",
+    "name": "Yieldification",
+    "symbol": "YDF",
+    "decimals": 18,
+    "addressOnMainnet": "0x30dcba0405004cf124045793e1933c798af9e66a"
+  },
+  "0xa6099b214e8d069911702bc92ef274f63c476c5a": {
+    "address": "0xa6099b214e8d069911702bc92ef274f63c476c5a",
+    "name": "Zenland",
+    "symbol": "ZENF",
+    "decimals": 18,
+    "addressOnMainnet": "0xe9b7b5d5e8d2bcc78884f9f9099bfa42a9e5c1a5"
+  },
+  "0x1689a6e1f09658ff37d0bb131514e701045876da": {
+    "address": "0x1689a6e1f09658ff37d0bb131514e701045876da",
+    "name": "ZooDAO",
+    "symbol": "ZOO",
+    "decimals": 18,
+    "addressOnMainnet": "0x09f098b155d561fc9f7bccc97038b7e3d20baf74"
+  },
+  "0x6e4cc0ab2b4d2edafa6723cfa1582229f1dd1be1": {
+    "address": "0x6e4cc0ab2b4d2edafa6723cfa1582229f1dd1be1",
+    "name": "ZUSD",
+    "symbol": "ZUSD",
+    "decimals": 6,
+    "addressOnMainnet": "0xc56c2b7e71b54d38aab6d52e94a04cbfa8f604fa"
+  },
+  "0x377c6e37633e390aef9afb4f5e0b16689351eed4": {
+    "address": "0x377c6e37633e390aef9afb4f5e0b16689351eed4",
+    "name": "ZYX",
+    "symbol": "ZYX",
+    "decimals": 18,
+    "addressOnMainnet": "0xf974b5f9ac9c6632fee8b76c61b0242ce69c839d"
+  },
+  "0x8929e9dbd2785e3ba16175e596cdd61520fee0d1": {
+    "address": "0x8929e9dbd2785e3ba16175e596cdd61520fee0d1",
+    "name": "Altitude",
+    "symbol": "ALTD",
+    "decimals": 18,
+    "addressOnMainnet": "0x8929e9dbd2785e3ba16175e596cdd61520fee0d1"
+  },
+  "0x2f11eeee0bf21e7661a22dbbbb9068f4ad191b86": {
+    "address": "0x2f11eeee0bf21e7661a22dbbbb9068f4ad191b86",
+    "name": "Backed Niu Technologies",
+    "symbol": "bNIU",
+    "decimals": 18,
+    "addressOnMainnet": "0x2f11eeee0bf21e7661a22dbbbb9068f4ad191b86"
+  },
+  "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5": {
+    "address": "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5",
+    "name": "BetSwirl v2",
+    "symbol": "BETS",
+    "decimals": 18,
+    "addressOnMainnet": "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5"
+  },
+  "0x580e933d90091b9ce380740e3a4a39c67eb85b4c": {
+    "address": "0x580e933d90091b9ce380740e3a4a39c67eb85b4c",
+    "name": "GameSwift",
+    "symbol": "GSWIFT",
+    "decimals": 18,
+    "addressOnMainnet": "0x580e933d90091b9ce380740e3a4a39c67eb85b4c"
+  },
+  "0x83d6c8c06ac276465e4c92e7ac8c23740f435140": {
+    "address": "0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
+    "name": "HMX",
+    "symbol": "HMX",
+    "decimals": 18,
+    "addressOnMainnet": "0x83d6c8c06ac276465e4c92e7ac8c23740f435140"
+  },
+  "0xf1264873436a0771e440e2b28072fafcc5eebd01": {
+    "address": "0xf1264873436a0771e440e2b28072fafcc5eebd01",
+    "name": "Kenshi",
+    "symbol": "KNS",
+    "decimals": 18,
+    "addressOnMainnet": "0xf1264873436a0771e440e2b28072fafcc5eebd01"
+  },
+  "0x59d9356e565ab3a36dd77763fc0d87feaf85508c": {
+    "address": "0x59d9356e565ab3a36dd77763fc0d87feaf85508c",
+    "name": "Mountain Protocol USD",
+    "symbol": "USDM",
+    "decimals": 18,
+    "addressOnMainnet": "0x59d9356e565ab3a36dd77763fc0d87feaf85508c"
+  },
+  "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60": {
+    "address": "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
+    "name": "SeedifyFund",
+    "symbol": "SFUND",
+    "decimals": 18,
+    "addressOnMainnet": "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60"
+  },
+  "0x3b6564b5da73a41d3a66e6558a98fd0e9e1e77ad": {
+    "address": "0x3b6564b5da73a41d3a66e6558a98fd0e9e1e77ad",
+    "name": "Unitus",
+    "symbol": "UTS",
+    "decimals": 18,
+    "addressOnMainnet": "0x3b6564b5da73a41d3a66e6558a98fd0e9e1e77ad"
+  },
+  "0x9b06f3c5de42d4623d7a2bd940ec735103c68a76": {
+    "address": "0x9b06f3c5de42d4623d7a2bd940ec735103c68a76",
+    "name": "Volta Club",
+    "symbol": "Volta",
+    "decimals": 18,
+    "addressOnMainnet": "0x9b06f3c5de42d4623d7a2bd940ec735103c68a76"
+  },
+  "0x9483ab65847a447e36d21af1cab8c87e9712ff93": {
+    "address": "0x9483ab65847a447e36d21af1cab8c87e9712ff93",
+    "name": "",
+    "symbol": "",
+    "decimals": 9,
+    "addressOnMainnet": "0xc03b43d492d904406db2d7d57e67c7e8234ba752"
+  }
+}
