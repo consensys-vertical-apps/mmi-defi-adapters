@@ -1,0 +1,175 @@
+{
+  "blockNumber": 18776256,
+  "snapshot": [
+    {
+      "protocolId": "morpho-compound-v2",
+      "name": "MorphoCompoundV2",
+      "description": "MorphoCompoundV2 defi adapter on the supply side",
+      "siteUrl": "https://compound.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
+          "name": "Compound Dai",
+          "symbol": "cDAI",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "8085368317705084n",
+          "totalSupply": "80853683.17705084"
+        },
+        {
+          "address": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
+          "name": "Compound Collateral",
+          "symbol": "cCOMP",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "57281303795n",
+          "totalSupply": "572.81303795"
+        },
+        {
+          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+          "name": "Compound Ether",
+          "symbol": "cETH",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "168911299156n",
+          "totalSupply": "1689.11299156"
+        },
+        {
+          "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
+          "name": "Compound Fei USD",
+          "symbol": "cFEI",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "130914388873n",
+          "totalSupply": "1309.14388873"
+        },
+        {
+          "address": "0x35a18000230da775cac24873d00ff85bccded550",
+          "name": "Compound Uniswap",
+          "symbol": "cUNI",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "127118648273381n",
+          "totalSupply": "1271186.48273381"
+        },
+        {
+          "address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
+          "name": "Compound USD Coin",
+          "symbol": "cUSDC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "1185609447392857n",
+          "totalSupply": "11856094.47392857"
+        },
+        {
+          "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
+          "name": "Compound USDT",
+          "symbol": "cUSDT",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "29913789181804813n",
+          "totalSupply": "299137891.81804813"
+        },
+        {
+          "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
+          "name": "Compound Wrapped BTC",
+          "symbol": "cWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "2706138436776n",
+          "totalSupply": "27061.38436776"
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-compound-v2",
+      "name": "MorphoCompoundV2",
+      "description": "MorphoCompoundV2 defi adapter on the borrow side",
+      "siteUrl": "https://compound.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
+          "name": "Compound Dai",
+          "symbol": "cDAI",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "7230842743123040n",
+          "totalSupply": "72308427.4312304"
+        },
+        {
+          "address": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
+          "name": "Compound Collateral",
+          "symbol": "cCOMP",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "17128741593n",
+          "totalSupply": "171.28741593"
+        },
+        {
+          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+          "name": "Compound Ether",
+          "symbol": "cETH",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "117587649111n",
+          "totalSupply": "1175.87649111"
+        },
+        {
+          "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
+          "name": "Compound Fei USD",
+          "symbol": "cFEI",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "26n",
+          "totalSupply": "0.00000026"
+        },
+        {
+          "address": "0x35a18000230da775cac24873d00ff85bccded550",
+          "name": "Compound Uniswap",
+          "symbol": "cUNI",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "9522077826727n",
+          "totalSupply": "95220.77826727"
+        },
+        {
+          "address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
+          "name": "Compound USD Coin",
+          "symbol": "cUSDC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "23646781299728335n",
+          "totalSupply": "236467812.99728335"
+        },
+        {
+          "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
+          "name": "Compound USDT",
+          "symbol": "cUSDT",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "3480934046713642n",
+          "totalSupply": "34809340.46713642"
+        },
+        {
+          "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
+          "name": "Compound Wrapped BTC",
+          "symbol": "cWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "369044989n",
+          "totalSupply": "3.69044989"
+        }
+      ]
+    }
+  ]
+}

@@ -10,7 +10,10 @@ export const Protocol = {
   Maker: 'maker',
   GMX: 'gmx',
   Swell: 'swell',
+  MorphoAaveV2: 'morpho-aave-v2',
   Convex: 'convex',
   Prices: 'prices',
+  MorphoCompoundV2: 'morpho-compound-v2',
+  MorphoAaveV3ETHOptimizer: 'morpho-aave-v3-eth',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]

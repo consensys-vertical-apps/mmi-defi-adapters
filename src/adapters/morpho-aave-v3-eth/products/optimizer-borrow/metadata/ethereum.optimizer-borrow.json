@@ -1,0 +1,16 @@
+{
+  "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8": {
+    "protocolToken": {
+      "address": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+      "name": "Aave Ethereum WETH",
+      "symbol": "aEthWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  }
+}

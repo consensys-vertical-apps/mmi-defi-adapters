@@ -1,0 +1,157 @@
+{
+  "blockNumber": 18733080,
+  "snapshot": [
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the borrow side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "name": "Aave interest bearing DAI",
+          "symbol": "aDAI",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "14108347668472664311575318n",
+          "totalSupply": "14108347.668472664311575318"
+        },
+        {
+          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "95466645205577799437151n",
+          "totalSupply": "95466.645205577799437151"
+        },
+        {
+          "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "27400854481208n",
+          "totalSupply": "27400854.481208"
+        },
+        {
+          "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "9766196933267n",
+          "totalSupply": "9766196.933267"
+        },
+        {
+          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "10240456994n",
+          "totalSupply": "102.40456994"
+        },
+        {
+          "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
+          "name": "Aave interest bearing STETH",
+          "symbol": "aSTETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "0n",
+          "totalSupply": "0.0"
+        },
+        {
+          "address": "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1",
+          "name": "Aave interest bearing CRV",
+          "symbol": "aCRV",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "59645261177539135889n",
+          "totalSupply": "59.645261177539135889"
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the supply side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "name": "Aave interest bearing DAI",
+          "symbol": "aDAI",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "8583350166495660434659976n",
+          "totalSupply": "8583350.166495660434659976"
+        },
+        {
+          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "96103087774780755413223n",
+          "totalSupply": "96103.087774780755413223"
+        },
+        {
+          "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "38059539237938n",
+          "totalSupply": "38059539.237938"
+        },
+        {
+          "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "11051901314525n",
+          "totalSupply": "11051901.314525"
+        },
+        {
+          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "124054343678n",
+          "totalSupply": "1240.54343678"
+        },
+        {
+          "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
+          "name": "Aave interest bearing STETH",
+          "symbol": "aSTETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "129175888255285633192883n",
+          "totalSupply": "129175.888255285633192883"
+        },
+        {
+          "address": "0x8dae6cb04688c62d939ed9b68d32bc62e49970b1",
+          "name": "Aave interest bearing CRV",
+          "symbol": "aCRV",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "1091271170480326156203435n",
+          "totalSupply": "1091271.170480326156203435"
+        }
+      ]
+    }
+  ]
+}
