@@ -1,4 +1,5 @@
 import { formatUnits } from 'ethers'
+import { priceAdapterConfig } from '../../adapters/prices/products/usd/priceAdapterConfig'
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
@@ -40,7 +41,6 @@ import { aggregateFiatBalancesFromMovements } from '../utils/aggregateFiatBalanc
 import { calculateDeFiAttributionPerformance } from '../utils/calculateDeFiAttributionPerformance'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
-import { priceAdapterConfig } from '../../adapters/prices/products/usd/priceAdapterConfig'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
   chainId: Chain
@@ -295,7 +295,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
             priceAdapterConfig.decimals,
           )
 
-          let profit =
+          const profit =
             endPositionValue + withdrawal - deposit - startPositionValue
 
           if (this.getProtocolDetails().positionType == PositionType.Borrow) {

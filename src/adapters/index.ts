@@ -28,7 +28,6 @@ import { StargateVestingAdapter } from './stargate/products/vesting/stargateVest
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 
-//@ts-ignore
 export const supportedProtocols: Record<
   Protocol,
   Partial<

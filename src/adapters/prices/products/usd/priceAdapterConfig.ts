@@ -1,5 +1,5 @@
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 
 const QUOTER_CONTRACT = '0xb27308f9f90d607463bb33ea1bebb41c27ce5ab6'
 

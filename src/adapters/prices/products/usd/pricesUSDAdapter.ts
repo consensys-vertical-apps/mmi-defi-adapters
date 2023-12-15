@@ -1,6 +1,5 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
@@ -32,9 +31,9 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
+import { COINGECKO_CHAIN_ID } from '../../common/coingecko-chain-id'
 import COINGECKO_LIST from '../../common/coingecko-list.json'
 import { ChainLink__factory, UniswapQuoter__factory } from '../../contracts'
-import { COINGECKO_CHAIN_ID } from '../../common/coingecko-chain-id'
 import { priceAdapterConfig } from './priceAdapterConfig'
 
 type PriceMetadata = Record<string, Erc20Metadata>
@@ -185,6 +184,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     const isNativeToken =
       priceAdapterConfig.nativeToken.addresses.includes(protocolTokenAddress)
 
+    // We map the native token to the wrapped token
     const tokenDetails = isNativeToken
       ? priceAdapterConfig.nativeToken.details[
           this.chainId as keyof typeof priceAdapterConfig.nativeToken.details
@@ -193,16 +193,17 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
 
     const wethAddress = priceAdapterConfig.wrappedEth.addresses[this.chainId]
 
-    const erc20TokenPriceInEth =
-      wethAddress == tokenDetails.address
-        ? BigInt(Math.pow(10, 18))
-        : await this.quoteExactInputSingleCall({
-            tokenIn: tokenDetails.address,
-            tokenOut: wethAddress,
-            amountOut: BigInt(Math.pow(10, tokenDetails.decimals)),
-            sqrtPriceLimitX96: 0,
-            blockNumber,
-          })
+    const isEth = wethAddress == tokenDetails.address
+
+    const erc20TokenPriceInEth = isEth
+      ? BigInt(Math.pow(10, 18)) // eth price in eth is 1 to 1
+      : await this.quoteExactInputSingleCall({
+          tokenIn: tokenDetails.address,
+          tokenOut: wethAddress,
+          amountOut: BigInt(Math.pow(10, tokenDetails.decimals)),
+          sqrtPriceLimitX96: 0,
+          blockNumber,
+        })
 
     if (!erc20TokenPriceInEth) {
       throw new Error('Could not get token price in eth')
@@ -220,8 +221,6 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     const tokenPriceInUSD = this.calculateERC20PriceInUsd({
       erc20TokenPriceInEth: erc20TokenPriceInEth as bigint,
       ethPriceUSD: ethPriceUSD.answer,
-      ethDecimals: priceAdapterConfig.wrappedEth.decimals,
-      usdDecimals: tokenDetails.decimals,
     })
 
     return {
@@ -247,30 +246,16 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
   private calculateERC20PriceInUsd({
     erc20TokenPriceInEth,
     ethPriceUSD,
-    ethDecimals,
-    usdDecimals,
   }: {
     erc20TokenPriceInEth: bigint
     ethPriceUSD: bigint
-    ethDecimals: number
-    usdDecimals: number
   }): bigint {
-    // Convert the ERC20 token price and ETH price to a common base (using bigint for precision)
-    const tokenPriceInEthBase = erc20TokenPriceInEth
-    const ethPriceInUsdBase = ethPriceUSD
-
-    // Calculate the token price in USD (in the common base)
-    const tokenPriceInUsdBase =
-      (tokenPriceInEthBase * ethPriceInUsdBase) /
+    return (
+      (erc20TokenPriceInEth * ethPriceUSD) /
       BigInt(Math.pow(10, priceAdapterConfig.chainlink.decimals))
-
-    return tokenPriceInUsdBase
+    )
   }
 
-  /**
-   * Update me.
-   * Add logic to calculate the users profits
-   */
   async getProfits(_input: GetProfitsInput): Promise<ProfitsWithRange> {
     throw new NotImplementedError()
   }
@@ -304,13 +289,16 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
       this.provider,
     )
 
-    // add comments
-
+    // Note: UNISWAP has different pools per fee
+    // We look for at two different pools to find a price
+    // We may want to search for more pools in future
+    // First we try with fee = 10000
     return await uniswapQuoter.quoteExactInputSingle
       .staticCall(tokenIn, tokenOut, 10000, amountOut, sqrtPriceLimitX96, {
         blockTag: blockNumber,
       })
-      .catch(async (err) => {
+      .catch(async () => {
+        // Second we try with fee = 3000
         return await uniswapQuoter.quoteExactInputSingle.staticCall(
           tokenIn,
           tokenOut,
@@ -322,7 +310,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
           },
         )
       })
-      .catch((err) => {
+      .catch(() => {
         logger.debug(
           { chainId: this.chainId, token: tokenIn },
           'Unable to get price',
