@@ -19,12 +19,12 @@
           "decimals": 8,
           "type": "protocol",
           "profit": -8283.822407730273,
-          "performance": -0.01763746095457147,
+          "performance": -0.017637460954571468,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 469672.04798166716,
-            "endPositionValue": 461388.2255739369
+            "startPositionValue": 469672.0479816672,
+            "endPositionValue": 461388.22557393694
           }
         },
         {
@@ -33,13 +33,13 @@
           "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
-          "profit": -975.8534720096868,
-          "performance": -0.017636775349711028,
+          "profit": -975.8534720096795,
+          "performance": -0.017636775349710896,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "startPositionValue": 55330.606228177414,
-            "endPositionValue": 54354.75275616773
+            "endPositionValue": 54354.752756167734
           }
         }
       ],

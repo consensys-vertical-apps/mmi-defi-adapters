@@ -49,12 +49,11 @@ export const priceAdapterConfig = {
       [Chain.Linea]: '0x3c6cd9cc7c7a4c2cf5a82734cd249d7d593354da',
     },
   },
-
   nativeToken: {
     addresses: [
       ZERO_ADDRESS,
       '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
-      '0x0000000000000000000000000000000000001010',
+      '0x0000000000000000000000000000000000001010', // native token on polygon matic
     ],
     details: {
       [Chain.Ethereum]: {

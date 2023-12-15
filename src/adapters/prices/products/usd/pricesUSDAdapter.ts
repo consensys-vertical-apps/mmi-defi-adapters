@@ -195,17 +195,17 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
 
     const erc20TokenPriceInEth =
       wethAddress == tokenDetails.address
-        ? BigInt(1 * Math.pow(10, 18))
+        ? BigInt(Math.pow(10, 18))
         : await this.quoteExactInputSingleCall({
             tokenIn: tokenDetails.address,
             tokenOut: wethAddress,
-            amountOut: BigInt(1 * Math.pow(10, tokenDetails.decimals)),
+            amountOut: BigInt(Math.pow(10, tokenDetails.decimals)),
             sqrtPriceLimitX96: 0,
             blockNumber,
           })
 
     if (!erc20TokenPriceInEth) {
-      throw new NotImplementedError()
+      throw new Error('Could not get token price in eth')
     }
 
     const contract = ChainLink__factory.connect(
@@ -256,19 +256,13 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     usdDecimals: number
   }): bigint {
     // Convert the ERC20 token price and ETH price to a common base (using bigint for precision)
-    const tokenPriceInEthBase =
-      erc20TokenPriceInEth * BigInt(Math.pow(10, usdDecimals))
-    const ethPriceInUsdBase = ethPriceUSD * BigInt(Math.pow(10, ethDecimals))
+    const tokenPriceInEthBase = erc20TokenPriceInEth
+    const ethPriceInUsdBase = ethPriceUSD
 
     // Calculate the token price in USD (in the common base)
     const tokenPriceInUsdBase =
       (tokenPriceInEthBase * ethPriceInUsdBase) /
-      BigInt(
-        Math.pow(
-          10,
-          ethDecimals + usdDecimals + priceAdapterConfig.chainlink.decimals,
-        ),
-      )
+      BigInt(Math.pow(10, priceAdapterConfig.chainlink.decimals))
 
     return tokenPriceInUsdBase
   }
@@ -302,13 +296,15 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     sqrtPriceLimitX96: number
     blockNumber?: number
   }) {
-    const uniswapQuoter = await UniswapQuoter__factory.connect(
+    const uniswapQuoter = UniswapQuoter__factory.connect(
       priceAdapterConfig.uniswap.quoterContractAddresses[
         this
           .chainId as keyof typeof priceAdapterConfig.uniswap.quoterContractAddresses
       ],
       this.provider,
     )
+
+    // add comments
 
     return await uniswapQuoter.quoteExactInputSingle
       .staticCall(tokenIn, tokenOut, 10000, amountOut, sqrtPriceLimitX96, {

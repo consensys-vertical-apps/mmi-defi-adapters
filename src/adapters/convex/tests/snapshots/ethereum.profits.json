@@ -49,12 +49,12 @@
           "symbol": "cvxcDAI+cUSDC",
           "decimals": 18,
           "type": "protocol",
-          "profit": 8.671646204905471,
-          "performance": 0.02440922170650441,
+          "profit": 8.671646204905414,
+          "performance": 0.024409221706504246,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 355.2610693275283,
+            "startPositionValue": 355.26106932752833,
             "endPositionValue": 363.93271553243375
           }
         },
@@ -65,12 +65,12 @@
           "decimals": 18,
           "type": "protocol",
           "profit": 0.0019372022742622647,
-          "performance": 0.02440922170650435,
+          "performance": 0.024409221706504346,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 0.07936354126957093,
-            "endPositionValue": 0.0813007435438332
+            "startPositionValue": 0.07936354126957094,
+            "endPositionValue": 0.08130074354383321
           }
         },
         {
@@ -124,12 +124,12 @@
           "decimals": 18,
           "type": "protocol",
           "profit": 1.9605412988848627,
-          "performance": 0.011338521070608136,
+          "performance": 0.011338521070608135,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 172.90979014600094,
-            "endPositionValue": 174.8703314448858
+            "startPositionValue": 172.90979014600097,
+            "endPositionValue": 174.87033144488584
           }
         }
       ],

@@ -19,12 +19,12 @@
           "decimals": 18,
           "type": "protocol",
           "profit": 0.033341907355143974,
-          "performance": 0.004292972565871139,
+          "performance": 0.004292972565871138,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 7.76662483711404,
-            "endPositionValue": 7.799966744469184
+            "startPositionValue": 7.7666248371140405,
+            "endPositionValue": 7.7999667444691845
           }
         }
       ],
