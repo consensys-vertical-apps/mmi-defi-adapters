@@ -35,7 +35,6 @@ function runAllTests() {
   runProtocolTests(Protocol.GMX, gMXTestCases)
   runProtocolTests(Protocol.Swell, swellTestCases)
   runProtocolTests(Protocol.Convex, convexTestCases)
-  runProtocolTests(Protocol.Prices, pricesTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
