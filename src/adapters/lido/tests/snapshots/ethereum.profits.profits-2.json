@@ -18,13 +18,13 @@
           "symbol": "stETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": 0,
-          "performance": 0,
+          "profit": 1.2546854715202003e-14,
+          "performance": -0.8829064096883671,
           "calculationData": {
-            "withdrawals": 116.7881906,
-            "deposits": 116.7881906,
-            "startPositionValue": 0,
-            "endPositionValue": 0
+            "withdrawals": 116.78819060921893,
+            "deposits": 116.78819060921892,
+            "startPositionValue": 1.664e-15,
+            "endPositionValue": 1.639e-15
           }
         }
       ],
@@ -48,13 +48,13 @@
           "symbol": "wstETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": -19.566504590000022,
-          "performance": -0.013792430218210857,
+          "profit": -19.566504599845302,
+          "performance": -0.013792430224977266,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 116.7881906,
-            "startPositionValue": 1301.85263487,
-            "endPositionValue": 1399.07432088
+            "deposits": 116.78819060921892,
+            "startPositionValue": 1301.8526348786297,
+            "endPositionValue": 1399.0743208880033
           }
         }
       ],

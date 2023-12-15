@@ -29,6 +29,17 @@
             "decimals": 18,
             "transactionHash": "0xe256790dc30e6dfdaccf03ef96da1e845500971ec648a513558e369a950ba28b",
             "blockNumber": 18274547,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 18,
+                "type": "fiat",
+                "balanceRaw": "9297272703376870457993n",
+                "balance": "9297.272703376870457993"
+              }
+            ],
             "balance": "6050.612623457024522962"
           },
           {
@@ -45,10 +56,10 @@
                 "address": "TheUnitedStatesMint",
                 "name": "USD",
                 "symbol": "USD",
-                "decimals": 8,
+                "decimals": 18,
                 "type": "fiat",
-                "balanceRaw": "4776514673649n",
-                "balance": "47765.14673649"
+                "balanceRaw": "47765146736495714389899n",
+                "balance": "47765.146736495714389899"
               }
             ],
             "balance": "29.079681341117729741"

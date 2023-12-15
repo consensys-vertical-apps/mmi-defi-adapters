@@ -27,6 +27,17 @@
               "decimals": 8,
               "type": "underlying",
               "balanceRaw": "1661250551n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "560976827119753426957789n",
+                  "balance": "560976.827119753426957789"
+                }
+              ],
               "balance": "16.61250551",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             },
@@ -37,6 +48,17 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "238921832015213250764n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "488172705435019307987208n",
+                  "balance": "488172.705435019307987208"
+                }
+              ],
               "balance": "238.921832015213250764",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             },
@@ -47,6 +69,17 @@
               "decimals": 6,
               "type": "underlying",
               "balanceRaw": "408572860317n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "401561212796412263671764n",
+                  "balance": "401561.212796412263671764"
+                }
+              ],
               "balance": "408572.860317",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
             },
@@ -57,6 +90,17 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "2217380640138616774957n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "32357773990945112102602n",
+                  "balance": "32357.773990945112102602"
+                }
+              ],
               "balance": "2217.380640138616774957",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             },
@@ -67,6 +111,17 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "2942511159813985410799n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "16011743268774511807419n",
+                  "balance": "16011.743268774511807419"
+                }
+              ],
               "balance": "2942.511159813985410799",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFa7F8980b0f1E64A2062791cc3b0871572f1F7f0/logo.png"
             },
@@ -77,6 +132,17 @@
               "decimals": 6,
               "type": "underlying",
               "balanceRaw": "31517266919n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "31127408103877591085642n",
+                  "balance": "31127.408103877591085642"
+                }
+              ],
               "balance": "31517.266919",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
             },
@@ -107,6 +173,17 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "60685824128801607320277n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "59843538997057074501914n",
+                  "balance": "59843.538997057074501914"
+                }
+              ],
               "balance": "60685.824128801607320277",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             },
@@ -117,6 +194,17 @@
               "decimals": 6,
               "type": "underlying",
               "balanceRaw": "224531691856n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "220695402411417692588116n",
+                  "balance": "220695.402411417692588116"
+                }
+              ],
               "balance": "224531.691856",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
             }

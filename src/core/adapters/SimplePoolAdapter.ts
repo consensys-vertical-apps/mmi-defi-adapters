@@ -40,7 +40,7 @@ import { aggregateFiatBalancesFromMovements } from '../utils/aggregateFiatBalanc
 import { calculateDeFiAttributionPerformance } from '../utils/calculateDeFiAttributionPerformance'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
-import { USD_DECIMALS } from '../../adapters/prices/products/usd/pricesUSDAdapter'
+import { priceAdapterConfig } from '../../adapters/prices/products/usd/priceAdapterConfig'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
   chainId: Chain
@@ -280,19 +280,19 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
           const endPositionValue = +formatUnits(
             endPositionValues[key]?.usdRaw ?? 0n,
-            USD_DECIMALS,
+            priceAdapterConfig.decimals,
           )
           const withdrawal = +formatUnits(
             withdrawals[key]?.usdRaw ?? 0n,
-            USD_DECIMALS,
+            priceAdapterConfig.decimals,
           )
           const deposit = +formatUnits(
             deposits[key]?.usdRaw ?? 0n,
-            USD_DECIMALS,
+            priceAdapterConfig.decimals,
           )
           const startPositionValue = +formatUnits(
             startPositionValues[key]?.usdRaw ?? 0n,
-            USD_DECIMALS,
+            priceAdapterConfig.decimals,
           )
 
           let profit =
