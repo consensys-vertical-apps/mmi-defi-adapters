@@ -158,7 +158,9 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
             baseAddress: address,
             quoteAddress: wethAddress,
           }
-        } catch (error) {}
+        } catch (error) {
+          return
+        }
       }
     })
 
