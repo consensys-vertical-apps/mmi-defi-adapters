@@ -196,6 +196,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             const response = await defiProvider.getPrices({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
+              filterProtocolToken: testCase.filterProtocolToken,
               blockNumbers: { [testCase.chainId]: blockNumber },
             })
 
