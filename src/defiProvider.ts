@@ -8,6 +8,7 @@ import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
 import { ChainProvider } from './core/utils/chainProviders'
 import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
+import { logger } from './core/utils/logger'
 import { mergeClaimableWithProtocol } from './core/utils/mergeClaimableWithProtocol'
 import {
   enrichPositionBalance,
@@ -56,10 +57,28 @@ export class DefiProvider {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
+      const startTime = new Date()
+
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
       })
+
+      const endTime = new Date()
+      const timeTaken = endTime.getTime() - startTime.getTime()
+      logger.info(
+        {
+          startTime,
+          endTime,
+          timeTaken,
+          chainId: adapter.chainId,
+          protocolId: adapter.protocolId,
+          productId: adapter.productId,
+          userAddress,
+          blockNumber,
+        },
+        'Positions fetched',
+      )
 
       const tokens = protocolPositions.map((protocolPosition) =>
         enrichPositionBalance(protocolPosition, adapter.chainId),
@@ -100,11 +119,31 @@ export class DefiProvider {
         (await provider.getBlockNumber())
       const fromBlock =
         toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
+
+      const startTime = new Date()
+
       const profits = await adapter.getProfits({
         userAddress,
         toBlock,
         fromBlock,
       })
+
+      const endTime = new Date()
+      const timeTaken = endTime.getTime() - startTime.getTime()
+      logger.info(
+        {
+          startTime,
+          endTime,
+          timeTaken,
+          chainId: adapter.chainId,
+          protocolId: adapter.protocolId,
+          productId: adapter.productId,
+          userAddress,
+          fromBlock,
+          toBlock,
+        },
+        'Profits fetched',
+      )
 
       return profits
     }
@@ -131,11 +170,30 @@ export class DefiProvider {
       const protocolTokens = await adapter.getProtocolTokens()
       const tokens = await Promise.all(
         protocolTokens.map(async ({ address: protocolTokenAddress }) => {
+          const startTime = new Date()
+
           const protocolTokenUnderlyingRate =
             await adapter.getProtocolTokenToUnderlyingTokenRate({
               protocolTokenAddress,
               blockNumber,
             })
+
+          const endTime = new Date()
+          const timeTaken = endTime.getTime() - startTime.getTime()
+          logger.info(
+            {
+              startTime,
+              endTime,
+              timeTaken,
+              chainId: adapter.chainId,
+              protocolId: adapter.protocolId,
+              productId: adapter.productId,
+              protocolTokenAddress,
+              blockNumber,
+            },
+            'Prices fetched',
+          )
+
           return enrichUnderlyingTokenRates(
             protocolTokenUnderlyingRate,
             adapter.chainId,
