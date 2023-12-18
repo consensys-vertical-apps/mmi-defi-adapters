@@ -158,16 +158,31 @@ export class DefiProvider {
   async getPrices({
     filterProtocolIds,
     filterChainIds,
+    filterProtocolToken,
     blockNumbers,
   }: {
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
+    filterProtocolToken?: string
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<PricePerShareResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      const protocolTokens = await adapter.getProtocolTokens()
+      let protocolTokens = await adapter.getProtocolTokens()
+
+      if (filterProtocolToken) {
+        const filteredProtocolTokens = protocolTokens.filter(
+          (protocolToken) =>
+            protocolToken.address.toLowerCase() ===
+            filterProtocolToken.toLowerCase(),
+        )
+        if (filteredProtocolTokens.length === 0) {
+          return { tokens: [] }
+        }
+        protocolTokens = filteredProtocolTokens
+      }
+
       const tokens = await Promise.all(
         protocolTokens.map(async ({ address: protocolTokenAddress }) => {
           const startTime = new Date()

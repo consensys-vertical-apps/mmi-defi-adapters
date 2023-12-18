@@ -76,6 +76,10 @@ export class ConvexCvxcrvWrapperAdapter
       blockTag: blockNumber,
     })
 
+    if (lpTokenBalance == 0n) {
+      return []
+    }
+
     const extraRewards = await contract.earned.staticCall(userAddress, {
       blockTag: blockNumber,
     })

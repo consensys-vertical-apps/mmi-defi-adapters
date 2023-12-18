@@ -116,6 +116,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     blockNumbers: {
                       [chainId]: blockNumber,
                     },
+                    filterProtocolToken: testCase.filterProtocolToken,
                   }),
                 }
               }
