@@ -1,5 +1,5 @@
 {
-  "blockNumber": 34136095,
+  "blockNumber": 34467153,
   "snapshot": [
     {
       "protocolId": "iziswap",
@@ -26,9 +26,9 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 18,
-              "balanceRaw": "39671504390072318n",
+              "balanceRaw": "41266669681491433n",
               "type": "underlying",
-              "balance": "0.039671504390072318",
+              "balance": "0.041266669681491433",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
             },
             {
@@ -36,9 +36,9 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 18,
-              "balanceRaw": "8779912488666n",
+              "balanceRaw": "74103064033407n",
               "type": "underlying-claimable",
-              "balance": "0.000008779912488666",
+              "balance": "0.000074103064033407",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
             },
             {
@@ -46,9 +46,9 @@
               "name": "Wrapped BNB",
               "symbol": "WBNB",
               "decimals": 18,
-              "balanceRaw": "172718783941848n",
+              "balanceRaw": "165936555968351n",
               "type": "underlying",
-              "balance": "0.000172718783941848",
+              "balance": "0.000165936555968351",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
             },
             {
@@ -56,9 +56,9 @@
               "name": "Wrapped BNB",
               "symbol": "WBNB",
               "decimals": 18,
-              "balanceRaw": "39741796024n",
+              "balanceRaw": "300441510261n",
               "type": "underlying-claimable",
-              "balance": "0.000000039741796024",
+              "balance": "0.000000300441510261",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
             }
           ],

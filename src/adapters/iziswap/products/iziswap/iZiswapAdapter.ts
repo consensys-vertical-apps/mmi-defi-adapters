@@ -1,13 +1,11 @@
-import { formatUnits } from 'ethers'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
 import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -16,50 +14,61 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetProfitsInput,
   GetApyInput,
   GetAprInput,
   GetConversionRateInput,
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
-  ProfitsWithRange,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
   Underlying,
+  TokenBalance,
+  UnderlyingTokenRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
+import { maxUint128 } from '../../../uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { LiquidityManager__factory } from '../../contracts/factories'
 
-const nullAddress = "0x0000000000000000000000000000000000000000";
-const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> = {
-  [Chain.Arbitrum]: {
-    liquidityManager: '0x01fDea353849cA29F778B2663BcaCA1D191bED0e',
-  },
-  [Chain.Linea]: {
-    liquidityManager: '0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c',
-  },
-  [Chain.Bsc]: {
-    liquidityManager: '0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453',
-  },
-  [Chain.Base]: {
-    liquidityManager: '0x110dE362cc436D7f54210f96b8C7652C2617887D',
-  },
-}
+const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
+  {
+    [Chain.Arbitrum]: {
+      liquidityManager: '0x01fDea353849cA29F778B2663BcaCA1D191bED0e',
+    },
+    [Chain.Linea]: {
+      liquidityManager: '0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c',
+    },
+    [Chain.Bsc]: {
+      liquidityManager: '0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453',
+    },
+    [Chain.Base]: {
+      liquidityManager: '0x110dE362cc436D7f54210f96b8C7652C2617887D',
+    },
+  }
 
-export class IZiswapAdapter implements IProtocolAdapter {
+export class IZiswapAdapter extends SimplePoolAdapter {
   productId = 'iziswap'
   protocolId: Protocol
   chainId: Chain
 
   adaptersController: AdaptersController
 
-  private provider: CustomJsonRpcProvider
+  provider: CustomJsonRpcProvider
 
-  constructor({ provider, chainId, protocolId, adaptersController }: ProtocolAdapterParams) {
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+  }: ProtocolAdapterParams) {
+    super({
+      provider,
+      chainId,
+      protocolId,
+      adaptersController,
+    })
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
@@ -120,9 +129,12 @@ export class IZiswapAdapter implements IProtocolAdapter {
           return undefined
         }
 
-        const poolMeta = await liquidityManagerContract.poolMetas(liquidity.poolId, {
-          blockTag: blockNumber,
-        })
+        const poolMeta = await liquidityManagerContract.poolMetas(
+          liquidity.poolId,
+          {
+            blockTag: blockNumber,
+          },
+        )
 
         const [
           { amountX, amountY },
@@ -141,8 +153,8 @@ export class IZiswapAdapter implements IProtocolAdapter {
           liquidityManagerContract.collect.staticCall(
             userAddress,
             tokenId,
-            '0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
-            '0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
+            maxUint128,
+            maxUint128,
             { from: userAddress, blockTag: blockNumber },
           ),
           getTokenMetadata(poolMeta.tokenX, this.chainId, this.provider),
@@ -218,7 +230,6 @@ export class IZiswapAdapter implements IProtocolAdapter {
     }
   }
 
-
   async getWithdrawals({
     protocolTokenAddress,
     fromBlock,
@@ -229,7 +240,7 @@ export class IZiswapAdapter implements IProtocolAdapter {
       throw new Error('TokenId required for iZiswap withdrawals')
     }
 
-    return await this.getMovements({
+    return await this.getIziswapMovements({
       protocolTokenAddress,
       fromBlock,
       toBlock,
@@ -247,7 +258,7 @@ export class IZiswapAdapter implements IProtocolAdapter {
     if (!tokenId) {
       throw new Error('TokenId required for iZiswap deposits')
     }
-    return await this.getMovements({
+    return await this.getIziswapMovements({
       protocolTokenAddress,
       fromBlock,
       toBlock,
@@ -277,101 +288,18 @@ export class IZiswapAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
-  async getProfits({
-    userAddress,
-    fromBlock,
-    toBlock,
-  }: GetProfitsInput): Promise<ProfitsWithRange> {
-    const [currentValues, previousValues] = await Promise.all([
-      this.getPositions({
-        userAddress,
-        blockNumber: toBlock,
-      }).then((result) => formatProtocolTokenArrayToMap(result, true)),
-      this.getPositions({
-        userAddress,
-        blockNumber: fromBlock,
-      }).then((result) => formatProtocolTokenArrayToMap(result, true)),
-    ])
-
-    const tokens = await Promise.all(
-      Object.values(currentValues).map(
-        async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
-          const getEventsInput: GetEventsInput = {
-            userAddress,
-            protocolTokenAddress: protocolTokenMetadata.address,
-            fromBlock,
-            toBlock,
-            tokenId: protocolTokenMetadata.tokenId,
-          }
-
-          const [withdrawals, deposits] = await Promise.all([
-            this.getWithdrawals(getEventsInput).then(aggregateTrades),
-            this.getDeposits(getEventsInput).then(aggregateTrades),
-          ])
-
-          return {
-            ...protocolTokenMetadata,
-            type: TokenType.Protocol,
-            tokens: Object.values(underlyingTokenPositions).map(
-              ({
-                address,
-                name,
-                symbol,
-                decimals,
-                balanceRaw: startPositionValueRaw,
-              }) => {
-                const endPositionValueRaw =
-                  previousValues[protocolTokenMetadata.tokenId!]
-                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
-
-                const calculationData = {
-                  withdrawalsRaw: withdrawals[address] ?? 0n,
-                  depositsRaw: deposits[address] ?? 0n,
-                  startPositionValueRaw: startPositionValueRaw ?? 0n,
-                  endPositionValueRaw,
-                }
-
-                const profitRaw =
-                  calculationData.startPositionValueRaw +
-                  calculationData.withdrawalsRaw -
-                  calculationData.depositsRaw -
-                  calculationData.endPositionValueRaw
-
-                return {
-                  address,
-                  name,
-                  symbol,
-                  decimals,
-                  profitRaw,
-                  type: TokenType.Underlying,
-                  calculationData: {
-                    withdrawalsRaw: withdrawals[address] ?? 0n,
-                    withdrawals: formatUnits(
-                      withdrawals[address] ?? 0n,
-                      decimals,
-                    ),
-                    depositsRaw: deposits[address] ?? 0n,
-                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
-                    startPositionValueRaw: startPositionValueRaw ?? 0n,
-                    startPositionValue: formatUnits(
-                      startPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                    endPositionValueRaw,
-                    endPositionValue: formatUnits(
-                      endPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                  },
-                }
-              },
-            ),
-          }
-        },
-      ),
-    )
-
-    return { tokens, fromBlock, toBlock }
+  protected async getUnderlyingTokenBalances(_input: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number
+  }): Promise<Underlying[]> {
+    throw new NotImplementedError()
+  }
+  protected async getUnderlyingTokenConversionRate(
+    _protocolTokenMetadata: Erc20Metadata,
+    _blockNumber?: number | undefined,
+  ): Promise<UnderlyingTokenRate[]> {
+    throw new NotImplementedError()
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
@@ -382,7 +310,19 @@ export class IZiswapAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
-  private async getMovements({
+  protected async fetchProtocolTokenMetadata(
+    _protocolTokenAddress: string,
+  ): Promise<Erc20Metadata> {
+    throw new NotImplementedError()
+  }
+
+  protected async fetchUnderlyingTokensMetadata(
+    _protocolTokenAddress: string,
+  ): Promise<Erc20Metadata[]> {
+    throw new NotImplementedError()
+  }
+
+  private async getIziswapMovements({
     protocolTokenAddress,
     eventType,
     fromBlock,
@@ -438,6 +378,7 @@ export class IZiswapAdapter implements IProtocolAdapter {
         } = transferEvent
 
         return {
+          transactionHash,
           protocolToken: {
             address: protocolTokenAddress,
             name: this.protocolTokenName(
@@ -453,18 +394,23 @@ export class IZiswapAdapter implements IProtocolAdapter {
             decimals: 18,
             tokenId,
           },
-          underlyingTokensMovement: {
-            [tokenX]: {
-              movementValueRaw: amountX,
+          tokens: [
+            {
+              type: TokenType.Underlying,
+              balanceRaw: amountX,
               ...tokenXMetadata,
               transactionHash,
+              blockNumber,
             },
-            [tokenY]: {
-              movementValueRaw: amountY,
+            {
+              type: TokenType.Underlying,
+              balanceRaw: amountY,
               ...tokenYMetadata,
               transactionHash,
+              blockNumber,
             },
-          },
+          ],
+
           blockNumber,
         }
       }),

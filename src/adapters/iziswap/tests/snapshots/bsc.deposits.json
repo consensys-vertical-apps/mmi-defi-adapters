@@ -11,6 +11,7 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0x644b4142cf6e2a0489901777c8545867cbd6163e3436f25ca4995552dee93a9f",
         "protocolToken": {
           "address": "0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453",
           "name": "USDT / WBNB - 2000",
@@ -18,26 +19,30 @@
           "decimals": 18,
           "tokenId": "84"
         },
-        "underlyingTokensMovement": {
-          "0x55d398326f99059fF775485246999027B3197955": {
-            "movementValueRaw": "9999999999999919566n",
+        "tokens": [
+          {
+            "type": "underlying",
+            "balanceRaw": "9999999999999919566n",
             "address": "0x55d398326f99059ff775485246999027b3197955",
             "name": "Tether USD",
             "symbol": "USDT",
             "decimals": 18,
             "transactionHash": "0x644b4142cf6e2a0489901777c8545867cbd6163e3436f25ca4995552dee93a9f",
-            "movementValue": "9.999999999999919566"
+            "blockNumber": 34118506,
+            "balance": "9.999999999999919566"
           },
-          "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c": {
-            "movementValueRaw": "43315947499776491n",
+          {
+            "type": "underlying",
+            "balanceRaw": "43315947499776491n",
             "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
             "name": "Wrapped BNB",
             "symbol": "WBNB",
             "decimals": 18,
             "transactionHash": "0x644b4142cf6e2a0489901777c8545867cbd6163e3436f25ca4995552dee93a9f",
-            "movementValue": "0.043315947499776491"
+            "blockNumber": 34118506,
+            "balance": "0.043315947499776491"
           }
-        },
+        ],
         "blockNumber": 34118506
       }
     ]

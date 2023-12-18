@@ -11,6 +11,7 @@
     "success": true,
     "movements": [
       {
+        "transactionHash": "0x768cf92e2970716b610b088c9eb4a3f3631966c55b7ff9dd69123055be155b6c",
         "protocolToken": {
           "address": "0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c",
           "name": "USDC / WETH - 3000",
@@ -18,26 +19,30 @@
           "decimals": 18,
           "tokenId": "22264"
         },
-        "underlyingTokensMovement": {
-          "0x176211869cA2b568f2A7D4EE941E073a821EE1ff": {
-            "movementValueRaw": "8028983n",
+        "tokens": [
+          {
+            "type": "underlying",
+            "balanceRaw": "8028983n",
             "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
             "name": "USDC",
             "symbol": "USDC",
             "decimals": 6,
             "transactionHash": "0x768cf92e2970716b610b088c9eb4a3f3631966c55b7ff9dd69123055be155b6c",
-            "movementValue": "8.028983"
+            "blockNumber": 1105300,
+            "balance": "8.028983"
           },
-          "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f": {
-            "movementValueRaw": "4440772477990897n",
+          {
+            "type": "underlying",
+            "balanceRaw": "4440772477990897n",
             "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
             "name": "Wrapped Ether",
             "symbol": "WETH",
             "decimals": 18,
             "transactionHash": "0x768cf92e2970716b610b088c9eb4a3f3631966c55b7ff9dd69123055be155b6c",
-            "movementValue": "0.004440772477990897"
+            "blockNumber": 1105300,
+            "balance": "0.004440772477990897"
           }
-        },
+        ],
         "blockNumber": 1105300
       }
     ]
