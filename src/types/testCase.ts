@@ -40,6 +40,7 @@ export type TestCase = {
   | {
       method: 'prices'
       blockNumber?: number
+      filterProtocolToken?: string
     }
   | {
       method: 'tvl'
