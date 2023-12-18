@@ -163,6 +163,17 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "67883115094114511778287n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "7546748822964162370625n",
+                  "balance": "7546.748822964162370625"
+                }
+              ],
               "balance": "67883.115094114511778287",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             },
