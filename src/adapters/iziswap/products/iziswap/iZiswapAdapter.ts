@@ -1,11 +1,7 @@
-import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  ResolveUnderlyingPositions,
-  ResolveUnderlyingMovements,
-} from '../../../../core/decorators/resolveUnderlyingPositions'
+import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
@@ -33,43 +29,27 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { PositionManager__factory } from '../../contracts'
+import { maxUint128 } from '../../../uniswap-v3/products/pool/uniswapV3PoolAdapter'
+import { LiquidityManager__factory } from '../../contracts/factories'
 
-// Parameter needed for static call request
-// Set the date in the future to ensure the static call request doesn't trigger smart contract validation
-const deadline = Math.floor(Date.now() - 1000) + 60 * 10
+const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
+  {
+    [Chain.Arbitrum]: {
+      liquidityManager: '0x01fDea353849cA29F778B2663BcaCA1D191bED0e',
+    },
+    [Chain.Linea]: {
+      liquidityManager: '0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c',
+    },
+    [Chain.Bsc]: {
+      liquidityManager: '0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453',
+    },
+    [Chain.Base]: {
+      liquidityManager: '0x110dE362cc436D7f54210f96b8C7652C2617887D',
+    },
+  }
 
-// Uniswap has different pools per fee e.g. 1%, 0.5%
-const FEE_DECIMALS = 4
-
-const positionManagerCommonAddress =
-  '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
-
-const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
-  [Chain.Ethereum]: {
-    positionManager: positionManagerCommonAddress,
-  },
-  [Chain.Arbitrum]: {
-    positionManager: positionManagerCommonAddress,
-  },
-  [Chain.Optimism]: {
-    positionManager: positionManagerCommonAddress,
-  },
-  [Chain.Polygon]: {
-    positionManager: positionManagerCommonAddress,
-  },
-  [Chain.Bsc]: {
-    positionManager: '0x7b8A01B39D58278b5DE7e48c8449c9f4F5170613',
-  },
-  [Chain.Base]: {
-    positionManager: '0x03a520b32C04BF3bEEf7BEb72E919cf822Ed34f1',
-  },
-}
-
-export const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
-
-export class UniswapV3PoolAdapter extends SimplePoolAdapter {
-  productId = 'pool'
+export class IZiswapAdapter extends SimplePoolAdapter {
+  productId = 'iziswap'
   protocolId: Protocol
   chainId: Chain
 
@@ -95,40 +75,13 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     this.adaptersController = adaptersController
   }
 
-  protected async fetchProtocolTokenMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    throw new NotImplementedError()
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    throw new NotImplementedError()
-  }
-
-  protected async getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
-  protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
-  }
-
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'UniswapV3',
-      description: 'UniswapV3 defi adapter',
-      siteUrl: 'https://uniswap.org/',
-      iconUrl:
-        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png',
+      name: 'IZiSwap',
+      description: 'IZiSwap defi adapter',
+      siteUrl: 'https://izumi.finance',
+      iconUrl: 'https://izumi.finance/assets/sidebar/logo.svg',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
@@ -148,19 +101,19 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     userAddress,
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const positionsManagerContract = PositionManager__factory.connect(
-      contractAddresses[this.chainId]!.positionManager,
+    const liquidityManagerContract = LiquidityManager__factory.connect(
+      contractAddresses[this.chainId]!.liquidityManager,
       this.provider,
     )
 
-    const balanceOf = await positionsManagerContract.balanceOf(userAddress, {
+    const balanceOf = await liquidityManagerContract.balanceOf(userAddress, {
       blockTag: blockNumber,
     })
 
     return filterMapAsync(
       [...Array(Number(balanceOf)).keys()],
       async (index) => {
-        const tokenId = await positionsManagerContract.tokenOfOwnerByIndex(
+        const tokenId = await liquidityManagerContract.tokenOfOwnerByIndex(
           userAddress,
           index,
           {
@@ -168,80 +121,83 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
           },
         )
 
-        const position = await positionsManagerContract.positions(tokenId, {
+        const liquidity = await liquidityManagerContract.liquidities(tokenId, {
           blockTag: blockNumber,
         })
 
-        if (position.liquidity == 0n) {
+        if (liquidity.liquidity == 0n) {
           return undefined
         }
 
+        const poolMeta = await liquidityManagerContract.poolMetas(
+          liquidity.poolId,
+          {
+            blockTag: blockNumber,
+          },
+        )
+
         const [
-          { amount0, amount1 },
-          { amount0: amount0Fee, amount1: amount1Fee },
-          token0Metadata,
-          token1Metadata,
+          { amountX, amountY },
+          { amountX: amountXFee, amountY: amountYFee },
+          tokenXMetadata,
+          tokenYMetadata,
         ] = await Promise.all([
-          positionsManagerContract.decreaseLiquidity.staticCall(
-            {
-              tokenId: tokenId,
-              liquidity: position.liquidity,
-              amount0Min: 0n,
-              amount1Min: 0n,
-              deadline,
-            },
+          liquidityManagerContract.decLiquidity.staticCall(
+            tokenId,
+            liquidity.liquidity,
+            0n,
+            0n,
+            '0xffffffff',
             { from: userAddress, blockTag: blockNumber },
           ),
-          positionsManagerContract.collect.staticCall(
-            {
-              tokenId,
-              recipient: userAddress,
-              amount0Max: maxUint128,
-              amount1Max: maxUint128,
-            },
+          liquidityManagerContract.collect.staticCall(
+            userAddress,
+            tokenId,
+            maxUint128,
+            maxUint128,
             { from: userAddress, blockTag: blockNumber },
           ),
-          getTokenMetadata(position.token0, this.chainId, this.provider),
-          getTokenMetadata(position.token1, this.chainId, this.provider),
+          getTokenMetadata(poolMeta.tokenX, this.chainId, this.provider),
+          getTokenMetadata(poolMeta.tokenY, this.chainId, this.provider),
         ])
 
         const nftName = this.protocolTokenName(
-          token0Metadata.symbol,
-          token1Metadata.symbol,
-          position.fee,
+          tokenXMetadata.symbol,
+          tokenYMetadata.symbol,
+          poolMeta.fee,
         )
 
         return {
-          address: contractAddresses[this.chainId]!.positionManager,
+          address: contractAddresses[this.chainId]!.liquidityManager,
           tokenId: tokenId.toString(),
           name: nftName,
           symbol: nftName,
           decimals: 18,
-          balanceRaw: position.liquidity,
+          balanceRaw: liquidity.liquidity,
           type: TokenType.Protocol,
           tokens: [
             this.createUnderlyingToken(
-              position.token0,
-              token0Metadata,
-              amount0,
+              poolMeta.tokenX,
+              tokenXMetadata,
+              amountX,
               TokenType.Underlying,
             ),
             this.createUnderlyingToken(
-              position.token0,
-              token0Metadata,
-              amount0Fee,
+              poolMeta.tokenX,
+              tokenXMetadata,
+              amountXFee,
               TokenType.UnderlyingClaimable,
             ),
             this.createUnderlyingToken(
-              position.token1,
-              token1Metadata,
-              amount1,
+              poolMeta.tokenY,
+              tokenYMetadata,
+              amountY,
               TokenType.Underlying,
             ),
             this.createUnderlyingToken(
-              position.token1,
-              token1Metadata,
-              amount1Fee,
+              poolMeta.tokenY,
+              tokenYMetadata,
+              amountYFee,
               TokenType.UnderlyingClaimable,
             ),
           ],
@@ -255,13 +211,25 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     token1Symbol: string,
     fee: bigint,
   ) {
-    return `${token0Symbol} / ${token1Symbol} - ${formatUnits(
-      fee,
-      FEE_DECIMALS,
-    )}%`
+    return `${token0Symbol} / ${token1Symbol} - ${fee}`
   }
 
-  @ResolveUnderlyingMovements
+  private createUnderlyingToken(
+    address: string,
+    metadata: Erc20Metadata,
+    balanceRaw: bigint,
+    type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimable,
+  ): Underlying {
+    return {
+      address,
+      name: metadata.name,
+      symbol: metadata.symbol,
+      decimals: metadata.decimals,
+      balanceRaw,
+      type,
+    }
+  }
+
   async getWithdrawals({
     protocolTokenAddress,
     fromBlock,
@@ -269,10 +237,10 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     if (!tokenId) {
-      throw new Error('TokenId required for uniswap withdrawals')
+      throw new Error('TokenId required for iZiswap withdrawals')
     }
 
-    return await this.getUniswapMovements({
+    return await this.getIziswapMovements({
       protocolTokenAddress,
       fromBlock,
       toBlock,
@@ -281,7 +249,6 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     protocolTokenAddress,
     fromBlock,
@@ -289,9 +256,9 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     if (!tokenId) {
-      throw new Error('TokenId required for uniswap deposits')
+      throw new Error('TokenId required for iZiswap deposits')
     }
-    return await this.getUniswapMovements({
+    return await this.getIziswapMovements({
       protocolTokenAddress,
       fromBlock,
       toBlock,
@@ -321,6 +288,20 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
+  protected async getUnderlyingTokenBalances(_input: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number
+  }): Promise<Underlying[]> {
+    throw new NotImplementedError()
+  }
+  protected async getUnderlyingTokenConversionRate(
+    _protocolTokenMetadata: Erc20Metadata,
+    _blockNumber?: number | undefined,
+  ): Promise<UnderlyingTokenRate[]> {
+    throw new NotImplementedError()
+  }
+
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
@@ -329,23 +310,19 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  private createUnderlyingToken(
-    address: string,
-    metadata: Erc20Metadata,
-    balanceRaw: bigint,
-    type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimable,
-  ): Underlying {
-    return {
-      address,
-      name: metadata.name,
-      symbol: metadata.symbol,
-      decimals: metadata.decimals,
-      balanceRaw,
-      type,
-    }
+  protected async fetchProtocolTokenMetadata(
+    _protocolTokenAddress: string,
+  ): Promise<Erc20Metadata> {
+    throw new NotImplementedError()
   }
 
-  private async getUniswapMovements({
+  protected async fetchUnderlyingTokensMetadata(
+    _protocolTokenAddress: string,
+  ): Promise<Erc20Metadata[]> {
+    throw new NotImplementedError()
+  }
+
+  private async getIziswapMovements({
     protocolTokenAddress,
     eventType,
     fromBlock,
@@ -358,33 +335,35 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     toBlock: number
     tokenId: string
   }): Promise<MovementsByBlock[]> {
-    const positionsManagerContract = PositionManager__factory.connect(
+    const liquidityManagerContract = LiquidityManager__factory.connect(
       protocolTokenAddress,
       this.provider,
     )
 
     const eventFilters = {
-      deposit: positionsManagerContract.filters.IncreaseLiquidity(tokenId),
-      withdrawals: positionsManagerContract.filters.Collect(tokenId),
+      deposit: liquidityManagerContract.filters.AddLiquidity(tokenId),
+      withdrawals: liquidityManagerContract.filters.DecLiquidity(tokenId),
     }
 
-    const { token0, token1, fee } = await positionsManagerContract
-      .positions(tokenId, { blockTag: toBlock }) // Encountered failures if nft not yet minted
+    const liquidity = await liquidityManagerContract.liquidities(tokenId)
+
+    const { tokenX, tokenY, fee } = await liquidityManagerContract
+      .poolMetas(liquidity.poolId, { blockTag: toBlock }) // Encountered failures if nft not yet minted
       .catch((error) => {
         if (error?.message?.includes('Invalid token ID')) {
           throw new Error(
-            `Uniswap tokenId: ${tokenId} at blocknumber: ${fromBlock} does not exist, has position been minted yet or burned?`,
+            `iZiswap tokenId: ${tokenId} at blocknumber: ${fromBlock} does not exist, has position been minted yet or burned?`,
           )
         }
 
         throw new Error(error)
       })
-    const [token0Metadata, token1Metadata] = await Promise.all([
-      getTokenMetadata(token0, this.chainId, this.provider),
-      getTokenMetadata(token1, this.chainId, this.provider),
+    const [tokenXMetadata, tokenYMetadata] = await Promise.all([
+      getTokenMetadata(tokenX, this.chainId, this.provider),
+      getTokenMetadata(tokenY, this.chainId, this.provider),
     ])
 
-    const eventResults = await positionsManagerContract.queryFilter(
+    const eventResults = await liquidityManagerContract.queryFilter(
       eventFilters[eventType],
       fromBlock,
       toBlock,
@@ -394,7 +373,7 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
       eventResults.map(async (transferEvent) => {
         const {
           blockNumber,
-          args: { amount0, amount1 },
+          args: { amountX, amountY },
           transactionHash,
         } = transferEvent
 
@@ -403,13 +382,13 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
           protocolToken: {
             address: protocolTokenAddress,
             name: this.protocolTokenName(
-              token0Metadata.symbol,
-              token1Metadata.symbol,
+              tokenXMetadata.symbol,
+              tokenYMetadata.symbol,
               fee,
             ),
             symbol: this.protocolTokenName(
-              token0Metadata.symbol,
-              token1Metadata.symbol,
+              tokenXMetadata.symbol,
+              tokenYMetadata.symbol,
               fee,
             ),
             decimals: 18,
@@ -418,19 +397,20 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
           tokens: [
             {
               type: TokenType.Underlying,
-              balanceRaw: amount0,
-              ...token0Metadata,
+              balanceRaw: amountX,
+              ...tokenXMetadata,
               transactionHash,
               blockNumber,
             },
             {
               type: TokenType.Underlying,
-              balanceRaw: amount1,
-              ...token1Metadata,
+              balanceRaw: amountY,
+              ...tokenYMetadata,
               transactionHash,
               blockNumber,
             },
           ],
+
           blockNumber,
         }
       }),
