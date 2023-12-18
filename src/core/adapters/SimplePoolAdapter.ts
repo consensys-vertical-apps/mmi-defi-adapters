@@ -1,4 +1,5 @@
 import { formatUnits } from 'ethers'
+import { priceAdapterConfig } from '../../adapters/prices/products/usd/priceAdapterConfig'
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
@@ -23,6 +24,7 @@ import {
   ProtocolTokenTvl,
   TokenBalance,
   TokenType,
+  PositionType,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
@@ -278,17 +280,27 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
           const endPositionValue = +formatUnits(
             endPositionValues[key]?.usdRaw ?? 0n,
-            8,
+            priceAdapterConfig.decimals,
           )
-          const withdrawal = +formatUnits(withdrawals[key]?.usdRaw ?? 0n, 8)
-          const deposit = +formatUnits(deposits[key]?.usdRaw ?? 0n, 8)
+          const withdrawal = +formatUnits(
+            withdrawals[key]?.usdRaw ?? 0n,
+            priceAdapterConfig.decimals,
+          )
+          const deposit = +formatUnits(
+            deposits[key]?.usdRaw ?? 0n,
+            priceAdapterConfig.decimals,
+          )
           const startPositionValue = +formatUnits(
             startPositionValues[key]?.usdRaw ?? 0n,
-            8,
+            priceAdapterConfig.decimals,
           )
 
           const profit =
             endPositionValue + withdrawal - deposit - startPositionValue
+
+          if (this.getProtocolDetails().positionType == PositionType.Borrow) {
+            profit * -1
+          }
 
           return {
             ...protocolTokenMetadata,

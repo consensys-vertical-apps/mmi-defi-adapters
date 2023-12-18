@@ -2,5 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { ChainLink } from "./ChainLink";
+export type { UniswapQuoter } from "./UniswapQuoter";
 export * as factories from "./factories";
 export { ChainLink__factory } from "./factories/ChainLink__factory";
+export { UniswapQuoter__factory } from "./factories/UniswapQuoter__factory";

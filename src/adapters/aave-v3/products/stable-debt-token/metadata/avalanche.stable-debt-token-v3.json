@@ -139,20 +139,6 @@
       "decimals": 18
     }
   },
-  "0x3ef10dff4928279c004308ebadc4db8b7620d6fc": {
-    "protocolToken": {
-      "address": "0x3ef10dff4928279c004308ebadc4db8b7620d6fc",
-      "name": "Aave Avalanche Stable Debt MAI",
-      "symbol": "stableDebtAvaMAI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x5c49b268c9841aff1cc3b0a418ff5c3442ee3f3b",
-      "name": "Mai Stablecoin",
-      "symbol": "MAI",
-      "decimals": 18
-    }
-  },
   "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd": {
     "protocolToken": {
       "address": "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd",

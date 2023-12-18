@@ -13,6 +13,15 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
+    method: 'positions',
+    key: '2',
+    input: {
+      userAddress: '0x69D727a5F4731271C36DC600AE9fa3E6F3Ae29B6',
+    },
+    blockNumber: 18412988,
+  },
+  {
+    chainId: Chain.Ethereum,
     method: 'deposits',
     input: {
       userAddress: '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',

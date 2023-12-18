@@ -40,10 +40,10 @@
                       "address": "TheUnitedStatesMint",
                       "name": "USD",
                       "symbol": "USD",
-                      "decimals": 8,
+                      "decimals": 18,
                       "type": "fiat",
-                      "balanceRaw": "716293444n",
-                      "balance": "7.16293444"
+                      "balanceRaw": "7059127223787148535n",
+                      "balance": "7.059127223787148535"
                     }
                   ],
                   "balance": "7.1638880257196474",
@@ -61,10 +61,10 @@
                       "address": "TheUnitedStatesMint",
                       "name": "USD",
                       "symbol": "USD",
-                      "decimals": 8,
+                      "decimals": 18,
                       "type": "fiat",
-                      "balanceRaw": "728618985n",
-                      "balance": "7.28618985"
+                      "balanceRaw": "7170535540765885347n",
+                      "balance": "7.170535540765885347"
                     }
                   ],
                   "balance": "7.28576",
@@ -82,10 +82,10 @@
                       "address": "TheUnitedStatesMint",
                       "name": "USD",
                       "symbol": "USD",
-                      "decimals": 8,
+                      "decimals": 18,
                       "type": "fiat",
-                      "balanceRaw": "611273515n",
-                      "balance": "6.11273515"
+                      "balanceRaw": "6020452283550024948n",
+                      "balance": "6.020452283550024948"
                     }
                   ],
                   "balance": "6.11172",
@@ -131,10 +131,10 @@
                   "address": "TheUnitedStatesMint",
                   "name": "USD",
                   "symbol": "USD",
-                  "decimals": 8,
+                  "decimals": 18,
                   "type": "fiat",
-                  "balanceRaw": "39554839n",
-                  "balance": "0.39554839"
+                  "balanceRaw": "386854353912463392n",
+                  "balance": "0.386854353912463392"
                 }
               ],
               "balance": "0.687981795762696243",
@@ -152,10 +152,10 @@
                   "address": "TheUnitedStatesMint",
                   "name": "USD",
                   "symbol": "USD",
-                  "decimals": 8,
+                  "decimals": 18,
                   "type": "fiat",
-                  "balanceRaw": "2321179n",
-                  "balance": "0.02321179"
+                  "balanceRaw": "22803030452101947n",
+                  "balance": "0.022803030452101947"
                 }
               ],
               "balance": "0.006191836161864266",
@@ -181,10 +181,10 @@
                       "address": "TheUnitedStatesMint",
                       "name": "USD",
                       "symbol": "USD",
-                      "decimals": 8,
+                      "decimals": 18,
                       "type": "fiat",
-                      "balanceRaw": "1038779535n",
-                      "balance": "10.38779535"
+                      "balanceRaw": "10237252561700736189n",
+                      "balance": "10.237252561700736189"
                     }
                   ],
                   "balance": "10.389178253638319979",
@@ -202,10 +202,10 @@
                       "address": "TheUnitedStatesMint",
                       "name": "USD",
                       "symbol": "USD",
-                      "decimals": 8,
+                      "decimals": 18,
                       "type": "fiat",
-                      "balanceRaw": "1056654138n",
-                      "balance": "10.56654138"
+                      "balanceRaw": "10398817767785104337n",
+                      "balance": "10.398817767785104337"
                     }
                   ],
                   "balance": "10.565918",
@@ -223,10 +223,10 @@
                       "address": "TheUnitedStatesMint",
                       "name": "USD",
                       "symbol": "USD",
-                      "decimals": 8,
+                      "decimals": 18,
                       "type": "fiat",
-                      "balanceRaw": "886478019n",
-                      "balance": "8.86478019"
+                      "balanceRaw": "8730950188884177372n",
+                      "balance": "8.730950188884177372"
                     }
                   ],
                   "balance": "8.863308",
@@ -272,7 +272,7 @@
                   "address": "TheUnitedStatesMint",
                   "name": "USD",
                   "symbol": "USD",
-                  "decimals": 8,
+                  "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "0n",
                   "balance": "0.0"
@@ -293,7 +293,7 @@
                   "address": "TheUnitedStatesMint",
                   "name": "USD",
                   "symbol": "USD",
-                  "decimals": 8,
+                  "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "0n",
                   "balance": "0.0"
@@ -322,7 +322,7 @@
                       "address": "TheUnitedStatesMint",
                       "name": "USD",
                       "symbol": "USD",
-                      "decimals": 8,
+                      "decimals": 18,
                       "type": "fiat",
                       "balanceRaw": "0n",
                       "balance": "0.0"
@@ -343,7 +343,7 @@
                       "address": "TheUnitedStatesMint",
                       "name": "USD",
                       "symbol": "USD",
-                      "decimals": 8,
+                      "decimals": 18,
                       "type": "fiat",
                       "balanceRaw": "0n",
                       "balance": "0.0"
@@ -364,7 +364,7 @@
                       "address": "TheUnitedStatesMint",
                       "name": "USD",
                       "symbol": "USD",
-                      "decimals": 8,
+                      "decimals": 18,
                       "type": "fiat",
                       "balanceRaw": "0n",
                       "balance": "0.0"

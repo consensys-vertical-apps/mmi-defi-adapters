@@ -143,5 +143,8 @@ export const supportedProtocols: Record<
   },
   [Protocol.Prices]: {
     [Chain.Ethereum]: [PricesUSDAdapter],
+    [Chain.Arbitrum]: [PricesUSDAdapter],
+    [Chain.Optimism]: [PricesUSDAdapter],
+    [Chain.Polygon]: [PricesUSDAdapter],
   },
 }

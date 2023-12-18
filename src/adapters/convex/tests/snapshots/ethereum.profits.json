@@ -24,41 +24,13 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "staking",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xf34dff761145ff0b05e917811d488b441f33a968",
-          "name": "Curve.fi cDAI/cUSDC Convex Deposit",
-          "symbol": "cvxcDAI+cUSDC",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": 5942.836046159267,
-          "performance": 0.000014861339452971727,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "startPositionValue": 399885627.06377834,
-            "endPositionValue": 399891569.8998245
-          }
-        },
-        {
-          "address": "0x44d8fab7cd8b7877d5f79974c2f501af6e65abba",
-          "name": "Curve.fi Factory Plain Pool: crvUSD/USDC Convex Deposit",
-          "symbol": "cvxcrvUSDUSDC-f",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": -7.3437151299986,
-          "performance": -0.0002996204858785144,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "startPositionValue": 24510.05680892,
-            "endPositionValue": 24502.71309379
-          }
+      "success": false,
+      "error": {
+        "message": "Unable to calculate profits, missing USD price for token position 0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 18706497,
-      "toBlock": 18713643
+      }
     },
     {
       "protocolId": "convex",
@@ -77,13 +49,13 @@
           "symbol": "cvxcDAI+cUSDC",
           "decimals": 18,
           "type": "protocol",
-          "profit": 0.29800215999995316,
-          "performance": 0.0008341997471356759,
+          "profit": 8.671646204905414,
+          "performance": 0.024409221706504246,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 357.23117997,
-            "endPositionValue": 357.52918213
+            "startPositionValue": 355.26106932752833,
+            "endPositionValue": 363.93271553243375
           }
         },
         {
@@ -92,13 +64,13 @@
           "symbol": "cvxcrvFRAX",
           "decimals": 18,
           "type": "protocol",
-          "profit": 0.0000665700000000019,
-          "performance": 0.0008341724763432083,
+          "profit": 0.0019372022742622647,
+          "performance": 0.024409221706504346,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 0.07980364,
-            "endPositionValue": 0.07987021
+            "startPositionValue": 0.07936354126957094,
+            "endPositionValue": 0.08130074354383321
           }
         },
         {
@@ -107,13 +79,13 @@
           "symbol": "cvxcrvUSDUSDC-f",
           "decimals": 18,
           "type": "protocol",
-          "profit": 4.950367690000007,
-          "performance": 0.016337507146380173,
+          "profit": 12.137095106339132,
+          "performance": 0.04027771527980866,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 303.00630602,
-            "endPositionValue": 307.95667371
+            "startPositionValue": 301.33524262791275,
+            "endPositionValue": 313.4723377342519
           }
         }
       ],
@@ -151,13 +123,13 @@
           "symbol": "stkCvxCrv",
           "decimals": 18,
           "type": "protocol",
-          "profit": 2.3742332699999906,
-          "performance": 0.013623894947119814,
+          "profit": 1.9605412988848627,
+          "performance": 0.011338521070608135,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 174.26978696,
-            "endPositionValue": 176.64402023
+            "startPositionValue": 172.90979014600097,
+            "endPositionValue": 174.87033144488584
           }
         }
       ],

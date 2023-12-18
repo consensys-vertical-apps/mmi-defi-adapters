@@ -40,5 +40,19 @@
       "symbol": "USDbC",
       "decimals": 6
     }
+  },
+  "0x99cbc45ea5bb7ef3a5bc08fb1b7e56bb2442ef0d": {
+    "protocolToken": {
+      "address": "0x99cbc45ea5bb7ef3a5bc08fb1b7e56bb2442ef0d",
+      "name": "Aave Base wstETH",
+      "symbol": "aBaswstETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
   }
 }

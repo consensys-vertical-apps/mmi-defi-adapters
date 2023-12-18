@@ -11,6 +11,7 @@ export const testCases: TestCase[] = [
     },
     blockNumber: 142290717,
   },
+
   {
     chainId: Chain.Arbitrum,
     method: 'profits',

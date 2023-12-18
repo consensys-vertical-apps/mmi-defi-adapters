@@ -18,13 +18,13 @@
           "symbol": "sDAI",
           "decimals": 18,
           "type": "protocol",
-          "profit": -414.2554016895592,
-          "performance": -0.0000738611240848753,
+          "profit": 71680.31669264194,
+          "performance": 0.013027256219476325,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 5608571.58379461,
-            "endPositionValue": 5608157.32839292
+            "startPositionValue": 5502334.143507264,
+            "endPositionValue": 5574014.460199906
           }
         }
       ],

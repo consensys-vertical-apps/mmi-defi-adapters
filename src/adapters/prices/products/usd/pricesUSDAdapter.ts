@@ -1,12 +1,12 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolAdapterParams,
@@ -31,48 +31,32 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
+import { COINGECKO_CHAIN_ID } from '../../common/coingecko-chain-id'
 import COINGECKO_LIST from '../../common/coingecko-list.json'
-import { ChainLink__factory } from '../../contracts'
+import { ChainLink__factory, UniswapQuoter__factory } from '../../contracts'
+import { priceAdapterConfig } from './priceAdapterConfig'
 
-const Denominations = {
-  USD: '0x0000000000000000000000000000000000000348',
-  ETH: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+type Erc20MetadataForEthBaseTokens = Erc20Metadata & {
+  isBaseTokenEth: true
 }
 
-const WBTC = {
-  address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
-  name: 'Wrapped BTC',
-  symbol: 'WBTC',
-  decimals: 8,
-  iconUrl:
-    'https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/wbtc.svg',
-}
-const WETH = {
-  address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-  name: 'Wrapped Ether',
-  symbol: 'WETH',
-  decimals: 18,
-  iconUrl:
-    'https://tokens.1inch.io/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.png',
+type Erc20MetadataForNonEthBaseTokens = Erc20Metadata & {
+  isBaseTokenEth: false
+  uniswapFee: number
+  baseAddress: string
+  quoteAddress: string
 }
 
-const NATIVE_ETH = {
-  address: '0x0000000000000000000000000000000000000000',
-  name: 'Ethereum',
-  symbol: 'ETH',
-  decimals: 18,
-}
+type PriceMetadata = Record<
+  string,
+  Erc20MetadataForEthBaseTokens | Erc20MetadataForNonEthBaseTokens
+>
 
-const TOKEN_BASEID_MAPPING = {
-  [WETH.address.toLowerCase()]: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
-  [ZERO_ADDRESS.toLowerCase()]: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
-  [WBTC.address.toLowerCase()]: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
-}
-
-const CHAINLINK_RESOLVER_ADDRESS_MAINNET =
-  '0x47Fb2585D2C56Fe188D0E6ec628a38b74fCeeeDf'
-
-type PriceMetadata = Record<string, Erc20Metadata & { baseAssetId: string }>
+// We are using uniswap pools to find the prices in ETH, which then gets converted to USD using Chainlink's USD vs ETH feeds
+// To get prices from uniswap we need:
+// 1) base token
+// 2) quote token (weth)
+// 3) fee tiers 1%, 0.3%, 0.05%, and 0.01%
 
 export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
   productId = 'usd'
@@ -80,6 +64,8 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
   chainId: Chain
 
   private provider: CustomJsonRpcProvider
+
+  private fromIdToCoingeckoId: Record<string, string>
 
   constructor({
     provider,
@@ -91,6 +77,16 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+
+    this.fromIdToCoingeckoId = COINGECKO_CHAIN_ID.reduce(
+      (acc, info) => {
+        if (!info?.chain_identifier || !info.id) {
+          return acc
+        }
+        return { [info.chain_identifier]: info.id, ...acc }
+      },
+      {} as Record<string, string>,
+    )
   }
   adaptersController: AdaptersController
 
@@ -122,117 +118,165 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     return poolMetadata
   }
 
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    const contract = ChainLink__factory.connect(
-      '0x47Fb2585D2C56Fe188D0E6ec628a38b74fCeeeDf',
-      this.provider,
-    )
+    const metadata: PriceMetadata = {}
+    const wethAddress = priceAdapterConfig.wrappedEth.addresses[this.chainId]
+    const chainId = this
+      .chainId as keyof typeof priceAdapterConfig.nativeToken.details
 
-    const result: PriceMetadata = {
-      [NATIVE_ETH.address]: {
-        ...NATIVE_ETH,
-        decimals: 8,
-        baseAssetId: TOKEN_BASEID_MAPPING[NATIVE_ETH.address]!,
-      },
-    }
-    const promises = []
+    const wrappedTokenForChain =
+      priceAdapterConfig.nativeToken.details[chainId].wrappedToken
 
-    for (let i = 0; i < COINGECKO_LIST.length; i++) {
-      const tokenAddress = COINGECKO_LIST[i].platforms.ethereum
+    // Step 1: Support native tokens e.g. ETH or Matic
+    priceAdapterConfig.nativeToken.addresses.forEach(async (address) => {
+      const nativeToken = priceAdapterConfig.nativeToken.details?.[chainId]
 
-      if (!tokenAddress) {
-        continue
+      if (!nativeToken) {
+        return
       }
 
-      // Wrap the logic in an immediately-invoked async function to handle async operations
-      promises.push(
-        (async () => {
-          try {
-            const feed =
-              TOKEN_BASEID_MAPPING[tokenAddress.toLowerCase()] ?? tokenAddress
+      const isEth = wethAddress == wrappedTokenForChain.address
 
-            const priceResult = await contract.latestRoundData(
-              feed,
-              Denominations.USD,
-            )
+      if (isEth) {
+        metadata[address] = {
+          ...nativeToken.wrappedToken,
+          address,
+          isBaseTokenEth: true,
+        }
+      } else {
+        try {
+          const fee: number = await this.findFee({
+            baseAddress: address,
+            quoteAddress: wethAddress,
+            decimals: wrappedTokenForChain.decimals,
+          })
 
-            if (!priceResult || !priceResult.answer) {
-              return // Use return instead of continue in async function
-            }
-
-            const name = COINGECKO_LIST[i].name
-            const symbol = COINGECKO_LIST[i].symbol
-
-            const decimals = await contract.decimals(feed, Denominations.USD)
-
-            result[tokenAddress] = {
-              name,
-              address: tokenAddress,
-              symbol: symbol,
-              decimals: Number(decimals),
-              baseAssetId: feed,
-            }
-          } catch (error) {
-            // Handle or log error if necessary
+          metadata[address] = {
+            ...nativeToken.wrappedToken,
+            address,
+            uniswapFee: fee,
+            baseAddress: address,
+            quoteAddress: wethAddress,
+            isBaseTokenEth: false,
           }
-        })(),
-      )
+        } catch (error) {
+          return
+        }
+      }
+    })
+
+    // Step 2: Add this chains wrapped eth details
+
+    metadata[priceAdapterConfig.wrappedEth.addresses[chainId]] = {
+      name: priceAdapterConfig.wrappedEth.name,
+      symbol: priceAdapterConfig.wrappedEth.symbol,
+      decimals: priceAdapterConfig.wrappedEth.decimals,
+      address: priceAdapterConfig.wrappedEth.addresses[chainId],
+      isBaseTokenEth: true,
     }
 
-    // Wait for all promises to resolve
+    // Step 3: Support all other tokens
+    const promises = COINGECKO_LIST?.map(async (token) => {
+      if (!token.platforms) {
+        return
+      }
+
+      const address =
+        token.platforms[this.fromIdToCoingeckoId[chainId] as string]
+
+      if (!address) {
+        return
+      }
+
+      let tokenDetails
+      try {
+        tokenDetails = await getTokenMetadata(
+          address,
+          this.chainId,
+          this.provider,
+        )
+      } catch (error) {
+        return
+      }
+
+      try {
+        const fee: number = await this.findFee({
+          baseAddress: address,
+          quoteAddress: wethAddress,
+          decimals: tokenDetails.decimals,
+        })
+
+        metadata[address] = {
+          ...tokenDetails,
+          uniswapFee: fee,
+          baseAddress: address,
+          quoteAddress: wethAddress,
+          isBaseTokenEth: false,
+        }
+      } catch (error) {
+        return
+      }
+    })
+
     await Promise.all(promises)
 
-    // delete liquid staked eth
-    const stETH = '0xae7ab96520de3a18e5e111b5eaab095312d7fe84'
-    delete result[stETH]
+    return metadata
+  }
 
-    return result
+  async findFee({
+    baseAddress,
+    quoteAddress,
+    decimals,
+  }: {
+    baseAddress: string
+    quoteAddress: string
+    decimals: number
+  }): Promise<number> {
+    const fees = [10000, 3000, 500, 100] // Uniswap feeds
+
+    for (const fee of fees) {
+      try {
+        await this.quoteExactInputSingleCall({
+          tokenIn: baseAddress,
+          tokenOut: quoteAddress,
+          amountOut: BigInt(Math.pow(10, decimals)),
+
+          blockNumber: undefined,
+          fee: fee,
+        })
+
+        return fee
+      } catch (error) {
+        continue
+      }
+    }
+
+    throw new Error('All requests failed')
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
+    const result = Object.values(await this.buildMetadata()).map(
       ({ address, decimals, name, symbol }) => {
         return { address, decimals, name, symbol }
       },
     )
+
+    return result
   }
 
-  /**
-   * Update me.
-   * Add logic to get userAddress positions in your protocol
-   */
   async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's withdrawals per position by block range
-   */
   async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's deposits per position by block range
-   */
   async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
@@ -243,33 +287,39 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     blockNumber,
     protocolTokenAddress,
   }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
-    const chainlinkDetails = await this.fetchPoolMetadata(protocolTokenAddress)
+    // We map the native token to the wrapped token
+    const tokenDetails = await this.fetchPoolMetadata(protocolTokenAddress)
 
-    const contract = ChainLink__factory.connect(
-      CHAINLINK_RESOLVER_ADDRESS_MAINNET,
-      this.provider,
-    )
+    let erc20TokenPriceInEth: bigint
+    if (tokenDetails.isBaseTokenEth) {
+      erc20TokenPriceInEth = BigInt(Math.pow(10, 18))
+    } else {
+      erc20TokenPriceInEth = await this.quoteExactInputSingleCall({
+        tokenIn: tokenDetails.baseAddress,
+        tokenOut: tokenDetails.quoteAddress,
+        amountOut: BigInt(Math.pow(10, tokenDetails.decimals)),
+        blockNumber,
+        fee: tokenDetails.uniswapFee,
+      })
+    }
 
-    const priceResult = await contract.latestRoundData(
-      chainlinkDetails.baseAssetId,
-      Denominations.USD,
-      {
-        blockTag: blockNumber,
-      },
-    )
+    const tokenPriceInUSD = this.calculateERC20PriceInUsd({
+      erc20TokenPriceInEth: erc20TokenPriceInEth as bigint,
+      ethPriceUSD: await this.getEthUsdPriceFromChainlink(blockNumber),
+    })
 
     return {
-      name: chainlinkDetails.name,
-      decimals: chainlinkDetails.decimals,
-      symbol: chainlinkDetails.symbol,
+      name: tokenDetails.name,
+      decimals: tokenDetails.decimals,
+      symbol: tokenDetails.symbol,
       address: protocolTokenAddress,
       baseRate: 1,
       type: 'protocol',
       tokens: [
         {
           type: TokenType.Fiat,
-          underlyingRateRaw: priceResult.answer,
-          decimals: chainlinkDetails.decimals,
+          underlyingRateRaw: BigInt(tokenPriceInUSD.toString()),
+          decimals: priceAdapterConfig.decimals,
           name: 'USD',
           symbol: 'USD',
           address: 'TheUnitedStatesMint',
@@ -278,10 +328,31 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to calculate the users profits
-   */
+  private async getEthUsdPriceFromChainlink(blockNumber: number | undefined) {
+    const usdFeed = ChainLink__factory.connect(
+      priceAdapterConfig.chainlink.UsdEthFeedAddresses[this.chainId],
+      this.provider,
+    )
+
+    const ethPriceUSD = await usdFeed.latestRoundData({
+      blockTag: blockNumber,
+    })
+    return ethPriceUSD.answer
+  }
+
+  private calculateERC20PriceInUsd({
+    erc20TokenPriceInEth,
+    ethPriceUSD,
+  }: {
+    erc20TokenPriceInEth: bigint
+    ethPriceUSD: bigint
+  }): bigint {
+    return (
+      (erc20TokenPriceInEth * ethPriceUSD) /
+      BigInt(Math.pow(10, priceAdapterConfig.chainlink.decimals))
+    )
+  }
+
   async getProfits(_input: GetProfitsInput): Promise<ProfitsWithRange> {
     throw new NotImplementedError()
   }
@@ -292,5 +363,39 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
+  }
+
+  private async quoteExactInputSingleCall({
+    tokenIn,
+    tokenOut,
+    amountOut,
+
+    blockNumber,
+    fee,
+  }: {
+    tokenIn: string
+    tokenOut: string
+    amountOut: bigint
+
+    blockNumber?: number
+    fee: number
+  }) {
+    const uniswapQuoter = UniswapQuoter__factory.connect(
+      priceAdapterConfig.uniswap.quoterContractAddresses[
+        this
+          .chainId as keyof typeof priceAdapterConfig.uniswap.quoterContractAddresses
+      ],
+      this.provider,
+    )
+    return await uniswapQuoter.quoteExactInputSingle.staticCall(
+      tokenIn,
+      tokenOut,
+      fee,
+      amountOut,
+      0,
+      {
+        blockTag: blockNumber,
+      },
+    )
   }
 }

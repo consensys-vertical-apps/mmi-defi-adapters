@@ -166,5 +166,19 @@
       "symbol": "rETH",
       "decimals": 18
     }
+  },
+  "0x5d557b07776d12967914379c71a1310e917c7555": {
+    "protocolToken": {
+      "address": "0x5d557b07776d12967914379c71a1310e917c7555",
+      "name": "Aave Optimism Variable Debt USDCn",
+      "symbol": "variableDebtOptUSDCn",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
   }
 }

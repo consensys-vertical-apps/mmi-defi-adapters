@@ -32,10 +32,10 @@
                 "address": "TheUnitedStatesMint",
                 "name": "USD",
                 "symbol": "USD",
-                "decimals": 8,
+                "decimals": 18,
                 "type": "fiat",
-                "balanceRaw": "59993471104n",
-                "balance": "599.93471104"
+                "balanceRaw": "594549866716140058898n",
+                "balance": "594.549866716140058898"
               }
             ],
             "balance": "599.999565"
