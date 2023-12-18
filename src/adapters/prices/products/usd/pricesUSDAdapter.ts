@@ -36,11 +36,12 @@ import COINGECKO_LIST from '../../common/coingecko-list.json'
 import { ChainLink__factory, UniswapQuoter__factory } from '../../contracts'
 import { priceAdapterConfig } from './priceAdapterConfig'
 
-type Erc20MetadataWithEth = Erc20Metadata & {
-  ethPrice: number
+type Erc20MetadataForEthBaseTokens = Erc20Metadata & {
+  isBaseTokenEth: true
 }
 
-type Erc20MetadataWithoutEth = Erc20Metadata & {
+type Erc20MetadataForNonEthBaseTokens = Erc20Metadata & {
+  isBaseTokenEth: false
   uniswapFee: number
   baseAddress: string
   quoteAddress: string
@@ -48,7 +49,7 @@ type Erc20MetadataWithoutEth = Erc20Metadata & {
 
 type PriceMetadata = Record<
   string,
-  Erc20MetadataWithEth | Erc20MetadataWithoutEth
+  Erc20MetadataForEthBaseTokens | Erc20MetadataForNonEthBaseTokens
 >
 
 // We are using uniswap pools to find the prices in ETH, which then gets converted to USD using Chainlink's USD vs ETH feeds
@@ -141,7 +142,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
         metadata[address] = {
           ...nativeToken.wrappedToken,
           address,
-          ethPrice: Number(BigInt(Math.pow(10, 18))),
+          isBaseTokenEth: true,
         }
       } else {
         try {
@@ -157,6 +158,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
             uniswapFee: fee,
             baseAddress: address,
             quoteAddress: wethAddress,
+            isBaseTokenEth: false,
           }
         } catch (error) {
           return
@@ -171,7 +173,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
       symbol: priceAdapterConfig.wrappedEth.symbol,
       decimals: priceAdapterConfig.wrappedEth.decimals,
       address: priceAdapterConfig.wrappedEth.addresses[chainId],
-      ethPrice: Number(BigInt(Math.pow(10, 18))),
+      isBaseTokenEth: true,
     }
 
     // Step 3: Support all other tokens
@@ -210,6 +212,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
           uniswapFee: fee,
           baseAddress: address,
           quoteAddress: wethAddress,
+          isBaseTokenEth: false,
         }
       } catch (error) {
         return
@@ -288,8 +291,8 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
     const tokenDetails = await this.fetchPoolMetadata(protocolTokenAddress)
 
     let erc20TokenPriceInEth: bigint
-    if ('ethPrice' in tokenDetails) {
-      erc20TokenPriceInEth = BigInt(tokenDetails.ethPrice)
+    if (tokenDetails.isBaseTokenEth) {
+      erc20TokenPriceInEth = BigInt(Math.pow(10, 18))
     } else {
       erc20TokenPriceInEth = await this.quoteExactInputSingleCall({
         tokenIn: tokenDetails.baseAddress,

@@ -4,7 +4,7 @@
     "symbol": "WETH",
     "decimals": 18,
     "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "ethPrice": 1000000000000000000
+    "isBaseTokenEth": true
   },
   "0x0000000000000000000000000000000000001010": {
     "address": "0x0000000000000000000000000000000000001010",
@@ -13,7 +13,8 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0x0000000000000000000000000000000000001010",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x9c2c5fd7b07e95ee044ddeba0e97a665f142394f": {
     "address": "0x9c2c5fd7b07e95ee044ddeba0e97a665f142394f",
@@ -22,7 +23,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x9c2c5fd7b07e95ee044ddeba0e97a665f142394f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xd6df932a45c0f255f85145f286ea0b292b21c90b": {
     "address": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
@@ -31,7 +33,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7": {
     "address": "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
@@ -40,7 +43,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x33b6d77c607ea499ab5db7e2201c5a516a78a5db": {
     "address": "0x33b6d77c607ea499ab5db7e2201c5a516a78a5db",
@@ -49,7 +53,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x33b6d77c607ea499ab5db7e2201c5a516a78a5db",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xbfc70507384047aa74c29cdc8c5cb88d0f7213ac": {
     "address": "0xbfc70507384047aa74c29cdc8c5cb88d0f7213ac",
@@ -58,7 +63,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xbfc70507384047aa74c29cdc8c5cb88d0f7213ac",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x101a023270368c0d50bffb62780f4afd4ea79c35": {
     "address": "0x101a023270368c0d50bffb62780f4afd4ea79c35",
@@ -67,7 +73,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x101a023270368c0d50bffb62780f4afd4ea79c35",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x0e9b89007eee9c958c0eda24ef70723c2c93dd58": {
     "address": "0x0e9b89007eee9c958c0eda24ef70723c2c93dd58",
@@ -76,7 +83,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x0e9b89007eee9c958c0eda24ef70723c2c93dd58",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xb7b31a6bc18e48888545ce79e83e06003be70930": {
     "address": "0xb7b31a6bc18e48888545ce79e83e06003be70930",
@@ -85,7 +93,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xb7b31a6bc18e48888545ce79e83e06003be70930",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xee800b277a96b0f490a1a732e1d6395fad960a26": {
     "address": "0xee800b277a96b0f490a1a732e1d6395fad960a26",
@@ -94,7 +103,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xee800b277a96b0f490a1a732e1d6395fad960a26",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x9cb74c8032b007466865f060ad2c46145d45553d": {
     "address": "0x9cb74c8032b007466865f060ad2c46145d45553d",
@@ -103,7 +113,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x9cb74c8032b007466865f060ad2c46145d45553d",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xf1c1a3c2481a3a8a3f173a9ab5ade275292a6fa3": {
     "address": "0xf1c1a3c2481a3a8a3f173a9ab5ade275292a6fa3",
@@ -112,7 +123,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xf1c1a3c2481a3a8a3f173a9ab5ade275292a6fa3",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b": {
     "address": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
@@ -121,7 +133,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38": {
     "address": "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38",
@@ -130,7 +143,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x2e1ad108ff1d8c782fcbbb89aad783ac49586756": {
     "address": "0x2e1ad108ff1d8c782fcbbb89aad783ac49586756",
@@ -139,7 +153,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x2e1ad108ff1d8c782fcbbb89aad783ac49586756",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x2791bca1f2de4661ed88a30c99a7a9449aa84174": {
     "address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
@@ -148,7 +163,8 @@
     "decimals": 6,
     "uniswapFee": 10000,
     "baseAddress": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xab5f7a0e20b0d056aed4aa4528c78da45be7308b": {
     "address": "0xab5f7a0e20b0d056aed4aa4528c78da45be7308b",
@@ -157,7 +173,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xab5f7a0e20b0d056aed4aa4528c78da45be7308b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xf2ae0038696774d65e67892c9d301c5f2cbbda58": {
     "address": "0xf2ae0038696774d65e67892c9d301c5f2cbbda58",
@@ -166,7 +183,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xf2ae0038696774d65e67892c9d301c5f2cbbda58",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xd55fce7cdab84d84f2ef3f99816d765a2a94a509": {
     "address": "0xd55fce7cdab84d84f2ef3f99816d765a2a94a509",
@@ -175,7 +193,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xd55fce7cdab84d84f2ef3f99816d765a2a94a509",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x2ab4f9ac80f33071211729e45cfc346c1f8446d5": {
     "address": "0x2ab4f9ac80f33071211729e45cfc346c1f8446d5",
@@ -184,7 +203,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x2ab4f9ac80f33071211729e45cfc346c1f8446d5",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39": {
     "address": "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39",
@@ -193,7 +213,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x72c96c73207936e94066b4c8566c6987c9a1f1de": {
     "address": "0x72c96c73207936e94066b4c8566c6987c9a1f1de",
@@ -202,7 +223,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x72c96c73207936e94066b4c8566c6987c9a1f1de",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x172370d5cd63279efa6d502dab29171933a610af": {
     "address": "0x172370d5cd63279efa6d502dab29171933a610af",
@@ -211,7 +233,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x172370d5cd63279efa6d502dab29171933a610af",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063": {
     "address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
@@ -220,7 +243,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x85955046df4668e1dd369d2de9f3aeb98dd2a369": {
     "address": "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
@@ -229,7 +253,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xb35fcbcf1fd489fce02ee146599e893fdcdc60e6": {
     "address": "0xb35fcbcf1fd489fce02ee146599e893fdcdc60e6",
@@ -238,7 +263,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xb35fcbcf1fd489fce02ee146599e893fdcdc60e6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xe749ea14a2d18e361ed092ebefba64d77a8b4eac": {
     "address": "0xe749ea14a2d18e361ed092ebefba64d77a8b4eac",
@@ -247,7 +273,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xe749ea14a2d18e361ed092ebefba64d77a8b4eac",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xe261d618a959afffd53168cd07d12e37b26761db": {
     "address": "0xe261d618a959afffd53168cd07d12e37b26761db",
@@ -256,7 +283,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xe261d618a959afffd53168cd07d12e37b26761db",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xe0339c80ffde91f3e20494df88d4206d86024cdf": {
     "address": "0xe0339c80ffde91f3e20494df88d4206d86024cdf",
@@ -265,7 +293,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xe0339c80ffde91f3e20494df88d4206d86024cdf",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xe46f5128b933e5a6f907fe73ece80059c222db0a": {
     "address": "0xe46f5128b933e5a6f907fe73ece80059c222db0a",
@@ -274,7 +303,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xe46f5128b933e5a6f907fe73ece80059c222db0a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x2fe8733dcb25bfbba79292294347415417510067": {
     "address": "0x2fe8733dcb25bfbba79292294347415417510067",
@@ -283,7 +313,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x2fe8733dcb25bfbba79292294347415417510067",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x1a3acf6d19267e2d3e7f898f42803e90c9219062": {
     "address": "0x1a3acf6d19267e2d3e7f898f42803e90c9219062",
@@ -292,7 +323,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x1a3acf6d19267e2d3e7f898f42803e90c9219062",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xe5417af564e4bfda1c483642db72007871397896": {
     "address": "0xe5417af564e4bfda1c483642db72007871397896",
@@ -301,7 +333,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xe5417af564e4bfda1c483642db72007871397896",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x15b7c0c907e4c6b9adaaaabc300c08991d6cea05": {
     "address": "0x15b7c0c907e4c6b9adaaaabc300c08991d6cea05",
@@ -310,7 +343,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x15b7c0c907e4c6b9adaaaabc300c08991d6cea05",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x34667ed7c36cbbbf2d5d5c5c8d6eb76a094edb9f": {
     "address": "0x34667ed7c36cbbbf2d5d5c5c8d6eb76a094edb9f",
@@ -319,7 +353,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x34667ed7c36cbbbf2d5d5c5c8d6eb76a094edb9f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xdb725f82818de83e99f1dac22a9b5b51d3d04dd4": {
     "address": "0xdb725f82818de83e99f1dac22a9b5b51d3d04dd4",
@@ -328,7 +363,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xdb725f82818de83e99f1dac22a9b5b51d3d04dd4",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xd8ca34fd379d9ca3c6ee3b3905678320f5b45195": {
     "address": "0xd8ca34fd379d9ca3c6ee3b3905678320f5b45195",
@@ -337,7 +373,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xd8ca34fd379d9ca3c6ee3b3905678320f5b45195",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x4e1581f01046efdd7a1a2cdb0f82cdd7f71f2e59": {
     "address": "0x4e1581f01046efdd7a1a2cdb0f82cdd7f71f2e59",
@@ -346,7 +383,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x4e1581f01046efdd7a1a2cdb0f82cdd7f71f2e59",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xab0b2ddb9c7e440fac8e140a89c0dbcbf2d7bbff": {
     "address": "0xab0b2ddb9c7e440fac8e140a89c0dbcbf2d7bbff",
@@ -355,7 +393,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xab0b2ddb9c7e440fac8e140a89c0dbcbf2d7bbff",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x5dfd5edfde4d8ec9e632dca9d09fc7e833f74210": {
     "address": "0x5dfd5edfde4d8ec9e632dca9d09fc7e833f74210",
@@ -364,7 +403,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x5dfd5edfde4d8ec9e632dca9d09fc7e833f74210",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xf50d05a1402d0adafa880d36050736f9f6ee7dee": {
     "address": "0xf50d05a1402d0adafa880d36050736f9f6ee7dee",
@@ -373,7 +413,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xf50d05a1402d0adafa880d36050736f9f6ee7dee",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xf88332547c680f755481bf489d890426248bb275": {
     "address": "0xf88332547c680f755481bf489d890426248bb275",
@@ -382,7 +423,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xf88332547c680f755481bf489d890426248bb275",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x17d342b29f054030a455b4191f977c3b0aa62fd9": {
     "address": "0x17d342b29f054030a455b4191f977c3b0aa62fd9",
@@ -391,7 +433,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x17d342b29f054030a455b4191f977c3b0aa62fd9",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xc3ec80343d2bae2f8e680fdadde7c17e71e114ea": {
     "address": "0xc3ec80343d2bae2f8e680fdadde7c17e71e114ea",
@@ -400,7 +443,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xc3ec80343d2bae2f8e680fdadde7c17e71e114ea",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x34ad6a664b4112a9c6bac7b54b4094a05e3ff775": {
     "address": "0x34ad6a664b4112a9c6bac7b54b4094a05e3ff775",
@@ -409,7 +453,8 @@
     "decimals": 3,
     "uniswapFee": 10000,
     "baseAddress": "0x34ad6a664b4112a9c6bac7b54b4094a05e3ff775",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xee9a352f6aac4af1a5b9f467f6a93e0ffbe9dd35": {
     "address": "0xee9a352f6aac4af1a5b9f467f6a93e0ffbe9dd35",
@@ -418,7 +463,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xee9a352f6aac4af1a5b9f467f6a93e0ffbe9dd35",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xee7666aacaefaa6efeef62ea40176d3eb21953b9": {
     "address": "0xee7666aacaefaa6efeef62ea40176d3eb21953b9",
@@ -427,7 +473,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xee7666aacaefaa6efeef62ea40176d3eb21953b9",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xf501dd45a1198c2e1b5aef5314a68b9006d842e0": {
     "address": "0xf501dd45a1198c2e1b5aef5314a68b9006d842e0",
@@ -436,7 +483,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xf501dd45a1198c2e1b5aef5314a68b9006d842e0",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x2760e46d9bb43dafcbecaad1f64b93207f9f0ed7": {
     "address": "0x2760e46d9bb43dafcbecaad1f64b93207f9f0ed7",
@@ -445,7 +493,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x2760e46d9bb43dafcbecaad1f64b93207f9f0ed7",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xa3fa99a148fa48d14ed51d610c367c61876997f1": {
     "address": "0xa3fa99a148fa48d14ed51d610c367c61876997f1",
@@ -454,7 +503,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xa3fa99a148fa48d14ed51d610c367c61876997f1",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x62a872d9977db171d9e213a5dc2b782e72ca0033": {
     "address": "0x62a872d9977db171d9e213a5dc2b782e72ca0033",
@@ -463,7 +513,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x62a872d9977db171d9e213a5dc2b782e72ca0033",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xd5d86fc8d5c0ea1ac1ac5dfab6e529c9967a45e9": {
     "address": "0xd5d86fc8d5c0ea1ac1ac5dfab6e529c9967a45e9",
@@ -472,7 +523,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xd5d86fc8d5c0ea1ac1ac5dfab6e529c9967a45e9",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x78a0a62fba6fb21a83fe8a3433d44c73a4017a6f": {
     "address": "0x78a0a62fba6fb21a83fe8a3433d44c73a4017a6f",
@@ -481,7 +533,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x78a0a62fba6fb21a83fe8a3433d44c73a4017a6f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x71b821aa52a49f32eed535fca6eb5aa130085978": {
     "address": "0x71b821aa52a49f32eed535fca6eb5aa130085978",
@@ -490,7 +543,8 @@
     "decimals": 8,
     "uniswapFee": 10000,
     "baseAddress": "0x71b821aa52a49f32eed535fca6eb5aa130085978",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x7c28f627ea3aec8b882b51eb1935f66e5b875714": {
     "address": "0x7c28f627ea3aec8b882b51eb1935f66e5b875714",
@@ -499,7 +553,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x7c28f627ea3aec8b882b51eb1935f66e5b875714",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x0d6ae2a429df13e44a07cd2969e085e4833f64a0": {
     "address": "0x0d6ae2a429df13e44a07cd2969e085e4833f64a0",
@@ -508,7 +563,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x0d6ae2a429df13e44a07cd2969e085e4833f64a0",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x692ac1e363ae34b6b489148152b12e2785a3d8d6": {
     "address": "0x692ac1e363ae34b6b489148152b12e2785a3d8d6",
@@ -517,7 +573,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x692ac1e363ae34b6b489148152b12e2785a3d8d6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xc5b57e9a1e7914fda753a88f24e5703e617ee50c": {
     "address": "0xc5b57e9a1e7914fda753a88f24e5703e617ee50c",
@@ -526,7 +583,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xc5b57e9a1e7914fda753a88f24e5703e617ee50c",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x61299774020da444af134c82fa83e3810b309991": {
     "address": "0x61299774020da444af134c82fa83e3810b309991",
@@ -535,7 +593,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x61299774020da444af134c82fa83e3810b309991",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x0266f4f08d82372cf0fcbccc0ff74309089c74d1": {
     "address": "0x0266f4f08d82372cf0fcbccc0ff74309089c74d1",
@@ -544,7 +603,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x0266f4f08d82372cf0fcbccc0ff74309089c74d1",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xf0059cc2b3e980065a906940fbce5f9db7ae40a7": {
     "address": "0xf0059cc2b3e980065a906940fbce5f9db7ae40a7",
@@ -553,7 +613,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xf0059cc2b3e980065a906940fbce5f9db7ae40a7",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xe111178a87a3bff0c8d18decba5798827539ae99": {
     "address": "0xe111178a87a3bff0c8d18decba5798827539ae99",
@@ -562,7 +623,8 @@
     "decimals": 2,
     "uniswapFee": 10000,
     "baseAddress": "0xe111178a87a3bff0c8d18decba5798827539ae99",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xd1f9c58e33933a993a3891f8acfe05a68e1afc05": {
     "address": "0xd1f9c58e33933a993a3891f8acfe05a68e1afc05",
@@ -571,7 +633,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xd1f9c58e33933a993a3891f8acfe05a68e1afc05",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a": {
     "address": "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
@@ -580,7 +643,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xf8f9efc0db77d8881500bb06ff5d6abc3070e695": {
     "address": "0xf8f9efc0db77d8881500bb06ff5d6abc3070e695",
@@ -589,7 +653,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xf8f9efc0db77d8881500bb06ff5d6abc3070e695",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xd872b7ffca41a67eda85b04a9185c6b270006b58": {
     "address": "0xd872b7ffca41a67eda85b04a9185c6b270006b58",
@@ -598,7 +663,8 @@
     "decimals": 9,
     "uniswapFee": 10000,
     "baseAddress": "0xd872b7ffca41a67eda85b04a9185c6b270006b58",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xc2132d05d31c914a87c6611c10748aeb04b58e8f": {
     "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
@@ -607,7 +673,8 @@
     "decimals": 6,
     "uniswapFee": 10000,
     "baseAddress": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x6002410dda2fb88b4d0dc3c1d562f7761191ea80": {
     "address": "0x6002410dda2fb88b4d0dc3c1d562f7761191ea80",
@@ -616,7 +683,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x6002410dda2fb88b4d0dc3c1d562f7761191ea80",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xbbba073c31bf03b8acf7c28ef0738decf3695683": {
     "address": "0xbbba073c31bf03b8acf7c28ef0738decf3695683",
@@ -625,7 +693,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xbbba073c31bf03b8acf7c28ef0738decf3695683",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x2f800db0fdb5223b3c3f354886d907a671414a7f": {
     "address": "0x2f800db0fdb5223b3c3f354886d907a671414a7f",
@@ -634,7 +703,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x2f800db0fdb5223b3c3f354886d907a671414a7f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x7fbc10850cae055b27039af31bd258430e714c62": {
     "address": "0x7fbc10850cae055b27039af31bd258430e714c62",
@@ -643,7 +713,8 @@
     "decimals": 8,
     "uniswapFee": 10000,
     "baseAddress": "0x7fbc10850cae055b27039af31bd258430e714c62",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x64060ab139feaae7f06ca4e63189d86adeb51691": {
     "address": "0x64060ab139feaae7f06ca4e63189d86adeb51691",
@@ -652,7 +723,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x64060ab139feaae7f06ca4e63189d86adeb51691",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xb33eaad8d922b1083446dc23f610c2567fb5180f": {
     "address": "0xb33eaad8d922b1083446dc23f610c2567fb5180f",
@@ -661,7 +733,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xb33eaad8d922b1083446dc23f610c2567fb5180f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359": {
     "address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
@@ -670,7 +743,8 @@
     "decimals": 6,
     "uniswapFee": 10000,
     "baseAddress": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xd0258a3fd00f38aa8090dfee343f10a9d4d30d3f": {
     "address": "0xd0258a3fd00f38aa8090dfee343f10a9d4d30d3f",
@@ -679,7 +753,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xd0258a3fd00f38aa8090dfee343f10a9d4d30d3f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x430ef9263e76dae63c84292c3409d61c598e9682": {
     "address": "0x430ef9263e76dae63c84292c3409d61c598e9682",
@@ -688,7 +763,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x430ef9263e76dae63c84292c3409d61c598e9682",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x11a88f949c0592238959142653bb6847c6523d81": {
     "address": "0x11a88f949c0592238959142653bb6847c6523d81",
@@ -697,7 +773,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x11a88f949c0592238959142653bb6847c6523d81",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270": {
     "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
@@ -706,7 +783,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b": {
     "address": "0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b",
@@ -715,7 +793,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6": {
     "address": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
@@ -724,7 +803,8 @@
     "decimals": 8,
     "uniswapFee": 10000,
     "baseAddress": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x2ab0e9e4ee70fff1fb9d67031e44f6410170d00e": {
     "address": "0x2ab0e9e4ee70fff1fb9d67031e44f6410170d00e",
@@ -733,7 +813,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x2ab0e9e4ee70fff1fb9d67031e44f6410170d00e",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x086373fad3447f7f86252fb59d56107e9e0faafa": {
     "address": "0x086373fad3447f7f86252fb59d56107e9e0faafa",
@@ -742,7 +823,8 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x086373fad3447f7f86252fb59d56107e9e0faafa",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xb87904db461005fc716a6bf9f2d451c33b10b80b": {
     "address": "0xb87904db461005fc716a6bf9f2d451c33b10b80b",
@@ -751,7 +833,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xb87904db461005fc716a6bf9f2d451c33b10b80b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x9a41e03fef7f16f552c6fba37ffa7590fb1ec0c4": {
     "address": "0x9a41e03fef7f16f552c6fba37ffa7590fb1ec0c4",
@@ -760,7 +843,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x9a41e03fef7f16f552c6fba37ffa7590fb1ec0c4",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xbcd2c5c78000504efbc1ce6489dfcac71835406a": {
     "address": "0xbcd2c5c78000504efbc1ce6489dfcac71835406a",
@@ -769,7 +853,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xbcd2c5c78000504efbc1ce6489dfcac71835406a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3": {
     "address": "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
@@ -778,7 +863,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x3cef98bb43d732e2f285ee605a8158cde967d219": {
     "address": "0x3cef98bb43d732e2f285ee605a8158cde967d219",
@@ -787,7 +873,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x3cef98bb43d732e2f285ee605a8158cde967d219",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c": {
     "address": "0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c",
@@ -796,7 +883,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c": {
     "address": "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c",
@@ -805,7 +893,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4": {
     "address": "0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4",
@@ -814,7 +903,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x90f3edc7d5298918f7bb51694134b07356f7d0c7": {
     "address": "0x90f3edc7d5298918f7bb51694134b07356f7d0c7",
@@ -823,7 +913,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x90f3edc7d5298918f7bb51694134b07356f7d0c7",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x8c92e38eca8210f4fcbf17f0951b198dd7668292": {
     "address": "0x8c92e38eca8210f4fcbf17f0951b198dd7668292",
@@ -832,7 +923,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x8c92e38eca8210f4fcbf17f0951b198dd7668292",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x04f177fcacf6fb4d2f95d41d7d3fee8e565ca1d0": {
     "address": "0x04f177fcacf6fb4d2f95d41d7d3fee8e565ca1d0",
@@ -841,7 +933,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x04f177fcacf6fb4d2f95d41d7d3fee8e565ca1d0",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x1adcef5c780d8895ac77e6ee9239b4b3ecb76da2": {
     "address": "0x1adcef5c780d8895ac77e6ee9239b4b3ecb76da2",
@@ -850,7 +943,8 @@
     "decimals": 6,
     "uniswapFee": 3000,
     "baseAddress": "0x1adcef5c780d8895ac77e6ee9239b4b3ecb76da2",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x11cd37bb86f65419713f30673a480ea33c826872": {
     "address": "0x11cd37bb86f65419713f30673a480ea33c826872",
@@ -859,7 +953,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x11cd37bb86f65419713f30673a480ea33c826872",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xd6a5ab46ead26f49b03bbb1f9eb1ad5c1767974a": {
     "address": "0xd6a5ab46ead26f49b03bbb1f9eb1ad5c1767974a",
@@ -868,7 +963,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xd6a5ab46ead26f49b03bbb1f9eb1ad5c1767974a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x49b1be61a8ca3f9a9f178d6550e41e00d9162159": {
     "address": "0x49b1be61a8ca3f9a9f178d6550e41e00d9162159",
@@ -877,7 +973,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x49b1be61a8ca3f9a9f178d6550e41e00d9162159",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x50b728d8d964fd00c2d0aad81718b71311fef68a": {
     "address": "0x50b728d8d964fd00c2d0aad81718b71311fef68a",
@@ -886,7 +983,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x50b728d8d964fd00c2d0aad81718b71311fef68a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x3ad707da309f3845cd602059901e39c4dcd66473": {
     "address": "0x3ad707da309f3845cd602059901e39c4dcd66473",
@@ -895,7 +993,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x3ad707da309f3845cd602059901e39c4dcd66473",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xc27158bb8e08899d38765752f91d7d778e16ab8e": {
     "address": "0xc27158bb8e08899d38765752f91d7d778e16ab8e",
@@ -904,7 +1003,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xc27158bb8e08899d38765752f91d7d778e16ab8e",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xc3c7d422809852031b44ab29eec9f1eff2a58756": {
     "address": "0xc3c7d422809852031b44ab29eec9f1eff2a58756",
@@ -913,7 +1013,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xc3c7d422809852031b44ab29eec9f1eff2a58756",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x6f7c932e7684666c9fd1d44527765433e01ff61d": {
     "address": "0x6f7c932e7684666c9fd1d44527765433e01ff61d",
@@ -922,7 +1023,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x6f7c932e7684666c9fd1d44527765433e01ff61d",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xfe712251173a2cd5f5be2b46bb528328ea3565e1": {
     "address": "0xfe712251173a2cd5f5be2b46bb528328ea3565e1",
@@ -931,7 +1033,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xfe712251173a2cd5f5be2b46bb528328ea3565e1",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xce899f26928a2b21c6a2fddd393ef37c61dba918": {
     "address": "0xce899f26928a2b21c6a2fddd393ef37c61dba918",
@@ -940,7 +1043,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xce899f26928a2b21c6a2fddd393ef37c61dba918",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x5d48a5e5a3e737322ae27e25897f1c9e19ecc941": {
     "address": "0x5d48a5e5a3e737322ae27e25897f1c9e19ecc941",
@@ -949,7 +1053,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x5d48a5e5a3e737322ae27e25897f1c9e19ecc941",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xaa3717090cddc9b227e49d0d84a28ac0a996e6ff": {
     "address": "0xaa3717090cddc9b227e49d0d84a28ac0a996e6ff",
@@ -958,7 +1063,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xaa3717090cddc9b227e49d0d84a28ac0a996e6ff",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x25788a1a171ec66da6502f9975a15b609ff54cf6": {
     "address": "0x25788a1a171ec66da6502f9975a15b609ff54cf6",
@@ -967,7 +1073,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x25788a1a171ec66da6502f9975a15b609ff54cf6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x972999c58bbce63a2e398d4ed3bde414b8349eb3": {
     "address": "0x972999c58bbce63a2e398d4ed3bde414b8349eb3",
@@ -976,7 +1083,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x972999c58bbce63a2e398d4ed3bde414b8349eb3",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x70c006878a5a50ed185ac4c87d837633923de296": {
     "address": "0x70c006878a5a50ed185ac4c87d837633923de296",
@@ -985,7 +1093,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x70c006878a5a50ed185ac4c87d837633923de296",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x2f6f07cdcf3588944bf4c42ac74ff24bf56e7590": {
     "address": "0x2f6f07cdcf3588944bf4c42ac74ff24bf56e7590",
@@ -994,7 +1103,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x2f6f07cdcf3588944bf4c42ac74ff24bf56e7590",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xe631dabef60c37a37d70d3b4f812871df663226f": {
     "address": "0xe631dabef60c37a37d70d3b4f812871df663226f",
@@ -1003,7 +1113,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xe631dabef60c37a37d70d3b4f812871df663226f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x49e6a20f1bbdfeec2a8222e052000bbb14ee6007": {
     "address": "0x49e6a20f1bbdfeec2a8222e052000bbb14ee6007",
@@ -1012,7 +1123,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x49e6a20f1bbdfeec2a8222e052000bbb14ee6007",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x236aa50979d5f3de3bd1eeb40e81137f22ab794b": {
     "address": "0x236aa50979d5f3de3bd1eeb40e81137f22ab794b",
@@ -1021,7 +1133,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x236aa50979d5f3de3bd1eeb40e81137f22ab794b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x5fe2b58c013d7601147dcdd68c143a77499f5531": {
     "address": "0x5fe2b58c013d7601147dcdd68c143a77499f5531",
@@ -1030,7 +1143,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x5fe2b58c013d7601147dcdd68c143a77499f5531",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xc708d6f2153933daa50b2d0758955be0a93a8fec": {
     "address": "0xc708d6f2153933daa50b2d0758955be0a93a8fec",
@@ -1039,7 +1153,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xc708d6f2153933daa50b2d0758955be0a93a8fec",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034": {
     "address": "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034",
@@ -1048,7 +1163,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xdc3326e71d45186f113a2f448984ca0e8d201995": {
     "address": "0xdc3326e71d45186f113a2f448984ca0e8d201995",
@@ -1057,7 +1173,8 @@
     "decimals": 6,
     "uniswapFee": 3000,
     "baseAddress": "0xdc3326e71d45186f113a2f448984ca0e8d201995",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x55555555a687343c6ce28c8e1f6641dc71659fad": {
     "address": "0x55555555a687343c6ce28c8e1f6641dc71659fad",
@@ -1066,7 +1183,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x55555555a687343c6ce28c8e1f6641dc71659fad",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xda537104d6a5edd53c6fbba9a898708e465260b6": {
     "address": "0xda537104d6a5edd53c6fbba9a898708e465260b6",
@@ -1075,7 +1193,8 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xda537104d6a5edd53c6fbba9a898708e465260b6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390": {
     "address": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390",
@@ -1084,7 +1203,8 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x625e7708f30ca75bfd92586e17077590c60eb4cd": {
     "address": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
@@ -1093,7 +1213,8 @@
     "decimals": 6,
     "uniswapFee": 500,
     "baseAddress": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x027af1e12a5869ed329be4c05617ad528e997d5a": {
     "address": "0x027af1e12a5869ed329be4c05617ad528e997d5a",
@@ -1102,7 +1223,8 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0x027af1e12a5869ed329be4c05617ad528e997d5a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xb25e20de2f2ebb4cffd4d16a55c7b395e8a94762": {
     "address": "0xb25e20de2f2ebb4cffd4d16a55c7b395e8a94762",
@@ -1111,7 +1233,8 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0xb25e20de2f2ebb4cffd4d16a55c7b395e8a94762",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd": {
     "address": "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
@@ -1120,7 +1243,8 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0xef6ab48ef8dfe984fab0d5c4cd6aff2e54dfda14": {
     "address": "0xef6ab48ef8dfe984fab0d5c4cd6aff2e54dfda14",
@@ -1129,7 +1253,8 @@
     "decimals": 18,
     "uniswapFee": 100,
     "baseAddress": "0xef6ab48ef8dfe984fab0d5c4cd6aff2e54dfda14",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x381caf412b45dac0f62fbeec89de306d3eabe384": {
     "address": "0x381caf412b45dac0f62fbeec89de306d3eabe384",
@@ -1138,7 +1263,8 @@
     "decimals": 18,
     "uniswapFee": 100,
     "baseAddress": "0x381caf412b45dac0f62fbeec89de306d3eabe384",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   },
   "0x111111517e4929d3dcbdfa7cce55d30d4b6bc4d6": {
     "address": "0x111111517e4929d3dcbdfa7cce55d30d4b6bc4d6",
@@ -1147,6 +1273,7 @@
     "decimals": 18,
     "uniswapFee": 100,
     "baseAddress": "0x111111517e4929d3dcbdfa7cce55d30d4b6bc4d6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
   }
 }
