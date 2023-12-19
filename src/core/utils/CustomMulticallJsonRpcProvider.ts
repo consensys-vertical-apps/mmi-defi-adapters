@@ -1,5 +1,6 @@
 import { JsonRpcApiProviderOptions, TransactionRequest } from 'ethers'
 import { Chain } from '../constants/chains'
+import { Cache } from '../decorators/Cache'
 import { CustomJsonRpcProvider } from './customJsonRpcProvider'
 import { MulticallQueue } from './multicall'
 
@@ -24,6 +25,7 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     this.multicallQueue = multicallQueue
   }
 
+  @Cache
   async call(transaction: CustomTransactionRequest): Promise<string> {
     if (transaction.from) {
       return super.call(transaction)
