@@ -3,7 +3,7 @@ import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain } from './core/constants/chains'
+import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
 import { ChainProvider } from './core/utils/chainProviders'
@@ -43,6 +43,29 @@ export class DefiProvider {
     })
   }
 
+  async getStableBlockNumbers(
+    filterChainIds?: Chain[],
+  ): Promise<Partial<Record<Chain, number>>> {
+    return Object.values(this.chainProvider.providers)
+      .filter(
+        (provider) =>
+          !filterChainIds || filterChainIds.includes(provider.chainId),
+      )
+      .reduce(
+        async (accumulator, provider) => {
+          if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
+            return accumulator
+          }
+
+          return {
+            ...(await accumulator),
+            [provider.chainId]: await provider.getStableBlockNumber(),
+          }
+        },
+        {} as Promise<Partial<Record<Chain, number>>>,
+      )
+  }
+
   async getPositions({
     userAddress,
     filterProtocolIds,
@@ -71,6 +94,7 @@ export class DefiProvider {
         endTime,
         timeTaken: endTime - startTime,
         chainId: adapter.chainId,
+        chainName: ChainName[adapter.chainId],
         protocolId: adapter.protocolId,
         productId: adapter.productId,
         userAddress,
@@ -113,7 +137,7 @@ export class DefiProvider {
     ) => {
       const toBlock =
         toBlockNumbersOverride?.[adapter.chainId] ??
-        (await provider.getBlockNumber())
+        (await provider.getStableBlockNumber())
       const fromBlock =
         toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
 
@@ -132,8 +156,10 @@ export class DefiProvider {
         endTime,
         timeTaken: endTime - startTime,
         chainId: adapter.chainId,
+        chainName: ChainName[adapter.chainId],
         protocolId: adapter.protocolId,
         productId: adapter.productId,
+        timePeriod,
         userAddress,
         fromBlock,
         toBlock,
@@ -194,6 +220,7 @@ export class DefiProvider {
             endTime,
             timeTaken: endTime - startTime,
             chainId: adapter.chainId,
+            chainName: ChainName[adapter.chainId],
             protocolId: adapter.protocolId,
             productId: adapter.productId,
             protocolTokenAddress,
@@ -389,16 +416,6 @@ export class DefiProvider {
       filterProtocolIds,
       filterChainIds,
     })
-  }
-
-  async getLatestBlock(chainId: Chain): Promise<number> {
-    const provider = this.chainProvider.providers[chainId]
-
-    if (!provider) {
-      throw new ProviderMissingError(chainId)
-    }
-
-    return provider.getBlockNumber()
   }
 
   private async runForAllProtocolsAndChains<ReturnType extends object>({
