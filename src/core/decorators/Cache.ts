@@ -1,10 +1,13 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type CacheEntry = { result: any; timestamp: number }
 export function Cache(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   originalMethod: any,
   _context: ClassMethodDecoratorContext,
 ) {
   const cache: Record<string, CacheEntry> = {}
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async function replacementMethod(this: any, input: any) {
     const key = JSON.stringify(input)
 
