@@ -57,28 +57,25 @@ export class DefiProvider {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      const startTime = new Date()
+      const startTime = Date.now()
 
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
       })
 
-      const endTime = new Date()
-      const timeTaken = endTime.getTime() - startTime.getTime()
-      logger.info(
-        {
-          startTime,
-          endTime,
-          timeTaken,
-          chainId: adapter.chainId,
-          protocolId: adapter.protocolId,
-          productId: adapter.productId,
-          userAddress,
-          blockNumber,
-        },
-        'Positions fetched',
-      )
+      const endTime = Date.now()
+      logger.info({
+        source: 'adapter:positions',
+        startTime,
+        endTime,
+        timeTaken: endTime - startTime,
+        chainId: adapter.chainId,
+        protocolId: adapter.protocolId,
+        productId: adapter.productId,
+        userAddress,
+        blockNumber,
+      })
 
       const tokens = protocolPositions.map((protocolPosition) =>
         enrichPositionBalance(protocolPosition, adapter.chainId),
@@ -120,7 +117,7 @@ export class DefiProvider {
       const fromBlock =
         toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
 
-      const startTime = new Date()
+      const startTime = Date.now()
 
       const profits = await adapter.getProfits({
         userAddress,
@@ -128,22 +125,19 @@ export class DefiProvider {
         fromBlock,
       })
 
-      const endTime = new Date()
-      const timeTaken = endTime.getTime() - startTime.getTime()
-      logger.info(
-        {
-          startTime,
-          endTime,
-          timeTaken,
-          chainId: adapter.chainId,
-          protocolId: adapter.protocolId,
-          productId: adapter.productId,
-          userAddress,
-          fromBlock,
-          toBlock,
-        },
-        'Profits fetched',
-      )
+      const endTime = Date.now()
+      logger.info({
+        source: 'adapter:profits',
+        startTime,
+        endTime,
+        timeTaken: endTime - startTime,
+        chainId: adapter.chainId,
+        protocolId: adapter.protocolId,
+        productId: adapter.productId,
+        userAddress,
+        fromBlock,
+        toBlock,
+      })
 
       return profits
     }
@@ -185,7 +179,7 @@ export class DefiProvider {
 
       const tokens = await Promise.all(
         protocolTokens.map(async ({ address: protocolTokenAddress }) => {
-          const startTime = new Date()
+          const startTime = Date.now()
 
           const protocolTokenUnderlyingRate =
             await adapter.getProtocolTokenToUnderlyingTokenRate({
@@ -193,21 +187,18 @@ export class DefiProvider {
               blockNumber,
             })
 
-          const endTime = new Date()
-          const timeTaken = endTime.getTime() - startTime.getTime()
-          logger.info(
-            {
-              startTime,
-              endTime,
-              timeTaken,
-              chainId: adapter.chainId,
-              protocolId: adapter.protocolId,
-              productId: adapter.productId,
-              protocolTokenAddress,
-              blockNumber,
-            },
-            'Prices fetched',
-          )
+          const endTime = Date.now()
+          logger.info({
+            source: 'adapter:prices',
+            startTime,
+            endTime,
+            timeTaken: endTime - startTime,
+            chainId: adapter.chainId,
+            protocolId: adapter.protocolId,
+            productId: adapter.productId,
+            protocolTokenAddress,
+            blockNumber,
+          })
 
           return enrichUnderlyingTokenRates(
             protocolTokenUnderlyingRate,
