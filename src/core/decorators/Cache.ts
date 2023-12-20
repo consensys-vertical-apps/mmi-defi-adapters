@@ -1,30 +1,37 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type CacheEntry = { result: any; timestamp: number }
-export function Cache(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  originalMethod: any,
+const THIRTY_MINUTES = 30 * 60 * 1000
+
+type CacheEntry<T> = { result: T; timestamp: number }
+
+export function Cache<T>(
+  originalMethod: (...args: unknown[]) => Promise<T>,
   _context: ClassMethodDecoratorContext,
 ) {
-  const cache: Record<string, CacheEntry> = {}
+  const cache: Record<string, Promise<CacheEntry<T>>> = {}
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async function replacementMethod(this: any, input: any) {
+  async function replacementMethod(this: unknown, input: unknown[]) {
     const key = JSON.stringify(input)
 
-    const entry = cache[key]
+    const cachedEntryPromise = cache[key]
 
-    if (entry) {
+    if (cachedEntryPromise) {
       const now = Date.now()
 
-      if (now - entry.timestamp < 30 * 60 * 1000) {
+      const entry = await cachedEntryPromise
+
+      if (now - entry.timestamp < THIRTY_MINUTES) {
         return entry.result
       }
     }
 
-    const result = await originalMethod.call(this, input)
-    cache[key] = { result, timestamp: Date.now() }
+    const entryPromise = new Promise<CacheEntry<T>>((resolve) => {
+      originalMethod.call(this, input).then((result) => {
+        resolve({ result, timestamp: Date.now() })
+      })
+    })
 
-    return result
+    cache[key] = entryPromise
+
+    return (await entryPromise).result
   }
 
   return replacementMethod

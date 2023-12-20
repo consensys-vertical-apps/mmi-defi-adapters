@@ -1,14 +1,9 @@
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-
 export function Profiling(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  originalMethod: any,
+  originalMethod: (...args: unknown[]) => unknown,
   context: ClassMethodDecoratorContext,
 ) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async function replacementMethod(this: IProtocolAdapter, input: any) {
+  async function replacementMethod(this: any, input: unknown[]) {
     const key = JSON.stringify({
       methodName: context.name,
       chainId: this.chainId,
