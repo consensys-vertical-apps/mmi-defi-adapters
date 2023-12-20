@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
 import 'dotenv/config'
+import { ethers } from 'ethers'
+import { Chain } from '../core/constants/chains'
 import { TimePeriod } from '../core/constants/timePeriod'
 import { DefiProvider } from '../defiProvider'
 import { blockAverage } from './blockAverage'
@@ -9,7 +11,6 @@ import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
 import { featureCommands } from './featureCommands'
 import { newAdapterCommand } from './newAdapterCommand'
-import { ethers } from 'ethers'
 
 const program = new Command('mmi-adapters')
 
@@ -33,37 +34,41 @@ program
   .command('stress')
   .showHelpAfterError()
   .action(async () => {
-    const addresses = new Array(5).fill(null).map((_, index) => {
+    const addresses = new Array(5).fill(null).map(() => {
       const randomWallet = ethers.Wallet.createRandom()
       return randomWallet.address
     })
 
-    const blockNumbers = await defiProvider.getStableBlockNumbers([1])
+    const filterChainIds: Chain[] = [1]
+
+    const blockNumbers = await defiProvider.getStableBlockNumbers(
+      filterChainIds,
+    )
 
     const promises = addresses.flatMap((userAddress) => {
       return [
         defiProvider.getPositions({
           userAddress,
           blockNumbers,
-          filterChainIds: [1],
+          filterChainIds,
         }),
         defiProvider.getProfits({
           userAddress,
           timePeriod: TimePeriod.oneDay,
           toBlockNumbersOverride: blockNumbers,
-          filterChainIds: [1],
+          filterChainIds,
         }),
         defiProvider.getProfits({
           userAddress,
           timePeriod: TimePeriod.sevenDays,
           toBlockNumbersOverride: blockNumbers,
-          filterChainIds: [1],
+          filterChainIds,
         }),
         defiProvider.getProfits({
           userAddress,
           timePeriod: TimePeriod.thirtyDays,
           toBlockNumbersOverride: blockNumbers,
-          filterChainIds: [1],
+          filterChainIds,
         }),
       ]
     })

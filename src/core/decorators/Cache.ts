@@ -25,11 +25,10 @@ export function Cache<T>(
       }
     }
 
-    const entryPromise = new Promise<CacheEntry<T>>((resolve) => {
-      originalMethod.call(this, input).then((result) => {
-        resolve({ result, timestamp: Date.now() })
-      })
-    })
+    const entryPromise = (async () => ({
+      result: await originalMethod.call(this, input),
+      timestamp: Date.now(),
+    }))()
 
     cache[key] = entryPromise
 
