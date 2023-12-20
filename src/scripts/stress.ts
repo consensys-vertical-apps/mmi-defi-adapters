@@ -31,7 +31,7 @@ export function stressCommand(program: Command, defiProvider: DefiProvider) {
 
     .option(
       '-s, --strategy <strategy>',
-      'strategy to use (e.g. sequential-naive, parallel-naive, optimized)',
+      'strategy to use (e.g. sequential-naive, sequential-optimized, parallel-naive, optimized)',
     )
     .showHelpAfterError()
     .action(async ({ iterations, address, protocols, chains, strategy }) => {
@@ -57,36 +57,33 @@ export function stressCommand(program: Command, defiProvider: DefiProvider) {
 
       const start = Date.now()
 
+      const strategyInput: StrategyInput = {
+        defiProvider,
+        addresses,
+        filterChainIds,
+        filterProtocolIds,
+        blockNumbers,
+        globalStart: start,
+      }
+
       switch (strategy) {
         case 'sequential-naive':
-          await sequentialNaive({
-            defiProvider,
-            addresses,
-            filterChainIds,
-            filterProtocolIds,
-            blockNumbers,
-            globalStart: start,
+          await sequential({
+            ...strategyInput,
+            filterProtocolTokens: false,
+          })
+          break
+        case 'sequential-optimized':
+          await sequential({
+            ...strategyInput,
+            filterProtocolTokens: true,
           })
           break
         case 'parallel-naive':
-          await parallelNaive({
-            defiProvider,
-            addresses,
-            filterChainIds,
-            filterProtocolIds,
-            blockNumbers,
-            globalStart: start,
-          })
+          await parallelNaive(strategyInput)
           break
         case 'optimized':
-          await optimized({
-            defiProvider,
-            addresses,
-            filterChainIds,
-            filterProtocolIds,
-            blockNumbers,
-            globalStart: start,
-          })
+          await optimized(strategyInput)
           break
         default:
           throw new Error(`Invalid strategy: ${strategy}`)
@@ -97,61 +94,40 @@ export function stressCommand(program: Command, defiProvider: DefiProvider) {
     })
 }
 
-async function parallelNaive({
-  defiProvider,
-  addresses,
-  filterChainIds,
-  filterProtocolIds,
-  blockNumbers,
-  globalStart,
-}: {
-  defiProvider: DefiProvider
+type StrategyInput = {
   addresses: string[]
+  defiProvider: DefiProvider
   filterChainIds: Chain[] | undefined
   filterProtocolIds: Protocol[] | undefined
   blockNumbers: Partial<Record<Chain, number>>
   globalStart: number
-}) {
+}
+
+async function parallelNaive({ addresses, ...input }: StrategyInput) {
   const promises = addresses.flatMap((userAddress) => {
     return [
       profileCall({
-        defiProvider,
+        ...input,
         method: 'positions',
         userAddress,
-        filterChainIds,
-        filterProtocolIds,
-        blockNumbers,
-        globalStart,
       }),
       profileCall({
-        defiProvider,
+        ...input,
         method: 'profits',
         timePeriod: TimePeriod.oneDay,
         userAddress,
-        filterChainIds,
-        filterProtocolIds,
-        blockNumbers,
-        globalStart,
       }),
       profileCall({
-        defiProvider,
+        ...input,
         method: 'profits',
         timePeriod: TimePeriod.sevenDays,
         userAddress,
-        filterChainIds,
-        filterProtocolIds,
-        blockNumbers,
-        globalStart,
       }),
       profileCall({
-        defiProvider,
+        ...input,
         method: 'profits',
         timePeriod: TimePeriod.thirtyDays,
         userAddress,
-        filterChainIds,
-        filterProtocolIds,
-        blockNumbers,
-        globalStart,
       }),
     ]
   })
@@ -159,111 +135,81 @@ async function parallelNaive({
   await Promise.all(promises)
 }
 
-async function sequentialNaive({
-  defiProvider,
+async function sequential({
   addresses,
-  filterChainIds,
-  filterProtocolIds,
-  blockNumbers,
-  globalStart,
-}: {
-  defiProvider: DefiProvider
-  addresses: string[]
-  filterChainIds: Chain[] | undefined
-  filterProtocolIds: Protocol[] | undefined
-  blockNumbers: Partial<Record<Chain, number>>
-  globalStart: number
-}) {
+  filterProtocolTokens,
+  ...input
+}: StrategyInput & { filterProtocolTokens: boolean }) {
   for (const userAddress of addresses) {
-    await profileCall({
-      defiProvider,
+    const positionsResponses = await profileCall({
+      ...input,
       method: 'positions',
       userAddress,
-      filterChainIds,
-      filterProtocolIds,
-      blockNumbers,
-      globalStart,
     })
 
     await profileCall({
-      defiProvider,
+      ...input,
       method: 'profits',
       timePeriod: TimePeriod.oneDay,
       userAddress,
-      filterChainIds,
-      filterProtocolIds,
-      blockNumbers,
-      globalStart,
+      protocolTokenAddresses: filterProtocolTokens
+        ? filterProtocolTokensWithResponse(positionsResponses)
+        : undefined,
     })
 
     await profileCall({
-      defiProvider,
+      ...input,
       method: 'profits',
       timePeriod: TimePeriod.sevenDays,
       userAddress,
-      filterChainIds,
-      filterProtocolIds,
-      blockNumbers,
-      globalStart,
+      protocolTokenAddresses: filterProtocolTokens
+        ? filterProtocolTokensWithResponse(positionsResponses)
+        : undefined,
     })
 
     await profileCall({
-      defiProvider,
+      ...input,
       method: 'profits',
       timePeriod: TimePeriod.thirtyDays,
       userAddress,
-      filterChainIds,
-      filterProtocolIds,
-      blockNumbers,
-      globalStart,
+      protocolTokenAddresses: filterProtocolTokens
+        ? filterProtocolTokensWithResponse(positionsResponses)
+        : undefined,
     })
   }
 }
 
-async function optimized({
-  defiProvider,
-  addresses,
-  filterChainIds,
-  filterProtocolIds,
-  blockNumbers,
-  globalStart,
-}: {
-  defiProvider: DefiProvider
-  addresses: string[]
-  filterChainIds: Chain[] | undefined
-  filterProtocolIds: Protocol[] | undefined
-  blockNumbers: Partial<Record<Chain, number>>
-  globalStart: number
-}) {
+async function optimized({ addresses, ...input }: StrategyInput) {
   const promises = addresses.map(async (userAddress) => {
     const positionsResponses = await profileCall({
-      defiProvider,
+      ...input,
       method: 'positions',
       userAddress,
-      filterChainIds,
-      filterProtocolIds,
-      blockNumbers,
-      globalStart,
     })
 
-    const protocolTokenAddresses = positionsResponses.flatMap((positions) => {
-      if (!positions.success) {
-        return []
-      }
-
-      return positions.tokens.map((token) => token.address)
-    })
+    const protocolTokenAddresses =
+      filterProtocolTokensWithResponse(positionsResponses)
 
     const profitPromises = [
       profileCall({
-        defiProvider,
+        ...input,
         method: 'profits',
         timePeriod: TimePeriod.oneDay,
         userAddress,
-        filterChainIds,
-        filterProtocolIds,
-        blockNumbers,
-        globalStart,
+        protocolTokenAddresses,
+      }),
+      profileCall({
+        ...input,
+        method: 'profits',
+        timePeriod: TimePeriod.sevenDays,
+        userAddress,
+        protocolTokenAddresses,
+      }),
+      profileCall({
+        ...input,
+        method: 'profits',
+        timePeriod: TimePeriod.thirtyDays,
+        userAddress,
         protocolTokenAddresses,
       }),
     ]
@@ -349,4 +295,16 @@ function returnedValues(
 
     return response.tokens.length + accumulator
   }, 0)
+}
+
+function filterProtocolTokensWithResponse(
+  positionsResponses: DefiPositionResponse[],
+) {
+  return positionsResponses.flatMap((positions) => {
+    if (!positions.success) {
+      return []
+    }
+
+    return positions.tokens.map((token) => token.address)
+  })
 }
