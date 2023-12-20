@@ -103,6 +103,9 @@ type StrategyInput = {
   globalStart: number
 }
 
+/**
+ * Runs all calls (positions and 3xprofits) and addresses in parallel, without protocol token filtering
+ */
 async function parallelNaive({ addresses, ...input }: StrategyInput) {
   const promises = addresses.flatMap((userAddress) => {
     return [
@@ -135,6 +138,9 @@ async function parallelNaive({ addresses, ...input }: StrategyInput) {
   await Promise.all(promises)
 }
 
+/**
+ * Runs all calls (positions and 3xprofits) and addresses sequentially, with optional protocol token filtering
+ */
 async function sequential({
   addresses,
   filterProtocolTokens,
@@ -179,6 +185,9 @@ async function sequential({
   }
 }
 
+/**
+ * Runs all position calls for all addresses in parallel, then runs all profits calls for all addresses in parallel with protocol token filtering
+ */
 async function optimized({ addresses, ...input }: StrategyInput) {
   const promises = addresses.map(async (userAddress) => {
     const positionsResponses = await profileCall({
