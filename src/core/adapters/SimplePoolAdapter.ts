@@ -251,15 +251,18 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     userAddress,
     fromBlock,
     toBlock,
+    protocolTokenAddresses,
   }: GetProfitsInput): Promise<ProfitsWithRange> {
     const [endPositionValues, startPositionValues] = await Promise.all([
       this.getPositions({
         userAddress,
         blockNumber: toBlock,
+        protocolTokenAddresses,
       }).then(aggregateFiatBalances),
       this.getPositions({
         userAddress,
         blockNumber: fromBlock,
+        protocolTokenAddresses,
       }).then(aggregateFiatBalances),
     ])
 

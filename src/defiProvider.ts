@@ -71,11 +71,13 @@ export class DefiProvider {
     filterProtocolIds,
     filterChainIds,
     blockNumbers,
+    filterProtocolTokens,
   }: {
     userAddress: string
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
     blockNumbers?: Partial<Record<Chain, number>>
+    filterProtocolTokens?: string[]
   }): Promise<DefiPositionResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
@@ -85,6 +87,7 @@ export class DefiProvider {
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
+        protocolTokenAddresses: filterProtocolTokens,
       })
 
       const endTime = Date.now()
@@ -124,12 +127,14 @@ export class DefiProvider {
     filterProtocolIds,
     filterChainIds,
     toBlockNumbersOverride,
+    filterProtocolTokens,
   }: {
     userAddress: string
     timePeriod?: TimePeriod
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
     toBlockNumbersOverride?: Partial<Record<Chain, number>>
+    filterProtocolTokens?: string[]
   }): Promise<DefiProfitsResponse[]> {
     const runner = async (
       adapter: IProtocolAdapter,
@@ -147,6 +152,7 @@ export class DefiProvider {
         userAddress,
         toBlock,
         fromBlock,
+        protocolTokenAddresses: filterProtocolTokens,
       })
 
       const endTime = Date.now()
