@@ -66,7 +66,6 @@ export class DefiProvider {
       )
   }
 
-
   async getPositions({
     userAddress,
     filterProtocolIds,
@@ -118,10 +117,9 @@ export class DefiProvider {
     return mergedData
   }
 
-
   async getProfits({
     userAddress,
-    timePeriod = TimePeriod.thirtyDays,
+    timePeriod = TimePeriod.sevenDays,
     filterProtocolIds,
     filterChainIds,
     toBlockNumbersOverride,
@@ -157,8 +155,10 @@ export class DefiProvider {
         endTime,
         timeTaken: endTime - startTime,
         chainId: adapter.chainId,
+        chainName: ChainName[adapter.chainId],
         protocolId: adapter.protocolId,
         productId: adapter.productId,
+        timePeriod,
         userAddress,
         fromBlock,
         toBlock,
