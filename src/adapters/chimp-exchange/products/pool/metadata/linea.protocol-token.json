@@ -1,0 +1,74 @@
+{
+  "0x90d8053f7e29faaf5189bdce796a516e29f1f5d3": {
+    "protocolToken": {
+      "address": "0x90d8053f7e29faaf5189bdce796a516e29f1f5d3",
+      "name": "Chimp USDC-DAI-USDT Stable Pool",
+      "symbol": "USDC-DAI-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x4af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ]
+  },
+  "0xe38df7880ef9408e9933fd0e96abcc3cebf76006": {
+    "protocolToken": {
+      "address": "0xe38df7880ef9408e9933fd0e96abcc3cebf76006",
+      "name": "50USDC-50WETH",
+      "symbol": "50USDC-50WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xfee637c94e85b23472745f6b5ede2e4c0ad12a94": {
+    "protocolToken": {
+      "address": "0xfee637c94e85b23472745f6b5ede2e4c0ad12a94",
+      "name": "50USDT-50WETH",
+      "symbol": "50USDT-50WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ]
+  }
+}

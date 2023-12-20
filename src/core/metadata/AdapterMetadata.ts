@@ -29,6 +29,7 @@ import AaveV3VariableDebtTokenEthereumVariableDebtTokenV3 from '../../adapters/a
 import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/fantom.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
+import ChimpExchangePoolLineaProtocolToken from '../../adapters/chimp-exchange/products/pool/metadata/linea.protocol-token.json'
 import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
 import ConvexCvxcrvWrapperEthereumProtocolToken from '../../adapters/convex/products/cvxcrv-wrapper/metadata/ethereum.protocol-token.json'
 import ConvexExtraRewardEthereumProtocolToken from '../../adapters/convex/products/extra-reward/metadata/ethereum.protocol-token.json'
@@ -485,7 +486,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     PricesUsdArbitrumProtocolToken,
   ],
-
   [
     metadataKey({
       protocolId: Protocol.Prices,
@@ -494,6 +494,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     PricesUsdOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.ChimpExchange,
+      productId: 'pool',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    ChimpExchangePoolLineaProtocolToken,
   ],
 ])
 
