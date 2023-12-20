@@ -3,12 +3,14 @@ const THIRTY_MINUTES = 30 * 60 * 1000
 type CacheEntry<T> = { result: T; timestamp: number }
 
 export function Cache<T>(
-  originalMethod: (...args: unknown[]) => Promise<T>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  originalMethod: (input: any) => Promise<T>,
   _context: ClassMethodDecoratorContext,
 ) {
   const cache: Record<string, Promise<CacheEntry<T>>> = {}
 
-  async function replacementMethod(this: unknown, input: unknown[]) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async function replacementMethod(this: unknown, input: any) {
     const key = JSON.stringify(input)
 
     const cachedEntryPromise = cache[key]
