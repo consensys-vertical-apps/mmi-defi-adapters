@@ -94,6 +94,7 @@ export class DefiProvider {
         endTime,
         timeTaken: endTime - startTime,
         chainId: adapter.chainId,
+        chainName: ChainName[adapter.chainId],
         protocolId: adapter.protocolId,
         productId: adapter.productId,
         userAddress,
