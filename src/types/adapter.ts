@@ -173,6 +173,11 @@ export interface GetPositionsInput {
    * Optional override param
    */
   blockNumber?: number
+
+  /**
+   * Optional filter for pools that will be queried
+   */
+  protocolTokenAddresses?: string[]
 }
 
 export interface GetPricePerShareInput {

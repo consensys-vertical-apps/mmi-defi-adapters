@@ -71,10 +71,18 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+    return filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        protocolTokenAddresses &&
+        !protocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
+
       const tokenContract = Erc20__factory.connect(
         protocolToken.address,
         this.provider,
