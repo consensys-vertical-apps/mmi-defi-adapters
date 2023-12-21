@@ -34,8 +34,8 @@ import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import {
   ResolveUnderlyingPositions,
   ResolveUnderlyingMovements,
-  AddRewards,
 } from '../decorators/resolveUnderlyingPositions'
+import { AddClaimableRewards } from '../decorators/AddClaimableRewards'
 import { MaxMovementLimitExceededError } from '../errors/errors'
 import { aggregateFiatBalances } from '../utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from '../utils/aggregateFiatBalancesFromMovements'
@@ -69,7 +69,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   abstract getProtocolTokens(): Promise<Erc20Metadata[]>
 
   @ResolveUnderlyingPositions
-  @AddRewards({ rewardAdapterIds: [''] })
+  @AddClaimableRewards({ rewardAdapterIds: [''] })
   async getPositions({
     userAddress,
     blockNumber,

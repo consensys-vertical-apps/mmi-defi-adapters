@@ -31,55 +31,6 @@ export function ResolveUnderlyingPositions(
   return replacementMethod
 }
 
-export function AddRewards({
-  rewardAdapterIds,
-}: {
-  rewardAdapterIds: string[]
-}) {
-  return function actualDecorator(
-    originalMethod: SimplePoolAdapter['getPositions'],
-    _context: ClassMethodDecoratorContext,
-  ) {
-    async function replacementMethod(
-      this: IProtocolAdapter,
-      input: GetPositionsInput,
-    ) {
-      let protocolTokens = await originalMethod.call(this, input)
-
-      protocolTokens.forEach(async (protocolTokens) => {
-        console.log({ protocolTokens: protocolTokens.address })
-        const rewardAdapters =
-          await this.adaptersController.fetchRewardAdapters(
-            this.chainId,
-            protocolTokens.address,
-          )
-
-        rewardAdapters?.forEach(async (rewardAdapter) => {
-          const [rewards] = await rewardAdapter.getPositions(input) // need to add lp token address here when bernardo ready
-          const rewardId = await rewardAdapter.getProtocolDetails().productId // need to add lp token address here when bernardo ready
-
-          console.log(rewards, 'rewards', rewardId)
-
-          if (rewards) {
-            if (rewards.tokens) {
-              protocolTokens.tokens = [
-                ...(protocolTokens?.tokens || []),
-                ...rewards.tokens,
-              ]
-            }
-          }
-        })
-      })
-
-      console.log(protocolTokens, protocolTokens[0], 'oioi')
-
-      return protocolTokens
-    }
-
-    return replacementMethod
-  }
-}
-
 export function ResolveUnderlyingMovements(
   originalMethod:
     | SimplePoolAdapter['getWithdrawals']
