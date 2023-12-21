@@ -253,18 +253,35 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
     protocolTokenAddresses,
   }: GetProfitsInput): Promise<ProfitsWithRange> {
-    const [endPositionValues, startPositionValues] = await Promise.all([
-      this.getPositions({
+    let endPositionValues: ReturnType<typeof aggregateFiatBalances>,
+      startPositionValues: ReturnType<typeof aggregateFiatBalances>
+    if (protocolTokenAddresses) {
+      // Call both in parallel with filter
+      ;[endPositionValues, startPositionValues] = await Promise.all([
+        this.getPositions({
+          userAddress,
+          blockNumber: toBlock,
+          protocolTokenAddresses,
+        }).then(aggregateFiatBalances),
+        this.getPositions({
+          userAddress,
+          blockNumber: fromBlock,
+          protocolTokenAddresses,
+        }).then(aggregateFiatBalances),
+      ])
+    } else {
+      // Call toBlock first and filter fromBlock
+      endPositionValues = await this.getPositions({
         userAddress,
         blockNumber: toBlock,
-        protocolTokenAddresses,
-      }).then(aggregateFiatBalances),
-      this.getPositions({
+      }).then(aggregateFiatBalances)
+
+      startPositionValues = await this.getPositions({
         userAddress,
         blockNumber: fromBlock,
-        protocolTokenAddresses,
-      }).then(aggregateFiatBalances),
-    ])
+        protocolTokenAddresses: Object.keys(endPositionValues),
+      }).then(aggregateFiatBalances)
+    }
 
     const tokens = await Promise.all(
       Object.values(endPositionValues).map(
