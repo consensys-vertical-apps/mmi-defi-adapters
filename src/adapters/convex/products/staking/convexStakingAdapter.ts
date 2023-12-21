@@ -4,7 +4,8 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { AddClaimableRewards } from '../../../../core/decorators/AddClaimableRewards'
+import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
+import { AddClaimedRewards } from '../../../../core/decorators/addClaimedRewards'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -24,6 +25,8 @@ import {
   TokenType,
   GetPositionsInput,
   ProtocolPosition,
+  GetEventsInput,
+  MovementsByBlock,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ConvexFactory__factory } from '../../contracts'
@@ -61,6 +64,11 @@ export class ConvexStakingAdapter
   @AddClaimableRewards({ rewardAdapterIds: ['extra-reward', 'rewards'] })
   getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
     return super.getPositions(input)
+  }
+
+  @AddClaimedRewards({ rewardAdapterIds: ['extra-reward', 'rewards'] })
+  getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return super.getWithdrawals(input)
   }
 
   @CacheToFile({ fileKey: 'protocol-token' })

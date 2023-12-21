@@ -35,7 +35,6 @@ import {
   ResolveUnderlyingPositions,
   ResolveUnderlyingMovements,
 } from '../decorators/resolveUnderlyingPositions'
-import { AddClaimableRewards } from '../decorators/AddClaimableRewards'
 import { MaxMovementLimitExceededError } from '../errors/errors'
 import { aggregateFiatBalances } from '../utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from '../utils/aggregateFiatBalancesFromMovements'

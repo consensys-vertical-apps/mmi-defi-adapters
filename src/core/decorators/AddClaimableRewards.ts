@@ -20,19 +20,11 @@ export function AddClaimableRewards({
 
       await Promise.all(
         rewardAdapterIds.map(async (rewardAdapterId) => {
-          let rewardAdapter: IProtocolAdapter
-          try {
-            rewardAdapter = await this.adaptersController.fetchAdapter(
-              this.chainId,
-              this.protocolId,
-              rewardAdapterId,
-            )
-          } catch (error) {
-            if (!(error instanceof AdapterMissingError)) {
-              throw error
-            }
-            return
-          }
+          const rewardAdapter = await this.adaptersController.fetchAdapter(
+            this.chainId,
+            this.protocolId,
+            rewardAdapterId,
+          )
 
           await Promise.all(
             protocolTokens.map(async (protocolToken) => {
