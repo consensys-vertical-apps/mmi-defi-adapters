@@ -32,6 +32,7 @@ export function stressCommand(program: Command, defiProvider: DefiProvider) {
     .option(
       '-s, --strategy <strategy>',
       'strategy to use (e.g. sequential-naive, sequential-optimized, parallel-naive, optimized)',
+      'optimized',
     )
     .showHelpAfterError()
     .action(async ({ iterations, address, protocols, chains, strategy }) => {
