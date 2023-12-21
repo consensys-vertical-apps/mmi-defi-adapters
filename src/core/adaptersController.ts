@@ -13,6 +13,9 @@ export class AdaptersController {
   private protocolTokens:
     | Promise<Map<Chain, Map<string, IProtocolAdapter>>>
     | undefined
+  private rewardTokens:
+    | Promise<Map<Chain, Map<string, IProtocolAdapter[]>>>
+    | undefined
 
   constructor({
     providers,
@@ -37,11 +40,6 @@ export class AdaptersController {
           ([chainIdKey, adapterClasses]) => {
             const chainId = +chainIdKey as Chain
 
-            // always use mainnet for price adapters
-            // const provider =
-            //   protocolId == Protocol.Prices
-            //     ? providers[Chain.Ethereum]!
-            //     : providers[chainId]!
             const provider = providers[chainId]!
 
             adapterClasses.forEach((adapterClass) => {
@@ -92,22 +90,35 @@ export class AdaptersController {
     return protocolTokens.get(chainId)?.get(tokenAddress.toLowerCase())
   }
 
+  async fetchRewardAdapters(
+    chainId: Chain,
+    tokenAddress: string,
+  ): Promise<IProtocolAdapter[] | undefined> {
+    // Deferred promise so that only the first execution path does the work
+    if (!this.rewardTokens) {
+      this.rewardTokens = this.buildRewardTokens()
+    }
+
+    const rewardTokens = await this.rewardTokens
+
+    return rewardTokens.get(chainId)?.get(tokenAddress.toLowerCase())
+  }
+
   private async buildProtocolTokens(): Promise<
     Map<Chain, Map<string, IProtocolAdapter>>
   > {
-    const protocolTokens: Map<Chain, Map<string, IProtocolAdapter>> = new Map()
+    const protocolTokensAdapterMap: Map<
+      Chain,
+      Map<string, IProtocolAdapter>
+    > = new Map()
 
     for (const [chainId, chainAdapters] of this.adapters) {
-      protocolTokens.set(chainId, new Map())
-      const chainAdaptersMap = protocolTokens.get(chainId)!
+      protocolTokensAdapterMap.set(chainId, new Map())
+      const chainAdaptersMap = protocolTokensAdapterMap.get(chainId)!
 
       for (const [_protocolId, protocolAdapters] of chainAdapters) {
         for (const [_productId, adapter] of protocolAdapters) {
           const { positionType } = adapter.getProtocolDetails()
-
-          if (positionType === PositionType.Reward) {
-            continue
-          }
 
           let protocolTokens: Erc20Metadata[]
           try {
@@ -116,33 +127,102 @@ export class AdaptersController {
             if (!(error instanceof NotImplementedError)) {
               throw error
             }
-            protocolTokens = []
+            continue
           }
-          for (const protocolToken of protocolTokens) {
-            const tokenAddress = protocolToken.address.toLowerCase()
 
-            if (_protocolId === 'prices') {
-              if (chainAdaptersMap.has(tokenAddress)) {
-                continue
-              }
-            } else {
-              if (chainAdaptersMap.has(tokenAddress)) {
-                const existingAdapter = chainAdaptersMap.get(tokenAddress)
-                if (existingAdapter?.protocolId !== 'prices') {
-                  throw new Error(
-                    `Duplicated protocol token ${protocolToken.address}`,
-                  )
-                }
-              }
-            }
-
-            chainAdaptersMap.set(tokenAddress, adapter)
+          switch (positionType) {
+            case PositionType.FiatPrices:
+              this.processFiatPrices(protocolTokens, chainAdaptersMap, adapter)
+              break
+            case PositionType.Reward:
+              // Handle Reward case here if needed
+              break
+            default:
+              this.processDefaultCase(protocolTokens, chainAdaptersMap, adapter)
+              break
           }
         }
       }
     }
 
-    return protocolTokens
+    return protocolTokensAdapterMap
+  }
+
+  private async buildRewardTokens(): Promise<
+    Map<Chain, Map<string, IProtocolAdapter[]>>
+  > {
+    const rewardTokensAdapterMap: Map<
+      Chain,
+      Map<string, IProtocolAdapter[]>
+    > = new Map()
+
+    for (const [chainId, chainAdapters] of this.adapters) {
+      rewardTokensAdapterMap.set(chainId, new Map())
+      const chainAdaptersMap = rewardTokensAdapterMap.get(chainId)!
+
+      for (const [_protocolId, protocolAdapters] of chainAdapters) {
+        for (const [_productId, adapter] of protocolAdapters) {
+          const { positionType } = adapter.getProtocolDetails()
+
+          if (positionType === PositionType.Reward) {
+            let protocolTokens: Erc20Metadata[]
+            try {
+              protocolTokens = await adapter.getProtocolTokens()
+            } catch (error) {
+              if (!(error instanceof NotImplementedError)) {
+                throw error
+              }
+              continue
+            }
+
+            for (const protocolToken of protocolTokens) {
+              const tokenAddress = protocolToken.address.toLowerCase()
+
+              const rewardAdapters = chainAdaptersMap.get(tokenAddress) ?? []
+
+              rewardAdapters.push(adapter)
+
+              chainAdaptersMap.set(tokenAddress, rewardAdapters)
+            }
+          }
+        }
+      }
+    }
+
+    return rewardTokensAdapterMap
+  }
+
+  private processFiatPrices(
+    protocolTokens: Erc20Metadata[],
+    chainAdaptersMap: Map<string, IProtocolAdapter>,
+    adapter: IProtocolAdapter,
+  ) {
+    for (const protocolToken of protocolTokens) {
+      const tokenAddress = protocolToken.address.toLowerCase()
+
+      if (!chainAdaptersMap.has(tokenAddress)) {
+        chainAdaptersMap.set(tokenAddress, adapter)
+      }
+    }
+  }
+
+  private processDefaultCase(
+    protocolTokens: Erc20Metadata[],
+    chainAdaptersMap: Map<string, IProtocolAdapter>,
+    adapter: IProtocolAdapter,
+  ) {
+    for (const protocolToken of protocolTokens) {
+      const tokenAddress = protocolToken.address.toLowerCase()
+
+      if (chainAdaptersMap.has(tokenAddress)) {
+        const existingAdapter = chainAdaptersMap.get(tokenAddress)
+        if (existingAdapter?.protocolId !== 'prices') {
+          throw new Error(`Duplicated protocol token ${protocolToken.address}`)
+        }
+      }
+
+      chainAdaptersMap.set(tokenAddress, adapter)
+    }
   }
 
   fetchAdapter(

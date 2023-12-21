@@ -17,6 +17,7 @@ import {
   enrichTotalValueLocked,
 } from './responseAdapters'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
+import { PositionType } from './types/adapter'
 import {
   APRResponse,
   APYResponse,
@@ -91,7 +92,7 @@ export class DefiProvider {
       })
 
       const endTime = Date.now()
-      logger.info({
+      logger.debug({
         source: 'adapter:positions',
         startTime,
         endTime,
@@ -118,7 +119,7 @@ export class DefiProvider {
     })
 
     const mergedData = mergeClaimableWithProtocol(results)
-    return mergedData
+    return results
   }
 
   async getProfits({
@@ -156,7 +157,7 @@ export class DefiProvider {
       })
 
       const endTime = Date.now()
-      logger.info({
+      logger.debug({
         source: 'adapter:profits',
         startTime,
         endTime,
@@ -220,7 +221,7 @@ export class DefiProvider {
             })
 
           const endTime = Date.now()
-          logger.info({
+          logger.debug({
             source: 'adapter:prices',
             startTime,
             endTime,
@@ -462,13 +463,21 @@ export class DefiProvider {
                 protocolId,
               )
 
-            return Array.from(chainProtocolAdapters, async ([_, adapter]) => {
-              return this.runTaskForAdapter(adapter, provider, runner)
-            })
+            return Array.from(chainProtocolAdapters)
+              .filter(
+                ([_, adapter]) =>
+                  adapter.getProtocolDetails().positionType !==
+                  PositionType.Reward,
+              )
+              .map(([_, adapter]) =>
+                this.runTaskForAdapter(adapter, provider, runner),
+              )
           })
       })
 
-    return Promise.all(protocolPromises)
+    const result = await Promise.all(protocolPromises)
+
+    return result
   }
 
   private async runTaskForAdapter<ReturnType>(
