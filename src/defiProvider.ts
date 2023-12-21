@@ -9,15 +9,15 @@ import { ProviderMissingError } from './core/errors/errors'
 import { ChainProvider } from './core/utils/chainProviders'
 import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
 import { logger } from './core/utils/logger'
-import { mergeClaimableWithProtocol } from './core/utils/mergeClaimableWithProtocol'
+
 import {
   enrichPositionBalance,
   enrichUnderlyingTokenRates,
   enrichMovements,
   enrichTotalValueLocked,
 } from './responseAdapters'
-import { IProtocolAdapter } from './types/IProtocolAdapter'
 import { PositionType } from './types/adapter'
+import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
   APYResponse,
@@ -112,14 +112,11 @@ export class DefiProvider {
       return { tokens }
     }
 
-    const results = await this.runForAllProtocolsAndChains({
+    return this.runForAllProtocolsAndChains({
       runner,
       filterProtocolIds,
       filterChainIds,
     })
-
-    const mergedData = mergeClaimableWithProtocol(results)
-    return results
   }
 
   async getProfits({

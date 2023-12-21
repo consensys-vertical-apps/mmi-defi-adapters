@@ -1,7 +1,6 @@
 import { GetEventsInput } from '../../types/adapter'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { SimplePoolAdapter } from '../adapters/SimplePoolAdapter'
-import { AdapterMissingError } from '../errors/errors'
 
 export function AddClaimedRewards({
   rewardAdapterIds,

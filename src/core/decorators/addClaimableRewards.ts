@@ -15,7 +15,7 @@ export function AddClaimableRewards({
       this: IProtocolAdapter,
       input: GetPositionsInput,
     ) {
-      let protocolTokens = await originalMethod.call(this, input)
+      const protocolTokens = await originalMethod.call(this, input)
 
       await Promise.all(
         rewardAdapterIds.map(async (rewardAdapterId) => {

@@ -1,11 +1,11 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
+import { AddClaimedRewards } from '../../../../core/decorators/addClaimedRewards'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-
-import { AddClaimedRewards } from '../../../../core/decorators/addClaimedRewards'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -31,7 +31,6 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ConvexFactory__factory } from '../../contracts'
 import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
-import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
 
 const PRICE_PEGGED_TO_ONE = 1
 
