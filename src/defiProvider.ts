@@ -3,11 +3,12 @@ import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
-import { Chain } from './core/constants/chains'
+import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
 import { ChainProvider } from './core/utils/chainProviders'
 import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
+import { logger } from './core/utils/logger'
 import { mergeClaimableWithProtocol } from './core/utils/mergeClaimableWithProtocol'
 import {
   enrichPositionBalance,
@@ -42,21 +43,63 @@ export class DefiProvider {
     })
   }
 
+  async getStableBlockNumbers(
+    filterChainIds?: Chain[],
+  ): Promise<Partial<Record<Chain, number>>> {
+    return Object.values(this.chainProvider.providers)
+      .filter(
+        (provider) =>
+          !filterChainIds || filterChainIds.includes(provider.chainId),
+      )
+      .reduce(
+        async (accumulator, provider) => {
+          if (filterChainIds && !filterChainIds.includes(provider.chainId)) {
+            return accumulator
+          }
+
+          return {
+            ...(await accumulator),
+            [provider.chainId]: await provider.getStableBlockNumber(),
+          }
+        },
+        {} as Promise<Partial<Record<Chain, number>>>,
+      )
+  }
+
   async getPositions({
     userAddress,
     filterProtocolIds,
     filterChainIds,
     blockNumbers,
+    filterProtocolTokens,
   }: {
     userAddress: string
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
     blockNumbers?: Partial<Record<Chain, number>>
+    filterProtocolTokens?: string[]
   }): Promise<DefiPositionResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
+      const startTime = Date.now()
+
       const protocolPositions = await adapter.getPositions({
+        userAddress,
+        blockNumber,
+        protocolTokenAddresses: filterProtocolTokens,
+      })
+
+      const endTime = Date.now()
+      logger.info({
+        source: 'adapter:positions',
+        startTime,
+        endTime,
+        timeTaken: endTime - startTime,
+        chainId: adapter.chainId,
+        chainName: ChainName[adapter.chainId],
+        protocolId: adapter.protocolId,
+        productId: adapter.productId,
         userAddress,
         blockNumber,
       })
@@ -84,12 +127,14 @@ export class DefiProvider {
     filterProtocolIds,
     filterChainIds,
     toBlockNumbersOverride,
+    filterProtocolTokens,
   }: {
     userAddress: string
     timePeriod?: TimePeriod
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
     toBlockNumbersOverride?: Partial<Record<Chain, number>>
+    filterProtocolTokens?: string[]
   }): Promise<DefiProfitsResponse[]> {
     const runner = async (
       adapter: IProtocolAdapter,
@@ -97,13 +142,33 @@ export class DefiProvider {
     ) => {
       const toBlock =
         toBlockNumbersOverride?.[adapter.chainId] ??
-        (await provider.getBlockNumber())
+        (await provider.getStableBlockNumber())
       const fromBlock =
         toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
+
+      const startTime = Date.now()
+
       const profits = await adapter.getProfits({
         userAddress,
         toBlock,
         fromBlock,
+        protocolTokenAddresses: filterProtocolTokens,
+      })
+
+      const endTime = Date.now()
+      logger.info({
+        source: 'adapter:profits',
+        startTime,
+        endTime,
+        timeTaken: endTime - startTime,
+        chainId: adapter.chainId,
+        chainName: ChainName[adapter.chainId],
+        protocolId: adapter.protocolId,
+        productId: adapter.productId,
+        timePeriod,
+        userAddress,
+        fromBlock,
+        toBlock,
       })
 
       return profits
@@ -119,23 +184,55 @@ export class DefiProvider {
   async getPrices({
     filterProtocolIds,
     filterChainIds,
+    filterProtocolToken,
     blockNumbers,
   }: {
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
+    filterProtocolToken?: string
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<PricePerShareResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      const protocolTokens = await adapter.getProtocolTokens()
+      let protocolTokens = await adapter.getProtocolTokens()
+
+      if (filterProtocolToken) {
+        const filteredProtocolTokens = protocolTokens.filter(
+          (protocolToken) =>
+            protocolToken.address.toLowerCase() ===
+            filterProtocolToken.toLowerCase(),
+        )
+        if (filteredProtocolTokens.length === 0) {
+          return { tokens: [] }
+        }
+        protocolTokens = filteredProtocolTokens
+      }
+
       const tokens = await Promise.all(
         protocolTokens.map(async ({ address: protocolTokenAddress }) => {
+          const startTime = Date.now()
+
           const protocolTokenUnderlyingRate =
             await adapter.getProtocolTokenToUnderlyingTokenRate({
               protocolTokenAddress,
               blockNumber,
             })
+
+          const endTime = Date.now()
+          logger.info({
+            source: 'adapter:prices',
+            startTime,
+            endTime,
+            timeTaken: endTime - startTime,
+            chainId: adapter.chainId,
+            chainName: ChainName[adapter.chainId],
+            protocolId: adapter.protocolId,
+            productId: adapter.productId,
+            protocolTokenAddress,
+            blockNumber,
+          })
+
           return enrichUnderlyingTokenRates(
             protocolTokenUnderlyingRate,
             adapter.chainId,
@@ -325,16 +422,6 @@ export class DefiProvider {
       filterProtocolIds,
       filterChainIds,
     })
-  }
-
-  async getLatestBlock(chainId: Chain): Promise<number> {
-    const provider = this.chainProvider.providers[chainId]
-
-    if (!provider) {
-      throw new ProviderMissingError(chainId)
-    }
-
-    return provider.getBlockNumber()
   }
 
   private async runForAllProtocolsAndChains<ReturnType extends object>({

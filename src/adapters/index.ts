@@ -18,6 +18,7 @@ import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
+import { IZiswapAdapter } from './iziswap/products/iziswap/iZiswapAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
@@ -133,6 +134,7 @@ export const supportedProtocols: Record<
   [Protocol.Swell]: {
     [Chain.Ethereum]: [SwellSwEthAdapter],
   },
+
   [Protocol.Convex]: {
     [Chain.Ethereum]: [
       ConvexPoolAdapter,
@@ -142,8 +144,19 @@ export const supportedProtocols: Record<
       ConvexCvxcrvWrapperAdapter,
     ],
   },
+
   [Protocol.Prices]: {
     [Chain.Ethereum]: [PricesUSDAdapter],
+    [Chain.Arbitrum]: [PricesUSDAdapter],
+    [Chain.Optimism]: [PricesUSDAdapter],
+    [Chain.Polygon]: [PricesUSDAdapter],
+  },
+
+  [Protocol.IZiSwap]: {
+    [Chain.Bsc]: [IZiswapAdapter],
+    [Chain.Base]: [IZiswapAdapter],
+    [Chain.Arbitrum]: [IZiswapAdapter],
+    [Chain.Linea]: [IZiswapAdapter],
   },
   [Protocol.SyncSwap]: {
     [Chain.Linea]: [SyncswapPoolAdapter],

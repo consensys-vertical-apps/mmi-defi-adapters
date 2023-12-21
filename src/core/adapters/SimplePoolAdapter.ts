@@ -1,4 +1,5 @@
 import { formatUnits } from 'ethers'
+import { priceAdapterConfig } from '../../adapters/prices/products/usd/priceAdapterConfig'
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
@@ -23,6 +24,7 @@ import {
   ProtocolTokenTvl,
   TokenBalance,
   TokenType,
+  PositionType,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
@@ -69,10 +71,18 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+    return filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        protocolTokenAddresses &&
+        !protocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
+
       const tokenContract = Erc20__factory.connect(
         protocolToken.address,
         this.provider,
@@ -241,17 +251,37 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     userAddress,
     fromBlock,
     toBlock,
+    protocolTokenAddresses,
   }: GetProfitsInput): Promise<ProfitsWithRange> {
-    const [endPositionValues, startPositionValues] = await Promise.all([
-      this.getPositions({
+    let endPositionValues: ReturnType<typeof aggregateFiatBalances>,
+      startPositionValues: ReturnType<typeof aggregateFiatBalances>
+    if (protocolTokenAddresses) {
+      // Call both in parallel with filter
+      ;[endPositionValues, startPositionValues] = await Promise.all([
+        this.getPositions({
+          userAddress,
+          blockNumber: toBlock,
+          protocolTokenAddresses,
+        }).then(aggregateFiatBalances),
+        this.getPositions({
+          userAddress,
+          blockNumber: fromBlock,
+          protocolTokenAddresses,
+        }).then(aggregateFiatBalances),
+      ])
+    } else {
+      // Call toBlock first and filter fromBlock
+      endPositionValues = await this.getPositions({
         userAddress,
         blockNumber: toBlock,
-      }).then(aggregateFiatBalances),
-      this.getPositions({
+      }).then(aggregateFiatBalances)
+
+      startPositionValues = await this.getPositions({
         userAddress,
         blockNumber: fromBlock,
-      }).then(aggregateFiatBalances),
-    ])
+        protocolTokenAddresses: Object.keys(endPositionValues),
+      }).then(aggregateFiatBalances)
+    }
 
     const tokens = await Promise.all(
       Object.values(endPositionValues).map(
@@ -278,17 +308,27 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
           const endPositionValue = +formatUnits(
             endPositionValues[key]?.usdRaw ?? 0n,
-            8,
+            priceAdapterConfig.decimals,
           )
-          const withdrawal = +formatUnits(withdrawals[key]?.usdRaw ?? 0n, 8)
-          const deposit = +formatUnits(deposits[key]?.usdRaw ?? 0n, 8)
+          const withdrawal = +formatUnits(
+            withdrawals[key]?.usdRaw ?? 0n,
+            priceAdapterConfig.decimals,
+          )
+          const deposit = +formatUnits(
+            deposits[key]?.usdRaw ?? 0n,
+            priceAdapterConfig.decimals,
+          )
           const startPositionValue = +formatUnits(
             startPositionValues[key]?.usdRaw ?? 0n,
-            8,
+            priceAdapterConfig.decimals,
           )
 
           const profit =
             endPositionValue + withdrawal - deposit - startPositionValue
+
+          if (this.getProtocolDetails().positionType == PositionType.Borrow) {
+            profit * -1
+          }
 
           return {
             ...protocolTokenMetadata,

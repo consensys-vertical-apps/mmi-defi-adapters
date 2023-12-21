@@ -11,6 +11,7 @@ import { testCases as compoundTestCases } from './compound/tests/testCases'
 import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
 import { testCases as gMXTestCases } from './gmx/tests/testCases'
+import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as pricesTestCases } from './prices/tests/testCases'
@@ -39,6 +40,7 @@ function runAllTests() {
   runProtocolTests(Protocol.Convex, convexTestCases)
   runProtocolTests(Protocol.Prices, pricesTestCases)
   runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
+  runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
@@ -196,6 +198,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             const response = await defiProvider.getPrices({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
+              filterProtocolToken: testCase.filterProtocolToken,
               blockNumbers: { [testCase.chainId]: blockNumber },
             })
 

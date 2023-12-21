@@ -1,0 +1,22 @@
+{
+  "blockNumber": 1105311,
+  "snapshot": [
+    {
+      "protocolId": "iziswap",
+      "name": "IZiSwap",
+      "description": "IZiSwap defi adapter",
+      "siteUrl": "https://izumi.finance",
+      "iconUrl": "https://izumi.finance/assets/sidebar/logo.svg",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "iziswap",
+      "success": false,
+      "error": {
+        "message": "Unable to calculate profits, missing USD price for token position 0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "details": {
+          "name": "Error"
+        }
+      }
+    }
+  ]
+}

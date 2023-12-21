@@ -1,0 +1,50 @@
+{
+  "snapshot": {
+    "protocolId": "iziswap",
+    "name": "IZiSwap",
+    "description": "IZiSwap defi adapter",
+    "siteUrl": "https://izumi.finance",
+    "iconUrl": "https://izumi.finance/assets/sidebar/logo.svg",
+    "positionType": "supply",
+    "chainId": 59144,
+    "productId": "iziswap",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x768cf92e2970716b610b088c9eb4a3f3631966c55b7ff9dd69123055be155b6c",
+        "protocolToken": {
+          "address": "0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c",
+          "name": "USDC / WETH - 3000",
+          "symbol": "USDC / WETH - 3000",
+          "decimals": 18,
+          "tokenId": "22264"
+        },
+        "tokens": [
+          {
+            "type": "underlying",
+            "balanceRaw": "8028983n",
+            "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+            "name": "USDC",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x768cf92e2970716b610b088c9eb4a3f3631966c55b7ff9dd69123055be155b6c",
+            "blockNumber": 1105300,
+            "balance": "8.028983"
+          },
+          {
+            "type": "underlying",
+            "balanceRaw": "4440772477990897n",
+            "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
+            "name": "Wrapped Ether",
+            "symbol": "WETH",
+            "decimals": 18,
+            "transactionHash": "0x768cf92e2970716b610b088c9eb4a3f3631966c55b7ff9dd69123055be155b6c",
+            "blockNumber": 1105300,
+            "balance": "0.004440772477990897"
+          }
+        ],
+        "blockNumber": 1105300
+      }
+    ]
+  }
+}

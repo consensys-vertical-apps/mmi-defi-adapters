@@ -18,13 +18,13 @@
           "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": -146748.0891132392,
-          "performance": -0.013917949136359931,
+          "profit": -138916.76109474152,
+          "performance": -0.014526561289021842,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 10543801.22211162,
-            "endPositionValue": 10397053.13299838
+            "startPositionValue": 9562948.74821649,
+            "endPositionValue": 9424031.987121748
           }
         },
         {
@@ -33,13 +33,13 @@
           "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": -27259.159758980153,
-          "performance": -0.020597452767289633,
+          "profit": -27259.15975897992,
+          "performance": -0.02059745276728932,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 1323423.8265748,
-            "endPositionValue": 1296164.66681582
+            "startPositionValue": 1323423.826574809,
+            "endPositionValue": 1296164.666815829
           }
         }
       ],
@@ -77,13 +77,13 @@
           "symbol": "variableDebtUSDT",
           "decimals": 6,
           "type": "protocol",
-          "profit": 116.0115371895954,
-          "performance": 0.00002186015577371676,
+          "profit": -7536.570457887836,
+          "performance": -0.0014434372735134156,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 35003.5,
-            "startPositionValue": 5271982.34175142,
-            "endPositionValue": 5307101.85328861
+            "deposits": 34386.67041918019,
+            "startPositionValue": 5186879.67497826,
+            "endPositionValue": 5213729.774939552
           }
         },
         {
@@ -92,13 +92,13 @@
           "symbol": "variableDebtWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": -1128.3730293599947,
-          "performance": -0.013894253742331277,
+          "profit": -1068.2339065842534,
+          "performance": -0.014502880519815162,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 81211.48859706,
-            "endPositionValue": 80083.1155677
+            "startPositionValue": 73656.67152292501,
+            "endPositionValue": 72588.43761634076
           }
         },
         {
@@ -107,13 +107,13 @@
           "symbol": "variableDebtDAI",
           "decimals": 18,
           "type": "protocol",
-          "profit": -32.10538620996522,
-          "performance": -0.000087637111555456,
+          "profit": -661.9442155583529,
+          "performance": -0.0018368529362628218,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 366344.64144393,
-            "endPositionValue": 366312.53605772
+            "startPositionValue": 360368.65145291097,
+            "endPositionValue": 359706.7072373526
           }
         },
         {
@@ -122,13 +122,13 @@
           "symbol": "variableDebtUSDC",
           "decimals": 6,
           "type": "protocol",
-          "profit": 84.71331419982016,
-          "performance": 0.000028118938203954163,
+          "profit": -4926.786978698336,
+          "performance": -0.0016610839987086332,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 3012678.27346011,
-            "endPositionValue": 3012762.98677431
+            "startPositionValue": 2966007.126989688,
+            "endPositionValue": 2961080.3400109895
           }
         }
       ],

@@ -7,22 +7,44 @@ import type { ChainLink, ChainLinkInterface } from "../ChainLink";
 
 const _abi = [
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_aggregator",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_accessController",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
     anonymous: false,
     inputs: [
       {
         indexed: true,
-        internalType: "address",
-        name: "accessController",
-        type: "address",
+        internalType: "int256",
+        name: "current",
+        type: "int256",
       },
       {
         indexed: true,
-        internalType: "address",
-        name: "sender",
-        type: "address",
+        internalType: "uint256",
+        name: "roundId",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "updatedAt",
+        type: "uint256",
       },
     ],
-    name: "AccessControllerSet",
+    name: "AnswerUpdated",
     type: "event",
   },
   {
@@ -30,79 +52,24 @@ const _abi = [
     inputs: [
       {
         indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
+        internalType: "uint256",
+        name: "roundId",
+        type: "uint256",
       },
       {
         indexed: true,
         internalType: "address",
-        name: "denomination",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "latestAggregator",
+        name: "startedBy",
         type: "address",
       },
       {
         indexed: false,
-        internalType: "address",
-        name: "previousAggregator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint16",
-        name: "nextPhaseId",
-        type: "uint16",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "sender",
-        type: "address",
+        internalType: "uint256",
+        name: "startedAt",
+        type: "uint256",
       },
     ],
-    name: "FeedConfirmed",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "denomination",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "proposedAggregator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "currentAggregator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "sender",
-        type: "address",
-      },
-    ],
-    name: "FeedProposed",
+    name: "NewRound",
     type: "event",
   },
   {
@@ -151,41 +118,46 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
+    inputs: [],
+    name: "accessController",
+    outputs: [
       {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "aggregator",
+        internalType: "contract AccessControllerInterface",
+        name: "",
         type: "address",
       },
     ],
-    name: "confirmFeed",
-    outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "aggregator",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
       {
         internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
+        name: "_aggregator",
         type: "address",
       },
     ],
+    name: "confirmAggregator",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "decimals",
     outputs: [
       {
@@ -198,18 +170,7 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-    ],
+    inputs: [],
     name: "description",
     outputs: [
       {
@@ -222,33 +183,10 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "getAccessController",
-    outputs: [
-      {
-        internalType: "contract AccessControllerInterface",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-      {
         internalType: "uint256",
-        name: "roundId",
+        name: "_roundId",
         type: "uint256",
       },
     ],
@@ -256,7 +194,7 @@ const _abi = [
     outputs: [
       {
         internalType: "int256",
-        name: "answer",
+        name: "",
         type: "int256",
       },
     ],
@@ -265,255 +203,6 @@ const _abi = [
   },
   {
     inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-    ],
-    name: "getCurrentPhaseId",
-    outputs: [
-      {
-        internalType: "uint16",
-        name: "currentPhaseId",
-        type: "uint16",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-    ],
-    name: "getFeed",
-    outputs: [
-      {
-        internalType: "contract AggregatorV2V3Interface",
-        name: "aggregator",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-      {
-        internalType: "uint80",
-        name: "roundId",
-        type: "uint80",
-      },
-    ],
-    name: "getNextRoundId",
-    outputs: [
-      {
-        internalType: "uint80",
-        name: "nextRoundId",
-        type: "uint80",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-      {
-        internalType: "uint16",
-        name: "phaseId",
-        type: "uint16",
-      },
-    ],
-    name: "getPhase",
-    outputs: [
-      {
-        components: [
-          {
-            internalType: "uint16",
-            name: "phaseId",
-            type: "uint16",
-          },
-          {
-            internalType: "uint80",
-            name: "startingAggregatorRoundId",
-            type: "uint80",
-          },
-          {
-            internalType: "uint80",
-            name: "endingAggregatorRoundId",
-            type: "uint80",
-          },
-        ],
-        internalType: "struct FeedRegistryInterface.Phase",
-        name: "phase",
-        type: "tuple",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-      {
-        internalType: "uint16",
-        name: "phaseId",
-        type: "uint16",
-      },
-    ],
-    name: "getPhaseFeed",
-    outputs: [
-      {
-        internalType: "contract AggregatorV2V3Interface",
-        name: "aggregator",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-      {
-        internalType: "uint16",
-        name: "phaseId",
-        type: "uint16",
-      },
-    ],
-    name: "getPhaseRange",
-    outputs: [
-      {
-        internalType: "uint80",
-        name: "startingRoundId",
-        type: "uint80",
-      },
-      {
-        internalType: "uint80",
-        name: "endingRoundId",
-        type: "uint80",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-      {
-        internalType: "uint80",
-        name: "roundId",
-        type: "uint80",
-      },
-    ],
-    name: "getPreviousRoundId",
-    outputs: [
-      {
-        internalType: "uint80",
-        name: "previousRoundId",
-        type: "uint80",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-    ],
-    name: "getProposedFeed",
-    outputs: [
-      {
-        internalType: "contract AggregatorV2V3Interface",
-        name: "proposedAggregator",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
       {
         internalType: "uint80",
         name: "_roundId",
@@ -554,47 +243,8 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-      {
-        internalType: "uint80",
-        name: "roundId",
-        type: "uint80",
-      },
-    ],
-    name: "getRoundFeed",
-    outputs: [
-      {
-        internalType: "contract AggregatorV2V3Interface",
-        name: "aggregator",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-      {
         internalType: "uint256",
-        name: "roundId",
+        name: "_roundId",
         type: "uint256",
       },
     ],
@@ -602,7 +252,7 @@ const _abi = [
     outputs: [
       {
         internalType: "uint256",
-        name: "timestamp",
+        name: "",
         type: "uint256",
       },
     ],
@@ -610,42 +260,12 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "aggregator",
-        type: "address",
-      },
-    ],
-    name: "isFeedEnabled",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-    ],
+    inputs: [],
     name: "latestAnswer",
     outputs: [
       {
         internalType: "int256",
-        name: "answer",
+        name: "",
         type: "int256",
       },
     ],
@@ -653,23 +273,12 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-    ],
+    inputs: [],
     name: "latestRound",
     outputs: [
       {
         internalType: "uint256",
-        name: "roundId",
+        name: "",
         type: "uint256",
       },
     ],
@@ -677,18 +286,7 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-    ],
+    inputs: [],
     name: "latestRoundData",
     outputs: [
       {
@@ -721,23 +319,12 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-    ],
+    inputs: [],
     name: "latestTimestamp",
     outputs: [
       {
         internalType: "uint256",
-        name: "timestamp",
+        name: "",
         type: "uint256",
       },
     ],
@@ -749,7 +336,7 @@ const _abi = [
     name: "owner",
     outputs: [
       {
-        internalType: "address",
+        internalType: "address payable",
         name: "",
         type: "address",
       },
@@ -760,41 +347,66 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "base",
-        type: "address",
+        internalType: "uint16",
+        name: "",
+        type: "uint16",
       },
+    ],
+    name: "phaseAggregators",
+    outputs: [
       {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "aggregator",
+        internalType: "contract AggregatorV2V3Interface",
+        name: "",
         type: "address",
       },
     ],
-    name: "proposeFeed",
-    outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "phaseId",
+    outputs: [
+      {
+        internalType: "uint16",
+        name: "",
+        type: "uint16",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
       {
         internalType: "address",
-        name: "base",
+        name: "_aggregator",
         type: "address",
       },
+    ],
+    name: "proposeAggregator",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "proposedAggregator",
+    outputs: [
       {
-        internalType: "address",
-        name: "quote",
+        internalType: "contract AggregatorV2V3Interface",
+        name: "",
         type: "address",
       },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
       {
         internalType: "uint80",
-        name: "roundId",
+        name: "_roundId",
         type: "uint80",
       },
     ],
@@ -802,7 +414,7 @@ const _abi = [
     outputs: [
       {
         internalType: "uint80",
-        name: "id",
+        name: "roundId",
         type: "uint80",
       },
       {
@@ -830,23 +442,12 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-    ],
+    inputs: [],
     name: "proposedLatestRoundData",
     outputs: [
       {
         internalType: "uint80",
-        name: "id",
+        name: "roundId",
         type: "uint80",
       },
       {
@@ -876,12 +477,12 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "contract AccessControllerInterface",
+        internalType: "address",
         name: "_accessController",
         type: "address",
       },
     ],
-    name: "setAccessController",
+    name: "setController",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -890,7 +491,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "to",
+        name: "_to",
         type: "address",
       },
     ],
@@ -901,30 +502,6 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "typeAndVersion",
-    outputs: [
-      {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
-    ],
-    stateMutability: "pure",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "base",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "quote",
-        type: "address",
-      },
-    ],
     name: "version",
     outputs: [
       {

@@ -36,6 +36,12 @@ export class AdaptersController {
         Object.entries(supportedChains).forEach(
           ([chainIdKey, adapterClasses]) => {
             const chainId = +chainIdKey as Chain
+
+            // always use mainnet for price adapters
+            // const provider =
+            //   protocolId == Protocol.Prices
+            //     ? providers[Chain.Ethereum]!
+            //     : providers[chainId]!
             const provider = providers[chainId]!
 
             adapterClasses.forEach((adapterClass) => {
@@ -112,14 +118,25 @@ export class AdaptersController {
             }
             protocolTokens = []
           }
-
           for (const protocolToken of protocolTokens) {
-            if (chainAdaptersMap.has(protocolToken.address.toLowerCase())) {
-              throw new Error(
-                `Duplicated protocol token ${protocolToken.address}`,
-              )
+            const tokenAddress = protocolToken.address.toLowerCase()
+
+            if (_protocolId === 'prices') {
+              if (chainAdaptersMap.has(tokenAddress)) {
+                continue
+              }
+            } else {
+              if (chainAdaptersMap.has(tokenAddress)) {
+                const existingAdapter = chainAdaptersMap.get(tokenAddress)
+                if (existingAdapter?.protocolId !== 'prices') {
+                  throw new Error(
+                    `Duplicated protocol token ${protocolToken.address}`,
+                  )
+                }
+              }
             }
-            chainAdaptersMap.set(protocolToken.address.toLowerCase(), adapter)
+
+            chainAdaptersMap.set(tokenAddress, adapter)
           }
         }
       }

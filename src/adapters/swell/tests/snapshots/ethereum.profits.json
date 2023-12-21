@@ -18,13 +18,13 @@
           "symbol": "SWETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": 22424.67918117001,
-          "performance": 0.07532001535334899,
+          "profit": 22424.67918117778,
+          "performance": 0.07532001535337463,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 55574.05755429,
-            "startPositionValue": 242151.30901619,
-            "endPositionValue": 320150.04575165
+            "deposits": 55574.05755429158,
+            "startPositionValue": 242151.30901619027,
+            "endPositionValue": 320150.0457516596
           }
         }
       ],

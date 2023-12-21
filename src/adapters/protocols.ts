@@ -13,5 +13,6 @@ export const Protocol = {
   Convex: 'convex',
   Prices: 'prices',
   SyncSwap: 'syncswap',
+  IZiSwap: 'iziswap',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]

@@ -2654,5 +2654,107 @@
         "claimableTrackerAddress": "0x5E04e7BC3b1DD044289C074D659Fba310d9f3Fa6"
       }
     ]
+  },
+  "0xc5e3dc0a7f8b5dbed9a9df329adfae802deaf2af": {
+    "protocolToken": {
+      "address": "0xc5e3dc0a7f8b5dbed9a9df329adfae802deaf2af",
+      "name": "Curve.fi Factory Plain Pool: PRISMA/yPRISMA Convex Deposit",
+      "symbol": "cvxyPRISMA-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5d176cbb55ffde64de0b2b95af31036424bb3add",
+        "name": "Convex Token",
+        "symbol": "CVX",
+        "decimals": 18,
+        "claimableTrackerAddress": "0xCf43BEa3c7d8Ccb3eF7c60C9E1fBBF4ff2554951"
+      }
+    ]
+  },
+  "0x10ce6d8f33d820458f1f8ac23ffbac90b248c0c0": {
+    "protocolToken": {
+      "address": "0x10ce6d8f33d820458f1f8ac23ffbac90b248c0c0",
+      "name": "mkUSD-USDC Convex Deposit",
+      "symbol": "cvxmkUSDUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd17a8d6fb750a013ccd0180130b581b403242670",
+        "name": "Convex Token",
+        "symbol": "CVX",
+        "decimals": 18,
+        "claimableTrackerAddress": "0x5D548dcd4af8865953E5b1a0c7802876bDa03ca9"
+      }
+    ]
+  },
+  "0x88d90ea745d3287abf61ecdfa65f71b165b197a0": {
+    "protocolToken": {
+      "address": "0x88d90ea745d3287abf61ecdfa65f71b165b197a0",
+      "name": "USDV-crvUSD Convex Deposit",
+      "symbol": "cvxUSDVcrvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x31eeaf4cc6d46b2cf4d891c708989353d58a0313",
+        "name": "Convex Token",
+        "symbol": "CVX",
+        "decimals": 18,
+        "claimableTrackerAddress": "0xB15991c235bC6A033Df18d4F94B9b69085809391"
+      }
+    ]
+  },
+  "0x1a7a7b4c60fdf87be5b57b6160d9388950e2db9d": {
+    "protocolToken": {
+      "address": "0x1a7a7b4c60fdf87be5b57b6160d9388950e2db9d",
+      "name": "USDV-3crv Convex Deposit",
+      "symbol": "cvxUSDV3crv",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xedb4fedc1e8f1a6132cfe0cb13ed005165f00660",
+        "name": "Convex Token",
+        "symbol": "CVX",
+        "decimals": 18,
+        "claimableTrackerAddress": "0xf01E2cAC7883100c14bE9e20A544Bb2373d482a6"
+      }
+    ]
+  },
+  "0x85b118e0fa5706d99b270be43d782fbe429ad409": {
+    "protocolToken": {
+      "address": "0x85b118e0fa5706d99b270be43d782fbe429ad409",
+      "name": "Curve.fi Factory Crypto Pool: ETHx-wstETH Convex Deposit",
+      "symbol": "cvxETHxwstETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0edf1e790ff7f512a11b115d05e7fc8ae50b556f",
+        "name": "Convex Token",
+        "symbol": "CVX",
+        "decimals": 18,
+        "claimableTrackerAddress": "0x214C0760AdE4836C991c838E877906F3beD81281"
+      }
+    ]
+  },
+  "0xbf7b90683fd7e64dbf624809d49bdcb20f09e560": {
+    "protocolToken": {
+      "address": "0xbf7b90683fd7e64dbf624809d49bdcb20f09e560",
+      "name": "Curve.fi Factory Crypto Pool: frxETHIQ Convex Deposit",
+      "symbol": "cvxfrxETHIQ-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6db94dd9d1f20b9c14f6f911475bed2f62325404",
+        "name": "Convex Token",
+        "symbol": "CVX",
+        "decimals": 18,
+        "claimableTrackerAddress": "0xB8d2A71F2c0680104f003A0831B6d523ff4812B5"
+      }
+    ]
   }
 }
