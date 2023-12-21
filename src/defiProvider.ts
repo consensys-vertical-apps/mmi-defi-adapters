@@ -9,7 +9,6 @@ import { ProviderMissingError } from './core/errors/errors'
 import { ChainProvider } from './core/utils/chainProviders'
 import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
 import { logger } from './core/utils/logger'
-
 import {
   enrichPositionBalance,
   enrichUnderlyingTokenRates,
