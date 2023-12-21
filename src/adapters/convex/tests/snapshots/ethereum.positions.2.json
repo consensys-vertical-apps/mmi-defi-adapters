@@ -9,6 +9,18 @@
       "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
       "positionType": "supply",
       "chainId": 1,
+      "productId": "pool",
+      "success": true,
+      "tokens": []
+    },
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
       "productId": "staking",
       "success": true,
       "tokens": [
@@ -87,6 +99,48 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x06325440D014e39736583c165C2963BA99fAf14E/logo.png"
             },
             {
+              "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "1043405431419158695n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "586710195715181833n",
+                  "balance": "0.586710195715181833"
+                }
+              ],
+              "balance": "1.043405431419158695",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+            },
+            {
+              "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "9390648882772428n",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "34583481675068094n",
+                  "balance": "0.034583481675068094"
+                }
+              ],
+              "balance": "0.009390648882772428",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+            },
+            {
               "type": "underlying-claimable",
               "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
               "symbol": "wstETH",
@@ -130,48 +184,6 @@
               ],
               "balance": "0.027258448877792235",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
-            },
-            {
-              "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
-              "name": "Curve DAO Token",
-              "symbol": "CRV",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "1043405431419158695n",
-              "tokens": [
-                {
-                  "address": "TheUnitedStatesMint",
-                  "name": "USD",
-                  "symbol": "USD",
-                  "decimals": 18,
-                  "type": "fiat",
-                  "balanceRaw": "586710195715181833n",
-                  "balance": "0.586710195715181833"
-                }
-              ],
-              "balance": "1.043405431419158695",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
-            },
-            {
-              "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
-              "name": "Convex Token",
-              "symbol": "CVX",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "9390648882772428n",
-              "tokens": [
-                {
-                  "address": "TheUnitedStatesMint",
-                  "name": "USD",
-                  "symbol": "USD",
-                  "decimals": 18,
-                  "type": "fiat",
-                  "balanceRaw": "34583481675068094n",
-                  "balance": "0.034583481675068094"
-                }
-              ],
-              "balance": "0.009390648882772428",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             }
           ],
           "balance": "28.941976633661456319"
@@ -367,6 +379,147 @@
             }
           ],
           "balance": "117268.239564571004535759"
+        }
+      ]
+    },
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "cvxcrv-wrapper",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "name": "Staked CvxCrv",
+          "symbol": "stkCvxCrv",
+          "decimals": 18,
+          "balanceRaw": "2896784225702225128583n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "balanceRaw": "257556168468440905445n",
+              "type": "underlying-claimable",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "144824653446783520832n",
+                  "balance": "144.824653446783520832"
+                }
+              ],
+              "balance": "257.556168468440905445",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+            },
+            {
+              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "balanceRaw": "31457158657542342582n",
+              "type": "underlying-claimable",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "115849083866677593179n",
+                  "balance": "115.849083866677593179"
+                }
+              ],
+              "balance": "31.457158657542342582",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "symbol": "3Crv",
+              "decimals": 18,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "tokens": [
+                {
+                  "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+                  "name": "Dai Stablecoin",
+                  "symbol": "DAI",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "0n",
+                  "tokens": [
+                    {
+                      "address": "TheUnitedStatesMint",
+                      "name": "USD",
+                      "symbol": "USD",
+                      "decimals": 18,
+                      "type": "fiat",
+                      "balanceRaw": "0n",
+                      "balance": "0.0"
+                    }
+                  ],
+                  "balance": "0.0",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                },
+                {
+                  "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                  "name": "USD Coin",
+                  "symbol": "USDC",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "0n",
+                  "tokens": [
+                    {
+                      "address": "TheUnitedStatesMint",
+                      "name": "USD",
+                      "symbol": "USD",
+                      "decimals": 18,
+                      "type": "fiat",
+                      "balanceRaw": "0n",
+                      "balance": "0.0"
+                    }
+                  ],
+                  "balance": "0.0",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                },
+                {
+                  "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+                  "name": "Tether USD",
+                  "symbol": "USDT",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "0n",
+                  "tokens": [
+                    {
+                      "address": "TheUnitedStatesMint",
+                      "name": "USD",
+                      "symbol": "USD",
+                      "decimals": 18,
+                      "type": "fiat",
+                      "balanceRaw": "0n",
+                      "balance": "0.0"
+                    }
+                  ],
+                  "balance": "0.0",
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                }
+              ],
+              "balance": "0.0",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
+            }
+          ],
+          "balance": "2896.784225702225128583"
         }
       ]
     }

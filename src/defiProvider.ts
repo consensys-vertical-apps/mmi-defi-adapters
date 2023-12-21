@@ -92,7 +92,7 @@ export class DefiProvider {
       })
 
       const endTime = Date.now()
-      logger.debug({
+      logger.info({
         source: 'adapter:positions',
         startTime,
         endTime,
@@ -157,7 +157,7 @@ export class DefiProvider {
       })
 
       const endTime = Date.now()
-      logger.debug({
+      logger.info({
         source: 'adapter:profits',
         startTime,
         endTime,
@@ -221,7 +221,7 @@ export class DefiProvider {
             })
 
           const endTime = Date.now()
-          logger.debug({
+          logger.info({
             source: 'adapter:prices',
             startTime,
             endTime,

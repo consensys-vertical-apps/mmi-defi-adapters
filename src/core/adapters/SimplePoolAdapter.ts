@@ -69,7 +69,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   abstract getProtocolTokens(): Promise<Erc20Metadata[]>
 
   @ResolveUnderlyingPositions
-  @AddClaimableRewards({ rewardAdapterIds: [''] })
   async getPositions({
     userAddress,
     blockNumber,

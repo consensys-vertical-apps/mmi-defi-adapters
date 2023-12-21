@@ -90,20 +90,6 @@ export class AdaptersController {
     return protocolTokens.get(chainId)?.get(tokenAddress.toLowerCase())
   }
 
-  async fetchRewardAdapters(
-    chainId: Chain,
-    tokenAddress: string,
-  ): Promise<IProtocolAdapter[] | undefined> {
-    // Deferred promise so that only the first execution path does the work
-    if (!this.rewardTokens) {
-      this.rewardTokens = this.buildRewardTokens()
-    }
-
-    const rewardTokens = await this.rewardTokens
-
-    return rewardTokens.get(chainId)?.get(tokenAddress.toLowerCase())
-  }
-
   private async buildProtocolTokens(): Promise<
     Map<Chain, Map<string, IProtocolAdapter>>
   > {
@@ -148,50 +134,6 @@ export class AdaptersController {
     return protocolTokensAdapterMap
   }
 
-  private async buildRewardTokens(): Promise<
-    Map<Chain, Map<string, IProtocolAdapter[]>>
-  > {
-    const rewardTokensAdapterMap: Map<
-      Chain,
-      Map<string, IProtocolAdapter[]>
-    > = new Map()
-
-    for (const [chainId, chainAdapters] of this.adapters) {
-      rewardTokensAdapterMap.set(chainId, new Map())
-      const chainAdaptersMap = rewardTokensAdapterMap.get(chainId)!
-
-      for (const [_protocolId, protocolAdapters] of chainAdapters) {
-        for (const [_productId, adapter] of protocolAdapters) {
-          const { positionType } = adapter.getProtocolDetails()
-
-          if (positionType === PositionType.Reward) {
-            let protocolTokens: Erc20Metadata[]
-            try {
-              protocolTokens = await adapter.getProtocolTokens()
-            } catch (error) {
-              if (!(error instanceof NotImplementedError)) {
-                throw error
-              }
-              continue
-            }
-
-            for (const protocolToken of protocolTokens) {
-              const tokenAddress = protocolToken.address.toLowerCase()
-
-              const rewardAdapters = chainAdaptersMap.get(tokenAddress) ?? []
-
-              rewardAdapters.push(adapter)
-
-              chainAdaptersMap.set(tokenAddress, rewardAdapters)
-            }
-          }
-        }
-      }
-    }
-
-    return rewardTokensAdapterMap
-  }
-
   private processFiatPrices(
     protocolTokens: Erc20Metadata[],
     chainAdaptersMap: Map<string, IProtocolAdapter>,
@@ -214,13 +156,16 @@ export class AdaptersController {
     for (const protocolToken of protocolTokens) {
       const tokenAddress = protocolToken.address.toLowerCase()
 
-      if (chainAdaptersMap.has(tokenAddress)) {
-        const existingAdapter = chainAdaptersMap.get(tokenAddress)
-        if (existingAdapter?.protocolId !== 'prices') {
-          throw new Error(`Duplicated protocol token ${protocolToken.address}`)
-        }
+      const existingAdapter = chainAdaptersMap.get(tokenAddress)
+      const isPriceAdapter =
+        existingAdapter?.getProtocolDetails().positionType ==
+        PositionType.FiatPrices
+
+      if (existingAdapter && !isPriceAdapter) {
+        throw new Error(`Duplicated protocol token ${protocolToken.address}`)
       }
 
+      // override price adapter
       chainAdaptersMap.set(tokenAddress, adapter)
     }
   }

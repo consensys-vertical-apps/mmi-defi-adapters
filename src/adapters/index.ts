@@ -136,11 +136,11 @@ export const supportedProtocols: Record<
 
   [Protocol.Convex]: {
     [Chain.Ethereum]: [
-      // ConvexPoolAdapter,
+      ConvexPoolAdapter,
       ConvexStakingAdapter,
       ConvexRewardsAdapter,
       ConvexExtraRewardAdapter,
-      // ConvexCvxcrvWrapperAdapter,
+      ConvexCvxcrvWrapperAdapter,
     ],
   },
 
