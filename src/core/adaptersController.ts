@@ -121,7 +121,7 @@ export class AdaptersController {
               this.processFiatPrices(protocolTokens, chainAdaptersMap, adapter)
               break
             case PositionType.Reward:
-              // Handle Reward case here if needed
+              // Omit reward tokens from protocol token adapter map.
               break
             default:
               this.processDefaultCase(protocolTokens, chainAdaptersMap, adapter)
