@@ -4,7 +4,7 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
+
 import { AddClaimedRewards } from '../../../../core/decorators/addClaimedRewards'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
@@ -31,6 +31,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ConvexFactory__factory } from '../../contracts'
 import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
+import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
 
 const PRICE_PEGGED_TO_ONE = 1
 
