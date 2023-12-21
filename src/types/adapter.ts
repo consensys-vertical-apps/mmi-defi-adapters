@@ -118,6 +118,11 @@ export interface GetProfitsInput {
    * Starting blocknumber to check profits earned to
    */
   toBlock: number
+
+  /**
+   * Optional filter for pools that will be queried
+   */
+  protocolTokenAddresses?: string[]
 }
 
 export type ProtocolDetails = {
@@ -173,6 +178,11 @@ export interface GetPositionsInput {
    * Optional override param
    */
   blockNumber?: number
+
+  /**
+   * Optional filter for pools that will be queried
+   */
+  protocolTokenAddresses?: string[]
 }
 
 export interface GetPricePerShareInput {
