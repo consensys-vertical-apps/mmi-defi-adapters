@@ -3,7 +3,8 @@ export function defaultAdapterTemplate(
   adapterClassName: string,
   productId: string,
 ) {
-  return `import { Chain } from '../../../../core/constants/chains'
+  return `import { AdaptersController } from '../../../../core/adaptersController'
+  import { Chain } from '../../../../core/constants/chains'
   import {
     IMetadataBuilder,
     CacheToFile,
@@ -39,11 +40,19 @@ export function defaultAdapterTemplate(
     chainId: Chain
   
     private provider: CustomJsonRpcProvider
+
+    adaptersController: AdaptersController
   
-    constructor({ provider, chainId, protocolId }: ProtocolAdapterParams) {
+    constructor({
+      provider,
+      chainId,
+      protocolId,
+      adaptersController,
+    }: ProtocolAdapterParams) {
       this.provider = provider
       this.chainId = chainId
       this.protocolId = protocolId
+      this.adaptersController = adaptersController
     }
   
     /**
