@@ -40,17 +40,17 @@ User's balance raw
 
 #### Defined in
 
-[adapter.ts:190](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L190)
+[adapter.ts:185](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L185)
 
 ___
 
 ### type
 
-• **type**: ``"underlying"`` \| ``"underlying-claimable-fee"``
+• **type**: ``"underlying"`` \| ``"underlying-claimable"`` \| ``"fiat"``
 
 #### Defined in
 
-[adapter.ts:199](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L199)
+[adapter.ts:194](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L194)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:201](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L201)
+[adapter.ts:199](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L199)
 
 ___
 

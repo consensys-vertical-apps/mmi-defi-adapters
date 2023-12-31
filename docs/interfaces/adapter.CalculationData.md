@@ -8,47 +8,47 @@
 
 ### Properties
 
-- [withdrawalsRaw](adapter.CalculationData.md#withdrawalsraw)
-- [depositsRaw](adapter.CalculationData.md#depositsraw)
-- [startPositionValueRaw](adapter.CalculationData.md#startpositionvalueraw)
-- [endPositionValueRaw](adapter.CalculationData.md#endpositionvalueraw)
+- [withdrawals](adapter.CalculationData.md#withdrawals)
+- [deposits](adapter.CalculationData.md#deposits)
+- [startPositionValue](adapter.CalculationData.md#startpositionvalue)
+- [endPositionValue](adapter.CalculationData.md#endpositionvalue)
 
 ## Properties
 
-### withdrawalsRaw
+### withdrawals
 
-• **withdrawalsRaw**: `bigint`
+• **withdrawals**: `number`
 
 #### Defined in
 
-[adapter.ts:321](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L321)
+[adapter.ts:315](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L315)
 
 ___
 
-### depositsRaw
+### deposits
 
-• **depositsRaw**: `bigint`
+• **deposits**: `number`
 
 #### Defined in
 
-[adapter.ts:322](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L322)
+[adapter.ts:316](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L316)
 
 ___
 
-### startPositionValueRaw
+### startPositionValue
 
-• **startPositionValueRaw**: `bigint`
+• **startPositionValue**: `number`
 
 #### Defined in
 
-[adapter.ts:323](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L323)
+[adapter.ts:317](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L317)
 
 ___
 
-### endPositionValueRaw
+### endPositionValue
 
-• **endPositionValueRaw**: `bigint`
+• **endPositionValue**: `number`
 
 #### Defined in
 
-[adapter.ts:324](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L324)
+[adapter.ts:318](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L318)

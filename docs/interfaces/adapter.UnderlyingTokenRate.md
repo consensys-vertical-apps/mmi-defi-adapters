@@ -25,11 +25,11 @@
 
 ### type
 
-• **type**: ``"underlying"``
+• **type**: ``"underlying"`` \| ``"fiat"``
 
 #### Defined in
 
-[adapter.ts:222](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L222)
+[adapter.ts:220](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L220)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:223](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L223)
+[adapter.ts:221](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L221)
 
 ___
 

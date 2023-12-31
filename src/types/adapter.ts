@@ -106,26 +106,6 @@ export type GetEventsInput = {
    */
   tokenId?: string
 }
-export interface GetProfitsInput {
-  /**
-   * User address we want to get earned profits for
-   */
-  userAddress: string
-  /**
-   * Starting blocknumber to check profits earned from
-   */
-  fromBlock: number
-
-  /**
-   * Starting blocknumber to check profits earned to
-   */
-  toBlock: number
-
-  /**
-   * Optional filter for pools that will be queried
-   */
-  protocolTokenAddresses?: string[]
-}
 
 export type ProtocolDetails = {
   /**
