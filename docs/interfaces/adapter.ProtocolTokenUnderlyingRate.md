@@ -33,7 +33,7 @@ We are finding the underlying value of 1 LP token
 
 #### Defined in
 
-[adapter.ts:231](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L231)
+[adapter.ts:229](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L229)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:232](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L232)
+[adapter.ts:230](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L230)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:233](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L233)
+[adapter.ts:231](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L231)
 
 ___
 

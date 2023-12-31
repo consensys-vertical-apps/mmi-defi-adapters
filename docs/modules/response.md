@@ -12,7 +12,6 @@
 - [DefiPositionResponse](response.md#defipositionresponse)
 - [DisplayPosition](response.md#displayposition)
 - [DefiProfitsResponse](response.md#defiprofitsresponse)
-- [DisplayProfitsWithRange](response.md#displayprofitswithrange)
 - [PricePerShareResponse](response.md#pricepershareresponse)
 - [DisplayProtocolTokenUnderlyingRate](response.md#displayprotocoltokenunderlyingrate)
 - [APRResponse](response.md#aprresponse)
@@ -43,7 +42,7 @@
 
 #### Defined in
 
-[response.ts:22](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L22)
+[response.ts:19](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L19)
 
 ___
 
@@ -61,7 +60,7 @@ ___
 
 #### Defined in
 
-[response.ts:33](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L33)
+[response.ts:30](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L30)
 
 ___
 
@@ -77,7 +76,7 @@ ___
 
 #### Defined in
 
-[response.ts:41](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L41)
+[response.ts:38](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L38)
 
 ___
 
@@ -87,13 +86,13 @@ ___
 
 #### Defined in
 
-[response.ts:49](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L49)
+[response.ts:46](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L46)
 
 ___
 
 ### DisplayPosition
 
-Ƭ **DisplayPosition**<`PositionBalance`\>: [`Omit`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys )<`PositionBalance`, ``"tokens"``\> & { `balance`: `string` ; `tokens?`: [`DisplayPosition`](response.md#displayposition)<[`Underlying`](../interfaces/adapter.Underlying.md)\>[]  } & `PositionBalance`[``"type"``] extends typeof [`Underlying`](adapter.md#underlying) \| typeof [`UnderlyingClaimableFee`](adapter.md#underlyingclaimablefee) ? { `iconUrl`: `string`  } : [`Record`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type )<`string`, `never`\>
+Ƭ **DisplayPosition**<`PositionBalance`\>: [`Omit`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys )<`PositionBalance`, ``"tokens"``\> & { `balance`: `string` ; `tokens?`: [`DisplayPosition`](response.md#displayposition)<[`Underlying`](../interfaces/adapter.Underlying.md)\>[]  } & `PositionBalance`[``"type"``] extends typeof [`Underlying`](adapter.md#underlying) \| typeof [`UnderlyingClaimable`](adapter.md#underlyingclaimable) ? { `iconUrl`: `string`  } : [`Record`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type )<`string`, `never`\>
 
 #### Type parameters
 
@@ -103,27 +102,17 @@ ___
 
 #### Defined in
 
-[response.ts:53](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L53)
+[response.ts:50](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L50)
 
 ___
 
 ### DefiProfitsResponse
 
-Ƭ **DefiProfitsResponse**: [`AdapterResponse`](response.md#adapterresponse)<[`DisplayProfitsWithRange`](response.md#displayprofitswithrange)\>
+Ƭ **DefiProfitsResponse**: [`AdapterResponse`](response.md#adapterresponse)<[`ProfitsWithRange`](../interfaces/adapter.ProfitsWithRange.md)\>
 
 #### Defined in
 
-[response.ts:67](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L67)
-
-___
-
-### DisplayProfitsWithRange
-
-Ƭ **DisplayProfitsWithRange**: [`Omit`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys )<[`ProfitsWithRange`](../interfaces/adapter.ProfitsWithRange.md), ``"tokens"``\> & { `tokens`: `DisplayPositionProfits`[]  }
-
-#### Defined in
-
-[response.ts:69](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L69)
+[response.ts:64](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L64)
 
 ___
 
@@ -133,7 +122,7 @@ ___
 
 #### Defined in
 
-[response.ts:77](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L77)
+[response.ts:66](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L66)
 
 ___
 
@@ -143,7 +132,7 @@ ___
 
 #### Defined in
 
-[response.ts:81](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L81)
+[response.ts:70](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L70)
 
 ___
 
@@ -153,7 +142,7 @@ ___
 
 #### Defined in
 
-[response.ts:88](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L88)
+[response.ts:77](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L77)
 
 ___
 
@@ -163,7 +152,7 @@ ___
 
 #### Defined in
 
-[response.ts:92](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L92)
+[response.ts:81](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L81)
 
 ___
 
@@ -173,7 +162,7 @@ ___
 
 #### Defined in
 
-[response.ts:96](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L96)
+[response.ts:85](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L85)
 
 ___
 
@@ -183,7 +172,7 @@ ___
 
 #### Defined in
 
-[response.ts:100](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L100)
+[response.ts:89](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L89)
 
 ___
 
@@ -193,14 +182,14 @@ ___
 
 #### Defined in
 
-[response.ts:105](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L105)
+[response.ts:94](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L94)
 
 ___
 
 ### DisplayMovementsByBlock
 
-Ƭ **DisplayMovementsByBlock**: [`Omit`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys )<[`MovementsByBlock`](../interfaces/adapter.MovementsByBlock.md), ``"underlyingTokensMovement"``\> & { `underlyingTokensMovement`: [`Record`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type )<`string`, [`BaseTokenMovement`](../interfaces/adapter.BaseTokenMovement.md) & { `movementValue`: `string`  }\>  }
+Ƭ **DisplayMovementsByBlock**: [`Omit`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys )<[`MovementsByBlock`](../interfaces/adapter.MovementsByBlock.md), ``"tokens"``\> & { `tokens?`: [`Underlying`](../interfaces/adapter.Underlying.md) & { `balance`: `string`  }[]  }
 
 #### Defined in
 
-[response.ts:109](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L109)
+[response.ts:98](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L98)

@@ -9,8 +9,9 @@
 ### Properties
 
 - [protocolToken](adapter.MovementsByBlock.md#protocoltoken)
-- [underlyingTokensMovement](adapter.MovementsByBlock.md#underlyingtokensmovement)
+- [tokens](adapter.MovementsByBlock.md#tokens)
 - [blockNumber](adapter.MovementsByBlock.md#blocknumber)
+- [transactionHash](adapter.MovementsByBlock.md#transactionhash)
 
 ## Properties
 
@@ -20,19 +21,19 @@
 
 #### Defined in
 
-[adapter.ts:242](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L242)
+[adapter.ts:235](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L235)
 
 ___
 
-### underlyingTokensMovement
+### tokens
 
-• **underlyingTokensMovement**: [`Record`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type )<`string`, [`BaseTokenMovement`](adapter.BaseTokenMovement.md)\>
+• **tokens**: [`Underlying`](adapter.Underlying.md)[]
 
 Movements in or out of a protocol position
 
 #### Defined in
 
-[adapter.ts:246](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L246)
+[adapter.ts:239](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L239)
 
 ___
 
@@ -44,4 +45,14 @@ Blocknumber movement was executed
 
 #### Defined in
 
-[adapter.ts:251](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L251)
+[adapter.ts:244](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L244)
+
+___
+
+### transactionHash
+
+• **transactionHash**: `string`
+
+#### Defined in
+
+[adapter.ts:246](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L246)

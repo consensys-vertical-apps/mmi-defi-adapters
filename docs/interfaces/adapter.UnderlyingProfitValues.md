@@ -10,12 +10,14 @@
 
   ↳ **`UnderlyingProfitValues`**
 
+  ↳↳ [`PositionProfits`](adapter.PositionProfits.md)
+
 ## Table of contents
 
 ### Properties
 
-- [type](adapter.UnderlyingProfitValues.md#type)
-- [profitRaw](adapter.UnderlyingProfitValues.md#profitraw)
+- [profit](adapter.UnderlyingProfitValues.md#profit)
+- [performance](adapter.UnderlyingProfitValues.md#performance)
 - [calculationData](adapter.UnderlyingProfitValues.md#calculationdata)
 - [address](adapter.UnderlyingProfitValues.md#address)
 - [name](adapter.UnderlyingProfitValues.md#name)
@@ -24,25 +26,25 @@
 
 ## Properties
 
-### type
+### profit
 
-• **type**: ``"claimable"`` \| ``"underlying"``
-
-#### Defined in
-
-[adapter.ts:302](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L302)
-
-___
-
-### profitRaw
-
-• **profitRaw**: `bigint`
+• **profit**: `number`
 
 Profit made in this token for this period
 
 #### Defined in
 
-[adapter.ts:307](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L307)
+[adapter.ts:300](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L300)
+
+___
+
+### performance
+
+• **performance**: `number`
+
+#### Defined in
+
+[adapter.ts:302](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L302)
 
 ___
 
@@ -54,7 +56,7 @@ Numbers used to calculate profit value
 
 #### Defined in
 
-[adapter.ts:312](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L312)
+[adapter.ts:307](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L307)
 
 ___
 
