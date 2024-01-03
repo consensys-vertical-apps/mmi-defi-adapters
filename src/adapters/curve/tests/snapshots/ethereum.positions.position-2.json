@@ -108,27 +108,6 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
-              "name": "Curve DAO Token",
-              "symbol": "CRV",
-              "decimals": 18,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png",
-              "balanceRaw": "97118831066726817n",
-              "type": "underlying-claimable",
-              "tokens": [
-                {
-                  "address": "TheUnitedStatesMint",
-                  "name": "USD",
-                  "symbol": "USD",
-                  "decimals": 18,
-                  "type": "fiat",
-                  "balanceRaw": "54040493332463660n",
-                  "balance": "0.05404049333246366"
-                }
-              ],
-              "balance": "0.097118831066726817"
-            },
-            {
               "name": "Curve.fi DAI/USDC/USDT",
               "decimals": 18,
               "symbol": "3Crv",
@@ -202,6 +181,27 @@
               ],
               "balance": "6.357359611959254406",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
+            },
+            {
+              "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png",
+              "balanceRaw": "97118831066726817n",
+              "type": "underlying-claimable",
+              "tokens": [
+                {
+                  "address": "TheUnitedStatesMint",
+                  "name": "USD",
+                  "symbol": "USD",
+                  "decimals": 18,
+                  "type": "fiat",
+                  "balanceRaw": "54040493332463660n",
+                  "balance": "0.05404049333246366"
+                }
+              ],
+              "balance": "0.097118831066726817"
             }
           ],
           "balance": "6.357359611959254406"

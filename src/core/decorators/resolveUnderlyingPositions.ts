@@ -30,6 +30,7 @@ export function ResolveUnderlyingPositions(
 
   return replacementMethod
 }
+
 export function ResolveUnderlyingMovements(
   originalMethod:
     | SimplePoolAdapter['getWithdrawals']
