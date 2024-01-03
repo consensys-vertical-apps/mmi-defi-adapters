@@ -35,7 +35,7 @@ export function AddClaimableRewards({
               if (reward) {
                 if (reward.tokens) {
                   protocolToken.tokens = [
-                    ...(protocolToken?.tokens || []),
+                    ...(protocolToken.tokens ?? []),
                     ...reward.tokens,
                   ]
                 }

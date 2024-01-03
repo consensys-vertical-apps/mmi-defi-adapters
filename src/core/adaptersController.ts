@@ -13,9 +13,6 @@ export class AdaptersController {
   private protocolTokens:
     | Promise<Map<Chain, Map<string, IProtocolAdapter>>>
     | undefined
-  private rewardTokens:
-    | Promise<Map<Chain, Map<string, IProtocolAdapter[]>>>
-    | undefined
 
   constructor({
     providers,
