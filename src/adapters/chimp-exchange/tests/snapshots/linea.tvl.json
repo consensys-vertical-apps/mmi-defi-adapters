@@ -1,11 +1,11 @@
 {
-  "blockNumber": 1295020,
+  "blockNumber": 1498597,
   "snapshot": [
     {
       "protocolId": "chimp-exchange",
       "name": "ChimpExchange",
       "description": "ChimpExchange pool adapter",
-      "siteUrl": "https:",
+      "siteUrl": "https://app.chimp.exchange",
       "iconUrl": "https://",
       "positionType": "supply",
       "chainId": 59144,
@@ -24,9 +24,9 @@
               "name": "USDC",
               "symbol": "USDC",
               "decimals": 6,
-              "totalSupplyRaw": "1587005447n",
+              "totalSupplyRaw": "2127532354n",
               "type": "underlying",
-              "totalSupply": "1587.005447",
+              "totalSupply": "2127.532354",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
@@ -34,9 +34,9 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "totalSupplyRaw": "406644884363467005757n",
+              "totalSupplyRaw": "697211897686265463110n",
               "type": "underlying",
-              "totalSupply": "406.644884363467005757",
+              "totalSupply": "697.21189768626546311",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
             },
             {
@@ -44,14 +44,14 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "totalSupplyRaw": "1815346865n",
+              "totalSupplyRaw": "1083270116n",
               "type": "underlying",
-              "totalSupply": "1815.346865",
+              "totalSupply": "1083.270116",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             }
           ],
-          "totalSupplyRaw": "3722930929852980533778n",
-          "totalSupply": "3722.930929852980533778"
+          "totalSupplyRaw": "3813413987853259358679n",
+          "totalSupply": "3813.413987853259358679"
         },
         {
           "address": "0xe38df7880ef9408e9933fd0e96abcc3cebf76006",
@@ -65,9 +65,9 @@
               "name": "USDC",
               "symbol": "USDC",
               "decimals": 6,
-              "totalSupplyRaw": "7739702831n",
+              "totalSupplyRaw": "8050409498n",
               "type": "underlying",
-              "totalSupply": "7739.702831",
+              "totalSupply": "8050.409498",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
@@ -75,14 +75,14 @@
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "totalSupplyRaw": "3434093636817767495n",
+              "totalSupplyRaw": "3478357629090545092n",
               "type": "underlying",
-              "totalSupply": "3.434093636817767495",
+              "totalSupply": "3.478357629090545092",
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
             }
           ],
-          "totalSupplyRaw": "293850490282393979852n",
-          "totalSupply": "293.850490282393979852"
+          "totalSupplyRaw": "300249694415489425553n",
+          "totalSupply": "300.249694415489425553"
         },
         {
           "address": "0xfee637c94e85b23472745f6b5ede2e4c0ad12a94",

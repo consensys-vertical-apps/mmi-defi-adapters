@@ -3,7 +3,7 @@
     "protocolId": "chimp-exchange",
     "name": "ChimpExchange",
     "description": "ChimpExchange pool adapter",
-    "siteUrl": "https:",
+    "siteUrl": "https://app.chimp.exchange",
     "iconUrl": "https://",
     "positionType": "supply",
     "chainId": 59144,

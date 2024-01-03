@@ -1,17 +1,59 @@
 {
-  "blockNumber": 1295020,
+  "blockNumber": 1498597,
   "snapshot": [
     {
       "protocolId": "chimp-exchange",
       "name": "ChimpExchange",
       "description": "ChimpExchange pool adapter",
-      "siteUrl": "https:",
+      "siteUrl": "https://app.chimp.exchange",
       "iconUrl": "https://",
       "positionType": "supply",
       "chainId": 59144,
       "productId": "pool",
       "success": true,
-      "tokens": []
+      "tokens": [
+        {
+          "address": "0x90d8053f7e29faaf5189bdce796a516e29f1f5d3",
+          "name": "Chimp USDC-DAI-USDT Stable Pool",
+          "symbol": "USDC-DAI-USDT",
+          "decimals": 18,
+          "balanceRaw": "86830690256541733912n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "48448746n",
+              "type": "underlying",
+              "balance": "48.448746",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0x4af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "balanceRaw": "15877102106260630158n",
+              "type": "underlying",
+              "balance": "15.877102106260630158",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
+            },
+            {
+              "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "balanceRaw": "24668512n",
+              "type": "underlying",
+              "balance": "24.668512",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ],
+          "balance": "86.830690256541733912"
+        }
+      ]
     }
   ]
 }

@@ -5,6 +5,7 @@ import {
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
@@ -24,7 +25,6 @@ import {
   MovementsByBlock,
   GetPositionsInput,
   ProtocolPosition,
-  UnderlyingTokenTvl,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
@@ -37,49 +37,49 @@ import { PoolBalanceChangedEvent } from '../../contracts/Vault'
 type ChimpExchangePoolAdapterMetadata = Record<
   string,
   {
+    poolId: string
+    totalSupplyType: string
     protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
+    underlyingTokens: (Erc20Metadata & { index: number })[]
   }
 >
+
+const vaultContractAddresses: Partial<Record<Chain, string>> = {
+  [Chain.Linea]: '0x286381aEdd20e51f642fE4A200B5CB2Fe3729695',
+}
+const poolDataQueryContractAddresses: Partial<Record<Chain, string>> = {
+  [Chain.Linea]: '0xb2F2537E332F9A1aADa289df9fC770D5120613C9',
+}
 
 export class ChimpExchangePoolAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
   productId = 'pool'
-  /**
-   * Update me.
-   * Add your protocol details
-   */
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
       name: 'ChimpExchange',
       description: 'ChimpExchange pool adapter',
-      siteUrl: 'https:',
+      siteUrl: 'https://app.chimp.exchange',
       iconUrl: 'https://',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
     }
   }
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
+
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Linea]: '0x286381aEdd20e51f642fE4A200B5CB2Fe3729695',
-    }
     const vaultContract = Vault__factory.connect(
-      contractAddresses[this.chainId]!,
+      vaultContractAddresses[this.chainId]!,
       this.provider,
     )
+
     const eventFilter = vaultContract.filters.PoolRegistered()
     const events = await vaultContract.queryFilter(eventFilter)
+
     const metadataObject: ChimpExchangePoolAdapterMetadata = {}
     await Promise.all(
       events.map(async (event) => {
@@ -88,53 +88,62 @@ export class ChimpExchangePoolAdapter
           this.chainId,
           this.provider,
         )
+
         const poolTokens = await vaultContract.getPoolTokens(event.args.poolId)
-        const underLyingtokensData = poolTokens[0].filter(
-          (token) =>
-            token.toLowerCase() !== event.args.poolAddress.toLowerCase(),
-        )
-        const underlyings = await Promise.all(
-          underLyingtokensData.map(async (underlying) => {
-            return await getTokenMetadata(
-              underlying,
+
+        const underlyingTokens = await filterMapAsync(
+          poolTokens[0],
+          async (token, index) => {
+            if (token.toLowerCase() === event.args.poolAddress.toLowerCase()) {
+              return undefined
+            }
+
+            const tokenMetadata = await getTokenMetadata(
+              token,
               this.chainId,
               this.provider,
             )
-          }),
+
+            return {
+              ...tokenMetadata,
+              index,
+            }
+          },
         )
+
         metadataObject[event.args.poolAddress.toLowerCase()] = {
+          poolId: event.args.poolId,
+          totalSupplyType: event.args.specialization === 0n ? '2' : '0',
           protocolToken,
-          underlyingTokens: underlyings,
+          underlyingTokens,
         }
       }),
     )
+
     return metadataObject
   }
 
-  async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Linea]: '0x286381aEdd20e51f642fE4A200B5CB2Fe3729695',
-    }
+  async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
     const protocolToken = await this.fetchProtocolTokenMetadata(
-      _input.protocolTokenAddress,
+      input.protocolTokenAddress,
     )
     const vaultContract = Vault__factory.connect(
-      contractAddresses[this.chainId]!,
+      vaultContractAddresses[this.chainId]!,
       this.provider,
     )
     const poolContract = Pool__factory.connect(
-      _input.protocolTokenAddress,
+      input.protocolTokenAddress,
       this.provider,
     )
     const poolId = await poolContract.getPoolId()
     const filter = vaultContract.filters[
       'PoolBalanceChanged(bytes32,address,address[],int256[],uint256[])'
-    ](poolId, _input.userAddress)
+    ](poolId, input.userAddress)
     const events =
       await vaultContract.queryFilter<PoolBalanceChangedEvent.Event>(
         filter,
-        _input.fromBlock,
-        _input.toBlock,
+        input.fromBlock,
+        input.toBlock,
       )
     const response: MovementsByBlock[] = []
     await Promise.all(
@@ -150,7 +159,7 @@ export class ChimpExchangePoolAdapter
             event.args.tokens.map(async (token, index) => {
               if (
                 token.toLowerCase() !==
-                _input.protocolTokenAddress.toLocaleLowerCase()
+                input.protocolTokenAddress.toLocaleLowerCase()
               ) {
                 const tokenData = await getTokenMetadata(
                   token,
@@ -177,30 +186,28 @@ export class ChimpExchangePoolAdapter
     )
     return response
   }
-  async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Linea]: '0x286381aEdd20e51f642fE4A200B5CB2Fe3729695',
-    }
+
+  async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
     const protocolToken = await this.fetchProtocolTokenMetadata(
-      _input.protocolTokenAddress,
+      input.protocolTokenAddress,
     )
     const vaultContract = Vault__factory.connect(
-      contractAddresses[this.chainId]!,
+      vaultContractAddresses[this.chainId]!,
       this.provider,
     )
     const poolContract = Pool__factory.connect(
-      _input.protocolTokenAddress,
+      input.protocolTokenAddress,
       this.provider,
     )
     const poolId = await poolContract.getPoolId()
     const filter = vaultContract.filters[
       'PoolBalanceChanged(bytes32,address,address[],int256[],uint256[])'
-    ](poolId, _input.userAddress)
+    ](poolId, input.userAddress)
     const events =
       await vaultContract.queryFilter<PoolBalanceChangedEvent.Event>(
         filter,
-        _input.fromBlock,
-        _input.toBlock,
+        input.fromBlock,
+        input.toBlock,
       )
     const response: MovementsByBlock[] = []
     await Promise.all(
@@ -216,7 +223,7 @@ export class ChimpExchangePoolAdapter
             event.args.tokens.map(async (token, index) => {
               if (
                 token.toLowerCase() !==
-                _input.protocolTokenAddress.toLocaleLowerCase()
+                input.protocolTokenAddress.toLocaleLowerCase()
               ) {
                 const tokenData = await getTokenMetadata(
                   token,
@@ -251,182 +258,100 @@ export class ChimpExchangePoolAdapter
     )
     return response
   }
-  async getPositions({
-    userAddress,
-  }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const protocolTokens = await this.getProtocolTokens()
-    const positions: ProtocolPosition[] = []
-    const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Linea]: '0x286381aEdd20e51f642fE4A200B5CB2Fe3729695',
-    }
-    const poolDataQueryAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Linea]: '0xb2F2537E332F9A1aADa289df9fC770D5120613C9',
-    }
-    const vaultContract = Vault__factory.connect(
-      contractAddresses[this.chainId]!,
-      this.provider,
-    )
-    const balancerPoolDataQueriesContract =
-      BalancerPoolDataQueries__factory.connect(
-        poolDataQueryAddresses[this.chainId]!,
-        this.provider,
-      )
-    await Promise.all(
-      protocolTokens.map(async (protocolToken) => {
-        const poolContract = Pool__factory.connect(
-          protocolToken.address,
-          this.provider,
-        )
-        const userBalance = await poolContract.balanceOf(userAddress)
-        if (parseFloat(userBalance.toString()) > 0) {
-          const poolId = await poolContract.getPoolId()
-          const pool = await vaultContract.getPool(poolId)
-          const poolTokens = await vaultContract.getPoolTokens(poolId)
-          let totalSupplyType = '0'
-          if (pool[1].toString() === '0') {
-            totalSupplyType = '2'
-          }
-          const totalSupplyResp =
-            await balancerPoolDataQueriesContract.getTotalSupplyForPools(
-              [protocolToken.address],
-              [totalSupplyType],
-            )
-          const userShare =
-            parseFloat(userBalance.toString()) /
-            parseFloat(totalSupplyResp[0]?.toString() ?? '1')
-          const tokens: Underlying[] = []
-          await Promise.all(
-            poolTokens[0].map(async (token, index) => {
-              if (token.toLowerCase() !== protocolToken.address.toLowerCase()) {
-                const tokenData = await getTokenMetadata(
-                  token,
-                  this.chainId,
-                  this.provider,
-                )
-                tokens.push({
-                  ...tokenData,
-                  balanceRaw: BigInt(
-                    Math.trunc(
-                      parseFloat(poolTokens[1][index]?.toString() ?? '0') *
-                        parseFloat(userShare.toString()),
-                    ),
-                  ),
 
-                  type: TokenType.Underlying,
-                })
-              }
-            }),
-          )
-          positions.push({
-            ...protocolToken,
-            type: TokenType.Protocol,
-            tokens,
-            balanceRaw: BigInt(userBalance.toString()),
-          })
-        }
-      }),
-    )
-    return positions
-  }
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
   }
 
-  /**
-   * Update me.
-   * Add logic to turn the LP token balance into the correct underlying token(s) balance
-   * For context see dashboard example ./dashboard.png
-   */
-  protected async getUnderlyingTokenBalances(_input: {
-    userAddress: string
+  protected async getUnderlyingTokenBalances({
+    protocolTokenBalance,
+    blockNumber,
+  }: {
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    throw new NotImplementedError()
+    const poolMetadata = await this.fetchPoolMetadata(
+      protocolTokenBalance.address,
+    )
+
+    const underlyingTokenConversionRate =
+      await this.getUnderlyingTokenConversionRate(
+        protocolTokenBalance,
+        blockNumber,
+      )
+
+    const underlyingBalances = poolMetadata.underlyingTokens.map(
+      ({ index: _tokenIndex, ...token }) => {
+        const underlyingTokenRateRaw = underlyingTokenConversionRate.find(
+          (tokenRate) => tokenRate.address === token.address,
+        )!.underlyingRateRaw
+
+        return {
+          ...token,
+          balanceRaw:
+            (underlyingTokenRateRaw * protocolTokenBalance.balanceRaw) /
+            10n ** BigInt(protocolTokenBalance.decimals),
+          type: TokenType.Underlying,
+        }
+      },
+    )
+
+    return underlyingBalances
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
   async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
+    input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
-    const totalValueLocked: ProtocolTokenTvl[] = []
-    const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Linea]: '0x286381aEdd20e51f642fE4A200B5CB2Fe3729695',
-    }
-    const poolDataQueryAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Linea]: '0xb2F2537E332F9A1aADa289df9fC770D5120613C9',
-    }
     const vaultContract = Vault__factory.connect(
-      contractAddresses[this.chainId]!,
+      vaultContractAddresses[this.chainId]!,
       this.provider,
     )
     const balancerPoolDataQueriesContract =
       BalancerPoolDataQueries__factory.connect(
-        poolDataQueryAddresses[this.chainId]!,
+        poolDataQueryContractAddresses[this.chainId]!,
         this.provider,
       )
-    await Promise.all(
+
+    const protocolTokens = await this.getProtocolTokens()
+
+    return Promise.all(
       protocolTokens.map(async (protocolToken) => {
-        const poolContract = Pool__factory.connect(
-          protocolToken.address,
-          this.provider,
-        )
-        const poolId = await poolContract.getPoolId()
-        const pool = await vaultContract.getPool(poolId)
-        const poolTokens = await vaultContract.getPoolTokens(poolId)
-        let totalSupplyType = '0'
-        if (pool[1].toString() === '0') {
-          totalSupplyType = '2'
-        }
-        const totalSupplyResp =
-          await balancerPoolDataQueriesContract.getTotalSupplyForPools(
-            [protocolToken.address],
-            [totalSupplyType],
-          )
-        const tokens: UnderlyingTokenTvl[] = []
-        await Promise.all(
-          poolTokens[0].map(async (token, index) => {
-            if (token.toLowerCase() !== protocolToken.address.toLowerCase()) {
-              const tokenData = await getTokenMetadata(
-                token,
-                this.chainId,
-                this.provider,
-              )
-              tokens.push({
-                ...tokenData,
-                totalSupplyRaw: BigInt(poolTokens[1][index] ?? '0'),
-                type: TokenType.Underlying,
-              })
-            }
+        const poolMetadata = await this.fetchPoolMetadata(protocolToken.address)
+
+        const [[_poolTokens, poolBalances], [totalSupplyRaw]] =
+          await Promise.all([
+            vaultContract.getPoolTokens(poolMetadata.poolId, {
+              blockTag: input.blockNumber,
+            }),
+            balancerPoolDataQueriesContract.getTotalSupplyForPools(
+              [protocolToken.address],
+              [poolMetadata.totalSupplyType],
+              {
+                blockTag: input.blockNumber,
+              },
+            ),
+          ])
+
+        const tokens = poolMetadata.underlyingTokens.map(
+          ({ index: tokenIndex, ...token }) => ({
+            ...token,
+            totalSupplyRaw: poolBalances[tokenIndex]!,
+            type: TokenType.Underlying,
           }),
         )
-        totalValueLocked.push({
+
+        return {
           ...protocolToken,
           type: TokenType.Protocol,
           tokens,
-          totalSupplyRaw: BigInt(totalSupplyResp.toString()),
-        })
+          totalSupplyRaw: totalSupplyRaw!,
+        }
       }),
     )
-    console.log('Implemented', totalValueLocked)
-    return totalValueLocked
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
@@ -435,15 +360,58 @@ export class ChimpExchangePoolAdapter
     return protocolToken
   }
 
-  /**
-   * Update me.
-   * Add logic that finds the underlying token rates for 1 protocol token
-   */
   protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
+    protocolTokenMetadata: Erc20Metadata,
+    blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
+    const vaultContract = Vault__factory.connect(
+      vaultContractAddresses[this.chainId]!,
+      this.provider,
+    )
+    const balancerPoolDataQueriesContract =
+      BalancerPoolDataQueries__factory.connect(
+        poolDataQueryContractAddresses[this.chainId]!,
+        this.provider,
+      )
+
+    const poolMetadata = await this.fetchPoolMetadata(
+      protocolTokenMetadata.address,
+    )
+
+    const [_poolTokens, poolBalances] = await vaultContract.getPoolTokens(
+      poolMetadata.poolId,
+      {
+        blockTag: blockNumber,
+      },
+    )
+
+    const [totalSupplyRaw] =
+      await balancerPoolDataQueriesContract.getTotalSupplyForPools(
+        [protocolTokenMetadata.address],
+        [poolMetadata.totalSupplyType],
+        {
+          blockTag: blockNumber,
+        },
+      )
+
+    const underlyingRates = poolMetadata.underlyingTokens.map(
+      ({ index: tokenIndex, ...token }) => {
+        const underlyingPoolBalance = poolBalances[tokenIndex]!
+        const underlyingRateRaw =
+          totalSupplyRaw === 0n
+            ? 0n
+            : underlyingPoolBalance /
+              (totalSupplyRaw! / 10n ** BigInt(protocolTokenMetadata.decimals))
+
+        return {
+          ...token,
+          type: TokenType.Underlying,
+          underlyingRateRaw,
+        }
+      },
+    )
+
+    return underlyingRates
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
@@ -454,10 +422,6 @@ export class ChimpExchangePoolAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
@@ -468,10 +432,6 @@ export class ChimpExchangePoolAdapter
     return underlyingTokens
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
