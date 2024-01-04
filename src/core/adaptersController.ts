@@ -121,7 +121,7 @@ export class AdaptersController {
               // Omit reward tokens from protocol token adapter map.
               break
             case PositionType.Borrow:
-              // Omit reward tokens from protocol token adapter map.
+              // Omit borrow tokens from protocol token adapter map.
               break
             default:
               this.processDefaultCase(protocolTokens, chainAdaptersMap, adapter)
