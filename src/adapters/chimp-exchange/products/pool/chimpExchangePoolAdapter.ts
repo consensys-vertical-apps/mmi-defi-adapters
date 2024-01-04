@@ -23,13 +23,10 @@ import {
   GetEventsInput,
   TokenType,
   MovementsByBlock,
-  GetPositionsInput,
-  ProtocolPosition,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
   Vault__factory,
-  Pool__factory,
   BalancerPoolDataQueries__factory,
 } from '../../contracts'
 import { PoolBalanceChangedEvent } from '../../contracts/Vault'
@@ -124,139 +121,91 @@ export class ChimpExchangePoolAdapter
   }
 
   async getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      input.protocolTokenAddress,
-    )
-    const vaultContract = Vault__factory.connect(
-      vaultContractAddresses[this.chainId]!,
-      this.provider,
-    )
-    const poolContract = Pool__factory.connect(
-      input.protocolTokenAddress,
-      this.provider,
-    )
-    const poolId = await poolContract.getPoolId()
-    const filter = vaultContract.filters[
-      'PoolBalanceChanged(bytes32,address,address[],int256[],uint256[])'
-    ](poolId, input.userAddress)
-    const events =
-      await vaultContract.queryFilter<PoolBalanceChangedEvent.Event>(
-        filter,
-        input.fromBlock,
-        input.toBlock,
-      )
-    const response: MovementsByBlock[] = []
-    await Promise.all(
-      events.map(async (event) => {
-        const amounts = event.args.deltas
-        const total = amounts.reduce(
-          (sum, amount) => (sum = sum + parseFloat(amount.toString())),
-          0,
-        )
-        if (total > 0) {
-          const tokensData: Underlying[] = []
-          await Promise.all(
-            event.args.tokens.map(async (token, index) => {
-              if (
-                token.toLowerCase() !==
-                input.protocolTokenAddress.toLocaleLowerCase()
-              ) {
-                const tokenData = await getTokenMetadata(
-                  token,
-                  this.chainId,
-                  this.provider,
-                )
-                tokensData.push({
-                  ...tokenData,
-                  balanceRaw: event.args.deltas[index] || BigInt('0'),
-                  type: TokenType.Underlying,
-                })
-              }
-            }),
-          )
-          const result: MovementsByBlock = {
-            transactionHash: event.transactionHash,
-            protocolToken,
-            tokens: tokensData,
-            blockNumber: event.blockNumber,
-          }
-          response.push(result)
-        }
-      }),
-    )
-    return response
+    return this.getPoolChangeMovements({
+      ...input,
+      filterPredicate: (total) => total > 0n,
+    })
   }
 
   async getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      input.protocolTokenAddress,
+    return this.getPoolChangeMovements({
+      ...input,
+      filterPredicate: (total) => total < 0n,
+    })
+  }
+
+  private async getPoolChangeMovements({
+    protocolTokenAddress,
+    userAddress,
+    fromBlock,
+    toBlock,
+    filterPredicate,
+  }: GetEventsInput & { filterPredicate: (total: bigint) => boolean }): Promise<
+    MovementsByBlock[]
+  > {
+    const { poolId, protocolToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
     )
+
     const vaultContract = Vault__factory.connect(
       vaultContractAddresses[this.chainId]!,
       this.provider,
     )
-    const poolContract = Pool__factory.connect(
-      input.protocolTokenAddress,
-      this.provider,
-    )
-    const poolId = await poolContract.getPoolId()
+
     const filter = vaultContract.filters[
       'PoolBalanceChanged(bytes32,address,address[],int256[],uint256[])'
-    ](poolId, input.userAddress)
+    ](poolId, userAddress)
+
     const events =
       await vaultContract.queryFilter<PoolBalanceChangedEvent.Event>(
         filter,
-        input.fromBlock,
-        input.toBlock,
+        fromBlock,
+        toBlock,
       )
-    const response: MovementsByBlock[] = []
-    await Promise.all(
-      events.map(async (event) => {
-        const amounts = event.args.deltas
-        const total = amounts.reduce(
-          (sum, amount) => (sum = sum + parseFloat(amount.toString())),
-          0,
+
+    const movements = await filterMapAsync(events, async (event) => {
+      const amounts = event.args.deltas
+
+      const total = amounts.reduce(
+        (accumulator, amount) => accumulator + amount,
+        0n,
+      )
+
+      if (filterPredicate(total)) {
+        const tokensData = await filterMapAsync(
+          event.args.tokens,
+          async (token, index) => {
+            if (
+              token.toLowerCase() === protocolTokenAddress.toLocaleLowerCase()
+            ) {
+              return undefined
+            }
+
+            const tokenData = await getTokenMetadata(
+              token,
+              this.chainId,
+              this.provider,
+            )
+
+            const balanceRaw = event.args.deltas[index] ?? 0n
+            return {
+              ...tokenData,
+              balanceRaw: balanceRaw < 0n ? -balanceRaw : balanceRaw,
+              type: TokenType.Underlying,
+            }
+          },
         )
-        if (total < 0) {
-          const tokensData: Underlying[] = []
-          await Promise.all(
-            event.args.tokens.map(async (token, index) => {
-              if (
-                token.toLowerCase() !==
-                input.protocolTokenAddress.toLocaleLowerCase()
-              ) {
-                const tokenData = await getTokenMetadata(
-                  token,
-                  this.chainId,
-                  this.provider,
-                )
-                tokensData.push({
-                  ...tokenData,
-                  balanceRaw: event?.args?.deltas?.[index]
-                    ? BigInt(
-                        Math.abs(
-                          parseFloat(
-                            event.args.deltas[index]?.toString() ?? '0',
-                          ),
-                        ),
-                      )
-                    : BigInt('0'),
-                  type: TokenType.Underlying,
-                })
-              }
-            }),
-          )
-          const result: MovementsByBlock = {
-            transactionHash: event.transactionHash,
-            protocolToken,
-            tokens: tokensData,
-            blockNumber: event.blockNumber,
-          }
-          response.push(result)
+
+        return {
+          transactionHash: event.transactionHash,
+          protocolToken,
+          tokens: tokensData,
+          blockNumber: event.blockNumber,
         }
-      }),
-    )
-    return response
+      }
+    })
+
+    return movements
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
@@ -429,7 +378,7 @@ export class ChimpExchangePoolAdapter
       protocolTokenAddress,
     )
 
-    return underlyingTokens
+    return underlyingTokens.map(({ index: _tokenIndex, ...token }) => token)
   }
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
