@@ -1,5 +1,3 @@
-import { formatUnits } from 'ethers'
-import { priceAdapterConfig } from '../../adapters/prices/products/usd/priceAdapterConfig'
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
@@ -11,10 +9,8 @@ import {
   GetEventsInput,
   GetPositionsInput,
   GetConversionRateInput,
-  GetProfitsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
-  ProfitsWithRange,
   ProtocolAdapterParams,
   ProtocolTokenApr,
   ProtocolTokenApy,
@@ -24,7 +20,6 @@ import {
   ProtocolTokenTvl,
   TokenBalance,
   TokenType,
-  PositionType,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
@@ -36,9 +31,6 @@ import {
   ResolveUnderlyingMovements,
 } from '../decorators/resolveUnderlyingPositions'
 import { MaxMovementLimitExceededError } from '../errors/errors'
-import { aggregateFiatBalances } from '../utils/aggregateFiatBalances'
-import { aggregateFiatBalancesFromMovements } from '../utils/aggregateFiatBalancesFromMovements'
-import { calculateDeFiAttributionPerformance } from '../utils/calculateDeFiAttributionPerformance'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 
@@ -245,113 +237,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
         }
       }),
     )
-  }
-
-  async getProfits({
-    userAddress,
-    fromBlock,
-    toBlock,
-    protocolTokenAddresses,
-  }: GetProfitsInput): Promise<ProfitsWithRange> {
-    let endPositionValues: ReturnType<typeof aggregateFiatBalances>,
-      startPositionValues: ReturnType<typeof aggregateFiatBalances>
-    if (protocolTokenAddresses) {
-      // Call both in parallel with filter
-      ;[endPositionValues, startPositionValues] = await Promise.all([
-        this.getPositions({
-          userAddress,
-          blockNumber: toBlock,
-          protocolTokenAddresses,
-        }).then(aggregateFiatBalances),
-        this.getPositions({
-          userAddress,
-          blockNumber: fromBlock,
-          protocolTokenAddresses,
-        }).then(aggregateFiatBalances),
-      ])
-    } else {
-      // Call toBlock first and filter fromBlock
-      endPositionValues = await this.getPositions({
-        userAddress,
-        blockNumber: toBlock,
-      }).then(aggregateFiatBalances)
-
-      startPositionValues = await this.getPositions({
-        userAddress,
-        blockNumber: fromBlock,
-        protocolTokenAddresses: Object.keys(endPositionValues),
-      }).then(aggregateFiatBalances)
-    }
-
-    const tokens = await Promise.all(
-      Object.values(endPositionValues).map(
-        async ({ protocolTokenMetadata }) => {
-          const getEventsInput: GetEventsInput = {
-            userAddress,
-            protocolTokenAddress: protocolTokenMetadata.address,
-            fromBlock,
-            toBlock,
-            tokenId: protocolTokenMetadata.tokenId,
-          }
-
-          const [withdrawals, deposits] = await Promise.all([
-            this.getWithdrawals(getEventsInput).then(
-              aggregateFiatBalancesFromMovements,
-            ),
-            this.getDeposits(getEventsInput).then(
-              aggregateFiatBalancesFromMovements,
-            ),
-          ])
-
-          const key =
-            protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
-
-          const endPositionValue = +formatUnits(
-            endPositionValues[key]?.usdRaw ?? 0n,
-            priceAdapterConfig.decimals,
-          )
-          const withdrawal = +formatUnits(
-            withdrawals[key]?.usdRaw ?? 0n,
-            priceAdapterConfig.decimals,
-          )
-          const deposit = +formatUnits(
-            deposits[key]?.usdRaw ?? 0n,
-            priceAdapterConfig.decimals,
-          )
-          const startPositionValue = +formatUnits(
-            startPositionValues[key]?.usdRaw ?? 0n,
-            priceAdapterConfig.decimals,
-          )
-
-          const profit =
-            endPositionValue + withdrawal - deposit - startPositionValue
-
-          if (this.getProtocolDetails().positionType == PositionType.Borrow) {
-            profit * -1
-          }
-
-          return {
-            ...protocolTokenMetadata,
-            type: TokenType.Protocol,
-            profit: profit,
-            performance: calculateDeFiAttributionPerformance({
-              profit,
-              withdrawal,
-              deposit,
-              startPositionValue,
-            }),
-            calculationData: {
-              withdrawals: withdrawal,
-              deposits: deposit,
-              startPositionValue: startPositionValue,
-              endPositionValue: endPositionValue,
-            },
-          }
-        },
-      ),
-    )
-
-    return { tokens, fromBlock, toBlock }
   }
 
   abstract getApy(input: GetApyInput): Promise<ProtocolTokenApy>

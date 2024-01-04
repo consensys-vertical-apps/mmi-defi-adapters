@@ -10,6 +10,7 @@
 
 - [userAddress](adapter.GetPositionsInput.md#useraddress)
 - [blockNumber](adapter.GetPositionsInput.md#blocknumber)
+- [protocolTokenAddresses](adapter.GetPositionsInput.md#protocoltokenaddresses)
 
 ## Properties
 
@@ -21,7 +22,7 @@ Address of the user can be any type of address EOA/Contract
 
 #### Defined in
 
-[adapter.ts:165](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L165)
+[adapter.ts:155](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L155)
 
 ___
 
@@ -33,4 +34,16 @@ Optional override param
 
 #### Defined in
 
-[adapter.ts:170](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L170)
+[adapter.ts:160](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L160)
+
+___
+
+### protocolTokenAddresses
+
+• `Optional` **protocolTokenAddresses**: `string`[]
+
+Optional filter for pools that will be queried
+
+#### Defined in
+
+[adapter.ts:165](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L165)

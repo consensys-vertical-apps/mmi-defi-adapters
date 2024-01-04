@@ -11,8 +11,6 @@ import type {
   MovementsByBlock,
   GetTotalValueLockedInput,
   ProtocolTokenTvl,
-  GetProfitsInput,
-  ProfitsWithRange,
   GetApyInput,
   ProtocolTokenApy,
   GetAprInput,
@@ -100,15 +98,6 @@ export interface IProtocolAdapter {
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]>
-
-  /**
-   *
-   * @remarks Returns the user's profits made on open positions. Accepts blockNumber override.
-   *
-   * @param {GetProfitsInput} input - Object specifying user-address and the block range for the profit calculation.
-   * @returns {Promise<ProfitsWithRange>} Object containing the starting and ending block numbers, and an array of objects detailing the profit information for each token.
-   */
-  getProfits(input: GetProfitsInput): Promise<ProfitsWithRange>
 
   /**
    *

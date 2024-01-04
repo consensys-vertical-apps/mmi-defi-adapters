@@ -8,14 +8,18 @@
 
 - [`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata)
 
+- [`UnderlyingProfitValues`](adapter.UnderlyingProfitValues.md)
+
   ↳ **`PositionProfits`**
 
 ## Table of contents
 
 ### Properties
 
+- [profit](adapter.PositionProfits.md#profit)
+- [performance](adapter.PositionProfits.md#performance)
+- [calculationData](adapter.PositionProfits.md#calculationdata)
 - [type](adapter.PositionProfits.md#type)
-- [tokens](adapter.PositionProfits.md#tokens)
 - [address](adapter.PositionProfits.md#address)
 - [name](adapter.PositionProfits.md#name)
 - [symbol](adapter.PositionProfits.md#symbol)
@@ -23,23 +27,59 @@
 
 ## Properties
 
+### profit
+
+• **profit**: `number`
+
+Profit made in this token for this period
+
+#### Inherited from
+
+[UnderlyingProfitValues](adapter.UnderlyingProfitValues.md).[profit](adapter.UnderlyingProfitValues.md#profit)
+
+#### Defined in
+
+[adapter.ts:300](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L300)
+
+___
+
+### performance
+
+• **performance**: `number`
+
+#### Inherited from
+
+[UnderlyingProfitValues](adapter.UnderlyingProfitValues.md).[performance](adapter.UnderlyingProfitValues.md#performance)
+
+#### Defined in
+
+[adapter.ts:302](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L302)
+
+___
+
+### calculationData
+
+• **calculationData**: [`CalculationData`](adapter.CalculationData.md)
+
+Numbers used to calculate profit value
+
+#### Inherited from
+
+[UnderlyingProfitValues](adapter.UnderlyingProfitValues.md).[calculationData](adapter.UnderlyingProfitValues.md#calculationdata)
+
+#### Defined in
+
+[adapter.ts:307](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L307)
+
+___
+
 ### type
 
 • **type**: ``"protocol"``
 
 #### Defined in
 
-[adapter.ts:316](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L316)
-
-___
-
-### tokens
-
-• **tokens**: [`UnderlyingProfitValues`](adapter.UnderlyingProfitValues.md)[]
-
-#### Defined in
-
-[adapter.ts:317](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L317)
+[adapter.ts:311](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L311)
 
 ___
 
@@ -51,7 +91,7 @@ Token address
 
 #### Inherited from
 
-Erc20Metadata.address
+[UnderlyingProfitValues](adapter.UnderlyingProfitValues.md).[address](adapter.UnderlyingProfitValues.md#address)
 
 #### Defined in
 
@@ -67,7 +107,7 @@ Name of token
 
 #### Inherited from
 
-Erc20Metadata.name
+[UnderlyingProfitValues](adapter.UnderlyingProfitValues.md).[name](adapter.UnderlyingProfitValues.md#name)
 
 #### Defined in
 
@@ -83,7 +123,7 @@ Token symbol
 
 #### Inherited from
 
-Erc20Metadata.symbol
+[UnderlyingProfitValues](adapter.UnderlyingProfitValues.md).[symbol](adapter.UnderlyingProfitValues.md#symbol)
 
 #### Defined in
 
@@ -99,7 +139,7 @@ Token decimals
 
 #### Inherited from
 
-Erc20Metadata.decimals
+[UnderlyingProfitValues](adapter.UnderlyingProfitValues.md).[decimals](adapter.UnderlyingProfitValues.md#decimals)
 
 #### Defined in
 

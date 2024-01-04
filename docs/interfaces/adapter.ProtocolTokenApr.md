@@ -30,7 +30,7 @@ Current apr of protocol pool
 
 #### Defined in
 
-[adapter.ts:265](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L265)
+[adapter.ts:260](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L260)
 
 ___
 
