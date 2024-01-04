@@ -7,7 +7,7 @@
       "description": "Prices defi adapter",
       "siteUrl": "https:",
       "iconUrl": "https://",
-      "positionType": "supply",
+      "positionType": "fiat-prices",
       "chainId": 1,
       "productId": "usd",
       "success": true,

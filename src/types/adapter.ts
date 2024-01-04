@@ -37,6 +37,8 @@ export const PositionType = {
    * Claimable rewards, these type of positions will be merged with the equivalent lp position
    */
   Reward: 'reward',
+
+  FiatPrices: 'fiat-prices',
 } as const
 export type PositionType = (typeof PositionType)[keyof typeof PositionType]
 
@@ -118,6 +120,11 @@ export interface GetProfitsInput {
    * Starting blocknumber to check profits earned to
    */
   toBlock: number
+
+  /**
+   * Optional filter for pools that will be queried
+   */
+  protocolTokenAddresses?: string[]
 }
 
 export type ProtocolDetails = {
@@ -173,6 +180,11 @@ export interface GetPositionsInput {
    * Optional override param
    */
   blockNumber?: number
+
+  /**
+   * Optional filter for pools that will be queried
+   */
+  protocolTokenAddresses?: string[]
 }
 
 export interface GetPricePerShareInput {

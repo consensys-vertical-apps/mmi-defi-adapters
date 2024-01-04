@@ -101,7 +101,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
       description: 'Prices defi adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
-      positionType: PositionType.Supply,
+      positionType: PositionType.FiatPrices,
       chainId: this.chainId,
       productId: this.productId,
     }

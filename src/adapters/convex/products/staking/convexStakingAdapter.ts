@@ -1,5 +1,7 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
+import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
+import { AddClaimedRewards } from '../../../../core/decorators/addClaimedRewards'
 import {
   IMetadataBuilder,
   CacheToFile,
@@ -21,6 +23,10 @@ import {
   UnderlyingTokenRate,
   Underlying,
   TokenType,
+  GetPositionsInput,
+  ProtocolPosition,
+  GetEventsInput,
+  MovementsByBlock,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ConvexFactory__factory } from '../../contracts'
@@ -53,6 +59,16 @@ export class ConvexStakingAdapter
       chainId: this.chainId,
       productId: this.productId,
     }
+  }
+
+  @AddClaimableRewards({ rewardAdapterIds: ['extra-reward', 'rewards'] })
+  getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return super.getPositions(input)
+  }
+
+  @AddClaimedRewards({ rewardAdapterIds: ['extra-reward', 'rewards'] })
+  getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
+    return super.getWithdrawals(input)
   }
 
   @CacheToFile({ fileKey: 'protocol-token' })

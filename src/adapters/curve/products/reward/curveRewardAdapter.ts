@@ -55,14 +55,20 @@ export class CurveRewardAdapter
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const stakingContracts = await this.getProtocolTokens()
 
-    return await filterMapAsync(stakingContracts, async (protcolToken) => {
-      const { address } = protcolToken
+    return await filterMapAsync(stakingContracts, async (protocolToken) => {
+      if (
+        protocolTokenAddresses &&
+        !protocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
 
       const stakingContract = StakingContract__factory.connect(
-        address,
+        protocolToken.address,
         this.provider,
       )
 
@@ -75,7 +81,7 @@ export class CurveRewardAdapter
       }
 
       return {
-        ...protcolToken,
+        ...protocolToken,
         balanceRaw,
         type: TokenType.Reward,
         tokens: [

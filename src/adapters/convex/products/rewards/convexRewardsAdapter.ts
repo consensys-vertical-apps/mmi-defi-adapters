@@ -153,12 +153,20 @@ export class ConvexRewardsAdapter
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokens = await this.getProtocolTokens()
 
     const balances = await filterMapAsync(
       protocolTokens,
       async (protocolToken) => {
+        if (
+          protocolTokenAddresses &&
+          !protocolTokenAddresses.includes(protocolToken.address)
+        ) {
+          return undefined
+        }
+
         const rewardManager = ConvexRewardsFactory__factory.connect(
           protocolToken.address,
           this.provider,

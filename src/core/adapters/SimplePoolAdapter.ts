@@ -71,10 +71,18 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+    return filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        protocolTokenAddresses &&
+        !protocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
+
       const tokenContract = Erc20__factory.connect(
         protocolToken.address,
         this.provider,
@@ -243,17 +251,37 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     userAddress,
     fromBlock,
     toBlock,
+    protocolTokenAddresses,
   }: GetProfitsInput): Promise<ProfitsWithRange> {
-    const [endPositionValues, startPositionValues] = await Promise.all([
-      this.getPositions({
+    let endPositionValues: ReturnType<typeof aggregateFiatBalances>,
+      startPositionValues: ReturnType<typeof aggregateFiatBalances>
+    if (protocolTokenAddresses) {
+      // Call both in parallel with filter
+      ;[endPositionValues, startPositionValues] = await Promise.all([
+        this.getPositions({
+          userAddress,
+          blockNumber: toBlock,
+          protocolTokenAddresses,
+        }).then(aggregateFiatBalances),
+        this.getPositions({
+          userAddress,
+          blockNumber: fromBlock,
+          protocolTokenAddresses,
+        }).then(aggregateFiatBalances),
+      ])
+    } else {
+      // Call toBlock first and filter fromBlock
+      endPositionValues = await this.getPositions({
         userAddress,
         blockNumber: toBlock,
-      }).then(aggregateFiatBalances),
-      this.getPositions({
+      }).then(aggregateFiatBalances)
+
+      startPositionValues = await this.getPositions({
         userAddress,
         blockNumber: fromBlock,
-      }).then(aggregateFiatBalances),
-    ])
+        protocolTokenAddresses: Object.keys(endPositionValues),
+      }).then(aggregateFiatBalances)
+    }
 
     const tokens = await Promise.all(
       Object.values(endPositionValues).map(

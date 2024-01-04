@@ -80,8 +80,16 @@ export class StargateVestingAdapter
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const { contractToken, underlyingToken } = await this.buildMetadata()
+
+    if (
+      protocolTokenAddresses &&
+      !protocolTokenAddresses.includes(contractToken.address)
+    ) {
+      return []
+    }
 
     const votingEscrowContract = StargateVotingEscrow__factory.connect(
       contractToken.address,

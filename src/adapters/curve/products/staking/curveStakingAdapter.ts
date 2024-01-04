@@ -1,5 +1,7 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
+import { AddClaimedRewards } from '../../../../core/decorators/addClaimedRewards'
 import {
   IMetadataBuilder,
   CacheToFile,
@@ -24,6 +26,8 @@ import {
   Underlying,
   ProtocolAdapterParams,
   TokenType,
+  GetPositionsInput,
+  ProtocolPosition,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -55,6 +59,11 @@ export class CurveStakingAdapter
       params.protocolId,
       'pool',
     ) as IProtocolAdapter & IMetadataBuilder
+  }
+
+  @AddClaimableRewards({ rewardAdapterIds: ['reward'] })
+  getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return super.getPositions(input)
   }
 
   /**
@@ -216,6 +225,7 @@ export class CurveStakingAdapter
   }
 
   @ResolveUnderlyingMovements
+  @AddClaimedRewards({ rewardAdapterIds: ['reward'] })
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,

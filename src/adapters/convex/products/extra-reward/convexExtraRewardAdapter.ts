@@ -73,12 +73,20 @@ export class ConvexExtraRewardAdapter
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokens = await this.getProtocolTokens()
 
     const balances: ProtocolPosition[] = await filterMapAsync(
       protocolTokens,
       async (protocolToken) => {
+        if (
+          protocolTokenAddresses &&
+          !protocolTokenAddresses.includes(protocolToken.address)
+        ) {
+          return undefined
+        }
+
         const extraRewards = await this.fetchUnderlyingTokensMetadata(
           protocolToken.address,
         )

@@ -37,11 +37,6 @@ export class AdaptersController {
           ([chainIdKey, adapterClasses]) => {
             const chainId = +chainIdKey as Chain
 
-            // always use mainnet for price adapters
-            // const provider =
-            //   protocolId == Protocol.Prices
-            //     ? providers[Chain.Ethereum]!
-            //     : providers[chainId]!
             const provider = providers[chainId]!
 
             adapterClasses.forEach((adapterClass) => {
@@ -95,19 +90,18 @@ export class AdaptersController {
   private async buildProtocolTokens(): Promise<
     Map<Chain, Map<string, IProtocolAdapter>>
   > {
-    const protocolTokens: Map<Chain, Map<string, IProtocolAdapter>> = new Map()
+    const protocolTokensAdapterMap: Map<
+      Chain,
+      Map<string, IProtocolAdapter>
+    > = new Map()
 
     for (const [chainId, chainAdapters] of this.adapters) {
-      protocolTokens.set(chainId, new Map())
-      const chainAdaptersMap = protocolTokens.get(chainId)!
+      protocolTokensAdapterMap.set(chainId, new Map())
+      const chainAdaptersMap = protocolTokensAdapterMap.get(chainId)!
 
       for (const [_protocolId, protocolAdapters] of chainAdapters) {
         for (const [_productId, adapter] of protocolAdapters) {
           const { positionType } = adapter.getProtocolDetails()
-
-          if (positionType === PositionType.Reward) {
-            continue
-          }
 
           let protocolTokens: Erc20Metadata[]
           try {
@@ -116,33 +110,64 @@ export class AdaptersController {
             if (!(error instanceof NotImplementedError)) {
               throw error
             }
-            protocolTokens = []
+            continue
           }
-          for (const protocolToken of protocolTokens) {
-            const tokenAddress = protocolToken.address.toLowerCase()
 
-            if (_protocolId === 'prices') {
-              if (chainAdaptersMap.has(tokenAddress)) {
-                continue
-              }
-            } else {
-              if (chainAdaptersMap.has(tokenAddress)) {
-                const existingAdapter = chainAdaptersMap.get(tokenAddress)
-                if (existingAdapter?.protocolId !== 'prices') {
-                  throw new Error(
-                    `Duplicated protocol token ${protocolToken.address}`,
-                  )
-                }
-              }
-            }
-
-            chainAdaptersMap.set(tokenAddress, adapter)
+          switch (positionType) {
+            case PositionType.FiatPrices:
+              this.processFiatPrices(protocolTokens, chainAdaptersMap, adapter)
+              break
+            case PositionType.Reward:
+              // Omit reward tokens from protocol token adapter map.
+              break
+            case PositionType.Borrow:
+              // Omit borrow tokens from protocol token adapter map.
+              break
+            default:
+              this.processDefaultCase(protocolTokens, chainAdaptersMap, adapter)
+              break
           }
         }
       }
     }
 
-    return protocolTokens
+    return protocolTokensAdapterMap
+  }
+
+  private processFiatPrices(
+    protocolTokens: Erc20Metadata[],
+    chainAdaptersMap: Map<string, IProtocolAdapter>,
+    adapter: IProtocolAdapter,
+  ) {
+    for (const protocolToken of protocolTokens) {
+      const tokenAddress = protocolToken.address.toLowerCase()
+
+      if (!chainAdaptersMap.has(tokenAddress)) {
+        chainAdaptersMap.set(tokenAddress, adapter)
+      }
+    }
+  }
+
+  private processDefaultCase(
+    protocolTokens: Erc20Metadata[],
+    chainAdaptersMap: Map<string, IProtocolAdapter>,
+    adapter: IProtocolAdapter,
+  ) {
+    for (const protocolToken of protocolTokens) {
+      const tokenAddress = protocolToken.address.toLowerCase()
+
+      const existingAdapter = chainAdaptersMap.get(tokenAddress)
+      const isPriceAdapter =
+        existingAdapter?.getProtocolDetails().positionType ==
+        PositionType.FiatPrices
+
+      if (existingAdapter && !isPriceAdapter) {
+        throw new Error(`Duplicated protocol token ${protocolToken.address}`)
+      }
+
+      // override price adapter
+      chainAdaptersMap.set(tokenAddress, adapter)
+    }
   }
 
   fetchAdapter(

@@ -9,13 +9,13 @@ import { ProviderMissingError } from './core/errors/errors'
 import { ChainProvider } from './core/utils/chainProviders'
 import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
 import { logger } from './core/utils/logger'
-import { mergeClaimableWithProtocol } from './core/utils/mergeClaimableWithProtocol'
 import {
   enrichPositionBalance,
   enrichUnderlyingTokenRates,
   enrichMovements,
   enrichTotalValueLocked,
 } from './responseAdapters'
+import { PositionType } from './types/adapter'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
@@ -71,11 +71,13 @@ export class DefiProvider {
     filterProtocolIds,
     filterChainIds,
     blockNumbers,
+    filterProtocolTokens,
   }: {
     userAddress: string
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
     blockNumbers?: Partial<Record<Chain, number>>
+    filterProtocolTokens?: string[]
   }): Promise<DefiPositionResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
@@ -85,6 +87,7 @@ export class DefiProvider {
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
+        protocolTokenAddresses: filterProtocolTokens,
       })
 
       const endTime = Date.now()
@@ -108,14 +111,11 @@ export class DefiProvider {
       return { tokens }
     }
 
-    const results = await this.runForAllProtocolsAndChains({
+    return this.runForAllProtocolsAndChains({
       runner,
       filterProtocolIds,
       filterChainIds,
     })
-
-    const mergedData = mergeClaimableWithProtocol(results)
-    return mergedData
   }
 
   async getProfits({
@@ -124,12 +124,14 @@ export class DefiProvider {
     filterProtocolIds,
     filterChainIds,
     toBlockNumbersOverride,
+    filterProtocolTokens,
   }: {
     userAddress: string
     timePeriod?: TimePeriod
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
     toBlockNumbersOverride?: Partial<Record<Chain, number>>
+    filterProtocolTokens?: string[]
   }): Promise<DefiProfitsResponse[]> {
     const runner = async (
       adapter: IProtocolAdapter,
@@ -147,6 +149,7 @@ export class DefiProvider {
         userAddress,
         toBlock,
         fromBlock,
+        protocolTokenAddresses: filterProtocolTokens,
       })
 
       const endTime = Date.now()
@@ -456,13 +459,21 @@ export class DefiProvider {
                 protocolId,
               )
 
-            return Array.from(chainProtocolAdapters, async ([_, adapter]) => {
-              return this.runTaskForAdapter(adapter, provider, runner)
-            })
+            return Array.from(chainProtocolAdapters)
+              .filter(
+                ([_, adapter]) =>
+                  adapter.getProtocolDetails().positionType !==
+                  PositionType.Reward,
+              )
+              .map(([_, adapter]) =>
+                this.runTaskForAdapter(adapter, provider, runner),
+              )
           })
       })
 
-    return Promise.all(protocolPromises)
+    const result = await Promise.all(protocolPromises)
+
+    return result
   }
 
   private async runTaskForAdapter<ReturnType>(

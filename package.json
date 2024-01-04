@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/defi-adapters",
-  "version": "0.6.11",
+  "version": "0.6.12",
   "description": "Defi adapters for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
@@ -36,6 +36,7 @@
     "apr": "npm run adapters-cli apr --",
     "deposits": "npm run adapters-cli deposits --",
     "withdrawals": "npm run adapters-cli withdrawals --",
+    "stress": "npm run adapters-cli stress --",
     "fix": "run-s fix:*",
     "fix:lint": "eslint \"src/**/*.ts\" --fix",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
