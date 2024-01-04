@@ -8,6 +8,7 @@ import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/variable-
 import { AaveV3ATokenPoolAdapter } from './aave-v3/products/a-token/aaveV3ATokenPoolAdapter'
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenPoolAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenPoolAdapter'
+import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import { CompoundPoolAdapter } from './compound/products/pool/compoundPoolAdapter'
 import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/convexCvxcrvWrapperAdapter'
 import { ConvexExtraRewardAdapter } from './convex/products/extra-reward/convexExtraRewardAdapter'
@@ -158,6 +159,11 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [IZiswapAdapter],
     [Chain.Linea]: [IZiswapAdapter],
   },
+
+  [Protocol.ChimpExchange]: {
+    [Chain.Linea]: [ChimpExchangePoolAdapter],
+  },
+
   [Protocol.SyncSwap]: {
     [Chain.Linea]: [SyncswapPoolAdapter],
   },

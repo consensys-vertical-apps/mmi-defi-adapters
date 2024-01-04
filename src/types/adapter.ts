@@ -37,6 +37,8 @@ export const PositionType = {
    * Claimable rewards, these type of positions will be merged with the equivalent lp position
    */
   Reward: 'reward',
+
+  FiatPrices: 'fiat-prices',
 } as const
 export type PositionType = (typeof PositionType)[keyof typeof PositionType]
 
