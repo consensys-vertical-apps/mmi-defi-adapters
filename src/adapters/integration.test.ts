@@ -7,6 +7,7 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
+import { testCases as carbonDeFiTestCases } from './carbon-defi/tests/testCases'
 import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
 import { testCases as compoundTestCases } from './compound/tests/testCases'
 import { testCases as convexTestCases } from './convex/tests/testCases'
@@ -43,6 +44,7 @@ function runAllTests() {
   runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
   runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
   runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
+  runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
