@@ -10,58 +10,13 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "pool",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x7f72E0D8e9AbF9133A92322b8B50BD8e0F9dcFCB",
-          "name": "SyncSwap BUSD/WETH Classic LP",
-          "symbol": "BUSD/WETH cSLP",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": 0,
-          "performance": 0,
-          "tokens": [
-            {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "profitRaw": "15069600284136n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "3344778385659625n",
-                "startPositionValue": "0.003344778385659625",
-                "endPositionValueRaw": "3329708785375489n",
-                "endPositionValue": "0.003329708785375489"
-              }
-            },
-            {
-              "address": "0x7d43AABC515C356145049227CeE54B608342c0ad",
-              "name": "Binance USD",
-              "symbol": "BUSD",
-              "decimals": 18,
-              "profitRaw": "14104305388937731n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "5316143649355884318n",
-                "startPositionValue": "5.316143649355884318",
-                "endPositionValueRaw": "5302039343966946587n",
-                "endPositionValue": "5.302039343966946587"
-              }
-            }
-          ]
+      "success": false,
+      "error": {
+        "message": "Unable to calculate profits, missing USD price for token position 0x7d43AABC515C356145049227CeE54B608342c0ad",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 595287,
-      "toBlock": 645596
+      }
     }
   ]
 }

@@ -1,32 +1,21 @@
-import { formatUnits } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import {
-  IMetadataBuilder,
-  CacheToFile,
-} from '../../../../core/decorators/cacheToFile'
 import {
   ResolveUnderlyingMovements,
   ResolveUnderlyingPositions,
 } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { aggregateTrades } from '../../../../core/utils/aggregateTrades'
-import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
-import { formatProtocolTokenArrayToMap } from '../../../../core/utils/protocolTokenToMap'
 import {
   ProtocolDetails,
   PositionType,
   GetAprInput,
   GetApyInput,
-  GetTotalValueLockedInput,
   TokenBalance,
   ProtocolTokenApr,
   ProtocolTokenApy,
-  ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
   GetPositionsInput,
@@ -34,10 +23,6 @@ import {
   TokenType,
   GetEventsInput,
   MovementsByBlock,
-  ProtocolAdapterParams,
-  GetProfitsInput,
-  ProfitsWithRange,
-  CalculationData,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
@@ -46,14 +31,6 @@ import {
   Multicall__factory,
   MutlicallOld__factory,
 } from '../../contracts'
-
-type SyncSwapAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
 
 interface SyncSwapAdapterContracts {
   multicall: string
@@ -85,34 +62,9 @@ const contractAddresses: Partial<Record<Chain, SyncSwapAdapterContracts>> = {
   },
 }
 
-export class SyncswapPoolAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+export class SyncswapPoolAdapter extends SimplePoolAdapter {
   productId = 'pool'
 
-  constructor({
-    provider,
-    chainId,
-    protocolId,
-    adaptersController,
-  }: ProtocolAdapterParams) {
-    super({
-      provider,
-      chainId,
-      protocolId,
-      adaptersController,
-    })
-    this.provider = provider
-    this.chainId = chainId
-    this.protocolId = protocolId
-    this.adaptersController = adaptersController
-  }
-
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -126,21 +78,6 @@ export class SyncswapPoolAdapter
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
-  @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    return {} as SyncSwapAdapterMetadata
-  }
-
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     throw new NotImplementedError()
   }
@@ -150,37 +87,7 @@ export class SyncswapPoolAdapter
     userAddress,
     blockNumber,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const multiCallGetEnteredPoolsFn = callGetEnteredPoolsByBlockNumber
-    const { chainId, provider } = this
-    const enteredPools = await (async function fetchPools(
-      results: Awaited<
-        ReturnType<Awaited<ReturnType<typeof multiCallGetEnteredPoolsFn>>>
-      >['pools'] = [],
-      index = 0,
-    ): Promise<
-      Awaited<
-        ReturnType<Awaited<ReturnType<typeof multiCallGetEnteredPoolsFn>>>
-      >['pools']
-    > {
-      const batchRes = await multiCallGetEnteredPoolsFn(
-        chainId,
-        provider,
-        userAddress,
-        index,
-        blockNumber,
-      )()
-      const pools =
-        batchRes.pools ||
-        (batchRes['0'] as unknown as Multicall.GetPoolsStructOutput)['pools']
-
-      if (pools.every((pool) => pool.pool !== ZERO_ADDRESS)) {
-        return results.concat(
-          await fetchPools(pools, index + FETCH_POOLS_ENTERED_BATCH_COUNT),
-        )
-      } else {
-        return results.concat(pools)
-      }
-    })()
+    const enteredPools = await this.fetchPools(userAddress, blockNumber)
 
     return filterMapAsync(enteredPools, async (positionPool) => {
       if (
@@ -279,110 +186,6 @@ export class SyncswapPoolAdapter
     })
   }
 
-  async getProfits({
-    userAddress,
-    fromBlock,
-    toBlock,
-  }: GetProfitsInput): Promise<ProfitsWithRange> {
-    const [currentValues, previousValues] = await Promise.all([
-      this.getPositions({
-        userAddress,
-        blockNumber: toBlock,
-      }).then((result) => formatProtocolTokenArrayToMap(result, true)),
-      this.getPositions({
-        userAddress,
-        blockNumber: fromBlock,
-      }).then((result) => formatProtocolTokenArrayToMap(result, true)),
-    ])
-
-    const tokens = await Promise.all(
-      Object.values(currentValues).map(
-        async ({ protocolTokenMetadata, underlyingTokenPositions }) => {
-          const getEventsInput: GetEventsInput = {
-            userAddress,
-            protocolTokenAddress: protocolTokenMetadata.address,
-            fromBlock,
-            toBlock,
-            tokenId: protocolTokenMetadata.tokenId,
-          }
-
-          const [withdrawals, deposits] = await Promise.all([
-            this.getWithdrawals(getEventsInput).then(aggregateTrades),
-            this.getDeposits(getEventsInput).then(aggregateTrades),
-          ])
-
-          return {
-            ...protocolTokenMetadata,
-            type: TokenType.Protocol,
-            profit: 0,
-            performance: 0,
-            tokens: Object.values(underlyingTokenPositions).map(
-              ({
-                address,
-                name,
-                symbol,
-                decimals,
-                balanceRaw: startPositionValueRaw,
-              }) => {
-                const endPositionValueRaw =
-                  previousValues[protocolTokenMetadata.tokenId!]
-                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
-
-                const calculationData = {
-                  withdrawalsRaw: withdrawals[address] ?? 0n,
-                  depositsRaw: deposits[address] ?? 0n,
-                  startPositionValueRaw: startPositionValueRaw ?? 0n,
-                  endPositionValueRaw,
-                }
-
-                const profitRaw =
-                  calculationData.startPositionValueRaw +
-                  calculationData.withdrawalsRaw -
-                  calculationData.depositsRaw -
-                  calculationData.endPositionValueRaw
-
-                return {
-                  address,
-                  name,
-                  symbol,
-                  decimals,
-                  profitRaw,
-                  type: TokenType.Underlying,
-                  calculationData: {
-                    withdrawalsRaw: withdrawals[address] ?? 0n,
-                    withdrawals: formatUnits(
-                      withdrawals[address] ?? 0n,
-                      decimals,
-                    ),
-                    depositsRaw: deposits[address] ?? 0n,
-                    deposits: formatUnits(deposits[address] ?? 0n, decimals),
-                    startPositionValueRaw: startPositionValueRaw ?? 0n,
-                    startPositionValue: formatUnits(
-                      startPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                    endPositionValueRaw,
-                    endPositionValue: formatUnits(
-                      endPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                  } as unknown as CalculationData,
-                }
-              },
-            ),
-          }
-        },
-      ),
-    )
-
-    return { tokens, fromBlock, toBlock } as unknown as ProfitsWithRange
-  }
-
-  /**
-   * Update me.
-   * Add logic to turn the LP token balance into the correct underlying token(s) balance
-   * For context see dashboard example ./dashboard.png
-   */
   protected async getUnderlyingTokenBalances(_input: {
     userAddress: string
     protocolTokenBalance: TokenBalance
@@ -391,33 +194,12 @@ export class SyncswapPoolAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
+  protected async fetchProtocolTokenMetadata(
+    _protocolTokenAddress: string,
+  ): Promise<Erc20Metadata> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
-  /**
-   * Update me.
-   * Add logic that finds the underlying token rates for 1 protocol token
-   */
   protected async getUnderlyingTokenConversionRate(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
@@ -433,32 +215,10 @@ export class SyncswapPoolAdapter
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
+    _protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return underlyingTokens
-  }
-
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+    throw new NotImplementedError()
   }
 
   private async getSyncSwapMovements({
@@ -550,55 +310,89 @@ export class SyncswapPoolAdapter
       }),
     )
   }
-}
-function callGetEnteredPoolsByBlockNumber(
-  chainId: Chain,
-  provider: CustomJsonRpcProvider,
-  userAddress: string,
-  index: number,
-  blockNumber?: number,
-) {
-  const addrs = contractAddresses[chainId]!
-  switch (chainId) {
-    case Chain.Linea: {
-      if (blockNumber && blockNumber >= 438549) {
+
+  private async fetchPools(
+    userAddress: string,
+    blockNumber: number | undefined,
+    results: Awaited<
+      ReturnType<Awaited<ReturnType<typeof this.multiCallGetEnteredPoolsFn>>>
+    >['pools'] = [],
+    index = 0,
+  ): Promise<
+    Awaited<
+      ReturnType<Awaited<ReturnType<typeof this.multiCallGetEnteredPoolsFn>>>
+    >['pools']
+  > {
+    const batchRes = await this.multiCallGetEnteredPoolsFn(
+      userAddress,
+      index,
+      blockNumber,
+    )()
+    const pools =
+      batchRes.pools ||
+      (batchRes['0'] as unknown as Multicall.GetPoolsStructOutput)['pools']
+
+    if (pools.every((pool) => pool.pool !== ZERO_ADDRESS)) {
+      return results.concat(
+        await this.fetchPools(
+          userAddress,
+          blockNumber,
+          pools,
+          index + FETCH_POOLS_ENTERED_BATCH_COUNT,
+        ),
+      )
+    } else {
+      return results.concat(pools)
+    }
+  }
+
+  private multiCallGetEnteredPoolsFn(
+    userAddress: string,
+    index: number,
+    blockNumber?: number,
+  ) {
+    const addrs = contractAddresses[this.chainId]!
+    switch (this.chainId) {
+      case Chain.Linea: {
+        if (blockNumber && blockNumber >= 438549) {
+          return () => {
+            return Multicall__factory.connect(
+              contractAddresses[this.chainId]!.multicall,
+              this.provider,
+            ).getEnteredPools(
+              addrs.poolMaster,
+              addrs.poolMaster2 || addrs.poolMaster,
+              addrs.router,
+              userAddress,
+              index,
+              FETCH_POOLS_ENTERED_BATCH_COUNT,
+              addrs.factoriesV1,
+              addrs.factoriesV2,
+              '0x176211869cA2b568f2A7D4EE941E073a821EE1ff', // usdc
+              addrs.quoteRouteTokens,
+              {
+                blockTag: blockNumber,
+              },
+            )
+          }
+        }
         return () => {
-          return Multicall__factory.connect(
-            contractAddresses[chainId]!.multicall,
-            provider,
+          return MutlicallOld__factory.connect(
+            contractAddresses[this.chainId]!.multicallOld,
+            this.provider,
           ).getEnteredPools(
             addrs.poolMaster,
-            addrs.poolMaster2 || addrs.poolMaster,
             addrs.router,
-            userAddress,
+            '0x7f72e0d8e9abf9133a92322b8b50bd8e0f9dcfcb', // busd
             index,
             FETCH_POOLS_ENTERED_BATCH_COUNT,
-            addrs.factoriesV1,
-            addrs.factoriesV2,
-            '0x176211869cA2b568f2A7D4EE941E073a821EE1ff', // usdc
-            addrs.quoteRouteTokens,
             {
               blockTag: blockNumber,
             },
           )
         }
       }
-      return () => {
-        return MutlicallOld__factory.connect(
-          contractAddresses[chainId]!.multicallOld,
-          provider,
-        ).getEnteredPools(
-          addrs.poolMaster,
-          addrs.router,
-          '0x7f72e0d8e9abf9133a92322b8b50bd8e0f9dcfcb', // busd
-          index,
-          FETCH_POOLS_ENTERED_BATCH_COUNT,
-          {
-            blockTag: blockNumber,
-          },
-        )
-      }
     }
+    throw new Error('Get Multicall contract failed')
   }
-  throw new Error('Get Multicall contract failed')
 }

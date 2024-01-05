@@ -9,6 +9,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0x00000000863b56a3c1f0f1be8bc4f8b7bd78f57a',
     },
+    blockNumber: 1175771,
   },
   {
     chainId: Chain.Linea,

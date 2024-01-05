@@ -10,58 +10,13 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "pool",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xd71EcE20343233aD9E7ce29bc954b813f41FbDcB",
-          "name": "SyncSwap WETH/BNB Classic LP",
-          "symbol": "WETH/BNB cSLP",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": 0,
-          "performance": 0,
-          "tokens": [
-            {
-              "address": "0xf5C6825015280CdfD0b56903F9F8B5A2233476F5",
-              "name": "Binance Coin",
-              "symbol": "BNB",
-              "decimals": 18,
-              "profitRaw": "20031156372066n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "1555571978668007n",
-                "startPositionValue": "0.001555571978668007",
-                "endPositionValueRaw": "1535540822295941n",
-                "endPositionValue": "0.001535540822295941"
-              }
-            },
-            {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "profitRaw": "-2040544641219n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "199377187686831n",
-                "startPositionValue": "0.000199377187686831",
-                "endPositionValueRaw": "201417732328050n",
-                "endPositionValue": "0.00020141773232805"
-              }
-            }
-          ]
+      "success": false,
+      "error": {
+        "message": "Unable to calculate profits, missing USD price for token position 0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 497146,
-      "toBlock": 547455
+      }
     }
   ]
 }
