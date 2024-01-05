@@ -19,6 +19,7 @@ import { testCases as pricesTestCases } from './prices/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
+import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
 const TEST_TIMEOUT = 300000
@@ -39,6 +40,7 @@ function runAllTests() {
   runProtocolTests(Protocol.Swell, swellTestCases)
   runProtocolTests(Protocol.Convex, convexTestCases)
   runProtocolTests(Protocol.Prices, pricesTestCases)
+  runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
   runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
   runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
 }

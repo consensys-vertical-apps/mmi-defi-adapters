@@ -1,0 +1,22 @@
+{
+  "blockNumber": 645596,
+  "snapshot": [
+    {
+      "protocolId": "syncswap",
+      "name": "SyncSwap",
+      "description": "SyncSwap defi adapter",
+      "siteUrl": "https://syncswap.xyz",
+      "iconUrl": "https://syncswap.xyz/images/syncswap.svg",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "pool",
+      "success": false,
+      "error": {
+        "message": "Unable to calculate profits, missing USD price for token position 0x7d43AABC515C356145049227CeE54B608342c0ad",
+        "details": {
+          "name": "Error"
+        }
+      }
+    }
+  ]
+}

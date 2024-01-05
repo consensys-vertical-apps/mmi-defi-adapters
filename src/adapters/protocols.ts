@@ -12,6 +12,7 @@ export const Protocol = {
   Swell: 'swell',
   Convex: 'convex',
   Prices: 'prices',
+  SyncSwap: 'syncswap',
   IZiSwap: 'iziswap',
   ChimpExchange: 'chimp-exchange',
 } as const
