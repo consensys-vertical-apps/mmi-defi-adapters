@@ -3,7 +3,7 @@ export function defaultAdapterTemplate(
   adapterClassName: string,
   productId: string,
 ) {
-  return `{ AdaptersController } from '../../../../core/adaptersController'
+  return `import { AdaptersController } from '../../../../core/adaptersController'
   import { Chain } from '../../../../core/constants/chains'
   import {
     IMetadataBuilder,
