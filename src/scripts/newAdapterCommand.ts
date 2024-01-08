@@ -58,6 +58,7 @@ export function newAdapterCommand(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
+    .option('-y, --yes', 'Skip prompts and use default values')
     .showHelpAfterError()
     .action(
       async ({
@@ -65,11 +66,13 @@ export function newAdapterCommand(
         product,
         template,
         chains,
+        yes,
       }: {
         protocol: string
         product: string
         template: string
         chains: string
+        yes: boolean
       }) => {
         const chainKeys = filterMapSync(
           chains?.split(',') ?? [],
@@ -99,6 +102,7 @@ export function newAdapterCommand(
             )![0]
           : undefined
 
+        console.log('BOOLEAN', { yes, inputProtocolId, protocol })
         const questions: QuestionCollection = [
           {
             type: 'input',
@@ -108,7 +112,7 @@ export function newAdapterCommand(
             default: protocol ? pascalCase(protocol) : undefined,
             validate: (input: string) =>
               isPascalCase(input) || 'Value must be PascalCase',
-            when: !inputProtocolId,
+            when: !inputProtocolId && (!yes || !protocol),
           },
           {
             type: 'input',
@@ -119,7 +123,7 @@ export function newAdapterCommand(
               kebabCase(protocol ? protocol : protocolKey),
             validate: (input: string) =>
               isKebabCase(input) || 'Value must be kebab-case',
-            when: !inputProtocolId,
+            when: !inputProtocolId && (!yes || !protocol),
           },
           {
             type: 'checkbox',
@@ -127,6 +131,7 @@ export function newAdapterCommand(
             message: 'What chains will the adapter be valid for?',
             choices: Object.keys(Chain),
             default: chainKeys.length ? chainKeys : ['Ethereum'],
+            when: !yes,
           },
           {
             type: 'input',
@@ -167,6 +172,7 @@ export function newAdapterCommand(
 
               return true
             },
+            when: !yes || !product,
           },
           {
             type: 'list',
@@ -175,6 +181,7 @@ export function newAdapterCommand(
             choices: Object.keys(Templates),
             default: template ? template : undefined,
             filter: (input: string) => Templates[input],
+            when: !yes || !template,
           },
           {
             type: 'input',
@@ -218,13 +225,30 @@ export function newAdapterCommand(
 
               return true
             },
+            when: !yes,
           },
         ]
 
-        const answers = {
-          ...{ protocolId: inputProtocolId, protocolKey: inputProtocolKey },
-          ...(await prompt<NewAdapterAnswers>(questions)),
+        const initialAnswers = {
+          protocolKey: inputProtocolKey
+            ? inputProtocolKey
+            : protocol && yes
+            ? pascalCase(protocol)
+            : undefined,
+          protocolId: inputProtocolId
+            ? inputProtocolId
+            : protocol && yes
+            ? kebabCase(protocol)
+            : undefined,
+          chainKeys,
         }
+
+        const answers = {
+          // ...{ protocolId: inputProtocolId, protocolKey: inputProtocolKey },
+          ...(await prompt<NewAdapterAnswers>(questions, initialAnswers)),
+        }
+
+        console.log('ANSWERS', initialAnswers, answers)
 
         logger.debug(answers, 'Create new adapter')
 
