@@ -36,6 +36,7 @@ jobs:
       - name: Create new adapter with SimplePoolAdapter template
         run: |
           npm run new-adapter -- -p test-simple-pool-adapter-protocol -pd test-simple-pool-adapter-product -c 1 -t SimplePoolAdapter -y
+          npm run build
           npm run build-metadata -- -p test-simple-pool-adapter-protocol
 
       - name: Verify that the code builds after new adapters have been created
