@@ -41,7 +41,7 @@ type NewAdapterAnswers = {
 }
 
 const Templates: Record<string, TemplateBuilder> = {
-  ['DefaulAdapter']: defaultAdapterTemplate,
+  ['DefaultAdapter']: defaultAdapterTemplate,
   ['SimplePoolAdapter']: simplePoolAdapterTemplate,
 }
 
@@ -66,7 +66,7 @@ export function newAdapterCommand(
         product,
         template,
         chains,
-        yes,
+        yes: skipQuestions,
       }: {
         protocol: string
         product: string
@@ -102,7 +102,6 @@ export function newAdapterCommand(
             )![0]
           : undefined
 
-        console.log('BOOLEAN', { yes, inputProtocolId, protocol })
         const questions: QuestionCollection = [
           {
             type: 'input',
@@ -112,7 +111,7 @@ export function newAdapterCommand(
             default: protocol ? pascalCase(protocol) : undefined,
             validate: (input: string) =>
               isPascalCase(input) || 'Value must be PascalCase',
-            when: !inputProtocolId && (!yes || !protocol),
+            when: !inputProtocolId,
           },
           {
             type: 'input',
@@ -123,7 +122,7 @@ export function newAdapterCommand(
               kebabCase(protocol ? protocol : protocolKey),
             validate: (input: string) =>
               isKebabCase(input) || 'Value must be kebab-case',
-            when: !inputProtocolId && (!yes || !protocol),
+            when: !inputProtocolId,
           },
           {
             type: 'checkbox',
@@ -131,7 +130,6 @@ export function newAdapterCommand(
             message: 'What chains will the adapter be valid for?',
             choices: Object.keys(Chain),
             default: chainKeys.length ? chainKeys : ['Ethereum'],
-            when: !yes,
           },
           {
             type: 'input',
@@ -172,7 +170,6 @@ export function newAdapterCommand(
 
               return true
             },
-            when: !yes || !product,
           },
           {
             type: 'list',
@@ -181,7 +178,6 @@ export function newAdapterCommand(
             choices: Object.keys(Templates),
             default: template ? template : undefined,
             filter: (input: string) => Templates[input],
-            when: !yes || !template,
           },
           {
             type: 'input',
@@ -225,30 +221,29 @@ export function newAdapterCommand(
 
               return true
             },
-            when: !yes,
           },
         ]
 
-        const initialAnswers = {
-          protocolKey: inputProtocolKey
-            ? inputProtocolKey
-            : protocol && yes
-            ? pascalCase(protocol)
-            : undefined,
-          protocolId: inputProtocolId
-            ? inputProtocolId
-            : protocol && yes
-            ? kebabCase(protocol)
-            : undefined,
-          chainKeys,
-        }
+        const initialAnswers: Partial<NewAdapterAnswers> = skipQuestions
+          ? {
+              protocolKey: inputProtocolKey ?? pascalCase(protocol),
+              protocolId: inputProtocolId ?? kebabCase(protocol),
+              chainKeys: chainKeys.length ? chainKeys : ['Ethereum'],
+              productId: kebabCase(product),
+              templateBuilder: Templates[template],
+              adapterClassName: `${
+                inputProtocolKey ?? pascalCase(protocol)
+              }${pascalCase(product)}Adapter`,
+            }
+          : {
+              protocolKey: inputProtocolKey,
+              protocolId: inputProtocolId,
+            }
 
-        const answers = {
-          // ...{ protocolId: inputProtocolId, protocolKey: inputProtocolKey },
-          ...(await prompt<NewAdapterAnswers>(questions, initialAnswers)),
-        }
-
-        console.log('ANSWERS', initialAnswers, answers)
+        const answers = await prompt<NewAdapterAnswers>(
+          questions,
+          initialAnswers,
+        )
 
         logger.debug(answers, 'Create new adapter')
 
