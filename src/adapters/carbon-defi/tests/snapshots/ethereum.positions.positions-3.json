@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18412988,
+  "blockNumber": 18966205,
   "snapshot": [
     {
       "protocolId": "carbon-defi",
@@ -15,82 +15,82 @@
         {
           "type": "protocol",
           "tokenId": "14291859410679415465461733512134264881242",
-          "balanceRaw": "49237394628n",
+          "balanceRaw": "59237394628n",
           "address": "0x2b591e99afe9f32eaa6214f7b7629768c40eeb39",
           "name": "HEX",
           "symbol": "HEX",
           "decimals": 8,
-          "balance": "492.37394628"
+          "balance": "592.37394628"
         },
         {
           "type": "protocol",
           "tokenId": "14291859410679415465461733512134264881242",
-          "balanceRaw": "454513348249491n",
+          "balanceRaw": "154513348249492n",
           "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.000454513348249491"
+          "balance": "0.000154513348249492"
         },
         {
           "type": "protocol",
           "tokenId": "1701411834604692317316873037158841057386",
-          "balanceRaw": "1453045230970055329n",
+          "balanceRaw": "5640649921872484827n",
           "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "1.453045230970055329"
+          "balance": "5.640649921872484827"
         },
         {
           "type": "protocol",
           "tokenId": "1701411834604692317316873037158841057386",
-          "balanceRaw": "2500000000n",
+          "balanceRaw": "0n",
           "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
           "name": "USD Coin",
           "symbol": "USDC",
           "decimals": 6,
-          "balance": "2500.0"
+          "balance": "0.0"
         },
         {
           "type": "protocol",
           "tokenId": "4083388403051261561560495289181218537579",
-          "balanceRaw": "3181n",
+          "balanceRaw": "0n",
           "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
           "name": "Wrapped BTC",
           "symbol": "WBTC",
           "decimals": 8,
-          "balance": "0.00003181"
+          "balance": "0.0"
         },
         {
           "type": "protocol",
           "tokenId": "4083388403051261561560495289181218537579",
-          "balanceRaw": "8477881687n",
+          "balanceRaw": "8478832807n",
           "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
           "name": "USD Coin",
           "symbol": "USDC",
           "decimals": 6,
-          "balance": "8477.881687"
+          "balance": "8478.832807"
         },
         {
           "type": "protocol",
           "tokenId": "9187623906865338513511114400657741709420",
-          "balanceRaw": "15343n",
+          "balanceRaw": "2355n",
           "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
           "name": "Wrapped BTC",
           "symbol": "WBTC",
           "decimals": 8,
-          "balance": "0.00015343"
+          "balance": "0.00002355"
         },
         {
           "type": "protocol",
           "tokenId": "9187623906865338513511114400657741709420",
-          "balanceRaw": "2758825613606600674n",
+          "balanceRaw": "2761163801106600674n",
           "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "2.758825613606600674"
+          "balance": "2.761163801106600674"
         },
         {
           "type": "protocol",
@@ -115,22 +115,22 @@
         {
           "type": "protocol",
           "tokenId": "28583718821358830930923467024268529762546",
-          "balanceRaw": "848338602752256017556n",
+          "balanceRaw": "848338583346292622n",
           "address": "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
           "name": "Synthetix Network Token",
           "symbol": "SNX",
           "decimals": 18,
-          "balance": "848.338602752256017556"
+          "balance": "0.848338583346292622"
         },
         {
           "type": "protocol",
           "tokenId": "28583718821358830930923467024268529762546",
-          "balanceRaw": "3148456341439612n",
+          "balanceRaw": "1316758365803250812n",
           "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.003148456341439612"
+          "balance": "1.316758365803250812"
         },
         {
           "type": "protocol",
@@ -155,22 +155,22 @@
         {
           "type": "protocol",
           "tokenId": "38111625095145107907897956032358039683400",
-          "balanceRaw": "27575126651049224920n",
+          "balanceRaw": "27587206617950852848n",
           "address": "0xd33526068d116ce69f19a9ee46f0bd304f21a51f",
           "name": "Rocket Pool Protocol",
           "symbol": "RPL",
           "decimals": 18,
-          "balance": "27.57512665104922492"
+          "balance": "27.587206617950852848"
         },
         {
           "type": "protocol",
           "tokenId": "38111625095145107907897956032358039683400",
-          "balanceRaw": "160663559791647n",
+          "balanceRaw": "0n",
           "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.000160663559791647"
+          "balance": "0.0"
         },
         {
           "type": "protocol",
