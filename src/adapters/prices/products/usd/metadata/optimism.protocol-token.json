@@ -27,6 +27,16 @@
     "address": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": true
   },
+  "0x4200000000000000000000000000000000000042": {
+    "address": "0x4200000000000000000000000000000000000042",
+    "name": "Optimism",
+    "symbol": "OP",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x4200000000000000000000000000000000000042",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
   "0x76fb31fb4af56892a25e32cfc43de717950c9278": {
     "address": "0x76fb31fb4af56892a25e32cfc43de717950c9278",
     "name": "Aave Token",
@@ -64,6 +74,16 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x29faf5905bff9cfcc7cf56a5ed91e0f091f8664b",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4": {
+    "address": "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4",
+    "name": "BLOCKv",
+    "symbol": "VEE",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4",
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
@@ -327,16 +347,6 @@
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
-  "0x4200000000000000000000000000000000000042": {
-    "address": "0x4200000000000000000000000000000000000042",
-    "name": "Optimism",
-    "symbol": "OP",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x4200000000000000000000000000000000000042",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
   "0xcdb4bb51801a1f399d4402c61bc098a72c382e65": {
     "address": "0xcdb4bb51801a1f399d4402c61bc098a72c382e65",
     "name": "OPX",
@@ -344,16 +354,6 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xcdb4bb51801a1f399d4402c61bc098a72c382e65",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
-  "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b": {
-    "address": "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b",
-    "name": "0xBitcoin Token",
-    "symbol": "0xBTC",
-    "decimals": 8,
-    "uniswapFee": 10000,
-    "baseAddress": "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b",
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
@@ -427,16 +427,6 @@
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
-  "0xd652776de7ad802be5ec7bebfafda37600222b48": {
-    "address": "0xd652776de7ad802be5ec7bebfafda37600222b48",
-    "name": "SoliMax",
-    "symbol": "SLM",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0xd652776de7ad802be5ec7bebfafda37600222b48",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
   "0xc55e93c62874d8100dbd2dfe307edc1036ad5434": {
     "address": "0xc55e93c62874d8100dbd2dfe307edc1036ad5434",
     "name": "Moo BIFI",
@@ -477,16 +467,6 @@
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
-  "0x28b42698caf46b4b012cf38b6c75867e0762186d": {
-    "address": "0x28b42698caf46b4b012cf38b6c75867e0762186d",
-    "name": "Unidex",
-    "symbol": "UNIDX",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x28b42698caf46b4b012cf38b6c75867e0762186d",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
   "0x6fd9d7ad17242c41f7131d257212c54a0e816691": {
     "address": "0x6fd9d7ad17242c41f7131d257212c54a0e816691",
     "name": "Uniswap",
@@ -507,6 +487,16 @@
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
+  "0xaf20f5f19698f1d19351028cd7103b63d30de7d7": {
+    "address": "0xaf20f5f19698f1d19351028cd7103b63d30de7d7",
+    "name": "Wagmi",
+    "symbol": "WAGMI",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xaf20f5f19698f1d19351028cd7103b63d30de7d7",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
   "0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1": {
     "address": "0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1",
     "name": "Worldcoin",
@@ -524,16 +514,6 @@
     "decimals": 8,
     "uniswapFee": 10000,
     "baseAddress": "0x68f180fcce6836688e9084f035309e29bf0a2095",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
-  "0xc26921b5b9ee80773774d36c84328ccb22c3a819": {
-    "address": "0xc26921b5b9ee80773774d36c84328ccb22c3a819",
-    "name": "Wrapped OptiDoge",
-    "symbol": "wOptiDoge",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0xc26921b5b9ee80773774d36c84328ccb22c3a819",
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
@@ -564,16 +544,6 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x3e7ef8f50246f725885102e8238cbba33f276747",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
-  "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4": {
-    "address": "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4",
-    "name": "BLOCKv",
-    "symbol": "VEE",
-    "decimals": 18,
-    "uniswapFee": 3000,
-    "baseAddress": "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4",
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
@@ -647,6 +617,16 @@
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
+  "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b": {
+    "address": "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b",
+    "name": "0xBitcoin Token",
+    "symbol": "0xBTC",
+    "decimals": 8,
+    "uniswapFee": 3000,
+    "baseAddress": "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
   "0xe405de8f52ba7559f9df3c368500b6e6ae6cee49": {
     "address": "0xe405de8f52ba7559f9df3c368500b6e6ae6cee49",
     "name": "Synth sETH",
@@ -714,16 +694,6 @@
     "decimals": 6,
     "uniswapFee": 3000,
     "baseAddress": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
-  "0x323665443cef804a3b5206103304bd4872ea4253": {
-    "address": "0x323665443cef804a3b5206103304bd4872ea4253",
-    "name": "USDV",
-    "symbol": "USDV",
-    "decimals": 6,
-    "uniswapFee": 3000,
-    "baseAddress": "0x323665443cef804a3b5206103304bd4872ea4253",
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
