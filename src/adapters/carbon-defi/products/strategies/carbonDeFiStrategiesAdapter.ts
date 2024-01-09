@@ -32,6 +32,11 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { CarbonController__factory, Voucher__factory } from '../../contracts'
+import {
+  StrategyCreatedEvent,
+  StrategyDeletedEvent,
+  StrategyUpdatedEvent,
+} from '../../contracts/CarbonController'
 
 const contractAddresses: Partial<
   Record<
@@ -48,45 +53,6 @@ const contractAddresses: Partial<
 enum StrategyUpdateReason {
   Edit = '0',
   Trade = '1',
-}
-
-export type OrderStructOutput = [
-  BigNumberish,
-  BigNumberish,
-  BigNumberish,
-  BigNumberish,
-] & {
-  y: BigNumberish
-  z: BigNumberish
-  A: BigNumberish
-  B: BigNumberish
-}
-
-interface StrategyCreatedEventObject {
-  id: BigNumberish
-  owner: string
-  token0: string
-  token1: string
-  order0: OrderStructOutput
-  order1: OrderStructOutput
-}
-
-interface StrategyUpdatedEventObject {
-  id: BigNumberish
-  token0: string
-  token1: string
-  order0: OrderStructOutput
-  order1: OrderStructOutput
-  reason: bigint
-}
-
-interface StrategyDeletedEventObject {
-  id: BigNumberish
-  owner: string
-  token0: string
-  token1: string
-  order0: OrderStructOutput
-  order1: OrderStructOutput
 }
 
 export class CarbonDeFiStrategiesAdapter extends SimplePoolAdapter {
@@ -243,19 +209,26 @@ export class CarbonDeFiStrategiesAdapter extends SimplePoolAdapter {
    * Add logic to get user's withdrawals per position by block range
    */
   async getWithdrawals({
+    userAddress,
     fromBlock,
     toBlock,
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     if (!tokenId) {
       throw new Error('TokenId required to get CarbonDeFi withdrawals')
+    } else if (!contractAddresses[this.chainId]) {
+      return []
     }
-    return this.getCarbonMovements({
-      tokenId,
-      fromBlock,
-      toBlock,
-      eventType: 'withdrawals',
-    })
+
+    return this.getCarbonMovements(
+      {
+        userAddress,
+        fromBlock,
+        toBlock,
+        tokenId,
+      },
+      'withdrawals',
+    )
   }
 
   /**
@@ -263,19 +236,26 @@ export class CarbonDeFiStrategiesAdapter extends SimplePoolAdapter {
    * Add logic to get user's deposits per position by block range
    */
   async getDeposits({
+    userAddress,
     fromBlock,
     toBlock,
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     if (!tokenId) {
-      throw new Error('TokenId required to get CarbonDeFi deposits')
+      throw new Error('TokenId required to get CarbonDeFi withdrawals')
+    } else if (!contractAddresses[this.chainId]) {
+      return []
     }
-    return this.getCarbonMovements({
-      tokenId,
-      fromBlock,
-      toBlock,
-      eventType: 'deposits',
-    })
+
+    return this.getCarbonMovements(
+      {
+        userAddress,
+        fromBlock,
+        toBlock,
+        tokenId,
+      },
+      'deposits',
+    )
   }
 
   /**
@@ -315,178 +295,214 @@ export class CarbonDeFiStrategiesAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  private async getCarbonMovements({
-    tokenId,
-    fromBlock,
-    toBlock,
-    eventType,
-  }: {
-    tokenId: string
-    eventType: 'withdrawals' | 'deposits'
-    fromBlock: number
-    toBlock: number
-  }) {
+  private processFilterStrategyUpdated(
+    strategyCreatedRawLog: StrategyCreatedEvent.Log,
+    strategyUpdatedLog: StrategyUpdatedEvent.Log[],
+    eventType: 'deposits' | 'withdrawals',
+  ): StrategyUpdatedEvent.Log[] {
+    const strategyUpdatedProcessed: StrategyUpdatedEvent.Log[] = []
+
+    for (let i = 0; i < strategyUpdatedLog.length; i++) {
+      const prevItem:
+        | StrategyCreatedEvent.OutputObject
+        | StrategyUpdatedEvent.OutputObject
+        | undefined =
+        i !== 0 ? strategyUpdatedLog[i - 1]?.args : strategyCreatedRawLog.args
+      const currentItem: StrategyUpdatedEvent.OutputObject | undefined =
+        strategyUpdatedLog[i]?.args
+
+      if (!prevItem || !currentItem) continue
+
+      const token0Diff = BigInt(
+        BigNumber(currentItem.order0.y.toString())
+          .minus(prevItem.order0.y.toString())
+          .toString(),
+      )
+      const token1Diff = BigInt(
+        BigNumber(currentItem.order1.y.toString())
+          .minus(prevItem.order1.y.toString())
+          .toString(),
+      )
+
+      const updatedItem = {
+        ...strategyUpdatedLog[i],
+        args: {
+          ...strategyUpdatedLog[i]!.args,
+          order0: { ...strategyUpdatedLog[i]!.args.order0, y: token0Diff },
+          order1: { ...strategyUpdatedLog[i]!.args.order1, y: token1Diff },
+        },
+      } as StrategyUpdatedEvent.Log
+
+      strategyUpdatedProcessed.push(updatedItem)
+    }
+
+    return strategyUpdatedProcessed.filter((item) => {
+      const currentItem: StrategyUpdatedEvent.OutputObject = item.args
+
+      return (
+        (eventType === 'deposits'
+          ? BigNumber(currentItem.order0.y.toString()).gt(0) ||
+            BigNumber(currentItem.order1.y.toString()).gt(0)
+          : BigNumber(currentItem.order0.y.toString()).lt(0) ||
+            BigNumber(currentItem.order1.y.toString()).lt(0)) &&
+        currentItem.reason === BigInt(StrategyUpdateReason.Edit)
+      )
+    })
+  }
+
+  private parseLog(
+    logs:
+      | StrategyCreatedEvent.Log[]
+      | StrategyUpdatedEvent.Log[]
+      | StrategyDeletedEvent.Log[],
+    token0Metadata: Erc20Metadata,
+    token1Metadata: Erc20Metadata,
+  ): MovementsByBlock[] {
+    if (logs.length === 0) return []
+
+    return logs.map((log) => {
+      const { blockNumber, transactionHash } = log
+      const logArgs:
+        | StrategyCreatedEvent.OutputObject
+        | StrategyUpdatedEvent.OutputObject
+        | StrategyDeletedEvent.OutputObject = log.args
+
+      return {
+        transactionHash,
+        blockNumber,
+        protocolToken: {
+          address: contractAddresses[this.chainId]!.voucherContractAddress,
+          name: 'Carbon Automated Trading Strategy',
+          symbol: 'CARBON-STRAT',
+          decimals: 18,
+          tokenId: logArgs.id.toString(),
+        },
+        tokens: [
+          {
+            type: TokenType.Underlying,
+            balanceRaw: BigInt(logArgs.order0.y),
+            ...token0Metadata,
+            transactionHash,
+            blockNumber,
+          },
+          {
+            type: TokenType.Underlying,
+            balanceRaw: BigInt(logArgs.order1.y),
+            ...token1Metadata,
+            transactionHash,
+            blockNumber,
+          },
+        ],
+      }
+    })
+  }
+
+  private async getCarbonMovements(
+    {
+      userAddress,
+      fromBlock,
+      toBlock,
+      tokenId,
+    }: Pick<
+      GetEventsInput,
+      'userAddress' | 'fromBlock' | 'toBlock' | 'tokenId'
+    >,
+    eventType: 'deposits' | 'withdrawals',
+  ): Promise<MovementsByBlock[]> {
     const carbonControllerContract = CarbonController__factory.connect(
       contractAddresses[this.chainId]!.carbonControllerAddress,
       this.provider,
     )
 
     const eventFilters = {
-      StrategyCreated:
-        carbonControllerContract.filters.StrategyCreated(tokenId),
+      StrategyCreated: carbonControllerContract.filters.StrategyCreated(
+        undefined,
+        userAddress,
+      ),
       StrategyUpdated:
         carbonControllerContract.filters.StrategyUpdated(tokenId),
-      StrategyDeleted:
-        carbonControllerContract.filters.StrategyDeleted(tokenId),
+      StrategyDeleted: carbonControllerContract.filters.StrategyDeleted(
+        undefined,
+        userAddress,
+      ),
     }
 
     // Must query all StrategyCreated and StrategyUpdated events up to toBlock
     // to assess whether the StrategyUpdated events are withdrawals or deposits
-    const strategyCreatedEvents = await carbonControllerContract.queryFilter(
-      eventFilters['StrategyCreated'],
-      undefined,
-      toBlock,
-    )
-    const strategyUpdatedEvents = await carbonControllerContract.queryFilter(
+    const strategyCreatedEventRaw = (
+      await carbonControllerContract.queryFilter(
+        eventFilters['StrategyCreated'],
+        undefined,
+        toBlock,
+      )
+    ).find((eventData) => eventData.args.id.toString() === tokenId)
+
+    if (!strategyCreatedEventRaw) return [] // no strategy with tokenId exists until toBlock
+
+    const strategyUpdatedEventsRaw = await carbonControllerContract.queryFilter(
       eventFilters['StrategyUpdated'],
       undefined,
       toBlock,
     )
 
-    const strategyDeletedEvents = await carbonControllerContract.queryFilter(
-      eventFilters['StrategyDeleted'],
-      fromBlock,
-      toBlock,
-    )
+    const strategyDeletedEventRaw = (
+      await carbonControllerContract.queryFilter(
+        eventFilters['StrategyDeleted'],
+        fromBlock,
+        toBlock,
+      )
+    ).find((eventData) => eventData.args.id.toString() === tokenId)
 
-    function processStrategyUpdated(
-      strategyCreatedArr: typeof strategyCreatedEvents,
-      strategyUpdatedArr: typeof strategyUpdatedEvents,
-      eventType: 'withdrawals' | 'deposits',
-    ): typeof strategyUpdatedEvents {
-      const strategyUpdatedArrDiff = strategyUpdatedArr.map((item, index) => {
-        const prevItem:
-          | StrategyCreatedEventObject
-          | StrategyUpdatedEventObject
-          | undefined =
-          index !== 0
-            ? strategyUpdatedArr[index - 1]?.args
-            : strategyCreatedArr[0]?.args
-        const currentItem: StrategyUpdatedEventObject = item.args
+    const strategyCreatedEvent =
+      strategyCreatedEventRaw.blockNumber > fromBlock
+        ? [strategyCreatedEventRaw]
+        : []
 
-        const token0Diff = prevItem
-          ? BigInt(
-              BigNumber(currentItem.order0.y.toString())
-                .minus(prevItem.order0.y.toString())
-                .toString(),
-            )
-          : BigInt(0)
-        const token1Diff = prevItem
-          ? BigInt(
-              BigNumber(currentItem.order1.y.toString())
-                .minus(prevItem.order1.y.toString())
-                .toString(),
-            )
-          : BigInt(0)
-
-        const temp = Object.assign({}, item)
-
-        temp.args.order0.y = token0Diff
-        temp.args.order1.y = token1Diff
-
-        return temp
-      })
-
-      return strategyUpdatedArrDiff.filter((item) => {
-        const currentItem: StrategyUpdatedEventObject = item.args
-
-        return (
-          (eventType === 'withdrawals'
-            ? BigNumber(currentItem.order0.y.toString()).lt(0) ||
-              BigNumber(currentItem.order1.y.toString()).lt(0)
-            : eventType === 'deposits'
-            ? BigNumber(currentItem.order0.y.toString()).gt(0) ||
-              BigNumber(currentItem.order1.y.toString()).gt(0)
-            : false) &&
-          currentItem.reason.toString() == StrategyUpdateReason.Edit
-        )
-      })
-    }
-
-    const strategyUpdatedEventsProcessed = processStrategyUpdated(
-      strategyCreatedEvents,
-      strategyUpdatedEvents,
+    const strategyUpdatedEvents = this.processFilterStrategyUpdated(
+      strategyCreatedEventRaw,
+      strategyUpdatedEventsRaw,
       eventType,
     )
 
-    const parseLogs = async (
-      logs: {
-        blockNumber: number
-        transactionHash: string
-        args:
-          | StrategyCreatedEventObject
-          | StrategyUpdatedEventObject
-          | StrategyDeletedEventObject
-      }[],
-    ) => {
-      if (logs.length === 0) return []
+    const strategyDeletedEvent = strategyDeletedEventRaw
+      ? [strategyDeletedEventRaw]
+      : []
 
-      const [token0Metadata, token1Metadata] = await Promise.all([
-        getTokenMetadata(logs[0]!.args.token0, this.chainId, this.provider),
-        getTokenMetadata(logs[0]!.args.token1, this.chainId, this.provider),
-      ])
+    const [token0Metadata, token1Metadata] = await Promise.all([
+      getTokenMetadata(
+        strategyCreatedEventRaw.args.token0,
+        this.chainId,
+        this.provider,
+      ),
+      getTokenMetadata(
+        strategyCreatedEventRaw.args.token1,
+        this.chainId,
+        this.provider,
+      ),
+    ])
 
-      return logs.map((log) => {
-        const { blockNumber, transactionHash } = log
-        const logArgs:
-          | StrategyCreatedEventObject
-          | StrategyUpdatedEventObject
-          | StrategyDeletedEventObject = log.args
-
-        return {
-          transactionHash,
-          blockNumber,
-          protocolToken: {
-            address: contractAddresses[this.chainId]!.voucherContractAddress,
-            name: 'Carbon Automated Trading Strategy',
-            symbol: 'CARBON-STRAT',
-            decimals: 18,
-            tokenId: tokenId,
-          },
-          tokens: [
-            {
-              type: TokenType.Underlying,
-              balanceRaw: BigInt(logArgs.order0.y),
-              ...token0Metadata,
-              transactionHash,
-              blockNumber,
-            },
-            {
-              type: TokenType.Underlying,
-              balanceRaw: BigInt(logArgs.order1.y),
-              ...token1Metadata,
-              transactionHash,
-              blockNumber,
-            },
-          ],
-        }
-      })
-    }
-
-    const parsedStrategyCreatedEvents = await parseLogs(strategyCreatedEvents)
-    const parsedStrategyUpdatedEvents = await parseLogs(
-      strategyUpdatedEventsProcessed,
+    const parsedStrategyCreatedEvent = this.parseLog(
+      strategyCreatedEvent,
+      token0Metadata,
+      token1Metadata,
     )
-    const parsedStrategyDeletedEvents = await parseLogs(strategyDeletedEvents)
+
+    const parsedStrategyUpdatedEvents = this.parseLog(
+      strategyUpdatedEvents,
+      token0Metadata,
+      token1Metadata,
+    )
+
+    const parsedStrategyDeletedEvent = this.parseLog(
+      strategyDeletedEvent,
+      token0Metadata,
+      token1Metadata,
+    )
 
     const strategyEvents =
-      eventType === 'withdrawals'
-        ? parsedStrategyUpdatedEvents.concat(parsedStrategyDeletedEvents)
-        : eventType === 'deposits'
-        ? parsedStrategyCreatedEvents
-            .filter((item) => item.blockNumber > fromBlock)
-            .concat(parsedStrategyUpdatedEvents)
-        : []
+      eventType === 'deposits'
+        ? parsedStrategyCreatedEvent.concat(parsedStrategyUpdatedEvents)
+        : parsedStrategyUpdatedEvents.concat(parsedStrategyDeletedEvent)
 
     return strategyEvents
   }
