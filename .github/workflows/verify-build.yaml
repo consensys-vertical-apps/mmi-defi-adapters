@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  lint-and-verify-cli:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,19 +27,35 @@ jobs:
       - name: Verify prettier config
         run: npm run prettier
 
-      - name: Verify that the code builds
+      - name: Build
         run: npm run build
 
       - name: Create new adapter with DefaultAdapter template
-        run: npm run new-adapter -- -p test-default-adapter-protocol -pd test-default-adapter-product -c 1 -t DefaultAdapter -y
+        run: |
+          npm run new-adapter -- -p test-default-adapter-protocol -pd test-default-adapter-product -c 1 -t DefaultAdapter -y
+          npm run build
 
       - name: Create new adapter with SimplePoolAdapter template
         run: |
           npm run new-adapter -- -p test-simple-pool-adapter-protocol -pd test-simple-pool-adapter-product -c 1 -t SimplePoolAdapter -y
           npm run build
           npm run build-metadata -- -p test-simple-pool-adapter-protocol
+          npm run build
 
-      - name: Verify that the code builds after new adapters have been created
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
         run: npm run build
 
       - name: Run tests
