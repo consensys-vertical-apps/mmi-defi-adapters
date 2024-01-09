@@ -59,7 +59,7 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm test
+        run: npm run test:cov
         env:
           ETHEREUM_PROVIDER_URL: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           OPTIMISM_PROVIDER_URL: ${{ secrets.OPTIMISM_PROVIDER_URL }}
