@@ -4703,22 +4703,6 @@
       }
     ]
   },
-  "0x0ed7b2cbBB12eBc9c243E54f842436D0F2Fe5e0B": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Crypto Pool: LATI/USDC",
-      "decimals": 18,
-      "symbol": "LATIUSDC-f",
-      "address": "0x0ed7b2cbBB12eBc9c243E54f842436D0F2Fe5e0B"
-    },
-    "underlyingTokens": [
-      {
-        "name": "Curve.fi Factory Crypto Pool: LATI/USDC",
-        "decimals": 18,
-        "symbol": "LATIUSDC-f",
-        "address": "0x8353A77201d51BfECF927B58D3ABa88CF5B574Fb"
-      }
-    ]
-  },
   "0x700B9747fB0F04938Aa3a9cBFDB911c3EDd858B1": {
     "protocolToken": {
       "name": "Curve.fi Factory Crypto Pool: USDE/USDC",
@@ -4732,6 +4716,54 @@
         "decimals": 18,
         "symbol": "USDE-USDC-f",
         "address": "0x65dE5a1f3401326FF7B06F00c112b7caC61DBDC1"
+      }
+    ]
+  },
+  "0xddC259622BA84B51Dba4f26DDD88Ac2b2fE5fC46": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: RaeX",
+      "decimals": 18,
+      "symbol": "RaeX-f",
+      "address": "0xddC259622BA84B51Dba4f26DDD88Ac2b2fE5fC46"
+    },
+    "underlyingTokens": [
+      {
+        "name": "Curve.fi Factory Crypto Pool: RaeX",
+        "decimals": 18,
+        "symbol": "RaeX-f",
+        "address": "0xD4092E32b3517eE0dAA4DA48FDC40cAb6058e187"
+      }
+    ]
+  },
+  "0x390acf1c9F995228e414aF886784131F66f08dEb": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: roar/USDT",
+      "decimals": 18,
+      "symbol": "ROARUSDT-f",
+      "address": "0x390acf1c9F995228e414aF886784131F66f08dEb"
+    },
+    "underlyingTokens": [
+      {
+        "name": "Curve.fi Factory Crypto Pool: roar/USDT",
+        "decimals": 18,
+        "symbol": "ROARUSDT-f",
+        "address": "0x2063658412A8B5B6295dFc160465232e8aCe88e1"
+      }
+    ]
+  },
+  "0x283285Bc1e699d98f619396b5b71FC954447a8AC": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: MG/USDC",
+      "decimals": 18,
+      "symbol": "MGUSDC-f",
+      "address": "0x283285Bc1e699d98f619396b5b71FC954447a8AC"
+    },
+    "underlyingTokens": [
+      {
+        "name": "Curve.fi Factory Crypto Pool: MG/USDC",
+        "decimals": 18,
+        "symbol": "MGUSDC-f",
+        "address": "0x47C0365254a48dDb0Bc7494137c5c4EB222970d2"
       }
     ]
   },
@@ -5372,6 +5404,22 @@
         "decimals": 18,
         "symbol": "QOMOCAW",
         "address": "0x84CeCB5525c6B1C20070E742da870062E84Da178"
+      }
+    ]
+  },
+  "0x25707E5FE03dEEdc9Bc7cDD118f9d952C496FeBe": {
+    "protocolToken": {
+      "name": "BobrCRV/CRV/crvUSD",
+      "decimals": 18,
+      "symbol": "BobrCRV",
+      "address": "0x25707E5FE03dEEdc9Bc7cDD118f9d952C496FeBe"
+    },
+    "underlyingTokens": [
+      {
+        "name": "BobrCRV/CRV/crvUSD",
+        "decimals": 18,
+        "symbol": "BobrCRV",
+        "address": "0x9FeE65D5A627e73212989c8BbEdC5Fa5Cae3821F"
       }
     ]
   }

@@ -2,8 +2,8 @@
   "0xd94112b5b62d53c9402e7a60289c6810def1dc9b": {
     "protocolToken": {
       "address": "0xd94112b5b62d53c9402e7a60289c6810def1dc9b",
-      "name": "Aave Arbitrum Stable Debt DAI",
-      "symbol": "stableDebtArbDAI",
+      "name": "Aave Optimism Stable Debt DAI",
+      "symbol": "stableDebtOptDAI",
       "decimals": 18
     },
     "underlyingToken": {
@@ -16,12 +16,12 @@
   "0x89d976629b7055ff1ca02b927ba3e020f22a44e4": {
     "protocolToken": {
       "address": "0x89d976629b7055ff1ca02b927ba3e020f22a44e4",
-      "name": "Aave Arbitrum Stable Debt LINK",
-      "symbol": "stableDebtArbLINK",
+      "name": "Aave Optimism Stable Debt LINK",
+      "symbol": "stableDebtOptLINK",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xf97f4df75117a78c1a5a0dbb814af92458539fb4",
+      "address": "0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6",
       "name": "ChainLink Token",
       "symbol": "LINK",
       "decimals": 18
@@ -30,13 +30,13 @@
   "0x307ffe186f84a3bc2613d1ea417a5737d69a7007": {
     "protocolToken": {
       "address": "0x307ffe186f84a3bc2613d1ea417a5737d69a7007",
-      "name": "Aave Arbitrum Stable Debt USDC",
-      "symbol": "stableDebtArbUSDC",
+      "name": "Aave Optimism Stable Debt USDC",
+      "symbol": "stableDebtOptUSDC",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
-      "name": "USD Coin (Arb1)",
+      "address": "0x7f5c764cbc14f9669b88837ca1490cca17c31607",
+      "name": "USD Coin",
       "symbol": "USDC",
       "decimals": 6
     }
@@ -44,12 +44,12 @@
   "0x633b207dd676331c413d4c013a6294b0fe47cd0e": {
     "protocolToken": {
       "address": "0x633b207dd676331c413d4c013a6294b0fe47cd0e",
-      "name": "Aave Arbitrum Stable Debt WBTC",
-      "symbol": "stableDebtArbWBTC",
+      "name": "Aave Optimism Stable Debt WBTC",
+      "symbol": "stableDebtOptWBTC",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+      "address": "0x68f180fcce6836688e9084f035309e29bf0a2095",
       "name": "Wrapped BTC",
       "symbol": "WBTC",
       "decimals": 8
@@ -58,12 +58,12 @@
   "0xd8ad37849950903571df17049516a5cd4cbe55f6": {
     "protocolToken": {
       "address": "0xd8ad37849950903571df17049516a5cd4cbe55f6",
-      "name": "Aave Arbitrum Stable Debt WETH",
-      "symbol": "stableDebtArbWETH",
+      "name": "Aave Optimism Stable Debt WETH",
+      "symbol": "stableDebtOptWETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+      "address": "0x4200000000000000000000000000000000000006",
       "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimals": 18
@@ -72,12 +72,12 @@
   "0x70effc565db6eef7b927610155602d31b670e802": {
     "protocolToken": {
       "address": "0x70effc565db6eef7b927610155602d31b670e802",
-      "name": "Aave Arbitrum Stable Debt USDT",
-      "symbol": "stableDebtArbUSDT",
+      "name": "Aave Optimism Stable Debt USDT",
+      "symbol": "stableDebtOptUSDT",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+      "address": "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58",
       "name": "Tether USD",
       "symbol": "USDT",
       "decimals": 6
@@ -86,12 +86,12 @@
   "0xfaef6a702d15428e588d4c0614aefb4348d83d48": {
     "protocolToken": {
       "address": "0xfaef6a702d15428e588d4c0614aefb4348d83d48",
-      "name": "Aave Arbitrum Stable Debt AAVE",
-      "symbol": "stableDebtArbAAVE",
+      "name": "Aave Optimism Stable Debt AAVE",
+      "symbol": "stableDebtOptAAVE",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xba5ddd1f9d7f570dc94a51479a000e3bce967196",
+      "address": "0x76fb31fb4af56892a25e32cfc43de717950c9278",
       "name": "Aave Token",
       "symbol": "AAVE",
       "decimals": 18
@@ -100,26 +100,40 @@
   "0xf15f26710c827dde8acba678682f3ce24f2fb56e": {
     "protocolToken": {
       "address": "0xf15f26710c827dde8acba678682f3ce24f2fb56e",
-      "name": "Aave Arbitrum Stable Debt EURS",
-      "symbol": "stableDebtArbEURS",
-      "decimals": 2
+      "name": "Aave Optimism Stable Debt SUSD",
+      "symbol": "stableDebtOptSUSD",
+      "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd22a58f79e9481d1a88e00c343885a588b34b68b",
-      "name": "STASIS EURS Token",
-      "symbol": "EURS",
-      "decimals": 2
+      "address": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
+      "name": "Synth sUSD",
+      "symbol": "sUSD",
+      "decimals": 18
     }
   },
   "0x08cb71192985e936c7cd166a8b268035e400c3c3": {
     "protocolToken": {
       "address": "0x08cb71192985e936c7cd166a8b268035e400c3c3",
-      "name": "Aave Arbitrum Stable Debt wstETH",
-      "symbol": "stableDebtArbwstETH",
+      "name": "Aave Optimism Stable Debt OP",
+      "symbol": "stableDebtOptOP",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x5979d7b546e38e414f7e9822514be443a4800529",
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
+      "decimals": 18
+    }
+  },
+  "0x78246294a4c6fbf614ed73ccc9f8b875ca8ee841": {
+    "protocolToken": {
+      "address": "0x78246294a4c6fbf614ed73ccc9f8b875ca8ee841",
+      "name": "Aave Optimism Stable Debt wstETH",
+      "symbol": "stableDebtOptwstETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb",
       "name": "Wrapped liquid staked Ether 2.0",
       "symbol": "wstETH",
       "decimals": 18
@@ -128,26 +142,12 @@
   "0x3ef10dff4928279c004308ebadc4db8b7620d6fc": {
     "protocolToken": {
       "address": "0x3ef10dff4928279c004308ebadc4db8b7620d6fc",
-      "name": "Aave Arbitrum Stable Debt rETH",
-      "symbol": "stableDebtArbrETH",
+      "name": "Aave Optimism Stable Debt LUSD",
+      "symbol": "stableDebtOptLUSD",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xec70dcb4a1efa46b8f2d97c310c9c4790ba5ffa8",
-      "name": "Rocket Pool ETH",
-      "symbol": "rETH",
-      "decimals": 18
-    }
-  },
-  "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd": {
-    "protocolToken": {
-      "address": "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd",
-      "name": "Aave Arbitrum Stable Debt LUSD",
-      "symbol": "stableDebtArbLUSD",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x93b346b6bc2548da6a1e7d98e9a421b42541425b",
+      "address": "0xc40f949f8a4e094d1b49a23ea9241d289b7b2819",
       "name": "LUSD Stablecoin",
       "symbol": "LUSD",
       "decimals": 18
@@ -156,43 +156,29 @@
   "0xdc1fad70953bb3918592b6fcc374fe05f5811b6a": {
     "protocolToken": {
       "address": "0xdc1fad70953bb3918592b6fcc374fe05f5811b6a",
-      "name": "Aave Arbitrum Stable Debt USDCn",
-      "symbol": "stableDebtArbUSDCn",
-      "decimals": 6
+      "name": "Aave Optimism Stable Debt rETH",
+      "symbol": "stableDebtOptrETH",
+      "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
+      "address": "0x9bcef72be871e61ed4fbbc7630889bee758eb81d",
+      "name": "Rocket Pool ETH",
+      "symbol": "rETH",
+      "decimals": 18
     }
   },
   "0x8a9fde6925a839f6b1932d16b36ac026f8d3fbdb": {
     "protocolToken": {
       "address": "0x8a9fde6925a839f6b1932d16b36ac026f8d3fbdb",
-      "name": "Aave Arbitrum Stable Debt FRAX",
-      "symbol": "stableDebtArbFRAX",
-      "decimals": 18
+      "name": "Aave Optimism Stable Debt USDCn",
+      "symbol": "stableDebtOptUSDCn",
+      "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
-      "name": "Frax",
-      "symbol": "FRAX",
-      "decimals": 18
-    }
-  },
-  "0x6b4b37618d85db2a7b469983c888040f7f05ea3d": {
-    "protocolToken": {
-      "address": "0x6b4b37618d85db2a7b469983c888040f7f05ea3d",
-      "name": "Aave Arbitrum Stable Debt ARB",
-      "symbol": "stableDebtArbARB",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x912ce59144191c1204e64559fe8253a0e49e6548",
-      "name": "Arbitrum",
-      "symbol": "ARB",
-      "decimals": 18
+      "address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
     }
   }
 }

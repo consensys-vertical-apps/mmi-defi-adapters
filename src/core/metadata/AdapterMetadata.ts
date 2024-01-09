@@ -41,6 +41,9 @@ import CurveRewardEthereumProtocolToken from '../../adapters/curve/products/rewa
 import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
 import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
+import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
+import MendiFinanceSupplyLineaMendi from '../../adapters/mendi-finance/products/supply/metadata/linea.mendi.json'
+import MendiFinanceSupplyLineaProtocolToken from '../../adapters/mendi-finance/products/supply/metadata/linea.protocol-token.json'
 import PricesUsdArbitrumProtocolToken from '../../adapters/prices/products/usd/metadata/arbitrum.protocol-token.json'
 import PricesUsdEthereumProtocolToken from '../../adapters/prices/products/usd/metadata/ethereum.protocol-token.json'
 import PricesUsdOptimismProtocolToken from '../../adapters/prices/products/usd/metadata/optimism.protocol-token.json'
@@ -503,6 +506,33 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     ChimpExchangePoolLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MendiFinance,
+      productId: 'supply',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    MendiFinanceSupplyLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MendiFinance,
+      productId: 'supply',
+      chainId: Chain.Linea,
+      fileKey: 'mendi',
+    }),
+    MendiFinanceSupplyLineaMendi,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MendiFinance,
+      productId: 'borrow',
+      chainId: Chain.Linea,
+      fileKey: 'mendi',
+    }),
+    MendiFinanceBorrowLineaMendi,
   ],
 ])
 

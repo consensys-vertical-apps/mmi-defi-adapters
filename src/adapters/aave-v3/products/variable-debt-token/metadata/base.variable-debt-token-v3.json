@@ -54,5 +54,19 @@
       "symbol": "wstETH",
       "decimals": 18
     }
+  },
+  "0x59dca05b6c26dbd64b5381374aaac5cd05644c28": {
+    "protocolToken": {
+      "address": "0x59dca05b6c26dbd64b5381374aaac5cd05644c28",
+      "name": "Aave Base Variable Debt USDC",
+      "symbol": "variableDebtBasUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
   }
 }

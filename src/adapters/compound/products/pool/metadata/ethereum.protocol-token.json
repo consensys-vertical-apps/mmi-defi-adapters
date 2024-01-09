@@ -181,6 +181,20 @@
       "decimals": 18
     }
   },
+  "0x95b4ef2869ebd94beb4eee400a99824bf5dc325b": {
+    "protocolToken": {
+      "address": "0x95b4ef2869ebd94beb4eee400a99824bf5dc325b",
+      "name": "Compound Maker",
+      "symbol": "cMKR",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+      "name": "Maker",
+      "symbol": "MKR",
+      "decimals": 18
+    }
+  },
   "0x4b0181102a0112a2ef11abee5563bb4a3176c9d7": {
     "protocolToken": {
       "address": "0x4b0181102a0112a2ef11abee5563bb4a3176c9d7",
@@ -262,20 +276,6 @@
       "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
       "name": "Dai Stablecoin v1.0",
       "symbol": "DAI",
-      "decimals": 18
-    }
-  },
-  "0x95b4ef2869ebd94beb4eee400a99824bf5dc325b": {
-    "protocolToken": {
-      "address": "0x95b4ef2869ebd94beb4eee400a99824bf5dc325b",
-      "name": "Compound Maker",
-      "symbol": "cMKR",
-      "decimals": 8
-    },
-    "underlyingToken": {
-      "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
-      "name": "Maker",
-      "symbol": "MKR",
       "decimals": 18
     }
   }

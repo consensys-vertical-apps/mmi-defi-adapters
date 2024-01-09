@@ -6,6 +6,16 @@
     "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": true
   },
+  "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b": {
+    "address": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
+    "name": "BOB",
+    "symbol": "BOB",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
   "0x0000000000000000000000000000000000001010": {
     "address": "0x0000000000000000000000000000000000001010",
     "name": "Matic Token",
@@ -13,6 +23,16 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0x0000000000000000000000000000000000001010",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0x625e7708f30ca75bfd92586e17077590c60eb4cd": {
+    "address": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
+    "name": "Aave Optimism USDC",
+    "symbol": "aOptUSDC",
+    "decimals": 6,
+    "uniswapFee": 500,
+    "baseAddress": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -46,16 +66,6 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
-  "0x33b6d77c607ea499ab5db7e2201c5a516a78a5db": {
-    "address": "0x33b6d77c607ea499ab5db7e2201c5a516a78a5db",
-    "name": "Aimedis",
-    "symbol": "AIMX",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x33b6d77c607ea499ab5db7e2201c5a516a78a5db",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
   "0xbfc70507384047aa74c29cdc8c5cb88d0f7213ac": {
     "address": "0xbfc70507384047aa74c29cdc8c5cb88d0f7213ac",
     "name": "Artificial Liquid Intelligence Token",
@@ -73,16 +83,6 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x101a023270368c0d50bffb62780f4afd4ea79c35",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
-  "0x0e9b89007eee9c958c0eda24ef70723c2c93dd58": {
-    "address": "0x0e9b89007eee9c958c0eda24ef70723c2c93dd58",
-    "name": "Ankr Staked MATIC",
-    "symbol": "ankrMATIC",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x0e9b89007eee9c958c0eda24ef70723c2c93dd58",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -126,23 +126,13 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
-  "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b": {
-    "address": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
-    "name": "BOB",
-    "symbol": "BOB",
-    "decimals": 18,
+  "0xe5b49820e5a1063f6f4ddf851327b5e8b2301048": {
+    "address": "0xe5b49820e5a1063f6f4ddf851327b5e8b2301048",
+    "name": "Bonk",
+    "symbol": "Bonk",
+    "decimals": 5,
     "uniswapFee": 10000,
-    "baseAddress": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
-  "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38": {
-    "address": "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38",
-    "name": "Borderless Money",
-    "symbol": "BOM",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38",
+    "baseAddress": "0xe5b49820e5a1063f6f4ddf851327b5e8b2301048",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -256,13 +246,13 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
-  "0xb35fcbcf1fd489fce02ee146599e893fdcdc60e6": {
-    "address": "0xb35fcbcf1fd489fce02ee146599e893fdcdc60e6",
-    "name": "DeRace Token",
-    "symbol": "DERC",
+  "0xdbb5da27ffcfebea8799a5832d4607714fc6aba8": {
+    "address": "0xdbb5da27ffcfebea8799a5832d4607714fc6aba8",
+    "name": "DEGEN (PoS)",
+    "symbol": "DGEN",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xb35fcbcf1fd489fce02ee146599e893fdcdc60e6",
+    "baseAddress": "0xdbb5da27ffcfebea8799a5832d4607714fc6aba8",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -363,16 +353,6 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xdb725f82818de83e99f1dac22a9b5b51d3d04dd4",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
-  "0xd8ca34fd379d9ca3c6ee3b3905678320f5b45195": {
-    "address": "0xd8ca34fd379d9ca3c6ee3b3905678320f5b45195",
-    "name": "Governance OHM",
-    "symbol": "gOHM",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0xd8ca34fd379d9ca3c6ee3b3905678320f5b45195",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -506,6 +486,26 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
+  "0x3c59798620e5fec0ae6df1a19c6454094572ab92": {
+    "address": "0x3c59798620e5fec0ae6df1a19c6454094572ab92",
+    "name": "Morpheus.Network (PoS)",
+    "symbol": "MNW",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x3c59798620e5fec0ae6df1a19c6454094572ab92",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb": {
+    "address": "0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb",
+    "name": "Nash Exchange Token (PoS)",
+    "symbol": "NEX",
+    "decimals": 8,
+    "uniswapFee": 10000,
+    "baseAddress": "0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
   "0x62a872d9977db171d9e213a5dc2b782e72ca0033": {
     "address": "0x62a872d9977db171d9e213a5dc2b782e72ca0033",
     "name": "NEUY (PoS)",
@@ -586,6 +586,16 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
+  "0x972999c58bbce63a2e398d4ed3bde414b8349eb3": {
+    "address": "0x972999c58bbce63a2e398d4ed3bde414b8349eb3",
+    "name": "Purpose",
+    "symbol": "PRPS",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x972999c58bbce63a2e398d4ed3bde414b8349eb3",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
   "0x61299774020da444af134c82fa83e3810b309991": {
     "address": "0x61299774020da444af134c82fa83e3810b309991",
     "name": "Render Token",
@@ -616,6 +626,16 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
+  "0xd93f7e271cb87c23aaa73edc008a79646d1f9912": {
+    "address": "0xd93f7e271cb87c23aaa73edc008a79646d1f9912",
+    "name": "Wrapped SOL",
+    "symbol": "SOL",
+    "decimals": 9,
+    "uniswapFee": 10000,
+    "baseAddress": "0xd93f7e271cb87c23aaa73edc008a79646d1f9912",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
   "0xe111178a87a3bff0c8d18decba5798827539ae99": {
     "address": "0xe111178a87a3bff0c8d18decba5798827539ae99",
     "name": "STASIS EURS Token (PoS)",
@@ -623,6 +643,16 @@
     "decimals": 2,
     "uniswapFee": 10000,
     "baseAddress": "0xe111178a87a3bff0c8d18decba5798827539ae99",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0x714db550b574b3e927af3d93e26127d15721d4c2": {
+    "address": "0x714db550b574b3e927af3d93e26127d15721d4c2",
+    "name": "GreenMetaverseToken",
+    "symbol": "GMT",
+    "decimals": 8,
+    "uniswapFee": 10000,
+    "baseAddress": "0x714db550b574b3e927af3d93e26127d15721d4c2",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -653,16 +683,6 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xf8f9efc0db77d8881500bb06ff5d6abc3070e695",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
-  "0xd872b7ffca41a67eda85b04a9185c6b270006b58": {
-    "address": "0xd872b7ffca41a67eda85b04a9185c6b270006b58",
-    "name": "Taki",
-    "symbol": "TAKI",
-    "decimals": 9,
-    "uniswapFee": 10000,
-    "baseAddress": "0xd872b7ffca41a67eda85b04a9185c6b270006b58",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -886,6 +906,16 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
+  "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38": {
+    "address": "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38",
+    "name": "Borderless Money",
+    "symbol": "BOM",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
   "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c": {
     "address": "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c",
     "name": "(PoS) Compound",
@@ -1076,16 +1106,6 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
-  "0x972999c58bbce63a2e398d4ed3bde414b8349eb3": {
-    "address": "0x972999c58bbce63a2e398d4ed3bde414b8349eb3",
-    "name": "Purpose",
-    "symbol": "PRPS",
-    "decimals": 18,
-    "uniswapFee": 3000,
-    "baseAddress": "0x972999c58bbce63a2e398d4ed3bde414b8349eb3",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
   "0x70c006878a5a50ed185ac4c87d837633923de296": {
     "address": "0x70c006878a5a50ed185ac4c87d837633923de296",
     "name": "REVV",
@@ -1203,16 +1223,6 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
-  "0x625e7708f30ca75bfd92586e17077590c60eb4cd": {
-    "address": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
-    "name": "Aave Polygon USDC",
-    "symbol": "aPolUSDC",
-    "decimals": 6,
-    "uniswapFee": 500,
-    "baseAddress": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
