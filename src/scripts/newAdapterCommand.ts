@@ -41,7 +41,7 @@ type NewAdapterAnswers = {
 }
 
 const Templates: Record<string, TemplateBuilder> = {
-  ['DefaulAdapter']: defaultAdapterTemplate,
+  ['DefaultAdapter']: defaultAdapterTemplate,
   ['SimplePoolAdapter']: simplePoolAdapterTemplate,
 }
 
@@ -58,6 +58,7 @@ export function newAdapterCommand(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
+    .option('-y, --yes', 'Skip prompts and use default values')
     .showHelpAfterError()
     .action(
       async ({
@@ -65,11 +66,13 @@ export function newAdapterCommand(
         product,
         template,
         chains,
+        yes: skipQuestions,
       }: {
         protocol: string
         product: string
         template: string
         chains: string
+        yes: boolean
       }) => {
         const chainKeys = filterMapSync(
           chains?.split(',') ?? [],
@@ -221,10 +224,26 @@ export function newAdapterCommand(
           },
         ]
 
-        const answers = {
-          ...{ protocolId: inputProtocolId, protocolKey: inputProtocolKey },
-          ...(await prompt<NewAdapterAnswers>(questions)),
-        }
+        const initialAnswers: Partial<NewAdapterAnswers> = skipQuestions
+          ? {
+              protocolKey: inputProtocolKey ?? pascalCase(protocol),
+              protocolId: inputProtocolId ?? kebabCase(protocol),
+              chainKeys: chainKeys.length ? chainKeys : ['Ethereum'],
+              productId: kebabCase(product),
+              templateBuilder: Templates[template],
+              adapterClassName: `${
+                inputProtocolKey ?? pascalCase(protocol)
+              }${pascalCase(product)}Adapter`,
+            }
+          : {
+              protocolKey: inputProtocolKey,
+              protocolId: inputProtocolId,
+            }
+
+        const answers = await prompt<NewAdapterAnswers>(
+          questions,
+          initialAnswers,
+        )
 
         logger.debug(answers, 'Create new adapter')
 
