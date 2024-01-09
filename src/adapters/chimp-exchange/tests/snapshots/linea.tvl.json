@@ -54,6 +54,37 @@
           "totalSupply": "3813.413987853259358679"
         },
         {
+          "address": "0xd2e846d6a2c1696b77678f1936df9b7fd3f25f8d",
+          "name": "50USDC-50USDT",
+          "symbol": "50USDC-50USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "totalSupplyRaw": "1n",
+              "type": "underlying",
+              "totalSupply": "0.000001",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "totalSupplyRaw": "1n",
+              "type": "underlying",
+              "totalSupply": "0.000001",
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "1000000n",
+          "totalSupply": "0.000000000001"
+        },
+        {
           "address": "0xe38df7880ef9408e9933fd0e96abcc3cebf76006",
           "name": "50USDC-50WETH",
           "symbol": "50USDC-50WETH",
