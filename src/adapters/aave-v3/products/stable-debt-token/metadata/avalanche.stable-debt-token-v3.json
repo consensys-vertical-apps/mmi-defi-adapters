@@ -2,40 +2,40 @@
   "0xd94112b5b62d53c9402e7a60289c6810def1dc9b": {
     "protocolToken": {
       "address": "0xd94112b5b62d53c9402e7a60289c6810def1dc9b",
-      "name": "Aave Optimism Stable Debt DAI",
-      "symbol": "stableDebtOptDAI",
+      "name": "Aave Avalanche Stable Debt DAI",
+      "symbol": "stableDebtAvaDAI",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+      "address": "0xd586e7f844cea2f87f50152665bcbc2c279d8d70",
       "name": "Dai Stablecoin",
-      "symbol": "DAI",
+      "symbol": "DAI.e",
       "decimals": 18
     }
   },
   "0x89d976629b7055ff1ca02b927ba3e020f22a44e4": {
     "protocolToken": {
       "address": "0x89d976629b7055ff1ca02b927ba3e020f22a44e4",
-      "name": "Aave Optimism Stable Debt LINK",
-      "symbol": "stableDebtOptLINK",
+      "name": "Aave Avalanche Stable Debt LINK",
+      "symbol": "stableDebtAvaLINK",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6",
-      "name": "ChainLink Token",
-      "symbol": "LINK",
+      "address": "0x5947bb275c521040051d82396192181b413227a3",
+      "name": "Chainlink Token",
+      "symbol": "LINK.e",
       "decimals": 18
     }
   },
   "0x307ffe186f84a3bc2613d1ea417a5737d69a7007": {
     "protocolToken": {
       "address": "0x307ffe186f84a3bc2613d1ea417a5737d69a7007",
-      "name": "Aave Optimism Stable Debt USDC",
-      "symbol": "stableDebtOptUSDC",
+      "name": "Aave Avalanche Stable Debt USDC",
+      "symbol": "stableDebtAvaUSDC",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x7f5c764cbc14f9669b88837ca1490cca17c31607",
+      "address": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
       "name": "USD Coin",
       "symbol": "USDC",
       "decimals": 6
@@ -44,127 +44,99 @@
   "0x633b207dd676331c413d4c013a6294b0fe47cd0e": {
     "protocolToken": {
       "address": "0x633b207dd676331c413d4c013a6294b0fe47cd0e",
-      "name": "Aave Optimism Stable Debt WBTC",
-      "symbol": "stableDebtOptWBTC",
+      "name": "Aave Avalanche Stable Debt WBTC",
+      "symbol": "stableDebtAvaWBTC",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0x68f180fcce6836688e9084f035309e29bf0a2095",
+      "address": "0x50b7545627a5162f82a992c33b87adc75187b218",
       "name": "Wrapped BTC",
-      "symbol": "WBTC",
+      "symbol": "WBTC.e",
       "decimals": 8
     }
   },
   "0xd8ad37849950903571df17049516a5cd4cbe55f6": {
     "protocolToken": {
       "address": "0xd8ad37849950903571df17049516a5cd4cbe55f6",
-      "name": "Aave Optimism Stable Debt WETH",
-      "symbol": "stableDebtOptWETH",
+      "name": "Aave Avalanche Stable Debt WETH",
+      "symbol": "stableDebtAvaWETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x4200000000000000000000000000000000000006",
+      "address": "0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab",
       "name": "Wrapped Ether",
-      "symbol": "WETH",
+      "symbol": "WETH.e",
       "decimals": 18
     }
   },
   "0x70effc565db6eef7b927610155602d31b670e802": {
     "protocolToken": {
       "address": "0x70effc565db6eef7b927610155602d31b670e802",
-      "name": "Aave Optimism Stable Debt USDT",
-      "symbol": "stableDebtOptUSDT",
+      "name": "Aave Avalanche Stable Debt USDT",
+      "symbol": "stableDebtAvaUSDT",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58",
-      "name": "Tether USD",
-      "symbol": "USDT",
+      "address": "0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7",
+      "name": "TetherToken",
+      "symbol": "USDt",
       "decimals": 6
     }
   },
   "0xfaef6a702d15428e588d4c0614aefb4348d83d48": {
     "protocolToken": {
       "address": "0xfaef6a702d15428e588d4c0614aefb4348d83d48",
-      "name": "Aave Optimism Stable Debt AAVE",
-      "symbol": "stableDebtOptAAVE",
+      "name": "Aave Avalanche Stable Debt AAVE",
+      "symbol": "stableDebtAvaAAVE",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x76fb31fb4af56892a25e32cfc43de717950c9278",
+      "address": "0x63a72806098bd3d9520cc43356dd78afe5d386d9",
       "name": "Aave Token",
-      "symbol": "AAVE",
+      "symbol": "AAVE.e",
       "decimals": 18
     }
   },
   "0x08cb71192985e936c7cd166a8b268035e400c3c3": {
     "protocolToken": {
       "address": "0x08cb71192985e936c7cd166a8b268035e400c3c3",
-      "name": "Aave Optimism Stable Debt OP",
-      "symbol": "stableDebtOptOP",
+      "name": "Aave Avalanche Stable Debt SAVAX",
+      "symbol": "stableDebtAvaSAVAX",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x4200000000000000000000000000000000000042",
-      "name": "Optimism",
-      "symbol": "OP",
+      "address": "0x2b2c81e08f1af8835a78bb2a90ae924ace0ea4be",
+      "name": "Staked AVAX",
+      "symbol": "sAVAX",
       "decimals": 18
     }
   },
   "0x78246294a4c6fbf614ed73ccc9f8b875ca8ee841": {
     "protocolToken": {
       "address": "0x78246294a4c6fbf614ed73ccc9f8b875ca8ee841",
-      "name": "Aave Optimism Stable Debt wstETH",
-      "symbol": "stableDebtOptwstETH",
+      "name": "Aave Avalanche Stable Debt FRAX",
+      "symbol": "stableDebtAvaFRAX",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb",
-      "name": "Wrapped liquid staked Ether 2.0",
-      "symbol": "wstETH",
+      "address": "0xd24c2ad096400b6fbcd2ad8b24e7acbc21a1da64",
+      "name": "Frax",
+      "symbol": "FRAX",
       "decimals": 18
     }
   },
-  "0x3ef10dff4928279c004308ebadc4db8b7620d6fc": {
+  "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd": {
     "protocolToken": {
-      "address": "0x3ef10dff4928279c004308ebadc4db8b7620d6fc",
-      "name": "Aave Optimism Stable Debt LUSD",
-      "symbol": "stableDebtOptLUSD",
-      "decimals": 18
+      "address": "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd",
+      "name": "Aave Avalanche Stable Debt BTC.b",
+      "symbol": "stableDebtAvaBTC.b",
+      "decimals": 8
     },
     "underlyingToken": {
-      "address": "0xc40f949f8a4e094d1b49a23ea9241d289b7b2819",
-      "name": "LUSD Stablecoin",
-      "symbol": "LUSD",
-      "decimals": 18
-    }
-  },
-  "0xdc1fad70953bb3918592b6fcc374fe05f5811b6a": {
-    "protocolToken": {
-      "address": "0xdc1fad70953bb3918592b6fcc374fe05f5811b6a",
-      "name": "Aave Optimism Stable Debt rETH",
-      "symbol": "stableDebtOptrETH",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x9bcef72be871e61ed4fbbc7630889bee758eb81d",
-      "name": "Rocket Pool ETH",
-      "symbol": "rETH",
-      "decimals": 18
-    }
-  },
-  "0x8a9fde6925a839f6b1932d16b36ac026f8d3fbdb": {
-    "protocolToken": {
-      "address": "0x8a9fde6925a839f6b1932d16b36ac026f8d3fbdb",
-      "name": "Aave Optimism Stable Debt USDCn",
-      "symbol": "stableDebtOptUSDCn",
-      "decimals": 6
-    },
-    "underlyingToken": {
-      "address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
+      "address": "0x152b9d0fdc40c096757f570a51e494bd4b943e50",
+      "name": "Bitcoin",
+      "symbol": "BTC.b",
+      "decimals": 8
     }
   }
 }

@@ -2,8 +2,8 @@
   "0x8619d80fb0141ba7f184cbf22fd724116d9f7ffc": {
     "protocolToken": {
       "address": "0x8619d80fb0141ba7f184cbf22fd724116d9f7ffc",
-      "name": "Aave Optimism Variable Debt DAI",
-      "symbol": "variableDebtOptDAI",
+      "name": "Aave Arbitrum Variable Debt DAI",
+      "symbol": "variableDebtArbDAI",
       "decimals": 18
     },
     "underlyingToken": {
@@ -16,12 +16,12 @@
   "0x953a573793604af8d41f306feb8274190db4ae0e": {
     "protocolToken": {
       "address": "0x953a573793604af8d41f306feb8274190db4ae0e",
-      "name": "Aave Optimism Variable Debt LINK",
-      "symbol": "variableDebtOptLINK",
+      "name": "Aave Arbitrum Variable Debt LINK",
+      "symbol": "variableDebtArbLINK",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6",
+      "address": "0xf97f4df75117a78c1a5a0dbb814af92458539fb4",
       "name": "ChainLink Token",
       "symbol": "LINK",
       "decimals": 18
@@ -30,13 +30,13 @@
   "0xfccf3cabbe80101232d343252614b6a3ee81c989": {
     "protocolToken": {
       "address": "0xfccf3cabbe80101232d343252614b6a3ee81c989",
-      "name": "Aave Optimism Variable Debt USDC",
-      "symbol": "variableDebtOptUSDC",
+      "name": "Aave Arbitrum Variable Debt USDC",
+      "symbol": "variableDebtArbUSDC",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x7f5c764cbc14f9669b88837ca1490cca17c31607",
-      "name": "USD Coin",
+      "address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+      "name": "USD Coin (Arb1)",
       "symbol": "USDC",
       "decimals": 6
     }
@@ -44,12 +44,12 @@
   "0x92b42c66840c7ad907b4bf74879ff3ef7c529473": {
     "protocolToken": {
       "address": "0x92b42c66840c7ad907b4bf74879ff3ef7c529473",
-      "name": "Aave Optimism Variable Debt WBTC",
-      "symbol": "variableDebtOptWBTC",
+      "name": "Aave Arbitrum Variable Debt WBTC",
+      "symbol": "variableDebtArbWBTC",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0x68f180fcce6836688e9084f035309e29bf0a2095",
+      "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
       "name": "Wrapped BTC",
       "symbol": "WBTC",
       "decimals": 8
@@ -58,12 +58,12 @@
   "0x0c84331e39d6658cd6e6b9ba04736cc4c4734351": {
     "protocolToken": {
       "address": "0x0c84331e39d6658cd6e6b9ba04736cc4c4734351",
-      "name": "Aave Optimism Variable Debt WETH",
-      "symbol": "variableDebtOptWETH",
+      "name": "Aave Arbitrum Variable Debt WETH",
+      "symbol": "variableDebtArbWETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x4200000000000000000000000000000000000006",
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
       "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimals": 18
@@ -72,12 +72,12 @@
   "0xfb00ac187a8eb5afae4eace434f493eb62672df7": {
     "protocolToken": {
       "address": "0xfb00ac187a8eb5afae4eace434f493eb62672df7",
-      "name": "Aave Optimism Variable Debt USDT",
-      "symbol": "variableDebtOptUSDT",
+      "name": "Aave Arbitrum Variable Debt USDT",
+      "symbol": "variableDebtArbUSDT",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58",
+      "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
       "name": "Tether USD",
       "symbol": "USDT",
       "decimals": 6
@@ -86,12 +86,12 @@
   "0xe80761ea617f66f96274ea5e8c37f03960ecc679": {
     "protocolToken": {
       "address": "0xe80761ea617f66f96274ea5e8c37f03960ecc679",
-      "name": "Aave Optimism Variable Debt AAVE",
-      "symbol": "variableDebtOptAAVE",
+      "name": "Aave Arbitrum Variable Debt AAVE",
+      "symbol": "variableDebtArbAAVE",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x76fb31fb4af56892a25e32cfc43de717950c9278",
+      "address": "0xba5ddd1f9d7f570dc94a51479a000e3bce967196",
       "name": "Aave Token",
       "symbol": "AAVE",
       "decimals": 18
@@ -100,40 +100,26 @@
   "0x4a1c3ad6ed28a636ee1751c69071f6be75deb8b8": {
     "protocolToken": {
       "address": "0x4a1c3ad6ed28a636ee1751c69071f6be75deb8b8",
-      "name": "Aave Optimism Variable Debt SUSD",
-      "symbol": "variableDebtOptSUSD",
-      "decimals": 18
+      "name": "Aave Arbitrum Variable Debt EURS",
+      "symbol": "variableDebtArbEURS",
+      "decimals": 2
     },
     "underlyingToken": {
-      "address": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
-      "name": "Synth sUSD",
-      "symbol": "sUSD",
-      "decimals": 18
+      "address": "0xd22a58f79e9481d1a88e00c343885a588b34b68b",
+      "name": "STASIS EURS Token",
+      "symbol": "EURS",
+      "decimals": 2
     }
   },
   "0x77ca01483f379e58174739308945f044e1a764dc": {
     "protocolToken": {
       "address": "0x77ca01483f379e58174739308945f044e1a764dc",
-      "name": "Aave Optimism Variable Debt OP",
-      "symbol": "variableDebtOptOP",
+      "name": "Aave Arbitrum Variable Debt wstETH",
+      "symbol": "variableDebtArbwstETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x4200000000000000000000000000000000000042",
-      "name": "Optimism",
-      "symbol": "OP",
-      "decimals": 18
-    }
-  },
-  "0x34e2ed44ef7466d5f9e0b782b5c08b57475e7907": {
-    "protocolToken": {
-      "address": "0x34e2ed44ef7466d5f9e0b782b5c08b57475e7907",
-      "name": "Aave Optimism Variable Debt wstETH",
-      "symbol": "variableDebtOptwstETH",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb",
+      "address": "0x5979d7b546e38e414f7e9822514be443a4800529",
       "name": "Wrapped liquid staked Ether 2.0",
       "symbol": "wstETH",
       "decimals": 18
@@ -142,12 +128,26 @@
   "0xce186f6cccb0c955445bb9d10c59cae488fea559": {
     "protocolToken": {
       "address": "0xce186f6cccb0c955445bb9d10c59cae488fea559",
-      "name": "Aave Optimism Variable Debt LUSD",
-      "symbol": "variableDebtOptLUSD",
+      "name": "Aave Arbitrum Variable Debt rETH",
+      "symbol": "variableDebtArbrETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xc40f949f8a4e094d1b49a23ea9241d289b7b2819",
+      "address": "0xec70dcb4a1efa46b8f2d97c310c9c4790ba5ffa8",
+      "name": "Rocket Pool ETH",
+      "symbol": "rETH",
+      "decimals": 18
+    }
+  },
+  "0xa8669021776bc142dfca87c21b4a52595bcbb40a": {
+    "protocolToken": {
+      "address": "0xa8669021776bc142dfca87c21b4a52595bcbb40a",
+      "name": "Aave Arbitrum Variable Debt LUSD",
+      "symbol": "variableDebtArbLUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x93b346b6bc2548da6a1e7d98e9a421b42541425b",
       "name": "LUSD Stablecoin",
       "symbol": "LUSD",
       "decimals": 18
@@ -156,29 +156,43 @@
   "0xf611aeb5013fd2c0511c9cd55c7dc5c1140741a6": {
     "protocolToken": {
       "address": "0xf611aeb5013fd2c0511c9cd55c7dc5c1140741a6",
-      "name": "Aave Optimism Variable Debt rETH",
-      "symbol": "variableDebtOptrETH",
-      "decimals": 18
+      "name": "Aave Arbitrum Variable Debt USDCn",
+      "symbol": "variableDebtArbUSDCn",
+      "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x9bcef72be871e61ed4fbbc7630889bee758eb81d",
-      "name": "Rocket Pool ETH",
-      "symbol": "rETH",
-      "decimals": 18
+      "address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
     }
   },
   "0x5d557b07776d12967914379c71a1310e917c7555": {
     "protocolToken": {
       "address": "0x5d557b07776d12967914379c71a1310e917c7555",
-      "name": "Aave Optimism Variable Debt USDCn",
-      "symbol": "variableDebtOptUSDCn",
-      "decimals": 6
+      "name": "Aave Arbitrum Variable Debt FRAX",
+      "symbol": "variableDebtArbFRAX",
+      "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
+      "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    }
+  },
+  "0x44705f578135cc5d703b4c9c122528c73eb87145": {
+    "protocolToken": {
+      "address": "0x44705f578135cc5d703b4c9c122528c73eb87145",
+      "name": "Aave Arbitrum Variable Debt ARB",
+      "symbol": "variableDebtArbARB",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x912ce59144191c1204e64559fe8253a0e49e6548",
+      "name": "Arbitrum",
+      "symbol": "ARB",
+      "decimals": 18
     }
   }
 }

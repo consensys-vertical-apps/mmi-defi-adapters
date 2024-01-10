@@ -137,6 +137,16 @@
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
+  "0x14778860e937f509e651192a90589de711fb88a9": {
+    "address": "0x14778860e937f509e651192a90589de711fb88a9",
+    "name": "CyberConnect",
+    "symbol": "CYBER",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x14778860e937f509e651192a90589de711fb88a9",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
   "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1": {
     "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
     "name": "Dai Stablecoin",
@@ -507,16 +517,6 @@
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
-  "0x3e29d3a9316dab217754d13b28646b76607c5f04": {
-    "address": "0x3e29d3a9316dab217754d13b28646b76607c5f04",
-    "name": "Alchemix ETH",
-    "symbol": "alETH",
-    "decimals": 18,
-    "uniswapFee": 3000,
-    "baseAddress": "0x3e29d3a9316dab217754d13b28646b76607c5f04",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
   "0xfe8b128ba8c78aabc59d4c64cee7ff28e9379921": {
     "address": "0xfe8b128ba8c78aabc59d4c64cee7ff28e9379921",
     "name": "Balancer",
@@ -574,6 +574,16 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xe453d6649643f1f460c371dc3d1da98f7922fe51",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x9fd22a17b4a96da3f83797d122172c450381fb88": {
+    "address": "0x9fd22a17b4a96da3f83797d122172c450381fb88",
+    "name": "JEFE TOKEN",
+    "symbol": "JEFE",
+    "decimals": 9,
+    "uniswapFee": 3000,
+    "baseAddress": "0x9fd22a17b4a96da3f83797d122172c450381fb88",
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
@@ -654,16 +664,6 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x217d47011b23bb961eb6d93ca9945b7501a5bb11",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
-  "0x8f69ee043d52161fd29137aedf63f5e70cd504d5": {
-    "address": "0x8f69ee043d52161fd29137aedf63f5e70cd504d5",
-    "name": "The Doge NFT",
-    "symbol": "DOG",
-    "decimals": 18,
-    "uniswapFee": 3000,
-    "baseAddress": "0x8f69ee043d52161fd29137aedf63f5e70cd504d5",
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },

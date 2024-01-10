@@ -1177,66 +1177,6 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
-  "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5": {
-    "address": "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5",
-    "name": "BetSwirl v2",
-    "symbol": "BETS",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0x58b9cb810a68a7f3e1e4f8cb45d1b9b3c79705e8": {
-    "address": "0x58b9cb810a68a7f3e1e4f8cb45d1b9b3c79705e8",
-    "name": "Connext",
-    "symbol": "NEXT",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x58b9cb810a68a7f3e1e4f8cb45d1b9b3c79705e8",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0x580e933d90091b9ce380740e3a4a39c67eb85b4c": {
-    "address": "0x580e933d90091b9ce380740e3a4a39c67eb85b4c",
-    "name": "GameSwift",
-    "symbol": "GSWIFT",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x580e933d90091b9ce380740e3a4a39c67eb85b4c",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0x83d6c8c06ac276465e4c92e7ac8c23740f435140": {
-    "address": "0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
-    "name": "HMX",
-    "symbol": "HMX",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0xaf20f5f19698f1d19351028cd7103b63d30de7d7": {
-    "address": "0xaf20f5f19698f1d19351028cd7103b63d30de7d7",
-    "name": "Wagmi",
-    "symbol": "WAGMI",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0xaf20f5f19698f1d19351028cd7103b63d30de7d7",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0x71eeba415a523f5c952cc2f06361d5443545ad28": {
-    "address": "0x71eeba415a523f5c952cc2f06361d5443545ad28",
-    "name": "XDAO",
-    "symbol": "XDAO",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x71eeba415a523f5c952cc2f06361d5443545ad28",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
   "0x498c620c7c91c6eba2e3cd5485383f41613b7eb6": {
     "address": "0x498c620c7c91c6eba2e3cd5485383f41613b7eb6",
     "name": "Alongside Crypto Market Index",
@@ -1627,6 +1567,16 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5": {
+    "address": "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5",
+    "name": "BetSwirl v2",
+    "symbol": "BETS",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0xd56734d7f9979dd94fae3d67c7e928234e71cd4c": {
     "address": "0xd56734d7f9979dd94fae3d67c7e928234e71cd4c",
     "name": "TIA",
@@ -1644,6 +1594,16 @@
     "decimals": 6,
     "uniswapFee": 10000,
     "baseAddress": "0xb5b5b428e4de365f809ced8271d202449e5c2f72",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x58b9cb810a68a7f3e1e4f8cb45d1b9b3c79705e8": {
+    "address": "0x58b9cb810a68a7f3e1e4f8cb45d1b9b3c79705e8",
+    "name": "Connext",
+    "symbol": "NEXT",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x58b9cb810a68a7f3e1e4f8cb45d1b9b3c79705e8",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1674,6 +1634,16 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x87aaffdf26c6885f6010219208d5b161ec7609c0",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x580e933d90091b9ce380740e3a4a39c67eb85b4c": {
+    "address": "0x580e933d90091b9ce380740e3a4a39c67eb85b4c",
+    "name": "GameSwift",
+    "symbol": "GSWIFT",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x580e933d90091b9ce380740e3a4a39c67eb85b4c",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1974,6 +1944,16 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x3006e4cc90440c7d011c20f36c841a269ae6601a",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40": {
+    "address": "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40",
+    "name": "Arbitrum tBTC v2",
+    "symbol": "tBTC",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },

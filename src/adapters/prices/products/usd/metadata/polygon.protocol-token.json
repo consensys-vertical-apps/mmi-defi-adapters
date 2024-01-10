@@ -6,16 +6,6 @@
     "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": true
   },
-  "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b": {
-    "address": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
-    "name": "BOB",
-    "symbol": "BOB",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
   "0x0000000000000000000000000000000000001010": {
     "address": "0x0000000000000000000000000000000000001010",
     "name": "Matic Token",
@@ -23,16 +13,6 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0x0000000000000000000000000000000000001010",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
-  "0x625e7708f30ca75bfd92586e17077590c60eb4cd": {
-    "address": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
-    "name": "Aave Optimism USDC",
-    "symbol": "aOptUSDC",
-    "decimals": 6,
-    "uniswapFee": 500,
-    "baseAddress": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -126,11 +106,11 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
-  "0xe5b49820e5a1063f6f4ddf851327b5e8b2301048": {
-    "address": "0xe5b49820e5a1063f6f4ddf851327b5e8b2301048",
-    "name": "Bonk",
-    "symbol": "Bonk",
-    "decimals": 5,
+  "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b": {
+    "address": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
+    "name": "BOB",
+    "symbol": "BOB",
+    "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
@@ -926,16 +906,6 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
-  "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c": {
-    "address": "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c",
-    "name": "(PoS) Compound",
-    "symbol": "COMP",
-    "decimals": 18,
-    "uniswapFee": 3000,
-    "baseAddress": "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
   "0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4": {
     "address": "0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4",
     "name": "(PoS) Decentraland MANA",
@@ -1023,6 +993,16 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x50b728d8d964fd00c2d0aad81718b71311fef68a",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc": {
+    "address": "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc",
+    "name": "Hop",
+    "symbol": "HOP",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -1233,6 +1213,16 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0x625e7708f30ca75bfd92586e17077590c60eb4cd": {
+    "address": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
+    "name": "Aave Polygon USDC",
+    "symbol": "aPolUSDC",
+    "decimals": 6,
+    "uniswapFee": 500,
+    "baseAddress": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
