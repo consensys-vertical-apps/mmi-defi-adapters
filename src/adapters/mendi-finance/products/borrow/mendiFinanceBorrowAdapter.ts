@@ -16,13 +16,12 @@ import {
   GetAprInput,
   GetApyInput,
   GetTotalValueLockedInput,
-  TokenBalance,
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenTvl,
   UnderlyingTokenRate,
+  TokenBalance,
   Underlying,
-  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
@@ -121,38 +120,12 @@ export class MendiFinanceBorrowAdapter
     )
   }
 
-  protected async getUnderlyingTokenBalances({
-    userAddress,
-    protocolTokenBalance,
-    blockNumber,
-  }: {
+  protected getUnderlyingTokenBalances(_input: {
     userAddress: string
     protocolTokenBalance: TokenBalance
-    blockNumber?: number
+    blockNumber?: number | undefined
   }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenBalance.address,
-    )
-
-    const poolContract = Cerc20__factory.connect(
-      protocolTokenBalance.address,
-      this.provider,
-    )
-
-    const underlyingBalance = await poolContract.balanceOfUnderlying.staticCall(
-      userAddress,
-      {
-        blockTag: blockNumber,
-      },
-    )
-
-    const underlyingTokenBalance = {
-      ...underlyingToken,
-      balanceRaw: underlyingBalance,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
+    throw new NotImplementedError()
   }
 
   async getTotalValueLocked(
@@ -170,33 +143,10 @@ export class MendiFinanceBorrowAdapter
   }
 
   protected async getUnderlyingTokenConversionRate(
-    protocolTokenMetadata: Erc20Metadata,
-    blockNumber?: number | undefined,
+    _protocolTokenMetadata: Erc20Metadata,
+    _blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenMetadata.address,
-    )
-
-    const poolContract = Cerc20__factory.connect(
-      protocolTokenMetadata.address,
-      this.provider,
-    )
-
-    const exchangeRateCurrent =
-      await poolContract.exchangeRateCurrent.staticCall({
-        blockTag: blockNumber,
-      })
-
-    // The current exchange rate is scaled by 1 * 10^(18 - 8 + Underlying Token Decimals).
-    const adjustedExchangeRate = exchangeRateCurrent / 10n ** 10n
-
-    return [
-      {
-        ...underlyingToken,
-        type: TokenType.Underlying,
-        underlyingRateRaw: adjustedExchangeRate,
-      },
-    ]
+    throw new NotImplementedError()
   }
 
   async getApy({
