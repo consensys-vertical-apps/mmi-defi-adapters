@@ -27,16 +27,6 @@
     "address": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": true
   },
-  "0x14778860e937f509e651192a90589de711fb88a9": {
-    "address": "0x14778860e937f509e651192a90589de711fb88a9",
-    "name": "CyberConnect",
-    "symbol": "CYBER",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x14778860e937f509e651192a90589de711fb88a9",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
   "0x4200000000000000000000000000000000000042": {
     "address": "0x4200000000000000000000000000000000000042",
     "name": "Optimism",
@@ -44,16 +34,6 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x4200000000000000000000000000000000000042",
-    "quoteAddress": "0x4200000000000000000000000000000000000006",
-    "isBaseTokenEth": false
-  },
-  "0x9fd22a17b4a96da3f83797d122172c450381fb88": {
-    "address": "0x9fd22a17b4a96da3f83797d122172c450381fb88",
-    "name": "JEFE TOKEN",
-    "symbol": "JEFE",
-    "decimals": 9,
-    "uniswapFee": 3000,
-    "baseAddress": "0x9fd22a17b4a96da3f83797d122172c450381fb88",
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
@@ -94,6 +74,16 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x29faf5905bff9cfcc7cf56a5ed91e0f091f8664b",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4": {
+    "address": "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4",
+    "name": "BLOCKv",
+    "symbol": "VEE",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4",
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },

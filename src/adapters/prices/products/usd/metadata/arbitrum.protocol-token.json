@@ -1557,26 +1557,6 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
-  "0x6b021b3f68491974be6d4009fee61a4e3c708fd6": {
-    "address": "0x6b021b3f68491974be6d4009fee61a4e3c708fd6",
-    "name": "Fuse Token",
-    "symbol": "FUSE",
-    "decimals": 18,
-    "uniswapFee": 3000,
-    "baseAddress": "0x6b021b3f68491974be6d4009fee61a4e3c708fd6",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40": {
-    "address": "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40",
-    "name": "Optimism tBTC v2",
-    "symbol": "tBTC",
-    "decimals": 18,
-    "uniswapFee": 3000,
-    "baseAddress": "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
   "0xe05a08226c49b636acf99c40da8dc6af83ce5bb3": {
     "address": "0xe05a08226c49b636acf99c40da8dc6af83ce5bb3",
     "name": "Ankr Staked ETH",
@@ -1634,16 +1614,6 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0xa970af1a584579b618be4d69ad6f73459d112f95",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0x323665443cef804a3b5206103304bd4872ea4253": {
-    "address": "0x323665443cef804a3b5206103304bd4872ea4253",
-    "name": "USDV",
-    "symbol": "USDV",
-    "decimals": 6,
-    "uniswapFee": 500,
-    "baseAddress": "0x323665443cef804a3b5206103304bd4872ea4253",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1714,6 +1684,16 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xa2f9ecf83a48b86265ff5fd36cdbaaa1f349916c",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x83d6c8c06ac276465e4c92e7ac8c23740f435140": {
+    "address": "0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
+    "name": "HMX",
+    "symbol": "HMX",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1827,6 +1807,26 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0xaf20f5f19698f1d19351028cd7103b63d30de7d7": {
+    "address": "0xaf20f5f19698f1d19351028cd7103b63d30de7d7",
+    "name": "Wagmi",
+    "symbol": "WAGMI",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xaf20f5f19698f1d19351028cd7103b63d30de7d7",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x71eeba415a523f5c952cc2f06361d5443545ad28": {
+    "address": "0x71eeba415a523f5c952cc2f06361d5443545ad28",
+    "name": "XDAO",
+    "symbol": "XDAO",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x71eeba415a523f5c952cc2f06361d5443545ad28",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0x077bc655c8d81b7de71c79318d0eb8f987e12820": {
     "address": "0x077bc655c8d81b7de71c79318d0eb8f987e12820",
     "name": "Yuri",
@@ -1917,6 +1917,16 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0x6b021b3f68491974be6d4009fee61a4e3c708fd6": {
+    "address": "0x6b021b3f68491974be6d4009fee61a4e3c708fd6",
+    "name": "Fuse Token",
+    "symbol": "FUSE",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x6b021b3f68491974be6d4009fee61a4e3c708fd6",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0xadf5dd3e51bf28ab4f07e684ecf5d00691818790": {
     "address": "0xadf5dd3e51bf28ab4f07e684ecf5d00691818790",
     "name": "ICHI",
@@ -1974,6 +1984,16 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0xd4939d69b31fbe981ed6904a3af43ee1dc777aab",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x323665443cef804a3b5206103304bd4872ea4253": {
+    "address": "0x323665443cef804a3b5206103304bd4872ea4253",
+    "name": "USDV",
+    "symbol": "USDV",
+    "decimals": 6,
+    "uniswapFee": 500,
+    "baseAddress": "0x323665443cef804a3b5206103304bd4872ea4253",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },

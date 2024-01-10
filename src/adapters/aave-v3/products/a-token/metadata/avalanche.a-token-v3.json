@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97": {
-    "protocolToken": {
-      "address": "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97",
-      "name": "Aave Optimism SUSD",
-      "symbol": "aOptSUSD",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
-      "name": "Synth sUSD",
-      "symbol": "sUSD",
-      "decimals": 18
-    }
-  },
   "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff": {
     "protocolToken": {
       "address": "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff",

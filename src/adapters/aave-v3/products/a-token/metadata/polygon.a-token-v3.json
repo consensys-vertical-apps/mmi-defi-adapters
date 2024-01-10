@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97": {
-    "protocolToken": {
-      "address": "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97",
-      "name": "Aave Optimism SUSD",
-      "symbol": "aOptSUSD",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
-      "name": "Synth sUSD",
-      "symbol": "sUSD",
-      "decimals": 18
-    }
-  },
   "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff": {
     "protocolToken": {
       "address": "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff",
@@ -175,7 +161,63 @@
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+      "address": "0xe111178a87a3bff0c8d18decba5798827539ae99",
+      "name": "STASIS EURS Token (PoS)",
+      "symbol": "EURS",
+      "decimals": 2
+    }
+  },
+  "0x8437d7c167dfb82ed4cb79cd44b7a32a1dd95c77": {
+    "protocolToken": {
+      "address": "0x8437d7c167dfb82ed4cb79cd44b7a32a1dd95c77",
+      "name": "Aave Polygon AGEUR",
+      "symbol": "aPolAGEUR",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xe0b52e49357fd4daf2c15e02058dce6bc0057db4",
+      "name": "agEUR",
+      "symbol": "agEUR",
+      "decimals": 18
+    }
+  },
+  "0xea1132120ddcdda2f119e99fa7a27a0d036f7ac9": {
+    "protocolToken": {
+      "address": "0xea1132120ddcdda2f119e99fa7a27a0d036f7ac9",
+      "name": "Aave Polygon STMATIC",
+      "symbol": "aPolSTMATIC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x3a58a54c066fdc0f2d55fc9c89f0415c92ebf3c4",
+      "name": "Staked MATIC (PoS)",
+      "symbol": "stMATIC",
+      "decimals": 18
+    }
+  },
+  "0xf59036caebea7dc4b86638dfa2e3c97da9fccd40": {
+    "protocolToken": {
+      "address": "0xf59036caebea7dc4b86638dfa2e3c97da9fccd40",
+      "name": "Aave Polygon wstETH",
+      "symbol": "aPolwstETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
+      "name": "Wrapped liquid staked Ether 2.0 (PoS)",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xa4d94019934d8333ef880abffbf2fdd611c762bd": {
+    "protocolToken": {
+      "address": "0xa4d94019934d8333ef880abffbf2fdd611c762bd",
+      "name": "Aave Polygon USDCn",
+      "symbol": "aPolUSDCn",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
       "name": "USD Coin",
       "symbol": "USDC",
       "decimals": 6

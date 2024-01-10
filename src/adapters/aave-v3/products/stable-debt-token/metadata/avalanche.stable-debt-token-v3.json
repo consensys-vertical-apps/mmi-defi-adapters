@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0xf15f26710c827dde8acba678682f3ce24f2fb56e": {
-    "protocolToken": {
-      "address": "0xf15f26710c827dde8acba678682f3ce24f2fb56e",
-      "name": "Aave Optimism Stable Debt SUSD",
-      "symbol": "stableDebtOptSUSD",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
-      "name": "Synth sUSD",
-      "symbol": "sUSD",
-      "decimals": 18
-    }
-  },
   "0x08cb71192985e936c7cd166a8b268035e400c3c3": {
     "protocolToken": {
       "address": "0x08cb71192985e936c7cd166a8b268035e400c3c3",

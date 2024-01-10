@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0x4a1c3ad6ed28a636ee1751c69071f6be75deb8b8": {
-    "protocolToken": {
-      "address": "0x4a1c3ad6ed28a636ee1751c69071f6be75deb8b8",
-      "name": "Aave Optimism Variable Debt SUSD",
-      "symbol": "variableDebtOptSUSD",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
-      "name": "Synth sUSD",
-      "symbol": "sUSD",
-      "decimals": 18
-    }
-  },
   "0x77ca01483f379e58174739308945f044e1a764dc": {
     "protocolToken": {
       "address": "0x77ca01483f379e58174739308945f044e1a764dc",
@@ -175,7 +161,63 @@
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+      "address": "0xe111178a87a3bff0c8d18decba5798827539ae99",
+      "name": "STASIS EURS Token (PoS)",
+      "symbol": "EURS",
+      "decimals": 2
+    }
+  },
+  "0x3ca5fa07689f266e907439afd1fbb59c44fe12f6": {
+    "protocolToken": {
+      "address": "0x3ca5fa07689f266e907439afd1fbb59c44fe12f6",
+      "name": "Aave Polygon Variable Debt AGEUR",
+      "symbol": "variableDebtPolAGEUR",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xe0b52e49357fd4daf2c15e02058dce6bc0057db4",
+      "name": "agEUR",
+      "symbol": "agEUR",
+      "decimals": 18
+    }
+  },
+  "0x6b030ff3fb9956b1b69f475b77ae0d3cf2cc5afa": {
+    "protocolToken": {
+      "address": "0x6b030ff3fb9956b1b69f475b77ae0d3cf2cc5afa",
+      "name": "Aave Polygon Variable Debt STMATIC",
+      "symbol": "variableDebtPolSTMATIC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x3a58a54c066fdc0f2d55fc9c89f0415c92ebf3c4",
+      "name": "Staked MATIC (PoS)",
+      "symbol": "stMATIC",
+      "decimals": 18
+    }
+  },
+  "0x77fa66882a8854d883101fb8501bd3cad347fc32": {
+    "protocolToken": {
+      "address": "0x77fa66882a8854d883101fb8501bd3cad347fc32",
+      "name": "Aave Polygon Variable Debt wstETH",
+      "symbol": "variableDebtPolwstETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
+      "name": "Wrapped liquid staked Ether 2.0 (PoS)",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xe701126012ec0290822eea17b794454d1af8b030": {
+    "protocolToken": {
+      "address": "0xe701126012ec0290822eea17b794454d1af8b030",
+      "name": "Aave Polygon Variable Debt USDCn",
+      "symbol": "variableDebtPolUSDCn",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
       "name": "USD Coin",
       "symbol": "USDC",
       "decimals": 6
