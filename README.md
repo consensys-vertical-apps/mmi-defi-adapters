@@ -121,36 +121,32 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
    A few hours for those with knowledge of Typescript, Ethers, and the DeFi protocol.
 
-7. What is the getProfits method?
-
-   It returns profit on individual open positions by considering weekly changes and transactions in and out of the position.
-
-8. How do you calculate profits?
+7. How do you calculate profits?
 
    - We capture users' positions from 7 days ago using the `get positions` adapter method with a `blocknumber override`.
    - We then obtain the current positions.
    - To account for deposits and withdrawals in this period, we examine `mint` and `burn` events of LP tokens and convert these back to underlying tokens.
    - We found this method works for the majority of protocols. However, adapt as necessary for your protocol. For example, if there are better event logs available for your protocol, use them.
 
-9. Some adapter methods don't make sense for my DeFi-protocol?
+8. Some adapter methods don't make sense for my DeFi-protocol?
 
    Throw an error: new Error('Does not apply').
 
-10. Can I use an API for results?
+9. Can I use an API for results?
 
     We recommend getting data directly from the blockchain over centralized APIs.
 
-11. My protocol only has a few pools, can I hardcode the buildMetadata() result?
+10. My protocol only has a few pools, can I hardcode the buildMetadata() result?
 
     Yes. Feel free to hardcode this result if it doesn't make sense to fetch pool data on chain.
 
-12. My protocol has more than one product, should I create separate adapters?
+11. My protocol has more than one product, should I create separate adapters?
 
     Yes. We find this reduces complexity.
 
-13. Im getting `>> TypeError: Cannot read properties of undefined (reading 'F_OK')` error when running `npm run new-adapter`
+12. Im getting `>> TypeError: Cannot read properties of undefined (reading 'F_OK')` error when running `npm run new-adapter`
 
-Make sure you are using Node 20. Run `nvm use`
+    Make sure you are using Node 20. Run `nvm use`
 
 13. How can I share feedback or proposals?
 
