@@ -1,3 +1,4 @@
+import { method } from 'lodash'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
@@ -126,7 +127,8 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
-      isGetPositionsRequest: true,
+
+      method: 'getPositions',
     })
   }
 
@@ -187,6 +189,7 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+      method: 'getProfits',
     })
   }
 
@@ -256,6 +259,8 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+
+      method: 'getPrices',
     })
   }
 
@@ -368,6 +373,7 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+      method: 'getTotalValueLocked',
     })
   }
 
@@ -399,6 +405,7 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+      method: 'getApy',
     })
   }
 
@@ -430,6 +437,7 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+      method: 'getApr',
     })
   }
 
@@ -437,7 +445,7 @@ export class DefiProvider {
     runner,
     filterProtocolIds,
     filterChainIds,
-    isGetPositionsRequest = false,
+    method,
   }: {
     runner: (
       adapter: IProtocolAdapter,
@@ -445,14 +453,22 @@ export class DefiProvider {
     ) => ReturnType
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
-    isGetPositionsRequest?: boolean
+    method:
+      | 'getPositions'
+      | 'getPrices'
+      | 'getProfits'
+      | 'getWithdrawals'
+      | 'getDeposits'
+      | 'getTotalValueLocked'
+      | 'getApy'
+      | 'getApr'
   }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(
         ([protocolIdKey, _]) =>
           (!filterProtocolIds ||
             filterProtocolIds.includes(protocolIdKey as Protocol)) &&
-          protocolIdKey !== Protocol.Prices,
+          (method === 'getPrices' || protocolIdKey !== Protocol.Prices),
       )
       .flatMap(([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol
@@ -468,11 +484,6 @@ export class DefiProvider {
             const chainId = +chainIdKey as Chain
             const provider = this.chainProvider.providers[chainId]!
 
-            console.log({
-              oioi: isGetPositionsRequest,
-              oioi2: this.parsedConfig.values.enableUsdPricesOnPositions,
-            })
-
             let chainProtocolAdapters =
               this.adaptersController.fetchChainProtocolAdapters(
                 chainId,
@@ -480,7 +491,7 @@ export class DefiProvider {
               )
 
             if (
-              isGetPositionsRequest &&
+              method == 'getPositions' &&
               !this.parsedConfig.values.enableUsdPricesOnPositions
             ) {
               chainProtocolAdapters =

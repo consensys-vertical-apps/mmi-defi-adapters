@@ -1,4 +1,37 @@
 {
   "blockNumber": 18814107,
-  "snapshot": []
+  "snapshot": [
+    {
+      "protocolId": "prices",
+      "name": "Prices",
+      "description": "Prices defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "fiat-prices",
+      "chainId": 1,
+      "productId": "usd",
+      "success": true,
+      "tokens": [
+        {
+          "name": "USD Coin",
+          "decimals": 6,
+          "symbol": "USDC",
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "type": "fiat",
+              "underlyingRateRaw": "992065714215426632n",
+              "decimals": 18,
+              "name": "USD",
+              "symbol": "USD",
+              "address": "TheUnitedStatesMint",
+              "underlyingRate": "0.992065714215426632"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
