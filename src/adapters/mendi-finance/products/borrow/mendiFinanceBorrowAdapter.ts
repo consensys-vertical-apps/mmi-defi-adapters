@@ -41,6 +41,31 @@ type MendiFinanceBorrowAdapterMetadata = Record<
   }
 >
 
+const contractAddresses: Partial<
+  Record<
+    Chain,
+    {
+      comptroller: string
+      speed: string
+      oracle: string
+      velocore: string
+      converter: string
+      mendi: string
+      usdcE: string
+    }
+  >
+> = {
+  [Chain.Linea]: {
+    comptroller: '0x1b4d3b0421dDc1eB216D230Bc01527422Fb93103',
+    speed: '0x3b9B9364Bf69761d308145371c38D9b558013d40',
+    oracle: '0xCcBea2d7e074744ab46e28a043F85038bCcfFec2',
+    velocore: '0xaA18cDb16a4DD88a59f4c2f45b5c91d009549e06',
+    converter: '0xAADAa473C1bDF7317ec07c915680Af29DeBfdCb5',
+    mendi: '0x43E8809ea748EFf3204ee01F08872F063e44065f',
+    usdcE: '0x176211869ca2b568f2a7d4ee941e073a821ee1ff',
+  },
+}
+
 export class MendiFinanceBorrowAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
@@ -62,12 +87,8 @@ export class MendiFinanceBorrowAdapter
 
   @CacheToFile({ fileKey: 'mendi' })
   async buildMetadata() {
-    const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Linea]: '0x1b4d3b0421dDc1eB216D230Bc01527422Fb93103',
-    }
-
     const comptrollerContract = Comptroller__factory.connect(
-      contractAddresses[this.chainId]!,
+      contractAddresses[this.chainId]!.comptroller,
       this.provider,
     )
 
@@ -231,51 +252,49 @@ export class MendiFinanceBorrowAdapter
     ).underlyingToken
 
     const speedContract = Speed__factory.connect(
-      '0x3b9B9364Bf69761d308145371c38D9b558013d40',
+      contractAddresses[this.chainId]!.speed,
       this.provider,
     )
 
     const oracleContract = Oracle__factory.connect(
-      '0xCcBea2d7e074744ab46e28a043F85038bCcfFec2',
+      contractAddresses[this.chainId]!.oracle,
       this.provider,
     )
 
     const velocoreContract = Velocore__factory.connect(
-      '0xaA18cDb16a4DD88a59f4c2f45b5c91d009549e06',
+      contractAddresses[this.chainId]!.velocore,
       this.provider,
     )
 
     const converterContract = Converter__factory.connect(
-      '0xAADAa473C1bDF7317ec07c915680Af29DeBfdCb5',
+      contractAddresses[this.chainId]!.converter,
       this.provider,
     )
 
-    const mendiAddress = '0x43E8809ea748EFf3204ee01F08872F063e44065f'
+    const mendiAddress = contractAddresses[this.chainId]!.mendi
+
     const convertValue = await converterContract.latestAnswer.staticCall({
       blockTag: blockNumber,
     })
-    const convertDiv = Number(convertValue) / 1e8
 
     const baseTokenBytes32 =
       '0x' +
-      '0x176211869ca2b568f2a7d4ee941e073a821ee1ff'
-        .toLowerCase()
+      contractAddresses[this.chainId]!.usdcE.toLowerCase()
         .replace(/^0x/, '')
         .padStart(64, '0')
 
     const quoteTokenBytes32 =
       '0x' + mendiAddress.toLowerCase().replace(/^0x/, '').padStart(64, '0')
 
-    const amount = '1000000000000000000'
     const mPrice = await velocoreContract.spotPrice.staticCall(
       quoteTokenBytes32,
       baseTokenBytes32,
-      amount.toString(),
+      10n ** 18n,
       { blockTag: blockNumber },
     )
     const mPriceFixed = (
-      (Number(mPrice) / Number(1e6)) *
-      Number(convertDiv)
+      (Number(mPrice) / 1e6) *
+      (Number(convertValue) / 1e8)
     ).toFixed(3)
 
     const supplySpeed = await speedContract.rewardMarketState.staticCall(
@@ -301,8 +320,8 @@ export class MendiFinanceBorrowAdapter
     const apr =
       (Number(supplySpeed.borrowSpeed) *
         Number(mPriceFixed) *
-        Number(SECONDS_PER_YEAR)) /
-      Number(marketTotalBorrows)
+        SECONDS_PER_YEAR) /
+      marketTotalBorrows
 
     return apr
   }
