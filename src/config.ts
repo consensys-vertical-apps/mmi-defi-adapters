@@ -65,7 +65,7 @@ const ConfigSchema = z
     enableUsdPricesOnPositions: z
       .boolean()
       .default(
-        process.env.DEFI_ADAPTERS_ENABLE_USD_PRICES_FOR_POSITIONS == 'true',
+        process.env.DEFI_ADAPTERS_ENABLE_USD_PRICES_FOR_POSITIONS !== 'false',
       ),
   })
   .default({})
