@@ -1,14 +1,12 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { aprToApy } from '../../../../core/utils/aprToApy'
 import { SECONDS_PER_YEAR } from '../../../../core/constants/SECONDS_PER_YEAR'
-//import { RAY } from '../../../../core/constants/RAY'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
+import { aprToApy } from '../../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
@@ -16,11 +14,9 @@ import {
   PositionType,
   GetAprInput,
   GetApyInput,
-  GetTotalValueLockedInput,
   TokenBalance,
   ProtocolTokenApr,
   ProtocolTokenApy,
-  //ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
   TokenType,
@@ -49,10 +45,6 @@ export class MendiFinanceSupplyAdapter
 {
   productId = 'supply'
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -66,12 +58,6 @@ export class MendiFinanceSupplyAdapter
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
   @CacheToFile({ fileKey: 'mendi' })
   async buildMetadata() {
     const contractAddresses: Partial<Record<Chain, string>> = {
@@ -126,10 +112,6 @@ export class MendiFinanceSupplyAdapter
     return metadataObject
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
@@ -170,21 +152,6 @@ export class MendiFinanceSupplyAdapter
     return [underlyingTokenBalance]
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
-  /*async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }*/
-
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
@@ -192,17 +159,6 @@ export class MendiFinanceSupplyAdapter
 
     return protocolToken
   }
-
-  /**
-   * Update me.
-   * Add logic that finds the underlying token rates for 1 protocol token
-   */
-  /*protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
-  }*/
 
   protected async getUnderlyingTokenConversionRate(
     protocolTokenMetadata: Erc20Metadata,
@@ -234,14 +190,6 @@ export class MendiFinanceSupplyAdapter
     ]
   }
 
-  /*async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }*/
-
   async getApy({
     protocolTokenAddress,
     blockNumber,
@@ -250,8 +198,6 @@ export class MendiFinanceSupplyAdapter
       protocolTokenAddress,
       blockNumber,
     })
-
-    //const apy = aprToApy(apr, SECONDS_PER_YEAR)
 
     return {
       ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
@@ -274,10 +220,6 @@ export class MendiFinanceSupplyAdapter
     }
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
@@ -288,10 +230,6 @@ export class MendiFinanceSupplyAdapter
     return [underlyingToken]
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
@@ -311,11 +249,10 @@ export class MendiFinanceSupplyAdapter
       protocolTokenAddress,
       this.provider,
     )
-    const underlyingTokenMetadata = (
-      await this.fetchPoolMetadata(protocolTokenAddress)
-    ).underlyingToken
 
-    const srpb = await poolContract.supplyRatePerBlock.staticCall()
+    const srpb = await poolContract.supplyRatePerBlock.staticCall({
+      blockTag: blockNumber,
+    })
     const apr = (Number(srpb) * Number(SECONDS_PER_YEAR)) / Number(1e18)
     const apy = aprToApy(apr, SECONDS_PER_YEAR)
 
@@ -355,7 +292,9 @@ export class MendiFinanceSupplyAdapter
     )
 
     const mendiAddress = '0x43E8809ea748EFf3204ee01F08872F063e44065f'
-    const convertValue = await converterContract.latestAnswer.staticCall()
+    const convertValue = await converterContract.latestAnswer.staticCall({
+      blockTag: blockNumber,
+    })
     const convertDiv = Number(convertValue) / 1e8
     const baseTokenBytes32 =
       '0x' +
@@ -371,6 +310,7 @@ export class MendiFinanceSupplyAdapter
       quoteTokenBytes32,
       baseTokenBytes32,
       amount.toString(),
+      { blockTag: blockNumber },
     )
     const mPriceFixed = (
       (Number(mPrice) / Number(1e6)) *
@@ -380,15 +320,20 @@ export class MendiFinanceSupplyAdapter
     const supplySpeed = await speedContract.rewardMarketState.staticCall(
       mendiAddress,
       protocolTokenAddress,
+      { blockTag: blockNumber },
     )
 
-    const tokenSupply = await poolContract.totalSupply.staticCall()
+    const tokenSupply = await poolContract.totalSupply.staticCall({
+      blockTag: blockNumber,
+    })
 
-    const exchangeRateStored =
-      await poolContract.exchangeRateStored.staticCall()
+    const exchangeRateStored = await poolContract.exchangeRateStored.staticCall(
+      { blockTag: blockNumber },
+    )
 
     const underlingPrice = await oracleContract.getPrice.staticCall(
       protocolTokenAddress,
+      { blockTag: blockNumber },
     )
 
     const tokenDecimal = underlyingTokenMetadata.decimals

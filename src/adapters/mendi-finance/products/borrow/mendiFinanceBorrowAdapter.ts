@@ -1,14 +1,13 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { aprToApy } from '../../../../core/utils/aprToApy'
 import { SECONDS_PER_YEAR } from '../../../../core/constants/SECONDS_PER_YEAR'
-//import { RAY } from '../../../../core/constants/RAY'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { aprToApy } from '../../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
@@ -37,12 +36,10 @@ import {
 
 type MendiFinanceBorrowAdapterMetadata = Record<
   string,
-
   {
     protocolToken: Erc20Metadata
     underlyingToken: Erc20Metadata
   }
-
 >
 
 export class MendiFinanceBorrowAdapter
@@ -51,10 +48,6 @@ export class MendiFinanceBorrowAdapter
 {
   productId = 'borrow'
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -68,12 +61,6 @@ export class MendiFinanceBorrowAdapter
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
   @CacheToFile({ fileKey: 'mendi' })
   async buildMetadata() {
     const contractAddresses: Partial<Record<Chain, string>> = {
@@ -128,10 +115,6 @@ export class MendiFinanceBorrowAdapter
     return metadataObject
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
@@ -172,21 +155,12 @@ export class MendiFinanceBorrowAdapter
     return [underlyingTokenBalance]
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
@@ -194,17 +168,6 @@ export class MendiFinanceBorrowAdapter
 
     return protocolToken
   }
-
-  /**
-   * Update me.
-   * Add logic that finds the underlying token rates for 1 protocol token
-   */
-  /*protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
-  }*/
 
   protected async getUnderlyingTokenConversionRate(
     protocolTokenMetadata: Erc20Metadata,
@@ -236,14 +199,6 @@ export class MendiFinanceBorrowAdapter
     ]
   }
 
-  /*async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }*/
-
   async getApy({
     protocolTokenAddress,
     blockNumber,
@@ -274,10 +229,6 @@ export class MendiFinanceBorrowAdapter
     }
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
@@ -288,10 +239,6 @@ export class MendiFinanceBorrowAdapter
     return [underlyingToken]
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
@@ -311,11 +258,10 @@ export class MendiFinanceBorrowAdapter
       protocolTokenAddress,
       this.provider,
     )
-    const underlyingTokenMetadata = (
-      await this.fetchPoolMetadata(protocolTokenAddress)
-    ).underlyingToken
 
-    const srpb = await poolContract.borrowRatePerBlock.staticCall()
+    const srpb = await poolContract.borrowRatePerBlock.staticCall({
+      blockTag: blockNumber,
+    })
     const apr = (Number(srpb) * Number(SECONDS_PER_YEAR)) / Number(1e18)
     const apy = aprToApy(apr, SECONDS_PER_YEAR)
 
@@ -355,7 +301,9 @@ export class MendiFinanceBorrowAdapter
     )
 
     const mendiAddress = '0x43E8809ea748EFf3204ee01F08872F063e44065f'
-    const convertValue = await converterContract.latestAnswer.staticCall()
+    const convertValue = await converterContract.latestAnswer.staticCall({
+      blockTag: blockNumber,
+    })
     const convertDiv = Number(convertValue) / 1e8
 
     const baseTokenBytes32 =
@@ -373,6 +321,7 @@ export class MendiFinanceBorrowAdapter
       quoteTokenBytes32,
       baseTokenBytes32,
       amount.toString(),
+      { blockTag: blockNumber },
     )
     const mPriceFixed = (
       (Number(mPrice) / Number(1e6)) *
@@ -382,13 +331,16 @@ export class MendiFinanceBorrowAdapter
     const supplySpeed = await speedContract.rewardMarketState.staticCall(
       mendiAddress,
       protocolTokenAddress,
+      { blockTag: blockNumber },
     )
 
-    const tokenBorrows = await poolContract.totalBorrows.staticCall()
-    const exchangeRateStored =
-      await poolContract.exchangeRateStored.staticCall()
+    const tokenBorrows = await poolContract.totalBorrows.staticCall({
+      blockTag: blockNumber,
+    })
+
     const underlingPrice = await oracleContract.getPrice.staticCall(
       protocolTokenAddress,
+      { blockTag: blockNumber },
     )
 
     const tokenDecimal = underlyingTokenMetadata.decimals
