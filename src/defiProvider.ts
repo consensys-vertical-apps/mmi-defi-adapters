@@ -1,4 +1,3 @@
-import { method } from 'lodash'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
