@@ -38,10 +38,10 @@ To build an adapter follow these steps:
    - `npm run new-adapter`
 4. To create a typescript-smart-contract class create a json file with your abi and add it to your ${protocolName}/contracts/abis/ folder, then run:
    - `npm run build-types`
-5. To build metadata files run:
-   - `npm run build-metadata`
-6. To build snapshot tests run:
-   - `npm run build-snapshots`
+5. To build metadata files run (replace \<protocol-id> with the id of your protocol):
+   - `npm run build-metadata -- -p <protocol-id>`
+6. To build snapshot tests run (replace \<protocol-id> with the id of your protocol):
+   - `npm run build-snapshots -- -p <protocol-id>`
 7. To run tests run:
    - `npm run test`
 8. To test your adapter further you can use the following commands, update userAddress and other params accordingly:
