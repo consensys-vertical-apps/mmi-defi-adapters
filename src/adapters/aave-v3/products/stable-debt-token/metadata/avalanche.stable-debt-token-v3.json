@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0xf15f26710c827dde8acba678682f3ce24f2fb56e": {
-    "protocolToken": {
-      "address": "0xf15f26710c827dde8acba678682f3ce24f2fb56e",
-      "name": "Aave Avalanche Stable Debt WAVAX",
-      "symbol": "stableDebtAvaWAVAX",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
-      "decimals": 18
-    }
-  },
   "0x08cb71192985e936c7cd166a8b268035e400c3c3": {
     "protocolToken": {
       "address": "0x08cb71192985e936c7cd166a8b268035e400c3c3",
