@@ -517,6 +517,16 @@
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
+  "0x3e29d3a9316dab217754d13b28646b76607c5f04": {
+    "address": "0x3e29d3a9316dab217754d13b28646b76607c5f04",
+    "name": "Alchemix ETH",
+    "symbol": "alETH",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x3e29d3a9316dab217754d13b28646b76607c5f04",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
   "0xfe8b128ba8c78aabc59d4c64cee7ff28e9379921": {
     "address": "0xfe8b128ba8c78aabc59d4c64cee7ff28e9379921",
     "name": "Balancer",
@@ -664,6 +674,16 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x217d47011b23bb961eb6d93ca9945b7501a5bb11",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x8f69ee043d52161fd29137aedf63f5e70cd504d5": {
+    "address": "0x8f69ee043d52161fd29137aedf63f5e70cd504d5",
+    "name": "The Doge NFT",
+    "symbol": "DOG",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x8f69ee043d52161fd29137aedf63f5e70cd504d5",
     "quoteAddress": "0x4200000000000000000000000000000000000006",
     "isBaseTokenEth": false
   },
