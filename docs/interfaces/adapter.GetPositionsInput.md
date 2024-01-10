@@ -22,7 +22,7 @@ Address of the user can be any type of address EOA/Contract
 
 #### Defined in
 
-[adapter.ts:155](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L155)
+[adapter.ts:157](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L157)
 
 ___
 
@@ -34,7 +34,7 @@ Optional override param
 
 #### Defined in
 
-[adapter.ts:160](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L160)
+[adapter.ts:162](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L162)
 
 ___
 
@@ -46,4 +46,4 @@ Optional filter for pools that will be queried
 
 #### Defined in
 
-[adapter.ts:165](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L165)
+[adapter.ts:167](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L167)

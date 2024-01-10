@@ -63,7 +63,7 @@ ___
 
 [adapter.ts:16](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L16)
 
-[adapter.ts:41](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L41)
+[adapter.ts:43](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L43)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:43](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L43)
+[adapter.ts:45](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L45)
 
 ___
 
@@ -90,7 +90,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:49](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L49)
+[adapter.ts:51](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L51)
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:59](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L59)
+[adapter.ts:61](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L61)
 
 ___
 
@@ -124,7 +124,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:70](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L70)
+[adapter.ts:72](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L72)
 
 ___
 
@@ -144,7 +144,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:81](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L81)
+[adapter.ts:83](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L83)
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:108](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L108)
+[adapter.ts:110](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L110)
 
 ## Variables
 
@@ -206,9 +206,10 @@ ___
 | `Borrow` | ``"borrow"`` | Getting a loan from a lending and borrow protocol |
 | `Staked` | ``"stake"`` | Staking a token e.g. staking eth or staking an lp token |
 | `Reward` | ``"reward"`` | Claimable rewards, these type of positions will be merged with the equivalent lp position |
+| `FiatPrices` | ``"fiat-prices"`` | - |
 
 #### Defined in
 
 [adapter.ts:16](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L16)
 
-[adapter.ts:41](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L41)
+[adapter.ts:43](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L43)
