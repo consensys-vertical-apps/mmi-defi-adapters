@@ -15,5 +15,6 @@ export const Protocol = {
   SyncSwap: 'syncswap',
   IZiSwap: 'iziswap',
   ChimpExchange: 'chimp-exchange',
+  MendiFinance: 'mendi-finance',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
