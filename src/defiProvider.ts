@@ -31,15 +31,26 @@ import {
 } from './types/response'
 
 export class DefiProvider {
+  private parsedConfig
   chainProvider: ChainProvider
   adaptersController: AdaptersController
+  private adaptersControllerWithoutPrices: AdaptersController
 
   constructor(config?: Partial<IConfig>) {
-    const parsedConfig = new Config(config)
-    this.chainProvider = new ChainProvider(parsedConfig.values)
+    this.parsedConfig = new Config(config)
+    this.chainProvider = new ChainProvider(this.parsedConfig.values)
+
     this.adaptersController = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols,
+    })
+
+    const { [Protocol.Prices]: _, ...supportedProtocolsWithoutPrices } =
+      supportedProtocols
+
+    this.adaptersControllerWithoutPrices = new AdaptersController({
+      providers: this.chainProvider.providers,
+      supportedProtocols: supportedProtocolsWithoutPrices,
     })
   }
 
@@ -115,6 +126,7 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+      isGetPositionsRequest: true,
     })
   }
 
@@ -425,6 +437,7 @@ export class DefiProvider {
     runner,
     filterProtocolIds,
     filterChainIds,
+    isGetPositionsRequest = false,
   }: {
     runner: (
       adapter: IProtocolAdapter,
@@ -432,12 +445,14 @@ export class DefiProvider {
     ) => ReturnType
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
+    isGetPositionsRequest?: boolean
   }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(
         ([protocolIdKey, _]) =>
-          !filterProtocolIds ||
-          filterProtocolIds.includes(protocolIdKey as Protocol),
+          (!filterProtocolIds ||
+            filterProtocolIds.includes(protocolIdKey as Protocol)) &&
+          protocolIdKey !== Protocol.Prices,
       )
       .flatMap(([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol
@@ -453,11 +468,27 @@ export class DefiProvider {
             const chainId = +chainIdKey as Chain
             const provider = this.chainProvider.providers[chainId]!
 
-            const chainProtocolAdapters =
+            console.log({
+              oioi: isGetPositionsRequest,
+              oioi2: this.parsedConfig.values.enableUsdPricesOnPositions,
+            })
+
+            let chainProtocolAdapters =
               this.adaptersController.fetchChainProtocolAdapters(
                 chainId,
                 protocolId,
               )
+
+            if (
+              isGetPositionsRequest &&
+              !this.parsedConfig.values.enableUsdPricesOnPositions
+            ) {
+              chainProtocolAdapters =
+                this.adaptersControllerWithoutPrices.fetchChainProtocolAdapters(
+                  chainId,
+                  protocolId,
+                )
+            }
 
             return Array.from(chainProtocolAdapters)
               .filter(
