@@ -16,6 +16,7 @@ import { testCases as gMXTestCases } from './gmx/tests/testCases'
 import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
+import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
 import { testCases as pricesTestCases } from './prices/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
@@ -44,6 +45,7 @@ function runAllTests() {
   runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
   runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
   runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
+  runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
   runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
 }
 

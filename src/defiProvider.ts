@@ -6,6 +6,7 @@ import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
+import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/utils/chainProviders'
 import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
 import { logger } from './core/utils/logger'
@@ -31,15 +32,26 @@ import {
 } from './types/response'
 
 export class DefiProvider {
+  private parsedConfig
   chainProvider: ChainProvider
   adaptersController: AdaptersController
+  private adaptersControllerWithoutPrices: AdaptersController
 
   constructor(config?: Partial<IConfig>) {
-    const parsedConfig = new Config(config)
-    this.chainProvider = new ChainProvider(parsedConfig.values)
+    this.parsedConfig = new Config(config)
+    this.chainProvider = new ChainProvider(this.parsedConfig.values)
+
     this.adaptersController = new AdaptersController({
       providers: this.chainProvider.providers,
       supportedProtocols,
+    })
+
+    const { [Protocol.Prices]: _, ...supportedProtocolsWithoutPrices } =
+      supportedProtocols
+
+    this.adaptersControllerWithoutPrices = new AdaptersController({
+      providers: this.chainProvider.providers,
+      supportedProtocols: supportedProtocolsWithoutPrices,
     })
   }
 
@@ -115,6 +127,8 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+
+      method: 'getPositions',
     })
   }
 
@@ -145,7 +159,8 @@ export class DefiProvider {
 
       const startTime = Date.now()
 
-      const profits = await adapter.getProfits({
+      const profits = await getProfits({
+        adapter,
         userAddress,
         toBlock,
         fromBlock,
@@ -175,6 +190,7 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+      method: 'getProfits',
     })
   }
 
@@ -244,6 +260,8 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+
+      method: 'getPrices',
     })
   }
 
@@ -356,6 +374,7 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+      method: 'getTotalValueLocked',
     })
   }
 
@@ -387,6 +406,7 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+      method: 'getApy',
     })
   }
 
@@ -418,6 +438,7 @@ export class DefiProvider {
       runner,
       filterProtocolIds,
       filterChainIds,
+      method: 'getApr',
     })
   }
 
@@ -425,6 +446,7 @@ export class DefiProvider {
     runner,
     filterProtocolIds,
     filterChainIds,
+    method,
   }: {
     runner: (
       adapter: IProtocolAdapter,
@@ -432,12 +454,22 @@ export class DefiProvider {
     ) => ReturnType
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
+    method:
+      | 'getPositions'
+      | 'getPrices'
+      | 'getProfits'
+      | 'getWithdrawals'
+      | 'getDeposits'
+      | 'getTotalValueLocked'
+      | 'getApy'
+      | 'getApr'
   }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(
         ([protocolIdKey, _]) =>
-          !filterProtocolIds ||
-          filterProtocolIds.includes(protocolIdKey as Protocol),
+          (!filterProtocolIds ||
+            filterProtocolIds.includes(protocolIdKey as Protocol)) &&
+          (method === 'getPrices' || protocolIdKey !== Protocol.Prices),
       )
       .flatMap(([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol
@@ -453,11 +485,22 @@ export class DefiProvider {
             const chainId = +chainIdKey as Chain
             const provider = this.chainProvider.providers[chainId]!
 
-            const chainProtocolAdapters =
+            let chainProtocolAdapters =
               this.adaptersController.fetchChainProtocolAdapters(
                 chainId,
                 protocolId,
               )
+
+            if (
+              method == 'getPositions' &&
+              !this.parsedConfig.values.enableUsdPricesOnPositions
+            ) {
+              chainProtocolAdapters =
+                this.adaptersControllerWithoutPrices.fetchChainProtocolAdapters(
+                  chainId,
+                  protocolId,
+                )
+            }
 
             return Array.from(chainProtocolAdapters)
               .filter(

@@ -3778,5 +3778,215 @@
       "symbol": "crvDBRINV",
       "decimals": 18
     }
+  },
+  "0x6a845c389b43f27cda5569127a83525644738567": {
+    "protocolToken": {
+      "address": "0x6a845c389b43f27cda5569127a83525644738567",
+      "name": "PayPool Convex Deposit",
+      "symbol": "cvxPYUSDUSDC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x383e6b4437b59fff47b619cba855ca29342a8559",
+      "name": "PayPool",
+      "symbol": "PYUSDUSDC",
+      "decimals": 18
+    }
+  },
+  "0x9dbff964743d838d9660ddfd89ba629cc54e09d0": {
+    "protocolToken": {
+      "address": "0x9dbff964743d838d9660ddfd89ba629cc54e09d0",
+      "name": "pxETH/wETH Convex Deposit",
+      "symbol": "cvxpxethweth",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xc8eb2cf2f792f77af0cd9e203305a585e588179d",
+      "name": "pxETH/wETH",
+      "symbol": "pxethweth",
+      "decimals": 18
+    }
+  },
+  "0xde183818eb02afea367c1aaff1bfdedece6b2b05": {
+    "protocolToken": {
+      "address": "0xde183818eb02afea367c1aaff1bfdedece6b2b05",
+      "name": "pxETH/frxETH Convex Deposit",
+      "symbol": "cvxpxfrxeth",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xe2ed1dac3a9547bc6057e32bf8133b5268d7d987",
+      "name": "pxETH/frxETH",
+      "symbol": "pxfrxeth",
+      "decimals": 18
+    }
+  },
+  "0xdcc6ca531bf37a72fea22e890abf96b1e5a68940": {
+    "protocolToken": {
+      "address": "0xdcc6ca531bf37a72fea22e890abf96b1e5a68940",
+      "name": "pxETH/stETH Convex Deposit",
+      "symbol": "cvxpxsteth",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6951bdc4734b9f7f3e1b74afebc670c736a0edb6",
+      "name": "pxETH/stETH",
+      "symbol": "pxsteth",
+      "decimals": 18
+    }
+  },
+  "0xe0d993d3d6ee4debb0f5fb8f809b41d9e9807606": {
+    "protocolToken": {
+      "address": "0xe0d993d3d6ee4debb0f5fb8f809b41d9e9807606",
+      "name": "TriBSN Convex Deposit",
+      "symbol": "cvxTriBSN",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x35b269fe0106d3645d9780c5aad97c8eb8041c40",
+      "name": "TriBSN",
+      "symbol": "TriBSN",
+      "decimals": 18
+    }
+  },
+  "0xfa81e3ed8fb9054a526f8bc45826ff5b6e878881": {
+    "protocolToken": {
+      "address": "0xfa81e3ed8fb9054a526f8bc45826ff5b6e878881",
+      "name": "weETH/WETH Convex Deposit",
+      "symbol": "cvxweETH-WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x13947303f63b363876868d070f14dc865c36463b",
+      "name": "weETH/WETH",
+      "symbol": "weETH-WETH",
+      "decimals": 18
+    }
+  },
+  "0x51ef06fe2a210f21978b69641a5be16c2d6a773c": {
+    "protocolToken": {
+      "address": "0x51ef06fe2a210f21978b69641a5be16c2d6a773c",
+      "name": "FRAXUSDV Convex Deposit",
+      "symbol": "cvxFRAXUSDV",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x63b546f3860a75f732efde9ff8eb1a6ba96b5c64",
+      "name": "FRAXUSDV",
+      "symbol": "FRAXUSDV",
+      "decimals": 18
+    }
+  },
+  "0xab4fefd9cabc03d935cad345b7626c3180238fb3": {
+    "protocolToken": {
+      "address": "0xab4fefd9cabc03d935cad345b7626c3180238fb3",
+      "name": "FRAXsDAI Convex Deposit",
+      "symbol": "cvxFRAXsDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xce6431d21e3fb1036ce9973a3312368ed96f5ce7",
+      "name": "FRAXsDAI",
+      "symbol": "FRAXsDAI",
+      "decimals": 18
+    }
+  },
+  "0x511966406e60e6fce53a09cdb5ed5fbea120de86": {
+    "protocolToken": {
+      "address": "0x511966406e60e6fce53a09cdb5ed5fbea120de86",
+      "name": "FRAXUSDe Convex Deposit",
+      "symbol": "cvxFRAXUSDe",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x5dc1bf6f1e983c0b21efb003c105133736fa0743",
+      "name": "FRAXUSDe",
+      "symbol": "FRAXUSDe",
+      "decimals": 18
+    }
+  },
+  "0xba927a88eb7b7902ffc5cd99b94fa2964d1a1e03": {
+    "protocolToken": {
+      "address": "0xba927a88eb7b7902ffc5cd99b94fa2964d1a1e03",
+      "name": "FRAXFPI Convex Deposit",
+      "symbol": "cvxFRAXFPI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x2cf99a343e4ecf49623e82f2ec6a9b62e16ff3fe",
+      "name": "FRAXFPI",
+      "symbol": "FRAXFPI",
+      "decimals": 18
+    }
+  },
+  "0x839cf70a09f1cb104b4eb0b48e26b855a0f7e855": {
+    "protocolToken": {
+      "address": "0x839cf70a09f1cb104b4eb0b48e26b855a0f7e855",
+      "name": "FRAXPYUSD Convex Deposit",
+      "symbol": "cvxFRAXPYUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xa5588f7cdf560811710a2d82d3c9c99769db1dcb",
+      "name": "FRAXPYUSD",
+      "symbol": "FRAXPYUSD",
+      "decimals": 18
+    }
+  },
+  "0x5a82ae31c1a36833b9e148d01e967c1b05edb346": {
+    "protocolToken": {
+      "address": "0x5a82ae31c1a36833b9e148d01e967c1b05edb346",
+      "name": "FRAXFXB20240630 Convex Deposit",
+      "symbol": "cvxFXB240630",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x4ef4c7519023f30a78647eeab321d6cfabc2513c",
+      "name": "FRAXFXB20240630",
+      "symbol": "FXB240630",
+      "decimals": 18
+    }
+  },
+  "0x06382622d0fafb372da64b765ead3d082a8bcabb": {
+    "protocolToken": {
+      "address": "0x06382622d0fafb372da64b765ead3d082a8bcabb",
+      "name": "FRAXFXB20241231 Convex Deposit",
+      "symbol": "cvxFXB241231",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6307e6688819951cf8d6b6066018243d2496952f",
+      "name": "FRAXFXB20241231",
+      "symbol": "FXB241231",
+      "decimals": 18
+    }
+  },
+  "0x7ce2f444d0b034f44eea4fe77608f0c680966d20": {
+    "protocolToken": {
+      "address": "0x7ce2f444d0b034f44eea4fe77608f0c680966d20",
+      "name": "FRAXFXB20261231 Convex Deposit",
+      "symbol": "cvxFXB261231",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xe035e27a8ed6842b478933820f90093d205f7098",
+      "name": "FRAXFXB20261231",
+      "symbol": "FXB261231",
+      "decimals": 18
+    }
+  },
+  "0x0cc29abf54c54144227c9092edecc3fb31959052": {
+    "protocolToken": {
+      "address": "0x0cc29abf54c54144227c9092edecc3fb31959052",
+      "name": "alETH/wETH Convex Deposit",
+      "symbol": "cvxalETHwETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x8efd02a0a40545f32dba5d664cbbc1570d3fedf6",
+      "name": "alETH/wETH",
+      "symbol": "alETHwETH",
+      "decimals": 18
+    }
   }
 }

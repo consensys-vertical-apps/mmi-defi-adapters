@@ -32,6 +32,32 @@
       }
     ]
   },
+  "0xd2e846d6a2c1696b77678f1936df9b7fd3f25f8d": {
+    "poolId": "0xd2e846d6a2c1696b77678f1936df9b7fd3f25f8d000200000000000000000003",
+    "totalSupplyType": "0",
+    "protocolToken": {
+      "address": "0xd2e846d6a2c1696b77678f1936df9b7fd3f25f8d",
+      "name": "50USDC-50USDT",
+      "symbol": "50USDC-50USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6,
+        "index": 0
+      },
+      {
+        "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6,
+        "index": 1
+      }
+    ]
+  },
   "0xe38df7880ef9408e9933fd0e96abcc3cebf76006": {
     "poolId": "0xe38df7880ef9408e9933fd0e96abcc3cebf76006000200000000000000000001",
     "totalSupplyType": "0",

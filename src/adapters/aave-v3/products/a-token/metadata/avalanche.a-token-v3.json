@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97": {
-    "protocolToken": {
-      "address": "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97",
-      "name": "Aave Avalanche WAVAX",
-      "symbol": "aAvaWAVAX",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
-      "decimals": 18
-    }
-  },
   "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff": {
     "protocolToken": {
       "address": "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff",

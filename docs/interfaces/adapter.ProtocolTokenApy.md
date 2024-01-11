@@ -30,7 +30,7 @@ Current apy of protocol pool
 
 #### Defined in
 
-[adapter.ts:258](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L258)
+[adapter.ts:255](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L255)
 
 ___
 

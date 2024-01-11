@@ -15,7 +15,6 @@ import {
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
-  ProfitsWithRange,
   ProtocolAdapterParams,
   ProtocolTokenApr,
   ProtocolTokenApy,
@@ -142,10 +141,6 @@ export class StargateVestingAdapter
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  async getProfits(): Promise<ProfitsWithRange> {
     throw new NotImplementedError()
   }
 

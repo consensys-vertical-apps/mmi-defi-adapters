@@ -16,14 +16,12 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetProfitsInput,
   GetApyInput,
   GetAprInput,
   GetConversionRateInput,
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
-  ProfitsWithRange,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
@@ -351,10 +349,6 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
       (erc20TokenPriceInEth * ethPriceUSD) /
       BigInt(Math.pow(10, priceAdapterConfig.chainlink.decimals))
     )
-  }
-
-  async getProfits(_input: GetProfitsInput): Promise<ProfitsWithRange> {
-    throw new NotImplementedError()
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {

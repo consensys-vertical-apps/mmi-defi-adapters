@@ -24,6 +24,8 @@ import { IZiswapAdapter } from './iziswap/products/iziswap/iZiswapAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
+import { MendiFinanceBorrowAdapter } from './mendi-finance/products/borrow/mendiFinanceBorrowAdapter'
+import { MendiFinanceSupplyAdapter } from './mendi-finance/products/supply/mendiFinanceSupplyAdapter'
 import { PricesUSDAdapter } from './prices/products/usd/pricesUSDAdapter'
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
@@ -168,7 +170,9 @@ export const supportedProtocols: Record<
   [Protocol.SyncSwap]: {
     [Chain.Linea]: [SyncswapPoolAdapter],
   },
-
+  [Protocol.MendiFinance]: {
+    [Chain.Linea]: [MendiFinanceSupplyAdapter, MendiFinanceBorrowAdapter],
+  },
   [Protocol.CarbonDeFi]: {
     [Chain.Ethereum]: [CarbonDeFiStrategiesAdapter],
   },

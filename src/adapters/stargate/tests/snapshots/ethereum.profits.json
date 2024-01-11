@@ -40,13 +40,10 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "vesting",
-      "success": false,
-      "error": {
-        "message": "Not Implemented",
-        "details": {
-          "name": "NotImplementedError"
-        }
-      }
+      "success": true,
+      "tokens": [],
+      "fromBlock": 18156819,
+      "toBlock": 18163965
     }
   ]
 }
