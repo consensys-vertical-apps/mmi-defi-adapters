@@ -6,6 +6,7 @@ import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
+import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/utils/chainProviders'
 import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
 import { logger } from './core/utils/logger'
@@ -145,7 +146,8 @@ export class DefiProvider {
 
       const startTime = Date.now()
 
-      const profits = await adapter.getProfits({
+      const profits = await getProfits({
+        adapter,
         userAddress,
         toBlock,
         fromBlock,
