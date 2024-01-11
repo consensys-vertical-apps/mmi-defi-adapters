@@ -12,9 +12,9 @@
       "productId": "strategies",
       "success": false,
       "error": {
-        "message": "Not Implemented",
+        "message": "Unable to calculate profits, missing USD price for token position 0x2b591e99afe9f32eaa6214f7b7629768c40eeb39",
         "details": {
-          "name": "NotImplementedError"
+          "name": "Error"
         }
       }
     }
