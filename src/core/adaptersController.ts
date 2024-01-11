@@ -19,12 +19,14 @@ export class AdaptersController {
     supportedProtocols,
   }: {
     providers: Record<Chain, CustomJsonRpcProvider>
-    supportedProtocols: Record<
-      Protocol,
-      Partial<
-        Record<
-          Chain,
-          (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
+    supportedProtocols: Partial<
+      Record<
+        Protocol,
+        Partial<
+          Record<
+            Chain,
+            (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
+          >
         >
       >
     >
