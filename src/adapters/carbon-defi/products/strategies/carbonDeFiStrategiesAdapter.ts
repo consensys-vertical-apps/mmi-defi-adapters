@@ -14,14 +14,12 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetProfitsInput,
   GetApyInput,
   GetAprInput,
   GetConversionRateInput,
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
-  ProfitsWithRange,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
@@ -276,14 +274,6 @@ export class CarbonDeFiStrategiesAdapter extends SimplePoolAdapter {
   async getProtocolTokenToUnderlyingTokenRate(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
-    throw new NotImplementedError()
-  }
-
-  /**
-   * Update me.
-   * Add logic to calculate the users profits
-   */
-  async getProfits(_input: GetProfitsInput): Promise<ProfitsWithRange> {
     throw new NotImplementedError()
   }
 
