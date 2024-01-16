@@ -1,4 +1,3 @@
-import { formatUnits } from 'ethers'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
 import { RAY } from '../../../core/constants/RAY'
@@ -6,19 +5,16 @@ import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
-import { aggregateTrades } from '../../../core/utils/aggregateTrades'
 import { aprToApy } from '../../../core/utils/aprToApy'
 import { CustomJsonRpcProvider } from '../../../core/utils/customJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
-import { formatProtocolTokenArrayToMap } from '../../../core/utils/protocolTokenToMap'
 import {
   GetPositionsInput,
   GetEventsInput,
   GetApyInput,
   GetAprInput,
   GetTotalValueLockedInput,
-  // GetProfitsInput,
   GetConversionRateInput,
   MovementsByBlock,
   PositionType,
@@ -27,15 +23,12 @@ import {
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
-  ProfitsWithRange,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenBalance,
   TokenType,
   Underlying,
   UnderlyingTokenRate,
-  // BaseTokenMovement,
-  PositionProfits,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
