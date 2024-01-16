@@ -18,8 +18,8 @@
           "symbol": "cDAI",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "8085368317705084n",
-          "totalSupply": "80853683.17705084"
+          "totalSupplyRaw": "8052351927547491n",
+          "totalSupply": "80523519.27547491"
         },
         {
           "address": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
@@ -27,8 +27,8 @@
           "symbol": "cCOMP",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "57281303795n",
-          "totalSupply": "572.81303795"
+          "totalSupplyRaw": "57260963362n",
+          "totalSupply": "572.60963362"
         },
         {
           "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
@@ -36,8 +36,8 @@
           "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "168911299156n",
-          "totalSupply": "1689.11299156"
+          "totalSupplyRaw": "168902893874n",
+          "totalSupply": "1689.02893874"
         },
         {
           "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
@@ -54,8 +54,8 @@
           "symbol": "cUNI",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "127118648273381n",
-          "totalSupply": "1271186.48273381"
+          "totalSupplyRaw": "127079771923172n",
+          "totalSupply": "1270797.71923172"
         },
         {
           "address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
@@ -63,8 +63,8 @@
           "symbol": "cUSDC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "1185609447392857n",
-          "totalSupply": "11856094.47392857"
+          "totalSupplyRaw": "1177307371464930n",
+          "totalSupply": "11773073.7146493"
         },
         {
           "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
@@ -72,8 +72,8 @@
           "symbol": "cUSDT",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "29913789181804813n",
-          "totalSupply": "299137891.81804813"
+          "totalSupplyRaw": "29710511814903157n",
+          "totalSupply": "297105118.14903157"
         },
         {
           "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
@@ -81,8 +81,8 @@
           "symbol": "cWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "2706138436776n",
-          "totalSupply": "27061.38436776"
+          "totalSupplyRaw": "2706117853718n",
+          "totalSupply": "27061.17853718"
         }
       ]
     },
@@ -103,8 +103,8 @@
           "symbol": "cDAI",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "7230842743123040n",
-          "totalSupply": "72308427.4312304"
+          "totalSupplyRaw": "7201315785810239n",
+          "totalSupply": "72013157.85810239"
         },
         {
           "address": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
@@ -112,8 +112,8 @@
           "symbol": "cCOMP",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "17128741593n",
-          "totalSupply": "171.28741593"
+          "totalSupplyRaw": "17122659224n",
+          "totalSupply": "171.22659224"
         },
         {
           "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
@@ -121,8 +121,8 @@
           "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "117587649111n",
-          "totalSupply": "1175.87649111"
+          "totalSupplyRaw": "117581797771n",
+          "totalSupply": "1175.81797771"
         },
         {
           "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
@@ -139,8 +139,8 @@
           "symbol": "cUNI",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "9522077826727n",
-          "totalSupply": "95220.77826727"
+          "totalSupplyRaw": "9519165715582n",
+          "totalSupply": "95191.65715582"
         },
         {
           "address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
@@ -148,8 +148,8 @@
           "symbol": "cUSDC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "23646781299728335n",
-          "totalSupply": "236467812.99728335"
+          "totalSupplyRaw": "23481197789717399n",
+          "totalSupply": "234811977.89717399"
         },
         {
           "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
@@ -157,8 +157,8 @@
           "symbol": "cUSDT",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "3480934046713642n",
-          "totalSupply": "34809340.46713642"
+          "totalSupplyRaw": "3457279567400647n",
+          "totalSupply": "34572795.67400647"
         },
         {
           "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
@@ -166,8 +166,8 @@
           "symbol": "cWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "369044989n",
-          "totalSupply": "3.69044989"
+          "totalSupplyRaw": "369042182n",
+          "totalSupply": "3.69042182"
         }
       ]
     }
