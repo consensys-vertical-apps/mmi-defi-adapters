@@ -584,24 +584,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     MendiFinanceBorrowLineaMendi,
   ],
-  [
-    metadataKey({
-      protocolId: Protocol.MorphoAaveV3ETHOptimizer,
-      productId: 'optimizer-supply',
-      chainId: Chain.Ethereum,
-      fileKey: 'optimizer-supply',
-    }),
-    MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.MorphoAaveV3ETHOptimizer,
-      productId: 'optimizer-borrow',
-      chainId: Chain.Ethereum,
-      fileKey: 'optimizer-borrow',
-    }),
-    MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow,
-  ],
 ])
 
 export function metadataKey({
