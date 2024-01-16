@@ -18,8 +18,8 @@
           "symbol": "cDAI",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "8052351927547491n",
-          "totalSupply": "80523519.27547491"
+          "totalSupplyRaw": "8052255267947755n",
+          "totalSupply": "80522552.67947755"
         },
         {
           "address": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
@@ -36,8 +36,8 @@
           "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "168902893874n",
-          "totalSupply": "1689.02893874"
+          "totalSupplyRaw": "168902851072n",
+          "totalSupply": "1689.02851072"
         },
         {
           "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
@@ -63,8 +63,8 @@
           "symbol": "cUSDC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "1177307371464930n",
-          "totalSupply": "11773073.7146493"
+          "totalSupplyRaw": "1177277213480166n",
+          "totalSupply": "11772772.13480166"
         },
         {
           "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
@@ -72,8 +72,8 @@
           "symbol": "cUSDT",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "29710511814903157n",
-          "totalSupply": "297105118.14903157"
+          "totalSupplyRaw": "29710265186723695n",
+          "totalSupply": "297102651.86723695"
         },
         {
           "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
@@ -103,8 +103,8 @@
           "symbol": "cDAI",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "7201315785810239n",
-          "totalSupply": "72013157.85810239"
+          "totalSupplyRaw": "7201229341960331n",
+          "totalSupply": "72012293.41960331"
         },
         {
           "address": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
@@ -121,8 +121,8 @@
           "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "117581797771n",
-          "totalSupply": "1175.81797771"
+          "totalSupplyRaw": "117581767975n",
+          "totalSupply": "1175.81767975"
         },
         {
           "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
@@ -148,8 +148,8 @@
           "symbol": "cUSDC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "23481197789717399n",
-          "totalSupply": "234811977.89717399"
+          "totalSupplyRaw": "23480596293776462n",
+          "totalSupply": "234805962.93776462"
         },
         {
           "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
@@ -157,8 +157,8 @@
           "symbol": "cUSDT",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "3457279567400647n",
-          "totalSupply": "34572795.67400647"
+          "totalSupplyRaw": "3457250868380889n",
+          "totalSupply": "34572508.68380889"
         },
         {
           "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
