@@ -74,32 +74,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     this.adaptersController = adaptersController
   }
 
-  protected async fetchProtocolTokenMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    throw new NotImplementedError()
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    throw new NotImplementedError()
-  }
-
-  protected async getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
-  protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
-  }
-
   /**
    * Update me.
    * Add your protocol details
