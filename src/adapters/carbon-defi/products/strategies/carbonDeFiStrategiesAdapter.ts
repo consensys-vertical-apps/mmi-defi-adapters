@@ -1,6 +1,5 @@
 import { BigNumber } from 'bignumber.js'
 import { BigNumberish } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -28,6 +27,7 @@ import {
   UnderlyingTokenRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { CarbonController__factory, Voucher__factory } from '../../contracts'
 import {
@@ -53,7 +53,7 @@ enum StrategyUpdateReason {
   Trade = '1',
 }
 
-export class CarbonDeFiStrategiesAdapter extends SimplePoolAdapter {
+export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
   productId = 'strategies'
   protocolId: Protocol
   chainId: Chain
@@ -68,12 +68,6 @@ export class CarbonDeFiStrategiesAdapter extends SimplePoolAdapter {
     protocolId,
     adaptersController,
   }: ProtocolAdapterParams) {
-    super({
-      provider,
-      chainId,
-      protocolId,
-      adaptersController,
-    })
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
