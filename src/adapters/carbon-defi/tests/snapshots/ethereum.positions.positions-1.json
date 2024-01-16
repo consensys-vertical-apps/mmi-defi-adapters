@@ -1,0 +1,38 @@
+{
+  "blockNumber": 18942987,
+  "snapshot": [
+    {
+      "protocolId": "carbon-defi",
+      "name": "CarbonDeFi",
+      "description": "CarbonDeFi adapter for strategy balances",
+      "siteUrl": "https://carbondefi.xyz",
+      "iconUrl": "https://app.carbondefi.xyz/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "strategies",
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "tokenId": "340282366920938463463374607431768211693",
+          "balanceRaw": "45944173154579n",
+          "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+          "name": "Ethereum",
+          "symbol": "ETH",
+          "decimals": 18,
+          "balance": "0.000045944173154579"
+        },
+        {
+          "type": "protocol",
+          "tokenId": "340282366920938463463374607431768211693",
+          "balanceRaw": "62460559661653312295n",
+          "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "name": "Dai Stablecoin",
+          "symbol": "DAI",
+          "decimals": 18,
+          "balance": "62.460559661653312295"
+        }
+      ]
+    }
+  ]
+}
