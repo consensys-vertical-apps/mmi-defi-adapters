@@ -45,10 +45,7 @@ const contractAddresses: Partial<
   },
 }
 
-enum StrategyUpdateReason {
-  Edit = '0',
-  Trade = '1',
-}
+const StrategyUpdateReasonEdit = 0n
 
 export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
   productId = 'strategies'
@@ -271,7 +268,7 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
             BigNumber(currentItem.order1.y.toString()).gt(0)
           : BigNumber(currentItem.order0.y.toString()).lt(0) ||
             BigNumber(currentItem.order1.y.toString()).lt(0)) &&
-        currentItem.reason === BigInt(StrategyUpdateReason.Edit)
+        currentItem.reason === StrategyUpdateReasonEdit
       )
     })
   }
