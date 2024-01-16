@@ -529,6 +529,9 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-supply',
     }),
     MorphoAaveV3ETHOptimizerSupplyEthereumOptimizerSupply,
+  ],
+  [
+    metadataKey({
       protocolId: Protocol.Prices,
       productId: 'usd',
       chainId: Chain.Polygon,
