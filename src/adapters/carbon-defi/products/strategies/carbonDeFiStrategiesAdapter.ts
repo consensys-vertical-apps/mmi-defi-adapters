@@ -22,9 +22,6 @@ import {
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
-  TokenBalance,
-  Underlying,
-  UnderlyingTokenRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
