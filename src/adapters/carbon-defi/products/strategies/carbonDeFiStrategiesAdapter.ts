@@ -71,10 +71,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     this.adaptersController = adaptersController
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -88,18 +84,10 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     }
   }
 
-  /**
-   * Update me.
-   * Returning an array of your protocol tokens.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get userAddress positions in your protocol
-   */
   async getPositions({
     userAddress,
     blockNumber,
@@ -167,10 +155,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     return []
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's withdrawals per position by block range
-   */
   async getWithdrawals({
     userAddress,
     fromBlock,
@@ -194,10 +178,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     )
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's deposits per position by block range
-   */
   async getDeposits({
     userAddress,
     fromBlock,
@@ -221,21 +201,12 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     )
   }
 
-  /**
-   * Update me.
-   * Add logic to get tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to calculate the underlying token rate of 1 protocol token
-   */
   async getProtocolTokenToUnderlyingTokenRate(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
