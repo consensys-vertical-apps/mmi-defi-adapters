@@ -29,6 +29,7 @@ import AaveV3VariableDebtTokenEthereumVariableDebtTokenV3 from '../../adapters/a
 import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/fantom.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
+import ChimpExchangePoolLineaProtocolToken from '../../adapters/chimp-exchange/products/pool/metadata/linea.protocol-token.json'
 import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
 import ConvexCvxcrvWrapperEthereumProtocolToken from '../../adapters/convex/products/cvxcrv-wrapper/metadata/ethereum.protocol-token.json'
 import ConvexExtraRewardEthereumProtocolToken from '../../adapters/convex/products/extra-reward/metadata/ethereum.protocol-token.json'
@@ -46,7 +47,12 @@ import MorphoAaveV3ETHOptimizerBorrowEthereumOptimizerBorrow from '../../adapter
 import MorphoAaveV3ETHOptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v3-eth/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
+import MendiFinanceSupplyLineaMendi from '../../adapters/mendi-finance/products/supply/metadata/linea.mendi.json'
+import PricesUsdArbitrumProtocolToken from '../../adapters/prices/products/usd/metadata/arbitrum.protocol-token.json'
 import PricesUsdEthereumProtocolToken from '../../adapters/prices/products/usd/metadata/ethereum.protocol-token.json'
+import PricesUsdOptimismProtocolToken from '../../adapters/prices/products/usd/metadata/optimism.protocol-token.json'
+import PricesUsdPolygonProtocolToken from '../../adapters/prices/products/usd/metadata/polygon.protocol-token.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -523,6 +529,57 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-supply',
     }),
     MorphoAaveV3ETHOptimizerSupplyEthereumOptimizerSupply,
+      protocolId: Protocol.Prices,
+      productId: 'usd',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    PricesUsdPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Prices,
+      productId: 'usd',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    PricesUsdArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Prices,
+      productId: 'usd',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    PricesUsdOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.ChimpExchange,
+      productId: 'pool',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    ChimpExchangePoolLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MendiFinance,
+      productId: 'supply',
+      chainId: Chain.Linea,
+      fileKey: 'mendi',
+    }),
+    MendiFinanceSupplyLineaMendi,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MendiFinance,
+      productId: 'borrow',
+      chainId: Chain.Linea,
+      fileKey: 'mendi',
+    }),
+    MendiFinanceBorrowLineaMendi,
   ],
 ])
 

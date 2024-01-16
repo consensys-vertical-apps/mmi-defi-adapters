@@ -167,6 +167,20 @@
       "decimals": 18
     }
   },
+  "0x0496372be7e426d28e89debf01f19f014d5938be": {
+    "protocolToken": {
+      "address": "0x0496372be7e426d28e89debf01f19f014d5938be",
+      "name": "Aave Ethereum Stable Debt MKR",
+      "symbol": "stableDebtEthMKR",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+      "name": "Maker",
+      "symbol": "MKR",
+      "decimals": 18
+    }
+  },
   "0x478e1ec1a2beed94c1407c951e4b9e22d53b2501": {
     "protocolToken": {
       "address": "0x478e1ec1a2beed94c1407c951e4b9e22d53b2501",
@@ -349,17 +363,17 @@
       "decimals": 18
     }
   },
-  "0x0496372be7e426d28e89debf01f19f014d5938be": {
+  "0xb55c604075d79486b8a329c396fc711be54b5330": {
     "protocolToken": {
-      "address": "0x0496372be7e426d28e89debf01f19f014d5938be",
-      "name": "Aave Ethereum Stable Debt MKR",
-      "symbol": "stableDebtEthMKR",
+      "address": "0xb55c604075d79486b8a329c396fc711be54b5330",
+      "name": "Aave Ethereum Stable Debt crvUSD",
+      "symbol": "stableDebtEthcrvUSD",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
-      "name": "Maker",
-      "symbol": "MKR",
+      "address": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
       "decimals": 18
     }
   }

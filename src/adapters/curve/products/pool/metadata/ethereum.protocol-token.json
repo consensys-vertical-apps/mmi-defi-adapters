@@ -3270,64 +3270,6 @@
     ],
     "poolAddress": "0x5c6A6Cf9Ae657A73b98454D17986AF41fC7b44ee"
   },
-  "0xee98d56f60a5905cbb52348c8719b247dafe60ec": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Plain Pool: WOMI/OMI",
-      "decimals": 18,
-      "symbol": "WOMIOMI-f",
-      "address": "0xee98d56f60a5905cbb52348c8719b247dafe60ec"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x04969cd041c0cafb6ac462bd65b536a5bdb3a670",
-        "name": "Wrapped OMI Token",
-        "symbol": "wOMI",
-        "decimals": 18
-      },
-      {
-        "address": "0xed35af169af46a02ee13b9d79eb57d6d68c1749e",
-        "name": "OMI Token",
-        "symbol": "OMI",
-        "decimals": 18
-      }
-    ],
-    "poolAddress": "0xeE98d56f60A5905CbB52348c8719B247DaFe60ec"
-  },
-  "0x8116e7c29f60fdacf3954891a038f845565ef5a0": {
-    "protocolToken": {
-      "name": "Curve.fi Factory USD Metapool: OMI/USD",
-      "decimals": 18,
-      "symbol": "OMIUSD3CRV-f",
-      "address": "0x8116e7c29f60fdacf3954891a038f845565ef5a0"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xed35af169af46a02ee13b9d79eb57d6d68c1749e",
-        "name": "OMI Token",
-        "symbol": "OMI",
-        "decimals": 18
-      },
-      {
-        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
-        "name": "Dai Stablecoin",
-        "symbol": "DAI",
-        "decimals": 18
-      },
-      {
-        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-        "name": "USD Coin",
-        "symbol": "USDC",
-        "decimals": 6
-      },
-      {
-        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
-        "name": "Tether USD",
-        "symbol": "USDT",
-        "decimals": 6
-      }
-    ],
-    "poolAddress": "0x8116E7c29f60FdacF3954891A038f845565EF5A0"
-  },
   "0xde495223f7cd7ee0cde1addbd6836046bbdf3ad3": {
     "protocolToken": {
       "name": "Curve.fi Factory USD Metapool: USDS/3CRV",
@@ -5067,29 +5009,6 @@
     ],
     "poolAddress": "0x2d600BbBcC3F1B6Cb9910A70BaB59eC9d5F81B9A"
   },
-  "0x2448ec833ebaf2958330f91e5fbe4f9c70c9e572": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Pool: ixETH/ETH",
-      "decimals": 18,
-      "symbol": "ixETH-f",
-      "address": "0x2448ec833ebaf2958330f91e5fbe4f9c70c9e572"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-        "name": "Ethereum",
-        "symbol": "ETH",
-        "decimals": 18
-      },
-      {
-        "address": "0x535321013a1e2d5af3b1853812a64ca3fc6c1fa1",
-        "name": "Staked ETH Index",
-        "symbol": "ixETH",
-        "decimals": 18
-      }
-    ],
-    "poolAddress": "0x2448ec833EbAf2958330f91E5Fbe4F9C70C9e572"
-  },
   "0xfcc067efb7be2eebd32615f14fc22195abb68e9b": {
     "protocolToken": {
       "name": "Curve.fi Factory Plain Pool: rETH/frxETH",
@@ -6373,6 +6292,29 @@
     ],
     "poolAddress": "0x79CE6BE6Ae0995B1c8ED3e8ae54dE0E437deC8C3"
   },
+  "0xf2dcf6336d8250754b4527f57b275b19c8d5cf88": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Plain Pool: wstTAO/wTAO",
+      "decimals": 18,
+      "symbol": "wstTAOwTAO-f",
+      "address": "0xf2dcf6336d8250754b4527f57b275b19c8d5cf88"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe9633c52f4c8b7bdeb08c4a7fe8a5c1b84afcf67",
+        "name": "Wrapped Staked TAO",
+        "symbol": "wstTAO",
+        "decimals": 9
+      },
+      {
+        "address": "0x77e06c9eccf2e797fd462a92b6d7642ef85b0a44",
+        "name": "Wrapped TAO",
+        "symbol": "wTAO",
+        "decimals": 9
+      }
+    ],
+    "poolAddress": "0xf2DCf6336D8250754B4527f57b275b19c8D5CF88"
+  },
   "0xc4ad29ba4b3c580e6d59105fff484999997675ff": {
     "protocolToken": {
       "name": "Curve.fi USD-BTC-ETH",
@@ -7472,29 +7414,6 @@
       }
     ],
     "poolAddress": "0xc58fDB8A50AB921A73535656A7c69387Dd863ff6"
-  },
-  "0xb83e5af00b321d2280382b8634625826fbd75c5b": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Crypto Pool: FXSFPIS",
-      "decimals": 18,
-      "symbol": "FXSFPIS-f",
-      "address": "0xb83e5af00b321d2280382b8634625826fbd75c5b"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
-        "name": "Frax Share",
-        "symbol": "FXS",
-        "decimals": 18
-      },
-      {
-        "address": "0xc2544a32872a91f4a553b404c6950e89de901fdb",
-        "name": "Frax Price Index Share",
-        "symbol": "FPIS",
-        "decimals": 18
-      }
-    ],
-    "poolAddress": "0xD4e2fdC354c5DFfb865798Ca98c2b9d5382F687C"
   },
   "0x5b6c539b224014a09b3388e51caaa8e354c959c8": {
     "protocolToken": {
@@ -9020,6 +8939,29 @@
     ],
     "poolAddress": "0xb1d9b4574077eb6ed75B791c7d090Ea1F8c93474"
   },
+  "0x4fde3eca4682f8ffe0a856219f928b75dc2d1486": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: CHNT/USDC",
+      "decimals": 18,
+      "symbol": "CHNTUSDC-f",
+      "address": "0x4fde3eca4682f8ffe0a856219f928b75dc2d1486"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x9dbd4ac4d5a84ec6258abcd43cfb6c0c5ba8819f",
+        "name": "ChinolaToken",
+        "symbol": "CHNT",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x04e7a76A910A499B8BBCAc18411aE68454AE348b"
+  },
   "0xd531a9e82e468042c78c737a3e450ec87b829c8b": {
     "protocolToken": {
       "name": "Curve.fi Factory Crypto Pool: USDTT/MIA",
@@ -10103,6 +10045,144 @@
     ],
     "poolAddress": "0x37f56017AA5530aE489802626F3bC59b87eab5aE"
   },
+  "0x033b63a2656d340159f52fed59ce91b855313483": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: fETH/DOLA",
+      "decimals": 18,
+      "symbol": "fETHDola-f",
+      "address": "0x033b63a2656d340159f52fed59ce91b855313483"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x865377367054516e17014ccded1e7d814edc9ce4",
+        "name": "Dola USD Stablecoin",
+        "symbol": "DOLA",
+        "decimals": 18
+      },
+      {
+        "address": "0x53805a76e1f5ebbfe7115f16f9c87c2f7e633726",
+        "name": "Fractional ETH",
+        "symbol": "fETH",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x294B61367B4B36521291A6cc74f0B6037e4319D6"
+  },
+  "0x65de5a1f3401326ff7b06f00c112b7cac61dbdc1": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: USDE/USDC",
+      "decimals": 18,
+      "symbol": "USDE-USDC-f",
+      "address": "0x65de5a1f3401326ff7b06f00c112b7cac61dbdc1"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1d00e86748573c322f4cc41518aa0e77bd912eb4",
+        "name": "USDE Stablecoin",
+        "symbol": "USDE",
+        "decimals": 18
+      },
+      {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "poolAddress": "0x9Be7685aF8A6184F5889F12892f16452Fe73f8fd"
+  },
+  "0xd48c8b2a3eeac9e7a67d74946189a6c3cbbc7d1c": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: WTK/USDT",
+      "decimals": 18,
+      "symbol": "WTKUSDT-f",
+      "address": "0xd48c8b2a3eeac9e7a67d74946189a6c3cbbc7d1c"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0x216f3ac5d0566f934c0fc15c89422cd5e7505df6",
+        "name": "WE Token",
+        "symbol": "WTK",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0xa1a5a5bdb258A951786285D74efe72882dEd7574"
+  },
+  "0xd4092e32b3517ee0daa4da48fdc40cab6058e187": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: RaeX",
+      "decimals": 18,
+      "symbol": "RaeX-f",
+      "address": "0xd4092e32b3517ee0daa4da48fdc40cab6058e187"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x81cb62d2cd9261f63a1ae96df715748dcbc97d46",
+        "name": "RaeX",
+        "symbol": "RaeX",
+        "decimals": 18
+      },
+      {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "poolAddress": "0x97130CC28e99d13CE1Ae41d022268B5cC7409CdA"
+  },
+  "0x2063658412a8b5b6295dfc160465232e8ace88e1": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: roar/USDT",
+      "decimals": 18,
+      "symbol": "ROARUSDT-f",
+      "address": "0x2063658412a8b5b6295dfc160465232e8ace88e1"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0x569d0e52c3dbe95983bcc2434cb9f69d905be919",
+        "name": "Roaring Kitty",
+        "symbol": "roar",
+        "decimals": 9
+      }
+    ],
+    "poolAddress": "0xa0efc8A6c0093360067F728bbB5a035032DF6947"
+  },
+  "0x47c0365254a48ddb0bc7494137c5c4eb222970d2": {
+    "protocolToken": {
+      "name": "Curve.fi Factory Crypto Pool: MG/USDC",
+      "decimals": 18,
+      "symbol": "MGUSDC-f",
+      "address": "0x47c0365254a48ddb0bc7494137c5c4eb222970d2"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x442ed5a1e34aeee5af714b6a4fb17037be319db3",
+        "name": "Moes Group ",
+        "symbol": "MG",
+        "decimals": 8
+      }
+    ],
+    "poolAddress": "0x154B0eCD38078819084E449eA1a657728fd37e43"
+  },
   "0x4dece678ceceb27446b35c672dc7d61f30bad69e": {
     "protocolToken": {
       "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
@@ -10539,29 +10619,6 @@
       }
     ],
     "poolAddress": "0x2dabF79E16ceb92B651651f47b6E835C9DB5828A"
-  },
-  "0x5dac17902066d261e3701e6f52150a614cd8bde7": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Plain Pool: crvUSD-sDAI",
-      "decimals": 18,
-      "symbol": "crvsDAI-f",
-      "address": "0x5dac17902066d261e3701e6f52150a614cd8bde7"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
-        "name": "Curve.Fi USD Stablecoin",
-        "symbol": "crvUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0x83f20f44975d03b1b09e64809b757c47f942beea",
-        "name": "Savings Dai",
-        "symbol": "sDAI",
-        "decimals": 18
-      }
-    ],
-    "poolAddress": "0x5DAC17902066D261e3701e6f52150A614cd8bdE7"
   },
   "0x69b6da941e6a8960f480709281b87b1c32ff8366": {
     "protocolToken": {
@@ -11182,5 +11239,34 @@
       }
     ],
     "poolAddress": "0x1830c553dC76d3447B69b7B0dC19CF9e3c739C78"
+  },
+  "0x9fee65d5a627e73212989c8bbedc5fa5cae3821f": {
+    "protocolToken": {
+      "name": "BobrCRV/CRV/crvUSD",
+      "decimals": 18,
+      "symbol": "BobrCRV",
+      "address": "0x9fee65d5a627e73212989c8bbedc5fa5cae3821f"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8f22779662ad253844013d8e99eccb4d80e31417",
+        "name": "CURVEBOBR",
+        "symbol": "BobrCRV",
+        "decimals": 18
+      },
+      {
+        "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+        "name": "Curve DAO Token",
+        "symbol": "CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      }
+    ],
+    "poolAddress": "0x9FeE65D5A627e73212989c8BbEdC5Fa5Cae3821F"
   }
 }

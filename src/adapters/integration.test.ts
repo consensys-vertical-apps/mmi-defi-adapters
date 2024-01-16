@@ -7,19 +7,23 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
+import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
 import { testCases as compoundTestCases } from './compound/tests/testCases'
 import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
 import { testCases as gMXTestCases } from './gmx/tests/testCases'
+import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
 import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3-eth/tests/testCases'
 import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
+import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
 import { testCases as pricesTestCases } from './prices/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
+import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
 const TEST_TIMEOUT = 300000
@@ -49,6 +53,10 @@ function runAllTests() {
     Protocol.MorphoAaveV3ETHOptimizer,
     morphoAaveV3ETHOptimizerTestCases,
   )
+  runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
+  runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
+  runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
+  runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
@@ -206,6 +214,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             const response = await defiProvider.getPrices({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
+              filterProtocolToken: testCase.filterProtocolToken,
               blockNumbers: { [testCase.chainId]: blockNumber },
             })
 

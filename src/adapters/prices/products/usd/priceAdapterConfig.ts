@@ -1,0 +1,110 @@
+import { Chain } from '../../../../core/constants/chains'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+
+const QUOTER_CONTRACT = '0xb27308f9f90d607463bb33ea1bebb41c27ce5ab6'
+
+const ETH = {
+  symbol: 'ETH',
+  name: 'Ethereum',
+  decimals: 18,
+}
+
+export const priceAdapterConfig = {
+  decimals: 18,
+  wrappedEth: {
+    name: 'Wrapped Ether',
+    symbol: 'WETH',
+    decimals: 18,
+    addresses: {
+      [Chain.Ethereum]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      [Chain.Optimism]: '0x4200000000000000000000000000000000000006',
+      [Chain.Bsc]: '0x2170ed0880ac9a755fd29b2688956bd959f933f8',
+      [Chain.Polygon]: '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
+      [Chain.Fantom]: '0x74b23882a30290451a17c44f4f05243b6b58c76d',
+      [Chain.Base]: '0x4200000000000000000000000000000000000006',
+      [Chain.Arbitrum]: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1',
+      [Chain.Avalanche]: '0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab',
+      [Chain.Linea]: '0x',
+    },
+  },
+  uniswap: {
+    quoterContractAddresses: {
+      [Chain.Optimism]: QUOTER_CONTRACT,
+      [Chain.Polygon]: QUOTER_CONTRACT,
+      [Chain.Ethereum]: QUOTER_CONTRACT,
+      [Chain.Arbitrum]: QUOTER_CONTRACT,
+    },
+  },
+  chainlink: {
+    decimals: 8,
+    UsdEthFeedAddresses: {
+      [Chain.Ethereum]: '0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419',
+      [Chain.Optimism]: '0x13e3ee699d1909e989722e753853ae30b17e08c5',
+      [Chain.Bsc]: '0x9ef1b8c0e4f7dc8bf5719ea496883dc6401d5b2e',
+      [Chain.Polygon]: '0xf9680d99d6c9589e2a93a78a04a279e509205945',
+      [Chain.Fantom]: '0x11ddd3d147e5b83d01cee7070027092397d63658',
+      [Chain.Base]: '0x71041dddad3595f9ced3dccfbe3d1f4b0a16bb70',
+      [Chain.Arbitrum]: '0x639fe6ab55c921f74e7fac1ee960c0b6293ba612',
+      [Chain.Avalanche]: '0x976b3d034e162d8bd72d6b9c989d545b839003b0',
+      [Chain.Linea]: '0x3c6cd9cc7c7a4c2cf5a82734cd249d7d593354da',
+    },
+  },
+  nativeToken: {
+    addresses: [
+      ZERO_ADDRESS,
+      '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+      '0x0000000000000000000000000000000000001010', // native token on polygon matic
+    ],
+    details: {
+      [Chain.Ethereum]: {
+        nativeToken: ETH,
+        wrappedToken: {
+          symbol: 'weth',
+          name: 'WETH',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          decimals: 18,
+        },
+      },
+      [Chain.Arbitrum]: {
+        nativeToken: ETH,
+        wrappedToken: {
+          symbol: 'weth',
+          name: 'WETH',
+          address: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1',
+          decimals: 18,
+        },
+      },
+      [Chain.Optimism]: {
+        nativeToken: ETH,
+        wrappedToken: {
+          symbol: 'weth',
+          name: 'WETH',
+          address: '0x4200000000000000000000000000000000000006',
+          decimals: 18,
+        },
+      },
+      [Chain.Polygon]: {
+        nativeToken: {
+          name: 'Matic Network Token',
+          symbol: 'MATIC',
+          decimals: 18,
+        },
+        wrappedToken: {
+          symbol: 'wmatic',
+          name: 'Wrapped Matic',
+          address: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
+          decimals: 18,
+        },
+      },
+      [Chain.Bsc]: {
+        nativeToken: { name: 'Binance Coin', symbol: 'BNB', decimals: 18 },
+        wrappedToken: {
+          symbol: 'wbnb',
+          name: 'Wrapped BNB',
+          address: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c',
+          decimals: 18,
+        },
+      },
+    },
+  },
+}

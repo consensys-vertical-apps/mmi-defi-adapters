@@ -23,64 +23,38 @@ import type {
   TypedContractMethod,
 } from "./common";
 
-export declare namespace FeedRegistryInterface {
-  export type PhaseStruct = {
-    phaseId: BigNumberish;
-    startingAggregatorRoundId: BigNumberish;
-    endingAggregatorRoundId: BigNumberish;
-  };
-
-  export type PhaseStructOutput = [
-    phaseId: bigint,
-    startingAggregatorRoundId: bigint,
-    endingAggregatorRoundId: bigint
-  ] & {
-    phaseId: bigint;
-    startingAggregatorRoundId: bigint;
-    endingAggregatorRoundId: bigint;
-  };
-}
-
 export interface ChainLinkInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "acceptOwnership"
-      | "confirmFeed"
+      | "accessController"
+      | "aggregator"
+      | "confirmAggregator"
       | "decimals"
       | "description"
-      | "getAccessController"
       | "getAnswer"
-      | "getCurrentPhaseId"
-      | "getFeed"
-      | "getNextRoundId"
-      | "getPhase"
-      | "getPhaseFeed"
-      | "getPhaseRange"
-      | "getPreviousRoundId"
-      | "getProposedFeed"
       | "getRoundData"
-      | "getRoundFeed"
       | "getTimestamp"
-      | "isFeedEnabled"
       | "latestAnswer"
       | "latestRound"
       | "latestRoundData"
       | "latestTimestamp"
       | "owner"
-      | "proposeFeed"
+      | "phaseAggregators"
+      | "phaseId"
+      | "proposeAggregator"
+      | "proposedAggregator"
       | "proposedGetRoundData"
       | "proposedLatestRoundData"
-      | "setAccessController"
+      | "setController"
       | "transferOwnership"
-      | "typeAndVersion"
       | "version"
   ): FunctionFragment;
 
   getEvent(
     nameOrSignatureOrTopic:
-      | "AccessControllerSet"
-      | "FeedConfirmed"
-      | "FeedProposed"
+      | "AnswerUpdated"
+      | "NewRound"
       | "OwnershipTransferRequested"
       | "OwnershipTransferred"
   ): EventFragment;
@@ -90,125 +64,93 @@ export interface ChainLinkInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "confirmFeed",
-    values: [AddressLike, AddressLike, AddressLike]
+    functionFragment: "accessController",
+    values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "decimals",
-    values: [AddressLike, AddressLike]
+    functionFragment: "aggregator",
+    values?: undefined
   ): string;
+  encodeFunctionData(
+    functionFragment: "confirmAggregator",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(functionFragment: "decimals", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "description",
-    values: [AddressLike, AddressLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getAccessController",
     values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "getAnswer",
-    values: [AddressLike, AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCurrentPhaseId",
-    values: [AddressLike, AddressLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getFeed",
-    values: [AddressLike, AddressLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getNextRoundId",
-    values: [AddressLike, AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getPhase",
-    values: [AddressLike, AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getPhaseFeed",
-    values: [AddressLike, AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getPhaseRange",
-    values: [AddressLike, AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getPreviousRoundId",
-    values: [AddressLike, AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getProposedFeed",
-    values: [AddressLike, AddressLike]
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "getRoundData",
-    values: [AddressLike, AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getRoundFeed",
-    values: [AddressLike, AddressLike, BigNumberish]
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "getTimestamp",
-    values: [AddressLike, AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "isFeedEnabled",
-    values: [AddressLike]
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "latestAnswer",
-    values: [AddressLike, AddressLike]
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "latestRound",
-    values: [AddressLike, AddressLike]
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "latestRoundData",
-    values: [AddressLike, AddressLike]
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "latestTimestamp",
-    values: [AddressLike, AddressLike]
+    values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "proposeFeed",
-    values: [AddressLike, AddressLike, AddressLike]
+    functionFragment: "phaseAggregators",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(functionFragment: "phaseId", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "proposeAggregator",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "proposedAggregator",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "proposedGetRoundData",
-    values: [AddressLike, AddressLike, BigNumberish]
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "proposedLatestRoundData",
-    values: [AddressLike, AddressLike]
+    values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "setAccessController",
+    functionFragment: "setController",
     values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
     values: [AddressLike]
   ): string;
-  encodeFunctionData(
-    functionFragment: "typeAndVersion",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "version",
-    values: [AddressLike, AddressLike]
-  ): string;
+  encodeFunctionData(functionFragment: "version", values?: undefined): string;
 
   decodeFunctionResult(
     functionFragment: "acceptOwnership",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "confirmFeed",
+    functionFragment: "accessController",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "aggregator", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "confirmAggregator",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "decimals", data: BytesLike): Result;
@@ -216,51 +158,13 @@ export interface ChainLinkInterface extends Interface {
     functionFragment: "description",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "getAccessController",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "getAnswer", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getCurrentPhaseId",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getFeed", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getNextRoundId",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getPhase", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getPhaseFeed",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getPhaseRange",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getPreviousRoundId",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getProposedFeed",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(
     functionFragment: "getRoundData",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getRoundFeed",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "getTimestamp",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "isFeedEnabled",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -281,7 +185,16 @@ export interface ChainLinkInterface extends Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "proposeFeed",
+    functionFragment: "phaseAggregators",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "phaseId", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "proposeAggregator",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "proposedAggregator",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -293,26 +206,31 @@ export interface ChainLinkInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setAccessController",
+    functionFragment: "setController",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "typeAndVersion",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "version", data: BytesLike): Result;
 }
 
-export namespace AccessControllerSetEvent {
-  export type InputTuple = [accessController: AddressLike, sender: AddressLike];
-  export type OutputTuple = [accessController: string, sender: string];
+export namespace AnswerUpdatedEvent {
+  export type InputTuple = [
+    current: BigNumberish,
+    roundId: BigNumberish,
+    updatedAt: BigNumberish
+  ];
+  export type OutputTuple = [
+    current: bigint,
+    roundId: bigint,
+    updatedAt: bigint
+  ];
   export interface OutputObject {
-    accessController: string;
-    sender: string;
+    current: bigint;
+    roundId: bigint;
+    updatedAt: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -320,58 +238,21 @@ export namespace AccessControllerSetEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export namespace FeedConfirmedEvent {
+export namespace NewRoundEvent {
   export type InputTuple = [
-    asset: AddressLike,
-    denomination: AddressLike,
-    latestAggregator: AddressLike,
-    previousAggregator: AddressLike,
-    nextPhaseId: BigNumberish,
-    sender: AddressLike
+    roundId: BigNumberish,
+    startedBy: AddressLike,
+    startedAt: BigNumberish
   ];
   export type OutputTuple = [
-    asset: string,
-    denomination: string,
-    latestAggregator: string,
-    previousAggregator: string,
-    nextPhaseId: bigint,
-    sender: string
+    roundId: bigint,
+    startedBy: string,
+    startedAt: bigint
   ];
   export interface OutputObject {
-    asset: string;
-    denomination: string;
-    latestAggregator: string;
-    previousAggregator: string;
-    nextPhaseId: bigint;
-    sender: string;
-  }
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
-}
-
-export namespace FeedProposedEvent {
-  export type InputTuple = [
-    asset: AddressLike,
-    denomination: AddressLike,
-    proposedAggregator: AddressLike,
-    currentAggregator: AddressLike,
-    sender: AddressLike
-  ];
-  export type OutputTuple = [
-    asset: string,
-    denomination: string,
-    proposedAggregator: string,
-    currentAggregator: string,
-    sender: string
-  ];
-  export interface OutputObject {
-    asset: string;
-    denomination: string;
-    proposedAggregator: string;
-    currentAggregator: string;
-    sender: string;
+    roundId: bigint;
+    startedBy: string;
+    startedAt: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -450,82 +331,24 @@ export interface ChainLink extends BaseContract {
 
   acceptOwnership: TypedContractMethod<[], [void], "nonpayable">;
 
-  confirmFeed: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, aggregator: AddressLike],
+  accessController: TypedContractMethod<[], [string], "view">;
+
+  aggregator: TypedContractMethod<[], [string], "view">;
+
+  confirmAggregator: TypedContractMethod<
+    [_aggregator: AddressLike],
     [void],
     "nonpayable"
   >;
 
-  decimals: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
+  decimals: TypedContractMethod<[], [bigint], "view">;
 
-  description: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [string],
-    "view"
-  >;
+  description: TypedContractMethod<[], [string], "view">;
 
-  getAccessController: TypedContractMethod<[], [string], "view">;
-
-  getAnswer: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
-    [bigint],
-    "view"
-  >;
-
-  getCurrentPhaseId: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
-
-  getFeed: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [string],
-    "view"
-  >;
-
-  getNextRoundId: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
-    [bigint],
-    "view"
-  >;
-
-  getPhase: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, phaseId: BigNumberish],
-    [FeedRegistryInterface.PhaseStructOutput],
-    "view"
-  >;
-
-  getPhaseFeed: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, phaseId: BigNumberish],
-    [string],
-    "view"
-  >;
-
-  getPhaseRange: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, phaseId: BigNumberish],
-    [[bigint, bigint] & { startingRoundId: bigint; endingRoundId: bigint }],
-    "view"
-  >;
-
-  getPreviousRoundId: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
-    [bigint],
-    "view"
-  >;
-
-  getProposedFeed: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [string],
-    "view"
-  >;
+  getAnswer: TypedContractMethod<[_roundId: BigNumberish], [bigint], "view">;
 
   getRoundData: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, _roundId: BigNumberish],
+    [_roundId: BigNumberish],
     [
       [bigint, bigint, bigint, bigint, bigint] & {
         roundId: bigint;
@@ -538,38 +361,14 @@ export interface ChainLink extends BaseContract {
     "view"
   >;
 
-  getRoundFeed: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
-    [string],
-    "view"
-  >;
+  getTimestamp: TypedContractMethod<[_roundId: BigNumberish], [bigint], "view">;
 
-  getTimestamp: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
-    [bigint],
-    "view"
-  >;
+  latestAnswer: TypedContractMethod<[], [bigint], "view">;
 
-  isFeedEnabled: TypedContractMethod<
-    [aggregator: AddressLike],
-    [boolean],
-    "view"
-  >;
-
-  latestAnswer: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
-
-  latestRound: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
+  latestRound: TypedContractMethod<[], [bigint], "view">;
 
   latestRoundData: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
+    [],
     [
       [bigint, bigint, bigint, bigint, bigint] & {
         roundId: bigint;
@@ -582,25 +381,27 @@ export interface ChainLink extends BaseContract {
     "view"
   >;
 
-  latestTimestamp: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
+  latestTimestamp: TypedContractMethod<[], [bigint], "view">;
 
   owner: TypedContractMethod<[], [string], "view">;
 
-  proposeFeed: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, aggregator: AddressLike],
+  phaseAggregators: TypedContractMethod<[arg0: BigNumberish], [string], "view">;
+
+  phaseId: TypedContractMethod<[], [bigint], "view">;
+
+  proposeAggregator: TypedContractMethod<
+    [_aggregator: AddressLike],
     [void],
     "nonpayable"
   >;
 
+  proposedAggregator: TypedContractMethod<[], [string], "view">;
+
   proposedGetRoundData: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
+    [_roundId: BigNumberish],
     [
       [bigint, bigint, bigint, bigint, bigint] & {
-        id: bigint;
+        roundId: bigint;
         answer: bigint;
         startedAt: bigint;
         updatedAt: bigint;
@@ -611,10 +412,10 @@ export interface ChainLink extends BaseContract {
   >;
 
   proposedLatestRoundData: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
+    [],
     [
       [bigint, bigint, bigint, bigint, bigint] & {
-        id: bigint;
+        roundId: bigint;
         answer: bigint;
         startedAt: bigint;
         updatedAt: bigint;
@@ -624,25 +425,19 @@ export interface ChainLink extends BaseContract {
     "view"
   >;
 
-  setAccessController: TypedContractMethod<
+  setController: TypedContractMethod<
     [_accessController: AddressLike],
     [void],
     "nonpayable"
   >;
 
   transferOwnership: TypedContractMethod<
-    [to: AddressLike],
+    [_to: AddressLike],
     [void],
     "nonpayable"
   >;
 
-  typeAndVersion: TypedContractMethod<[], [string], "view">;
-
-  version: TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
+  version: TypedContractMethod<[], [bigint], "view">;
 
   getFunction<T extends ContractMethod = ContractMethod>(
     key: string | FunctionFragment
@@ -652,96 +447,27 @@ export interface ChainLink extends BaseContract {
     nameOrSignature: "acceptOwnership"
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "confirmFeed"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, aggregator: AddressLike],
-    [void],
-    "nonpayable"
-  >;
+    nameOrSignature: "accessController"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "aggregator"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "confirmAggregator"
+  ): TypedContractMethod<[_aggregator: AddressLike], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "decimals"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
+  ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
     nameOrSignature: "description"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [string],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "getAccessController"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
     nameOrSignature: "getAnswer"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
-    [bigint],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "getCurrentPhaseId"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "getFeed"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [string],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "getNextRoundId"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
-    [bigint],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "getPhase"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, phaseId: BigNumberish],
-    [FeedRegistryInterface.PhaseStructOutput],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "getPhaseFeed"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, phaseId: BigNumberish],
-    [string],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "getPhaseRange"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, phaseId: BigNumberish],
-    [[bigint, bigint] & { startingRoundId: bigint; endingRoundId: bigint }],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "getPreviousRoundId"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
-    [bigint],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "getProposedFeed"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [string],
-    "view"
-  >;
+  ): TypedContractMethod<[_roundId: BigNumberish], [bigint], "view">;
   getFunction(
     nameOrSignature: "getRoundData"
   ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, _roundId: BigNumberish],
+    [_roundId: BigNumberish],
     [
       [bigint, bigint, bigint, bigint, bigint] & {
         roundId: bigint;
@@ -754,40 +480,18 @@ export interface ChainLink extends BaseContract {
     "view"
   >;
   getFunction(
-    nameOrSignature: "getRoundFeed"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
-    [string],
-    "view"
-  >;
-  getFunction(
     nameOrSignature: "getTimestamp"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
-    [bigint],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "isFeedEnabled"
-  ): TypedContractMethod<[aggregator: AddressLike], [boolean], "view">;
+  ): TypedContractMethod<[_roundId: BigNumberish], [bigint], "view">;
   getFunction(
     nameOrSignature: "latestAnswer"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
+  ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
     nameOrSignature: "latestRound"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
+  ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
     nameOrSignature: "latestRoundData"
   ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
+    [],
     [
       [bigint, bigint, bigint, bigint, bigint] & {
         roundId: bigint;
@@ -801,28 +505,29 @@ export interface ChainLink extends BaseContract {
   >;
   getFunction(
     nameOrSignature: "latestTimestamp"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
+  ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
     nameOrSignature: "owner"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
-    nameOrSignature: "proposeFeed"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, aggregator: AddressLike],
-    [void],
-    "nonpayable"
-  >;
+    nameOrSignature: "phaseAggregators"
+  ): TypedContractMethod<[arg0: BigNumberish], [string], "view">;
+  getFunction(
+    nameOrSignature: "phaseId"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "proposeAggregator"
+  ): TypedContractMethod<[_aggregator: AddressLike], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "proposedAggregator"
+  ): TypedContractMethod<[], [string], "view">;
   getFunction(
     nameOrSignature: "proposedGetRoundData"
   ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike, roundId: BigNumberish],
+    [_roundId: BigNumberish],
     [
       [bigint, bigint, bigint, bigint, bigint] & {
-        id: bigint;
+        roundId: bigint;
         answer: bigint;
         startedAt: bigint;
         updatedAt: bigint;
@@ -834,10 +539,10 @@ export interface ChainLink extends BaseContract {
   getFunction(
     nameOrSignature: "proposedLatestRoundData"
   ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
+    [],
     [
       [bigint, bigint, bigint, bigint, bigint] & {
-        id: bigint;
+        roundId: bigint;
         answer: bigint;
         startedAt: bigint;
         updatedAt: bigint;
@@ -847,7 +552,7 @@ export interface ChainLink extends BaseContract {
     "view"
   >;
   getFunction(
-    nameOrSignature: "setAccessController"
+    nameOrSignature: "setController"
   ): TypedContractMethod<
     [_accessController: AddressLike],
     [void],
@@ -855,38 +560,24 @@ export interface ChainLink extends BaseContract {
   >;
   getFunction(
     nameOrSignature: "transferOwnership"
-  ): TypedContractMethod<[to: AddressLike], [void], "nonpayable">;
-  getFunction(
-    nameOrSignature: "typeAndVersion"
-  ): TypedContractMethod<[], [string], "view">;
+  ): TypedContractMethod<[_to: AddressLike], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "version"
-  ): TypedContractMethod<
-    [base: AddressLike, quote: AddressLike],
-    [bigint],
-    "view"
-  >;
+  ): TypedContractMethod<[], [bigint], "view">;
 
   getEvent(
-    key: "AccessControllerSet"
+    key: "AnswerUpdated"
   ): TypedContractEvent<
-    AccessControllerSetEvent.InputTuple,
-    AccessControllerSetEvent.OutputTuple,
-    AccessControllerSetEvent.OutputObject
+    AnswerUpdatedEvent.InputTuple,
+    AnswerUpdatedEvent.OutputTuple,
+    AnswerUpdatedEvent.OutputObject
   >;
   getEvent(
-    key: "FeedConfirmed"
+    key: "NewRound"
   ): TypedContractEvent<
-    FeedConfirmedEvent.InputTuple,
-    FeedConfirmedEvent.OutputTuple,
-    FeedConfirmedEvent.OutputObject
-  >;
-  getEvent(
-    key: "FeedProposed"
-  ): TypedContractEvent<
-    FeedProposedEvent.InputTuple,
-    FeedProposedEvent.OutputTuple,
-    FeedProposedEvent.OutputObject
+    NewRoundEvent.InputTuple,
+    NewRoundEvent.OutputTuple,
+    NewRoundEvent.OutputObject
   >;
   getEvent(
     key: "OwnershipTransferRequested"
@@ -904,37 +595,26 @@ export interface ChainLink extends BaseContract {
   >;
 
   filters: {
-    "AccessControllerSet(address,address)": TypedContractEvent<
-      AccessControllerSetEvent.InputTuple,
-      AccessControllerSetEvent.OutputTuple,
-      AccessControllerSetEvent.OutputObject
+    "AnswerUpdated(int256,uint256,uint256)": TypedContractEvent<
+      AnswerUpdatedEvent.InputTuple,
+      AnswerUpdatedEvent.OutputTuple,
+      AnswerUpdatedEvent.OutputObject
     >;
-    AccessControllerSet: TypedContractEvent<
-      AccessControllerSetEvent.InputTuple,
-      AccessControllerSetEvent.OutputTuple,
-      AccessControllerSetEvent.OutputObject
-    >;
-
-    "FeedConfirmed(address,address,address,address,uint16,address)": TypedContractEvent<
-      FeedConfirmedEvent.InputTuple,
-      FeedConfirmedEvent.OutputTuple,
-      FeedConfirmedEvent.OutputObject
-    >;
-    FeedConfirmed: TypedContractEvent<
-      FeedConfirmedEvent.InputTuple,
-      FeedConfirmedEvent.OutputTuple,
-      FeedConfirmedEvent.OutputObject
+    AnswerUpdated: TypedContractEvent<
+      AnswerUpdatedEvent.InputTuple,
+      AnswerUpdatedEvent.OutputTuple,
+      AnswerUpdatedEvent.OutputObject
     >;
 
-    "FeedProposed(address,address,address,address,address)": TypedContractEvent<
-      FeedProposedEvent.InputTuple,
-      FeedProposedEvent.OutputTuple,
-      FeedProposedEvent.OutputObject
+    "NewRound(uint256,address,uint256)": TypedContractEvent<
+      NewRoundEvent.InputTuple,
+      NewRoundEvent.OutputTuple,
+      NewRoundEvent.OutputObject
     >;
-    FeedProposed: TypedContractEvent<
-      FeedProposedEvent.InputTuple,
-      FeedProposedEvent.OutputTuple,
-      FeedProposedEvent.OutputObject
+    NewRound: TypedContractEvent<
+      NewRoundEvent.InputTuple,
+      NewRoundEvent.OutputTuple,
+      NewRoundEvent.OutputObject
     >;
 
     "OwnershipTransferRequested(address,address)": TypedContractEvent<

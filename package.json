@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/defi-adapters",
-  "version": "0.6.6",
+  "version": "0.6.13",
   "description": "Defi adapters for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "LICENSE",
     "README.md"
   ],
+  "sideEffects": false,
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
@@ -35,6 +36,7 @@
     "apr": "npm run adapters-cli apr --",
     "deposits": "npm run adapters-cli deposits --",
     "withdrawals": "npm run adapters-cli withdrawals --",
+    "stress": "npm run adapters-cli stress --",
     "fix": "run-s fix:*",
     "fix:lint": "eslint \"src/**/*.ts\" --fix",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",

@@ -1,0 +1,760 @@
+{
+  "0x0000000000000000000000000000000000000000": {
+    "symbol": "weth",
+    "name": "WETH",
+    "address": "0x0000000000000000000000000000000000000000",
+    "decimals": 18,
+    "isBaseTokenEth": true
+  },
+  "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
+    "symbol": "weth",
+    "name": "WETH",
+    "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "decimals": 18,
+    "isBaseTokenEth": true
+  },
+  "0x0000000000000000000000000000000000001010": {
+    "symbol": "weth",
+    "name": "WETH",
+    "address": "0x0000000000000000000000000000000000001010",
+    "decimals": 18,
+    "isBaseTokenEth": true
+  },
+  "0x4200000000000000000000000000000000000006": {
+    "name": "Wrapped Ether",
+    "symbol": "WETH",
+    "decimals": 18,
+    "address": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": true
+  },
+  "0x4200000000000000000000000000000000000042": {
+    "address": "0x4200000000000000000000000000000000000042",
+    "name": "Optimism",
+    "symbol": "OP",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x4200000000000000000000000000000000000042",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x76fb31fb4af56892a25e32cfc43de717950c9278": {
+    "address": "0x76fb31fb4af56892a25e32cfc43de717950c9278",
+    "name": "Aave Token",
+    "symbol": "AAVE",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x76fb31fb4af56892a25e32cfc43de717950c9278",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xff733b2a3557a7ed6697007ab5d11b79fdd1b76b": {
+    "address": "0xff733b2a3557a7ed6697007ab5d11b79fdd1b76b",
+    "name": "Across Protocol Token",
+    "symbol": "ACX",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xff733b2a3557a7ed6697007ab5d11b79fdd1b76b",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x61baadcf22d2565b0f471b291c475db5555e0b76": {
+    "address": "0x61baadcf22d2565b0f471b291c475db5555e0b76",
+    "name": "Aelin Token",
+    "symbol": "AELIN",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x61baadcf22d2565b0f471b291c475db5555e0b76",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x29faf5905bff9cfcc7cf56a5ed91e0f091f8664b": {
+    "address": "0x29faf5905bff9cfcc7cf56a5ed91e0f091f8664b",
+    "name": "Bankless Token",
+    "symbol": "BANK",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x29faf5905bff9cfcc7cf56a5ed91e0f091f8664b",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4": {
+    "address": "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4",
+    "name": "BLOCKv",
+    "symbol": "VEE",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xe3c332a5dce0e1d9bc2cc72a68437790570c28a4",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x7f5c764cbc14f9669b88837ca1490cca17c31607": {
+    "address": "0x7f5c764cbc14f9669b88837ca1490cca17c31607",
+    "name": "USD Coin",
+    "symbol": "USDC",
+    "decimals": 6,
+    "uniswapFee": 10000,
+    "baseAddress": "0x7f5c764cbc14f9669b88837ca1490cca17c31607",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6": {
+    "address": "0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6",
+    "name": "ChainLink Token",
+    "symbol": "LINK",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x8b21e9b7daf2c4325bf3d18c1beb79a347fe902a": {
+    "address": "0x8b21e9b7daf2c4325bf3d18c1beb79a347fe902a",
+    "name": "Collab.Land",
+    "symbol": "COLLAB",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x8b21e9b7daf2c4325bf3d18c1beb79a347fe902a",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x58b9cb810a68a7f3e1e4f8cb45d1b9b3c79705e8": {
+    "address": "0x58b9cb810a68a7f3e1e4f8cb45d1b9b3c79705e8",
+    "name": "Connext",
+    "symbol": "NEXT",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x58b9cb810a68a7f3e1e4f8cb45d1b9b3c79705e8",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x0994206dfe8de6ec6920ff4d779b0d950605fb53": {
+    "address": "0x0994206dfe8de6ec6920ff4d779b0d950605fb53",
+    "name": "Curve DAO Token",
+    "symbol": "CRV",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x0994206dfe8de6ec6920ff4d779b0d950605fb53",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x14778860e937f509e651192a90589de711fb88a9": {
+    "address": "0x14778860e937f509e651192a90589de711fb88a9",
+    "name": "CyberConnect",
+    "symbol": "CYBER",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x14778860e937f509e651192a90589de711fb88a9",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1": {
+    "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+    "name": "Dai Stablecoin",
+    "symbol": "DAI",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x1da650c3b2daa8aa9ff6f661d4156ce24d08a062": {
+    "address": "0x1da650c3b2daa8aa9ff6f661d4156ce24d08a062",
+    "name": "Dentacoin",
+    "symbol": "DCN",
+    "decimals": 0,
+    "uniswapFee": 10000,
+    "baseAddress": "0x1da650c3b2daa8aa9ff6f661d4156ce24d08a062",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xaf9fe3b5ccdae78188b1f8b9a49da7ae9510f151": {
+    "address": "0xaf9fe3b5ccdae78188b1f8b9a49da7ae9510f151",
+    "name": "dHEDGE DAO Token",
+    "symbol": "DHT",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xaf9fe3b5ccdae78188b1f8b9a49da7ae9510f151",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x00f932f0fe257456b32deda4758922e56a4f4b42": {
+    "address": "0x00f932f0fe257456b32deda4758922e56a4f4b42",
+    "name": "Paper",
+    "symbol": "PAPER",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x00f932f0fe257456b32deda4758922e56a4f4b42",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x2dad3a13ef0c6366220f989157009e501e7938f8": {
+    "address": "0x2dad3a13ef0c6366220f989157009e501e7938f8",
+    "name": "Extra Finance",
+    "symbol": "EXTRA",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x2dad3a13ef0c6366220f989157009e501e7938f8",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xfd389dc9533717239856190f42475d3f263a270d": {
+    "address": "0xfd389dc9533717239856190f42475d3f263a270d",
+    "name": "Granary Token",
+    "symbol": "GRAIN",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xfd389dc9533717239856190f42475d3f263a270d",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x50bce64397c75488465253c0a034b8097fea6578": {
+    "address": "0x50bce64397c75488465253c0a034b8097fea6578",
+    "name": "HanChain",
+    "symbol": "HAN",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x50bce64397c75488465253c0a034b8097fea6578",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x8700daec35af8ff88c16bdf0418774cb3d7599b4": {
+    "address": "0x8700daec35af8ff88c16bdf0418774cb3d7599b4",
+    "name": "Synthetix Network Token",
+    "symbol": "SNX",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x8700daec35af8ff88c16bdf0418774cb3d7599b4",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc": {
+    "address": "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc",
+    "name": "Hop",
+    "symbol": "HOP",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x10010078a54396f62c96df8532dc2b4847d47ed3": {
+    "address": "0x10010078a54396f62c96df8532dc2b4847d47ed3",
+    "name": "Hundred Finance",
+    "symbol": "HND",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x10010078a54396f62c96df8532dc2b4847d47ed3",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x920cf626a271321c151d027030d5d08af699456b": {
+    "address": "0x920cf626a271321c151d027030d5d08af699456b",
+    "name": "Kwenta",
+    "symbol": "KWENTA",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x920cf626a271321c151d027030d5d08af699456b",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xa00e3a3511aac35ca78530c85007afcd31753819": {
+    "address": "0xa00e3a3511aac35ca78530c85007afcd31753819",
+    "name": "Kyber Network Crystal v2",
+    "symbol": "KNC",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xa00e3a3511aac35ca78530c85007afcd31753819",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xfdb794692724153d1488ccdbe0c56c252596735f": {
+    "address": "0xfdb794692724153d1488ccdbe0c56c252596735f",
+    "name": "Lido DAO Token",
+    "symbol": "LDO",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xfdb794692724153d1488ccdbe0c56c252596735f",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xc40f949f8a4e094d1b49a23ea9241d289b7b2819": {
+    "address": "0xc40f949f8a4e094d1b49a23ea9241d289b7b2819",
+    "name": "LUSD Stablecoin",
+    "symbol": "LUSD",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xc40f949f8a4e094d1b49a23ea9241d289b7b2819",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x50c5725949a6f0c72e6c4a641f24049a917db0cb": {
+    "address": "0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
+    "name": "Lyra Token",
+    "symbol": "LYRA",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xc04fb38f10ad352c5f16bd4546f7456e7f1a2d9e": {
+    "address": "0xc04fb38f10ad352c5f16bd4546f7456e7f1a2d9e",
+    "name": "Minato",
+    "symbol": "MNTO",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xc04fb38f10ad352c5f16bd4546f7456e7f1a2d9e",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x47536f17f4ff30e64a96a7555826b8f9e66ec468": {
+    "address": "0x47536f17f4ff30e64a96a7555826b8f9e66ec468",
+    "name": "MUMMY",
+    "symbol": "MMY",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x47536f17f4ff30e64a96a7555826b8f9e66ec468",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x8637725ada78db0674a679cea2a5e0a0869ef4a1": {
+    "address": "0x8637725ada78db0674a679cea2a5e0a0869ef4a1",
+    "name": "NFTEarthOFT",
+    "symbol": "NFTE",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x8637725ada78db0674a679cea2a5e0a0869ef4a1",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9": {
+    "address": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
+    "name": "Synth sUSD",
+    "symbol": "sUSD",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xd3ac016b1b8c80eeadde4d186a9138c9324e4189": {
+    "address": "0xd3ac016b1b8c80eeadde4d186a9138c9324e4189",
+    "name": "Okcash",
+    "symbol": "OK",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xd3ac016b1b8c80eeadde4d186a9138c9324e4189",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xcdb4bb51801a1f399d4402c61bc098a72c382e65": {
+    "address": "0xcdb4bb51801a1f399d4402c61bc098a72c382e65",
+    "name": "OPX",
+    "symbol": "OPX",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xcdb4bb51801a1f399d4402c61bc098a72c382e65",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x9e1028f5f1d5ede59748ffcee5532509976840e0": {
+    "address": "0x9e1028f5f1d5ede59748ffcee5532509976840e0",
+    "name": "Perpetual",
+    "symbol": "PERP",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x9e1028f5f1d5ede59748ffcee5532509976840e0",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x9a601c5bb360811d96a23689066af316a30c3027": {
+    "address": "0x9a601c5bb360811d96a23689066af316a30c3027",
+    "name": "Pika",
+    "symbol": "PIKA",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x9a601c5bb360811d96a23689066af316a30c3027",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x395ae52bb17aef68c2888d941736a71dc6d4e125": {
+    "address": "0x395ae52bb17aef68c2888d941736a71dc6d4e125",
+    "name": "PoolTogether",
+    "symbol": "POOL",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x395ae52bb17aef68c2888d941736a71dc6d4e125",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x374ad0f47f4ca39c78e5cc54f1c9e426ff8f231a": {
+    "address": "0x374ad0f47f4ca39c78e5cc54f1c9e426ff8f231a",
+    "name": "Premia",
+    "symbol": "PREMIA",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x374ad0f47f4ca39c78e5cc54f1c9e426ff8f231a",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x7fb688ccf682d58f86d7e38e03f9d22e7705448b": {
+    "address": "0x7fb688ccf682d58f86d7e38e03f9d22e7705448b",
+    "name": "Rai Reflex Index",
+    "symbol": "RAI",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x7fb688ccf682d58f86d7e38e03f9d22e7705448b",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xecf46257ed31c329f204eb43e254c609dee143b3": {
+    "address": "0xecf46257ed31c329f204eb43e254c609dee143b3",
+    "name": "Rigo Token",
+    "symbol": "GRG",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xecf46257ed31c329f204eb43e254c609dee143b3",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x9bcef72be871e61ed4fbbc7630889bee758eb81d": {
+    "address": "0x9bcef72be871e61ed4fbbc7630889bee758eb81d",
+    "name": "Rocket Pool ETH",
+    "symbol": "rETH",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x9bcef72be871e61ed4fbbc7630889bee758eb81d",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xc55e93c62874d8100dbd2dfe307edc1036ad5434": {
+    "address": "0xc55e93c62874d8100dbd2dfe307edc1036ad5434",
+    "name": "Moo BIFI",
+    "symbol": "mooBIFI",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xc55e93c62874d8100dbd2dfe307edc1036ad5434",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x296f55f8fb28e498b858d0bcda06d955b2cb3f97": {
+    "address": "0x296f55f8fb28e498b858d0bcda06d955b2cb3f97",
+    "name": "StargateToken",
+    "symbol": "STG",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x296f55f8fb28e498b858d0bcda06d955b2cb3f97",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x5a5fff6f753d7c11a56a52fe47a177a87e431655": {
+    "address": "0x5a5fff6f753d7c11a56a52fe47a177a87e431655",
+    "name": "Synapse",
+    "symbol": "SYN",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x5a5fff6f753d7c11a56a52fe47a177a87e431655",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58": {
+    "address": "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58",
+    "name": "Tether USD",
+    "symbol": "USDT",
+    "decimals": 6,
+    "uniswapFee": 10000,
+    "baseAddress": "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x6fd9d7ad17242c41f7131d257212c54a0e816691": {
+    "address": "0x6fd9d7ad17242c41f7131d257212c54a0e816691",
+    "name": "Uniswap",
+    "symbol": "UNI",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x6fd9d7ad17242c41f7131d257212c54a0e816691",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x9560e827af36c94d2ac33a39bce1fe78631088db": {
+    "address": "0x9560e827af36c94d2ac33a39bce1fe78631088db",
+    "name": "VelodromeV2",
+    "symbol": "VELO",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x9560e827af36c94d2ac33a39bce1fe78631088db",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xaf20f5f19698f1d19351028cd7103b63d30de7d7": {
+    "address": "0xaf20f5f19698f1d19351028cd7103b63d30de7d7",
+    "name": "Wagmi",
+    "symbol": "WAGMI",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xaf20f5f19698f1d19351028cd7103b63d30de7d7",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1": {
+    "address": "0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1",
+    "name": "Worldcoin",
+    "symbol": "WLD",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x68f180fcce6836688e9084f035309e29bf0a2095": {
+    "address": "0x68f180fcce6836688e9084f035309e29bf0a2095",
+    "name": "Wrapped BTC",
+    "symbol": "WBTC",
+    "decimals": 8,
+    "uniswapFee": 10000,
+    "baseAddress": "0x68f180fcce6836688e9084f035309e29bf0a2095",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x3e29d3a9316dab217754d13b28646b76607c5f04": {
+    "address": "0x3e29d3a9316dab217754d13b28646b76607c5f04",
+    "name": "Alchemix ETH",
+    "symbol": "alETH",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x3e29d3a9316dab217754d13b28646b76607c5f04",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xfe8b128ba8c78aabc59d4c64cee7ff28e9379921": {
+    "address": "0xfe8b128ba8c78aabc59d4c64cee7ff28e9379921",
+    "name": "Balancer",
+    "symbol": "BAL",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0xfe8b128ba8c78aabc59d4c64cee7ff28e9379921",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x3e7ef8f50246f725885102e8238cbba33f276747": {
+    "address": "0x3e7ef8f50246f725885102e8238cbba33f276747",
+    "name": "BarnBridge Governance Token (Optimism)",
+    "symbol": "BOND",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x3e7ef8f50246f725885102e8238cbba33f276747",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x9b88d293b7a791e40d36a39765ffd5a1b9b5c349": {
+    "address": "0x9b88d293b7a791e40d36a39765ffd5a1b9b5c349",
+    "name": "Celo native asset",
+    "symbol": "CELO",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x9b88d293b7a791e40d36a39765ffd5a1b9b5c349",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x8ae125e8653821e851f12a49f7765db9a9ce7384": {
+    "address": "0x8ae125e8653821e851f12a49f7765db9a9ce7384",
+    "name": "Dola USD Stablecoin",
+    "symbol": "DOLA",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x8ae125e8653821e851f12a49f7765db9a9ce7384",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x2e3d870790dc77a83dd1d18184acc7439a53f475": {
+    "address": "0x2e3d870790dc77a83dd1d18184acc7439a53f475",
+    "name": "Frax",
+    "symbol": "FRAX",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x2e3d870790dc77a83dd1d18184acc7439a53f475",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xe453d6649643f1f460c371dc3d1da98f7922fe51": {
+    "address": "0xe453d6649643f1f460c371dc3d1da98f7922fe51",
+    "name": "Fuse Token",
+    "symbol": "FUSE",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0xe453d6649643f1f460c371dc3d1da98f7922fe51",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x9fd22a17b4a96da3f83797d122172c450381fb88": {
+    "address": "0x9fd22a17b4a96da3f83797d122172c450381fb88",
+    "name": "JEFE TOKEN",
+    "symbol": "JEFE",
+    "decimals": 9,
+    "uniswapFee": 3000,
+    "baseAddress": "0x9fd22a17b4a96da3f83797d122172c450381fb88",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xf98dcd95217e15e05d8638da4c91125e59590b07": {
+    "address": "0xf98dcd95217e15e05d8638da4c91125e59590b07",
+    "name": "Kromatika",
+    "symbol": "KROM",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0xf98dcd95217e15e05d8638da4c91125e59590b07",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xdfa46478f9e5ea86d57387849598dbfb2e964b02": {
+    "address": "0xdfa46478f9e5ea86d57387849598dbfb2e964b02",
+    "name": "Mai Stablecoin",
+    "symbol": "MAI",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0xdfa46478f9e5ea86d57387849598dbfb2e964b02",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b": {
+    "address": "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b",
+    "name": "0xBitcoin Token",
+    "symbol": "0xBTC",
+    "decimals": 8,
+    "uniswapFee": 3000,
+    "baseAddress": "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xe405de8f52ba7559f9df3c368500b6e6ae6cee49": {
+    "address": "0xe405de8f52ba7559f9df3c368500b6e6ae6cee49",
+    "name": "Synth sETH",
+    "symbol": "sETH",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0xe405de8f52ba7559f9df3c368500b6e6ae6cee49",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x1db2466d9f5e10d7090e7152b68d62703a2245f0": {
+    "address": "0x1db2466d9f5e10d7090e7152b68d62703a2245f0",
+    "name": "Sonne",
+    "symbol": "SONNE",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x1db2466d9f5e10d7090e7152b68d62703a2245f0",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x1f514a61bcde34f94bc39731235690ab9da737f7": {
+    "address": "0x1f514a61bcde34f94bc39731235690ab9da737f7",
+    "name": "Tarot",
+    "symbol": "TAROT",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x1f514a61bcde34f94bc39731235690ab9da737f7",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40": {
+    "address": "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40",
+    "name": "Optimism tBTC v2",
+    "symbol": "tBTC",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x217d47011b23bb961eb6d93ca9945b7501a5bb11": {
+    "address": "0x217d47011b23bb961eb6d93ca9945b7501a5bb11",
+    "name": "Thales DAO Token",
+    "symbol": "THALES",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x217d47011b23bb961eb6d93ca9945b7501a5bb11",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x8f69ee043d52161fd29137aedf63f5e70cd504d5": {
+    "address": "0x8f69ee043d52161fd29137aedf63f5e70cd504d5",
+    "name": "The Doge NFT",
+    "symbol": "DOG",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x8f69ee043d52161fd29137aedf63f5e70cd504d5",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x0b2c639c533813f4aa9d7837caf62653d097ff85": {
+    "address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+    "name": "USD Coin",
+    "symbol": "USDC",
+    "decimals": 6,
+    "uniswapFee": 3000,
+    "baseAddress": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb": {
+    "address": "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb",
+    "name": "Wrapped liquid staked Ether 2.0",
+    "symbol": "wstETH",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x9c9e5fd8bbc25984b178fdce6117defa39d2db39": {
+    "address": "0x9c9e5fd8bbc25984b178fdce6117defa39d2db39",
+    "name": "BUSD Token",
+    "symbol": "BUSD",
+    "decimals": 18,
+    "uniswapFee": 500,
+    "baseAddress": "0x9c9e5fd8bbc25984b178fdce6117defa39d2db39",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b": {
+    "address": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
+    "name": "BOB",
+    "symbol": "BOB",
+    "decimals": 18,
+    "uniswapFee": 500,
+    "baseAddress": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xaddb6a0412de1ba0f936dcaeb8aaa24578dcf3b2": {
+    "address": "0xaddb6a0412de1ba0f936dcaeb8aaa24578dcf3b2",
+    "name": "Coinbase Wrapped Staked ETH",
+    "symbol": "cbETH",
+    "decimals": 18,
+    "uniswapFee": 500,
+    "baseAddress": "0xaddb6a0412de1ba0f936dcaeb8aaa24578dcf3b2",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0xdb4ea87ff83eb1c80b8976fc47731da6a31d35e5": {
+    "address": "0xdb4ea87ff83eb1c80b8976fc47731da6a31d35e5",
+    "name": "wTBT(Bridge Token)",
+    "symbol": "wTBT",
+    "decimals": 18,
+    "uniswapFee": 500,
+    "baseAddress": "0xdb4ea87ff83eb1c80b8976fc47731da6a31d35e5",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  },
+  "0x29cb69d4780b53c1e5cd4d2b817142d2e9890715": {
+    "address": "0x29cb69d4780b53c1e5cd4d2b817142d2e9890715",
+    "name": "Prize WETH - Aave",
+    "symbol": "pWETH",
+    "decimals": 18,
+    "uniswapFee": 100,
+    "baseAddress": "0x29cb69d4780b53c1e5cd4d2b817142d2e9890715",
+    "quoteAddress": "0x4200000000000000000000000000000000000006",
+    "isBaseTokenEth": false
+  }
+}

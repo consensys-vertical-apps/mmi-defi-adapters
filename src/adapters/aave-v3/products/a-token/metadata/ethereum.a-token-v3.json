@@ -349,6 +349,20 @@
       "decimals": 18
     }
   },
+  "0xb82fa9f31612989525992fcfbb09ab22eff5c85a": {
+    "protocolToken": {
+      "address": "0xb82fa9f31612989525992fcfbb09ab22eff5c85a",
+      "name": "Aave Ethereum crvUSD",
+      "symbol": "aEthcrvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    }
+  },
   "0x8a458a9dc9048e005d22849f470891b840296619": {
     "protocolToken": {
       "address": "0x8a458a9dc9048e005d22849f470891b840296619",

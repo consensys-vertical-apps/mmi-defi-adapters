@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97": {
-    "protocolToken": {
-      "address": "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97",
-      "name": "Aave Avalanche WAVAX",
-      "symbol": "aAvaWAVAX",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
-      "decimals": 18
-    }
-  },
   "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff": {
     "protocolToken": {
       "address": "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff",
@@ -136,20 +122,6 @@
       "address": "0xd24c2ad096400b6fbcd2ad8b24e7acbc21a1da64",
       "name": "Frax",
       "symbol": "FRAX",
-      "decimals": 18
-    }
-  },
-  "0x8eb270e296023e9d92081fdf967ddd7878724424": {
-    "protocolToken": {
-      "address": "0x8eb270e296023e9d92081fdf967ddd7878724424",
-      "name": "Aave Avalanche MAI",
-      "symbol": "aAvaMAI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x5c49b268c9841aff1cc3b0a418ff5c3442ee3f3b",
-      "name": "Mai Stablecoin",
-      "symbol": "MAI",
       "decimals": 18
     }
   },

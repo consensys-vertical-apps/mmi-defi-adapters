@@ -25,7 +25,7 @@
 
 ### type
 
-• **type**: ``"underlying"``
+• **type**: ``"underlying"`` \| ``"fiat"``
 
 #### Defined in
 

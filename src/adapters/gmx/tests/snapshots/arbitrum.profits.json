@@ -12,7 +12,7 @@
       "productId": "glp",
       "success": false,
       "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+        "message": "Unable to calculate profits, missing USD price for token position 0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
         "details": {
           "name": "Error"
         }

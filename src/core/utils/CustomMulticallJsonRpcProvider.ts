@@ -7,8 +7,14 @@ export interface CustomTransactionRequest extends TransactionRequest {
   blockTag?: number
 }
 
+type CacheEntry = { result: string; timestamp: number }
+
+const THIRTY_MINUTES = 30 * 60 * 1000
+
 export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   private multicallQueue: MulticallQueue
+  private cache: Record<string, Promise<CacheEntry>>
+
   constructor({
     url,
     chainId,
@@ -22,13 +28,37 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   }) {
     super({ url, chainId, options })
     this.multicallQueue = multicallQueue
+    this.cache = {}
   }
 
   async call(transaction: CustomTransactionRequest): Promise<string> {
-    if (transaction.from) {
-      return super.call(transaction)
+    const key = JSON.stringify(transaction)
+
+    const cachedEntryPromise = this.cache[key]
+
+    if (cachedEntryPromise) {
+      const now = Date.now()
+
+      const entry = await cachedEntryPromise
+
+      if (now - entry.timestamp < THIRTY_MINUTES) {
+        return entry.result
+      }
     }
 
-    return this.multicallQueue.queueCall(transaction)
+    const entryPromise = (async () => {
+      const result = transaction.from
+        ? super.call(transaction)
+        : this.multicallQueue.queueCall(transaction)
+
+      return {
+        result: await result,
+        timestamp: Date.now(),
+      }
+    })()
+
+    this.cache[key] = entryPromise
+
+    return (await entryPromise).result
   }
 }

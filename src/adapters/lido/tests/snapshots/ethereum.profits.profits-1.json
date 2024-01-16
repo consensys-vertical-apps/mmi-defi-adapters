@@ -18,13 +18,13 @@
           "symbol": "stETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": 0.03334191000000075,
-          "performance": 0.004292972910344731,
+          "profit": 0.033341907355143974,
+          "performance": 0.004292972565871138,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 7.76662483,
-            "endPositionValue": 7.79996674
+            "startPositionValue": 7.7666248371140405,
+            "endPositionValue": 7.7999667444691845
           }
         }
       ],

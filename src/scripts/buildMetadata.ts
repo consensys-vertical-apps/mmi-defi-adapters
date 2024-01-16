@@ -63,26 +63,28 @@ export function buildMetadata(
             adaptersController.fetchChainProtocolAdapters(chainId, protocolId)
 
           for (const [_, adapter] of chainProtocolAdapters) {
-            if (isIMetadataBuilder(adapter)) {
-              const { metadata, fileDetails } = (await adapter.buildMetadata(
-                true,
-              )) as {
-                metadata: Json
-                fileDetails: {
-                  protocolId: Protocol
-                  productId: string
-                  chainId: Chain
-                  fileKey: string
-                }
-              }
-
-              await writeMetadataToFile({
-                ...fileDetails,
-                metadata,
-              })
-
-              addStaticImport(fileDetails)
+            if (!isIMetadataBuilder(adapter)) {
+              continue
             }
+
+            const { metadata, fileDetails } = (await adapter.buildMetadata(
+              true,
+            )) as {
+              metadata: Json
+              fileDetails: {
+                protocolId: Protocol
+                productId: string
+                chainId: Chain
+                fileKey: string
+              }
+            }
+
+            await writeMetadataToFile({
+              ...fileDetails,
+              metadata,
+            })
+
+            await addStaticImport(fileDetails)
           }
         }
       }

@@ -8,6 +8,7 @@ import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/variable-
 import { AaveV3ATokenPoolAdapter } from './aave-v3/products/a-token/aaveV3ATokenPoolAdapter'
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenPoolAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenPoolAdapter'
+import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import { CompoundPoolAdapter } from './compound/products/pool/compoundPoolAdapter'
 import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/convexCvxcrvWrapperAdapter'
 import { ConvexExtraRewardAdapter } from './convex/products/extra-reward/convexExtraRewardAdapter'
@@ -18,6 +19,7 @@ import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
+import { IZiswapAdapter } from './iziswap/products/iziswap/iZiswapAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
@@ -27,11 +29,14 @@ import { MorphoAaveV3ETHOptimizerBorrowAdapter } from './morpho-aave-v3-eth/prod
 import { MorphoAaveV3ETHOptimizerSupplyAdapter } from './morpho-aave-v3-eth/products/optimizer-supply/morphoAaveV3ETHOptimizerSupplyAdapter'
 import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
 import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
+import { MendiFinanceBorrowAdapter } from './mendi-finance/products/borrow/mendiFinanceBorrowAdapter'
+import { MendiFinanceSupplyAdapter } from './mendi-finance/products/supply/mendiFinanceSupplyAdapter'
 import { PricesUSDAdapter } from './prices/products/usd/pricesUSDAdapter'
 import { Protocol } from './protocols'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
+import { SyncswapPoolAdapter } from './syncswap/products/pool/syncswapPoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 
 export const supportedProtocols: Record<
@@ -169,5 +174,27 @@ export const supportedProtocols: Record<
 
   [Protocol.Prices]: {
     [Chain.Ethereum]: [PricesUSDAdapter],
+    [Chain.Arbitrum]: [PricesUSDAdapter],
+    [Chain.Optimism]: [PricesUSDAdapter],
+    [Chain.Polygon]: [PricesUSDAdapter],
+  },
+
+  [Protocol.IZiSwap]: {
+    [Chain.Bsc]: [IZiswapAdapter],
+    [Chain.Base]: [IZiswapAdapter],
+    [Chain.Arbitrum]: [IZiswapAdapter],
+    [Chain.Linea]: [IZiswapAdapter],
+  },
+
+  [Protocol.ChimpExchange]: {
+    [Chain.Linea]: [ChimpExchangePoolAdapter],
+  },
+
+  [Protocol.SyncSwap]: {
+    [Chain.Linea]: [SyncswapPoolAdapter],
+  },
+
+  [Protocol.MendiFinance]: {
+    [Chain.Linea]: [MendiFinanceSupplyAdapter, MendiFinanceBorrowAdapter],
   },
 }

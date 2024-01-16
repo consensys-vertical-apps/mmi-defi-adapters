@@ -1,7 +1,7 @@
-import { Protocol } from '../adapters/protocols'
-import { AdaptersController } from '../core/adaptersController'
-import { Chain } from '../core/constants/chains'
-import {
+import type { Protocol } from '../adapters/protocols'
+import type { AdaptersController } from '../core/adaptersController'
+import type { Chain } from '../core/constants/chains'
+import type {
   ProtocolDetails,
   GetPositionsInput,
   ProtocolPosition,
@@ -11,14 +11,12 @@ import {
   MovementsByBlock,
   GetTotalValueLockedInput,
   ProtocolTokenTvl,
-  GetProfitsInput,
-  ProfitsWithRange,
   GetApyInput,
   ProtocolTokenApy,
   GetAprInput,
   ProtocolTokenApr,
 } from './adapter'
-import { Erc20Metadata } from './erc20Metadata'
+import type { Erc20Metadata } from './erc20Metadata'
 
 export interface IProtocolAdapter {
   /**
@@ -100,15 +98,6 @@ export interface IProtocolAdapter {
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]>
-
-  /**
-   *
-   * @remarks Returns the user's profits made on open positions. Accepts blockNumber override.
-   *
-   * @param {GetProfitsInput} input - Object specifying user-address and the block range for the profit calculation.
-   * @returns {Promise<ProfitsWithRange>} Object containing the starting and ending block numbers, and an array of objects detailing the profit information for each token.
-   */
-  getProfits(input: GetProfitsInput): Promise<ProfitsWithRange>
 
   /**
    *

@@ -1,4 +1,3 @@
-import { formatUnits } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
@@ -10,10 +9,8 @@ import {
   GetEventsInput,
   GetPositionsInput,
   GetConversionRateInput,
-  GetProfitsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
-  ProfitsWithRange,
   ProtocolAdapterParams,
   ProtocolTokenApr,
   ProtocolTokenApy,
@@ -34,9 +31,6 @@ import {
   ResolveUnderlyingMovements,
 } from '../decorators/resolveUnderlyingPositions'
 import { MaxMovementLimitExceededError } from '../errors/errors'
-import { aggregateFiatBalances } from '../utils/aggregateFiatBalances'
-import { aggregateFiatBalancesFromMovements } from '../utils/aggregateFiatBalancesFromMovements'
-import { calculateDeFiAttributionPerformance } from '../utils/calculateDeFiAttributionPerformance'
 import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 
@@ -69,10 +63,18 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+    return filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        protocolTokenAddresses &&
+        !protocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
+
       const tokenContract = Erc20__factory.connect(
         protocolToken.address,
         this.provider,
@@ -235,83 +237,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
         }
       }),
     )
-  }
-
-  async getProfits({
-    userAddress,
-    fromBlock,
-    toBlock,
-  }: GetProfitsInput): Promise<ProfitsWithRange> {
-    const [endPositionValues, startPositionValues] = await Promise.all([
-      this.getPositions({
-        userAddress,
-        blockNumber: toBlock,
-      }).then(aggregateFiatBalances),
-      this.getPositions({
-        userAddress,
-        blockNumber: fromBlock,
-      }).then(aggregateFiatBalances),
-    ])
-
-    const tokens = await Promise.all(
-      Object.values(endPositionValues).map(
-        async ({ protocolTokenMetadata }) => {
-          const getEventsInput: GetEventsInput = {
-            userAddress,
-            protocolTokenAddress: protocolTokenMetadata.address,
-            fromBlock,
-            toBlock,
-            tokenId: protocolTokenMetadata.tokenId,
-          }
-
-          const [withdrawals, deposits] = await Promise.all([
-            this.getWithdrawals(getEventsInput).then(
-              aggregateFiatBalancesFromMovements,
-            ),
-            this.getDeposits(getEventsInput).then(
-              aggregateFiatBalancesFromMovements,
-            ),
-          ])
-
-          const key =
-            protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
-
-          const endPositionValue = +formatUnits(
-            endPositionValues[key]?.usdRaw ?? 0n,
-            8,
-          )
-          const withdrawal = +formatUnits(withdrawals[key]?.usdRaw ?? 0n, 8)
-          const deposit = +formatUnits(deposits[key]?.usdRaw ?? 0n, 8)
-          const startPositionValue = +formatUnits(
-            startPositionValues[key]?.usdRaw ?? 0n,
-            8,
-          )
-
-          const profit =
-            endPositionValue + withdrawal - deposit - startPositionValue
-
-          return {
-            ...protocolTokenMetadata,
-            type: TokenType.Protocol,
-            profit: profit,
-            performance: calculateDeFiAttributionPerformance({
-              profit,
-              withdrawal,
-              deposit,
-              startPositionValue,
-            }),
-            calculationData: {
-              withdrawals: withdrawal,
-              deposits: deposit,
-              startPositionValue: startPositionValue,
-              endPositionValue: endPositionValue,
-            },
-          }
-        },
-      ),
-    )
-
-    return { tokens, fromBlock, toBlock }
   }
 
   abstract getApy(input: GetApyInput): Promise<ProtocolTokenApy>

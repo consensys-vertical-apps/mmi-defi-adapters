@@ -62,6 +62,11 @@ const ConfigSchema = z
     useMulticallInterceptor: z
       .boolean()
       .default(process.env.DEFI_ADAPTERS_USE_MULTICALL_INTERCEPTOR !== 'false'),
+    enableUsdPricesOnPositions: z
+      .boolean()
+      .default(
+        process.env.DEFI_ADAPTERS_ENABLE_USD_PRICES_FOR_POSITIONS !== 'false',
+      ),
   })
   .default({})
 

@@ -1,8 +1,8 @@
-import { Protocol } from '../adapters/protocols'
-import { AdaptersController } from '../core/adaptersController'
-import { Chain } from '../core/constants/chains'
-import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
-import { Erc20Metadata } from './erc20Metadata'
+import type { Protocol } from '../adapters/protocols'
+import type { AdaptersController } from '../core/adaptersController'
+import type { Chain } from '../core/constants/chains'
+import type { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
+import type { Erc20Metadata } from './erc20Metadata'
 
 export const TokenType = {
   Protocol: 'protocol',
@@ -37,6 +37,8 @@ export const PositionType = {
    * Claimable rewards, these type of positions will be merged with the equivalent lp position
    */
   Reward: 'reward',
+
+  FiatPrices: 'fiat-prices',
 } as const
 export type PositionType = (typeof PositionType)[keyof typeof PositionType]
 
@@ -104,21 +106,6 @@ export type GetEventsInput = {
    */
   tokenId?: string
 }
-export interface GetProfitsInput {
-  /**
-   * User address we want to get earned profits for
-   */
-  userAddress: string
-  /**
-   * Starting blocknumber to check profits earned from
-   */
-  fromBlock: number
-
-  /**
-   * Starting blocknumber to check profits earned to
-   */
-  toBlock: number
-}
 
 export type ProtocolDetails = {
   /**
@@ -173,6 +160,11 @@ export interface GetPositionsInput {
    * Optional override param
    */
   blockNumber?: number
+
+  /**
+   * Optional filter for pools that will be queried
+   */
+  protocolTokenAddresses?: string[]
 }
 
 export interface GetPricePerShareInput {

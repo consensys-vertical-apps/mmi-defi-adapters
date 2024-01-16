@@ -32,43 +32,13 @@
           "symbol": "3Crv",
           "decimals": 18,
           "type": "protocol",
-          "profit": 0,
-          "performance": 0,
+          "profit": 3.15529238292811e-8,
+          "performance": 4.90916972549114e-9,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 6.52182106,
+            "deposits": 6.427344254455242,
             "startPositionValue": 0,
-            "endPositionValue": 6.52182106
-          }
-        }
-      ],
-      "fromBlock": 17253303,
-      "toBlock": 17260449
-    },
-    {
-      "protocolId": "curve",
-      "name": "Curve reward",
-      "description": "Curve reward adapter",
-      "siteUrl": "https://curve.fi/",
-      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
-      "positionType": "reward",
-      "chainId": 1,
-      "productId": "reward",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A",
-          "name": "Curve.fi DAI/USDC/USDT",
-          "symbol": "3Crv",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": 3e-8,
-          "performance": 0,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "startPositionValue": 0,
-            "endPositionValue": 3e-8
+            "endPositionValue": 6.427344286008166
           }
         }
       ],

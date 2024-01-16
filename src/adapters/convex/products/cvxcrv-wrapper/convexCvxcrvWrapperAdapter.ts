@@ -61,10 +61,19 @@ export class ConvexCvxcrvWrapperAdapter
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const [protocolTokens] = await this.getProtocolTokens()
+    const [protocolToken] = await this.getProtocolTokens()
+
+    if (
+      protocolTokenAddresses &&
+      !protocolTokenAddresses.includes(protocolToken!.address)
+    ) {
+      return []
+    }
+
     const extraRewardTokens = await this.fetchUnderlyingTokensMetadata(
-      protocolTokens!.address,
+      protocolToken!.address,
     )
 
     const contract = CvxcrvWrapper__factory.connect(
@@ -76,13 +85,17 @@ export class ConvexCvxcrvWrapperAdapter
       blockTag: blockNumber,
     })
 
+    if (lpTokenBalance == 0n) {
+      return []
+    }
+
     const extraRewards = await contract.earned.staticCall(userAddress, {
       blockTag: blockNumber,
     })
 
     return [
       {
-        ...protocolTokens!,
+        ...protocolToken!,
         balanceRaw: lpTokenBalance,
         type: TokenType.Protocol,
         tokens: extraRewards.map((result) => {

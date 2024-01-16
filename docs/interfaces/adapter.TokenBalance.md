@@ -34,7 +34,7 @@ User's balance raw
 
 #### Defined in
 
-[adapter.ts:190](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L190)
+[adapter.ts:187](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L187)
 
 ___
 

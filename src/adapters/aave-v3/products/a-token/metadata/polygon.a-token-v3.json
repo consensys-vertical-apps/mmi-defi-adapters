@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97": {
-    "protocolToken": {
-      "address": "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97",
-      "name": "Aave Polygon WMATIC",
-      "symbol": "aPolWMATIC",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    }
-  },
   "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff": {
     "protocolToken": {
       "address": "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff",
@@ -223,20 +209,6 @@
       "decimals": 18
     }
   },
-  "0x80ca0d8c38d2e2bcbab66aa1648bd1c7160500fe": {
-    "protocolToken": {
-      "address": "0x80ca0d8c38d2e2bcbab66aa1648bd1c7160500fe",
-      "name": "Aave Polygon MATICX",
-      "symbol": "aPolMATICX",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xfa68fb4628dff1028cfec22b4162fccd0d45efb6",
-      "name": "Liquid Staking Matic (PoS)",
-      "symbol": "MaticX",
-      "decimals": 18
-    }
-  },
   "0xf59036caebea7dc4b86638dfa2e3c97da9fccd40": {
     "protocolToken": {
       "address": "0xf59036caebea7dc4b86638dfa2e3c97da9fccd40",
@@ -249,6 +221,20 @@
       "name": "Wrapped liquid staked Ether 2.0 (PoS)",
       "symbol": "wstETH",
       "decimals": 18
+    }
+  },
+  "0xa4d94019934d8333ef880abffbf2fdd611c762bd": {
+    "protocolToken": {
+      "address": "0xa4d94019934d8333ef880abffbf2fdd611c762bd",
+      "name": "Aave Polygon USDCn",
+      "symbol": "aPolUSDCn",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
     }
   }
 }

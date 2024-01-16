@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0xf15f26710c827dde8acba678682f3ce24f2fb56e": {
-    "protocolToken": {
-      "address": "0xf15f26710c827dde8acba678682f3ce24f2fb56e",
-      "name": "Aave Polygon Stable Debt WMATIC",
-      "symbol": "stableDebtPolWMATIC",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    }
-  },
   "0x08cb71192985e936c7cd166a8b268035e400c3c3": {
     "protocolToken": {
       "address": "0x08cb71192985e936c7cd166a8b268035e400c3c3",
@@ -223,20 +209,6 @@
       "decimals": 18
     }
   },
-  "0x62fc96b27a510cf4977b59ff952dc32378cc221d": {
-    "protocolToken": {
-      "address": "0x62fc96b27a510cf4977b59ff952dc32378cc221d",
-      "name": "Aave Polygon Stable Debt MATICX",
-      "symbol": "stableDebtPolMATICX",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xfa68fb4628dff1028cfec22b4162fccd0d45efb6",
-      "name": "Liquid Staking Matic (PoS)",
-      "symbol": "MaticX",
-      "decimals": 18
-    }
-  },
   "0x173e54325ae58b072985dbf232436961981ea000": {
     "protocolToken": {
       "address": "0x173e54325ae58b072985dbf232436961981ea000",
@@ -249,6 +221,20 @@
       "name": "Wrapped liquid staked Ether 2.0 (PoS)",
       "symbol": "wstETH",
       "decimals": 18
+    }
+  },
+  "0xc889e9f8370d14a428a9857205d99bfdb400b757": {
+    "protocolToken": {
+      "address": "0xc889e9f8370d14a428a9857205d99bfdb400b757",
+      "name": "Aave Polygon Stable Debt USDCn",
+      "symbol": "stableDebtPolUSDCn",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
     }
   }
 }

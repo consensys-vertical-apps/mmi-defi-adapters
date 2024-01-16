@@ -11,6 +11,7 @@
 - [protocolId](IProtocolAdapter.IProtocolAdapter.md#protocolid)
 - [chainId](IProtocolAdapter.IProtocolAdapter.md#chainid)
 - [productId](IProtocolAdapter.IProtocolAdapter.md#productid)
+- [adaptersController](IProtocolAdapter.IProtocolAdapter.md#adapterscontroller)
 
 ### Methods
 
@@ -21,7 +22,6 @@
 - [getWithdrawals](IProtocolAdapter.IProtocolAdapter.md#getwithdrawals)
 - [getDeposits](IProtocolAdapter.IProtocolAdapter.md#getdeposits)
 - [getTotalValueLocked](IProtocolAdapter.IProtocolAdapter.md#gettotalvaluelocked)
-- [getProfits](IProtocolAdapter.IProtocolAdapter.md#getprofits)
 - [getApy](IProtocolAdapter.IProtocolAdapter.md#getapy)
 - [getApr](IProtocolAdapter.IProtocolAdapter.md#getapr)
 
@@ -35,7 +35,7 @@ Unique identifier of the protocol.
 
 #### Defined in
 
-[IProtocolAdapter.ts:26](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L26)
+[IProtocolAdapter.ts:25](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L25)
 
 ___
 
@@ -47,7 +47,7 @@ Unique identifier of the blockchain network.
 
 #### Defined in
 
-[IProtocolAdapter.ts:31](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L31)
+[IProtocolAdapter.ts:30](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L30)
 
 ___
 
@@ -59,7 +59,17 @@ Unique identifier for this protocol adapter
 
 #### Defined in
 
-[IProtocolAdapter.ts:36](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L36)
+[IProtocolAdapter.ts:35](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L35)
+
+___
+
+### adaptersController
+
+• **adaptersController**: `AdaptersController`
+
+#### Defined in
+
+[IProtocolAdapter.ts:37](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L37)
 
 ## Methods
 
@@ -79,7 +89,7 @@ Returns high level metadata for the protocol
 
 #### Defined in
 
-[IProtocolAdapter.ts:43](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L43)
+[IProtocolAdapter.ts:44](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L44)
 
 ___
 
@@ -99,7 +109,7 @@ Returns array of pool tokens (lp tokens) for the protocol
 
 #### Defined in
 
-[IProtocolAdapter.ts:50](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L50)
+[IProtocolAdapter.ts:51](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L51)
 
 ___
 
@@ -125,7 +135,7 @@ Returns array of user positions opened in this protocol
 
 #### Defined in
 
-[IProtocolAdapter.ts:59](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L59)
+[IProtocolAdapter.ts:60](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L60)
 
 ___
 
@@ -151,7 +161,7 @@ Returns "price" of lp-tokens in the form of the underlying tokens
 
 #### Defined in
 
-[IProtocolAdapter.ts:68](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L68)
+[IProtocolAdapter.ts:69](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L69)
 
 ___
 
@@ -177,7 +187,7 @@ Returns the user's withdrawals from a position
 
 #### Defined in
 
-[IProtocolAdapter.ts:79](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L79)
+[IProtocolAdapter.ts:80](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L80)
 
 ___
 
@@ -203,7 +213,7 @@ Returns the user's deposits to a position
 
 #### Defined in
 
-[IProtocolAdapter.ts:88](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L88)
+[IProtocolAdapter.ts:89](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L89)
 
 ___
 
@@ -229,33 +239,7 @@ Returns the Tvl per pool defined in the underlying token
 
 #### Defined in
 
-[IProtocolAdapter.ts:97](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L97)
-
-___
-
-### getProfits
-
-▸ **getProfits**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProfitsWithRange`](adapter.ProfitsWithRange.md)\>
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `input` | [`GetProfitsInput`](adapter.GetProfitsInput.md) | Object specifying user-address and the block range for the profit calculation. |
-
-#### Returns
-
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProfitsWithRange`](adapter.ProfitsWithRange.md)\>
-
-Object containing the starting and ending block numbers, and an array of objects detailing the profit information for each token.
-
-**`Remarks`**
-
-Returns the user's profits made on open positions. Accepts blockNumber override.
-
-#### Defined in
-
-[IProtocolAdapter.ts:108](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L108)
+[IProtocolAdapter.ts:98](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L98)
 
 ___
 
@@ -281,7 +265,7 @@ Returns Apy per pool
 
 #### Defined in
 
-[IProtocolAdapter.ts:117](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L117)
+[IProtocolAdapter.ts:109](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L109)
 
 ___
 
@@ -307,4 +291,4 @@ Returns Apr made per pool
 
 #### Defined in
 
-[IProtocolAdapter.ts:126](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L126)
+[IProtocolAdapter.ts:118](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L118)

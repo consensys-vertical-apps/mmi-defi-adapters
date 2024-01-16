@@ -160,6 +160,7 @@ export class GMXGlpAdapter
   async getPositions({
     userAddress,
     blockNumber,
+    protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const {
       rewardReaderAddress,
@@ -167,6 +168,13 @@ export class GMXGlpAdapter
       protocolToken,
       underlyingTokens,
     } = await this.buildMetadata()
+
+    if (
+      protocolTokenAddresses &&
+      !protocolTokenAddresses.includes(protocolToken.address)
+    ) {
+      return []
+    }
 
     const rewardReaderContract = RewardReader__factory.connect(
       rewardReaderAddress,

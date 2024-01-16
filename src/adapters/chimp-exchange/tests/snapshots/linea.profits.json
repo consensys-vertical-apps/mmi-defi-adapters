@@ -1,0 +1,22 @@
+{
+  "blockNumber": 1498597,
+  "snapshot": [
+    {
+      "protocolId": "chimp-exchange",
+      "name": "ChimpExchange",
+      "description": "ChimpExchange pool adapter",
+      "siteUrl": "https://app.chimp.exchange",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "pool",
+      "success": false,
+      "error": {
+        "message": "Unable to calculate profits, missing USD price for token position 0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+        "details": {
+          "name": "Error"
+        }
+      }
+    }
+  ]
+}

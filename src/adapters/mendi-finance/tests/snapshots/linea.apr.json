@@ -1,0 +1,115 @@
+{
+  "blockNumber": 1597881,
+  "snapshot": [
+    {
+      "protocolId": "mendi-finance",
+      "name": "MendiFinance",
+      "description": "MendiFinance borrow adapter",
+      "siteUrl": "https://mendi.finance/:",
+      "iconUrl": "https://mendi.finance/mendi-token.svg",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "supply",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x333d8b480bdb25ea7be4dd87eeb359988ce1b30d",
+          "name": "Mendi USD Coin",
+          "symbol": "meUSDC",
+          "decimals": 8,
+          "aprDecimal": 1.168366063355564
+        },
+        {
+          "address": "0xf669c3c03d9fdf4339e19214a749e52616300e89",
+          "name": "Mendi USD Tether",
+          "symbol": "meUSDT",
+          "decimals": 8,
+          "aprDecimal": 1.7521092945715793
+        },
+        {
+          "address": "0xad7f33984bed10518012013d4ab0458d37fee6f3",
+          "name": "Mendi Wrapped Ether",
+          "symbol": "meWETH",
+          "decimals": 8,
+          "aprDecimal": 1.580630354450278
+        },
+        {
+          "address": "0x1f27f81c1d13dd96a3b75d42e3d5d92b709869aa",
+          "name": "Mendi Dai Stablecoin",
+          "symbol": "meDAI",
+          "decimals": 8,
+          "aprDecimal": 1.8078563666646355
+        },
+        {
+          "address": "0x9be5e24f05bbafc28da814bd59284878b388a40f",
+          "name": "Mendi Wrapped BTC",
+          "symbol": "meWBTC",
+          "decimals": 8,
+          "aprDecimal": 0.7821595126324852
+        },
+        {
+          "address": "0xceed853798ff1c95ceb4dc48f68394eb7a86a782",
+          "name": "Mendi Wrapped liquid staked Ether 2.0",
+          "symbol": "mewstETH",
+          "decimals": 8,
+          "aprDecimal": 2.146788352459503
+        }
+      ]
+    },
+    {
+      "protocolId": "mendi-finance",
+      "name": "MendiFinance",
+      "description": "MendiFinance borrow adapter",
+      "siteUrl": "https://mendi.finance/:",
+      "iconUrl": "https://mendi.finance/mendi-token.svg",
+      "positionType": "borrow",
+      "chainId": 59144,
+      "productId": "borrow",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x333d8b480bdb25ea7be4dd87eeb359988ce1b30d",
+          "name": "Mendi USD Coin",
+          "symbol": "meUSDC",
+          "decimals": 8,
+          "aprDecimal": 10.511798557472158
+        },
+        {
+          "address": "0xf669c3c03d9fdf4339e19214a749e52616300e89",
+          "name": "Mendi USD Tether",
+          "symbol": "meUSDT",
+          "decimals": 8,
+          "aprDecimal": 14.889095934201201
+        },
+        {
+          "address": "0xad7f33984bed10518012013d4ab0458d37fee6f3",
+          "name": "Mendi Wrapped Ether",
+          "symbol": "meWETH",
+          "decimals": 8,
+          "aprDecimal": 21.889259715269827
+        },
+        {
+          "address": "0x1f27f81c1d13dd96a3b75d42e3d5d92b709869aa",
+          "name": "Mendi Dai Stablecoin",
+          "symbol": "meDAI",
+          "decimals": 8,
+          "aprDecimal": 15.630624828303958
+        },
+        {
+          "address": "0x9be5e24f05bbafc28da814bd59284878b388a40f",
+          "name": "Mendi Wrapped BTC",
+          "symbol": "meWBTC",
+          "decimals": 8,
+          "aprDecimal": 18.43241313394524
+        },
+        {
+          "address": "0xceed853798ff1c95ceb4dc48f68394eb7a86a782",
+          "name": "Mendi Wrapped liquid staked Ether 2.0",
+          "symbol": "mewstETH",
+          "decimals": 8,
+          "aprDecimal": 27.496633904144556
+        }
+      ]
+    }
+  ]
+}
