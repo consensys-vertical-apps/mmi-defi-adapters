@@ -1,0 +1,22 @@
+{
+  "blockNumber": 18412988,
+  "snapshot": [
+    {
+      "protocolId": "carbon-defi",
+      "name": "CarbonDeFi",
+      "description": "CarbonDeFi adapter for strategy balances",
+      "siteUrl": "https://carbondefi.xyz",
+      "iconUrl": "https://app.carbondefi.xyz/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "strategies",
+      "success": false,
+      "error": {
+        "message": "Unable to calculate profits, missing USD price for token position 0x2b591e99afe9f32eaa6214f7b7629768c40eeb39",
+        "details": {
+          "name": "Error"
+        }
+      }
+    }
+  ]
+}
