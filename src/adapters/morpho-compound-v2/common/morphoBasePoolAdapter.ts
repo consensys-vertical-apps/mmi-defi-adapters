@@ -1,26 +1,21 @@
-import { formatUnits } from 'ethers'
 import * as WadMath from 'evm-maths/lib/wad'
 import { AdaptersController } from '../../../core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from '../../../core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain } from '../../../core/constants/chains'
-import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { WAD } from '../../../core/constants/WAD'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
-import { aggregateTrades } from '../../../core/utils/aggregateTrades'
 import { aprToApy } from '../../../core/utils/aprToApy'
 import { CustomJsonRpcProvider } from '../../../core/utils/customJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
-import { formatProtocolTokenArrayToMap } from '../../../core/utils/protocolTokenToMap'
 import {
   GetPositionsInput,
   GetEventsInput,
   GetApyInput,
   GetAprInput,
   GetTotalValueLockedInput,
-  GetProfitsInput,
   GetConversionRateInput,
   MovementsByBlock,
   PositionType,
@@ -29,14 +24,12 @@ import {
   ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
-  ProfitsWithRange,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenBalance,
   TokenType,
   Underlying,
   UnderlyingTokenRate,
-  BaseTokenMovement,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
@@ -336,124 +329,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  async getProfits({
-    userAddress,
-    fromBlock,
-    toBlock,
-  }: GetProfitsInput): Promise<ProfitsWithRange> {
-    // Fetch end and start position values
-    const positionType = this.getProtocolDetails().positionType
-
-    const [endPositionValues, startPositionValues] = await Promise.all([
-      this.getPositions({
-        userAddress,
-        blockNumber: toBlock,
-      }).then(formatProtocolTokenArrayToMap),
-      this.getPositions({
-        userAddress,
-        blockNumber: fromBlock,
-      }).then(formatProtocolTokenArrayToMap),
-    ])
-
-    // Fetch and process each token's movements
-    const tokens = await Promise.all(
-      Object.values(endPositionValues).map(
-        async ({
-          protocolTokenMetadata,
-          underlyingTokenPositions: underlyingEndPositions,
-        }) => {
-          const getEventsInput: GetEventsInput = {
-            userAddress,
-            protocolTokenAddress: protocolTokenMetadata.address,
-            fromBlock,
-            toBlock,
-          }
-          let eventsOut: Record<string, bigint>
-          let eventsIn: Record<string, bigint>
-
-          if (positionType === PositionType.Supply) {
-            ;[eventsOut, eventsIn] = await Promise.all([
-              this.getWithdrawals(getEventsInput).then(aggregateTrades),
-              this.getDeposits(getEventsInput).then(aggregateTrades),
-            ])
-          } else {
-            ;[eventsOut, eventsIn] = await Promise.all([
-              this.getBorrows(getEventsInput).then(aggregateTrades),
-              this.getRepays(getEventsInput).then(aggregateTrades),
-            ])
-          }
-
-          return {
-            ...protocolTokenMetadata,
-            type: TokenType.Protocol,
-            tokens: Object.values(underlyingEndPositions).map(
-              ({
-                address,
-                name,
-                symbol,
-                decimals,
-                balanceRaw: endPositionValueRaw,
-              }) => {
-                const startPositionValueRaw =
-                  startPositionValues[protocolTokenMetadata.address]
-                    ?.underlyingTokenPositions[address]?.balanceRaw ?? 0n
-
-                const calculationData = {
-                  outRaw: eventsOut[address] ?? 0n,
-                  inRaw: eventsIn[address] ?? 0n,
-                  endPositionValueRaw: endPositionValueRaw ?? 0n,
-                  startPositionValueRaw,
-                }
-
-                let profitRaw =
-                  calculationData.endPositionValueRaw +
-                  calculationData.outRaw -
-                  calculationData.inRaw -
-                  calculationData.startPositionValueRaw
-
-                if (
-                  this.getProtocolDetails().positionType === PositionType.Borrow
-                ) {
-                  profitRaw *= -1n
-                }
-
-                return {
-                  address,
-                  name,
-                  symbol,
-                  decimals,
-                  profitRaw,
-                  type: TokenType.Underlying,
-                  calculationData: {
-                    withdrawalsRaw: eventsOut[address] ?? 0n,
-                    withdrawals: formatUnits(
-                      eventsOut[address] ?? 0n,
-                      decimals,
-                    ),
-                    depositsRaw: eventsIn[address] ?? 0n,
-                    deposits: formatUnits(eventsIn[address] ?? 0n, decimals),
-                    startPositionValueRaw: startPositionValueRaw ?? 0n,
-                    startPositionValue: formatUnits(
-                      startPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                    endPositionValueRaw,
-                    endPositionValue: formatUnits(
-                      endPositionValueRaw ?? 0n,
-                      decimals,
-                    ),
-                  },
-                }
-              },
-            ),
-          }
-        },
-      ),
-    )
-
-    return { tokens, fromBlock, toBlock }
-  }
-
   async getTotalValueLocked({
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
@@ -614,24 +489,23 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           eventData._poolToken,
         )
 
-        const underlyingTokensMovement: Record<string, BaseTokenMovement> = {}
-        underlyingTokens.forEach((underlyingToken) => {
-          underlyingTokensMovement[underlyingToken.address] = {
+        const tokens: Underlying[] = underlyingTokens.map(
+          (underlyingToken) => ({
             ...underlyingToken,
-            transactionHash: event.transactionHash,
-            movementValueRaw: eventData._amount,
-          }
-        })
+            balanceRaw: eventData._amount,
+            type: TokenType.Underlying,
+          }),
+        )
 
         return {
-          protocolToken: {
-            ...protocolToken,
-          },
-          underlyingTokensMovement,
+          protocolToken,
+          tokens,
           blockNumber: event.blockNumber,
+          transactionHash: event.transactionHash,
         }
       }),
     )
+
     return movements.filter(
       (movement): movement is MovementsByBlock => movement !== null,
     ) as MovementsByBlock[]
@@ -688,9 +562,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       protocolTokenAddress,
       blockNumber,
     })
-
-    const apy = aprToApy(apr * 86400, 365)
-
+    const apy = aprToApy(apr, 365)
     return {
       ...(await this._fetchProtocolTokenMetadata(protocolTokenAddress)),
       apyDecimal: apy * 100,

@@ -10,40 +10,13 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "optimizer-borrow",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
-          "name": "Aave interest bearing WETH",
-          "symbol": "aWETH",
-          "decimals": 18,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "profitRaw": "-95602153837365848n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "1500251298264201313462n",
-                "startPositionValue": "1500.251298264201313462",
-                "endPositionValueRaw": "1500346900418038679310n",
-                "endPositionValue": "1500.34690041803867931"
-              },
-              "profit": "-0.095602153837365848",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
-            }
-          ]
+      "success": false,
+      "error": {
+        "message": "Unable to calculate profits, missing USD price for token position 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 18725934,
-      "toBlock": 18733080
+      }
     },
     {
       "protocolId": "morpho-aave-v2",
@@ -54,69 +27,13 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "optimizer-supply",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
-          "name": "Aave interest bearing USDT",
-          "symbol": "aUSDT",
-          "decimals": 6,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "profitRaw": "313n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "1198908n",
-                "startPositionValue": "1.198908",
-                "endPositionValueRaw": "1199221n",
-                "endPositionValue": "1.199221"
-              },
-              "profit": "0.000313",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
-            }
-          ]
-        },
-        {
-          "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
-          "name": "Aave interest bearing USDC",
-          "symbol": "aUSDC",
-          "decimals": 6,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "profitRaw": "901109849n",
-              "type": "underlying",
-              "calculationData": {
-                "withdrawalsRaw": "0n",
-                "withdrawals": "0.0",
-                "depositsRaw": "0n",
-                "deposits": "0.0",
-                "startPositionValueRaw": "4849837112609n",
-                "startPositionValue": "4849837.112609",
-                "endPositionValueRaw": "4850738222458n",
-                "endPositionValue": "4850738.222458"
-              },
-              "profit": "901.109849",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            }
-          ]
+      "success": false,
+      "error": {
+        "message": "Unable to calculate profits, missing USD price for token position 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 18725934,
-      "toBlock": 18733080
+      }
     }
   ]
 }
