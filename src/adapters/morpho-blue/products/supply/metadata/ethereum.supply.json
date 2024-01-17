@@ -1,0 +1,62 @@
+{
+  "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41": {
+    "loanToken": {
+      "data": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      "isSupply": true
+    },
+    "collateralToken": {
+      "data": {
+        "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      "isSupply": false
+    }
+  },
+  "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc": {
+    "loanToken": {
+      "data": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      "isSupply": true
+    },
+    "collateralToken": {
+      "data": {
+        "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      "isSupply": false
+    }
+  },
+  "0x495130878b7d2f1391e21589a8bcaef22cbc7e1fbbd6866127193b3cc239d8b1": {
+    "loanToken": {
+      "data": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      "isSupply": true
+    },
+    "collateralToken": {
+      "data": {
+        "address": "0xca2a7068e551d5c4482eb34880b194e4b945712f",
+        "name": "Wrapped Backed IB01 $ Treasury Bond 0-1yr",
+        "symbol": "wbIB01",
+        "decimals": 18
+      },
+      "isSupply": false
+    }
+  }
+}

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import type { TestCase } from '../../../types/testCase'
 
 export const testCases: TestCase[] = [
@@ -16,4 +17,43 @@ export const testCases: TestCase[] = [
   //     timePeriod: TimePeriod.oneDay,
   //   },
   // },
+=======
+import { Chain } from '../../../core/constants/chains'
+import { TimePeriod } from '../../../core/constants/timePeriod'
+import type { TestCase } from '../../../types/testCase'
+
+export const testCases: TestCase[] = [
+  {
+    chainId: Chain.Ethereum,
+    method: 'positions',
+    input: {
+      userAddress: '0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB',
+    },
+    blockNumber: 19025472,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'profits',
+    input: {
+      userAddress: '0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB',
+      timePeriod: TimePeriod.oneDay,
+    },
+    blockNumber: 19025472,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'tvl',
+    blockNumber: 19025472,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'apr',
+    blockNumber: 19025472,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'apy',
+    blockNumber: 19025472,
+  },
+>>>>>>> Stashed changes
 ]

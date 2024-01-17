@@ -47,6 +47,8 @@ import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/m
 import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v3-eth/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v3-eth/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import MorphoBlueBorrowEthereumBorrow from '../../adapters/morpho-blue/products/borrow/metadata/ethereum.borrow.json'
+import MorphoBlueSupplyEthereumSupply from '../../adapters/morpho-blue/products/supply/metadata/ethereum.supply.json'
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import PricesUsdArbitrumProtocolToken from '../../adapters/prices/products/usd/metadata/arbitrum.protocol-token.json'
@@ -583,6 +585,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-borrow',
     }),
     MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoBlue,
+      productId: 'supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'supply',
+    }),
+    MorphoBlueSupplyEthereumSupply,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoBlue,
+      productId: 'borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'borrow',
+    }),
+    MorphoBlueBorrowEthereumBorrow,
   ],
 ])
 

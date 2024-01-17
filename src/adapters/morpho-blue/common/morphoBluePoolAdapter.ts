@@ -65,8 +65,8 @@ type MorphoBlueAdapterMetadata = Record<
 const morphoBlueContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
 > = {
-  [Protocol.MorphoAaveV3ETHOptimizer]: {
-    [Chain.Ethereum]: '0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb',
+  [Protocol.MorphoBlue]: {
+    [Chain.Ethereum]: '0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb',
   },
 }
 
@@ -563,7 +563,8 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     }
 
     const collateralAggregator: Aggregator = {}
-    for (const tokenAddress of Object.keys(supplyAssetsAggregator)) {
+
+    for (const tokenAddress of collateralTokensSet) {
       const supplyAssets = supplyAssetsAggregator[tokenAddress] || 0n
       const borrowAssets = borrowAssetsAggregator[tokenAddress] || 0n
 
@@ -600,19 +601,26 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
         totalValueLocked = borrowAssets
       }
 
+      if (totalValueLocked === 0n) {
+        continue // Skip to the next iteration
+      }
+
+      // Check if the token is a collateral token
+      const isCollateralToken = collateralTokensSet.has(tokenAddress)
+
       // Find the token metadata using the tokenAddress
-      const tokenMetadata = Object.values(metadata).find(
-        (market) =>
-          market.loanToken.data.address === tokenAddress ||
-          market.collateralToken.data.address === tokenAddress,
-      )?.loanToken.data // Assuming you want to use loanToken's metadata, adjust if needed
+      const tokenMetadata = Object.values(metadata).find((market) =>
+        isCollateralToken
+          ? market.collateralToken.data.address === tokenAddress
+          : market.loanToken.data.address === tokenAddress,
+      )?.[isCollateralToken ? 'collateralToken' : 'loanToken'].data // Fetch the appropriate metadata based on the token type
 
       // Construct TVL result for the token
       if (tokenMetadata) {
         tvlResults.push({
           type: TokenType.Protocol,
           totalSupplyRaw: totalValueLocked,
-          ...tokenMetadata,
+          ...tokenMetadata, // This will now correctly include either loanToken or collateralToken metadata
           // 'tokens' field can be added here if applicable
         })
       }
@@ -815,17 +823,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
         expN(supplyRate * BigInt(SECONDS_PER_YEAR), BigInt(3), WAD) - 1n,
       )
     }
-
-    /*
-    const borrowRateYear = BigNumber.from(borrowRate).mul(BigNumber.from(SECONDS_PER_YEAR));
-    const WAD = MorphoBlueMath.WAD;
-    const borrowApy: number = +formatUnits(MorphoBlueMath.expN(borrowRateYear, 3, WAD).sub(BigNumber.from(1)), WAD);
-    const utilization: BigNumber = BigNumber.from(totalBorrowAssets).div(BigNumber.from(totalSupplyAssets));
-
-    const supplyRate = utilization.mul(BigNumber.from(borrowRate)).mul(BigNumber.from(1).sub(BigNumber.from(fee)));
-    const supplyApy: number = +formatUnits(MorphoBlueMath.expN(supplyRate, 3, WAD).sub(BigNumber.from(1)), WAD);
-
-    */
   }
 
   // TODO

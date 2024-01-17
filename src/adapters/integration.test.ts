@@ -18,6 +18,7 @@ import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
 import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3-eth/tests/testCases'
+import { testCases as morphoBlueTestCases } from './morpho-blue/tests/testCases'
 import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
 import { testCases as pricesTestCases } from './prices/tests/testCases'
 import { Protocol } from './protocols'
@@ -57,6 +58,7 @@ function runAllTests() {
   runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
   runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
   runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
+  runProtocolTests(Protocol.MorphoBlue, morphoBlueTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

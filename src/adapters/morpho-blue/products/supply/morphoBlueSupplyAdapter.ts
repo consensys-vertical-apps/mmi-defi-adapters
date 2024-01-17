@@ -9,7 +9,11 @@ export class MorphoBlueSupplyAdapter extends MorphoBluePoolAdapter {
     return {
       protocolId: this.protocolId,
       name: 'MorphoBlue',
+<<<<<<< Updated upstream
       description: 'MorphoBlue defi adapter',
+=======
+      description: 'MorphoBlue defi adapter on the supply side',
+>>>>>>> Stashed changes
       siteUrl: 'https://app.morpho.org/',
       iconUrl: 'https://cdn.morpho.org/images/v2/morpho/favicon.png',
       positionType: PositionType.Supply,

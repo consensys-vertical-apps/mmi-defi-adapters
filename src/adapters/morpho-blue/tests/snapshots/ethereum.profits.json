@@ -1,0 +1,39 @@
+{
+  "blockNumber": 19025472,
+  "snapshot": [
+    {
+      "protocolId": "morpho-blue",
+      "name": "MorphoBlue",
+      "description": "MorphoBlue defi adapter on the supply side",
+      "siteUrl": "https://app.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "supply",
+      "success": false,
+      "error": {
+        "message": "Cannot assign to read only property '0' of object '[object Array]'",
+        "details": {
+          "name": "TypeError"
+        }
+      }
+    },
+    {
+      "protocolId": "morpho-blue",
+      "name": "MorphoBlue",
+      "description": "MorphoBlue defi adapter",
+      "siteUrl": "https://app.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "borrow",
+      "success": false,
+      "error": {
+        "message": "Cannot assign to read only property '0' of object '[object Array]'",
+        "details": {
+          "name": "TypeError"
+        }
+      }
+    }
+  ]
+}
