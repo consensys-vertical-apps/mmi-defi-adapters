@@ -53,7 +53,7 @@ export type DisplayPosition<
     tokens?: Underlying[]
   },
 > = Omit<PositionBalance, 'tokens'> & {
-  balance: string
+  balance: number
   tokens?: DisplayPosition<Underlying>[]
 } & (PositionBalance['type'] extends
     | typeof TokenType.Underlying
@@ -71,7 +71,7 @@ export type DisplayProtocolTokenUnderlyingRate = Omit<
   ProtocolTokenUnderlyingRate,
   'tokens'
 > & {
-  tokens?: (UnderlyingTokenRate & { underlyingRate: string; iconUrl: string })[]
+  tokens?: (UnderlyingTokenRate & { underlyingRate: number; iconUrl: string })[]
 }
 
 export type APRResponse = AdapterResponse<{
@@ -87,8 +87,8 @@ export type TotalValueLockResponse = AdapterResponse<{
 }>
 
 export type DisplayProtocolTokenTvl = Omit<ProtocolTokenTvl, 'tokens'> & {
-  totalSupply: string
-  tokens?: (UnderlyingTokenTvl & { totalSupply: string; iconUrl: string })[]
+  totalSupply: number
+  tokens?: (UnderlyingTokenTvl & { totalSupply: number; iconUrl: string })[]
 }
 
 export type DefiMovementsResponse = AdapterResponse<{
@@ -96,5 +96,5 @@ export type DefiMovementsResponse = AdapterResponse<{
 }>
 
 export type DisplayMovementsByBlock = Omit<MovementsByBlock, 'tokens'> & {
-  tokens?: (Underlying & { balance: string })[]
+  tokens?: (Underlying & { balance: number })[]
 }
