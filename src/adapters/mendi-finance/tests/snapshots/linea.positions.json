@@ -27,11 +27,11 @@
               "decimals": 6,
               "balanceRaw": "100081014750n",
               "type": "underlying",
-              "balance": "100081.01475",
+              "balance": 100081.01475,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             }
           ],
-          "balance": "4944215.27209981"
+          "balance": 4944215.27209981
         },
         {
           "address": "0xf669c3c03d9fdf4339e19214a749e52616300e89",
@@ -48,11 +48,11 @@
               "decimals": 6,
               "balanceRaw": "57156119173n",
               "type": "underlying",
-              "balance": "57156.119173",
+              "balance": 57156.119173,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             }
           ],
-          "balance": "2816204.95310021"
+          "balance": 2816204.95310021
         },
         {
           "address": "0xad7f33984bed10518012013d4ab0458d37fee6f3",
@@ -69,11 +69,11 @@
               "decimals": 18,
               "balanceRaw": "804997187618819006n",
               "type": "underlying",
-              "balance": "0.804997187618819006",
+              "balance": 0.804997187618819,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
             }
           ],
-          "balance": "39.19087897"
+          "balance": 39.19087897
         },
         {
           "address": "0x9be5e24f05bbafc28da814bd59284878b388a40f",
@@ -90,11 +90,11 @@
               "decimals": 8,
               "balanceRaw": "100141929n",
               "type": "underlying",
-              "balance": "1.00141929",
+              "balance": 1.00141929,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
             }
           ],
-          "balance": "49.82090632"
+          "balance": 49.82090632
         }
       ]
     },

@@ -30,7 +30,7 @@
             "decimals": 18,
             "transactionHash": "0x0ee02a36e04c669085dd3ec990756a1f847c17b30d1120d64efd10a5f5e14acd",
             "blockNumber": 18927675,
-            "balance": "1787446.257333356491155437"
+            "balance": 1787446.2573333564
           },
           {
             "type": "underlying",
@@ -41,7 +41,7 @@
             "decimals": 18,
             "transactionHash": "0x0ee02a36e04c669085dd3ec990756a1f847c17b30d1120d64efd10a5f5e14acd",
             "blockNumber": 18927675,
-            "balance": "0.0"
+            "balance": 0
           }
         ]
       }

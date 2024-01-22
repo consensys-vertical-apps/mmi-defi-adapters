@@ -27,11 +27,11 @@
               "decimals": 6,
               "totalSupplyRaw": "1120849254591n",
               "type": "underlying",
-              "totalSupply": "1120849.254591",
+              "totalSupply": 1120849.254591,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             }
           ],
-          "totalSupply": "249446559.3234228"
+          "totalSupply": 249446559.3234228
         },
         {
           "address": "0xf669c3c03d9fdf4339e19214a749e52616300e89",
@@ -48,11 +48,11 @@
               "decimals": 6,
               "totalSupplyRaw": "296640177894n",
               "type": "underlying",
-              "totalSupply": "296640.177894",
+              "totalSupply": 296640.177894,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             }
           ],
-          "totalSupply": "82924614.45284281"
+          "totalSupply": 82924614.45284282
         },
         {
           "address": "0xad7f33984bed10518012013d4ab0458d37fee6f3",
@@ -69,11 +69,11 @@
               "decimals": 18,
               "totalSupplyRaw": "964822827542067099539n",
               "type": "underlying",
-              "totalSupply": "964.822827542067099539",
+              "totalSupply": 964.8228275420671,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
             }
           ],
-          "totalSupply": "94979.31397423"
+          "totalSupply": 94979.31397423
         },
         {
           "address": "0x1f27f81c1d13dd96a3b75d42e3d5d92b709869aa",
@@ -90,11 +90,11 @@
               "decimals": 18,
               "totalSupplyRaw": "155333750712607499840382n",
               "type": "underlying",
-              "totalSupply": "155333.750712607499840382",
+              "totalSupply": 155333.7507126075,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
             }
           ],
-          "totalSupply": "40213992.66011105"
+          "totalSupply": 40213992.66011105
         },
         {
           "address": "0x9be5e24f05bbafc28da814bd59284878b388a40f",
@@ -111,11 +111,11 @@
               "decimals": 8,
               "totalSupplyRaw": "11688578733n",
               "type": "underlying",
-              "totalSupply": "116.88578733",
+              "totalSupply": 116.88578733,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
             }
           ],
-          "totalSupply": "8272.18441902"
+          "totalSupply": 8272.18441902
         },
         {
           "address": "0xceed853798ff1c95ceb4dc48f68394eb7a86a782",
@@ -132,11 +132,11 @@
               "decimals": 18,
               "totalSupplyRaw": "454991262299715144325n",
               "type": "underlying",
-              "totalSupply": "454.991262299715144325",
+              "totalSupply": 454.9912622997151,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F/logo.png"
             }
           ],
-          "totalSupply": "49769.44649445"
+          "totalSupply": 49769.44649445
         }
       ]
     },

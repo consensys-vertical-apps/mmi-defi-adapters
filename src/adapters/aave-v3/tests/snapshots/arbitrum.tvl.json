@@ -27,11 +27,11 @@
               "decimals": 18,
               "totalSupplyRaw": "1043929847700067698319005n",
               "type": "underlying",
-              "totalSupply": "1043929.847700067698319005",
+              "totalSupply": 1043929.8477000677,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ],
-          "totalSupply": "6224819.807509250860820983"
+          "totalSupply": 6224819.807509251
         },
         {
           "address": "0x191c10aa4af7c30e871e70c95db0e4eb77237530",
@@ -48,11 +48,11 @@
               "decimals": 18,
               "totalSupplyRaw": "1043278303044582982034024n",
               "type": "underlying",
-              "totalSupply": "1043278.303044582982034024",
+              "totalSupply": 1043278.303044583,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             }
           ],
-          "totalSupply": "1110315.767267423821787113"
+          "totalSupply": 1110315.767267424
         },
         {
           "address": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
@@ -69,11 +69,11 @@
               "decimals": 6,
               "totalSupplyRaw": "2998317297711n",
               "type": "underlying",
-              "totalSupply": "2998317.297711",
+              "totalSupply": 2998317.297711,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
             }
           ],
-          "totalSupply": "32267417.872735"
+          "totalSupply": 32267417.872735
         },
         {
           "address": "0x078f358208685046a11c85e8ad32895ded33a249",
@@ -90,11 +90,11 @@
               "decimals": 8,
               "totalSupplyRaw": "172010062399n",
               "type": "underlying",
-              "totalSupply": "1720.10062399",
+              "totalSupply": 1720.10062399,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
           ],
-          "totalSupply": "1890.19244221"
+          "totalSupply": 1890.19244221
         },
         {
           "address": "0xe50fa9b3c56ffb159cb0fca61f5c9d750e8128c8",
@@ -111,11 +111,11 @@
               "decimals": 18,
               "totalSupplyRaw": "23061676476612926562820n",
               "type": "underlying",
-              "totalSupply": "23061.67647661292656282",
+              "totalSupply": 23061.676476612927,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
-          "totalSupply": "42968.41106219389209758"
+          "totalSupply": 42968.41106219389
         },
         {
           "address": "0x6ab707aca953edaefbc4fd23ba73294241490620",
@@ -132,11 +132,11 @@
               "decimals": 6,
               "totalSupplyRaw": "3042898229935n",
               "type": "underlying",
-              "totalSupply": "3042898.229935",
+              "totalSupply": 3042898.229935,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
             }
           ],
-          "totalSupply": "16720741.548423"
+          "totalSupply": 16720741.548423
         },
         {
           "address": "0xf329e36c7bf6e5e86ce2150875a84ce77f477375",
@@ -153,11 +153,11 @@
               "decimals": 18,
               "totalSupplyRaw": "1846043618992304627070n",
               "type": "underlying",
-              "totalSupply": "1846.04361899230462707",
+              "totalSupply": 1846.0436189923046,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xba5DdD1f9d7F570dc94a51479a000E3BCE967196/logo.png"
             }
           ],
-          "totalSupply": "1846.043618993152938696"
+          "totalSupply": 1846.043618993153
         },
         {
           "address": "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97",
@@ -174,11 +174,11 @@
               "decimals": 2,
               "totalSupplyRaw": "1945466n",
               "type": "underlying",
-              "totalSupply": "19454.66",
+              "totalSupply": 19454.66,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xD22a58f79e9481D1a88e00c343885A588b34b68B/logo.png"
             }
           ],
-          "totalSupply": "40271.58"
+          "totalSupply": 40271.58
         },
         {
           "address": "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff",
@@ -195,11 +195,11 @@
               "decimals": 18,
               "totalSupplyRaw": "28473801756950405016292n",
               "type": "underlying",
-              "totalSupply": "28473.801756950405016292",
+              "totalSupply": 28473.801756950405,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
             }
           ],
-          "totalSupply": "29037.154559861762074278"
+          "totalSupply": 29037.154559861763
         },
         {
           "address": "0x8eb270e296023e9d92081fdf967ddd7878724424",
@@ -216,11 +216,11 @@
               "decimals": 18,
               "totalSupplyRaw": "1609007261524074538743n",
               "type": "underlying",
-              "totalSupply": "1609.007261524074538743",
+              "totalSupply": 1609.0072615240745,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8/logo.png"
             }
           ],
-          "totalSupply": "1862.154877310039485659"
+          "totalSupply": 1862.1548773100394
         },
         {
           "address": "0x8ffdf2de812095b1d19cb146e4c004587c0a0692",
@@ -237,11 +237,11 @@
               "decimals": 18,
               "totalSupplyRaw": "747412692452077193921722n",
               "type": "underlying",
-              "totalSupply": "747412.692452077193921722",
+              "totalSupply": 747412.6924520772,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x93b346b6BC2548dA6A1E7d98E9a421B42541425b/logo.png"
             }
           ],
-          "totalSupply": "1705135.668104204712407232"
+          "totalSupply": 1705135.6681042048
         },
         {
           "address": "0x724dc807b04555b71ed48a6896b6f41593b8c637",
@@ -258,11 +258,11 @@
               "decimals": 6,
               "totalSupplyRaw": "1372205203034n",
               "type": "underlying",
-              "totalSupply": "1372205.203034",
+              "totalSupply": 1372205.203034,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
             }
           ],
-          "totalSupply": "14413123.328748"
+          "totalSupply": 14413123.328748
         },
         {
           "address": "0x38d693ce1df5aadf7bc62595a37d667ad57922e5",
@@ -279,11 +279,11 @@
               "decimals": 18,
               "totalSupplyRaw": "6021024683742976921739n",
               "type": "underlying",
-              "totalSupply": "6021.024683742976921739",
+              "totalSupply": 6021.024683742977,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             }
           ],
-          "totalSupply": "21756.903525976106314585"
+          "totalSupply": 21756.903525976108
         },
         {
           "address": "0x6533afac2e7bccb20dca161449a13a32d391fb00",
@@ -300,11 +300,11 @@
               "decimals": 18,
               "totalSupplyRaw": "8794208528797243238013402n",
               "type": "underlying",
-              "totalSupply": "8794208.528797243238013402",
+              "totalSupply": 8794208.528797243,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
             }
           ],
-          "totalSupply": "10796935.504836914303931549"
+          "totalSupply": 10796935.504836915
         }
       ]
     },
@@ -334,11 +334,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ],
-          "totalSupply": "1239916.402386781357511423"
+          "totalSupply": 1239916.4023867813
         },
         {
           "address": "0x89d976629b7055ff1ca02b927ba3e020f22a44e4",
@@ -355,11 +355,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x307ffe186f84a3bc2613d1ea417a5737d69a7007",
@@ -376,11 +376,11 @@
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
             }
           ],
-          "totalSupply": "3248155.974761"
+          "totalSupply": 3248155.974761
         },
         {
           "address": "0x633b207dd676331c413d4c013a6294b0fe47cd0e",
@@ -397,11 +397,11 @@
               "decimals": 8,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0xd8ad37849950903571df17049516a5cd4cbe55f6",
@@ -418,11 +418,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x70effc565db6eef7b927610155602d31b670e802",
@@ -439,11 +439,11 @@
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
             }
           ],
-          "totalSupply": "2936785.322611"
+          "totalSupply": 2936785.322611
         },
         {
           "address": "0xfaef6a702d15428e588d4c0614aefb4348d83d48",
@@ -460,11 +460,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xba5DdD1f9d7F570dc94a51479a000E3BCE967196/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0xf15f26710c827dde8acba678682f3ce24f2fb56e",
@@ -481,11 +481,11 @@
               "decimals": 2,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xD22a58f79e9481D1a88e00c343885A588b34b68B/logo.png"
             }
           ],
-          "totalSupply": "11798.95"
+          "totalSupply": 11798.95
         },
         {
           "address": "0x08cb71192985e936c7cd166a8b268035e400c3c3",
@@ -502,11 +502,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x3ef10dff4928279c004308ebadc4db8b7620d6fc",
@@ -523,11 +523,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd",
@@ -544,11 +544,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x93b346b6BC2548dA6A1E7d98E9a421B42541425b/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0xdc1fad70953bb3918592b6fcc374fe05f5811b6a",
@@ -565,11 +565,11 @@
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x8a9fde6925a839f6b1932d16b36ac026f8d3fbdb",
@@ -586,11 +586,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x6b4b37618d85db2a7b469983c888040f7f05ea3d",
@@ -607,11 +607,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         }
       ]
     },
@@ -641,11 +641,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ],
-          "totalSupply": "3941251.594233267334707352"
+          "totalSupply": 3941251.5942332675
         },
         {
           "address": "0x953a573793604af8d41f306feb8274190db4ae0e",
@@ -662,11 +662,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             }
           ],
-          "totalSupply": "67038.63872310088017986"
+          "totalSupply": 67038.63872310088
         },
         {
           "address": "0xfccf3cabbe80101232d343252614b6a3ee81c989",
@@ -683,11 +683,11 @@
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
             }
           ],
-          "totalSupply": "26022073.569735"
+          "totalSupply": 26022073.569735
         },
         {
           "address": "0x92b42c66840c7ad907b4bf74879ff3ef7c529473",
@@ -704,11 +704,11 @@
               "decimals": 8,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
           ],
-          "totalSupply": "170.09363539"
+          "totalSupply": 170.09363539
         },
         {
           "address": "0x0c84331e39d6658cd6e6b9ba04736cc4c4734351",
@@ -725,11 +725,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
-          "totalSupply": "19907.131776987691157136"
+          "totalSupply": 19907.13177698769
         },
         {
           "address": "0xfb00ac187a8eb5afae4eace434f493eb62672df7",
@@ -746,11 +746,11 @@
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
             }
           ],
-          "totalSupply": "10741742.65564"
+          "totalSupply": 10741742.65564
         },
         {
           "address": "0xe80761ea617f66f96274ea5e8c37f03960ecc679",
@@ -767,11 +767,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xba5DdD1f9d7F570dc94a51479a000E3BCE967196/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x4a1c3ad6ed28a636ee1751c69071f6be75deb8b8",
@@ -788,11 +788,11 @@
               "decimals": 2,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xD22a58f79e9481D1a88e00c343885A588b34b68B/logo.png"
             }
           ],
-          "totalSupply": "9018.5"
+          "totalSupply": 9018.5
         },
         {
           "address": "0x77ca01483f379e58174739308945f044e1a764dc",
@@ -809,11 +809,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
             }
           ],
-          "totalSupply": "563.35589223360040307"
+          "totalSupply": 563.3558922336005
         },
         {
           "address": "0xce186f6cccb0c955445bb9d10c59cae488fea559",
@@ -830,11 +830,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8/logo.png"
             }
           ],
-          "totalSupply": "253.153046699666084915"
+          "totalSupply": 253.15304669966608
         },
         {
           "address": "0xa8669021776bc142dfca87c21b4a52595bcbb40a",
@@ -851,11 +851,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x93b346b6BC2548dA6A1E7d98E9a421B42541425b/logo.png"
             }
           ],
-          "totalSupply": "957738.552252425422724744"
+          "totalSupply": 957738.5522524255
         },
         {
           "address": "0xf611aeb5013fd2c0511c9cd55c7dc5c1140741a6",
@@ -872,11 +872,11 @@
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
             }
           ],
-          "totalSupply": "13041448.501189"
+          "totalSupply": 13041448.501189
         },
         {
           "address": "0x5d557b07776d12967914379c71a1310e917c7555",
@@ -893,11 +893,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             }
           ],
-          "totalSupply": "15736.510044422707075738"
+          "totalSupply": 15736.510044422706
         },
         {
           "address": "0x44705f578135cc5d703b4c9c122528c73eb87145",
@@ -914,11 +914,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
             }
           ],
-          "totalSupply": "2002823.379886886832460259"
+          "totalSupply": 2002823.3798868868
         }
       ]
     }

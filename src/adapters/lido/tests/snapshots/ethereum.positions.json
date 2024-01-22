@@ -35,14 +35,14 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "7799966744469184419n",
-                  "balance": "7.799966744469184419"
+                  "balance": 7.7999667444691845
                 }
               ],
-              "balance": "0.004944483824413014",
+              "balance": 0.004944483824413014,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
-          "balance": "0.004944483824413014"
+          "balance": 0.004944483824413014
         }
       ]
     },
@@ -88,18 +88,18 @@
                       "decimals": 18,
                       "type": "fiat",
                       "balanceRaw": "142256435296990375413159686n",
-                      "balance": "142256435.296990375413159686"
+                      "balance": 142256435.29699036
                     }
                   ],
-                  "balance": "90177.902840852853190524",
+                  "balance": 90177.90284085285,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
                 }
               ],
-              "balance": "90177.902840852853190524",
+              "balance": 90177.90284085285,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "balance": "78871.459289748529074876"
+          "balance": 78871.45928974853
         }
       ]
     }

@@ -35,10 +35,10 @@
                 "decimals": 18,
                 "type": "fiat",
                 "balanceRaw": "23401314894540488549n",
-                "balance": "23.401314894540488549"
+                "balance": 23.401314894540487
               }
             ],
-            "balance": "0.00071215"
+            "balance": 0.00071215
           },
           {
             "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
@@ -56,10 +56,10 @@
                 "decimals": 18,
                 "type": "fiat",
                 "balanceRaw": "20129010037072643360n",
-                "balance": "20.12901003707264336"
+                "balance": 20.129010037072643
               }
             ],
-            "balance": "0.010038547891110371"
+            "balance": 0.010038547891110371
           },
           {
             "address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
@@ -77,10 +77,10 @@
                 "decimals": 18,
                 "type": "fiat",
                 "balanceRaw": "16879911701871222305n",
-                "balance": "16.879911701871222305"
+                "balance": 16.879911701871222
               }
             ],
-            "balance": "17.080993"
+            "balance": 17.080993
           },
           {
             "address": "0xf97f4df75117a78c1a5a0dbb814af92458539fb4",
@@ -98,10 +98,10 @@
                 "decimals": 18,
                 "type": "fiat",
                 "balanceRaw": "1314014262240843289n",
-                "balance": "1.314014262240843289"
+                "balance": 1.3140142622408433
               }
             ],
-            "balance": "0.093796384015845796"
+            "balance": 0.0937963840158458
           },
           {
             "address": "0xfa7f8980b0f1e64a2062791cc3b0871572f1f7f0",
@@ -119,10 +119,10 @@
                 "decimals": 18,
                 "type": "fiat",
                 "balanceRaw": "684280642827520769n",
-                "balance": "0.684280642827520769"
+                "balance": 0.6842806428275208
               }
             ],
-            "balance": "0.129026456615526018"
+            "balance": 0.12902645661552603
           },
           {
             "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
@@ -140,10 +140,10 @@
                 "decimals": 18,
                 "type": "fiat",
                 "balanceRaw": "1298228890560455310n",
-                "balance": "1.29822889056045531"
+                "balance": 1.2982288905604553
               }
             ],
-            "balance": "1.314137"
+            "balance": 1.314137
           },
           {
             "address": "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
@@ -153,7 +153,7 @@
             "balanceRaw": "181390928614n",
             "type": "underlying",
             "blockNumber": 151045026,
-            "balance": "0.000000181390928614"
+            "balance": 1.81390928614e-7
           },
           {
             "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
@@ -171,10 +171,10 @@
                 "decimals": 18,
                 "type": "fiat",
                 "balanceRaw": "313503067282127456n",
-                "balance": "0.313503067282127456"
+                "balance": 0.31350306728212746
               }
             ],
-            "balance": "2.873490716046510717"
+            "balance": 2.873490716046511
           },
           {
             "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
@@ -192,10 +192,10 @@
                 "decimals": 18,
                 "type": "fiat",
                 "balanceRaw": "2536068893780385341n",
-                "balance": "2.536068893780385341"
+                "balance": 2.5360688937803855
               }
             ],
-            "balance": "2.558921389742661495"
+            "balance": 2.5589213897426615
           },
           {
             "address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
@@ -213,10 +213,10 @@
                 "decimals": 18,
                 "type": "fiat",
                 "balanceRaw": "9481080062989074491n",
-                "balance": "9.481080062989074491"
+                "balance": 9.481080062989074
               }
             ],
-            "balance": "9.597541"
+            "balance": 9.597541
           }
         ],
         "blockNumber": 151045026

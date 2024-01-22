@@ -27,7 +27,7 @@
               "decimals": 6,
               "type": "underlying",
               "underlyingRateRaw": "20242n",
-              "underlyingRate": "0.020242",
+              "underlyingRate": 0.020242,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             }
           ]
@@ -47,7 +47,7 @@
               "decimals": 6,
               "type": "underlying",
               "underlyingRateRaw": "20295n",
-              "underlyingRate": "0.020295",
+              "underlyingRate": 0.020295,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             }
           ]
@@ -67,7 +67,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "20540421873034071n",
-              "underlyingRate": "0.020540421873034071",
+              "underlyingRate": 0.020540421873034072,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
             }
           ]
@@ -87,7 +87,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "20290871026473242n",
-              "underlyingRate": "0.020290871026473242",
+              "underlyingRate": 0.020290871026473242,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
             }
           ]
@@ -107,7 +107,7 @@
               "decimals": 8,
               "type": "underlying",
               "underlyingRateRaw": "2010038n",
-              "underlyingRate": "0.02010038",
+              "underlyingRate": 0.02010038,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
             }
           ]
@@ -127,7 +127,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "20157913411514401n",
-              "underlyingRate": "0.020157913411514401",
+              "underlyingRate": 0.020157913411514402,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F/logo.png"
             }
           ]

@@ -20,7 +20,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.000045944173154579"
+          "balance": 0.000045944173154579
         },
         {
           "type": "protocol",
@@ -30,7 +30,7 @@
           "name": "Dai Stablecoin",
           "symbol": "DAI",
           "decimals": 18,
-          "balance": "62.460559661653312295"
+          "balance": 62.46055966165331
         }
       ]
     }

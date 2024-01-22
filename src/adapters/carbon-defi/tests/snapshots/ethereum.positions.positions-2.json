@@ -20,7 +20,7 @@
           "name": "ChainLink Token",
           "symbol": "LINK",
           "decimals": 18,
-          "balance": "0.0"
+          "balance": 0
         },
         {
           "type": "protocol",
@@ -30,7 +30,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.01"
+          "balance": 0.01
         },
         {
           "type": "protocol",
@@ -40,7 +40,7 @@
           "name": "USD Coin",
           "symbol": "USDC",
           "decimals": 6,
-          "balance": "0.0"
+          "balance": 0
         },
         {
           "type": "protocol",
@@ -50,7 +50,7 @@
           "name": "Tether USD",
           "symbol": "USDT",
           "decimals": 6,
-          "balance": "73.732931"
+          "balance": 73.732931
         }
       ]
     }

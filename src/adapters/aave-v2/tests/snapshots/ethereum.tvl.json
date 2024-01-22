@@ -27,11 +27,11 @@
               "decimals": 6,
               "totalSupplyRaw": "63603254515157n",
               "type": "underlying",
-              "totalSupply": "63603254.515157",
+              "totalSupply": 63603254.515157,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "totalSupply": "318575685.890988"
+          "totalSupply": 318575685.890988
         },
         {
           "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
@@ -48,11 +48,11 @@
               "decimals": 8,
               "totalSupplyRaw": "1689927976519n",
               "type": "underlying",
-              "totalSupply": "16899.27976519",
+              "totalSupply": 16899.27976519,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
-          "totalSupply": "20394.76173601"
+          "totalSupply": 20394.76173601
         },
         {
           "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
@@ -69,11 +69,11 @@
               "decimals": 18,
               "totalSupplyRaw": "199822884858493474568576n",
               "type": "underlying",
-              "totalSupply": "199822.884858493474568576",
+              "totalSupply": 199822.88485849346,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
-          "totalSupply": "408024.73666262782907223"
+          "totalSupply": 408024.73666262784
         },
         {
           "address": "0xffc97d72e13e01096502cb8eb52dee56f74dad7b",
@@ -90,11 +90,11 @@
               "decimals": 18,
               "totalSupplyRaw": "142342461393987389647804n",
               "type": "underlying",
-              "totalSupply": "142342.461393987389647804",
+              "totalSupply": 142342.46139398738,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
             }
           ],
-          "totalSupply": "142342.461393987389647807"
+          "totalSupply": 142342.46139398738
         },
         {
           "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
@@ -111,11 +111,11 @@
               "decimals": 18,
               "totalSupplyRaw": "21747689336442291646146197n",
               "type": "underlying",
-              "totalSupply": "21747689.336442291646146197",
+              "totalSupply": 21747689.33644229,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
-          "totalSupply": "88341009.337565042973173653"
+          "totalSupply": 88341009.33756505
         },
         {
           "address": "0x6c5024cd4f8a59110119c56f8933403a539555eb",
@@ -132,11 +132,11 @@
               "decimals": 18,
               "totalSupplyRaw": "950204158148320155392031n",
               "type": "underlying",
-              "totalSupply": "950204.158148320155392031",
+              "totalSupply": 950204.1581483202,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
           ],
-          "totalSupply": "1898812.656723605002410389"
+          "totalSupply": 1898812.656723605
         },
         {
           "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
@@ -153,11 +153,11 @@
               "decimals": 6,
               "totalSupplyRaw": "44468768353096n",
               "type": "underlying",
-              "totalSupply": "44468768.353096",
+              "totalSupply": 44468768.353096,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "totalSupply": "397367914.982129"
+          "totalSupply": 397367914.982129
         },
         {
           "address": "0xd37ee7e4f452c6638c96536e68090de8cbcdb583",
@@ -174,11 +174,11 @@
               "decimals": 2,
               "totalSupplyRaw": "31608075n",
               "type": "underlying",
-              "totalSupply": "316080.75",
+              "totalSupply": 316080.75,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo.png"
             }
           ],
-          "totalSupply": "1033963.15"
+          "totalSupply": 1033963.15
         },
         {
           "address": "0x2e8f4bdbe3d47d7d7de490437aea9915d930f1a3",
@@ -195,11 +195,11 @@
               "decimals": 18,
               "totalSupplyRaw": "113620131906435715949982n",
               "type": "underlying",
-              "totalSupply": "113620.131906435715949982",
+              "totalSupply": 113620.13190643572,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
             }
           ],
-          "totalSupply": "531213.032088029261712916"
+          "totalSupply": 531213.0320880293
         },
         {
           "address": "0xd4937682df3c8aef4fe912a96a74121c0829e664",
@@ -216,11 +216,11 @@
               "decimals": 18,
               "totalSupplyRaw": "581280963173273631241164n",
               "type": "underlying",
-              "totalSupply": "581280.963173273631241164",
+              "totalSupply": 581280.9631732736,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ],
-          "totalSupply": "2661131.293985170512436038"
+          "totalSupply": 2661131.2939851703
         },
         {
           "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
@@ -237,11 +237,11 @@
               "decimals": 18,
               "totalSupplyRaw": "691964604338350211087628n",
               "type": "underlying",
-              "totalSupply": "691964.604338350211087628",
+              "totalSupply": 691964.6043383502,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "totalSupply": "691964.604338350211088014"
+          "totalSupply": 691964.6043383502
         },
         {
           "address": "0xce1871f791548600cb59efbeffc9c38719142079",
@@ -258,11 +258,11 @@
               "decimals": 18,
               "totalSupplyRaw": "349604320594236201107888n",
               "type": "underlying",
-              "totalSupply": "349604.320594236201107888",
+              "totalSupply": 349604.3205942362,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
           ],
-          "totalSupply": "717613.593918813419132382"
+          "totalSupply": 717613.5939188134
         }
       ]
     },
@@ -292,11 +292,11 @@
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "totalSupply": "3762995.139075"
+          "totalSupply": 3762995.139075
         },
         {
           "address": "0x51b039b9afe64b78758f8ef091211b5387ea717c",
@@ -313,11 +313,11 @@
               "decimals": 8,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
-          "totalSupply": "348.61895556"
+          "totalSupply": 348.61895556
         },
         {
           "address": "0x4e977830ba4bd783c0bb7f15d3e243f73ff57121",
@@ -334,11 +334,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
-          "totalSupply": "120.550148559275152701"
+          "totalSupply": 120.55014855927516
         },
         {
           "address": "0x079d6a3e844bcecf5720478a718edb6575362c5f",
@@ -355,11 +355,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x778a13d3eeb110a4f7bb6529f99c000119a08e92",
@@ -376,11 +376,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
-          "totalSupply": "952112.424145916340764568"
+          "totalSupply": 952112.4241459164
         },
         {
           "address": "0x30b0f7324fedf89d8eff397275f8983397efe4af",
@@ -397,11 +397,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0xe4922afab0bbadd8ab2a88e0c79d884ad337fca6",
@@ -418,11 +418,11 @@
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "totalSupply": "5836745.63458"
+          "totalSupply": 5836745.63458
         },
         {
           "address": "0xf8ac64ec6ff8e0028b37eb89772d21865321bce0",
@@ -439,11 +439,11 @@
               "decimals": 2,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x2387119bc85a74e0bbcbe190d80676cb16f10d4f",
@@ -460,11 +460,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x3916e3b6c84b161df1b2733dffc9569a1da710c2",
@@ -481,11 +481,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x66457616dd8489df5d0afd8678f4a260088aaf55",
@@ -502,11 +502,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x39f010127274b2dbdb770b45e1de54d974974526",
@@ -523,11 +523,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
           ],
-          "totalSupply": "44097.01879290494962095"
+          "totalSupply": 44097.01879290495
         }
       ]
     },
@@ -557,11 +557,11 @@
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "totalSupply": "251221324.940728"
+          "totalSupply": 251221324.940728
         },
         {
           "address": "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
@@ -578,11 +578,11 @@
               "decimals": 8,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
-          "totalSupply": "3146.86271229"
+          "totalSupply": 3146.86271229
         },
         {
           "address": "0xf63b34710400cad3e044cffdcab00a0f32e33ecf",
@@ -599,11 +599,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
-          "totalSupply": "207889.958167992842063567"
+          "totalSupply": 207889.95816799285
         },
         {
           "address": "0xf7dba49d571745d9d7fcb56225b05bea803ebf3c",
@@ -620,11 +620,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d",
@@ -641,11 +641,11 @@
               "decimals": 18,
               "totalSupplyRaw": "49950049950049950n",
               "type": "underlying",
-              "totalSupply": "0.04995004995004995",
+              "totalSupply": 0.04995004995004995,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
-          "totalSupply": "65641467.291337439444451644"
+          "totalSupply": 65641467.29133744
         },
         {
           "address": "0xdc6a3ab17299d9c2a412b0e0a4c1f55446ae0817",
@@ -662,11 +662,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
           ],
-          "totalSupply": "948679.477383696886572252"
+          "totalSupply": 948679.4773836969
         },
         {
           "address": "0x619beb58998ed2278e08620f97007e1116d5d25b",
@@ -683,11 +683,11 @@
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "totalSupply": "347062521.887698"
+          "totalSupply": 347062521.887698
         },
         {
           "address": "0x279af5b99540c1a3a7e3cdd326e19659401ef99e",
@@ -704,11 +704,11 @@
               "decimals": 2,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo.png"
             }
           ],
-          "totalSupply": "717920.29"
+          "totalSupply": 717920.29
         },
         {
           "address": "0xfdb93b3b10936cf81fa59a02a7523b6e2149b2b7",
@@ -725,11 +725,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
             }
           ],
-          "totalSupply": "417636.165962371818158248"
+          "totalSupply": 417636.1659623718
         },
         {
           "address": "0xfe8f19b17ffef0fdbfe2671f248903055afaa8ca",
@@ -746,11 +746,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ],
-          "totalSupply": "2079904.814877186689637637"
+          "totalSupply": 2079904.8148771867
         },
         {
           "address": "0xa9deac9f00dc4310c35603fcd9d34d1a750f81db",
@@ -767,11 +767,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
           "address": "0x411066489ab40442d6fc215ad7c64224120d33f2",
@@ -788,11 +788,11 @@
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
           ],
-          "totalSupply": "323686.926935923381560854"
+          "totalSupply": 323686.9269359234
         }
       ]
     }

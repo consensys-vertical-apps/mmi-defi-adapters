@@ -27,7 +27,7 @@
               "name": "USD",
               "symbol": "USD",
               "address": "TheUnitedStatesMint",
-              "underlyingRate": "0.992065714215426632"
+              "underlyingRate": 0.9920657142154267
             }
           ]
         }

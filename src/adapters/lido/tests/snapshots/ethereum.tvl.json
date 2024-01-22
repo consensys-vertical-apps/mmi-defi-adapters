@@ -27,11 +27,11 @@
               "decimals": 18,
               "totalSupplyRaw": "661021422603205147046n",
               "type": "underlying",
-              "totalSupply": "661.021422603205147046",
+              "totalSupply": 661.0214226032051,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
-          "totalSupply": "8827483.127693819205147046"
+          "totalSupply": 8827483.127693819
         }
       ]
     },
@@ -61,11 +61,11 @@
               "decimals": 18,
               "totalSupplyRaw": "3665156618272929270930708n",
               "type": "underlying",
-              "totalSupply": "3665156.618272929270930708",
+              "totalSupply": 3665156.6182729295,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "totalSupply": "3205621.796701989888280098"
+          "totalSupply": 3205621.79670199
         }
       ]
     }

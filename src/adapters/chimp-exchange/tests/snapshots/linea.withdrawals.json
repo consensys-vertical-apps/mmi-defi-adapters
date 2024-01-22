@@ -26,7 +26,7 @@
             "decimals": 6,
             "balanceRaw": "101107315n",
             "type": "underlying",
-            "balance": "101.107315"
+            "balance": 101.107315
           },
           {
             "address": "0x4af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
@@ -35,7 +35,7 @@
             "decimals": 18,
             "balanceRaw": "0n",
             "type": "underlying",
-            "balance": "0.0"
+            "balance": 0
           },
           {
             "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
@@ -44,7 +44,7 @@
             "decimals": 6,
             "balanceRaw": "0n",
             "type": "underlying",
-            "balance": "0.0"
+            "balance": 0
           }
         ],
         "blockNumber": 1346848

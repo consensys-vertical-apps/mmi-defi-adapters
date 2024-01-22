@@ -35,14 +35,14 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "31444278945474053746677n",
-                  "balance": "31444.278945474053746677"
+                  "balance": 31444.278945474052
                 }
               ],
-              "balance": "31492.408006",
+              "balance": 31492.408006,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "balance": "31468.548033"
+          "balance": 31468.548033
         }
       ]
     },
@@ -80,14 +80,14 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "4498997829262559310000n",
-                  "balance": "4498.99782926255931"
+                  "balance": 4498.997829262559
                 }
               ],
-              "balance": "10000.0",
+              "balance": 10000,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6/logo.png"
             }
           ],
-          "balance": "7629.566315744923838948"
+          "balance": 7629.5663157449235
         }
       ]
     }
