@@ -5,6 +5,8 @@ import {
   GetEventsInput,
   PositionType,
   TokenType,
+  MovementsByBlock,
+  ProtocolPosition,
 } from '../types/adapter'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
@@ -26,6 +28,10 @@ export async function getProfits({
 }): Promise<ProfitsWithRange> {
   let endPositionValues: ReturnType<typeof aggregateFiatBalances>,
     startPositionValues: ReturnType<typeof aggregateFiatBalances>
+
+  let rawEndPositionValues: ProtocolPosition[]
+
+  let rawStartPositionValues: ProtocolPosition[]
   if (protocolTokenAddresses) {
     // Call both in parallel with filter
     ;[endPositionValues, startPositionValues] = await Promise.all([
@@ -35,32 +41,46 @@ export async function getProfits({
           blockNumber: toBlock,
           protocolTokenAddresses,
         })
-        .then(aggregateFiatBalances),
+        .then((result) => {
+          rawEndPositionValues = result
+          return aggregateFiatBalances(result)
+        }),
       adapter
         .getPositions({
           userAddress,
           blockNumber: fromBlock,
           protocolTokenAddresses,
         })
-        .then(aggregateFiatBalances),
+        .then((result) => {
+          rawStartPositionValues = result
+          return aggregateFiatBalances(result)
+        }),
     ])
   } else {
     // Call toBlock first and filter fromBlock
-    endPositionValues = await adapter
+    ;(endPositionValues = await adapter
       .getPositions({
         userAddress,
         blockNumber: toBlock,
       })
-      .then(aggregateFiatBalances)
-
-    startPositionValues = await adapter
-      .getPositions({
-        userAddress,
-        blockNumber: fromBlock,
-        protocolTokenAddresses: Object.keys(endPositionValues),
-      })
-      .then(aggregateFiatBalances)
+      .then((result) => {
+        rawEndPositionValues = result
+        return aggregateFiatBalances(result)
+      })),
+      (startPositionValues = await adapter
+        .getPositions({
+          userAddress,
+          blockNumber: fromBlock,
+          protocolTokenAddresses: Object.keys(endPositionValues),
+        })
+        .then((result) => {
+          rawStartPositionValues = result
+          return aggregateFiatBalances(result)
+        }))
   }
+
+  const rawWithdrawals: MovementsByBlock[] = []
+  const rawDeposits: MovementsByBlock[] = []
 
   const tokens = await Promise.all(
     Object.values(endPositionValues).map(async ({ protocolTokenMetadata }) => {
@@ -73,12 +93,14 @@ export async function getProfits({
       }
 
       const [withdrawals, deposits] = await Promise.all([
-        adapter
-          .getWithdrawals(getEventsInput)
-          .then(aggregateFiatBalancesFromMovements),
-        adapter
-          .getDeposits(getEventsInput)
-          .then(aggregateFiatBalancesFromMovements),
+        adapter.getWithdrawals(getEventsInput).then((result) => {
+          rawWithdrawals.push(...result)
+          return aggregateFiatBalancesFromMovements(result)
+        }),
+        adapter.getDeposits(getEventsInput).then((result) => {
+          rawDeposits.push(...result)
+          return aggregateFiatBalancesFromMovements(result)
+        }),
       ])
 
       const key = protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
@@ -122,6 +144,12 @@ export async function getProfits({
           deposits: deposit,
           startPositionValue: startPositionValue,
           endPositionValue: endPositionValue,
+        },
+        rawValues: {
+          rawEndPositionValues,
+          rawStartPositionValues,
+          rawWithdrawals,
+          rawDeposits,
         },
       }
     }),

@@ -203,7 +203,7 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
           baseAddress: address,
           quoteAddress: wethAddress,
           decimals: tokenDetails.decimals,
-        })
+        }).catch((error) => -1)
 
         metadata[address] = {
           ...tokenDetails,

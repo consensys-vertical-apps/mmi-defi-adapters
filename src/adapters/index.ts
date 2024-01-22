@@ -52,8 +52,8 @@ export const supportedProtocols: Record<
       AaveV2VariableDebtTokenPoolAdapter,
     ],
     [Chain.Polygon]: [
-      AaveV2ATokenPoolAdapter,
-      AaveV2StableDebtTokenPoolAdapter,
+      // AaveV2ATokenPoolAdapter,
+      // AaveV2StableDebtTokenPoolAdapter,
       AaveV2VariableDebtTokenPoolAdapter,
     ],
     [Chain.Avalanche]: [
@@ -154,6 +154,7 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [PricesUSDAdapter],
     [Chain.Optimism]: [PricesUSDAdapter],
     [Chain.Polygon]: [PricesUSDAdapter],
+    [Chain.Linea]: [PricesUSDAdapter],
   },
 
   [Protocol.IZiSwap]: {
