@@ -3,8 +3,8 @@ import { BigNumberish } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { CustomJsonRpcProvider } from '../../../../core/utils/provider/CustomJsonRpcProvider'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,

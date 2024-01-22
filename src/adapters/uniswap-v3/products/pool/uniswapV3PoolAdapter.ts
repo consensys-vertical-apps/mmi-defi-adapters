@@ -7,9 +7,9 @@ import {
   ResolveUnderlyingMovements,
 } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { CustomJsonRpcProvider } from '../../../../core/utils/provider/CustomJsonRpcProvider'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,

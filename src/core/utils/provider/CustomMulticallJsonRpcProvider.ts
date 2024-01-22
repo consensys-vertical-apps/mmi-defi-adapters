@@ -1,7 +1,7 @@
 import { JsonRpcApiProviderOptions, TransactionRequest } from 'ethers'
-import { Chain } from '../constants/chains'
-import { CustomJsonRpcProvider } from './customJsonRpcProvider'
-import { MulticallQueue } from './multicall'
+import { Chain } from '../../constants/chains'
+import { CustomJsonRpcProvider } from './CustomJsonRpcProvider'
+import { MulticallQueue } from './MulticallQueue'
 
 export interface CustomTransactionRequest extends TransactionRequest {
   blockTag?: number

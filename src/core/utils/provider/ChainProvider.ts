@@ -1,12 +1,12 @@
 import { Network } from 'ethers'
-import { IConfig } from '../../config'
-import { Multicall__factory } from '../../contracts'
-import { Chain } from '../constants/chains'
-import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
-import { CustomJsonRpcProvider } from './customJsonRpcProvider'
+import { IConfig } from '../../../config'
+import { Multicall__factory } from '../../../contracts'
+import { Chain } from '../../constants/chains'
+import { MULTICALL_ADDRESS } from '../../constants/MULTICALL_ADDRESS'
+import { logger } from '../logger'
+import { CustomJsonRpcProvider } from './CustomJsonRpcProvider'
 import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
-import { logger } from './logger'
-import { MulticallQueue } from './multicall'
+import { MulticallQueue } from './MulticallQueue'
 
 export class ChainProvider {
   providers: Record<Chain, CustomJsonRpcProvider>

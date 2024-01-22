@@ -1,9 +1,9 @@
 import { AbiCoder, AddressLike, BytesLike } from 'ethers'
-import { Multicall, Multicall3 } from '../../contracts/Multicall'
-import { Chain } from '../constants/chains'
-import { MulticallError } from '../errors/errors'
-import { CustomTransactionRequest } from './CustomMulticallJsonRpcProvider'
-import { logger } from './logger'
+import { Multicall, Multicall3 } from '../../../contracts/Multicall'
+import { Chain } from '../../constants/chains'
+import { MulticallError } from '../../errors/errors'
+import { logger } from '../logger'
+import { CustomTransactionRequest } from '../provider/CustomMulticallJsonRpcProvider'
 
 interface PendingCall {
   callParams: {
