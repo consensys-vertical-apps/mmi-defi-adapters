@@ -457,6 +457,16 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0x56659245931cb6920e39c189d2a0e7dd0da2d57b": {
+    "address": "0x56659245931cb6920e39c189d2a0e7dd0da2d57b",
+    "name": "Impermax",
+    "symbol": "IBEX",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x56659245931cb6920e39c189d2a0e7dd0da2d57b",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0x371c7ec6d8039ff7933a2aa28eb827ffe1f52f07": {
     "address": "0x371c7ec6d8039ff7933a2aa28eb827ffe1f52f07",
     "name": "JoeToken",
@@ -654,26 +664,6 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xc74fe4c715510ec2f8c61d70d397b32043f55abe",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0x982239d38af50b0168da33346d85fb12929c4c07": {
-    "address": "0x982239d38af50b0168da33346d85fb12929c4c07",
-    "name": "Arbitrove Governance Token",
-    "symbol": "TROVE",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x982239d38af50b0168da33346d85fb12929c4c07",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0x4dad357726b41bb8932764340ee9108cc5ad33a0": {
-    "address": "0x4dad357726b41bb8932764340ee9108cc5ad33a0",
-    "name": "NitroShiba",
-    "symbol": "NISHIB",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x4dad357726b41bb8932764340ee9108cc5ad33a0",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1017,16 +1007,6 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
-  "0xc4663f169aafb1d4506ce189d63810e24a8b63ea": {
-    "address": "0xc4663f169aafb1d4506ce189d63810e24a8b63ea",
-    "name": "Turismo AI",
-    "symbol": "TURAI",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0xc4663f169aafb1d4506ce189d63810e24a8b63ea",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
   "0x1622bf67e6e5747b81866fe0b85178a93c7f86e3": {
     "address": "0x1622bf67e6e5747b81866fe0b85178a93c7f86e3",
     "name": "Umami",
@@ -1194,16 +1174,6 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x61a1ff55c5216b636a294a07d77c6f4df10d3b56",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0x155f0dd04424939368972f4e1838687d6a831151": {
-    "address": "0x155f0dd04424939368972f4e1838687d6a831151",
-    "name": "ArbiDoge",
-    "symbol": "ADOGE",
-    "decimals": 18,
-    "uniswapFee": 3000,
-    "baseAddress": "0x155f0dd04424939368972f4e1838687d6a831151",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1487,16 +1457,6 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
-  "0x64343594ab9b56e99087bfa6f2335db24c2d1f17": {
-    "address": "0x64343594ab9b56e99087bfa6f2335db24c2d1f17",
-    "name": "Vesta Stable",
-    "symbol": "VST",
-    "decimals": 18,
-    "uniswapFee": 3000,
-    "baseAddress": "0x64343594ab9b56e99087bfa6f2335db24c2d1f17",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
   "0xe05a08226c49b636acf99c40da8dc6af83ce5bb3": {
     "address": "0xe05a08226c49b636acf99c40da8dc6af83ce5bb3",
     "name": "Ankr Staked ETH",
@@ -1567,6 +1527,16 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0x5117f4ad0bc70dbb3b05bf39a1ec1ee40dd67654": {
+    "address": "0x5117f4ad0bc70dbb3b05bf39a1ec1ee40dd67654",
+    "name": "Avive",
+    "symbol": "Avive",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x5117f4ad0bc70dbb3b05bf39a1ec1ee40dd67654",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5": {
     "address": "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5",
     "name": "BetSwirl v2",
@@ -1574,6 +1544,26 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0xf9ca0ec182a94f6231df9b14bd147ef7fb9fa17c": {
+    "address": "0xf9ca0ec182a94f6231df9b14bd147ef7fb9fa17c",
+    "name": "Boner",
+    "symbol": "BONER",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xf9ca0ec182a94f6231df9b14bd147ef7fb9fa17c",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x28514bd097d5f9ecea778cc7a4ca4bac5fedb0b6": {
+    "address": "0x28514bd097d5f9ecea778cc7a4ca4bac5fedb0b6",
+    "name": "Boo Token",
+    "symbol": "BOO",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x28514bd097d5f9ecea778cc7a4ca4bac5fedb0b6",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1607,6 +1597,16 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0xe4177c1400a8eee1799835dcde2489c6f0d5d616": {
+    "address": "0xe4177c1400a8eee1799835dcde2489c6f0d5d616",
+    "name": "CRAZYRABBIT",
+    "symbol": "CRAZYRABBIT",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xe4177c1400a8eee1799835dcde2489c6f0d5d616",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0x09fd3d6e6889940ca1158b9221309bd69fafa32b": {
     "address": "0x09fd3d6e6889940ca1158b9221309bd69fafa32b",
     "name": "DropArb",
@@ -1637,6 +1637,26 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0xd4848211b699503c772aa1bc7d33b433c4242ac3": {
+    "address": "0xd4848211b699503c772aa1bc7d33b433c4242ac3",
+    "name": "Equilibria Pendle",
+    "symbol": "ePendle",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xd4848211b699503c772aa1bc7d33b433c4242ac3",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x3269a3c00ab86c753856fd135d97b87facb0d848": {
+    "address": "0x3269a3c00ab86c753856fd135d97b87facb0d848",
+    "name": "Florence Finance Medici",
+    "symbol": "FFM",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x3269a3c00ab86c753856fd135d97b87facb0d848",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0x580e933d90091b9ce380740e3a4a39c67eb85b4c": {
     "address": "0x580e933d90091b9ce380740e3a4a39c67eb85b4c",
     "name": "GameSwift",
@@ -1644,6 +1664,16 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x580e933d90091b9ce380740e3a4a39c67eb85b4c",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x17176a9868f321411b15ccb9b934cf95597e89c4": {
+    "address": "0x17176a9868f321411b15ccb9b934cf95597e89c4",
+    "name": "Good Entry",
+    "symbol": "GOOD",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x17176a9868f321411b15ccb9b934cf95597e89c4",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1707,6 +1737,26 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0xf8388c2b6edf00e2e27eef5200b1befb24ce141d": {
+    "address": "0xf8388c2b6edf00e2e27eef5200b1befb24ce141d",
+    "name": "Nola",
+    "symbol": "NOLA",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xf8388c2b6edf00e2e27eef5200b1befb24ce141d",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x9e20461bc2c4c980f62f1b279d71734207a6a356": {
+    "address": "0x9e20461bc2c4c980f62f1b279d71734207a6a356",
+    "name": "OmniCat",
+    "symbol": "OMNI",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x9e20461bc2c4c980f62f1b279d71734207a6a356",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0xc8ccbd97b96834b976c995a67bf46e5754e2c48e": {
     "address": "0xc8ccbd97b96834b976c995a67bf46e5754e2c48e",
     "name": "Parallax Token",
@@ -1717,13 +1767,23 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
-  "0x7ca0b5ca80291b1feb2d45702ffe56a7a53e7a97": {
-    "address": "0x7ca0b5ca80291b1feb2d45702ffe56a7a53e7a97",
-    "name": "Radiate Token",
-    "symbol": "RADT",
+  "0xbcd4d5ac29e06e4973a1ddcd782cd035d04bc0b7": {
+    "address": "0xbcd4d5ac29e06e4973a1ddcd782cd035d04bc0b7",
+    "name": "Quick Intel",
+    "symbol": "QKNTL",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x7ca0b5ca80291b1feb2d45702ffe56a7a53e7a97",
+    "baseAddress": "0xbcd4d5ac29e06e4973a1ddcd782cd035d04bc0b7",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x54bdbf3ce36f451ec61493236b8e6213ac87c0f6": {
+    "address": "0x54bdbf3ce36f451ec61493236b8e6213ac87c0f6",
+    "name": "Radpie",
+    "symbol": "RDP",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x54bdbf3ce36f451ec61493236b8e6213ac87c0f6",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1744,6 +1804,16 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0xabd587f2607542723b17f14d00d99b987c29b074",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x9e64d3b9e8ec387a9a58ced80b71ed815f8d82b5": {
+    "address": "0x9e64d3b9e8ec387a9a58ced80b71ed815f8d82b5",
+    "name": "Smolcoin",
+    "symbol": "SMOL",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x9e64d3b9e8ec387a9a58ced80b71ed815f8d82b5",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1787,6 +1857,16 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66": {
+    "address": "0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66",
+    "name": "Xai",
+    "symbol": "XAI",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0x71eeba415a523f5c952cc2f06361d5443545ad28": {
     "address": "0x71eeba415a523f5c952cc2f06361d5443545ad28",
     "name": "XDAO",
@@ -1794,6 +1874,36 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x71eeba415a523f5c952cc2f06361d5443545ad28",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0xc84fae1141b92fa5bf847276828f69caf651cb7f": {
+    "address": "0xc84fae1141b92fa5bf847276828f69caf651cb7f",
+    "name": "XNF",
+    "symbol": "XNF",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xc84fae1141b92fa5bf847276828f69caf651cb7f",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x00cbcf7b3d37844e44b888bc747bdd75fcf4e555": {
+    "address": "0x00cbcf7b3d37844e44b888bc747bdd75fcf4e555",
+    "name": "xPet.tech Token",
+    "symbol": "XPET",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x00cbcf7b3d37844e44b888bc747bdd75fcf4e555",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x6daf586b7370b14163171544fca24abcc0862ac5": {
+    "address": "0x6daf586b7370b14163171544fca24abcc0862ac5",
+    "name": "BPET",
+    "symbol": "BPET",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x6daf586b7370b14163171544fca24abcc0862ac5",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1834,6 +1944,16 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x1b8d516e2146d7a32aca0fcbf9482db85fd42c3a",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x4810e5a7741ea5fdbb658eda632ddfac3b19e3c6": {
+    "address": "0x4810e5a7741ea5fdbb658eda632ddfac3b19e3c6",
+    "name": "Arbitrum Ecosystem Index",
+    "symbol": "ARBI",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x4810e5a7741ea5fdbb658eda632ddfac3b19e3c6",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1897,6 +2017,16 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0x764bfc309090e7f93edce53e5befa374cdcb7b8e": {
+    "address": "0x764bfc309090e7f93edce53e5befa374cdcb7b8e",
+    "name": "GRIMACE COIN",
+    "symbol": "GRIMACE",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x764bfc309090e7f93edce53e5befa374cdcb7b8e",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0xadf5dd3e51bf28ab4f07e684ecf5d00691818790": {
     "address": "0xadf5dd3e51bf28ab4f07e684ecf5d00691818790",
     "name": "ICHI",
@@ -1914,16 +2044,6 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0x51f9f9ff6cb2266d68c04ec289c7aba81378a383",
-    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-    "isBaseTokenEth": false
-  },
-  "0x965d00aa7abc62ca10132e641d08593435ac811d": {
-    "address": "0x965d00aa7abc62ca10132e641d08593435ac811d",
-    "name": "Kapital DAO Token",
-    "symbol": "KAP",
-    "decimals": 18,
-    "uniswapFee": 3000,
-    "baseAddress": "0x965d00aa7abc62ca10132e641d08593435ac811d",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
@@ -1947,6 +2067,36 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0x17a8541b82bf67e10b0874284b4ae66858cb1fd5": {
+    "address": "0x17a8541b82bf67e10b0874284b4ae66858cb1fd5",
+    "name": "Possum",
+    "symbol": "PSM",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x17a8541b82bf67e10b0874284b4ae66858cb1fd5",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0xc29b9c4f45fd4f07768cf913acde0c7772b47124": {
+    "address": "0xc29b9c4f45fd4f07768cf913acde0c7772b47124",
+    "name": "post.tech Token",
+    "symbol": "POST",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0xc29b9c4f45fd4f07768cf913acde0c7772b47124",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x000000000026839b3f4181f2cf69336af6153b99": {
+    "address": "0x000000000026839b3f4181f2cf69336af6153b99",
+    "name": "GG",
+    "symbol": "GG",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x000000000026839b3f4181f2cf69336af6153b99",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40": {
     "address": "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40",
     "name": "Arbitrum tBTC v2",
@@ -1957,6 +2107,16 @@
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },
+  "0xb56c29413af8778977093b9b4947efeea7136c36": {
+    "address": "0xb56c29413af8778977093b9b4947efeea7136c36",
+    "name": "Torque",
+    "symbol": "TORQ",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0xb56c29413af8778977093b9b4947efeea7136c36",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
   "0xd4939d69b31fbe981ed6904a3af43ee1dc777aab": {
     "address": "0xd4939d69b31fbe981ed6904a3af43ee1dc777aab",
     "name": "ETH+",
@@ -1964,6 +2124,16 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0xd4939d69b31fbe981ed6904a3af43ee1dc777aab",
+    "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "isBaseTokenEth": false
+  },
+  "0x0cdbbc7fe1c8da0cc41ba96d7edb4cce5982f23f": {
+    "address": "0x0cdbbc7fe1c8da0cc41ba96d7edb4cce5982f23f",
+    "name": "UNITS LIMITED SUPPLY",
+    "symbol": "ULS",
+    "decimals": 18,
+    "uniswapFee": 500,
+    "baseAddress": "0x0cdbbc7fe1c8da0cc41ba96d7edb4cce5982f23f",
     "quoteAddress": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
     "isBaseTokenEth": false
   },

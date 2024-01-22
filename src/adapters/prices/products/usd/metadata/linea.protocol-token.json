@@ -1,0 +1,9 @@
+{
+  "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f": {
+    "name": "Wrapped Ether",
+    "symbol": "WETH",
+    "decimals": 18,
+    "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
+    "isBaseTokenEth": true
+  }
+}

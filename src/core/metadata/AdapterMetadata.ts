@@ -45,6 +45,7 @@ import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/
 import MendiFinanceSupplyLineaMendi from '../../adapters/mendi-finance/products/supply/metadata/linea.mendi.json'
 import PricesUsdArbitrumProtocolToken from '../../adapters/prices/products/usd/metadata/arbitrum.protocol-token.json'
 import PricesUsdEthereumProtocolToken from '../../adapters/prices/products/usd/metadata/ethereum.protocol-token.json'
+import PricesUsdLineaProtocolToken from '../../adapters/prices/products/usd/metadata/linea.protocol-token.json'
 import PricesUsdOptimismProtocolToken from '../../adapters/prices/products/usd/metadata/optimism.protocol-token.json'
 import PricesUsdPolygonProtocolToken from '../../adapters/prices/products/usd/metadata/polygon.protocol-token.json'
 import { Protocol } from '../../adapters/protocols'
@@ -523,6 +524,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'mendi',
     }),
     MendiFinanceBorrowLineaMendi,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Prices,
+      productId: 'usd',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    PricesUsdLineaProtocolToken,
   ],
 ])
 

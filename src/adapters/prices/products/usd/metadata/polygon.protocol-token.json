@@ -346,6 +346,16 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
+  "0x12a4cebf81f8671faf1ab0acea4e3429e42869e7": {
+    "address": "0x12a4cebf81f8671faf1ab0acea4e3429e42869e7",
+    "name": "Homeety",
+    "symbol": "HOM",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x12a4cebf81f8671faf1ab0acea4e3429e42869e7",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
   "0x4e1581f01046efdd7a1a2cdb0f82cdd7f71f2e59": {
     "address": "0x4e1581f01046efdd7a1a2cdb0f82cdd7f71f2e59",
     "name": "IceToken",
@@ -486,16 +496,6 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
-  "0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb": {
-    "address": "0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb",
-    "name": "Nash Exchange Token (PoS)",
-    "symbol": "NEX",
-    "decimals": 8,
-    "uniswapFee": 10000,
-    "baseAddress": "0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
   "0x62a872d9977db171d9e213a5dc2b782e72ca0033": {
     "address": "0x62a872d9977db171d9e213a5dc2b782e72ca0033",
     "name": "NEUY (PoS)",
@@ -623,6 +623,16 @@
     "decimals": 9,
     "uniswapFee": 10000,
     "baseAddress": "0xd93f7e271cb87c23aaa73edc008a79646d1f9912",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0x9ca6a77c8b38159fd2da9bd25bc3e259c33f5e39": {
+    "address": "0x9ca6a77c8b38159fd2da9bd25bc3e259c33f5e39",
+    "name": "The SporkDAO Token (PoS)",
+    "symbol": "SPORK",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x9ca6a77c8b38159fd2da9bd25bc3e259c33f5e39",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -826,6 +836,16 @@
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
+  "0x82617aa52dddf5ed9bb7b370ed777b3182a30fd1": {
+    "address": "0x82617aa52dddf5ed9bb7b370ed777b3182a30fd1",
+    "name": "Yield Guild Games Token (PoS)",
+    "symbol": "YGG",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x82617aa52dddf5ed9bb7b370ed777b3182a30fd1",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
   "0x086373fad3447f7f86252fb59d56107e9e0faafa": {
     "address": "0x086373fad3447f7f86252fb59d56107e9e0faafa",
     "name": "Yup",
@@ -833,6 +853,16 @@
     "decimals": 18,
     "uniswapFee": 10000,
     "baseAddress": "0x086373fad3447f7f86252fb59d56107e9e0faafa",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0x3b56a704c01d650147ade2b8cee594066b3f9421": {
+    "address": "0x3b56a704c01d650147ade2b8cee594066b3f9421",
+    "name": "Affyn",
+    "symbol": "FYN",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x3b56a704c01d650147ade2b8cee594066b3f9421",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },
@@ -903,6 +933,16 @@
     "decimals": 18,
     "uniswapFee": 3000,
     "baseAddress": "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38",
+    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0xfc2d761544c335df930ef9863c671cfe953e4ea4": {
+    "address": "0xfc2d761544c335df930ef9863c671cfe953e4ea4",
+    "name": "Cleo",
+    "symbol": "CLEO",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0xfc2d761544c335df930ef9863c671cfe953e4ea4",
     "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     "isBaseTokenEth": false
   },

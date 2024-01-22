@@ -24,7 +24,7 @@ export const priceAdapterConfig = {
       [Chain.Base]: '0x4200000000000000000000000000000000000006',
       [Chain.Arbitrum]: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1',
       [Chain.Avalanche]: '0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab',
-      [Chain.Linea]: '0x',
+      [Chain.Linea]: '0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f',
     },
   },
   uniswap: {
@@ -33,6 +33,7 @@ export const priceAdapterConfig = {
       [Chain.Polygon]: QUOTER_CONTRACT,
       [Chain.Ethereum]: QUOTER_CONTRACT,
       [Chain.Arbitrum]: QUOTER_CONTRACT,
+      [Chain.Linea]: '0x42bE4D6527829FeFA1493e1fb9F3676d2425C3C1',
     },
   },
   chainlink: {
@@ -80,6 +81,15 @@ export const priceAdapterConfig = {
           symbol: 'weth',
           name: 'WETH',
           address: '0x4200000000000000000000000000000000000006',
+          decimals: 18,
+        },
+      },
+      [Chain.Linea]: {
+        nativeToken: ETH,
+        wrappedToken: {
+          symbol: 'weth',
+          name: 'WETH',
+          address: '0x3c6cd9cc7c7a4c2cf5a82734cd249d7d593354da',
           decimals: 18,
         },
       },

@@ -150,10 +150,11 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Prices]: {
-    [Chain.Ethereum]: [PricesUSDAdapter],
-    [Chain.Arbitrum]: [PricesUSDAdapter],
-    [Chain.Optimism]: [PricesUSDAdapter],
-    [Chain.Polygon]: [PricesUSDAdapter],
+    // [Chain.Ethereum]: [PricesUSDAdapter],
+    // [Chain.Arbitrum]: [PricesUSDAdapter],
+    // [Chain.Optimism]: [PricesUSDAdapter],
+    // [Chain.Polygon]: [PricesUSDAdapter],
+    [Chain.Linea]: [PricesUSDAdapter],
   },
 
   [Protocol.IZiSwap]: {
