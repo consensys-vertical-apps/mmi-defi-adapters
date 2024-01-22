@@ -12,6 +12,7 @@ import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
+import { enrichMovements, enrichPositionBalance } from '../responseAdapters'
 
 export async function getProfits({
   adapter,
@@ -19,12 +20,14 @@ export async function getProfits({
   fromBlock,
   toBlock,
   protocolTokenAddresses,
+  includeRawValues,
 }: {
   adapter: IProtocolAdapter
   userAddress: string
   fromBlock: number
   toBlock: number
   protocolTokenAddresses?: string[]
+  includeRawValues?: boolean
 }): Promise<ProfitsWithRange> {
   let endPositionValues: ReturnType<typeof aggregateFiatBalances>,
     startPositionValues: ReturnType<typeof aggregateFiatBalances>
@@ -125,7 +128,9 @@ export async function getProfits({
       const profit =
         endPositionValue + withdrawal - deposit - startPositionValue
 
-      if (adapter.getProtocolDetails().positionType == PositionType.Borrow) {
+      const isBorrow =
+        adapter.getProtocolDetails().positionType == PositionType.Borrow
+      if (isBorrow) {
         profit * -1
       }
 
@@ -142,15 +147,29 @@ export async function getProfits({
         calculationData: {
           withdrawals: withdrawal,
           deposits: deposit,
-          startPositionValue: startPositionValue,
-          endPositionValue: endPositionValue,
+          startPositionValue: isBorrow
+            ? startPositionValue * -1
+            : startPositionValue,
+          endPositionValue: isBorrow ? endPositionValue * -1 : endPositionValue,
         },
-        rawValues: {
-          rawEndPositionValues,
-          rawStartPositionValues,
-          rawWithdrawals,
-          rawDeposits,
-        },
+        rawValues: includeRawValues
+          ? {
+              rawEndPositionValues: rawEndPositionValues.map(
+                (protocolPosition) =>
+                  enrichPositionBalance(protocolPosition, adapter.chainId),
+              ),
+              rawStartPositionValues: rawStartPositionValues.map(
+                (protocolPosition) =>
+                  enrichPositionBalance(protocolPosition, adapter.chainId),
+              ),
+              rawWithdrawals: rawWithdrawals.map((value) =>
+                enrichMovements(value, adapter.chainId),
+              ),
+              rawDeposits: rawDeposits.map((value) =>
+                enrichMovements(value, adapter.chainId),
+              ),
+            }
+          : undefined,
       }
     }),
   )

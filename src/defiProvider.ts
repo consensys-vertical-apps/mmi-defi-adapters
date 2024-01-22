@@ -134,11 +134,12 @@ export class DefiProvider {
 
   async getProfits({
     userAddress,
-    timePeriod = TimePeriod.sevenDays,
+    timePeriod = TimePeriod.thirtyDays,
     filterProtocolIds,
     filterChainIds,
     toBlockNumbersOverride,
     filterProtocolTokens,
+    includeRawValues = false,
   }: {
     userAddress: string
     timePeriod?: TimePeriod
@@ -146,6 +147,7 @@ export class DefiProvider {
     filterChainIds?: Chain[]
     toBlockNumbersOverride?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
+    includeRawValues?: boolean
   }): Promise<DefiProfitsResponse[]> {
     const runner = async (
       adapter: IProtocolAdapter,
@@ -165,6 +167,7 @@ export class DefiProvider {
         toBlock,
         fromBlock,
         protocolTokenAddresses: filterProtocolTokens,
+        includeRawValues,
       })
 
       const endTime = Date.now()
