@@ -47,13 +47,13 @@ export const supportedProtocols: Record<
 
   [Protocol.AaveV2]: {
     [Chain.Ethereum]: [
-      // AaveV2ATokenPoolAdapter,
-      // AaveV2StableDebtTokenPoolAdapter,
+      AaveV2ATokenPoolAdapter,
+      AaveV2StableDebtTokenPoolAdapter,
       AaveV2VariableDebtTokenPoolAdapter,
     ],
     [Chain.Polygon]: [
-      // AaveV2ATokenPoolAdapter,
-      // AaveV2StableDebtTokenPoolAdapter,
+      AaveV2ATokenPoolAdapter,
+      AaveV2StableDebtTokenPoolAdapter,
       AaveV2VariableDebtTokenPoolAdapter,
     ],
     [Chain.Avalanche]: [

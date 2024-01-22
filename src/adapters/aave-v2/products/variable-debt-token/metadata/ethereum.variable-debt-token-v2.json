@@ -12,5 +12,159 @@
       "symbol": "USDT",
       "decimals": 6
     }
+  },
+  "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2": {
+    "protocolToken": {
+      "address": "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
+      "name": "Aave variable debt bearing WBTC",
+      "symbol": "variableDebtWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0xf63b34710400cad3e044cffdcab00a0f32e33ecf": {
+    "protocolToken": {
+      "address": "0xf63b34710400cad3e044cffdcab00a0f32e33ecf",
+      "name": "Aave variable debt bearing WETH",
+      "symbol": "variableDebtWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xf7dba49d571745d9d7fcb56225b05bea803ebf3c": {
+    "protocolToken": {
+      "address": "0xf7dba49d571745d9d7fcb56225b05bea803ebf3c",
+      "name": "Aave variable debt bearing AAVE",
+      "symbol": "variableDebtAAVE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "name": "Aave Token",
+      "symbol": "AAVE",
+      "decimals": 18
+    }
+  },
+  "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d": {
+    "protocolToken": {
+      "address": "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d",
+      "name": "Aave variable debt bearing DAI",
+      "symbol": "variableDebtDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0xdc6a3ab17299d9c2a412b0e0a4c1f55446ae0817": {
+    "protocolToken": {
+      "address": "0xdc6a3ab17299d9c2a412b0e0a4c1f55446ae0817",
+      "name": "Aave variable debt bearing SUSD",
+      "symbol": "variableDebtSUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+      "name": "Synth sUSD",
+      "symbol": "sUSD",
+      "decimals": 18
+    }
+  },
+  "0x619beb58998ed2278e08620f97007e1116d5d25b": {
+    "protocolToken": {
+      "address": "0x619beb58998ed2278e08620f97007e1116d5d25b",
+      "name": "Aave variable debt bearing USDC",
+      "symbol": "variableDebtUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x279af5b99540c1a3a7e3cdd326e19659401ef99e": {
+    "protocolToken": {
+      "address": "0x279af5b99540c1a3a7e3cdd326e19659401ef99e",
+      "name": "Aave variable debt bearing GUSD",
+      "symbol": "variableDebtGUSD",
+      "decimals": 2
+    },
+    "underlyingToken": {
+      "address": "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd",
+      "name": "Gemini dollar",
+      "symbol": "GUSD",
+      "decimals": 2
+    }
+  },
+  "0xfdb93b3b10936cf81fa59a02a7523b6e2149b2b7": {
+    "protocolToken": {
+      "address": "0xfdb93b3b10936cf81fa59a02a7523b6e2149b2b7",
+      "name": "Aave variable debt bearing USDP",
+      "symbol": "variableDebtUSDP",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x8e870d67f660d95d5be530380d0ec0bd388289e1",
+      "name": "Pax Dollar",
+      "symbol": "USDP",
+      "decimals": 18
+    }
+  },
+  "0xfe8f19b17ffef0fdbfe2671f248903055afaa8ca": {
+    "protocolToken": {
+      "address": "0xfe8f19b17ffef0fdbfe2671f248903055afaa8ca",
+      "name": "Aave variable debt bearing FRAX",
+      "symbol": "variableDebtFRAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    }
+  },
+  "0xa9deac9f00dc4310c35603fcd9d34d1a750f81db": {
+    "protocolToken": {
+      "address": "0xa9deac9f00dc4310c35603fcd9d34d1a750f81db",
+      "name": "Aave variable debt bearing STETH",
+      "symbol": "variableDebtSTETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+      "name": "Liquid staked Ether 2.0",
+      "symbol": "stETH",
+      "decimals": 18
+    }
+  },
+  "0x411066489ab40442d6fc215ad7c64224120d33f2": {
+    "protocolToken": {
+      "address": "0x411066489ab40442d6fc215ad7c64224120d33f2",
+      "name": "Aave variable debt bearing LUSD",
+      "symbol": "variableDebtLUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+      "name": "LUSD Stablecoin",
+      "symbol": "LUSD",
+      "decimals": 18
+    }
   }
 }
