@@ -1,5 +1,6 @@
 import { formatUnits } from 'ethers'
 import { priceAdapterConfig } from '../adapters/prices/products/usd/priceAdapterConfig'
+import { enrichMovements, enrichPositionBalance } from '../responseAdapters'
 import {
   ProfitsWithRange,
   GetEventsInput,
@@ -12,7 +13,6 @@ import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
-import { enrichMovements, enrichPositionBalance } from '../responseAdapters'
 
 export async function getProfits({
   adapter,
@@ -61,7 +61,7 @@ export async function getProfits({
     ])
   } else {
     // Call toBlock first and filter fromBlock
-    ;(endPositionValues = await adapter
+    endPositionValues = await adapter
       .getPositions({
         userAddress,
         blockNumber: toBlock,
@@ -69,17 +69,17 @@ export async function getProfits({
       .then((result) => {
         rawEndPositionValues = result
         return aggregateFiatBalances(result)
-      })),
-      (startPositionValues = await adapter
-        .getPositions({
-          userAddress,
-          blockNumber: fromBlock,
-          protocolTokenAddresses: Object.keys(endPositionValues),
-        })
-        .then((result) => {
-          rawStartPositionValues = result
-          return aggregateFiatBalances(result)
-        }))
+      })
+    startPositionValues = await adapter
+      .getPositions({
+        userAddress,
+        blockNumber: fromBlock,
+        protocolTokenAddresses: Object.keys(endPositionValues),
+      })
+      .then((result) => {
+        rawStartPositionValues = result
+        return aggregateFiatBalances(result)
+      })
   }
 
   const rawWithdrawals: MovementsByBlock[] = []
@@ -125,14 +125,14 @@ export async function getProfits({
         priceAdapterConfig.decimals,
       )
 
-      const profit =
-        endPositionValue + withdrawal - deposit - startPositionValue
+      const profitModifier =
+        adapter.getProtocolDetails().positionType === PositionType.Borrow
+          ? -1
+          : 1
 
-      const isBorrow =
-        adapter.getProtocolDetails().positionType == PositionType.Borrow
-      if (isBorrow) {
-        profit * -1
-      }
+      const profit =
+        (endPositionValue + withdrawal - deposit - startPositionValue) *
+        profitModifier
 
       return {
         ...protocolTokenMetadata,
@@ -147,10 +147,8 @@ export async function getProfits({
         calculationData: {
           withdrawals: withdrawal,
           deposits: deposit,
-          startPositionValue: isBorrow
-            ? startPositionValue * -1
-            : startPositionValue,
-          endPositionValue: isBorrow ? endPositionValue * -1 : endPositionValue,
+          startPositionValue: startPositionValue * profitModifier,
+          endPositionValue: endPositionValue * profitModifier,
         },
         rawValues: includeRawValues
           ? {
