@@ -137,7 +137,7 @@ async function computeUnderlyingTokenBalances(
   const underlyingProtocolTokenAdapter =
     await adapter.adaptersController.fetchTokenAdapter(
       adapter.chainId,
-      underlyingProtocolTokenPosition.address.toLowerCase(),
+      underlyingProtocolTokenPosition.address,
     )
 
   if (!underlyingProtocolTokenAdapter) {
@@ -149,8 +149,7 @@ async function computeUnderlyingTokenBalances(
     protocolTokenUnderlyingRate =
       await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
         {
-          protocolTokenAddress:
-            underlyingProtocolTokenPosition.address.toLowerCase(),
+          protocolTokenAddress: underlyingProtocolTokenPosition.address,
           blockNumber: blockNumber,
         },
       )

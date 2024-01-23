@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { SECONDS_PER_YEAR } from '../../../../core/constants/SECONDS_PER_YEAR'
@@ -54,13 +55,13 @@ const contractAddresses: Partial<
   >
 > = {
   [Chain.Linea]: {
-    comptroller: '0x1b4d3b0421dDc1eB216D230Bc01527422Fb93103',
-    speed: '0x3b9B9364Bf69761d308145371c38D9b558013d40',
-    oracle: '0xCcBea2d7e074744ab46e28a043F85038bCcfFec2',
-    velocore: '0xaA18cDb16a4DD88a59f4c2f45b5c91d009549e06',
-    converter: '0xAADAa473C1bDF7317ec07c915680Af29DeBfdCb5',
-    mendi: '0x43E8809ea748EFf3204ee01F08872F063e44065f',
-    usdcE: '0x176211869ca2b568f2a7d4ee941e073a821ee1ff',
+    comptroller: getAddress('0x1b4d3b0421dDc1eB216D230Bc01527422Fb93103'),
+    speed: getAddress('0x3b9B9364Bf69761d308145371c38D9b558013d40'),
+    oracle: getAddress('0xCcBea2d7e074744ab46e28a043F85038bCcfFec2'),
+    velocore: getAddress('0xaA18cDb16a4DD88a59f4c2f45b5c91d009549e06'),
+    converter: getAddress('0xAADAa473C1bDF7317ec07c915680Af29DeBfdCb5'),
+    mendi: getAddress('0x43E8809ea748EFf3204ee01F08872F063e44065f'),
+    usdcE: getAddress('0x176211869ca2b568f2a7d4ee941e073a821ee1ff'),
   },
 }
 
@@ -124,7 +125,7 @@ export class MendiFinanceSupplyAdapter
           underlyingTokenPromise,
         ])
 
-        metadataObject[poolContractAddress.toLowerCase()] = {
+        metadataObject[protocolToken.address] = {
           protocolToken,
           underlyingToken,
         }

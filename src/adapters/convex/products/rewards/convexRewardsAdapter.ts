@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -248,10 +249,10 @@ export class ConvexRewardsAdapter
           this.provider,
         )
 
-        metadata[convexData.crvRewards.toLowerCase()] = {
+        metadata[getAddress(convexData.crvRewards)] = {
           protocolToken: {
             ...convexToken,
-            address: convexData.crvRewards.toLowerCase(),
+            address: getAddress(convexData.crvRewards),
           },
           underlyingToken: crvRewardMetadata, // going to hardcode this in underling response
         }

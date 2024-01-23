@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -35,8 +36,9 @@ import { CvxcrvWrapper__factory } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/CvxcrvWrapper'
 import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
 
-const CVXCRV_WRAPPER_ADDRESS =
-  '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434'.toLowerCase() as string
+const CVXCRV_WRAPPER_ADDRESS = getAddress(
+  '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434',
+)
 
 export class ConvexCvxcrvWrapperAdapter
   extends SimplePoolAdapter

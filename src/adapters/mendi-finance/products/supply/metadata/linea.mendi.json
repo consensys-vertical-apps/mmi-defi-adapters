@@ -1,83 +1,83 @@
 {
-  "0x333d8b480bdb25ea7be4dd87eeb359988ce1b30d": {
+  "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D": {
     "protocolToken": {
-      "address": "0x333d8b480bdb25ea7be4dd87eeb359988ce1b30d",
+      "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
       "name": "Mendi USD Coin",
       "symbol": "meUSDC",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
       "name": "USDC",
       "symbol": "USDC",
       "decimals": 6
     }
   },
-  "0xf669c3c03d9fdf4339e19214a749e52616300e89": {
+  "0xf669C3C03D9fdF4339e19214A749E52616300E89": {
     "protocolToken": {
-      "address": "0xf669c3c03d9fdf4339e19214a749e52616300e89",
+      "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
       "name": "Mendi USD Tether",
       "symbol": "meUSDT",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
       "name": "Tether USD",
       "symbol": "USDT",
       "decimals": 6
     }
   },
-  "0xad7f33984bed10518012013d4ab0458d37fee6f3": {
+  "0xAd7f33984bed10518012013D4aB0458D37FEE6F3": {
     "protocolToken": {
-      "address": "0xad7f33984bed10518012013d4ab0458d37fee6f3",
+      "address": "0xAd7f33984bed10518012013D4aB0458D37FEE6F3",
       "name": "Mendi Wrapped Ether",
       "symbol": "meWETH",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
       "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimals": 18
     }
   },
-  "0x1f27f81c1d13dd96a3b75d42e3d5d92b709869aa": {
+  "0x1f27f81C1D13Dd96A3b75d42e3d5d92b709869AA": {
     "protocolToken": {
-      "address": "0x1f27f81c1d13dd96a3b75d42e3d5d92b709869aa",
+      "address": "0x1f27f81C1D13Dd96A3b75d42e3d5d92b709869AA",
       "name": "Mendi Dai Stablecoin",
       "symbol": "meDAI",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0x4af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
+      "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
       "name": "Dai Stablecoin",
       "symbol": "DAI",
       "decimals": 18
     }
   },
-  "0x9be5e24f05bbafc28da814bd59284878b388a40f": {
+  "0x9be5e24F05bBAfC28Da814bD59284878b388a40f": {
     "protocolToken": {
-      "address": "0x9be5e24f05bbafc28da814bd59284878b388a40f",
+      "address": "0x9be5e24F05bBAfC28Da814bD59284878b388a40f",
       "name": "Mendi Wrapped BTC",
       "symbol": "meWBTC",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0x3aab2285ddcddad8edf438c1bab47e1a9d05a9b4",
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
       "name": "Wrapped BTC",
       "symbol": "WBTC",
       "decimals": 8
     }
   },
-  "0xceed853798ff1c95ceb4dc48f68394eb7a86a782": {
+  "0xCeEd853798ff1c95cEB4dC48f68394eb7A86A782": {
     "protocolToken": {
-      "address": "0xceed853798ff1c95ceb4dc48f68394eb7a86a782",
+      "address": "0xCeEd853798ff1c95cEB4dC48f68394eb7A86A782",
       "name": "Mendi Wrapped liquid staked Ether 2.0",
       "symbol": "mewstETH",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0xb5bedd42000b71fdde22d3ee8a79bd49a568fc8f",
+      "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
       "name": "Wrapped liquid staked Ether 2.0",
       "symbol": "wstETH",
       "decimals": 18

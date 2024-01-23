@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
@@ -216,8 +217,7 @@ export class DefiProvider {
       if (filterProtocolToken) {
         const filteredProtocolTokens = protocolTokens.filter(
           (protocolToken) =>
-            protocolToken.address.toLowerCase() ===
-            filterProtocolToken.toLowerCase(),
+            protocolToken.address === getAddress(filterProtocolToken),
         )
         if (filteredProtocolTokens.length === 0) {
           return { tokens: [] }

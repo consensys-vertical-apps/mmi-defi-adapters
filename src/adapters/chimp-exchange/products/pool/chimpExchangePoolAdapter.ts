@@ -108,7 +108,7 @@ export class ChimpExchangePoolAdapter
           },
         )
 
-        metadataObject[event.args.poolAddress.toLowerCase()] = {
+        metadataObject[protocolToken.address] = {
           poolId: event.args.poolId,
           totalSupplyType: event.args.specialization === 0n ? '2' : '0',
           protocolToken,

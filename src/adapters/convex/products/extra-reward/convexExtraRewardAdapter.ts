@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -251,15 +252,15 @@ export class ConvexExtraRewardAdapter
 
               extraRewards.push({
                 ...rewardTokenMetadata,
-                claimableTrackerAddress: extraRewardTrackerAddress,
+                claimableTrackerAddress: getAddress(extraRewardTrackerAddress),
               })
             }),
           )
 
-          metadata[convexData.crvRewards.toLowerCase()] = {
+          metadata[getAddress(convexData.crvRewards)] = {
             protocolToken: {
               ...convexToken,
-              address: convexData.crvRewards.toLowerCase(),
+              address: getAddress(convexData.crvRewards),
             },
             underlyingTokens: extraRewards,
           }

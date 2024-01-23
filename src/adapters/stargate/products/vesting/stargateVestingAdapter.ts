@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -155,8 +156,12 @@ export class StargateVestingAdapter
   @CacheToFile({ fileKey: 'vesting-token' })
   async buildMetadata() {
     const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Ethereum]: '0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E',
-      [Chain.Arbitrum]: '0xfBd849E6007f9BC3CC2D6Eb159c045B8dc660268',
+      [Chain.Ethereum]: getAddress(
+        '0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E',
+      ),
+      [Chain.Arbitrum]: getAddress(
+        '0xfBd849E6007f9BC3CC2D6Eb159c045B8dc660268',
+      ),
     }
 
     const votingEscrowContract = StargateVotingEscrow__factory.connect(
@@ -164,9 +169,7 @@ export class StargateVestingAdapter
       this.provider,
     )
 
-    const underlyingTokenAddress = (
-      await votingEscrowContract.token()
-    ).toLowerCase()
+    const underlyingTokenAddress = await votingEscrowContract.token()
 
     const contractToken = await getTokenMetadata(
       contractAddresses[this.chainId]!,

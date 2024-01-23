@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
@@ -35,16 +36,24 @@ import { LiquidityManager__factory } from '../../contracts/factories'
 const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
   {
     [Chain.Arbitrum]: {
-      liquidityManager: '0xAD1F11FBB288Cd13819cCB9397E59FAAB4Cdc16F',
+      liquidityManager: getAddress(
+        '0xAD1F11FBB288Cd13819cCB9397E59FAAB4Cdc16F',
+      ),
     },
     [Chain.Linea]: {
-      liquidityManager: '0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c',
+      liquidityManager: getAddress(
+        '0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c',
+      ),
     },
     [Chain.Bsc]: {
-      liquidityManager: '0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453',
+      liquidityManager: getAddress(
+        '0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453',
+      ),
     },
     [Chain.Base]: {
-      liquidityManager: '0x110dE362cc436D7f54210f96b8C7652C2617887D',
+      liquidityManager: getAddress(
+        '0x110dE362cc436D7f54210f96b8C7652C2617887D',
+      ),
     },
   }
 

@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -74,7 +75,7 @@ export class ConvexPoolAdapter
           getTokenMetadata(convexData.lptoken, this.chainId, this.provider),
         ])
 
-        metadata[convexData.token.toLowerCase()] = {
+        metadata[getAddress(convexData.token)] = {
           protocolToken: convexToken,
           underlyingToken,
         }

@@ -1,4 +1,4 @@
-import { formatUnits } from 'ethers'
+import { formatUnits, getAddress } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
@@ -80,11 +80,11 @@ export class CurvePoolAdapter
         return undefined
       }
 
-      metadataObject[token.protocolToken.address.toLowerCase()] = {
+      metadataObject[getAddress(token.protocolToken.address)] = {
         ...token,
         protocolToken: {
           ...token.protocolToken,
-          address: token.protocolToken.address.toLowerCase(),
+          address: getAddress(token.protocolToken.address),
         },
       }
     })

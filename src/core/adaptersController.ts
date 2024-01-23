@@ -142,7 +142,7 @@ export class AdaptersController {
     adapter: IProtocolAdapter,
   ) {
     for (const protocolToken of protocolTokens) {
-      const tokenAddress = protocolToken.address.toLowerCase()
+      const tokenAddress = protocolToken.address
 
       if (!chainAdaptersMap.has(tokenAddress)) {
         chainAdaptersMap.set(tokenAddress, adapter)
@@ -156,7 +156,7 @@ export class AdaptersController {
     adapter: IProtocolAdapter,
   ) {
     for (const protocolToken of protocolTokens) {
-      const tokenAddress = protocolToken.address.toLowerCase()
+      const tokenAddress = protocolToken.address
 
       const existingAdapter = chainAdaptersMap.get(tokenAddress)
       const isPriceAdapter =
