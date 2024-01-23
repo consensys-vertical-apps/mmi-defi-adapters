@@ -67,6 +67,14 @@ const ConfigSchema = z
       .default(
         process.env.DEFI_ADAPTERS_ENABLE_USD_PRICES_FOR_POSITIONS !== 'false',
       ),
+    rpcCallTimeoutInMs: z
+      .number()
+      .default(
+        Number(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS) || 20000,
+      ),
+    rpcCallRetries: z
+      .number()
+      .default(Number(process.env.DEFI_ADAPTERS_RPC_CALL_RETRIES) || 1),
   })
   .default({})
 

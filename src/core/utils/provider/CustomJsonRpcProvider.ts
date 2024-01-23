@@ -15,18 +15,19 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   constructor({
     url,
     chainId,
-    options,
+    customOptions: { rpcCallTimeoutInMs, rpcCallRetries },
+    jsonRpcProviderOptions,
   }: {
     url: string
-    options?: JsonRpcApiProviderOptions
     chainId: Chain
+    customOptions: { rpcCallTimeoutInMs: number; rpcCallRetries: number }
+    jsonRpcProviderOptions?: JsonRpcApiProviderOptions
   }) {
-    super(url, chainId, options)
+    super(url, chainId, jsonRpcProviderOptions)
     this.chainId = chainId
-    // TODO - Inject handler
     this.retryHandler = retryHandlerFactory({
-      timeoutInMs: 10000,
-      maxRetries: 1,
+      rpcCallTimeoutInMs,
+      rpcCallRetries,
     })
   }
 

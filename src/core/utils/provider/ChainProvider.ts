@@ -19,10 +19,12 @@ export class ChainProvider {
     url,
     chainId,
     enableMulticallQueue,
+    customOptions,
   }: {
     url: string
     chainId: Chain
     enableMulticallQueue: boolean
+    customOptions: { rpcCallTimeoutInMs: number; rpcCallRetries: number }
   }): CustomJsonRpcProvider {
     if (!url) {
       throw new Error('Url missing')
@@ -33,7 +35,8 @@ export class ChainProvider {
       return new CustomJsonRpcProvider({
         url,
         chainId,
-        options: {
+        customOptions,
+        jsonRpcProviderOptions: {
           staticNetwork: Network.from(chainId),
         },
       })
@@ -44,7 +47,8 @@ export class ChainProvider {
     const provider = new CustomJsonRpcProvider({
       url,
       chainId,
-      options: {
+      customOptions,
+      jsonRpcProviderOptions: {
         staticNetwork: Network.from(chainId),
       },
     })
@@ -68,58 +72,72 @@ export class ChainProvider {
       url,
       chainId,
       multicallQueue,
-      options: {
+      customOptions,
+      jsonRpcProviderOptions: {
         staticNetwork: Network.from(chainId),
       },
     })
   }
 
   private initializeProviders(config: IConfig) {
+    const customOptions = {
+      rpcCallTimeoutInMs: config.rpcCallTimeoutInMs,
+      rpcCallRetries: config.rpcCallRetries,
+    }
     return {
       [Chain.Ethereum]: this.provider({
         url: config.provider.ethereum,
         chainId: Chain.Ethereum,
         enableMulticallQueue: config.useMulticallInterceptor,
+        customOptions,
       }),
       [Chain.Optimism]: this.provider({
         url: config.provider.optimism,
         chainId: Chain.Optimism,
         enableMulticallQueue: config.useMulticallInterceptor,
+        customOptions,
       }),
       [Chain.Bsc]: this.provider({
         url: config.provider.bsc,
         chainId: Chain.Bsc,
         enableMulticallQueue: config.useMulticallInterceptor,
+        customOptions,
       }),
       [Chain.Polygon]: this.provider({
         url: config.provider.polygon,
         chainId: Chain.Polygon,
         enableMulticallQueue: config.useMulticallInterceptor,
+        customOptions,
       }),
       [Chain.Fantom]: this.provider({
         url: config.provider.fantom,
         chainId: Chain.Fantom,
         enableMulticallQueue: config.useMulticallInterceptor,
+        customOptions,
       }),
       [Chain.Arbitrum]: this.provider({
         url: config.provider.arbitrum,
         chainId: Chain.Arbitrum,
         enableMulticallQueue: config.useMulticallInterceptor,
+        customOptions,
       }),
       [Chain.Avalanche]: this.provider({
         url: config.provider.avalanche,
         chainId: Chain.Avalanche,
         enableMulticallQueue: config.useMulticallInterceptor,
+        customOptions,
       }),
       [Chain.Linea]: this.provider({
         url: config.provider.linea,
         chainId: Chain.Linea,
         enableMulticallQueue: config.useMulticallInterceptor,
+        customOptions,
       }),
       [Chain.Base]: this.provider({
         url: config.provider.base,
         chainId: Chain.Base,
         enableMulticallQueue: config.useMulticallInterceptor,
+        customOptions,
       }),
     }
   }

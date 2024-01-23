@@ -19,14 +19,16 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     url,
     chainId,
     multicallQueue,
-    options,
+    customOptions,
+    jsonRpcProviderOptions,
   }: {
     url: string
     chainId: Chain
     multicallQueue: MulticallQueue
-    options?: JsonRpcApiProviderOptions
+    customOptions: { rpcCallTimeoutInMs: number; rpcCallRetries: number }
+    jsonRpcProviderOptions?: JsonRpcApiProviderOptions
   }) {
-    super({ url, chainId, options })
+    super({ url, chainId, customOptions, jsonRpcProviderOptions })
     this.multicallQueue = multicallQueue
     this.cache = {}
   }
