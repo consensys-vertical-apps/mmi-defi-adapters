@@ -7,7 +7,7 @@
       "description": "Compound pool adapter",
       "siteUrl": "https:",
       "iconUrl": "https://",
-      "positionType": "supply",
+      "positionType": "lend",
       "chainId": 1,
       "productId": "pool",
       "success": true,

@@ -46,7 +46,7 @@ export class CompoundPoolAdapter
       description: 'Compound pool adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
-      positionType: PositionType.Supply,
+      positionType: PositionType.Lend,
       chainId: this.chainId,
       productId: this.productId,
     }
