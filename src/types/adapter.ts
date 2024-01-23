@@ -293,6 +293,13 @@ export interface ProfitsWithRange {
    * Profits earned by user address
    */
   tokens: PositionProfits[]
+
+  rawValues?: {
+    rawEndPositionValues: ProtocolPosition[]
+    rawStartPositionValues: ProtocolPosition[]
+    rawWithdrawals: MovementsByBlock[]
+    rawDeposits: MovementsByBlock[]
+  }
 }
 
 export interface UnderlyingProfitValues extends Erc20Metadata {

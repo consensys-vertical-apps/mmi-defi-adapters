@@ -65,6 +65,7 @@ function addressCommand(
     userAddress: string
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
+    includeRawValues?: boolean
   }) => Promise<AdapterResponse<unknown>[]>,
   defaultAddress: string,
 ) {
@@ -79,15 +80,22 @@ function addressCommand(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
+    .option(
+      '-r, --raw <raw>',
+      'true or false to include raw values, available on profits requests only (e.g. true)',
+    )
     .showHelpAfterError()
-    .action(async (userAddress, { protocols, chains }) => {
+    .action(async (userAddress, { protocols, chains, raw }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
+
+      const includeRawValues = raw == 'true'
 
       const data = await feature({
         userAddress,
         filterProtocolIds,
         filterChainIds,
+        includeRawValues,
       })
 
       printResponse(filterResponse(data))
