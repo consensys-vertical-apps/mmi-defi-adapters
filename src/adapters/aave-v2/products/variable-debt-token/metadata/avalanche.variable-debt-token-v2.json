@@ -1,97 +1,83 @@
 {
-  "0x4e575cacb37bc1b5afec68a0462c4165a5268983": {
+  "0x4e575CacB37bc1b5afEc68a0462c4165A5268983": {
     "protocolToken": {
-      "address": "0x4e575cacb37bc1b5afec68a0462c4165a5268983",
+      "address": "0x4e575CacB37bc1b5afEc68a0462c4165A5268983",
       "name": "Aave Avalanche Market variable debt vWETH",
       "symbol": "variableDebtvWETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab",
+      "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
       "name": "Wrapped Ether",
       "symbol": "WETH.e",
       "decimals": 18
     }
   },
-  "0x1852dc24d1a8956a0b356aa18ede954c7a0ca5ae": {
+  "0x1852DC24d1a8956a0B356AA18eDe954c7a0Ca5ae": {
     "protocolToken": {
-      "address": "0x1852dc24d1a8956a0b356aa18ede954c7a0ca5ae",
+      "address": "0x1852DC24d1a8956a0B356AA18eDe954c7a0Ca5ae",
       "name": "Aave Avalanche Market variable debt vDAI",
       "symbol": "variableDebtvDAI",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd586e7f844cea2f87f50152665bcbc2c279d8d70",
+      "address": "0xd586E7F844cEa2F87f50152665BCbc2C279D8d70",
       "name": "Dai Stablecoin",
       "symbol": "DAI.e",
       "decimals": 18
     }
   },
-  "0xfc1ada7a288d6fce0d29ccfaaa57bc9114bb2dbe": {
+  "0xfc1AdA7A288d6fCe0d29CcfAAa57Bc9114bb2DbE": {
     "protocolToken": {
-      "address": "0xfc1ada7a288d6fce0d29ccfaaa57bc9114bb2dbe",
+      "address": "0xfc1AdA7A288d6fCe0d29CcfAAa57Bc9114bb2DbE",
       "name": "Aave Avalanche Market variable debt vUSDT",
       "symbol": "variableDebtvUSDT",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0xc7198437980c041c805a1edcba50c1ce5db95118",
+      "address": "0xc7198437980c041c805A1EDcbA50c1Ce5db95118",
       "name": "Tether USD",
       "symbol": "USDT.e",
       "decimals": 6
     }
   },
-  "0x848c080d2700cbe1b894a3374ad5e887e5ccb89c": {
+  "0x848c080d2700CBE1B894a3374AD5E887E5cCb89c": {
     "protocolToken": {
-      "address": "0x848c080d2700cbe1b894a3374ad5e887e5ccb89c",
+      "address": "0x848c080d2700CBE1B894a3374AD5E887E5cCb89c",
       "name": "Aave Avalanche Market variable debt vUSDC",
       "symbol": "variableDebtvUSDC",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664",
+      "address": "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
       "name": "USD Coin",
       "symbol": "USDC.e",
       "decimals": 6
     }
   },
-  "0x8352e3fd18b8d84d3c8a1b538d788899073c7a8e": {
+  "0x8352E3fd18B8d84D3c8a1b538d788899073c7A8E": {
     "protocolToken": {
-      "address": "0x8352e3fd18b8d84d3c8a1b538d788899073c7a8e",
+      "address": "0x8352E3fd18B8d84D3c8a1b538d788899073c7A8E",
       "name": "Aave Avalanche Market variable debt vAAVE",
       "symbol": "variableDebtvAAVE",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x63a72806098bd3d9520cc43356dd78afe5d386d9",
+      "address": "0x63a72806098Bd3D9520cC43356dD78afe5D386D9",
       "name": "Aave Token",
       "symbol": "AAVE.e",
       "decimals": 18
     }
   },
-  "0x2dc0e35ec3ab070b8a175c829e23650ee604a9eb": {
+  "0x66A0FE52Fb629a6cB4D10B8580AFDffE888F5Fd4": {
     "protocolToken": {
-      "address": "0x2dc0e35ec3ab070b8a175c829e23650ee604a9eb",
-      "name": "Aave Avalanche Market variable debt vWBTC",
-      "symbol": "variableDebtvWBTC",
-      "decimals": 8
-    },
-    "underlyingToken": {
-      "address": "0x50b7545627a5162f82a992c33b87adc75187b218",
-      "name": "Wrapped BTC",
-      "symbol": "WBTC.e",
-      "decimals": 8
-    }
-  },
-  "0x66a0fe52fb629a6cb4d10b8580afdffe888f5fd4": {
-    "protocolToken": {
-      "address": "0x66a0fe52fb629a6cb4d10b8580afdffe888f5fd4",
+      "address": "0x66A0FE52Fb629a6cB4D10B8580AFDffE888F5Fd4",
       "name": "Aave Avalanche Market variable debt vWAVAX",
       "symbol": "variableDebtvWAVAX",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
       "name": "Wrapped AVAX",
       "symbol": "WAVAX",
       "decimals": 18

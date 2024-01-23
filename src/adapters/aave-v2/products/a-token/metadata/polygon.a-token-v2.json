@@ -1,97 +1,97 @@
 {
-  "0x27f8d03b3a2196956ed754badc28d73be8830a6e": {
+  "0x27F8D03b3a2196956ED754baDc28D73be8830A6e": {
     "protocolToken": {
-      "address": "0x27f8d03b3a2196956ed754badc28d73be8830a6e",
+      "address": "0x27F8D03b3a2196956ED754baDc28D73be8830A6e",
       "name": "Aave Matic Market DAI",
       "symbol": "amDAI",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+      "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
       "name": "(PoS) Dai Stablecoin",
       "symbol": "DAI",
       "decimals": 18
     }
   },
-  "0x1a13f4ca1d028320a707d99520abfefca3998b7f": {
+  "0x1a13F4Ca1d028320A707D99520AbFefca3998b7F": {
     "protocolToken": {
-      "address": "0x1a13f4ca1d028320a707d99520abfefca3998b7f",
+      "address": "0x1a13F4Ca1d028320A707D99520AbFefca3998b7F",
       "name": "Aave Matic Market USDC",
       "symbol": "amUSDC",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
       "name": "USD Coin (PoS)",
       "symbol": "USDC",
       "decimals": 6
     }
   },
-  "0x60d55f02a771d515e077c9c2403a1ef324885cec": {
+  "0x60D55F02A771d515e077c9C2403a1ef324885CeC": {
     "protocolToken": {
-      "address": "0x60d55f02a771d515e077c9c2403a1ef324885cec",
+      "address": "0x60D55F02A771d515e077c9C2403a1ef324885CeC",
       "name": "Aave Matic Market USDT",
       "symbol": "amUSDT",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
       "name": "(PoS) Tether USD",
       "symbol": "USDT",
       "decimals": 6
     }
   },
-  "0x5c2ed810328349100a66b82b78a1791b101c9d61": {
+  "0x5c2ed810328349100A66B82b78a1791B101C9D61": {
     "protocolToken": {
-      "address": "0x5c2ed810328349100a66b82b78a1791b101c9d61",
+      "address": "0x5c2ed810328349100A66B82b78a1791B101C9D61",
       "name": "Aave Matic Market WBTC",
       "symbol": "amWBTC",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
+      "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
       "name": "(PoS) Wrapped BTC",
       "symbol": "WBTC",
       "decimals": 8
     }
   },
-  "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390": {
+  "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390": {
     "protocolToken": {
-      "address": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390",
+      "address": "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390",
       "name": "Aave Matic Market WETH",
       "symbol": "amWETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
       "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimals": 18
     }
   },
-  "0x8df3aad3a84da6b69a4da8aec3ea40d9091b2ac4": {
+  "0x8dF3aad3a84da6b69A4DA8aeC3eA40d9091B2Ac4": {
     "protocolToken": {
-      "address": "0x8df3aad3a84da6b69a4da8aec3ea40d9091b2ac4",
+      "address": "0x8dF3aad3a84da6b69A4DA8aeC3eA40d9091B2Ac4",
       "name": "Aave Matic Market WMATIC",
       "symbol": "amWMATIC",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
       "name": "Wrapped Matic",
       "symbol": "WMATIC",
       "decimals": 18
     }
   },
-  "0x1d2a0e5ec8e5bbdca5cb219e649b565d8e5c3360": {
+  "0x1d2a0E5EC8E5bBDCA5CB219e649B565d8e5c3360": {
     "protocolToken": {
-      "address": "0x1d2a0e5ec8e5bbdca5cb219e649b565d8e5c3360",
+      "address": "0x1d2a0E5EC8E5bBDCA5CB219e649B565d8e5c3360",
       "name": "Aave Matic Market AAVE",
       "symbol": "amAAVE",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+      "address": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
       "name": "Aave (PoS)",
       "symbol": "AAVE",
       "decimals": 18

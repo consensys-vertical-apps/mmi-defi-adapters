@@ -1,4 +1,4 @@
-import { ethers, isError } from 'ethers'
+import { ethers, getAddress, isError } from 'ethers'
 import { Erc20, Erc20__factory } from '../../contracts'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
@@ -29,7 +29,7 @@ export async function getTokenMetadata(
         'Token metadata found on cached file',
       )
       return {
-        address: fileTokenMetadata.address,
+        address: getAddress(fileTokenMetadata.address),
         name: fileTokenMetadata.name,
         symbol: fileTokenMetadata.symbol,
         decimals: fileTokenMetadata.decimals,
@@ -64,7 +64,7 @@ async function getOnChainTokenMetadata(
     const symbol = await fetchStringTokenData(tokenContract, provider, 'symbol')
     const decimals = Number(await tokenContract.decimals())
     return {
-      address: (await tokenContract.getAddress()).toLowerCase(),
+      address: getAddress(await tokenContract.getAddress()),
       name,
       symbol,
       decimals,
