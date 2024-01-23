@@ -23,7 +23,7 @@
           {
             "type": "underlying",
             "balanceRaw": "8028983n",
-            "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+            "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
             "name": "USDC",
             "symbol": "USDC",
             "decimals": 6,
@@ -34,7 +34,7 @@
           {
             "type": "underlying",
             "balanceRaw": "4440772477990897n",
-            "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
+            "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
             "name": "Wrapped Ether",
             "symbol": "WETH",
             "decimals": 18,

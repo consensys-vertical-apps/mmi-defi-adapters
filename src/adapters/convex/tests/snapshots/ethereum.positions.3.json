@@ -25,7 +25,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xf34dff761145ff0b05e917811d488b441f33a968",
+          "address": "0xf34DFF761145FF0B05e917811d488B441F33a968",
           "name": "Curve.fi cDAI/cUSDC Convex Deposit",
           "symbol": "cvxcDAI+cUSDC",
           "decimals": 18,
@@ -33,7 +33,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x845838df265dcd2c412a1dc9e959c7d08537f8a2",
+              "address": "0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2",
               "name": "Curve.fi cDAI/cUSDC",
               "symbol": "cDAI+cUSDC",
               "decimals": 18,
@@ -41,7 +41,7 @@
               "type": "underlying",
               "tokens": [
                 {
-                  "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+                  "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
                   "name": "Dai Stablecoin",
                   "symbol": "DAI",
                   "decimals": 18,
@@ -62,7 +62,7 @@
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
                 },
                 {
-                  "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                  "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
                   "name": "USD Coin",
                   "symbol": "USDC",
                   "decimals": 6,
@@ -87,7 +87,7 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2/logo.png"
             },
             {
-              "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
               "name": "Curve DAO Token",
               "symbol": "CRV",
               "decimals": 18,
@@ -132,7 +132,7 @@
           "balance": 128997.49305001524
         },
         {
-          "address": "0x44d8fab7cd8b7877d5f79974c2f501af6e65abba",
+          "address": "0x44D8FaB7CD8b7877D5F79974c2F501aF6E65AbBA",
           "name": "Curve.fi Factory Plain Pool: crvUSD/USDC Convex Deposit",
           "symbol": "cvxcrvUSDUSDC-f",
           "decimals": 18,
@@ -140,7 +140,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x4dece678ceceb27446b35c672dc7d61f30bad69e",
+              "address": "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E",
               "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
               "symbol": "crvUSDUSDC-f",
               "decimals": 18,
@@ -148,7 +148,7 @@
               "type": "underlying",
               "tokens": [
                 {
-                  "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                  "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
                   "name": "USD Coin",
                   "symbol": "USDC",
                   "decimals": 6,
@@ -169,7 +169,7 @@
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
                 },
                 {
-                  "address": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+                  "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
                   "name": "Curve.Fi USD Stablecoin",
                   "symbol": "crvUSD",
                   "decimals": 18,
@@ -183,7 +183,7 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E/logo.png"
             },
             {
-              "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
               "name": "Curve DAO Token",
               "symbol": "CRV",
               "decimals": 18,
@@ -241,7 +241,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
           "name": "Staked CvxCrv",
           "symbol": "stkCvxCrv",
           "decimals": 18,
@@ -299,7 +299,7 @@
               "type": "underlying-claimable",
               "tokens": [
                 {
-                  "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+                  "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
                   "name": "Dai Stablecoin",
                   "symbol": "DAI",
                   "decimals": 18,
@@ -320,7 +320,7 @@
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
                 },
                 {
-                  "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                  "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
                   "name": "USD Coin",
                   "symbol": "USDC",
                   "decimals": 6,
@@ -341,7 +341,7 @@
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
                 },
                 {
-                  "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+                  "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
                   "name": "Tether USD",
                   "symbol": "USDT",
                   "decimals": 6,

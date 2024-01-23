@@ -13,7 +13,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xe8f55368c82d38bbbbdb5533e7f56afc2e978cc2",
+          "address": "0xE8F55368C82D38bbbbDb5533e7F56AfC2E978CC2",
           "name": "LUSD Stablecoin-LP",
           "symbol": "S*LUSD",
           "decimals": 6,

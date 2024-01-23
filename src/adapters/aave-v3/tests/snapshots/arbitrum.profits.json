@@ -13,7 +13,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x078f358208685046a11c85e8ad32895ded33a249",
+          "address": "0x078f358208685046a11C85e8ad32895DED33A249",
           "name": "Aave Arbitrum WBTC",
           "symbol": "aArbWBTC",
           "decimals": 8,
@@ -28,7 +28,7 @@
           }
         },
         {
-          "address": "0xe50fa9b3c56ffb159cb0fca61f5c9d750e8128c8",
+          "address": "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8",
           "name": "Aave Arbitrum WETH",
           "symbol": "aArbWETH",
           "decimals": 18,
@@ -72,7 +72,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x8619d80fb0141ba7f184cbf22fd724116d9f7ffc",
+          "address": "0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC",
           "name": "Aave Arbitrum Variable Debt DAI",
           "symbol": "variableDebtArbDAI",
           "decimals": 18,

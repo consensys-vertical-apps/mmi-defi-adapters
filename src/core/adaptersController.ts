@@ -86,7 +86,7 @@ export class AdaptersController {
 
     const protocolTokens = await this.protocolTokens
 
-    return protocolTokens.get(chainId)?.get(tokenAddress.toLowerCase())
+    return protocolTokens.get(chainId)?.get(tokenAddress)
   }
 
   private async buildProtocolTokens(): Promise<

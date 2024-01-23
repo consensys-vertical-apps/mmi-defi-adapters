@@ -23,7 +23,7 @@
           {
             "type": "underlying",
             "balanceRaw": "6050612623457024522962n",
-            "address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+            "address": "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32",
             "name": "Lido DAO Token",
             "symbol": "LDO",
             "decimals": 18,
@@ -45,7 +45,7 @@
           {
             "type": "underlying",
             "balanceRaw": "29079681341117729741n",
-            "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+            "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
             "name": "Wrapped Ether",
             "symbol": "WETH",
             "decimals": 18,

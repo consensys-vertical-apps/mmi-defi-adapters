@@ -13,7 +13,7 @@
       {
         "transactionHash": "0x779025a8260db4601f74506e6af804edcb7344b606f9bad07c59e3706c82f144",
         "protocolToken": {
-          "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
           "name": "Liquid staked Ether 2.0",
           "symbol": "stETH",
           "decimals": 18
