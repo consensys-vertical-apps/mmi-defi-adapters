@@ -7,8 +7,8 @@ import {
 } from '../../../../core/decorators/cacheToFile'
 import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
   GetApyInput,
