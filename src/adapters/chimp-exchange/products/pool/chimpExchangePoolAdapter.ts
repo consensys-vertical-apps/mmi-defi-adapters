@@ -176,7 +176,7 @@ export class ChimpExchangePoolAdapter
         const tokensData = await filterMapAsync(
           event.args.tokens,
           async (token, index) => {
-            if (getAddress(token) === getAddress(protocolTokenAddress)) {
+            if (getAddress(token) === protocolTokenAddress) {
               return undefined
             }
 
