@@ -1,5 +1,5 @@
 import { Chain } from './core/constants/chains'
-import { CustomJsonRpcProvider } from './core/utils/provider/CustomJsonRpcProvider'
+import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { DefiProvider } from './defiProvider'
 
 const mockChainBlockNumbers = Object.values(Chain).reduce(

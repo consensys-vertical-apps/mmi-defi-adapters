@@ -3,8 +3,8 @@ import {
   JsonRpcProvider,
   TransactionRequest,
 } from 'ethers'
-import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../../constants/AVERAGE_BLOCKS_PER_10_MINS'
-import { Chain } from '../../constants/chains'
+import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS'
+import { Chain } from '../constants/chains'
 import { retryHandlerFactory } from './retryHandlerFactory'
 
 export class CustomJsonRpcProvider extends JsonRpcProvider {

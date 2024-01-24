@@ -10,7 +10,7 @@ export function defaultAdapterTemplate(
     CacheToFile,
   } from '../../../../core/decorators/cacheToFile'
   import { NotImplementedError } from '../../../../core/errors/errors'
-  import { CustomJsonRpcProvider } from '../../../../core/utils/CustomJsonRpcProvider'
+  import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
   import {
     ProtocolAdapterParams,
     ProtocolDetails,

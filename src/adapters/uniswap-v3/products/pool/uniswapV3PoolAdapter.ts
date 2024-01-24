@@ -9,7 +9,7 @@ import {
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { CustomJsonRpcProvider } from '../../../../core/utils/provider/CustomJsonRpcProvider'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,

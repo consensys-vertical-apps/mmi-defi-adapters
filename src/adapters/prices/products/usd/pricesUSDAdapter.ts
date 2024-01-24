@@ -8,7 +8,7 @@ import {
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
-import { CustomJsonRpcProvider } from '../../../../core/utils/provider/CustomJsonRpcProvider'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,

@@ -1,6 +1,6 @@
-import { Multicall } from '../../../contracts'
-import { Chain } from '../../constants/chains'
-import { MulticallError } from '../../errors/errors'
+import { Multicall } from '../../contracts'
+import { Chain } from '../constants/chains'
+import { MulticallError } from '../errors/errors'
 import { MulticallQueue } from './MulticallQueue'
 
 type TestCaseType = [
