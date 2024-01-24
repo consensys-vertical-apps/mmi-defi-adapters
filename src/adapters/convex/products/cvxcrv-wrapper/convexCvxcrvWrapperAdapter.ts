@@ -102,8 +102,7 @@ export class ConvexCvxcrvWrapperAdapter
         type: TokenType.Protocol,
         tokens: extraRewards.map((result) => {
           const rewardTokenMetadata = extraRewardTokens.find(
-            (token) =>
-              token.address.toLowerCase() == result.token.toLowerCase(),
+            (token) => token.address == getAddress(result.token),
           )
 
           return {

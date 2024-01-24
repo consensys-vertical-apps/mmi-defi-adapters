@@ -92,7 +92,7 @@ export class ChimpExchangePoolAdapter
         const underlyingTokens = await filterMapAsync(
           poolTokens[0],
           async (token, index) => {
-            if (token.toLowerCase() === event.args.poolAddress.toLowerCase()) {
+            if (getAddress(token) === getAddress(event.args.poolAddress)) {
               return undefined
             }
 
@@ -176,7 +176,7 @@ export class ChimpExchangePoolAdapter
         const tokensData = await filterMapAsync(
           event.args.tokens,
           async (token, index) => {
-            if (token.toLowerCase() === protocolTokenAddress.toLowerCase()) {
+            if (getAddress(token) === getAddress(protocolTokenAddress)) {
               return undefined
             }
 

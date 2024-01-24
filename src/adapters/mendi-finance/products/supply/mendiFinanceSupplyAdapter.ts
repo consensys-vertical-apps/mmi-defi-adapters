@@ -321,12 +321,13 @@ export class MendiFinanceSupplyAdapter
 
     const baseTokenBytes32 =
       '0x' +
-      contractAddresses[this.chainId]!.usdcE.toLowerCase()
-        .replace(/^0x/, '')
-        .padStart(64, '0')
+      contractAddresses[this.chainId]!.usdcE.replace(/^0x/, '').padStart(
+        64,
+        '0',
+      )
 
     const quoteTokenBytes32 =
-      '0x' + mendiAddress.toLowerCase().replace(/^0x/, '').padStart(64, '0')
+      '0x' + mendiAddress.replace(/^0x/, '').padStart(64, '0')
 
     const mPrice = await velocoreContract.spotPrice.staticCall(
       quoteTokenBytes32,
