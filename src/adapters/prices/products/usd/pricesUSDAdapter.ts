@@ -184,7 +184,10 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
       let address
       try {
         address = getAddress(token.platforms[this.fromIdToCoingeckoId[chainId]])
-      } catch (error) {}
+      } catch (error) {
+        // return if coingecko has unsupported address
+        return
+      }
 
       if (!address) {
         return
