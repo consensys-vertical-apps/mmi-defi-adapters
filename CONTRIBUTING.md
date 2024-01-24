@@ -23,7 +23,9 @@ Follow the steps below to contribute changes:
    ```bash
    git checkout -b feature-or-fix-description
    ```
-3. Implement your changes. Please avoid introducing new third-party APIs or libraries.
+3. Implement your changes.
+   - Please avoid introducing new third-party APIs or libraries.
+   - Please save all addresses in checksum format by using getAddress(address) method from ethers
 4. Commit your changes. Ideally, keep each change in an individual commit. Squash commits if necessary.
 5. Before pushing, ensure your branch is up-to-date with the latest changes from `/consensys-vertical-apps/mmi-defi-adapters`:
    ```bash
