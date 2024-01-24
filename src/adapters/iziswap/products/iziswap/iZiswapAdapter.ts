@@ -35,7 +35,7 @@ import { LiquidityManager__factory } from '../../contracts/factories'
 const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
   {
     [Chain.Arbitrum]: {
-      liquidityManager: '0x01fDea353849cA29F778B2663BcaCA1D191bED0e',
+      liquidityManager: '0xAD1F11FBB288Cd13819cCB9397E59FAAB4Cdc16F',
     },
     [Chain.Linea]: {
       liquidityManager: '0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c',
