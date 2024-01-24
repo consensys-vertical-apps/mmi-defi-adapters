@@ -17,5 +17,6 @@ export const Protocol = {
   ChimpExchange: 'chimp-exchange',
   MendiFinance: 'mendi-finance',
   CarbonDeFi: 'carbon-defi',
+  RocketPool: 'rocket-pool',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]

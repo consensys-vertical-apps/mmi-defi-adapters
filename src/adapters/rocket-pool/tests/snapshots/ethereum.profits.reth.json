@@ -1,0 +1,35 @@
+{
+  "blockNumber": 19075925,
+  "snapshot": [
+    {
+      "protocolId": "rocket-pool",
+      "name": "RocketPool",
+      "description": "Rocket Pool rETH Adapter",
+      "siteUrl": "https://rocketpool.net",
+      "iconUrl": "https://rocketpool.net/files/reth-logo.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "reth",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool rETH",
+          "symbol": "rETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -1314880.9867746998,
+          "performance": -0.1201088061647988,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 10947415.337478077,
+            "endPositionValue": 9632534.350703377
+          }
+        }
+      ],
+      "fromBlock": 19025903,
+      "toBlock": 19075925
+    }
+  ]
+}
