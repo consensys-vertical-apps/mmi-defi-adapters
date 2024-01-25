@@ -35,14 +35,14 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "320150045751659619007324n",
-                  "balance": "320150.045751659619007324"
+                  "balance": 320150.0457516596
                 }
               ],
-              "balance": "152.166344937197438373",
+              "balance": 152.16634493719744,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
-          "balance": "145.89746444269355198"
+          "balance": 145.89746444269355
         }
       ]
     }

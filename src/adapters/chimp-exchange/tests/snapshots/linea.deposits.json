@@ -26,7 +26,7 @@
             "decimals": 6,
             "balanceRaw": "100000n",
             "type": "underlying",
-            "balance": "0.1"
+            "balance": 0.1
           },
           {
             "address": "0x4af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
@@ -35,7 +35,7 @@
             "decimals": 18,
             "balanceRaw": "1000000000000000000n",
             "type": "underlying",
-            "balance": "1.0"
+            "balance": 1
           },
           {
             "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
@@ -44,7 +44,7 @@
             "decimals": 6,
             "balanceRaw": "1000000n",
             "type": "underlying",
-            "balance": "1.0"
+            "balance": 1
           }
         ],
         "blockNumber": 759469
@@ -65,7 +65,7 @@
             "decimals": 6,
             "balanceRaw": "900000n",
             "type": "underlying",
-            "balance": "0.9"
+            "balance": 0.9
           },
           {
             "address": "0x4af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
@@ -74,7 +74,7 @@
             "decimals": 18,
             "balanceRaw": "0n",
             "type": "underlying",
-            "balance": "0.0"
+            "balance": 0
           },
           {
             "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
@@ -83,7 +83,7 @@
             "decimals": 6,
             "balanceRaw": "0n",
             "type": "underlying",
-            "balance": "0.0"
+            "balance": 0
           }
         ],
         "blockNumber": 760370
@@ -104,7 +104,7 @@
             "decimals": 6,
             "balanceRaw": "999000000n",
             "type": "underlying",
-            "balance": "999.0"
+            "balance": 999
           },
           {
             "address": "0x4af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
@@ -113,7 +113,7 @@
             "decimals": 18,
             "balanceRaw": "999000000000000000000n",
             "type": "underlying",
-            "balance": "999.0"
+            "balance": 999
           },
           {
             "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
@@ -122,7 +122,7 @@
             "decimals": 6,
             "balanceRaw": "999000000n",
             "type": "underlying",
-            "balance": "999.0"
+            "balance": 999
           }
         ],
         "blockNumber": 760382

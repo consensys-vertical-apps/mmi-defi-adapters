@@ -43,10 +43,10 @@
                       "decimals": 18,
                       "type": "fiat",
                       "balanceRaw": "7059127223787148535n",
-                      "balance": "7.059127223787148535"
+                      "balance": 7.059127223787149
                     }
                   ],
-                  "balance": "7.1638880257196474",
+                  "balance": 7.163888025719648,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
                 },
                 {
@@ -64,10 +64,10 @@
                       "decimals": 18,
                       "type": "fiat",
                       "balanceRaw": "7170535540765885347n",
-                      "balance": "7.170535540765885347"
+                      "balance": 7.1705355407658855
                     }
                   ],
-                  "balance": "7.28576",
+                  "balance": 7.28576,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
                 },
                 {
@@ -85,18 +85,18 @@
                       "decimals": 18,
                       "type": "fiat",
                       "balanceRaw": "6020452283550024948n",
-                      "balance": "6.020452283550024948"
+                      "balance": 6.020452283550025
                     }
                   ],
-                  "balance": "6.11172",
+                  "balance": 6.11172,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
                 }
               ],
-              "balance": "20.0",
+              "balance": 20,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
             }
           ],
-          "balance": "20.0"
+          "balance": 20
         }
       ]
     },
@@ -142,10 +142,10 @@
                       "decimals": 18,
                       "type": "fiat",
                       "balanceRaw": "10237252561700736189n",
-                      "balance": "10.237252561700736189"
+                      "balance": 10.237252561700735
                     }
                   ],
-                  "balance": "10.389178253638319979",
+                  "balance": 10.38917825363832,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
                 },
                 {
@@ -163,10 +163,10 @@
                       "decimals": 18,
                       "type": "fiat",
                       "balanceRaw": "10398817767785104337n",
-                      "balance": "10.398817767785104337"
+                      "balance": 10.398817767785104
                     }
                   ],
-                  "balance": "10.565918",
+                  "balance": 10.565918,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
                 },
                 {
@@ -184,14 +184,14 @@
                       "decimals": 18,
                       "type": "fiat",
                       "balanceRaw": "8730950188884177372n",
-                      "balance": "8.730950188884177372"
+                      "balance": 8.730950188884178
                     }
                   ],
-                  "balance": "8.863308",
+                  "balance": 8.863308,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
                 }
               ],
-              "balance": "29.004301062047034124",
+              "balance": 29.004301062047034,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
             },
             {
@@ -209,10 +209,10 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "386854353912463392n",
-                  "balance": "0.386854353912463392"
+                  "balance": 0.38685435391246337
                 }
               ],
-              "balance": "0.687981795762696243",
+              "balance": 0.6879817957626962,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
             },
             {
@@ -230,14 +230,14 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "22803030452101947n",
-                  "balance": "0.022803030452101947"
+                  "balance": 0.022803030452101948
                 }
               ],
-              "balance": "0.006191836161864266",
+              "balance": 0.006191836161864266,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             }
           ],
-          "balance": "29.004301062047034124"
+          "balance": 29.004301062047034
         }
       ]
     },

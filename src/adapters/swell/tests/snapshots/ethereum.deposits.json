@@ -35,10 +35,10 @@
                 "decimals": 18,
                 "type": "fiat",
                 "balanceRaw": "5272649999999999993672n",
-                "balance": "5272.649999999999993672"
+                "balance": 5272.65
               }
             ],
-            "balance": "2.499999999999999997"
+            "balance": 2.5
           }
         ],
         "blockNumber": 18640807

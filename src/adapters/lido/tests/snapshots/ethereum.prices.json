@@ -27,7 +27,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000000000000000000n",
-              "underlyingRate": "1.0",
+              "underlyingRate": 1,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ]
@@ -60,7 +60,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1143352787597958150n",
-              "underlyingRate": "1.14335278759795815",
+              "underlyingRate": 1.143352787597958,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ]

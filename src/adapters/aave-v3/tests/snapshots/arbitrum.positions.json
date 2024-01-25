@@ -35,14 +35,14 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "201918205188325421436n",
-                  "balance": "201.918205188325421436"
+                  "balance": 201.91820518832543
                 }
               ],
-              "balance": "0.00768788",
+              "balance": 0.00768788,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
           ],
-          "balance": "0.00768788"
+          "balance": 0.00768788
         },
         {
           "address": "0xe50fa9b3c56ffb159cb0fca61f5c9d750e8128c8",
@@ -67,14 +67,14 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "121994491302458230537n",
-                  "balance": "121.994491302458230537"
+                  "balance": 121.99449130245823
                 }
               ],
-              "balance": "0.07537455237674632",
+              "balance": 0.07537455237674633,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
-          "balance": "0.07537455237674632"
+          "balance": 0.07537455237674633
         }
       ]
     },
@@ -124,14 +124,14 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "203881888194620417052n",
-                  "balance": "203.881888194620417052"
+                  "balance": 203.88188819462042
                 }
               ],
-              "balance": "204.818507090799477514",
+              "balance": 204.81850709079947,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ],
-          "balance": "204.818507090799477514"
+          "balance": 204.81850709079947
         }
       ]
     }

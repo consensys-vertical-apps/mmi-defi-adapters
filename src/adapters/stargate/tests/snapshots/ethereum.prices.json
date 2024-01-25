@@ -27,7 +27,7 @@
               "decimals": 6,
               "type": "underlying",
               "underlyingRateRaw": "1000758n",
-              "underlyingRate": "1.000758",
+              "underlyingRate": 1.000758,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ]
@@ -47,7 +47,7 @@
               "decimals": 6,
               "type": "underlying",
               "underlyingRateRaw": "1001056n",
-              "underlyingRate": "1.001056",
+              "underlyingRate": 1.001056,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ]
@@ -67,7 +67,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000153539319485939n",
-              "underlyingRate": "1.000153539319485939",
+              "underlyingRate": 1.000153539319486,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0C10bF8FcB7Bf5412187A595ab97a3609160b5c6/logo.png"
             }
           ]
@@ -87,7 +87,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000116849159443584n",
-              "underlyingRate": "1.000116849159443584",
+              "underlyingRate": 1.0001168491594437,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x72E2F4830b9E45d52F80aC08CB2bEC0FeF72eD9c/logo.png"
             }
           ]
@@ -107,7 +107,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000021000000000000n",
-              "underlyingRate": "1.000021",
+              "underlyingRate": 1.000021,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ]
@@ -127,7 +127,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000014000000000000n",
-              "underlyingRate": "1.000014",
+              "underlyingRate": 1.000014,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ]
@@ -147,7 +147,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000198000000000000n",
-              "underlyingRate": "1.000198",
+              "underlyingRate": 1.000198,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
           ]
@@ -167,7 +167,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000185000000000000n",
-              "underlyingRate": "1.000185",
+              "underlyingRate": 1.000185,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
           ]
@@ -187,7 +187,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000438000000000000n",
-              "underlyingRate": "1.000438",
+              "underlyingRate": 1.000438,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8D6CeBD76f18E1558D4DB88138e2DeFB3909fAD6/logo.png"
             }
           ]
@@ -207,7 +207,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000458018722986854n",
-              "underlyingRate": "1.000458018722986854",
+              "underlyingRate": 1.0004580187229868,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9E32b13ce7f2E80A01932B42553652E053D6ed8e/logo.png"
             }
           ]
@@ -227,7 +227,7 @@
               "decimals": 6,
               "type": "underlying",
               "underlyingRateRaw": "1000195n",
-              "underlyingRate": "1.000195",
+              "underlyingRate": 1.000195,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ]
@@ -247,7 +247,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000803627705731217n",
-              "underlyingRate": "1.000803627705731217",
+              "underlyingRate": 1.0008036277057313,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4691937a7508860F876c9c0a2a617E7d9E945D4B/logo.png"
             }
           ]

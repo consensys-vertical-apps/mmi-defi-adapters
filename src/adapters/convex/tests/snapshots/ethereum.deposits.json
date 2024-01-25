@@ -27,7 +27,7 @@
             "balanceRaw": "20000000000000000000n",
             "type": "underlying",
             "blockNumber": 14443070,
-            "balance": "20.0"
+            "balance": 20
           }
         ],
         "blockNumber": 14443070

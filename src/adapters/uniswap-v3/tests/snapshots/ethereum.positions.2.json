@@ -28,7 +28,7 @@
               "decimals": 8,
               "balanceRaw": "137262192279n",
               "type": "underlying",
-              "balance": "1372.62192279",
+              "balance": 1372.62192279,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
             },
             {
@@ -38,7 +38,7 @@
               "decimals": 8,
               "balanceRaw": "59840960204n",
               "type": "underlying-claimable",
-              "balance": "598.40960204",
+              "balance": 598.40960204,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
             },
             {
@@ -56,10 +56,10 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "848930215975302445495n",
-                  "balance": "848.930215975302445495"
+                  "balance": 848.9302159753024
                 }
               ],
-              "balance": "860.86529",
+              "balance": 860.86529,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             },
             {
@@ -77,14 +77,14 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "63843613338548774548n",
-                  "balance": "63.843613338548774548"
+                  "balance": 63.84361333854878
                 }
               ],
-              "balance": "64.741188",
+              "balance": 64.741188,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "balance": "0.000003051906688142"
+          "balance": 0.000003051906688142
         },
         {
           "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
@@ -102,7 +102,7 @@
               "decimals": 8,
               "balanceRaw": "522568969405n",
               "type": "underlying",
-              "balance": "5225.68969405",
+              "balance": 5225.68969405,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
             },
             {
@@ -112,7 +112,7 @@
               "decimals": 8,
               "balanceRaw": "0n",
               "type": "underlying-claimable",
-              "balance": "0.0",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
             },
             {
@@ -130,10 +130,10 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "0n",
-                  "balance": "0.0"
+                  "balance": 0
                 }
               ],
-              "balance": "0.0",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             },
             {
@@ -151,14 +151,14 @@
                   "decimals": 18,
                   "type": "fiat",
                   "balanceRaw": "0n",
-                  "balance": "0.0"
+                  "balance": 0
                 }
               ],
-              "balance": "0.0",
+              "balance": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "balance": "0.000001824645007152"
+          "balance": 0.000001824645007152
         }
       ]
     }

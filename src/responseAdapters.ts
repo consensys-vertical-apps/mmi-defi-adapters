@@ -24,7 +24,7 @@ export function enrichPositionBalance<
 >(balance: PositionBalance, chainId: Chain): DisplayPosition<PositionBalance> {
   return {
     ...balance,
-    balance: formatUnits(balance.balanceRaw, balance.decimals),
+    balance: +formatUnits(balance.balanceRaw, balance.decimals),
     ...(balance.tokens
       ? {
           tokens: balance.tokens?.map((underlyingBalance) =>
@@ -51,7 +51,7 @@ export function enrichUnderlyingTokenRates(
             (underlyingTokenRate) => {
               return {
                 ...underlyingTokenRate,
-                underlyingRate: formatUnits(
+                underlyingRate: +formatUnits(
                   underlyingTokenRate.underlyingRateRaw,
                   underlyingTokenRate.decimals,
                 ),
@@ -82,7 +82,7 @@ export function enrichMovements(
           ...accumulator,
           {
             ...token,
-            balance: formatUnits(token.balanceRaw, token.decimals),
+            balance: +formatUnits(token.balanceRaw, token.decimals),
             ...(token.tokens
               ? {
                   tokens: token.tokens?.map((underlyingBalance) =>
@@ -93,7 +93,7 @@ export function enrichMovements(
           },
         ]
       },
-      [] as (Underlying & { balance: string })[],
+      [] as (Underlying & { balance: number })[],
     ),
   }
 }
@@ -104,14 +104,14 @@ export function enrichTotalValueLocked(
 ): DisplayProtocolTokenTvl {
   return {
     ...protocolTokenTvl,
-    totalSupply: formatUnits(
+    totalSupply: +formatUnits(
       protocolTokenTvl.totalSupplyRaw,
       protocolTokenTvl.decimals,
     ),
     tokens: protocolTokenTvl.tokens?.map((underlyingTokenTvl) => {
       return {
         ...underlyingTokenTvl,
-        totalSupply: formatUnits(
+        totalSupply: +formatUnits(
           underlyingTokenTvl.totalSupplyRaw,
           underlyingTokenTvl.decimals,
         ),

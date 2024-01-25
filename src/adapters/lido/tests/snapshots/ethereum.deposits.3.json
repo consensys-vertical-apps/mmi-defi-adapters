@@ -43,14 +43,14 @@
                     "decimals": 18,
                     "type": "fiat",
                     "balanceRaw": "116788190609218930800n",
-                    "balance": "116.7881906092189308"
+                    "balance": 116.78819060921893
                   }
                 ],
-                "balance": "0.070819350317881833",
+                "balance": 0.07081935031788184,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
               }
             ],
-            "balance": "0.070819350317881833"
+            "balance": 0.07081935031788184
           }
         ],
         "blockNumber": 16738529

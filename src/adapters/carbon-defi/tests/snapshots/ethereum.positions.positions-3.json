@@ -20,7 +20,7 @@
           "name": "HEX",
           "symbol": "HEX",
           "decimals": 8,
-          "balance": "492.37394628"
+          "balance": 492.37394628
         },
         {
           "type": "protocol",
@@ -30,7 +30,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.000454513348249491"
+          "balance": 0.000454513348249491
         },
         {
           "type": "protocol",
@@ -40,7 +40,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "1.453045230970055329"
+          "balance": 1.4530452309700552
         },
         {
           "type": "protocol",
@@ -50,7 +50,7 @@
           "name": "USD Coin",
           "symbol": "USDC",
           "decimals": 6,
-          "balance": "2500.0"
+          "balance": 2500
         },
         {
           "type": "protocol",
@@ -60,7 +60,7 @@
           "name": "Wrapped BTC",
           "symbol": "WBTC",
           "decimals": 8,
-          "balance": "0.00003181"
+          "balance": 0.00003181
         },
         {
           "type": "protocol",
@@ -70,7 +70,7 @@
           "name": "USD Coin",
           "symbol": "USDC",
           "decimals": 6,
-          "balance": "8477.881687"
+          "balance": 8477.881687
         },
         {
           "type": "protocol",
@@ -80,7 +80,7 @@
           "name": "Wrapped BTC",
           "symbol": "WBTC",
           "decimals": 8,
-          "balance": "0.00015343"
+          "balance": 0.00015343
         },
         {
           "type": "protocol",
@@ -90,7 +90,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "2.758825613606600674"
+          "balance": 2.7588256136066005
         },
         {
           "type": "protocol",
@@ -100,7 +100,7 @@
           "name": "Rocket Pool ETH",
           "symbol": "rETH",
           "decimals": 18,
-          "balance": "1.350317210283684262"
+          "balance": 1.3503172102836842
         },
         {
           "type": "protocol",
@@ -110,7 +110,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.000000000000000001"
+          "balance": 1e-18
         },
         {
           "type": "protocol",
@@ -120,7 +120,7 @@
           "name": "Synthetix Network Token",
           "symbol": "SNX",
           "decimals": 18,
-          "balance": "848.338602752256017556"
+          "balance": 848.3386027522561
         },
         {
           "type": "protocol",
@@ -130,7 +130,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.003148456341439612"
+          "balance": 0.003148456341439612
         },
         {
           "type": "protocol",
@@ -140,7 +140,7 @@
           "name": "Frax Share",
           "symbol": "FXS",
           "decimals": 18,
-          "balance": "0.128503621071413543"
+          "balance": 0.12850362107141355
         },
         {
           "type": "protocol",
@@ -150,7 +150,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.436830434431163669"
+          "balance": 0.43683043443116365
         },
         {
           "type": "protocol",
@@ -160,7 +160,7 @@
           "name": "Rocket Pool Protocol",
           "symbol": "RPL",
           "decimals": 18,
-          "balance": "27.57512665104922492"
+          "balance": 27.575126651049224
         },
         {
           "type": "protocol",
@@ -170,7 +170,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.000160663559791647"
+          "balance": 0.000160663559791647
         },
         {
           "type": "protocol",
@@ -180,7 +180,7 @@
           "name": "Lybra",
           "symbol": "LBR",
           "decimals": 18,
-          "balance": "512.0"
+          "balance": 512
         },
         {
           "type": "protocol",
@@ -190,7 +190,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.000640000000075723"
+          "balance": 0.000640000000075723
         },
         {
           "type": "protocol",
@@ -200,7 +200,7 @@
           "name": "ChainLink Token",
           "symbol": "LINK",
           "decimals": 18,
-          "balance": "0.0"
+          "balance": 0
         },
         {
           "type": "protocol",
@@ -210,7 +210,7 @@
           "name": "Ethereum",
           "symbol": "ETH",
           "decimals": 18,
-          "balance": "0.4"
+          "balance": 0.4
         }
       ]
     }
