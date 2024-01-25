@@ -18,6 +18,9 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+
       - name: Install dependencies
         run: npm ci
 
