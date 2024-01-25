@@ -77,13 +77,13 @@
           "symbol": "variableDebtArbDAI",
           "decimals": 18,
           "type": "protocol",
-          "profit": 2.5449722434735804,
-          "performance": 0.012640365684806169,
+          "profit": -2.5449722434735804,
+          "performance": -0.012640365684806169,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 201.33691595114684,
-            "endPositionValue": 203.88188819462042
+            "startPositionValue": -201.33691595114684,
+            "endPositionValue": -203.88188819462042
           }
         }
       ],

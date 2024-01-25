@@ -126,17 +126,6 @@
               "decimals": 18,
               "type": "underlying-claimable",
               "balanceRaw": "9390648882772428n",
-              "tokens": [
-                {
-                  "address": "TheUnitedStatesMint",
-                  "name": "USD",
-                  "symbol": "USD",
-                  "decimals": 18,
-                  "type": "fiat",
-                  "balanceRaw": "34583481675068094n",
-                  "balance": 0.03458348167506809
-                }
-              ],
               "balance": 0.009390648882772428,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             },
@@ -267,17 +256,6 @@
               "decimals": 18,
               "type": "underlying-claimable",
               "balanceRaw": "297854292613815771n",
-              "tokens": [
-                {
-                  "address": "TheUnitedStatesMint",
-                  "name": "USD",
-                  "symbol": "USD",
-                  "decimals": 18,
-                  "type": "fiat",
-                  "balanceRaw": "1096925100601687264n",
-                  "balance": 1.0969251006016874
-                }
-              ],
               "balance": 0.2978542926138158,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             }
@@ -363,17 +341,6 @@
               "decimals": 18,
               "type": "underlying-claimable",
               "balanceRaw": "4350236055197518621n",
-              "tokens": [
-                {
-                  "address": "TheUnitedStatesMint",
-                  "name": "USD",
-                  "symbol": "USD",
-                  "decimals": 18,
-                  "type": "fiat",
-                  "balanceRaw": "16020864029230662421n",
-                  "balance": 16.020864029230662
-                }
-              ],
               "balance": 4.350236055197518,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             }
