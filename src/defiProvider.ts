@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
@@ -99,7 +100,7 @@ export class DefiProvider {
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
-        protocolTokenAddresses: filterProtocolTokens,
+        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
       })
 
       const endTime = Date.now()
@@ -166,8 +167,8 @@ export class DefiProvider {
         userAddress,
         toBlock,
         fromBlock,
-        protocolTokenAddresses: filterProtocolTokens,
         includeRawValues,
+        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
       })
 
       const endTime = Date.now()
@@ -216,8 +217,7 @@ export class DefiProvider {
       if (filterProtocolToken) {
         const filteredProtocolTokens = protocolTokens.filter(
           (protocolToken) =>
-            protocolToken.address.toLowerCase() ===
-            filterProtocolToken.toLowerCase(),
+            protocolToken.address === getAddress(filterProtocolToken),
         )
         if (filteredProtocolTokens.length === 0) {
           return { tokens: [] }
@@ -293,7 +293,7 @@ export class DefiProvider {
 
     const runner = async (adapter: IProtocolAdapter) => {
       const positionMovements = await adapter.getWithdrawals({
-        protocolTokenAddress,
+        protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
         userAddress,
@@ -335,7 +335,7 @@ export class DefiProvider {
 
     const runner = async (adapter: IProtocolAdapter) => {
       const positionMovements = await adapter.getDeposits({
-        protocolTokenAddress,
+        protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
         userAddress,

@@ -97,7 +97,7 @@ export class CompoundPoolAdapter
           underlyingTokenPromise,
         ])
 
-        metadataObject[poolContractAddress.toLowerCase()] = {
+        metadataObject[protocolToken.address] = {
           protocolToken,
           underlyingToken,
         }

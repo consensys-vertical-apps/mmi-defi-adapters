@@ -23,7 +23,7 @@
           {
             "type": "underlying",
             "balanceRaw": "43155666557030000000000n",
-            "address": "0xb50721bcf8d664c30412cfbc6cf7a15145234ad1",
+            "address": "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1",
             "name": "Arbitrum",
             "symbol": "ARB",
             "decimals": 18,
@@ -45,7 +45,7 @@
           {
             "type": "underlying",
             "balanceRaw": "0n",
-            "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+            "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
             "name": "Wrapped Ether",
             "symbol": "WETH",
             "decimals": 18,

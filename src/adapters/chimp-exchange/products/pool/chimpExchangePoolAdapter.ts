@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -42,10 +43,10 @@ type ChimpExchangePoolAdapterMetadata = Record<
 >
 
 const vaultContractAddresses: Partial<Record<Chain, string>> = {
-  [Chain.Linea]: '0x286381aEdd20e51f642fE4A200B5CB2Fe3729695',
+  [Chain.Linea]: getAddress('0x286381aEdd20e51f642fE4A200B5CB2Fe3729695'),
 }
 const poolDataQueryContractAddresses: Partial<Record<Chain, string>> = {
-  [Chain.Linea]: '0xb2F2537E332F9A1aADa289df9fC770D5120613C9',
+  [Chain.Linea]: getAddress('0xb2F2537E332F9A1aADa289df9fC770D5120613C9'),
 }
 
 export class ChimpExchangePoolAdapter
@@ -91,7 +92,7 @@ export class ChimpExchangePoolAdapter
         const underlyingTokens = await filterMapAsync(
           poolTokens[0],
           async (token, index) => {
-            if (token.toLowerCase() === event.args.poolAddress.toLowerCase()) {
+            if (getAddress(token) === getAddress(event.args.poolAddress)) {
               return undefined
             }
 
@@ -108,7 +109,7 @@ export class ChimpExchangePoolAdapter
           },
         )
 
-        metadataObject[event.args.poolAddress.toLowerCase()] = {
+        metadataObject[protocolToken.address] = {
           poolId: event.args.poolId,
           totalSupplyType: event.args.specialization === 0n ? '2' : '0',
           protocolToken,
@@ -175,9 +176,7 @@ export class ChimpExchangePoolAdapter
         const tokensData = await filterMapAsync(
           event.args.tokens,
           async (token, index) => {
-            if (
-              token.toLowerCase() === protocolTokenAddress.toLocaleLowerCase()
-            ) {
+            if (getAddress(token) === protocolTokenAddress) {
               return undefined
             }
 

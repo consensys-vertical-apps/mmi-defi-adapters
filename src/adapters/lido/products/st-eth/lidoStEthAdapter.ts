@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -46,7 +47,9 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
   }
 
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    const stEthAddress = '0xae7ab96520de3a18e5e111b5eaab095312d7fe84'
+    const stEthAddress = getAddress(
+      '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
+    )
     return await getTokenMetadata(stEthAddress, this.chainId, this.provider)
   }
   protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {

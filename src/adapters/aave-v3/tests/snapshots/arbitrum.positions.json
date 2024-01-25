@@ -13,7 +13,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x078f358208685046a11c85e8ad32895ded33a249",
+          "address": "0x078f358208685046a11C85e8ad32895DED33A249",
           "name": "Aave Arbitrum WBTC",
           "symbol": "aArbWBTC",
           "decimals": 8,
@@ -21,7 +21,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+              "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
@@ -45,7 +45,7 @@
           "balance": 0.00768788
         },
         {
-          "address": "0xe50fa9b3c56ffb159cb0fca61f5c9d750e8128c8",
+          "address": "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8",
           "name": "Aave Arbitrum WETH",
           "symbol": "aArbWETH",
           "decimals": 18,
@@ -53,7 +53,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
@@ -102,7 +102,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x8619d80fb0141ba7f184cbf22fd724116d9f7ffc",
+          "address": "0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC",
           "name": "Aave Arbitrum Variable Debt DAI",
           "symbol": "variableDebtArbDAI",
           "decimals": 18,
@@ -110,7 +110,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+              "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,

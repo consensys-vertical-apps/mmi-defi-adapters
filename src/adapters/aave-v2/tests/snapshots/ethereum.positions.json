@@ -13,7 +13,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
           "name": "Aave interest bearing WBTC",
           "symbol": "aWBTC",
           "decimals": 8,
@@ -21,7 +21,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
@@ -45,7 +45,7 @@
           "balance": 389.51892054
         },
         {
-          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
           "name": "Aave interest bearing WETH",
           "symbol": "aWETH",
           "decimals": 18,
@@ -53,7 +53,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
@@ -102,7 +102,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x531842cebbdd378f8ee36d171d6cc9c4fcf475ec",
+          "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
           "name": "Aave variable debt bearing USDT",
           "symbol": "variableDebtUSDT",
           "decimals": 6,
@@ -110,7 +110,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
@@ -134,7 +134,7 @@
           "balance": 5306571.196169
         },
         {
-          "address": "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
+          "address": "0x9c39809Dec7F95F5e0713634a4D0701329B3b4d2",
           "name": "Aave variable debt bearing WBTC",
           "symbol": "variableDebtWBTC",
           "decimals": 8,
@@ -142,7 +142,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
@@ -166,7 +166,7 @@
           "balance": 3.00026251
         },
         {
-          "address": "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d",
+          "address": "0x6C3c78838c761c6Ac7bE9F59fe808ea2A6E4379d",
           "name": "Aave variable debt bearing DAI",
           "symbol": "variableDebtDAI",
           "decimals": 18,
@@ -174,7 +174,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
@@ -198,7 +198,7 @@
           "balance": 366385.813220366
         },
         {
-          "address": "0x619beb58998ed2278e08620f97007e1116d5d25b",
+          "address": "0x619beb58998eD2278e08620f97007e1116D5D25b",
           "name": "Aave variable debt bearing USDC",
           "symbol": "variableDebtUSDC",
           "decimals": 6,
@@ -206,7 +206,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,

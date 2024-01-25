@@ -1,4 +1,4 @@
-import { formatUnits } from 'ethers'
+import { formatUnits, getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
@@ -42,8 +42,9 @@ const deadline = Math.floor(Date.now() - 1000) + 60 * 10
 // Uniswap has different pools per fee e.g. 1%, 0.5%
 const FEE_DECIMALS = 4
 
-const positionManagerCommonAddress =
-  '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
+const positionManagerCommonAddress = getAddress(
+  '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
+)
 
 const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
   [Chain.Ethereum]: {
@@ -59,10 +60,10 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
     positionManager: positionManagerCommonAddress,
   },
   [Chain.Bsc]: {
-    positionManager: '0x7b8A01B39D58278b5DE7e48c8449c9f4F5170613',
+    positionManager: getAddress('0x7b8A01B39D58278b5DE7e48c8449c9f4F5170613'),
   },
   [Chain.Base]: {
-    positionManager: '0x03a520b32C04BF3bEEf7BEb72E919cf822Ed34f1',
+    positionManager: getAddress('0x03a520b32C04BF3bEEf7BEb72E919cf822Ed34f1'),
   },
 }
 

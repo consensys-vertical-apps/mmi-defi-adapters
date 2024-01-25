@@ -1,9 +1,9 @@
 {
-  "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619": {
+  "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619": {
     "name": "Wrapped Ether",
     "symbol": "WETH",
     "decimals": 18,
-    "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": true
   },
   "0x0000000000000000000000000000000000001010": {
@@ -13,1277 +13,1337 @@
     "decimals": 18,
     "uniswapFee": 500,
     "baseAddress": "0x0000000000000000000000000000000000001010",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x9c2c5fd7b07e95ee044ddeba0e97a665f142394f": {
-    "address": "0x9c2c5fd7b07e95ee044ddeba0e97a665f142394f",
+  "0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f": {
+    "address": "0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f",
     "name": "1Inch (PoS)",
     "symbol": "1INCH",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x9c2c5fd7b07e95ee044ddeba0e97a665f142394f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xd6df932a45c0f255f85145f286ea0b292b21c90b": {
-    "address": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+  "0xD6DF932A45C0f255f85145f286eA0b292B21C90B": {
+    "address": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
     "name": "Aave (PoS)",
     "symbol": "AAVE",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7": {
-    "address": "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
+  "0x385Eeac5cB85A38A9a07A70c73e0a3271CfB54A7": {
+    "address": "0x385Eeac5cB85A38A9a07A70c73e0a3271CfB54A7",
     "name": "Aavegotchi GHST Token (PoS)",
     "symbol": "GHST",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x385Eeac5cB85A38A9a07A70c73e0a3271CfB54A7",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xbfc70507384047aa74c29cdc8c5cb88d0f7213ac": {
-    "address": "0xbfc70507384047aa74c29cdc8c5cb88d0f7213ac",
+  "0xbFc70507384047Aa74c29Cdc8c5Cb88D0f7213AC": {
+    "address": "0xbFc70507384047Aa74c29Cdc8c5Cb88D0f7213AC",
     "name": "Artificial Liquid Intelligence Token",
     "symbol": "ALI",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xbfc70507384047aa74c29cdc8c5cb88d0f7213ac",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xbFc70507384047Aa74c29Cdc8c5Cb88D0f7213AC",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x101a023270368c0d50bffb62780f4afd4ea79c35": {
-    "address": "0x101a023270368c0d50bffb62780f4afd4ea79c35",
+  "0x101A023270368c0D50BFfb62780F4aFd4ea79C35": {
+    "address": "0x101A023270368c0D50BFfb62780F4aFd4ea79C35",
     "name": "Ankr (PoS)",
     "symbol": "ANKR",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x101a023270368c0d50bffb62780f4afd4ea79c35",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x101A023270368c0D50BFfb62780F4aFd4ea79C35",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xb7b31a6bc18e48888545ce79e83e06003be70930": {
-    "address": "0xb7b31a6bc18e48888545ce79e83e06003be70930",
+  "0xB7b31a6BC18e48888545CE79e83E06003bE70930": {
+    "address": "0xB7b31a6BC18e48888545CE79e83E06003bE70930",
     "name": "ApeCoin (PoS)",
     "symbol": "APE",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xb7b31a6bc18e48888545ce79e83e06003be70930",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xB7b31a6BC18e48888545CE79e83E06003bE70930",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xee800b277a96b0f490a1a732e1d6395fad960a26": {
-    "address": "0xee800b277a96b0f490a1a732e1d6395fad960a26",
+  "0xEE800B277A96B0f490a1A732e1D6395FAD960A26": {
+    "address": "0xEE800B277A96B0f490a1A732e1D6395FAD960A26",
     "name": "ARPA Token (PoS)",
     "symbol": "ARPA",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xee800b277a96b0f490a1a732e1d6395fad960a26",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xEE800B277A96B0f490a1A732e1D6395FAD960A26",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x9cb74c8032b007466865f060ad2c46145d45553d": {
-    "address": "0x9cb74c8032b007466865f060ad2c46145d45553d",
+  "0x9Cb74C8032b007466865f060ad2c46145d45553D": {
+    "address": "0x9Cb74C8032b007466865f060ad2c46145d45553D",
     "name": "IDEX Token (PoS)",
     "symbol": "IDEX",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x9cb74c8032b007466865f060ad2c46145d45553d",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x9Cb74C8032b007466865f060ad2c46145d45553D",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xf1c1a3c2481a3a8a3f173a9ab5ade275292a6fa3": {
-    "address": "0xf1c1a3c2481a3a8a3f173a9ab5ade275292a6fa3",
+  "0xf1c1A3C2481A3a8A3f173A9ab5Ade275292A6fA3": {
+    "address": "0xf1c1A3C2481A3a8A3f173A9ab5Ade275292A6fA3",
     "name": "BLOCKv Token (PoS)",
     "symbol": "VEE",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xf1c1a3c2481a3a8a3f173a9ab5ade275292a6fa3",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xf1c1A3C2481A3a8A3f173A9ab5Ade275292A6fA3",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b": {
-    "address": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
+  "0xB0B195aEFA3650A6908f15CdaC7D92F8a5791B0B": {
+    "address": "0xB0B195aEFA3650A6908f15CdaC7D92F8a5791B0B",
     "name": "BOB",
     "symbol": "BOB",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xB0B195aEFA3650A6908f15CdaC7D92F8a5791B0B",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xe5b49820e5a1063f6f4ddf851327b5e8b2301048": {
-    "address": "0xe5b49820e5a1063f6f4ddf851327b5e8b2301048",
+  "0xe5B49820e5A1063F6F4DdF851327b5E8B2301048": {
+    "address": "0xe5B49820e5A1063F6F4DdF851327b5E8B2301048",
     "name": "Bonk",
     "symbol": "Bonk",
     "decimals": 5,
     "uniswapFee": 10000,
-    "baseAddress": "0xe5b49820e5a1063f6f4ddf851327b5e8b2301048",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xe5B49820e5A1063F6F4DdF851327b5E8B2301048",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x2e1ad108ff1d8c782fcbbb89aad783ac49586756": {
-    "address": "0x2e1ad108ff1d8c782fcbbb89aad783ac49586756",
+  "0x2e1AD108fF1D8C782fcBbB89AAd783aC49586756": {
+    "address": "0x2e1AD108fF1D8C782fcBbB89AAd783aC49586756",
     "name": "TrueUSD (PoS)",
     "symbol": "TUSD",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x2e1ad108ff1d8c782fcbbb89aad783ac49586756",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x2e1AD108fF1D8C782fcBbB89AAd783aC49586756",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x2791bca1f2de4661ed88a30c99a7a9449aa84174": {
-    "address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+  "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174": {
+    "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
     "name": "USD Coin (PoS)",
     "symbol": "USDC",
     "decimals": 6,
     "uniswapFee": 10000,
-    "baseAddress": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xab5f7a0e20b0d056aed4aa4528c78da45be7308b": {
-    "address": "0xab5f7a0e20b0d056aed4aa4528c78da45be7308b",
+  "0xAB5F7a0e20b0d056Aed4Aa4528C78da45BE7308b": {
+    "address": "0xAB5F7a0e20b0d056Aed4Aa4528C78da45BE7308b",
     "name": "Imported GBYTE",
     "symbol": "GBYTE",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xab5f7a0e20b0d056aed4aa4528c78da45be7308b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xAB5F7a0e20b0d056Aed4Aa4528C78da45BE7308b",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xf2ae0038696774d65e67892c9d301c5f2cbbda58": {
-    "address": "0xf2ae0038696774d65e67892c9d301c5f2cbbda58",
+  "0xf2ae0038696774d65E67892c9D301C5f2CbbDa58": {
+    "address": "0xf2ae0038696774d65E67892c9D301C5f2CbbDa58",
     "name": "CargoX Token (PoS)",
     "symbol": "CXO",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xf2ae0038696774d65e67892c9d301c5f2cbbda58",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xf2ae0038696774d65E67892c9D301C5f2CbbDa58",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xd55fce7cdab84d84f2ef3f99816d765a2a94a509": {
-    "address": "0xd55fce7cdab84d84f2ef3f99816d765a2a94a509",
+  "0xd55fCe7CDaB84d84f2EF3F99816D765a2a94a509": {
+    "address": "0xd55fCe7CDaB84d84f2EF3F99816D765a2a94a509",
     "name": "Chain Games",
     "symbol": "CHAIN",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xd55fce7cdab84d84f2ef3f99816d765a2a94a509",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xd55fCe7CDaB84d84f2EF3F99816D765a2a94a509",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x2ab4f9ac80f33071211729e45cfc346c1f8446d5": {
-    "address": "0x2ab4f9ac80f33071211729e45cfc346c1f8446d5",
+  "0x2Ab4f9aC80F33071211729e45Cfc346C1f8446d5": {
+    "address": "0x2Ab4f9aC80F33071211729e45Cfc346C1f8446d5",
     "name": "ChainGuardians Governance Token (PoS)",
     "symbol": "CGG",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x2ab4f9ac80f33071211729e45cfc346c1f8446d5",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x2Ab4f9aC80F33071211729e45Cfc346C1f8446d5",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39": {
-    "address": "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39",
+  "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39": {
+    "address": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
     "name": "ChainLink Token",
     "symbol": "LINK",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x72c96c73207936e94066b4c8566c6987c9a1f1de": {
-    "address": "0x72c96c73207936e94066b4c8566c6987c9a1f1de",
+  "0x72C96C73207936E94066b4C8566C6987c9a1f1dE": {
+    "address": "0x72C96C73207936E94066b4C8566C6987c9a1f1dE",
     "name": "USD Stablecolb",
     "symbol": "SCB",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x72c96c73207936e94066b4c8566c6987c9a1f1de",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x72C96C73207936E94066b4C8566C6987c9a1f1dE",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x172370d5cd63279efa6d502dab29171933a610af": {
-    "address": "0x172370d5cd63279efa6d502dab29171933a610af",
-    "name": "CRV (PoS)",
-    "symbol": "CRV",
+  "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8": {
+    "address": "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
+    "name": "Connext",
+    "symbol": "NEXT",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x172370d5cd63279efa6d502dab29171933a610af",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063": {
-    "address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+  "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063": {
+    "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
     "name": "(PoS) Dai Stablecoin",
     "symbol": "DAI",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x85955046df4668e1dd369d2de9f3aeb98dd2a369": {
-    "address": "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
+  "0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369": {
+    "address": "0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369",
     "name": "DefiPulse Index (PoS)",
     "symbol": "DPI",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xdbb5da27ffcfebea8799a5832d4607714fc6aba8": {
-    "address": "0xdbb5da27ffcfebea8799a5832d4607714fc6aba8",
+  "0xdBb5Da27FFcFeBea8799a5832D4607714fc6aBa8": {
+    "address": "0xdBb5Da27FFcFeBea8799a5832D4607714fc6aBa8",
     "name": "DEGEN (PoS)",
     "symbol": "DGEN",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xdbb5da27ffcfebea8799a5832d4607714fc6aba8",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xdBb5Da27FFcFeBea8799a5832D4607714fc6aBa8",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xe749ea14a2d18e361ed092ebefba64d77a8b4eac": {
-    "address": "0xe749ea14a2d18e361ed092ebefba64d77a8b4eac",
+  "0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6": {
+    "address": "0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6",
+    "name": "DeRace Token",
+    "symbol": "DERC",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0xE749Ea14A2D18E361eD092EbefbA64D77a8B4EaC": {
+    "address": "0xE749Ea14A2D18E361eD092EbefbA64D77a8B4EaC",
     "name": "DigitexFutures (PoS)",
     "symbol": "DGTX",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xe749ea14a2d18e361ed092ebefba64d77a8b4eac",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xE749Ea14A2D18E361eD092EbefbA64D77a8B4EaC",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xe261d618a959afffd53168cd07d12e37b26761db": {
-    "address": "0xe261d618a959afffd53168cd07d12e37b26761db",
+  "0xE261D618a959aFfFd53168Cd07D12E37B26761db": {
+    "address": "0xE261D618a959aFfFd53168Cd07D12E37B26761db",
     "name": "Dimo",
     "symbol": "DIMO",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xe261d618a959afffd53168cd07d12e37b26761db",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xE261D618a959aFfFd53168Cd07D12E37B26761db",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xe0339c80ffde91f3e20494df88d4206d86024cdf": {
-    "address": "0xe0339c80ffde91f3e20494df88d4206d86024cdf",
+  "0xE0339c80fFDE91F3e20494Df88d4206D86024cdF": {
+    "address": "0xE0339c80fFDE91F3e20494Df88d4206D86024cdF",
     "name": "Dogelon (PoS)",
     "symbol": "ELON",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xe0339c80ffde91f3e20494df88d4206d86024cdf",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xE0339c80fFDE91F3e20494Df88d4206D86024cdF",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xe46f5128b933e5a6f907fe73ece80059c222db0a": {
-    "address": "0xe46f5128b933e5a6f907fe73ece80059c222db0a",
+  "0xe46F5128B933e5A6F907Fe73EcE80059c222DB0A": {
+    "address": "0xe46F5128B933e5A6F907Fe73EcE80059c222DB0A",
     "name": "dotmoovs (PoS)",
     "symbol": "MOOV",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xe46f5128b933e5a6f907fe73ece80059c222db0a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xe46F5128B933e5A6F907Fe73EcE80059c222DB0A",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x2fe8733dcb25bfbba79292294347415417510067": {
-    "address": "0x2fe8733dcb25bfbba79292294347415417510067",
+  "0x55b1a124c04A54eeFDEFE5FA2Ef5f852FB5f2f26": {
+    "address": "0x55b1a124c04A54eeFDEFE5FA2Ef5f852FB5f2f26",
+    "name": "Ethereum Meta",
+    "symbol": "ETHM",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x55b1a124c04A54eeFDEFE5FA2Ef5f852FB5f2f26",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0x2fe8733dcb25BFbbA79292294347415417510067": {
+    "address": "0x2fe8733dcb25BFbbA79292294347415417510067",
     "name": "Exeedme (PoS)",
     "symbol": "XED",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x2fe8733dcb25bfbba79292294347415417510067",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x2fe8733dcb25BFbbA79292294347415417510067",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x1a3acf6d19267e2d3e7f898f42803e90c9219062": {
-    "address": "0x1a3acf6d19267e2d3e7f898f42803e90c9219062",
+  "0x1a3acf6D19267E2d3e7f898f42803e90C9219062": {
+    "address": "0x1a3acf6D19267E2d3e7f898f42803e90C9219062",
     "name": "Frax Share",
     "symbol": "FXS",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x1a3acf6d19267e2d3e7f898f42803e90c9219062",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x1a3acf6D19267E2d3e7f898f42803e90C9219062",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xe5417af564e4bfda1c483642db72007871397896": {
-    "address": "0xe5417af564e4bfda1c483642db72007871397896",
+  "0xE5417Af564e4bFDA1c483642db72007871397896": {
+    "address": "0xE5417Af564e4bFDA1c483642db72007871397896",
     "name": "Gains Network",
     "symbol": "GNS",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xe5417af564e4bfda1c483642db72007871397896",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xE5417Af564e4bFDA1c483642db72007871397896",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x15b7c0c907e4c6b9adaaaabc300c08991d6cea05": {
-    "address": "0x15b7c0c907e4c6b9adaaaabc300c08991d6cea05",
+  "0x15b7c0c907e4C6b9AdaAaabC300C08991D6CEA05": {
+    "address": "0x15b7c0c907e4C6b9AdaAaabC300C08991D6CEA05",
     "name": "Gelato Network Token",
     "symbol": "GEL",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x15b7c0c907e4c6b9adaaaabc300c08991d6cea05",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x15b7c0c907e4C6b9AdaAaabC300C08991D6CEA05",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x34667ed7c36cbbbf2d5d5c5c8d6eb76a094edb9f": {
-    "address": "0x34667ed7c36cbbbf2d5d5c5c8d6eb76a094edb9f",
+  "0x34667ED7C36cBBbF2d5d5c5c8d6Eb76a094EDb9F": {
+    "address": "0x34667ED7C36cBBbF2d5d5c5c8d6Eb76a094EDb9F",
     "name": "GenomesDAO (PoS)",
     "symbol": "GENE",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x34667ed7c36cbbbf2d5d5c5c8d6eb76a094edb9f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x34667ED7C36cBBbF2d5d5c5c8d6Eb76a094EDb9F",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xdb725f82818de83e99f1dac22a9b5b51d3d04dd4": {
-    "address": "0xdb725f82818de83e99f1dac22a9b5b51d3d04dd4",
+  "0xdb725f82818De83e99F1dAc22A9b5B51d3d04DD4": {
+    "address": "0xdb725f82818De83e99F1dAc22A9b5B51d3d04DD4",
     "name": "GET Protocol (PoS)",
     "symbol": "GET",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xdb725f82818de83e99f1dac22a9b5b51d3d04dd4",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xdb725f82818De83e99F1dAc22A9b5B51d3d04DD4",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x4e1581f01046efdd7a1a2cdb0f82cdd7f71f2e59": {
-    "address": "0x4e1581f01046efdd7a1a2cdb0f82cdd7f71f2e59",
-    "name": "IceToken",
-    "symbol": "ICE",
-    "decimals": 18,
-    "uniswapFee": 10000,
-    "baseAddress": "0x4e1581f01046efdd7a1a2cdb0f82cdd7f71f2e59",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
-  "0xab0b2ddb9c7e440fac8e140a89c0dbcbf2d7bbff": {
-    "address": "0xab0b2ddb9c7e440fac8e140a89c0dbcbf2d7bbff",
+  "0xab0b2ddB9C7e440fAc8E140A89c0dbCBf2d7Bbff": {
+    "address": "0xab0b2ddB9C7e440fAc8E140A89c0dbCBf2d7Bbff",
     "name": "Harvest Interest Token",
     "symbol": "miFARM",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xab0b2ddb9c7e440fac8e140a89c0dbcbf2d7bbff",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xab0b2ddB9C7e440fAc8E140A89c0dbCBf2d7Bbff",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x5dfd5edfde4d8ec9e632dca9d09fc7e833f74210": {
-    "address": "0x5dfd5edfde4d8ec9e632dca9d09fc7e833f74210",
+  "0x5DFD5edFde4d8EC9e632dCA9d09Fc7E833f74210": {
+    "address": "0x5DFD5edFde4d8EC9e632dCA9d09Fc7E833f74210",
     "name": "Skyblocks",
     "symbol": "ISKY",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x5dfd5edfde4d8ec9e632dca9d09fc7e833f74210",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x5DFD5edFde4d8EC9e632dCA9d09Fc7E833f74210",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xf50d05a1402d0adafa880d36050736f9f6ee7dee": {
-    "address": "0xf50d05a1402d0adafa880d36050736f9f6ee7dee",
+  "0xf50D05A1402d0adAfA880D36050736f9f6ee7dee": {
+    "address": "0xf50D05A1402d0adAfA880D36050736f9f6ee7dee",
     "name": "Instadapp (PoS)",
     "symbol": "INST",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xf50d05a1402d0adafa880d36050736f9f6ee7dee",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xf50D05A1402d0adAfA880D36050736f9f6ee7dee",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xf88332547c680f755481bf489d890426248bb275": {
-    "address": "0xf88332547c680f755481bf489d890426248bb275",
+  "0xF88332547c680F755481Bf489D890426248BB275": {
+    "address": "0xF88332547c680F755481Bf489D890426248BB275",
     "name": "inSure (PoS)",
     "symbol": "SURE",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xf88332547c680f755481bf489d890426248bb275",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xF88332547c680F755481Bf489D890426248BB275",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x17d342b29f054030a455b4191f977c3b0aa62fd9": {
-    "address": "0x17d342b29f054030a455b4191f977c3b0aa62fd9",
+  "0x17D342b29F054030a455b4191f977C3b0aA62Fd9": {
+    "address": "0x17D342b29F054030a455b4191f977C3b0aA62Fd9",
     "name": "Kanga Exchange Token (PoS)",
     "symbol": "KNG",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x17d342b29f054030a455b4191f977c3b0aa62fd9",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x17D342b29F054030a455b4191f977C3b0aA62Fd9",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xc3ec80343d2bae2f8e680fdadde7c17e71e114ea": {
-    "address": "0xc3ec80343d2bae2f8e680fdadde7c17e71e114ea",
+  "0x6f7C932e7684666C9fd1d44527765433e01fF61d": {
+    "address": "0x6f7C932e7684666C9fd1d44527765433e01fF61d",
+    "name": "MAKER (PoS)",
+    "symbol": "MKR",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x6f7C932e7684666C9fd1d44527765433e01fF61d",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0xC3Ec80343D2bae2F8E680FDADDe7C17E71E114ea": {
+    "address": "0xC3Ec80343D2bae2F8E680FDADDe7C17E71E114ea",
     "name": "MANTRA DAO (PoS)",
     "symbol": "OM",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xc3ec80343d2bae2f8e680fdadde7c17e71e114ea",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xC3Ec80343D2bae2F8E680FDADDe7C17E71E114ea",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x34ad6a664b4112a9c6bac7b54b4094a05e3ff775": {
-    "address": "0x34ad6a664b4112a9c6bac7b54b4094a05e3ff775",
+  "0x34ad6A664B4112a9C6Bac7B54B4094a05E3ff775": {
+    "address": "0x34ad6A664B4112a9C6Bac7B54B4094a05E3ff775",
     "name": "MariCoin",
     "symbol": "MCOIN",
     "decimals": 3,
     "uniswapFee": 10000,
-    "baseAddress": "0x34ad6a664b4112a9c6bac7b54b4094a05e3ff775",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x34ad6A664B4112a9C6Bac7B54B4094a05E3ff775",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xee9a352f6aac4af1a5b9f467f6a93e0ffbe9dd35": {
-    "address": "0xee9a352f6aac4af1a5b9f467f6a93e0ffbe9dd35",
+  "0xEe9A352F6aAc4aF1A5B9f467F6a93E0ffBe9Dd35": {
+    "address": "0xEe9A352F6aAc4aF1A5B9f467F6a93E0ffBe9Dd35",
     "name": "MASQ (PoS)",
     "symbol": "MASQ",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xee9a352f6aac4af1a5b9f467f6a93e0ffbe9dd35",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xEe9A352F6aAc4aF1A5B9f467F6a93E0ffBe9Dd35",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xee7666aacaefaa6efeef62ea40176d3eb21953b9": {
-    "address": "0xee7666aacaefaa6efeef62ea40176d3eb21953b9",
+  "0xee7666aACAEFaa6efeeF62ea40176d3eB21953B9": {
+    "address": "0xee7666aACAEFaa6efeeF62ea40176d3eB21953B9",
     "name": "MCHCoin (PoS)",
     "symbol": "MCHC",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xee7666aacaefaa6efeef62ea40176d3eb21953b9",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xee7666aACAEFaa6efeeF62ea40176d3eB21953B9",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xf501dd45a1198c2e1b5aef5314a68b9006d842e0": {
-    "address": "0xf501dd45a1198c2e1b5aef5314a68b9006d842e0",
+  "0xF501dd45a1198C2E1b5aEF5314A68B9006D842E0": {
+    "address": "0xF501dd45a1198C2E1b5aEF5314A68B9006D842E0",
     "name": "Meta (PoS)",
     "symbol": "MTA",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xf501dd45a1198c2e1b5aef5314a68b9006d842e0",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xF501dd45a1198C2E1b5aEF5314A68B9006D842E0",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x2760e46d9bb43dafcbecaad1f64b93207f9f0ed7": {
-    "address": "0x2760e46d9bb43dafcbecaad1f64b93207f9f0ed7",
+  "0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7": {
+    "address": "0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7",
     "name": "Metavault Trade",
     "symbol": "MVX",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x2760e46d9bb43dafcbecaad1f64b93207f9f0ed7",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xa3fa99a148fa48d14ed51d610c367c61876997f1": {
-    "address": "0xa3fa99a148fa48d14ed51d610c367c61876997f1",
+  "0xa3Fa99A148fA48D14Ed51d610c367C61876997F1": {
+    "address": "0xa3Fa99A148fA48D14Ed51d610c367C61876997F1",
     "name": "miMATIC",
     "symbol": "miMATIC",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xa3fa99a148fa48d14ed51d610c367c61876997f1",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xa3Fa99A148fA48D14Ed51d610c367C61876997F1",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x3c59798620e5fec0ae6df1a19c6454094572ab92": {
-    "address": "0x3c59798620e5fec0ae6df1a19c6454094572ab92",
+  "0x3c59798620e5fEC0Ae6dF1A19c6454094572Ab92": {
+    "address": "0x3c59798620e5fEC0Ae6dF1A19c6454094572Ab92",
     "name": "Morpheus.Network (PoS)",
     "symbol": "MNW",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x3c59798620e5fec0ae6df1a19c6454094572ab92",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x3c59798620e5fEC0Ae6dF1A19c6454094572Ab92",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb": {
-    "address": "0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb",
-    "name": "Nash Exchange Token (PoS)",
-    "symbol": "NEX",
-    "decimals": 8,
-    "uniswapFee": 10000,
-    "baseAddress": "0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-    "isBaseTokenEth": false
-  },
-  "0x62a872d9977db171d9e213a5dc2b782e72ca0033": {
-    "address": "0x62a872d9977db171d9e213a5dc2b782e72ca0033",
+  "0x62a872d9977Db171d9e213A5dc2b782e72ca0033": {
+    "address": "0x62a872d9977Db171d9e213A5dc2b782e72ca0033",
     "name": "NEUY (PoS)",
     "symbol": "NEUY",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x62a872d9977db171d9e213a5dc2b782e72ca0033",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x62a872d9977Db171d9e213A5dc2b782e72ca0033",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xd5d86fc8d5c0ea1ac1ac5dfab6e529c9967a45e9": {
-    "address": "0xd5d86fc8d5c0ea1ac1ac5dfab6e529c9967a45e9",
+  "0xD5d86FC8d5C0Ea1aC1Ac5Dfab6E529c9967a45E9": {
+    "address": "0xD5d86FC8d5C0Ea1aC1Ac5Dfab6E529c9967a45E9",
     "name": "NFT Worlds",
     "symbol": "WRLD",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xd5d86fc8d5c0ea1ac1ac5dfab6e529c9967a45e9",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xD5d86FC8d5C0Ea1aC1Ac5Dfab6E529c9967a45E9",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x78a0a62fba6fb21a83fe8a3433d44c73a4017a6f": {
-    "address": "0x78a0a62fba6fb21a83fe8a3433d44c73a4017a6f",
+  "0x282d8efCe846A88B159800bd4130ad77443Fa1A1": {
+    "address": "0x282d8efCe846A88B159800bd4130ad77443Fa1A1",
+    "name": "Ocean Token (PoS)",
+    "symbol": "mOCEAN",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x282d8efCe846A88B159800bd4130ad77443Fa1A1",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0x78a0A62Fba6Fb21A83FE8a3433d44C73a4017A6f": {
+    "address": "0x78a0A62Fba6Fb21A83FE8a3433d44C73a4017A6f",
     "name": "Open Exchange Token",
     "symbol": "OX",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x78a0a62fba6fb21a83fe8a3433d44c73a4017a6f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x78a0A62Fba6Fb21A83FE8a3433d44C73a4017A6f",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x71b821aa52a49f32eed535fca6eb5aa130085978": {
-    "address": "0x71b821aa52a49f32eed535fca6eb5aa130085978",
+  "0x71B821aa52a49F32EEd535fCA6Eb5aa130085978": {
+    "address": "0x71B821aa52a49F32EEd535fCA6Eb5aa130085978",
     "name": "0xBitcoin Token",
     "symbol": "0xBTC",
     "decimals": 8,
     "uniswapFee": 10000,
-    "baseAddress": "0x71b821aa52a49f32eed535fca6eb5aa130085978",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x71B821aa52a49F32EEd535fCA6Eb5aa130085978",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x7c28f627ea3aec8b882b51eb1935f66e5b875714": {
-    "address": "0x7c28f627ea3aec8b882b51eb1935f66e5b875714",
+  "0x7c28F627eA3aEc8B882b51eb1935f66e5b875714": {
+    "address": "0x7c28F627eA3aEc8B882b51eb1935f66e5b875714",
     "name": "Paint",
     "symbol": "PAINT",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x7c28f627ea3aec8b882b51eb1935f66e5b875714",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x7c28F627eA3aEc8B882b51eb1935f66e5b875714",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x0d6ae2a429df13e44a07cd2969e085e4833f64a0": {
-    "address": "0x0d6ae2a429df13e44a07cd2969e085e4833f64a0",
+  "0x0D6ae2a429df13e44A07Cd2969E085e4833f64A0": {
+    "address": "0x0D6ae2a429df13e44A07Cd2969E085e4833f64A0",
     "name": "PolkaBridge",
     "symbol": "PBR",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x0d6ae2a429df13e44a07cd2969e085e4833f64a0",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x0D6ae2a429df13e44A07Cd2969E085e4833f64A0",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x692ac1e363ae34b6b489148152b12e2785a3d8d6": {
-    "address": "0x692ac1e363ae34b6b489148152b12e2785a3d8d6",
+  "0x692AC1e363ae34b6B489148152b12e2785a3d8d6": {
+    "address": "0x692AC1e363ae34b6B489148152b12e2785a3d8d6",
     "name": "Polytrade (PoS)",
     "symbol": "TRADE",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x692ac1e363ae34b6b489148152b12e2785a3d8d6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x692AC1e363ae34b6B489148152b12e2785a3d8d6",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xc5b57e9a1e7914fda753a88f24e5703e617ee50c": {
-    "address": "0xc5b57e9a1e7914fda753a88f24e5703e617ee50c",
+  "0xC5B57e9a1E7914FDA753A88f24E5703e617Ee50c": {
+    "address": "0xC5B57e9a1E7914FDA753A88f24E5703e617Ee50c",
     "name": "Popcorn (PoS)",
     "symbol": "POP",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xc5b57e9a1e7914fda753a88f24e5703e617ee50c",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xC5B57e9a1E7914FDA753A88f24E5703e617Ee50c",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x972999c58bbce63a2e398d4ed3bde414b8349eb3": {
-    "address": "0x972999c58bbce63a2e398d4ed3bde414b8349eb3",
+  "0x972999c58BbcE63a2e398d4ED3Bde414b8349eB3": {
+    "address": "0x972999c58BbcE63a2e398d4ED3Bde414b8349eB3",
     "name": "Purpose",
     "symbol": "PRPS",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x972999c58bbce63a2e398d4ed3bde414b8349eb3",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x972999c58BbcE63a2e398d4ED3Bde414b8349eB3",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x61299774020da444af134c82fa83e3810b309991": {
-    "address": "0x61299774020da444af134c82fa83e3810b309991",
+  "0x61299774020dA444Af134c82fa83E3810b309991": {
+    "address": "0x61299774020dA444Af134c82fa83E3810b309991",
     "name": "Render Token",
     "symbol": "RNDR",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x61299774020da444af134c82fa83e3810b309991",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x61299774020dA444Af134c82fa83E3810b309991",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x0266f4f08d82372cf0fcbccc0ff74309089c74d1": {
-    "address": "0x0266f4f08d82372cf0fcbccc0ff74309089c74d1",
+  "0x0266F4F08D82372CF0FcbCCc0Ff74309089c74d1": {
+    "address": "0x0266F4F08D82372CF0FcbCCc0Ff74309089c74d1",
     "name": "Rocket Pool ETH (PoS)",
     "symbol": "rETH",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x0266f4f08d82372cf0fcbccc0ff74309089c74d1",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x0266F4F08D82372CF0FcbCCc0Ff74309089c74d1",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xf0059cc2b3e980065a906940fbce5f9db7ae40a7": {
-    "address": "0xf0059cc2b3e980065a906940fbce5f9db7ae40a7",
+  "0xf0059CC2b3E980065A906940fbce5f9Db7ae40A7": {
+    "address": "0xf0059CC2b3E980065A906940fbce5f9Db7ae40A7",
     "name": "Shardus (PoS)",
     "symbol": "ULT",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xf0059cc2b3e980065a906940fbce5f9db7ae40a7",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xf0059CC2b3E980065A906940fbce5f9Db7ae40A7",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xd93f7e271cb87c23aaa73edc008a79646d1f9912": {
-    "address": "0xd93f7e271cb87c23aaa73edc008a79646d1f9912",
+  "0xd93f7E271cB87c23AaA73edC008A79646d1F9912": {
+    "address": "0xd93f7E271cB87c23AaA73edC008A79646d1F9912",
     "name": "Wrapped SOL",
     "symbol": "SOL",
     "decimals": 9,
     "uniswapFee": 10000,
-    "baseAddress": "0xd93f7e271cb87c23aaa73edc008a79646d1f9912",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xd93f7E271cB87c23AaA73edC008A79646d1F9912",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xe111178a87a3bff0c8d18decba5798827539ae99": {
-    "address": "0xe111178a87a3bff0c8d18decba5798827539ae99",
+  "0x9CA6a77C8B38159fd2dA9Bd25bc3E259C33F5E39": {
+    "address": "0x9CA6a77C8B38159fd2dA9Bd25bc3E259C33F5E39",
+    "name": "The SporkDAO Token (PoS)",
+    "symbol": "SPORK",
+    "decimals": 18,
+    "uniswapFee": 10000,
+    "baseAddress": "0x9CA6a77C8B38159fd2dA9Bd25bc3E259C33F5E39",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0xE111178A87A3BFf0c8d18DECBa5798827539Ae99": {
+    "address": "0xE111178A87A3BFf0c8d18DECBa5798827539Ae99",
     "name": "STASIS EURS Token (PoS)",
     "symbol": "EURS",
     "decimals": 2,
     "uniswapFee": 10000,
-    "baseAddress": "0xe111178a87a3bff0c8d18decba5798827539ae99",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xE111178A87A3BFf0c8d18DECBa5798827539Ae99",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x714db550b574b3e927af3d93e26127d15721d4c2": {
-    "address": "0x714db550b574b3e927af3d93e26127d15721d4c2",
+  "0x714DB550b574b3E927af3D93E26127D15721D4C2": {
+    "address": "0x714DB550b574b3E927af3D93E26127D15721D4C2",
     "name": "GreenMetaverseToken",
     "symbol": "GMT",
     "decimals": 8,
     "uniswapFee": 10000,
-    "baseAddress": "0x714db550b574b3e927af3d93e26127d15721d4c2",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x714DB550b574b3E927af3D93E26127D15721D4C2",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xd1f9c58e33933a993a3891f8acfe05a68e1afc05": {
-    "address": "0xd1f9c58e33933a993a3891f8acfe05a68e1afc05",
+  "0xD1f9c58e33933a993A3891F8acFe05a68E1afC05": {
+    "address": "0xD1f9c58e33933a993A3891F8acFe05a68E1afC05",
     "name": "Sunflower Land",
     "symbol": "SFL",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xd1f9c58e33933a993a3891f8acfe05a68e1afc05",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xD1f9c58e33933a993A3891F8acFe05a68E1afC05",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a": {
-    "address": "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
+  "0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a": {
+    "address": "0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a",
     "name": "SushiToken (PoS)",
     "symbol": "SUSHI",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xf8f9efc0db77d8881500bb06ff5d6abc3070e695": {
-    "address": "0xf8f9efc0db77d8881500bb06ff5d6abc3070e695",
+  "0xf8F9efC0db77d8881500bb06FF5D6ABc3070E695": {
+    "address": "0xf8F9efC0db77d8881500bb06FF5D6ABc3070E695",
     "name": "Synapse",
     "symbol": "SYN",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xf8f9efc0db77d8881500bb06ff5d6abc3070e695",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xf8F9efC0db77d8881500bb06FF5D6ABc3070E695",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xc2132d05d31c914a87c6611c10748aeb04b58e8f": {
-    "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F": {
+    "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
     "name": "(PoS) Tether USD",
     "symbol": "USDT",
     "decimals": 6,
     "uniswapFee": 10000,
-    "baseAddress": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x6002410dda2fb88b4d0dc3c1d562f7761191ea80": {
-    "address": "0x6002410dda2fb88b4d0dc3c1d562f7761191ea80",
+  "0x6002410dDA2Fb88b4D0dc3c1D562F7761191eA80": {
+    "address": "0x6002410dDA2Fb88b4D0dc3c1D562F7761191eA80",
     "name": "The Employment Commons Work Token (PoS)",
     "symbol": "WORK",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x6002410dda2fb88b4d0dc3c1d562f7761191ea80",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x6002410dDA2Fb88b4D0dc3c1D562F7761191eA80",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xbbba073c31bf03b8acf7c28ef0738decf3695683": {
-    "address": "0xbbba073c31bf03b8acf7c28ef0738decf3695683",
+  "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683": {
+    "address": "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683",
     "name": "SAND",
     "symbol": "SAND",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xbbba073c31bf03b8acf7c28ef0738decf3695683",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x2f800db0fdb5223b3c3f354886d907a671414a7f": {
-    "address": "0x2f800db0fdb5223b3c3f354886d907a671414a7f",
+  "0x2F800Db0fdb5223b3C3f354886d907A671414A7F": {
+    "address": "0x2F800Db0fdb5223b3C3f354886d907A671414A7F",
     "name": "Toucan Protocol: Base Carbon Tonne",
     "symbol": "BCT",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x2f800db0fdb5223b3c3f354886d907a671414a7f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x2F800Db0fdb5223b3C3f354886d907A671414A7F",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x7fbc10850cae055b27039af31bd258430e714c62": {
-    "address": "0x7fbc10850cae055b27039af31bd258430e714c62",
+  "0x7FBc10850caE055B27039aF31bD258430e714c62": {
+    "address": "0x7FBc10850caE055B27039aF31bD258430e714c62",
     "name": "Unibright (PoS)",
     "symbol": "UBT",
     "decimals": 8,
     "uniswapFee": 10000,
-    "baseAddress": "0x7fbc10850cae055b27039af31bd258430e714c62",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x7FBc10850caE055B27039aF31bD258430e714c62",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x64060ab139feaae7f06ca4e63189d86adeb51691": {
-    "address": "0x64060ab139feaae7f06ca4e63189d86adeb51691",
+  "0x64060aB139Feaae7f06Ca4E63189D86aDEb51691": {
+    "address": "0x64060aB139Feaae7f06Ca4E63189D86aDEb51691",
     "name": "Unicorn Milk",
     "symbol": "UNIM",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x64060ab139feaae7f06ca4e63189d86adeb51691",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x64060aB139Feaae7f06Ca4E63189D86aDEb51691",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xb33eaad8d922b1083446dc23f610c2567fb5180f": {
-    "address": "0xb33eaad8d922b1083446dc23f610c2567fb5180f",
+  "0xb33EaAd8d922B1083446DC23f610c2567fB5180f": {
+    "address": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
     "name": "Uniswap (PoS)",
     "symbol": "UNI",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xb33eaad8d922b1083446dc23f610c2567fb5180f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359": {
-    "address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+  "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359": {
+    "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
     "name": "USD Coin",
     "symbol": "USDC",
     "decimals": 6,
     "uniswapFee": 10000,
-    "baseAddress": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xd0258a3fd00f38aa8090dfee343f10a9d4d30d3f": {
-    "address": "0xd0258a3fd00f38aa8090dfee343f10a9d4d30d3f",
+  "0xd0258a3fD00f38aa8090dfee343f10A9D4d30D3F": {
+    "address": "0xd0258a3fD00f38aa8090dfee343f10A9D4d30D3F",
     "name": "VOXEL Token",
     "symbol": "VOXEL",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0xd0258a3fd00f38aa8090dfee343f10a9d4d30d3f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xd0258a3fD00f38aa8090dfee343f10A9D4d30D3F",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x430ef9263e76dae63c84292c3409d61c598e9682": {
-    "address": "0x430ef9263e76dae63c84292c3409d61c598e9682",
+  "0x430EF9263E76DAE63c84292C3409D61c598E9682": {
+    "address": "0x430EF9263E76DAE63c84292C3409D61c598E9682",
     "name": "PYR Token",
     "symbol": "PYR",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x430ef9263e76dae63c84292c3409d61c598e9682",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x430EF9263E76DAE63c84292C3409D61c598E9682",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x11a88f949c0592238959142653bb6847c6523d81": {
-    "address": "0x11a88f949c0592238959142653bb6847c6523d81",
+  "0x11A88F949C0592238959142653bB6847c6523D81": {
+    "address": "0x11A88F949C0592238959142653bB6847c6523D81",
     "name": "WEN Token (FXERC20)",
     "symbol": "fxWEN",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x11a88f949c0592238959142653bb6847c6523d81",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x11A88F949C0592238959142653bB6847c6523D81",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270": {
-    "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+  "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270": {
+    "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
     "name": "Wrapped Matic",
     "symbol": "WMATIC",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b": {
-    "address": "0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b",
+  "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b": {
+    "address": "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b",
     "name": "Avalanche Token",
     "symbol": "AVAX",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6": {
-    "address": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
+  "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6": {
+    "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
     "name": "(PoS) Wrapped BTC",
     "symbol": "WBTC",
     "decimals": 8,
     "uniswapFee": 10000,
-    "baseAddress": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x2ab0e9e4ee70fff1fb9d67031e44f6410170d00e": {
-    "address": "0x2ab0e9e4ee70fff1fb9d67031e44f6410170d00e",
+  "0x2AB0e9e4eE70FFf1fB9D67031E44F6410170d00e": {
+    "address": "0x2AB0e9e4eE70FFf1fB9D67031E44F6410170d00e",
     "name": "XEN Crypto",
     "symbol": "mXEN",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x2ab0e9e4ee70fff1fb9d67031e44f6410170d00e",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x2AB0e9e4eE70FFf1fB9D67031E44F6410170d00e",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x086373fad3447f7f86252fb59d56107e9e0faafa": {
-    "address": "0x086373fad3447f7f86252fb59d56107e9e0faafa",
+  "0x086373fad3447F7F86252fb59d56107e9E0FaaFa": {
+    "address": "0x086373fad3447F7F86252fb59d56107e9E0FaaFa",
     "name": "Yup",
     "symbol": "YUP",
     "decimals": 18,
     "uniswapFee": 10000,
-    "baseAddress": "0x086373fad3447f7f86252fb59d56107e9e0faafa",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x086373fad3447F7F86252fb59d56107e9E0FaaFa",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xb87904db461005fc716a6bf9f2d451c33b10b80b": {
-    "address": "0xb87904db461005fc716a6bf9f2d451c33b10b80b",
+  "0x3B56a704C01D650147ADE2b8cEE594066b3F9421": {
+    "address": "0x3B56a704C01D650147ADE2b8cEE594066b3F9421",
+    "name": "Affyn",
+    "symbol": "FYN",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x3B56a704C01D650147ADE2b8cEE594066b3F9421",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0xB87904DB461005FC716a6BF9F2d451c33b10b80b": {
+    "address": "0xB87904DB461005FC716a6BF9F2d451c33b10b80b",
     "name": "Alongside Crypto Market Index (PoS)",
     "symbol": "AMKT",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xb87904db461005fc716a6bf9f2d451c33b10b80b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xB87904DB461005FC716a6BF9F2d451c33b10b80b",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x9a41e03fef7f16f552c6fba37ffa7590fb1ec0c4": {
-    "address": "0x9a41e03fef7f16f552c6fba37ffa7590fb1ec0c4",
+  "0x034b2090b579228482520c589dbD397c53Fc51cC": {
+    "address": "0x034b2090b579228482520c589dbD397c53Fc51cC",
+    "name": "Vision Token (PoS)",
+    "symbol": "VISION",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x034b2090b579228482520c589dbD397c53Fc51cC",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0x9a41E03fEF7f16f552C6FbA37fFA7590fb1Ec0c4": {
+    "address": "0x9a41E03fEF7f16f552C6FbA37fFA7590fb1Ec0c4",
     "name": "Arch Blockchains (PoS)",
     "symbol": "CHAIN",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x9a41e03fef7f16f552c6fba37ffa7590fb1ec0c4",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x9a41E03fEF7f16f552C6FbA37fFA7590fb1Ec0c4",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xbcd2c5c78000504efbc1ce6489dfcac71835406a": {
-    "address": "0xbcd2c5c78000504efbc1ce6489dfcac71835406a",
+  "0xBcD2C5C78000504EFBC1cE6489dfcaC71835406A": {
+    "address": "0xBcD2C5C78000504EFBC1cE6489dfcaC71835406A",
     "name": "Arch Ethereum Web3 (PoS)",
     "symbol": "WEB3",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xbcd2c5c78000504efbc1ce6489dfcac71835406a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xBcD2C5C78000504EFBC1cE6489dfcaC71835406A",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3": {
-    "address": "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
+  "0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3": {
+    "address": "0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3",
     "name": "Balancer (PoS)",
     "symbol": "BAL",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x3cef98bb43d732e2f285ee605a8158cde967d219": {
-    "address": "0x3cef98bb43d732e2f285ee605a8158cde967d219",
+  "0x3Cef98bb43d732E2F285eE605a8158cDE967D219": {
+    "address": "0x3Cef98bb43d732E2F285eE605a8158cDE967D219",
     "name": "Basic Attention Token (PoS)",
     "symbol": "BAT",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x3cef98bb43d732e2f285ee605a8158cde967d219",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x3Cef98bb43d732E2F285eE605a8158cDE967D219",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c": {
-    "address": "0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c",
+  "0xbA777aE3a3C91fCD83EF85bfe65410592Bdd0f7c": {
+    "address": "0xbA777aE3a3C91fCD83EF85bfe65410592Bdd0f7c",
     "name": "BitCone",
     "symbol": "CONE",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xbA777aE3a3C91fCD83EF85bfe65410592Bdd0f7c",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38": {
-    "address": "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38",
+  "0xc59132FBdF8dE8fbE510F568a5D831C991B4fC38": {
+    "address": "0xc59132FBdF8dE8fbE510F568a5D831C991B4fC38",
     "name": "Borderless Money",
     "symbol": "BOM",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xc59132fbdf8de8fbe510f568a5d831c991b4fc38",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xc59132FBdF8dE8fbE510F568a5D831C991B4fC38",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c": {
-    "address": "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c",
+  "0x8505b9d2254A7Ae468c0E9dd10Ccea3A837aef5c": {
+    "address": "0x8505b9d2254A7Ae468c0E9dd10Ccea3A837aef5c",
     "name": "(PoS) Compound",
     "symbol": "COMP",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x8505b9d2254a7ae468c0e9dd10ccea3a837aef5c",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x8505b9d2254A7Ae468c0E9dd10Ccea3A837aef5c",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4": {
-    "address": "0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4",
+  "0x172370d5Cd63279eFa6d502DAB29171933a610AF": {
+    "address": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+    "name": "CRV (PoS)",
+    "symbol": "CRV",
+    "decimals": 18,
+    "uniswapFee": 3000,
+    "baseAddress": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+    "isBaseTokenEth": false
+  },
+  "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4": {
+    "address": "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4",
     "name": "(PoS) Decentraland MANA",
     "symbol": "MANA",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x90f3edc7d5298918f7bb51694134b07356f7d0c7": {
-    "address": "0x90f3edc7d5298918f7bb51694134b07356f7d0c7",
+  "0x90F3edc7D5298918F7BB51694134b07356F7d0C7": {
+    "address": "0x90F3edc7D5298918F7BB51694134b07356F7d0C7",
     "name": "DEFI HUNTERS DAO Token",
     "symbol": "DDAO",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x90f3edc7d5298918f7bb51694134b07356f7d0c7",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x90F3edc7D5298918F7BB51694134b07356F7d0C7",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x8c92e38eca8210f4fcbf17f0951b198dd7668292": {
-    "address": "0x8c92e38eca8210f4fcbf17f0951b198dd7668292",
+  "0x8C92e38eCA8210f4fcBf17F0951b198Dd7668292": {
+    "address": "0x8C92e38eCA8210f4fcBf17F0951b198Dd7668292",
     "name": "dHedge DAO Token (PoS)",
     "symbol": "DHT",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x8c92e38eca8210f4fcbf17f0951b198dd7668292",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x8C92e38eCA8210f4fcBf17F0951b198Dd7668292",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x04f177fcacf6fb4d2f95d41d7d3fee8e565ca1d0": {
-    "address": "0x04f177fcacf6fb4d2f95d41d7d3fee8e565ca1d0",
+  "0x04F177FCacF6fB4d2F95d41d7D3fee8E565cA1d0": {
+    "address": "0x04F177FCacF6fB4d2F95d41d7D3fee8E565cA1d0",
     "name": "Dragon Master Token (PoS)",
     "symbol": "DMT",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x04f177fcacf6fb4d2f95d41d7d3fee8e565ca1d0",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x04F177FCacF6fB4d2F95d41d7D3fee8E565cA1d0",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x1adcef5c780d8895ac77e6ee9239b4b3ecb76da2": {
-    "address": "0x1adcef5c780d8895ac77e6ee9239b4b3ecb76da2",
+  "0x1aDCef5c780d8895AC77E6Ee9239B4b3eCb76DA2": {
+    "address": "0x1aDCef5c780d8895AC77E6Ee9239B4b3eCb76DA2",
     "name": "TOTEM",
     "symbol": "TOTEM",
     "decimals": 6,
     "uniswapFee": 3000,
-    "baseAddress": "0x1adcef5c780d8895ac77e6ee9239b4b3ecb76da2",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x1aDCef5c780d8895AC77E6Ee9239B4b3eCb76DA2",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x11cd37bb86f65419713f30673a480ea33c826872": {
-    "address": "0x11cd37bb86f65419713f30673a480ea33c826872",
+  "0x11CD37bb86F65419713f30673A480EA33c826872": {
+    "address": "0x11CD37bb86F65419713f30673A480EA33c826872",
     "name": "Wrapped Ether",
     "symbol": "WETH",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x11cd37bb86f65419713f30673a480ea33c826872",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x11CD37bb86F65419713f30673A480EA33c826872",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xd6a5ab46ead26f49b03bbb1f9eb1ad5c1767974a": {
-    "address": "0xd6a5ab46ead26f49b03bbb1f9eb1ad5c1767974a",
+  "0xd6A5aB46ead26f49b03bBB1F9EB1Ad5c1767974a": {
+    "address": "0xd6A5aB46ead26f49b03bBB1F9EB1Ad5c1767974a",
     "name": "EthermonToken",
     "symbol": "EMON",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xd6a5ab46ead26f49b03bbb1f9eb1ad5c1767974a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xd6A5aB46ead26f49b03bBB1F9EB1Ad5c1767974a",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x49b1be61a8ca3f9a9f178d6550e41e00d9162159": {
-    "address": "0x49b1be61a8ca3f9a9f178d6550e41e00d9162159",
+  "0x49B1bE61A8Ca3f9A9F178d6550e41E00D9162159": {
+    "address": "0x49B1bE61A8Ca3f9A9F178d6550e41E00D9162159",
     "name": "GGToken (PoS)",
     "symbol": "GGTK",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x49b1be61a8ca3f9a9f178d6550e41e00d9162159",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x49B1bE61A8Ca3f9A9F178d6550e41E00D9162159",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x50b728d8d964fd00c2d0aad81718b71311fef68a": {
-    "address": "0x50b728d8d964fd00c2d0aad81718b71311fef68a",
+  "0x50B728D8D964fd00C2d0AAD81718b71311feF68a": {
+    "address": "0x50B728D8D964fd00C2d0AAD81718b71311feF68a",
     "name": "Synthetix Network Token (PoS)",
     "symbol": "SNX",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x50b728d8d964fd00c2d0aad81718b71311fef68a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x50B728D8D964fd00C2d0AAD81718b71311feF68a",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x3ad707da309f3845cd602059901e39c4dcd66473": {
-    "address": "0x3ad707da309f3845cd602059901e39c4dcd66473",
+  "0x3Ad707dA309f3845cd602059901E39C4dcd66473": {
+    "address": "0x3Ad707dA309f3845cd602059901E39C4dcd66473",
     "name": "ETH 2x Flexible Leverage Index",
     "symbol": "ETH2x-FLI-P",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x3ad707da309f3845cd602059901e39c4dcd66473",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x3Ad707dA309f3845cd602059901E39C4dcd66473",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xc27158bb8e08899d38765752f91d7d778e16ab8e": {
-    "address": "0xc27158bb8e08899d38765752f91d7d778e16ab8e",
+  "0xc27158bB8E08899d38765752F91d7d778e16AB8e": {
+    "address": "0xc27158bB8E08899d38765752F91d7d778e16AB8e",
     "name": "Kapital DAO Token (FXERC20)",
     "symbol": "fxKAP",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xc27158bb8e08899d38765752f91d7d778e16ab8e",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xc27158bB8E08899d38765752F91d7d778e16AB8e",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xc3c7d422809852031b44ab29eec9f1eff2a58756": {
-    "address": "0xc3c7d422809852031b44ab29eec9f1eff2a58756",
+  "0xC3C7d422809852031b44ab29EEC9F1EfF2A58756": {
+    "address": "0xC3C7d422809852031b44ab29EEC9F1EfF2A58756",
     "name": "Lido DAO Token (PoS)",
     "symbol": "LDO",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xc3c7d422809852031b44ab29eec9f1eff2a58756",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xC3C7d422809852031b44ab29EEC9F1EfF2A58756",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x6f7c932e7684666c9fd1d44527765433e01ff61d": {
-    "address": "0x6f7c932e7684666c9fd1d44527765433e01ff61d",
-    "name": "MAKER (PoS)",
-    "symbol": "MKR",
+  "0x3A58a54C066FdC0f2D55FC9C89F0415C92eBf3C4": {
+    "address": "0x3A58a54C066FdC0f2D55FC9C89F0415C92eBf3C4",
+    "name": "Staked MATIC (PoS)",
+    "symbol": "stMATIC",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x6f7c932e7684666c9fd1d44527765433e01ff61d",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x3A58a54C066FdC0f2D55FC9C89F0415C92eBf3C4",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xfe712251173a2cd5f5be2b46bb528328ea3565e1": {
-    "address": "0xfe712251173a2cd5f5be2b46bb528328ea3565e1",
+  "0xfe712251173A2cd5F5bE2B46Bb528328EA3565E1": {
+    "address": "0xfe712251173A2cd5F5bE2B46Bb528328EA3565E1",
     "name": "Metaverse Index (PoS)",
     "symbol": "MVI",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xfe712251173a2cd5f5be2b46bb528328ea3565e1",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xfe712251173A2cd5F5bE2B46Bb528328EA3565E1",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xce899f26928a2b21c6a2fddd393ef37c61dba918": {
-    "address": "0xce899f26928a2b21c6a2fddd393ef37c61dba918",
+  "0xcE899f26928a2B21c6a2Fddd393EF37c61dbA918": {
+    "address": "0xcE899f26928a2B21c6a2Fddd393EF37c61dbA918",
     "name": "Museum of Crypto Art",
     "symbol": "MOCA",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xce899f26928a2b21c6a2fddd393ef37c61dba918",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xcE899f26928a2B21c6a2Fddd393EF37c61dbA918",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x5d48a5e5a3e737322ae27e25897f1c9e19ecc941": {
-    "address": "0x5d48a5e5a3e737322ae27e25897f1c9e19ecc941",
+  "0x5D48a5E5a3e737322Ae27e25897F1c9E19EcC941": {
+    "address": "0x5D48a5E5a3e737322Ae27e25897F1c9E19EcC941",
     "name": "OkLetsPlay",
     "symbol": "OKLP",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x5d48a5e5a3e737322ae27e25897f1c9e19ecc941",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x5D48a5E5a3e737322Ae27e25897F1c9E19EcC941",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xaa3717090cddc9b227e49d0d84a28ac0a996e6ff": {
-    "address": "0xaa3717090cddc9b227e49d0d84a28ac0a996e6ff",
+  "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff": {
+    "address": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
     "name": "Permission Token",
     "symbol": "ASK",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xaa3717090cddc9b227e49d0d84a28ac0a996e6ff",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x25788a1a171ec66da6502f9975a15b609ff54cf6": {
-    "address": "0x25788a1a171ec66da6502f9975a15b609ff54cf6",
+  "0x25788a1a171ec66Da6502f9975a15B609fF54CF6": {
+    "address": "0x25788a1a171ec66Da6502f9975a15B609fF54CF6",
     "name": "PoolTogether (PoS)",
     "symbol": "POOL",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x25788a1a171ec66da6502f9975a15b609ff54cf6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x25788a1a171ec66Da6502f9975a15B609fF54CF6",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x70c006878a5a50ed185ac4c87d837633923de296": {
-    "address": "0x70c006878a5a50ed185ac4c87d837633923de296",
+  "0x70c006878a5A50Ed185ac4C87d837633923De296": {
+    "address": "0x70c006878a5A50Ed185ac4C87d837633923De296",
     "name": "REVV",
     "symbol": "REVV",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x70c006878a5a50ed185ac4c87d837633923de296",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x70c006878a5A50Ed185ac4C87d837633923De296",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x2f6f07cdcf3588944bf4c42ac74ff24bf56e7590": {
-    "address": "0x2f6f07cdcf3588944bf4c42ac74ff24bf56e7590",
+  "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590": {
+    "address": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
     "name": "StargateToken",
     "symbol": "STG",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x2f6f07cdcf3588944bf4c42ac74ff24bf56e7590",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xe631dabef60c37a37d70d3b4f812871df663226f": {
-    "address": "0xe631dabef60c37a37d70d3b4f812871df663226f",
+  "0xE631DABeF60c37a37d70d3B4f812871df663226f": {
+    "address": "0xE631DABeF60c37a37d70d3B4f812871df663226f",
     "name": "Swarm Markets",
     "symbol": "SMT",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xe631dabef60c37a37d70d3b4f812871df663226f",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xE631DABeF60c37a37d70d3B4f812871df663226f",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x49e6a20f1bbdfeec2a8222e052000bbb14ee6007": {
-    "address": "0x49e6a20f1bbdfeec2a8222e052000bbb14ee6007",
+  "0x49e6A20f1BBdfEeC2a8222E052000BbB14EE6007": {
+    "address": "0x49e6A20f1BBdfEeC2a8222E052000BbB14EE6007",
     "name": "Tangible",
     "symbol": "TNGBL",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x49e6a20f1bbdfeec2a8222e052000bbb14ee6007",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x49e6A20f1BBdfEeC2a8222E052000BbB14EE6007",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x236aa50979d5f3de3bd1eeb40e81137f22ab794b": {
-    "address": "0x236aa50979d5f3de3bd1eeb40e81137f22ab794b",
+  "0x236aa50979D5f3De3Bd1Eeb40E81137F22ab794b": {
+    "address": "0x236aa50979D5f3De3Bd1Eeb40E81137F22ab794b",
     "name": "Polygon tBTC v2",
     "symbol": "tBTC",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x236aa50979d5f3de3bd1eeb40e81137f22ab794b",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x236aa50979D5f3De3Bd1Eeb40E81137F22ab794b",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x5fe2b58c013d7601147dcdd68c143a77499f5531": {
-    "address": "0x5fe2b58c013d7601147dcdd68c143a77499f5531",
+  "0x5fe2B58c013d7601147DcdD68C143A77499f5531": {
+    "address": "0x5fe2B58c013d7601147DcdD68C143A77499f5531",
     "name": "Graph Token (PoS)",
     "symbol": "GRT",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x5fe2b58c013d7601147dcdd68c143a77499f5531",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x5fe2B58c013d7601147DcdD68C143A77499f5531",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xc708d6f2153933daa50b2d0758955be0a93a8fec": {
-    "address": "0xc708d6f2153933daa50b2d0758955be0a93a8fec",
+  "0xc708D6F2153933DAA50B2D0758955Be0A93A8FEc": {
+    "address": "0xc708D6F2153933DAA50B2D0758955Be0A93A8FEc",
     "name": "Verse (FXERC20)",
     "symbol": "fxVERSE",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xc708d6f2153933daa50b2d0758955be0a93a8fec",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xc708D6F2153933DAA50B2D0758955Be0A93A8FEc",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034": {
-    "address": "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034",
+  "0xe20B9e246db5a0d21BF9209E4858Bc9A3ff7A034": {
+    "address": "0xe20B9e246db5a0d21BF9209E4858Bc9A3ff7A034",
     "name": "Wrapped Banano",
     "symbol": "wBAN",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xe20B9e246db5a0d21BF9209E4858Bc9A3ff7A034",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xdc3326e71d45186f113a2f448984ca0e8d201995": {
-    "address": "0xdc3326e71d45186f113a2f448984ca0e8d201995",
+  "0xDC3326e71D45186F113a2F448984CA0e8D201995": {
+    "address": "0xDC3326e71D45186F113a2F448984CA0e8D201995",
     "name": "XSGD",
     "symbol": "XSGD",
     "decimals": 6,
     "uniswapFee": 3000,
-    "baseAddress": "0xdc3326e71d45186f113a2f448984ca0e8d201995",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xDC3326e71D45186F113a2F448984CA0e8D201995",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x55555555a687343c6ce28c8e1f6641dc71659fad": {
-    "address": "0x55555555a687343c6ce28c8e1f6641dc71659fad",
+  "0x55555555A687343C6Ce28C8E1F6641dc71659fAd": {
+    "address": "0x55555555A687343C6Ce28C8E1F6641dc71659fAd",
     "name": "XY Token",
     "symbol": "XY",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0x55555555a687343c6ce28c8e1f6641dc71659fad",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x55555555A687343C6Ce28C8E1F6641dc71659fAd",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xda537104d6a5edd53c6fbba9a898708e465260b6": {
-    "address": "0xda537104d6a5edd53c6fbba9a898708e465260b6",
+  "0xDA537104D6A5edd53c6fBba9A898708E465260b6": {
+    "address": "0xDA537104D6A5edd53c6fBba9A898708E465260b6",
     "name": "(PoS) yearn.finance",
     "symbol": "YFI",
     "decimals": 18,
     "uniswapFee": 3000,
-    "baseAddress": "0xda537104d6a5edd53c6fbba9a898708e465260b6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xDA537104D6A5edd53c6fBba9A898708E465260b6",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390": {
-    "address": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390",
+  "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390": {
+    "address": "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390",
     "name": "Aave Matic Market WETH",
     "symbol": "amWETH",
     "decimals": 18,
     "uniswapFee": 500,
-    "baseAddress": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x625e7708f30ca75bfd92586e17077590c60eb4cd": {
-    "address": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
+  "0x625E7708f30cA75bfd92586e17077590C60eb4cD": {
+    "address": "0x625E7708f30cA75bfd92586e17077590C60eb4cD",
     "name": "Aave Polygon USDC",
     "symbol": "aPolUSDC",
     "decimals": 6,
     "uniswapFee": 500,
-    "baseAddress": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x625E7708f30cA75bfd92586e17077590C60eb4cD",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x027af1e12a5869ed329be4c05617ad528e997d5a": {
-    "address": "0x027af1e12a5869ed329be4c05617ad528e997d5a",
+  "0x027aF1E12a5869eD329bE4c05617AD528E997D5A": {
+    "address": "0x027aF1E12a5869eD329bE4c05617AD528E997D5A",
     "name": "Arch Ethereum Diversified Yield (FXERC20)",
     "symbol": "fxAEDY",
     "decimals": 18,
     "uniswapFee": 500,
-    "baseAddress": "0x027af1e12a5869ed329be4c05617ad528e997d5a",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x027aF1E12a5869eD329bE4c05617AD528E997D5A",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xb25e20de2f2ebb4cffd4d16a55c7b395e8a94762": {
-    "address": "0xb25e20de2f2ebb4cffd4d16a55c7b395e8a94762",
+  "0xB25e20De2F2eBb4CfFD4D16a55C7B395e8a94762": {
+    "address": "0xB25e20De2F2eBb4CfFD4D16a55C7B395e8a94762",
     "name": "Request",
     "symbol": "REQ",
     "decimals": 18,
     "uniswapFee": 500,
-    "baseAddress": "0xb25e20de2f2ebb4cffd4d16a55c7b395e8a94762",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xB25e20De2F2eBb4CfFD4D16a55C7B395e8a94762",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd": {
-    "address": "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
+  "0x03b54A6e9a984069379fae1a4fC4dBAE93B3bCCD": {
+    "address": "0x03b54A6e9a984069379fae1a4fC4dBAE93B3bCCD",
     "name": "Wrapped liquid staked Ether 2.0 (PoS)",
     "symbol": "wstETH",
     "decimals": 18,
     "uniswapFee": 500,
-    "baseAddress": "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x03b54A6e9a984069379fae1a4fC4dBAE93B3bCCD",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0xef6ab48ef8dfe984fab0d5c4cd6aff2e54dfda14": {
-    "address": "0xef6ab48ef8dfe984fab0d5c4cd6aff2e54dfda14",
+  "0xEF6Ab48ef8dFe984FAB0d5c4cD6AFF2E54dfdA14": {
+    "address": "0xEF6Ab48ef8dFe984FAB0d5c4cD6AFF2E54dfdA14",
     "name": "CRISP Scored Mangroves",
     "symbol": "CRISP-M",
     "decimals": 18,
     "uniswapFee": 100,
-    "baseAddress": "0xef6ab48ef8dfe984fab0d5c4cd6aff2e54dfda14",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0xEF6Ab48ef8dFe984FAB0d5c4cD6AFF2E54dfdA14",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x381caf412b45dac0f62fbeec89de306d3eabe384": {
-    "address": "0x381caf412b45dac0f62fbeec89de306d3eabe384",
+  "0x381caf412B45dAc0f62FBEeC89DE306D3eABE384": {
+    "address": "0x381caf412B45dAc0f62FBEeC89DE306D3eABE384",
     "name": "DAO Invest (PoS)",
     "symbol": "VEST",
     "decimals": 18,
     "uniswapFee": 100,
-    "baseAddress": "0x381caf412b45dac0f62fbeec89de306d3eabe384",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x381caf412B45dAc0f62FBEeC89DE306D3eABE384",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   },
-  "0x111111517e4929d3dcbdfa7cce55d30d4b6bc4d6": {
-    "address": "0x111111517e4929d3dcbdfa7cce55d30d4b6bc4d6",
+  "0x111111517e4929D3dcbdfa7CCe55d30d4B6BC4d6": {
+    "address": "0x111111517e4929D3dcbdfa7CCe55d30d4B6BC4d6",
     "name": "ICHI",
     "symbol": "ICHI",
     "decimals": 18,
     "uniswapFee": 100,
-    "baseAddress": "0x111111517e4929d3dcbdfa7cce55d30d4b6bc4d6",
-    "quoteAddress": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    "baseAddress": "0x111111517e4929D3dcbdfa7CCe55d30d4B6BC4d6",
+    "quoteAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
     "isBaseTokenEth": false
   }
 }

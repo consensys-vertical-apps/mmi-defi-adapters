@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -150,9 +151,9 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
             decimals: wrappedTokenForChain.decimals,
           })
 
-          metadata[address] = {
+          metadata[getAddress(address)] = {
             ...nativeToken.wrappedToken,
-            address,
+            address: getAddress(address),
             uniswapFee: fee,
             baseAddress: address,
             quoteAddress: wethAddress,
@@ -180,8 +181,13 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
         return
       }
 
-      const address =
-        token.platforms[this.fromIdToCoingeckoId[chainId] as string]
+      let address
+      try {
+        address = getAddress(token.platforms[this.fromIdToCoingeckoId[chainId]])
+      } catch (error) {
+        // return if coingecko has unsupported address
+        return
+      }
 
       if (!address) {
         return

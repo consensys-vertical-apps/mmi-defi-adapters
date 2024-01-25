@@ -13,7 +13,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56",
+          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "name": "USD Coin-LP",
           "symbol": "S*USDC",
           "decimals": 6,
@@ -21,7 +21,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
@@ -33,7 +33,7 @@
           ]
         },
         {
-          "address": "0x38ea452219524bb87e18de1c24d3bb59510bd783",
+          "address": "0x38EA452219524Bb87e18dE1C24D3bB59510BD783",
           "name": "Tether USD-LP",
           "symbol": "S*USDT",
           "decimals": 6,
@@ -41,7 +41,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
@@ -53,7 +53,7 @@
           ]
         },
         {
-          "address": "0x692953e758c3669290cb1677180c64183cee374e",
+          "address": "0x692953e758c3669290cb1677180c64183cEe374e",
           "name": "Decentralized USD-LP",
           "symbol": "S*USDD",
           "decimals": 18,
@@ -61,7 +61,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x0c10bf8fcb7bf5412187a595ab97a3609160b5c6",
+              "address": "0x0C10bF8FcB7Bf5412187A595ab97a3609160b5c6",
               "name": "Decentralized USD",
               "symbol": "USDD",
               "decimals": 18,
@@ -73,7 +73,7 @@
           ]
         },
         {
-          "address": "0x101816545f6bd2b1076434b54383a1e633390a2e",
+          "address": "0x101816545F6bd2b1076434B54383a1E633390A2E",
           "name": "Stargate Ether Vault-LP",
           "symbol": "S*SGETH",
           "decimals": 18,
@@ -81,7 +81,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x72e2f4830b9e45d52f80ac08cb2bec0fef72ed9c",
+              "address": "0x72E2F4830b9E45d52F80aC08CB2bEC0FeF72eD9c",
               "name": "Stargate Ether Vault",
               "symbol": "SGETH",
               "decimals": 18,
@@ -93,7 +93,7 @@
           ]
         },
         {
-          "address": "0x0faf1d2d3ced330824de3b8200fc8dc6e397850d",
+          "address": "0x0Faf1d2d3CED330824de3B8200fc8dc6E397850d",
           "name": "Dai Stablecoin-LP",
           "symbol": "S*DAI",
           "decimals": 6,
@@ -101,7 +101,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
@@ -113,7 +113,7 @@
           ]
         },
         {
-          "address": "0xfa0f307783ac21c39e939acff795e27b650f6e68",
+          "address": "0xfA0F307783AC21C39E939ACFF795e27b650F6e68",
           "name": "Frax-LP",
           "symbol": "S*FRAX",
           "decimals": 6,
@@ -121,7 +121,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+              "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
               "name": "Frax",
               "symbol": "FRAX",
               "decimals": 18,
@@ -133,7 +133,7 @@
           ]
         },
         {
-          "address": "0x590d4f8a68583639f215f675f3a259ed84790580",
+          "address": "0x590d4f8A68583639f215f675F3a259Ed84790580",
           "name": "Synth sUSD-LP",
           "symbol": "S*sUSD",
           "decimals": 6,
@@ -141,9 +141,9 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+              "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
               "name": "Synth sUSD",
-              "symbol": "SUSD",
+              "symbol": "sUSD",
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000198000000000000n",
@@ -153,7 +153,7 @@
           ]
         },
         {
-          "address": "0xe8f55368c82d38bbbbdb5533e7f56afc2e978cc2",
+          "address": "0xE8F55368C82D38bbbbDb5533e7F56AfC2E978CC2",
           "name": "LUSD Stablecoin-LP",
           "symbol": "S*LUSD",
           "decimals": 6,
@@ -161,8 +161,8 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
-              "name": "Liquity USD",
+              "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
+              "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "type": "underlying",
@@ -173,7 +173,7 @@
           ]
         },
         {
-          "address": "0x9cef9a0b1be0d289ac9f4a98ff317c33eaa84eb8",
+          "address": "0x9cef9a0b1bE0D289ac9f4a98ff317c33EAA84eb8",
           "name": "Mai Stablecoin-LP",
           "symbol": "S*MAI",
           "decimals": 6,
@@ -181,7 +181,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x8d6cebd76f18e1558d4db88138e2defb3909fad6",
+              "address": "0x8D6CeBD76f18E1558D4DB88138e2DeFB3909fAD6",
               "name": "Mai Stablecoin",
               "symbol": "MAI",
               "decimals": 18,
@@ -193,7 +193,7 @@
           ]
         },
         {
-          "address": "0xd8772edbf88bba2667ed011542343b0eddacda47",
+          "address": "0xd8772edBF88bBa2667ed011542343b0eDDaCDa47",
           "name": "Metis Token-LP",
           "symbol": "S*Metis",
           "decimals": 18,
@@ -201,9 +201,9 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x9e32b13ce7f2e80a01932b42553652e053d6ed8e",
-              "name": "Metis",
-              "symbol": "METIS",
+              "address": "0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
+              "name": "Metis Token",
+              "symbol": "Metis",
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000458018722986854n",
@@ -213,7 +213,7 @@
           ]
         },
         {
-          "address": "0x430ebff5e3e80a6c58e7e6ada1d90f5c28aa116d",
+          "address": "0x430Ebff5E3E80A6C58E7e6ADA1d90F5c28AA116d",
           "name": "Tether USD-LP",
           "symbol": "S*USDT",
           "decimals": 6,
@@ -221,7 +221,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
@@ -233,7 +233,7 @@
           ]
         },
         {
-          "address": "0x1ce66c52c36757daf6551edc04800a0ec9983a09",
+          "address": "0x1CE66c52C36757Daf6551eDc04800A0Ec9983A09",
           "name": "Wootrade Network-LP",
           "symbol": "S*WOO",
           "decimals": 18,
@@ -241,7 +241,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
+              "address": "0x4691937a7508860F876c9c0a2a617E7d9E945D4B",
               "name": "Wootrade Network",
               "symbol": "WOO",
               "decimals": 18,

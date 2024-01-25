@@ -13,7 +13,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
           "name": "Aave interest bearing WBTC",
           "symbol": "aWBTC",
           "decimals": 8,
@@ -28,7 +28,7 @@
           }
         },
         {
-          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
           "name": "Aave interest bearing WETH",
           "symbol": "aWETH",
           "decimals": 18,
@@ -72,7 +72,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x531842cebbdd378f8ee36d171d6cc9c4fcf475ec",
+          "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
           "name": "Aave variable debt bearing USDT",
           "symbol": "variableDebtUSDT",
           "decimals": 6,
@@ -87,7 +87,7 @@
           }
         },
         {
-          "address": "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
+          "address": "0x9c39809Dec7F95F5e0713634a4D0701329B3b4d2",
           "name": "Aave variable debt bearing WBTC",
           "symbol": "variableDebtWBTC",
           "decimals": 8,
@@ -102,7 +102,7 @@
           }
         },
         {
-          "address": "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d",
+          "address": "0x6C3c78838c761c6Ac7bE9F59fe808ea2A6E4379d",
           "name": "Aave variable debt bearing DAI",
           "symbol": "variableDebtDAI",
           "decimals": 18,
@@ -117,7 +117,7 @@
           }
         },
         {
-          "address": "0x619beb58998ed2278e08620f97007e1116d5d25b",
+          "address": "0x619beb58998eD2278e08620f97007e1116D5D25b",
           "name": "Aave variable debt bearing USDC",
           "symbol": "variableDebtUSDC",
           "decimals": 6,

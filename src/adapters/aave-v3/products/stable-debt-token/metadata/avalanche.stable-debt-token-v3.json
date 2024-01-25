@@ -1,139 +1,139 @@
 {
-  "0xd94112b5b62d53c9402e7a60289c6810def1dc9b": {
+  "0xd94112B5B62d53C9402e7A60289c6810dEF1dC9B": {
     "protocolToken": {
-      "address": "0xd94112b5b62d53c9402e7a60289c6810def1dc9b",
+      "address": "0xd94112B5B62d53C9402e7A60289c6810dEF1dC9B",
       "name": "Aave Avalanche Stable Debt DAI",
       "symbol": "stableDebtAvaDAI",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd586e7f844cea2f87f50152665bcbc2c279d8d70",
+      "address": "0xd586E7F844cEa2F87f50152665BCbc2C279D8d70",
       "name": "Dai Stablecoin",
       "symbol": "DAI.e",
       "decimals": 18
     }
   },
-  "0x89d976629b7055ff1ca02b927ba3e020f22a44e4": {
+  "0x89D976629b7055ff1ca02b927BA3e020F22A44e4": {
     "protocolToken": {
-      "address": "0x89d976629b7055ff1ca02b927ba3e020f22a44e4",
+      "address": "0x89D976629b7055ff1ca02b927BA3e020F22A44e4",
       "name": "Aave Avalanche Stable Debt LINK",
       "symbol": "stableDebtAvaLINK",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x5947bb275c521040051d82396192181b413227a3",
+      "address": "0x5947BB275c521040051D82396192181b413227A3",
       "name": "Chainlink Token",
       "symbol": "LINK.e",
       "decimals": 18
     }
   },
-  "0x307ffe186f84a3bc2613d1ea417a5737d69a7007": {
+  "0x307ffe186F84a3bc2613D1eA417A5737D69A7007": {
     "protocolToken": {
-      "address": "0x307ffe186f84a3bc2613d1ea417a5737d69a7007",
+      "address": "0x307ffe186F84a3bc2613D1eA417A5737D69A7007",
       "name": "Aave Avalanche Stable Debt USDC",
       "symbol": "stableDebtAvaUSDC",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
+      "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
       "name": "USD Coin",
       "symbol": "USDC",
       "decimals": 6
     }
   },
-  "0x633b207dd676331c413d4c013a6294b0fe47cd0e": {
+  "0xD8Ad37849950903571df17049516a5CD4cbE55F6": {
     "protocolToken": {
-      "address": "0x633b207dd676331c413d4c013a6294b0fe47cd0e",
-      "name": "Aave Avalanche Stable Debt WBTC",
-      "symbol": "stableDebtAvaWBTC",
-      "decimals": 8
-    },
-    "underlyingToken": {
-      "address": "0x50b7545627a5162f82a992c33b87adc75187b218",
-      "name": "Wrapped BTC",
-      "symbol": "WBTC.e",
-      "decimals": 8
-    }
-  },
-  "0xd8ad37849950903571df17049516a5cd4cbe55f6": {
-    "protocolToken": {
-      "address": "0xd8ad37849950903571df17049516a5cd4cbe55f6",
+      "address": "0xD8Ad37849950903571df17049516a5CD4cbE55F6",
       "name": "Aave Avalanche Stable Debt WETH",
       "symbol": "stableDebtAvaWETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab",
+      "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
       "name": "Wrapped Ether",
       "symbol": "WETH.e",
       "decimals": 18
     }
   },
-  "0x70effc565db6eef7b927610155602d31b670e802": {
+  "0x70eFfc565DB6EEf7B927610155602d31b670e802": {
     "protocolToken": {
-      "address": "0x70effc565db6eef7b927610155602d31b670e802",
+      "address": "0x70eFfc565DB6EEf7B927610155602d31b670e802",
       "name": "Aave Avalanche Stable Debt USDT",
       "symbol": "stableDebtAvaUSDT",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7",
+      "address": "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
       "name": "TetherToken",
       "symbol": "USDt",
       "decimals": 6
     }
   },
-  "0xfaef6a702d15428e588d4c0614aefb4348d83d48": {
+  "0xfAeF6A702D15428E588d4C0614AEFb4348D83D48": {
     "protocolToken": {
-      "address": "0xfaef6a702d15428e588d4c0614aefb4348d83d48",
+      "address": "0xfAeF6A702D15428E588d4C0614AEFb4348D83D48",
       "name": "Aave Avalanche Stable Debt AAVE",
       "symbol": "stableDebtAvaAAVE",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x63a72806098bd3d9520cc43356dd78afe5d386d9",
+      "address": "0x63a72806098Bd3D9520cC43356dD78afe5D386D9",
       "name": "Aave Token",
       "symbol": "AAVE.e",
       "decimals": 18
     }
   },
-  "0x08cb71192985e936c7cd166a8b268035e400c3c3": {
+  "0xF15F26710c827DDe8ACBA678682F3Ce24f2Fb56E": {
     "protocolToken": {
-      "address": "0x08cb71192985e936c7cd166a8b268035e400c3c3",
+      "address": "0xF15F26710c827DDe8ACBA678682F3Ce24f2Fb56E",
+      "name": "Aave Avalanche Stable Debt WAVAX",
+      "symbol": "stableDebtAvaWAVAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x08Cb71192985E936C7Cd166A8b268035e400c3c3": {
+    "protocolToken": {
+      "address": "0x08Cb71192985E936C7Cd166A8b268035e400c3c3",
       "name": "Aave Avalanche Stable Debt SAVAX",
       "symbol": "stableDebtAvaSAVAX",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x2b2c81e08f1af8835a78bb2a90ae924ace0ea4be",
+      "address": "0x2b2C81e08f1Af8835a78Bb2A90AE924ACE0eA4bE",
       "name": "Staked AVAX",
       "symbol": "sAVAX",
       "decimals": 18
     }
   },
-  "0x78246294a4c6fbf614ed73ccc9f8b875ca8ee841": {
+  "0x78246294a4c6fBf614Ed73CcC9F8b875ca8eE841": {
     "protocolToken": {
-      "address": "0x78246294a4c6fbf614ed73ccc9f8b875ca8ee841",
+      "address": "0x78246294a4c6fBf614Ed73CcC9F8b875ca8eE841",
       "name": "Aave Avalanche Stable Debt FRAX",
       "symbol": "stableDebtAvaFRAX",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd24c2ad096400b6fbcd2ad8b24e7acbc21a1da64",
+      "address": "0xD24C2Ad096400B6FBcd2ad8B24E7acBc21A1da64",
       "name": "Frax",
       "symbol": "FRAX",
       "decimals": 18
     }
   },
-  "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd": {
+  "0xa5e408678469d23efDB7694b1B0A85BB0669e8bd": {
     "protocolToken": {
-      "address": "0xa5e408678469d23efdb7694b1b0a85bb0669e8bd",
+      "address": "0xa5e408678469d23efDB7694b1B0A85BB0669e8bd",
       "name": "Aave Avalanche Stable Debt BTC.b",
       "symbol": "stableDebtAvaBTC.b",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0x152b9d0fdc40c096757f570a51e494bd4b943e50",
+      "address": "0x152b9d0FdC40C096757F570A51E494bd4b943E50",
       "name": "Bitcoin",
       "symbol": "BTC.b",
       "decimals": 8

@@ -13,14 +13,14 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x90d8053f7e29faaf5189bdce796a516e29f1f5d3",
+          "address": "0x90D8053f7E29FaAF5189BdcE796a516E29F1F5d3",
           "name": "Chimp USDC-DAI-USDT Stable Pool",
           "symbol": "USDC-DAI-USDT",
           "decimals": 18,
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "name": "USDC",
               "symbol": "USDC",
               "decimals": 6,
@@ -30,7 +30,7 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
-              "address": "0x4af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
+              "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
@@ -40,7 +40,7 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
             },
             {
-              "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
@@ -54,14 +54,14 @@
           "totalSupply": 3813.413987853259
         },
         {
-          "address": "0xd2e846d6a2c1696b77678f1936df9b7fd3f25f8d",
+          "address": "0xD2E846D6A2C1696b77678f1936DF9B7FD3F25F8D",
           "name": "50USDC-50USDT",
           "symbol": "50USDC-50USDT",
           "decimals": 18,
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "name": "USDC",
               "symbol": "USDC",
               "decimals": 6,
@@ -71,7 +71,7 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
-              "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
@@ -85,14 +85,14 @@
           "totalSupply": 1e-12
         },
         {
-          "address": "0xe38df7880ef9408e9933fd0e96abcc3cebf76006",
+          "address": "0xe38DF7880EF9408e9933Fd0e96abcC3CebF76006",
           "name": "50USDC-50WETH",
           "symbol": "50USDC-50WETH",
           "decimals": 18,
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
               "name": "USDC",
               "symbol": "USDC",
               "decimals": 6,
@@ -102,7 +102,7 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
-              "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
@@ -116,14 +116,14 @@
           "totalSupply": 300.24969441548944
         },
         {
-          "address": "0xfee637c94e85b23472745f6b5ede2e4c0ad12a94",
+          "address": "0xFEe637c94e85b23472745F6B5EdE2e4c0AD12a94",
           "name": "50USDT-50WETH",
           "symbol": "50USDT-50WETH",
           "decimals": 18,
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
@@ -133,7 +133,7 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             },
             {
-              "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
