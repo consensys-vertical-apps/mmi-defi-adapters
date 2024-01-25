@@ -1,6 +1,9 @@
 import { JsonRpcApiProviderOptions, TransactionRequest } from 'ethers'
 import { Chain } from '../constants/chains'
-import { CustomJsonRpcProvider } from './CustomJsonRpcProvider'
+import {
+  CustomJsonRpcProvider,
+  CustomJsonRpcProviderOptions,
+} from './CustomJsonRpcProvider'
 import { MulticallQueue } from './MulticallQueue'
 
 export interface CustomTransactionRequest extends TransactionRequest {
@@ -25,7 +28,7 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     url: string
     chainId: Chain
     multicallQueue: MulticallQueue
-    customOptions: { rpcCallTimeoutInMs: number; rpcCallRetries: number }
+    customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
   }) {
     super({ url, chainId, customOptions, jsonRpcProviderOptions })

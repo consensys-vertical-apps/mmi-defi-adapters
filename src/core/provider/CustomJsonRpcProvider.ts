@@ -1,33 +1,54 @@
 import {
+  Filter,
+  FilterByBlockHash,
   JsonRpcApiProviderOptions,
   JsonRpcProvider,
+  Log,
   TransactionRequest,
 } from 'ethers'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS'
 import { Chain } from '../constants/chains'
 import { retryHandlerFactory } from './retryHandlerFactory'
 
+export type CustomJsonRpcProviderOptions = {
+  rpcCallTimeoutInMs: number
+  rpcCallRetries: number
+  rpcGetLogsTimeoutInMs: number
+  rpcGetLogsRetries: number
+}
+
 export class CustomJsonRpcProvider extends JsonRpcProvider {
   chainId: Chain
 
-  retryHandler: <T>(call: () => Promise<T>, retryCount?: number) => Promise<T>
+  callRetryHandler: ReturnType<typeof retryHandlerFactory>
+
+  logsRetryHandler: ReturnType<typeof retryHandlerFactory>
 
   constructor({
     url,
     chainId,
-    customOptions: { rpcCallTimeoutInMs, rpcCallRetries },
+    customOptions: {
+      rpcCallTimeoutInMs,
+      rpcCallRetries,
+      rpcGetLogsTimeoutInMs,
+      rpcGetLogsRetries,
+    },
     jsonRpcProviderOptions,
   }: {
     url: string
     chainId: Chain
-    customOptions: { rpcCallTimeoutInMs: number; rpcCallRetries: number }
+    customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
   }) {
     super(url, chainId, jsonRpcProviderOptions)
     this.chainId = chainId
-    this.retryHandler = retryHandlerFactory({
-      rpcCallTimeoutInMs,
-      rpcCallRetries,
+    this.callRetryHandler = retryHandlerFactory({
+      timeoutInMs: rpcCallTimeoutInMs,
+      maxRetries: rpcCallRetries,
+    })
+    this.logsRetryHandler = retryHandlerFactory({
+      timeoutInMs: rpcGetLogsTimeoutInMs,
+      maxRetries: rpcGetLogsRetries,
     })
   }
 
@@ -45,6 +66,10 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   }
 
   async call(transaction: TransactionRequest): Promise<string> {
-    return this.retryHandler(() => super.call(transaction))
+    return this.callRetryHandler(() => super.call(transaction))
+  }
+
+  async getLogs(filter: Filter | FilterByBlockHash): Promise<Array<Log>> {
+    return this.callRetryHandler(() => super.getLogs(filter))
   }
 }

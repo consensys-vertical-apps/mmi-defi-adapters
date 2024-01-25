@@ -1,24 +1,24 @@
 const TimeoutErrorMessage = 'Operation timed out'
 
 export function retryHandlerFactory({
-  rpcCallTimeoutInMs,
-  rpcCallRetries,
+  timeoutInMs,
+  maxRetries,
 }: {
-  rpcCallTimeoutInMs: number
-  rpcCallRetries: number
+  timeoutInMs: number
+  maxRetries: number
 }) {
   return async function retryHandler<T>(
-    call: () => Promise<T>,
+    action: () => Promise<T>,
     retryCount: number = 0,
   ): Promise<T> {
     try {
       return await new Promise<T>((resolve, reject) => {
         const timeout = setTimeout(
           () => reject(new Error(TimeoutErrorMessage)),
-          rpcCallTimeoutInMs,
+          timeoutInMs,
         )
 
-        call()
+        action()
           .then(resolve)
           .catch(reject)
           .finally(() => clearTimeout(timeout))
@@ -26,12 +26,12 @@ export function retryHandlerFactory({
     } catch (error) {
       if (
         (error instanceof Error && error.message !== TimeoutErrorMessage) ||
-        retryCount >= rpcCallRetries
+        retryCount >= maxRetries
       ) {
         throw error
       }
 
-      return retryHandler(call, retryCount + 1)
+      return retryHandler(action, retryCount + 1)
     }
   }
 }

@@ -4,7 +4,10 @@ import { Multicall__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
 import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
 import { logger } from '../utils/logger'
-import { CustomJsonRpcProvider } from './CustomJsonRpcProvider'
+import {
+  CustomJsonRpcProvider,
+  CustomJsonRpcProviderOptions,
+} from './CustomJsonRpcProvider'
 import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
 import { MulticallQueue } from './MulticallQueue'
 
@@ -24,7 +27,7 @@ export class ChainProvider {
     url: string
     chainId: Chain
     enableMulticallQueue: boolean
-    customOptions: { rpcCallTimeoutInMs: number; rpcCallRetries: number }
+    customOptions: CustomJsonRpcProviderOptions
   }): CustomJsonRpcProvider {
     if (!url) {
       throw new Error('Url missing')
@@ -83,6 +86,8 @@ export class ChainProvider {
     const customOptions = {
       rpcCallTimeoutInMs: config.rpcCallTimeoutInMs,
       rpcCallRetries: config.rpcCallRetries,
+      rpcGetLogsTimeoutInMs: config.rpcGetLogsTimeoutInMs,
+      rpcGetLogsRetries: config.rpcGetLogsRetries,
     }
     return {
       [Chain.Ethereum]: this.provider({
