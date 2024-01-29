@@ -166,7 +166,7 @@ describe('aggregateFiatBalancesFromMovements', () => {
           symbol: 'jcoin',
           tokenId: undefined,
         },
-        usdRaw: 4000000000000000000n,
+        usdRaw: 4000000000000000000000000000000000000n,
       },
     })
   })
