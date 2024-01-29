@@ -1,4 +1,5 @@
 import { Protocol } from '../adapters/protocols'
+import { Config } from '../config'
 import { PositionType, ProtocolAdapterParams } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
@@ -117,7 +118,6 @@ export class AdaptersController {
 
           switch (positionType) {
             case PositionType.FiatPrices:
-              this.processFiatPrices(protocolTokens, chainAdaptersMap, adapter)
               break
             case PositionType.Reward:
               // Omit reward tokens from protocol token adapter map.
@@ -134,20 +134,6 @@ export class AdaptersController {
     }
 
     return protocolTokensAdapterMap
-  }
-
-  private processFiatPrices(
-    protocolTokens: Erc20Metadata[],
-    chainAdaptersMap: Map<string, IProtocolAdapter>,
-    adapter: IProtocolAdapter,
-  ) {
-    for (const protocolToken of protocolTokens) {
-      const tokenAddress = protocolToken.address
-
-      if (!chainAdaptersMap.has(tokenAddress)) {
-        chainAdaptersMap.set(tokenAddress, adapter)
-      }
-    }
   }
 
   private processDefaultCase(

@@ -10,93 +10,13 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "supply",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
-          "name": "Mendi USD Coin",
-          "symbol": "meUSDC",
-          "decimals": 8,
-          "balanceRaw": "494421527209981n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-              "name": "USDC",
-              "symbol": "USDC",
-              "decimals": 6,
-              "balanceRaw": "100081014750n",
-              "type": "underlying",
-              "balance": 100081.01475,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
-            }
-          ],
-          "balance": 4944215.27209981
-        },
-        {
-          "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
-          "name": "Mendi USD Tether",
-          "symbol": "meUSDT",
-          "decimals": 8,
-          "balanceRaw": "281620495310021n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "balanceRaw": "57156119173n",
-              "type": "underlying",
-              "balance": 57156.119173,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
-            }
-          ],
-          "balance": 2816204.95310021
-        },
-        {
-          "address": "0xAd7f33984bed10518012013D4aB0458D37FEE6F3",
-          "name": "Mendi Wrapped Ether",
-          "symbol": "meWETH",
-          "decimals": 8,
-          "balanceRaw": "3919087897n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "804997187618819006n",
-              "type": "underlying",
-              "balance": 0.804997187618819,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
-            }
-          ],
-          "balance": 39.19087897
-        },
-        {
-          "address": "0x9be5e24F05bBAfC28Da814bD59284878b388a40f",
-          "name": "Mendi Wrapped BTC",
-          "symbol": "meWBTC",
-          "decimals": 8,
-          "balanceRaw": "4982090632n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
-              "name": "Wrapped BTC",
-              "symbol": "WBTC",
-              "decimals": 8,
-              "balanceRaw": "100141929n",
-              "type": "underlying",
-              "balance": 1.00141929,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
-            }
-          ],
-          "balance": 49.82090632
+      "success": false,
+      "error": {
+        "message": "No adapter found",
+        "details": {
+          "name": "AdapterMissingError"
         }
-      ]
+      }
     },
     {
       "protocolId": "mendi-finance",

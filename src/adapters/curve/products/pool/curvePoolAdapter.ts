@@ -7,7 +7,10 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
+import {
+  NotImplementedError,
+  ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
+} from '../../../../core/errors/errors'
 import { filterMapSync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
@@ -173,7 +176,14 @@ export class CurvePoolAdapter
       blockNumber &&
       blockNumber < 15732062
     ) {
-      throw new Error('Curve meta registry not deployed at this block number')
+      logger.warn('Curve meta registry not deployed at this block number')
+      throw new ProtocolSmartContractNotDeployedAtRequestedBlockNumberError(
+        this.chainId,
+        blockNumber,
+        CURVE_META_REGISTRY_CONTRACT,
+        this.protocolId,
+        this.productId,
+      )
     }
 
     const balances = await metaRegistryContract['get_balances(address)'](

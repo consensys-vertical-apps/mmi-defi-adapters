@@ -6,48 +6,6 @@ describe('aggregateFiatBalances', () => {
     expect(aggregateFiatBalances([])).toEqual({})
   })
 
-  it('aggregates single fiat token correctly', () => {
-    const testData = [
-      {
-        address: '0x',
-        name: 'LP Coin',
-        symbol: 'lp',
-        type: 'protocol',
-        tokens: [
-          {
-            address: '0x',
-            name: 'JCoin',
-            symbol: 'JCoin',
-            type: 'underlying',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
-          },
-        ],
-      },
-    ]
-
-    expect(
-      aggregateFiatBalances(
-        testData as unknown as (Underlying | ProtocolPosition)[],
-      ),
-    ).toEqual({
-      '0x': {
-        protocolTokenMetadata: {
-          address: '0x',
-          decimals: undefined,
-          name: 'LP Coin',
-          symbol: 'lp',
-          tokenId: undefined,
-        },
-        usdRaw: 5n,
-      },
-    })
-  })
-
   it('handles nested tokens correctly', () => {
     const testData = [
       {
@@ -69,14 +27,9 @@ describe('aggregateFiatBalances', () => {
                 name: 'JCoin',
                 symbol: 'JCoin',
                 decimals: 8,
-                balanceRaw: '38951892054n',
+                balanceRaw: 38951892054n,
                 type: 'underlying',
-                tokens: [
-                  {
-                    type: 'fiat',
-                    balanceRaw: 5n,
-                  },
-                ],
+                priceRaw: 1n * 10n ** 18n,
               },
             ],
           },
@@ -97,7 +50,7 @@ describe('aggregateFiatBalances', () => {
           symbol: 'lp',
           tokenId: undefined,
         },
-        usdRaw: 5n,
+        usdRaw: 38951892054n,
       },
     })
   })
@@ -165,14 +118,9 @@ describe('aggregateFiatBalances', () => {
                 name: 'JCoin',
                 symbol: 'JCoin',
                 decimals: 8,
-                balanceRaw: '38951892054n',
+                balanceRaw: 38951892054n,
                 type: 'underlying',
-                tokens: [
-                  {
-                    type: 'fiat',
-                    balanceRaw: 5n,
-                  },
-                ],
+                priceRaw: 1n * 10n ** 18n,
               },
             ],
           },
@@ -189,14 +137,9 @@ describe('aggregateFiatBalances', () => {
                 name: 'JCoin',
                 symbol: 'JCoin',
                 decimals: 8,
-                balanceRaw: '38951892054n',
+                balanceRaw: 38951892054n,
                 type: 'underlying',
-                tokens: [
-                  {
-                    type: 'fiat',
-                    balanceRaw: 5n,
-                  },
-                ],
+                priceRaw: 1n * 10n ** 18n,
               },
             ],
           },
@@ -217,7 +160,7 @@ describe('aggregateFiatBalances', () => {
           symbol: 'lp',
           tokenId: undefined,
         },
-        usdRaw: 10n,
+        usdRaw: 38951892054n * 2n,
       },
     })
   })

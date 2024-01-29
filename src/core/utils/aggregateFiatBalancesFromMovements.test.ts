@@ -6,48 +6,6 @@ describe('aggregateFiatBalancesFromMovements', () => {
     expect(aggregateFiatBalancesFromMovements([])).toEqual({})
   })
 
-  it('aggregates single fiat token correctly', () => {
-    const testData = [
-      {
-        protocolToken: {
-          address: '0x',
-          name: 'Joe Coin',
-          symbol: 'jcoin',
-          decimals: 18,
-        },
-        tokens: [
-          {
-            type: 'underlying',
-            address: '0x1',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
-          },
-        ],
-      },
-    ]
-
-    expect(
-      aggregateFiatBalancesFromMovements(
-        testData as unknown as MovementsByBlock[],
-      ),
-    ).toEqual({
-      '0x': {
-        protocolTokenMetadata: {
-          address: '0x',
-          decimals: 18,
-          name: 'Joe Coin',
-          symbol: 'jcoin',
-          tokenId: undefined,
-        },
-        usdRaw: 5n,
-      },
-    })
-  })
-
   it('aggregates across multiple movements', () => {
     const testData = [
       {
@@ -61,22 +19,14 @@ describe('aggregateFiatBalancesFromMovements', () => {
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
         ],
       },
@@ -91,22 +41,14 @@ describe('aggregateFiatBalancesFromMovements', () => {
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
         ],
       },
@@ -121,12 +63,8 @@ describe('aggregateFiatBalancesFromMovements', () => {
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
         ],
       },
@@ -145,7 +83,8 @@ describe('aggregateFiatBalancesFromMovements', () => {
           symbol: 'jcoin',
           tokenId: undefined,
         },
-        usdRaw: 20n,
+
+        usdRaw: 4000000000000000000n,
       },
       '0x1': {
         protocolTokenMetadata: {
@@ -155,7 +94,7 @@ describe('aggregateFiatBalancesFromMovements', () => {
           symbol: 'jcoin1',
           tokenId: undefined,
         },
-        usdRaw: 5n,
+        usdRaw: 1000000000000000000n,
       },
     })
   })
@@ -177,24 +116,16 @@ describe('aggregateFiatBalancesFromMovements', () => {
               {
                 type: 'underlying',
                 address: '0x1',
-                tokens: [
-                  {
-                    type: 'fiat',
-                    balanceRaw: 5n,
-                  },
-                ],
+                balanceRaw: 1n * 10n ** 18n,
+                priceRaw: 1n * 10n ** 18n,
               },
             ],
           },
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
         ],
       },
@@ -209,22 +140,14 @@ describe('aggregateFiatBalancesFromMovements', () => {
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
         ],
       },
@@ -243,7 +166,7 @@ describe('aggregateFiatBalancesFromMovements', () => {
           symbol: 'jcoin',
           tokenId: undefined,
         },
-        usdRaw: 20n,
+        usdRaw: 4000000000000000000n,
       },
     })
   })
@@ -265,24 +188,16 @@ describe('aggregateFiatBalancesFromMovements', () => {
               {
                 type: 'underlying',
                 address: '0x1',
-                tokens: [
-                  {
-                    type: 'fiat',
-                    balanceRaw: 5n,
-                  },
-                ],
+                balanceRaw: 1n * 10n ** 18n,
+                priceRaw: 1n * 10n ** 18n,
               },
             ],
           },
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'fiat',
-                balanceRaw: 5n,
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
         ],
       },
@@ -297,24 +212,14 @@ describe('aggregateFiatBalancesFromMovements', () => {
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'non-fiat',
-                balanceRaw: 5n,
-                address: 'non-fiat',
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
           {
             type: 'underlying',
             address: '0x1',
-            tokens: [
-              {
-                type: 'non-fiat',
-                balanceRaw: 5n,
-                address: 'non-fiat',
-              },
-            ],
+            balanceRaw: 1n * 10n ** 18n,
+            priceRaw: 1n * 10n ** 18n,
           },
         ],
       },

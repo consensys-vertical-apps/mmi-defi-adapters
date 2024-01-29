@@ -29,10 +29,16 @@ describe('ResolveUnderlyingPositions', () => {
     ]
 
     const fetchTokenAdapterMock = jest.fn()
+    const fetchAdapterMock = jest.fn().mockImplementation((_, __) => {
+      return {
+        getProtocolTokens: jest.fn().mockResolvedValue([{}]),
+      }
+    })
 
     const [originalMethodMock, adapterMock, inputMock] = prepareMocks({
       originalMethodReturn: resultMock,
       fetchTokenAdapter: fetchTokenAdapterMock,
+      fetchAdapter: fetchAdapterMock,
     })
 
     const replacementMethod = ResolveUnderlyingPositions(
@@ -127,10 +133,18 @@ describe('ResolveUnderlyingPositions', () => {
           }
         }
       })
+    const fetchAdapterMock = jest.fn().mockImplementation((_, __) => {
+      return {
+        getProtocolTokenToUnderlyingTokenRate:
+          getProtocolTokenToUnderlyingTokenRateMock,
+        getProtocolTokens: jest.fn().mockResolvedValue([{}]),
+      }
+    })
 
     const [originalMethodMock, adapterMock, inputMock] = prepareMocks({
       originalMethodReturn: resultMock,
       fetchTokenAdapter: fetchTokenAdapterMock,
+      fetchAdapter: fetchAdapterMock,
       blockNumber: 12345,
     })
 
@@ -274,10 +288,18 @@ describe('ResolveUnderlyingPositions', () => {
             getProtocolTokenToUnderlyingTokenRateMock,
         }
       })
+    const fetchAdapterMock = jest.fn().mockImplementation((_, __) => {
+      return {
+        getProtocolTokenToUnderlyingTokenRate:
+          getProtocolTokenToUnderlyingTokenRateMock,
+        getProtocolTokens: jest.fn().mockResolvedValue([{}]),
+      }
+    })
 
     const [originalMethodMock, adapterMock, inputMock] = prepareMocks({
       originalMethodReturn: resultMock,
       fetchTokenAdapter: fetchTokenAdapterMock,
+      fetchAdapter: fetchAdapterMock,
     })
 
     const replacementMethod = ResolveUnderlyingPositions(
@@ -318,10 +340,12 @@ describe('ResolveUnderlyingPositions', () => {
 function prepareMocks({
   originalMethodReturn,
   fetchTokenAdapter,
+  fetchAdapter,
   blockNumber,
 }: {
   originalMethodReturn: ProtocolPosition[]
   fetchTokenAdapter: AdaptersController['fetchTokenAdapter']
+  fetchAdapter: AdaptersController['fetchAdapter']
   blockNumber?: number
 }): [IProtocolAdapter['getPositions'], IProtocolAdapter, GetPositionsInput] {
   return [
@@ -330,6 +354,7 @@ function prepareMocks({
       chainId: 1,
       adaptersController: {
         fetchTokenAdapter,
+        fetchAdapter,
       },
     } as unknown as IProtocolAdapter,
     { blockNumber } as GetPositionsInput,

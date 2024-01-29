@@ -49,13 +49,13 @@
           "symbol": "stkCvxCrv",
           "decimals": 18,
           "type": "protocol",
-          "profit": 1.9605412988848627,
-          "performance": 0.011338521070608135,
+          "profit": 1.7029729846317139,
+          "performance": 0.017830748685529637,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 172.90979014600097,
-            "endPositionValue": 174.87033144488584
+            "startPositionValue": 95.50765448305289,
+            "endPositionValue": 97.2106274676846
           }
         }
       ],

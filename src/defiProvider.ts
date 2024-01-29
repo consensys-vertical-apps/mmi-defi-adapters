@@ -1,4 +1,3 @@
-import { getAddress } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
@@ -100,7 +99,7 @@ export class DefiProvider {
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
-        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        protocolTokenAddresses: filterProtocolTokens,
       })
 
       const endTime = Date.now()
@@ -140,7 +139,6 @@ export class DefiProvider {
     filterChainIds,
     toBlockNumbersOverride,
     filterProtocolTokens,
-    includeRawValues = false,
   }: {
     userAddress: string
     timePeriod?: TimePeriod
@@ -148,7 +146,6 @@ export class DefiProvider {
     filterChainIds?: Chain[]
     toBlockNumbersOverride?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
-    includeRawValues?: boolean
   }): Promise<DefiProfitsResponse[]> {
     const runner = async (
       adapter: IProtocolAdapter,
@@ -167,8 +164,7 @@ export class DefiProvider {
         userAddress,
         toBlock,
         fromBlock,
-        includeRawValues,
-        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        protocolTokenAddresses: filterProtocolTokens,
       })
 
       const endTime = Date.now()
@@ -217,7 +213,8 @@ export class DefiProvider {
       if (filterProtocolToken) {
         const filteredProtocolTokens = protocolTokens.filter(
           (protocolToken) =>
-            protocolToken.address === getAddress(filterProtocolToken),
+            protocolToken.address.toLowerCase() ===
+            filterProtocolToken.toLowerCase(),
         )
         if (filteredProtocolTokens.length === 0) {
           return { tokens: [] }
@@ -293,7 +290,7 @@ export class DefiProvider {
 
     const runner = async (adapter: IProtocolAdapter) => {
       const positionMovements = await adapter.getWithdrawals({
-        protocolTokenAddress: getAddress(protocolTokenAddress),
+        protocolTokenAddress,
         fromBlock,
         toBlock,
         userAddress,
@@ -335,7 +332,7 @@ export class DefiProvider {
 
     const runner = async (adapter: IProtocolAdapter) => {
       const positionMovements = await adapter.getDeposits({
-        protocolTokenAddress: getAddress(protocolTokenAddress),
+        protocolTokenAddress,
         fromBlock,
         toBlock,
         userAddress,

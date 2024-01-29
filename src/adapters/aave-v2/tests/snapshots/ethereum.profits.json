@@ -18,13 +18,13 @@
           "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": -138916.76109474152,
-          "performance": -0.014526561289021842,
+          "profit": -0.000013891676109473996,
+          "performance": -0.014526561289021692,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 9562948.74821649,
-            "endPositionValue": 9424031.987121748
+            "startPositionValue": 0.000956294874821648,
+            "endPositionValue": 0.000942403198712174
           }
         },
         {
@@ -77,13 +77,13 @@
           "symbol": "variableDebtUSDT",
           "decimals": 6,
           "type": "protocol",
-          "profit": 7536.570457887836,
-          "performance": 0.0014434372735134156,
+          "profit": 7.536570458000692e-9,
+          "performance": 0.0014434372735351517,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 34386.67041918019,
-            "startPositionValue": -5186879.67497826,
-            "endPositionValue": -5213729.774939552
+            "deposits": 3.4386670419e-8,
+            "startPositionValue": -0.000005186879674978,
+            "endPositionValue": -0.000005213729774939
           }
         },
         {
@@ -92,13 +92,13 @@
           "symbol": "variableDebtWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": 1068.2339065842534,
-          "performance": 0.014502880519815162,
+          "profit": 1.0682339065800051e-7,
+          "performance": 0.014502880519758473,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": -73656.67152292501,
-            "endPositionValue": -72588.43761634076
+            "startPositionValue": -0.000007365667152292,
+            "endPositionValue": -0.000007258843761634
           }
         },
         {
@@ -122,13 +122,13 @@
           "symbol": "variableDebtUSDC",
           "decimals": 6,
           "type": "protocol",
-          "profit": 4926.786978698336,
-          "performance": 0.0016610839987086332,
+          "profit": 4.926786979000382e-9,
+          "performance": 0.0016610839988108544,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": -2966007.126989688,
-            "endPositionValue": -2961080.3400109895
+            "startPositionValue": -0.000002966007126989,
+            "endPositionValue": -0.00000296108034001
           }
         }
       ],

@@ -18,13 +18,13 @@
           "symbol": "aArbWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": 8.860284061575356,
-          "performance": 0.04589443421882821,
+          "profit": 8.860284059999988e-10,
+          "performance": 0.04589443421227278,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 193.05792112675007,
-            "endPositionValue": 201.91820518832543
+            "startPositionValue": 1.9305792112e-8,
+            "endPositionValue": 2.0191820518e-8
           }
         },
         {
