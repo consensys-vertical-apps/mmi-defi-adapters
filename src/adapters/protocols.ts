@@ -18,6 +18,5 @@ export const Protocol = {
   MendiFinance: 'mendi-finance',
   CarbonDeFi: 'carbon-defi',
   RocketPool: 'rocket-pool',
-  TestDefaultAdapterProtocol: 'test-default-adapter-protocol',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
