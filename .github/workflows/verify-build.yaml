@@ -32,6 +32,9 @@ jobs:
 
       - name: Create new adapter with DefaultAdapter template
         run: |
+          if [ ! -f .env ]; then
+            touch .env
+          fi
           npm run new-adapter -- -p test-default-adapter-protocol -pd test-default-adapter-product -c 1 -t DefaultAdapter -y
           npm run build
 

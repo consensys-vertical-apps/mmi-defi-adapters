@@ -1,0 +1,48 @@
+{
+  "snapshot": {
+    "protocolId": "rocket-pool",
+    "name": "RocketPool",
+    "description": "Rocket Pool rETH Adapter",
+    "siteUrl": "https://rocketpool.net",
+    "iconUrl": "https://rocketpool.net/files/reth-logo.svg",
+    "positionType": "stake",
+    "chainId": 1,
+    "productId": "reth",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x3050dab43cd692b115d7d2039eb41cc1a7c33711ebac0d1d1c5453d2dd21c7eb",
+        "protocolToken": {
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool rETH",
+          "symbol": "rETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18,
+            "balanceRaw": "874695714542011036000n",
+            "type": "underlying",
+            "blockNumber": 18849115,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 18,
+                "type": "fiat",
+                "balanceRaw": "2008038951874094735345200n",
+                "balance": 2008038.9518740948
+              }
+            ],
+            "balance": 874.695714542011
+          }
+        ],
+        "blockNumber": 18849115
+      }
+    ]
+  }
+}

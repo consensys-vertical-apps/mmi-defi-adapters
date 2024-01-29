@@ -28,6 +28,7 @@ import { MendiFinanceBorrowAdapter } from './mendi-finance/products/borrow/mendi
 import { MendiFinanceSupplyAdapter } from './mendi-finance/products/supply/mendiFinanceSupplyAdapter'
 import { PricesUSDAdapter } from './prices/products/usd/pricesUSDAdapter'
 import { Protocol } from './protocols'
+import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
@@ -170,10 +171,16 @@ export const supportedProtocols: Record<
   [Protocol.SyncSwap]: {
     [Chain.Linea]: [SyncswapPoolAdapter],
   },
+
   [Protocol.MendiFinance]: {
     [Chain.Linea]: [MendiFinanceSupplyAdapter, MendiFinanceBorrowAdapter],
   },
+
   [Protocol.CarbonDeFi]: {
     [Chain.Ethereum]: [CarbonDeFiStrategiesAdapter],
+  },
+
+  [Protocol.RocketPool]: {
+    [Chain.Ethereum]: [RocketPoolRethAdapter],
   },
 }
