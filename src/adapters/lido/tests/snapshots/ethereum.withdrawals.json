@@ -27,7 +27,17 @@
             "balanceRaw": "70819350317881835n",
             "type": "underlying",
             "blockNumber": 16738529,
-            "price": 1649.1,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 18,
+                "type": "fiat",
+                "balanceRaw": "116788190609218934098n",
+                "balance": 116.78819060921893
+              }
+            ],
             "balance": 0.07081935031788184
           }
         ],

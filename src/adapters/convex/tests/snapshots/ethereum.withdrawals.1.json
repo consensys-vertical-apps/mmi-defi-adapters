@@ -26,7 +26,17 @@
             "decimals": 18,
             "balanceRaw": "901431379832780966661n",
             "type": "underlying",
-            "price": 0.5515062526540634,
+            "tokens": [
+              {
+                "address": "TheUnitedStatesMint",
+                "name": "USD",
+                "symbol": "USD",
+                "decimals": 18,
+                "type": "fiat",
+                "balanceRaw": "497145042316358722370n",
+                "balance": 497.14504231635874
+              }
+            ],
             "balance": 901.431379832781
           },
           {

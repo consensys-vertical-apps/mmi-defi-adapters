@@ -1,5 +1,4 @@
 import { Protocol } from '../adapters/protocols'
-import { Config } from '../config'
 import { PositionType, ProtocolAdapterParams } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'

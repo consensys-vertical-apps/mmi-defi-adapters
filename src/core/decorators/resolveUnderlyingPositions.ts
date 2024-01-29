@@ -4,7 +4,6 @@ import {
   GetPositionsInput,
   MovementsByBlock,
   TokenBalance,
-  TokenType,
   Underlying,
 } from '../../types/adapter'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'

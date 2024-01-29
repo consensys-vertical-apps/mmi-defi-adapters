@@ -21,12 +21,12 @@
           "type": "protocol",
           "tokens": [
             {
-              "type": "underlying",
+              "type": "fiat",
               "underlyingRateRaw": "992065714215426632n",
               "decimals": 18,
               "name": "USD",
               "symbol": "USD",
-              "address": "USD",
+              "address": "TheUnitedStatesMint",
               "underlyingRate": 0.9920657142154267
             }
           ]

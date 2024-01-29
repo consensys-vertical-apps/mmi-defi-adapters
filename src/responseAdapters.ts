@@ -1,4 +1,6 @@
 import { formatUnits } from 'ethers'
+import { priceAdapterConfig } from './adapters/prices/products/usd/priceAdapterConfig'
+import { USD } from './adapters/prices/products/usd/pricesUSDAdapter'
 import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
@@ -15,8 +17,6 @@ import {
   DisplayProtocolTokenTvl,
   DisplayProtocolTokenUnderlyingRate,
 } from './types/response'
-import { priceAdapterConfig } from './adapters/prices/products/usd/priceAdapterConfig'
-import { USD } from './adapters/prices/products/usd/pricesUSDAdapter'
 
 export function enrichPositionBalance<
   PositionBalance extends TokenBalance & {

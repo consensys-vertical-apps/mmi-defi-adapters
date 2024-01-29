@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
@@ -99,7 +100,7 @@ export class DefiProvider {
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
-        protocolTokenAddresses: filterProtocolTokens,
+        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
       })
 
       const endTime = Date.now()
@@ -139,6 +140,7 @@ export class DefiProvider {
     filterChainIds,
     toBlockNumbersOverride,
     filterProtocolTokens,
+    includeRawValues = false,
   }: {
     userAddress: string
     timePeriod?: TimePeriod
@@ -146,6 +148,7 @@ export class DefiProvider {
     filterChainIds?: Chain[]
     toBlockNumbersOverride?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
+    includeRawValues?: boolean
   }): Promise<DefiProfitsResponse[]> {
     const runner = async (
       adapter: IProtocolAdapter,
@@ -164,7 +167,8 @@ export class DefiProvider {
         userAddress,
         toBlock,
         fromBlock,
-        protocolTokenAddresses: filterProtocolTokens,
+        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        includeRawValues,
       })
 
       const endTime = Date.now()
@@ -213,8 +217,7 @@ export class DefiProvider {
       if (filterProtocolToken) {
         const filteredProtocolTokens = protocolTokens.filter(
           (protocolToken) =>
-            protocolToken.address.toLowerCase() ===
-            filterProtocolToken.toLowerCase(),
+            protocolToken.address === getAddress(filterProtocolToken),
         )
         if (filteredProtocolTokens.length === 0) {
           return { tokens: [] }
@@ -223,12 +226,12 @@ export class DefiProvider {
       }
 
       const tokens = await Promise.all(
-        protocolTokens.map(async ({ address: protocolTokenAddress }) => {
+        protocolTokens.map(async ({ address }) => {
           const startTime = Date.now()
 
           const protocolTokenUnderlyingRate =
             await adapter.getProtocolTokenToUnderlyingTokenRate({
-              protocolTokenAddress,
+              protocolTokenAddress: getAddress(address),
               blockNumber,
             })
 
@@ -242,7 +245,7 @@ export class DefiProvider {
             chainName: ChainName[adapter.chainId],
             protocolId: adapter.protocolId,
             productId: adapter.productId,
-            protocolTokenAddress,
+            protocolTokenAddress: getAddress(address),
             blockNumber,
           })
 
@@ -290,7 +293,7 @@ export class DefiProvider {
 
     const runner = async (adapter: IProtocolAdapter) => {
       const positionMovements = await adapter.getWithdrawals({
-        protocolTokenAddress,
+        protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
         userAddress,
@@ -332,7 +335,7 @@ export class DefiProvider {
 
     const runner = async (adapter: IProtocolAdapter) => {
       const positionMovements = await adapter.getDeposits({
-        protocolTokenAddress,
+        protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
         userAddress,
@@ -392,8 +395,11 @@ export class DefiProvider {
 
       const protocolTokens = await adapter.getProtocolTokens()
       const tokens = await Promise.all(
-        protocolTokens.map(({ address: protocolTokenAddress }) =>
-          adapter.getApy({ protocolTokenAddress, blockNumber }),
+        protocolTokens.map(({ address }) =>
+          adapter.getApy({
+            protocolTokenAddress: getAddress(address),
+            blockNumber,
+          }),
         ),
       )
 
@@ -424,8 +430,11 @@ export class DefiProvider {
 
       const protocolTokens = await adapter.getProtocolTokens()
       const tokens = await Promise.all(
-        protocolTokens.map(({ address: protocolTokenAddress }) =>
-          adapter.getApr({ protocolTokenAddress, blockNumber }),
+        protocolTokens.map(({ address }) =>
+          adapter.getApr({
+            protocolTokenAddress: getAddress(address),
+            blockNumber,
+          }),
         ),
       )
 
