@@ -27,11 +27,11 @@
               "decimals": 18,
               "totalSupplyRaw": "1084730902890550148003n",
               "type": "underlying",
-              "totalSupply": "1084.730902890550148003",
+              "totalSupply": 1084.7309028905502,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
-          "totalSupply": "561540.633599955841307982"
+          "totalSupply": 561540.6335999558
         }
       ]
     }

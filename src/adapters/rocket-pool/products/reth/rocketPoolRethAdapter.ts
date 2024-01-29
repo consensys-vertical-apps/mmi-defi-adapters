@@ -1,4 +1,6 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   ProtocolDetails,
@@ -13,13 +15,10 @@ import {
   Underlying,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import {RocketTokenRETH__factory} from "../../../rocket-pool/contracts";
+import { RocketTokenRETH__factory } from '../../../rocket-pool/contracts'
 
-export class RocketPoolRethAdapter extends SimplePoolAdapter
-{
+export class RocketPoolRethAdapter extends SimplePoolAdapter {
   productId = 'reth'
-
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -56,14 +55,14 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter
   }): Promise<Underlying[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
     const [underlyingTokenRate] = await this.getUnderlyingTokenConversionRate(
-        protocolTokenBalance,
-        blockNumber,
+      protocolTokenBalance,
+      blockNumber,
     )
 
     const underlyingTokenBalanceRaw =
-        (protocolTokenBalance.balanceRaw *
-            underlyingTokenRate!.underlyingRateRaw) /
-        10n ** BigInt(protocolTokenBalance.decimals)
+      (protocolTokenBalance.balanceRaw *
+        underlyingTokenRate!.underlyingRateRaw) /
+      10n ** BigInt(protocolTokenBalance.decimals)
 
     return [
       {
@@ -76,7 +75,7 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter
 
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
     return {
-      address: '0xae78736Cd615f374D3085123A210448E74Fc6393',
+      address: getAddress('0xae78736Cd615f374D3085123A210448E74Fc6393'),
       name: 'Rocket Pool rETH',
       symbol: 'rETH',
       decimals: 18,
@@ -84,14 +83,14 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter
   }
 
   protected async getUnderlyingTokenConversionRate(
-      protocolTokenMetadata: Erc20Metadata,
-      blockNumber?: number,
+    protocolTokenMetadata: Erc20Metadata,
+    blockNumber?: number,
   ): Promise<UnderlyingTokenRate[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
     const rEthContract = RocketTokenRETH__factory.connect(
-        protocolTokenMetadata.address,
-        this.provider,
+      protocolTokenMetadata.address,
+      this.provider,
     )
 
     const underlyingRateRaw = await rEthContract.getExchangeRate({
