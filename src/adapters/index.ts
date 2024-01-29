@@ -33,7 +33,6 @@ import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapte
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { SyncswapPoolAdapter } from './syncswap/products/pool/syncswapPoolAdapter'
-import { TestDefaultAdapterProtocolTestDefaultAdapterProductAdapter } from './test-default-adapter-protocol/products/test-default-adapter-product/testDefaultAdapterProtocolTestDefaultAdapterProductAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 
 export const supportedProtocols: Record<
@@ -183,11 +182,5 @@ export const supportedProtocols: Record<
 
   [Protocol.RocketPool]: {
     [Chain.Ethereum]: [RocketPoolRethAdapter],
-  },
-
-  [Protocol.TestDefaultAdapterProtocol]: {
-    [Chain.Ethereum]: [
-      TestDefaultAdapterProtocolTestDefaultAdapterProductAdapter,
-    ],
   },
 }

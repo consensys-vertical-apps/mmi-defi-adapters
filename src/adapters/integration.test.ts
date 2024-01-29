@@ -23,7 +23,6 @@ import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
-import { testCases as testDefaultAdapterProtocolTestCases } from './test-default-adapter-protocol/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
 const TEST_TIMEOUT = 300000
@@ -50,10 +49,6 @@ function runAllTests() {
   runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
   runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
   runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
-  runProtocolTests(
-    Protocol.TestDefaultAdapterProtocol,
-    testDefaultAdapterProtocolTestCases,
-  )
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
