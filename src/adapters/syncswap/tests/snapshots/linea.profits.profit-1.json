@@ -12,9 +12,9 @@
       "productId": "pool",
       "success": false,
       "error": {
-        "message": "No adapter found",
+        "message": "Unable to calculate profits, missing USD price for token position 0x7d43AABC515C356145049227CeE54B608342c0ad",
         "details": {
-          "name": "AdapterMissingError"
+          "name": "Error"
         }
       }
     }

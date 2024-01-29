@@ -8,7 +8,10 @@ import {
 } from '../../types/adapter'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { SimplePoolAdapter } from '../adapters/SimplePoolAdapter'
-import { ProtocolSmartContractNotDeployedAtRequestedBlockNumberError } from '../errors/errors'
+import {
+  AdapterMissingError,
+  ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
+} from '../errors/errors'
 
 export function ResolveUnderlyingPositions(
   originalMethod: SimplePoolAdapter['getPositions'],
@@ -201,25 +204,35 @@ async function fetchPrice(
   underlyingProtocolTokenPosition: Underlying,
   blockNumber: number | undefined,
 ) {
-  const priceAdapter = await adapter.adaptersController.fetchAdapter(
-    adapter.chainId,
-    Protocol.Prices,
-    'usd',
-  )
+  try {
+    const priceAdapter = await adapter.adaptersController.fetchAdapter(
+      adapter.chainId,
+      Protocol.Prices,
+      'usd',
+    )
 
-  const isSupported = (await priceAdapter.getProtocolTokens()).find(
-    ({ address }) => address == underlyingProtocolTokenPosition.address,
-  )
+    const isSupported = (await priceAdapter.getProtocolTokens()).find(
+      ({ address }) => address == underlyingProtocolTokenPosition.address,
+    )
 
-  if (!isSupported) {
+    if (!isSupported) {
+      return
+    }
+
+    const price = await priceAdapter.getProtocolTokenToUnderlyingTokenRate({
+      protocolTokenAddress: underlyingProtocolTokenPosition.address,
+      blockNumber,
+    })
+
+    underlyingProtocolTokenPosition.priceRaw =
+      price.tokens![0]!.underlyingRateRaw
+    underlyingProtocolTokenPosition.tokens = undefined
+    return
+  } catch (error) {
+    // price adapter not enabled or no price adapter for this chain
+    if (!(error instanceof AdapterMissingError)) {
+      throw error
+    }
     return
   }
-
-  const price = await priceAdapter.getProtocolTokenToUnderlyingTokenRate({
-    protocolTokenAddress: underlyingProtocolTokenPosition.address,
-    blockNumber,
-  })
-
-  underlyingProtocolTokenPosition.priceRaw = price.tokens![0]!.underlyingRateRaw
-  underlyingProtocolTokenPosition.tokens = undefined
 }
