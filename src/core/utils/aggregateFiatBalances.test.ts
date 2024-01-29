@@ -50,7 +50,7 @@ describe('aggregateFiatBalances', () => {
           symbol: 'lp',
           tokenId: undefined,
         },
-        usdRaw: 38951892054n,
+        usdRaw: 38951892054000000000000000000n,
       },
     })
   })
@@ -160,7 +160,7 @@ describe('aggregateFiatBalances', () => {
           symbol: 'lp',
           tokenId: undefined,
         },
-        usdRaw: 38951892054n * 2n,
+        usdRaw: 77903784108000000000000000000n,
       },
     })
   })

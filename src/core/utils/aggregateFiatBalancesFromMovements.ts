@@ -1,4 +1,3 @@
-import { priceAdapterConfig } from '../../adapters/prices/products/usd/priceAdapterConfig'
 import { Underlying, MovementsByBlock } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 

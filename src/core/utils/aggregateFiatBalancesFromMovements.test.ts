@@ -84,7 +84,7 @@ describe('aggregateFiatBalancesFromMovements', () => {
           tokenId: undefined,
         },
 
-        usdRaw: 4000000000000000000n,
+        usdRaw: 4000000000000000000000000000000000000n,
       },
       '0x1': {
         protocolTokenMetadata: {
@@ -94,7 +94,7 @@ describe('aggregateFiatBalancesFromMovements', () => {
           symbol: 'jcoin1',
           tokenId: undefined,
         },
-        usdRaw: 1000000000000000000n,
+        usdRaw: 1000000000000000000000000000000000000n,
       },
     })
   })
