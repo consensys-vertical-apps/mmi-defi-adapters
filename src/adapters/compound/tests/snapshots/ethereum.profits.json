@@ -18,13 +18,13 @@
           "symbol": "cBAT",
           "decimals": 8,
           "type": "protocol",
-          "profit": -8283.822407730273,
+          "profit": -8.283822407730273e+21,
           "performance": -0.017637460954571468,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 469672.0479816672,
-            "endPositionValue": 461388.22557393694
+            "startPositionValue": 4.696720479816672e+23,
+            "endPositionValue": 4.6138822557393695e+23
           }
         },
         {
@@ -33,13 +33,13 @@
           "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
-          "profit": -975.8534720096795,
-          "performance": -0.017636775349710896,
+          "profit": -975853472009678700000,
+          "performance": -0.01763677534971088,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 55330.606228177414,
-            "endPositionValue": 54354.752756167734
+            "startPositionValue": 5.533060622817742e+22,
+            "endPositionValue": 5.435475275616774e+22
           }
         }
       ],

@@ -10,40 +10,13 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "pool",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x7f72E0D8e9AbF9133A92322b8B50BD8e0F9dcFCB",
-          "name": "SyncSwap BUSD/WETH Classic LP",
-          "symbol": "BUSD/WETH cSLP",
-          "decimals": 18,
-          "balanceRaw": "125847953996713707n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x7d43AABC515C356145049227CeE54B608342c0ad",
-              "name": "Binance USD",
-              "symbol": "BUSD",
-              "decimals": 18,
-              "balanceRaw": "6595413373272633798n",
-              "type": "underlying",
-              "balance": 6.595413373272634,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x7d43AABC515C356145049227CeE54B608342c0ad/logo.png"
-            },
-            {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "2968156482487384n",
-              "type": "underlying",
-              "balance": 0.002968156482487384,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
-            }
-          ],
-          "balance": 0.1258479539967137
+      "success": false,
+      "error": {
+        "message": "No adapter found",
+        "details": {
+          "name": "AdapterMissingError"
         }
-      ]
+      }
     }
   ]
 }

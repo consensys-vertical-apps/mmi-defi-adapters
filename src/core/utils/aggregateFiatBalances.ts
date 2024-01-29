@@ -40,9 +40,7 @@ export function aggregateFiatBalances(
           decimals: topLevelTokenMetadata.decimals,
           tokenId: topLevelTokenMetadata.tokenId,
         },
-        usdRaw:
-          (result[key]?.usdRaw || BigInt(0)) +
-          (currentBalance * price) / 10n ** BigInt(priceAdapterConfig.decimals),
+        usdRaw: (result[key]?.usdRaw || BigInt(0)) + currentBalance * price,
       }
 
       return currentBalance

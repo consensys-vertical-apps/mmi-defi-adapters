@@ -8,42 +8,12 @@
     "positionType": "supply",
     "chainId": 59144,
     "productId": "pool",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x973ce84ba7a96b8f17aa079dc58b887c7d8832efe79fe73df3ae375127075a5c",
-        "protocolToken": {
-          "address": "0x8aeBfFB3964ec5CEA0915080ddc1aCA079583a4d",
-          "name": "SyncSwap USDT/WETH Classic LP",
-          "symbol": "USDT/WETH cSLP",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "type": "underlying",
-            "balanceRaw": "13008149n",
-            "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
-            "name": "Tether USD",
-            "symbol": "USDT",
-            "decimals": 6,
-            "transactionHash": "0x973ce84ba7a96b8f17aa079dc58b887c7d8832efe79fe73df3ae375127075a5c",
-            "blockNumber": 1150734,
-            "balance": 13.008149
-          },
-          {
-            "type": "underlying",
-            "balanceRaw": "5593605335957098n",
-            "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-            "name": "Wrapped Ether",
-            "symbol": "WETH",
-            "decimals": 18,
-            "transactionHash": "0x973ce84ba7a96b8f17aa079dc58b887c7d8832efe79fe73df3ae375127075a5c",
-            "blockNumber": 1150734,
-            "balance": 0.005593605335957098
-          }
-        ],
-        "blockNumber": 1150734
+    "success": false,
+    "error": {
+      "message": "No adapter found",
+      "details": {
+        "name": "AdapterMissingError"
       }
-    ]
+    }
   }
 }

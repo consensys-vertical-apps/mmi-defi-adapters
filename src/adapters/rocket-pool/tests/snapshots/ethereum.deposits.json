@@ -27,17 +27,7 @@
             "balanceRaw": "999499999999999998n",
             "type": "underlying",
             "blockNumber": 19011345,
-            "tokens": [
-              {
-                "address": "TheUnitedStatesMint",
-                "name": "USD",
-                "symbol": "USD",
-                "decimals": 18,
-                "type": "fiat",
-                "balanceRaw": "2510317439426979994976n",
-                "balance": 2510.31743942698
-              }
-            ],
+            "price": 2511.57322604,
             "balance": 0.9994999999999999
           }
         ],
@@ -60,17 +50,7 @@
             "balanceRaw": "2499568534397326097n",
             "type": "underlying",
             "blockNumber": 19061606,
-            "tokens": [
-              {
-                "address": "TheUnitedStatesMint",
-                "name": "USD",
-                "symbol": "USD",
-                "decimals": 18,
-                "type": "fiat",
-                "balanceRaw": "5972087579987861937022n",
-                "balance": 5972.087579987862
-              }
-            ],
+            "price": 2389.24738322,
             "balance": 2.499568534397326
           }
         ],
@@ -93,17 +73,7 @@
             "balanceRaw": "3498862680803207317n",
             "type": "underlying",
             "blockNumber": 19074766,
-            "tokens": [
-              {
-                "address": "TheUnitedStatesMint",
-                "name": "USD",
-                "symbol": "USD",
-                "decimals": 18,
-                "type": "fiat",
-                "balanceRaw": "7774896391469584968631n",
-                "balance": 7774.896391469585
-              }
-            ],
+            "price": 2222.12104354,
             "balance": 3.4988626808032075
           }
         ],
