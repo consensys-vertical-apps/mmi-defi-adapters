@@ -250,8 +250,8 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
 
       return (
         (eventType === 'deposits'
-          ? currentItem.order0.y > 0 || currentItem.order1.y > 0
-          : currentItem.order0.y < 0 || currentItem.order1.y < 0) &&
+          ? currentItem.order0.y > 0n || currentItem.order1.y > 0n
+          : currentItem.order0.y < 0n || currentItem.order1.y < 0n) &&
         currentItem.reason === StrategyUpdateReasonEdit
       )
     })
