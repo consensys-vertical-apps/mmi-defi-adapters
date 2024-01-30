@@ -137,11 +137,6 @@ export class CurvePoolAdapter
     })
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
