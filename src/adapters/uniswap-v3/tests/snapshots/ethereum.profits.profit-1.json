@@ -19,13 +19,13 @@
           "decimals": 18,
           "tokenId": "567587",
           "type": "protocol",
-          "profit": -731295925183961900000,
-          "performance": -0.23101913012636552,
+          "profit": -731.295925183962,
+          "performance": -0.23101913012636557,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 3.165521075176541e+21,
-            "endPositionValue": 2.4342251499925794e+21
+            "startPositionValue": 3165.521075176541,
+            "endPositionValue": 2434.225149992579
           }
         }
       ],

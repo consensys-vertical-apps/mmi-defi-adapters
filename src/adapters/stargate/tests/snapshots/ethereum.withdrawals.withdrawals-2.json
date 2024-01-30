@@ -27,6 +27,7 @@
             "balanceRaw": "316787401n",
             "type": "underlying",
             "blockNumber": 18158890,
+            "tokens": [],
             "price": 0.9830173803727756,
             "balance": 316.787401
           }
@@ -50,6 +51,7 @@
             "balanceRaw": "105000653n",
             "type": "underlying",
             "blockNumber": 18161904,
+            "tokens": [],
             "price": 0.9939304973009889,
             "balance": 105.000653
           }
@@ -73,6 +75,7 @@
             "balanceRaw": "1999999566n",
             "type": "underlying",
             "blockNumber": 18162402,
+            "tokens": [],
             "price": 1.000692585745532,
             "balance": 1999.999566
           }

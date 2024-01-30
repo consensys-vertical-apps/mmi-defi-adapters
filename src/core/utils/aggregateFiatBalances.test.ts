@@ -1,5 +1,32 @@
-import { Underlying, ProtocolPosition } from '../../types/adapter'
+import { Underlying, ProtocolPosition, TokenType } from '../../types/adapter'
 import { aggregateFiatBalances } from './aggregateFiatBalances'
+
+const balanceRaw = 2000000000000000000n
+const priceRaw = BigInt(Math.pow(2, 18))
+const decimals = 18
+
+const usdRaw = (balanceRaw * priceRaw) / BigInt(10 ** decimals)
+
+const protocolToken = {
+  address: '0x',
+  name: 'Joe Coin',
+  symbol: 'jcoin',
+  type: TokenType.Protocol,
+  decimals,
+  priceRaw,
+  balanceRaw,
+  tokenId: undefined,
+}
+
+const underlyingToken = {
+  address: '0x1',
+  decimals,
+  balanceRaw,
+  priceRaw,
+  name: 'Joe Coin',
+  symbol: 'jcoin',
+  type: TokenType.Underlying,
+}
 
 describe('aggregateFiatBalances', () => {
   it('handles empty input', () => {
@@ -9,48 +36,27 @@ describe('aggregateFiatBalances', () => {
   it('handles nested tokens correctly', () => {
     const testData = [
       {
-        address: '0x',
-        name: 'LP Coin',
-        symbol: 'lp',
-        type: 'protocol',
+        ...protocolToken,
+
         tokens: [
           {
-            address: '0x',
-            name: 'JCoin',
-            symbol: 'JCoin',
-            decimals: 8,
-            balanceRaw: '38951892054n',
-            type: 'underlying',
-            tokens: [
-              {
-                address: '0x',
-                name: 'JCoin',
-                symbol: 'JCoin',
-                decimals: 8,
-                balanceRaw: 38951892054n,
-                type: 'underlying',
-                priceRaw: 1n * 10n ** 18n,
-              },
-            ],
+            ...underlyingToken,
+            tokens: [underlyingToken],
           },
         ],
       },
     ]
 
-    expect(
-      aggregateFiatBalances(
-        testData as unknown as (Underlying | ProtocolPosition)[],
-      ),
-    ).toEqual({
-      '0x': {
+    expect(aggregateFiatBalances(testData)).toEqual({
+      [protocolToken.address]: {
         protocolTokenMetadata: {
           address: '0x',
-          decimals: undefined,
-          name: 'LP Coin',
-          symbol: 'lp',
+          name: 'Joe Coin',
+          decimals,
+          symbol: 'jcoin',
           tokenId: undefined,
         },
-        usdRaw: 38951892054000000000000000000n,
+        usdRaw,
       },
     })
   })
@@ -58,28 +64,12 @@ describe('aggregateFiatBalances', () => {
   it('throws error for non-fiat token at base', () => {
     const testData = [
       {
-        address: '0x',
-        name: 'LP Coin',
-        symbol: 'lp',
-        type: 'protocol',
+        ...protocolToken,
+
         tokens: [
           {
-            address: '0x',
-            name: 'JCoin',
-            symbol: 'JCoin',
-            decimals: 8,
-            balanceRaw: '38951892054n',
-            type: 'underlying',
-            tokens: [
-              {
-                address: '0x',
-                name: 'JCoin',
-                symbol: 'JCoin',
-                decimals: 8,
-                balanceRaw: '38951892054n',
-                type: 'underlying',
-              },
-            ],
+            ...underlyingToken,
+            tokens: [underlyingToken],
           },
         ],
       },
@@ -100,48 +90,15 @@ describe('aggregateFiatBalances', () => {
   it('correctly aggregates balances for tokens with same identifier', () => {
     const testData = [
       {
-        address: '0x',
-        name: 'LP Coin',
-        symbol: 'lp',
-        type: 'protocol',
+        ...protocolToken,
         tokens: [
           {
-            address: '0x',
-            name: 'JCoin',
-            symbol: 'JCoin',
-            decimals: 8,
-            balanceRaw: '38951892054n',
-            type: 'underlying',
-            tokens: [
-              {
-                address: '0x',
-                name: 'JCoin',
-                symbol: 'JCoin',
-                decimals: 8,
-                balanceRaw: 38951892054n,
-                type: 'underlying',
-                priceRaw: 1n * 10n ** 18n,
-              },
-            ],
+            ...underlyingToken,
+            tokens: [underlyingToken],
           },
           {
-            address: '0x',
-            name: 'JCoin',
-            symbol: 'JCoin',
-            decimals: 8,
-            balanceRaw: '38951892054n',
-            type: 'underlying',
-            tokens: [
-              {
-                address: '0x',
-                name: 'JCoin',
-                symbol: 'JCoin',
-                decimals: 8,
-                balanceRaw: 38951892054n,
-                type: 'underlying',
-                priceRaw: 1n * 10n ** 18n,
-              },
-            ],
+            ...underlyingToken,
+            tokens: [underlyingToken],
           },
         ],
       },
@@ -155,12 +112,12 @@ describe('aggregateFiatBalances', () => {
       '0x': {
         protocolTokenMetadata: {
           address: '0x',
-          decimals: undefined,
-          name: 'LP Coin',
-          symbol: 'lp',
+          name: 'Joe Coin',
+          decimals,
+          symbol: 'jcoin',
           tokenId: undefined,
         },
-        usdRaw: 77903784108000000000000000000n,
+        usdRaw: usdRaw * 2n,
       },
     })
   })

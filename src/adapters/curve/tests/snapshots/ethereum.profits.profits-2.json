@@ -32,13 +32,13 @@
           "symbol": "3Crv",
           "decimals": 18,
           "type": "protocol",
-          "profit": 31552923648,
-          "performance": 1.2565857331187878e-8,
+          "profit": 3.15529238292811e-8,
+          "performance": 4.90916972549114e-9,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 2511004447717793300,
+            "deposits": 6.427344254455242,
             "startPositionValue": 0,
-            "endPositionValue": 2511004479270717000
+            "endPositionValue": 6.427344286008166
           }
         }
       ],

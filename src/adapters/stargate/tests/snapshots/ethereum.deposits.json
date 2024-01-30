@@ -27,6 +27,7 @@
             "balanceRaw": "599999565n",
             "type": "underlying",
             "blockNumber": 17719335,
+            "tokens": [],
             "price": 0.9909171629418432,
             "balance": 599.999565
           }

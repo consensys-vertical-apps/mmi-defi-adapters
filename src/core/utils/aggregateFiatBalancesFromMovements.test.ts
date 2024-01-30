@@ -1,5 +1,46 @@
-import { MovementsByBlock } from '../../types/adapter'
+import { MovementsByBlock, TokenType } from '../../types/adapter'
 import { aggregateFiatBalancesFromMovements } from './aggregateFiatBalancesFromMovements'
+
+const balanceRaw = 2000000000000000000n
+const priceRaw = BigInt(Math.pow(2, 18))
+const decimals = 18
+
+const usdRaw = (balanceRaw * priceRaw) / BigInt(10 ** decimals)
+
+const protocolToken1 = {
+  address: '0x1',
+  name: 'Joe Coin',
+  symbol: 'jcoin',
+  decimals,
+
+  tokenId: undefined,
+}
+const protocolToken2 = {
+  address: '0x2',
+  name: 'Joe Coin 2',
+  symbol: 'jcoin2',
+  decimals,
+
+  tokenId: undefined,
+}
+const underlyingTokenWithPrice = {
+  name: 'underlying',
+  symbol: 'underlying',
+  type: TokenType.Underlying,
+  address: '0x1',
+  decimals,
+  balanceRaw,
+  priceRaw,
+}
+const underlyingTokenWithoutPrice = {
+  name: 'underlying',
+  symbol: 'underlying',
+  type: TokenType.Underlying,
+  address: '0x1',
+  decimals,
+  balanceRaw,
+  priceRaw,
+}
 
 describe('aggregateFiatBalancesFromMovements', () => {
   it('handles empty input', () => {
@@ -7,94 +48,38 @@ describe('aggregateFiatBalancesFromMovements', () => {
   })
 
   it('aggregates across multiple movements', () => {
-    const testData = [
+    const testData: MovementsByBlock[] = [
       {
-        protocolToken: {
-          address: '0x',
-          name: 'Joe Coin',
-          symbol: 'jcoin',
-          decimals: 18,
-        },
-        tokens: [
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
-        ],
+        protocolToken: protocolToken1,
+        tokens: [underlyingTokenWithPrice, underlyingTokenWithPrice],
+        blockNumber: 11,
+        transactionHash: '0x',
       },
       {
-        protocolToken: {
-          address: '0x',
-          name: 'Joe Coin',
-          symbol: 'jcoin',
-          decimals: 18,
-        },
-        tokens: [
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
-        ],
+        protocolToken: protocolToken2,
+        tokens: [underlyingTokenWithPrice, underlyingTokenWithPrice],
+        blockNumber: 11,
+        transactionHash: '0x',
       },
       {
-        protocolToken: {
-          address: '0x1',
-          name: 'Joe Coin1',
-          symbol: 'jcoin1',
-          decimals: 18,
-        },
-        tokens: [
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
-        ],
+        protocolToken: protocolToken2,
+        tokens: [underlyingTokenWithPrice],
+        blockNumber: 11,
+        transactionHash: '0x',
       },
     ]
 
-    expect(
-      aggregateFiatBalancesFromMovements(
-        testData as unknown as MovementsByBlock[],
-      ),
-    ).toEqual({
-      '0x': {
-        protocolTokenMetadata: {
-          address: '0x',
-          decimals: 18,
-          name: 'Joe Coin',
-          symbol: 'jcoin',
-          tokenId: undefined,
-        },
+    const result = aggregateFiatBalancesFromMovements(testData)
 
-        usdRaw: 4000000000000000000000000000000000000n,
+    expect(result).toEqual({
+      [protocolToken1.address]: {
+        protocolTokenMetadata: protocolToken1,
+
+        usdRaw: usdRaw * 2n,
       },
-      '0x1': {
-        protocolTokenMetadata: {
-          address: '0x1',
-          decimals: 18,
-          name: 'Joe Coin1',
-          symbol: 'jcoin1',
-          tokenId: undefined,
-        },
-        usdRaw: 1000000000000000000000000000000000000n,
+      [protocolToken2.address]: {
+        protocolTokenMetadata: protocolToken2,
+        usdRaw: usdRaw * 3n,
       },
     })
   })
@@ -102,54 +87,19 @@ describe('aggregateFiatBalancesFromMovements', () => {
   it('handles nested tokens', () => {
     const testData = [
       {
-        protocolToken: {
-          address: '0x',
-          name: 'Joe Coin',
-          symbol: 'jcoin',
-          decimals: 18,
-        },
+        protocolToken: protocolToken1,
         tokens: [
           {
-            type: 'underlying',
-            address: '0x1',
-            tokens: [
-              {
-                type: 'underlying',
-                address: '0x1',
-                balanceRaw: 1n * 10n ** 18n,
-                priceRaw: 1n * 10n ** 18n,
-              },
-            ],
+            ...underlyingTokenWithoutPrice,
+
+            tokens: [underlyingTokenWithPrice],
           },
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
+          underlyingTokenWithoutPrice,
         ],
       },
       {
-        protocolToken: {
-          address: '0x',
-          name: 'Joe Coin',
-          symbol: 'jcoin',
-          decimals: 18,
-        },
-        tokens: [
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
-        ],
+        protocolToken: protocolToken1,
+        tokens: [underlyingTokenWithPrice, underlyingTokenWithPrice],
       },
     ]
 
@@ -158,15 +108,9 @@ describe('aggregateFiatBalancesFromMovements', () => {
         testData as unknown as MovementsByBlock[],
       ),
     ).toEqual({
-      '0x': {
-        protocolTokenMetadata: {
-          address: '0x',
-          decimals: 18,
-          name: 'Joe Coin',
-          symbol: 'jcoin',
-          tokenId: undefined,
-        },
-        usdRaw: 4000000000000000000000000000000000000n,
+      [protocolToken1.address]: {
+        protocolTokenMetadata: protocolToken1,
+        usdRaw: usdRaw * 4n,
       },
     })
   })
@@ -174,54 +118,18 @@ describe('aggregateFiatBalancesFromMovements', () => {
   it('throws error for non-fiat token at base', async () => {
     const testData = [
       {
-        protocolToken: {
-          address: '0x',
-          name: 'Joe Coin',
-          symbol: 'jcoin',
-          decimals: 18,
-        },
+        protocolToken: protocolToken1,
         tokens: [
           {
-            type: 'underlying',
-            address: '0x1',
-            tokens: [
-              {
-                type: 'underlying',
-                address: '0x1',
-                balanceRaw: 1n * 10n ** 18n,
-                priceRaw: 1n * 10n ** 18n,
-              },
-            ],
+            ...underlyingTokenWithoutPrice,
+            tokens: [underlyingTokenWithoutPrice],
           },
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
+          underlyingTokenWithoutPrice,
         ],
       },
       {
-        protocolToken: {
-          address: '0x',
-          name: 'Joe Coin',
-          symbol: 'jcoin',
-          decimals: 18,
-        },
-        tokens: [
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
-          {
-            type: 'underlying',
-            address: '0x1',
-            balanceRaw: 1n * 10n ** 18n,
-            priceRaw: 1n * 10n ** 18n,
-          },
-        ],
+        protocolToken: protocolToken1,
+        tokens: [underlyingTokenWithoutPrice, underlyingTokenWithoutPrice],
       },
     ]
 

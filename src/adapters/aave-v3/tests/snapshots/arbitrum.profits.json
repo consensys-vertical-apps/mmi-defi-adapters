@@ -18,13 +18,13 @@
           "symbol": "aArbWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": 886028406.1575356,
+          "profit": 8.860284061575356,
           "performance": 0.04589443421882821,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 19305792112.675007,
-            "endPositionValue": 20191820518.832542
+            "startPositionValue": 193.05792112675007,
+            "endPositionValue": 201.91820518832543
           }
         },
         {
@@ -33,13 +33,13 @@
           "symbol": "aArbWETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": 5148628987072987000,
-          "performance": 0.044063425824836085,
+          "profit": 5.148628987072982,
+          "performance": 0.044063425824836036,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 116845862315385240000,
-            "endPositionValue": 121994491302458230000
+            "startPositionValue": 116.84586231538525,
+            "endPositionValue": 121.99449130245823
           }
         }
       ],
@@ -77,13 +77,13 @@
           "symbol": "variableDebtArbDAI",
           "decimals": 18,
           "type": "protocol",
-          "profit": -2544972243473596400,
-          "performance": -0.01264036568480625,
+          "profit": -2.5449722434735804,
+          "performance": -0.012640365684806169,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": -201336915951146830000,
-            "endPositionValue": -203881888194620420000
+            "startPositionValue": -201.33691595114684,
+            "endPositionValue": -203.88188819462042
           }
         }
       ],

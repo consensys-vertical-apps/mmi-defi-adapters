@@ -29,6 +29,7 @@
             "decimals": 18,
             "transactionHash": "0xc54b543d82804a8f69596bac329f8cda24cacf7f619fc3c1823bbb684373d551",
             "blockNumber": 18262163,
+            "tokens": [],
             "price": 0.9835653431071311,
             "balance": 43155.66655703
           },
@@ -41,6 +42,7 @@
             "decimals": 18,
             "transactionHash": "0xc54b543d82804a8f69596bac329f8cda24cacf7f619fc3c1823bbb684373d551",
             "blockNumber": 18262163,
+            "tokens": [],
             "price": 1732.38049306,
             "balance": 0
           }
