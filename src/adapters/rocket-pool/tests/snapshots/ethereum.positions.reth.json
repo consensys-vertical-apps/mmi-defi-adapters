@@ -27,7 +27,6 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "57719483897631490065522n",
-              "tokens": [],
               "balance": 57719.48389763149,
               "price": 2212.70454888,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"

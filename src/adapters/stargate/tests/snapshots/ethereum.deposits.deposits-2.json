@@ -27,7 +27,6 @@
             "balanceRaw": "49999988n",
             "type": "underlying",
             "blockNumber": 18157923,
-            "tokens": [],
             "price": 0.9835024271229612,
             "balance": 49.999988
           }
@@ -51,7 +50,6 @@
             "balanceRaw": "2190646467n",
             "type": "underlying",
             "blockNumber": 18158326,
-            "tokens": [],
             "price": 0.9796805257305417,
             "balance": 2190.646467
           }
@@ -75,7 +73,6 @@
             "balanceRaw": "14999996n",
             "type": "underlying",
             "blockNumber": 18158656,
-            "tokens": [],
             "price": 0.9826513230381952,
             "balance": 14.999996
           }
@@ -99,7 +96,6 @@
             "balanceRaw": "14999996n",
             "type": "underlying",
             "blockNumber": 18158660,
-            "tokens": [],
             "price": 0.9826513230381952,
             "balance": 14.999996
           }
@@ -123,7 +119,6 @@
             "balanceRaw": "11040164n",
             "type": "underlying",
             "blockNumber": 18158816,
-            "tokens": [],
             "price": 0.9826513230381952,
             "balance": 11.040164
           }
@@ -147,7 +142,6 @@
             "balanceRaw": "10540164n",
             "type": "underlying",
             "blockNumber": 18158816,
-            "tokens": [],
             "price": 0.9826513230381952,
             "balance": 10.540164
           }
@@ -171,7 +165,6 @@
             "balanceRaw": "10540164n",
             "type": "underlying",
             "blockNumber": 18158840,
-            "tokens": [],
             "price": 0.9829980148294447,
             "balance": 10.540164
           }
@@ -195,7 +188,6 @@
             "balanceRaw": "10540164n",
             "type": "underlying",
             "blockNumber": 18158946,
-            "tokens": [],
             "price": 0.9830173803727756,
             "balance": 10.540164
           }
@@ -219,7 +211,6 @@
             "balanceRaw": "0n",
             "type": "underlying",
             "blockNumber": 18159007,
-            "tokens": [],
             "price": 0.9830173803727756,
             "balance": 0
           }
@@ -243,7 +234,6 @@
             "balanceRaw": "9999n",
             "type": "underlying",
             "blockNumber": 18159047,
-            "tokens": [],
             "price": 0.9830173803727756,
             "balance": 0.009999
           }
@@ -267,7 +257,6 @@
             "balanceRaw": "0n",
             "type": "underlying",
             "blockNumber": 18159653,
-            "tokens": [],
             "price": 0.9833625304373352,
             "balance": 0
           }
@@ -291,7 +280,6 @@
             "balanceRaw": "8969139030n",
             "type": "underlying",
             "blockNumber": 18160263,
-            "tokens": [],
             "price": 0.9923318284353679,
             "balance": 8969.13903
           }
@@ -315,7 +303,6 @@
             "balanceRaw": "0n",
             "type": "underlying",
             "blockNumber": 18161255,
-            "tokens": [],
             "price": 0.9932514436685441,
             "balance": 0
           }
@@ -339,7 +326,6 @@
             "balanceRaw": "1999999566n",
             "type": "underlying",
             "blockNumber": 18162103,
-            "tokens": [],
             "price": 0.9983651843449182,
             "balance": 1999.999566
           }
@@ -363,7 +349,6 @@
             "balanceRaw": "0n",
             "type": "underlying",
             "blockNumber": 18162649,
-            "tokens": [],
             "price": 0.996778499133465,
             "balance": 0
           }
@@ -387,7 +372,6 @@
             "balanceRaw": "1005886958n",
             "type": "underlying",
             "blockNumber": 18162805,
-            "tokens": [],
             "price": 0.9984304708772938,
             "balance": 1005.886958
           }

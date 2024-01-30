@@ -27,7 +27,6 @@
             "claimableTrackerAddress": "0x81fCe3E10D12Da6c7266a1A169c4C96813435263",
             "balanceRaw": "15995934878803391102n",
             "type": "underlying",
-            "tokens": [],
             "price": 2.1499207586463327,
             "balance": 15.995934878803391
           }

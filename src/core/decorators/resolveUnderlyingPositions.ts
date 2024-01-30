@@ -226,7 +226,7 @@ async function fetchPrice(
 
     underlyingProtocolTokenPosition.priceRaw =
       price.tokens![0]!.underlyingRateRaw
-    underlyingProtocolTokenPosition.tokens = []
+    underlyingProtocolTokenPosition.tokens = undefined
     return
   } catch (error) {
     // price adapter not enabled or no price adapter for this chain
