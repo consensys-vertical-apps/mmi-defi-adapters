@@ -29,6 +29,38 @@ export class MaxMovementLimitExceededError extends Error {
     this.name = 'MaxMovementLimitExceededError'
   }
 }
+export class ProtocolSmartContractNotDeployedAtRequestedBlockNumberError extends Error {
+  chainId: Chain
+  chainName: string
+  protocolId: Protocol
+  productId: string
+  smartContractAddress: string
+  blockNumber: number
+  constructor(
+    chainId: Chain,
+    blockNumber: number,
+    smartContractAddress: string,
+    protocolId: Protocol,
+    productId: string,
+  ) {
+    super('Protocol Smart Contract Not Deployed At Requested BlockNumber')
+
+    this.name = 'Protocol Smart Contract Not Deployed At Requested BlockNumber'
+    this.chainId = chainId
+    this.chainName = ChainName[chainId]
+    this.protocolId = protocolId
+    this.productId = productId
+    this.smartContractAddress = smartContractAddress
+    this.blockNumber = blockNumber
+
+    Error.captureStackTrace(
+      this,
+      ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
+    )
+
+    this.name = 'ProtocolSmartContractNotDeployedAtRequestedBlockNumber'
+  }
+}
 
 export class ProviderMissingError extends Error {
   chainId: Chain

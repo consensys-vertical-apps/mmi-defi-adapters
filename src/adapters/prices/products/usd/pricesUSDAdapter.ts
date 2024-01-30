@@ -35,6 +35,8 @@ import COINGECKO_LIST from '../../common/coingecko-list.json'
 import { ChainLink__factory, UniswapQuoter__factory } from '../../contracts'
 import { priceAdapterConfig } from './priceAdapterConfig'
 
+export const USD = 'USD'
+
 type Erc20MetadataForEthBaseTokens = Erc20Metadata & {
   isBaseTokenEth: true
 }
@@ -321,12 +323,12 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
       type: 'protocol',
       tokens: [
         {
-          type: TokenType.Fiat,
+          type: TokenType.Underlying,
           underlyingRateRaw: BigInt(tokenPriceInUSD.toString()),
           decimals: priceAdapterConfig.decimals,
-          name: 'USD',
-          symbol: 'USD',
-          address: 'TheUnitedStatesMint',
+          name: USD,
+          symbol: USD,
+          address: USD,
         },
       ],
     }

@@ -1,4 +1,6 @@
 import { formatUnits } from 'ethers'
+import { priceAdapterConfig } from './adapters/prices/products/usd/priceAdapterConfig'
+import { USD } from './adapters/prices/products/usd/pricesUSDAdapter'
 import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
@@ -20,11 +22,16 @@ export function enrichPositionBalance<
   PositionBalance extends TokenBalance & {
     type: TokenType
     tokens?: Underlying[]
+    priceRaw?: bigint
   },
 >(balance: PositionBalance, chainId: Chain): DisplayPosition<PositionBalance> {
   return {
     ...balance,
     balance: +formatUnits(balance.balanceRaw, balance.decimals),
+    price: balance.priceRaw
+      ? +formatUnits(balance.priceRaw, priceAdapterConfig.decimals)
+      : undefined,
+    priceRaw: undefined,
     ...(balance.tokens
       ? {
           tokens: balance.tokens?.map((underlyingBalance) =>
@@ -56,7 +63,7 @@ export function enrichUnderlyingTokenRates(
                   underlyingTokenRate.decimals,
                 ),
                 iconUrl:
-                  underlyingTokenRate.type != TokenType.Fiat
+                  underlyingTokenRate.address != USD
                     ? buildTrustAssetIconUrl(
                         chainId,
                         underlyingTokenRate.address,
@@ -76,12 +83,17 @@ export function enrichMovements(
 ): DisplayMovementsByBlock {
   return {
     ...movementsByBlock,
+
     tokens: movementsByBlock.tokens.reduce(
       (accumulator, token) => {
         return [
           ...accumulator,
           {
             ...token,
+            price: token.priceRaw
+              ? +formatUnits(token.priceRaw, priceAdapterConfig.decimals)
+              : undefined,
+            priceRaw: undefined,
             balance: +formatUnits(token.balanceRaw, token.decimals),
             ...(token.tokens
               ? {
