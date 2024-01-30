@@ -1,4 +1,3 @@
-import { BigNumber } from 'bignumber.js'
 import { BigNumberish } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
@@ -236,16 +235,10 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
 
       if (!prevItem || !currentItem) continue
 
-      const token0Diff = BigInt(
-        BigNumber(currentItem.order0.y.toString())
-          .minus(prevItem.order0.y.toString())
-          .toString(),
-      )
-      const token1Diff = BigInt(
-        BigNumber(currentItem.order1.y.toString())
-          .minus(prevItem.order1.y.toString())
-          .toString(),
-      )
+      const token0Diff =
+        BigInt(currentItem.order0.y) - BigInt(prevItem.order0.y)
+      const token1Diff =
+        BigInt(currentItem.order1.y) - BigInt(prevItem.order1.y)
 
       const updatedItem = {
         ...strategyUpdatedLog[i],
@@ -262,12 +255,14 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     return strategyUpdatedProcessed.filter((item) => {
       const currentItem: StrategyUpdatedEvent.OutputObject = item.args
 
+      const ZERO = 0n
+
       return (
         (eventType === 'deposits'
-          ? BigNumber(currentItem.order0.y.toString()).gt(0) ||
-            BigNumber(currentItem.order1.y.toString()).gt(0)
-          : BigNumber(currentItem.order0.y.toString()).lt(0) ||
-            BigNumber(currentItem.order1.y.toString()).lt(0)) &&
+          ? BigInt(currentItem.order0.y) > ZERO ||
+            BigInt(currentItem.order1.y) > ZERO
+          : BigInt(currentItem.order0.y) < ZERO ||
+            BigInt(currentItem.order1.y) < ZERO) &&
         currentItem.reason === StrategyUpdateReasonEdit
       )
     })
