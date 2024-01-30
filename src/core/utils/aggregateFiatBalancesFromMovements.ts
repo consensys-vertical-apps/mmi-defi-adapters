@@ -36,7 +36,9 @@ export function aggregateFiatBalancesFromMovements(
           decimals: protocolToken.decimals,
           tokenId: protocolToken.tokenId,
         },
-        usdRaw: (result[key]?.usdRaw || BigInt(0)) + currentBalance * price,
+        usdRaw:
+          (result[key]?.usdRaw || BigInt(0)) +
+          (currentBalance * price) / 10n ** BigInt(currentToken.decimals),
       }
 
       return currentBalance
