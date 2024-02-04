@@ -10,7 +10,7 @@ export function simulateTxCommand(
   program
     .command('simulate')
     .argument('[txHash]', 'Hash of the transaction')
-    .argument('[chainId]', 'Chain id of the transaction')
+    .argument('[chainId]', 'Chain ID of the transaction')
     .showHelpAfterError()
     .action(async (txHash, chainId) => {
       const provider = chainProviders[chainId as Chain]

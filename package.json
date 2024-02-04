@@ -38,6 +38,7 @@
     "params": "npm run adapters-cli params --",
     "withdrawals": "npm run adapters-cli withdrawals --",
     "stress": "npm run adapters-cli stress --",
+    "simulate": "npm run adapters-cli simulate --",
     "fix": "run-s fix:*",
     "fix:lint": "eslint \"src/**/*.ts\" --fix",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",

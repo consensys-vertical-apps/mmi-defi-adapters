@@ -1,5 +1,5 @@
 import { spawn } from 'child_process'
-import { JsonRpcProvider } from 'ethers'
+import { JsonRpcProvider, TransactionRequest } from 'ethers'
 
 export async function simulateTx({
   provider,
@@ -8,20 +8,47 @@ export async function simulateTx({
 }: {
   provider: JsonRpcProvider
   blockNumber?: number
-  input: string
+  input:
+    | string
+    | (TransactionRequest & { from: string; to: string; data: string })
 }) {
   const providerUrl = provider._getConnection().url
   const disposeFork = await createFork(providerUrl, blockNumber)
 
   try {
-    const result = await replicateTx({
-      provider,
+    let txReq: TransactionRequest & { from: string }
+
+    if (typeof input === 'string') {
+      const tx = await provider.getTransaction(input)
+
+      if (!tx) {
+        throw new Error('Transaction not found')
+      }
+
+      txReq = {
+        from: tx.from,
+        to: tx.to,
+        data: tx.data,
+        value: tx.value,
+        gasLimit: tx.gasLimit,
+        maxFeePerGas: tx.maxFeePerGas,
+        maxPriorityFeePerGas: tx.maxPriorityFeePerGas,
+        chainId: tx.chainId,
+        type: tx.type,
+        accessList: tx.accessList,
+      }
+    } else {
+      txReq = input
+    }
+
+    const result = await testTransaction({
       forkedProvider: disposeFork.provider,
-      txHash: input,
+      tx: txReq,
     })
     console.log(result)
   } finally {
     disposeFork.dispose()
+    console.log('Network fork has been disposed')
   }
 }
 
@@ -41,12 +68,15 @@ async function createFork(providerUrl: string, blockNumber?: number) {
 
     const dispose = () => anvilProcess.kill('SIGTERM')
 
+    // This timeout is used to prevent the promise from hanging indefinitely
     const timeout = setTimeout(() => {
       console.error('Failed to fork the network with anvil')
       console.error('Timeout')
+      dispose()
       reject()
     }, 10000)
 
+    // Checks for the message that indicates the fork is ready
     anvilProcess.stdout.on('data', (data) => {
       if (data.includes('Listening on 127.0.0.1:8545')) {
         console.log('STDOUT TYPE', typeof data)
@@ -59,6 +89,7 @@ async function createFork(providerUrl: string, blockNumber?: number) {
       }
     })
 
+    // If there's an error, print it and reject the promise
     anvilProcess.stderr.on('data', (data) => {
       console.error('Failed to fork the network with anvil')
       console.error(`stderr: ${data}`)
@@ -68,35 +99,17 @@ async function createFork(providerUrl: string, blockNumber?: number) {
   })
 }
 
-async function replicateTx({
-  provider,
+async function testTransaction({
   forkedProvider,
-  txHash,
+  tx,
 }: {
-  provider: JsonRpcProvider
   forkedProvider: JsonRpcProvider
-  txHash: string
+  tx: TransactionRequest & { from: string }
 }) {
-  const tx = await provider.getTransaction(txHash)
-
-  if (!tx) {
-    throw new Error('Transaction not found')
-  }
-
   await forkedProvider.send('anvil_impersonateAccount', [tx.from])
   const newSigner = await forkedProvider.getSigner(tx.from)
 
-  const newTx = await newSigner.sendTransaction({
-    to: tx.to,
-    data: tx.data,
-    value: tx.value,
-    gasLimit: tx.gasLimit,
-    maxFeePerGas: tx.maxFeePerGas,
-    maxPriorityFeePerGas: tx.maxPriorityFeePerGas,
-    chainId: tx.chainId,
-    type: tx.type,
-    accessList: tx.accessList,
-  })
+  const newTx = await newSigner.sendTransaction(tx)
 
   const receipt = await newTx.wait()
 
