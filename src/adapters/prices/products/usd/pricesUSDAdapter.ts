@@ -6,7 +6,7 @@ import {
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {

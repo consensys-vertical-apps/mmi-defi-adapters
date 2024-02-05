@@ -4,7 +4,7 @@ import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Chain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
-import { CustomJsonRpcProvider } from './utils/customJsonRpcProvider'
+import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
