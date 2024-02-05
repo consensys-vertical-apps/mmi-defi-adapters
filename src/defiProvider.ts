@@ -32,6 +32,14 @@ import {
   GetEventsRequestInput,
 } from './types/response'
 
+export type TransactionParamsInput = {
+  action: string
+  inputs: unknown[]
+  protocolId: Protocol
+  chainId: Chain
+  productId: string
+}
+
 export class DefiProvider {
   private parsedConfig
   chainProvider: ChainProvider
@@ -304,6 +312,43 @@ export class DefiProvider {
         movements: positionMovements.map((value) =>
           enrichMovements(value, chainId),
         ),
+      }
+    }
+
+    return this.runTaskForAdapter(adapter, provider!, runner)
+  }
+
+  async getTransactionParams({
+    protocolId,
+    action,
+    inputs,
+    chainId,
+    productId,
+  }: TransactionParamsInput): Promise<
+    AdapterResponse<{
+      params: { to: string; data: string }
+    }>
+  > {
+    const provider = this.chainProvider.providers[chainId]
+    let adapter: IProtocolAdapter
+    try {
+      adapter = this.adaptersController.fetchAdapter(
+        chainId,
+        protocolId,
+        productId,
+      )
+    } catch (error) {
+      return this.handleError(error)
+    }
+
+    const runner = async (adapter: IProtocolAdapter) => {
+      const txParams = await adapter.getTransactionParams!({
+        action,
+        inputs,
+      })
+
+      return {
+        params: txParams,
       }
     }
 

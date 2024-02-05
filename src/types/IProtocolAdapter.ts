@@ -81,6 +81,18 @@ export interface IProtocolAdapter {
 
   /**
    *
+   * @remarks Returns tx params
+   *
+   * @param {TransactionParamsInput} input tx input params
+   * @returns {Promise<{to:string, data: string}>} transaction
+   */
+  getTransactionParams?(input: {
+    action: string
+    inputs: unknown[]
+  }): Promise<{ to: string; data: string }>
+
+  /**
+   *
    * @remarks Returns the user's deposits to a position
    *
    * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
