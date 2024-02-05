@@ -34,10 +34,6 @@ export class CurveRewardAdapter
 {
   productId = 'reward'
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

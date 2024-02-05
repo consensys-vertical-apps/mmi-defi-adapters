@@ -91,10 +91,6 @@ export class PricesUSDAdapter implements IProtocolAdapter, IMetadataBuilder {
   }
   adaptersController: AdaptersController
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
