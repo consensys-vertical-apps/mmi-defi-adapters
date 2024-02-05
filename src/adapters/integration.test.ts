@@ -19,6 +19,7 @@ import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
 import { testCases as pricesTestCases } from './prices/tests/testCases'
 import { Protocol } from './protocols'
+import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
@@ -47,6 +48,7 @@ function runAllTests() {
   runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
   runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
   runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
+  runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

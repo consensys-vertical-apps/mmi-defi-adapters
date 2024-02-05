@@ -22,9 +22,14 @@ export function aggregateFiatBalances(
     currentToken: Underlying | ProtocolPosition,
     topLevelTokenMetadata: Erc20Metadata & { tokenId?: string },
   ): bigint => {
-    if (currentToken.type === TokenType.Fiat) {
+    if (
+      (currentToken.type == TokenType.Underlying ||
+        currentToken.type == TokenType.UnderlyingClaimable) &&
+      currentToken.priceRaw
+    ) {
       const key = topLevelTokenMetadata.tokenId ?? topLevelTokenMetadata.address
       const currentBalance = currentToken.balanceRaw
+      const price = currentToken.priceRaw!
 
       result[key] = {
         protocolTokenMetadata: {
@@ -34,7 +39,9 @@ export function aggregateFiatBalances(
           decimals: topLevelTokenMetadata.decimals,
           tokenId: topLevelTokenMetadata.tokenId,
         },
-        usdRaw: (result[key]?.usdRaw || BigInt(0)) + currentBalance,
+        usdRaw:
+          (result[key]?.usdRaw || BigInt(0)) +
+          (currentBalance * price) / 10n ** BigInt(currentToken.decimals),
       }
 
       return currentBalance

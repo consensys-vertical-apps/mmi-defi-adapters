@@ -1,0 +1,84 @@
+{
+  "snapshot": {
+    "protocolId": "rocket-pool",
+    "name": "RocketPool",
+    "description": "Rocket Pool rETH Adapter",
+    "siteUrl": "https://rocketpool.net",
+    "iconUrl": "https://rocketpool.net/files/reth-logo.svg",
+    "positionType": "stake",
+    "chainId": 1,
+    "productId": "reth",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x1917e9ddcfd8e95150ab3f221ad63f32cf7ff5fe6895fcbc84494c5f6c309348",
+        "protocolToken": {
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool rETH",
+          "symbol": "rETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18,
+            "balanceRaw": "999499999999999998n",
+            "type": "underlying",
+            "blockNumber": 19011345,
+            "price": 2511.57322604,
+            "balance": 0.9994999999999999
+          }
+        ],
+        "blockNumber": 19011345
+      },
+      {
+        "transactionHash": "0x85ff23b61f456b84d8e43ca9c07968888db2d19dae9923e57f54b2a81f28fce4",
+        "protocolToken": {
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool rETH",
+          "symbol": "rETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18,
+            "balanceRaw": "2499568534397326097n",
+            "type": "underlying",
+            "blockNumber": 19061606,
+            "price": 2389.24738322,
+            "balance": 2.499568534397326
+          }
+        ],
+        "blockNumber": 19061606
+      },
+      {
+        "transactionHash": "0x31d89d15c0725d1f6553770d2cd92c2876c9ac52399594f660c08de8267a4ab3",
+        "protocolToken": {
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool rETH",
+          "symbol": "rETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18,
+            "balanceRaw": "3498862680803207317n",
+            "type": "underlying",
+            "blockNumber": 19074766,
+            "price": 2222.12104354,
+            "balance": 3.4988626808032075
+          }
+        ],
+        "blockNumber": 19074766
+      }
+    ]
+  }
+}

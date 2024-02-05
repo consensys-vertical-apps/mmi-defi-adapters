@@ -1,13 +1,17 @@
+import { Protocol } from '../../adapters/protocols'
 import {
   GetEventsInput,
   GetPositionsInput,
   MovementsByBlock,
   TokenBalance,
-  TokenType,
   Underlying,
 } from '../../types/adapter'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { SimplePoolAdapter } from '../adapters/SimplePoolAdapter'
+import {
+  AdapterMissingError,
+  ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
+} from '../errors/errors'
 
 export function ResolveUnderlyingPositions(
   originalMethod: SimplePoolAdapter['getPositions'],
@@ -118,7 +122,7 @@ async function resolveUnderlying({
 
   for (const underlyingProtocolTokenPosition of underlying) {
     promises.push(
-      computeUnderlyingTokenBalances(
+      computeUnderlyingTokenBalancesOrFetchPrice(
         adapter,
         underlyingProtocolTokenPosition,
         blockNumber,
@@ -129,7 +133,7 @@ async function resolveUnderlying({
   await Promise.all(promises)
 }
 
-async function computeUnderlyingTokenBalances(
+async function computeUnderlyingTokenBalancesOrFetchPrice(
   adapter: IProtocolAdapter,
   underlyingProtocolTokenPosition: Underlying,
   blockNumber: number | undefined,
@@ -141,42 +145,94 @@ async function computeUnderlyingTokenBalances(
     )
 
   if (!underlyingProtocolTokenAdapter) {
-    return
+    return fetchPrice(adapter, underlyingProtocolTokenPosition, blockNumber)
+  } else {
+    return fetchUnderlyingBalances(
+      underlyingProtocolTokenAdapter,
+      underlyingProtocolTokenPosition,
+      blockNumber,
+    )
   }
+}
 
-  let protocolTokenUnderlyingRate
+async function fetchUnderlyingBalances(
+  underlyingProtocolTokenAdapter: IProtocolAdapter,
+  underlyingProtocolTokenPosition: Underlying,
+  blockNumber: number | undefined,
+) {
   try {
-    protocolTokenUnderlyingRate =
+    const protocolTokenUnderlyingRate =
       await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
         {
           protocolTokenAddress: underlyingProtocolTokenPosition.address,
           blockNumber: blockNumber,
         },
       )
+    const computedUnderlyingPositions: Underlying[] =
+      protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
+        return {
+          address: underlyingTokenRate.address,
+          name: underlyingTokenRate.name,
+          symbol: underlyingTokenRate.symbol,
+          decimals: underlyingTokenRate.decimals,
+          type: underlyingTokenRate.type,
+          balanceRaw:
+            (underlyingProtocolTokenPosition.balanceRaw *
+              underlyingTokenRate.underlyingRateRaw) /
+            10n ** BigInt(underlyingProtocolTokenPosition.decimals),
+        }
+      }) || []
+
+    underlyingProtocolTokenPosition.tokens = [
+      ...(underlyingProtocolTokenPosition.tokens || []),
+      ...computedUnderlyingPositions,
+    ]
   } catch (error) {
+    if (
+      !(
+        error instanceof
+        ProtocolSmartContractNotDeployedAtRequestedBlockNumberError
+      )
+    ) {
+      throw error
+    }
+  }
+}
+
+async function fetchPrice(
+  adapter: IProtocolAdapter,
+  underlyingProtocolTokenPosition: Underlying,
+  blockNumber: number | undefined,
+) {
+  try {
+    const priceAdapter = await adapter.adaptersController.fetchAdapter(
+      adapter.chainId,
+      Protocol.Prices,
+      'usd',
+    )
+
+    const isSupported = (await priceAdapter.getProtocolTokens()).find(
+      ({ address }) => address == underlyingProtocolTokenPosition.address,
+    )
+
+    if (!isSupported) {
+      return
+    }
+
+    const price = await priceAdapter.getProtocolTokenToUnderlyingTokenRate({
+      protocolTokenAddress: underlyingProtocolTokenPosition.address,
+      blockNumber,
+    })
+
+    underlyingProtocolTokenPosition.priceRaw =
+      price.tokens![0]!.underlyingRateRaw
+    underlyingProtocolTokenPosition.tokens = undefined
+    return
+  } catch (error) {
+    // price adapter not enabled or no price adapter for this chain
+    if (!(error instanceof AdapterMissingError)) {
+      throw error
+    }
     return
   }
-
-  const computedUnderlyingPositions: Underlying[] =
-    protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
-      return {
-        address: underlyingTokenRate.address,
-        name: underlyingTokenRate.name,
-        symbol: underlyingTokenRate.symbol,
-        decimals: underlyingTokenRate.decimals,
-        type:
-          underlyingTokenRate.type == TokenType.Fiat
-            ? TokenType.Fiat
-            : TokenType.Underlying,
-        balanceRaw:
-          (underlyingProtocolTokenPosition.balanceRaw *
-            underlyingTokenRate.underlyingRateRaw) /
-          10n ** BigInt(underlyingProtocolTokenPosition.decimals),
-      }
-    }) || []
-
-  underlyingProtocolTokenPosition.tokens = [
-    ...(underlyingProtocolTokenPosition.tokens || []),
-    ...computedUnderlyingPositions,
-  ]
 }

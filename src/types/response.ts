@@ -55,6 +55,8 @@ export type DisplayPosition<
 > = Omit<PositionBalance, 'tokens'> & {
   balance: number
   tokens?: DisplayPosition<Underlying>[]
+  price: number
+  priceRaw: never
 } & (PositionBalance['type'] extends
     | typeof TokenType.Underlying
     | typeof TokenType.UnderlyingClaimable
@@ -71,7 +73,10 @@ export type DisplayProtocolTokenUnderlyingRate = Omit<
   ProtocolTokenUnderlyingRate,
   'tokens'
 > & {
-  tokens?: (UnderlyingTokenRate & { underlyingRate: number; iconUrl: string })[]
+  tokens?: (UnderlyingTokenRate & {
+    underlyingRate: number
+    iconUrl?: string
+  })[]
 }
 
 export type APRResponse = AdapterResponse<{

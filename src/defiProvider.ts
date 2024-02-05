@@ -167,8 +167,8 @@ export class DefiProvider {
         userAddress,
         toBlock,
         fromBlock,
-        includeRawValues,
         protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        includeRawValues,
       })
 
       const endTime = Date.now()
@@ -226,12 +226,12 @@ export class DefiProvider {
       }
 
       const tokens = await Promise.all(
-        protocolTokens.map(async ({ address: protocolTokenAddress }) => {
+        protocolTokens.map(async ({ address }) => {
           const startTime = Date.now()
 
           const protocolTokenUnderlyingRate =
             await adapter.getProtocolTokenToUnderlyingTokenRate({
-              protocolTokenAddress,
+              protocolTokenAddress: getAddress(address),
               blockNumber,
             })
 
@@ -245,7 +245,7 @@ export class DefiProvider {
             chainName: ChainName[adapter.chainId],
             protocolId: adapter.protocolId,
             productId: adapter.productId,
-            protocolTokenAddress,
+            protocolTokenAddress: getAddress(address),
             blockNumber,
           })
 
@@ -395,8 +395,11 @@ export class DefiProvider {
 
       const protocolTokens = await adapter.getProtocolTokens()
       const tokens = await Promise.all(
-        protocolTokens.map(({ address: protocolTokenAddress }) =>
-          adapter.getApy({ protocolTokenAddress, blockNumber }),
+        protocolTokens.map(({ address }) =>
+          adapter.getApy({
+            protocolTokenAddress: getAddress(address),
+            blockNumber,
+          }),
         ),
       )
 
@@ -427,8 +430,11 @@ export class DefiProvider {
 
       const protocolTokens = await adapter.getProtocolTokens()
       const tokens = await Promise.all(
-        protocolTokens.map(({ address: protocolTokenAddress }) =>
-          adapter.getApr({ protocolTokenAddress, blockNumber }),
+        protocolTokens.map(({ address }) =>
+          adapter.getApr({
+            protocolTokenAddress: getAddress(address),
+            blockNumber,
+          }),
         ),
       )
 

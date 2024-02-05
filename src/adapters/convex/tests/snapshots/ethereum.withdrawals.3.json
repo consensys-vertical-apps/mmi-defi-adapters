@@ -26,17 +26,7 @@
             "decimals": 18,
             "balanceRaw": "2955753991471436954276n",
             "type": "underlying",
-            "tokens": [
-              {
-                "address": "TheUnitedStatesMint",
-                "name": "USD",
-                "symbol": "USD",
-                "decimals": 18,
-                "type": "fiat",
-                "balanceRaw": "1688872729482198619869n",
-                "balance": 1688.8727294821986
-              }
-            ],
+            "price": 0.5713847412048801,
             "balance": 2955.753991471437
           }
         ],
@@ -58,17 +48,7 @@
             "decimals": 18,
             "balanceRaw": "390488348790686281236n",
             "type": "underlying",
-            "tokens": [
-              {
-                "address": "TheUnitedStatesMint",
-                "name": "USD",
-                "symbol": "USD",
-                "decimals": 18,
-                "type": "fiat",
-                "balanceRaw": "1448710603917550492600n",
-                "balance": 1448.7106039175505
-              }
-            ],
+            "price": 3.7099970035062526,
             "balance": 390.4883487906863
           }
         ],
@@ -98,18 +78,8 @@
                 "decimals": 18,
                 "type": "underlying",
                 "balanceRaw": "505335911015373806711n",
-                "tokens": [
-                  {
-                    "address": "TheUnitedStatesMint",
-                    "name": "USD",
-                    "symbol": "USD",
-                    "decimals": 18,
-                    "type": "fiat",
-                    "balanceRaw": "499850344596253711300n",
-                    "balance": 499.8503445962537
-                  }
-                ],
                 "balance": 505.3359110153738,
+                "price": 0.9891447128542716,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
               },
               {
@@ -119,18 +89,8 @@
                 "decimals": 6,
                 "type": "underlying",
                 "balanceRaw": "562759112n",
-                "tokens": [
-                  {
-                    "address": "TheUnitedStatesMint",
-                    "name": "USD",
-                    "symbol": "USD",
-                    "decimals": 18,
-                    "type": "fiat",
-                    "balanceRaw": "555977061928245882038n",
-                    "balance": 555.9770619282459
-                  }
-                ],
                 "balance": 562.759112,
+                "price": 0.9879485735066088,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
               },
               {
@@ -140,18 +100,8 @@
                 "decimals": 6,
                 "type": "underlying",
                 "balanceRaw": "391525155n",
-                "tokens": [
-                  {
-                    "address": "TheUnitedStatesMint",
-                    "name": "USD",
-                    "symbol": "USD",
-                    "decimals": 18,
-                    "type": "fiat",
-                    "balanceRaw": "387153289192635734725n",
-                    "balance": 387.1532891926357
-                  }
-                ],
                 "balance": 391.525155,
+                "price": 0.988833754992411,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
               }
             ],

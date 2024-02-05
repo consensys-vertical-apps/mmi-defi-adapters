@@ -1,5 +1,3 @@
-import { BigNumber } from 'bignumber.js'
-import { BigNumberish } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -98,14 +96,9 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
       this.provider,
     )
 
-    const strategyIds: BigNumberish[] = await voucherContract.tokensByOwner(
-      userAddress,
-      0,
-      0,
-      {
-        blockTag: blockNumber,
-      },
-    )
+    const strategyIds = await voucherContract.tokensByOwner(userAddress, 0, 0, {
+      blockTag: blockNumber,
+    })
 
     if (strategyIds.length > 0) {
       const results = await Promise.all(
@@ -236,16 +229,9 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
 
       if (!prevItem || !currentItem) continue
 
-      const token0Diff = BigInt(
-        BigNumber(currentItem.order0.y.toString())
-          .minus(prevItem.order0.y.toString())
-          .toString(),
-      )
-      const token1Diff = BigInt(
-        BigNumber(currentItem.order1.y.toString())
-          .minus(prevItem.order1.y.toString())
-          .toString(),
-      )
+      const token0Diff = currentItem.order0.y - prevItem.order0.y
+
+      const token1Diff = currentItem.order1.y - prevItem.order1.y
 
       const updatedItem = {
         ...strategyUpdatedLog[i],
@@ -264,10 +250,8 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
 
       return (
         (eventType === 'deposits'
-          ? BigNumber(currentItem.order0.y.toString()).gt(0) ||
-            BigNumber(currentItem.order1.y.toString()).gt(0)
-          : BigNumber(currentItem.order0.y.toString()).lt(0) ||
-            BigNumber(currentItem.order1.y.toString()).lt(0)) &&
+          ? currentItem.order0.y > 0n || currentItem.order1.y > 0n
+          : currentItem.order0.y < 0n || currentItem.order1.y < 0n) &&
         currentItem.reason === StrategyUpdateReasonEdit
       )
     })
@@ -303,14 +287,14 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
         tokens: [
           {
             type: TokenType.Underlying,
-            balanceRaw: BigInt(logArgs.order0.y),
+            balanceRaw: logArgs.order0.y,
             ...token0Metadata,
             transactionHash,
             blockNumber,
           },
           {
             type: TokenType.Underlying,
-            balanceRaw: BigInt(logArgs.order1.y),
+            balanceRaw: logArgs.order1.y,
             ...token1Metadata,
             transactionHash,
             blockNumber,
