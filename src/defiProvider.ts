@@ -18,6 +18,7 @@ import {
   enrichTotalValueLocked,
 } from './responseAdapters'
 import { PositionType } from './types/adapter'
+import { DeepPartial } from './types/deepPartial'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
@@ -46,7 +47,7 @@ export class DefiProvider {
   adaptersController: AdaptersController
   private adaptersControllerWithoutPrices: AdaptersController
 
-  constructor(config?: Partial<IConfig>) {
+  constructor(config?: DeepPartial<IConfig>) {
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
 

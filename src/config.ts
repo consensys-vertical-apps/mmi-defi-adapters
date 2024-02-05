@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { logger } from './core/utils/logger'
+import { DeepPartial } from './types/deepPartial'
 
 const ConfigSchema = z
   .object({
@@ -91,7 +92,7 @@ export type IConfig = z.infer<typeof ConfigSchema>
 export class Config {
   private config: IConfig
 
-  constructor(config?: Partial<IConfig>) {
+  constructor(config?: DeepPartial<IConfig>) {
     const parsedConfig = ConfigSchema.safeParse(config)
 
     if (!parsedConfig.success) {

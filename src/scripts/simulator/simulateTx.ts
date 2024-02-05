@@ -1,16 +1,29 @@
 import { spawn } from 'child_process'
 import { JsonRpcProvider, TransactionRequest } from 'ethers'
+import { Protocol } from '../../adapters/protocols'
+import { Chain, ChainName } from '../../core/constants/chains'
+import { DefiProvider } from '../../defiProvider'
 
 export async function simulateTx({
   provider,
+  chainId,
   blockNumber,
   input,
+  protocolTokenAddress,
+  protocolId,
+  productId,
+  tokenId,
 }: {
   provider: JsonRpcProvider
+  chainId: Chain
   blockNumber?: number
   input:
     | string
     | (TransactionRequest & { from: string; to: string; data: string })
+  protocolTokenAddress: string
+  protocolId: Protocol
+  productId: string
+  tokenId?: string
 }) {
   const providerUrl = provider._getConnection().url
   const disposeFork = await createFork(providerUrl, blockNumber)
@@ -45,7 +58,70 @@ export async function simulateTx({
       forkedProvider: disposeFork.provider,
       tx: txReq,
     })
-    console.log(result)
+
+    console.log('Transaction minted')
+
+    const chainName = ChainName[chainId]
+    const forkDefiProvider = new DefiProvider({
+      provider: {
+        [chainName]: 'http://127.0.0.1:8545',
+      },
+    })
+
+    const [deposits, withdrawals] = await Promise.all([
+      forkDefiProvider.getDeposits({
+        userAddress: result.from,
+        fromBlock: result.blockNumber,
+        toBlock: result.blockNumber,
+        chainId,
+        protocolTokenAddress,
+        protocolId,
+        productId,
+        tokenId,
+      }),
+      forkDefiProvider.getWithdrawals({
+        userAddress: result.from,
+        fromBlock: result.blockNumber,
+        toBlock: result.blockNumber,
+        chainId,
+        protocolTokenAddress,
+        protocolId,
+        productId,
+        tokenId,
+      }),
+    ])
+
+    if (!deposits.success || !withdrawals.success) {
+      console.error('XXXX', {
+        deposits,
+        withdrawals,
+      })
+      throw new Error('Failed to fetch deposits and withdrawals')
+    }
+
+    deposits.movements.forEach((deposit) => {
+      if (
+        deposit.transactionHash === result.hash &&
+        deposit.tokens &&
+        deposit.tokens.length > 0
+      ) {
+        deposit.tokens?.forEach((token) => {
+          console.log('Deposit', token)
+        })
+      }
+    })
+
+    withdrawals.movements.forEach((withdrawal) => {
+      if (
+        withdrawal.transactionHash === result.hash &&
+        withdrawal.tokens &&
+        withdrawal.tokens.length > 0
+      ) {
+        withdrawal.tokens?.forEach((token) => {
+          console.log('Withdrawal', token)
+        })
+      }
+    })
   } finally {
     disposeFork.dispose()
     console.log('Network fork has been disposed')
@@ -79,7 +155,6 @@ async function createFork(providerUrl: string, blockNumber?: number) {
     // Checks for the message that indicates the fork is ready
     anvilProcess.stdout.on('data', (data) => {
       if (data.includes('Listening on 127.0.0.1:8545')) {
-        console.log('STDOUT TYPE', typeof data)
         console.log('Network has been forked and is ready')
         clearTimeout(timeout)
         resolve({
@@ -117,9 +192,5 @@ async function testTransaction({
     throw new Error('Transaction not mined')
   }
 
-  return {
-    originalTx: tx,
-    receipt,
-    logs: receipt.logs.map((log) => log.topics),
-  }
+  return receipt
 }
