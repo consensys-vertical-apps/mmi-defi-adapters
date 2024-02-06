@@ -332,8 +332,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'tx-params for test %s match',
           async (_, testCase) => {
-            console.log(`[Integration test] foroioiiooioio 636363636`)
-
             const { snapshot } = await fetchSnapshot(testCase, protocolId)
 
             const response = await defiProvider.getTransactionParams({
