@@ -1,6 +1,6 @@
 import { Command } from 'commander'
 import { Chain } from '../core/constants/chains'
-import { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
+import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { simulateTx } from './simulator/simulateTx'
 
 export function simulateTxCommand(
