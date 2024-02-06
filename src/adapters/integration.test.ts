@@ -7,6 +7,7 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
+import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
 import { testCases as carbonDeFiTestCases } from './carbon-defi/tests/testCases'
 import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
 import { testCases as compoundTestCases } from './compound/tests/testCases'
@@ -34,6 +35,7 @@ runAllTests()
 function runAllTests() {
   runProtocolTests(Protocol.Stargate, stargateTestCases)
   runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
+  runProtocolTests(Protocol.AaveV3, aaveV3TestCases)
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
   runProtocolTests(Protocol.Lido, lidoTestCases)
   runProtocolTests(Protocol.Curve, curveTestCases)
@@ -314,6 +316,37 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
 
         afterAll(() => {
           logger.debug(`[Integration test] getApr for ${protocolId} finished`)
+        })
+      })
+    }
+
+    const txParamsTestCases = testCases.filter(
+      (testCase): testCase is TestCase & { method: 'tx-params' } =>
+        testCase.method === 'tx-params',
+    )
+
+    if (txParamsTestCases.length) {
+      describe('tx-params', () => {
+        it.each(
+          txParamsTestCases.map((testCase) => [testKey(testCase), testCase]),
+        )(
+          'tx-params for test %s match',
+          async (_, testCase) => {
+            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+
+            const response = await defiProvider.getTransactionParams({
+              ...testCase.input,
+              protocolId,
+              chainId: testCase.chainId,
+            })
+
+            expect(response).toEqual(snapshot)
+          },
+          TEST_TIMEOUT,
+        )
+
+        afterAll(() => {
+          logger.debug(`[Integration test] deposits for ${protocolId} finished`)
         })
       })
     }

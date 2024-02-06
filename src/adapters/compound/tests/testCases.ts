@@ -25,4 +25,57 @@ export const testCases: TestCase[] = [
     method: 'prices',
     blockNumber: 18520799,
   },
+
+  {
+    method: 'tx-params',
+    key: 'supply',
+    chainId: Chain.Ethereum,
+    input: {
+      productId: 'pool',
+      action: 'supply',
+      inputs: [
+        '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+        '10000000000000000000',
+      ],
+    },
+  },
+  {
+    method: 'tx-params',
+    key: 'borrow',
+    chainId: Chain.Ethereum,
+    input: {
+      productId: 'pool',
+      action: 'borrow',
+      inputs: [
+        '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
+        '10000000000000000000',
+      ],
+    },
+  },
+  {
+    method: 'tx-params',
+    key: 'withdraw',
+    chainId: Chain.Ethereum,
+    input: {
+      productId: 'pool',
+      action: 'withdraw',
+      inputs: [
+        '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+        '10000000000000000000',
+      ],
+    },
+  },
+  {
+    method: 'tx-params',
+    key: 'repay',
+    chainId: Chain.Ethereum,
+    input: {
+      productId: 'pool',
+      action: 'repay',
+      inputs: [
+        '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
+        '10000000000000000000',
+      ],
+    },
+  },
 ]

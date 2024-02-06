@@ -35,6 +35,7 @@
     "apy": "npm run adapters-cli apy --",
     "apr": "npm run adapters-cli apr --",
     "deposits": "npm run adapters-cli deposits --",
+    "params": "npm run adapters-cli params --",
     "withdrawals": "npm run adapters-cli withdrawals --",
     "stress": "npm run adapters-cli stress --",
     "fix": "run-s fix:*",

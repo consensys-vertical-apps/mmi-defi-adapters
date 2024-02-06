@@ -180,6 +180,15 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   }),
                 }
               }
+              case 'tx-params': {
+                return {
+                  snapshot: await defiProvider.getTransactionParams({
+                    chainId,
+                    protocolId,
+                    ...testCase.input,
+                  }),
+                }
+              }
             }
           })()
 
