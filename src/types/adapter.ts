@@ -1,7 +1,7 @@
 import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
-import type { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
+import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import type { Erc20Metadata } from './erc20Metadata'
 
 export const TokenType = {

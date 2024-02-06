@@ -4,7 +4,7 @@ import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -97,10 +97,6 @@ export class IZiswapAdapter extends SimplePoolAdapter {
     }
   }
 
-  /**
-   * Update me.
-   * Returning an array of your protocol tokens.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     throw new NotImplementedError()
   }
@@ -276,21 +272,12 @@ export class IZiswapAdapter extends SimplePoolAdapter {
     })
   }
 
-  /**
-   * Update me.
-   * Add logic to get tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to calculate the underlying token rate of 1 protocol token
-   */
   async getProtocolTokenToUnderlyingTokenRate(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {

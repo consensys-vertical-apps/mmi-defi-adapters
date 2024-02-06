@@ -152,11 +152,6 @@ export class CompoundPoolAdapter
     return [underlyingTokenBalance]
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {

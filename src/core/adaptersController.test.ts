@@ -4,7 +4,7 @@ import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { AdaptersController } from './adaptersController'
 import { Chain } from './constants/chains'
 import { AdapterMissingError } from './errors/errors'
-import { CustomJsonRpcProvider } from './utils/customJsonRpcProvider'
+import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 
 const providers = Object.values(Chain).reduce(
   (accumulator, current) => {

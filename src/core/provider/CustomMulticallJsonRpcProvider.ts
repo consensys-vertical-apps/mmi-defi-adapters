@@ -1,7 +1,10 @@
 import { JsonRpcApiProviderOptions, TransactionRequest } from 'ethers'
 import { Chain } from '../constants/chains'
-import { CustomJsonRpcProvider } from './customJsonRpcProvider'
-import { MulticallQueue } from './multicall'
+import {
+  CustomJsonRpcProvider,
+  CustomJsonRpcProviderOptions,
+} from './CustomJsonRpcProvider'
+import { MulticallQueue } from './MulticallQueue'
 
 export interface CustomTransactionRequest extends TransactionRequest {
   blockTag?: number
@@ -19,14 +22,16 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     url,
     chainId,
     multicallQueue,
-    options,
+    customOptions,
+    jsonRpcProviderOptions,
   }: {
     url: string
     chainId: Chain
     multicallQueue: MulticallQueue
-    options?: JsonRpcApiProviderOptions
+    customOptions: CustomJsonRpcProviderOptions
+    jsonRpcProviderOptions?: JsonRpcApiProviderOptions
   }) {
-    super({ url, chainId, options })
+    super({ url, chainId, customOptions, jsonRpcProviderOptions })
     this.multicallQueue = multicallQueue
     this.cache = {}
   }
