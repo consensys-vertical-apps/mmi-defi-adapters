@@ -3,6 +3,7 @@ import { JsonRpcProvider, TransactionRequest } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
 import { Chain, ChainName } from '../../core/constants/chains'
 import { DefiProvider } from '../../defiProvider'
+import { DisplayMovementsByBlock } from '../../types/response'
 
 export async function simulateTx({
   provider,
@@ -59,7 +60,7 @@ export async function simulateTx({
       tx: txReq,
     })
 
-    console.log('Transaction minted')
+    console.log('Transaction mined')
 
     const chainName = ChainName[chainId]
     const forkDefiProvider = new DefiProvider({
@@ -92,36 +93,43 @@ export async function simulateTx({
     ])
 
     if (!deposits.success || !withdrawals.success) {
-      console.error('XXXX', {
+      console.error('Failed to fetch deposits and withdrawals', {
         deposits,
         withdrawals,
       })
       throw new Error('Failed to fetch deposits and withdrawals')
     }
 
-    deposits.movements.forEach((deposit) => {
-      if (
-        deposit.transactionHash === result.hash &&
-        deposit.tokens &&
-        deposit.tokens.length > 0
-      ) {
-        deposit.tokens?.forEach((token) => {
-          console.log('Deposit', token)
-        })
-      }
-    })
+    const extractMovements = (movements: DisplayMovementsByBlock[]) => {
+      return movements.flatMap((movement) => {
+        if (
+          movement.transactionHash === result.hash &&
+          movement.tokens &&
+          movement.tokens.length > 0
+        ) {
+          return movement.tokens
+        }
 
-    withdrawals.movements.forEach((withdrawal) => {
-      if (
-        withdrawal.transactionHash === result.hash &&
-        withdrawal.tokens &&
-        withdrawal.tokens.length > 0
-      ) {
-        withdrawal.tokens?.forEach((token) => {
-          console.log('Withdrawal', token)
-        })
-      }
-    })
+        return []
+      })
+    }
+
+    const tokenDeposits = extractMovements(deposits.movements)
+    const tokenWithdrawals = extractMovements(withdrawals.movements)
+
+    if (tokenDeposits.length > 0) {
+      console.log('Deposits')
+      tokenDeposits.forEach((token) => {
+        console.log(token)
+      })
+    }
+
+    if (tokenWithdrawals.length > 0) {
+      console.log('Withdrawals')
+      tokenWithdrawals.forEach((token) => {
+        console.log(token)
+      })
+    }
   } finally {
     disposeFork.dispose()
     console.log('Network fork has been disposed')
