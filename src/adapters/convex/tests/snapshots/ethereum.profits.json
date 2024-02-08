@@ -26,7 +26,7 @@
       "productId": "staking",
       "success": false,
       "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+        "message": "Protocol token pool not found",
         "details": {
           "name": "Error"
         }
@@ -49,13 +49,13 @@
           "symbol": "stkCvxCrv",
           "decimals": 18,
           "type": "protocol",
-          "profit": 1.9605412988848627,
-          "performance": 0.011338521070608135,
+          "profit": 1.7228626927251014,
+          "performance": 0.009809125958622714,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 172.90979014600097,
-            "endPositionValue": 174.87033144488584
+            "startPositionValue": 175.63875721369635,
+            "endPositionValue": 177.36161990642145
           }
         }
       ],

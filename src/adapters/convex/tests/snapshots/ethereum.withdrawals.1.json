@@ -26,7 +26,7 @@
             "decimals": 18,
             "balanceRaw": "901431379832780966661n",
             "type": "underlying",
-            "price": 0.5515062526540634,
+            "price": 0.5489303897600447,
             "balance": 901.431379832781
           },
           {
@@ -36,6 +36,7 @@
             "decimals": 18,
             "balanceRaw": "8112882418495028699n",
             "type": "underlying",
+            "price": 3.4260021072954094,
             "balance": 8.112882418495028
           }
         ],

@@ -1,5 +1,5 @@
 {
-  "blockNumber": 16628151,
+  "blockNumber": 19184953,
   "snapshot": [
     {
       "protocolId": "curve",
@@ -18,18 +18,18 @@
           "symbol": "3Crv",
           "decimals": 18,
           "type": "protocol",
-          "profit": 3.410930764652221,
-          "performance": 0.001135223789612643,
+          "profit": -1.7101629898316446,
+          "performance": -0.004342705589944947,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 3004.632915432548,
-            "endPositionValue": 3008.0438461972003
+            "startPositionValue": 393.801273056902,
+            "endPositionValue": 392.09111006707036
           }
         }
       ],
-      "fromBlock": 16621005,
-      "toBlock": 16628151
+      "fromBlock": 19177807,
+      "toBlock": 19184953
     },
     {
       "protocolId": "curve",
@@ -42,8 +42,8 @@
       "productId": "staking",
       "success": true,
       "tokens": [],
-      "fromBlock": 16621005,
-      "toBlock": 16628151
+      "fromBlock": 19177807,
+      "toBlock": 19184953
     }
   ]
 }

@@ -22,7 +22,7 @@ export async function getTokenMetadata(
 ): Promise<Erc20Metadata> {
   const fileMetadata = CHAIN_METADATA[chainId]
   if (fileMetadata) {
-    const fileTokenMetadata = fileMetadata[tokenAddress]
+    const fileTokenMetadata = fileMetadata[tokenAddress.toLowerCase()]
     if (fileTokenMetadata) {
       logger.debug(
         { tokenAddress, chainId },

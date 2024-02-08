@@ -28,7 +28,7 @@
               "balanceRaw": "38951892054n",
               "type": "underlying",
               "balance": 389.51892054,
-              "price": 24194.028813945602,
+              "price": 26604.83144926859,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
@@ -97,7 +97,7 @@
               "balanceRaw": "5306571196169n",
               "type": "underlying",
               "balance": 5306571.196169,
-              "price": 0.9825044425491788,
+              "price": 0.9970067951643083,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
@@ -119,7 +119,7 @@
               "balanceRaw": "300026251n",
               "type": "underlying",
               "balance": 3.00026251,
-              "price": 24194.028813945602,
+              "price": 26604.83144926859,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
@@ -141,7 +141,7 @@
               "balanceRaw": "366385813220365993540948n",
               "type": "underlying",
               "balance": 366385.813220366,
-              "price": 0.9817702931117692,
+              "price": 0.9996949586138943,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
@@ -163,7 +163,7 @@
               "balanceRaw": "3012871992483n",
               "type": "underlying",
               "balance": 3012871.992483,
-              "price": 0.9828098729049131,
+              "price": 0.9967911242920605,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],

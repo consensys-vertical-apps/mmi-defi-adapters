@@ -29,6 +29,7 @@
               "balanceRaw": "137262192279n",
               "type": "underlying",
               "balance": 1372.62192279,
+              "price": 0.1024214812661522,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
             },
             {
@@ -39,6 +40,7 @@
               "balanceRaw": "59840960204n",
               "type": "underlying-claimable",
               "balance": 598.40960204,
+              "price": 0.1024214812661522,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
             },
             {
@@ -49,7 +51,7 @@
               "balanceRaw": "860865290n",
               "type": "underlying",
               "balance": 860.86529,
-              "price": 0.9861359562717442,
+              "price": 0.9993556525657175,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             },
             {
@@ -60,7 +62,7 @@
               "balanceRaw": "64741188n",
               "type": "underlying-claimable",
               "balance": 64.741188,
-              "price": 0.9861359562717442,
+              "price": 0.9993556525657175,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
@@ -83,6 +85,7 @@
               "balanceRaw": "522568969405n",
               "type": "underlying",
               "balance": 5225.68969405,
+              "price": 0.1024214812661522,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
             },
             {
@@ -93,6 +96,7 @@
               "balanceRaw": "0n",
               "type": "underlying-claimable",
               "balance": 0,
+              "price": 0.1024214812661522,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
             },
             {
@@ -103,7 +107,7 @@
               "balanceRaw": "0n",
               "type": "underlying",
               "balance": 0,
-              "price": 0.9861359562717442,
+              "price": 0.9993556525657175,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             },
             {
@@ -114,7 +118,7 @@
               "balanceRaw": "0n",
               "type": "underlying-claimable",
               "balance": 0,
-              "price": 0.9861359562717442,
+              "price": 0.9993556525657175,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],

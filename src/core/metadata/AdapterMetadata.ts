@@ -43,10 +43,7 @@ import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
 import MendiFinanceSupplyLineaMendi from '../../adapters/mendi-finance/products/supply/metadata/linea.mendi.json'
-import PricesUsdArbitrumProtocolToken from '../../adapters/prices/products/usd/metadata/arbitrum.protocol-token.json'
-import PricesUsdEthereumProtocolToken from '../../adapters/prices/products/usd/metadata/ethereum.protocol-token.json'
-import PricesUsdOptimismProtocolToken from '../../adapters/prices/products/usd/metadata/optimism.protocol-token.json'
-import PricesUsdPolygonProtocolToken from '../../adapters/prices/products/usd/metadata/polygon.protocol-token.json'
+
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -461,42 +458,7 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     ConvexCvxcrvWrapperEthereumProtocolToken,
   ],
-  [
-    metadataKey({
-      protocolId: Protocol.Prices,
-      productId: 'usd',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    PricesUsdEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Prices,
-      productId: 'usd',
-      chainId: Chain.Polygon,
-      fileKey: 'protocol-token',
-    }),
-    PricesUsdPolygonProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Prices,
-      productId: 'usd',
-      chainId: Chain.Arbitrum,
-      fileKey: 'protocol-token',
-    }),
-    PricesUsdArbitrumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Prices,
-      productId: 'usd',
-      chainId: Chain.Optimism,
-      fileKey: 'protocol-token',
-    }),
-    PricesUsdOptimismProtocolToken,
-  ],
+
   [
     metadataKey({
       protocolId: Protocol.ChimpExchange,
