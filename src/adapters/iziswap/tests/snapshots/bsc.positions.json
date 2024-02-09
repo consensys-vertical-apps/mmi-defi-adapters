@@ -29,6 +29,7 @@
               "balanceRaw": "41266669681491433n",
               "type": "underlying",
               "balance": 0.04126666968149143,
+              "price": 0.9991622725222233,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
             },
             {
@@ -39,6 +40,7 @@
               "balanceRaw": "74103064033407n",
               "type": "underlying-claimable",
               "balance": 0.000074103064033407,
+              "price": 0.9991622725222233,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
             },
             {
@@ -49,6 +51,7 @@
               "balanceRaw": "165936555968351n",
               "type": "underlying",
               "balance": 0.000165936555968351,
+              "price": 238.29789567513524,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
             },
             {
@@ -59,6 +62,7 @@
               "balanceRaw": "300441510261n",
               "type": "underlying-claimable",
               "balance": 3.00441510261e-7,
+              "price": 238.29789567513524,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
             }
           ],

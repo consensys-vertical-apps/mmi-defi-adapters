@@ -12,6 +12,7 @@ import {
   AdapterMissingError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
+import { logger } from '../utils/logger'
 
 export function ResolveUnderlyingPositions(
   originalMethod: SimplePoolAdapter['getPositions'],
@@ -204,21 +205,22 @@ async function fetchPrice(
   underlyingProtocolTokenPosition: Underlying,
   blockNumber: number | undefined,
 ) {
+  let priceAdapter
   try {
-    const priceAdapter = await adapter.adaptersController.fetchAdapter(
+    priceAdapter = await adapter.adaptersController.fetchAdapter(
       adapter.chainId,
-      Protocol.Prices,
+      Protocol.PricesV2,
       'usd',
     )
-
-    const isSupported = (await priceAdapter.getProtocolTokens()).find(
-      ({ address }) => address == underlyingProtocolTokenPosition.address,
-    )
-
-    if (!isSupported) {
-      return
+  } catch (error) {
+    // price adapter not enabled or no price adapter for this chain
+    if (!(error instanceof AdapterMissingError)) {
+      throw error
     }
+    return
+  }
 
+  try {
     const price = await priceAdapter.getProtocolTokenToUnderlyingTokenRate({
       protocolTokenAddress: underlyingProtocolTokenPosition.address,
       blockNumber,
@@ -229,10 +231,13 @@ async function fetchPrice(
     underlyingProtocolTokenPosition.tokens = undefined
     return
   } catch (error) {
-    // price adapter not enabled or no price adapter for this chain
-    if (!(error instanceof AdapterMissingError)) {
-      throw error
-    }
+    logger.debug(
+      error,
+      'Error getting price for underlying token: ' +
+        underlyingProtocolTokenPosition.address +
+        ' blockNumber:' +
+        blockNumber?.toString(),
+    )
     return
   }
 }

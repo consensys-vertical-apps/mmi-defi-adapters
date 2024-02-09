@@ -27,7 +27,7 @@
             "balanceRaw": "49999988n",
             "type": "underlying",
             "blockNumber": 18157923,
-            "price": 0.9835024271229612,
+            "price": 0.9983911029180587,
             "balance": 49.999988
           }
         ],
@@ -50,7 +50,7 @@
             "balanceRaw": "2190646467n",
             "type": "underlying",
             "blockNumber": 18158326,
-            "price": 0.9796805257305417,
+            "price": 0.9948120796583925,
             "balance": 2190.646467
           }
         ],
@@ -73,7 +73,7 @@
             "balanceRaw": "14999996n",
             "type": "underlying",
             "blockNumber": 18158656,
-            "price": 0.9826513230381952,
+            "price": 0.9972903157839899,
             "balance": 14.999996
           }
         ],
@@ -96,7 +96,7 @@
             "balanceRaw": "14999996n",
             "type": "underlying",
             "blockNumber": 18158660,
-            "price": 0.9826513230381952,
+            "price": 0.9972804319454635,
             "balance": 14.999996
           }
         ],
@@ -119,7 +119,7 @@
             "balanceRaw": "11040164n",
             "type": "underlying",
             "blockNumber": 18158816,
-            "price": 0.9826513230381952,
+            "price": 0.996790868195318,
             "balance": 11.040164
           }
         ],
@@ -142,7 +142,7 @@
             "balanceRaw": "10540164n",
             "type": "underlying",
             "blockNumber": 18158816,
-            "price": 0.9826513230381952,
+            "price": 0.996790868195318,
             "balance": 10.540164
           }
         ],
@@ -165,7 +165,7 @@
             "balanceRaw": "10540164n",
             "type": "underlying",
             "blockNumber": 18158840,
-            "price": 0.9829980148294447,
+            "price": 0.9971354094495644,
             "balance": 10.540164
           }
         ],
@@ -188,7 +188,7 @@
             "balanceRaw": "10540164n",
             "type": "underlying",
             "blockNumber": 18158946,
-            "price": 0.9830173803727756,
+            "price": 0.9979034375032578,
             "balance": 10.540164
           }
         ],
@@ -211,7 +211,7 @@
             "balanceRaw": "0n",
             "type": "underlying",
             "blockNumber": 18159007,
-            "price": 0.9830173803727756,
+            "price": 0.9976146242195156,
             "balance": 0
           }
         ],
@@ -234,7 +234,7 @@
             "balanceRaw": "9999n",
             "type": "underlying",
             "blockNumber": 18159047,
-            "price": 0.9830173803727756,
+            "price": 0.9974605294560998,
             "balance": 0.009999
           }
         ],
@@ -257,7 +257,7 @@
             "balanceRaw": "0n",
             "type": "underlying",
             "blockNumber": 18159653,
-            "price": 0.9833625304373352,
+            "price": 0.9973093204069184,
             "balance": 0
           }
         ],
@@ -280,7 +280,7 @@
             "balanceRaw": "8969139030n",
             "type": "underlying",
             "blockNumber": 18160263,
-            "price": 0.9923318284353679,
+            "price": 1.0001717292063428,
             "balance": 8969.13903
           }
         ],
@@ -303,7 +303,7 @@
             "balanceRaw": "0n",
             "type": "underlying",
             "blockNumber": 18161255,
-            "price": 0.9932514436685441,
+            "price": 1.0010476779742703,
             "balance": 0
           }
         ],
@@ -326,7 +326,7 @@
             "balanceRaw": "1999999566n",
             "type": "underlying",
             "blockNumber": 18162103,
-            "price": 0.9983651843449182,
+            "price": 1.0032928762020894,
             "balance": 1999.999566
           }
         ],
@@ -349,7 +349,7 @@
             "balanceRaw": "0n",
             "type": "underlying",
             "blockNumber": 18162649,
-            "price": 0.996778499133465,
+            "price": 1.0022488059933696,
             "balance": 0
           }
         ],
@@ -372,7 +372,7 @@
             "balanceRaw": "1005886958n",
             "type": "underlying",
             "blockNumber": 18162805,
-            "price": 0.9984304708772938,
+            "price": 1.0029578423511063,
             "balance": 1005.886958
           }
         ],

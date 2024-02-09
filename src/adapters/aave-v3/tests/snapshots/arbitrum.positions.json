@@ -28,7 +28,7 @@
               "balanceRaw": "768788n",
               "type": "underlying",
               "balance": 0.00768788,
-              "price": 26264.484511767278,
+              "price": 29959.90930303581,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
           ],
@@ -97,7 +97,7 @@
               "balanceRaw": "204818507090799477514n",
               "type": "underlying",
               "balance": 204.81850709079947,
-              "price": 0.9954270787855912,
+              "price": 0.9986232479523255,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ],

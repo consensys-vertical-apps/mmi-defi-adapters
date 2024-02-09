@@ -10,7 +10,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0x83524B9EFF5d76Ee4Dba5Bb78B8B2e8BaD3a00Be',
     },
-    blockNumber: 18942987,
+    blockNumber: 19184953,
   },
   {
     chainId: Chain.Ethereum,
@@ -19,7 +19,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0xb58796c7e02852D46bE2d82c7aCCd4524a43b9dE',
     },
-    blockNumber: 18412988,
+    blockNumber: 19184953,
   },
   {
     chainId: Chain.Ethereum,
@@ -28,7 +28,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0xE227836Af161c8194D982a658BEF21F2fD594BDA',
     },
-    blockNumber: 18412988,
+    blockNumber: 19184953,
   },
   {
     chainId: Chain.Ethereum,
@@ -77,7 +77,7 @@ export const testCases: TestCase[] = [
       userAddress: '0xE227836Af161c8194D982a658BEF21F2fD594BDA',
       timePeriod: TimePeriod.oneDay,
     },
-    blockNumber: 18412988,
+    blockNumber: 19184953,
   },
   {
     chainId: Chain.Ethereum,
@@ -87,6 +87,6 @@ export const testCases: TestCase[] = [
       userAddress: '0xE227836Af161c8194D982a658BEF21F2fD594BDA',
       timePeriod: TimePeriod.sevenDays,
     },
-    blockNumber: 18412988,
+    blockNumber: 19184953,
   },
 ]

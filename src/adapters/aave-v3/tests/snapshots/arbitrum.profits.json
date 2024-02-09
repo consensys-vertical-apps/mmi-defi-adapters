@@ -18,13 +18,13 @@
           "symbol": "aArbWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": 8.860284061575356,
-          "performance": 0.04589443421882821,
+          "profit": 11.96237593359831,
+          "performance": 0.0547813590689933,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 193.05792112675007,
-            "endPositionValue": 201.91820518832543
+            "startPositionValue": 218.36581159902462,
+            "endPositionValue": 230.32818753262293
           }
         },
         {
@@ -77,13 +77,13 @@
           "symbol": "variableDebtArbDAI",
           "decimals": 18,
           "type": "protocol",
-          "profit": -2.5449722434735804,
-          "performance": -0.012640365684806169,
+          "profit": 0.25713077782677374,
+          "performance": 0.0012555602839489487,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": -201.33691595114684,
-            "endPositionValue": -203.88188819462042
+            "startPositionValue": -204.79365356958735,
+            "endPositionValue": -204.53652279176058
           }
         }
       ],

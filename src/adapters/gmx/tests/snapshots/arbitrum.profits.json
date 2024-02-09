@@ -10,13 +10,26 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "glp",
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4277f8F2c384827B5273592FF7CeBd9f2C1ac258",
+          "name": "GMX LP",
+          "symbol": "GLP",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.0020204680424669164,
+          "performance": -0.00002292482882541336,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 81.48475562442427,
+            "startPositionValue": 6.649732002681709,
+            "endPositionValue": 88.13246715906351
+          }
         }
-      }
+      ],
+      "fromBlock": 148803082,
+      "toBlock": 151045028
     }
   ]
 }

@@ -11,12 +11,12 @@ export const Protocol = {
   GMX: 'gmx',
   Swell: 'swell',
   Convex: 'convex',
-  Prices: 'prices',
   SyncSwap: 'syncswap',
   IZiSwap: 'iziswap',
   ChimpExchange: 'chimp-exchange',
   MendiFinance: 'mendi-finance',
   CarbonDeFi: 'carbon-defi',
   RocketPool: 'rocket-pool',
+  PricesV2: 'prices-v2',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]

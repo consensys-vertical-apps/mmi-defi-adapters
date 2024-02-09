@@ -55,7 +55,7 @@ export class DefiProvider {
       supportedProtocols,
     })
 
-    const { [Protocol.Prices]: _, ...supportedProtocolsWithoutPrices } =
+    const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
       supportedProtocols
 
     this.adaptersControllerWithoutPrices = new AdaptersController({
@@ -523,7 +523,7 @@ export class DefiProvider {
         ([protocolIdKey, _]) =>
           (!filterProtocolIds ||
             filterProtocolIds.includes(protocolIdKey as Protocol)) &&
-          (method === 'getPrices' || protocolIdKey !== Protocol.Prices),
+          (method === 'getPrices' || protocolIdKey !== Protocol.PricesV2),
       )
       .flatMap(([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol

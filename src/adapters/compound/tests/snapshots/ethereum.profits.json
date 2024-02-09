@@ -18,13 +18,13 @@
           "symbol": "cBAT",
           "decimals": 8,
           "type": "protocol",
-          "profit": -8283.822407730273,
-          "performance": -0.017637460954571468,
+          "profit": -10554.543622878322,
+          "performance": -0.0221914766355038,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 469672.0479816672,
-            "endPositionValue": 461388.22557393694
+            "startPositionValue": 475612.4973672221,
+            "endPositionValue": 465057.9537443438
           }
         },
         {

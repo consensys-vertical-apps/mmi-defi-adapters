@@ -1,5 +1,5 @@
 import { formatUnits } from 'ethers'
-import { priceAdapterConfig } from '../adapters/prices/products/usd/priceAdapterConfig'
+import { priceAdapterConfig } from '../adapters/prices-v2/products/usd/priceV2Config'
 import { enrichMovements, enrichPositionBalance } from '../responseAdapters'
 import {
   ProfitsWithRange,
@@ -110,19 +110,23 @@ export async function getProfits({
 
       const endPositionValue = +formatUnits(
         endPositionValues[key]?.usdRaw ?? 0n,
-        priceAdapterConfig.decimals,
+        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+          .decimals,
       )
       const withdrawal = +formatUnits(
         withdrawals[key]?.usdRaw ?? 0n,
-        priceAdapterConfig.decimals,
+        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+          .decimals,
       )
       const deposit = +formatUnits(
         deposits[key]?.usdRaw ?? 0n,
-        priceAdapterConfig.decimals,
+        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+          .decimals,
       )
       const startPositionValue = +formatUnits(
         startPositionValues[key]?.usdRaw ?? 0n,
-        priceAdapterConfig.decimals,
+        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+          .decimals,
       )
 
       const profitModifier =

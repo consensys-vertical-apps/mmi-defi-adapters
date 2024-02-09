@@ -26,7 +26,7 @@ import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
 import { MendiFinanceBorrowAdapter } from './mendi-finance/products/borrow/mendiFinanceBorrowAdapter'
 import { MendiFinanceSupplyAdapter } from './mendi-finance/products/supply/mendiFinanceSupplyAdapter'
-import { PricesUSDAdapter } from './prices/products/usd/pricesUSDAdapter'
+import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
 import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
@@ -150,13 +150,6 @@ export const supportedProtocols: Record<
     ],
   },
 
-  [Protocol.Prices]: {
-    [Chain.Ethereum]: [PricesUSDAdapter],
-    [Chain.Arbitrum]: [PricesUSDAdapter],
-    [Chain.Optimism]: [PricesUSDAdapter],
-    [Chain.Polygon]: [PricesUSDAdapter],
-  },
-
   [Protocol.IZiSwap]: {
     [Chain.Bsc]: [IZiswapAdapter],
     [Chain.Base]: [IZiswapAdapter],
@@ -182,5 +175,15 @@ export const supportedProtocols: Record<
 
   [Protocol.RocketPool]: {
     [Chain.Ethereum]: [RocketPoolRethAdapter],
+  },
+
+  [Protocol.PricesV2]: {
+    [Chain.Ethereum]: [PricesV2UsdAdapter],
+    [Chain.Polygon]: [PricesV2UsdAdapter],
+    [Chain.Arbitrum]: [PricesV2UsdAdapter],
+    [Chain.Bsc]: [PricesV2UsdAdapter],
+    [Chain.Optimism]: [PricesV2UsdAdapter],
+    [Chain.Avalanche]: [PricesV2UsdAdapter],
+    [Chain.Base]: [PricesV2UsdAdapter],
   },
 }

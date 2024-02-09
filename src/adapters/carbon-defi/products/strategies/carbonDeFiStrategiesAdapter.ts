@@ -1,5 +1,9 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -82,7 +86,11 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     throw new NotImplementedError()
   }
+  private protocolTokenName(token0Symbol: string, token1Symbol: string) {
+    return `${token0Symbol} / ${token1Symbol}`
+  }
 
+  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -110,7 +118,7 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
       )
       if (!results || results.length === 0) return []
 
-      const positions: ProtocolPosition[][] = await Promise.all(
+      const positions: ProtocolPosition[] = await Promise.all(
         results.map(async (strategyRes) => {
           const token0Metadata: Erc20Metadata = await getTokenMetadata(
             strategyRes.tokens[0],
@@ -122,29 +130,46 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
             this.chainId,
             this.provider,
           )
-          return [
-            {
-              type: TokenType.Protocol,
-              tokenId: strategyRes.id.toString(),
-              balanceRaw: strategyRes.orders[0].y,
-              ...token0Metadata,
-            },
-            {
-              type: TokenType.Protocol,
-              tokenId: strategyRes.id.toString(),
-              balanceRaw: strategyRes.orders[1].y,
-              ...token1Metadata,
-            },
-          ]
+
+          return {
+            address: contractAddresses[this.chainId]!.voucherContractAddress,
+            name: this.protocolTokenName(
+              token0Metadata.symbol,
+              token1Metadata.symbol,
+            ),
+            symbol: this.protocolTokenName(
+              token0Metadata.symbol,
+              token1Metadata.symbol,
+            ),
+            decimals: 18,
+            type: TokenType.Protocol,
+            tokenId: strategyRes.id.toString(),
+            balanceRaw: 1n,
+            tokens: [
+              {
+                type: TokenType.Underlying,
+
+                balanceRaw: strategyRes.orders[0].y,
+                ...token0Metadata,
+              },
+              {
+                type: TokenType.Underlying,
+
+                balanceRaw: strategyRes.orders[1].y,
+                ...token1Metadata,
+              },
+            ],
+          }
         }),
       )
 
-      return positions.flat()
+      return positions
     }
 
     return []
   }
 
+  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     fromBlock,
@@ -168,6 +193,7 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     )
   }
 
+  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     fromBlock,
