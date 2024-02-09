@@ -145,12 +145,13 @@ function transactionParamsCommand(
     )
     .option(
       '-t, --token-address <token-address>',
-      'Block number from which the provider will be forked',
+      'Address of the protocol token',
     )
     .option(
       '-b, --block-number <block-number>',
       'Block number from which the provider will be forked',
     )
+    .option('-e, --erc20-token <erc20-token>', 'Asset that needs approval')
     .showHelpAfterError()
     .action(
       async (
@@ -164,6 +165,7 @@ function transactionParamsCommand(
           address: userAddress,
           tokenAddress: protocolTokenAddress,
           blockNumber,
+          erc20Token,
         },
       ) => {
         const txInputParams: string[] = inputs.split(',')
@@ -211,6 +213,7 @@ function transactionParamsCommand(
           protocolId,
           productId,
           blockNumber: Number(blockNumber) ? Number(blockNumber) : undefined,
+          erc20Token,
         })
       },
     )

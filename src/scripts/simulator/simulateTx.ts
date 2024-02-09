@@ -1,6 +1,7 @@
 import { spawn } from 'child_process'
-import { JsonRpcProvider, TransactionRequest } from 'ethers'
+import { JsonRpcProvider, TransactionRequest, ethers } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
+import { Erc20__factory } from '../../contracts'
 import { Chain, ChainName } from '../../core/constants/chains'
 import { DefiProvider } from '../../defiProvider'
 import { DisplayMovementsByBlock } from '../../types/response'
@@ -14,6 +15,7 @@ export async function simulateTx({
   protocolId,
   productId,
   tokenId,
+  erc20Token,
 }: {
   provider: JsonRpcProvider
   chainId: Chain
@@ -25,6 +27,7 @@ export async function simulateTx({
   protocolId: Protocol
   productId: string
   tokenId?: string
+  erc20Token?: string
 }) {
   const providerUrl = provider._getConnection().url
   const disposeFork = await createFork(providerUrl, blockNumber)
@@ -53,14 +56,43 @@ export async function simulateTx({
       }
     } else {
       txReq = input
+
+      // TODO Validate that ERC20Token is populated
+
+      const erc20TokenContract = Erc20__factory.connect(
+        erc20Token!,
+        disposeFork.provider,
+      )
+
+      const approveTx = await erc20TokenContract.approve.populateTransaction(
+        input.to,
+        ethers.MaxUint256,
+      )
+
+      const approveTxReceipt = await testTransaction({
+        forkedProvider: disposeFork.provider,
+        tx: {
+          from: input.from,
+          to: approveTx.to,
+          data: approveTx.data,
+        },
+      })
+
+      console.log('Approval tx receipt', approveTxReceipt)
     }
+
+    await new Promise((resolve) => setTimeout(resolve, 5000))
 
     const result = await testTransaction({
       forkedProvider: disposeFork.provider,
-      tx: txReq,
+      tx: {
+        ...txReq,
+        // maxFeePerGas: 0,
+        // maxPriorityFeePerGas: 0,
+      },
     })
 
-    console.log('Transaction mined')
+    console.log('Transaction mined', result)
 
     const chainName = ChainName[chainId]
     const forkDefiProvider = new DefiProvider({
@@ -72,8 +104,8 @@ export async function simulateTx({
     const [deposits, withdrawals] = await Promise.all([
       forkDefiProvider.getDeposits({
         userAddress: result.from,
-        fromBlock: result.blockNumber,
-        toBlock: result.blockNumber,
+        fromBlock: result.blockNumber - 10,
+        toBlock: result.blockNumber + 1,
         chainId,
         protocolTokenAddress,
         protocolId,
@@ -82,8 +114,8 @@ export async function simulateTx({
       }),
       forkDefiProvider.getWithdrawals({
         userAddress: result.from,
-        fromBlock: result.blockNumber,
-        toBlock: result.blockNumber,
+        fromBlock: result.blockNumber - 10,
+        toBlock: result.blockNumber + 1,
         chainId,
         protocolTokenAddress,
         protocolId,
@@ -91,6 +123,8 @@ export async function simulateTx({
         tokenId,
       }),
     ])
+
+    console.log('AAAAAAAAAAA', deposits, withdrawals)
 
     if (!deposits.success || !withdrawals.success) {
       console.error('Failed to fetch deposits and withdrawals', {
@@ -130,6 +164,14 @@ export async function simulateTx({
         console.log(token)
       })
     }
+
+    const positions = await forkDefiProvider.getPositions({
+      userAddress: result.from,
+      filterProtocolIds: [protocolId],
+      filterChainIds: [chainId],
+    })
+
+    console.log('POSITIONS', positions)
   } finally {
     disposeFork.dispose()
     console.log('Network fork has been disposed')
@@ -142,7 +184,7 @@ async function createFork(providerUrl: string, blockNumber?: number) {
     dispose: () => void
   }>((resolve, reject) => {
     const command = 'anvil'
-    const args = ['-a', '1', '--fork-url', providerUrl]
+    const args = ['-a', '1', '--fork-url', providerUrl, '--gas-price', '0']
 
     if (blockNumber) {
       args.push('--fork-block-number', blockNumber.toString())
