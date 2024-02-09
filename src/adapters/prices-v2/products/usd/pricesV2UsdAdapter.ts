@@ -1,12 +1,9 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  IMetadataBuilder,
-  CacheToFile,
-} from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -27,11 +24,9 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
-
 import { Protocol } from '../../../protocols'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
 import { nativeTokenAddresses, priceAdapterConfig } from './priceV2Config'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 
 export const USD = 'USD'
 

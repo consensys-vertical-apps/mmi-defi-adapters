@@ -94,6 +94,8 @@ describe('ResolveUnderlyingPositions', () => {
                 symbol: 'ETH',
                 decimals: 18,
                 type: 'underlying',
+                priceRaw: 1000000000000000000n,
+                tokens: undefined,
                 balanceRaw: 90177902840852853190524n,
               },
             ],
@@ -167,7 +169,7 @@ describe('ResolveUnderlyingPositions', () => {
       '0x0000000000000000000000000000000000000000',
     )
 
-    expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledTimes(1)
+    expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledTimes(2)
     expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledWith({
       protocolTokenAddress: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
       blockNumber: 12345,
@@ -325,7 +327,7 @@ describe('ResolveUnderlyingPositions', () => {
       '0x0000000000000000000000000000000000000000',
     )
 
-    expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledTimes(2)
+    expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledTimes(3)
     expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledWith({
       protocolTokenAddress: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
     })

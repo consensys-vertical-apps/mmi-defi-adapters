@@ -1,6 +1,6 @@
 import { formatUnits } from 'ethers'
-import { priceAdapterConfig } from './adapters/prices/products/usd/priceAdapterConfig'
-import { USD } from './adapters/prices/products/usd/pricesUSDAdapter'
+import { USD } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter'
+import { priceAdapterConfig } from './adapters/prices-v2/products/usd/priceV2Config'
 import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
@@ -29,7 +29,11 @@ export function enrichPositionBalance<
     ...balance,
     balance: +formatUnits(balance.balanceRaw, balance.decimals),
     price: balance.priceRaw
-      ? +formatUnits(balance.priceRaw, priceAdapterConfig.decimals)
+      ? +formatUnits(
+          balance.priceRaw,
+          priceAdapterConfig[chainId as keyof typeof priceAdapterConfig]
+            .decimals,
+        )
       : undefined,
     priceRaw: undefined,
     ...(balance.tokens
@@ -91,7 +95,11 @@ export function enrichMovements(
           {
             ...token,
             price: token.priceRaw
-              ? +formatUnits(token.priceRaw, priceAdapterConfig.decimals)
+              ? +formatUnits(
+                  token.priceRaw,
+                  priceAdapterConfig[chainId as keyof typeof priceAdapterConfig]
+                    .decimals,
+                )
               : undefined,
             priceRaw: undefined,
             balance: +formatUnits(token.balanceRaw, token.decimals),

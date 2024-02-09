@@ -23,7 +23,7 @@
           "tokens": [
             {
               "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
-              "name": "Voyager Token",
+              "name": "Voyager VGX",
               "symbol": "VGX",
               "decimals": 8,
               "balanceRaw": "137262192279n",
@@ -34,7 +34,7 @@
             },
             {
               "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
-              "name": "Voyager Token",
+              "name": "Voyager VGX",
               "symbol": "VGX",
               "decimals": 8,
               "balanceRaw": "59840960204n",
@@ -79,7 +79,7 @@
           "tokens": [
             {
               "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
-              "name": "Voyager Token",
+              "name": "Voyager VGX",
               "symbol": "VGX",
               "decimals": 8,
               "balanceRaw": "522568969405n",
@@ -90,7 +90,7 @@
             },
             {
               "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
-              "name": "Voyager Token",
+              "name": "Voyager VGX",
               "symbol": "VGX",
               "decimals": 8,
               "balanceRaw": "0n",
