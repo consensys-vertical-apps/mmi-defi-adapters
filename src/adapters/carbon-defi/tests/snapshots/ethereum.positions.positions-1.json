@@ -19,7 +19,7 @@
           "decimals": 18,
           "type": "protocol",
           "tokenId": "340282366920938463463374607431768211693",
-          "balanceRaw": "1n",
+          "balanceRaw": "1000000000000000000n",
           "tokens": [
             {
               "type": "underlying",
@@ -44,7 +44,7 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
-          "balance": 1e-18
+          "balance": 1
         }
       ]
     }

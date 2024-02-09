@@ -144,7 +144,7 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
             decimals: 18,
             type: TokenType.Protocol,
             tokenId: strategyRes.id.toString(),
-            balanceRaw: 1n,
+            balanceRaw: 10n ** 18n,
             tokens: [
               {
                 type: TokenType.Underlying,

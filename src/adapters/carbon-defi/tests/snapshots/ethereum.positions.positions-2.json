@@ -19,7 +19,7 @@
           "decimals": 18,
           "type": "protocol",
           "tokenId": "20416942015256307807802476445906092687747",
-          "balanceRaw": "1n",
+          "balanceRaw": "1000000000000000000n",
           "tokens": [
             {
               "type": "underlying",
@@ -44,7 +44,7 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png"
             }
           ],
-          "balance": 1e-18
+          "balance": 1
         },
         {
           "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
@@ -53,7 +53,7 @@
           "decimals": 18,
           "type": "protocol",
           "tokenId": "1020847100762815390390123822295304634823",
-          "balanceRaw": "1n",
+          "balanceRaw": "1000000000000000000n",
           "tokens": [
             {
               "type": "underlying",
@@ -78,7 +78,7 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "balance": 1e-18
+          "balance": 1
         }
       ]
     }
