@@ -132,7 +132,7 @@ function transactionParamsCommand(
     .command(commandName)
     .argument('[action]', 'Name of action you want to do on protocol')
     .argument('[protocol]', 'Name of the protocol')
-    .argument('[product]', 'Name of the product')
+    .argument('[productId]', 'Name of the product')
     .argument('[chain]', 'Chain Id ')
     .argument(
       '[inputs]',
@@ -156,9 +156,9 @@ function transactionParamsCommand(
     .action(
       async (
         action,
-        protocolId,
+        protocol,
         productId,
-        chainId,
+        chain,
         inputs,
         {
           simulate,
@@ -170,21 +170,21 @@ function transactionParamsCommand(
       ) => {
         const txInputParams: string[] = inputs.split(',')
 
-        const protocol = protocolFilter(protocolId)
-        const chain = chainFilter(chainId)
+        const protocolId = protocolFilter(protocol)
+        const chainId = chainFilter(chain)
 
-        if (!protocol) {
+        if (!protocolId) {
           throw new Error('Protocol could not be parsed from input')
         }
-        if (!chain) {
+        if (!chainId) {
           throw new Error('Chain could not be parsed from input')
         }
 
         const data = await feature({
           action,
-          protocolId: protocol,
+          protocolId,
           productId,
-          chainId: chain,
+          chainId,
           inputs: txInputParams,
         })
 
@@ -201,7 +201,7 @@ function transactionParamsCommand(
           return
         }
 
-        const provider = chainProviders[chain]
+        const provider = chainProviders[chainId]
         await simulateTx({
           provider,
           chainId: chain,
