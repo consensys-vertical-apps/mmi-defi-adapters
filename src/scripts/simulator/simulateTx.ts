@@ -35,7 +35,7 @@ export async function simulateTx({
 }) {
   console.log('\nStarting forked simulation of transaction parameters')
   const providerUrl = provider._getConnection().url
-  const disposeFork = await createFork(providerUrl, blockNumber)
+  const forkDetails = await createFork(providerUrl, blockNumber)
 
   try {
     let txReq: TransactionRequest & { from: string }
@@ -65,7 +65,7 @@ export async function simulateTx({
       if (asset) {
         const erc20TokenContract = Erc20__factory.connect(
           asset!,
-          disposeFork.provider,
+          forkDetails.provider,
         )
 
         const approveTx = await erc20TokenContract.approve.populateTransaction(
@@ -75,7 +75,7 @@ export async function simulateTx({
 
         console.log('Submitting transaction to approve tokens')
         await testTransaction({
-          forkedProvider: disposeFork.provider,
+          forkedProvider: forkDetails.provider,
           tx: {
             from: input.from,
             to: approveTx.to,
@@ -88,7 +88,7 @@ export async function simulateTx({
 
     console.log('Submitting transaction')
     const result = await testTransaction({
-      forkedProvider: disposeFork.provider,
+      forkedProvider: forkDetails.provider,
       tx: txReq,
     })
     console.log('Transaction mined')
@@ -96,7 +96,7 @@ export async function simulateTx({
     const chainName = ChainName[chainId]
     const forkDefiProvider = new DefiProvider({
       provider: {
-        [chainName]: 'http://127.0.0.1:8545',
+        [chainName]: forkDetails.providerUrl,
       },
     })
 
@@ -142,13 +142,14 @@ export async function simulateTx({
     console.log('\nPrinting positions for that protocol token and product')
     console.log(bigintJsonStringify(productPositions, 2))
   } finally {
-    disposeFork.dispose()
+    forkDetails.dispose()
     console.log('Network fork has been disposed')
   }
 }
 
 async function createFork(providerUrl: string, blockNumber?: number) {
   return await new Promise<{
+    providerUrl: string
     provider: JsonRpcProvider
     dispose: () => void
   }>((resolve, reject) => {
@@ -172,19 +173,24 @@ async function createFork(providerUrl: string, blockNumber?: number) {
     }, 10000)
 
     // Checks for the message that indicates the fork is ready
-    anvilProcess.stdout.on('data', (data) => {
-      if (data.includes('Listening on 127.0.0.1:8545')) {
-        console.log('Network has been forked and is ready')
+    anvilProcess.stdout.on('data', (data: Buffer) => {
+      const match = data
+        .toString()
+        .match(/Listening on (\d+\.\d+\.\d+\.\d+:\d+)/)
+      if (match && match.length === 2) {
+        const providerUrl = `http://${match[1]!}`
+        console.log(`Network has been forked and is ready at ${providerUrl}`)
         clearTimeout(timeout)
         resolve({
-          provider: new JsonRpcProvider('http://127.0.0.1:8545'),
+          providerUrl,
+          provider: new JsonRpcProvider(providerUrl),
           dispose,
         })
       }
     })
 
     // If there's an error, print it and reject the promise
-    anvilProcess.stderr.on('data', (data) => {
+    anvilProcess.stderr.on('data', (data: Buffer) => {
       console.error('Failed to fork the network with anvil')
       console.error(`stderr: ${data}`)
       clearTimeout(timeout)
