@@ -140,7 +140,7 @@ function transactionParamsCommand(
     )
     .option('-s, --simulate', 'Simulate transaction against a forked provider')
     .option(
-      '-a, --address <address>',
+      '-u, --user-address <user-address>',
       'Simulate transaction against a forked provider',
     )
     .option(
@@ -151,7 +151,7 @@ function transactionParamsCommand(
       '-b, --block-number <block-number>',
       'Block number from which the provider will be forked',
     )
-    .option('-e, --erc20-token <erc20-token>', 'Asset that needs approval')
+    .option('-a, --asset <asset>', 'ERC20 asset that needs approval')
     .showHelpAfterError()
     .action(
       async (
@@ -162,10 +162,10 @@ function transactionParamsCommand(
         inputs,
         {
           simulate,
-          address: userAddress,
+          userAddress,
           tokenAddress: protocolTokenAddress,
           blockNumber,
-          erc20Token,
+          asset,
         },
       ) => {
         const txInputParams: string[] = inputs.split(',')
@@ -213,7 +213,7 @@ function transactionParamsCommand(
           protocolId,
           productId,
           blockNumber: Number(blockNumber) ? Number(blockNumber) : undefined,
-          erc20Token,
+          asset,
         })
       },
     )

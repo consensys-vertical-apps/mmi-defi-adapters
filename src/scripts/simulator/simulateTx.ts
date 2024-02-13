@@ -3,8 +3,12 @@ import { JsonRpcProvider, TransactionRequest, ethers } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { Chain, ChainName } from '../../core/constants/chains'
+import { bigintJsonStringify } from '../../core/utils/bigintJson'
 import { DefiProvider } from '../../defiProvider'
-import { DisplayMovementsByBlock } from '../../types/response'
+import {
+  DefiMovementsResponse,
+  DisplayMovementsByBlock,
+} from '../../types/response'
 
 export async function simulateTx({
   provider,
@@ -15,7 +19,7 @@ export async function simulateTx({
   protocolId,
   productId,
   tokenId,
-  erc20Token,
+  asset,
 }: {
   provider: JsonRpcProvider
   chainId: Chain
@@ -27,8 +31,9 @@ export async function simulateTx({
   protocolId: Protocol
   productId: string
   tokenId?: string
-  erc20Token?: string
+  asset?: string
 }) {
+  console.log('\nStarting forked simulation of transaction parameters')
   const providerUrl = provider._getConnection().url
   const disposeFork = await createFork(providerUrl, blockNumber)
 
@@ -57,40 +62,36 @@ export async function simulateTx({
     } else {
       txReq = input
 
-      // TODO Validate that ERC20Token is populated
+      if (asset) {
+        const erc20TokenContract = Erc20__factory.connect(
+          asset!,
+          disposeFork.provider,
+        )
 
-      const erc20TokenContract = Erc20__factory.connect(
-        erc20Token!,
-        disposeFork.provider,
-      )
+        const approveTx = await erc20TokenContract.approve.populateTransaction(
+          input.to,
+          ethers.MaxUint256,
+        )
 
-      const approveTx = await erc20TokenContract.approve.populateTransaction(
-        input.to,
-        ethers.MaxUint256,
-      )
-
-      const approveTxReceipt = await testTransaction({
-        forkedProvider: disposeFork.provider,
-        tx: {
-          from: input.from,
-          to: approveTx.to,
-          data: approveTx.data,
-        },
-      })
-
-      console.log('Approval tx receipt' /*, approveTxReceipt*/)
+        console.log('Submitting transaction to approve tokens')
+        await testTransaction({
+          forkedProvider: disposeFork.provider,
+          tx: {
+            from: input.from,
+            to: approveTx.to,
+            data: approveTx.data,
+          },
+        })
+        console.log('Transaction to approve tokens mined')
+      }
     }
 
+    console.log('Submitting transaction')
     const result = await testTransaction({
       forkedProvider: disposeFork.provider,
-      tx: {
-        ...txReq,
-        // maxFeePerGas: 0,
-        // maxPriorityFeePerGas: 0,
-      },
+      tx: txReq,
     })
-
-    console.log('Transaction mined' /*, result*/)
+    console.log('Transaction mined')
 
     const chainName = ChainName[chainId]
     const forkDefiProvider = new DefiProvider({
@@ -99,7 +100,7 @@ export async function simulateTx({
       },
     })
 
-    const [deposits, withdrawals] = await Promise.all([
+    const [deposits, withdrawals, positions] = await Promise.all([
       forkDefiProvider.getDeposits({
         userAddress: result.from,
         fromBlock: result.blockNumber - 10,
@@ -120,57 +121,26 @@ export async function simulateTx({
         productId,
         tokenId,
       }),
+      forkDefiProvider.getPositions({
+        userAddress: result.from,
+        filterProtocolIds: [protocolId],
+        filterChainIds: [chainId],
+        filterProtocolTokens: [protocolTokenAddress],
+        blockNumbers: {
+          [Chain.Ethereum]: result.blockNumber,
+        },
+      }),
     ])
 
-    if (!deposits.success || !withdrawals.success) {
-      console.error('Failed to fetch deposits and withdrawals', {
-        deposits,
-        withdrawals,
-      })
-      throw new Error('Failed to fetch deposits and withdrawals')
-    }
+    processMovements('deposits', deposits, result.hash)
+    processMovements('withdrawals', withdrawals, result.hash)
 
-    const extractMovements = (movements: DisplayMovementsByBlock[]) => {
-      return movements.flatMap((movement) => {
-        if (
-          movement.transactionHash === result.hash &&
-          movement.tokens &&
-          movement.tokens.length > 0
-        ) {
-          return movement.tokens
-        }
+    const productPositions = positions.filter(
+      (position) => position.success && position.productId === productId,
+    )
 
-        return []
-      })
-    }
-
-    const tokenDeposits = extractMovements(deposits.movements)
-    const tokenWithdrawals = extractMovements(withdrawals.movements)
-
-    if (tokenDeposits.length > 0) {
-      console.log('Deposits')
-      tokenDeposits.forEach((token) => {
-        console.log(token)
-      })
-    }
-
-    if (tokenWithdrawals.length > 0) {
-      console.log('Withdrawals')
-      tokenWithdrawals.forEach((token) => {
-        console.log(token)
-      })
-    }
-
-    const positions = await forkDefiProvider.getPositions({
-      userAddress: result.from,
-      filterProtocolIds: [protocolId],
-      filterChainIds: [chainId],
-      blockNumbers: {
-        [Chain.Ethereum]: result.blockNumber,
-      },
-    })
-
-    console.log('POSITIONS', positions)
+    console.log('\nPrinting positions for that protocol token and product')
+    console.log(bigintJsonStringify(productPositions, 2))
   } finally {
     disposeFork.dispose()
     console.log('Network fork has been disposed')
@@ -242,4 +212,41 @@ async function testTransaction({
   }
 
   return receipt
+}
+
+function processMovements(
+  movementType: 'deposits' | 'withdrawals',
+  movementsResponse: DefiMovementsResponse,
+  txHash: string,
+) {
+  if (!movementsResponse.success) {
+    console.error(`\nFailed to fetch ${movementType}`, {
+      movementsResponse,
+    })
+
+    return
+  }
+
+  const extractMovements = (movements: DisplayMovementsByBlock[]) => {
+    return movements.flatMap((movement) => {
+      if (
+        movement.transactionHash === txHash &&
+        movement.tokens &&
+        movement.tokens.length > 0
+      ) {
+        return movement.tokens
+      }
+
+      return []
+    })
+  }
+
+  const tokenMovements = extractMovements(movementsResponse.movements)
+
+  if (tokenMovements.length > 0) {
+    console.log(`\nPrinting ${movementType} for transaction ${txHash}`)
+    tokenMovements.forEach((token) => {
+      console.log(bigintJsonStringify(token, 2))
+    })
+  }
 }
