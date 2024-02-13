@@ -116,7 +116,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
 
 const getAddress = (chainId: Chain) => {
   if (chainId == Chain.Ethereum) {
-    return '0x5FAab9E1adbddaD0a08734BE8a52185Fd6558E14'
+    return '0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2'
   }
 
   throw new Error('Chain not supported')

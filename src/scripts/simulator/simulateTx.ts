@@ -78,10 +78,8 @@ export async function simulateTx({
         },
       })
 
-      console.log('Approval tx receipt', approveTxReceipt)
+      console.log('Approval tx receipt' /*, approveTxReceipt*/)
     }
-
-    await new Promise((resolve) => setTimeout(resolve, 5000))
 
     const result = await testTransaction({
       forkedProvider: disposeFork.provider,
@@ -92,7 +90,7 @@ export async function simulateTx({
       },
     })
 
-    console.log('Transaction mined', result)
+    console.log('Transaction mined' /*, result*/)
 
     const chainName = ChainName[chainId]
     const forkDefiProvider = new DefiProvider({
@@ -123,8 +121,6 @@ export async function simulateTx({
         tokenId,
       }),
     ])
-
-    console.log('AAAAAAAAAAA', deposits, withdrawals)
 
     if (!deposits.success || !withdrawals.success) {
       console.error('Failed to fetch deposits and withdrawals', {
@@ -169,6 +165,9 @@ export async function simulateTx({
       userAddress: result.from,
       filterProtocolIds: [protocolId],
       filterChainIds: [chainId],
+      blockNumbers: {
+        [Chain.Ethereum]: result.blockNumber,
+      },
     })
 
     console.log('POSITIONS', positions)
