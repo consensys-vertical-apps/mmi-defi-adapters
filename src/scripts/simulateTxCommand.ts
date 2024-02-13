@@ -47,7 +47,7 @@ export function simulateTxCommand(
           protocolTokenAddress,
           protocolId,
           productId,
-          blockNumber: Number(blockNumber),
+          blockNumber: Number(blockNumber) ? Number(blockNumber) : undefined,
         })
       },
     )
