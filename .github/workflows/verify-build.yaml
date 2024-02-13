@@ -18,8 +18,14 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+
       - name: Install dependencies
         run: npm ci
+
+      - name: Verify tsc config
+        run: npm run test:tsc
 
       - name: Verify eslint config
         run: npm run lint
@@ -32,6 +38,9 @@ jobs:
 
       - name: Create new adapter with DefaultAdapter template
         run: |
+          if [ ! -f .env ]; then
+            touch .env
+          fi
           npm run new-adapter -- -p test-default-adapter-protocol -pd test-default-adapter-product -c 1 -t DefaultAdapter -y
           npm run build
 

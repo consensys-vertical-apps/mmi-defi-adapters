@@ -4,6 +4,7 @@ import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
 
 export class MorphoAaveV3ETHOptimizerSupplyAdapter extends MorphoBasePoolAdapter {
   productId = 'optimizer-supply'
+  isWrappable = false
 
   getProtocolDetails(): ProtocolDetails {
     return {

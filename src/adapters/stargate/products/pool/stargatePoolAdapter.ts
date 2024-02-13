@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -40,6 +41,8 @@ export class StargatePoolAdapter
 {
   productId = 'pool'
 
+  isWrappable = true
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -57,8 +60,12 @@ export class StargatePoolAdapter
   @CacheToFile({ fileKey: 'lp-token' })
   async buildMetadata() {
     const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Ethereum]: '0x06D538690AF257Da524f25D0CD52fD85b1c2173E',
-      [Chain.Arbitrum]: '0x55bDb4164D28FBaF0898e0eF14a589ac09Ac9970',
+      [Chain.Ethereum]: getAddress(
+        '0x06D538690AF257Da524f25D0CD52fD85b1c2173E',
+      ),
+      [Chain.Arbitrum]: getAddress(
+        '0x55bDb4164D28FBaF0898e0eF14a589ac09Ac9970',
+      ),
     }
 
     const lpFactoryContract = StargateFactory__factory.connect(
@@ -71,7 +78,7 @@ export class StargatePoolAdapter
     const metadataObject: StargatePoolMetadata = {}
 
     const promises = Array.from({ length: poolsLength }, async (_, i) => {
-      const poolAddress = (await lpFactoryContract.allPools(i)).toLowerCase()
+      const poolAddress = await lpFactoryContract.allPools(i)
 
       const poolContract = StargateToken__factory.connect(
         poolAddress,
@@ -92,7 +99,7 @@ export class StargatePoolAdapter
         this.provider,
       )
       const underlyingTokenPromise = getTokenMetadata(
-        underlyingTokenAddress.toLowerCase(),
+        underlyingTokenAddress,
         this.chainId,
         this.provider,
       )
@@ -102,7 +109,7 @@ export class StargatePoolAdapter
         underlyingTokenPromise,
       ])
 
-      metadataObject[poolAddress] = {
+      metadataObject[protocolToken.address] = {
         poolId: Number(poolId),
         protocolToken,
         underlyingToken,

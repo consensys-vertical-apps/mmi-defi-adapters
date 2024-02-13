@@ -1,97 +1,97 @@
 {
-  "0x75c4d1fb84429023170086f06e682dcbbf537b7d": {
+  "0x75c4d1Fb84429023170086f06E682DcbBF537b7d": {
     "protocolToken": {
-      "address": "0x75c4d1fb84429023170086f06e682dcbbf537b7d",
+      "address": "0x75c4d1Fb84429023170086f06E682DcbBF537b7d",
       "name": "Aave Matic Market variable debt mDAI",
       "symbol": "variableDebtmDAI",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+      "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
       "name": "(PoS) Dai Stablecoin",
       "symbol": "DAI",
       "decimals": 18
     }
   },
-  "0x248960a9d75edfa3de94f7193eae3161eb349a12": {
+  "0x248960A9d75EdFa3de94F7193eae3161Eb349a12": {
     "protocolToken": {
-      "address": "0x248960a9d75edfa3de94f7193eae3161eb349a12",
+      "address": "0x248960A9d75EdFa3de94F7193eae3161Eb349a12",
       "name": "Aave Matic Market variable debt mUSDC",
       "symbol": "variableDebtmUSDC",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
       "name": "USD Coin (PoS)",
       "symbol": "USDC",
       "decimals": 6
     }
   },
-  "0x8038857fd47108a07d1f6bf652ef1cbec279a2f3": {
+  "0x8038857FD47108A07d1f6Bf652ef1cBeC279A2f3": {
     "protocolToken": {
-      "address": "0x8038857fd47108a07d1f6bf652ef1cbec279a2f3",
+      "address": "0x8038857FD47108A07d1f6Bf652ef1cBeC279A2f3",
       "name": "Aave Matic Market variable debt mUSDT",
       "symbol": "variableDebtmUSDT",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
       "name": "(PoS) Tether USD",
       "symbol": "USDT",
       "decimals": 6
     }
   },
-  "0xf664f50631a6f0d72ecdaa0e49b0c019fa72a8dc": {
+  "0xF664F50631A6f0D72ecdaa0e49b0c019Fa72a8dC": {
     "protocolToken": {
-      "address": "0xf664f50631a6f0d72ecdaa0e49b0c019fa72a8dc",
+      "address": "0xF664F50631A6f0D72ecdaa0e49b0c019Fa72a8dC",
       "name": "Aave Matic Market variable debt mWBTC",
       "symbol": "variableDebtmWBTC",
       "decimals": 8
     },
     "underlyingToken": {
-      "address": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
+      "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
       "name": "(PoS) Wrapped BTC",
       "symbol": "WBTC",
       "decimals": 8
     }
   },
-  "0xede17e9d79fc6f9ff9250d9eefbdb88cc18038b5": {
+  "0xeDe17e9d79fc6f9fF9250D9EEfbdB88Cc18038b5": {
     "protocolToken": {
-      "address": "0xede17e9d79fc6f9ff9250d9eefbdb88cc18038b5",
+      "address": "0xeDe17e9d79fc6f9fF9250D9EEfbdB88Cc18038b5",
       "name": "Aave Matic Market variable debt mWETH",
       "symbol": "variableDebtmWETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
       "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimals": 18
     }
   },
-  "0x59e8e9100cbfcbcbadf86b9279fa61526bbb8765": {
+  "0x59e8E9100cbfCBCBAdf86b9279fa61526bBB8765": {
     "protocolToken": {
-      "address": "0x59e8e9100cbfcbcbadf86b9279fa61526bbb8765",
+      "address": "0x59e8E9100cbfCBCBAdf86b9279fa61526bBB8765",
       "name": "Aave Matic Market variable debt mWMATIC",
       "symbol": "variableDebtmWMATIC",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
       "name": "Wrapped Matic",
       "symbol": "WMATIC",
       "decimals": 18
     }
   },
-  "0x1c313e9d0d826662f5ce692134d938656f681350": {
+  "0x1c313e9d0d826662F5CE692134D938656F681350": {
     "protocolToken": {
-      "address": "0x1c313e9d0d826662f5ce692134d938656f681350",
+      "address": "0x1c313e9d0d826662F5CE692134D938656F681350",
       "name": "Aave Matic Market variable debt mAAVE",
       "symbol": "variableDebtmAAVE",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+      "address": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
       "name": "Aave (PoS)",
       "symbol": "AAVE",
       "decimals": 18

@@ -1,3989 +1,4171 @@
 {
-  "0xf34dff761145ff0b05e917811d488b441f33a968": {
+  "0xf34DFF761145FF0B05e917811d488B441F33a968": {
     "protocolToken": {
-      "address": "0xf34dff761145ff0b05e917811d488b441f33a968",
+      "address": "0xf34DFF761145FF0B05e917811d488B441F33a968",
       "name": "Curve.fi cDAI/cUSDC Convex Deposit",
       "symbol": "cvxcDAI+cUSDC",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x8b55351ea358e5eda371575b031ee24f462d503e": {
+  "0x8B55351ea358e5Eda371575B031ee24F462d503e": {
     "protocolToken": {
-      "address": "0x8b55351ea358e5eda371575b031ee24f462d503e",
+      "address": "0x8B55351ea358e5Eda371575B031ee24F462d503e",
       "name": "Curve.fi cDAI/cUSDC/USDT Convex Deposit",
       "symbol": "cvxcDAI+cUSDC+USDT",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd802a8351a76ed5ecd89a7502ca615f2225a585d": {
+  "0xd802a8351A76ED5eCd89A7502Ca615F2225A585d": {
     "protocolToken": {
-      "address": "0xd802a8351a76ed5ecd89a7502ca615f2225a585d",
+      "address": "0xd802a8351A76ED5eCd89A7502Ca615F2225A585d",
       "name": "Curve.fi yDAI/yUSDC/yUSDT/yTUSD Convex Deposit",
       "symbol": "cvxyDAI+yUSDC+yUSDT+yTUSD",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x602c4cd53a715d8a7cf648540fab0d3a2d546560": {
+  "0x602c4cD53a715D8a7cf648540FAb0d3a2d546560": {
     "protocolToken": {
-      "address": "0x602c4cd53a715d8a7cf648540fab0d3a2d546560",
+      "address": "0x602c4cD53a715D8a7cf648540FAb0d3a2d546560",
       "name": "Curve.fi yDAI/yUSDC/yUSDT/yBUSD Convex Deposit",
       "symbol": "cvxyDAI+yUSDC+yUSDT+yBUSD",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x22ee18aca7f3ee920d01f25da85840d12d98e8ca": {
+  "0x22eE18aca7F3Ee920D01F25dA85840D12d98E8Ca": {
     "protocolToken": {
-      "address": "0x22ee18aca7f3ee920d01f25da85840d12d98e8ca",
+      "address": "0x22eE18aca7F3Ee920D01F25dA85840D12d98E8Ca",
       "name": "Curve.fi DAI/USDC/USDT/sUSD Convex Deposit",
       "symbol": "cvxcrvPlain3andSUSD",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xe3daafc8c14147d5b4a7a56f0bfded240158e51e": {
+  "0xe3DaafC8C14147d5B4A7a56F0BfdED240158e51e": {
     "protocolToken": {
-      "address": "0xe3daafc8c14147d5b4a7a56f0bfded240158e51e",
+      "address": "0xe3DaafC8C14147d5B4A7a56F0BfdED240158e51e",
       "name": "Curve.fi DAI/USDC/USDT/PAX Convex Deposit",
       "symbol": "cvxypaxCrv",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x8e299c62eed737a5d5a53539df37b5356a27b07d": {
+  "0x8E299C62EeD737a5d5a53539dF37b5356a27b07D": {
     "protocolToken": {
-      "address": "0x8e299c62eed737a5d5a53539df37b5356a27b07d",
+      "address": "0x8E299C62EeD737a5d5a53539dF37b5356a27b07D",
       "name": "Curve.fi renBTC/wBTC Convex Deposit",
       "symbol": "cvxcrvRenWBTC",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd727a5a6d1c7b31ff9db4db4d24045b7df0cff93": {
+  "0xd727A5A6D1C7b31Ff9Db4Db4d24045B7dF0CFF93": {
     "protocolToken": {
-      "address": "0xd727a5a6d1c7b31ff9db4db4d24045b7df0cff93",
+      "address": "0xd727A5A6D1C7b31Ff9Db4Db4d24045B7dF0CFF93",
       "name": "Curve.fi renBTC/wBTC/sBTC Convex Deposit",
       "symbol": "cvxcrvRenWSBTC",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x618bd6cba676a46958c63700c04318c84a7b7c0a": {
+  "0x618BD6cBA676a46958c63700C04318c84a7b7c0A": {
     "protocolToken": {
-      "address": "0x618bd6cba676a46958c63700c04318c84a7b7c0a",
+      "address": "0x618BD6cBA676a46958c63700C04318c84a7b7c0A",
       "name": "Curve.fi hBTC/wBTC Convex Deposit",
       "symbol": "cvxhCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x689440f2ff927e1f24c72f1087e1faf471ece1c8": {
+  "0x689440f2Ff927E1f24c72F1087E1FAF471eCe1c8": {
     "protocolToken": {
-      "address": "0x689440f2ff927e1f24c72f1087e1faf471ece1c8",
+      "address": "0x689440f2Ff927E1f24c72F1087E1FAF471eCe1c8",
       "name": "Curve.fi DAI/USDC/USDT Convex Deposit",
       "symbol": "cvx3Crv",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x7a7bbf95c44b144979360c3300b54a7d34b44985": {
+  "0x7A7bBf95C44b144979360C3300B54A7D34b44985": {
     "protocolToken": {
-      "address": "0x7a7bbf95c44b144979360c3300b54a7d34b44985",
+      "address": "0x7A7bBf95C44b144979360C3300B54A7D34b44985",
       "name": "Curve.fi GUSD/3Crv Convex Deposit",
       "symbol": "cvxgusd3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x353e489311b21355461353fec2d02b73ef0ede7f": {
+  "0x353e489311b21355461353fEC2d02B73EF0eDe7f": {
     "protocolToken": {
-      "address": "0x353e489311b21355461353fec2d02b73ef0ede7f",
+      "address": "0x353e489311b21355461353fEC2d02B73EF0eDe7f",
       "name": "Curve.fi HUSD/3Crv Convex Deposit",
       "symbol": "cvxhusd3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xa50e9071acad20b31cd2bbe4daa816882de82bbe": {
+  "0xa50e9071aCaD20b31cd2bbe4dAa816882De82BBe": {
     "protocolToken": {
-      "address": "0xa50e9071acad20b31cd2bbe4daa816882de82bbe",
+      "address": "0xa50e9071aCaD20b31cd2bbe4dAa816882De82BBe",
       "name": "Curve.fi USDK/3Crv Convex Deposit",
       "symbol": "cvxusdk3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x4a2631d090e8b40bbde245e687bf09e5e534a239": {
+  "0x4a2631d090e8b40bBDe245e687BF09e5e534A239": {
     "protocolToken": {
-      "address": "0x4a2631d090e8b40bbde245e687bf09e5e534a239",
+      "address": "0x4a2631d090e8b40bBDe245e687BF09e5e534A239",
       "name": "Curve.fi USDN/3Crv Convex Deposit",
       "symbol": "cvxusdn3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xdbfa6187c79f4fe4cda20609e75760c5aae88e52": {
+  "0xDBFa6187C79f4fE4Cda20609E75760C5AaE88e52": {
     "protocolToken": {
-      "address": "0xdbfa6187c79f4fe4cda20609e75760c5aae88e52",
+      "address": "0xDBFa6187C79f4fE4Cda20609E75760C5AaE88e52",
       "name": "Curve.fi MUSD/3Crv Convex Deposit",
       "symbol": "cvxmusd3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xedfccf611d7c40f43e77a1340ce2c29eeec27205": {
+  "0xedfCCF611D7c40F43e77a1340cE2C29EEEC27205": {
     "protocolToken": {
-      "address": "0xedfccf611d7c40f43e77a1340ce2c29eeec27205",
+      "address": "0xedfCCF611D7c40F43e77a1340cE2C29EEEC27205",
       "name": "Curve.fi RSV/3Crv Convex Deposit",
       "symbol": "cvxrsv3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x081a6672f07b615b402e7558a867c97fa080ce35": {
+  "0x081A6672f07B615B402e7558a867C97FA080Ce35": {
     "protocolToken": {
-      "address": "0x081a6672f07b615b402e7558a867c97fa080ce35",
+      "address": "0x081A6672f07B615B402e7558a867C97FA080Ce35",
       "name": "Curve.fi tBTC/sbtcCrv Convex Deposit",
       "symbol": "cvxtbtc/sbtcCrv",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x1992b82a8ccfc8f89785129d6403b13925d6226e": {
+  "0x1992b82A8cCFC8f89785129D6403b13925d6226E": {
     "protocolToken": {
-      "address": "0x1992b82a8ccfc8f89785129d6403b13925d6226e",
+      "address": "0x1992b82A8cCFC8f89785129D6403b13925d6226E",
       "name": "Curve.fi DUSD/3Crv Convex Deposit",
       "symbol": "cvxdusd3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x2d3c90aeb11d1393ca839afc9587515b1325d77a": {
+  "0x2d3C90AEB11D1393CA839Afc9587515B1325D77A": {
     "protocolToken": {
-      "address": "0x2d3c90aeb11d1393ca839afc9587515b1325d77a",
+      "address": "0x2d3C90AEB11D1393CA839Afc9587515B1325D77A",
       "name": "Curve.fi pBTC/sbtcCRV Convex Deposit",
       "symbol": "cvxpBTC/sbtcCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x61d741045ccaa5a215cf4e5e55f20e1199b4b843": {
+  "0x61D741045cCAA5a215cF4E5e55f20E1199B4B843": {
     "protocolToken": {
-      "address": "0x61d741045ccaa5a215cf4e5e55f20e1199b4b843",
+      "address": "0x61D741045cCAA5a215cF4E5e55f20E1199B4B843",
       "name": "Curve.fi bBTC/sbtcCRV Convex Deposit",
       "symbol": "cvxbBTC/sbtcCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xeeece77e0bc5e59c77fc408789a9a172a504bd2f": {
+  "0xeeeCE77e0bc5e59c77fc408789A9A172A504bD2f": {
     "protocolToken": {
-      "address": "0xeeece77e0bc5e59c77fc408789a9a172a504bd2f",
+      "address": "0xeeeCE77e0bc5e59c77fc408789A9A172A504bD2f",
       "name": "Curve.fi oBTC/sbtcCRV Convex Deposit",
       "symbol": "cvxoBTC/sbtcCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd4be1911f8a0df178d6e7ff5ce39919c273e2b7b": {
+  "0xd4Be1911F8a0df178d6e7fF5cE39919c273E2B7B": {
     "protocolToken": {
-      "address": "0xd4be1911f8a0df178d6e7ff5ce39919c273e2b7b",
+      "address": "0xd4Be1911F8a0df178d6e7fF5cE39919c273E2B7B",
       "name": "Curve.fi UST/3Crv Convex Deposit",
       "symbol": "cvxust3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xcb8f69e0064d8cdd29cbeb45a14cf771d904bcd3": {
+  "0xcB8F69E0064d8cdD29cbEb45A14cf771D904BcD3": {
     "protocolToken": {
-      "address": "0xcb8f69e0064d8cdd29cbeb45a14cf771d904bcd3",
+      "address": "0xcB8F69E0064d8cdD29cbEb45A14cf771D904BcD3",
       "name": "Curve.fi EURS/sEUR Convex Deposit",
       "symbol": "cvxeursCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x192469cade297d6b21f418cfa8c366b63ffc9f9b": {
+  "0x192469CadE297D6B21F418cFA8c366b63FFC9f9b": {
     "protocolToken": {
-      "address": "0x192469cade297d6b21f418cfa8c366b63ffc9f9b",
+      "address": "0x192469CadE297D6B21F418cFA8c366b63FFC9f9b",
       "name": "Curve.fi ETH/sETH Convex Deposit",
       "symbol": "cvxeCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xe82c1eb4bc6f92f85bf7eb6421ab3b882c3f5a7b": {
+  "0xE82c1eB4BC6F92f85BF7EB6421ab3b882C3F5a7B": {
     "protocolToken": {
-      "address": "0xe82c1eb4bc6f92f85bf7eb6421ab3b882c3f5a7b",
+      "address": "0xE82c1eB4BC6F92f85BF7EB6421ab3b882C3F5a7B",
       "name": "Curve.fi aDAI/aUSDC/aUSDT Convex Deposit",
       "symbol": "cvxa3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x0a760466e1b4621579a82a39cb56dda2f4e70f03": {
+  "0x0A760466E1B4621579a82a39CB56Dda2F4E70f03": {
     "protocolToken": {
-      "address": "0x0a760466e1b4621579a82a39cb56dda2f4e70f03",
+      "address": "0x0A760466E1B4621579a82a39CB56Dda2F4E70f03",
       "name": "Curve.fi ETH/stETH Convex Deposit",
       "symbol": "cvxsteCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xf86ae6790654b70727dbe58bf1a863b270317fd0": {
+  "0xF86AE6790654b70727dbE58BF1a863B270317fD0": {
     "protocolToken": {
-      "address": "0xf86ae6790654b70727dbe58bf1a863b270317fd0",
+      "address": "0xF86AE6790654b70727dbE58BF1a863B270317fD0",
       "name": "Curve.fi aDAI/aSUSD Convex Deposit",
       "symbol": "cvxsaCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x8798b81b0261934aa850c8de8622472bfdc143f4": {
+  "0x8798b81b0261934aa850C8de8622472bfdc143F4": {
     "protocolToken": {
-      "address": "0x8798b81b0261934aa850c8de8622472bfdc143f4",
+      "address": "0x8798b81b0261934aa850C8de8622472bfdc143F4",
       "name": "Curve.fi ETH/aETH Convex Deposit",
       "symbol": "cvxankrCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x24dffd1949f888f91a0c8341fc98a3f280a782a8": {
+  "0x24DfFd1949F888F91A0c8341Fc98a3F280a782a8": {
     "protocolToken": {
-      "address": "0x24dffd1949f888f91a0c8341fc98a3f280a782a8",
+      "address": "0x24DfFd1949F888F91A0c8341Fc98a3F280a782a8",
       "name": "Curve.fi USDP/3Crv Convex Deposit",
       "symbol": "cvxusdp3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x3e03fff82f77073cc590b656d42fceb12e4910a8": {
+  "0x3E03fFF82F77073cc590b656D42FceB12E4910A8": {
     "protocolToken": {
-      "address": "0x3e03fff82f77073cc590b656d42fceb12e4910a8",
+      "address": "0x3E03fFF82F77073cc590b656D42FceB12E4910A8",
       "name": "Curve.fi cyDAI/cyUSDC/cyUSDT Convex Deposit",
       "symbol": "cvxib3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x9700152175dc22e7d1f3245fe3c1d2cfa3602548": {
+  "0x9700152175dc22E7d1f3245fE3c1D2cfa3602548": {
     "protocolToken": {
-      "address": "0x9700152175dc22e7d1f3245fe3c1d2cfa3602548",
+      "address": "0x9700152175dc22E7d1f3245fE3c1D2cfa3602548",
       "name": "Curve.fi LINK/sLINK Convex Deposit",
       "symbol": "cvxlinkCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x308b48f037aaa75406426dacfaca864ebd88edba": {
+  "0x308b48F037AAa75406426dACFACA864ebd88eDbA": {
     "protocolToken": {
-      "address": "0x308b48f037aaa75406426dacfaca864ebd88edba",
+      "address": "0x308b48F037AAa75406426dACFACA864ebd88eDbA",
       "name": "Curve.fi Factory USD Metapool: TrueUSD Convex Deposit",
       "symbol": "cvxTUSD3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb900ef131301b307db5efcbed9dbb50a3e209b2e": {
+  "0xB900EF131301B307dB5eFcbed9DBb50A3e209B2e": {
     "protocolToken": {
-      "address": "0xb900ef131301b307db5efcbed9dbb50a3e209b2e",
+      "address": "0xB900EF131301B307dB5eFcbed9DBb50A3e209B2e",
       "name": "Curve.fi Factory USD Metapool: Frax Convex Deposit",
       "symbol": "cvxFRAX3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x2ad92a7ae036a038ff02b96c88de868ddf3f8190": {
+  "0x2ad92A7aE036a038ff02B96c88de868ddf3f8190": {
     "protocolToken": {
-      "address": "0x2ad92a7ae036a038ff02b96c88de868ddf3f8190",
+      "address": "0x2ad92A7aE036a038ff02B96c88de868ddf3f8190",
       "name": "Curve.fi Factory USD Metapool: Liquity Convex Deposit",
       "symbol": "cvxLUSD3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xbd223812d360c9587921292d0644d18adb6a2ad0": {
+  "0xbD223812d360C9587921292D0644D18aDb6a2ad0": {
     "protocolToken": {
-      "address": "0xbd223812d360c9587921292d0644d18adb6a2ad0",
+      "address": "0xbD223812d360C9587921292D0644D18aDb6a2ad0",
       "name": "Curve.fi Factory USD Metapool: Binance USD Convex Deposit",
       "symbol": "cvxBUSD3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x61db6c2321f784c8fab8d5ef80f58f27c831dcc8": {
+  "0x61dB6c2321f784c8fAb8d5eF80f58F27C831dCc8": {
     "protocolToken": {
-      "address": "0x61db6c2321f784c8fab8d5ef80f58f27c831dcc8",
+      "address": "0x61dB6c2321f784c8fAb8d5eF80f58F27C831dCc8",
       "name": "Curve.fi ETH/rETH Convex Deposit",
       "symbol": "cvxrCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x02e2151d4f351881017abdf2dd2b51150841d5b3": {
+  "0x02E2151D4F351881017ABdF2DD2b51150841d5B3": {
     "protocolToken": {
-      "address": "0x02e2151d4f351881017abdf2dd2b51150841d5b3",
+      "address": "0x02E2151D4F351881017ABdF2DD2b51150841d5B3",
       "name": "Curve.fi Factory USD Metapool: Alchemix USD Convex Deposit",
       "symbol": "cvxalUSD3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x5edced358e6c0b435d53cc30fbe6f5f0833f404f": {
+  "0x5Edced358e6C0B435D53CC30fbE6f5f0833F404F": {
     "protocolToken": {
-      "address": "0x5edced358e6c0b435d53cc30fbe6f5f0833f404f",
+      "address": "0x5Edced358e6C0B435D53CC30fbE6f5f0833F404F",
       "name": "Curve.fi USD-BTC-ETH Convex Deposit",
       "symbol": "cvxcrvTricrypto",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x9d5c5e364d81dab193b72db9e9be9d8ee669b652": {
+  "0x9D5C5E364D81DaB193b72db9E9BE9D8ee669B652": {
     "protocolToken": {
-      "address": "0x9d5c5e364d81dab193b72db9e9be9d8ee669b652",
+      "address": "0x9D5C5E364D81DaB193b72db9E9BE9D8ee669B652",
       "name": "Curve.fi USD-BTC-ETH Convex Deposit",
       "symbol": "cvxcrv3crypto",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd814bfc091111e1417a669672144affaa081c3ce": {
+  "0xD814BFC091111E1417a669672144aFFAA081c3CE": {
     "protocolToken": {
-      "address": "0xd814bfc091111e1417a669672144affaa081c3ce",
+      "address": "0xD814BFC091111E1417a669672144aFFAA081c3CE",
       "name": "Curve.fi Factory Plain Pool: Euro Tether Convex Deposit",
       "symbol": "cvxEURT-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xfd5abf66b003881b88567eb9ed9c651f14dc4771": {
+  "0xFd5AbF66b003881b88567EB9Ed9c651F14Dc4771": {
     "protocolToken": {
-      "address": "0xfd5abf66b003881b88567eb9ed9c651f14dc4771",
+      "address": "0xFd5AbF66b003881b88567EB9Ed9c651F14Dc4771",
       "name": "Curve.fi Factory USD Metapool: Magic Internet Money 3Pool Convex Deposit",
       "symbol": "cvxMIM-3LP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x0392321e86f42c2f94fbb0c6853052487db521f0": {
+  "0x0392321e86F42C2F94FBb0c6853052487db521F0": {
     "protocolToken": {
-      "address": "0x0392321e86f42c2f94fbb0c6853052487db521f0",
+      "address": "0x0392321e86F42C2F94FBb0c6853052487db521F0",
       "name": "Curve.fi Factory Plain Pool: cvxCRV Convex Deposit",
       "symbol": "cvxcvxcrv-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xba8fe590498ed24d330bb925e69913b1ac35a81e": {
+  "0xbA8fE590498ed24D330Bb925E69913b1Ac35a81E": {
     "protocolToken": {
-      "address": "0xba8fe590498ed24d330bb925e69913b1ac35a81e",
+      "address": "0xbA8fE590498ed24D330Bb925E69913b1Ac35a81E",
       "name": "Curve.fi Factory Plain Pool: ibJPY/sJPY Convex Deposit",
       "symbol": "cvxibJPY+sJPY-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x51a16da36c79e28dd3c8c0c19214d8af413984aa": {
+  "0x51a16DA36c79E28dD3C8c0c19214D8aF413984Aa": {
     "protocolToken": {
-      "address": "0x51a16da36c79e28dd3c8c0c19214d8af413984aa",
+      "address": "0x51a16DA36c79E28dD3C8c0c19214D8aF413984Aa",
       "name": "Curve.fi Factory Plain Pool: ibGBP/sGBP Convex Deposit",
       "symbol": "cvxibGBP+sGBP-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb1fae59f23cace4949ae734e63e42168adb0ccb3": {
+  "0xb1Fae59F23CaCe4949Ae734E63E42168aDb0CcB3": {
     "protocolToken": {
-      "address": "0xb1fae59f23cace4949ae734e63e42168adb0ccb3",
+      "address": "0xb1Fae59F23CaCe4949Ae734E63E42168aDb0CcB3",
       "name": "Curve.fi Factory Plain Pool: ibAUD/sAUD Convex Deposit",
       "symbol": "cvxibAUD+sAUD-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xcd0559adb6faa2fc83ab21cf4497c3b9b45bb29f": {
+  "0xCd0559ADb6fAa2fc83aB21Cf4497c3b9b45bB29f": {
     "protocolToken": {
-      "address": "0xcd0559adb6faa2fc83ab21cf4497c3b9b45bb29f",
+      "address": "0xCd0559ADb6fAa2fc83aB21Cf4497c3b9b45bB29f",
       "name": "Curve.fi Factory Plain Pool: ibEUR/sEUR Convex Deposit",
       "symbol": "cvxibEUR+sEUR-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xa5a5905efc55b05059ee247d5cac6dd6791cfc33": {
+  "0xa5A5905efc55B05059eE247d5CaC6DD6791Cfc33": {
     "protocolToken": {
-      "address": "0xa5a5905efc55b05059ee247d5cac6dd6791cfc33",
+      "address": "0xa5A5905efc55B05059eE247d5CaC6DD6791Cfc33",
       "name": "Curve.fi Factory Plain Pool: ibCHF/sCHF Convex Deposit",
       "symbol": "cvxibCHF+sCHF-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x8f18c0af0d7d511e8bdc6b3c64926b04edfe4892": {
+  "0x8F18C0AF0d7d511E8Bdc6B3c64926B04EDfE4892": {
     "protocolToken": {
-      "address": "0x8f18c0af0d7d511e8bdc6b3c64926b04edfe4892",
+      "address": "0x8F18C0AF0d7d511E8Bdc6B3c64926B04EDfE4892",
       "name": "Curve.fi Factory Plain Pool: ibKRW/sKRW Convex Deposit",
       "symbol": "cvxibKRW+sKRW-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc3628b8faade10aceae88c9b982ce0aac9bbaad3": {
+  "0xc3628b8FAaDe10aCeAe88c9b982cE0AAc9bBaaD3": {
     "protocolToken": {
-      "address": "0xc3628b8faade10aceae88c9b982ce0aac9bbaad3",
+      "address": "0xc3628b8FAaDe10aCeAe88c9b982cE0AAc9bBaaD3",
       "name": "Recue Token Convex Deposit",
       "symbol": "cvxcvxRT",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x48bc302d8295fea1f8c3e7f57d4ddc9981fee410": {
+  "0x48Bc302d8295FeA1f8c3e7F57D4dDC9981FEE410": {
     "protocolToken": {
-      "address": "0x48bc302d8295fea1f8c3e7f57d4ddc9981fee410",
+      "address": "0x48Bc302d8295FeA1f8c3e7F57D4dDC9981FEE410",
       "name": "Curve.fi Factory Pool: alETH Convex Deposit",
       "symbol": "cvxalETH+ETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x7cda2a83d29d7fc2ccb8f7716b5c1c34781aeb12": {
+  "0x7CDA2a83D29d7Fc2ccb8F7716b5c1c34781aeb12": {
     "protocolToken": {
-      "address": "0x7cda2a83d29d7fc2ccb8f7716b5c1c34781aeb12",
+      "address": "0x7CDA2a83D29d7Fc2ccb8F7716b5c1c34781aeb12",
       "name": "Curve.fi Factory Plain Pool: Neutrino EUR Convex Deposit",
       "symbol": "cvxEURN/EURT-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xa689c00f3fd87dd3871c79c73343cd9f7957377e": {
+  "0xA689C00F3fd87dD3871C79C73343cd9F7957377E": {
     "protocolToken": {
-      "address": "0xa689c00f3fd87dd3871c79c73343cd9f7957377e",
+      "address": "0xA689C00F3fd87dD3871C79C73343cd9F7957377E",
       "name": "Curve.fi Factory USD Metapool: USDM Convex Deposit",
       "symbol": "cvxUSDM3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc62de533ea77d46f3172516ab6b1000daf577e89": {
+  "0xC62DE533ea77D46f3172516aB6b1000dAf577E89": {
     "protocolToken": {
-      "address": "0xc62de533ea77d46f3172516ab6b1000daf577e89",
+      "address": "0xC62DE533ea77D46f3172516aB6b1000dAf577E89",
       "name": "Curve.fi Factory Plain Pool: MIM-UST Convex Deposit",
       "symbol": "cvxMIM-UST-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x4f2b8a15d0dd58c1eb60bd53e966872828519cee": {
+  "0x4F2b8a15d0Dd58c1eB60bd53e966872828519Cee": {
     "protocolToken": {
-      "address": "0x4f2b8a15d0dd58c1eb60bd53e966872828519cee",
+      "address": "0x4F2b8a15d0Dd58c1eB60bd53e966872828519Cee",
       "name": "Curve.fi Factory BTC Metapool: ibBTC Convex Deposit",
       "symbol": "cvxibbtc/sbtcCRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb0c1b7b83baae51284b8bbba02ec37742440199d": {
+  "0xb0c1B7b83Baae51284B8BbBa02Ec37742440199d": {
     "protocolToken": {
-      "address": "0xb0c1b7b83baae51284b8bbba02ec37742440199d",
+      "address": "0xb0c1B7b83Baae51284B8BbBa02Ec37742440199d",
       "name": "Curve EURS-USDC Convex Deposit",
       "symbol": "cvxcrvEURSUSDC",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd2b756af4e345a8657c0656c148adcd3000c97a4": {
+  "0xD2B756Af4E345A8657C0656C148aDCD3000C97A4": {
     "protocolToken": {
-      "address": "0xd2b756af4e345a8657c0656c148adcd3000c97a4",
+      "address": "0xD2B756Af4E345A8657C0656C148aDCD3000C97A4",
       "name": "Curve EURT-3Crv Convex Deposit",
       "symbol": "cvxcrvEURTUSD",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x7d536a737c13561e0d2decf1152a653b4e615158": {
+  "0x7D536a737C13561e0D2Decf1152a653B4e615158": {
     "protocolToken": {
-      "address": "0x7d536a737c13561e0d2decf1152a653b4e615158",
+      "address": "0x7D536a737C13561e0D2Decf1152a653B4e615158",
       "name": "Curve.fi Factory USD Metapool: Origin Dollar Convex Deposit",
       "symbol": "cvxOUSD3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x500e169c15961de8798edb52e0f88a8662d30ec5": {
+  "0x500E169c15961DE8798Edb52e0f88a8662d30EC5": {
     "protocolToken": {
-      "address": "0x500e169c15961de8798edb52e0f88a8662d30ec5",
+      "address": "0x500E169c15961DE8798Edb52e0f88a8662d30EC5",
       "name": "Curve.fi Factory USD Metapool: Paxos Dollar (USDP) Convex Deposit",
       "symbol": "cvxpax-usdp3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x329cb014b562d5d42927cff0dedf4c13ab0442ef": {
+  "0x329cb014b562d5d42927cfF0dEdF4c13ab0442EF": {
     "protocolToken": {
-      "address": "0x329cb014b562d5d42927cff0dedf4c13ab0442ef",
+      "address": "0x329cb014b562d5d42927cfF0dEdF4c13ab0442EF",
       "name": "Curve.fi Factory Plain Pool: d3pool Convex Deposit",
       "symbol": "cvxD3-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x7e2b9b5244bcfa5108a76d5e7b507cfd5581ad4a": {
+  "0x7e2b9B5244bcFa5108A76D5E7b507CFD5581AD4A": {
     "protocolToken": {
-      "address": "0x7e2b9b5244bcfa5108a76d5e7b507cfd5581ad4a",
+      "address": "0x7e2b9B5244bcFa5108A76D5E7b507CFD5581AD4A",
       "name": "Curve.fi Factory USD Metapool: wormhole v2 UST-3Pool Convex Deposit",
       "symbol": "cvxUST_whv23CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x4a9b7edd67f58654a2c33b587f98c5709ac7d482": {
+  "0x4a9b7eDD67f58654a2c33B587f98c5709AC7d482": {
     "protocolToken": {
-      "address": "0x4a9b7edd67f58654a2c33b587f98c5709ac7d482",
+      "address": "0x4a9b7eDD67f58654a2c33B587f98c5709AC7d482",
       "name": "Curve.fi Factory Plain Pool: 3EURpool Convex Deposit",
       "symbol": "cvx3EURpool-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x085a2054c51ea5c91dbf7f90d65e728c0f2a270f": {
+  "0x085A2054c51eA5c91dbF7f90d65e728c0f2A270f": {
     "protocolToken": {
-      "address": "0x085a2054c51ea5c91dbf7f90d65e728c0f2a270f",
+      "address": "0x085A2054c51eA5c91dbF7f90d65e728c0f2A270f",
       "name": "Curve CRV-ETH Convex Deposit",
       "symbol": "cvxcrvCRVETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x835f69e58087e5b6bffef182fe2bf959fe253c3c": {
+  "0x835f69e58087E5B6bffEf182fe2bf959Fe253c3c": {
     "protocolToken": {
-      "address": "0x835f69e58087e5b6bffef182fe2bf959fe253c3c",
+      "address": "0x835f69e58087E5B6bffEf182fe2bf959Fe253c3c",
       "name": "Curve.fi Factory USD Metapool: DOLA-3pool Curve LP Convex Deposit",
       "symbol": "cvxDOLA3POOL3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x29b91c6cec4f43afdb6f6d71faf1c03d6b712f55": {
+  "0x29B91c6CEC4F43aFdb6f6d71FAf1C03d6b712f55": {
     "protocolToken": {
-      "address": "0x29b91c6cec4f43afdb6f6d71faf1c03d6b712f55",
+      "address": "0x29B91c6CEC4F43aFdb6f6d71FAf1C03d6b712f55",
       "name": "RAI3CRV Convex Deposit",
       "symbol": "cvxRAI3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb1fb0ba0676a1ffa83882c7f4805408ba232c1fa": {
+  "0xb1Fb0BA0676A1fFA83882c7F4805408bA232C1fA": {
     "protocolToken": {
-      "address": "0xb1fb0ba0676a1ffa83882c7f4805408ba232c1fa",
+      "address": "0xb1Fb0BA0676A1fFA83882c7F4805408bA232C1fA",
       "name": "Curve CVX-ETH Convex Deposit",
       "symbol": "cvxcrvCVXETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x6cb1933e49c48ae8ec12d39ad7d85695b247dedb": {
+  "0x6cb1933E49C48AE8ec12d39aD7D85695b247deDB": {
     "protocolToken": {
-      "address": "0x6cb1933e49c48ae8ec12d39ad7d85695b247dedb",
+      "address": "0x6cb1933E49C48AE8ec12d39aD7D85695b247deDB",
       "name": "Curve XAUT-3Crv Convex Deposit",
       "symbol": "cvxcrvXAUTUSD",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb2f0bb6352417c1bf017862ac165e67623611af3": {
+  "0xb2f0bB6352417c1Bf017862aC165E67623611aF3": {
     "protocolToken": {
-      "address": "0xb2f0bb6352417c1bf017862ac165e67623611af3",
+      "address": "0xb2f0bB6352417c1Bf017862aC165E67623611aF3",
       "name": "Curve SPELL-ETH Convex Deposit",
       "symbol": "cvxcrvSPELLETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x3e91e7c822ac8b4b7905d108c3facf22a3ee5d2c": {
+  "0x3E91E7c822AC8b4b7905d108c3faCF22A3ee5d2c": {
     "protocolToken": {
-      "address": "0x3e91e7c822ac8b4b7905d108c3facf22a3ee5d2c",
+      "address": "0x3E91E7c822AC8b4b7905d108c3faCF22A3ee5d2c",
       "name": "Curve T-ETH Convex Deposit",
       "symbol": "cvxcrvTETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x3207bdc327ab67f182b82948fd3df757f8771324": {
+  "0x3207bDc327aB67f182B82948fd3DF757F8771324": {
     "protocolToken": {
-      "address": "0x3207bdc327ab67f182b82948fd3df757f8771324",
+      "address": "0x3207bDc327aB67f182B82948fd3DF757F8771324",
       "name": "Curve.fi Factory Crypto Pool: YFI/ETH Convex Deposit",
       "symbol": "cvxYFIETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xaa0e8ef60babda02ef11c89a061d82b1d61a462c": {
+  "0xAA0e8Ef60BaBda02Ef11c89a061D82b1D61a462C": {
     "protocolToken": {
-      "address": "0xaa0e8ef60babda02ef11c89a061d82b1d61a462c",
+      "address": "0xAA0e8Ef60BaBda02Ef11c89a061D82b1D61a462C",
       "name": "Curve.fi Factory Crypto Pool: FXS/ETH Convex Deposit",
       "symbol": "cvxFXSETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x769499a7b4093b2aa35e3f3c00b1ab5dc8ef7146": {
+  "0x769499A7B4093b2AA35E3F3C00B1ab5dc8EF7146": {
     "protocolToken": {
-      "address": "0x769499a7b4093b2aa35e3f3c00b1ab5dc8ef7146",
+      "address": "0x769499A7B4093b2AA35E3F3C00B1ab5dc8EF7146",
       "name": "Curve.fi Factory Plain Pool: agEUR/ibEUR Convex Deposit",
       "symbol": "cvxag+ib-EUR-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x3133a4428aac0b4ad96a09845363386ecd289a9c": {
+  "0x3133A4428AAC0b4ad96a09845363386ECd289A9c": {
     "protocolToken": {
-      "address": "0x3133a4428aac0b4ad96a09845363386ecd289a9c",
+      "address": "0x3133A4428AAC0b4ad96a09845363386ECd289A9c",
       "name": "Curve.fi Factory USD Metapool: FEI Metapool Convex Deposit",
       "symbol": "cvxFEI3CRV3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xf27afad0142393e4b3e5510abc5fe3743ad669cb": {
+  "0xf27AFAD0142393e4b3E5510aBc5fe3743Ad669Cb": {
     "protocolToken": {
-      "address": "0xf27afad0142393e4b3e5510abc5fe3743ad669cb",
+      "address": "0xf27AFAD0142393e4b3E5510aBc5fe3743Ad669Cb",
       "name": "Curve.fi Factory Crypto Pool: cvxFxs/Fxs Convex Deposit",
       "symbol": "cvxcvxFXSFXS-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x5c463069b99afc9333f4dc2203a9f0c6c7658ccc": {
+  "0x5c463069b99AfC9333F4dC2203a9f0c6C7658cCc": {
     "protocolToken": {
-      "address": "0x5c463069b99afc9333f4dc2203a9f0c6c7658ccc",
+      "address": "0x5c463069b99AfC9333F4dC2203a9f0c6C7658cCc",
       "name": "Curve.fi Factory Plain Pool: rETH/wstETH Convex Deposit",
       "symbol": "cvxrETHwstETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x36c7e7f9031647a74687ce46a8e16bcea84f3865": {
+  "0x36c7E7F9031647A74687ce46A8e16BcEA84f3865": {
     "protocolToken": {
-      "address": "0x36c7e7f9031647a74687ce46a8e16bcea84f3865",
+      "address": "0x36c7E7F9031647A74687ce46A8e16BcEA84f3865",
       "name": "Curve.fi Factory Crypto Pool: BADGER/WBTC Convex Deposit",
       "symbol": "cvxBADGERWBTC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x41565a76dc949e57486ca4550c2e086d95aefb19": {
+  "0x41565A76DC949E57486Ca4550C2e086D95AEfb19": {
     "protocolToken": {
-      "address": "0x41565a76dc949e57486ca4550c2e086d95aefb19",
+      "address": "0x41565A76DC949E57486Ca4550C2e086D95AEfb19",
       "name": "Curve.fi Factory Crypto Pool: BTRFLY/ETH Convex Deposit",
       "symbol": "cvxBTRFLYETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc4d009e61a904bfdf39144295f12870e8305d4d9": {
+  "0xC4d009E61a904BfDf39144295F12870E8305D4d9": {
     "protocolToken": {
-      "address": "0xc4d009e61a904bfdf39144295f12870e8305d4d9",
+      "address": "0xC4d009E61a904BfDf39144295F12870E8305D4d9",
       "name": "Curve.fi Factory USD Metapool: PWRD Metapool Convex Deposit",
       "symbol": "cvxPWRD3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x589761b61d8d1c8ecc36f3cfe35932670749015a": {
+  "0x589761B61D8d1C8ecc36F3cFE35932670749015a": {
     "protocolToken": {
-      "address": "0x589761b61d8d1c8ecc36f3cfe35932670749015a",
+      "address": "0x589761B61D8d1C8ecc36F3cFE35932670749015a",
       "name": "Curve.fi Factory BTC Metapool: pbtc Convex Deposit",
       "symbol": "cvxpbtc/sbtcCRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xe259d085f55825624bba8571ed20984c125ba720": {
+  "0xE259d085f55825624bBA8571eD20984c125Ba720": {
     "protocolToken": {
-      "address": "0xe259d085f55825624bba8571ed20984c125ba720",
+      "address": "0xE259d085f55825624bBA8571eD20984c125Ba720",
       "name": "Curve.fi Factory Crypto Pool: SILO/FRAX Convex Deposit",
       "symbol": "cvxsilofrax-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x8731a63dd6af83c044f623a89abd50a8bb5a5022": {
+  "0x8731A63dD6aF83c044F623A89ABD50A8bb5a5022": {
     "protocolToken": {
-      "address": "0x8731a63dd6af83c044f623a89abd50a8bb5a5022",
+      "address": "0x8731A63dD6aF83c044F623A89ABD50A8bb5a5022",
       "name": "Curve.fi Factory Crypto Pool: CADC/USDC Convex Deposit",
       "symbol": "cvxCADCUSDC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x414d43efdf60010428b55ceee5fec187e2ebb284": {
+  "0x414d43EfDf60010428B55CEEE5fec187E2ebB284": {
     "protocolToken": {
-      "address": "0x414d43efdf60010428b55ceee5fec187e2ebb284",
+      "address": "0x414d43EfDf60010428B55CEEE5fec187E2ebB284",
       "name": "Curve.fi Factory USD Metapool: Bean Convex Deposit",
       "symbol": "cvxBEAN3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x87d258f95cf6d6d13e3c9d5365dd7b46ef050fbf": {
+  "0x87d258F95Cf6D6d13E3c9D5365dD7B46EF050FbF": {
     "protocolToken": {
-      "address": "0x87d258f95cf6d6d13e3c9d5365dd7b46ef050fbf",
+      "address": "0x87d258F95Cf6D6d13E3c9D5365dD7B46EF050FbF",
       "name": "Curve.fi Factory Crypto Pool: LFT/ETH Convex Deposit",
       "symbol": "cvxLFTETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x1a8d59ccbbc81ecd556b86969680fad2f238f18f": {
+  "0x1A8D59cCbbC81ecD556B86969680faD2F238F18f": {
     "protocolToken": {
-      "address": "0x1a8d59ccbbc81ecd556b86969680fad2f238f18f",
+      "address": "0x1A8D59cCbbC81ecD556B86969680faD2F238F18f",
       "name": "Curve.fi Factory Crypto Pool: FPI2Pool Convex Deposit",
       "symbol": "cvxFPIFRAX-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xebd7e324b6b086986efb97804929538bf4bf2047": {
+  "0xeBd7E324b6b086986efb97804929538Bf4bF2047": {
     "protocolToken": {
-      "address": "0xebd7e324b6b086986efb97804929538bf4bf2047",
+      "address": "0xeBd7E324b6b086986efb97804929538Bf4bF2047",
       "name": "Curve.fi Factory Crypto Pool: SDT/ETH Convex Deposit",
       "symbol": "cvxSDTETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xbafc4faeb733c18411886a04679f11877d8629b1": {
+  "0xbAFC4FAeB733C18411886A04679F11877D8629b1": {
     "protocolToken": {
-      "address": "0xbafc4faeb733c18411886a04679f11877d8629b1",
+      "address": "0xbAFC4FAeB733C18411886A04679F11877D8629b1",
       "name": "Curve.fi Factory Crypto Pool: ibAUD/USDC Convex Deposit",
       "symbol": "cvxibAUDUSDC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x9bec26bdd9702f4e0e4de853dd65ec75f90b1f2e": {
+  "0x9BEc26bDd9702F4e0e4de853dd65Ec75F90b1F2e": {
     "protocolToken": {
-      "address": "0x9bec26bdd9702f4e0e4de853dd65ec75f90b1f2e",
+      "address": "0x9BEc26bDd9702F4e0e4de853dd65Ec75F90b1F2e",
       "name": "Curve.fi Factory Crypto Pool: ibCHF/USDC Convex Deposit",
       "symbol": "cvxibCHFUSDC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xaab7202d93b5633eb7fb3b80873c817b240f6f44": {
+  "0xAab7202D93B5633eB7FB3b80873C817B240F6F44": {
     "protocolToken": {
-      "address": "0xaab7202d93b5633eb7fb3b80873c817b240f6f44",
+      "address": "0xAab7202D93B5633eB7FB3b80873C817B240F6F44",
       "name": "Curve.fi Factory Crypto Pool: ibEUR/USDC Convex Deposit",
       "symbol": "cvxibEURUSDC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x8c87e32000add1a7d7d69a1ae180c415af769361": {
+  "0x8C87E32000ADD1a7D7D69a1AE180C415AF769361": {
     "protocolToken": {
-      "address": "0x8c87e32000add1a7d7d69a1ae180c415af769361",
+      "address": "0x8C87E32000ADD1a7D7D69a1AE180C415AF769361",
       "name": "Curve.fi Factory Crypto Pool: ibGBP/USDC Convex Deposit",
       "symbol": "cvxibGBPUSDC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x58563c872c791196d0ea17c4e53e77fa1d381d4c": {
+  "0x58563C872c791196d0eA17c4E53e77fa1d381D4c": {
     "protocolToken": {
-      "address": "0x58563c872c791196d0ea17c4e53e77fa1d381d4c",
+      "address": "0x58563C872c791196d0eA17c4E53e77fa1d381D4c",
       "name": "Curve.fi Factory Crypto Pool: ibJPY/USDC Convex Deposit",
       "symbol": "cvxibJPYUSDC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x1900249c7a90d27b246032792004ff0e092ac2ce": {
+  "0x1900249c7a90D27b246032792004FF0E092Ac2cE": {
     "protocolToken": {
-      "address": "0x1900249c7a90d27b246032792004ff0e092ac2ce",
+      "address": "0x1900249c7a90D27b246032792004FF0E092Ac2cE",
       "name": "Curve.fi Factory Crypto Pool: ibKRW/USDC Convex Deposit",
       "symbol": "cvxibKRWUSDC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x0c2da920e577960f39991030cfbdd4cf0a0cfebd": {
+  "0x0c2da920E577960f39991030CfBdd4cF0a0CfEBD": {
     "protocolToken": {
-      "address": "0x0c2da920e577960f39991030cfbdd4cf0a0cfebd",
+      "address": "0x0c2da920E577960f39991030CfBdd4cF0a0CfEBD",
       "name": "Curve.fi Factory Crypto Pool: KP3R/ETH Convex Deposit",
       "symbol": "cvxKP3RETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x83a3ce160915675f5bc7cc3cfda5f4cebc7b7a5a": {
+  "0x83a3CE160915675F5bC7cC3CfDA5f4CeBC7B7a5a": {
     "protocolToken": {
-      "address": "0x83a3ce160915675f5bc7cc3cfda5f4cebc7b7a5a",
+      "address": "0x83a3CE160915675F5bC7cC3CfDA5f4CeBC7B7a5a",
       "name": "Curve.fi Factory USD Metapool: PUSd Convex Deposit",
       "symbol": "cvxPUSd-3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd683c7051a28fa150eb3f4bd92263865d4a67778": {
+  "0xd683C7051a28fA150EB3F4BD92263865D4a67778": {
     "protocolToken": {
-      "address": "0xd683c7051a28fa150eb3f4bd92263865d4a67778",
+      "address": "0xd683C7051a28fA150EB3F4BD92263865D4a67778",
       "name": "Curve.fi Factory Crypto Pool: OHM/ETH Convex Deposit",
       "symbol": "cvxOHMETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xa7fc7e90c45c2657a9069ca99011894a76eab82d": {
+  "0xA7FC7e90c45C2657A9069CA99011894a76eaB82D": {
     "protocolToken": {
-      "address": "0xa7fc7e90c45c2657a9069ca99011894a76eab82d",
+      "address": "0xA7FC7e90c45C2657A9069CA99011894a76eaB82D",
       "name": "Curve.fi Factory Plain Pool: sdCRV Convex Deposit",
       "symbol": "cvxsdCRVCRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc5b3b2537499e3943c9a359886193f3f89eddc6a": {
+  "0xC5B3B2537499e3943C9A359886193F3F89EdDc6a": {
     "protocolToken": {
-      "address": "0xc5b3b2537499e3943c9a359886193f3f89eddc6a",
+      "address": "0xC5B3B2537499e3943C9A359886193F3F89EdDc6a",
       "name": "Curve.fi Factory Plain Pool: sdANGLE Convex Deposit",
       "symbol": "cvxsdAGAG-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x17e3bc273cfcb972167059e55104dbcc8f8431be": {
+  "0x17E3Bc273cFcB972167059E55104DBCC8f8431bE": {
     "protocolToken": {
-      "address": "0x17e3bc273cfcb972167059e55104dbcc8f8431be",
+      "address": "0x17E3Bc273cFcB972167059E55104DBCC8f8431bE",
       "name": "Curve.fi Factory Crypto Pool: STG/USDC Convex Deposit",
       "symbol": "cvxSTGUSDC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x7d475cc8a5e0416f0e63042547adb94ca7045a5b": {
+  "0x7D475cc8A5E0416f0e63042547aDB94ca7045A5b": {
     "protocolToken": {
-      "address": "0x7d475cc8a5e0416f0e63042547adb94ca7045a5b",
+      "address": "0x7D475cc8A5E0416f0e63042547aDB94ca7045A5b",
       "name": "Curve.fi Factory USD Metapool: USDD/3CRV Convex Deposit",
       "symbol": "cvxUSDD3CRV3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xcc4687a893c1fa137e0cacd96591422deb7b717c": {
+  "0xcc4687A893C1Fa137e0CAcd96591422dEb7B717c": {
     "protocolToken": {
-      "address": "0xcc4687a893c1fa137e0cacd96591422deb7b717c",
+      "address": "0xcc4687A893C1Fa137e0CAcd96591422dEb7B717c",
       "name": "Curve.fi Factory Crypto Pool: PAL/ETH Convex Deposit",
       "symbol": "cvxPALETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xa84f2187371e8a61fa6634ecb3ff6d89df299e0e": {
+  "0xA84f2187371e8A61fa6634eCB3Ff6D89dF299e0e": {
     "protocolToken": {
-      "address": "0xa84f2187371e8a61fa6634ecb3ff6d89df299e0e",
+      "address": "0xA84f2187371e8A61fa6634eCB3Ff6D89dF299e0e",
       "name": "Curve.fi Factory Plain Pool: sdFXS Convex Deposit",
       "symbol": "cvxsdFXSFXS-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x3382607d00cfb668abab80d8ee781a2720cbc9ea": {
+  "0x3382607d00cfb668AbaB80D8EE781a2720CbC9ea": {
     "protocolToken": {
-      "address": "0x3382607d00cfb668abab80d8ee781a2720cbc9ea",
+      "address": "0x3382607d00cfb668AbaB80D8EE781a2720CbC9ea",
       "name": "Curve.fi Factory Crypto Pool: TOKE/ETH Convex Deposit",
       "symbol": "cvxTOKEETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x7e880867363a7e321f5d260cade2b0bb2f717b02": {
+  "0x7e880867363A7e321f5d260Cade2B0Bb2F717B02": {
     "protocolToken": {
-      "address": "0x7e880867363a7e321f5d260cade2b0bb2f717b02",
+      "address": "0x7e880867363A7e321f5d260Cade2B0Bb2F717B02",
       "name": "Curve.fi FRAX/USDC Convex Deposit",
       "symbol": "cvxcrvFRAX",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x3fabbdfe05487de1720a9420fe2e16d2c3e79a9d": {
+  "0x3fABBDfe05487De1720a9420fE2e16d2c3e79A9D": {
     "protocolToken": {
-      "address": "0x3fabbdfe05487de1720a9420fe2e16d2c3e79a9d",
+      "address": "0x3fABBDfe05487De1720a9420fE2e16d2c3e79A9D",
       "name": "Curve.fi Factory USD Metapool: sUSDFRAXBP Convex Deposit",
       "symbol": "cvxSUSDFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x053e1dad223a206e6bca24c77786bb69a10e427d": {
+  "0x053e1dad223A206e6BCa24C77786bb69a10e427d": {
     "protocolToken": {
-      "address": "0x053e1dad223a206e6bca24c77786bb69a10e427d",
+      "address": "0x053e1dad223A206e6BCa24C77786bb69a10e427d",
       "name": "Curve.fi Factory USD Metapool: LUSDFRAXBP Convex Deposit",
       "symbol": "cvxLUSDFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x51e6b84968d56a1e5bc93ee264e95b1ea577339c": {
+  "0x51e6B84968D56a1E5BC93Ee264e95b1Ea577339c": {
     "protocolToken": {
-      "address": "0x51e6b84968d56a1e5bc93ee264e95b1ea577339c",
+      "address": "0x51e6B84968D56a1E5BC93Ee264e95b1Ea577339c",
       "name": "Curve.fi Factory USD Metapool: apeUSDFRAXBP Convex Deposit",
       "symbol": "cvxAPEUSDBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x47809ee386d1dec29c0b13f21ba30f564517538b": {
+  "0x47809eE386D1dEC29c0b13f21ba30F564517538B": {
     "protocolToken": {
-      "address": "0x47809ee386d1dec29c0b13f21ba30f564517538b",
+      "address": "0x47809eE386D1dEC29c0b13f21ba30F564517538B",
       "name": "Curve.fi Factory USD Metapool: GUSDFRAXBP Convex Deposit",
       "symbol": "cvxGUSDFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x9e6daf019767d5ceade416ce77e8d187b5b254f3": {
+  "0x9e6Daf019767D5cEAdE416ce77E8d187b5B254F3": {
     "protocolToken": {
-      "address": "0x9e6daf019767d5ceade416ce77e8d187b5b254f3",
+      "address": "0x9e6Daf019767D5cEAdE416ce77E8d187b5B254F3",
       "name": "Curve.fi Factory USD Metapool: BUSDFRAXBP Convex Deposit",
       "symbol": "cvxBUSDFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x26598e3e511adfadefd70ab2c3475ff741741104": {
+  "0x26598e3E511ADFadefD70ab2C3475Ff741741104": {
     "protocolToken": {
-      "address": "0x26598e3e511adfadefd70ab2c3475ff741741104",
+      "address": "0x26598e3E511ADFadefD70ab2C3475Ff741741104",
       "name": "Curve.fi Factory USD Metapool: alUSDFRAXBP Convex Deposit",
       "symbol": "cvxalUSDFRAXB3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x546cd3b917c1d8a6525b4a312bb0014be031eb28": {
+  "0x546cd3B917c1d8A6525b4A312bB0014BE031Eb28": {
     "protocolToken": {
-      "address": "0x546cd3b917c1d8a6525b4a312bb0014be031eb28",
+      "address": "0x546cd3B917c1d8A6525b4A312bB0014BE031Eb28",
       "name": "Curve.fi Factory USD Metapool: USDDFRAXBP Convex Deposit",
       "symbol": "cvxUSDDFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x4a744870fd705971c8c00ac510eac2206c93d5bb": {
+  "0x4a744870fD705971c8c00aC510eAc2206C93d5bb": {
     "protocolToken": {
-      "address": "0x4a744870fd705971c8c00ac510eac2206c93d5bb",
+      "address": "0x4a744870fD705971c8c00aC510eAc2206C93d5bb",
       "name": "Curve.fi Factory USD Metapool: TUSDFRAXBP Convex Deposit",
       "symbol": "cvxTUSDFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x43217822e188b39e90afa54a5fcf1c76ab0f323a": {
+  "0x43217822E188b39E90AFA54A5fcf1c76AB0F323a": {
     "protocolToken": {
-      "address": "0x43217822e188b39e90afa54a5fcf1c76ab0f323a",
+      "address": "0x43217822E188b39E90AFA54A5fcf1c76AB0F323a",
       "name": "Curve.fi Factory Plain Pool: Stax Frax/Temple xLP + LP Convex Deposit",
       "symbol": "cvxxFraxTplLP-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x7d955c7076566550f6b35357e7cddf95272333f5": {
+  "0x7d955C7076566550f6B35357E7cdDF95272333F5": {
     "protocolToken": {
-      "address": "0x7d955c7076566550f6b35357e7cddf95272333f5",
+      "address": "0x7d955C7076566550f6B35357E7cdDF95272333F5",
       "name": "Curve EUROC-3Crv Convex Deposit",
       "symbol": "cvxEUROC3CRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x455ac43cce0e17774c0bf240ba709dd5822102f3": {
+  "0x455AC43CcE0E17774C0bF240ba709DD5822102f3": {
     "protocolToken": {
-      "address": "0x455ac43cce0e17774c0bf240ba709dd5822102f3",
+      "address": "0x455AC43CcE0E17774C0bF240ba709DD5822102f3",
       "name": "Curve.fi Factory BTC Metapool: tbtc2 Convex Deposit",
       "symbol": "cvxtbtc2/sbtcCRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x14f02f3b47b407a7a0cdb9292aa077ce9e124803": {
+  "0x14F02f3b47B407A7a0cdb9292AA077Ce9E124803": {
     "protocolToken": {
-      "address": "0x14f02f3b47b407a7a0cdb9292aa077ce9e124803",
+      "address": "0x14F02f3b47B407A7a0cdb9292AA077Ce9E124803",
       "name": "Curve.fi Factory Plain Pool: Euro Pool Convex Deposit",
       "symbol": "cvxeuropool-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xa91fccc1ec9d4a2271b7a86a7509ca05057c1a98": {
+  "0xA91fccC1ec9d4A2271B7A86a7509Ca05057C1A98": {
     "protocolToken": {
-      "address": "0xa91fccc1ec9d4a2271b7a86a7509ca05057c1a98",
+      "address": "0xA91fccC1ec9d4A2271B7A86a7509Ca05057C1A98",
       "name": "Curve.fi Factory Plain Pool: agEUR/EUROC Convex Deposit",
       "symbol": "cvxagEUREUROC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x6d096c99cc2ea52490355311b73d86365acf087f": {
+  "0x6d096C99Cc2Ea52490355311b73D86365Acf087f": {
     "protocolToken": {
-      "address": "0x6d096c99cc2ea52490355311b73d86365acf087f",
+      "address": "0x6d096C99Cc2Ea52490355311b73D86365Acf087f",
       "name": "Curve.fi Factory USD Metapool: pUSDFRAXBP Convex Deposit",
       "symbol": "cvxpUSDFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x0404d05f3992347d2f0dc3a97bdd147d77c85c1c": {
+  "0x0404d05F3992347d2f0dC3a97bdd147D77C85c1c": {
     "protocolToken": {
-      "address": "0x0404d05f3992347d2f0dc3a97bdd147d77c85c1c",
+      "address": "0x0404d05F3992347d2f0dC3a97bdd147D77C85c1c",
       "name": "Curve.fi Factory USD Metapool: DOLA/FRAXBP Convex Deposit",
       "symbol": "cvxDOLAFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x17962ab30c7f291b125a0a38d0ad220ab22f8a5b": {
+  "0x17962aB30c7F291b125A0A38d0ad220ab22F8a5B": {
     "protocolToken": {
-      "address": "0x17962ab30c7f291b125a0a38d0ad220ab22f8a5b",
+      "address": "0x17962aB30c7F291b125A0A38d0ad220ab22F8a5B",
       "name": "Curve.fi Factory Crypto Pool: agEUR/FRAXBP Convex Deposit",
       "symbol": "cvxagEURFRAXB-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xf02b3a77b1e7775de10294d78a4c3d77772b484a": {
+  "0xf02B3A77b1e7775de10294d78a4c3d77772B484A": {
     "protocolToken": {
-      "address": "0xf02b3a77b1e7775de10294d78a4c3d77772b484a",
+      "address": "0xf02B3A77b1e7775de10294d78a4c3d77772B484A",
       "name": "Curve.fi Factory Crypto Pool: CVX/FraxBP Convex Deposit",
       "symbol": "cvxCVXFRAXBP-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xdebc7b51043b4d0dd4f3310c68a12382b8843cee": {
+  "0xdEbc7B51043b4D0dd4f3310C68A12382b8843ceE": {
     "protocolToken": {
-      "address": "0xdebc7b51043b4d0dd4f3310c68a12382b8843cee",
+      "address": "0xdEbc7B51043b4D0dd4f3310C68A12382b8843ceE",
       "name": "Curve.fi Factory Crypto Pool: cvxCrv/FraxBP Convex Deposit",
       "symbol": "cvxcvxCrvFrax-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x19ea715f854db2196c6f45a174541a5ac884d2f9": {
+  "0x19eA715F854dB2196C6f45A174541a5Ac884D2f9": {
     "protocolToken": {
-      "address": "0x19ea715f854db2196c6f45a174541a5ac884d2f9",
+      "address": "0x19eA715F854dB2196C6f45A174541a5Ac884D2f9",
       "name": "Curve.fi Factory Crypto Pool: cvxFxs/FraxBP Convex Deposit",
       "symbol": "cvxcvxFxsFrax-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc10fd95fd3b56535668426b2c8681ad1e15be608": {
+  "0xC10fD95fd3B56535668426B2c8681AD1E15Be608": {
     "protocolToken": {
-      "address": "0xc10fd95fd3b56535668426b2c8681ad1e15be608",
+      "address": "0xC10fD95fd3B56535668426B2c8681AD1E15Be608",
       "name": "Curve.fi Factory Crypto Pool: ALCX/FraxBP Convex Deposit",
       "symbol": "cvxALCXFRAXBP-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd3c412c3cedbec604425b23dcd79aa1ac810622f": {
+  "0xD3C412C3cEdbEC604425B23DCd79Aa1ac810622f": {
     "protocolToken": {
-      "address": "0xd3c412c3cedbec604425b23dcd79aa1ac810622f",
+      "address": "0xD3C412C3cEdbEC604425B23DCd79Aa1ac810622f",
       "name": "Curve.fi Factory USD Metapool: MAI+FRAXBP Convex Deposit",
       "symbol": "cvxMAIPool3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb235205e1096e0ad221fb7621a2e2cbab875be75": {
+  "0xb235205E1096E0Ad221Fb7621a2E2cbaB875bE75": {
     "protocolToken": {
-      "address": "0xb235205e1096e0ad221fb7621a2e2cbab875be75",
+      "address": "0xb235205E1096E0Ad221Fb7621a2E2cbaB875bE75",
       "name": "Curve.fi Factory Pool: pETH Convex Deposit",
       "symbol": "cvxpETH-ETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xe0705a91984b076c250d410a41f615380af1c2ed": {
+  "0xe0705A91984b076C250d410A41f615380aF1C2ed": {
     "protocolToken": {
-      "address": "0xe0705a91984b076c250d410a41f615380af1c2ed",
+      "address": "0xe0705A91984b076C250d410A41f615380aF1C2ed",
       "name": "Curve.fi Factory Crypto Pool: BADGER/FRAXBP Convex Deposit",
       "symbol": "cvxBADGERFRAX-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xe94b4cc50ac9ebec491c3665c3e5a017a87dcf19": {
+  "0xe94b4cC50aC9ebeC491c3665C3E5a017a87dCF19": {
     "protocolToken": {
-      "address": "0xe94b4cc50ac9ebec491c3665c3e5a017a87dcf19",
+      "address": "0xe94b4cC50aC9ebeC491c3665C3E5a017a87dCF19",
       "name": "Curve.fi Factory Plain Pool: yCRV Convex Deposit",
       "symbol": "cvxyCRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x28441fb9b8b026487a6174ff39be015810611c0f": {
+  "0x28441fb9b8b026487A6174Ff39Be015810611C0F": {
     "protocolToken": {
-      "address": "0x28441fb9b8b026487a6174ff39be015810611c0f",
+      "address": "0x28441fb9b8b026487A6174Ff39Be015810611C0F",
       "name": "Curve.fi Factory Crypto Pool: RSR+FRAX/USDC (FRAXBP) Convex Deposit",
       "symbol": "cvxRSRcrvFRAX-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x736431ef2b5e7b9cb3cdc5bd7eac395e04015559": {
+  "0x736431Ef2b5e7b9cB3Cdc5Bd7EaC395e04015559": {
     "protocolToken": {
-      "address": "0x736431ef2b5e7b9cb3cdc5bd7eac395e04015559",
+      "address": "0x736431Ef2b5e7b9cB3Cdc5Bd7EaC395e04015559",
       "name": "Curve.fi Factory Crypto Pool: BTRFLY/ETH Convex Deposit",
       "symbol": "cvxBTRFLYETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x5d02ecd9b83f1187e92ad5be3d1bd2915ca03699": {
+  "0x5d02EcD9B83f1187e92aD5be3d1bd2915CA03699": {
     "protocolToken": {
-      "address": "0x5d02ecd9b83f1187e92ad5be3d1bd2915ca03699",
+      "address": "0x5d02EcD9B83f1187e92aD5be3d1bd2915CA03699",
       "name": "Curve.fi Factory Crypto Pool: cbETH/ETH Convex Deposit",
       "symbol": "cvxcbETH/ETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xbd5445402b0a287cbc77cb67b2a52e2fc635dce4": {
+  "0xbD5445402B0a287cbC77cb67B2a52e2FC635dce4": {
     "protocolToken": {
-      "address": "0xbd5445402b0a287cbc77cb67b2a52e2fc635dce4",
+      "address": "0xbD5445402B0a287cbC77cb67B2a52e2FC635dce4",
       "name": "Curve.fi ETH/frxETH Convex Deposit",
       "symbol": "cvxfrxETHCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x4a866fe20a442dff55faa010684a5c1379151458": {
+  "0x4a866fE20A442Dff55FAA010684A5C1379151458": {
     "protocolToken": {
-      "address": "0x4a866fe20a442dff55faa010684a5c1379151458",
+      "address": "0x4a866fE20A442Dff55FAA010684A5C1379151458",
       "name": "Curve.fi Factory USD Metapool: XAI/FRAXBP Convex Deposit",
       "symbol": "cvxXAIFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x820efa9a92b2317d39d18cf5c964890dd8f9b6be": {
+  "0x820EFA9a92b2317D39D18cf5C964890dD8f9B6bE": {
     "protocolToken": {
-      "address": "0x820efa9a92b2317d39d18cf5c964890dd8f9b6be",
+      "address": "0x820EFA9a92b2317D39D18cf5C964890dD8f9B6bE",
       "name": "Curve.fi Factory Crypto Pool: JPEG/pETH Convex Deposit",
       "symbol": "cvxJPEGpETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc3df9cc2b8ffdb801e8e6e8ff9c1245e2decda98": {
+  "0xc3df9cC2B8FFdB801E8e6E8FF9C1245E2dEcdA98": {
     "protocolToken": {
-      "address": "0xc3df9cc2b8ffdb801e8e6e8ff9c1245e2decda98",
+      "address": "0xc3df9cC2B8FFdB801E8e6E8FF9C1245E2dEcdA98",
       "name": "Curve.fi Factory Crypto Pool: SDT / FRAXBP Convex Deposit",
       "symbol": "cvxsdtfraxbp-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xbf2a9b7412332a78d03bd27101635e30a6b941e4": {
+  "0xbf2A9B7412332A78D03BD27101635e30a6b941e4": {
     "protocolToken": {
-      "address": "0xbf2a9b7412332a78d03bd27101635e30a6b941e4",
+      "address": "0xbf2A9B7412332A78D03BD27101635e30a6b941e4",
       "name": "Curve.fi Factory USD Metapool: Bean Convex Deposit",
       "symbol": "cvxBEAN3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xe5ba5e48114ecf21df6d0ba958372ce878592705": {
+  "0xe5ba5E48114ecF21dF6d0Ba958372ce878592705": {
     "protocolToken": {
-      "address": "0xe5ba5e48114ecf21df6d0ba958372ce878592705",
+      "address": "0xe5ba5E48114ecF21dF6d0Ba958372ce878592705",
       "name": "Curve.fi Factory Crypto Pool: bLUSD_LUSD3CRV Convex Deposit",
       "symbol": "cvxbLUSDLUSD3-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xf3bac69b98301eacae38ceab97166a4d78f731bc": {
+  "0xF3bAc69b98301Eacae38CEAB97166a4d78F731BC": {
     "protocolToken": {
-      "address": "0xf3bac69b98301eacae38ceab97166a4d78f731bc",
+      "address": "0xF3bAc69b98301Eacae38CEAB97166a4d78F731BC",
       "name": "Curve.fi Factory Plain Pool: sdYFI Convex Deposit",
       "symbol": "cvxsdYFIYFI-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x2a7b6a16cf7be51968b69768c3fecaa7e27524a5": {
+  "0x2a7b6a16Cf7Be51968b69768c3feCaA7E27524A5": {
     "protocolToken": {
-      "address": "0x2a7b6a16cf7be51968b69768c3fecaa7e27524a5",
+      "address": "0x2a7b6a16Cf7Be51968b69768c3feCaA7E27524A5",
       "name": "Curve.fi wBTC/sBTC Convex Deposit",
       "symbol": "cvxcrvWSBTC",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x502cc0d946e79cea4daafcf21f374c6bce763067": {
+  "0x502Cc0d946e79CeA4DaafCf21F374C6bce763067": {
     "protocolToken": {
-      "address": "0x502cc0d946e79cea4daafcf21f374c6bce763067",
+      "address": "0x502Cc0d946e79CeA4DaafCf21F374C6bce763067",
       "name": "Curve.fi Factory Crypto Pool: Curve GEAR/ETH Convex Deposit",
       "symbol": "cvxcrvGEARETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x41eab7eb43b7b055b2bf508cace932b11003029f": {
+  "0x41EAB7eB43b7b055B2Bf508cAcE932b11003029f": {
     "protocolToken": {
-      "address": "0x41eab7eb43b7b055b2bf508cace932b11003029f",
+      "address": "0x41EAB7eB43b7b055B2Bf508cAcE932b11003029f",
       "name": "Curve.fi Factory USD Metapool: multiBTC+WBTC/sBTC Convex Deposit",
       "symbol": "cvxmultibtc3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x27a8c58e3de84280826d615d80ddb33930383fe9": {
+  "0x27A8c58e3DE84280826d615D80ddb33930383fE9": {
     "protocolToken": {
-      "address": "0x27a8c58e3de84280826d615d80ddb33930383fe9",
+      "address": "0x27A8c58e3DE84280826d615D80ddb33930383fE9",
       "name": "Curve.fi Factory Crypto Pool: OHM/FRAXBP Convex Deposit",
       "symbol": "cvxOHMFRAXBP-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x706f34d0ab8f4f9838f15b0d155c8ef42229294b": {
+  "0x706f34D0aB8f4f9838F15b0D155C8Ef42229294B": {
     "protocolToken": {
-      "address": "0x706f34d0ab8f4f9838f15b0d155c8ef42229294b",
+      "address": "0x706f34D0aB8f4f9838F15b0D155C8Ef42229294B",
       "name": "Curve.fi Factory Plain Pool: Clever clevCVX/CVX Convex Deposit",
       "symbol": "cvxclevCVX-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x710e85b2793b3ae88cb1da3cb25b3d62d810d180": {
+  "0x710e85B2793b3AE88Cb1Da3cb25b3d62D810d180": {
     "protocolToken": {
-      "address": "0x710e85b2793b3ae88cb1da3cb25b3d62d810d180",
+      "address": "0x710e85B2793b3AE88Cb1Da3cb25b3d62D810d180",
       "name": "Curve.fi Factory USD Metapool: clevUSDFRAXBP Convex Deposit",
       "symbol": "cvxclevUSD3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x2a80d1b0aec088cb447491c177bb0fd117e3c698": {
+  "0x2A80d1B0aEC088cb447491c177bB0fD117e3C698": {
     "protocolToken": {
-      "address": "0x2a80d1b0aec088cb447491c177bb0fd117e3c698",
+      "address": "0x2A80d1B0aEC088cb447491c177bB0fD117e3C698",
       "name": "Curve.fi Factory Crypto Pool: TRYB/USD (3crv) Convex Deposit",
       "symbol": "cvxTRYB3POOL-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x6be96d00b50375af852d63db7d55656b306f398e": {
+  "0x6be96D00B50375AF852D63DB7d55656B306f398e": {
     "protocolToken": {
-      "address": "0x6be96d00b50375af852d63db7d55656b306f398e",
+      "address": "0x6be96D00B50375AF852D63DB7d55656B306f398e",
       "name": "Curve.fi Factory Crypto Pool: CLEV/ETH Convex Deposit",
       "symbol": "cvxCLEVETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x40faf3f0205c32a00398e2e7826946356f42a76b": {
+  "0x40fAF3f0205c32a00398E2e7826946356F42a76B": {
     "protocolToken": {
-      "address": "0x40faf3f0205c32a00398e2e7826946356f42a76b",
+      "address": "0x40fAF3f0205c32a00398E2e7826946356F42a76B",
       "name": "Curve.fi Factory Plain Pool: agEUR/EURe Convex Deposit",
       "symbol": "cvxagEUREURe-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xf189a4a1e845fd62944f93de497409798523b397": {
+  "0xF189A4a1E845Fd62944F93De497409798523B397": {
     "protocolToken": {
-      "address": "0xf189a4a1e845fd62944f93de497409798523b397",
+      "address": "0xF189A4a1E845Fd62944F93De497409798523B397",
       "name": "Curve.fi Factory USD Metapool: msUSD/FRAXBP Convex Deposit",
       "symbol": "cvxmsUSDFRAX3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x14dc104d74372527fec45b86e87fe263c7215369": {
+  "0x14DC104D74372527fEC45b86E87Fe263C7215369": {
     "protocolToken": {
-      "address": "0x14dc104d74372527fec45b86e87fe263c7215369",
+      "address": "0x14DC104D74372527fEC45b86E87Fe263C7215369",
       "name": "Curve.fi Factory Pool: msETH Convex Deposit",
       "symbol": "cvxmsETH-ETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xcd491e40849a0e3c2ff84093bbbaaa25c1ef8de6": {
+  "0xcD491E40849a0E3c2fF84093bbbaAa25C1eF8dE6": {
     "protocolToken": {
-      "address": "0xcd491e40849a0e3c2ff84093bbbaaa25c1ef8de6",
+      "address": "0xcD491E40849a0E3c2fF84093bbbaAa25C1eF8dE6",
       "name": "Curve.fi Factory USD Metapool: tBTC/wBTC/sBTC Convex Deposit",
       "symbol": "cvxTBTCSBTC23CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xe1d8e3625c5c54b9dcbb52c2c8e4264c3a01450c": {
+  "0xE1d8E3625c5C54b9dcbb52c2c8E4264c3A01450c": {
     "protocolToken": {
-      "address": "0xe1d8e3625c5c54b9dcbb52c2c8e4264c3a01450c",
+      "address": "0xE1d8E3625c5C54b9dcbb52c2c8E4264c3A01450c",
       "name": "Curve.fi Factory Crypto Pool: Concentrator CTR/ETH Convex Deposit",
       "symbol": "cvxCTRETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x77c43369e50d68b7b3288eefa7d7ab1f0f6d66b3": {
+  "0x77C43369E50D68B7B3288EEFa7D7ab1F0F6D66b3": {
     "protocolToken": {
-      "address": "0x77c43369e50d68b7b3288eefa7d7ab1f0f6d66b3",
+      "address": "0x77C43369E50D68B7B3288EEFa7D7ab1F0F6D66b3",
       "name": "Curve.fi Factory Crypto Pool: PAIR_ETH_MATIC Convex Deposit",
       "symbol": "cvxETH MATIC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x8ca990e954611e5e3d2cc51c013fcc372c8c1d38": {
+  "0x8CA990E954611E5E3d2cc51C013fCC372c8c1D38": {
     "protocolToken": {
-      "address": "0x8ca990e954611e5e3d2cc51c013fcc372c8c1d38",
+      "address": "0x8CA990E954611E5E3d2cc51C013fCC372c8c1D38",
       "name": "Curve.fi Factory Crypto Pool: LDO/ETH Convex Deposit",
       "symbol": "cvxLDOETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xaa57a289bb22a1a0c583db306f6566ae2c0caf21": {
+  "0xAa57A289Bb22a1A0C583db306F6566AE2c0CAf21": {
     "protocolToken": {
-      "address": "0xaa57a289bb22a1a0c583db306f6566ae2c0caf21",
+      "address": "0xAa57A289Bb22a1A0C583db306F6566AE2c0CAf21",
       "name": "Curve.fi Factory Crypto Pool: STG/FRAX-USDC Convex Deposit",
       "symbol": "cvxSTG/FRAXBP-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x034cfd508d978018c93c5b91fbf7e927d6f5a780": {
+  "0x034cFd508d978018c93C5b91FbF7e927d6F5a780": {
     "protocolToken": {
-      "address": "0x034cfd508d978018c93c5b91fbf7e927d6f5a780",
+      "address": "0x034cFd508d978018c93C5b91FbF7e927d6F5a780",
       "name": "Curve.fi Factory Crypto Pool: DYDX/ETH Convex Deposit",
       "symbol": "cvxDYDXETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x1a3c8b2f89b1c2593fa46c30ada0b4e3d0133ff8": {
+  "0x1A3c8B2F89B1C2593fa46C30ADA0b4E3D0133fF8": {
     "protocolToken": {
-      "address": "0x1a3c8b2f89b1c2593fa46c30ada0b4e3d0133ff8",
+      "address": "0x1A3c8B2F89B1C2593fa46C30ADA0b4E3D0133fF8",
       "name": "Curve.fi Factory Crypto Pool: CNC/ETH Convex Deposit",
       "symbol": "cvxCNCETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x702f4f9d17d5a5d35aa2a94ae9a7e6682bab04a7": {
+  "0x702F4f9d17d5A5D35Aa2a94AE9A7E6682bab04a7": {
     "protocolToken": {
-      "address": "0x702f4f9d17d5a5d35aa2a94ae9a7e6682bab04a7",
+      "address": "0x702F4f9d17d5A5D35Aa2a94AE9A7E6682bab04a7",
       "name": "Curve.fi Factory Crypto Pool: OGV/ETH Convex Deposit",
       "symbol": "cvxOGVETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x65c8aa24db76e870dedfc35701eff84de405d1ba": {
+  "0x65C8aa24db76e870DEDfC35701eff84de405D1ba": {
     "protocolToken": {
-      "address": "0x65c8aa24db76e870dedfc35701eff84de405d1ba",
+      "address": "0x65C8aa24db76e870DEDfC35701eff84de405D1ba",
       "name": "Curve.fi Factory Crypto Pool: Rocketpool rETH/ETH Convex Deposit",
       "symbol": "cvxrETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xa61b57c452dadaf252d2f101f5ba20aa86152992": {
+  "0xA61b57C452dadAF252D2f101f5Ba20aA86152992": {
     "protocolToken": {
-      "address": "0xa61b57c452dadaf252d2f101f5ba20aa86152992",
+      "address": "0xA61b57C452dadAF252D2f101f5Ba20aA86152992",
       "name": "Curve.fi Factory Plain Pool: stETH concentrated Convex Deposit",
       "symbol": "cvxSTETHETH_C-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb468db2e478885b87d7ce0c8da1d4373a756c138": {
+  "0xB468dB2E478885B87D7ce0C8DA1D4373A756C138": {
     "protocolToken": {
-      "address": "0xb468db2e478885b87d7ce0c8da1d4373a756c138",
+      "address": "0xB468dB2E478885B87D7ce0C8DA1D4373A756C138",
       "name": "Curve.fi Factory USD Metapool: eUSD+FRAX/USDC (FRAXBP) Convex Deposit",
       "symbol": "cvxeUSD3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x39d78f11b246ea4a1f68573c3a5b64e83cff2cae": {
+  "0x39D78f11b246ea4A1f68573c3A5B64E83Cff2cAe": {
     "protocolToken": {
-      "address": "0x39d78f11b246ea4a1f68573c3a5b64e83cff2cae",
+      "address": "0x39D78f11b246ea4A1f68573c3A5B64E83Cff2cAe",
       "name": "Curve.fi Factory Plain Pool: cvxCrv/Crv Convex Deposit",
       "symbol": "cvxcvxcrv-crv-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x820fad75512c8c3e57ad021d016846ceeb5f7105": {
+  "0x820Fad75512c8C3E57Ad021d016846CEEB5F7105": {
     "protocolToken": {
-      "address": "0x820fad75512c8c3e57ad021d016846ceeb5f7105",
+      "address": "0x820Fad75512c8C3E57Ad021d016846CEEB5F7105",
       "name": "Curve.fi Factory USD Metapool: Zunami UZD/FRAXBP Convex Deposit",
       "symbol": "cvxUZDFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x929c7ac52ef6d2bb03b9d6c2131be94e2a1cf5e3": {
+  "0x929c7Ac52ef6D2bB03b9d6c2131BE94E2a1cf5e3": {
     "protocolToken": {
-      "address": "0x929c7ac52ef6d2bb03b9d6c2131be94e2a1cf5e3",
+      "address": "0x929c7Ac52ef6D2bB03b9d6c2131BE94E2a1cf5e3",
       "name": "Curve.fi Factory Plain Pool: cvxFpis/Fpis Convex Deposit",
       "symbol": "cvxcvxFpis-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x4f9a0f637b33b0d35135cda5782797617afef00e": {
+  "0x4F9a0f637B33B0D35135cda5782797617afef00e": {
     "protocolToken": {
-      "address": "0x4f9a0f637b33b0d35135cda5782797617afef00e",
+      "address": "0x4F9a0f637B33B0D35135cda5782797617afef00e",
       "name": "Curve.fi Factory Crypto Pool: eCFX/ETH Convex Deposit",
       "symbol": "cvxeCFXETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc3d0b8170e105d6476fe407934492930cac3bdac": {
+  "0xC3D0B8170E105d6476fE407934492930CAc3BDAC": {
     "protocolToken": {
-      "address": "0xc3d0b8170e105d6476fe407934492930cac3bdac",
+      "address": "0xC3D0B8170E105d6476fE407934492930CAc3BDAC",
       "name": "Curve.fi Factory Plain Pool: stETH/frxETH Convex Deposit",
       "symbol": "cvxst-frxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd5dc65ec6948845c1c428fb60be38fe59b50bd13": {
+  "0xd5dC65ec6948845C1C428fb60BE38FE59B50BD13": {
     "protocolToken": {
-      "address": "0xd5dc65ec6948845c1c428fb60be38fe59b50bd13",
+      "address": "0xd5dC65ec6948845C1C428fb60BE38FE59B50BD13",
       "name": "Curve.fi Factory Crypto Pool: CRV/frxETH Convex Deposit",
       "symbol": "cvxCRVfrxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x0080d49d4a4921df0f3853c5e4533462a51fbb29": {
+  "0x0080d49D4a4921dF0F3853c5e4533462A51fbb29": {
     "protocolToken": {
-      "address": "0x0080d49d4a4921df0f3853c5e4533462a51fbb29",
+      "address": "0x0080d49D4a4921dF0F3853c5e4533462A51fbb29",
       "name": "Curve.fi Factory Crypto Pool: cbETH/frxETH Convex Deposit",
       "symbol": "cvxcbETHfrxET-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x84754821b5484a69db3164ef4edc5a5657318039": {
+  "0x84754821b5484A69DB3164eF4eDC5A5657318039": {
     "protocolToken": {
-      "address": "0x84754821b5484a69db3164ef4edc5a5657318039",
+      "address": "0x84754821b5484A69DB3164eF4eDC5A5657318039",
       "name": "Curve.fi Factory Crypto Pool: rETH/frxETH Convex Deposit",
       "symbol": "cvxrETHfrxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc18695d5824c49cf50e054953b3a5910c45597a0": {
+  "0xc18695D5824C49cF50E054953B3A5910c45597A0": {
     "protocolToken": {
-      "address": "0xc18695d5824c49cf50e054953b3a5910c45597a0",
+      "address": "0xc18695D5824C49cF50E054953B3A5910c45597A0",
       "name": "Curve.fi Factory Crypto Pool:  ankrETH/frxETH Convex Deposit",
       "symbol": "cvxankrfrxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xe0dbbcf08a5465db7c7401c86cce89030e11ab67": {
+  "0xe0DbbCF08A5465db7c7401C86cce89030e11aB67": {
     "protocolToken": {
-      "address": "0xe0dbbcf08a5465db7c7401c86cce89030e11ab67",
+      "address": "0xe0DbbCF08A5465db7c7401C86cce89030e11aB67",
       "name": "Curve.fi Factory Plain Pool: alETHfrxETH Convex Deposit",
       "symbol": "cvxalfrxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x55cdf6c7e6d04b83835e4702ed395d0263237da2": {
+  "0x55cdF6c7E6d04b83835E4702ed395D0263237DA2": {
     "protocolToken": {
-      "address": "0x55cdf6c7e6d04b83835e4702ed395d0263237da2",
+      "address": "0x55cdF6c7E6d04b83835E4702ed395D0263237DA2",
       "name": "Curve.fi Factory Plain Pool: sETH/frxETH Convex Deposit",
       "symbol": "cvxs-frxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xa064c1eeebecd1df41432f4b7264f508f005af0c": {
+  "0xA064C1EeEbECD1DF41432f4B7264F508F005aF0C": {
     "protocolToken": {
-      "address": "0xa064c1eeebecd1df41432f4b7264f508f005af0c",
+      "address": "0xA064C1EeEbECD1DF41432f4B7264F508F005aF0C",
       "name": "Curve.fi Factory Crypto Pool: frxETHCVX Convex Deposit",
       "symbol": "cvxfrxETHCVX-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x6991c1cd588c4e6f6f1de3a0bac5b8bbab7aaf6d": {
+  "0x6991C1CD588c4e6f6f1de3A0bac5B8BbAb7aAF6d": {
     "protocolToken": {
-      "address": "0x6991c1cd588c4e6f6f1de3a0bac5b8bbab7aaf6d",
+      "address": "0x6991C1CD588c4e6f6f1de3A0bac5B8BbAb7aAF6d",
       "name": "Curve.fi FRAX/USDP Convex Deposit",
       "symbol": "cvxcrvfraxUSDP",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xae0b6b66378c7defc0514d7cbc6e4e92cf56b0af": {
+  "0xAE0b6b66378C7DEFc0514D7cBc6E4e92Cf56b0af": {
     "protocolToken": {
-      "address": "0xae0b6b66378c7defc0514d7cbc6e4e92cf56b0af",
+      "address": "0xAE0b6b66378C7DEFc0514D7cBc6E4e92Cf56b0af",
       "name": "Curve.fi Factory Crypto Pool: COIL/FRAXBP Convex Deposit",
       "symbol": "cvxCOILFRAX-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x15507737f44446eb0a86147e2c72aa6a111a64b2": {
+  "0x15507737f44446EB0A86147E2C72Aa6A111A64B2": {
     "protocolToken": {
-      "address": "0x15507737f44446eb0a86147e2c72aa6a111a64b2",
+      "address": "0x15507737f44446EB0A86147E2C72Aa6A111A64B2",
       "name": "Curve.fi Factory Plain Pool: msETH/frxETH Convex Deposit",
       "symbol": "cvxmsfrxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x1c47c8fce85018aa6645b5ae39c4c61d708cb3f9": {
+  "0x1C47c8fCE85018AA6645b5aE39c4c61D708CB3f9": {
     "protocolToken": {
-      "address": "0x1c47c8fce85018aa6645b5ae39c4c61d708cb3f9",
+      "address": "0x1C47c8fCE85018AA6645b5aE39c4c61D708CB3f9",
       "name": "Curve.fi Factory Crypto Pool: WACME/frxETH Convex Deposit",
       "symbol": "cvxWACMEFRXET-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xf8fa0b3899de5b4b3cb0cff65b528acdd2d163f3": {
+  "0xf8Fa0b3899DE5B4b3cb0cfF65b528AcDD2d163F3": {
     "protocolToken": {
-      "address": "0xf8fa0b3899de5b4b3cb0cff65b528acdd2d163f3",
+      "address": "0xf8Fa0b3899DE5B4b3cb0cfF65b528AcDD2d163F3",
       "name": "Curve.fi Factory USD Metapool: STBT/3CRV Convex Deposit",
       "symbol": "cvxSTBT3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x24b65dc1cf053a8d96872c323d29e86ec43eb33a": {
+  "0x24b65DC1cf053A8D96872c323d29e86ec43eB33A": {
     "protocolToken": {
-      "address": "0x24b65dc1cf053a8d96872c323d29e86ec43eb33a",
+      "address": "0x24b65DC1cf053A8D96872c323d29e86ec43eB33A",
       "name": "Curve.fi Factory Pool: OETH Convex Deposit",
       "symbol": "cvxOETHCRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x6cd1a734f3d49cc5b381c2b53cf17f12bffa2bdd": {
+  "0x6cD1a734F3d49Cc5b381c2b53CF17f12bfFA2bdD": {
     "protocolToken": {
-      "address": "0x6cd1a734f3d49cc5b381c2b53cf17f12bffa2bdd",
+      "address": "0x6cD1a734F3d49Cc5b381c2b53CF17f12bfFA2bdD",
       "name": "Curve.fi ETH/wBETH Convex Deposit",
       "symbol": "cvxETHwBETHCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xa3d3d65101c99f7dc8dd2d4f15e256341c8e40de": {
+  "0xA3D3D65101C99f7Dc8dd2D4f15E256341c8E40de": {
     "protocolToken": {
-      "address": "0xa3d3d65101c99f7dc8dd2d4f15e256341c8e40de",
+      "address": "0xA3D3D65101C99f7Dc8dd2D4f15E256341c8E40de",
       "name": "Curve.fi Factory Crypto Pool: DCHF/3CRV Convex Deposit",
       "symbol": "cvxDCHF3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x6b27d7bc63f1999d14ff9ba900069ee516669ee8": {
+  "0x6B27D7BC63F1999D14fF9bA900069ee516669ee8": {
     "protocolToken": {
-      "address": "0x6b27d7bc63f1999d14ff9ba900069ee516669ee8",
+      "address": "0x6B27D7BC63F1999D14fF9bA900069ee516669ee8",
       "name": "Curve.fi Factory Pool: stETH-ng Convex Deposit",
       "symbol": "cvxstETH-ng-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x60e4001e9d96618655c9e59cdf5e9db40076b8e0": {
+  "0x60E4001E9D96618655C9e59Cdf5e9db40076b8e0": {
     "protocolToken": {
-      "address": "0x60e4001e9d96618655c9e59cdf5e9db40076b8e0",
+      "address": "0x60E4001E9D96618655C9e59Cdf5e9db40076b8e0",
       "name": "Curve.fi Factory Plain Pool: agEUR/VEUR Convex Deposit",
       "symbol": "cvxagEUR-VEUR-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd1ddb0a0815fd28932fbb194c84003683af8a824": {
+  "0xD1DdB0a0815fD28932fBb194C84003683AF8a824": {
     "protocolToken": {
-      "address": "0xd1ddb0a0815fd28932fbb194c84003683af8a824",
+      "address": "0xD1DdB0a0815fD28932fBb194C84003683AF8a824",
       "name": "Curve.fi Factory Plain Pool: crvUSD/USDT Convex Deposit",
       "symbol": "cvxcrvUSDUSDT-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x80c64e468b774f7f96d4dfce39cae2dd4c2b7f93": {
+  "0x80c64E468b774F7F96D4DFCe39caE2dd4C2B7f93": {
     "protocolToken": {
-      "address": "0x80c64e468b774f7f96d4dfce39cae2dd4c2b7f93",
+      "address": "0x80c64E468b774F7F96D4DFCe39caE2dd4C2B7f93",
       "name": "Curve.fi Factory Plain Pool: crvUSD/USDP Convex Deposit",
       "symbol": "cvxcrvUSDUSDP-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x4e2637d6697ed953241d44e29fba55748f651861": {
+  "0x4e2637D6697ed953241D44E29Fba55748F651861": {
     "protocolToken": {
-      "address": "0x4e2637d6697ed953241d44e29fba55748f651861",
+      "address": "0x4e2637D6697ed953241D44E29Fba55748F651861",
       "name": "Curve.fi Factory Plain Pool: crvUSD/TUSD Convex Deposit",
       "symbol": "cvxcrvUSDTUSD-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x44d8fab7cd8b7877d5f79974c2f501af6e65abba": {
+  "0x44D8FaB7CD8b7877D5F79974c2F501aF6E65AbBA": {
     "protocolToken": {
-      "address": "0x44d8fab7cd8b7877d5f79974c2f501af6e65abba",
+      "address": "0x44D8FaB7CD8b7877D5F79974c2F501aF6E65AbBA",
       "name": "Curve.fi Factory Plain Pool: crvUSD/USDC Convex Deposit",
       "symbol": "cvxcrvUSDUSDC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x245ec0d447e7f206b43120ac292ded5e8bb9fe61": {
+  "0x245Ec0d447e7f206B43120Ac292dED5E8bB9fe61": {
     "protocolToken": {
-      "address": "0x245ec0d447e7f206b43120ac292ded5e8bb9fe61",
+      "address": "0x245Ec0d447e7f206B43120Ac292dED5E8bB9fe61",
       "name": "Curve.fi Factory Crypto Pool: hyUSD/eUSD Convex Deposit",
       "symbol": "cvxhyUSDeUSD-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x16aa741b46180bdcb83fafb65965b0a94d5a918c": {
+  "0x16aA741b46180bdCB83faFb65965B0A94D5a918C": {
     "protocolToken": {
-      "address": "0x16aa741b46180bdcb83fafb65965b0a94d5a918c",
+      "address": "0x16aA741b46180bdCB83faFb65965B0A94D5a918C",
       "name": "Curve.fi Factory Plain Pool: yCRV Convex Deposit",
       "symbol": "cvxyCRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x15b7011bde1c5836c67f16e6e03033c272156193": {
+  "0x15b7011bDE1C5836C67f16E6e03033c272156193": {
     "protocolToken": {
-      "address": "0x15b7011bde1c5836c67f16e6e03033c272156193",
+      "address": "0x15b7011bDE1C5836C67f16E6e03033c272156193",
       "name": "Curve.fi Factory Crypto Pool: ETH+/ETH Convex Deposit",
       "symbol": "cvxETH+ETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x91362ebf6dbfa5c0fd45ce4cf46dffd4a8899c7c": {
+  "0x91362eBf6DbFA5c0FD45CE4cF46DfFd4A8899c7C": {
     "protocolToken": {
-      "address": "0x91362ebf6dbfa5c0fd45ce4cf46dffd4a8899c7c",
+      "address": "0x91362eBf6DbFA5c0FD45CE4cF46DfFd4A8899c7C",
       "name": "Curve.fi Factory Crypto Pool: swETH/frxETH Convex Deposit",
       "symbol": "cvxswETHfxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x3cfb4b26dc96b124d15a6f360503d028cf2a3c00": {
+  "0x3CfB4B26dc96B124D15A6f360503d028cF2a3c00": {
     "protocolToken": {
-      "address": "0x3cfb4b26dc96b124d15a6f360503d028cf2a3c00",
+      "address": "0x3CfB4B26dc96B124D15A6f360503d028cF2a3c00",
       "name": "Curve.fi Factory Plain Pool: crvUSD/Frax Convex Deposit",
       "symbol": "cvxcrvUSDFRAX-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb05262d4aaaa38d0af4aab244d446ebdb5afd4a7": {
+  "0xb05262D4aaAA38D0Af4AaB244D446ebDb5afd4A7": {
     "protocolToken": {
-      "address": "0xb05262d4aaaa38d0af4aab244d446ebdb5afd4a7",
+      "address": "0xb05262D4aaAA38D0Af4AaB244D446ebDb5afd4A7",
       "name": "TricryptoUSDT Convex Deposit",
       "symbol": "cvxcrvUSDTWBTCWETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x57f4cf13b325ad101cfe9ad3a84d3b2302aa96c8": {
+  "0x57f4cf13b325Ad101CfE9AD3a84d3B2302AA96c8": {
     "protocolToken": {
-      "address": "0x57f4cf13b325ad101cfe9ad3a84d3b2302aa96c8",
+      "address": "0x57f4cf13b325Ad101CfE9AD3a84d3B2302AA96c8",
       "name": "TricryptoUSDC Convex Deposit",
       "symbol": "cvxcrvUSDCWBTCWETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd22c1dc9baeb5b549401dd42e6227953cd816776": {
+  "0xD22c1Dc9baEb5b549401Dd42E6227953cd816776": {
     "protocolToken": {
-      "address": "0xd22c1dc9baeb5b549401dd42e6227953cd816776",
+      "address": "0xD22c1Dc9baEb5b549401Dd42E6227953cd816776",
       "name": "Curve.fi Factory Plain Pool: sdCRV/CRV Convex Deposit",
       "symbol": "cvxsdCRVlp-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd24e00740306a67e29f189b55343f4804683d231": {
+  "0xD24e00740306A67e29F189B55343F4804683d231": {
     "protocolToken": {
-      "address": "0xd24e00740306a67e29f189b55343f4804683d231",
+      "address": "0xD24e00740306A67e29F189B55343F4804683d231",
       "name": "Curve.fi Factory Plain Pool: sdPENDLE Convex Deposit",
       "symbol": "cvxsdPENDLElp-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x27fb53cda31de0bfc634086e180ee8c5f44a28eb": {
+  "0x27FB53CDA31de0BFc634086e180EE8c5f44a28Eb": {
     "protocolToken": {
-      "address": "0x27fb53cda31de0bfc634086e180ee8c5f44a28eb",
+      "address": "0x27FB53CDA31de0BFc634086e180EE8c5f44a28Eb",
       "name": "Curve.fi Factory Plain Pool: sdFXS/FXS Convex Deposit",
       "symbol": "cvxsdFXSlp-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x12261736a428580d53dfb2f213ae389e251be4cf": {
+  "0x12261736A428580D53dfb2F213ae389e251Be4CF": {
     "protocolToken": {
-      "address": "0x12261736a428580d53dfb2f213ae389e251be4cf",
+      "address": "0x12261736A428580D53dfb2F213ae389e251Be4CF",
       "name": "Curve.fi Factory Plain Pool: sdANGLE/ANGLE Convex Deposit",
       "symbol": "cvxsdANGLElp-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb94c129cb0adf7f5928e07476c668998251685f2": {
+  "0xB94c129Cb0Adf7f5928e07476c668998251685F2": {
     "protocolToken": {
-      "address": "0xb94c129cb0adf7f5928e07476c668998251685f2",
+      "address": "0xB94c129Cb0Adf7f5928e07476c668998251685F2",
       "name": "Curve.fi Factory Plain Pool: sdYFI/YFI Convex Deposit",
       "symbol": "cvxsdYFIpool-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x0106bff3bd9c3bb9e4f8776591288f6855c4af95": {
+  "0x0106Bff3bD9C3BB9e4F8776591288F6855c4aF95": {
     "protocolToken": {
-      "address": "0x0106bff3bd9c3bb9e4f8776591288f6855c4af95",
+      "address": "0x0106Bff3bD9C3BB9e4F8776591288F6855c4aF95",
       "name": "Curve.fi Factory Plain Pool: Stakehouse dETH / frxETH Convex Deposit",
       "symbol": "cvxdETHfrxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xfd3a7636694259b32b3896f59436997ad25380ca": {
+  "0xFd3A7636694259b32B3896f59436997AD25380cA": {
     "protocolToken": {
-      "address": "0xfd3a7636694259b32b3896f59436997ad25380ca",
+      "address": "0xFd3A7636694259b32B3896f59436997AD25380cA",
       "name": "Curve.fi Factory USD Metapool: ZUSDFRAXBP Convex Deposit",
       "symbol": "cvxZUSDFBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xdec6ad921212d9efe9643ddbfc1a1f1d4731060d": {
+  "0xdEC6Ad921212d9eFe9643DDBfc1A1F1d4731060d": {
     "protocolToken": {
-      "address": "0xdec6ad921212d9efe9643ddbfc1a1f1d4731060d",
+      "address": "0xdEC6Ad921212d9eFe9643DDBfc1A1F1d4731060d",
       "name": "TricryptoLLAMA Convex Deposit",
       "symbol": "cvxcrvCRVUSDTBTCWSTETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xbe99c9a460488ef88ef46db02a1222563acad636": {
+  "0xbe99C9A460488Ef88eF46db02a1222563acAd636": {
     "protocolToken": {
-      "address": "0xbe99c9a460488ef88ef46db02a1222563acad636",
+      "address": "0xbe99C9A460488Ef88eF46db02a1222563acAd636",
       "name": "Curve.fi Factory Plain Pool: crvUSD/SUSD Convex Deposit",
       "symbol": "cvxcrvUSDSUSD-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x6c3b5c66747645719726e232ea005758f7817376": {
+  "0x6c3b5c66747645719726e232Ea005758f7817376": {
     "protocolToken": {
-      "address": "0x6c3b5c66747645719726e232ea005758f7817376",
+      "address": "0x6c3b5c66747645719726e232Ea005758f7817376",
       "name": "Curve.fi Factory Crypto Pool: VCHF/FRAXBP Convex Deposit",
       "symbol": "cvxVCHFFRAXBP-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb3113f4da77ea0ec93fb2aa0272c1ab73bf4f0b0": {
+  "0xb3113f4dA77EA0Ec93Fb2aa0272c1aB73bf4F0B0": {
     "protocolToken": {
-      "address": "0xb3113f4da77ea0ec93fb2aa0272c1ab73bf4f0b0",
+      "address": "0xb3113f4dA77EA0Ec93Fb2aa0272c1aB73bf4F0B0",
       "name": "Curve.fi Factory Plain Pool: crvUSD/MIM Convex Deposit",
       "symbol": "cvxcrvUSDMIM-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x26ce86c54f779ea79be855b3b99201fe4dcf0c5b": {
+  "0x26cE86C54f779ea79be855b3B99201fe4dCf0c5b": {
     "protocolToken": {
-      "address": "0x26ce86c54f779ea79be855b3b99201fe4dcf0c5b",
+      "address": "0x26cE86C54f779ea79be855b3B99201fe4dCf0c5b",
       "name": "Curve.fi Factory Crypto Pool: ALD/ETH Convex Deposit",
       "symbol": "cvxALDETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xa9717e6ea61075d4767708f28ab08d0ae630bc7d": {
+  "0xA9717e6EA61075D4767708F28aB08D0Ae630bC7d": {
     "protocolToken": {
-      "address": "0xa9717e6ea61075d4767708f28ab08d0ae630bc7d",
+      "address": "0xA9717e6EA61075D4767708F28aB08D0Ae630bC7d",
       "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP Convex Deposit",
       "symbol": "cvxDUSDFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x19f3c877ea278e61fe1304770dbe5d78521792d2": {
+  "0x19F3C877eA278e61fE1304770dbE5D78521792D2": {
     "protocolToken": {
-      "address": "0x19f3c877ea278e61fe1304770dbe5d78521792d2",
+      "address": "0x19F3C877eA278e61fE1304770dbE5D78521792D2",
       "name": "Curve.fi Factory Plain Pool: cvxFxs/Fxs Convex Deposit",
       "symbol": "cvxcvxfxs-fxs-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb64d8a89d6c3475d7e402fa2ce175dcf557481d1": {
+  "0xb64D8A89D6C3475D7E402Fa2Ce175dcf557481D1": {
     "protocolToken": {
-      "address": "0xb64d8a89d6c3475d7e402fa2ce175dcf557481d1",
+      "address": "0xb64D8A89D6C3475D7E402Fa2Ce175dcf557481D1",
       "name": "Curve.fi Factory USD Metapool: pUSDFRAXBP-A100 Convex Deposit",
       "symbol": "cvxpUSDFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xef9555dcfa2e9014b416833c6fdea09db1d6b17f": {
+  "0xeF9555dCFa2E9014B416833C6FDEa09db1d6B17F": {
     "protocolToken": {
-      "address": "0xef9555dcfa2e9014b416833c6fdea09db1d6b17f",
+      "address": "0xeF9555dCFa2E9014B416833C6FDEa09db1d6B17F",
       "name": "Curve.fi Factory Plain Pool: pETHfrxETH-A1 Convex Deposit",
       "symbol": "cvxpETHfrxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x21e2d7f66df6f4e8199210b9490a51831c9847c7": {
+  "0x21E2d7f66DF6F4e8199210b9490a51831C9847C7": {
     "protocolToken": {
-      "address": "0x21e2d7f66df6f4e8199210b9490a51831c9847c7",
+      "address": "0x21E2d7f66DF6F4e8199210b9490a51831C9847C7",
       "name": "TricryptoINV Convex Deposit",
       "symbol": "cvxcrvUSDCWETHINV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x3e966aec2a7b31f237e0e1c394a254c500dfb07b": {
+  "0x3e966Aec2a7b31F237e0E1C394a254C500DFb07B": {
     "protocolToken": {
-      "address": "0x3e966aec2a7b31f237e0e1c394a254c500dfb07b",
+      "address": "0x3e966Aec2a7b31F237e0E1C394a254C500DFb07B",
       "name": "Curve.fi Factory Crypto Pool: JPEG/ETH Convex Deposit",
       "symbol": "cvxJPEGETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x6eefb42b64c4fa4558d7e9e9163246468e45f623": {
+  "0x6EeFB42b64C4Fa4558D7e9e9163246468e45F623": {
     "protocolToken": {
-      "address": "0x6eefb42b64c4fa4558d7e9e9163246468e45f623",
+      "address": "0x6EeFB42b64C4Fa4558D7e9e9163246468e45F623",
       "name": "Curve.fi Factory Plain Pool: crvUSD/UZD Convex Deposit",
       "symbol": "cvxcrvUSDUZD-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x9f6277061ec97a8fe5a1672bde4fc6b12dbb5dd6": {
+  "0x9f6277061ec97A8fE5a1672bde4fc6b12dBb5DD6": {
     "protocolToken": {
-      "address": "0x9f6277061ec97a8fe5a1672bde4fc6b12dbb5dd6",
+      "address": "0x9f6277061ec97A8fE5a1672bde4fc6b12dBb5DD6",
       "name": "Curve.fi Factory Plain Pool: ETHx/WETH Convex Deposit",
       "symbol": "cvxETHxWETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x98b662443695f7328f6a7fde9894cc0e88630269": {
+  "0x98B662443695f7328F6A7fDe9894CC0E88630269": {
     "protocolToken": {
-      "address": "0x98b662443695f7328f6a7fde9894cc0e88630269",
+      "address": "0x98B662443695f7328F6A7fDe9894CC0E88630269",
       "name": "Curve.fi Factory Plain Pool: Zunami zETH/frxETH Convex Deposit",
       "symbol": "cvxz-frxETH-f-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xf956a46dba1a0a567168db8655bc18e9050c7738": {
+  "0xF956a46DbA1A0a567168db8655bc18E9050C7738": {
     "protocolToken": {
-      "address": "0xf956a46dba1a0a567168db8655bc18e9050c7738",
+      "address": "0xF956a46DbA1A0a567168db8655bc18E9050C7738",
       "name": "TriCRV Convex Deposit",
       "symbol": "cvxcrvUSDETHCRV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x3d55c3109cd2b5707e7c237f8bb15e0ec4b7cafb": {
+  "0x3d55c3109cd2b5707E7C237f8bB15e0ec4b7CafB": {
     "protocolToken": {
-      "address": "0x3d55c3109cd2b5707e7c237f8bb15e0ec4b7cafb",
+      "address": "0x3d55c3109cd2b5707E7C237f8bB15e0ec4b7CafB",
       "name": "Curve.fi Factory Plain Pool: crvUSD/GUSD Convex Deposit",
       "symbol": "cvxcrvUSDGUSD-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc25d31c9dfba32e3609233291772cacb30303338": {
+  "0xC25d31c9DFBa32e3609233291772CACB30303338": {
     "protocolToken": {
-      "address": "0xc25d31c9dfba32e3609233291772cacb30303338",
+      "address": "0xC25d31c9DFBa32e3609233291772CACB30303338",
       "name": "Curve.fi Factory Plain Pool: crvUSD/GHO Convex Deposit",
       "symbol": "cvxcrvUSDGHO-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc4581e043f676b95eb1430474c69f3559a758086": {
+  "0xC4581E043F676b95Eb1430474C69f3559a758086": {
     "protocolToken": {
-      "address": "0xc4581e043f676b95eb1430474c69f3559a758086",
+      "address": "0xC4581E043F676b95Eb1430474C69f3559a758086",
       "name": "Curve.fi Factory USD Metapool: GRAIFRAXBP Convex Deposit",
       "symbol": "cvxGRAIFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc94208d230eedc4cdc4f80141e21aa485a515660": {
+  "0xC94208D230EEdC4cDC4F80141E21aA485A515660": {
     "protocolToken": {
-      "address": "0xc94208d230eedc4cdc4f80141e21aa485a515660",
+      "address": "0xC94208D230EEdC4cDC4F80141E21aA485A515660",
       "name": "Curve.fi Factory Plain Pool: crvUSD/DOLA Convex Deposit",
       "symbol": "cvxcrvUSDDOLA-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xf011ad8e91d1dc8625e5548755aea1f6fff81089": {
+  "0xf011aD8E91D1dc8625e5548755AEa1F6Fff81089": {
     "protocolToken": {
-      "address": "0xf011ad8e91d1dc8625e5548755aea1f6fff81089",
+      "address": "0xf011aD8E91D1dc8625e5548755AEa1F6Fff81089",
       "name": "Curve.fi Factory Plain Pool: rETH/frxETH Convex Deposit",
       "symbol": "cvxrETHfrxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x442e773ffb0043551417d5a37e10c17990fb075c": {
+  "0x442E773FFB0043551417D5A37E10c17990fB075c": {
     "protocolToken": {
-      "address": "0x442e773ffb0043551417d5a37e10c17990fb075c",
+      "address": "0x442E773FFB0043551417D5A37E10c17990fB075c",
       "name": "Curve.fi Factory Plain Pool: msETH/WETH Convex Deposit",
       "symbol": "cvxmsETHWETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x36618a6ec10efab33bbfbf99273f3998e1ebb1ad": {
+  "0x36618a6ec10EfaB33bbFBf99273f3998E1Ebb1Ad": {
     "protocolToken": {
-      "address": "0x36618a6ec10efab33bbfbf99273f3998e1ebb1ad",
+      "address": "0x36618a6ec10EfaB33bbFBf99273f3998E1Ebb1Ad",
       "name": "Curve.fi Factory Plain Pool: crvUSD/XAI Convex Deposit",
       "symbol": "cvxcrvUSDXAI-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xfafde12dc476c4913e29f47b4747860c148c5e4f": {
+  "0xFafDE12dC476C4913e29F47B4747860C148c5E4f": {
     "protocolToken": {
-      "address": "0xfafde12dc476c4913e29f47b4747860c148c5e4f",
+      "address": "0xFafDE12dC476C4913e29F47B4747860C148c5E4f",
       "name": "Curve.fi Factory Plain Pool: frxETH/WETH Convex Deposit",
       "symbol": "cvxfrxeth-ng-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x5793691b4ba69665213614d7ac722db2d3f41927": {
+  "0x5793691B4ba69665213614d7ac722Db2d3f41927": {
     "protocolToken": {
-      "address": "0x5793691b4ba69665213614d7ac722db2d3f41927",
+      "address": "0x5793691B4ba69665213614d7ac722Db2d3f41927",
       "name": "Curve.fi Factory Plain Pool: tBTC/WBTC Convex Deposit",
       "symbol": "cvx2BTC-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x75c091a75d4c13855c6d6cf7935fccc3a14800f3": {
+  "0x75c091a75d4C13855c6d6cF7935FCcc3A14800F3": {
     "protocolToken": {
-      "address": "0x75c091a75d4c13855c6d6cf7935fccc3a14800f3",
+      "address": "0x75c091a75d4C13855c6d6cF7935FCcc3A14800F3",
       "name": "Curve.fi Factory Plain Pool: crvUSD/MAI Convex Deposit",
       "symbol": "cvxcrvUSDMAI-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x6bf9762014336cf87cfa8bb93b50efed73c96fd5": {
+  "0x6bf9762014336cf87CfA8bb93B50efeD73c96FD5": {
     "protocolToken": {
-      "address": "0x6bf9762014336cf87cfa8bb93b50efed73c96fd5",
+      "address": "0x6bf9762014336cf87CfA8bb93B50efeD73c96FD5",
       "name": "Curve.fi Factory Crypto Pool: JPEG/pETH Convex Deposit",
       "symbol": "cvxJPEGpETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x5a20643fc0c2c39ab28afac727f8a2cb6a1d616c": {
+  "0x5A20643fc0c2c39aB28aFAC727f8A2cB6a1D616C": {
     "protocolToken": {
-      "address": "0x5a20643fc0c2c39ab28afac727f8a2cb6a1d616c",
+      "address": "0x5A20643fc0c2c39aB28aFAC727f8A2cB6a1D616C",
       "name": "Curve.fi Factory Plain Pool: pETH Convex Deposit",
       "symbol": "cvxpETH-WETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xeae6fb62d508a5daec16b343c3c4ed9664443079": {
+  "0xeAE6Fb62D508A5daEC16b343c3c4Ed9664443079": {
     "protocolToken": {
-      "address": "0xeae6fb62d508a5daec16b343c3c4ed9664443079",
+      "address": "0xeAE6Fb62D508A5daEC16b343c3c4Ed9664443079",
       "name": "Curve.fi Factory Plain Pool: xETH/stETH Convex Deposit",
       "symbol": "cvxxETHstETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x35fbe5520e70768dcd6e3215ed54e14cbcca10d2": {
+  "0x35FbE5520E70768DCD6E3215Ed54E14CBccA10D2": {
     "protocolToken": {
-      "address": "0x35fbe5520e70768dcd6e3215ed54e14cbcca10d2",
+      "address": "0x35FbE5520E70768DCD6E3215Ed54E14CBccA10D2",
       "name": "Curve.fi Factory USD Metapool: Prisma mkUSD Convex Deposit",
       "symbol": "cvxmkUSD3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xdfbd12c4a2f6419cf0a8d65255ba4be7535917ed": {
+  "0xdFBd12c4a2F6419CF0a8d65255Ba4BE7535917ED": {
     "protocolToken": {
-      "address": "0xdfbd12c4a2f6419cf0a8d65255ba4be7535917ed",
+      "address": "0xdFBd12c4a2F6419CF0a8d65255Ba4BE7535917ED",
       "name": "Curve.fi Factory Plain Pool: mkUSD/crvUSD Convex Deposit",
       "symbol": "cvxmkcrvUSD-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xfcef86a917fb2d0ab39d60e111a3763927db485d": {
+  "0xFcef86a917fb2D0AB39D60e111a3763927Db485d": {
     "protocolToken": {
-      "address": "0xfcef86a917fb2d0ab39d60e111a3763927db485d",
+      "address": "0xFcef86a917fb2D0AB39D60e111a3763927Db485d",
       "name": "Curve.fi Factory Crypto Pool: fETH/crvUSD Convex Deposit",
       "symbol": "cvxfeth-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x0831c171938033d0c5218b509502e2d95ac10cab": {
+  "0x0831c171938033d0C5218B509502E2d95AC10cAb": {
     "protocolToken": {
-      "address": "0x0831c171938033d0c5218b509502e2d95ac10cab",
+      "address": "0x0831c171938033d0C5218B509502E2d95AC10cAb",
       "name": "Curve.fi Factory Crypto Pool: xETH/ETH Convex Deposit",
       "symbol": "cvxxETHETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x633d3b227696b3facf628a197f982ef68d26c7b5": {
+  "0x633D3B227696B3FacF628a197f982eF68d26c7b5": {
     "protocolToken": {
-      "address": "0x633d3b227696b3facf628a197f982ef68d26c7b5",
+      "address": "0x633D3B227696B3FacF628a197f982eF68d26c7b5",
       "name": "Curve.fi Factory Plain Pool: LUSD/crvUSD Convex Deposit",
       "symbol": "cvxLUSDcrvUSD-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x890648e84780b94e1242cff7912849240565fd4b": {
+  "0x890648e84780B94E1242CFF7912849240565FD4b": {
     "protocolToken": {
-      "address": "0x890648e84780b94e1242cff7912849240565fd4b",
+      "address": "0x890648e84780B94E1242CFF7912849240565FD4b",
       "name": "TriSILO Convex Deposit",
       "symbol": "cvxcrvUSDETHSILO",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb0867ade998641ab1ff04cf5ca5e5773fa92aae3": {
+  "0xB0867ADE998641Ab1Ff04cF5cA5e5773fA92AaE3": {
     "protocolToken": {
-      "address": "0xb0867ade998641ab1ff04cf5ca5e5773fa92aae3",
+      "address": "0xB0867ADE998641Ab1Ff04cF5cA5e5773fA92AaE3",
       "name": "Curve.fi Factory Plain Pool: yETH Convex Deposit",
       "symbol": "cvxyETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x399e111c7209a741b06f8f86ef0fdd88fc198d20": {
+  "0x399e111c7209a741B06F8F86Ef0Fdd88fC198D20": {
     "protocolToken": {
-      "address": "0x399e111c7209a741b06f8f86ef0fdd88fc198d20",
+      "address": "0x399e111c7209a741B06F8F86Ef0Fdd88fC198D20",
       "name": "Curve.fi Factory Pool: ETHx-ETH Convex Deposit",
       "symbol": "cvxethx-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x1f2a117314e6e8655e0a1c97669b7b836e2cdb91": {
+  "0x1f2a117314e6e8655E0A1C97669b7B836e2cDb91": {
     "protocolToken": {
-      "address": "0x1f2a117314e6e8655e0a1c97669b7b836e2cdb91",
+      "address": "0x1f2a117314e6e8655E0A1C97669b7B836e2cDb91",
       "name": "triSDT Convex Deposit",
       "symbol": "cvxtriSDT",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xe0ec41afe8323045703a5a7c8e4fd3be9d285bff": {
+  "0xe0EC41Afe8323045703a5a7C8e4FD3Be9D285bff": {
     "protocolToken": {
-      "address": "0xe0ec41afe8323045703a5a7c8e4fd3be9d285bff",
+      "address": "0xe0EC41Afe8323045703a5a7C8e4FD3Be9D285bff",
       "name": "Curve.fi Factory Crypto Pool: mkUSD/ETH Convex Deposit",
       "symbol": "cvxmkusdETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x4180404f74a5ba2145bce39855f248f350b21523": {
+  "0x4180404f74A5Ba2145bCe39855f248f350b21523": {
     "protocolToken": {
-      "address": "0x4180404f74a5ba2145bce39855f248f350b21523",
+      "address": "0x4180404f74A5Ba2145bCe39855f248f350b21523",
       "name": "Curve.fi Factory USD Metapool: PAYPALFRAXBP Convex Deposit",
       "symbol": "cvxPPFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x2267b760ce858617ff1ef8e7c598397093c276bd": {
+  "0x2267b760Ce858617ff1Ef8E7c598397093c276bD": {
     "protocolToken": {
-      "address": "0x2267b760ce858617ff1ef8e7c598397093c276bd",
+      "address": "0x2267b760Ce858617ff1Ef8E7c598397093c276bD",
       "name": "Curve.fi Factory Crypto Pool: fETH/FraxBP Convex Deposit",
       "symbol": "cvxfETHFraxBP-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x105fb5f119117853af8d7d57581a13ddeca01e21": {
+  "0x105fb5f119117853af8D7D57581a13dDeCa01e21": {
     "protocolToken": {
-      "address": "0x105fb5f119117853af8d7d57581a13ddeca01e21",
+      "address": "0x105fb5f119117853af8D7D57581a13dDeCa01e21",
       "name": "Curve.fi Factory Plain Pool: frxETH/OETH Convex Deposit",
       "symbol": "cvxfrxETHOETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd1bdd9a20359903dd5939f10ce5a2d5b1f7624f7": {
+  "0xD1Bdd9a20359903Dd5939F10Ce5A2d5b1f7624F7": {
     "protocolToken": {
-      "address": "0xd1bdd9a20359903dd5939f10ce5a2d5b1f7624f7",
+      "address": "0xD1Bdd9a20359903Dd5939F10Ce5A2d5b1f7624F7",
       "name": "Curve.fi Factory Crypto Pool: USDC+ Convex Deposit",
       "symbol": "cvxUSDC+LP-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc8edf80be4f462ab5a3fa1e3236a5ec5af1b6aac": {
+  "0xc8Edf80be4F462Ab5a3fA1e3236A5Ec5AF1b6aac": {
     "protocolToken": {
-      "address": "0xc8edf80be4f462ab5a3fa1e3236a5ec5af1b6aac",
+      "address": "0xc8Edf80be4F462Ab5a3fA1e3236A5Ec5AF1b6aac",
       "name": "Curve.fi Factory Plain Pool: crvUSD/PYUSD Convex Deposit",
       "symbol": "cvxcrvUSDPY-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x2b732f0eee9e1b4329c25cbb8bdc0dc3bc1448e2": {
+  "0x2b732f0Eee9e1b4329C25Cbb8bdC0dc3bC1448E2": {
     "protocolToken": {
-      "address": "0x2b732f0eee9e1b4329c25cbb8bdc0dc3bc1448e2",
+      "address": "0x2b732f0Eee9e1b4329C25Cbb8bdC0dc3bC1448E2",
       "name": "Curve.fi Factory Crypto Pool: FXN/ETH Convex Deposit",
       "symbol": "cvxFXNETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x676dcbd10e46c37337b62318f9343adc19ce803a": {
+  "0x676dCBd10e46c37337B62318F9343ADc19CE803a": {
     "protocolToken": {
-      "address": "0x676dcbd10e46c37337b62318f9343adc19ce803a",
+      "address": "0x676dCBd10e46c37337B62318F9343ADc19CE803a",
       "name": "Curve.fi Factory USD Metapool: USTPFRAXBP Convex Deposit",
       "symbol": "cvxUSTPFRAXBP3CRV-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x19a0117a5be27e4d3059be13fb069eb8f1646d86": {
+  "0x19A0117a5bE27e4D3059Be13FB069eB8f1646d86": {
     "protocolToken": {
-      "address": "0x19a0117a5be27e4d3059be13fb069eb8f1646d86",
+      "address": "0x19A0117a5bE27e4D3059Be13FB069eB8f1646d86",
       "name": "Curve.fi Factory Plain Pool: cvxFxn/Fxn Convex Deposit",
       "symbol": "cvxcvxfxn-fxn-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xd59b9c25a8686e6a93b7e3784d3155dc55419d2d": {
+  "0xD59B9C25A8686E6a93b7E3784D3155dC55419D2D": {
     "protocolToken": {
-      "address": "0xd59b9c25a8686e6a93b7e3784d3155dc55419d2d",
+      "address": "0xD59B9C25A8686E6a93b7E3784D3155dC55419D2D",
       "name": "Curve.fi Factory Plain Pool: pETHfrxETH Convex Deposit",
       "symbol": "cvxpETHfrxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x883d7ab9078970b0204c50b56e1c3f72ab5544f9": {
+  "0x883D7AB9078970b0204c50B56e1c3F72AB5544f9": {
     "protocolToken": {
-      "address": "0x883d7ab9078970b0204c50b56e1c3f72ab5544f9",
+      "address": "0x883D7AB9078970b0204c50B56e1c3F72AB5544f9",
       "name": "Curve.fi Factory Plain Pool: sdFXN Convex Deposit",
       "symbol": "cvxsdFXNFXN-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x42aac689261723d06d2a8f356448bd8249f831bc": {
+  "0x42aaC689261723d06d2a8f356448bd8249f831Bc": {
     "protocolToken": {
-      "address": "0x42aac689261723d06d2a8f356448bd8249f831bc",
+      "address": "0x42aaC689261723d06d2a8f356448bd8249f831Bc",
       "name": "Curve.fi Factory Plain Pool: frxETHpETH Convex Deposit",
       "symbol": "cvxfrxETHpETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x8e4e4032310303bd42394ce1a38afcb3f9941604": {
+  "0x8e4e4032310303Bd42394cE1a38AFCB3F9941604": {
     "protocolToken": {
-      "address": "0x8e4e4032310303bd42394ce1a38afcb3f9941604",
+      "address": "0x8e4e4032310303Bd42394cE1a38AFCB3F9941604",
       "name": "Curve.fi Factory Crypto Pool: frxETHJPEG Convex Deposit",
       "symbol": "cvxfrxETHJPEG-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x49dd6bcf56abbe00dbb816ef6664c4cf5bdd81a1": {
+  "0x49Dd6BCf56ABBE00DbB816EF6664c4cf5bdd81A1": {
     "protocolToken": {
-      "address": "0x49dd6bcf56abbe00dbb816ef6664c4cf5bdd81a1",
+      "address": "0x49Dd6BCf56ABBE00DbB816EF6664c4cf5bdd81A1",
       "name": "Curve.fi Factory Crypto Pool: dYFI/ETH Convex Deposit",
       "symbol": "cvxdYFIETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xde91bf29adf79fbfbbf0d646eaf024c0cb9fac25": {
+  "0xDe91Bf29ADF79FbfbbF0d646EAf024c0CB9fac25": {
     "protocolToken": {
-      "address": "0xde91bf29adf79fbfbbf0d646eaf024c0cb9fac25",
+      "address": "0xDe91Bf29ADF79FbfbbF0d646EAf024c0CB9fac25",
       "name": "Curve.fi Factory Plain Pool: crvUSD-stUSDT Convex Deposit",
       "symbol": "cvxcrvstUSDT-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x62f3c96017f2ba9d83bd70500b738feeebc5ffc6": {
+  "0x62f3C96017F2Ba9D83BD70500B738FEEebc5FFc6": {
     "protocolToken": {
-      "address": "0x62f3c96017f2ba9d83bd70500b738feeebc5ffc6",
+      "address": "0x62f3C96017F2Ba9D83BD70500B738FEEebc5FFc6",
       "name": "Curve.fi Factory Plain Pool: crvUSD-STBT Convex Deposit",
       "symbol": "cvxcrvSTBT-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xfe4ac9cd3892bacbea12c9185a577164f56831fd": {
+  "0xFe4aC9cd3892BACbeA12C9185a577164f56831fD": {
     "protocolToken": {
-      "address": "0xfe4ac9cd3892bacbea12c9185a577164f56831fd",
+      "address": "0xFe4aC9cd3892BACbeA12C9185a577164f56831fD",
       "name": "Curve.fi Factory Plain Pool: ETHx/frxETH Convex Deposit",
       "symbol": "cvxETHxfrxETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb14b2bba5446bce656b37b22f4c2de6446226dfb": {
+  "0xb14B2bbA5446BcE656b37b22f4c2De6446226dFb": {
     "protocolToken": {
-      "address": "0xb14b2bba5446bce656b37b22f4c2de6446226dfb",
+      "address": "0xb14B2bbA5446BcE656b37b22f4c2De6446226dFb",
       "name": "TryLSD Convex Deposit",
       "symbol": "cvxTryLSD",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x73ea73c3a191bd05f3266eb2414609dc5fe777a2": {
+  "0x73eA73C3a191bd05F3266eB2414609dC5Fe777a2": {
     "protocolToken": {
-      "address": "0x73ea73c3a191bd05f3266eb2414609dc5fe777a2",
+      "address": "0x73eA73C3a191bd05F3266eB2414609dC5Fe777a2",
       "name": "Curve.fi Factory Plain Pool: crvUSD-sFRAX Convex Deposit",
       "symbol": "cvxcrvsFRAX-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x24f4555e2b179b86eb2fceda9c23e593d3929bac": {
+  "0x24f4555E2B179b86EB2FCeda9C23E593d3929bac": {
     "protocolToken": {
-      "address": "0x24f4555e2b179b86eb2fceda9c23e593d3929bac",
+      "address": "0x24f4555E2B179b86EB2FCeda9C23E593d3929bac",
       "name": "Curve.fi Factory Plain Pool: crvUSD-sDAI Convex Deposit",
       "symbol": "cvxcrvsDAI-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x1cd51d1367cf023a0142d804637fa19019bcbc9d": {
+  "0x1cD51d1367Cf023a0142d804637Fa19019bCBC9d": {
     "protocolToken": {
-      "address": "0x1cd51d1367cf023a0142d804637fa19019bcbc9d",
+      "address": "0x1cD51d1367Cf023a0142d804637Fa19019bCBC9d",
       "name": "Curve.fi Factory Plain Pool: crvusd-USDM Convex Deposit",
       "symbol": "cvxcrvUSDM-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x4af50a690062970daf1d2f0fa9042c6f5a5495e3": {
+  "0x4af50A690062970DAf1d2f0Fa9042C6f5a5495E3": {
     "protocolToken": {
-      "address": "0x4af50a690062970daf1d2f0fa9042c6f5a5495e3",
+      "address": "0x4af50A690062970DAf1d2f0Fa9042C6f5a5495E3",
       "name": "TricryptoFRAX Convex Deposit",
       "symbol": "cvxcrvFRAXTBTCFRXETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x561f7cf0037405b97406eef5ee288563d9c05151": {
+  "0x561f7cf0037405b97406eEF5eE288563D9c05151": {
     "protocolToken": {
-      "address": "0x561f7cf0037405b97406eef5ee288563d9c05151",
+      "address": "0x561f7cf0037405b97406eEF5eE288563D9c05151",
       "name": "Curve.fi Factory Crypto Pool: crUSDC/FRAXBP Convex Deposit",
       "symbol": "cvxcrUSDCFRAX-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc4c1c6d0c20801369dcf77e8de060e47077ca20f": {
+  "0xc4C1C6d0c20801369dcF77E8De060e47077ca20f": {
     "protocolToken": {
-      "address": "0xc4c1c6d0c20801369dcf77e8de060e47077ca20f",
+      "address": "0xc4C1C6d0c20801369dcF77E8De060e47077ca20f",
       "name": "Curve.fi Factory Crypto Pool: PRISMA/ETH Convex Deposit",
       "symbol": "cvxPRISMAETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x4b10c7fad37cb7a9dacceeee40c0d97549918298": {
+  "0x4b10c7fAd37cB7A9DaCcEeEe40C0d97549918298": {
     "protocolToken": {
-      "address": "0x4b10c7fad37cb7a9dacceeee40c0d97549918298",
+      "address": "0x4b10c7fAd37cB7A9DaCcEeEe40C0d97549918298",
       "name": "Curve.fi Factory Plain Pool: cvxPrisma/Prisma Convex Deposit",
       "symbol": "cvxcvxprismlp-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x30c0b8b1e02ad1de47b7f6ede8fb7933736d48fa": {
+  "0x30c0B8B1e02Ad1DE47B7F6edE8Fb7933736d48fa": {
     "protocolToken": {
-      "address": "0x30c0b8b1e02ad1de47b7f6ede8fb7933736d48fa",
+      "address": "0x30c0B8B1e02Ad1DE47B7F6edE8Fb7933736d48fa",
       "name": "Curve.fi Factory Crypto Pool: PRISMA/mkUSD Convex Deposit",
       "symbol": "cvxmkPRISMA-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc5e3dc0a7f8b5dbed9a9df329adfae802deaf2af": {
+  "0xc5E3DC0a7F8b5dBED9a9df329ADfae802dEAf2Af": {
     "protocolToken": {
-      "address": "0xc5e3dc0a7f8b5dbed9a9df329adfae802deaf2af",
+      "address": "0xc5E3DC0a7F8b5dBED9a9df329ADfae802dEAf2Af",
       "name": "Curve.fi Factory Plain Pool: PRISMA/yPRISMA Convex Deposit",
       "symbol": "cvxyPRISMA-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x9a767e19cd9e5c9ed8494281da409be38fc76015": {
+  "0x9A767E19cD9E5c9eD8494281da409Be38Fc76015": {
     "protocolToken": {
-      "address": "0x9a767e19cd9e5c9ed8494281da409be38fc76015",
+      "address": "0x9A767E19cD9E5c9eD8494281da409Be38Fc76015",
       "name": "Curve.fi Factory Crypto Pool: mevETH/frxETH Convex Deposit",
       "symbol": "cvxmevETHfrxE-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x10ce6d8f33d820458f1f8ac23ffbac90b248c0c0": {
+  "0x10ce6D8f33D820458f1F8aC23FfBaC90b248c0C0": {
     "protocolToken": {
-      "address": "0x10ce6d8f33d820458f1f8ac23ffbac90b248c0c0",
+      "address": "0x10ce6D8f33D820458f1F8aC23FfBaC90b248c0C0",
       "name": "mkUSD-USDC Convex Deposit",
       "symbol": "cvxmkUSDUSDC",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x88d90ea745d3287abf61ecdfa65f71b165b197a0": {
+  "0x88D90EA745d3287aBf61EcdfA65F71B165b197a0": {
     "protocolToken": {
-      "address": "0x88d90ea745d3287abf61ecdfa65f71b165b197a0",
+      "address": "0x88D90EA745d3287aBf61EcdfA65F71B165b197a0",
       "name": "USDV-crvUSD Convex Deposit",
       "symbol": "cvxUSDVcrvUSD",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x1a7a7b4c60fdf87be5b57b6160d9388950e2db9d": {
+  "0x1A7A7B4C60fDF87Be5B57B6160D9388950e2db9d": {
     "protocolToken": {
-      "address": "0x1a7a7b4c60fdf87be5b57b6160d9388950e2db9d",
+      "address": "0x1A7A7B4C60fDF87Be5B57B6160D9388950e2db9d",
       "name": "USDV-3crv Convex Deposit",
       "symbol": "cvxUSDV3crv",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x85b118e0fa5706d99b270be43d782fbe429ad409": {
+  "0x85b118e0Fa5706d99b270be43d782FBE429aD409": {
     "protocolToken": {
-      "address": "0x85b118e0fa5706d99b270be43d782fbe429ad409",
+      "address": "0x85b118e0Fa5706d99b270be43d782FBE429aD409",
       "name": "Curve.fi Factory Crypto Pool: ETHx-wstETH Convex Deposit",
       "symbol": "cvxETHxwstETH-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xbf7b90683fd7e64dbf624809d49bdcb20f09e560": {
+  "0xBf7b90683fD7E64dBF624809d49bdcB20f09e560": {
     "protocolToken": {
-      "address": "0xbf7b90683fd7e64dbf624809d49bdcb20f09e560",
+      "address": "0xBf7b90683fD7E64dBF624809d49bdcB20f09e560",
       "name": "Curve.fi Factory Crypto Pool: frxETHIQ Convex Deposit",
       "symbol": "cvxfrxETHIQ-f",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x80fb39bf2b1aeecdb1b3e7829ab6eccae02caa0d": {
+  "0x80fb39bf2b1aeEcdB1b3E7829aB6eCcae02Caa0D": {
     "protocolToken": {
-      "address": "0x80fb39bf2b1aeecdb1b3e7829ab6eccae02caa0d",
+      "address": "0x80fb39bf2b1aeEcdB1b3E7829aB6eCcae02Caa0D",
       "name": "sDAI/USDM Rebase Enjoyer Pool Convex Deposit",
       "symbol": "cvxsdai-usdm",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xba7ebdef7723e55c909ac44226fb87a93625c44e": {
+  "0xBA7eBDEF7723e55c909Ac44226FB87a93625c44e": {
     "protocolToken": {
-      "address": "0xba7ebdef7723e55c909ac44226fb87a93625c44e",
+      "address": "0xBA7eBDEF7723e55c909Ac44226FB87a93625c44e",
       "name": "osETH/rETH Convex Deposit",
       "symbol": "cvxosETH-rETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x9a2d1b49b7c8783e37780ace4ffa3416eea64357": {
+  "0x9a2d1b49b7c8783E37780AcE4ffA3416Eea64357": {
     "protocolToken": {
-      "address": "0x9a2d1b49b7c8783e37780ace4ffa3416eea64357",
+      "address": "0x9a2d1b49b7c8783E37780AcE4ffA3416Eea64357",
       "name": "TriDBR Convex Deposit",
       "symbol": "cvxcrvDBRINV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc583e81bb36a1f620a804d8af642b63b0ceeb5c0": {
+  "0xc583e81bB36A1F620A804D8AF642B63b0ceEb5c0": {
     "protocolToken": {
-      "address": "0xc583e81bb36a1f620a804d8af642b63b0ceeb5c0",
+      "address": "0xc583e81bB36A1F620A804D8AF642B63b0ceEb5c0",
       "name": "PayPool Convex Deposit",
       "symbol": "cvxPYUSDUSDC",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x3b793e505a3c7dbcb718fe871de8ebef7854e74b": {
+  "0x3B793E505A3C7dbCb718Fe871De8eBEf7854e74b": {
     "protocolToken": {
-      "address": "0x3b793e505a3c7dbcb718fe871de8ebef7854e74b",
+      "address": "0x3B793E505A3C7dbCb718Fe871De8eBEf7854e74b",
       "name": "pxETH/wETH Convex Deposit",
       "symbol": "cvxpxethweth",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x72b99e2cf3f9a2bbda1cc76894e4554d7aa8fe2e": {
+  "0x72b99E2cf3f9A2bbDA1Cc76894E4554d7aA8FE2E": {
     "protocolToken": {
-      "address": "0x72b99e2cf3f9a2bbda1cc76894e4554d7aa8fe2e",
+      "address": "0x72b99E2cf3f9A2bbDA1Cc76894E4554d7aA8FE2E",
       "name": "pxETH/frxETH Convex Deposit",
       "symbol": "cvxpxfrxeth",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x633556c8413fcfd45d83656290ff8d64ee41a7c1": {
+  "0x633556C8413FCFd45D83656290fF8d64EE41A7c1": {
     "protocolToken": {
-      "address": "0x633556c8413fcfd45d83656290ff8d64ee41a7c1",
+      "address": "0x633556C8413FCFd45D83656290fF8d64EE41A7c1",
       "name": "pxETH/stETH Convex Deposit",
       "symbol": "cvxpxsteth",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x9c2d762331df03576cfd8891d45450afe9e9e637": {
+  "0x9C2D762331dF03576cfd8891d45450AFE9e9e637": {
     "protocolToken": {
-      "address": "0x9c2d762331df03576cfd8891d45450afe9e9e637",
+      "address": "0x9C2D762331dF03576cfd8891d45450AFE9e9e637",
       "name": "TriBSN Convex Deposit",
       "symbol": "cvxTriBSN",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x2d159e01a5cee7498f84be68276a5266b3cb3774": {
+  "0x2D159E01A5cEe7498F84Be68276a5266b3cb3774": {
     "protocolToken": {
-      "address": "0x2d159e01a5cee7498f84be68276a5266b3cb3774",
+      "address": "0x2D159E01A5cEe7498F84Be68276a5266b3cb3774",
       "name": "weETH/WETH Convex Deposit",
       "symbol": "cvxweETH-WETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc18644bac04eb780a7e70079037790410578b321": {
+  "0xc18644bAC04Eb780a7E70079037790410578b321": {
     "protocolToken": {
-      "address": "0xc18644bac04eb780a7e70079037790410578b321",
+      "address": "0xc18644bAC04Eb780a7E70079037790410578b321",
       "name": "FRAXUSDV Convex Deposit",
       "symbol": "cvxFRAXUSDV",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xe627082369689b2b86d948c377a4ae4e739c59ee": {
+  "0xE627082369689b2B86D948c377A4aE4e739C59eE": {
     "protocolToken": {
-      "address": "0xe627082369689b2b86d948c377a4ae4e739c59ee",
+      "address": "0xE627082369689b2B86D948c377A4aE4e739C59eE",
       "name": "FRAXsDAI Convex Deposit",
       "symbol": "cvxFRAXsDAI",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc030b717b96b83bf4ec4a075dd547614953968fd": {
+  "0xc030b717b96B83bf4EC4a075dD547614953968FD": {
     "protocolToken": {
-      "address": "0xc030b717b96b83bf4ec4a075dd547614953968fd",
+      "address": "0xc030b717b96B83bf4EC4a075dD547614953968FD",
       "name": "FRAXUSDe Convex Deposit",
       "symbol": "cvxFRAXUSDe",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x062450b06eb92f1c4e227c41c987ed97c93ae232": {
+  "0x062450B06EB92F1C4E227C41c987ed97c93Ae232": {
     "protocolToken": {
-      "address": "0x062450b06eb92f1c4e227c41c987ed97c93ae232",
+      "address": "0x062450B06EB92F1C4E227C41c987ed97c93Ae232",
       "name": "FRAXFPI Convex Deposit",
       "symbol": "cvxFRAXFPI",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xb10a6e39ed8a66fed3aaef3866a95611a49b9a95": {
+  "0xB10a6e39Ed8a66fEd3aAef3866a95611a49B9a95": {
     "protocolToken": {
-      "address": "0xb10a6e39ed8a66fed3aaef3866a95611a49b9a95",
+      "address": "0xB10a6e39Ed8a66fEd3aAef3866a95611a49B9a95",
       "name": "FRAXPYUSD Convex Deposit",
       "symbol": "cvxFRAXPYUSD",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x830a71574e3c8ae9da477ce1b7f12849e9f7c8c8": {
+  "0x830a71574E3c8AE9da477cE1B7F12849E9f7c8c8": {
     "protocolToken": {
-      "address": "0x830a71574e3c8ae9da477ce1b7f12849e9f7c8c8",
+      "address": "0x830a71574E3c8AE9da477cE1B7F12849E9f7c8c8",
       "name": "FRAXFXB20240630 Convex Deposit",
       "symbol": "cvxFXB240630",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0x249ce0b1a682ad7b02e43271f9f0c9ac85ec47e8": {
+  "0x249cE0b1a682AD7b02e43271f9f0C9ac85Ec47e8": {
     "protocolToken": {
-      "address": "0x249ce0b1a682ad7b02e43271f9f0c9ac85ec47e8",
+      "address": "0x249cE0b1a682AD7b02e43271f9f0C9ac85Ec47e8",
       "name": "FRAXFXB20241231 Convex Deposit",
       "symbol": "cvxFXB241231",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xc9f6d73fd06b8eeb0a4e87cad407219e10f31712": {
+  "0xC9F6D73fD06b8EEB0A4E87cAd407219E10F31712": {
     "protocolToken": {
-      "address": "0xc9f6d73fd06b8eeb0a4e87cad407219e10f31712",
+      "address": "0xC9F6D73fD06b8EEB0A4E87cAd407219E10F31712",
       "name": "FRAXFXB20261231 Convex Deposit",
       "symbol": "cvxFXB261231",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18
     }
   },
-  "0xf2be647c432e90b0e1111b279f69e77d2548eee6": {
+  "0xF2Be647c432E90B0e1111b279F69E77d2548eEe6": {
     "protocolToken": {
-      "address": "0xf2be647c432e90b0e1111b279f69e77d2548eee6",
+      "address": "0xF2Be647c432E90B0e1111b279F69E77d2548eEe6",
       "name": "alETH/wETH Convex Deposit",
       "symbol": "cvxalETHwETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x5750e9C71D5Afa876170DF3966a4Bb7Cc3E73400": {
+    "protocolToken": {
+      "address": "0x5750e9C71D5Afa876170DF3966a4Bb7Cc3E73400",
+      "name": "USDV-crvUSD Convex Deposit",
+      "symbol": "cvxUSDVcrvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x0d71205733e8b736E04f80B5da89f3D11C067a2b": {
+    "protocolToken": {
+      "address": "0x0d71205733e8b736E04f80B5da89f3D11C067a2b",
+      "name": "crvUSD/sFRAX Convex Deposit",
+      "symbol": "cvxcrvsFRAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x2686e9E88AAc7a3B3007CAD5b7a2253438cac6D4": {
+    "protocolToken": {
+      "address": "0x2686e9E88AAc7a3B3007CAD5b7a2253438cac6D4",
+      "name": "wETH/rETH Convex Deposit",
+      "symbol": "cvxwETHrETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0xdf1ffAF161a54e8E7c3e1391b4905EeFedE86FF4": {
+    "protocolToken": {
+      "address": "0xdf1ffAF161a54e8E7c3e1391b4905EeFedE86FF4",
+      "name": "crvUSD/sDAI Convex Deposit",
+      "symbol": "cvxcrvsDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x79579633029a61963eDfbA1C0BE22498b6e0D33D": {
+    "protocolToken": {
+      "address": "0x79579633029a61963eDfbA1C0BE22498b6e0D33D",
+      "name": "pyUSD/crvUSD Convex Deposit",
+      "symbol": "cvxPYcrvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x437BdEa046406130646E67514eed0aC965692963": {
+    "protocolToken": {
+      "address": "0x437BdEa046406130646E67514eed0aC965692963",
+      "name": "USDV-3crv Convex Deposit",
+      "symbol": "cvxUSDV3crv",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x9798e88f495Ed494a52F5D4615C5D53C16139A5e": {
+    "protocolToken": {
+      "address": "0x9798e88f495Ed494a52F5D4615C5D53C16139A5e",
+      "name": "crvUSD/stUSDT Convex Deposit",
+      "symbol": "cvxcrvstUSDT",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0xBdeb10ed4FE95a2f79A9D60F9C16206BfcBA6Ef7": {
+    "protocolToken": {
+      "address": "0xBdeb10ed4FE95a2f79A9D60F9C16206BfcBA6Ef7",
+      "name": "eUSD/mkUSD Convex Deposit",
+      "symbol": "cvxeUSDmkUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x01099Fe2c82C6F5Dc7485697fBC234f034E3329A": {
+    "protocolToken": {
+      "address": "0x01099Fe2c82C6F5Dc7485697fBC234f034E3329A",
+      "name": "eUSD/crvUSD Convex Deposit",
+      "symbol": "cvxeUSDcrvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0xc72dA58342e6bE07858B12c0AFE3Db9aF098b849": {
+    "protocolToken": {
+      "address": "0xc72dA58342e6bE07858B12c0AFE3Db9aF098b849",
+      "name": "weeTH/rswETH Convex Deposit",
+      "symbol": "cvxweeTH/rswE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x5FBA4b8417d239AF93ce194c6F25A1D29020A799": {
+    "protocolToken": {
+      "address": "0x5FBA4b8417d239AF93ce194c6F25A1D29020A799",
+      "name": "rswETH/ETH Convex Deposit",
+      "symbol": "cvxrswETH/ETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0xbf93ffB9C681052b810E300B38F59676a78f16b3": {
+    "protocolToken": {
+      "address": "0xbf93ffB9C681052b810E300B38F59676a78f16b3",
+      "name": "BobrCRV/CRV/crvUSD Convex Deposit",
+      "symbol": "cvxBobrCRV",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x923D3C32f870E7953dd4020D0585D6419C44e4Ca": {
+    "protocolToken": {
+      "address": "0x923D3C32f870E7953dd4020D0585D6419C44e4Ca",
+      "name": "TricryptoGHO Convex Deposit",
+      "symbol": "cvxGHOBTCwstE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
       "decimals": 18

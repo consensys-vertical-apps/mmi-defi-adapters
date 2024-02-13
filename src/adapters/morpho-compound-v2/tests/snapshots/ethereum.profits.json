@@ -12,7 +12,7 @@
       "productId": "optimizer-supply",
       "success": false,
       "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0x6b175474e89094c44da98b954eedeac495271d0f",
+        "message": "Unable to calculate profits, missing USD price for token position 0x6B175474E89094C44Da98b954EedeAC495271d0F",
         "details": {
           "name": "Error"
         }

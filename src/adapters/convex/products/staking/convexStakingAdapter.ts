@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
@@ -47,6 +48,7 @@ export class ConvexStakingAdapter
   implements IMetadataBuilder
 {
   productId = 'staking'
+  isWrappable = true
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -90,10 +92,10 @@ export class ConvexStakingAdapter
           getTokenMetadata(convexData.lptoken, this.chainId, this.provider),
         ])
 
-        metadata[convexData.crvRewards.toLowerCase()] = {
+        metadata[getAddress(convexData.crvRewards)] = {
           protocolToken: {
             ...convexToken,
-            address: convexData.crvRewards.toLowerCase(),
+            address: getAddress(convexData.crvRewards),
           },
           underlyingToken,
         }

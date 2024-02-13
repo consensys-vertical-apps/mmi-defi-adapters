@@ -13,21 +13,21 @@
       {
         "transactionHash": "0x5f582f63ab541de7775da96d5c3269c25272ef7b114090be9d6e4c83b91fc65b",
         "protocolToken": {
-          "address": "0x30d9410ed1d5da1f6c8391af5338c93ab8d4035c",
+          "address": "0x30D9410ED1D5DA1F6C8391af5338C93ab8d4035C",
           "name": "Curve.fi DAI/USDC/USDT Convex Deposit",
           "symbol": "cvx3Crv",
           "decimals": 18
         },
         "tokens": [
           {
-            "address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
-            "name": "Curve.fi DAI/USDC/USDT",
-            "symbol": "3Crv",
+            "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "name": "LP 3pool Curve",
+            "symbol": "3CRV",
             "decimals": 18,
             "balanceRaw": "20000000000000000000n",
             "type": "underlying",
             "blockNumber": 14443070,
-            "balance": "20.0"
+            "balance": 20
           }
         ],
         "blockNumber": 14443070

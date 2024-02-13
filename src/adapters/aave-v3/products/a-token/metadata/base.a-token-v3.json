@@ -1,7 +1,7 @@
 {
-  "0xd4a0e0b9149bcee3c920d2e00b5de09138fd8bb7": {
+  "0xD4a0e0b9149BCee3C920d2E00b5dE09138fd8bb7": {
     "protocolToken": {
-      "address": "0xd4a0e0b9149bcee3c920d2e00b5de09138fd8bb7",
+      "address": "0xD4a0e0b9149BCee3C920d2E00b5dE09138fd8bb7",
       "name": "Aave Base WETH",
       "symbol": "aBasWETH",
       "decimals": 18
@@ -13,57 +13,57 @@
       "decimals": 18
     }
   },
-  "0xcf3d55c10db69f28fd1a75bd73f3d8a2d9c595ad": {
+  "0xcf3D55c10DB69f28fD1A75Bd73f3D8A2d9c595ad": {
     "protocolToken": {
-      "address": "0xcf3d55c10db69f28fd1a75bd73f3d8a2d9c595ad",
+      "address": "0xcf3D55c10DB69f28fD1A75Bd73f3D8A2d9c595ad",
       "name": "Aave Base cbETH",
       "symbol": "aBascbETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22",
+      "address": "0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22",
       "name": "Coinbase Wrapped Staked ETH",
       "symbol": "cbETH",
       "decimals": 18
     }
   },
-  "0x0a1d576f3efef75b330424287a95a366e8281d54": {
+  "0x0a1d576f3eFeF75b330424287a95A366e8281D54": {
     "protocolToken": {
-      "address": "0x0a1d576f3efef75b330424287a95a366e8281d54",
+      "address": "0x0a1d576f3eFeF75b330424287a95A366e8281D54",
       "name": "Aave Base USDbC",
       "symbol": "aBasUSDbC",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca",
+      "address": "0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA",
       "name": "USD Base Coin",
       "symbol": "USDbC",
       "decimals": 6
     }
   },
-  "0x99cbc45ea5bb7ef3a5bc08fb1b7e56bb2442ef0d": {
+  "0x99CBC45ea5bb7eF3a5BC08FB1B7E56bB2442Ef0D": {
     "protocolToken": {
-      "address": "0x99cbc45ea5bb7ef3a5bc08fb1b7e56bb2442ef0d",
+      "address": "0x99CBC45ea5bb7eF3a5BC08FB1B7E56bB2442Ef0D",
       "name": "Aave Base wstETH",
       "symbol": "aBaswstETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452",
+      "address": "0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452",
       "name": "Wrapped liquid staked Ether 2.0",
       "symbol": "wstETH",
       "decimals": 18
     }
   },
-  "0x4e65fe4dba92790696d040ac24aa414708f5c0ab": {
+  "0x4e65fE4DbA92790696d040ac24Aa414708F5c0AB": {
     "protocolToken": {
-      "address": "0x4e65fe4dba92790696d040ac24aa414708f5c0ab",
+      "address": "0x4e65fE4DbA92790696d040ac24Aa414708F5c0AB",
       "name": "Aave Base USDC",
       "symbol": "aBasUSDC",
       "decimals": 6
     },
     "underlyingToken": {
-      "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
       "name": "USD Coin",
       "symbol": "USDC",
       "decimals": 6

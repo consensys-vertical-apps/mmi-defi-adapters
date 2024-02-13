@@ -13,42 +13,42 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x333d8b480bdb25ea7be4dd87eeb359988ce1b30d",
+          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
           "name": "Mendi USD Coin",
           "symbol": "meUSDC",
           "decimals": 8,
           "apyDecimal": 3.3465657168189944
         },
         {
-          "address": "0xf669c3c03d9fdf4339e19214a749e52616300e89",
+          "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
           "name": "Mendi USD Tether",
           "symbol": "meUSDT",
           "decimals": 8,
           "apyDecimal": 6.0870536662414265
         },
         {
-          "address": "0xad7f33984bed10518012013d4ab0458d37fee6f3",
+          "address": "0xAd7f33984bed10518012013D4aB0458D37FEE6F3",
           "name": "Mendi Wrapped Ether",
           "symbol": "meWETH",
           "decimals": 8,
           "apyDecimal": 7.216386308890743
         },
         {
-          "address": "0x1f27f81c1d13dd96a3b75d42e3d5d92b709869aa",
+          "address": "0x1f27f81C1D13Dd96A3b75d42e3d5d92b709869AA",
           "name": "Mendi Dai Stablecoin",
           "symbol": "meDAI",
           "decimals": 8,
           "apyDecimal": 4.551221554749896
         },
         {
-          "address": "0x9be5e24f05bbafc28da814bd59284878b388a40f",
+          "address": "0x9be5e24F05bBAfC28Da814bD59284878b388a40f",
           "name": "Mendi Wrapped BTC",
           "symbol": "meWBTC",
           "decimals": 8,
           "apyDecimal": 2.6130040506686214
         },
         {
-          "address": "0xceed853798ff1c95ceb4dc48f68394eb7a86a782",
+          "address": "0xCeEd853798ff1c95cEB4dC48f68394eb7A86A782",
           "name": "Mendi Wrapped liquid staked Ether 2.0",
           "symbol": "mewstETH",
           "decimals": 8,
@@ -68,42 +68,42 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x333d8b480bdb25ea7be4dd87eeb359988ce1b30d",
+          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
           "name": "Mendi USD Coin",
           "symbol": "meUSDC",
           "decimals": 8,
           "apyDecimal": 4.983089916667716
         },
         {
-          "address": "0xf669c3c03d9fdf4339e19214a749e52616300e89",
+          "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
           "name": "Mendi USD Tether",
           "symbol": "meUSDT",
           "decimals": 8,
           "apyDecimal": 8.594347975281714
         },
         {
-          "address": "0xad7f33984bed10518012013d4ab0458d37fee6f3",
+          "address": "0xAd7f33984bed10518012013D4aB0458D37FEE6F3",
           "name": "Mendi Wrapped Ether",
           "symbol": "meWETH",
           "decimals": 8,
           "apyDecimal": 17.60594294622917
         },
         {
-          "address": "0x1f27f81c1d13dd96a3b75d42e3d5d92b709869aa",
+          "address": "0x1f27f81C1D13Dd96A3b75d42e3d5d92b709869AA",
           "name": "Mendi Dai Stablecoin",
           "symbol": "meDAI",
           "decimals": 8,
           "apyDecimal": 6.522271939059365
         },
         {
-          "address": "0x9be5e24f05bbafc28da814bd59284878b388a40f",
+          "address": "0x9be5e24F05bBAfC28Da814bD59284878b388a40f",
           "name": "Mendi Wrapped BTC",
           "symbol": "meWBTC",
           "decimals": 8,
           "apyDecimal": 11.465496624057803
         },
         {
-          "address": "0xceed853798ff1c95ceb4dc48f68394eb7a86a782",
+          "address": "0xCeEd853798ff1c95cEB4dC48f68394eb7A86A782",
           "name": "Mendi Wrapped liquid staked Ether 2.0",
           "symbol": "mewstETH",
           "decimals": 8,

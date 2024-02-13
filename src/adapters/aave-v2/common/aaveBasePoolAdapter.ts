@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../core/constants/chains'
 import { RAY } from '../../../core/constants/RAY'
@@ -35,18 +36,18 @@ const protocolDataProviderContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
 > = {
   [Protocol.AaveV2]: {
-    [Chain.Ethereum]: '0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d',
-    [Chain.Polygon]: '0x7551b5D2763519d4e37e8B81929D336De671d46d',
-    [Chain.Avalanche]: '0x65285E9dfab318f57051ab2b139ccCf232945451',
+    [Chain.Ethereum]: getAddress('0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d'),
+    [Chain.Polygon]: getAddress('0x7551b5D2763519d4e37e8B81929D336De671d46d'),
+    [Chain.Avalanche]: getAddress('0x65285E9dfab318f57051ab2b139ccCf232945451'),
   },
   [Protocol.AaveV3]: {
-    [Chain.Ethereum]: '0x7B4EB56E7CD4b454BA8ff71E4518426369a138a3',
-    [Chain.Optimism]: '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
-    [Chain.Arbitrum]: '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
-    [Chain.Polygon]: '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
-    [Chain.Fantom]: '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
-    [Chain.Avalanche]: '0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654',
-    [Chain.Base]: '0x2d8A3C5677189723C4cB8873CfC9C8976FDF38Ac',
+    [Chain.Ethereum]: getAddress('0x7B4EB56E7CD4b454BA8ff71E4518426369a138a3'),
+    [Chain.Optimism]: getAddress('0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654'),
+    [Chain.Arbitrum]: getAddress('0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654'),
+    [Chain.Polygon]: getAddress('0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654'),
+    [Chain.Fantom]: getAddress('0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654'),
+    [Chain.Avalanche]: getAddress('0x69FA688f1Dc47d4B5d8029D5a35FB7a548310654'),
+    [Chain.Base]: getAddress('0x2d8A3C5677189723C4cB8873CfC9C8976FDF38Ac'),
   },
 }
 

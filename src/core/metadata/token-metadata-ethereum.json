@@ -6,6 +6,13 @@
     "decimals": 18,
     "iconUrl": "https://token.metaswap.codefi.network/assets/nativeCurrencyLogos/ethereum.svg"
   },
+  "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
+    "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "decimals": 18,
+    "iconUrl": "https://token.metaswap.codefi.network/assets/nativeCurrencyLogos/ethereum.svg"
+  },
   "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f": {
     "address": "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
     "name": "Synthetix Network Token",
@@ -13,7 +20,7 @@
     "decimals": 18,
     "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/synthetix.svg"
   },
-  "0x29b41fE7d754B8b43D4060BB43734E436B0b9a33": {
+  "0x29b41fe7d754b8b43d4060bb43734e436b0b9a33": {
     "address": "0x29b41fE7d754B8b43D4060BB43734E436B0b9a33",
     "name": "Real Estate USD (REUSD)",
     "symbol": "REUSD",

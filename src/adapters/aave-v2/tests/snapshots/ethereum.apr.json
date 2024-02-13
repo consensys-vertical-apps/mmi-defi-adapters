@@ -13,84 +13,84 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
-          "name": "Aave interest bearing USDT",
-          "symbol": "aUSDT",
+          "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+          "name": "Aave USDT",
+          "symbol": "AUSDT",
           "decimals": 6,
           "aprDecimal": 2.7258337790191183
         },
         {
-          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
-          "name": "Aave interest bearing WBTC",
-          "symbol": "aWBTC",
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
+          "name": "Aave WBTC",
+          "symbol": "AWBTC",
           "decimals": 8,
           "aprDecimal": 0.17738900190674606
         },
         {
-          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
-          "name": "Aave interest bearing WETH",
-          "symbol": "aWETH",
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
           "decimals": 18,
           "aprDecimal": 1.3097986143461042
         },
         {
-          "address": "0xffc97d72e13e01096502cb8eb52dee56f74dad7b",
-          "name": "Aave interest bearing AAVE",
-          "symbol": "aAAVE",
+          "address": "0xFFC97d72E13E01096502Cb8Eb52dEe56f74DAD7B",
+          "name": "Aave AAVE",
+          "symbol": "AAAVE",
           "decimals": 18,
           "aprDecimal": 0
         },
         {
-          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
-          "name": "Aave interest bearing DAI",
-          "symbol": "aDAI",
+          "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
+          "name": "Aave DAI",
+          "symbol": "ADAI",
           "decimals": 18,
           "aprDecimal": 2.6775237854367244
         },
         {
-          "address": "0x6c5024cd4f8a59110119c56f8933403a539555eb",
-          "name": "Aave interest bearing SUSD",
-          "symbol": "aSUSD",
+          "address": "0x6C5024Cd4F8A59110119C56f8933403A539555EB",
+          "name": "Aave SUSD",
+          "symbol": "ASUSD",
           "decimals": 18,
           "aprDecimal": 0.8735750587189324
         },
         {
-          "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
-          "name": "Aave interest bearing USDC",
-          "symbol": "aUSDC",
+          "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+          "name": "Aave USDC",
+          "symbol": "AUSDC",
           "decimals": 6,
           "aprDecimal": 2.865447311386401
         },
         {
-          "address": "0xd37ee7e4f452c6638c96536e68090de8cbcdb583",
-          "name": "Aave interest bearing GUSD",
-          "symbol": "aGUSD",
+          "address": "0xD37EE7e4f452C6638c96536e68090De8cBcdb583",
+          "name": "Aave GUSD",
+          "symbol": "AGUSD",
           "decimals": 2,
           "aprDecimal": 2.20373122654601
         },
         {
-          "address": "0x2e8f4bdbe3d47d7d7de490437aea9915d930f1a3",
+          "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
+          "name": "Aave Interest Bearing STETH",
+          "symbol": "ASTETH",
+          "decimals": 18,
+          "aprDecimal": 0
+        },
+        {
+          "address": "0x2e8F4bdbE3d47d7d7DE490437AeA9915D930F1A3",
           "name": "Aave interest bearing USDP",
           "symbol": "aUSDP",
           "decimals": 18,
           "aprDecimal": 2.4715050351939287
         },
         {
-          "address": "0xd4937682df3c8aef4fe912a96a74121c0829e664",
+          "address": "0xd4937682df3C8aEF4FE912A96A74121C0829E664",
           "name": "Aave interest bearing FRAX",
           "symbol": "aFRAX",
           "decimals": 18,
           "aprDecimal": 2.1379091108927653
         },
         {
-          "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
-          "name": "Aave interest bearing STETH",
-          "symbol": "aSTETH",
-          "decimals": 18,
-          "aprDecimal": 0
-        },
-        {
-          "address": "0xce1871f791548600cb59efbeffc9c38719142079",
+          "address": "0xce1871f791548600cb59efbefFC9c38719142079",
           "name": "Aave interest bearing LUSD",
           "symbol": "aLUSD",
           "decimals": 18,
@@ -110,84 +110,84 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xe91d55ab2240594855abd11b3faae801fd4c4687",
+          "address": "0xe91D55AB2240594855aBd11b3faAE801Fd4c4687",
           "name": "Aave stable debt bearing USDT",
           "symbol": "stableDebtUSDT",
           "decimals": 6,
           "aprDecimal": 12.179288440153895
         },
         {
-          "address": "0x51b039b9afe64b78758f8ef091211b5387ea717c",
+          "address": "0x51B039b9AFE64B78758f8Ef091211b5387eA717c",
           "name": "Aave stable debt bearing WBTC",
           "symbol": "stableDebtWBTC",
           "decimals": 8,
           "aprDecimal": 5.636786138605034
         },
         {
-          "address": "0x4e977830ba4bd783c0bb7f15d3e243f73ff57121",
+          "address": "0x4e977830ba4bd783C0BB7F15d3e243f73FF57121",
           "name": "Aave stable debt bearing WETH",
           "symbol": "stableDebtWETH",
           "decimals": 18,
           "aprDecimal": 5.550188665624949
         },
         {
-          "address": "0x079d6a3e844bcecf5720478a718edb6575362c5f",
+          "address": "0x079D6a3E844BcECf5720478A718Edb6575362C5f",
           "name": "Aave stable debt bearing AAVE",
           "symbol": "stableDebtAAVE",
           "decimals": 18,
           "aprDecimal": 0
         },
         {
-          "address": "0x778a13d3eeb110a4f7bb6529f99c000119a08e92",
+          "address": "0x778A13D3eeb110A4f7bb6529F99c000119a08E92",
           "name": "Aave stable debt bearing DAI",
           "symbol": "stableDebtDAI",
           "decimals": 18,
           "aprDecimal": 11.884548428670781
         },
         {
-          "address": "0x30b0f7324fedf89d8eff397275f8983397efe4af",
+          "address": "0x30B0f7324feDF89d8eff397275F8983397eFe4af",
           "name": "Aave stable debt bearing SUSD",
           "symbol": "stableDebtSUSD",
           "decimals": 18,
           "aprDecimal": 0
         },
         {
-          "address": "0xe4922afab0bbadd8ab2a88e0c79d884ad337fca6",
+          "address": "0xE4922afAB0BbaDd8ab2a88E0C79d884Ad337fcA6",
           "name": "Aave stable debt bearing USDC",
           "symbol": "stableDebtUSDC",
           "decimals": 6,
           "aprDecimal": 10.97353695342009
         },
         {
-          "address": "0xf8ac64ec6ff8e0028b37eb89772d21865321bce0",
+          "address": "0xf8aC64ec6Ff8E0028b37EB89772d21865321bCe0",
           "name": "Aave stable debt bearing GUSD",
           "symbol": "stableDebtGUSD",
           "decimals": 2,
           "aprDecimal": 7.967485013515678
         },
         {
-          "address": "0x2387119bc85a74e0bbcbe190d80676cb16f10d4f",
+          "address": "0x2387119bc85A74e0BBcbe190d80676CB16F10D4F",
           "name": "Aave stable debt bearing PAX",
           "symbol": "stableDebtPAX",
           "decimals": 18,
           "aprDecimal": 0
         },
         {
-          "address": "0x3916e3b6c84b161df1b2733dffc9569a1da710c2",
+          "address": "0x3916e3B6c84b161df1b2733dFfc9569a1dA710c2",
           "name": "Aave stable debt bearing FRAX",
           "symbol": "stableDebtFRAX",
           "decimals": 18,
           "aprDecimal": 0
         },
         {
-          "address": "0x66457616dd8489df5d0afd8678f4a260088aaf55",
+          "address": "0x66457616Dd8489dF5D0AFD8678F4A260088aAF55",
           "name": "Aave stable debt bearing STETH",
           "symbol": "stableDebtSTETH",
           "decimals": 18,
           "aprDecimal": 0
         },
         {
-          "address": "0x39f010127274b2dbdb770b45e1de54d974974526",
+          "address": "0x39f010127274b2dBdB770B45e1de54d974974526",
           "name": "Aave stable debt bearing LUSD",
           "symbol": "stableDebtLUSD",
           "decimals": 18,
@@ -207,84 +207,84 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x531842cebbdd378f8ee36d171d6cc9c4fcf475ec",
+          "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
           "name": "Aave variable debt bearing USDT",
           "symbol": "variableDebtUSDT",
           "decimals": 6,
           "aprDecimal": 4.179288440153894
         },
         {
-          "address": "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
+          "address": "0x9c39809Dec7F95F5e0713634a4D0701329B3b4d2",
           "name": "Aave variable debt bearing WBTC",
           "symbol": "variableDebtWBTC",
           "decimals": 8,
           "aprDecimal": 1.054714455442014
         },
         {
-          "address": "0xf63b34710400cad3e044cffdcab00a0f32e33ecf",
+          "address": "0xF63B34710400CAd3e044cFfDcAb00a0f32E33eCf",
           "name": "Aave variable debt bearing WETH",
           "symbol": "variableDebtWETH",
           "decimals": 18,
           "aprDecimal": 3.422679232343702
         },
         {
-          "address": "0xf7dba49d571745d9d7fcb56225b05bea803ebf3c",
+          "address": "0xF7DBA49d571745D9d7fcb56225B05BEA803EBf3C",
           "name": "Aave variable debt bearing AAVE",
           "symbol": "variableDebtAAVE",
           "decimals": 18,
           "aprDecimal": 0
         },
         {
-          "address": "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d",
+          "address": "0x6C3c78838c761c6Ac7bE9F59fe808ea2A6E4379d",
           "name": "Aave variable debt bearing DAI",
           "symbol": "variableDebtDAI",
           "decimals": 18,
           "aprDecimal": 4.71137107167695
         },
         {
-          "address": "0xdc6a3ab17299d9c2a412b0e0a4c1f55446ae0817",
+          "address": "0xdC6a3Ab17299D9C2A412B0e0a4C1f55446AE0817",
           "name": "Aave variable debt bearing SUSD",
           "symbol": "variableDebtSUSD",
           "decimals": 18,
           "aprDecimal": 2.4979635401647426
         },
         {
-          "address": "0x619beb58998ed2278e08620f97007e1116d5d25b",
+          "address": "0x619beb58998eD2278e08620f97007e1116D5D25b",
           "name": "Aave variable debt bearing USDC",
           "symbol": "variableDebtUSDC",
           "decimals": 6,
           "aprDecimal": 3.9470739068401794
         },
         {
-          "address": "0x279af5b99540c1a3a7e3cdd326e19659401ef99e",
+          "address": "0x279AF5b99540c1A3A7E3CDd326e19659401eF99e",
           "name": "Aave variable debt bearing GUSD",
           "symbol": "variableDebtGUSD",
           "decimals": 2,
           "aprDecimal": 3.967485013515678
         },
         {
-          "address": "0xfdb93b3b10936cf81fa59a02a7523b6e2149b2b7",
+          "address": "0xFDb93B3b10936cf81FA59A02A7523B6e2149b2B7",
           "name": "Aave variable debt bearing USDP",
           "symbol": "variableDebtUSDP",
           "decimals": 18,
           "aprDecimal": 3.9302552677863125
         },
         {
-          "address": "0xfe8f19b17ffef0fdbfe2671f248903055afaa8ca",
+          "address": "0xfE8F19B17fFeF0fDbfe2671F248903055AFAA8Ca",
           "name": "Aave variable debt bearing FRAX",
           "symbol": "variableDebtFRAX",
           "decimals": 18,
           "aprDecimal": 3.907784457147011
         },
         {
-          "address": "0xa9deac9f00dc4310c35603fcd9d34d1a750f81db",
+          "address": "0xA9DEAc9f00Dc4310c35603FCD9D34d1A750f81Db",
           "name": "Aave variable debt bearing STETH",
           "symbol": "variableDebtSTETH",
           "decimals": 18,
           "aprDecimal": 0
         },
         {
-          "address": "0x411066489ab40442d6fc215ad7c64224120d33f2",
+          "address": "0x411066489AB40442d6Fc215aD7c64224120D33F2",
           "name": "Aave variable debt bearing LUSD",
           "symbol": "variableDebtLUSD",
           "decimals": 18,

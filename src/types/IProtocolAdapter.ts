@@ -20,6 +20,11 @@ import type { Erc20Metadata } from './erc20Metadata'
 
 export interface IProtocolAdapter {
   /**
+   * Protocol tokens can be wrapped and deposited into different protocol or products
+   */
+  isWrappable: boolean
+
+  /**
    * Unique identifier of the protocol.
    */
   protocolId: Protocol
@@ -78,6 +83,18 @@ export interface IProtocolAdapter {
    * @returns {Promise<MovementsByBlock[]>} Array of objects detailing withdrawal events within the specified block range.
    */
   getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]>
+
+  /**
+   *
+   * @remarks Returns tx params
+   *
+   * @param {TransactionParamsInput} input tx input params
+   * @returns {Promise<{to:string, data: string}>} transaction
+   */
+  getTransactionParams?(input: {
+    action: string
+    inputs: unknown[]
+  }): Promise<{ to: string; data: string }>
 
   /**
    *

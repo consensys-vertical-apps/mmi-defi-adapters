@@ -1,10 +1,10 @@
-import { ethers, isError } from 'ethers'
+import { ethers, getAddress, isError } from 'ethers'
 import { Erc20, Erc20__factory } from '../../contracts'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
 import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
 import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
-import { CustomJsonRpcProvider } from './customJsonRpcProvider'
+import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
 
@@ -22,14 +22,14 @@ export async function getTokenMetadata(
 ): Promise<Erc20Metadata> {
   const fileMetadata = CHAIN_METADATA[chainId]
   if (fileMetadata) {
-    const fileTokenMetadata = fileMetadata[tokenAddress]
+    const fileTokenMetadata = fileMetadata[tokenAddress.toLowerCase()]
     if (fileTokenMetadata) {
       logger.debug(
         { tokenAddress, chainId },
         'Token metadata found on cached file',
       )
       return {
-        address: fileTokenMetadata.address,
+        address: getAddress(fileTokenMetadata.address),
         name: fileTokenMetadata.name,
         symbol: fileTokenMetadata.symbol,
         decimals: fileTokenMetadata.decimals,
@@ -64,7 +64,7 @@ async function getOnChainTokenMetadata(
     const symbol = await fetchStringTokenData(tokenContract, provider, 'symbol')
     const decimals = Number(await tokenContract.decimals())
     return {
-      address: (await tokenContract.getAddress()).toLowerCase(),
+      address: getAddress(await tokenContract.getAddress()),
       name,
       symbol,
       decimals,

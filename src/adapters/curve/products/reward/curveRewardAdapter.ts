@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
 import {
   ResolveUnderlyingMovements,
@@ -19,7 +20,7 @@ import { CurveStakingAdapter } from '../staking/curveStakingAdapter'
 const CRV_MINTER_ADDRESS = '0xd061D61a4d941c39E5453435B6345Dc261C2fcE0'
 
 const CRV_TOKEN = {
-  address: '0xd533a949740bb3306d119cc777fa900ba034cd52',
+  address: getAddress('0xd533a949740bb3306d119cc777fa900ba034cd52'),
   name: 'Curve DAO Token',
   symbol: 'CRV',
   decimals: 18,
@@ -33,10 +34,6 @@ export class CurveRewardAdapter
 {
   productId = 'reward'
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,

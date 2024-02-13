@@ -13,38 +13,38 @@
       {
         "transactionHash": "0xd49c6ee47b53c838c6e319535e9758cbed36f51847b543567883886a35c9a684",
         "protocolToken": {
-          "address": "0x90d8053f7e29faaf5189bdce796a516e29f1f5d3",
+          "address": "0x90D8053f7E29FaAF5189BdcE796a516E29F1F5d3",
           "name": "Chimp USDC-DAI-USDT Stable Pool",
           "symbol": "USDC-DAI-USDT",
           "decimals": 18
         },
         "tokens": [
           {
-            "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+            "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
             "name": "USDC",
             "symbol": "USDC",
             "decimals": 6,
             "balanceRaw": "101107315n",
             "type": "underlying",
-            "balance": "101.107315"
+            "balance": 101.107315
           },
           {
-            "address": "0x4af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
+            "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
             "name": "Dai Stablecoin",
             "symbol": "DAI",
             "decimals": 18,
             "balanceRaw": "0n",
             "type": "underlying",
-            "balance": "0.0"
+            "balance": 0
           },
           {
-            "address": "0xa219439258ca9da29e9cc4ce5596924745e12b93",
+            "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
             "name": "Tether USD",
             "symbol": "USDT",
             "decimals": 6,
             "balanceRaw": "0n",
             "type": "underlying",
-            "balance": "0.0"
+            "balance": 0
           }
         ],
         "blockNumber": 1346848

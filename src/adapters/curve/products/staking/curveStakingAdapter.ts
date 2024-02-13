@@ -48,6 +48,7 @@ export class CurveStakingAdapter
   implements IMetadataBuilder
 {
   productId = 'staking'
+  isWrappable = true
 
   poolAdapter: IProtocolAdapter & IMetadataBuilder
 
@@ -66,10 +67,6 @@ export class CurveStakingAdapter
     return super.getPositions(input)
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -165,21 +162,12 @@ export class CurveStakingAdapter
     ]
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {

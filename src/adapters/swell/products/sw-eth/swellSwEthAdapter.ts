@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -18,6 +19,7 @@ import { SwEth__factory } from '../../contracts'
 
 export class SwellSwEthAdapter extends SimplePoolAdapter {
   productId = 'sw-eth'
+  isWrappable = true
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -74,7 +76,7 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
 
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
     return {
-      address: '0xf951E335afb289353dc249e82926178EaC7DEd78',
+      address: getAddress('0xf951E335afb289353dc249e82926178EaC7DEd78'),
       name: 'Swell Ethereum',
       symbol: 'SWETH',
       decimals: 18,

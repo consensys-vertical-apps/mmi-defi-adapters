@@ -5,6 +5,7 @@ import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 
 export class AaveV3VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'variable-debt-token'
+  isWrappable = false
 
   getProtocolDetails(): ProtocolDetails {
     return {

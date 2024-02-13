@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
@@ -47,23 +48,24 @@ const FETCH_POOLS_ENTERED_BATCH_COUNT = 10
 
 const contractAddresses: Partial<Record<Chain, SyncSwapAdapterContracts>> = {
   [Chain.Linea]: {
-    multicall: '0xCEeF5844Ce39B0BdD4a8A645B811Fb8caCf5F330',
-    multicallOld: '0xBe87D2faF9863130D60fe0c454B5990863d45BBa',
-    poolMaster: '0x608Cb7C3168427091F5994A45Baf12083964B4A3',
-    router: '0x80e38291e06339d10AAB483C65695D004dBD5C69',
+    multicall: getAddress('0xCEeF5844Ce39B0BdD4a8A645B811Fb8caCf5F330'),
+    multicallOld: getAddress('0xBe87D2faF9863130D60fe0c454B5990863d45BBa'),
+    poolMaster: getAddress('0x608Cb7C3168427091F5994A45Baf12083964B4A3'),
+    router: getAddress('0x80e38291e06339d10AAB483C65695D004dBD5C69'),
     factoriesV1: [
-      '0x37BAc764494c8db4e54BDE72f6965beA9fa0AC2d', // classic pool
-      '0xE4CF807E351b56720B17A59094179e7Ed9dD3727', // stable pool
+      getAddress('0x37BAc764494c8db4e54BDE72f6965beA9fa0AC2d'), // classic pool
+      getAddress('0xE4CF807E351b56720B17A59094179e7Ed9dD3727'), // stable pool
     ],
     factoriesV2: [],
     quoteRouteTokens: [
-      '0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f', // weth
+      getAddress('0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f'), // weth
     ],
   },
 }
 
 export class SyncswapPoolAdapter extends SimplePoolAdapter {
   productId = 'pool'
+  isWrappable = false
 
   getProtocolDetails(): ProtocolDetails {
     return {

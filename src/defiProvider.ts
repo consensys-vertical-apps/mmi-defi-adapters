@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
@@ -7,8 +8,8 @@ import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
 import { ProviderMissingError } from './core/errors/errors'
 import { getProfits } from './core/getProfits'
-import { ChainProvider } from './core/utils/chainProviders'
-import { CustomJsonRpcProvider } from './core/utils/customJsonRpcProvider'
+import { ChainProvider } from './core/provider/ChainProvider'
+import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { logger } from './core/utils/logger'
 import {
   enrichPositionBalance,
@@ -31,6 +32,14 @@ import {
   GetEventsRequestInput,
 } from './types/response'
 
+export type TransactionParamsInput = {
+  action: string
+  inputs: unknown[]
+  protocolId: Protocol
+  chainId: Chain
+  productId: string
+}
+
 export class DefiProvider {
   private parsedConfig
   chainProvider: ChainProvider
@@ -46,7 +55,7 @@ export class DefiProvider {
       supportedProtocols,
     })
 
-    const { [Protocol.Prices]: _, ...supportedProtocolsWithoutPrices } =
+    const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
       supportedProtocols
 
     this.adaptersControllerWithoutPrices = new AdaptersController({
@@ -99,7 +108,7 @@ export class DefiProvider {
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
-        protocolTokenAddresses: filterProtocolTokens,
+        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
       })
 
       const endTime = Date.now()
@@ -139,6 +148,7 @@ export class DefiProvider {
     filterChainIds,
     toBlockNumbersOverride,
     filterProtocolTokens,
+    includeRawValues = false,
   }: {
     userAddress: string
     timePeriod?: TimePeriod
@@ -146,6 +156,7 @@ export class DefiProvider {
     filterChainIds?: Chain[]
     toBlockNumbersOverride?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
+    includeRawValues?: boolean
   }): Promise<DefiProfitsResponse[]> {
     const runner = async (
       adapter: IProtocolAdapter,
@@ -164,7 +175,8 @@ export class DefiProvider {
         userAddress,
         toBlock,
         fromBlock,
-        protocolTokenAddresses: filterProtocolTokens,
+        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        includeRawValues,
       })
 
       const endTime = Date.now()
@@ -213,8 +225,7 @@ export class DefiProvider {
       if (filterProtocolToken) {
         const filteredProtocolTokens = protocolTokens.filter(
           (protocolToken) =>
-            protocolToken.address.toLowerCase() ===
-            filterProtocolToken.toLowerCase(),
+            protocolToken.address === getAddress(filterProtocolToken),
         )
         if (filteredProtocolTokens.length === 0) {
           return { tokens: [] }
@@ -223,12 +234,12 @@ export class DefiProvider {
       }
 
       const tokens = await Promise.all(
-        protocolTokens.map(async ({ address: protocolTokenAddress }) => {
+        protocolTokens.map(async ({ address }) => {
           const startTime = Date.now()
 
           const protocolTokenUnderlyingRate =
             await adapter.getProtocolTokenToUnderlyingTokenRate({
-              protocolTokenAddress,
+              protocolTokenAddress: getAddress(address),
               blockNumber,
             })
 
@@ -242,7 +253,7 @@ export class DefiProvider {
             chainName: ChainName[adapter.chainId],
             protocolId: adapter.protocolId,
             productId: adapter.productId,
-            protocolTokenAddress,
+            protocolTokenAddress: getAddress(address),
             blockNumber,
           })
 
@@ -290,7 +301,7 @@ export class DefiProvider {
 
     const runner = async (adapter: IProtocolAdapter) => {
       const positionMovements = await adapter.getWithdrawals({
-        protocolTokenAddress,
+        protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
         userAddress,
@@ -301,6 +312,43 @@ export class DefiProvider {
         movements: positionMovements.map((value) =>
           enrichMovements(value, chainId),
         ),
+      }
+    }
+
+    return this.runTaskForAdapter(adapter, provider!, runner)
+  }
+
+  async getTransactionParams({
+    protocolId,
+    action,
+    inputs,
+    chainId,
+    productId,
+  }: TransactionParamsInput): Promise<
+    AdapterResponse<{
+      params: { to: string; data: string }
+    }>
+  > {
+    const provider = this.chainProvider.providers[chainId]
+    let adapter: IProtocolAdapter
+    try {
+      adapter = this.adaptersController.fetchAdapter(
+        chainId,
+        protocolId,
+        productId,
+      )
+    } catch (error) {
+      return this.handleError(error)
+    }
+
+    const runner = async (adapter: IProtocolAdapter) => {
+      const txParams = await adapter.getTransactionParams!({
+        action,
+        inputs,
+      })
+
+      return {
+        params: txParams,
       }
     }
 
@@ -332,7 +380,7 @@ export class DefiProvider {
 
     const runner = async (adapter: IProtocolAdapter) => {
       const positionMovements = await adapter.getDeposits({
-        protocolTokenAddress,
+        protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
         userAddress,
@@ -392,8 +440,11 @@ export class DefiProvider {
 
       const protocolTokens = await adapter.getProtocolTokens()
       const tokens = await Promise.all(
-        protocolTokens.map(({ address: protocolTokenAddress }) =>
-          adapter.getApy({ protocolTokenAddress, blockNumber }),
+        protocolTokens.map(({ address }) =>
+          adapter.getApy({
+            protocolTokenAddress: getAddress(address),
+            blockNumber,
+          }),
         ),
       )
 
@@ -424,8 +475,11 @@ export class DefiProvider {
 
       const protocolTokens = await adapter.getProtocolTokens()
       const tokens = await Promise.all(
-        protocolTokens.map(({ address: protocolTokenAddress }) =>
-          adapter.getApr({ protocolTokenAddress, blockNumber }),
+        protocolTokens.map(({ address }) =>
+          adapter.getApr({
+            protocolTokenAddress: getAddress(address),
+            blockNumber,
+          }),
         ),
       )
 
@@ -469,7 +523,7 @@ export class DefiProvider {
         ([protocolIdKey, _]) =>
           (!filterProtocolIds ||
             filterProtocolIds.includes(protocolIdKey as Protocol)) &&
-          (method === 'getPrices' || protocolIdKey !== Protocol.Prices),
+          (method === 'getPrices' || protocolIdKey !== Protocol.PricesV2),
       )
       .flatMap(([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol

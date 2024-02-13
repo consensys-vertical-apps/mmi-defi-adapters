@@ -5,6 +5,7 @@ import { ProtocolDataProvider } from '../../contracts'
 
 export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'
+  isWrappable = true
 
   getProtocolDetails(): ProtocolDetails {
     return {

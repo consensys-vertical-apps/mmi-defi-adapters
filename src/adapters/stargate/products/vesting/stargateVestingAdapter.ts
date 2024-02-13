@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -6,7 +7,7 @@ import {
 } from '../../../../core/decorators/cacheToFile'
 import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   GetAprInput,
@@ -42,6 +43,8 @@ export class StargateVestingAdapter
   chainId: Chain
 
   adaptersController: AdaptersController
+
+  isWrappable = true
 
   private provider: CustomJsonRpcProvider
 
@@ -155,8 +158,12 @@ export class StargateVestingAdapter
   @CacheToFile({ fileKey: 'vesting-token' })
   async buildMetadata() {
     const contractAddresses: Partial<Record<Chain, string>> = {
-      [Chain.Ethereum]: '0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E',
-      [Chain.Arbitrum]: '0xfBd849E6007f9BC3CC2D6Eb159c045B8dc660268',
+      [Chain.Ethereum]: getAddress(
+        '0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E',
+      ),
+      [Chain.Arbitrum]: getAddress(
+        '0xfBd849E6007f9BC3CC2D6Eb159c045B8dc660268',
+      ),
     }
 
     const votingEscrowContract = StargateVotingEscrow__factory.connect(
@@ -164,9 +171,7 @@ export class StargateVestingAdapter
       this.provider,
     )
 
-    const underlyingTokenAddress = (
-      await votingEscrowContract.token()
-    ).toLowerCase()
+    const underlyingTokenAddress = await votingEscrowContract.token()
 
     const contractToken = await getTokenMetadata(
       contractAddresses[this.chainId]!,

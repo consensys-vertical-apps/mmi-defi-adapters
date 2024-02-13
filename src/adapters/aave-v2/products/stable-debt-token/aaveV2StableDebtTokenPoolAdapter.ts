@@ -5,6 +5,7 @@ import { ProtocolDataProvider } from '../../contracts'
 
 export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'stable-debt-token'
+  isWrappable = false
 
   getProtocolDetails(): ProtocolDetails {
     return {

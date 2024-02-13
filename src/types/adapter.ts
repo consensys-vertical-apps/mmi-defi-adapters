@@ -1,7 +1,7 @@
 import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
-import type { CustomJsonRpcProvider } from '../core/utils/customJsonRpcProvider'
+import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import type { Erc20Metadata } from './erc20Metadata'
 
 export const TokenType = {
@@ -9,7 +9,6 @@ export const TokenType = {
   Reward: 'claimable',
   Underlying: 'underlying',
   UnderlyingClaimable: 'underlying-claimable',
-  Fiat: 'fiat',
 } as const
 export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
@@ -193,11 +192,8 @@ export interface TokenBalance extends Erc20Metadata {
  * Should the underlying token be another protocol token then we expect that to be resolved down into the underlying simple erc20 tokens
  */
 export interface Underlying extends TokenBalance {
-  type:
-    | typeof TokenType.Underlying
-    | typeof TokenType.UnderlyingClaimable
-    | typeof TokenType.Fiat
-
+  type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimable
+  priceRaw?: bigint
   tokens?: Underlying[]
 }
 
@@ -219,7 +215,7 @@ export interface ProtocolPosition extends TokenBalance {
 }
 
 export interface UnderlyingTokenRate extends Erc20Metadata {
-  type: typeof TokenType.Underlying | typeof TokenType.Fiat
+  type: typeof TokenType.Underlying
   underlyingRateRaw: bigint
 }
 
@@ -293,6 +289,13 @@ export interface ProfitsWithRange {
    * Profits earned by user address
    */
   tokens: PositionProfits[]
+
+  rawValues?: {
+    rawEndPositionValues: ProtocolPosition[]
+    rawStartPositionValues: ProtocolPosition[]
+    rawWithdrawals: MovementsByBlock[]
+    rawDeposits: MovementsByBlock[]
+  }
 }
 
 export interface UnderlyingProfitValues extends Erc20Metadata {

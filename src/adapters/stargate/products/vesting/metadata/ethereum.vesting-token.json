@@ -1,12 +1,12 @@
 {
   "contractToken": {
-    "address": "0x0e42acbd23faee03249daff896b78d7e79fbd58e",
+    "address": "0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E",
     "name": "veSTG",
     "symbol": "veSTG",
     "decimals": 18
   },
   "underlyingToken": {
-    "address": "0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6",
+    "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
     "name": "Stargate Finance",
     "symbol": "STG",
     "decimals": 18

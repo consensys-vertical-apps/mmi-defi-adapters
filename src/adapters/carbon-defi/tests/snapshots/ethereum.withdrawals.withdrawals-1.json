@@ -24,13 +24,14 @@
           {
             "type": "underlying",
             "balanceRaw": "1787446257333356491155437n",
-            "address": "0x7ab7d54f8cb054141142f04ba0b3d41ac4c4d61c",
+            "address": "0x7AB7D54f8cb054141142f04BA0B3D41AC4c4D61c",
             "name": "NOTHING",
             "symbol": "NOTHING",
             "decimals": 18,
             "transactionHash": "0x0ee02a36e04c669085dd3ec990756a1f847c17b30d1120d64efd10a5f5e14acd",
             "blockNumber": 18927675,
-            "balance": "1787446.257333356491155437"
+            "price": 0.012630460654975795,
+            "balance": 1787446.2573333564
           },
           {
             "type": "underlying",
@@ -41,7 +42,8 @@
             "decimals": 18,
             "transactionHash": "0x0ee02a36e04c669085dd3ec990756a1f847c17b30d1120d64efd10a5f5e14acd",
             "blockNumber": 18927675,
-            "balance": "0.0"
+            "price": 2211.25781,
+            "balance": 0
           }
         ]
       }

@@ -1,28 +1,28 @@
 {
-  "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434": {
+  "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434": {
     "protocolToken": {
-      "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+      "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
       "name": "Staked CvxCrv",
       "symbol": "stkCvxCrv",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+        "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
         "name": "Curve DAO Token",
         "symbol": "CRV",
         "decimals": 18
       },
       {
-        "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
-        "name": "Convex Token",
+        "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+        "name": "Convex Finance",
         "symbol": "CVX",
         "decimals": 18
       },
       {
-        "address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
-        "name": "Curve.fi DAI/USDC/USDT",
-        "symbol": "3Crv",
+        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+        "name": "LP 3pool Curve",
+        "symbol": "3CRV",
         "decimals": 18
       }
     ]

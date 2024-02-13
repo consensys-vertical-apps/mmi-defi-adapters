@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
@@ -54,6 +55,7 @@ export class GMXGlpAdapter
   implements IMetadataBuilder
 {
   productId = 'glp'
+  isWrappable = true
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -84,18 +86,38 @@ export class GMXGlpAdapter
       >
     > = {
       [Chain.Arbitrum]: {
-        glpRewardRouter: '0xB95DB5B167D75e6d04227CfFFA61069348d271F5',
-        glpManagerContractAddress: '0x3963FfC9dff443c2A94f21b129D429891E32ec18',
-        rewardReaderAddress: '0x8BFb8e82Ee4569aee78D03235ff465Bd436D40E0',
-        feeTokenAddress: '0x4e971a87900b931fF39d1Aad67697F49835400b6',
-        stakedTokenAddress: '0x1aDDD80E6039594eE970E5872D247bf0414C8903',
+        glpRewardRouter: getAddress(
+          '0xB95DB5B167D75e6d04227CfFFA61069348d271F5',
+        ),
+        glpManagerContractAddress: getAddress(
+          '0x3963FfC9dff443c2A94f21b129D429891E32ec18',
+        ),
+        rewardReaderAddress: getAddress(
+          '0x8BFb8e82Ee4569aee78D03235ff465Bd436D40E0',
+        ),
+        feeTokenAddress: getAddress(
+          '0x4e971a87900b931fF39d1Aad67697F49835400b6',
+        ),
+        stakedTokenAddress: getAddress(
+          '0x1aDDD80E6039594eE970E5872D247bf0414C8903',
+        ),
       },
       [Chain.Avalanche]: {
-        glpRewardRouter: '0xB70B91CE0771d3f4c81D87660f71Da31d48eB3B3',
-        glpManagerContractAddress: '0xD152c7F25db7F4B95b7658323c5F33d176818EE4',
-        rewardReaderAddress: '0x04Fc11Bd28763872d143637a7c768bD96E44c1b6',
-        feeTokenAddress: '0xd2D1162512F927a7e282Ef43a362659E4F2a728F',
-        stakedTokenAddress: '0x9e295B5B976a184B14aD8cd72413aD846C299660',
+        glpRewardRouter: getAddress(
+          '0xB70B91CE0771d3f4c81D87660f71Da31d48eB3B3',
+        ),
+        glpManagerContractAddress: getAddress(
+          '0xD152c7F25db7F4B95b7658323c5F33d176818EE4',
+        ),
+        rewardReaderAddress: getAddress(
+          '0x04Fc11Bd28763872d143637a7c768bD96E44c1b6',
+        ),
+        feeTokenAddress: getAddress(
+          '0xd2D1162512F927a7e282Ef43a362659E4F2a728F',
+        ),
+        stakedTokenAddress: getAddress(
+          '0x9e295B5B976a184B14aD8cd72413aD846C299660',
+        ),
       },
     }
 
@@ -112,7 +134,7 @@ export class GMXGlpAdapter
       this.provider,
     )
 
-    const vaultAddress = await glpManagerContract.vault()
+    const vaultAddress = getAddress(await glpManagerContract.vault())
     const vaultContract = Vault__factory.connect(vaultAddress, this.provider)
 
     const allWhitelistedTokensLength =

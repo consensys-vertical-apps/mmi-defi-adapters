@@ -5,8 +5,9 @@ import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
+import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { aprToApy } from '../../../core/utils/aprToApy'
-import { CustomJsonRpcProvider } from '../../../core/utils/customJsonRpcProvider'
+
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {

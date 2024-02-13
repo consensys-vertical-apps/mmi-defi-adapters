@@ -54,4 +54,12 @@ export type TestCase = {
       method: 'apr'
       blockNumber?: number
     }
+  | {
+      method: 'tx-params'
+      input: {
+        productId: string
+        action: string
+        inputs: unknown[]
+      }
+    }
 )

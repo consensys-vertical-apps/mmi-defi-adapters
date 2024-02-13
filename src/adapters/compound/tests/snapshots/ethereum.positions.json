@@ -7,47 +7,15 @@
       "description": "Compound pool adapter",
       "siteUrl": "https:",
       "iconUrl": "https://",
-      "positionType": "supply",
+      "positionType": "lend",
       "chainId": 1,
       "productId": "pool",
       "success": true,
       "tokens": [
         {
-          "address": "0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e",
-          "name": "Compound Basic Attention Token",
-          "symbol": "cBAT",
-          "decimals": 8,
-          "balanceRaw": "10607293252022023n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
-              "name": "Basic Attention Token",
-              "symbol": "BAT",
-              "decimals": 18,
-              "balanceRaw": "2193271589245231369078245n",
-              "type": "underlying",
-              "tokens": [
-                {
-                  "address": "TheUnitedStatesMint",
-                  "name": "USD",
-                  "symbol": "USD",
-                  "decimals": 18,
-                  "type": "fiat",
-                  "balanceRaw": "461388225573936953984017n",
-                  "balance": "461388.225573936953984017"
-                }
-              ],
-              "balance": "2193271.589245231369078245",
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0D8775F648430679A709E98d2b0Cb6250d2887EF/logo.png"
-            }
-          ],
-          "balance": "106072932.52022023"
-        },
-        {
-          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
           "name": "Compound Ether",
-          "symbol": "cETH",
+          "symbol": "CETH",
           "decimals": 8,
           "balanceRaw": "144443726284n",
           "type": "protocol",
@@ -59,22 +27,34 @@
               "decimals": 18,
               "balanceRaw": "29018606991707722623n",
               "type": "underlying",
-              "tokens": [
-                {
-                  "address": "TheUnitedStatesMint",
-                  "name": "USD",
-                  "symbol": "USD",
-                  "decimals": 18,
-                  "type": "fiat",
-                  "balanceRaw": "54354752756167735245141n",
-                  "balance": "54354.752756167735245141"
-                }
-              ],
-              "balance": "29.018606991707722623",
+              "balance": 29.018606991707724,
+              "price": 1873.1,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
-          "balance": "1444.43726284"
+          "balance": 1444.43726284
+        },
+        {
+          "address": "0x6C8c6b02E7b2BE14d4fA6022Dfd6d75921D90E4E",
+          "name": "Compound Basic Attention Token",
+          "symbol": "CBAT",
+          "decimals": 8,
+          "balanceRaw": "10607293252022023n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
+              "name": "Basic Attention Token",
+              "symbol": "BAT",
+              "decimals": 18,
+              "balanceRaw": "2193271589245231369078245n",
+              "type": "underlying",
+              "balance": 2193271.5892452314,
+              "price": 0.21203847075974014,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0D8775F648430679A709E98d2b0Cb6250d2887EF/logo.png"
+            }
+          ],
+          "balance": 106072932.52022023
         }
       ]
     }

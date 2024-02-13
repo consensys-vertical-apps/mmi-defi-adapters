@@ -13,7 +13,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
           "name": "Liquid staked Ether 2.0",
           "symbol": "stETH",
           "decimals": 18,
@@ -27,22 +27,12 @@
               "decimals": 18,
               "balanceRaw": "4944483824413014n",
               "type": "underlying",
-              "tokens": [
-                {
-                  "address": "TheUnitedStatesMint",
-                  "name": "USD",
-                  "symbol": "USD",
-                  "decimals": 18,
-                  "type": "fiat",
-                  "balanceRaw": "7799966744469184419n",
-                  "balance": "7.799966744469184419"
-                }
-              ],
-              "balance": "0.004944483824413014",
+              "balance": 0.004944483824413014,
+              "price": 1577.5088,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
-          "balance": "0.004944483824413014"
+          "balance": 0.004944483824413014
         }
       ]
     },
@@ -58,7 +48,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
           "name": "Wrapped liquid staked Ether 2.0",
           "symbol": "wstETH",
           "decimals": 18,
@@ -66,7 +56,7 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
               "name": "Liquid staked Ether 2.0",
               "symbol": "stETH",
               "decimals": 18,
@@ -80,26 +70,16 @@
                   "decimals": 18,
                   "type": "underlying",
                   "balanceRaw": "90177902840852853190524n",
-                  "tokens": [
-                    {
-                      "address": "TheUnitedStatesMint",
-                      "name": "USD",
-                      "symbol": "USD",
-                      "decimals": 18,
-                      "type": "fiat",
-                      "balanceRaw": "142256435296990375413159686n",
-                      "balance": "142256435.296990375413159686"
-                    }
-                  ],
-                  "balance": "90177.902840852853190524",
+                  "balance": 90177.90284085285,
+                  "price": 1577.5088,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
                 }
               ],
-              "balance": "90177.902840852853190524",
+              "balance": 90177.90284085285,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "balance": "78871.459289748529074876"
+          "balance": 78871.45928974853
         }
       ]
     }

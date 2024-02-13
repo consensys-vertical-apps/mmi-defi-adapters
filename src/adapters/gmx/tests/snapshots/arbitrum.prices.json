@@ -13,7 +13,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x4277f8f2c384827b5273592ff7cebd9f2c1ac258",
+          "address": "0x4277f8F2c384827B5273592FF7CeBd9f2C1ac258",
           "name": "GMX LP",
           "symbol": "GLP",
           "decimals": 18,
@@ -21,103 +21,103 @@
           "baseRate": 1,
           "tokens": [
             {
-              "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+              "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
               "underlyingRateRaw": "929n",
               "type": "underlying",
-              "underlyingRate": "0.00000929",
+              "underlyingRate": 0.00000929,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             },
             {
-              "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
               "underlyingRateRaw": "133609214910330n",
               "type": "underlying",
-              "underlyingRate": "0.00013360921491033",
+              "underlyingRate": 0.00013360921491033,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             },
             {
-              "address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+              "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
               "name": "USD Coin (Arb1)",
-              "symbol": "USDC",
+              "symbol": "USDC.E",
               "decimals": 6,
               "underlyingRateRaw": "228481n",
               "type": "underlying",
-              "underlyingRate": "0.228481",
+              "underlyingRate": 0.228481,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
             },
             {
-              "address": "0xf97f4df75117a78c1a5a0dbb814af92458539fb4",
+              "address": "0xf97f4df75117a78c1A5a0DBb814Af92458539FB4",
               "name": "ChainLink Token",
               "symbol": "LINK",
               "decimals": 18,
               "underlyingRateRaw": "1239997550610700n",
               "type": "underlying",
-              "underlyingRate": "0.0012399975506107",
+              "underlyingRate": 0.0012399975506107,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             },
             {
-              "address": "0xfa7f8980b0f1e64a2062791cc3b0871572f1f7f0",
+              "address": "0xFa7F8980b0f1E64A2062791cc3b0871572f1F7f0",
               "name": "Uniswap",
               "symbol": "UNI",
               "decimals": 18,
               "underlyingRateRaw": "1645503061028754n",
               "type": "underlying",
-              "underlyingRate": "0.001645503061028754",
+              "underlyingRate": 0.001645503061028754,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFa7F8980b0f1E64A2062791cc3b0871572f1F7f0/logo.png"
             },
             {
-              "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+              "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
               "underlyingRateRaw": "17625n",
               "type": "underlying",
-              "underlyingRate": "0.017625",
+              "underlyingRate": 0.017625,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
             },
             {
-              "address": "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+              "address": "0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
               "name": "Magic Internet Money",
               "symbol": "MIM",
               "decimals": 18,
               "underlyingRateRaw": "2406881568n",
               "type": "underlying",
-              "underlyingRate": "0.000000002406881568",
+              "underlyingRate": 2.406881568e-9,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A/logo.png"
             },
             {
-              "address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
+              "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
               "name": "Frax",
               "symbol": "FRAX",
               "decimals": 18,
               "underlyingRateRaw": "37961410377996330n",
               "type": "underlying",
-              "underlyingRate": "0.03796141037799633",
+              "underlyingRate": 0.03796141037799633,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             },
             {
-              "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+              "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
               "underlyingRateRaw": "33936560964923701n",
               "type": "underlying",
-              "underlyingRate": "0.033936560964923701",
+              "underlyingRate": 0.0339365609649237,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             },
             {
-              "address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
               "underlyingRateRaw": "125562n",
               "type": "underlying",
-              "underlyingRate": "0.125562",
+              "underlyingRate": 0.125562,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
             }
           ]

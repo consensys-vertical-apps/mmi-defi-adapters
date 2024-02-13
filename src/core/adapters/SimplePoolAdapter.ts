@@ -31,13 +31,14 @@ import {
   ResolveUnderlyingMovements,
 } from '../decorators/resolveUnderlyingPositions'
 import { MaxMovementLimitExceededError } from '../errors/errors'
-import { CustomJsonRpcProvider } from '../utils/customJsonRpcProvider'
+import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 
 export abstract class SimplePoolAdapter implements IProtocolAdapter {
   chainId: Chain
   protocolId: Protocol
   abstract productId: string
+  abstract isWrappable: boolean
 
   protected provider: CustomJsonRpcProvider
 

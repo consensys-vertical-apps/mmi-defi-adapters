@@ -27,7 +27,7 @@
               "decimals": 18,
               "balanceRaw": "6595413373272633798n",
               "type": "underlying",
-              "balance": "6.595413373272633798",
+              "balance": 6.595413373272634,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x7d43AABC515C356145049227CeE54B608342c0ad/logo.png"
             },
             {
@@ -37,11 +37,11 @@
               "decimals": 18,
               "balanceRaw": "2968156482487384n",
               "type": "underlying",
-              "balance": "0.002968156482487384",
+              "balance": 0.002968156482487384,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
             }
           ],
-          "balance": "0.125847953996713707"
+          "balance": 0.1258479539967137
         }
       ]
     }
