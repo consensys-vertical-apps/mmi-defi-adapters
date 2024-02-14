@@ -39,8 +39,8 @@
           "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "168893913610n",
-          "totalSupply": 1688.9391361
+          "totalSupplyRaw": "168893910057n",
+          "totalSupply": 1688.93910057
         },
         {
           "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
@@ -127,8 +127,8 @@
           "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "117575546158n",
-          "totalSupply": 1175.75546158
+          "totalSupplyRaw": "117575543684n",
+          "totalSupply": 1175.75543684
         },
         {
           "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
