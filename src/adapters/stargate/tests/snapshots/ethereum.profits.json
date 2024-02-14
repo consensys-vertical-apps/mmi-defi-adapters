@@ -10,13 +10,29 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
-      "success": false,
-      "error": {
-        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-        "details": {
-          "name": "Error"
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xE8F55368C82D38bbbbDb5533e7F56AfC2E978CC2",
+          "name": "LUSD Stablecoin-LP",
+          "symbol": "S*LUSD",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": 0.0001404419162771009,
+          "performance": 0.001411604354555208,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0.09949099110094038,
+            "endPositionValue": 0.09963143301721748
+          }
         }
-      }
+      ],
+      "fromBlock": 18156819,
+      "toBlock": 18163965
     },
     {
       "protocolId": "stargate",
@@ -27,6 +43,9 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "vesting",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
       "success": true,
       "tokens": [],
       "fromBlock": 18156819,

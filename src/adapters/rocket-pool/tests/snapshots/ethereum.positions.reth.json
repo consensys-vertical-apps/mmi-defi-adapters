@@ -10,13 +10,34 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "reth",
-      "success": false,
-      "error": {
-        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-        "details": {
-          "name": "Error"
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool rETH",
+          "symbol": "rETH",
+          "decimals": 18,
+          "balanceRaw": "52652780907750255883486n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "57719483897631490065522n",
+              "balance": 57719.48389763149,
+              "price": 2212.70454888,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "balance": 52652.78090775025
         }
-      }
+      ]
     }
   ]
 }

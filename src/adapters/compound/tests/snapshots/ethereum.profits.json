@@ -10,13 +10,44 @@
       "positionType": "lend",
       "chainId": 1,
       "productId": "pool",
-      "success": false,
-      "error": {
-        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-        "details": {
-          "name": "Error"
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x6C8c6b02E7b2BE14d4fA6022Dfd6d75921D90E4E",
+          "name": "Compound Basic Attention Token",
+          "symbol": "cBAT",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": -10554.543622878322,
+          "performance": -0.0221914766355038,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 475612.4973672221,
+            "endPositionValue": 465057.9537443438
+          }
+        },
+        {
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+          "name": "Compound Ether",
+          "symbol": "cETH",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": -975.8534720096795,
+          "performance": -0.017636775349710896,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 55330.606228177414,
+            "endPositionValue": 54354.752756167734
+          }
         }
-      }
+      ],
+      "fromBlock": 18513653,
+      "toBlock": 18520799
     }
   ]
 }

@@ -1,5 +1,9 @@
 import { Protocol } from '../adapters/protocols'
-import { PositionType, ProtocolAdapterParams } from '../types/adapter'
+import {
+  AssetType,
+  PositionType,
+  ProtocolAdapterParams,
+} from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Chain } from './constants/chains'
@@ -103,7 +107,13 @@ export class AdaptersController {
 
       for (const [_protocolId, protocolAdapters] of chainAdapters) {
         for (const [_productId, adapter] of protocolAdapters) {
-          const { positionType } = adapter.getProtocolDetails()
+          const {
+            assetDetails: { type: assetType },
+          } = adapter.getProtocolDetails()
+
+          if (assetType == AssetType.NonStandardErc20) {
+            continue
+          }
 
           let protocolTokens: Erc20Metadata[]
           try {
@@ -115,19 +125,7 @@ export class AdaptersController {
             continue
           }
 
-          switch (positionType) {
-            case PositionType.FiatPrices:
-              break
-            case PositionType.Reward:
-              // Omit reward tokens from protocol token adapter map.
-              break
-            case PositionType.Borrow:
-              // Omit borrow tokens from protocol token adapter map.
-              break
-            default:
-              this.processDefaultCase(protocolTokens, chainAdaptersMap, adapter)
-              break
-          }
+          this.processDefaultCase(protocolTokens, chainAdaptersMap, adapter)
         }
       }
     }

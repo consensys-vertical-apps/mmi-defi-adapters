@@ -10,13 +10,44 @@
       "positionType": "lend",
       "chainId": 1,
       "productId": "a-token",
-      "success": false,
-      "error": {
-        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-        "details": {
-          "name": "Error"
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": -162317.60794604942,
+          "performance": -0.015421510272556935,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 10525402.835213795,
+            "endPositionValue": 10363085.227267746
+          }
+        },
+        {
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -27259.15975897992,
+          "performance": -0.02059745276728932,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 1323423.826574809,
+            "endPositionValue": 1296164.666815829
+          }
         }
-      }
+      ],
+      "fromBlock": 18176734,
+      "toBlock": 18183880
     },
     {
       "protocolId": "aave-v2",
@@ -27,6 +58,9 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "stable-debt-token",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": true,
       "tokens": [],
       "fromBlock": 18176734,
@@ -41,13 +75,74 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
-      "success": false,
-      "error": {
-        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-        "details": {
-          "name": "Error"
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
+          "name": "Aave variable debt bearing USDT",
+          "symbol": "variableDebtUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": 7027.205629593693,
+          "performance": 0.0013264597972670455,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 35026.99283294366,
+            "startPositionValue": -5262687.754400335,
+            "endPositionValue": -5290687.541603685
+          }
+        },
+        {
+          "address": "0x9c39809Dec7F95F5e0713634a4D0701329B3b4d2",
+          "name": "Aave variable debt bearing WBTC",
+          "symbol": "variableDebtWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 1248.300374614977,
+          "performance": 0.015397851008831504,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": -81069.7787567245,
+            "endPositionValue": -79821.47838210952
+          }
+        },
+        {
+          "address": "0x6C3c78838c761c6Ac7bE9F59fe808ea2A6E4379d",
+          "name": "Aave variable debt bearing DAI",
+          "symbol": "variableDebtDAI",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 379.1701505348901,
+          "performance": 0.0010341383337150389,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": -366653.2205345867,
+            "endPositionValue": -366274.0503840518
+          }
+        },
+        {
+          "address": "0x619beb58998eD2278e08620f97007e1116D5D25b",
+          "name": "Aave variable debt bearing USDC",
+          "symbol": "variableDebtUSDC",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": 4189.807200494688,
+          "performance": 0.001393168764878352,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": -3007393.867935685,
+            "endPositionValue": -3003204.0607351903
+          }
         }
-      }
+      ],
+      "fromBlock": 18176734,
+      "toBlock": 18183880
     }
   ]
 }

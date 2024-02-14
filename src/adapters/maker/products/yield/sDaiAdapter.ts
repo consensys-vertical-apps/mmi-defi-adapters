@@ -15,6 +15,7 @@ import {
   UnderlyingTokenRate,
   Underlying,
   TokenType,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { McdPot__factory } from '../../contracts'
@@ -34,6 +35,9 @@ export class SDaiAdapter extends SimplePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
     }
   }
 

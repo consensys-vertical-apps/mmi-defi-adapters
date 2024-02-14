@@ -10,13 +10,30 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
-      "success": false,
-      "error": {
-        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-        "details": {
-          "name": "Error"
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "name": "USDC / WETH - 0.05%",
+          "symbol": "USDC / WETH - 0.05%",
+          "decimals": 18,
+          "tokenId": "619727",
+          "type": "protocol",
+          "profit": -0.0000010131479939445853,
+          "performance": -1.0136745544222796e-11,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 99948.0542867139,
+            "startPositionValue": 0,
+            "endPositionValue": 99948.05428570075
+          }
         }
-      }
+      ],
+      "fromBlock": 18684843,
+      "toBlock": 18734865
     }
   ]
 }

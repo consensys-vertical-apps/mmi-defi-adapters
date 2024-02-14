@@ -1,5 +1,9 @@
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AssetType,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import { AaveBasePoolAdapter } from '../../common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../contracts'
 
@@ -16,6 +20,9 @@ export class AaveV2StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.NonStandardErc20,
+      },
     }
   }
 

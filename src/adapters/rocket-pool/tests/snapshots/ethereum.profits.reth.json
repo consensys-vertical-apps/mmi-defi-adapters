@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19226120,
+  "blockNumber": 19226331,
   "snapshot": [
     {
       "protocolId": "rocket-pool",
@@ -10,13 +10,29 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "reth",
-      "success": false,
-      "error": {
-        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-        "details": {
-          "name": "Error"
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool rETH",
+          "symbol": "rETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 1643016.3765317276,
+          "performance": 0.1616355174052993,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 10164946.43570127,
+            "endPositionValue": 11807962.812232997
+          }
         }
-      }
+      ],
+      "fromBlock": 19176309,
+      "toBlock": 19226331
     }
   ]
 }

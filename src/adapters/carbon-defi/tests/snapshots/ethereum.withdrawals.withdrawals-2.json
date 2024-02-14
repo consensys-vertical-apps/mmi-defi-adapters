@@ -8,12 +8,48 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "strategies",
-    "success": false,
-    "error": {
-      "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-      "details": {
-        "name": "Error"
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x5b5da2572dbed5e0286e0178ebf774bdb46d3587f9247a174be42093866a9a9b",
+        "blockNumber": 18656079,
+        "protocolToken": {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "Carbon Automated Trading Strategy",
+          "symbol": "CARBON-STRAT",
+          "decimals": 18,
+          "tokenId": "1701411834604692317316873037158841057528"
+        },
+        "tokens": [
+          {
+            "type": "underlying",
+            "balanceRaw": "76200356n",
+            "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18,
+            "transactionHash": "0x5b5da2572dbed5e0286e0178ebf774bdb46d3587f9247a174be42093866a9a9b",
+            "blockNumber": 18656079,
+            "price": 2085.54087,
+            "balance": 7.6200356e-11
+          },
+          {
+            "type": "underlying",
+            "balanceRaw": "3651927273n",
+            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "transactionHash": "0x5b5da2572dbed5e0286e0178ebf774bdb46d3587f9247a174be42093866a9a9b",
+            "blockNumber": 18656079,
+            "price": 1.0103923024129888,
+            "balance": 3651.927273
+          }
+        ]
       }
-    }
+    ]
   }
 }

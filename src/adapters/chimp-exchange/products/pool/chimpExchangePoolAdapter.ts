@@ -24,6 +24,7 @@ import {
   GetEventsInput,
   TokenType,
   MovementsByBlock,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
@@ -65,6 +66,9 @@ export class ChimpExchangePoolAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
     }
   }
 

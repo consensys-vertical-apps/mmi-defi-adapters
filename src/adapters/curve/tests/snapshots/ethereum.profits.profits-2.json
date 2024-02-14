@@ -10,13 +10,29 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
-      "success": false,
-      "error": {
-        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-        "details": {
-          "name": "Error"
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+          "name": "Curve.fi DAI/USDC/USDT",
+          "symbol": "3Crv",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -1.7101629898316446,
+          "performance": -0.004342705589944947,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 393.801273056902,
+            "endPositionValue": 392.09111006707036
+          }
         }
-      }
+      ],
+      "fromBlock": 19177807,
+      "toBlock": 19184953
     },
     {
       "protocolId": "curve",
@@ -27,6 +43,9 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "staking",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
       "success": true,
       "tokens": [],
       "fromBlock": 19177807,

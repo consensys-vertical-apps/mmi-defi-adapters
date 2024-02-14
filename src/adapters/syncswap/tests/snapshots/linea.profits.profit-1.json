@@ -10,9 +10,12 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "pool",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": false,
       "error": {
-        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+        "message": "Unable to calculate profits, missing USD price for token position 0x7d43AABC515C356145049227CeE54B608342c0ad",
         "details": {
           "name": "Error"
         }

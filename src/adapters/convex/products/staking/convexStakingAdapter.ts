@@ -28,6 +28,7 @@ import {
   ProtocolPosition,
   GetEventsInput,
   MovementsByBlock,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ConvexFactory__factory } from '../../contracts'
@@ -59,6 +60,9 @@ export class ConvexStakingAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
     }
   }
 

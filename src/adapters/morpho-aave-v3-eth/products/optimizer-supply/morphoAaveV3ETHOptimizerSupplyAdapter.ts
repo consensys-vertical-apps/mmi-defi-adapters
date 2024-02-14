@@ -1,5 +1,9 @@
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AssetType,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
 
 export class MorphoAaveV3ETHOptimizerSupplyAdapter extends MorphoBasePoolAdapter {
@@ -15,6 +19,9 @@ export class MorphoAaveV3ETHOptimizerSupplyAdapter extends MorphoBasePoolAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.NonStandardErc20,
+      },
     }
   }
 

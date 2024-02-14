@@ -10,6 +10,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "optimizer-supply",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": false,
       "error": {
         "message": "Unable to calculate profits, missing USD price for token position 0x6b175474e89094c44da98b954eedeac495271d0f",
@@ -27,6 +30,9 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "optimizer-borrow",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": false,
       "error": {
         "message": "Unable to calculate profits, missing USD price for token position 0x0000000000000000000000000000000000000000",

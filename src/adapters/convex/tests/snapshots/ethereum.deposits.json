@@ -8,12 +8,33 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "pool",
-    "success": false,
-    "error": {
-      "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-      "details": {
-        "name": "Error"
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x5f582f63ab541de7775da96d5c3269c25272ef7b114090be9d6e4c83b91fc65b",
+        "protocolToken": {
+          "address": "0x30D9410ED1D5DA1F6C8391af5338C93ab8d4035C",
+          "name": "Curve.fi DAI/USDC/USDT Convex Deposit",
+          "symbol": "cvx3Crv",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "decimals": 18,
+            "balanceRaw": "20000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 14443070,
+            "balance": 20
+          }
+        ],
+        "blockNumber": 14443070
       }
-    }
+    ]
   }
 }
