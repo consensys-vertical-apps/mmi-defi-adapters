@@ -12,7 +12,6 @@ export const Protocol = {
   Swell: 'swell',
   MorphoAaveV2: 'morpho-aave-v2',
   Convex: 'convex',
-  Prices: 'prices',
   MorphoCompoundV2: 'morpho-compound-v2',
   MorphoAaveV3ETHOptimizer: 'morpho-aave-v3-eth',
   SyncSwap: 'syncswap',
@@ -20,5 +19,7 @@ export const Protocol = {
   ChimpExchange: 'chimp-exchange',
   MendiFinance: 'mendi-finance',
   CarbonDeFi: 'carbon-defi',
+  RocketPool: 'rocket-pool',
+  PricesV2: 'prices-v2',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]

@@ -1,4 +1,4 @@
-import { formatUnits } from 'ethers'
+import { formatUnits, getAddress } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
@@ -7,7 +7,10 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
+import {
+  NotImplementedError,
+  ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
+} from '../../../../core/errors/errors'
 import { filterMapSync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
@@ -29,8 +32,9 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { MetaRegistry__factory } from '../../contracts'
 
 // Details https://github.com/curvefi/metaregistry
-export const CURVE_META_REGISTRY_CONTRACT =
-  '0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC'
+export const CURVE_META_REGISTRY_CONTRACT = getAddress(
+  '0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC',
+)
 
 type CurvePoolAdapterMetadata = Record<
   string,
@@ -80,11 +84,11 @@ export class CurvePoolAdapter
         return undefined
       }
 
-      metadataObject[token.protocolToken.address.toLowerCase()] = {
+      metadataObject[getAddress(token.protocolToken.address)] = {
         ...token,
         protocolToken: {
           ...token.protocolToken,
-          address: token.protocolToken.address.toLowerCase(),
+          address: getAddress(token.protocolToken.address),
         },
       }
     })
@@ -136,11 +140,6 @@ export class CurvePoolAdapter
     })
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
@@ -172,7 +171,14 @@ export class CurvePoolAdapter
       blockNumber &&
       blockNumber < 15732062
     ) {
-      throw new Error('Curve meta registry not deployed at this block number')
+      logger.warn('Curve meta registry not deployed at this block number')
+      throw new ProtocolSmartContractNotDeployedAtRequestedBlockNumberError(
+        this.chainId,
+        blockNumber,
+        CURVE_META_REGISTRY_CONTRACT,
+        this.protocolId,
+        this.productId,
+      )
     }
 
     const balances = await metaRegistryContract['get_balances(address)'](
@@ -278,10 +284,10 @@ export class CurvePoolAdapter
         name: poolName,
         decimals: Number(poolDecimals),
         symbol: poolSymbol,
-        address: lpToken,
+        address: getAddress(lpToken),
       },
       underlyingTokens,
-      poolAddress: poolAddress,
+      poolAddress: getAddress(poolAddress),
     }
   }
 }

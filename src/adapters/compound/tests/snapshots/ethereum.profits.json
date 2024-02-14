@@ -7,28 +7,28 @@
       "description": "Compound pool adapter",
       "siteUrl": "https:",
       "iconUrl": "https://",
-      "positionType": "supply",
+      "positionType": "lend",
       "chainId": 1,
       "productId": "pool",
       "success": true,
       "tokens": [
         {
-          "address": "0x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e",
+          "address": "0x6C8c6b02E7b2BE14d4fA6022Dfd6d75921D90E4E",
           "name": "Compound Basic Attention Token",
           "symbol": "cBAT",
           "decimals": 8,
           "type": "protocol",
-          "profit": -8283.822407730273,
-          "performance": -0.017637460954571468,
+          "profit": -10554.543622878322,
+          "performance": -0.0221914766355038,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 469672.0479816672,
-            "endPositionValue": 461388.22557393694
+            "startPositionValue": 475612.4973672221,
+            "endPositionValue": 465057.9537443438
           }
         },
         {
-          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
           "name": "Compound Ether",
           "symbol": "cETH",
           "decimals": 8,

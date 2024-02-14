@@ -23,24 +23,24 @@
           {
             "type": "underlying",
             "balanceRaw": "24910592182826604855n",
-            "address": "0x55d398326f99059ff775485246999027b3197955",
+            "address": "0x55d398326f99059fF775485246999027B3197955",
             "name": "Tether USD",
             "symbol": "USDT",
             "decimals": 18,
             "transactionHash": "0xfd5c402ee27a20fe604fa9d91b49c80ae2ead9b775abd954da2d57b8ac358e1a",
             "blockNumber": 34127857,
-            "balance": "24.910592182826604855"
+            "balance": 24.910592182826605
           },
           {
             "type": "underlying",
             "balanceRaw": "108944552988442181n",
-            "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+            "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
             "name": "Wrapped BNB",
             "symbol": "WBNB",
             "decimals": 18,
             "transactionHash": "0xfd5c402ee27a20fe604fa9d91b49c80ae2ead9b775abd954da2d57b8ac358e1a",
             "blockNumber": 34127857,
-            "balance": "0.108944552988442181"
+            "balance": 0.10894455298844218
           }
         ],
         "blockNumber": 34127857

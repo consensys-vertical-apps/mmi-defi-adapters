@@ -3,9 +3,14 @@ import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
-import { DefiProvider } from '../defiProvider'
+import { DefiProvider, TransactionParamsInput } from '../defiProvider'
 import { AdapterResponse, GetEventsRequestInput } from '../types/response'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+import {
+  chainFilter,
+  multiChainFilter,
+  multiProtocolFilter,
+  protocolFilter,
+} from './commandFilters'
 
 export function featureCommands(program: Command, defiProvider: DefiProvider) {
   addressCommand(
@@ -19,6 +24,12 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
     'profits',
     defiProvider.getProfits.bind(defiProvider),
     '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
+  )
+
+  transactionParamsCommand(
+    program,
+    'params',
+    defiProvider.getTransactionParams.bind(defiProvider),
   )
 
   addressEventsCommand(
@@ -65,6 +76,7 @@ function addressCommand(
     userAddress: string
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
+    includeRawValues?: boolean
   }) => Promise<AdapterResponse<unknown>[]>,
   defaultAddress: string,
 ) {
@@ -79,22 +91,71 @@ function addressCommand(
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
+    .option(
+      '-r, --raw <raw>',
+      'true or false to include raw values, available on profits requests only (e.g. true)',
+    )
     .showHelpAfterError()
-    .action(async (userAddress, { protocols, chains }) => {
+    .action(async (userAddress, { protocols, chains, raw }) => {
+      console.log({ protocols, chains, raw })
+
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
+
+      const includeRawValues = raw == 'true'
 
       const data = await feature({
         userAddress,
         filterProtocolIds,
         filterChainIds,
+        includeRawValues,
       })
 
       printResponse(filterResponse(data))
     })
 }
 
-// npm run deposits 0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5 18262162 18262163 0xC36442b4a4522E871399CD717aBDD847Ab11FE88 567587 uniswapV3 1 pool
+function transactionParamsCommand(
+  program: Command,
+  commandName: string,
+  feature: (input: TransactionParamsInput) => Promise<AdapterResponse<unknown>>,
+) {
+  program
+    .command(commandName)
+    .argument('[action]', 'Name of action you want to do on protocol')
+    .argument('[protocol]', 'Name of the protocol')
+    .argument('[product]', 'Name of the product')
+    .argument('[chain]', 'Chain Id ')
+    .argument(
+      '[inputs]',
+      'comma-separated input params filter (e.g. 0x5000...,true,stake)',
+    )
+    .showHelpAfterError()
+    .action(async (action, protocolId, productId, chainId, inputs) => {
+      console.log({ action, protocolId, productId, chainId, inputs })
+      const txInputParams = inputs.split(',')
+
+      const protocol = protocolFilter(protocolId)
+      const chain = chainFilter(chainId)
+
+      if (!protocol) {
+        throw new Error('Missing id')
+      }
+      if (!chain) {
+        throw new Error('Missing chain')
+      }
+
+      const data = await feature({
+        action,
+        protocolId: protocol,
+        productId,
+        chainId: chain,
+        inputs: txInputParams,
+      })
+
+      printResponse(data)
+    })
+}
 
 function addressEventsCommand(
   program: Command,

@@ -13,7 +13,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+          "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
           "name": "Liquid staked Ether 2.0",
           "symbol": "stETH",
           "decimals": 18,
@@ -27,7 +27,7 @@
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000000000000000000n",
-              "underlyingRate": "1.0",
+              "underlyingRate": 1,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ]
@@ -46,7 +46,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
           "name": "Wrapped liquid staked Ether 2.0",
           "symbol": "wstETH",
           "decimals": 18,
@@ -54,13 +54,13 @@
           "type": "protocol",
           "tokens": [
             {
-              "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
               "name": "Liquid staked Ether 2.0",
               "symbol": "stETH",
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1143352787597958150n",
-              "underlyingRate": "1.14335278759795815",
+              "underlyingRate": 1.143352787597958,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ]

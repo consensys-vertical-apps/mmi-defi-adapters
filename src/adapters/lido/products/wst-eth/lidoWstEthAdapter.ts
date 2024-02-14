@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -46,12 +47,16 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
   }
 
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    const wstEthAddress = '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0'
+    const wstEthAddress = getAddress(
+      '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
+    )
     return await getTokenMetadata(wstEthAddress, this.chainId, this.provider)
   }
 
   protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
-    const stEthAddress = '0xae7ab96520de3a18e5e111b5eaab095312d7fe84'
+    const stEthAddress = getAddress(
+      '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
+    )
     return [await getTokenMetadata(stEthAddress, this.chainId, this.provider)]
   }
 

@@ -28,7 +28,7 @@
               "decimals": 6,
               "balanceRaw": "18399995n",
               "type": "underlying",
-              "balance": "18.399995",
+              "balance": 18.399995,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
@@ -38,7 +38,7 @@
               "decimals": 6,
               "balanceRaw": "48936n",
               "type": "underlying-claimable",
-              "balance": "0.048936",
+              "balance": 0.048936,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
@@ -48,7 +48,7 @@
               "decimals": 18,
               "balanceRaw": "5082611659909362n",
               "type": "underlying",
-              "balance": "0.005082611659909362",
+              "balance": 0.005082611659909362,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
             },
             {
@@ -58,11 +58,11 @@
               "decimals": 18,
               "balanceRaw": "18868061829946n",
               "type": "underlying-claimable",
-              "balance": "0.000018868061829946",
+              "balance": 0.000018868061829946,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
             }
           ],
-          "balance": "0.000000000176538376"
+          "balance": 1.76538376e-10
         }
       ]
     }

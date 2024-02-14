@@ -13,7 +13,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
+          "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
           "name": "Aave interest bearing USDT",
           "symbol": "aUSDT",
           "decimals": 6,
@@ -21,20 +21,20 @@
           "totalSupplyRaw": "318575685890988n",
           "tokens": [
             {
-              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
               "totalSupplyRaw": "63603254515157n",
               "type": "underlying",
-              "totalSupply": "63603254.515157",
+              "totalSupply": 63603254.515157,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "totalSupply": "318575685.890988"
+          "totalSupply": 318575685.890988
         },
         {
-          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
           "name": "Aave interest bearing WBTC",
           "symbol": "aWBTC",
           "decimals": 8,
@@ -42,20 +42,20 @@
           "totalSupplyRaw": "2039476173601n",
           "tokens": [
             {
-              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
               "totalSupplyRaw": "1689927976519n",
               "type": "underlying",
-              "totalSupply": "16899.27976519",
+              "totalSupply": 16899.27976519,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
-          "totalSupply": "20394.76173601"
+          "totalSupply": 20394.76173601
         },
         {
-          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
           "name": "Aave interest bearing WETH",
           "symbol": "aWETH",
           "decimals": 18,
@@ -63,20 +63,20 @@
           "totalSupplyRaw": "408024736662627829072230n",
           "tokens": [
             {
-              "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
               "totalSupplyRaw": "199822884858493474568576n",
               "type": "underlying",
-              "totalSupply": "199822.884858493474568576",
+              "totalSupply": 199822.88485849346,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
-          "totalSupply": "408024.73666262782907223"
+          "totalSupply": 408024.73666262784
         },
         {
-          "address": "0xffc97d72e13e01096502cb8eb52dee56f74dad7b",
+          "address": "0xFFC97d72E13E01096502Cb8Eb52dEe56f74DAD7B",
           "name": "Aave interest bearing AAVE",
           "symbol": "aAAVE",
           "decimals": 18,
@@ -84,20 +84,20 @@
           "totalSupplyRaw": "142342461393987389647807n",
           "tokens": [
             {
-              "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+              "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
               "name": "Aave Token",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "142342461393987389647804n",
               "type": "underlying",
-              "totalSupply": "142342.461393987389647804",
+              "totalSupply": 142342.46139398738,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
             }
           ],
-          "totalSupply": "142342.461393987389647807"
+          "totalSupply": 142342.46139398738
         },
         {
-          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
           "name": "Aave interest bearing DAI",
           "symbol": "aDAI",
           "decimals": 18,
@@ -105,20 +105,20 @@
           "totalSupplyRaw": "88341009337565042973173653n",
           "tokens": [
             {
-              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
               "totalSupplyRaw": "21747689336442291646146197n",
               "type": "underlying",
-              "totalSupply": "21747689.336442291646146197",
+              "totalSupply": 21747689.33644229,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
-          "totalSupply": "88341009.337565042973173653"
+          "totalSupply": 88341009.33756505
         },
         {
-          "address": "0x6c5024cd4f8a59110119c56f8933403a539555eb",
+          "address": "0x6C5024Cd4F8A59110119C56f8933403A539555EB",
           "name": "Aave interest bearing SUSD",
           "symbol": "aSUSD",
           "decimals": 18,
@@ -126,20 +126,20 @@
           "totalSupplyRaw": "1898812656723605002410389n",
           "tokens": [
             {
-              "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+              "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
               "name": "Synth sUSD",
               "symbol": "sUSD",
               "decimals": 18,
               "totalSupplyRaw": "950204158148320155392031n",
               "type": "underlying",
-              "totalSupply": "950204.158148320155392031",
+              "totalSupply": 950204.1581483202,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
           ],
-          "totalSupply": "1898812.656723605002410389"
+          "totalSupply": 1898812.656723605
         },
         {
-          "address": "0xbcca60bb61934080951369a648fb03df4f96263c",
+          "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
           "name": "Aave interest bearing USDC",
           "symbol": "aUSDC",
           "decimals": 6,
@@ -147,20 +147,20 @@
           "totalSupplyRaw": "397367914982129n",
           "tokens": [
             {
-              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
               "totalSupplyRaw": "44468768353096n",
               "type": "underlying",
-              "totalSupply": "44468768.353096",
+              "totalSupply": 44468768.353096,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "totalSupply": "397367914.982129"
+          "totalSupply": 397367914.982129
         },
         {
-          "address": "0xd37ee7e4f452c6638c96536e68090de8cbcdb583",
+          "address": "0xD37EE7e4f452C6638c96536e68090De8cBcdb583",
           "name": "Aave interest bearing GUSD",
           "symbol": "aGUSD",
           "decimals": 2,
@@ -168,20 +168,20 @@
           "totalSupplyRaw": "103396315n",
           "tokens": [
             {
-              "address": "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd",
+              "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
               "name": "Gemini dollar",
               "symbol": "GUSD",
               "decimals": 2,
               "totalSupplyRaw": "31608075n",
               "type": "underlying",
-              "totalSupply": "316080.75",
+              "totalSupply": 316080.75,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo.png"
             }
           ],
-          "totalSupply": "1033963.15"
+          "totalSupply": 1033963.15
         },
         {
-          "address": "0x2e8f4bdbe3d47d7d7de490437aea9915d930f1a3",
+          "address": "0x2e8F4bdbE3d47d7d7DE490437AeA9915D930F1A3",
           "name": "Aave interest bearing USDP",
           "symbol": "aUSDP",
           "decimals": 18,
@@ -189,20 +189,20 @@
           "totalSupplyRaw": "531213032088029261712916n",
           "tokens": [
             {
-              "address": "0x8e870d67f660d95d5be530380d0ec0bd388289e1",
+              "address": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
               "name": "Pax Dollar",
               "symbol": "USDP",
               "decimals": 18,
               "totalSupplyRaw": "113620131906435715949982n",
               "type": "underlying",
-              "totalSupply": "113620.131906435715949982",
+              "totalSupply": 113620.13190643572,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
             }
           ],
-          "totalSupply": "531213.032088029261712916"
+          "totalSupply": 531213.0320880293
         },
         {
-          "address": "0xd4937682df3c8aef4fe912a96a74121c0829e664",
+          "address": "0xd4937682df3C8aEF4FE912A96A74121C0829E664",
           "name": "Aave interest bearing FRAX",
           "symbol": "aFRAX",
           "decimals": 18,
@@ -210,20 +210,20 @@
           "totalSupplyRaw": "2661131293985170512436038n",
           "tokens": [
             {
-              "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+              "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
               "name": "Frax",
               "symbol": "FRAX",
               "decimals": 18,
               "totalSupplyRaw": "581280963173273631241164n",
               "type": "underlying",
-              "totalSupply": "581280.963173273631241164",
+              "totalSupply": 581280.9631732736,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ],
-          "totalSupply": "2661131.293985170512436038"
+          "totalSupply": 2661131.2939851703
         },
         {
-          "address": "0x1982b2f5814301d4e9a8b0201555376e62f82428",
+          "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
           "name": "Aave interest bearing STETH",
           "symbol": "aSTETH",
           "decimals": 18,
@@ -231,20 +231,20 @@
           "totalSupplyRaw": "691964604338350211088014n",
           "tokens": [
             {
-              "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
               "name": "Liquid staked Ether 2.0",
               "symbol": "stETH",
               "decimals": 18,
               "totalSupplyRaw": "691964604338350211087628n",
               "type": "underlying",
-              "totalSupply": "691964.604338350211087628",
+              "totalSupply": 691964.6043383502,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "totalSupply": "691964.604338350211088014"
+          "totalSupply": 691964.6043383502
         },
         {
-          "address": "0xce1871f791548600cb59efbeffc9c38719142079",
+          "address": "0xce1871f791548600cb59efbefFC9c38719142079",
           "name": "Aave interest bearing LUSD",
           "symbol": "aLUSD",
           "decimals": 18,
@@ -252,17 +252,17 @@
           "totalSupplyRaw": "717613593918813419132382n",
           "tokens": [
             {
-              "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+              "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
               "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "349604320594236201107888n",
               "type": "underlying",
-              "totalSupply": "349604.320594236201107888",
+              "totalSupply": 349604.3205942362,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
           ],
-          "totalSupply": "717613.593918813419132382"
+          "totalSupply": 717613.5939188134
         }
       ]
     },
@@ -278,7 +278,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xe91d55ab2240594855abd11b3faae801fd4c4687",
+          "address": "0xe91D55AB2240594855aBd11b3faAE801Fd4c4687",
           "name": "Aave stable debt bearing USDT",
           "symbol": "stableDebtUSDT",
           "decimals": 6,
@@ -286,20 +286,20 @@
           "totalSupplyRaw": "3762995139075n",
           "tokens": [
             {
-              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "totalSupply": "3762995.139075"
+          "totalSupply": 3762995.139075
         },
         {
-          "address": "0x51b039b9afe64b78758f8ef091211b5387ea717c",
+          "address": "0x51B039b9AFE64B78758f8Ef091211b5387eA717c",
           "name": "Aave stable debt bearing WBTC",
           "symbol": "stableDebtWBTC",
           "decimals": 8,
@@ -307,20 +307,20 @@
           "totalSupplyRaw": "34861895556n",
           "tokens": [
             {
-              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
-          "totalSupply": "348.61895556"
+          "totalSupply": 348.61895556
         },
         {
-          "address": "0x4e977830ba4bd783c0bb7f15d3e243f73ff57121",
+          "address": "0x4e977830ba4bd783C0BB7F15d3e243f73FF57121",
           "name": "Aave stable debt bearing WETH",
           "symbol": "stableDebtWETH",
           "decimals": 18,
@@ -328,20 +328,20 @@
           "totalSupplyRaw": "120550148559275152701n",
           "tokens": [
             {
-              "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
-          "totalSupply": "120.550148559275152701"
+          "totalSupply": 120.55014855927516
         },
         {
-          "address": "0x079d6a3e844bcecf5720478a718edb6575362c5f",
+          "address": "0x079D6a3E844BcECf5720478A718Edb6575362C5f",
           "name": "Aave stable debt bearing AAVE",
           "symbol": "stableDebtAAVE",
           "decimals": 18,
@@ -349,20 +349,20 @@
           "totalSupplyRaw": "0n",
           "tokens": [
             {
-              "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+              "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
               "name": "Aave Token",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
-          "address": "0x778a13d3eeb110a4f7bb6529f99c000119a08e92",
+          "address": "0x778A13D3eeb110A4f7bb6529F99c000119a08E92",
           "name": "Aave stable debt bearing DAI",
           "symbol": "stableDebtDAI",
           "decimals": 18,
@@ -370,20 +370,20 @@
           "totalSupplyRaw": "952112424145916340764568n",
           "tokens": [
             {
-              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
-          "totalSupply": "952112.424145916340764568"
+          "totalSupply": 952112.4241459164
         },
         {
-          "address": "0x30b0f7324fedf89d8eff397275f8983397efe4af",
+          "address": "0x30B0f7324feDF89d8eff397275F8983397eFe4af",
           "name": "Aave stable debt bearing SUSD",
           "symbol": "stableDebtSUSD",
           "decimals": 18,
@@ -391,20 +391,20 @@
           "totalSupplyRaw": "0n",
           "tokens": [
             {
-              "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+              "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
               "name": "Synth sUSD",
               "symbol": "sUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
-          "address": "0xe4922afab0bbadd8ab2a88e0c79d884ad337fca6",
+          "address": "0xE4922afAB0BbaDd8ab2a88E0C79d884Ad337fcA6",
           "name": "Aave stable debt bearing USDC",
           "symbol": "stableDebtUSDC",
           "decimals": 6,
@@ -412,20 +412,20 @@
           "totalSupplyRaw": "5836745634580n",
           "tokens": [
             {
-              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "totalSupply": "5836745.63458"
+          "totalSupply": 5836745.63458
         },
         {
-          "address": "0xf8ac64ec6ff8e0028b37eb89772d21865321bce0",
+          "address": "0xf8aC64ec6Ff8E0028b37EB89772d21865321bCe0",
           "name": "Aave stable debt bearing GUSD",
           "symbol": "stableDebtGUSD",
           "decimals": 2,
@@ -433,20 +433,20 @@
           "totalSupplyRaw": "0n",
           "tokens": [
             {
-              "address": "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd",
+              "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
               "name": "Gemini dollar",
               "symbol": "GUSD",
               "decimals": 2,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
-          "address": "0x2387119bc85a74e0bbcbe190d80676cb16f10d4f",
+          "address": "0x2387119bc85A74e0BBcbe190d80676CB16F10D4F",
           "name": "Aave stable debt bearing PAX",
           "symbol": "stableDebtPAX",
           "decimals": 18,
@@ -454,20 +454,20 @@
           "totalSupplyRaw": "0n",
           "tokens": [
             {
-              "address": "0x8e870d67f660d95d5be530380d0ec0bd388289e1",
+              "address": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
               "name": "Pax Dollar",
               "symbol": "USDP",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
-          "address": "0x3916e3b6c84b161df1b2733dffc9569a1da710c2",
+          "address": "0x3916e3B6c84b161df1b2733dFfc9569a1dA710c2",
           "name": "Aave stable debt bearing FRAX",
           "symbol": "stableDebtFRAX",
           "decimals": 18,
@@ -475,20 +475,20 @@
           "totalSupplyRaw": "0n",
           "tokens": [
             {
-              "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+              "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
               "name": "Frax",
               "symbol": "FRAX",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
-          "address": "0x66457616dd8489df5d0afd8678f4a260088aaf55",
+          "address": "0x66457616Dd8489dF5D0AFD8678F4A260088aAF55",
           "name": "Aave stable debt bearing STETH",
           "symbol": "stableDebtSTETH",
           "decimals": 18,
@@ -496,20 +496,20 @@
           "totalSupplyRaw": "0n",
           "tokens": [
             {
-              "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
               "name": "Liquid staked Ether 2.0",
               "symbol": "stETH",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
-          "address": "0x39f010127274b2dbdb770b45e1de54d974974526",
+          "address": "0x39f010127274b2dBdB770B45e1de54d974974526",
           "name": "Aave stable debt bearing LUSD",
           "symbol": "stableDebtLUSD",
           "decimals": 18,
@@ -517,17 +517,17 @@
           "totalSupplyRaw": "44097018792904949620950n",
           "tokens": [
             {
-              "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+              "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
               "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
           ],
-          "totalSupply": "44097.01879290494962095"
+          "totalSupply": 44097.01879290495
         }
       ]
     },
@@ -543,7 +543,7 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x531842cebbdd378f8ee36d171d6cc9c4fcf475ec",
+          "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
           "name": "Aave variable debt bearing USDT",
           "symbol": "variableDebtUSDT",
           "decimals": 6,
@@ -551,20 +551,20 @@
           "totalSupplyRaw": "251221324940728n",
           "tokens": [
             {
-              "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "totalSupply": "251221324.940728"
+          "totalSupply": 251221324.940728
         },
         {
-          "address": "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
+          "address": "0x9c39809Dec7F95F5e0713634a4D0701329B3b4d2",
           "name": "Aave variable debt bearing WBTC",
           "symbol": "variableDebtWBTC",
           "decimals": 8,
@@ -572,20 +572,20 @@
           "totalSupplyRaw": "314686271229n",
           "tokens": [
             {
-              "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
-          "totalSupply": "3146.86271229"
+          "totalSupply": 3146.86271229
         },
         {
-          "address": "0xf63b34710400cad3e044cffdcab00a0f32e33ecf",
+          "address": "0xF63B34710400CAd3e044cFfDcAb00a0f32E33eCf",
           "name": "Aave variable debt bearing WETH",
           "symbol": "variableDebtWETH",
           "decimals": 18,
@@ -593,20 +593,20 @@
           "totalSupplyRaw": "207889958167992842063567n",
           "tokens": [
             {
-              "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
-          "totalSupply": "207889.958167992842063567"
+          "totalSupply": 207889.95816799285
         },
         {
-          "address": "0xf7dba49d571745d9d7fcb56225b05bea803ebf3c",
+          "address": "0xF7DBA49d571745D9d7fcb56225B05BEA803EBf3C",
           "name": "Aave variable debt bearing AAVE",
           "symbol": "variableDebtAAVE",
           "decimals": 18,
@@ -614,20 +614,20 @@
           "totalSupplyRaw": "0n",
           "tokens": [
             {
-              "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+              "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
               "name": "Aave Token",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
-          "address": "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d",
+          "address": "0x6C3c78838c761c6Ac7bE9F59fe808ea2A6E4379d",
           "name": "Aave variable debt bearing DAI",
           "symbol": "variableDebtDAI",
           "decimals": 18,
@@ -635,20 +635,20 @@
           "totalSupplyRaw": "65641467291337439444451644n",
           "tokens": [
             {
-              "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
               "totalSupplyRaw": "49950049950049950n",
               "type": "underlying",
-              "totalSupply": "0.04995004995004995",
+              "totalSupply": 0.04995004995004995,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
-          "totalSupply": "65641467.291337439444451644"
+          "totalSupply": 65641467.29133744
         },
         {
-          "address": "0xdc6a3ab17299d9c2a412b0e0a4c1f55446ae0817",
+          "address": "0xdC6a3Ab17299D9C2A412B0e0a4C1f55446AE0817",
           "name": "Aave variable debt bearing SUSD",
           "symbol": "variableDebtSUSD",
           "decimals": 18,
@@ -656,20 +656,20 @@
           "totalSupplyRaw": "948679477383696886572252n",
           "tokens": [
             {
-              "address": "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+              "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
               "name": "Synth sUSD",
               "symbol": "sUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
           ],
-          "totalSupply": "948679.477383696886572252"
+          "totalSupply": 948679.4773836969
         },
         {
-          "address": "0x619beb58998ed2278e08620f97007e1116d5d25b",
+          "address": "0x619beb58998eD2278e08620f97007e1116D5D25b",
           "name": "Aave variable debt bearing USDC",
           "symbol": "variableDebtUSDC",
           "decimals": 6,
@@ -677,20 +677,20 @@
           "totalSupplyRaw": "347062521887698n",
           "tokens": [
             {
-              "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "totalSupply": "347062521.887698"
+          "totalSupply": 347062521.887698
         },
         {
-          "address": "0x279af5b99540c1a3a7e3cdd326e19659401ef99e",
+          "address": "0x279AF5b99540c1A3A7E3CDd326e19659401eF99e",
           "name": "Aave variable debt bearing GUSD",
           "symbol": "variableDebtGUSD",
           "decimals": 2,
@@ -698,20 +698,20 @@
           "totalSupplyRaw": "71792029n",
           "tokens": [
             {
-              "address": "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd",
+              "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
               "name": "Gemini dollar",
               "symbol": "GUSD",
               "decimals": 2,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo.png"
             }
           ],
-          "totalSupply": "717920.29"
+          "totalSupply": 717920.29
         },
         {
-          "address": "0xfdb93b3b10936cf81fa59a02a7523b6e2149b2b7",
+          "address": "0xFDb93B3b10936cf81FA59A02A7523B6e2149b2B7",
           "name": "Aave variable debt bearing USDP",
           "symbol": "variableDebtUSDP",
           "decimals": 18,
@@ -719,20 +719,20 @@
           "totalSupplyRaw": "417636165962371818158248n",
           "tokens": [
             {
-              "address": "0x8e870d67f660d95d5be530380d0ec0bd388289e1",
+              "address": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
               "name": "Pax Dollar",
               "symbol": "USDP",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
             }
           ],
-          "totalSupply": "417636.165962371818158248"
+          "totalSupply": 417636.1659623718
         },
         {
-          "address": "0xfe8f19b17ffef0fdbfe2671f248903055afaa8ca",
+          "address": "0xfE8F19B17fFeF0fDbfe2671F248903055AFAA8Ca",
           "name": "Aave variable debt bearing FRAX",
           "symbol": "variableDebtFRAX",
           "decimals": 18,
@@ -740,20 +740,20 @@
           "totalSupplyRaw": "2079904814877186689637637n",
           "tokens": [
             {
-              "address": "0x853d955acef822db058eb8505911ed77f175b99e",
+              "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
               "name": "Frax",
               "symbol": "FRAX",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ],
-          "totalSupply": "2079904.814877186689637637"
+          "totalSupply": 2079904.8148771867
         },
         {
-          "address": "0xa9deac9f00dc4310c35603fcd9d34d1a750f81db",
+          "address": "0xA9DEAc9f00Dc4310c35603FCD9D34d1A750f81Db",
           "name": "Aave variable debt bearing STETH",
           "symbol": "variableDebtSTETH",
           "decimals": 18,
@@ -761,20 +761,20 @@
           "totalSupplyRaw": "0n",
           "tokens": [
             {
-              "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
               "name": "Liquid staked Ether 2.0",
               "symbol": "stETH",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "totalSupply": "0.0"
+          "totalSupply": 0
         },
         {
-          "address": "0x411066489ab40442d6fc215ad7c64224120d33f2",
+          "address": "0x411066489AB40442d6Fc215aD7c64224120D33F2",
           "name": "Aave variable debt bearing LUSD",
           "symbol": "variableDebtLUSD",
           "decimals": 18,
@@ -782,17 +782,17 @@
           "totalSupplyRaw": "323686926935923381560854n",
           "tokens": [
             {
-              "address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+              "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
               "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
-              "totalSupply": "0.0",
+              "totalSupply": 0,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
           ],
-          "totalSupply": "323686.926935923381560854"
+          "totalSupply": 323686.9269359234
         }
       ]
     }

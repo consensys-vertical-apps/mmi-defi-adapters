@@ -3007,22 +3007,6 @@
       }
     ]
   },
-  "0x474D83Fc6c358242d8638Cb0f733E7B3a457a109": {
-    "protocolToken": {
-      "name": "Curve.fi Factory Crypto Pool: DUCK/ETH",
-      "decimals": 18,
-      "symbol": "DUCKETH-f",
-      "address": "0x474D83Fc6c358242d8638Cb0f733E7B3a457a109"
-    },
-    "underlyingTokens": [
-      {
-        "name": "Curve.fi Factory Crypto Pool: DUCK/ETH",
-        "decimals": 18,
-        "symbol": "DUCKETH-f",
-        "address": "0x91f2f1b9D9c7D838c87B687d2AcCD1f0bE8FaE5d"
-      }
-    ]
-  },
   "0x5AC6886Edd18ED0AD01C0B0910660637c551FBd6": {
     "protocolToken": {
       "name": "Curve.fi Factory Crypto Pool: BTRFLY/ETH",
@@ -5404,6 +5388,22 @@
         "decimals": 18,
         "symbol": "QOMOCAW",
         "address": "0x84CeCB5525c6B1C20070E742da870062E84Da178"
+      }
+    ]
+  },
+  "0x1Ee8f8B504E99a0fCD3A32D38aa9968750A708aD": {
+    "protocolToken": {
+      "name": "TriSDT+",
+      "decimals": 18,
+      "symbol": "TriSDT+",
+      "address": "0x1Ee8f8B504E99a0fCD3A32D38aa9968750A708aD"
+    },
+    "underlyingTokens": [
+      {
+        "name": "TriSDT+",
+        "decimals": 18,
+        "symbol": "TriSDT+",
+        "address": "0x1830c553dC76d3447B69b7B0dC19CF9e3c739C78"
       }
     ]
   },

@@ -1,3 +1,4 @@
+import { AddressLike, BigNumberish } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
@@ -23,7 +24,11 @@ import {
   TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Cerc20__factory, Comptroller__factory } from '../../contracts'
+import {
+  Cerc20__factory,
+  Comptroller__factory,
+  CUSDCv3__factory,
+} from '../../contracts'
 
 type CompoundPoolAdapterMetadata = Record<
   string,
@@ -46,7 +51,7 @@ export class CompoundPoolAdapter
       description: 'Compound pool adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
-      positionType: PositionType.Supply,
+      positionType: PositionType.Lend,
       chainId: this.chainId,
       productId: this.productId,
     }
@@ -97,7 +102,7 @@ export class CompoundPoolAdapter
           underlyingTokenPromise,
         ])
 
-        metadataObject[poolContractAddress.toLowerCase()] = {
+        metadataObject[protocolToken.address] = {
           protocolToken,
           underlyingToken,
         }
@@ -147,11 +152,6 @@ export class CompoundPoolAdapter
     return [underlyingTokenBalance]
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
@@ -224,4 +224,44 @@ export class CompoundPoolAdapter
 
     return poolMetadata
   }
+
+  getTransactionParams({
+    action,
+    inputs,
+  }: {
+    action: string
+    inputs: unknown[]
+  }) {
+    const poolContract = CUSDCv3__factory.connect(
+      getAddress(this.chainId),
+      this.provider,
+    )
+
+    const [asset, amount] = inputs as [AddressLike, BigNumberish]
+
+    switch (action) {
+      case 'supply': {
+        return poolContract.supply.populateTransaction(asset, amount)
+      }
+      case 'withdraw': {
+        return poolContract.withdraw.populateTransaction(asset, amount)
+      }
+      case 'borrow': {
+        return poolContract.withdraw.populateTransaction(asset, amount)
+      }
+      case 'repay': {
+        return poolContract.supply.populateTransaction(asset, amount)
+      }
+
+      default:
+        throw new Error('Method not supported')
+    }
+  }
+}
+const getAddress = (chainId: Chain) => {
+  if (chainId == Chain.Ethereum) {
+    return '0xc3d688B66703497DAA19211EEdff47f25384cdc3'
+  }
+
+  throw new Error('Chain not supported')
 }

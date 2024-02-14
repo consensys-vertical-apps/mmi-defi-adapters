@@ -49,10 +49,6 @@ import MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow from '../.
 import MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v3-eth/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
-import PricesUsdArbitrumProtocolToken from '../../adapters/prices/products/usd/metadata/arbitrum.protocol-token.json'
-import PricesUsdEthereumProtocolToken from '../../adapters/prices/products/usd/metadata/ethereum.protocol-token.json'
-import PricesUsdOptimismProtocolToken from '../../adapters/prices/products/usd/metadata/optimism.protocol-token.json'
-import PricesUsdPolygonProtocolToken from '../../adapters/prices/products/usd/metadata/polygon.protocol-token.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -487,15 +483,6 @@ export const MetadataFiles = new Map<string, Json>([
   ],
   [
     metadataKey({
-      protocolId: Protocol.Prices,
-      productId: 'usd',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    PricesUsdEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
       protocolId: Protocol.MorphoCompoundV2,
       productId: 'optimizer-borrow',
       chainId: Chain.Ethereum,
@@ -511,33 +498,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-supply',
     }),
     MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Prices,
-      productId: 'usd',
-      chainId: Chain.Polygon,
-      fileKey: 'protocol-token',
-    }),
-    PricesUsdPolygonProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Prices,
-      productId: 'usd',
-      chainId: Chain.Arbitrum,
-      fileKey: 'protocol-token',
-    }),
-    PricesUsdArbitrumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Prices,
-      productId: 'usd',
-      chainId: Chain.Optimism,
-      fileKey: 'protocol-token',
-    }),
-    PricesUsdOptimismProtocolToken,
   ],
   [
     metadataKey({

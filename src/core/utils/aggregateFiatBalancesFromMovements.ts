@@ -1,4 +1,4 @@
-import { Underlying, MovementsByBlock, TokenType } from '../../types/adapter'
+import { Underlying, MovementsByBlock } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 
 export function aggregateFiatBalancesFromMovements(
@@ -22,7 +22,8 @@ export function aggregateFiatBalancesFromMovements(
     currentToken: Underlying,
     protocolToken: Erc20Metadata & { tokenId?: string },
   ): bigint => {
-    if (currentToken.type === TokenType.Fiat) {
+    const price = currentToken.priceRaw!
+    if (price) {
       // Aggregate balance for Fiat type tokens
       const key = protocolToken.tokenId ?? protocolToken.address
       const currentBalance = currentToken.balanceRaw
@@ -35,7 +36,9 @@ export function aggregateFiatBalancesFromMovements(
           decimals: protocolToken.decimals,
           tokenId: protocolToken.tokenId,
         },
-        usdRaw: (result[key]?.usdRaw || BigInt(0)) + currentBalance,
+        usdRaw:
+          (result[key]?.usdRaw || BigInt(0)) +
+          (currentBalance * price) / 10n ** BigInt(currentToken.decimals),
       }
 
       return currentBalance

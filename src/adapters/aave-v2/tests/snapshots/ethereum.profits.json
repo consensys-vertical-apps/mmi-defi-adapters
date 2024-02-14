@@ -13,22 +13,22 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
           "name": "Aave interest bearing WBTC",
           "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": -138916.76109474152,
-          "performance": -0.014526561289021842,
+          "profit": -162317.60794604942,
+          "performance": -0.015421510272556935,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 9562948.74821649,
-            "endPositionValue": 9424031.987121748
+            "startPositionValue": 10525402.835213795,
+            "endPositionValue": 10363085.227267746
           }
         },
         {
-          "address": "0x030ba81f1c18d280636f32af80b9aad02cf0854e",
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
           "name": "Aave interest bearing WETH",
           "symbol": "aWETH",
           "decimals": 18,
@@ -72,63 +72,63 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x531842cebbdd378f8ee36d171d6cc9c4fcf475ec",
+          "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
           "name": "Aave variable debt bearing USDT",
           "symbol": "variableDebtUSDT",
           "decimals": 6,
           "type": "protocol",
-          "profit": -7536.570457887836,
-          "performance": -0.0014434372735134156,
+          "profit": 7027.205629593693,
+          "performance": 0.0013264597972670455,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 34386.67041918019,
-            "startPositionValue": 5186879.67497826,
-            "endPositionValue": 5213729.774939552
+            "deposits": 35026.99283294366,
+            "startPositionValue": -5262687.754400335,
+            "endPositionValue": -5290687.541603685
           }
         },
         {
-          "address": "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
+          "address": "0x9c39809Dec7F95F5e0713634a4D0701329B3b4d2",
           "name": "Aave variable debt bearing WBTC",
           "symbol": "variableDebtWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": -1068.2339065842534,
-          "performance": -0.014502880519815162,
+          "profit": 1248.300374614977,
+          "performance": 0.015397851008831504,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 73656.67152292501,
-            "endPositionValue": 72588.43761634076
+            "startPositionValue": -81069.7787567245,
+            "endPositionValue": -79821.47838210952
           }
         },
         {
-          "address": "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d",
+          "address": "0x6C3c78838c761c6Ac7bE9F59fe808ea2A6E4379d",
           "name": "Aave variable debt bearing DAI",
           "symbol": "variableDebtDAI",
           "decimals": 18,
           "type": "protocol",
-          "profit": -661.9442155583529,
-          "performance": -0.0018368529362628218,
+          "profit": 379.1701505348901,
+          "performance": 0.0010341383337150389,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 360368.65145291097,
-            "endPositionValue": 359706.7072373526
+            "startPositionValue": -366653.2205345867,
+            "endPositionValue": -366274.0503840518
           }
         },
         {
-          "address": "0x619beb58998ed2278e08620f97007e1116d5d25b",
+          "address": "0x619beb58998eD2278e08620f97007e1116D5D25b",
           "name": "Aave variable debt bearing USDC",
           "symbol": "variableDebtUSDC",
           "decimals": 6,
           "type": "protocol",
-          "profit": -4926.786978698336,
-          "performance": -0.0016610839987086332,
+          "profit": 4189.807200494688,
+          "performance": 0.001393168764878352,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 2966007.126989688,
-            "endPositionValue": 2961080.3400109895
+            "startPositionValue": -3007393.867935685,
+            "endPositionValue": -3003204.0607351903
           }
         }
       ],

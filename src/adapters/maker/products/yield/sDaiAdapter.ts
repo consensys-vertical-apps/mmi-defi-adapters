@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { RAY_POSITIONS } from '../../../../core/constants/RAY'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -77,7 +78,7 @@ export class SDaiAdapter extends SimplePoolAdapter {
 
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
     return {
-      address: '0x83f20f44975d03b1b09e64809b757c47f942beea',
+      address: getAddress('0x83f20f44975d03b1b09e64809b757c47f942beea'),
       name: 'Savings Dai',
       symbol: 'sDAI',
       decimals: 18,
@@ -87,7 +88,7 @@ export class SDaiAdapter extends SimplePoolAdapter {
   protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
     return [
       {
-        address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        address: getAddress('0x6b175474e89094c44da98b954eedeac495271d0f'),
         name: 'Dai Stablecoin',
         symbol: 'DAI',
         decimals: 18,

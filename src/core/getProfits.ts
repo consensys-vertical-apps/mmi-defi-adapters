@@ -1,10 +1,13 @@
 import { formatUnits } from 'ethers'
-import { priceAdapterConfig } from '../adapters/prices/products/usd/priceAdapterConfig'
+import { priceAdapterConfig } from '../adapters/prices-v2/products/usd/priceV2Config'
+import { enrichMovements, enrichPositionBalance } from '../responseAdapters'
 import {
   ProfitsWithRange,
   GetEventsInput,
   PositionType,
   TokenType,
+  MovementsByBlock,
+  ProtocolPosition,
 } from '../types/adapter'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
@@ -17,15 +20,21 @@ export async function getProfits({
   fromBlock,
   toBlock,
   protocolTokenAddresses,
+  includeRawValues,
 }: {
   adapter: IProtocolAdapter
   userAddress: string
   fromBlock: number
   toBlock: number
   protocolTokenAddresses?: string[]
+  includeRawValues?: boolean
 }): Promise<ProfitsWithRange> {
   let endPositionValues: ReturnType<typeof aggregateFiatBalances>,
     startPositionValues: ReturnType<typeof aggregateFiatBalances>
+
+  let rawEndPositionValues: ProtocolPosition[]
+
+  let rawStartPositionValues: ProtocolPosition[]
   if (protocolTokenAddresses) {
     // Call both in parallel with filter
     ;[endPositionValues, startPositionValues] = await Promise.all([
@@ -35,14 +44,20 @@ export async function getProfits({
           blockNumber: toBlock,
           protocolTokenAddresses,
         })
-        .then(aggregateFiatBalances),
+        .then((result) => {
+          rawEndPositionValues = result
+          return aggregateFiatBalances(result)
+        }),
       adapter
         .getPositions({
           userAddress,
           blockNumber: fromBlock,
           protocolTokenAddresses,
         })
-        .then(aggregateFiatBalances),
+        .then((result) => {
+          rawStartPositionValues = result
+          return aggregateFiatBalances(result)
+        }),
     ])
   } else {
     // Call toBlock first and filter fromBlock
@@ -51,16 +66,24 @@ export async function getProfits({
         userAddress,
         blockNumber: toBlock,
       })
-      .then(aggregateFiatBalances)
-
+      .then((result) => {
+        rawEndPositionValues = result
+        return aggregateFiatBalances(result)
+      })
     startPositionValues = await adapter
       .getPositions({
         userAddress,
         blockNumber: fromBlock,
         protocolTokenAddresses: Object.keys(endPositionValues),
       })
-      .then(aggregateFiatBalances)
+      .then((result) => {
+        rawStartPositionValues = result
+        return aggregateFiatBalances(result)
+      })
   }
+
+  const rawWithdrawals: MovementsByBlock[] = []
+  const rawDeposits: MovementsByBlock[] = []
 
   const tokens = await Promise.all(
     Object.values(endPositionValues).map(async ({ protocolTokenMetadata }) => {
@@ -73,39 +96,47 @@ export async function getProfits({
       }
 
       const [withdrawals, deposits] = await Promise.all([
-        adapter
-          .getWithdrawals(getEventsInput)
-          .then(aggregateFiatBalancesFromMovements),
-        adapter
-          .getDeposits(getEventsInput)
-          .then(aggregateFiatBalancesFromMovements),
+        adapter.getWithdrawals(getEventsInput).then((result) => {
+          rawWithdrawals.push(...result)
+          return aggregateFiatBalancesFromMovements(result)
+        }),
+        adapter.getDeposits(getEventsInput).then((result) => {
+          rawDeposits.push(...result)
+          return aggregateFiatBalancesFromMovements(result)
+        }),
       ])
 
       const key = protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
 
       const endPositionValue = +formatUnits(
         endPositionValues[key]?.usdRaw ?? 0n,
-        priceAdapterConfig.decimals,
+        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+          .decimals,
       )
       const withdrawal = +formatUnits(
         withdrawals[key]?.usdRaw ?? 0n,
-        priceAdapterConfig.decimals,
+        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+          .decimals,
       )
       const deposit = +formatUnits(
         deposits[key]?.usdRaw ?? 0n,
-        priceAdapterConfig.decimals,
+        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+          .decimals,
       )
       const startPositionValue = +formatUnits(
         startPositionValues[key]?.usdRaw ?? 0n,
-        priceAdapterConfig.decimals,
+        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+          .decimals,
       )
 
-      const profit =
-        endPositionValue + withdrawal - deposit - startPositionValue
+      const profitModifier =
+        adapter.getProtocolDetails().positionType === PositionType.Borrow
+          ? -1
+          : 1
 
-      if (adapter.getProtocolDetails().positionType == PositionType.Borrow) {
-        profit * -1
-      }
+      const profit =
+        (endPositionValue + withdrawal - deposit - startPositionValue) *
+        profitModifier
 
       return {
         ...protocolTokenMetadata,
@@ -120,9 +151,27 @@ export async function getProfits({
         calculationData: {
           withdrawals: withdrawal,
           deposits: deposit,
-          startPositionValue: startPositionValue,
-          endPositionValue: endPositionValue,
+          startPositionValue: startPositionValue * profitModifier,
+          endPositionValue: endPositionValue * profitModifier,
         },
+        rawValues: includeRawValues
+          ? {
+              rawEndPositionValues: rawEndPositionValues.map(
+                (protocolPosition) =>
+                  enrichPositionBalance(protocolPosition, adapter.chainId),
+              ),
+              rawStartPositionValues: rawStartPositionValues.map(
+                (protocolPosition) =>
+                  enrichPositionBalance(protocolPosition, adapter.chainId),
+              ),
+              rawWithdrawals: rawWithdrawals.map((value) =>
+                enrichMovements(value, adapter.chainId),
+              ),
+              rawDeposits: rawDeposits.map((value) =>
+                enrichMovements(value, adapter.chainId),
+              ),
+            }
+          : undefined,
       }
     }),
   )

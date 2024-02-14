@@ -7,6 +7,7 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
+import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
 import { testCases as carbonDeFiTestCases } from './carbon-defi/tests/testCases'
 import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
 import { testCases as compoundTestCases } from './compound/tests/testCases'
@@ -20,8 +21,9 @@ import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCa
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
 import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3-eth/tests/testCases'
 import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
-import { testCases as pricesTestCases } from './prices/tests/testCases'
+import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
+import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
@@ -36,6 +38,7 @@ runAllTests()
 function runAllTests() {
   runProtocolTests(Protocol.Stargate, stargateTestCases)
   runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
+  runProtocolTests(Protocol.AaveV3, aaveV3TestCases)
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
   runProtocolTests(Protocol.Lido, lidoTestCases)
   runProtocolTests(Protocol.Curve, curveTestCases)
@@ -45,7 +48,6 @@ function runAllTests() {
   runProtocolTests(Protocol.Swell, swellTestCases)
   runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
   runProtocolTests(Protocol.Convex, convexTestCases)
-  runProtocolTests(Protocol.Prices, pricesTestCases)
   runProtocolTests(
     Protocol.MorphoCompoundV2,
     morphoCompoundV2OptimizerTestCases,
@@ -59,6 +61,8 @@ function runAllTests() {
   runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
   runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
   runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
+  runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
+  runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
@@ -324,6 +328,37 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
 
         afterAll(() => {
           logger.debug(`[Integration test] getApr for ${protocolId} finished`)
+        })
+      })
+    }
+
+    const txParamsTestCases = testCases.filter(
+      (testCase): testCase is TestCase & { method: 'tx-params' } =>
+        testCase.method === 'tx-params',
+    )
+
+    if (txParamsTestCases.length) {
+      describe('tx-params', () => {
+        it.each(
+          txParamsTestCases.map((testCase) => [testKey(testCase), testCase]),
+        )(
+          'tx-params for test %s match',
+          async (_, testCase) => {
+            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+
+            const response = await defiProvider.getTransactionParams({
+              ...testCase.input,
+              protocolId,
+              chainId: testCase.chainId,
+            })
+
+            expect(response).toEqual(snapshot)
+          },
+          TEST_TIMEOUT,
+        )
+
+        afterAll(() => {
+          logger.debug(`[Integration test] deposits for ${protocolId} finished`)
         })
       })
     }

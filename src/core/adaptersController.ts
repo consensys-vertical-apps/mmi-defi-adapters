@@ -4,7 +4,7 @@ import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Chain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
-import { CustomJsonRpcProvider } from './utils/customJsonRpcProvider'
+import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
@@ -86,7 +86,7 @@ export class AdaptersController {
 
     const protocolTokens = await this.protocolTokens
 
-    return protocolTokens.get(chainId)?.get(tokenAddress.toLowerCase())
+    return protocolTokens.get(chainId)?.get(tokenAddress)
   }
 
   private async buildProtocolTokens(): Promise<
@@ -117,7 +117,6 @@ export class AdaptersController {
 
           switch (positionType) {
             case PositionType.FiatPrices:
-              this.processFiatPrices(protocolTokens, chainAdaptersMap, adapter)
               break
             case PositionType.Reward:
               // Omit reward tokens from protocol token adapter map.
@@ -136,27 +135,13 @@ export class AdaptersController {
     return protocolTokensAdapterMap
   }
 
-  private processFiatPrices(
-    protocolTokens: Erc20Metadata[],
-    chainAdaptersMap: Map<string, IProtocolAdapter>,
-    adapter: IProtocolAdapter,
-  ) {
-    for (const protocolToken of protocolTokens) {
-      const tokenAddress = protocolToken.address.toLowerCase()
-
-      if (!chainAdaptersMap.has(tokenAddress)) {
-        chainAdaptersMap.set(tokenAddress, adapter)
-      }
-    }
-  }
-
   private processDefaultCase(
     protocolTokens: Erc20Metadata[],
     chainAdaptersMap: Map<string, IProtocolAdapter>,
     adapter: IProtocolAdapter,
   ) {
     for (const protocolToken of protocolTokens) {
-      const tokenAddress = protocolToken.address.toLowerCase()
+      const tokenAddress = protocolToken.address
 
       const existingAdapter = chainAdaptersMap.get(tokenAddress)
       const isPriceAdapter =

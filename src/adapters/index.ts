@@ -32,8 +32,9 @@ import { MorphoAaveV3ETHOptimizerBorrowAdapter } from './morpho-aave-v3-eth/prod
 import { MorphoAaveV3ETHOptimizerSupplyAdapter } from './morpho-aave-v3-eth/products/optimizer-supply/morphoAaveV3ETHOptimizerSupplyAdapter'
 import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
 import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
-import { PricesUSDAdapter } from './prices/products/usd/pricesUSDAdapter'
+import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
+import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
@@ -173,13 +174,6 @@ export const supportedProtocols: Record<
     ],
   },
 
-  [Protocol.Prices]: {
-    [Chain.Ethereum]: [PricesUSDAdapter],
-    [Chain.Arbitrum]: [PricesUSDAdapter],
-    [Chain.Optimism]: [PricesUSDAdapter],
-    [Chain.Polygon]: [PricesUSDAdapter],
-  },
-
   [Protocol.IZiSwap]: {
     [Chain.Bsc]: [IZiswapAdapter],
     [Chain.Base]: [IZiswapAdapter],
@@ -194,10 +188,26 @@ export const supportedProtocols: Record<
   [Protocol.SyncSwap]: {
     [Chain.Linea]: [SyncswapPoolAdapter],
   },
+
   [Protocol.MendiFinance]: {
     [Chain.Linea]: [MendiFinanceSupplyAdapter, MendiFinanceBorrowAdapter],
   },
+
   [Protocol.CarbonDeFi]: {
     [Chain.Ethereum]: [CarbonDeFiStrategiesAdapter],
+  },
+
+  [Protocol.RocketPool]: {
+    [Chain.Ethereum]: [RocketPoolRethAdapter],
+  },
+
+  [Protocol.PricesV2]: {
+    [Chain.Ethereum]: [PricesV2UsdAdapter],
+    [Chain.Polygon]: [PricesV2UsdAdapter],
+    [Chain.Arbitrum]: [PricesV2UsdAdapter],
+    [Chain.Bsc]: [PricesV2UsdAdapter],
+    [Chain.Optimism]: [PricesV2UsdAdapter],
+    [Chain.Avalanche]: [PricesV2UsdAdapter],
+    [Chain.Base]: [PricesV2UsdAdapter],
   },
 }

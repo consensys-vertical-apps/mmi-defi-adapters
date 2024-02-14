@@ -1,9 +1,10 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { CustomJsonRpcProvider } from '../../../../core/utils/customJsonRpcProvider'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -35,16 +36,24 @@ import { LiquidityManager__factory } from '../../contracts/factories'
 const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
   {
     [Chain.Arbitrum]: {
-      liquidityManager: '0x01fDea353849cA29F778B2663BcaCA1D191bED0e',
+      liquidityManager: getAddress(
+        '0xAD1F11FBB288Cd13819cCB9397E59FAAB4Cdc16F',
+      ),
     },
     [Chain.Linea]: {
-      liquidityManager: '0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c',
+      liquidityManager: getAddress(
+        '0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c',
+      ),
     },
     [Chain.Bsc]: {
-      liquidityManager: '0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453',
+      liquidityManager: getAddress(
+        '0xBF55ef05412f1528DbD96ED9E7181f87d8C9F453',
+      ),
     },
     [Chain.Base]: {
-      liquidityManager: '0x110dE362cc436D7f54210f96b8C7652C2617887D',
+      liquidityManager: getAddress(
+        '0x110dE362cc436D7f54210f96b8C7652C2617887D',
+      ),
     },
   }
 
@@ -88,10 +97,6 @@ export class IZiswapAdapter extends SimplePoolAdapter {
     }
   }
 
-  /**
-   * Update me.
-   * Returning an array of your protocol tokens.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     throw new NotImplementedError()
   }
@@ -267,21 +272,12 @@ export class IZiswapAdapter extends SimplePoolAdapter {
     })
   }
 
-  /**
-   * Update me.
-   * Add logic to get tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to calculate the underlying token rate of 1 protocol token
-   */
   async getProtocolTokenToUnderlyingTokenRate(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {

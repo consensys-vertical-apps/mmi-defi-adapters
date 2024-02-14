@@ -30,18 +30,20 @@
             "decimals": 18,
             "transactionHash": "0x5b5da2572dbed5e0286e0178ebf774bdb46d3587f9247a174be42093866a9a9b",
             "blockNumber": 18656079,
-            "balance": "0.000000000076200356"
+            "price": 2085.54087,
+            "balance": 7.6200356e-11
           },
           {
             "type": "underlying",
             "balanceRaw": "3651927273n",
-            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
             "transactionHash": "0x5b5da2572dbed5e0286e0178ebf774bdb46d3587f9247a174be42093866a9a9b",
             "blockNumber": 18656079,
-            "balance": "3651.927273"
+            "price": 1.0103923024129888,
+            "balance": 3651.927273
           }
         ]
       }

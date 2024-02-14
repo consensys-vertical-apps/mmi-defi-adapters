@@ -13,31 +13,21 @@
       {
         "transactionHash": "0xaa707b5056fd3de39bdfcae1164eeffadde064000302ffce2b5b0aa2b601ee5b",
         "protocolToken": {
-          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
           "name": "Staked CvxCrv",
           "symbol": "stkCvxCrv",
           "decimals": 18
         },
         "tokens": [
           {
-            "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+            "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
             "name": "Curve DAO Token",
             "symbol": "CRV",
             "decimals": 18,
             "balanceRaw": "2955753991471436954276n",
             "type": "underlying",
-            "tokens": [
-              {
-                "address": "TheUnitedStatesMint",
-                "name": "USD",
-                "symbol": "USD",
-                "decimals": 18,
-                "type": "fiat",
-                "balanceRaw": "1688872729482198619869n",
-                "balance": "1688.872729482198619869"
-              }
-            ],
-            "balance": "2955.753991471436954276"
+            "price": 0.5812210635848514,
+            "balance": 2955.753991471437
           }
         ],
         "blockNumber": 18632773
@@ -45,31 +35,21 @@
       {
         "transactionHash": "0xaa707b5056fd3de39bdfcae1164eeffadde064000302ffce2b5b0aa2b601ee5b",
         "protocolToken": {
-          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
           "name": "Staked CvxCrv",
           "symbol": "stkCvxCrv",
           "decimals": 18
         },
         "tokens": [
           {
-            "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+            "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
             "name": "Convex Token",
             "symbol": "CVX",
             "decimals": 18,
             "balanceRaw": "390488348790686281236n",
             "type": "underlying",
-            "tokens": [
-              {
-                "address": "TheUnitedStatesMint",
-                "name": "USD",
-                "symbol": "USD",
-                "decimals": 18,
-                "type": "fiat",
-                "balanceRaw": "1448710603917550492600n",
-                "balance": "1448.7106039175504926"
-              }
-            ],
-            "balance": "390.488348790686281236"
+            "price": 3.7203442715200805,
+            "balance": 390.4883487906863
           }
         ],
         "blockNumber": 18632773
@@ -77,14 +57,14 @@
       {
         "transactionHash": "0xaa707b5056fd3de39bdfcae1164eeffadde064000302ffce2b5b0aa2b601ee5b",
         "protocolToken": {
-          "address": "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434",
+          "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
           "name": "Staked CvxCrv",
           "symbol": "stkCvxCrv",
           "decimals": 18
         },
         "tokens": [
           {
-            "address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+            "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
             "name": "Curve.fi DAI/USDC/USDT",
             "symbol": "3Crv",
             "decimals": 18,
@@ -92,70 +72,40 @@
             "type": "underlying",
             "tokens": [
               {
-                "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
                 "name": "Dai Stablecoin",
                 "symbol": "DAI",
                 "decimals": 18,
                 "type": "underlying",
                 "balanceRaw": "505335911015373806711n",
-                "tokens": [
-                  {
-                    "address": "TheUnitedStatesMint",
-                    "name": "USD",
-                    "symbol": "USD",
-                    "decimals": 18,
-                    "type": "fiat",
-                    "balanceRaw": "499850344596253711300n",
-                    "balance": "499.8503445962537113"
-                  }
-                ],
-                "balance": "505.335911015373806711",
+                "balance": 505.3359110153738,
+                "price": 1.0009450637066941,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
               },
               {
-                "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
                 "name": "USD Coin",
                 "symbol": "USDC",
                 "decimals": 6,
                 "type": "underlying",
                 "balanceRaw": "562759112n",
-                "tokens": [
-                  {
-                    "address": "TheUnitedStatesMint",
-                    "name": "USD",
-                    "symbol": "USD",
-                    "decimals": 18,
-                    "type": "fiat",
-                    "balanceRaw": "555977061928245882038n",
-                    "balance": "555.977061928245882038"
-                  }
-                ],
-                "balance": "562.759112",
+                "balance": 562.759112,
+                "price": 1.0104338264413466,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
               },
               {
-                "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
                 "name": "Tether USD",
                 "symbol": "USDT",
                 "decimals": 6,
                 "type": "underlying",
                 "balanceRaw": "391525155n",
-                "tokens": [
-                  {
-                    "address": "TheUnitedStatesMint",
-                    "name": "USD",
-                    "symbol": "USD",
-                    "decimals": 18,
-                    "type": "fiat",
-                    "balanceRaw": "387153289192635734725n",
-                    "balance": "387.153289192635734725"
-                  }
-                ],
-                "balance": "391.525155",
+                "balance": 391.525155,
+                "price": 1.0014741928231874,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
               }
             ],
-            "balance": "1419.76797710600225765"
+            "balance": 1419.7679771060023
           }
         ],
         "blockNumber": 18632773

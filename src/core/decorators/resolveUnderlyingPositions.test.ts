@@ -29,10 +29,16 @@ describe('ResolveUnderlyingPositions', () => {
     ]
 
     const fetchTokenAdapterMock = jest.fn()
+    const fetchAdapterMock = jest.fn().mockImplementation((_, __) => {
+      return {
+        getProtocolTokens: jest.fn().mockResolvedValue([{}]),
+      }
+    })
 
     const [originalMethodMock, adapterMock, inputMock] = prepareMocks({
       originalMethodReturn: resultMock,
       fetchTokenAdapter: fetchTokenAdapterMock,
+      fetchAdapter: fetchAdapterMock,
     })
 
     const replacementMethod = ResolveUnderlyingPositions(
@@ -88,6 +94,8 @@ describe('ResolveUnderlyingPositions', () => {
                 symbol: 'ETH',
                 decimals: 18,
                 type: 'underlying',
+                priceRaw: 1000000000000000000n,
+                tokens: undefined,
                 balanceRaw: 90177902840852853190524n,
               },
             ],
@@ -127,10 +135,18 @@ describe('ResolveUnderlyingPositions', () => {
           }
         }
       })
+    const fetchAdapterMock = jest.fn().mockImplementation((_, __) => {
+      return {
+        getProtocolTokenToUnderlyingTokenRate:
+          getProtocolTokenToUnderlyingTokenRateMock,
+        getProtocolTokens: jest.fn().mockResolvedValue([{}]),
+      }
+    })
 
     const [originalMethodMock, adapterMock, inputMock] = prepareMocks({
       originalMethodReturn: resultMock,
       fetchTokenAdapter: fetchTokenAdapterMock,
+      fetchAdapter: fetchAdapterMock,
       blockNumber: 12345,
     })
 
@@ -153,7 +169,7 @@ describe('ResolveUnderlyingPositions', () => {
       '0x0000000000000000000000000000000000000000',
     )
 
-    expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledTimes(1)
+    expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledTimes(2)
     expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledWith({
       protocolTokenAddress: '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
       blockNumber: 12345,
@@ -274,10 +290,18 @@ describe('ResolveUnderlyingPositions', () => {
             getProtocolTokenToUnderlyingTokenRateMock,
         }
       })
+    const fetchAdapterMock = jest.fn().mockImplementation((_, __) => {
+      return {
+        getProtocolTokenToUnderlyingTokenRate:
+          getProtocolTokenToUnderlyingTokenRateMock,
+        getProtocolTokens: jest.fn().mockResolvedValue([{}]),
+      }
+    })
 
     const [originalMethodMock, adapterMock, inputMock] = prepareMocks({
       originalMethodReturn: resultMock,
       fetchTokenAdapter: fetchTokenAdapterMock,
+      fetchAdapter: fetchAdapterMock,
     })
 
     const replacementMethod = ResolveUnderlyingPositions(
@@ -303,7 +327,7 @@ describe('ResolveUnderlyingPositions', () => {
       '0x0000000000000000000000000000000000000000',
     )
 
-    expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledTimes(2)
+    expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledTimes(3)
     expect(getProtocolTokenToUnderlyingTokenRateMock).toHaveBeenCalledWith({
       protocolTokenAddress: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
     })
@@ -318,10 +342,12 @@ describe('ResolveUnderlyingPositions', () => {
 function prepareMocks({
   originalMethodReturn,
   fetchTokenAdapter,
+  fetchAdapter,
   blockNumber,
 }: {
   originalMethodReturn: ProtocolPosition[]
   fetchTokenAdapter: AdaptersController['fetchTokenAdapter']
+  fetchAdapter: AdaptersController['fetchAdapter']
   blockNumber?: number
 }): [IProtocolAdapter['getPositions'], IProtocolAdapter, GetPositionsInput] {
   return [
@@ -330,6 +356,7 @@ function prepareMocks({
       chainId: 1,
       adaptersController: {
         fetchTokenAdapter,
+        fetchAdapter,
       },
     } as unknown as IProtocolAdapter,
     { blockNumber } as GetPositionsInput,
