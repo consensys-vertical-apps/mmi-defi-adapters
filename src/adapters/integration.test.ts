@@ -200,6 +200,67 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         })
       })
     }
+    const repaysTestCases = testCases.filter(
+      (testCase): testCase is TestCase & { method: 'repays' } =>
+        testCase.method === 'repays',
+    )
+    if (repaysTestCases.length) {
+      describe('repays', () => {
+        it.each(
+          repaysTestCases.map((testCase) => [testKey(testCase), testCase]),
+        )(
+          'repays for test %s match',
+          async (_, testCase) => {
+            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+
+            const response = await defiProvider.getRepays({
+              ...testCase.input,
+              protocolId: protocolId,
+              chainId: testCase.chainId,
+            })
+
+            expect(response).toEqual(snapshot)
+          },
+          TEST_TIMEOUT,
+        )
+
+        afterAll(() => {
+          logger.debug(`[Integration test] deposits for ${protocolId} finished`)
+        })
+      })
+    }
+
+    const borrowsTestCases = testCases.filter(
+      (testCase): testCase is TestCase & { method: 'borrows' } =>
+        testCase.method === 'borrows',
+    )
+    if (borrowsTestCases.length) {
+      describe('borrows', () => {
+        it.each(
+          withdrawalsTestCases.map((testCase) => [testKey(testCase), testCase]),
+        )(
+          'withdrawals for test %s match',
+          async (_, testCase) => {
+            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+
+            const response = await defiProvider.getBorrows({
+              ...testCase.input,
+              chainId: testCase.chainId,
+              protocolId,
+            })
+
+            expect(response).toEqual(snapshot)
+          },
+          TEST_TIMEOUT,
+        )
+
+        afterAll(() => {
+          logger.debug(
+            `[Integration test] withdrawals for ${protocolId} finished`,
+          )
+        })
+      })
+    }
 
     const pricesTestCases = testCases.filter(
       (testCase): testCase is TestCase & { method: 'prices' } =>

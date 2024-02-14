@@ -13,13 +13,10 @@
       "assetDetails": {
         "type": "NonStandardErc20"
       },
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-        "details": {
-          "name": "Error"
-        }
-      }
+      "success": true,
+      "tokens": [],
+      "fromBlock": 1098124,
+      "toBlock": 1105311
     }
   ]
 }

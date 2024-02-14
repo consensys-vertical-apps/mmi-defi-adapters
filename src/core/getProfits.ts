@@ -84,6 +84,8 @@ export async function getProfits({
 
   const rawWithdrawals: MovementsByBlock[] = []
   const rawDeposits: MovementsByBlock[] = []
+  const rawRepays: MovementsByBlock[] = []
+  const rawBorrows: MovementsByBlock[] = []
 
   const tokens = await Promise.all(
     Object.values(endPositionValues).map(async ({ protocolTokenMetadata }) => {
@@ -95,13 +97,21 @@ export async function getProfits({
         tokenId: protocolTokenMetadata.tokenId,
       }
 
-      const [withdrawals, deposits] = await Promise.all([
+      const [withdrawals, deposits, repays, borrows] = await Promise.all([
         adapter.getWithdrawals(getEventsInput).then((result) => {
           rawWithdrawals.push(...result)
           return aggregateFiatBalancesFromMovements(result)
         }),
         adapter.getDeposits(getEventsInput).then((result) => {
           rawDeposits.push(...result)
+          return aggregateFiatBalancesFromMovements(result)
+        }),
+        adapter.getRepays?.(getEventsInput).then((result) => {
+          rawRepays.push(...result)
+          return aggregateFiatBalancesFromMovements(result)
+        }),
+        adapter.getBorrows?.(getEventsInput).then((result) => {
+          rawBorrows.push(...result)
           return aggregateFiatBalancesFromMovements(result)
         }),
       ])
@@ -123,6 +133,16 @@ export async function getProfits({
         priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
           .decimals,
       )
+      const repay = +formatUnits(
+        repays?.[key]?.usdRaw ?? 0n,
+        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+          .decimals,
+      )
+      const borrow = +formatUnits(
+        borrows?.[key]?.usdRaw ?? 0n,
+        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+          .decimals,
+      )
       const startPositionValue = +formatUnits(
         startPositionValues[key]?.usdRaw ?? 0n,
         priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
@@ -135,7 +155,12 @@ export async function getProfits({
           : 1
 
       const profit =
-        (endPositionValue + withdrawal - deposit - startPositionValue) *
+        (endPositionValue +
+          withdrawal +
+          repay -
+          deposit -
+          borrow -
+          startPositionValue) *
         profitModifier
 
       return {
@@ -151,6 +176,8 @@ export async function getProfits({
         calculationData: {
           withdrawals: withdrawal,
           deposits: deposit,
+          repays: repay,
+          borrows: borrow,
           startPositionValue: startPositionValue * profitModifier,
           endPositionValue: endPositionValue * profitModifier,
         },
@@ -168,6 +195,12 @@ export async function getProfits({
                 enrichMovements(value, adapter.chainId),
               ),
               rawDeposits: rawDeposits.map((value) =>
+                enrichMovements(value, adapter.chainId),
+              ),
+              rawRepays: rawRepays.map((value) =>
+                enrichMovements(value, adapter.chainId),
+              ),
+              rawBorrows: rawBorrows.map((value) =>
                 enrichMovements(value, adapter.chainId),
               ),
             }

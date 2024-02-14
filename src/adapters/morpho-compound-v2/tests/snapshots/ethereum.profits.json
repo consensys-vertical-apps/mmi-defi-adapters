@@ -13,13 +13,45 @@
       "assetDetails": {
         "type": "NonStandardErc20"
       },
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0x6b175474e89094c44da98b954eedeac495271d0f",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
+          "name": "Compound Dai",
+          "symbol": "CDAI",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": -143.7678622432286,
+          "performance": -0.0009558107163103585,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 150414.57454903252,
+            "endPositionValue": 150270.8066867893
+          }
+        },
+        {
+          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
+          "name": "cWBTC",
+          "symbol": "CWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": -2085.209082693822,
+          "performance": -0.018567827203973486,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 112302.26669965942,
+            "endPositionValue": 110217.0576169656
+          }
         }
-      }
+      ],
+      "fromBlock": 18769110,
+      "toBlock": 18776256
     },
     {
       "protocolId": "morpho-compound-v2",
@@ -33,13 +65,45 @@
       "assetDetails": {
         "type": "NonStandardErc20"
       },
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0x0000000000000000000000000000000000000000",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+          "name": "Compound Ether",
+          "symbol": "CETH",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 1293.3161962618615,
+          "performance": 0.024925219794500582,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": -51887.855229554065,
+            "endPositionValue": -50594.5390332922
+          }
+        },
+        {
+          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
+          "name": "Compound Tether",
+          "symbol": "CUSDT",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 205.25583677596296,
+          "performance": 0.001777309492223332,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": -115486.8286441195,
+            "endPositionValue": -115281.57280734353
+          }
         }
-      }
+      ],
+      "fromBlock": 18769110,
+      "toBlock": 18776256
     }
   ]
 }

@@ -16,76 +16,76 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
+          "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
           "name": "Compound Dai",
-          "symbol": "cDAI",
+          "symbol": "CDAI",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "8020991752025873n",
-          "totalSupply": 80209917.52025872
+          "totalSupplyRaw": "8020931553658774n",
+          "totalSupply": 80209315.53658774
         },
         {
-          "address": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
+          "address": "0x70e36f6BF80a52b3B46b3aF8e106CC0ed743E8e4",
           "name": "Compound Collateral",
-          "symbol": "cCOMP",
+          "symbol": "CCOMP",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "57249530467n",
           "totalSupply": 572.49530467
         },
         {
-          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
           "name": "Compound Ether",
-          "symbol": "cETH",
+          "symbol": "CETH",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "168893910057n",
-          "totalSupply": 1688.93910057
+          "totalSupplyRaw": "168893824935n",
+          "totalSupply": 1688.93824935
         },
         {
-          "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
-          "name": "Compound Fei USD",
-          "symbol": "cFEI",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "130914388873n",
-          "totalSupply": 1309.14388873
-        },
-        {
-          "address": "0x35a18000230da775cac24873d00ff85bccded550",
-          "name": "Compound Uniswap",
-          "symbol": "cUNI",
+          "address": "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
+          "name": "cUNI",
+          "symbol": "CUNI",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "127030488505842n",
           "totalSupply": 1270304.88505842
         },
         {
-          "address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
+          "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
           "name": "Compound USD Coin",
-          "symbol": "cUSDC",
+          "symbol": "CUSDC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "1172616886250595n",
-          "totalSupply": 11726168.86250595
+          "totalSupplyRaw": "1172602999737105n",
+          "totalSupply": 11726029.99737105
         },
         {
-          "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
-          "name": "Compound USDT",
-          "symbol": "cUSDT",
+          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
+          "name": "Compound Tether",
+          "symbol": "CUSDT",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "29546653610116589n",
-          "totalSupply": 295466536.1011659
+          "totalSupplyRaw": "29545662744727716n",
+          "totalSupply": 295456627.4472772
         },
         {
-          "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
-          "name": "Compound Wrapped BTC",
-          "symbol": "cWBTC",
+          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
+          "name": "cWBTC",
+          "symbol": "CWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "2706098615063n",
-          "totalSupply": 27060.98615063
+          "totalSupplyRaw": "2706098512173n",
+          "totalSupply": 27060.98512173
+        },
+        {
+          "address": "0x7713DD9Ca933848F6819F38B8352D9A15EA73F67",
+          "name": "Compound Fei USD",
+          "symbol": "cFEI",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "130914388873n",
+          "totalSupply": 1309.14388873
         }
       ]
     },
@@ -104,76 +104,76 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
+          "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
           "name": "Compound Dai",
-          "symbol": "cDAI",
+          "symbol": "CDAI",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "7173270001291430n",
-          "totalSupply": 71732700.0129143
+          "totalSupplyRaw": "7173216165163158n",
+          "totalSupply": 71732161.65163158
         },
         {
-          "address": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
+          "address": "0x70e36f6BF80a52b3B46b3aF8e106CC0ed743E8e4",
           "name": "Compound Collateral",
-          "symbol": "cCOMP",
+          "symbol": "CCOMP",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "17119240462n",
           "totalSupply": 171.19240462
         },
         {
-          "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
           "name": "Compound Ether",
-          "symbol": "cETH",
+          "symbol": "CETH",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "117575543684n",
-          "totalSupply": 1175.75543684
+          "totalSupplyRaw": "117575484427n",
+          "totalSupply": 1175.75484427
         },
         {
-          "address": "0x7713dd9ca933848f6819f38b8352d9a15ea73f67",
-          "name": "Compound Fei USD",
-          "symbol": "cFEI",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "26n",
-          "totalSupply": 2.6e-7
-        },
-        {
-          "address": "0x35a18000230da775cac24873d00ff85bccded550",
-          "name": "Compound Uniswap",
-          "symbol": "cUNI",
+          "address": "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
+          "name": "cUNI",
+          "symbol": "CUNI",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "9515474042159n",
           "totalSupply": 95154.74042159
         },
         {
-          "address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
+          "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
           "name": "Compound USD Coin",
-          "symbol": "cUSDC",
+          "symbol": "CUSDC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "23387646849905915n",
-          "totalSupply": 233876468.49905914
+          "totalSupplyRaw": "23387369885726660n",
+          "totalSupply": 233873698.8572666
         },
         {
-          "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
-          "name": "Compound USDT",
-          "symbol": "cUSDT",
+          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
+          "name": "Compound Tether",
+          "symbol": "CUSDT",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "3438212119929905n",
-          "totalSupply": 34382121.19929905
+          "totalSupplyRaw": "3438096817349985n",
+          "totalSupply": 34380968.17349985
         },
         {
-          "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
-          "name": "Compound Wrapped BTC",
-          "symbol": "cWBTC",
+          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
+          "name": "cWBTC",
+          "symbol": "CWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "369039559n",
-          "totalSupply": 3.69039559
+          "totalSupplyRaw": "369039545n",
+          "totalSupply": 3.69039545
+        },
+        {
+          "address": "0x7713DD9Ca933848F6819F38B8352D9A15EA73F67",
+          "name": "Compound Fei USD",
+          "symbol": "cFEI",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "26n",
+          "totalSupply": 2.6e-7
         }
       ]
     }

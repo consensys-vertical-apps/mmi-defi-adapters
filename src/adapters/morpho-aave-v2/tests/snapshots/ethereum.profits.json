@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18733080,
+  "blockNumber": 19070104,
   "snapshot": [
     {
       "protocolId": "morpho-aave-v2",
@@ -21,18 +21,20 @@
           "symbol": "AWETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": 5887.277058377396,
-          "performance": 0.0017319331681878694,
+          "profit": 261809.87185779866,
+          "performance": 0.08482926216733414,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": -3399251.868671864,
-            "endPositionValue": -3393364.5916134864
+            "repays": 0,
+            "borrows": 678571.488717,
+            "startPositionValue": -3086315.561030729,
+            "endPositionValue": -3503077.1778899306
           }
         }
       ],
-      "fromBlock": 18725934,
-      "toBlock": 18733080
+      "fromBlock": 19062958,
+      "toBlock": 19070104
     },
     {
       "protocolId": "morpho-aave-v2",
@@ -54,13 +56,15 @@
           "symbol": "AUSDC",
           "decimals": 6,
           "type": "protocol",
-          "profit": 19686.694522097707,
-          "performance": 0.004009864449501068,
+          "profit": 3615.985499629751,
+          "performance": 0.0007387429633930761,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 0,
-            "startPositionValue": 4909566.088835559,
-            "endPositionValue": 4929252.783357657
+            "deposits": 500941.6014238342,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 4393840.046338175,
+            "endPositionValue": 4898397.63326164
           }
         },
         {
@@ -69,18 +73,20 @@
           "symbol": "AUSDT",
           "decimals": 6,
           "type": "protocol",
-          "profit": 0.005365272293686996,
-          "performance": 0.004482955826002849,
+          "profit": 0.0016852304093175619,
+          "performance": 0.001392061465911734,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 1.1968157844800469,
-            "endPositionValue": 1.2021810567737339
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 1.2106005737424934,
+            "endPositionValue": 1.212285804151811
           }
         }
       ],
-      "fromBlock": 18725934,
-      "toBlock": 18733080
+      "fromBlock": 19062958,
+      "toBlock": 19070104
     }
   ]
 }

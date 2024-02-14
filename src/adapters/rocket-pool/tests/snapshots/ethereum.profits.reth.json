@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19226388,
+  "blockNumber": 19226560,
   "snapshot": [
     {
       "protocolId": "rocket-pool",
@@ -21,18 +21,18 @@
           "symbol": "rETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": 1650951.592516452,
-          "performance": 0.16241616254051167,
+          "profit": 1655854.9416101407,
+          "performance": 0.16202534333364435,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
-            "startPositionValue": 10164946.43570127,
-            "endPositionValue": 11815898.028217722
+            "startPositionValue": 10219728.02242663,
+            "endPositionValue": 11875582.96403677
           }
         }
       ],
-      "fromBlock": 19176366,
-      "toBlock": 19226388
+      "fromBlock": 19176538,
+      "toBlock": 19226560
     }
   ]
 }

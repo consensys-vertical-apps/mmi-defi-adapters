@@ -12,7 +12,11 @@ export type TestCase = {
     }
   | {
       method: 'profits'
-      input: { userAddress: string; timePeriod?: TimePeriod }
+      input: {
+        userAddress: string
+        timePeriod?: TimePeriod
+        includeRawValues?: boolean
+      }
       blockNumber?: number
     }
   | {
@@ -28,6 +32,28 @@ export type TestCase = {
     }
   | {
       method: 'withdrawals'
+      input: {
+        userAddress: string
+        fromBlock: number
+        toBlock: number
+        protocolTokenAddress: string
+        productId: string
+        tokenId?: string
+      }
+    }
+  | {
+      method: 'repays'
+      input: {
+        userAddress: string
+        fromBlock: number
+        toBlock: number
+        protocolTokenAddress: string
+        productId: string
+        tokenId?: string
+      }
+    }
+  | {
+      method: 'borrows'
       input: {
         userAddress: string
         fromBlock: number

@@ -5,10 +5,13 @@ import { RAY } from '../../../core/constants/RAY'
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { aprToApy } from '../../../core/utils/aprToApy'
-
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
@@ -30,7 +33,6 @@ import {
   TokenBalance,
   TokenType,
   Underlying,
-  UnderlyingTokenRate,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
@@ -39,16 +41,6 @@ import {
   AToken__factory,
   MorphoAaveV2Lens__factory,
 } from '../contracts'
-import {
-  SuppliedEvent,
-  WithdrawnEvent,
-  BorrowedEvent,
-  RepaidEvent,
-} from '../contracts/MorphoAaveV2'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../core/decorators/resolveUnderlyingPositions'
 
 type MorphoAaveV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -290,6 +282,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
+    console.log('oii')
     return this.getMovements({
       userAddress,
       protocolTokenAddress,
@@ -322,6 +315,22 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
+    console.log('oioioi', {
+      userAddress,
+      protocolTokenAddress,
+      fromBlock,
+      toBlock,
+    })
+
+    console.log(
+      await this.getMovements({
+        userAddress,
+        protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        eventType: 'repaid',
+      }),
+    )
     return this.getMovements({
       userAddress,
       protocolTokenAddress,
@@ -387,24 +396,42 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     toBlock: number
     eventType: 'supplied' | 'withdrawn' | 'repaid' | 'borrowed'
   }): Promise<MovementsByBlock[]> {
+    const morphoProxy =
+      morphoAaveV2ContractAddresses[this.protocolId]![this.chainId]!
+
     const morphoAaveV2Contract = MorphoAaveV2__factory.connect(
-      protocolTokenAddress,
+      morphoProxy,
       this.provider,
     )
 
     let filter
     switch (eventType) {
       case 'supplied':
-        filter = morphoAaveV2Contract.filters.Supplied(undefined, userAddress)
+        filter = morphoAaveV2Contract.filters.Supplied(
+          undefined,
+          userAddress,
+          protocolTokenAddress,
+        )
         break
       case 'withdrawn':
-        filter = morphoAaveV2Contract.filters.Withdrawn(userAddress)
+        filter = morphoAaveV2Contract.filters.Withdrawn(
+          undefined,
+          userAddress,
+          protocolTokenAddress,
+        )
         break
       case 'repaid':
-        filter = morphoAaveV2Contract.filters.Repaid(undefined, userAddress)
+        filter = morphoAaveV2Contract.filters.Repaid(
+          undefined,
+          userAddress,
+          protocolTokenAddress,
+        )
         break
       case 'borrowed':
-        filter = morphoAaveV2Contract.filters.Borrowed(userAddress)
+        filter = morphoAaveV2Contract.filters.Borrowed(
+          userAddress,
+          protocolTokenAddress,
+        )
         break
     }
 

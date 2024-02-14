@@ -72,15 +72,6 @@ export interface IProtocolAdapter {
 
   /**
    *
-   * @remarks Returns the user's withdrawals from a position
-   *
-   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
-   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing withdrawal events within the specified block range.
-   */
-  getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]>
-
-  /**
-   *
    * @remarks Returns tx params
    *
    * @param {TransactionParamsInput} input tx input params
@@ -93,12 +84,38 @@ export interface IProtocolAdapter {
 
   /**
    *
+   * @remarks Returns the user's withdrawals from a position
+   *
+   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
+   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing withdrawal events within the specified block range.
+   */
+  getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]>
+
+  /**
+   *
    * @remarks Returns the user's deposits to a position
    *
    * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
    * @returns {Promise<MovementsByBlock[]>} Array of objects detailing deposit events within the specified block range.
    */
   getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]>
+  /**
+   *
+   * @remarks Returns the user's withdrawals from a position
+   *
+   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
+   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing withdrawal events within the specified block range.
+   */
+  getBorrows?(input: GetEventsInput): Promise<MovementsByBlock[]>
+
+  /**
+   *
+   * @remarks Returns the user's deposits to a position
+   *
+   * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
+   * @returns {Promise<MovementsByBlock[]>} Array of objects detailing deposit events within the specified block range.
+   */
+  getRepays?(input: GetEventsInput): Promise<MovementsByBlock[]>
 
   /**
    *
