@@ -211,7 +211,7 @@ export interface ProtocolPosition extends TokenBalance {
   /**
    * Underlying token balances
    */
-  tokens?: Underlying[]
+  tokens: Underlying[]
 }
 
 export interface UnderlyingTokenRate extends Erc20Metadata {

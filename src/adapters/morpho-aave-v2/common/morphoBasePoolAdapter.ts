@@ -4,9 +4,14 @@ import { RAY } from '../../../core/constants/RAY'
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { aprToApy } from '../../../core/utils/aprToApy'
+import { filterMapAsync } from '../../../core/utils/filters'
 
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
@@ -38,12 +43,6 @@ import {
   AToken__factory,
   MorphoAaveV2Lens__factory,
 } from '../contracts'
-import {
-  SuppliedEvent,
-  WithdrawnEvent,
-  BorrowedEvent,
-  RepaidEvent,
-} from '../contracts/MorphoAaveV2'
 
 type MorphoAaveV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -138,7 +137,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     )
   }
 
-  protected async _fetchProtocolTokenMetadata(
+  private async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     const { protocolToken } = await this._fetchPoolMetadata(
@@ -189,144 +188,136 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return [underlyingToken]
   }
 
-  async getPositions({
-    userAddress,
-    blockNumber,
-  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+  private async getBalance(
+    market: Erc20Metadata,
+    userAddress: string,
+    blockNumber: number,
+  ): Promise<bigint> {
+    const positionType = this.getProtocolDetails().positionType
+
     const lensContract = MorphoAaveV2Lens__factory.connect(
       this.lensAddress,
       this._provider,
     )
-    const tokens = await this.getProtocolTokens()
-    const positionType = this.getProtocolDetails().positionType
-
-    const getBalance = async (
-      market: Erc20Metadata,
-      userAddress: string,
-      blockNumber: number,
-    ): Promise<bigint> => {
-      let balanceRaw
-      if (positionType === PositionType.Supply) {
-        ;[, , balanceRaw] = await lensContract.getCurrentSupplyBalanceInOf(
-          market.address,
-          userAddress,
-          { blockTag: blockNumber },
-        )
-      } else {
-        ;[, , balanceRaw] = await lensContract.getCurrentBorrowBalanceInOf(
-          market.address,
-          userAddress,
-          { blockTag: blockNumber },
-        )
-      }
-      return balanceRaw
+    let balanceRaw
+    if (positionType === PositionType.Supply) {
+      ;[, , balanceRaw] = await lensContract.getCurrentSupplyBalanceInOf(
+        market.address,
+        userAddress,
+        { blockTag: blockNumber },
+      )
+    } else {
+      ;[, , balanceRaw] = await lensContract.getCurrentBorrowBalanceInOf(
+        market.address,
+        userAddress,
+        { blockTag: blockNumber },
+      )
     }
+    return balanceRaw
+  }
 
-    const protocolTokensBalances = await Promise.all(
-      tokens.map(async (market) => {
-        const amount = await getBalance(market, userAddress, blockNumber!)
+  @ResolveUnderlyingPositions
+  async getPositions({
+    userAddress,
+    blockNumber,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const tokens = await this.getProtocolTokens()
+
+    const protocolTokens: ProtocolPosition[] = await filterMapAsync(
+      tokens,
+      async (market) => {
+        const amount = await this.getBalance(market, userAddress, blockNumber!)
+        if (amount === 0n) {
+          return undefined
+        }
+
+        const tokenMetadata = await this.fetchProtocolTokenMetadata(
+          market.address,
+        )
+
+        const completeTokenBalance: TokenBalance = {
+          address: market.address,
+          balanceRaw: amount,
+          name: tokenMetadata.name,
+          symbol: tokenMetadata.symbol,
+          decimals: tokenMetadata.decimals,
+        }
+
+        const underlyingTokenBalances = await this._getUnderlyingTokenBalances({
+          userAddress,
+          protocolTokenBalance: completeTokenBalance,
+          blockNumber,
+        })
+
         return {
           address: market.address,
           balance: amount,
+          balanceRaw: amount,
+          name: tokenMetadata.name,
+          symbol: tokenMetadata.symbol,
+          decimals: tokenMetadata.decimals,
+          type: TokenType.Protocol,
+          tokens: underlyingTokenBalances,
         }
-      }),
+      },
     )
 
-    const protocolTokens: ProtocolPosition[] = await Promise.all(
-      protocolTokensBalances
-        .filter((protocolTokenBalance) => protocolTokenBalance.balance !== 0n) // Filter out balances equal to 0
-        .map(async (protocolTokenBalance) => {
-          const tokenMetadata = await this._fetchProtocolTokenMetadata(
-            protocolTokenBalance.address,
-          )
-
-          const completeTokenBalance: TokenBalance = {
-            address: protocolTokenBalance.address,
-            balanceRaw: protocolTokenBalance.balance,
-            name: tokenMetadata.name,
-            symbol: tokenMetadata.symbol,
-            decimals: tokenMetadata.decimals,
-          }
-
-          const underlyingTokenBalances =
-            await this._getUnderlyingTokenBalances({
-              userAddress,
-              protocolTokenBalance: completeTokenBalance,
-              blockNumber,
-            })
-
-          return {
-            ...protocolTokenBalance,
-            balanceRaw: protocolTokenBalance.balance,
-            name: tokenMetadata.name,
-            symbol: tokenMetadata.symbol,
-            decimals: tokenMetadata.decimals,
-            type: TokenType.Protocol,
-            tokens: underlyingTokenBalances,
-          }
-        }),
-    )
     return protocolTokens
   }
 
+  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this._getMovements({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-      eventType: 'withdrawn',
-    })
+    const positionType = this.getProtocolDetails().positionType
+    if (positionType === PositionType.Supply) {
+      return this.getMovements({
+        userAddress,
+        protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        eventType: 'withdrawn',
+      })
+    } else {
+      return this.getMovements({
+        userAddress,
+        protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        eventType: 'borrowed',
+      })
+    }
   }
 
+  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this._getMovements({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-      eventType: 'supplied',
-    })
-  }
+    const positionType = this.getProtocolDetails().positionType
 
-  async getBorrows({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this._getMovements({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-      eventType: 'borrowed',
-    })
-  }
-
-  async getRepays({
-    userAddress,
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this._getMovements({
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-      eventType: 'repaid',
-    })
+    if (positionType === PositionType.Supply) {
+      return this.getMovements({
+        userAddress,
+        protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        eventType: 'supplied',
+      })
+    } else {
+      return this.getMovements({
+        userAddress,
+        protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        eventType: 'repaid',
+      })
+    }
   }
 
   async getTotalValueLocked({
@@ -395,39 +386,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     throw new NotImplementedError()
   }
 
-  protected _extractEventData(
-    eventLog:
-      | SuppliedEvent.Log
-      | WithdrawnEvent.Log
-      | RepaidEvent.Log
-      | BorrowedEvent.Log,
-  ) {
-    return eventLog.args
-  }
-
-  protected _castEventToLogType(
-    event: unknown,
-    eventType: 'supplied' | 'withdrawn' | 'repaid' | 'borrowed',
-  ):
-    | SuppliedEvent.Log
-    | WithdrawnEvent.Log
-    | RepaidEvent.Log
-    | BorrowedEvent.Log {
-    switch (eventType) {
-      case 'supplied':
-        return event as SuppliedEvent.Log
-      case 'withdrawn':
-        return event as WithdrawnEvent.Log
-      case 'repaid':
-        return event as RepaidEvent.Log
-      case 'borrowed':
-        return event as BorrowedEvent.Log
-      default:
-        throw new Error('Invalid event type')
-    }
-  }
-
-  protected async _getMovements({
+  private async getMovements({
     userAddress,
     protocolTokenAddress,
     fromBlock,
@@ -469,13 +428,12 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     const movements = await Promise.all(
       eventResults.map(async (event) => {
-        const castedEvent = this._castEventToLogType(event, eventType)
-        const eventData = this._extractEventData(castedEvent)
+        const eventData = event.args
         if (!eventData) {
           return null
         }
 
-        const protocolToken = await this._fetchProtocolTokenMetadata(
+        const protocolToken = await this.fetchProtocolTokenMetadata(
           eventData._poolToken,
         )
         const underlyingTokens = await this._fetchUnderlyingTokensMetadata(
@@ -541,7 +499,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       blockNumber,
     })
     return {
-      ...(await this._fetchProtocolTokenMetadata(protocolTokenAddress)),
+      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
       aprDecimal: apr * 100,
     }
   }
@@ -557,7 +515,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     const apy = aprToApy(apr, SECONDS_PER_YEAR)
 
     return {
-      ...(await this._fetchProtocolTokenMetadata(protocolTokenAddress)),
+      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
       apyDecimal: apy * 100,
     }
   }

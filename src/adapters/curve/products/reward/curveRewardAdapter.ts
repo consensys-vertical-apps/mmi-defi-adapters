@@ -33,6 +33,7 @@ export class CurveRewardAdapter
   implements IMetadataBuilder
 {
   productId = 'reward'
+  isWrappable = false
 
   getProtocolDetails(): ProtocolDetails {
     return {

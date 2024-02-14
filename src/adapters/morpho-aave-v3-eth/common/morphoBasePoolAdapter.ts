@@ -50,6 +50,8 @@ import { Protocol } from '../../protocols'
 import { MorphoAaveMath } from '../internal-utils/AaveV3.maths'
 import P2PInterestRates from '../internal-utils/P2PInterestRates'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
+import { ResolveUnderlyingPositions } from '../../../core/decorators/resolveUnderlyingPositions'
+import { filterMapAsync } from '../../../core/utils/filters'
 
 type MorphoAaveV3PeerToPoolAdapterMetadata = Record<
   string,
@@ -224,97 +226,87 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return [underlyingToken]
   }
 
-  async getPositions({
-    userAddress,
-    blockNumber,
-  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+  private async getBalance(
+    market: Erc20Metadata,
+    userAddress: string,
+    blockNumber: number,
+  ): Promise<bigint> {
     const morphoAaveV3 = MorphoAaveV3__factory.connect(
       morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,
       this._provider,
     )
 
-    const tokens = await this.getProtocolTokens()
     const positionType = this.getProtocolDetails().positionType
 
-    const getBalance = async (
-      market: Erc20Metadata,
-      userAddress: string,
-      blockNumber: number,
-    ): Promise<bigint> => {
-      let balanceRaw
-      if (positionType === PositionType.Supply) {
-        const [supplyBalance, collateralBalance] = await Promise.all([
-          morphoAaveV3.supplyBalance(market.address, userAddress, {
-            blockTag: blockNumber,
-          }),
-          morphoAaveV3.collateralBalance(market.address, userAddress, {
-            blockTag: blockNumber,
-          }),
-        ])
-        balanceRaw = supplyBalance + collateralBalance
-      } else {
-        balanceRaw = await morphoAaveV3.borrowBalance(
-          market.address,
-          userAddress,
-          {
-            blockTag: blockNumber,
-          },
-        )
-      }
-      return balanceRaw
+    let balanceRaw
+    if (positionType === PositionType.Supply) {
+      const [supplyBalance, collateralBalance] = await Promise.all([
+        morphoAaveV3.supplyBalance(market.address, userAddress, {
+          blockTag: blockNumber,
+        }),
+        morphoAaveV3.collateralBalance(market.address, userAddress, {
+          blockTag: blockNumber,
+        }),
+      ])
+      balanceRaw = supplyBalance + collateralBalance
+    } else {
+      balanceRaw = await morphoAaveV3.borrowBalance(
+        market.address,
+        userAddress,
+        {
+          blockTag: blockNumber,
+        },
+      )
     }
+    return balanceRaw
+  }
 
-    const protocolTokensBalances = await Promise.all(
-      tokens.map(async (market) => {
-        const { underlyingToken } = await this._fetchPoolMetadata(
+  @ResolveUnderlyingPositions
+  async getPositions({
+    userAddress,
+    blockNumber,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const tokens = await this.getProtocolTokens()
+
+    const protocolTokens: ProtocolPosition[] = await filterMapAsync(
+      tokens,
+      async (market) => {
+        const amount = await this.getBalance(market, userAddress, blockNumber!)
+        if (amount === 0n) {
+          return undefined
+        }
+
+        const tokenMetadata = await this._fetchProtocolTokenMetadata(
           market.address,
         )
-        const amount = await getBalance(
-          underlyingToken,
+
+        const completeTokenBalance: TokenBalance = {
+          address: market.address,
+          balanceRaw: amount,
+          name: tokenMetadata.name,
+          symbol: tokenMetadata.symbol,
+          decimals: tokenMetadata.decimals,
+        }
+
+        const underlyingTokenBalances = await this._getUnderlyingTokenBalances({
           userAddress,
-          blockNumber!,
-        )
+          protocolTokenBalance: completeTokenBalance,
+          blockNumber,
+        })
+
         return {
           address: market.address,
           balance: amount,
+          balanceRaw: amount,
+          name: tokenMetadata.name,
+          symbol: tokenMetadata.symbol,
+          decimals: tokenMetadata.decimals,
+          type: TokenType.Protocol,
+          tokens: underlyingTokenBalances,
         }
-      }),
+      },
     )
 
-    const protocolTokens: ProtocolPosition[] = await Promise.all(
-      protocolTokensBalances
-        .filter((protocolTokenBalance) => protocolTokenBalance.balance !== 0n) // Filter out balances equal to 0
-        .map(async (protocolTokenBalance) => {
-          const tokenMetadata = await this._fetchProtocolTokenMetadata(
-            protocolTokenBalance.address,
-          )
-
-          const completeTokenBalance: TokenBalance = {
-            address: protocolTokenBalance.address,
-            balanceRaw: protocolTokenBalance.balance,
-            name: tokenMetadata.name,
-            symbol: tokenMetadata.symbol,
-            decimals: tokenMetadata.decimals,
-          }
-
-          const underlyingTokenBalances =
-            await this._getUnderlyingTokenBalances({
-              userAddress,
-              protocolTokenBalance: completeTokenBalance,
-              blockNumber,
-            })
-
-          return {
-            ...protocolTokenBalance,
-            balanceRaw: protocolTokenBalance.balance,
-            name: tokenMetadata.name,
-            symbol: tokenMetadata.symbol,
-            decimals: tokenMetadata.decimals,
-            type: TokenType.Protocol,
-            tokens: underlyingTokenBalances,
-          }
-        }),
-    )
     return protocolTokens
   }
 
@@ -613,40 +605,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return eventLog.args
   }
 
-  protected _castEventToLogType(
-    event: unknown,
-    eventType:
-      | 'supplied'
-      | 'collat-supplied'
-      | 'withdrawn'
-      | 'collat-withdrawn'
-      | 'repaid'
-      | 'borrowed',
-  ):
-    | SuppliedEvent.Log
-    | CollateralSuppliedEvent.Log
-    | WithdrawnEvent.Log
-    | CollateralWithdrawnEvent.Log
-    | RepaidEvent.Log
-    | BorrowedEvent.Log {
-    switch (eventType) {
-      case 'supplied':
-        return event as SuppliedEvent.Log
-      case 'collat-supplied':
-        return event as CollateralSuppliedEvent.Log
-      case 'withdrawn':
-        return event as WithdrawnEvent.Log
-      case 'collat-withdrawn':
-        return event as CollateralWithdrawnEvent.Log
-      case 'repaid':
-        return event as RepaidEvent.Log
-      case 'borrowed':
-        return event as BorrowedEvent.Log
-      default:
-        throw new Error('Invalid event type')
-    }
-  }
-
   protected async _getMovements({
     userAddress,
     protocolTokenAddress,
@@ -707,8 +665,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     const movements = await Promise.all(
       eventResults.map(async (event) => {
-        const castedEvent = this._castEventToLogType(event, eventType)
-        const eventData = this._extractEventData(castedEvent)
+        const eventData = event.args
         if (!eventData) {
           return null
         }

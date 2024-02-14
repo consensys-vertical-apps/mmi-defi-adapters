@@ -104,10 +104,8 @@ export class AdaptersController {
       for (const [_protocolId, protocolAdapters] of chainAdapters) {
         for (const [_productId, adapter] of protocolAdapters) {
           if (!adapter.isWrappable) {
-            break
+            continue
           }
-
-          const { positionType } = adapter.getProtocolDetails()
 
           let protocolTokens: Erc20Metadata[]
           try {
@@ -119,19 +117,7 @@ export class AdaptersController {
             continue
           }
 
-          switch (positionType) {
-            case PositionType.FiatPrices:
-              break
-            case PositionType.Reward:
-              // Omit reward tokens from protocol token adapter map.
-              break
-            case PositionType.Borrow:
-              // Omit borrow tokens from protocol token adapter map.
-              break
-            default:
-              this.processDefaultCase(protocolTokens, chainAdaptersMap, adapter)
-              break
-          }
+          this.processDefaultCase(protocolTokens, chainAdaptersMap, adapter)
         }
       }
     }

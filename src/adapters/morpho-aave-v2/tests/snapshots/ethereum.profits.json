@@ -10,13 +10,26 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "optimizer-borrow",
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 5887.277058377396,
+          "performance": 0.0017319331681878694,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": -3399251.868671864,
+            "endPositionValue": -3393364.5916134864
+          }
         }
-      }
+      ],
+      "fromBlock": 18725934,
+      "toBlock": 18733080
     },
     {
       "protocolId": "morpho-aave-v2",
@@ -27,13 +40,41 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "optimizer-supply",
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+          "name": "Aave USDC",
+          "symbol": "AUSDC",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": 19686.694522097707,
+          "performance": 0.004009864449501068,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 4909566.088835559,
+            "endPositionValue": 4929252.783357657
+          }
+        },
+        {
+          "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+          "name": "Aave USDT",
+          "symbol": "AUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": 0.005365272293686996,
+          "performance": 0.004482955826002849,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 1.1968157844800469,
+            "endPositionValue": 1.2021810567737339
+          }
         }
-      }
+      ],
+      "fromBlock": 18725934,
+      "toBlock": 18733080
     }
   ]
 }

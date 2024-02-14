@@ -29,6 +29,7 @@
               "balanceRaw": "1500346900418038679310n",
               "type": "underlying",
               "balance": 1500.3469004180388,
+              "price": 2261.72,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ]
@@ -63,6 +64,7 @@
               "balanceRaw": "4850738222458n",
               "type": "underlying",
               "balance": 4850738.222458,
+              "price": 1.0161861055573251,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ]
@@ -84,6 +86,7 @@
               "balanceRaw": "1199221n",
               "type": "underlying",
               "balance": 1.199221,
+              "price": 1.0024683163267938,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ]
