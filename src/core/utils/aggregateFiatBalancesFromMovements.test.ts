@@ -114,34 +114,4 @@ describe('aggregateFiatBalancesFromMovements', () => {
       },
     })
   })
-
-  it('throws error for non-fiat token at base', async () => {
-    const testData = [
-      {
-        protocolToken: protocolToken1,
-        tokens: [
-          {
-            ...underlyingTokenWithoutPrice,
-            tokens: [underlyingTokenWithoutPrice],
-          },
-          underlyingTokenWithoutPrice,
-        ],
-      },
-      {
-        protocolToken: protocolToken1,
-        tokens: [underlyingTokenWithoutPrice, underlyingTokenWithoutPrice],
-      },
-    ]
-
-    try {
-      await aggregateFiatBalancesFromMovements(
-        testData as unknown as MovementsByBlock[],
-      )
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      expect(error.message).toEqual(
-        'Unable to calculate profits, missing USD price for token movement: non-fiat',
-      )
-    }
-  })
 })

@@ -1,0 +1,103 @@
+{
+  "blockNumber": 19184953,
+  "snapshot": [
+    {
+      "protocolId": "carbon-defi",
+      "name": "CarbonDeFi",
+      "description": "CarbonDeFi adapter for strategy balances",
+      "siteUrl": "https://carbondefi.xyz",
+      "iconUrl": "https://app.carbondefi.xyz/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "strategies",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "ETH / stETH",
+          "symbol": "ETH / stETH",
+          "decimals": 18,
+          "tokenId": "680564733841876926926749214863536422914",
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "USDC / USDT",
+          "symbol": "USDC / USDT",
+          "decimals": 18,
+          "tokenId": "1020847100762815390390123822295304634371",
+          "type": "protocol",
+          "profit": -0.5130551120176534,
+          "performance": -0.005104310740655239,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 100.51408272055801,
+            "endPositionValue": 100.00102760854035
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "USDC / DAI",
+          "symbol": "USDC / DAI",
+          "decimals": 18,
+          "tokenId": "1361129467683753853853498429727072845828",
+          "type": "protocol",
+          "profit": -0.2717328796837961,
+          "performance": -0.005415539756531446,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 50.17650906469129,
+            "endPositionValue": 49.90477618500749
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "DAI / USDT",
+          "symbol": "DAI / USDT",
+          "decimals": 18,
+          "tokenId": "2041694201525630780780247644590609268742",
+          "type": "protocol",
+          "profit": -0.20506521490458596,
+          "performance": -0.005103768899622607,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 40.17917326149883,
+            "endPositionValue": 39.974108046594246
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "BBS / USDC",
+          "symbol": "BBS / USDC",
+          "decimals": 18,
+          "tokenId": "32667107224410092492483962313449748300520",
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0
+          }
+        }
+      ],
+      "fromBlock": 19177807,
+      "toBlock": 19184953
+    }
+  ]
+}

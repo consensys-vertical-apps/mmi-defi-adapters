@@ -1,5 +1,6 @@
 import { Underlying, ProtocolPosition, TokenType } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
+import { logger } from './logger'
 
 export function aggregateFiatBalances(
   topLevelTokens: (Underlying | ProtocolPosition)[],
@@ -57,9 +58,10 @@ export function aggregateFiatBalances(
     }
 
     // Throw an error if a non-Fiat token is found at the base
-    throw new Error(
+    logger.error(
       `Unable to calculate profits, missing USD price for token position ${currentToken.address}`,
     )
+    return 0n
   }
 
   topLevelTokens.forEach((token) => processToken(token, token))

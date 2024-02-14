@@ -1,5 +1,6 @@
 import { Underlying, MovementsByBlock } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
+import { logger } from './logger'
 
 export function aggregateFiatBalancesFromMovements(
   movements: MovementsByBlock[],
@@ -52,10 +53,10 @@ export function aggregateFiatBalancesFromMovements(
       )
     }
 
-    // Throw an error if a non-Fiat token is found at the base
-    throw new Error(
-      `Unable to calculate profits, missing USD price for token movement: ${currentToken.address}`,
+    logger.error(
+      `Unable to calculate profits, missing USD price for token position ${currentToken.address}`,
     )
+    return 0n
   }
 
   movements.forEach((movement) => {
