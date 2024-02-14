@@ -8,30 +8,12 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "pool",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x9990a410f11d9b44119203cf096e2f6b5aeff7e681316f45ffba6ef0abd66b16",
-        "protocolToken": {
-          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
-          "name": "USD Coin-LP",
-          "symbol": "S*USDC",
-          "decimals": 6
-        },
-        "tokens": [
-          {
-            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-            "name": "USD Coin",
-            "symbol": "USDC",
-            "decimals": 6,
-            "balanceRaw": "599999565n",
-            "type": "underlying",
-            "blockNumber": 17719335,
-            "balance": 599.999565
-          }
-        ],
-        "blockNumber": 17719335
+    "success": false,
+    "error": {
+      "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+      "details": {
+        "name": "Error"
       }
-    ]
+    }
   }
 }

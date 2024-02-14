@@ -10,26 +10,13 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "st-eth",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-          "name": "Liquid staked Ether 2.0",
-          "symbol": "stETH",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": 0.033341907355143974,
-          "performance": 0.004292972565871138,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "startPositionValue": 7.7666248371140405,
-            "endPositionValue": 7.7999667444691845
-          }
+      "success": false,
+      "error": {
+        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 18327461,
-      "toBlock": 18377483
+      }
     },
     {
       "protocolId": "lido",
@@ -40,26 +27,13 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-          "name": "Wrapped liquid staked Ether 2.0",
-          "symbol": "wstETH",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": 608092.4498438835,
-          "performance": 0.004292972565870958,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "startPositionValue": 141648342.84714648,
-            "endPositionValue": 142256435.29699036
-          }
+      "success": false,
+      "error": {
+        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 18327461,
-      "toBlock": 18377483
+      }
     }
   ]
 }

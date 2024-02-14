@@ -10,26 +10,13 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "glp",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x4277f8F2c384827B5273592FF7CeBd9f2C1ac258",
-          "name": "GMX LP",
-          "symbol": "GLP",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": -0.0020204680424669164,
-          "performance": -0.00002292482882541336,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 81.48475562442427,
-            "startPositionValue": 6.649732002681709,
-            "endPositionValue": 88.13246715906351
-          }
+      "success": false,
+      "error": {
+        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 148803082,
-      "toBlock": 151045028
+      }
     }
   ]
 }

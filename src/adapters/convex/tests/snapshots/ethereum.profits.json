@@ -26,7 +26,7 @@
       "productId": "staking",
       "success": false,
       "error": {
-        "message": "Protocol token pool not found",
+        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
         "details": {
           "name": "Error"
         }
@@ -41,26 +41,13 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "cvxcrv-wrapper",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
-          "name": "Staked CvxCrv",
-          "symbol": "stkCvxCrv",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": 1.7228626927251014,
-          "performance": 0.009809125958622714,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "startPositionValue": 175.63875721369635,
-            "endPositionValue": 177.36161990642145
-          }
+      "success": false,
+      "error": {
+        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+        "details": {
+          "name": "Error"
         }
-      ],
-      "fromBlock": 18706497,
-      "toBlock": 18713643
+      }
     }
   ]
 }

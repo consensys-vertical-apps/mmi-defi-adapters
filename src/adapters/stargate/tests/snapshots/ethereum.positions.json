@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18163965,
+  "blockNumber": 18163124,
   "snapshot": [
     {
       "protocolId": "stargate",
@@ -27,10 +27,13 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "vesting",
-      "success": true,
-      "tokens": [],
-      "fromBlock": 18156819,
-      "toBlock": 18163965
+      "success": false,
+      "error": {
+        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+        "details": {
+          "name": "Error"
+        }
+      }
     }
   ]
 }

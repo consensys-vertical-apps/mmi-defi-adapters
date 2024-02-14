@@ -12,7 +12,7 @@
       "productId": "pool",
       "success": false,
       "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
         "details": {
           "name": "Error"
         }

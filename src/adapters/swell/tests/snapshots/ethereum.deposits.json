@@ -8,31 +8,12 @@
     "positionType": "stake",
     "chainId": 1,
     "productId": "sw-eth",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x1d8129408e609055e9faae1d4deeeeb37a13cdbfb9dad65af0fbfb0718af5af8",
-        "protocolToken": {
-          "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
-          "name": "Swell Ethereum",
-          "symbol": "SWETH",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0x0000000000000000000000000000000000000000",
-            "name": "Ethereum",
-            "symbol": "ETH",
-            "decimals": 18,
-            "balanceRaw": "2499999999999999997n",
-            "type": "underlying",
-            "blockNumber": 18640807,
-            "price": 2109.06,
-            "balance": 2.5
-          }
-        ],
-        "blockNumber": 18640807
+    "success": false,
+    "error": {
+      "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+      "details": {
+        "name": "Error"
       }
-    ]
+    }
   }
 }

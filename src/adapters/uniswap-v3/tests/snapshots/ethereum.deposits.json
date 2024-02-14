@@ -8,45 +8,12 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "pool",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0xc54b543d82804a8f69596bac329f8cda24cacf7f619fc3c1823bbb684373d551",
-        "protocolToken": {
-          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
-          "name": "ARB / WETH - 1.0%",
-          "symbol": "ARB / WETH - 1.0%",
-          "decimals": 18,
-          "tokenId": "573046"
-        },
-        "tokens": [
-          {
-            "type": "underlying",
-            "balanceRaw": "43155666557030000000000n",
-            "address": "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1",
-            "name": "Arbitrum",
-            "symbol": "ARB",
-            "decimals": 18,
-            "transactionHash": "0xc54b543d82804a8f69596bac329f8cda24cacf7f619fc3c1823bbb684373d551",
-            "blockNumber": 18262163,
-            "price": 0.993419175052572,
-            "balance": 43155.66655703
-          },
-          {
-            "type": "underlying",
-            "balanceRaw": "0n",
-            "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-            "name": "Wrapped Ether",
-            "symbol": "WETH",
-            "decimals": 18,
-            "transactionHash": "0xc54b543d82804a8f69596bac329f8cda24cacf7f619fc3c1823bbb684373d551",
-            "blockNumber": 18262163,
-            "price": 1732.38049306,
-            "balance": 0
-          }
-        ],
-        "blockNumber": 18262163
+    "success": false,
+    "error": {
+      "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+      "details": {
+        "name": "Error"
       }
-    ]
+    }
   }
 }

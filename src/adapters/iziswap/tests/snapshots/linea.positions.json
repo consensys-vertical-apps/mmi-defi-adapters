@@ -10,61 +10,13 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "iziswap",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c",
-          "tokenId": "20000",
-          "name": "USDC / WETH - 3000",
-          "symbol": "USDC / WETH - 3000",
-          "decimals": 18,
-          "balanceRaw": "176538376n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-              "name": "USDC",
-              "symbol": "USDC",
-              "decimals": 6,
-              "balanceRaw": "18399995n",
-              "type": "underlying",
-              "balance": 18.399995,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
-            },
-            {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-              "name": "USDC",
-              "symbol": "USDC",
-              "decimals": 6,
-              "balanceRaw": "48936n",
-              "type": "underlying-claimable",
-              "balance": 0.048936,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
-            },
-            {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "5082611659909362n",
-              "type": "underlying",
-              "balance": 0.005082611659909362,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
-            },
-            {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "balanceRaw": "18868061829946n",
-              "type": "underlying-claimable",
-              "balance": 0.000018868061829946,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
-            }
-          ],
-          "balance": 1.76538376e-10
+      "success": false,
+      "error": {
+        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+        "details": {
+          "name": "Error"
         }
-      ]
+      }
     }
   ]
 }

@@ -8,31 +8,12 @@
     "positionType": "reward",
     "chainId": 1,
     "productId": "extra-reward",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x99d2d0067d85c4c4f643d0017b2ada6a7d4a289a6f1eabeb6c89205acff91a7d",
-        "protocolToken": {
-          "address": "0x22eE18aca7F3Ee920D01F25dA85840D12d98E8Ca",
-          "name": "Curve.fi DAI/USDC/USDT/sUSD Convex Deposit",
-          "symbol": "cvxcrvPlain3andSUSD",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F",
-            "name": "Synthetix Network Token",
-            "symbol": "SNX",
-            "decimals": 18,
-            "claimableTrackerAddress": "0x81fCe3E10D12Da6c7266a1A169c4C96813435263",
-            "balanceRaw": "15995934878803391102n",
-            "type": "underlying",
-            "price": 2.14247402070486,
-            "balance": 15.995934878803391
-          }
-        ],
-        "blockNumber": 18157201
+    "success": false,
+    "error": {
+      "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+      "details": {
+        "name": "Error"
       }
-    ]
+    }
   }
 }

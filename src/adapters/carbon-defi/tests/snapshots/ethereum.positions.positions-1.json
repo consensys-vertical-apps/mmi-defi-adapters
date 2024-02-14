@@ -10,43 +10,13 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "strategies",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
-          "name": "ETH / DAI",
-          "symbol": "ETH / DAI",
-          "decimals": 18,
-          "type": "protocol",
-          "tokenId": "340282366920938463463374607431768211693",
-          "balanceRaw": "1000000000000000000n",
-          "tokens": [
-            {
-              "type": "underlying",
-              "balanceRaw": "45944173154579n",
-              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-              "name": "Ethereum",
-              "symbol": "ETH",
-              "decimals": 18,
-              "balance": 0.000045944173154579,
-              "price": 2421.72692,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png"
-            },
-            {
-              "type": "underlying",
-              "balanceRaw": "62460559661653312295n",
-              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-              "name": "Dai Stablecoin",
-              "symbol": "DAI",
-              "decimals": 18,
-              "balance": 62.46055966165331,
-              "price": 0.9984701441151138,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
-            }
-          ],
-          "balance": 1
+      "success": false,
+      "error": {
+        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+        "details": {
+          "name": "Error"
         }
-      ]
+      }
     }
   ]
 }

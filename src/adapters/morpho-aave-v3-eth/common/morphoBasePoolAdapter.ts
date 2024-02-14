@@ -8,7 +8,7 @@ import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { aprToApy } from '../../../core/utils/aprToApy'
-import { CustomJsonRpcProvider } from '../../../core/utils/customJsonRpcProvider'
+
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
@@ -49,6 +49,7 @@ import {
 import { Protocol } from '../../protocols'
 import { MorphoAaveMath } from '../internal-utils/AaveV3.maths'
 import P2PInterestRates from '../internal-utils/P2PInterestRates'
+import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 
 type MorphoAaveV3PeerToPoolAdapterMetadata = Record<
   string,

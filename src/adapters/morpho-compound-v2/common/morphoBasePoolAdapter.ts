@@ -7,7 +7,7 @@ import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { aprToApy } from '../../../core/utils/aprToApy'
-import { CustomJsonRpcProvider } from '../../../core/utils/customJsonRpcProvider'
+
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
@@ -44,6 +44,7 @@ import {
   BorrowedEvent,
   RepaidEvent,
 } from '../contracts/MorphoCompound'
+import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 
 type MorphoCompoundV2PeerToPoolAdapterMetadata = Record<
   string,

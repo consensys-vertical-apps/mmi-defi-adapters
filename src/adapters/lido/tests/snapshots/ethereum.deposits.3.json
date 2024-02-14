@@ -8,43 +8,12 @@
     "positionType": "stake",
     "chainId": 1,
     "productId": "wst-eth",
-    "success": true,
-    "movements": [
-      {
-        "transactionHash": "0x779025a8260db4601f74506e6af804edcb7344b606f9bad07c59e3706c82f144",
-        "protocolToken": {
-          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-          "name": "Wrapped liquid staked Ether 2.0",
-          "symbol": "wstETH",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-            "name": "Liquid staked Ether 2.0",
-            "symbol": "stETH",
-            "decimals": 18,
-            "balanceRaw": "70819350317881833n",
-            "type": "underlying",
-            "blockNumber": 16738529,
-            "tokens": [
-              {
-                "address": "0x0000000000000000000000000000000000000000",
-                "name": "Ethereum",
-                "symbol": "ETH",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "70819350317881833n",
-                "balance": 0.07081935031788184,
-                "price": 1649.1,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-              }
-            ],
-            "balance": 0.07081935031788184
-          }
-        ],
-        "blockNumber": 16738529
+    "success": false,
+    "error": {
+      "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+      "details": {
+        "name": "Error"
       }
-    ]
+    }
   }
 }

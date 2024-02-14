@@ -14,7 +14,7 @@
       "tokens": [
         {
           "address": "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
-          "balance": "1500650341135201.66445824",
+          "balance": 1500650341135201.8,
           "balanceRaw": "150065034113520166445824n",
           "name": "Compound Dai",
           "symbol": "cDAI",
@@ -28,14 +28,14 @@
               "decimals": 18,
               "balanceRaw": "150065034113520166445824n",
               "type": "underlying",
-              "balance": "150065.034113520166445824",
+              "balance": 150065.03411352017,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ]
         },
         {
           "address": "0xccf4429db6322d5c611ee964527d42e5d685dd6a",
-          "balance": "2.67849105",
+          "balance": 2.67849105,
           "balanceRaw": "267849105n",
           "name": "Compound Wrapped BTC",
           "symbol": "cWBTC",
@@ -49,7 +49,7 @@
               "decimals": 8,
               "balanceRaw": "267849105n",
               "type": "underlying",
-              "balance": "2.67849105",
+              "balance": 2.67849105,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ]
@@ -69,7 +69,7 @@
       "tokens": [
         {
           "address": "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5",
-          "balance": "231940653060.85005919",
+          "balance": 231940653060.85007,
           "balanceRaw": "23194065306085005919n",
           "name": "Compound Ether",
           "symbol": "cETH",
@@ -83,14 +83,14 @@
               "decimals": 18,
               "balanceRaw": "23194065306085005919n",
               "type": "underlying",
-              "balance": "23.194065306085005919",
+              "balance": 23.194065306085005,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ]
         },
         {
           "address": "0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9",
-          "balance": "1150.55137192",
+          "balance": 1150.55137192,
           "balanceRaw": "115055137192n",
           "name": "Compound USDT",
           "symbol": "cUSDT",
@@ -104,7 +104,7 @@
               "decimals": 6,
               "balanceRaw": "115055137192n",
               "type": "underlying",
-              "balance": "115055.137192",
+              "balance": 115055.137192,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ]

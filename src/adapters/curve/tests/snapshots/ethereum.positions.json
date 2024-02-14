@@ -10,53 +10,13 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
-      "success": true,
-      "tokens": [
-        {
-          "name": "Curve.fi DAI/USDC/USDT",
-          "decimals": 18,
-          "symbol": "3Crv",
-          "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-          "balanceRaw": "3110412272531542389506n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-              "name": "Dai Stablecoin",
-              "symbol": "DAI",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "1242929498145530978879n",
-              "balance": 1242.929498145531,
-              "price": 0.9984307395282911,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
-            },
-            {
-              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "1258261297n",
-              "balance": 1258.261297,
-              "price": 0.9973950898056655,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            },
-            {
-              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "695830329n",
-              "balance": 695.830329,
-              "price": 0.9963376606402048,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
-            }
-          ],
-          "balance": 3110.4122725315424
+      "success": false,
+      "error": {
+        "message": "Duplicated protocol token 0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+        "details": {
+          "name": "Error"
         }
-      ]
+      }
     },
     {
       "protocolId": "curve",
