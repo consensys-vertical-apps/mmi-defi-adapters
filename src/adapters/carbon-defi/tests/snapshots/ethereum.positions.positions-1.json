@@ -30,7 +30,7 @@
               "decimals": 18,
               "balance": 0.000045944173154579,
               "price": 2421.72692,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE/logo.png"
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             },
             {
               "type": "underlying",

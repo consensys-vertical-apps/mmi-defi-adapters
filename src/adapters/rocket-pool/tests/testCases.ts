@@ -18,6 +18,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0x742b8ea0754e4ac12b3f72e92d686c0b0664eee4',
     },
+    blockNumber: 19184815,
   },
   {
     key: 'reth',

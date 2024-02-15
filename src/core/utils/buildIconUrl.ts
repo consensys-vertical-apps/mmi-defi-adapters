@@ -2,6 +2,7 @@ import { getAddress } from 'ethers'
 import { Chain, ChainName } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { logger } from './logger'
+import { E_ADDRESS } from '../constants/E_ADDRESS'
 
 export function buildTrustAssetIconUrl(
   chainId: Chain,
@@ -16,7 +17,7 @@ export function buildTrustAssetIconUrl(
       chainName = 'avalanchec'
     }
 
-    if (checksumAddress === ZERO_ADDRESS) {
+    if (checksumAddress === ZERO_ADDRESS || checksumAddress === E_ADDRESS) {
       return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/${chainName}/info/logo.png`
     }
 
