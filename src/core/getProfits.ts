@@ -13,6 +13,7 @@ import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
+import { Erc20Metadata } from '../types/erc20Metadata'
 
 export async function getProfits({
   adapter,
@@ -97,23 +98,58 @@ export async function getProfits({
         tokenId: protocolTokenMetadata.tokenId,
       }
 
+      const isBorrow =
+        adapter.getProtocolDetails().positionType === PositionType.Borrow
+
       const [withdrawals, deposits, repays, borrows] = await Promise.all([
-        adapter.getWithdrawals(getEventsInput).then((result) => {
-          rawWithdrawals.push(...result)
-          return aggregateFiatBalancesFromMovements(result)
-        }),
-        adapter.getDeposits(getEventsInput).then((result) => {
-          rawDeposits.push(...result)
-          return aggregateFiatBalancesFromMovements(result)
-        }),
-        adapter.getRepays?.(getEventsInput).then((result) => {
-          rawRepays.push(...result)
-          return aggregateFiatBalancesFromMovements(result)
-        }),
-        adapter.getBorrows?.(getEventsInput).then((result) => {
-          rawBorrows.push(...result)
-          return aggregateFiatBalancesFromMovements(result)
-        }),
+        !isBorrow
+          ? adapter.getWithdrawals(getEventsInput).then((result) => {
+              rawWithdrawals.push(...result)
+              return aggregateFiatBalancesFromMovements(result)
+            })
+          : ({} as Record<
+              string,
+              {
+                protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
+                usdRaw: bigint
+              }
+            >),
+        !isBorrow
+          ? adapter.getDeposits(getEventsInput).then((result) => {
+              rawDeposits.push(...result)
+              return aggregateFiatBalancesFromMovements(result)
+            })
+          : ({} as Record<
+              string,
+              {
+                protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
+                usdRaw: bigint
+              }
+            >),
+        isBorrow
+          ? adapter.getRepays?.(getEventsInput).then((result) => {
+              rawRepays.push(...result)
+              return aggregateFiatBalancesFromMovements(result)
+            })
+          : ({} as Record<
+              string,
+              {
+                protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
+                usdRaw: bigint
+              }
+            >),
+        isBorrow
+          ? adapter.getBorrows?.(getEventsInput).then((result) => {
+              rawBorrows.push(...result)
+              return aggregateFiatBalancesFromMovements(result)
+            })
+          : ({} as Record<
+              string,
+              {
+                protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
+                usdRaw: bigint
+              }
+            >),
       ])
 
       const key = protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
@@ -149,10 +185,7 @@ export async function getProfits({
           .decimals,
       )
 
-      const profitModifier =
-        adapter.getProtocolDetails().positionType === PositionType.Borrow
-          ? -1
-          : 1
+      const profitModifier = isBorrow ? -1 : 1
 
       const profit =
         (endPositionValue +

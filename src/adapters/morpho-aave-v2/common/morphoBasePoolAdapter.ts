@@ -282,7 +282,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    console.log('oii')
     return this.getMovements({
       userAddress,
       protocolTokenAddress,
@@ -315,22 +314,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    console.log('oioioi', {
-      userAddress,
-      protocolTokenAddress,
-      fromBlock,
-      toBlock,
-    })
-
-    console.log(
-      await this.getMovements({
-        userAddress,
-        protocolTokenAddress,
-        fromBlock,
-        toBlock,
-        eventType: 'repaid',
-      }),
-    )
     return this.getMovements({
       userAddress,
       protocolTokenAddress,

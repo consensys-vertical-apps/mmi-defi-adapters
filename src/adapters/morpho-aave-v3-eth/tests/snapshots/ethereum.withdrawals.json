@@ -1,0 +1,40 @@
+{
+  "snapshot": {
+    "protocolId": "morpho-aave-v3-eth",
+    "name": "MorphoAaveV3",
+    "description": "MorphoAaveV3 DeFi adapter on the supply side",
+    "siteUrl": "https://aavev3.morpho.org/",
+    "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "optimizer-supply",
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8",
+          "name": "Aave Ethereum WETH",
+          "symbol": "aEthWETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "name": "Wrapped Ether",
+            "symbol": "WETH",
+            "decimals": 18,
+            "balanceRaw": "5694852249794228067n",
+            "type": "underlying",
+            "price": 2624.36731,
+            "balance": 5.694852249794228
+          }
+        ],
+        "blockNumber": 19223914,
+        "transactionHash": "0x0c5e2a2c6e5d3ed1d6f35d08968a29d9104e90e1e61ca58cecdc41a94c349772"
+      }
+    ]
+  }
+}

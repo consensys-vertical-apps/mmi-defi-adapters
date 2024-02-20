@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18761230,
+  "blockNumber": 19220229,
   "snapshot": [
     {
       "protocolId": "morpho-aave-v3-eth",
@@ -16,42 +16,127 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8",
-          "name": "Aave Ethereum WETH",
-          "symbol": "aEthWETH",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": -21975.279286949488,
-          "performance": -0.04707211200700858,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "repays": 0,
-            "borrows": 0,
-            "startPositionValue": 466842.85769199353,
-            "endPositionValue": 444867.57840504404
-          }
-        },
-        {
           "address": "0x0B925eD163218f6662a35e0f0371Ac234f9E9371",
           "name": "Aave Ethereum wstETH",
           "symbol": "aEthwstETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": -5295889.955602393,
-          "performance": -0.04705628137261581,
+          "profit": 0.000007109716534614563,
+          "performance": 5.323659600159559e-12,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 0,
+            "deposits": 1335494.2029729837,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 112543741.26308058,
-            "endPositionValue": 107247851.30747819
+            "startPositionValue": 0,
+            "endPositionValue": 1335494.2029800934
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "address": "0x0B925eD163218f6662a35e0f0371Ac234f9E9371",
+                "balance": 439.9985370849561,
+                "balanceRaw": "439998537084956098671n",
+                "name": "Aave Ethereum wstETH",
+                "symbol": "aEthwstETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+                    "name": "Wrapped liquid staked Ether 2.0",
+                    "symbol": "wstETH",
+                    "decimals": 18,
+                    "balanceRaw": "439998537084956098671n",
+                    "type": "underlying",
+                    "tokens": [
+                      {
+                        "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                        "name": "Liquid staked Ether 2.0",
+                        "symbol": "stETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "509075292025073306643n",
+                        "tokens": [
+                          {
+                            "address": "0x0000000000000000000000000000000000000000",
+                            "name": "Ethereum",
+                            "symbol": "ETH",
+                            "decimals": 18,
+                            "type": "underlying",
+                            "balanceRaw": "509075292025073306643n",
+                            "balance": 509.0752920250733,
+                            "price": 2623.37266,
+                            "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                          }
+                        ],
+                        "balance": 509.0752920250733,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                      }
+                    ],
+                    "balance": 439.9985370849561,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+                  }
+                ]
+              }
+            ],
+            "rawStartPositionValues": [],
+            "rawWithdrawals": [],
+            "rawDeposits": [
+              {
+                "protocolToken": {
+                  "address": "0x0B925eD163218f6662a35e0f0371Ac234f9E9371",
+                  "name": "Aave Ethereum wstETH",
+                  "symbol": "aEthwstETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+                    "name": "Wrapped liquid staked Ether 2.0",
+                    "symbol": "wstETH",
+                    "decimals": 18,
+                    "balanceRaw": "439998537082613721678n",
+                    "type": "underlying",
+                    "tokens": [
+                      {
+                        "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                        "name": "Liquid staked Ether 2.0",
+                        "symbol": "stETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "509075292022363192515n",
+                        "tokens": [
+                          {
+                            "address": "0x0000000000000000000000000000000000000000",
+                            "name": "Ethereum",
+                            "symbol": "ETH",
+                            "decimals": 18,
+                            "type": "underlying",
+                            "balanceRaw": "509075292022363192515n",
+                            "balance": 509.0752920223632,
+                            "price": 2623.37266,
+                            "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                          }
+                        ],
+                        "balance": 509.0752920223632,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                      }
+                    ],
+                    "balance": 439.9985370826137
+                  }
+                ],
+                "blockNumber": 19220228,
+                "transactionHash": "0x84a56bb635122564294708ae8ef196f7241f3a749f7d4bbb811f3ca709d2258d"
+              }
+            ],
+            "rawRepays": [],
+            "rawBorrows": []
           }
         }
       ],
-      "fromBlock": 18754084,
-      "toBlock": 18761230
+      "fromBlock": 19213083,
+      "toBlock": 19220229
     },
     {
       "protocolId": "morpho-aave-v3-eth",
@@ -66,27 +151,9 @@
         "type": "NonStandardErc20"
       },
       "success": true,
-      "tokens": [
-        {
-          "address": "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8",
-          "name": "Aave Ethereum WETH",
-          "symbol": "aEthWETH",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": 4679097.314851031,
-          "performance": 0.047070338104313804,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "repays": 0,
-            "borrows": 0,
-            "startPositionValue": -99406494.69059604,
-            "endPositionValue": -94727397.37574501
-          }
-        }
-      ],
-      "fromBlock": 18754084,
-      "toBlock": 18761230
+      "tokens": [],
+      "fromBlock": 19213083,
+      "toBlock": 19220229
     }
   ]
 }

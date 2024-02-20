@@ -1,0 +1,39 @@
+{
+  "blockNumber": 19223915,
+  "snapshot": [
+    {
+      "protocolId": "morpho-aave-v3-eth",
+      "name": "MorphoAaveV3",
+      "description": "MorphoAaveV3 DeFi adapter on the supply side",
+      "siteUrl": "https://aavev3.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [],
+      "fromBlock": 19216769,
+      "toBlock": 19223915
+    },
+    {
+      "protocolId": "morpho-aave-v3-eth",
+      "name": "MorphoAaveV3",
+      "description": "MorphoAaveV3 DeFi adapter on the borrow side",
+      "siteUrl": "https://aavev3.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [],
+      "fromBlock": 19216769,
+      "toBlock": 19223915
+    }
+  ]
+}

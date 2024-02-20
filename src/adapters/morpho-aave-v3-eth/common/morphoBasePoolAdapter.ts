@@ -580,7 +580,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       | 'borrowed'
   }): Promise<MovementsByBlock[]> {
     const morphoAaveV3Contract = MorphoAaveV3__factory.connect(
-      protocolTokenAddress,
+      morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
     )
 
@@ -618,6 +618,8 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       toBlock,
     )
 
+    console.log(eventResults)
+
     const movements = await Promise.all(
       eventResults.map(async (event) => {
         const eventData = event.args
@@ -626,10 +628,10 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
         }
 
         const protocolToken = await this.fetchProtocolTokenMetadata(
-          eventData.underlying,
+          protocolTokenAddress,
         )
         const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
-          eventData.underlying,
+          protocolTokenAddress,
         )
 
         const tokens: Underlying[] = underlyingTokens.map(
