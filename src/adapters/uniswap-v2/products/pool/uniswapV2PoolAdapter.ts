@@ -105,32 +105,27 @@ export class UniswapV2PoolAdapter
     const protocolToken = await this.fetchProtocolTokenMetadata(
       protocolTokenBalance.address,
     )
-    const prices = await this.getUnderlyingTokenConversionRate(
+    const pricesPerShare = await this.getUnderlyingTokenConversionRate(
       protocolToken,
       blockNumber,
     )
-    return prices.map((underlyingTokenPriceObject) => {
-      const underlyingRateRawBigInt =
-        underlyingTokenPriceObject.underlyingRateRaw
-      const balanceRawBigInt = protocolTokenBalance.balanceRaw
-      const decimalsBigInt = BigInt(10 ** protocolTokenBalance.decimals)
+    return pricesPerShare.map((underlyingPricePerShare) => {
       const balanceRaw =
-        (balanceRawBigInt * underlyingRateRawBigInt) / decimalsBigInt
+        (protocolTokenBalance.balanceRaw *
+          underlyingPricePerShare.underlyingRateRaw) /
+        BigInt(10 ** protocolTokenBalance.decimals)
+
       return {
-        address: underlyingTokenPriceObject.address,
-        name: underlyingTokenPriceObject.name,
-        symbol: underlyingTokenPriceObject.symbol,
-        decimals: underlyingTokenPriceObject.decimals,
+        address: underlyingPricePerShare.address,
+        name: underlyingPricePerShare.name,
+        symbol: underlyingPricePerShare.symbol,
+        decimals: underlyingPricePerShare.decimals,
         type: TokenType.Underlying,
         balanceRaw,
       }
     })
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
@@ -152,24 +147,22 @@ export class UniswapV2PoolAdapter
       this.provider,
     )
 
-    const [protocolTokenSupplyRaw, [reserve0, reserve1]] = await Promise.all([
+    const [protocolTokenSupply, [reserve0, reserve1]] = await Promise.all([
       pairContract.totalSupply({ blockTag: blockNumber }),
       pairContract.getReserves({ blockTag: blockNumber }),
     ])
 
-    console.log('RATE DETAILS', {
-      protocolTokenSupplyRaw,
-      decimals: protocolTokenMetadata.decimals,
-      reserve0,
-      reserve1,
-    })
-
-    // const protocolTokenSupply = BigInt(
-    //   Number(protocolTokenSupplyRaw) / 10 ** protocolTokenMetadata.decimals,
-    // )
-
     const [pricePerShare0, pricePerShare1] = [reserve0, reserve1].map(
-      (reserve) => reserve / protocolTokenSupplyRaw,
+      (reserve) =>
+        // AssetReserve / ProtocolTokenSupply / 10 ** ProtocolTokenDecimals
+        // Moved last division as multiplication at the top
+        // Division sometimes is not exact, so it needs rounding
+        BigInt(
+          Math.round(
+            (Number(reserve) * 10 ** protocolTokenMetadata.decimals) /
+              Number(protocolTokenSupply),
+          ),
+        ),
     )
 
     return [
