@@ -1,4 +1,4 @@
-import { Underlying, ProtocolPosition, TokenType } from '../../types/adapter'
+import { Underlying, ProtocolPosition } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { logger } from './logger'
 
