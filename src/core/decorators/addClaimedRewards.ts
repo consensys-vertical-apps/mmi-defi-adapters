@@ -30,7 +30,7 @@ export function AddClaimedRewards({
 
             movements.push(...claimedRewards)
           } catch (error) {
-            if ((error as Error).message === 'Protocol token pool not found') {
+            if (error instaceOf Error && error.message === 'Protocol token pool not found') {
               return
             }
             throw error
