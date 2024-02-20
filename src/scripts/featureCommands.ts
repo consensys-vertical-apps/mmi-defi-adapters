@@ -204,7 +204,7 @@ function transactionParamsCommand(
         const provider = chainProviders[chainId]
         await simulateTx({
           provider,
-          chainId: chain,
+          chainId,
           input: {
             ...data.params,
             from: userAddress,
