@@ -27,25 +27,24 @@ export function AddClaimableRewards({
 
           await Promise.all(
             protocolTokens.map(async (protocolToken) => {
-              try {
-                const [reward] = await rewardAdapter.getPositions({
-                  ...input,
-                  protocolTokenAddresses: [protocolToken.address],
-                })
+              const isSupported = (
+                await rewardAdapter.getProtocolTokens()
+              ).find((token) => token.address == protocolToken.address)
 
-                if (reward && reward.tokens && reward.tokens.length > 0) {
-                  protocolToken.tokens = [
-                    ...(protocolToken.tokens ?? []),
-                    ...reward.tokens,
-                  ]
-                }
-              } catch (error) {
-                if (
-                  (error as Error).message === 'Protocol token pool not found'
-                ) {
-                  return
-                }
-                throw error
+              if (!isSupported) {
+                return
+              }
+
+              const [reward] = await rewardAdapter.getPositions({
+                ...input,
+                protocolTokenAddresses: [protocolToken.address],
+              })
+
+              if (reward && reward.tokens && reward.tokens.length > 0) {
+                protocolToken.tokens = [
+                  ...(protocolToken.tokens ?? []),
+                  ...reward.tokens,
+                ]
               }
             }),
           )

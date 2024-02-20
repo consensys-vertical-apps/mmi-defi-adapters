@@ -328,7 +328,7 @@ export class ConvexExtraRewardAdapter
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
     if (!poolMetadata) {
-      logger.warn(
+      logger.error(
         {
           protocolTokenAddress,
           protocol: this.protocolId,

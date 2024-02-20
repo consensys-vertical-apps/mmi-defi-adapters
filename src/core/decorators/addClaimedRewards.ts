@@ -25,16 +25,17 @@ export function AddClaimedRewards({
             rewardAdapterId,
           )
 
-          try {
-            const claimedRewards = await rewardAdapter.getWithdrawals(input)
+          const isSupported = (await rewardAdapter.getProtocolTokens()).find(
+            (token) => token.address == input.protocolTokenAddress,
+          )
 
-            movements.push(...claimedRewards)
-          } catch (error) {
-            if (error instaceOf Error && error.message === 'Protocol token pool not found') {
-              return
-            }
-            throw error
+          if (!isSupported) {
+            return
           }
+
+          const claimedRewards = await rewardAdapter.getWithdrawals(input)
+
+          movements.push(...claimedRewards)
         }),
       )
 
