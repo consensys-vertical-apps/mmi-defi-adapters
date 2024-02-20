@@ -397,23 +397,47 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     eventType: 'supplied' | 'withdrawn' | 'repaid' | 'borrowed'
   }): Promise<MovementsByBlock[]> {
     const morphoCompoundContract = MorphoCompound__factory.connect(
-      protocolTokenAddress,
+      morphoCompoundV2ContractAddresses[this.protocolId]![this.chainId]!,
       this.provider,
+    )
+
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenAddress,
     )
 
     let filter
     switch (eventType) {
       case 'supplied':
-        filter = morphoCompoundContract.filters.Supplied(undefined, userAddress)
+        filter = morphoCompoundContract.filters.Supplied(
+          undefined,
+          userAddress,
+          protocolTokenAddress,
+        )
         break
       case 'withdrawn':
-        filter = morphoCompoundContract.filters.Withdrawn(userAddress)
+        filter = morphoCompoundContract.filters.Withdrawn(
+          userAddress,
+          undefined,
+          protocolTokenAddress,
+        )
         break
       case 'repaid':
-        filter = morphoCompoundContract.filters.Repaid(undefined, userAddress)
+        filter = morphoCompoundContract.filters.Repaid(
+          undefined,
+          userAddress,
+          protocolTokenAddress,
+        )
+        console.log(undefined, userAddress, protocolTokenAddress)
         break
       case 'borrowed':
-        filter = morphoCompoundContract.filters.Borrowed(userAddress)
+        filter = morphoCompoundContract.filters.Borrowed(
+          userAddress,
+          protocolTokenAddress,
+        )
+
         break
     }
 
@@ -423,40 +447,28 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       toBlock,
     )
 
+    console.log(eventResults)
+
     const movements = await Promise.all(
       eventResults.map(async (event) => {
         const eventData = event.args
-        if (!eventData) {
-          return null
-        }
-
-        const protocolToken = await this.fetchProtocolTokenMetadata(
-          eventData._poolToken,
-        )
-        const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
-          eventData._poolToken,
-        )
-
-        const tokens: Underlying[] = underlyingTokens.map(
-          (underlyingToken) => ({
-            ...underlyingToken,
-            balanceRaw: eventData._amount,
-            type: TokenType.Underlying,
-          }),
-        )
 
         return {
           protocolToken,
-          tokens,
+          tokens: [
+            {
+              ...underlyingToken!,
+              balanceRaw: eventData._amount,
+              type: TokenType.Underlying,
+            },
+          ],
           blockNumber: event.blockNumber,
           transactionHash: event.transactionHash,
         }
       }),
     )
 
-    return movements.filter(
-      (movement): movement is MovementsByBlock => movement !== null,
-    ) as MovementsByBlock[]
+    return movements
   }
 
   private async _getProtocolTokenApr({

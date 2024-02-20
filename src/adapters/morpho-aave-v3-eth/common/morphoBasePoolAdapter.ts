@@ -584,31 +584,59 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       this.provider,
     )
 
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
+    const [underlyingToken] = await this.fetchUnderlyingTokensMetadata(
+      protocolTokenAddress,
+    )
+
     let filter
     switch (eventType) {
       case 'supplied':
-        filter = morphoAaveV3Contract.filters.Supplied(undefined, userAddress)
+        filter = morphoAaveV3Contract.filters.Supplied(
+          undefined,
+          userAddress,
+          underlyingToken?.address,
+        )
         break
       case 'collat-supplied':
         filter = morphoAaveV3Contract.filters.CollateralSupplied(
           undefined,
           userAddress,
+          underlyingToken?.address,
         )
         break
       case 'withdrawn':
-        filter = morphoAaveV3Contract.filters.Withdrawn(undefined, userAddress)
+        filter = morphoAaveV3Contract.filters.Withdrawn(
+          undefined,
+          userAddress,
+          undefined,
+          underlyingToken?.address,
+        )
         break
       case 'collat-withdrawn':
         filter = morphoAaveV3Contract.filters.CollateralWithdrawn(
           undefined,
           userAddress,
+          undefined,
+          underlyingToken?.address,
         )
         break
       case 'repaid':
-        filter = morphoAaveV3Contract.filters.Repaid(undefined, userAddress)
+        filter = morphoAaveV3Contract.filters.Repaid(
+          undefined,
+          userAddress,
+          underlyingToken?.address,
+        )
         break
       case 'borrowed':
-        filter = morphoAaveV3Contract.filters.Borrowed(undefined, userAddress)
+        filter = morphoAaveV3Contract.filters.Borrowed(
+          undefined,
+          userAddress,
+          undefined,
+          underlyingToken?.address,
+        )
         break
     }
 
@@ -618,42 +646,26 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       toBlock,
     )
 
-    console.log(eventResults)
-
     const movements = await Promise.all(
       eventResults.map(async (event) => {
         const eventData = event.args
-        if (!eventData) {
-          return null
-        }
-
-        const protocolToken = await this.fetchProtocolTokenMetadata(
-          protocolTokenAddress,
-        )
-        const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
-          protocolTokenAddress,
-        )
-
-        const tokens: Underlying[] = underlyingTokens.map(
-          (underlyingToken) => ({
-            ...underlyingToken,
-            balanceRaw: eventData.amount,
-            type: TokenType.Underlying,
-          }),
-        )
 
         return {
           protocolToken,
-          tokens,
+          tokens: [
+            {
+              ...underlyingToken!,
+              balanceRaw: eventData.amount,
+              type: TokenType.Underlying,
+            },
+          ],
           blockNumber: event.blockNumber,
           transactionHash: event.transactionHash,
         }
       }),
     )
 
-    return movements.filter(
-      (movement): movement is MovementsByBlock => movement !== null,
-    ) as MovementsByBlock[]
+    return movements
   }
   private async getProtocolTokenApr({
     protocolTokenAddress,
