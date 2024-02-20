@@ -13,7 +13,7 @@ const protocolToken = {
   symbol: 'jcoin',
   type: TokenType.Protocol,
   decimals,
-  priceRaw,
+  priceRaw: undefined,
   balanceRaw,
   tokenId: undefined,
 }
@@ -41,6 +41,7 @@ describe('aggregateFiatBalances', () => {
         tokens: [
           {
             ...underlyingToken,
+            priceRaw: undefined,
             tokens: [underlyingToken],
           },
         ],
@@ -61,32 +62,6 @@ describe('aggregateFiatBalances', () => {
     })
   })
 
-  it('throws error for non-fiat token at base', () => {
-    const testData = [
-      {
-        ...protocolToken,
-
-        tokens: [
-          {
-            ...underlyingToken,
-            tokens: [underlyingToken],
-          },
-        ],
-      },
-    ]
-
-    try {
-      aggregateFiatBalances(
-        testData as unknown as (Underlying | ProtocolPosition)[],
-      )
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      expect(error.message).toEqual(
-        'Unable to calculate profits, missing USD price for token position 0x',
-      )
-    }
-  })
-
   it('correctly aggregates balances for tokens with same identifier', () => {
     const testData = [
       {
@@ -94,10 +69,12 @@ describe('aggregateFiatBalances', () => {
         tokens: [
           {
             ...underlyingToken,
+            priceRaw: undefined,
             tokens: [underlyingToken],
           },
           {
             ...underlyingToken,
+            priceRaw: undefined,
             tokens: [underlyingToken],
           },
         ],

@@ -8,6 +8,7 @@ const ETH = {
   decimals: 18,
 }
 
+// details here https://github.com/1inch/spot-price-aggregator
 const OneInchPriceOracleCommon = getAddress(
   '0x0AdDd25a91563696D8567Df78D5A01C9a991F9B8',
 )

@@ -1,8 +1,8 @@
 import { getAddress } from 'ethers'
 import { Chain, ChainName } from '../constants/chains'
+import { E_ADDRESS } from '../constants/E_ADDRESS'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import { logger } from './logger'
-import { E_ADDRESS } from '../constants/E_ADDRESS'
 
 export function buildTrustAssetIconUrl(
   chainId: Chain,

@@ -305,7 +305,7 @@
             },
             {
               "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-              "name": "Convex Token",
+              "name": "Convex Finance",
               "symbol": "CVX",
               "decimals": 18,
               "balanceRaw": "31457158657542342582n",
@@ -316,8 +316,8 @@
             },
             {
               "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-              "name": "Curve.fi DAI/USDC/USDT",
-              "symbol": "3Crv",
+              "name": "LP 3pool Curve",
+              "symbol": "3CRV",
               "decimals": 18,
               "balanceRaw": "0n",
               "type": "underlying-claimable",

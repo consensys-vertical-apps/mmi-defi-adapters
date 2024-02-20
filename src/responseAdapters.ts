@@ -94,13 +94,15 @@ export function enrichMovements(
           ...accumulator,
           {
             ...token,
-            price: token.priceRaw
-              ? +formatUnits(
-                  token.priceRaw,
-                  priceAdapterConfig[chainId as keyof typeof priceAdapterConfig]
-                    .decimals,
-                )
-              : undefined,
+            price:
+              token.priceRaw || token.priceRaw === 0n
+                ? +formatUnits(
+                    token.priceRaw,
+                    priceAdapterConfig[
+                      chainId as keyof typeof priceAdapterConfig
+                    ].decimals,
+                  )
+                : undefined,
             priceRaw: undefined,
             balance: +formatUnits(token.balanceRaw, token.decimals),
             ...(token.tokens

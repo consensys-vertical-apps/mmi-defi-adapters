@@ -27,18 +27,24 @@ export function AddClaimableRewards({
 
           await Promise.all(
             protocolTokens.map(async (protocolToken) => {
+              const isSupported = (
+                await rewardAdapter.getProtocolTokens()
+              ).find((token) => token.address == protocolToken.address)
+
+              if (!isSupported) {
+                return
+              }
+
               const [reward] = await rewardAdapter.getPositions({
                 ...input,
                 protocolTokenAddresses: [protocolToken.address],
               })
 
-              if (reward) {
-                if (reward.tokens) {
-                  protocolToken.tokens = [
-                    ...(protocolToken.tokens ?? []),
-                    ...reward.tokens,
-                  ]
-                }
+              if (reward && reward.tokens && reward.tokens.length > 0) {
+                protocolToken.tokens = [
+                  ...(protocolToken.tokens ?? []),
+                  ...reward.tokens,
+                ]
               }
             }),
           )

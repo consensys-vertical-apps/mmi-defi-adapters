@@ -35,6 +35,7 @@ export async function getProfits({
   let rawEndPositionValues: ProtocolPosition[]
 
   let rawStartPositionValues: ProtocolPosition[]
+
   if (protocolTokenAddresses) {
     // Call both in parallel with filter
     ;[endPositionValues, startPositionValues] = await Promise.all([
@@ -108,25 +109,29 @@ export async function getProfits({
 
       const key = protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
 
-      const endPositionValue = +formatUnits(
-        endPositionValues[key]?.usdRaw ?? 0n,
-        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
-          .decimals,
+      // Format units only if there is a price adapter for the chain
+      const formatUnitsIfPossible = (value: bigint | undefined) => {
+        if (
+          value &&
+          priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
+        ) {
+          return +formatUnits(
+            value,
+            priceAdapterConfig[
+              adapter.chainId as keyof typeof priceAdapterConfig
+            ].decimals,
+          )
+        }
+        return 0
+      }
+
+      const endPositionValue = formatUnitsIfPossible(
+        endPositionValues[key]?.usdRaw,
       )
-      const withdrawal = +formatUnits(
-        withdrawals[key]?.usdRaw ?? 0n,
-        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
-          .decimals,
-      )
-      const deposit = +formatUnits(
-        deposits[key]?.usdRaw ?? 0n,
-        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
-          .decimals,
-      )
-      const startPositionValue = +formatUnits(
-        startPositionValues[key]?.usdRaw ?? 0n,
-        priceAdapterConfig[adapter.chainId as keyof typeof priceAdapterConfig]
-          .decimals,
+      const withdrawal = formatUnitsIfPossible(withdrawals[key]?.usdRaw)
+      const deposit = formatUnitsIfPossible(deposits[key]?.usdRaw)
+      const startPositionValue = formatUnitsIfPossible(
+        startPositionValues[key]?.usdRaw,
       )
 
       const profitModifier =
@@ -138,10 +143,25 @@ export async function getProfits({
         (endPositionValue + withdrawal - deposit - startPositionValue) *
         profitModifier
 
+      const hasTokensWithoutUSDPrices =
+        startPositionValues[key]?.hasTokensWithoutUSDPrices ||
+        endPositionValues[key]?.hasTokensWithoutUSDPrices ||
+        deposits[key]?.hasTokensWithoutUSDPrices ||
+        withdrawals[key]?.hasTokensWithoutUSDPrices
+
+      const tokensWithoutUSDPrices = hasTokensWithoutUSDPrices
+        ? [
+            ...(startPositionValues[key]?.tokensWithoutUSDPrices ?? []),
+            ...(endPositionValues[key]?.tokensWithoutUSDPrices ?? []),
+            ...(deposits[key]?.tokensWithoutUSDPrices ?? []),
+            ...(withdrawals[key]?.tokensWithoutUSDPrices ?? []),
+          ]
+        : undefined
+
       return {
         ...protocolTokenMetadata,
         type: TokenType.Protocol,
-        profit: profit,
+        profit,
         performance: calculateDeFiAttributionPerformance({
           profit,
           withdrawal,
@@ -153,6 +173,8 @@ export async function getProfits({
           deposits: deposit,
           startPositionValue: startPositionValue * profitModifier,
           endPositionValue: endPositionValue * profitModifier,
+          hasTokensWithoutUSDPrices: hasTokensWithoutUSDPrices ?? undefined,
+          tokensWithoutUSDPrices,
         },
         rawValues: includeRawValues
           ? {

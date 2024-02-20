@@ -12,7 +12,12 @@ export type TestCase = {
     }
   | {
       method: 'profits'
-      input: { userAddress: string; timePeriod?: TimePeriod }
+      input: {
+        userAddress: string
+        timePeriod?: TimePeriod
+        includeRawValues?: boolean
+        filterProtocolTokens?: string[]
+      }
       blockNumber?: number
     }
   | {
