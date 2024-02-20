@@ -12,7 +12,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress,
     },
-    blockNumber: 19240300,
+    blockNumber: 19240234,
   },
   {
     chainId: Chain.Ethereum,

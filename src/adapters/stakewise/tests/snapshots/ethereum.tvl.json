@@ -13,10 +13,10 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
           "name": "StakeWise osETH",
           "symbol": "osETH",
           "decimals": 18,
+          "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
           "type": "protocol",
           "totalSupplyRaw": "32355203313713548236297n",
           "tokens": [
@@ -25,9 +25,9 @@
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "totalSupplyRaw": "57486882611336484610165n",
+              "totalSupplyRaw": "57738892939803903201912n",
               "type": "underlying",
-              "totalSupply": 57486.882611336485,
+              "totalSupply": 57738.8929398039,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],

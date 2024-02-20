@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19240300,
+  "blockNumber": 19240234,
   "snapshot": [
     {
       "name": "StakeWise",
@@ -13,10 +13,10 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
           "name": "StakeWise osETH",
           "symbol": "osETH",
           "decimals": 18,
+          "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
           "balanceRaw": "100000000000000n",
           "type": "protocol",
           "tokens": [
@@ -26,9 +26,9 @@
               "symbol": "ETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "100792247289535n",
-              "balance": 0.000100792247289535,
-              "price": 2823.34,
+              "balanceRaw": "100792128042126n",
+              "balance": 0.000100792128042126,
+              "price": 2827.2322,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],

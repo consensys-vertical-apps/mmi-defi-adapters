@@ -13,10 +13,10 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
           "name": "StakeWise osETH",
           "symbol": "osETH",
           "decimals": 18,
+          "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
           "baseRate": 1,
           "type": "protocol",
           "tokens": [

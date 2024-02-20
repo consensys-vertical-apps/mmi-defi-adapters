@@ -117,9 +117,11 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
     }
   }
 
-  async getTotalValueLocked({
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+  async getTotalValueLocked(
+    values: GetTotalValueLockedInput,
+  ): Promise<ProtocolTokenTvl[]> {
+    const { blockNumber } = values
+
     const [vaultsRegistryAddress, protocolToken] = await Promise.all([
       this.getVaultsRegistryAddress(),
       this.fetchProtocolTokenMetadata(),
