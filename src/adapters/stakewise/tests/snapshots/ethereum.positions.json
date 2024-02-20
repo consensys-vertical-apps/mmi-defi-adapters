@@ -1,0 +1,40 @@
+{
+  "blockNumber": 19240300,
+  "snapshot": [
+    {
+      "name": "StakeWise",
+      "siteUrl": "https://app.stakewise.io/",
+      "iconUrl": "https://app.stakewise.io/osETH.svg",
+      "description": "StakeWise DeFi Adapter for osETH",
+      "positionType": "stake",
+      "protocolId": "stakewise",
+      "productId": "os-eth",
+      "chainId": 1,
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
+          "name": "StakeWise osETH",
+          "symbol": "osETH",
+          "decimals": 18,
+          "balanceRaw": "100000000000000n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "100792247289535n",
+              "balance": 0.000100792247289535,
+              "price": 2823.34,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "balance": 0.0001
+        }
+      ]
+    }
+  ]
+}

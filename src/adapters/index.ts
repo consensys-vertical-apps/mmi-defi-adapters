@@ -35,6 +35,7 @@ import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/pro
 import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
 import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
+import { StakewiseOsEthAdapter } from './stakewise/products/os-eth/stakewiseOsEthAdapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
@@ -220,5 +221,9 @@ export const supportedProtocols: Record<
     [Chain.Base]: [UniswapV2PoolAdapter],
     [Chain.Arbitrum]: [UniswapV2PoolAdapter],
     [Chain.Avalanche]: [UniswapV2PoolAdapter],
+  },
+
+  [Protocol.StakeWise]: {
+    [Chain.Ethereum]: [StakewiseOsEthAdapter],
   },
 }

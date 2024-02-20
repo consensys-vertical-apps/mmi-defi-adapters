@@ -24,6 +24,7 @@ import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compou
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
+import { testCases as stakeWiseTestCases } from './stakewise/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
@@ -65,6 +66,7 @@ function runAllTests() {
   runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
   runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
   runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
+  runProtocolTests(Protocol.StakeWise, stakeWiseTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
