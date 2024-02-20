@@ -1,4 +1,4 @@
-import { parseEther } from 'ethers'
+import { parseEther, getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { SECONDS_PER_YEAR } from '../../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
@@ -30,21 +30,27 @@ const amount1 = parseEther('1')
 export class StakewiseOsEthAdapter extends SimplePoolAdapter {
   productId = 'os-eth'
 
-  #vaultsRegistryAddress = '0x3a0008a588772446f6e656133C2D5029CC4FC20E'
-  #osEthControllerAddress = '0x2A261e60FB14586B474C208b1B7AC6D0f5000306'
-
-  #protocolToken: Erc20Metadata = {
-    address: '0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38',
-    name: 'StakeWise osETH',
-    symbol: 'osETH',
-    decimals: 18,
-  }
-
   #underlyingToken: Erc20Metadata = {
     address: ZERO_ADDRESS,
     name: 'Ethereum',
     symbol: 'ETH',
     decimals: 18,
+  }
+
+  private async getVaultsRegistryAddress(): Promise<string> {
+    const address = await getAddress(
+      '0x3a0008a588772446f6e656133C2D5029CC4FC20E',
+    )
+
+    return address
+  }
+
+  private async getOsEthControllerAddress(): Promise<string> {
+    const address = await getAddress(
+      '0x2A261e60FB14586B474C208b1B7AC6D0f5000306',
+    )
+
+    return address
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -61,11 +67,24 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return [this.#protocolToken]
+    const protocolToken = await this.fetchProtocolTokenMetadata()
+
+    return [protocolToken]
   }
 
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    return this.#protocolToken
+    const address = await getAddress(
+      '0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38',
+    )
+
+    const data: Erc20Metadata = {
+      name: 'StakeWise osETH',
+      symbol: 'osETH',
+      decimals: 18,
+      address,
+    }
+
+    return data
   }
 
   protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
@@ -75,8 +94,13 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
   async getApy(values: GetApyInput): Promise<ProtocolTokenApy> {
     const { blockNumber } = values
 
+    const [osEthControllerAddress, protocolToken] = await Promise.all([
+      this.getOsEthControllerAddress(),
+      this.fetchProtocolTokenMetadata(),
+    ])
+
     const osEthControllerContract = OsEthController__factory.connect(
-      this.#osEthControllerAddress,
+      osEthControllerAddress,
       this.provider,
     )
 
@@ -88,7 +112,7 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
       ((Number(rewardPerSecond) * SECONDS_PER_YEAR) / Number(amount1)) * 100
 
     return {
-      ...this.#protocolToken,
+      ...protocolToken,
       apyDecimal,
     }
   }
@@ -96,13 +120,18 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
   async getTotalValueLocked({
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+    const [vaultsRegistryAddress, protocolToken] = await Promise.all([
+      this.getVaultsRegistryAddress(),
+      this.fetchProtocolTokenMetadata(),
+    ])
+
     const vaultsRegistryContract = VaultsRegistry__factory.connect(
-      this.#vaultsRegistryAddress,
+      vaultsRegistryAddress,
       this.provider,
     )
 
     const osEthContract = OsEth__factory.connect(
-      this.#protocolToken.address,
+      protocolToken.address,
       this.provider,
     )
 
@@ -114,7 +143,7 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
     const logs = await this.provider.getLogs({
       fromBlock: 18470079,
       toBlock: blockNumber || 'latest',
-      address: this.#vaultsRegistryAddress,
+      address: vaultsRegistryAddress,
       topics: await topic.getTopicFilter(),
     })
 
@@ -142,7 +171,7 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
 
     return [
       {
-        ...this.#protocolToken,
+        ...protocolToken,
         type: TokenType.Protocol,
         totalSupplyRaw: osEthTotalSupply,
         tokens: [
@@ -163,8 +192,10 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
   }): Promise<Underlying[]> {
     const { protocolTokenBalance, blockNumber } = values
 
+    const osEthControllerAddress = await this.getOsEthControllerAddress()
+
     const osEthControllerContract = OsEthController__factory.connect(
-      this.#osEthControllerAddress,
+      osEthControllerAddress,
       this.provider,
     )
 
@@ -186,8 +217,10 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
     _: Erc20Metadata,
     blockNumber?: number,
   ): Promise<UnderlyingTokenRate[]> {
+    const osEthControllerAddress = await this.getOsEthControllerAddress()
+
     const osEthControllerContract = OsEthController__factory.connect(
-      this.#osEthControllerAddress,
+      osEthControllerAddress,
       this.provider,
     )
 
