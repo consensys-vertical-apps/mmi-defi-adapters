@@ -33,13 +33,11 @@ export function AddClaimableRewards({
                   protocolTokenAddresses: [protocolToken.address],
                 })
 
-                if (reward) {
-                  if (reward.tokens) {
-                    protocolToken.tokens = [
-                      ...(protocolToken.tokens ?? []),
-                      ...reward.tokens,
-                    ]
-                  }
+                if (reward && reward.tokens && reward.tokens.length > 0) {
+                  protocolToken.tokens = [
+                    ...(protocolToken.tokens ?? []),
+                    ...reward.tokens,
+                  ]
                 }
               } catch (error) {
                 if (
