@@ -48,6 +48,7 @@ import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/m
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
 import StargateVestingArbitrumVestingToken from '../../adapters/stargate/products/vesting/metadata/arbitrum.vesting-token.json'
 import StargateVestingEthereumVestingToken from '../../adapters/stargate/products/vesting/metadata/ethereum.vesting-token.json'
+import UniswapV2PoolEthereumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/ethereum.protocol-token.json'
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
@@ -457,7 +458,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     ConvexCvxcrvWrapperEthereumProtocolToken,
   ],
-
   [
     metadataKey({
       protocolId: Protocol.ChimpExchange,
@@ -484,6 +484,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'mendi',
     }),
     MendiFinanceBorrowLineaMendi,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolEthereumProtocolToken,
   ],
 ])
 

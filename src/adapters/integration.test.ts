@@ -24,6 +24,7 @@ import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
+import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 
 const TEST_TIMEOUT = 300000
@@ -51,6 +52,7 @@ function runAllTests() {
   runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
   runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
   runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
+  runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

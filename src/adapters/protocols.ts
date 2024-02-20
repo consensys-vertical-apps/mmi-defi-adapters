@@ -18,5 +18,6 @@ export const Protocol = {
   CarbonDeFi: 'carbon-defi',
   RocketPool: 'rocket-pool',
   PricesV2: 'prices-v2',
+  UniswapV2: 'uniswap-v2',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
