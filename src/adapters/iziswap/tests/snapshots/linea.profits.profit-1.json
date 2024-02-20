@@ -10,13 +10,46 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "iziswap",
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c",
+          "name": "USDC / WETH - 3000",
+          "symbol": "USDC / WETH - 3000",
+          "decimals": 18,
+          "tokenId": "20000",
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "balanceRaw": "12783946682151n",
+                "type": "underlying-claimable"
+              },
+              {
+                "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "balanceRaw": "14566802396821n",
+                "type": "underlying-claimable"
+              }
+            ]
+          }
         }
-      }
+      ],
+      "fromBlock": 1098124,
+      "toBlock": 1105311
     }
   ]
 }

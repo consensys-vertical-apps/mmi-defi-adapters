@@ -22,8 +22,8 @@
           "tokens": [
             {
               "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-              "name": "Curve.fi DAI/USDC/USDT",
-              "symbol": "3Crv",
+              "name": "LP 3pool Curve",
+              "symbol": "3CRV",
               "decimals": 18,
               "balanceRaw": "20000000000000000000n",
               "type": "underlying",
@@ -91,8 +91,8 @@
           "tokens": [
             {
               "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-              "name": "Curve.fi DAI/USDC/USDT",
-              "symbol": "3Crv",
+              "name": "LP 3pool Curve",
+              "symbol": "3CRV",
               "decimals": 18,
               "balanceRaw": "29004301062047034124n",
               "type": "underlying",
