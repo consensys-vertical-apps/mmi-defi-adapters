@@ -98,6 +98,7 @@ export async function simulateTx({
       provider: {
         [chainName]: forkDetails.providerUrl,
       },
+      enableUsdPricesOnPositions: false,
     })
 
     const [deposits, withdrawals, positions] = await Promise.all([
