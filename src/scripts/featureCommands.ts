@@ -97,8 +97,6 @@ function addressCommand(
     )
     .showHelpAfterError()
     .action(async (userAddress, { protocols, chains, raw }) => {
-      console.log({ protocols, chains, raw })
-
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
 
@@ -132,7 +130,6 @@ function transactionParamsCommand(
     )
     .showHelpAfterError()
     .action(async (action, protocolId, productId, chainId, inputs) => {
-      console.log({ action, protocolId, productId, chainId, inputs })
       const txInputParams = inputs.split(',')
 
       const protocol = protocolFilter(protocolId)

@@ -85,4 +85,16 @@ export const testCases: TestCase[] = [
     },
     blockNumber: 18713643,
   },
+  {
+    chainId: Chain.Ethereum,
+    method: 'profits',
+    key: 'cvxcrv-wrapper',
+    input: {
+      userAddress: '0x8654a995426e775f3ef023cd6e1b5681e774ffa1',
+      timePeriod: TimePeriod.oneDay,
+      filterProtocolTokens: ['0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434'],
+      includeRawValues: true,
+    },
+    blockNumber: 18713643,
+  },
 ]

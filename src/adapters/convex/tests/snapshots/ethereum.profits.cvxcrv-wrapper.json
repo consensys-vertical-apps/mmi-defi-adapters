@@ -1,0 +1,227 @@
+{
+  "blockNumber": 18713643,
+  "snapshot": [
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "success": true,
+      "tokens": [],
+      "fromBlock": 18706497,
+      "toBlock": 18713643
+    },
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "staking",
+      "success": true,
+      "tokens": [],
+      "fromBlock": 18706497,
+      "toBlock": 18713643
+    },
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "cvxcrv-wrapper",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
+          "name": "Staked CvxCrv",
+          "symbol": "stkCvxCrv",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 1.7228626927251014,
+          "performance": 0.009809125958622714,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 175.63875721369635,
+            "endPositionValue": 177.36161990642145
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
+                "name": "Staked CvxCrv",
+                "symbol": "stkCvxCrv",
+                "decimals": 18,
+                "balanceRaw": "6399036031308907252576n",
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+                    "name": "Curve DAO Token",
+                    "symbol": "CRV",
+                    "decimals": 18,
+                    "balanceRaw": "42571127366382811945n",
+                    "type": "underlying-claimable",
+                    "balance": 42.57112736638281,
+                    "price": 0.5895065199962559,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+                  },
+                  {
+                    "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+                    "name": "Convex Finance",
+                    "symbol": "CVX",
+                    "decimals": 18,
+                    "balanceRaw": "5100813534806061084n",
+                    "type": "underlying-claimable",
+                    "balance": 5.100813534806061,
+                    "price": 3.8257813655315345,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+                  },
+                  {
+                    "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+                    "name": "LP 3pool Curve",
+                    "symbol": "3CRV",
+                    "decimals": 18,
+                    "balanceRaw": "128166105566414662840n",
+                    "type": "underlying-claimable",
+                    "tokens": [
+                      {
+                        "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                        "name": "Dai Stablecoin",
+                        "symbol": "DAI",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "52708557100541733295n",
+                        "balance": 52.70855710054173,
+                        "price": 1.0017063368720214,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                      },
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "50213045n",
+                        "balance": 50.213045,
+                        "price": 1.0161023818686534,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                        "name": "Tether USD",
+                        "symbol": "USDT",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "28868902n",
+                        "balance": 28.868902,
+                        "price": 1.002150172163263,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                      }
+                    ],
+                    "balance": 128.16610556641467,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
+                  }
+                ],
+                "balance": 6399.036031308908
+              }
+            ],
+            "rawStartPositionValues": [
+              {
+                "address": "0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434",
+                "name": "Staked CvxCrv",
+                "symbol": "stkCvxCrv",
+                "decimals": 18,
+                "balanceRaw": "6399036031308907252576n",
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+                    "name": "Curve DAO Token",
+                    "symbol": "CRV",
+                    "decimals": 18,
+                    "balanceRaw": "42571127366382811945n",
+                    "type": "underlying-claimable",
+                    "balance": 42.57112736638281,
+                    "price": 0.5945658148847325,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+                  },
+                  {
+                    "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+                    "name": "Convex Finance",
+                    "symbol": "CVX",
+                    "decimals": 18,
+                    "balanceRaw": "5100813534806061084n",
+                    "type": "underlying-claimable",
+                    "balance": 5.100813534806061,
+                    "price": 3.8384903603204203,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+                  },
+                  {
+                    "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+                    "name": "LP 3pool Curve",
+                    "symbol": "3CRV",
+                    "decimals": 18,
+                    "balanceRaw": "126234298727985746240n",
+                    "type": "underlying-claimable",
+                    "tokens": [
+                      {
+                        "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                        "name": "Dai Stablecoin",
+                        "symbol": "DAI",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "51650271442433807119n",
+                        "balance": 51.650271442433805,
+                        "price": 1.0022479881129192,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                      },
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "52000957n",
+                        "balance": 52.000957,
+                        "price": 1.0143365322953304,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                        "name": "Tether USD",
+                        "symbol": "USDT",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "26152464n",
+                        "balance": 26.152464,
+                        "price": 1.0031615208154834,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                      }
+                    ],
+                    "balance": 126.23429872798575,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
+                  }
+                ],
+                "balance": 6399.036031308908
+              }
+            ],
+            "rawWithdrawals": [],
+            "rawDeposits": []
+          }
+        }
+      ],
+      "fromBlock": 18706497,
+      "toBlock": 18713643
+    }
+  ]
+}

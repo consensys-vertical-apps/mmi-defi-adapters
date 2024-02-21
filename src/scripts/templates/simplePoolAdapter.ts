@@ -156,7 +156,15 @@ export function simplePoolAdapterTemplate(
       const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
   
       if (!poolMetadata) {
-        logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
+              logger.error(
+        {
+          protocolTokenAddress,
+          protocol: this.protocolId,
+          chainId: this.chainId,
+          product: this.productId,
+        },
+        'Protocol token pool not found',
+      )
         throw new Error('Protocol token pool not found')
       }
   
