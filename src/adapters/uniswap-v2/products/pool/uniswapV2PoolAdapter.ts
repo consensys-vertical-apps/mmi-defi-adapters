@@ -30,6 +30,28 @@ type UniswapV2PoolAdapterMetadata = Record<
   }
 >
 
+type GqlResponse = {
+  data: {
+    pairs: [
+      {
+        id: string
+        token0: {
+          id: string
+          symbol: string
+          name: string
+          decimals: number
+        }
+        token1: {
+          id: string
+          symbol: string
+          name: string
+          decimals: number
+        }
+      },
+    ]
+  }
+}
+
 export class UniswapV2PoolAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
@@ -51,25 +73,31 @@ export class UniswapV2PoolAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<UniswapV2PoolAdapterMetadata> {
-    const pools = [
+    const response = await fetch(
+      'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2',
       {
-        id: '0x21b8065d10f73ee2e260e5b47d3344d3ced7596e',
-        token0: '0x66a0f676479cee1d7373f3dc2e2952778bff5bd6',
-        token1: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          operationName: 'tokenDayDatas',
+          variables: {
+            tokenAddr: '0x9ea3b5b4ec044b70375236a281986106457b20ef',
+            skip: 0,
+          },
+          query:
+            '{ pairs(first: 50 where: {reserveUSD_gt: "1000000", volumeUSD_gt: "50000"} orderBy: reserveUSD orderDirection: desc) {id token0 {id symbol name decimals} token1 {id symbol name decimals}}}',
+        }),
       },
-      {
-        id: '0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852',
-        token0: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-        token1: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      },
-    ]
+    )
 
-    const poolPromises = await Promise.all(
-      pools.map(async (pool) => {
+    const gqlResponse: GqlResponse = await response.json()
+
+    const pairPromises = await Promise.all(
+      gqlResponse.data.pairs.map(async (pair) => {
         const [protocolToken, token0, token1] = await Promise.all([
-          getTokenMetadata(pool.id, this.chainId, this.provider),
-          getTokenMetadata(pool.token0, this.chainId, this.provider),
-          getTokenMetadata(pool.token1, this.chainId, this.provider),
+          getTokenMetadata(pair.id, this.chainId, this.provider),
+          getTokenMetadata(pair.token0.id, this.chainId, this.provider),
+          getTokenMetadata(pair.token1.id, this.chainId, this.provider),
         ])
 
         return {
@@ -80,8 +108,8 @@ export class UniswapV2PoolAdapter
       }),
     )
 
-    return poolPromises.reduce((metadataObject, pool) => {
-      metadataObject[pool.protocolToken.address] = pool
+    return pairPromises.reduce((metadataObject, pair) => {
+      metadataObject[pair.protocolToken.address] = pair
       return metadataObject
     }, {} as UniswapV2PoolAdapterMetadata)
   }
