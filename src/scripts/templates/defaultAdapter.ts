@@ -67,6 +67,9 @@ export function defaultAdapterTemplate(
         positionType: PositionType.Supply,
         chainId: this.chainId,
         productId: this.productId,
+        assetDetails: {
+          type: AssetType.NonStandardErc20,
+        },
       }
     }
   

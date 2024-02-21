@@ -55,6 +55,9 @@ export function simplePoolAdapterTemplate(
         positionType: PositionType.Supply,
         chainId: this.chainId,
         productId: this.productId,
+        assetDetails: {
+          type: AssetType.NonStandardErc20,
+        },
       }
     }
   
