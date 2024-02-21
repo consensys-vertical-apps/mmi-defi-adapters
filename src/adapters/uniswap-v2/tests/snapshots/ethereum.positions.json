@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19275840,
+  "blockNumber": 19277194,
   "snapshot": [
     {
       "protocolId": "uniswap-v2",
@@ -26,9 +26,9 @@
               "symbol": "WETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "6325539673084324177n",
-              "balance": 6.325539673084324,
-              "price": 2902.56,
+              "balanceRaw": "6311472369351403787n",
+              "balance": 6.311472369351404,
+              "price": 2912.3,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             },
             {
@@ -37,9 +37,9 @@
               "symbol": "USDT",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "18387715564n",
-              "balance": 18387.715564,
-              "price": 0.9990415248727441,
+              "balanceRaw": "18430908314n",
+              "balance": 18430.908314,
+              "price": 0.9996556896045466,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],

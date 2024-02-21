@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19275840,
+  "blockNumber": 19277194,
   "snapshot": [
     {
       "protocolId": "uniswap-v2",
@@ -18,18 +18,18 @@
           "symbol": "UNI-V2",
           "decimals": 18,
           "type": "protocol",
-          "profit": -227.54462209835765,
-          "performance": -0.006156861084075179,
+          "profit": 2.3564552724444923,
+          "performance": 0.016733825819989258,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 0,
-            "startPositionValue": 36957.894451590844,
-            "endPositionValue": 36730.34982949249
+            "deposits": 140.8198757291717,
+            "startPositionValue": 0,
+            "endPositionValue": 143.1763310016162
           }
         }
       ],
-      "fromBlock": 19268694,
-      "toBlock": 19275840
+      "fromBlock": 19227172,
+      "toBlock": 19277194
     }
   ]
 }

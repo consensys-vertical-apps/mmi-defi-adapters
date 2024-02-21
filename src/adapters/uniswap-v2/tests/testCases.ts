@@ -9,14 +9,16 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0xa3e8c7e7402565d4476661f37bd033bb8d960e49',
     },
+    blockNumber: 19277194,
   },
   {
     chainId: Chain.Ethereum,
     method: 'profits',
     input: {
-      userAddress: '0xa3e8c7e7402565d4476661f37bd033bb8d960e49',
-      timePeriod: TimePeriod.oneDay,
+      userAddress: '0xBA54C070B1f44DFb5fe161e5dC3062E2b965166D',
+      timePeriod: TimePeriod.sevenDays,
     },
+    blockNumber: 19277194,
   },
   {
     chainId: Chain.Ethereum,
@@ -26,7 +28,7 @@ export const testCases: TestCase[] = [
       fromBlock: 19234490,
       toBlock: 19234499,
       productId: 'pool',
-      protocolTokenAddress: '0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852'
+      protocolTokenAddress: '0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852',
     },
   },
   {
@@ -37,7 +39,7 @@ export const testCases: TestCase[] = [
       fromBlock: 19229200,
       toBlock: 19229220,
       productId: 'pool',
-      protocolTokenAddress: '0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852'
+      protocolTokenAddress: '0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852',
     },
   },
 ]
