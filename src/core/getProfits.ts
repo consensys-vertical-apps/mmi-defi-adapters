@@ -10,11 +10,11 @@ import {
   ProtocolPosition,
   Underlying,
 } from '../types/adapter'
+import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
-import { Erc20Metadata } from '../types/erc20Metadata'
 
 export async function getProfits({
   adapter,

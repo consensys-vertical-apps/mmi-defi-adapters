@@ -85,28 +85,6 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x06325440D014e39736583c165C2963BA99fAf14E/logo.png"
             },
             {
-              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-              "name": "Curve DAO Token",
-              "symbol": "CRV",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "1043405431419158695n",
-              "balance": 1.0434054314191588,
-              "price": 0.573965052493556,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
-            },
-            {
-              "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
-              "name": "Convex Token",
-              "symbol": "CVX",
-              "decimals": 18,
-              "type": "underlying-claimable",
-              "balanceRaw": "9390648882772428n",
-              "balance": 0.009390648882772428,
-              "price": 3.7100032709602577,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
-            },
-            {
               "type": "underlying-claimable",
               "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
               "symbol": "wstETH",
@@ -140,6 +118,28 @@
               ],
               "balance": 0.027258448877792236,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+            },
+            {
+              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "1043405431419158695n",
+              "balance": 1.0434054314191588,
+              "price": 0.573965052493556,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+            },
+            {
+              "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "9390648882772428n",
+              "balance": 0.009390648882772428,
+              "price": 3.7100032709602577,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
             }
           ],
           "balance": 28.941976633661458

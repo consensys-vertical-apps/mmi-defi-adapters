@@ -6,6 +6,11 @@ import { Chain } from '../../../core/constants/chains'
 import { WAD } from '../../../core/constants/WAD'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../../../core/decorators/resolveUnderlyingPositions'
+import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { aprToApy } from '../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
@@ -37,11 +42,6 @@ import {
   CToken__factory,
   MorphoCompoundLens__factory,
 } from '../contracts'
-import { NotImplementedError } from '../../../core/errors/errors'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../core/decorators/resolveUnderlyingPositions'
 
 type MorphoCompoundV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -364,7 +364,9 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           tokenMetadata.address,
           this.provider,
         )
-        const exchangeRate = await cTokenContract.exchangeRateStored()
+        const exchangeRate = await cTokenContract.exchangeRateStored({
+          blockTag: blockNumber,
+        })
 
         totalValueRaw = WadMath.wadDiv(totalValueRaw, exchangeRate)
 
@@ -446,8 +448,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       fromBlock,
       toBlock,
     )
-
-
 
     const movements = await Promise.all(
       eventResults.map(async (event) => {

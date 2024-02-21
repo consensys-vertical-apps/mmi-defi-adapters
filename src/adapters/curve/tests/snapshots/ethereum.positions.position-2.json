@@ -121,7 +121,6 @@
                   "type": "underlying",
                   "balanceRaw": "1825414n",
                   "balance": 1.825414,
-                  "price": 1.0000176590023988,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
                 }
               ],

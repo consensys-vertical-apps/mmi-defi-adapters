@@ -7,6 +7,10 @@ import { RAY } from '../../../core/constants/RAY'
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { aprToApy } from '../../../core/utils/aprToApy'
@@ -41,10 +45,6 @@ import {
 import { Protocol } from '../../protocols'
 import { MorphoAaveMath } from '../internal-utils/AaveV3.maths'
 import P2PInterestRates from '../internal-utils/P2PInterestRates'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../core/decorators/resolveUnderlyingPositions'
 
 type MorphoAaveV3PeerToPoolAdapterMetadata = Record<
   string,
