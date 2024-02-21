@@ -24,6 +24,7 @@ export function simplePoolAdapterTemplate(
     ProtocolTokenTvl,
     UnderlyingTokenRate,
     Underlying,
+    AssetType,
   } from '../../../../types/adapter'
   import { Erc20Metadata } from '../../../../types/erc20Metadata'
   
