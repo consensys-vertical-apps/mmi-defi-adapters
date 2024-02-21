@@ -100,8 +100,6 @@ function addressCommand(
     )
     .showHelpAfterError()
     .action(async (userAddress, { protocols, chains, raw }) => {
-      console.log({ protocols, chains, raw })
-
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
 

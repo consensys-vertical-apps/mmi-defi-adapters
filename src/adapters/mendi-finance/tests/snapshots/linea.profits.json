@@ -10,13 +10,147 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "supply",
-      "success": false,
-      "error": {
-        "message": "Unable to calculate profits, missing USD price for token position 0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
+          "name": "Mendi USD Coin",
+          "symbol": "meUSDC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+                "name": "USDC",
+                "symbol": "USDC",
+                "decimals": 6,
+                "balanceRaw": "100076520617n",
+                "type": "underlying"
+              },
+              {
+                "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+                "name": "USDC",
+                "symbol": "USDC",
+                "decimals": 6,
+                "balanceRaw": "100081014750n",
+                "type": "underlying"
+              }
+            ]
+          }
+        },
+        {
+          "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
+          "name": "Mendi USD Tether",
+          "symbol": "meUSDT",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+                "name": "Tether USD",
+                "symbol": "USDT",
+                "decimals": 6,
+                "balanceRaw": "57151480038n",
+                "type": "underlying"
+              },
+              {
+                "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+                "name": "Tether USD",
+                "symbol": "USDT",
+                "decimals": 6,
+                "balanceRaw": "57156119173n",
+                "type": "underlying"
+              }
+            ]
+          }
+        },
+        {
+          "address": "0xAd7f33984bed10518012013D4aB0458D37FEE6F3",
+          "name": "Mendi Wrapped Ether",
+          "symbol": "meWETH",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "balanceRaw": "804919682555621232n",
+                "type": "underlying"
+              },
+              {
+                "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "balanceRaw": "804997187618819006n",
+                "type": "underlying"
+              }
+            ]
+          }
+        },
+        {
+          "address": "0x9be5e24F05bBAfC28Da814bD59284878b388a40f",
+          "name": "Mendi Wrapped BTC",
+          "symbol": "meWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+                "name": "Wrapped BTC",
+                "symbol": "WBTC",
+                "decimals": 8,
+                "balanceRaw": "100138397n",
+                "type": "underlying"
+              },
+              {
+                "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+                "name": "Wrapped BTC",
+                "symbol": "WBTC",
+                "decimals": 8,
+                "balanceRaw": "100141929n",
+                "type": "underlying"
+              }
+            ]
+          }
         }
-      }
+      ],
+      "fromBlock": 1590694,
+      "toBlock": 1597881
     },
     {
       "protocolId": "mendi-finance",

@@ -321,6 +321,8 @@ export interface CalculationData {
   deposits: number
   startPositionValue: number
   endPositionValue: number
+  hasTokensWithoutUSDPrices?: boolean
+  tokensWithoutUSDPrices?: Underlying[]
 }
 
 export interface ProtocolAdapterParams {

@@ -25,6 +25,14 @@ export function AddClaimedRewards({
             rewardAdapterId,
           )
 
+          const isSupported = (await rewardAdapter.getProtocolTokens()).find(
+            (token) => token.address == input.protocolTokenAddress,
+          )
+
+          if (!isSupported) {
+            return
+          }
+
           const claimedRewards = await rewardAdapter.getWithdrawals(input)
 
           movements.push(...claimedRewards)

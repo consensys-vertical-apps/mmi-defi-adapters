@@ -30,6 +30,9 @@ import { nativeTokenAddresses, priceAdapterConfig } from './priceV2Config'
 
 export const USD = 'USD'
 
+// Project details:
+// https://github.com/1inch/spot-price-aggregator
+
 export class PricesV2UsdAdapter implements IProtocolAdapter {
   productId = 'usd'
   protocolId: Protocol
@@ -73,7 +76,7 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
    * Returning an array of your protocol tokens.
    */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    throw new NotImplementedError()
+    return [{ address: '', name: '', symbol: '', decimals: 0 }]
   }
 
   /**
