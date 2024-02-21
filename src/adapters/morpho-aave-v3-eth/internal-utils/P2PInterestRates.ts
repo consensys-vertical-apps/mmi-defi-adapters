@@ -308,7 +308,7 @@ export default class P2PInterestRates {
         this.__MATHS__.indexMul(lastIndexes.p2pIndex, p2pGrowthFactor) /
         BigInt(1e4)
       )
-    console.log('not computing if')
+
     const proportionDelta = min(
       RayMath.rayDivUp(
         this.__MATHS__.indexMul(scaledDelta, lastIndexes.poolIndex),

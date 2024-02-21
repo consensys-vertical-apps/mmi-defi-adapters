@@ -430,7 +430,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
           userAddress,
           protocolTokenAddress,
         )
-        console.log(undefined, userAddress, protocolTokenAddress)
+
         break
       case 'borrowed':
         filter = morphoCompoundContract.filters.Borrowed(
@@ -447,7 +447,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       toBlock,
     )
 
-    console.log(eventResults)
+
 
     const movements = await Promise.all(
       eventResults.map(async (event) => {

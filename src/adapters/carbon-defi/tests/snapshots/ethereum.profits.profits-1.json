@@ -27,6 +27,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 4.82575212039723,
             "endPositionValue": 4.981469921429041
           }
@@ -43,6 +45,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 13604.664763200006,
             "endPositionValue": 13660.113762094494
           }
@@ -59,6 +63,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 8503.678174041706,
             "endPositionValue": 8457.605554019825
           }
@@ -75,6 +81,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 6660.6641802136755,
             "endPositionValue": 6687.811277712485
           }
@@ -91,6 +99,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 3584.905463715094,
             "endPositionValue": 3599.67219206932
           }
@@ -107,6 +117,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 3178.72074877881,
             "endPositionValue": 3191.6702405544497
           }
@@ -123,6 +135,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 1054.7936898312562,
             "endPositionValue": 1059.0598332606091
           }
@@ -139,6 +153,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 804.2185282188673,
             "endPositionValue": 802.4241594859503
           }
@@ -155,6 +171,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 245.65516352653273,
             "endPositionValue": 224.5560262330555
           }
@@ -171,6 +189,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 1266.8763817045603,
             "endPositionValue": 1245.9570650875098
           }

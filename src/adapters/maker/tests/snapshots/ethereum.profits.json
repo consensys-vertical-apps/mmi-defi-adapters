@@ -26,6 +26,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 5602387.681368161,
             "endPositionValue": 5608461.962312493
           }
