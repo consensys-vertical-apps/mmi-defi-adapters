@@ -27,16 +27,41 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "staking",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
-      "success": false,
-      "error": {
-        "message": "Protocol token pool not found",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf34DFF761145FF0B05e917811d488B441F33a968",
+          "name": "Curve.fi cDAI/cUSDC Convex Deposit",
+          "symbol": "cvxcDAI+cUSDC",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 706198.5526794195,
+          "performance": 0.0017408823849241644,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 405655522.04733384,
+            "endPositionValue": 406361720.60001326
+          }
+        },
+        {
+          "address": "0x44D8FaB7CD8b7877D5F79974c2F501aF6E65AbBA",
+          "name": "Curve.fi Factory Plain Pool: crvUSD/USDC Convex Deposit",
+          "symbol": "cvxcrvUSDUSDC-f",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -61.67404994936442,
+          "performance": -0.0024720462305284413,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 24948.582752103528,
+            "endPositionValue": 24886.908702154164
+          }
         }
-      }
+      ],
+      "fromBlock": 18706497,
+      "toBlock": 18713643
     },
     {
       "protocolId": "convex",

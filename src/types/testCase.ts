@@ -16,6 +16,7 @@ export type TestCase = {
         userAddress: string
         timePeriod?: TimePeriod
         includeRawValues?: boolean
+        filterProtocolTokens?: string[]
       }
       blockNumber?: number
     }

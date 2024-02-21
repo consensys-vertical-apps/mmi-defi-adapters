@@ -10,11 +10,44 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "iziswap",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
-      "tokens": [],
+      "tokens": [
+        {
+          "address": "0x1CB60033F61e4fc171c963f0d2d3F63Ece24319c",
+          "name": "USDC / LAB - 10000",
+          "symbol": "USDC / LAB - 10000",
+          "decimals": 18,
+          "tokenId": "20001",
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0xB97F21D1f2508fF5c73E7B5AF02847640B1ff75d",
+                "name": "LineaBank Token",
+                "symbol": "LAB",
+                "decimals": 18,
+                "balanceRaw": "286768941192425743n",
+                "type": "underlying-claimable"
+              },
+              {
+                "address": "0xB97F21D1f2508fF5c73E7B5AF02847640B1ff75d",
+                "name": "LineaBank Token",
+                "symbol": "LAB",
+                "decimals": 18,
+                "balanceRaw": "303946457585683209n",
+                "type": "underlying-claimable"
+              }
+            ]
+          }
+        }
+      ],
       "fromBlock": 1098124,
       "toBlock": 1105311
     }

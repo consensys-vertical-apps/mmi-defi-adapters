@@ -1,19 +1,10 @@
+import { Chain } from '../../../core/constants/chains'
 import type { TestCase } from '../../../types/testCase'
 
 export const testCases: TestCase[] = [
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'positions',
-  //   input: {
-  //     userAddress: '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
-  //   },
-  // },
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'profits',
-  //   input: {
-  //     userAddress: '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
-  //     timePeriod: TimePeriod.oneDay,
-  //   },
-  // },
+  {
+    chainId: Chain.Ethereum,
+    method: 'prices',
+    filterProtocolToken: '0xFe459828c90c0BA4bC8b42F5C5D44F316700B430',
+  },
 ]

@@ -13,7 +13,7 @@ const protocolToken = {
   symbol: 'jcoin',
   type: TokenType.Protocol,
   decimals,
-  priceRaw,
+  priceRaw: undefined,
   balanceRaw,
   tokenId: undefined,
 }
@@ -41,6 +41,7 @@ describe('aggregateFiatBalances', () => {
         tokens: [
           {
             ...underlyingToken,
+            priceRaw: undefined,
             tokens: [underlyingToken],
           },
         ],
@@ -68,10 +69,12 @@ describe('aggregateFiatBalances', () => {
         tokens: [
           {
             ...underlyingToken,
+            priceRaw: undefined,
             tokens: [underlyingToken],
           },
           {
             ...underlyingToken,
+            priceRaw: undefined,
             tokens: [underlyingToken],
           },
         ],

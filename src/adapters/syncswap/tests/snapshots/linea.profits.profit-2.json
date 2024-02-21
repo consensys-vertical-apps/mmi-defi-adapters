@@ -10,11 +10,77 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "pool",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
-      "tokens": [],
+      "tokens": [
+        {
+          "address": "0xd71EcE20343233aD9E7ce29bc954b813f41FbDcB",
+          "name": "SyncSwap WETH/BNB Classic LP",
+          "symbol": "WETH/BNB cSLP",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0xf5C6825015280CdfD0b56903F9F8B5A2233476F5",
+                "name": "Binance Coin",
+                "symbol": "BNB",
+                "decimals": 18,
+                "balanceRaw": "1535540822295941n",
+                "type": "underlying"
+              },
+              {
+                "address": "0xf5C6825015280CdfD0b56903F9F8B5A2233476F5",
+                "name": "Binance Coin",
+                "symbol": "BNB",
+                "decimals": 18,
+                "balanceRaw": "1555571978668007n",
+                "type": "underlying"
+              }
+            ]
+          }
+        },
+        {
+          "address": "0x46eC4BB184528C3aEE6F1419E11b28A97f33d483",
+          "name": "SyncSwap MATIC/WETH Classic LP",
+          "symbol": "MATIC/WETH cSLP",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "balanceRaw": "200832333538911n",
+                "type": "underlying"
+              },
+              {
+                "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "balanceRaw": "199848460387857n",
+                "type": "underlying"
+              }
+            ]
+          }
+        }
+      ],
       "fromBlock": 497146,
       "toBlock": 547455
     }

@@ -1,7 +1,7 @@
 import { MovementsByBlock, TokenType } from '../../types/adapter'
 import { aggregateFiatBalancesFromMovements } from './aggregateFiatBalancesFromMovements'
 
-const balanceRaw = 2000000000000000000n
+const balanceRaw = 2n * 10n ** 18n
 const priceRaw = BigInt(Math.pow(2, 18))
 const decimals = 18
 
@@ -23,16 +23,7 @@ const protocolToken2 = {
 
   tokenId: undefined,
 }
-const underlyingTokenWithPrice = {
-  name: 'underlying',
-  symbol: 'underlying',
-  type: TokenType.Underlying,
-  address: '0x1',
-  decimals,
-  balanceRaw,
-  priceRaw,
-}
-const underlyingTokenWithoutPrice = {
+const underlyingToken = {
   name: 'underlying',
   symbol: 'underlying',
   type: TokenType.Underlying,
@@ -51,19 +42,19 @@ describe('aggregateFiatBalancesFromMovements', () => {
     const testData: MovementsByBlock[] = [
       {
         protocolToken: protocolToken1,
-        tokens: [underlyingTokenWithPrice, underlyingTokenWithPrice],
+        tokens: [underlyingToken, underlyingToken],
         blockNumber: 11,
         transactionHash: '0x',
       },
       {
         protocolToken: protocolToken2,
-        tokens: [underlyingTokenWithPrice, underlyingTokenWithPrice],
+        tokens: [underlyingToken, underlyingToken],
         blockNumber: 11,
         transactionHash: '0x',
       },
       {
         protocolToken: protocolToken2,
-        tokens: [underlyingTokenWithPrice],
+        tokens: [underlyingToken],
         blockNumber: 11,
         transactionHash: '0x',
       },
@@ -90,27 +81,26 @@ describe('aggregateFiatBalancesFromMovements', () => {
         protocolToken: protocolToken1,
         tokens: [
           {
-            ...underlyingTokenWithoutPrice,
-
-            tokens: [underlyingTokenWithPrice],
+            ...underlyingToken,
+            priceRaw: undefined,
+            tokens: [underlyingToken],
           },
-          underlyingTokenWithoutPrice,
         ],
       },
       {
         protocolToken: protocolToken1,
-        tokens: [underlyingTokenWithPrice, underlyingTokenWithPrice],
+        tokens: [underlyingToken, underlyingToken],
       },
     ]
 
-    expect(
-      aggregateFiatBalancesFromMovements(
-        testData as unknown as MovementsByBlock[],
-      ),
-    ).toEqual({
+    const result = aggregateFiatBalancesFromMovements(
+      testData as MovementsByBlock[],
+    )
+
+    expect(result).toEqual({
       [protocolToken1.address]: {
         protocolTokenMetadata: protocolToken1,
-        usdRaw: usdRaw * 4n,
+        usdRaw: usdRaw * 3n,
       },
     })
   })
