@@ -1,0 +1,35 @@
+{
+  "blockNumber": 19275840,
+  "snapshot": [
+    {
+      "protocolId": "uniswap-v2",
+      "name": "UniswapV2",
+      "description": "UniswapV2 pool adapter",
+      "siteUrl": "https://v2.info.uniswap.org/home",
+      "iconUrl": "https://app.uniswap.org/swap",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852",
+          "name": "Uniswap V2",
+          "symbol": "UNI-V2",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -227.54462209835765,
+          "performance": -0.006156861084075179,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "startPositionValue": 36957.894451590844,
+            "endPositionValue": 36730.34982949249
+          }
+        }
+      ],
+      "fromBlock": 19268694,
+      "toBlock": 19275840
+    }
+  ]
+}

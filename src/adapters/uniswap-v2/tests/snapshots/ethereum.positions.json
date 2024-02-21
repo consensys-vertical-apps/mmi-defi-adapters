@@ -1,0 +1,51 @@
+{
+  "blockNumber": 19275840,
+  "snapshot": [
+    {
+      "protocolId": "uniswap-v2",
+      "name": "UniswapV2",
+      "description": "UniswapV2 pool adapter",
+      "siteUrl": "https://v2.info.uniswap.org/home",
+      "iconUrl": "https://app.uniswap.org/swap",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852",
+          "name": "Uniswap V2",
+          "symbol": "UNI-V2",
+          "decimals": 18,
+          "balanceRaw": "140480719454227n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "6325539673084324177n",
+              "balance": 6.325539673084324,
+              "price": 2902.56,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "18387715564n",
+              "balance": 18387.715564,
+              "price": 0.9990415248727441,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": 0.000140480719454227
+        }
+      ]
+    }
+  ]
+}
