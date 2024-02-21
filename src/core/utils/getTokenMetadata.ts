@@ -24,10 +24,6 @@ export async function getTokenMetadata(
   if (fileMetadata) {
     const fileTokenMetadata = fileMetadata[tokenAddress.toLowerCase()]
     if (fileTokenMetadata) {
-      logger.debug(
-        { tokenAddress, chainId },
-        'Token metadata found on cached file',
-      )
       return {
         address: getAddress(fileTokenMetadata.address),
         name: fileTokenMetadata.name,
@@ -43,7 +39,6 @@ export async function getTokenMetadata(
     provider,
   )
   if (onChainTokenMetadata) {
-    logger.debug({ tokenAddress, chainId }, 'Token metadata found on chain')
     return onChainTokenMetadata
   }
 

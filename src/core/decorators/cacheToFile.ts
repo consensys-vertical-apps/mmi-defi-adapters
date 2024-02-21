@@ -64,16 +64,6 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
         throw new Error('Metadata file not found')
       }
 
-      logger.debug(
-        {
-          protocolId: this.protocolId,
-          productId: this.productId,
-          chainId: this.chainId,
-          fileKey,
-        },
-        'Metadata file loaded',
-      )
-
       return metadata
     }
 
