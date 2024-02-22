@@ -44,6 +44,39 @@
             }
           ],
           "balance": 0.000140480719454227
+        },
+        {
+          "address": "0x3041CbD36888bECc7bbCBc0045E3B1f144466f5f",
+          "name": "Uniswap V2",
+          "symbol": "UNI-V2",
+          "decimals": 18,
+          "balanceRaw": "1459724081n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "1883066897n",
+              "balance": 1883.066897,
+              "price": 1.0000612677263265,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "1888667749n",
+              "balance": 1888.667749,
+              "price": 0.9996556896045466,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": 1.459724081e-9
         }
       ]
     }
