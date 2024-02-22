@@ -74,7 +74,7 @@ export class UniswapV2PoolAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<UniswapV2PoolAdapterMetadata> {
-    const numberOfPairs = 50
+    const numberOfPairs = 1000
     const minVolumeUSD = 50000
     const graphQueryUrl: Partial<Record<Chain, string>> = {
       [Chain.Ethereum]:
@@ -100,7 +100,11 @@ export class UniswapV2PoolAdapter
         ])
 
         return {
-          protocolToken,
+          protocolToken: {
+            ...protocolToken,
+            name: this.protocolTokenName(token0.symbol, token1.symbol),
+            symbol: this.protocolTokenName(token0.symbol, token1.symbol),
+          },
           token0,
           token1,
         }
@@ -231,5 +235,9 @@ export class UniswapV2PoolAdapter
     }
 
     return poolMetadata
+  }
+
+  private protocolTokenName(token0Symbol: string, token1Symbol: string) {
+    return `${token0Symbol} / ${token1Symbol}`
   }
 }
