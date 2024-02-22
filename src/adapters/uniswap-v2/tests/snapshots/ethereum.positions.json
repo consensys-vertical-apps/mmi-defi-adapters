@@ -14,8 +14,8 @@
       "tokens": [
         {
           "address": "0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852",
-          "name": "Uniswap V2",
-          "symbol": "UNI-V2",
+          "name": "Uniswap V2 WETH / USDT",
+          "symbol": "UNI-V2/WETH/USDT",
           "decimals": 18,
           "balanceRaw": "140480719454227n",
           "type": "protocol",
@@ -47,8 +47,8 @@
         },
         {
           "address": "0x3041CbD36888bECc7bbCBc0045E3B1f144466f5f",
-          "name": "Uniswap V2",
-          "symbol": "UNI-V2",
+          "name": "Uniswap V2 USDC / USDT",
+          "symbol": "UNI-V2/USDC/USDT",
           "decimals": 18,
           "balanceRaw": "1459724081n",
           "type": "protocol",

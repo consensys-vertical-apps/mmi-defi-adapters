@@ -103,7 +103,7 @@ export class UniswapV2PoolAdapter
           protocolToken: {
             ...protocolToken,
             name: this.protocolTokenName(token0.symbol, token1.symbol),
-            symbol: this.protocolTokenName(token0.symbol, token1.symbol),
+            symbol: this.protocolTokenSymbol(token0.symbol, token1.symbol),
           },
           token0,
           token1,
@@ -238,6 +238,10 @@ export class UniswapV2PoolAdapter
   }
 
   private protocolTokenName(token0Symbol: string, token1Symbol: string) {
-    return `${token0Symbol} / ${token1Symbol}`
+    return `Uniswap V2 ${token0Symbol} / ${token1Symbol}`
+  }
+
+  private protocolTokenSymbol(token0Symbol: string, token1Symbol: string) {
+    return `UNI-V2/${token0Symbol}/${token1Symbol}`
   }
 }
