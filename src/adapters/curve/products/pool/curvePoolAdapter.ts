@@ -27,6 +27,7 @@ import {
   UnderlyingTokenRate,
   Underlying,
   TokenType,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { MetaRegistry__factory } from '../../contracts'
@@ -62,6 +63,9 @@ export class CurvePoolAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
     }
   }
 

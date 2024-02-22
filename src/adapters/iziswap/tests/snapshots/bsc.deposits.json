@@ -8,6 +8,9 @@
     "positionType": "supply",
     "chainId": 56,
     "productId": "iziswap",
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
     "success": true,
     "movements": [
       {

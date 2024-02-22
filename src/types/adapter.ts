@@ -12,6 +12,12 @@ export const TokenType = {
 } as const
 export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
+export const AssetType = {
+  StandardErc20: 'StandardErc20', // transferrable; fungible positions; stakeable
+  NonStandardErc20: 'NonStandardErc20', // such as nft, reward position, borrow positions (borrow positions cant be transferred)
+} as const
+export type AssetType = (typeof AssetType)[keyof typeof AssetType]
+
 export const PositionType = {
   /**
    * Liquidity position e.g. a dex pool
@@ -106,6 +112,10 @@ export type GetEventsInput = {
   tokenId?: string
 }
 
+export type AssetDetails = {
+  type: AssetType
+}
+
 export type ProtocolDetails = {
   /**
    * Unique protocol id
@@ -147,6 +157,11 @@ export type ProtocolDetails = {
    * Unique protocol-product name
    */
   productId: string
+
+  /**
+   *
+   */
+  assetDetails: AssetDetails
 }
 
 export interface GetPositionsInput {

@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19270601,
+  "blockNumber": 19283451,
   "snapshot": [
     {
       "protocolId": "prices-v2",
@@ -10,6 +10,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "usd",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": true,
       "tokens": [
         {

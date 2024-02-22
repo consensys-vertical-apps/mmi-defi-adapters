@@ -21,6 +21,7 @@ import {
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -68,6 +69,9 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.NonStandardErc20,
+      },
     }
   }
 

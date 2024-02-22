@@ -90,6 +90,7 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "ethers": "^6.7.1",
+    "evm-maths": "^6.0.0",
     "pino": "^8.15.0",
     "zod": "^3.22.4"
   }

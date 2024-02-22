@@ -23,6 +23,7 @@ import {
   UnderlyingTokenRate,
   TokenBalance,
   Underlying,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
@@ -83,6 +84,9 @@ export class MendiFinanceBorrowAdapter
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.NonStandardErc20,
+      },
     }
   }
 

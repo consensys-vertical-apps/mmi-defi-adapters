@@ -394,6 +394,88 @@ export class DefiProvider {
 
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
+  async getRepays({
+    userAddress,
+    fromBlock,
+    toBlock,
+    protocolTokenAddress,
+    protocolId,
+    chainId,
+    productId,
+    tokenId,
+  }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
+    const provider = this.chainProvider.providers[chainId]
+
+    let adapter: IProtocolAdapter
+    try {
+      adapter = this.adaptersController.fetchAdapter(
+        chainId,
+        protocolId,
+        productId,
+      )
+    } catch (error) {
+      return this.handleError(error)
+    }
+
+    const runner = async (adapter: IProtocolAdapter) => {
+      const positionMovements = await adapter.getRepays?.({
+        protocolTokenAddress: getAddress(protocolTokenAddress),
+        fromBlock,
+        toBlock,
+        userAddress,
+        tokenId,
+      })
+
+      return {
+        movements:
+          positionMovements?.map((value) => enrichMovements(value, chainId)) ||
+          [],
+      }
+    }
+
+    return this.runTaskForAdapter(adapter, provider!, runner)
+  }
+  async getBorrows({
+    userAddress,
+    fromBlock,
+    toBlock,
+    protocolTokenAddress,
+    protocolId,
+    chainId,
+    productId,
+    tokenId,
+  }: GetEventsRequestInput): Promise<DefiMovementsResponse> {
+    const provider = this.chainProvider.providers[chainId]
+
+    let adapter: IProtocolAdapter
+    try {
+      adapter = this.adaptersController.fetchAdapter(
+        chainId,
+        protocolId,
+        productId,
+      )
+    } catch (error) {
+      return this.handleError(error)
+    }
+
+    const runner = async (adapter: IProtocolAdapter) => {
+      const positionMovements = await adapter.getBorrows?.({
+        protocolTokenAddress: getAddress(protocolTokenAddress),
+        fromBlock,
+        toBlock,
+        userAddress,
+        tokenId,
+      })
+
+      return {
+        movements:
+          positionMovements?.map((value) => enrichMovements(value, chainId)) ||
+          [],
+      }
+    }
+
+    return this.runTaskForAdapter(adapter, provider!, runner)
+  }
 
   async getTotalValueLocked({
     filterProtocolIds,

@@ -27,6 +27,7 @@ import {
   Underlying,
   TokenBalance,
   UnderlyingTokenRate,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
@@ -94,6 +95,9 @@ export class IZiswapAdapter extends SimplePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.NonStandardErc20,
+      },
     }
   }
 

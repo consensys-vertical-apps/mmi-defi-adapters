@@ -1,0 +1,40 @@
+{
+  "snapshot": {
+    "protocolId": "morpho-compound-v2",
+    "name": "MorphoCompoundV2",
+    "description": "MorphoCompoundV2 defi adapter on the borrow side",
+    "siteUrl": "https://compound.morpho.org/",
+    "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+    "positionType": "borrow",
+    "chainId": 1,
+    "productId": "optimizer-borrow",
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "protocolToken": {
+          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
+          "name": "Compound Tether",
+          "symbol": "CUSDT",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 6,
+            "balanceRaw": "115000000000n",
+            "type": "underlying",
+            "price": 1.005026128781913,
+            "balance": 115000
+          }
+        ],
+        "blockNumber": 18761149,
+        "transactionHash": "0xa6ab760f6af335b6b61afd01637135c8a0ab2d689f6f270c3dcb09e2646d5ca2"
+      }
+    ]
+  }
+}

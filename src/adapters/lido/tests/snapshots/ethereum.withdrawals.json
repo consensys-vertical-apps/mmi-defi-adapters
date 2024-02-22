@@ -8,6 +8,9 @@
     "positionType": "stake",
     "chainId": 1,
     "productId": "st-eth",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
     "success": true,
     "movements": [
       {

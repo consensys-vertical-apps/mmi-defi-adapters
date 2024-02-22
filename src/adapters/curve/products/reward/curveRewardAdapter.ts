@@ -13,6 +13,7 @@ import {
   TokenType,
   GetEventsInput,
   MovementsByBlock,
+  AssetType,
 } from '../../../../types/adapter'
 import { CrvMinter__factory, StakingContract__factory } from '../../contracts'
 import { CurveStakingAdapter } from '../staking/curveStakingAdapter'
@@ -45,6 +46,9 @@ export class CurveRewardAdapter
       positionType: PositionType.Reward,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.NonStandardErc20,
+      },
     }
   }
 
