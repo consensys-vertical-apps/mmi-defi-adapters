@@ -1,4 +1,5 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
   CacheToFile,
@@ -73,22 +74,20 @@ export class UniswapV2PoolAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<UniswapV2PoolAdapterMetadata> {
-    const response = await fetch(
-      'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          operationName: 'tokenDayDatas',
-          variables: {
-            tokenAddr: '0x9ea3b5b4ec044b70375236a281986106457b20ef',
-            skip: 0,
-          },
-          query:
-            '{ pairs(first: 50 where: {reserveUSD_gt: "1000000", volumeUSD_gt: "50000"} orderBy: reserveUSD orderDirection: desc) {id token0 {id symbol name decimals} token1 {id symbol name decimals}}}',
-        }),
-      },
-    )
+    const numberOfPairs = 50
+    const minVolumeUSD = 50000
+    const graphQueryUrl: Partial<Record<Chain, string>> = {
+      [Chain.Ethereum]:
+        'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev',
+    }
+
+    const response = await fetch(graphQueryUrl[this.chainId]!, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: `{ pairs(first: ${numberOfPairs} where: {volumeUSD_gt: ${minVolumeUSD}} orderBy: reserveUSD orderDirection: desc) {id token0 {id} token1 {id}}}`,
+      }),
+    })
 
     const gqlResponse: GqlResponse = await response.json()
 
