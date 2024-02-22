@@ -103,6 +103,8 @@ export async function getProfits({
       const isBorrow =
         adapter.getProtocolDetails().positionType === PositionType.Borrow
 
+      // Borrow adapters only have: repays and borrows
+      // All other types have withdrawals and deposits only
       const [withdrawals, deposits, repays, borrows] = await Promise.all([
         !isBorrow
           ? adapter.getWithdrawals(getEventsInput).then((result) => {
