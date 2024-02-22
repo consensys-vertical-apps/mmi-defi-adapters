@@ -237,7 +237,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
     if (borrowsTestCases.length) {
       describe('borrows', () => {
         it.each(
-          withdrawalsTestCases.map((testCase) => [testKey(testCase), testCase]),
+          borrowsTestCases.map((testCase) => [testKey(testCase), testCase]),
         )(
           'withdrawals for test %s match',
           async (_, testCase) => {

@@ -77,19 +77,19 @@ export const testCases: TestCase[] = [
       productId: 'optimizer-borrow',
     },
   },
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'tvl',
-  //   blockNumber: 18733080,
-  // },
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'apr',
-  //   blockNumber: 18733080,
-  // },
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'apy',
-  //   blockNumber: 18733080,
-  // },
+  {
+    chainId: Chain.Ethereum,
+    method: 'tvl',
+    blockNumber: 18733080,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'apr',
+    blockNumber: 18733080,
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'apy',
+    blockNumber: 18733080,
+  },
 ]
