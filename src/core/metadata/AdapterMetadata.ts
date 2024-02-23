@@ -48,7 +48,13 @@ import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/m
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
 import StargateVestingArbitrumVestingToken from '../../adapters/stargate/products/vesting/metadata/arbitrum.vesting-token.json'
 import StargateVestingEthereumVestingToken from '../../adapters/stargate/products/vesting/metadata/ethereum.vesting-token.json'
+import UniswapV2PoolArbitrumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
+import UniswapV2PoolAvalancheProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/avalanche.protocol-token.json'
+import UniswapV2PoolBaseProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/base.protocol-token.json'
+import UniswapV2PoolBscProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/bsc.protocol-token.json'
 import UniswapV2PoolEthereumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/ethereum.protocol-token.json'
+import UniswapV2PoolOptimismProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/optimism.protocol-token.json'
+import UniswapV2PoolPolygonProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/polygon.protocol-token.json'
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
@@ -493,6 +499,60 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     UniswapV2PoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolBscProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolAvalancheProtocolToken,
   ],
 ])
 

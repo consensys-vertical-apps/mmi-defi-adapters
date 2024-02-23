@@ -1,0 +1,82 @@
+{
+  "0x4C43646304492A925E335f2b6d840C1489f17815": {
+    "protocolToken": {
+      "address": "0x4C43646304492A925E335f2b6d840C1489f17815",
+      "name": "Uniswap V2 USDC / WETH",
+      "symbol": "UNI-V2/USDC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x895bb8b1Cc9746b431B66B2114f46A7A57412980": {
+    "protocolToken": {
+      "address": "0x895bb8b1Cc9746b431B66B2114f46A7A57412980",
+      "name": "Uniswap V2 FRAX / WETH",
+      "symbol": "UNI-V2/FRAX/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x8782Edc55C8514BF30e36A3585AfCadbFF525C77": {
+    "protocolToken": {
+      "address": "0x8782Edc55C8514BF30e36A3585AfCadbFF525C77",
+      "name": "Uniswap V2 WETH / WBTC",
+      "symbol": "UNI-V2/WETH/WBTC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0xf3fe89650E170D4d54D8dDd41AfFDE7369cBc7d3": {
+    "protocolToken": {
+      "address": "0xf3fe89650E170D4d54D8dDd41AfFDE7369cBc7d3",
+      "name": "Uniswap V2 WETH / OP",
+      "symbol": "UNI-V2/WETH/OP",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
+      "decimals": 18
+    }
+  }
+}

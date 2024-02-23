@@ -190,5 +190,11 @@ export const supportedProtocols: Record<
 
   [Protocol.UniswapV2]: {
     [Chain.Ethereum]: [UniswapV2PoolAdapter],
+    [Chain.Optimism]: [UniswapV2PoolAdapter],
+    [Chain.Bsc]: [UniswapV2PoolAdapter],
+    [Chain.Polygon]: [UniswapV2PoolAdapter],
+    [Chain.Base]: [UniswapV2PoolAdapter],
+    [Chain.Arbitrum]: [UniswapV2PoolAdapter],
+    [Chain.Avalanche]: [UniswapV2PoolAdapter],
   },
 }

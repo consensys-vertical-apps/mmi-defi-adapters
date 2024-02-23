@@ -20,7 +20,7 @@ import {
   TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { Pair__factory } from '../../contracts'
+import { Factory__factory, Pair__factory } from '../../contracts'
 
 type UniswapV2PoolAdapterMetadata = Record<
   string,
@@ -30,28 +30,6 @@ type UniswapV2PoolAdapterMetadata = Record<
     token1: Erc20Metadata
   }
 >
-
-type GqlResponse = {
-  data: {
-    pairs: [
-      {
-        id: string
-        token0: {
-          id: string
-          symbol: string
-          name: string
-          decimals: number
-        }
-        token1: {
-          id: string
-          symbol: string
-          name: string
-          decimals: number
-        }
-      },
-    ]
-  }
-}
 
 export class UniswapV2PoolAdapter
   extends SimplePoolAdapter
@@ -74,29 +52,36 @@ export class UniswapV2PoolAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<UniswapV2PoolAdapterMetadata> {
-    const numberOfPairs = 1000
-    const minVolumeUSD = 50000
-    const graphQueryUrl: Partial<Record<Chain, string>> = {
-      [Chain.Ethereum]:
-        'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev',
+    let pairs: {
+      pairAddress: string
+      token0Address: string
+      token1Address: string
+    }[]
+
+    switch (this.chainId) {
+      case Chain.Ethereum:
+        pairs = await this.graphQlPoolExtraction(Chain.Ethereum)
+        break
+
+      case Chain.Optimism:
+      case Chain.Bsc:
+      case Chain.Polygon:
+      case Chain.Base:
+      case Chain.Arbitrum:
+      case Chain.Avalanche:
+        pairs = await this.factoryPoolExtraction(this.chainId)
+        break
+
+      default:
+        throw new Error('Chain not supported')
     }
 
-    const response = await fetch(graphQueryUrl[this.chainId]!, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        query: `{ pairs(first: ${numberOfPairs} where: {volumeUSD_gt: ${minVolumeUSD}} orderBy: reserveUSD orderDirection: desc) {id token0 {id} token1 {id}}}`,
-      }),
-    })
-
-    const gqlResponse: GqlResponse = await response.json()
-
     const pairPromises = await Promise.all(
-      gqlResponse.data.pairs.map(async (pair) => {
+      pairs.map(async (pair) => {
         const [protocolToken, token0, token1] = await Promise.all([
-          getTokenMetadata(pair.id, this.chainId, this.provider),
-          getTokenMetadata(pair.token0.id, this.chainId, this.provider),
-          getTokenMetadata(pair.token1.id, this.chainId, this.provider),
+          getTokenMetadata(pair.pairAddress, this.chainId, this.provider),
+          getTokenMetadata(pair.token0Address, this.chainId, this.provider),
+          getTokenMetadata(pair.token1Address, this.chainId, this.provider),
         ])
 
         return {
@@ -243,5 +228,117 @@ export class UniswapV2PoolAdapter
 
   private protocolTokenSymbol(token0Symbol: string, token1Symbol: string) {
     return `UNI-V2/${token0Symbol}/${token1Symbol}`
+  }
+
+  private async graphQlPoolExtraction(chainId: typeof Chain.Ethereum): Promise<
+    {
+      pairAddress: string
+      token0Address: string
+      token1Address: string
+    }[]
+  > {
+    const numberOfPairs = 1000
+    const minVolumeUSD = 50000
+    const graphQueryUrl: Record<
+      typeof Chain.Ethereum,
+      {
+        url: string
+        query: string
+      }
+    > = {
+      [Chain.Ethereum]: {
+        url: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev',
+        query: `{ pairs(first: ${numberOfPairs} where: {volumeUSD_gt: ${minVolumeUSD}} orderBy: reserveUSD orderDirection: desc) {id token0 {id} token1 {id}}}`,
+      },
+    }
+
+    const { url, query } = graphQueryUrl[chainId]
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query,
+      }),
+    })
+
+    const gqlResponse: {
+      data: {
+        pairs: [
+          {
+            id: string
+            token0: {
+              id: string
+            }
+            token1: {
+              id: string
+            }
+          },
+        ]
+      }
+    } = await response.json()
+
+    return gqlResponse.data.pairs.map((pair) => {
+      return {
+        pairAddress: pair.id,
+        token0Address: pair.token0.id,
+        token1Address: pair.token1.id,
+      }
+    })
+  }
+
+  private async factoryPoolExtraction(
+    chainId:
+      | typeof Chain.Optimism
+      | typeof Chain.Bsc
+      | typeof Chain.Polygon
+      | typeof Chain.Base
+      | typeof Chain.Arbitrum
+      | typeof Chain.Avalanche,
+  ): Promise<
+    {
+      pairAddress: string
+      token0Address: string
+      token1Address: string
+    }[]
+  > {
+    const contractAddresses: Record<
+      | typeof Chain.Optimism
+      | typeof Chain.Bsc
+      | typeof Chain.Polygon
+      | typeof Chain.Base
+      | typeof Chain.Arbitrum
+      | typeof Chain.Avalanche,
+      string
+    > = {
+      [Chain.Optimism]: '0x0c3c1c532F1e39EdF36BE9Fe0bE1410313E074Bf',
+      [Chain.Bsc]: '0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6',
+      [Chain.Polygon]: '0x9e5A52f57b3038F1B8EeE45F28b3C1967e22799C',
+      [Chain.Base]: '0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6',
+      [Chain.Arbitrum]: '0xf1D7CC64Fb4452F05c498126312eBE29f30Fbcf9',
+      [Chain.Avalanche]: '0x9e5A52f57b3038F1B8EeE45F28b3C1967e22799C',
+    }
+
+    const factoryContract = Factory__factory.connect(
+      contractAddresses[chainId],
+      this.provider,
+    )
+
+    const allPairsLength = Number(await factoryContract.allPairsLength())
+    return await Promise.all(
+      Array.from({ length: allPairsLength }, async (_, index) => {
+        const pairAddress = await factoryContract.allPairs(index)
+        const pairContract = Pair__factory.connect(pairAddress, this.provider)
+        const [token0, token1] = await Promise.all([
+          pairContract.token0(),
+          pairContract.token1(),
+        ])
+        return {
+          pairAddress,
+          token0Address: token0,
+          token1Address: token1,
+        }
+      }),
+    )
   }
 }
