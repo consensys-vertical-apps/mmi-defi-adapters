@@ -43,6 +43,12 @@ import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
 import MendiFinanceSupplyLineaMendi from '../../adapters/mendi-finance/products/supply/metadata/linea.mendi.json'
+import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
+import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v3-eth/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
+import MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v3-eth/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
+import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
@@ -421,6 +427,24 @@ export const MetadataFiles = new Map<string, Json>([
   ],
   [
     metadataKey({
+      protocolId: Protocol.MorphoAaveV2,
+      productId: 'optimizer-borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-borrow',
+    }),
+    MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoAaveV2,
+      productId: 'optimizer-supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-supply',
+    }),
+    MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply,
+  ],
+  [
+    metadataKey({
       protocolId: Protocol.Convex,
       productId: 'staking',
       chainId: Chain.Ethereum,
@@ -463,6 +487,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     ConvexCvxcrvWrapperEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoCompoundV2,
+      productId: 'optimizer-borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-borrow',
+    }),
+    MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoCompoundV2,
+      productId: 'optimizer-supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-supply',
+    }),
+    MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply,
   ],
   [
     metadataKey({
@@ -553,6 +595,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     UniswapV2PoolAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoAaveV3ETHOptimizer,
+      productId: 'optimizer-supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-supply',
+    }),
+    MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoAaveV3ETHOptimizer,
+      productId: 'optimizer-borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-borrow',
+    }),
+    MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow,
   ],
 ])
 

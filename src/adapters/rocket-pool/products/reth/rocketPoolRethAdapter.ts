@@ -13,6 +13,7 @@ import {
   ProtocolTokenApy,
   UnderlyingTokenRate,
   Underlying,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { RocketTokenRETH__factory } from '../../../rocket-pool/contracts'
@@ -30,6 +31,9 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
     }
   }
 

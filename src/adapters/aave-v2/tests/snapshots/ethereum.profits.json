@@ -10,6 +10,9 @@
       "positionType": "lend",
       "chainId": 1,
       "productId": "a-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
       "success": true,
       "tokens": [
         {
@@ -23,6 +26,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 10525402.835213795,
             "endPositionValue": 10363085.227267746
           }
@@ -38,6 +43,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 1323423.826574809,
             "endPositionValue": 1296164.666815829
           }
@@ -55,6 +62,9 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "stable-debt-token",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": true,
       "tokens": [],
       "fromBlock": 18176734,
@@ -69,6 +79,9 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": true,
       "tokens": [
         {
@@ -77,11 +90,13 @@
           "symbol": "variableDebtUSDT",
           "decimals": 6,
           "type": "protocol",
-          "profit": 7027.205629593693,
-          "performance": 0.0013264597972670455,
+          "profit": -27999.787203350104,
+          "performance": -0.005320434825330157,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 35026.99283294366,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": -5262687.754400335,
             "endPositionValue": -5290687.541603685
           }
@@ -97,6 +112,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": -81069.7787567245,
             "endPositionValue": -79821.47838210952
           }
@@ -112,6 +129,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": -366653.2205345867,
             "endPositionValue": -366274.0503840518
           }
@@ -127,6 +146,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": -3007393.867935685,
             "endPositionValue": -3003204.0607351903
           }

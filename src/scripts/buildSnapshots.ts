@@ -99,6 +99,25 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   }),
                 }
               }
+              case 'repays': {
+                return {
+                  snapshot: await defiProvider.getRepays({
+                    ...testCase.input,
+                    chainId: chainId,
+                    protocolId: protocolId,
+                  }),
+                }
+              }
+
+              case 'borrows': {
+                return {
+                  snapshot: await defiProvider.getBorrows({
+                    ...testCase.input,
+                    chainId: chainId,
+                    protocolId: protocolId,
+                  }),
+                }
+              }
 
               case 'prices': {
                 const blockNumber =

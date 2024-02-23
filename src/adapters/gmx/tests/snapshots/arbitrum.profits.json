@@ -10,6 +10,9 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "glp",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
       "success": true,
       "tokens": [
         {
@@ -23,6 +26,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 81.48475562442427,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 6.649732002681709,
             "endPositionValue": 88.13246715906351
           }

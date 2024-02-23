@@ -10,6 +10,9 @@
       "positionType": "lend",
       "chainId": 42161,
       "productId": "a-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
       "success": true,
       "tokens": [
         {
@@ -23,6 +26,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 218.36581159902462,
             "endPositionValue": 230.32818753262293
           }
@@ -38,6 +43,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 116.84586231538525,
             "endPositionValue": 121.99449130245823
           }
@@ -55,6 +62,9 @@
       "positionType": "borrow",
       "chainId": 42161,
       "productId": "stable-debt-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
       "success": true,
       "tokens": [],
       "fromBlock": 141970439,
@@ -69,6 +79,9 @@
       "positionType": "borrow",
       "chainId": 42161,
       "productId": "variable-debt-token",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": true,
       "tokens": [
         {
@@ -82,6 +95,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": -204.79365356958735,
             "endPositionValue": -204.53652279176058
           }

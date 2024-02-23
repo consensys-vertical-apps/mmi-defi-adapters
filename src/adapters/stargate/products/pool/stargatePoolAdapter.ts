@@ -19,6 +19,7 @@ import {
   ProtocolDetails,
   TokenBalance,
   TokenType,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
@@ -52,6 +53,9 @@ export class StargatePoolAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
     }
   }
 

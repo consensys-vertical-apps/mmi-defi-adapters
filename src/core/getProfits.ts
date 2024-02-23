@@ -8,7 +8,9 @@ import {
   TokenType,
   MovementsByBlock,
   ProtocolPosition,
+  Underlying,
 } from '../types/adapter'
+import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
@@ -85,6 +87,8 @@ export async function getProfits({
 
   const rawWithdrawals: MovementsByBlock[] = []
   const rawDeposits: MovementsByBlock[] = []
+  const rawRepays: MovementsByBlock[] = []
+  const rawBorrows: MovementsByBlock[] = []
 
   const tokens = await Promise.all(
     Object.values(endPositionValues).map(async ({ protocolTokenMetadata }) => {
@@ -96,15 +100,68 @@ export async function getProfits({
         tokenId: protocolTokenMetadata.tokenId,
       }
 
-      const [withdrawals, deposits] = await Promise.all([
-        adapter.getWithdrawals(getEventsInput).then((result) => {
-          rawWithdrawals.push(...result)
-          return aggregateFiatBalancesFromMovements(result)
-        }),
-        adapter.getDeposits(getEventsInput).then((result) => {
-          rawDeposits.push(...result)
-          return aggregateFiatBalancesFromMovements(result)
-        }),
+      const isBorrow =
+        adapter.getProtocolDetails().positionType === PositionType.Borrow
+
+      // Borrow adapters only have: repays and borrows
+      // All other types have withdrawals and deposits only
+      const [withdrawals, deposits, repays, borrows] = await Promise.all([
+        !isBorrow
+          ? adapter.getWithdrawals(getEventsInput).then((result) => {
+              rawWithdrawals.push(...result)
+              return aggregateFiatBalancesFromMovements(result)
+            })
+          : ({} as Record<
+              string,
+              {
+                protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
+                usdRaw: bigint
+                hasTokensWithoutUSDPrices?: boolean
+                tokensWithoutUSDPrices?: Underlying[]
+              }
+            >),
+        !isBorrow
+          ? adapter.getDeposits(getEventsInput).then((result) => {
+              rawDeposits.push(...result)
+              return aggregateFiatBalancesFromMovements(result)
+            })
+          : ({} as Record<
+              string,
+              {
+                protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
+                usdRaw: bigint
+                hasTokensWithoutUSDPrices?: boolean
+                tokensWithoutUSDPrices?: Underlying[]
+              }
+            >),
+        isBorrow
+          ? adapter.getRepays?.(getEventsInput).then((result) => {
+              rawRepays.push(...result)
+              return aggregateFiatBalancesFromMovements(result)
+            })
+          : ({} as Record<
+              string,
+              {
+                protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
+                usdRaw: bigint
+                hasTokensWithoutUSDPrices?: boolean
+                tokensWithoutUSDPrices?: Underlying[]
+              }
+            >),
+        isBorrow
+          ? adapter.getBorrows?.(getEventsInput).then((result) => {
+              rawBorrows.push(...result)
+              return aggregateFiatBalancesFromMovements(result)
+            })
+          : ({} as Record<
+              string,
+              {
+                protocolTokenMetadata: Erc20Metadata & { tokenId?: string }
+                usdRaw: bigint
+                hasTokensWithoutUSDPrices?: boolean
+                tokensWithoutUSDPrices?: Underlying[]
+              }
+            >),
       ])
 
       const key = protocolTokenMetadata.tokenId ?? protocolTokenMetadata.address
@@ -130,17 +187,22 @@ export async function getProfits({
       )
       const withdrawal = formatUnitsIfPossible(withdrawals[key]?.usdRaw)
       const deposit = formatUnitsIfPossible(deposits[key]?.usdRaw)
+      const repay = formatUnitsIfPossible(repays?.[key]?.usdRaw)
+      const borrow = formatUnitsIfPossible(borrows?.[key]?.usdRaw)
+
       const startPositionValue = formatUnitsIfPossible(
         startPositionValues[key]?.usdRaw,
       )
 
-      const profitModifier =
-        adapter.getProtocolDetails().positionType === PositionType.Borrow
-          ? -1
-          : 1
+      const profitModifier = isBorrow ? -1 : 1
 
       const profit =
-        (endPositionValue + withdrawal - deposit - startPositionValue) *
+        (endPositionValue +
+          withdrawal +
+          repay -
+          deposit -
+          borrow -
+          startPositionValue) *
         profitModifier
 
       const hasTokensWithoutUSDPrices =
@@ -171,6 +233,8 @@ export async function getProfits({
         calculationData: {
           withdrawals: withdrawal,
           deposits: deposit,
+          repays: repay,
+          borrows: borrow,
           startPositionValue: startPositionValue * profitModifier,
           endPositionValue: endPositionValue * profitModifier,
           hasTokensWithoutUSDPrices: hasTokensWithoutUSDPrices ?? undefined,
@@ -190,6 +254,12 @@ export async function getProfits({
                 enrichMovements(value, adapter.chainId),
               ),
               rawDeposits: rawDeposits.map((value) =>
+                enrichMovements(value, adapter.chainId),
+              ),
+              rawRepays: rawRepays.map((value) =>
+                enrichMovements(value, adapter.chainId),
+              ),
+              rawBorrows: rawBorrows.map((value) =>
                 enrichMovements(value, adapter.chainId),
               ),
             }

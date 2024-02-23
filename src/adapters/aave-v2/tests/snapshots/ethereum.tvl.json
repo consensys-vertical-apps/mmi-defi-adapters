@@ -10,6 +10,9 @@
       "positionType": "lend",
       "chainId": 1,
       "productId": "a-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
       "success": true,
       "tokens": [
         {
@@ -275,6 +278,9 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "stable-debt-token",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": true,
       "tokens": [
         {
@@ -540,6 +546,9 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": true,
       "tokens": [
         {

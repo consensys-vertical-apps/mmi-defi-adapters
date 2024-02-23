@@ -10,6 +10,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
       "success": true,
       "tokens": [],
       "fromBlock": 18706497,
@@ -24,6 +27,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "staking",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
       "success": true,
       "tokens": [],
       "fromBlock": 18706497,
@@ -38,6 +44,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "cvxcrv-wrapper",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
       "success": true,
       "tokens": [
         {
@@ -51,6 +60,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 175.63875721369635,
             "endPositionValue": 177.36161990642145
           },
@@ -216,7 +227,9 @@
               }
             ],
             "rawWithdrawals": [],
-            "rawDeposits": []
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
           }
         }
       ],

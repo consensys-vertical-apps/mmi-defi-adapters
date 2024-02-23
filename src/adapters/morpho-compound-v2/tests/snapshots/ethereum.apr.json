@@ -1,0 +1,149 @@
+{
+  "blockNumber": 18776256,
+  "snapshot": [
+    {
+      "protocolId": "morpho-compound-v2",
+      "name": "MorphoCompoundV2",
+      "description": "MorphoCompoundV2 defi adapter on the supply side",
+      "siteUrl": "https://compound.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
+          "name": "Compound Dai",
+          "symbol": "CDAI",
+          "decimals": 8,
+          "aprDecimal": 4.068298630653417
+        },
+        {
+          "address": "0x70e36f6BF80a52b3B46b3aF8e106CC0ed743E8e4",
+          "name": "Compound Collateral",
+          "symbol": "CCOMP",
+          "decimals": 8,
+          "aprDecimal": 0.266610408329448
+        },
+        {
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+          "name": "Compound Ether",
+          "symbol": "CETH",
+          "decimals": 8,
+          "aprDecimal": 0.04395326507388
+        },
+        {
+          "address": "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
+          "name": "cUNI",
+          "symbol": "CUNI",
+          "decimals": 8,
+          "aprDecimal": 0.22261125952203303
+        },
+        {
+          "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
+          "name": "Compound USD Coin",
+          "symbol": "CUSDC",
+          "decimals": 8,
+          "aprDecimal": 7.625362704644098
+        },
+        {
+          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
+          "name": "Compound Tether",
+          "symbol": "CUSDT",
+          "decimals": 8,
+          "aprDecimal": 7.058071597000275
+        },
+        {
+          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
+          "name": "cWBTC",
+          "symbol": "CWBTC",
+          "decimals": 8,
+          "aprDecimal": 0.006369332545188001
+        },
+        {
+          "address": "0x7713DD9Ca933848F6819F38B8352D9A15EA73F67",
+          "name": "Compound Fei USD",
+          "symbol": "cFEI",
+          "decimals": 8,
+          "aprDecimal": 0
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-compound-v2",
+      "name": "MorphoCompoundV2",
+      "description": "MorphoCompoundV2 defi adapter on the borrow side",
+      "siteUrl": "https://compound.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
+          "name": "Compound Dai",
+          "symbol": "CDAI",
+          "decimals": 8,
+          "aprDecimal": 5.929773259895865
+        },
+        {
+          "address": "0x70e36f6BF80a52b3B46b3aF8e106CC0ed743E8e4",
+          "name": "Compound Collateral",
+          "symbol": "CCOMP",
+          "decimals": 8,
+          "aprDecimal": 5.360671380044826
+        },
+        {
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+          "name": "Compound Ether",
+          "symbol": "CETH",
+          "decimals": 8,
+          "aprDecimal": 2.4797694584001873
+        },
+        {
+          "address": "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
+          "name": "cUNI",
+          "symbol": "CUNI",
+          "decimals": 8,
+          "aprDecimal": 4.375024978158073
+        },
+        {
+          "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
+          "name": "Compound USD Coin",
+          "symbol": "CUSDC",
+          "decimals": 8,
+          "aprDecimal": 15.757718401529822
+        },
+        {
+          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
+          "name": "Compound Tether",
+          "symbol": "CUSDT",
+          "decimals": 8,
+          "aprDecimal": 8.138117792653524
+        },
+        {
+          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
+          "name": "cWBTC",
+          "symbol": "CWBTC",
+          "decimals": 8,
+          "aprDecimal": 2.5677997573858558
+        },
+        {
+          "address": "0x7713DD9Ca933848F6819F38B8352D9A15EA73F67",
+          "name": "Compound Fei USD",
+          "symbol": "cFEI",
+          "decimals": 8,
+          "aprDecimal": 1.279198161836649
+        }
+      ]
+    }
+  ]
+}

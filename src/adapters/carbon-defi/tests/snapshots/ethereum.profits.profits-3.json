@@ -10,6 +10,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "strategies",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": true,
       "tokens": [
         {
@@ -24,6 +27,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 0,
             "endPositionValue": 0
           },
@@ -395,7 +400,9 @@
               }
             ],
             "rawWithdrawals": [],
-            "rawDeposits": []
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
           }
         },
         {
@@ -410,6 +417,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 100.52779078237454,
             "endPositionValue": 100.00102760854035
           },
@@ -781,7 +790,9 @@
               }
             ],
             "rawWithdrawals": [],
-            "rawDeposits": []
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
           }
         },
         {
@@ -796,6 +807,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 50.186971395661864,
             "endPositionValue": 49.90477618500749
           },
@@ -1167,7 +1180,9 @@
               }
             ],
             "rawWithdrawals": [],
-            "rawDeposits": []
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
           }
         },
         {
@@ -1182,6 +1197,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 40.1846656371149,
             "endPositionValue": 39.974108046594246
           },
@@ -1553,7 +1570,9 @@
               }
             ],
             "rawWithdrawals": [],
-            "rawDeposits": []
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
           }
         },
         {
@@ -1568,6 +1587,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 0,
             "endPositionValue": 0
           },
@@ -1939,7 +1960,9 @@
               }
             ],
             "rawWithdrawals": [],
-            "rawDeposits": []
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
           }
         }
       ],

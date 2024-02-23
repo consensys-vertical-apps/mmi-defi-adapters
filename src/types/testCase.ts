@@ -43,6 +43,28 @@ export type TestCase = {
       }
     }
   | {
+      method: 'repays'
+      input: {
+        userAddress: string
+        fromBlock: number
+        toBlock: number
+        protocolTokenAddress: string
+        productId: string
+        tokenId?: string
+      }
+    }
+  | {
+      method: 'borrows'
+      input: {
+        userAddress: string
+        fromBlock: number
+        toBlock: number
+        protocolTokenAddress: string
+        productId: string
+        tokenId?: string
+      }
+    }
+  | {
       method: 'prices'
       blockNumber?: number
       filterProtocolToken?: string
