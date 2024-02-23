@@ -1,0 +1,702 @@
+{
+  "0x1f0c5400A3C7E357CC7c9A3D2f7Fe6DDF629D868": {
+    "protocolToken": {
+      "address": "0x1f0c5400A3C7E357CC7c9A3D2f7Fe6DDF629D868",
+      "name": "Uniswap V2 WMATIC / USDC",
+      "symbol": "UNI-V2/WMATIC/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x9fdC45d223427345494cDA2f9FE2169F25F52A7f": {
+    "protocolToken": {
+      "address": "0x9fdC45d223427345494cDA2f9FE2169F25F52A7f",
+      "name": "Uniswap V2 GPO / WMATIC",
+      "symbol": "UNI-V2/GPO/WMATIC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0308a3a9c433256aD7eF24dBEF9c49C8cb01300A",
+      "name": "GoldPesa Option",
+      "symbol": "GPO",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    }
+  },
+  "0x93CA061a80bFb622E7B529F6de1fDe4A9129CF8E": {
+    "protocolToken": {
+      "address": "0x93CA061a80bFb622E7B529F6de1fDe4A9129CF8E",
+      "name": "Uniswap V2 WMATIC / USDT",
+      "symbol": "UNI-V2/WMATIC/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xd34316756F271549F100bA32449311a587FC5f87": {
+    "protocolToken": {
+      "address": "0xd34316756F271549F100bA32449311a587FC5f87",
+      "name": "Uniswap V2 WMATIC / Mia",
+      "symbol": "UNI-V2/WMATIC/Mia",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x588817236f6BB440B4e78FF0e37FB323924dc3FE",
+      "name": "MiaCoin",
+      "symbol": "Mia",
+      "decimals": 6
+    }
+  },
+  "0x711B6f6788E4cB0f7034bF02b149118A46e500c2": {
+    "protocolToken": {
+      "address": "0x711B6f6788E4cB0f7034bF02b149118A46e500c2",
+      "name": "Uniswap V2 WMATIC / WETH",
+      "symbol": "UNI-V2/WMATIC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x6cf12c01C77Bc61CA15ef7eF99328D9a6e92Ff5f": {
+    "protocolToken": {
+      "address": "0x6cf12c01C77Bc61CA15ef7eF99328D9a6e92Ff5f",
+      "name": "Uniswap V2 WMATIC / FEELG",
+      "symbol": "UNI-V2/WMATIC/FEELG",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x91522D9dc6A7c56c9Ac876DD758455F28Cd3e889",
+      "name": "Feeling Good ",
+      "symbol": "FEELG",
+      "decimals": 8
+    }
+  },
+  "0xf9BFf5F317550825E6d55F0227EF63f0Ba6A9298": {
+    "protocolToken": {
+      "address": "0xf9BFf5F317550825E6d55F0227EF63f0Ba6A9298",
+      "name": "Uniswap V2 WMATIC / APRIL",
+      "symbol": "UNI-V2/WMATIC/APRIL",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x18719D2e1e57A1A64708e4550fF3DEF9d1074621",
+      "name": "April Token",
+      "symbol": "APRIL",
+      "decimals": 18
+    }
+  },
+  "0x92a0e9a04cf2d519c7fba179Da43a08F5a1AEA7E": {
+    "protocolToken": {
+      "address": "0x92a0e9a04cf2d519c7fba179Da43a08F5a1AEA7E",
+      "name": "Uniswap V2 WETH / USDT",
+      "symbol": "UNI-V2/WETH/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x0938f319c1B93Ab55d931586aF9662aC8832677A": {
+    "protocolToken": {
+      "address": "0x0938f319c1B93Ab55d931586aF9662aC8832677A",
+      "name": "Uniswap V2 AWC / WMATIC",
+      "symbol": "UNI-V2/AWC/WMATIC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x021934C1ec45814ea770C221Db1E32b106684904",
+      "name": "AWC",
+      "symbol": "AWC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    }
+  },
+  "0xaa162d248490eeD4Bbdd020b5Bbd77D59239Af12": {
+    "protocolToken": {
+      "address": "0xaa162d248490eeD4Bbdd020b5Bbd77D59239Af12",
+      "name": "Uniswap V2 DST / USDT",
+      "symbol": "UNI-V2/DST/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3b7E1ce09aFe2bB3A23919AFb65a38E627CfbE97",
+      "name": "Dragon Soul Token",
+      "symbol": "DST",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xC353E2bd217D5fa9d0468a04F718370d4df10949": {
+    "protocolToken": {
+      "address": "0xC353E2bd217D5fa9d0468a04F718370d4df10949",
+      "name": "Uniswap V2 SUSHI / WMATIC",
+      "symbol": "UNI-V2/SUSHI/WMATIC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a",
+      "name": "SushiToken (PoS)",
+      "symbol": "SUSHI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    }
+  },
+  "0xC6B695A7F61F1947b755EBcB61ae68FD42bC0F72": {
+    "protocolToken": {
+      "address": "0xC6B695A7F61F1947b755EBcB61ae68FD42bC0F72",
+      "name": "Uniswap V2 USDC / SAIGON",
+      "symbol": "UNI-V2/USDC/SAIGON",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x421d72237B9293A10a4dd23ee2c5123Cdcd926DD",
+      "name": "SAIGON Token",
+      "symbol": "SAIGON",
+      "decimals": 9
+    }
+  },
+  "0x767Fe8bFe7aa32bceBda37F5cb58aDBF5F072CBB": {
+    "protocolToken": {
+      "address": "0x767Fe8bFe7aa32bceBda37F5cb58aDBF5F072CBB",
+      "name": "Uniswap V2 USDC / GYOG",
+      "symbol": "UNI-V2/USDC/GYOG",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x7CC5747F650233937d639A6b6Df135fA50915ea3",
+      "name": "GANSYOGCoin",
+      "symbol": "GYOG",
+      "decimals": 18
+    }
+  },
+  "0xDB84f555F87793D821b7e48ba1f00f9581ED63B5": {
+    "protocolToken": {
+      "address": "0xDB84f555F87793D821b7e48ba1f00f9581ED63B5",
+      "name": "Uniswap V2 JMPT / WMATIC",
+      "symbol": "UNI-V2/JMPT/WMATIC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x03cf5d93cA7c70Ce0A21a09F4D70779D2c66B25A",
+      "name": "JumpToken",
+      "symbol": "JMPT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    }
+  },
+  "0x2331153D1Fd68609906d90822b62f7fFc7D172Dd": {
+    "protocolToken": {
+      "address": "0x2331153D1Fd68609906d90822b62f7fFc7D172Dd",
+      "name": "Uniswap V2 USDC / USDT",
+      "symbol": "UNI-V2/USDC/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xFC4912B5440d628D2337a16363D16a5e3a9Cba04": {
+    "protocolToken": {
+      "address": "0xFC4912B5440d628D2337a16363D16a5e3a9Cba04",
+      "name": "Uniswap V2 WMATIC / USDC",
+      "symbol": "UNI-V2/WMATIC/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      "name": "USD Coin (PoS)",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x5d7CCa95F25D5DddBB0cD125f00164DdE0a130a0": {
+    "protocolToken": {
+      "address": "0x5d7CCa95F25D5DddBB0cD125f00164DdE0a130a0",
+      "name": "Uniswap V2 WBTC / WETH",
+      "symbol": "UNI-V2/WBTC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+      "name": "(PoS) Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x01F74338BdE664CD75dF56322E2ABf7820000498": {
+    "protocolToken": {
+      "address": "0x01F74338BdE664CD75dF56322E2ABf7820000498",
+      "name": "Uniswap V2 WMATIC / 1INCH",
+      "symbol": "UNI-V2/WMATIC/1INCH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f",
+      "name": "1Inch (PoS)",
+      "symbol": "1INCH",
+      "decimals": 18
+    }
+  },
+  "0xcCc04C2442D14D28A09c4FFebdad386C2aAF2DFE": {
+    "protocolToken": {
+      "address": "0xcCc04C2442D14D28A09c4FFebdad386C2aAF2DFE",
+      "name": "Uniswap V2 LVM / WETH",
+      "symbol": "UNI-V2/LVM/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x117457bCC5353E08D198503d71b87B4fa4DBBF09",
+      "name": "Las Vegas Metaverse",
+      "symbol": "LVM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x9a447a7C6055361A6b5221B56AD1c60C0572eA4F": {
+    "protocolToken": {
+      "address": "0x9a447a7C6055361A6b5221B56AD1c60C0572eA4F",
+      "name": "Uniswap V2 WMATIC / RIC",
+      "symbol": "UNI-V2/WMATIC/RIC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x263026E7e53DBFDce5ae55Ade22493f828922965",
+      "name": "Ricochet",
+      "symbol": "RIC",
+      "decimals": 18
+    }
+  },
+  "0x078935C0829906232F43B7263f2Ec8F87d8013eF": {
+    "protocolToken": {
+      "address": "0x078935C0829906232F43B7263f2Ec8F87d8013eF",
+      "name": "Uniswap V2 WMATIC / MANA",
+      "symbol": "UNI-V2/WMATIC/MANA",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4",
+      "name": "(PoS) Decentraland MANA",
+      "symbol": "MANA",
+      "decimals": 18
+    }
+  },
+  "0x6B53ED26c43cA88367cC0Da935c25e7aFD2CC25D": {
+    "protocolToken": {
+      "address": "0x6B53ED26c43cA88367cC0Da935c25e7aFD2CC25D",
+      "name": "Uniswap V2 WMATIC / test099",
+      "symbol": "UNI-V2/WMATIC/test099",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x1B4fA119135C1E4cE83EF67715009bD920fD7B5B",
+      "name": "test099",
+      "symbol": "test099",
+      "decimals": 18
+    }
+  },
+  "0xE867006688efc27332b7DdEcf593Ed4041988FAC": {
+    "protocolToken": {
+      "address": "0xE867006688efc27332b7DdEcf593Ed4041988FAC",
+      "name": "Uniswap V2 test099 / USD099",
+      "symbol": "UNI-V2/test099/USD099",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1B4fA119135C1E4cE83EF67715009bD920fD7B5B",
+      "name": "test099",
+      "symbol": "test099",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x7F853505B12186C6aE25460b1B93B0575729b647",
+      "name": "USD099",
+      "symbol": "USD099",
+      "decimals": 18
+    }
+  },
+  "0x01Ab03C6de5E8126D4e4580Fee4eDe070123eA5a": {
+    "protocolToken": {
+      "address": "0x01Ab03C6de5E8126D4e4580Fee4eDe070123eA5a",
+      "name": "Uniswap V2 GBL / USDT",
+      "symbol": "UNI-V2/GBL/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC14A7747cFec02CfeA62E72BB93538DE6B2078E6",
+      "name": "Global Token",
+      "symbol": "GBL",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x4FE670BE6560F98e777Ea5F9212490C04b18f9e8": {
+    "protocolToken": {
+      "address": "0x4FE670BE6560F98e777Ea5F9212490C04b18f9e8",
+      "name": "Uniswap V2 WMATIC / MATRIX",
+      "symbol": "UNI-V2/WMATIC/MATRIX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x7e0c82347DcbD279631b79A132735853B3C11edc",
+      "name": "MATRIX",
+      "symbol": "MATRIX",
+      "decimals": 0
+    }
+  },
+  "0x5D4358d0B9310937491e350B6fca0385101bd37a": {
+    "protocolToken": {
+      "address": "0x5D4358d0B9310937491e350B6fca0385101bd37a",
+      "name": "Uniswap V2 Test099x / USD099x",
+      "symbol": "UNI-V2/Test099x/USD099x",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x003659f920E614D669d452C4779097e4333aB4d1",
+      "name": "Test099x",
+      "symbol": "Test099x",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xeA957bF82708d6616e518171D27CF9Ac2D775e04",
+      "name": "USD099x",
+      "symbol": "USD099x",
+      "decimals": 18
+    }
+  },
+  "0x0137EDA726A2e05A01BA5f74E55458a36CB785cB": {
+    "protocolToken": {
+      "address": "0x0137EDA726A2e05A01BA5f74E55458a36CB785cB",
+      "name": "Uniswap V2 BLOK / USDT",
+      "symbol": "UNI-V2/BLOK/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x229b1b6C23ff8953D663C4cBB519717e323a0a84",
+      "name": "BLOK",
+      "symbol": "BLOK",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xdE17Da7BaDA8C8131b5CaC67A3B892dA5f353818": {
+    "protocolToken": {
+      "address": "0xdE17Da7BaDA8C8131b5CaC67A3B892dA5f353818",
+      "name": "Uniswap V2 USDT / MEE",
+      "symbol": "UNI-V2/USDT/MEE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xEB7eaB87837f4Dad1bb80856db9E4506Fc441f3D",
+      "name": "MEE Governance Token",
+      "symbol": "MEE",
+      "decimals": 18
+    }
+  },
+  "0x135C0aeeca15aCd9cafe790d6Ef890b12f1C3a53": {
+    "protocolToken": {
+      "address": "0x135C0aeeca15aCd9cafe790d6Ef890b12f1C3a53",
+      "name": "Uniswap V2 WMATIC / DRIC",
+      "symbol": "UNI-V2/WMATIC/DRIC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x915f07F806272e42b8e5Bb01d6548cF696ab49D8",
+      "name": "DRIVER COIN",
+      "symbol": "DRIC",
+      "decimals": 18
+    }
+  },
+  "0xB7520b5e03D93513AAD5d901141d93F039Dd72D8": {
+    "protocolToken": {
+      "address": "0xB7520b5e03D93513AAD5d901141d93F039Dd72D8",
+      "name": "Uniswap V2 WMATIC / REDDIT",
+      "symbol": "UNI-V2/WMATIC/REDDIT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x73B481dA796F2eF60650C9393607FbC4cCd77Fb7",
+      "name": "Reddit Token (PoS)",
+      "symbol": "REDDIT",
+      "decimals": 18
+    }
+  },
+  "0xF9BF32C4fff78Ba7620aE7655Ea5680dfc356353": {
+    "protocolToken": {
+      "address": "0xF9BF32C4fff78Ba7620aE7655Ea5680dfc356353",
+      "name": "Uniswap V2 WMATIC / suca",
+      "symbol": "UNI-V2/WMATIC/suca",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xD9BDc88625AA57d0BB7A40b7c706ee25025E2570",
+      "name": "suca",
+      "symbol": "suca",
+      "decimals": 5
+    }
+  },
+  "0x0c4DDa5183f1D7F65a5bfC8a87dd8F64351baD66": {
+    "protocolToken": {
+      "address": "0x0c4DDa5183f1D7F65a5bfC8a87dd8F64351baD66",
+      "name": "Uniswap V2 LINK / DAI",
+      "symbol": "UNI-V2/LINK/DAI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+      "name": "ChainLink Token",
+      "symbol": "LINK",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+      "name": "(PoS) Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x31D60624cF19a528442Bc37Be6c887517E099440": {
+    "protocolToken": {
+      "address": "0x31D60624cF19a528442Bc37Be6c887517E099440",
+      "name": "Uniswap V2 WMATIC / CHILLA",
+      "symbol": "UNI-V2/WMATIC/CHILLA",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x69Ed286A7c8A1FD7048a7d974D42a9A7024E53AB",
+      "name": "CHILLACOFE",
+      "symbol": "CHILLA",
+      "decimals": 8
+    }
+  },
+  "0xDC90cb303032903542d0C7285782CB77c6aa273E": {
+    "protocolToken": {
+      "address": "0xDC90cb303032903542d0C7285782CB77c6aa273E",
+      "name": "Uniswap V2 WMATIC / oTON",
+      "symbol": "UNI-V2/WMATIC/oTON",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4B96dBf8f42C8c296573933a6616dcAfb80Ca461",
+      "name": "Orbit Bridge Polygon Toncoin",
+      "symbol": "oTON",
+      "decimals": 9
+    }
+  },
+  "0xF3a3F93865513E42D470646D9F18d36392C48e79": {
+    "protocolToken": {
+      "address": "0xF3a3F93865513E42D470646D9F18d36392C48e79",
+      "name": "Uniswap V2 WMATIC / BIDEN",
+      "symbol": "UNI-V2/WMATIC/BIDEN",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xeF968Cc9eB1a6Dd253894B97E131E8C191ECd45f",
+      "name": "Joe Biden",
+      "symbol": "BIDEN",
+      "decimals": 18
+    }
+  }
+}
