@@ -7,7 +7,7 @@ export type TestCase = {
 } & (
   | {
       method: 'positions'
-      input: { userAddress: string }
+      input: { userAddress: string; filterProtocolTokens?: string[] }
       blockNumber?: number
     }
   | {
