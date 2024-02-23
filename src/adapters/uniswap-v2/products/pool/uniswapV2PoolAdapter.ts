@@ -18,6 +18,7 @@ import {
   UnderlyingTokenRate,
   Underlying,
   TokenType,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Factory__factory, Pair__factory } from '../../contracts'
@@ -47,6 +48,9 @@ export class UniswapV2PoolAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
     }
   }
 
