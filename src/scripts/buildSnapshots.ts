@@ -152,7 +152,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     chainId,
                   ))
 
-                return {
+                const result = {
                   blockNumber,
                   snapshot: await defiProvider.getPrices({
                     filterChainIds: [chainId],
@@ -163,6 +163,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     filterProtocolToken: testCase.filterProtocolToken,
                   }),
                 }
+
+                await updateBlockNumber(protocolId, index, blockNumber)
+
+                return result
               }
 
               case 'tvl': {
@@ -173,7 +177,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     chainId,
                   ))
 
-                return {
+                const result = {
                   blockNumber,
                   snapshot: await defiProvider.getTotalValueLocked({
                     filterChainIds: [chainId],
@@ -183,6 +187,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     },
                   }),
                 }
+
+                await updateBlockNumber(protocolId, index, blockNumber)
+
+                return result
               }
 
               case 'apy': {
@@ -193,7 +201,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     chainId,
                   ))
 
-                return {
+                const result = {
                   blockNumber,
                   snapshot: await defiProvider.getApy({
                     filterChainIds: [chainId],
@@ -203,6 +211,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     },
                   }),
                 }
+
+                await updateBlockNumber(protocolId, index, blockNumber)
+
+                return result
               }
 
               case 'apr': {
@@ -213,7 +225,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     chainId,
                   ))
 
-                return {
+                const result = {
                   blockNumber,
                   snapshot: await defiProvider.getApr({
                     filterChainIds: [chainId],
@@ -223,6 +235,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     },
                   }),
                 }
+
+                await updateBlockNumber(protocolId, index, blockNumber)
+
+                return result
               }
               case 'tx-params': {
                 return {
@@ -328,15 +344,13 @@ async function updateFilterProtocolTokenAddresses(
   index: number,
   snapshot: DefiPositionResponse[] | DefiProfitsResponse[],
 ) {
-  const protocolTokenAddresses = snapshot.flatMap(
-    (position) => {
-      if (!position.success) {
-        return []
-      }
+  const protocolTokenAddresses = snapshot.flatMap((position) => {
+    if (!position.success) {
+      return []
+    }
 
-      return position.tokens.map((token) => token.address)
-    },
-  )
+    return position.tokens.map((token) => token.address)
+  })
 
   const testCasesFile = path.resolve(
     `./src/adapters/${protocolId}/tests/testCases.ts`,

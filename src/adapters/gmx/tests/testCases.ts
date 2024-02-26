@@ -7,6 +7,7 @@ export const testCases: TestCase[] = [
     method: 'positions',
     input: {
       userAddress: '0xbdfa4f4492dd7b7cf211209c4791af8d52bf5c50',
+      filterProtocolTokens: ['0x4277f8F2c384827B5273592FF7CeBd9f2C1ac258'],
     },
     blockNumber: 150947313,
   },
@@ -15,6 +16,7 @@ export const testCases: TestCase[] = [
     method: 'profits',
     input: {
       userAddress: '0x27fae42e93707f93018c965cf3f16a67d848d1ff',
+      filterProtocolTokens: ['0x4277f8F2c384827B5273592FF7CeBd9f2C1ac258'],
     },
     blockNumber: 151045028,
   },

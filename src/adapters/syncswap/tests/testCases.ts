@@ -8,6 +8,7 @@ export const testCases: TestCase[] = [
     method: 'positions',
     input: {
       userAddress: '0x00000000863b56a3c1f0f1be8bc4f8b7bd78f57a',
+      filterProtocolTokens: ['0x7f72E0D8e9AbF9133A92322b8B50BD8e0F9dcFCB'],
     },
     blockNumber: 1175771,
   },
@@ -53,6 +54,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0x00000000863b56a3c1f0f1be8bc4f8b7bd78f57a',
       timePeriod: TimePeriod.sevenDays,
+      filterProtocolTokens: ['0x7f72E0D8e9AbF9133A92322b8B50BD8e0F9dcFCB'],
     },
     blockNumber: 645596,
   },
@@ -63,6 +65,11 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0x006430fcbd1e29275c4058fc278b78a486f8a69e',
       timePeriod: TimePeriod.sevenDays,
+
+      filterProtocolTokens: [
+        '0xd71EcE20343233aD9E7ce29bc954b813f41FbDcB',
+        '0x46eC4BB184528C3aEE6F1419E11b28A97f33d483',
+      ],
     },
     blockNumber: 547455,
   },
