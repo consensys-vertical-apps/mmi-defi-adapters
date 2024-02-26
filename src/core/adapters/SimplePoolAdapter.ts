@@ -174,6 +174,53 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       },
     })
   }
+  @ResolveUnderlyingMovements
+  async getBorrows({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
+        protocolTokenAddress,
+      ),
+      filter: {
+        smartContractAddress: protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        from: undefined,
+        to: userAddress,
+      },
+    })
+  }
+
+  @ResolveUnderlyingMovements
+  async getRepays({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return await this.getMovements({
+      protocolToken: await this.fetchProtocolTokenMetadata(
+        protocolTokenAddress,
+      ),
+      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
+        protocolTokenAddress,
+      ),
+      filter: {
+        smartContractAddress: protocolTokenAddress,
+        fromBlock,
+        toBlock,
+        from: userAddress,
+        to: undefined,
+      },
+    })
+  }
 
   async getTotalValueLocked({
     blockNumber,

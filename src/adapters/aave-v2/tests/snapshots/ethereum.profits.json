@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18183880,
+  "blockNumber": 19262683,
   "snapshot": [
     {
       "protocolId": "aave-v2",
@@ -21,15 +21,15 @@
           "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": -162317.60794604942,
-          "performance": -0.015421510272556935,
+          "profit": 176590.4113893248,
+          "performance": 0.00917657223434845,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 10525402.835213795,
-            "endPositionValue": 10363085.227267746
+            "startPositionValue": 19243613.72412419,
+            "endPositionValue": 19420204.135513514
           }
         },
         {
@@ -38,20 +38,20 @@
           "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
-          "profit": -27259.15975897992,
-          "performance": -0.02059745276728932,
+          "profit": 102263.49377987906,
+          "performance": 0.037631222755336466,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 1323423.826574809,
-            "endPositionValue": 1296164.666815829
+            "startPositionValue": 2717517.1650614813,
+            "endPositionValue": 2819780.6588413604
           }
         }
       ],
-      "fromBlock": 18176734,
-      "toBlock": 18183880
+      "fromBlock": 19255537,
+      "toBlock": 19262683
     },
     {
       "protocolId": "aave-v2",
@@ -67,8 +67,8 @@
       },
       "success": true,
       "tokens": [],
-      "fromBlock": 18176734,
-      "toBlock": 18183880
+      "fromBlock": 19255537,
+      "toBlock": 19262683
     },
     {
       "protocolId": "aave-v2",
@@ -90,15 +90,15 @@
           "symbol": "variableDebtUSDT",
           "decimals": 6,
           "type": "protocol",
-          "profit": -27999.787203350104,
-          "performance": -0.005320434825330157,
+          "profit": 10319.915351901203,
+          "performance": 0.0009876698713141483,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
-            "borrows": 0,
-            "startPositionValue": -5262687.754400335,
-            "endPositionValue": -5290687.541603685
+            "borrows": 250721.98276408552,
+            "startPositionValue": -10448749.781311033,
+            "endPositionValue": -10689151.848723218
           }
         },
         {
@@ -107,15 +107,15 @@
           "symbol": "variableDebtWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": 1248.300374614977,
-          "performance": 0.015397851008831504,
+          "profit": -1439.2549771374324,
+          "performance": -0.009198036380442405,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": -81069.7787567245,
-            "endPositionValue": -79821.47838210952
+            "startPositionValue": -156474.1557445555,
+            "endPositionValue": -157913.41072169293
           }
         },
         {
@@ -124,15 +124,15 @@
           "symbol": "variableDebtDAI",
           "decimals": 18,
           "type": "protocol",
-          "profit": 379.1701505348901,
-          "performance": 0.0010341383337150389,
+          "profit": -72.7161392524722,
+          "performance": -0.00019078336241985943,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": -366653.2205345867,
-            "endPositionValue": -366274.0503840518
+            "startPositionValue": -381145.0764372464,
+            "endPositionValue": -381217.7925764989
           }
         },
         {
@@ -141,20 +141,20 @@
           "symbol": "variableDebtUSDC",
           "decimals": 6,
           "type": "protocol",
-          "profit": 4189.807200494688,
-          "performance": 0.001393168764878352,
+          "profit": 11077.385828933213,
+          "performance": 0.0035166749856958964,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": -3007393.867935685,
-            "endPositionValue": -3003204.0607351903
+            "startPositionValue": -3149960.082745937,
+            "endPositionValue": -3138882.696917004
           }
         }
       ],
-      "fromBlock": 18176734,
-      "toBlock": 18183880
+      "fromBlock": 19255537,
+      "toBlock": 19262683
     }
   ]
 }
