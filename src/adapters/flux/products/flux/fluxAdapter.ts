@@ -32,10 +32,6 @@ type FluxAdapterMetadata = Record<
 export class FluxAdapter extends SimplePoolAdapter implements IMetadataBuilder {
   productId = 'flux'
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -63,10 +59,6 @@ export class FluxAdapter extends SimplePoolAdapter implements IMetadataBuilder {
     return {} as FluxAdapterMetadata
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
