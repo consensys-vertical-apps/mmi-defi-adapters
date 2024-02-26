@@ -8,6 +8,12 @@ export const testCases: TestCase[] = [
     method: 'positions',
     input: {
       userAddress: '0xb5b29320d2Dde5BA5BAFA1EbcD270052070483ec',
+
+      filterProtocolTokens: [
+        '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
+        '0x0B925eD163218f6662a35e0f0371Ac234f9E9371',
+        '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
+      ],
     },
     blockNumber: 18761230,
   },
@@ -18,6 +24,7 @@ export const testCases: TestCase[] = [
       userAddress: '0x7dc1fbf0e894162eca4d0b28fc0dca1437d31ce4',
       timePeriod: TimePeriod.oneDay,
       includeRawValues: true,
+      filterProtocolTokens: ['0x0B925eD163218f6662a35e0f0371Ac234f9E9371'],
     },
     blockNumber: 19220228 + 1,
   },
@@ -29,6 +36,11 @@ export const testCases: TestCase[] = [
       userAddress: '0xd0B8DfCF9dA999db981A60a8DA6584E8e52b757c',
       timePeriod: TimePeriod.oneDay,
       includeRawValues: true,
+
+      filterProtocolTokens: [
+        '0x0B925eD163218f6662a35e0f0371Ac234f9E9371',
+        '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
+      ],
     },
     blockNumber: 19259859 + 1,
   },
@@ -40,6 +52,7 @@ export const testCases: TestCase[] = [
       userAddress: '0x306c9b45050F1FF0a4470f9801CCBCe97a2aC5A2',
       timePeriod: TimePeriod.oneDay,
       includeRawValues: true,
+      filterProtocolTokens: [],
     },
     blockNumber: 19223914 + 1,
   },
