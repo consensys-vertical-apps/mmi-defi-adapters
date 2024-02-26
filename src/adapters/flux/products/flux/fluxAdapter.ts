@@ -43,11 +43,11 @@ export class FluxAdapter extends SimplePoolAdapter implements IMetadataBuilder {
       description: 'Flux pool adapter',
       siteUrl: 'https://fluxfinance.com',
       iconUrl: 'https://docs.fluxfinance.com/img/favicon.svg',
-      positionType: PositionType.Supply,
+      positionType: PositionType.Lend,
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.NonStandardErc20,
+        type: AssetType.StandardErc20,
       },
     }
   }
