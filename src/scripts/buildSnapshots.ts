@@ -10,11 +10,11 @@ import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { DefiProvider } from '../defiProvider'
+import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
-import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
