@@ -1,0 +1,41 @@
+{
+  "snapshot": {
+    "protocolId": "aave-v2",
+    "name": "Aave v2 VariableDebtToken",
+    "description": "Aave v2 defi adapter for variable interest-accruing token",
+    "siteUrl": "https://aave.com/",
+    "iconUrl": "https://aave.com/favicon.ico",
+    "positionType": "borrow",
+    "chainId": 1,
+    "productId": "variable-debt-token",
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x430d933c94aa53c50ade8814018f999f450c5d779c619b8036f86560fff9b688",
+        "protocolToken": {
+          "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
+          "name": "Aave variable debt bearing USDT",
+          "symbol": "variableDebtUSDT",
+          "decimals": 6
+        },
+        "tokens": [
+          {
+            "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 6,
+            "balanceRaw": "250000000000n",
+            "type": "underlying",
+            "blockNumber": 19262682,
+            "price": 1.002887931056342,
+            "balance": 250000
+          }
+        ],
+        "blockNumber": 19262682
+      }
+    ]
+  }
+}
