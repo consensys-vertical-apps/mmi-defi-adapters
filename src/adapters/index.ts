@@ -19,6 +19,7 @@ import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAda
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
+import { FluxAdapter } from './flux/products/flux/fluxAdapter'
 import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { IZiswapAdapter } from './iziswap/products/iziswap/iZiswapAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
@@ -54,18 +55,21 @@ export const supportedProtocols: Record<
       MorphoAaveV3ETHOptimizerBorrowAdapter,
     ],
   },
+
   [Protocol.MorphoAaveV2]: {
     [Chain.Ethereum]: [
       MorphoAaveV2OptimizerBorrowAdapter,
       MorphoAaveV2OptimizerSupplyAdapter,
     ],
   },
+
   [Protocol.MorphoCompoundV2]: {
     [Chain.Ethereum]: [
       MorphoCompoundV2OptimizerSupplyAdapter,
       MorphoCompoundV2OptimizerBorrowAdapter,
     ],
   },
+
   [Protocol.Stargate]: {
     [Chain.Ethereum]: [StargatePoolAdapter, StargateVestingAdapter],
     [Chain.Arbitrum]: [StargatePoolAdapter, StargateVestingAdapter],
@@ -220,5 +224,9 @@ export const supportedProtocols: Record<
     [Chain.Base]: [UniswapV2PoolAdapter],
     [Chain.Arbitrum]: [UniswapV2PoolAdapter],
     [Chain.Avalanche]: [UniswapV2PoolAdapter],
+  },
+
+  [Protocol.Flux]: {
+    [Chain.Ethereum]: [FluxAdapter, FluxAdapter],
   },
 }
