@@ -14,6 +14,7 @@ import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
+import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
@@ -64,19 +65,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
                 await updateBlockNumber(protocolId, index, blockNumber)
 
-                const protocolTokenAddresses = result.snapshot.flatMap(
-                  (position) => {
-                    if (!position.success) {
-                      return []
-                    }
-
-                    return position.tokens.map((token) => token.address)
-                  },
-                )
                 await updateFilterProtocolTokenAddresses(
                   protocolId,
                   index,
-                  protocolTokenAddresses,
+                  result.snapshot,
                 )
 
                 return result
@@ -103,6 +95,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                 }
 
                 await updateBlockNumber(protocolId, index, blockNumber)
+
+                await updateFilterProtocolTokenAddresses(
+                  protocolId,
+                  index,
+                  result.snapshot,
+                )
 
                 return result
               }
@@ -293,7 +291,7 @@ async function updateBlockNumber(
       if (node.id.name === 'testCases') {
         const testCasesArrayNode = node.init
         if (!n.ArrayExpression.check(testCasesArrayNode)) {
-          throw new Error('Incorrectly typed MetadataFiles new Map expression')
+          throw new Error('Incorrectly typed testCases array')
         }
         const testCaseNode = testCasesArrayNode.elements[index]
         if (!n.ObjectExpression.check(testCaseNode)) {
@@ -328,9 +326,17 @@ async function updateBlockNumber(
 async function updateFilterProtocolTokenAddresses(
   protocolId: Protocol,
   index: number,
-  protocolTokenAddresses: string[],
+  snapshot: DefiPositionResponse[] | DefiProfitsResponse[],
 ) {
-  console.log('AAAAAAAAAA', protocolTokenAddresses)
+  const protocolTokenAddresses = snapshot.flatMap(
+    (position) => {
+      if (!position.success) {
+        return []
+      }
+
+      return position.tokens.map((token) => token.address)
+    },
+  )
 
   const testCasesFile = path.resolve(
     `./src/adapters/${protocolId}/tests/testCases.ts`,
@@ -351,29 +357,45 @@ async function updateFilterProtocolTokenAddresses(
       if (node.id.name === 'testCases') {
         const testCasesArrayNode = node.init
         if (!n.ArrayExpression.check(testCasesArrayNode)) {
-          throw new Error('Incorrectly typed MetadataFiles new Map expression')
+          throw new Error('Incorrectly typed testCases array')
         }
         const testCaseNode = testCasesArrayNode.elements[index]
         if (!n.ObjectExpression.check(testCaseNode)) {
           return false
         }
-        // const blockNumberNode = testCaseNode.properties.find(
-        //   (property) =>
-        //     n.ObjectProperty.check(property) &&
-        //     n.Identifier.check(property.key) &&
-        //     property.key.name === 'blockNumber',
-        // )
 
-        // if (blockNumberNode) {
-        //   return false
-        // }
+        const inputNode = testCaseNode.properties.find(
+          (property): property is n.ObjectProperty =>
+            n.ObjectProperty.check(property) &&
+            n.Identifier.check(property.key) &&
+            property.key.name === 'input',
+        )
 
-        // testCaseNode.properties.push(
-        //   b.objectProperty(
-        //     b.identifier('blockNumber'),
-        //     b.numericLiteral(blockNumber),
-        //   ),
-        // )
+        if (!inputNode || !n.ObjectExpression.check(inputNode.value)) {
+          throw new Error('Incorrectly typed testCases array')
+        }
+
+        const filterProtocolTokensNode = inputNode.value.properties.find(
+          (property) =>
+            n.ObjectProperty.check(property) &&
+            n.Identifier.check(property.key) &&
+            property.key.name === 'filterProtocolTokens',
+        )
+
+        if (filterProtocolTokensNode) {
+          return false
+        }
+
+        inputNode.value.properties.push(
+          b.objectProperty(
+            b.identifier('filterProtocolTokens'),
+            b.arrayExpression(
+              protocolTokenAddresses.map((protocolTokenAddress) =>
+                b.stringLiteral(protocolTokenAddress),
+              ),
+            ),
+          ),
+        )
 
         return false
       }
@@ -382,5 +404,5 @@ async function updateFilterProtocolTokenAddresses(
     },
   })
 
-  // await writeCodeFile(testCasesFile, print(ast).code)
+  await writeCodeFile(testCasesFile, print(ast).code)
 }
