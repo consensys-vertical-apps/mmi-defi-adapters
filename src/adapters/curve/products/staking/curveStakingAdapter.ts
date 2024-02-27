@@ -43,16 +43,8 @@ export class CurveStakingAdapter
 {
   productId = 'staking'
 
-  poolAdapter: IProtocolAdapter & IMetadataBuilder
-
   constructor(params: ProtocolAdapterParams) {
     super(params)
-
-    this.poolAdapter = params.adaptersController.fetchAdapter(
-      params.chainId,
-      params.protocolId,
-      'pool',
-    ) as IProtocolAdapter & IMetadataBuilder
   }
 
   @AddClaimableRewards({ rewardAdapterIds: ['reward'] })
@@ -79,11 +71,8 @@ export class CurveStakingAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    // Example usage
-    const types = ['main', 'crypto', 'factory', 'factory-crypto']
     return queryCurvePools(
-      types,
-      this.productId as 'pool',
+      this.productId as 'staking',
       this.chainId,
       this.provider,
     )

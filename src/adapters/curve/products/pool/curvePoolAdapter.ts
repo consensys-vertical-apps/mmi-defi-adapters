@@ -63,10 +63,7 @@ export class CurvePoolAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    // Example usage
-    const types = ['main', 'crypto', 'factory', 'factory-crypto']
     return queryCurvePools(
-      types,
       this.productId as 'pool',
       this.chainId,
       this.provider,

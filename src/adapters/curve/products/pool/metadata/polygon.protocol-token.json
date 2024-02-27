@@ -51,87 +51,6 @@
     ],
     "lpTokenManager": "0x445FE580eF8d70FF569aB36e80c647af338db351"
   },
-  "0xdAD97F7713Ae9437fa9249920eC8507e5FbB23d3": {
-    "protocolToken": {
-      "address": "0xdAD97F7713Ae9437fa9249920eC8507e5FbB23d3",
-      "name": "Curve USD-BTC-ETH",
-      "symbol": "crvUSDBTCETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xE7a24EF0C5e95Ffb0f6684b813A78F2a3AD7D171",
-        "name": "Curve.fi amDAI/amUSDC/amUSDT",
-        "symbol": "am3CRV",
-        "decimals": 18
-      },
-      {
-        "address": "0x5c2ed810328349100A66B82b78a1791B101C9D61",
-        "name": "Aave Matic Market WBTC",
-        "symbol": "amWBTC",
-        "decimals": 8
-      },
-      {
-        "address": "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390",
-        "name": "Aave Matic Market WETH",
-        "symbol": "amWETH",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x92215849c439E1f8612b6646060B4E3E5ef822cC"
-  },
-  "0x600743B1d8A96438bD46836fD34977a00293f6Aa": {
-    "protocolToken": {
-      "address": "0x600743B1d8A96438bD46836fD34977a00293f6Aa",
-      "name": "Curve EURT-3Crv",
-      "symbol": "crvEURTUSD",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7BDF330f423Ea880FF95fC41A280fD5eCFD3D09f",
-        "name": "Euro Tether (PoS)",
-        "symbol": "EURT",
-        "decimals": 6
-      },
-      {
-        "address": "0xE7a24EF0C5e95Ffb0f6684b813A78F2a3AD7D171",
-        "name": "Curve.fi amDAI/amUSDC/amUSDT",
-        "symbol": "am3CRV",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xB446BF7b8D6D4276d0c75eC0e3ee8dD7Fe15783A"
-  },
-  "0x8096ac61db23291252574D49f036f0f9ed8ab390": {
-    "protocolToken": {
-      "address": "0x8096ac61db23291252574D49f036f0f9ed8ab390",
-      "name": "Curve USD-BTC-ETH",
-      "symbol": "crvUSDBTCETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xE7a24EF0C5e95Ffb0f6684b813A78F2a3AD7D171",
-        "name": "Curve.fi amDAI/amUSDC/amUSDT",
-        "symbol": "am3CRV",
-        "decimals": 18
-      },
-      {
-        "address": "0x5c2ed810328349100A66B82b78a1791B101C9D61",
-        "name": "Aave Matic Market WBTC",
-        "symbol": "amWBTC",
-        "decimals": 8
-      },
-      {
-        "address": "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390",
-        "name": "Aave Matic Market WETH",
-        "symbol": "amWETH",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x751B1e21756bDbc307CBcC5085c042a0e9AaEf36"
-  },
   "0xAd326c253A84e9805559b73A08724e11E49ca651": {
     "protocolToken": {
       "address": "0xAd326c253A84e9805559b73A08724e11E49ca651",
@@ -258,6 +177,87 @@
       }
     ],
     "lpTokenManager": "0x53C38755748745e2dd7D0a136FBCC9fB1A5B83b2"
+  },
+  "0xdAD97F7713Ae9437fa9249920eC8507e5FbB23d3": {
+    "protocolToken": {
+      "address": "0xdAD97F7713Ae9437fa9249920eC8507e5FbB23d3",
+      "name": "Curve USD-BTC-ETH",
+      "symbol": "crvUSDBTCETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xE7a24EF0C5e95Ffb0f6684b813A78F2a3AD7D171",
+        "name": "Curve.fi amDAI/amUSDC/amUSDT",
+        "symbol": "am3CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x5c2ed810328349100A66B82b78a1791B101C9D61",
+        "name": "Aave Matic Market WBTC",
+        "symbol": "amWBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390",
+        "name": "Aave Matic Market WETH",
+        "symbol": "amWETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x92215849c439E1f8612b6646060B4E3E5ef822cC"
+  },
+  "0x600743B1d8A96438bD46836fD34977a00293f6Aa": {
+    "protocolToken": {
+      "address": "0x600743B1d8A96438bD46836fD34977a00293f6Aa",
+      "name": "Curve EURT-3Crv",
+      "symbol": "crvEURTUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7BDF330f423Ea880FF95fC41A280fD5eCFD3D09f",
+        "name": "Euro Tether (PoS)",
+        "symbol": "EURT",
+        "decimals": 6
+      },
+      {
+        "address": "0xE7a24EF0C5e95Ffb0f6684b813A78F2a3AD7D171",
+        "name": "Curve.fi amDAI/amUSDC/amUSDT",
+        "symbol": "am3CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xB446BF7b8D6D4276d0c75eC0e3ee8dD7Fe15783A"
+  },
+  "0x8096ac61db23291252574D49f036f0f9ed8ab390": {
+    "protocolToken": {
+      "address": "0x8096ac61db23291252574D49f036f0f9ed8ab390",
+      "name": "Curve USD-BTC-ETH",
+      "symbol": "crvUSDBTCETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xE7a24EF0C5e95Ffb0f6684b813A78F2a3AD7D171",
+        "name": "Curve.fi amDAI/amUSDC/amUSDT",
+        "symbol": "am3CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x5c2ed810328349100A66B82b78a1791B101C9D61",
+        "name": "Aave Matic Market WBTC",
+        "symbol": "amWBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390",
+        "name": "Aave Matic Market WETH",
+        "symbol": "amWETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x751B1e21756bDbc307CBcC5085c042a0e9AaEf36"
   },
   "0xA73EdCf18421B56D9AF1cE08A34E102E23b2C4B6": {
     "protocolToken": {
@@ -396,5 +396,120 @@
       }
     ],
     "lpTokenManager": "0xD3F7C6Fc3381e510b8348Fe6099b0342154691B5"
+  },
+  "0xd8001cE95A13168AA4F7D70b5298962b7cADf6Dd": {
+    "protocolToken": {
+      "address": "0xd8001cE95A13168AA4F7D70b5298962b7cADf6Dd",
+      "name": "USDC/USDM",
+      "symbol": "usdc-usdm",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+        "name": "Mountain Protocol USD",
+        "symbol": "USDM",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xd8001cE95A13168AA4F7D70b5298962b7cADf6Dd"
+  },
+  "0x5225010A0AE133B357861782B0B865a48471b2C5": {
+    "protocolToken": {
+      "address": "0x5225010A0AE133B357861782B0B865a48471b2C5",
+      "name": "crvUSD/USDC",
+      "symbol": "crvusdusdc",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x5225010A0AE133B357861782B0B865a48471b2C5"
+  },
+  "0xA70Af99bFF6b168327f9D1480e29173e757c7904": {
+    "protocolToken": {
+      "address": "0xA70Af99bFF6b168327f9D1480e29173e757c7904",
+      "name": "crvUSD/USDT",
+      "symbol": "crvusdusdt",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "name": "(PoS) Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0xA70Af99bFF6b168327f9D1480e29173e757c7904"
+  },
+  "0x62c949ee985b125Ff2d7ddcf4Fe7AEcB0a040E2a": {
+    "protocolToken": {
+      "address": "0x62c949ee985b125Ff2d7ddcf4Fe7AEcB0a040E2a",
+      "name": "crvUSD/DAI",
+      "symbol": "crvusddai",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "name": "(PoS) Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x62c949ee985b125Ff2d7ddcf4Fe7AEcB0a040E2a"
+  },
+  "0x864490Cf55dc2Dee3f0ca4D06F5f80b2BB154a03": {
+    "protocolToken": {
+      "address": "0x864490Cf55dc2Dee3f0ca4D06F5f80b2BB154a03",
+      "name": "crvUSD/USDC.e",
+      "symbol": "crvusdusde",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x864490Cf55dc2Dee3f0ca4D06F5f80b2BB154a03"
   }
 }

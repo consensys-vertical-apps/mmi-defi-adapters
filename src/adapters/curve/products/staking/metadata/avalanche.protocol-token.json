@@ -1,0 +1,82 @@
+{
+  "0x4620D46b4db7fB04a01A75fFed228Bc027C9A899": {
+    "protocolToken": {
+      "address": "0x4620D46b4db7fB04a01A75fFed228Bc027C9A899",
+      "name": "Curve.fi avDAI/avUSDC/avUSDT",
+      "symbol": "av3CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1337BedC9D22ecbe766dF105c9623922A27963EC",
+        "name": "Curve.fi avDAI/avUSDC/avUSDT",
+        "symbol": "av3CRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8e492286D489fC833E42eAF3c38D609583c37EA1": {
+    "protocolToken": {
+      "address": "0x8e492286D489fC833E42eAF3c38D609583c37EA1",
+      "name": "Curve.fi Factory Plain Pool: 3poolV2",
+      "symbol": "3poolV2-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xAEA2E71b631fA93683BCF256A8689dFa0e094fcD",
+        "name": "Curve.fi Factory Plain Pool: 3poolV2",
+        "symbol": "3poolV2-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xF8C224C6Fbc5911028bb69276b005b5a7b1E6274": {
+    "protocolToken": {
+      "address": "0xF8C224C6Fbc5911028bb69276b005b5a7b1E6274",
+      "name": "Curve.fi Factory USD Metapool: Topshelf USDL",
+      "symbol": "USDL-3CRV3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x943F3B750447AbDd61cdF68AE6c3912cd3bedA04",
+        "name": "Curve.fi Factory USD Metapool: Topshelf USDL",
+        "symbol": "USDL-3CRV3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x1AEAA1b998307217D62E9eeFb6407B10598eF3b8": {
+    "protocolToken": {
+      "address": "0x1AEAA1b998307217D62E9eeFb6407B10598eF3b8",
+      "name": "Curve.fi Factory Plain Pool: 3pool",
+      "symbol": "3pool-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD79138c49c49200a1Afc935171D1bDAd084FDc95",
+        "name": "Curve.fi Factory Plain Pool: 3pool",
+        "symbol": "3pool-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x1879075f1c055564CB968905aC404A5A01a1699A": {
+    "protocolToken": {
+      "address": "0x1879075f1c055564CB968905aC404A5A01a1699A",
+      "name": "Curve USD-BTC-ETH",
+      "symbol": "crvUSDBTCETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1daB6560494B04473A0BE3E7D83CF3Fdf3a51828",
+        "name": "Curve USD-BTC-ETH",
+        "symbol": "crvUSDBTCETH",
+        "decimals": 18
+      }
+    ]
+  }
+}

@@ -6,8 +6,6 @@ import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvi
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 
-// import { CURVE_META_REGISTRY_CONTRACT } from '../products/pool/curvePoolAdapter'
-
 export type CurvePoolAdapterMetadata = Record<
   string,
   {
@@ -25,7 +23,6 @@ export type CurveStakingAdapterMetadata = Record<
 >
 
 export async function queryCurvePools(
-  types: string[],
   curveProduct: 'pool' | 'staking' | 'reward',
   chainId: Chain,
   provider: CustomJsonRpcProvider,
@@ -33,53 +30,41 @@ export async function queryCurvePools(
   const minVolumeUSD = 50000
   const minTotalSupply = 100
 
-  const baseUrl = `https://api.curve.fi/api/getPools/${ChainName[chainId]}`
+  const baseUrl = `https://api.curve.fi/v1/getPools/all/${ChainName[chainId]}`
 
-  const fetchDataForType = async (type: string) => {
-    const response = await fetch(`${baseUrl}/${type}`)
-    if (!response.ok)
-      throw new Error(
-        `Error fetching data for type ${type}: ${response.statusText}`,
-      )
-    return response.json()
-  }
-
-  const results = await Promise.all(types.map(fetchDataForType))
+  const results = await (await fetch(`${baseUrl}`)).json()
 
   if (curveProduct === 'pool') {
     const transformed: CurvePoolAdapterMetadata = {}
 
     const transformData = async (data: any) => {
       await Promise.all(
-        data.map(async (result: any) => {
-          await Promise.all(
-            result.data.poolData.map(async (pool: any) => {
-              if (pool.usdTotal < minVolumeUSD) {
-                return
-              }
+        data.data.poolData.map(async (pool: any) => {
+          if (pool.usdTotal < minVolumeUSD) {
+            return
+          }
 
-              if (pool.totalSupply < minTotalSupply) {
-                return
-              }
+          if (pool.totalSupply < minTotalSupply) {
+            return
+          }
 
-              transformed[getAddress(pool.lpTokenAddress)] = {
-                protocolToken: await getTokenMetadata(
-                  pool.lpTokenAddress,
-                  chainId,
-                  provider,
-                ),
-                underlyingTokens: await Promise.all(
-                  pool.coins.map(
-                    async (coin: any) =>
-                      await getTokenMetadata(coin.address, chainId, provider),
-                  ),
-                ),
-                lpTokenManager: pool.address,
-              }
-            }),
-          )
+          transformed[getAddress(pool.lpTokenAddress)] = {
+            protocolToken: await getTokenMetadata(
+              pool.lpTokenAddress,
+              chainId,
+              provider,
+            ),
+            underlyingTokens: await Promise.all(
+              pool.coins.map(
+                async (coin: any) =>
+                  await getTokenMetadata(coin.address, chainId, provider),
+              ),
+            ),
+            lpTokenManager: pool.address,
+          }
         }),
       )
+
       return transformed
     }
 
@@ -89,36 +74,32 @@ export async function queryCurvePools(
 
     const transformData = async (data: any) => {
       await Promise.all(
-        data.map(async (result: any) => {
-          await Promise.all(
-            result.data.poolData.map(async (pool: any) => {
-              if (!pool.gaugeAddress) {
-                return
-              }
+        data.data.poolData.map(async (pool: any) => {
+          if (!pool.gaugeAddress) {
+            return
+          }
 
-              if (pool.usdTotal < minVolumeUSD) {
-                return
-              }
+          if (pool.usdTotal < minVolumeUSD) {
+            return
+          }
 
-              if (pool.totalSupply < minTotalSupply) {
-                return
-              }
+          if (pool.totalSupply < minTotalSupply) {
+            return
+          }
 
-              const protocolToken = await getTokenMetadata(
-                pool.lpTokenAddress,
-                chainId,
-                provider,
-              )
-
-              transformed[getAddress(pool.gaugeAddress)] = {
-                protocolToken: {
-                  ...protocolToken,
-                  address: getAddress(pool.gaugeAddress),
-                },
-                underlyingTokens: [protocolToken],
-              }
-            }),
+          const protocolToken = await getTokenMetadata(
+            pool.lpTokenAddress,
+            chainId,
+            provider,
           )
+
+          transformed[getAddress(pool.gaugeAddress)] = {
+            protocolToken: {
+              ...protocolToken,
+              address: getAddress(pool.gaugeAddress),
+            },
+            underlyingTokens: [protocolToken],
+          }
         }),
       )
       return transformed

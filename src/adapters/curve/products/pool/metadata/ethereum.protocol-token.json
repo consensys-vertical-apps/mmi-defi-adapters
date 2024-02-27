@@ -184,178 +184,126 @@
     ],
     "lpTokenManager": "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2"
   },
-  "0x3B3Ac5386837Dc563660FB6a0937DFAa5924333B": {
+  "0xc4AD29ba4B3c580e6D59105FFf484999997675Ff": {
     "protocolToken": {
-      "address": "0x3B3Ac5386837Dc563660FB6a0937DFAa5924333B",
-      "name": "LP-bCurve",
-      "symbol": "BCURVE",
+      "address": "0xc4AD29ba4B3c580e6D59105FFf484999997675Ff",
+      "name": "Curve.fi USD-BTC-ETH",
+      "symbol": "crv3crypto",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xC2cB1040220768554cf699b0d863A3cd4324ce32",
-        "name": "iearn DAI",
-        "symbol": "YDAI",
-        "decimals": 18
-      },
-      {
-        "address": "0x26EA744E5B887E5205727f55dFBE8685e3b21951",
-        "name": "iearn USDC",
-        "symbol": "YUSDC",
+        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
         "decimals": 6
       },
       {
-        "address": "0xE6354ed5bC4b393a5Aad09f21c46E101e692d447",
-        "name": "iearn USDT",
-        "symbol": "YUSDT",
+        "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46"
+  },
+  "0x3D229E1B4faab62F621eF2F6A610961f7BD7b23B": {
+    "protocolToken": {
+      "address": "0x3D229E1B4faab62F621eF2F6A610961f7BD7b23B",
+      "name": "Curve EURS-USDC",
+      "symbol": "crvEURSUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
         "decimals": 6
       },
       {
-        "address": "0x04bC0Ab673d88aE9dbC9DA2380cB6B79C4BCa9aE",
-        "name": "iearn BUSD",
-        "symbol": "yBUSD",
-        "decimals": 18
+        "address": "0xdB25f211AB05b1c97D595516F45794528a807ad8",
+        "name": "STASIS EURS Token",
+        "symbol": "EURS",
+        "decimals": 2
       }
     ],
-    "lpTokenManager": "0x79a8C46DeA5aDa233ABaFFD40F3A0A2B1e5A4F27"
+    "lpTokenManager": "0x98a7F18d4E56Cfe84E3D081B40001B3d5bD3eB8B"
   },
-  "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0": {
+  "0x3A283D9c08E8b55966afb64C515f5143cf907611": {
     "protocolToken": {
-      "address": "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0",
-      "name": "Curve.fi Factory Plain Pool: sdCRV/CRV",
-      "symbol": "sdCRVlp-f",
+      "address": "0x3A283D9c08E8b55966afb64C515f5143cf907611",
+      "name": "Curve CVX-ETH",
+      "symbol": "crvCVXETH",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-        "name": "Curve DAO Token",
-        "symbol": "CRV",
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
         "decimals": 18
       },
       {
-        "address": "0xD1b5651E55D4CeeD36251c61c50C889B36F6abB5",
-        "name": "Stake DAO CRV",
-        "symbol": "SDCRV",
+        "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+        "name": "Convex Finance",
+        "symbol": "CVX",
         "decimals": 18
       }
     ],
-    "lpTokenManager": "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0"
+    "lpTokenManager": "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4"
   },
-  "0x21E27a5E5513D6e65C4f830167390997aA84843a": {
+  "0x8282BD15dcA2EA2bDf24163E8f2781B30C43A2ef": {
     "protocolToken": {
-      "address": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
-      "name": "Curve.fi Factory Pool: stETH-ng",
-      "symbol": "stETH-ng-f",
+      "address": "0x8282BD15dcA2EA2bDf24163E8f2781B30C43A2ef",
+      "name": "Curve SPELL-ETH",
+      "symbol": "crvSPELLETH",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-        "symbol": "ETH",
-        "name": "Ethereum",
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
         "decimals": 18
       },
       {
-        "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-        "name": "Liquid staked Ether 2.0",
-        "symbol": "stETH",
+        "address": "0x090185f2135308BaD17527004364eBcC2D37e5F6",
+        "name": "Spell Token",
+        "symbol": "SPELL",
         "decimals": 18
       }
     ],
-    "lpTokenManager": "0x21E27a5E5513D6e65C4f830167390997aA84843a"
+    "lpTokenManager": "0x98638FAcf9a3865cd033F36548713183f6996122"
   },
-  "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc": {
+  "0xCb08717451aaE9EF950a2524E33B6DCaBA60147B": {
     "protocolToken": {
-      "address": "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc",
-      "name": "Curve.fi Factory USD Metapool: GRAIFRAXBP",
-      "symbol": "GRAIFRAXBP3CRV-f",
+      "address": "0xCb08717451aaE9EF950a2524E33B6DCaBA60147B",
+      "name": "Curve T-ETH",
+      "symbol": "crvTETH",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x15f74458aE0bFdAA1a96CA1aa779D715Cc1Eefe4",
-        "name": "Grai",
-        "symbol": "GRAI",
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
         "decimals": 18
       },
       {
-        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
-        "name": "Curve fi FRAX USDC",
-        "symbol": "CRVFRAX",
+        "address": "0xCdF7028ceAB81fA0C6971208e83fa7872994beE5",
+        "name": "Threshold Network",
+        "symbol": "T",
         "decimals": 18
       }
     ],
-    "lpTokenManager": "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc"
-  },
-  "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0": {
-    "protocolToken": {
-      "address": "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0",
-      "name": "Curve.fi Factory Plain Pool: cvxFxs/Fxs",
-      "symbol": "cvxfxs-fxs-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0",
-        "name": "Frax Share",
-        "symbol": "FXS",
-        "decimals": 18
-      },
-      {
-        "address": "0xFEEf77d3f69374f66429C91d732A244f074bdf74",
-        "name": "Convex FXS",
-        "symbol": "CVXFXS",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0"
-  },
-  "0x9978c6B08d28d3B74437c917c5dD7C026df9d55C": {
-    "protocolToken": {
-      "address": "0x9978c6B08d28d3B74437c917c5dD7C026df9d55C",
-      "name": "Curve.fi Factory Plain Pool: LUSD/crvUSD",
-      "symbol": "LUSDcrvUSD-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
-        "name": "Liquity USD",
-        "symbol": "LUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "name": "crvUSD",
-        "symbol": "CRVUSD",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x9978c6B08d28d3B74437c917c5dD7C026df9d55C"
-  },
-  "0xfa0BBB0A5815F6648241C9221027b70914dd8949": {
-    "protocolToken": {
-      "address": "0xfa0BBB0A5815F6648241C9221027b70914dd8949",
-      "name": "Curve.fi Factory Plain Pool: frxETH/OETH",
-      "symbol": "frxETHOETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
-        "name": "Frax Ether",
-        "symbol": "FRXETH",
-        "decimals": 18
-      },
-      {
-        "address": "0x856c4Efb76C1D1AE02e20CEB03A2A6a08b0b8dC3",
-        "name": "Origin Ether",
-        "symbol": "OETH",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xfa0BBB0A5815F6648241C9221027b70914dd8949"
+    "lpTokenManager": "0x752eBeb79963cf0732E9c0fec72a49FD1DEfAEAC"
   },
   "0x90244F43D548a4f8dFecfAD91a193465B1fad6F7": {
     "protocolToken": {
@@ -1277,6 +1225,843 @@
     ],
     "lpTokenManager": "0x99e09ee2d6Bb16c0F5ADDfEA649dbB2C1d524624"
   },
+  "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E": {
+    "protocolToken": {
+      "address": "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
+      "symbol": "crvUSDUSDC-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E"
+  },
+  "0x390f3595bCa2Df7d23783dFd126427CCeb997BF4": {
+    "protocolToken": {
+      "address": "0x390f3595bCa2Df7d23783dFd126427CCeb997BF4",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/USDT",
+      "symbol": "crvUSDUSDT-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x390f3595bCa2Df7d23783dFd126427CCeb997BF4"
+  },
+  "0xCa978A0528116DDA3cbA9ACD3e68bc6191CA53D0": {
+    "protocolToken": {
+      "address": "0xCa978A0528116DDA3cbA9ACD3e68bc6191CA53D0",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/USDP",
+      "symbol": "crvUSDUSDP-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
+        "name": "Pax Dollar",
+        "symbol": "USDP",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xCa978A0528116DDA3cbA9ACD3e68bc6191CA53D0"
+  },
+  "0x34D655069F4cAc1547E4C8cA284FfFF5ad4A8db0": {
+    "protocolToken": {
+      "address": "0x34D655069F4cAc1547E4C8cA284FfFF5ad4A8db0",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/TUSD",
+      "symbol": "crvUSDTUSD-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0000000000085d4780B73119b644AE5ecd22b376",
+        "name": "TrueUSD",
+        "symbol": "TUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x34D655069F4cAc1547E4C8cA284FfFF5ad4A8db0"
+  },
+  "0x0CD6f267b2086bea681E922E19D40512511BE538": {
+    "protocolToken": {
+      "address": "0x0CD6f267b2086bea681E922E19D40512511BE538",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/Frax",
+      "symbol": "crvUSDFRAX-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x0CD6f267b2086bea681E922E19D40512511BE538"
+  },
+  "0xBe426b0f37c112dd20d5866769c8034171567b31": {
+    "protocolToken": {
+      "address": "0xBe426b0f37c112dd20d5866769c8034171567b31",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/MIM",
+      "symbol": "crvUSDMIM-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x99D8a9C45b2ecA8864373A26D1459e3Dff1e17F3",
+        "name": "Magic Internet Money",
+        "symbol": "MIM",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xBe426b0f37c112dd20d5866769c8034171567b31"
+  },
+  "0x94cC50e4521bD271C1a997a3A4Dc815C2F920b41": {
+    "protocolToken": {
+      "address": "0x94cC50e4521bD271C1a997a3A4Dc815C2F920b41",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/SUSD",
+      "symbol": "crvUSDSUSD-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
+        "name": "Synth sUSD",
+        "symbol": "SUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x94cC50e4521bD271C1a997a3A4Dc815C2F920b41"
+  },
+  "0x8272E1A3dBef607C04AA6e5BD3a1A134c8ac063B": {
+    "protocolToken": {
+      "address": "0x8272E1A3dBef607C04AA6e5BD3a1A134c8ac063B",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/DOLA",
+      "symbol": "crvUSDDOLA-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x865377367054516e17014CcdED1e7d814EDC9ce4",
+        "name": "DOLA",
+        "symbol": "DOLA",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x8272E1A3dBef607C04AA6e5BD3a1A134c8ac063B"
+  },
+  "0xeCDd0cE505da71cd9dE855CD6804BA1e8C7bdB07": {
+    "protocolToken": {
+      "address": "0xeCDd0cE505da71cd9dE855CD6804BA1e8C7bdB07",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/GUSD",
+      "symbol": "crvUSDGUSD-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
+        "name": "Gemini Dollar",
+        "symbol": "GUSD",
+        "decimals": 2
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xeCDd0cE505da71cd9dE855CD6804BA1e8C7bdB07"
+  },
+  "0x3B3Ac5386837Dc563660FB6a0937DFAa5924333B": {
+    "protocolToken": {
+      "address": "0x3B3Ac5386837Dc563660FB6a0937DFAa5924333B",
+      "name": "LP-bCurve",
+      "symbol": "BCURVE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC2cB1040220768554cf699b0d863A3cd4324ce32",
+        "name": "iearn DAI",
+        "symbol": "YDAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x26EA744E5B887E5205727f55dFBE8685e3b21951",
+        "name": "iearn USDC",
+        "symbol": "YUSDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xE6354ed5bC4b393a5Aad09f21c46E101e692d447",
+        "name": "iearn USDT",
+        "symbol": "YUSDT",
+        "decimals": 6
+      },
+      {
+        "address": "0x04bC0Ab673d88aE9dbC9DA2380cB6B79C4BCa9aE",
+        "name": "iearn BUSD",
+        "symbol": "yBUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x79a8C46DeA5aDa233ABaFFD40F3A0A2B1e5A4F27"
+  },
+  "0x9c3B46C0Ceb5B9e304FCd6D88Fc50f7DD24B31Bc": {
+    "protocolToken": {
+      "address": "0x9c3B46C0Ceb5B9e304FCd6D88Fc50f7DD24B31Bc",
+      "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
+      "symbol": "frxeth-ng-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
+        "name": "Frax Ether",
+        "symbol": "FRXETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x9c3B46C0Ceb5B9e304FCd6D88Fc50f7DD24B31Bc"
+  },
+  "0xB7ECB2AA52AA64a717180E030241bC75Cd946726": {
+    "protocolToken": {
+      "address": "0xB7ECB2AA52AA64a717180E030241bC75Cd946726",
+      "name": "Curve.fi Factory Plain Pool: tBTC/WBTC",
+      "symbol": "2BTC-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x18084fbA666a33d37592fA2633fD49a74DD93a88",
+        "name": "tBTC",
+        "symbol": "TBTC",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xB7ECB2AA52AA64a717180E030241bC75Cd946726"
+  },
+  "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B": {
+    "protocolToken": {
+      "address": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
+      "name": "TricryptoUSDC",
+      "symbol": "crvUSDCWBTCWETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B"
+  },
+  "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4": {
+    "protocolToken": {
+      "address": "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4",
+      "name": "TricryptoUSDT",
+      "symbol": "crvUSDTWBTCWETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4"
+  },
+  "0x2889302a794dA87fBF1D6Db415C1492194663D13": {
+    "protocolToken": {
+      "address": "0x2889302a794dA87fBF1D6Db415C1492194663D13",
+      "name": "TricryptoLLAMA",
+      "symbol": "crvCRVUSDTBTCWSTETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x18084fbA666a33d37592fA2633fD49a74DD93a88",
+        "name": "tBTC",
+        "symbol": "TBTC",
+        "decimals": 18
+      },
+      {
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x2889302a794dA87fBF1D6Db415C1492194663D13"
+  },
+  "0x5426178799ee0a0181A89b4f57eFddfAb49941Ec": {
+    "protocolToken": {
+      "address": "0x5426178799ee0a0181A89b4f57eFddfAb49941Ec",
+      "name": "TricryptoINV",
+      "symbol": "crvUSDCWETHINV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x41D5D79431A913C4aE7d69a668ecdfE5fF9DFB68",
+        "name": "Inverse Finance",
+        "symbol": "INV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x5426178799ee0a0181A89b4f57eFddfAb49941Ec"
+  },
+  "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14": {
+    "protocolToken": {
+      "address": "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14",
+      "name": "TriCRV",
+      "symbol": "crvUSDETHCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+        "name": "Curve DAO Token",
+        "symbol": "CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14"
+  },
+  "0x86bF09aCB47AB31686bE413d614E9ded3666a1d3": {
+    "protocolToken": {
+      "address": "0x86bF09aCB47AB31686bE413d614E9ded3666a1d3",
+      "name": "TriSILO",
+      "symbol": "crvUSDETHSILO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
+        "name": "Frax Ether",
+        "symbol": "FRXETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x6f80310CA7F2C654691D1383149Fa1A57d8AB1f8",
+        "name": "Silo Governance Token",
+        "symbol": "SILO",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x86bF09aCB47AB31686bE413d614E9ded3666a1d3"
+  },
+  "0x2570f1bD5D2735314FC102eb12Fc1aFe9e6E7193": {
+    "protocolToken": {
+      "address": "0x2570f1bD5D2735314FC102eb12Fc1aFe9e6E7193",
+      "name": "TryLSD",
+      "symbol": "TryLSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+        "name": "Rocket Pool ETH",
+        "symbol": "RETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+        "name": "Staked Frax Ether",
+        "symbol": "SFRXETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x2570f1bD5D2735314FC102eb12Fc1aFe9e6E7193"
+  },
+  "0x954313005C56b555bdC41B84D6c63B69049d7847": {
+    "protocolToken": {
+      "address": "0x954313005C56b555bdC41B84D6c63B69049d7847",
+      "name": "triSDT",
+      "symbol": "triSDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
+        "name": "Frax Ether",
+        "symbol": "FRXETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x73968b9a57c6E53d41345FD57a6E6ae27d6CDB2F",
+        "name": "Stake DAO",
+        "symbol": "SDT",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x954313005C56b555bdC41B84D6c63B69049d7847"
+  },
+  "0xC7DE47b9Ca2Fc753D6a2F167D8b3e19c6D18b19a": {
+    "protocolToken": {
+      "address": "0xC7DE47b9Ca2Fc753D6a2F167D8b3e19c6D18b19a",
+      "name": "TriDBR",
+      "symbol": "crvDBRINV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x865377367054516e17014CcdED1e7d814EDC9ce4",
+        "name": "DOLA",
+        "symbol": "DOLA",
+        "decimals": 18
+      },
+      {
+        "address": "0xAD038Eb671c44b853887A7E32528FaB35dC5D710",
+        "name": "DOLA Borrowing Right",
+        "symbol": "DBR",
+        "decimals": 18
+      },
+      {
+        "address": "0x41D5D79431A913C4aE7d69a668ecdfE5fF9DFB68",
+        "name": "Inverse Finance",
+        "symbol": "INV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xC7DE47b9Ca2Fc753D6a2F167D8b3e19c6D18b19a"
+  },
+  "0x4D1941a887eC788F059b3bfcC8eE1E97b968825B": {
+    "protocolToken": {
+      "address": "0x4D1941a887eC788F059b3bfcC8eE1E97b968825B",
+      "name": "TricryptoFRAX",
+      "symbol": "crvFRAXTBTCFRXETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x18084fbA666a33d37592fA2633fD49a74DD93a88",
+        "name": "tBTC",
+        "symbol": "TBTC",
+        "decimals": 18
+      },
+      {
+        "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
+        "name": "Frax Ether",
+        "symbol": "FRXETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x4D1941a887eC788F059b3bfcC8eE1E97b968825B"
+  },
+  "0x84CeCB5525c6B1C20070E742da870062E84Da178": {
+    "protocolToken": {
+      "address": "0x84CeCB5525c6B1C20070E742da870062E84Da178",
+      "name": "TriQOC",
+      "symbol": "QOMOCAW",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xa71d0588EAf47f12B13cF8eC750430d21DF04974",
+        "name": "Shiba Predator",
+        "symbol": "QOM",
+        "decimals": 18
+      },
+      {
+        "address": "0xb53ecF1345caBeE6eA1a65100Ebb153cEbcac40f",
+        "name": "Childhoods End",
+        "symbol": "O",
+        "decimals": 18
+      },
+      {
+        "address": "0xf3b9569F82B18aEf890De263B84189bd33EBe452",
+        "name": "A Hunters Dream",
+        "symbol": "CAW",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x84CeCB5525c6B1C20070E742da870062E84Da178"
+  },
+  "0x2Cf99A343e4ECF49623E82f2Ec6A9b62e16Ff3fe": {
+    "protocolToken": {
+      "address": "0x2Cf99A343e4ECF49623E82f2Ec6A9b62e16Ff3fe",
+      "name": "FRAXFPI",
+      "symbol": "FRAXFPI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x5Ca135cB8527d76e932f34B5145575F9d8cbE08E",
+        "name": "Frax Price Index",
+        "symbol": "FPI",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x2Cf99A343e4ECF49623E82f2Ec6A9b62e16Ff3fe"
+  },
+  "0x8eFD02a0a40545F32DbA5D664CbBC1570D3FedF6": {
+    "protocolToken": {
+      "address": "0x8eFD02a0a40545F32DbA5D664CbBC1570D3FedF6",
+      "name": "alETH/wETH",
+      "symbol": "alETHwETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0100546F2cD4C9D97f798fFC9755E47865FF7Ee6",
+        "name": "Alchemix ETH",
+        "symbol": "ALETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x8eFD02a0a40545F32DbA5D664CbBC1570D3FedF6"
+  },
+  "0x9EfE1A1Cbd6Ca51Ee8319AFc4573d253C3B732af": {
+    "protocolToken": {
+      "address": "0x9EfE1A1Cbd6Ca51Ee8319AFc4573d253C3B732af",
+      "name": "wETH/rETH",
+      "symbol": "wETHrETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+        "name": "Rocket Pool ETH",
+        "symbol": "RETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x9EfE1A1Cbd6Ca51Ee8319AFc4573d253C3B732af"
+  },
+  "0x91285c4fC766ffF6F3acAfeEC7a0423275257faE": {
+    "protocolToken": {
+      "address": "0x91285c4fC766ffF6F3acAfeEC7a0423275257faE",
+      "name": "eUSD/crvUSD",
+      "symbol": "eUSDcrvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA0d69E286B938e21CBf7E51D71F6A4c8918f482F",
+        "name": "Electronic USD",
+        "symbol": "EUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x91285c4fC766ffF6F3acAfeEC7a0423275257faE"
+  },
+  "0x0f2F4D68308dB60d36268a602EF273421A227021": {
+    "protocolToken": {
+      "address": "0x0f2F4D68308dB60d36268a602EF273421A227021",
+      "name": "uniETH/ETH",
+      "symbol": "uniETH ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xF1376bceF0f78459C0Ed0ba5ddce976F1ddF51F4",
+        "name": "Universal ETH",
+        "symbol": "UNIETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x0f2F4D68308dB60d36268a602EF273421A227021"
+  },
+  "0x2482DFb5A65D901d137742AB1095f26374509352": {
+    "protocolToken": {
+      "address": "0x2482DFb5A65D901d137742AB1095f26374509352",
+      "name": "pUSD-3CRV-A1000",
+      "symbol": "pUSD3crv",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x466a756E9A7401B5e2444a3fCB3c2C12FBEa0a54",
+        "name": "Stablecoin",
+        "symbol": "PUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+        "name": "LP 3pool Curve",
+        "symbol": "3CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x2482DFb5A65D901d137742AB1095f26374509352"
+  },
+  "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc": {
+    "protocolToken": {
+      "address": "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc",
+      "name": "Curve.fi Factory USD Metapool: GRAIFRAXBP",
+      "symbol": "GRAIFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x15f74458aE0bFdAA1a96CA1aa779D715Cc1Eefe4",
+        "name": "Grai",
+        "symbol": "GRAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
+        "name": "Curve fi FRAX USDC",
+        "symbol": "CRVFRAX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc"
+  },
+  "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0": {
+    "protocolToken": {
+      "address": "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0",
+      "name": "Curve.fi Factory Plain Pool: cvxFxs/Fxs",
+      "symbol": "cvxfxs-fxs-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0",
+        "name": "Frax Share",
+        "symbol": "FXS",
+        "decimals": 18
+      },
+      {
+        "address": "0xFEEf77d3f69374f66429C91d732A244f074bdf74",
+        "name": "Convex FXS",
+        "symbol": "CVXFXS",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0"
+  },
+  "0x9978c6B08d28d3B74437c917c5dD7C026df9d55C": {
+    "protocolToken": {
+      "address": "0x9978c6B08d28d3B74437c917c5dD7C026df9d55C",
+      "name": "Curve.fi Factory Plain Pool: LUSD/crvUSD",
+      "symbol": "LUSDcrvUSD-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
+        "name": "Liquity USD",
+        "symbol": "LUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x9978c6B08d28d3B74437c917c5dD7C026df9d55C"
+  },
+  "0xfa0BBB0A5815F6648241C9221027b70914dd8949": {
+    "protocolToken": {
+      "address": "0xfa0BBB0A5815F6648241C9221027b70914dd8949",
+      "name": "Curve.fi Factory Plain Pool: frxETH/OETH",
+      "symbol": "frxETHOETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
+        "name": "Frax Ether",
+        "symbol": "FRXETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x856c4Efb76C1D1AE02e20CEB03A2A6a08b0b8dC3",
+        "name": "Origin Ether",
+        "symbol": "OETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xfa0BBB0A5815F6648241C9221027b70914dd8949"
+  },
   "0xFd2a8fA60Abd58Efe3EeE34dd494cD491dC14900": {
     "protocolToken": {
       "address": "0xFd2a8fA60Abd58Efe3EeE34dd494cD491dC14900",
@@ -1984,127 +2769,6 @@
       }
     ],
     "lpTokenManager": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6"
-  },
-  "0xc4AD29ba4B3c580e6D59105FFf484999997675Ff": {
-    "protocolToken": {
-      "address": "0xc4AD29ba4B3c580e6D59105FFf484999997675Ff",
-      "name": "Curve.fi USD-BTC-ETH",
-      "symbol": "crv3crypto",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-        "name": "Tether USD",
-        "symbol": "USDT",
-        "decimals": 6
-      },
-      {
-        "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-        "name": "Wrapped BTC",
-        "symbol": "WBTC",
-        "decimals": 8
-      },
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46"
-  },
-  "0x3D229E1B4faab62F621eF2F6A610961f7BD7b23B": {
-    "protocolToken": {
-      "address": "0x3D229E1B4faab62F621eF2F6A610961f7BD7b23B",
-      "name": "Curve EURS-USDC",
-      "symbol": "crvEURSUSDC",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "name": "USD Coin",
-        "symbol": "USDC",
-        "decimals": 6
-      },
-      {
-        "address": "0xdB25f211AB05b1c97D595516F45794528a807ad8",
-        "name": "STASIS EURS Token",
-        "symbol": "EURS",
-        "decimals": 2
-      }
-    ],
-    "lpTokenManager": "0x98a7F18d4E56Cfe84E3D081B40001B3d5bD3eB8B"
-  },
-  "0x3A283D9c08E8b55966afb64C515f5143cf907611": {
-    "protocolToken": {
-      "address": "0x3A283D9c08E8b55966afb64C515f5143cf907611",
-      "name": "Curve CVX-ETH",
-      "symbol": "crvCVXETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      },
-      {
-        "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-        "name": "Convex Finance",
-        "symbol": "CVX",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4"
-  },
-  "0x8282BD15dcA2EA2bDf24163E8f2781B30C43A2ef": {
-    "protocolToken": {
-      "address": "0x8282BD15dcA2EA2bDf24163E8f2781B30C43A2ef",
-      "name": "Curve SPELL-ETH",
-      "symbol": "crvSPELLETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      },
-      {
-        "address": "0x090185f2135308BaD17527004364eBcC2D37e5F6",
-        "name": "Spell Token",
-        "symbol": "SPELL",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x98638FAcf9a3865cd033F36548713183f6996122"
-  },
-  "0xCb08717451aaE9EF950a2524E33B6DCaBA60147B": {
-    "protocolToken": {
-      "address": "0xCb08717451aaE9EF950a2524E33B6DCaBA60147B",
-      "name": "Curve T-ETH",
-      "symbol": "crvTETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xCdF7028ceAB81fA0C6971208e83fa7872994beE5",
-        "name": "Threshold Network",
-        "symbol": "T",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x752eBeb79963cf0732E9c0fec72a49FD1DEfAEAC"
   },
   "0x19b080FE1ffA0553469D20Ca36219F17Fcf03859": {
     "protocolToken": {
@@ -3038,218 +3702,34 @@
     ],
     "lpTokenManager": "0x94B17476A93b3262d87B9a326965D1E91f9c13E7"
   },
-  "0x71c91B173984d3955f7756914bBF9a7332538595": {
+  "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0": {
     "protocolToken": {
-      "address": "0x71c91B173984d3955f7756914bBF9a7332538595",
-      "name": "Curve.fi Factory Plain Pool: sdFXS/FXS",
-      "symbol": "sdFXSlp-f",
+      "address": "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0",
+      "name": "Curve.fi Factory Plain Pool: sdCRV/CRV",
+      "symbol": "sdCRVlp-f",
       "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0",
-        "name": "Frax Share",
-        "symbol": "FXS",
+        "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+        "name": "Curve DAO Token",
+        "symbol": "CRV",
         "decimals": 18
       },
       {
-        "address": "0x402F878BDd1f5C66FdAF0fabaBcF74741B68ac36",
-        "name": "Stake DAO FXS",
-        "symbol": "sdFXS",
+        "address": "0xD1b5651E55D4CeeD36251c61c50C889B36F6abB5",
+        "name": "Stake DAO CRV",
+        "symbol": "SDCRV",
         "decimals": 18
       }
     ],
-    "lpTokenManager": "0x71c91B173984d3955f7756914bBF9a7332538595"
+    "lpTokenManager": "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0"
   },
-  "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8": {
+  "0x21E27a5E5513D6e65C4f830167390997aA84843a": {
     "protocolToken": {
-      "address": "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8",
-      "name": "Curve.fi Factory Plain Pool: sdYFI/YFI",
-      "symbol": "sdYFIpool-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
-        "name": "yearn.finance",
-        "symbol": "YFI",
-        "decimals": 18
-      },
-      {
-        "address": "0x97983236bE88107Cc8998733Ef73D8d969c52E37",
-        "name": "Stake DAO YFI",
-        "symbol": "sdYFI",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8"
-  },
-  "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0": {
-    "protocolToken": {
-      "address": "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0",
-      "name": "Curve.fi Factory Plain Pool: sdPENDLE",
-      "symbol": "sdPENDLElp-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x808507121B80c02388fAd14726482e061B8da827",
-        "name": "Pendle",
-        "symbol": "PENDLE",
-        "decimals": 18
-      },
-      {
-        "address": "0x5Ea630e00D6eE438d3deA1556A110359ACdc10A9",
-        "name": "Stake DAO PENDLE",
-        "symbol": "sdPENDLE",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0"
-  },
-  "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b": {
-    "protocolToken": {
-      "address": "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b",
-      "name": "Curve.fi Factory USD Metapool: USDV",
-      "symbol": "USDV3pool3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x20b3B07E9C0e37815e2892Ab09496559F57C3603",
-        "name": "USDV",
-        "symbol": "USDV",
-        "decimals": 18
-      },
-      {
-        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-        "name": "LP 3pool Curve",
-        "symbol": "3CRV",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b"
-  },
-  "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3": {
-    "protocolToken": {
-      "address": "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3",
-      "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP",
-      "symbol": "DUSDFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xa48F322F8b3edff967629Af79E027628b9Dd1298",
-        "name": "Davos.xyz USD",
-        "symbol": "DUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
-        "name": "Curve fi FRAX USDC",
-        "symbol": "CRVFRAX",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3"
-  },
-  "0x20955CB69Ae1515962177D164dfC9522feef567E": {
-    "protocolToken": {
-      "address": "0x20955CB69Ae1515962177D164dfC9522feef567E",
-      "name": "Curve.fi Factory USD Metapool: Ubiquity Algorithmic Dollar",
-      "symbol": "uAD3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x0F644658510c95CB46955e55D7BA9DDa9E9fBEc6",
-        "name": "Ubiquity Algorithmic Dollar",
-        "symbol": "uAD",
-        "decimals": 18
-      },
-      {
-        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-        "name": "LP 3pool Curve",
-        "symbol": "3CRV",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x20955CB69Ae1515962177D164dfC9522feef567E"
-  },
-  "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4": {
-    "protocolToken": {
-      "address": "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4",
-      "name": "Curve.fi Factory Plain Pool: msETH/WETH",
-      "symbol": "msETHWETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x64351fC9810aDAd17A690E4e1717Df5e7e085160",
-        "name": "Metronome Synth ETH",
-        "symbol": "msETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4"
-  },
-  "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B": {
-    "protocolToken": {
-      "address": "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B",
-      "name": "Curve.fi Factory Plain Pool: pETH",
-      "symbol": "pETH-WETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      },
-      {
-        "address": "0x821A278dFff762c76410264303F25bF42e195C0C",
-        "name": "JPEG’d ETH",
-        "symbol": "pETH",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B"
-  },
-  "0x2673099769201c08E9A5e63b25FBaF25541A6557": {
-    "protocolToken": {
-      "address": "0x2673099769201c08E9A5e63b25FBaF25541A6557",
-      "name": "Curve.fi Factory USD Metapool: eUSD/3CRV",
-      "symbol": "eUSD3CRV3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xdf3ac4F479375802A821f7b7b46Cd7EB5E4262cC",
-        "name": "eUSD",
-        "symbol": "eUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-        "name": "LP 3pool Curve",
-        "symbol": "3CRV",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x2673099769201c08E9A5e63b25FBaF25541A6557"
-  },
-  "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492": {
-    "protocolToken": {
-      "address": "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492",
-      "name": "Curve.fi Factory Pool: ETHx-ETH",
-      "symbol": "ethx-f",
+      "address": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+      "name": "Curve.fi Factory Pool: stETH-ng",
+      "symbol": "stETH-ng-f",
       "decimals": 18
     },
     "underlyingTokens": [
@@ -3260,243 +3740,13 @@
         "decimals": 18
       },
       {
-        "address": "0xA35b1B31Ce002FBF2058D22F30f95D405200A15b",
-        "name": "ETHx",
-        "symbol": "ETHx",
+        "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "name": "Liquid staked Ether 2.0",
+        "symbol": "stETH",
         "decimals": 18
       }
     ],
-    "lpTokenManager": "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492"
-  },
-  "0xb2C57D651dB0FcCc96cABda11191DF25E05B88b6": {
-    "protocolToken": {
-      "address": "0xb2C57D651dB0FcCc96cABda11191DF25E05B88b6",
-      "name": "Curve.fi Factory Plain Pool: ZeroLiquid zETH/WETH",
-      "symbol": "zETHWETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      },
-      {
-        "address": "0x776280F68aD33c4d49e6846507B7dBaf7811c89F",
-        "name": "ZeroLiquid ETH",
-        "symbol": "zETH",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xb2C57D651dB0FcCc96cABda11191DF25E05B88b6"
-  },
-  "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7": {
-    "protocolToken": {
-      "address": "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7",
-      "name": "Curve.fi Factory USD Metapool: PAYPALFRAXBP",
-      "symbol": "PPFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
-        "name": "PayPal USD",
-        "symbol": "PYUSD",
-        "decimals": 6
-      },
-      {
-        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
-        "name": "Curve fi FRAX USDC",
-        "symbol": "CRVFRAX",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7"
-  },
-  "0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5": {
-    "protocolToken": {
-      "address": "0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5",
-      "name": "Curve.fi Factory USD Metapool: Prisma mkUSD",
-      "symbol": "mkUSD3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28",
-        "name": "Prisma mkUSD",
-        "symbol": "mkUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
-        "name": "Curve fi FRAX USDC",
-        "symbol": "CRVFRAX",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5"
-  },
-  "0x69ACcb968B19a53790f43e57558F5E443A91aF22": {
-    "protocolToken": {
-      "address": "0x69ACcb968B19a53790f43e57558F5E443A91aF22",
-      "name": "Curve.fi Factory Plain Pool: yETH",
-      "symbol": "yETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      },
-      {
-        "address": "0x1BED97CBC3c24A4fb5C069C6E311a967386131f7",
-        "name": "Yearn Ether",
-        "symbol": "yETH",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x69ACcb968B19a53790f43e57558F5E443A91aF22"
-  },
-  "0xFFa66f6985215fDd2907B21145d1F9C91aC62f80": {
-    "protocolToken": {
-      "address": "0xFFa66f6985215fDd2907B21145d1F9C91aC62f80",
-      "name": "Curve.fi Factory Plain Pool: bentCVX/CVX",
-      "symbol": "bentCVXlp-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-        "name": "Convex Finance",
-        "symbol": "CVX",
-        "decimals": 18
-      },
-      {
-        "address": "0x9E0441E084F5dB0606565737158aa6Ab6B970fE0",
-        "name": "Bent CVX",
-        "symbol": "bentCVX",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xFFa66f6985215fDd2907B21145d1F9C91aC62f80"
-  },
-  "0x8e9De7E69424c848972870798286E8bc5EcB295F": {
-    "protocolToken": {
-      "address": "0x8e9De7E69424c848972870798286E8bc5EcB295F",
-      "name": "Curve.fi Factory USD Metapool: USTPFRAXBP",
-      "symbol": "USTPFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xed4d84225273c867d269F967CC696e0877068f8a",
-        "name": "USTP",
-        "symbol": "USTP",
-        "decimals": 18
-      },
-      {
-        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
-        "name": "Curve fi FRAX USDC",
-        "symbol": "CRVFRAX",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x8e9De7E69424c848972870798286E8bc5EcB295F"
-  },
-  "0x1062FD8eD633c1f080754c19317cb3912810B5e5": {
-    "protocolToken": {
-      "address": "0x1062FD8eD633c1f080754c19317cb3912810B5e5",
-      "name": "Curve.fi Factory Plain Pool: cvxFxn/Fxn",
-      "symbol": "cvxfxn-fxn-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x365AccFCa291e7D3914637ABf1F7635dB165Bb09",
-        "name": "FXN Token",
-        "symbol": "FXN",
-        "decimals": 18
-      },
-      {
-        "address": "0x183395DbD0B5e93323a7286D1973150697FFFCB3",
-        "name": "Convex FXN",
-        "symbol": "cvxFXN",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x1062FD8eD633c1f080754c19317cb3912810B5e5"
-  },
-  "0x28Ca243dc0aC075dD012fCf9375C25D18A844d96": {
-    "protocolToken": {
-      "address": "0x28Ca243dc0aC075dD012fCf9375C25D18A844d96",
-      "name": "Curve.fi Factory Plain Pool: sdFXN",
-      "symbol": "sdFXNFXN-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x365AccFCa291e7D3914637ABf1F7635dB165Bb09",
-        "name": "FXN Token",
-        "symbol": "FXN",
-        "decimals": 18
-      },
-      {
-        "address": "0xe19d1c837B8A1C83A56cD9165b2c0256D39653aD",
-        "name": "Stake DAO FXN",
-        "symbol": "sdFXN",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x28Ca243dc0aC075dD012fCf9375C25D18A844d96"
-  },
-  "0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B": {
-    "protocolToken": {
-      "address": "0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B",
-      "name": "Curve.fi Factory Plain Pool: cvxPrisma/Prisma",
-      "symbol": "cvxprismlp-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xdA47862a83dac0c112BA89c6abC2159b95afd71C",
-        "name": "Prisma Governance Token",
-        "symbol": "PRISMA",
-        "decimals": 18
-      },
-      {
-        "address": "0x34635280737b5BFe6c7DC2FC3065D60d66e78185",
-        "name": "Convex Prisma",
-        "symbol": "cvxPrisma",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B"
-  },
-  "0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7": {
-    "protocolToken": {
-      "address": "0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7",
-      "name": "Curve.fi Factory Plain Pool: PRISMA/yPRISMA",
-      "symbol": "yPRISMA-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xdA47862a83dac0c112BA89c6abC2159b95afd71C",
-        "name": "Prisma Governance Token",
-        "symbol": "PRISMA",
-        "decimals": 18
-      },
-      {
-        "address": "0xe3668873D944E4A949DA05fc8bDE419eFF543882",
-        "name": "Yearn PRISMA",
-        "symbol": "yPRISMA",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7"
+    "lpTokenManager": "0x21E27a5E5513D6e65C4f830167390997aA84843a"
   },
   "0x602a9Abb10582768Fd8a9f13aD6316Ac2A5A2e2B": {
     "protocolToken": {
@@ -4050,6 +4300,29 @@
     ],
     "lpTokenManager": "0x71Db3764d6841D8B01Dc27C0Fd4A66A8A34b2BE0"
   },
+  "0x86152dF0a0E321Afb3B0B9C4deb813184F365ADa": {
+    "protocolToken": {
+      "address": "0x86152dF0a0E321Afb3B0B9C4deb813184F365ADa",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/GHO",
+      "symbol": "crvUSDGHO-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
+        "name": "Gho Token",
+        "symbol": "GHO",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x86152dF0a0E321Afb3B0B9C4deb813184F365ADa"
+  },
   "0x5282a4eF67D9C33135340fB3289cc1711c13638C": {
     "protocolToken": {
       "address": "0x5282a4eF67D9C33135340fB3289cc1711c13638C",
@@ -4561,5 +4834,1864 @@
       }
     ],
     "lpTokenManager": "0x96AAE323E111A19b1E0e26F55e8De21F1dD01f26"
+  },
+  "0x71c91B173984d3955f7756914bBF9a7332538595": {
+    "protocolToken": {
+      "address": "0x71c91B173984d3955f7756914bBF9a7332538595",
+      "name": "Curve.fi Factory Plain Pool: sdFXS/FXS",
+      "symbol": "sdFXSlp-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0",
+        "name": "Frax Share",
+        "symbol": "FXS",
+        "decimals": 18
+      },
+      {
+        "address": "0x402F878BDd1f5C66FdAF0fabaBcF74741B68ac36",
+        "name": "Stake DAO FXS",
+        "symbol": "sdFXS",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x71c91B173984d3955f7756914bBF9a7332538595"
+  },
+  "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8": {
+    "protocolToken": {
+      "address": "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8",
+      "name": "Curve.fi Factory Plain Pool: sdYFI/YFI",
+      "symbol": "sdYFIpool-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
+        "name": "yearn.finance",
+        "symbol": "YFI",
+        "decimals": 18
+      },
+      {
+        "address": "0x97983236bE88107Cc8998733Ef73D8d969c52E37",
+        "name": "Stake DAO YFI",
+        "symbol": "sdYFI",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8"
+  },
+  "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0": {
+    "protocolToken": {
+      "address": "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0",
+      "name": "Curve.fi Factory Plain Pool: sdPENDLE",
+      "symbol": "sdPENDLElp-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x808507121B80c02388fAd14726482e061B8da827",
+        "name": "Pendle",
+        "symbol": "PENDLE",
+        "decimals": 18
+      },
+      {
+        "address": "0x5Ea630e00D6eE438d3deA1556A110359ACdc10A9",
+        "name": "Stake DAO PENDLE",
+        "symbol": "sdPENDLE",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0"
+  },
+  "0x3de254A0f838a844F727fee81040e0FA7884B935": {
+    "protocolToken": {
+      "address": "0x3de254A0f838a844F727fee81040e0FA7884B935",
+      "name": "Curve.fi Factory Plain Pool: mkUSD/crvUSD",
+      "symbol": "mkcrvUSD-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28",
+        "name": "Prisma mkUSD",
+        "symbol": "mkUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x3de254A0f838a844F727fee81040e0FA7884B935"
+  },
+  "0x1539c2461d7432cc114b0903f1824079BfCA2C92": {
+    "protocolToken": {
+      "address": "0x1539c2461d7432cc114b0903f1824079BfCA2C92",
+      "name": "Curve.fi Factory Plain Pool: crvUSD-sDAI",
+      "symbol": "crvsDAI-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+        "name": "Savings Dai",
+        "symbol": "sDAI",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x1539c2461d7432cc114b0903f1824079BfCA2C92"
+  },
+  "0xDB6925eA42897ca786a045B252D95aA7370f44b4": {
+    "protocolToken": {
+      "address": "0xDB6925eA42897ca786a045B252D95aA7370f44b4",
+      "name": "TriRSR",
+      "symbol": "crvRSReUSDETH+",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
+        "name": "ETHPlus",
+        "symbol": "ETH+",
+        "decimals": 18
+      },
+      {
+        "address": "0xA0d69E286B938e21CBf7E51D71F6A4c8918f482F",
+        "name": "Electronic USD",
+        "symbol": "EUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x320623b8E4fF03373931769A31Fc52A4E78B5d70",
+        "name": "Reserve Rights",
+        "symbol": "RSR",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xDB6925eA42897ca786a045B252D95aA7370f44b4"
+  },
+  "0x1830c553dC76d3447B69b7B0dC19CF9e3c739C78": {
+    "protocolToken": {
+      "address": "0x1830c553dC76d3447B69b7B0dC19CF9e3c739C78",
+      "name": "TriSDT+",
+      "symbol": "TriSDT+",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xFc0B1EEf20e4c68B3DCF36c4537Cfa7Ce46CA70b",
+        "name": "USDC Plus",
+        "symbol": "USDC+",
+        "decimals": 18
+      },
+      {
+        "address": "0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
+        "name": "ETHPlus",
+        "symbol": "ETH+",
+        "decimals": 18
+      },
+      {
+        "address": "0x73968b9a57c6E53d41345FD57a6E6ae27d6CDB2F",
+        "name": "Stake DAO",
+        "symbol": "SDT",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x1830c553dC76d3447B69b7B0dC19CF9e3c739C78"
+  },
+  "0x9FeE65D5A627e73212989c8BbEdC5Fa5Cae3821F": {
+    "protocolToken": {
+      "address": "0x9FeE65D5A627e73212989c8BbEdC5Fa5Cae3821F",
+      "name": "BobrCRV/CRV/crvUSD",
+      "symbol": "BobrCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8F22779662Ad253844013D8E99EcCB4d80e31417",
+        "name": "CURVEBOBR",
+        "symbol": "BobrCRV",
+        "decimals": 18
+      },
+      {
+        "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+        "name": "Curve DAO Token",
+        "symbol": "CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x9FeE65D5A627e73212989c8BbEdC5Fa5Cae3821F"
+  },
+  "0x8Cd52ee292313C4D851e71A7064F096504aB3eE9": {
+    "protocolToken": {
+      "address": "0x8Cd52ee292313C4D851e71A7064F096504aB3eE9",
+      "name": "TricryptoGHO",
+      "symbol": "GHOBTCwstE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
+        "name": "Gho Token",
+        "symbol": "GHO",
+        "decimals": 18
+      },
+      {
+        "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x8Cd52ee292313C4D851e71A7064F096504aB3eE9"
+  },
+  "0xF55B0f6F2Da5ffDDb104b58a60F2862745960442": {
+    "protocolToken": {
+      "address": "0xF55B0f6F2Da5ffDDb104b58a60F2862745960442",
+      "name": "USDe-crvUSD",
+      "symbol": "USDecrvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xF55B0f6F2Da5ffDDb104b58a60F2862745960442"
+  },
+  "0x02950460E2b9529D0E00284A5fA2d7bDF3fA4d72": {
+    "protocolToken": {
+      "address": "0x02950460E2b9529D0E00284A5fA2d7bDF3fA4d72",
+      "name": "USDe-USDC",
+      "symbol": "USDeUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      },
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x02950460E2b9529D0E00284A5fA2d7bDF3fA4d72"
+  },
+  "0xe080027Bd47353b5D1639772b4a75E9Ed3658A0d": {
+    "protocolToken": {
+      "address": "0xe080027Bd47353b5D1639772b4a75E9Ed3658A0d",
+      "name": "osETH/rETH",
+      "symbol": "osETH-rETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
+        "name": "Staked ETH",
+        "symbol": "osETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+        "name": "Rocket Pool ETH",
+        "symbol": "RETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xe080027Bd47353b5D1639772b4a75E9Ed3658A0d"
+  },
+  "0xF980B4A4194694913Af231De69AB4593f5E0fCDc": {
+    "protocolToken": {
+      "address": "0xF980B4A4194694913Af231De69AB4593f5E0fCDc",
+      "name": "mkUSD-USDC",
+      "symbol": "mkUSDUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28",
+        "name": "Prisma mkUSD",
+        "symbol": "mkUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0xF980B4A4194694913Af231De69AB4593f5E0fCDc"
+  },
+  "0x13947303F63b363876868D070F14dc865C36463b": {
+    "protocolToken": {
+      "address": "0x13947303F63b363876868D070F14dc865C36463b",
+      "name": "weETH/WETH",
+      "symbol": "weETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x13947303F63b363876868D070F14dc865C36463b"
+  },
+  "0x425BfB93370F14fF525aDb6EaEAcfE1f4e3b5802": {
+    "protocolToken": {
+      "address": "0x425BfB93370F14fF525aDb6EaEAcfE1f4e3b5802",
+      "name": "sDAI/USDM Rebase Enjoyer Pool",
+      "symbol": "sdai-usdm",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+        "name": "Savings Dai",
+        "symbol": "sDAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+        "name": "Mountain Protocol USD",
+        "symbol": "USDM",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x425BfB93370F14fF525aDb6EaEAcfE1f4e3b5802"
+  },
+  "0xDe6BF97B1cdee8a93Ddd8b45d504f247e6C9f886": {
+    "protocolToken": {
+      "address": "0xDe6BF97B1cdee8a93Ddd8b45d504f247e6C9f886",
+      "name": "Curve.fi FLIP/stFLIP",
+      "symbol": "stFLIP-LP",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x826180541412D574cf1336d22c0C0a287822678A",
+        "name": "Chainflip",
+        "symbol": "FLIP",
+        "decimals": 18
+      },
+      {
+        "address": "0x961D4921e1718E633BAC8Ded88c4a1cAe44b785a",
+        "name": "StakedFLIP",
+        "symbol": "stFLIP",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xDe6BF97B1cdee8a93Ddd8b45d504f247e6C9f886"
+  },
+  "0xC83b79C07ECE44b8b99fFa0E235C00aDd9124f9E": {
+    "protocolToken": {
+      "address": "0xC83b79C07ECE44b8b99fFa0E235C00aDd9124f9E",
+      "name": "USDM-3crv",
+      "symbol": "USDM3crv",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+        "name": "Mountain Protocol USD",
+        "symbol": "USDM",
+        "decimals": 18
+      },
+      {
+        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+        "name": "LP 3pool Curve",
+        "symbol": "3CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xC83b79C07ECE44b8b99fFa0E235C00aDd9124f9E"
+  },
+  "0xe2Ed1dAc3A9547BC6057e32bf8133b5268D7d987": {
+    "protocolToken": {
+      "address": "0xe2Ed1dAc3A9547BC6057e32bf8133b5268D7d987",
+      "name": "pxETH/frxETH",
+      "symbol": "pxfrxeth",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+        "name": "Pirex Ether",
+        "symbol": "pxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
+        "name": "Frax Ether",
+        "symbol": "FRXETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xe2Ed1dAc3A9547BC6057e32bf8133b5268D7d987"
+  },
+  "0x6951bDC4734b9f7F3E1B74afeBC670c736A0EDB6": {
+    "protocolToken": {
+      "address": "0x6951bDC4734b9f7F3E1B74afeBC670c736A0EDB6",
+      "name": "pxETH/stETH",
+      "symbol": "pxsteth",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+        "name": "Pirex Ether",
+        "symbol": "pxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "name": "Liquid staked Ether 2.0",
+        "symbol": "stETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x6951bDC4734b9f7F3E1B74afeBC670c736A0EDB6"
+  },
+  "0xcE6431D21E3fb1036CE9973a3312368ED96F5CE7": {
+    "protocolToken": {
+      "address": "0xcE6431D21E3fb1036CE9973a3312368ED96F5CE7",
+      "name": "FRAXsDAI",
+      "symbol": "FRAXsDAI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+        "name": "Savings Dai",
+        "symbol": "sDAI",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xcE6431D21E3fb1036CE9973a3312368ED96F5CE7"
+  },
+  "0xA5588F7cdf560811710A2D82D3C9c99769DB1Dcb": {
+    "protocolToken": {
+      "address": "0xA5588F7cdf560811710A2D82D3C9c99769DB1Dcb",
+      "name": "FRAXPYUSD",
+      "symbol": "FRAXPYUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+        "name": "PayPal USD",
+        "symbol": "PYUSD",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0xA5588F7cdf560811710A2D82D3C9c99769DB1Dcb"
+  },
+  "0x5dc1BF6f1e983C0b21EfB003c105133736fA0743": {
+    "protocolToken": {
+      "address": "0x5dc1BF6f1e983C0b21EfB003c105133736fA0743",
+      "name": "FRAXUSDe",
+      "symbol": "FRAXUSDe",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x5dc1BF6f1e983C0b21EfB003c105133736fA0743"
+  },
+  "0x6DD32bb2fCeA3Db7608E17286b5d00f1B19a2eD8": {
+    "protocolToken": {
+      "address": "0x6DD32bb2fCeA3Db7608E17286b5d00f1B19a2eD8",
+      "name": "USDV-crvUSD",
+      "symbol": "USDVcrvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x0E573Ce2736Dd9637A0b21058352e1667925C7a8",
+        "name": "USDV",
+        "symbol": "USDV",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x6DD32bb2fCeA3Db7608E17286b5d00f1B19a2eD8"
+  },
+  "0x00e6Fd108C4640d21B40d02f18Dd6fE7c7F725CA": {
+    "protocolToken": {
+      "address": "0x00e6Fd108C4640d21B40d02f18Dd6fE7c7F725CA",
+      "name": "USDV-3crv",
+      "symbol": "USDV3crv",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0E573Ce2736Dd9637A0b21058352e1667925C7a8",
+        "name": "USDV",
+        "symbol": "USDV",
+        "decimals": 6
+      },
+      {
+        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+        "name": "LP 3pool Curve",
+        "symbol": "3CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x00e6Fd108C4640d21B40d02f18Dd6fE7c7F725CA"
+  },
+  "0x625E92624Bc2D88619ACCc1788365A69767f6200": {
+    "protocolToken": {
+      "address": "0x625E92624Bc2D88619ACCc1788365A69767f6200",
+      "name": "pyUSD/crvUSD",
+      "symbol": "PYcrvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+        "name": "PayPal USD",
+        "symbol": "PYUSD",
+        "decimals": 6
+      },
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x625E92624Bc2D88619ACCc1788365A69767f6200"
+  },
+  "0x383E6b4437b59fff47B619CBA855CA29342A8559": {
+    "protocolToken": {
+      "address": "0x383E6b4437b59fff47B619CBA855CA29342A8559",
+      "name": "PayPool",
+      "symbol": "PYUSDUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+        "name": "PayPal USD",
+        "symbol": "PYUSD",
+        "decimals": 6
+      },
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x383E6b4437b59fff47B619CBA855CA29342A8559"
+  },
+  "0x6307E6688819951Cf8D6B6066018243D2496952F": {
+    "protocolToken": {
+      "address": "0x6307E6688819951Cf8D6B6066018243D2496952F",
+      "name": "FRAXFXB20241231",
+      "symbol": "FXB241231",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0xF8FDe8A259A3698902C88bdB1E13Ff28Cd7f6F09",
+        "name": "FXB_2_DEC312024",
+        "symbol": "FXB_20241231",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x6307E6688819951Cf8D6B6066018243D2496952F"
+  },
+  "0xe035e27A8eD6842b478933820f90093D205F7098": {
+    "protocolToken": {
+      "address": "0xe035e27A8eD6842b478933820f90093D205F7098",
+      "name": "FRAXFXB20261231",
+      "symbol": "FXB261231",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x76237BCfDbe8e06FB774663add96216961df4ff3",
+        "name": "FXB_4_DEC312026",
+        "symbol": "FXB_20261231",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xe035e27A8eD6842b478933820f90093D205F7098"
+  },
+  "0x4ef4c7519023F30A78647EEab321d6cFabC2513c": {
+    "protocolToken": {
+      "address": "0x4ef4c7519023F30A78647EEab321d6cFabC2513c",
+      "name": "FRAXFXB20240630",
+      "symbol": "FXB240630",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x0dE54CFdfeD8005176f8b7A9D5438B45c4F1df1e",
+        "name": "FXB_1_JUN302024",
+        "symbol": "FXB_20240630",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x4ef4c7519023F30A78647EEab321d6cFabC2513c"
+  },
+  "0x678053c553B963f83798b54D7F69deC086D527BA": {
+    "protocolToken": {
+      "address": "0x678053c553B963f83798b54D7F69deC086D527BA",
+      "name": "crvUSD/stUSDT",
+      "symbol": "crvstUSDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x25eC98773D7b4ceD4cAFaB96A2A1c0945f145e10",
+        "name": "Staked USDT",
+        "symbol": "stUSDT",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x678053c553B963f83798b54D7F69deC086D527BA"
+  },
+  "0x73a0cba58c19ed5F27C6590BD792eC38dE4815Ea": {
+    "protocolToken": {
+      "address": "0x73a0cba58c19ed5F27C6590BD792eC38dE4815Ea",
+      "name": "crvUSD/sFRAX",
+      "symbol": "crvsFRAX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+        "name": "Staked FRAX",
+        "symbol": "sFRAX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x73a0cba58c19ed5F27C6590BD792eC38dE4815Ea"
+  },
+  "0xC55Bcf5370e67fbA281E2aac8937B4Ea71E7785F": {
+    "protocolToken": {
+      "address": "0xC55Bcf5370e67fbA281E2aac8937B4Ea71E7785F",
+      "name": "crvUSD/sDAI",
+      "symbol": "crvsDAI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+        "name": "Savings Dai",
+        "symbol": "sDAI",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xC55Bcf5370e67fbA281E2aac8937B4Ea71E7785F"
+  },
+  "0xc37c0E88551Ed383c1aBEDc6628a5579071BF56f": {
+    "protocolToken": {
+      "address": "0xc37c0E88551Ed383c1aBEDc6628a5579071BF56f",
+      "name": "eUSD/mkUSD",
+      "symbol": "eUSDmkUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA0d69E286B938e21CBf7E51D71F6A4c8918f482F",
+        "name": "Electronic USD",
+        "symbol": "EUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28",
+        "name": "Prisma mkUSD",
+        "symbol": "mkUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xc37c0E88551Ed383c1aBEDc6628a5579071BF56f"
+  },
+  "0xc559f6716d8b1471Fc2DC10aAfEB0faa219fE9df": {
+    "protocolToken": {
+      "address": "0xc559f6716d8b1471Fc2DC10aAfEB0faa219fE9df",
+      "name": "sUSDe/sDAI/sFRAX",
+      "symbol": "sPool",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+        "name": "Staked USDe",
+        "symbol": "sUSDe",
+        "decimals": 18
+      },
+      {
+        "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+        "name": "Savings Dai",
+        "symbol": "sDAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+        "name": "Staked FRAX",
+        "symbol": "sFRAX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xc559f6716d8b1471Fc2DC10aAfEB0faa219fE9df"
+  },
+  "0x4253Ac4046fBfDafcFE125d067B6d89f6923843E": {
+    "protocolToken": {
+      "address": "0x4253Ac4046fBfDafcFE125d067B6d89f6923843E",
+      "name": "fFRAX/crvUSD-ng",
+      "symbol": "FRAXcrvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x3835a58CA93Cdb5f912519ad366826aC9a752510",
+        "name": "FraxlendV1 - Curve DAO Token/Frax - Variable Time-Weighted Interest Rate - 6",
+        "symbol": "FraxlendV1 - CRV/FRAX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x4253Ac4046fBfDafcFE125d067B6d89f6923843E"
+  },
+  "0x67701d67b60a96473BFc4873e7a484035c8609B0": {
+    "protocolToken": {
+      "address": "0x67701d67b60a96473BFc4873e7a484035c8609B0",
+      "name": "silocrvUSD/crvUSD",
+      "symbol": "silocrvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xb27D1729489d04473631f0AFAca3c3A7389ac9F8",
+        "name": "Silo Finance Borrowable crvUSD Deposit in CRV Silo",
+        "symbol": "scrvUSD-CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x67701d67b60a96473BFc4873e7a484035c8609B0"
+  },
+  "0x3772ba91B46f456AE487CB0974040c861c045810": {
+    "protocolToken": {
+      "address": "0x3772ba91B46f456AE487CB0974040c861c045810",
+      "name": "rsETH/sfrxETH",
+      "symbol": "rsETHsfrx",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+        "name": "Staked Frax Ether",
+        "symbol": "SFRXETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+        "name": "rsETH",
+        "symbol": "rsETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x3772ba91B46f456AE487CB0974040c861c045810"
+  },
+  "0x1ab3D612EA7df26117554ddDD379764EBcE1A5Ad": {
+    "protocolToken": {
+      "address": "0x1ab3D612EA7df26117554ddDD379764EBcE1A5Ad",
+      "name": "mkUSDUSDe",
+      "symbol": "mkUSDUSDe",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28",
+        "name": "Prisma mkUSD",
+        "symbol": "mkUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x1ab3D612EA7df26117554ddDD379764EBcE1A5Ad"
+  },
+  "0x6685fcFCe05e7502bf9f0AA03B36025b09374726": {
+    "protocolToken": {
+      "address": "0x6685fcFCe05e7502bf9f0AA03B36025b09374726",
+      "name": "vETH/ETH",
+      "symbol": "vETHETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x38D64ce1Bdf1A9f24E0Ec469C9cAde61236fB4a0",
+        "name": "Vector ETH",
+        "symbol": "vETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x6685fcFCe05e7502bf9f0AA03B36025b09374726"
+  },
+  "0x3C91EAeac42DfaEad5F356167c52837e443b9f94": {
+    "protocolToken": {
+      "address": "0x3C91EAeac42DfaEad5F356167c52837e443b9f94",
+      "name": "xETH/pxETH",
+      "symbol": "xETHpxETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2b01d4FdB87eb7F2399E5D68631d8A939a323786",
+        "name": "xEther",
+        "symbol": "xETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+        "name": "Pirex Ether",
+        "symbol": "pxETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x3C91EAeac42DfaEad5F356167c52837e443b9f94"
+  },
+  "0x31b46c84e4fb0704dE69DBf4B054b5Cb81Aa3736": {
+    "protocolToken": {
+      "address": "0x31b46c84e4fb0704dE69DBf4B054b5Cb81Aa3736",
+      "name": "LYU/USD",
+      "symbol": "LYUUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd77fD503A09269c93B5392ce699fE4883eE0E955",
+        "name": "LYVE Debt Token",
+        "symbol": "LYU",
+        "decimals": 18
+      },
+      {
+        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x31b46c84e4fb0704dE69DBf4B054b5Cb81Aa3736"
+  },
+  "0xDD4316c777a2295D899ba7ad92E0eFa699865f43": {
+    "protocolToken": {
+      "address": "0xDD4316c777a2295D899ba7ad92E0eFa699865f43",
+      "name": "RestakeFi rmETH/mETH",
+      "symbol": "rmETHmETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xcC9F8c2A6366556e1899e40782B7076Db87dcE27",
+        "name": "RestakeFi Restaked mETH",
+        "symbol": "rmETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xd5F7838F5C461fefF7FE49ea5ebaF7728bB0ADfa",
+        "name": "mETH",
+        "symbol": "mETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xDD4316c777a2295D899ba7ad92E0eFa699865f43"
+  },
+  "0xEEBF6E8B2e4bb9A749F64B2799b4Ea4aED09696A": {
+    "protocolToken": {
+      "address": "0xEEBF6E8B2e4bb9A749F64B2799b4Ea4aED09696A",
+      "name": "RestakeFi rosETH/osETH",
+      "symbol": "os-rosETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3A2725556Dde7B21fBe3dD64A4913ff29faba6A1",
+        "name": "RestakeFi Restaked osETH",
+        "symbol": "rosETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
+        "name": "Staked ETH",
+        "symbol": "osETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xEEBF6E8B2e4bb9A749F64B2799b4Ea4aED09696A"
+  },
+  "0x3dbdB2656F36A1B19971d798Dd59f19440eDA894": {
+    "protocolToken": {
+      "address": "0x3dbdB2656F36A1B19971d798Dd59f19440eDA894",
+      "name": "RestakeFi rstETH/stETH",
+      "symbol": "st-rstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc3Ac43635d7Aa9Bf361094656C85de3311bE9a2c",
+        "name": "RestakeFi Restaked stETH",
+        "symbol": "rstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+        "name": "Liquid staked Ether 2.0",
+        "symbol": "stETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x3dbdB2656F36A1B19971d798Dd59f19440eDA894"
+  },
+  "0xeE04382c4cA6c450213923fE0f0daB19b0ff3939": {
+    "protocolToken": {
+      "address": "0xeE04382c4cA6c450213923fE0f0daB19b0ff3939",
+      "name": "rswETH/ETH",
+      "symbol": "rswETH/ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+        "name": "rswETH",
+        "symbol": "rswETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xeE04382c4cA6c450213923fE0f0daB19b0ff3939"
+  },
+  "0xe3E637f8aCC097244A065791142c29fbF5877D18": {
+    "protocolToken": {
+      "address": "0xe3E637f8aCC097244A065791142c29fbF5877D18",
+      "name": "crvUSD/cncCRVUSD",
+      "symbol": "CFLPCRVUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "crvUSD",
+        "symbol": "CRVUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x9961BdBE8B7091E584c2bF9D0a160C583f564A8c",
+        "name": "Conic crvUSD",
+        "symbol": "cncCRVUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xe3E637f8aCC097244A065791142c29fbF5877D18"
+  },
+  "0x85dE3ADd465a219EE25E04d22c39aB027cF5C12E": {
+    "protocolToken": {
+      "address": "0x85dE3ADd465a219EE25E04d22c39aB027cF5C12E",
+      "name": "ezETH/WETH",
+      "symbol": "ezETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x85dE3ADd465a219EE25E04d22c39aB027cF5C12E"
+  },
+  "0x278cfB6f06B1EFc09d34fC7127d6060C61d629Db": {
+    "protocolToken": {
+      "address": "0x278cfB6f06B1EFc09d34fC7127d6060C61d629Db",
+      "name": "weeTH/rswETH",
+      "symbol": "weeTH/rswE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+        "name": "rswETH",
+        "symbol": "rswETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x278cfB6f06B1EFc09d34fC7127d6060C61d629Db"
+  },
+  "0xC6628f00F29cc89a87BBeE7554C4725611200fD7": {
+    "protocolToken": {
+      "address": "0xC6628f00F29cc89a87BBeE7554C4725611200fD7",
+      "name": "cvgSDT/SDT",
+      "symbol": "cvgSDTSDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x73968b9a57c6E53d41345FD57a6E6ae27d6CDB2F",
+        "name": "Stake DAO",
+        "symbol": "SDT",
+        "decimals": 18
+      },
+      {
+        "address": "0x830614aE209FF9d8706d386fcdBc7a55206fcffC",
+        "name": "Convergence SDT",
+        "symbol": "cvgSDT",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xC6628f00F29cc89a87BBeE7554C4725611200fD7"
+  },
+  "0x745213A540C932425D9c8cBc2B9BfB796C759e2f": {
+    "protocolToken": {
+      "address": "0x745213A540C932425D9c8cBc2B9BfB796C759e2f",
+      "name": "RestakeFi rsfrxETH/sfrxETH",
+      "symbol": "c-rsfrxETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdcF8905091a1c7b773DdB894d805178701b32b55",
+        "name": "RestakeFi Restaked sfrxETH",
+        "symbol": "rsfrxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+        "name": "Staked Frax Ether",
+        "symbol": "SFRXETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x745213A540C932425D9c8cBc2B9BfB796C759e2f"
+  },
+  "0xB3c8Ce1eE157b0DCAa96897C9170aEe6281706c9": {
+    "protocolToken": {
+      "address": "0xB3c8Ce1eE157b0DCAa96897C9170aEe6281706c9",
+      "name": "pufETH/wstETH",
+      "symbol": "crvPufETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
+        "name": "pufETH",
+        "symbol": "pufETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xB3c8Ce1eE157b0DCAa96897C9170aEe6281706c9"
+  },
+  "0xe4F00da633c6aA958E851469bdF179950502691d": {
+    "protocolToken": {
+      "address": "0xe4F00da633c6aA958E851469bdF179950502691d",
+      "name": "stZETA/ZETA",
+      "symbol": "stZETAZETA",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf38FEEdb0c85c1e1D6864c7513Ac646d28bb0Cfc",
+        "name": "stZETA",
+        "symbol": "stZETA",
+        "decimals": 18
+      },
+      {
+        "address": "0xf091867EC603A6628eD83D274E835539D82e9cc8",
+        "name": "Zeta",
+        "symbol": "ZETA",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xe4F00da633c6aA958E851469bdF179950502691d"
+  },
+  "0xeAC874aeD7761460dD4c89778Ba6db7d320911a8": {
+    "protocolToken": {
+      "address": "0xeAC874aeD7761460dD4c89778Ba6db7d320911a8",
+      "name": "eETH/ETH",
+      "symbol": "eETH ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
+        "name": "ether.fi ETH",
+        "symbol": "eETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xeAC874aeD7761460dD4c89778Ba6db7d320911a8"
+  },
+  "0x9e10f9Fb6F0D32B350CEe2618662243d4f24C64a": {
+    "protocolToken": {
+      "address": "0x9e10f9Fb6F0D32B350CEe2618662243d4f24C64a",
+      "name": "mkUSD/Paypool",
+      "symbol": "mkUSDPay",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28",
+        "name": "Prisma mkUSD",
+        "symbol": "mkUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x383E6b4437b59fff47B619CBA855CA29342A8559",
+        "name": "PayPool",
+        "symbol": "PYUSDUSDC",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x9e10f9Fb6F0D32B350CEe2618662243d4f24C64a"
+  },
+  "0xBeCDF453a9d69aa67d27fd391E81FD96A8b9Ade5": {
+    "protocolToken": {
+      "address": "0xBeCDF453a9d69aa67d27fd391E81FD96A8b9Ade5",
+      "name": "senUSD/USDC",
+      "symbol": "SENUSDUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x922406EAFC3CcEb32b0256F287fB977c426EDbd8",
+        "name": "Seneca USD",
+        "symbol": "senUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0xBeCDF453a9d69aa67d27fd391E81FD96A8b9Ade5"
+  },
+  "0x2A7f617AF3009578021473a88A7c5a2aF5aACd79": {
+    "protocolToken": {
+      "address": "0x2A7f617AF3009578021473a88A7c5a2aF5aACd79",
+      "name": "mstETH-WPUNKS-40/wstETH",
+      "symbol": "punk40wstE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC272B96bCcdaf1BF98F2197D355066Da3C15982a",
+        "name": "MetaStreet V2 Deposit: WPUNKS-wstETH:40",
+        "symbol": "mwstETH-WPUNKS:40",
+        "decimals": 18
+      },
+      {
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x2A7f617AF3009578021473a88A7c5a2aF5aACd79"
+  },
+  "0xFE3C78D947b329160496E192b4Cf417bB86272Ed": {
+    "protocolToken": {
+      "address": "0xFE3C78D947b329160496E192b4Cf417bB86272Ed",
+      "name": "mstETH-WPUNKS-20/wstETH",
+      "symbol": "punk20wstE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC975342A95cCb75378ddc646B8620fa3Cd5bc051",
+        "name": "MetaStreet V2 Deposit: WPUNKS-wstETH:20",
+        "symbol": "mwstETH-WPUNKS:20",
+        "decimals": 18
+      },
+      {
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xFE3C78D947b329160496E192b4Cf417bB86272Ed"
+  },
+  "0xF36a4BA50C603204c3FC6d2dA8b78A7b69CBC67d": {
+    "protocolToken": {
+      "address": "0xF36a4BA50C603204c3FC6d2dA8b78A7b69CBC67d",
+      "name": "USDe/DAI",
+      "symbol": "USDeDAI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      },
+      {
+        "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xF36a4BA50C603204c3FC6d2dA8b78A7b69CBC67d"
+  },
+  "0xC236BAE6e35b3Fb7335e1c35CA0862Ce92bd5DE3": {
+    "protocolToken": {
+      "address": "0xC236BAE6e35b3Fb7335e1c35CA0862Ce92bd5DE3",
+      "name": "mkUSD/ULTRA",
+      "symbol": "MKULTRA",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28",
+        "name": "Prisma mkUSD",
+        "symbol": "mkUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x35282d87011f87508D457F08252Bc5bFa52E10A0",
+        "name": "Prisma ULTRA USD",
+        "symbol": "ULTRA",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xC236BAE6e35b3Fb7335e1c35CA0862Ce92bd5DE3"
+  },
+  "0x167478921b907422F8E88B43C4Af2B8BEa278d3A": {
+    "protocolToken": {
+      "address": "0x167478921b907422F8E88B43C4Af2B8BEa278d3A",
+      "name": "sDAI/sUSDe",
+      "symbol": "MtEthena",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+        "name": "Savings Dai",
+        "symbol": "sDAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+        "name": "Staked USDe",
+        "symbol": "sUSDe",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x167478921b907422F8E88B43C4Af2B8BEa278d3A"
+  },
+  "0x7F20EEa5bc667F4601E35af15868F3Bc6e447050": {
+    "protocolToken": {
+      "address": "0x7F20EEa5bc667F4601E35af15868F3Bc6e447050",
+      "name": "\"pxETH/vETH\"",
+      "symbol": "\"pxveth\"",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6",
+        "name": "Pirex Ether",
+        "symbol": "pxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x38D64ce1Bdf1A9f24E0Ec469C9cAde61236fB4a0",
+        "name": "Vector ETH",
+        "symbol": "vETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x7F20EEa5bc667F4601E35af15868F3Bc6e447050"
+  },
+  "0x670a72e6D22b0956C0D2573288F82DCc5d6E3a61": {
+    "protocolToken": {
+      "address": "0x670a72e6D22b0956C0D2573288F82DCc5d6E3a61",
+      "name": "GHOTHENA",
+      "symbol": "GHOUSDe",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
+        "name": "Gho Token",
+        "symbol": "GHO",
+        "decimals": 18
+      },
+      {
+        "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x670a72e6D22b0956C0D2573288F82DCc5d6E3a61"
+  },
+  "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b": {
+    "protocolToken": {
+      "address": "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b",
+      "name": "Curve.fi Factory USD Metapool: USDV",
+      "symbol": "USDV3pool3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x20b3B07E9C0e37815e2892Ab09496559F57C3603",
+        "name": "USDV",
+        "symbol": "USDV",
+        "decimals": 18
+      },
+      {
+        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+        "name": "LP 3pool Curve",
+        "symbol": "3CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b"
+  },
+  "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3": {
+    "protocolToken": {
+      "address": "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3",
+      "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP",
+      "symbol": "DUSDFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xa48F322F8b3edff967629Af79E027628b9Dd1298",
+        "name": "Davos.xyz USD",
+        "symbol": "DUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
+        "name": "Curve fi FRAX USDC",
+        "symbol": "CRVFRAX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3"
+  },
+  "0x20955CB69Ae1515962177D164dfC9522feef567E": {
+    "protocolToken": {
+      "address": "0x20955CB69Ae1515962177D164dfC9522feef567E",
+      "name": "Curve.fi Factory USD Metapool: Ubiquity Algorithmic Dollar",
+      "symbol": "uAD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0F644658510c95CB46955e55D7BA9DDa9E9fBEc6",
+        "name": "Ubiquity Algorithmic Dollar",
+        "symbol": "uAD",
+        "decimals": 18
+      },
+      {
+        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+        "name": "LP 3pool Curve",
+        "symbol": "3CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x20955CB69Ae1515962177D164dfC9522feef567E"
+  },
+  "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4": {
+    "protocolToken": {
+      "address": "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4",
+      "name": "Curve.fi Factory Plain Pool: msETH/WETH",
+      "symbol": "msETHWETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x64351fC9810aDAd17A690E4e1717Df5e7e085160",
+        "name": "Metronome Synth ETH",
+        "symbol": "msETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4"
+  },
+  "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B": {
+    "protocolToken": {
+      "address": "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B",
+      "name": "Curve.fi Factory Plain Pool: pETH",
+      "symbol": "pETH-WETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x821A278dFff762c76410264303F25bF42e195C0C",
+        "name": "JPEG’d ETH",
+        "symbol": "pETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B"
+  },
+  "0x2673099769201c08E9A5e63b25FBaF25541A6557": {
+    "protocolToken": {
+      "address": "0x2673099769201c08E9A5e63b25FBaF25541A6557",
+      "name": "Curve.fi Factory USD Metapool: eUSD/3CRV",
+      "symbol": "eUSD3CRV3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdf3ac4F479375802A821f7b7b46Cd7EB5E4262cC",
+        "name": "eUSD",
+        "symbol": "eUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+        "name": "LP 3pool Curve",
+        "symbol": "3CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x2673099769201c08E9A5e63b25FBaF25541A6557"
+  },
+  "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492": {
+    "protocolToken": {
+      "address": "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492",
+      "name": "Curve.fi Factory Pool: ETHx-ETH",
+      "symbol": "ethx-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0xA35b1B31Ce002FBF2058D22F30f95D405200A15b",
+        "name": "ETHx",
+        "symbol": "ETHx",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492"
+  },
+  "0xb2C57D651dB0FcCc96cABda11191DF25E05B88b6": {
+    "protocolToken": {
+      "address": "0xb2C57D651dB0FcCc96cABda11191DF25E05B88b6",
+      "name": "Curve.fi Factory Plain Pool: ZeroLiquid zETH/WETH",
+      "symbol": "zETHWETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x776280F68aD33c4d49e6846507B7dBaf7811c89F",
+        "name": "ZeroLiquid ETH",
+        "symbol": "zETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xb2C57D651dB0FcCc96cABda11191DF25E05B88b6"
+  },
+  "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7": {
+    "protocolToken": {
+      "address": "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7",
+      "name": "Curve.fi Factory USD Metapool: PAYPALFRAXBP",
+      "symbol": "PPFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+        "name": "PayPal USD",
+        "symbol": "PYUSD",
+        "decimals": 6
+      },
+      {
+        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
+        "name": "Curve fi FRAX USDC",
+        "symbol": "CRVFRAX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7"
+  },
+  "0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5": {
+    "protocolToken": {
+      "address": "0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5",
+      "name": "Curve.fi Factory USD Metapool: Prisma mkUSD",
+      "symbol": "mkUSD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28",
+        "name": "Prisma mkUSD",
+        "symbol": "mkUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
+        "name": "Curve fi FRAX USDC",
+        "symbol": "CRVFRAX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5"
+  },
+  "0x69ACcb968B19a53790f43e57558F5E443A91aF22": {
+    "protocolToken": {
+      "address": "0x69ACcb968B19a53790f43e57558F5E443A91aF22",
+      "name": "Curve.fi Factory Plain Pool: yETH",
+      "symbol": "yETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x1BED97CBC3c24A4fb5C069C6E311a967386131f7",
+        "name": "Yearn Ether",
+        "symbol": "yETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x69ACcb968B19a53790f43e57558F5E443A91aF22"
+  },
+  "0xFFa66f6985215fDd2907B21145d1F9C91aC62f80": {
+    "protocolToken": {
+      "address": "0xFFa66f6985215fDd2907B21145d1F9C91aC62f80",
+      "name": "Curve.fi Factory Plain Pool: bentCVX/CVX",
+      "symbol": "bentCVXlp-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+        "name": "Convex Finance",
+        "symbol": "CVX",
+        "decimals": 18
+      },
+      {
+        "address": "0x9E0441E084F5dB0606565737158aa6Ab6B970fE0",
+        "name": "Bent CVX",
+        "symbol": "bentCVX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xFFa66f6985215fDd2907B21145d1F9C91aC62f80"
+  },
+  "0x8e9De7E69424c848972870798286E8bc5EcB295F": {
+    "protocolToken": {
+      "address": "0x8e9De7E69424c848972870798286E8bc5EcB295F",
+      "name": "Curve.fi Factory USD Metapool: USTPFRAXBP",
+      "symbol": "USTPFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xed4d84225273c867d269F967CC696e0877068f8a",
+        "name": "USTP",
+        "symbol": "USTP",
+        "decimals": 18
+      },
+      {
+        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
+        "name": "Curve fi FRAX USDC",
+        "symbol": "CRVFRAX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x8e9De7E69424c848972870798286E8bc5EcB295F"
+  },
+  "0x1062FD8eD633c1f080754c19317cb3912810B5e5": {
+    "protocolToken": {
+      "address": "0x1062FD8eD633c1f080754c19317cb3912810B5e5",
+      "name": "Curve.fi Factory Plain Pool: cvxFxn/Fxn",
+      "symbol": "cvxfxn-fxn-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x365AccFCa291e7D3914637ABf1F7635dB165Bb09",
+        "name": "FXN Token",
+        "symbol": "FXN",
+        "decimals": 18
+      },
+      {
+        "address": "0x183395DbD0B5e93323a7286D1973150697FFFCB3",
+        "name": "Convex FXN",
+        "symbol": "cvxFXN",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x1062FD8eD633c1f080754c19317cb3912810B5e5"
+  },
+  "0x28Ca243dc0aC075dD012fCf9375C25D18A844d96": {
+    "protocolToken": {
+      "address": "0x28Ca243dc0aC075dD012fCf9375C25D18A844d96",
+      "name": "Curve.fi Factory Plain Pool: sdFXN",
+      "symbol": "sdFXNFXN-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x365AccFCa291e7D3914637ABf1F7635dB165Bb09",
+        "name": "FXN Token",
+        "symbol": "FXN",
+        "decimals": 18
+      },
+      {
+        "address": "0xe19d1c837B8A1C83A56cD9165b2c0256D39653aD",
+        "name": "Stake DAO FXN",
+        "symbol": "sdFXN",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x28Ca243dc0aC075dD012fCf9375C25D18A844d96"
+  },
+  "0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B": {
+    "protocolToken": {
+      "address": "0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B",
+      "name": "Curve.fi Factory Plain Pool: cvxPrisma/Prisma",
+      "symbol": "cvxprismlp-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdA47862a83dac0c112BA89c6abC2159b95afd71C",
+        "name": "Prisma Governance Token",
+        "symbol": "PRISMA",
+        "decimals": 18
+      },
+      {
+        "address": "0x34635280737b5BFe6c7DC2FC3065D60d66e78185",
+        "name": "Convex Prisma",
+        "symbol": "cvxPrisma",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B"
+  },
+  "0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7": {
+    "protocolToken": {
+      "address": "0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7",
+      "name": "Curve.fi Factory Plain Pool: PRISMA/yPRISMA",
+      "symbol": "yPRISMA-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdA47862a83dac0c112BA89c6abC2159b95afd71C",
+        "name": "Prisma Governance Token",
+        "symbol": "PRISMA",
+        "decimals": 18
+      },
+      {
+        "address": "0xe3668873D944E4A949DA05fc8bDE419eFF543882",
+        "name": "Yearn PRISMA",
+        "symbol": "yPRISMA",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7"
   }
 }

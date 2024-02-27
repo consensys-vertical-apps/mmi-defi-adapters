@@ -146,6 +146,28 @@ export const supportedProtocols: Record<
       CurveStakingAdapter,
       CurveRewardAdapter,
     ],
+    [Chain.Polygon]: [
+      CurvePoolAdapter,
+      CurveStakingAdapter,
+      CurveRewardAdapter,
+    ],
+    [Chain.Fantom]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
+    [Chain.Arbitrum]: [
+      CurvePoolAdapter,
+      CurveStakingAdapter,
+      CurveRewardAdapter,
+    ],
+    [Chain.Avalanche]: [
+      CurvePoolAdapter,
+      CurveStakingAdapter,
+      CurveRewardAdapter,
+    ],
+    [Chain.Optimism]: [
+      CurvePoolAdapter,
+      CurveStakingAdapter,
+      CurveRewardAdapter,
+    ],
+    [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
   },
 
   [Protocol.Compound]: {
