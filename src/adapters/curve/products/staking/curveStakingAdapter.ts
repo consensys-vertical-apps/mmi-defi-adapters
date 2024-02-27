@@ -32,17 +32,10 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
-import { getPoolData } from '../../common/getPoolData'
-import { MetaRegistry__factory } from '../../contracts'
-import { CURVE_META_REGISTRY_CONTRACT } from '../pool/curvePoolAdapter'
+import { queryCurvePools } from '../../common/getPoolData'
 
-type CurveStakingAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
+import { registryContract } from '../pool/curvePoolAdapter'
+
 const PRICE_PEGGED_TO_ONE = 1
 export class CurveStakingAdapter
   extends SimplePoolAdapter
@@ -86,35 +79,14 @@ export class CurveStakingAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    const metadata = {} as CurveStakingAdapterMetadata
-    const metaRegistryContract = MetaRegistry__factory.connect(
-      CURVE_META_REGISTRY_CONTRACT,
+    // Example usage
+    const types = ['main', 'crypto', 'factory', 'factory-crypto']
+    return queryCurvePools(
+      types,
+      this.productId as 'pool',
+      this.chainId,
       this.provider,
     )
-
-    const poolCount = Number(await metaRegistryContract.pool_count())
-
-    const poolDataPromises = Array.from({ length: poolCount }, (_, i) =>
-      getPoolData(i, this.chainId, this.provider),
-    )
-
-    const results = await Promise.all(poolDataPromises)
-
-    filterMapSync(results, async (token) => {
-      if (!token || !token.stakingToken || token.stakingToken == ZERO_ADDRESS) {
-        return undefined
-      }
-
-      metadata[token.stakingToken] = {
-        protocolToken: {
-          ...token.protocolToken, // curve staking tokens dont have name, decimals, and symbol on their token contracts
-          address: token.stakingToken,
-        },
-        underlyingTokens: [token.protocolToken],
-      }
-    })
-
-    return metadata
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
@@ -194,17 +166,14 @@ export class CurveStakingAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const [underlyingLpToken] = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const [underlyingLpToken] =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
 
     return await this.getMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      underlyingTokens:
+        await this.fetchUnderlyingTokensMetadata(protocolTokenAddress),
       filter: {
         smartContractAddress: underlyingLpToken!.address, // curve staking contracts dont have transfer events
         fromBlock,
@@ -223,16 +192,13 @@ export class CurveStakingAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const [underlyingLpToken] = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const [underlyingLpToken] =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
     return await this.getMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      underlyingTokens:
+        await this.fetchUnderlyingTokensMetadata(protocolTokenAddress),
       filter: {
         smartContractAddress: underlyingLpToken!.address, // curve staking contracts dont have transfer events
         fromBlock,
@@ -246,9 +212,8 @@ export class CurveStakingAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingTokens } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return underlyingTokens
   }

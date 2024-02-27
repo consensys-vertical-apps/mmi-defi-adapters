@@ -37,6 +37,7 @@ import ConvexPoolEthereumProtocolToken from '../../adapters/convex/products/pool
 import ConvexRewardsEthereumProtocolToken from '../../adapters/convex/products/rewards/metadata/ethereum.protocol-token.json'
 import ConvexStakingEthereumProtocolToken from '../../adapters/convex/products/staking/metadata/ethereum.protocol-token.json'
 import CurvePoolEthereumProtocolToken from '../../adapters/curve/products/pool/metadata/ethereum.protocol-token.json'
+import CurvePoolPolygonProtocolToken from '../../adapters/curve/products/pool/metadata/polygon.protocol-token.json'
 import CurveRewardEthereumProtocolToken from '../../adapters/curve/products/reward/metadata/ethereum.protocol-token.json'
 import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
 import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
@@ -613,6 +614,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-borrow',
     }),
     MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'pool',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    CurvePoolPolygonProtocolToken,
   ],
 ])
 

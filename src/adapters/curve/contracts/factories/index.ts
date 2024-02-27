@@ -2,5 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export { CrvMinter__factory } from "./CrvMinter__factory";
-export { MetaRegistry__factory } from "./MetaRegistry__factory";
+export { CurveLpToken__factory } from "./CurveLpToken__factory";
 export { StakingContract__factory } from "./StakingContract__factory";

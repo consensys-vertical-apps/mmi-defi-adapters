@@ -2,9 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { CrvMinter } from "./CrvMinter";
-export type { MetaRegistry } from "./MetaRegistry";
+export type { CurveLpToken } from "./CurveLpToken";
 export type { StakingContract } from "./StakingContract";
 export * as factories from "./factories";
 export { CrvMinter__factory } from "./factories/CrvMinter__factory";
-export { MetaRegistry__factory } from "./factories/MetaRegistry__factory";
+export { CurveLpToken__factory } from "./factories/CurveLpToken__factory";
 export { StakingContract__factory } from "./factories/StakingContract__factory";
