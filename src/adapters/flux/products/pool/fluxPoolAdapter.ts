@@ -37,8 +37,8 @@ type FluxAdapterMetadata = Record<
   }
 >
 
-export class FluxAdapter extends SimplePoolAdapter implements IMetadataBuilder {
-  productId = 'flux'
+export class FluxPoolAdapter extends SimplePoolAdapter implements IMetadataBuilder {
+  productId = 'pool'
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -87,9 +87,14 @@ export class FluxAdapter extends SimplePoolAdapter implements IMetadataBuilder {
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
+    const comptrollerContract = Comptroller__factory.connect(
+      FLUX_COMPTROLLER_CONTRACT,
+      this.provider,
     )
+    const protocolTokens = await comptrollerContract.getAllMarkets()
+    return Promise.all(protocolTokens.map(
+      (protocolTokenAddress) => getTokenMetadata(protocolTokenAddress, this.chainId, this.provider)
+    ))
   }
 
   /**
@@ -112,8 +117,40 @@ export class FluxAdapter extends SimplePoolAdapter implements IMetadataBuilder {
    */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
+  ): Promise<ProtocolTokenTvl[]> {    
+    // const tokens = await this.getProtocolTokens()
     throw new NotImplementedError()
+    // const lensContract = MorphoAaveV2Lens__factory.connect(
+    //   this.lensAddress,
+    //   this.provider,
+    // )
+    // const positionType = this.getProtocolDetails().positionType
+    // return Promise.all(
+    //   tokens.map(async (tokenMetadata) => {
+    //     let totalValueRaw
+
+    //     if (positionType === PositionType.Supply) {
+    //       const [poolSupply, p2pSupply] =
+    //         await lensContract.getTotalMarketSupply(tokenMetadata.address, {
+    //           blockTag: blockNumber,
+    //         })
+    //       totalValueRaw = poolSupply + p2pSupply
+    //     } else {
+    //       // Assuming LensType.Borrow or other types
+    //       const [poolBorrow, p2pBorrow] =
+    //         await lensContract.getTotalMarketBorrow(tokenMetadata.address, {
+    //           blockTag: blockNumber,
+    //         })
+    //       totalValueRaw = poolBorrow + p2pBorrow
+    //     }
+
+    //     return {
+    //       ...tokenMetadata,
+    //       type: TokenType.Protocol,
+    //       totalSupplyRaw: totalValueRaw !== undefined ? totalValueRaw : 0n,
+    //     }
+    //   }),
+    // )
   }
 
   /**
