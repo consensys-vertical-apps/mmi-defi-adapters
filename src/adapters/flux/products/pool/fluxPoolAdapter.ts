@@ -230,4 +230,12 @@ export class FluxPoolAdapter
 
     return poolMetadata
   }
+
+  // This is how APY is calculated and displayed in the Flux Finance website
+  private calculateAPY(
+    interestAccruedPerInterval: number, // Pass in fToken.borrowRate or fToken.supplyRate
+    intervalsPerYear: number = FluxPoolAdapter.EXPECTED_BLOCKS_PER_YEAR,
+  ): number {
+    return Math.pow(1 + interestAccruedPerInterval, intervalsPerYear) - 1
+  }
 }
