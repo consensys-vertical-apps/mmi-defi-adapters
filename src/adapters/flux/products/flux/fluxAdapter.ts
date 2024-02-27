@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import {
   IMetadataBuilder,
@@ -20,6 +21,13 @@ import {
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { Comptroller__factory, FToken__factory } from '../../contracts'
+import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+
+// https://docs.fluxfinance.com/addresses
+export const FLUX_COMPTROLLER_CONTRACT = getAddress(
+  '0x95Af143a021DF745bc78e845b54591C53a8B3A51',
+)
 
 type FluxAdapterMetadata = Record<
   string,
@@ -56,7 +64,26 @@ export class FluxAdapter extends SimplePoolAdapter implements IMetadataBuilder {
    */
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    return {} as FluxAdapterMetadata
+    const fluxAdapterMetaData: FluxAdapterMetadata = {}
+    const comptrollerContract = Comptroller__factory.connect(
+      FLUX_COMPTROLLER_CONTRACT,
+      this.provider,
+    )
+
+    // const markets = await comptrollerContract.getAllMarkets()
+    // markets.forEach(async (market) => {
+    //   const fTokenContract = await FToken__factory.connect(
+    //     market,
+    //     this.provider,
+    //   )
+    //   const underlyingToken = await fTokenContract.underlying()
+    //   fluxAdapterMetaData[market] = {
+    //     protocolToken: market,
+    //     underlyingTokens: [underlyingToken],
+    //   }
+    // })
+
+    return fluxAdapterMetaData
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
@@ -120,18 +147,20 @@ export class FluxAdapter extends SimplePoolAdapter implements IMetadataBuilder {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } = await this.fetchPoolMetadata(
+    const fTokenContract = FToken__factory.connect(
       protocolTokenAddress,
+      this.provider,
     )
-
-    return underlyingTokens
+    const underlyingToken = await fTokenContract.underlying()
+    const underlyingTokenMetadata = await getTokenMetadata(
+      underlyingToken,
+      this.chainId,
+      this.provider,
+    )
+    return [underlyingTokenMetadata]
   }
 
   /**
