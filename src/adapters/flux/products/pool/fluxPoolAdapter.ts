@@ -91,7 +91,7 @@ export class FluxPoolAdapter
         protocolTokenMetadata.address,
         this.provider,
       )
-      const underlyingToken = await fTokenContract.underlying()
+      const underlyingToken = getAddress(await fTokenContract.underlying())
       const underlyingTokenMetadata = await getTokenMetadata(
         underlyingToken,
         this.chainId,
