@@ -1,0 +1,57 @@
+{
+  "blockNumber": 19312585,
+  "snapshot": [
+    {
+      "protocolId": "morpho-blue",
+      "name": "MorphoBlue",
+      "description": "MorphoBlue DeFi adapter on the supply side",
+      "siteUrl": "https://app.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "market-supply",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "10499723232902209779366n",
+          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "symbol": "WETH",
+          "decimals": 18,
+          "totalSupply": 10499.72323290221
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "16194454512854n",
+          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+          "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+          "symbol": "USDC",
+          "decimals": 6,
+          "totalSupply": 16194454.512854
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "16928005569678775822101n",
+          "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+          "name": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+          "symbol": "wstETH",
+          "decimals": 18,
+          "totalSupply": 16928.005569678775
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "1328980698199427858800n",
+          "address": "0xcA2A7068e551d5C4482eb34880b194E4b945712F",
+          "name": "0xcA2A7068e551d5C4482eb34880b194E4b945712F",
+          "symbol": "wbIB01",
+          "decimals": 18,
+          "totalSupply": 1328.980698199428
+        }
+      ]
+    }
+  ]
+}

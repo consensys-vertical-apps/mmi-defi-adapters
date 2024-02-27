@@ -30,6 +30,8 @@ import { MorphoAaveV2OptimizerBorrowAdapter } from './morpho-aave-v2/products/op
 import { MorphoAaveV2OptimizerSupplyAdapter } from './morpho-aave-v2/products/optimizer-supply/morphoAaveV2OptimizerSupplyAdapter'
 import { MorphoAaveV3ETHOptimizerBorrowAdapter } from './morpho-aave-v3-eth/products/optimizer-borrow/morphoAaveV3ETHOptimizerBorrowAdapter'
 import { MorphoAaveV3ETHOptimizerSupplyAdapter } from './morpho-aave-v3-eth/products/optimizer-supply/morphoAaveV3ETHOptimizerSupplyAdapter'
+import { MorphoBlueMarketBorrowAdapter } from './morpho-blue/products/market-borrow/morphoBlueMarketBorrowAdapter'
+import { MorphoBlueMarketSupplyAdapter } from './morpho-blue/products/market-supply/morphoBlueMarketSupplyAdapter'
 import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
 import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
 import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
@@ -54,18 +56,21 @@ export const supportedProtocols: Record<
       MorphoAaveV3ETHOptimizerBorrowAdapter,
     ],
   },
+
   [Protocol.MorphoAaveV2]: {
     [Chain.Ethereum]: [
       MorphoAaveV2OptimizerBorrowAdapter,
       MorphoAaveV2OptimizerSupplyAdapter,
     ],
   },
+
   [Protocol.MorphoCompoundV2]: {
     [Chain.Ethereum]: [
       MorphoCompoundV2OptimizerSupplyAdapter,
       MorphoCompoundV2OptimizerBorrowAdapter,
     ],
   },
+
   [Protocol.Stargate]: {
     [Chain.Ethereum]: [StargatePoolAdapter, StargateVestingAdapter],
     [Chain.Arbitrum]: [StargatePoolAdapter, StargateVestingAdapter],
@@ -220,5 +225,12 @@ export const supportedProtocols: Record<
     [Chain.Base]: [UniswapV2PoolAdapter],
     [Chain.Arbitrum]: [UniswapV2PoolAdapter],
     [Chain.Avalanche]: [UniswapV2PoolAdapter],
+  },
+
+  [Protocol.MorphoBlue]: {
+    [Chain.Ethereum]: [
+      MorphoBlueMarketSupplyAdapter,
+      MorphoBlueMarketBorrowAdapter,
+    ],
   },
 }
