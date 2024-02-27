@@ -19,15 +19,12 @@ import {
   UnderlyingTokenRate,
   Underlying,
   AssetType,
+  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Comptroller__factory, FToken__factory } from '../../contracts'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-
-// https://docs.fluxfinance.com/addresses
-export const FLUX_COMPTROLLER_CONTRACT = getAddress(
-  '0x95Af143a021DF745bc78e845b54591C53a8B3A51',
-)
+import { Oracle__factory } from '../../../mendi-finance/contracts'
 
 type FluxAdapterMetadata = Record<
   string,
@@ -37,8 +34,25 @@ type FluxAdapterMetadata = Record<
   }
 >
 
-export class FluxPoolAdapter extends SimplePoolAdapter implements IMetadataBuilder {
+export class FluxPoolAdapter
+  extends SimplePoolAdapter
+  implements IMetadataBuilder
+{
   productId = 'pool'
+
+  // Expected blocks per year
+  static readonly EXPECTED_BLOCKS_PER_YEAR = 2628000
+
+  // https://docs.fluxfinance.com/addresses
+  static readonly ousgOracleAddress = getAddress(
+    '0x0502c5ae08E7CD64fe1AEDA7D6e229413eCC6abe',
+  )
+  static readonly comptrollerAddress = getAddress(
+    '0x95Af143a021DF745bc78e845b54591C53a8B3A51',
+  )
+  static readonly lensAddress = getAddress(
+    '0xcA83471CE9B0E7E6f628FA2A95Ae97198780acf8',
+  )
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -56,124 +70,129 @@ export class FluxPoolAdapter extends SimplePoolAdapter implements IMetadataBuild
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    const fluxAdapterMetaData: FluxAdapterMetadata = {}
+    // Get all the protocol tokens
     const comptrollerContract = Comptroller__factory.connect(
-      FLUX_COMPTROLLER_CONTRACT,
+      FluxPoolAdapter.comptrollerAddress,
       this.provider,
     )
+    const protocolTokens = await comptrollerContract.getAllMarkets()
+    const protocolTokensMetadata = await Promise.all(
+      protocolTokens.map((protocolTokenAddress) =>
+        getTokenMetadata(protocolTokenAddress, this.chainId, this.provider),
+      ),
+    )
 
-    // const markets = await comptrollerContract.getAllMarkets()
-    // markets.forEach(async (market) => {
-    //   const fTokenContract = await FToken__factory.connect(
-    //     market,
-    //     this.provider,
-    //   )
-    //   const underlyingToken = await fTokenContract.underlying()
-    //   fluxAdapterMetaData[market] = {
-    //     protocolToken: market,
-    //     underlyingTokens: [underlyingToken],
-    //   }
-    // })
+    // Get all the underlying tokens for each protocol token and build metadata
+    const fluxAdapterMetaData: FluxAdapterMetadata = {}
+    protocolTokensMetadata.forEach(async (protocolTokenMetadata) => {
+      const fTokenContract = FToken__factory.connect(
+        protocolTokenMetadata.address,
+        this.provider,
+      )
+      const underlyingToken = await fTokenContract.underlying()
+      const underlyingTokenMetadata = await getTokenMetadata(
+        underlyingToken,
+        this.chainId,
+        this.provider,
+      )
+      fluxAdapterMetaData[protocolTokenMetadata.address] = {
+        protocolToken: protocolTokenMetadata,
+        underlyingTokens: [underlyingTokenMetadata],
+      }
+    })
 
     return fluxAdapterMetaData
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    const comptrollerContract = Comptroller__factory.connect(
-      FLUX_COMPTROLLER_CONTRACT,
-      this.provider,
+    return Object.values(await this.buildMetadata()).map(
+      ({ protocolToken }) => protocolToken,
     )
-    const protocolTokens = await comptrollerContract.getAllMarkets()
-    return Promise.all(protocolTokens.map(
-      (protocolTokenAddress) => getTokenMetadata(protocolTokenAddress, this.chainId, this.provider)
-    ))
   }
 
-  /**
-   * Update me.
-   * Add logic to turn the LP token balance into the correct underlying token(s) balance
-   * For context see dashboard example ./dashboard.png
-   */
-  protected async getUnderlyingTokenBalances(_input: {
+  protected async getUnderlyingTokenBalances({
+    userAddress,
+    protocolTokenBalance,
+    blockNumber,
+  }: {
     userAddress: string
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    throw new NotImplementedError()
+    const poolMetadata = await this.fetchPoolMetadata(
+      protocolTokenBalance.address,
+    )
+    const underlyingTokenConversionRate =
+      await this.getUnderlyingTokenConversionRate(
+        protocolTokenBalance,
+        blockNumber,
+      )
+    const underlyingBalances = poolMetadata.underlyingTokens.map((token) => {
+      const underlyingTokenRateRaw = underlyingTokenConversionRate.find(
+        (tokenRate) => tokenRate.address === token.address,
+      )!.underlyingRateRaw
+      return {
+        ...token,
+        balanceRaw:
+          (underlyingTokenRateRaw * protocolTokenBalance.balanceRaw) /
+          10n ** BigInt(protocolTokenBalance.decimals),
+        type: TokenType.Underlying,
+      }
+    })
+
+    return underlyingBalances
   }
 
-  /**
-   * Update me.
-   * Add logic to find tvl in a pool
-   *
-   */
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {    
-    // const tokens = await this.getProtocolTokens()
-    throw new NotImplementedError()
-    // const lensContract = MorphoAaveV2Lens__factory.connect(
-    //   this.lensAddress,
-    //   this.provider,
-    // )
-    // const positionType = this.getProtocolDetails().positionType
-    // return Promise.all(
-    //   tokens.map(async (tokenMetadata) => {
-    //     let totalValueRaw
-
-    //     if (positionType === PositionType.Supply) {
-    //       const [poolSupply, p2pSupply] =
-    //         await lensContract.getTotalMarketSupply(tokenMetadata.address, {
-    //           blockTag: blockNumber,
-    //         })
-    //       totalValueRaw = poolSupply + p2pSupply
-    //     } else {
-    //       // Assuming LensType.Borrow or other types
-    //       const [poolBorrow, p2pBorrow] =
-    //         await lensContract.getTotalMarketBorrow(tokenMetadata.address, {
-    //           blockTag: blockNumber,
-    //         })
-    //       totalValueRaw = poolBorrow + p2pBorrow
-    //     }
-
-    //     return {
-    //       ...tokenMetadata,
-    //       type: TokenType.Protocol,
-    //       totalSupplyRaw: totalValueRaw !== undefined ? totalValueRaw : 0n,
-    //     }
-    //   }),
-    // )
+  ): Promise<ProtocolTokenTvl[]> {
+    const protocolTokens = await this.getProtocolTokens()
+    return Promise.all(
+      protocolTokens.map(async (tokenMetadata) => {
+        const fTokenContract = FToken__factory.connect(
+          tokenMetadata.address,
+          this.provider,
+        )
+        const totalSupplyRaw = await fTokenContract.totalSupply()
+        return {
+          ...tokenMetadata,
+          type: TokenType.Protocol,
+          totalSupplyRaw,
+        }
+      }),
+    )
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
     return protocolToken
   }
 
-  /**
-   * Update me.
-   * Add logic that finds the underlying token rates for 1 protocol token
-   */
   protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
+    protocolTokenMetadata: Erc20Metadata,
+    blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
+    const fTokenContract = FToken__factory.connect(
+      protocolTokenMetadata.address,
+      this.provider,
+    )
+    const exchangeRate = await fTokenContract.exchangeRateStored({
+      blockTag: blockNumber,
+    })
+    const underlyingTokenMetadata = (
+      await this.fetchUnderlyingTokensMetadata(protocolTokenMetadata.address)
+    )[0]!
+    return [
+      {
+        ...underlyingTokenMetadata,
+        type: TokenType.Underlying,
+        underlyingRateRaw: exchangeRate,
+      },
+    ]
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
@@ -187,23 +206,12 @@ export class FluxPoolAdapter extends SimplePoolAdapter implements IMetadataBuild
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const fTokenContract = FToken__factory.connect(
+    const { underlyingTokens } = await this.fetchPoolMetadata(
       protocolTokenAddress,
-      this.provider,
     )
-    const underlyingToken = await fTokenContract.underlying()
-    const underlyingTokenMetadata = await getTokenMetadata(
-      underlyingToken,
-      this.chainId,
-      this.provider,
-    )
-    return [underlyingTokenMetadata]
+    return underlyingTokens
   }
 
-  /**
-   * Update me.
-   * Below implementation might fit your metadata if not update it.
-   */
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
