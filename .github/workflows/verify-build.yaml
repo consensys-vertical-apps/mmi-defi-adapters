@@ -55,8 +55,6 @@ jobs:
         run: |
           npm run new-adapter -- -p test-uniswap-v2-pool-fork-adapter-protocol -pd pool -c 1,10,42161 -t UniswapV2PoolForkAdapter -y
           npm run build
-          npm run build-metadata -- -p test-uniswap-v2-pool-fork-adapter-protocol
-          npm run build
 
   run-tests:
     runs-on: ubuntu-latest

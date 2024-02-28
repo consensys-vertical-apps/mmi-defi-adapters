@@ -247,7 +247,7 @@ export abstract class UniswapV2PoolForkAdapter
     })
 
     const gqlResponse: {
-      data?: {
+      data: {
         pairs: [
           {
             id: string
@@ -262,15 +262,13 @@ export abstract class UniswapV2PoolForkAdapter
       }
     } = await response.json()
 
-    return (
-      gqlResponse.data?.pairs.map((pair) => {
-        return {
-          pairAddress: pair.id,
-          token0Address: pair.token0.id,
-          token1Address: pair.token1.id,
-        }
-      }) ?? []
-    )
+    return gqlResponse.data.pairs.map((pair) => {
+      return {
+        pairAddress: pair.id,
+        token0Address: pair.token0.id,
+        token1Address: pair.token1.id,
+      }
+    })
   }
 
   private async factoryPoolExtraction(factoryAddress: string): Promise<
