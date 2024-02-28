@@ -1,0 +1,120 @@
+{
+  "blockNumber": 19326319,
+  "snapshot": [
+    {
+      "protocolId": "sushiswap-v2",
+      "name": "SushiswapV2",
+      "description": "SushiswapV2 pool adapter",
+      "siteUrl": "https://www.sushi.com/pool",
+      "iconUrl": "https://cryptologos.cc/logos/sushiswap-sushi-logo.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+          "name": "SushiSwap LP Token USDC / WETH",
+          "symbol": "SLP/USDC/WETH",
+          "decimals": 18,
+          "balanceRaw": "75627703759563n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "7819533237n",
+              "balance": 7819.533237,
+              "price": 1.0066860902991404,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            },
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "2336101889433410215n",
+              "balance": 2.3361018894334102,
+              "price": 3355.71,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 0.000075627703759563
+        },
+        {
+          "address": "0x795065dCc9f64b5614C407a6EFDC400DA6221FB0",
+          "name": "SushiSwap LP Token SUSHI / WETH",
+          "symbol": "SLP/SUSHI/WETH",
+          "decimals": 18,
+          "balanceRaw": "1843730290034892330n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
+              "name": "SushiSwap",
+              "symbol": "SUSHI",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "124439973794922842828n",
+              "balance": 124.43997379492285,
+              "price": 1.5649832990385413,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png"
+            },
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "57987946151755821n",
+              "balance": 0.05798794615175582,
+              "price": 3355.71,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 1.8437302900348924
+        },
+        {
+          "address": "0x06da0fd433C1A5d7a4faa01111c044910A184553",
+          "name": "SushiSwap LP Token WETH / USDT",
+          "symbol": "SLP/WETH/USDT",
+          "decimals": 18,
+          "balanceRaw": "113684365735485n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "3398589613624984224n",
+              "balance": 3.398589613624984,
+              "price": 3355.71,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "11330517435n",
+              "balance": 11330.517435,
+              "price": 1.002634076206428,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": 0.000113684365735485
+        }
+      ]
+    }
+  ]
+}
