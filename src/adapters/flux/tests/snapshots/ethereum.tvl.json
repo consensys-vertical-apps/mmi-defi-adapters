@@ -30,8 +30,8 @@
           "symbol": "FUSDC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "47633230722163398n",
-          "totalSupply": 476332307.221634
+          "totalSupplyRaw": "47633217353326925n",
+          "totalSupply": 476332173.5332692
         },
         {
           "address": "0xe2bA8693cE7474900A045757fe0efCa900F6530b",
@@ -39,8 +39,8 @@
           "symbol": "FDAI",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "5804648753933878n",
-          "totalSupply": 58046487.53933878
+          "totalSupplyRaw": "5805167755600607n",
+          "totalSupply": 58051677.55600607
         },
         {
           "address": "0x81994b9607e06ab3d5cF3AffF9a67374f05F27d7",
