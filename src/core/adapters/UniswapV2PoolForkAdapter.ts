@@ -31,7 +31,11 @@ export type UniswapV2PoolForkAdapterMetadata = Record<
 >
 
 export type UniswapV2PoolForkMetadataBuilder =
-  | { type: 'graphql'; url: string; query: string; factoryAddress: string }
+  | {
+      type: 'graphql'
+      subgraphUrl: string
+      factoryAddress: string
+    }
   | { type: 'factory'; factoryAddress: string }
 
 export abstract class UniswapV2PoolForkAdapter
@@ -39,6 +43,7 @@ export abstract class UniswapV2PoolForkAdapter
   implements IMetadataBuilder
 {
   protected readonly MAX_FACTORY_PAIRS: number = 1000
+  protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
 
   protected abstract chainMetadataSettings(): Partial<
     Record<Chain, UniswapV2PoolForkMetadataBuilder>
@@ -57,8 +62,8 @@ export abstract class UniswapV2PoolForkAdapter
       token1Address: string
     }[] =
       factoryMetadata.type === 'graphql'
-        ? await this.graphQlPoolExtraction(factoryMetadata)
-        : await this.factoryPoolExtraction(factoryMetadata)
+        ? await this.graphQlPoolExtraction(factoryMetadata.subgraphUrl)
+        : await this.factoryPoolExtraction(factoryMetadata.factoryAddress)
 
     const factoryContract = Factory__factory.connect(
       factoryMetadata.factoryAddress,
@@ -226,24 +231,18 @@ export abstract class UniswapV2PoolForkAdapter
     return poolMetadata
   }
 
-  private async graphQlPoolExtraction({
-    url,
-    query,
-  }: {
-    url: string
-    query: string
-  }): Promise<
+  private async graphQlPoolExtraction(subgraphUrl: string): Promise<
     {
       pairAddress: string
       token0Address: string
       token1Address: string
     }[]
   > {
-    const response = await fetch(url, {
+    const response = await fetch(subgraphUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        query,
+        query: `{ pairs(first: ${this.MAX_FACTORY_PAIRS} where: {volumeUSD_gt: ${this.MIN_SUBGRAPH_VOLUME}} orderBy: reserveUSD orderDirection: desc) {id token0 {id} token1 {id}}}`,
       }),
     })
 
@@ -272,11 +271,7 @@ export abstract class UniswapV2PoolForkAdapter
     })
   }
 
-  private async factoryPoolExtraction({
-    factoryAddress,
-  }: {
-    factoryAddress: string
-  }): Promise<
+  private async factoryPoolExtraction(factoryAddress: string): Promise<
     {
       pairAddress: string
       token0Address: string

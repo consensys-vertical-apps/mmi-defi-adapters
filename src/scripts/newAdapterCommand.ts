@@ -22,16 +22,13 @@ import { chainFilter, protocolFilter } from './commandFilters'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import { testCases } from './templates/testCases'
+import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
 import n = types.namedTypes
 import b = types.builders
 
-type TemplateBuilder = (
-  protocolName: string,
-  adapterName: string,
-  productId: string,
-) => string
+type TemplateBuilder = (adapterSettings: NewAdapterAnswers) => string
 
-type NewAdapterAnswers = {
+export type NewAdapterAnswers = {
   protocolKey: string
   protocolId: string
   productId: string
@@ -43,6 +40,7 @@ type NewAdapterAnswers = {
 const Templates: Record<string, TemplateBuilder> = {
   ['DefaultAdapter']: defaultAdapterTemplate,
   ['SimplePoolAdapter']: simplePoolAdapterTemplate,
+  ['UniswapV2PoolForkAdapter']: uniswapV2PoolForkAdapterTemplate,
 }
 
 export function newAdapterCommand(
@@ -266,23 +264,17 @@ export function newAdapterCommand(
 /**
  * @description Creates a new adapter using the template
  */
-async function buildAdapterFromTemplate({
-  protocolKey,
-  protocolId,
-  productId,
-  adapterClassName,
-  templateBuilder,
-}: NewAdapterAnswers) {
+async function buildAdapterFromTemplate(adapterSettings: NewAdapterAnswers) {
+  const { protocolId, productId, adapterClassName, templateBuilder } =
+    adapterSettings
+
   const adapterFilePath = buildAdapterFilePath(
     protocolId,
     productId,
     adapterClassName,
   )
 
-  await writeCodeFile(
-    adapterFilePath,
-    templateBuilder(protocolKey, adapterClassName, productId),
-  )
+  await writeCodeFile(adapterFilePath, templateBuilder(adapterSettings))
 }
 
 /**

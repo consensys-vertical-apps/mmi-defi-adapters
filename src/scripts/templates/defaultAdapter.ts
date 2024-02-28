@@ -1,8 +1,10 @@
-export function defaultAdapterTemplate(
-  protocolKey: string,
-  adapterClassName: string,
-  productId: string,
-) {
+import { NewAdapterAnswers } from '../newAdapterCommand'
+
+export function defaultAdapterTemplate({
+  protocolKey,
+  adapterClassName,
+  productId,
+}: NewAdapterAnswers) {
   return `import { AdaptersController } from '../../../../core/adaptersController'
   import { Chain } from '../../../../core/constants/chains'
   import {

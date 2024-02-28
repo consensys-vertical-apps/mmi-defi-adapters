@@ -19,7 +19,7 @@ export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
       name: 'UniswapV2',
       description: 'UniswapV2 pool adapter',
       siteUrl: 'https://v2.info.uniswap.org/home',
-      iconUrl: 'https://app.uniswap.org/swap',
+      iconUrl: 'https://cryptologos.cc/logos/uniswap-uni-logo.svg',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
@@ -35,8 +35,8 @@ export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
     return {
       [Chain.Ethereum]: {
         type: 'graphql',
-        url: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev',
-        query: `{ pairs(first: 1000 where: {volumeUSD_gt: 50000} orderBy: reserveUSD orderDirection: desc) {id token0 {id} token1 {id}}}`,
+        subgraphUrl:
+          'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev',
         factoryAddress: '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f',
       },
       [Chain.Optimism]: {
