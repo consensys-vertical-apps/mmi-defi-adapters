@@ -39,6 +39,46 @@
       "decimals": 18
     }
   },
+  "0xC6C5047405bCe6d583FeB2a91C504346d0ea60Ca": {
+    "protocolToken": {
+      "address": "0xC6C5047405bCe6d583FeB2a91C504346d0ea60Ca",
+      "name": "Uniswap V2 USDT / DRF",
+      "symbol": "UNI-V2/USDT/DRF",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x55d398326f99059fF775485246999027B3197955",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x9400Aa8eb5126d20CDE45C7822836BFB70F19878",
+      "name": "DRIFE",
+      "symbol": "DRF",
+      "decimals": 18
+    }
+  },
+  "0xF15FA3d7B9aa58382cd458B97F4Dc0749183995E": {
+    "protocolToken": {
+      "address": "0xF15FA3d7B9aa58382cd458B97F4Dc0749183995E",
+      "name": "Uniswap V2 CUB / WBNB",
+      "symbol": "UNI-V2/CUB/WBNB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x50FD6f86C7537ffedE56171a50aA8b6045B241Dc",
+      "name": "Tiger",
+      "symbol": "CUB",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    }
+  },
   "0x72901E5628c92486397369100a14550103e2Cef6": {
     "protocolToken": {
       "address": "0x72901E5628c92486397369100a14550103e2Cef6",
@@ -119,6 +159,26 @@
       "decimals": 18
     }
   },
+  "0x027112C2415A2fcfADAdE6b13CC3394027eCA135": {
+    "protocolToken": {
+      "address": "0x027112C2415A2fcfADAdE6b13CC3394027eCA135",
+      "name": "Uniswap V2 BB / WBNB",
+      "symbol": "UNI-V2/BB/WBNB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x67C7797b42B07254836b728B22Ade6B3bDA65916",
+      "name": "BigBaby",
+      "symbol": "BB",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    }
+  },
   "0xA93a7AE7b639283c3F4De8B92369588a236a1499": {
     "protocolToken": {
       "address": "0xA93a7AE7b639283c3F4De8B92369588a236a1499",
@@ -130,6 +190,26 @@
       "address": "0x946E0dD70803C970Be3959B3e03ab977ae96D257",
       "name": "TouchAI",
       "symbol": "AI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    }
+  },
+  "0x4504482635629A61F11cCcf1bD34a69C66Fb3029": {
+    "protocolToken": {
+      "address": "0x4504482635629A61F11cCcf1bD34a69C66Fb3029",
+      "name": "Uniswap V2 zuzalu / WBNB",
+      "symbol": "UNI-V2/zuzalu/WBNB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x550D442010eEC126Adf664fb78FAC6772037A5b1",
+      "name": "zuzalu",
+      "symbol": "zuzalu",
       "decimals": 18
     },
     "token1": {
@@ -199,6 +279,66 @@
       "decimals": 18
     }
   },
+  "0xD28d3f5A9A718027a4889A4278c6F1770Ed05885": {
+    "protocolToken": {
+      "address": "0xD28d3f5A9A718027a4889A4278c6F1770Ed05885",
+      "name": "Uniswap V2 1INCH / TKT",
+      "symbol": "UNI-V2/1INCH/TKT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x111111111117dC0aa78b770fA6A738034120C302",
+      "name": "1INCH Token",
+      "symbol": "1INCH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x1bA10eF47B6bA2B38057912fD06F9A6Cebb42d15",
+      "name": "TokTik",
+      "symbol": "TKT",
+      "decimals": 18
+    }
+  },
+  "0x1B1CBA6092392c70393E46a76B29E5C8fa62d19A": {
+    "protocolToken": {
+      "address": "0x1B1CBA6092392c70393E46a76B29E5C8fa62d19A",
+      "name": "Uniswap V2 WBNB / USDT",
+      "symbol": "UNI-V2/WBNB/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc67c4DfbFE9Eb47f6aeb2792457d4E80Fb3e752a",
+      "name": "USDTether",
+      "symbol": "USDT",
+      "decimals": 18
+    }
+  },
+  "0x284f8b174455d5507239a966eA9cE5C23dfC2C67": {
+    "protocolToken": {
+      "address": "0x284f8b174455d5507239a966eA9cE5C23dfC2C67",
+      "name": "Uniswap V2 TFY / WBNB",
+      "symbol": "UNI-V2/TFY/WBNB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x913bbA5Ed611691e3a7F952f8bbCA0cbb3341504",
+      "name": "TokenForYou",
+      "symbol": "TFY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    }
+  },
   "0x18aB21cDb9FC480DC21bF12890e541dB8BEe1ddf": {
     "protocolToken": {
       "address": "0x18aB21cDb9FC480DC21bF12890e541dB8BEe1ddf",
@@ -257,6 +397,26 @@
       "name": "Wrapped BNB",
       "symbol": "WBNB",
       "decimals": 18
+    }
+  },
+  "0x8DBa093EC461dBf21E820888A1eF89c962a4e55A": {
+    "protocolToken": {
+      "address": "0x8DBa093EC461dBf21E820888A1eF89c962a4e55A",
+      "name": "Uniswap V2 WBNB / CH0P",
+      "symbol": "UNI-V2/WBNB/CH0P",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xD58182f1373B85795DbB11ed61800ac183FB3350",
+      "name": "Chop yourself",
+      "symbol": "CH0P",
+      "decimals": 9
     }
   },
   "0xA80BDC62D17cE29b67B01eee9E9b44F93183da27": {
@@ -339,6 +499,46 @@
       "decimals": 18
     }
   },
+  "0xB5F306BaB91d9E72c45ad8129566ce2065F41Fde": {
+    "protocolToken": {
+      "address": "0xB5F306BaB91d9E72c45ad8129566ce2065F41Fde",
+      "name": "Uniswap V2 PEPE / WBNB",
+      "symbol": "UNI-V2/PEPE/WBNB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x38444bF387171656762e654EE05C5270903Af834",
+      "name": "ShibaCumGMElonKishuTurboAssFlokiMoonInu",
+      "symbol": "PEPE",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    }
+  },
+  "0x54Be1A370F0c40B43B3989f2C644ec3E8752F1C5": {
+    "protocolToken": {
+      "address": "0x54Be1A370F0c40B43B3989f2C644ec3E8752F1C5",
+      "name": "Uniswap V2 WBNB / PEPE",
+      "symbol": "UNI-V2/WBNB/PEPE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xd814AD56c87eAe510B0fbc776882145337Ea5165",
+      "name": "ShibaCumGMElonKishuTurboAssFlokiMoonInu",
+      "symbol": "PEPE",
+      "decimals": 9
+    }
+  },
   "0xe4061ebfF19D8bef32ab0532C6621558B12A9E29": {
     "protocolToken": {
       "address": "0xe4061ebfF19D8bef32ab0532C6621558B12A9E29",
@@ -370,6 +570,46 @@
       "address": "0x49eCA1B4Eabe382aaa1E2fE8cFb3EC2216F62Ad7",
       "name": "My Token",
       "symbol": "TKN",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    }
+  },
+  "0x8315739B28ab4F235f93D6eD94A706a500e27e7e": {
+    "protocolToken": {
+      "address": "0x8315739B28ab4F235f93D6eD94A706a500e27e7e",
+      "name": "Uniswap V2 AlimdarT / WBNB",
+      "symbol": "UNI-V2/AlimdarT/WBNB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3beB59Bfef1d329eeb35b98A99bDA9F782EFf76f",
+      "name": "Alimdar Token",
+      "symbol": "AlimdarT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    }
+  },
+  "0xB9600e90414a9C8C128C78d4078784ecDfB03E49": {
+    "protocolToken": {
+      "address": "0xB9600e90414a9C8C128C78d4078784ecDfB03E49",
+      "name": "Uniswap V2 Cake / WBNB",
+      "symbol": "UNI-V2/Cake/WBNB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+      "name": "PancakeSwap Token",
+      "symbol": "Cake",
       "decimals": 18
     },
     "token1": {
