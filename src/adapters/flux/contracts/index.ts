@@ -3,8 +3,6 @@
 /* eslint-disable */
 export type { Comptroller } from "./Comptroller";
 export type { FToken } from "./FToken";
-export type { FluxLens } from "./FluxLens";
 export * as factories from "./factories";
 export { Comptroller__factory } from "./factories/Comptroller__factory";
-export { FluxLens__factory } from "./factories/FluxLens__factory";
 export { FToken__factory } from "./factories/FToken__factory";

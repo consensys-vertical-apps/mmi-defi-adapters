@@ -3,4 +3,3 @@
 /* eslint-disable */
 export { Comptroller__factory } from "./Comptroller__factory";
 export { FToken__factory } from "./FToken__factory";
-export { FluxLens__factory } from "./FluxLens__factory";
