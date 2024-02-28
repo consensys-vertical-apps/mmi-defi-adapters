@@ -43,6 +43,7 @@ export abstract class UniswapV2PoolForkAdapter
   implements IMetadataBuilder
 {
   protected readonly MAX_FACTORY_PAIRS: number = 1000
+  protected readonly MIN_TVL: number = 50000
   protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
 
   protected abstract chainMetadataSettings(): Partial<
@@ -242,7 +243,7 @@ export abstract class UniswapV2PoolForkAdapter
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        query: `{ pairs(first: ${this.MAX_FACTORY_PAIRS} where: {volumeUSD_gt: ${this.MIN_SUBGRAPH_VOLUME}} orderBy: reserveUSD orderDirection: desc) {id token0 {id} token1 {id}}}`,
+        query: `{ pairs(first: ${this.MAX_FACTORY_PAIRS} where: {volumeUSD_gt: ${this.MIN_SUBGRAPH_VOLUME} reserveUSD_gt: ${this.MIN_TVL}} orderBy: reserveUSD orderDirection: desc) {id token0 {id} token1 {id}}}`,
       }),
     })
 
@@ -299,7 +300,7 @@ export abstract class UniswapV2PoolForkAdapter
           pairContract.totalSupply(),
         ])
 
-        if (totalSupply > 0) {
+        if (totalSupply > this.MIN_TVL) {
           return {
             pairAddress,
             token0Address: token0,

@@ -138,45 +138,5 @@
       "symbol": "SHIH",
       "decimals": 18
     }
-  },
-  "0x2f629782C58918252970Ab038D3FBD16E84D5076": {
-    "protocolToken": {
-      "address": "0x2f629782C58918252970Ab038D3FBD16E84D5076",
-      "name": "Uniswap V2 WETH / USDT",
-      "symbol": "UNI-V2/WETH/USDT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x4200000000000000000000000000000000000006",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
-    }
-  },
-  "0x6728bfC6F086801C6fdAA8a3689fF498Ed071704": {
-    "protocolToken": {
-      "address": "0x6728bfC6F086801C6fdAA8a3689fF498Ed071704",
-      "name": "Uniswap V2 USDC / USDT",
-      "symbol": "UNI-V2/USDC/USDT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
-    },
-    "token1": {
-      "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
-    }
   }
 }
