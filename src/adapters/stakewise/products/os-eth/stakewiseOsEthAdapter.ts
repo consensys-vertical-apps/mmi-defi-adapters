@@ -15,6 +15,7 @@ import {
   GetAprInput,
   GetApyInput,
   Underlying,
+  AssetType,
   TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -63,6 +64,9 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
       protocolId: this.protocolId,
       productId: this.productId,
       chainId: this.chainId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
     }
   }
 

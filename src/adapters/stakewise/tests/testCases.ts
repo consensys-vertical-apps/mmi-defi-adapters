@@ -11,6 +11,8 @@ export const testCases: TestCase[] = [
     method: 'positions',
     input: {
       userAddress,
+
+      filterProtocolTokens: [protocolTokenAddress],
     },
     blockNumber: 19240234,
   },
@@ -40,6 +42,8 @@ export const testCases: TestCase[] = [
     method: 'profits',
     input: {
       userAddress,
+
+      filterProtocolTokens: [protocolTokenAddress],
     },
     blockNumber: 19261916,
   },
