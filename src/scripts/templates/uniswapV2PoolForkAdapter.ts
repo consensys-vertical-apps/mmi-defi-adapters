@@ -44,20 +44,22 @@ export function uniswapV2PoolForkAdapterTemplate({
       // If using subgraph (recommended for forks with an available subgraph), provide the subgraph URL and factory cotract address
       // If using factory contract (recommended when subgraph is no available), provide the factory contract address
       return {
-        ${chainKeys.map((chainKey, i) => {
-          const metadataBuilderType =
-            i === 0
-              ? `type: 'graphql',
+        ${chainKeys
+          .map((chainKey, i) => {
+            const metadataBuilderType =
+              i === 0
+                ? `type: 'graphql',
           subgraphUrl:
             'https://api.thegraph.com/subgraphs/name/<SUBGRAPH-PATH>',
           factoryAddress: '<FACTORY-CONTRACT-ADDRESS>',`
-              : `type: 'factory',
+                : `type: 'factory',
               factoryAddress: '<FACTORY-CONTRACT-ADDRESS>',`
 
-          return `[Chain.${chainKey}]: {
+            return `[Chain.${chainKey}]: {
           ${metadataBuilderType}
-        },`
-        })}
+        }`
+          })
+          .join(',')}
       }
     }
   
