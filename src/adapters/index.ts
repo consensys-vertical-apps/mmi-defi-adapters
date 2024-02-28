@@ -37,6 +37,7 @@ import { Protocol } from './protocols'
 import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
+import { SushiswapV2PoolAdapter } from './sushiswap-v2/products/pool/sushiswapV2PoolAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { SyncswapPoolAdapter } from './syncswap/products/pool/syncswapPoolAdapter'
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
@@ -54,18 +55,21 @@ export const supportedProtocols: Record<
       MorphoAaveV3ETHOptimizerBorrowAdapter,
     ],
   },
+
   [Protocol.MorphoAaveV2]: {
     [Chain.Ethereum]: [
       MorphoAaveV2OptimizerBorrowAdapter,
       MorphoAaveV2OptimizerSupplyAdapter,
     ],
   },
+
   [Protocol.MorphoCompoundV2]: {
     [Chain.Ethereum]: [
       MorphoCompoundV2OptimizerSupplyAdapter,
       MorphoCompoundV2OptimizerBorrowAdapter,
     ],
   },
+
   [Protocol.Stargate]: {
     [Chain.Ethereum]: [StargatePoolAdapter, StargateVestingAdapter],
     [Chain.Arbitrum]: [StargatePoolAdapter, StargateVestingAdapter],
@@ -220,5 +224,15 @@ export const supportedProtocols: Record<
     [Chain.Base]: [UniswapV2PoolAdapter],
     [Chain.Arbitrum]: [UniswapV2PoolAdapter],
     [Chain.Avalanche]: [UniswapV2PoolAdapter],
+  },
+
+  [Protocol.SushiswapV2]: {
+    [Chain.Ethereum]: [SushiswapV2PoolAdapter],
+    [Chain.Bsc]: [SushiswapV2PoolAdapter],
+    [Chain.Polygon]: [SushiswapV2PoolAdapter],
+    [Chain.Fantom]: [SushiswapV2PoolAdapter],
+    [Chain.Base]: [SushiswapV2PoolAdapter],
+    [Chain.Arbitrum]: [SushiswapV2PoolAdapter],
+    [Chain.Avalanche]: [SushiswapV2PoolAdapter],
   },
 }

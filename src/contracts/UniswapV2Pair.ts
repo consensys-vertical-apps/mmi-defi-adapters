@@ -23,7 +23,7 @@ import type {
   TypedContractMethod,
 } from "./common";
 
-export interface PairInterface extends Interface {
+export interface UniswapV2PairInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "DOMAIN_SEPARATOR"
@@ -322,11 +322,11 @@ export namespace TransferEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export interface Pair extends BaseContract {
-  connect(runner?: ContractRunner | null): Pair;
+export interface UniswapV2Pair extends BaseContract {
+  connect(runner?: ContractRunner | null): UniswapV2Pair;
   waitForDeployment(): Promise<this>;
 
-  interface: PairInterface;
+  interface: UniswapV2PairInterface;
 
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,

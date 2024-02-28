@@ -298,5 +298,425 @@
       "symbol": "DOG",
       "decimals": 18
     }
+  },
+  "0xe902EF54E437967c8b37D30E80ff887955c90DB6": {
+    "protocolToken": {
+      "address": "0xe902EF54E437967c8b37D30E80ff887955c90DB6",
+      "name": "Uniswap V2 WETH / USDbC",
+      "symbol": "UNI-V2/WETH/USDbC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA",
+      "name": "USD Base Coin",
+      "symbol": "USDbC",
+      "decimals": 6
+    }
+  },
+  "0x45f4Db10bb0102c133F1C70500124e4569F3eDcD": {
+    "protocolToken": {
+      "address": "0x45f4Db10bb0102c133F1C70500124e4569F3eDcD",
+      "name": "Uniswap V2 WETH / FROK",
+      "symbol": "UNI-V2/WETH/FROK",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x42069BAbe14fB1802C5CB0F50BB9D2Ad6FEf55e2",
+      "name": "frok.ai",
+      "symbol": "FROK",
+      "decimals": 18
+    }
+  },
+  "0xb9Cb40C4945431C93f42f81B5b0329a163eD34C8": {
+    "protocolToken": {
+      "address": "0xb9Cb40C4945431C93f42f81B5b0329a163eD34C8",
+      "name": "Uniswap V2 mPEPE / WETH",
+      "symbol": "UNI-V2/mPEPE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3157a4130A75f309caD9a522b339Ed901cD9b02D",
+      "name": "MockPepe",
+      "symbol": "mPEPE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x022AD5a6dcF83D0f6f738DF7212c981bDBE1086e": {
+    "protocolToken": {
+      "address": "0x022AD5a6dcF83D0f6f738DF7212c981bDBE1086e",
+      "name": "Uniswap V2 mPEPE / WETH",
+      "symbol": "UNI-V2/mPEPE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x26B6b562c77D6125b03a80A6EcebAdA525324811",
+      "name": "MockPepe",
+      "symbol": "mPEPE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x00474Ead8A4D365fdd2F4478A9229271Dfc9842D": {
+    "protocolToken": {
+      "address": "0x00474Ead8A4D365fdd2F4478A9229271Dfc9842D",
+      "name": "Uniswap V2 WETH / test",
+      "symbol": "UNI-V2/WETH/test",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xd14208b7Cbbc901e4D1a1FB460869c79A6c36f68",
+      "name": "test",
+      "symbol": "test",
+      "decimals": 18
+    }
+  },
+  "0xe43189c43d158A7e621101B834aebc97d0cfc722": {
+    "protocolToken": {
+      "address": "0xe43189c43d158A7e621101B834aebc97d0cfc722",
+      "name": "Uniswap V2 BDT / WETH",
+      "symbol": "UNI-V2/BDT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x00a133993427610210a0b3C3327d323351B99BCc",
+      "name": "Blue DOT",
+      "symbol": "BDT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xC77289E7352d96dc59d8908025c09B58432DD604": {
+    "protocolToken": {
+      "address": "0xC77289E7352d96dc59d8908025c09B58432DD604",
+      "name": "Uniswap V2 WETH / SIMS",
+      "symbol": "UNI-V2/WETH/SIMS",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x46Cf4A5B705c740B8D591FA05Aadc8c3e24556F4",
+      "name": "Simson",
+      "symbol": "SIMS",
+      "decimals": 18
+    }
+  },
+  "0x19B7620B67741340F15A3fCA3813398F341d993b": {
+    "protocolToken": {
+      "address": "0x19B7620B67741340F15A3fCA3813398F341d993b",
+      "name": "Uniswap V2 WETH / AYB",
+      "symbol": "UNI-V2/WETH/AYB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x7ED613AB8b2b4c6A781DDC97eA98a666c6437511",
+      "name": "All Your Base",
+      "symbol": "AYB",
+      "decimals": 18
+    }
+  },
+  "0x20916ecDeB7F0738aF1a11f41ceD872Bd776b6Ec": {
+    "protocolToken": {
+      "address": "0x20916ecDeB7F0738aF1a11f41ceD872Bd776b6Ec",
+      "name": "Uniswap V2 WETH / SOFI",
+      "symbol": "UNI-V2/WETH/SOFI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x703D57164CA270b0B330A87FD159CfEF1490c0a5",
+      "name": "Rai.Finance",
+      "symbol": "SOFI",
+      "decimals": 18
+    }
+  },
+  "0xd865455b0615Db33097110a154Ad97f8d76344FE": {
+    "protocolToken": {
+      "address": "0xd865455b0615Db33097110a154Ad97f8d76344FE",
+      "name": "Uniswap V2 WETH / WORLD",
+      "symbol": "UNI-V2/WETH/WORLD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x5de841153ef6E8DbA681f9330E546777F9420D26",
+      "name": "World 20-721",
+      "symbol": "WORLD",
+      "decimals": 0
+    }
+  },
+  "0x2b0aeeC0fd90F8a445726040a1443E93B818b30f": {
+    "protocolToken": {
+      "address": "0x2b0aeeC0fd90F8a445726040a1443E93B818b30f",
+      "name": "Uniswap V2 WETH / FRENS",
+      "symbol": "UNI-V2/WETH/FRENS",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x8EF5F4c1203cD7936dBB3e0e7D6C1a8dD5dEabBe",
+      "name": "warpcast frens",
+      "symbol": "FRENS",
+      "decimals": 18
+    }
+  },
+  "0xc9C8737b096d590695DA9Bf377AE39CbE381c26D": {
+    "protocolToken": {
+      "address": "0xc9C8737b096d590695DA9Bf377AE39CbE381c26D",
+      "name": "Uniswap V2 CSS / WETH",
+      "symbol": "UNI-V2/CSS/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3a7ACE4585Bc816629131239E09c9F49F4858019",
+      "name": "Crunchy Sparkling Soda",
+      "symbol": "CSS",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xd0A88D2E4A1FFfA55B6B08d5935b933EADC2d450": {
+    "protocolToken": {
+      "address": "0xd0A88D2E4A1FFfA55B6B08d5935b933EADC2d450",
+      "name": "Uniswap V2 Whales Street / WETH",
+      "symbol": "UNI-V2/Whales Street/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3E20980AD0a6e678318C5435FB084ab5bB36C140",
+      "name": "Whales Street",
+      "symbol": "Whales Street",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xB457E5cC204e03361fD78B1188B087f41b7578fe": {
+    "protocolToken": {
+      "address": "0xB457E5cC204e03361fD78B1188B087f41b7578fe",
+      "name": "Uniswap V2 HELO / WETH",
+      "symbol": "UNI-V2/HELO/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0DB9d8bccA5A6F831fAaEa98df1dA0190B2E7A76",
+      "name": "HELOBASE1234",
+      "symbol": "HELO",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x18a9B853F0F55D5AF8c57EB2574471f1Ce10E79F": {
+    "protocolToken": {
+      "address": "0x18a9B853F0F55D5AF8c57EB2574471f1Ce10E79F",
+      "name": "Uniswap V2 tBTC / WETH",
+      "symbol": "UNI-V2/tBTC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x236aa50979D5f3De3Bd1Eeb40E81137F22ab794b",
+      "name": "Base tBTC v2",
+      "symbol": "tBTC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xF641ff99d18bAbd6fFa38FA5cBc09dD7DaB385C4": {
+    "protocolToken": {
+      "address": "0xF641ff99d18bAbd6fFa38FA5cBc09dD7DaB385C4",
+      "name": "Uniswap V2 WETH / TOSHI",
+      "symbol": "UNI-V2/WETH/TOSHI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4",
+      "name": "Toshi",
+      "symbol": "TOSHI",
+      "decimals": 18
+    }
+  },
+  "0x490396A8822C34ae70D88D5a86C328b2ccaa6198": {
+    "protocolToken": {
+      "address": "0x490396A8822C34ae70D88D5a86C328b2ccaa6198",
+      "name": "Uniswap V2 WETH / mPEPE",
+      "symbol": "UNI-V2/WETH/mPEPE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x5Ad72105A9fCc051E00660aa2AB8771BF3cF8b13",
+      "name": "MockPepe",
+      "symbol": "mPEPE",
+      "decimals": 18
+    }
+  },
+  "0x378b24999b9fA20485e9d00A1710897F46eBeaeb": {
+    "protocolToken": {
+      "address": "0x378b24999b9fA20485e9d00A1710897F46eBeaeb",
+      "name": "Uniswap V2 mPEPE / WETH",
+      "symbol": "UNI-V2/mPEPE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x11EABE894eaAA4BB73b709CcE5D7AF53e7543039",
+      "name": "MockPepe",
+      "symbol": "mPEPE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x3876fa382B50823571633187F4FE98F6D8aB409C": {
+    "protocolToken": {
+      "address": "0x3876fa382B50823571633187F4FE98F6D8aB409C",
+      "name": "Uniswap V2 WETH / mPEPE",
+      "symbol": "UNI-V2/WETH/mPEPE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x78649F65db2c3A829E8F9c0C374e58F6c8184915",
+      "name": "MockPepe",
+      "symbol": "mPEPE",
+      "decimals": 18
+    }
+  },
+  "0x17E58A09F627a6b71755AB3FD8e32763EcF2fd34": {
+    "protocolToken": {
+      "address": "0x17E58A09F627a6b71755AB3FD8e32763EcF2fd34",
+      "name": "Uniswap V2 TYBG / WETH",
+      "symbol": "UNI-V2/TYBG/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d97F261b1e88845184f678e2d1e7a98D9FD38dE",
+      "name": "Base God",
+      "symbol": "TYBG",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x3F413FcCAEa59b8053d605AEa7ae847C02ed5D95": {
+    "protocolToken": {
+      "address": "0x3F413FcCAEa59b8053d605AEa7ae847C02ed5D95",
+      "name": "Uniswap V2 WETH / NPC",
+      "symbol": "UNI-V2/WETH/NPC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB166E8B140D35D9D8226E40C09f757BAC5A4d87d",
+      "name": "Non-Playable Coin",
+      "symbol": "NPC",
+      "decimals": 18
+    }
   }
 }
