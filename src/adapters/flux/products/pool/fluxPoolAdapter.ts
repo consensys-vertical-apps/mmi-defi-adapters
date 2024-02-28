@@ -26,7 +26,7 @@ import { Comptroller__factory, FToken__factory } from '../../contracts'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { Oracle__factory } from '../../../mendi-finance/contracts'
 
-type FluxAdapterMetadata = Record<
+type FluxPoolAdapterMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
@@ -70,7 +70,7 @@ export class FluxPoolAdapter
     }
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToFile({ fileKey: 'pool' })
   async buildMetadata() {
     // Get all the protocol tokens
     const comptrollerContract = Comptroller__factory.connect(
@@ -85,8 +85,8 @@ export class FluxPoolAdapter
     )
 
     // Get all the underlying tokens for each protocol token and build metadata
-    const fluxAdapterMetaData: FluxAdapterMetadata = {}
-    protocolTokensMetadata.forEach(async (protocolTokenMetadata) => {
+    const fluxPoolAdapterMetaData: FluxPoolAdapterMetadata = {}
+    for (const protocolTokenMetadata of protocolTokensMetadata) {
       const fTokenContract = FToken__factory.connect(
         protocolTokenMetadata.address,
         this.provider,
@@ -97,13 +97,13 @@ export class FluxPoolAdapter
         this.chainId,
         this.provider,
       )
-      fluxAdapterMetaData[protocolTokenMetadata.address] = {
+      fluxPoolAdapterMetaData[protocolTokenMetadata.address] = {
         protocolToken: protocolTokenMetadata,
         underlyingTokens: [underlyingTokenMetadata],
       }
-    })
+    }
 
-    return fluxAdapterMetaData
+    return fluxPoolAdapterMetaData
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {

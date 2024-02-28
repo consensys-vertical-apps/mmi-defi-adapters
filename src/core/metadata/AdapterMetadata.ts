@@ -39,6 +39,7 @@ import ConvexStakingEthereumProtocolToken from '../../adapters/convex/products/s
 import CurvePoolEthereumProtocolToken from '../../adapters/curve/products/pool/metadata/ethereum.protocol-token.json'
 import CurveRewardEthereumProtocolToken from '../../adapters/curve/products/reward/metadata/ethereum.protocol-token.json'
 import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
+import FluxPoolEthereumPool from '../../adapters/flux/products/pool/metadata/ethereum.pool.json'
 import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
@@ -613,6 +614,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-borrow',
     }),
     MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Flux,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'pool',
+    }),
+    FluxPoolEthereumPool,
   ],
 ])
 
