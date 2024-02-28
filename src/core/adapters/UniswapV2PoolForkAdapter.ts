@@ -247,8 +247,8 @@ export abstract class UniswapV2PoolForkAdapter
     })
 
     const gqlResponse: {
-      data: {
-        pairs?: [
+      data?: {
+        pairs: [
           {
             id: string
             token0: {
@@ -263,7 +263,7 @@ export abstract class UniswapV2PoolForkAdapter
     } = await response.json()
 
     return (
-      gqlResponse.data.pairs?.map((pair) => {
+      gqlResponse.data?.pairs.map((pair) => {
         return {
           pairAddress: pair.id,
           token0Address: pair.token0.id,
