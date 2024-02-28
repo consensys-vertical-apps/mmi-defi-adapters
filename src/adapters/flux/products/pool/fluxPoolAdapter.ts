@@ -50,9 +50,6 @@ export class FluxPoolAdapter
   static readonly comptrollerAddress = getAddress(
     '0x95Af143a021DF745bc78e845b54591C53a8B3A51',
   )
-  static readonly lensAddress = getAddress(
-    '0xcA83471CE9B0E7E6f628FA2A95Ae97198780acf8',
-  )
 
   getProtocolDetails(): ProtocolDetails {
     return {
