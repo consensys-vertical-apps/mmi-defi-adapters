@@ -225,7 +225,9 @@ export function newAdapterCommand(
         const initialAnswers: Partial<NewAdapterAnswers> = skipQuestions
           ? {
               protocolKey: inputProtocolKey ?? pascalCase(protocol),
-              protocolId: inputProtocolId ?? kebabCase(protocol),
+              protocolId:
+                inputProtocolId ??
+                (isKebabCase(protocol) ? protocol : kebabCase(protocol)),
               chainKeys: chainKeys.length ? chainKeys : ['Ethereum'],
               productId: kebabCase(product),
               templateBuilder: Templates[template],
