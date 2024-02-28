@@ -1,7 +1,7 @@
 import {
-  Pair__factory,
-  Factory__factory,
-} from '../../adapters/uniswap-v2/contracts'
+  UniswapV2Factory__factory,
+  UniswapV2Pair__factory,
+} from '../../contracts'
 import {
   TokenBalance,
   Underlying,
@@ -65,13 +65,13 @@ export abstract class UniswapV2PoolForkAdapter
         ? await this.graphQlPoolExtraction(factoryMetadata.subgraphUrl)
         : await this.factoryPoolExtraction(factoryMetadata.factoryAddress)
 
-    const factoryContract = Factory__factory.connect(
+    const factoryContract = UniswapV2Factory__factory.connect(
       factoryMetadata.factoryAddress,
       this.provider,
     )
 
     const firstPairAddress = await factoryContract.allPairs(0)
-    const firstPairContract = Pair__factory.connect(
+    const firstPairContract = UniswapV2Pair__factory.connect(
       firstPairAddress,
       this.provider,
     )
@@ -165,7 +165,7 @@ export abstract class UniswapV2PoolForkAdapter
       protocolTokenMetadata.address,
     )
 
-    const pairContract = Pair__factory.connect(
+    const pairContract = UniswapV2Pair__factory.connect(
       protocolTokenMetadata.address,
       this.provider,
     )
@@ -278,7 +278,7 @@ export abstract class UniswapV2PoolForkAdapter
       token1Address: string
     }[]
   > {
-    const factoryContract = Factory__factory.connect(
+    const factoryContract = UniswapV2Factory__factory.connect(
       factoryAddress,
       this.provider,
     )
@@ -289,7 +289,10 @@ export abstract class UniswapV2PoolForkAdapter
       [...Array(Math.min(allPairsLength, this.MAX_FACTORY_PAIRS)).keys()],
       async (_, index) => {
         const pairAddress = await factoryContract.allPairs(index)
-        const pairContract = Pair__factory.connect(pairAddress, this.provider)
+        const pairContract = UniswapV2Pair__factory.connect(
+          pairAddress,
+          this.provider,
+        )
         const [token0, token1, totalSupply] = await Promise.all([
           pairContract.token0(),
           pairContract.token1(),
