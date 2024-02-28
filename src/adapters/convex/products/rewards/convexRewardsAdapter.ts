@@ -38,6 +38,7 @@ import { GetCVXMintAmount } from '../../common/cvxRewardFormula'
 import { ConvexFactory__factory, CvxMint__factory } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
 import { ConvexRewardsFactory__factory } from '../../contracts/factories/ConvexRewardsFactory__factory'
+import { convexFactoryAddresses } from '../staking/convexStakingAdapter'
 
 type ConvexExtraRewardAdapterMetadata = Record<
   string,
@@ -88,12 +89,10 @@ export class ConvexRewardsAdapter
       this.provider,
     )
 
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
-    const [protocolRewardToken] = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+    const [protocolRewardToken] =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
 
     const filter =
       mainRewardTrackerContract.filters['RewardPaid(address,uint256)'](
@@ -228,7 +227,9 @@ export class ConvexRewardsAdapter
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
     const convexFactory = ConvexFactory__factory.connect(
-      '0xF403C135812408BFbE8713b5A23a04b3D48AAE31',
+      convexFactoryAddresses[
+        this.chainId as keyof typeof convexFactoryAddresses
+      ],
       this.provider,
     )
 
@@ -269,9 +270,8 @@ export class ConvexRewardsAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingToken } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return [underlyingToken] // underlyingTokens
   }

@@ -2,11 +2,13 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { ConvexFactory } from "./ConvexFactory";
+export type { ConvexFactoryV2 } from "./ConvexFactoryV2";
 export type { ConvexRewardTracker } from "./ConvexRewardTracker";
 export type { ConvexRewardsFactory } from "./ConvexRewardsFactory";
 export type { CvxMint } from "./CvxMint";
 export type { CvxcrvWrapper } from "./CvxcrvWrapper";
 export * as factories from "./factories";
+export { ConvexFactoryV2__factory } from "./factories/ConvexFactoryV2__factory";
 export { ConvexFactory__factory } from "./factories/ConvexFactory__factory";
 export { ConvexRewardTracker__factory } from "./factories/ConvexRewardTracker__factory";
 export { ConvexRewardsFactory__factory } from "./factories/ConvexRewardsFactory__factory";

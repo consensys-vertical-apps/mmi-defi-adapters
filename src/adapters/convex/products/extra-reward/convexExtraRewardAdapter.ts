@@ -41,6 +41,7 @@ import {
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardTracker'
 import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
+import { convexFactoryAddresses } from '../staking/convexStakingAdapter'
 
 type RewardToken = { claimableTrackerAddress: string } & Erc20Metadata
 
@@ -153,12 +154,10 @@ export class ConvexExtraRewardAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
-    const protocolRewardTokens = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+    const protocolRewardTokens =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
     const responsePromises = protocolRewardTokens.map(
       async (extraRewardToken) => {
         const extraRewardTracker = ConvexRewardTracker__factory.connect(
@@ -212,7 +211,9 @@ export class ConvexExtraRewardAdapter
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
     const convexFactory = ConvexFactory__factory.connect(
-      '0xF403C135812408BFbE8713b5A23a04b3D48AAE31',
+      convexFactoryAddresses[
+        this.chainId as keyof typeof convexFactoryAddresses
+      ],
       this.provider,
     )
 
@@ -321,9 +322,8 @@ export class ConvexExtraRewardAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<RewardToken[]> {
-    const { underlyingTokens } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingTokens } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return underlyingTokens
   }

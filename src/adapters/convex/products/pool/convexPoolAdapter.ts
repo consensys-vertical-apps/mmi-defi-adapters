@@ -25,8 +25,12 @@ import {
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { ConvexFactory__factory } from '../../contracts'
+import {
+  ConvexFactoryV2__factory,
+  ConvexFactory__factory,
+} from '../../contracts'
 import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
+import { convexFactoryAddresses } from '../staking/convexStakingAdapter'
 
 type ConvexStakingAdapterMetadata = Record<
   string,
@@ -62,8 +66,16 @@ export class ConvexPoolAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    const convexFactory = ConvexFactory__factory.connect(
-      '0xF403C135812408BFbE8713b5A23a04b3D48AAE31',
+    // const convexFactory = ConvexFactory__factory.connect(
+    //   convexFactoryAddresses[
+    //     this.chainId as keyof typeof convexFactoryAddresses
+    //   ],
+    //   this.provider,
+    // )
+    const convexFactory = ConvexFactoryV2__factory.connect(
+      convexFactoryAddresses[
+        this.chainId as keyof typeof convexFactoryAddresses
+      ],
       this.provider,
     )
 
@@ -162,9 +174,8 @@ export class ConvexPoolAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken: underlyingTokens } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingToken: underlyingTokens } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return [underlyingTokens]
   }

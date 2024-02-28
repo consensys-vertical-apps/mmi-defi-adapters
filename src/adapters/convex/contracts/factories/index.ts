@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export { ConvexFactory__factory } from "./ConvexFactory__factory";
+export { ConvexFactoryV2__factory } from "./ConvexFactoryV2__factory";
 export { ConvexRewardTracker__factory } from "./ConvexRewardTracker__factory";
 export { ConvexRewardsFactory__factory } from "./ConvexRewardsFactory__factory";
 export { CvxMint__factory } from "./CvxMint__factory";
