@@ -26,6 +26,7 @@ import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
+import { testCases as sushiswapV2TestCases } from './sushiswap-v2/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
@@ -66,7 +67,7 @@ function runAllTests() {
   runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
   runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
   runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
-  runProtocolTests(Protocol.Flux, fluxTestCases)
+  runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
   runProtocolTests(Protocol.Flux, fluxTestCases)
 }
 

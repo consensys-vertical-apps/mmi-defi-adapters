@@ -1,0 +1,74 @@
+{
+  "blockNumber": 19326319,
+  "snapshot": [
+    {
+      "protocolId": "sushiswap-v2",
+      "name": "SushiswapV2",
+      "description": "SushiswapV2 pool adapter",
+      "siteUrl": "https://www.sushi.com/pool",
+      "iconUrl": "https://cryptologos.cc/logos/sushiswap-sushi-logo.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+          "name": "SushiSwap LP Token USDC / WETH",
+          "symbol": "SLP/USDC/WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 1102.0192981122073,
+          "performance": 0.07543387817399563,
+          "calculationData": {
+            "withdrawals": 31149.51894784742,
+            "deposits": 31150.92964322033,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 14607.665820225184,
+            "endPositionValue": 15711.0958137103
+          }
+        },
+        {
+          "address": "0x795065dCc9f64b5614C407a6EFDC400DA6221FB0",
+          "name": "SushiSwap LP Token SUSHI / WETH",
+          "symbol": "SLP/SUSHI/WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -36.414400484507325,
+          "performance": -0.08552968317498287,
+          "calculationData": {
+            "withdrawals": 231632.06401915965,
+            "deposits": 231734.61459629564,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 323.20103485126293,
+            "endPositionValue": 389.3372115027565
+          }
+        },
+        {
+          "address": "0x06da0fd433C1A5d7a4faa01111c044910A184553",
+          "name": "SushiSwap LP Token WETH / USDT",
+          "symbol": "SLP/WETH/USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 1568.5560921073957,
+          "performance": 0.07400075410738521,
+          "calculationData": {
+            "withdrawals": 397124.7411147566,
+            "deposits": 397136.35230133246,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 21184.87675503628,
+            "endPositionValue": 22765.044033719547
+          }
+        }
+      ],
+      "fromBlock": 19276297,
+      "toBlock": 19326319
+    }
+  ]
+}
