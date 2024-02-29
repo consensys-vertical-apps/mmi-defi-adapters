@@ -121,12 +121,15 @@ export class XfaiDexAdapter
     )
   }
 
-  protected async getUnderlyingTokenBalances(_input: {
+  protected async getUnderlyingTokenBalances({
+    protocolTokenBalance,
+    blockNumber,
+  }: {
     userAddress: string
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const poolAddress = _input.protocolTokenBalance.address
+    const poolAddress = protocolTokenBalance.address
     const poolContract = XfaiPool__factory.connect(poolAddress, this.provider)
     const poolMeta = await this.fetchPoolMetadata(poolAddress)
 
@@ -136,10 +139,10 @@ export class XfaiDexAdapter
 
     const [totalSupply, [tokenAmount, ethAmount]] = await Promise.all([
       poolContract.totalSupply({
-        blockTag: _input.blockNumber,
+        blockTag: blockNumber,
       }),
       poolContract.getStates({
-        blockTag: _input.blockNumber,
+        blockTag: blockNumber,
       }),
     ])
 
@@ -148,7 +151,7 @@ export class XfaiDexAdapter
         type: TokenType.Underlying,
         ...nonEthToken,
         balanceRaw:
-          (_input.protocolTokenBalance.balanceRaw * tokenAmount) / totalSupply,
+          (protocolTokenBalance.balanceRaw * tokenAmount) / totalSupply,
       },
       {
         type: TokenType.Underlying,
@@ -156,16 +159,14 @@ export class XfaiDexAdapter
         name: 'Ethereum',
         symbol: 'ETH',
         decimals: 18,
-        balanceRaw:
-          (_input.protocolTokenBalance.balanceRaw * ethAmount) / totalSupply,
+        balanceRaw: (protocolTokenBalance.balanceRaw * ethAmount) / totalSupply,
       },
     ]
   }
 
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    const blockNumber = _input.blockNumber
+  async getTotalValueLocked({
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     const lps = await this.buildMetadata()!
 
     return Promise.all(
@@ -211,7 +212,7 @@ export class XfaiDexAdapter
           type: 'protocol',
           ...protocolToken,
           tokens: await underlyingTokenBalances,
-          totalSupplyRaw: await contract.totalSupply(),
+          totalSupplyRaw: await contract.totalSupply({ blockTag: blockNumber }),
         } as ProtocolTokenTvl
       }),
     )
@@ -226,10 +227,10 @@ export class XfaiDexAdapter
   }
 
   protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
+    protocolTokenMetadata: Erc20Metadata,
+    blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
-    const poolAddress = _protocolTokenMetadata.address
+    const poolAddress = protocolTokenMetadata.address
     const poolContract = XfaiPool__factory.connect(poolAddress, this.provider)
     const poolMeta = await this.fetchPoolMetadata(poolAddress)
 
@@ -239,15 +240,15 @@ export class XfaiDexAdapter
 
     const [totalSupply, [tokenAmount, ethAmount]] = await Promise.all([
       poolContract.totalSupply({
-        blockTag: _blockNumber,
+        blockTag: blockNumber,
       }),
       poolContract.getStates({
-        blockTag: _blockNumber,
+        blockTag: blockNumber,
       }),
     ])
 
     const oneLpUnit =
-      BigInt(1 * 10 ** _protocolTokenMetadata.decimals) / totalSupply
+      BigInt(1 * 10 ** protocolTokenMetadata.decimals) / totalSupply
 
     return [
       {
