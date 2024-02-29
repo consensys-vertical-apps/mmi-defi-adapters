@@ -1,8 +1,10 @@
-export function simplePoolAdapterTemplate(
-  protocolKey: string,
-  adapterClassName: string,
-  productId: string,
-) {
+import { NewAdapterAnswers } from '../newAdapterCommand'
+
+export function simplePoolAdapterTemplate({
+  protocolKey,
+  adapterClassName,
+  productId,
+}: NewAdapterAnswers) {
   return `import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
   import {
     IMetadataBuilder,

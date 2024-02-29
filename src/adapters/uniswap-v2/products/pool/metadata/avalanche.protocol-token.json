@@ -78,5 +78,25 @@
       "symbol": "CLY",
       "decimals": 18
     }
+  },
+  "0xAdEF2138f9DBaF56EDa9832a26428285a96862Ca": {
+    "protocolToken": {
+      "address": "0xAdEF2138f9DBaF56EDa9832a26428285a96862Ca",
+      "name": "Uniswap V2 DZHV / WAVAX",
+      "symbol": "UNI-V2/DZHV/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3419875B4D3Bca7F3FddA2dB7a476A79fD31B4fE",
+      "name": "DizzyHavoc",
+      "symbol": "DZHV",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
   }
 }

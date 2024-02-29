@@ -23,7 +23,7 @@ import type {
   TypedContractMethod,
 } from "./common";
 
-export interface FactoryInterface extends Interface {
+export interface UniswapV2FactoryInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "allPairs"
@@ -112,11 +112,11 @@ export namespace PairCreatedEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export interface Factory extends BaseContract {
-  connect(runner?: ContractRunner | null): Factory;
+export interface UniswapV2Factory extends BaseContract {
+  connect(runner?: ContractRunner | null): UniswapV2Factory;
   waitForDeployment(): Promise<this>;
 
-  interface: FactoryInterface;
+  interface: UniswapV2FactoryInterface;
 
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,

@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Pair, PairInterface } from "../Pair";
+import type { UniswapV2Pair, UniswapV2PairInterface } from "../UniswapV2Pair";
 
 const _abi = [
   {
@@ -719,12 +719,15 @@ const _abi = [
   },
 ] as const;
 
-export class Pair__factory {
+export class UniswapV2Pair__factory {
   static readonly abi = _abi;
-  static createInterface(): PairInterface {
-    return new Interface(_abi) as PairInterface;
+  static createInterface(): UniswapV2PairInterface {
+    return new Interface(_abi) as UniswapV2PairInterface;
   }
-  static connect(address: string, runner?: ContractRunner | null): Pair {
-    return new Contract(address, _abi, runner) as unknown as Pair;
+  static connect(
+    address: string,
+    runner?: ContractRunner | null
+  ): UniswapV2Pair {
+    return new Contract(address, _abi, runner) as unknown as UniswapV2Pair;
   }
 }
