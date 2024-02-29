@@ -991,1558 +991,6 @@
       }
     ]
   },
-  "0xd662908ADA2Ea1916B3318327A97eB18aD588b5d": {
-    "protocolToken": {
-      "address": "0xd662908ADA2Ea1916B3318327A97eB18aD588b5d",
-      "name": "Curve.fi aDAI/aUSDC/aUSDT",
-      "symbol": "a3CRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xFd2a8fA60Abd58Efe3EeE34dd494cD491dC14900",
-        "name": "Curve.fi aDAI/aUSDC/aUSDT",
-        "symbol": "a3CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6d10ed2cF043E6fcf51A0e7b4C2Af3Fa06695707": {
-    "protocolToken": {
-      "address": "0x6d10ed2cF043E6fcf51A0e7b4C2Af3Fa06695707",
-      "name": "Curve.fi ETH/aETH",
-      "symbol": "ankrCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xaA17A236F2bAdc98DDc0Cf999AbB47D47Fc0A6Cf",
-        "name": "Curve.fi ETH/aETH",
-        "symbol": "ankrCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x90Bb609649E0451E5aD952683D64BD2d1f245840": {
-    "protocolToken": {
-      "address": "0x90Bb609649E0451E5aD952683D64BD2d1f245840",
-      "name": "Curve.fi EURS/sEUR",
-      "symbol": "eursCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x194eBd173F6cDacE046C53eACcE9B953F28411d1",
-        "name": "Curve.fi EURS/sEUR",
-        "symbol": "eursCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4c18E409Dc8619bFb6a1cB56D114C3f592E0aE79": {
-    "protocolToken": {
-      "address": "0x4c18E409Dc8619bFb6a1cB56D114C3f592E0aE79",
-      "name": "Curve.fi hBTC/wBTC",
-      "symbol": "hCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xb19059ebb43466C323583928285a49f558E572Fd",
-        "name": "Curve.fi hBTC/wBTC",
-        "symbol": "hCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xF5194c3325202F456c95c1Cf0cA36f8475C1949F": {
-    "protocolToken": {
-      "address": "0xF5194c3325202F456c95c1Cf0cA36f8475C1949F",
-      "name": "Curve.fi cyDAI/cyUSDC/cyUSDT",
-      "symbol": "ib3CRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5282a4eF67D9C33135340fB3289cc1711c13638C",
-        "name": "Curve.fi cyDAI/cyUSDC/cyUSDT",
-        "symbol": "ib3CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xFD4D8a17df4C27c1dD245d153ccf4499e806C87D": {
-    "protocolToken": {
-      "address": "0xFD4D8a17df4C27c1dD245d153ccf4499e806C87D",
-      "name": "Curve.fi LINK/sLINK",
-      "symbol": "linkCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xcee60cFa923170e4f8204AE08B4fA6A3F5656F3a",
-        "name": "Curve.fi LINK/sLINK",
-        "symbol": "linkCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x462253b8F74B72304c145DB0e4Eebd326B22ca39": {
-    "protocolToken": {
-      "address": "0x462253b8F74B72304c145DB0e4Eebd326B22ca39",
-      "name": "Curve.fi aDAI/aSUSD",
-      "symbol": "saCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x02d341CcB60fAaf662bC0554d13778015d1b285C",
-        "name": "Curve.fi aDAI/aSUSD",
-        "symbol": "saCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x3C0FFFF15EA30C35d7A85B85c0782D6c94e1d238": {
-    "protocolToken": {
-      "address": "0x3C0FFFF15EA30C35d7A85B85c0782D6c94e1d238",
-      "name": "Curve.fi ETH/sETH",
-      "symbol": "eCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xA3D87FffcE63B53E0d54fAa1cc983B7eB0b74A9c",
-        "name": "Curve.fi ETH/sETH",
-        "symbol": "eCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x182B723a58739a9c974cFDB385ceaDb237453c28": {
-    "protocolToken": {
-      "address": "0x182B723a58739a9c974cFDB385ceaDb237453c28",
-      "name": "Curve.fi ETH/stETH",
-      "symbol": "steCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x06325440D014e39736583c165C2963BA99fAf14E",
-        "name": "Curve.fi ETH/stETH",
-        "symbol": "steCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xBC89cd85491d81C6AD2954E6d0362Ee29fCa8F53": {
-    "protocolToken": {
-      "address": "0xBC89cd85491d81C6AD2954E6d0362Ee29fCa8F53",
-      "name": "Curve.fi cDAI/cUSDC/USDT",
-      "symbol": "cDAI+cUSDC+USDT",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9fC689CCaDa600B6DF723D9E47D84d76664a1F23",
-        "name": "Curve.fi cDAI/cUSDC/USDT",
-        "symbol": "cDAI+cUSDC+USDT",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xAEA6c312f4b3E04D752946d329693F7293bC2e6D": {
-    "protocolToken": {
-      "address": "0xAEA6c312f4b3E04D752946d329693F7293bC2e6D",
-      "name": "Curve.fi DUSD/3Crv",
-      "symbol": "dusd3CRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3a664Ab939FD8482048609f652f9a0B0677337B9",
-        "name": "Curve.fi DUSD/3Crv",
-        "symbol": "dusd3CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xC5cfaDA84E902aD92DD40194f0883ad49639b023": {
-    "protocolToken": {
-      "address": "0xC5cfaDA84E902aD92DD40194f0883ad49639b023",
-      "name": "Curve.fi GUSD/3Crv",
-      "symbol": "gusd3CRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xD2967f45c4f384DEEa880F807Be904762a3DeA07",
-        "name": "Curve.fi GUSD/3Crv",
-        "symbol": "gusd3CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x5f626c30EC1215f4EdCc9982265E8b1F411D1352": {
-    "protocolToken": {
-      "address": "0x5f626c30EC1215f4EdCc9982265E8b1F411D1352",
-      "name": "Curve.fi MUSD/3Crv",
-      "symbol": "musd3CRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x1AEf73d49Dedc4b1778d0706583995958Dc862e6",
-        "name": "Curve.fi MUSD/3Crv",
-        "symbol": "musd3CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xC2b1DF84112619D190193E48148000e3990Bf627": {
-    "protocolToken": {
-      "address": "0xC2b1DF84112619D190193E48148000e3990Bf627",
-      "name": "Curve.fi USDK/3Crv",
-      "symbol": "usdk3CRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x97E2768e8E73511cA874545DC5Ff8067eB19B787",
-        "name": "Curve.fi USDK/3Crv",
-        "symbol": "usdk3CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xF98450B5602fa59CC66e1379DFfB6FDDc724CfC4": {
-    "protocolToken": {
-      "address": "0xF98450B5602fa59CC66e1379DFfB6FDDc724CfC4",
-      "name": "Curve.fi USDN/3Crv",
-      "symbol": "usdn3CRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4f3E8F405CF5aFC05D68142F3783bDfE13811522",
-        "name": "Curve.fi USDN/3Crv",
-        "symbol": "usdn3CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x055be5DDB7A925BfEF3417FC157f53CA77cA7222": {
-    "protocolToken": {
-      "address": "0x055be5DDB7A925BfEF3417FC157f53CA77cA7222",
-      "name": "Curve.fi USDP/3Crv",
-      "symbol": "usdp3CRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7Eb40E450b9655f4B3cC4259BCC731c63ff55ae6",
-        "name": "Curve.fi USDP/3Crv",
-        "symbol": "usdp3CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xdFc7AdFa664b08767b735dE28f9E84cd30492aeE": {
-    "protocolToken": {
-      "address": "0xdFc7AdFa664b08767b735dE28f9E84cd30492aeE",
-      "name": "Curve.fi bBTC/sbtcCRV",
-      "symbol": "bBTC/sbtcCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x410e3E86ef427e30B9235497143881f717d93c2A",
-        "name": "Curve.fi bBTC/sbtcCRV",
-        "symbol": "bBTC/sbtcCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x11137B10C210b579405c21A07489e28F3c040AB1": {
-    "protocolToken": {
-      "address": "0x11137B10C210b579405c21A07489e28F3c040AB1",
-      "name": "Curve.fi oBTC/sbtcCRV",
-      "symbol": "oBTC/sbtcCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2fE94ea3d5d4a175184081439753DE15AeF9d614",
-        "name": "Curve.fi oBTC/sbtcCRV",
-        "symbol": "oBTC/sbtcCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xd7d147c6Bb90A718c3De8C0568F9B560C79fa416": {
-    "protocolToken": {
-      "address": "0xd7d147c6Bb90A718c3De8C0568F9B560C79fa416",
-      "name": "Curve.fi pBTC/sbtcCRV",
-      "symbol": "pBTC/sbtcCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xDE5331AC4B3630f94853Ff322B66407e0D6331E8",
-        "name": "Curve.fi pBTC/sbtcCRV",
-        "symbol": "pBTC/sbtcCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6828bcF74279eE32f2723eC536c22c51Eed383C6": {
-    "protocolToken": {
-      "address": "0x6828bcF74279eE32f2723eC536c22c51Eed383C6",
-      "name": "Curve.fi tBTC/sbtcCrv",
-      "symbol": "tbtc/sbtcCrv",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x64eda51d3Ad40D56b9dFc5554E06F94e1Dd786Fd",
-        "name": "Curve.fi tBTC/sbtcCrv",
-        "symbol": "tbtc/sbtcCrv",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x359FD5d6417aE3D8D6497d9B2e7A890798262BA4": {
-    "protocolToken": {
-      "address": "0x359FD5d6417aE3D8D6497d9B2e7A890798262BA4",
-      "name": "Curve.fi Factory USD Metapool: TrueUSD",
-      "symbol": "TUSD3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xEcd5e75AFb02eFa118AF914515D6521aaBd189F1",
-        "name": "Curve.fi Factory USD Metapool: TrueUSD",
-        "symbol": "TUSD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x72E158d38dbd50A483501c24f792bDAAA3e7D55C": {
-    "protocolToken": {
-      "address": "0x72E158d38dbd50A483501c24f792bDAAA3e7D55C",
-      "name": "Curve.fi Factory USD Metapool: Frax",
-      "symbol": "FRAX3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xd632f22692FaC7611d2AA1C0D552930D43CAEd3B",
-        "name": "Curve.fi Factory USD Metapool: Frax",
-        "symbol": "FRAX3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xd4B22fEdcA85E684919955061fDf353b9d38389b": {
-    "protocolToken": {
-      "address": "0xd4B22fEdcA85E684919955061fDf353b9d38389b",
-      "name": "Curve.fi Factory USD Metapool: Binance USD",
-      "symbol": "BUSD3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4807862AA8b2bF68830e4C8dc86D0e9A998e085a",
-        "name": "Curve.fi Factory USD Metapool: Binance USD",
-        "symbol": "BUSD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x824F13f1a2F29cFEEa81154b46C0fc820677A637": {
-    "protocolToken": {
-      "address": "0x824F13f1a2F29cFEEa81154b46C0fc820677A637",
-      "name": "Curve.fi ETH/rETH",
-      "symbol": "rCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x53a901d48795C58f485cBB38df08FA96a24669D5",
-        "name": "Curve.fi ETH/rETH",
-        "symbol": "rCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x9582C4ADACB3BCE56Fea3e590F05c3ca2fb9C477": {
-    "protocolToken": {
-      "address": "0x9582C4ADACB3BCE56Fea3e590F05c3ca2fb9C477",
-      "name": "Curve.fi Factory USD Metapool: Alchemix USD",
-      "symbol": "alUSD3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x43b4FdFD4Ff969587185cDB6f0BD875c5Fc83f8c",
-        "name": "Curve.fi Factory USD Metapool: Alchemix USD",
-        "symbol": "alUSD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6955a55416a06839309018A8B0cB72c4DDC11f15": {
-    "protocolToken": {
-      "address": "0x6955a55416a06839309018A8B0cB72c4DDC11f15",
-      "name": "Curve.fi USD-BTC-ETH",
-      "symbol": "crvTricrypto",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xcA3d75aC011BF5aD07a98d02f18225F9bD9A6BDF",
-        "name": "Curve.fi USD-BTC-ETH",
-        "symbol": "crvTricrypto",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x66ec719045bBD62db5eBB11184c18237D3Cc2E62": {
-    "protocolToken": {
-      "address": "0x66ec719045bBD62db5eBB11184c18237D3Cc2E62",
-      "name": "RAI3CRV",
-      "symbol": "RAI3CRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x6BA5b4e438FA0aAf7C1bD179285aF65d13bD3D90",
-        "name": "RAI3CRV",
-        "symbol": "RAI3CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xd8b712d29381748dB89c36BCa0138d7c75866ddF": {
-    "protocolToken": {
-      "address": "0xd8b712d29381748dB89c36BCa0138d7c75866ddF",
-      "name": "Curve.fi Factory USD Metapool: Magic Internet Money 3Pool",
-      "symbol": "MIM-3LP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5a6A4D54456819380173272A5E8E9B9904BdF41B",
-        "name": "Curve.fi Factory USD Metapool: Magic Internet Money 3Pool",
-        "symbol": "MIM-3LP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x2932a86df44Fe8D2A706d8e9c5d51c24883423F5": {
-    "protocolToken": {
-      "address": "0x2932a86df44Fe8D2A706d8e9c5d51c24883423F5",
-      "name": "Curve.fi ETH/frxETH",
-      "symbol": "frxETHCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf43211935C781D5ca1a41d2041F397B8A7366C7A",
-        "name": "Curve.fi ETH/frxETH",
-        "symbol": "frxETHCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6D787113F23bED1D5e1530402B3f364D0A6e5Af3": {
-    "protocolToken": {
-      "address": "0x6D787113F23bED1D5e1530402B3f364D0A6e5Af3",
-      "name": "Curve.fi wBTC/sBTC",
-      "symbol": "crvWSBTC",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x051d7e5609917Bd9b73f04BAc0DED8Dd46a74301",
-        "name": "Curve.fi wBTC/sBTC",
-        "symbol": "crvWSBTC",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x50161102a240b1456d770Dbb55c76d8dc2D160Aa": {
-    "protocolToken": {
-      "address": "0x50161102a240b1456d770Dbb55c76d8dc2D160Aa",
-      "name": "Curve.fi ETH/wBETH",
-      "symbol": "ETHwBETHCRV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6",
-        "name": "Curve.fi ETH/wBETH",
-        "symbol": "ETHwBETHCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x1750a3a3d80A3F5333BBe9c4695B0fAd41061ab1": {
-    "protocolToken": {
-      "address": "0x1750a3a3d80A3F5333BBe9c4695B0fAd41061ab1",
-      "name": "Curve.fi Factory Plain Pool: ibKRW/sKRW",
-      "symbol": "ibKRW+sKRW-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x8461A004b50d321CB22B7d034969cE6803911899",
-        "name": "Curve.fi Factory Plain Pool: ibKRW/sKRW",
-        "symbol": "ibKRW+sKRW-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x99fb76F75501039089AAC8f20f487bf84E51d76F": {
-    "protocolToken": {
-      "address": "0x99fb76F75501039089AAC8f20f487bf84E51d76F",
-      "name": "Curve.fi Factory Plain Pool: ibEUR/sEUR",
-      "symbol": "ibEUR+sEUR-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x19b080FE1ffA0553469D20Ca36219F17Fcf03859",
-        "name": "Curve.fi Factory Plain Pool: ibEUR/sEUR",
-        "symbol": "ibEUR+sEUR-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x25f0cE4E2F8dbA112D9b115710AC297F816087CD": {
-    "protocolToken": {
-      "address": "0x25f0cE4E2F8dbA112D9b115710AC297F816087CD",
-      "name": "Curve.fi Factory USD Metapool: Origin Dollar",
-      "symbol": "OUSD3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x87650D7bbfC3A9F10587d7778206671719d9910D",
-        "name": "Curve.fi Factory USD Metapool: Origin Dollar",
-        "symbol": "OUSD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xdC69D4cB5b86388Fff0b51885677e258883534ae": {
-    "protocolToken": {
-      "address": "0xdC69D4cB5b86388Fff0b51885677e258883534ae",
-      "name": "Curve.fi Factory USD Metapool: FEI Metapool",
-      "symbol": "FEI3CRV3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x06cb22615BA53E60D67Bf6C341a0fD5E718E1655",
-        "name": "Curve.fi Factory USD Metapool: FEI Metapool",
-        "symbol": "FEI3CRV3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x903dA6213a5A12B61c821598154EfAd98C3B20E4": {
-    "protocolToken": {
-      "address": "0x903dA6213a5A12B61c821598154EfAd98C3B20E4",
-      "name": "Curve.fi Factory Plain Pool: cvxCRV",
-      "symbol": "cvxcrv-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9D0464996170c6B9e75eED71c68B99dDEDf279e8",
-        "name": "Curve.fi Factory Plain Pool: cvxCRV",
-        "symbol": "cvxcrv-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x9AF13a7B1f1Bbf1A2B05c6fBF23ac23A9E573b4E": {
-    "protocolToken": {
-      "address": "0x9AF13a7B1f1Bbf1A2B05c6fBF23ac23A9E573b4E",
-      "name": "Curve.fi Factory USD Metapool: USDM",
-      "symbol": "USDM3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5B3b5DF2BF2B6543f78e053bD91C4Bdd820929f1",
-        "name": "Curve.fi Factory USD Metapool: USDM",
-        "symbol": "USDM3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8Fa728F393588E8D8dD1ca397E9a710E53fA553a": {
-    "protocolToken": {
-      "address": "0x8Fa728F393588E8D8dD1ca397E9a710E53fA553a",
-      "name": "Curve.fi Factory USD Metapool: DOLA-3pool Curve LP",
-      "symbol": "DOLA3POOL3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xAA5A67c256e27A5d80712c51971408db3370927D",
-        "name": "Curve.fi Factory USD Metapool: DOLA-3pool Curve LP",
-        "symbol": "DOLA3POOL3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xeFF437A56A22D7dD86C1202A308536ED8C7da7c1": {
-    "protocolToken": {
-      "address": "0xeFF437A56A22D7dD86C1202A308536ED8C7da7c1",
-      "name": "Curve.fi Factory Plain Pool: ibJPY/sJPY",
-      "symbol": "ibJPY+sJPY-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x8818a9bb44Fbf33502bE7c15c500d0C783B73067",
-        "name": "Curve.fi Factory Plain Pool: ibJPY/sJPY",
-        "symbol": "ibJPY+sJPY-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x05ca5c01629a8E5845f12ea3A03fF7331932233A": {
-    "protocolToken": {
-      "address": "0x05ca5c01629a8E5845f12ea3A03fF7331932233A",
-      "name": "Curve.fi Factory Plain Pool: ibAUD/sAUD",
-      "symbol": "ibAUD+sAUD-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3F1B0278A9ee595635B61817630cC19DE792f506",
-        "name": "Curve.fi Factory Plain Pool: ibAUD/sAUD",
-        "symbol": "ibAUD+sAUD-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x63d9f3aB7d0c528797A12a0684E50C397E9e79dC": {
-    "protocolToken": {
-      "address": "0x63d9f3aB7d0c528797A12a0684E50C397E9e79dC",
-      "name": "Curve.fi Factory Plain Pool: ibGBP/sGBP",
-      "symbol": "ibGBP+sGBP-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xD6Ac1CB9019137a896343Da59dDE6d097F710538",
-        "name": "Curve.fi Factory Plain Pool: ibGBP/sGBP",
-        "symbol": "ibGBP+sGBP-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x2fA53e8fa5fAdb81f4332C8EcE39Fe62eA2f919E": {
-    "protocolToken": {
-      "address": "0x2fA53e8fa5fAdb81f4332C8EcE39Fe62eA2f919E",
-      "name": "Curve.fi Factory Plain Pool: ibCHF/sCHF",
-      "symbol": "ibCHF+sCHF-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9c2C8910F113181783c249d8F6Aa41b51Cde0f0c",
-        "name": "Curve.fi Factory Plain Pool: ibCHF/sCHF",
-        "symbol": "ibCHF+sCHF-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xb07d00e0eE9b1b2eb9f1B483924155Af7AF0c8Fa": {
-    "protocolToken": {
-      "address": "0xb07d00e0eE9b1b2eb9f1B483924155Af7AF0c8Fa",
-      "name": "Curve.fi Factory USD Metapool: PWRD Metapool",
-      "symbol": "PWRD3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xbcb91E689114B9Cc865AD7871845C95241Df4105",
-        "name": "Curve.fi Factory USD Metapool: PWRD Metapool",
-        "symbol": "PWRD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x1b759A88543931F4Bb983bCA4194306039cb979C": {
-    "protocolToken": {
-      "address": "0x1b759A88543931F4Bb983bCA4194306039cb979C",
-      "name": "Curve.fi Factory Plain Pool: Badger Locked CVX",
-      "symbol": "bveCVX-CVX-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x04c90C198b2eFF55716079bc06d7CCc4aa4d7512",
-        "name": "Curve.fi Factory Plain Pool: Badger Locked CVX",
-        "symbol": "bveCVX-CVX-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xC95bdf13A08A547E4dD9f29B00aB7fF08C5d093d": {
-    "protocolToken": {
-      "address": "0xC95bdf13A08A547E4dD9f29B00aB7fF08C5d093d",
-      "name": "Curve.fi Factory USD Metapool: Paxos Dollar (USDP)",
-      "symbol": "pax-usdp3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xc270b3B858c335B6BA5D5b10e2Da8a09976005ad",
-        "name": "Curve.fi Factory USD Metapool: Paxos Dollar (USDP)",
-        "symbol": "pax-usdp3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x346C7BB1A7a6A30c8e81c14e90FC2f0FBddc54d8": {
-    "protocolToken": {
-      "address": "0x346C7BB1A7a6A30c8e81c14e90FC2f0FBddc54d8",
-      "name": "Curve.fi Factory BTC Metapool: ibBTC",
-      "symbol": "ibbtc/sbtcCRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xFbdCA68601f835b27790D98bbb8eC7f05FDEaA9B",
-        "name": "Curve.fi Factory BTC Metapool: ibBTC",
-        "symbol": "ibbtc/sbtcCRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x1E212e054d74ed136256fc5a5DDdB4867c6E003F": {
-    "protocolToken": {
-      "address": "0x1E212e054d74ed136256fc5a5DDdB4867c6E003F",
-      "name": "Curve.fi Factory Plain Pool: 3EURpool",
-      "symbol": "3EURpool-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xb9446c4Ef5EBE66268dA6700D26f96273DE3d571",
-        "name": "Curve.fi Factory Plain Pool: 3EURpool",
-        "symbol": "3EURpool-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x38039dD47636154273b287F74C432Cac83Da97e2": {
-    "protocolToken": {
-      "address": "0x38039dD47636154273b287F74C432Cac83Da97e2",
-      "name": "Curve.fi Factory Plain Pool: agEUR/ibEUR",
-      "symbol": "ag+ib-EUR-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xB37D6c07482Bc11cd28a1f11f1a6ad7b66Dec933",
-        "name": "Curve.fi Factory Plain Pool: agEUR/ibEUR",
-        "symbol": "ag+ib-EUR-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6F98dA2D5098604239C07875C6B7Fd583BC520b9": {
-    "protocolToken": {
-      "address": "0x6F98dA2D5098604239C07875C6B7Fd583BC520b9",
-      "name": "Curve.fi Factory USD Metapool: Bean",
-      "symbol": "BEAN3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3a70DfA7d2262988064A2D051dd47521E43c9BdD",
-        "name": "Curve.fi Factory USD Metapool: Bean",
-        "symbol": "BEAN3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8aD7e0e6EDc61bC48ca0DD07f9021c249044eD30": {
-    "protocolToken": {
-      "address": "0x8aD7e0e6EDc61bC48ca0DD07f9021c249044eD30",
-      "name": "Curve.fi Factory Plain Pool: rETH/wstETH",
-      "symbol": "rETHwstETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x447Ddd4960d9fdBF6af9a790560d0AF76795CB08",
-        "name": "Curve.fi Factory Plain Pool: rETH/wstETH",
-        "symbol": "rETHwstETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x03fFC218C7A9306D21193565CbDc4378952faA8c": {
-    "protocolToken": {
-      "address": "0x03fFC218C7A9306D21193565CbDc4378952faA8c",
-      "name": "Curve.fi Factory Plain Pool: sdANGLE",
-      "symbol": "sdAGAG-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x48fF31bBbD8Ab553Ebe7cBD84e1eA3dBa8f54957",
-        "name": "Curve.fi Factory Plain Pool: sdANGLE",
-        "symbol": "sdAGAG-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xa5f483571C126B173E33c327e8A293A3492E4566": {
-    "protocolToken": {
-      "address": "0xa5f483571C126B173E33c327e8A293A3492E4566",
-      "name": "Curve.fi Factory Plain Pool: dfxCAD/CADC",
-      "symbol": "dfx2CAD-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9CA41a2DaB3CEE15308998868ca644e2e3be5C59",
-        "name": "Curve.fi Factory Plain Pool: dfxCAD/CADC",
-        "symbol": "dfx2CAD-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x663FC22e92f26C377Ddf3C859b560C4732ee639a": {
-    "protocolToken": {
-      "address": "0x663FC22e92f26C377Ddf3C859b560C4732ee639a",
-      "name": "Curve.fi Factory Plain Pool: sdCRV",
-      "symbol": "sdCRVCRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf7b55C3732aD8b2c2dA7c24f30A69f55c54FB717",
-        "name": "Curve.fi Factory Plain Pool: sdCRV",
-        "symbol": "sdCRVCRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xd5d3efC90fFB38987005FdeA303B68306aA5C624": {
-    "protocolToken": {
-      "address": "0xd5d3efC90fFB38987005FdeA303B68306aA5C624",
-      "name": "Curve.fi Factory USD Metapool: USDD/3CRV",
-      "symbol": "USDD3CRV3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xe6b5CC1B4b47305c58392CE3D359B10282FC36Ea",
-        "name": "Curve.fi Factory USD Metapool: USDD/3CRV",
-        "symbol": "USDD3CRV3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xF668E6D326945d499e5B35E7CD2E82aCFbcFE6f0": {
-    "protocolToken": {
-      "address": "0xF668E6D326945d499e5B35E7CD2E82aCFbcFE6f0",
-      "name": "Curve.fi Factory Plain Pool: stETH concentrated",
-      "symbol": "STETHETH_C-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x828b154032950C8ff7CF8085D841723Db2696056",
-        "name": "Curve.fi Factory Plain Pool: stETH concentrated",
-        "symbol": "STETHETH_C-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xE277Dd681d966e83F68e5bC7FBfeAf5f1341195F": {
-    "protocolToken": {
-      "address": "0xE277Dd681d966e83F68e5bC7FBfeAf5f1341195F",
-      "name": "Curve.fi Factory USD Metapool: home",
-      "symbol": "HOME+3crv3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5c6A6Cf9Ae657A73b98454D17986AF41fC7b44ee",
-        "name": "Curve.fi Factory USD Metapool: home",
-        "symbol": "HOME+3crv3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x389Fc079a15354E9cbcE8258433CC0F85B755A42": {
-    "protocolToken": {
-      "address": "0x389Fc079a15354E9cbcE8258433CC0F85B755A42",
-      "name": "Curve.fi Factory USD Metapool: LUSDFRAXBP",
-      "symbol": "LUSDFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x497CE58F34605B9944E6b15EcafE6b001206fd25",
-        "name": "Curve.fi Factory USD Metapool: LUSDFRAXBP",
-        "symbol": "LUSDFRAXBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xD6e48Cc0597a1Ee12a8BeEB88e22bFDb81777164": {
-    "protocolToken": {
-      "address": "0xD6e48Cc0597a1Ee12a8BeEB88e22bFDb81777164",
-      "name": "Curve.fi Factory USD Metapool: apeUSDFRAXBP",
-      "symbol": "APEUSDBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x04b727C7e246CA70d496ecF52E6b6280f3c8077D",
-        "name": "Curve.fi Factory USD Metapool: apeUSDFRAXBP",
-        "symbol": "APEUSDBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xf865FDd6a5F307F398a94Dc40687995Cfaa77BC9": {
-    "protocolToken": {
-      "address": "0xf865FDd6a5F307F398a94Dc40687995Cfaa77BC9",
-      "name": "Curve.fi Factory USD Metapool: TUSDFRAXBP",
-      "symbol": "TUSDFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x33baeDa08b8afACc4d3d07cf31d49FC1F1f3E893",
-        "name": "Curve.fi Factory USD Metapool: TUSDFRAXBP",
-        "symbol": "TUSDFRAXBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x9f57569EaA61d427dEEebac8D9546A745160391C": {
-    "protocolToken": {
-      "address": "0x9f57569EaA61d427dEEebac8D9546A745160391C",
-      "name": "Curve.fi Factory Plain Pool: Euro Pool",
-      "symbol": "europool-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xe7A3b38c39F97E977723bd1239C3470702568e7B",
-        "name": "Curve.fi Factory Plain Pool: Euro Pool",
-        "symbol": "europool-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x740BA8aa0052E07b925908B380248cb03f3DE5cB": {
-    "protocolToken": {
-      "address": "0x740BA8aa0052E07b925908B380248cb03f3DE5cB",
-      "name": "Curve.fi Factory USD Metapool: alUSDFRAXBP",
-      "symbol": "alUSDFRAXB3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xB30dA2376F63De30b42dC055C93fa474F31330A5",
-        "name": "Curve.fi Factory USD Metapool: alUSDFRAXBP",
-        "symbol": "alUSDFRAXB3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xF9F46eF781b9C7B76e8B505226d5E0e0E7FE2f04": {
-    "protocolToken": {
-      "address": "0xF9F46eF781b9C7B76e8B505226d5E0e0E7FE2f04",
-      "name": "Curve.fi Factory Plain Pool: agEUR/EUROC",
-      "symbol": "agEUREUROC-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xBa3436Fd341F2C8A928452Db3C5A3670d1d5Cc73",
-        "name": "Curve.fi Factory Plain Pool: agEUR/EUROC",
-        "symbol": "agEUREUROC-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xB3783f527B7704DeeD4993f7c1c779E426A04368": {
-    "protocolToken": {
-      "address": "0xB3783f527B7704DeeD4993f7c1c779E426A04368",
-      "name": "Curve.fi Factory USD Metapool: MAI+FRAXBP",
-      "symbol": "MAIPool3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x66E335622ad7a6C9c72c98dbfCCE684996a20Ef9",
-        "name": "Curve.fi Factory USD Metapool: MAI+FRAXBP",
-        "symbol": "MAIPool3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xBE266d68Ce3dDFAb366Bb866F4353B6FC42BA43c": {
-    "protocolToken": {
-      "address": "0xBE266d68Ce3dDFAb366Bb866F4353B6FC42BA43c",
-      "name": "Curve.fi Factory USD Metapool: DOLA/FRAXBP",
-      "symbol": "DOLAFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xE57180685E3348589E9521aa53Af0BCD497E884d",
-        "name": "Curve.fi Factory USD Metapool: DOLA/FRAXBP",
-        "symbol": "DOLAFRAXBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x5980d25B4947594c26255C0BF301193ab64ba803": {
-    "protocolToken": {
-      "address": "0x5980d25B4947594c26255C0BF301193ab64ba803",
-      "name": "Curve.fi Factory Plain Pool: yCRV",
-      "symbol": "yCRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x453D92C7d4263201C69aACfaf589Ed14202d83a4",
-        "name": "Curve.fi Factory Plain Pool: yCRV",
-        "symbol": "yCRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x7970489a543FB237ABab63d62524d8A5CE165B86": {
-    "protocolToken": {
-      "address": "0x7970489a543FB237ABab63d62524d8A5CE165B86",
-      "name": "Curve.fi Factory Plain Pool: Clever clevCVX/CVX",
-      "symbol": "clevCVX-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xF9078Fb962A7D13F55d40d49C8AA6472aBD1A5a6",
-        "name": "Curve.fi Factory Plain Pool: Clever clevCVX/CVX",
-        "symbol": "clevCVX-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xa8Ea11465A1375BF42463C3B613dFC54248b9C7B": {
-    "protocolToken": {
-      "address": "0xa8Ea11465A1375BF42463C3B613dFC54248b9C7B",
-      "name": "Curve.fi Factory USD Metapool: XAI/FRAXBP",
-      "symbol": "XAIFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x326290A1B0004eeE78fa6ED4F1d8f4b2523ab669",
-        "name": "Curve.fi Factory USD Metapool: XAI/FRAXBP",
-        "symbol": "XAIFRAXBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xb87Ec044152C49E52F7c429B2B9DBAcb7Ea8FB15": {
-    "protocolToken": {
-      "address": "0xb87Ec044152C49E52F7c429B2B9DBAcb7Ea8FB15",
-      "name": "Curve.fi Factory Plain Pool: agEUR/EURe",
-      "symbol": "agEUREURe-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x413928a25D6ea1A26F2625d633207755f67Bf97c",
-        "name": "Curve.fi Factory Plain Pool: agEUR/EURe",
-        "symbol": "agEUREURe-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xA6f106d5AcFc6f7AC5d4aB84c3D7A8DaE658345F": {
-    "protocolToken": {
-      "address": "0xA6f106d5AcFc6f7AC5d4aB84c3D7A8DaE658345F",
-      "name": "Curve.fi Factory USD Metapool: clevUSDFRAXBP",
-      "symbol": "clevUSD3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x84C333e94AEA4a51a21F6cf0C7F528C50Dc7592C",
-        "name": "Curve.fi Factory USD Metapool: clevUSDFRAXBP",
-        "symbol": "clevUSD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6a69FfD1353Fa129f7F9932BB68Fa7bE88F3888A": {
-    "protocolToken": {
-      "address": "0x6a69FfD1353Fa129f7F9932BB68Fa7bE88F3888A",
-      "name": "Curve.fi Factory Plain Pool: sdYFI",
-      "symbol": "sdYFIYFI-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x79E281BC69A03DaBCcD66858c65EF6724e50aebe",
-        "name": "Curve.fi Factory Plain Pool: sdYFI",
-        "symbol": "sdYFIYFI-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xD90a01c487564Ba6CEF5c3870C1251afF0c49E53": {
-    "protocolToken": {
-      "address": "0xD90a01c487564Ba6CEF5c3870C1251afF0c49E53",
-      "name": "Curve.fi Factory Plain Pool: stLINK/LINK",
-      "symbol": "stLINK-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x1c899dED01954d0959E034b62a728e7fEbE593b0",
-        "name": "Curve.fi Factory Plain Pool: stLINK/LINK",
-        "symbol": "stLINK-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6Aba93E10147f86744bb9A50238d25F49eD4F342": {
-    "protocolToken": {
-      "address": "0x6Aba93E10147f86744bb9A50238d25F49eD4F342",
-      "name": "Curve.fi Factory Plain Pool: pitchFXS/FXS",
-      "symbol": "pitchFXS-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x0AD66FeC8dB84F8A3365ADA04aB23ce607ac6E24",
-        "name": "Curve.fi Factory Plain Pool: pitchFXS/FXS",
-        "symbol": "pitchFXS-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x0eC3d1f5d737593ff4aEDB8E22EB33a1886ddB9a": {
-    "protocolToken": {
-      "address": "0x0eC3d1f5d737593ff4aEDB8E22EB33a1886ddB9a",
-      "name": "Curve.fi Factory USD Metapool: tBTC/wBTC/sBTC",
-      "symbol": "TBTCSBTC23CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xF95AAa7EBB1620e46221B73588502960Ef63dBa0",
-        "name": "Curve.fi Factory USD Metapool: tBTC/wBTC/sBTC",
-        "symbol": "TBTCSBTC23CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xd5f2e6612E41bE48461FDBA20061E3c778Fe6EC4": {
-    "protocolToken": {
-      "address": "0xd5f2e6612E41bE48461FDBA20061E3c778Fe6EC4",
-      "name": "Curve.fi Factory USD Metapool: msUSD/FRAXBP",
-      "symbol": "msUSDFRAX3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xc3b19502F8c02be75F3f77fd673503520DEB51dD",
-        "name": "Curve.fi Factory USD Metapool: msUSD/FRAXBP",
-        "symbol": "msUSDFRAX3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x415F30505368fa1dB82Feea02EB778be04e75907": {
-    "protocolToken": {
-      "address": "0x415F30505368fa1dB82Feea02EB778be04e75907",
-      "name": "Curve.fi Factory Plain Pool: alETHfrxETH",
-      "symbol": "alfrxETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xB657B895B265C38c53FFF00166cF7F6A3C70587d",
-        "name": "Curve.fi Factory Plain Pool: alETHfrxETH",
-        "symbol": "alfrxETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xf2cBa59952cc09EB23d6F7baa2C47aB79B9F2945": {
-    "protocolToken": {
-      "address": "0xf2cBa59952cc09EB23d6F7baa2C47aB79B9F2945",
-      "name": "Curve.fi Factory USD Metapool: 3CRV/lvUSD",
-      "symbol": "3CRVlvUSD3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xe9123CBC5d1EA65301D417193c40A72Ac8D53501",
-        "name": "Curve.fi Factory USD Metapool: 3CRV/lvUSD",
-        "symbol": "3CRVlvUSD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x821529Bb07c83803C9CC7763e5974386e9eFEdC7": {
-    "protocolToken": {
-      "address": "0x821529Bb07c83803C9CC7763e5974386e9eFEdC7",
-      "name": "Curve.fi Factory Plain Pool: stETH/frxETH",
-      "symbol": "st-frxETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4d9f9D15101EEC665F77210cB999639f760F831E",
-        "name": "Curve.fi Factory Plain Pool: stETH/frxETH",
-        "symbol": "st-frxETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x77ef5D544FF6C739E7E10a549f64Dd08055538d1": {
-    "protocolToken": {
-      "address": "0x77ef5D544FF6C739E7E10a549f64Dd08055538d1",
-      "name": "Curve.fi Factory Plain Pool: sETH/frxETH",
-      "symbol": "s-frxETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x663aC72a1c3E1C4186CD3dCb184f216291F4878C",
-        "name": "Curve.fi Factory Plain Pool: sETH/frxETH",
-        "symbol": "s-frxETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8605dc0C339a2e7e85EEA043bD29d42DA2c6D784": {
-    "protocolToken": {
-      "address": "0x8605dc0C339a2e7e85EEA043bD29d42DA2c6D784",
-      "name": "Curve.fi Factory USD Metapool: eUSD+FRAX/USDC (FRAXBP)",
-      "symbol": "eUSD3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xAEda92e6A3B1028edc139A4ae56Ec881f3064D4F",
-        "name": "Curve.fi Factory USD Metapool: eUSD+FRAX/USDC (FRAXBP)",
-        "symbol": "eUSD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4B6911E1aE9519640d417AcE509B9928D2F8377B": {
-    "protocolToken": {
-      "address": "0x4B6911E1aE9519640d417AcE509B9928D2F8377B",
-      "name": "Curve.fi Factory USD Metapool: STBT/3CRV",
-      "symbol": "STBT3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x892D701d94a43bDBCB5eA28891DaCA2Fa22A690b",
-        "name": "Curve.fi Factory USD Metapool: STBT/3CRV",
-        "symbol": "STBT3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xEEBC06d495c96E57542A6d829184A907A02ef602": {
-    "protocolToken": {
-      "address": "0xEEBC06d495c96E57542A6d829184A907A02ef602",
-      "name": "Curve.fi Factory Plain Pool: yCRV",
-      "symbol": "yCRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x99f5aCc8EC2Da2BC0771c32814EFF52b712de1E5",
-        "name": "Curve.fi Factory Plain Pool: yCRV",
-        "symbol": "yCRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xcb7CEB005dce5743026cDDaD2364d74f594b95A4": {
-    "protocolToken": {
-      "address": "0xcb7CEB005dce5743026cDDaD2364d74f594b95A4",
-      "name": "Curve.fi Factory USD Metapool: pUSDFRAXBP-A100",
-      "symbol": "pUSDFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xE60986759872393a8360A4a7abEAb3A6e0BA7848",
-        "name": "Curve.fi Factory USD Metapool: pUSDFRAXBP-A100",
-        "symbol": "pUSDFRAXBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xfB18127c1471131468a1AaD4785c19678e521D86": {
-    "protocolToken": {
-      "address": "0xfB18127c1471131468a1AaD4785c19678e521D86",
-      "name": "Curve.fi Factory Plain Pool: cvxCrv/Crv",
-      "symbol": "cvxcrv-crv-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x971add32Ea87f10bD192671630be3BE8A11b8623",
-        "name": "Curve.fi Factory Plain Pool: cvxCrv/Crv",
-        "symbol": "cvxcrv-crv-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x66915f81deaFcFbA171aEaa914c76A607437Dd4a": {
-    "protocolToken": {
-      "address": "0x66915f81deaFcFbA171aEaa914c76A607437Dd4a",
-      "name": "Curve.fi Factory Plain Pool: cvxFpis/Fpis",
-      "symbol": "cvxFpis-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xfBB481A443382416357fA81F16dB5A725DC6ceC8",
-        "name": "Curve.fi Factory Plain Pool: cvxFpis/Fpis",
-        "symbol": "cvxFpis-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x688Eb2C49D352c9448049A2263CFcE63D0918d3e": {
-    "protocolToken": {
-      "address": "0x688Eb2C49D352c9448049A2263CFcE63D0918d3e",
-      "name": "Curve.fi Factory Plain Pool: Stakehouse dETH / frxETH",
-      "symbol": "dETHfrxETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7C0d189E1FecB124487226dCbA3748bD758F98E4",
-        "name": "Curve.fi Factory Plain Pool: Stakehouse dETH / frxETH",
-        "symbol": "dETHfrxETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xB7A3C519889a916C5ecB54101E69ECf11DE60d0b": {
-    "protocolToken": {
-      "address": "0xB7A3C519889a916C5ecB54101E69ECf11DE60d0b",
-      "name": "Curve.fi Factory Plain Pool: msETH/frxETH",
-      "symbol": "msfrxETH-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2d600BbBcC3F1B6Cb9910A70BaB59eC9d5F81B9A",
-        "name": "Curve.fi Factory Plain Pool: msETH/frxETH",
-        "symbol": "msfrxETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xd03BE91b1932715709e18021734fcB91BB431715": {
-    "protocolToken": {
-      "address": "0xd03BE91b1932715709e18021734fcB91BB431715",
-      "name": "Curve.fi Factory Pool: OETH",
-      "symbol": "OETHCRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x94B17476A93b3262d87B9a326965D1E91f9c13E7",
-        "name": "Curve.fi Factory Pool: OETH",
-        "symbol": "OETHCRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x5fDdB41cF566F6305293B2c9ad0fAf70dEAF7992": {
-    "protocolToken": {
-      "address": "0x5fDdB41cF566F6305293B2c9ad0fAf70dEAF7992",
-      "name": "Curve.fi Factory Plain Pool: sdANGLE/ANGLE",
-      "symbol": "sdANGLElp-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x96AAE323E111A19b1E0e26F55e8De21F1dD01f26",
-        "name": "Curve.fi Factory Plain Pool: sdANGLE/ANGLE",
-        "symbol": "sdANGLElp-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x26F7786de3E6D9Bd37Fcf47BE6F2bC455a21b74A": {
-    "protocolToken": {
-      "address": "0x26F7786de3E6D9Bd37Fcf47BE6F2bC455a21b74A",
-      "name": "Curve.fi Factory Plain Pool: sdCRV/CRV",
-      "symbol": "sdCRVlp-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0",
-        "name": "Curve.fi Factory Plain Pool: sdCRV/CRV",
-        "symbol": "sdCRVlp-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x0060E266c2AF65bfc4fd51b04c93d952DF805630": {
-    "protocolToken": {
-      "address": "0x0060E266c2AF65bfc4fd51b04c93d952DF805630",
-      "name": "Curve.fi Factory Plain Pool: sdFXS/FXS",
-      "symbol": "sdFXSlp-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x71c91B173984d3955f7756914bBF9a7332538595",
-        "name": "Curve.fi Factory Plain Pool: sdFXS/FXS",
-        "symbol": "sdFXSlp-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x7292AfC5d77F988c873ca18F73CD96636c4Ac145": {
-    "protocolToken": {
-      "address": "0x7292AfC5d77F988c873ca18F73CD96636c4Ac145",
-      "name": "Curve.fi Factory Plain Pool: sdYFI/YFI",
-      "symbol": "sdYFIpool-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8",
-        "name": "Curve.fi Factory Plain Pool: sdYFI/YFI",
-        "symbol": "sdYFIpool-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x79F21BC30632cd40d2aF8134B469a0EB4C9574AA": {
-    "protocolToken": {
-      "address": "0x79F21BC30632cd40d2aF8134B469a0EB4C9574AA",
-      "name": "Curve.fi Factory Pool: stETH-ng",
-      "symbol": "stETH-ng-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
-        "name": "Curve.fi Factory Pool: stETH-ng",
-        "symbol": "stETH-ng-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x785dFF4aD2b6e55D150D335B46D567D854053dC8": {
-    "protocolToken": {
-      "address": "0x785dFF4aD2b6e55D150D335B46D567D854053dC8",
-      "name": "Curve.fi Factory Plain Pool: sdPENDLE",
-      "symbol": "sdPENDLElp-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0",
-        "name": "Curve.fi Factory Plain Pool: sdPENDLE",
-        "symbol": "sdPENDLElp-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8d5AF1F5DD3dC4B73e3A9Af682aDC3641FADE9a5": {
-    "protocolToken": {
-      "address": "0x8d5AF1F5DD3dC4B73e3A9Af682aDC3641FADE9a5",
-      "name": "Curve.fi Factory USD Metapool: GRAIFRAXBP",
-      "symbol": "GRAIFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc",
-        "name": "Curve.fi Factory USD Metapool: GRAIFRAXBP",
-        "symbol": "GRAIFRAXBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4afE040E63A4be4ff09D75cE91B0B9B04ED50cd9": {
-    "protocolToken": {
-      "address": "0x4afE040E63A4be4ff09D75cE91B0B9B04ED50cd9",
-      "name": "Curve.fi Factory USD Metapool: USDV",
-      "symbol": "USDV3pool3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b",
-        "name": "Curve.fi Factory USD Metapool: USDV",
-        "symbol": "USDV3pool3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x0c58c509305a8a7fE9a6a60CEaAC6185B96ECBb7": {
-    "protocolToken": {
-      "address": "0x0c58c509305a8a7fE9a6a60CEaAC6185B96ECBb7",
-      "name": "Curve.fi Factory Plain Pool: cvxFxs/Fxs",
-      "symbol": "cvxfxs-fxs-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0",
-        "name": "Curve.fi Factory Plain Pool: cvxFxs/Fxs",
-        "symbol": "cvxfxs-fxs-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x1Db233c2D10e6076d347f5FC87d575b4F8b88Ca7": {
-    "protocolToken": {
-      "address": "0x1Db233c2D10e6076d347f5FC87d575b4F8b88Ca7",
-      "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP",
-      "symbol": "DUSDFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3",
-        "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP",
-        "symbol": "DUSDFRAXBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
   "0x4e227d29b33B77113F84bcC189a6F886755a1f24": {
     "protocolToken": {
       "address": "0x4e227d29b33B77113F84bcC189a6F886755a1f24",
@@ -4139,6 +2587,1558 @@
         "address": "0x954313005C56b555bdC41B84D6c63B69049d7847",
         "name": "triSDT",
         "symbol": "triSDT",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xd662908ADA2Ea1916B3318327A97eB18aD588b5d": {
+    "protocolToken": {
+      "address": "0xd662908ADA2Ea1916B3318327A97eB18aD588b5d",
+      "name": "Curve.fi aDAI/aUSDC/aUSDT",
+      "symbol": "a3CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xFd2a8fA60Abd58Efe3EeE34dd494cD491dC14900",
+        "name": "Curve.fi aDAI/aUSDC/aUSDT",
+        "symbol": "a3CRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x6d10ed2cF043E6fcf51A0e7b4C2Af3Fa06695707": {
+    "protocolToken": {
+      "address": "0x6d10ed2cF043E6fcf51A0e7b4C2Af3Fa06695707",
+      "name": "Curve.fi ETH/aETH",
+      "symbol": "ankrCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xaA17A236F2bAdc98DDc0Cf999AbB47D47Fc0A6Cf",
+        "name": "Curve.fi ETH/aETH",
+        "symbol": "ankrCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x90Bb609649E0451E5aD952683D64BD2d1f245840": {
+    "protocolToken": {
+      "address": "0x90Bb609649E0451E5aD952683D64BD2d1f245840",
+      "name": "Curve.fi EURS/sEUR",
+      "symbol": "eursCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x194eBd173F6cDacE046C53eACcE9B953F28411d1",
+        "name": "Curve.fi EURS/sEUR",
+        "symbol": "eursCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x4c18E409Dc8619bFb6a1cB56D114C3f592E0aE79": {
+    "protocolToken": {
+      "address": "0x4c18E409Dc8619bFb6a1cB56D114C3f592E0aE79",
+      "name": "Curve.fi hBTC/wBTC",
+      "symbol": "hCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xb19059ebb43466C323583928285a49f558E572Fd",
+        "name": "Curve.fi hBTC/wBTC",
+        "symbol": "hCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xF5194c3325202F456c95c1Cf0cA36f8475C1949F": {
+    "protocolToken": {
+      "address": "0xF5194c3325202F456c95c1Cf0cA36f8475C1949F",
+      "name": "Curve.fi cyDAI/cyUSDC/cyUSDT",
+      "symbol": "ib3CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5282a4eF67D9C33135340fB3289cc1711c13638C",
+        "name": "Curve.fi cyDAI/cyUSDC/cyUSDT",
+        "symbol": "ib3CRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xFD4D8a17df4C27c1dD245d153ccf4499e806C87D": {
+    "protocolToken": {
+      "address": "0xFD4D8a17df4C27c1dD245d153ccf4499e806C87D",
+      "name": "Curve.fi LINK/sLINK",
+      "symbol": "linkCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xcee60cFa923170e4f8204AE08B4fA6A3F5656F3a",
+        "name": "Curve.fi LINK/sLINK",
+        "symbol": "linkCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x462253b8F74B72304c145DB0e4Eebd326B22ca39": {
+    "protocolToken": {
+      "address": "0x462253b8F74B72304c145DB0e4Eebd326B22ca39",
+      "name": "Curve.fi aDAI/aSUSD",
+      "symbol": "saCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x02d341CcB60fAaf662bC0554d13778015d1b285C",
+        "name": "Curve.fi aDAI/aSUSD",
+        "symbol": "saCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x3C0FFFF15EA30C35d7A85B85c0782D6c94e1d238": {
+    "protocolToken": {
+      "address": "0x3C0FFFF15EA30C35d7A85B85c0782D6c94e1d238",
+      "name": "Curve.fi ETH/sETH",
+      "symbol": "eCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA3D87FffcE63B53E0d54fAa1cc983B7eB0b74A9c",
+        "name": "Curve.fi ETH/sETH",
+        "symbol": "eCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x182B723a58739a9c974cFDB385ceaDb237453c28": {
+    "protocolToken": {
+      "address": "0x182B723a58739a9c974cFDB385ceaDb237453c28",
+      "name": "Curve.fi ETH/stETH",
+      "symbol": "steCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x06325440D014e39736583c165C2963BA99fAf14E",
+        "name": "Curve.fi ETH/stETH",
+        "symbol": "steCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xBC89cd85491d81C6AD2954E6d0362Ee29fCa8F53": {
+    "protocolToken": {
+      "address": "0xBC89cd85491d81C6AD2954E6d0362Ee29fCa8F53",
+      "name": "Curve.fi cDAI/cUSDC/USDT",
+      "symbol": "cDAI+cUSDC+USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9fC689CCaDa600B6DF723D9E47D84d76664a1F23",
+        "name": "Curve.fi cDAI/cUSDC/USDT",
+        "symbol": "cDAI+cUSDC+USDT",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xAEA6c312f4b3E04D752946d329693F7293bC2e6D": {
+    "protocolToken": {
+      "address": "0xAEA6c312f4b3E04D752946d329693F7293bC2e6D",
+      "name": "Curve.fi DUSD/3Crv",
+      "symbol": "dusd3CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3a664Ab939FD8482048609f652f9a0B0677337B9",
+        "name": "Curve.fi DUSD/3Crv",
+        "symbol": "dusd3CRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xC5cfaDA84E902aD92DD40194f0883ad49639b023": {
+    "protocolToken": {
+      "address": "0xC5cfaDA84E902aD92DD40194f0883ad49639b023",
+      "name": "Curve.fi GUSD/3Crv",
+      "symbol": "gusd3CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD2967f45c4f384DEEa880F807Be904762a3DeA07",
+        "name": "Curve.fi GUSD/3Crv",
+        "symbol": "gusd3CRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x5f626c30EC1215f4EdCc9982265E8b1F411D1352": {
+    "protocolToken": {
+      "address": "0x5f626c30EC1215f4EdCc9982265E8b1F411D1352",
+      "name": "Curve.fi MUSD/3Crv",
+      "symbol": "musd3CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1AEf73d49Dedc4b1778d0706583995958Dc862e6",
+        "name": "Curve.fi MUSD/3Crv",
+        "symbol": "musd3CRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xC2b1DF84112619D190193E48148000e3990Bf627": {
+    "protocolToken": {
+      "address": "0xC2b1DF84112619D190193E48148000e3990Bf627",
+      "name": "Curve.fi USDK/3Crv",
+      "symbol": "usdk3CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x97E2768e8E73511cA874545DC5Ff8067eB19B787",
+        "name": "Curve.fi USDK/3Crv",
+        "symbol": "usdk3CRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xF98450B5602fa59CC66e1379DFfB6FDDc724CfC4": {
+    "protocolToken": {
+      "address": "0xF98450B5602fa59CC66e1379DFfB6FDDc724CfC4",
+      "name": "Curve.fi USDN/3Crv",
+      "symbol": "usdn3CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4f3E8F405CF5aFC05D68142F3783bDfE13811522",
+        "name": "Curve.fi USDN/3Crv",
+        "symbol": "usdn3CRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x055be5DDB7A925BfEF3417FC157f53CA77cA7222": {
+    "protocolToken": {
+      "address": "0x055be5DDB7A925BfEF3417FC157f53CA77cA7222",
+      "name": "Curve.fi USDP/3Crv",
+      "symbol": "usdp3CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7Eb40E450b9655f4B3cC4259BCC731c63ff55ae6",
+        "name": "Curve.fi USDP/3Crv",
+        "symbol": "usdp3CRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xdFc7AdFa664b08767b735dE28f9E84cd30492aeE": {
+    "protocolToken": {
+      "address": "0xdFc7AdFa664b08767b735dE28f9E84cd30492aeE",
+      "name": "Curve.fi bBTC/sbtcCRV",
+      "symbol": "bBTC/sbtcCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x410e3E86ef427e30B9235497143881f717d93c2A",
+        "name": "Curve.fi bBTC/sbtcCRV",
+        "symbol": "bBTC/sbtcCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x11137B10C210b579405c21A07489e28F3c040AB1": {
+    "protocolToken": {
+      "address": "0x11137B10C210b579405c21A07489e28F3c040AB1",
+      "name": "Curve.fi oBTC/sbtcCRV",
+      "symbol": "oBTC/sbtcCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2fE94ea3d5d4a175184081439753DE15AeF9d614",
+        "name": "Curve.fi oBTC/sbtcCRV",
+        "symbol": "oBTC/sbtcCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xd7d147c6Bb90A718c3De8C0568F9B560C79fa416": {
+    "protocolToken": {
+      "address": "0xd7d147c6Bb90A718c3De8C0568F9B560C79fa416",
+      "name": "Curve.fi pBTC/sbtcCRV",
+      "symbol": "pBTC/sbtcCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xDE5331AC4B3630f94853Ff322B66407e0D6331E8",
+        "name": "Curve.fi pBTC/sbtcCRV",
+        "symbol": "pBTC/sbtcCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x6828bcF74279eE32f2723eC536c22c51Eed383C6": {
+    "protocolToken": {
+      "address": "0x6828bcF74279eE32f2723eC536c22c51Eed383C6",
+      "name": "Curve.fi tBTC/sbtcCrv",
+      "symbol": "tbtc/sbtcCrv",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x64eda51d3Ad40D56b9dFc5554E06F94e1Dd786Fd",
+        "name": "Curve.fi tBTC/sbtcCrv",
+        "symbol": "tbtc/sbtcCrv",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x359FD5d6417aE3D8D6497d9B2e7A890798262BA4": {
+    "protocolToken": {
+      "address": "0x359FD5d6417aE3D8D6497d9B2e7A890798262BA4",
+      "name": "Curve.fi Factory USD Metapool: TrueUSD",
+      "symbol": "TUSD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xEcd5e75AFb02eFa118AF914515D6521aaBd189F1",
+        "name": "Curve.fi Factory USD Metapool: TrueUSD",
+        "symbol": "TUSD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x72E158d38dbd50A483501c24f792bDAAA3e7D55C": {
+    "protocolToken": {
+      "address": "0x72E158d38dbd50A483501c24f792bDAAA3e7D55C",
+      "name": "Curve.fi Factory USD Metapool: Frax",
+      "symbol": "FRAX3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd632f22692FaC7611d2AA1C0D552930D43CAEd3B",
+        "name": "Curve.fi Factory USD Metapool: Frax",
+        "symbol": "FRAX3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xd4B22fEdcA85E684919955061fDf353b9d38389b": {
+    "protocolToken": {
+      "address": "0xd4B22fEdcA85E684919955061fDf353b9d38389b",
+      "name": "Curve.fi Factory USD Metapool: Binance USD",
+      "symbol": "BUSD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4807862AA8b2bF68830e4C8dc86D0e9A998e085a",
+        "name": "Curve.fi Factory USD Metapool: Binance USD",
+        "symbol": "BUSD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x824F13f1a2F29cFEEa81154b46C0fc820677A637": {
+    "protocolToken": {
+      "address": "0x824F13f1a2F29cFEEa81154b46C0fc820677A637",
+      "name": "Curve.fi ETH/rETH",
+      "symbol": "rCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x53a901d48795C58f485cBB38df08FA96a24669D5",
+        "name": "Curve.fi ETH/rETH",
+        "symbol": "rCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x9582C4ADACB3BCE56Fea3e590F05c3ca2fb9C477": {
+    "protocolToken": {
+      "address": "0x9582C4ADACB3BCE56Fea3e590F05c3ca2fb9C477",
+      "name": "Curve.fi Factory USD Metapool: Alchemix USD",
+      "symbol": "alUSD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x43b4FdFD4Ff969587185cDB6f0BD875c5Fc83f8c",
+        "name": "Curve.fi Factory USD Metapool: Alchemix USD",
+        "symbol": "alUSD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x6955a55416a06839309018A8B0cB72c4DDC11f15": {
+    "protocolToken": {
+      "address": "0x6955a55416a06839309018A8B0cB72c4DDC11f15",
+      "name": "Curve.fi USD-BTC-ETH",
+      "symbol": "crvTricrypto",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xcA3d75aC011BF5aD07a98d02f18225F9bD9A6BDF",
+        "name": "Curve.fi USD-BTC-ETH",
+        "symbol": "crvTricrypto",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x66ec719045bBD62db5eBB11184c18237D3Cc2E62": {
+    "protocolToken": {
+      "address": "0x66ec719045bBD62db5eBB11184c18237D3Cc2E62",
+      "name": "RAI3CRV",
+      "symbol": "RAI3CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6BA5b4e438FA0aAf7C1bD179285aF65d13bD3D90",
+        "name": "RAI3CRV",
+        "symbol": "RAI3CRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xd8b712d29381748dB89c36BCa0138d7c75866ddF": {
+    "protocolToken": {
+      "address": "0xd8b712d29381748dB89c36BCa0138d7c75866ddF",
+      "name": "Curve.fi Factory USD Metapool: Magic Internet Money 3Pool",
+      "symbol": "MIM-3LP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5a6A4D54456819380173272A5E8E9B9904BdF41B",
+        "name": "Curve.fi Factory USD Metapool: Magic Internet Money 3Pool",
+        "symbol": "MIM-3LP3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x2932a86df44Fe8D2A706d8e9c5d51c24883423F5": {
+    "protocolToken": {
+      "address": "0x2932a86df44Fe8D2A706d8e9c5d51c24883423F5",
+      "name": "Curve.fi ETH/frxETH",
+      "symbol": "frxETHCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf43211935C781D5ca1a41d2041F397B8A7366C7A",
+        "name": "Curve.fi ETH/frxETH",
+        "symbol": "frxETHCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x6D787113F23bED1D5e1530402B3f364D0A6e5Af3": {
+    "protocolToken": {
+      "address": "0x6D787113F23bED1D5e1530402B3f364D0A6e5Af3",
+      "name": "Curve.fi wBTC/sBTC",
+      "symbol": "crvWSBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x051d7e5609917Bd9b73f04BAc0DED8Dd46a74301",
+        "name": "Curve.fi wBTC/sBTC",
+        "symbol": "crvWSBTC",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x50161102a240b1456d770Dbb55c76d8dc2D160Aa": {
+    "protocolToken": {
+      "address": "0x50161102a240b1456d770Dbb55c76d8dc2D160Aa",
+      "name": "Curve.fi ETH/wBETH",
+      "symbol": "ETHwBETHCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6",
+        "name": "Curve.fi ETH/wBETH",
+        "symbol": "ETHwBETHCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x1750a3a3d80A3F5333BBe9c4695B0fAd41061ab1": {
+    "protocolToken": {
+      "address": "0x1750a3a3d80A3F5333BBe9c4695B0fAd41061ab1",
+      "name": "Curve.fi Factory Plain Pool: ibKRW/sKRW",
+      "symbol": "ibKRW+sKRW-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8461A004b50d321CB22B7d034969cE6803911899",
+        "name": "Curve.fi Factory Plain Pool: ibKRW/sKRW",
+        "symbol": "ibKRW+sKRW-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x99fb76F75501039089AAC8f20f487bf84E51d76F": {
+    "protocolToken": {
+      "address": "0x99fb76F75501039089AAC8f20f487bf84E51d76F",
+      "name": "Curve.fi Factory Plain Pool: ibEUR/sEUR",
+      "symbol": "ibEUR+sEUR-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x19b080FE1ffA0553469D20Ca36219F17Fcf03859",
+        "name": "Curve.fi Factory Plain Pool: ibEUR/sEUR",
+        "symbol": "ibEUR+sEUR-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x25f0cE4E2F8dbA112D9b115710AC297F816087CD": {
+    "protocolToken": {
+      "address": "0x25f0cE4E2F8dbA112D9b115710AC297F816087CD",
+      "name": "Curve.fi Factory USD Metapool: Origin Dollar",
+      "symbol": "OUSD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x87650D7bbfC3A9F10587d7778206671719d9910D",
+        "name": "Curve.fi Factory USD Metapool: Origin Dollar",
+        "symbol": "OUSD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xdC69D4cB5b86388Fff0b51885677e258883534ae": {
+    "protocolToken": {
+      "address": "0xdC69D4cB5b86388Fff0b51885677e258883534ae",
+      "name": "Curve.fi Factory USD Metapool: FEI Metapool",
+      "symbol": "FEI3CRV3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x06cb22615BA53E60D67Bf6C341a0fD5E718E1655",
+        "name": "Curve.fi Factory USD Metapool: FEI Metapool",
+        "symbol": "FEI3CRV3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x903dA6213a5A12B61c821598154EfAd98C3B20E4": {
+    "protocolToken": {
+      "address": "0x903dA6213a5A12B61c821598154EfAd98C3B20E4",
+      "name": "Curve.fi Factory Plain Pool: cvxCRV",
+      "symbol": "cvxcrv-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9D0464996170c6B9e75eED71c68B99dDEDf279e8",
+        "name": "Curve.fi Factory Plain Pool: cvxCRV",
+        "symbol": "cvxcrv-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x9AF13a7B1f1Bbf1A2B05c6fBF23ac23A9E573b4E": {
+    "protocolToken": {
+      "address": "0x9AF13a7B1f1Bbf1A2B05c6fBF23ac23A9E573b4E",
+      "name": "Curve.fi Factory USD Metapool: USDM",
+      "symbol": "USDM3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5B3b5DF2BF2B6543f78e053bD91C4Bdd820929f1",
+        "name": "Curve.fi Factory USD Metapool: USDM",
+        "symbol": "USDM3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8Fa728F393588E8D8dD1ca397E9a710E53fA553a": {
+    "protocolToken": {
+      "address": "0x8Fa728F393588E8D8dD1ca397E9a710E53fA553a",
+      "name": "Curve.fi Factory USD Metapool: DOLA-3pool Curve LP",
+      "symbol": "DOLA3POOL3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xAA5A67c256e27A5d80712c51971408db3370927D",
+        "name": "Curve.fi Factory USD Metapool: DOLA-3pool Curve LP",
+        "symbol": "DOLA3POOL3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xeFF437A56A22D7dD86C1202A308536ED8C7da7c1": {
+    "protocolToken": {
+      "address": "0xeFF437A56A22D7dD86C1202A308536ED8C7da7c1",
+      "name": "Curve.fi Factory Plain Pool: ibJPY/sJPY",
+      "symbol": "ibJPY+sJPY-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8818a9bb44Fbf33502bE7c15c500d0C783B73067",
+        "name": "Curve.fi Factory Plain Pool: ibJPY/sJPY",
+        "symbol": "ibJPY+sJPY-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x05ca5c01629a8E5845f12ea3A03fF7331932233A": {
+    "protocolToken": {
+      "address": "0x05ca5c01629a8E5845f12ea3A03fF7331932233A",
+      "name": "Curve.fi Factory Plain Pool: ibAUD/sAUD",
+      "symbol": "ibAUD+sAUD-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3F1B0278A9ee595635B61817630cC19DE792f506",
+        "name": "Curve.fi Factory Plain Pool: ibAUD/sAUD",
+        "symbol": "ibAUD+sAUD-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x63d9f3aB7d0c528797A12a0684E50C397E9e79dC": {
+    "protocolToken": {
+      "address": "0x63d9f3aB7d0c528797A12a0684E50C397E9e79dC",
+      "name": "Curve.fi Factory Plain Pool: ibGBP/sGBP",
+      "symbol": "ibGBP+sGBP-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD6Ac1CB9019137a896343Da59dDE6d097F710538",
+        "name": "Curve.fi Factory Plain Pool: ibGBP/sGBP",
+        "symbol": "ibGBP+sGBP-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x2fA53e8fa5fAdb81f4332C8EcE39Fe62eA2f919E": {
+    "protocolToken": {
+      "address": "0x2fA53e8fa5fAdb81f4332C8EcE39Fe62eA2f919E",
+      "name": "Curve.fi Factory Plain Pool: ibCHF/sCHF",
+      "symbol": "ibCHF+sCHF-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9c2C8910F113181783c249d8F6Aa41b51Cde0f0c",
+        "name": "Curve.fi Factory Plain Pool: ibCHF/sCHF",
+        "symbol": "ibCHF+sCHF-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xb07d00e0eE9b1b2eb9f1B483924155Af7AF0c8Fa": {
+    "protocolToken": {
+      "address": "0xb07d00e0eE9b1b2eb9f1B483924155Af7AF0c8Fa",
+      "name": "Curve.fi Factory USD Metapool: PWRD Metapool",
+      "symbol": "PWRD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xbcb91E689114B9Cc865AD7871845C95241Df4105",
+        "name": "Curve.fi Factory USD Metapool: PWRD Metapool",
+        "symbol": "PWRD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x1b759A88543931F4Bb983bCA4194306039cb979C": {
+    "protocolToken": {
+      "address": "0x1b759A88543931F4Bb983bCA4194306039cb979C",
+      "name": "Curve.fi Factory Plain Pool: Badger Locked CVX",
+      "symbol": "bveCVX-CVX-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04c90C198b2eFF55716079bc06d7CCc4aa4d7512",
+        "name": "Curve.fi Factory Plain Pool: Badger Locked CVX",
+        "symbol": "bveCVX-CVX-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xC95bdf13A08A547E4dD9f29B00aB7fF08C5d093d": {
+    "protocolToken": {
+      "address": "0xC95bdf13A08A547E4dD9f29B00aB7fF08C5d093d",
+      "name": "Curve.fi Factory USD Metapool: Paxos Dollar (USDP)",
+      "symbol": "pax-usdp3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc270b3B858c335B6BA5D5b10e2Da8a09976005ad",
+        "name": "Curve.fi Factory USD Metapool: Paxos Dollar (USDP)",
+        "symbol": "pax-usdp3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x346C7BB1A7a6A30c8e81c14e90FC2f0FBddc54d8": {
+    "protocolToken": {
+      "address": "0x346C7BB1A7a6A30c8e81c14e90FC2f0FBddc54d8",
+      "name": "Curve.fi Factory BTC Metapool: ibBTC",
+      "symbol": "ibbtc/sbtcCRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xFbdCA68601f835b27790D98bbb8eC7f05FDEaA9B",
+        "name": "Curve.fi Factory BTC Metapool: ibBTC",
+        "symbol": "ibbtc/sbtcCRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x1E212e054d74ed136256fc5a5DDdB4867c6E003F": {
+    "protocolToken": {
+      "address": "0x1E212e054d74ed136256fc5a5DDdB4867c6E003F",
+      "name": "Curve.fi Factory Plain Pool: 3EURpool",
+      "symbol": "3EURpool-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xb9446c4Ef5EBE66268dA6700D26f96273DE3d571",
+        "name": "Curve.fi Factory Plain Pool: 3EURpool",
+        "symbol": "3EURpool-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x38039dD47636154273b287F74C432Cac83Da97e2": {
+    "protocolToken": {
+      "address": "0x38039dD47636154273b287F74C432Cac83Da97e2",
+      "name": "Curve.fi Factory Plain Pool: agEUR/ibEUR",
+      "symbol": "ag+ib-EUR-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB37D6c07482Bc11cd28a1f11f1a6ad7b66Dec933",
+        "name": "Curve.fi Factory Plain Pool: agEUR/ibEUR",
+        "symbol": "ag+ib-EUR-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x6F98dA2D5098604239C07875C6B7Fd583BC520b9": {
+    "protocolToken": {
+      "address": "0x6F98dA2D5098604239C07875C6B7Fd583BC520b9",
+      "name": "Curve.fi Factory USD Metapool: Bean",
+      "symbol": "BEAN3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3a70DfA7d2262988064A2D051dd47521E43c9BdD",
+        "name": "Curve.fi Factory USD Metapool: Bean",
+        "symbol": "BEAN3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8aD7e0e6EDc61bC48ca0DD07f9021c249044eD30": {
+    "protocolToken": {
+      "address": "0x8aD7e0e6EDc61bC48ca0DD07f9021c249044eD30",
+      "name": "Curve.fi Factory Plain Pool: rETH/wstETH",
+      "symbol": "rETHwstETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x447Ddd4960d9fdBF6af9a790560d0AF76795CB08",
+        "name": "Curve.fi Factory Plain Pool: rETH/wstETH",
+        "symbol": "rETHwstETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x03fFC218C7A9306D21193565CbDc4378952faA8c": {
+    "protocolToken": {
+      "address": "0x03fFC218C7A9306D21193565CbDc4378952faA8c",
+      "name": "Curve.fi Factory Plain Pool: sdANGLE",
+      "symbol": "sdAGAG-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x48fF31bBbD8Ab553Ebe7cBD84e1eA3dBa8f54957",
+        "name": "Curve.fi Factory Plain Pool: sdANGLE",
+        "symbol": "sdAGAG-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xa5f483571C126B173E33c327e8A293A3492E4566": {
+    "protocolToken": {
+      "address": "0xa5f483571C126B173E33c327e8A293A3492E4566",
+      "name": "Curve.fi Factory Plain Pool: dfxCAD/CADC",
+      "symbol": "dfx2CAD-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9CA41a2DaB3CEE15308998868ca644e2e3be5C59",
+        "name": "Curve.fi Factory Plain Pool: dfxCAD/CADC",
+        "symbol": "dfx2CAD-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x663FC22e92f26C377Ddf3C859b560C4732ee639a": {
+    "protocolToken": {
+      "address": "0x663FC22e92f26C377Ddf3C859b560C4732ee639a",
+      "name": "Curve.fi Factory Plain Pool: sdCRV",
+      "symbol": "sdCRVCRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf7b55C3732aD8b2c2dA7c24f30A69f55c54FB717",
+        "name": "Curve.fi Factory Plain Pool: sdCRV",
+        "symbol": "sdCRVCRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xd5d3efC90fFB38987005FdeA303B68306aA5C624": {
+    "protocolToken": {
+      "address": "0xd5d3efC90fFB38987005FdeA303B68306aA5C624",
+      "name": "Curve.fi Factory USD Metapool: USDD/3CRV",
+      "symbol": "USDD3CRV3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe6b5CC1B4b47305c58392CE3D359B10282FC36Ea",
+        "name": "Curve.fi Factory USD Metapool: USDD/3CRV",
+        "symbol": "USDD3CRV3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xF668E6D326945d499e5B35E7CD2E82aCFbcFE6f0": {
+    "protocolToken": {
+      "address": "0xF668E6D326945d499e5B35E7CD2E82aCFbcFE6f0",
+      "name": "Curve.fi Factory Plain Pool: stETH concentrated",
+      "symbol": "STETHETH_C-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x828b154032950C8ff7CF8085D841723Db2696056",
+        "name": "Curve.fi Factory Plain Pool: stETH concentrated",
+        "symbol": "STETHETH_C-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xE277Dd681d966e83F68e5bC7FBfeAf5f1341195F": {
+    "protocolToken": {
+      "address": "0xE277Dd681d966e83F68e5bC7FBfeAf5f1341195F",
+      "name": "Curve.fi Factory USD Metapool: home",
+      "symbol": "HOME+3crv3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5c6A6Cf9Ae657A73b98454D17986AF41fC7b44ee",
+        "name": "Curve.fi Factory USD Metapool: home",
+        "symbol": "HOME+3crv3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x389Fc079a15354E9cbcE8258433CC0F85B755A42": {
+    "protocolToken": {
+      "address": "0x389Fc079a15354E9cbcE8258433CC0F85B755A42",
+      "name": "Curve.fi Factory USD Metapool: LUSDFRAXBP",
+      "symbol": "LUSDFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x497CE58F34605B9944E6b15EcafE6b001206fd25",
+        "name": "Curve.fi Factory USD Metapool: LUSDFRAXBP",
+        "symbol": "LUSDFRAXBP3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xD6e48Cc0597a1Ee12a8BeEB88e22bFDb81777164": {
+    "protocolToken": {
+      "address": "0xD6e48Cc0597a1Ee12a8BeEB88e22bFDb81777164",
+      "name": "Curve.fi Factory USD Metapool: apeUSDFRAXBP",
+      "symbol": "APEUSDBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04b727C7e246CA70d496ecF52E6b6280f3c8077D",
+        "name": "Curve.fi Factory USD Metapool: apeUSDFRAXBP",
+        "symbol": "APEUSDBP3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xf865FDd6a5F307F398a94Dc40687995Cfaa77BC9": {
+    "protocolToken": {
+      "address": "0xf865FDd6a5F307F398a94Dc40687995Cfaa77BC9",
+      "name": "Curve.fi Factory USD Metapool: TUSDFRAXBP",
+      "symbol": "TUSDFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x33baeDa08b8afACc4d3d07cf31d49FC1F1f3E893",
+        "name": "Curve.fi Factory USD Metapool: TUSDFRAXBP",
+        "symbol": "TUSDFRAXBP3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x9f57569EaA61d427dEEebac8D9546A745160391C": {
+    "protocolToken": {
+      "address": "0x9f57569EaA61d427dEEebac8D9546A745160391C",
+      "name": "Curve.fi Factory Plain Pool: Euro Pool",
+      "symbol": "europool-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe7A3b38c39F97E977723bd1239C3470702568e7B",
+        "name": "Curve.fi Factory Plain Pool: Euro Pool",
+        "symbol": "europool-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x740BA8aa0052E07b925908B380248cb03f3DE5cB": {
+    "protocolToken": {
+      "address": "0x740BA8aa0052E07b925908B380248cb03f3DE5cB",
+      "name": "Curve.fi Factory USD Metapool: alUSDFRAXBP",
+      "symbol": "alUSDFRAXB3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB30dA2376F63De30b42dC055C93fa474F31330A5",
+        "name": "Curve.fi Factory USD Metapool: alUSDFRAXBP",
+        "symbol": "alUSDFRAXB3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xF9F46eF781b9C7B76e8B505226d5E0e0E7FE2f04": {
+    "protocolToken": {
+      "address": "0xF9F46eF781b9C7B76e8B505226d5E0e0E7FE2f04",
+      "name": "Curve.fi Factory Plain Pool: agEUR/EUROC",
+      "symbol": "agEUREUROC-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xBa3436Fd341F2C8A928452Db3C5A3670d1d5Cc73",
+        "name": "Curve.fi Factory Plain Pool: agEUR/EUROC",
+        "symbol": "agEUREUROC-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xB3783f527B7704DeeD4993f7c1c779E426A04368": {
+    "protocolToken": {
+      "address": "0xB3783f527B7704DeeD4993f7c1c779E426A04368",
+      "name": "Curve.fi Factory USD Metapool: MAI+FRAXBP",
+      "symbol": "MAIPool3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x66E335622ad7a6C9c72c98dbfCCE684996a20Ef9",
+        "name": "Curve.fi Factory USD Metapool: MAI+FRAXBP",
+        "symbol": "MAIPool3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xBE266d68Ce3dDFAb366Bb866F4353B6FC42BA43c": {
+    "protocolToken": {
+      "address": "0xBE266d68Ce3dDFAb366Bb866F4353B6FC42BA43c",
+      "name": "Curve.fi Factory USD Metapool: DOLA/FRAXBP",
+      "symbol": "DOLAFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xE57180685E3348589E9521aa53Af0BCD497E884d",
+        "name": "Curve.fi Factory USD Metapool: DOLA/FRAXBP",
+        "symbol": "DOLAFRAXBP3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x5980d25B4947594c26255C0BF301193ab64ba803": {
+    "protocolToken": {
+      "address": "0x5980d25B4947594c26255C0BF301193ab64ba803",
+      "name": "Curve.fi Factory Plain Pool: yCRV",
+      "symbol": "yCRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x453D92C7d4263201C69aACfaf589Ed14202d83a4",
+        "name": "Curve.fi Factory Plain Pool: yCRV",
+        "symbol": "yCRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x7970489a543FB237ABab63d62524d8A5CE165B86": {
+    "protocolToken": {
+      "address": "0x7970489a543FB237ABab63d62524d8A5CE165B86",
+      "name": "Curve.fi Factory Plain Pool: Clever clevCVX/CVX",
+      "symbol": "clevCVX-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xF9078Fb962A7D13F55d40d49C8AA6472aBD1A5a6",
+        "name": "Curve.fi Factory Plain Pool: Clever clevCVX/CVX",
+        "symbol": "clevCVX-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xa8Ea11465A1375BF42463C3B613dFC54248b9C7B": {
+    "protocolToken": {
+      "address": "0xa8Ea11465A1375BF42463C3B613dFC54248b9C7B",
+      "name": "Curve.fi Factory USD Metapool: XAI/FRAXBP",
+      "symbol": "XAIFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x326290A1B0004eeE78fa6ED4F1d8f4b2523ab669",
+        "name": "Curve.fi Factory USD Metapool: XAI/FRAXBP",
+        "symbol": "XAIFRAXBP3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xb87Ec044152C49E52F7c429B2B9DBAcb7Ea8FB15": {
+    "protocolToken": {
+      "address": "0xb87Ec044152C49E52F7c429B2B9DBAcb7Ea8FB15",
+      "name": "Curve.fi Factory Plain Pool: agEUR/EURe",
+      "symbol": "agEUREURe-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x413928a25D6ea1A26F2625d633207755f67Bf97c",
+        "name": "Curve.fi Factory Plain Pool: agEUR/EURe",
+        "symbol": "agEUREURe-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xA6f106d5AcFc6f7AC5d4aB84c3D7A8DaE658345F": {
+    "protocolToken": {
+      "address": "0xA6f106d5AcFc6f7AC5d4aB84c3D7A8DaE658345F",
+      "name": "Curve.fi Factory USD Metapool: clevUSDFRAXBP",
+      "symbol": "clevUSD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x84C333e94AEA4a51a21F6cf0C7F528C50Dc7592C",
+        "name": "Curve.fi Factory USD Metapool: clevUSDFRAXBP",
+        "symbol": "clevUSD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x6a69FfD1353Fa129f7F9932BB68Fa7bE88F3888A": {
+    "protocolToken": {
+      "address": "0x6a69FfD1353Fa129f7F9932BB68Fa7bE88F3888A",
+      "name": "Curve.fi Factory Plain Pool: sdYFI",
+      "symbol": "sdYFIYFI-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x79E281BC69A03DaBCcD66858c65EF6724e50aebe",
+        "name": "Curve.fi Factory Plain Pool: sdYFI",
+        "symbol": "sdYFIYFI-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xD90a01c487564Ba6CEF5c3870C1251afF0c49E53": {
+    "protocolToken": {
+      "address": "0xD90a01c487564Ba6CEF5c3870C1251afF0c49E53",
+      "name": "Curve.fi Factory Plain Pool: stLINK/LINK",
+      "symbol": "stLINK-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1c899dED01954d0959E034b62a728e7fEbE593b0",
+        "name": "Curve.fi Factory Plain Pool: stLINK/LINK",
+        "symbol": "stLINK-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x6Aba93E10147f86744bb9A50238d25F49eD4F342": {
+    "protocolToken": {
+      "address": "0x6Aba93E10147f86744bb9A50238d25F49eD4F342",
+      "name": "Curve.fi Factory Plain Pool: pitchFXS/FXS",
+      "symbol": "pitchFXS-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0AD66FeC8dB84F8A3365ADA04aB23ce607ac6E24",
+        "name": "Curve.fi Factory Plain Pool: pitchFXS/FXS",
+        "symbol": "pitchFXS-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x0eC3d1f5d737593ff4aEDB8E22EB33a1886ddB9a": {
+    "protocolToken": {
+      "address": "0x0eC3d1f5d737593ff4aEDB8E22EB33a1886ddB9a",
+      "name": "Curve.fi Factory USD Metapool: tBTC/wBTC/sBTC",
+      "symbol": "TBTCSBTC23CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xF95AAa7EBB1620e46221B73588502960Ef63dBa0",
+        "name": "Curve.fi Factory USD Metapool: tBTC/wBTC/sBTC",
+        "symbol": "TBTCSBTC23CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xd5f2e6612E41bE48461FDBA20061E3c778Fe6EC4": {
+    "protocolToken": {
+      "address": "0xd5f2e6612E41bE48461FDBA20061E3c778Fe6EC4",
+      "name": "Curve.fi Factory USD Metapool: msUSD/FRAXBP",
+      "symbol": "msUSDFRAX3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc3b19502F8c02be75F3f77fd673503520DEB51dD",
+        "name": "Curve.fi Factory USD Metapool: msUSD/FRAXBP",
+        "symbol": "msUSDFRAX3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x415F30505368fa1dB82Feea02EB778be04e75907": {
+    "protocolToken": {
+      "address": "0x415F30505368fa1dB82Feea02EB778be04e75907",
+      "name": "Curve.fi Factory Plain Pool: alETHfrxETH",
+      "symbol": "alfrxETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB657B895B265C38c53FFF00166cF7F6A3C70587d",
+        "name": "Curve.fi Factory Plain Pool: alETHfrxETH",
+        "symbol": "alfrxETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xf2cBa59952cc09EB23d6F7baa2C47aB79B9F2945": {
+    "protocolToken": {
+      "address": "0xf2cBa59952cc09EB23d6F7baa2C47aB79B9F2945",
+      "name": "Curve.fi Factory USD Metapool: 3CRV/lvUSD",
+      "symbol": "3CRVlvUSD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe9123CBC5d1EA65301D417193c40A72Ac8D53501",
+        "name": "Curve.fi Factory USD Metapool: 3CRV/lvUSD",
+        "symbol": "3CRVlvUSD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x821529Bb07c83803C9CC7763e5974386e9eFEdC7": {
+    "protocolToken": {
+      "address": "0x821529Bb07c83803C9CC7763e5974386e9eFEdC7",
+      "name": "Curve.fi Factory Plain Pool: stETH/frxETH",
+      "symbol": "st-frxETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4d9f9D15101EEC665F77210cB999639f760F831E",
+        "name": "Curve.fi Factory Plain Pool: stETH/frxETH",
+        "symbol": "st-frxETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x77ef5D544FF6C739E7E10a549f64Dd08055538d1": {
+    "protocolToken": {
+      "address": "0x77ef5D544FF6C739E7E10a549f64Dd08055538d1",
+      "name": "Curve.fi Factory Plain Pool: sETH/frxETH",
+      "symbol": "s-frxETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x663aC72a1c3E1C4186CD3dCb184f216291F4878C",
+        "name": "Curve.fi Factory Plain Pool: sETH/frxETH",
+        "symbol": "s-frxETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8605dc0C339a2e7e85EEA043bD29d42DA2c6D784": {
+    "protocolToken": {
+      "address": "0x8605dc0C339a2e7e85EEA043bD29d42DA2c6D784",
+      "name": "Curve.fi Factory USD Metapool: eUSD+FRAX/USDC (FRAXBP)",
+      "symbol": "eUSD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xAEda92e6A3B1028edc139A4ae56Ec881f3064D4F",
+        "name": "Curve.fi Factory USD Metapool: eUSD+FRAX/USDC (FRAXBP)",
+        "symbol": "eUSD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x4B6911E1aE9519640d417AcE509B9928D2F8377B": {
+    "protocolToken": {
+      "address": "0x4B6911E1aE9519640d417AcE509B9928D2F8377B",
+      "name": "Curve.fi Factory USD Metapool: STBT/3CRV",
+      "symbol": "STBT3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x892D701d94a43bDBCB5eA28891DaCA2Fa22A690b",
+        "name": "Curve.fi Factory USD Metapool: STBT/3CRV",
+        "symbol": "STBT3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xEEBC06d495c96E57542A6d829184A907A02ef602": {
+    "protocolToken": {
+      "address": "0xEEBC06d495c96E57542A6d829184A907A02ef602",
+      "name": "Curve.fi Factory Plain Pool: yCRV",
+      "symbol": "yCRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x99f5aCc8EC2Da2BC0771c32814EFF52b712de1E5",
+        "name": "Curve.fi Factory Plain Pool: yCRV",
+        "symbol": "yCRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xcb7CEB005dce5743026cDDaD2364d74f594b95A4": {
+    "protocolToken": {
+      "address": "0xcb7CEB005dce5743026cDDaD2364d74f594b95A4",
+      "name": "Curve.fi Factory USD Metapool: pUSDFRAXBP-A100",
+      "symbol": "pUSDFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xE60986759872393a8360A4a7abEAb3A6e0BA7848",
+        "name": "Curve.fi Factory USD Metapool: pUSDFRAXBP-A100",
+        "symbol": "pUSDFRAXBP3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xfB18127c1471131468a1AaD4785c19678e521D86": {
+    "protocolToken": {
+      "address": "0xfB18127c1471131468a1AaD4785c19678e521D86",
+      "name": "Curve.fi Factory Plain Pool: cvxCrv/Crv",
+      "symbol": "cvxcrv-crv-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x971add32Ea87f10bD192671630be3BE8A11b8623",
+        "name": "Curve.fi Factory Plain Pool: cvxCrv/Crv",
+        "symbol": "cvxcrv-crv-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x66915f81deaFcFbA171aEaa914c76A607437Dd4a": {
+    "protocolToken": {
+      "address": "0x66915f81deaFcFbA171aEaa914c76A607437Dd4a",
+      "name": "Curve.fi Factory Plain Pool: cvxFpis/Fpis",
+      "symbol": "cvxFpis-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xfBB481A443382416357fA81F16dB5A725DC6ceC8",
+        "name": "Curve.fi Factory Plain Pool: cvxFpis/Fpis",
+        "symbol": "cvxFpis-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x688Eb2C49D352c9448049A2263CFcE63D0918d3e": {
+    "protocolToken": {
+      "address": "0x688Eb2C49D352c9448049A2263CFcE63D0918d3e",
+      "name": "Curve.fi Factory Plain Pool: Stakehouse dETH / frxETH",
+      "symbol": "dETHfrxETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7C0d189E1FecB124487226dCbA3748bD758F98E4",
+        "name": "Curve.fi Factory Plain Pool: Stakehouse dETH / frxETH",
+        "symbol": "dETHfrxETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xB7A3C519889a916C5ecB54101E69ECf11DE60d0b": {
+    "protocolToken": {
+      "address": "0xB7A3C519889a916C5ecB54101E69ECf11DE60d0b",
+      "name": "Curve.fi Factory Plain Pool: msETH/frxETH",
+      "symbol": "msfrxETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2d600BbBcC3F1B6Cb9910A70BaB59eC9d5F81B9A",
+        "name": "Curve.fi Factory Plain Pool: msETH/frxETH",
+        "symbol": "msfrxETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xd03BE91b1932715709e18021734fcB91BB431715": {
+    "protocolToken": {
+      "address": "0xd03BE91b1932715709e18021734fcB91BB431715",
+      "name": "Curve.fi Factory Pool: OETH",
+      "symbol": "OETHCRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x94B17476A93b3262d87B9a326965D1E91f9c13E7",
+        "name": "Curve.fi Factory Pool: OETH",
+        "symbol": "OETHCRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x5fDdB41cF566F6305293B2c9ad0fAf70dEAF7992": {
+    "protocolToken": {
+      "address": "0x5fDdB41cF566F6305293B2c9ad0fAf70dEAF7992",
+      "name": "Curve.fi Factory Plain Pool: sdANGLE/ANGLE",
+      "symbol": "sdANGLElp-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x96AAE323E111A19b1E0e26F55e8De21F1dD01f26",
+        "name": "Curve.fi Factory Plain Pool: sdANGLE/ANGLE",
+        "symbol": "sdANGLElp-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x26F7786de3E6D9Bd37Fcf47BE6F2bC455a21b74A": {
+    "protocolToken": {
+      "address": "0x26F7786de3E6D9Bd37Fcf47BE6F2bC455a21b74A",
+      "name": "Curve.fi Factory Plain Pool: sdCRV/CRV",
+      "symbol": "sdCRVlp-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCA0253A98D16e9C1e3614caFDA19318EE69772D0",
+        "name": "Curve.fi Factory Plain Pool: sdCRV/CRV",
+        "symbol": "sdCRVlp-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x0060E266c2AF65bfc4fd51b04c93d952DF805630": {
+    "protocolToken": {
+      "address": "0x0060E266c2AF65bfc4fd51b04c93d952DF805630",
+      "name": "Curve.fi Factory Plain Pool: sdFXS/FXS",
+      "symbol": "sdFXSlp-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x71c91B173984d3955f7756914bBF9a7332538595",
+        "name": "Curve.fi Factory Plain Pool: sdFXS/FXS",
+        "symbol": "sdFXSlp-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x7292AfC5d77F988c873ca18F73CD96636c4Ac145": {
+    "protocolToken": {
+      "address": "0x7292AfC5d77F988c873ca18F73CD96636c4Ac145",
+      "name": "Curve.fi Factory Plain Pool: sdYFI/YFI",
+      "symbol": "sdYFIpool-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8",
+        "name": "Curve.fi Factory Plain Pool: sdYFI/YFI",
+        "symbol": "sdYFIpool-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x79F21BC30632cd40d2aF8134B469a0EB4C9574AA": {
+    "protocolToken": {
+      "address": "0x79F21BC30632cd40d2aF8134B469a0EB4C9574AA",
+      "name": "Curve.fi Factory Pool: stETH-ng",
+      "symbol": "stETH-ng-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x21E27a5E5513D6e65C4f830167390997aA84843a",
+        "name": "Curve.fi Factory Pool: stETH-ng",
+        "symbol": "stETH-ng-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x785dFF4aD2b6e55D150D335B46D567D854053dC8": {
+    "protocolToken": {
+      "address": "0x785dFF4aD2b6e55D150D335B46D567D854053dC8",
+      "name": "Curve.fi Factory Plain Pool: sdPENDLE",
+      "symbol": "sdPENDLElp-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x26f3f26F46cBeE59d1F8860865e13Aa39e36A8c0",
+        "name": "Curve.fi Factory Plain Pool: sdPENDLE",
+        "symbol": "sdPENDLElp-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8d5AF1F5DD3dC4B73e3A9Af682aDC3641FADE9a5": {
+    "protocolToken": {
+      "address": "0x8d5AF1F5DD3dC4B73e3A9Af682aDC3641FADE9a5",
+      "name": "Curve.fi Factory USD Metapool: GRAIFRAXBP",
+      "symbol": "GRAIFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3175f54A354C83e8ADe950c14FA3e32fc794c0Dc",
+        "name": "Curve.fi Factory USD Metapool: GRAIFRAXBP",
+        "symbol": "GRAIFRAXBP3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x4afE040E63A4be4ff09D75cE91B0B9B04ED50cd9": {
+    "protocolToken": {
+      "address": "0x4afE040E63A4be4ff09D75cE91B0B9B04ED50cd9",
+      "name": "Curve.fi Factory USD Metapool: USDV",
+      "symbol": "USDV3pool3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x52EBcE664aC1C3A1a5a0568599493C5d71f4772b",
+        "name": "Curve.fi Factory USD Metapool: USDV",
+        "symbol": "USDV3pool3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x0c58c509305a8a7fE9a6a60CEaAC6185B96ECBb7": {
+    "protocolToken": {
+      "address": "0x0c58c509305a8a7fE9a6a60CEaAC6185B96ECBb7",
+      "name": "Curve.fi Factory Plain Pool: cvxFxs/Fxs",
+      "symbol": "cvxfxs-fxs-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6a9014FB802dCC5efE3b97Fd40aAa632585636D0",
+        "name": "Curve.fi Factory Plain Pool: cvxFxs/Fxs",
+        "symbol": "cvxfxs-fxs-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x1Db233c2D10e6076d347f5FC87d575b4F8b88Ca7": {
+    "protocolToken": {
+      "address": "0x1Db233c2D10e6076d347f5FC87d575b4F8b88Ca7",
+      "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP",
+      "symbol": "DUSDFRAXBP3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3",
+        "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP",
+        "symbol": "DUSDFRAXBP3CRV-f",
         "decimals": 18
       }
     ]

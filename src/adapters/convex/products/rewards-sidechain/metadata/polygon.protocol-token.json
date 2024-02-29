@@ -284,5 +284,99 @@
         "decimals": 18
       }
     ]
+  },
+  "0x11F2217fa1D5c44Eae310b9b985E2964FC47D8f9": {
+    "protocolToken": {
+      "address": "0x11F2217fa1D5c44Eae310b9b985E2964FC47D8f9",
+      "name": "crvUSD/USDC Convex Deposit",
+      "symbol": "cvxcrvusdusdc",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+        "name": "CRV (PoS)",
+        "symbol": "CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x4257EA7637c355F81616050CbB6a9b709fd72683",
+        "name": "Convex Token (PoS)",
+        "symbol": "CVX",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3": {
+    "protocolToken": {
+      "address": "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3",
+      "name": "crvUSD/USDT Convex Deposit",
+      "symbol": "cvxcrvusdusdt",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+        "name": "CRV (PoS)",
+        "symbol": "CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x4257EA7637c355F81616050CbB6a9b709fd72683",
+        "name": "Convex Token (PoS)",
+        "symbol": "CVX",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xaCb744c7e7C95586DB83Eda3209e6483Fb1FCbA4": {
+    "protocolToken": {
+      "address": "0xaCb744c7e7C95586DB83Eda3209e6483Fb1FCbA4",
+      "name": "crvUSD/DAI Convex Deposit",
+      "symbol": "cvxcrvusddai",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+        "name": "CRV (PoS)",
+        "symbol": "CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x4257EA7637c355F81616050CbB6a9b709fd72683",
+        "name": "Convex Token (PoS)",
+        "symbol": "CVX",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xBFEE9F3E015adC754066424AEd535313dc764116": {
+    "protocolToken": {
+      "address": "0xBFEE9F3E015adC754066424AEd535313dc764116",
+      "name": "crvUSD/USDC.e Convex Deposit",
+      "symbol": "cvxcrvusdusde",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+        "name": "CRV (PoS)",
+        "symbol": "CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x4257EA7637c355F81616050CbB6a9b709fd72683",
+        "name": "Convex Token (PoS)",
+        "symbol": "CVX",
+        "decimals": 18
+      },
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      }
+    ]
   }
 }

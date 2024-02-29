@@ -111,34 +111,6 @@
       "decimals": 18
     }
   },
-  "0x08Cb71192985E936C7Cd166A8b268035e400c3c3": {
-    "protocolToken": {
-      "address": "0x08Cb71192985E936C7Cd166A8b268035e400c3c3",
-      "name": "Aave Polygon Stable Debt CRV",
-      "symbol": "stableDebtPolCRV",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
-      "name": "CRV (PoS)",
-      "symbol": "CRV",
-      "decimals": 18
-    }
-  },
-  "0x78246294a4c6fBf614Ed73CcC9F8b875ca8eE841": {
-    "protocolToken": {
-      "address": "0x78246294a4c6fBf614Ed73CcC9F8b875ca8eE841",
-      "name": "Aave Polygon Stable Debt SUSHI",
-      "symbol": "stableDebtPolSUSHI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a",
-      "name": "SushiToken (PoS)",
-      "symbol": "SUSHI",
-      "decimals": 18
-    }
-  },
   "0x3EF10DFf4928279c004308EbADc4Db8B7620d6fc": {
     "protocolToken": {
       "address": "0x3EF10DFf4928279c004308EbADc4Db8B7620d6fc",
@@ -150,34 +122,6 @@
       "address": "0x385Eeac5cB85A38A9a07A70c73e0a3271CfB54A7",
       "name": "Aavegotchi GHST Token (PoS)",
       "symbol": "GHST",
-      "decimals": 18
-    }
-  },
-  "0xa5e408678469d23efDB7694b1B0A85BB0669e8bd": {
-    "protocolToken": {
-      "address": "0xa5e408678469d23efDB7694b1B0A85BB0669e8bd",
-      "name": "Aave Polygon Stable Debt BAL",
-      "symbol": "stableDebtPolBAL",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3",
-      "name": "Balancer (PoS)",
-      "symbol": "BAL",
-      "decimals": 18
-    }
-  },
-  "0xDC1fad70953Bb3918592b6fCc374fe05F5811B6a": {
-    "protocolToken": {
-      "address": "0xDC1fad70953Bb3918592b6fCc374fe05F5811B6a",
-      "name": "Aave Polygon Stable Debt DPI",
-      "symbol": "stableDebtPolDPI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369",
-      "name": "DefiPulse Index (PoS)",
-      "symbol": "DPI",
       "decimals": 18
     }
   },

@@ -10,7 +10,7 @@
     "underlyingToken": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC",
+      "symbol": "USDC.E",
       "decimals": 6
     }
   },
@@ -84,7 +84,7 @@
     },
     "underlyingToken": {
       "address": "0x93b346b6BC2548dA6A1E7d98E9a421B42541425b",
-      "name": "LUSD Stablecoin",
+      "name": "Liquity USD",
       "symbol": "LUSD",
       "decimals": 18
     }

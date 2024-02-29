@@ -190,30 +190,17 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Convex]: {
-    // [Chain.Ethereum]: [
-    //   ConvexPoolAdapter,
-    //   ConvexStakingAdapter,
-    //   ConvexRewardsAdapter,
-    //   ConvexExtraRewardAdapter,
-    //   ConvexCvxcrvWrapperAdapter,
-    // ],
-    [Chain.Polygon]: [
-      // ConvexPoolAdapter,
+    [Chain.Ethereum]: [
+      ConvexPoolAdapter,
       ConvexStakingAdapter,
-      // ConvexRewardsAdapter,
-      // ConvexExtraRewardAdapter,
-      // ConvexCvxcrvWrapperAdapter,
+      ConvexRewardsAdapter,
+      ConvexExtraRewardAdapter,
+      ConvexCvxcrvWrapperAdapter,
+    ],
+    [Chain.Polygon]: [
       ConvexStakingSidechainAdapter,
       ConvexRewardsSidechainAdapter,
     ],
-    // [Chain.Arbitrum]: [
-    //   ConvexPoolAdapter,
-    //   ConvexStakingAdapter,
-    //   ConvexRewardsAdapter,
-    //   ConvexExtraRewardAdapter,
-    //   ConvexCvxcrvWrapperAdapter,
-    // ],
-
     [Chain.Arbitrum]: [
       ConvexStakingSidechainAdapter,
       ConvexRewardsSidechainAdapter,

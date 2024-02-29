@@ -13,13 +13,8 @@
       "assetDetails": {
         "type": "StandardErc20"
       },
-      "success": false,
-      "error": {
-        "message": "Metadata file not found",
-        "details": {
-          "name": "Error"
-        }
-      }
+      "success": true,
+      "tokens": []
     },
     {
       "protocolId": "curve",

@@ -78,5 +78,105 @@
       "symbol": "OP",
       "decimals": 18
     }
+  },
+  "0x472CeDE4a60CB6Bbc310664d6a23E58c23F877b9": {
+    "protocolToken": {
+      "address": "0x472CeDE4a60CB6Bbc310664d6a23E58c23F877b9",
+      "name": "Uniswap V2 WBTC / DINERO",
+      "symbol": "UNI-V2/WBTC/DINERO",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0xBe827F2975f2da78feb3683c558B143E3C6dCD07",
+      "name": "DINERO",
+      "symbol": "DINERO",
+      "decimals": 6
+    }
+  },
+  "0xFfee909C673b41E6F532CD1fF5D531fBAEE6CdcE": {
+    "protocolToken": {
+      "address": "0xFfee909C673b41E6F532CD1fF5D531fBAEE6CdcE",
+      "name": "Uniswap V2 WETH / LSD",
+      "symbol": "UNI-V2/WETH/LSD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xAb1047894dA4ec207c71bE0AEF5c7885e07B2DaF",
+      "name": "LSD DAO",
+      "symbol": "LSD",
+      "decimals": 18
+    }
+  },
+  "0xA7A8bFa77133a5A984c18e1CA898541D3C86A3D5": {
+    "protocolToken": {
+      "address": "0xA7A8bFa77133a5A984c18e1CA898541D3C86A3D5",
+      "name": "Uniswap V2 OP / SHIH",
+      "symbol": "UNI-V2/OP/SHIH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x9Fe7aC2F13B968c607fc0F2ad7EFB1FD1eDD9c36",
+      "name": "Shih Tzu",
+      "symbol": "SHIH",
+      "decimals": 18
+    }
+  },
+  "0x2f629782C58918252970Ab038D3FBD16E84D5076": {
+    "protocolToken": {
+      "address": "0x2f629782C58918252970Ab038D3FBD16E84D5076",
+      "name": "Uniswap V2 WETH / USDT",
+      "symbol": "UNI-V2/WETH/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x6728bfC6F086801C6fdAA8a3689fF498Ed071704": {
+    "protocolToken": {
+      "address": "0x6728bfC6F086801C6fdAA8a3689fF498Ed071704",
+      "name": "Uniswap V2 USDC / USDT",
+      "symbol": "UNI-V2/USDC/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
   }
 }
