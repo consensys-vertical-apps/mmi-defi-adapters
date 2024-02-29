@@ -31,6 +31,7 @@ import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
+import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
@@ -69,6 +70,7 @@ function runAllTests() {
   runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
   runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
   runProtocolTests(Protocol.StakeWise, stakeWiseTestCases)
+  runProtocolTests(Protocol.Xfai, xfaiTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

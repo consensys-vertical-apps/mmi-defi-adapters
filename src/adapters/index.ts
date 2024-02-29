@@ -43,6 +43,7 @@ import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { SyncswapPoolAdapter } from './syncswap/products/pool/syncswapPoolAdapter'
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
+import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -216,7 +217,6 @@ export const supportedProtocols: Record<
     [Chain.Avalanche]: [PricesV2UsdAdapter],
     [Chain.Base]: [PricesV2UsdAdapter],
   },
-
   [Protocol.UniswapV2]: {
     [Chain.Ethereum]: [UniswapV2PoolAdapter],
     [Chain.Optimism]: [UniswapV2PoolAdapter],
@@ -226,7 +226,6 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [UniswapV2PoolAdapter],
     [Chain.Avalanche]: [UniswapV2PoolAdapter],
   },
-
   [Protocol.SushiswapV2]: {
     [Chain.Ethereum]: [SushiswapV2PoolAdapter],
     [Chain.Bsc]: [SushiswapV2PoolAdapter],
@@ -236,8 +235,10 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [SushiswapV2PoolAdapter],
     [Chain.Avalanche]: [SushiswapV2PoolAdapter],
   },
-
   [Protocol.StakeWise]: {
     [Chain.Ethereum]: [StakewiseOsEthAdapter],
+  },
+  [Protocol.Xfai]: {
+    [Chain.Linea]: [XfaiDexAdapter],
   },
 }

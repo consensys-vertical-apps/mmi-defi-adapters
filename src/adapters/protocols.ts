@@ -24,5 +24,6 @@ export const Protocol = {
   UniswapV2: 'uniswap-v2',
   SushiswapV2: 'sushiswap-v2',
   StakeWise: 'stakewise',
+  Xfai: 'xfai',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
