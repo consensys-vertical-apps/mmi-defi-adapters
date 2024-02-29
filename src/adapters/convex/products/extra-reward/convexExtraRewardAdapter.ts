@@ -43,9 +43,9 @@ import { RewardPaidEvent } from '../../contracts/ConvexRewardTracker'
 import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
 import { convexFactoryAddresses } from '../staking/convexStakingAdapter'
 
-type RewardToken = { claimableTrackerAddress: string } & Erc20Metadata
+type RewardToken = { claimableTrackerAddress?: string } & Erc20Metadata
 
-type ConvexExtraRewardAdapterMetadata = Record<
+export type ConvexExtraRewardAdapterMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
@@ -111,7 +111,7 @@ export class ConvexExtraRewardAdapter
           }) => {
             const extraRewardTokenContract =
               ConvexRewardTracker__factory.connect(
-                claimableTrackerAddress,
+                claimableTrackerAddress ?? address,
                 this.provider,
               )
 
@@ -161,7 +161,7 @@ export class ConvexExtraRewardAdapter
     const responsePromises = protocolRewardTokens.map(
       async (extraRewardToken) => {
         const extraRewardTracker = ConvexRewardTracker__factory.connect(
-          extraRewardToken.claimableTrackerAddress,
+          extraRewardToken.claimableTrackerAddress ?? extraRewardToken.address,
           this.provider,
         )
 

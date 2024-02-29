@@ -4282,5 +4282,19 @@
       "symbol": "crvSTBT-f",
       "decimals": 18
     }
+  },
+  "0xFe4aC9cd3892BACbeA12C9185a577164f56831fD": {
+    "protocolToken": {
+      "address": "0xFe4aC9cd3892BACbeA12C9185a577164f56831fD",
+      "name": "Curve.fi Factory Plain Pool: ETHx/frxETH Convex Deposit",
+      "symbol": "cvxETHxfrxETH-f",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x4029f7DcBdF6059ed80DA6856526E7510D64fA21",
+      "name": "Curve.fi Factory Plain Pool: ETHx/frxETH",
+      "symbol": "ETHxfrxETH-f",
+      "decimals": 18
+    }
   }
 }

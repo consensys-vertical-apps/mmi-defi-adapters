@@ -13,6 +13,15 @@ export const testCases: TestCase[] = [
     },
   },
   {
+    chainId: Chain.Arbitrum,
+    method: 'positions',
+    blockNumber: 185725658,
+    input: {
+      userAddress: '0x3630220f243288e3eac4c5676fc191cff5756431',
+      filterProtocolTokens: [],
+    },
+  },
+  {
     chainId: Chain.Ethereum,
     key: 'position2',
     method: 'positions',

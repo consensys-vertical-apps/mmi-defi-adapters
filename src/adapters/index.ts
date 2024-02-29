@@ -15,7 +15,9 @@ import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/con
 import { ConvexExtraRewardAdapter } from './convex/products/extra-reward/convexExtraRewardAdapter'
 import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
 import { ConvexRewardsAdapter } from './convex/products/rewards/convexRewardsAdapter'
+import { ConvexRewardsSidechainAdapter } from './convex/products/rewards-sidechain/convexRewardsSidechainAdapter'
 import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAdapter'
+import { ConvexStakingSidechainAdapter } from './convex/products/staking-sidechain/convexStakingSidechainAdapter'
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
@@ -201,6 +203,8 @@ export const supportedProtocols: Record<
       // ConvexRewardsAdapter,
       // ConvexExtraRewardAdapter,
       // ConvexCvxcrvWrapperAdapter,
+      ConvexStakingSidechainAdapter,
+      ConvexRewardsSidechainAdapter,
     ],
     // [Chain.Arbitrum]: [
     //   ConvexPoolAdapter,
@@ -209,6 +213,11 @@ export const supportedProtocols: Record<
     //   ConvexExtraRewardAdapter,
     //   ConvexCvxcrvWrapperAdapter,
     // ],
+
+    [Chain.Arbitrum]: [
+      ConvexStakingSidechainAdapter,
+      ConvexRewardsSidechainAdapter,
+    ],
   },
 
   [Protocol.IZiSwap]: {

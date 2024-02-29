@@ -1,0 +1,118 @@
+{
+  "blockNumber": 18539366,
+  "snapshot": [
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": []
+    },
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "staking",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xD1DdB0a0815fD28932fBb194C84003683AF8a824",
+          "name": "Curve.fi Factory Plain Pool: crvUSD/USDT Convex Deposit",
+          "symbol": "cvxcrvUSDUSDT-f",
+          "decimals": 18,
+          "balanceRaw": "6970662046145027939497916n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x390f3595bCa2Df7d23783dFd126427CCeb997BF4",
+              "name": "Curve.fi Factory Plain Pool: crvUSD/USDT",
+              "symbol": "crvUSDUSDT-f",
+              "decimals": 18,
+              "balanceRaw": "6970662046145027939497916n",
+              "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                  "name": "Tether USD",
+                  "symbol": "USDT",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "2189359476777n",
+                  "balance": 2189359.476777,
+                  "price": 1.003910975956301,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                },
+                {
+                  "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+                  "name": "Curve.Fi USD Stablecoin",
+                  "symbol": "crvUSD",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "4813133228261340197288932n",
+                  "balance": 4813133.22826134,
+                  "price": 0.9978191194776866,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E/logo.png"
+                }
+              ],
+              "balance": 6970662.0461450275,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x390f3595bCa2Df7d23783dFd126427CCeb997BF4/logo.png"
+            },
+            {
+              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "2106387683585251059371n",
+              "balance": 2106.387683585251,
+              "price": 0.5653563303263497,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+            },
+            {
+              "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "type": "underlying-claimable",
+              "balanceRaw": "18957489152267259534n",
+              "balance": 18.95748915226726,
+              "price": 3.6321874986640674,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png"
+            }
+          ],
+          "balance": 6970662.0461450275
+        }
+      ]
+    },
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "cvxcrv-wrapper",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": []
+    }
+  ]
+}

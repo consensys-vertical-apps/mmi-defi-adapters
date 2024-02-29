@@ -42,7 +42,7 @@ export const convexFactoryAddresses = {
   [Chain.Polygon]: '0xF403C135812408BFbE8713b5A23a04b3D48AAE31',
 }
 
-type ConvexStakingAdapterMetadata = Record<
+export type ConvexStakingAdapterMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
@@ -70,6 +70,12 @@ export class ConvexStakingAdapter
         type: AssetType.StandardErc20,
       },
     }
+  }
+
+  getPositionsWithoutRewards(
+    input: GetPositionsInput,
+  ): Promise<ProtocolPosition[]> {
+    return super.getPositions(input)
   }
 
   @AddClaimableRewards({ rewardAdapterIds: ['extra-reward', 'rewards'] })

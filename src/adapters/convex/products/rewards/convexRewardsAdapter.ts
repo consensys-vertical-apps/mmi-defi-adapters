@@ -40,7 +40,7 @@ import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
 import { ConvexRewardsFactory__factory } from '../../contracts/factories/ConvexRewardsFactory__factory'
 import { convexFactoryAddresses } from '../staking/convexStakingAdapter'
 
-type ConvexExtraRewardAdapterMetadata = Record<
+export type ConvexExtraRewardAdapterMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata

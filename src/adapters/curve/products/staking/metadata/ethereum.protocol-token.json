@@ -127,38 +127,6 @@
       }
     ]
   },
-  "0xeA012f5b25Fa0D8e46123B85f585d0A5075e96b5": {
-    "protocolToken": {
-      "address": "0xeA012f5b25Fa0D8e46123B85f585d0A5075e96b5",
-      "name": "TryLSD",
-      "symbol": "TryLSD",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2570f1bD5D2735314FC102eb12Fc1aFe9e6E7193",
-        "name": "TryLSD",
-        "symbol": "TryLSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x2DD2b7E07dD433B758B98A3889a63cbF48ef0D99": {
-    "protocolToken": {
-      "address": "0x2DD2b7E07dD433B758B98A3889a63cbF48ef0D99",
-      "name": "triSDT",
-      "symbol": "triSDT",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x954313005C56b555bdC41B84D6c63B69049d7847",
-        "name": "triSDT",
-        "symbol": "triSDT",
-        "decimals": 18
-      }
-    ]
-  },
   "0x5ccDe4BEC0F4006c3826b51EDF0D227D12EA33FA": {
     "protocolToken": {
       "address": "0x5ccDe4BEC0F4006c3826b51EDF0D227D12EA33FA",
@@ -1087,22 +1055,6 @@
       }
     ]
   },
-  "0x5439Dda1cE6A4A5222dB85bB2cAf0AB32c815Be6": {
-    "protocolToken": {
-      "address": "0x5439Dda1cE6A4A5222dB85bB2cAf0AB32c815Be6",
-      "name": "Curve.fi Factory USD Metapool: PAYPALFRAXBP",
-      "symbol": "PPFRAXBP3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x61fA2c947e523F9ABfb8d7e2903A5D5218C119a7",
-        "name": "Curve.fi Factory USD Metapool: PAYPALFRAXBP",
-        "symbol": "PPFRAXBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
   "0xF184d80915Ba7d835D941BA70cDdf93DE36517ee": {
     "protocolToken": {
       "address": "0xF184d80915Ba7d835D941BA70cDdf93DE36517ee",
@@ -1967,22 +1919,6 @@
       }
     ]
   },
-  "0x4426027fEeb7d958498766A792AFE595b64bbFa1": {
-    "protocolToken": {
-      "address": "0x4426027fEeb7d958498766A792AFE595b64bbFa1",
-      "name": "Curve.fi Factory Crypto Pool: fETH/crvUSD",
-      "symbol": "feth-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x19033d99A7b7010157b81e5eE5A8E63A583fB735",
-        "name": "Curve.fi Factory Crypto Pool: fETH/crvUSD",
-        "symbol": "feth-f",
-        "decimals": 18
-      }
-    ]
-  },
   "0x378e249F4F7007Bd90c2186240374D512B839770": {
     "protocolToken": {
       "address": "0x378e249F4F7007Bd90c2186240374D512B839770",
@@ -2619,6 +2555,38 @@
         "address": "0x86bF09aCB47AB31686bE413d614E9ded3666a1d3",
         "name": "TriSILO",
         "symbol": "crvUSDETHSILO",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xeA012f5b25Fa0D8e46123B85f585d0A5075e96b5": {
+    "protocolToken": {
+      "address": "0xeA012f5b25Fa0D8e46123B85f585d0A5075e96b5",
+      "name": "TryLSD",
+      "symbol": "TryLSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2570f1bD5D2735314FC102eb12Fc1aFe9e6E7193",
+        "name": "TryLSD",
+        "symbol": "TryLSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x2DD2b7E07dD433B758B98A3889a63cbF48ef0D99": {
+    "protocolToken": {
+      "address": "0x2DD2b7E07dD433B758B98A3889a63cbF48ef0D99",
+      "name": "triSDT",
+      "symbol": "triSDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x954313005C56b555bdC41B84D6c63B69049d7847",
+        "name": "triSDT",
+        "symbol": "triSDT",
         "decimals": 18
       }
     ]

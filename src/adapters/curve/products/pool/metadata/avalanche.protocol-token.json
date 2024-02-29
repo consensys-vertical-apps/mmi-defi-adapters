@@ -184,6 +184,35 @@
     ],
     "lpTokenManager": "0x6BF6fc7EaF84174bb7e1610Efd865f0eBD2AA96D"
   },
+  "0x1da20Ac34187b2d9c74F729B85acB225D3341b25": {
+    "protocolToken": {
+      "address": "0x1da20Ac34187b2d9c74F729B85acB225D3341b25",
+      "name": "Curve.fi Factory Plain Pool: YUSD Pool",
+      "symbol": "YUSDCRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x111111111111ed1D73f860F57b2798b683f2d325",
+        "name": "YUSD Stablecoin",
+        "symbol": "YUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
+        "name": "TetherToken",
+        "symbol": "USDt",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x1da20Ac34187b2d9c74F729B85acB225D3341b25"
+  },
   "0x1daB6560494B04473A0BE3E7D83CF3Fdf3a51828": {
     "protocolToken": {
       "address": "0x1daB6560494B04473A0BE3E7D83CF3Fdf3a51828",

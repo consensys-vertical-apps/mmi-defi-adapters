@@ -66,13 +66,7 @@ export class ConvexPoolAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    // const convexFactory = ConvexFactory__factory.connect(
-    //   convexFactoryAddresses[
-    //     this.chainId as keyof typeof convexFactoryAddresses
-    //   ],
-    //   this.provider,
-    // )
-    const convexFactory = ConvexFactoryV2__factory.connect(
+    const convexFactory = ConvexFactory__factory.connect(
       convexFactoryAddresses[
         this.chainId as keyof typeof convexFactoryAddresses
       ],

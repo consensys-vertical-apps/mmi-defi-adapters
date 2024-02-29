@@ -65,6 +65,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
+    console.log('getPositions', this.chainId)
     const protocolTokens = await this.getProtocolTokens()
 
     return filterMapAsync(protocolTokens, async (protocolToken) => {
@@ -109,9 +110,8 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddress,
   }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
-    const protocolTokenMetadata = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolTokenMetadata =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const underlyingTokenConversionRate =
       await this.getUnderlyingTokenConversionRate(
@@ -135,12 +135,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      underlyingTokens:
+        await this.fetchUnderlyingTokensMetadata(protocolTokenAddress),
       filter: {
         smartContractAddress: protocolTokenAddress,
         fromBlock,
@@ -159,12 +157,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      underlyingTokens:
+        await this.fetchUnderlyingTokensMetadata(protocolTokenAddress),
       filter: {
         smartContractAddress: protocolTokenAddress,
         fromBlock,
@@ -182,12 +178,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      underlyingTokens:
+        await this.fetchUnderlyingTokensMetadata(protocolTokenAddress),
       filter: {
         smartContractAddress: protocolTokenAddress,
         fromBlock,
@@ -206,12 +200,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
+      underlyingTokens:
+        await this.fetchUnderlyingTokensMetadata(protocolTokenAddress),
       filter: {
         smartContractAddress: protocolTokenAddress,
         fromBlock,

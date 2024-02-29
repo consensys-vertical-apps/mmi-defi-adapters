@@ -35,7 +35,13 @@ import ConvexCvxcrvWrapperEthereumProtocolToken from '../../adapters/convex/prod
 import ConvexExtraRewardEthereumProtocolToken from '../../adapters/convex/products/extra-reward/metadata/ethereum.protocol-token.json'
 import ConvexPoolEthereumProtocolToken from '../../adapters/convex/products/pool/metadata/ethereum.protocol-token.json'
 import ConvexRewardsEthereumProtocolToken from '../../adapters/convex/products/rewards/metadata/ethereum.protocol-token.json'
+import ConvexRewardsSidechainArbitrumProtocolToken from '../../adapters/convex/products/rewards-sidechain/metadata/arbitrum.protocol-token.json'
+import ConvexRewardsSidechainPolygonProtocolToken from '../../adapters/convex/products/rewards-sidechain/metadata/polygon.protocol-token.json'
+import ConvexStakingArbitrumProtocolToken from '../../adapters/convex/products/staking/metadata/arbitrum.protocol-token.json'
 import ConvexStakingEthereumProtocolToken from '../../adapters/convex/products/staking/metadata/ethereum.protocol-token.json'
+import ConvexStakingPolygonProtocolToken from '../../adapters/convex/products/staking/metadata/polygon.protocol-token.json'
+import ConvexStakingSidechainArbitrumProtocolToken from '../../adapters/convex/products/staking-sidechain/metadata/arbitrum.protocol-token.json'
+import ConvexStakingSidechainPolygonProtocolToken from '../../adapters/convex/products/staking-sidechain/metadata/polygon.protocol-token.json'
 import CurvePoolArbitrumProtocolToken from '../../adapters/curve/products/pool/metadata/arbitrum.protocol-token.json'
 import CurvePoolAvalancheProtocolToken from '../../adapters/curve/products/pool/metadata/avalanche.protocol-token.json'
 import CurvePoolBaseProtocolToken from '../../adapters/curve/products/pool/metadata/base.protocol-token.json'
@@ -671,6 +677,7 @@ export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
       protocolId: Protocol.Curve,
+
       productId: 'staking',
       chainId: Chain.Polygon,
       fileKey: 'protocol-token',
@@ -793,6 +800,61 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CurveRewardAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'reward',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+
+    ConvexStakingPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'staking',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexStakingArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'staking-sidechain',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    ConvexStakingSidechainPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'staking-sidechain',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexStakingSidechainArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'rewards-sidechain',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    ConvexRewardsSidechainPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'rewards-sidechain',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexRewardsSidechainArbitrumProtocolToken,
   ],
 ])
 

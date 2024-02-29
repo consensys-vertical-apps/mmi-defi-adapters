@@ -3,13 +3,17 @@
 /* eslint-disable */
 export type { ConvexFactory } from "./ConvexFactory";
 export type { ConvexFactoryV2 } from "./ConvexFactoryV2";
+export type { ConvexFactorySidechain } from "./ConvexFactorySidechain";
+export type { ConvexRewardFactorySidechain } from "./ConvexRewardFactorySidechain";
 export type { ConvexRewardTracker } from "./ConvexRewardTracker";
 export type { ConvexRewardsFactory } from "./ConvexRewardsFactory";
 export type { CvxMint } from "./CvxMint";
 export type { CvxcrvWrapper } from "./CvxcrvWrapper";
 export * as factories from "./factories";
 export { ConvexFactoryV2__factory } from "./factories/ConvexFactoryV2__factory";
+export { ConvexFactorySidechain__factory } from "./factories/ConvexFactorySidechain__factory";
 export { ConvexFactory__factory } from "./factories/ConvexFactory__factory";
+export { ConvexRewardFactorySidechain__factory } from "./factories/ConvexRewardFactorySidechain__factory";
 export { ConvexRewardTracker__factory } from "./factories/ConvexRewardTracker__factory";
 export { ConvexRewardsFactory__factory } from "./factories/ConvexRewardsFactory__factory";
 export { CvxMint__factory } from "./factories/CvxMint__factory";
