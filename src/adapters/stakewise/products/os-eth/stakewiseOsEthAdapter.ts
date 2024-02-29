@@ -39,17 +39,13 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
   }
 
   private async getVaultsRegistryAddress(): Promise<string> {
-    const address = await getAddress(
-      '0x3a0008a588772446f6e656133C2D5029CC4FC20E',
-    )
+    const address = getAddress('0x3a0008a588772446f6e656133C2D5029CC4FC20E')
 
     return address
   }
 
   private async getOsEthControllerAddress(): Promise<string> {
-    const address = await getAddress(
-      '0x2A261e60FB14586B474C208b1B7AC6D0f5000306',
-    )
+    const address = getAddress('0x2A261e60FB14586B474C208b1B7AC6D0f5000306')
 
     return address
   }
@@ -77,9 +73,7 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
   }
 
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
-    const address = await getAddress(
-      '0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38',
-    )
+    const address = getAddress('0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38')
 
     const data: Erc20Metadata = {
       name: 'StakeWise osETH',
@@ -146,8 +140,9 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
       vaultsRegistryContract.filters['VaultAdded(address,address)'](),
     ])
 
+    const vaultsRegistryDeploymentBlock = 18470079
     const logs = await this.provider.getLogs({
-      fromBlock: 18470079,
+      fromBlock: vaultsRegistryDeploymentBlock,
       toBlock: blockNumber || 'latest',
       address: vaultsRegistryAddress,
       topics: await topic.getTopicFilter(),
