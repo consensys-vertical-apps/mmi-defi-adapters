@@ -153,21 +153,26 @@ export class CurveStakingAdapter
       protocolTokenAddress,
     )
 
-    return await this.getMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
+
+    const movements = await this.getProtocolTokenMovements({
+      protocolToken: underlyingLpToken!, // curve staking contracts dont have transfer events
+
       filter: {
-        smartContractAddress: underlyingLpToken!.address, // curve staking contracts dont have transfer events
         fromBlock,
         toBlock,
         from: userAddress,
         to: protocolTokenAddress,
       },
     })
+
+    movements.forEach((movement) => {
+      movement.protocolToken = protocolToken
+    })
+
+    return movements
   }
 
   @ResolveUnderlyingMovements
@@ -181,21 +186,26 @@ export class CurveStakingAdapter
     const [underlyingLpToken] = await this.fetchUnderlyingTokensMetadata(
       protocolTokenAddress,
     )
-    return await this.getMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+
+    const protocolToken = await this.fetchProtocolTokenMetadata(
+      protocolTokenAddress,
+    )
+    const movements = await this.getProtocolTokenMovements({
+      protocolToken: underlyingLpToken!, // curve staking contracts dont have transfer events
+
       filter: {
-        smartContractAddress: underlyingLpToken!.address, // curve staking contracts dont have transfer events
         fromBlock,
         toBlock,
         from: protocolTokenAddress,
         to: userAddress,
       },
     })
+
+    movements.forEach((movement) => {
+      movement.protocolToken = protocolToken
+    })
+
+    return movements
   }
 
   protected async fetchUnderlyingTokensMetadata(
