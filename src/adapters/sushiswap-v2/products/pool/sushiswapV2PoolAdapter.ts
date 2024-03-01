@@ -24,7 +24,7 @@ export class SushiswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.NonStandardErc20,
+        type: AssetType.StandardErc20,
       },
     }
   }

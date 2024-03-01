@@ -392,15 +392,12 @@ export class GMXGlpAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
+    return await this.getProtocolTokenMovements({
       protocolToken: await this.fetchProtocolTokenMetadata(
         protocolTokenAddress,
       ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+
       filter: {
-        smartContractAddress: protocolTokenAddress,
         fromBlock,
         toBlock,
         from: ZERO_ADDRESS,
@@ -416,15 +413,12 @@ export class GMXGlpAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
+    return await this.getProtocolTokenMovements({
       protocolToken: await this.fetchProtocolTokenMetadata(
         protocolTokenAddress,
       ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+
       filter: {
-        smartContractAddress: protocolTokenAddress,
         fromBlock,
         toBlock,
         from: userAddress,

@@ -23,15 +23,27 @@
         },
         "tokens": [
           {
-            "address": "0x0000000000000000000000000000000000000000",
-            "name": "Ethereum",
-            "symbol": "ETH",
+            "name": "StakeWise osETH",
+            "symbol": "osETH",
             "decimals": 18,
-            "balanceRaw": "1008198312106n",
+            "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
+            "balanceRaw": "1000000000000n",
             "type": "underlying",
             "blockNumber": 19261916,
-            "price": 2918.27,
-            "balance": 0.000001008198312106
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "1008198312106n",
+                "balance": 0.000001008198312106,
+                "price": 2918.27,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 0.000001
           }
         ],
         "blockNumber": 19261916

@@ -23,15 +23,27 @@
         },
         "tokens": [
           {
-            "address": "0x0000000000000000000000000000000000000000",
-            "name": "Ethereum",
-            "symbol": "ETH",
+            "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
+            "name": "Swell Ethereum",
+            "symbol": "SWETH",
             "decimals": 18,
-            "balanceRaw": "2499999999999999997n",
+            "balanceRaw": "2397006126796776282n",
             "type": "underlying",
             "blockNumber": 18640807,
-            "price": 2109.06,
-            "balance": 2.5
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "2499999999999999997n",
+                "balance": 2.5,
+                "price": 2109.06,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 2.3970061267967764
           }
         ],
         "blockNumber": 18640807

@@ -49,4 +49,18 @@ export const testCases: TestCase[] = [
 
     blockNumber: 19326319,
   },
+  {
+    chainId: Chain.Ethereum,
+    method: 'profits',
+    key: 'include-raw',
+    input: {
+      userAddress: '0x1F14bE60172b40dAc0aD9cD72F6f0f2C245992e8',
+      timePeriod: TimePeriod.sevenDays,
+
+      filterProtocolTokens: ['0x397FF1542f962076d0BFE58eA045FfA2d347ACa0'],
+      includeRawValues: true,
+    },
+
+    blockNumber: 19326319,
+  },
 ]
