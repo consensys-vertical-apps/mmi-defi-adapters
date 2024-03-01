@@ -89,9 +89,9 @@
               "name": "Arbitrum",
               "symbol": "ARB",
               "decimals": 18,
-              "balanceRaw": "219548334458180599975n",
+              "balanceRaw": "220444883089234886989n",
               "type": "underlying-claimable",
-              "balance": 219.5483344581806,
+              "balance": 220.44488308923488,
               "price": 1.9957665045441455,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
             }
@@ -268,9 +268,9 @@
               "name": "Arbitrum",
               "symbol": "ARB",
               "decimals": 18,
-              "balanceRaw": "27759437052407843934n",
+              "balanceRaw": "27802417289344361615n",
               "type": "underlying-claimable",
-              "balance": 27.759437052407844,
+              "balance": 27.802417289344362,
               "price": 1.9957665045441455,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
             },
@@ -334,9 +334,9 @@
               "name": "Arbitrum",
               "symbol": "ARB",
               "decimals": 18,
-              "balanceRaw": "4386922429671695n",
+              "balanceRaw": "4394770552924640n",
               "type": "underlying-claimable",
-              "balance": 0.004386922429671695,
+              "balance": 0.00439477055292464,
               "price": 1.9957665045441455,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
             },
