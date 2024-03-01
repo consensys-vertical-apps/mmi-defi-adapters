@@ -157,8 +157,9 @@ export class CurveStakingAdapter
       protocolTokenAddress,
     )
 
+    //// curve staking contracts dont have transfer events so use underlying lp token events instead
     const movements = await this.getProtocolTokenMovements({
-      protocolToken: underlyingLpToken!, // curve staking contracts dont have transfer events
+      protocolToken: underlyingLpToken!,
 
       filter: {
         fromBlock,
@@ -190,8 +191,10 @@ export class CurveStakingAdapter
     const protocolToken = await this.fetchProtocolTokenMetadata(
       protocolTokenAddress,
     )
+
+    //// curve staking contracts dont have transfer events so use underlying lp token events instead
     const movements = await this.getProtocolTokenMovements({
-      protocolToken: underlyingLpToken!, // curve staking contracts dont have transfer events
+      protocolToken: underlyingLpToken!,
 
       filter: {
         fromBlock,

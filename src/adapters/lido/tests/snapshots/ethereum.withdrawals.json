@@ -23,14 +23,26 @@
         },
         "tokens": [
           {
-            "address": "0x0000000000000000000000000000000000000000",
-            "symbol": "ETH",
-            "name": "Ethereum",
+            "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+            "name": "Liquid staked Ether 2.0",
+            "symbol": "stETH",
             "decimals": 18,
             "balanceRaw": "70819350317881835n",
             "type": "underlying",
             "blockNumber": 16738529,
-            "price": 1649.1,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "70819350317881835n",
+                "balance": 0.07081935031788184,
+                "price": 1649.1,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
             "balance": 0.07081935031788184
           }
         ],

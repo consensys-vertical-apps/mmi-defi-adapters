@@ -111,7 +111,7 @@
       "chainId": 1,
       "productId": "stable-debt-token",
       "assetDetails": {
-        "type": "NonStandardErc20"
+        "type": "StandardErc20"
       },
       "success": true,
       "tokens": [
@@ -211,7 +211,7 @@
       "chainId": 1,
       "productId": "variable-debt-token",
       "assetDetails": {
-        "type": "NonStandardErc20"
+        "type": "StandardErc20"
       },
       "success": true,
       "tokens": [

@@ -9,7 +9,7 @@
     "chainId": 1,
     "productId": "variable-debt-token",
     "assetDetails": {
-      "type": "NonStandardErc20"
+      "type": "StandardErc20"
     },
     "success": true,
     "movements": [
@@ -23,14 +23,26 @@
         },
         "tokens": [
           {
-            "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-            "name": "Tether USD",
-            "symbol": "USDT",
+            "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
+            "name": "Aave variable debt bearing USDT",
+            "symbol": "variableDebtUSDT",
             "decimals": 6,
             "balanceRaw": "250000000000n",
             "type": "underlying",
             "blockNumber": 19262682,
-            "price": 1.002887931056342,
+            "tokens": [
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "name": "Tether USD",
+                "symbol": "USDT",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "250000000000n",
+                "balance": 250000,
+                "price": 1.002887931056342,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+              }
+            ],
             "balance": 250000
           }
         ],

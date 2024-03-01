@@ -1,0 +1,578 @@
+{
+  "blockNumber": 19326319,
+  "snapshot": [
+    {
+      "protocolId": "sushiswap-v2",
+      "name": "SushiswapV2",
+      "description": "SushiswapV2 pool adapter",
+      "siteUrl": "https://www.sushi.com/pool",
+      "iconUrl": "https://cryptologos.cc/logos/sushiswap-sushi-logo.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+          "name": "SushiSwap LP Token USDC / WETH",
+          "symbol": "SLP/USDC/WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 1102.0192981122073,
+          "performance": 0.07543387817399563,
+          "calculationData": {
+            "withdrawals": 31149.51894784742,
+            "deposits": 31150.92964322033,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 14607.665820225184,
+            "endPositionValue": 15711.0958137103
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                "name": "SushiSwap LP Token USDC / WETH",
+                "symbol": "SLP/USDC/WETH",
+                "decimals": 18,
+                "balanceRaw": "75627703759563n",
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "type": "underlying",
+                    "balanceRaw": "7819533237n",
+                    "balance": 7819.533237,
+                    "price": 1.0066860902991404,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                    "name": "Wrapped Ether",
+                    "symbol": "WETH",
+                    "decimals": 18,
+                    "type": "underlying",
+                    "balanceRaw": "2336101889433410215n",
+                    "balance": 2.3361018894334102,
+                    "price": 3355.71,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                  }
+                ],
+                "balance": 0.000075627703759563
+              }
+            ],
+            "rawStartPositionValues": [
+              {
+                "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                "name": "SushiSwap LP Token USDC / WETH",
+                "symbol": "SLP/USDC/WETH",
+                "decimals": 18,
+                "balanceRaw": "75627703759563n",
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "type": "underlying",
+                    "balanceRaw": "7295247295n",
+                    "balance": 7295.247295,
+                    "price": 1.0018633827654464,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                    "name": "Wrapped Ether",
+                    "symbol": "WETH",
+                    "decimals": 18,
+                    "type": "underlying",
+                    "balanceRaw": "2498736018754641008n",
+                    "balance": 2.498736018754641,
+                    "price": 2921.00671394,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                  }
+                ],
+                "balance": 0.000075627703759563
+              }
+            ],
+            "rawWithdrawals": [
+              {
+                "transactionHash": "0xa216ec989b71141b1e8b5128b436b6be73d424d966044e2bf92263bd7f13c5b1",
+                "protocolToken": {
+                  "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                  "name": "SushiSwap LP Token USDC / WETH",
+                  "symbol": "SLP/USDC/WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                    "name": "SushiSwap LP Token USDC / WETH",
+                    "symbol": "SLP/USDC/WETH",
+                    "decimals": 18,
+                    "balanceRaw": "144492338406500n",
+                    "type": "underlying",
+                    "blockNumber": 19280449,
+                    "tokens": [
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "13941747475n",
+                        "balance": 13941.747475,
+                        "price": 1.0001226499001397,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                        "name": "Wrapped Ether",
+                        "symbol": "WETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "4773762604521943728n",
+                        "balance": 4.773762604521944,
+                        "price": 2921.505582,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                      }
+                    ],
+                    "balance": 0.0001444923384065
+                  }
+                ],
+                "blockNumber": 19280449
+              },
+              {
+                "transactionHash": "0x39541b31cd95f36085e7b49147cd983c1528ed388c36225bf6e3c18fe34da772",
+                "protocolToken": {
+                  "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                  "name": "SushiSwap LP Token USDC / WETH",
+                  "symbol": "SLP/USDC/WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                    "name": "SushiSwap LP Token USDC / WETH",
+                    "symbol": "SLP/USDC/WETH",
+                    "decimals": 18,
+                    "balanceRaw": "8565601997600n",
+                    "type": "underlying",
+                    "blockNumber": 19287581,
+                    "tokens": [
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "829378646n",
+                        "balance": 829.378646,
+                        "price": 0.994655415985356,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                        "name": "Wrapped Ether",
+                        "symbol": "WETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "282079004978916123n",
+                        "balance": 0.28207900497891614,
+                        "price": 2939.18,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                      }
+                    ],
+                    "balance": 0.0000085656019976
+                  }
+                ],
+                "blockNumber": 19287581
+              },
+              {
+                "transactionHash": "0x1a31e5fc654e344aa509f10ec644592ef36fc69d3b2147a4b0b0660713aaceb0",
+                "protocolToken": {
+                  "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                  "name": "SushiSwap LP Token USDC / WETH",
+                  "symbol": "SLP/USDC/WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                    "name": "SushiSwap LP Token USDC / WETH",
+                    "symbol": "SLP/USDC/WETH",
+                    "decimals": 18,
+                    "balanceRaw": "1060477744100n",
+                    "type": "underlying",
+                    "blockNumber": 19294725,
+                    "tokens": [
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "102322361n",
+                        "balance": 102.322361,
+                        "price": 0.9967226180653648,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                        "name": "Wrapped Ether",
+                        "symbol": "WETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "35054148863114030n",
+                        "balance": 0.03505414886311403,
+                        "price": 2920.06258,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                      }
+                    ],
+                    "balance": 0.0000010604777441
+                  }
+                ],
+                "blockNumber": 19294725
+              },
+              {
+                "transactionHash": "0xa0ec1e07e71266f0000f61554f0a78d705fae1075eb788b6b929084cddaacaa9",
+                "protocolToken": {
+                  "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                  "name": "SushiSwap LP Token USDC / WETH",
+                  "symbol": "SLP/USDC/WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                    "name": "SushiSwap LP Token USDC / WETH",
+                    "symbol": "SLP/USDC/WETH",
+                    "decimals": 18,
+                    "balanceRaw": "1405884975700n",
+                    "type": "underlying",
+                    "blockNumber": 19301878,
+                    "tokens": [
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "138128499n",
+                        "balance": 138.128499,
+                        "price": 1.0021705759137824,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                        "name": "Wrapped Ether",
+                        "symbol": "WETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "45646303515571108n",
+                        "balance": 0.045646303515571106,
+                        "price": 3022.9,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                      }
+                    ],
+                    "balance": 0.0000014058849757
+                  }
+                ],
+                "blockNumber": 19301878
+              },
+              {
+                "transactionHash": "0x62ae47936169b64443320d06d82bcaa7f91a174ec863cee5a68758d01fa8c20b",
+                "protocolToken": {
+                  "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                  "name": "SushiSwap LP Token USDC / WETH",
+                  "symbol": "SLP/USDC/WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                    "name": "SushiSwap LP Token USDC / WETH",
+                    "symbol": "SLP/USDC/WETH",
+                    "decimals": 18,
+                    "balanceRaw": "5508971252700n",
+                    "type": "underlying",
+                    "blockNumber": 19316169,
+                    "tokens": [
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "560374352n",
+                        "balance": 560.374352,
+                        "price": 1.0075200014522572,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                        "name": "Wrapped Ether",
+                        "symbol": "WETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "172863488215298574n",
+                        "balance": 0.17286348821529857,
+                        "price": 3240.2,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                      }
+                    ],
+                    "balance": 0.0000055089712527
+                  }
+                ],
+                "blockNumber": 19316169
+              }
+            ],
+            "rawDeposits": [
+              {
+                "transactionHash": "0x280aae8ddf3162761c9b287476df9355cca88739a5d19228f5270c66968ea736",
+                "protocolToken": {
+                  "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                  "name": "SushiSwap LP Token USDC / WETH",
+                  "symbol": "SLP/USDC/WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                    "name": "SushiSwap LP Token USDC / WETH",
+                    "symbol": "SLP/USDC/WETH",
+                    "decimals": 18,
+                    "balanceRaw": "144492338406500n",
+                    "type": "underlying",
+                    "blockNumber": 19280444,
+                    "tokens": [
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "13941867820n",
+                        "balance": 13941.86782,
+                        "price": 1.000123142127679,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                        "name": "Wrapped Ether",
+                        "symbol": "WETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "4774069461288849382n",
+                        "balance": 4.77406946128885,
+                        "price": 2921.505582,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                      }
+                    ],
+                    "balance": 0.0001444923384065
+                  }
+                ],
+                "blockNumber": 19280444
+              },
+              {
+                "transactionHash": "0x05636276ab38bb76bccb64c91ae645d4f6e759230e8d4a9ec9caa8142cfd1f7c",
+                "protocolToken": {
+                  "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                  "name": "SushiSwap LP Token USDC / WETH",
+                  "symbol": "SLP/USDC/WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                    "name": "SushiSwap LP Token USDC / WETH",
+                    "symbol": "SLP/USDC/WETH",
+                    "decimals": 18,
+                    "balanceRaw": "8565601997600n",
+                    "type": "underlying",
+                    "blockNumber": 19287576,
+                    "tokens": [
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "829401024n",
+                        "balance": 829.401024,
+                        "price": 0.9950533563207524,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                        "name": "Wrapped Ether",
+                        "symbol": "WETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "282086615985738618n",
+                        "balance": 0.28208661598573864,
+                        "price": 2939.18,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                      }
+                    ],
+                    "balance": 0.0000085656019976
+                  }
+                ],
+                "blockNumber": 19287576
+              },
+              {
+                "transactionHash": "0x05992477a6c7cb8999b8e7ab3ec5ccd6b4b5d2091def184eb1e1250faae0b779",
+                "protocolToken": {
+                  "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                  "name": "SushiSwap LP Token USDC / WETH",
+                  "symbol": "SLP/USDC/WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                    "name": "SushiSwap LP Token USDC / WETH",
+                    "symbol": "SLP/USDC/WETH",
+                    "decimals": 18,
+                    "balanceRaw": "1060477744100n",
+                    "type": "underlying",
+                    "blockNumber": 19294720,
+                    "tokens": [
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "102314874n",
+                        "balance": 102.314874,
+                        "price": 0.9967293107523485,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                        "name": "Wrapped Ether",
+                        "symbol": "WETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "35056789621651860n",
+                        "balance": 0.03505678962165186,
+                        "price": 2920.06258,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                      }
+                    ],
+                    "balance": 0.0000010604777441
+                  }
+                ],
+                "blockNumber": 19294720
+              },
+              {
+                "transactionHash": "0x88b875de6001d4105436378b191ad0d7208911b450020fb84a74c68ca53061d5",
+                "protocolToken": {
+                  "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                  "name": "SushiSwap LP Token USDC / WETH",
+                  "symbol": "SLP/USDC/WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                    "name": "SushiSwap LP Token USDC / WETH",
+                    "symbol": "SLP/USDC/WETH",
+                    "decimals": 18,
+                    "balanceRaw": "1405884975700n",
+                    "type": "underlying",
+                    "blockNumber": 19301874,
+                    "tokens": [
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "138154432n",
+                        "balance": 138.154432,
+                        "price": 1.0021616001527283,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                        "name": "Wrapped Ether",
+                        "symbol": "WETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "45639206995127930n",
+                        "balance": 0.04563920699512793,
+                        "price": 3022.9,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                      }
+                    ],
+                    "balance": 0.0000014058849757
+                  }
+                ],
+                "blockNumber": 19301874
+              },
+              {
+                "transactionHash": "0x14f17e835befe61f1ef52f1e72823078d0c73250c90f1227aaeea235a8b3e02a",
+                "protocolToken": {
+                  "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                  "name": "SushiSwap LP Token USDC / WETH",
+                  "symbol": "SLP/USDC/WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0x397FF1542f962076d0BFE58eA045FfA2d347ACa0",
+                    "name": "SushiSwap LP Token USDC / WETH",
+                    "symbol": "SLP/USDC/WETH",
+                    "decimals": 18,
+                    "balanceRaw": "5508971252700n",
+                    "type": "underlying",
+                    "blockNumber": 19316164,
+                    "tokens": [
+                      {
+                        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                        "name": "USD Coin",
+                        "symbol": "USDC",
+                        "decimals": 6,
+                        "type": "underlying",
+                        "balanceRaw": "560377850n",
+                        "balance": 560.37785,
+                        "price": 1.0075218892104882,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                      },
+                      {
+                        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                        "name": "Wrapped Ether",
+                        "symbol": "WETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "172864567107144276n",
+                        "balance": 0.17286456710714426,
+                        "price": 3240.2,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                      }
+                    ],
+                    "balance": 0.0000055089712527
+                  }
+                ],
+                "blockNumber": 19316164
+              }
+            ],
+            "rawRepays": [],
+            "rawBorrows": []
+          }
+        }
+      ],
+      "fromBlock": 19276297,
+      "toBlock": 19326319
+    }
+  ]
+}
