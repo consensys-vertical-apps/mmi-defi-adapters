@@ -13,7 +13,7 @@ export class MorphoBlueMarketSupplyAdapter extends MorphoBluePoolAdapter {
     return {
       protocolId: this.protocolId,
       name: 'MorphoBlue',
-      description: 'MorphoBlue DeFi adapter on the supply side',
+      description: 'Morpho Blue DeFi adapter on the supply side',
       siteUrl: 'https://app.morpho.org/',
       iconUrl: 'https://cdn.morpho.org/images/v2/morpho/favicon.png',
       positionType: PositionType.Supply,
