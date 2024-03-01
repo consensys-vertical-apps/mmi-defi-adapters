@@ -80,8 +80,8 @@
                 "symbol": "DAI",
                 "decimals": 18,
                 "type": "underlying",
-                "balanceRaw": "505335911015373806711n",
-                "balance": 505.3359110153738,
+                "balanceRaw": "505337769590995686281n",
+                "balance": 505.33776959099566,
                 "price": 1.0009450637066941,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
               },
@@ -91,8 +91,8 @@
                 "symbol": "USDC",
                 "decimals": 6,
                 "type": "underlying",
-                "balanceRaw": "562759112n",
-                "balance": 562.759112,
+                "balanceRaw": "562763371n",
+                "balance": 562.763371,
                 "price": 1.0104338264413466,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
               },
@@ -102,8 +102,8 @@
                 "symbol": "USDT",
                 "decimals": 6,
                 "type": "underlying",
-                "balanceRaw": "391525155n",
-                "balance": 391.525155,
+                "balanceRaw": "391532254n",
+                "balance": 391.532254,
                 "price": 1.0014741928231874,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
               }

@@ -16,10 +16,10 @@
       "success": true,
       "tokens": [
         {
-          "name": "Curve.fi DAI/USDC/USDT",
-          "decimals": 18,
-          "symbol": "3Crv",
           "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+          "name": "LP 3pool Curve",
+          "symbol": "3CRV",
+          "decimals": 18,
           "balanceRaw": "3110412272531542389506n",
           "type": "protocol",
           "tokens": [
@@ -29,8 +29,8 @@
               "symbol": "DAI",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "1242929498145530978879n",
-              "balance": 1242.929498145531,
+              "balanceRaw": "1242966941194139015090n",
+              "balance": 1242.966941194139,
               "price": 0.9984307395282911,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             },
@@ -40,8 +40,8 @@
               "symbol": "USDC",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "1258261297n",
-              "balance": 1258.261297,
+              "balanceRaw": "1258311064n",
+              "balance": 1258.311064,
               "price": 0.9973950898056655,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             },
@@ -51,8 +51,8 @@
               "symbol": "USDT",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "695830329n",
-              "balance": 695.830329,
+              "balanceRaw": "695917421n",
+              "balance": 695.917421,
               "price": 0.9963376606402048,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }

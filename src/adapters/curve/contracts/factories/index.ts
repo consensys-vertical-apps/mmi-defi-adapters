@@ -2,5 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 export { CrvMinter__factory } from "./CrvMinter__factory";
-export { MetaRegistry__factory } from "./MetaRegistry__factory";
+export { CurveLPToken__factory } from "./CurveLPToken__factory";
+export { GaugeDouble__factory } from "./GaugeDouble__factory";
+export { GaugeN__factory } from "./GaugeN__factory";
+export { GaugeSingle__factory } from "./GaugeSingle__factory";
+export { GaugeV4__factory } from "./GaugeV4__factory";
 export { StakingContract__factory } from "./StakingContract__factory";

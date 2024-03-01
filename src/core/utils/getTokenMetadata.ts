@@ -7,6 +7,7 @@ import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
+import { nativeToken, nativeTokenAddresses } from './nativeTokens'
 
 const CHAIN_METADATA: Partial<
   Record<Chain, Record<string, Erc20Metadata | undefined>>
@@ -20,6 +21,21 @@ export async function getTokenMetadata(
   chainId: Chain,
   provider: CustomJsonRpcProvider,
 ): Promise<Erc20Metadata> {
+  if (tokenAddress === '0x6b8734ad31D42F5c05A86594314837C416ADA984') {
+    return {
+      address: getAddress(tokenAddress),
+      name: 'Real Estate USD (REUSD)',
+      symbol: 'Real Estate USD (REUSD)',
+      decimals: 0,
+    }
+  }
+  if (nativeTokenAddresses.includes(tokenAddress)) {
+    return {
+      address: getAddress(tokenAddress),
+      ...nativeToken[chainId],
+    }
+  }
+
   const fileMetadata = CHAIN_METADATA[chainId]
   if (fileMetadata) {
     const fileTokenMetadata = fileMetadata[tokenAddress.toLowerCase()]
