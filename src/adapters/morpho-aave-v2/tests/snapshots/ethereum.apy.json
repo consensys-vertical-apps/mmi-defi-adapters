@@ -1,0 +1,135 @@
+{
+  "blockNumber": 18733080,
+  "snapshot": [
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the borrow side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
+          "name": "Aave DAI",
+          "symbol": "ADAI",
+          "decimals": 18,
+          "apyDecimal": 8.539464781734107
+        },
+        {
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
+          "decimals": 18,
+          "apyDecimal": 2.347449274731761
+        },
+        {
+          "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+          "name": "Aave USDC",
+          "symbol": "AUSDC",
+          "decimals": 6,
+          "apyDecimal": 6.926222683566263
+        },
+        {
+          "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+          "name": "Aave USDT",
+          "symbol": "AUSDT",
+          "decimals": 6,
+          "apyDecimal": 7.959922429950539
+        },
+        {
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
+          "name": "Aave WBTC",
+          "symbol": "AWBTC",
+          "decimals": 8,
+          "apyDecimal": 0.4538635733654761
+        },
+        {
+          "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
+          "name": "Aave Interest Bearing STETH",
+          "symbol": "ASTETH",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x8dAE6Cb04688C62d939ed9B68d32Bc62e49970b1",
+          "name": "Aave CRV",
+          "symbol": "ACRV",
+          "decimals": 18,
+          "apyDecimal": 9.742814290103595
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the supply side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
+          "name": "Aave DAI",
+          "symbol": "ADAI",
+          "decimals": 18,
+          "apyDecimal": 7.421786027232069
+        },
+        {
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
+          "decimals": 18,
+          "apyDecimal": 2.2747717280237056
+        },
+        {
+          "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+          "name": "Aave USDC",
+          "symbol": "AUSDC",
+          "decimals": 6,
+          "apyDecimal": 6.599565947907804
+        },
+        {
+          "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+          "name": "Aave USDT",
+          "symbol": "AUSDT",
+          "decimals": 6,
+          "apyDecimal": 7.657255332449631
+        },
+        {
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
+          "name": "Aave WBTC",
+          "symbol": "AWBTC",
+          "decimals": 8,
+          "apyDecimal": 0.12005110236801286
+        },
+        {
+          "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
+          "name": "Aave Interest Bearing STETH",
+          "symbol": "ASTETH",
+          "decimals": 18,
+          "apyDecimal": 0
+        },
+        {
+          "address": "0x8dAE6Cb04688C62d939ed9B68d32Bc62e49970b1",
+          "name": "Aave CRV",
+          "symbol": "ACRV",
+          "decimals": 18,
+          "apyDecimal": 1.3259142112120648
+        }
+      ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@ export type TestCase = {
 } & (
   | {
       method: 'positions'
-      input: { userAddress: string }
+      input: { userAddress: string; filterProtocolTokens?: string[] }
       blockNumber?: number
     }
   | {
@@ -33,6 +33,28 @@ export type TestCase = {
     }
   | {
       method: 'withdrawals'
+      input: {
+        userAddress: string
+        fromBlock: number
+        toBlock: number
+        protocolTokenAddress: string
+        productId: string
+        tokenId?: string
+      }
+    }
+  | {
+      method: 'repays'
+      input: {
+        userAddress: string
+        fromBlock: number
+        toBlock: number
+        protocolTokenAddress: string
+        productId: string
+        tokenId?: string
+      }
+    }
+  | {
+      method: 'borrows'
       input: {
         userAddress: string
         fromBlock: number

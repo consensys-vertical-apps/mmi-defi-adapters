@@ -10,6 +10,9 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "pool",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
       "success": true,
       "tokens": [
         {
@@ -23,6 +26,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 0,
             "endPositionValue": 0,
             "hasTokensWithoutUSDPrices": true,
@@ -57,6 +62,8 @@
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
             "startPositionValue": 0,
             "endPositionValue": 0,
             "hasTokensWithoutUSDPrices": true,

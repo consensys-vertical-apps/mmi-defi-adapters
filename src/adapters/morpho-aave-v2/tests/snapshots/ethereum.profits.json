@@ -1,0 +1,92 @@
+{
+  "blockNumber": 19070104,
+  "snapshot": [
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the borrow side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 261809.87185779866,
+          "performance": 0.08482926216733414,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 678571.488717,
+            "startPositionValue": -3086315.561030729,
+            "endPositionValue": -3503077.1778899306
+          }
+        }
+      ],
+      "fromBlock": 19062958,
+      "toBlock": 19070104
+    },
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the supply side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+          "name": "Aave USDC",
+          "symbol": "AUSDC",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": 3615.985499629751,
+          "performance": 0.0007387429633930761,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 500941.6014238342,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 4393840.046338175,
+            "endPositionValue": 4898397.63326164
+          }
+        },
+        {
+          "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+          "name": "Aave USDT",
+          "symbol": "AUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": 0.0016852304093175619,
+          "performance": 0.001392061465911734,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 1.2106005737424934,
+            "endPositionValue": 1.212285804151811
+          }
+        }
+      ],
+      "fromBlock": 19062958,
+      "toBlock": 19070104
+    }
+  ]
+}

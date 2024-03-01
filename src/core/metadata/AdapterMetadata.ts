@@ -43,11 +43,32 @@ import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
 import MendiFinanceSupplyLineaMendi from '../../adapters/mendi-finance/products/supply/metadata/linea.mendi.json'
+import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
+import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v3-eth/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
+import MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v3-eth/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
+import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import { Protocol } from '../../adapters/protocols'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
 import StargateVestingArbitrumVestingToken from '../../adapters/stargate/products/vesting/metadata/arbitrum.vesting-token.json'
 import StargateVestingEthereumVestingToken from '../../adapters/stargate/products/vesting/metadata/ethereum.vesting-token.json'
+import SushiswapV2PoolArbitrumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
+import SushiswapV2PoolAvalancheProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/avalanche.protocol-token.json'
+import SushiswapV2PoolBaseProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/base.protocol-token.json'
+import SushiswapV2PoolBscProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/bsc.protocol-token.json'
+import SushiswapV2PoolEthereumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/ethereum.protocol-token.json'
+import SushiswapV2PoolFantomProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/fantom.protocol-token.json'
+import SushiswapV2PoolPolygonProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/polygon.protocol-token.json'
+import UniswapV2PoolArbitrumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
+import UniswapV2PoolAvalancheProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/avalanche.protocol-token.json'
+import UniswapV2PoolBaseProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/base.protocol-token.json'
+import UniswapV2PoolBscProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/bsc.protocol-token.json'
+import UniswapV2PoolEthereumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/ethereum.protocol-token.json'
+import UniswapV2PoolOptimismProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/optimism.protocol-token.json'
+import UniswapV2PoolPolygonProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/polygon.protocol-token.json'
+import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea.lp-token.json'
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
@@ -414,6 +435,24 @@ export const MetadataFiles = new Map<string, Json>([
   ],
   [
     metadataKey({
+      protocolId: Protocol.MorphoAaveV2,
+      productId: 'optimizer-borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-borrow',
+    }),
+    MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoAaveV2,
+      productId: 'optimizer-supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-supply',
+    }),
+    MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply,
+  ],
+  [
+    metadataKey({
       protocolId: Protocol.Convex,
       productId: 'staking',
       chainId: Chain.Ethereum,
@@ -457,7 +496,24 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     ConvexCvxcrvWrapperEthereumProtocolToken,
   ],
-
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoCompoundV2,
+      productId: 'optimizer-borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-borrow',
+    }),
+    MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoCompoundV2,
+      productId: 'optimizer-supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-supply',
+    }),
+    MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply,
+  ],
   [
     metadataKey({
       protocolId: Protocol.ChimpExchange,
@@ -484,6 +540,159 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'mendi',
     }),
     MendiFinanceBorrowLineaMendi,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolBscProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.UniswapV2,
+      productId: 'pool',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    UniswapV2PoolAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoAaveV3ETHOptimizer,
+      productId: 'optimizer-supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-supply',
+    }),
+    MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoAaveV3ETHOptimizer,
+      productId: 'optimizer-borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'optimizer-borrow',
+    }),
+    MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolBscProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Xfai,
+      productId: 'dex',
+      chainId: Chain.Linea,
+      fileKey: 'lp-token',
+    }),
+    XfaiDexLineaLpToken,
   ],
 ])
 

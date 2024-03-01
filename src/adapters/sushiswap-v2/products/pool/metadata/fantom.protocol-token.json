@@ -1,0 +1,1242 @@
+{
+  "0x84311ECC54D7553378c067282940b0fdfb913675": {
+    "protocolToken": {
+      "address": "0x84311ECC54D7553378c067282940b0fdfb913675",
+      "name": "SushiSwap LP Token WFTM / ICE",
+      "symbol": "SLP/WFTM/ICE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xf16e81dce15B08F326220742020379B855B87DF9",
+      "name": "IceToken",
+      "symbol": "ICE",
+      "decimals": 18
+    }
+  },
+  "0x3d0BD54c48C2C433ea6fed609Cc3d5Fb7A77622B": {
+    "protocolToken": {
+      "address": "0x3d0BD54c48C2C433ea6fed609Cc3d5Fb7A77622B",
+      "name": "SushiSwap LP Token WFTM / ETH",
+      "symbol": "SLP/WFTM/ETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x74b23882a30290451A17c44f4F05243b6b58C76d",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "decimals": 18
+    }
+  },
+  "0x241689eB3811f0cA84996E7d80014094c119E0F2": {
+    "protocolToken": {
+      "address": "0x241689eB3811f0cA84996E7d80014094c119E0F2",
+      "name": "SushiSwap LP Token WFTM / BITB",
+      "symbol": "SLP/WFTM/BITB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xbAc5d43A56696e5D0CB631609E85798f564b513b",
+      "name": "BitBean",
+      "symbol": "BITB",
+      "decimals": 0
+    }
+  },
+  "0xA48869049e36f8Bfe0Cc5cf655632626988c0140": {
+    "protocolToken": {
+      "address": "0xA48869049e36f8Bfe0Cc5cf655632626988c0140",
+      "name": "SushiSwap LP Token USDC / WFTM",
+      "symbol": "SLP/USDC/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0x3E5b15be38F91a0fc9f87e852b2c8106C5edAD28": {
+    "protocolToken": {
+      "address": "0x3E5b15be38F91a0fc9f87e852b2c8106C5edAD28",
+      "name": "SushiSwap LP Token WFTM / BOMB",
+      "symbol": "SLP/WFTM/BOMB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x8503eb4A136bDBeB323E37Aa6e0FA0C772228378",
+      "name": "BOMB",
+      "symbol": "BOMB",
+      "decimals": 0
+    }
+  },
+  "0xd019dd7C760c6431797d6ed170bFFb8FAee11F99": {
+    "protocolToken": {
+      "address": "0xd019dd7C760c6431797d6ed170bFFb8FAee11F99",
+      "name": "SushiSwap LP Token fUSDT / WFTM",
+      "symbol": "SLP/fUSDT/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x049d68029688eAbF473097a2fC38ef61633A3C7A",
+      "name": "Frapped USDT",
+      "symbol": "fUSDT",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0x50576Ed9D94cF934Bc32abf76e08EC6DdCd54BF0": {
+    "protocolToken": {
+      "address": "0x50576Ed9D94cF934Bc32abf76e08EC6DdCd54BF0",
+      "name": "SushiSwap LP Token WFTM / ELITE",
+      "symbol": "SLP/WFTM/ELITE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xf43Cc235E686d7BC513F53Fbffb61F760c3a1882",
+      "name": "ftm.guru",
+      "symbol": "ELITE",
+      "decimals": 18
+    }
+  },
+  "0x9aD9a3DAC1Ea9600ecb3042F50223C934174c49C": {
+    "protocolToken": {
+      "address": "0x9aD9a3DAC1Ea9600ecb3042F50223C934174c49C",
+      "name": "SushiSwap LP Token WFTM / OPE",
+      "symbol": "SLP/WFTM/OPE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC072EFE93FfA09D2c0Ca9c6faA477e55c5737Ce8",
+      "name": "Opera Token",
+      "symbol": "OPE",
+      "decimals": 18
+    }
+  },
+  "0x49D2e0DC99C7358D7A9A8633Bf6df111D0EE7F65": {
+    "protocolToken": {
+      "address": "0x49D2e0DC99C7358D7A9A8633Bf6df111D0EE7F65",
+      "name": "SushiSwap LP Token WFTM / SUSHI",
+      "symbol": "SLP/WFTM/SUSHI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xae75A438b2E0cB8Bb01Ec1E1e376De11D44477CC",
+      "name": "Sushi",
+      "symbol": "SUSHI",
+      "decimals": 18
+    }
+  },
+  "0xC30FA09417F149892Ff86eF92a051c0bC2244c7C": {
+    "protocolToken": {
+      "address": "0xC30FA09417F149892Ff86eF92a051c0bC2244c7C",
+      "name": "SushiSwap LP Token WFTM / PGUNK",
+      "symbol": "SLP/WFTM/PGUNK",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xf8Fc059dAfDCe4EF2EdFc72cbBAF410d7531E610",
+      "name": "PlasmaGunk",
+      "symbol": "PGUNK",
+      "decimals": 9
+    }
+  },
+  "0x1Ca86e57103564F47fFCea7259a6ce8Cc1301549": {
+    "protocolToken": {
+      "address": "0x1Ca86e57103564F47fFCea7259a6ce8Cc1301549",
+      "name": "SushiSwap LP Token WFTM / LINK",
+      "symbol": "SLP/WFTM/LINK",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xb3654dc3D10Ea7645f8319668E8F54d2574FBdC8",
+      "name": "ChainLink",
+      "symbol": "LINK",
+      "decimals": 18
+    }
+  },
+  "0xfA7cA6E6D17368e0a1fA9C75f2eBE5A8d7bE9fc6": {
+    "protocolToken": {
+      "address": "0xfA7cA6E6D17368e0a1fA9C75f2eBE5A8d7bE9fc6",
+      "name": "SushiSwap LP Token LQDR / WFTM",
+      "symbol": "SLP/LQDR/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x10b620b2dbAC4Faa7D7FFD71Da486f5D44cd86f9",
+      "name": "Liquid Driver",
+      "symbol": "LQDR",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0x8870B20862152f208056c275bed5a88A4B2fA5C8": {
+    "protocolToken": {
+      "address": "0x8870B20862152f208056c275bed5a88A4B2fA5C8",
+      "name": "SushiSwap LP Token WFTM / SafeFantom",
+      "symbol": "SLP/WFTM/SafeFantom",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xf3a61c7D53442Ac00a3a99761c5839F9109F2193",
+      "name": "SafeFantom",
+      "symbol": "SafeFantom",
+      "decimals": 9
+    }
+  },
+  "0x97Bc7FB4F3D3F7749A7A3a0953974dcD1AF89713": {
+    "protocolToken": {
+      "address": "0x97Bc7FB4F3D3F7749A7A3a0953974dcD1AF89713",
+      "name": "SushiSwap LP Token WFTM / aUSD",
+      "symbol": "SLP/WFTM/aUSD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x41e3dF7f716aB5AF28c1497B354D79342923196a",
+      "name": "aUSD",
+      "symbol": "aUSD",
+      "decimals": 18
+    }
+  },
+  "0x7B63e44749884f33cb688F4870dD44dEC1195A9B": {
+    "protocolToken": {
+      "address": "0x7B63e44749884f33cb688F4870dD44dEC1195A9B",
+      "name": "SushiSwap LP Token AQU / WFTM",
+      "symbol": "SLP/AQU/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0f7ADb77B6334B9B5A3c4f78aAa073eA1D915bF6",
+      "name": "AQU",
+      "symbol": "AQU",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0x69185913F977830f0FAE5Bfaaaf99A3cF627E9EE": {
+    "protocolToken": {
+      "address": "0x69185913F977830f0FAE5Bfaaaf99A3cF627E9EE",
+      "name": "SushiSwap LP Token WFTM / UBI",
+      "symbol": "SLP/WFTM/UBI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc908AE61B7E798A49a5876bDf0c307f02a3Ebce6",
+      "name": "UBI Plus",
+      "symbol": "UBI",
+      "decimals": 18
+    }
+  },
+  "0x175372F481847ca1a4cF983C5fcec58411161e9F": {
+    "protocolToken": {
+      "address": "0x175372F481847ca1a4cF983C5fcec58411161e9F",
+      "name": "SushiSwap LP Token WFTM / MOD",
+      "symbol": "SLP/WFTM/MOD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe64B9fd040D1F9D4715C645e0D567EF69958D3D9",
+      "name": "Modefi",
+      "symbol": "MOD",
+      "decimals": 18
+    }
+  },
+  "0xFFdc0531288dc91C1F49Db03A90Ed84725E9eDa7": {
+    "protocolToken": {
+      "address": "0xFFdc0531288dc91C1F49Db03A90Ed84725E9eDa7",
+      "name": "SushiSwap LP Token USDC / MIM",
+      "symbol": "SLP/USDC/MIM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x82f0B8B456c1A451378467398982d4834b6829c1",
+      "name": "Magic Internet Money",
+      "symbol": "MIM",
+      "decimals": 18
+    }
+  },
+  "0x33e29a9eBdD370a8D50656e822aBFD3A910dA1b6": {
+    "protocolToken": {
+      "address": "0x33e29a9eBdD370a8D50656e822aBFD3A910dA1b6",
+      "name": "SushiSwap LP Token BTC / ETH",
+      "symbol": "SLP/BTC/ETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x321162Cd933E2Be498Cd2267a90534A804051b11",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0x74b23882a30290451A17c44f4F05243b6b58C76d",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "decimals": 18
+    }
+  },
+  "0x22b82500174Df5351D1314D186a43beBF06be88a": {
+    "protocolToken": {
+      "address": "0x22b82500174Df5351D1314D186a43beBF06be88a",
+      "name": "SushiSwap LP Token WFTM / POOCH",
+      "symbol": "SLP/WFTM/POOCH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x31A47B49b4DBDC54d403b8c4880Ac9BB1A9EbAE8",
+      "name": "Pooch",
+      "symbol": "POOCH",
+      "decimals": 18
+    }
+  },
+  "0xe3eD4237532E6095749a6C984bFCb449C2b86122": {
+    "protocolToken": {
+      "address": "0xe3eD4237532E6095749a6C984bFCb449C2b86122",
+      "name": "SushiSwap LP Token YFI / ETH",
+      "symbol": "SLP/YFI/ETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x29b0Da86e484E1C0029B56e817912d778aC0EC69",
+      "name": "yearn.finance",
+      "symbol": "YFI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x74b23882a30290451A17c44f4F05243b6b58C76d",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "decimals": 18
+    }
+  },
+  "0x3Ac28d350C59ef9054B305DFe9078fADc3cecABe": {
+    "protocolToken": {
+      "address": "0x3Ac28d350C59ef9054B305DFe9078fADc3cecABe",
+      "name": "SushiSwap LP Token ZOO / WFTM",
+      "symbol": "SLP/ZOO/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x09e145A1D53c0045F41aEEf25D8ff982ae74dD56",
+      "name": "ZOO",
+      "symbol": "ZOO",
+      "decimals": 0
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0xd32F2EB49E91aA160946f3538564118388d6246a": {
+    "protocolToken": {
+      "address": "0xd32F2EB49E91aA160946f3538564118388d6246a",
+      "name": "SushiSwap LP Token WFTM / DAI",
+      "symbol": "SLP/WFTM/DAI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x0FC9C821E72D698270A4864E6F30Bb8a39BBb3bB": {
+    "protocolToken": {
+      "address": "0x0FC9C821E72D698270A4864E6F30Bb8a39BBb3bB",
+      "name": "SushiSwap LP Token WFTM / GHOST",
+      "symbol": "SLP/WFTM/GHOST",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x2241FaBdf45C54cA330c34c783b114E6BcAae7E7",
+      "name": "theghost.finance",
+      "symbol": "GHOST",
+      "decimals": 18
+    }
+  },
+  "0xD0038EbE22Ab8fA4aCFF64e1D5d8FCA8C92572D4": {
+    "protocolToken": {
+      "address": "0xD0038EbE22Ab8fA4aCFF64e1D5d8FCA8C92572D4",
+      "name": "SushiSwap LP Token USDC / FSTRM",
+      "symbol": "SLP/USDC/FSTRM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x94a7f270cd12545A277E656266Aef5e27dF3Eb28",
+      "name": "Fantom-Peg Stream",
+      "symbol": "FSTRM",
+      "decimals": 18
+    }
+  },
+  "0xdc7204Ea739986D1d45FE3436020eD7574cC7722": {
+    "protocolToken": {
+      "address": "0xdc7204Ea739986D1d45FE3436020eD7574cC7722",
+      "name": "SushiSwap LP Token WFTM / BASED",
+      "symbol": "SLP/WFTM/BASED",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x23654048e2Ee5E8414EEa67A7d1A1C02505B7e4a",
+      "name": "Based",
+      "symbol": "BASED",
+      "decimals": 18
+    }
+  },
+  "0x147e27BE8E66f74c7659d88E2e6a13188873D58b": {
+    "protocolToken": {
+      "address": "0x147e27BE8E66f74c7659d88E2e6a13188873D58b",
+      "name": "SushiSwap LP Token WFTM / CREAM",
+      "symbol": "SLP/WFTM/CREAM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x657A1861c15A3deD9AF0B6799a195a249ebdCbc6",
+      "name": "Cream",
+      "symbol": "CREAM",
+      "decimals": 18
+    }
+  },
+  "0xBE0AF661BC9794E05fAb18C08C2C99811A0F45D2": {
+    "protocolToken": {
+      "address": "0xBE0AF661BC9794E05fAb18C08C2C99811A0F45D2",
+      "name": "SushiSwap LP Token WFTM / FROYO",
+      "symbol": "SLP/WFTM/FROYO",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA92d41Ab8eFeE617d80a829CD9F5683c5F793ADA",
+      "name": "Frozen Yogurt",
+      "symbol": "FROYO",
+      "decimals": 18
+    }
+  },
+  "0x71C8BceEcE3dAf9E27741D2Cc1F03170f862555f": {
+    "protocolToken": {
+      "address": "0x71C8BceEcE3dAf9E27741D2Cc1F03170f862555f",
+      "name": "SushiSwap LP Token ETH / DAI",
+      "symbol": "SLP/ETH/DAI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x74b23882a30290451A17c44f4F05243b6b58C76d",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0xC92D97416328A461BcE2F539498b505c6c97748f": {
+    "protocolToken": {
+      "address": "0xC92D97416328A461BcE2F539498b505c6c97748f",
+      "name": "SushiSwap LP Token WFTM / BTC",
+      "symbol": "SLP/WFTM/BTC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x321162Cd933E2Be498Cd2267a90534A804051b11",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "decimals": 8
+    }
+  },
+  "0x5d8c6817E19C483CD39D645f715806f667C2a4F9": {
+    "protocolToken": {
+      "address": "0x5d8c6817E19C483CD39D645f715806f667C2a4F9",
+      "name": "SushiSwap LP Token USDC / MAN",
+      "symbol": "SLP/USDC/MAN",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x8A88b501A68ceA5844B9d95F41892b05c4cd1d73",
+      "name": "Manga Token",
+      "symbol": "MAN",
+      "decimals": 18
+    }
+  },
+  "0xC9A3AD55ef7B859e0c5FDB81E4F4B6a709D758fD": {
+    "protocolToken": {
+      "address": "0xC9A3AD55ef7B859e0c5FDB81E4F4B6a709D758fD",
+      "name": "SushiSwap LP Token WFTM / FOO",
+      "symbol": "SLP/WFTM/FOO",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xFbc3c04845162F067A0B6F8934383E63899c3524",
+      "name": "Fantums of Opera Token",
+      "symbol": "FOO",
+      "decimals": 18
+    }
+  },
+  "0x239e5444D3C7e2D998111156cDc9D337170ee301": {
+    "protocolToken": {
+      "address": "0x239e5444D3C7e2D998111156cDc9D337170ee301",
+      "name": "SushiSwap LP Token LUCKY / WFTM",
+      "symbol": "SLP/LUCKY/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x116f31D5a97fd0CcfB0F963E9b48CE4CFB06eD72",
+      "name": "LuckyLuke",
+      "symbol": "LUCKY",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0x97A039255ecC352e5782Fc49beA26B03F60FA49b": {
+    "protocolToken": {
+      "address": "0x97A039255ecC352e5782Fc49beA26B03F60FA49b",
+      "name": "SushiSwap LP Token CRV / ETH",
+      "symbol": "SLP/CRV/ETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1E4F97b9f9F913c46F1632781732927B9019C68b",
+      "name": "Curve DAO",
+      "symbol": "CRV",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x74b23882a30290451A17c44f4F05243b6b58C76d",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "decimals": 18
+    }
+  },
+  "0xFe69403CF2e22390c0D87aB05062F67D9084935B": {
+    "protocolToken": {
+      "address": "0xFe69403CF2e22390c0D87aB05062F67D9084935B",
+      "name": "SushiSwap LP Token WFTM / SNX",
+      "symbol": "SLP/WFTM/SNX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x56ee926bD8c72B2d5fa1aF4d9E4Cbb515a1E3Adc",
+      "name": "Synthetix Network",
+      "symbol": "SNX",
+      "decimals": 18
+    }
+  },
+  "0xa34A73E2ba01276d7be66841942512A94E291Ac0": {
+    "protocolToken": {
+      "address": "0xa34A73E2ba01276d7be66841942512A94E291Ac0",
+      "name": "SushiSwap LP Token WFTM / anyUSDC",
+      "symbol": "SLP/WFTM/anyUSDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x95bf7E307BC1ab0BA38ae10fc27084bC36FcD605",
+      "name": "USDC",
+      "symbol": "anyUSDC",
+      "decimals": 6
+    }
+  },
+  "0xf4ab77517e3a9c83b13D48b961B84413465C6A4E": {
+    "protocolToken": {
+      "address": "0xf4ab77517e3a9c83b13D48b961B84413465C6A4E",
+      "name": "SushiSwap LP Token WFTM / GOV",
+      "symbol": "SLP/WFTM/GOV",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x24aF804F17D59dE93367410c9BEFa49444150D4c",
+      "name": "Governance Token",
+      "symbol": "GOV",
+      "decimals": 18
+    }
+  },
+  "0x8623836F527350Ec50691479674Df0cD7773810c": {
+    "protocolToken": {
+      "address": "0x8623836F527350Ec50691479674Df0cD7773810c",
+      "name": "SushiSwap LP Token WFTM / FUSD",
+      "symbol": "SLP/WFTM/FUSD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xAd84341756Bf337f5a0164515b1f6F993D194E1f",
+      "name": "Fantom USD",
+      "symbol": "FUSD",
+      "decimals": 18
+    }
+  },
+  "0xB461796299Cf1C6b0Be7CeC9AbF8f5914dC7A542": {
+    "protocolToken": {
+      "address": "0xB461796299Cf1C6b0Be7CeC9AbF8f5914dC7A542",
+      "name": "SushiSwap LP Token rFTM / WFTM",
+      "symbol": "SLP/rFTM/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1665B00179113d652427536EBC1eF9CA1d91Db7d",
+      "name": "rFTM",
+      "symbol": "rFTM",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0x177e2cc843d2Ee20AA884DC8af2a865adf78adb2": {
+    "protocolToken": {
+      "address": "0x177e2cc843d2Ee20AA884DC8af2a865adf78adb2",
+      "name": "SushiSwap LP Token CRV / WFTM",
+      "symbol": "SLP/CRV/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1E4F97b9f9F913c46F1632781732927B9019C68b",
+      "name": "Curve DAO",
+      "symbol": "CRV",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0xAFa1BF9b2a89DFD60499838c331538283b3346ED": {
+    "protocolToken": {
+      "address": "0xAFa1BF9b2a89DFD60499838c331538283b3346ED",
+      "name": "SushiSwap LP Token WFTM / COVER",
+      "symbol": "SLP/WFTM/COVER",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB01E8419d842beebf1b70A7b5f7142abbaf7159D",
+      "name": "Cover Protocol Governance",
+      "symbol": "COVER",
+      "decimals": 18
+    }
+  },
+  "0x2d89BB3b1448152002453AA37fbE4051AfdBf56d": {
+    "protocolToken": {
+      "address": "0x2d89BB3b1448152002453AA37fbE4051AfdBf56d",
+      "name": "SushiSwap LP Token USDC / AAVE",
+      "symbol": "SLP/USDC/AAVE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x6a07A792ab2965C72a5B8088d3a069A7aC3a993B",
+      "name": "Aave",
+      "symbol": "AAVE",
+      "decimals": 18
+    }
+  },
+  "0x280AbC0D9727f4DE3A46Ca9CF93C16b4a9c127D1": {
+    "protocolToken": {
+      "address": "0x280AbC0D9727f4DE3A46Ca9CF93C16b4a9c127D1",
+      "name": "SushiSwap LP Token WFTM / YFI",
+      "symbol": "SLP/WFTM/YFI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x29b0Da86e484E1C0029B56e817912d778aC0EC69",
+      "name": "yearn.finance",
+      "symbol": "YFI",
+      "decimals": 18
+    }
+  },
+  "0xDB29D1d71511848b2bD68B4BE50C95C352034F66": {
+    "protocolToken": {
+      "address": "0xDB29D1d71511848b2bD68B4BE50C95C352034F66",
+      "name": "SushiSwap LP Token WFTM / FASTMOON",
+      "symbol": "SLP/WFTM/FASTMOON",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x58Fb8CBab7253d988bAd2e7Ca9079acC77ed430c",
+      "name": "FastMoon",
+      "symbol": "FASTMOON",
+      "decimals": 9
+    }
+  },
+  "0x2ed684f14f951b467f2066c663F488cd0F0475E7": {
+    "protocolToken": {
+      "address": "0x2ed684f14f951b467f2066c663F488cd0F0475E7",
+      "name": "SushiSwap LP Token WFTM / MIM",
+      "symbol": "SLP/WFTM/MIM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x82f0B8B456c1A451378467398982d4834b6829c1",
+      "name": "Magic Internet Money",
+      "symbol": "MIM",
+      "decimals": 18
+    }
+  },
+  "0xe22d1953a21B6c93c4d129A0697a78aA87BD9831": {
+    "protocolToken": {
+      "address": "0xe22d1953a21B6c93c4d129A0697a78aA87BD9831",
+      "name": "SushiSwap LP Token WFTM / SPIRIT",
+      "symbol": "SLP/WFTM/SPIRIT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x5Cc61A78F164885776AA610fb0FE1257df78E59B",
+      "name": "SpiritSwap Token",
+      "symbol": "SPIRIT",
+      "decimals": 18
+    }
+  },
+  "0xf5A12806c0b9bFf433Fef1b996044b8A81925181": {
+    "protocolToken": {
+      "address": "0xf5A12806c0b9bFf433Fef1b996044b8A81925181",
+      "name": "SushiSwap LP Token USDC / BASED",
+      "symbol": "SLP/USDC/BASED",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x23654048e2Ee5E8414EEa67A7d1A1C02505B7e4a",
+      "name": "Based",
+      "symbol": "BASED",
+      "decimals": 18
+    }
+  },
+  "0x0DCb7F634b87B3A40750Ef3C5E47B5E42e473104": {
+    "protocolToken": {
+      "address": "0x0DCb7F634b87B3A40750Ef3C5E47B5E42e473104",
+      "name": "SushiSwap LP Token WFTM / uBASED",
+      "symbol": "SLP/WFTM/uBASED",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x21E7c8150c54dF2D370511d11A70676c2cEb76c0",
+      "name": "uBASED",
+      "symbol": "uBASED",
+      "decimals": 18
+    }
+  },
+  "0x0d542222F58E119CC6D5f28C2706EF223B8a296a": {
+    "protocolToken": {
+      "address": "0x0d542222F58E119CC6D5f28C2706EF223B8a296a",
+      "name": "SushiSwap LP Token WFTM / FRAX",
+      "symbol": "SLP/WFTM/FRAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xdc301622e621166BD8E82f2cA0A26c13Ad0BE355",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    }
+  },
+  "0xdFA160d1Cd27c8101f7ED5fDf285C4BaB3B1b1FA": {
+    "protocolToken": {
+      "address": "0xdFA160d1Cd27c8101f7ED5fDf285C4BaB3B1b1FA",
+      "name": "SushiSwap LP Token WFTM / LCD",
+      "symbol": "SLP/WFTM/LCD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2A45FE7d40bCAc8369371B08419DDAFd3131b4a",
+      "name": "Lucidao",
+      "symbol": "LCD",
+      "decimals": 18
+    }
+  },
+  "0xfdb1675eE679Db2Ce7C1dC4Ab1A42E8F41831665": {
+    "protocolToken": {
+      "address": "0xfdb1675eE679Db2Ce7C1dC4Ab1A42E8F41831665",
+      "name": "SushiSwap LP Token WFTM / BSGG",
+      "symbol": "SLP/WFTM/BSGG",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x5A33869045db8A6a16c9f351293501CFD92cf7ed",
+      "name": "Betswap.gg",
+      "symbol": "BSGG",
+      "decimals": 18
+    }
+  },
+  "0x09d06961B7c0f74ad4a482750Edc8Fa1256489F0": {
+    "protocolToken": {
+      "address": "0x09d06961B7c0f74ad4a482750Edc8Fa1256489F0",
+      "name": "SushiSwap LP Token GHOST / WFTM",
+      "symbol": "SLP/GHOST/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1323232A93e30825A88C331C046Fce5fd35397Fd",
+      "name": "GhostToken",
+      "symbol": "GHOST",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0xef76F359577FCD97657AeD14CDf9d8B279dFC72F": {
+    "protocolToken": {
+      "address": "0xef76F359577FCD97657AeD14CDf9d8B279dFC72F",
+      "name": "SushiSwap LP Token USDC / uBASED",
+      "symbol": "SLP/USDC/uBASED",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x21E7c8150c54dF2D370511d11A70676c2cEb76c0",
+      "name": "uBASED",
+      "symbol": "uBASED",
+      "decimals": 18
+    }
+  },
+  "0xe74A6b1F2034c8c137610caFAD49a6763cD25865": {
+    "protocolToken": {
+      "address": "0xe74A6b1F2034c8c137610caFAD49a6763cD25865",
+      "name": "SushiSwap LP Token WFTM / FRAX",
+      "symbol": "SLP/WFTM/FRAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xaf319E5789945197e365E7f7fbFc56B130523B33",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    }
+  },
+  "0xC24afba17c981326Aa14238FCB55Abc7d0907808": {
+    "protocolToken": {
+      "address": "0xC24afba17c981326Aa14238FCB55Abc7d0907808",
+      "name": "SushiSwap LP Token WFTM / SFI",
+      "symbol": "SLP/WFTM/SFI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x924828a9Fb17d47D0eb64b57271D10706699Ff11",
+      "name": "Spice",
+      "symbol": "SFI",
+      "decimals": 18
+    }
+  },
+  "0x7f2BC04a57957860F4B66675D46092cf93aF638B": {
+    "protocolToken": {
+      "address": "0x7f2BC04a57957860F4B66675D46092cf93aF638B",
+      "name": "SushiSwap LP Token WFTM / SAKURA",
+      "symbol": "SLP/WFTM/SAKURA",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x6C7eFc3AF0E0685Ee30759Ba819cC456C7ad976a",
+      "name": "Sakura",
+      "symbol": "SAKURA",
+      "decimals": 9
+    }
+  },
+  "0xd4Db674caF2259403EA51C09Cef068e214aC4139": {
+    "protocolToken": {
+      "address": "0xd4Db674caF2259403EA51C09Cef068e214aC4139",
+      "name": "SushiSwap LP Token WFTM / YOSHI",
+      "symbol": "SLP/WFTM/YOSHI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x3dc57B391262e3aAe37a08D91241f9bA9d58b570",
+      "name": "Yoshi.exchange",
+      "symbol": "YOSHI",
+      "decimals": 18
+    }
+  },
+  "0xB1686b859284c59760662959FE5aCa3aC78b0346": {
+    "protocolToken": {
+      "address": "0xB1686b859284c59760662959FE5aCa3aC78b0346",
+      "name": "SushiSwap LP Token WFTM / RIP",
+      "symbol": "SLP/WFTM/RIP",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x659D813beB17435acF822CdD80DB0c7090755771",
+      "name": "Fantums Death Token",
+      "symbol": "RIP",
+      "decimals": 18
+    }
+  },
+  "0x28557d53fCE96D7D71C18A892F0d514e96F3f352": {
+    "protocolToken": {
+      "address": "0x28557d53fCE96D7D71C18A892F0d514e96F3f352",
+      "name": "SushiSwap LP Token WFTM / tCUZ",
+      "symbol": "SLP/WFTM/tCUZ",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x8e4A2fA6e651DF75F7F4E9e9Ac81f8f9347a4aDD",
+      "name": "Wrapped COUSIN CRYPTO NFT",
+      "symbol": "tCUZ",
+      "decimals": 18
+    }
+  },
+  "0x7219E9fD4E86BdE01F603eD985B8bbC827681c98": {
+    "protocolToken": {
+      "address": "0x7219E9fD4E86BdE01F603eD985B8bbC827681c98",
+      "name": "SushiSwap LP Token SAFEMARS / WFTM",
+      "symbol": "SLP/SAFEMARS/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a802bCB3f299845aD3F0831fd102aCd31A492ea",
+      "name": "SafeMars",
+      "symbol": "SAFEMARS",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0x0b9ac7ea9CA8AAF520731AFaC2Dc19e10970d2aF": {
+    "protocolToken": {
+      "address": "0x0b9ac7ea9CA8AAF520731AFaC2Dc19e10970d2aF",
+      "name": "SushiSwap LP Token DSR / WFTM",
+      "symbol": "SLP/DSR/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x07a5b3d0CB418d07d9ad12CbdB30b5C5C6778531",
+      "name": "DeFi System for Reference",
+      "symbol": "DSR",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  },
+  "0x8a0Ab59bef69013DA9Fc1E31892Ed24F4912fEAf": {
+    "protocolToken": {
+      "address": "0x8a0Ab59bef69013DA9Fc1E31892Ed24F4912fEAf",
+      "name": "SushiSwap LP Token yAndre / WFTM",
+      "symbol": "SLP/yAndre/WFTM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0bbf5349D884D135a907040187E0F4e04d05129c",
+      "name": "yAndre",
+      "symbol": "yAndre",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      "name": "Wrapped Fantom",
+      "symbol": "WFTM",
+      "decimals": 18
+    }
+  }
+}

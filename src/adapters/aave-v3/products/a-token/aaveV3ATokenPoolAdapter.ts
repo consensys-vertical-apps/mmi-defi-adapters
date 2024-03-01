@@ -1,7 +1,11 @@
 import { AddressLike, BigNumberish } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import {
+  AssetType,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 import { PoolContract__factory } from '../../contracts'
@@ -19,6 +23,9 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
       positionType: PositionType.Lend,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
     }
   }
 

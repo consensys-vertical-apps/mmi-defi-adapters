@@ -10,7 +10,10 @@ export const Protocol = {
   Maker: 'maker',
   GMX: 'gmx',
   Swell: 'swell',
+  MorphoAaveV2: 'morpho-aave-v2',
   Convex: 'convex',
+  MorphoCompoundV2: 'morpho-compound-v2',
+  MorphoAaveV3ETHOptimizer: 'morpho-aave-v3-eth',
   SyncSwap: 'syncswap',
   IZiSwap: 'iziswap',
   ChimpExchange: 'chimp-exchange',
@@ -18,5 +21,9 @@ export const Protocol = {
   CarbonDeFi: 'carbon-defi',
   RocketPool: 'rocket-pool',
   PricesV2: 'prices-v2',
+  UniswapV2: 'uniswap-v2',
+  SushiswapV2: 'sushiswap-v2',
+  StakeWise: 'stakewise',
+  Xfai: 'xfai',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]

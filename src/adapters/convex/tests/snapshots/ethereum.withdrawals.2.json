@@ -8,6 +8,9 @@
     "positionType": "reward",
     "chainId": 1,
     "productId": "extra-reward",
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
     "success": true,
     "movements": [
       {

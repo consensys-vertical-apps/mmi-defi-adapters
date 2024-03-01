@@ -18,13 +18,20 @@ import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
+import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
+import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3-eth/tests/testCases'
+import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
+import { testCases as stakeWiseTestCases } from './stakewise/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
+import { testCases as sushiswapV2TestCases } from './sushiswap-v2/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
+import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
+import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
@@ -43,7 +50,16 @@ function runAllTests() {
   runProtocolTests(Protocol.Maker, makerTestCases)
   runProtocolTests(Protocol.GMX, gMXTestCases)
   runProtocolTests(Protocol.Swell, swellTestCases)
+  runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
   runProtocolTests(Protocol.Convex, convexTestCases)
+  runProtocolTests(
+    Protocol.MorphoCompoundV2,
+    morphoCompoundV2OptimizerTestCases,
+  )
+  runProtocolTests(
+    Protocol.MorphoAaveV3ETHOptimizer,
+    morphoAaveV3ETHOptimizerTestCases,
+  )
   runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
   runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
   runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
@@ -51,6 +67,10 @@ function runAllTests() {
   runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
   runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
   runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
+  runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
+  runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
+  runProtocolTests(Protocol.StakeWise, stakeWiseTestCases)
+  runProtocolTests(Protocol.Xfai, xfaiTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
@@ -171,6 +191,67 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             const { snapshot } = await fetchSnapshot(testCase, protocolId)
 
             const response = await defiProvider.getWithdrawals({
+              ...testCase.input,
+              chainId: testCase.chainId,
+              protocolId,
+            })
+
+            expect(response).toEqual(snapshot)
+          },
+          TEST_TIMEOUT,
+        )
+
+        afterAll(() => {
+          logger.debug(
+            `[Integration test] withdrawals for ${protocolId} finished`,
+          )
+        })
+      })
+    }
+    const repaysTestCases = testCases.filter(
+      (testCase): testCase is TestCase & { method: 'repays' } =>
+        testCase.method === 'repays',
+    )
+    if (repaysTestCases.length) {
+      describe('repays', () => {
+        it.each(
+          repaysTestCases.map((testCase) => [testKey(testCase), testCase]),
+        )(
+          'repays for test %s match',
+          async (_, testCase) => {
+            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+
+            const response = await defiProvider.getRepays({
+              ...testCase.input,
+              protocolId: protocolId,
+              chainId: testCase.chainId,
+            })
+
+            expect(response).toEqual(snapshot)
+          },
+          TEST_TIMEOUT,
+        )
+
+        afterAll(() => {
+          logger.debug(`[Integration test] deposits for ${protocolId} finished`)
+        })
+      })
+    }
+
+    const borrowsTestCases = testCases.filter(
+      (testCase): testCase is TestCase & { method: 'borrows' } =>
+        testCase.method === 'borrows',
+    )
+    if (borrowsTestCases.length) {
+      describe('borrows', () => {
+        it.each(
+          borrowsTestCases.map((testCase) => [testKey(testCase), testCase]),
+        )(
+          'withdrawals for test %s match',
+          async (_, testCase) => {
+            const { snapshot } = await fetchSnapshot(testCase, protocolId)
+
+            const response = await defiProvider.getBorrows({
               ...testCase.input,
               chainId: testCase.chainId,
               protocolId,

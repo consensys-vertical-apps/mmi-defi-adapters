@@ -1,0 +1,102 @@
+{
+  "0x6239aE4D661379b71A90c4c79f0a95297342e391": {
+    "protocolToken": {
+      "address": "0x6239aE4D661379b71A90c4c79f0a95297342e391",
+      "name": "Uniswap V2 WAVAX / USDC",
+      "symbol": "UNI-V2/WAVAX/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x6b60865Fabc6c7280FD1dcc125549698a76D5444": {
+    "protocolToken": {
+      "address": "0x6b60865Fabc6c7280FD1dcc125549698a76D5444",
+      "name": "Uniswap V2 WAVAX / WTBC",
+      "symbol": "UNI-V2/WAVAX/WTBC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC2Db4f94cEb108d851743332F7E0CD92861C1f6f",
+      "name": "World Trade Business Coin",
+      "symbol": "WTBC",
+      "decimals": 18
+    }
+  },
+  "0xBb060b8d9224e98A0C15B3CEE01fBc58EF4ecA85": {
+    "protocolToken": {
+      "address": "0xBb060b8d9224e98A0C15B3CEE01fBc58EF4ecA85",
+      "name": "Uniswap V2 WETH.e / WAVAX",
+      "symbol": "UNI-V2/WETH.e/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
+      "name": "Wrapped Ether",
+      "symbol": "WETH.e",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xb315a298f124D3fbe7E49D509973C69290A40476": {
+    "protocolToken": {
+      "address": "0xb315a298f124D3fbe7E49D509973C69290A40476",
+      "name": "Uniswap V2 WAVAX / CLY",
+      "symbol": "UNI-V2/WAVAX/CLY",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xec3492a2508DDf4FDc0cD76F31f340b30d1793e6",
+      "name": "Colony Token",
+      "symbol": "CLY",
+      "decimals": 18
+    }
+  },
+  "0xAdEF2138f9DBaF56EDa9832a26428285a96862Ca": {
+    "protocolToken": {
+      "address": "0xAdEF2138f9DBaF56EDa9832a26428285a96862Ca",
+      "name": "Uniswap V2 DZHV / WAVAX",
+      "symbol": "UNI-V2/DZHV/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3419875B4D3Bca7F3FddA2dB7a476A79fD31B4fE",
+      "name": "DizzyHavoc",
+      "symbol": "DZHV",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  }
+}

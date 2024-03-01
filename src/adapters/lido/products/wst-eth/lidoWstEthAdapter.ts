@@ -13,6 +13,7 @@ import {
   TokenBalance,
   Underlying,
   UnderlyingTokenRate,
+  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { WstEthToken__factory } from '../../contracts'
@@ -31,6 +32,9 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
     }
   }
 

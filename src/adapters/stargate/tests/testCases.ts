@@ -8,6 +8,11 @@ export const testCases: TestCase[] = [
     method: 'positions',
     input: {
       userAddress: '0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255',
+
+      filterProtocolTokens: [
+        '0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56',
+        '0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E',
+      ],
     },
     blockNumber: 18163124,
   },
@@ -17,6 +22,7 @@ export const testCases: TestCase[] = [
     input: {
       userAddress: '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
       timePeriod: TimePeriod.oneDay,
+      filterProtocolTokens: ['0xE8F55368C82D38bbbbDb5533e7F56AfC2E978CC2'],
     },
     blockNumber: 18163965,
   },

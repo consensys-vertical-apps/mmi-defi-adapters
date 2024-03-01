@@ -1,8 +1,10 @@
-export function defaultAdapterTemplate(
-  protocolKey: string,
-  adapterClassName: string,
-  productId: string,
-) {
+import { NewAdapterAnswers } from '../newAdapterCommand'
+
+export function defaultAdapterTemplate({
+  protocolKey,
+  adapterClassName,
+  productId,
+}: NewAdapterAnswers) {
   return `import { AdaptersController } from '../../../../core/adaptersController'
   import { Chain } from '../../../../core/constants/chains'
   import {
@@ -27,6 +29,7 @@ export function defaultAdapterTemplate(
     ProtocolTokenUnderlyingRate,
     ProtocolTokenTvl,
     ProtocolPosition,
+    AssetType,
   } from '../../../../types/adapter'
   import { Erc20Metadata } from '../../../../types/erc20Metadata'
   import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -67,6 +70,9 @@ export function defaultAdapterTemplate(
         positionType: PositionType.Supply,
         chainId: this.chainId,
         productId: this.productId,
+        assetDetails: {
+          type: AssetType.NonStandardErc20,
+        },
       }
     }
   
