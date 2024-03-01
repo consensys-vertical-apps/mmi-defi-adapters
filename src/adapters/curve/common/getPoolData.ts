@@ -1,74 +1,153 @@
-import { formatUnits } from 'ethers'
-import { Erc20__factory } from '../../../contracts'
-import { Chain } from '../../../core/constants/chains'
-import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
+import { ethers, getAddress } from 'ethers'
+import { Chain, ChainName } from '../../../core/constants/chains'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
-import { MetaRegistry__factory } from '../contracts'
-import { CURVE_META_REGISTRY_CONTRACT } from '../products/pool/curvePoolAdapter'
 
-const LOW_LP_TOKEN_SUPPLY = 1
-export async function getPoolData(
-  i: number,
+export type CurvePoolAdapterMetadata = Record<
+  string,
+  {
+    protocolToken: Erc20Metadata
+    underlyingTokens: Erc20Metadata[]
+    lpTokenManager: string
+  }
+>
+export type CurveStakingAdapterMetadata = Record<
+  string,
+  {
+    protocolToken: Erc20Metadata & { guageType: GaugeType }
+    underlyingTokens: Erc20Metadata[]
+  }
+>
+
+export async function queryCurvePools(
   chainId: Chain,
   provider: CustomJsonRpcProvider,
-): Promise<
-  | {
-      protocolToken: Erc20Metadata
-      underlyingTokens: Erc20Metadata[]
-      poolAddress: string
-      stakingToken: string
-    }
-  | undefined
-> {
-  const metaRegistryContract = MetaRegistry__factory.connect(
-    CURVE_META_REGISTRY_CONTRACT,
-    provider,
-  )
-  const poolAddress = await metaRegistryContract.pool_list(i)
-  const lpToken = await metaRegistryContract['get_lp_token(address)'](
-    poolAddress,
-  )
-  const lpTokenContract = Erc20__factory.connect(lpToken, provider)
+): Promise<CurvePoolAdapterMetadata> {
+  const minVolumeUSD = 50000
+  const minTotalSupply = 100
 
-  const underlyingCoins = (
-    await metaRegistryContract['get_underlying_coins(address)'](poolAddress)
-  ).filter((address) => address !== ZERO_ADDRESS)
+  const baseUrl = `https://api.curve.fi/v1/getPools/all/${ChainName[chainId]}`
 
-  const [
-    { name: poolName, decimals: poolDecimals, symbol: poolSymbol },
-    totalSupply,
-  ] = await Promise.all([
-    getTokenMetadata(lpToken, chainId, provider),
-    lpTokenContract.totalSupply(),
-  ])
+  const results = await (await fetch(`${baseUrl}`)).json()
 
-  const totalSupplyFormatted = Number(formatUnits(totalSupply, poolDecimals))
+  const transformed: CurvePoolAdapterMetadata = {}
 
-  if (+totalSupplyFormatted < LOW_LP_TOKEN_SUPPLY) {
-    return undefined
+  // eslint-disable-next-line
+  const transformData = async (data: any) => {
+    await Promise.all(
+      // eslint-disable-next-line
+      data.data.poolData.map(async (pool: any) => {
+        if (pool.usdTotal < minVolumeUSD) {
+          return
+        }
+
+        if (pool.totalSupply < minTotalSupply) {
+          return
+        }
+
+        transformed[getAddress(pool.lpTokenAddress)] = {
+          protocolToken: await getTokenMetadata(
+            pool.lpTokenAddress,
+            chainId,
+            provider,
+          ),
+          underlyingTokens: await Promise.all(
+            pool.coins.map(
+              // eslint-disable-next-line
+              async (coin: any) =>
+                await getTokenMetadata(coin.address, chainId, provider),
+            ),
+          ),
+          lpTokenManager: pool.address,
+        }
+      }),
+    )
+
+    return transformed
   }
 
-  const underlyingTokens = await Promise.all(
-    underlyingCoins.map((result) =>
-      getTokenMetadata(result, Chain.Ethereum, provider),
-    ),
-  )
+  return transformData(results)
+}
+export async function queryCurveGauges(
+  chainId: Chain,
+  provider: CustomJsonRpcProvider,
+): Promise<CurveStakingAdapterMetadata> {
+  const minVolumeUSD = 50000
+  const minTotalSupply = 100
 
-  const stakingToken = await metaRegistryContract['get_gauge(address)'](
-    poolAddress,
-  )
+  const baseUrl = `https://api.curve.fi/v1/getPools/all/${ChainName[chainId]}`
 
-  return {
-    protocolToken: {
-      name: poolName,
-      decimals: Number(poolDecimals),
-      symbol: poolSymbol,
-      address: lpToken,
-    },
-    underlyingTokens,
-    poolAddress: poolAddress,
-    stakingToken,
+  const results = await (await fetch(`${baseUrl}`)).json()
+
+  const transformed: CurveStakingAdapterMetadata = {}
+
+  // eslint-disable-next-line
+  const transformData = async (data: any) => {
+    await Promise.all(
+      // eslint-disable-next-line
+      data.data.poolData.map(async (pool: any) => {
+        if (!pool.gaugeAddress) {
+          return
+        }
+
+        if (pool.usdTotal < minVolumeUSD) {
+          return
+        }
+
+        if (pool.totalSupply < minTotalSupply) {
+          return
+        }
+
+        const protocolToken = await getTokenMetadata(
+          pool.lpTokenAddress,
+          chainId,
+          provider,
+        )
+
+        transformed[getAddress(pool.gaugeAddress)] = {
+          protocolToken: {
+            ...protocolToken,
+            address: getAddress(pool.gaugeAddress),
+            guageType: await resolveGaugeType(pool.gaugeAddress, provider),
+          },
+          underlyingTokens: [protocolToken],
+        }
+      }),
+    )
+    return transformed
   }
+
+  return transformData(results)
+}
+
+export enum GaugeType {
+  SINGLE = 'single',
+  DOUBLE = 'double',
+  N_GAUGE = 'n-gauge',
+  GAUGE_V4 = 'gauge-v4',
+  CHILD = 'child-chain',
+  REWARDS_ONLY = 'rewards-only',
+}
+
+async function resolveGaugeType(
+  gaugeAddress: string,
+  provider: CustomJsonRpcProvider,
+): Promise<GaugeType> {
+  let bytecode = await provider.getCode(gaugeAddress)
+  const minimalProxyMatch =
+    /0x363d3d373d3d3d363d73(.*)5af43d82803e903d91602b57fd5bf3/.exec(bytecode)
+  if (minimalProxyMatch)
+    bytecode = await provider.getCode(`0x${minimalProxyMatch[1]}`)
+
+  const doubleGaugeMethod = ethers.id('rewarded_token()').slice(2, 10)
+  const nGaugeMethod = ethers.id('reward_tokens(uint256)').slice(2, 10)
+  const gaugeV4Method = ethers
+    .id('claimable_reward_write(address,address)')
+    .slice(2, 10)
+
+  if (bytecode.includes(gaugeV4Method)) return GaugeType.GAUGE_V4
+  if (bytecode.includes(nGaugeMethod)) return GaugeType.N_GAUGE
+  if (bytecode.includes(doubleGaugeMethod)) return GaugeType.DOUBLE
+  return GaugeType.SINGLE
 }

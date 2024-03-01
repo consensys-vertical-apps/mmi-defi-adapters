@@ -1,5 +1,4 @@
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
 import { AddClaimedRewards } from '../../../../core/decorators/addClaimedRewards'
 import {
@@ -8,7 +7,6 @@ import {
 } from '../../../../core/decorators/cacheToFile'
 import { ResolveUnderlyingMovements } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { filterMapSync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
@@ -31,18 +29,11 @@ import {
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
-import { getPoolData } from '../../common/getPoolData'
-import { MetaRegistry__factory } from '../../contracts'
-import { CURVE_META_REGISTRY_CONTRACT } from '../pool/curvePoolAdapter'
+import {
+  CurveStakingAdapterMetadata,
+  queryCurveGauges,
+} from '../../common/getPoolData'
 
-type CurveStakingAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
 const PRICE_PEGGED_TO_ONE = 1
 export class CurveStakingAdapter
   extends SimplePoolAdapter
@@ -50,16 +41,8 @@ export class CurveStakingAdapter
 {
   productId = 'staking'
 
-  poolAdapter: IProtocolAdapter & IMetadataBuilder
-
   constructor(params: ProtocolAdapterParams) {
     super(params)
-
-    this.poolAdapter = params.adaptersController.fetchAdapter(
-      params.chainId,
-      params.protocolId,
-      'pool',
-    ) as IProtocolAdapter & IMetadataBuilder
   }
 
   @AddClaimableRewards({ rewardAdapterIds: ['reward'] })
@@ -86,35 +69,7 @@ export class CurveStakingAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    const metadata = {} as CurveStakingAdapterMetadata
-    const metaRegistryContract = MetaRegistry__factory.connect(
-      CURVE_META_REGISTRY_CONTRACT,
-      this.provider,
-    )
-
-    const poolCount = Number(await metaRegistryContract.pool_count())
-
-    const poolDataPromises = Array.from({ length: poolCount }, (_, i) =>
-      getPoolData(i, this.chainId, this.provider),
-    )
-
-    const results = await Promise.all(poolDataPromises)
-
-    filterMapSync(results, async (token) => {
-      if (!token || !token.stakingToken || token.stakingToken == ZERO_ADDRESS) {
-        return undefined
-      }
-
-      metadata[token.stakingToken] = {
-        protocolToken: {
-          ...token.protocolToken, // curve staking tokens dont have name, decimals, and symbol on their token contracts
-          address: token.stakingToken,
-        },
-        underlyingTokens: [token.protocolToken],
-      }
-    })
-
-    return metadata
+    return queryCurveGauges(this.chainId, this.provider)
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
@@ -271,4 +226,27 @@ export class CurveStakingAdapter
 
     return poolMetadata
   }
+
+  async fetchGauge(
+    protocolTokenAddress: string,
+  ): Promise<CurveStakingAdapterMetadata[Key]> {
+    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
+
+    if (!poolMetadata) {
+      logger.error(
+        {
+          protocolTokenAddress,
+          protocol: this.protocolId,
+          chainId: this.chainId,
+          product: this.productId,
+        },
+        'Protocol token pool not found',
+      )
+      throw new Error('Protocol token pool not found')
+    }
+
+    return poolMetadata
+  }
 }
+
+type Key = keyof CurveStakingAdapterMetadata

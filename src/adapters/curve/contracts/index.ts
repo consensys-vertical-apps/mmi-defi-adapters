@@ -2,9 +2,17 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { CrvMinter } from "./CrvMinter";
-export type { MetaRegistry } from "./MetaRegistry";
+export type { CurveLPToken } from "./CurveLPToken";
+export type { GaugeDouble } from "./GaugeDouble";
+export type { GaugeN } from "./GaugeN";
+export type { GaugeSingle } from "./GaugeSingle";
+export type { GaugeV4 } from "./GaugeV4";
 export type { StakingContract } from "./StakingContract";
 export * as factories from "./factories";
 export { CrvMinter__factory } from "./factories/CrvMinter__factory";
-export { MetaRegistry__factory } from "./factories/MetaRegistry__factory";
+export { CurveLPToken__factory } from "./factories/CurveLPToken__factory";
+export { GaugeDouble__factory } from "./factories/GaugeDouble__factory";
+export { GaugeN__factory } from "./factories/GaugeN__factory";
+export { GaugeSingle__factory } from "./factories/GaugeSingle__factory";
+export { GaugeV4__factory } from "./factories/GaugeV4__factory";
 export { StakingContract__factory } from "./factories/StakingContract__factory";

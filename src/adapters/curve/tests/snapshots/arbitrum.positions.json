@@ -1,0 +1,359 @@
+{
+  "blockNumber": 186041228,
+  "snapshot": [
+    {
+      "protocolId": "curve",
+      "name": "Curve",
+      "description": "Curve pool adapter",
+      "siteUrl": "https://curve.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": []
+    },
+    {
+      "protocolId": "curve",
+      "name": "Curve staking",
+      "description": "Curve staking adapter",
+      "siteUrl": "https://curve.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
+      "positionType": "stake",
+      "chainId": 42161,
+      "productId": "staking",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xCE5F24B7A95e9cBa7df4B54E911B4A3Dc8CDAf6f",
+          "name": "Curve fi USDC USDT",
+          "symbol": "2CRV",
+          "decimals": 18,
+          "guageType": "n-gauge",
+          "balanceRaw": "309271353415411068391712n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
+              "name": "Curve fi USDC USDT",
+              "symbol": "2CRV",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "309271353415411068391712n",
+              "tokens": [
+                {
+                  "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+                  "name": "USD Coin (Arb1)",
+                  "symbol": "USDC.E",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "215121730923n",
+                  "balance": 215121.730923,
+                  "price": 1.0006325172996728,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
+                },
+                {
+                  "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+                  "name": "Tether USD",
+                  "symbol": "USDT",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "99129200553n",
+                  "balance": 99129.200553,
+                  "price": 1.0009411598112976,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
+                }
+              ],
+              "balance": 309271.3534154111,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x7f90122BF0700F9E7e1F688fe926940E8839F353/logo.png"
+            },
+            {
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978/logo.png",
+              "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+              "balanceRaw": "75664483585676271179n",
+              "type": "underlying-claimable",
+              "balance": 75.66448358567627,
+              "price": 0.6101780781461853
+            },
+            {
+              "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+              "name": "Arbitrum",
+              "symbol": "ARB",
+              "decimals": 18,
+              "balanceRaw": "219548334458180599975n",
+              "type": "underlying-claimable",
+              "balance": 219.5483344581806,
+              "price": 1.9957665045441455,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
+            }
+          ],
+          "balance": 309271.3534154111
+        },
+        {
+          "address": "0x95285Ea6fF14F80A2fD3989a6bAb993Bd6b5fA13",
+          "name": "Curve.fi Factory Plain Pool: FRAXBP",
+          "symbol": "FRAXBP-f",
+          "decimals": 18,
+          "guageType": "n-gauge",
+          "balanceRaw": "311975401422761397202n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC9B8a3FDECB9D5b218d02555a8Baf332E5B740d5",
+              "name": "Curve.fi Factory Plain Pool: FRAXBP",
+              "symbol": "FRAXBP-f",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "311975401422761397202n",
+              "tokens": [
+                {
+                  "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
+                  "name": "Frax",
+                  "symbol": "FRAX",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "223336631660658611123n",
+                  "balance": 223.3366316606586,
+                  "price": 1.0227802590214794,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
+                },
+                {
+                  "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+                  "name": "USD Coin (Arb1)",
+                  "symbol": "USDC.E",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "93297491n",
+                  "balance": 93.297491,
+                  "price": 1.0006325172996728,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
+                }
+              ],
+              "balance": 311.9754014227614,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xC9B8a3FDECB9D5b218d02555a8Baf332E5B740d5/logo.png"
+            },
+            {
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978/logo.png",
+              "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+              "balanceRaw": "392366261426705357n",
+              "type": "underlying-claimable",
+              "balance": 0.39236626142670533,
+              "price": 0.6101780781461853
+            }
+          ],
+          "balance": 311.9754014227614
+        },
+        {
+          "address": "0xB08FEf57bFcc5f7bF0EF69C0c090849d497C8F8A",
+          "name": "TriCRV-ARBITRUM",
+          "symbol": "crvUSDARBCRV",
+          "decimals": 18,
+          "guageType": "n-gauge",
+          "balanceRaw": "1357017635427274023392n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x845C8bc94610807fCbaB5dd2bc7aC9DAbaFf3c55",
+              "name": "TriCRV-ARBITRUM",
+              "symbol": "crvUSDARBCRV",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "1357017635427274023392n",
+              "tokens": [
+                {
+                  "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+                  "name": "Curve.Fi USD Stablecoin",
+                  "symbol": "crvUSD",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "1459947046835110089069n",
+                  "balance": 1459.94704683511,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5/logo.png"
+                },
+                {
+                  "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+                  "name": "Arbitrum",
+                  "symbol": "ARB",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "730224256071037920220n",
+                  "balance": 730.2242560710379,
+                  "price": 1.9957665045441455,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
+                },
+                {
+                  "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+                  "name": "Curve DAO Token",
+                  "symbol": "CRV",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "2371693073721453917021n",
+                  "balance": 2371.693073721454,
+                  "price": 0.6101780781461853,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978/logo.png"
+                }
+              ],
+              "balance": 1357.017635427274,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x845C8bc94610807fCbaB5dd2bc7aC9DAbaFf3c55/logo.png"
+            },
+            {
+              "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+              "name": "Curve.Fi USD Stablecoin",
+              "symbol": "crvUSD",
+              "decimals": 18,
+              "balanceRaw": "1958450303655415151n",
+              "type": "underlying-claimable",
+              "balance": 1.958450303655415,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5/logo.png"
+            }
+          ],
+          "balance": 1357.017635427274
+        },
+        {
+          "address": "0x030786336Bc7833D4325404A25FE451e4fde9807",
+          "name": "crvUSD/USDT",
+          "symbol": "crvUSDT",
+          "decimals": 18,
+          "guageType": "n-gauge",
+          "balanceRaw": "10503100356819273018697n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x73aF1150F265419Ef8a5DB41908B700C32D49135",
+              "name": "crvUSD/USDT",
+              "symbol": "crvUSDT",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "10503100356819273018697n",
+              "tokens": [
+                {
+                  "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+                  "name": "Curve.Fi USD Stablecoin",
+                  "symbol": "crvUSD",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "9030811334382275503645n",
+                  "balance": 9030.811334382275,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5/logo.png"
+                },
+                {
+                  "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+                  "name": "Tether USD",
+                  "symbol": "USDT",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "1486976433n",
+                  "balance": 1486.976433,
+                  "price": 1.0009411598112976,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
+                }
+              ],
+              "balance": 10503.100356819274,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x73aF1150F265419Ef8a5DB41908B700C32D49135/logo.png"
+            },
+            {
+              "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+              "name": "Arbitrum",
+              "symbol": "ARB",
+              "decimals": 18,
+              "balanceRaw": "27759437052407843934n",
+              "type": "underlying-claimable",
+              "balance": 27.759437052407844,
+              "price": 1.9957665045441455,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
+            },
+            {
+              "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+              "name": "Curve.Fi USD Stablecoin",
+              "symbol": "crvUSD",
+              "decimals": 18,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "balance": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5/logo.png"
+            }
+          ],
+          "balance": 10503.100356819274
+        },
+        {
+          "address": "0xd2cE52833a2a70Cf6255c6374Bc44525a0FB93D8",
+          "name": "MIM/crvUSD",
+          "symbol": "MIMcrvUSD",
+          "decimals": 18,
+          "guageType": "n-gauge",
+          "balanceRaw": "1000750243148634965n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4070C044ABc8d9d22447DFE4B032405970878d06",
+              "name": "MIM/crvUSD",
+              "symbol": "MIMcrvUSD",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "1000750243148634965n",
+              "tokens": [
+                {
+                  "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+                  "name": "Curve.Fi USD Stablecoin",
+                  "symbol": "crvUSD",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "313367805395544177n",
+                  "balance": 0.31336780539554415,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5/logo.png"
+                },
+                {
+                  "address": "0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
+                  "name": "Magic Internet Money",
+                  "symbol": "MIM",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "688168806731636664n",
+                  "balance": 0.6881688067316367,
+                  "price": 0.9928187751893671,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A/logo.png"
+                }
+              ],
+              "balance": 1.000750243148635,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x4070C044ABc8d9d22447DFE4B032405970878d06/logo.png"
+            },
+            {
+              "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+              "name": "Arbitrum",
+              "symbol": "ARB",
+              "decimals": 18,
+              "balanceRaw": "4386922429671695n",
+              "type": "underlying-claimable",
+              "balance": 0.004386922429671695,
+              "price": 1.9957665045441455,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
+            },
+            {
+              "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+              "name": "Curve.Fi USD Stablecoin",
+              "symbol": "crvUSD",
+              "decimals": 18,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "balance": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5/logo.png"
+            }
+          ],
+          "balance": 1.000750243148635
+        }
+      ]
+    }
+  ]
+}

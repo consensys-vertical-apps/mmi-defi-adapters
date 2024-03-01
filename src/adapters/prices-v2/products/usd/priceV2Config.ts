@@ -1,23 +1,9 @@
 import { getAddress } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
-import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 
-const ETH = {
-  symbol: 'ETH',
-  name: 'Ethereum',
-  decimals: 18,
-}
-
-// details here https://github.com/1inch/spot-price-aggregator
 const OneInchPriceOracleCommon = getAddress(
   '0x0AdDd25a91563696D8567Df78D5A01C9a991F9B8',
 )
-
-export const nativeTokenAddresses = [
-  ZERO_ADDRESS,
-  getAddress('0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'),
-  getAddress('0x0000000000000000000000000000000000001010'), // native token on polygon matic
-]
 
 export const priceAdapterConfig = {
   [Chain.Ethereum]: {
@@ -26,7 +12,6 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419',
     ),
-    nativeToken: ETH,
     wrappedToken: {
       symbol: 'WETH',
       name: 'Wrapped Ether',
@@ -42,7 +27,7 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x13e3ee699d1909e989722e753853ae30b17e08c5',
     ),
-    nativeToken: ETH,
+
     wrappedToken: {
       symbol: 'WETH',
       name: 'Wrapped Ether',
@@ -58,7 +43,7 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x9ef1b8c0e4f7dc8bf5719ea496883dc6401d5b2e',
     ),
-    nativeToken: { name: 'Binance Coin', symbol: 'BNB', decimals: 18 },
+
     wrappedToken: {
       symbol: 'WBNB',
       name: 'Wrapped BNB',
@@ -74,11 +59,7 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0xf9680d99d6c9589e2a93a78a04a279e509205945',
     ),
-    nativeToken: {
-      name: 'Matic Network Token',
-      symbol: 'MATIC',
-      decimals: 18,
-    },
+
     wrappedToken: {
       symbol: 'WMATIC',
       name: 'Wrapped Matic',
@@ -95,7 +76,7 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x639fe6ab55c921f74e7fac1ee960c0b6293ba612',
     ),
-    nativeToken: ETH,
+
     wrappedToken: {
       symbol: 'WETH',
       name: 'Wrapped Ether',
@@ -111,7 +92,7 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x976b3d034e162d8bd72d6b9c989d545b839003b0',
     ),
-    nativeToken: ETH, // Assuming native token is similar to ETH for example purposes
+
     wrappedToken: {
       symbol: 'WETH',
       name: 'Wrapped Ether',
@@ -127,7 +108,7 @@ export const priceAdapterConfig = {
     chainlinkUsdEthFeed: getAddress(
       '0x71041dddad3595f9ced3dccfbe3d1f4b0a16bb70',
     ),
-    nativeToken: ETH, // Assuming native token is similar to ETH for example purposes
+
     wrappedToken: {
       symbol: 'WETH',
       name: 'Wrapped Ether',
