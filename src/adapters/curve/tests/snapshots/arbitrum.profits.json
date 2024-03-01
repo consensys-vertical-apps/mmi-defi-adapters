@@ -38,15 +38,15 @@
           "symbol": "2CRV",
           "decimals": 18,
           "type": "protocol",
-          "profit": 305.34971715406425,
-          "performance": -9623887.397528976,
+          "profit": 305.3242862851529,
+          "performance": -9623085.877812156,
           "calculationData": {
             "withdrawals": 0.000031728313574457,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
             "startPositionValue": 0,
-            "endPositionValue": 305.3496854257507
+            "endPositionValue": 305.3242545568393
           },
           "rawValues": {
             "rawEndPositionValues": [
@@ -109,9 +109,9 @@
                     "name": "Arbitrum",
                     "symbol": "ARB",
                     "decimals": 18,
-                    "balanceRaw": "38816279963331082n",
+                    "balanceRaw": "26073873046759063n",
                     "type": "underlying-claimable",
-                    "balance": 0.038816279963331084,
+                    "balance": 0.026073873046759063,
                     "price": 1.9957665045441455,
                     "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
                   }

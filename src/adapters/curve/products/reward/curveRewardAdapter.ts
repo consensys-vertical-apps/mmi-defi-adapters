@@ -160,11 +160,14 @@ export class CurveRewardAdapter
 
             await Promise.all(
               Array.from({ length: 4 }).map(async (_, i) => {
-                const address = await contract.reward_tokens(i)
+                const address = await contract.reward_tokens(i, {
+                  blockTag: blockNumber,
+                })
                 if (address == ZERO_ADDRESS) return
                 const balanceRaw = await contract.claimable_reward(
                   userAddress,
                   address,
+                  { blockTag: blockNumber },
                 )
 
                 rewards.push({
@@ -202,41 +205,6 @@ export class CurveRewardAdapter
     await Promise.all(promises)
 
     return result
-
-    // return await filterMapAsync(stakingContracts, async (protocolToken) => {
-    //   if (
-    //     protocolTokenAddresses &&
-    //     !protocolTokenAddresses.includes(protocolToken.address)
-    //   ) {
-    //     return undefined
-    //   }
-
-    //   const stakingContract = StakingContract__factory.connect(
-    //     protocolToken.address,
-    //     this.provider,
-    //   )
-
-    //   const balanceRaw = await stakingContract.claimable_tokens
-    //     .staticCall(userAddress, { blockTag: blockNumber })
-    //     .catch(() => 0n)
-
-    //   if (balanceRaw == 0n) {
-    //     return undefined
-    //   }
-
-    //   return {
-    //     ...protocolToken,
-    //     balanceRaw,
-    //     type: TokenType.Reward,
-    //     tokens: [
-    //       {
-    //         ...CRV_TOKEN,
-    //         balanceRaw,
-    //         type: TokenType.UnderlyingClaimable,
-    //       },
-    //     ],
-    //   }
-    // })
   }
 
   async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
