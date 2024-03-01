@@ -1,6 +1,5 @@
 import { ZeroAddress } from 'ethers'
 import { WAD } from 'evm-maths/lib/constants'
-import { expN } from 'evm-maths/lib/utils'
 import { Erc20__factory } from '../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
@@ -26,7 +25,6 @@ import {
   ProtocolTokenUnderlyingRate,
   ProtocolTokenTvl,
   ProtocolPosition,
-  TokenBalance,
   TokenType,
   Underlying,
 } from '../../../types/adapter'
@@ -47,6 +45,24 @@ type MorphoBlueAdapterMetadata = Record<
     collateralToken: Erc20Metadata
   }
 >
+type GetAprInputExtended = GetAprInput & {
+  aprExpected?: boolean // Making it optional
+}
+
+type ProtocolTokenBalance = {
+  address: string
+  balance: bigint
+  id: string
+  tokens?: {
+    address: string
+    balance: number
+    balanceRaw: bigint
+    name: string
+    symbol: string
+    decimals: number
+    side?: string
+  }[]
+}
 
 const morphoBlueContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -80,19 +96,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
 
   abstract getProtocolDetails(): ProtocolDetails
 
-  // Whitelisting specific markets is intended
-  wstethWethChainlinkAdaptiveCurveIRM945 =
-    '0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41'
-  wstethUsdcChainlinkAdaptiveCurveIRM860 =
-    '0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc'
-  wbib01UsdcChainlinkAdaptiveCurveIRM965 =
-    '0x495130878b7d2f1391e21589a8bcaef22cbc7e1fbbd6866127193b3cc239d8b1'
-  marketIds = [
-    this.wstethWethChainlinkAdaptiveCurveIRM945,
-    this.wstethUsdcChainlinkAdaptiveCurveIRM860,
-    this.wbib01UsdcChainlinkAdaptiveCurveIRM965,
-  ]
-
   private _metadataCache: MorphoBlueAdapterMetadata | null = null
 
   async buildMetadata() {
@@ -100,6 +103,8 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
       return this._metadataCache
     }
 
+    const marketIdObjects = await this.graphQlPoolExtraction(Chain.Ethereum)
+    const marketIds = marketIdObjects.map((obj) => obj.marketId)
     const morphoBlueContract = MorphoBlue__factory.connect(
       morphoBlueContractAddresses[this.protocolId]![this.chainId]!,
       this._provider,
@@ -108,7 +113,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     const metadataObject: MorphoBlueAdapterMetadata = {}
 
     await Promise.all(
-      this.marketIds.map(async (id) => {
+      marketIds.map(async (id) => {
         const marketParams: MarketParams =
           await morphoBlueContract.idToMarketParams(id)
         const [loanTokenData, collateralTokenData] = await Promise.all([
@@ -151,36 +156,25 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     return metadataObject
   }
 
-  // this will get ALL the unique protocol tokens
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    const metadata = await this.buildMetadata()
+    return Object.values(await this.buildMetadata()).map(
+      ({ protocolToken }) => protocolToken,
+    )
+  }
 
-    const uniqueTokenAddresses = new Set<string>()
-    Object.values(metadata).forEach((market) => {
-      uniqueTokenAddresses.add(market.underlyingToken.address)
-      if (market.collateralToken) {
-        uniqueTokenAddresses.add(market.collateralToken.address)
-      }
-    })
-
-    const tokens: Erc20Metadata[] = []
-    for (const address of uniqueTokenAddresses) {
-      const tokenData = await getTokenMetadata(
-        address,
-        this.chainId,
-        this._provider,
-      )
-      tokens.push(tokenData)
-    }
-
-    return tokens
+  async getMarketsId(): Promise<string[]> {
+    return Object.values(await this.buildMetadata()).map(
+      ({ protocolToken }) => protocolToken.address,
+    )
   }
 
   protected async _fetchTokenMetadata(
     tokenAddress: string,
   ): Promise<Erc20Metadata> {
     const tokens = await this.getProtocolTokens()
-    const tokenMetadata = tokens.find((token) => token.address === tokenAddress)
+    const tokenMetadata = tokens.find(
+      (token) => token.address.toLowerCase() === tokenAddress.toLowerCase(),
+    )
     if (!tokenMetadata) {
       logger.error({ tokenAddress }, 'Token metadata not found')
       throw new Error('Token metadata not found')
@@ -188,23 +182,24 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     return tokenMetadata
   }
 
-  // let's get the loan token metadata
+  // get the loan token metadata
   protected async _fetchLoanTokenMetadata(id: string): Promise<Erc20Metadata> {
     const { underlyingToken } = await this._fetchMarketMetadata(id)
 
     return underlyingToken
   }
 
-  // let's get the collateral token metadata
+  // get the collateral token metadata
   protected async _fetchCollateralTokenMetadata(
     id: string,
   ): Promise<Erc20Metadata> {
     const { collateralToken } = await this._fetchMarketMetadata(id)
-    return collateralToken || null
+    return collateralToken
   }
 
-  // let's get the market token metadata
+  // get the market token metadata
   private async _fetchMarketMetadata(id: string) {
+    id = id.toLowerCase()
     const marketMetadata = (await this.buildMetadata())[id]
 
     if (!marketMetadata) {
@@ -244,16 +239,16 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     protocolTokenBalance,
   }: {
     userAddress: string
-    protocolTokenBalance: TokenBalance
+    protocolTokenBalance: ProtocolTokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
     const tokenMetadata = await this._fetchTokenMetadata(
-      protocolTokenBalance.address,
+      protocolTokenBalance.id,
     )
 
     const underlyingTokenBalance = {
       ...tokenMetadata,
-      balanceRaw: protocolTokenBalance.balanceRaw,
+      balanceRaw: protocolTokenBalance.balance,
       type: TokenType.Underlying,
     }
     return [underlyingTokenBalance]
@@ -275,156 +270,146 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
       marketId: string,
       userAddress: string,
       blockNumber: number,
-    ): Promise<bigint> => {
-      let balanceRaw = 0n
-      if (positionType === PositionType.Supply) {
-        const userBalance: PositionUser = await morphoBlue.position(
-          marketId,
-          userAddress,
-          {
-            blockTag: blockNumber,
-          },
-        )
-        const supplyShares = userBalance.supplyShares
+    ): Promise<{
+      supplyAmount: bigint
+      borrowAmount: bigint
+      collateralAmount: bigint
+    }> => {
+      let supplyAmount = 0n
+      let collateralAmount = 0n
+      let borrowAmount = 0n
 
-        const [marketData, marketParams] = await Promise.all([
-          morphoBlue.market(marketId, {
-            blockTag: blockNumber,
-          }),
-          morphoBlue.idToMarketParams(marketId, {
-            blockTag: blockNumber,
-          }),
-        ])
+      const userBalance: PositionUser = await morphoBlue.position(
+        marketId,
+        userAddress,
+        {
+          blockTag: blockNumber,
+        },
+      )
+      const supplyShares = userBalance.supplyShares
+      const borrowShares = userBalance.borrowShares
+      const [marketData_, marketParams_] = await Promise.all([
+        morphoBlue.market(marketId, {
+          blockTag: blockNumber,
+        }),
+        morphoBlue.idToMarketParams(marketId, {
+          blockTag: blockNumber,
+        }),
+      ])
 
-        const irm = AdaptiveCurveIrm__factory.connect(
-          marketParams.irm,
-          this._provider,
-        )
-        const borrowRate =
-          marketParams.irm !== ZeroAddress
-            ? await irm.borrowRateView(marketParams, marketData)
-            : 0n
-
-        const block = await this._provider.getBlock('latest')
-
-        const updatedMarketData = this.__MATH__.accrueInterests(
-          BigInt(block!.timestamp),
-          marketData,
-          borrowRate,
-        )
-
-        const supplyAssets = this.__MATH__.toAssetsDown(
-          supplyShares,
-          updatedMarketData.totalSupplyAssets,
-          updatedMarketData.totalSupplyShares,
-        )
-        balanceRaw = supplyAssets || 0n
-      } else {
-        // corresponds to the borrow position: careful: collateral AND borrow has to be taken into account
-        const userBalance: PositionUser = await morphoBlue.position(
-          marketId,
-          userAddress,
-          {
-            blockTag: blockNumber,
-          },
-        )
-        const borrowShares = userBalance.borrowShares
-
-        const [marketData, marketParams] = await Promise.all([
-          morphoBlue.market(marketId, {
-            blockTag: blockNumber,
-          }),
-          morphoBlue.idToMarketParams(marketId, {
-            blockTag: blockNumber,
-          }),
-        ])
-
-        const irm = AdaptiveCurveIrm__factory.connect(
-          marketParams.irm,
-          this._provider,
-        )
-        const borrowRate =
-          marketParams.irm !== ZeroAddress
-            ? await irm.borrowRateView(marketParams, marketData)
-            : 0n
-
-        const block = await this._provider.getBlock('latest')
-
-        const updatedMarketData = this.__MATH__.accrueInterests(
-          BigInt(block!.timestamp),
-          marketData,
-          borrowRate,
-        )
-
-        const borrowAssets = this.__MATH__.toAssetsDown(
-          borrowShares,
-          updatedMarketData.totalSupplyAssets,
-          updatedMarketData.totalSupplyShares,
-        )
-        balanceRaw = borrowAssets || 0n
+      const marketParams: MarketParams = {
+        loanToken: marketParams_.loanToken,
+        collateralToken: marketParams_.collateralToken,
+        oracle: marketParams_.oracle,
+        irm: marketParams_.irm,
+        lltv: marketParams_.lltv,
       }
-      return balanceRaw
+
+      const marketData: MarketData = {
+        totalSupplyAssets: marketData_.totalSupplyAssets,
+        totalSupplyShares: marketData_.totalSupplyShares,
+        totalBorrowAssets: marketData_.totalBorrowAssets,
+        totalBorrowShares: marketData_.totalBorrowShares,
+        lastUpdate: marketData_.lastUpdate,
+        fee: marketData_.fee,
+      }
+
+      const irm = AdaptiveCurveIrm__factory.connect(
+        marketParams.irm,
+        this._provider,
+      )
+      const borrowRate =
+        marketParams.irm !== ZeroAddress
+          ? await irm.borrowRateView(marketParams, marketData, {
+              blockTag: blockNumber,
+            })
+          : 0n
+
+      const block = await this._provider.getBlock('latest')
+
+      const updatedMarketData = this.__MATH__.accrueInterests(
+        BigInt(block!.timestamp),
+        marketData,
+        borrowRate,
+      )
+
+      const supplyAssets = this.__MATH__.toAssetsDown(
+        supplyShares,
+        updatedMarketData.totalSupplyAssets,
+        updatedMarketData.totalSupplyShares,
+      )
+      const borrowAssets = this.__MATH__.toAssetsDown(
+        borrowShares,
+        updatedMarketData.totalBorrowAssets,
+        updatedMarketData.totalBorrowShares,
+      )
+      supplyAmount = supplyAssets || 0n
+      collateralAmount = userBalance.collateral
+      borrowAmount = borrowAssets || 0n
+      return { supplyAmount, borrowAmount, collateralAmount }
     }
 
-    const protocolTokensBalances = await Promise.all(
-      this.marketIds.map(async (id) => {
-        if (positionType === PositionType.Supply) {
-          const loanMetadata = await this._fetchLoanTokenMetadata(id)
-          const amount = await getBalance(id, userAddress, blockNumber!)
-          return {
-            address: loanMetadata.address,
-            balance: amount,
-          }
-        } else {
-          const loanMetadata = await this._fetchLoanTokenMetadata(id)
-          const amount = await getBalance(id, userAddress, blockNumber!)
-          return {
-            address: loanMetadata.address,
-            balance: amount,
-          }
-          return {
-            address: ZeroAddress,
-            balance: 0n,
-          }
+    const resolvedBlockNumber =
+      blockNumber ?? (await this._provider.getBlockNumber())
+    const marketsIds = await this.getMarketsId()
+    const resolvedProtocolPositions = await Promise.all(
+      marketsIds.map(async (marketId): Promise<ProtocolPosition | null> => {
+        const { supplyAmount, borrowAmount, collateralAmount } =
+          await getBalance(marketId, userAddress, resolvedBlockNumber)
+
+        // Decide which amount to consider based on the positionType
+        const amount =
+          positionType === PositionType.Supply ? supplyAmount : borrowAmount
+
+        // Skip markets with a balance of 0
+        if (amount === 0n) {
+          return null
         }
+
+        const loanMetadata = await this._fetchLoanTokenMetadata(marketId)
+
+        const tokens: Underlying[] = []
+        if (positionType === PositionType.Borrow && collateralAmount > 0n) {
+          const collateralMetadata = await this._fetchCollateralTokenMetadata(
+            marketId,
+          )
+          tokens.push({
+            address: marketId,
+            balanceRaw: collateralAmount,
+            name: collateralMetadata.name,
+            symbol: collateralMetadata.symbol,
+            decimals: collateralMetadata.decimals,
+            type: 'underlying',
+          })
+          tokens.push({
+            address: marketId,
+            balanceRaw: borrowAmount,
+            name: loanMetadata.name,
+            symbol: loanMetadata.symbol,
+            decimals: loanMetadata.decimals,
+            type: 'underlying',
+          })
+        }
+
+        const protocolPosition: ProtocolPosition = {
+          address: marketId,
+          name: loanMetadata.name,
+          symbol: loanMetadata.symbol,
+          decimals: loanMetadata.decimals,
+          balanceRaw: amount,
+          type: TokenType.Protocol,
+          tokens: tokens.length > 0 ? tokens : undefined,
+        }
+
+        return protocolPosition
       }),
     )
 
-    const protocolTokens: ProtocolPosition[] = await Promise.all(
-      protocolTokensBalances
-        .filter((protocolTokenBalance) => protocolTokenBalance.balance !== 0n) // Filter out balances equal to 0
-        .map(async (protocolTokenBalance) => {
-          const tokenMetadata = await this._fetchTokenMetadata(
-            protocolTokenBalance.address,
-          )
-
-          const completeTokenBalance: TokenBalance = {
-            address: protocolTokenBalance.address,
-            balanceRaw: protocolTokenBalance.balance,
-            name: tokenMetadata.name,
-            symbol: tokenMetadata.symbol,
-            decimals: tokenMetadata.decimals,
-          }
-
-          const underlyingTokenBalances =
-            await this._getUnderlyingTokenBalances({
-              userAddress,
-              protocolTokenBalance: completeTokenBalance,
-              blockNumber,
-            })
-
-          return {
-            ...protocolTokenBalance,
-            balanceRaw: protocolTokenBalance.balance,
-            name: tokenMetadata.name,
-            symbol: tokenMetadata.symbol,
-            decimals: tokenMetadata.decimals,
-            type: TokenType.Protocol,
-            tokens: underlyingTokenBalances,
-          }
-        }),
+    const validPositions: ProtocolPosition[] = resolvedProtocolPositions.filter(
+      (position): position is ProtocolPosition => position !== null,
     )
-    return protocolTokens
+
+    return validPositions
   }
 
   async getWithdrawals({
@@ -517,7 +502,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  // TODO: verify thanks to the tests
   async getTotalValueLocked({
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
@@ -532,8 +516,8 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     const supplyAssetsAggregator: Aggregator = {}
     const borrowAssetsAggregator: Aggregator = {}
     const collateralTokensSet: Set<string> = new Set()
-
-    for (const marketId of this.marketIds) {
+    const marketsIds = await this.getMarketsId()
+    for (const marketId of marketsIds) {
       const marketMetadata = metadata[marketId]
       const marketData: MarketData = await morphoBlue.market(marketId, {
         blockTag: blockNumber,
@@ -550,7 +534,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
           marketData.totalBorrowAssets
       }
 
-      // Track the collateral token
       const collateralTokenAddress = marketMetadata?.collateralToken?.address
       if (collateralTokenAddress) {
         collateralTokensSet.add(collateralTokenAddress)
@@ -597,26 +580,22 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
       }
 
       if (totalValueLocked === 0n) {
-        continue // Skip to the next iteration
+        continue
       }
 
-      // Check if the token is a collateral token
       const isCollateralToken = collateralTokensSet.has(tokenAddress)
 
-      // Find the token metadata using the tokenAddress
       const tokenMetadata = Object.values(metadata).find((market) =>
         isCollateralToken
           ? market.collateralToken.address === tokenAddress
           : market.underlyingToken.address === tokenAddress,
-      )?.[isCollateralToken ? 'collateralToken' : 'underlyingToken'] // Fetch the appropriate metadata based on the token type
+      )?.[isCollateralToken ? 'collateralToken' : 'underlyingToken']
 
-      // Construct TVL result for the token
       if (tokenMetadata) {
         tvlResults.push({
           type: TokenType.Protocol,
           totalSupplyRaw: totalValueLocked,
-          ...tokenMetadata, // This will now correctly include either loanToken or collateralToken metadata
-          // 'tokens' field can be added here if applicable
+          ...tokenMetadata,
         })
       }
     }
@@ -624,7 +603,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     return tvlResults
   }
 
-  // Nothing to do as there is no protocol tokens
+  // Nothing to do here
   async getProtocolTokenToUnderlyingTokenRate(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
@@ -714,18 +693,19 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     return movements
   }
 
-  // TODO: verify thanks to the tests
   protected async _getProtocolTokenApr({
     protocolTokenAddress,
     blockNumber,
-  }: GetAprInput): Promise<number> {
+    aprExpected,
+  }: GetAprInputExtended): Promise<number> {
     const morphoBlue = MorphoBlue__factory.connect(
       morphoBlueContractAddresses[this.protocolId]![this.chainId]!,
       this._provider,
     )
 
     const marketId = protocolTokenAddress
-    const [marketData, marketParams] = await Promise.all([
+
+    const [marketData_, marketParams_] = await Promise.all([
       morphoBlue.market(protocolTokenAddress, {
         blockTag: blockNumber,
       }),
@@ -734,32 +714,73 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
       }),
     ])
 
+    const marketParams: MarketParams = {
+      loanToken: marketParams_.loanToken,
+      collateralToken: marketParams_.collateralToken,
+      oracle: marketParams_.oracle,
+      irm: marketParams_.irm,
+      lltv: marketParams_.lltv,
+    }
+
+    const marketData: MarketData = {
+      totalSupplyAssets: marketData_.totalSupplyAssets,
+      totalSupplyShares: marketData_.totalSupplyShares,
+      totalBorrowAssets: marketData_.totalBorrowAssets,
+      totalBorrowShares: marketData_.totalBorrowShares,
+      lastUpdate: marketData_.lastUpdate,
+      fee: marketData_.fee,
+    }
+
     const irm = AdaptiveCurveIrm__factory.connect(
       marketParams.irm,
       this._provider,
     )
+
     const borrowRate =
       marketParams.irm !== ZeroAddress
-        ? await irm.borrowRateView(marketParams, marketData)
+        ? await irm.borrowRateView(marketParams, marketData, {
+            blockTag: blockNumber,
+          })
         : 0n
 
     const positionType = this.getProtocolDetails().positionType
 
+    if (aprExpected === true) {
+      const borrowAPR = borrowRate * BigInt(SECONDS_PER_YEAR)
+      if (positionType === PositionType.Borrow) {
+        return Number(borrowAPR) / Number(WAD)
+      } else {
+        const utilization = this.__MATH__.wDivUp(
+          marketData.totalBorrowAssets,
+          marketData.totalSupplyAssets,
+        )
+        const supplyAPR = this.__MATH__.wMulDown(
+          this.__MATH__.wMulDown(utilization, borrowAPR),
+          WAD - marketData.fee,
+        )
+        return Number(supplyAPR) / Number(WAD)
+      }
+    }
+
+    const borrowAPY = this.__MATH__.wTaylorCompounded(
+      borrowRate,
+      BigInt(SECONDS_PER_YEAR),
+    )
     if (positionType === PositionType.Borrow) {
-      return Number(
-        expN(borrowRate * BigInt(SECONDS_PER_YEAR), BigInt(3), WAD) - 1n,
-      )
+      return Number(borrowAPY) / Number(WAD)
     } else {
-      const utilization =
-        marketData.totalBorrowAssets / marketData.totalSupplyAssets
-      const supplyRate = utilization * borrowRate * (1n - marketData.fee)
-      return Number(
-        expN(supplyRate * BigInt(SECONDS_PER_YEAR), BigInt(3), WAD) - 1n,
+      const utilization = this.__MATH__.wDivUp(
+        marketData.totalBorrowAssets,
+        marketData.totalSupplyAssets,
       )
+      const supplyAPY = this.__MATH__.wMulDown(
+        this.__MATH__.wMulDown(utilization, borrowAPY),
+        WAD - marketData.fee,
+      )
+      return Number(supplyAPY) / Number(WAD)
     }
   }
 
-  // TODO: verify thanks to the tests
   async getApr({
     protocolTokenAddress,
     blockNumber,
@@ -767,6 +788,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     const apr = await this._getProtocolTokenApr({
       protocolTokenAddress,
       blockNumber,
+      aprExpected: true,
     })
     return {
       ...(await this._fetchTokenMetadata(protocolTokenAddress)),
@@ -774,7 +796,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     }
   }
 
-  // TODO: verify thanks to the tests
   async getApy({
     protocolTokenAddress,
     blockNumber,
@@ -782,11 +803,60 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     const apy = await this._getProtocolTokenApr({
       protocolTokenAddress,
       blockNumber,
+      aprExpected: false,
     })
 
     return {
       ...(await this._fetchTokenMetadata(protocolTokenAddress)),
       apyDecimal: apy * 100,
     }
+  }
+
+  // Whitelisted markets thanks to the below graphql extraction:
+  private async graphQlPoolExtraction(chainId: typeof Chain.Ethereum): Promise<
+    {
+      marketId: string
+    }[]
+  > {
+    const numberOfMarkets = 1000
+    const minVolumeUSD = 1000000
+    const graphQueryUrl: Record<
+      typeof Chain.Ethereum,
+      {
+        url: string
+        query: string
+      }
+    > = {
+      [Chain.Ethereum]: {
+        url: 'https://api.thegraph.com/subgraphs/name/morpho-association/morpho-blue',
+        query: `{ markets(first: ${numberOfMarkets} where: {totalValueLockedUSD_gt: ${minVolumeUSD}} orderBy: totalValueLockedUSD orderDirection: desc) {id}}`,
+      },
+    }
+
+    const { url, query } = graphQueryUrl[chainId]
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query,
+      }),
+    })
+
+    const gqlResponse: {
+      data: {
+        markets: [
+          {
+            id: string
+          },
+        ]
+      }
+    } = await response.json()
+
+    return gqlResponse.data.markets.map((market) => {
+      return {
+        marketId: market.id,
+      }
+    })
   }
 }
