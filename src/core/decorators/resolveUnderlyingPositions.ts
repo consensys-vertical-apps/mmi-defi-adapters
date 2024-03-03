@@ -207,7 +207,7 @@ async function fetchPrice(
 ) {
   let priceAdapter
   try {
-    priceAdapter = await adapter.adaptersController.fetchAdapter(
+    priceAdapter = adapter.adaptersController.fetchAdapter(
       adapter.chainId,
       Protocol.PricesV2,
       'usd',

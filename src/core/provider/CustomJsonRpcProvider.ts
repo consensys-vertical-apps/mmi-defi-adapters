@@ -70,6 +70,6 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   }
 
   async getLogs(filter: Filter | FilterByBlockHash): Promise<Array<Log>> {
-    return this.callRetryHandler(() => super.getLogs(filter))
+    return this.logsRetryHandler(() => super.getLogs(filter))
   }
 }

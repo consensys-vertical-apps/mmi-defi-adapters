@@ -99,13 +99,14 @@ export async function simulateTx({
         [chainName]: forkDetails.providerUrl,
       },
       enableUsdPricesOnPositions: false,
+      rpcGetLogsTimeoutInMs: 240000,
     })
 
     const [deposits, withdrawals, positions] = await Promise.all([
       forkDefiProvider.getDeposits({
         userAddress: result.from,
-        fromBlock: result.blockNumber - 10,
-        toBlock: result.blockNumber + 1,
+        fromBlock: result.blockNumber,
+        toBlock: result.blockNumber,
         chainId,
         protocolTokenAddress,
         protocolId,
@@ -114,8 +115,8 @@ export async function simulateTx({
       }),
       forkDefiProvider.getWithdrawals({
         userAddress: result.from,
-        fromBlock: result.blockNumber - 10,
-        toBlock: result.blockNumber + 1,
+        fromBlock: result.blockNumber,
+        toBlock: result.blockNumber,
         chainId,
         protocolTokenAddress,
         protocolId,
