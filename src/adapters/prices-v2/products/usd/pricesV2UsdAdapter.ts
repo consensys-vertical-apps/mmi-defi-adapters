@@ -4,6 +4,7 @@ import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { nativeTokenAddresses } from '../../../../core/utils/nativeTokens'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -27,7 +28,7 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
-import { nativeTokenAddresses, priceAdapterConfig } from './priceV2Config'
+import { priceAdapterConfig } from './priceV2Config'
 
 export const USD = 'USD'
 

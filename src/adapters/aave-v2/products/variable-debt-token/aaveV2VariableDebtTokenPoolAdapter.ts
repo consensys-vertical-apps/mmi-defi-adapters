@@ -21,7 +21,7 @@ export class AaveV2VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.NonStandardErc20,
+        type: AssetType.StandardErc20,
       },
     }
   }

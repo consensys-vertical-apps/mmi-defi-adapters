@@ -23,27 +23,39 @@
         },
         "tokens": [
           {
-            "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-            "name": "Liquid staked Ether 2.0",
-            "symbol": "stETH",
+            "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+            "name": "Wrapped liquid staked Ether 2.0",
+            "symbol": "wstETH",
             "decimals": 18,
-            "balanceRaw": "70819350317881833n",
+            "balanceRaw": "63685786697634575n",
             "type": "underlying",
             "blockNumber": 16738529,
             "tokens": [
               {
-                "address": "0x0000000000000000000000000000000000000000",
-                "name": "Ethereum",
-                "symbol": "ETH",
+                "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                "name": "Liquid staked Ether 2.0",
+                "symbol": "stETH",
                 "decimals": 18,
                 "type": "underlying",
                 "balanceRaw": "70819350317881833n",
+                "tokens": [
+                  {
+                    "address": "0x0000000000000000000000000000000000000000",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "type": "underlying",
+                    "balanceRaw": "70819350317881833n",
+                    "balance": 0.07081935031788184,
+                    "price": 1649.1,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  }
+                ],
                 "balance": 0.07081935031788184,
-                "price": 1649.1,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
               }
             ],
-            "balance": 0.07081935031788184
+            "balance": 0.06368578669763457
           }
         ],
         "blockNumber": 16738529
