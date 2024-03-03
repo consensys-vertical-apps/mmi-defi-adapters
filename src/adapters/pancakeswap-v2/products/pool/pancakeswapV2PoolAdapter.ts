@@ -1,0 +1,71 @@
+import {
+  UniswapV2PoolForkAdapter,
+  UniswapV2PoolForkMetadataBuilder,
+} from '../../../../core/adapters/UniswapV2PoolForkAdapter'
+import { Chain } from '../../../../core/constants/chains'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import {
+  ProtocolDetails,
+  PositionType,
+  AssetType,
+} from '../../../../types/adapter'
+
+export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
+  productId = 'pool'
+
+  getProtocolDetails(): ProtocolDetails {
+    return {
+      protocolId: this.protocolId,
+      name: 'PancakeswapV2',
+      description: 'PancakeswapV2 pool adapter',
+      siteUrl: 'https://pancakeswap.finance/pools',
+      iconUrl: 'https://cryptologos.cc/logos/pancakeswap-cake-logo.svg?v=029',
+      positionType: PositionType.Supply,
+      chainId: this.chainId,
+      productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
+      },
+    }
+  }
+
+  protected chainMetadataSettings(): Partial<
+    Record<Chain, UniswapV2PoolForkMetadataBuilder>
+  > {
+    return {
+      [Chain.Ethereum]: {
+        type: 'graphql',
+        subgraphUrl:
+          'https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth',
+        factoryAddress: '0x1097053Fd2ea711dad45caCcc45EfF7548fCB362',
+      },
+      [Chain.Bsc]: {
+        type: 'graphql',
+        subgraphUrl:
+          'https://open-platform.nodereal.io/b4355ec60e4c4d85a3d3204386a8c5ed/pancakeswap/graphql/',
+        factoryAddress: '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73',
+      },
+      [Chain.Base]: {
+        type: 'graphql',
+        subgraphUrl:
+          'https://api.studio.thegraph.com/query/45376/exchange-v2-base/version/latest',
+        factoryAddress: '0x02a84c1b3BBD7401a5f7fa98a384EBC70bB5749E',
+      },
+      [Chain.Arbitrum]: {
+        type: 'factory',
+        factoryAddress: '0x02a84c1b3BBD7401a5f7fa98a384EBC70bB5749E',
+      },
+      [Chain.Linea]: {
+        type: 'graphql',
+        subgraphUrl:
+          'https://graph-query.linea.build/subgraphs/name/pancakeswap/exhange-v2',
+        factoryAddress: '0x02a84c1b3BBD7401a5f7fa98a384EBC70bB5749E',
+      },
+    }
+  }
+
+  @CacheToFile({ fileKey: 'protocol-token' })
+  async buildMetadata() {
+    return super.buildMetadata()
+  }
+}
