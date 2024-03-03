@@ -23,6 +23,7 @@ import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3
 import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
+import { testCases as quickswapV2TestCases } from './quickswap-v2/tests/testCases'
 import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as stakeWiseTestCases } from './stakewise/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
@@ -71,6 +72,7 @@ function runAllTests() {
   runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
   runProtocolTests(Protocol.StakeWise, stakeWiseTestCases)
   runProtocolTests(Protocol.Xfai, xfaiTestCases)
+  runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

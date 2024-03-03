@@ -1,0 +1,40 @@
+{
+  "blockNumber": 54212235,
+  "snapshot": [
+    {
+      "protocolId": "quickswap-v2",
+      "name": "QuickswapV2",
+      "description": "QuickswapV2 pool adapter",
+      "siteUrl": "https://v2.info.uniswap.org/home",
+      "iconUrl": "https://cryptologos.cc/logos/uniswap-uni-logo.svg",
+      "positionType": "supply",
+      "chainId": 137,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xadbF1854e5883eB8aa7BAf50705338739e558E5b",
+          "name": "Quickswap V2 WMATIC / WETH",
+          "symbol": "QUICK/WMATIC/WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.19914453990089598,
+          "performance": 0.01933444103106192,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 10.299989515133047,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 10.499134055033943
+          }
+        }
+      ],
+      "fromBlock": 53933145,
+      "toBlock": 54212235
+    }
+  ]
+}

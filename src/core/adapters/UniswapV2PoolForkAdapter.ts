@@ -44,6 +44,11 @@ export abstract class UniswapV2PoolForkAdapter
 {
   protected readonly MAX_FACTORY_PAIRS: number = 1000
   protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
+  protected readonly MIN_TOKEN_RESERVE: number = 1
+
+  protected readonly PROTOCOL_TOKEN_PREFIX_OVERRIDE:
+    | { name: string; symbol: string }
+    | undefined
 
   protected abstract chainMetadataSettings(): Partial<
     Record<Chain, UniswapV2PoolForkMetadataBuilder>
@@ -65,23 +70,12 @@ export abstract class UniswapV2PoolForkAdapter
         ? await this.graphQlPoolExtraction(factoryMetadata.subgraphUrl)
         : await this.factoryPoolExtraction(factoryMetadata.factoryAddress)
 
-    const factoryContract = UniswapV2Factory__factory.connect(
-      factoryMetadata.factoryAddress,
-      this.provider,
-    )
-
-    const firstPairAddress = await factoryContract.allPairs(0)
-    const firstPairContract = UniswapV2Pair__factory.connect(
-      firstPairAddress,
-      this.provider,
-    )
-
-    // Fetch name and symbol of a pair to use in protocol token name and symbol
-    // Since they are always the same for all pairs, we only need to fetch it once
-    const [name, symbol] = await Promise.all([
-      firstPairContract.name(),
-      firstPairContract.symbol(),
-    ])
+    const [name, symbol] = this.PROTOCOL_TOKEN_PREFIX_OVERRIDE
+      ? [
+          this.PROTOCOL_TOKEN_PREFIX_OVERRIDE.name,
+          this.PROTOCOL_TOKEN_PREFIX_OVERRIDE.symbol,
+        ]
+      : await this.fetchTokenPrefixFromPair(factoryMetadata.factoryAddress)
 
     const pairPromises = await Promise.allSettled(
       pairs.map(async (pair) => {
@@ -238,11 +232,32 @@ export abstract class UniswapV2PoolForkAdapter
       token1Address: string
     }[]
   > {
+    // Volume and reserve filters have been added to avoid pairs that are not useful
     const response = await fetch(subgraphUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        query: `{ pairs(first: ${this.MAX_FACTORY_PAIRS} where: {volumeUSD_gt: ${this.MIN_SUBGRAPH_VOLUME}} orderBy: reserveUSD orderDirection: desc) {id token0 {id} token1 {id}}}`,
+        query: `
+          {
+            pairs(
+              first: ${this.MAX_FACTORY_PAIRS}
+              where: {
+                volumeUSD_gt: ${this.MIN_SUBGRAPH_VOLUME}
+                reserve0_gte: ${this.MIN_TOKEN_RESERVE}
+                reserve1_gte: ${this.MIN_TOKEN_RESERVE}
+              }
+              orderBy: reserveUSD orderDirection: desc
+            )
+            {
+              id
+              token0 {
+                id
+              }
+              token1 {
+                id
+              }
+            }
+          }`,
       }),
     })
 
@@ -308,5 +323,25 @@ export abstract class UniswapV2PoolForkAdapter
         }
       },
     )
+  }
+
+  private async fetchTokenPrefixFromPair(
+    factoryAddress: string,
+  ): Promise<[string, string]> {
+    const factoryContract = UniswapV2Factory__factory.connect(
+      factoryAddress,
+      this.provider,
+    )
+
+    const firstPairAddress = await factoryContract.allPairs(0)
+    const firstPairContract = UniswapV2Pair__factory.connect(
+      firstPairAddress,
+      this.provider,
+    )
+
+    return await Promise.all([
+      firstPairContract.name(),
+      firstPairContract.symbol(),
+    ])
   }
 }
