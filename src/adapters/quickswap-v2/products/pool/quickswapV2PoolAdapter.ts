@@ -23,8 +23,9 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
       protocolId: this.protocolId,
       name: 'QuickswapV2',
       description: 'QuickswapV2 pool adapter',
-      siteUrl: 'https://v2.info.uniswap.org/home',
-      iconUrl: 'https://cryptologos.cc/logos/uniswap-uni-logo.svg',
+      siteUrl: 'https://quickswap.exchange/#/pools/v2',
+      iconUrl:
+        'https://seeklogo.com/images/Q/quickswap-quick-logo-B9D689A214-seeklogo.com.png',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
@@ -37,9 +38,6 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   protected chainMetadataSettings(): Partial<
     Record<Chain, UniswapV2PoolForkMetadataBuilder>
   > {
-    // TODO - For each supported chain, provide the settings needed to build the list of pools
-    // If using subgraph (recommended for forks with an available subgraph), provide the subgraph URL and factory cotract address
-    // If using factory contract (recommended when subgraph is no available), provide the factory contract address
     return {
       [Chain.Polygon]: {
         type: 'graphql',
