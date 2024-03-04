@@ -179,26 +179,6 @@
       "decimals": 18
     }
   },
-  "0xF48E495598f6B4571C80CdeB61CAf680c071a5D9": {
-    "protocolToken": {
-      "address": "0xF48E495598f6B4571C80CdeB61CAf680c071a5D9",
-      "name": "Pancake LPs TSUCAKE / WETH",
-      "symbol": "Cake-LP/TSUCAKE/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x4850ea923E38d0427f3cA4bD543cB35dEb96f47e",
-      "name": "Dejitaru Tsucake",
-      "symbol": "TSUCAKE",
-      "decimals": 9
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x99E5068E762677839e77Da46e684EdD61F8684Bd": {
     "protocolToken": {
       "address": "0x99E5068E762677839e77Da46e684EdD61F8684Bd",
@@ -217,6 +197,26 @@
       "name": "Tether USD",
       "symbol": "USDT",
       "decimals": 6
+    }
+  },
+  "0xF48E495598f6B4571C80CdeB61CAf680c071a5D9": {
+    "protocolToken": {
+      "address": "0xF48E495598f6B4571C80CdeB61CAf680c071a5D9",
+      "name": "Pancake LPs TSUCAKE / WETH",
+      "symbol": "Cake-LP/TSUCAKE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4850ea923E38d0427f3cA4bD543cB35dEb96f47e",
+      "name": "Dejitaru Tsucake",
+      "symbol": "TSUCAKE",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
     }
   },
   "0x6cCA86CC27EB8c7C2d10B0672FE392CFC88e62ff": {

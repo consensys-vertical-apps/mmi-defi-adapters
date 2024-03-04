@@ -15,14 +15,6 @@ export const testCases: TestCase[] = [
       ],
     },
 
-    blockNumber: 36642793,
+    blockNumber: 36672150,
   },
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'profits',
-  //   input: {
-  //     userAddress: '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',
-  //     timePeriod: TimePeriod.oneDay,
-  //   },
-  // },
 ]
