@@ -8,6 +8,7 @@ import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
 import { featureCommands } from './featureCommands'
 import { newAdapterCommand } from './newAdapterCommand'
+import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
 
 const program = new Command('mmi-adapters')
@@ -29,5 +30,7 @@ buildMetadata(program, chainProviders, adaptersController)
 buildSnapshots(program, defiProvider)
 
 stressCommand(program, defiProvider)
+
+simulateTxCommand(program, chainProviders)
 
 program.parseAsync()
