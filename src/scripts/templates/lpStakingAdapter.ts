@@ -4,7 +4,6 @@ export function lpStakingAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-  chainKeys,
 }: NewAdapterAnswers) {
   return `import {
     LPStakingAdapter,

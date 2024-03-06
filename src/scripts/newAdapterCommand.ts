@@ -20,12 +20,12 @@ import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { DefiProvider } from '../defiProvider'
 import { chainFilter, protocolFilter } from './commandFilters'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
+import { lpStakingAdapterTemplate } from './templates/lpStakingAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import { testCases } from './templates/testCases'
 import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
 import n = types.namedTypes
 import b = types.builders
-import { lpStakingAdapterTemplate } from './templates/lpStakingAdapter'
 
 type TemplateBuilder = (adapterSettings: NewAdapterAnswers) => string
 
