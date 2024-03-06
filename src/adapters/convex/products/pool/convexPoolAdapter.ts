@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { StakingAdapter } from '../../../../core/adapters/StakingAdapter'
+import { LPStakingAdapter } from '../../../../core/adapters/StakingAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
@@ -29,8 +29,11 @@ type ConvexStakingAdapterMetadata = Record<
   }
 >
 
+/**
+ * First version of Convex had additional token which needed to be staked to accrue rewards
+ */
 export class ConvexPoolAdapter
-  extends StakingAdapter
+  extends LPStakingAdapter
   implements IMetadataBuilder
 {
   getRewardPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {

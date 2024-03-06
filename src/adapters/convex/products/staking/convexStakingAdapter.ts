@@ -1,6 +1,6 @@
 import { getAddress } from 'ethers'
 import {
-  StakingAdapter,
+  LPStakingAdapter,
   StakingProtocolMetadata,
 } from '../../../../core/adapters/StakingAdapter'
 import { Chain } from '../../../../core/constants/chains'
@@ -39,7 +39,7 @@ export const CONVEX_TOKEN = {
 }
 
 export class ConvexStakingAdapter
-  extends StakingAdapter
+  extends LPStakingAdapter
   implements IMetadataBuilder
 {
   productId = 'staking'
