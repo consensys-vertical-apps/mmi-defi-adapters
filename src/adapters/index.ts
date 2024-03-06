@@ -15,6 +15,7 @@ import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/con
 import { ConvexExtraRewardAdapter } from './convex/products/extra-reward/convexExtraRewardAdapter'
 import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
 import { ConvexRewardsAdapter } from './convex/products/rewards/convexRewardsAdapter'
+import { ConvexSideChainAdapter } from './convex/products/side-chain/convexSideChainAdapter'
 import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAdapter'
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
@@ -43,6 +44,7 @@ import { StargateVestingAdapter } from './stargate/products/vesting/stargateVest
 import { SushiswapV2PoolAdapter } from './sushiswap-v2/products/pool/sushiswapV2PoolAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { SyncswapPoolAdapter } from './syncswap/products/pool/syncswapPoolAdapter'
+
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
@@ -202,6 +204,7 @@ export const supportedProtocols: Record<
       ConvexRewardsAdapter,
       ConvexExtraRewardAdapter,
       ConvexCvxcrvWrapperAdapter,
+      ConvexSideChainAdapter,
     ],
   },
 

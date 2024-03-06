@@ -25,6 +25,7 @@ import { testCases } from './templates/testCases'
 import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
 import n = types.namedTypes
 import b = types.builders
+import { lpStakingAdapterTemplate } from './templates/lpStakingAdapter'
 
 type TemplateBuilder = (adapterSettings: NewAdapterAnswers) => string
 
@@ -41,6 +42,7 @@ const Templates: Record<string, TemplateBuilder> = {
   ['DefaultAdapter']: defaultAdapterTemplate,
   ['SimplePoolAdapter']: simplePoolAdapterTemplate,
   ['UniswapV2PoolForkAdapter']: uniswapV2PoolForkAdapterTemplate,
+  ['LpStakingAdapter']: lpStakingAdapterTemplate,
 }
 
 export function newAdapterCommand(
