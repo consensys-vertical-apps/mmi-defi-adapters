@@ -41,6 +41,7 @@ import { StargateVestingAdapter } from './stargate/products/vesting/stargateVest
 import { SushiswapV2PoolAdapter } from './sushiswap-v2/products/pool/sushiswapV2PoolAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { SyncswapPoolAdapter } from './syncswap/products/pool/syncswapPoolAdapter'
+import { TestLpStakingAdapterPoolAdapter } from './test-lp-staking-adapter/products/pool/testLpStakingAdapterPoolAdapter'
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
@@ -277,5 +278,11 @@ export const supportedProtocols: Record<
     [Chain.Base]: [PancakeswapV2PoolAdapter],
     [Chain.Arbitrum]: [PancakeswapV2PoolAdapter],
     [Chain.Linea]: [PancakeswapV2PoolAdapter],
+  },
+
+  [Protocol.TestLpStakingAdapter]: {
+    [Chain.Ethereum]: [TestLpStakingAdapterPoolAdapter],
+    [Chain.Optimism]: [TestLpStakingAdapterPoolAdapter],
+    [Chain.Arbitrum]: [TestLpStakingAdapterPoolAdapter],
   },
 }
