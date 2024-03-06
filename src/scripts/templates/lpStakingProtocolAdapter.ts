@@ -29,7 +29,7 @@ export function lpStakingAdapterTemplate({
   } from '../../../../types/adapter'
   
   export class ${adapterClassName}
-    extends LPStakingAdapter
+    extends LpStakingAdapter
     implements IMetadataBuilder
   {
     productId ='${productId}'
