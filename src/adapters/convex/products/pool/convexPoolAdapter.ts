@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { LPStakingAdapter } from '../../../../core/adapters/StakingAdapter'
+import { LPStakingAdapter } from '../../../../core/adapters/LPStakingAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
@@ -16,6 +16,10 @@ import {
   GetPositionsInput,
   MovementsByBlock,
   ProtocolPosition,
+  GetAprInput,
+  ProtocolTokenApr,
+  GetApyInput,
+  ProtocolTokenApy,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ConvexFactory__factory } from '../../contracts'
@@ -51,6 +55,14 @@ export class ConvexPoolAdapter
   getExtraRewardWithdrawals(
     _input: GetEventsInput,
   ): Promise<MovementsByBlock[]> {
+    throw new NotImplementedError()
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new NotImplementedError()
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 

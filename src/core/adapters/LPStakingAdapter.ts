@@ -35,7 +35,11 @@ export abstract class LPStakingAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
+<<<<<<< HEAD
   abstract buildMetadata(): Promise<LpStakingProtocolMetadata>
+=======
+  abstract buildMetadata(): Promise<StakingProtocolMetadata>
+>>>>>>> 81ee7b4 (feat: staking)
 
   abstract getRewardPositions({
     userAddress,
@@ -105,7 +109,11 @@ export abstract class LPStakingAdapter
     )
   }
 
+<<<<<<< HEAD
   private async addTokensToPosition(
+=======
+  async addTokensToPosition(
+>>>>>>> 81ee7b4 (feat: staking)
     position: ProtocolPosition,
     newPositions?: ProtocolPosition,
   ) {
@@ -217,7 +225,11 @@ export abstract class LPStakingAdapter
     return [underlyingToken]
   }
 
+<<<<<<< HEAD
   protected async fetchPoolMetadata(protocolTokenAddress: string) {
+=======
+  async fetchPoolMetadata(protocolTokenAddress: string) {
+>>>>>>> 81ee7b4 (feat: staking)
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
     if (!poolMetadata) {
