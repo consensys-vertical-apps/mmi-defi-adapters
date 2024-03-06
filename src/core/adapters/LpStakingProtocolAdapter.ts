@@ -31,7 +31,7 @@ export type LpStakingProtocolMetadata = Record<
   }
 >
 
-export abstract class LPStakingAdapter
+export abstract class LpStakingAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
