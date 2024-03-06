@@ -18,10 +18,7 @@ import {
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import {
-  StakingAdapter,
-  StakingProtocolMetadata,
-} from '../../common/convexBaseAdapter'
+
 import { GetCVXMintAmount } from '../../common/cvxRewardFormula'
 import {
   ConvexFactory__factory,
@@ -30,6 +27,10 @@ import {
   CvxMint__factory,
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
+import {
+  StakingAdapter,
+  StakingProtocolMetadata,
+} from '../../../../core/adapters/StakingAdapter'
 
 export const CONVEX_TOKEN = {
   address: '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b',

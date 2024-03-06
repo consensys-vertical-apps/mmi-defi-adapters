@@ -17,9 +17,10 @@ import {
   ProtocolPosition,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { StakingAdapter } from '../../common/convexBaseAdapter'
+
 import { ConvexFactory__factory } from '../../contracts'
 import { CONVEX_TOKEN } from '../staking/convexStakingAdapter'
+import { StakingAdapter } from '../../../../core/adapters/StakingAdapter'
 
 type ConvexStakingAdapterMetadata = Record<
   string,

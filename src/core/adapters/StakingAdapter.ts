@@ -1,26 +1,26 @@
-import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
-import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../core/decorators/resolveUnderlyingPositions'
-import { NotImplementedError } from '../../../core/errors/errors'
-import { logger } from '../../../core/utils/logger'
-import {
-  GetAprInput,
-  GetApyInput,
-  TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  UnderlyingTokenRate,
-  Underlying,
-  TokenType,
   GetPositionsInput,
   ProtocolPosition,
   GetEventsInput,
   MovementsByBlock,
-} from '../../../types/adapter'
-import { Erc20Metadata } from '../../../types/erc20Metadata'
+  TokenBalance,
+  Underlying,
+  TokenType,
+  UnderlyingTokenRate,
+  GetAprInput,
+  ProtocolTokenApr,
+  GetApyInput,
+  ProtocolTokenApy,
+} from '../../types/adapter'
+import { Erc20Metadata } from '../../types/erc20Metadata'
+import { IMetadataBuilder } from '../decorators/cacheToFile'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../decorators/resolveUnderlyingPositions'
+import { NotImplementedError } from '../errors/errors'
+import { logger } from '../utils/logger'
+import { SimplePoolAdapter } from './SimplePoolAdapter'
 
 const PRICE_PEGGED_TO_ONE = 1
 
