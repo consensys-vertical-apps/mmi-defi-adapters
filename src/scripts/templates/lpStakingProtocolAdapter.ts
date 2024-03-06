@@ -6,9 +6,9 @@ export function lpStakingAdapterTemplate({
   productId,
 }: NewAdapterAnswers) {
   return `import {
-    LPStakingAdapter,
+    LpStakingAdapter,
     LpStakingProtocolMetadata,
-  } from '../../../../core/adapters/LPStakingAdapter'
+  } from '../../../../core/adapters/LpStakingProtocolAdapter'
   import {
     IMetadataBuilder,
     CacheToFile,

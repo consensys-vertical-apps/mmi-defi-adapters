@@ -1,5 +1,8 @@
 import { getAddress } from 'ethers'
-
+import {
+  LpStakingAdapter,
+  LpStakingProtocolMetadata,
+} from '../../../../core/adapters/LpStakingProtocolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
@@ -32,10 +35,6 @@ import {
   CvxMint__factory,
 } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
-import {
-  LpStakingAdapter,
-  LpStakingProtocolMetadata,
-} from '../../../../core/adapters/LpStakingProtocolAdapter'
 
 export const CONVEX_TOKEN = {
   address: '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b',
