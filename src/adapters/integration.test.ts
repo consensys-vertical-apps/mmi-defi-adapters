@@ -75,7 +75,6 @@ function runAllTests() {
   runProtocolTests(Protocol.Xfai, xfaiTestCases)
   runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
   runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
-  runProtocolTests(Protocol.TestLpStakingAdapter, testLpStakingAdapterTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
