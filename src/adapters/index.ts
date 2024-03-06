@@ -12,9 +12,7 @@ import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/c
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import { CompoundPoolAdapter } from './compound/products/pool/compoundPoolAdapter'
 import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/convexCvxcrvWrapperAdapter'
-import { ConvexExtraRewardAdapter } from './convex/products/extra-reward/convexExtraRewardAdapter'
 import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
-import { ConvexRewardsAdapter } from './convex/products/rewards/convexRewardsAdapter'
 import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAdapter'
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
@@ -199,8 +197,6 @@ export const supportedProtocols: Record<
     [Chain.Ethereum]: [
       ConvexPoolAdapter,
       ConvexStakingAdapter,
-      ConvexRewardsAdapter,
-      ConvexExtraRewardAdapter,
       ConvexCvxcrvWrapperAdapter,
     ],
   },

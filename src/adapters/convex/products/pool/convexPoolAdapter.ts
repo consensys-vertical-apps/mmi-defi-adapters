@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { LpStakingAdapter } from '../../../../core/adapters/LpStakingProtocolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
@@ -8,25 +8,22 @@ import {
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
-  GetTotalValueLockedInput,
-  TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenTvl,
-  UnderlyingTokenRate,
-  Underlying,
-  TokenType,
   AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  MovementsByBlock,
+  ProtocolPosition,
+  GetAprInput,
+  ProtocolTokenApr,
+  GetApyInput,
+  ProtocolTokenApy,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { ConvexFactory__factory } from '../../contracts'
-import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
+import { CONVEX_TOKEN } from '../staking/convexStakingAdapter'
 
 type ConvexStakingAdapterMetadata = Record<
   string,
@@ -36,42 +33,51 @@ type ConvexStakingAdapterMetadata = Record<
   }
 >
 
-const PRICE_PEGGED_TO_ONE = 1
-
+/**
+ * First version of Convex had additional token which needed to be staked to accrue rewards
+ */
 export class ConvexPoolAdapter
-  extends SimplePoolAdapter
+  extends LpStakingAdapter
   implements IMetadataBuilder
 {
-  productId = 'pool'
-
-  getProtocolDetails(): ProtocolDetails {
-    return {
-      protocolId: this.protocolId,
-      name: 'Convex',
-      description: 'Convex pool adapter',
-      siteUrl: 'https://www.convexfinance.com/',
-      iconUrl: buildTrustAssetIconUrl(Chain.Ethereum, CONVEX_TOKEN.address),
-      positionType: PositionType.Supply,
-      chainId: this.chainId,
-      productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
-    }
+  getRewardPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    throw new NotImplementedError()
+  }
+  getExtraRewardPositions(
+    _input: GetPositionsInput,
+  ): Promise<ProtocolPosition[]> {
+    throw new NotImplementedError()
   }
 
-  @CacheToFile({ fileKey: 'protocol-token' })
+  getRewardWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new NotImplementedError()
+  }
+  getExtraRewardWithdrawals(
+    _input: GetEventsInput,
+  ): Promise<MovementsByBlock[]> {
+    throw new NotImplementedError()
+  }
+
+  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new NotImplementedError()
+  }
+
+  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new NotImplementedError()
+  }
+
+  @CacheToFile({ fileKey: 'metadata' })
   async buildMetadata() {
     const convexFactory = ConvexFactory__factory.connect(
       '0xF403C135812408BFbE8713b5A23a04b3D48AAE31',
       this.provider,
     )
 
-    const length = await convexFactory.poolLength()
+    const pools = await convexFactory.poolLength()
 
     const metadata: ConvexStakingAdapterMetadata = {}
     await Promise.all(
-      Array.from({ length: Number(length) }, async (_, i) => {
+      Array.from({ length: Number(pools) }, async (_, i) => {
         const convexData = await convexFactory.poolInfo(i)
 
         const [convexToken, underlyingToken] = await Promise.all([
@@ -88,103 +94,21 @@ export class ConvexPoolAdapter
 
     return metadata
   }
+  productId = 'pool'
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
-
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenBalance.address,
-    )
-
-    const underlyingTokenBalance = {
-      ...underlyingToken,
-      balanceRaw: protocolTokenBalance.balanceRaw,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
-  protected async getUnderlyingTokenConversionRate(
-    protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenMetadata.address,
-    )
-
-    // Aave tokens always pegged one to one to underlying
-    const pricePerShareRaw = BigInt(
-      PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
-    )
-
-    return [
-      {
-        ...underlyingToken,
-        type: TokenType.Underlying,
-        underlyingRateRaw: pricePerShareRaw,
+  getProtocolDetails(): ProtocolDetails {
+    return {
+      protocolId: this.protocolId,
+      name: 'Convex',
+      description: 'Convex pool adapter',
+      siteUrl: 'https://www.convexfinance.com/',
+      iconUrl: buildTrustAssetIconUrl(Chain.Ethereum, CONVEX_TOKEN.address),
+      positionType: PositionType.Supply,
+      chainId: this.chainId,
+      productId: this.productId,
+      assetDetails: {
+        type: AssetType.StandardErc20,
       },
-    ]
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingToken: underlyingTokens } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
-
-    return [underlyingTokens]
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
     }
-
-    return poolMetadata
   }
 }

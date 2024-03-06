@@ -6,9 +6,9 @@ export function lpStakingAdapterTemplate({
   productId,
 }: NewAdapterAnswers) {
   return `import {
-    LPStakingAdapter,
+    LpStakingAdapter,
     LpStakingProtocolMetadata,
-  } from '../../../../core/adapters/LPStakingAdapter'
+  } from '../../../../core/adapters/LpStakingProtocolAdapter'
   import {
     IMetadataBuilder,
     CacheToFile,
@@ -29,7 +29,7 @@ export function lpStakingAdapterTemplate({
   } from '../../../../types/adapter'
   
   export class ${adapterClassName}
-    extends LPStakingAdapter
+    extends LpStakingAdapter
     implements IMetadataBuilder
   {
     productId ='${productId}'

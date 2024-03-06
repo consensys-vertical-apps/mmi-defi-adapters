@@ -35,7 +35,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { CvxcrvWrapper__factory } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/CvxcrvWrapper'
-import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
+import { CONVEX_TOKEN } from '../staking/convexStakingAdapter'
 
 const CVXCRV_WRAPPER_ADDRESS = getAddress(
   '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434',

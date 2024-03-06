@@ -32,10 +32,8 @@ import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aa
 import ChimpExchangePoolLineaProtocolToken from '../../adapters/chimp-exchange/products/pool/metadata/linea.protocol-token.json'
 import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
 import ConvexCvxcrvWrapperEthereumProtocolToken from '../../adapters/convex/products/cvxcrv-wrapper/metadata/ethereum.protocol-token.json'
-import ConvexExtraRewardEthereumProtocolToken from '../../adapters/convex/products/extra-reward/metadata/ethereum.protocol-token.json'
-import ConvexPoolEthereumProtocolToken from '../../adapters/convex/products/pool/metadata/ethereum.protocol-token.json'
-import ConvexRewardsEthereumProtocolToken from '../../adapters/convex/products/rewards/metadata/ethereum.protocol-token.json'
-import ConvexStakingEthereumProtocolToken from '../../adapters/convex/products/staking/metadata/ethereum.protocol-token.json'
+import ConvexPoolEthereumMetadata from '../../adapters/convex/products/pool/metadata/ethereum.metadata.json'
+import ConvexStakingEthereumMetadata from '../../adapters/convex/products/staking/metadata/ethereum.metadata.json'
 import CurvePoolArbitrumProtocolToken from '../../adapters/curve/products/pool/metadata/arbitrum.protocol-token.json'
 import CurvePoolAvalancheProtocolToken from '../../adapters/curve/products/pool/metadata/avalanche.protocol-token.json'
 import CurvePoolBaseProtocolToken from '../../adapters/curve/products/pool/metadata/base.protocol-token.json'
@@ -475,42 +473,7 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply,
   ],
-  [
-    metadataKey({
-      protocolId: Protocol.Convex,
-      productId: 'staking',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    ConvexStakingEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Convex,
-      productId: 'pool',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    ConvexPoolEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Convex,
-      productId: 'rewards',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    ConvexRewardsEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Convex,
-      productId: 'extra-reward',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    ConvexExtraRewardEthereumProtocolToken,
-  ],
+
   [
     metadataKey({
       protocolId: Protocol.Convex,
@@ -933,6 +896,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     PancakeswapV2PoolLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'metadata',
+    }),
+    ConvexPoolEthereumMetadata,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'staking',
+      chainId: Chain.Ethereum,
+      fileKey: 'metadata',
+    }),
+    ConvexStakingEthereumMetadata,
   ],
 ])
 
