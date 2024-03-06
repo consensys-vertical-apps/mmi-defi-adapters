@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { LPStakingAdapter } from '../../../../core/adapters/LPStakingAdapter'
+import { LPStakingAdapter } from '../../../../core/adapters/oioioi'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,

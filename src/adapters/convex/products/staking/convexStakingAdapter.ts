@@ -2,7 +2,7 @@ import { getAddress } from 'ethers'
 import {
   LPStakingAdapter,
   StakingProtocolMetadata,
-} from '../../../../core/adapters/LPStakingAdapter'
+} from '../../../../core/adapters/oioioi'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
