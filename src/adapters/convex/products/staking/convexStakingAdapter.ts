@@ -1,8 +1,8 @@
 import { getAddress } from 'ethers'
 import {
   LPStakingAdapter,
-  StakingProtocolMetadata,
-} from '../../../../core/adapters/oioioi'
+  LpStakingProtocolMetadata,
+} from '../../../../core/adapters/LpStakingAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
@@ -74,7 +74,7 @@ export class ConvexStakingAdapter
 
     const length = await convexFactory.poolLength()
 
-    const metadata: StakingProtocolMetadata = {}
+    const metadata: LpStakingProtocolMetadata = {}
     await Promise.all(
       Array.from({ length: Number(length) }, async (_, i) => {
         const convexData = await convexFactory.poolInfo(i)
