@@ -39,7 +39,7 @@ We offer a variety of templates to streamline the creation of new adapters using
    - Creates an adapter for Uniswap V2 fork projects, with minimal methods needing completion.
 4. **LpStakingAdapter**:
    - Tailored for reward protocols, such as Convex.
-   - Ideally suited for fungible staking tokens which are fixe one-to-one to the underlying LP token.
+   - Ideally suited for fungible staking tokens which are fixed one-to-one to the underlying LP token.
    - Supports optional Reward and Extra rewards functionalities.
 
 Each template is designed to facilitate specific scenarios in the development of new adapters, ensuring a streamlined and efficient setup process.
