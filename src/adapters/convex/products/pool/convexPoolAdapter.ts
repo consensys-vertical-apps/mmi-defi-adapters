@@ -1,4 +1,5 @@
 import { getAddress } from 'ethers'
+import { StakingAdapter } from '../../../../core/adapters/StakingAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
@@ -17,10 +18,8 @@ import {
   ProtocolPosition,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-
 import { ConvexFactory__factory } from '../../contracts'
 import { CONVEX_TOKEN } from '../staking/convexStakingAdapter'
-import { StakingAdapter } from '../../../../core/adapters/StakingAdapter'
 
 type ConvexStakingAdapterMetadata = Record<
   string,

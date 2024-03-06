@@ -249,8 +249,7 @@ export abstract class StakingAdapter
   }
 
   private handleError(error: unknown) {
-    if (error instanceof NotImplementedError) {
-    } else {
+    if (!(error instanceof NotImplementedError)) {
       logger.error(error, 'An error has occurred')
       throw new Error('An error occurred')
     }
