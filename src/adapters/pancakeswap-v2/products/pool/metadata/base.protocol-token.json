@@ -1,0 +1,82 @@
+{
+  "0xB5d365C872565e74340039B705B6786CE534b064": {
+    "protocolToken": {
+      "address": "0xB5d365C872565e74340039B705B6786CE534b064",
+      "name": "Pancake LPs BDRIP / WETH",
+      "symbol": "Cake-LP/BDRIP/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x071267674754F086DC6fDf5cb03288db4074F434",
+      "name": "BaseDrip",
+      "symbol": "BDRIP",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xbF65A2775F0a091a8e667a1c1345c427C9D86761": {
+    "protocolToken": {
+      "address": "0xbF65A2775F0a091a8e667a1c1345c427C9D86761",
+      "name": "Pancake LPs WETH / VMX",
+      "symbol": "Cake-LP/WETH/VMX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x44d05c7Bf593b4cC4322088fFCa35613079E8D37",
+      "name": "VMX",
+      "symbol": "VMX",
+      "decimals": 18
+    }
+  },
+  "0x7fe959644E52056D4F005bfE08eB5fA8E86e61C3": {
+    "protocolToken": {
+      "address": "0x7fe959644E52056D4F005bfE08eB5fA8E86e61C3",
+      "name": "Pancake LPs BCOR / WETH",
+      "symbol": "Cake-LP/BCOR/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x142592F9E9A9cDeA6C1167FfcEaE0Fcfb3E7eA97",
+      "name": "BlueCore",
+      "symbol": "BCOR",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x41C6B00A19D167C84660A1268052Aa21c3f291bE": {
+    "protocolToken": {
+      "address": "0x41C6B00A19D167C84660A1268052Aa21c3f291bE",
+      "name": "Pancake LPs WETH / GLOOM",
+      "symbol": "Cake-LP/WETH/GLOOM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x4Ff77748E723f0d7B161f90B4bc505187226ED0D",
+      "name": "GLOOM",
+      "symbol": "GLOOM",
+      "decimals": 18
+    }
+  }
+}

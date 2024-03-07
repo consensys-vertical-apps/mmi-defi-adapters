@@ -20,6 +20,7 @@ import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { DefiProvider } from '../defiProvider'
 import { chainFilter, protocolFilter } from './commandFilters'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
+import { lpStakingAdapterTemplate } from './templates/lpStakingProtocolAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import { testCases } from './templates/testCases'
 import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
@@ -41,6 +42,7 @@ const Templates: Record<string, TemplateBuilder> = {
   ['DefaultAdapter']: defaultAdapterTemplate,
   ['SimplePoolAdapter']: simplePoolAdapterTemplate,
   ['UniswapV2PoolForkAdapter']: uniswapV2PoolForkAdapterTemplate,
+  ['LpStakingAdapter']: lpStakingAdapterTemplate,
 }
 
 export function newAdapterCommand(

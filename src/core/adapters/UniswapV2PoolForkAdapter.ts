@@ -33,8 +33,9 @@ export type UniswapV2PoolForkAdapterMetadata = Record<
 export type UniswapV2PoolForkMetadataBuilder =
   | {
       type: 'graphql'
-      subgraphUrl: string
       factoryAddress: string
+      subgraphUrl: string
+      subgraphQuery?: string
     }
   | { type: 'factory'; factoryAddress: string }
 
@@ -67,7 +68,7 @@ export abstract class UniswapV2PoolForkAdapter
       token1Address: string
     }[] =
       factoryMetadata.type === 'graphql'
-        ? await this.graphQlPoolExtraction(factoryMetadata.subgraphUrl)
+        ? await this.graphQlPoolExtraction(factoryMetadata)
         : await this.factoryPoolExtraction(factoryMetadata.factoryAddress)
 
     const [name, symbol] = this.PROTOCOL_TOKEN_PREFIX_OVERRIDE
@@ -225,7 +226,13 @@ export abstract class UniswapV2PoolForkAdapter
     return poolMetadata
   }
 
-  private async graphQlPoolExtraction(subgraphUrl: string): Promise<
+  private async graphQlPoolExtraction({
+    subgraphUrl,
+    subgraphQuery,
+  }: {
+    subgraphUrl: string
+    subgraphQuery?: string
+  }): Promise<
     {
       pairAddress: string
       token0Address: string
@@ -237,7 +244,9 @@ export abstract class UniswapV2PoolForkAdapter
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        query: `
+        query:
+          subgraphQuery ??
+          `
           {
             pairs(
               first: ${this.MAX_FACTORY_PAIRS}

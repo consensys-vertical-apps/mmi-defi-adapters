@@ -139,6 +139,10 @@ async function computeUnderlyingTokenBalancesOrFetchPrice(
   underlyingProtocolTokenPosition: Underlying,
   blockNumber: number | undefined,
 ) {
+  if (underlyingProtocolTokenPosition.tokens) {
+    return
+  }
+
   const underlyingProtocolTokenAdapter =
     await adapter.adaptersController.fetchTokenAdapter(
       adapter.chainId,
