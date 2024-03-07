@@ -30,7 +30,8 @@ import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aav
 import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
 import ChimpExchangePoolLineaProtocolToken from '../../adapters/chimp-exchange/products/pool/metadata/linea.protocol-token.json'
-import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
+import CompoundV2BorrowMarketEthereumProtocolToken from '../../adapters/compound-v2/products/borrow-market/metadata/ethereum.protocol-token.json'
+import CompoundV2SupplyMarketEthereumProtocolToken from '../../adapters/compound-v2/products/supply-market/metadata/ethereum.protocol-token.json'
 import ConvexCvxcrvWrapperEthereumProtocolToken from '../../adapters/convex/products/cvxcrv-wrapper/metadata/ethereum.protocol-token.json'
 import ConvexExtraRewardEthereumProtocolToken from '../../adapters/convex/products/extra-reward/metadata/ethereum.protocol-token.json'
 import ConvexPoolEthereumProtocolToken from '../../adapters/convex/products/pool/metadata/ethereum.protocol-token.json'
@@ -414,15 +415,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CurveStakingEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Compound,
-      productId: 'pool',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    CompoundPoolEthereumProtocolToken,
   ],
   [
     metadataKey({
@@ -873,6 +865,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CurveRewardAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CompoundV2,
+      productId: 'supply-market',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    CompoundV2SupplyMarketEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CompoundV2,
+      productId: 'borrow-market',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    CompoundV2BorrowMarketEthereumProtocolToken,
   ],
 ])
 

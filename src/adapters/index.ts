@@ -10,7 +10,8 @@ import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenPoolAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
-import { CompoundPoolAdapter } from './compound/products/pool/compoundPoolAdapter'
+import { CompoundV2BorrowMarketAdapter } from './compound-v2/products/borrow-market/compoundV2BorrowMarketAdapter'
+import { CompoundV2SupplyMarketAdapter } from './compound-v2/products/supply-market/compoundV2SupplyMarketAdapter'
 import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/convexCvxcrvWrapperAdapter'
 import { ConvexExtraRewardAdapter } from './convex/products/extra-reward/convexExtraRewardAdapter'
 import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
@@ -176,10 +177,6 @@ export const supportedProtocols: Record<
     [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
   },
 
-  [Protocol.Compound]: {
-    [Chain.Ethereum]: [CompoundPoolAdapter],
-  },
-
   [Protocol.Maker]: {
     [Chain.Ethereum]: [SDaiAdapter],
   },
@@ -239,6 +236,7 @@ export const supportedProtocols: Record<
     [Chain.Avalanche]: [PricesV2UsdAdapter],
     [Chain.Base]: [PricesV2UsdAdapter],
   },
+
   [Protocol.UniswapV2]: {
     [Chain.Ethereum]: [UniswapV2PoolAdapter],
     [Chain.Optimism]: [UniswapV2PoolAdapter],
@@ -248,6 +246,7 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [UniswapV2PoolAdapter],
     [Chain.Avalanche]: [UniswapV2PoolAdapter],
   },
+
   [Protocol.SushiswapV2]: {
     [Chain.Ethereum]: [SushiswapV2PoolAdapter],
     [Chain.Bsc]: [SushiswapV2PoolAdapter],
@@ -257,10 +256,19 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [SushiswapV2PoolAdapter],
     [Chain.Avalanche]: [SushiswapV2PoolAdapter],
   },
+
   [Protocol.StakeWise]: {
     [Chain.Ethereum]: [StakewiseOsEthAdapter],
   },
+
   [Protocol.Xfai]: {
     [Chain.Linea]: [XfaiDexAdapter],
+  },
+
+  [Protocol.CompoundV2]: {
+    [Chain.Ethereum]: [
+      CompoundV2SupplyMarketAdapter,
+      CompoundV2BorrowMarketAdapter,
+    ],
   },
 }
