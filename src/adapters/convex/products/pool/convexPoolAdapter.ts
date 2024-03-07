@@ -41,10 +41,14 @@ export class ConvexPoolAdapter
   extends LpStakingAdapter
   implements IMetadataBuilder
 {
-  getRewardPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
+  productId = 'pool'
+
+  async getRewardPositions(
+    _input: GetPositionsInput,
+  ): Promise<ProtocolPosition[]> {
     throw new NotImplementedError()
   }
-  getExtraRewardPositions(
+  async getExtraRewardPositions(
     _input: GetPositionsInput,
   ): Promise<ProtocolPosition[]> {
     throw new NotImplementedError()
@@ -95,7 +99,6 @@ export class ConvexPoolAdapter
 
     return metadata
   }
-  productId = 'pool'
 
   getProtocolDetails(): ProtocolDetails {
     return {

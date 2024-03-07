@@ -55,20 +55,21 @@ export function lpStakingAdapterTemplate({
       return {} as LpStakingProtocolMetadata
     }
   
-    getRewardPositions(_input: GetPositionsInputWithMandatoryTokenAddresses): Promise<ProtocolPosition[]> {
+    async getRewardPositions(_input: GetPositionsInputWithMandatoryTokenAddresses): Promise<ProtocolPosition[]> {
       throw new NotImplementedError()
     }
-    getExtraRewardPositions(
+
+    async getExtraRewardPositions(
       _input: GetPositionsInputWithMandatoryTokenAddresses,
     ): Promise<ProtocolPosition[]> {
       throw new NotImplementedError()
     }
   
-    getRewardWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    async getRewardWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
       throw new NotImplementedError()
     }
   
-    getExtraRewardWithdrawals(
+    async getExtraRewardWithdrawals(
       _input: GetEventsInput,
     ): Promise<MovementsByBlock[]> {
       throw new NotImplementedError()
