@@ -1,0 +1,92 @@
+{
+  "blockNumber": 19383091,
+  "snapshot": [
+    {
+      "protocolId": "compound-v2",
+      "name": "CompoundV2",
+      "description": "CompoundV2 supply market adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "supply-market",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+          "name": "Compound Ether",
+          "symbol": "CETH",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 620.491708876426,
+          "performance": 0.0892190218750714,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 6954.7019888344785,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 7575.193697710904
+          }
+        },
+        {
+          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
+          "name": "cWBTC",
+          "symbol": "CWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 38513.92742033032,
+          "performance": 0.4947527851761271,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 12108.657826811803,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 65736.1337019913,
+            "endPositionValue": 116358.71894913343
+          }
+        }
+      ],
+      "fromBlock": 19168711,
+      "toBlock": 19383091
+    },
+    {
+      "protocolId": "compound-v2",
+      "name": "CompoundV2",
+      "description": "CompoundV2 borrow market adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "borrow-market",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
+          "name": "Compound USD Coin",
+          "symbol": "CUSDC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": -27497.597111254407,
+          "performance": -0.7341200862976188,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": -37456.5382755467,
+            "endPositionValue": -64954.13538680111
+          }
+        }
+      ],
+      "fromBlock": 19168711,
+      "toBlock": 19383091
+    }
+  ]
+}

@@ -333,6 +333,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       to?: string
     }
   }): Promise<MovementsByBlock[]> {
+    console.log('NOT HERE')
     const protocolTokenContract = Erc20__factory.connect(
       protocolToken.address,
       this.provider,

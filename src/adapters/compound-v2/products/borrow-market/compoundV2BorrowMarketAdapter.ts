@@ -1,4 +1,6 @@
+import { Erc20__factory } from '../../../../contracts'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { ResolveUnderlyingMovements, ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import {
@@ -11,6 +13,8 @@ import {
   TokenType,
   GetPositionsInput,
   ProtocolPosition,
+  GetEventsInput,
+  MovementsByBlock,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { CompoundV2MarketAdapter } from '../../common/compoundV2MarketAdapter'
@@ -40,6 +44,7 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
     return await super.buildMetadata()
   }
 
+  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -95,36 +100,92 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
     })
   }
 
-  protected async getUnderlyingTokenBalances({
+  @ResolveUnderlyingMovements
+  async getBorrows({
     userAddress,
-    protocolTokenBalance,
-    blockNumber,
-  }: {
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const { protocolToken, underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
+
+    const underlyingContract = Erc20__factory.connect(
+      underlyingToken.address,
+      this.provider,
+    )
+
+    const filter = underlyingContract.filters.Transfer(
+      protocolTokenAddress,
+      userAddress,
+      undefined,
+    )
+    const eventResults = await underlyingContract.queryFilter(
+      filter,
+      fromBlock,
+      toBlock,
+    )
+
+    return await Promise.all(
+      eventResults.map(async (transferEvent) => {
+        const {
+          blockNumber,
+          args: { value: underlyingTokenMovementValueRaw },
+          transactionHash,
+        } = transferEvent
+
+        return {
+          transactionHash,
+          protocolToken: {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+          },
+          tokens: [
+            {
+              ...underlyingToken,
+              balanceRaw: underlyingTokenMovementValueRaw,
+              type: TokenType.Underlying,
+              blockNumber,
+            },
+          ],
+          blockNumber,
+        }
+      }),
+    )
+  }
+
+  // @ResolveUnderlyingMovements
+  // async getRepays({
+  //   userAddress,
+  //   protocolTokenAddress,
+  //   fromBlock,
+  //   toBlock,
+  // }: GetEventsInput): Promise<MovementsByBlock[]> {
+  //   return await this.getProtocolTokenMovements({
+  //     protocolToken: await this.fetchProtocolTokenMetadata(
+  //       protocolTokenAddress,
+  //     ),
+
+  //     filter: {
+  //       fromBlock,
+  //       toBlock,
+  //       from: userAddress,
+  //       to: undefined,
+  //     },
+  //   })
+  // }
+
+  // Not needed as it's all handled within getPositions
+  // TODO Find a more elegant solution that doesn't involve extending SimplePoolAdapter
+  protected async getUnderlyingTokenBalances(_input: {
     userAddress: string
     protocolTokenBalance: TokenBalance
     blockNumber?: number
   }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenBalance.address,
-    )
-
-    const poolContract = Cerc20__factory.connect(
-      protocolTokenBalance.address,
-      this.provider,
-    )
-
-    const underlyingBalance =
-      await poolContract.borrowBalanceCurrent.staticCall(userAddress, {
-        blockTag: blockNumber,
-      })
-
-    const underlyingTokenBalance = {
-      ...underlyingToken,
-      balanceRaw: underlyingBalance,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
+    throw new NotImplementedError()
   }
 
   protected async getUnderlyingTokenConversionRate(
