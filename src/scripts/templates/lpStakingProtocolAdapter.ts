@@ -18,6 +18,7 @@ export function lpStakingAdapterTemplate({
     ProtocolDetails,
     PositionType,
     AssetType,
+    GetPositionsInputWithMandatoryTokenAddresses,
     GetEventsInput,
     GetPositionsInput,
     MovementsByBlock,
@@ -54,11 +55,11 @@ export function lpStakingAdapterTemplate({
       return {} as LpStakingProtocolMetadata
     }
   
-    getRewardPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    getRewardPositions(_input: GetPositionsInputWithMandatoryTokenAddresses): Promise<ProtocolPosition[]> {
       throw new NotImplementedError()
     }
     getExtraRewardPositions(
-      _input: GetPositionsInput,
+      _input: GetPositionsInputWithMandatoryTokenAddresses,
     ): Promise<ProtocolPosition[]> {
       throw new NotImplementedError()
     }

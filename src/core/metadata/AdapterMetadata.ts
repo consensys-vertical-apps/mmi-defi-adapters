@@ -33,6 +33,8 @@ import ChimpExchangePoolLineaProtocolToken from '../../adapters/chimp-exchange/p
 import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
 import ConvexCvxcrvWrapperEthereumProtocolToken from '../../adapters/convex/products/cvxcrv-wrapper/metadata/ethereum.protocol-token.json'
 import ConvexPoolEthereumMetadata from '../../adapters/convex/products/pool/metadata/ethereum.metadata.json'
+import ConvexSidechainStakingArbitrumProtocolToken from '../../adapters/convex/products/sidechain-staking/metadata/arbitrum.protocol-token.json'
+import ConvexSidechainStakingPolygonProtocolToken from '../../adapters/convex/products/sidechain-staking/metadata/polygon.protocol-token.json'
 import ConvexStakingEthereumMetadata from '../../adapters/convex/products/staking/metadata/ethereum.metadata.json'
 import CurvePoolArbitrumProtocolToken from '../../adapters/curve/products/pool/metadata/arbitrum.protocol-token.json'
 import CurvePoolAvalancheProtocolToken from '../../adapters/curve/products/pool/metadata/avalanche.protocol-token.json'
@@ -473,7 +475,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply,
   ],
-
   [
     metadataKey({
       protocolId: Protocol.Convex,
@@ -914,6 +915,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'metadata',
     }),
     ConvexStakingEthereumMetadata,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'sidechain-staking',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    ConvexSidechainStakingPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'sidechain-staking',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexSidechainStakingArbitrumProtocolToken,
   ],
 ])
 

@@ -22,6 +22,7 @@ import {
   ProtocolTokenApy,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import { ConvexFactory__factory } from '../../contracts'
 import { CONVEX_TOKEN } from '../staking/convexStakingAdapter'
 
@@ -69,7 +70,7 @@ export class ConvexPoolAdapter
   @CacheToFile({ fileKey: 'metadata' })
   async buildMetadata() {
     const convexFactory = ConvexFactory__factory.connect(
-      '0xF403C135812408BFbE8713b5A23a04b3D48AAE31',
+      CONVEX_FACTORY_ADDRESS,
       this.provider,
     )
 

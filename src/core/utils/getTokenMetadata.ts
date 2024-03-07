@@ -9,6 +9,8 @@ import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
 import { nativeToken, nativeTokenAddresses } from './nativeTokens'
 
+const DEFAULT_STRING = ''
+
 const CHAIN_METADATA: Partial<
   Record<Chain, Record<string, Erc20Metadata | undefined>>
 > = {
@@ -21,14 +23,6 @@ export async function getTokenMetadata(
   chainId: Chain,
   provider: CustomJsonRpcProvider,
 ): Promise<Erc20Metadata> {
-  if (tokenAddress === '0x6b8734ad31D42F5c05A86594314837C416ADA984') {
-    return {
-      address: getAddress(tokenAddress),
-      name: 'Real Estate USD (REUSD)',
-      symbol: 'Real Estate USD (REUSD)',
-      decimals: 0,
-    }
-  }
   if (nativeTokenAddresses.includes(tokenAddress)) {
     return {
       address: getAddress(tokenAddress),
@@ -63,6 +57,7 @@ export async function getTokenMetadata(
   throw new Error(errorMessage)
 }
 
+const DEFAULT_DECIMAL = 18
 async function getOnChainTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
@@ -71,14 +66,17 @@ async function getOnChainTokenMetadata(
   const tokenContract = Erc20__factory.connect(tokenAddress, provider)
 
   try {
-    const name = await fetchStringTokenData(tokenContract, provider, 'name')
-    const symbol = await fetchStringTokenData(tokenContract, provider, 'symbol')
-    const decimals = Number(await tokenContract.decimals())
+    const [name, symbol, decimal] = await Promise.all([
+      fetchStringTokenData(tokenContract, provider, 'name'),
+      fetchStringTokenData(tokenContract, provider, 'symbol'),
+      tokenContract.decimals(),
+    ])
+
     return {
       address: getAddress(await tokenContract.getAddress()),
       name,
       symbol,
-      decimals,
+      decimals: Number(decimal),
     }
   } catch (error) {
     const errorMessage = extractErrorMessage(error)
@@ -86,7 +84,12 @@ async function getOnChainTokenMetadata(
       { tokenAddress, chainId, errorMessage },
       'Failed to fetch token metadata on-chain',
     )
-    return undefined
+    return {
+      address: getAddress(await tokenContract.getAddress()),
+      name: DEFAULT_STRING,
+      symbol: DEFAULT_STRING,
+      decimals: DEFAULT_DECIMAL,
+    }
   }
 }
 
