@@ -57,6 +57,7 @@ export const testCases: TestCase[] = [
   //   },
   // },
   {
+    key: 'erc20-borrow',
     chainId: Chain.Ethereum,
     method: 'borrows',
     input: {
@@ -65,6 +66,18 @@ export const testCases: TestCase[] = [
       toBlock: 19380990,
       productId: 'borrow-market',
       protocolTokenAddress: '0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9',
+    },
+  },
+  {
+    key: 'eth-borrow',
+    chainId: Chain.Ethereum,
+    method: 'borrows',
+    input: {
+      userAddress: '0x2178e1d614FEFb2B304DB58f07116d89f948Fda1',
+      fromBlock: 19380684,
+      toBlock: 19380684,
+      productId: 'borrow-market',
+      protocolTokenAddress: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
     },
   },
   // {

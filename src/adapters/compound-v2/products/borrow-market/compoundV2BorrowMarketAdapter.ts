@@ -1,8 +1,11 @@
-import { Erc20__factory } from '../../../../contracts'
+import { LogDescription, TransactionReceipt } from 'ethers'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { ResolveUnderlyingMovements, ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { filterMapAsync } from '../../../../core/utils/filters'
+import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
 import {
   ProtocolDetails,
   PositionType,
@@ -19,6 +22,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { CompoundV2MarketAdapter } from '../../common/compoundV2MarketAdapter'
 import { Cerc20__factory, Comptroller__factory } from '../../contracts'
+import { BorrowEvent, RepayBorrowEvent } from '../../contracts/Cerc20'
 
 export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
   productId = 'borrow-market'
@@ -111,32 +115,52 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
       protocolTokenAddress,
     )
 
-    const underlyingContract = Erc20__factory.connect(
-      underlyingToken.address,
+    const cTokenContract = Cerc20__factory.connect(
+      protocolTokenAddress,
       this.provider,
     )
 
-    const filter = underlyingContract.filters.Transfer(
-      protocolTokenAddress,
-      userAddress,
-      undefined,
+    const comptrollerContract = Comptroller__factory.connect(
+      this.contractAddresses[this.chainId]!.comptrollerAddress,
+      this.provider,
     )
-    const eventResults = await underlyingContract.queryFilter(
-      filter,
+
+    const comptrollerBorrowEventFilter =
+      comptrollerContract.filters.DistributedBorrowerComp(
+        protocolTokenAddress,
+        userAddress,
+        undefined,
+        undefined,
+      )
+
+    const comptrollerBorrowEvents = await comptrollerContract.queryFilter(
+      comptrollerBorrowEventFilter,
       fromBlock,
       toBlock,
     )
 
-    return await Promise.all(
-      eventResults.map(async (transferEvent) => {
-        const {
-          blockNumber,
-          args: { value: underlyingTokenMovementValueRaw },
-          transactionHash,
-        } = transferEvent
+    return await filterMapAsync(
+      comptrollerBorrowEvents,
+      async (comptrollerBorrowEvent) => {
+        const tx = await comptrollerBorrowEvent.getTransactionReceipt()
+
+        const borrowEvent = tx.logs
+          .map((log) =>
+            cTokenContract.interface.parseLog({
+              data: log.data,
+              topics: log.topics as string[],
+            }),
+          )
+          .find((log) => log && log.name === 'Borrow') as
+          | BorrowEvent.LogDescription
+          | undefined
+
+        if (!borrowEvent) {
+          return undefined
+        }
 
         return {
-          transactionHash,
+          transactionHash: tx.hash,
           protocolToken: {
             address: protocolToken.address,
             name: protocolToken.name,
@@ -146,37 +170,171 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
           tokens: [
             {
               ...underlyingToken,
-              balanceRaw: underlyingTokenMovementValueRaw,
+              balanceRaw: borrowEvent.args.borrowAmount,
               type: TokenType.Underlying,
-              blockNumber,
+              blockNumber: tx.blockNumber,
             },
           ],
-          blockNumber,
+          blockNumber: tx.blockNumber,
         }
-      }),
+      },
     )
   }
 
-  // @ResolveUnderlyingMovements
-  // async getRepays({
-  //   userAddress,
-  //   protocolTokenAddress,
-  //   fromBlock,
-  //   toBlock,
-  // }: GetEventsInput): Promise<MovementsByBlock[]> {
-  //   return await this.getProtocolTokenMovements({
-  //     protocolToken: await this.fetchProtocolTokenMetadata(
-  //       protocolTokenAddress,
-  //     ),
+  @ResolveUnderlyingMovements
+  async getRepays({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const { protocolToken, underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
 
-  //     filter: {
-  //       fromBlock,
-  //       toBlock,
-  //       from: userAddress,
-  //       to: undefined,
-  //     },
-  //   })
-  // }
+    const cTokenContract = Cerc20__factory.connect(
+      protocolTokenAddress,
+      this.provider,
+    )
+
+    const comptrollerContract = Comptroller__factory.connect(
+      this.contractAddresses[this.chainId]!.comptrollerAddress,
+      this.provider,
+    )
+
+    const comptrollerBorrowEventFilter =
+      comptrollerContract.filters.DistributedBorrowerComp(
+        protocolTokenAddress,
+        userAddress,
+        undefined,
+        undefined,
+      )
+
+    const comptrollerBorrowEvents = await comptrollerContract.queryFilter(
+      comptrollerBorrowEventFilter,
+      fromBlock,
+      toBlock,
+    )
+
+    return await filterMapAsync(
+      comptrollerBorrowEvents,
+      async (comptrollerBorrowEvent) => {
+        const tx = await comptrollerBorrowEvent.getTransactionReceipt()
+
+        const repayEvent = tx.logs
+          .map((log) =>
+            cTokenContract.interface.parseLog({
+              data: log.data,
+              topics: log.topics as string[],
+            }),
+          )
+          .find((log) => log && log.name === 'RepayBorrow') as
+          | RepayBorrowEvent.LogDescription
+          | undefined
+
+        if (!repayEvent) {
+          return undefined
+        }
+
+        return {
+          transactionHash: tx.hash,
+          protocolToken: {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+          },
+          tokens: [
+            {
+              ...underlyingToken,
+              balanceRaw: repayEvent.args.repayAmount,
+              type: TokenType.Underlying,
+              blockNumber: tx.blockNumber,
+            },
+          ],
+          blockNumber: tx.blockNumber,
+        }
+      },
+    )
+  }
+
+  async getRepaysOrBorrows({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    extractAmount,
+  }: GetEventsInput & {
+    extractAmount: (logs: LogDescription) => bigint
+  }): Promise<MovementsByBlock[]> {
+    const { protocolToken, underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
+
+    const cTokenContract = Cerc20__factory.connect(
+      protocolTokenAddress,
+      this.provider,
+    )
+
+    const comptrollerContract = Comptroller__factory.connect(
+      this.contractAddresses[this.chainId]!.comptrollerAddress,
+      this.provider,
+    )
+
+    const comptrollerBorrowEventFilter =
+      comptrollerContract.filters.DistributedBorrowerComp(
+        protocolTokenAddress,
+        userAddress,
+        undefined,
+        undefined,
+      )
+
+    const comptrollerBorrowEvents = await comptrollerContract.queryFilter(
+      comptrollerBorrowEventFilter,
+      fromBlock,
+      toBlock,
+    )
+
+    const txReceipts = await Promise.all(
+      [
+        ...new Set(
+          comptrollerBorrowEvents.map((event) => event.transactionHash),
+        ),
+      ].map(
+        async (txHash) => (await this.provider.getTransactionReceipt(txHash))!,
+      ),
+    )
+
+    return txReceipts.flatMap((txReceipt) => {
+      return filterMapSync(txReceipt.logs, (log) => {
+        return (
+          cTokenContract.interface.parseLog({
+            data: log.data,
+            topics: log.topics as string[],
+          }) || undefined
+        )
+      })
+        .map(extractAmount)
+        .map((balanceRaw) => ({
+          transactionHash: txReceipt.hash,
+          protocolToken: {
+            address: protocolToken.address,
+            name: protocolToken.name,
+            symbol: protocolToken.symbol,
+            decimals: protocolToken.decimals,
+          },
+          tokens: [
+            {
+              ...underlyingToken,
+              balanceRaw,
+              type: TokenType.Underlying,
+              blockNumber: txReceipt.blockNumber,
+            },
+          ],
+          blockNumber: txReceipt.blockNumber,
+        }))
+    })
+  }
 
   // Not needed as it's all handled within getPositions
   // TODO Find a more elegant solution that doesn't involve extending SimplePoolAdapter
