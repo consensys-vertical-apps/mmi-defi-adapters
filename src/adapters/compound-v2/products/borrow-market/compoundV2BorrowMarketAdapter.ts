@@ -205,7 +205,7 @@ export class CompoundV2BorrowMarketAdapter implements IProtocolAdapter {
     })
   }
 
-  async getRepaysOrBorrows({
+  private async getRepaysOrBorrows({
     userAddress,
     protocolTokenAddress,
     fromBlock,

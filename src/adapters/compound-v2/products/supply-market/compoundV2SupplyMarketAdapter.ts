@@ -15,6 +15,8 @@ import {
   GetApyInput,
   ProtocolTokenApr,
   ProtocolTokenApy,
+  GetEventsInput,
+  MovementsByBlock,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { buildMetadata } from '../../common/buildMetadata'
@@ -183,6 +185,14 @@ export class CompoundV2SupplyMarketAdapter extends SimplePoolAdapter {
         throw new Error('Method not supported')
       }
     }
+  }
+
+  getBorrows(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new NotImplementedError()
+  }
+
+  getRepays(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new NotImplementedError()
   }
 
   getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
