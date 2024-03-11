@@ -1,4 +1,8 @@
+import { AddressLike, BigNumberish } from 'ethers'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import { NotImplementedError } from '../../../../core/errors/errors'
+import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
@@ -7,12 +11,17 @@ import {
   Underlying,
   AssetType,
   TokenType,
+  GetAprInput,
+  GetApyInput,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { CompoundV2MarketAdapter } from '../../common/compoundV2MarketAdapter'
-import { Cerc20__factory } from '../../contracts'
+import { buildMetadata } from '../../common/buildMetadata'
+import { contractAddresses } from '../../common/contractAddresses'
+import { CUSDCv3__factory, Cerc20__factory } from '../../contracts'
 
-export class CompoundV2SupplyMarketAdapter extends CompoundV2MarketAdapter {
+export class CompoundV2SupplyMarketAdapter extends SimplePoolAdapter {
   productId = 'supply-market'
 
   getProtocolDetails(): ProtocolDetails {
@@ -33,7 +42,53 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2MarketAdapter {
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    return await super.buildMetadata()
+    return await buildMetadata({
+      chainId: this.chainId,
+      provider: this.provider,
+    })
+  }
+
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+    return Object.values(await this.buildMetadata()).map(
+      ({ protocolToken }) => protocolToken,
+    )
+  }
+
+  protected async fetchProtocolTokenMetadata(
+    protocolTokenAddress: string,
+  ): Promise<Erc20Metadata> {
+    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+
+    return protocolToken
+  }
+
+  protected async fetchUnderlyingTokensMetadata(
+    protocolTokenAddress: string,
+  ): Promise<Erc20Metadata[]> {
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
+
+    return [underlyingToken]
+  }
+
+  private async fetchPoolMetadata(protocolTokenAddress: string) {
+    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
+
+    if (!poolMetadata) {
+      logger.error(
+        {
+          protocolTokenAddress,
+          protocol: this.protocolId,
+          chainId: this.chainId,
+          product: this.productId,
+        },
+        'Protocol token pool not found',
+      )
+      throw new Error('Protocol token pool not found')
+    }
+
+    return poolMetadata
   }
 
   protected async getUnderlyingTokenBalances({
@@ -98,5 +153,43 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2MarketAdapter {
         underlyingRateRaw: adjustedExchangeRate,
       },
     ]
+  }
+
+  getTransactionParams({
+    action,
+    inputs,
+  }: {
+    action: 'supply' | 'withdraw'
+    inputs: unknown[]
+  }) {
+    const poolContract = CUSDCv3__factory.connect(
+      contractAddresses[this.chainId]!.cUSDCv3Address,
+      this.provider,
+    )
+
+    // TODO - Needs validation with zod
+    const [asset, amount] = inputs as [AddressLike, BigNumberish]
+
+    switch (action) {
+      case 'supply': {
+        return poolContract.supply.populateTransaction(asset, amount)
+      }
+      case 'withdraw': {
+        return poolContract.withdraw.populateTransaction(asset, amount)
+      }
+
+      // TODO - Validate along with input using zod
+      default: {
+        throw new Error('Method not supported')
+      }
+    }
+  }
+
+  getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new NotImplementedError()
+  }
+
+  getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+    throw new NotImplementedError()
   }
 }

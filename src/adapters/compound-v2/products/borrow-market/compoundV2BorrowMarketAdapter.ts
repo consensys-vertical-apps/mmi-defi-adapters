@@ -1,31 +1,66 @@
-import { LogDescription } from 'ethers'
+import { AddressLike, BigNumberish, LogDescription } from 'ethers'
+import { AdaptersController } from '../../../../core/adaptersController'
+import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   ResolveUnderlyingMovements,
   ResolveUnderlyingPositions,
 } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
+import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
-  TokenBalance,
-  UnderlyingTokenRate,
-  Underlying,
   AssetType,
   TokenType,
   GetPositionsInput,
   ProtocolPosition,
   GetEventsInput,
   MovementsByBlock,
+  ProtocolAdapterParams,
+  GetAprInput,
+  GetApyInput,
+  GetConversionRateInput,
+  GetTotalValueLockedInput,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
+  ProtocolTokenTvl,
+  ProtocolTokenUnderlyingRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { CompoundV2MarketAdapter } from '../../common/compoundV2MarketAdapter'
-import { Cerc20__factory, Comptroller__factory } from '../../contracts'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import { Protocol } from '../../../protocols'
+import { buildMetadata } from '../../common/buildMetadata'
+import { contractAddresses } from '../../common/contractAddresses'
+import {
+  CUSDCv3__factory,
+  Cerc20__factory,
+  Comptroller__factory,
+} from '../../contracts'
 import { BorrowEvent, RepayBorrowEvent } from '../../contracts/Cerc20'
 
-export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
-  productId = 'borrow-market'
+export class CompoundV2BorrowMarketAdapter implements IProtocolAdapter {
+  chainId: Chain
+  protocolId: Protocol
+  productId: string = 'borrow-market'
+
+  protected provider: CustomJsonRpcProvider
+
+  adaptersController: AdaptersController
+
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+  }: ProtocolAdapterParams) {
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolId = protocolId
+    this.adaptersController = adaptersController
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -45,7 +80,35 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    return await super.buildMetadata()
+    return await buildMetadata({
+      chainId: this.chainId,
+      provider: this.provider,
+    })
+  }
+
+  async getProtocolTokens(): Promise<Erc20Metadata[]> {
+    return Object.values(await this.buildMetadata()).map(
+      ({ protocolToken }) => protocolToken,
+    )
+  }
+
+  private async fetchPoolMetadata(protocolTokenAddress: string) {
+    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
+
+    if (!poolMetadata) {
+      logger.error(
+        {
+          protocolTokenAddress,
+          protocol: this.protocolId,
+          chainId: this.chainId,
+          product: this.productId,
+        },
+        'Protocol token pool not found',
+      )
+      throw new Error('Protocol token pool not found')
+    }
+
+    return poolMetadata
   }
 
   @ResolveUnderlyingPositions
@@ -55,7 +118,7 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const comptrollerContract = Comptroller__factory.connect(
-      this.contractAddresses[this.chainId]!.comptrollerAddress,
+      contractAddresses[this.chainId]!.comptrollerAddress,
       this.provider,
     )
 
@@ -161,7 +224,7 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
     )
 
     const comptrollerContract = Comptroller__factory.connect(
-      this.contractAddresses[this.chainId]!.comptrollerAddress,
+      contractAddresses[this.chainId]!.comptrollerAddress,
       this.provider,
     )
 
@@ -232,20 +295,61 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
     })
   }
 
-  // Not needed as it's all handled within getPositions
-  // TODO Find a more elegant solution that doesn't involve extending SimplePoolAdapter
-  protected async getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
+  getTransactionParams({
+    action,
+    inputs,
+  }: {
+    action: string
+    inputs: unknown[]
+  }) {
+    const poolContract = CUSDCv3__factory.connect(
+      contractAddresses[this.chainId]!.cUSDCv3Address,
+      this.provider,
+    )
+
+    // TODO - Needs validation with zod
+    const [asset, amount] = inputs as [AddressLike, BigNumberish]
+
+    switch (action) {
+      case 'borrow': {
+        return poolContract.withdraw.populateTransaction(asset, amount)
+      }
+      case 'repay': {
+        return poolContract.supply.populateTransaction(asset, amount)
+      }
+
+      // TODO - Validate along with input using zod
+      default: {
+        throw new Error('Method not supported')
+      }
+    }
+  }
+
+  getProtocolTokenToUnderlyingTokenRate(
+    _input: GetConversionRateInput,
+  ): Promise<ProtocolTokenUnderlyingRate> {
     throw new NotImplementedError()
   }
 
-  protected async getUnderlyingTokenConversionRate(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new NotImplementedError()
+  }
+
+  getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new NotImplementedError()
+  }
+
+  getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTokenTvl[]> {
+    throw new NotImplementedError()
+  }
+
+  getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+    throw new NotImplementedError()
+  }
+
+  getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 }
