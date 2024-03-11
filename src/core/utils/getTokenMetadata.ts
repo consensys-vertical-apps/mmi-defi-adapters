@@ -9,7 +9,17 @@ import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
 import { nativeToken, nativeTokenAddresses } from './nativeTokens'
 
-const DEFAULT_STRING = ''
+/**
+ * This token does not implement decimals, name or symbol
+ * It causes problems when fetching metadata on-chain
+ * Since it appears to be a one off we will hardcode data to prevent failures
+ */
+const REAL_ESTATE_TOKEN_METADATA = {
+  address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),
+  name: 'Real Estate USD (REUSD)',
+  symbol: 'Real Estate USD (REUSD)',
+  decimals: 18,
+}
 
 const CHAIN_METADATA: Partial<
   Record<Chain, Record<string, Erc20Metadata | undefined>>
@@ -23,6 +33,12 @@ export async function getTokenMetadata(
   chainId: Chain,
   provider: CustomJsonRpcProvider,
 ): Promise<Erc20Metadata> {
+  if (
+    getAddress(tokenAddress) === REAL_ESTATE_TOKEN_METADATA.address &&
+    chainId == Chain.Ethereum
+  ) {
+    return REAL_ESTATE_TOKEN_METADATA
+  }
   if (nativeTokenAddresses.includes(tokenAddress)) {
     return {
       address: getAddress(tokenAddress),
@@ -57,7 +73,6 @@ export async function getTokenMetadata(
   throw new Error(errorMessage)
 }
 
-const DEFAULT_DECIMAL = 18
 async function getOnChainTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
@@ -84,12 +99,7 @@ async function getOnChainTokenMetadata(
       { tokenAddress, chainId, errorMessage },
       'Failed to fetch token metadata on-chain',
     )
-    return {
-      address: getAddress(await tokenContract.getAddress()),
-      name: DEFAULT_STRING,
-      symbol: DEFAULT_STRING,
-      decimals: DEFAULT_DECIMAL,
-    }
+    return undefined
   }
 }
 

@@ -7,7 +7,7 @@ import {
   Underlying,
   TokenType,
   UnderlyingTokenRate,
-  GetPositionsInputWithMandatoryTokenAddresses,
+  GetPositionsInputWithTokenAddresses,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
@@ -21,14 +21,17 @@ import { SimplePoolAdapter } from './SimplePoolAdapter'
 
 const PRICE_PEGGED_TO_ONE = 1
 
+export type ExtraRewardToken = {
+  token: Erc20Metadata
+  manager: string
+}
+
 export type LpStakingProtocolMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
     underlyingToken: Erc20Metadata
-    rewardTokens?: Erc20Metadata[]
-    extraRewardTokens?: Erc20Metadata[]
-    extraRewardTokenManagers?: string[]
+    extraRewardTokens: ExtraRewardToken[]
   }
 >
 
@@ -42,13 +45,13 @@ export abstract class LpStakingAdapter
     userAddress,
     blockNumber,
     protocolTokenAddresses,
-  }: GetPositionsInputWithMandatoryTokenAddresses): Promise<ProtocolPosition[]>
+  }: GetPositionsInputWithTokenAddresses): Promise<ProtocolPosition[]>
 
   abstract getExtraRewardPositions({
     userAddress,
     blockNumber,
     protocolTokenAddresses,
-  }: GetPositionsInputWithMandatoryTokenAddresses): Promise<ProtocolPosition[]>
+  }: GetPositionsInputWithTokenAddresses): Promise<ProtocolPosition[]>
 
   abstract getRewardWithdrawals({
     userAddress,

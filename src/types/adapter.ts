@@ -164,8 +164,7 @@ export type ProtocolDetails = {
   assetDetails: AssetDetails
 }
 
-export interface GetPositionsInputWithMandatoryTokenAddresses
-  extends GetPositionsInput {
+export interface GetPositionsInputWithTokenAddresses extends GetPositionsInput {
   protocolTokenAddresses: string[]
 }
 
