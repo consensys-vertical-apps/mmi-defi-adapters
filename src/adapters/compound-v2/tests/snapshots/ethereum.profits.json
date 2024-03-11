@@ -73,13 +73,13 @@
           "symbol": "CUSDC",
           "decimals": 8,
           "type": "protocol",
-          "profit": -27497.597111254407,
-          "performance": -0.7341200862976188,
+          "profit": -536.1855687586867,
+          "performance": -0.014314872474713783,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
-            "borrows": 0,
+            "borrows": 26961.41154249572,
             "startPositionValue": -37456.5382755467,
             "endPositionValue": -64954.13538680111
           }

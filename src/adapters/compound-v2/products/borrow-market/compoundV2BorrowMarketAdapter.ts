@@ -1,4 +1,4 @@
-import { LogDescription, TransactionReceipt } from 'ethers'
+import { LogDescription } from 'ethers'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   ResolveUnderlyingMovements,
@@ -111,74 +111,16 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const { protocolToken, underlyingToken } = await this.fetchPoolMetadata(
+    return this.getRepaysOrBorrows({
+      userAddress,
       protocolTokenAddress,
-    )
-
-    const cTokenContract = Cerc20__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    const comptrollerContract = Comptroller__factory.connect(
-      this.contractAddresses[this.chainId]!.comptrollerAddress,
-      this.provider,
-    )
-
-    const comptrollerBorrowEventFilter =
-      comptrollerContract.filters.DistributedBorrowerComp(
-        protocolTokenAddress,
-        userAddress,
-        undefined,
-        undefined,
-      )
-
-    const comptrollerBorrowEvents = await comptrollerContract.queryFilter(
-      comptrollerBorrowEventFilter,
       fromBlock,
       toBlock,
-    )
-
-    return await filterMapAsync(
-      comptrollerBorrowEvents,
-      async (comptrollerBorrowEvent) => {
-        const tx = await comptrollerBorrowEvent.getTransactionReceipt()
-
-        const borrowEvent = tx.logs
-          .map((log) =>
-            cTokenContract.interface.parseLog({
-              data: log.data,
-              topics: log.topics as string[],
-            }),
-          )
-          .find((log) => log && log.name === 'Borrow') as
-          | BorrowEvent.LogDescription
-          | undefined
-
-        if (!borrowEvent) {
-          return undefined
-        }
-
-        return {
-          transactionHash: tx.hash,
-          protocolToken: {
-            address: protocolToken.address,
-            name: protocolToken.name,
-            symbol: protocolToken.symbol,
-            decimals: protocolToken.decimals,
-          },
-          tokens: [
-            {
-              ...underlyingToken,
-              balanceRaw: borrowEvent.args.borrowAmount,
-              type: TokenType.Underlying,
-              blockNumber: tx.blockNumber,
-            },
-          ],
-          blockNumber: tx.blockNumber,
-        }
-      },
-    )
+      extractAmount: (log: LogDescription) =>
+        log.name === 'Borrow'
+          ? (log as unknown as BorrowEvent.LogDescription).args.borrowAmount
+          : undefined,
+    })
   }
 
   @ResolveUnderlyingMovements
@@ -188,74 +130,16 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const { protocolToken, underlyingToken } = await this.fetchPoolMetadata(
+    return this.getRepaysOrBorrows({
+      userAddress,
       protocolTokenAddress,
-    )
-
-    const cTokenContract = Cerc20__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    const comptrollerContract = Comptroller__factory.connect(
-      this.contractAddresses[this.chainId]!.comptrollerAddress,
-      this.provider,
-    )
-
-    const comptrollerBorrowEventFilter =
-      comptrollerContract.filters.DistributedBorrowerComp(
-        protocolTokenAddress,
-        userAddress,
-        undefined,
-        undefined,
-      )
-
-    const comptrollerBorrowEvents = await comptrollerContract.queryFilter(
-      comptrollerBorrowEventFilter,
       fromBlock,
       toBlock,
-    )
-
-    return await filterMapAsync(
-      comptrollerBorrowEvents,
-      async (comptrollerBorrowEvent) => {
-        const tx = await comptrollerBorrowEvent.getTransactionReceipt()
-
-        const repayEvent = tx.logs
-          .map((log) =>
-            cTokenContract.interface.parseLog({
-              data: log.data,
-              topics: log.topics as string[],
-            }),
-          )
-          .find((log) => log && log.name === 'RepayBorrow') as
-          | RepayBorrowEvent.LogDescription
-          | undefined
-
-        if (!repayEvent) {
-          return undefined
-        }
-
-        return {
-          transactionHash: tx.hash,
-          protocolToken: {
-            address: protocolToken.address,
-            name: protocolToken.name,
-            symbol: protocolToken.symbol,
-            decimals: protocolToken.decimals,
-          },
-          tokens: [
-            {
-              ...underlyingToken,
-              balanceRaw: repayEvent.args.repayAmount,
-              type: TokenType.Underlying,
-              blockNumber: tx.blockNumber,
-            },
-          ],
-          blockNumber: tx.blockNumber,
-        }
-      },
-    )
+      extractAmount: (log: LogDescription) =>
+        log.name === 'RepayBorrow'
+          ? (log as unknown as RepayBorrowEvent.LogDescription).args.repayAmount
+          : undefined,
+    })
   }
 
   async getRepaysOrBorrows({
@@ -265,7 +149,7 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
     toBlock,
     extractAmount,
   }: GetEventsInput & {
-    extractAmount: (logs: LogDescription) => bigint
+    extractAmount: (logs: LogDescription) => bigint | undefined
   }): Promise<MovementsByBlock[]> {
     const { protocolToken, underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenAddress,
@@ -295,6 +179,8 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
       toBlock,
     )
 
+    // The same tx could have multiple events
+    // With this we only fetch each tx receipt once
     const txReceipts = await Promise.all(
       [
         ...new Set(
@@ -305,17 +191,26 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
       ),
     )
 
+    // Filter out logs that are not part of the cToken
+    // Filter out logs that do not meet extractAmount condition
     return txReceipts.flatMap((txReceipt) => {
       return filterMapSync(txReceipt.logs, (log) => {
-        return (
-          cTokenContract.interface.parseLog({
-            data: log.data,
-            topics: log.topics as string[],
-          }) || undefined
-        )
-      })
-        .map(extractAmount)
-        .map((balanceRaw) => ({
+        const parsedLog = cTokenContract.interface.parseLog({
+          data: log.data,
+          topics: log.topics as string[],
+        })
+
+        if (!parsedLog) {
+          return undefined
+        }
+
+        const eventAmount = extractAmount(parsedLog)
+
+        if (!eventAmount) {
+          return undefined
+        }
+
+        return {
           transactionHash: txReceipt.hash,
           protocolToken: {
             address: protocolToken.address,
@@ -326,13 +221,14 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2MarketAdapter {
           tokens: [
             {
               ...underlyingToken,
-              balanceRaw,
+              balanceRaw: eventAmount,
               type: TokenType.Underlying,
               blockNumber: txReceipt.blockNumber,
             },
           ],
           blockNumber: txReceipt.blockNumber,
-        }))
+        }
+      })
     })
   }
 
