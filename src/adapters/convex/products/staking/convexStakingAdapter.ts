@@ -1,51 +1,50 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import {
+  LpStakingAdapter,
+  LpStakingProtocolMetadata,
+} from '../../../../core/adapters/LpStakingProtocolAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
-import { AddClaimedRewards } from '../../../../core/decorators/addClaimedRewards'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
-  GetTotalValueLockedInput,
-  TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenTvl,
-  UnderlyingTokenRate,
-  Underlying,
   TokenType,
   GetPositionsInput,
   ProtocolPosition,
   GetEventsInput,
   MovementsByBlock,
   AssetType,
+  GetAprInput,
+  GetApyInput,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { ConvexFactory__factory } from '../../contracts'
-import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
+import { GetCVXMintAmount } from '../../common/cvxRewardFormula'
+import {
+  ConvexFactory__factory,
+  ConvexRewardTracker__factory,
+  ConvexRewardsFactory__factory,
+  CvxMint__factory,
+} from '../../contracts'
+import { RewardPaidEvent } from '../../contracts/ConvexRewardsFactory'
 
-const PRICE_PEGGED_TO_ONE = 1
-
-type ConvexStakingAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
+export const CONVEX_TOKEN = {
+  address: '0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b',
+  name: 'Convex Token',
+  symbol: 'CVX',
+  decimals: 18,
+}
 
 export class ConvexStakingAdapter
-  extends SimplePoolAdapter
+  extends LpStakingAdapter
   implements IMetadataBuilder
 {
   productId = 'staking'
@@ -66,17 +65,7 @@ export class ConvexStakingAdapter
     }
   }
 
-  @AddClaimableRewards({ rewardAdapterIds: ['extra-reward', 'rewards'] })
-  getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    return super.getPositions(input)
-  }
-
-  @AddClaimedRewards({ rewardAdapterIds: ['extra-reward', 'rewards'] })
-  getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]> {
-    return super.getWithdrawals(input)
-  }
-
-  @CacheToFile({ fileKey: 'protocol-token' })
+  @CacheToFile({ fileKey: 'metadata' })
   async buildMetadata() {
     const convexFactory = ConvexFactory__factory.connect(
       '0xF403C135812408BFbE8713b5A23a04b3D48AAE31',
@@ -85,14 +74,21 @@ export class ConvexStakingAdapter
 
     const length = await convexFactory.poolLength()
 
-    const metadata: ConvexStakingAdapterMetadata = {}
+    const metadata: LpStakingProtocolMetadata = {}
     await Promise.all(
       Array.from({ length: Number(length) }, async (_, i) => {
         const convexData = await convexFactory.poolInfo(i)
 
-        const [convexToken, underlyingToken] = await Promise.all([
-          getTokenMetadata(convexData.token, this.chainId, this.provider), // convex staking contract is missing name, symbol, decimal
+        const [
+          convexToken,
+          underlyingToken,
+          rewardTokens,
+          [extraRewardTokens, extraRewardTokenManagers],
+        ] = await Promise.all([
+          getTokenMetadata(convexData.token, this.chainId, this.provider),
           getTokenMetadata(convexData.lptoken, this.chainId, this.provider),
+          this.getRewardTokenMetadata(convexData.crvRewards),
+          this.getExtraRewardTokenMetadata(convexData.crvRewards),
         ])
 
         metadata[getAddress(convexData.crvRewards)] = {
@@ -101,6 +97,9 @@ export class ConvexStakingAdapter
             address: getAddress(convexData.crvRewards),
           },
           underlyingToken,
+          rewardTokens,
+          extraRewardTokens,
+          extraRewardTokenManagers,
         }
       }),
     )
@@ -108,65 +107,323 @@ export class ConvexStakingAdapter
     return metadata
   }
 
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
+  async getRewardPositions({
+    userAddress,
+    blockNumber,
+    protocolTokenAddresses,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    const balances = await filterMapAsync(
+      protocolTokens,
+      async (protocolToken) => {
+        if (
+          protocolTokenAddresses &&
+          !protocolTokenAddresses.includes(protocolToken.address)
+        ) {
+          return undefined
+        }
+
+        const rewardManager = ConvexRewardsFactory__factory.connect(
+          protocolToken.address,
+          this.provider,
+        )
+
+        const crvRewardBalance = await rewardManager
+          .earned(userAddress, {
+            blockTag: blockNumber,
+          })
+          .catch(() => 0n)
+
+        if (crvRewardBalance == 0n) return
+
+        const poolMetadata = await this.fetchPoolMetadata(protocolToken.address)
+        const crvRewardMetadata = poolMetadata.rewardTokens![0]!
+
+        const cvxTokenContract = CvxMint__factory.connect(
+          CONVEX_TOKEN.address,
+          this.provider,
+        )
+        const cvxSupply = await cvxTokenContract.totalSupply({
+          blockTag: blockNumber,
+        })
+
+        const cvxBalance = GetCVXMintAmount(crvRewardBalance, cvxSupply)
+
+        const result: ProtocolPosition = {
+          ...protocolToken,
+          type: TokenType.Reward,
+
+          balanceRaw: 0n,
+          tokens: [
+            {
+              ...crvRewardMetadata!,
+              type: TokenType.UnderlyingClaimable,
+              balanceRaw: crvRewardBalance,
+            },
+            {
+              ...CONVEX_TOKEN,
+              type: TokenType.UnderlyingClaimable,
+              balanceRaw: cvxBalance,
+            },
+          ],
+        }
+
+        return result
+      },
     )
+
+    return balances
+  }
+  async getExtraRewardPositions({
+    userAddress,
+    blockNumber,
+    protocolTokenAddresses,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    const balances: ProtocolPosition[] = await filterMapAsync(
+      protocolTokens,
+      async (protocolToken) => {
+        if (
+          protocolTokenAddresses &&
+          !protocolTokenAddresses.includes(protocolToken.address)
+        ) {
+          return undefined
+        }
+
+        const { extraRewardTokens, extraRewardTokenManagers } =
+          await this.fetchPoolMetadata(protocolToken.address)
+
+        // If extraRewards is empty or undefined, skip this protocolToken
+        if (!extraRewardTokens || extraRewardTokens.length === 0) return
+
+        const underlying = await filterMapAsync(
+          extraRewardTokens,
+          async (extraRewardToken, index) => {
+            const extraRewardTokenContract =
+              ConvexRewardTracker__factory.connect(
+                extraRewardTokenManagers![index]!,
+                this.provider,
+              )
+
+            const balance = await extraRewardTokenContract
+              .earned(userAddress, { blockTag: blockNumber })
+              .catch(() => 0n)
+
+            if (balance == 0n) return
+
+            return {
+              type: TokenType.UnderlyingClaimable,
+              ...extraRewardToken,
+              balanceRaw: balance,
+            }
+          },
+        )
+
+        // If extraRewards is empty or undefined, skip this protocolToken
+        if (!underlying || underlying.length === 0) return
+
+        return {
+          ...protocolToken,
+          type: TokenType.Protocol,
+          balanceRaw: 0n,
+          tokens: underlying,
+        }
+      },
+    )
+
+    return balances
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenBalance.address,
+  async getRewardWithdrawals({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const mainRewardTrackerContract = ConvexRewardsFactory__factory.connect(
+      protocolTokenAddress,
+      this.provider,
     )
 
-    const underlyingTokenBalance = {
-      ...underlyingToken,
-      balanceRaw: protocolTokenBalance.balanceRaw,
-      type: TokenType.Underlying,
+    const { protocolToken, rewardTokens } = await this.fetchPoolMetadata(
+      protocolTokenAddress,
+    )
+
+    const [protocolRewardToken] = rewardTokens!
+
+    const filter =
+      mainRewardTrackerContract.filters['RewardPaid(address,uint256)'](
+        userAddress,
+      )
+
+    const eventResults =
+      await mainRewardTrackerContract.queryFilter<RewardPaidEvent.Event>(
+        filter,
+        fromBlock,
+        toBlock,
+      )
+
+    const results = eventResults.map(async (event) => {
+      const {
+        blockNumber,
+        args: { reward: protocolTokenMovementValueRaw },
+        transactionHash,
+      } = event
+
+      const cvxTokenContract = CvxMint__factory.connect(
+        CONVEX_TOKEN.address,
+        this.provider,
+      )
+      const cvxSupply = await cvxTokenContract.totalSupply({
+        blockTag: blockNumber,
+      })
+
+      const cvxReward = GetCVXMintAmount(
+        protocolTokenMovementValueRaw,
+        cvxSupply,
+      )
+
+      return {
+        transactionHash,
+        protocolToken,
+        tokens: [
+          {
+            ...protocolRewardToken!,
+            balanceRaw: protocolTokenMovementValueRaw,
+            type: TokenType.Underlying,
+          },
+          {
+            ...CONVEX_TOKEN,
+            balanceRaw: cvxReward,
+
+            type: TokenType.Underlying,
+          },
+        ],
+        blockNumber: blockNumber,
+      }
+    })
+
+    return await Promise.all(results)
+  }
+  async getExtraRewardWithdrawals({
+    userAddress,
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    const {
+      protocolToken,
+      extraRewardTokens: protocolRewardTokens,
+      extraRewardTokenManagers,
+    } = await this.fetchPoolMetadata(protocolTokenAddress)
+
+    const responsePromises = protocolRewardTokens?.map(
+      async (extraRewardToken, index) => {
+        const extraRewardTracker = ConvexRewardTracker__factory.connect(
+          extraRewardTokenManagers![index]!,
+          this.provider,
+        )
+
+        const filter =
+          extraRewardTracker.filters['RewardPaid(address,uint256)'](userAddress)
+
+        const eventResults =
+          await extraRewardTracker.queryFilter<RewardPaidEvent.Event>(
+            filter,
+            fromBlock,
+            toBlock,
+          )
+
+        return eventResults.map((event) => {
+          const {
+            blockNumber,
+            args: { reward: protocolTokenMovementValueRaw },
+            transactionHash,
+          } = event
+
+          return {
+            transactionHash: transactionHash,
+            protocolToken,
+            tokens: [
+              {
+                ...extraRewardToken,
+                balanceRaw: protocolTokenMovementValueRaw,
+                type: TokenType.Underlying,
+              },
+            ],
+            blockNumber: blockNumber,
+          }
+        })
+      },
+    )
+
+    if (!responsePromises) return []
+
+    const nestedResults = await Promise.all(responsePromises)
+    const response: MovementsByBlock[] = nestedResults.flat()
+
+    return response
+  }
+
+  private async getRewardTokenMetadata(
+    crvRewards: string,
+  ): Promise<Erc20Metadata[]> {
+    const rewardManager = ConvexRewardsFactory__factory.connect(
+      crvRewards,
+      this.provider,
+    )
+
+    const rewardToken = await rewardManager.rewardToken()
+
+    const crvRewardMetadata = await getTokenMetadata(
+      rewardToken,
+      this.chainId,
+      this.provider,
+    )
+
+    return [crvRewardMetadata]
+  }
+  private async getExtraRewardTokenMetadata(
+    crvRewards: string,
+  ): Promise<[Erc20Metadata[], string[]]> {
+    const rewardManager = ConvexRewardsFactory__factory.connect(
+      crvRewards,
+      this.provider,
+    )
+
+    const extraRewardsLength = await rewardManager.extraRewardsLength()
+
+    const extraRewards: Erc20Metadata[] = []
+    const extraRewardTokensManager: string[] = []
+
+    if (extraRewardsLength > 0n) {
+      await Promise.all(
+        Array.from({ length: Number(extraRewardsLength) }, async (_, i) => {
+          const extraRewardTrackerAddress = await rewardManager.extraRewards(i)
+
+          const extraRewardTrackerContract =
+            ConvexRewardTracker__factory.connect(
+              extraRewardTrackerAddress,
+              this.provider,
+            )
+
+          const rewardToken = await extraRewardTrackerContract.rewardToken()
+
+          const rewardTokenMetadata = await getTokenMetadata(
+            rewardToken,
+            this.chainId,
+            this.provider,
+          )
+
+          extraRewards.push(rewardTokenMetadata)
+          extraRewardTokensManager.push(getAddress(extraRewardTrackerAddress))
+        }),
+      )
     }
 
-    return [underlyingTokenBalance]
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
-  protected async getUnderlyingTokenConversionRate(
-    protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenMetadata.address,
-    )
-
-    const pricePerShareRaw = BigInt(
-      PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
-    )
-
-    return [
-      {
-        ...underlyingToken,
-        type: TokenType.Underlying,
-        underlyingRateRaw: pricePerShareRaw,
-      },
-    ]
+    return [extraRewards, extraRewardTokensManager]
   }
 
   async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
@@ -175,34 +432,5 @@ export class ConvexStakingAdapter
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
-
-    return [underlyingToken]
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 }

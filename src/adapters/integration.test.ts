@@ -10,7 +10,6 @@ import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
 import { testCases as carbonDeFiTestCases } from './carbon-defi/tests/testCases'
 import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
-import { testCases as compoundTestCases } from './compound/tests/testCases'
 import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
 import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
@@ -22,8 +21,10 @@ import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCa
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
 import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3-eth/tests/testCases'
 import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
+import { testCases as pancakeswapV2TestCases } from './pancakeswap-v2/tests/testCases'
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
+import { testCases as quickswapV2TestCases } from './quickswap-v2/tests/testCases'
 import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as stakeWiseTestCases } from './stakewise/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
@@ -47,7 +48,6 @@ function runAllTests() {
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
   runProtocolTests(Protocol.Lido, lidoTestCases)
   runProtocolTests(Protocol.Curve, curveTestCases)
-  runProtocolTests(Protocol.Compound, compoundTestCases)
   runProtocolTests(Protocol.Maker, makerTestCases)
   runProtocolTests(Protocol.GMX, gMXTestCases)
   runProtocolTests(Protocol.Swell, swellTestCases)
@@ -72,6 +72,8 @@ function runAllTests() {
   runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
   runProtocolTests(Protocol.StakeWise, stakeWiseTestCases)
   runProtocolTests(Protocol.Xfai, xfaiTestCases)
+  runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
+  runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
   runProtocolTests(Protocol.CompoundV2, compoundV2TestCases)
 }
 
