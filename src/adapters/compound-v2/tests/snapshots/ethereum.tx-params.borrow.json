@@ -1,15 +1,15 @@
 {
   "snapshot": {
-    "protocolId": "compound",
-    "name": "Compound",
-    "description": "Compound pool adapter",
+    "protocolId": "compound-v2",
+    "name": "CompoundV2",
+    "description": "CompoundV2 borrow market adapter",
     "siteUrl": "https:",
     "iconUrl": "https://",
-    "positionType": "lend",
+    "positionType": "borrow",
     "chainId": 1,
-    "productId": "pool",
+    "productId": "borrow-market",
     "assetDetails": {
-      "type": "StandardErc20"
+      "type": "NonStandardErc20"
     },
     "success": true,
     "params": {

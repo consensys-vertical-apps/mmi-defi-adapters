@@ -10,7 +10,7 @@ import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
 import { testCases as carbonDeFiTestCases } from './carbon-defi/tests/testCases'
 import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
-import { testCases as compoundTestCases } from './compound/tests/testCases'
+import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
 import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
 import { testCases as gMXTestCases } from './gmx/tests/testCases'
@@ -48,7 +48,6 @@ function runAllTests() {
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
   runProtocolTests(Protocol.Lido, lidoTestCases)
   runProtocolTests(Protocol.Curve, curveTestCases)
-  runProtocolTests(Protocol.Compound, compoundTestCases)
   runProtocolTests(Protocol.Maker, makerTestCases)
   runProtocolTests(Protocol.GMX, gMXTestCases)
   runProtocolTests(Protocol.Swell, swellTestCases)
@@ -75,6 +74,7 @@ function runAllTests() {
   runProtocolTests(Protocol.Xfai, xfaiTestCases)
   runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
   runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
+  runProtocolTests(Protocol.CompoundV2, compoundV2TestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

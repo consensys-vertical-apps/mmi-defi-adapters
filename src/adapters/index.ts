@@ -10,7 +10,8 @@ import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenPoolAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
-import { CompoundPoolAdapter } from './compound/products/pool/compoundPoolAdapter'
+import { CompoundV2BorrowMarketAdapter } from './compound-v2/products/borrow-market/compoundV2BorrowMarketAdapter'
+import { CompoundV2SupplyMarketAdapter } from './compound-v2/products/supply-market/compoundV2SupplyMarketAdapter'
 import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/convexCvxcrvWrapperAdapter'
 import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
 import { ConvexSidechainStakingAdapter } from './convex/products/sidechain-staking/convexSidechainStakingAdapter'
@@ -177,10 +178,6 @@ export const supportedProtocols: Record<
     [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
   },
 
-  [Protocol.Compound]: {
-    [Chain.Ethereum]: [CompoundPoolAdapter],
-  },
-
   [Protocol.Maker]: {
     [Chain.Ethereum]: [SDaiAdapter],
   },
@@ -281,5 +278,12 @@ export const supportedProtocols: Record<
     [Chain.Base]: [PancakeswapV2PoolAdapter],
     [Chain.Arbitrum]: [PancakeswapV2PoolAdapter],
     [Chain.Linea]: [PancakeswapV2PoolAdapter],
+  },
+
+  [Protocol.CompoundV2]: {
+    [Chain.Ethereum]: [
+      CompoundV2SupplyMarketAdapter,
+      CompoundV2BorrowMarketAdapter,
+    ],
   },
 }

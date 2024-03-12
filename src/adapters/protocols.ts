@@ -6,7 +6,6 @@ export const Protocol = {
   UniswapV3: 'uniswap-v3',
   Lido: 'lido',
   Curve: 'curve',
-  Compound: 'compound',
   Maker: 'maker',
   GMX: 'gmx',
   Swell: 'swell',
@@ -27,5 +26,6 @@ export const Protocol = {
   Xfai: 'xfai',
   QuickswapV2: 'quickswap-v2',
   PancakeswapV2: 'pancakeswap-v2',
+  CompoundV2: 'compound-v2',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
