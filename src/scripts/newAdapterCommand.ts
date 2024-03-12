@@ -19,6 +19,8 @@ import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { DefiProvider } from '../defiProvider'
 import { chainFilter, protocolFilter } from './commandFilters'
+import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
+import { compoundV2SupplyMarketForkAdapterTemplate } from './templates/compoundV2SupplyMarketForkAdapter'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
 import { lpStakingAdapterTemplate } from './templates/lpStakingProtocolAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
@@ -43,6 +45,10 @@ const Templates: Record<string, TemplateBuilder> = {
   ['SimplePoolAdapter']: simplePoolAdapterTemplate,
   ['UniswapV2PoolForkAdapter']: uniswapV2PoolForkAdapterTemplate,
   ['LpStakingAdapter']: lpStakingAdapterTemplate,
+  ['CompoundV2SupplyMarketForkAdapter']:
+    compoundV2SupplyMarketForkAdapterTemplate,
+  ['CompoundV2BorrowMarketForkAdapter']:
+    compoundV2BorrowMarketForkAdapterTemplate,
 }
 
 export function newAdapterCommand(
