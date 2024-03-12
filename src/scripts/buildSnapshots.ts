@@ -15,7 +15,6 @@ import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
-import { filterMapSync } from '../core/utils/filters'
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
