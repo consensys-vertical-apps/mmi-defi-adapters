@@ -7,6 +7,7 @@ import {
   Underlying,
   TokenType,
   UnderlyingTokenRate,
+  GetPositionsInputWithTokenAddresses,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
@@ -20,14 +21,17 @@ import { SimplePoolAdapter } from './SimplePoolAdapter'
 
 const PRICE_PEGGED_TO_ONE = 1
 
+export type ExtraRewardToken = {
+  token: Erc20Metadata
+  manager: string
+}
+
 export type LpStakingProtocolMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
     underlyingToken: Erc20Metadata
-    rewardTokens?: Erc20Metadata[]
-    extraRewardTokens?: Erc20Metadata[]
-    extraRewardTokenManagers?: string[]
+    extraRewardTokens: ExtraRewardToken[]
   }
 >
 
@@ -41,13 +45,13 @@ export abstract class LpStakingAdapter
     userAddress,
     blockNumber,
     protocolTokenAddresses,
-  }: GetPositionsInput): Promise<ProtocolPosition[]>
+  }: GetPositionsInputWithTokenAddresses): Promise<ProtocolPosition[]>
 
   abstract getExtraRewardPositions({
     userAddress,
     blockNumber,
     protocolTokenAddresses,
-  }: GetPositionsInput): Promise<ProtocolPosition[]>
+  }: GetPositionsInputWithTokenAddresses): Promise<ProtocolPosition[]>
 
   abstract getRewardWithdrawals({
     userAddress,
@@ -86,7 +90,7 @@ export abstract class LpStakingAdapter
             toBlock,
           })
         } catch (error) {
-          this.handleError(error)
+          this.handleError(error, method.name)
         }
       }),
     )
@@ -126,34 +130,41 @@ export abstract class LpStakingAdapter
       protocolTokenAddresses,
     })
 
-    const positionPromises = stakingPositions.map(async (position) => {
-      const rewardTokensPositionsPromise = this.getRewardPositions({
-        userAddress,
-        blockNumber,
-        protocolTokenAddresses: [position.address],
-      })
+    await Promise.all(
+      stakingPositions.map(async (position) => {
+        const [rewardTokensPositions, extraRewardTokensPositions] =
+          await Promise.allSettled([
+            this.getRewardPositions({
+              userAddress,
+              blockNumber,
+              protocolTokenAddresses: [position.address],
+            }),
+            this.getExtraRewardPositions({
+              userAddress,
+              blockNumber,
+              protocolTokenAddresses: [position.address],
+            }),
+          ])
 
-      const extraRewardTokensPositionsPromise = this.getExtraRewardPositions({
-        userAddress,
-        blockNumber,
-        protocolTokenAddresses: [position.address],
-      })
+        if (rewardTokensPositions.status === 'fulfilled') {
+          this.addTokensToPosition(position, rewardTokensPositions.value[0])
+        } else {
+          this.handleError(rewardTokensPositions.reason, 'getRewardPositions')
+        }
 
-      const [[rewardTokensPositions], [extraRewardTokensPositions]] =
-        await Promise.all([
-          rewardTokensPositionsPromise,
-          extraRewardTokensPositionsPromise,
-        ])
-
-      this.addTokensToPosition(position, rewardTokensPositions)
-      this.addTokensToPosition(position, extraRewardTokensPositions)
-    })
-
-    try {
-      await Promise.all(positionPromises)
-    } catch (error) {
-      this.handleError(error)
-    }
+        if (extraRewardTokensPositions.status === 'fulfilled') {
+          this.addTokensToPosition(
+            position,
+            extraRewardTokensPositions.value[0],
+          )
+        } else {
+          this.handleError(
+            extraRewardTokensPositions.reason,
+            'getExtraRewardPositions',
+          )
+        }
+      }),
+    )
 
     return stakingPositions
   }
@@ -236,10 +247,15 @@ export abstract class LpStakingAdapter
     return poolMetadata
   }
 
-  private handleError(error: unknown) {
+  private handleError(error: unknown, methodName: string) {
     if (!(error instanceof NotImplementedError)) {
-      logger.error(error, 'An error has occurred')
-      throw new Error('An error occurred')
+      logger.error(
+        error,
+        `An error has occurred method: ${methodName} chainId: ${this.chainId}`,
+      )
+      throw new Error(
+        `An error has occurred method: ${methodName} chainId: ${this.chainId}`,
+      )
     }
   }
 }

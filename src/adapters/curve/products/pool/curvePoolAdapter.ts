@@ -131,9 +131,7 @@ export class CurvePoolAdapter
     const balances = await Promise.all(
       underlyingTokens.map(async (token) => {
         if (token.address == '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE') {
-          return this.provider
-            .getBalance(lpTokenManager, blockNumber)
-            .catch((e) => console.log(e, lpTokenManager, 'oioi2'))
+          return this.provider.getBalance(lpTokenManager, blockNumber)
         }
 
         const underlyingTokenContract = Erc20__factory.connect(

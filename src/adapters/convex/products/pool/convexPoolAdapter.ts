@@ -1,5 +1,8 @@
 import { getAddress } from 'ethers'
-import { LpStakingAdapter } from '../../../../core/adapters/LpStakingProtocolAdapter'
+import {
+  LpStakingAdapter,
+  LpStakingProtocolMetadata,
+} from '../../../../core/adapters/LpStakingProtocolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
@@ -21,17 +24,8 @@ import {
   GetApyInput,
   ProtocolTokenApy,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import { ConvexFactory__factory } from '../../contracts'
-import { CONVEX_TOKEN } from '../staking/convexStakingAdapter'
-
-type ConvexStakingAdapterMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
 
 /**
  * First version of Convex had additional token which needed to be staked to accrue rewards
@@ -40,10 +34,14 @@ export class ConvexPoolAdapter
   extends LpStakingAdapter
   implements IMetadataBuilder
 {
-  getRewardPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
+  productId = 'pool'
+
+  async getRewardPositions(
+    _input: GetPositionsInput,
+  ): Promise<ProtocolPosition[]> {
     throw new NotImplementedError()
   }
-  getExtraRewardPositions(
+  async getExtraRewardPositions(
     _input: GetPositionsInput,
   ): Promise<ProtocolPosition[]> {
     throw new NotImplementedError()
@@ -69,13 +67,13 @@ export class ConvexPoolAdapter
   @CacheToFile({ fileKey: 'metadata' })
   async buildMetadata() {
     const convexFactory = ConvexFactory__factory.connect(
-      '0xF403C135812408BFbE8713b5A23a04b3D48AAE31',
+      CONVEX_FACTORY_ADDRESS,
       this.provider,
     )
 
     const pools = await convexFactory.poolLength()
 
-    const metadata: ConvexStakingAdapterMetadata = {}
+    const metadata: LpStakingProtocolMetadata = {}
     await Promise.all(
       Array.from({ length: Number(pools) }, async (_, i) => {
         const convexData = await convexFactory.poolInfo(i)
@@ -88,13 +86,13 @@ export class ConvexPoolAdapter
         metadata[getAddress(convexData.token)] = {
           protocolToken: convexToken,
           underlyingToken,
+          extraRewardTokens: [],
         }
       }),
     )
 
     return metadata
   }
-  productId = 'pool'
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -102,7 +100,10 @@ export class ConvexPoolAdapter
       name: 'Convex',
       description: 'Convex pool adapter',
       siteUrl: 'https://www.convexfinance.com/',
-      iconUrl: buildTrustAssetIconUrl(Chain.Ethereum, CONVEX_TOKEN.address),
+      iconUrl: buildTrustAssetIconUrl(
+        Chain.Ethereum,
+        '0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B',
+      ),
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

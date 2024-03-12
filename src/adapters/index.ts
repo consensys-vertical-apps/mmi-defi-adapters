@@ -14,6 +14,7 @@ import { CompoundV2BorrowMarketAdapter } from './compound-v2/products/borrow-mar
 import { CompoundV2SupplyMarketAdapter } from './compound-v2/products/supply-market/compoundV2SupplyMarketAdapter'
 import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/convexCvxcrvWrapperAdapter'
 import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
+import { ConvexSidechainStakingAdapter } from './convex/products/sidechain-staking/convexSidechainStakingAdapter'
 import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAdapter'
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
@@ -196,6 +197,10 @@ export const supportedProtocols: Record<
       ConvexStakingAdapter,
       ConvexCvxcrvWrapperAdapter,
     ],
+
+    [Chain.Polygon]: [ConvexSidechainStakingAdapter],
+
+    [Chain.Arbitrum]: [ConvexSidechainStakingAdapter],
   },
 
   [Protocol.IZiSwap]: {
