@@ -13,6 +13,7 @@ import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/test
 import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
 import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
+import { testCases as fluxTestCases } from './flux/tests/testCases'
 import { testCases as gMXTestCases } from './gmx/tests/testCases'
 import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
@@ -75,6 +76,7 @@ function runAllTests() {
   runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
   runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
   runProtocolTests(Protocol.CompoundV2, compoundV2TestCases)
+  runProtocolTests(Protocol.Flux, fluxTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {

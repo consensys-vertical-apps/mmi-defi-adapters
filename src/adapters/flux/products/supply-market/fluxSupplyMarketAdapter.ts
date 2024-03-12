@@ -1,36 +1,41 @@
-import { AddressLike, BigNumberish } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import {
+  IMetadataBuilder,
+  CacheToFile,
+} from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
+  GetAprInput,
+  GetApyInput,
   TokenBalance,
+  ProtocolTokenApr,
+  ProtocolTokenApy,
   UnderlyingTokenRate,
   Underlying,
   AssetType,
-  TokenType,
-  GetAprInput,
-  GetApyInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   GetEventsInput,
   MovementsByBlock,
+  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { buildMetadata } from '../../common/buildMetadata'
+import { buildMetadata } from '../../../compound-v2/common/buildMetadata'
+import { Cerc20__factory } from '../../../compound-v2/contracts'
 import { contractAddresses } from '../../common/contractAddresses'
-import { CUSDCv3__factory, Cerc20__factory } from '../../contracts'
 
-export class CompoundV2SupplyMarketAdapter extends SimplePoolAdapter {
+export class FluxSupplyMarketAdapter
+  extends SimplePoolAdapter
+  implements IMetadataBuilder
+{
   productId = 'supply-market'
 
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'CompoundV2',
-      description: 'CompoundV2 supply market adapter',
+      name: 'Flux',
+      description: 'Flux supply market adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
       positionType: PositionType.Supply,
@@ -156,36 +161,6 @@ export class CompoundV2SupplyMarketAdapter extends SimplePoolAdapter {
         underlyingRateRaw: adjustedExchangeRate,
       },
     ]
-  }
-
-  getTransactionParams({
-    action,
-    inputs,
-  }: {
-    action: 'supply' | 'withdraw'
-    inputs: unknown[]
-  }) {
-    const poolContract = CUSDCv3__factory.connect(
-      contractAddresses[this.chainId]!.cUSDCv3Address,
-      this.provider,
-    )
-
-    // TODO - Needs validation with zod
-    const [asset, amount] = inputs as [AddressLike, BigNumberish]
-
-    switch (action) {
-      case 'supply': {
-        return poolContract.supply.populateTransaction(asset, amount)
-      }
-      case 'withdraw': {
-        return poolContract.withdraw.populateTransaction(asset, amount)
-      }
-
-      // TODO - Validate along with input using zod
-      default: {
-        throw new Error('Method not supported')
-      }
-    }
   }
 
   getBorrows(_input: GetEventsInput): Promise<MovementsByBlock[]> {

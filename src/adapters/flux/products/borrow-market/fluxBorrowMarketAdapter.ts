@@ -1,50 +1,52 @@
-import { AddressLike, BigNumberish, LogDescription } from 'ethers'
+import { LogDescription } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  CacheToFile,
   IMetadataBuilder,
+  CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import {
-  ResolveUnderlyingMovements,
   ResolveUnderlyingPositions,
+  ResolveUnderlyingMovements,
 } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync, filterMapSync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
 import {
+  ProtocolAdapterParams,
   ProtocolDetails,
   PositionType,
-  AssetType,
-  TokenType,
   GetPositionsInput,
-  ProtocolPosition,
   GetEventsInput,
   MovementsByBlock,
-  ProtocolAdapterParams,
-  GetAprInput,
-  GetApyInput,
-  GetConversionRateInput,
   GetTotalValueLockedInput,
+  GetApyInput,
+  GetAprInput,
+  GetConversionRateInput,
   ProtocolTokenApr,
   ProtocolTokenApy,
-  ProtocolTokenTvl,
   ProtocolTokenUnderlyingRate,
+  ProtocolTokenTvl,
+  ProtocolPosition,
+  AssetType,
+  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
-import { Protocol } from '../../../protocols'
-import { buildMetadata } from '../../common/buildMetadata'
-import { contractAddresses } from '../../common/contractAddresses'
+import { buildMetadata } from '../../../compound-v2/common/buildMetadata'
 import {
-  CUSDCv3__factory,
-  Cerc20__factory,
   Comptroller__factory,
-} from '../../contracts'
-import { BorrowEvent, RepayBorrowEvent } from '../../contracts/Cerc20'
+  Cerc20__factory,
+} from '../../../compound-v2/contracts'
+import {
+  BorrowEvent,
+  RepayBorrowEvent,
+} from '../../../compound-v2/contracts/Cerc20'
+import { Protocol } from '../../../protocols'
+import { contractAddresses } from '../../common/contractAddresses'
 
-export class CompoundV2BorrowMarketAdapter
+export class FluxBorrowMarketAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
   chainId: Chain
@@ -70,8 +72,8 @@ export class CompoundV2BorrowMarketAdapter
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'CompoundV2',
-      description: 'CompoundV2 borrow market adapter',
+      name: 'Flux',
+      description: 'Flux borrow market adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
       positionType: PositionType.Borrow,
@@ -299,36 +301,6 @@ export class CompoundV2BorrowMarketAdapter
         }
       })
     })
-  }
-
-  getTransactionParams({
-    action,
-    inputs,
-  }: {
-    action: string
-    inputs: unknown[]
-  }) {
-    const poolContract = CUSDCv3__factory.connect(
-      contractAddresses[this.chainId]!.cUSDCv3Address,
-      this.provider,
-    )
-
-    // TODO - Needs validation with zod
-    const [asset, amount] = inputs as [AddressLike, BigNumberish]
-
-    switch (action) {
-      case 'borrow': {
-        return poolContract.withdraw.populateTransaction(asset, amount)
-      }
-      case 'repay': {
-        return poolContract.supply.populateTransaction(asset, amount)
-      }
-
-      // TODO - Validate along with input using zod
-      default: {
-        throw new Error('Method not supported')
-      }
-    }
   }
 
   getProtocolTokenToUnderlyingTokenRate(

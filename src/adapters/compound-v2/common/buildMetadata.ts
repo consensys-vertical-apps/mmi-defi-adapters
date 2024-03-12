@@ -4,7 +4,6 @@ import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvi
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Cerc20__factory, Comptroller__factory } from '../contracts'
-import { contractAddresses } from './contractAddresses'
 
 export type CompoundV2MarketAdapterMetadata = Record<
   string,
@@ -17,9 +16,11 @@ export type CompoundV2MarketAdapterMetadata = Record<
 export async function buildMetadata({
   chainId,
   provider,
+  contractAddresses,
 }: {
   chainId: Chain
   provider: CustomJsonRpcProvider
+  contractAddresses: Partial<Record<Chain, { comptrollerAddress: string }>>
 }) {
   const comptrollerContract = Comptroller__factory.connect(
     contractAddresses[chainId]!.comptrollerAddress,
