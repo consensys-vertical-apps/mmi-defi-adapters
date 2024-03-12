@@ -164,6 +164,10 @@ export type ProtocolDetails = {
   assetDetails: AssetDetails
 }
 
+export interface GetPositionsInputWithTokenAddresses extends GetPositionsInput {
+  protocolTokenAddresses: string[]
+}
+
 export interface GetPositionsInput {
   /**
    * Address of the user can be any type of address EOA/Contract

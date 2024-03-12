@@ -134,15 +134,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
+    return await this.getProtocolTokenMovements({
       protocolToken: await this.fetchProtocolTokenMetadata(
         protocolTokenAddress,
       ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+
       filter: {
-        smartContractAddress: protocolTokenAddress,
         fromBlock,
         toBlock,
         from: undefined,
@@ -158,15 +155,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
+    return await this.getProtocolTokenMovements({
       protocolToken: await this.fetchProtocolTokenMetadata(
         protocolTokenAddress,
       ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+
       filter: {
-        smartContractAddress: protocolTokenAddress,
         fromBlock,
         toBlock,
         from: userAddress,
@@ -181,15 +175,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
+    return await this.getProtocolTokenMovements({
       protocolToken: await this.fetchProtocolTokenMetadata(
         protocolTokenAddress,
       ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+
       filter: {
-        smartContractAddress: protocolTokenAddress,
         fromBlock,
         toBlock,
         from: undefined,
@@ -205,15 +196,12 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return await this.getMovements({
+    return await this.getProtocolTokenMovements({
       protocolToken: await this.fetchProtocolTokenMetadata(
         protocolTokenAddress,
       ),
-      underlyingTokens: await this.fetchUnderlyingTokensMetadata(
-        protocolTokenAddress,
-      ),
+
       filter: {
-        smartContractAddress: protocolTokenAddress,
         fromBlock,
         toBlock,
         from: userAddress,
@@ -332,15 +320,13 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   /**
    * Util used by both getDeposits and getWithdrawals
    */
-  async getMovements({
+
+  async getProtocolTokenMovements({
     protocolToken,
-    underlyingTokens,
-    filter: { smartContractAddress, fromBlock, toBlock, from, to },
+    filter: { fromBlock, toBlock, from, to },
   }: {
     protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
     filter: {
-      smartContractAddress: string
       fromBlock: number
       toBlock: number
       from?: string
@@ -348,7 +334,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     }
   }): Promise<MovementsByBlock[]> {
     const protocolTokenContract = Erc20__factory.connect(
-      smartContractAddress,
+      protocolToken.address,
       this.provider,
     )
 
@@ -377,12 +363,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
           transactionHash,
         } = transferEvent
 
-        const protocolTokenPrice =
-          await this.getProtocolTokenToUnderlyingTokenRate({
-            blockNumber,
-            protocolTokenAddress: protocolToken.address,
-          })
-
         return {
           transactionHash,
           protocolToken: {
@@ -391,30 +371,14 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
             symbol: protocolToken.symbol,
             decimals: protocolToken.decimals,
           },
-          tokens: underlyingTokens.reduce((accumulator, currentToken) => {
-            const currentTokenPrice = protocolTokenPrice.tokens?.find(
-              (price) => price.address === currentToken.address,
-            )
-
-            if (!currentTokenPrice) {
-              throw new Error('No price for underlying token at this time')
-            }
-
-            const movementValueRaw =
-              (protocolTokenMovementValueRaw *
-                currentTokenPrice.underlyingRateRaw) /
-              BigInt(10 ** protocolToken.decimals)
-
-            return [
-              ...accumulator,
-              {
-                ...currentToken,
-                balanceRaw: movementValueRaw,
-                type: TokenType.Underlying,
-                blockNumber,
-              },
-            ]
-          }, [] as Underlying[]),
+          tokens: [
+            {
+              ...protocolToken,
+              balanceRaw: protocolTokenMovementValueRaw,
+              type: TokenType.Underlying,
+              blockNumber,
+            },
+          ],
           blockNumber,
         }
       }),

@@ -352,6 +352,10 @@ async function updateFilterProtocolTokenAddresses(
     return position.tokens.map((token) => token.address)
   })
 
+  if (!protocolTokenAddresses.length) {
+    return
+  }
+
   const testCasesFile = path.resolve(
     `./src/adapters/${protocolId}/tests/testCases.ts`,
   )

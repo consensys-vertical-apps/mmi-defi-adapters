@@ -23,15 +23,27 @@
         },
         "tokens": [
           {
-            "address": "0x0000000000000000000000000000000000000000",
-            "name": "Ethereum",
-            "symbol": "ETH",
+            "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+            "name": "Rocket Pool rETH",
+            "symbol": "rETH",
             "decimals": 18,
-            "balanceRaw": "999499999999999998n",
+            "balanceRaw": "912437816220036188n",
             "type": "underlying",
             "blockNumber": 19011345,
-            "price": 2511.57322604,
-            "balance": 0.9994999999999999
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "999499999999999998n",
+                "balance": 0.9994999999999999,
+                "price": 2511.57322604,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 0.9124378162200362
           }
         ],
         "blockNumber": 19011345
@@ -46,15 +58,27 @@
         },
         "tokens": [
           {
-            "address": "0x0000000000000000000000000000000000000000",
-            "name": "Ethereum",
-            "symbol": "ETH",
+            "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+            "name": "Rocket Pool rETH",
+            "symbol": "rETH",
             "decimals": 18,
-            "balanceRaw": "2499568534397326097n",
+            "balanceRaw": "2280437470393088547n",
             "type": "underlying",
             "blockNumber": 19061606,
-            "price": 2389.24738322,
-            "balance": 2.499568534397326
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "2499568534397326097n",
+                "balance": 2.499568534397326,
+                "price": 2389.24738322,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 2.2804374703930885
           }
         ],
         "blockNumber": 19061606
@@ -69,15 +93,27 @@
         },
         "tokens": [
           {
-            "address": "0x0000000000000000000000000000000000000000",
-            "name": "Ethereum",
-            "symbol": "ETH",
+            "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+            "name": "Rocket Pool rETH",
+            "symbol": "rETH",
             "decimals": 18,
-            "balanceRaw": "3498862680803207317n",
+            "balanceRaw": "3191727259470430395n",
             "type": "underlying",
             "blockNumber": 19074766,
-            "price": 2222.12104354,
-            "balance": 3.4988626808032075
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "3498862680803207317n",
+                "balance": 3.4988626808032075,
+                "price": 2222.12104354,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 3.1917272594704302
           }
         ],
         "blockNumber": 19074766

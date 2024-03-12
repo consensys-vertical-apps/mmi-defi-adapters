@@ -26,6 +26,24 @@ Check out the tutorial video below for an intro to our library and how to build 
 
 [![DeFi Adapter Tutorial](video-thumbnail.png)](https://drive.google.com/file/d/1EL5PEOQa_OgscANi3mAxBXdT25LqMsKv/view)
 
+## Adapter Template Overview
+
+We offer a variety of templates to streamline the creation of new adapters using the command `npm run new-adapter`. Below is a detailed overview of each template available:
+
+1. **DefaultAdapter Template**:
+   - Provides a basic adapter class framework, including all essential methods that require implementation.
+2. **SimplePoolAdapter Template**:
+   - Generates an adapter class inheriting a set of pre-implemented methods.
+   - Ideally suited for fungible liquidity pool (LP) tokens.
+3. **UniswapV2PoolForkAdapter**:
+   - Creates an adapter for Uniswap V2 fork projects, with minimal methods needing completion.
+4. **LpStakingAdapter**:
+   - Tailored for reward protocols, such as Convex.
+   - Ideally suited for fungible staking tokens which are fixed one-to-one to the underlying LP token.
+   - Supports optional Reward and Extra rewards functionalities.
+
+Each template is designed to facilitate specific scenarios in the development of new adapters, ensuring a streamlined and efficient setup process.
+
 ## Quick Start
 
 This project requires Node 20. Ensure you're using the correct version (e.g. run `nvm use`)
@@ -134,7 +152,7 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
 9. Can I use an API for results?
 
-    We recommend getting data directly from the blockchain over centralized APIs.
+   We recommend getting data directly from the blockchain over centralized APIs.
 
 10. My protocol only has a few pools, can I hardcode the buildMetadata() result?
 
