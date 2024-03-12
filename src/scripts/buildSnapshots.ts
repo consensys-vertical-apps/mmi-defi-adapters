@@ -427,6 +427,7 @@ async function updateFilters(
           ),
         )
 
+        // update filterTokenIds if exists
         if (protocolTokenIds.length > 0) {
           const filterTokenIdsNode = inputNode.value.properties.find(
             (property) =>
