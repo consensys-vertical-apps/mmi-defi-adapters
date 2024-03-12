@@ -65,11 +65,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
                 await updateBlockNumber(protocolId, index, blockNumber)
 
-                await updateFilterProtocolTokenAddresses(
-                  protocolId,
-                  index,
-                  result.snapshot,
-                )
+                await updateFilters(protocolId, index, result.snapshot)
 
                 return result
               }
@@ -96,11 +92,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
                 await updateBlockNumber(protocolId, index, blockNumber)
 
-                await updateFilterProtocolTokenAddresses(
-                  protocolId,
-                  index,
-                  result.snapshot,
-                )
+                await updateFilters(protocolId, index, result.snapshot)
 
                 return result
               }
@@ -339,7 +331,14 @@ async function updateBlockNumber(
   await writeCodeFile(testCasesFile, print(ast).code)
 }
 
-async function updateFilterProtocolTokenAddresses(
+/**
+ * Updates filterProtocolToken and filterTokenId properties
+ * @param protocolId
+ * @param index
+ * @param snapshot
+ * @returns
+ */
+async function updateFilters(
   protocolId: Protocol,
   index: number,
   snapshot: DefiPositionResponse[] | DefiProfitsResponse[],
