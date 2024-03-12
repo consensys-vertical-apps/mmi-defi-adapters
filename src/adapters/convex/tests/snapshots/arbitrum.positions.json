@@ -1,0 +1,98 @@
+{
+  "blockNumber": 187764987,
+  "snapshot": [
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "sidechain-staking",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x90927a78ad13C0Ec9ACf546cE0C16248A7E7a86D",
+          "name": "Curve.fi USD-BTC-ETH Convex Deposit",
+          "symbol": "cvxcrv3crypto",
+          "decimals": 18,
+          "balanceRaw": "8543059045480537099n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x8e0B8c8BB9db49a46697F3a5Bb8A308e744821D2",
+              "name": "Curve.fi USD-BTC-ETH",
+              "symbol": "crv3crypto",
+              "decimals": 18,
+              "balanceRaw": "8543059045480537099n",
+              "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+                  "name": "Tether USD",
+                  "symbol": "USDT",
+                  "decimals": 6,
+                  "type": "underlying",
+                  "balanceRaw": "5698639437n",
+                  "balance": 5698.639437,
+                  "price": 1.0009329075480535,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
+                },
+                {
+                  "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+                  "name": "Wrapped BTC",
+                  "symbol": "WBTC",
+                  "decimals": 8,
+                  "type": "underlying",
+                  "balanceRaw": "8483385n",
+                  "balance": 0.08483385,
+                  "price": 67250.6559516318,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
+                },
+                {
+                  "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+                  "name": "Wrapped Ether",
+                  "symbol": "WETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "1468971032323528020n",
+                  "balance": 1.468971032323528,
+                  "price": 3859.24919586,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
+                }
+              ],
+              "balance": 8.543059045480538,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x8e0B8c8BB9db49a46697F3a5Bb8A308e744821D2/logo.png"
+            },
+            {
+              "type": "underlying-claimable",
+              "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "balanceRaw": "292644610340448274496n",
+              "balance": 292.64461034044825,
+              "price": 0.7820397180513059,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978/logo.png"
+            },
+            {
+              "type": "underlying-claimable",
+              "address": "0xb952A807345991BD529FDded05009F5e80Fe8F45",
+              "name": "Convex Token",
+              "symbol": "CVX",
+              "decimals": 18,
+              "balanceRaw": "0n",
+              "balance": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xb952A807345991BD529FDded05009F5e80Fe8F45/logo.png"
+            }
+          ],
+          "balance": 8.543059045480538
+        }
+      ]
+    }
+  ]
+}
