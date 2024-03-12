@@ -40,7 +40,7 @@ export async function getProfits({
 
   let rawStartPositionValues: ProtocolPosition[]
 
-  if (protocolTokenAddresses || tokenIds) {
+  if (protocolTokenAddresses ?? tokenIds) {
     // Call both in parallel with filter
     ;[endPositionValues, startPositionValues] = await Promise.all([
       adapter
