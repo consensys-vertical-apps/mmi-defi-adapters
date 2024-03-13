@@ -1,7 +1,10 @@
 import { LogDescription } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
-import { Comptroller__factory, Cerc20__factory } from '../../contracts'
-import { BorrowEvent, RepayBorrowEvent } from '../../contracts/Cerc20'
+import {
+  CompoundV2Comptroller__factory,
+  CompoundV2Cerc20__factory,
+} from '../../contracts'
+import { BorrowEvent, RepayBorrowEvent } from '../../contracts/CompoundV2Cerc20'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -102,7 +105,7 @@ export abstract class CompoundV2BorrowMarketForkAdapter
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const comptrollerContract = Comptroller__factory.connect(
+    const comptrollerContract = CompoundV2Comptroller__factory.connect(
       this.contractAddresses[this.chainId]!.comptrollerAddress,
       this.provider,
     )
@@ -121,7 +124,7 @@ export abstract class CompoundV2BorrowMarketForkAdapter
         poolContractAddress,
       )
 
-      const poolContract = Cerc20__factory.connect(
+      const poolContract = CompoundV2Cerc20__factory.connect(
         poolContractAddress,
         this.provider,
       )
@@ -203,12 +206,12 @@ export abstract class CompoundV2BorrowMarketForkAdapter
       protocolTokenAddress,
     )
 
-    const cTokenContract = Cerc20__factory.connect(
+    const cTokenContract = CompoundV2Cerc20__factory.connect(
       protocolTokenAddress,
       this.provider,
     )
 
-    const comptrollerContract = Comptroller__factory.connect(
+    const comptrollerContract = CompoundV2Comptroller__factory.connect(
       this.contractAddresses[this.chainId]!.comptrollerAddress,
       this.provider,
     )
