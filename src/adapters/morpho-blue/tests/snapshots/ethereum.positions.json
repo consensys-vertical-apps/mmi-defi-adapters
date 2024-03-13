@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19333888,
+  "blockNumber": 19425631,
   "snapshot": [
     {
       "protocolId": "morpho-blue",
@@ -16,13 +16,27 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
-          "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
+          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "name": "Wrapped Ether",
           "symbol": "WETH",
           "decimals": 18,
-          "balanceRaw": "11231937052312016347143n",
+          "balanceRaw": "11788350914073448993557n",
           "type": "protocol",
-          "balance": 11231.937052312016
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "11788350914073448993557n",
+              "type": "underlying",
+              "balance": 11788.35091407345,
+              "price": 4049.93395,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 11788.35091407345
         }
       ]
     },

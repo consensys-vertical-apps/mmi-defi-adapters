@@ -15,7 +15,8 @@
     "movements": [
       {
         "protocolToken": {
-          "address": "0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115",
+          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "tokenId": "0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115",
           "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
           "symbol": "WETH",
           "decimals": 18
@@ -23,11 +24,12 @@
         "tokens": [
           {
             "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-            "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "name": "Wrapped Ether",
             "symbol": "WETH",
             "decimals": 18,
             "balanceRaw": "53900000000000000000n",
             "type": "underlying",
+            "price": 3387.52478907,
             "balance": 53.9
           }
         ],
