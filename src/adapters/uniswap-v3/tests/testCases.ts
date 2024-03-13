@@ -13,6 +13,8 @@ export const testCases: TestCase[] = [
         '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
         '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
       ],
+
+      filterTokenIds: ['567587', '573046'],
     },
     blockNumber: 18326120,
   },
@@ -27,6 +29,8 @@ export const testCases: TestCase[] = [
         '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
         '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
       ],
+
+      filterTokenIds: ['587543', '587789'],
     },
     blockNumber: 18412988,
   },
@@ -62,6 +66,7 @@ export const testCases: TestCase[] = [
       userAddress: '0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5',
       timePeriod: TimePeriod.sevenDays,
       filterProtocolTokens: ['0xC36442b4a4522E871399CD717aBDD847Ab11FE88'],
+      filterTokenIds: ['567587'],
     },
     blockNumber: 18241163,
   },
@@ -77,6 +82,8 @@ export const testCases: TestCase[] = [
         '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
         '0xC36442b4a4522E871399CD717aBDD847Ab11FE88',
       ],
+
+      filterTokenIds: ['587543', '587789'],
     },
     blockNumber: 18412988,
   },
@@ -88,6 +95,7 @@ export const testCases: TestCase[] = [
       userAddress: '0xedddb9438f0e5c1e346a5a892ca0ae4f3a863e4a',
       timePeriod: TimePeriod.sevenDays,
       filterProtocolTokens: ['0xC36442b4a4522E871399CD717aBDD847Ab11FE88'],
+      filterTokenIds: ['619727'],
     },
     blockNumber: 18734865,
   },
