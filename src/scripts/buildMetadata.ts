@@ -15,6 +15,7 @@ import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { Json } from '../types/json'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
+import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
 import b = types.builders
 
@@ -354,5 +355,10 @@ function addAdapterMetadataEntry({
     metadataEntryJson,
   ])
 
-  metadataEntries.elements = [...metadataEntries.elements, newMetadataEntry]
+  metadataEntries.elements.push(newMetadataEntry)
+
+  sortEntries(
+    metadataEntries.elements,
+    (entry) => ((entry as n.ArrayExpression).elements[1] as n.Identifier).name,
+  )
 }

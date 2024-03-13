@@ -251,6 +251,7 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [UniswapV2PoolAdapter],
     [Chain.Avalanche]: [UniswapV2PoolAdapter],
   },
+
   [Protocol.SushiswapV2]: {
     [Chain.Ethereum]: [SushiswapV2PoolAdapter],
     [Chain.Bsc]: [SushiswapV2PoolAdapter],

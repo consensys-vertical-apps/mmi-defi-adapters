@@ -43,40 +43,40 @@ const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
 runAllTests()
 
 function runAllTests() {
-  runProtocolTests(Protocol.Stargate, stargateTestCases)
   runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
   runProtocolTests(Protocol.AaveV3, aaveV3TestCases)
-  runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
-  runProtocolTests(Protocol.Lido, lidoTestCases)
-  runProtocolTests(Protocol.Curve, curveTestCases)
-  runProtocolTests(Protocol.Maker, makerTestCases)
-  runProtocolTests(Protocol.GMX, gMXTestCases)
-  runProtocolTests(Protocol.Swell, swellTestCases)
-  runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
+  runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
+  runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
+  runProtocolTests(Protocol.CompoundV2, compoundV2TestCases)
   runProtocolTests(Protocol.Convex, convexTestCases)
-  runProtocolTests(
-    Protocol.MorphoCompoundV2,
-    morphoCompoundV2OptimizerTestCases,
-  )
+  runProtocolTests(Protocol.Curve, curveTestCases)
+  runProtocolTests(Protocol.Flux, fluxTestCases)
+  runProtocolTests(Protocol.GMX, gMXTestCases)
+  runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
+  runProtocolTests(Protocol.Lido, lidoTestCases)
+  runProtocolTests(Protocol.Maker, makerTestCases)
+  runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
+  runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
   runProtocolTests(
     Protocol.MorphoAaveV3ETHOptimizer,
     morphoAaveV3ETHOptimizerTestCases,
   )
-  runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
-  runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
-  runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
-  runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
-  runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
-  runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
-  runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
-  runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
-  runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
-  runProtocolTests(Protocol.StakeWise, stakeWiseTestCases)
-  runProtocolTests(Protocol.Xfai, xfaiTestCases)
-  runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
+  runProtocolTests(
+    Protocol.MorphoCompoundV2,
+    morphoCompoundV2OptimizerTestCases,
+  )
   runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
-  runProtocolTests(Protocol.CompoundV2, compoundV2TestCases)
-  runProtocolTests(Protocol.Flux, fluxTestCases)
+  runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
+  runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
+  runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
+  runProtocolTests(Protocol.StakeWise, stakeWiseTestCases)
+  runProtocolTests(Protocol.Stargate, stargateTestCases)
+  runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
+  runProtocolTests(Protocol.Swell, swellTestCases)
+  runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
+  runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
+  runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
+  runProtocolTests(Protocol.Xfai, xfaiTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
