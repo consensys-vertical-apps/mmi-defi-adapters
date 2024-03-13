@@ -1,4 +1,4 @@
-import { Cerc20__factory } from '../../contracts'
+import { CompoundV2Cerc20__factory } from '../../contracts'
 import {
   TokenBalance,
   Underlying,
@@ -91,7 +91,7 @@ export abstract class CompoundV2SupplyMarketForkAdapter
       protocolTokenBalance.address,
     )
 
-    const poolContract = Cerc20__factory.connect(
+    const poolContract = CompoundV2Cerc20__factory.connect(
       protocolTokenBalance.address,
       this.provider,
     )
@@ -120,7 +120,7 @@ export abstract class CompoundV2SupplyMarketForkAdapter
       protocolTokenMetadata.address,
     )
 
-    const poolContract = Cerc20__factory.connect(
+    const poolContract = CompoundV2Cerc20__factory.connect(
       protocolTokenMetadata.address,
       this.provider,
     )

@@ -3,7 +3,10 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Comptroller, ComptrollerInterface } from "../Comptroller";
+import type {
+  CompoundV2Comptroller,
+  CompoundV2ComptrollerInterface,
+} from "../CompoundV2Comptroller";
 
 const _abi = [
   {
@@ -2303,12 +2306,19 @@ const _abi = [
   },
 ] as const;
 
-export class Comptroller__factory {
+export class CompoundV2Comptroller__factory {
   static readonly abi = _abi;
-  static createInterface(): ComptrollerInterface {
-    return new Interface(_abi) as ComptrollerInterface;
+  static createInterface(): CompoundV2ComptrollerInterface {
+    return new Interface(_abi) as CompoundV2ComptrollerInterface;
   }
-  static connect(address: string, runner?: ContractRunner | null): Comptroller {
-    return new Contract(address, _abi, runner) as unknown as Comptroller;
+  static connect(
+    address: string,
+    runner?: ContractRunner | null
+  ): CompoundV2Comptroller {
+    return new Contract(
+      address,
+      _abi,
+      runner
+    ) as unknown as CompoundV2Comptroller;
   }
 }

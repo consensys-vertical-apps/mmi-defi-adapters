@@ -5,7 +5,7 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
   adapterClassName,
   productId,
 }: NewAdapterAnswers) {
-  return `import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
+  return `import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'
   import {
     ProtocolDetails,
@@ -13,7 +13,7 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
     AssetType,
   } from '../../../../types/adapter'
   
-  export class ${adapterClassName} extends CompoundV2SupplyMarketForkAdapter {
+  export class ${adapterClassName} extends CompoundV2BorrowMarketForkAdapter {
     productId = '${productId}'
   
     contractAddresses = {}
@@ -23,8 +23,8 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
         protocolId: this.protocolId,
         name: '${protocolKey}',
         description: '${protocolKey} borrow market adapter',
-        siteUrl: 'https:',
-        iconUrl: 'https://',
+        siteUrl: '',
+        iconUrl: '',
         positionType: PositionType.Borrow,
         chainId: this.chainId,
         productId: this.productId,

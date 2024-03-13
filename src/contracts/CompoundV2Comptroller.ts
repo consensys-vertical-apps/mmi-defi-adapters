@@ -23,7 +23,7 @@ import type {
   TypedContractMethod,
 } from "./common";
 
-export interface ComptrollerInterface extends Interface {
+export interface CompoundV2ComptrollerInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "_become"
@@ -1108,11 +1108,11 @@ export namespace NewPriceOracleEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export interface Comptroller extends BaseContract {
-  connect(runner?: ContractRunner | null): Comptroller;
+export interface CompoundV2Comptroller extends BaseContract {
+  connect(runner?: ContractRunner | null): CompoundV2Comptroller;
   waitForDeployment(): Promise<this>;
 
-  interface: ComptrollerInterface;
+  interface: CompoundV2ComptrollerInterface;
 
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,

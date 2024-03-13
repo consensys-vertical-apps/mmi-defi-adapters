@@ -3,7 +3,10 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Cerc20, Cerc20Interface } from "../Cerc20";
+import type {
+  CompoundV2Cerc20,
+  CompoundV2Cerc20Interface,
+} from "../CompoundV2Cerc20";
 
 const _abi = [
   {
@@ -1179,12 +1182,15 @@ const _abi = [
   },
 ] as const;
 
-export class Cerc20__factory {
+export class CompoundV2Cerc20__factory {
   static readonly abi = _abi;
-  static createInterface(): Cerc20Interface {
-    return new Interface(_abi) as Cerc20Interface;
+  static createInterface(): CompoundV2Cerc20Interface {
+    return new Interface(_abi) as CompoundV2Cerc20Interface;
   }
-  static connect(address: string, runner?: ContractRunner | null): Cerc20 {
-    return new Contract(address, _abi, runner) as unknown as Cerc20;
+  static connect(
+    address: string,
+    runner?: ContractRunner | null
+  ): CompoundV2Cerc20 {
+    return new Contract(address, _abi, runner) as unknown as CompoundV2Cerc20;
   }
 }
