@@ -2,19 +2,19 @@
   "snapshot": {
     "protocolId": "flux",
     "name": "Flux",
-    "description": "Flux pool adapter",
+    "description": "Flux borrow market adapter",
     "siteUrl": "https://fluxfinance.com",
     "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
-    "positionType": "lend",
+    "positionType": "borrow",
     "chainId": 1,
-    "productId": "pool",
+    "productId": "borrow-market",
     "assetDetails": {
-      "type": "StandardErc20"
+      "type": "NonStandardErc20"
     },
     "success": true,
     "movements": [
       {
-        "transactionHash": "0xa964ede1f669c0fbf1c97ab79f9af3b66659920ab2d013134951364d8da109c6",
+        "transactionHash": "0x773ee4439f7fd9660b54d8f2a6e185468bb7166ff8af41f26dded47a25143299",
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
@@ -27,17 +27,17 @@
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
-            "balanceRaw": "12099999998788042n",
+            "balanceRaw": "2500000n",
             "type": "underlying",
-            "blockNumber": 18092209,
-            "price": 1.0007295237594924,
-            "balance": 12099999998.788042
+            "blockNumber": 18387159,
+            "price": 1.0022607990158992,
+            "balance": 2.5
           }
         ],
-        "blockNumber": 18092209
+        "blockNumber": 18387159
       },
       {
-        "transactionHash": "0xe49ee57f19cd296f4499cf6206fe1cc347c00a24047560af49a11fc4ea5c473b",
+        "transactionHash": "0x7b5c05754cedcbb033aeb06819b6d58b88441d17017a58ac27ba021d1bb1f767",
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
@@ -50,17 +50,17 @@
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
-            "balanceRaw": "999999999157374n",
+            "balanceRaw": "2400000n",
             "type": "underlying",
-            "blockNumber": 18377974,
-            "price": 0.9995056080331965,
-            "balance": 999999999.157374
+            "blockNumber": 18387313,
+            "price": 0.9996619776103726,
+            "balance": 2.4
           }
         ],
-        "blockNumber": 18377974
+        "blockNumber": 18387313
       },
       {
-        "transactionHash": "0x83e7e74bc6c64cf45820e5f2a49b6f876a5e6b1d1c5fff4c7c7a891ce4b0010e",
+        "transactionHash": "0x01b2bfabe0ffdce94cb3df75a4276d908d7dba615f1ff541e4e62c5530b1ccda",
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
@@ -73,17 +73,17 @@
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
-            "balanceRaw": "177458598766479n",
+            "balanceRaw": "2500000n",
             "type": "underlying",
-            "blockNumber": 18393975,
-            "price": 0.9987540474952121,
-            "balance": 177458598.766479
+            "blockNumber": 18387474,
+            "price": 0.999307365551026,
+            "balance": 2.5
           }
         ],
-        "blockNumber": 18393975
+        "blockNumber": 18387474
       },
       {
-        "transactionHash": "0xf405b10a34955bdb995e29e90788356d2d5818abebcbfb6d5124fd12de77ff88",
+        "transactionHash": "0x9232de8bcb8c7b3b78484d108abc445b30e5d3b1818dff39e1cb0cbdd1eaef87",
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
@@ -96,14 +96,14 @@
             "name": "USD Coin",
             "symbol": "USDC",
             "decimals": 6,
-            "balanceRaw": "113738645218987364n",
+            "balanceRaw": "1001612n",
             "type": "underlying",
-            "blockNumber": 18442115,
-            "price": 1.0004279033087764,
-            "balance": 113738645218.98737
+            "blockNumber": 18527867,
+            "price": 1.00299555347023,
+            "balance": 1.001612
           }
         ],
-        "blockNumber": 18442115
+        "blockNumber": 18527867
       }
     ]
   }

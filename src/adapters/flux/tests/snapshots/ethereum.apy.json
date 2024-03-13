@@ -4,24 +4,17 @@
     {
       "protocolId": "flux",
       "name": "Flux",
-      "description": "Flux pool adapter",
+      "description": "Flux supply market adapter",
       "siteUrl": "https://fluxfinance.com",
       "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
-      "positionType": "lend",
+      "positionType": "supply",
       "chainId": 1,
-      "productId": "pool",
+      "productId": "supply-market",
       "assetDetails": {
         "type": "StandardErc20"
       },
       "success": true,
       "tokens": [
-        {
-          "address": "0x1dD7950c266fB1be96180a8FDb0591F70200E018",
-          "name": "Flux OUSG",
-          "symbol": "fOUSG",
-          "decimals": 8,
-          "apyDecimal": 0
-        },
         {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
@@ -49,8 +42,35 @@
           "symbol": "FFRAX",
           "decimals": 8,
           "apyDecimal": 4.464241645969169
+        },
+        {
+          "address": "0x1dD7950c266fB1be96180a8FDb0591F70200E018",
+          "name": "Flux OUSG",
+          "symbol": "fOUSG",
+          "decimals": 8,
+          "apyDecimal": 0
         }
       ]
+    },
+    {
+      "protocolId": "flux",
+      "name": "Flux",
+      "description": "Flux borrow market adapter",
+      "siteUrl": "https://fluxfinance.com",
+      "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "borrow-market",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": false,
+      "error": {
+        "message": "Not Implemented",
+        "details": {
+          "name": "NotImplementedError"
+        }
+      }
     }
   ]
 }

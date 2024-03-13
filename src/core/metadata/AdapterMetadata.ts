@@ -58,7 +58,9 @@ import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/sta
 import CurveStakingFantomProtocolToken from '../../adapters/curve/products/staking/metadata/fantom.protocol-token.json'
 import CurveStakingOptimismProtocolToken from '../../adapters/curve/products/staking/metadata/optimism.protocol-token.json'
 import CurveStakingPolygonProtocolToken from '../../adapters/curve/products/staking/metadata/polygon.protocol-token.json'
+import FluxBorrowMarketEthereumProtocolToken from '../../adapters/flux/products/borrow-market/metadata/ethereum.protocol-token.json'
 import FluxPoolEthereumPool from '../../adapters/flux/products/pool/metadata/ethereum.pool.json'
+import FluxSupplyMarketEthereumProtocolToken from '../../adapters/flux/products/supply-market/metadata/ethereum.protocol-token.json'
 import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
@@ -953,6 +955,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'pool',
     }),
     FluxPoolEthereumPool,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Flux,
+      productId: 'supply-market',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    FluxSupplyMarketEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Flux,
+      productId: 'borrow-market',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    FluxBorrowMarketEthereumProtocolToken,
   ],
 ])
 

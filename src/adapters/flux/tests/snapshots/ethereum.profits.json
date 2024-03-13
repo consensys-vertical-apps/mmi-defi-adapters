@@ -4,12 +4,12 @@
     {
       "protocolId": "flux",
       "name": "Flux",
-      "description": "Flux pool adapter",
+      "description": "Flux supply market adapter",
       "siteUrl": "https://fluxfinance.com",
       "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
-      "positionType": "lend",
+      "positionType": "supply",
       "chainId": 1,
-      "productId": "pool",
+      "productId": "supply-market",
       "assetDetails": {
         "type": "StandardErc20"
       },
@@ -21,15 +21,50 @@
           "symbol": "FUSDC",
           "decimals": 8,
           "type": "protocol",
-          "profit": -790280520.2456818,
-          "performance": -0.007593815106864835,
+          "profit": -0.07911329577398085,
+          "performance": -0.0076016272780159025,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 104068970487.74146,
-            "endPositionValue": 103278689967.49577
+            "startPositionValue": 10.407415791455403,
+            "endPositionValue": 10.328302495681422
+          }
+        }
+      ],
+      "fromBlock": 19314370,
+      "toBlock": 19321516
+    },
+    {
+      "protocolId": "flux",
+      "name": "Flux",
+      "description": "Flux borrow market adapter",
+      "siteUrl": "https://fluxfinance.com",
+      "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "borrow-market",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+          "name": "Flux USDC",
+          "symbol": "FUSDC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 0.000775009004830976,
+          "performance": 0.007590308581632384,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": -0.10210507207920409,
+            "endPositionValue": -0.10133006307437312
           }
         }
       ],

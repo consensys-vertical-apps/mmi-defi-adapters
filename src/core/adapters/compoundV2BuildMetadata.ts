@@ -1,4 +1,7 @@
-import { Comptroller__factory, Cerc20__factory } from '../../contracts'
+import {
+  CompoundV2Comptroller__factory,
+  CompoundV2Cerc20__factory,
+} from '../../contracts'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
@@ -22,7 +25,7 @@ export async function buildMetadata({
   provider: CustomJsonRpcProvider
   contractAddresses: Partial<Record<Chain, { comptrollerAddress: string }>>
 }) {
-  const comptrollerContract = Comptroller__factory.connect(
+  const comptrollerContract = CompoundV2Comptroller__factory.connect(
     contractAddresses[chainId]!.comptrollerAddress,
     provider,
   )
@@ -33,7 +36,7 @@ export async function buildMetadata({
 
   await Promise.all(
     pools.map(async (poolContractAddress) => {
-      const poolContract = Cerc20__factory.connect(
+      const poolContract = CompoundV2Cerc20__factory.connect(
         poolContractAddress,
         provider,
       )

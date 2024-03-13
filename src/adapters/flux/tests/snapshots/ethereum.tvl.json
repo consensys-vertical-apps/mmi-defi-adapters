@@ -4,26 +4,17 @@
     {
       "protocolId": "flux",
       "name": "Flux",
-      "description": "Flux pool adapter",
+      "description": "Flux supply market adapter",
       "siteUrl": "https://fluxfinance.com",
       "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
-      "positionType": "lend",
+      "positionType": "supply",
       "chainId": 1,
-      "productId": "pool",
+      "productId": "supply-market",
       "assetDetails": {
         "type": "StandardErc20"
       },
       "success": true,
       "tokens": [
-        {
-          "address": "0x1dD7950c266fB1be96180a8FDb0591F70200E018",
-          "name": "Flux OUSG",
-          "symbol": "fOUSG",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "675180802913981n",
-          "totalSupply": 6751808.02913981
-        },
         {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
@@ -31,6 +22,18 @@
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "47633217353326925n",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "totalSupplyRaw": "596016005983n",
+              "type": "underlying",
+              "totalSupply": 596016.005983,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
           "totalSupply": 476332173.5332692
         },
         {
@@ -40,6 +43,18 @@
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "5805167755600607n",
+          "tokens": [
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "totalSupplyRaw": "251530127422162936459613n",
+              "type": "underlying",
+              "totalSupply": 251530.12742216294,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            }
+          ],
           "totalSupply": 58051677.55600607
         },
         {
@@ -49,6 +64,18 @@
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "5431307156531223n",
+          "tokens": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "totalSupplyRaw": "81985229717n",
+              "type": "underlying",
+              "totalSupply": 81985.229717,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
           "totalSupply": 54313071.56531223
         },
         {
@@ -58,9 +85,62 @@
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "1515150868583056n",
+          "tokens": [
+            {
+              "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+              "name": "Frax",
+              "symbol": "FRAX",
+              "decimals": 18,
+              "totalSupplyRaw": "31046691826381555657307n",
+              "type": "underlying",
+              "totalSupply": 31046.691826381557,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
+            }
+          ],
           "totalSupply": 15151508.68583056
+        },
+        {
+          "address": "0x1dD7950c266fB1be96180a8FDb0591F70200E018",
+          "name": "Flux OUSG",
+          "symbol": "fOUSG",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "675180802913981n",
+          "tokens": [
+            {
+              "address": "0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92",
+              "name": "OUSG",
+              "symbol": "OUSG",
+              "decimals": 18,
+              "totalSupplyRaw": "135036160582796134012001n",
+              "type": "underlying",
+              "totalSupply": 135036.16058279615,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92/logo.png"
+            }
+          ],
+          "totalSupply": 6751808.02913981
         }
       ]
+    },
+    {
+      "protocolId": "flux",
+      "name": "Flux",
+      "description": "Flux borrow market adapter",
+      "siteUrl": "https://fluxfinance.com",
+      "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "borrow-market",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": false,
+      "error": {
+        "message": "Not Implemented",
+        "details": {
+          "name": "NotImplementedError"
+        }
+      }
     }
   ]
 }

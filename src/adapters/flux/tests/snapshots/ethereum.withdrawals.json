@@ -2,12 +2,12 @@
   "snapshot": {
     "protocolId": "flux",
     "name": "Flux",
-    "description": "Flux pool adapter",
+    "description": "Flux supply market adapter",
     "siteUrl": "https://fluxfinance.com",
     "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
-    "positionType": "lend",
+    "positionType": "supply",
     "chainId": 1,
-    "productId": "pool",
+    "productId": "supply-market",
     "assetDetails": {
       "type": "StandardErc20"
     },
@@ -23,15 +23,27 @@
         },
         "tokens": [
           {
-            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-            "name": "USD Coin",
-            "symbol": "USDC",
-            "decimals": 6,
-            "balanceRaw": "12099999998788042n",
+            "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+            "name": "Flux USDC",
+            "symbol": "FUSDC",
+            "decimals": 8,
+            "balanceRaw": "5904626346n",
             "type": "underlying",
             "blockNumber": 18092209,
-            "price": 1.0007295237594924,
-            "balance": 12099999998.788042
+            "tokens": [
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "1209976n",
+                "balance": 1.209976,
+                "price": 1.0007295237594924,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+              }
+            ],
+            "balance": 59.04626346
           }
         ],
         "blockNumber": 18092209
@@ -46,15 +58,27 @@
         },
         "tokens": [
           {
-            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-            "name": "USD Coin",
-            "symbol": "USDC",
-            "decimals": 6,
-            "balanceRaw": "999999999157374n",
+            "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+            "name": "Flux USDC",
+            "symbol": "FUSDC",
+            "decimals": 8,
+            "balanceRaw": "485651552n",
             "type": "underlying",
             "blockNumber": 18377974,
-            "price": 0.9995056080331965,
-            "balance": 999999999.157374
+            "tokens": [
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "99995n",
+                "balance": 0.099995,
+                "price": 0.9995056080331965,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+              }
+            ],
+            "balance": 4.85651552
           }
         ],
         "blockNumber": 18377974
@@ -69,15 +93,27 @@
         },
         "tokens": [
           {
-            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-            "name": "USD Coin",
-            "symbol": "USDC",
-            "decimals": 6,
-            "balanceRaw": "177458598766479n",
+            "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+            "name": "Flux USDC",
+            "symbol": "FUSDC",
+            "decimals": 8,
+            "balanceRaw": "86159087n",
             "type": "underlying",
             "blockNumber": 18393975,
-            "price": 0.9987540474952121,
-            "balance": 177458598.766479
+            "tokens": [
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "17745n",
+                "balance": 0.017745,
+                "price": 0.9987540474952121,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+              }
+            ],
+            "balance": 0.86159087
           }
         ],
         "blockNumber": 18393975
@@ -92,15 +128,27 @@
         },
         "tokens": [
           {
-            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-            "name": "USD Coin",
-            "symbol": "USDC",
-            "decimals": 6,
-            "balanceRaw": "113738645218987364n",
+            "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+            "name": "Flux USDC",
+            "symbol": "FUSDC",
+            "decimals": 8,
+            "balanceRaw": "55171600384n",
             "type": "underlying",
             "blockNumber": 18442115,
-            "price": 1.0004279033087764,
-            "balance": 113738645218.98737
+            "tokens": [
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "11373625n",
+                "balance": 11.373625,
+                "price": 1.0004279033087764,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+              }
+            ],
+            "balance": 551.71600384
           }
         ],
         "blockNumber": 18442115
