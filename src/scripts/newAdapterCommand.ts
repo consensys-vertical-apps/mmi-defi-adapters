@@ -560,6 +560,15 @@ function addAdapterEntries(
     supportedProtocolsObjectNode.properties.push(
       protocolChainsObjectPropertyNode,
     )
+
+    sortEntries(
+      supportedProtocolsObjectNode.properties,
+      (entry) =>
+        (
+          ((entry as n.ObjectProperty).key as n.MemberExpression)
+            .property as n.Identifier
+        ).name,
+    )
   }
 
   const protocolChainEntries = protocolChainsObjectPropertyNode.value
