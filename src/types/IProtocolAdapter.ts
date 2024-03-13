@@ -46,9 +46,9 @@ export interface IProtocolAdapter {
   /**
    * @remarks Returns array of pool tokens (lp tokens) for the protocol
    *
-   * @returns {Promise<Erc20Metadata[]>} An array of objects detailing the protocol tokens.
+   * @returns {Promise<(Erc20Metadata & { tokenId?: string })[]>} An array of objects detailing the protocol tokens.
    */
-  getProtocolTokens(): Promise<Erc20Metadata[]>
+  getProtocolTokens(): Promise<(Erc20Metadata & { tokenId?: string })[]>
 
   /**
    *
