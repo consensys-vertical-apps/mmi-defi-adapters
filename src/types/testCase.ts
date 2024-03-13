@@ -7,7 +7,11 @@ export type TestCase = {
 } & (
   | {
       method: 'positions'
-      input: { userAddress: string; filterProtocolTokens?: string[] }
+      input: {
+        userAddress: string
+        filterProtocolTokens?: string[]
+        filterTokenIds?: string[]
+      }
       blockNumber?: number
     }
   | {
@@ -17,6 +21,7 @@ export type TestCase = {
         timePeriod?: TimePeriod
         includeRawValues?: boolean
         filterProtocolTokens?: string[]
+        filterTokenIds?: string[]
       }
       blockNumber?: number
     }
@@ -68,6 +73,7 @@ export type TestCase = {
       method: 'prices'
       blockNumber?: number
       filterProtocolToken?: string
+      filterTokenId?: string
     }
   | {
       method: 'tvl'
