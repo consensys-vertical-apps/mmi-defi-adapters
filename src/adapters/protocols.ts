@@ -15,6 +15,7 @@ export const Protocol = {
   MendiFinance: 'mendi-finance',
   MorphoAaveV2: 'morpho-aave-v2',
   MorphoAaveV3ETHOptimizer: 'morpho-aave-v3-eth',
+  MorphoBlue: 'morpho-blue',
   MorphoCompoundV2: 'morpho-compound-v2',
   PancakeswapV2: 'pancakeswap-v2',
   PricesV2: 'prices-v2',

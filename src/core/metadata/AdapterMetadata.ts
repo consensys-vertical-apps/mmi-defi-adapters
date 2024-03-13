@@ -68,6 +68,8 @@ import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/m
 import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v3-eth/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v3-eth/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import MorphoBlueMarketBorrowEthereumMarketBorrow from '../../adapters/morpho-blue/products/market-borrow/metadata/ethereum.market-borrow.json'
+import MorphoBlueMarketSupplyEthereumMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/ethereum.market-supply.json'
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import PancakeswapV2PoolArbitrumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
@@ -720,6 +722,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-supply',
     }),
     MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoBlue,
+      productId: 'market-borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'market-borrow',
+    }),
+    MorphoBlueMarketBorrowEthereumMarketBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoBlue,
+      productId: 'market-supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'market-supply',
+    }),
+    MorphoBlueMarketSupplyEthereumMarketSupply,
   ],
   [
     metadataKey({
