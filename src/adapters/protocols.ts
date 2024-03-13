@@ -28,5 +28,6 @@ export const Protocol = {
   PancakeswapV2: 'pancakeswap-v2',
   CompoundV2: 'compound-v2',
   Flux: 'flux',
+  MorphoBlue: 'morpho-blue',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
