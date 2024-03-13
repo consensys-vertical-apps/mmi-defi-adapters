@@ -1,0 +1,133 @@
+{
+  "snapshot": {
+    "protocolId": "flux",
+    "name": "Flux",
+    "description": "Flux borrow market adapter",
+    "siteUrl": "https://fluxfinance.com",
+    "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
+    "positionType": "borrow",
+    "chainId": 1,
+    "productId": "borrow-market",
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x635de742e30c1db4ba80730667e99d9dc276fc072afc6cf3e1b7b76c2d2cbe8e",
+        "protocolToken": {
+          "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+          "name": "Flux USDC",
+          "symbol": "FUSDC",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "balanceRaw": "2500000n",
+            "type": "underlying",
+            "blockNumber": 18387153,
+            "price": 1.0022609191827077,
+            "balance": 2.5
+          }
+        ],
+        "blockNumber": 18387153
+      },
+      {
+        "transactionHash": "0x3cbad0364620c2591fd908a4b0fe9bbf7dda877f82829e7ee4ea992abfd0e2c3",
+        "protocolToken": {
+          "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+          "name": "Flux USDC",
+          "symbol": "FUSDC",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "balanceRaw": "2400000n",
+            "type": "underlying",
+            "blockNumber": 18387306,
+            "price": 0.9996674337944199,
+            "balance": 2.4
+          }
+        ],
+        "blockNumber": 18387306
+      },
+      {
+        "transactionHash": "0xf8607128306c74d91b9f6497dc774e1066b0751de459db1cca353816b09f63a3",
+        "protocolToken": {
+          "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+          "name": "Flux USDC",
+          "symbol": "FUSDC",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "balanceRaw": "2500000n",
+            "type": "underlying",
+            "blockNumber": 18387467,
+            "price": 0.9991194061463444,
+            "balance": 2.5
+          }
+        ],
+        "blockNumber": 18387467
+      },
+      {
+        "transactionHash": "0x18bcfaa29194f4b27048d4abd4f54d4e42d5d90cc57d1be3f7e07addb38513af",
+        "protocolToken": {
+          "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+          "name": "Flux USDC",
+          "symbol": "FUSDC",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "balanceRaw": "1000000n",
+            "type": "underlying",
+            "blockNumber": 18442502,
+            "price": 1.0018340977710638,
+            "balance": 1
+          }
+        ],
+        "blockNumber": 18442502
+      },
+      {
+        "transactionHash": "0xfdf55791033e15c53be84a6639f385b458c1418fcc436358726bde3352079cdf",
+        "protocolToken": {
+          "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+          "name": "Flux USDC",
+          "symbol": "FUSDC",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "balanceRaw": "100000n",
+            "type": "underlying",
+            "blockNumber": 18587118,
+            "price": 1.0047671793706798,
+            "balance": 0.1
+          }
+        ],
+        "blockNumber": 18587118
+      }
+    ]
+  }
+}
