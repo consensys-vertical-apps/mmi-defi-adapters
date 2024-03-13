@@ -148,27 +148,19 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
   async getPositions({
     userAddress,
     blockNumber,
+    tokenIds: tokenIdsRaw,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
     const positionsManagerContract = PositionManager__factory.connect(
       contractAddresses[this.chainId]!.positionManager,
       this.provider,
     )
 
-    const balanceOf = await positionsManagerContract.balanceOf(userAddress, {
-      blockTag: blockNumber,
-    })
+    const tokenIds =
+      tokenIdsRaw?.map((tokenId) => BigInt(tokenId)) ??
+      (await this.getTokenIds(userAddress, blockNumber))
 
-    return filterMapAsync(
-      [...Array(Number(balanceOf)).keys()],
-      async (index) => {
-        const tokenId = await positionsManagerContract.tokenOfOwnerByIndex(
-          userAddress,
-          index,
-          {
-            blockTag: blockNumber,
-          },
-        )
-
+    return filterMapAsync(tokenIds, async (tokenId) => {
+      try {
         const position = await positionsManagerContract.positions(tokenId, {
           blockTag: blockNumber,
         })
@@ -247,7 +239,35 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
             ),
           ],
         }
-      },
+      } catch (error) {
+        // if token position isnt minted then method throws
+        return undefined
+      }
+    })
+  }
+
+  private async getTokenIds(
+    userAddress: string,
+    blockNumber: number | undefined,
+  ): Promise<bigint[]> {
+    const positionsManagerContract = PositionManager__factory.connect(
+      contractAddresses[this.chainId]!.positionManager,
+      this.provider,
+    )
+    const balanceOf = await positionsManagerContract.balanceOf(userAddress, {
+      blockTag: blockNumber,
+    })
+
+    return await Promise.all(
+      [...Array(Number(balanceOf)).keys()].map(async (index) => {
+        return positionsManagerContract.tokenOfOwnerByIndex(
+          userAddress,
+          index,
+          {
+            blockTag: blockNumber,
+          },
+        )
+      }),
     )
   }
 

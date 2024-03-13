@@ -18,6 +18,7 @@ import {
   enrichTotalValueLocked,
 } from './responseAdapters'
 import { PositionType } from './types/adapter'
+import { DeepPartial } from './types/deepPartial'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
@@ -46,7 +47,7 @@ export class DefiProvider {
   adaptersController: AdaptersController
   private adaptersControllerWithoutPrices: AdaptersController
 
-  constructor(config?: Partial<IConfig>) {
+  constructor(config?: DeepPartial<IConfig>) {
     this.parsedConfig = new Config(config)
     this.chainProvider = new ChainProvider(this.parsedConfig.values)
 
@@ -93,12 +94,14 @@ export class DefiProvider {
     filterChainIds,
     blockNumbers,
     filterProtocolTokens,
+    filterTokenIds,
   }: {
     userAddress: string
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
     blockNumbers?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
+    filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
@@ -109,6 +112,7 @@ export class DefiProvider {
         userAddress,
         blockNumber,
         protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        tokenIds: filterTokenIds,
       })
 
       const endTime = Date.now()
@@ -149,6 +153,7 @@ export class DefiProvider {
     toBlockNumbersOverride,
     filterProtocolTokens,
     includeRawValues = false,
+    filterTokenIds,
   }: {
     userAddress: string
     timePeriod?: TimePeriod
@@ -156,6 +161,7 @@ export class DefiProvider {
     filterChainIds?: Chain[]
     toBlockNumbersOverride?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
+    filterTokenIds?: string[]
     includeRawValues?: boolean
   }): Promise<DefiProfitsResponse[]> {
     const runner = async (
@@ -176,6 +182,7 @@ export class DefiProvider {
         toBlock,
         fromBlock,
         protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        tokenIds: filterTokenIds,
         includeRawValues,
       })
 

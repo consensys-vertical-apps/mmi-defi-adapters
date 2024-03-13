@@ -67,7 +67,7 @@ export const testCases: TestCase[] = [
       fromBlock: 18596961 - 1,
       toBlock: 18596961 + 1,
       protocolTokenAddress: '0xf34dff761145ff0b05e917811d488b441f33a968',
-      productId: 'rewards',
+      productId: 'staking',
     },
   },
   {
@@ -79,7 +79,7 @@ export const testCases: TestCase[] = [
       fromBlock: 18157201 - 1,
       toBlock: 18157201 + 1,
       protocolTokenAddress: '0x22ee18aca7f3ee920d01f25da85840d12d98e8ca',
-      productId: 'extra-reward',
+      productId: 'staking',
     },
   },
   {
@@ -120,5 +120,26 @@ export const testCases: TestCase[] = [
       includeRawValues: true,
     },
     blockNumber: 18713643,
+  },
+  {
+    chainId: Chain.Arbitrum,
+    method: 'positions',
+    blockNumber: 187764987,
+    input: {
+      userAddress: '0x4bad2833c44424423518194f07c4917be28d7363',
+      filterProtocolTokens: ['0x90927a78ad13C0Ec9ACf546cE0C16248A7E7a86D'],
+    },
+  },
+  {
+    chainId: Chain.Arbitrum,
+    method: 'withdrawals',
+    key: '1',
+    input: {
+      userAddress: '0xcf6a6dac79e0da7a41657b961dbce14da2c958f2',
+      fromBlock: 151540726 - 1,
+      toBlock: 151540726 + 1,
+      protocolTokenAddress: '0x90927a78ad13c0ec9acf546ce0c16248a7e7a86d',
+      productId: 'sidechain-staking',
+    },
   },
 ]

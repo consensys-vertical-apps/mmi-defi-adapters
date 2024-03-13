@@ -22,6 +22,7 @@ export async function getProfits({
   fromBlock,
   toBlock,
   protocolTokenAddresses,
+  tokenIds,
   includeRawValues,
 }: {
   adapter: IProtocolAdapter
@@ -29,6 +30,7 @@ export async function getProfits({
   fromBlock: number
   toBlock: number
   protocolTokenAddresses?: string[]
+  tokenIds?: string[]
   includeRawValues?: boolean
 }): Promise<ProfitsWithRange> {
   let endPositionValues: ReturnType<typeof aggregateFiatBalances>,
@@ -38,7 +40,7 @@ export async function getProfits({
 
   let rawStartPositionValues: ProtocolPosition[]
 
-  if (protocolTokenAddresses) {
+  if (protocolTokenAddresses ?? tokenIds) {
     // Call both in parallel with filter
     ;[endPositionValues, startPositionValues] = await Promise.all([
       adapter
@@ -46,6 +48,7 @@ export async function getProfits({
           userAddress,
           blockNumber: toBlock,
           protocolTokenAddresses,
+          tokenIds,
         })
         .then((result) => {
           rawEndPositionValues = result
@@ -56,6 +59,7 @@ export async function getProfits({
           userAddress,
           blockNumber: fromBlock,
           protocolTokenAddresses,
+          tokenIds,
         })
         .then((result) => {
           rawStartPositionValues = result
@@ -73,11 +77,13 @@ export async function getProfits({
         rawEndPositionValues = result
         return aggregateFiatBalances(result)
       })
+
     startPositionValues = await adapter
       .getPositions({
         userAddress,
         blockNumber: fromBlock,
-        protocolTokenAddresses: Object.keys(endPositionValues),
+        protocolTokenAddresses: Object.keys(endPositionValues), // endPositionValues is indexed by tokenId ?? protocolTokenAddress
+        tokenIds: Object.keys(endPositionValues), // endPositionValues is indexed by tokenId ?? protocolTokenAddress
       })
       .then((result) => {
         rawStartPositionValues = result

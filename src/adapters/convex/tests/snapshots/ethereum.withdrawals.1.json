@@ -5,11 +5,11 @@
     "description": "Convex pool adapter",
     "siteUrl": "https://www.convexfinance.com/",
     "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
-    "positionType": "reward",
+    "positionType": "supply",
     "chainId": 1,
-    "productId": "rewards",
+    "productId": "staking",
     "assetDetails": {
-      "type": "NonStandardErc20"
+      "type": "StandardErc20"
     },
     "success": true,
     "movements": [
@@ -33,8 +33,8 @@
             "balance": 901.431379832781
           },
           {
-            "address": "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
-            "name": "Convex Token",
+            "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+            "name": "Convex Finance",
             "symbol": "CVX",
             "decimals": 18,
             "balanceRaw": "8112882418495028699n",

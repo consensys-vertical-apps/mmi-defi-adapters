@@ -41,14 +41,34 @@ jobs:
           if [ ! -f .env ]; then
             touch .env
           fi
-          npm run new-adapter -- -p test-default-adapter-protocol -pd test-default-adapter-product -c 1 -t DefaultAdapter -y
+          npm run new-adapter -- -p test-default-adapter-protocol -pd pool -c 1 -t DefaultAdapter -y
           npm run build
 
       - name: Create new adapter with SimplePoolAdapter template
         run: |
-          npm run new-adapter -- -p test-simple-pool-adapter-protocol -pd test-simple-pool-adapter-product -c 1 -t SimplePoolAdapter -y
+          npm run new-adapter -- -p test-simple-pool-adapter-protocol -pd pool -c 1 -t SimplePoolAdapter -y
           npm run build
           npm run build-metadata -- -p test-simple-pool-adapter-protocol
+          npm run build
+
+      - name: Create new adapter with UniswapV2PoolForkAdapter template
+        run: |
+          npm run new-adapter -- -p test-uniswap-v2-pool-fork-adapter-protocol -pd pool -c 1,10,42161 -t UniswapV2PoolForkAdapter -y
+          npm run build
+
+      - name: Create new adapter with LpStakingAdapter template
+        run: |
+          npm run new-adapter -- -p test-lp-staking-adapter -pd pool -c 1,10,42161 -t LpStakingAdapter -y
+          npm run build
+
+      - name: Create new adapter with CompoundV2SupplyMarketForkAdapter template
+        run: |
+          npm run new-adapter -- -p test-compound-v2-supply-market-fork-adapter-protocol -pd supply -c 1,10,42161 -t CompoundV2SupplyMarketForkAdapter -y
+          npm run build
+
+      - name: Create new adapter with CompoundV2BorrowMarketForkAdapter template
+        run: |
+          npm run new-adapter -- -p test-compound-v2-borrow-market-fork-adapter-protocol -pd supply -c 1,10,42161 -t CompoundV2BorrowMarketForkAdapter -y
           npm run build
 
   run-tests:

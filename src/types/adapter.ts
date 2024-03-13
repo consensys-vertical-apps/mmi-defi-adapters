@@ -62,6 +62,11 @@ export type GetConversionRateInput = {
    * Protocol token address (LP token address).
    */
   protocolTokenAddress: string
+
+  /**
+   * Optional filter for pools that will be queried by an ID
+   */
+  tokenId?: string
 }
 export type GetApyInput = {
   /**
@@ -164,6 +169,10 @@ export type ProtocolDetails = {
   assetDetails: AssetDetails
 }
 
+export interface GetPositionsInputWithTokenAddresses extends GetPositionsInput {
+  protocolTokenAddresses: string[]
+}
+
 export interface GetPositionsInput {
   /**
    * Address of the user can be any type of address EOA/Contract
@@ -179,6 +188,11 @@ export interface GetPositionsInput {
    * Optional filter for pools that will be queried
    */
   protocolTokenAddresses?: string[]
+
+  /**
+   * Optional filter for pools that will be queried by an ID
+   */
+  tokenIds?: string[]
 }
 
 export interface GetPricePerShareInput {
@@ -328,6 +342,7 @@ export interface UnderlyingProfitValues extends Erc20Metadata {
 }
 
 export interface PositionProfits extends Erc20Metadata, UnderlyingProfitValues {
+  tokenId?: string
   type: typeof TokenType.Protocol
 }
 

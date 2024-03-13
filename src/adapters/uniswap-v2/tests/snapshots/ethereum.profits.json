@@ -6,7 +6,7 @@
       "name": "UniswapV2",
       "description": "UniswapV2 pool adapter",
       "siteUrl": "https://v2.info.uniswap.org/home",
-      "iconUrl": "https://app.uniswap.org/swap",
+      "iconUrl": "https://cryptologos.cc/logos/uniswap-uni-logo.svg",
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",

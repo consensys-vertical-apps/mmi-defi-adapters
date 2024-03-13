@@ -1,6 +1,7 @@
 import { Command } from 'commander'
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
+import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
 import { DefiProvider, TransactionParamsInput } from '../defiProvider'
@@ -11,6 +12,7 @@ import {
   multiProtocolFilter,
   protocolFilter,
 } from './commandFilters'
+import { simulateTx } from './simulator/simulateTx'
 
 export function featureCommands(program: Command, defiProvider: DefiProvider) {
   addressCommand(
@@ -30,6 +32,7 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
     program,
     'params',
     defiProvider.getTransactionParams.bind(defiProvider),
+    defiProvider.chainProvider.providers,
   )
 
   addressEventsCommand(
@@ -116,42 +119,102 @@ function addressCommand(
 function transactionParamsCommand(
   program: Command,
   commandName: string,
-  feature: (input: TransactionParamsInput) => Promise<AdapterResponse<unknown>>,
+  feature: (input: TransactionParamsInput) => Promise<
+    AdapterResponse<{
+      params: { to: string; data: string }
+    }>
+  >,
+  chainProviders: Record<Chain, CustomJsonRpcProvider>,
 ) {
   program
     .command(commandName)
     .argument('[action]', 'Name of action you want to do on protocol')
     .argument('[protocol]', 'Name of the protocol')
-    .argument('[product]', 'Name of the product')
+    .argument('[productId]', 'Name of the product')
     .argument('[chain]', 'Chain Id ')
     .argument(
       '[inputs]',
       'comma-separated input params filter (e.g. 0x5000...,true,stake)',
     )
+    .option('-s, --simulate', 'Simulate transaction against a forked provider')
+    .option(
+      '-u, --user-address <user-address>',
+      'Simulate transaction against a forked provider',
+    )
+    .option(
+      '-t, --token-address <token-address>',
+      'Address of the protocol token',
+    )
+    .option(
+      '-b, --block-number <block-number>',
+      'Block number from which the provider will be forked',
+    )
+    .option('-a, --asset <asset>', 'ERC20 asset that needs approval')
     .showHelpAfterError()
-    .action(async (action, protocolId, productId, chainId, inputs) => {
-      const txInputParams = inputs.split(',')
-
-      const protocol = protocolFilter(protocolId)
-      const chain = chainFilter(chainId)
-
-      if (!protocol) {
-        throw new Error('Missing id')
-      }
-      if (!chain) {
-        throw new Error('Missing chain')
-      }
-
-      const data = await feature({
+    .action(
+      async (
         action,
-        protocolId: protocol,
+        protocol,
         productId,
-        chainId: chain,
-        inputs: txInputParams,
-      })
+        chain,
+        inputs,
+        {
+          simulate,
+          userAddress,
+          tokenAddress: protocolTokenAddress,
+          blockNumber,
+          asset,
+        },
+      ) => {
+        const txInputParams: string[] = inputs.split(',')
 
-      printResponse(data)
-    })
+        const protocolId = protocolFilter(protocol)
+        const chainId = chainFilter(chain)
+
+        if (!protocolId) {
+          throw new Error('Protocol could not be parsed from input')
+        }
+        if (!chainId) {
+          throw new Error('Chain could not be parsed from input')
+        }
+
+        const data = await feature({
+          action,
+          protocolId,
+          productId,
+          chainId,
+          inputs: txInputParams,
+        })
+
+        printResponse(data)
+
+        if (!data.success || !simulate) {
+          return
+        }
+
+        if (!userAddress || !protocolTokenAddress) {
+          console.warn(
+            'Cannot simulate transaction without address and protocol token address',
+          )
+          return
+        }
+
+        const provider = chainProviders[chainId]
+        await simulateTx({
+          provider,
+          chainId,
+          input: {
+            ...data.params,
+            from: userAddress,
+          },
+          protocolTokenAddress,
+          protocolId,
+          productId,
+          blockNumber: Number(blockNumber) ? Number(blockNumber) : undefined,
+          asset,
+        })
+      },
+    )
 }
 
 function addressEventsCommand(

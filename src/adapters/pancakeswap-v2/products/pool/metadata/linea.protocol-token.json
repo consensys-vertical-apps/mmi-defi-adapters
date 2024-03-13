@@ -1,0 +1,22 @@
+{
+  "0x78b767Ee206D56023c0af42A57a06F0d9dA916Dc": {
+    "protocolToken": {
+      "address": "0x78b767Ee206D56023c0af42A57a06F0d9dA916Dc",
+      "name": "Pancake LPs Sidus / WETH",
+      "symbol": "Cake-LP/Sidus/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xD96536B77aE5500fE850Add2253bcf640e7824c1",
+      "name": "Sidus",
+      "symbol": "Sidus",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  }
+}

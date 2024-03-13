@@ -1,0 +1,41 @@
+{
+  "snapshot": {
+    "protocolId": "compound-v2",
+    "name": "CompoundV2",
+    "description": "CompoundV2 borrow market adapter",
+    "siteUrl": "https:",
+    "iconUrl": "https://",
+    "positionType": "borrow",
+    "chainId": 1,
+    "productId": "borrow-market",
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x62c4d816cbafe83e59bc67950425828323f8edde04e635fe08d3a3edcd345923",
+        "protocolToken": {
+          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
+          "name": "Compound Tether",
+          "symbol": "CUSDT",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 6,
+            "balanceRaw": "99924390662n",
+            "type": "underlying",
+            "blockNumber": 19383945,
+            "price": 1.0015151032363836,
+            "balance": 99924.390662
+          }
+        ],
+        "blockNumber": 19383945
+      }
+    ]
+  }
+}

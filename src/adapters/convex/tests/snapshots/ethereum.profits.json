@@ -38,15 +38,15 @@
           "symbol": "cvxcDAI+cUSDC",
           "decimals": 18,
           "type": "protocol",
-          "profit": 706198.5526794195,
-          "performance": 0.0017408823849241644,
+          "profit": 149.54465192332282,
+          "performance": 0.001006577487164984,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 405655522.04733384,
-            "endPositionValue": 406361720.60001326
+            "startPositionValue": 148567.45141848337,
+            "endPositionValue": 148716.9960704067
           }
         },
         {
@@ -55,15 +55,15 @@
           "symbol": "cvxcrvUSDUSDC-f",
           "decimals": 18,
           "type": "protocol",
-          "profit": -61.67404994936442,
-          "performance": -0.0024720462305284413,
+          "profit": -61.39669273551408,
+          "performance": -0.0024608758463267777,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 24948.582752103528,
-            "endPositionValue": 24886.908702154164
+            "startPositionValue": 24949.122413939636,
+            "endPositionValue": 24887.725721204122
           }
         }
       ],
@@ -90,15 +90,15 @@
           "symbol": "stkCvxCrv",
           "decimals": 18,
           "type": "protocol",
-          "profit": 1.7228626927251014,
-          "performance": 0.009809125958622714,
+          "profit": 1.724218698814468,
+          "performance": 0.009816151179969423,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 175.63875721369635,
-            "endPositionValue": 177.36161990642145
+            "startPositionValue": 175.65119640097464,
+            "endPositionValue": 177.3754150997891
           }
         }
       ],

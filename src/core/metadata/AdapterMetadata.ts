@@ -30,15 +30,36 @@ import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aav
 import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
 import ChimpExchangePoolLineaProtocolToken from '../../adapters/chimp-exchange/products/pool/metadata/linea.protocol-token.json'
-import CompoundPoolEthereumProtocolToken from '../../adapters/compound/products/pool/metadata/ethereum.protocol-token.json'
+import CompoundV2BorrowMarketEthereumProtocolToken from '../../adapters/compound-v2/products/borrow-market/metadata/ethereum.protocol-token.json'
+import CompoundV2SupplyMarketEthereumProtocolToken from '../../adapters/compound-v2/products/supply-market/metadata/ethereum.protocol-token.json'
 import ConvexCvxcrvWrapperEthereumProtocolToken from '../../adapters/convex/products/cvxcrv-wrapper/metadata/ethereum.protocol-token.json'
-import ConvexExtraRewardEthereumProtocolToken from '../../adapters/convex/products/extra-reward/metadata/ethereum.protocol-token.json'
-import ConvexPoolEthereumProtocolToken from '../../adapters/convex/products/pool/metadata/ethereum.protocol-token.json'
-import ConvexRewardsEthereumProtocolToken from '../../adapters/convex/products/rewards/metadata/ethereum.protocol-token.json'
-import ConvexStakingEthereumProtocolToken from '../../adapters/convex/products/staking/metadata/ethereum.protocol-token.json'
+import ConvexPoolEthereumMetadata from '../../adapters/convex/products/pool/metadata/ethereum.metadata.json'
+import ConvexSidechainStakingArbitrumProtocolToken from '../../adapters/convex/products/sidechain-staking/metadata/arbitrum.protocol-token.json'
+import ConvexSidechainStakingPolygonProtocolToken from '../../adapters/convex/products/sidechain-staking/metadata/polygon.protocol-token.json'
+import ConvexStakingEthereumMetadata from '../../adapters/convex/products/staking/metadata/ethereum.metadata.json'
+import CurvePoolArbitrumProtocolToken from '../../adapters/curve/products/pool/metadata/arbitrum.protocol-token.json'
+import CurvePoolAvalancheProtocolToken from '../../adapters/curve/products/pool/metadata/avalanche.protocol-token.json'
+import CurvePoolBaseProtocolToken from '../../adapters/curve/products/pool/metadata/base.protocol-token.json'
 import CurvePoolEthereumProtocolToken from '../../adapters/curve/products/pool/metadata/ethereum.protocol-token.json'
+import CurvePoolFantomProtocolToken from '../../adapters/curve/products/pool/metadata/fantom.protocol-token.json'
+import CurvePoolOptimismProtocolToken from '../../adapters/curve/products/pool/metadata/optimism.protocol-token.json'
+import CurvePoolPolygonProtocolToken from '../../adapters/curve/products/pool/metadata/polygon.protocol-token.json'
+import CurveRewardArbitrumProtocolToken from '../../adapters/curve/products/reward/metadata/arbitrum.protocol-token.json'
+import CurveRewardAvalancheProtocolToken from '../../adapters/curve/products/reward/metadata/avalanche.protocol-token.json'
+import CurveRewardBaseProtocolToken from '../../adapters/curve/products/reward/metadata/base.protocol-token.json'
 import CurveRewardEthereumProtocolToken from '../../adapters/curve/products/reward/metadata/ethereum.protocol-token.json'
+import CurveRewardFantomProtocolToken from '../../adapters/curve/products/reward/metadata/fantom.protocol-token.json'
+import CurveRewardOptimismProtocolToken from '../../adapters/curve/products/reward/metadata/optimism.protocol-token.json'
+import CurveRewardPolygonProtocolToken from '../../adapters/curve/products/reward/metadata/polygon.protocol-token.json'
+import CurveStakingArbitrumProtocolToken from '../../adapters/curve/products/staking/metadata/arbitrum.protocol-token.json'
+import CurveStakingAvalancheProtocolToken from '../../adapters/curve/products/staking/metadata/avalanche.protocol-token.json'
+import CurveStakingBaseProtocolToken from '../../adapters/curve/products/staking/metadata/base.protocol-token.json'
 import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/staking/metadata/ethereum.protocol-token.json'
+import CurveStakingFantomProtocolToken from '../../adapters/curve/products/staking/metadata/fantom.protocol-token.json'
+import CurveStakingOptimismProtocolToken from '../../adapters/curve/products/staking/metadata/optimism.protocol-token.json'
+import CurveStakingPolygonProtocolToken from '../../adapters/curve/products/staking/metadata/polygon.protocol-token.json'
+import FluxBorrowMarketEthereumProtocolToken from '../../adapters/flux/products/borrow-market/metadata/ethereum.protocol-token.json'
+import FluxSupplyMarketEthereumProtocolToken from '../../adapters/flux/products/supply-market/metadata/ethereum.protocol-token.json'
 import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
@@ -49,11 +70,24 @@ import MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow from '../.
 import MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v3-eth/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import PancakeswapV2PoolArbitrumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
+import PancakeswapV2PoolBaseProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/base.protocol-token.json'
+import PancakeswapV2PoolBscProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/bsc.protocol-token.json'
+import PancakeswapV2PoolEthereumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/ethereum.protocol-token.json'
+import PancakeswapV2PoolLineaProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/linea.protocol-token.json'
 import { Protocol } from '../../adapters/protocols'
+import QuickswapV2PoolPolygonProtocolToken from '../../adapters/quickswap-v2/products/pool/metadata/polygon.protocol-token.json'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
 import StargateVestingArbitrumVestingToken from '../../adapters/stargate/products/vesting/metadata/arbitrum.vesting-token.json'
 import StargateVestingEthereumVestingToken from '../../adapters/stargate/products/vesting/metadata/ethereum.vesting-token.json'
+import SushiswapV2PoolArbitrumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
+import SushiswapV2PoolAvalancheProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/avalanche.protocol-token.json'
+import SushiswapV2PoolBaseProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/base.protocol-token.json'
+import SushiswapV2PoolBscProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/bsc.protocol-token.json'
+import SushiswapV2PoolEthereumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/ethereum.protocol-token.json'
+import SushiswapV2PoolFantomProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/fantom.protocol-token.json'
+import SushiswapV2PoolPolygonProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/polygon.protocol-token.json'
 import UniswapV2PoolArbitrumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
 import UniswapV2PoolAvalancheProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/avalanche.protocol-token.json'
 import UniswapV2PoolBaseProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/base.protocol-token.json'
@@ -61,6 +95,7 @@ import UniswapV2PoolBscProtocolToken from '../../adapters/uniswap-v2/products/po
 import UniswapV2PoolEthereumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/ethereum.protocol-token.json'
 import UniswapV2PoolOptimismProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/optimism.protocol-token.json'
 import UniswapV2PoolPolygonProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/polygon.protocol-token.json'
+import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea.lp-token.json'
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
@@ -391,15 +426,6 @@ export const MetadataFiles = new Map<string, Json>([
   ],
   [
     metadataKey({
-      protocolId: Protocol.Compound,
-      productId: 'pool',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    CompoundPoolEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
       protocolId: Protocol.GMX,
       productId: 'glp',
       chainId: Chain.Arbitrum,
@@ -442,42 +468,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-supply',
     }),
     MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Convex,
-      productId: 'staking',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    ConvexStakingEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Convex,
-      productId: 'pool',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    ConvexPoolEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Convex,
-      productId: 'rewards',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    ConvexRewardsEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Convex,
-      productId: 'extra-reward',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    ConvexExtraRewardEthereumProtocolToken,
   ],
   [
     metadataKey({
@@ -613,6 +603,366 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'optimizer-borrow',
     }),
     MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolBscProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SushiswapV2,
+      productId: 'pool',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    SushiswapV2PoolArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Xfai,
+      productId: 'dex',
+      chainId: Chain.Linea,
+      fileKey: 'lp-token',
+    }),
+    XfaiDexLineaLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'pool',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    CurvePoolPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'pool',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    CurvePoolArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'pool',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    CurvePoolOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'staking',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    CurveStakingOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'reward',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    CurveRewardOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'staking',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    CurveStakingPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'reward',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    CurveRewardPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'pool',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    CurvePoolFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'staking',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    CurveStakingFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'reward',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    CurveRewardFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'pool',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    CurvePoolBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'staking',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    CurveStakingBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'reward',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    CurveRewardBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'staking',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    CurveStakingArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'reward',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    CurveRewardArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'pool',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    CurvePoolAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'staking',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    CurveStakingAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'reward',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    CurveRewardAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.QuickswapV2,
+      productId: 'pool',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    QuickswapV2PoolPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.PancakeswapV2,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    PancakeswapV2PoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.PancakeswapV2,
+      productId: 'pool',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-token',
+    }),
+    PancakeswapV2PoolBscProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.PancakeswapV2,
+      productId: 'pool',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    PancakeswapV2PoolBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.PancakeswapV2,
+      productId: 'pool',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    PancakeswapV2PoolArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.PancakeswapV2,
+      productId: 'pool',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    PancakeswapV2PoolLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'metadata',
+    }),
+    ConvexPoolEthereumMetadata,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'staking',
+      chainId: Chain.Ethereum,
+      fileKey: 'metadata',
+    }),
+    ConvexStakingEthereumMetadata,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'sidechain-staking',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    ConvexSidechainStakingPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Convex,
+      productId: 'sidechain-staking',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    ConvexSidechainStakingArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CompoundV2,
+      productId: 'supply-market',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    CompoundV2SupplyMarketEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CompoundV2,
+      productId: 'borrow-market',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    CompoundV2BorrowMarketEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Flux,
+      productId: 'supply-market',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    FluxSupplyMarketEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Flux,
+      productId: 'borrow-market',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    FluxBorrowMarketEthereumProtocolToken,
   ],
 ])
 

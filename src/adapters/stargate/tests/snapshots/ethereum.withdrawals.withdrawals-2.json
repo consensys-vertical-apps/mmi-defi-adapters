@@ -23,15 +23,27 @@
         },
         "tokens": [
           {
-            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-            "name": "USD Coin",
-            "symbol": "USDC",
+            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
+            "name": "USD Coin-LP",
+            "symbol": "S*USDC",
             "decimals": 6,
-            "balanceRaw": "316787401n",
+            "balanceRaw": "316547459n",
             "type": "underlying",
             "blockNumber": 18158890,
-            "price": 0.997318591881525,
-            "balance": 316.787401
+            "tokens": [
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "316787401n",
+                "balance": 316.787401,
+                "price": 0.997318591881525,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+              }
+            ],
+            "balance": 316.547459
           }
         ],
         "blockNumber": 18158890
@@ -46,15 +58,27 @@
         },
         "tokens": [
           {
-            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-            "name": "USD Coin",
-            "symbol": "USDC",
+            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
+            "name": "USD Coin-LP",
+            "symbol": "S*USDC",
             "decimals": 6,
-            "balanceRaw": "105000653n",
+            "balanceRaw": "104921123n",
             "type": "underlying",
             "blockNumber": 18161904,
-            "price": 0.9998161591455459,
-            "balance": 105.000653
+            "tokens": [
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "105000653n",
+                "balance": 105.000653,
+                "price": 0.9998161591455459,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+              }
+            ],
+            "balance": 104.921123
           }
         ],
         "blockNumber": 18161904
@@ -69,15 +93,27 @@
         },
         "tokens": [
           {
-            "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-            "name": "USD Coin",
-            "symbol": "USDC",
+            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
+            "name": "USD Coin-LP",
+            "symbol": "S*USDC",
             "decimals": 6,
-            "balanceRaw": "1999999566n",
+            "balanceRaw": "1998484715n",
             "type": "underlying",
             "blockNumber": 18162402,
-            "price": 1.004906275011864,
-            "balance": 1999.999566
+            "tokens": [
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "1999999566n",
+                "balance": 1999.999566,
+                "price": 1.004906275011864,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+              }
+            ],
+            "balance": 1998.484715
           }
         ],
         "blockNumber": 18162402

@@ -35,7 +35,6 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { CvxcrvWrapper__factory } from '../../contracts'
 import { RewardPaidEvent } from '../../contracts/CvxcrvWrapper'
-import { CONVEX_TOKEN } from '../rewards/convexRewardsAdapter'
 
 const CVXCRV_WRAPPER_ADDRESS = getAddress(
   '0xaa0C3f5F7DFD688C6E646F66CD2a6B66ACdbE434',
@@ -53,7 +52,10 @@ export class ConvexCvxcrvWrapperAdapter
       name: 'Convex',
       description: 'Convex pool adapter',
       siteUrl: 'https://www.convexfinance.com/',
-      iconUrl: buildTrustAssetIconUrl(Chain.Ethereum, CONVEX_TOKEN.address),
+      iconUrl: buildTrustAssetIconUrl(
+        Chain.Ethereum,
+        '0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B',
+      ),
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,

@@ -1,0 +1,76 @@
+{
+  "blockNumber": 19321516,
+  "snapshot": [
+    {
+      "protocolId": "flux",
+      "name": "Flux",
+      "description": "Flux supply market adapter",
+      "siteUrl": "https://fluxfinance.com",
+      "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "supply-market",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
+          "name": "Flux USDC",
+          "symbol": "FUSDC",
+          "decimals": 8,
+          "aprDecimal": 4.919882462906401
+        },
+        {
+          "address": "0xe2bA8693cE7474900A045757fe0efCa900F6530b",
+          "name": "Flux DAI",
+          "symbol": "FDAI",
+          "decimals": 8,
+          "aprDecimal": 3.7810488532392004
+        },
+        {
+          "address": "0x81994b9607e06ab3d5cF3AffF9a67374f05F27d7",
+          "name": "Flux USDT",
+          "symbol": "FUSDT",
+          "decimals": 8,
+          "aprDecimal": 4.7373223038984005
+        },
+        {
+          "address": "0x1C9A2d6b33B4826757273D47ebEe0e2DddcD978B",
+          "name": "Flux FRAX",
+          "symbol": "FFRAX",
+          "decimals": 8,
+          "aprDecimal": 4.3674642017280005
+        },
+        {
+          "address": "0x1dD7950c266fB1be96180a8FDb0591F70200E018",
+          "name": "Flux OUSG",
+          "symbol": "fOUSG",
+          "decimals": 8,
+          "aprDecimal": 0
+        }
+      ]
+    },
+    {
+      "protocolId": "flux",
+      "name": "Flux",
+      "description": "Flux borrow market adapter",
+      "siteUrl": "https://fluxfinance.com",
+      "iconUrl": "https://docs.fluxfinance.com/img/favicon.svg",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "borrow-market",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": false,
+      "error": {
+        "message": "Not Implemented",
+        "details": {
+          "name": "NotImplementedError"
+        }
+      }
+    }
+  ]
+}
