@@ -27,6 +27,5 @@ export const Protocol = {
   QuickswapV2: 'quickswap-v2',
   PancakeswapV2: 'pancakeswap-v2',
   CompoundV2: 'compound-v2',
-  Flux: 'flux',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]
