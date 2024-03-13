@@ -5,8 +5,13 @@ import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
+import {
+  ResolveUnderlyingMovements,
+  ResolveUnderlyingPositions,
+} from '../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../core/utils/filters'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
@@ -26,22 +31,16 @@ import {
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
-  Underlying,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
+import { MarketParamsStruct, MarketStruct } from '../contracts/AdaptiveCurveIrm'
 import {
   AdaptiveCurveIrm__factory,
   MorphoBlue__factory,
 } from '../contracts/factories'
-import { MarketParams, MarketData, PositionUser } from '../internal-utils/Blue'
+import { MarketParams, MarketData } from '../internal-utils/Blue'
 import { MorphoBlueMath } from '../internal-utils/MorphoBlue.maths'
-import { filterMapAsync } from '../../../core/utils/filters'
-import { MarketParamsStruct, MarketStruct } from '../contracts/AdaptiveCurveIrm'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../core/decorators/resolveUnderlyingPositions'
 
 type MorphoBlueAdapterMetadata = Record<
   string,
@@ -338,7 +337,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
   @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
-    protocolTokenAddress,
+
     fromBlock,
     toBlock,
     tokenId,
@@ -347,7 +346,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
       await Promise.all([
         this.getMovements({
           userAddress,
-          protocolTokenAddress,
+
           fromBlock,
           toBlock,
           eventType: 'withdrawn',
@@ -355,7 +354,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
         }),
         this.getMovements({
           userAddress,
-          protocolTokenAddress,
+
           fromBlock,
           toBlock,
           eventType: 'collat-withdrawn',
@@ -368,7 +367,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
   @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
-    protocolTokenAddress,
+
     fromBlock,
     toBlock,
     tokenId,
@@ -377,7 +376,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
       await Promise.all([
         this.getMovements({
           userAddress,
-          protocolTokenAddress,
+
           fromBlock,
           toBlock,
           eventType: 'supplied',
@@ -385,7 +384,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
         }),
         this.getMovements({
           userAddress,
-          protocolTokenAddress,
+
           fromBlock,
           toBlock,
           eventType: 'collat-supplied',
@@ -398,14 +397,14 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
   @ResolveUnderlyingMovements
   async getBorrows({
     userAddress,
-    protocolTokenAddress,
+
     fromBlock,
     toBlock,
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.getMovements({
       userAddress,
-      protocolTokenAddress,
+
       fromBlock,
       toBlock,
       eventType: 'borrowed',
@@ -416,14 +415,14 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
   @ResolveUnderlyingMovements
   async getRepays({
     userAddress,
-    protocolTokenAddress,
+
     fromBlock,
     toBlock,
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return this.getMovements({
       userAddress,
-      protocolTokenAddress,
+
       fromBlock,
       toBlock,
       eventType: 'repaid',
@@ -541,14 +540,14 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
 
   private async getMovements({
     userAddress,
-    protocolTokenAddress,
+
     fromBlock,
     toBlock,
     eventType,
     tokenId,
   }: {
     userAddress: string
-    protocolTokenAddress: string
+
     fromBlock: number
     toBlock: number
     eventType:
