@@ -984,6 +984,24 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     XfaiDexLineaLpToken,
   ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoBlue,
+      productId: 'market-supply',
+      chainId: Chain.Ethereum,
+      fileKey: 'market-supply',
+    }),
+    MorphoBlueMarketSupplyEthereumMarketSupply,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.MorphoBlue,
+      productId: 'market-borrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'market-borrow',
+    }),
+    MorphoBlueMarketBorrowEthereumMarketBorrow,
+  ],
 ])
 
 export function metadataKey({
