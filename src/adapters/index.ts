@@ -57,32 +57,6 @@ export const supportedProtocols: Record<
     Record<Chain, (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]>
   >
 > = {
-  [Protocol.MorphoAaveV3ETHOptimizer]: {
-    [Chain.Ethereum]: [
-      MorphoAaveV3ETHOptimizerSupplyAdapter,
-      MorphoAaveV3ETHOptimizerBorrowAdapter,
-    ],
-  },
-
-  [Protocol.MorphoAaveV2]: {
-    [Chain.Ethereum]: [
-      MorphoAaveV2OptimizerBorrowAdapter,
-      MorphoAaveV2OptimizerSupplyAdapter,
-    ],
-  },
-
-  [Protocol.MorphoCompoundV2]: {
-    [Chain.Ethereum]: [
-      MorphoCompoundV2OptimizerSupplyAdapter,
-      MorphoCompoundV2OptimizerBorrowAdapter,
-    ],
-  },
-
-  [Protocol.Stargate]: {
-    [Chain.Ethereum]: [StargatePoolAdapter, StargateVestingAdapter],
-    [Chain.Arbitrum]: [StargatePoolAdapter, StargateVestingAdapter],
-  },
-
   [Protocol.AaveV2]: {
     [Chain.Ethereum]: [
       AaveV2ATokenPoolAdapter,
@@ -139,17 +113,31 @@ export const supportedProtocols: Record<
     ],
   },
 
-  [Protocol.UniswapV3]: {
-    [Chain.Ethereum]: [UniswapV3PoolAdapter],
-    [Chain.Arbitrum]: [UniswapV3PoolAdapter],
-    [Chain.Optimism]: [UniswapV3PoolAdapter],
-    [Chain.Polygon]: [UniswapV3PoolAdapter],
-    [Chain.Bsc]: [UniswapV3PoolAdapter],
-    [Chain.Base]: [UniswapV3PoolAdapter],
+  [Protocol.CarbonDeFi]: {
+    [Chain.Ethereum]: [CarbonDeFiStrategiesAdapter],
   },
 
-  [Protocol.Lido]: {
-    [Chain.Ethereum]: [LidoStEthAdapter, LidoWstEthAdapter],
+  [Protocol.ChimpExchange]: {
+    [Chain.Linea]: [ChimpExchangePoolAdapter],
+  },
+
+  [Protocol.CompoundV2]: {
+    [Chain.Ethereum]: [
+      CompoundV2SupplyMarketAdapter,
+      CompoundV2BorrowMarketAdapter,
+    ],
+  },
+
+  [Protocol.Convex]: {
+    [Chain.Ethereum]: [
+      ConvexPoolAdapter,
+      ConvexStakingAdapter,
+      ConvexCvxcrvWrapperAdapter,
+    ],
+
+    [Chain.Polygon]: [ConvexSidechainStakingAdapter],
+
+    [Chain.Arbitrum]: [ConvexSidechainStakingAdapter],
   },
 
   [Protocol.Curve]: {
@@ -182,29 +170,13 @@ export const supportedProtocols: Record<
     [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
   },
 
-  [Protocol.Maker]: {
-    [Chain.Ethereum]: [SDaiAdapter],
+  [Protocol.Flux]: {
+    [Chain.Ethereum]: [FluxSupplyMarketAdapter, FluxBorrowMarketAdapter],
   },
 
   [Protocol.GMX]: {
     [Chain.Arbitrum]: [GMXGlpAdapter],
     [Chain.Avalanche]: [GMXGlpAdapter],
-  },
-
-  [Protocol.Swell]: {
-    [Chain.Ethereum]: [SwellSwEthAdapter],
-  },
-
-  [Protocol.Convex]: {
-    [Chain.Ethereum]: [
-      ConvexPoolAdapter,
-      ConvexStakingAdapter,
-      ConvexCvxcrvWrapperAdapter,
-    ],
-
-    [Chain.Polygon]: [ConvexSidechainStakingAdapter],
-
-    [Chain.Arbitrum]: [ConvexSidechainStakingAdapter],
   },
 
   [Protocol.IZiSwap]: {
@@ -214,24 +186,52 @@ export const supportedProtocols: Record<
     [Chain.Linea]: [IZiswapAdapter],
   },
 
-  [Protocol.ChimpExchange]: {
-    [Chain.Linea]: [ChimpExchangePoolAdapter],
+  [Protocol.Lido]: {
+    [Chain.Ethereum]: [LidoStEthAdapter, LidoWstEthAdapter],
   },
 
-  [Protocol.SyncSwap]: {
-    [Chain.Linea]: [SyncswapPoolAdapter],
+  [Protocol.Maker]: {
+    [Chain.Ethereum]: [SDaiAdapter],
   },
 
   [Protocol.MendiFinance]: {
     [Chain.Linea]: [MendiFinanceSupplyAdapter, MendiFinanceBorrowAdapter],
   },
 
-  [Protocol.CarbonDeFi]: {
-    [Chain.Ethereum]: [CarbonDeFiStrategiesAdapter],
+  [Protocol.MorphoAaveV2]: {
+    [Chain.Ethereum]: [
+      MorphoAaveV2OptimizerBorrowAdapter,
+      MorphoAaveV2OptimizerSupplyAdapter,
+    ],
   },
 
-  [Protocol.RocketPool]: {
-    [Chain.Ethereum]: [RocketPoolRethAdapter],
+  [Protocol.MorphoAaveV3ETHOptimizer]: {
+    [Chain.Ethereum]: [
+      MorphoAaveV3ETHOptimizerSupplyAdapter,
+      MorphoAaveV3ETHOptimizerBorrowAdapter,
+    ],
+  },
+
+  [Protocol.MorphoBlue]: {
+    [Chain.Ethereum]: [
+      MorphoBlueMarketSupplyAdapter,
+      MorphoBlueMarketBorrowAdapter,
+    ],
+  },
+
+  [Protocol.MorphoCompoundV2]: {
+    [Chain.Ethereum]: [
+      MorphoCompoundV2OptimizerSupplyAdapter,
+      MorphoCompoundV2OptimizerBorrowAdapter,
+    ],
+  },
+
+  [Protocol.PancakeswapV2]: {
+    [Chain.Ethereum]: [PancakeswapV2PoolAdapter],
+    [Chain.Bsc]: [PancakeswapV2PoolAdapter],
+    [Chain.Base]: [PancakeswapV2PoolAdapter],
+    [Chain.Arbitrum]: [PancakeswapV2PoolAdapter],
+    [Chain.Linea]: [PancakeswapV2PoolAdapter],
   },
 
   [Protocol.PricesV2]: {
@@ -244,15 +244,23 @@ export const supportedProtocols: Record<
     [Chain.Base]: [PricesV2UsdAdapter],
   },
 
-  [Protocol.UniswapV2]: {
-    [Chain.Ethereum]: [UniswapV2PoolAdapter],
-    [Chain.Optimism]: [UniswapV2PoolAdapter],
-    [Chain.Bsc]: [UniswapV2PoolAdapter],
-    [Chain.Polygon]: [UniswapV2PoolAdapter],
-    [Chain.Base]: [UniswapV2PoolAdapter],
-    [Chain.Arbitrum]: [UniswapV2PoolAdapter],
-    [Chain.Avalanche]: [UniswapV2PoolAdapter],
+  [Protocol.QuickswapV2]: {
+    [Chain.Polygon]: [QuickswapV2PoolAdapter],
   },
+
+  [Protocol.RocketPool]: {
+    [Chain.Ethereum]: [RocketPoolRethAdapter],
+  },
+
+  [Protocol.StakeWise]: {
+    [Chain.Ethereum]: [StakewiseOsEthAdapter],
+  },
+
+  [Protocol.Stargate]: {
+    [Chain.Ethereum]: [StargatePoolAdapter, StargateVestingAdapter],
+    [Chain.Arbitrum]: [StargatePoolAdapter, StargateVestingAdapter],
+  },
+
   [Protocol.SushiswapV2]: {
     [Chain.Ethereum]: [SushiswapV2PoolAdapter],
     [Chain.Bsc]: [SushiswapV2PoolAdapter],
@@ -263,41 +271,34 @@ export const supportedProtocols: Record<
     [Chain.Avalanche]: [SushiswapV2PoolAdapter],
   },
 
-  [Protocol.StakeWise]: {
-    [Chain.Ethereum]: [StakewiseOsEthAdapter],
+  [Protocol.Swell]: {
+    [Chain.Ethereum]: [SwellSwEthAdapter],
+  },
+
+  [Protocol.SyncSwap]: {
+    [Chain.Linea]: [SyncswapPoolAdapter],
+  },
+
+  [Protocol.UniswapV2]: {
+    [Chain.Ethereum]: [UniswapV2PoolAdapter],
+    [Chain.Optimism]: [UniswapV2PoolAdapter],
+    [Chain.Bsc]: [UniswapV2PoolAdapter],
+    [Chain.Polygon]: [UniswapV2PoolAdapter],
+    [Chain.Base]: [UniswapV2PoolAdapter],
+    [Chain.Arbitrum]: [UniswapV2PoolAdapter],
+    [Chain.Avalanche]: [UniswapV2PoolAdapter],
+  },
+
+  [Protocol.UniswapV3]: {
+    [Chain.Ethereum]: [UniswapV3PoolAdapter],
+    [Chain.Arbitrum]: [UniswapV3PoolAdapter],
+    [Chain.Optimism]: [UniswapV3PoolAdapter],
+    [Chain.Polygon]: [UniswapV3PoolAdapter],
+    [Chain.Bsc]: [UniswapV3PoolAdapter],
+    [Chain.Base]: [UniswapV3PoolAdapter],
   },
 
   [Protocol.Xfai]: {
     [Chain.Linea]: [XfaiDexAdapter],
-  },
-
-  [Protocol.QuickswapV2]: {
-    [Chain.Polygon]: [QuickswapV2PoolAdapter],
-  },
-
-  [Protocol.PancakeswapV2]: {
-    [Chain.Ethereum]: [PancakeswapV2PoolAdapter],
-    [Chain.Bsc]: [PancakeswapV2PoolAdapter],
-    [Chain.Base]: [PancakeswapV2PoolAdapter],
-    [Chain.Arbitrum]: [PancakeswapV2PoolAdapter],
-    [Chain.Linea]: [PancakeswapV2PoolAdapter],
-  },
-
-  [Protocol.CompoundV2]: {
-    [Chain.Ethereum]: [
-      CompoundV2SupplyMarketAdapter,
-      CompoundV2BorrowMarketAdapter,
-    ],
-  },
-
-  [Protocol.Flux]: {
-    [Chain.Ethereum]: [FluxSupplyMarketAdapter, FluxBorrowMarketAdapter],
-  },
-
-  [Protocol.MorphoBlue]: {
-    [Chain.Ethereum]: [
-      MorphoBlueMarketSupplyAdapter,
-      MorphoBlueMarketBorrowAdapter,
-    ],
   },
 }

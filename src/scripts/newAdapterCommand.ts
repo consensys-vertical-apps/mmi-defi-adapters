@@ -26,6 +26,7 @@ import { lpStakingAdapterTemplate } from './templates/lpStakingProtocolAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import { testCases } from './templates/testCases'
 import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
+import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
 import b = types.builders
 
@@ -334,7 +335,16 @@ async function buildIntegrationTests({
           ]),
         )
 
-        node.body.body = [...node.body.body, runProtocolTestsNode]
+        node.body.body.push(runProtocolTestsNode)
+
+        sortEntries(
+          node.body.body,
+          (entry) =>
+            (
+              ((entry as n.ExpressionStatement).expression as n.CallExpression)
+                .arguments[1] as n.Identifier
+            ).name,
+        )
       }
 
       this.traverse(path)
@@ -507,6 +517,11 @@ function addProtocolEntry(
     protocolListObjectNode.expression.properties.push(
       buildProtocolEntry(protocolKey, protocolId),
     )
+
+    sortEntries(
+      protocolListObjectNode.expression.properties,
+      (entry) => ((entry as n.ObjectProperty).key as n.Identifier).name,
+    )
   }
 }
 
@@ -544,6 +559,15 @@ function addAdapterEntries(
 
     supportedProtocolsObjectNode.properties.push(
       protocolChainsObjectPropertyNode,
+    )
+
+    sortEntries(
+      supportedProtocolsObjectNode.properties,
+      (entry) =>
+        (
+          ((entry as n.ObjectProperty).key as n.MemberExpression)
+            .property as n.Identifier
+        ).name,
     )
   }
 
