@@ -1,4 +1,3 @@
-import { AddressLike, BigNumberish } from 'ethers'
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -7,10 +6,10 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
-import { contractAddresses } from '../../common/contractAddresses'
-import { CUSDCv3__factory } from '../../contracts'
 import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
+import { contractAddresses } from '../../common/contractAddresses'
+import { CUSDCv3__factory } from '../../contracts'
 
 export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   productId = 'supply-market'

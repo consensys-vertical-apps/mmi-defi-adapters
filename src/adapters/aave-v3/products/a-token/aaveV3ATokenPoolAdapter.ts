@@ -1,4 +1,3 @@
-import { AddressLike, BigNumberish } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
@@ -6,11 +5,11 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
+import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
-import { PoolContract__factory } from '../../contracts'
-import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
+import { PoolContract__factory } from '../../contracts'
 
 export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'

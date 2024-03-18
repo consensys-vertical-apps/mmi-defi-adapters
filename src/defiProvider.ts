@@ -19,6 +19,7 @@ import {
 } from './responseAdapters'
 import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
+import { GetTransactionParamsInput } from './types/getTransactionParamsInput'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
@@ -32,7 +33,6 @@ import {
   TotalValueLockResponse,
   GetEventsRequestInput,
 } from './types/response'
-import { GetTransactionParamsInput } from './types/getTransactionParamsInput'
 
 export class DefiProvider {
   private parsedConfig

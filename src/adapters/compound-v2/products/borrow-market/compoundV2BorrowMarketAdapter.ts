@@ -1,4 +1,3 @@
-import { AddressLike, BigNumberish } from 'ethers'
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -7,10 +6,10 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
-import { contractAddresses } from '../../common/contractAddresses'
-import { CUSDCv3__factory } from '../../contracts'
 import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
+import { contractAddresses } from '../../common/contractAddresses'
+import { CUSDCv3__factory } from '../../contracts'
 
 export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
   productId = 'borrow-market'
