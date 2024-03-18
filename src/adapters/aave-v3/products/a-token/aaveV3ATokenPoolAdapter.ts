@@ -9,7 +9,7 @@ import {
 import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 import { PoolContract__factory } from '../../contracts'
-import { WriteInputs } from '../../../../types/writeAction'
+import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
 
 export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
@@ -54,7 +54,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
     action,
     inputs,
   }: Extract<
-    WriteInputs,
+    GetTransactionParamsInput,
     { protocolId: typeof Protocol.AaveV3; productId: 'a-token' }
   >) {
     const poolContract = PoolContract__factory.connect(

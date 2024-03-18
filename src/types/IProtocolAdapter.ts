@@ -17,7 +17,7 @@ import type {
   ProtocolTokenApr,
 } from './adapter'
 import type { Erc20Metadata } from './erc20Metadata'
-import { WriteInputs } from './writeAction'
+import { GetTransactionParamsInput } from './getTransactionParamsInput'
 
 export interface IProtocolAdapter {
   /**
@@ -79,7 +79,7 @@ export interface IProtocolAdapter {
    * @returns {Promise<{to:string, data: string}>} transaction
    */
   getTransactionParams?(
-    input: WriteInputs,
+    input: GetTransactionParamsInput,
   ): Promise<{ to: string; data: string }>
 
   /**

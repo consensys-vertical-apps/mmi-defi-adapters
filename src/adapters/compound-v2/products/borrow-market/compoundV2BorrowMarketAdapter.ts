@@ -9,7 +9,7 @@ import {
 } from '../../../../types/adapter'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
-import { WriteInputs } from '../../../../types/writeAction'
+import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
 
 export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
@@ -44,7 +44,7 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
     action,
     inputs,
   }: Extract<
-    WriteInputs,
+    GetTransactionParamsInput,
     { protocolId: typeof Protocol.CompoundV2; productId: 'borrow-market' }
   >) {
     const poolContract = CUSDCv3__factory.connect(

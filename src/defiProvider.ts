@@ -32,7 +32,7 @@ import {
   TotalValueLockResponse,
   GetEventsRequestInput,
 } from './types/response'
-import { WriteInputs } from './types/writeAction'
+import { GetTransactionParamsInput } from './types/getTransactionParamsInput'
 
 export class DefiProvider {
   private parsedConfig
@@ -316,7 +316,9 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
-  async getTransactionParams(input: WriteInputs & { chainId: Chain }): Promise<
+  async getTransactionParams(
+    input: GetTransactionParamsInput & { chainId: Chain },
+  ): Promise<
     AdapterResponse<{
       params: { to: string; data: string }
     }>

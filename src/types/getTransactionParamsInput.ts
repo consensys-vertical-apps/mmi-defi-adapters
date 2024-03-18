@@ -9,7 +9,7 @@ export const WriteActions = {
 } as const
 export type WriteActions = (typeof WriteActions)[keyof typeof WriteActions]
 
-export type WriteInputs =
+export type GetTransactionParamsInput =
   | {
       action: typeof WriteActions.Supply
       protocolId: typeof Protocol.AaveV3
