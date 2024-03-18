@@ -327,10 +327,86 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
-    throw new NotImplementedError()
+  async getProtocolTokenToUnderlyingTokenRate({
+    blockNumber,
+    tokenId,
+  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+    const positionsManagerContract = PositionManager__factory.connect(
+      contractAddresses[this.chainId]!.positionManager,
+      this.provider,
+    )
+
+    const [{ token0, token1, fee, liquidity }, owner] = await Promise.all([
+      positionsManagerContract.positions(tokenId!, {
+        blockTag: blockNumber,
+      }),
+      positionsManagerContract.ownerOf(tokenId!),
+    ])
+
+    const [token0Metadata, token1Metadata] = await Promise.all([
+      getTokenMetadata(token0, this.chainId, this.provider),
+      getTokenMetadata(token1, this.chainId, this.provider),
+    ])
+
+    const nftName = this.protocolTokenName(
+      token0Metadata.symbol,
+      token1Metadata.symbol,
+      fee,
+    )
+
+    if (liquidity > 0n) {
+      const [
+        { amount0, amount1 },
+        { amount0: amount0Fee, amount1: amount1Fee },
+      ] = await Promise.all([
+        positionsManagerContract.decreaseLiquidity.staticCall(
+          {
+            tokenId: tokenId!,
+            liquidity: liquidity,
+            amount0Min: 0n,
+            amount1Min: 0n,
+            deadline,
+          },
+          { from: owner, blockTag: blockNumber },
+        ),
+        positionsManagerContract.collect.staticCall(
+          {
+            tokenId: tokenId!,
+            recipient: owner,
+            amount0Max: maxUint128,
+            amount1Max: maxUint128,
+          },
+          { from: owner, blockTag: blockNumber },
+        ),
+      ])
+
+      return {
+        baseRate: 1,
+        address: contractAddresses[this.chainId]!.positionManager,
+        tokenId: tokenId,
+        name: nftName,
+        symbol: nftName,
+        decimals: 18,
+        type: TokenType.Protocol,
+        tokens: [
+          this.createUnderlyingTokenRate(token0, token0Metadata, amount0),
+          this.createUnderlyingTokenRate(token0, token0Metadata, amount0Fee),
+          this.createUnderlyingTokenRate(token1, token1Metadata, amount1),
+          this.createUnderlyingTokenRate(token1, token1Metadata, amount1Fee),
+        ],
+      }
+    } else {
+      return {
+        baseRate: 1,
+        address: contractAddresses[this.chainId]!.positionManager,
+        tokenId: tokenId,
+        name: nftName,
+        symbol: nftName,
+        decimals: 18,
+        type: TokenType.Protocol,
+        tokens: [],
+      }
+    }
   }
 
   async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
@@ -354,6 +430,20 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
       decimals: metadata.decimals,
       balanceRaw,
       type,
+    }
+  }
+  private createUnderlyingTokenRate(
+    address: string,
+    metadata: Erc20Metadata,
+    underlyingRateRaw: bigint,
+  ): UnderlyingTokenRate {
+    return {
+      address,
+      name: metadata.name,
+      symbol: metadata.symbol,
+      decimals: metadata.decimals,
+      underlyingRateRaw,
+      type: TokenType.Underlying,
     }
   }
 

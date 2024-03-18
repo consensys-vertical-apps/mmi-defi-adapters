@@ -253,6 +253,7 @@ export interface ProtocolTokenUnderlyingRate extends Erc20Metadata {
    * Always equal to 1
    * We are finding the underlying value of 1 LP token
    */
+  tokenId?: string
   baseRate: 1
   type: typeof TokenType.Protocol
   tokens?: UnderlyingTokenRate[]
