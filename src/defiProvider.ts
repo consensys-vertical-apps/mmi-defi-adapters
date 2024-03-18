@@ -32,14 +32,7 @@ import {
   TotalValueLockResponse,
   GetEventsRequestInput,
 } from './types/response'
-
-export type TransactionParamsInput = {
-  action: string
-  inputs: unknown[]
-  protocolId: Protocol
-  chainId: Chain
-  productId: string
-}
+import { WriteInputs } from './types/writeAction'
 
 export class DefiProvider {
   private parsedConfig
@@ -323,17 +316,13 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
-  async getTransactionParams({
-    protocolId,
-    action,
-    inputs,
-    chainId,
-    productId,
-  }: TransactionParamsInput): Promise<
+  async getTransactionParams(input: WriteInputs & { chainId: Chain }): Promise<
     AdapterResponse<{
       params: { to: string; data: string }
     }>
   > {
+    const { protocolId, chainId, productId } = input
+
     const provider = this.chainProvider.providers[chainId]
     let adapter: IProtocolAdapter
     try {
@@ -347,10 +336,7 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const txParams = await adapter.getTransactionParams!({
-        action,
-        inputs,
-      })
+      const txParams = await adapter.getTransactionParams!(input)
 
       return {
         params: txParams,

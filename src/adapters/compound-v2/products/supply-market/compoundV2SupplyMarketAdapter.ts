@@ -9,6 +9,8 @@ import {
 } from '../../../../types/adapter'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
+import { WriteInputs } from '../../../../types/writeAction'
+import { Protocol } from '../../../protocols'
 
 export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   productId = 'supply-market'
@@ -41,18 +43,17 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
   getTransactionParams({
     action,
     inputs,
-  }: {
-    action: 'supply' | 'withdraw'
-    inputs: unknown[]
-  }) {
+  }: Extract<
+    WriteInputs,
+    { protocolId: typeof Protocol.CompoundV2; productId: 'a-token' }
+  >) {
     const poolContract = CUSDCv3__factory.connect(
       contractAddresses[this.chainId]!.cUSDCv3Address,
       this.provider,
     )
 
     // TODO - Needs validation with zod
-    const [asset, amount] = inputs as [AddressLike, BigNumberish]
-
+    const { asset, amount } = inputs
     switch (action) {
       case 'supply': {
         return poolContract.supply.populateTransaction(asset, amount)
