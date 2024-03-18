@@ -230,7 +230,7 @@ export class EthenaMainAdapter implements IProtocolAdapter, IMetadataBuilder {
       this.provider,
     )
     const endBlock = blockNumber ?? (await this.provider.getBlockNumber())
-    const oneWeekAgoBlock = endBlock - 44800 // roughly this number of blocks per week at 13.5s block interval
+    const oneWeekAgoBlock = endBlock - 50_400 // roughly this number of blocks per week at 12s block interval
 
     const totalAssetsStart = await susdeContract
       .totalAssets({ blockTag: oneWeekAgoBlock })
