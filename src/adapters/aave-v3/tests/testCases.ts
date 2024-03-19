@@ -1,5 +1,6 @@
 import { Chain } from '../../../core/constants/chains'
 import { TimePeriod } from '../../../core/constants/timePeriod'
+import { WriteActions } from '../../../types/getTransactionParamsInput'
 import type { TestCase } from '../../../types/testCase'
 
 export const testCases: TestCase[] = [
@@ -54,7 +55,7 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     input: {
       productId: 'a-token',
-      action: 'supply',
+      action: WriteActions.Deposit,
       inputs: {
         asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
         amount: '10000000000000000000',
@@ -69,7 +70,7 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     input: {
       productId: 'a-token',
-      action: 'borrow',
+      action: WriteActions.Borrow,
       inputs: {
         asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
         amount: '10000000000000000000',
@@ -85,7 +86,7 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     input: {
       productId: 'a-token',
-      action: 'withdraw',
+      action: WriteActions.Withdraw,
       inputs: {
         asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
         amount: '10000000000000000000',
@@ -99,8 +100,7 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     input: {
       productId: 'a-token',
-      action: 'repay',
-
+      action: WriteActions.Repay,
       inputs: {
         asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
         amount: '10000000000000000000',

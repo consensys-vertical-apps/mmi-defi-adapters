@@ -26,6 +26,8 @@ import {
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
+import { Protocol } from '../../../protocols'
 import {
   Converter__factory,
   Velocore__factory,
@@ -34,8 +36,6 @@ import {
   Cerc20__factory,
   Comptroller__factory,
 } from '../../contracts'
-import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
-import { Protocol } from '../../../protocols'
 
 type MendiFinanceBorrowAdapterMetadata = Record<
   string,

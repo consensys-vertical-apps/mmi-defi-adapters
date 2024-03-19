@@ -7,6 +7,7 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { aprToApy } from '../../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
@@ -24,6 +25,8 @@ import {
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
+import { Protocol } from '../../../protocols'
 import {
   Converter__factory,
   Velocore__factory,
@@ -32,9 +35,6 @@ import {
   Cerc20__factory,
   Comptroller__factory,
 } from '../../contracts'
-import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
-import { Protocol } from '../../../protocols'
-import { NotImplementedError } from '../../../../core/errors/errors'
 
 type MendiFinanceSupplyAdapterMetadata = Record<
   string,

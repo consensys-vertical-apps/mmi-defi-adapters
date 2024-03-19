@@ -16,9 +16,9 @@ import {
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { WstEthToken__factory } from '../../contracts'
 import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
+import { WstEthToken__factory } from '../../contracts'
 
 export class LidoWstEthAdapter extends SimplePoolAdapter {
   productId = 'wst-eth'
