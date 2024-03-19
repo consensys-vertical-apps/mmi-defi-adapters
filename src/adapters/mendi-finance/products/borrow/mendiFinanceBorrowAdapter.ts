@@ -276,7 +276,7 @@ export class MendiFinanceBorrowAdapter
       GetTransactionParamsInput,
       {
         protocolId: typeof Protocol.MendiFinance
-        productId: 'st-eth'
+        productId: 'borrow'
       }
     >,
   ): Promise<{ to: string; data: string }> {

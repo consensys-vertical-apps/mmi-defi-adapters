@@ -113,7 +113,7 @@ export class MendiFinanceSupplyAdapter
       GetTransactionParamsInput,
       {
         protocolId: typeof Protocol.MendiFinance
-        productId: 'st-eth'
+        productId: 'supply'
       }
     >,
   ): Promise<{ to: string; data: string }> {
