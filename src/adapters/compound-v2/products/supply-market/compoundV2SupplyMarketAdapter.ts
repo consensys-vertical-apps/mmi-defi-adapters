@@ -6,7 +6,10 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
-import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
+import {
+  GetTransactionParamsInput,
+  WriteActions,
+} from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
@@ -54,10 +57,10 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
     // TODO - Needs validation with zod
     const { asset, amount } = inputs
     switch (action) {
-      case 'supply': {
+      case WriteActions.Supply: {
         return poolContract.supply.populateTransaction(asset, amount)
       }
-      case 'withdraw': {
+      case WriteActions.Withdraw: {
         return poolContract.withdraw.populateTransaction(asset, amount)
       }
 

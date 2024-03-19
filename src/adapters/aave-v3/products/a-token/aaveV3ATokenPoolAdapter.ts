@@ -5,7 +5,10 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
-import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
+import {
+  GetTransactionParamsInput,
+  WriteActions,
+} from '../../../../types/getTransactionParamsInput'
 import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 import { Protocol } from '../../../protocols'
@@ -62,7 +65,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
     )
 
     switch (action) {
-      case 'supply': {
+      case WriteActions.Supply: {
         const { asset, amount, onBehalfOf, referralCode } = inputs
         return poolContract.supply.populateTransaction(
           asset,
@@ -71,11 +74,11 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           referralCode,
         )
       }
-      case 'withdraw': {
+      case WriteActions.Withdraw: {
         const { asset, amount, to } = inputs
         return poolContract.withdraw.populateTransaction(asset, amount, to)
       }
-      case 'borrow': {
+      case WriteActions.Borrow: {
         const { asset, amount, interestRateMode, referralCode, onBehalfOf } =
           inputs
         return poolContract.borrow.populateTransaction(
@@ -86,7 +89,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           onBehalfOf,
         )
       }
-      case 'repay': {
+      case WriteActions.Repay: {
         const { asset, amount, interestRateMode, onBehalfOf } = inputs
         return poolContract.repay.populateTransaction(
           asset,

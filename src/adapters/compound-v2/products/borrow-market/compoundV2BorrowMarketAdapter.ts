@@ -6,7 +6,10 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
-import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
+import {
+  GetTransactionParamsInput,
+  WriteActions,
+} from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
@@ -55,10 +58,10 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
     const { asset, amount } = inputs
 
     switch (action) {
-      case 'borrow': {
+      case WriteActions.Borrow: {
         return poolContract.withdraw.populateTransaction(asset, amount)
       }
-      case 'repay': {
+      case WriteActions.Repay: {
         return poolContract.supply.populateTransaction(asset, amount)
       }
 
