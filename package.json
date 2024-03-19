@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/consensys-vertical-apps/mmi-defi-adapters"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "main": "lib/main/index.js",
   "types": "lib/main/index.d.ts",
   "files": [
