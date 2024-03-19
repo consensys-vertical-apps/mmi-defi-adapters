@@ -65,7 +65,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
     )
 
     switch (action) {
-      case WriteActions.Supply: {
+      case WriteActions.Deposit: {
         const { asset, amount, onBehalfOf, referralCode } = inputs
         return poolContract.supply.populateTransaction(
           asset,

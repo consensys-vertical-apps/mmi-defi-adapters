@@ -4,7 +4,7 @@
 
 # Welcome to our DeFi Adapter Library! 🚀
 
-This library is designed to simplify and standardize the process of fetching and interacting with data from various DeFi protocols, which often have unique interfaces and data structures. Our adapters fetch and transform underlying protocol data into a standardized format that can be easily used by portfolio dashboards.
+This library is designed to simplify and standardize the process of fetching data and interacting with various DeFi protocols, which often have unique interfaces and data structures. Our adapters 1) fetch and transform underlying protocol data into a standardised format that can be easily used by portfolio dashboards and 2) generate transaction params to create and update protocol positions.
 
 ## Our Goals 🎯
 
@@ -16,9 +16,10 @@ This library is designed to simplify and standardize the process of fetching and
    - Total Value Locked (TVL) by pool
    - APY/APR by pool
    - Daily profit and loss by address
-   - Price of LP token
+   - Unwrap LP tokens to underlying tokens (a.k.a get a price for the LP tokens)
    - Deposits by address
    - Withdrawals by address
+   - Crafted transactions params
 
 ## 🎥 DeFi Adapter Tutorial
 

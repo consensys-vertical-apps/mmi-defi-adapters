@@ -47,6 +47,7 @@ import { StargateVestingAdapter } from './stargate/products/vesting/stargateVest
 import { SushiswapV2PoolAdapter } from './sushiswap-v2/products/pool/sushiswapV2PoolAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { SyncswapPoolAdapter } from './syncswap/products/pool/syncswapPoolAdapter'
+import { TestSimplePoolAdapterProtocolPoolAdapter } from './test-simple-pool-adapter-protocol/products/pool/testSimplePoolAdapterProtocolPoolAdapter'
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
@@ -277,6 +278,10 @@ export const supportedProtocols: Record<
 
   [Protocol.SyncSwap]: {
     [Chain.Linea]: [SyncswapPoolAdapter],
+  },
+
+  [Protocol.TestSimplePoolAdapterProtocol]: {
+    [Chain.Ethereum]: [TestSimplePoolAdapterProtocolPoolAdapter],
   },
 
   [Protocol.UniswapV2]: {

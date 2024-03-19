@@ -294,6 +294,7 @@ async function buildAdapterFromTemplate(adapterSettings: NewAdapterAnswers) {
 async function buildIntegrationTests({
   protocolId,
   protocolKey,
+  productId,
 }: NewAdapterAnswers) {
   const testCasesFilePath = `./src/adapters/${protocolId}/tests/testCases.ts`
 
@@ -301,7 +302,7 @@ async function buildIntegrationTests({
     return
   }
 
-  await writeCodeFile(testCasesFilePath, testCases())
+  await writeCodeFile(testCasesFilePath, testCases(productId))
 
   const testsFile = path.resolve('./src/adapters/integration.test.ts')
   const contents = await fs.readFile(testsFile, 'utf-8')
