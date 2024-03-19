@@ -7,6 +7,7 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
 }: NewAdapterAnswers) {
   return `import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+  import { NotImplementedError } from '../../../../core/errors/errors'
   import {
     ProtocolDetails,
     PositionType,

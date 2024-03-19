@@ -12,6 +12,7 @@ export function uniswapV2PoolForkAdapterTemplate({
   } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
   import { Chain } from '../../../../core/constants/chains'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+  import { NotImplementedError } from '../../../../core/errors/errors'
   import {
     ProtocolDetails,
     PositionType,
