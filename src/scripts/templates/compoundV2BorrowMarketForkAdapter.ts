@@ -54,32 +54,6 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
      *
      * TODO: Replace the 'NotImplementedError' with actual implementation logic according to your protocol's requirements and the actions supported.
      */
-    getTransactionParams(
-      _inputs: Extract<
-        GetTransactionParamsInput,
-        {
-          protocolId: typeof Protocol.Lido
-          productId: 'st-eth'
-        }
-      >,
-    ): Promise<{ to: string; data: string }> {
-      throw new NotImplementedError()
-      // Example switch case structure for implementation:
-      // switch (action) {
-      //   case WriteActions.Supply: {
-      //     const { asset, amount, onBehalfOf, referralCode } = inputs;
-      //     return poolContract.supply.populateTransaction(
-      //       asset, amount, onBehalfOf, referralCode,
-      //     );
-      //   }
-      //   case WriteActions.Withdraw: {
-      //     // const { asset, amount, to } = inputs;
-      //     // return poolContract.withdraw.populateTransaction(asset, amount, to);
-      //   }
-      //   default:
-      //     throw new Error('Method not supported');
-      // }
-    }
     getTransactionParams({
       action,
       inputs,
