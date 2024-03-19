@@ -19,6 +19,7 @@ import {
 } from './responseAdapters'
 import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
+import { GetTransactionParamsInput } from './types/getTransactionParamsInput'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
@@ -32,14 +33,6 @@ import {
   TotalValueLockResponse,
   GetEventsRequestInput,
 } from './types/response'
-
-export type TransactionParamsInput = {
-  action: string
-  inputs: unknown[]
-  protocolId: Protocol
-  chainId: Chain
-  productId: string
-}
 
 export class DefiProvider {
   private parsedConfig
@@ -323,17 +316,15 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
-  async getTransactionParams({
-    protocolId,
-    action,
-    inputs,
-    chainId,
-    productId,
-  }: TransactionParamsInput): Promise<
+  async getTransactionParams(
+    input: GetTransactionParamsInput & { chainId: Chain },
+  ): Promise<
     AdapterResponse<{
       params: { to: string; data: string }
     }>
   > {
+    const { protocolId, chainId, productId } = input
+
     const provider = this.chainProvider.providers[chainId]
     let adapter: IProtocolAdapter
     try {
@@ -347,10 +338,7 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const txParams = await adapter.getTransactionParams!({
-        action,
-        inputs,
-      })
+      const txParams = await adapter.getTransactionParams!(input)
 
       return {
         params: txParams,

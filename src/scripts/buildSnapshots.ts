@@ -10,6 +10,7 @@ import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { DefiProvider } from '../defiProvider'
+import { GetTransactionParamsInput } from '../types/getTransactionParamsInput'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
@@ -233,12 +234,14 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                 return result
               }
               case 'tx-params': {
+                const inputs = {
+                  chainId,
+                  protocolId,
+                  ...testCase.input,
+                } as GetTransactionParamsInput & { chainId: Chain }
+
                 return {
-                  snapshot: await defiProvider.getTransactionParams({
-                    chainId,
-                    protocolId,
-                    ...testCase.input,
-                  }),
+                  snapshot: await defiProvider.getTransactionParams(inputs),
                 }
               }
             }

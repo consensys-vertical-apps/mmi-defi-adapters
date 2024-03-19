@@ -1,4 +1,3 @@
-import { AddressLike, BigNumberish } from 'ethers'
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -7,6 +6,11 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
+import {
+  GetTransactionParamsInput,
+  WriteActions,
+} from '../../../../types/getTransactionParamsInput'
+import { Protocol } from '../../../protocols'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
 
@@ -41,23 +45,23 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
   getTransactionParams({
     action,
     inputs,
-  }: {
-    action: string
-    inputs: unknown[]
-  }) {
+  }: Extract<
+    GetTransactionParamsInput,
+    { protocolId: typeof Protocol.CompoundV2; productId: 'borrow-market' }
+  >) {
     const poolContract = CUSDCv3__factory.connect(
       contractAddresses[this.chainId]!.cUSDCv3Address,
       this.provider,
     )
 
     // TODO - Needs validation with zod
-    const [asset, amount] = inputs as [AddressLike, BigNumberish]
+    const { asset, amount } = inputs
 
     switch (action) {
-      case 'borrow': {
+      case WriteActions.Borrow: {
         return poolContract.withdraw.populateTransaction(asset, amount)
       }
-      case 'repay': {
+      case WriteActions.Repay: {
         return poolContract.supply.populateTransaction(asset, amount)
       }
 
