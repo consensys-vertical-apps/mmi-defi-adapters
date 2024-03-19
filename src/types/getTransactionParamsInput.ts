@@ -5,7 +5,7 @@ import { Protocol } from '../adapters/protocols'
  * Update manually
  *
  * Developers are encouraged to extend this object with new actions as needed, such as 'flashLoan',
- * 'supplyWithPermit', and others, to cover more specialized or advanced use cases.
+ * 'supplyWithPermit', and others.
  *
  * Example additional actions:
  * - FlashLoan: 'flashLoan'
@@ -24,7 +24,7 @@ export type WriteActions = (typeof WriteActions)[keyof typeof WriteActions]
  *
  * Developers define here your protocol's input structure for generating transaction parameters
  *
- * Each type must have action, protocolId and productId and inputs related to your specific protocol action
+ * Each type must have an action, your protocolId and your productId and inputs related to your specific protocol action.
  */
 export type GetTransactionParamsInput =
   | {

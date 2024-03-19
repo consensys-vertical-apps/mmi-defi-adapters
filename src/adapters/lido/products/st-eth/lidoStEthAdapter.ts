@@ -110,7 +110,7 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
    * - Supply: Extract 'asset', 'amount', 'onBehalfOf', and 'referralCode' from inputs. Use these to populate transactions with 'poolContract.supply.populateTransaction(...)'.
    * - Withdraw: Follow a similar approach, adapting the parameters and transaction population as necessary for the action.
    *
-   * Ensure your implementation handles all supported actions comprehensively and provides clear error messaging for unsupported actions.
+   * Ensure the implementation supports all main end-user actions. Developers are encouraged to incorporate error handling tailored to specific business logic requirements.
    *
    * TODO: Replace the `NotImplementedError` with actual implementation logic according to your protocol's requirements and the actions supported.
    */
