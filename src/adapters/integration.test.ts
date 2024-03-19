@@ -1,10 +1,11 @@
 import { promises as fs } from 'fs'
 import path from 'path'
-import { ChainName } from '../core/constants/chains'
+import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
+import { GetTransactionParamsInput } from '../types/getTransactionParamsInput'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
@@ -423,11 +424,13 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           async (_, testCase) => {
             const { snapshot } = await fetchSnapshot(testCase, protocolId)
 
-            const response = await defiProvider.getTransactionParams({
+            const inputs = {
               ...testCase.input,
               protocolId,
               chainId: testCase.chainId,
-            })
+            } as GetTransactionParamsInput & { chainId: Chain }
+
+            const response = await defiProvider.getTransactionParams(inputs)
 
             expect(response).toEqual(snapshot)
           },

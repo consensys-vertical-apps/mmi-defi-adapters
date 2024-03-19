@@ -1,5 +1,6 @@
 import type { Chain } from '../core/constants/chains'
 import type { TimePeriod } from '../core/constants/timePeriod'
+import { GetTransactionParamsInput } from './getTransactionParamsInput'
 
 export type TestCase = {
   key?: string
@@ -89,10 +90,6 @@ export type TestCase = {
     }
   | {
       method: 'tx-params'
-      input: {
-        productId: string
-        action: string
-        inputs: unknown[]
-      }
+      input: Omit<GetTransactionParamsInput, 'protocolId'>
     }
 )

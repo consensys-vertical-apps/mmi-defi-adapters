@@ -4,7 +4,8 @@ import { Chain } from '../core/constants/chains'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
-import { DefiProvider, TransactionParamsInput } from '../defiProvider'
+import { DefiProvider } from '../defiProvider'
+import { GetTransactionParamsInput } from '../types/getTransactionParamsInput'
 import { AdapterResponse, GetEventsRequestInput } from '../types/response'
 import {
   chainFilter,
@@ -119,7 +120,7 @@ function addressCommand(
 function transactionParamsCommand(
   program: Command,
   commandName: string,
-  feature: (input: TransactionParamsInput) => Promise<
+  feature: (input: GetTransactionParamsInput & { chainId: Chain }) => Promise<
     AdapterResponse<{
       params: { to: string; data: string }
     }>
@@ -184,7 +185,7 @@ function transactionParamsCommand(
           productId,
           chainId,
           inputs: txInputParams,
-        })
+        } as unknown as GetTransactionParamsInput & { chainId: Chain }) // TO Fix
 
         printResponse(data)
 

@@ -1,4 +1,3 @@
-import { AddressLike, BigNumberish } from 'ethers'
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -7,6 +6,11 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
+import {
+  GetTransactionParamsInput,
+  WriteActions,
+} from '../../../../types/getTransactionParamsInput'
+import { Protocol } from '../../../protocols'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
 
@@ -41,23 +45,22 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
   getTransactionParams({
     action,
     inputs,
-  }: {
-    action: 'supply' | 'withdraw'
-    inputs: unknown[]
-  }) {
+  }: Extract<
+    GetTransactionParamsInput,
+    { protocolId: typeof Protocol.CompoundV2; productId: 'a-token' }
+  >) {
     const poolContract = CUSDCv3__factory.connect(
       contractAddresses[this.chainId]!.cUSDCv3Address,
       this.provider,
     )
 
     // TODO - Needs validation with zod
-    const [asset, amount] = inputs as [AddressLike, BigNumberish]
-
+    const { asset, amount } = inputs
     switch (action) {
-      case 'supply': {
+      case WriteActions.Supply: {
         return poolContract.supply.populateTransaction(asset, amount)
       }
-      case 'withdraw': {
+      case WriteActions.Withdraw: {
         return poolContract.withdraw.populateTransaction(asset, amount)
       }
 
