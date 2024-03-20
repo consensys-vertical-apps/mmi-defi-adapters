@@ -1,0 +1,71 @@
+{
+  "0x080f52a881ba96eee2268682733c857c560e5dd4": {
+    "market": "0x080f52a881ba96eee2268682733c857c560e5dd4",
+    "chainId": 56,
+    "name": "Pendle Market",
+    "pt": {
+      "address": "0x70c1138b54ba212776d3a9d29b6160c54c31cd5d",
+      "name": "PT wbETH 26DEC2024",
+      "symbol": "PT-wbETH-26DEC2024",
+      "decimals": 18
+    },
+    "yt": {
+      "address": "0x429c77e193ff7e6c6c3b2e1f00877b91792e87ee",
+      "name": "YT wbETH 26DEC2024",
+      "symbol": "YT-wbETH-26DEC2024",
+      "decimals": 18
+    },
+    "lp": {
+      "address": "0x080f52a881ba96eee2268682733c857c560e5dd4",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    }
+  },
+  "0x66317dec4a3d8d1e47b85f704e5df675a68bb7c9": {
+    "market": "0x66317dec4a3d8d1e47b85f704e5df675a68bb7c9",
+    "chainId": 56,
+    "name": "Pendle Market",
+    "pt": {
+      "address": "0x5ec2ae0afdec891e7702344dc2a31c636b3627eb",
+      "name": "PT Thena frxETH-ETH 27JUN2024",
+      "symbol": "PT-Thena frxETH-ETH-27JUN2024",
+      "decimals": 18
+    },
+    "yt": {
+      "address": "0x8d0884eba8e481ccadf2f91e62170cdf79ae9c64",
+      "name": "YT Thena frxETH-ETH 27JUN2024",
+      "symbol": "YT-Thena frxETH-ETH-27JUN2024",
+      "decimals": 18
+    },
+    "lp": {
+      "address": "0x66317dec4a3d8d1e47b85f704e5df675a68bb7c9",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    }
+  },
+  "0xeda1d0e1681d59dea451702963d6287b844cb94c": {
+    "market": "0xeda1d0e1681d59dea451702963d6287b844cb94c",
+    "chainId": 56,
+    "name": "Pendle Market",
+    "pt": {
+      "address": "0x04eb6b56ff53f457c8e857ca8d4fbc8d9a531c0c",
+      "name": "PT ankrBNB 26JUN2025",
+      "symbol": "PT-ankrBNB-26JUN2025",
+      "decimals": 18
+    },
+    "yt": {
+      "address": "0x269f3e230c90c0a29140106d4cfb5860af6f6827",
+      "name": "YT ankrBNB 26JUN2025",
+      "symbol": "YT-ankrBNB-26JUN2025",
+      "decimals": 18
+    },
+    "lp": {
+      "address": "0xeda1d0e1681d59dea451702963d6287b844cb94c",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    }
+  }
+}

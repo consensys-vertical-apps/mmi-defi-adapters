@@ -80,6 +80,10 @@ import PancakeswapV2PoolBaseProtocolToken from '../../adapters/pancakeswap-v2/pr
 import PancakeswapV2PoolBscProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/bsc.protocol-token.json'
 import PancakeswapV2PoolEthereumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/ethereum.protocol-token.json'
 import PancakeswapV2PoolLineaProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/linea.protocol-token.json'
+import PendleMarketArbitrumMarket from '../../adapters/pendle/products/market/metadata/arbitrum.market.json'
+import PendleMarketBscMarket from '../../adapters/pendle/products/market/metadata/bsc.market.json'
+import PendleMarketEthereumMarket from '../../adapters/pendle/products/market/metadata/ethereum.market.json'
+import PendleMarketOptimismMarket from '../../adapters/pendle/products/market/metadata/optimism.market.json'
 import { Protocol } from '../../adapters/protocols'
 import QuickswapV2PoolPolygonProtocolToken from '../../adapters/quickswap-v2/products/pool/metadata/polygon.protocol-token.json'
 import SonneBorrowMarketBaseProtocolToken from '../../adapters/sonne/products/borrow-market/metadata/base.protocol-token.json'
@@ -1054,6 +1058,42 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'lp-token',
     }),
     XfaiDexLineaLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'market',
+      chainId: Chain.Ethereum,
+      fileKey: 'market',
+    }),
+    PendleMarketEthereumMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'market',
+      chainId: Chain.Arbitrum,
+      fileKey: 'market',
+    }),
+    PendleMarketArbitrumMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'market',
+      chainId: Chain.Optimism,
+      fileKey: 'market',
+    }),
+    PendleMarketOptimismMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'market',
+      chainId: Chain.Bsc,
+      fileKey: 'market',
+    }),
+    PendleMarketBscMarket,
   ],
 ])
 
