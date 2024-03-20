@@ -66,17 +66,13 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     this.adaptersController = adaptersController
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
       name: 'Pendle',
       description: 'Pendle Market adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
+      siteUrl: 'https://www.pendle.finance',
+      iconUrl: 'https://app.pendle.finance/favicon.ico',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
@@ -86,12 +82,6 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
   }
 
-  /**
-   * Update me.
-   * Add logic to build protocol token metadata
-   * For context see dashboard example ./dashboard.png
-   * We need protocol token names, decimals, and also linked underlying tokens
-   */
   @CacheToFile({ fileKey: 'market' })
   async buildMetadata(): Promise<PendleMarketMetadata> {
     const resp = await fetchAllMarkets(this.chainId as PendleChain)
@@ -135,19 +125,11 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     return res
   }
 
-  /**
-   * Update me.
-   * Returning an array of your protocol tokens.
-   */
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     const markets = Object.values(await this.buildMetadata())
     return markets.map((markets) => markets.lp)
   }
 
-  /**
-   * Update me.
-   * Add logic to get userAddress positions in your protocol
-   */
   async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
     const [markets, allAssets] = await Promise.all([
       Object.values(await this.buildMetadata()),
