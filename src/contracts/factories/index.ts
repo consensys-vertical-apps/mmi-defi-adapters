@@ -2,6 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 export { BalanceChecker__factory } from "./BalanceChecker__factory";
+export { CompoundV2Cerc20__factory } from "./CompoundV2Cerc20__factory";
+export { CompoundV2Comptroller__factory } from "./CompoundV2Comptroller__factory";
 export { Erc20__factory } from "./Erc20__factory";
 export { Multicall__factory } from "./Multicall__factory";
 export { UniswapV2Factory__factory } from "./UniswapV2Factory__factory";

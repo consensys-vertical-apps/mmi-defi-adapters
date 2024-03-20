@@ -23,7 +23,7 @@ import type {
   TypedContractMethod,
 } from "./common";
 
-export interface Cerc20Interface extends Interface {
+export interface CompoundV2Cerc20Interface extends Interface {
   getFunction(
     nameOrSignature:
       | "name"
@@ -704,11 +704,11 @@ export namespace ApprovalEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export interface Cerc20 extends BaseContract {
-  connect(runner?: ContractRunner | null): Cerc20;
+export interface CompoundV2Cerc20 extends BaseContract {
+  connect(runner?: ContractRunner | null): CompoundV2Cerc20;
   waitForDeployment(): Promise<this>;
 
-  interface: Cerc20Interface;
+  interface: CompoundV2Cerc20Interface;
 
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,

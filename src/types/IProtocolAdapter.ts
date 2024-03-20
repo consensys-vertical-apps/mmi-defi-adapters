@@ -17,6 +17,7 @@ import type {
   ProtocolTokenApr,
 } from './adapter'
 import type { Erc20Metadata } from './erc20Metadata'
+import { GetTransactionParamsInput } from './getTransactionParamsInput'
 
 export interface IProtocolAdapter {
   /**
@@ -46,9 +47,9 @@ export interface IProtocolAdapter {
   /**
    * @remarks Returns array of pool tokens (lp tokens) for the protocol
    *
-   * @returns {Promise<Erc20Metadata[]>} An array of objects detailing the protocol tokens.
+   * @returns {Promise<(Erc20Metadata & { tokenId?: string })[]>} An array of objects detailing the protocol tokens.
    */
-  getProtocolTokens(): Promise<Erc20Metadata[]>
+  getProtocolTokens(): Promise<(Erc20Metadata & { tokenId?: string })[]>
 
   /**
    *
@@ -77,10 +78,9 @@ export interface IProtocolAdapter {
    * @param {TransactionParamsInput} input tx input params
    * @returns {Promise<{to:string, data: string}>} transaction
    */
-  getTransactionParams?(input: {
-    action: string
-    inputs: unknown[]
-  }): Promise<{ to: string; data: string }>
+  getTransactionParams?(
+    input: GetTransactionParamsInput,
+  ): Promise<{ to: string; data: string }>
 
   /**
    *

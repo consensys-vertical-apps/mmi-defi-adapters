@@ -1,5 +1,6 @@
 import { Chain } from '../../../core/constants/chains'
 import { TimePeriod } from '../../../core/constants/timePeriod'
+import { WriteActions } from '../../../types/getTransactionParamsInput'
 import type { TestCase } from '../../../types/testCase'
 
 export const testCases: TestCase[] = [
@@ -54,13 +55,13 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     input: {
       productId: 'a-token',
-      action: 'supply',
-      inputs: [
-        '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-        '10000000000000000000',
-        '0x5B541d54e79052B34188db9A43F7b00ea8E2C4B1',
-        0,
-      ],
+      action: WriteActions.Deposit,
+      inputs: {
+        asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+        amount: '10000000000000000000',
+        onBehalfOf: '0x5B541d54e79052B34188db9A43F7b00ea8E2C4B1',
+        referralCode: 0,
+      },
     },
   },
   {
@@ -69,14 +70,14 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     input: {
       productId: 'a-token',
-      action: 'borrow',
-      inputs: [
-        '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-        '10000000000000000000',
-        1,
-        0,
-        '0x5B541d54e79052B34188db9A43F7b00ea8E2C4B1',
-      ],
+      action: WriteActions.Borrow,
+      inputs: {
+        asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+        amount: '10000000000000000000',
+        interestRateMode: 1,
+        referralCode: 0,
+        onBehalfOf: '0x5B541d54e79052B34188db9A43F7b00ea8E2C4B1',
+      },
     },
   },
   {
@@ -85,12 +86,12 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     input: {
       productId: 'a-token',
-      action: 'withdraw',
-      inputs: [
-        '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-        '10000000000000000000',
-        '0x5B541d54e79052B34188db9A43F7b00ea8E2C4B1',
-      ],
+      action: WriteActions.Withdraw,
+      inputs: {
+        asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+        amount: '10000000000000000000',
+        to: '0x5B541d54e79052B34188db9A43F7b00ea8E2C4B1',
+      },
     },
   },
   {
@@ -99,13 +100,13 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     input: {
       productId: 'a-token',
-      action: 'repay',
-      inputs: [
-        '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-        '10000000000000000000',
-        1,
-        '0x5B541d54e79052B34188db9A43F7b00ea8E2C4B1',
-      ],
+      action: WriteActions.Repay,
+      inputs: {
+        asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+        amount: '10000000000000000000',
+        interestRateMode: 1,
+        onBehalfOf: '0x5B541d54e79052B34188db9A43F7b00ea8E2C4B1',
+      },
     },
   },
 ]

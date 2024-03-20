@@ -1,10 +1,11 @@
 import { promises as fs } from 'fs'
 import path from 'path'
-import { ChainName } from '../core/constants/chains'
+import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
+import { GetTransactionParamsInput } from '../types/getTransactionParamsInput'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
@@ -13,6 +14,7 @@ import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/test
 import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
 import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
+import { testCases as fluxTestCases } from './flux/tests/testCases'
 import { testCases as gMXTestCases } from './gmx/tests/testCases'
 import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
@@ -20,6 +22,7 @@ import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
 import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3-eth/tests/testCases'
+import { testCases as morphoBlueTestCases } from './morpho-blue/tests/testCases'
 import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
 import { testCases as pancakeswapV2TestCases } from './pancakeswap-v2/tests/testCases'
 import { testCases as pendleTestCases } from './pendle/tests/testCases'
@@ -43,35 +46,40 @@ const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
 runAllTests()
 
 function runAllTests() {
-  runProtocolTests(Protocol.Stargate, stargateTestCases)
   runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
   runProtocolTests(Protocol.AaveV3, aaveV3TestCases)
-  runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
-  runProtocolTests(Protocol.Lido, lidoTestCases)
-  runProtocolTests(Protocol.Curve, curveTestCases)
-  runProtocolTests(Protocol.Maker, makerTestCases)
-  runProtocolTests(Protocol.GMX, gMXTestCases)
-  runProtocolTests(Protocol.Swell, swellTestCases)
-  runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
+  runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
+  runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
+  runProtocolTests(Protocol.CompoundV2, compoundV2TestCases)
   runProtocolTests(Protocol.Convex, convexTestCases)
-  runProtocolTests(
-    Protocol.MorphoCompoundV2,
-    morphoCompoundV2OptimizerTestCases,
-  )
+  runProtocolTests(Protocol.Curve, curveTestCases)
+  runProtocolTests(Protocol.Flux, fluxTestCases)
+  runProtocolTests(Protocol.GMX, gMXTestCases)
+  runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
+  runProtocolTests(Protocol.Lido, lidoTestCases)
+  runProtocolTests(Protocol.Maker, makerTestCases)
+  runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
+  runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
   runProtocolTests(
     Protocol.MorphoAaveV3ETHOptimizer,
     morphoAaveV3ETHOptimizerTestCases,
   )
-  runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
-  runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
-  runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
-  runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
-  runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
-  runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
+  runProtocolTests(Protocol.MorphoBlue, morphoBlueTestCases)
+  runProtocolTests(
+    Protocol.MorphoCompoundV2,
+    morphoCompoundV2OptimizerTestCases,
+  )
+  runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
   runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
-  runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
-  runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
+  runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
+  runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
   runProtocolTests(Protocol.StakeWise, stakeWiseTestCases)
+  runProtocolTests(Protocol.Stargate, stargateTestCases)
+  runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
+  runProtocolTests(Protocol.Swell, swellTestCases)
+  runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
+  runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
+  runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
   runProtocolTests(Protocol.Xfai, xfaiTestCases)
   runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
   runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
@@ -421,11 +429,13 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           async (_, testCase) => {
             const { snapshot } = await fetchSnapshot(testCase, protocolId)
 
-            const response = await defiProvider.getTransactionParams({
+            const inputs = {
               ...testCase.input,
               protocolId,
               chainId: testCase.chainId,
-            })
+            } as GetTransactionParamsInput & { chainId: Chain }
+
+            const response = await defiProvider.getTransactionParams(inputs)
 
             expect(response).toEqual(snapshot)
           },

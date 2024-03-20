@@ -4,21 +4,22 @@
 
 # Welcome to our DeFi Adapter Library! 🚀
 
-This library is designed to simplify and standardize the process of fetching and interacting with data from various DeFi protocols, which often have unique interfaces and data structures. Our adapters fetch and transform underlying protocol data into a standardized format that can be easily used by portfolio dashboards.
+This library is designed to simplify and standardise the process of fetching data and interacting with various DeFi protocols, which often have unique interfaces and data structures. Our adapters 1) fetch and transform underlying protocol data into a standardised format that can be easily used by portfolio dashboards and 2) generate transaction params to create and update protocol positions.
 
 ## Our Goals 🎯
 
 1. Connect users with DeFi protocols
 2. Benefit the wider ecosystem
-3. Simplify and standardize adapter building
-4. Provide the following data in a standardized format:
+3. Simplify and standardise adapter building
+4. Provide the following data in a standardised format:
    - DeFi positions by address, including the balance of underlying tokens such as USDC, WETH, etc.
    - Total Value Locked (TVL) by pool
    - APY/APR by pool
    - Daily profit and loss by address
-   - Price of LP token
+   - Unwrap LP tokens to underlying tokens (a.k.a get a price for the LP tokens)
    - Deposits by address
    - Withdrawals by address
+   - Crafted transactions params
 
 ## 🎥 DeFi Adapter Tutorial
 
@@ -117,7 +118,7 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
 1. What is a DeFi adapter?
 
-   A DeFi adapter is code that standardizes DeFi protocol data and positions, allowing for consistent data retrieval and interaction. It acts as a connector (a.k.a translator) between our dashboards and your DeFi products.
+   A DeFi adapter is code that standardises DeFi protocol data and positions, allowing for consistent data retrieval and interaction. It acts as a connector (a.k.a translator) between our dashboards and your DeFi products.
 
 2. What do these adapters do?
 
@@ -172,7 +173,7 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
 ## Overview of this library
 
-From left to right, get-onchain-data and convert to standardize format.
+From left to right, get-onchain-data and convert to standardise format.
 
 ![Alt text](high-level.png)
 

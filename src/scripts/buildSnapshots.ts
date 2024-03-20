@@ -10,6 +10,7 @@ import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { DefiProvider } from '../defiProvider'
+import { GetTransactionParamsInput } from '../types/getTransactionParamsInput'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
@@ -65,11 +66,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
                 await updateBlockNumber(protocolId, index, blockNumber)
 
-                await updateFilterProtocolTokenAddresses(
-                  protocolId,
-                  index,
-                  result.snapshot,
-                )
+                await updateFilters(protocolId, index, result.snapshot)
 
                 return result
               }
@@ -96,11 +93,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
                 await updateBlockNumber(protocolId, index, blockNumber)
 
-                await updateFilterProtocolTokenAddresses(
-                  protocolId,
-                  index,
-                  result.snapshot,
-                )
+                await updateFilters(protocolId, index, result.snapshot)
 
                 return result
               }
@@ -241,12 +234,14 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                 return result
               }
               case 'tx-params': {
+                const inputs = {
+                  chainId,
+                  protocolId,
+                  ...testCase.input,
+                } as GetTransactionParamsInput & { chainId: Chain }
+
                 return {
-                  snapshot: await defiProvider.getTransactionParams({
-                    chainId,
-                    protocolId,
-                    ...testCase.input,
-                  }),
+                  snapshot: await defiProvider.getTransactionParams(inputs),
                 }
               }
             }
@@ -339,7 +334,14 @@ async function updateBlockNumber(
   await writeCodeFile(testCasesFile, print(ast).code)
 }
 
-async function updateFilterProtocolTokenAddresses(
+/**
+ * Updates filterProtocolToken and filterTokenId properties
+ * @param protocolId
+ * @param index
+ * @param snapshot
+ * @returns
+ */
+async function updateFilters(
   protocolId: Protocol,
   index: number,
   snapshot: DefiPositionResponse[] | DefiProfitsResponse[],
@@ -355,6 +357,18 @@ async function updateFilterProtocolTokenAddresses(
   if (!protocolTokenAddresses.length) {
     return
   }
+
+  // Also update tokenId if exists
+
+  const protocolTokenIds = snapshot.flatMap((position) => {
+    if (!position.success) {
+      return []
+    }
+
+    return position.tokens
+      .map((token) => token.tokenId)
+      .filter((tokenId) => tokenId !== undefined)
+  })
 
   const testCasesFile = path.resolve(
     `./src/adapters/${protocolId}/tests/testCases.ts`,
@@ -404,6 +418,7 @@ async function updateFilterProtocolTokenAddresses(
           return false
         }
 
+        // update filterProtocolTokens
         inputNode.value.properties.push(
           b.objectProperty(
             b.identifier('filterProtocolTokens'),
@@ -414,6 +429,31 @@ async function updateFilterProtocolTokenAddresses(
             ),
           ),
         )
+
+        // update filterTokenIds if exists
+        if (protocolTokenIds.length > 0) {
+          const filterTokenIdsNode = inputNode.value.properties.find(
+            (property) =>
+              n.ObjectProperty.check(property) &&
+              n.Identifier.check(property.key) &&
+              property.key.name === 'filterTokenIds',
+          )
+
+          if (filterTokenIdsNode) {
+            return false
+          }
+
+          inputNode.value.properties.push(
+            b.objectProperty(
+              b.identifier('filterTokenIds'),
+              b.arrayExpression(
+                protocolTokenIds.map((tokenId) =>
+                  b.stringLiteral(tokenId as string),
+                ),
+              ),
+            ),
+          )
+        }
 
         return false
       }

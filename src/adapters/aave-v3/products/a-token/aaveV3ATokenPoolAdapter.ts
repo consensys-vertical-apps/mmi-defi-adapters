@@ -1,4 +1,3 @@
-import { AddressLike, BigNumberish } from 'ethers'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
@@ -6,8 +5,13 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
+import {
+  GetTransactionParamsInput,
+  WriteActions,
+} from '../../../../types/getTransactionParamsInput'
 import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
+import { Protocol } from '../../../protocols'
 import { PoolContract__factory } from '../../contracts'
 
 export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
@@ -51,23 +55,18 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   getTransactionParams({
     action,
     inputs,
-  }: {
-    action: string
-    inputs: unknown[]
-  }) {
+  }: Extract<
+    GetTransactionParamsInput,
+    { protocolId: typeof Protocol.AaveV3; productId: 'a-token' }
+  >) {
     const poolContract = PoolContract__factory.connect(
       getAddress(this.chainId),
       this.provider,
     )
 
     switch (action) {
-      case 'supply': {
-        const [asset, amount, onBehalfOf, referralCode] = inputs as [
-          AddressLike,
-          BigNumberish,
-          AddressLike,
-          BigNumberish,
-        ]
+      case WriteActions.Deposit: {
+        const { asset, amount, onBehalfOf, referralCode } = inputs
         return poolContract.supply.populateTransaction(
           asset,
           amount,
@@ -75,23 +74,13 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           referralCode,
         )
       }
-      case 'withdraw': {
-        const [asset, amount, to] = inputs as [
-          AddressLike,
-          BigNumberish,
-          AddressLike,
-        ]
+      case WriteActions.Withdraw: {
+        const { asset, amount, to } = inputs
         return poolContract.withdraw.populateTransaction(asset, amount, to)
       }
-      case 'borrow': {
-        const [asset, amount, interestRateMode, referralCode, onBehalfOf] =
-          inputs as [
-            AddressLike,
-            BigNumberish,
-            BigNumberish,
-            BigNumberish,
-            AddressLike,
-          ]
+      case WriteActions.Borrow: {
+        const { asset, amount, interestRateMode, referralCode, onBehalfOf } =
+          inputs
         return poolContract.borrow.populateTransaction(
           asset,
           amount,
@@ -100,13 +89,8 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           onBehalfOf,
         )
       }
-      case 'repay': {
-        const [asset, amount, interestRateMode, onBehalfOf] = inputs as [
-          AddressLike,
-          BigNumberish,
-          BigNumberish,
-          AddressLike,
-        ]
+      case WriteActions.Repay: {
+        const { asset, amount, interestRateMode, onBehalfOf } = inputs
         return poolContract.repay.populateTransaction(
           asset,
           amount,

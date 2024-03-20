@@ -19,11 +19,14 @@ import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import { DefiProvider } from '../defiProvider'
 import { chainFilter, protocolFilter } from './commandFilters'
+import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
+import { compoundV2SupplyMarketForkAdapterTemplate } from './templates/compoundV2SupplyMarketForkAdapter'
 import { defaultAdapterTemplate } from './templates/defaultAdapter'
 import { lpStakingAdapterTemplate } from './templates/lpStakingProtocolAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import { testCases } from './templates/testCases'
 import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
+import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
 import b = types.builders
 
@@ -43,6 +46,10 @@ const Templates: Record<string, TemplateBuilder> = {
   ['SimplePoolAdapter']: simplePoolAdapterTemplate,
   ['UniswapV2PoolForkAdapter']: uniswapV2PoolForkAdapterTemplate,
   ['LpStakingAdapter']: lpStakingAdapterTemplate,
+  ['CompoundV2SupplyMarketForkAdapter']:
+    compoundV2SupplyMarketForkAdapterTemplate,
+  ['CompoundV2BorrowMarketForkAdapter']:
+    compoundV2BorrowMarketForkAdapterTemplate,
 }
 
 export function newAdapterCommand(
@@ -287,6 +294,7 @@ async function buildAdapterFromTemplate(adapterSettings: NewAdapterAnswers) {
 async function buildIntegrationTests({
   protocolId,
   protocolKey,
+  productId,
 }: NewAdapterAnswers) {
   const testCasesFilePath = `./src/adapters/${protocolId}/tests/testCases.ts`
 
@@ -294,7 +302,7 @@ async function buildIntegrationTests({
     return
   }
 
-  await writeCodeFile(testCasesFilePath, testCases())
+  await writeCodeFile(testCasesFilePath, testCases(productId))
 
   const testsFile = path.resolve('./src/adapters/integration.test.ts')
   const contents = await fs.readFile(testsFile, 'utf-8')
@@ -328,7 +336,16 @@ async function buildIntegrationTests({
           ]),
         )
 
-        node.body.body = [...node.body.body, runProtocolTestsNode]
+        node.body.body.push(runProtocolTestsNode)
+
+        sortEntries(
+          node.body.body,
+          (entry) =>
+            (
+              ((entry as n.ExpressionStatement).expression as n.CallExpression)
+                .arguments[1] as n.Identifier
+            ).name,
+        )
       }
 
       this.traverse(path)
@@ -501,6 +518,11 @@ function addProtocolEntry(
     protocolListObjectNode.expression.properties.push(
       buildProtocolEntry(protocolKey, protocolId),
     )
+
+    sortEntries(
+      protocolListObjectNode.expression.properties,
+      (entry) => ((entry as n.ObjectProperty).key as n.Identifier).name,
+    )
   }
 }
 
@@ -538,6 +560,15 @@ function addAdapterEntries(
 
     supportedProtocolsObjectNode.properties.push(
       protocolChainsObjectPropertyNode,
+    )
+
+    sortEntries(
+      supportedProtocolsObjectNode.properties,
+      (entry) =>
+        (
+          ((entry as n.ObjectProperty).key as n.MemberExpression)
+            .property as n.Identifier
+        ).name,
     )
   }
 

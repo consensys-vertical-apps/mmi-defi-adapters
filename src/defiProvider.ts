@@ -19,6 +19,7 @@ import {
 } from './responseAdapters'
 import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
+import { GetTransactionParamsInput } from './types/getTransactionParamsInput'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   APRResponse,
@@ -32,14 +33,6 @@ import {
   TotalValueLockResponse,
   GetEventsRequestInput,
 } from './types/response'
-
-export type TransactionParamsInput = {
-  action: string
-  inputs: unknown[]
-  protocolId: Protocol
-  chainId: Chain
-  productId: string
-}
 
 export class DefiProvider {
   private parsedConfig
@@ -94,12 +87,14 @@ export class DefiProvider {
     filterChainIds,
     blockNumbers,
     filterProtocolTokens,
+    filterTokenIds,
   }: {
     userAddress: string
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
     blockNumbers?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
+    filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
@@ -110,6 +105,7 @@ export class DefiProvider {
         userAddress,
         blockNumber,
         protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        tokenIds: filterTokenIds,
       })
 
       const endTime = Date.now()
@@ -150,6 +146,7 @@ export class DefiProvider {
     toBlockNumbersOverride,
     filterProtocolTokens,
     includeRawValues = false,
+    filterTokenIds,
   }: {
     userAddress: string
     timePeriod?: TimePeriod
@@ -157,6 +154,7 @@ export class DefiProvider {
     filterChainIds?: Chain[]
     toBlockNumbersOverride?: Partial<Record<Chain, number>>
     filterProtocolTokens?: string[]
+    filterTokenIds?: string[]
     includeRawValues?: boolean
   }): Promise<DefiProfitsResponse[]> {
     const runner = async (
@@ -177,6 +175,7 @@ export class DefiProvider {
         toBlock,
         fromBlock,
         protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        tokenIds: filterTokenIds,
         includeRawValues,
       })
 
@@ -317,17 +316,15 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
-  async getTransactionParams({
-    protocolId,
-    action,
-    inputs,
-    chainId,
-    productId,
-  }: TransactionParamsInput): Promise<
+  async getTransactionParams(
+    input: GetTransactionParamsInput & { chainId: Chain },
+  ): Promise<
     AdapterResponse<{
       params: { to: string; data: string }
     }>
   > {
+    const { protocolId, chainId, productId } = input
+
     const provider = this.chainProvider.providers[chainId]
     let adapter: IProtocolAdapter
     try {
@@ -341,10 +338,7 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const txParams = await adapter.getTransactionParams!({
-        action,
-        inputs,
-      })
+      const txParams = await adapter.getTransactionParams!(input)
 
       return {
         params: txParams,

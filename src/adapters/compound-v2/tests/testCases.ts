@@ -1,5 +1,6 @@
 import { Chain } from '../../../core/constants/chains'
 import { TimePeriod } from '../../../core/constants/timePeriod'
+import { WriteActions } from '../../../types/getTransactionParamsInput'
 import type { TestCase } from '../../../types/testCase'
 
 export const testCases: TestCase[] = [
@@ -116,11 +117,11 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     input: {
       productId: 'supply-market',
-      action: 'supply',
-      inputs: [
-        '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-        '10000000000000000000',
-      ],
+      action: WriteActions.Deposit,
+      inputs: {
+        asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+        amount: '10000000000000000000',
+      },
     },
   },
   {
@@ -129,11 +130,11 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     input: {
       productId: 'supply-market',
-      action: 'withdraw',
-      inputs: [
-        '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-        '10000000000000000000',
-      ],
+      action: WriteActions.Withdraw,
+      inputs: {
+        asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+        amount: '10000000000000000000',
+      },
     },
   },
   {
@@ -143,10 +144,10 @@ export const testCases: TestCase[] = [
     input: {
       productId: 'borrow-market',
       action: 'borrow',
-      inputs: [
-        '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-        '10000000000000000000',
-      ],
+      inputs: {
+        asset: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
+        amount: '10000000000000000000',
+      },
     },
   },
   {
@@ -156,10 +157,10 @@ export const testCases: TestCase[] = [
     input: {
       productId: 'borrow-market',
       action: 'repay',
-      inputs: [
-        '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
-        '10000000000000000000',
-      ],
+      inputs: {
+        asset: '0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5',
+        amount: '10000000000000000000',
+      },
     },
   },
 ]

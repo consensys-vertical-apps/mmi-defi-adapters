@@ -1,5 +1,6 @@
 import type { Chain } from '../core/constants/chains'
 import type { TimePeriod } from '../core/constants/timePeriod'
+import { GetTransactionParamsInput } from './getTransactionParamsInput'
 
 export type TestCase = {
   key?: string
@@ -7,7 +8,11 @@ export type TestCase = {
 } & (
   | {
       method: 'positions'
-      input: { userAddress: string; filterProtocolTokens?: string[] }
+      input: {
+        userAddress: string
+        filterProtocolTokens?: string[]
+        filterTokenIds?: string[]
+      }
       blockNumber?: number
     }
   | {
@@ -17,6 +22,7 @@ export type TestCase = {
         timePeriod?: TimePeriod
         includeRawValues?: boolean
         filterProtocolTokens?: string[]
+        filterTokenIds?: string[]
       }
       blockNumber?: number
     }
@@ -68,6 +74,7 @@ export type TestCase = {
       method: 'prices'
       blockNumber?: number
       filterProtocolToken?: string
+      filterTokenId?: string
     }
   | {
       method: 'tvl'
@@ -83,10 +90,6 @@ export type TestCase = {
     }
   | {
       method: 'tx-params'
-      input: {
-        productId: string
-        action: string
-        inputs: unknown[]
-      }
+      input: Omit<GetTransactionParamsInput, 'protocolId'>
     }
 )
