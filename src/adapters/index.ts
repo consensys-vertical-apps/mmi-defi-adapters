@@ -33,6 +33,7 @@ import { MorphoAaveV3ETHOptimizerSupplyAdapter } from './morpho-aave-v3-eth/prod
 import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
 import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
 import { PancakeswapV2PoolAdapter } from './pancakeswap-v2/products/pool/pancakeswapV2PoolAdapter'
+import { PendleMarketAdapter } from './pendle/products/market/pendleMarketAdapter'
 import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
 import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
@@ -285,5 +286,12 @@ export const supportedProtocols: Record<
       CompoundV2SupplyMarketAdapter,
       CompoundV2BorrowMarketAdapter,
     ],
+  },
+
+  [Protocol.Pendle]: {
+    [Chain.Ethereum]: [PendleMarketAdapter],
+    [Chain.Arbitrum]: [PendleMarketAdapter],
+    [Chain.Bsc]: [PendleMarketAdapter],
+    [Chain.Optimism]: [PendleMarketAdapter],
   },
 }

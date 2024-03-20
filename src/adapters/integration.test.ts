@@ -22,6 +22,7 @@ import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testC
 import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3-eth/tests/testCases'
 import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
 import { testCases as pancakeswapV2TestCases } from './pancakeswap-v2/tests/testCases'
+import { testCases as pendleTestCases } from './pendle/tests/testCases'
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as quickswapV2TestCases } from './quickswap-v2/tests/testCases'
@@ -75,6 +76,7 @@ function runAllTests() {
   runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
   runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
   runProtocolTests(Protocol.CompoundV2, compoundV2TestCases)
+  runProtocolTests(Protocol.Pendle, pendleTestCases)
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
