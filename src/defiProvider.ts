@@ -1,4 +1,4 @@
-import { getAddress } from 'ethers'
+import { AddressLike, BigNumberish, getAddress } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
@@ -571,6 +571,10 @@ export class DefiProvider {
     })
   }
 
+  async getSupportedProducts(): Promise<any[]> {
+    return []
+  }
+
   private async runForAllProtocolsAndChains<ReturnType extends object>({
     runner,
     filterProtocolIds,
@@ -703,3 +707,80 @@ export class DefiProvider {
     }
   }
 }
+
+const AdapterMethods = {
+  getProtocolTokens: 'getProtocolTokens',
+  getPositions: 'getPositions',
+  getProfits: 'getProfits',
+  getProtocolTokenToUnderlyingTokenRate:
+    'getProtocolTokenToUnderlyingTokenRate',
+  getDeposits: 'getDeposits',
+  getWithdrawals: 'getWithdrawals',
+  getBorrows: 'getBorrows',
+  getRepays: 'getRepays',
+  getTotalValueLocked: 'getTotalValueLocked',
+  getApy: 'getApy',
+  getApr: 'getApr',
+  getTransactionParams: 'getTransactionParams',
+} as const
+type AdapterMethod = (typeof AdapterMethods)[keyof typeof AdapterMethods]
+
+const TransactionParamsActions = {
+  deposit: 'deposit',
+  withdraw: 'withdraw',
+  borrow: 'borrow',
+  repay: 'repay',
+} as const
+type TransactionParamsAction =
+  (typeof TransactionParamsActions)[keyof typeof TransactionParamsActions]
+
+// TODO: Move to response file
+// TODO: Fix anys
+type SupportedProducts = Record<
+  Chain,
+  Record<
+    Protocol,
+    Record<
+      string,
+      Omit<Record<AdapterMethod, any>, 'getTransactionParams'> & {
+        getTransactionParams: Record<string, any> & {
+          actions: Record<TransactionParamsAction, any>
+        }
+      }
+    >
+  >
+>
+
+const supportedProducts: SupportedProducts = {
+  [Chain.Ethereum]: {
+    [Protocol.AaveV2]: {
+      ['a-token']: {
+        [AdapterMethods.getPositions]: {
+          enabled: true,
+        },
+        [AdapterMethods.getTransactionParams]: {
+          enabled: true,
+          actions: {
+            [TransactionParamsActions.deposit]: {
+              enabled: true,
+              inputs: {}, // TODO: Zod Schema
+            },
+            [TransactionParamsActions.withdraw]: {
+              enabled: true,
+              inputs: {}, // TODO: Zod Schema
+            },
+            [TransactionParamsActions.borrow]: {
+              enabled: true,
+              inputs: {}, // TODO: Zod Schema
+            },
+            [TransactionParamsActions.repay]: {
+              enabled: true,
+              inputs: {}, // TODO: Zod Schema
+            },
+          },
+        },
+      },
+    },
+  },
+  [Chain.Arbitrum]: {},
+} as unknown as SupportedProducts
