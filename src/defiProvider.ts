@@ -6,7 +6,7 @@ import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
-import { ProviderMissingError } from './core/errors/errors'
+import { NotImplementedError, ProviderMissingError } from './core/errors/errors'
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
@@ -298,7 +298,7 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionMovements = await adapter.getWithdrawals({
+      const positionMovements = await adapter.getWithdrawals?.({
         protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
@@ -307,9 +307,9 @@ export class DefiProvider {
       })
 
       return {
-        movements: positionMovements.map((value) =>
-          enrichMovements(value, chainId),
-        ),
+        movements:
+          positionMovements?.map((value) => enrichMovements(value, chainId)) ||
+          [],
       }
     }
 
@@ -372,7 +372,7 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionMovements = await adapter.getDeposits({
+      const positionMovements = await adapter.getDeposits?.({
         protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
@@ -381,9 +381,9 @@ export class DefiProvider {
       })
 
       return {
-        movements: positionMovements.map((value) =>
-          enrichMovements(value, chainId),
-        ),
+        movements:
+          positionMovements?.map((value) => enrichMovements(value, chainId)) ||
+          [],
       }
     }
 
@@ -511,12 +511,16 @@ export class DefiProvider {
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<APYResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
+      if (!adapter.getApy) {
+        throw new NotImplementedError()
+      }
+
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const protocolTokens = await adapter.getProtocolTokens()
       const tokens = await Promise.all(
         protocolTokens.map(({ address }) =>
-          adapter.getApy({
+          adapter.getApy!({
             protocolTokenAddress: getAddress(address),
             blockNumber,
           }),
@@ -546,12 +550,16 @@ export class DefiProvider {
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<APRResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
+      if (!adapter.getApr) {
+        throw new NotImplementedError()
+      }
+
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const protocolTokens = await adapter.getProtocolTokens()
       const tokens = await Promise.all(
         protocolTokens.map(({ address }) =>
-          adapter.getApr({
+          adapter.getApr!({
             protocolTokenAddress: getAddress(address),
             blockNumber,
           }),

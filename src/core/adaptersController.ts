@@ -10,6 +10,41 @@ import { Chain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 
+const AdapterMethods = {
+  getProtocolTokens: 'getProtocolTokens',
+  getPositions: 'getPositions',
+  getProfits: 'getProfits',
+  getProtocolTokenToUnderlyingTokenRate:
+    'getProtocolTokenToUnderlyingTokenRate',
+  getDeposits: 'getDeposits',
+  getWithdrawals: 'getWithdrawals',
+  getBorrows: 'getBorrows',
+  getRepays: 'getRepays',
+  getTotalValueLocked: 'getTotalValueLocked',
+  getApy: 'getApy',
+  getApr: 'getApr',
+  getTransactionParams: 'getTransactionParams',
+} as const
+type AdapterMethod = (typeof AdapterMethods)[keyof typeof AdapterMethods]
+
+const TransactionParamsActions = {
+  deposit: 'deposit',
+  withdraw: 'withdraw',
+  borrow: 'borrow',
+  repay: 'repay',
+} as const
+type TransactionParamsAction =
+  (typeof TransactionParamsActions)[keyof typeof TransactionParamsActions]
+
+type SupportMap = Partial<
+  Record<
+    Protocol,
+    Partial<
+      Record<Chain, Record<string, Record<AdapterMethod, { enabled: boolean }>>>
+    >
+  >
+>
+
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
     new Map()
@@ -180,5 +215,51 @@ export class AdaptersController {
     }
 
     return adapters
+  }
+
+  supportedActions(): SupportMap {
+    const supportMap: SupportMap = {}
+    for (const [chainId, protocols] of this.adapters.entries()) {
+      for (const [protocolId, products] of protocols.entries()) {
+        if (!supportMap[protocolId]) {
+          supportMap[protocolId] = {}
+        }
+
+        supportMap[protocolId]![chainId] = {}
+
+        for (const [productId, adapter] of products.entries()) {
+          supportMap[protocolId]![chainId]![productId] = Object.values(
+            AdapterMethods,
+          ).reduce(
+            (acc, adapterMethod) => {
+              if (adapterMethod === AdapterMethods.getProfits) {
+                const isBorrow =
+                  adapter.getProtocolDetails().positionType ===
+                  PositionType.Borrow
+
+                acc[adapterMethod] = {
+                  enabled:
+                    typeof adapter.getPositions === 'function' &&
+                    (isBorrow
+                      ? typeof adapter.getBorrows === 'function' &&
+                        typeof adapter.getRepays === 'function'
+                      : typeof adapter.getDeposits === 'function' &&
+                        typeof adapter.getWithdrawals === 'function'),
+                }
+              } else {
+                acc[adapterMethod] = {
+                  enabled: typeof adapter[adapterMethod] === 'function',
+                }
+              }
+
+              return acc
+            },
+            {} as Record<AdapterMethod, { enabled: boolean }>,
+          )
+        }
+      }
+    }
+
+    return supportMap
   }
 }

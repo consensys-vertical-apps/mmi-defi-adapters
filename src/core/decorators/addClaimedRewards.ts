@@ -33,7 +33,7 @@ export function AddClaimedRewards({
             return
           }
 
-          const claimedRewards = await rewardAdapter.getWithdrawals(input)
+          const claimedRewards = await rewardAdapter.getWithdrawals!(input)
 
           movements.push(...claimedRewards)
         }),

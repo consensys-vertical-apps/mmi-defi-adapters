@@ -113,7 +113,7 @@ export async function getProfits({
       // All other types have withdrawals and deposits only
       const [withdrawals, deposits, repays, borrows] = await Promise.all([
         !isBorrow
-          ? adapter.getWithdrawals(getEventsInput).then((result) => {
+          ? adapter.getWithdrawals?.(getEventsInput).then((result) => {
               rawWithdrawals.push(...result)
               return aggregateFiatBalancesFromMovements(result)
             })
@@ -127,7 +127,7 @@ export async function getProfits({
               }
             >),
         !isBorrow
-          ? adapter.getDeposits(getEventsInput).then((result) => {
+          ? adapter.getDeposits?.(getEventsInput).then((result) => {
               rawDeposits.push(...result)
               return aggregateFiatBalancesFromMovements(result)
             })
@@ -191,8 +191,8 @@ export async function getProfits({
       const endPositionValue = formatUnitsIfPossible(
         endPositionValues[key]?.usdRaw,
       )
-      const withdrawal = formatUnitsIfPossible(withdrawals[key]?.usdRaw)
-      const deposit = formatUnitsIfPossible(deposits[key]?.usdRaw)
+      const withdrawal = formatUnitsIfPossible(withdrawals?.[key]?.usdRaw)
+      const deposit = formatUnitsIfPossible(deposits?.[key]?.usdRaw)
       const repay = formatUnitsIfPossible(repays?.[key]?.usdRaw)
       const borrow = formatUnitsIfPossible(borrows?.[key]?.usdRaw)
 
@@ -214,15 +214,15 @@ export async function getProfits({
       const hasTokensWithoutUSDPrices =
         startPositionValues[key]?.hasTokensWithoutUSDPrices ||
         endPositionValues[key]?.hasTokensWithoutUSDPrices ||
-        deposits[key]?.hasTokensWithoutUSDPrices ||
-        withdrawals[key]?.hasTokensWithoutUSDPrices
+        deposits![key]?.hasTokensWithoutUSDPrices ||
+        withdrawals![key]?.hasTokensWithoutUSDPrices
 
       const tokensWithoutUSDPrices = hasTokensWithoutUSDPrices
         ? [
             ...(startPositionValues[key]?.tokensWithoutUSDPrices ?? []),
             ...(endPositionValues[key]?.tokensWithoutUSDPrices ?? []),
-            ...(deposits[key]?.tokensWithoutUSDPrices ?? []),
-            ...(withdrawals[key]?.tokensWithoutUSDPrices ?? []),
+            ...(deposits![key]?.tokensWithoutUSDPrices ?? []),
+            ...(withdrawals![key]?.tokensWithoutUSDPrices ?? []),
           ]
         : undefined
 

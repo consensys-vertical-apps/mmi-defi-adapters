@@ -89,7 +89,7 @@ export interface IProtocolAdapter {
    * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
    * @returns {Promise<MovementsByBlock[]>} Array of objects detailing withdrawal events within the specified block range.
    */
-  getWithdrawals(input: GetEventsInput): Promise<MovementsByBlock[]>
+  getWithdrawals?(input: GetEventsInput): Promise<MovementsByBlock[]>
 
   /**
    *
@@ -98,7 +98,8 @@ export interface IProtocolAdapter {
    * @param {GetEventsInput} input - Object specifying user-address, protocol-token-address (pool), and the block range.
    * @returns {Promise<MovementsByBlock[]>} Array of objects detailing deposit events within the specified block range.
    */
-  getDeposits(input: GetEventsInput): Promise<MovementsByBlock[]>
+  getDeposits?(input: GetEventsInput): Promise<MovementsByBlock[]>
+
   /**
    *
    * @remarks Returns the user's withdrawals from a position
@@ -135,7 +136,7 @@ export interface IProtocolAdapter {
    * @param {GetApyInput} input - Object with protocol-token-address and optional blockNumber override.
    * @returns {Promise<ProtocolTokenApy>} Object detailing the Annual Percentage Yield for each protocol pool without reward APY.
    */
-  getApy(input: GetApyInput): Promise<ProtocolTokenApy>
+  getApy?(input: GetApyInput): Promise<ProtocolTokenApy>
 
   /**
    *
@@ -144,5 +145,5 @@ export interface IProtocolAdapter {
    * @param {GetAprInput} input - Object with protocol-token-address and optional blockNumber override.
    * @returns {Promise<ProtocolTokenApr>} Object detailing the Annual Percentage Rate without reward APR for each protocol pool.
    */
-  getApr(input: GetAprInput): Promise<ProtocolTokenApr>
+  getApr?(input: GetAprInput): Promise<ProtocolTokenApr>
 }
