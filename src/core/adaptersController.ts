@@ -3,6 +3,7 @@ import {
   AssetType,
   PositionType,
   ProtocolAdapterParams,
+  ProtocolDetails,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
@@ -14,6 +15,29 @@ type Support = Partial<
   Record<
     Protocol,
     Record<string, Partial<Record<Chain, Record<string, never>>>>
+  >
+>
+
+type Support2 = Partial<
+  Record<
+    Protocol,
+    Record<
+      string,
+      {
+        protocolDetails: ProtocolDetails
+        chains: Chain[]
+      }
+    >
+  >
+>
+
+type Support3 = Partial<
+  Record<
+    Protocol,
+    {
+      protocolDetails: ProtocolDetails
+      chains: Chain[]
+    }[]
   >
 >
 
@@ -217,6 +241,78 @@ export class AdaptersController {
           }
 
           support[protocolId]![productId]![chainId] = {}
+        }
+      }
+    }
+
+    return support
+  }
+
+  getSupport2({
+    filterProtocolIds,
+  }: {
+    filterProtocolIds: Protocol[] | undefined
+  }): Support2 {
+    const support: Support2 = {}
+    for (const [chainId, protocols] of this.adapters.entries()) {
+      for (const [protocolId, products] of protocols.entries()) {
+        if (filterProtocolIds && !filterProtocolIds.includes(protocolId)) {
+          continue
+        }
+
+        if (!support[protocolId]) {
+          support[protocolId] = {}
+        }
+
+        for (const [productId, adapter] of products.entries()) {
+          if (!support[protocolId]![productId]) {
+            support[protocolId]![productId] = {
+              protocolDetails: adapter.getProtocolDetails(),
+              chains: [],
+            }
+          }
+
+          support[protocolId]![productId]!.chains.push(chainId)
+        }
+      }
+    }
+
+    return support
+  }
+
+  getSupport3({
+    filterProtocolIds,
+  }: {
+    filterProtocolIds: Protocol[] | undefined
+  }): Support3 {
+    const support: Support3 = {}
+    for (const [chainId, protocols] of this.adapters.entries()) {
+      for (const [protocolId, products] of protocols.entries()) {
+        if (filterProtocolIds && !filterProtocolIds.includes(protocolId)) {
+          continue
+        }
+
+        if (!support[protocolId]) {
+          support[protocolId] = []
+        }
+
+        for (const [_productId, adapter] of products.entries()) {
+          let product = support[protocolId]!.find(
+            (p) =>
+              adapter.getProtocolDetails().productId ===
+              p.protocolDetails.productId,
+          )
+
+          if (!product) {
+            product = {
+              protocolDetails: adapter.getProtocolDetails(),
+              chains: [],
+            }
+
+            support[protocolId]!.push(product)
+          }
+
+          product.chains.push(chainId)
         }
       }
     }

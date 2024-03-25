@@ -574,8 +574,15 @@ export class DefiProvider {
   getSupport(input: {
     filterProtocolIds: Protocol[] | undefined
     filterChainIds: Chain[] | undefined
+    version: string
   }) {
-    return this.adaptersController.getSupport(input)
+    if (input.version === '3') {
+      return this.adaptersController.getSupport3(input)
+    } else if (input.version === '2') {
+      return this.adaptersController.getSupport2(input)
+    } else {
+      return this.adaptersController.getSupport(input)
+    }
   }
 
   private async runForAllProtocolsAndChains<ReturnType extends object>({
