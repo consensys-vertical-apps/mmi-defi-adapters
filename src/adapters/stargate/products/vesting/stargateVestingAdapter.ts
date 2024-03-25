@@ -6,6 +6,7 @@ import {
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -22,7 +23,6 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { StargateVotingEscrow__factory } from '../../contracts'
-import { NotImplementedError } from '../../../../core/errors/errors'
 
 type StargateVestingMetadata = {
   contractToken: Erc20Metadata

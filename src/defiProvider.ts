@@ -1,4 +1,4 @@
-import { AddressLike, BigNumberish, getAddress } from 'ethers'
+import { getAddress } from 'ethers'
 import { supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
