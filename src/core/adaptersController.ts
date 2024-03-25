@@ -10,6 +10,13 @@ import { Chain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
 
+type Support = Partial<
+  Record<
+    Protocol,
+    Record<string, Partial<Record<Chain, Record<string, never>>>>
+  >
+>
+
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
     new Map()
@@ -180,5 +187,40 @@ export class AdaptersController {
     }
 
     return adapters
+  }
+
+  getSupport({
+    filterProtocolIds,
+    filterChainIds,
+  }: {
+    filterProtocolIds: Protocol[] | undefined
+    filterChainIds: Chain[] | undefined
+  }): Support {
+    const support: Support = {}
+    for (const [chainId, protocols] of this.adapters.entries()) {
+      if (filterChainIds && !filterChainIds.includes(chainId)) {
+        continue
+      }
+
+      for (const [protocolId, products] of protocols.entries()) {
+        if (filterProtocolIds && !filterProtocolIds.includes(protocolId)) {
+          continue
+        }
+
+        if (!support[protocolId]) {
+          support[protocolId] = {}
+        }
+
+        for (const [productId, _adapter] of products.entries()) {
+          if (!support[protocolId]![productId]) {
+            support[protocolId]![productId] = {}
+          }
+
+          support[protocolId]![productId]![chainId] = {}
+        }
+      }
+    }
+
+    return support
   }
 }

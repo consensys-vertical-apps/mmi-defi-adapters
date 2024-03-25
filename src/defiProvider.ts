@@ -571,6 +571,13 @@ export class DefiProvider {
     })
   }
 
+  getSupport(input: {
+    filterProtocolIds: Protocol[] | undefined
+    filterChainIds: Chain[] | undefined
+  }) {
+    return this.adaptersController.getSupport(input)
+  }
+
   private async runForAllProtocolsAndChains<ReturnType extends object>({
     runner,
     filterProtocolIds,
