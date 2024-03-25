@@ -6,20 +6,13 @@ import {
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { ResolveUnderlyingMovements } from '../../../../core/decorators/resolveUnderlyingPositions'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
   GetEventsInput,
   MovementsByBlock,
-  GetAprInput,
-  GetApyInput,
-  GetTotalValueLockedInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
   ProtocolAdapterParams,
@@ -120,26 +113,12 @@ export class CurveStakingAdapter
     ]
   }
 
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
     const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
 
     return protocolToken
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 
   @ResolveUnderlyingMovements

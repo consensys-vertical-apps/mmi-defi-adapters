@@ -14,14 +14,6 @@ import {
   GetPositionsInput,
   GetEventsInput,
   MovementsByBlock,
-  GetTotalValueLockedInput,
-  GetApyInput,
-  GetAprInput,
-  GetConversionRateInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenUnderlyingRate,
-  ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
   Underlying,
@@ -276,18 +268,6 @@ export class IZiswapAdapter extends SimplePoolAdapter {
     })
   }
 
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  async getProtocolTokenToUnderlyingTokenRate(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
-    throw new NotImplementedError()
-  }
-
   protected async getUnderlyingTokenBalances(_input: {
     userAddress: string
     protocolTokenBalance: TokenBalance
@@ -299,14 +279,6 @@ export class IZiswapAdapter extends SimplePoolAdapter {
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

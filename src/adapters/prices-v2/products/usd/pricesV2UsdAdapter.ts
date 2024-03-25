@@ -10,16 +10,8 @@ import {
   ProtocolDetails,
   PositionType,
   GetPositionsInput,
-  GetEventsInput,
-  MovementsByBlock,
-  GetTotalValueLockedInput,
-  GetApyInput,
-  GetAprInput,
   GetConversionRateInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
-  ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
   AssetType,
@@ -92,33 +84,6 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's withdrawals per position by block range
-   */
-  async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  /**
-   * Update me.
-   * Add logic to get user's deposits per position by block range
-   */
-  async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  /**
-   * Update me.
-   * Add logic to get tvl in a pool
-   *
-   */
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
   private async getEthUsdPriceFromChainlink(blockNumber: number | undefined) {
     const usdFeed = ChainLink__factory.connect(
       priceAdapterConfig[this.chainId as keyof typeof priceAdapterConfig]
@@ -174,14 +139,6 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
         },
       ],
     }
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
   }
 
   private calculateERC20PriceInUsd({

@@ -18,12 +18,6 @@ import {
   PositionType,
   GetEventsInput,
   MovementsByBlock,
-  GetAprInput,
-  GetApyInput,
-  GetTotalValueLockedInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenTvl,
   TokenType,
   GetConversionRateInput,
   GetPositionsInput,
@@ -369,20 +363,6 @@ export class GMXGlpAdapter
       baseRate: 1,
       tokens: underlyingTokenRates,
     }
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 
   @ResolveUnderlyingMovements

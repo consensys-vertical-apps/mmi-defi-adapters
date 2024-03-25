@@ -218,6 +218,10 @@ export class DefiProvider {
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<PricePerShareResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
+      if (!adapter.getProtocolTokenToUnderlyingTokenRate) {
+        throw new NotImplementedError()
+      }
+
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       let protocolTokens = []
@@ -236,7 +240,7 @@ export class DefiProvider {
           const startTime = Date.now()
 
           const protocolTokenUnderlyingRate =
-            await adapter.getProtocolTokenToUnderlyingTokenRate({
+            await adapter.getProtocolTokenToUnderlyingTokenRate!({
               protocolTokenAddress: getAddress(address),
               blockNumber,
             })
@@ -482,6 +486,10 @@ export class DefiProvider {
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<TotalValueLockResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
+      if (!adapter.getTotalValueLocked) {
+        throw new NotImplementedError()
+      }
+
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const tokens = await adapter.getTotalValueLocked({ blockNumber })

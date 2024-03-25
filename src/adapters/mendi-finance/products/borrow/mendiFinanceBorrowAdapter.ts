@@ -16,10 +16,8 @@ import {
   PositionType,
   GetAprInput,
   GetApyInput,
-  GetTotalValueLockedInput,
   ProtocolTokenApr,
   ProtocolTokenApy,
-  ProtocolTokenTvl,
   UnderlyingTokenRate,
   TokenBalance,
   Underlying,
@@ -153,12 +151,6 @@ export class MendiFinanceBorrowAdapter
     protocolTokenBalance: TokenBalance
     blockNumber?: number | undefined
   }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 

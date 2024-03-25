@@ -4,17 +4,10 @@ import {
   Underlying,
   TokenType,
   UnderlyingTokenRate,
-  GetEventsInput,
-  MovementsByBlock,
-  GetApyInput,
-  ProtocolTokenApy,
-  GetAprInput,
-  ProtocolTokenApr,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
-import { NotImplementedError } from '../errors/errors'
 import { logger } from '../utils/logger'
 import { buildMetadata } from './compoundV2BuildMetadata'
 import { SimplePoolAdapter } from './SimplePoolAdapter'
@@ -140,21 +133,5 @@ export abstract class CompoundV2SupplyMarketForkAdapter
         underlyingRateRaw: adjustedExchangeRate,
       },
     ]
-  }
-
-  getBorrows(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  getRepays(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
   }
 }

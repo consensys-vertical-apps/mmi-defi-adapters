@@ -6,18 +6,11 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
-  GetTotalValueLockedInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
   TokenType,
@@ -103,12 +96,6 @@ export class CurvePoolAdapter
     })
   }
 
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
   protected async fetchProtocolTokenMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata> {
@@ -165,14 +152,6 @@ export class CurvePoolAdapter
         ...underlyingToken,
       }
     })
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 
   protected async fetchUnderlyingTokensMetadata(

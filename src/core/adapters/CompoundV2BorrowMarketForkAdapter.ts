@@ -15,12 +15,6 @@ import {
   MovementsByBlock,
   GetConversionRateInput,
   ProtocolTokenUnderlyingRate,
-  GetTotalValueLockedInput,
-  ProtocolTokenTvl,
-  GetApyInput,
-  ProtocolTokenApy,
-  GetAprInput,
-  ProtocolTokenApr,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
@@ -286,28 +280,6 @@ export abstract class CompoundV2BorrowMarketForkAdapter
   getProtocolTokenToUnderlyingTokenRate(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
-    throw new NotImplementedError()
-  }
-
-  getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 }

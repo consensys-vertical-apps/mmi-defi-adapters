@@ -2,17 +2,14 @@ import { parseEther, getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { SECONDS_PER_YEAR } from '../../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   GetTotalValueLockedInput,
   UnderlyingTokenRate,
   ProtocolTokenTvl,
-  ProtocolTokenApr,
   ProtocolTokenApy,
   ProtocolDetails,
   PositionType,
   TokenBalance,
-  GetAprInput,
   GetApyInput,
   Underlying,
   AssetType,
@@ -237,9 +234,5 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
         underlyingRateRaw,
       },
     ]
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
   }
 }

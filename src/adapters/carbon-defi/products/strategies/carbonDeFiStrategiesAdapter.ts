@@ -14,14 +14,8 @@ import {
   GetPositionsInput,
   GetEventsInput,
   MovementsByBlock,
-  GetTotalValueLockedInput,
-  GetApyInput,
-  GetAprInput,
   GetConversionRateInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
-  ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
   AssetType,
@@ -90,6 +84,7 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     throw new NotImplementedError()
   }
+
   private protocolTokenName(token0Symbol: string, token1Symbol: string) {
     return `${token0Symbol} / ${token1Symbol}`
   }
@@ -221,23 +216,9 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     )
   }
 
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
   async getProtocolTokenToUnderlyingTokenRate(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

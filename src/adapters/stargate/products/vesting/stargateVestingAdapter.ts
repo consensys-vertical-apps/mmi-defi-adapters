@@ -6,30 +6,23 @@ import {
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  GetAprInput,
-  GetApyInput,
   GetPositionsInput,
-  GetTotalValueLockedInput,
-  MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolDetails,
-  ProtocolTokenUnderlyingRate,
   ProtocolPosition,
-  ProtocolTokenTvl,
   TokenType,
   AssetType,
+  ProtocolTokenUnderlyingRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { StargateVotingEscrow__factory } from '../../contracts'
+import { NotImplementedError } from '../../../../core/errors/errors'
 
 type StargateVestingMetadata = {
   contractToken: Erc20Metadata
@@ -132,28 +125,6 @@ export class StargateVestingAdapter
   }
 
   async getProtocolTokenToUnderlyingTokenRate(): Promise<ProtocolTokenUnderlyingRate> {
-    throw new NotImplementedError()
-  }
-
-  async getWithdrawals(): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  async getDeposits(): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

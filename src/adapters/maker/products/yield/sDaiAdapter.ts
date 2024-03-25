@@ -1,17 +1,10 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { RAY_POSITIONS } from '../../../../core/constants/RAY'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
-  GetTotalValueLockedInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
   TokenType,
@@ -74,12 +67,6 @@ export class SDaiAdapter extends SimplePoolAdapter {
     ]
   }
 
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
     return {
       address: getAddress('0x83f20f44975d03b1b09e64809b757c47f942beea'),
@@ -128,13 +115,5 @@ export class SDaiAdapter extends SimplePoolAdapter {
         underlyingRateRaw: pricePerShareRaw,
       },
     ]
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 }

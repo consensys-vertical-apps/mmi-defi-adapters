@@ -125,7 +125,7 @@ export interface IProtocolAdapter {
    * @param {GetTotalValueLockedInput} input - Object with optional blockNumber override.
    * @returns {Promise<ProtocolTokenTvl[]>} An array of objects detailing the total value locked in each protocol pool.
    */
-  getTotalValueLocked(
+  getTotalValueLocked?(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]>
 
