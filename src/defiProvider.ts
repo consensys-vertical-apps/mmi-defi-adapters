@@ -579,8 +579,8 @@ export class DefiProvider {
     })
   }
 
-  async getSupportedProducts(): Promise<any[]> {
-    return []
+  getSupport() {
+    return this.adaptersController.getSupport()
   }
 
   private async runForAllProtocolsAndChains<ReturnType extends object>({

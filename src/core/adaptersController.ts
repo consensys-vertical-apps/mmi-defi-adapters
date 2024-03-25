@@ -217,7 +217,7 @@ export class AdaptersController {
     return adapters
   }
 
-  supportedActions(): SupportMap {
+  getSupport(): SupportMap {
     const supportMap: SupportMap = {}
     for (const [chainId, protocols] of this.adapters.entries()) {
       for (const [protocolId, products] of protocols.entries()) {

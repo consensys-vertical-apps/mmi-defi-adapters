@@ -71,6 +71,26 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
   )
   protocolCommand(program, 'apr', defiProvider.getApr.bind(defiProvider))
   protocolCommand(program, 'apy', defiProvider.getApy.bind(defiProvider))
+
+  program
+    .command('support')
+    .option(
+      '-p, --protocols <protocols>',
+      'comma-separated protocols filter (e.g. stargate,aave-v2)',
+    )
+    .option(
+      '-c, --chains <chains>',
+      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+    )
+    .showHelpAfterError()
+    .action(async ({ protocols, chains }) => {
+      const filterProtocolIds = multiProtocolFilter(protocols)
+      const filterChainIds = multiChainFilter(chains)
+
+      const data = defiProvider.getSupport()
+
+      printResponse(data)
+    })
 }
 
 function addressCommand(

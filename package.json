@@ -39,6 +39,7 @@
     "apr": "npm run adapters-cli apr --",
     "deposits": "npm run adapters-cli deposits --",
     "withdrawals": "npm run adapters-cli withdrawals --",
+    "support": "npm run adapters-cli support --",
     "stress": "npm run adapters-cli stress --",
     "fix": "run-s fix:*",
     "fix:lint": "eslint \"src/**/*.ts\" --fix",
