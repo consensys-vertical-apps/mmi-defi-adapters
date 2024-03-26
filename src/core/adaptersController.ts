@@ -207,9 +207,9 @@ export class AdaptersController {
 
         for (const [_productId, adapter] of products.entries()) {
           let product = support[protocolId]!.find(
-            (p) =>
+            (productEntry) =>
               adapter.getProtocolDetails().productId ===
-              p.protocolDetails.productId,
+              productEntry.protocolDetails.productId,
           )
 
           if (!product) {
