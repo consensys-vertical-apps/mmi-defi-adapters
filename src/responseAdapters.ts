@@ -5,17 +5,18 @@ import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
   MovementsByBlock,
-  ProtocolTokenTvl,
   ProtocolTokenUnderlyingRate,
   TokenBalance,
   Underlying,
   TokenType,
+  TokenTvl,
+  UnderlyingTokenTvl,
 } from './types/adapter'
 import {
   DisplayMovementsByBlock,
   DisplayPosition,
-  DisplayProtocolTokenTvl,
   DisplayProtocolTokenUnderlyingRate,
+  DisplayTokenTvl,
 } from './types/response'
 
 export function enrichPositionBalance<
@@ -120,25 +121,33 @@ export function enrichMovements(
   }
 }
 
-export function enrichTotalValueLocked(
-  protocolTokenTvl: ProtocolTokenTvl,
-  chainId: Chain,
-): DisplayProtocolTokenTvl {
+export function enrichTotalValueLocked<
+  TvlBalance extends TokenTvl & {
+    type: TokenType
+    tokens?: UnderlyingTokenTvl[]
+    priceRaw?: bigint
+  },
+>(tokenTvl: TvlBalance, chainId: Chain): DisplayTokenTvl<TvlBalance> {
   return {
-    ...protocolTokenTvl,
-    totalSupply: +formatUnits(
-      protocolTokenTvl.totalSupplyRaw,
-      protocolTokenTvl.decimals,
-    ),
-    tokens: protocolTokenTvl.tokens?.map((underlyingTokenTvl) => {
-      return {
-        ...underlyingTokenTvl,
-        totalSupply: +formatUnits(
-          underlyingTokenTvl.totalSupplyRaw,
-          underlyingTokenTvl.decimals,
-        ),
-        iconUrl: buildTrustAssetIconUrl(chainId, underlyingTokenTvl.address),
-      }
-    }),
-  }
+    ...tokenTvl,
+    totalSupply: +formatUnits(tokenTvl.totalSupplyRaw, tokenTvl.decimals),
+    price: tokenTvl.priceRaw
+      ? +formatUnits(
+          tokenTvl.priceRaw,
+          priceAdapterConfig[chainId as keyof typeof priceAdapterConfig]
+            .decimals,
+        )
+      : undefined,
+    priceRaw: undefined,
+    ...(tokenTvl.tokens
+      ? {
+          tokens: tokenTvl.tokens?.map((underlyingTokenTvl) =>
+            enrichTotalValueLocked(underlyingTokenTvl, chainId),
+          ),
+        }
+      : {}),
+    ...(tokenTvl.type === TokenType.Underlying
+      ? { iconUrl: buildTrustAssetIconUrl(chainId, tokenTvl.address) }
+      : {}),
+  } as DisplayTokenTvl<TvlBalance>
 }

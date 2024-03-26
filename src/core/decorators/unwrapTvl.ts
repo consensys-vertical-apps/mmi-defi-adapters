@@ -1,11 +1,9 @@
 import { Protocol } from '../../adapters/protocols'
 import {
-  GetEventsInput,
-  GetPositionsInput,
-  MovementsByBlock,
-  TokenBalance,
-  Underlying,
+  GetTotalValueLockedInput,
+  UnderlyingTokenTvl,
 } from '../../types/adapter'
+import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { SimplePoolAdapter } from '../adapters/SimplePoolAdapter'
 import {
@@ -14,45 +12,21 @@ import {
 } from '../errors/errors'
 import { logger } from '../utils/logger'
 
-export function ResolveUnderlyingPositions(
-  originalMethod: SimplePoolAdapter['getPositions'],
+export function UnwrapTvl(
+  originalMethod: SimplePoolAdapter['getTotalValueLocked'],
   _context: ClassMethodDecoratorContext,
 ) {
   async function replacementMethod(
     this: IProtocolAdapter,
-    input: GetPositionsInput,
-  ) {
-    const protocolTokens = await originalMethod.call(this, input)
-
-    await recursivePositionSolver({
-      adapter: this,
-      tokenPositions: protocolTokens,
-      blockNumber: input.blockNumber,
-    })
-
-    return protocolTokens
-  }
-
-  return replacementMethod
-}
-
-export function ResolveUnderlyingMovements(
-  originalMethod:
-    | SimplePoolAdapter['getWithdrawals']
-    | SimplePoolAdapter['getDeposits'],
-  _context: ClassMethodDecoratorContext,
-) {
-  async function replacementMethod(
-    this: IProtocolAdapter,
-    input: GetEventsInput,
+    input: GetTotalValueLockedInput,
   ) {
     const protocolTokens = await originalMethod.call(this, input)
 
     const promises = []
     for (const protocolToken of protocolTokens) {
-      const blockNumber = protocolToken?.blockNumber
-
-      promises.push(getUnderlyingAndRecurse(protocolToken, this, blockNumber))
+      promises.push(
+        getUnderlyingAndRecurse(protocolToken, this, input.blockNumber),
+      )
     }
 
     await Promise.all(promises)
@@ -63,29 +37,11 @@ export function ResolveUnderlyingMovements(
   return replacementMethod
 }
 
-/**
- * Iterates though a list of token positions, identifies if any of them are a protocol token
- * and resolves them using the correct adapter. Does so recursively until no protocol tokens need resolving.
- */
-async function recursivePositionSolver({
-  adapter,
-  tokenPositions,
-  blockNumber,
-}: {
-  adapter: IProtocolAdapter
-  tokenPositions: (TokenBalance & { tokens?: Underlying[] })[]
-  blockNumber?: number
-}) {
-  const promises = []
-  for (const tokenPosition of tokenPositions) {
-    promises.push(getUnderlyingAndRecurse(tokenPosition, adapter, blockNumber))
-  }
-
-  await Promise.all(promises)
-}
-
 async function getUnderlyingAndRecurse(
-  tokenPosition: (TokenBalance & { tokens?: Underlying[] }) | MovementsByBlock,
+  tokenPosition: Erc20Metadata & {
+    totalSupplyRaw: bigint
+    tokens?: UnderlyingTokenTvl[]
+  },
   adapter: IProtocolAdapter,
   blockNumber: number | undefined,
 ) {
@@ -106,12 +62,33 @@ async function getUnderlyingAndRecurse(
   })
 }
 
+/**
+ * Iterates though a list of token positions, identifies if any of them are a protocol token
+ * and resolves them using the correct adapter. Does so recursively until no protocol tokens need resolving.
+ */
+async function recursivePositionSolver({
+  adapter,
+  tokenPositions,
+  blockNumber,
+}: {
+  adapter: IProtocolAdapter
+  tokenPositions: UnderlyingTokenTvl[]
+  blockNumber?: number
+}) {
+  const promises = []
+  for (const tokenPosition of tokenPositions) {
+    promises.push(getUnderlyingAndRecurse(tokenPosition, adapter, blockNumber))
+  }
+
+  await Promise.all(promises)
+}
+
 async function resolveUnderlying({
   underlying,
   adapter,
   blockNumber,
 }: {
-  underlying: Underlying[]
+  underlying: UnderlyingTokenTvl[]
   adapter: IProtocolAdapter
   blockNumber: number | undefined
 }) {
@@ -136,7 +113,7 @@ async function resolveUnderlying({
 
 async function computeUnderlyingTokenBalancesOrFetchPrice(
   adapter: IProtocolAdapter,
-  underlyingProtocolTokenPosition: Underlying,
+  underlyingProtocolTokenPosition: UnderlyingTokenTvl,
   blockNumber: number | undefined,
 ) {
   if (underlyingProtocolTokenPosition.tokens) {
@@ -162,7 +139,7 @@ async function computeUnderlyingTokenBalancesOrFetchPrice(
 
 async function fetchUnderlyingBalances(
   underlyingProtocolTokenAdapter: IProtocolAdapter,
-  underlyingProtocolTokenPosition: Underlying,
+  underlyingProtocolTokenPosition: UnderlyingTokenTvl,
   blockNumber: number | undefined,
 ) {
   try {
@@ -173,7 +150,7 @@ async function fetchUnderlyingBalances(
           blockNumber: blockNumber,
         },
       )
-    const computedUnderlyingPositions: Underlying[] =
+    const computedUnderlyingPositions: UnderlyingTokenTvl[] =
       protocolTokenUnderlyingRate.tokens?.map((underlyingTokenRate) => {
         return {
           address: underlyingTokenRate.address,
@@ -181,8 +158,8 @@ async function fetchUnderlyingBalances(
           symbol: underlyingTokenRate.symbol,
           decimals: underlyingTokenRate.decimals,
           type: underlyingTokenRate.type,
-          balanceRaw:
-            (underlyingProtocolTokenPosition.balanceRaw *
+          totalSupplyRaw:
+            (underlyingProtocolTokenPosition.totalSupplyRaw *
               underlyingTokenRate.underlyingRateRaw) /
             10n ** BigInt(underlyingProtocolTokenPosition.decimals),
         }
@@ -206,7 +183,7 @@ async function fetchUnderlyingBalances(
 
 async function fetchPrice(
   adapter: IProtocolAdapter,
-  underlyingProtocolTokenPosition: Underlying,
+  underlyingProtocolTokenPosition: UnderlyingTokenTvl,
   blockNumber: number | undefined,
 ) {
   let priceAdapter

@@ -30,6 +30,7 @@ import {
   ResolveUnderlyingPositions,
   ResolveUnderlyingMovements,
 } from '../decorators/resolveUnderlyingPositions'
+import { UnwrapTvl } from '../decorators/unwrapTvl'
 import { MaxMovementLimitExceededError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
@@ -210,6 +211,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     })
   }
 
+  @UnwrapTvl
   async getTotalValueLocked({
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {

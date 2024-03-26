@@ -287,22 +287,22 @@ export interface ProtocolTokenApr extends Erc20Metadata {
   aprDecimal: number
 }
 
-export interface UnderlyingTokenTvl extends Erc20Metadata {
+export interface UnderlyingTokenTvl extends TokenTvl {
   type: typeof TokenType.Underlying
-  /**
-   * Total underlying token locked in pool raw
-   */
-  totalSupplyRaw: bigint
+  tokens?: UnderlyingTokenTvl[]
+  priceRaw?: bigint
+}
+
+export interface ProtocolTokenTvl extends TokenTvl {
+  type: typeof TokenType.Protocol
   tokens?: UnderlyingTokenTvl[]
 }
 
-export interface ProtocolTokenTvl extends Erc20Metadata {
-  type: typeof TokenType.Protocol
+export interface TokenTvl extends Erc20Metadata {
   /**
    * Total underlying token locked in pool raw
    */
   totalSupplyRaw: bigint
-  tokens?: UnderlyingTokenTvl[]
 }
 
 export interface ProfitsWithRange {

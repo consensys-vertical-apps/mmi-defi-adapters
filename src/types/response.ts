@@ -14,6 +14,7 @@ import type {
   UnderlyingTokenTvl,
   TokenType,
   TokenBalance,
+  TokenTvl,
 } from './adapter'
 
 export type GetEventsRequestInput = {
@@ -88,13 +89,27 @@ export type APYResponse = AdapterResponse<{
 }>
 
 export type TotalValueLockResponse = AdapterResponse<{
-  tokens: DisplayProtocolTokenTvl[]
+  tokens: DisplayTokenTvl<DisplayProtocolTokenTvl>[]
 }>
 
 export type DisplayProtocolTokenTvl = Omit<ProtocolTokenTvl, 'tokens'> & {
   totalSupply: number
   tokens?: (UnderlyingTokenTvl & { totalSupply: number; iconUrl: string })[]
 }
+
+export type DisplayTokenTvl<
+  TokenTvlBalance extends TokenTvl & {
+    type: TokenType
+    tokens?: UnderlyingTokenTvl[]
+  },
+> = Omit<TokenTvlBalance, 'tokens'> & {
+  totalSupply: number
+  tokens?: DisplayTokenTvl<UnderlyingTokenTvl>[]
+  price: number
+  priceRaw: never
+} & (TokenTvlBalance['type'] extends typeof TokenType.Underlying
+    ? { iconUrl: string }
+    : Record<string, never>)
 
 export type DefiMovementsResponse = AdapterResponse<{
   movements: DisplayMovementsByBlock[]
