@@ -82,16 +82,14 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
       '-c, --chains <chains>',
       'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
     )
-    .option('-v, --version <version>', 'DELETE THIS BEFORE MERGING')
     .showHelpAfterError()
-    .action(async ({ protocols, chains, version }) => {
+    .action(async ({ protocols, chains }) => {
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
 
       const data = defiProvider.getSupport({
         filterChainIds,
         filterProtocolIds,
-        version,
       })
 
       printResponse(data)

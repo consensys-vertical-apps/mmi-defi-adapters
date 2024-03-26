@@ -103,3 +103,13 @@ export type DefiMovementsResponse = AdapterResponse<{
 export type DisplayMovementsByBlock = Omit<MovementsByBlock, 'tokens'> & {
   tokens?: (Underlying & { balance: number })[]
 }
+
+export type Support = Partial<
+  Record<
+    Protocol,
+    {
+      protocolDetails: ProtocolDetails
+      chains: Chain[]
+    }[]
+  >
+>
