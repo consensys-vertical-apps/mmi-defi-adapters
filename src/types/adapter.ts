@@ -293,6 +293,7 @@ export interface UnderlyingTokenTvl extends Erc20Metadata {
    * Total underlying token locked in pool raw
    */
   totalSupplyRaw: bigint
+  tokens?: UnderlyingTokenTvl[]
 }
 
 export interface ProtocolTokenTvl extends Erc20Metadata {

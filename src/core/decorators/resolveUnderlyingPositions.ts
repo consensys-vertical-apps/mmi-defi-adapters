@@ -2,6 +2,7 @@ import { Protocol } from '../../adapters/protocols'
 import {
   GetEventsInput,
   GetPositionsInput,
+  GetTotalValueLockedInput,
   MovementsByBlock,
   TokenBalance,
   Underlying,
@@ -29,6 +30,31 @@ export function ResolveUnderlyingPositions(
       tokenPositions: protocolTokens,
       blockNumber: input.blockNumber,
     })
+
+    return protocolTokens
+  }
+
+  return replacementMethod
+}
+
+export function UnwrapTvl(
+  originalMethod: SimplePoolAdapter['getTotalValueLocked'],
+  _context: ClassMethodDecoratorContext,
+) {
+  async function replacementMethod(
+    this: IProtocolAdapter,
+    input: GetTotalValueLockedInput,
+  ) {
+    const protocolTokens = await originalMethod.call(this, input)
+
+    const promises = []
+    for (const protocolToken of protocolTokens) {
+      promises.push(
+        getUnderlyingAndRecurse(protocolToken, this, input.blockNumber),
+      )
+    }
+
+    await Promise.all(promises)
 
     return protocolTokens
   }
