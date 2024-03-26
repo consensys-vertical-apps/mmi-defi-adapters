@@ -12,7 +12,7 @@ import {
 } from '../errors/errors'
 import { logger } from '../utils/logger'
 
-export function UnwrapTvl(
+export function ResolveUnderlyingTvl(
   originalMethod: SimplePoolAdapter['getTotalValueLocked'],
   _context: ClassMethodDecoratorContext,
 ) {
