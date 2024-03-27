@@ -52,16 +52,7 @@ export async function getProfits({
           tokenIds,
         })
         .then(async (result) => {
-          await resolveUnderlyings(
-            adapter,
-            toBlock,
-            result,
-            (underlyingToken, protocolToken, underlyingRateRaw) => {
-              underlyingToken.balanceRaw =
-                (protocolToken.balanceRaw * underlyingRateRaw) /
-                10n ** BigInt(protocolToken.decimals)
-            },
-          )
+          await resolveUnderlyings(adapter, toBlock, result, 'balanceRaw')
           return result
         })
         .then((result) => {
@@ -76,16 +67,7 @@ export async function getProfits({
           tokenIds,
         })
         .then(async (result) => {
-          await resolveUnderlyings(
-            adapter,
-            fromBlock,
-            result,
-            (underlyingToken, protocolToken, underlyingRateRaw) => {
-              underlyingToken.balanceRaw =
-                (protocolToken.balanceRaw * underlyingRateRaw) /
-                10n ** BigInt(protocolToken.decimals)
-            },
-          )
+          await resolveUnderlyings(adapter, fromBlock, result, 'balanceRaw')
           return result
         })
         .then((result) => {
@@ -101,16 +83,7 @@ export async function getProfits({
         blockNumber: toBlock,
       })
       .then(async (result) => {
-        await resolveUnderlyings(
-          adapter,
-          toBlock,
-          result,
-          (underlyingToken, protocolToken, underlyingRateRaw) => {
-            underlyingToken.balanceRaw =
-              (protocolToken.balanceRaw * underlyingRateRaw) /
-              10n ** BigInt(protocolToken.decimals)
-          },
-        )
+        await resolveUnderlyings(adapter, toBlock, result, 'balanceRaw')
         return result
       })
       .then((result) => {
@@ -126,16 +99,7 @@ export async function getProfits({
         tokenIds: Object.keys(endPositionValues), // endPositionValues is indexed by tokenId ?? protocolTokenAddress
       })
       .then(async (result) => {
-        await resolveUnderlyings(
-          adapter,
-          fromBlock,
-          result,
-          (underlyingToken, protocolToken, underlyingRateRaw) => {
-            underlyingToken.balanceRaw =
-              (protocolToken.balanceRaw * underlyingRateRaw) /
-              10n ** BigInt(protocolToken.decimals)
-          },
-        )
+        await resolveUnderlyings(adapter, fromBlock, result, 'balanceRaw')
         return result
       })
       .then((result) => {
@@ -175,11 +139,7 @@ export async function getProfits({
                       adapter,
                       positionMovements.blockNumber,
                       positionMovements.tokens,
-                      (underlyingToken, protocolToken, underlyingRateRaw) => {
-                        underlyingToken.balanceRaw =
-                          (protocolToken.balanceRaw * underlyingRateRaw) /
-                          10n ** BigInt(protocolToken.decimals)
-                      },
+                      'balanceRaw',
                     )
                   }),
                 )
@@ -208,11 +168,7 @@ export async function getProfits({
                       adapter,
                       positionMovements.blockNumber,
                       positionMovements.tokens,
-                      (underlyingToken, protocolToken, underlyingRateRaw) => {
-                        underlyingToken.balanceRaw =
-                          (protocolToken.balanceRaw * underlyingRateRaw) /
-                          10n ** BigInt(protocolToken.decimals)
-                      },
+                      'balanceRaw',
                     )
                   }),
                 )
@@ -241,11 +197,7 @@ export async function getProfits({
                       adapter,
                       positionMovements.blockNumber,
                       positionMovements.tokens,
-                      (underlyingToken, protocolToken, underlyingRateRaw) => {
-                        underlyingToken.balanceRaw =
-                          (protocolToken.balanceRaw * underlyingRateRaw) /
-                          10n ** BigInt(protocolToken.decimals)
-                      },
+                      'balanceRaw',
                     )
                   }),
                 )
@@ -274,11 +226,7 @@ export async function getProfits({
                       adapter,
                       positionMovements.blockNumber,
                       positionMovements.tokens,
-                      (underlyingToken, protocolToken, underlyingRateRaw) => {
-                        underlyingToken.balanceRaw =
-                          (protocolToken.balanceRaw * underlyingRateRaw) /
-                          10n ** BigInt(protocolToken.decimals)
-                      },
+                      'balanceRaw',
                     )
                   }),
                 )

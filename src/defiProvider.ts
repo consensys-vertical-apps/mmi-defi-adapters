@@ -125,11 +125,7 @@ export class DefiProvider {
         adapter,
         blockNumber,
         protocolPositions,
-        (underlyingToken, protocolToken, underlyingRateRaw) => {
-          underlyingToken.balanceRaw =
-            (protocolToken.balanceRaw * underlyingRateRaw) /
-            10n ** BigInt(protocolToken.decimals)
-        },
+        'balanceRaw',
       )
 
       const tokens = protocolPositions.map((protocolPosition) =>
@@ -322,11 +318,7 @@ export class DefiProvider {
             adapter,
             positionMovements.blockNumber,
             positionMovements.tokens,
-            (underlyingToken, protocolToken, underlyingRateRaw) => {
-              underlyingToken.balanceRaw =
-                (protocolToken.balanceRaw * underlyingRateRaw) /
-                10n ** BigInt(protocolToken.decimals)
-            },
+            'balanceRaw',
           )
         }),
       )
@@ -411,11 +403,7 @@ export class DefiProvider {
             adapter,
             positionMovements.blockNumber,
             positionMovements.tokens,
-            (underlyingToken, protocolToken, underlyingRateRaw) => {
-              underlyingToken.balanceRaw =
-                (protocolToken.balanceRaw * underlyingRateRaw) /
-                10n ** BigInt(protocolToken.decimals)
-            },
+            'balanceRaw',
           )
         }),
       )
@@ -468,11 +456,7 @@ export class DefiProvider {
             adapter,
             positionMovements.blockNumber,
             positionMovements.tokens,
-            (underlyingToken, protocolToken, underlyingRateRaw) => {
-              underlyingToken.balanceRaw =
-                (protocolToken.balanceRaw * underlyingRateRaw) /
-                10n ** BigInt(protocolToken.decimals)
-            },
+            'balanceRaw',
           )
         }),
       )
@@ -525,11 +509,7 @@ export class DefiProvider {
             adapter,
             positionMovements.blockNumber,
             positionMovements.tokens,
-            (underlyingToken, protocolToken, underlyingRateRaw) => {
-              underlyingToken.balanceRaw =
-                (protocolToken.balanceRaw * underlyingRateRaw) /
-                10n ** BigInt(protocolToken.decimals)
-            },
+            'balanceRaw',
           )
         }),
       )
@@ -558,16 +538,7 @@ export class DefiProvider {
 
       const tokens = await adapter.getTotalValueLocked({ blockNumber })
 
-      await resolveUnderlyings(
-        adapter,
-        blockNumber,
-        tokens,
-        (underlyingToken, protocolToken, underlyingRateRaw) => {
-          underlyingToken.totalSupplyRaw =
-            (protocolToken.totalSupplyRaw * underlyingRateRaw) /
-            10n ** BigInt(protocolToken.decimals)
-        },
-      )
+      await resolveUnderlyings(adapter, blockNumber, tokens, 'totalSupplyRaw')
 
       return {
         tokens: tokens.map((value) =>

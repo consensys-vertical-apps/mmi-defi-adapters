@@ -16,13 +16,7 @@ export async function resolveUnderlyings(
   adapter: IProtocolAdapter,
   blockNumber: number | undefined,
   tokens: Token[],
-  updateUnderlyingToken: (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    underlyingToken: any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    protocolToken: any,
-    underlyingRateRaw: bigint,
-  ) => void,
+  fieldToUpdate: string,
 ) {
   const promises = tokens.map(async (token) => {
     if (token.tokens) {
@@ -31,7 +25,7 @@ export async function resolveUnderlyings(
         adapter,
         blockNumber,
         token.tokens,
-        updateUnderlyingToken,
+        fieldToUpdate,
       )
       return
     }
@@ -65,23 +59,17 @@ export async function resolveUnderlyings(
         symbol: underlyingTokenRate.symbol,
         decimals: underlyingTokenRate.decimals,
         type: underlyingTokenRate.type,
+        [fieldToUpdate]:
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (((token as any)[fieldToUpdate] as bigint) *
+            underlyingTokenRate.underlyingRateRaw) /
+          10n ** BigInt(token.decimals),
       }
-
-      updateUnderlyingToken(
-        underlyingToken,
-        token,
-        underlyingTokenRate.underlyingRateRaw,
-      )
 
       return underlyingToken
     })
 
-    await resolveUnderlyings(
-      adapter,
-      blockNumber,
-      token.tokens!,
-      updateUnderlyingToken,
-    )
+    await resolveUnderlyings(adapter, blockNumber, token.tokens!, fieldToUpdate)
   })
 
   await Promise.all(promises)
