@@ -5,15 +5,10 @@ import {
   ProtocolDetails,
   PositionType,
   AssetType,
-  GetAprInput,
-  GetApyInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
 } from '../../../../types/adapter'
 import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
 import { contractAddresses } from '../../common/contractAddresses'
-import { FToken__factory } from '../../contracts'
 
 export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   // Expected blocks per year
@@ -61,7 +56,7 @@ export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
       GetTransactionParamsInput,
       {
         protocolId: typeof Protocol.Flux
-        productId: 'supply-market'
+        productId: 'borrow-market'
       }
     >,
   ): Promise<{ to: string; data: string }> {
@@ -87,54 +82,58 @@ export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   async buildMetadata() {
     return await super.buildMetadata()
   }
-
-  async getApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<ProtocolTokenApr> {
-    const fTokenContract = FToken__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-    const supplyRatePerBlock = await fTokenContract.supplyRatePerBlock({
-      blockTag: blockNumber,
-    })
-    const apr = this.calculateAPR(Number(supplyRatePerBlock.toString()) / 1e18)
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      aprDecimal: apr * 100,
-    }
-  }
-
-  async getApy({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetApyInput): Promise<ProtocolTokenApy> {
-    const fTokenContract = FToken__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-    const supplyRatePerBlock = await fTokenContract.supplyRatePerBlock({
-      blockTag: blockNumber,
-    })
-    const apy = this.calculateAPY(Number(supplyRatePerBlock.toString()) / 1e18)
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      apyDecimal: apy * 100,
-    }
-  }
-
-  private calculateAPY(
-    interestAccruedPerInterval: number, // Pass in fToken.borrowRate or fToken.supplyRate
-    intervalsPerYear: number = FluxSupplyMarketAdapter.EXPECTED_BLOCKS_PER_YEAR,
-  ): number {
-    return Math.pow(1 + interestAccruedPerInterval, intervalsPerYear) - 1
-  }
-
-  private calculateAPR(
-    interestAccruedPerInterval: number, // Pass in fToken.borrowRate or fToken.supplyRate
-    intervalsPerYear: number = FluxSupplyMarketAdapter.EXPECTED_BLOCKS_PER_YEAR,
-  ): number {
-    return interestAccruedPerInterval * intervalsPerYear
-  }
 }
+
+// NOTE: The APY/APR feature has been removed as of March 2024.
+// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
+
+//   async getApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   }: GetAprInput): Promise<ProtocolTokenApr> {
+//     const fTokenContract = FToken__factory.connect(
+//       protocolTokenAddress,
+//       this.provider,
+//     )
+//     const supplyRatePerBlock = await fTokenContract.supplyRatePerBlock({
+//       blockTag: blockNumber,
+//     })
+//     const apr = this.calculateAPR(Number(supplyRatePerBlock.toString()) / 1e18)
+//     return {
+//       ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//       aprDecimal: apr * 100,
+//     }
+//   }
+
+//   async getApy({
+//     protocolTokenAddress,
+//     blockNumber,
+//   }: GetApyInput): Promise<ProtocolTokenApy> {
+//     const fTokenContract = FToken__factory.connect(
+//       protocolTokenAddress,
+//       this.provider,
+//     )
+//     const supplyRatePerBlock = await fTokenContract.supplyRatePerBlock({
+//       blockTag: blockNumber,
+//     })
+//     const apy = this.calculateAPY(Number(supplyRatePerBlock.toString()) / 1e18)
+//     return {
+//       ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//       apyDecimal: apy * 100,
+//     }
+//   }
+
+//   private calculateAPY(
+//     interestAccruedPerInterval: number, // Pass in fToken.borrowRate or fToken.supplyRate
+//     intervalsPerYear: number = FluxSupplyMarketAdapter.EXPECTED_BLOCKS_PER_YEAR,
+//   ): number {
+//     return Math.pow(1 + interestAccruedPerInterval, intervalsPerYear) - 1
+//   }
+
+//   private calculateAPR(
+//     interestAccruedPerInterval: number, // Pass in fToken.borrowRate or fToken.supplyRate
+//     intervalsPerYear: number = FluxSupplyMarketAdapter.EXPECTED_BLOCKS_PER_YEAR,
+//   ): number {
+//     return interestAccruedPerInterval * intervalsPerYear
+//   }
+// }

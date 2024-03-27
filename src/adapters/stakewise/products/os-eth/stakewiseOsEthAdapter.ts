@@ -1,19 +1,13 @@
 import { parseEther, getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { SECONDS_PER_YEAR } from '../../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   GetTotalValueLockedInput,
   UnderlyingTokenRate,
   ProtocolTokenTvl,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolDetails,
   PositionType,
   TokenBalance,
-  GetAprInput,
-  GetApyInput,
   Underlying,
   AssetType,
   TokenType,
@@ -87,32 +81,6 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
 
   protected async fetchUnderlyingTokensMetadata(): Promise<Erc20Metadata[]> {
     return [this.#underlyingToken]
-  }
-
-  async getApy(values: GetApyInput): Promise<ProtocolTokenApy> {
-    const { blockNumber } = values
-
-    const [osEthControllerAddress, protocolToken] = await Promise.all([
-      this.getOsEthControllerAddress(),
-      this.fetchProtocolTokenMetadata(),
-    ])
-
-    const osEthControllerContract = OsEthController__factory.connect(
-      osEthControllerAddress,
-      this.provider,
-    )
-
-    const rewardPerSecond = await osEthControllerContract.avgRewardPerSecond({
-      blockTag: blockNumber,
-    })
-
-    const apyDecimal =
-      ((Number(rewardPerSecond) * SECONDS_PER_YEAR) / Number(amount1)) * 100
-
-    return {
-      ...protocolToken,
-      apyDecimal,
-    }
   }
 
   async getTotalValueLocked(
@@ -238,8 +206,37 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
       },
     ]
   }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
 }
+
+// NOTE: The APY/APR feature has been removed as of March 2024.
+// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
+
+// async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+//   throw new NotImplementedError()
+// }
+
+// async getApy(values: GetApyInput): Promise<ProtocolTokenApy> {
+//   const { blockNumber } = values
+
+//   const [osEthControllerAddress, protocolToken] = await Promise.all([
+//     this.getOsEthControllerAddress(),
+//     this.fetchProtocolTokenMetadata(),
+//   ])
+
+//   const osEthControllerContract = OsEthController__factory.connect(
+//     osEthControllerAddress,
+//     this.provider,
+//   )
+
+//   const rewardPerSecond = await osEthControllerContract.avgRewardPerSecond({
+//     blockTag: blockNumber,
+//   })
+
+//   const apyDecimal =
+//     ((Number(rewardPerSecond) * SECONDS_PER_YEAR) / Number(amount1)) * 100
+
+//   return {
+//     ...protocolToken,
+//     apyDecimal,
+//   }
+// }

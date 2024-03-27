@@ -7,15 +7,10 @@ import {
   Underlying,
   TokenType,
   UnderlyingTokenRate,
-  GetAprInput,
-  ProtocolTokenApr,
-  GetApyInput,
-  ProtocolTokenApy,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
-import { NotImplementedError } from '../errors/errors'
 import { filterMapAsync } from '../utils/filters'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { logger } from '../utils/logger'
@@ -195,14 +190,6 @@ export abstract class UniswapV2PoolForkAdapter
         ...token1,
       },
     ]
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 
   protected async fetchUnderlyingTokensMetadata(

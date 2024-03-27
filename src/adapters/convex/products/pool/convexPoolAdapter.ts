@@ -19,10 +19,6 @@ import {
   GetPositionsInput,
   MovementsByBlock,
   ProtocolPosition,
-  GetAprInput,
-  ProtocolTokenApr,
-  GetApyInput,
-  ProtocolTokenApy,
 } from '../../../../types/adapter'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import { ConvexFactory__factory } from '../../contracts'
@@ -53,14 +49,6 @@ export class ConvexPoolAdapter
   getExtraRewardWithdrawals(
     _input: GetEventsInput,
   ): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 

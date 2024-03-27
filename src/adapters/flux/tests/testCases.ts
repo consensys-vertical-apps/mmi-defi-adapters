@@ -27,16 +27,7 @@ export const testCases: TestCase[] = [
     method: 'tvl',
     blockNumber: 19321516,
   },
-  {
-    chainId: Chain.Ethereum,
-    method: 'apr',
-    blockNumber: 19321516,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'apy',
-    blockNumber: 19321516,
-  },
+
   {
     chainId: Chain.Ethereum,
     method: 'withdrawals',

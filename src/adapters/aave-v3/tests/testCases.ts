@@ -39,16 +39,7 @@ export const testCases: TestCase[] = [
     method: 'tvl',
     blockNumber: 142290717,
   },
-  {
-    chainId: Chain.Arbitrum,
-    method: 'apr',
-    blockNumber: 142290717,
-  },
-  {
-    chainId: Chain.Arbitrum,
-    method: 'apy',
-    blockNumber: 142290717,
-  },
+
   {
     method: 'tx-params',
     key: 'supply',

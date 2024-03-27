@@ -13,12 +13,8 @@ import {
   PositionType,
   GetEventsInput,
   MovementsByBlock,
-  GetAprInput,
-  GetApyInput,
   GetTotalValueLockedInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
@@ -132,14 +128,6 @@ export class CurveStakingAdapter
     const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
 
     return protocolToken
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 
   @ResolveUnderlyingMovements

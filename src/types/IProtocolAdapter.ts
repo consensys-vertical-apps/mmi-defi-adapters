@@ -11,10 +11,6 @@ import type {
   MovementsByBlock,
   GetTotalValueLockedInput,
   ProtocolTokenTvl,
-  GetApyInput,
-  ProtocolTokenApy,
-  GetAprInput,
-  ProtocolTokenApr,
 } from './adapter'
 import type { Erc20Metadata } from './erc20Metadata'
 import { GetTransactionParamsInput } from './getTransactionParamsInput'
@@ -127,22 +123,4 @@ export interface IProtocolAdapter {
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]>
-
-  /**
-   *
-   * @remarks Returns Apy per pool
-   *
-   * @param {GetApyInput} input - Object with protocol-token-address and optional blockNumber override.
-   * @returns {Promise<ProtocolTokenApy>} Object detailing the Annual Percentage Yield for each protocol pool without reward APY.
-   */
-  getApy(input: GetApyInput): Promise<ProtocolTokenApy>
-
-  /**
-   *
-   * @remarks Returns Apr made per pool
-   *
-   * @param {GetAprInput} input - Object with protocol-token-address and optional blockNumber override.
-   * @returns {Promise<ProtocolTokenApr>} Object detailing the Annual Percentage Rate without reward APR for each protocol pool.
-   */
-  getApr(input: GetAprInput): Promise<ProtocolTokenApr>
 }

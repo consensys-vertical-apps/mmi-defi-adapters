@@ -133,14 +133,7 @@ export function simplePoolAdapterTemplate({
     ): Promise<UnderlyingTokenRate[]> {
       throw new NotImplementedError()
     }
-  
-    async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-      throw new NotImplementedError()
-    }
-  
-    async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-      throw new NotImplementedError()
-    }
+
 
 
     /**

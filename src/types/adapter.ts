@@ -68,27 +68,6 @@ export type GetConversionRateInput = {
    */
   tokenId?: string
 }
-export type GetApyInput = {
-  /**
-   * Optional override param
-   */
-  blockNumber?: number
-
-  /**
-   * Protocol token address (LP token address).
-   */
-  protocolTokenAddress: string
-}
-export type GetAprInput = {
-  /**
-   * Optional override param
-   */
-  blockNumber?: number
-  /**
-   * Protocol token address (LP token address).
-   */
-  protocolTokenAddress: string
-}
 
 export type GetEventsInput = {
   /**
@@ -271,20 +250,6 @@ export interface MovementsByBlock {
   blockNumber: number
 
   transactionHash: string
-}
-
-export interface ProtocolTokenApy extends Erc20Metadata {
-  /**
-   * Current apy of protocol pool
-   */
-  apyDecimal: number
-}
-
-export interface ProtocolTokenApr extends Erc20Metadata {
-  /**
-   * Current apr of protocol pool
-   */
-  aprDecimal: number
 }
 
 export interface UnderlyingTokenTvl extends Erc20Metadata {

@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[adapter.ts:237](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L237)
+[adapter.ts:241](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L241)
 
 ___
 
@@ -33,7 +33,7 @@ Movements in or out of a protocol position
 
 #### Defined in
 
-[adapter.ts:241](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L241)
+[adapter.ts:245](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L245)
 
 ___
 
@@ -45,7 +45,7 @@ Blocknumber movement was executed
 
 #### Defined in
 
-[adapter.ts:246](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L246)
+[adapter.ts:250](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L250)
 
 ___
 
@@ -55,4 +55,4 @@ ___
 
 #### Defined in
 
-[adapter.ts:248](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L248)
+[adapter.ts:252](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L252)
