@@ -125,7 +125,7 @@ export class StargateVestingAdapter
     return tokens
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(): Promise<ProtocolTokenUnderlyingRate> {
+  async unwrap(): Promise<ProtocolTokenUnderlyingRate> {
     throw new NotImplementedError()
   }
 

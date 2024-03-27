@@ -18,7 +18,7 @@
 - [getProtocolDetails](IProtocolAdapter.IProtocolAdapter.md#getprotocoldetails)
 - [getProtocolTokens](IProtocolAdapter.IProtocolAdapter.md#getprotocoltokens)
 - [getPositions](IProtocolAdapter.IProtocolAdapter.md#getpositions)
-- [getProtocolTokenToUnderlyingTokenRate](IProtocolAdapter.IProtocolAdapter.md#getprotocoltokentounderlyingtokenrate)
+- [unwrap](IProtocolAdapter.IProtocolAdapter.md#unwrap)
 - [getTransactionParams](IProtocolAdapter.IProtocolAdapter.md#gettransactionparams)
 - [getWithdrawals](IProtocolAdapter.IProtocolAdapter.md#getwithdrawals)
 - [getDeposits](IProtocolAdapter.IProtocolAdapter.md#getdeposits)
@@ -38,7 +38,7 @@ Unique identifier of the protocol.
 
 [IProtocolAdapter.ts:22](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L22)
 
-___
+---
 
 ### chainId
 
@@ -50,7 +50,7 @@ Unique identifier of the blockchain network.
 
 [IProtocolAdapter.ts:27](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L27)
 
-___
+---
 
 ### productId
 
@@ -62,7 +62,7 @@ Unique identifier for this protocol adapter
 
 [IProtocolAdapter.ts:32](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L32)
 
-___
+---
 
 ### adaptersController
 
@@ -92,15 +92,15 @@ Returns high level metadata for the protocol
 
 [IProtocolAdapter.ts:41](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L41)
 
-___
+---
 
 ### getProtocolTokens
 
-▸ **getProtocolTokens**(): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata) & { `tokenId?`: `string`  }[]\>
+▸ **getProtocolTokens**(): [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata) & { `tokenId?`: `string` }[]\>
 
 #### Returns
 
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata) & { `tokenId?`: `string`  }[]\>
+[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata) & { `tokenId?`: `string` }[]\>
 
 An array of objects detailing the protocol tokens.
 
@@ -112,21 +112,21 @@ Returns array of pool tokens (lp tokens) for the protocol
 
 [IProtocolAdapter.ts:48](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L48)
 
-___
+---
 
 ### getPositions
 
-▸ **getPositions**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProtocolPosition`](adapter.ProtocolPosition.md)[]\>
+▸ **getPositions**(`input`): [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`ProtocolPosition`](adapter.ProtocolPosition.md)[]\>
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type                                                | Description                                                 |
+| :------ | :-------------------------------------------------- | :---------------------------------------------------------- |
 | `input` | [`GetPositionsInput`](adapter.GetPositionsInput.md) | Object with user-address and optional blockNumber override. |
 
 #### Returns
 
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProtocolPosition`](adapter.ProtocolPosition.md)[]\>
+[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`ProtocolPosition`](adapter.ProtocolPosition.md)[]\>
 
 An array of objects detailing the user positions.
 
@@ -138,21 +138,21 @@ Returns array of user positions opened in this protocol
 
 [IProtocolAdapter.ts:57](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L57)
 
-___
+---
 
-### getProtocolTokenToUnderlyingTokenRate
+### unwrap
 
-▸ **getProtocolTokenToUnderlyingTokenRate**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProtocolTokenUnderlyingRate`](adapter.ProtocolTokenUnderlyingRate.md)\>
+▸ **unwrap**(`input`): [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`ProtocolTokenUnderlyingRate`](adapter.ProtocolTokenUnderlyingRate.md)\>
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type                                                                     | Description                                                           |
+| :------ | :----------------------------------------------------------------------- | :-------------------------------------------------------------------- |
 | `input` | [`GetConversionRateInput`](../modules/adapter.md#getconversionrateinput) | Object with protocol-token-address and optional blockNumber override. |
 
 #### Returns
 
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProtocolTokenUnderlyingRate`](adapter.ProtocolTokenUnderlyingRate.md)\>
+[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`ProtocolTokenUnderlyingRate`](adapter.ProtocolTokenUnderlyingRate.md)\>
 
 Object detailing the price per share of the protocol token.
 
@@ -164,21 +164,21 @@ Returns "price" of lp-tokens in the form of the underlying tokens
 
 [IProtocolAdapter.ts:66](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L66)
 
-___
+---
 
 ### getTransactionParams
 
-▸ `Optional` **getTransactionParams**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<{ `to`: `string` ; `data`: `string`  }\>
+▸ `Optional` **getTransactionParams**(`input`): [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<{ `to`: `string` ; `data`: `string` }\>
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type                                                                                             | Description     |
+| :------ | :----------------------------------------------------------------------------------------------- | :-------------- |
 | `input` | [`GetTransactionParamsInput`](../modules/getTransactionParamsInput.md#gettransactionparamsinput) | tx input params |
 
 #### Returns
 
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<{ `to`: `string` ; `data`: `string`  }\>
+[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<{ `to`: `string` ; `data`: `string` }\>
 
 transaction
 
@@ -190,21 +190,21 @@ Returns tx params
 
 [IProtocolAdapter.ts:77](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L77)
 
-___
+---
 
 ### getWithdrawals
 
-▸ **getWithdrawals**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
+▸ **getWithdrawals**(`input`): [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type                                                     | Description                                                                         |
+| :------ | :------------------------------------------------------- | :---------------------------------------------------------------------------------- |
 | `input` | [`GetEventsInput`](../modules/adapter.md#geteventsinput) | Object specifying user-address, protocol-token-address (pool), and the block range. |
 
 #### Returns
 
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
+[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
 
 Array of objects detailing withdrawal events within the specified block range.
 
@@ -216,21 +216,21 @@ Returns the user's withdrawals from a position
 
 [IProtocolAdapter.ts:88](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L88)
 
-___
+---
 
 ### getDeposits
 
-▸ **getDeposits**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
+▸ **getDeposits**(`input`): [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type                                                     | Description                                                                         |
+| :------ | :------------------------------------------------------- | :---------------------------------------------------------------------------------- |
 | `input` | [`GetEventsInput`](../modules/adapter.md#geteventsinput) | Object specifying user-address, protocol-token-address (pool), and the block range. |
 
 #### Returns
 
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
+[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
 
 Array of objects detailing deposit events within the specified block range.
 
@@ -242,21 +242,21 @@ Returns the user's deposits to a position
 
 [IProtocolAdapter.ts:97](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L97)
 
-___
+---
 
 ### getBorrows
 
-▸ `Optional` **getBorrows**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
+▸ `Optional` **getBorrows**(`input`): [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type                                                     | Description                                                                         |
+| :------ | :------------------------------------------------------- | :---------------------------------------------------------------------------------- |
 | `input` | [`GetEventsInput`](../modules/adapter.md#geteventsinput) | Object specifying user-address, protocol-token-address (pool), and the block range. |
 
 #### Returns
 
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
+[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
 
 Array of objects detailing withdrawal events within the specified block range.
 
@@ -268,21 +268,21 @@ Returns the user's withdrawals from a position
 
 [IProtocolAdapter.ts:105](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L105)
 
-___
+---
 
 ### getRepays
 
-▸ `Optional` **getRepays**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
+▸ `Optional` **getRepays**(`input`): [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type                                                     | Description                                                                         |
+| :------ | :------------------------------------------------------- | :---------------------------------------------------------------------------------- |
 | `input` | [`GetEventsInput`](../modules/adapter.md#geteventsinput) | Object specifying user-address, protocol-token-address (pool), and the block range. |
 
 #### Returns
 
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
+[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`MovementsByBlock`](adapter.MovementsByBlock.md)[]\>
 
 Array of objects detailing deposit events within the specified block range.
 
@@ -294,21 +294,21 @@ Returns the user's deposits to a position
 
 [IProtocolAdapter.ts:114](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L114)
 
-___
+---
 
 ### getTotalValueLocked
 
-▸ **getTotalValueLocked**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProtocolTokenTvl`](adapter.ProtocolTokenTvl.md)[]\>
+▸ **getTotalValueLocked**(`input`): [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`ProtocolTokenTvl`](adapter.ProtocolTokenTvl.md)[]\>
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name    | Type                                                              | Description                                |
+| :------ | :---------------------------------------------------------------- | :----------------------------------------- |
 | `input` | [`GetTotalValueLockedInput`](adapter.GetTotalValueLockedInput.md) | Object with optional blockNumber override. |
 
 #### Returns
 
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProtocolTokenTvl`](adapter.ProtocolTokenTvl.md)[]\>
+[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[`ProtocolTokenTvl`](adapter.ProtocolTokenTvl.md)[]\>
 
 An array of objects detailing the total value locked in each protocol pool.
 

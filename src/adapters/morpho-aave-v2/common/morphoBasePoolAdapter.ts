@@ -344,7 +344,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     )
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(
+  async unwrap(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
     throw new NotImplementedError()

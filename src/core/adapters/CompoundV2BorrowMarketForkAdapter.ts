@@ -272,9 +272,7 @@ export abstract class CompoundV2BorrowMarketForkAdapter
     })
   }
 
-  getProtocolTokenToUnderlyingTokenRate(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
+  unwrap(_input: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
     throw new NotImplementedError()
   }
 

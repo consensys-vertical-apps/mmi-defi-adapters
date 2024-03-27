@@ -216,7 +216,7 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(
+  async unwrap(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
     throw new NotImplementedError()

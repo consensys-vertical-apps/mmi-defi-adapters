@@ -226,26 +226,22 @@ export class DefiProvider {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      let protocolTokens = []
-      if (!filterProtocolToken) {
-        protocolTokens = await adapter.getProtocolTokens()
-      } else {
-        protocolTokens = [
-          {
-            address: filterProtocolToken,
-          },
-        ]
-      }
+      const protocolTokens = filterProtocolToken
+        ? [
+            {
+              address: filterProtocolToken,
+            },
+          ]
+        : await adapter.getProtocolTokens()
 
       const tokens = await Promise.all(
         protocolTokens.map(async ({ address }) => {
           const startTime = Date.now()
 
-          const protocolTokenUnderlyingRate =
-            await adapter.getProtocolTokenToUnderlyingTokenRate({
-              protocolTokenAddress: getAddress(address),
-              blockNumber,
-            })
+          const protocolTokenUnderlyingRate = await adapter.unwrap({
+            protocolTokenAddress: getAddress(address),
+            blockNumber,
+          })
 
           const endTime = Date.now()
           logger.info({

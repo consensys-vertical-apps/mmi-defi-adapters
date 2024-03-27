@@ -514,7 +514,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
   }
 
   // Nothing to do here
-  async getProtocolTokenToUnderlyingTokenRate(
+  async unwrap(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
     throw new NotImplementedError()

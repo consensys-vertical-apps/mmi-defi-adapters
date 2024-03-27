@@ -128,7 +128,7 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
     return ethPriceUSD.answer
   }
 
-  async getProtocolTokenToUnderlyingTokenRate({
+  async unwrap({
     blockNumber,
     protocolTokenAddress,
   }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {

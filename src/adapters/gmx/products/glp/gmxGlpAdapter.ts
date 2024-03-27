@@ -204,7 +204,7 @@ export class GMXGlpAdapter
         [positionContractAddress],
         { blockTag: blockNumber },
       ),
-      this.getProtocolTokenToUnderlyingTokenRate({
+      this.unwrap({
         protocolTokenAddress: protocolToken.address,
         blockNumber,
       }),
@@ -318,7 +318,7 @@ export class GMXGlpAdapter
     // ]
   }
 
-  async getProtocolTokenToUnderlyingTokenRate({
+  async unwrap({
     blockNumber,
   }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
     const { protocolToken, vaultAddress, underlyingTokens } =

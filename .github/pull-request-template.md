@@ -26,7 +26,7 @@ Write a short description of the changes included in this pull request. Include 
   - [ ] It is NOT used to parse addresses from metadata
 - [ ] For every adapter that extends `SimplePoolAdapter`
   - [ ] `getPositions` is not overwritten and, if it is, it's clearly explained why in the PR
-  - [ ] `getProtocolTokenToUnderlyingTokenRate` is not overwritten and, if it is, it's clearly explained why in the PR
+  - [ ] `unwrap` is not overwritten and, if it is, it's clearly explained why in the PR
 - [ ] If the adapters requires to fetch static data on-chain (e.g. pool ids, token metadata, etc)
   - [ ] The adapter implements `IMetadataBuilder`
   - [ ] The `buildMetadata` method is implemented with the `@CacheToFile` decorator

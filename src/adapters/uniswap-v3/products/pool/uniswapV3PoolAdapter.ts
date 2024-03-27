@@ -316,7 +316,7 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(
+  async unwrap(
     _input: GetConversionRateInput,
   ): Promise<ProtocolTokenUnderlyingRate> {
     throw new NotImplementedError()

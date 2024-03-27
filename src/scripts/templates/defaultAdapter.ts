@@ -182,7 +182,7 @@ export function defaultAdapterTemplate({
      * Update me.
      * Add logic to calculate the underlying token rate of 1 protocol token
      */
-    async getProtocolTokenToUnderlyingTokenRate(
+    async unwrap(
       _input: GetConversionRateInput,
     ): Promise<ProtocolTokenUnderlyingRate> {
       throw new NotImplementedError()

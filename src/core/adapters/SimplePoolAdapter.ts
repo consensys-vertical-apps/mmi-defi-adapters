@@ -96,7 +96,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  async getProtocolTokenToUnderlyingTokenRate({
+  async unwrap({
     blockNumber,
     protocolTokenAddress,
   }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
