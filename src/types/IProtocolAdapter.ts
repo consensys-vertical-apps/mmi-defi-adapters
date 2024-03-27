@@ -6,7 +6,7 @@ import type {
   GetPositionsInput,
   ProtocolPosition,
   UnwrapInput,
-  UnwrapExchangeRate as UnwrapExchangeRate,
+  UnwrapExchangeRate,
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
