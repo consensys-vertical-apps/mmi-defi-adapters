@@ -12,12 +12,12 @@ import {
   GetPositionsInput,
   GetEventsInput,
   GetTotalValueLockedInput,
-  GetConversionRateInput,
+  UnwrapInput,
   MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
@@ -514,9 +514,7 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
   }
 
   // Nothing to do here
-  async unwrap(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
+  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 

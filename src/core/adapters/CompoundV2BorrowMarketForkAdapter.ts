@@ -13,8 +13,8 @@ import {
   TokenType,
   GetEventsInput,
   MovementsByBlock,
-  GetConversionRateInput,
-  ProtocolTokenUnderlyingRate,
+  UnwrapInput,
+  UnwrapExchangeRate,
   GetTotalValueLockedInput,
   ProtocolTokenTvl,
 } from '../../types/adapter'
@@ -272,7 +272,7 @@ export abstract class CompoundV2BorrowMarketForkAdapter
     })
   }
 
-  unwrap(_input: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+  unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 

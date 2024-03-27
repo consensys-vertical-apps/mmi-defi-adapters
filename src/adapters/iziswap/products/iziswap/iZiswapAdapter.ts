@@ -14,8 +14,8 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetConversionRateInput,
-  ProtocolTokenUnderlyingRate,
+  UnwrapInput,
+  UnwrapExchangeRate,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
@@ -276,9 +276,7 @@ export class IZiswapAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  async unwrap(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
+  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 

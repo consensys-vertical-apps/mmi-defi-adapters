@@ -53,7 +53,7 @@ export type GetBalancesInput = GetPositionsInput & {
   tokens: Erc20Metadata[]
 }
 
-export type GetConversionRateInput = {
+export type UnwrapInput = {
   /**
    * Optional override param
    */
@@ -221,7 +221,7 @@ export interface UnderlyingTokenRate extends Erc20Metadata {
   underlyingRateRaw: bigint
 }
 
-export interface ProtocolTokenUnderlyingRate extends Erc20Metadata {
+export interface UnwrapExchangeRate extends Erc20Metadata {
   /**
    * Always equal to 1
    * We are finding the underlying value of 1 LP token

@@ -5,7 +5,8 @@ import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
   MovementsByBlock,
-  ProtocolTokenUnderlyingRate,
+  ProtocolTokenTvl,
+  UnwrapExchangeRate,
   TokenBalance,
   Underlying,
   TokenType,
@@ -52,7 +53,7 @@ export function enrichPositionBalance<
 }
 
 export function enrichUnderlyingTokenRates(
-  protocolTokenUnderlyingRate: ProtocolTokenUnderlyingRate,
+  protocolTokenUnderlyingRate: UnwrapExchangeRate,
   chainId: Chain,
 ): DisplayProtocolTokenUnderlyingRate {
   return {

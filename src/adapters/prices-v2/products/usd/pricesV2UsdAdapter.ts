@@ -13,8 +13,8 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetConversionRateInput,
-  ProtocolTokenUnderlyingRate,
+  UnwrapInput,
+  UnwrapExchangeRate,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
@@ -134,7 +134,7 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
   async unwrap({
     blockNumber,
     protocolTokenAddress,
-  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const [erc20TokenPriceInEth, ethPriceUSD, tokenMetadata] =
       await Promise.all([
         this.getTokenPriceInEth({

@@ -21,8 +21,8 @@ import {
   TokenBalance,
   TokenType,
   Underlying,
-  GetConversionRateInput,
-  ProtocolTokenUnderlyingRate,
+  UnwrapInput,
+  UnwrapExchangeRate,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
@@ -363,9 +363,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     )
   }
 
-  async unwrap(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
+  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 

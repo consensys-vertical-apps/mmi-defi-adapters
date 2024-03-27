@@ -4,7 +4,7 @@ import type {
   MovementsByBlock,
   ProfitsWithRange,
   ProtocolDetails,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   ProtocolPosition,
   ProtocolTokenTvl,
   Underlying,
@@ -69,7 +69,7 @@ export type PricePerShareResponse = AdapterResponse<{
 }>
 
 export type DisplayProtocolTokenUnderlyingRate = Omit<
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   'tokens'
 > & {
   tokens?: (UnderlyingTokenRate & {
