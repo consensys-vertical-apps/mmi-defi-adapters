@@ -18,6 +18,7 @@
 - [DisplayProtocolTokenTvl](response.md#displayprotocoltokentvl)
 - [DefiMovementsResponse](response.md#defimovementsresponse)
 - [DisplayMovementsByBlock](response.md#displaymovementsbyblock)
+- [Support](response.md#support)
 
 ## Type Aliases
 
@@ -171,3 +172,13 @@ ___
 #### Defined in
 
 [response.ts:93](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L93)
+
+___
+
+### Support
+
+Ƭ **Support**: [`Partial`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype )<[`Record`]( https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type )<`Protocol`, { `protocolDetails`: [`ProtocolDetails`](adapter.md#protocoldetails) ; `chains`: `Chain`[]  }[]\>\>
+
+#### Defined in
+
+[response.ts:97](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/response.ts#L97)
