@@ -6,6 +6,7 @@ import {
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
+import { Support } from '../types/response'
 import { Chain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
@@ -180,5 +181,51 @@ export class AdaptersController {
     }
 
     return adapters
+  }
+
+  getSupport({
+    filterChainIds,
+    filterProtocolIds,
+  }: {
+    filterChainIds: Chain[] | undefined
+    filterProtocolIds: Protocol[] | undefined
+  }): Support {
+    const support: Support = {}
+    for (const [chainId, protocols] of this.adapters.entries()) {
+      if (filterChainIds && !filterChainIds.includes(chainId)) {
+        continue
+      }
+
+      for (const [protocolId, products] of protocols.entries()) {
+        if (filterProtocolIds && !filterProtocolIds.includes(protocolId)) {
+          continue
+        }
+
+        if (!support[protocolId]) {
+          support[protocolId] = []
+        }
+
+        for (const [_productId, adapter] of products.entries()) {
+          let product = support[protocolId]!.find(
+            (productEntry) =>
+              adapter.getProtocolDetails().productId ===
+              productEntry.protocolDetails.productId,
+          )
+
+          if (!product) {
+            product = {
+              protocolDetails: adapter.getProtocolDetails(),
+              chains: [],
+            }
+
+            support[protocolId]!.push(product)
+          }
+
+          product.chains.push(chainId)
+        }
+      }
+    }
+
+    return support
   }
 }
