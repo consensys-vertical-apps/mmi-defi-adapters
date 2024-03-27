@@ -1,28 +1,21 @@
 import { getAddress } from 'ethers'
 import * as WadMath from 'evm-maths/lib/wad'
 import { AdaptersController } from '../../../core/adaptersController'
-import { AVERAGE_BLOCKS_PER_DAY } from '../../../core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain } from '../../../core/constants/chains'
-import { WAD } from '../../../core/constants/WAD'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
-import { aprToApy } from '../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
   GetPositionsInput,
   GetEventsInput,
-  GetApyInput,
-  GetAprInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenBalance,
@@ -461,62 +454,65 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     return movements
   }
-
-  private async _getProtocolTokenApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<number> {
-    const lensContract = MorphoCompoundLens__factory.connect(
-      this.lensAddress,
-      this.provider,
-    )
-    const positionType = this.getProtocolDetails().positionType
-    let rate: bigint
-    if (positionType === PositionType.Supply) {
-      ;[rate, ,] = await lensContract.getAverageSupplyRatePerBlock(
-        protocolTokenAddress,
-        {
-          blockTag: blockNumber,
-        },
-      )
-    } else {
-      ;[rate, ,] = await lensContract.getAverageBorrowRatePerBlock(
-        protocolTokenAddress,
-        {
-          blockTag: blockNumber,
-        },
-      )
-    }
-    rate = rate * BigInt(AVERAGE_BLOCKS_PER_DAY[this.chainId]) * 365n
-    return Number(rate) / WAD
-  }
-
-  async getApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<ProtocolTokenApr> {
-    const apr = await this._getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-    })
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      aprDecimal: Number(apr) * 100,
-    }
-  }
-
-  async getApy({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetApyInput): Promise<ProtocolTokenApy> {
-    const apr = await this._getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-    })
-    const apy = aprToApy(apr, 365)
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      apyDecimal: apy * 100,
-    }
-  }
 }
+
+// NOTE: The APY/APR feature has been removed as of March 2024.
+// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
+
+// private async _getProtocolTokenApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<number> {
+//   const lensContract = MorphoCompoundLens__factory.connect(
+//     this.lensAddress,
+//     this.provider,
+//   )
+//   const positionType = this.getProtocolDetails().positionType
+//   let rate: bigint
+//   if (positionType === PositionType.Supply) {
+//     ;[rate, ,] = await lensContract.getAverageSupplyRatePerBlock(
+//       protocolTokenAddress,
+//       {
+//         blockTag: blockNumber,
+//       },
+//     )
+//   } else {
+//     ;[rate, ,] = await lensContract.getAverageBorrowRatePerBlock(
+//       protocolTokenAddress,
+//       {
+//         blockTag: blockNumber,
+//       },
+//     )
+//   }
+//   rate = rate * BigInt(AVERAGE_BLOCKS_PER_DAY[this.chainId]) * 365n
+//   return Number(rate) / WAD
+// }
+
+// async getApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<ProtocolTokenApr> {
+//   const apr = await this._getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     aprDecimal: Number(apr) * 100,
+//   }
+// }
+
+// async getApy({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetApyInput): Promise<ProtocolTokenApy> {
+//   const apr = await this._getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+//   const apy = aprToApy(apr, 365)
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     apyDecimal: apy * 100,
+//   }
+// }

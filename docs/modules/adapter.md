@@ -6,6 +6,7 @@
 
 ### Interfaces
 
+- [GetPositionsInputWithTokenAddresses](../interfaces/adapter.GetPositionsInputWithTokenAddresses.md)
 - [GetPositionsInput](../interfaces/adapter.GetPositionsInput.md)
 - [GetPricePerShareInput](../interfaces/adapter.GetPricePerShareInput.md)
 - [GetTotalValueLockedInput](../interfaces/adapter.GetTotalValueLockedInput.md)
@@ -15,8 +16,6 @@
 - [UnderlyingTokenRate](../interfaces/adapter.UnderlyingTokenRate.md)
 - [ProtocolTokenUnderlyingRate](../interfaces/adapter.ProtocolTokenUnderlyingRate.md)
 - [MovementsByBlock](../interfaces/adapter.MovementsByBlock.md)
-- [ProtocolTokenApy](../interfaces/adapter.ProtocolTokenApy.md)
-- [ProtocolTokenApr](../interfaces/adapter.ProtocolTokenApr.md)
 - [UnderlyingTokenTvl](../interfaces/adapter.UnderlyingTokenTvl.md)
 - [ProtocolTokenTvl](../interfaces/adapter.ProtocolTokenTvl.md)
 - [ProfitsWithRange](../interfaces/adapter.ProfitsWithRange.md)
@@ -28,17 +27,18 @@
 ### Type Aliases
 
 - [TokenType](adapter.md#tokentype-1)
+- [AssetType](adapter.md#assettype-1)
 - [PositionType](adapter.md#positiontype-1)
 - [GetBalancesInput](adapter.md#getbalancesinput)
 - [GetConversionRateInput](adapter.md#getconversionrateinput)
-- [GetApyInput](adapter.md#getapyinput)
-- [GetAprInput](adapter.md#getaprinput)
 - [GetEventsInput](adapter.md#geteventsinput)
+- [AssetDetails](adapter.md#assetdetails)
 - [ProtocolDetails](adapter.md#protocoldetails)
 
 ### Variables
 
 - [TokenType](adapter.md#tokentype)
+- [AssetType](adapter.md#assettype)
 - [PositionType](adapter.md#positiontype)
 
 ## Type Aliases
@@ -51,7 +51,19 @@
 
 [adapter.ts:7](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L7)
 
-[adapter.ts:14](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L14)
+[adapter.ts:13](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L13)
+
+___
+
+### AssetType
+
+Ƭ **AssetType**: typeof [`AssetType`](adapter.md#assettype)[keyof typeof [`AssetType`](adapter.md#assettype)]
+
+#### Defined in
+
+[adapter.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L15)
+
+[adapter.ts:19](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L19)
 
 ___
 
@@ -61,9 +73,9 @@ ___
 
 #### Defined in
 
-[adapter.ts:16](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L16)
+[adapter.ts:21](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L21)
 
-[adapter.ts:43](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L43)
+[adapter.ts:48](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L48)
 
 ___
 
@@ -73,7 +85,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:45](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L45)
+[adapter.ts:50](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L50)
 
 ___
 
@@ -87,44 +99,11 @@ ___
 | :------ | :------ | :------ |
 | `blockNumber?` | `number` | Optional override param |
 | `protocolTokenAddress` | `string` | Protocol token address (LP token address). |
+| `tokenId?` | `string` | Optional filter for pools that will be queried by an ID |
 
 #### Defined in
 
-[adapter.ts:51](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L51)
-
-___
-
-### GetApyInput
-
-Ƭ **GetApyInput**: `Object`
-
-#### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `blockNumber?` | `number` | Optional override param |
-| `protocolTokenAddress` | `string` | Protocol token address (LP token address). |
-
-#### Defined in
-
-[adapter.ts:61](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L61)
-
-___
-
-### GetAprInput
-
-Ƭ **GetAprInput**: `Object`
-
-#### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `blockNumber?` | `number` | Optional override param |
-| `protocolTokenAddress` | `string` | Protocol token address (LP token address). |
-
-#### Defined in
-
-[adapter.ts:72](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L72)
+[adapter.ts:56](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L56)
 
 ___
 
@@ -144,7 +123,23 @@ ___
 
 #### Defined in
 
-[adapter.ts:83](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L83)
+[adapter.ts:72](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L72)
+
+___
+
+### AssetDetails
+
+Ƭ **AssetDetails**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `type` | [`AssetType`](adapter.md#assettype) |
+
+#### Defined in
+
+[adapter.ts:99](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L99)
 
 ___
 
@@ -164,10 +159,11 @@ ___
 | `siteUrl` | `string` | Protocol website |
 | `positionType` | [`PositionType`](adapter.md#positiontype) | Type of position One adapter per type |
 | `productId` | `string` | Unique protocol-product name |
+| `assetDetails` | [`AssetDetails`](adapter.md#assetdetails) |  |
 
 #### Defined in
 
-[adapter.ts:110](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L110)
+[adapter.ts:103](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L103)
 
 ## Variables
 
@@ -183,13 +179,31 @@ ___
 | `Reward` | ``"claimable"`` |
 | `Underlying` | ``"underlying"`` |
 | `UnderlyingClaimable` | ``"underlying-claimable"`` |
-| `Fiat` | ``"fiat"`` |
 
 #### Defined in
 
 [adapter.ts:7](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L7)
 
-[adapter.ts:14](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L14)
+[adapter.ts:13](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L13)
+
+___
+
+### AssetType
+
+• `Const` **AssetType**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `StandardErc20` | ``"StandardErc20"`` |
+| `NonStandardErc20` | ``"NonStandardErc20"`` |
+
+#### Defined in
+
+[adapter.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L15)
+
+[adapter.ts:19](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L19)
 
 ___
 
@@ -210,6 +224,6 @@ ___
 
 #### Defined in
 
-[adapter.ts:16](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L16)
+[adapter.ts:21](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L21)
 
-[adapter.ts:43](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L43)
+[adapter.ts:48](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L48)

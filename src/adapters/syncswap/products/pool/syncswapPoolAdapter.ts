@@ -8,11 +8,7 @@ import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   UnderlyingTokenRate,
   Underlying,
   GetPositionsInput,
@@ -202,14 +198,6 @@ export class SyncswapPoolAdapter extends SimplePoolAdapter {
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
     throw new NotImplementedError()
   }
 

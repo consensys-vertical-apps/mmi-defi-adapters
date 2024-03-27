@@ -17,10 +17,6 @@ import {
   ProtocolTokenUnderlyingRate,
   GetTotalValueLockedInput,
   ProtocolTokenTvl,
-  GetApyInput,
-  ProtocolTokenApy,
-  GetAprInput,
-  ProtocolTokenApr,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
@@ -293,14 +289,6 @@ export abstract class CompoundV2BorrowMarketForkAdapter
   getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 }

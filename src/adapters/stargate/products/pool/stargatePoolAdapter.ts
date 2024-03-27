@@ -5,17 +5,12 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   UnderlyingTokenRate,
   Underlying,
-  GetAprInput,
-  GetApyInput,
   PositionType,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolDetails,
   TokenBalance,
   TokenType,
@@ -181,14 +176,6 @@ export class StargatePoolAdapter
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
   }
 
   protected async fetchProtocolTokenMetadata(

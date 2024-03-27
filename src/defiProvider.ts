@@ -23,8 +23,6 @@ import { DeepPartial } from './types/deepPartial'
 import { GetTransactionParamsInput } from './types/getTransactionParamsInput'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
-  APRResponse,
-  APYResponse,
   AdapterResponse,
   DefiMovementsResponse,
   DefiPositionResponse,
@@ -586,74 +584,11 @@ export class DefiProvider {
     })
   }
 
-  async getApy({
-    filterProtocolIds,
-    filterChainIds,
-    blockNumbers,
-  }: {
-    filterProtocolIds?: Protocol[]
-    filterChainIds?: Chain[]
-    blockNumbers?: Partial<Record<Chain, number>>
-  }): Promise<APYResponse[]> {
-    const runner = async (adapter: IProtocolAdapter) => {
-      const blockNumber = blockNumbers?.[adapter.chainId]
-
-      const protocolTokens = await adapter.getProtocolTokens()
-      const tokens = await Promise.all(
-        protocolTokens.map(({ address }) =>
-          adapter.getApy({
-            protocolTokenAddress: getAddress(address),
-            blockNumber,
-          }),
-        ),
-      )
-
-      return {
-        tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
-      }
-    }
-
-    return this.runForAllProtocolsAndChains({
-      runner,
-      filterProtocolIds,
-      filterChainIds,
-      method: 'getApy',
-    })
-  }
-
-  async getApr({
-    filterProtocolIds,
-    filterChainIds,
-    blockNumbers,
-  }: {
-    filterProtocolIds?: Protocol[]
-    filterChainIds?: Chain[]
-    blockNumbers?: Partial<Record<Chain, number>>
-  }): Promise<APRResponse[]> {
-    const runner = async (adapter: IProtocolAdapter) => {
-      const blockNumber = blockNumbers?.[adapter.chainId]
-
-      const protocolTokens = await adapter.getProtocolTokens()
-      const tokens = await Promise.all(
-        protocolTokens.map(({ address }) =>
-          adapter.getApr({
-            protocolTokenAddress: getAddress(address),
-            blockNumber,
-          }),
-        ),
-      )
-
-      return {
-        tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
-      }
-    }
-
-    return this.runForAllProtocolsAndChains({
-      runner,
-      filterProtocolIds,
-      filterChainIds,
-      method: 'getApr',
-    })
+  getSupport(input: {
+    filterChainIds: Chain[] | undefined
+    filterProtocolIds: Protocol[] | undefined
+  }) {
+    return this.adaptersController.getSupport(input)
   }
 
   private async runForAllProtocolsAndChains<ReturnType extends object>({
@@ -675,8 +610,6 @@ export class DefiProvider {
       | 'getWithdrawals'
       | 'getDeposits'
       | 'getTotalValueLocked'
-      | 'getApy'
-      | 'getApr'
   }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(

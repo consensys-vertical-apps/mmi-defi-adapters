@@ -14,11 +14,7 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetApyInput,
-  GetAprInput,
   GetConversionRateInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
   ProtocolTokenTvl,
   ProtocolPosition,
@@ -297,14 +293,6 @@ export class IZiswapAdapter extends SimplePoolAdapter {
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

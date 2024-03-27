@@ -4,16 +4,12 @@ import { TransferEvent } from '../../contracts/Erc20'
 import {
   UnderlyingTokenRate,
   Underlying,
-  GetAprInput,
-  GetApyInput,
   GetEventsInput,
   GetPositionsInput,
   GetConversionRateInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   ProtocolAdapterParams,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolDetails,
   ProtocolTokenUnderlyingRate,
   ProtocolPosition,
@@ -265,9 +261,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       }),
     )
   }
-
-  abstract getApy(input: GetApyInput): Promise<ProtocolTokenApy>
-  abstract getApr(input: GetAprInput): Promise<ProtocolTokenApr>
 
   /**
    * Fetches the protocol-token metadata

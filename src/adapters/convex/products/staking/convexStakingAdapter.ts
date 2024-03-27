@@ -9,7 +9,6 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -21,10 +20,6 @@ import {
   GetEventsInput,
   MovementsByBlock,
   AssetType,
-  GetAprInput,
-  GetApyInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   GetPositionsInputWithTokenAddresses,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -400,13 +395,5 @@ export class ConvexStakingAdapter
     }
 
     return extraRewards
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 }

@@ -348,68 +348,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
       })
     }
 
-    const apyTestCases = testCases.filter(
-      (testCase): testCase is TestCase & { method: 'apy' } =>
-        testCase.method === 'apy',
-    )
-    if (apyTestCases.length) {
-      describe('getApy', () => {
-        it.each(apyTestCases.map((testCase) => [testKey(testCase), testCase]))(
-          'apy for test %s match',
-          async (_, testCase) => {
-            const { snapshot, blockNumber } = await fetchSnapshot(
-              testCase,
-              protocolId,
-            )
-
-            const response = await defiProvider.getApy({
-              filterProtocolIds: [protocolId],
-              filterChainIds: [testCase.chainId],
-              blockNumbers: { [testCase.chainId]: blockNumber },
-            })
-
-            expect(response).toEqual(snapshot)
-          },
-          TEST_TIMEOUT,
-        )
-
-        afterAll(() => {
-          logger.debug(`[Integration test] getApy for ${protocolId} finished`)
-        })
-      })
-    }
-
-    const aprTestCases = testCases.filter(
-      (testCase): testCase is TestCase & { method: 'apr' } =>
-        testCase.method === 'apr',
-    )
-    if (aprTestCases.length) {
-      describe('getApr', () => {
-        it.each(aprTestCases.map((testCase) => [testKey(testCase), testCase]))(
-          'apr for test %s match',
-          async (_, testCase) => {
-            const { snapshot, blockNumber } = await fetchSnapshot(
-              testCase,
-              protocolId,
-            )
-
-            const response = await defiProvider.getApr({
-              filterProtocolIds: [protocolId],
-              filterChainIds: [testCase.chainId],
-              blockNumbers: { [testCase.chainId]: blockNumber },
-            })
-
-            expect(response).toEqual(snapshot)
-          },
-          TEST_TIMEOUT,
-        )
-
-        afterAll(() => {
-          logger.debug(`[Integration test] getApr for ${protocolId} finished`)
-        })
-      })
-    }
-
     const txParamsTestCases = testCases.filter(
       (testCase): testCase is TestCase & { method: 'tx-params' } =>
         testCase.method === 'tx-params',
