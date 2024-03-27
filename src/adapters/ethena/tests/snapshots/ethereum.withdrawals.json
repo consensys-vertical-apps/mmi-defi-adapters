@@ -1,0 +1,172 @@
+{
+  "snapshot": {
+    "protocolId": "ethena",
+    "name": "Ethena",
+    "description": "Ethena USDe adapter",
+    "siteUrl": "https://ethena.fi",
+    "iconUrl": "https://ethena.fi/shared/ethena.svg",
+    "positionType": "fiat-prices",
+    "chainId": 1,
+    "productId": "ethena",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x8c54b928f679faf750559906a9d5e917bfe89ad5967ad2547315c261de880974",
+        "protocolToken": {
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+            "name": "USDe",
+            "symbol": "USDe",
+            "decimals": 18,
+            "balanceRaw": "1000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 19407964,
+            "balance": 1
+          }
+        ],
+        "blockNumber": 19407964
+      },
+      {
+        "transactionHash": "0xc6d5d1c5b952a8ac009b490d608db0faa1144081de82291161a4233907a63610",
+        "protocolToken": {
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+            "name": "USDe",
+            "symbol": "USDe",
+            "decimals": 18,
+            "balanceRaw": "1000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 19408221,
+            "balance": 1
+          }
+        ],
+        "blockNumber": 19408221
+      },
+      {
+        "transactionHash": "0x7690123e7e68a3b3595d3149ec3caed514fde30921928b50322dded93924036a",
+        "protocolToken": {
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+            "name": "USDe",
+            "symbol": "USDe",
+            "decimals": 18,
+            "balanceRaw": "1000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 19408685,
+            "balance": 1
+          }
+        ],
+        "blockNumber": 19408685
+      },
+      {
+        "transactionHash": "0x39328a306e79510cffdbed16782a3096c5dae552058af1a207c091c3c7e93c28",
+        "protocolToken": {
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+            "name": "USDe",
+            "symbol": "USDe",
+            "decimals": 18,
+            "balanceRaw": "1000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 19408713,
+            "balance": 1
+          }
+        ],
+        "blockNumber": 19408713
+      },
+      {
+        "transactionHash": "0x3cfca11178088c6e03e90007c999f52efac10ccbb4e68d35102987882d4fdaa0",
+        "protocolToken": {
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+            "name": "USDe",
+            "symbol": "USDe",
+            "decimals": 18,
+            "balanceRaw": "1000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 19411862,
+            "balance": 1
+          }
+        ],
+        "blockNumber": 19411862
+      },
+      {
+        "transactionHash": "0x77cf7d1507711826500ec237fe6ae4bc32de604e881963adcb187e01b182c936",
+        "protocolToken": {
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+            "name": "USDe",
+            "symbol": "USDe",
+            "decimals": 18,
+            "balanceRaw": "1000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 19411869,
+            "balance": 1
+          }
+        ],
+        "blockNumber": 19411869
+      },
+      {
+        "transactionHash": "0xd54f5342da1ffc4952765bbacf0413d861378a10daf7d98d3bf459893f4ae0ae",
+        "protocolToken": {
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+            "name": "USDe",
+            "symbol": "USDe",
+            "decimals": 18,
+            "balanceRaw": "2434454434343434343n",
+            "type": "underlying",
+            "blockNumber": 19420501,
+            "balance": 2.4344544343434342
+          }
+        ],
+        "blockNumber": 19420501
+      }
+    ]
+  }
+}

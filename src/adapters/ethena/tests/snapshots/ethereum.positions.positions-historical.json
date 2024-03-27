@@ -1,0 +1,39 @@
+{
+  "blockNumber": 19400000,
+  "snapshot": [
+    {
+      "protocolId": "ethena",
+      "name": "Ethena",
+      "description": "Ethena USDe adapter",
+      "siteUrl": "https://ethena.fi",
+      "iconUrl": "https://ethena.fi/shared/ethena.svg",
+      "positionType": "fiat-prices",
+      "chainId": 1,
+      "productId": "ethena",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18,
+          "type": "protocol",
+          "balanceRaw": "88136931720715594011n",
+          "balance": 88.1369317207156
+        },
+        {
+          "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+          "name": "Staked USDe",
+          "symbol": "sUSDe",
+          "decimals": 18,
+          "type": "protocol",
+          "balanceRaw": "23369194516015940284n",
+          "balance": 23.36919451601594
+        }
+      ]
+    }
+  ]
+}

@@ -19,6 +19,7 @@ import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAda
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
+import { EthenaMainAdapter } from './ethena/products/main/ethenaMainAdapter'
 import { FluxBorrowMarketAdapter } from './flux/products/borrow-market/fluxBorrowMarketAdapter'
 import { FluxSupplyMarketAdapter } from './flux/products/supply-market/fluxSupplyMarketAdapter'
 import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
@@ -168,6 +169,10 @@ export const supportedProtocols: Record<
       CurveRewardAdapter,
     ],
     [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
+  },
+
+  [Protocol.Ethena]: {
+    [Chain.Ethereum]: [EthenaMainAdapter],
   },
 
   [Protocol.Flux]: {
