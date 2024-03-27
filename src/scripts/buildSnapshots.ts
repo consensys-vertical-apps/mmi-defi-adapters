@@ -186,53 +186,6 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                 return result
               }
 
-              case 'apy': {
-                const blockNumber =
-                  testCase.blockNumber ??
-                  (await getLatestStableBlock(
-                    defiProvider.chainProvider.providers[chainId],
-                    chainId,
-                  ))
-
-                const result = {
-                  blockNumber,
-                  snapshot: await defiProvider.getApy({
-                    filterChainIds: [chainId],
-                    filterProtocolIds: [protocolId],
-                    blockNumbers: {
-                      [chainId]: blockNumber,
-                    },
-                  }),
-                }
-
-                await updateBlockNumber(protocolId, index, blockNumber)
-
-                return result
-              }
-
-              case 'apr': {
-                const blockNumber =
-                  testCase.blockNumber ??
-                  (await getLatestStableBlock(
-                    defiProvider.chainProvider.providers[chainId],
-                    chainId,
-                  ))
-
-                const result = {
-                  blockNumber,
-                  snapshot: await defiProvider.getApr({
-                    filterChainIds: [chainId],
-                    filterProtocolIds: [protocolId],
-                    blockNumbers: {
-                      [chainId]: blockNumber,
-                    },
-                  }),
-                }
-
-                await updateBlockNumber(protocolId, index, blockNumber)
-
-                return result
-              }
               case 'tx-params': {
                 const inputs = {
                   chainId,

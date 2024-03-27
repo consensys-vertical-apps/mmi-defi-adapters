@@ -5,12 +5,8 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
   GetTotalValueLockedInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenTvl,
   UnderlyingTokenRate,
   Underlying,
@@ -128,13 +124,5 @@ export class SDaiAdapter extends SimplePoolAdapter {
         underlyingRateRaw: pricePerShareRaw,
       },
     ]
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 }

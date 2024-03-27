@@ -20,6 +20,7 @@ Should the underlying token be another protocol token then we expect that to be 
 
 - [balanceRaw](adapter.Underlying.md#balanceraw)
 - [type](adapter.Underlying.md#type)
+- [priceRaw](adapter.Underlying.md#priceraw)
 - [tokens](adapter.Underlying.md#tokens)
 - [address](adapter.Underlying.md#address)
 - [name](adapter.Underlying.md#name)
@@ -40,17 +41,27 @@ User's balance raw
 
 #### Defined in
 
-[adapter.ts:187](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L187)
+[adapter.ts:194](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L194)
 
 ___
 
 ### type
 
-• **type**: ``"underlying"`` \| ``"underlying-claimable"`` \| ``"fiat"``
+• **type**: ``"underlying"`` \| ``"underlying-claimable"``
 
 #### Defined in
 
-[adapter.ts:196](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L196)
+[adapter.ts:203](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L203)
+
+___
+
+### priceRaw
+
+• `Optional` **priceRaw**: `bigint`
+
+#### Defined in
+
+[adapter.ts:204](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L204)
 
 ___
 
@@ -60,7 +71,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:201](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L201)
+[adapter.ts:205](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L205)
 
 ___
 

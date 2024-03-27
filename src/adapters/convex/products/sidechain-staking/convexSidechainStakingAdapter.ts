@@ -23,10 +23,6 @@ import {
   AssetType,
   PositionType,
   ProtocolDetails,
-  GetAprInput,
-  GetApyInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
 } from '../../../../types/adapter'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import {
@@ -244,13 +240,5 @@ export class ConvexSidechainStakingAdapter
         }
       }),
     )
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 }

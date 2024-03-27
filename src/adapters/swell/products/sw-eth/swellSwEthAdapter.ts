@@ -1,16 +1,11 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
   TokenBalance,
   TokenType,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   UnderlyingTokenRate,
   Underlying,
   AssetType,
@@ -39,14 +34,6 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return [await this.fetchProtocolTokenMetadata()]
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
   }
 
   protected async getUnderlyingTokenBalances({

@@ -100,14 +100,4 @@ export const testCases: TestCase[] = [
     method: 'tvl',
     blockNumber: 18733080,
   },
-  {
-    chainId: Chain.Ethereum,
-    method: 'apr',
-    blockNumber: 18733080,
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'apy',
-    blockNumber: 18733080,
-  },
 ]

@@ -69,8 +69,6 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
     'tvl',
     defiProvider.getTotalValueLocked.bind(defiProvider),
   )
-  protocolCommand(program, 'apr', defiProvider.getApr.bind(defiProvider))
-  protocolCommand(program, 'apy', defiProvider.getApy.bind(defiProvider))
 
   program
     .command('support')

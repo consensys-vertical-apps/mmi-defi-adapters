@@ -5,10 +5,6 @@ import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   ProtocolDetails,
   PositionType,
-  GetApyInput,
-  GetAprInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   TokenType,
   TokenBalance,
   Underlying,
@@ -42,14 +38,6 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return [await this.fetchProtocolTokenMetadata()]
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
   }
 
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {

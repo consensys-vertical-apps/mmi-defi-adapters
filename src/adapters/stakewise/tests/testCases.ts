@@ -23,11 +23,6 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
-    method: 'apy',
-    blockNumber: 19240300,
-  },
-  {
-    chainId: Chain.Ethereum,
     method: 'deposits',
     input: {
       productId,

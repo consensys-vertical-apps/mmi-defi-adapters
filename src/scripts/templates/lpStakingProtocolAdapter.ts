@@ -121,14 +121,6 @@ export function lpStakingAdapterTemplate({
     ): Promise<MovementsByBlock[]> {
       throw new NotImplementedError()
     }
-  
-    async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-      throw new NotImplementedError()
-    }
-  
-    async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-      throw new NotImplementedError()
-    }
   }
   `
 }

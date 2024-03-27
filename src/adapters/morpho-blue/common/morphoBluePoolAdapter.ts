@@ -1,9 +1,7 @@
 import { ZeroAddress } from 'ethers'
-import { WAD } from 'evm-maths/lib/constants'
 import { Erc20__factory } from '../../../contracts/factories/Erc20__factory'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
-import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import {
   ResolveUnderlyingMovements,
@@ -17,16 +15,12 @@ import { logger } from '../../../core/utils/logger'
 import {
   GetPositionsInput,
   GetEventsInput,
-  GetApyInput,
-  GetAprInput,
   GetTotalValueLockedInput,
   GetConversionRateInput,
   MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
   ProtocolTokenTvl,
   ProtocolPosition,
@@ -50,9 +44,6 @@ type MorphoBlueAdapterMetadata = Record<
     collateralToken: Erc20Metadata
   }
 >
-type GetAprInputExtended = GetAprInput & {
-  aprExpected?: boolean // Making it optional
-}
 
 const morphoBlueContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
@@ -625,125 +616,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     return movements
   }
 
-  protected async _getProtocolTokenApr({
-    protocolTokenAddress,
-    blockNumber,
-    aprExpected,
-  }: GetAprInputExtended): Promise<number> {
-    const morphoBlue = MorphoBlue__factory.connect(
-      morphoBlueContractAddresses[this.protocolId]![this.chainId]!,
-      this._provider,
-    )
-
-    const marketId = protocolTokenAddress
-
-    const [marketData_, marketParams_] = await Promise.all([
-      morphoBlue.market(protocolTokenAddress, {
-        blockTag: blockNumber,
-      }),
-      morphoBlue.idToMarketParams(marketId, {
-        blockTag: blockNumber,
-      }),
-    ])
-
-    const marketParams: MarketParams = {
-      loanToken: marketParams_.loanToken,
-      collateralToken: marketParams_.collateralToken,
-      oracle: marketParams_.oracle,
-      irm: marketParams_.irm,
-      lltv: marketParams_.lltv,
-    }
-
-    const marketData: MarketData = {
-      totalSupplyAssets: marketData_.totalSupplyAssets,
-      totalSupplyShares: marketData_.totalSupplyShares,
-      totalBorrowAssets: marketData_.totalBorrowAssets,
-      totalBorrowShares: marketData_.totalBorrowShares,
-      lastUpdate: marketData_.lastUpdate,
-      fee: marketData_.fee,
-    }
-
-    const irm = AdaptiveCurveIrm__factory.connect(
-      marketParams.irm,
-      this._provider,
-    )
-
-    const borrowRate =
-      marketParams.irm !== ZeroAddress
-        ? await irm.borrowRateView(marketParams, marketData, {
-            blockTag: blockNumber,
-          })
-        : 0n
-
-    const positionType = this.getProtocolDetails().positionType
-
-    if (aprExpected === true) {
-      const borrowAPR = borrowRate * BigInt(SECONDS_PER_YEAR)
-      if (positionType === PositionType.Borrow) {
-        return Number(borrowAPR) / Number(WAD)
-      } else {
-        const utilization = this.__MATH__.wDivUp(
-          marketData.totalBorrowAssets,
-          marketData.totalSupplyAssets,
-        )
-        const supplyAPR = this.__MATH__.wMulDown(
-          this.__MATH__.wMulDown(utilization, borrowAPR),
-          WAD - marketData.fee,
-        )
-        return Number(supplyAPR) / Number(WAD)
-      }
-    }
-
-    const borrowAPY = this.__MATH__.wTaylorCompounded(
-      borrowRate,
-      BigInt(SECONDS_PER_YEAR),
-    )
-    if (positionType === PositionType.Borrow) {
-      return Number(borrowAPY) / Number(WAD)
-    } else {
-      const utilization = this.__MATH__.wDivUp(
-        marketData.totalBorrowAssets,
-        marketData.totalSupplyAssets,
-      )
-      const supplyAPY = this.__MATH__.wMulDown(
-        this.__MATH__.wMulDown(utilization, borrowAPY),
-        WAD - marketData.fee,
-      )
-      return Number(supplyAPY) / Number(WAD)
-    }
-  }
-
-  async getApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<ProtocolTokenApr> {
-    const apr = await this._getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-      aprExpected: true,
-    })
-    return {
-      ...(await this._fetchTokenMetadata(protocolTokenAddress)),
-      aprDecimal: apr * 100,
-    }
-  }
-
-  async getApy({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetApyInput): Promise<ProtocolTokenApy> {
-    const apy = await this._getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-      aprExpected: false,
-    })
-
-    return {
-      ...(await this._fetchTokenMetadata(protocolTokenAddress)),
-      apyDecimal: apy * 100,
-    }
-  }
-
   // Whitelisted markets thanks to the below graphql extraction:
   private async graphQlPoolExtraction(chainId: typeof Chain.Ethereum): Promise<
     {
@@ -792,3 +664,125 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     })
   }
 }
+
+// NOTE: The APY/APR feature has been removed as of March 2024.
+// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
+
+// protected async _getProtocolTokenApr({
+//   protocolTokenAddress,
+//   blockNumber,
+//   aprExpected,
+// }: GetAprInputExtended): Promise<number> {
+//   const morphoBlue = MorphoBlue__factory.connect(
+//     morphoBlueContractAddresses[this.protocolId]![this.chainId]!,
+//     this._provider,
+//   )
+
+//   const marketId = protocolTokenAddress
+
+//   const [marketData_, marketParams_] = await Promise.all([
+//     morphoBlue.market(protocolTokenAddress, {
+//       blockTag: blockNumber,
+//     }),
+//     morphoBlue.idToMarketParams(marketId, {
+//       blockTag: blockNumber,
+//     }),
+//   ])
+
+//   const marketParams: MarketParams = {
+//     loanToken: marketParams_.loanToken,
+//     collateralToken: marketParams_.collateralToken,
+//     oracle: marketParams_.oracle,
+//     irm: marketParams_.irm,
+//     lltv: marketParams_.lltv,
+//   }
+
+//   const marketData: MarketData = {
+//     totalSupplyAssets: marketData_.totalSupplyAssets,
+//     totalSupplyShares: marketData_.totalSupplyShares,
+//     totalBorrowAssets: marketData_.totalBorrowAssets,
+//     totalBorrowShares: marketData_.totalBorrowShares,
+//     lastUpdate: marketData_.lastUpdate,
+//     fee: marketData_.fee,
+//   }
+
+//   const irm = AdaptiveCurveIrm__factory.connect(
+//     marketParams.irm,
+//     this._provider,
+//   )
+
+//   const borrowRate =
+//     marketParams.irm !== ZeroAddress
+//       ? await irm.borrowRateView(marketParams, marketData, {
+//           blockTag: blockNumber,
+//         })
+//       : 0n
+
+//   const positionType = this.getProtocolDetails().positionType
+
+//   if (aprExpected === true) {
+//     const borrowAPR = borrowRate * BigInt(SECONDS_PER_YEAR)
+//     if (positionType === PositionType.Borrow) {
+//       return Number(borrowAPR) / Number(WAD)
+//     } else {
+//       const utilization = this.__MATH__.wDivUp(
+//         marketData.totalBorrowAssets,
+//         marketData.totalSupplyAssets,
+//       )
+//       const supplyAPR = this.__MATH__.wMulDown(
+//         this.__MATH__.wMulDown(utilization, borrowAPR),
+//         WAD - marketData.fee,
+//       )
+//       return Number(supplyAPR) / Number(WAD)
+//     }
+//   }
+
+//   const borrowAPY = this.__MATH__.wTaylorCompounded(
+//     borrowRate,
+//     BigInt(SECONDS_PER_YEAR),
+//   )
+//   if (positionType === PositionType.Borrow) {
+//     return Number(borrowAPY) / Number(WAD)
+//   } else {
+//     const utilization = this.__MATH__.wDivUp(
+//       marketData.totalBorrowAssets,
+//       marketData.totalSupplyAssets,
+//     )
+//     const supplyAPY = this.__MATH__.wMulDown(
+//       this.__MATH__.wMulDown(utilization, borrowAPY),
+//       WAD - marketData.fee,
+//     )
+//     return Number(supplyAPY) / Number(WAD)
+//   }
+// }
+
+// async getApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<ProtocolTokenApr> {
+//   const apr = await this._getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//     aprExpected: true,
+//   })
+//   return {
+//     ...(await this._fetchTokenMetadata(protocolTokenAddress)),
+//     aprDecimal: apr * 100,
+//   }
+// }
+
+// async getApy({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetApyInput): Promise<ProtocolTokenApy> {
+//   const apy = await this._getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//     aprExpected: false,
+//   })
+
+//   return {
+//     ...(await this._fetchTokenMetadata(protocolTokenAddress)),
+//     apyDecimal: apy * 100,
+//   }
+// }

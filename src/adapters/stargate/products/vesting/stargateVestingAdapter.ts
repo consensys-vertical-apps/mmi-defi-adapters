@@ -10,15 +10,11 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  GetAprInput,
-  GetApyInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolDetails,
   ProtocolTokenUnderlyingRate,
   ProtocolPosition,
@@ -146,14 +142,6 @@ export class StargateVestingAdapter
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

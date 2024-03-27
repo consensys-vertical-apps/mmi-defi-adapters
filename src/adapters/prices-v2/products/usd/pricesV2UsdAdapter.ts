@@ -13,11 +13,7 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetApyInput,
-  GetAprInput,
   GetConversionRateInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenUnderlyingRate,
   ProtocolTokenTvl,
   ProtocolPosition,
@@ -174,14 +170,6 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
         },
       ],
     }
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
   }
 
   private calculateERC20PriceInUsd({

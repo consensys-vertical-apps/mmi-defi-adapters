@@ -3,8 +3,6 @@ import type { Chain } from '../core/constants/chains'
 import type {
   MovementsByBlock,
   ProfitsWithRange,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolDetails,
   ProtocolTokenUnderlyingRate,
   ProtocolPosition,
@@ -78,14 +76,6 @@ export type DisplayProtocolTokenUnderlyingRate = Omit<
     iconUrl?: string
   })[]
 }
-
-export type APRResponse = AdapterResponse<{
-  tokens: ProtocolTokenApr[]
-}>
-
-export type APYResponse = AdapterResponse<{
-  tokens: ProtocolTokenApy[]
-}>
 
 export type TotalValueLockResponse = AdapterResponse<{
   tokens: DisplayProtocolTokenTvl[]
