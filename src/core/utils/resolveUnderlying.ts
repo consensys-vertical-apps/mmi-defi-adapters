@@ -5,19 +5,21 @@ import {
   AdapterMissingError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
-import { logger } from '../utils/logger'
+import { logger } from './logger'
 
 type Token = Erc20Metadata & {
   tokens?: Token[]
   priceRaw?: bigint
 }
 
-export async function resolveTokenArray(
+export async function resolveUnderlyings(
   adapter: IProtocolAdapter,
   blockNumber: number | undefined,
   tokens: Token[],
   updateUnderlyingToken: (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     underlyingToken: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     protocolToken: any,
     underlyingRateRaw: bigint,
   ) => void,
@@ -25,7 +27,7 @@ export async function resolveTokenArray(
   const promises = tokens.map(async (token) => {
     if (token.tokens) {
       // Resolve underlying tokens if they exist
-      await resolveTokenArray(
+      await resolveUnderlyings(
         adapter,
         blockNumber,
         token.tokens,
@@ -74,7 +76,7 @@ export async function resolveTokenArray(
       return underlyingToken
     })
 
-    await resolveTokenArray(
+    await resolveUnderlyings(
       adapter,
       blockNumber,
       token.tokens!,

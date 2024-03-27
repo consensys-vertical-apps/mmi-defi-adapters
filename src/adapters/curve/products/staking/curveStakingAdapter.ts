@@ -5,7 +5,6 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { ResolveUnderlyingMovements } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { logger } from '../../../../core/utils/logger'
 import {
@@ -142,7 +141,6 @@ export class CurveStakingAdapter
     throw new NotImplementedError()
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -176,7 +174,6 @@ export class CurveStakingAdapter
     return movements
   }
 
-  @ResolveUnderlyingMovements
   @AddClaimedRewards({ rewardAdapterIds: ['reward'] })
   async getWithdrawals({
     userAddress,

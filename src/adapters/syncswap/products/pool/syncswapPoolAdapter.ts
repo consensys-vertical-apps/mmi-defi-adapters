@@ -2,10 +2,6 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -87,7 +83,6 @@ export class SyncswapPoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -159,7 +154,6 @@ export class SyncswapPoolAdapter extends SimplePoolAdapter {
     }
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     protocolTokenAddress,
     userAddress,
@@ -175,7 +169,6 @@ export class SyncswapPoolAdapter extends SimplePoolAdapter {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     protocolTokenAddress,
     userAddress,

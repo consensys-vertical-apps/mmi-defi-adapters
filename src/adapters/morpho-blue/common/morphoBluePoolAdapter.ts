@@ -5,10 +5,6 @@ import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../core/utils/filters'
@@ -262,7 +258,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     }
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -334,7 +329,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     return protocolTokens
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
 
@@ -364,7 +358,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     ).flat()
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
 
@@ -394,7 +387,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     ).flat()
   }
 
-  @ResolveUnderlyingMovements
   async getBorrows({
     userAddress,
 
@@ -412,7 +404,6 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getRepays({
     userAddress,
 

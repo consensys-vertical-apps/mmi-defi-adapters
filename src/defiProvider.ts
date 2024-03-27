@@ -11,6 +11,7 @@ import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { logger } from './core/utils/logger'
+import { resolveUnderlyings } from './core/utils/resolveUnderlying'
 import {
   enrichPositionBalance,
   enrichUnderlyingTokenRates,
@@ -121,6 +122,17 @@ export class DefiProvider {
         userAddress,
         blockNumber,
       })
+
+      await resolveUnderlyings(
+        adapter,
+        blockNumber,
+        protocolPositions,
+        (underlyingToken, protocolToken, underlyingRateRaw) => {
+          underlyingToken.balanceRaw =
+            (protocolToken.balanceRaw * underlyingRateRaw) /
+            10n ** BigInt(protocolToken.decimals)
+        },
+      )
 
       const tokens = protocolPositions.map((protocolPosition) =>
         enrichPositionBalance(protocolPosition, adapter.chainId),
@@ -298,7 +310,7 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionMovements = await adapter.getWithdrawals({
+      const positionsMovements = await adapter.getWithdrawals({
         protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
@@ -306,8 +318,23 @@ export class DefiProvider {
         tokenId,
       })
 
+      await Promise.all(
+        positionsMovements.map(async (positionMovements) => {
+          return await resolveUnderlyings(
+            adapter,
+            positionMovements.blockNumber,
+            positionMovements.tokens,
+            (underlyingToken, protocolToken, underlyingRateRaw) => {
+              underlyingToken.balanceRaw =
+                (protocolToken.balanceRaw * underlyingRateRaw) /
+                10n ** BigInt(protocolToken.decimals)
+            },
+          )
+        }),
+      )
+
       return {
-        movements: positionMovements.map((value) =>
+        movements: positionsMovements.map((value) =>
           enrichMovements(value, chainId),
         ),
       }
@@ -372,7 +399,7 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionMovements = await adapter.getDeposits({
+      const positionsMovements = await adapter.getDeposits({
         protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
@@ -380,8 +407,23 @@ export class DefiProvider {
         tokenId,
       })
 
+      await Promise.all(
+        positionsMovements.map(async (positionMovements) => {
+          return await resolveUnderlyings(
+            adapter,
+            positionMovements.blockNumber,
+            positionMovements.tokens,
+            (underlyingToken, protocolToken, underlyingRateRaw) => {
+              underlyingToken.balanceRaw =
+                (protocolToken.balanceRaw * underlyingRateRaw) /
+                10n ** BigInt(protocolToken.decimals)
+            },
+          )
+        }),
+      )
+
       return {
-        movements: positionMovements.map((value) =>
+        movements: positionsMovements.map((value) =>
           enrichMovements(value, chainId),
         ),
       }
@@ -413,18 +455,34 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionMovements = await adapter.getRepays?.({
-        protocolTokenAddress: getAddress(protocolTokenAddress),
-        fromBlock,
-        toBlock,
-        userAddress,
-        tokenId,
-      })
+      const positionsMovements =
+        (await adapter.getRepays?.({
+          protocolTokenAddress: getAddress(protocolTokenAddress),
+          fromBlock,
+          toBlock,
+          userAddress,
+          tokenId,
+        })) || []
+
+      await Promise.all(
+        positionsMovements.map(async (positionMovements) => {
+          return await resolveUnderlyings(
+            adapter,
+            positionMovements.blockNumber,
+            positionMovements.tokens,
+            (underlyingToken, protocolToken, underlyingRateRaw) => {
+              underlyingToken.balanceRaw =
+                (protocolToken.balanceRaw * underlyingRateRaw) /
+                10n ** BigInt(protocolToken.decimals)
+            },
+          )
+        }),
+      )
 
       return {
-        movements:
-          positionMovements?.map((value) => enrichMovements(value, chainId)) ||
-          [],
+        movements: positionsMovements.map((value) =>
+          enrichMovements(value, chainId),
+        ),
       }
     }
 
@@ -454,18 +512,34 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionMovements = await adapter.getBorrows?.({
-        protocolTokenAddress: getAddress(protocolTokenAddress),
-        fromBlock,
-        toBlock,
-        userAddress,
-        tokenId,
-      })
+      const positionsMovements =
+        (await adapter.getBorrows?.({
+          protocolTokenAddress: getAddress(protocolTokenAddress),
+          fromBlock,
+          toBlock,
+          userAddress,
+          tokenId,
+        })) || []
+
+      await Promise.all(
+        positionsMovements.map(async (positionMovements) => {
+          return await resolveUnderlyings(
+            adapter,
+            positionMovements.blockNumber,
+            positionMovements.tokens,
+            (underlyingToken, protocolToken, underlyingRateRaw) => {
+              underlyingToken.balanceRaw =
+                (protocolToken.balanceRaw * underlyingRateRaw) /
+                10n ** BigInt(protocolToken.decimals)
+            },
+          )
+        }),
+      )
 
       return {
-        movements:
-          positionMovements?.map((value) => enrichMovements(value, chainId)) ||
-          [],
+        movements: positionsMovements?.map((value) =>
+          enrichMovements(value, chainId),
+        ),
       }
     }
 
@@ -485,6 +559,17 @@ export class DefiProvider {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const tokens = await adapter.getTotalValueLocked({ blockNumber })
+
+      await resolveUnderlyings(
+        adapter,
+        blockNumber,
+        tokens,
+        (underlyingToken, protocolToken, underlyingRateRaw) => {
+          underlyingToken.totalSupplyRaw =
+            (protocolToken.totalSupplyRaw * underlyingRateRaw) /
+            10n ** BigInt(protocolToken.decimals)
+        },
+      )
 
       return {
         tokens: tokens.map((value) =>

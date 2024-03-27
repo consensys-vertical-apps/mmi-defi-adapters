@@ -22,6 +22,19 @@
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "14108347668472664311575318n",
+          "tokens": [
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "14108347668472664311575318n",
+              "totalSupply": 14108347.668472664,
+              "price": 0.9999972084344487,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            }
+          ],
           "totalSupply": 14108347.668472664
         },
         {
@@ -31,6 +44,19 @@
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "95466645205577799437151n",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "95466645205577799437151n",
+              "totalSupply": 95466.6452055778,
+              "price": 2261.72,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
           "totalSupply": 95466.6452055778
         },
         {
@@ -40,6 +66,19 @@
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "27400854481208n",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "27400854481208n",
+              "totalSupply": 27400854.481208,
+              "price": 1.0161861055573251,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
           "totalSupply": 27400854.481208
         },
         {
@@ -49,6 +88,19 @@
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "9766196933267n",
+          "tokens": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "9766196933267n",
+              "totalSupply": 9766196.933267,
+              "price": 1.0024683163267938,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
           "totalSupply": 9766196.933267
         },
         {
@@ -58,6 +110,19 @@
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "10240456994n",
+          "tokens": [
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "type": "underlying",
+              "totalSupplyRaw": "10240456994n",
+              "totalSupply": 102.40456994,
+              "price": 43880.25026880175,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
+            }
+          ],
           "totalSupply": 102.40456994
         },
         {
@@ -67,6 +132,31 @@
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "0n",
+          "tokens": [
+            {
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+              "name": "Liquid staked Ether 2.0",
+              "symbol": "stETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "0n",
+              "tokens": [
+                {
+                  "address": "0x0000000000000000000000000000000000000000",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "0n",
+                  "totalSupply": 0,
+                  "price": 2261.72,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+            }
+          ],
           "totalSupply": 0
         },
         {
@@ -101,6 +191,19 @@
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "8583350166495660434659976n",
+          "tokens": [
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "8583350166495660434659976n",
+              "totalSupply": 8583350.16649566,
+              "price": 0.9999972084344487,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            }
+          ],
           "totalSupply": 8583350.16649566
         },
         {
@@ -110,6 +213,19 @@
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "96103087774780755413223n",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "96103087774780755413223n",
+              "totalSupply": 96103.08777478075,
+              "price": 2261.72,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
           "totalSupply": 96103.08777478075
         },
         {
@@ -119,6 +235,19 @@
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "38059539237938n",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "38059539237938n",
+              "totalSupply": 38059539.237938,
+              "price": 1.0161861055573251,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
           "totalSupply": 38059539.237938
         },
         {
@@ -128,6 +257,19 @@
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "11051901314525n",
+          "tokens": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "11051901314525n",
+              "totalSupply": 11051901.314525,
+              "price": 1.0024683163267938,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
           "totalSupply": 11051901.314525
         },
         {
@@ -137,6 +279,19 @@
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "124054343678n",
+          "tokens": [
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "type": "underlying",
+              "totalSupplyRaw": "124054343678n",
+              "totalSupply": 1240.54343678,
+              "price": 43880.25026880175,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
+            }
+          ],
           "totalSupply": 1240.54343678
         },
         {
@@ -146,6 +301,31 @@
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "129175888255285633192883n",
+          "tokens": [
+            {
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+              "name": "Liquid staked Ether 2.0",
+              "symbol": "stETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "129175888255285633192883n",
+              "tokens": [
+                {
+                  "address": "0x0000000000000000000000000000000000000000",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "129175888255285633192883n",
+                  "totalSupply": 129175.88825528564,
+                  "price": 2261.72,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
+              "totalSupply": 129175.88825528564,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+            }
+          ],
           "totalSupply": 129175.88825528564
         },
         {

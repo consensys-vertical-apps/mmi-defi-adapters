@@ -7,10 +7,6 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import {
-  ResolveUnderlyingPositions,
-  ResolveUnderlyingMovements,
-} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -181,7 +177,6 @@ export class GMXGlpAdapter
     return [(await this.buildMetadata()).protocolToken]
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -385,7 +380,6 @@ export class GMXGlpAdapter
     throw new NotImplementedError()
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -406,7 +400,6 @@ export class GMXGlpAdapter
     })
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,

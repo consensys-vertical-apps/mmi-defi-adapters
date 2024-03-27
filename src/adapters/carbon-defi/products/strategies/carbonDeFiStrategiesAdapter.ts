@@ -1,9 +1,5 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -94,7 +90,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     return `${token0Symbol} / ${token1Symbol}`
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -173,7 +168,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     return []
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     fromBlock,
@@ -197,7 +191,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     )
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     fromBlock,

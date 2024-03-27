@@ -15,6 +15,7 @@ import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
+import { resolveUnderlyings } from './utils/resolveUnderlying'
 
 export async function getProfits({
   adapter,
@@ -50,6 +51,19 @@ export async function getProfits({
           protocolTokenAddresses,
           tokenIds,
         })
+        .then(async (result) => {
+          await resolveUnderlyings(
+            adapter,
+            toBlock,
+            result,
+            (underlyingToken, protocolToken, underlyingRateRaw) => {
+              underlyingToken.balanceRaw =
+                (protocolToken.balanceRaw * underlyingRateRaw) /
+                10n ** BigInt(protocolToken.decimals)
+            },
+          )
+          return result
+        })
         .then((result) => {
           rawEndPositionValues = result
           return aggregateFiatBalances(result)
@@ -60,6 +74,19 @@ export async function getProfits({
           blockNumber: fromBlock,
           protocolTokenAddresses,
           tokenIds,
+        })
+        .then(async (result) => {
+          await resolveUnderlyings(
+            adapter,
+            fromBlock,
+            result,
+            (underlyingToken, protocolToken, underlyingRateRaw) => {
+              underlyingToken.balanceRaw =
+                (protocolToken.balanceRaw * underlyingRateRaw) /
+                10n ** BigInt(protocolToken.decimals)
+            },
+          )
+          return result
         })
         .then((result) => {
           rawStartPositionValues = result
@@ -73,6 +100,19 @@ export async function getProfits({
         userAddress,
         blockNumber: toBlock,
       })
+      .then(async (result) => {
+        await resolveUnderlyings(
+          adapter,
+          toBlock,
+          result,
+          (underlyingToken, protocolToken, underlyingRateRaw) => {
+            underlyingToken.balanceRaw =
+              (protocolToken.balanceRaw * underlyingRateRaw) /
+              10n ** BigInt(protocolToken.decimals)
+          },
+        )
+        return result
+      })
       .then((result) => {
         rawEndPositionValues = result
         return aggregateFiatBalances(result)
@@ -84,6 +124,19 @@ export async function getProfits({
         blockNumber: fromBlock,
         protocolTokenAddresses: Object.keys(endPositionValues), // endPositionValues is indexed by tokenId ?? protocolTokenAddress
         tokenIds: Object.keys(endPositionValues), // endPositionValues is indexed by tokenId ?? protocolTokenAddress
+      })
+      .then(async (result) => {
+        await resolveUnderlyings(
+          adapter,
+          fromBlock,
+          result,
+          (underlyingToken, protocolToken, underlyingRateRaw) => {
+            underlyingToken.balanceRaw =
+              (protocolToken.balanceRaw * underlyingRateRaw) /
+              10n ** BigInt(protocolToken.decimals)
+          },
+        )
+        return result
       })
       .then((result) => {
         rawStartPositionValues = result
@@ -113,10 +166,29 @@ export async function getProfits({
       // All other types have withdrawals and deposits only
       const [withdrawals, deposits, repays, borrows] = await Promise.all([
         !isBorrow
-          ? adapter.getWithdrawals(getEventsInput).then((result) => {
-              rawWithdrawals.push(...result)
-              return aggregateFiatBalancesFromMovements(result)
-            })
+          ? adapter
+              .getWithdrawals(getEventsInput)
+              .then(async (result) => {
+                await Promise.all(
+                  result.map(async (positionMovements) => {
+                    return await resolveUnderlyings(
+                      adapter,
+                      positionMovements.blockNumber,
+                      positionMovements.tokens,
+                      (underlyingToken, protocolToken, underlyingRateRaw) => {
+                        underlyingToken.balanceRaw =
+                          (protocolToken.balanceRaw * underlyingRateRaw) /
+                          10n ** BigInt(protocolToken.decimals)
+                      },
+                    )
+                  }),
+                )
+                return result
+              })
+              .then((result) => {
+                rawWithdrawals.push(...result)
+                return aggregateFiatBalancesFromMovements(result)
+              })
           : ({} as Record<
               string,
               {
@@ -127,10 +199,29 @@ export async function getProfits({
               }
             >),
         !isBorrow
-          ? adapter.getDeposits(getEventsInput).then((result) => {
-              rawDeposits.push(...result)
-              return aggregateFiatBalancesFromMovements(result)
-            })
+          ? adapter
+              .getDeposits(getEventsInput)
+              .then(async (result) => {
+                await Promise.all(
+                  result.map(async (positionMovements) => {
+                    return await resolveUnderlyings(
+                      adapter,
+                      positionMovements.blockNumber,
+                      positionMovements.tokens,
+                      (underlyingToken, protocolToken, underlyingRateRaw) => {
+                        underlyingToken.balanceRaw =
+                          (protocolToken.balanceRaw * underlyingRateRaw) /
+                          10n ** BigInt(protocolToken.decimals)
+                      },
+                    )
+                  }),
+                )
+                return result
+              })
+              .then((result) => {
+                rawDeposits.push(...result)
+                return aggregateFiatBalancesFromMovements(result)
+              })
           : ({} as Record<
               string,
               {
@@ -141,10 +232,29 @@ export async function getProfits({
               }
             >),
         isBorrow
-          ? adapter.getRepays?.(getEventsInput).then((result) => {
-              rawRepays.push(...result)
-              return aggregateFiatBalancesFromMovements(result)
-            })
+          ? adapter
+              .getRepays?.(getEventsInput)
+              .then(async (result) => {
+                await Promise.all(
+                  result.map(async (positionMovements) => {
+                    return await resolveUnderlyings(
+                      adapter,
+                      positionMovements.blockNumber,
+                      positionMovements.tokens,
+                      (underlyingToken, protocolToken, underlyingRateRaw) => {
+                        underlyingToken.balanceRaw =
+                          (protocolToken.balanceRaw * underlyingRateRaw) /
+                          10n ** BigInt(protocolToken.decimals)
+                      },
+                    )
+                  }),
+                )
+                return result
+              })
+              .then((result) => {
+                rawRepays.push(...result)
+                return aggregateFiatBalancesFromMovements(result)
+              })
           : ({} as Record<
               string,
               {
@@ -155,10 +265,29 @@ export async function getProfits({
               }
             >),
         isBorrow
-          ? adapter.getBorrows?.(getEventsInput).then((result) => {
-              rawBorrows.push(...result)
-              return aggregateFiatBalancesFromMovements(result)
-            })
+          ? adapter
+              .getBorrows?.(getEventsInput)
+              .then(async (result) => {
+                await Promise.all(
+                  result.map(async (positionMovements) => {
+                    return await resolveUnderlyings(
+                      adapter,
+                      positionMovements.blockNumber,
+                      positionMovements.tokens,
+                      (underlyingToken, protocolToken, underlyingRateRaw) => {
+                        underlyingToken.balanceRaw =
+                          (protocolToken.balanceRaw * underlyingRateRaw) /
+                          10n ** BigInt(protocolToken.decimals)
+                      },
+                    )
+                  }),
+                )
+                return result
+              })
+              .then((result) => {
+                rawBorrows.push(...result)
+                return aggregateFiatBalancesFromMovements(result)
+              })
           : ({} as Record<
               string,
               {

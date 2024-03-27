@@ -11,10 +11,6 @@ import {
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../errors/errors'
 import { logger } from '../utils/logger'
 import { SimplePoolAdapter } from './SimplePoolAdapter'
@@ -67,7 +63,6 @@ export abstract class LpStakingAdapter
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]>
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -118,7 +113,6 @@ export abstract class LpStakingAdapter
     }
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,

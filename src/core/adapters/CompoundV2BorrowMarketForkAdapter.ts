@@ -27,10 +27,6 @@ import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
-import {
-  ResolveUnderlyingPositions,
-  ResolveUnderlyingMovements,
-} from '../decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync, filterMapSync } from '../utils/filters'
@@ -99,7 +95,6 @@ export abstract class CompoundV2BorrowMarketForkAdapter
     return poolMetadata
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -155,7 +150,6 @@ export abstract class CompoundV2BorrowMarketForkAdapter
     })
   }
 
-  @ResolveUnderlyingMovements
   async getBorrows({
     userAddress,
     protocolTokenAddress,
@@ -174,7 +168,6 @@ export abstract class CompoundV2BorrowMarketForkAdapter
     })
   }
 
-  @ResolveUnderlyingMovements
   async getRepays({
     userAddress,
     protocolTokenAddress,

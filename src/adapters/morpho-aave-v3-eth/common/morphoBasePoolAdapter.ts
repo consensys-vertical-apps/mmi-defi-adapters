@@ -7,10 +7,6 @@ import { RAY } from '../../../core/constants/RAY'
 import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { aprToApy } from '../../../core/utils/aprToApy'
@@ -210,7 +206,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return [underlyingToken]
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -304,7 +299,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return protocolTokens
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -331,7 +325,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     ).flat()
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -358,7 +351,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     ).flat()
   }
 
-  @ResolveUnderlyingMovements
   async getBorrows({
     userAddress,
     protocolTokenAddress,
@@ -374,7 +366,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getRepays({
     userAddress,
     protocolTokenAddress,

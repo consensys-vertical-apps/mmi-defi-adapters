@@ -22,7 +22,8 @@
           "name": "Wrapped Ether",
           "symbol": "WETH",
           "decimals": 18,
-          "totalSupply": 11765.470084767174
+          "totalSupply": 11765.470084767174,
+          "price": 3116.9843
         },
         {
           "type": "protocol",
@@ -31,7 +32,8 @@
           "name": "USD Coin",
           "symbol": "USDC",
           "decimals": 6,
-          "totalSupply": 20161998.251473
+          "totalSupply": 20161998.251473,
+          "price": 1.0051725601862647
         },
         {
           "type": "protocol",
@@ -40,7 +42,8 @@
           "name": "Tether USD",
           "symbol": "USDT",
           "decimals": 6,
-          "totalSupply": 7043381.601258
+          "totalSupply": 7043381.601258,
+          "price": 1.0007160676787201
         },
         {
           "type": "protocol",
@@ -49,7 +52,8 @@
           "name": "PayPal USD",
           "symbol": "PYUSD",
           "decimals": 6,
-          "totalSupply": 580216.873265
+          "totalSupply": 580216.873265,
+          "price": 1.0016242113623204
         },
         {
           "type": "protocol",
@@ -58,6 +62,31 @@
           "name": "Wrapped liquid staked Ether 2.0",
           "symbol": "wstETH",
           "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+              "name": "Liquid staked Ether 2.0",
+              "symbol": "stETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "19609049117838907432578n",
+              "tokens": [
+                {
+                  "address": "0x0000000000000000000000000000000000000000",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "19609049117838907432578n",
+                  "totalSupply": 19609.049117838906,
+                  "price": 3116.9843,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
+              "totalSupply": 19609.049117838906,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+            }
+          ],
           "totalSupply": 16928.005569678775
         },
         {
@@ -67,7 +96,8 @@
           "name": "Wrapped BTC",
           "symbol": "WBTC",
           "decimals": 8,
-          "totalSupply": 272.61990801
+          "totalSupply": 272.61990801,
+          "price": 52083.27934691615
         },
         {
           "type": "protocol",
@@ -76,7 +106,8 @@
           "name": "Renzo Restaked ETH",
           "symbol": "ezETH",
           "decimals": 18,
-          "totalSupply": 0.009952469500519551
+          "totalSupply": 0.009952469500519551,
+          "price": 3132.1979150933616
         },
         {
           "type": "protocol",
@@ -85,7 +116,8 @@
           "name": "Wrapped eETH",
           "symbol": "weETH",
           "decimals": 18,
-          "totalSupply": 958.8967707469674
+          "totalSupply": 958.8967707469674,
+          "price": 3207.2459771906597
         },
         {
           "type": "protocol",
@@ -94,6 +126,19 @@
           "name": "Staked ETH",
           "symbol": "osETH",
           "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "351328285447942422687n",
+              "totalSupply": 351.32828544794245,
+              "price": 3116.9843,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
           "totalSupply": 348.251904272976
         }
       ]
@@ -119,7 +164,8 @@
           "name": "Wrapped Ether",
           "symbol": "WETH",
           "decimals": 18,
-          "totalSupply": 10823.842523755795
+          "totalSupply": 10823.842523755795,
+          "price": 3116.9843
         },
         {
           "type": "protocol",
@@ -128,7 +174,8 @@
           "name": "USD Coin",
           "symbol": "USDC",
           "decimals": 6,
-          "totalSupply": 17021731.54017
+          "totalSupply": 17021731.54017,
+          "price": 1.0051725601862647
         },
         {
           "type": "protocol",
@@ -137,7 +184,8 @@
           "name": "Tether USD",
           "symbol": "USDT",
           "decimals": 6,
-          "totalSupply": 5580655.956569
+          "totalSupply": 5580655.956569,
+          "price": 1.0007160676787201
         },
         {
           "type": "protocol",
@@ -146,7 +194,8 @@
           "name": "PayPal USD",
           "symbol": "PYUSD",
           "decimals": 6,
-          "totalSupply": 538977.584916
+          "totalSupply": 538977.584916,
+          "price": 1.0016242113623204
         }
       ]
     }
