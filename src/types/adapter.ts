@@ -174,12 +174,6 @@ export interface GetPositionsInput {
   tokenIds?: string[]
 }
 
-export interface GetPricePerShareInput {
-  /**
-   * Optional override param
-   */
-  blockNumber?: number
-}
 export interface GetTotalValueLockedInput {
   /**
    * Optional override param

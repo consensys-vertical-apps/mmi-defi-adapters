@@ -8,7 +8,6 @@
 
 - [GetPositionsInputWithTokenAddresses](../interfaces/adapter.GetPositionsInputWithTokenAddresses.md)
 - [GetPositionsInput](../interfaces/adapter.GetPositionsInput.md)
-- [GetPricePerShareInput](../interfaces/adapter.GetPricePerShareInput.md)
 - [GetTotalValueLockedInput](../interfaces/adapter.GetTotalValueLockedInput.md)
 - [TokenBalance](../interfaces/adapter.TokenBalance.md)
 - [Underlying](../interfaces/adapter.Underlying.md)

@@ -5,8 +5,8 @@ import type {
   ProtocolDetails,
   GetPositionsInput,
   ProtocolPosition,
-  GetConversionRateInput,
-  ProtocolTokenUnderlyingRate,
+  GetConversionRateInput as UnwrapInput,
+  ProtocolTokenUnderlyingRate as UnwrapExchangeRate,
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
@@ -61,10 +61,10 @@ export interface IProtocolAdapter {
    * @remarks Returns "price" of lp-tokens in the form of the underlying tokens. Unwraps tokens to the current unwrapping exchange rate
    * @remarks Read only method, doesn't update blockchain state.
    *
-   * @param {GetConversionRateInput} input - Object with protocol-token-address and optional blockNumber override.
-   * @returns {Promise<ProtocolTokenUnderlyingRate>} Object detailing the price per share of the protocol token.
+   * @param {UnwrapInput} input - Object with protocol-token-address and optional blockNumber override.
+   * @returns {Promise<UnwrapExchangeRate>} Object detailing the price per share of the protocol token.
    */
-  unwrap(input: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate>
+  unwrap(input: UnwrapInput): Promise<UnwrapExchangeRate>
 
   /**
    *

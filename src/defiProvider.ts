@@ -212,7 +212,7 @@ export class DefiProvider {
     })
   }
 
-  async getPrices({
+  async unwrap({
     filterProtocolIds,
     filterChainIds,
     filterProtocolToken,
@@ -245,7 +245,7 @@ export class DefiProvider {
 
           const endTime = Date.now()
           logger.info({
-            source: 'adapter:prices',
+            source: 'adapter:unwrap',
             startTime,
             endTime,
             timeTaken: endTime - startTime,
@@ -272,7 +272,7 @@ export class DefiProvider {
       filterProtocolIds,
       filterChainIds,
 
-      method: 'getPrices',
+      method: 'unwrap',
     })
   }
 
@@ -572,7 +572,7 @@ export class DefiProvider {
     filterChainIds?: Chain[]
     method:
       | 'getPositions'
-      | 'getPrices'
+      | 'unwrap'
       | 'getProfits'
       | 'getWithdrawals'
       | 'getDeposits'
@@ -583,7 +583,7 @@ export class DefiProvider {
         ([protocolIdKey, _]) =>
           (!filterProtocolIds ||
             filterProtocolIds.includes(protocolIdKey as Protocol)) &&
-          (method === 'getPrices' || protocolIdKey !== Protocol.PricesV2),
+          (method === 'unwrap' || protocolIdKey !== Protocol.PricesV2),
       )
       .flatMap(([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol

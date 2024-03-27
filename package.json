@@ -33,7 +33,7 @@
     "build-snapshots": "npm run adapters-cli build-snapshots --",
     "positions": "npm run adapters-cli positions --",
     "profits": "npm run adapters-cli profits --",
-    "prices": "npm run adapters-cli prices --",
+    "unwrap": "npm run adapters-cli unwrap --",
     "tvl": "npm run adapters-cli tvl --",
     "deposits": "npm run adapters-cli deposits --",
     "withdrawals": "npm run adapters-cli withdrawals --",

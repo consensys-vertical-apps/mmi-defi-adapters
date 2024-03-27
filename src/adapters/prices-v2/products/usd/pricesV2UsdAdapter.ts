@@ -128,6 +128,9 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
     return ethPriceUSD.answer
   }
 
+  /**
+   * Get rate would be a better name here but as not exposed unwrap is fine for now
+   */
   async unwrap({
     blockNumber,
     protocolTokenAddress,

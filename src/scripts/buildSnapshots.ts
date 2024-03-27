@@ -147,7 +147,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
                 const result = {
                   blockNumber,
-                  snapshot: await defiProvider.getPrices({
+                  snapshot: await defiProvider.unwrap({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
                     blockNumbers: {
