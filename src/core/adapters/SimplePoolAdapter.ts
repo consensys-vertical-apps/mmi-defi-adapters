@@ -29,8 +29,8 @@ import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
 import {
   ResolveUnderlyingPositions,
   ResolveUnderlyingMovements,
+  ResolveUnderlyingTvl,
 } from '../decorators/resolveUnderlyingPositions'
-import { ResolveUnderlyingTvl } from '../decorators/resolveUnderlyingTvl'
 import { MaxMovementLimitExceededError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
