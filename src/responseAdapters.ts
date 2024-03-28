@@ -5,7 +5,6 @@ import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
   MovementsByBlock,
-  ProtocolTokenTvl,
   UnwrapExchangeRate,
   TokenBalance,
   Underlying,
@@ -16,7 +15,6 @@ import {
 import {
   DisplayMovementsByBlock,
   DisplayPosition,
-  DisplayProtocolTokenTvl,
   DisplayTokenTvl,
   DisplayUnwrapExchangeRate,
 } from './types/response'
