@@ -4,10 +4,6 @@ import { TransferEvent } from '../../../../contracts/Erc20'
 import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   ProtocolDetails,
@@ -75,7 +71,6 @@ export class CurveRewardAdapter
     }
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -211,7 +206,6 @@ export class CurveRewardAdapter
     return [] // cant deposit rewards can only withdraw e.g. claimRewards()
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,

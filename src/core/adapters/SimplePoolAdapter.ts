@@ -22,10 +22,6 @@ import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
-import {
-  ResolveUnderlyingPositions,
-  ResolveUnderlyingMovements,
-} from '../decorators/resolveUnderlyingPositions'
 import { MaxMovementLimitExceededError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
@@ -55,7 +51,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
   abstract getProtocolTokens(): Promise<Erc20Metadata[]>
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -123,7 +118,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     }
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -144,7 +138,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -164,7 +157,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       },
     })
   }
-  @ResolveUnderlyingMovements
+
   async getBorrows({
     userAddress,
     protocolTokenAddress,
@@ -185,7 +178,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getRepays({
     userAddress,
     protocolTokenAddress,

@@ -252,20 +252,21 @@ export interface MovementsByBlock {
   transactionHash: string
 }
 
-export interface UnderlyingTokenTvl extends Erc20Metadata {
-  type: typeof TokenType.Underlying
+export interface TokenTvl extends Erc20Metadata {
   /**
    * Total underlying token locked in pool raw
    */
   totalSupplyRaw: bigint
 }
 
-export interface ProtocolTokenTvl extends Erc20Metadata {
+export interface UnderlyingTokenTvl extends TokenTvl {
+  type: typeof TokenType.Underlying
+  tokens?: UnderlyingTokenTvl[]
+  priceRaw?: bigint
+}
+
+export interface ProtocolTokenTvl extends TokenTvl {
   type: typeof TokenType.Protocol
-  /**
-   * Total underlying token locked in pool raw
-   */
-  totalSupplyRaw: bigint
   tokens?: UnderlyingTokenTvl[]
 }
 

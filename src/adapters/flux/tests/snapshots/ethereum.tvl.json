@@ -31,6 +31,7 @@
               "totalSupplyRaw": "596016005983n",
               "type": "underlying",
               "totalSupply": 596016.005983,
+              "price": 0.9989063896686066,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
@@ -52,6 +53,7 @@
               "totalSupplyRaw": "251530127422162936459613n",
               "type": "underlying",
               "totalSupply": 251530.12742216294,
+              "price": 0.9984553676297931,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
@@ -73,6 +75,7 @@
               "totalSupplyRaw": "81985229717n",
               "type": "underlying",
               "totalSupply": 81985.229717,
+              "price": 0.9994898043762929,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
@@ -94,6 +97,7 @@
               "totalSupplyRaw": "31046691826381555657307n",
               "type": "underlying",
               "totalSupply": 31046.691826381557,
+              "price": 0.9963234607836896,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ],
@@ -115,6 +119,7 @@
               "totalSupplyRaw": "135036160582796134012001n",
               "type": "underlying",
               "totalSupply": 135036.16058279615,
+              "price": 100.56674786015039,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92/logo.png"
             }
           ],
