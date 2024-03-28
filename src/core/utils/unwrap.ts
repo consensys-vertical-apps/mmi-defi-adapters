@@ -41,13 +41,13 @@ export async function unwrap(
     }
 
     // Populate underlying tokens if there is an adapter for this token
-    const underlyingRates = await fetchUnderlyingRates(
+    const unwrapExchangeRates = await fetchUnwrapExchangeRates(
       underlyingProtocolTokenAdapter,
       token,
       blockNumber,
     )
 
-    token.tokens = underlyingRates?.tokens?.map((underlyingTokenRate) => {
+    token.tokens = unwrapExchangeRates?.tokens?.map((underlyingTokenRate) => {
       const underlyingToken = {
         address: underlyingTokenRate.address,
         name: underlyingTokenRate.name,
@@ -70,7 +70,7 @@ export async function unwrap(
   await Promise.all(promises)
 }
 
-async function fetchUnderlyingRates(
+async function fetchUnwrapExchangeRates(
   underlyingProtocolTokenAdapter: IProtocolAdapter,
   underlyingProtocolTokenPosition: Token,
   blockNumber: number | undefined,
