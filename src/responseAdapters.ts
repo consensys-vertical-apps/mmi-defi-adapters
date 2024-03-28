@@ -16,8 +16,8 @@ import {
 import {
   DisplayMovementsByBlock,
   DisplayPosition,
-  DisplayProtocolTokenUnderlyingRate,
-  DisplayTokenTvl,
+  DisplayProtocolTokenTvl,
+  DisplayUnwrapExchangeRate,
 } from './types/response'
 
 export function enrichPositionBalance<
@@ -53,34 +53,29 @@ export function enrichPositionBalance<
 }
 
 export function enrichUnderlyingTokenRates(
-  protocolTokenUnderlyingRate: UnwrapExchangeRate,
+  UnwrapExchangeRate: UnwrapExchangeRate,
   chainId: Chain,
-): DisplayProtocolTokenUnderlyingRate {
+): DisplayUnwrapExchangeRate {
   return {
-    ...protocolTokenUnderlyingRate,
-    ...(protocolTokenUnderlyingRate.tokens
+    ...UnwrapExchangeRate,
+    ...(UnwrapExchangeRate.tokens
       ? {
-          tokens: protocolTokenUnderlyingRate.tokens.map(
-            (underlyingTokenRate) => {
-              return {
-                ...underlyingTokenRate,
-                underlyingRate: +formatUnits(
-                  underlyingTokenRate.underlyingRateRaw,
-                  underlyingTokenRate.decimals,
-                ),
-                iconUrl:
-                  underlyingTokenRate.address != USD
-                    ? buildTrustAssetIconUrl(
-                        chainId,
-                        underlyingTokenRate.address,
-                      )
-                    : undefined,
-              }
-            },
-          ),
+          tokens: UnwrapExchangeRate.tokens.map((underlyingTokenRate) => {
+            return {
+              ...underlyingTokenRate,
+              underlyingRate: +formatUnits(
+                underlyingTokenRate.underlyingRateRaw,
+                underlyingTokenRate.decimals,
+              ),
+              iconUrl:
+                underlyingTokenRate.address != USD
+                  ? buildTrustAssetIconUrl(chainId, underlyingTokenRate.address)
+                  : undefined,
+            }
+          }),
         }
       : {}),
-  } as DisplayProtocolTokenUnderlyingRate
+  } as DisplayUnwrapExchangeRate
 }
 
 export function enrichMovements(

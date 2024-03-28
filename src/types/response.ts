@@ -65,13 +65,10 @@ export type DisplayPosition<
 export type DefiProfitsResponse = AdapterResponse<ProfitsWithRange>
 
 export type PricePerShareResponse = AdapterResponse<{
-  tokens: DisplayProtocolTokenUnderlyingRate[]
+  tokens: DisplayUnwrapExchangeRate[]
 }>
 
-export type DisplayProtocolTokenUnderlyingRate = Omit<
-  UnwrapExchangeRate,
-  'tokens'
-> & {
+export type DisplayUnwrapExchangeRate = Omit<UnwrapExchangeRate, 'tokens'> & {
   tokens?: (UnderlyingTokenRate & {
     underlyingRate: number
     iconUrl?: string

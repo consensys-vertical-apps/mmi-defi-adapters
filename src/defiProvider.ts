@@ -238,7 +238,7 @@ export class DefiProvider {
         protocolTokens.map(async ({ address }) => {
           const startTime = Date.now()
 
-          const protocolTokenUnderlyingRate = await adapter.unwrap({
+          const unwrap = await adapter.unwrap({
             protocolTokenAddress: getAddress(address),
             blockNumber,
           })
@@ -257,10 +257,7 @@ export class DefiProvider {
             blockNumber,
           })
 
-          return enrichUnderlyingTokenRates(
-            protocolTokenUnderlyingRate,
-            adapter.chainId,
-          )
+          return enrichUnderlyingTokenRates(unwrap, adapter.chainId)
         }),
       )
 
