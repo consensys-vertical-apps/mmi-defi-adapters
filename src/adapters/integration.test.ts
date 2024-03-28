@@ -284,18 +284,18 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         testCase.method === 'prices',
     )
     if (pricesTestCases.length) {
-      describe('getPrices', () => {
+      describe('unwrap', () => {
         it.each(
           pricesTestCases.map((testCase) => [testKey(testCase), testCase]),
         )(
-          'prices for test %s match',
+          'unwrap for test %s match',
           async (_, testCase) => {
             const { snapshot, blockNumber } = await fetchSnapshot(
               testCase,
               protocolId,
             )
 
-            const response = await defiProvider.getPrices({
+            const response = await defiProvider.unwrap({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               filterProtocolToken: testCase.filterProtocolToken,
@@ -308,9 +308,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )
 
         afterAll(() => {
-          logger.debug(
-            `[Integration test] getPrices for ${protocolId} finished`,
-          )
+          logger.debug(`[Integration test] unwrap for ${protocolId} finished`)
         })
       })
     }

@@ -23,10 +23,10 @@ export function defaultAdapterTemplate({
     GetTotalValueLockedInput,
     GetApyInput,
     GetAprInput,
-    GetConversionRateInput,
+    UnwrapInput,
     ProtocolTokenApr,
     ProtocolTokenApy,
-    ProtocolTokenUnderlyingRate,
+    UnwrapExchangeRate,
     ProtocolTokenTvl,
     ProtocolPosition,
     AssetType,
@@ -182,9 +182,9 @@ export function defaultAdapterTemplate({
      * Update me.
      * Add logic to calculate the underlying token rate of 1 protocol token
      */
-    async getProtocolTokenToUnderlyingTokenRate(
-      _input: GetConversionRateInput,
-    ): Promise<ProtocolTokenUnderlyingRate> {
+    async unwrap(
+      _input: UnwrapInput,
+    ): Promise<UnwrapExchangeRate> {
       throw new NotImplementedError()
     }
   }`

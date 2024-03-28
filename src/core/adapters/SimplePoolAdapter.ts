@@ -6,12 +6,12 @@ import {
   Underlying,
   GetEventsInput,
   GetPositionsInput,
-  GetConversionRateInput,
+  UnwrapInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   ProtocolAdapterParams,
   ProtocolDetails,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenBalance,
@@ -96,10 +96,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  async getProtocolTokenToUnderlyingTokenRate({
+  async unwrap({
     blockNumber,
     protocolTokenAddress,
-  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const protocolTokenMetadata = await this.fetchProtocolTokenMetadata(
       protocolTokenAddress,
     )

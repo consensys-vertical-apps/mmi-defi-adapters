@@ -4,7 +4,7 @@ import type {
   MovementsByBlock,
   ProfitsWithRange,
   ProtocolDetails,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   ProtocolPosition,
   ProtocolTokenTvl,
   Underlying,
@@ -65,13 +65,10 @@ export type DisplayPosition<
 export type DefiProfitsResponse = AdapterResponse<ProfitsWithRange>
 
 export type PricePerShareResponse = AdapterResponse<{
-  tokens: DisplayProtocolTokenUnderlyingRate[]
+  tokens: DisplayUnwrapExchangeRate[]
 }>
 
-export type DisplayProtocolTokenUnderlyingRate = Omit<
-  ProtocolTokenUnderlyingRate,
-  'tokens'
-> & {
+export type DisplayUnwrapExchangeRate = Omit<UnwrapExchangeRate, 'tokens'> & {
   tokens?: (UnderlyingTokenRate & {
     underlyingRate: number
     iconUrl?: string

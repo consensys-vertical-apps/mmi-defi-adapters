@@ -18,7 +18,7 @@
 - [getProtocolDetails](IProtocolAdapter.IProtocolAdapter.md#getprotocoldetails)
 - [getProtocolTokens](IProtocolAdapter.IProtocolAdapter.md#getprotocoltokens)
 - [getPositions](IProtocolAdapter.IProtocolAdapter.md#getpositions)
-- [getProtocolTokenToUnderlyingTokenRate](IProtocolAdapter.IProtocolAdapter.md#getprotocoltokentounderlyingtokenrate)
+- [unwrap](IProtocolAdapter.IProtocolAdapter.md#unwrap)
 - [getTransactionParams](IProtocolAdapter.IProtocolAdapter.md#gettransactionparams)
 - [getWithdrawals](IProtocolAdapter.IProtocolAdapter.md#getwithdrawals)
 - [getDeposits](IProtocolAdapter.IProtocolAdapter.md#getdeposits)
@@ -140,29 +140,29 @@ Returns array of user positions opened in this protocol
 
 ___
 
-### getProtocolTokenToUnderlyingTokenRate
+### unwrap
 
-▸ **getProtocolTokenToUnderlyingTokenRate**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProtocolTokenUnderlyingRate`](adapter.ProtocolTokenUnderlyingRate.md)\>
+▸ **unwrap**(`input`): [`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`UnwrapExchangeRate`](adapter.UnwrapExchangeRate.md)\>
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `input` | [`GetConversionRateInput`](../modules/adapter.md#getconversionrateinput) | Object with protocol-token-address and optional blockNumber override. |
+| `input` | [`UnwrapInput`](../modules/adapter.md#unwrapinput) | Object with protocol-token-address and optional blockNumber override. |
 
 #### Returns
 
-[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`ProtocolTokenUnderlyingRate`](adapter.ProtocolTokenUnderlyingRate.md)\>
+[`Promise`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )<[`UnwrapExchangeRate`](adapter.UnwrapExchangeRate.md)\>
 
 Object detailing the price per share of the protocol token.
 
 **`Remarks`**
 
-Returns "price" of lp-tokens in the form of the underlying tokens
+Returns "price" of lp-tokens in the form of the underlying tokens. Unwraps tokens to the current unwrapping exchange rate
 
 #### Defined in
 
-[IProtocolAdapter.ts:66](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L66)
+[IProtocolAdapter.ts:67](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L67)
 
 ___
 
@@ -188,7 +188,7 @@ Returns tx params
 
 #### Defined in
 
-[IProtocolAdapter.ts:77](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L77)
+[IProtocolAdapter.ts:76](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L76)
 
 ___
 
@@ -214,7 +214,7 @@ Returns the user's withdrawals from a position
 
 #### Defined in
 
-[IProtocolAdapter.ts:88](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L88)
+[IProtocolAdapter.ts:87](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L87)
 
 ___
 
@@ -240,7 +240,7 @@ Returns the user's deposits to a position
 
 #### Defined in
 
-[IProtocolAdapter.ts:97](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L97)
+[IProtocolAdapter.ts:96](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L96)
 
 ___
 
@@ -266,7 +266,7 @@ Returns the user's withdrawals from a position
 
 #### Defined in
 
-[IProtocolAdapter.ts:105](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L105)
+[IProtocolAdapter.ts:104](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L104)
 
 ___
 
@@ -292,7 +292,7 @@ Returns the user's deposits to a position
 
 #### Defined in
 
-[IProtocolAdapter.ts:114](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L114)
+[IProtocolAdapter.ts:113](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L113)
 
 ___
 
@@ -318,4 +318,4 @@ Returns the Tvl per pool defined in the underlying token
 
 #### Defined in
 
-[IProtocolAdapter.ts:123](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L123)
+[IProtocolAdapter.ts:122](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L122)

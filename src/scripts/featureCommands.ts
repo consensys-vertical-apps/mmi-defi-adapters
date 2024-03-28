@@ -63,7 +63,7 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
     '573517',
   )
 
-  protocolCommand(program, 'prices', defiProvider.getPrices.bind(defiProvider))
+  protocolCommand(program, 'unwrap', defiProvider.unwrap.bind(defiProvider))
   protocolCommand(
     program,
     'tvl',

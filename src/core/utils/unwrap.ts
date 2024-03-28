@@ -12,7 +12,7 @@ type Token = Erc20Metadata & {
   priceRaw?: bigint
 }
 
-export async function resolveUnderlyings(
+export async function unwrap(
   adapter: IProtocolAdapter,
   blockNumber: number | undefined,
   tokens: Token[],
@@ -21,12 +21,7 @@ export async function resolveUnderlyings(
   const promises = tokens.map(async (token) => {
     if (token.tokens) {
       // Resolve underlying tokens if they exist
-      await resolveUnderlyings(
-        adapter,
-        blockNumber,
-        token.tokens,
-        fieldToUpdate,
-      )
+      await unwrap(adapter, blockNumber, token.tokens, fieldToUpdate)
       return
     }
 
@@ -46,13 +41,13 @@ export async function resolveUnderlyings(
     }
 
     // Populate underlying tokens if there is an adapter for this token
-    const underlyingRates = await fetchUnderlyingRates(
+    const unwrapExchangeRates = await fetchUnwrapExchangeRates(
       underlyingProtocolTokenAdapter,
       token,
       blockNumber,
     )
 
-    token.tokens = underlyingRates?.tokens?.map((underlyingTokenRate) => {
+    token.tokens = unwrapExchangeRates?.tokens?.map((underlyingTokenRate) => {
       const underlyingToken = {
         address: underlyingTokenRate.address,
         name: underlyingTokenRate.name,
@@ -69,24 +64,22 @@ export async function resolveUnderlyings(
       return underlyingToken
     })
 
-    await resolveUnderlyings(adapter, blockNumber, token.tokens!, fieldToUpdate)
+    await unwrap(adapter, blockNumber, token.tokens!, fieldToUpdate)
   })
 
   await Promise.all(promises)
 }
 
-async function fetchUnderlyingRates(
+async function fetchUnwrapExchangeRates(
   underlyingProtocolTokenAdapter: IProtocolAdapter,
   underlyingProtocolTokenPosition: Token,
   blockNumber: number | undefined,
 ) {
   try {
-    return await underlyingProtocolTokenAdapter.getProtocolTokenToUnderlyingTokenRate(
-      {
-        protocolTokenAddress: underlyingProtocolTokenPosition.address,
-        blockNumber,
-      },
-    )
+    return await underlyingProtocolTokenAdapter.unwrap({
+      protocolTokenAddress: underlyingProtocolTokenPosition.address,
+      blockNumber,
+    })
   } catch (error) {
     if (
       !(
@@ -120,7 +113,7 @@ async function fetchPrice(
   }
 
   try {
-    const price = await priceAdapter.getProtocolTokenToUnderlyingTokenRate({
+    const price = await priceAdapter.unwrap({
       protocolTokenAddress: token.address,
       blockNumber,
     })

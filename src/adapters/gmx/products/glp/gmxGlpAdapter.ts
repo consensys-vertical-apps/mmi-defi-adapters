@@ -17,10 +17,10 @@ import {
   GetTotalValueLockedInput,
   ProtocolTokenTvl,
   TokenType,
-  GetConversionRateInput,
+  UnwrapInput,
   GetPositionsInput,
   ProtocolPosition,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   TokenBalance,
   Underlying,
   UnderlyingTokenRate,
@@ -204,7 +204,7 @@ export class GMXGlpAdapter
         [positionContractAddress],
         { blockTag: blockNumber },
       ),
-      this.getProtocolTokenToUnderlyingTokenRate({
+      this.unwrap({
         protocolTokenAddress: protocolToken.address,
         blockNumber,
       }),
@@ -318,9 +318,7 @@ export class GMXGlpAdapter
     // ]
   }
 
-  async getProtocolTokenToUnderlyingTokenRate({
-    blockNumber,
-  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+  async unwrap({ blockNumber }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const { protocolToken, vaultAddress, underlyingTokens } =
       await this.buildMetadata()
 

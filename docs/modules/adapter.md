@@ -8,13 +8,12 @@
 
 - [GetPositionsInputWithTokenAddresses](../interfaces/adapter.GetPositionsInputWithTokenAddresses.md)
 - [GetPositionsInput](../interfaces/adapter.GetPositionsInput.md)
-- [GetPricePerShareInput](../interfaces/adapter.GetPricePerShareInput.md)
 - [GetTotalValueLockedInput](../interfaces/adapter.GetTotalValueLockedInput.md)
 - [TokenBalance](../interfaces/adapter.TokenBalance.md)
 - [Underlying](../interfaces/adapter.Underlying.md)
 - [ProtocolPosition](../interfaces/adapter.ProtocolPosition.md)
 - [UnderlyingTokenRate](../interfaces/adapter.UnderlyingTokenRate.md)
-- [ProtocolTokenUnderlyingRate](../interfaces/adapter.ProtocolTokenUnderlyingRate.md)
+- [UnwrapExchangeRate](../interfaces/adapter.UnwrapExchangeRate.md)
 - [MovementsByBlock](../interfaces/adapter.MovementsByBlock.md)
 - [UnderlyingTokenTvl](../interfaces/adapter.UnderlyingTokenTvl.md)
 - [ProtocolTokenTvl](../interfaces/adapter.ProtocolTokenTvl.md)
@@ -30,7 +29,7 @@
 - [AssetType](adapter.md#assettype-1)
 - [PositionType](adapter.md#positiontype-1)
 - [GetBalancesInput](adapter.md#getbalancesinput)
-- [GetConversionRateInput](adapter.md#getconversionrateinput)
+- [UnwrapInput](adapter.md#unwrapinput)
 - [GetEventsInput](adapter.md#geteventsinput)
 - [AssetDetails](adapter.md#assetdetails)
 - [ProtocolDetails](adapter.md#protocoldetails)
@@ -89,9 +88,9 @@ ___
 
 ___
 
-### GetConversionRateInput
+### UnwrapInput
 
-Ƭ **GetConversionRateInput**: `Object`
+Ƭ **UnwrapInput**: `Object`
 
 #### Type declaration
 

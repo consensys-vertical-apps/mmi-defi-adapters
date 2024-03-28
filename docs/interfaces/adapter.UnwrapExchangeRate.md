@@ -1,26 +1,26 @@
-[@metamask-institutional/defi-adapters](../README.md) / [adapter](../modules/adapter.md) / ProtocolTokenUnderlyingRate
+[@metamask-institutional/defi-adapters](../README.md) / [adapter](../modules/adapter.md) / UnwrapExchangeRate
 
-# Interface: ProtocolTokenUnderlyingRate
+# Interface: UnwrapExchangeRate
 
-[adapter](../modules/adapter.md).ProtocolTokenUnderlyingRate
+[adapter](../modules/adapter.md).UnwrapExchangeRate
 
 ## Hierarchy
 
 - [`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata)
 
-  ↳ **`ProtocolTokenUnderlyingRate`**
+  ↳ **`UnwrapExchangeRate`**
 
 ## Table of contents
 
 ### Properties
 
-- [baseRate](adapter.ProtocolTokenUnderlyingRate.md#baserate)
-- [type](adapter.ProtocolTokenUnderlyingRate.md#type)
-- [tokens](adapter.ProtocolTokenUnderlyingRate.md#tokens)
-- [address](adapter.ProtocolTokenUnderlyingRate.md#address)
-- [name](adapter.ProtocolTokenUnderlyingRate.md#name)
-- [symbol](adapter.ProtocolTokenUnderlyingRate.md#symbol)
-- [decimals](adapter.ProtocolTokenUnderlyingRate.md#decimals)
+- [baseRate](adapter.UnwrapExchangeRate.md#baserate)
+- [type](adapter.UnwrapExchangeRate.md#type)
+- [tokens](adapter.UnwrapExchangeRate.md#tokens)
+- [address](adapter.UnwrapExchangeRate.md#address)
+- [name](adapter.UnwrapExchangeRate.md#name)
+- [symbol](adapter.UnwrapExchangeRate.md#symbol)
+- [decimals](adapter.UnwrapExchangeRate.md#decimals)
 
 ## Properties
 
@@ -33,7 +33,7 @@ We are finding the underlying value of 1 LP token
 
 #### Defined in
 
-[adapter.ts:235](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L235)
+[adapter.ts:229](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L229)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:236](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L236)
+[adapter.ts:230](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L230)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:237](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L237)
+[adapter.ts:231](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L231)
 
 ___
 

@@ -15,7 +15,7 @@ import {
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
@@ -125,7 +125,7 @@ export class StargateVestingAdapter
     return tokens
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(): Promise<ProtocolTokenUnderlyingRate> {
+  async unwrap(): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 
