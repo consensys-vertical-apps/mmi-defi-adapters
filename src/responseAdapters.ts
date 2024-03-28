@@ -17,6 +17,7 @@ import {
   DisplayMovementsByBlock,
   DisplayPosition,
   DisplayProtocolTokenTvl,
+  DisplayTokenTvl,
   DisplayUnwrapExchangeRate,
 } from './types/response'
 
