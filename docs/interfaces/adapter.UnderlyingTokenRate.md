@@ -1,37 +1,37 @@
-[@metamask-institutional/defi-adapters](../README.md) / [adapter](../modules/adapter.md) / UnderlyingTokenRate
+[@metamask-institutional/defi-adapters](../README.md) / [adapter](../modules/adapter.md) / UnwrappedTokenExchangeRate
 
-# Interface: UnderlyingTokenRate
+# Interface: UnwrappedTokenExchangeRate
 
-[adapter](../modules/adapter.md).UnderlyingTokenRate
+[adapter](../modules/adapter.md).UnwrappedTokenExchangeRate
 
 ## Hierarchy
 
 - [`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata)
 
-  ↳ **`UnderlyingTokenRate`**
+  ↳ **`UnwrappedTokenExchangeRate`**
 
 ## Table of contents
 
 ### Properties
 
-- [type](adapter.UnderlyingTokenRate.md#type)
-- [underlyingRateRaw](adapter.UnderlyingTokenRate.md#underlyingrateraw)
-- [address](adapter.UnderlyingTokenRate.md#address)
-- [name](adapter.UnderlyingTokenRate.md#name)
-- [symbol](adapter.UnderlyingTokenRate.md#symbol)
-- [decimals](adapter.UnderlyingTokenRate.md#decimals)
+- [type](adapter.UnwrappedTokenExchangeRate.md#type)
+- [underlyingRateRaw](adapter.UnwrappedTokenExchangeRate.md#underlyingrateraw)
+- [address](adapter.UnwrappedTokenExchangeRate.md#address)
+- [name](adapter.UnwrappedTokenExchangeRate.md#name)
+- [symbol](adapter.UnwrappedTokenExchangeRate.md#symbol)
+- [decimals](adapter.UnwrappedTokenExchangeRate.md#decimals)
 
 ## Properties
 
 ### type
 
-• **type**: ``"underlying"`` \| ``"fiat"``
+• **type**: `"underlying"`
 
 #### Defined in
 
-[adapter.ts:222](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L222)
+[adapter.ts:220](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L220)
 
-___
+---
 
 ### underlyingRateRaw
 
@@ -39,9 +39,9 @@ ___
 
 #### Defined in
 
-[adapter.ts:223](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L223)
+[adapter.ts:221](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L221)
 
-___
+---
 
 ### address
 
@@ -57,7 +57,7 @@ Erc20Metadata.address
 
 [erc20Metadata.ts:5](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L5)
 
-___
+---
 
 ### name
 
@@ -73,7 +73,7 @@ Erc20Metadata.name
 
 [erc20Metadata.ts:10](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L10)
 
-___
+---
 
 ### symbol
 
@@ -89,7 +89,7 @@ Erc20Metadata.symbol
 
 [erc20Metadata.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L15)
 
-___
+---
 
 ### decimals
 

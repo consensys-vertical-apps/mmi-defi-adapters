@@ -6,16 +6,11 @@ import {
   TokenBalance,
   Underlying,
   TokenType,
-  UnderlyingTokenRate,
-  GetAprInput,
-  ProtocolTokenApr,
-  GetApyInput,
-  ProtocolTokenApy,
+  UnwrappedTokenExchangeRate,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
-import { NotImplementedError } from '../errors/errors'
 import { filterMapAsync } from '../utils/filters'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { logger } from '../utils/logger'
@@ -123,7 +118,7 @@ export abstract class UniswapV2PoolForkAdapter
     const protocolToken = await this.fetchProtocolTokenMetadata(
       protocolTokenBalance.address,
     )
-    const pricesPerShare = await this.getUnderlyingTokenConversionRate(
+    const pricesPerShare = await this.unwrapProtocolToken(
       protocolToken,
       blockNumber,
     )
@@ -152,10 +147,10 @@ export abstract class UniswapV2PoolForkAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { token0, token1 } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )
@@ -195,14 +190,6 @@ export abstract class UniswapV2PoolForkAdapter
         ...token1,
       },
     ]
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 
   protected async fetchUnderlyingTokensMetadata(

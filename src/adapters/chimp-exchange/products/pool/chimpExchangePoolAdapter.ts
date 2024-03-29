@@ -5,21 +5,16 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
   GetTotalValueLockedInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenTvl,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   GetEventsInput,
   TokenType,
@@ -228,22 +223,22 @@ export class ChimpExchangePoolAdapter
       protocolTokenBalance.address,
     )
 
-    const underlyingTokenConversionRate =
-      await this.getUnderlyingTokenConversionRate(
-        protocolTokenBalance,
-        blockNumber,
-      )
+    const underlyingTokenConversionRate = await this.unwrapProtocolToken(
+      protocolTokenBalance,
+      blockNumber,
+    )
 
     const underlyingBalances = poolMetadata.underlyingTokens.map(
       ({ index: _tokenIndex, ...token }) => {
-        const underlyingTokenRateRaw = underlyingTokenConversionRate.find(
-          (tokenRate) => tokenRate.address === token.address,
-        )!.underlyingRateRaw
+        const unwrappedTokenExchangeRateRaw =
+          underlyingTokenConversionRate.find(
+            (tokenRate) => tokenRate.address === token.address,
+          )!.underlyingRateRaw
 
         return {
           ...token,
           balanceRaw:
-            (underlyingTokenRateRaw * protocolTokenBalance.balanceRaw) /
+            (unwrappedTokenExchangeRateRaw * protocolTokenBalance.balanceRaw) /
             10n ** BigInt(protocolTokenBalance.decimals),
           type: TokenType.Underlying,
         }
@@ -312,10 +307,10 @@ export class ChimpExchangePoolAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const vaultContract = Vault__factory.connect(
       vaultContractAddresses[this.chainId]!,
       this.provider,
@@ -364,14 +359,6 @@ export class ChimpExchangePoolAdapter
     )
 
     return underlyingRates
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 
   protected async fetchUnderlyingTokensMetadata(

@@ -2,20 +2,16 @@ import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
 import {
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
-  GetAprInput,
-  GetApyInput,
   GetEventsInput,
   GetPositionsInput,
-  GetConversionRateInput,
+  UnwrapInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   ProtocolAdapterParams,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolDetails,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenBalance,
@@ -26,10 +22,6 @@ import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
-import {
-  ResolveUnderlyingPositions,
-  ResolveUnderlyingMovements,
-} from '../decorators/resolveUnderlyingPositions'
 import { MaxMovementLimitExceededError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
@@ -59,7 +51,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
 
   abstract getProtocolTokens(): Promise<Erc20Metadata[]>
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -105,19 +96,18 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  async getProtocolTokenToUnderlyingTokenRate({
+  async unwrap({
     blockNumber,
     protocolTokenAddress,
-  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const protocolTokenMetadata = await this.fetchProtocolTokenMetadata(
       protocolTokenAddress,
     )
 
-    const underlyingTokenConversionRate =
-      await this.getUnderlyingTokenConversionRate(
-        protocolTokenMetadata,
-        blockNumber,
-      )
+    const underlyingTokenConversionRate = await this.unwrapProtocolToken(
+      protocolTokenMetadata,
+      blockNumber,
+    )
 
     return {
       ...protocolTokenMetadata,
@@ -127,7 +117,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     }
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -148,7 +137,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -168,7 +156,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       },
     })
   }
-  @ResolveUnderlyingMovements
+
   async getBorrows({
     userAddress,
     protocolTokenAddress,
@@ -189,7 +177,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getRepays({
     userAddress,
     protocolTokenAddress,
@@ -274,9 +261,6 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     )
   }
 
-  abstract getApy(input: GetApyInput): Promise<ProtocolTokenApy>
-  abstract getApr(input: GetAprInput): Promise<ProtocolTokenApr>
-
   /**
    * Fetches the protocol-token metadata
    * @param protocolTokenAddress
@@ -312,10 +296,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
    * @param protocolTokenMetadata
    * @param blockNumber
    */
-  protected abstract getUnderlyingTokenConversionRate(
+  protected abstract unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
-  ): Promise<UnderlyingTokenRate[]>
+  ): Promise<UnwrappedTokenExchangeRate[]>
 
   /**
    * Util used by both getDeposits and getWithdrawals

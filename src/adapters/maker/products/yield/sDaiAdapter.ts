@@ -5,14 +5,10 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
   GetTotalValueLockedInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenTvl,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   TokenType,
   AssetType,
@@ -54,11 +50,10 @@ export class SDaiAdapter extends SimplePoolAdapter {
   }): Promise<Underlying[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
-    const [underlyingTokenConversionRate] =
-      await this.getUnderlyingTokenConversionRate(
-        protocolTokenBalance,
-        blockNumber,
-      )
+    const [underlyingTokenConversionRate] = await this.unwrapProtocolToken(
+      protocolTokenBalance,
+      blockNumber,
+    )
 
     const daiBalance =
       (protocolTokenBalance.balanceRaw *
@@ -100,10 +95,10 @@ export class SDaiAdapter extends SimplePoolAdapter {
     ]
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
     const mcdPotContract = McdPot__factory.connect(
@@ -128,13 +123,5 @@ export class SDaiAdapter extends SimplePoolAdapter {
         underlyingRateRaw: pricePerShareRaw,
       },
     ]
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 }

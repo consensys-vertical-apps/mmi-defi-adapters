@@ -9,6 +9,7 @@ import { GetTransactionParamsInput } from '../types/getTransactionParamsInput'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
+import { testCases as angleProtocolTestCases } from './angle-protocol/tests/testCases'
 import { testCases as carbonDeFiTestCases } from './carbon-defi/tests/testCases'
 import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
 import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
@@ -47,6 +48,7 @@ runAllTests()
 function runAllTests() {
   runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
   runProtocolTests(Protocol.AaveV3, aaveV3TestCases)
+  runProtocolTests(Protocol.AngleProtocol, angleProtocolTestCases)
   runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
   runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
   runProtocolTests(Protocol.CompoundV2, compoundV2TestCases)
@@ -284,18 +286,18 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         testCase.method === 'prices',
     )
     if (pricesTestCases.length) {
-      describe('getPrices', () => {
+      describe('unwrap', () => {
         it.each(
           pricesTestCases.map((testCase) => [testKey(testCase), testCase]),
         )(
-          'prices for test %s match',
+          'unwrap for test %s match',
           async (_, testCase) => {
             const { snapshot, blockNumber } = await fetchSnapshot(
               testCase,
               protocolId,
             )
 
-            const response = await defiProvider.getPrices({
+            const response = await defiProvider.unwrap({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
               filterProtocolToken: testCase.filterProtocolToken,
@@ -308,9 +310,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )
 
         afterAll(() => {
-          logger.debug(
-            `[Integration test] getPrices for ${protocolId} finished`,
-          )
+          logger.debug(`[Integration test] unwrap for ${protocolId} finished`)
         })
       })
     }
@@ -344,68 +344,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
           logger.debug(
             `[Integration test] getTotalValueLocked for ${protocolId} finished`,
           )
-        })
-      })
-    }
-
-    const apyTestCases = testCases.filter(
-      (testCase): testCase is TestCase & { method: 'apy' } =>
-        testCase.method === 'apy',
-    )
-    if (apyTestCases.length) {
-      describe('getApy', () => {
-        it.each(apyTestCases.map((testCase) => [testKey(testCase), testCase]))(
-          'apy for test %s match',
-          async (_, testCase) => {
-            const { snapshot, blockNumber } = await fetchSnapshot(
-              testCase,
-              protocolId,
-            )
-
-            const response = await defiProvider.getApy({
-              filterProtocolIds: [protocolId],
-              filterChainIds: [testCase.chainId],
-              blockNumbers: { [testCase.chainId]: blockNumber },
-            })
-
-            expect(response).toEqual(snapshot)
-          },
-          TEST_TIMEOUT,
-        )
-
-        afterAll(() => {
-          logger.debug(`[Integration test] getApy for ${protocolId} finished`)
-        })
-      })
-    }
-
-    const aprTestCases = testCases.filter(
-      (testCase): testCase is TestCase & { method: 'apr' } =>
-        testCase.method === 'apr',
-    )
-    if (aprTestCases.length) {
-      describe('getApr', () => {
-        it.each(aprTestCases.map((testCase) => [testKey(testCase), testCase]))(
-          'apr for test %s match',
-          async (_, testCase) => {
-            const { snapshot, blockNumber } = await fetchSnapshot(
-              testCase,
-              protocolId,
-            )
-
-            const response = await defiProvider.getApr({
-              filterProtocolIds: [protocolId],
-              filterChainIds: [testCase.chainId],
-              blockNumbers: { [testCase.chainId]: blockNumber },
-            })
-
-            expect(response).toEqual(snapshot)
-          },
-          TEST_TIMEOUT,
-        )
-
-        afterAll(() => {
-          logger.debug(`[Integration test] getApr for ${protocolId} finished`)
         })
       })
     }

@@ -1,25 +1,19 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { SECONDS_PER_YEAR } from '../../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { aprToApy } from '../../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   TokenType,
   AssetType,
@@ -27,14 +21,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
-import {
-  Converter__factory,
-  Velocore__factory,
-  Oracle__factory,
-  Speed__factory,
-  Cerc20__factory,
-  Comptroller__factory,
-} from '../../contracts'
+import { Cerc20__factory, Comptroller__factory } from '../../contracts'
 
 type MendiFinanceSupplyAdapterMetadata = Record<
   string,
@@ -233,10 +220,10 @@ export class MendiFinanceSupplyAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )
@@ -261,36 +248,6 @@ export class MendiFinanceSupplyAdapter
         underlyingRateRaw: adjustedExchangeRate,
       },
     ]
-  }
-
-  async getApy({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetApyInput): Promise<ProtocolTokenApy> {
-    const apy = await this.getProtocolTokenApy({
-      protocolTokenAddress,
-      blockNumber,
-    })
-
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      apyDecimal: apy * 100,
-    }
-  }
-
-  async getApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<ProtocolTokenApr> {
-    const apr = await this.getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-    })
-
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      aprDecimal: apr * 100,
-    }
   }
 
   protected async fetchUnderlyingTokensMetadata(
@@ -321,115 +278,148 @@ export class MendiFinanceSupplyAdapter
 
     return poolMetadata
   }
-
-  private async getProtocolTokenApy({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetApyInput): Promise<number> {
-    const poolContract = Cerc20__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-
-    const srpb = await poolContract.supplyRatePerBlock.staticCall({
-      blockTag: blockNumber,
-    })
-    const apr = (Number(srpb) * Number(SECONDS_PER_YEAR)) / Number(1e18)
-    const apy = aprToApy(apr, SECONDS_PER_YEAR)
-
-    return apy
-  }
-
-  private async getProtocolTokenApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<number> {
-    const poolContract = Cerc20__factory.connect(
-      protocolTokenAddress,
-      this.provider,
-    )
-    const underlyingTokenMetadata = (
-      await this.fetchPoolMetadata(protocolTokenAddress)
-    ).underlyingToken
-
-    const speedContract = Speed__factory.connect(
-      contractAddresses[this.chainId]!.speed,
-      this.provider,
-    )
-
-    const oracleContract = Oracle__factory.connect(
-      contractAddresses[this.chainId]!.oracle,
-      this.provider,
-    )
-
-    const velocoreContract = Velocore__factory.connect(
-      contractAddresses[this.chainId]!.velocore,
-      this.provider,
-    )
-
-    const converterContract = Converter__factory.connect(
-      contractAddresses[this.chainId]!.converter,
-      this.provider,
-    )
-
-    const mendiAddress = contractAddresses[this.chainId]!.mendi
-
-    const convertValue = await converterContract.latestAnswer.staticCall({
-      blockTag: blockNumber,
-    })
-
-    const baseTokenBytes32 =
-      '0x' +
-      contractAddresses[this.chainId]!.usdcE.replace(/^0x/, '').padStart(
-        64,
-        '0',
-      )
-
-    const quoteTokenBytes32 =
-      '0x' + mendiAddress.replace(/^0x/, '').padStart(64, '0')
-
-    const mPrice = await velocoreContract.spotPrice.staticCall(
-      quoteTokenBytes32,
-      baseTokenBytes32,
-      10n ** 18n,
-      { blockTag: blockNumber },
-    )
-    const mPriceFixed = (
-      (Number(mPrice) / 1e6) *
-      (Number(convertValue) / 1e8)
-    ).toFixed(3)
-
-    const supplySpeed = await speedContract.rewardMarketState.staticCall(
-      mendiAddress,
-      protocolTokenAddress,
-      { blockTag: blockNumber },
-    )
-
-    const tokenSupply = await poolContract.totalSupply.staticCall({
-      blockTag: blockNumber,
-    })
-
-    const exchangeRateStored = await poolContract.exchangeRateStored.staticCall(
-      { blockTag: blockNumber },
-    )
-
-    const underlingPrice = await oracleContract.getPrice.staticCall(
-      protocolTokenAddress,
-      { blockTag: blockNumber },
-    )
-
-    const tokenDecimal = underlyingTokenMetadata.decimals
-
-    const marketTotalSupply =
-      (Number(tokenSupply) / Math.pow(10, tokenDecimal)) *
-      (Number(exchangeRateStored) / 1e18) *
-      Number(underlingPrice)
-    const apr =
-      (Number(supplySpeed.supplySpeed) *
-        Number(mPriceFixed) *
-        SECONDS_PER_YEAR) /
-      marketTotalSupply
-
-    return apr
-  }
 }
+
+// NOTE: The APY/APR feature has been removed as of March 2024.
+// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
+
+// private async getProtocolTokenApy({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetApyInput): Promise<number> {
+//   const poolContract = Cerc20__factory.connect(
+//     protocolTokenAddress,
+//     this.provider,
+//   )
+
+//   const srpb = await poolContract.supplyRatePerBlock.staticCall({
+//     blockTag: blockNumber,
+//   })
+//   const apr = (Number(srpb) * Number(SECONDS_PER_YEAR)) / Number(1e18)
+//   const apy = aprToApy(apr, SECONDS_PER_YEAR)
+
+//   return apy
+// }
+
+// private async getProtocolTokenApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<number> {
+//   const poolContract = Cerc20__factory.connect(
+//     protocolTokenAddress,
+//     this.provider,
+//   )
+//   const underlyingTokenMetadata = (
+//     await this.fetchPoolMetadata(protocolTokenAddress)
+//   ).underlyingToken
+
+//   const speedContract = Speed__factory.connect(
+//     contractAddresses[this.chainId]!.speed,
+//     this.provider,
+//   )
+
+//   const oracleContract = Oracle__factory.connect(
+//     contractAddresses[this.chainId]!.oracle,
+//     this.provider,
+//   )
+
+//   const velocoreContract = Velocore__factory.connect(
+//     contractAddresses[this.chainId]!.velocore,
+//     this.provider,
+//   )
+
+//   const converterContract = Converter__factory.connect(
+//     contractAddresses[this.chainId]!.converter,
+//     this.provider,
+//   )
+
+//   const mendiAddress = contractAddresses[this.chainId]!.mendi
+
+//   const convertValue = await converterContract.latestAnswer.staticCall({
+//     blockTag: blockNumber,
+//   })
+
+//   const baseTokenBytes32 =
+//     '0x' +
+//     contractAddresses[this.chainId]!.usdcE.replace(/^0x/, '').padStart(
+//       64,
+//       '0',
+//     )
+
+//   const quoteTokenBytes32 =
+//     '0x' + mendiAddress.replace(/^0x/, '').padStart(64, '0')
+
+//   const mPrice = await velocoreContract.spotPrice.staticCall(
+//     quoteTokenBytes32,
+//     baseTokenBytes32,
+//     10n ** 18n,
+//     { blockTag: blockNumber },
+//   )
+//   const mPriceFixed = (
+//     (Number(mPrice) / 1e6) *
+//     (Number(convertValue) / 1e8)
+//   ).toFixed(3)
+
+//   const supplySpeed = await speedContract.rewardMarketState.staticCall(
+//     mendiAddress,
+//     protocolTokenAddress,
+//     { blockTag: blockNumber },
+//   )
+
+//   const tokenSupply = await poolContract.totalSupply.staticCall({
+//     blockTag: blockNumber,
+//   })
+
+//   const exchangeRateStored = await poolContract.exchangeRateStored.staticCall(
+//     { blockTag: blockNumber },
+//   )
+
+//   const underlingPrice = await oracleContract.getPrice.staticCall(
+//     protocolTokenAddress,
+//     { blockTag: blockNumber },
+//   )
+
+//   const tokenDecimal = underlyingTokenMetadata.decimals
+
+//   const marketTotalSupply =
+//     (Number(tokenSupply) / Math.pow(10, tokenDecimal)) *
+//     (Number(exchangeRateStored) / 1e18) *
+//     Number(underlingPrice)
+//   const apr =
+//     (Number(supplySpeed.supplySpeed) *
+//       Number(mPriceFixed) *
+//       SECONDS_PER_YEAR) /
+//     marketTotalSupply
+
+//   return apr
+// }
+
+// async getApy({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetApyInput): Promise<ProtocolTokenApy> {
+//   const apy = await this.getProtocolTokenApy({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     apyDecimal: apy * 100,
+//   }
+// }
+
+// async getApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<ProtocolTokenApr> {
+//   const apr = await this.getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     aprDecimal: apr * 100,
+//   }
+// }

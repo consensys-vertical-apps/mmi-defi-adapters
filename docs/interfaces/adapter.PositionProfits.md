@@ -19,6 +19,7 @@
 - [profit](adapter.PositionProfits.md#profit)
 - [performance](adapter.PositionProfits.md#performance)
 - [calculationData](adapter.PositionProfits.md#calculationdata)
+- [tokenId](adapter.PositionProfits.md#tokenid)
 - [type](adapter.PositionProfits.md#type)
 - [address](adapter.PositionProfits.md#address)
 - [name](adapter.PositionProfits.md#name)
@@ -39,7 +40,7 @@ Profit made in this token for this period
 
 #### Defined in
 
-[adapter.ts:302](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L302)
+[adapter.ts:293](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L293)
 
 ___
 
@@ -53,7 +54,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:304](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L304)
+[adapter.ts:295](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L295)
 
 ___
 
@@ -69,7 +70,17 @@ Numbers used to calculate profit value
 
 #### Defined in
 
-[adapter.ts:309](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L309)
+[adapter.ts:300](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L300)
+
+___
+
+### tokenId
+
+• `Optional` **tokenId**: `string`
+
+#### Defined in
+
+[adapter.ts:304](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L304)
 
 ___
 
@@ -79,7 +90,7 @@ ___
 
 #### Defined in
 
-[adapter.ts:313](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L313)
+[adapter.ts:305](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L305)
 
 ___
 

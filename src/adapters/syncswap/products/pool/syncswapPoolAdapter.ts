@@ -2,22 +2,14 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   GetPositionsInput,
   ProtocolPosition,
@@ -87,7 +79,6 @@ export class SyncswapPoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -159,7 +150,6 @@ export class SyncswapPoolAdapter extends SimplePoolAdapter {
     }
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     protocolTokenAddress,
     userAddress,
@@ -175,7 +165,6 @@ export class SyncswapPoolAdapter extends SimplePoolAdapter {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     protocolTokenAddress,
     userAddress,
@@ -205,18 +194,10 @@ export class SyncswapPoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
   }
 

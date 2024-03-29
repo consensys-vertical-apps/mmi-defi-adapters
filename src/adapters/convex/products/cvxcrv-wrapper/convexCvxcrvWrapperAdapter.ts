@@ -5,10 +5,6 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -16,14 +12,10 @@ import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
   GetTotalValueLockedInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenTvl,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   GetPositionsInput,
   ProtocolPosition,
@@ -65,7 +57,6 @@ export class ConvexCvxcrvWrapperAdapter
     }
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -156,7 +147,6 @@ export class ConvexCvxcrvWrapperAdapter
     }
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -248,18 +238,10 @@ export class ConvexCvxcrvWrapperAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
   }
 

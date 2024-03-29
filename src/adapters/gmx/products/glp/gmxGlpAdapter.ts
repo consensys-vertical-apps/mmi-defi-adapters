@@ -7,10 +7,6 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import {
-  ResolveUnderlyingPositions,
-  ResolveUnderlyingMovements,
-} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
@@ -18,20 +14,16 @@ import {
   PositionType,
   GetEventsInput,
   MovementsByBlock,
-  GetAprInput,
-  GetApyInput,
   GetTotalValueLockedInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenTvl,
   TokenType,
-  GetConversionRateInput,
+  UnwrapInput,
   GetPositionsInput,
   ProtocolPosition,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   TokenBalance,
   Underlying,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -181,7 +173,6 @@ export class GMXGlpAdapter
     return [(await this.buildMetadata()).protocolToken]
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -206,30 +197,32 @@ export class GMXGlpAdapter
       this.provider,
     )
 
-    const [[protocolTokenBalance], underlyingTokenRates] = await Promise.all([
-      rewardReaderContract.getDepositBalances(
-        userAddress,
-        [protocolToken.address],
-        [positionContractAddress],
-        { blockTag: blockNumber },
-      ),
-      this.getProtocolTokenToUnderlyingTokenRate({
-        protocolTokenAddress: protocolToken.address,
-        blockNumber,
-      }),
-    ])
+    const [[protocolTokenBalance], unwrappedTokenExchangeRates] =
+      await Promise.all([
+        rewardReaderContract.getDepositBalances(
+          userAddress,
+          [protocolToken.address],
+          [positionContractAddress],
+          { blockTag: blockNumber },
+        ),
+        this.unwrap({
+          protocolTokenAddress: protocolToken.address,
+          blockNumber,
+        }),
+      ])
 
     if (!protocolTokenBalance || protocolTokenBalance === 0n) {
       return []
     }
 
     const underlyingTokenBalances = underlyingTokens.map((underlyingToken) => {
-      const underlyingTokenRate = underlyingTokenRates.tokens?.find(
-        (tokenRate) => tokenRate.address === underlyingToken.address,
-      )
+      const unwrappedTokenExchangeRate =
+        unwrappedTokenExchangeRates.tokens?.find(
+          (tokenRate) => tokenRate.address === underlyingToken.address,
+        )
 
       const underlyingBalanceRaw =
-        (protocolTokenBalance * underlyingTokenRate!.underlyingRateRaw) /
+        (protocolTokenBalance * unwrappedTokenExchangeRate!.underlyingRateRaw) /
         10n ** BigInt(protocolToken.decimals)
 
       return {
@@ -327,9 +320,7 @@ export class GMXGlpAdapter
     // ]
   }
 
-  async getProtocolTokenToUnderlyingTokenRate({
-    blockNumber,
-  }: GetConversionRateInput): Promise<ProtocolTokenUnderlyingRate> {
+  async unwrap({ blockNumber }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const { protocolToken, vaultAddress, underlyingTokens } =
       await this.buildMetadata()
 
@@ -344,7 +335,7 @@ export class GMXGlpAdapter
       blockTag: blockNumber,
     })
 
-    const underlyingTokenRates = await Promise.all(
+    const unwrappedTokenExchangeRates = await Promise.all(
       underlyingTokens.map(async (underlyingToken) => {
         const redemptionCollateral =
           await vaultContract.getRedemptionCollateral(underlyingToken.address, {
@@ -367,7 +358,7 @@ export class GMXGlpAdapter
       ...protocolToken,
       type: TokenType.Protocol,
       baseRate: 1,
-      tokens: underlyingTokenRates,
+      tokens: unwrappedTokenExchangeRates,
     }
   }
 
@@ -377,15 +368,6 @@ export class GMXGlpAdapter
     throw new NotImplementedError()
   }
 
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -406,7 +388,6 @@ export class GMXGlpAdapter
     })
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -446,10 +427,10 @@ export class GMXGlpAdapter
   }): Promise<Underlying[]> {
     throw new NotImplementedError()
   }
-  protected getUnderlyingTokenConversionRate(
+  protected unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
   }
 }

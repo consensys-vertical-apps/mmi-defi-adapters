@@ -53,7 +53,7 @@ export type GetBalancesInput = GetPositionsInput & {
   tokens: Erc20Metadata[]
 }
 
-export type GetConversionRateInput = {
+export type UnwrapInput = {
   /**
    * Optional override param
    */
@@ -67,27 +67,6 @@ export type GetConversionRateInput = {
    * Optional filter for pools that will be queried by an ID
    */
   tokenId?: string
-}
-export type GetApyInput = {
-  /**
-   * Optional override param
-   */
-  blockNumber?: number
-
-  /**
-   * Protocol token address (LP token address).
-   */
-  protocolTokenAddress: string
-}
-export type GetAprInput = {
-  /**
-   * Optional override param
-   */
-  blockNumber?: number
-  /**
-   * Protocol token address (LP token address).
-   */
-  protocolTokenAddress: string
 }
 
 export type GetEventsInput = {
@@ -195,12 +174,6 @@ export interface GetPositionsInput {
   tokenIds?: string[]
 }
 
-export interface GetPricePerShareInput {
-  /**
-   * Optional override param
-   */
-  blockNumber?: number
-}
 export interface GetTotalValueLockedInput {
   /**
    * Optional override param
@@ -243,19 +216,19 @@ export interface ProtocolPosition extends TokenBalance {
   tokens?: Underlying[]
 }
 
-export interface UnderlyingTokenRate extends Erc20Metadata {
+export interface UnwrappedTokenExchangeRate extends Erc20Metadata {
   type: typeof TokenType.Underlying
   underlyingRateRaw: bigint
 }
 
-export interface ProtocolTokenUnderlyingRate extends Erc20Metadata {
+export interface UnwrapExchangeRate extends Erc20Metadata {
   /**
    * Always equal to 1
    * We are finding the underlying value of 1 LP token
    */
   baseRate: 1
   type: typeof TokenType.Protocol
-  tokens?: UnderlyingTokenRate[]
+  tokens?: UnwrappedTokenExchangeRate[]
 }
 
 export interface MovementsByBlock {
@@ -273,34 +246,21 @@ export interface MovementsByBlock {
   transactionHash: string
 }
 
-export interface ProtocolTokenApy extends Erc20Metadata {
+export interface TokenTvl extends Erc20Metadata {
   /**
-   * Current apy of protocol pool
+   * Total underlying token locked in pool raw
    */
-  apyDecimal: number
+  totalSupplyRaw: bigint
 }
 
-export interface ProtocolTokenApr extends Erc20Metadata {
-  /**
-   * Current apr of protocol pool
-   */
-  aprDecimal: number
-}
-
-export interface UnderlyingTokenTvl extends Erc20Metadata {
+export interface UnderlyingTokenTvl extends TokenTvl {
   type: typeof TokenType.Underlying
-  /**
-   * Total underlying token locked in pool raw
-   */
-  totalSupplyRaw: bigint
+  tokens?: UnderlyingTokenTvl[]
+  priceRaw?: bigint
 }
 
-export interface ProtocolTokenTvl extends Erc20Metadata {
+export interface ProtocolTokenTvl extends TokenTvl {
   type: typeof TokenType.Protocol
-  /**
-   * Total underlying token locked in pool raw
-   */
-  totalSupplyRaw: bigint
   tokens?: UnderlyingTokenTvl[]
 }
 

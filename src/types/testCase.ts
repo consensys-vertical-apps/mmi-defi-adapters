@@ -81,14 +81,6 @@ export type TestCase = {
       blockNumber?: number
     }
   | {
-      method: 'apy'
-      blockNumber?: number
-    }
-  | {
-      method: 'apr'
-      blockNumber?: number
-    }
-  | {
       method: 'tx-params'
       input: Omit<GetTransactionParamsInput, 'protocolId'>
     }

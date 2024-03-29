@@ -3,13 +3,9 @@ import {
   TokenBalance,
   Underlying,
   TokenType,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   GetEventsInput,
   MovementsByBlock,
-  GetApyInput,
-  ProtocolTokenApy,
-  GetAprInput,
-  ProtocolTokenApr,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
@@ -112,10 +108,10 @@ export abstract class CompoundV2SupplyMarketForkAdapter
     return [underlyingTokenBalance]
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )
@@ -147,14 +143,6 @@ export abstract class CompoundV2SupplyMarketForkAdapter
   }
 
   getRepays(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 }

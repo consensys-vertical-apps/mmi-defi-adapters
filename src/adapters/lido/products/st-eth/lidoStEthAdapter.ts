@@ -6,14 +6,10 @@ import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   ProtocolDetails,
   PositionType,
-  GetApyInput,
-  GetAprInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   TokenType,
   TokenBalance,
   Underlying,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -44,14 +40,6 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
     return [await this.fetchProtocolTokenMetadata()]
   }
 
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
     const stEthAddress = getAddress(
       '0xae7ab96520de3a18e5e111b5eaab095312d7fe84',
@@ -80,9 +68,9 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
     return [underlyingTokenBalance]
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
     // Always pegged one to one to underlying

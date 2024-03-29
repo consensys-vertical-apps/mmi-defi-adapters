@@ -1,0 +1,67 @@
+{
+  "blockNumber": 19410813,
+  "snapshot": [
+    {
+      "protocolId": "angle-protocol",
+      "name": "AngleProtocol",
+      "description": "AngleProtocol defi adapter",
+      "siteUrl": "https://angle.money",
+      "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-coral.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "savings",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x004626A008B1aCdC4c74ab51644093b155e59A23",
+          "name": "Staked EURA",
+          "symbol": "stEUR",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
+                "name": "agEUR",
+                "symbol": "AGEUR",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "215840736863059363262380n"
+              },
+              {
+                "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
+                "name": "agEUR",
+                "symbol": "AGEUR",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "226421642804526228805768n"
+              },
+              {
+                "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
+                "name": "agEUR",
+                "symbol": "AGEUR",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "10561278002527056936477n"
+              }
+            ]
+          }
+        }
+      ],
+      "fromBlock": 19403667,
+      "toBlock": 19410813
+    }
+  ]
+}

@@ -11,9 +11,10 @@ import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { logger } from './core/utils/logger'
+import { unwrap } from './core/utils/unwrap'
 import {
   enrichPositionBalance,
-  enrichUnderlyingTokenRates,
+  enrichUnwrappedTokenExchangeRates,
   enrichMovements,
   enrichTotalValueLocked,
 } from './responseAdapters'
@@ -22,8 +23,6 @@ import { DeepPartial } from './types/deepPartial'
 import { GetTransactionParamsInput } from './types/getTransactionParamsInput'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
-  APRResponse,
-  APYResponse,
   AdapterResponse,
   DefiMovementsResponse,
   DefiPositionResponse,
@@ -122,6 +121,8 @@ export class DefiProvider {
         blockNumber,
       })
 
+      await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
+
       const tokens = protocolPositions.map((protocolPosition) =>
         enrichPositionBalance(protocolPosition, adapter.chainId),
       )
@@ -206,7 +207,7 @@ export class DefiProvider {
     })
   }
 
-  async getPrices({
+  async unwrap({
     filterProtocolIds,
     filterChainIds,
     filterProtocolToken,
@@ -220,30 +221,26 @@ export class DefiProvider {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      let protocolTokens = []
-      if (!filterProtocolToken) {
-        protocolTokens = await adapter.getProtocolTokens()
-      } else {
-        protocolTokens = [
-          {
-            address: filterProtocolToken,
-          },
-        ]
-      }
+      const protocolTokens = filterProtocolToken
+        ? [
+            {
+              address: filterProtocolToken,
+            },
+          ]
+        : await adapter.getProtocolTokens()
 
       const tokens = await Promise.all(
         protocolTokens.map(async ({ address }) => {
           const startTime = Date.now()
 
-          const protocolTokenUnderlyingRate =
-            await adapter.getProtocolTokenToUnderlyingTokenRate({
-              protocolTokenAddress: getAddress(address),
-              blockNumber,
-            })
+          const unwrap = await adapter.unwrap({
+            protocolTokenAddress: getAddress(address),
+            blockNumber,
+          })
 
           const endTime = Date.now()
           logger.info({
-            source: 'adapter:prices',
+            source: 'adapter:unwrap',
             startTime,
             endTime,
             timeTaken: endTime - startTime,
@@ -255,10 +252,7 @@ export class DefiProvider {
             blockNumber,
           })
 
-          return enrichUnderlyingTokenRates(
-            protocolTokenUnderlyingRate,
-            adapter.chainId,
-          )
+          return enrichUnwrappedTokenExchangeRates(unwrap, adapter.chainId)
         }),
       )
 
@@ -270,7 +264,7 @@ export class DefiProvider {
       filterProtocolIds,
       filterChainIds,
 
-      method: 'getPrices',
+      method: 'unwrap',
     })
   }
 
@@ -298,7 +292,7 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionMovements = await adapter.getWithdrawals({
+      const positionsMovements = await adapter.getWithdrawals({
         protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
@@ -306,8 +300,19 @@ export class DefiProvider {
         tokenId,
       })
 
+      await Promise.all(
+        positionsMovements.map(async (positionMovements) => {
+          return await unwrap(
+            adapter,
+            positionMovements.blockNumber,
+            positionMovements.tokens,
+            'balanceRaw',
+          )
+        }),
+      )
+
       return {
-        movements: positionMovements.map((value) =>
+        movements: positionsMovements.map((value) =>
           enrichMovements(value, chainId),
         ),
       }
@@ -372,7 +377,7 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionMovements = await adapter.getDeposits({
+      const positionsMovements = await adapter.getDeposits({
         protocolTokenAddress: getAddress(protocolTokenAddress),
         fromBlock,
         toBlock,
@@ -380,8 +385,19 @@ export class DefiProvider {
         tokenId,
       })
 
+      await Promise.all(
+        positionsMovements.map(async (positionMovements) => {
+          return await unwrap(
+            adapter,
+            positionMovements.blockNumber,
+            positionMovements.tokens,
+            'balanceRaw',
+          )
+        }),
+      )
+
       return {
-        movements: positionMovements.map((value) =>
+        movements: positionsMovements.map((value) =>
           enrichMovements(value, chainId),
         ),
       }
@@ -413,18 +429,30 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionMovements = await adapter.getRepays?.({
-        protocolTokenAddress: getAddress(protocolTokenAddress),
-        fromBlock,
-        toBlock,
-        userAddress,
-        tokenId,
-      })
+      const positionsMovements =
+        (await adapter.getRepays?.({
+          protocolTokenAddress: getAddress(protocolTokenAddress),
+          fromBlock,
+          toBlock,
+          userAddress,
+          tokenId,
+        })) || []
+
+      await Promise.all(
+        positionsMovements.map(async (positionMovements) => {
+          return await unwrap(
+            adapter,
+            positionMovements.blockNumber,
+            positionMovements.tokens,
+            'balanceRaw',
+          )
+        }),
+      )
 
       return {
-        movements:
-          positionMovements?.map((value) => enrichMovements(value, chainId)) ||
-          [],
+        movements: positionsMovements.map((value) =>
+          enrichMovements(value, chainId),
+        ),
       }
     }
 
@@ -454,18 +482,30 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionMovements = await adapter.getBorrows?.({
-        protocolTokenAddress: getAddress(protocolTokenAddress),
-        fromBlock,
-        toBlock,
-        userAddress,
-        tokenId,
-      })
+      const positionsMovements =
+        (await adapter.getBorrows?.({
+          protocolTokenAddress: getAddress(protocolTokenAddress),
+          fromBlock,
+          toBlock,
+          userAddress,
+          tokenId,
+        })) || []
+
+      await Promise.all(
+        positionsMovements.map(async (positionMovements) => {
+          return await unwrap(
+            adapter,
+            positionMovements.blockNumber,
+            positionMovements.tokens,
+            'balanceRaw',
+          )
+        }),
+      )
 
       return {
-        movements:
-          positionMovements?.map((value) => enrichMovements(value, chainId)) ||
-          [],
+        movements: positionsMovements?.map((value) =>
+          enrichMovements(value, chainId),
+        ),
       }
     }
 
@@ -486,6 +526,8 @@ export class DefiProvider {
 
       const tokens = await adapter.getTotalValueLocked({ blockNumber })
 
+      await unwrap(adapter, blockNumber, tokens, 'totalSupplyRaw')
+
       return {
         tokens: tokens.map((value) =>
           enrichTotalValueLocked(value, adapter.chainId),
@@ -501,74 +543,11 @@ export class DefiProvider {
     })
   }
 
-  async getApy({
-    filterProtocolIds,
-    filterChainIds,
-    blockNumbers,
-  }: {
-    filterProtocolIds?: Protocol[]
-    filterChainIds?: Chain[]
-    blockNumbers?: Partial<Record<Chain, number>>
-  }): Promise<APYResponse[]> {
-    const runner = async (adapter: IProtocolAdapter) => {
-      const blockNumber = blockNumbers?.[adapter.chainId]
-
-      const protocolTokens = await adapter.getProtocolTokens()
-      const tokens = await Promise.all(
-        protocolTokens.map(({ address }) =>
-          adapter.getApy({
-            protocolTokenAddress: getAddress(address),
-            blockNumber,
-          }),
-        ),
-      )
-
-      return {
-        tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
-      }
-    }
-
-    return this.runForAllProtocolsAndChains({
-      runner,
-      filterProtocolIds,
-      filterChainIds,
-      method: 'getApy',
-    })
-  }
-
-  async getApr({
-    filterProtocolIds,
-    filterChainIds,
-    blockNumbers,
-  }: {
-    filterProtocolIds?: Protocol[]
-    filterChainIds?: Chain[]
-    blockNumbers?: Partial<Record<Chain, number>>
-  }): Promise<APRResponse[]> {
-    const runner = async (adapter: IProtocolAdapter) => {
-      const blockNumber = blockNumbers?.[adapter.chainId]
-
-      const protocolTokens = await adapter.getProtocolTokens()
-      const tokens = await Promise.all(
-        protocolTokens.map(({ address }) =>
-          adapter.getApr({
-            protocolTokenAddress: getAddress(address),
-            blockNumber,
-          }),
-        ),
-      )
-
-      return {
-        tokens: tokens.filter((obj) => !(obj && Object.keys(obj).length === 0)),
-      }
-    }
-
-    return this.runForAllProtocolsAndChains({
-      runner,
-      filterProtocolIds,
-      filterChainIds,
-      method: 'getApr',
-    })
+  getSupport(input: {
+    filterChainIds: Chain[] | undefined
+    filterProtocolIds: Protocol[] | undefined
+  }) {
+    return this.adaptersController.getSupport(input)
   }
 
   private async runForAllProtocolsAndChains<ReturnType extends object>({
@@ -585,20 +564,18 @@ export class DefiProvider {
     filterChainIds?: Chain[]
     method:
       | 'getPositions'
-      | 'getPrices'
+      | 'unwrap'
       | 'getProfits'
       | 'getWithdrawals'
       | 'getDeposits'
       | 'getTotalValueLocked'
-      | 'getApy'
-      | 'getApr'
   }): Promise<AdapterResponse<Awaited<ReturnType>>[]> {
     const protocolPromises = Object.entries(supportedProtocols)
       .filter(
         ([protocolIdKey, _]) =>
           (!filterProtocolIds ||
             filterProtocolIds.includes(protocolIdKey as Protocol)) &&
-          (method === 'getPrices' || protocolIdKey !== Protocol.PricesV2),
+          (method === 'unwrap' || protocolIdKey !== Protocol.PricesV2),
       )
       .flatMap(([protocolIdKey, supportedChains]) => {
         const protocolId = protocolIdKey as Protocol

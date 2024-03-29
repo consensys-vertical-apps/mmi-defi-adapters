@@ -1,9 +1,5 @@
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -15,12 +11,8 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetApyInput,
-  GetAprInput,
-  GetConversionRateInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenUnderlyingRate,
+  UnwrapInput,
+  UnwrapExchangeRate,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
@@ -94,7 +86,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     return `${token0Symbol} / ${token1Symbol}`
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -173,7 +164,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     return []
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     fromBlock,
@@ -197,7 +187,6 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     )
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     fromBlock,
@@ -227,17 +216,7 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
     throw new NotImplementedError()
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 

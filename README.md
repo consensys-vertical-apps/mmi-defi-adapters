@@ -14,9 +14,8 @@ This library is designed to simplify and standardise the process of fetching dat
 4. Provide the following data in a standardised format:
    - DeFi positions by address, including the balance of underlying tokens such as USDC, WETH, etc.
    - Total Value Locked (TVL) by pool
-   - APY/APR by pool
    - Daily profit and loss by address
-   - Unwrap LP tokens to underlying tokens (a.k.a get a price for the LP tokens)
+   - Unwrap LP tokens to the current unwrapping exchange rate
    - Deposits by address
    - Withdrawals by address
    - Crafted transactions params
@@ -36,14 +35,14 @@ We offer a variety of templates to streamline the creation of new adapters using
 2. **SimplePoolAdapter Template**:
    - Generates an adapter class inheriting a set of pre-implemented methods.
    - Ideally suited for fungible liquidity pool (LP) tokens.
-3. **UniswapV2PoolForkAdapter**:
-   - Creates an adapter for Uniswap V2 fork projects, with minimal methods needing completion.
-4. **LpStakingAdapter**:
+3. **LpStakingAdapter**:
    - Tailored for reward protocols, such as Convex.
    - Ideally suited for fungible staking tokens which are fixed one-to-one to the underlying LP token.
    - Supports optional Reward and Extra rewards functionalities.
 
 Each template is designed to facilitate specific scenarios in the development of new adapters, ensuring a streamlined and efficient setup process.
+
+Forks of popular protocols we also provide protocol-specific templates can be found [here](README.md#adapter-templates-for-forks-of-popular-protocols)
 
 ## Quick Start
 
@@ -67,11 +66,33 @@ To build an adapter follow these steps:
    - `npm run positions 0x6b8Be925ED8277fE4D27820aE4677e76Ebf4c255 -- --protocols stargate --chains 1,arbitrum`
    - `npm run profits 0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a`
    - `npm run tvl`
-   - `npm run prices`
-   - `npm run apr`
-   - `npm run apy`
+   - `npm run unwrap` (unwraps LP tokens to the current unwrapping exchange rate)
    - `npm run deposits 0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5 18262162 18262164 0xC36442b4a4522E871399CD717aBDD847Ab11FE88 pool uniswap-v3 1 573046`
    - `npm run withdrawals 0x4Ffc5F22770ab6046c8D66DABAe3A9CD1E7A03e7 17979753 17979755 0xdf0770df86a8034b3efef0a1bb3c889b8332ff56 pool stargate 1`
+
+## Adapter Templates for Forks of Popular Protocols
+
+We supply a set of templates that can be used for forks of popular protocols and products.
+
+Using one of these templates can bootstrap a new protocol by just adding a few settings, such as a contract address or a graphql url to build the metadata files. Below is a detailed overview of each template available:
+
+1. **UniswapV2PoolForkAdapter**:
+
+   - Creates an adapter for Uniswap V2 fork projects. It requires:
+     - Protocol details
+     - Factory contract addresses for each chain
+     - (Optional) URL for the subgraph for each chain
+
+2. **CompoundV2SupplyMarketForkAdapter**:
+
+   - Creates an adapter for the supply market of Compound V2 fork projects. It requires:
+     - Protocol details
+     - Comptroller contract addresses for each chain
+
+3. **CompoundV2BorrowMarketForkAdapter**:
+   - Creates an adapter for the borrow market of Compound V2 fork projects. It requires:
+     - Protocol details
+     - Comptroller contract addresses for each chain
 
 ## Documentation 📖
 

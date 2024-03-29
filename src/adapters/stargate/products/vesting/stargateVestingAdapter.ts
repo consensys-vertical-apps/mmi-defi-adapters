@@ -5,22 +5,17 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { ResolveUnderlyingPositions } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  GetAprInput,
-  GetApyInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolDetails,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenType,
@@ -80,7 +75,6 @@ export class StargateVestingAdapter
     return [(await this.buildMetadata()).contractToken]
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -131,7 +125,7 @@ export class StargateVestingAdapter
     return tokens
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(): Promise<ProtocolTokenUnderlyingRate> {
+  async unwrap(): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 
@@ -146,14 +140,6 @@ export class StargateVestingAdapter
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
     throw new NotImplementedError()
   }
 

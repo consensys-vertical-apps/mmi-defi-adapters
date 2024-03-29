@@ -11,14 +11,10 @@ import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
   GetTotalValueLockedInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenTvl,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   TokenType,
   AssetType,
@@ -77,10 +73,7 @@ export class CurvePoolAdapter
       protocolTokenBalance.address,
     )
 
-    const prices = await this.getUnderlyingTokenConversionRate(
-      protocolToken,
-      blockNumber,
-    )
+    const prices = await this.unwrapProtocolToken(protocolToken, blockNumber)
 
     return prices.map((underlyingTokenPriceObject) => {
       const underlyingRateRawBigInt =
@@ -117,10 +110,10 @@ export class CurvePoolAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingTokens, protocolToken, lpTokenManager } =
       (await this.fetchPoolMetadata(protocolTokenMetadata.address)) as {
         protocolToken: Erc20Metadata
@@ -165,14 +158,6 @@ export class CurvePoolAdapter
         ...underlyingToken,
       }
     })
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
   }
 
   protected async fetchUnderlyingTokensMetadata(

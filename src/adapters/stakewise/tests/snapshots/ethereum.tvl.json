@@ -31,6 +31,7 @@
               "totalSupplyRaw": "57738892939803903201912n",
               "type": "underlying",
               "totalSupply": 57738.8929398039,
+              "price": 2823.34,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],

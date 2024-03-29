@@ -2,10 +2,6 @@ import { formatUnits, getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
-import {
-  ResolveUnderlyingPositions,
-  ResolveUnderlyingMovements,
-} from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
@@ -18,18 +14,14 @@ import {
   GetEventsInput,
   MovementsByBlock,
   GetTotalValueLockedInput,
-  GetApyInput,
-  GetAprInput,
-  GetConversionRateInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenUnderlyingRate,
+  UnwrapInput,
+  UnwrapExchangeRate,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenType,
   Underlying,
   TokenBalance,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -116,10 +108,10 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
   }): Promise<Underlying[]> {
     throw new NotImplementedError()
   }
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
   }
 
@@ -144,7 +136,6 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -282,7 +273,6 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     )}%`
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     protocolTokenAddress,
     fromBlock,
@@ -302,7 +292,6 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     protocolTokenAddress,
     fromBlock,
@@ -327,17 +316,7 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
+  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 

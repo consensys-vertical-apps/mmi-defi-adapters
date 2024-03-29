@@ -44,14 +44,4 @@ export const testCases: TestCase[] = [
     method: 'tvl',
     blockNumber: 1597881,
   },
-  {
-    chainId: Chain.Linea,
-    method: 'apy',
-    blockNumber: 1597881,
-  },
-  {
-    chainId: Chain.Linea,
-    method: 'apr',
-    blockNumber: 1597881,
-  },
 ]

@@ -1,35 +1,23 @@
 import { getAddress } from 'ethers'
-import * as RayMath from 'evm-maths/lib/ray'
 import { min } from 'evm-maths/lib/utils'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
-import { RAY } from '../../../core/constants/RAY'
-import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
-import { aprToApy } from '../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
   GetPositionsInput,
   GetEventsInput,
-  GetApyInput,
-  GetAprInput,
   GetTotalValueLockedInput,
-  GetConversionRateInput,
+  UnwrapInput,
   MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenBalance,
@@ -210,7 +198,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return [underlyingToken]
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -304,7 +291,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return protocolTokens
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -331,7 +317,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     ).flat()
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -358,7 +343,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     ).flat()
   }
 
-  @ResolveUnderlyingMovements
   async getBorrows({
     userAddress,
     protocolTokenAddress,
@@ -374,7 +358,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getRepays({
     userAddress,
     protocolTokenAddress,
@@ -554,9 +537,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     )
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
+  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 
@@ -667,238 +648,242 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
 
     return movements
   }
-  private async getProtocolTokenApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<number> {
-    const morphoAaveV3 = MorphoAaveV3__factory.connect(
-      morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,
-      this.provider,
-    )
-
-    const pool = AaveV3Pool__factory.connect(this.poolAddress, this.provider)
-
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
-    const positionType = this.getProtocolDetails().positionType
-
-    let rate: bigint
-
-    if (positionType === PositionType.Supply) {
-      const [
-        {
-          idleSupply,
-          indexes,
-          deltas,
-          p2pIndexCursor,
-          reserveFactor,
-          aToken: aTokenAddress,
-        },
-        {
-          currentLiquidityRate,
-          currentVariableBorrowRate,
-          liquidityIndex,
-          variableBorrowIndex,
-        },
-      ] = await Promise.all([
-        morphoAaveV3.market(underlyingToken.address, {
-          blockTag: blockNumber,
-        }),
-        pool.getReserveData(underlyingToken.address, {
-          blockTag: blockNumber,
-        }),
-      ])
-
-      const aToken = AToken__factory.connect(aTokenAddress, this.provider)
-
-      const supplyOnPool = await aToken.balanceOf(
-        morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,
-        {
-          blockTag: blockNumber,
-        },
-      )
-
-      const proportionIdle =
-        idleSupply === 0n
-          ? 0n
-          : min(
-              // To avoid proportionIdle > 1 with rounding errors
-              this.__MATH__.ONE,
-              this.__MATH__.indexDiv(
-                idleSupply,
-                this.__MATH__.indexMul(
-                  deltas.supply.scaledP2PTotal,
-                  indexes.supply.p2pIndex,
-                ),
-              ),
-            )
-
-      const { newP2PSupplyIndex } = this.__IRM__.computeP2PIndexes({
-        deltas,
-        proportionIdle,
-        p2pIndexCursor: p2pIndexCursor,
-        reserveFactor: reserveFactor,
-        lastBorrowIndexes: {
-          poolIndex: indexes.borrow.poolIndex,
-          p2pIndex: indexes.borrow.p2pIndex,
-        },
-        lastSupplyIndexes: {
-          poolIndex: indexes.supply.poolIndex,
-          p2pIndex: indexes.supply.p2pIndex,
-        },
-        poolBorrowIndex: variableBorrowIndex,
-        poolSupplyIndex: liquidityIndex,
-      })
-
-      const supplyInP2P = this.__MATH__.indexMul(
-        deltas.supply.scaledP2PTotal,
-        newP2PSupplyIndex,
-      )
-
-      const totalSupply = supplyInP2P + supplyOnPool
-
-      const p2pSupplyRate = this.__IRM__.computeP2PSupplyRatePerYear({
-        p2pIndex: newP2PSupplyIndex,
-        proportionIdle,
-        p2pIndexCursor: p2pIndexCursor,
-        reserveFactor: reserveFactor,
-        delta: deltas.supply,
-        poolBorrowRatePerYear: currentVariableBorrowRate,
-        poolSupplyRatePerYear: currentLiquidityRate,
-        poolIndex: liquidityIndex,
-      })
-      rate =
-        totalSupply === 0n
-          ? currentLiquidityRate
-          : RayMath.rayDiv(
-              this.__MATH__.indexMul(p2pSupplyRate, supplyInP2P) +
-                this.__MATH__.indexMul(currentLiquidityRate, supplyOnPool),
-              totalSupply,
-            )
-    } else {
-      const [
-        {
-          idleSupply,
-          indexes,
-          deltas,
-          p2pIndexCursor,
-          reserveFactor,
-          variableDebtToken: variableDebtTokenAddress,
-        },
-        {
-          currentLiquidityRate,
-          currentVariableBorrowRate,
-          liquidityIndex,
-          variableBorrowIndex,
-        },
-      ] = await Promise.all([
-        morphoAaveV3.market(underlyingToken.address, {
-          blockTag: blockNumber,
-        }),
-        pool.getReserveData(underlyingToken.address, {
-          blockTag: blockNumber,
-        }),
-      ])
-
-      const variableDebtToken = AToken__factory.connect(
-        variableDebtTokenAddress,
-        this.provider,
-      )
-
-      const borrowOnPool = await variableDebtToken.balanceOf(
-        morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,
-        {
-          blockTag: blockNumber,
-        },
-      )
-
-      const proportionIdle =
-        idleSupply === 0n
-          ? 0n
-          : min(
-              // To avoid proportionIdle > 1 with rounding errors
-              this.__MATH__.ONE,
-              this.__MATH__.indexDiv(
-                idleSupply,
-                this.__MATH__.indexMul(
-                  deltas.supply.scaledP2PTotal,
-                  indexes.supply.p2pIndex,
-                ),
-              ),
-            )
-
-      const { newP2PBorrowIndex } = this.__IRM__.computeP2PIndexes({
-        deltas,
-        proportionIdle,
-        p2pIndexCursor: p2pIndexCursor,
-        reserveFactor: reserveFactor,
-        lastBorrowIndexes: {
-          poolIndex: indexes.borrow.poolIndex,
-          p2pIndex: indexes.borrow.p2pIndex,
-        },
-        lastSupplyIndexes: {
-          poolIndex: indexes.supply.poolIndex,
-          p2pIndex: indexes.supply.p2pIndex,
-        },
-        poolBorrowIndex: variableBorrowIndex,
-        poolSupplyIndex: liquidityIndex,
-      })
-
-      const borrowInP2P = this.__MATH__.indexMul(
-        deltas.borrow.scaledP2PTotal,
-        newP2PBorrowIndex,
-      )
-      const totalBorrow = borrowInP2P + borrowOnPool
-      const p2pBorrowRate = this.__IRM__.computeP2PBorrowRatePerYear({
-        p2pIndex: newP2PBorrowIndex,
-        poolSupplyRatePerYear: currentLiquidityRate,
-        poolIndex: variableBorrowIndex,
-        poolBorrowRatePerYear: currentVariableBorrowRate,
-        delta: deltas.borrow,
-        reserveFactor: reserveFactor,
-        p2pIndexCursor: p2pIndexCursor,
-        proportionIdle,
-      })
-      rate =
-        totalBorrow === 0n
-          ? currentVariableBorrowRate
-          : RayMath.rayDiv(
-              this.__MATH__.indexMul(p2pBorrowRate, borrowInP2P) +
-                this.__MATH__.indexMul(currentVariableBorrowRate, borrowOnPool),
-              totalBorrow,
-            )
-    }
-    return Number(rate) / RAY
-  }
-
-  async getApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<ProtocolTokenApr> {
-    const apr = await this.getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-    })
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      aprDecimal: apr * 100,
-    }
-  }
-
-  async getApy({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetApyInput): Promise<ProtocolTokenApy> {
-    const apr = await this.getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-    })
-    const apy = aprToApy(apr, SECONDS_PER_YEAR)
-
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      apyDecimal: apy * 100,
-    }
-  }
 }
+
+// NOTE: The APY/APR feature has been removed as of March 2024.
+// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
+
+// async getApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<ProtocolTokenApr> {
+//   const apr = await this.getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     aprDecimal: apr * 100,
+//   }
+// }
+
+// async getApy({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetApyInput): Promise<ProtocolTokenApy> {
+//   const apr = await this.getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+//   const apy = aprToApy(apr, SECONDS_PER_YEAR)
+
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     apyDecimal: apy * 100,
+//   }
+// }
+
+// private async getProtocolTokenApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<number> {
+//   const morphoAaveV3 = MorphoAaveV3__factory.connect(
+//     morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,
+//     this.provider,
+//   )
+
+//   const pool = AaveV3Pool__factory.connect(this.poolAddress, this.provider)
+
+//   const { underlyingToken } = await this.fetchPoolMetadata(
+//     protocolTokenAddress,
+//   )
+//   const positionType = this.getProtocolDetails().positionType
+
+//   let rate: bigint
+
+//   if (positionType === PositionType.Supply) {
+//     const [
+//       {
+//         idleSupply,
+//         indexes,
+//         deltas,
+//         p2pIndexCursor,
+//         reserveFactor,
+//         aToken: aTokenAddress,
+//       },
+//       {
+//         currentLiquidityRate,
+//         currentVariableBorrowRate,
+//         liquidityIndex,
+//         variableBorrowIndex,
+//       },
+//     ] = await Promise.all([
+//       morphoAaveV3.market(underlyingToken.address, {
+//         blockTag: blockNumber,
+//       }),
+//       pool.getReserveData(underlyingToken.address, {
+//         blockTag: blockNumber,
+//       }),
+//     ])
+
+//     const aToken = AToken__factory.connect(aTokenAddress, this.provider)
+
+//     const supplyOnPool = await aToken.balanceOf(
+//       morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,
+//       {
+//         blockTag: blockNumber,
+//       },
+//     )
+
+//     const proportionIdle =
+//       idleSupply === 0n
+//         ? 0n
+//         : min(
+//             // To avoid proportionIdle > 1 with rounding errors
+//             this.__MATH__.ONE,
+//             this.__MATH__.indexDiv(
+//               idleSupply,
+//               this.__MATH__.indexMul(
+//                 deltas.supply.scaledP2PTotal,
+//                 indexes.supply.p2pIndex,
+//               ),
+//             ),
+//           )
+
+//     const { newP2PSupplyIndex } = this.__IRM__.computeP2PIndexes({
+//       deltas,
+//       proportionIdle,
+//       p2pIndexCursor: p2pIndexCursor,
+//       reserveFactor: reserveFactor,
+//       lastBorrowIndexes: {
+//         poolIndex: indexes.borrow.poolIndex,
+//         p2pIndex: indexes.borrow.p2pIndex,
+//       },
+//       lastSupplyIndexes: {
+//         poolIndex: indexes.supply.poolIndex,
+//         p2pIndex: indexes.supply.p2pIndex,
+//       },
+//       poolBorrowIndex: variableBorrowIndex,
+//       poolSupplyIndex: liquidityIndex,
+//     })
+
+//     const supplyInP2P = this.__MATH__.indexMul(
+//       deltas.supply.scaledP2PTotal,
+//       newP2PSupplyIndex,
+//     )
+
+//     const totalSupply = supplyInP2P + supplyOnPool
+
+//     const p2pSupplyRate = this.__IRM__.computeP2PSupplyRatePerYear({
+//       p2pIndex: newP2PSupplyIndex,
+//       proportionIdle,
+//       p2pIndexCursor: p2pIndexCursor,
+//       reserveFactor: reserveFactor,
+//       delta: deltas.supply,
+//       poolBorrowRatePerYear: currentVariableBorrowRate,
+//       poolSupplyRatePerYear: currentLiquidityRate,
+//       poolIndex: liquidityIndex,
+//     })
+//     rate =
+//       totalSupply === 0n
+//         ? currentLiquidityRate
+//         : RayMath.rayDiv(
+//             this.__MATH__.indexMul(p2pSupplyRate, supplyInP2P) +
+//               this.__MATH__.indexMul(currentLiquidityRate, supplyOnPool),
+//             totalSupply,
+//           )
+//   } else {
+//     const [
+//       {
+//         idleSupply,
+//         indexes,
+//         deltas,
+//         p2pIndexCursor,
+//         reserveFactor,
+//         variableDebtToken: variableDebtTokenAddress,
+//       },
+//       {
+//         currentLiquidityRate,
+//         currentVariableBorrowRate,
+//         liquidityIndex,
+//         variableBorrowIndex,
+//       },
+//     ] = await Promise.all([
+//       morphoAaveV3.market(underlyingToken.address, {
+//         blockTag: blockNumber,
+//       }),
+//       pool.getReserveData(underlyingToken.address, {
+//         blockTag: blockNumber,
+//       }),
+//     ])
+
+//     const variableDebtToken = AToken__factory.connect(
+//       variableDebtTokenAddress,
+//       this.provider,
+//     )
+
+//     const borrowOnPool = await variableDebtToken.balanceOf(
+//       morphoAaveV3ContractAddresses[this.protocolId]![this.chainId]!,
+//       {
+//         blockTag: blockNumber,
+//       },
+//     )
+
+//     const proportionIdle =
+//       idleSupply === 0n
+//         ? 0n
+//         : min(
+//             // To avoid proportionIdle > 1 with rounding errors
+//             this.__MATH__.ONE,
+//             this.__MATH__.indexDiv(
+//               idleSupply,
+//               this.__MATH__.indexMul(
+//                 deltas.supply.scaledP2PTotal,
+//                 indexes.supply.p2pIndex,
+//               ),
+//             ),
+//           )
+
+//     const { newP2PBorrowIndex } = this.__IRM__.computeP2PIndexes({
+//       deltas,
+//       proportionIdle,
+//       p2pIndexCursor: p2pIndexCursor,
+//       reserveFactor: reserveFactor,
+//       lastBorrowIndexes: {
+//         poolIndex: indexes.borrow.poolIndex,
+//         p2pIndex: indexes.borrow.p2pIndex,
+//       },
+//       lastSupplyIndexes: {
+//         poolIndex: indexes.supply.poolIndex,
+//         p2pIndex: indexes.supply.p2pIndex,
+//       },
+//       poolBorrowIndex: variableBorrowIndex,
+//       poolSupplyIndex: liquidityIndex,
+//     })
+
+//     const borrowInP2P = this.__MATH__.indexMul(
+//       deltas.borrow.scaledP2PTotal,
+//       newP2PBorrowIndex,
+//     )
+//     const totalBorrow = borrowInP2P + borrowOnPool
+//     const p2pBorrowRate = this.__IRM__.computeP2PBorrowRatePerYear({
+//       p2pIndex: newP2PBorrowIndex,
+//       poolSupplyRatePerYear: currentLiquidityRate,
+//       poolIndex: variableBorrowIndex,
+//       poolBorrowRatePerYear: currentVariableBorrowRate,
+//       delta: deltas.borrow,
+//       reserveFactor: reserveFactor,
+//       p2pIndexCursor: p2pIndexCursor,
+//       proportionIdle,
+//     })
+//     rate =
+//       totalBorrow === 0n
+//         ? currentVariableBorrowRate
+//         : RayMath.rayDiv(
+//             this.__MATH__.indexMul(p2pBorrowRate, borrowInP2P) +
+//               this.__MATH__.indexMul(currentVariableBorrowRate, borrowOnPool),
+//             totalBorrow,
+//           )
+//   }
+//   return Number(rate) / RAY
+// }

@@ -5,7 +5,6 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { ResolveUnderlyingMovements } from '../../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { logger } from '../../../../core/utils/logger'
 import {
@@ -13,14 +12,10 @@ import {
   PositionType,
   GetEventsInput,
   MovementsByBlock,
-  GetAprInput,
-  GetApyInput,
   GetTotalValueLockedInput,
   TokenBalance,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolTokenTvl,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   ProtocolAdapterParams,
   TokenType,
@@ -98,10 +93,10 @@ export class CurveStakingAdapter
     ]
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingTokens } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )
@@ -134,15 +129,6 @@ export class CurveStakingAdapter
     return protocolToken
   }
 
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -176,7 +162,6 @@ export class CurveStakingAdapter
     return movements
   }
 
-  @ResolveUnderlyingMovements
   @AddClaimedRewards({ rewardAdapterIds: ['reward'] })
   async getWithdrawals({
     userAddress,

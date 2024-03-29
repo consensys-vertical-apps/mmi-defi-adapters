@@ -5,14 +5,10 @@ import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   ProtocolDetails,
   PositionType,
-  GetApyInput,
-  GetAprInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   TokenType,
   TokenBalance,
   Underlying,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -42,14 +38,6 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
     return [await this.fetchProtocolTokenMetadata()]
-  }
-
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
   }
 
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
@@ -141,10 +129,10 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
     // }
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
     const wstEthContract = WstEthToken__factory.connect(

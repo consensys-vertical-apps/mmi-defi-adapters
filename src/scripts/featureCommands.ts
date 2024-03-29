@@ -63,14 +63,35 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
     '573517',
   )
 
-  protocolCommand(program, 'prices', defiProvider.getPrices.bind(defiProvider))
+  protocolCommand(program, 'unwrap', defiProvider.unwrap.bind(defiProvider))
   protocolCommand(
     program,
     'tvl',
     defiProvider.getTotalValueLocked.bind(defiProvider),
   )
-  protocolCommand(program, 'apr', defiProvider.getApr.bind(defiProvider))
-  protocolCommand(program, 'apy', defiProvider.getApy.bind(defiProvider))
+
+  program
+    .command('support')
+    .option(
+      '-p, --protocols <protocols>',
+      'comma-separated protocols filter (e.g. stargate,aave-v2)',
+    )
+    .option(
+      '-c, --chains <chains>',
+      'comma-separated chains filter (e.g. ethereum,arbitrum,linea)',
+    )
+    .showHelpAfterError()
+    .action(async ({ protocols, chains }) => {
+      const filterProtocolIds = multiProtocolFilter(protocols)
+      const filterChainIds = multiChainFilter(chains)
+
+      const data = defiProvider.getSupport({
+        filterChainIds,
+        filterProtocolIds,
+      })
+
+      printResponse(data)
+    })
 }
 
 function addressCommand(

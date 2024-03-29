@@ -31,6 +31,7 @@
               "totalSupplyRaw": "661021422603205147046n",
               "type": "underlying",
               "totalSupply": 661.0214226032051,
+              "price": 1577.5088,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
@@ -67,6 +68,19 @@
               "decimals": 18,
               "totalSupplyRaw": "3665156618272929270930708n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0x0000000000000000000000000000000000000000",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "3665156618272929270930708n",
+                  "totalSupply": 3665156.6182729295,
+                  "price": 1577.5088,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
               "totalSupply": 3665156.6182729295,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }

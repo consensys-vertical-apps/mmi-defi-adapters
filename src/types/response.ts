@@ -3,17 +3,16 @@ import type { Chain } from '../core/constants/chains'
 import type {
   MovementsByBlock,
   ProfitsWithRange,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   ProtocolDetails,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   ProtocolPosition,
   ProtocolTokenTvl,
   Underlying,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   UnderlyingTokenTvl,
   TokenType,
   TokenBalance,
+  TokenTvl,
 } from './adapter'
 
 export type GetEventsRequestInput = {
@@ -66,35 +65,38 @@ export type DisplayPosition<
 export type DefiProfitsResponse = AdapterResponse<ProfitsWithRange>
 
 export type PricePerShareResponse = AdapterResponse<{
-  tokens: DisplayProtocolTokenUnderlyingRate[]
+  tokens: DisplayUnwrapExchangeRate[]
 }>
 
-export type DisplayProtocolTokenUnderlyingRate = Omit<
-  ProtocolTokenUnderlyingRate,
-  'tokens'
-> & {
-  tokens?: (UnderlyingTokenRate & {
+export type DisplayUnwrapExchangeRate = Omit<UnwrapExchangeRate, 'tokens'> & {
+  tokens?: (UnwrappedTokenExchangeRate & {
     underlyingRate: number
     iconUrl?: string
   })[]
 }
 
-export type APRResponse = AdapterResponse<{
-  tokens: ProtocolTokenApr[]
-}>
-
-export type APYResponse = AdapterResponse<{
-  tokens: ProtocolTokenApy[]
-}>
-
 export type TotalValueLockResponse = AdapterResponse<{
-  tokens: DisplayProtocolTokenTvl[]
+  tokens: DisplayTokenTvl<DisplayProtocolTokenTvl>[]
 }>
 
 export type DisplayProtocolTokenTvl = Omit<ProtocolTokenTvl, 'tokens'> & {
   totalSupply: number
   tokens?: (UnderlyingTokenTvl & { totalSupply: number; iconUrl: string })[]
 }
+
+export type DisplayTokenTvl<
+  TokenTvlBalance extends TokenTvl & {
+    type: TokenType
+    tokens?: UnderlyingTokenTvl[]
+  },
+> = Omit<TokenTvlBalance, 'tokens'> & {
+  totalSupply: number
+  tokens?: DisplayTokenTvl<UnderlyingTokenTvl>[]
+  price: number
+  priceRaw: never
+} & (TokenTvlBalance['type'] extends typeof TokenType.Underlying
+    ? { iconUrl: string }
+    : Record<string, never>)
 
 export type DefiMovementsResponse = AdapterResponse<{
   movements: DisplayMovementsByBlock[]
@@ -103,3 +105,13 @@ export type DefiMovementsResponse = AdapterResponse<{
 export type DisplayMovementsByBlock = Omit<MovementsByBlock, 'tokens'> & {
   tokens?: (Underlying & { balance: number })[]
 }
+
+export type Support = Partial<
+  Record<
+    Protocol,
+    {
+      protocolDetails: ProtocolDetails
+      chains: Chain[]
+    }[]
+  >
+>

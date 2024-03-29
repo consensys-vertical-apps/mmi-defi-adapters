@@ -1,17 +1,12 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import {
   ProtocolDetails,
   PositionType,
-  GetAprInput,
-  GetApyInput,
   TokenBalance,
   TokenType,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   AssetType,
 } from '../../../../types/adapter'
@@ -41,14 +36,6 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
     return [await this.fetchProtocolTokenMetadata()]
   }
 
-  async getApy(_input: GetApyInput): Promise<ProtocolTokenApy> {
-    throw new NotImplementedError()
-  }
-
-  async getApr(_input: GetAprInput): Promise<ProtocolTokenApr> {
-    throw new NotImplementedError()
-  }
-
   protected async getUnderlyingTokenBalances({
     protocolTokenBalance,
     blockNumber,
@@ -58,14 +45,14 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
     blockNumber?: number
   }): Promise<Underlying[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
-    const [underlyingTokenRate] = await this.getUnderlyingTokenConversionRate(
+    const [unwrappedTokenExchangeRate] = await this.unwrapProtocolToken(
       protocolTokenBalance,
       blockNumber,
     )
 
     const underlyingTokenBalanceRaw =
       (protocolTokenBalance.balanceRaw *
-        underlyingTokenRate!.underlyingRateRaw) /
+        unwrappedTokenExchangeRate!.underlyingRateRaw) /
       10n ** BigInt(protocolTokenBalance.decimals)
 
     return [
@@ -86,10 +73,10 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
     }
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
     const rEthContract = RocketTokenRETH__factory.connect(

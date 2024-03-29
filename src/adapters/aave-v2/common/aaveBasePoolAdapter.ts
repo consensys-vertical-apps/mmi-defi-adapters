@@ -1,19 +1,12 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../core/constants/chains'
-import { RAY } from '../../../core/constants/RAY'
-import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
-import { aprToApy } from '../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
-  GetAprInput,
-  GetApyInput,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
   TokenBalance,
   TokenType,
 } from '../../../types/adapter'
@@ -61,38 +54,6 @@ export abstract class AaveBasePoolAdapter
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
-  }
-
-  async getApy({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetApyInput): Promise<ProtocolTokenApy> {
-    const apr = await this.getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-    })
-
-    const apy = aprToApy(apr, SECONDS_PER_YEAR)
-
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      apyDecimal: apy * 100,
-    }
-  }
-
-  async getApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<ProtocolTokenApr> {
-    const apr = await this.getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-    })
-
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      aprDecimal: apr * 100,
-    }
   }
 
   async buildMetadata() {
@@ -189,10 +150,10 @@ export abstract class AaveBasePoolAdapter
     return [underlyingTokenBalance]
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )
@@ -239,27 +200,61 @@ export abstract class AaveBasePoolAdapter
 
     return poolMetadata
   }
-
-  private async getProtocolTokenApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<number> {
-    const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
-      protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
-      this.provider,
-    )
-
-    const underlyingTokenMetadata = (
-      await this.fetchPoolMetadata(protocolTokenAddress)
-    ).underlyingToken
-
-    const reserveData = await protocolDataProviderContract.getReserveData(
-      underlyingTokenMetadata.address,
-      { blockTag: blockNumber },
-    )
-
-    const aprRaw = this.getReserveTokenRate(reserveData)
-
-    return Number(aprRaw) / RAY
-  }
 }
+
+// NOTE: The APY/APR feature has been removed as of March 2024.
+// The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
+
+// async getApy({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetApyInput): Promise<ProtocolTokenApy> {
+//   const apr = await this.getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+
+//   const apy = aprToApy(apr, SECONDS_PER_YEAR)
+
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     apyDecimal: apy * 100,
+//   }
+// }
+// async getApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<ProtocolTokenApr> {
+//   const apr = await this.getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     aprDecimal: apr * 100,
+//   }
+// }
+
+// private async getProtocolTokenApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<number> {
+//   const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
+//     protocolDataProviderContractAddresses[this.protocolId]![this.chainId]!,
+//     this.provider,
+//   )
+
+//   const underlyingTokenMetadata = (
+//     await this.fetchPoolMetadata(protocolTokenAddress)
+//   ).underlyingToken
+
+//   const reserveData = await protocolDataProviderContract.getReserveData(
+//     underlyingTokenMetadata.address,
+//     { blockTag: blockNumber },
+//   )
+
+//   const aprRaw = this.getReserveTokenRate(reserveData)
+
+//   return Number(aprRaw) / RAY
+// }

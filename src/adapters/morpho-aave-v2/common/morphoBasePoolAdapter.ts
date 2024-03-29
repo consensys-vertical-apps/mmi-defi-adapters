@@ -1,33 +1,22 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../core/adaptersController'
 import { Chain } from '../../../core/constants/chains'
-import { RAY } from '../../../core/constants/RAY'
-import { SECONDS_PER_YEAR } from '../../../core/constants/SECONDS_PER_YEAR'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
-import {
-  ResolveUnderlyingMovements,
-  ResolveUnderlyingPositions,
-} from '../../../core/decorators/resolveUnderlyingPositions'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
-import { aprToApy } from '../../../core/utils/aprToApy'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
   GetPositionsInput,
   GetEventsInput,
-  GetApyInput,
-  GetAprInput,
   GetTotalValueLockedInput,
-  GetConversionRateInput,
+  UnwrapInput,
   MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  ProtocolTokenApr,
-  ProtocolTokenApy,
-  ProtocolTokenUnderlyingRate,
+  UnwrapExchangeRate,
   ProtocolTokenTvl,
   ProtocolPosition,
   TokenBalance,
@@ -177,7 +166,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return [underlyingToken]
   }
 
-  @ResolveUnderlyingPositions
   async getPositions({
     userAddress,
     blockNumber,
@@ -259,7 +247,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     return protocolTokens
   }
 
-  @ResolveUnderlyingMovements
   async getWithdrawals({
     userAddress,
     protocolTokenAddress,
@@ -275,7 +262,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getDeposits({
     userAddress,
     protocolTokenAddress,
@@ -291,7 +277,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getBorrows({
     userAddress,
     protocolTokenAddress,
@@ -307,7 +292,6 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     })
   }
 
-  @ResolveUnderlyingMovements
   async getRepays({
     userAddress,
     protocolTokenAddress,
@@ -360,9 +344,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     )
   }
 
-  async getProtocolTokenToUnderlyingTokenRate(
-    _input: GetConversionRateInput,
-  ): Promise<ProtocolTokenUnderlyingRate> {
+  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     throw new NotImplementedError()
   }
 
@@ -459,62 +441,61 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       (movement): movement is MovementsByBlock => movement !== null,
     ) as MovementsByBlock[]
   }
-
-  private async getProtocolTokenApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<number> {
-    const lensContract = MorphoAaveV2Lens__factory.connect(
-      this.lensAddress,
-      this.provider,
-    )
-    const positionType = this.getProtocolDetails().positionType
-    let rate: bigint
-    if (positionType === PositionType.Supply) {
-      ;[rate, ,] = await lensContract.getAverageSupplyRatePerYear(
-        protocolTokenAddress,
-        {
-          blockTag: blockNumber,
-        },
-      )
-    } else {
-      ;[rate, ,] = await lensContract.getAverageBorrowRatePerYear(
-        protocolTokenAddress,
-        {
-          blockTag: blockNumber,
-        },
-      )
-    }
-    return Number(rate) / RAY
-  }
-
-  async getApr({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetAprInput): Promise<ProtocolTokenApr> {
-    const apr = await this.getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-    })
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      aprDecimal: apr * 100,
-    }
-  }
-
-  async getApy({
-    protocolTokenAddress,
-    blockNumber,
-  }: GetApyInput): Promise<ProtocolTokenApy> {
-    const apr = await this.getProtocolTokenApr({
-      protocolTokenAddress,
-      blockNumber,
-    })
-    const apy = aprToApy(apr, SECONDS_PER_YEAR)
-
-    return {
-      ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-      apyDecimal: apy * 100,
-    }
-  }
 }
+// async getApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<ProtocolTokenApr> {
+//   const apr = await this.getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     aprDecimal: apr * 100,
+//   }
+// }
+
+// async getApy({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetApyInput): Promise<ProtocolTokenApy> {
+//   const apr = await this.getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+//   const apy = aprToApy(apr, SECONDS_PER_YEAR)
+
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     apyDecimal: apy * 100,
+//   }
+// }
+
+// private async getProtocolTokenApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<number> {
+//   const lensContract = MorphoAaveV2Lens__factory.connect(
+//     this.lensAddress,
+//     this.provider,
+//   )
+//   const positionType = this.getProtocolDetails().positionType
+//   let rate: bigint
+//   if (positionType === PositionType.Supply) {
+//     ;[rate, ,] = await lensContract.getAverageSupplyRatePerYear(
+//       protocolTokenAddress,
+//       {
+//         blockTag: blockNumber,
+//       },
+//     )
+//   } else {
+//     ;[rate, ,] = await lensContract.getAverageBorrowRatePerYear(
+//       protocolTokenAddress,
+//       {
+//         blockTag: blockNumber,
+//       },
+//     )
+//   }
+//   return Number(rate) / RAY
+// }
