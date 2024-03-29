@@ -9,6 +9,7 @@ import { GetTransactionParamsInput } from '../types/getTransactionParamsInput'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
+import { testCases as angleProtocolTestCases } from './angle-protocol/tests/testCases'
 import { testCases as carbonDeFiTestCases } from './carbon-defi/tests/testCases'
 import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
 import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
@@ -47,6 +48,7 @@ runAllTests()
 function runAllTests() {
   runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
   runProtocolTests(Protocol.AaveV3, aaveV3TestCases)
+  runProtocolTests(Protocol.AngleProtocol, angleProtocolTestCases)
   runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
   runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
   runProtocolTests(Protocol.CompoundV2, compoundV2TestCases)

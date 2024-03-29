@@ -8,6 +8,7 @@ import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/variable-
 import { AaveV3ATokenPoolAdapter } from './aave-v3/products/a-token/aaveV3ATokenPoolAdapter'
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenPoolAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenPoolAdapter'
+import { AngleProtocolSavingsAdapter } from './angle-protocol/products/savings/angleProtocolSavingsAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import { CompoundV2BorrowMarketAdapter } from './compound-v2/products/borrow-market/compoundV2BorrowMarketAdapter'
@@ -111,6 +112,17 @@ export const supportedProtocols: Record<
       AaveV3StableDebtTokenPoolAdapter,
       AaveV3VariableDebtTokenPoolAdapter,
     ],
+  },
+
+  [Protocol.AngleProtocol]: {
+    [Chain.Ethereum]: [AngleProtocolSavingsAdapter],
+    [Chain.Optimism]: [AngleProtocolSavingsAdapter],
+    [Chain.Polygon]: [AngleProtocolSavingsAdapter],
+    [Chain.Arbitrum]: [AngleProtocolSavingsAdapter],
+    [Chain.Linea]: [AngleProtocolSavingsAdapter],
+    [Chain.Bsc]: [AngleProtocolSavingsAdapter],
+    [Chain.Avalanche]: [AngleProtocolSavingsAdapter],
+    [Chain.Base]: [AngleProtocolSavingsAdapter],
   },
 
   [Protocol.CarbonDeFi]: {
