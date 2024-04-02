@@ -127,7 +127,7 @@ export function simplePoolAdapterTemplate({
      * Update me.
      * Add logic that finds the underlying token rates for 1 protocol token
      */
-    protected async getUnderlyingTokenConversionRate(
+    protected async unwrappedTokenExchangeRate(
       _protocolTokenMetadata: Erc20Metadata,
       _blockNumber?: number | undefined,
     ): Promise<UnwrappedTokenExchangeRate[]> {
