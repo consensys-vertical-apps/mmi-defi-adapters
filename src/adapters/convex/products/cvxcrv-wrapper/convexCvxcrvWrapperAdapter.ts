@@ -15,7 +15,7 @@ import {
   GetTotalValueLockedInput,
   TokenBalance,
   ProtocolTokenTvl,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   GetPositionsInput,
   ProtocolPosition,
@@ -238,10 +238,10 @@ export class ConvexCvxcrvWrapperAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
   }
 

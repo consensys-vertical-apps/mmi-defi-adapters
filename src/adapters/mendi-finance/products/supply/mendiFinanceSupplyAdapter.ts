@@ -13,7 +13,7 @@ import {
   ProtocolDetails,
   PositionType,
   TokenBalance,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   TokenType,
   AssetType,
@@ -220,10 +220,10 @@ export class MendiFinanceSupplyAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )

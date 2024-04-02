@@ -293,7 +293,7 @@
       },
       "success": false,
       "error": {
-        "message": "Not Implemented",
+        "message": "Not Implemented (at StargateVestingAdapter.getTotalValueLocked)",
         "details": {
           "name": "NotImplementedError"
         }

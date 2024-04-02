@@ -8,7 +8,7 @@ import type {
   ProtocolPosition,
   ProtocolTokenTvl,
   Underlying,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   UnderlyingTokenTvl,
   TokenType,
   TokenBalance,
@@ -69,7 +69,7 @@ export type PricePerShareResponse = AdapterResponse<{
 }>
 
 export type DisplayUnwrapExchangeRate = Omit<UnwrapExchangeRate, 'tokens'> & {
-  tokens?: (UnderlyingTokenRate & {
+  tokens?: (UnwrappedTokenExchangeRate & {
     underlyingRate: number
     iconUrl?: string
   })[]

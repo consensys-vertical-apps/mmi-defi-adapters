@@ -6,7 +6,7 @@ import {
   TokenBalance,
   Underlying,
   TokenType,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   GetPositionsInputWithTokenAddresses,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
@@ -191,10 +191,10 @@ export abstract class LpStakingAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )

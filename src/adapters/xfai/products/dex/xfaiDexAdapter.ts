@@ -16,7 +16,7 @@ import {
   GetTotalValueLockedInput,
   TokenBalance,
   ProtocolTokenTvl,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   TokenType,
 } from '../../../../types/adapter'
@@ -221,10 +221,10 @@ export class XfaiDexAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const poolAddress = protocolTokenMetadata.address
     const poolContract = XfaiPool__factory.connect(poolAddress, this.provider)
     const poolMeta = await this.fetchPoolMetadata(poolAddress)

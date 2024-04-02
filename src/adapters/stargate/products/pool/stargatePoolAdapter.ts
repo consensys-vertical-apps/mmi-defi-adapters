@@ -8,7 +8,7 @@ import {
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   PositionType,
   ProtocolDetails,
@@ -146,10 +146,10 @@ export class StargatePoolAdapter
     return [underlyingTokenBalance]
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )

@@ -15,7 +15,7 @@ import {
   GetTotalValueLockedInput,
   TokenBalance,
   ProtocolTokenTvl,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   ProtocolAdapterParams,
   TokenType,
@@ -93,10 +93,10 @@ export class CurveStakingAdapter
     ]
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingTokens } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )

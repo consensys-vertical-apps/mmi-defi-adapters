@@ -14,7 +14,7 @@ import {
   GetTotalValueLockedInput,
   TokenBalance,
   ProtocolTokenTvl,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   GetEventsInput,
   TokenType,
@@ -223,11 +223,10 @@ export class ChimpExchangePoolAdapter
       protocolTokenBalance.address,
     )
 
-    const underlyingTokenConversionRate =
-      await this.getUnderlyingTokenConversionRate(
-        protocolTokenBalance,
-        blockNumber,
-      )
+    const underlyingTokenConversionRate = await this.unwrapProtocolToken(
+      protocolTokenBalance,
+      blockNumber,
+    )
 
     const underlyingBalances = poolMetadata.underlyingTokens.map(
       ({ index: _tokenIndex, ...token }) => {
@@ -307,10 +306,10 @@ export class ChimpExchangePoolAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const vaultContract = Vault__factory.connect(
       vaultContractAddresses[this.chainId]!,
       this.provider,

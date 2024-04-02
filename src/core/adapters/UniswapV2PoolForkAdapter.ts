@@ -6,7 +6,7 @@ import {
   TokenBalance,
   Underlying,
   TokenType,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
@@ -118,7 +118,7 @@ export abstract class UniswapV2PoolForkAdapter
     const protocolToken = await this.fetchProtocolTokenMetadata(
       protocolTokenBalance.address,
     )
-    const pricesPerShare = await this.getUnderlyingTokenConversionRate(
+    const pricesPerShare = await this.unwrapProtocolToken(
       protocolToken,
       blockNumber,
     )
@@ -147,10 +147,10 @@ export abstract class UniswapV2PoolForkAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { token0, token1 } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )

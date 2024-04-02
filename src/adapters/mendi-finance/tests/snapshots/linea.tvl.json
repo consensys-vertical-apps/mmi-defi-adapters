@@ -157,7 +157,7 @@
       },
       "success": false,
       "error": {
-        "message": "Not Implemented",
+        "message": "Not Implemented (at MendiFinanceBorrowAdapter.getTotalValueLocked)",
         "details": {
           "name": "NotImplementedError"
         }

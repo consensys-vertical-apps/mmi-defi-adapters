@@ -1,35 +1,62 @@
 import { Protocol } from '../../adapters/protocols'
 import { Chain, ChainName } from '../constants/chains'
 
-export class NotApplicableError extends Error {
+class BaseError extends Error {
+  constructor(message: string) {
+    super(message)
+    // Ensures the stack trace starts from the location where this error was instantiated
+    Error.captureStackTrace(this, this.constructor)
+
+    // Enhance the error name with the class name
+    this.name = this.constructor.name
+
+    // Attempt to parse the stack trace and conditionally append context to the message
+    const context = this.parseErrorStack()
+    if (context) {
+      this.message += ` (at ${context})`
+    }
+  }
+
+  /**
+   * Attempts to parse the error stack to find the first occurrence of "at Class.method".
+   * Only returns a meaningful context if found; otherwise, returns an empty string.
+   * @returns A string representing the initial class.method context from the stack trace, or an empty string if not found.
+   */
+  private parseErrorStack(): string {
+    if (!this.stack) return ''
+
+    // Split the stack trace into lines for processing
+    const stackLines = this.stack.split('\n')
+    // Find the first line that includes the pattern "at "
+    const callerLine = stackLines.find((line) => line.includes('at '))
+
+    if (!callerLine) return ''
+
+    // Simplified regex to match "at Class.method"
+    const match = callerLine.match(/at\s+(?:new\s+)?([^\s]+)\s+\(/)
+
+    // Return the matched "Class.method" or an empty string if not found
+    return match && match[1] ? match[1] : ''
+  }
+}
+
+export class NotApplicableError extends BaseError {
   constructor() {
     super('Not Applicable')
-
-    Error.captureStackTrace(this, NotApplicableError)
-
-    this.name = 'NotApplicableError'
   }
 }
 
-export class NotImplementedError extends Error {
+export class NotImplementedError extends BaseError {
   constructor() {
     super('Not Implemented')
-
-    Error.captureStackTrace(this, NotImplementedError)
-
-    this.name = 'NotImplementedError'
   }
 }
-export class MaxMovementLimitExceededError extends Error {
+export class MaxMovementLimitExceededError extends BaseError {
   constructor() {
     super('Max Movement Limit Exceeded')
-
-    Error.captureStackTrace(this, MaxMovementLimitExceededError)
-
-    this.name = 'MaxMovementLimitExceededError'
   }
 }
-export class ProtocolSmartContractNotDeployedAtRequestedBlockNumberError extends Error {
+export class ProtocolSmartContractNotDeployedAtRequestedBlockNumberError extends BaseError {
   chainId: Chain
   chainName: string
   protocolId: Protocol
@@ -52,32 +79,22 @@ export class ProtocolSmartContractNotDeployedAtRequestedBlockNumberError extends
     this.productId = productId
     this.smartContractAddress = smartContractAddress
     this.blockNumber = blockNumber
-
-    Error.captureStackTrace(
-      this,
-      ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
-    )
-
-    this.name = 'ProtocolSmartContractNotDeployedAtRequestedBlockNumber'
   }
 }
 
-export class ProviderMissingError extends Error {
+export class ProviderMissingError extends BaseError {
   chainId: Chain
   chainName: string
 
   constructor(chainId: Chain) {
     super('No provider found for chain')
 
-    Error.captureStackTrace(this, ProviderMissingError)
-
-    this.name = 'ProviderMissingError'
     this.chainId = chainId
     this.chainName = ChainName[chainId]
   }
 }
 
-export class AdapterMissingError extends Error {
+export class AdapterMissingError extends BaseError {
   chainId: Chain
   chainName: string
   protocolId: Protocol
@@ -86,9 +103,6 @@ export class AdapterMissingError extends Error {
   constructor(chainId: Chain, protocolId: Protocol, productId?: string) {
     super('No adapter found')
 
-    Error.captureStackTrace(this, AdapterMissingError)
-
-    this.name = 'AdapterMissingError'
     this.chainId = chainId
     this.chainName = ChainName[chainId]
     this.protocolId = protocolId
@@ -96,7 +110,7 @@ export class AdapterMissingError extends Error {
   }
 }
 
-export class MulticallError extends Error {
+export class MulticallError extends BaseError {
   chainId: Chain
   chainName: string
   flushTimeoutMs: number
@@ -115,9 +129,6 @@ export class MulticallError extends Error {
   }) {
     super(`Multicall batch failed: ${message}`)
 
-    Error.captureStackTrace(this, MulticallError)
-
-    this.name = 'MulticallError'
     this.chainId = chainId
     this.chainName = ChainName[chainId]
     this.flushTimeoutMs = flushTimeoutMs

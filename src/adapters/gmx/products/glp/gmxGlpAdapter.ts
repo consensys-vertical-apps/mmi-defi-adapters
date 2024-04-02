@@ -23,7 +23,7 @@ import {
   UnwrapExchangeRate,
   TokenBalance,
   Underlying,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -425,10 +425,10 @@ export class GMXGlpAdapter
   }): Promise<Underlying[]> {
     throw new NotImplementedError()
   }
-  protected getUnderlyingTokenConversionRate(
+  protected unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
   }
 }

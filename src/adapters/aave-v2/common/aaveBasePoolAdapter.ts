@@ -5,7 +5,7 @@ import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   TokenBalance,
   TokenType,
@@ -150,10 +150,10 @@ export abstract class AaveBasePoolAdapter
     return [underlyingTokenBalance]
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )

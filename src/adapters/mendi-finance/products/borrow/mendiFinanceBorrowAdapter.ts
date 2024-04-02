@@ -14,7 +14,7 @@ import {
   PositionType,
   GetTotalValueLockedInput,
   ProtocolTokenTvl,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   TokenBalance,
   Underlying,
   AssetType,
@@ -157,10 +157,10 @@ export class MendiFinanceBorrowAdapter
     return protocolToken
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
   }
 
