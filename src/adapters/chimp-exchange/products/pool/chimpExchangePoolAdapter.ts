@@ -230,14 +230,15 @@ export class ChimpExchangePoolAdapter
 
     const underlyingBalances = poolMetadata.underlyingTokens.map(
       ({ index: _tokenIndex, ...token }) => {
-        const underlyingTokenRateRaw = underlyingTokenConversionRate.find(
-          (tokenRate) => tokenRate.address === token.address,
-        )!.underlyingRateRaw
+        const unwrappedTokenExchangeRateRaw =
+          underlyingTokenConversionRate.find(
+            (tokenRate) => tokenRate.address === token.address,
+          )!.underlyingRateRaw
 
         return {
           ...token,
           balanceRaw:
-            (underlyingTokenRateRaw * protocolTokenBalance.balanceRaw) /
+            (unwrappedTokenExchangeRateRaw * protocolTokenBalance.balanceRaw) /
             10n ** BigInt(protocolTokenBalance.decimals),
           type: TokenType.Underlying,
         }

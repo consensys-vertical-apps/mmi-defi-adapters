@@ -26,7 +26,7 @@
 
 ### baseRate
 
-• **baseRate**: ``1``
+• **baseRate**: `1`
 
 Always equal to 1
 We are finding the underlying value of 1 LP token
@@ -35,27 +35,27 @@ We are finding the underlying value of 1 LP token
 
 [adapter.ts:229](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L229)
 
-___
+---
 
 ### type
 
-• **type**: ``"protocol"``
+• **type**: `"protocol"`
 
 #### Defined in
 
 [adapter.ts:230](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L230)
 
-___
+---
 
 ### tokens
 
-• `Optional` **tokens**: [`UnderlyingTokenRate`](adapter.UnderlyingTokenRate.md)[]
+• `Optional` **tokens**: [`UnwrappedTokenExchangeRate`](adapter.UnwrappedTokenExchangeRate.md)[]
 
 #### Defined in
 
 [adapter.ts:231](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L231)
 
-___
+---
 
 ### address
 
@@ -71,7 +71,7 @@ Erc20Metadata.address
 
 [erc20Metadata.ts:5](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L5)
 
-___
+---
 
 ### name
 
@@ -87,7 +87,7 @@ Erc20Metadata.name
 
 [erc20Metadata.ts:10](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L10)
 
-___
+---
 
 ### symbol
 
@@ -103,7 +103,7 @@ Erc20Metadata.symbol
 
 [erc20Metadata.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L15)
 
-___
+---
 
 ### decimals
 

@@ -45,14 +45,14 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
     blockNumber?: number
   }): Promise<Underlying[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
-    const [underlyingTokenRate] = await this.unwrapProtocolToken(
+    const [unwrappedTokenExchangeRate] = await this.unwrapProtocolToken(
       protocolTokenBalance,
       blockNumber,
     )
 
     const underlyingTokenBalanceRaw =
       (protocolTokenBalance.balanceRaw *
-        underlyingTokenRate!.underlyingRateRaw) /
+        unwrappedTokenExchangeRate!.underlyingRateRaw) /
       10n ** BigInt(protocolTokenBalance.decimals)
 
     return [
