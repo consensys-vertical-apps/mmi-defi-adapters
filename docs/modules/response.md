@@ -127,7 +127,7 @@
 
 ### DisplayUnwrapExchangeRate
 
-Ƭ **DisplayUnwrapExchangeRate**: [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)<[`UnwrapExchangeRate`](../interfaces/adapter.UnwrapExchangeRate.md), `"tokens"`\> & { `tokens?`: [`UnderlyingTokenRate`](../interfaces/adapter.UnderlyingTokenRate.md) & { `underlyingRate`: `number` ; `iconUrl?`: `string` }[] }
+Ƭ **DisplayUnwrapExchangeRate**: [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)<[`UnwrapExchangeRate`](../interfaces/adapter.UnwrapExchangeRate.md), `"tokens"`\> & { `tokens?`: [`UnwrappedTokenExchangeRate`](../interfaces/adapter.UnwrappedTokenExchangeRate.md) & { `underlyingRate`: `number` ; `iconUrl?`: `string` }[] }
 
 #### Defined in
 

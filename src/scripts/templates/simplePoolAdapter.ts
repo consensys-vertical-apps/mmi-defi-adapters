@@ -24,7 +24,7 @@ export function simplePoolAdapterTemplate({
     ProtocolTokenApr,
     ProtocolTokenApy,
     ProtocolTokenTvl,
-    UnderlyingTokenRate,
+    UnwrappedTokenExchangeRate,
     Underlying,
     AssetType,
   } from '../../../../types/adapter'
@@ -127,10 +127,10 @@ export function simplePoolAdapterTemplate({
      * Update me.
      * Add logic that finds the underlying token rates for 1 protocol token
      */
-    protected async getUnderlyingTokenConversionRate(
+    protected async unwrapProtocolToken(
       _protocolTokenMetadata: Erc20Metadata,
       _blockNumber?: number | undefined,
-    ): Promise<UnderlyingTokenRate[]> {
+    ): Promise<UnwrappedTokenExchangeRate[]> {
       throw new NotImplementedError()
     }
 

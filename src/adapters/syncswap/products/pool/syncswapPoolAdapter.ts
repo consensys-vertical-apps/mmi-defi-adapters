@@ -9,7 +9,7 @@ import {
   ProtocolDetails,
   PositionType,
   TokenBalance,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   GetPositionsInput,
   ProtocolPosition,
@@ -194,10 +194,10 @@ export class SyncswapPoolAdapter extends SimplePoolAdapter {
     throw new NotImplementedError()
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
   }
 

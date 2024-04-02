@@ -21,7 +21,7 @@ import {
   TokenType,
   Underlying,
   TokenBalance,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -287,10 +287,10 @@ export class IZiswapAdapter extends SimplePoolAdapter {
   }): Promise<Underlying[]> {
     throw new NotImplementedError()
   }
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
   }
 

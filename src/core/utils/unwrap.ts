@@ -47,22 +47,24 @@ export async function unwrap(
       blockNumber,
     )
 
-    token.tokens = unwrapExchangeRates?.tokens?.map((underlyingTokenRate) => {
-      const underlyingToken = {
-        address: underlyingTokenRate.address,
-        name: underlyingTokenRate.name,
-        symbol: underlyingTokenRate.symbol,
-        decimals: underlyingTokenRate.decimals,
-        type: underlyingTokenRate.type,
-        [fieldToUpdate]:
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (((token as any)[fieldToUpdate] as bigint) *
-            underlyingTokenRate.underlyingRateRaw) /
-          10n ** BigInt(token.decimals),
-      }
+    token.tokens = unwrapExchangeRates?.tokens?.map(
+      (unwrappedTokenExchangeRate) => {
+        const underlyingToken = {
+          address: unwrappedTokenExchangeRate.address,
+          name: unwrappedTokenExchangeRate.name,
+          symbol: unwrappedTokenExchangeRate.symbol,
+          decimals: unwrappedTokenExchangeRate.decimals,
+          type: unwrappedTokenExchangeRate.type,
+          [fieldToUpdate]:
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (((token as any)[fieldToUpdate] as bigint) *
+              unwrappedTokenExchangeRate.underlyingRateRaw) /
+            10n ** BigInt(token.decimals),
+        }
 
-      return underlyingToken
-    })
+        return underlyingToken
+      },
+    )
 
     await unwrap(adapter, blockNumber, token.tokens!, fieldToUpdate)
   })

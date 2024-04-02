@@ -14,7 +14,7 @@ import { logger } from './core/utils/logger'
 import { unwrap } from './core/utils/unwrap'
 import {
   enrichPositionBalance,
-  enrichUnderlyingTokenRates,
+  enrichUnwrappedTokenExchangeRates,
   enrichMovements,
   enrichTotalValueLocked,
 } from './responseAdapters'
@@ -252,7 +252,7 @@ export class DefiProvider {
             blockNumber,
           })
 
-          return enrichUnderlyingTokenRates(unwrap, adapter.chainId)
+          return enrichUnwrappedTokenExchangeRates(unwrap, adapter.chainId)
         }),
       )
 

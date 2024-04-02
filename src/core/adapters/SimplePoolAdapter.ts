@@ -2,7 +2,7 @@ import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
 import {
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   GetEventsInput,
   GetPositionsInput,
@@ -104,11 +104,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       protocolTokenAddress,
     )
 
-    const underlyingTokenConversionRate =
-      await this.getUnderlyingTokenConversionRate(
-        protocolTokenMetadata,
-        blockNumber,
-      )
+    const underlyingTokenConversionRate = await this.unwrapProtocolToken(
+      protocolTokenMetadata,
+      blockNumber,
+    )
 
     return {
       ...protocolTokenMetadata,
@@ -297,10 +296,10 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
    * @param protocolTokenMetadata
    * @param blockNumber
    */
-  protected abstract getUnderlyingTokenConversionRate(
+  protected abstract unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
-  ): Promise<UnderlyingTokenRate[]>
+  ): Promise<UnwrappedTokenExchangeRate[]>
 
   /**
    * Util used by both getDeposits and getWithdrawals

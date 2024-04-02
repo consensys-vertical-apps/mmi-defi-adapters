@@ -3,7 +3,7 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
   GetTotalValueLockedInput,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   ProtocolTokenTvl,
   ProtocolDetails,
   PositionType,
@@ -182,10 +182,10 @@ export class StakewiseOsEthAdapter extends SimplePoolAdapter {
     ]
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     _: Erc20Metadata,
     blockNumber?: number,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const osEthControllerAddress = await this.getOsEthControllerAddress()
 
     const osEthControllerContract = OsEthController__factory.connect(

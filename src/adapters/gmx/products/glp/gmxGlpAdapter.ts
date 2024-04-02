@@ -23,7 +23,7 @@ import {
   UnwrapExchangeRate,
   TokenBalance,
   Underlying,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
@@ -197,30 +197,32 @@ export class GMXGlpAdapter
       this.provider,
     )
 
-    const [[protocolTokenBalance], underlyingTokenRates] = await Promise.all([
-      rewardReaderContract.getDepositBalances(
-        userAddress,
-        [protocolToken.address],
-        [positionContractAddress],
-        { blockTag: blockNumber },
-      ),
-      this.unwrap({
-        protocolTokenAddress: protocolToken.address,
-        blockNumber,
-      }),
-    ])
+    const [[protocolTokenBalance], unwrappedTokenExchangeRates] =
+      await Promise.all([
+        rewardReaderContract.getDepositBalances(
+          userAddress,
+          [protocolToken.address],
+          [positionContractAddress],
+          { blockTag: blockNumber },
+        ),
+        this.unwrap({
+          protocolTokenAddress: protocolToken.address,
+          blockNumber,
+        }),
+      ])
 
     if (!protocolTokenBalance || protocolTokenBalance === 0n) {
       return []
     }
 
     const underlyingTokenBalances = underlyingTokens.map((underlyingToken) => {
-      const underlyingTokenRate = underlyingTokenRates.tokens?.find(
-        (tokenRate) => tokenRate.address === underlyingToken.address,
-      )
+      const unwrappedTokenExchangeRate =
+        unwrappedTokenExchangeRates.tokens?.find(
+          (tokenRate) => tokenRate.address === underlyingToken.address,
+        )
 
       const underlyingBalanceRaw =
-        (protocolTokenBalance * underlyingTokenRate!.underlyingRateRaw) /
+        (protocolTokenBalance * unwrappedTokenExchangeRate!.underlyingRateRaw) /
         10n ** BigInt(protocolToken.decimals)
 
       return {
@@ -333,7 +335,7 @@ export class GMXGlpAdapter
       blockTag: blockNumber,
     })
 
-    const underlyingTokenRates = await Promise.all(
+    const unwrappedTokenExchangeRates = await Promise.all(
       underlyingTokens.map(async (underlyingToken) => {
         const redemptionCollateral =
           await vaultContract.getRedemptionCollateral(underlyingToken.address, {
@@ -356,7 +358,7 @@ export class GMXGlpAdapter
       ...protocolToken,
       type: TokenType.Protocol,
       baseRate: 1,
-      tokens: underlyingTokenRates,
+      tokens: unwrappedTokenExchangeRates,
     }
   }
 
@@ -425,10 +427,10 @@ export class GMXGlpAdapter
   }): Promise<Underlying[]> {
     throw new NotImplementedError()
   }
-  protected getUnderlyingTokenConversionRate(
+  protected unwrapProtocolToken(
     _protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     throw new NotImplementedError()
   }
 }

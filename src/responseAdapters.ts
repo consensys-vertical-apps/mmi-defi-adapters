@@ -51,7 +51,7 @@ export function enrichPositionBalance<
   } as DisplayPosition<PositionBalance>
 }
 
-export function enrichUnderlyingTokenRates(
+export function enrichUnwrappedTokenExchangeRates(
   UnwrapExchangeRate: UnwrapExchangeRate,
   chainId: Chain,
 ): DisplayUnwrapExchangeRate {
@@ -59,19 +59,24 @@ export function enrichUnderlyingTokenRates(
     ...UnwrapExchangeRate,
     ...(UnwrapExchangeRate.tokens
       ? {
-          tokens: UnwrapExchangeRate.tokens.map((underlyingTokenRate) => {
-            return {
-              ...underlyingTokenRate,
-              underlyingRate: +formatUnits(
-                underlyingTokenRate.underlyingRateRaw,
-                underlyingTokenRate.decimals,
-              ),
-              iconUrl:
-                underlyingTokenRate.address != USD
-                  ? buildTrustAssetIconUrl(chainId, underlyingTokenRate.address)
-                  : undefined,
-            }
-          }),
+          tokens: UnwrapExchangeRate.tokens.map(
+            (unwrappedTokenExchangeRate) => {
+              return {
+                ...unwrappedTokenExchangeRate,
+                underlyingRate: +formatUnits(
+                  unwrappedTokenExchangeRate.underlyingRateRaw,
+                  unwrappedTokenExchangeRate.decimals,
+                ),
+                iconUrl:
+                  unwrappedTokenExchangeRate.address != USD
+                    ? buildTrustAssetIconUrl(
+                        chainId,
+                        unwrappedTokenExchangeRate.address,
+                      )
+                    : undefined,
+              }
+            },
+          ),
         }
       : {}),
   } as DisplayUnwrapExchangeRate

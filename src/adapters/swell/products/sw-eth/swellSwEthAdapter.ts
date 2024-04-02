@@ -6,7 +6,7 @@ import {
   PositionType,
   TokenBalance,
   TokenType,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   Underlying,
   AssetType,
 } from '../../../../types/adapter'
@@ -45,14 +45,14 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
     blockNumber?: number
   }): Promise<Underlying[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
-    const [underlyingTokenRate] = await this.getUnderlyingTokenConversionRate(
+    const [unwrappedTokenExchangeRate] = await this.unwrapProtocolToken(
       protocolTokenBalance,
       blockNumber,
     )
 
     const underlyingTokenBalanceRaw =
       (protocolTokenBalance.balanceRaw *
-        underlyingTokenRate!.underlyingRateRaw) /
+        unwrappedTokenExchangeRate!.underlyingRateRaw) /
       10n ** BigInt(protocolTokenBalance.decimals)
 
     return [
@@ -73,10 +73,10 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
     }
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const [underlyingToken] = await this.fetchUnderlyingTokensMetadata()
 
     const swEthContract = SwEth__factory.connect(

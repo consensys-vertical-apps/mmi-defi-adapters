@@ -3,7 +3,7 @@ import {
   TokenBalance,
   Underlying,
   TokenType,
-  UnderlyingTokenRate,
+  UnwrappedTokenExchangeRate,
   GetEventsInput,
   MovementsByBlock,
 } from '../../types/adapter'
@@ -108,10 +108,10 @@ export abstract class CompoundV2SupplyMarketForkAdapter
     return [underlyingTokenBalance]
   }
 
-  protected async getUnderlyingTokenConversionRate(
+  protected async unwrapProtocolToken(
     protocolTokenMetadata: Erc20Metadata,
     blockNumber?: number | undefined,
-  ): Promise<UnderlyingTokenRate[]> {
+  ): Promise<UnwrappedTokenExchangeRate[]> {
     const { underlyingToken } = await this.fetchPoolMetadata(
       protocolTokenMetadata.address,
     )

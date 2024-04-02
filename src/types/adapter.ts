@@ -216,7 +216,7 @@ export interface ProtocolPosition extends TokenBalance {
   tokens?: Underlying[]
 }
 
-export interface UnderlyingTokenRate extends Erc20Metadata {
+export interface UnwrappedTokenExchangeRate extends Erc20Metadata {
   type: typeof TokenType.Underlying
   underlyingRateRaw: bigint
 }
@@ -228,7 +228,7 @@ export interface UnwrapExchangeRate extends Erc20Metadata {
    */
   baseRate: 1
   type: typeof TokenType.Protocol
-  tokens?: UnderlyingTokenRate[]
+  tokens?: UnwrappedTokenExchangeRate[]
 }
 
 export interface MovementsByBlock {

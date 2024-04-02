@@ -12,7 +12,7 @@
 - [TokenBalance](../interfaces/adapter.TokenBalance.md)
 - [Underlying](../interfaces/adapter.Underlying.md)
 - [ProtocolPosition](../interfaces/adapter.ProtocolPosition.md)
-- [UnderlyingTokenRate](../interfaces/adapter.UnderlyingTokenRate.md)
+- [UnwrappedTokenExchangeRate](../interfaces/adapter.UnwrappedTokenExchangeRate.md)
 - [UnwrapExchangeRate](../interfaces/adapter.UnwrapExchangeRate.md)
 - [MovementsByBlock](../interfaces/adapter.MovementsByBlock.md)
 - [UnderlyingTokenTvl](../interfaces/adapter.UnderlyingTokenTvl.md)
@@ -52,7 +52,7 @@
 
 [adapter.ts:13](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L13)
 
-___
+---
 
 ### AssetType
 
@@ -64,7 +64,7 @@ ___
 
 [adapter.ts:19](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L19)
 
-___
+---
 
 ### PositionType
 
@@ -76,17 +76,17 @@ ___
 
 [adapter.ts:48](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L48)
 
-___
+---
 
 ### GetBalancesInput
 
-Ƭ **GetBalancesInput**: [`GetPositionsInput`](../interfaces/adapter.GetPositionsInput.md) & { `provider`: `CustomJsonRpcProvider` ; `chainId`: `Chain` ; `tokens`: [`Erc20Metadata`](erc20Metadata.md#erc20metadata)[]  }
+Ƭ **GetBalancesInput**: [`GetPositionsInput`](../interfaces/adapter.GetPositionsInput.md) & { `provider`: `CustomJsonRpcProvider` ; `chainId`: `Chain` ; `tokens`: [`Erc20Metadata`](erc20Metadata.md#erc20metadata)[] }
 
 #### Defined in
 
 [adapter.ts:50](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L50)
 
-___
+---
 
 ### UnwrapInput
 
@@ -94,17 +94,17 @@ ___
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `blockNumber?` | `number` | Optional override param |
-| `protocolTokenAddress` | `string` | Protocol token address (LP token address). |
-| `tokenId?` | `string` | Optional filter for pools that will be queried by an ID |
+| Name                   | Type     | Description                                             |
+| :--------------------- | :------- | :------------------------------------------------------ |
+| `blockNumber?`         | `number` | Optional override param                                 |
+| `protocolTokenAddress` | `string` | Protocol token address (LP token address).              |
+| `tokenId?`             | `string` | Optional filter for pools that will be queried by an ID |
 
 #### Defined in
 
 [adapter.ts:56](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L56)
 
-___
+---
 
 ### GetEventsInput
 
@@ -112,19 +112,19 @@ ___
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `userAddress` | `string` | User address we want to get events for |
-| `protocolTokenAddress` | `string` | Protocol token we want to check related events for |
-| `fromBlock` | `number` | Starting blocknumber to check from |
-| `toBlock` | `number` | End blocknumber we want to check to e.g. current blocknumber |
-| `tokenId?` | `string` | Used by NFT Defi Positions, e.g. uniswapV3 |
+| Name                   | Type     | Description                                                  |
+| :--------------------- | :------- | :----------------------------------------------------------- |
+| `userAddress`          | `string` | User address we want to get events for                       |
+| `protocolTokenAddress` | `string` | Protocol token we want to check related events for           |
+| `fromBlock`            | `number` | Starting blocknumber to check from                           |
+| `toBlock`              | `number` | End blocknumber we want to check to e.g. current blocknumber |
+| `tokenId?`             | `string` | Used by NFT Defi Positions, e.g. uniswapV3                   |
 
 #### Defined in
 
 [adapter.ts:72](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L72)
 
-___
+---
 
 ### AssetDetails
 
@@ -132,15 +132,15 @@ ___
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                |
+| :----- | :---------------------------------- |
 | `type` | [`AssetType`](adapter.md#assettype) |
 
 #### Defined in
 
 [adapter.ts:99](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L99)
 
-___
+---
 
 ### ProtocolDetails
 
@@ -148,17 +148,17 @@ ___
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `protocolId` | `Protocol` | Unique protocol id |
-| `chainId` | `Chain` | Chain this adapter is for |
-| `name` | `string` | Name of protocol |
-| `description` | `string` | Description of protocol |
-| `iconUrl` | `string` | Protocol icon |
-| `siteUrl` | `string` | Protocol website |
+| Name           | Type                                      | Description                           |
+| :------------- | :---------------------------------------- | :------------------------------------ |
+| `protocolId`   | `Protocol`                                | Unique protocol id                    |
+| `chainId`      | `Chain`                                   | Chain this adapter is for             |
+| `name`         | `string`                                  | Name of protocol                      |
+| `description`  | `string`                                  | Description of protocol               |
+| `iconUrl`      | `string`                                  | Protocol icon                         |
+| `siteUrl`      | `string`                                  | Protocol website                      |
 | `positionType` | [`PositionType`](adapter.md#positiontype) | Type of position One adapter per type |
-| `productId` | `string` | Unique protocol-product name |
-| `assetDetails` | [`AssetDetails`](adapter.md#assetdetails) |  |
+| `productId`    | `string`                                  | Unique protocol-product name          |
+| `assetDetails` | [`AssetDetails`](adapter.md#assetdetails) |                                       |
 
 #### Defined in
 
@@ -172,12 +172,12 @@ ___
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `Protocol` | ``"protocol"`` |
-| `Reward` | ``"claimable"`` |
-| `Underlying` | ``"underlying"`` |
-| `UnderlyingClaimable` | ``"underlying-claimable"`` |
+| Name                  | Type                     |
+| :-------------------- | :----------------------- |
+| `Protocol`            | `"protocol"`             |
+| `Reward`              | `"claimable"`            |
+| `Underlying`          | `"underlying"`           |
+| `UnderlyingClaimable` | `"underlying-claimable"` |
 
 #### Defined in
 
@@ -185,7 +185,7 @@ ___
 
 [adapter.ts:13](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L13)
 
-___
+---
 
 ### AssetType
 
@@ -193,10 +193,10 @@ ___
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `StandardErc20` | ``"StandardErc20"`` |
-| `NonStandardErc20` | ``"NonStandardErc20"`` |
+| Name               | Type                 |
+| :----------------- | :------------------- |
+| `StandardErc20`    | `"StandardErc20"`    |
+| `NonStandardErc20` | `"NonStandardErc20"` |
 
 #### Defined in
 
@@ -204,7 +204,7 @@ ___
 
 [adapter.ts:19](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L19)
 
-___
+---
 
 ### PositionType
 
@@ -212,14 +212,14 @@ ___
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `Supply` | ``"supply"`` | Liquidity position e.g. a dex pool |
-| `Lend` | ``"lend"`` | Providing liquidity to a lending and borrow protocol |
-| `Borrow` | ``"borrow"`` | Getting a loan from a lending and borrow protocol |
-| `Staked` | ``"stake"`` | Staking a token e.g. staking eth or staking an lp token |
-| `Reward` | ``"reward"`` | Claimable rewards, these type of positions will be merged with the equivalent lp position |
-| `FiatPrices` | ``"fiat-prices"`` | - |
+| Name         | Type            | Description                                                                               |
+| :----------- | :-------------- | :---------------------------------------------------------------------------------------- |
+| `Supply`     | `"supply"`      | Liquidity position e.g. a dex pool                                                        |
+| `Lend`       | `"lend"`        | Providing liquidity to a lending and borrow protocol                                      |
+| `Borrow`     | `"borrow"`      | Getting a loan from a lending and borrow protocol                                         |
+| `Staked`     | `"stake"`       | Staking a token e.g. staking eth or staking an lp token                                   |
+| `Reward`     | `"reward"`      | Claimable rewards, these type of positions will be merged with the equivalent lp position |
+| `FiatPrices` | `"fiat-prices"` | -                                                                                         |
 
 #### Defined in
 
