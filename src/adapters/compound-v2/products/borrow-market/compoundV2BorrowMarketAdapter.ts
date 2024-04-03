@@ -1,3 +1,4 @@
+import { z } from 'zod'
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -72,3 +73,29 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
     }
   }
 }
+
+const BorrowInput = z.object({
+  protocolId: z.literal(Protocol.CompoundV2),
+  productId: z.literal('borrow-market'),
+  action: z.literal(WriteActions.Borrow),
+  inputs: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
+})
+
+const RepayInput = z.object({
+  protocolId: z.literal(Protocol.CompoundV2),
+  productId: z.literal('borrow-market'),
+  action: z.literal(WriteActions.Repay),
+  inputs: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
+})
+
+export const GetTxParamsInput = z.discriminatedUnion('action', [
+  BorrowInput,
+  RepayInput,
+])
+export type GetTxParamsInput = z.infer<typeof GetTxParamsInput>

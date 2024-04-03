@@ -1,5 +1,6 @@
-import { AddressLike, BigNumberish } from 'ethers'
-import { Protocol } from '../adapters/protocols'
+import type { GetTxParamsInput as AaveV3ATokenGetTxParamsInput } from '../adapters/aave-v3/products/a-token/aaveV3ATokenPoolAdapter'
+import type { GetTxParamsInput as CompoundV2BorrowMarketGetTxParamsInput } from '../adapters/compound-v2/products/borrow-market/compoundV2BorrowMarketAdapter'
+import type { GetTxParamsInput as CompoundV2SupplyMarketGetTxParamsInput } from '../adapters/compound-v2/products/supply-market/compoundV2SupplyMarketAdapter'
 
 /**
  * Update manually
@@ -20,90 +21,13 @@ export const WriteActions = {
 export type WriteActions = (typeof WriteActions)[keyof typeof WriteActions]
 
 /**
- * Update manually
+ * Update manually (TODO: Update automatically by parsing the adapters for exported object called GetTxParamsInput)
  *
  * Developers define here your protocol's input structure for generating transaction parameters
  *
  * Each type must have an action, your protocolId and your productId and inputs related to your specific protocol action.
  */
 export type GetTransactionParamsInput =
-  | {
-      action: typeof WriteActions.Deposit
-      protocolId: typeof Protocol.AaveV3
-      productId: 'a-token'
-      inputs: {
-        asset: AddressLike
-        amount: BigNumberish
-        onBehalfOf: AddressLike
-        referralCode: BigNumberish
-      }
-    }
-  | {
-      action: typeof WriteActions.Withdraw
-      protocolId: typeof Protocol.AaveV3
-      productId: 'a-token'
-      inputs: {
-        asset: string
-        amount: BigNumberish
-        to: string
-      }
-    }
-  | {
-      action: typeof WriteActions.Borrow
-      protocolId: typeof Protocol.AaveV3
-      productId: 'a-token'
-      inputs: {
-        asset: string
-        amount: BigNumberish
-        interestRateMode: BigNumberish
-        referralCode: BigNumberish
-        onBehalfOf: string
-      }
-    }
-  | {
-      action: typeof WriteActions.Repay
-      protocolId: typeof Protocol.AaveV3
-      productId: 'a-token'
-      inputs: {
-        asset: string
-        amount: BigNumberish
-        interestRateMode: BigNumberish
-        onBehalfOf: string
-      }
-    }
-  | {
-      action: typeof WriteActions.Deposit
-      protocolId: typeof Protocol.CompoundV2
-      productId: 'supply-market'
-      inputs: {
-        asset: string
-        amount: BigNumberish
-      }
-    }
-  | {
-      action: typeof WriteActions.Withdraw
-      protocolId: typeof Protocol.CompoundV2
-      productId: 'supply-market'
-      inputs: {
-        asset: string
-        amount: BigNumberish
-      }
-    }
-  | {
-      action: typeof WriteActions.Borrow
-      protocolId: typeof Protocol.CompoundV2
-      productId: 'borrow-market'
-      inputs: {
-        asset: string
-        amount: BigNumberish
-      }
-    }
-  | {
-      action: typeof WriteActions.Repay
-      protocolId: typeof Protocol.CompoundV2
-      productId: 'borrow-market'
-      inputs: {
-        asset: string
-        amount: BigNumberish
-      }
-    }
+  | AaveV3ATokenGetTxParamsInput
+  | CompoundV2BorrowMarketGetTxParamsInput
+  | CompoundV2SupplyMarketGetTxParamsInput

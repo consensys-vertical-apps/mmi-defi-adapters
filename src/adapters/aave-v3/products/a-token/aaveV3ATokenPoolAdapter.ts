@@ -1,3 +1,4 @@
+import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
@@ -112,3 +113,59 @@ const getAddress = (chainId: Chain) => {
 
   throw new Error('Chain not supported')
 }
+
+const DepositInput = z.object({
+  protocolId: z.literal(Protocol.AaveV3),
+  productId: z.literal('a-token'),
+  action: z.literal(WriteActions.Deposit),
+  inputs: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    onBehalfOf: z.string(),
+    referralCode: z.number(),
+  }),
+})
+
+const WithdrawInput = z.object({
+  protocolId: z.literal(Protocol.AaveV3),
+  productId: z.literal('a-token'),
+  action: z.literal(WriteActions.Withdraw),
+  inputs: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    to: z.string(),
+  }),
+})
+
+const BorrowInput = z.object({
+  protocolId: z.literal(Protocol.AaveV3),
+  productId: z.literal('a-token'),
+  action: z.literal(WriteActions.Borrow),
+  inputs: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    interestRateMode: z.number(),
+    referralCode: z.number(),
+    onBehalfOf: z.string(),
+  }),
+})
+
+const RepayInput = z.object({
+  protocolId: z.literal(Protocol.AaveV3),
+  productId: z.literal('a-token'),
+  action: z.literal(WriteActions.Repay),
+  inputs: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    interestRateMode: z.number(),
+    onBehalfOf: z.string(),
+  }),
+})
+
+export const GetTxParamsInput = z.discriminatedUnion('action', [
+  DepositInput,
+  WithdrawInput,
+  BorrowInput,
+  RepayInput,
+])
+export type GetTxParamsInput = z.infer<typeof GetTxParamsInput>

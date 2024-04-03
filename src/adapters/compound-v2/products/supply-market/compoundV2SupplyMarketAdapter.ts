@@ -1,3 +1,4 @@
+import { z } from 'zod'
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -71,3 +72,29 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
     }
   }
 }
+
+const DepositInput = z.object({
+  protocolId: z.literal(Protocol.CompoundV2),
+  productId: z.literal('supply-market'),
+  action: z.literal(WriteActions.Deposit),
+  inputs: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
+})
+
+const WithdrawInput = z.object({
+  protocolId: z.literal(Protocol.CompoundV2),
+  productId: z.literal('supply-market'),
+  action: z.literal(WriteActions.Withdraw),
+  inputs: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
+})
+
+export const GetTxParamsInput = z.discriminatedUnion('action', [
+  DepositInput,
+  WithdrawInput,
+])
+export type GetTxParamsInput = z.infer<typeof GetTxParamsInput>
