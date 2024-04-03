@@ -1,0 +1,41 @@
+{
+  "snapshot": {
+    "protocolId": "curve",
+    "name": "Curve",
+    "description": "Curve defi adapter",
+    "siteUrl": "https:",
+    "iconUrl": "https://",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "voting-escrow",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x8b72deef8aa2ad43010acec6026d59558318ab8a9a9ab63ad0e842a567d6b046",
+        "protocolToken": {
+          "address": "0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2",
+          "name": "Vote-escrowed CRV",
+          "symbol": "veCRV",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+            "name": "Curve DAO Token",
+            "symbol": "CRV",
+            "decimals": 18,
+            "balanceRaw": "2501000000000000000000n",
+            "type": "underlying",
+            "blockNumber": 19562098,
+            "price": 0.23086130688587256,
+            "balance": 2501
+          }
+        ],
+        "blockNumber": 19562098
+      }
+    ]
+  }
+}

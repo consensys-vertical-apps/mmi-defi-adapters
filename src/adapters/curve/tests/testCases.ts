@@ -13,6 +13,51 @@ export const testCases: TestCase[] = [
     },
   },
   {
+    chainId: Chain.Ethereum,
+    method: 'positions',
+    key: 'voting-escrow',
+
+    input: {
+      userAddress: '0x394A16eeA604fBD86B0b45184b2d790c83a950E3',
+      filterProtocolTokens: ['0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2'],
+    },
+
+    blockNumber: 19316971,
+  },
+  {
+    method: 'deposits',
+    chainId: Chain.Ethereum,
+    input: {
+      userAddress: '0xc42cEb990DeB305520C4527F2a841506095A55D6',
+      fromBlock: 19562097,
+      toBlock: 19562099,
+      protocolTokenAddress: '0xD533a949740bb3306d119CC777fa900bA034cd52',
+      productId: 'voting-escrow',
+    },
+  },
+  {
+    method: 'withdrawals',
+    chainId: Chain.Ethereum,
+    input: {
+      userAddress: '0x287B780DA1dE8f332ee9A7709822217e2F24843A',
+      fromBlock: 19564305,
+      toBlock: 19564307,
+      protocolTokenAddress: '0xD533a949740bb3306d119CC777fa900bA034cd52',
+      productId: 'voting-escrow',
+    },
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'profits',
+    key: 'voting-escrow',
+    input: {
+      userAddress: '0x394A16eeA604fBD86B0b45184b2d790c83a950E3',
+      filterProtocolTokens: ['0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2'],
+    },
+
+    blockNumber: 19316971,
+  },
+  {
     chainId: Chain.Arbitrum,
     method: 'positions',
     blockNumber: 186041228,

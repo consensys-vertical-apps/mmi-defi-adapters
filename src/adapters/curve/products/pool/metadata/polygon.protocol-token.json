@@ -1,4 +1,165 @@
 {
+  "0x61B0bAA7188AfF08f4e992849Fc5D76F65417467": {
+    "protocolToken": {
+      "address": "0x61B0bAA7188AfF08f4e992849Fc5D76F65417467",
+      "name": "Curve.fi Factory Crypto Pool: eEUR/eUSD",
+      "symbol": "EURUSD-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x735fa792e731a2e8F83F32eb539841b7B72e6d8f",
+        "name": "ARYZE eEUR",
+        "symbol": "eEUR",
+        "decimals": 18
+      },
+      {
+        "address": "0xa4335da338ec4C07C391Fc1A9bF75F306adadc08",
+        "name": "ARYZE eUSD",
+        "symbol": "eUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xD3F7C6Fc3381e510b8348Fe6099b0342154691B5"
+  },
+  "0xd8001cE95A13168AA4F7D70b5298962b7cADf6Dd": {
+    "protocolToken": {
+      "address": "0xd8001cE95A13168AA4F7D70b5298962b7cADf6Dd",
+      "name": "USDC/USDM",
+      "symbol": "usdc-usdm",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+        "name": "Mountain Protocol USD",
+        "symbol": "USDM",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xd8001cE95A13168AA4F7D70b5298962b7cADf6Dd"
+  },
+  "0x5225010A0AE133B357861782B0B865a48471b2C5": {
+    "protocolToken": {
+      "address": "0x5225010A0AE133B357861782B0B865a48471b2C5",
+      "name": "crvUSD/USDC",
+      "symbol": "crvusdusdc",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x5225010A0AE133B357861782B0B865a48471b2C5"
+  },
+  "0xA70Af99bFF6b168327f9D1480e29173e757c7904": {
+    "protocolToken": {
+      "address": "0xA70Af99bFF6b168327f9D1480e29173e757c7904",
+      "name": "crvUSD/USDT",
+      "symbol": "crvusdusdt",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "name": "(PoS) Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0xA70Af99bFF6b168327f9D1480e29173e757c7904"
+  },
+  "0x62c949ee985b125Ff2d7ddcf4Fe7AEcB0a040E2a": {
+    "protocolToken": {
+      "address": "0x62c949ee985b125Ff2d7ddcf4Fe7AEcB0a040E2a",
+      "name": "crvUSD/DAI",
+      "symbol": "crvusddai",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "name": "(PoS) Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x62c949ee985b125Ff2d7ddcf4Fe7AEcB0a040E2a"
+  },
+  "0x864490Cf55dc2Dee3f0ca4D06F5f80b2BB154a03": {
+    "protocolToken": {
+      "address": "0x864490Cf55dc2Dee3f0ca4D06F5f80b2BB154a03",
+      "name": "crvUSD/USDC.e",
+      "symbol": "crvusdusde",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x864490Cf55dc2Dee3f0ca4D06F5f80b2BB154a03"
+  },
+  "0x597803B877deB663C1eB9eadFA125201bBF0e0E9": {
+    "protocolToken": {
+      "address": "0x597803B877deB663C1eB9eadFA125201bBF0e0E9",
+      "name": "Retro/liveRetro",
+      "symbol": "RETRO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xBFA35599c7AEbb0dAcE9b5aa3ca5f2a79624D8Eb",
+        "name": "RETRO",
+        "symbol": "RETRO",
+        "decimals": 18
+      },
+      {
+        "address": "0xCaAF554900E33ae5DBc66ae9f8ADc3049B7D31dB",
+        "name": "liveRetro",
+        "symbol": "liveRetro",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x597803B877deB663C1eB9eadFA125201bBF0e0E9"
+  },
   "0xf8a57c1d3b9629b77b6726a042ca48990A84Fb49": {
     "protocolToken": {
       "address": "0xf8a57c1d3b9629b77b6726a042ca48990A84Fb49",
@@ -373,143 +534,5 @@
       }
     ],
     "lpTokenManager": "0x5D8c2b31e80a35E211D51e62B1c7FB70322cbf25"
-  },
-  "0x61B0bAA7188AfF08f4e992849Fc5D76F65417467": {
-    "protocolToken": {
-      "address": "0x61B0bAA7188AfF08f4e992849Fc5D76F65417467",
-      "name": "Curve.fi Factory Crypto Pool: eEUR/eUSD",
-      "symbol": "EURUSD-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x735fa792e731a2e8F83F32eb539841b7B72e6d8f",
-        "name": "ARYZE eEUR",
-        "symbol": "eEUR",
-        "decimals": 18
-      },
-      {
-        "address": "0xa4335da338ec4C07C391Fc1A9bF75F306adadc08",
-        "name": "ARYZE eUSD",
-        "symbol": "eUSD",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xD3F7C6Fc3381e510b8348Fe6099b0342154691B5"
-  },
-  "0xd8001cE95A13168AA4F7D70b5298962b7cADf6Dd": {
-    "protocolToken": {
-      "address": "0xd8001cE95A13168AA4F7D70b5298962b7cADf6Dd",
-      "name": "USDC/USDM",
-      "symbol": "usdc-usdm",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
-        "name": "USD Coin",
-        "symbol": "USDC",
-        "decimals": 6
-      },
-      {
-        "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
-        "name": "Mountain Protocol USD",
-        "symbol": "USDM",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xd8001cE95A13168AA4F7D70b5298962b7cADf6Dd"
-  },
-  "0x5225010A0AE133B357861782B0B865a48471b2C5": {
-    "protocolToken": {
-      "address": "0x5225010A0AE133B357861782B0B865a48471b2C5",
-      "name": "crvUSD/USDC",
-      "symbol": "crvusdusdc",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
-        "name": "Curve.Fi USD Stablecoin(PoS)",
-        "symbol": "crvUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
-        "name": "USD Coin",
-        "symbol": "USDC",
-        "decimals": 6
-      }
-    ],
-    "lpTokenManager": "0x5225010A0AE133B357861782B0B865a48471b2C5"
-  },
-  "0xA70Af99bFF6b168327f9D1480e29173e757c7904": {
-    "protocolToken": {
-      "address": "0xA70Af99bFF6b168327f9D1480e29173e757c7904",
-      "name": "crvUSD/USDT",
-      "symbol": "crvusdusdt",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
-        "name": "Curve.Fi USD Stablecoin(PoS)",
-        "symbol": "crvUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
-        "name": "(PoS) Tether USD",
-        "symbol": "USDT",
-        "decimals": 6
-      }
-    ],
-    "lpTokenManager": "0xA70Af99bFF6b168327f9D1480e29173e757c7904"
-  },
-  "0x62c949ee985b125Ff2d7ddcf4Fe7AEcB0a040E2a": {
-    "protocolToken": {
-      "address": "0x62c949ee985b125Ff2d7ddcf4Fe7AEcB0a040E2a",
-      "name": "crvUSD/DAI",
-      "symbol": "crvusddai",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
-        "name": "Curve.Fi USD Stablecoin(PoS)",
-        "symbol": "crvUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
-        "name": "(PoS) Dai Stablecoin",
-        "symbol": "DAI",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x62c949ee985b125Ff2d7ddcf4Fe7AEcB0a040E2a"
-  },
-  "0x864490Cf55dc2Dee3f0ca4D06F5f80b2BB154a03": {
-    "protocolToken": {
-      "address": "0x864490Cf55dc2Dee3f0ca4D06F5f80b2BB154a03",
-      "name": "crvUSD/USDC.e",
-      "symbol": "crvusdusde",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
-        "name": "Curve.Fi USD Stablecoin(PoS)",
-        "symbol": "crvUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-        "name": "USD Coin (PoS)",
-        "symbol": "USDC",
-        "decimals": 6
-      }
-    ],
-    "lpTokenManager": "0x864490Cf55dc2Dee3f0ca4D06F5f80b2BB154a03"
   }
 }

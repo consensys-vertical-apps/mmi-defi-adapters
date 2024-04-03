@@ -19,6 +19,7 @@ import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAda
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
+import { CurveVotingEscrowAdapter } from './curve/products/voting-escrow/curveVotingEscrowAdapter'
 import { FluxBorrowMarketAdapter } from './flux/products/borrow-market/fluxBorrowMarketAdapter'
 import { FluxSupplyMarketAdapter } from './flux/products/supply-market/fluxSupplyMarketAdapter'
 import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
@@ -145,6 +146,7 @@ export const supportedProtocols: Record<
       CurvePoolAdapter,
       CurveStakingAdapter,
       CurveRewardAdapter,
+      CurveVotingEscrowAdapter,
     ],
     [Chain.Polygon]: [
       CurvePoolAdapter,
