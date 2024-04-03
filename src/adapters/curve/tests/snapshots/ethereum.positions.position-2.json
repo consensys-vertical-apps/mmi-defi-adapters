@@ -168,6 +168,17 @@
           "decimals": 18,
           "tokens": [
             {
+              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "2004147592383850013681n",
+              "balance": 2004.14759238385,
+              "price": 0.5718285537644536,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
+            },
+            {
               "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
               "name": "LP 3pool Curve",
               "symbol": "3CRV",
@@ -211,17 +222,6 @@
               ],
               "balance": 14.120869801259069,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
-            },
-            {
-              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-              "name": "Curve DAO Token",
-              "symbol": "CRV",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "2004147592383850013681n",
-              "balance": 2004.14759238385,
-              "price": 0.5718285537644536,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png"
             }
           ],
           "balance": 2004.14759238385

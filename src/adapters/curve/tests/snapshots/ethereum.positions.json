@@ -60,6 +60,39 @@
           "balance": 3110.4122725315424
         }
       ]
+<<<<<<< HEAD
+=======
+    },
+    {
+      "protocolId": "curve",
+      "name": "Curve staking",
+      "description": "Curve staking adapter",
+      "siteUrl": "https://curve.fi/",
+      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "staking",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": []
+    },
+    {
+      "protocolId": "curve",
+      "name": "Curve",
+      "description": "Curve defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "voting-escrow",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": []
+>>>>>>> 7cf8632 (feat: cur voting escrow)
     }
   ]
 }

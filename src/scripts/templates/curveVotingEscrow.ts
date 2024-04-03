@@ -170,16 +170,19 @@ export abstract class CurveVotingEscrow
 
     const protocolTokenPromise = this.fetchProtocolToken()
 
-    const rewardPositionPromise = this.getRewardPosition({
+    const [{ amount, end }, protocolToken] = await Promise.all([
+      lockedDetailsPromise,
+      protocolTokenPromise,
+    ])
+
+    if (amount == 0n) {
+      return []
+    }
+
+    const rewardPosition = await this.getRewardPosition({
       userAddress,
       blockNumber,
     })
-
-    const [{ amount, end }, protocolToken, rewardPosition] = await Promise.all([
-      lockedDetailsPromise,
-      protocolTokenPromise,
-      rewardPositionPromise,
-    ])
 
     const unwrappedToken = await this.unwrappedBalance({
       protocolTokenBalance: amount,
@@ -190,13 +193,19 @@ export abstract class CurveVotingEscrow
     const nameWithUnlockTime =
       protocolToken.name + ` - Unlock time ${unixTimestampToDateString(end)}`
 
+    const tokens = [unwrappedToken]
+
+    if (rewardPosition.balanceRaw > 0n) {
+      tokens.push(rewardPosition)
+    }
+
     return [
       {
         type: TokenType.Protocol,
         balanceRaw: amount,
         ...protocolToken,
         name: nameWithUnlockTime,
-        tokens: [rewardPosition, unwrappedToken],
+        tokens,
       },
     ]
   }
