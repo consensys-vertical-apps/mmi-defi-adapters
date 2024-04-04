@@ -8,3 +8,4 @@ export type {
   DefiProfitsResponse,
 } from './types/response'
 export type { GetTransactionParamsInput } from './types/getTransactionParamsInput'
+export { GetTransactionParamsInputSchema } from './adapters'

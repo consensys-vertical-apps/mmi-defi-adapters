@@ -72,11 +72,33 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
       }
     }
   }
+
+  getWriteInputSchemas() {
+    return {
+      [WriteActions.Borrow]: BorrowInput,
+      [WriteActions.Repay]: RepayInput,
+    }
+  }
 }
 
 const BorrowInput = z.object({
+  asset: z.string(),
+  amount: z.string(),
+})
+
+const RepayInput = z.object({
+  asset: z.string(),
+  amount: z.string(),
+})
+
+const commonFields = {
   protocolId: z.literal(Protocol.CompoundV2),
   productId: z.literal('borrow-market'),
+  chainId: z.nativeEnum(Chain),
+}
+
+const BorrowParams = z.object({
+  ...commonFields,
   action: z.literal(WriteActions.Borrow),
   inputs: z.object({
     asset: z.string(),
@@ -84,9 +106,8 @@ const BorrowInput = z.object({
   }),
 })
 
-const RepayInput = z.object({
-  protocolId: z.literal(Protocol.CompoundV2),
-  productId: z.literal('borrow-market'),
+const RepayParams = z.object({
+  ...commonFields,
   action: z.literal(WriteActions.Repay),
   inputs: z.object({
     asset: z.string(),
@@ -95,7 +116,7 @@ const RepayInput = z.object({
 })
 
 export const GetTxParamsInput = z.discriminatedUnion('action', [
-  BorrowInput,
-  RepayInput,
+  BorrowParams,
+  RepayParams,
 ])
 export type GetTxParamsInput = z.infer<typeof GetTxParamsInput>

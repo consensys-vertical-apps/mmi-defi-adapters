@@ -1,3 +1,4 @@
+import type { ZodObject } from 'zod'
 import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
@@ -13,7 +14,10 @@ import type {
   ProtocolTokenTvl,
 } from './adapter'
 import type { Erc20Metadata } from './erc20Metadata'
-import { GetTransactionParamsInput } from './getTransactionParamsInput'
+import {
+  GetTransactionParamsInput,
+  WriteActions,
+} from './getTransactionParamsInput'
 
 export interface IProtocolAdapter {
   /**
@@ -122,4 +126,7 @@ export interface IProtocolAdapter {
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]>
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getWriteInputSchemas?(): Partial<Record<WriteActions, ZodObject<any>>>
 }

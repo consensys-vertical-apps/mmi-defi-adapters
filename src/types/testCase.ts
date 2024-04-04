@@ -82,6 +82,6 @@ export type TestCase = {
     }
   | {
       method: 'tx-params'
-      input: Omit<GetTransactionParamsInput, 'protocolId'>
+      input: Omit<GetTransactionParamsInput, 'protocolId' | 'chainId'>
     }
 )

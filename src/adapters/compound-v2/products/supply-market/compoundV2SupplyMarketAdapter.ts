@@ -71,30 +71,45 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
       }
     }
   }
+
+  getWriteInputSchemas() {
+    return {
+      [WriteActions.Deposit]: DepositInput,
+      [WriteActions.Withdraw]: WithdrawInput,
+    }
+  }
 }
 
 const DepositInput = z.object({
-  protocolId: z.literal(Protocol.CompoundV2),
-  productId: z.literal('supply-market'),
-  action: z.literal(WriteActions.Deposit),
-  inputs: z.object({
-    asset: z.string(),
-    amount: z.string(),
-  }),
+  asset: z.string(),
+  amount: z.string(),
 })
 
 const WithdrawInput = z.object({
+  asset: z.string(),
+  amount: z.string(),
+})
+
+const commonFields = {
   protocolId: z.literal(Protocol.CompoundV2),
   productId: z.literal('supply-market'),
+  chainId: z.nativeEnum(Chain),
+}
+
+const DepositParams = z.object({
+  ...commonFields,
+  action: z.literal(WriteActions.Deposit),
+  inputs: DepositInput,
+})
+
+const WithdrawParams = z.object({
+  ...commonFields,
   action: z.literal(WriteActions.Withdraw),
-  inputs: z.object({
-    asset: z.string(),
-    amount: z.string(),
-  }),
+  inputs: WithdrawInput,
 })
 
 export const GetTxParamsInput = z.discriminatedUnion('action', [
-  DepositInput,
-  WithdrawInput,
+  DepositParams,
+  WithdrawParams,
 ])
 export type GetTxParamsInput = z.infer<typeof GetTxParamsInput>
