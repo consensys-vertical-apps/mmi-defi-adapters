@@ -543,9 +543,9 @@ export class DefiProvider {
     })
   }
 
-  getSupport(input: {
-    filterChainIds: Chain[] | undefined
-    filterProtocolIds: Protocol[] | undefined
+  getSupport(input?: {
+    filterChainIds?: Chain[] | undefined
+    filterProtocolIds?: Protocol[] | undefined
   }) {
     return this.adaptersController.getSupport(input)
   }

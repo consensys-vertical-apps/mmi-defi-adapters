@@ -187,9 +187,9 @@ export class AdaptersController {
     filterChainIds,
     filterProtocolIds,
   }: {
-    filterChainIds: Chain[] | undefined
-    filterProtocolIds: Protocol[] | undefined
-  }): Support {
+    filterChainIds?: Chain[] | undefined
+    filterProtocolIds?: Protocol[] | undefined
+  } = {}): Support {
     const support: Support = {}
     for (const [chainId, protocols] of this.adapters.entries()) {
       if (filterChainIds && !filterChainIds.includes(chainId)) {
