@@ -20,6 +20,7 @@ import {
 } from './responseAdapters'
 import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
+import { Erc20Metadata } from './types/erc20Metadata'
 import { GetTransactionParamsInput } from './types/getTransactionParamsInput'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
@@ -221,7 +222,14 @@ export class DefiProvider {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      const protocolTokens = filterProtocolToken
+      const protocolTokens:
+        | (Erc20Metadata & {
+            tokenId?: string
+          })[]
+        | {
+            address: string
+            tokenId?: string
+          }[] = filterProtocolToken
         ? [
             {
               address: filterProtocolToken,
@@ -230,12 +238,13 @@ export class DefiProvider {
         : await adapter.getProtocolTokens()
 
       const tokens = await Promise.all(
-        protocolTokens.map(async ({ address }) => {
+        protocolTokens.map(async ({ address, tokenId }) => {
           const startTime = Date.now()
 
           const unwrap = await adapter.unwrap({
             protocolTokenAddress: getAddress(address),
             blockNumber,
+            tokenId,
           })
 
           const endTime = Date.now()

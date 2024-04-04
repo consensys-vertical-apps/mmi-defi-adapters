@@ -1,0 +1,722 @@
+[
+  {
+    "inputs": [
+      { "name": "usdc_", "internalType": "Token", "type": "bytes32" },
+      { "name": "vc_", "internalType": "contract VC", "type": "address" },
+      {
+        "name": "factory_",
+        "internalType": "contract ConstantProductPoolFactory",
+        "type": "address"
+      },
+      {
+        "name": "wombat_",
+        "internalType": "contract WombatPool",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "gauge",
+        "internalType": "contract IGauge",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "bribe",
+        "internalType": "contract IBribe",
+        "type": "address"
+      }
+    ],
+    "name": "BribeAttached",
+    "anonymous": false,
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "pool",
+        "internalType": "contract IConverter",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "user",
+        "internalType": "address",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "tokenRef",
+        "internalType": "Token[]",
+        "type": "bytes32[]"
+      },
+      {
+        "indexed": false,
+        "name": "delta",
+        "internalType": "int128[]",
+        "type": "int128[]"
+      }
+    ],
+    "name": "Convert",
+    "anonymous": false,
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "sig",
+        "internalType": "bytes4",
+        "type": "bytes4"
+      },
+      {
+        "indexed": true,
+        "name": "implementaion",
+        "internalType": "address",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "viewer",
+        "internalType": "bool",
+        "type": "bool"
+      }
+    ],
+    "name": "FunctionChanged",
+    "anonymous": false,
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "pool",
+        "internalType": "contract IGauge",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "user",
+        "internalType": "address",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "tokenRef",
+        "internalType": "Token[]",
+        "type": "bytes32[]"
+      },
+      {
+        "indexed": false,
+        "name": "delta",
+        "internalType": "int128[]",
+        "type": "int128[]"
+      }
+    ],
+    "name": "Gauge",
+    "anonymous": false,
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "pool",
+        "internalType": "contract ISwap",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "user",
+        "internalType": "address",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "tokenRef",
+        "internalType": "Token[]",
+        "type": "bytes32[]"
+      },
+      {
+        "indexed": false,
+        "name": "delta",
+        "internalType": "int128[]",
+        "type": "int128[]"
+      }
+    ],
+    "name": "Swap",
+    "anonymous": false,
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "to",
+        "internalType": "address",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "from",
+        "internalType": "address",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "tokenRef",
+        "internalType": "Token[]",
+        "type": "bytes32[]"
+      },
+      {
+        "indexed": false,
+        "name": "delta",
+        "internalType": "int128[]",
+        "type": "int128[]"
+      }
+    ],
+    "name": "UserBalance",
+    "anonymous": false,
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "pool",
+        "internalType": "contract IGauge",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "user",
+        "internalType": "address",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "voteDelta",
+        "internalType": "int256",
+        "type": "int256"
+      }
+    ],
+    "name": "Vote",
+    "anonymous": false,
+    "type": "event"
+  },
+  {
+    "outputs": [{ "name": "", "internalType": "uint256", "type": "uint256" }],
+    "inputs": [],
+    "name": "canonicalPoolLength",
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "outputs": [
+      {
+        "components": [
+          { "name": "gauge", "internalType": "address", "type": "address" },
+          {
+            "components": [
+              { "name": "pool", "internalType": "address", "type": "address" },
+              {
+                "name": "poolType",
+                "internalType": "string",
+                "type": "string"
+              },
+              {
+                "name": "lpTokens",
+                "internalType": "Token[]",
+                "type": "bytes32[]"
+              },
+              {
+                "name": "mintedLPTokens",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              {
+                "name": "listedTokens",
+                "internalType": "Token[]",
+                "type": "bytes32[]"
+              },
+              {
+                "name": "reserves",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              { "name": "poolParams", "internalType": "bytes", "type": "bytes" }
+            ],
+            "name": "poolData",
+            "internalType": "struct PoolData",
+            "type": "tuple"
+          },
+          { "name": "killed", "internalType": "bool", "type": "bool" },
+          {
+            "name": "totalVotes",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          { "name": "userVotes", "internalType": "uint256", "type": "uint256" },
+          {
+            "name": "userClaimable",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "emissionRate",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "userEmissionRate",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "stakedValueInHubToken",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "userStakedValueInHubToken",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "averageInterestRatePerSecond",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "userInterestRatePerSecond",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "stakeableTokens",
+            "internalType": "Token[]",
+            "type": "bytes32[]"
+          },
+          {
+            "name": "stakedAmounts",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "name": "userStakedAmounts",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "name": "underlyingTokens",
+            "internalType": "Token[]",
+            "type": "bytes32[]"
+          },
+          {
+            "name": "stakedUnderlying",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "name": "userUnderlying",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "components": [
+              {
+                "name": "tokens",
+                "internalType": "Token[]",
+                "type": "bytes32[]"
+              },
+              {
+                "name": "rates",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              {
+                "name": "userClaimable",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              {
+                "name": "userRates",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              }
+            ],
+            "name": "bribes",
+            "internalType": "struct BribeData[]",
+            "type": "tuple[]"
+          }
+        ],
+        "name": "gaugeDataArray",
+        "internalType": "struct GaugeData[]",
+        "type": "tuple[]"
+      }
+    ],
+    "inputs": [
+      { "name": "user", "internalType": "address", "type": "address" },
+      { "name": "begin", "internalType": "uint256", "type": "uint256" },
+      { "name": "maxLength", "internalType": "uint256", "type": "uint256" }
+    ],
+    "name": "canonicalPools",
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "outputs": [
+      {
+        "components": [
+          { "name": "gauge", "internalType": "address", "type": "address" },
+          {
+            "components": [
+              { "name": "pool", "internalType": "address", "type": "address" },
+              {
+                "name": "poolType",
+                "internalType": "string",
+                "type": "string"
+              },
+              {
+                "name": "lpTokens",
+                "internalType": "Token[]",
+                "type": "bytes32[]"
+              },
+              {
+                "name": "mintedLPTokens",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              {
+                "name": "listedTokens",
+                "internalType": "Token[]",
+                "type": "bytes32[]"
+              },
+              {
+                "name": "reserves",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              { "name": "poolParams", "internalType": "bytes", "type": "bytes" }
+            ],
+            "name": "poolData",
+            "internalType": "struct PoolData",
+            "type": "tuple"
+          },
+          { "name": "killed", "internalType": "bool", "type": "bool" },
+          {
+            "name": "totalVotes",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          { "name": "userVotes", "internalType": "uint256", "type": "uint256" },
+          {
+            "name": "userClaimable",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "emissionRate",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "userEmissionRate",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "stakedValueInHubToken",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "userStakedValueInHubToken",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "averageInterestRatePerSecond",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "userInterestRatePerSecond",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "stakeableTokens",
+            "internalType": "Token[]",
+            "type": "bytes32[]"
+          },
+          {
+            "name": "stakedAmounts",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "name": "userStakedAmounts",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "name": "underlyingTokens",
+            "internalType": "Token[]",
+            "type": "bytes32[]"
+          },
+          {
+            "name": "stakedUnderlying",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "name": "userUnderlying",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "components": [
+              {
+                "name": "tokens",
+                "internalType": "Token[]",
+                "type": "bytes32[]"
+              },
+              {
+                "name": "rates",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              {
+                "name": "userClaimable",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              {
+                "name": "userRates",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              }
+            ],
+            "name": "bribes",
+            "internalType": "struct BribeData[]",
+            "type": "tuple[]"
+          }
+        ],
+        "name": "poolData",
+        "internalType": "struct GaugeData",
+        "type": "tuple"
+      }
+    ],
+    "inputs": [
+      { "name": "gauge", "internalType": "address", "type": "address" },
+      { "name": "user", "internalType": "address", "type": "address" }
+    ],
+    "name": "queryGauge",
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "outputs": [{ "name": "", "internalType": "uint256", "type": "uint256" }],
+    "inputs": [
+      { "name": "swap", "internalType": "contract ISwap", "type": "address" },
+      { "name": "base", "internalType": "Token", "type": "bytes32" },
+      { "name": "quote", "internalType": "Token", "type": "bytes32" },
+      { "name": "baseAmount", "internalType": "uint256", "type": "uint256" }
+    ],
+    "name": "spotPrice",
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "outputs": [{ "name": "", "internalType": "uint256", "type": "uint256" }],
+    "inputs": [
+      { "name": "quote", "internalType": "Token", "type": "bytes32" },
+      { "name": "tok", "internalType": "Token[]", "type": "bytes32[]" },
+      { "name": "amount", "internalType": "uint256[]", "type": "uint256[]" }
+    ],
+    "name": "spotPrice",
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "outputs": [{ "name": "", "internalType": "uint256", "type": "uint256" }],
+    "inputs": [
+      { "name": "base", "internalType": "Token", "type": "bytes32" },
+      { "name": "quote", "internalType": "Token", "type": "bytes32" },
+      { "name": "amount", "internalType": "uint256", "type": "uint256" }
+    ],
+    "name": "spotPrice",
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "outputs": [
+      { "name": "balances", "internalType": "uint256[]", "type": "uint256[]" }
+    ],
+    "inputs": [
+      { "name": "user", "internalType": "address", "type": "address" },
+      { "name": "ts", "internalType": "Token[]", "type": "bytes32[]" }
+    ],
+    "name": "userBalances",
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "outputs": [
+      {
+        "components": [
+          { "name": "gauge", "internalType": "address", "type": "address" },
+          {
+            "components": [
+              { "name": "pool", "internalType": "address", "type": "address" },
+              {
+                "name": "poolType",
+                "internalType": "string",
+                "type": "string"
+              },
+              {
+                "name": "lpTokens",
+                "internalType": "Token[]",
+                "type": "bytes32[]"
+              },
+              {
+                "name": "mintedLPTokens",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              {
+                "name": "listedTokens",
+                "internalType": "Token[]",
+                "type": "bytes32[]"
+              },
+              {
+                "name": "reserves",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              { "name": "poolParams", "internalType": "bytes", "type": "bytes" }
+            ],
+            "name": "poolData",
+            "internalType": "struct PoolData",
+            "type": "tuple"
+          },
+          { "name": "killed", "internalType": "bool", "type": "bool" },
+          {
+            "name": "totalVotes",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          { "name": "userVotes", "internalType": "uint256", "type": "uint256" },
+          {
+            "name": "userClaimable",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "emissionRate",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "userEmissionRate",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "stakedValueInHubToken",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "userStakedValueInHubToken",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "averageInterestRatePerSecond",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "userInterestRatePerSecond",
+            "internalType": "uint256",
+            "type": "uint256"
+          },
+          {
+            "name": "stakeableTokens",
+            "internalType": "Token[]",
+            "type": "bytes32[]"
+          },
+          {
+            "name": "stakedAmounts",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "name": "userStakedAmounts",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "name": "underlyingTokens",
+            "internalType": "Token[]",
+            "type": "bytes32[]"
+          },
+          {
+            "name": "stakedUnderlying",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "name": "userUnderlying",
+            "internalType": "uint256[]",
+            "type": "uint256[]"
+          },
+          {
+            "components": [
+              {
+                "name": "tokens",
+                "internalType": "Token[]",
+                "type": "bytes32[]"
+              },
+              {
+                "name": "rates",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              {
+                "name": "userClaimable",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              },
+              {
+                "name": "userRates",
+                "internalType": "uint256[]",
+                "type": "uint256[]"
+              }
+            ],
+            "name": "bribes",
+            "internalType": "struct BribeData[]",
+            "type": "tuple[]"
+          }
+        ],
+        "name": "gaugeDataArray",
+        "internalType": "struct GaugeData[]",
+        "type": "tuple[]"
+      }
+    ],
+    "inputs": [
+      { "name": "user", "internalType": "address", "type": "address" }
+    ],
+    "name": "wombatGauges",
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

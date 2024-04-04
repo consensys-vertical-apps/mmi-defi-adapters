@@ -36,6 +36,7 @@ import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
+import { testCases as velocoreTestCases } from './velocore/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
 const TEST_TIMEOUT = 300000
@@ -79,6 +80,7 @@ function runAllTests() {
   runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
   runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
+  runProtocolTests(Protocol.Velocore, velocoreTestCases)
   runProtocolTests(Protocol.Xfai, xfaiTestCases)
 }
 

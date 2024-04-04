@@ -28,6 +28,7 @@ export const Protocol = {
   SyncSwap: 'syncswap',
   UniswapV2: 'uniswap-v2',
   UniswapV3: 'uniswap-v3',
+  Velocore: 'velocore',
   Xfai: 'xfai',
 } as const
 export type Protocol = (typeof Protocol)[keyof typeof Protocol]

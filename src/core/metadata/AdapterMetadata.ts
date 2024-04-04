@@ -97,6 +97,7 @@ import UniswapV2PoolBscProtocolToken from '../../adapters/uniswap-v2/products/po
 import UniswapV2PoolEthereumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/ethereum.protocol-token.json'
 import UniswapV2PoolOptimismProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/optimism.protocol-token.json'
 import UniswapV2PoolPolygonProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/polygon.protocol-token.json'
+import VelocorePoolLineaProtocolToken from '../../adapters/velocore/products/pool/metadata/linea.protocol-token.json'
 import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea.lp-token.json'
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
@@ -974,6 +975,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     UniswapV2PoolPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Velocore,
+      productId: 'pool',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    VelocorePoolLineaProtocolToken,
   ],
   [
     metadataKey({
