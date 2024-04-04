@@ -4,7 +4,7 @@
     "name": "AngleProtocol",
     "description": "AngleProtocol defi adapter",
     "siteUrl": "https://angle.money",
-    "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-coral.png",
+    "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-blue.png",
     "positionType": "stake",
     "chainId": 1,
     "productId": "savings",
@@ -30,6 +30,7 @@
             "decimals": 18,
             "type": "underlying",
             "balanceRaw": "10894166681882158652n",
+            "price": 1.095336805850466,
             "balance": 10.894166681882158
           }
         ]

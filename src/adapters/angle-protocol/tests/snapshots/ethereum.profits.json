@@ -6,7 +6,7 @@
       "name": "AngleProtocol",
       "description": "AngleProtocol defi adapter",
       "siteUrl": "https://angle.money",
-      "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-coral.png",
+      "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-blue.png",
       "positionType": "stake",
       "chainId": 1,
       "productId": "savings",
@@ -21,42 +21,15 @@
           "symbol": "stEUR",
           "decimals": 18,
           "type": "protocol",
-          "profit": 0,
-          "performance": 0,
+          "profit": -1063.2970475903712,
+          "performance": -0.0042718996747267615,
           "calculationData": {
             "withdrawals": 0,
-            "deposits": 0,
+            "deposits": 11560.400077566794,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 0,
-            "endPositionValue": 0,
-            "hasTokensWithoutUSDPrices": true,
-            "tokensWithoutUSDPrices": [
-              {
-                "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
-                "name": "agEUR",
-                "symbol": "AGEUR",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "215840736863059363262380n"
-              },
-              {
-                "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
-                "name": "agEUR",
-                "symbol": "AGEUR",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "226421642804526228805768n"
-              },
-              {
-                "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
-                "name": "agEUR",
-                "symbol": "AGEUR",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "10561278002527056936477n"
-              }
-            ]
+            "startPositionValue": 237344.56692833125,
+            "endPositionValue": 247841.66995830767
           }
         }
       ],
