@@ -72,13 +72,6 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
       }
     }
   }
-
-  getWriteInputSchemas() {
-    return {
-      [WriteActions.Borrow]: BorrowInput,
-      [WriteActions.Repay]: RepayInput,
-    }
-  }
 }
 
 const BorrowInput = z.object({

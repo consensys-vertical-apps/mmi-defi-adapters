@@ -104,15 +104,6 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
         throw new Error('Method not supported')
     }
   }
-
-  getWriteInputSchemas() {
-    return {
-      [WriteActions.Deposit]: DepositInput,
-      [WriteActions.Withdraw]: WithdrawInput,
-      [WriteActions.Borrow]: BorrowInput,
-      [WriteActions.Repay]: RepayInput,
-    }
-  }
 }
 
 const getAddress = (chainId: Chain) => {

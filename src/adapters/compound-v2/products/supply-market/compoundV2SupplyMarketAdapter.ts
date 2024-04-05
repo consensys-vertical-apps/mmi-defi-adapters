@@ -71,13 +71,6 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
       }
     }
   }
-
-  getWriteInputSchemas() {
-    return {
-      [WriteActions.Deposit]: DepositInput,
-      [WriteActions.Withdraw]: WithdrawInput,
-    }
-  }
 }
 
 const DepositInput = z.object({

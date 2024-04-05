@@ -216,7 +216,6 @@ export class AdaptersController {
             product = {
               protocolDetails: adapter.getProtocolDetails(),
               chains: [],
-              writeInputSchemas: adapter.getWriteInputSchemas?.(),
             }
 
             support[protocolId]!.push(product)
