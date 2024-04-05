@@ -6,14 +6,15 @@ export function votingEscrowAdapterTemplate({
   productId,
 }: NewAdapterAnswers) {
   return `import { getAddress } from 'ethers'
+
+  import { VotingEscrow } from '../../../core/adapters/votingEscrow'
   import {
+    ProtocolDetails,
+    PositionType,
     AssetType,
     GetPositionsInput,
-    PositionType,
-    ProtocolDetails,
-  } from '../../../../types/adapter'
-  import { NotImplementedError } from '../../../../core/errors/errors'
-  import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
+  } from '../../../types/adapter'
+  import { NotImplementedError } from '../../../core/errors/errors'
   
   export class ${adapterClassName} extends VotingEscrow {
 
