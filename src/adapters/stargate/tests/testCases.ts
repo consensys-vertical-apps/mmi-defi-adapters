@@ -18,6 +18,20 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
+    method: 'positions',
+    key: 'voting-escrow',
+    input: {
+      userAddress: '0x83fad94eaa0fa69df6a9f13f7c3577be6180b3bb',
+
+      filterProtocolTokens: [
+        '0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E',
+        '0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E',
+      ],
+    },
+    blockNumber: 19582834,
+  },
+  {
+    chainId: Chain.Ethereum,
     method: 'profits',
     input: {
       userAddress: '0xCEadFdCCd0E8E370D985c49Ed3117b2572243A4a',

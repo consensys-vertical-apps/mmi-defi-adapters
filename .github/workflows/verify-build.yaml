@@ -71,6 +71,11 @@ jobs:
           npm run new-adapter -- -p test-compound-v2-borrow-market-fork-adapter-protocol -pd supply -c 1,10,42161 -t CompoundV2BorrowMarketForkAdapter -y
           npm run build
 
+      - name: Create new adapter with VotingEscrow template
+        run: |
+          npm run new-adapter -- -p test-voting-escrow supply -c 1,10,42161 -t VotingEscrow -y
+          npm run build
+
   run-tests:
     runs-on: ubuntu-latest
 

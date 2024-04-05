@@ -29,6 +29,7 @@ import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkA
 import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
 import b = types.builders
+import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
 
 type TemplateBuilder = (adapterSettings: NewAdapterAnswers) => string
 
@@ -50,6 +51,7 @@ const Templates: Record<string, TemplateBuilder> = {
     compoundV2SupplyMarketForkAdapterTemplate,
   ['CompoundV2BorrowMarketForkAdapter']:
     compoundV2BorrowMarketForkAdapterTemplate,
+  ['VotingEscrowAdapter']: votingEscrowAdapterTemplate,
 }
 
 export function newAdapterCommand(

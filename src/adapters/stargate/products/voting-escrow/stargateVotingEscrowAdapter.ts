@@ -1,4 +1,5 @@
 import { getAddress } from 'ethers'
+
 import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
 import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
 import {
@@ -8,17 +9,18 @@ import {
   ProtocolDetails,
 } from '../../../../types/adapter'
 
-export class CurveVotingEscrowAdapter extends VotingEscrow {
+export class StargateVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'
 
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Curve',
-      description: 'Curve defi adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
-      positionType: PositionType.Supply,
+      name: 'Stargate',
+      description:
+        'Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi',
+      siteUrl: 'https://stargate.finance/',
+      iconUrl: 'https://stargate.finance/favicons/favicon-light.svg',
+      positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
@@ -28,25 +30,26 @@ export class CurveVotingEscrowAdapter extends VotingEscrow {
   }
 
   addresses = {
-    veToken: getAddress('0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2'),
-    underlyingToken: getAddress('0xD533a949740bb3306d119CC777fa900bA034cd52'),
-    rewardToken: getAddress('0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490'),
-    feeDistributor: getAddress('0xa464e6dcda8ac41e03616f95f4bc98a13b8922dc'),
+    veToken: getAddress('0x0e42acBD23FAee03249DAFF896b78d7e79fBD58E'),
+    underlyingToken: getAddress('0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6'),
+    rewardToken: getAddress('0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'),
+    feeDistributor: getAddress('0xAF667811A7eDcD5B0066CD4cA0da51637DB76D09'),
   }
 
   async getRewardBalance({
     userAddress,
     blockNumber,
   }: GetPositionsInput): Promise<bigint> {
-    const feeDistributor = FeeDistributor__factory.connect(
+    const contract = FeeDistributor__factory.connect(
       this.addresses.feeDistributor,
       this.provider,
     )
 
-    return await feeDistributor['claim(address)'].staticCall(userAddress, {
-      blockTag: blockNumber,
-      from: userAddress,
-    })
+    return contract.claimToken.staticCall(
+      userAddress,
+      this.addresses.rewardToken,
+      { blockTag: blockNumber },
+    )
   }
 
   async getLockedDetails({

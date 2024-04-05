@@ -11,6 +11,7 @@ const ETH = {
 export const nativeTokenAddresses = [
   ZERO_ADDRESS,
   getAddress('0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'),
+  getAddress('0x4200000000000000000000000000000000000006'),
   getAddress('0x0000000000000000000000000000000000001010'), // native token on polygon matic
 ]
 
