@@ -114,8 +114,6 @@ export type Support = Partial<
     {
       protocolDetails: ProtocolDetails
       chains: Chain[]
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      writeInputSchemas?: Partial<Record<WriteActions, ZodObject<any>>>
     }[]
   >
 >
