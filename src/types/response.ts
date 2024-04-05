@@ -1,4 +1,3 @@
-import type { ZodObject } from 'zod'
 import type { Protocol } from '../adapters/protocols'
 import type { Chain } from '../core/constants/chains'
 import type {
@@ -15,7 +14,6 @@ import type {
   TokenBalance,
   TokenTvl,
 } from './adapter'
-import { WriteActions } from './getTransactionParamsInput'
 
 export type GetEventsRequestInput = {
   userAddress: string

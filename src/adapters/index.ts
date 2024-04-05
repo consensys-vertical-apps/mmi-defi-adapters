@@ -326,4 +326,4 @@ export const WriteActionInputs = {
   AaveV3ATokenWriteActionInputs,
   CompoundV2SupplyMarketWriteActionInputs,
   CompoundV2BorrowMarketWriteActionInputs,
-} as const
+}
