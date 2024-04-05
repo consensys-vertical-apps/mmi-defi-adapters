@@ -6,8 +6,6 @@ export function votingEscrowAdapterTemplate({
   productId,
 }: NewAdapterAnswers) {
   return `import { getAddress } from 'ethers'
-
-  import { VotingEscrow } from '../../../../scripts/templates/votingEscrow'
   import {
     AssetType,
     GetPositionsInput,
@@ -15,8 +13,9 @@ export function votingEscrowAdapterTemplate({
     ProtocolDetails,
   } from '../../../../types/adapter'
   import { NotImplementedError } from '../../../../core/errors/errors'
+  import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
   
-  export class ${adapterClassName} extends VotingEscrow 
+  export class ${adapterClassName} extends VotingEscrow {
 
     productId = '${productId}'
 
