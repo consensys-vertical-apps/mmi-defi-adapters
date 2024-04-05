@@ -26,10 +26,10 @@ import { lpStakingAdapterTemplate } from './templates/lpStakingProtocolAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import { testCases } from './templates/testCases'
 import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
+import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
 import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
 import b = types.builders
-import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
 
 type TemplateBuilder = (adapterSettings: NewAdapterAnswers) => string
 

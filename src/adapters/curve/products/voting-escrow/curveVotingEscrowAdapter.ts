@@ -1,12 +1,12 @@
 import { getAddress } from 'ethers'
 import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
-import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
 import {
   AssetType,
   GetPositionsInput,
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
+import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
 
 export class CurveVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'

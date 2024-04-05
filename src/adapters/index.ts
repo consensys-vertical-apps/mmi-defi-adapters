@@ -44,7 +44,6 @@ import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2
 import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
 import { StakewiseOsEthAdapter } from './stakewise/products/os-eth/stakewiseOsEthAdapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
-
 import { StargateVotingEscrowAdapter } from './stargate/products/voting-escrow/stargateVotingEscrowAdapter'
 import { SushiswapV2PoolAdapter } from './sushiswap-v2/products/pool/sushiswapV2PoolAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'

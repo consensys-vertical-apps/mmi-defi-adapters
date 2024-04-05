@@ -1,16 +1,5 @@
-import {
-  FeeDistributor__factory,
-  VotingEscrow__factory,
-} from '../../adapters/curve/contracts'
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
-import { AdaptersController } from '../adaptersController'
-import { Chain } from '../constants/chains'
-import { IMetadataBuilder, CacheToFile } from '../decorators/cacheToFile'
-import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
-import { getErc20Movements } from '../utils/erc20Movements'
-import { getTokenMetadata } from '../utils/getTokenMetadata'
-import { unixTimestampToDateString } from '../utils/unixTimestampToDateString'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -27,6 +16,13 @@ import {
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { AdaptersController } from '../adaptersController'
+import { Chain } from '../constants/chains'
+import { IMetadataBuilder, CacheToFile } from '../decorators/cacheToFile'
+import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
+import { getErc20Movements } from '../utils/erc20Movements'
+import { getTokenMetadata } from '../utils/getTokenMetadata'
+import { unixTimestampToDateString } from '../utils/unixTimestampToDateString'
 
 type Metadata = {
   address: string
