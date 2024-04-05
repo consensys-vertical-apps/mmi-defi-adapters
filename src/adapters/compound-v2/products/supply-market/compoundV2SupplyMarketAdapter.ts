@@ -90,6 +90,11 @@ const WithdrawInput = z.object({
   amount: z.string(),
 })
 
+export const WriteActionInputs = {
+  [WriteActions.Deposit]: DepositInput,
+  [WriteActions.Withdraw]: WithdrawInput,
+}
+
 const commonFields = {
   protocolId: z.literal(Protocol.CompoundV2),
   productId: z.literal('supply-market'),

@@ -9,6 +9,7 @@ import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/variable-
 import {
   AaveV3ATokenPoolAdapter,
   GetTxParamsInput as AaveV3ATokenGetTxParamsInput,
+  WriteActionInputs as AaveV3ATokenWriteActionInputs,
 } from './aave-v3/products/a-token/aaveV3ATokenPoolAdapter'
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenPoolAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenPoolAdapter'
@@ -17,10 +18,12 @@ import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpEx
 import {
   CompoundV2BorrowMarketAdapter,
   GetTxParamsInput as CompoundV2BorrowMarketGetTxParamsInput,
+  WriteActionInputs as CompoundV2BorrowMarketWriteActionInputs,
 } from './compound-v2/products/borrow-market/compoundV2BorrowMarketAdapter'
 import {
   CompoundV2SupplyMarketAdapter,
   GetTxParamsInput as CompoundV2SupplyMarketGetTxParamsInput,
+  WriteActionInputs as CompoundV2SupplyMarketWriteActionInputs,
 } from './compound-v2/products/supply-market/compoundV2SupplyMarketAdapter'
 import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/convexCvxcrvWrapperAdapter'
 import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
@@ -318,3 +321,9 @@ export const GetTransactionParamsInputSchema = z.union([
   CompoundV2BorrowMarketGetTxParamsInput,
   CompoundV2SupplyMarketGetTxParamsInput,
 ])
+
+export const WriteActionInputs = {
+  AaveV3ATokenWriteActionInputs,
+  CompoundV2SupplyMarketWriteActionInputs,
+  CompoundV2BorrowMarketWriteActionInputs,
+} as const

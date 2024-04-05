@@ -91,6 +91,11 @@ const RepayInput = z.object({
   amount: z.string(),
 })
 
+export const WriteActionInputs = {
+  [WriteActions.Borrow]: BorrowInput,
+  [WriteActions.Repay]: RepayInput,
+}
+
 const commonFields = {
   protocolId: z.literal(Protocol.CompoundV2),
   productId: z.literal('borrow-market'),

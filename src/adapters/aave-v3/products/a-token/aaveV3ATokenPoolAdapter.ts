@@ -151,6 +151,13 @@ const RepayInput = z.object({
   onBehalfOf: z.string(),
 })
 
+export const WriteActionInputs = {
+  [WriteActions.Deposit]: DepositInput,
+  [WriteActions.Withdraw]: WithdrawInput,
+  [WriteActions.Borrow]: BorrowInput,
+  [WriteActions.Repay]: RepayInput,
+}
+
 const commonFields = {
   protocolId: z.literal(Protocol.AaveV3),
   productId: z.literal('a-token'),
