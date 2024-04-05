@@ -188,8 +188,8 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
 
               case 'tx-params': {
                 const inputs = {
-                  protocolId,
                   ...testCase.input,
+                  protocolId,
                   chainId,
                 } as GetTransactionParamsInput
 
