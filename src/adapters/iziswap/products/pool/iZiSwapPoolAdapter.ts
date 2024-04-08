@@ -240,7 +240,7 @@ export class IZiSwapPoolAdapter extends SimplePoolAdapter {
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     if (!tokenId) {
-      throw new Error('TokenId required for iZiswap withdrawals')
+      throw new Error('TokenId required for iZiSwap withdrawals')
     }
 
     return await this.getIziswapMovements({
@@ -259,7 +259,7 @@ export class IZiSwapPoolAdapter extends SimplePoolAdapter {
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     if (!tokenId) {
-      throw new Error('TokenId required for iZiswap deposits')
+      throw new Error('TokenId required for iZiSwap deposits')
     }
     return await this.getIziswapMovements({
       protocolTokenAddress,
@@ -336,7 +336,7 @@ export class IZiSwapPoolAdapter extends SimplePoolAdapter {
       .catch((error) => {
         if (error?.message?.includes('Invalid token ID')) {
           throw new Error(
-            `iZiswap tokenId: ${tokenId} at blocknumber: ${fromBlock} does not exist, has position been minted yet or burned?`,
+            `iZiSwap tokenId: ${tokenId} at blocknumber: ${fromBlock} does not exist, has position been minted yet or burned?`,
           )
         }
 
