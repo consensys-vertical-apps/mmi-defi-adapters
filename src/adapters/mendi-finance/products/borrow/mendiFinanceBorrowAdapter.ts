@@ -1,4 +1,5 @@
 import { getAddress } from 'ethers'
+import { GetTransactionParamsInput } from '../../..'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
@@ -20,7 +21,6 @@ import {
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
 import { Cerc20__factory, Comptroller__factory } from '../../contracts'
 

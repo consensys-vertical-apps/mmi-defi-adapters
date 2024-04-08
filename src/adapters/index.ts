@@ -3,16 +3,16 @@ import { z } from 'zod'
 import { Chain } from '../core/constants/chains'
 import { ProtocolAdapterParams } from '../types/adapter'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
-import { AaveV2ATokenPoolAdapter } from './aave-v2/products/a-token/aaveV2ATokenPoolAdapter'
-import { AaveV2StableDebtTokenPoolAdapter } from './aave-v2/products/stable-debt-token/aaveV2StableDebtTokenPoolAdapter'
-import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/variable-debt-token/aaveV2VariableDebtTokenPoolAdapter'
+import { AaveV2ATokenPoolAdapter } from './aave-v2/products/a-token/aaveV2ATokenAdapter'
+import { AaveV2StableDebtTokenPoolAdapter } from './aave-v2/products/stable-debt-token/aaveV2StableDebtTokenAdapter'
+import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/variable-debt-token/aaveV2VariableDebtTokenAdapter'
 import {
   AaveV3ATokenPoolAdapter,
   GetTxParamsInput as AaveV3ATokenGetTxParamsInput,
   WriteActionInputs as AaveV3ATokenWriteActionInputs,
-} from './aave-v3/products/a-token/aaveV3ATokenPoolAdapter'
-import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenPoolAdapter'
-import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenPoolAdapter'
+} from './aave-v3/products/a-token/aaveV3ATokenAdapter'
+import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
+import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import {
@@ -34,17 +34,17 @@ import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { FluxBorrowMarketAdapter } from './flux/products/borrow-market/fluxBorrowMarketAdapter'
 import { FluxSupplyMarketAdapter } from './flux/products/supply-market/fluxSupplyMarketAdapter'
-import { GMXGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
-import { IZiswapAdapter } from './iziswap/products/iziswap/iZiswapAdapter'
+import { GmxGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
+import { IZiSwapPoolAdapter } from './iziswap/products/pool/iZiSwapPoolAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
-import { SDaiAdapter } from './maker/products/yield/sDaiAdapter'
+import { MakerSDaiAdapter } from './maker/products/s-dai/makerSDaiAdapter'
 import { MendiFinanceBorrowAdapter } from './mendi-finance/products/borrow/mendiFinanceBorrowAdapter'
 import { MendiFinanceSupplyAdapter } from './mendi-finance/products/supply/mendiFinanceSupplyAdapter'
 import { MorphoAaveV2OptimizerBorrowAdapter } from './morpho-aave-v2/products/optimizer-borrow/morphoAaveV2OptimizerBorrowAdapter'
 import { MorphoAaveV2OptimizerSupplyAdapter } from './morpho-aave-v2/products/optimizer-supply/morphoAaveV2OptimizerSupplyAdapter'
-import { MorphoAaveV3ETHOptimizerBorrowAdapter } from './morpho-aave-v3-eth/products/optimizer-borrow/morphoAaveV3ETHOptimizerBorrowAdapter'
-import { MorphoAaveV3ETHOptimizerSupplyAdapter } from './morpho-aave-v3-eth/products/optimizer-supply/morphoAaveV3ETHOptimizerSupplyAdapter'
+import { MorphoAaveV3EthOptimizerBorrowAdapter } from './morpho-aave-v3/products/optimizer-borrow/morphoAaveV3OptimizerBorrowAdapter'
+import { MorphoAaveV3EthOptimizerSupplyAdapter } from './morpho-aave-v3/products/optimizer-supply/morphoAaveV3OptimizerSupplyAdapter'
 import { MorphoBlueMarketBorrowAdapter } from './morpho-blue/products/market-borrow/morphoBlueMarketBorrowAdapter'
 import { MorphoBlueMarketSupplyAdapter } from './morpho-blue/products/market-supply/morphoBlueMarketSupplyAdapter'
 import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
@@ -54,12 +54,12 @@ import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
 import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
 import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
-import { StakewiseOsEthAdapter } from './stakewise/products/os-eth/stakewiseOsEthAdapter'
+import { StakeWiseOsEthAdapter } from './stakewise/products/os-eth/stakeWiseOsEthAdapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
 import { SushiswapV2PoolAdapter } from './sushiswap-v2/products/pool/sushiswapV2PoolAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
-import { SyncswapPoolAdapter } from './syncswap/products/pool/syncswapPoolAdapter'
+import { SyncSwapPoolAdapter } from './syncswap/products/pool/syncSwapPoolAdapter'
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
@@ -187,16 +187,16 @@ export const supportedProtocols: Record<
     [Chain.Ethereum]: [FluxSupplyMarketAdapter, FluxBorrowMarketAdapter],
   },
 
-  [Protocol.GMX]: {
-    [Chain.Arbitrum]: [GMXGlpAdapter],
-    [Chain.Avalanche]: [GMXGlpAdapter],
+  [Protocol.Gmx]: {
+    [Chain.Arbitrum]: [GmxGlpAdapter],
+    [Chain.Avalanche]: [GmxGlpAdapter],
   },
 
   [Protocol.IZiSwap]: {
-    [Chain.Bsc]: [IZiswapAdapter],
-    [Chain.Base]: [IZiswapAdapter],
-    [Chain.Arbitrum]: [IZiswapAdapter],
-    [Chain.Linea]: [IZiswapAdapter],
+    [Chain.Bsc]: [IZiSwapPoolAdapter],
+    [Chain.Base]: [IZiSwapPoolAdapter],
+    [Chain.Arbitrum]: [IZiSwapPoolAdapter],
+    [Chain.Linea]: [IZiSwapPoolAdapter],
   },
 
   [Protocol.Lido]: {
@@ -204,7 +204,7 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Maker]: {
-    [Chain.Ethereum]: [SDaiAdapter],
+    [Chain.Ethereum]: [MakerSDaiAdapter],
   },
 
   [Protocol.MendiFinance]: {
@@ -218,10 +218,10 @@ export const supportedProtocols: Record<
     ],
   },
 
-  [Protocol.MorphoAaveV3ETHOptimizer]: {
+  [Protocol.MorphoAaveV3]: {
     [Chain.Ethereum]: [
-      MorphoAaveV3ETHOptimizerSupplyAdapter,
-      MorphoAaveV3ETHOptimizerBorrowAdapter,
+      MorphoAaveV3EthOptimizerSupplyAdapter,
+      MorphoAaveV3EthOptimizerBorrowAdapter,
     ],
   },
 
@@ -266,7 +266,7 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.StakeWise]: {
-    [Chain.Ethereum]: [StakewiseOsEthAdapter],
+    [Chain.Ethereum]: [StakeWiseOsEthAdapter],
   },
 
   [Protocol.Stargate]: {
@@ -289,7 +289,7 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.SyncSwap]: {
-    [Chain.Linea]: [SyncswapPoolAdapter],
+    [Chain.Linea]: [SyncSwapPoolAdapter],
   },
 
   [Protocol.UniswapV2]: {
@@ -316,14 +316,17 @@ export const supportedProtocols: Record<
   },
 }
 
-export const GetTransactionParamsInputSchema = z.union([
-  AaveV3ATokenGetTxParamsInput,
-  CompoundV2BorrowMarketGetTxParamsInput,
-  CompoundV2SupplyMarketGetTxParamsInput,
-])
-
 export const WriteActionInputs = {
   AaveV3ATokenWriteActionInputs,
   CompoundV2SupplyMarketWriteActionInputs,
   CompoundV2BorrowMarketWriteActionInputs,
 }
+
+export const GetTransactionParamsInputSchema = z.union([
+  AaveV3ATokenGetTxParamsInput,
+  CompoundV2BorrowMarketGetTxParamsInput,
+  CompoundV2SupplyMarketGetTxParamsInput,
+])
+export type GetTransactionParamsInput = z.infer<
+  typeof GetTransactionParamsInputSchema
+>

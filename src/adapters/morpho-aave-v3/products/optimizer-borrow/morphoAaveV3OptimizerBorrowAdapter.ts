@@ -6,17 +6,17 @@ import {
 } from '../../../../types/adapter'
 import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
 
-export class MorphoAaveV3ETHOptimizerSupplyAdapter extends MorphoBasePoolAdapter {
-  productId = 'optimizer-supply'
+export class MorphoAaveV3EthOptimizerBorrowAdapter extends MorphoBasePoolAdapter {
+  productId = 'optimizer-borrow'
 
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
       name: 'MorphoAaveV3',
-      description: 'MorphoAaveV3 DeFi adapter on the supply side',
+      description: 'MorphoAaveV3 DeFi adapter on the borrow side',
       siteUrl: 'https://aavev3.morpho.org/',
       iconUrl: 'https://cdn.morpho.org/images/v2/morpho/favicon.png',
-      positionType: PositionType.Supply,
+      positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
@@ -25,7 +25,7 @@ export class MorphoAaveV3ETHOptimizerSupplyAdapter extends MorphoBasePoolAdapter
     }
   }
 
-  @CacheToFile({ fileKey: 'optimizer-supply' })
+  @CacheToFile({ fileKey: 'optimizer-borrow' })
   async buildMetadata() {
     return super.buildMetadata()
   }

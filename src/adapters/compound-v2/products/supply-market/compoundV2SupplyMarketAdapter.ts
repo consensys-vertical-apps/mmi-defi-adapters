@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { GetTransactionParamsInput } from '../../..'
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -7,10 +8,7 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
-import {
-  GetTransactionParamsInput,
-  WriteActions,
-} from '../../../../types/getTransactionParamsInput'
+import { WriteActions } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
@@ -73,19 +71,15 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
   }
 }
 
-const DepositInput = z.object({
-  asset: z.string(),
-  amount: z.string(),
-})
-
-const WithdrawInput = z.object({
-  asset: z.string(),
-  amount: z.string(),
-})
-
 export const WriteActionInputs = {
-  [WriteActions.Deposit]: DepositInput,
-  [WriteActions.Withdraw]: WithdrawInput,
+  [WriteActions.Deposit]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
+  [WriteActions.Withdraw]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
 }
 
 const commonFields = {
@@ -97,13 +91,13 @@ const commonFields = {
 const DepositParams = z.object({
   ...commonFields,
   action: z.literal(WriteActions.Deposit),
-  inputs: DepositInput,
+  inputs: WriteActionInputs[WriteActions.Deposit],
 })
 
 const WithdrawParams = z.object({
   ...commonFields,
   action: z.literal(WriteActions.Withdraw),
-  inputs: WithdrawInput,
+  inputs: WriteActionInputs[WriteActions.Withdraw],
 })
 
 export const GetTxParamsInput = z.discriminatedUnion('action', [

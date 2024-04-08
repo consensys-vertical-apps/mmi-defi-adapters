@@ -53,8 +53,8 @@ const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
     },
   }
 
-export class IZiswapAdapter extends SimplePoolAdapter {
-  productId = 'iziswap'
+export class IZiSwapPoolAdapter extends SimplePoolAdapter {
+  productId = 'pool'
   protocolId: Protocol
   chainId: Chain
 

@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { GetTransactionParamsInput } from '../../..'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
@@ -6,10 +7,7 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
-import {
-  GetTransactionParamsInput,
-  WriteActions,
-} from '../../../../types/getTransactionParamsInput'
+import { WriteActions } from '../../../../types/getTransactionParamsInput'
 import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 import { Protocol } from '../../../protocols'
@@ -114,39 +112,31 @@ const getAddress = (chainId: Chain) => {
   throw new Error('Chain not supported')
 }
 
-const DepositInput = z.object({
-  asset: z.string(),
-  amount: z.string(),
-  onBehalfOf: z.string(),
-  referralCode: z.number(),
-})
-
-const WithdrawInput = z.object({
-  asset: z.string(),
-  amount: z.string(),
-  to: z.string(),
-})
-
-const BorrowInput = z.object({
-  asset: z.string(),
-  amount: z.string(),
-  interestRateMode: z.number(),
-  referralCode: z.number(),
-  onBehalfOf: z.string(),
-})
-
-const RepayInput = z.object({
-  asset: z.string(),
-  amount: z.string(),
-  interestRateMode: z.number(),
-  onBehalfOf: z.string(),
-})
-
 export const WriteActionInputs = {
-  [WriteActions.Deposit]: DepositInput,
-  [WriteActions.Withdraw]: WithdrawInput,
-  [WriteActions.Borrow]: BorrowInput,
-  [WriteActions.Repay]: RepayInput,
+  [WriteActions.Deposit]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    onBehalfOf: z.string(),
+    referralCode: z.number(),
+  }),
+  [WriteActions.Withdraw]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    to: z.string(),
+  }),
+  [WriteActions.Borrow]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    interestRateMode: z.number(),
+    referralCode: z.number(),
+    onBehalfOf: z.string(),
+  }),
+  [WriteActions.Repay]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    interestRateMode: z.number(),
+    onBehalfOf: z.string(),
+  }),
 }
 
 const commonFields = {
@@ -155,34 +145,26 @@ const commonFields = {
   chainId: z.nativeEnum(Chain),
 }
 
-const DepositParams = z.object({
-  ...commonFields,
-  action: z.literal(WriteActions.Deposit),
-  inputs: DepositInput,
-})
-
-const WithdrawParams = z.object({
-  ...commonFields,
-  action: z.literal(WriteActions.Withdraw),
-  inputs: WithdrawInput,
-})
-
-const BorrowParams = z.object({
-  ...commonFields,
-  action: z.literal(WriteActions.Borrow),
-  inputs: BorrowInput,
-})
-
-const RepayParams = z.object({
-  ...commonFields,
-  action: z.literal(WriteActions.Repay),
-  inputs: RepayInput,
-})
-
 export const GetTxParamsInput = z.discriminatedUnion('action', [
-  DepositParams,
-  WithdrawParams,
-  BorrowParams,
-  RepayParams,
+  z.object({
+    ...commonFields,
+    action: z.literal(WriteActions.Deposit),
+    inputs: WriteActionInputs[WriteActions.Deposit],
+  }),
+  z.object({
+    ...commonFields,
+    action: z.literal(WriteActions.Withdraw),
+    inputs: WriteActionInputs[WriteActions.Withdraw],
+  }),
+  z.object({
+    ...commonFields,
+    action: z.literal(WriteActions.Borrow),
+    inputs: WriteActionInputs[WriteActions.Borrow],
+  }),
+  z.object({
+    ...commonFields,
+    action: z.literal(WriteActions.Repay),
+    inputs: WriteActionInputs[WriteActions.Repay],
+  }),
 ])
 export type GetTxParamsInput = z.infer<typeof GetTxParamsInput>

@@ -1,3 +1,4 @@
+import { GetTransactionParamsInput } from '../../..'
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -6,7 +7,6 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
-import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
 import { contractAddresses } from '../../common/contractAddresses'
 

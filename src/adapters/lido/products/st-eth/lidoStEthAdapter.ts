@@ -1,4 +1,5 @@
 import { getAddress } from 'ethers'
+import { GetTransactionParamsInput } from '../../..'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -13,7 +14,6 @@ import {
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { GetTransactionParamsInput } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
 
 export class LidoStEthAdapter extends SimplePoolAdapter {

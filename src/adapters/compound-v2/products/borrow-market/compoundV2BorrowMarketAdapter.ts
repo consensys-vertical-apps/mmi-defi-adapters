@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { GetTransactionParamsInput } from '../../..'
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -7,10 +8,7 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
-import {
-  GetTransactionParamsInput,
-  WriteActions,
-} from '../../../../types/getTransactionParamsInput'
+import { WriteActions } from '../../../../types/getTransactionParamsInput'
 import { Protocol } from '../../../protocols'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
@@ -74,19 +72,15 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
   }
 }
 
-const BorrowInput = z.object({
-  asset: z.string(),
-  amount: z.string(),
-})
-
-const RepayInput = z.object({
-  asset: z.string(),
-  amount: z.string(),
-})
-
 export const WriteActionInputs = {
-  [WriteActions.Borrow]: BorrowInput,
-  [WriteActions.Repay]: RepayInput,
+  [WriteActions.Borrow]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
+  [WriteActions.Repay]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
 }
 
 const commonFields = {
@@ -95,26 +89,16 @@ const commonFields = {
   chainId: z.nativeEnum(Chain),
 }
 
-const BorrowParams = z.object({
-  ...commonFields,
-  action: z.literal(WriteActions.Borrow),
-  inputs: z.object({
-    asset: z.string(),
-    amount: z.string(),
-  }),
-})
-
-const RepayParams = z.object({
-  ...commonFields,
-  action: z.literal(WriteActions.Repay),
-  inputs: z.object({
-    asset: z.string(),
-    amount: z.string(),
-  }),
-})
-
 export const GetTxParamsInput = z.discriminatedUnion('action', [
-  BorrowParams,
-  RepayParams,
+  z.object({
+    ...commonFields,
+    action: z.literal(WriteActions.Borrow),
+    inputs: WriteActionInputs[WriteActions.Borrow],
+  }),
+  z.object({
+    ...commonFields,
+    action: z.literal(WriteActions.Repay),
+    inputs: WriteActionInputs[WriteActions.Repay],
+  }),
 ])
 export type GetTxParamsInput = z.infer<typeof GetTxParamsInput>

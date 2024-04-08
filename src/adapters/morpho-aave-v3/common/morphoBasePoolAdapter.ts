@@ -45,7 +45,7 @@ type MorphoAaveV3PeerToPoolAdapterMetadata = Record<
 const morphoAaveV3ContractAddresses: Partial<
   Record<Protocol, Partial<Record<Chain, string>>>
 > = {
-  [Protocol.MorphoAaveV3ETHOptimizer]: {
+  [Protocol.MorphoAaveV3]: {
     [Chain.Ethereum]: getAddress('0x33333aea097c193e66081e930c33020272b33333'),
   },
 }

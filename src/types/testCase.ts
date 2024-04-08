@@ -1,6 +1,6 @@
+import { GetTransactionParamsInput } from '../adapters'
 import type { Chain } from '../core/constants/chains'
 import type { TimePeriod } from '../core/constants/timePeriod'
-import { GetTransactionParamsInput } from './getTransactionParamsInput'
 
 export type TestCase = {
   key?: string

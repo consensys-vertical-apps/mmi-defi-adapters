@@ -24,8 +24,10 @@
   ],
   "sideEffects": false,
   "scripts": {
+    "build2": "tsc -p tsconfig.build.json && ts-node src/scripts/buildSchemas.ts && tsc -p tsconfig.build.json",
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
+    "build-schemas": "ts-node src/scripts/buildSchemas.ts",
     "adapters-cli": "node --env-file=.env lib/main/scripts/index.js",
     "build-metadata": "npm run adapters-cli build-metadata --",
     "build-types": "npm run adapters-cli build-types --",
@@ -89,7 +91,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.5",
     "ethers": "^6.7.1",
     "evm-maths": "^6.0.0",
     "pino": "^8.15.0",

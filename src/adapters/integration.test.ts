@@ -1,11 +1,10 @@
 import { promises as fs } from 'fs'
 import path from 'path'
-import { Chain, ChainName } from '../core/constants/chains'
+import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
-import { GetTransactionParamsInput } from '../types/getTransactionParamsInput'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
@@ -21,7 +20,7 @@ import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
-import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3-eth/tests/testCases'
+import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3/tests/testCases'
 import { testCases as morphoBlueTestCases } from './morpho-blue/tests/testCases'
 import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
 import { testCases as pancakeswapV2TestCases } from './pancakeswap-v2/tests/testCases'
@@ -37,6 +36,7 @@ import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
+import { GetTransactionParamsInput } from '.'
 
 const TEST_TIMEOUT = 300000
 
@@ -53,16 +53,13 @@ function runAllTests() {
   runProtocolTests(Protocol.Convex, convexTestCases)
   runProtocolTests(Protocol.Curve, curveTestCases)
   runProtocolTests(Protocol.Flux, fluxTestCases)
-  runProtocolTests(Protocol.GMX, gMXTestCases)
+  runProtocolTests(Protocol.Gmx, gMXTestCases)
   runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
   runProtocolTests(Protocol.Lido, lidoTestCases)
   runProtocolTests(Protocol.Maker, makerTestCases)
   runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
   runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
-  runProtocolTests(
-    Protocol.MorphoAaveV3ETHOptimizer,
-    morphoAaveV3ETHOptimizerTestCases,
-  )
+  runProtocolTests(Protocol.MorphoAaveV3, morphoAaveV3ETHOptimizerTestCases)
   runProtocolTests(Protocol.MorphoBlue, morphoBlueTestCases)
   runProtocolTests(
     Protocol.MorphoCompoundV2,
@@ -364,7 +361,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               ...testCase.input,
               protocolId,
               chainId: testCase.chainId,
-            } as GetTransactionParamsInput & { chainId: Chain }
+            } as GetTransactionParamsInput
 
             const response = await defiProvider.getTransactionParams(inputs)
 
