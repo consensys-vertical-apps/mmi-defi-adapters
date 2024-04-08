@@ -6,7 +6,7 @@ import {
 } from '../../../../types/adapter'
 import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
 
-export class MorphoAaveV3EthOptimizerSupplyAdapter extends MorphoBasePoolAdapter {
+export class MorphoAaveV3OptimizerSupplyAdapter extends MorphoBasePoolAdapter {
   productId = 'optimizer-supply'
 
   getProtocolDetails(): ProtocolDetails {

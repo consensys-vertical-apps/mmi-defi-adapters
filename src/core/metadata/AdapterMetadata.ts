@@ -60,14 +60,14 @@ import CurveStakingOptimismProtocolToken from '../../adapters/curve/products/sta
 import CurveStakingPolygonProtocolToken from '../../adapters/curve/products/staking/metadata/polygon.protocol-token.json'
 import FluxBorrowMarketEthereumProtocolToken from '../../adapters/flux/products/borrow-market/metadata/ethereum.protocol-token.json'
 import FluxSupplyMarketEthereumProtocolToken from '../../adapters/flux/products/supply-market/metadata/ethereum.protocol-token.json'
-import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
-import GMXGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
+import GmxGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
+import GmxGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
 import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
 import MendiFinanceSupplyLineaMendi from '../../adapters/mendi-finance/products/supply/metadata/linea.mendi.json'
 import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
-import MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v3/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
-import MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v3/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
+import MorphoAaveV3OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v3/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
+import MorphoAaveV3OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v3/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import MorphoBlueMarketBorrowEthereumMarketBorrow from '../../adapters/morpho-blue/products/market-borrow/metadata/ethereum.market-borrow.json'
 import MorphoBlueMarketSupplyEthereumMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/ethereum.market-supply.json'
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
@@ -658,7 +658,7 @@ export const MetadataFiles = new Map<string, Json>([
       chainId: Chain.Arbitrum,
       fileKey: 'glp',
     }),
-    GMXGlpArbitrumGlp,
+    GmxGlpArbitrumGlp,
   ],
   [
     metadataKey({
@@ -667,7 +667,7 @@ export const MetadataFiles = new Map<string, Json>([
       chainId: Chain.Avalanche,
       fileKey: 'glp',
     }),
-    GMXGlpAvalancheGlp,
+    GmxGlpAvalancheGlp,
   ],
   [
     metadataKey({
@@ -712,7 +712,7 @@ export const MetadataFiles = new Map<string, Json>([
       chainId: Chain.Ethereum,
       fileKey: 'optimizer-borrow',
     }),
-    MorphoAaveV3ETHOptimizerOptimizerBorrowEthereumOptimizerBorrow,
+    MorphoAaveV3OptimizerBorrowEthereumOptimizerBorrow,
   ],
   [
     metadataKey({
@@ -721,7 +721,7 @@ export const MetadataFiles = new Map<string, Json>([
       chainId: Chain.Ethereum,
       fileKey: 'optimizer-supply',
     }),
-    MorphoAaveV3ETHOptimizerOptimizerSupplyEthereumOptimizerSupply,
+    MorphoAaveV3OptimizerSupplyEthereumOptimizerSupply,
   ],
   [
     metadataKey({

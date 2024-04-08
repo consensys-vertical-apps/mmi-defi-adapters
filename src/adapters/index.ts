@@ -43,8 +43,8 @@ import { MendiFinanceBorrowAdapter } from './mendi-finance/products/borrow/mendi
 import { MendiFinanceSupplyAdapter } from './mendi-finance/products/supply/mendiFinanceSupplyAdapter'
 import { MorphoAaveV2OptimizerBorrowAdapter } from './morpho-aave-v2/products/optimizer-borrow/morphoAaveV2OptimizerBorrowAdapter'
 import { MorphoAaveV2OptimizerSupplyAdapter } from './morpho-aave-v2/products/optimizer-supply/morphoAaveV2OptimizerSupplyAdapter'
-import { MorphoAaveV3EthOptimizerBorrowAdapter } from './morpho-aave-v3/products/optimizer-borrow/morphoAaveV3OptimizerBorrowAdapter'
-import { MorphoAaveV3EthOptimizerSupplyAdapter } from './morpho-aave-v3/products/optimizer-supply/morphoAaveV3OptimizerSupplyAdapter'
+import { MorphoAaveV3OptimizerBorrowAdapter } from './morpho-aave-v3/products/optimizer-borrow/morphoAaveV3OptimizerBorrowAdapter'
+import { MorphoAaveV3OptimizerSupplyAdapter } from './morpho-aave-v3/products/optimizer-supply/morphoAaveV3OptimizerSupplyAdapter'
 import { MorphoBlueMarketBorrowAdapter } from './morpho-blue/products/market-borrow/morphoBlueMarketBorrowAdapter'
 import { MorphoBlueMarketSupplyAdapter } from './morpho-blue/products/market-supply/morphoBlueMarketSupplyAdapter'
 import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
@@ -220,8 +220,8 @@ export const supportedProtocols: Record<
 
   [Protocol.MorphoAaveV3]: {
     [Chain.Ethereum]: [
-      MorphoAaveV3EthOptimizerSupplyAdapter,
-      MorphoAaveV3EthOptimizerBorrowAdapter,
+      MorphoAaveV3OptimizerSupplyAdapter,
+      MorphoAaveV3OptimizerBorrowAdapter,
     ],
   },
 
