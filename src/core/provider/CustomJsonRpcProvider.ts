@@ -1,4 +1,5 @@
 import {
+  FetchRequest,
   Filter,
   FilterByBlockHash,
   JsonRpcApiProviderOptions,
@@ -25,7 +26,7 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   logsRetryHandler: ReturnType<typeof retryHandlerFactory>
 
   constructor({
-    url,
+    fetchRequest,
     chainId,
     customOptions: {
       rpcCallTimeoutInMs,
@@ -35,12 +36,12 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     },
     jsonRpcProviderOptions,
   }: {
-    url: string
+    fetchRequest: FetchRequest
     chainId: Chain
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
   }) {
-    super(url, chainId, jsonRpcProviderOptions)
+    super(fetchRequest, chainId, jsonRpcProviderOptions)
     this.chainId = chainId
     this.callRetryHandler = retryHandlerFactory({
       timeoutInMs: rpcCallTimeoutInMs,

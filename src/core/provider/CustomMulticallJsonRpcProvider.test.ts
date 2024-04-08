@@ -1,3 +1,4 @@
+import { FetchRequest } from 'ethers'
 import { CustomMulticallJsonRpcProvider } from './CustomMulticallJsonRpcProvider'
 import { MulticallQueue } from './MulticallQueue'
 
@@ -9,7 +10,7 @@ describe('CustomMulticallJsonRpcProvider', () => {
       const multicallQueue = { queueCall: spy } as unknown as MulticallQueue
 
       const provider = new CustomMulticallJsonRpcProvider({
-        url: 'www.oioi.com',
+        fetchRequest: 'www.oioi.com' as unknown as FetchRequest,
         chainId: 1,
         multicallQueue,
         customOptions: {
@@ -28,7 +29,7 @@ describe('CustomMulticallJsonRpcProvider', () => {
 
     it('sends normal eth_call', async () => {
       const provider = new CustomMulticallJsonRpcProvider({
-        url: 'www.oioi.com',
+        fetchRequest: 'www.oioi.com' as unknown as FetchRequest,
         chainId: 1,
         multicallQueue: {} as MulticallQueue,
         customOptions: {
