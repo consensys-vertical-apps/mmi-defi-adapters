@@ -95,7 +95,7 @@ async function buildSchemas() {
       const { WriteActionInputs } = await import(adapterFilePath)
 
       if (WriteActionInputs) {
-        await addWriteActionInputs({
+        await addWriteActionSchemas({
           protocolKey,
           protocolId,
           productId,
@@ -105,7 +105,7 @@ async function buildSchemas() {
   }
 }
 
-async function addWriteActionInputs({
+async function addWriteActionSchemas({
   protocolKey,
   protocolId,
   productId,
@@ -154,7 +154,7 @@ async function addWriteActionInputs({
           !node.specifiers!.some(
             (specifier) =>
               n.ImportSpecifier.check(specifier) &&
-              specifier.imported.name === getTransactionParamsImportName,
+              specifier.imported.name === writeActionsImportName,
           )
         ) {
           node.specifiers!.push(
