@@ -185,23 +185,6 @@
       ],
       "fromBlock": 19213083,
       "toBlock": 19220229
-    },
-    {
-      "protocolId": "morpho-blue",
-      "name": "MorphoBlue",
-      "description": "Morpho Blue DeFi adapter on the borrow side",
-      "siteUrl": "https://app.morpho.org/",
-      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "market-borrow",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
-      "success": true,
-      "tokens": [],
-      "fromBlock": 19213083,
-      "toBlock": 19220229
     }
   ]
 }
