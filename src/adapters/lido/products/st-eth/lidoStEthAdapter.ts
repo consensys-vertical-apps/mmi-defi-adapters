@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { GetTransactionParamsInput } from '../../..'
+import { GetTransactionParams } from '../../..'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -104,7 +104,7 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
    */
   getTransactionParams(
     _inputs: Extract<
-      GetTransactionParamsInput,
+      GetTransactionParams,
       {
         protocolId: typeof Protocol.Lido
         productId: 'st-eth'

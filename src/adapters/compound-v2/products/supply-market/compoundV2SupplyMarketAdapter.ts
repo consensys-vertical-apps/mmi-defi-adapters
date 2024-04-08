@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { GetTransactionParamsInput } from '../../..'
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -41,13 +40,7 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
     return await super.buildMetadata()
   }
 
-  getTransactionParams({
-    action,
-    inputs,
-  }: Extract<
-    GetTransactionParamsInput,
-    { protocolId: typeof Protocol.CompoundV2; productId: 'a-token' }
-  >) {
+  getTransactionParams({ action, inputs }: GetTransactionParams) {
     const poolContract = CUSDCv3__factory.connect(
       contractAddresses[this.chainId]!.cUSDCv3Address,
       this.provider,
@@ -100,8 +93,8 @@ const WithdrawParams = z.object({
   inputs: WriteActionInputs[WriteActions.Withdraw],
 })
 
-export const GetTxParamsInput = z.discriminatedUnion('action', [
+export const GetTransactionParamsSchema = z.discriminatedUnion('action', [
   DepositParams,
   WithdrawParams,
 ])
-export type GetTxParamsInput = z.infer<typeof GetTxParamsInput>
+export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>

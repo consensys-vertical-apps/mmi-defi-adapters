@@ -36,7 +36,7 @@ import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
-import { GetTransactionParamsInput } from '.'
+import { GetTransactionParams } from '.'
 
 const TEST_TIMEOUT = 300000
 
@@ -358,7 +358,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               ...testCase.input,
               protocolId,
               chainId: testCase.chainId,
-            } as GetTransactionParamsInput
+            } as GetTransactionParams
 
             const response = await defiProvider.getTransactionParams(inputs)
 

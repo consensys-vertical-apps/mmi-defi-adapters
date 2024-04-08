@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { GetTransactionParamsInput } from '../../..'
+import { GetTransactionParams } from '../../..'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
@@ -212,7 +212,7 @@ export class MendiFinanceBorrowAdapter
    */
   getTransactionParams(
     _inputs: Extract<
-      GetTransactionParamsInput,
+      GetTransactionParams,
       {
         protocolId: typeof Protocol.MendiFinance
         productId: 'borrow'

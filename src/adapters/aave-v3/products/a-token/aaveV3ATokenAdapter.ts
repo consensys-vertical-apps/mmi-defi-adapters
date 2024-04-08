@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { GetTransactionParamsInput } from '../../..'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
@@ -51,13 +50,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
     return reserveData.liquidityRate
   }
 
-  getTransactionParams({
-    action,
-    inputs,
-  }: Extract<
-    GetTransactionParamsInput,
-    { protocolId: typeof Protocol.AaveV3; productId: 'a-token' }
-  >) {
+  getTransactionParams({ action, inputs }: GetTransactionParams) {
     const poolContract = PoolContract__factory.connect(
       getAddress(this.chainId),
       this.provider,
@@ -145,7 +138,7 @@ const commonFields = {
   chainId: z.nativeEnum(Chain),
 }
 
-export const GetTxParamsInput = z.discriminatedUnion('action', [
+export const GetTransactionParamsSchema = z.discriminatedUnion('action', [
   z.object({
     ...commonFields,
     action: z.literal(WriteActions.Deposit),
@@ -167,4 +160,4 @@ export const GetTxParamsInput = z.discriminatedUnion('action', [
     inputs: WriteActionInputs[WriteActions.Repay],
   }),
 ])
-export type GetTxParamsInput = z.infer<typeof GetTxParamsInput>
+export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>

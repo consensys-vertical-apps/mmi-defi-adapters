@@ -1,4 +1,4 @@
-import { GetTransactionParamsInput } from '../adapters'
+import { GetTransactionParams } from '../adapters'
 import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
@@ -74,7 +74,7 @@ export interface IProtocolAdapter {
    * @returns {Promise<{to:string, data: string}>} transaction
    */
   getTransactionParams?(
-    input: GetTransactionParamsInput,
+    input: GetTransactionParams,
   ): Promise<{ to: string; data: string }>
 
   /**

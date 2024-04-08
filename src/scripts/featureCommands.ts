@@ -1,5 +1,5 @@
 import { Command } from 'commander'
-import { GetTransactionParamsInput } from '../adapters'
+import { GetTransactionParams } from '../adapters'
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
@@ -141,7 +141,7 @@ function addressCommand(
 function transactionParamsCommand(
   program: Command,
   commandName: string,
-  feature: (input: GetTransactionParamsInput) => Promise<
+  feature: (input: GetTransactionParams) => Promise<
     AdapterResponse<{
       params: { to: string; data: string }
     }>
@@ -206,7 +206,7 @@ function transactionParamsCommand(
           productId,
           chainId,
           inputs: txInputParams,
-        } as unknown as GetTransactionParamsInput) // TO Fix
+        } as unknown as GetTransactionParams) // TO Fix
 
         printResponse(data)
 

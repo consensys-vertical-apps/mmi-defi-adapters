@@ -1,4 +1,4 @@
-import { GetTransactionParamsInput } from '../adapters'
+import { GetTransactionParams } from '../adapters'
 import type { Chain } from '../core/constants/chains'
 import type { TimePeriod } from '../core/constants/timePeriod'
 
@@ -82,6 +82,6 @@ export type TestCase = {
     }
   | {
       method: 'tx-params'
-      input: Omit<GetTransactionParamsInput, 'protocolId' | 'chainId'>
+      input: Omit<GetTransactionParams, 'protocolId' | 'chainId'>
     }
 )

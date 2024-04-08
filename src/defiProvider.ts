@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { GetTransactionParamsInput, supportedProtocols } from './adapters'
+import { GetTransactionParams, supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
@@ -320,7 +320,7 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
-  async getTransactionParams(input: GetTransactionParamsInput): Promise<
+  async getTransactionParams(input: GetTransactionParams): Promise<
     AdapterResponse<{
       params: { to: string; data: string }
     }>

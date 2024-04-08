@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { GetTransactionParamsInput } from '../../..'
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -41,13 +40,7 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
     return await super.buildMetadata()
   }
 
-  getTransactionParams({
-    action,
-    inputs,
-  }: Extract<
-    GetTransactionParamsInput,
-    { protocolId: typeof Protocol.CompoundV2; productId: 'borrow-market' }
-  >) {
+  getTransactionParams({ action, inputs }: GetTransactionParams) {
     const poolContract = CUSDCv3__factory.connect(
       contractAddresses[this.chainId]!.cUSDCv3Address,
       this.provider,
@@ -89,7 +82,7 @@ const commonFields = {
   chainId: z.nativeEnum(Chain),
 }
 
-export const GetTxParamsInput = z.discriminatedUnion('action', [
+export const GetTransactionParamsSchema = z.discriminatedUnion('action', [
   z.object({
     ...commonFields,
     action: z.literal(WriteActions.Borrow),
@@ -101,4 +94,4 @@ export const GetTxParamsInput = z.discriminatedUnion('action', [
     inputs: WriteActionInputs[WriteActions.Repay],
   }),
 ])
-export type GetTxParamsInput = z.infer<typeof GetTxParamsInput>
+export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>

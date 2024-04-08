@@ -8,7 +8,7 @@ import { AaveV2StableDebtTokenPoolAdapter } from './aave-v2/products/stable-debt
 import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/variable-debt-token/aaveV2VariableDebtTokenAdapter'
 import {
   AaveV3ATokenPoolAdapter,
-  GetTxParamsInput as AaveV3ATokenGetTxParamsInput,
+  GetTransactionParamsSchema as AaveV3ATokenGetTransactionParamsSchema,
   WriteActionInputs as AaveV3ATokenWriteActionInputs,
 } from './aave-v3/products/a-token/aaveV3ATokenAdapter'
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
@@ -17,12 +17,12 @@ import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/c
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import {
   CompoundV2BorrowMarketAdapter,
-  GetTxParamsInput as CompoundV2BorrowMarketGetTxParamsInput,
+  GetTransactionParamsSchema as CompoundV2BorrowMarketGetTransactionParamsSchema,
   WriteActionInputs as CompoundV2BorrowMarketWriteActionInputs,
 } from './compound-v2/products/borrow-market/compoundV2BorrowMarketAdapter'
 import {
   CompoundV2SupplyMarketAdapter,
-  GetTxParamsInput as CompoundV2SupplyMarketGetTxParamsInput,
+  GetTransactionParamsSchema as CompoundV2SupplyMarketGetTransactionParamsSchema,
   WriteActionInputs as CompoundV2SupplyMarketWriteActionInputs,
 } from './compound-v2/products/supply-market/compoundV2SupplyMarketAdapter'
 import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/convexCvxcrvWrapperAdapter'
@@ -322,11 +322,9 @@ export const WriteActionInputs = {
   CompoundV2SupplyMarketWriteActionInputs,
 }
 
-export const GetTransactionParamsInputSchema = z.union([
-  AaveV3ATokenGetTxParamsInput,
-  CompoundV2BorrowMarketGetTxParamsInput,
-  CompoundV2SupplyMarketGetTxParamsInput,
+export const GetTransactionParamsSchema = z.union([
+  AaveV3ATokenGetTransactionParamsSchema,
+  CompoundV2BorrowMarketGetTransactionParamsSchema,
+  CompoundV2SupplyMarketGetTransactionParamsSchema,
 ])
-export type GetTransactionParamsInput = z.infer<
-  typeof GetTransactionParamsInputSchema
->
+export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>

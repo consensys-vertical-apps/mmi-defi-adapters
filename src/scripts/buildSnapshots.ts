@@ -2,7 +2,7 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { Command } from 'commander'
 import { parse, print, types, visit } from 'recast'
-import { GetTransactionParamsInput } from '../adapters'
+import { GetTransactionParams } from '../adapters'
 import { Protocol } from '../adapters/protocols'
 import { Chain, ChainName } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
@@ -191,7 +191,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   ...testCase.input,
                   protocolId,
                   chainId,
-                } as GetTransactionParamsInput
+                } as GetTransactionParams
 
                 return {
                   snapshot: await defiProvider.getTransactionParams(inputs),

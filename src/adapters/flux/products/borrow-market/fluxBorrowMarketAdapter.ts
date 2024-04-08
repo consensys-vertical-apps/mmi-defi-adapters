@@ -1,4 +1,4 @@
-import { GetTransactionParamsInput } from '../../..'
+import { GetTransactionParams } from '../../..'
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -50,7 +50,7 @@ export class FluxBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
    */
   getTransactionParams(
     _inputs: Extract<
-      GetTransactionParamsInput,
+      GetTransactionParams,
       {
         protocolId: typeof Protocol.Flux
         productId: 'borrow-market'

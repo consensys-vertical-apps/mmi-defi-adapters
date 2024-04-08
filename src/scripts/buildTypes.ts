@@ -1,5 +1,5 @@
 import fs from 'fs'
-import * as path from 'path'
+import path from 'path'
 import { Command } from 'commander'
 import { parse, print, types, visit } from 'recast'
 import { glob, runTypeChain } from 'typechain'
@@ -114,6 +114,8 @@ async function addWriteActionInputs({
   protocolId: string
   productId: string
 }) {
+  const fullProductname = `${protocolKey}${pascalCase(productId)}`
+
   const adaptersFile = path.resolve('./src/adapters/index.ts')
   const contents = fs.readFileSync(adaptersFile, 'utf-8')
   const ast = parse(contents, {
@@ -125,45 +127,45 @@ async function addWriteActionInputs({
       const node = path.node
       if (
         node.source.value ===
-          `./${protocolId}/products/${productId}/${lowerFirst(
-            protocolKey,
-          )}${pascalCase(productId)}Adapter` &&
-        node.source.value.toLowerCase().includes('aave')
+        `./${protocolId}/products/${productId}/${lowerFirst(
+          fullProductname,
+        )}Adapter`
       ) {
+        const getTransactionParamsImportName = 'GetTransactionParamsSchema'
         if (
           !node.specifiers!.some(
             (specifier) =>
-              (specifier as n.ImportSpecifier).imported.name ===
-              'GetTxParamsInput',
+              n.ImportSpecifier.check(specifier) &&
+              specifier.imported.name === getTransactionParamsImportName,
           )
         ) {
           node.specifiers!.push(
             b.importSpecifier(
-              b.identifier('GetTxParamsInput'),
+              b.identifier(getTransactionParamsImportName),
               b.identifier(
-                `${protocolKey}${pascalCase(productId)}GetTxParamsInput`,
+                `${fullProductname}${getTransactionParamsImportName}`,
               ),
             ),
           )
         }
 
+        const writeActionsImportName = 'WriteActionInputs'
         if (
           !node.specifiers!.some(
             (specifier) =>
-              (specifier as n.ImportSpecifier).imported.name ===
-              'WriteActionInputs',
+              n.ImportSpecifier.check(specifier) &&
+              specifier.imported.name === getTransactionParamsImportName,
           )
         ) {
           node.specifiers!.push(
             b.importSpecifier(
-              b.identifier('WriteActionInputs'),
-              b.identifier(
-                `${protocolKey}${pascalCase(productId)}WriteActionInputs`,
-              ),
+              b.identifier(writeActionsImportName),
+              b.identifier(`${fullProductname}${writeActionsImportName}`),
             ),
           )
         }
       }
+
       this.traverse(path)
     },
     visitVariableDeclarator(path) {
@@ -180,20 +182,15 @@ async function addWriteActionInputs({
             (property) =>
               n.ObjectProperty.check(property) &&
               n.Identifier.check(property.key) &&
-              property.key.name ===
-                `${protocolKey}${pascalCase(productId)}WriteActionInputs`,
+              property.key.name === `${fullProductname}WriteActionInputs`,
           )
         ) {
           return false
         }
 
         const objectProperty = b.objectProperty(
-          b.identifier(
-            `${protocolKey}${pascalCase(productId)}WriteActionInputs`,
-          ),
-          b.identifier(
-            `${protocolKey}${pascalCase(productId)}WriteActionInputs`,
-          ),
+          b.identifier(`${fullProductname}${node.id.name}`),
+          b.identifier(`${fullProductname}${node.id.name}`),
         )
         objectProperty.shorthand = true
         node.init.properties.push(objectProperty)
@@ -201,24 +198,21 @@ async function addWriteActionInputs({
           node.init.properties,
           (entry) => ((entry as n.ObjectProperty).key as n.Identifier).name,
         )
-      } else if (node.id.name === 'GetTransactionParamsInputSchema') {
+      } else if (node.id.name === 'GetTransactionParamsSchema') {
         if (
           !n.CallExpression.check(node.init) ||
           !n.ArrayExpression.check(node.init.arguments[0]) ||
           node.init.arguments[0].elements.some(
             (element) =>
               n.Identifier.check(element) &&
-              element.name ===
-                `${protocolKey}${pascalCase(productId)}GetTxParamsInput`,
+              element.name === `${fullProductname}GetTransactionParamsSchema`,
           )
         ) {
           return false
         }
 
         node.init.arguments[0].elements.push(
-          b.identifier(
-            `${protocolKey}${pascalCase(productId)}GetTxParamsInput`,
-          ),
+          b.identifier(`${fullProductname}${node.id.name}`),
         )
         sortEntries(
           node.init.arguments[0].elements,

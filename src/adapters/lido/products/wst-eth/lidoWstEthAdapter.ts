@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { GetTransactionParamsInput } from '../../..'
+import { GetTransactionParams } from '../../..'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -104,7 +104,7 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
    */
   getTransactionParams(
     _inputs: Extract<
-      GetTransactionParamsInput,
+      GetTransactionParams,
       {
         protocolId: typeof Protocol.Lido
         productId: 'st-eth'
