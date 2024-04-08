@@ -7,5 +7,6 @@ export type {
   DefiPositionResponse,
   DefiProfitsResponse,
 } from './types/response'
+export { WriteActions } from './types/writeActions'
 export type { GetTransactionParams } from './adapters'
 export { GetTransactionParamsSchema, WriteActionInputs } from './adapters'
