@@ -1,0 +1,30 @@
+[
+  {
+    "protocolToken": {
+      "address": "0x004626A008B1aCdC4c74ab51644093b155e59A23",
+      "name": "Staked EURA",
+      "symbol": "stEUR",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x9485aca5bbBE1667AD97c7fE7C4531a624C8b1ED",
+      "name": "EURA (previously agEUR)",
+      "symbol": "EURA",
+      "decimals": 18
+    }
+  },
+  {
+    "protocolToken": {
+      "address": "0x0022228a2cc5E7eF0274A7Baa600d44da5aB5776",
+      "name": "Staked USDA",
+      "symbol": "stUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    }
+  }
+]

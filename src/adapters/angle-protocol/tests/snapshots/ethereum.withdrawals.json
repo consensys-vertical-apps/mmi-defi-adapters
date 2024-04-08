@@ -1,0 +1,40 @@
+{
+  "snapshot": {
+    "protocolId": "angle-protocol",
+    "name": "AngleProtocol",
+    "description": "AngleProtocol defi adapter",
+    "siteUrl": "https://angle.money",
+    "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-blue.png",
+    "positionType": "stake",
+    "chainId": 1,
+    "productId": "savings",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "blockNumber": 19404492,
+        "transactionHash": "0x3dcdfad40591f758315c7fbe183d16f7ac5ed777338e5457e441e6e281dc75e5",
+        "protocolToken": {
+          "address": "0x004626A008B1aCdC4c74ab51644093b155e59A23",
+          "name": "Staked EURA",
+          "symbol": "stEUR",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
+            "name": "agEUR",
+            "symbol": "AGEUR",
+            "decimals": 18,
+            "type": "underlying",
+            "balanceRaw": "10894166681882158652n",
+            "price": 1.095336805850466,
+            "balance": 10.894166681882158
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -29,6 +29,14 @@ import AaveV3VariableDebtTokenEthereumVariableDebtTokenV3 from '../../adapters/a
 import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/fantom.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
+import AngleProtocolSavingsArbitrumProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/arbitrum.protocol-tokens.json'
+import AngleProtocolSavingsAvalancheProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/avalanche.protocol-tokens.json'
+import AngleProtocolSavingsBaseProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/base.protocol-tokens.json'
+import AngleProtocolSavingsBscProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/bsc.protocol-tokens.json'
+import AngleProtocolSavingsEthereumProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/ethereum.protocol-tokens.json'
+import AngleProtocolSavingsLineaProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/linea.protocol-tokens.json'
+import AngleProtocolSavingsOptimismProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/optimism.protocol-tokens.json'
+import AngleProtocolSavingsPolygonProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/polygon.protocol-tokens.json'
 import ChimpExchangePoolLineaProtocolToken from '../../adapters/chimp-exchange/products/pool/metadata/linea.protocol-token.json'
 import CompoundV2BorrowMarketEthereumProtocolToken from '../../adapters/compound-v2/products/borrow-market/metadata/ethereum.protocol-token.json'
 import CompoundV2SupplyMarketEthereumProtocolToken from '../../adapters/compound-v2/products/supply-market/metadata/ethereum.protocol-token.json'
@@ -371,6 +379,78 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'variable-debt-token-v3',
     }),
     AaveV3VariableDebtTokenPolygonVariableDebtTokenV3,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsArbitrumProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsAvalancheProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Base,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsBaseProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsBscProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsEthereumProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsLineaProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsOptimismProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsPolygonProtocolTokens,
   ],
   [
     metadataKey({
