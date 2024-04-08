@@ -4,40 +4,6 @@
     {
       "protocolId": "curve",
       "name": "Curve",
-      "description": "Curve pool adapter",
-      "siteUrl": "https://curve.fi/",
-      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
-      "positionType": "supply",
-      "chainId": 1,
-      "productId": "pool",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
-      "success": true,
-      "tokens": [],
-      "fromBlock": 19266949,
-      "toBlock": 19316971
-    },
-    {
-      "protocolId": "curve",
-      "name": "Curve staking",
-      "description": "Curve staking adapter",
-      "siteUrl": "https://curve.fi/",
-      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "staking",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
-      "success": true,
-      "tokens": [],
-      "fromBlock": 19266949,
-      "toBlock": 19316971
-    },
-    {
-      "protocolId": "curve",
-      "name": "Curve",
       "description": "Curve defi adapter",
       "siteUrl": "https:",
       "iconUrl": "https://",
