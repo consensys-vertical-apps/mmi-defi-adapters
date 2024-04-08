@@ -318,8 +318,8 @@ export const supportedProtocols: Record<
 
 export const WriteActionInputs = {
   AaveV3ATokenWriteActionInputs,
-  CompoundV2SupplyMarketWriteActionInputs,
   CompoundV2BorrowMarketWriteActionInputs,
+  CompoundV2SupplyMarketWriteActionInputs,
 }
 
 export const GetTransactionParamsInputSchema = z.union([

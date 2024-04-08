@@ -24,7 +24,6 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build2": "tsc -p tsconfig.build.json && ts-node src/scripts/buildSchemas.ts && tsc -p tsconfig.build.json",
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
     "build-schemas": "ts-node src/scripts/buildSchemas.ts",
