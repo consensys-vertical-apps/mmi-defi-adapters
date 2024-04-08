@@ -8,7 +8,7 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
-import { WriteActions } from '../../../../types/getTransactionParamsInput'
+import { WriteActions } from '../../../../types/writeActions'
 import { Protocol } from '../../../protocols'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
