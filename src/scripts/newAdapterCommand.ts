@@ -26,6 +26,7 @@ import { lpStakingAdapterTemplate } from './templates/lpStakingProtocolAdapter'
 import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import { testCases } from './templates/testCases'
 import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
+import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
 import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
 import b = types.builders
@@ -50,6 +51,7 @@ const Templates: Record<string, TemplateBuilder> = {
     compoundV2SupplyMarketForkAdapterTemplate,
   ['CompoundV2BorrowMarketForkAdapter']:
     compoundV2BorrowMarketForkAdapterTemplate,
+  ['VotingEscrowAdapter']: votingEscrowAdapterTemplate,
 }
 
 export function newAdapterCommand(

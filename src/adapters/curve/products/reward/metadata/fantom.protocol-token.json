@@ -1,21 +1,4 @@
 {
-  "0x2db0E83599a91b508Ac268a6197b8B14F5e72840": {
-    "protocolToken": {
-      "address": "0x2db0E83599a91b508Ac268a6197b8B14F5e72840",
-      "name": "Curve.fi WBTC/renBTC",
-      "symbol": "btcCRV",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5B5CFE992AdAC0C9D48E05854B2d91C73a003858",
-        "name": "Curve.fi WBTC/renBTC",
-        "symbol": "btcCRV",
-        "decimals": 18
-      }
-    ]
-  },
   "0x15bB164F9827De760174d3d3dAD6816eF50dE13c": {
     "protocolToken": {
       "address": "0x15bB164F9827De760174d3d3dAD6816eF50dE13c",
@@ -29,6 +12,23 @@
         "address": "0x27E611FD27b276ACbd5Ffd632E5eAEBEC9761E40",
         "name": "Curve.fi DAI/USDC",
         "symbol": "DAI+USDC",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xbC38bD19227F91424eD4132F630f51C9A42Fa338": {
+    "protocolToken": {
+      "address": "0xbC38bD19227F91424eD4132F630f51C9A42Fa338",
+      "name": "Curve.fi WBTC/renBTC",
+      "symbol": "btcCRV",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5B5CFE992AdAC0C9D48E05854B2d91C73a003858",
+        "name": "Curve.fi WBTC/renBTC",
+        "symbol": "btcCRV",
         "decimals": 18
       }
     ]

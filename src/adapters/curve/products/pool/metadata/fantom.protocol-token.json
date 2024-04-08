@@ -271,53 +271,6 @@
     ],
     "lpTokenManager": "0xC0B78F2e96De56d08C7608697680e935FE47295B"
   },
-  "0x228f20F430Fd7a6f5b1ABEA69A5AB8eB2973853c": {
-    "protocolToken": {
-      "address": "0x228f20F430Fd7a6f5b1ABEA69A5AB8eB2973853c",
-      "name": "eUSDT",
-      "symbol": "eUSDT",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x646796F89431F474B8D55A5c7425eC8696772a5e",
-        "name": "sUSDT_BNB",
-        "symbol": "sUSDT_BNB",
-        "decimals": 18
-      },
-      {
-        "address": "0x3d947fA82723B78E67730C113188bEd865167A31",
-        "name": "sUSDT_POLY",
-        "symbol": "sUSDT_POLY",
-        "decimals": 6
-      },
-      {
-        "address": "0x5211176FC476da0601b42CF71518D026fC093de6",
-        "name": "sUSDT_ARB",
-        "symbol": "sUSDT_ARB",
-        "decimals": 6
-      },
-      {
-        "address": "0x4045d826F2a1725Dc6975387ac8378950f965DDc",
-        "name": "sUSDt_AVA",
-        "symbol": "sUSDt_AVA",
-        "decimals": 6
-      },
-      {
-        "address": "0x40fc7408a060cBEf1fe63f7182870184d7ff95E3",
-        "name": "sUSDT_ETH",
-        "symbol": "sUSDT_ETH",
-        "decimals": 6
-      },
-      {
-        "address": "0x4A5Aa84Da4033a8Da887815423EB10C4eF24dC50",
-        "name": "sUSDT_OP",
-        "symbol": "sUSDT_OP",
-        "decimals": 6
-      }
-    ],
-    "lpTokenManager": "0x228f20F430Fd7a6f5b1ABEA69A5AB8eB2973853c"
-  },
   "0x939721CE04332ca04b100154E0C8FCbb4EBaf695": {
     "protocolToken": {
       "address": "0x939721CE04332ca04b100154E0C8FCbb4EBaf695",
@@ -352,5 +305,87 @@
       }
     ],
     "lpTokenManager": "0x939721CE04332ca04b100154E0C8FCbb4EBaf695"
+  },
+  "0x353bb1DfbC52bC3B0E7D264216B1455Df00F50be": {
+    "protocolToken": {
+      "address": "0x353bb1DfbC52bC3B0E7D264216B1455Df00F50be",
+      "name": "CrossCurve crvUSDC",
+      "symbol": "xCRVUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0cF1AA18aB7020973705aA9c46bbec6150E2782B",
+        "name": "scrvUSDC_e",
+        "symbol": "scrvUSDC_e",
+        "decimals": 18
+      },
+      {
+        "address": "0x3EE81e8a9368c891Cf54B19265ef2DF348142aB9",
+        "name": "scrvUSDC_ar",
+        "symbol": "scrvUSDC_ar",
+        "decimals": 18
+      },
+      {
+        "address": "0xCD9F2B048fa2284FA7D79bcACdF8c758d96E9BA3",
+        "name": "scrvUSDC_o",
+        "symbol": "scrvUSDC_o",
+        "decimals": 18
+      },
+      {
+        "address": "0x9be1Ae6175b106f26439CebAf2217D7815F684af",
+        "name": "sav3CRV_av",
+        "symbol": "sav3CRV_av",
+        "decimals": 18
+      },
+      {
+        "address": "0x8b697f95D8C9fBBCC597A89223B10B80369490A1",
+        "name": "scrvUSDC_p",
+        "symbol": "scrvUSDC_p",
+        "decimals": 18
+      },
+      {
+        "address": "0x309fAA41eBf82063EFa822b5030Fc0795c82FEb2",
+        "name": "scrvUSDC_b",
+        "symbol": "scrvUSDC_b",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x353bb1DfbC52bC3B0E7D264216B1455Df00F50be"
+  },
+  "0x5EcaC5fB1d9634F9E1c2DaB2381B9AdAAda5F80b": {
+    "protocolToken": {
+      "address": "0x5EcaC5fB1d9634F9E1c2DaB2381B9AdAAda5F80b",
+      "name": "CrossCurve 3crypto",
+      "symbol": "x3CRYPTO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe71286fC887189C562410af12eD521C8e58e5fA3",
+        "name": "s3crypto_e",
+        "symbol": "s3crypto_e",
+        "decimals": 18
+      },
+      {
+        "address": "0xFC2C4D0703D3522B74e0E06f364Ba2515DF6A74E",
+        "name": "s3crypto_ar",
+        "symbol": "s3crypto_ar",
+        "decimals": 18
+      },
+      {
+        "address": "0x4AC215b8B0acF9dA8ef50636145Bc80AFca30d79",
+        "name": "s3crypto_av",
+        "symbol": "s3crypto_av",
+        "decimals": 18
+      },
+      {
+        "address": "0xc7fbc3B9bC1F095189c6143D29e83Ee89325377e",
+        "name": "s3crypto_p",
+        "symbol": "s3crypto_p",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x5EcaC5fB1d9634F9E1c2DaB2381B9AdAAda5F80b"
   }
 }

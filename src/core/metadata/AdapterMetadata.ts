@@ -58,6 +58,7 @@ import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/sta
 import CurveStakingFantomProtocolToken from '../../adapters/curve/products/staking/metadata/fantom.protocol-token.json'
 import CurveStakingOptimismProtocolToken from '../../adapters/curve/products/staking/metadata/optimism.protocol-token.json'
 import CurveStakingPolygonProtocolToken from '../../adapters/curve/products/staking/metadata/polygon.protocol-token.json'
+import CurveVotingEscrowEthereumProtocolToken from '../../adapters/curve/products/voting-escrow/metadata/ethereum.protocol-token.json'
 import FluxBorrowMarketEthereumProtocolToken from '../../adapters/flux/products/borrow-market/metadata/ethereum.protocol-token.json'
 import FluxSupplyMarketEthereumProtocolToken from '../../adapters/flux/products/supply-market/metadata/ethereum.protocol-token.json'
 import GMXGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
@@ -81,8 +82,7 @@ import { Protocol } from '../../adapters/protocols'
 import QuickswapV2PoolPolygonProtocolToken from '../../adapters/quickswap-v2/products/pool/metadata/polygon.protocol-token.json'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
-import StargateVestingArbitrumVestingToken from '../../adapters/stargate/products/vesting/metadata/arbitrum.vesting-token.json'
-import StargateVestingEthereumVestingToken from '../../adapters/stargate/products/vesting/metadata/ethereum.vesting-token.json'
+import StargateVotingEscrowEthereumProtocolToken from '../../adapters/stargate/products/voting-escrow/metadata/ethereum.protocol-token.json'
 import SushiswapV2PoolArbitrumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
 import SushiswapV2PoolAvalancheProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/avalanche.protocol-token.json'
 import SushiswapV2PoolBaseProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/base.protocol-token.json'
@@ -635,6 +635,15 @@ export const MetadataFiles = new Map<string, Json>([
   ],
   [
     metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'voting-escrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    CurveVotingEscrowEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
       protocolId: Protocol.Flux,
       productId: 'borrow-market',
       chainId: Chain.Ethereum,
@@ -831,23 +840,15 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargatePoolEthereumLpToken,
   ],
+
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'vesting',
-      chainId: Chain.Arbitrum,
-      fileKey: 'vesting-token',
-    }),
-    StargateVestingArbitrumVestingToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Stargate,
-      productId: 'vesting',
+      productId: 'voting-escrow',
       chainId: Chain.Ethereum,
-      fileKey: 'vesting-token',
+      fileKey: 'protocol-token',
     }),
-    StargateVestingEthereumVestingToken,
+    StargateVotingEscrowEthereumProtocolToken,
   ],
   [
     metadataKey({

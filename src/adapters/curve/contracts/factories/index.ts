@@ -3,8 +3,10 @@
 /* eslint-disable */
 export { CrvMinter__factory } from "./CrvMinter__factory";
 export { CurveLPToken__factory } from "./CurveLPToken__factory";
+export { FeeDistributor__factory } from "./FeeDistributor__factory";
 export { GaugeDouble__factory } from "./GaugeDouble__factory";
 export { GaugeN__factory } from "./GaugeN__factory";
 export { GaugeSingle__factory } from "./GaugeSingle__factory";
 export { GaugeV4__factory } from "./GaugeV4__factory";
 export { StakingContract__factory } from "./StakingContract__factory";
+export { VotingEscrow__factory } from "./VotingEscrow__factory";
