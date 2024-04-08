@@ -651,6 +651,7 @@ export class DefiProvider {
       }
 
       const adapterResult = await runner(adapter, provider)
+
       return {
         ...protocolDetails,
         success: true,

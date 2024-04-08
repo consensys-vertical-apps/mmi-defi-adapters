@@ -166,21 +166,6 @@
           "balance": 29.004301062047034
         }
       ]
-    },
-    {
-      "protocolId": "convex",
-      "name": "Convex",
-      "description": "Convex pool adapter",
-      "siteUrl": "https://www.convexfinance.com/",
-      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
-      "positionType": "supply",
-      "chainId": 1,
-      "productId": "cvxcrv-wrapper",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
-      "success": true,
-      "tokens": []
     }
   ]
 }

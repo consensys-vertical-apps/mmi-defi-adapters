@@ -35,23 +35,6 @@
       ],
       "fromBlock": 18156819,
       "toBlock": 18163965
-    },
-    {
-      "protocolId": "stargate",
-      "name": "Stargate",
-      "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi",
-      "siteUrl": "https://stargate.finance/",
-      "iconUrl": "https://stargate.finance/favicons/favicon-light.svg",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "vesting",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
-      "success": true,
-      "tokens": [],
-      "fromBlock": 18156819,
-      "toBlock": 18163965
     }
   ]
 }
