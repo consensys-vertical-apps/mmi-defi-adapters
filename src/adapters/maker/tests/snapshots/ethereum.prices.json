@@ -9,7 +9,7 @@
       "iconUrl": "https://",
       "positionType": "supply",
       "chainId": 1,
-      "productId": "yield",
+      "productId": "s-dai",
       "assetDetails": {
         "type": "StandardErc20"
       },
