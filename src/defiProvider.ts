@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { supportedProtocols } from './adapters'
+import { GetTransactionParams, supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
@@ -20,7 +20,6 @@ import {
 } from './responseAdapters'
 import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
-import { GetTransactionParamsInput } from './types/getTransactionParamsInput'
 import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
   AdapterResponse,
@@ -331,9 +330,7 @@ export class DefiProvider {
     return this.runTaskForAdapter(adapter, provider!, runner)
   }
 
-  async getTransactionParams(
-    input: GetTransactionParamsInput & { chainId: Chain },
-  ): Promise<
+  async getTransactionParams(input: GetTransactionParams): Promise<
     AdapterResponse<{
       params: { to: string; data: string }
     }>
@@ -553,9 +550,9 @@ export class DefiProvider {
     })
   }
 
-  getSupport(input: {
-    filterChainIds: Chain[] | undefined
-    filterProtocolIds: Protocol[] | undefined
+  getSupport(input?: {
+    filterChainIds?: Chain[] | undefined
+    filterProtocolIds?: Protocol[] | undefined
   }) {
     return this.adaptersController.getSupport(input)
   }

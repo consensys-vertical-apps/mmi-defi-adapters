@@ -188,49 +188,6 @@ export function newAdapterCommand(
             default: template ? template : undefined,
             filter: (input: string) => Templates[input],
           },
-          {
-            type: 'input',
-            name: 'adapterClassName',
-            message:
-              'What PascalCase name should be used for the adapter class?',
-            default: ({
-              protocolKey,
-              productId,
-            }: {
-              protocolKey: string
-              productId: string
-            }) =>
-              `${inputProtocolKey ?? protocolKey}${pascalCase(
-                productId,
-              )}Adapter`,
-            validate: async (
-              input: string,
-              {
-                protocolId,
-                productId,
-              }: { protocolId: string; productId: string },
-            ) => {
-              if (!isPascalCase(input)) {
-                return 'Value must be PascalCase'
-              }
-
-              if (!input.endsWith('Adapter')) {
-                return 'The adapter class should end up with the word Adapter'
-              }
-
-              if (
-                await adapterFileExists(
-                  inputProtocolId ?? protocolId,
-                  productId,
-                  input,
-                )
-              ) {
-                return 'An adapter with that name already exists'
-              }
-
-              return true
-            },
-          },
         ]
 
         const initialAnswers: Partial<NewAdapterAnswers> = skipQuestions
@@ -242,19 +199,23 @@ export function newAdapterCommand(
               chainKeys: chainKeys.length ? chainKeys : ['Ethereum'],
               productId: kebabCase(product),
               templateBuilder: Templates[template],
-              adapterClassName: `${
-                inputProtocolKey ?? pascalCase(protocol)
-              }${pascalCase(product)}Adapter`,
             }
           : {
               protocolKey: inputProtocolKey,
               protocolId: inputProtocolId,
             }
 
-        const answers = await prompt<NewAdapterAnswers>(
+        const inquirerAnswers = await prompt<NewAdapterAnswers>(
           questions,
           initialAnswers,
         )
+
+        const answers = {
+          ...inquirerAnswers,
+          adapterClassName: `${inquirerAnswers.protocolKey}${pascalCase(
+            inquirerAnswers.productId,
+          )}Adapter`,
+        }
 
         logger.debug(answers, 'Create new adapter')
 
@@ -681,20 +642,6 @@ function buildAdapterFilePath(
   )
 
   return path.resolve(productPath, `${lowerFirst(adapterClassName)}.ts`)
-}
-
-async function adapterFileExists(
-  protocolId: string,
-  productId: string,
-  adapterClassName: string,
-): Promise<boolean> {
-  const adapterFilePath = buildAdapterFilePath(
-    protocolId,
-    productId,
-    adapterClassName,
-  )
-
-  return fileExists(adapterFilePath)
 }
 
 async function fileExists(filePath: string) {

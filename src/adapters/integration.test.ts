@@ -1,11 +1,10 @@
 import { promises as fs } from 'fs'
 import path from 'path'
-import { Chain, ChainName } from '../core/constants/chains'
+import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
-import { GetTransactionParamsInput } from '../types/getTransactionParamsInput'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
@@ -16,15 +15,15 @@ import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
 import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
 import { testCases as fluxTestCases } from './flux/tests/testCases'
-import { testCases as gMXTestCases } from './gmx/tests/testCases'
+import { testCases as gmxTestCases } from './gmx/tests/testCases'
 import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
-import { testCases as morphoAaveV3ETHOptimizerTestCases } from './morpho-aave-v3-eth/tests/testCases'
+import { testCases as morphoAaveV3TestCases } from './morpho-aave-v3/tests/testCases'
 import { testCases as morphoBlueTestCases } from './morpho-blue/tests/testCases'
-import { testCases as morphoCompoundV2OptimizerTestCases } from './morpho-compound-v2/tests/testCases'
+import { testCases as morphoCompoundV2TestCases } from './morpho-compound-v2/tests/testCases'
 import { testCases as pancakeswapV2TestCases } from './pancakeswap-v2/tests/testCases'
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
@@ -38,6 +37,7 @@ import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
+import { GetTransactionParams } from '.'
 
 const TEST_TIMEOUT = 300000
 
@@ -55,21 +55,15 @@ function runAllTests() {
   runProtocolTests(Protocol.Convex, convexTestCases)
   runProtocolTests(Protocol.Curve, curveTestCases)
   runProtocolTests(Protocol.Flux, fluxTestCases)
-  runProtocolTests(Protocol.GMX, gMXTestCases)
+  runProtocolTests(Protocol.Gmx, gmxTestCases)
   runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
   runProtocolTests(Protocol.Lido, lidoTestCases)
   runProtocolTests(Protocol.Maker, makerTestCases)
   runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
   runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
-  runProtocolTests(
-    Protocol.MorphoAaveV3ETHOptimizer,
-    morphoAaveV3ETHOptimizerTestCases,
-  )
+  runProtocolTests(Protocol.MorphoAaveV3, morphoAaveV3TestCases)
   runProtocolTests(Protocol.MorphoBlue, morphoBlueTestCases)
-  runProtocolTests(
-    Protocol.MorphoCompoundV2,
-    morphoCompoundV2OptimizerTestCases,
-  )
+  runProtocolTests(Protocol.MorphoCompoundV2, morphoCompoundV2TestCases)
   runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
   runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
   runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
@@ -366,7 +360,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               ...testCase.input,
               protocolId,
               chainId: testCase.chainId,
-            } as GetTransactionParamsInput & { chainId: Chain }
+            } as GetTransactionParams
 
             const response = await defiProvider.getTransactionParams(inputs)
 

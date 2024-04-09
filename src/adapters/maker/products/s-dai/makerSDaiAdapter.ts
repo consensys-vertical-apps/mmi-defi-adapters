@@ -18,8 +18,8 @@ import { McdPot__factory } from '../../contracts'
 
 const MCD_POT_ADDRESS = '0x197e90f9fad81970ba7976f33cbd77088e5d7cf7'
 
-export class SDaiAdapter extends SimplePoolAdapter {
-  productId = 'yield'
+export class MakerSDaiAdapter extends SimplePoolAdapter {
+  productId = 's-dai'
 
   getProtocolDetails(): ProtocolDetails {
     return {

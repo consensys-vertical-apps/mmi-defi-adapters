@@ -4,7 +4,10 @@ export { TimePeriod } from './core/constants/timePeriod'
 export { DefiProvider } from './defiProvider'
 export { PositionType } from './types/adapter'
 export type {
+  AdapterResponse,
   DefiPositionResponse,
   DefiProfitsResponse,
 } from './types/response'
-export type { GetTransactionParamsInput } from './types/getTransactionParamsInput'
+export { WriteActions } from './types/writeActions'
+export type { GetTransactionParams } from './adapters'
+export { GetTransactionParamsSchema, WriteActionInputs } from './adapters'

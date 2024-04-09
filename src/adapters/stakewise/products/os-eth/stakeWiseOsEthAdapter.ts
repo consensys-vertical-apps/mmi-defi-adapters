@@ -18,11 +18,11 @@ import {
   Vault__factory,
   VaultsRegistry__factory,
   OsEthController__factory,
-} from '../../../stakewise/contracts'
+} from '../../contracts'
 
 const amount1 = parseEther('1')
 
-export class StakewiseOsEthAdapter extends SimplePoolAdapter {
+export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
   productId = 'os-eth'
 
   #underlyingToken: Erc20Metadata = {

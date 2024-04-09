@@ -9,7 +9,7 @@
       "iconUrl": "https://izumi.finance/assets/sidebar/logo.svg",
       "positionType": "supply",
       "chainId": 59144,
-      "productId": "iziswap",
+      "productId": "pool",
       "assetDetails": {
         "type": "NonStandardErc20"
       },

@@ -63,6 +63,7 @@
     "@typescript-eslint/parser": "^6.2.1",
     "chalk": "^4.1.2",
     "commander": "^11.0.0",
+    "dotenv": "^16.4.5",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.0",
@@ -89,7 +90,6 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "dotenv": "^16.3.1",
     "ethers": "^6.7.1",
     "evm-maths": "^6.0.0",
     "pino": "^8.15.0",

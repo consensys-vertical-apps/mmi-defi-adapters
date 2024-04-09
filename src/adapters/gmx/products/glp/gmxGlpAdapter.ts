@@ -33,7 +33,7 @@ import {
   Vault__factory,
 } from '../../contracts'
 
-type GMXGlpAdapterMetadata = {
+type GmxGlpAdapterMetadata = {
   glpRewardRouter: string
   vaultAddress: string
   rewardReaderAddress: string
@@ -43,7 +43,7 @@ type GMXGlpAdapterMetadata = {
   underlyingTokens: Erc20Metadata[]
 }
 
-export class GMXGlpAdapter
+export class GmxGlpAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
@@ -67,7 +67,7 @@ export class GMXGlpAdapter
   }
 
   @CacheToFile({ fileKey: 'glp' })
-  async buildMetadata(): Promise<GMXGlpAdapterMetadata> {
+  async buildMetadata(): Promise<GmxGlpAdapterMetadata> {
     const glpAddresses: Partial<
       Record<
         Chain,

@@ -1,3 +1,4 @@
+import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
@@ -5,10 +6,7 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
-import {
-  GetTransactionParamsInput,
-  WriteActions,
-} from '../../../../types/getTransactionParamsInput'
+import { WriteActions } from '../../../../types/writeActions'
 import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 import { Protocol } from '../../../protocols'
@@ -52,13 +50,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
     return reserveData.liquidityRate
   }
 
-  getTransactionParams({
-    action,
-    inputs,
-  }: Extract<
-    GetTransactionParamsInput,
-    { protocolId: typeof Protocol.AaveV3; productId: 'a-token' }
-  >) {
+  getTransactionParams({ action, inputs }: GetTransactionParams) {
     const poolContract = PoolContract__factory.connect(
       getAddress(this.chainId),
       this.provider,
@@ -74,10 +66,12 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           referralCode,
         )
       }
+
       case WriteActions.Withdraw: {
         const { asset, amount, to } = inputs
         return poolContract.withdraw.populateTransaction(asset, amount, to)
       }
+
       case WriteActions.Borrow: {
         const { asset, amount, interestRateMode, referralCode, onBehalfOf } =
           inputs
@@ -89,6 +83,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           onBehalfOf,
         )
       }
+
       case WriteActions.Repay: {
         const { asset, amount, interestRateMode, onBehalfOf } = inputs
         return poolContract.repay.populateTransaction(
@@ -98,9 +93,6 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           onBehalfOf,
         )
       }
-
-      default:
-        throw new Error('Method not supported')
     }
   }
 }
@@ -112,3 +104,60 @@ const getAddress = (chainId: Chain) => {
 
   throw new Error('Chain not supported')
 }
+
+export const WriteActionInputs = {
+  [WriteActions.Deposit]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    onBehalfOf: z.string(),
+    referralCode: z.number(),
+  }),
+  [WriteActions.Withdraw]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    to: z.string(),
+  }),
+  [WriteActions.Borrow]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    interestRateMode: z.number(),
+    referralCode: z.number(),
+    onBehalfOf: z.string(),
+  }),
+  [WriteActions.Repay]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    interestRateMode: z.number(),
+    onBehalfOf: z.string(),
+  }),
+}
+
+const commonFields = {
+  protocolId: z.literal(Protocol.AaveV3),
+  productId: z.literal('a-token'),
+  chainId: z.nativeEnum(Chain),
+}
+
+export const GetTransactionParamsSchema = z.discriminatedUnion('action', [
+  z.object({
+    ...commonFields,
+    action: z.literal(WriteActions.Deposit),
+    inputs: WriteActionInputs[WriteActions.Deposit],
+  }),
+  z.object({
+    ...commonFields,
+    action: z.literal(WriteActions.Withdraw),
+    inputs: WriteActionInputs[WriteActions.Withdraw],
+  }),
+  z.object({
+    ...commonFields,
+    action: z.literal(WriteActions.Borrow),
+    inputs: WriteActionInputs[WriteActions.Borrow],
+  }),
+  z.object({
+    ...commonFields,
+    action: z.literal(WriteActions.Repay),
+    inputs: WriteActionInputs[WriteActions.Repay],
+  }),
+])
+export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>

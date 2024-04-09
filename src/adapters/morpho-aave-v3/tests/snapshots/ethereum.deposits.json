@@ -1,6 +1,6 @@
 {
   "snapshot": {
-    "protocolId": "morpho-aave-v3-eth",
+    "protocolId": "morpho-aave-v3",
     "name": "MorphoAaveV3",
     "description": "MorphoAaveV3 DeFi adapter on the supply side",
     "siteUrl": "https://aavev3.morpho.org/",
@@ -26,14 +26,14 @@
             "name": "Wrapped Ether",
             "symbol": "WETH",
             "decimals": 18,
-            "balanceRaw": "5694852249794228067n",
+            "balanceRaw": "645304542896973n",
             "type": "underlying",
-            "price": 2624.36731,
-            "balance": 5.694852249794228
+            "price": 2542.80383827,
+            "balance": 0.000645304542896973
           }
         ],
-        "blockNumber": 19223914,
-        "transactionHash": "0x0c5e2a2c6e5d3ed1d6f35d08968a29d9104e90e1e61ca58cecdc41a94c349772"
+        "blockNumber": 19025683,
+        "transactionHash": "0xb7a653941d905d34ba4d0e147eafc1977e184958cbc381c204f35b5ab98c4727"
       }
     ]
   }

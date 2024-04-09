@@ -56,7 +56,7 @@ const contractAddresses: Partial<Record<Chain, SyncSwapAdapterContracts>> = {
   },
 }
 
-export class SyncswapPoolAdapter extends SimplePoolAdapter {
+export class SyncSwapPoolAdapter extends SimplePoolAdapter {
   productId = 'pool'
 
   getProtocolDetails(): ProtocolDetails {

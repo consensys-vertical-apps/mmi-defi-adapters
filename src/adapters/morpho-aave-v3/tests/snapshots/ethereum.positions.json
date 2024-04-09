@@ -2,7 +2,7 @@
   "blockNumber": 18761230,
   "snapshot": [
     {
-      "protocolId": "morpho-aave-v3-eth",
+      "protocolId": "morpho-aave-v3",
       "name": "MorphoAaveV3",
       "description": "MorphoAaveV3 DeFi adapter on the supply side",
       "siteUrl": "https://aavev3.morpho.org/",
@@ -86,7 +86,7 @@
       ]
     },
     {
-      "protocolId": "morpho-aave-v3-eth",
+      "protocolId": "morpho-aave-v3",
       "name": "MorphoAaveV3",
       "description": "MorphoAaveV3 DeFi adapter on the borrow side",
       "siteUrl": "https://aavev3.morpho.org/",

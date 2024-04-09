@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
-import 'dotenv/config'
 import { DefiProvider } from '../defiProvider'
 import { blockAverage } from './blockAverage'
 import { buildMetadata } from './buildMetadata'

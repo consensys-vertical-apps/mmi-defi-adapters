@@ -1,3 +1,4 @@
+import { GetTransactionParams } from '../adapters'
 import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
@@ -13,7 +14,6 @@ import type {
   ProtocolTokenTvl,
 } from './adapter'
 import type { Erc20Metadata } from './erc20Metadata'
-import { GetTransactionParamsInput } from './getTransactionParamsInput'
 
 export interface IProtocolAdapter {
   /**
@@ -74,7 +74,7 @@ export interface IProtocolAdapter {
    * @returns {Promise<{to:string, data: string}>} transaction
    */
   getTransactionParams?(
-    input: GetTransactionParamsInput,
+    input: GetTransactionParams,
   ): Promise<{ to: string; data: string }>
 
   /**
