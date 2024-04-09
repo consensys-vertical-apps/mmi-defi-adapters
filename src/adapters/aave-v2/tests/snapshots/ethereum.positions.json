@@ -17,8 +17,8 @@
       "tokens": [
         {
           "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
-          "name": "Aave interest bearing WBTC",
-          "symbol": "aWBTC",
+          "name": "Aave WBTC",
+          "symbol": "AWBTC",
           "decimals": 8,
           "balanceRaw": "38951892054n",
           "type": "protocol",
@@ -39,8 +39,8 @@
         },
         {
           "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
-          "name": "Aave interest bearing WETH",
-          "symbol": "aWETH",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
           "decimals": 18,
           "balanceRaw": "812596572491727080972n",
           "type": "protocol",
@@ -60,21 +60,6 @@
           "balance": 812.5965724917271
         }
       ]
-    },
-    {
-      "protocolId": "aave-v2",
-      "name": "Aave v2 StableDebtToken",
-      "description": "Aave v2 defi adapter for stable interest-accruing token",
-      "siteUrl": "https://aave.com/",
-      "iconUrl": "https://aave.com/favicon.ico",
-      "positionType": "borrow",
-      "chainId": 1,
-      "productId": "stable-debt-token",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
-      "success": true,
-      "tokens": []
     },
     {
       "protocolId": "aave-v2",

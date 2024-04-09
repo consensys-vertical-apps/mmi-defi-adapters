@@ -13,6 +13,7 @@ import {
 } from './aave-v3/products/a-token/aaveV3ATokenAdapter'
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
+import { AngleProtocolSavingsAdapter } from './angle-protocol/products/savings/angleProtocolSavingsAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import {
@@ -32,6 +33,7 @@ import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAda
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
+import { CurveVotingEscrowAdapter } from './curve/products/voting-escrow/curveVotingEscrowAdapter'
 import { FluxBorrowMarketAdapter } from './flux/products/borrow-market/fluxBorrowMarketAdapter'
 import { FluxSupplyMarketAdapter } from './flux/products/supply-market/fluxSupplyMarketAdapter'
 import { GmxGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
@@ -56,7 +58,7 @@ import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2
 import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
 import { StakeWiseOsEthAdapter } from './stakewise/products/os-eth/stakeWiseOsEthAdapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
-import { StargateVestingAdapter } from './stargate/products/vesting/stargateVestingAdapter'
+import { StargateVotingEscrowAdapter } from './stargate/products/voting-escrow/stargateVotingEscrowAdapter'
 import { SushiswapV2PoolAdapter } from './sushiswap-v2/products/pool/sushiswapV2PoolAdapter'
 import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { SyncSwapPoolAdapter } from './syncswap/products/pool/syncSwapPoolAdapter'
@@ -126,6 +128,17 @@ export const supportedProtocols: Record<
     ],
   },
 
+  [Protocol.AngleProtocol]: {
+    [Chain.Ethereum]: [AngleProtocolSavingsAdapter],
+    [Chain.Optimism]: [AngleProtocolSavingsAdapter],
+    [Chain.Polygon]: [AngleProtocolSavingsAdapter],
+    [Chain.Arbitrum]: [AngleProtocolSavingsAdapter],
+    [Chain.Linea]: [AngleProtocolSavingsAdapter],
+    [Chain.Bsc]: [AngleProtocolSavingsAdapter],
+    [Chain.Avalanche]: [AngleProtocolSavingsAdapter],
+    [Chain.Base]: [AngleProtocolSavingsAdapter],
+  },
+
   [Protocol.CarbonDeFi]: {
     [Chain.Ethereum]: [CarbonDeFiStrategiesAdapter],
   },
@@ -158,6 +171,7 @@ export const supportedProtocols: Record<
       CurvePoolAdapter,
       CurveStakingAdapter,
       CurveRewardAdapter,
+      CurveVotingEscrowAdapter,
     ],
     [Chain.Polygon]: [
       CurvePoolAdapter,
@@ -180,7 +194,7 @@ export const supportedProtocols: Record<
       CurveStakingAdapter,
       CurveRewardAdapter,
     ],
-    [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
+    // [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
   },
 
   [Protocol.Flux]: {
@@ -270,8 +284,8 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Stargate]: {
-    [Chain.Ethereum]: [StargatePoolAdapter, StargateVestingAdapter],
-    [Chain.Arbitrum]: [StargatePoolAdapter, StargateVestingAdapter],
+    [Chain.Ethereum]: [StargatePoolAdapter, StargateVotingEscrowAdapter],
+    [Chain.Arbitrum]: [StargatePoolAdapter],
   },
 
   [Protocol.SushiswapV2]: {

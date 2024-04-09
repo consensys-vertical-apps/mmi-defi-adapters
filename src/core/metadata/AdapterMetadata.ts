@@ -29,6 +29,14 @@ import AaveV3VariableDebtTokenEthereumVariableDebtTokenV3 from '../../adapters/a
 import AaveV3VariableDebtTokenFantomVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/fantom.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenOptimismVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/optimism.variable-debt-token-v3.json'
 import AaveV3VariableDebtTokenPolygonVariableDebtTokenV3 from '../../adapters/aave-v3/products/variable-debt-token/metadata/polygon.variable-debt-token-v3.json'
+import AngleProtocolSavingsArbitrumProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/arbitrum.protocol-tokens.json'
+import AngleProtocolSavingsAvalancheProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/avalanche.protocol-tokens.json'
+import AngleProtocolSavingsBaseProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/base.protocol-tokens.json'
+import AngleProtocolSavingsBscProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/bsc.protocol-tokens.json'
+import AngleProtocolSavingsEthereumProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/ethereum.protocol-tokens.json'
+import AngleProtocolSavingsLineaProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/linea.protocol-tokens.json'
+import AngleProtocolSavingsOptimismProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/optimism.protocol-tokens.json'
+import AngleProtocolSavingsPolygonProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/polygon.protocol-tokens.json'
 import ChimpExchangePoolLineaProtocolToken from '../../adapters/chimp-exchange/products/pool/metadata/linea.protocol-token.json'
 import CompoundV2BorrowMarketEthereumProtocolToken from '../../adapters/compound-v2/products/borrow-market/metadata/ethereum.protocol-token.json'
 import CompoundV2SupplyMarketEthereumProtocolToken from '../../adapters/compound-v2/products/supply-market/metadata/ethereum.protocol-token.json'
@@ -58,6 +66,7 @@ import CurveStakingEthereumProtocolToken from '../../adapters/curve/products/sta
 import CurveStakingFantomProtocolToken from '../../adapters/curve/products/staking/metadata/fantom.protocol-token.json'
 import CurveStakingOptimismProtocolToken from '../../adapters/curve/products/staking/metadata/optimism.protocol-token.json'
 import CurveStakingPolygonProtocolToken from '../../adapters/curve/products/staking/metadata/polygon.protocol-token.json'
+import CurveVotingEscrowEthereumProtocolToken from '../../adapters/curve/products/voting-escrow/metadata/ethereum.protocol-token.json'
 import FluxBorrowMarketEthereumProtocolToken from '../../adapters/flux/products/borrow-market/metadata/ethereum.protocol-token.json'
 import FluxSupplyMarketEthereumProtocolToken from '../../adapters/flux/products/supply-market/metadata/ethereum.protocol-token.json'
 import GmxGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
@@ -81,8 +90,7 @@ import { Protocol } from '../../adapters/protocols'
 import QuickswapV2PoolPolygonProtocolToken from '../../adapters/quickswap-v2/products/pool/metadata/polygon.protocol-token.json'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
-import StargateVestingArbitrumVestingToken from '../../adapters/stargate/products/vesting/metadata/arbitrum.vesting-token.json'
-import StargateVestingEthereumVestingToken from '../../adapters/stargate/products/vesting/metadata/ethereum.vesting-token.json'
+import StargateVotingEscrowEthereumProtocolToken from '../../adapters/stargate/products/voting-escrow/metadata/ethereum.protocol-token.json'
 import SushiswapV2PoolArbitrumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
 import SushiswapV2PoolAvalancheProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/avalanche.protocol-token.json'
 import SushiswapV2PoolBaseProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/base.protocol-token.json'
@@ -374,6 +382,78 @@ export const MetadataFiles = new Map<string, Json>([
   ],
   [
     metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsArbitrumProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsAvalancheProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Base,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsBaseProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsBscProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsEthereumProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsLineaProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsOptimismProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'savings',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-tokens',
+    }),
+    AngleProtocolSavingsPolygonProtocolTokens,
+  ],
+  [
+    metadataKey({
       protocolId: Protocol.ChimpExchange,
       productId: 'pool',
       chainId: Chain.Linea,
@@ -635,6 +715,15 @@ export const MetadataFiles = new Map<string, Json>([
   ],
   [
     metadataKey({
+      protocolId: Protocol.Curve,
+      productId: 'voting-escrow',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    CurveVotingEscrowEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
       protocolId: Protocol.Flux,
       productId: 'borrow-market',
       chainId: Chain.Ethereum,
@@ -831,23 +920,15 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargatePoolEthereumLpToken,
   ],
+
   [
     metadataKey({
       protocolId: Protocol.Stargate,
-      productId: 'vesting',
-      chainId: Chain.Arbitrum,
-      fileKey: 'vesting-token',
-    }),
-    StargateVestingArbitrumVestingToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Stargate,
-      productId: 'vesting',
+      productId: 'voting-escrow',
       chainId: Chain.Ethereum,
-      fileKey: 'vesting-token',
+      fileKey: 'protocol-token',
     }),
-    StargateVestingEthereumVestingToken,
+    StargateVotingEscrowEthereumProtocolToken,
   ],
   [
     metadataKey({

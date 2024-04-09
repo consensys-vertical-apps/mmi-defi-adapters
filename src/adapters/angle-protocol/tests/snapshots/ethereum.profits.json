@@ -1,0 +1,40 @@
+{
+  "blockNumber": 19410813,
+  "snapshot": [
+    {
+      "protocolId": "angle-protocol",
+      "name": "AngleProtocol",
+      "description": "AngleProtocol defi adapter",
+      "siteUrl": "https://angle.money",
+      "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-blue.png",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "savings",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x004626A008B1aCdC4c74ab51644093b155e59A23",
+          "name": "Staked EURA",
+          "symbol": "stEUR",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -1063.2970475903712,
+          "performance": -0.0042718996747267615,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 11560.400077566794,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 237344.56692833125,
+            "endPositionValue": 247841.66995830767
+          }
+        }
+      ],
+      "fromBlock": 19403667,
+      "toBlock": 19410813
+    }
+  ]
+}

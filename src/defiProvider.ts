@@ -129,13 +129,18 @@ export class DefiProvider {
       return { tokens }
     }
 
-    return this.runForAllProtocolsAndChains({
-      runner,
-      filterProtocolIds,
-      filterChainIds,
+    return (
+      await this.runForAllProtocolsAndChains({
+        runner,
+        filterProtocolIds,
+        filterChainIds,
 
-      method: 'getPositions',
-    })
+        method: 'getPositions',
+      })
+    ).filter(
+      (result) =>
+        !result.success || (result.success && result.tokens.length > 0),
+    )
   }
 
   async getProfits({
@@ -198,12 +203,17 @@ export class DefiProvider {
       return profits
     }
 
-    return this.runForAllProtocolsAndChains({
-      runner,
-      filterProtocolIds,
-      filterChainIds,
-      method: 'getProfits',
-    })
+    return (
+      await this.runForAllProtocolsAndChains({
+        runner,
+        filterProtocolIds,
+        filterChainIds,
+        method: 'getProfits',
+      })
+    ).filter(
+      (result) =>
+        !result.success || (result.success && result.tokens.length > 0),
+    )
   }
 
   async unwrap({
@@ -638,6 +648,7 @@ export class DefiProvider {
       }
 
       const adapterResult = await runner(adapter, provider)
+
       return {
         ...protocolDetails,
         success: true,

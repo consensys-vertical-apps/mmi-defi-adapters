@@ -35,23 +35,6 @@
       ],
       "fromBlock": 19177807,
       "toBlock": 19184953
-    },
-    {
-      "protocolId": "curve",
-      "name": "Curve staking",
-      "description": "Curve staking adapter",
-      "siteUrl": "https://curve.fi/",
-      "iconUrl": "https://raw.githubusercontent.com/MetaMask/contract-metadata/master/images/crv.svg",
-      "positionType": "stake",
-      "chainId": 1,
-      "productId": "staking",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
-      "success": true,
-      "tokens": [],
-      "fromBlock": 19177807,
-      "toBlock": 19184953
     }
   ]
 }
