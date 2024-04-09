@@ -1,0 +1,43 @@
+{
+  "snapshot": {
+    "protocolId": "velocore",
+    "name": "Velocore",
+    "description": "Velocore pool adapter",
+    "siteUrl": "https://linea.velocore.xyz",
+    "iconUrl": "https://static.velocore.xyz/images/59144/favicon.png",
+    "positionType": "supply",
+    "chainId": 59144,
+    "productId": "pool",
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x2f631c39bb690c46754c727a158b6b9e4571c726ac13a816a6a93f4548f8784c",
+        "protocolToken": {
+          "address": "0x1d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+          "name": "Velocore LP: USDT+ in USD+ pool",
+          "symbol": "Velocore LP: USDT+ in USD+ pool",
+          "decimals": 6,
+          "tokenId": "2"
+        },
+        "tokens": [
+          {
+            "name": "Velocore LP: USDT+ in USD+ pool",
+            "decimals": 6,
+            "symbol": "Velocore LP: USDT+ in USD+ pool",
+            "address": "0x1d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+            "tokenHash": "0x0200000000000000000000021d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+            "tokenId": "2",
+            "balanceRaw": "2233580n",
+            "type": "underlying",
+            "blockNumber": 3530947,
+            "balance": 2.23358
+          }
+        ],
+        "blockNumber": 3530947
+      }
+    ]
+  }
+}

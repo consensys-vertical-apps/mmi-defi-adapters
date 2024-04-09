@@ -51,6 +51,7 @@ import { SwellSwEthAdapter } from './swell/products/sw-eth/swellSwEthAdapter'
 import { SyncswapPoolAdapter } from './syncswap/products/pool/syncswapPoolAdapter'
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
+import { VelocorePoolAdapter } from './velocore/products/pool/velocorePoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
 export const supportedProtocols: Record<
@@ -310,6 +311,10 @@ export const supportedProtocols: Record<
     [Chain.Polygon]: [UniswapV3PoolAdapter],
     [Chain.Bsc]: [UniswapV3PoolAdapter],
     [Chain.Base]: [UniswapV3PoolAdapter],
+  },
+
+  [Protocol.Velocore]: {
+    [Chain.Linea]: [VelocorePoolAdapter],
   },
 
   [Protocol.Xfai]: {

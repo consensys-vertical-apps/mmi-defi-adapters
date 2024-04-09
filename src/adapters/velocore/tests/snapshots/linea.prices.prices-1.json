@@ -1,0 +1,54 @@
+{
+  "blockNumber": 3508362,
+  "snapshot": [
+    {
+      "protocolId": "velocore",
+      "name": "Velocore",
+      "description": "Velocore pool adapter",
+      "siteUrl": "https://linea.velocore.xyz",
+      "iconUrl": "https://static.velocore.xyz/images/59144/favicon.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xe2c67A9B15e9E7FF8A9Cb0dFb8feE5609923E5DB",
+          "name": "Velocore LP: USDC + ETH",
+          "symbol": "USDC-ETH-VLP",
+          "decimals": 12,
+          "tokenHash": "0x000000000000000000000000e2c67a9b15e9e7ff8a9cb0dfb8fee5609923e5db",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "16692588966949000n",
+              "underlyingRate": 0.016692588966949,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "59906000n",
+              "underlyingRate": 59.906,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
