@@ -212,11 +212,13 @@ export class DefiProvider {
     filterProtocolIds,
     filterChainIds,
     filterProtocolToken,
+    filterTokenId,
     blockNumbers,
   }: {
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
     filterProtocolToken?: string
+    filterTokenId?: string
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<PricePerShareResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
@@ -233,6 +235,9 @@ export class DefiProvider {
         ? [
             {
               address: filterProtocolToken,
+              ...(filterTokenId !== undefined
+                ? { tokenId: filterTokenId }
+                : {}),
             },
           ]
         : await adapter.getProtocolTokens()

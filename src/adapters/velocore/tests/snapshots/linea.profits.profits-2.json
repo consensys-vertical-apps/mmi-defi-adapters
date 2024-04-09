@@ -1,0 +1,64 @@
+{
+  "blockNumber": 3508362,
+  "snapshot": [
+    {
+      "protocolId": "velocore",
+      "name": "Velocore",
+      "description": "Velocore pool adapter",
+      "siteUrl": "https://linea.velocore.xyz",
+      "iconUrl": "https://static.velocore.xyz/images/59144/favicon.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x1d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+          "name": "Velocore LP: USDT+ in USD+ pool",
+          "symbol": "Velocore LP: USDT+ in USD+ pool",
+          "decimals": 6,
+          "tokenId": "2",
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0xB30e7A2E6f7389cA5dDc714Da4c991b7A1dCC88e",
+                "name": "Wrapped USDT+",
+                "symbol": "wUSDT+",
+                "decimals": 6,
+                "tokenHash": "0x000000000000000000000000b30e7a2e6f7389ca5ddc714da4c991b7a1dcc88e",
+                "type": "underlying",
+                "balanceRaw": "8934037n"
+              },
+              {
+                "name": "Velocore LP: USDT+ in USD+ pool",
+                "decimals": 6,
+                "symbol": "Velocore LP: USDT+ in USD+ pool",
+                "address": "0x1d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+                "tokenHash": "0x0200000000000000000000021d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+                "tokenId": "2",
+                "balanceRaw": "8934320n",
+                "type": "underlying",
+                "blockNumber": 3508362
+              }
+            ]
+          }
+        }
+      ],
+      "fromBlock": 3458053,
+      "toBlock": 3508362
+    }
+  ]
+}

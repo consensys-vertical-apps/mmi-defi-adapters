@@ -1,0 +1,1696 @@
+{
+  "blockNumber": 3508362,
+  "snapshot": [
+    {
+      "protocolId": "velocore",
+      "name": "Velocore",
+      "description": "Velocore pool adapter",
+      "siteUrl": "https://linea.velocore.xyz",
+      "iconUrl": "https://static.velocore.xyz/images/59144/favicon.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xE5fE1421e90927E191EdD02B35bcb46dc050FF20",
+          "name": "Velocore LP: BUSD + ETH",
+          "symbol": "BUSD-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000e5fe1421e90927e191edd02b35bcb46dc050ff20",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "16800410000203000n",
+              "underlyingRate": 0.016800410000203,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x7d43AABC515C356145049227CeE54B608342c0ad",
+              "name": "Binance USD",
+              "symbol": "BUSD",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000007d43aabc515c356145049227cee54b608342c0ad",
+              "type": "underlying",
+              "underlyingRateRaw": "59522356595908937000n",
+              "underlyingRate": 59.52235659590894,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x7d43AABC515C356145049227CeE54B608342c0ad/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x2C84aE8694D4AC22066995eF01d796Fc8A29e5d7",
+          "name": "Velocore LP: AVAX + ETH",
+          "symbol": "AVAX-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x0000000000000000000000002c84ae8694d4ac22066995ef01d796fc8a29e5d7",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "119135465951753000n",
+              "underlyingRate": 0.119135465951753,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x5471ea8f739dd37E9B81Be9c5c77754D8AA953E4",
+              "name": "Avalanche",
+              "symbol": "AVAX",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000005471ea8f739dd37e9b81be9c5c77754d8aa953e4",
+              "type": "underlying",
+              "underlyingRateRaw": "8393806090596036000n",
+              "underlyingRate": 8.393806090596035,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x5471ea8f739dd37E9B81Be9c5c77754D8AA953E4/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x3f53BC128399AFD8a6457c173B153e9AA01C8aa7",
+          "name": "Velocore LP: MATIC + ETH",
+          "symbol": "MATIC-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x0000000000000000000000003f53bc128399afd8a6457c173b153e9aa01c8aa7",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "16192132812567000n",
+              "underlyingRate": 0.016192132812567,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8",
+              "name": "Matic Token",
+              "symbol": "MATIC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000265b25e22bcd7f10a5bd6e6410f10537cc7567e8",
+              "type": "underlying",
+              "underlyingRateRaw": "61758386696674552000n",
+              "underlyingRate": 61.75838669667455,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x7863Ef0812963F74F039799D45C7fa6899F41771",
+          "name": "Velocore LP: BNB + ETH",
+          "symbol": "BNB-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x0000000000000000000000007863ef0812963f74f039799d45c7fa6899f41771",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "411636434970089000n",
+              "underlyingRate": 0.411636434970089,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0xf5C6825015280CdfD0b56903F9F8B5A2233476F5",
+              "name": "Binance Coin",
+              "symbol": "BNB",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000f5c6825015280cdfd0b56903f9f8b5a2233476f5",
+              "type": "underlying",
+              "underlyingRateRaw": "2429328200876876000n",
+              "underlyingRate": 2.429328200876876,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xf5C6825015280CdfD0b56903F9F8B5A2233476F5/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x78c35C9eA77d20F31DF2bD345Dde986E33cc1CCb",
+          "name": "Velocore LP: LIN + ETH",
+          "symbol": "LIN-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x00000000000000000000000078c35c9ea77d20f31df2bd345dde986e33cc1ccb",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x9Dd6EA6f9D1fba5ed640651f06802e32FF455221",
+              "name": "Lineaswap.build",
+              "symbol": "LIN",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000009dd6ea6f9d1fba5ed640651f06802e32ff455221",
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x9Dd6EA6f9D1fba5ed640651f06802e32FF455221/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xe2c67A9B15e9E7FF8A9Cb0dFb8feE5609923E5DB",
+          "name": "Velocore LP: USDC + ETH",
+          "symbol": "USDC-ETH-VLP",
+          "decimals": 12,
+          "tokenHash": "0x000000000000000000000000e2c67a9b15e9e7ff8a9cb0dfb8fee5609923e5db",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "16692588966949000n",
+              "underlyingRate": 0.016692588966949,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "59906000n",
+              "underlyingRate": 59.906,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xbF820C71b9dfE09743cC8134Ab3b224D6Bc333C7",
+          "name": "Velocore LP: USDC + BUSD",
+          "symbol": "USDC-BUSD-VLP",
+          "decimals": 12,
+          "tokenHash": "0x000000000000000000000000bf820c71b9dfe09743cc8134ab3b224d6bc333c7",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7d43AABC515C356145049227CeE54B608342c0ad",
+              "name": "Binance USD",
+              "symbol": "BUSD",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000007d43aabc515c356145049227cee54b608342c0ad",
+              "type": "underlying",
+              "underlyingRateRaw": "1008170532156944000n",
+              "underlyingRate": 1.008170532156944,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x7d43AABC515C356145049227CeE54B608342c0ad/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "991000n",
+              "underlyingRate": 0.991,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xd0E67CE5E72beBA9D0986479Ea4E4021120cf794",
+          "name": "Velocore LP: USDC + MENDI",
+          "symbol": "USDC-MENDI-VLP",
+          "decimals": 12,
+          "tokenHash": "0x000000000000000000000000d0e67ce5e72beba9d0986479ea4e4021120cf794",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+              "name": "Mendi Finance",
+              "symbol": "MENDI",
+              "decimals": 18,
+              "tokenHash": "0x00000000000000000000000043e8809ea748eff3204ee01f08872f063e44065f",
+              "type": "underlying",
+              "underlyingRateRaw": "1438506309192133000n",
+              "underlyingRate": 1.438506309192133,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x43E8809ea748EFf3204ee01F08872F063e44065f/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "695000n",
+              "underlyingRate": 0.695,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xc8AcDa739ff1d6223E6036c6aE45a81b6b73eb92",
+          "name": "Velocore LP: fk + ETH",
+          "symbol": "fk-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000c8acda739ff1d6223e6036c6ae45a81b6b73eb92",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "921812833825000n",
+              "underlyingRate": 0.000921812833825,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x23D2d8c92Ca0918Ca805E6B31D6e2578d6a3017f",
+              "name": "falk",
+              "symbol": "fk",
+              "decimals": 18,
+              "tokenHash": "0x00000000000000000000000023d2d8c92ca0918ca805e6b31d6e2578d6a3017f",
+              "type": "underlying",
+              "underlyingRateRaw": "11099800159477512000n",
+              "underlyingRate": 11.099800159477512,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x23D2d8c92Ca0918Ca805E6B31D6e2578d6a3017f/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x93Dbd667Ae5aCe0d055A3f1Df57282c8dF32FeaB",
+          "name": "Velocore LP: sg + ETH",
+          "symbol": "sg-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x00000000000000000000000093dbd667ae5ace0d055a3f1df57282c8df32feab",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "2000n",
+              "underlyingRate": 2e-15,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x2E7fFeE8Ee04C325d35bdF4395ef980A26a9E9f0",
+              "name": "shingo",
+              "symbol": "sg",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000002e7ffee8ee04c325d35bdf4395ef980a26a9e9f0",
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2E7fFeE8Ee04C325d35bdF4395ef980A26a9E9f0/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xc3041885A6E17796F4DeE54C24867Ea36aDc6C90",
+          "name": "Velocore LP: le + ETH",
+          "symbol": "le-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000c3041885a6e17796f4dee54c24867ea36adc6c90",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "2000n",
+              "underlyingRate": 2e-15,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x668CddC7285983613cEC167d09698c791Fed920E",
+              "name": "leo",
+              "symbol": "le",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000668cddc7285983613cec167d09698c791fed920e",
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x668CddC7285983613cEC167d09698c791Fed920E/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x18f36977996A9F6813787df922Ca8815800b3493",
+          "name": "Velocore LP: ck + ETH",
+          "symbol": "ck-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x00000000000000000000000018f36977996a9f6813787df922ca8815800b3493",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x96759f229AE44cC63cA4A7437Ac71888FDcC4045",
+              "name": "chicken",
+              "symbol": "ck",
+              "decimals": 18,
+              "tokenHash": "0x00000000000000000000000096759f229ae44cc63ca4a7437ac71888fdcc4045",
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x96759f229AE44cC63cA4A7437Ac71888FDcC4045/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x0b18829D24BBc46bb8057bC5D71F1D3688ED0184",
+          "name": "Velocore LP: mk + ETH",
+          "symbol": "mk-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x0000000000000000000000000b18829d24bbc46bb8057bc5d71f1d3688ed0184",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0xd000Ec1bFF069aB2a0eb7bcdfD7dDdC7Ba57bd47",
+              "name": "monkey",
+              "symbol": "mk",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000d000ec1bff069ab2a0eb7bcdfd7dddc7ba57bd47",
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xd000Ec1bFF069aB2a0eb7bcdfD7dDdC7Ba57bd47/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xCb767451914FFC8cAd49C597B64D8738C0B78d1b",
+          "name": "Velocore LP: by + ETH",
+          "symbol": "by-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000cb767451914ffc8cad49c597b64d8738c0b78d1b",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0xd8E18249253368E0df28c9FC96D76785c738Cf7c",
+              "name": "bepyeu",
+              "symbol": "by",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000d8e18249253368e0df28c9fc96d76785c738cf7c",
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xd8E18249253368E0df28c9FC96D76785c738Cf7c/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x820AaFf56fa2F6Ea552e86B7C2Da541d67195d07",
+          "name": "Velocore LP: USDT + ETH",
+          "symbol": "USDT-ETH-VLP",
+          "decimals": 12,
+          "tokenHash": "0x000000000000000000000000820aaff56fa2f6ea552e86b7c2da541d67195d07",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "16687041072826000n",
+              "underlyingRate": 0.016687041072826,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000a219439258ca9da29e9cc4ce5596924745e12b93",
+              "type": "underlying",
+              "underlyingRateRaw": "59926000n",
+              "underlyingRate": 59.926,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x5262e6e56D95fb9191F1b2127fD670e9B5e73200",
+          "name": "Velocore LP: SIS + ETH",
+          "symbol": "SIS-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x0000000000000000000000005262e6e56d95fb9191f1b2127fd670e9b5e73200",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "10909596017573000n",
+              "underlyingRate": 0.010909596017573,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x6EF95B6f3b0F39508e3E04054Be96D5eE39eDE0d",
+              "name": "Symbiosis",
+              "symbol": "SIS",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000006ef95b6f3b0f39508e3e04054be96d5ee39ede0d",
+              "type": "underlying",
+              "underlyingRateRaw": "91662410497245752000n",
+              "underlyingRate": 91.66241049724576,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x6EF95B6f3b0F39508e3E04054Be96D5eE39eDE0d/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xCCc0DEbe57EF046f9Fa32208184fcB67e2bd9ae3",
+          "name": "Velocore LP: veLVC + LVC",
+          "symbol": "veLVC-LVC-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000ccc0debe57ef046f9fa32208184fcb67e2bd9ae3",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1",
+              "name": "Linea Velocore",
+              "symbol": "LVC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000cc22f6aa610d1b2a0e89ef228079cb3e1831b1d1",
+              "type": "underlying",
+              "underlyingRateRaw": "899989738297734000n",
+              "underlyingRate": 0.899989738297734,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1/logo.png"
+            },
+            {
+              "address": "0xAeC06345b26451bdA999d83b361BEaaD6eA93F87",
+              "name": "Locked LVC",
+              "symbol": "veLVC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000aec06345b26451bda999d83b361beaad6ea93f87",
+              "type": "underlying",
+              "underlyingRateRaw": "1110678585333868000n",
+              "underlyingRate": 1.110678585333868,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xAeC06345b26451bdA999d83b361BEaaD6eA93F87/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xf3E3Ec2861850dfa6Ba3F52A271f499AFffb8087",
+          "name": "Velocore LP: LVC + ETH",
+          "symbol": "LVC-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000f3e3ec2861850dfa6ba3f52a271f499afffb8087",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "2220150976245000n",
+              "underlyingRate": 0.002220150976245,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1",
+              "name": "Linea Velocore",
+              "symbol": "LVC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000cc22f6aa610d1b2a0e89ef228079cb3e1831b1d1",
+              "type": "underlying",
+              "underlyingRateRaw": "450418054582181157000n",
+              "underlyingRate": 450.4180545821812,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x860B933C1E6B4e558bEb80a63467023ff8188344",
+          "name": "Velocore LP: SIS + LVC",
+          "symbol": "SIS-LVC-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000860b933c1e6b4e558beb80a63467023ff8188344",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1",
+              "name": "Linea Velocore",
+              "symbol": "LVC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000cc22f6aa610d1b2a0e89ef228079cb3e1831b1d1",
+              "type": "underlying",
+              "underlyingRateRaw": "4925732446265037000n",
+              "underlyingRate": 4.925732446265037,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1/logo.png"
+            },
+            {
+              "address": "0x6EF95B6f3b0F39508e3E04054Be96D5eE39eDE0d",
+              "name": "Symbiosis",
+              "symbol": "SIS",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000006ef95b6f3b0f39508e3e04054be96d5ee39ede0d",
+              "type": "underlying",
+              "underlyingRateRaw": "203003143175267000n",
+              "underlyingRate": 0.203003143175267,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x6EF95B6f3b0F39508e3E04054Be96D5eE39eDE0d/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x3E3dA08eC79e01434e8Bdb90374FEAb28A4cbaF9",
+          "name": "Velocore LP: MENDI + LVC",
+          "symbol": "MENDI-LVC-VLP",
+          "decimals": 18,
+          "tokenHash": "0x0000000000000000000000003e3da08ec79e01434e8bdb90374feab28a4cbaf9",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1",
+              "name": "Linea Velocore",
+              "symbol": "LVC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000cc22f6aa610d1b2a0e89ef228079cb3e1831b1d1",
+              "type": "underlying",
+              "underlyingRateRaw": "5202523658859220000n",
+              "underlyingRate": 5.20252365885922,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1/logo.png"
+            },
+            {
+              "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+              "name": "Mendi Finance",
+              "symbol": "MENDI",
+              "decimals": 18,
+              "tokenHash": "0x00000000000000000000000043e8809ea748eff3204ee01f08872f063e44065f",
+              "type": "underlying",
+              "underlyingRateRaw": "192214345327975000n",
+              "underlyingRate": 0.192214345327975,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x43E8809ea748EFf3204ee01F08872F063e44065f/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xA2Ff89e88bFe313Bd24aDFBcf254466860C5BeA2",
+          "name": "Velocore LP: MATIC + BUSD",
+          "symbol": "MATIC-BUSD-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000a2ff89e88bfe313bd24adfbcf254466860c5bea2",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7d43AABC515C356145049227CeE54B608342c0ad",
+              "name": "Binance USD",
+              "symbol": "BUSD",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000007d43aabc515c356145049227cee54b608342c0ad",
+              "type": "underlying",
+              "underlyingRateRaw": "876024514634001000n",
+              "underlyingRate": 0.876024514634001,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x7d43AABC515C356145049227CeE54B608342c0ad/logo.png"
+            },
+            {
+              "address": "0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8",
+              "name": "Matic Token",
+              "symbol": "MATIC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000265b25e22bcd7f10a5bd6e6410f10537cc7567e8",
+              "type": "underlying",
+              "underlyingRateRaw": "1141520566125984000n",
+              "underlyingRate": 1.141520566125984,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xd4e9b2e8d6B360980A3a75a3C69B3C3040a89008",
+          "name": "Velocore LP: SCM + ETH",
+          "symbol": "SCM-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000d4e9b2e8d6b360980a3a75a3c69b3c3040a89008",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "218731805713000n",
+              "underlyingRate": 0.000218731805713,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x13a7F090D46C74acBA98c51786a5c46eD9A474F0",
+              "name": "Scamfari",
+              "symbol": "SCM",
+              "decimals": 18,
+              "tokenHash": "0x00000000000000000000000013a7f090d46c74acba98c51786a5c46ed9a474f0",
+              "type": "underlying",
+              "underlyingRateRaw": "4571799022511588759000n",
+              "underlyingRate": 4571.799022511589,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x13a7F090D46C74acBA98c51786a5c46eD9A474F0/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x8529D12a6164c9d35E1746711bE84f3a9FB2819A",
+          "name": "Velocore LP: USDC + LVC",
+          "symbol": "USDC-LVC-VLP",
+          "decimals": 12,
+          "tokenHash": "0x0000000000000000000000008529d12a6164c9d35e1746711be84f3a9fb2819a",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1",
+              "name": "Linea Velocore",
+              "symbol": "LVC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000cc22f6aa610d1b2a0e89ef228079cb3e1831b1d1",
+              "type": "underlying",
+              "underlyingRateRaw": "7675226595296650000n",
+              "underlyingRate": 7.67522659529665,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "130000n",
+              "underlyingRate": 0.13,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x99eF33c7b533A7a8AD929BceF40e09AAc0F2aA1c",
+          "name": "Velocore LP: SCM + LVC",
+          "symbol": "SCM-LVC-VLP",
+          "decimals": 18,
+          "tokenHash": "0x00000000000000000000000099ef33c7b533a7a8ad929bcef40e09aac0f2aa1c",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1",
+              "name": "Linea Velocore",
+              "symbol": "LVC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000cc22f6aa610d1b2a0e89ef228079cb3e1831b1d1",
+              "type": "underlying",
+              "underlyingRateRaw": "110559768682550000n",
+              "underlyingRate": 0.11055976868255,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1/logo.png"
+            },
+            {
+              "address": "0x13a7F090D46C74acBA98c51786a5c46eD9A474F0",
+              "name": "Scamfari",
+              "symbol": "SCM",
+              "decimals": 18,
+              "tokenHash": "0x00000000000000000000000013a7f090d46c74acba98c51786a5c46ed9a474f0",
+              "type": "underlying",
+              "underlyingRateRaw": "9044881364409785000n",
+              "underlyingRate": 9.044881364409784,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x13a7F090D46C74acBA98c51786a5c46eD9A474F0/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xd017982aE4aA07d301AC62D558Ed95880affe931",
+          "name": "Velocore LP: USDC + MATIC",
+          "symbol": "USDC-MATIC-VLP",
+          "decimals": 12,
+          "tokenHash": "0x000000000000000000000000d017982ae4aa07d301ac62d558ed95880affe931",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8",
+              "name": "Matic Token",
+              "symbol": "MATIC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000265b25e22bcd7f10a5bd6e6410f10537cc7567e8",
+              "type": "underlying",
+              "underlyingRateRaw": "1048427714489329000n",
+              "underlyingRate": 1.048427714489329,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "953000n",
+              "underlyingRate": 0.953,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x2F6B65F3d866BB145aE4EfD76434e945CcEe37aD",
+          "name": "Velocore LP: DAI + ETH",
+          "symbol": "DAI-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x0000000000000000000000002f6b65f3d866bb145ae4efd76434e945ccee37ad",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "16644603801048000n",
+              "underlyingRate": 0.016644603801048,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000004af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
+              "type": "underlying",
+              "underlyingRateRaw": "60079531459623469000n",
+              "underlyingRate": 60.07953145962347,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x7573F3284c91858450EB57C1F46C7354D901228d",
+          "name": "Velocore LP: wUSD+ + ETH",
+          "symbol": "wUSD+-ETH-VLP",
+          "decimals": 12,
+          "tokenHash": "0x0000000000000000000000007573f3284c91858450eb57c1f46c7354d901228d",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "16761093181198000n",
+              "underlyingRate": 0.016761093181198,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x3F006B0493ff32B33be2809367F5F6722CB84a7b",
+              "name": "Wrapped USD+",
+              "symbol": "wUSD+",
+              "decimals": 6,
+              "tokenHash": "0x0000000000000000000000003f006b0493ff32b33be2809367f5f6722cb84a7b",
+              "type": "underlying",
+              "underlyingRateRaw": "59661000n",
+              "underlyingRate": 59.661,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3F006B0493ff32B33be2809367F5F6722CB84a7b/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x2f0AE8E4D47684Ff5C6a7db760E0179891678147",
+          "name": "Velocore LP: TV + ETH",
+          "symbol": "TV-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x0000000000000000000000002f0ae8e4d47684ff5c6a7db760e0179891678147",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "132000n",
+              "underlyingRate": 1.32e-13,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x02e47D464c3bB564964fce162e6c8F38eA744f5a",
+              "name": "TVestige",
+              "symbol": "TV",
+              "decimals": 18,
+              "tokenHash": "0x00000000000000000000000002e47d464c3bb564964fce162e6c8f38ea744f5a",
+              "type": "underlying",
+              "underlyingRateRaw": "7544828613513521045882393956000n",
+              "underlyingRate": 7544828613513.521,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x02e47D464c3bB564964fce162e6c8F38eA744f5a/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x515Ac85eF7d21B5033a0aD71B194D4C52661b8Ca",
+          "name": "Velocore LP: USDT + LVC",
+          "symbol": "USDT-LVC-VLP",
+          "decimals": 12,
+          "tokenHash": "0x000000000000000000000000515ac85ef7d21b5033a0ad71b194d4c52661b8ca",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1",
+              "name": "Linea Velocore",
+              "symbol": "LVC",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000cc22f6aa610d1b2a0e89ef228079cb3e1831b1d1",
+              "type": "underlying",
+              "underlyingRateRaw": "7891577247851806000n",
+              "underlyingRate": 7.891577247851806,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xcc22F6AA610D1b2a0e89EF228079cB3e1831b1D1/logo.png"
+            },
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000a219439258ca9da29e9cc4ce5596924745e12b93",
+              "type": "underlying",
+              "underlyingRateRaw": "126000n",
+              "underlyingRate": 0.126,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xbD4B27Dd15bc467d5285c0D7435663935B4b6f7F",
+          "name": "Velocore LP: USDC + wUSK",
+          "symbol": "USDC-wUSK-VLP",
+          "decimals": 12,
+          "tokenHash": "0x000000000000000000000000bd4b27dd15bc467d5285c0d7435663935b4b6f7f",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x2F0b4300074aFC01726262d4cc9c1D2619d7297a",
+              "name": "Wrapped USK",
+              "symbol": "wUSK",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000002f0b4300074afc01726262d4cc9c1d2619d7297a",
+              "type": "underlying",
+              "underlyingRateRaw": "1071658730515520000n",
+              "underlyingRate": 1.07165873051552,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2F0b4300074aFC01726262d4cc9c1D2619d7297a/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "933000n",
+              "underlyingRate": 0.933,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x2BD146e7d95cea62C89fcCA8E529e06EEc1b053C",
+          "name": "Velocore LP: wUSDT+ + ETH",
+          "symbol": "wUSDT+-ETH-VLP",
+          "decimals": 12,
+          "tokenHash": "0x0000000000000000000000002bd146e7d95cea62c89fcca8e529e06eec1b053c",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "16711741399348000n",
+              "underlyingRate": 0.016711741399348,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0xB30e7A2E6f7389cA5dDc714Da4c991b7A1dCC88e",
+              "name": "Wrapped USDT+",
+              "symbol": "wUSDT+",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000b30e7a2e6f7389ca5ddc714da4c991b7a1dcc88e",
+              "type": "underlying",
+              "underlyingRateRaw": "59838000n",
+              "underlyingRate": 59.838,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB30e7A2E6f7389cA5dDc714Da4c991b7A1dCC88e/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x9b38adE95F5cf9c5294B1Ee455D5416A8575ae3b",
+          "name": "Velocore LP: USDC + LYU",
+          "symbol": "USDC-LYU-VLP",
+          "decimals": 12,
+          "tokenHash": "0x0000000000000000000000009b38ade95f5cf9c5294b1ee455d5416a8575ae3b",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xb20116eE399f15647BB1eEf9A74f6ef3b58bc951",
+              "name": "LYVE Debt Token",
+              "symbol": "LYU",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000b20116ee399f15647bb1eef9a74f6ef3b58bc951",
+              "type": "underlying",
+              "underlyingRateRaw": "1003194209438580000n",
+              "underlyingRate": 1.00319420943858,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xb20116eE399f15647BB1eEf9A74f6ef3b58bc951/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "996000n",
+              "underlyingRate": 0.996,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x9f6e4eCD96F3A21bbF64ACEEdf7b9e6d3c76F10f",
+          "name": "Velocore LP: USDC + wstETH",
+          "symbol": "USDC-wstETH-VLP",
+          "decimals": 12,
+          "tokenHash": "0x0000000000000000000000009f6e4ecd96f3a21bbf64aceedf7b9e6d3c76f10f",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000b5bedd42000b71fdde22d3ee8a79bd49a568fc8f",
+              "type": "underlying",
+              "underlyingRateRaw": "15706486234554000n",
+              "underlyingRate": 0.015706486234554,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "63667000n",
+              "underlyingRate": 63.667,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x1D12E25e5516e5aD32F97fE9Edc332Bf4683f487",
+          "name": "Velocore LP: wstETH + ETH",
+          "symbol": "wstETH-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x0000000000000000000000001d12e25e5516e5ad32f97fe9edc332bf4683f487",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "1071058538217597000n",
+              "underlyingRate": 1.071058538217597,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000b5bedd42000b71fdde22d3ee8a79bd49a568fc8f",
+              "type": "underlying",
+              "underlyingRateRaw": "933655781363043000n",
+              "underlyingRate": 0.933655781363043,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x99ee7251a051e5265c55A7bf9FfDF58d0FCacC2D",
+          "name": "Velocore LP: WBTC + ETH",
+          "symbol": "WBTC-ETH-VLP",
+          "decimals": 13,
+          "tokenHash": "0x00000000000000000000000099ee7251a051e5265c55a7bf9ffdf58d0fcacc2d",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "4502788123073820000n",
+              "underlyingRate": 4.50278812307382,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "tokenHash": "0x0000000000000000000000003aab2285ddcddad8edf438c1bab47e1a9d05a9b4",
+              "type": "underlying",
+              "underlyingRateRaw": "22208000n",
+              "underlyingRate": 0.22208,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x79F9db00F825F41543e82aFD9ed43596b2612628",
+          "name": "Velocore LP: wUSK + ETH",
+          "symbol": "wUSK-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x00000000000000000000000079f9db00f825f41543e82afd9ed43596b2612628",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "16223044388083000n",
+              "underlyingRate": 0.016223044388083,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x2F0b4300074aFC01726262d4cc9c1D2619d7297a",
+              "name": "Wrapped USK",
+              "symbol": "wUSK",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000002f0b4300074afc01726262d4cc9c1d2619d7297a",
+              "type": "underlying",
+              "underlyingRateRaw": "61640711571552898000n",
+              "underlyingRate": 61.6407115715529,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2F0b4300074aFC01726262d4cc9c1D2619d7297a/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x794105a9D8D230afa051aD3a129b5f00d3C7cC8d",
+          "name": "Velocore LP: USDC + GRAI",
+          "symbol": "USDC-GRAI-VLP",
+          "decimals": 12,
+          "tokenHash": "0x000000000000000000000000794105a9d8d230afa051ad3a129b5f00d3c7cc8d",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x894134a25a5faC1c2C26F1d8fBf05111a3CB9487",
+              "name": "Gravita Debt Token",
+              "symbol": "GRAI",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000894134a25a5fac1c2c26f1d8fbf05111a3cb9487",
+              "type": "underlying",
+              "underlyingRateRaw": "1001994823778397000n",
+              "underlyingRate": 1.001994823778397,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x894134a25a5faC1c2C26F1d8fBf05111a3CB9487/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "998000n",
+              "underlyingRate": 0.998,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xcf5d0dA448DaA5E274131EcFcA458beDdcD45284",
+          "name": "Velocore LP: LINDA + ETH",
+          "symbol": "LINDA-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000cf5d0da448daa5e274131ecfca458beddcd45284",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "115145127909000n",
+              "underlyingRate": 0.000115145127909,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x82cC61354d78b846016b559e3cCD766fa7E793D5",
+              "name": "Linda",
+              "symbol": "LINDA",
+              "decimals": 18,
+              "tokenHash": "0x00000000000000000000000082cc61354d78b846016b559e3ccd766fa7e793d5",
+              "type": "underlying",
+              "underlyingRateRaw": "8684643291809536754000n",
+              "underlyingRate": 8684.643291809536,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x82cC61354d78b846016b559e3cCD766fa7E793D5/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xAe1e8720A88Dd4F6d4101B4B20E270821FFDceAA",
+          "name": "Velocore LP: MENDI + ETH",
+          "symbol": "MENDI-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000ae1e8720a88dd4f6d4101b4b20e270821ffdceaa",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "11515455248225000n",
+              "underlyingRate": 0.011515455248225,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+              "name": "Mendi Finance",
+              "symbol": "MENDI",
+              "decimals": 18,
+              "tokenHash": "0x00000000000000000000000043e8809ea748eff3204ee01f08872f063e44065f",
+              "type": "underlying",
+              "underlyingRateRaw": "86839814648120789000n",
+              "underlyingRate": 86.8398146481208,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x43E8809ea748EFf3204ee01F08872F063e44065f/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x6A1ff5f05DDAf8b61F1734DAA6f9a42F16e3368e",
+          "name": "Velocore LP: LYU + ETH",
+          "symbol": "LYU-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x0000000000000000000000006a1ff5f05ddaf8b61f1734daa6f9a42f16e3368e",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "17056524483835000n",
+              "underlyingRate": 0.017056524483835,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0xb20116eE399f15647BB1eEf9A74f6ef3b58bc951",
+              "name": "LYVE Debt Token",
+              "symbol": "LYU",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000b20116ee399f15647bb1eef9a74f6ef3b58bc951",
+              "type": "underlying",
+              "underlyingRateRaw": "58628591117648773000n",
+              "underlyingRate": 58.628591117648774,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xb20116eE399f15647BB1eEf9A74f6ef3b58bc951/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xeE63656DC27213Ce9A19EA3e0D541d9A7649Baa7",
+          "name": "Velocore LP: LYVE + ETH",
+          "symbol": "LYVE-ETH-VLP",
+          "decimals": 18,
+          "tokenHash": "0x000000000000000000000000ee63656dc27213ce9a19ea3e0d541d9a7649baa7",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "tokenHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "11122306212852000n",
+              "underlyingRate": 0.011122306212852,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            },
+            {
+              "address": "0xb55e892D38056481BB5bB361EdDbc8c2c1477827",
+              "name": "LYVE",
+              "symbol": "LYVE",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000b55e892d38056481bb5bb361eddbc8c2c1477827",
+              "type": "underlying",
+              "underlyingRateRaw": "89909406216859754000n",
+              "underlyingRate": 89.90940621685975,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xb55e892D38056481BB5bB361EdDbc8c2c1477827/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: USDC in BUSD pool",
+          "decimals": 6,
+          "symbol": "Velocore LP: USDC in BUSD pool",
+          "address": "0x61cb3a0c59825464474ebb287a3e7d2b9b59d093",
+          "tokenHash": "0x02000000000000000000000161cb3a0c59825464474ebb287a3e7d2b9b59d093",
+          "tokenId": "1",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "999000n",
+              "underlyingRate": 0.999,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: USDC in 3pool",
+          "decimals": 6,
+          "symbol": "Velocore LP: USDC in 3pool",
+          "address": "0x131d56758351c9885862ada09a6a7071735c83b3",
+          "tokenHash": "0x020000000000000000000002131d56758351c9885862ada09a6a7071735c83b3",
+          "tokenId": "2",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "998000n",
+              "underlyingRate": 0.998,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: USDC in LYU pool",
+          "decimals": 6,
+          "symbol": "Velocore LP: USDC in LYU pool",
+          "address": "0x3ed94458e1c64359472f3e12592e3b64daedf24f",
+          "tokenHash": "0x0200000000000000000000003ed94458e1c64359472f3e12592e3b64daedf24f",
+          "tokenId": "0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "999000n",
+              "underlyingRate": 0.999,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: USDT in 3pool",
+          "decimals": 6,
+          "symbol": "Velocore LP: USDT in 3pool",
+          "address": "0x131d56758351c9885862ada09a6a7071735c83b3",
+          "tokenHash": "0x020000000000000000000001131d56758351c9885862ada09a6a7071735c83b3",
+          "tokenId": "1",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000a219439258ca9da29e9cc4ce5596924745e12b93",
+              "type": "underlying",
+              "underlyingRateRaw": "998000n",
+              "underlyingRate": 0.998,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: GRAI in GRAI pool",
+          "decimals": 18,
+          "symbol": "Velocore LP: GRAI in GRAI pool",
+          "address": "0x82407468da3c5df510ac460bd74684b8d876d88d",
+          "tokenHash": "0x02000000000000000000000082407468da3c5df510ac460bd74684b8d876d88d",
+          "tokenId": "0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x894134a25a5faC1c2C26F1d8fBf05111a3CB9487",
+              "name": "Gravita Debt Token",
+              "symbol": "GRAI",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000894134a25a5fac1c2c26f1d8fbf05111a3cb9487",
+              "type": "underlying",
+              "underlyingRateRaw": "999708242187108000n",
+              "underlyingRate": 0.999708242187108,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x894134a25a5faC1c2C26F1d8fBf05111a3CB9487/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: USDT+ in USD+ pool",
+          "decimals": 6,
+          "symbol": "Velocore LP: USDT+ in USD+ pool",
+          "address": "0x1d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+          "tokenHash": "0x0200000000000000000000021d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+          "tokenId": "2",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xB30e7A2E6f7389cA5dDc714Da4c991b7A1dCC88e",
+              "name": "Wrapped USDT+",
+              "symbol": "wUSDT+",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000b30e7a2e6f7389ca5ddc714da4c991b7a1dcc88e",
+              "type": "underlying",
+              "underlyingRateRaw": "999000n",
+              "underlyingRate": 0.999,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB30e7A2E6f7389cA5dDc714Da4c991b7A1dCC88e/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: LYU in LYU pool",
+          "decimals": 18,
+          "symbol": "Velocore LP: LYU in LYU pool",
+          "address": "0x3ed94458e1c64359472f3e12592e3b64daedf24f",
+          "tokenHash": "0x0200000000000000000000013ed94458e1c64359472f3e12592e3b64daedf24f",
+          "tokenId": "1",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xb20116eE399f15647BB1eEf9A74f6ef3b58bc951",
+              "name": "LYVE Debt Token",
+              "symbol": "LYU",
+              "decimals": 18,
+              "tokenHash": "0x000000000000000000000000b20116ee399f15647bb1eef9a74f6ef3b58bc951",
+              "type": "underlying",
+              "underlyingRateRaw": "999986686852967000n",
+              "underlyingRate": 0.999986686852967,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xb20116eE399f15647BB1eEf9A74f6ef3b58bc951/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: USD+ in USD+ pool",
+          "decimals": 6,
+          "symbol": "Velocore LP: USD+ in USD+ pool",
+          "address": "0x1d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+          "tokenHash": "0x0200000000000000000000011d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+          "tokenId": "1",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x3F006B0493ff32B33be2809367F5F6722CB84a7b",
+              "name": "Wrapped USD+",
+              "symbol": "wUSD+",
+              "decimals": 6,
+              "tokenHash": "0x0000000000000000000000003f006b0493ff32b33be2809367f5f6722cb84a7b",
+              "type": "underlying",
+              "underlyingRateRaw": "999000n",
+              "underlyingRate": 0.999,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3F006B0493ff32B33be2809367F5F6722CB84a7b/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: DAI in 3pool",
+          "decimals": 18,
+          "symbol": "Velocore LP: DAI in 3pool",
+          "address": "0x131d56758351c9885862ada09a6a7071735c83b3",
+          "tokenHash": "0x020000000000000000000000131d56758351c9885862ada09a6a7071735c83b3",
+          "tokenId": "0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000004af15ec2a0bd43db75dd04e62faa3b8ef36b00d5",
+              "type": "underlying",
+              "underlyingRateRaw": "999820940431502000n",
+              "underlyingRate": 0.999820940431502,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: BUSD in BUSD pool",
+          "decimals": 18,
+          "symbol": "Velocore LP: BUSD in BUSD pool",
+          "address": "0x61cb3a0c59825464474ebb287a3e7d2b9b59d093",
+          "tokenHash": "0x02000000000000000000000061cb3a0c59825464474ebb287a3e7d2b9b59d093",
+          "tokenId": "0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7d43AABC515C356145049227CeE54B608342c0ad",
+              "name": "Binance USD",
+              "symbol": "BUSD",
+              "decimals": 18,
+              "tokenHash": "0x0000000000000000000000007d43aabc515c356145049227cee54b608342c0ad",
+              "type": "underlying",
+              "underlyingRateRaw": "999699183089876000n",
+              "underlyingRate": 0.999699183089876,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x7d43AABC515C356145049227CeE54B608342c0ad/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: USDC in USDLR pool",
+          "decimals": 6,
+          "symbol": "Velocore LP: USDC in USDLR pool",
+          "address": "0xc433b684246bf877eff2de42f8d31acc53b7f0cc",
+          "tokenHash": "0x020000000000000000000001c433b684246bf877eff2de42f8d31acc53b7f0cc",
+          "tokenId": "1",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: USDLR in USDLR pool",
+          "decimals": 6,
+          "symbol": "Velocore LP: USDLR in USDLR pool",
+          "address": "0xc433b684246bf877eff2de42f8d31acc53b7f0cc",
+          "tokenHash": "0x020000000000000000000000c433b684246bf877eff2de42f8d31acc53b7f0cc",
+          "tokenId": "0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x68592c5c98C4F4A8a4bC6dA2121E65Da3d1c0917",
+              "name": "USDLR by Stable",
+              "symbol": "USDLR",
+              "decimals": 6,
+              "tokenHash": "0x00000000000000000000000068592c5c98c4f4a8a4bc6da2121e65da3d1c0917",
+              "type": "underlying",
+              "underlyingRateRaw": "0n",
+              "underlyingRate": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x68592c5c98C4F4A8a4bC6dA2121E65Da3d1c0917/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: USDC in GRAI pool",
+          "decimals": 6,
+          "symbol": "Velocore LP: USDC in GRAI pool",
+          "address": "0x82407468da3c5df510ac460bd74684b8d876d88d",
+          "tokenHash": "0x02000000000000000000000182407468da3c5df510ac460bd74684b8d876d88d",
+          "tokenId": "1",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "995000n",
+              "underlyingRate": 0.995,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "name": "Velocore LP: USDC in USD+ pool",
+          "decimals": 6,
+          "symbol": "Velocore LP: USDC in USD+ pool",
+          "address": "0x1d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+          "tokenHash": "0x0200000000000000000000001d312eedd57e8d43bcb6369e4b8f02d3c18aaf13",
+          "tokenId": "0",
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "tokenHash": "0x000000000000000000000000176211869ca2b568f2a7d4ee941e073a821ee1ff",
+              "type": "underlying",
+              "underlyingRateRaw": "999000n",
+              "underlyingRate": 0.999,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
