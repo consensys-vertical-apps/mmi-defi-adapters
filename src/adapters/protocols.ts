@@ -27,6 +27,7 @@ export const Protocol = {
   SushiswapV2: 'sushiswap-v2',
   Swell: 'swell',
   SyncSwap: 'syncswap',
+  Test: 'test',
   UniswapV2: 'uniswap-v2',
   UniswapV3: 'uniswap-v3',
   Xfai: 'xfai',

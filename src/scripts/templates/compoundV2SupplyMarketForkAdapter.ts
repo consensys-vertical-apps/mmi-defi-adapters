@@ -5,7 +5,9 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
   adapterClassName,
   productId,
 }: NewAdapterAnswers) {
-  return `import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
+  return `
+  import { GetTransactionParams } from '../../..'
+  import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'
   import { NotImplementedError } from '../../../../core/errors/errors'
   import {
@@ -13,7 +15,6 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
     PositionType,
     AssetType,
   } from '../../../../types/adapter'
-  import { GetTransactionParamsInput, WriteActions } from '../../../../types/getTransactionParamsInput'
   import { Protocol } from '../../../protocols'
   
   export class ${adapterClassName} extends CompoundV2SupplyMarketForkAdapter {
@@ -43,7 +44,7 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
      * Implementation Steps:
      * 1. Implement logic for handling predefined actions (e.g., Supply, Withdraw). Consider the examples provided as a starting point.
      * 2. For new actions (e.g., Stake, Flash Loan), first extend the 'WriteActions' object to include these new actions.
-     * 3. Update 'GetTransactionParamsInput' type to include the parameters required for any new actions you add.
+     * 3. Export WriteActionInputs, GetTransactionParamsSchema and GetTransactionParams from this file.
      * 4. Implement the method logic for each action, extracting necessary inputs and populating transactions accordingly.
      *
      * Example Implementations:
@@ -58,7 +59,7 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
       action,
       inputs,
     }: Extract<
-      GetTransactionParamsInput,
+      GetTransactionParams,
       {
         protocolId: typeof Protocol.${protocolKey}
         productId: '${productId}'

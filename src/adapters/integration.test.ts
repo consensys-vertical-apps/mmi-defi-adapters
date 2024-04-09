@@ -34,6 +34,7 @@ import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import { testCases as sushiswapV2TestCases } from './sushiswap-v2/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
+import { testCases as testTestCases } from './test/tests/testCases'
 import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
@@ -73,6 +74,7 @@ function runAllTests() {
   runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
   runProtocolTests(Protocol.Swell, swellTestCases)
   runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
+  runProtocolTests(Protocol.Test, testTestCases)
   runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
   runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
   runProtocolTests(Protocol.Xfai, xfaiTestCases)
