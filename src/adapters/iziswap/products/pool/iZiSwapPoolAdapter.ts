@@ -1,5 +1,4 @@
 import { getAddress } from 'ethers'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
@@ -20,11 +19,10 @@ import {
   ProtocolPosition,
   TokenType,
   Underlying,
-  TokenBalance,
-  UnwrappedTokenExchangeRate,
   AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { maxUint128 } from '../../../uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { LiquidityManager__factory } from '../../contracts/factories'
@@ -53,7 +51,7 @@ const contractAddresses: Partial<Record<Chain, { liquidityManager: string }>> =
     },
   }
 
-export class IZiSwapPoolAdapter extends SimplePoolAdapter {
+export class IZiSwapPoolAdapter implements IProtocolAdapter {
   productId = 'pool'
   protocolId: Protocol
   chainId: Chain
@@ -68,12 +66,6 @@ export class IZiSwapPoolAdapter extends SimplePoolAdapter {
     protocolId,
     adaptersController,
   }: ProtocolAdapterParams) {
-    super({
-      provider,
-      chainId,
-      protocolId,
-      adaptersController,
-    })
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
@@ -277,32 +269,6 @@ export class IZiSwapPoolAdapter extends SimplePoolAdapter {
   }
 
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    throw new NotImplementedError()
-  }
-
-  protected async getUnderlyingTokenBalances(_input: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    throw new NotImplementedError()
-  }
-  protected async unwrapProtocolToken(
-    _protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    throw new NotImplementedError()
-  }
-
-  protected async fetchProtocolTokenMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    throw new NotImplementedError()
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    _protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
     throw new NotImplementedError()
   }
 
