@@ -46,19 +46,14 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
       this.provider,
     )
 
-    // TODO - Needs validation with zod
     const { asset, amount } = inputs
     switch (action) {
       case WriteActions.Deposit: {
         return poolContract.supply.populateTransaction(asset, amount)
       }
+
       case WriteActions.Withdraw: {
         return poolContract.withdraw.populateTransaction(asset, amount)
-      }
-
-      // TODO - Validate along with input using zod
-      default: {
-        throw new Error('Method not supported')
       }
     }
   }

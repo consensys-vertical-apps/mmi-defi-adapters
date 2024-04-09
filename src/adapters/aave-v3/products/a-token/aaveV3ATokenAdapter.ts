@@ -66,10 +66,12 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           referralCode,
         )
       }
+
       case WriteActions.Withdraw: {
         const { asset, amount, to } = inputs
         return poolContract.withdraw.populateTransaction(asset, amount, to)
       }
+
       case WriteActions.Borrow: {
         const { asset, amount, interestRateMode, referralCode, onBehalfOf } =
           inputs
@@ -81,6 +83,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           onBehalfOf,
         )
       }
+
       case WriteActions.Repay: {
         const { asset, amount, interestRateMode, onBehalfOf } = inputs
         return poolContract.repay.populateTransaction(
@@ -90,9 +93,6 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
           onBehalfOf,
         )
       }
-
-      default:
-        throw new Error('Method not supported')
     }
   }
 }
