@@ -31,6 +31,7 @@ export interface Outcomes {
   chainIds: ['Ethereum']
 }
 
+// use if you want to skip questions
 const exampleAnswers: Outcomes = {
   rewards: true,
   getPositions: 'useBalanceOfHelper' as 'useBalanceOfHelper',
@@ -48,7 +49,7 @@ const exampleAnswers: Outcomes = {
 async function initiateQuestionnaire() {
   const createAdapterAnswers: Record<string, any> = {}
 
-  // await askQuestion('appName', createAdapterAnswers)
+  await askQuestion('appName', createAdapterAnswers)
 
   console.log('End of questionnaire', createAdapterAnswers.outcomes)
 
@@ -56,16 +57,15 @@ async function initiateQuestionnaire() {
 
   const defaultTemplate = await readBlankTemplate('src/scripts/blankAdapter.ts')
 
-  const code = await generateCode(exampleAnswers, defaultTemplate!)
+  const code = await generateCode(
+    createAdapterAnswers.outcomes,
+    defaultTemplate!,
+  )
 
   const writeFileAsync = promisify(writeFile)
 
   await writeFileAsync('src/scripts/generatedCode.ts', code)
   console.log('The file has been saved!')
-  // writeFile('./generatedCode.ts', code, (err) => {
-  //   if (err) throw err
-  //   console.log('The file has been saved!')
-  // })
 }
 
 async function askQuestion(
@@ -108,7 +108,7 @@ async function askQuestion(
   }
 
   if (questionConfig.next === 'end') {
-    return
+    return answers.outcomes
   }
 
   //@ts-ignore
