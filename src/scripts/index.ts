@@ -7,6 +7,7 @@ import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
 import { featureCommands } from './featureCommands'
 import { newAdapterCommand } from './newAdapterCommand'
+import { newAdapter2Command as newAdapter2Command } from './newAdapter2Command'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
 
@@ -19,6 +20,8 @@ const adaptersController = defiProvider.adaptersController
 featureCommands(program, defiProvider)
 
 newAdapterCommand(program, defiProvider)
+
+newAdapter2Command(program)
 
 blockAverage(program, chainProviders)
 
