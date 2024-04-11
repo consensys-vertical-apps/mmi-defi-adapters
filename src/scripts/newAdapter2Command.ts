@@ -41,7 +41,7 @@ const exampleAnswers: Outcomes = {
   forkCheck: 'UniswapV2' as 'UniswapV2',
   productId: 'defi-product',
   appId: 'app-id',
-  appName: 'My DeFi App',
+  appName: 'MyDeFiApp',
   chainIds: ['Ethereum'],
 }
 
@@ -60,7 +60,7 @@ async function initiateQuestionnaire() {
 
   const writeFileAsync = promisify(writeFile)
 
-  await writeFileAsync('../../src/scripts/generatedCode.ts', code)
+  await writeFileAsync('src/scripts/generatedCode.ts', code)
   console.log('The file has been saved!')
   // writeFile('./generatedCode.ts', code, (err) => {
   //   if (err) throw err
@@ -141,13 +141,13 @@ function generateCode(answers: Outcomes, defaultTemplate: string): string {
       case 'useBalanceOfHelper_onePosition':
         updatedTemplate = updatedTemplate.replace(
           replace,
-          'helper.getBalanceOfTokens()',
+          'return helpers.getBalanceOfTokens()',
         )
         break
       case 'useBalanceOfHelper_array':
         updatedTemplate = updatedTemplate.replace(
           replace,
-          'helper.getBalanceOfToken()',
+          'return helpers.getBalanceOfToken()',
         )
         break
       default:
@@ -166,25 +166,25 @@ function generateCode(answers: Outcomes, defaultTemplate: string): string {
       case 'hardCoded_onePosition':
         updatedTemplate = updatedTemplate.replace(
           /return '{{buildMetadata}}' as any/g,
-          `const metadata = {protocolToken : helper.getTokenMetadata() , underlyingToken : helper.getTokenMetadata()}`,
+          `return {protocolToken : helpers.getTokenMetadata() , underlyingToken : helpers.getTokenMetadata()}`,
         )
         break
       case 'hardCoded_array':
         updatedTemplate = updatedTemplate.replace(
           /return '{{buildMetadata}}' as any/g,
-          `const metadata = {protocolToken : helper.getTokenMetadata() , underlyingTokens : [helper.getTokenMetadata(), helper.getTokenMetadata()]}`,
+          `return{protocolToken : helpers.getTokenMetadata() , underlyingTokens : [helpers.getTokenMetadata(), helpers.getTokenMetadata()]}`,
         )
         break
       case 'factory_onePosition':
         updatedTemplate = updatedTemplate.replace(
           /return '{{buildMetadata}}' as any/g,
-          `const metadata = {protocolToken : helper.getTokenMetadata() , underlyingTokens : [helper.getTokenMetadata(), helper.getTokenMetadata()]}`, // needs updating
+          `return {protocolToken : helpers.getTokenMetadata() , underlyingTokens : [helpers.getTokenMetadata(), helpers.getTokenMetadata()]}`, // needs updating
         )
         break
       case 'factory_array':
         updatedTemplate = updatedTemplate.replace(
           /return '{{buildMetadata}}' as any/g,
-          `const metadata = {protocolToken : helper.getTokenMetadata() , underlyingTokens : [helper.getTokenMetadata(), helper.getTokenMetadata()]}`, // needs updating
+          `return {protocolToken : helpers.getTokenMetadata() , underlyingTokens : [helpers.getTokenMetadata(), helpers.getTokenMetadata()]}`, // needs updating
         )
         break
       default:

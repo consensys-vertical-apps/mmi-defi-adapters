@@ -1,16 +1,19 @@
 import { NotImplementedError } from '../core/errors/errors'
 
 class Helpers {
-  balanceOfTokens() {
+  getBalanceOfTokens(): any {
     throw new NotImplementedError()
   }
-  balanceOfToken() {
+  getBalanceOfToken(): any {
     throw new NotImplementedError()
   }
-  withdrawals() {
+  withdrawals(): any {
     throw new NotImplementedError()
   }
-  deposits() {
+  deposits(): any {
+    throw new NotImplementedError()
+  }
+  getTokenMetadata(): any {
     throw new NotImplementedError()
   }
 }

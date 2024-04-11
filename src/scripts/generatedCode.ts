@@ -23,10 +23,10 @@ import {
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { helpers } from './helpers'
 
-export class adapterClassNameAdapter
+export class MyDeFiAppAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
-  productId = '{{productId}}'
+  productId = 'defi-product'
   protocolId: Protocol
   chainId: Chain
 
@@ -53,8 +53,8 @@ export class adapterClassNameAdapter
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: '{{appName}}',
-      description: '{{appName}} defi adapter',
+      name: 'MyDeFiApp',
+      description: 'MyDeFiApp defi adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
       positionType: PositionType.Supply,
@@ -68,7 +68,7 @@ export class adapterClassNameAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata() {
-    return '{{buildMetadata}}' as any
+    return {protocolToken : helpers.getTokenMetadata() , underlyingTokens : [helpers.getTokenMetadata(), helpers.getTokenMetadata()]}
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
@@ -76,7 +76,7 @@ export class adapterClassNameAdapter
   }
 
   async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    return '{{getPositions}}' as any
+    return helpers.getBalanceOfToken()
   }
 
   async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
