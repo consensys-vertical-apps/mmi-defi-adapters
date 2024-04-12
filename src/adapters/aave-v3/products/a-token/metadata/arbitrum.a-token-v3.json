@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97": {
-    "protocolToken": {
-      "address": "0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97",
-      "name": "Aave Arbitrum EURS",
-      "symbol": "aArbEURS",
-      "decimals": 2
-    },
-    "underlyingToken": {
-      "address": "0xD22a58f79e9481D1a88e00c343885A588b34b68B",
-      "name": "STASIS EURS Token",
-      "symbol": "EURS",
-      "decimals": 2
-    }
-  },
   "0x513c7E3a9c69cA3e22550eF58AC1C0088e918FFf": {
     "protocolToken": {
       "address": "0x513c7E3a9c69cA3e22550eF58AC1C0088e918FFf",

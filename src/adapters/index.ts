@@ -194,7 +194,7 @@ export const supportedProtocols: Record<
       CurveStakingAdapter,
       CurveRewardAdapter,
     ],
-    // [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
+    [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
   },
 
   [Protocol.Flux]: {

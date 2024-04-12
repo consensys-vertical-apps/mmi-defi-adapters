@@ -262,8 +262,8 @@
   "0xDcCc6d5757290727514FDEF7db68aC8540445167": {
     "protocolToken": {
       "address": "0xDcCc6d5757290727514FDEF7db68aC8540445167",
-      "name": "Pancake LPs Cake / USDC.E",
-      "symbol": "Cake-LP/Cake/USDC.E",
+      "name": "Pancake LPs Cake / USDC",
+      "symbol": "Cake-LP/Cake/USDC",
       "decimals": 18
     },
     "token0": {
@@ -275,7 +275,7 @@
     "token1": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC.E",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
@@ -328,7 +328,7 @@
     },
     "token0": {
       "address": "0x9dB8a10C7FE60d84397860b3aF2E686D4F90C2b7",
-      "name": "ArbiSwap",
+      "name": "Arbiswap Token",
       "symbol": "ARBI",
       "decimals": 18
     },
@@ -602,8 +602,8 @@
   "0x71472057aeab56360e7207AD412150Db2F049AE7": {
     "protocolToken": {
       "address": "0x71472057aeab56360e7207AD412150Db2F049AE7",
-      "name": "Pancake LPs USDT / USDC.E",
-      "symbol": "Cake-LP/USDT/USDC.E",
+      "name": "Pancake LPs USDT / USDC",
+      "symbol": "Cake-LP/USDT/USDC",
       "decimals": 18
     },
     "token0": {
@@ -615,15 +615,15 @@
     "token1": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC.E",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
   "0xF91Cb08DF79A668fBe8038308ab1B0187A9F61a9": {
     "protocolToken": {
       "address": "0xF91Cb08DF79A668fBe8038308ab1B0187A9F61a9",
-      "name": "Pancake LPs WETH / USDC.E",
-      "symbol": "Cake-LP/WETH/USDC.E",
+      "name": "Pancake LPs WETH / USDC",
+      "symbol": "Cake-LP/WETH/USDC",
       "decimals": 18
     },
     "token0": {
@@ -635,7 +635,7 @@
     "token1": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC.E",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
@@ -662,8 +662,8 @@
   "0xB271713DceAD767cF81c4155df5e000F382C63a3": {
     "protocolToken": {
       "address": "0xB271713DceAD767cF81c4155df5e000F382C63a3",
-      "name": "Pancake LPs ARB / USDC.E",
-      "symbol": "Cake-LP/ARB/USDC.E",
+      "name": "Pancake LPs ARB / USDC",
+      "symbol": "Cake-LP/ARB/USDC",
       "decimals": 18
     },
     "token0": {
@@ -675,7 +675,7 @@
     "token1": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC.E",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
@@ -2002,14 +2002,14 @@
   "0x9D02Ed49267AADE9832A90337839512F6b71339d": {
     "protocolToken": {
       "address": "0x9D02Ed49267AADE9832A90337839512F6b71339d",
-      "name": "Pancake LPs IZI / USDT",
-      "symbol": "Cake-LP/IZI/USDT",
+      "name": "Pancake LPs iZi / USDT",
+      "symbol": "Cake-LP/iZi/USDT",
       "decimals": 18
     },
     "token0": {
       "address": "0x60D01EC2D5E98Ac51C8B4cF84DfCCE98D527c747",
       "name": "izumi Token",
-      "symbol": "IZI",
+      "symbol": "iZi",
       "decimals": 18
     },
     "token1": {
@@ -2154,7 +2154,7 @@
     },
     "token1": {
       "address": "0xBfbCFe8873fE28Dfa25f1099282b088D52bbAD9C",
-      "name": "Equilibria Finance",
+      "name": "Equilibria Token",
       "symbol": "EQB",
       "decimals": 18
     }
@@ -2402,8 +2402,8 @@
   "0xcB10940fe57322E0560EcEaEa59687f207eAA040": {
     "protocolToken": {
       "address": "0xcB10940fe57322E0560EcEaEa59687f207eAA040",
-      "name": "Pancake LPs Megabrain / USDC.E",
-      "symbol": "Cake-LP/Megabrain/USDC.E",
+      "name": "Pancake LPs Megabrain / USDC",
+      "symbol": "Cake-LP/Megabrain/USDC",
       "decimals": 18
     },
     "token0": {
@@ -2415,7 +2415,7 @@
     "token1": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC.E",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
@@ -2582,14 +2582,14 @@
   "0x3A1C3a3ec7c4DF82BF50c3E977995087BA6D1362": {
     "protocolToken": {
       "address": "0x3A1C3a3ec7c4DF82BF50c3E977995087BA6D1362",
-      "name": "Pancake LPs AXLUSDC / WARP",
-      "symbol": "Cake-LP/AXLUSDC/WARP",
+      "name": "Pancake LPs axlUSDC / WARP",
+      "symbol": "Cake-LP/axlUSDC/WARP",
       "decimals": 18
     },
     "token0": {
       "address": "0xEB466342C4d449BC9f53A865D5Cb90586f405215",
-      "name": "Axelar USDC",
-      "symbol": "AXLUSDC",
+      "name": "Axelar Wrapped USDC",
+      "symbol": "axlUSDC",
       "decimals": 6
     },
     "token1": {
@@ -2714,7 +2714,7 @@
     },
     "token1": {
       "address": "0xa61F74247455A40b01b0559ff6274441FAfa22A3",
-      "name": "Magpie",
+      "name": "Magpie Token",
       "symbol": "MGP",
       "decimals": 18
     }
@@ -3516,6 +3516,666 @@
       "address": "0xa9004A5421372E1D83fB1f85b0fc986c912f91f3",
       "name": "Wrapped BNB",
       "symbol": "WBNB",
+      "decimals": 18
+    }
+  },
+  "0x8ECe1dFDa09A4F794c231121fc63d7ac7235A037": {
+    "protocolToken": {
+      "address": "0x8ECe1dFDa09A4F794c231121fc63d7ac7235A037",
+      "name": "Pancake LPs SPARK.IO / WETH",
+      "symbol": "Cake-LP/SPARK.IO/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x22d0a7c484d69546E525Cc705CA651aa61530EeF",
+      "name": "SPARK.IO",
+      "symbol": "SPARK.IO",
+      "decimals": 4
+    },
+    "token1": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xdA18581f3F4933a8615E54A47b66c8258ffeaEaC": {
+    "protocolToken": {
+      "address": "0xdA18581f3F4933a8615E54A47b66c8258ffeaEaC",
+      "name": "Pancake LPs WETH / WSG",
+      "symbol": "Cake-LP/WETH/WSG",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xEf04804E1e474D3F9B73184D7ef5D786F3Fce930",
+      "name": "Wall Street Games",
+      "symbol": "WSG",
+      "decimals": 18
+    }
+  },
+  "0xb6c0d60a672b3D413AeA0A8881a9af60Efe99a6C": {
+    "protocolToken": {
+      "address": "0xb6c0d60a672b3D413AeA0A8881a9af60Efe99a6C",
+      "name": "Pancake LPs ass / USDT",
+      "symbol": "Cake-LP/ass/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xE313af53F241fd148988535429C2376443727CA9",
+      "name": "assqQ",
+      "symbol": "ass",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x0f5D5C3aed588260bB6e7aCc82e8462fF8C257a1": {
+    "protocolToken": {
+      "address": "0x0f5D5C3aed588260bB6e7aCc82e8462fF8C257a1",
+      "name": "Pancake LPs CONNECT / WETH",
+      "symbol": "Cake-LP/CONNECT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3c5325689a9ab6a692975a8dC8F5BEcd60C572b1",
+      "name": "ConnectWallet",
+      "symbol": "CONNECT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xEFBF394Bf202BF806d265a3fFACea62Bd8286dd1": {
+    "protocolToken": {
+      "address": "0xEFBF394Bf202BF806d265a3fFACea62Bd8286dd1",
+      "name": "Pancake LPs WETH / AUST",
+      "symbol": "Cake-LP/WETH/AUST",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe0BC26A8d549A9814e8616740b2c83e3D0A658e7",
+      "name": "AUSTROLAB TOKEN",
+      "symbol": "AUST",
+      "decimals": 18
+    }
+  },
+  "0xeb6C5318449060faBBD6BE3A8c830E0178D03F17": {
+    "protocolToken": {
+      "address": "0xeb6C5318449060faBBD6BE3A8c830E0178D03F17",
+      "name": "Pancake LPs COOL / USDC",
+      "symbol": "Cake-LP/COOL/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1e3cA9F1bA27eea45c1bb8996c2a7ef882bA1c04",
+      "name": "Cool",
+      "symbol": "COOL",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x1d3795CfcF5F9AE11DBE93Ce4A352897357431FA": {
+    "protocolToken": {
+      "address": "0x1d3795CfcF5F9AE11DBE93Ce4A352897357431FA",
+      "name": "Pancake LPs KPO / WETH",
+      "symbol": "Cake-LP/KPO/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x54F61cf39Bc3ADB75950d819c27b9CaDEbc54bc4",
+      "name": "KingPoo",
+      "symbol": "KPO",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x0f4a0A2aF2033F30A1bd2545311BB763c5413E07": {
+    "protocolToken": {
+      "address": "0x0f4a0A2aF2033F30A1bd2545311BB763c5413E07",
+      "name": "Pancake LPs COLLECT / WETH",
+      "symbol": "Cake-LP/COLLECT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x26D76C58b3519b4377100b8384CD413e3D0FADeF",
+      "name": "Collect",
+      "symbol": "COLLECT",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x4Cf3b4C2Fc3A326Af1AFC889955aafB02eeA9F7c": {
+    "protocolToken": {
+      "address": "0x4Cf3b4C2Fc3A326Af1AFC889955aafB02eeA9F7c",
+      "name": "Pancake LPs COLLECT / USDT",
+      "symbol": "Cake-LP/COLLECT/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x26D76C58b3519b4377100b8384CD413e3D0FADeF",
+      "name": "Collect",
+      "symbol": "COLLECT",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x6856D495B1DED0a4adF55bD3d0D4a6FF023252Ae": {
+    "protocolToken": {
+      "address": "0x6856D495B1DED0a4adF55bD3d0D4a6FF023252Ae",
+      "name": "Pancake LPs COLLECT / WBTC",
+      "symbol": "Cake-LP/COLLECT/WBTC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x26D76C58b3519b4377100b8384CD413e3D0FADeF",
+      "name": "Collect",
+      "symbol": "COLLECT",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x6932922d4BefeA4a78AD0Bed682a3b5e3B6fC349": {
+    "protocolToken": {
+      "address": "0x6932922d4BefeA4a78AD0Bed682a3b5e3B6fC349",
+      "name": "Pancake LPs WETH / KOF",
+      "symbol": "Cake-LP/WETH/KOF",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xAFB32CFb27103b776427d7d949886774d71D4556",
+      "name": "KOF",
+      "symbol": "KOF",
+      "decimals": 18
+    }
+  },
+  "0xfB8A0DD5a89303973162D327A2c3Be18fe7344a0": {
+    "protocolToken": {
+      "address": "0xfB8A0DD5a89303973162D327A2c3Be18fe7344a0",
+      "name": "Pancake LPs ARB / GHL",
+      "symbol": "Cake-LP/ARB/GHL",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+      "name": "Arbitrum",
+      "symbol": "ARB",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xb808E32199A32984EC7ee3AB3e9B6Ad4269a474F",
+      "name": "GoldenHorses",
+      "symbol": "GHL",
+      "decimals": 12
+    }
+  },
+  "0xeEE5D868512a2BE510DEe73c25E3B26e916df498": {
+    "protocolToken": {
+      "address": "0xeEE5D868512a2BE510DEe73c25E3B26e916df498",
+      "name": "Pancake LPs RDNT / USDT",
+      "symbol": "Cake-LP/RDNT/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3082CC23568eA640225c2467653dB90e9250AaA0",
+      "name": "Radiant",
+      "symbol": "RDNT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xe7418eC402EFF2f202A96D6eba490ae85bCceD03": {
+    "protocolToken": {
+      "address": "0xe7418eC402EFF2f202A96D6eba490ae85bCceD03",
+      "name": "Pancake LPs WETH / GMX",
+      "symbol": "Cake-LP/WETH/GMX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
+      "name": "GMX",
+      "symbol": "GMX",
+      "decimals": 18
+    }
+  },
+  "0x42261171364e855494D190d09755D1Fc0d8aB98C": {
+    "protocolToken": {
+      "address": "0x42261171364e855494D190d09755D1Fc0d8aB98C",
+      "name": "Pancake LPs MIT / WETH",
+      "symbol": "Cake-LP/MIT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x43Fd2FAfa5cfcCb66d03061b59a25f02ec194d1B",
+      "name": "MOBILNE-IT",
+      "symbol": "MIT",
+      "decimals": 10
+    },
+    "token1": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x46dC7c45fa8984b992ceb23A074B44e55E9631A2": {
+    "protocolToken": {
+      "address": "0x46dC7c45fa8984b992ceb23A074B44e55E9631A2",
+      "name": "Pancake LPs CATCH / WETH",
+      "symbol": "Cake-LP/CATCH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x61df0108b36Bd7eC283a042A9e51c1d8470C0D62",
+      "name": "SpaceCatch",
+      "symbol": "CATCH",
+      "decimals": 4
+    },
+    "token1": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x050c5632fbFF28FEd9d62Cb6235AC7f5B734994E": {
+    "protocolToken": {
+      "address": "0x050c5632fbFF28FEd9d62Cb6235AC7f5B734994E",
+      "name": "Pancake LPs CATCH / ARB",
+      "symbol": "Cake-LP/CATCH/ARB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x61df0108b36Bd7eC283a042A9e51c1d8470C0D62",
+      "name": "SpaceCatch",
+      "symbol": "CATCH",
+      "decimals": 4
+    },
+    "token1": {
+      "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+      "name": "Arbitrum",
+      "symbol": "ARB",
+      "decimals": 18
+    }
+  },
+  "0x038D540B3760b62CeDF6C0174A13a31942F3cF9e": {
+    "protocolToken": {
+      "address": "0x038D540B3760b62CeDF6C0174A13a31942F3cF9e",
+      "name": "Pancake LPs WETH / mDLP",
+      "symbol": "Cake-LP/WETH/mDLP",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xfe14F790DA92971131544d915c4ADa6F1abce3Bd",
+      "name": "Magpie locked DLP",
+      "symbol": "mDLP",
+      "decimals": 18
+    }
+  },
+  "0x9308420DC182F7C33bA0067C7438F71371771587": {
+    "protocolToken": {
+      "address": "0x9308420DC182F7C33bA0067C7438F71371771587",
+      "name": "Pancake LPs WETH / BIP",
+      "symbol": "Cake-LP/WETH/BIP",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xf9F942A952935Dc6a662F4B898f088d721C14070",
+      "name": "bip coin",
+      "symbol": "BIP",
+      "decimals": 18
+    }
+  },
+  "0x8D55fC56535C147e55ab218A229aadf4684CbFC5": {
+    "protocolToken": {
+      "address": "0x8D55fC56535C147e55ab218A229aadf4684CbFC5",
+      "name": "Pancake LPs OLE / WETH",
+      "symbol": "Cake-LP/OLE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x7Be5Dd337CC6cE3e474F64E2A92A566445290864",
+      "name": "OpenLeverage Token V2",
+      "symbol": "OLE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x63C0382c8FAaae90Aa9805798fDc883dc1634F27": {
+    "protocolToken": {
+      "address": "0x63C0382c8FAaae90Aa9805798fDc883dc1634F27",
+      "name": "Pancake LPs USDT+ / USD+",
+      "symbol": "Cake-LP/USDT+/USD+",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xb1084db8D3C05CEbd5FA9335dF95EE4b8a0edc30",
+      "name": "USDT+",
+      "symbol": "USDT+",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65",
+      "name": "USD+",
+      "symbol": "USD+",
+      "decimals": 6
+    }
+  },
+  "0xEC0eFf03f78E3da40d833eBE587099683ceCC362": {
+    "protocolToken": {
+      "address": "0xEC0eFf03f78E3da40d833eBE587099683ceCC362",
+      "name": "Pancake LPs WBTC / WBNB",
+      "symbol": "Cake-LP/WBTC/WBNB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0xa9004A5421372E1D83fB1f85b0fc986c912f91f3",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    }
+  },
+  "0x71343fE70A451447EfdF12C476E04EFe8a728d34": {
+    "protocolToken": {
+      "address": "0x71343fE70A451447EfdF12C476E04EFe8a728d34",
+      "name": "Pancake LPs GRAIL / WETH",
+      "symbol": "Cake-LP/GRAIL/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3d9907F9a368ad0a51Be60f7Da3b97cf940982D8",
+      "name": "Camelot token",
+      "symbol": "GRAIL",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xAE261884a6214Db9653629f9274a17071B9b8E5A": {
+    "protocolToken": {
+      "address": "0xAE261884a6214Db9653629f9274a17071B9b8E5A",
+      "name": "Pancake LPs FTX / USDT",
+      "symbol": "Cake-LP/FTX/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xee784c545982C1b97171B8C69aC7a3e9F9dBAE45",
+      "name": "FTX",
+      "symbol": "FTX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x8C5910e166f62178A4040BEFD98f32811f9439dB": {
+    "protocolToken": {
+      "address": "0x8C5910e166f62178A4040BEFD98f32811f9439dB",
+      "name": "Pancake LPs C / WETH",
+      "symbol": "Cake-LP/C/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x40a5F935871BD2476b208d42BC0CDf90dbe7634a",
+      "name": "C",
+      "symbol": "C",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x69cAA6B7Dafe5824856C7841D60Ae208F5Fd5ee4": {
+    "protocolToken": {
+      "address": "0x69cAA6B7Dafe5824856C7841D60Ae208F5Fd5ee4",
+      "name": "Pancake LPs C / USDC",
+      "symbol": "Cake-LP/C/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x40a5F935871BD2476b208d42BC0CDf90dbe7634a",
+      "name": "C",
+      "symbol": "C",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x8957177505B57000e5400488768a6cbF48c4d762": {
+    "protocolToken": {
+      "address": "0x8957177505B57000e5400488768a6cbF48c4d762",
+      "name": "Pancake LPs AT / BT",
+      "symbol": "Cake-LP/AT/BT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x5E0543f61F94B40c9A5265b5B3a7B35aa8Dc6B49",
+      "name": "Amazing Token",
+      "symbol": "AT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x81b58Ae322E933f8238505538A73FE81Ad4f2B1E",
+      "name": "Business Token",
+      "symbol": "BT",
+      "decimals": 18
+    }
+  },
+  "0xD4a015Ad0450D5db1b341D6a098421c2c9E25755": {
+    "protocolToken": {
+      "address": "0xD4a015Ad0450D5db1b341D6a098421c2c9E25755",
+      "name": "Pancake LPs WETH / GMT",
+      "symbol": "Cake-LP/WETH/GMT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xa2324F785197794bC84106D8B7a855dC7F56bF2f",
+      "name": "Gizmotest",
+      "symbol": "GMT",
+      "decimals": 18
+    }
+  },
+  "0xCae2C119ee261C193B43DdA8F5B5D8B152bE8916": {
+    "protocolToken": {
+      "address": "0xCae2C119ee261C193B43DdA8F5B5D8B152bE8916",
+      "name": "Pancake LPs WETH / GMC",
+      "symbol": "Cake-LP/WETH/GMC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xccADfa077c3ac060630ccE7e5244575391ce18fe",
+      "name": "Gizmo Cat",
+      "symbol": "GMC",
+      "decimals": 18
+    }
+  },
+  "0x51a6756ffCb48c52A3Ed88B5AE95c5f3bf7C0150": {
+    "protocolToken": {
+      "address": "0x51a6756ffCb48c52A3Ed88B5AE95c5f3bf7C0150",
+      "name": "Pancake LPs WETH / GMC",
+      "symbol": "Cake-LP/WETH/GMC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x90ECf326908A74B9d0d733169b70D5F73Efbd703",
+      "name": "Gizmo Cat",
+      "symbol": "GMC",
+      "decimals": 18
+    }
+  },
+  "0xa823D0bA03089a1e23c3bf92c4a43605c1b330B4": {
+    "protocolToken": {
+      "address": "0xa823D0bA03089a1e23c3bf92c4a43605c1b330B4",
+      "name": "Pancake LPs WETH / MoyeMoye",
+      "symbol": "Cake-LP/WETH/MoyeMoye",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xbBC3b20B083E1434A1e96D82a21385b2b36b408A",
+      "name": "MoyeMoye",
+      "symbol": "MoyeMoye",
+      "decimals": 18
+    }
+  },
+  "0x6c0925399ef743c2a65B93C7a781584EF9A32b83": {
+    "protocolToken": {
+      "address": "0x6c0925399ef743c2a65B93C7a781584EF9A32b83",
+      "name": "Pancake LPs Paisa / WETH",
+      "symbol": "Cake-LP/Paisa/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x24EA0a5CfceD45DcA19478163f86EA226b54dCB6",
+      "name": "Paisa",
+      "symbol": "Paisa",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x37407a707E9450bF661B76e2eac486cbF9e925C1": {
+    "protocolToken": {
+      "address": "0x37407a707E9450bF661B76e2eac486cbF9e925C1",
+      "name": "Pancake LPs WETH / MoyeMoye",
+      "symbol": "Cake-LP/WETH/MoyeMoye",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xEB788f0EAD6cf599521152cd00614a9C6D566B68",
+      "name": "Moye Moye",
+      "symbol": "MoyeMoye",
       "decimals": 18
     }
   }

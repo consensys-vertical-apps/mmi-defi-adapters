@@ -57,29 +57,6 @@
     ],
     "lpTokenManager": "0xAEA2E71b631fA93683BCF256A8689dFa0e094fcD"
   },
-  "0xb0D2EB3C2cA3c6916FAb8DCbf9d9c165649231AE": {
-    "protocolToken": {
-      "address": "0xb0D2EB3C2cA3c6916FAb8DCbf9d9c165649231AE",
-      "name": "Curve.fi Factory USD Metapool: MAI",
-      "symbol": "MAI+av3CRV3CRV-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5c49b268c9841AFF1Cc3B0a418ff5c3442eE3F3b",
-        "name": "Mai Stablecoin",
-        "symbol": "MAI",
-        "decimals": 18
-      },
-      {
-        "address": "0x1337BedC9D22ecbe766dF105c9623922A27963EC",
-        "name": "Curve.fi avDAI/avUSDC/avUSDT",
-        "symbol": "av3CRV",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0xb0D2EB3C2cA3c6916FAb8DCbf9d9c165649231AE"
-  },
   "0x37C9Be6C81990398e9B87494484Afc6a4608C25d": {
     "protocolToken": {
       "address": "0x37C9Be6C81990398e9B87494484Afc6a4608C25d",

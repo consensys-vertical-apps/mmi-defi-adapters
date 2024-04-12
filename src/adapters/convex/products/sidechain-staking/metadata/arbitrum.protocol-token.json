@@ -1,4 +1,72 @@
 {
+  "0x256F53F13AdfF53CB888bc19ea0003651Be8F3B6": {
+    "protocolToken": {
+      "address": "0x256F53F13AdfF53CB888bc19ea0003651Be8F3B6",
+      "name": "HFXB/FRAX-V2 Convex Deposit",
+      "symbol": "cvxcrvHFXB",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x8f5d46267EB52F3aA6E141004A781469D445888c",
+      "name": "HFXB/FRAX-V2",
+      "symbol": "crvHFXB",
+      "decimals": 18
+    },
+    "extraRewardTokens": [
+      {
+        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "token": {
+          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+          "name": "Curve DAO Token",
+          "symbol": "CRV",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+        "token": {
+          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+          "name": "Convex Token",
+          "symbol": "CVX",
+          "decimals": 18
+        }
+      }
+    ]
+  },
+  "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3": {
+    "protocolToken": {
+      "address": "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3",
+      "name": "Curve.fi Factory Plain Pool: frxETH/WETH Convex Deposit",
+      "symbol": "cvxfrxETHWETH-f",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x1DeB3b1cA6afca0FF9C5cE9301950dC98Ac0D523",
+      "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
+      "symbol": "frxETHWETH-f",
+      "decimals": 18
+    },
+    "extraRewardTokens": [
+      {
+        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "token": {
+          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+          "name": "Curve DAO Token",
+          "symbol": "CRV",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+        "token": {
+          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+          "name": "Convex Token",
+          "symbol": "CVX",
+          "decimals": 18
+        }
+      }
+    ]
+  },
   "0xaCb744c7e7C95586DB83Eda3209e6483Fb1FCbA4": {
     "protocolToken": {
       "address": "0xaCb744c7e7C95586DB83Eda3209e6483Fb1FCbA4",
@@ -26,8 +94,268 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
+          "decimals": 18
+        }
+      }
+    ]
+  },
+  "0xBFEE9F3E015adC754066424AEd535313dc764116": {
+    "protocolToken": {
+      "address": "0xBFEE9F3E015adC754066424AEd535313dc764116",
+      "name": "crvUSD/USDC Convex Deposit",
+      "symbol": "cvxcrvUSDC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xec090cf6DD891D2d014beA6edAda6e05E025D93d",
+      "name": "crvUSD/USDC",
+      "symbol": "crvUSDC",
+      "decimals": 18
+    },
+    "extraRewardTokens": [
+      {
+        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "token": {
+          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+          "name": "Curve DAO Token",
+          "symbol": "CRV",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+        "token": {
+          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+          "name": "Convex Token",
+          "symbol": "CVX",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "token": {
+          "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+          "name": "Curve.Fi USD Stablecoin",
+          "symbol": "crvUSD",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      }
+    ]
+  },
+  "0x8b147513754871E80867f2Cb0F04240d838b37B0": {
+    "protocolToken": {
+      "address": "0x8b147513754871E80867f2Cb0F04240d838b37B0",
+      "name": "crvUSD/USDC.e Convex Deposit",
+      "symbol": "cvxcrvUSDC.e",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x3aDf984c937FA6846E5a24E0A68521Bdaf767cE1",
+      "name": "crvUSD/USDC.e",
+      "symbol": "crvUSDC.e",
+      "decimals": 18
+    },
+    "extraRewardTokens": [
+      {
+        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "token": {
+          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+          "name": "Curve DAO Token",
+          "symbol": "CRV",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+        "token": {
+          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+          "name": "Convex Token",
+          "symbol": "CVX",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "token": {
+          "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+          "name": "Curve.Fi USD Stablecoin",
+          "symbol": "crvUSD",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      }
+    ]
+  },
+  "0xf74d4C9b0F49fb70D8Ff6706ddF39e3a16D61E67": {
+    "protocolToken": {
+      "address": "0xf74d4C9b0F49fb70D8Ff6706ddF39e3a16D61E67",
+      "name": "crvUSD/USDT Convex Deposit",
+      "symbol": "cvxcrvUSDT",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x73aF1150F265419Ef8a5DB41908B700C32D49135",
+      "name": "crvUSD/USDT",
+      "symbol": "crvUSDT",
+      "decimals": 18
+    },
+    "extraRewardTokens": [
+      {
+        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "token": {
+          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+          "name": "Curve DAO Token",
+          "symbol": "CRV",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+        "token": {
+          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+          "name": "Convex Token",
+          "symbol": "CVX",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "token": {
+          "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+          "name": "Curve.Fi USD Stablecoin",
+          "symbol": "crvUSD",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      }
+    ]
+  },
+  "0xDD27101D5370a3BBF3Aa65B5AD24b23e191309B4": {
+    "protocolToken": {
+      "address": "0xDD27101D5370a3BBF3Aa65B5AD24b23e191309B4",
+      "name": "crvUSD/Frax Convex Deposit",
+      "symbol": "cvxcrvUSDFRAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x2FE7AE43591E534C256A1594D326e5779E302Ff4",
+      "name": "crvUSD/Frax",
+      "symbol": "crvUSDFRAX",
+      "decimals": 18
+    },
+    "extraRewardTokens": [
+      {
+        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "token": {
+          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+          "name": "Curve DAO Token",
+          "symbol": "CRV",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+        "token": {
+          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+          "name": "Convex Token",
+          "symbol": "CVX",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "token": {
+          "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+          "name": "Curve.Fi USD Stablecoin",
+          "symbol": "crvUSD",
+          "decimals": 18
+        }
+      }
+    ]
+  },
+  "0x5d11C85949C43119B677758D015ace29A3eB9db0": {
+    "protocolToken": {
+      "address": "0x5d11C85949C43119B677758D015ace29A3eB9db0",
+      "name": "Tricrypto-crvUSD Convex Deposit",
+      "symbol": "cvx3c-crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x82670f35306253222F8a165869B28c64739ac62e",
+      "name": "Tricrypto-crvUSD",
+      "symbol": "3c-crvUSD",
+      "decimals": 18
+    },
+    "extraRewardTokens": [
+      {
+        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "token": {
+          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+          "name": "Curve DAO Token",
+          "symbol": "CRV",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+        "token": {
+          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+          "name": "Convex Token",
+          "symbol": "CVX",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "token": {
+          "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+          "name": "Curve.Fi USD Stablecoin",
+          "symbol": "crvUSD",
+          "decimals": 18
+        }
+      },
+      {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
           "decimals": 18
         }
       }
@@ -60,7 +388,7 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
           "decimals": 18
         }
@@ -94,7 +422,7 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
           "decimals": 18
         }
@@ -128,7 +456,7 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
           "decimals": 18
         }
@@ -162,7 +490,7 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
           "decimals": 18
         }
@@ -193,20 +521,20 @@
     },
     "extraRewardTokens": [
       {
+        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+        "token": {
+          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+          "name": "Convex Token",
+          "symbol": "CVX",
+          "decimals": 18
+        }
+      },
+      {
         "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
         "token": {
           "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
           "name": "Curve DAO Token",
           "symbol": "CRV",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-        "token": {
-          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
-          "symbol": "CVX",
           "decimals": 18
         }
       }
@@ -255,7 +583,7 @@
     },
     "underlyingToken": {
       "address": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
-      "name": "Curve fi USDC USDT",
+      "name": "Curve.fi USDC/USDT",
       "symbol": "2CRV",
       "decimals": 18
     },
@@ -459,7 +787,7 @@
     },
     "underlyingToken": {
       "address": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
-      "name": "Curve fi USDC USDT",
+      "name": "Curve.fi USDC/USDT",
       "symbol": "2CRV",
       "decimals": 18
     },
@@ -694,298 +1022,13 @@
           "symbol": "CVX",
           "decimals": 18
         }
-      }
-    ]
-  },
-  "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3": {
-    "protocolToken": {
-      "address": "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3",
-      "name": "Curve.fi Factory Plain Pool: frxETH/WETH Convex Deposit",
-      "symbol": "cvxfrxETHWETH-f",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x1DeB3b1cA6afca0FF9C5cE9301950dC98Ac0D523",
-      "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
-      "symbol": "frxETHWETH-f",
-      "decimals": 18
-    },
-    "extraRewardTokens": [
-      {
-        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-        "token": {
-          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-          "name": "Curve DAO Token",
-          "symbol": "CRV",
-          "decimals": 18
-        }
       },
       {
-        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+        "manager": "0xA3d1a8DEB97B111454B294E2324EfAD13a9d8396",
         "token": {
-          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
-          "symbol": "CVX",
-          "decimals": 18
-        }
-      }
-    ]
-  },
-  "0xBFEE9F3E015adC754066424AEd535313dc764116": {
-    "protocolToken": {
-      "address": "0xBFEE9F3E015adC754066424AEd535313dc764116",
-      "name": "crvUSD/USDC Convex Deposit",
-      "symbol": "cvxcrvUSDC",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xec090cf6DD891D2d014beA6edAda6e05E025D93d",
-      "name": "crvUSD/USDC",
-      "symbol": "crvUSDC",
-      "decimals": 18
-    },
-    "extraRewardTokens": [
-      {
-        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-        "token": {
-          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-          "name": "Curve DAO Token",
-          "symbol": "CRV",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-        "token": {
-          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
-          "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-        "token": {
-          "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-          "name": "Curve.Fi USD Stablecoin",
-          "symbol": "crvUSD",
-          "decimals": 18
-        }
-      }
-    ]
-  },
-  "0x8b147513754871E80867f2Cb0F04240d838b37B0": {
-    "protocolToken": {
-      "address": "0x8b147513754871E80867f2Cb0F04240d838b37B0",
-      "name": "crvUSD/USDC.e Convex Deposit",
-      "symbol": "cvxcrvUSDC.e",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x3aDf984c937FA6846E5a24E0A68521Bdaf767cE1",
-      "name": "crvUSD/USDC.e",
-      "symbol": "crvUSDC.e",
-      "decimals": 18
-    },
-    "extraRewardTokens": [
-      {
-        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-        "token": {
-          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-          "name": "Curve DAO Token",
-          "symbol": "CRV",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-        "token": {
-          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
-          "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-        "token": {
-          "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-          "name": "Curve.Fi USD Stablecoin",
-          "symbol": "crvUSD",
-          "decimals": 18
-        }
-      }
-    ]
-  },
-  "0xf74d4C9b0F49fb70D8Ff6706ddF39e3a16D61E67": {
-    "protocolToken": {
-      "address": "0xf74d4C9b0F49fb70D8Ff6706ddF39e3a16D61E67",
-      "name": "crvUSD/USDT Convex Deposit",
-      "symbol": "cvxcrvUSDT",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x73aF1150F265419Ef8a5DB41908B700C32D49135",
-      "name": "crvUSD/USDT",
-      "symbol": "crvUSDT",
-      "decimals": 18
-    },
-    "extraRewardTokens": [
-      {
-        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-        "token": {
-          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-          "name": "Curve DAO Token",
-          "symbol": "CRV",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-        "token": {
-          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
-          "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-        "token": {
-          "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-          "name": "Curve.Fi USD Stablecoin",
-          "symbol": "crvUSD",
-          "decimals": 18
-        }
-      }
-    ]
-  },
-  "0xDD27101D5370a3BBF3Aa65B5AD24b23e191309B4": {
-    "protocolToken": {
-      "address": "0xDD27101D5370a3BBF3Aa65B5AD24b23e191309B4",
-      "name": "crvUSD/Frax Convex Deposit",
-      "symbol": "cvxcrvUSDFRAX",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x2FE7AE43591E534C256A1594D326e5779E302Ff4",
-      "name": "crvUSD/Frax",
-      "symbol": "crvUSDFRAX",
-      "decimals": 18
-    },
-    "extraRewardTokens": [
-      {
-        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-        "token": {
-          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-          "name": "Curve DAO Token",
-          "symbol": "CRV",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-        "token": {
-          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
-          "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-        "token": {
-          "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-          "name": "Curve.Fi USD Stablecoin",
-          "symbol": "crvUSD",
-          "decimals": 18
-        }
-      }
-    ]
-  },
-  "0x5d11C85949C43119B677758D015ace29A3eB9db0": {
-    "protocolToken": {
-      "address": "0x5d11C85949C43119B677758D015ace29A3eB9db0",
-      "name": "Tricrypto-crvUSD Convex Deposit",
-      "symbol": "cvx3c-crvUSD",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x82670f35306253222F8a165869B28c64739ac62e",
-      "name": "Tricrypto-crvUSD",
-      "symbol": "3c-crvUSD",
-      "decimals": 18
-    },
-    "extraRewardTokens": [
-      {
-        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-        "token": {
-          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-          "name": "Curve DAO Token",
-          "symbol": "CRV",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-        "token": {
-          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
-          "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-        "token": {
-          "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-          "name": "Curve.Fi USD Stablecoin",
-          "symbol": "crvUSD",
+          "address": "0xA3d1a8DEB97B111454B294E2324EfAD13a9d8396",
+          "name": "OVN",
+          "symbol": "OVN",
           "decimals": 18
         }
       }

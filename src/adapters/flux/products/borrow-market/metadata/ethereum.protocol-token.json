@@ -1,9 +1,23 @@
 {
+  "0x1dD7950c266fB1be96180a8FDb0591F70200E018": {
+    "protocolToken": {
+      "address": "0x1dD7950c266fB1be96180a8FDb0591F70200E018",
+      "name": "Flux OUSG",
+      "symbol": "fOUSG",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92",
+      "name": "Ondo Short-Term U.S. Government Bond Fund",
+      "symbol": "OUSG",
+      "decimals": 18
+    }
+  },
   "0x465a5a630482f3abD6d3b84B39B29b07214d19e5": {
     "protocolToken": {
       "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
       "name": "Flux USDC",
-      "symbol": "FUSDC",
+      "symbol": "fUSDC",
       "decimals": 8
     },
     "underlyingToken": {
@@ -17,7 +31,7 @@
     "protocolToken": {
       "address": "0xe2bA8693cE7474900A045757fe0efCa900F6530b",
       "name": "Flux DAI",
-      "symbol": "FDAI",
+      "symbol": "fDAI",
       "decimals": 8
     },
     "underlyingToken": {
@@ -31,7 +45,7 @@
     "protocolToken": {
       "address": "0x81994b9607e06ab3d5cF3AffF9a67374f05F27d7",
       "name": "Flux USDT",
-      "symbol": "FUSDT",
+      "symbol": "fUSDT",
       "decimals": 8
     },
     "underlyingToken": {
@@ -45,27 +59,13 @@
     "protocolToken": {
       "address": "0x1C9A2d6b33B4826757273D47ebEe0e2DddcD978B",
       "name": "Flux FRAX",
-      "symbol": "FFRAX",
+      "symbol": "fFRAX",
       "decimals": 8
     },
     "underlyingToken": {
       "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
       "name": "Frax",
       "symbol": "FRAX",
-      "decimals": 18
-    }
-  },
-  "0x1dD7950c266fB1be96180a8FDb0591F70200E018": {
-    "protocolToken": {
-      "address": "0x1dD7950c266fB1be96180a8FDb0591F70200E018",
-      "name": "Flux OUSG",
-      "symbol": "fOUSG",
-      "decimals": 8
-    },
-    "underlyingToken": {
-      "address": "0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92",
-      "name": "OUSG",
-      "symbol": "OUSG",
       "decimals": 18
     }
   }

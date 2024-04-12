@@ -97,20 +97,6 @@
       "decimals": 18
     }
   },
-  "0xF15F26710c827DDe8ACBA678682F3Ce24f2Fb56E": {
-    "protocolToken": {
-      "address": "0xF15F26710c827DDe8ACBA678682F3Ce24f2Fb56E",
-      "name": "Aave Arbitrum Stable Debt EURS",
-      "symbol": "stableDebtArbEURS",
-      "decimals": 2
-    },
-    "underlyingToken": {
-      "address": "0xD22a58f79e9481D1a88e00c343885A588b34b68B",
-      "name": "STASIS EURS Token",
-      "symbol": "EURS",
-      "decimals": 2
-    }
-  },
   "0x08Cb71192985E936C7Cd166A8b268035e400c3c3": {
     "protocolToken": {
       "address": "0x08Cb71192985E936C7Cd166A8b268035e400c3c3",

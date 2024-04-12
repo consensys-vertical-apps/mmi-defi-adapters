@@ -33,23 +33,6 @@
       }
     ]
   },
-  "0xb2135e9B790C50Fa018ca14e4B04BDb4ADd2a61B": {
-    "protocolToken": {
-      "address": "0xb2135e9B790C50Fa018ca14e4B04BDb4ADd2a61B",
-      "name": "Curve.fi Factory Plain Pool: eUSD/crvUSD",
-      "symbol": "eUSDcrvUSD-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x798D81d60966d2E909468d87e7e4b6A8DAFB1C36",
-        "name": "Curve.fi Factory Plain Pool: eUSD/crvUSD",
-        "symbol": "eUSDcrvUSD-f",
-        "decimals": 18
-      }
-    ]
-  },
   "0xE9c898BA654deC2bA440392028D2e7A194E6dc3e": {
     "protocolToken": {
       "address": "0xE9c898BA654deC2bA440392028D2e7A194E6dc3e",
@@ -80,23 +63,6 @@
         "address": "0x6DfE79cecE4f64c1a34F48cF5802492aB595257E",
         "name": "Curve.fi Factory Crypto Pool: CRV/crvUSD",
         "symbol": "CRV crvUSD-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x2DFeE5874aC76C72a1F2D39Cc91A1bbe1F59BDc4": {
-    "protocolToken": {
-      "address": "0x2DFeE5874aC76C72a1F2D39Cc91A1bbe1F59BDc4",
-      "name": "Curve.fi Factory Crypto Pool: hyUSD/eUSD",
-      "symbol": "hyUSDeUSD-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xc3a530D635bEC769ED1CDbE0c1Ce7F72CB5d4dE7",
-        "name": "Curve.fi Factory Crypto Pool: hyUSD/eUSD",
-        "symbol": "hyUSDeUSD-f",
         "decimals": 18
       }
     ]

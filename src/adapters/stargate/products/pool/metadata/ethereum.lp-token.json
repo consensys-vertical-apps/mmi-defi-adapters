@@ -178,5 +178,20 @@
       "symbol": "WOO",
       "decimals": 18
     }
+  },
+  "0xA572d137666DCbAdFA47C3fC41F15e90134C618c": {
+    "poolId": 22,
+    "protocolToken": {
+      "address": "0xA572d137666DCbAdFA47C3fC41F15e90134C618c",
+      "name": "mETH-LP",
+      "symbol": "S*mETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xd5F7838F5C461fefF7FE49ea5ebaF7728bB0ADfa",
+      "name": "mETH",
+      "symbol": "mETH",
+      "decimals": 18
+    }
   }
 }

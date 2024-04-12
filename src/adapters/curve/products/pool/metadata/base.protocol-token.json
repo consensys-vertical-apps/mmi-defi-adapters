@@ -57,29 +57,6 @@
     ],
     "lpTokenManager": "0xda3de145054ED30Ee937865D31B500505C4bDfe7"
   },
-  "0x798D81d60966d2E909468d87e7e4b6A8DAFB1C36": {
-    "protocolToken": {
-      "address": "0x798D81d60966d2E909468d87e7e4b6A8DAFB1C36",
-      "name": "Curve.fi Factory Plain Pool: eUSD/crvUSD",
-      "symbol": "eUSDcrvUSD-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xCfA3Ef56d303AE4fAabA0592388F19d7C3399FB4",
-        "name": "Electronic Dollar",
-        "symbol": "eUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0x417Ac0e078398C154EdFadD9Ef675d30Be60Af93",
-        "name": "Curve.Fi USD Stablecoin",
-        "symbol": "crvUSD",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x798D81d60966d2E909468d87e7e4b6A8DAFB1C36"
-  },
   "0x98244d93D42b42aB3E3A4D12A5dc0B3e7f8F32f9": {
     "protocolToken": {
       "address": "0x98244d93D42b42aB3E3A4D12A5dc0B3e7f8F32f9",
@@ -90,8 +67,8 @@
     "underlyingTokens": [
       {
         "address": "0x4200000000000000000000000000000000000006",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
+        "symbol": "ETH",
+        "name": "Ethereum",
         "decimals": 18
       },
       {
@@ -126,29 +103,6 @@
     ],
     "lpTokenManager": "0xDE37E221442Fa15C35dc19FbAE11Ed106ba52fB2"
   },
-  "0xc3a530D635bEC769ED1CDbE0c1Ce7F72CB5d4dE7": {
-    "protocolToken": {
-      "address": "0xc3a530D635bEC769ED1CDbE0c1Ce7F72CB5d4dE7",
-      "name": "Curve.fi Factory Crypto Pool: hyUSD/eUSD",
-      "symbol": "hyUSDeUSD-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xCc7FF230365bD730eE4B352cC2492CEdAC49383e",
-        "name": "High Yield USD",
-        "symbol": "hyUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0xCfA3Ef56d303AE4fAabA0592388F19d7C3399FB4",
-        "name": "Electronic Dollar",
-        "symbol": "eUSD",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x6Be2a0D3324279E645690721FC843110C84f29f1"
-  },
   "0x6e53131F68a034873b6bFA15502aF094Ef0c5854": {
     "protocolToken": {
       "address": "0x6e53131F68a034873b6bFA15502aF094Ef0c5854",
@@ -171,8 +125,8 @@
       },
       {
         "address": "0x4200000000000000000000000000000000000006",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
+        "symbol": "ETH",
+        "name": "Ethereum",
         "decimals": 18
       }
     ],

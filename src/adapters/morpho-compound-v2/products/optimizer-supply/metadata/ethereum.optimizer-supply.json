@@ -3,7 +3,7 @@
     "protocolToken": {
       "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
       "name": "Compound Dai",
-      "symbol": "CDAI",
+      "symbol": "cDAI",
       "decimals": 8
     },
     "underlyingToken": {
@@ -17,7 +17,7 @@
     "protocolToken": {
       "address": "0x70e36f6BF80a52b3B46b3aF8e106CC0ed743E8e4",
       "name": "Compound Collateral",
-      "symbol": "CCOMP",
+      "symbol": "cCOMP",
       "decimals": 8
     },
     "underlyingToken": {
@@ -31,70 +31,14 @@
     "protocolToken": {
       "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
       "name": "Compound Ether",
-      "symbol": "CETH",
+      "symbol": "cETH",
       "decimals": 8
     },
     "underlyingToken": {
       "address": "0x0000000000000000000000000000000000000000",
-      "name": "Ethereum",
       "symbol": "ETH",
+      "name": "Ethereum",
       "decimals": 18
-    }
-  },
-  "0x35A18000230DA775CAc24873d00Ff85BccdeD550": {
-    "protocolToken": {
-      "address": "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
-      "name": "cUNI",
-      "symbol": "CUNI",
-      "decimals": 8
-    },
-    "underlyingToken": {
-      "address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-      "name": "Uniswap",
-      "symbol": "UNI",
-      "decimals": 18
-    }
-  },
-  "0x39AA39c021dfbaE8faC545936693aC917d5E7563": {
-    "protocolToken": {
-      "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
-      "name": "Compound USD Coin",
-      "symbol": "CUSDC",
-      "decimals": 8
-    },
-    "underlyingToken": {
-      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
-    }
-  },
-  "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9": {
-    "protocolToken": {
-      "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
-      "name": "Compound Tether",
-      "symbol": "CUSDT",
-      "decimals": 8
-    },
-    "underlyingToken": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
-    }
-  },
-  "0xccF4429DB6322D5C611ee964527D42E5d685DD6a": {
-    "protocolToken": {
-      "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
-      "name": "cWBTC",
-      "symbol": "CWBTC",
-      "decimals": 8
-    },
-    "underlyingToken": {
-      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-      "name": "Wrapped BTC",
-      "symbol": "WBTC",
-      "decimals": 8
     }
   },
   "0x7713DD9Ca933848F6819F38B8352D9A15EA73F67": {
@@ -109,6 +53,62 @@
       "name": "Fei USD",
       "symbol": "FEI",
       "decimals": 18
+    }
+  },
+  "0x35A18000230DA775CAc24873d00Ff85BccdeD550": {
+    "protocolToken": {
+      "address": "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
+      "name": "Compound Uniswap",
+      "symbol": "cUNI",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+      "name": "Uniswap",
+      "symbol": "UNI",
+      "decimals": 18
+    }
+  },
+  "0x39AA39c021dfbaE8faC545936693aC917d5E7563": {
+    "protocolToken": {
+      "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
+      "name": "Compound USD Coin",
+      "symbol": "cUSDC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9": {
+    "protocolToken": {
+      "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
+      "name": "Compound USDT",
+      "symbol": "cUSDT",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xccF4429DB6322D5C611ee964527D42E5d685DD6a": {
+    "protocolToken": {
+      "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
+      "name": "Compound Wrapped BTC",
+      "symbol": "cWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
     }
   }
 }

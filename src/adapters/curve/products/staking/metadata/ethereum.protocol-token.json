@@ -1,799 +1,85 @@
 {
-  "0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A": {
+  "0xda8769595FF12B0Ac0561a7622957E76D543B79A": {
     "protocolToken": {
-      "address": "0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A",
-      "name": "LP 3pool Curve",
-      "symbol": "3CRV",
-      "decimals": 18,
-      "guageType": "single"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-        "name": "LP 3pool Curve",
-        "symbol": "3CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x69Fb7c45726cfE2baDeE8317005d3F94bE838840": {
-    "protocolToken": {
-      "address": "0x69Fb7c45726cfE2baDeE8317005d3F94bE838840",
-      "name": "LP-bCurve",
-      "symbol": "BCURVE",
-      "decimals": 18,
-      "guageType": "single"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3B3Ac5386837Dc563660FB6a0937DFAa5924333B",
-        "name": "LP-bCurve",
-        "symbol": "BCURVE",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x7ca5b0a2910B33e9759DC7dDB0413949071D7575": {
-    "protocolToken": {
-      "address": "0x7ca5b0a2910B33e9759DC7dDB0413949071D7575",
-      "name": "LP-cCurve",
-      "symbol": "CCURVE",
-      "decimals": 18,
-      "guageType": "single"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2",
-        "name": "LP-cCurve",
-        "symbol": "CCURVE",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xB1F2cdeC61db658F091671F5f199635aEF202CAC": {
-    "protocolToken": {
-      "address": "0xB1F2cdeC61db658F091671F5f199635aEF202CAC",
-      "name": "LP renBTC Curve",
-      "symbol": "RENBTCCURVE",
-      "decimals": 18,
-      "guageType": "single"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x49849C98ae39Fff122806C06791Fa73784FB3675",
-        "name": "LP renBTC Curve",
-        "symbol": "RENBTCCURVE",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x705350c4BcD35c9441419DdD5d2f097d7a55410F": {
-    "protocolToken": {
-      "address": "0x705350c4BcD35c9441419DdD5d2f097d7a55410F",
-      "name": "Curve fi renBTC wBTC sBTC",
-      "symbol": "CRVRENWSBTC",
-      "decimals": 18,
-      "guageType": "double"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
-        "name": "Curve fi renBTC wBTC sBTC",
-        "symbol": "CRVRENWSBTC",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xA90996896660DEcC6E997655E065b23788857849": {
-    "protocolToken": {
-      "address": "0xA90996896660DEcC6E997655E065b23788857849",
-      "name": "LP sCurve",
-      "symbol": "SCURVE",
-      "decimals": 18,
-      "guageType": "double"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC25a3A3b969415c80451098fa907EC722572917F",
-        "name": "LP sCurve",
-        "symbol": "SCURVE",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x9B8519A9a00100720CCdC8a120fBeD319cA47a14": {
-    "protocolToken": {
-      "address": "0x9B8519A9a00100720CCdC8a120fBeD319cA47a14",
-      "name": "LUSD3CRV f",
-      "symbol": "LUSD3CRV",
+      "address": "0xda8769595FF12B0Ac0561a7622957E76D543B79A",
+      "name": "fxUSD/rUSD",
+      "symbol": "fxUSDrUSD",
       "decimals": 18,
       "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
-        "address": "0xEd279fDD11cA84bEef15AF5D39BB4d4bEE23F0cA",
-        "name": "LUSD3CRV f",
-        "symbol": "LUSD3CRV",
+        "address": "0x2116BFaD62b383043230501f6a124c6EA60CcfA5",
+        "name": "fxUSD/rUSD",
+        "symbol": "fxUSDrUSD",
         "decimals": 18
       }
     ]
   },
-  "0xCFc25170633581Bf896CB6CDeE170e3E3Aa59503": {
+  "0xE95ba2CbFD86E7A747dAA3bc83C9A5Bb445a9BE4": {
     "protocolToken": {
-      "address": "0xCFc25170633581Bf896CB6CDeE170e3E3Aa59503",
-      "name": "Curve fi FRAX USDC",
-      "symbol": "CRVFRAX",
+      "address": "0xE95ba2CbFD86E7A747dAA3bc83C9A5Bb445a9BE4",
+      "name": "alUSD/fxUSD",
+      "symbol": "fxUSDalUSD",
       "decimals": 18,
       "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
-        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
-        "name": "Curve fi FRAX USDC",
-        "symbol": "CRVFRAX",
+        "address": "0x27cB9629aE3Ee05cb266B99cA4124EC999303c9D",
+        "name": "alUSD/fxUSD",
+        "symbol": "fxUSDalUSD",
         "decimals": 18
       }
     ]
   },
-  "0xE2c422d954DB416a69Fb29137fe552cCe0E160E9": {
+  "0x34C8ff6992Beb1fF94c35643A2c2424e24303437": {
     "protocolToken": {
-      "address": "0xE2c422d954DB416a69Fb29137fe552cCe0E160E9",
-      "name": "fFRAX/crvUSD-ng",
-      "symbol": "FRAXcrvUSD",
+      "address": "0x34C8ff6992Beb1fF94c35643A2c2424e24303437",
+      "name": "thUSD",
+      "symbol": "thUSD3CRV",
       "decimals": 18,
       "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
-        "address": "0x4253Ac4046fBfDafcFE125d067B6d89f6923843E",
-        "name": "fFRAX/crvUSD-ng",
-        "symbol": "FRAXcrvUSD",
+        "address": "0x91553BAD9Fbc8bD69Ff5d5678Cbf7D514d00De0b",
+        "name": "thUSD",
+        "symbol": "thUSD3CRV",
         "decimals": 18
       }
     ]
   },
-  "0x621Ef98282aC42d2bF4c20Fc73912a16599e12Fb": {
+  "0x5C5db6CC20Cd2Ee600647FC48C1684c7049cdb7C": {
     "protocolToken": {
-      "address": "0x621Ef98282aC42d2bF4c20Fc73912a16599e12Fb",
-      "name": "silocrvUSD/crvUSD",
-      "symbol": "silocrvUSD",
+      "address": "0x5C5db6CC20Cd2Ee600647FC48C1684c7049cdb7C",
+      "name": "thUSD/crvUSD",
+      "symbol": "thUSDcrvUS",
       "decimals": 18,
       "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
-        "address": "0x67701d67b60a96473BFc4873e7a484035c8609B0",
-        "name": "silocrvUSD/crvUSD",
-        "symbol": "silocrvUSD",
+        "address": "0x9E641187391B7a5fE9ee193359408CA3894f68a2",
+        "name": "thUSD/crvUSD",
+        "symbol": "thUSDcrvUS",
         "decimals": 18
       }
     ]
   },
-  "0xe6c76b3Ce14973D070C0fE5C75e102Aba9DeFae1": {
+  "0xb4a92EBf0387A25F43A0c68ca2772222D86EDC1d": {
     "protocolToken": {
-      "address": "0xe6c76b3Ce14973D070C0fE5C75e102Aba9DeFae1",
-      "name": "eUSD/crvUSD",
-      "symbol": "eUSDcrvUSD",
+      "address": "0xb4a92EBf0387A25F43A0c68ca2772222D86EDC1d",
+      "name": "Real World Mansion USD",
+      "symbol": "rwmUSD",
       "decimals": 18,
       "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
-        "address": "0x91285c4fC766ffF6F3acAfeEC7a0423275257faE",
-        "name": "eUSD/crvUSD",
-        "symbol": "eUSDcrvUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8f8E854EF0dc76D88D2e217D3c2653672d13b252": {
-    "protocolToken": {
-      "address": "0x8f8E854EF0dc76D88D2e217D3c2653672d13b252",
-      "name": "rsETH/sfrxETH",
-      "symbol": "rsETHsfrx",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3772ba91B46f456AE487CB0974040c861c045810",
-        "name": "rsETH/sfrxETH",
-        "symbol": "rsETHsfrx",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xC840E5Ed7A1b6A9C1A6BF1ecAcA6DDb151b2fd6e": {
-    "protocolToken": {
-      "address": "0xC840E5Ed7A1b6A9C1A6BF1ecAcA6DDb151b2fd6e",
-      "name": "mkUSDUSDe",
-      "symbol": "mkUSDUSDe",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x1ab3D612EA7df26117554ddDD379764EBcE1A5Ad",
-        "name": "mkUSDUSDe",
-        "symbol": "mkUSDUSDe",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8DfF75976F22db58D7c3Fd7b68d782238B0DbE30": {
-    "protocolToken": {
-      "address": "0x8DfF75976F22db58D7c3Fd7b68d782238B0DbE30",
-      "name": "vETH/ETH",
-      "symbol": "vETHETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x6685fcFCe05e7502bf9f0AA03B36025b09374726",
-        "name": "vETH/ETH",
-        "symbol": "vETHETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8B859fb47b6377a84B61D3891774De462560742C": {
-    "protocolToken": {
-      "address": "0x8B859fb47b6377a84B61D3891774De462560742C",
-      "name": "uniETH/ETH",
-      "symbol": "uniETH ETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x0f2F4D68308dB60d36268a602EF273421A227021",
-        "name": "uniETH/ETH",
-        "symbol": "uniETH ETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x50e40d992a575544C34FdD17745C3fD842028aA1": {
-    "protocolToken": {
-      "address": "0x50e40d992a575544C34FdD17745C3fD842028aA1",
-      "name": "xETH/pxETH",
-      "symbol": "xETHpxETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3C91EAeac42DfaEad5F356167c52837e443b9f94",
-        "name": "xETH/pxETH",
-        "symbol": "xETHpxETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x870a462DC15232df76ae0018DBBa989b0A5e3892": {
-    "protocolToken": {
-      "address": "0x870a462DC15232df76ae0018DBBa989b0A5e3892",
-      "name": "LYU/USD",
-      "symbol": "LYUUSD",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x31b46c84e4fb0704dE69DBf4B054b5Cb81Aa3736",
-        "name": "LYU/USD",
-        "symbol": "LYUUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x55e5adb2Cb00bFdb085440Ca6a5EC628705b2E7F": {
-    "protocolToken": {
-      "address": "0x55e5adb2Cb00bFdb085440Ca6a5EC628705b2E7F",
-      "name": "rswETH/ETH",
-      "symbol": "rswETH/ETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xeE04382c4cA6c450213923fE0f0daB19b0ff3939",
-        "name": "rswETH/ETH",
-        "symbol": "rswETH/ETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xE8d52f614Fb6c11760b2D1e2Bf7c7e8b4C5C0438": {
-    "protocolToken": {
-      "address": "0xE8d52f614Fb6c11760b2D1e2Bf7c7e8b4C5C0438",
-      "name": "ezETH/WETH",
-      "symbol": "ezETH-WETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x85dE3ADd465a219EE25E04d22c39aB027cF5C12E",
-        "name": "ezETH/WETH",
-        "symbol": "ezETH-WETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x0Bfb387B87e8Bf173a10A7DCf786B0b7875F6771": {
-    "protocolToken": {
-      "address": "0x0Bfb387B87e8Bf173a10A7DCf786B0b7875F6771",
-      "name": "weeTH/rswETH",
-      "symbol": "weeTH/rswE",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x278cfB6f06B1EFc09d34fC7127d6060C61d629Db",
-        "name": "weeTH/rswETH",
-        "symbol": "weeTH/rswE",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x63DC752E11D4c9D0f2160DA20EdF2111FECB0a66": {
-    "protocolToken": {
-      "address": "0x63DC752E11D4c9D0f2160DA20EdF2111FECB0a66",
-      "name": "cvgSDT/SDT",
-      "symbol": "cvgSDTSDT",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC6628f00F29cc89a87BBeE7554C4725611200fD7",
-        "name": "cvgSDT/SDT",
-        "symbol": "cvgSDTSDT",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xB6Ec26A3433D6CD11084c2094F12c4E571806D06": {
-    "protocolToken": {
-      "address": "0xB6Ec26A3433D6CD11084c2094F12c4E571806D06",
-      "name": "pufETH/wstETH",
-      "symbol": "crvPufETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xB3c8Ce1eE157b0DCAa96897C9170aEe6281706c9",
-        "name": "pufETH/wstETH",
-        "symbol": "crvPufETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x1B0E9F245f08dbFc80bc4119746c190B867dd837": {
-    "protocolToken": {
-      "address": "0x1B0E9F245f08dbFc80bc4119746c190B867dd837",
-      "name": "pUSD-3CRV-A1000",
-      "symbol": "pUSD3crv",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2482DFb5A65D901d137742AB1095f26374509352",
-        "name": "pUSD-3CRV-A1000",
-        "symbol": "pUSD3crv",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x088A9770bc30627791F42b551D474E8Fd44808a2": {
-    "protocolToken": {
-      "address": "0x088A9770bc30627791F42b551D474E8Fd44808a2",
-      "name": "mkUSD/Paypool",
-      "symbol": "mkUSDPay",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9e10f9Fb6F0D32B350CEe2618662243d4f24C64a",
-        "name": "mkUSD/Paypool",
-        "symbol": "mkUSDPay",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4B092818708A721cB187dFACF41f440ADb79044D": {
-    "protocolToken": {
-      "address": "0x4B092818708A721cB187dFACF41f440ADb79044D",
-      "name": "DOLA/FRAXPYUSD",
-      "symbol": "crvDOLA",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xef484de8C07B6e2d732A92B5F78e81B38f99f95E",
-        "name": "DOLA/FRAXPYUSD",
-        "symbol": "crvDOLA",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xf16b07241Bbbf676324FaDEE6Bd6611423Faa4ae": {
-    "protocolToken": {
-      "address": "0xf16b07241Bbbf676324FaDEE6Bd6611423Faa4ae",
-      "name": "USDe/DAI",
-      "symbol": "USDeDAI",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xF36a4BA50C603204c3FC6d2dA8b78A7b69CBC67d",
-        "name": "USDe/DAI",
-        "symbol": "USDeDAI",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x62c9d3561b42023576ca44AE54b63B9124C471b8": {
-    "protocolToken": {
-      "address": "0x62c9d3561b42023576ca44AE54b63B9124C471b8",
-      "name": "mkUSD/ULTRA",
-      "symbol": "MKULTRA",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC236BAE6e35b3Fb7335e1c35CA0862Ce92bd5DE3",
-        "name": "mkUSD/ULTRA",
-        "symbol": "MKULTRA",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x330Cfd12e0E97B0aDF46158D2A81E8Bd2985c6cB": {
-    "protocolToken": {
-      "address": "0x330Cfd12e0E97B0aDF46158D2A81E8Bd2985c6cB",
-      "name": "sDAI/sUSDe",
-      "symbol": "MtEthena",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x167478921b907422F8E88B43C4Af2B8BEa278d3A",
-        "name": "sDAI/sUSDe",
-        "symbol": "MtEthena",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4B2a6685BEc19bdb28bB0127466809BfE0156114": {
-    "protocolToken": {
-      "address": "0x4B2a6685BEc19bdb28bB0127466809BfE0156114",
-      "name": "\"pxETH/vETH\"",
-      "symbol": "\"pxveth\"",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7F20EEa5bc667F4601E35af15868F3Bc6e447050",
-        "name": "\"pxETH/vETH\"",
-        "symbol": "\"pxveth\"",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xB1A829a05E618F7C4f50Cb86f8F64Fb86e42dE5a": {
-    "protocolToken": {
-      "address": "0xB1A829a05E618F7C4f50Cb86f8F64Fb86e42dE5a",
-      "name": "crvUSD/zunUSD",
-      "symbol": "CRVZUNUSD",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x8C24b3213FD851db80245FCCc42c40B94Ac9a745",
-        "name": "crvUSD/zunUSD",
-        "symbol": "CRVZUNUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x94E4fd3747dCD100D333E896D7352C5FbCCF4cE7": {
-    "protocolToken": {
-      "address": "0x94E4fd3747dCD100D333E896D7352C5FbCCF4cE7",
-      "name": "crvUSD/fxUSD",
-      "symbol": "fxUSDcrvUS",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x8fFC7b89412eFD0D17EDEa2018F6634eA4C2FCb2",
-        "name": "crvUSD/fxUSD",
-        "symbol": "fxUSDcrvUS",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x5d552497f8fE3317565Ee76bCc57fAd80c70A911": {
-    "protocolToken": {
-      "address": "0x5d552497f8fE3317565Ee76bCc57fAd80c70A911",
-      "name": "pyUSD/fxUSD",
-      "symbol": "fxUSDpyUSD",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xd6982da59F1D26476E259559508f4135135cf9b8",
-        "name": "pyUSD/fxUSD",
-        "symbol": "fxUSDpyUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xC58706e1C2D7C56d1a79407401a0647630fe6413": {
-    "protocolToken": {
-      "address": "0xC58706e1C2D7C56d1a79407401a0647630fe6413",
-      "name": "Dola/fxUSD",
-      "symbol": "fxUSDDola",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x189B4e49B5cAf33565095097b4B960F14032C7D0",
-        "name": "Dola/fxUSD",
-        "symbol": "fxUSDDola",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xb2A385f10DAF66D5eA1418A2BB819b85F1bc3a5B": {
-    "protocolToken": {
-      "address": "0xb2A385f10DAF66D5eA1418A2BB819b85F1bc3a5B",
-      "name": "Frax/fxUSD",
-      "symbol": "fxUSDFrax",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x1EE81c56e42EC34039D993d12410d437DdeA341E",
-        "name": "Frax/fxUSD",
-        "symbol": "fxUSDFrax",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xec303960CF0456aC304Af45C0aDDe34921a10Fdf": {
-    "protocolToken": {
-      "address": "0xec303960CF0456aC304Af45C0aDDe34921a10Fdf",
-      "name": "GHO/fxUSD",
-      "symbol": "fxUSDGHO",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x74345504Eaea3D9408fC69Ae7EB2d14095643c5b",
-        "name": "GHO/fxUSD",
-        "symbol": "fxUSDGHO",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x29b45B633b0C281245055D6713F167818E73e38c": {
-    "protocolToken": {
-      "address": "0x29b45B633b0C281245055D6713F167818E73e38c",
-      "name": "ULTRA-USDC",
-      "symbol": "ULTRAUSDC",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC03FEF1c425956A3Cd5762022E511e0d4148B3D6",
-        "name": "ULTRA-USDC",
-        "symbol": "ULTRAUSDC",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x92C4a06209ec44919A7cfA62E11357Fe7E012090": {
-    "protocolToken": {
-      "address": "0x92C4a06209ec44919A7cfA62E11357Fe7E012090",
-      "name": "mkUSD/fxUSD",
-      "symbol": "fxUSDmkUSD",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xcA554E2e2948a211D4650Fe0F4E271f01f9cB5F1",
-        "name": "mkUSD/fxUSD",
-        "symbol": "fxUSDmkUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x59E9D4672AaeB08C250F9C61484c9447456495A8": {
-    "protocolToken": {
-      "address": "0x59E9D4672AaeB08C250F9C61484c9447456495A8",
-      "name": "ULTRA/fxUSD",
-      "symbol": "fxUSDULTRA",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xF33aB11E5C4e55DAcB13644f0C0A9d1e199A796F",
-        "name": "ULTRA/fxUSD",
-        "symbol": "fxUSDULTRA",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x55A3A857598B500Fd844610ED875ec73Ff296C4b": {
-    "protocolToken": {
-      "address": "0x55A3A857598B500Fd844610ED875ec73Ff296C4b",
-      "name": "shezUSD/USDC",
-      "symbol": "shezUSDUSD",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x66267c6E24fBcdeBf06AE9104e0ccFb9C8b2AE08",
-        "name": "shezUSD/USDC",
-        "symbol": "shezUSDUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xDeFd8FdD20e0f34115C7018CCfb655796F6B2168": {
-    "protocolToken": {
-      "address": "0xDeFd8FdD20e0f34115C7018CCfb655796F6B2168",
-      "name": "Curve.fi USD-BTC-ETH",
-      "symbol": "crv3crypto",
-      "decimals": 18,
-      "guageType": "gauge-v4"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xc4AD29ba4B3c580e6D59105FFf484999997675Ff",
-        "name": "Curve.fi USD-BTC-ETH",
-        "symbol": "crv3crypto",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4Fd86Ce7Ecea88F7E0aA78DC12625996Fb3a04bC": {
-    "protocolToken": {
-      "address": "0x4Fd86Ce7Ecea88F7E0aA78DC12625996Fb3a04bC",
-      "name": "Curve EURT-3Crv",
-      "symbol": "crvEURTUSD",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3b6831c0077a1e44ED0a21841C3bC4dC11bCE833",
-        "name": "Curve EURT-3Crv",
-        "symbol": "crvEURTUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x65CA7Dc5CB661fC58De57B1E1aF404649a27AD35": {
-    "protocolToken": {
-      "address": "0x65CA7Dc5CB661fC58De57B1E1aF404649a27AD35",
-      "name": "Curve EURS-USDC",
-      "symbol": "crvEURSUSDC",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3D229E1B4faab62F621eF2F6A610961f7BD7b23B",
-        "name": "Curve EURS-USDC",
-        "symbol": "crvEURSUSDC",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x7E1444BA99dcdFfE8fBdb42C02F0005D14f13BE1": {
-    "protocolToken": {
-      "address": "0x7E1444BA99dcdFfE8fBdb42C02F0005D14f13BE1",
-      "name": "Curve CVX-ETH",
-      "symbol": "crvCVXETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3A283D9c08E8b55966afb64C515f5143cf907611",
-        "name": "Curve CVX-ETH",
-        "symbol": "crvCVXETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x08380a4999Be1a958E2abbA07968d703C7A3027C": {
-    "protocolToken": {
-      "address": "0x08380a4999Be1a958E2abbA07968d703C7A3027C",
-      "name": "Curve SPELL-ETH",
-      "symbol": "crvSPELLETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x8282BD15dcA2EA2bDf24163E8f2781B30C43A2ef",
-        "name": "Curve SPELL-ETH",
-        "symbol": "crvSPELLETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6070fBD4E608ee5391189E7205d70cc4A274c017": {
-    "protocolToken": {
-      "address": "0x6070fBD4E608ee5391189E7205d70cc4A274c017",
-      "name": "Curve T-ETH",
-      "symbol": "crvTETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xCb08717451aaE9EF950a2524E33B6DCaBA60147B",
-        "name": "Curve T-ETH",
-        "symbol": "crvTETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x5ccDe4BEC0F4006c3826b51EDF0D227D12EA33FA": {
-    "protocolToken": {
-      "address": "0x5ccDe4BEC0F4006c3826b51EDF0D227D12EA33FA",
-      "name": "TriDBR",
-      "symbol": "crvDBRINV",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC7DE47b9Ca2Fc753D6a2F167D8b3e19c6D18b19a",
-        "name": "TriDBR",
-        "symbol": "crvDBRINV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x331d6F25A382B4961A983d6ddc6974A48E51462c": {
-    "protocolToken": {
-      "address": "0x331d6F25A382B4961A983d6ddc6974A48E51462c",
-      "name": "TriRSR",
-      "symbol": "crvRSReUSDETH+",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xDB6925eA42897ca786a045B252D95aA7370f44b4",
-        "name": "TriRSR",
-        "symbol": "crvRSReUSDETH+",
+        "address": "0x33F2b4b9f6EBDcA98f48548e26149fc44F9e2289",
+        "name": "Real World Mansion USD",
+        "symbol": "rwmUSD",
         "decimals": 18
       }
     ]
@@ -845,23 +131,6 @@
         "address": "0x1830c553dC76d3447B69b7B0dC19CF9e3c739C78",
         "name": "TriSDT+",
         "symbol": "TriSDT+",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x25707E5FE03dEEdc9Bc7cDD118f9d952C496FeBe": {
-    "protocolToken": {
-      "address": "0x25707E5FE03dEEdc9Bc7cDD118f9d952C496FeBe",
-      "name": "BobrCRV/CRV/crvUSD",
-      "symbol": "BobrCRV",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9FeE65D5A627e73212989c8BbEdC5Fa5Cae3821F",
-        "name": "BobrCRV/CRV/crvUSD",
-        "symbol": "BobrCRV",
         "decimals": 18
       }
     ]
@@ -1342,240 +611,121 @@
       }
     ]
   },
-  "0x16A3a047fC1D388d5846a73ACDb475b11228c299": {
+  "0xDeFd8FdD20e0f34115C7018CCfb655796F6B2168": {
     "protocolToken": {
-      "address": "0x16A3a047fC1D388d5846a73ACDb475b11228c299",
-      "name": "CVG/ETH",
-      "symbol": "CVGETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x004C167d27ADa24305b76D80762997Fa6EB8d9B2",
-        "name": "CVG/ETH",
-        "symbol": "CVGETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xa5Dc66685bD13A0924505807c29F8C65dDa0d207": {
-    "protocolToken": {
-      "address": "0xa5Dc66685bD13A0924505807c29F8C65dDa0d207",
-      "name": "crvUSD/CJPY",
-      "symbol": "crvUSDCJPY",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xca546aE6c3B2BB9Fba2b6e5EeB0881097CecE5B0",
-        "name": "crvUSD/CJPY",
-        "symbol": "crvUSDCJPY",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x696dbfe3B5861120B2c4b7d5c28B1325E8b232F4": {
-    "protocolToken": {
-      "address": "0x696dbfe3B5861120B2c4b7d5c28B1325E8b232F4",
-      "name": "ZETA/crvUSD",
-      "symbol": "ZETACRVUSD",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x119806f0e93a213029b599D7bBAE50bD965C2cC4",
-        "name": "ZETA/crvUSD",
-        "symbol": "ZETACRVUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x85D44861D024CB7603Ba906F2Dc9569fC02083F6": {
-    "protocolToken": {
-      "address": "0x85D44861D024CB7603Ba906F2Dc9569fC02083F6",
-      "name": "TricryptoUSDC",
-      "symbol": "crvUSDCWBTCWETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
-        "name": "TricryptoUSDC",
-        "symbol": "crvUSDCWBTCWETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xF29FfF074f5cF755b55FbB3eb10A29203ac91EA2": {
-    "protocolToken": {
-      "address": "0xF29FfF074f5cF755b55FbB3eb10A29203ac91EA2",
-      "name": "TricryptoUSDT",
-      "symbol": "crvUSDTWBTCWETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4",
-        "name": "TricryptoUSDT",
-        "symbol": "crvUSDTWBTCWETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x60d3d7eBBC44Dc810A743703184f062d00e6dB7e": {
-    "protocolToken": {
-      "address": "0x60d3d7eBBC44Dc810A743703184f062d00e6dB7e",
-      "name": "TricryptoLLAMA",
-      "symbol": "crvCRVUSDTBTCWSTETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2889302a794dA87fBF1D6Db415C1492194663D13",
-        "name": "TricryptoLLAMA",
-        "symbol": "crvCRVUSDTBTCWSTETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4Fc86cd0F9b650280Fa783e3116258e0E0496A2c": {
-    "protocolToken": {
-      "address": "0x4Fc86cd0F9b650280Fa783e3116258e0E0496A2c",
-      "name": "TricryptoINV",
-      "symbol": "crvUSDCWETHINV",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5426178799ee0a0181A89b4f57eFddfAb49941Ec",
-        "name": "TricryptoINV",
-        "symbol": "crvUSDCWETHINV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8D867BEf70C6733ff25Cc0D1caa8aA6c38B24817": {
-    "protocolToken": {
-      "address": "0x8D867BEf70C6733ff25Cc0D1caa8aA6c38B24817",
-      "name": "TriCRV",
-      "symbol": "crvUSDETHCRV",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14",
-        "name": "TriCRV",
-        "symbol": "crvUSDETHCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xb901a92F2c385AfA0A019e8A307a59A570239ca4": {
-    "protocolToken": {
-      "address": "0xb901a92F2c385AfA0A019e8A307a59A570239ca4",
-      "name": "TriSILO",
-      "symbol": "crvUSDETHSILO",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x86bF09aCB47AB31686bE413d614E9ded3666a1d3",
-        "name": "TriSILO",
-        "symbol": "crvUSDETHSILO",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xeA012f5b25Fa0D8e46123B85f585d0A5075e96b5": {
-    "protocolToken": {
-      "address": "0xeA012f5b25Fa0D8e46123B85f585d0A5075e96b5",
-      "name": "TryLSD",
-      "symbol": "TryLSD",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2570f1bD5D2735314FC102eb12Fc1aFe9e6E7193",
-        "name": "TryLSD",
-        "symbol": "TryLSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x2DD2b7E07dD433B758B98A3889a63cbF48ef0D99": {
-    "protocolToken": {
-      "address": "0x2DD2b7E07dD433B758B98A3889a63cbF48ef0D99",
-      "name": "triSDT",
-      "symbol": "triSDT",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x954313005C56b555bdC41B84D6c63B69049d7847",
-        "name": "triSDT",
-        "symbol": "triSDT",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x9582C4ADACB3BCE56Fea3e590F05c3ca2fb9C477": {
-    "protocolToken": {
-      "address": "0x9582C4ADACB3BCE56Fea3e590F05c3ca2fb9C477",
-      "name": "Curve.fi Factory USD Metapool: Alchemix USD",
-      "symbol": "alUSD3CRV-f",
+      "address": "0xDeFd8FdD20e0f34115C7018CCfb655796F6B2168",
+      "name": "Curve.fi USD-BTC-ETH",
+      "symbol": "crv3crypto",
       "decimals": 18,
       "guageType": "gauge-v4"
     },
     "underlyingTokens": [
       {
-        "address": "0x43b4FdFD4Ff969587185cDB6f0BD875c5Fc83f8c",
-        "name": "Curve.fi Factory USD Metapool: Alchemix USD",
-        "symbol": "alUSD3CRV-f",
+        "address": "0xc4AD29ba4B3c580e6D59105FFf484999997675Ff",
+        "name": "Curve.fi USD-BTC-ETH",
+        "symbol": "crv3crypto",
         "decimals": 18
       }
     ]
   },
-  "0x72E158d38dbd50A483501c24f792bDAAA3e7D55C": {
+  "0x4Fd86Ce7Ecea88F7E0aA78DC12625996Fb3a04bC": {
     "protocolToken": {
-      "address": "0x72E158d38dbd50A483501c24f792bDAAA3e7D55C",
-      "name": "Curve.fi Factory USD Metapool: Frax",
-      "symbol": "FRAX3CRV-f",
+      "address": "0x4Fd86Ce7Ecea88F7E0aA78DC12625996Fb3a04bC",
+      "name": "Curve EURT-3Crv",
+      "symbol": "crvEURTUSD",
       "decimals": 18,
       "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
-        "address": "0xd632f22692FaC7611d2AA1C0D552930D43CAEd3B",
-        "name": "Curve.fi Factory USD Metapool: Frax",
-        "symbol": "FRAX3CRV-f",
+        "address": "0x3b6831c0077a1e44ED0a21841C3bC4dC11bCE833",
+        "name": "Curve EURT-3Crv",
+        "symbol": "crvEURTUSD",
         "decimals": 18
       }
     ]
   },
-  "0xd8b712d29381748dB89c36BCa0138d7c75866ddF": {
+  "0x65CA7Dc5CB661fC58De57B1E1aF404649a27AD35": {
     "protocolToken": {
-      "address": "0xd8b712d29381748dB89c36BCa0138d7c75866ddF",
-      "name": "Curve.fi Factory USD Metapool: Magic Internet Money 3Pool",
-      "symbol": "MIM-3LP3CRV-f",
+      "address": "0x65CA7Dc5CB661fC58De57B1E1aF404649a27AD35",
+      "name": "Curve EURS-USDC",
+      "symbol": "crvEURSUSDC",
       "decimals": 18,
       "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
-        "address": "0x5a6A4D54456819380173272A5E8E9B9904BdF41B",
-        "name": "Curve.fi Factory USD Metapool: Magic Internet Money 3Pool",
-        "symbol": "MIM-3LP3CRV-f",
+        "address": "0x3D229E1B4faab62F621eF2F6A610961f7BD7b23B",
+        "name": "Curve EURS-USDC",
+        "symbol": "crvEURSUSDC",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x7E1444BA99dcdFfE8fBdb42C02F0005D14f13BE1": {
+    "protocolToken": {
+      "address": "0x7E1444BA99dcdFfE8fBdb42C02F0005D14f13BE1",
+      "name": "Curve CVX-ETH",
+      "symbol": "crvCVXETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3A283D9c08E8b55966afb64C515f5143cf907611",
+        "name": "Curve CVX-ETH",
+        "symbol": "crvCVXETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x08380a4999Be1a958E2abbA07968d703C7A3027C": {
+    "protocolToken": {
+      "address": "0x08380a4999Be1a958E2abbA07968d703C7A3027C",
+      "name": "Curve SPELL-ETH",
+      "symbol": "crvSPELLETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8282BD15dcA2EA2bDf24163E8f2781B30C43A2ef",
+        "name": "Curve SPELL-ETH",
+        "symbol": "crvSPELLETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x6070fBD4E608ee5391189E7205d70cc4A274c017": {
+    "protocolToken": {
+      "address": "0x6070fBD4E608ee5391189E7205d70cc4A274c017",
+      "name": "Curve T-ETH",
+      "symbol": "crvTETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCb08717451aaE9EF950a2524E33B6DCaBA60147B",
+        "name": "Curve T-ETH",
+        "symbol": "crvTETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A": {
+    "protocolToken": {
+      "address": "0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A",
+      "name": "Curve.fi DAI/USDC/USDT",
+      "symbol": "3Crv",
+      "decimals": 18,
+      "guageType": "single"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+        "name": "Curve.fi DAI/USDC/USDT",
+        "symbol": "3Crv",
         "decimals": 18
       }
     ]
@@ -1610,6 +760,40 @@
         "address": "0xaA17A236F2bAdc98DDc0Cf999AbB47D47Fc0A6Cf",
         "name": "Curve.fi ETH/aETH",
         "symbol": "ankrCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x69Fb7c45726cfE2baDeE8317005d3F94bE838840": {
+    "protocolToken": {
+      "address": "0x69Fb7c45726cfE2baDeE8317005d3F94bE838840",
+      "name": "Curve.fi yDAI/yUSDC/yUSDT/yBUSD",
+      "symbol": "yDAI+yUSDC+yUSDT+yBUSD",
+      "decimals": 18,
+      "guageType": "single"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3B3Ac5386837Dc563660FB6a0937DFAa5924333B",
+        "name": "Curve.fi yDAI/yUSDC/yUSDT/yBUSD",
+        "symbol": "yDAI+yUSDC+yUSDT+yBUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x7ca5b0a2910B33e9759DC7dDB0413949071D7575": {
+    "protocolToken": {
+      "address": "0x7ca5b0a2910B33e9759DC7dDB0413949071D7575",
+      "name": "Curve.fi cDAI/cUSDC",
+      "symbol": "cDAI+cUSDC",
+      "decimals": 18,
+      "guageType": "single"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2",
+        "name": "Curve.fi cDAI/cUSDC",
+        "symbol": "cDAI+cUSDC",
         "decimals": 18
       }
     ]
@@ -1665,6 +849,23 @@
       }
     ]
   },
+  "0xB1F2cdeC61db658F091671F5f199635aEF202CAC": {
+    "protocolToken": {
+      "address": "0xB1F2cdeC61db658F091671F5f199635aEF202CAC",
+      "name": "Curve.fi renBTC/wBTC",
+      "symbol": "crvRenWBTC",
+      "decimals": 18,
+      "guageType": "single"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x49849C98ae39Fff122806C06791Fa73784FB3675",
+        "name": "Curve.fi renBTC/wBTC",
+        "symbol": "crvRenWBTC",
+        "decimals": 18
+      }
+    ]
+  },
   "0x462253b8F74B72304c145DB0e4Eebd326B22ca39": {
     "protocolToken": {
       "address": "0x462253b8F74B72304c145DB0e4Eebd326B22ca39",
@@ -1678,6 +879,23 @@
         "address": "0x02d341CcB60fAaf662bC0554d13778015d1b285C",
         "name": "Curve.fi aDAI/aSUSD",
         "symbol": "saCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x705350c4BcD35c9441419DdD5d2f097d7a55410F": {
+    "protocolToken": {
+      "address": "0x705350c4BcD35c9441419DdD5d2f097d7a55410F",
+      "name": "Curve.fi renBTC/wBTC/sBTC",
+      "symbol": "crvRenWSBTC",
+      "decimals": 18,
+      "guageType": "double"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
+        "name": "Curve.fi renBTC/wBTC/sBTC",
+        "symbol": "crvRenWSBTC",
         "decimals": 18
       }
     ]
@@ -1712,6 +930,23 @@
         "address": "0x06325440D014e39736583c165C2963BA99fAf14E",
         "name": "Curve.fi ETH/stETH",
         "symbol": "steCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xA90996896660DEcC6E997655E065b23788857849": {
+    "protocolToken": {
+      "address": "0xA90996896660DEcC6E997655E065b23788857849",
+      "name": "Curve.fi DAI/USDC/USDT/sUSD",
+      "symbol": "crvPlain3andSUSD",
+      "decimals": 18,
+      "guageType": "double"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC25a3A3b969415c80451098fa907EC722572917F",
+        "name": "Curve.fi DAI/USDC/USDT/sUSD",
+        "symbol": "crvPlain3andSUSD",
         "decimals": 18
       }
     ]
@@ -1903,6 +1138,40 @@
       }
     ]
   },
+  "0x9B8519A9a00100720CCdC8a120fBeD319cA47a14": {
+    "protocolToken": {
+      "address": "0x9B8519A9a00100720CCdC8a120fBeD319cA47a14",
+      "name": "Curve.fi Factory USD Metapool: Liquity",
+      "symbol": "LUSD3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xEd279fDD11cA84bEef15AF5D39BB4d4bEE23F0cA",
+        "name": "Curve.fi Factory USD Metapool: Liquity",
+        "symbol": "LUSD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x72E158d38dbd50A483501c24f792bDAAA3e7D55C": {
+    "protocolToken": {
+      "address": "0x72E158d38dbd50A483501c24f792bDAAA3e7D55C",
+      "name": "Curve.fi Factory USD Metapool: Frax",
+      "symbol": "FRAX3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd632f22692FaC7611d2AA1C0D552930D43CAEd3B",
+        "name": "Curve.fi Factory USD Metapool: Frax",
+        "symbol": "FRAX3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
   "0xd4B22fEdcA85E684919955061fDf353b9d38389b": {
     "protocolToken": {
       "address": "0xd4B22fEdcA85E684919955061fDf353b9d38389b",
@@ -1933,6 +1202,23 @@
         "address": "0x53a901d48795C58f485cBB38df08FA96a24669D5",
         "name": "Curve.fi ETH/rETH",
         "symbol": "rCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x9582C4ADACB3BCE56Fea3e590F05c3ca2fb9C477": {
+    "protocolToken": {
+      "address": "0x9582C4ADACB3BCE56Fea3e590F05c3ca2fb9C477",
+      "name": "Curve.fi Factory USD Metapool: Alchemix USD",
+      "symbol": "alUSD3CRV-f",
+      "decimals": 18,
+      "guageType": "gauge-v4"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x43b4FdFD4Ff969587185cDB6f0BD875c5Fc83f8c",
+        "name": "Curve.fi Factory USD Metapool: Alchemix USD",
+        "symbol": "alUSD3CRV-f",
         "decimals": 18
       }
     ]
@@ -1971,53 +1257,104 @@
       }
     ]
   },
-  "0x2932a86df44Fe8D2A706d8e9c5d51c24883423F5": {
+  "0xd8b712d29381748dB89c36BCa0138d7c75866ddF": {
     "protocolToken": {
-      "address": "0x2932a86df44Fe8D2A706d8e9c5d51c24883423F5",
-      "name": "Curve.fi ETH/frxETH",
-      "symbol": "frxETHCRV",
+      "address": "0xd8b712d29381748dB89c36BCa0138d7c75866ddF",
+      "name": "Curve.fi Factory USD Metapool: Magic Internet Money 3Pool",
+      "symbol": "MIM-3LP3CRV-f",
       "decimals": 18,
       "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
-        "address": "0xf43211935C781D5ca1a41d2041F397B8A7366C7A",
-        "name": "Curve.fi ETH/frxETH",
-        "symbol": "frxETHCRV",
+        "address": "0x5a6A4D54456819380173272A5E8E9B9904BdF41B",
+        "name": "Curve.fi Factory USD Metapool: Magic Internet Money 3Pool",
+        "symbol": "MIM-3LP3CRV-f",
         "decimals": 18
       }
     ]
   },
-  "0x6D787113F23bED1D5e1530402B3f364D0A6e5Af3": {
+  "0x1Db233c2D10e6076d347f5FC87d575b4F8b88Ca7": {
     "protocolToken": {
-      "address": "0x6D787113F23bED1D5e1530402B3f364D0A6e5Af3",
-      "name": "Curve.fi wBTC/sBTC",
-      "symbol": "crvWSBTC",
+      "address": "0x1Db233c2D10e6076d347f5FC87d575b4F8b88Ca7",
+      "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP",
+      "symbol": "DUSDFRAXBP3CRV-f",
       "decimals": 18,
       "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
-        "address": "0x051d7e5609917Bd9b73f04BAc0DED8Dd46a74301",
-        "name": "Curve.fi wBTC/sBTC",
-        "symbol": "crvWSBTC",
+        "address": "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3",
+        "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP",
+        "symbol": "DUSDFRAXBP3CRV-f",
         "decimals": 18
       }
     ]
   },
-  "0x50161102a240b1456d770Dbb55c76d8dc2D160Aa": {
+  "0x4e227d29b33B77113F84bcC189a6F886755a1f24": {
     "protocolToken": {
-      "address": "0x50161102a240b1456d770Dbb55c76d8dc2D160Aa",
-      "name": "Curve.fi ETH/wBETH",
-      "symbol": "ETHwBETHCRV",
+      "address": "0x4e227d29b33B77113F84bcC189a6F886755a1f24",
+      "name": "Curve.fi Factory Plain Pool: msETH/WETH",
+      "symbol": "msETHWETH-f",
       "decimals": 18,
       "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
-        "address": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6",
-        "name": "Curve.fi ETH/wBETH",
-        "symbol": "ETHwBETHCRV",
+        "address": "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4",
+        "name": "Curve.fi Factory Plain Pool: msETH/WETH",
+        "symbol": "msETHWETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8b87c8d75a620Df2271eD06B161de6cf811221b6": {
+    "protocolToken": {
+      "address": "0x8b87c8d75a620Df2271eD06B161de6cf811221b6",
+      "name": "Curve.fi Factory Plain Pool: pETH",
+      "symbol": "pETH-WETH-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B",
+        "name": "Curve.fi Factory Plain Pool: pETH",
+        "symbol": "pETH-WETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x59063699125def4aA6D3Dbf384E1144BBb1083a1": {
+    "protocolToken": {
+      "address": "0x59063699125def4aA6D3Dbf384E1144BBb1083a1",
+      "name": "Curve.fi Factory USD Metapool: eUSD/3CRV",
+      "symbol": "eUSD3CRV3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2673099769201c08E9A5e63b25FBaF25541A6557",
+        "name": "Curve.fi Factory USD Metapool: eUSD/3CRV",
+        "symbol": "eUSD3CRV3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x7671299eA7B4bbE4f3fD305A994e6443b4be680E": {
+    "protocolToken": {
+      "address": "0x7671299eA7B4bbE4f3fD305A994e6443b4be680E",
+      "name": "Curve.fi Factory Pool: ETHx-ETH",
+      "symbol": "ethx-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492",
+        "name": "Curve.fi Factory Pool: ETHx-ETH",
+        "symbol": "ethx-f",
         "decimals": 18
       }
     ]
@@ -2158,40 +1495,6 @@
       }
     ]
   },
-  "0x528bED8b1E95549694519dbF8cFBdD54e274Cd48": {
-    "protocolToken": {
-      "address": "0x528bED8b1E95549694519dbF8cFBdD54e274Cd48",
-      "name": "Curve.fi Factory USD Metapool: thUSD",
-      "symbol": "thUSD3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x212a60171E22988492B7C38a1A3553c60F1892BE",
-        "name": "Curve.fi Factory USD Metapool: thUSD",
-        "symbol": "thUSD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x42427Bb483f20b2722300Bc4E60DE2EFB00A869a": {
-    "protocolToken": {
-      "address": "0x42427Bb483f20b2722300Bc4E60DE2EFB00A869a",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/thUSD",
-      "symbol": "crvUSDthUS-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xDd9E687c73A2031A8f5058B596d740f53c1cb220",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/thUSD",
-        "symbol": "crvUSDthUS-f",
-        "decimals": 18
-      }
-    ]
-  },
   "0x13E58C7b1147385D735a06D14F0456E54C2dEBC8": {
     "protocolToken": {
       "address": "0x13E58C7b1147385D735a06D14F0456E54C2dEBC8",
@@ -2239,652 +1542,6 @@
         "address": "0x79CE6BE6Ae0995B1c8ED3e8ae54dE0E437deC8C3",
         "name": "Curve.fi Factory USD Metapool: L3USD3CRV",
         "symbol": "L3USD3CRV3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x95f00391cB5EebCd190EB58728B4CE23DbFa6ac1": {
-    "protocolToken": {
-      "address": "0x95f00391cB5EebCd190EB58728B4CE23DbFa6ac1",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
-      "symbol": "crvUSDUSDC-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
-        "symbol": "crvUSDUSDC-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4e6bB6B7447B7B2Aa268C16AB87F4Bb48BF57939": {
-    "protocolToken": {
-      "address": "0x4e6bB6B7447B7B2Aa268C16AB87F4Bb48BF57939",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/USDT",
-      "symbol": "crvUSDUSDT-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x390f3595bCa2Df7d23783dFd126427CCeb997BF4",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/USDT",
-        "symbol": "crvUSDUSDT-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x5c07440a172805d566Faf7eBAf16EF068aC05f43": {
-    "protocolToken": {
-      "address": "0x5c07440a172805d566Faf7eBAf16EF068aC05f43",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/USDP",
-      "symbol": "crvUSDUSDP-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xCa978A0528116DDA3cbA9ACD3e68bc6191CA53D0",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/USDP",
-        "symbol": "crvUSDUSDP-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xfcAf4EC80a94a5409141Af16a1DcA950a6973a39": {
-    "protocolToken": {
-      "address": "0xfcAf4EC80a94a5409141Af16a1DcA950a6973a39",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/TUSD",
-      "symbol": "crvUSDTUSD-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x34D655069F4cAc1547E4C8cA284FfFF5ad4A8db0",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/TUSD",
-        "symbol": "crvUSDTUSD-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x96424E6b5eaafe0c3B36CA82068d574D44BE4e3c": {
-    "protocolToken": {
-      "address": "0x96424E6b5eaafe0c3B36CA82068d574D44BE4e3c",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/Frax",
-      "symbol": "crvUSDFRAX-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x0CD6f267b2086bea681E922E19D40512511BE538",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/Frax",
-        "symbol": "crvUSDFRAX-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x533B5AeE744647C20e33653F03676c471bb8e67B": {
-    "protocolToken": {
-      "address": "0x533B5AeE744647C20e33653F03676c471bb8e67B",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/MIM",
-      "symbol": "crvUSDMIM-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xBe426b0f37c112dd20d5866769c8034171567b31",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/MIM",
-        "symbol": "crvUSDMIM-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x512a68DD5433563Bad526C8C2838c39deBc9a756": {
-    "protocolToken": {
-      "address": "0x512a68DD5433563Bad526C8C2838c39deBc9a756",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/SUSD",
-      "symbol": "crvUSDSUSD-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x94cC50e4521bD271C1a997a3A4Dc815C2F920b41",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/SUSD",
-        "symbol": "crvUSDSUSD-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xFc58C946A2D541cfA29Ad8c16FC2994323e34458": {
-    "protocolToken": {
-      "address": "0xFc58C946A2D541cfA29Ad8c16FC2994323e34458",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/GHO",
-      "symbol": "crvUSDGHO-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x86152dF0a0E321Afb3B0B9C4deb813184F365ADa",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/GHO",
-        "symbol": "crvUSDGHO-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xEcAD6745058377744c09747b2715c0170B5699e5": {
-    "protocolToken": {
-      "address": "0xEcAD6745058377744c09747b2715c0170B5699e5",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/DOLA",
-      "symbol": "crvUSDDOLA-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x8272E1A3dBef607C04AA6e5BD3a1A134c8ac063B",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/DOLA",
-        "symbol": "crvUSDDOLA-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xDe14d2B848a7a1373E155Cc4db9B649f4BE24296": {
-    "protocolToken": {
-      "address": "0xDe14d2B848a7a1373E155Cc4db9B649f4BE24296",
-      "name": "Curve.fi Factory Plain Pool: crvUSD/GUSD",
-      "symbol": "crvUSDGUSD-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xeCDd0cE505da71cd9dE855CD6804BA1e8C7bdB07",
-        "name": "Curve.fi Factory Plain Pool: crvUSD/GUSD",
-        "symbol": "crvUSDGUSD-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4E21418095d32d15c6e2B96A9910772613A50d50": {
-    "protocolToken": {
-      "address": "0x4E21418095d32d15c6e2B96A9910772613A50d50",
-      "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
-      "symbol": "frxeth-ng-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9c3B46C0Ceb5B9e304FCd6D88Fc50f7DD24B31Bc",
-        "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
-        "symbol": "frxeth-ng-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x5010263AC1978297F56048C7D2B02316a3435404": {
-    "protocolToken": {
-      "address": "0x5010263AC1978297F56048C7D2B02316a3435404",
-      "name": "Curve.fi Factory Plain Pool: tBTC/WBTC",
-      "symbol": "2BTC-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xB7ECB2AA52AA64a717180E030241bC75Cd946726",
-        "name": "Curve.fi Factory Plain Pool: tBTC/WBTC",
-        "symbol": "2BTC-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x0e5bdb5afe132D1c6A6C67f6D8eB6133dD607e36": {
-    "protocolToken": {
-      "address": "0x0e5bdb5afe132D1c6A6C67f6D8eB6133dD607e36",
-      "name": "Curve.fi Factory Plain Pool: mkUSD/crvUSD",
-      "symbol": "mkcrvUSD-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3de254A0f838a844F727fee81040e0FA7884B935",
-        "name": "Curve.fi Factory Plain Pool: mkUSD/crvUSD",
-        "symbol": "mkcrvUSD-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x25f0cE4E2F8dbA112D9b115710AC297F816087CD": {
-    "protocolToken": {
-      "address": "0x25f0cE4E2F8dbA112D9b115710AC297F816087CD",
-      "name": "Curve.fi Factory USD Metapool: Origin Dollar",
-      "symbol": "OUSD3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x87650D7bbfC3A9F10587d7778206671719d9910D",
-        "name": "Curve.fi Factory USD Metapool: Origin Dollar",
-        "symbol": "OUSD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xdC69D4cB5b86388Fff0b51885677e258883534ae": {
-    "protocolToken": {
-      "address": "0xdC69D4cB5b86388Fff0b51885677e258883534ae",
-      "name": "Curve.fi Factory USD Metapool: FEI Metapool",
-      "symbol": "FEI3CRV3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x06cb22615BA53E60D67Bf6C341a0fD5E718E1655",
-        "name": "Curve.fi Factory USD Metapool: FEI Metapool",
-        "symbol": "FEI3CRV3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x903dA6213a5A12B61c821598154EfAd98C3B20E4": {
-    "protocolToken": {
-      "address": "0x903dA6213a5A12B61c821598154EfAd98C3B20E4",
-      "name": "Curve.fi Factory Plain Pool: cvxCRV",
-      "symbol": "cvxcrv-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9D0464996170c6B9e75eED71c68B99dDEDf279e8",
-        "name": "Curve.fi Factory Plain Pool: cvxCRV",
-        "symbol": "cvxcrv-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x9AF13a7B1f1Bbf1A2B05c6fBF23ac23A9E573b4E": {
-    "protocolToken": {
-      "address": "0x9AF13a7B1f1Bbf1A2B05c6fBF23ac23A9E573b4E",
-      "name": "Curve.fi Factory USD Metapool: USDM",
-      "symbol": "USDM3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5B3b5DF2BF2B6543f78e053bD91C4Bdd820929f1",
-        "name": "Curve.fi Factory USD Metapool: USDM",
-        "symbol": "USDM3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8Fa728F393588E8D8dD1ca397E9a710E53fA553a": {
-    "protocolToken": {
-      "address": "0x8Fa728F393588E8D8dD1ca397E9a710E53fA553a",
-      "name": "Curve.fi Factory USD Metapool: DOLA-3pool Curve LP",
-      "symbol": "DOLA3POOL3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xAA5A67c256e27A5d80712c51971408db3370927D",
-        "name": "Curve.fi Factory USD Metapool: DOLA-3pool Curve LP",
-        "symbol": "DOLA3POOL3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xeFF437A56A22D7dD86C1202A308536ED8C7da7c1": {
-    "protocolToken": {
-      "address": "0xeFF437A56A22D7dD86C1202A308536ED8C7da7c1",
-      "name": "Curve.fi Factory Plain Pool: ibJPY/sJPY",
-      "symbol": "ibJPY+sJPY-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x8818a9bb44Fbf33502bE7c15c500d0C783B73067",
-        "name": "Curve.fi Factory Plain Pool: ibJPY/sJPY",
-        "symbol": "ibJPY+sJPY-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x05ca5c01629a8E5845f12ea3A03fF7331932233A": {
-    "protocolToken": {
-      "address": "0x05ca5c01629a8E5845f12ea3A03fF7331932233A",
-      "name": "Curve.fi Factory Plain Pool: ibAUD/sAUD",
-      "symbol": "ibAUD+sAUD-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3F1B0278A9ee595635B61817630cC19DE792f506",
-        "name": "Curve.fi Factory Plain Pool: ibAUD/sAUD",
-        "symbol": "ibAUD+sAUD-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x63d9f3aB7d0c528797A12a0684E50C397E9e79dC": {
-    "protocolToken": {
-      "address": "0x63d9f3aB7d0c528797A12a0684E50C397E9e79dC",
-      "name": "Curve.fi Factory Plain Pool: ibGBP/sGBP",
-      "symbol": "ibGBP+sGBP-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xD6Ac1CB9019137a896343Da59dDE6d097F710538",
-        "name": "Curve.fi Factory Plain Pool: ibGBP/sGBP",
-        "symbol": "ibGBP+sGBP-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x2fA53e8fa5fAdb81f4332C8EcE39Fe62eA2f919E": {
-    "protocolToken": {
-      "address": "0x2fA53e8fa5fAdb81f4332C8EcE39Fe62eA2f919E",
-      "name": "Curve.fi Factory Plain Pool: ibCHF/sCHF",
-      "symbol": "ibCHF+sCHF-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9c2C8910F113181783c249d8F6Aa41b51Cde0f0c",
-        "name": "Curve.fi Factory Plain Pool: ibCHF/sCHF",
-        "symbol": "ibCHF+sCHF-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xb07d00e0eE9b1b2eb9f1B483924155Af7AF0c8Fa": {
-    "protocolToken": {
-      "address": "0xb07d00e0eE9b1b2eb9f1B483924155Af7AF0c8Fa",
-      "name": "Curve.fi Factory USD Metapool: PWRD Metapool",
-      "symbol": "PWRD3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xbcb91E689114B9Cc865AD7871845C95241Df4105",
-        "name": "Curve.fi Factory USD Metapool: PWRD Metapool",
-        "symbol": "PWRD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x1b759A88543931F4Bb983bCA4194306039cb979C": {
-    "protocolToken": {
-      "address": "0x1b759A88543931F4Bb983bCA4194306039cb979C",
-      "name": "Curve.fi Factory Plain Pool: Badger Locked CVX",
-      "symbol": "bveCVX-CVX-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x04c90C198b2eFF55716079bc06d7CCc4aa4d7512",
-        "name": "Curve.fi Factory Plain Pool: Badger Locked CVX",
-        "symbol": "bveCVX-CVX-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xC95bdf13A08A547E4dD9f29B00aB7fF08C5d093d": {
-    "protocolToken": {
-      "address": "0xC95bdf13A08A547E4dD9f29B00aB7fF08C5d093d",
-      "name": "Curve.fi Factory USD Metapool: Paxos Dollar (USDP)",
-      "symbol": "pax-usdp3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xc270b3B858c335B6BA5D5b10e2Da8a09976005ad",
-        "name": "Curve.fi Factory USD Metapool: Paxos Dollar (USDP)",
-        "symbol": "pax-usdp3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x346C7BB1A7a6A30c8e81c14e90FC2f0FBddc54d8": {
-    "protocolToken": {
-      "address": "0x346C7BB1A7a6A30c8e81c14e90FC2f0FBddc54d8",
-      "name": "Curve.fi Factory BTC Metapool: ibBTC",
-      "symbol": "ibbtc/sbtcCRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xFbdCA68601f835b27790D98bbb8eC7f05FDEaA9B",
-        "name": "Curve.fi Factory BTC Metapool: ibBTC",
-        "symbol": "ibbtc/sbtcCRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x1E212e054d74ed136256fc5a5DDdB4867c6E003F": {
-    "protocolToken": {
-      "address": "0x1E212e054d74ed136256fc5a5DDdB4867c6E003F",
-      "name": "Curve.fi Factory Plain Pool: 3EURpool",
-      "symbol": "3EURpool-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xb9446c4Ef5EBE66268dA6700D26f96273DE3d571",
-        "name": "Curve.fi Factory Plain Pool: 3EURpool",
-        "symbol": "3EURpool-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x38039dD47636154273b287F74C432Cac83Da97e2": {
-    "protocolToken": {
-      "address": "0x38039dD47636154273b287F74C432Cac83Da97e2",
-      "name": "Curve.fi Factory Plain Pool: agEUR/ibEUR",
-      "symbol": "ag+ib-EUR-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xB37D6c07482Bc11cd28a1f11f1a6ad7b66Dec933",
-        "name": "Curve.fi Factory Plain Pool: agEUR/ibEUR",
-        "symbol": "ag+ib-EUR-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6F98dA2D5098604239C07875C6B7Fd583BC520b9": {
-    "protocolToken": {
-      "address": "0x6F98dA2D5098604239C07875C6B7Fd583BC520b9",
-      "name": "Curve.fi Factory USD Metapool: Bean",
-      "symbol": "BEAN3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3a70DfA7d2262988064A2D051dd47521E43c9BdD",
-        "name": "Curve.fi Factory USD Metapool: Bean",
-        "symbol": "BEAN3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8aD7e0e6EDc61bC48ca0DD07f9021c249044eD30": {
-    "protocolToken": {
-      "address": "0x8aD7e0e6EDc61bC48ca0DD07f9021c249044eD30",
-      "name": "Curve.fi Factory Plain Pool: rETH/wstETH",
-      "symbol": "rETHwstETH-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x447Ddd4960d9fdBF6af9a790560d0AF76795CB08",
-        "name": "Curve.fi Factory Plain Pool: rETH/wstETH",
-        "symbol": "rETHwstETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x03fFC218C7A9306D21193565CbDc4378952faA8c": {
-    "protocolToken": {
-      "address": "0x03fFC218C7A9306D21193565CbDc4378952faA8c",
-      "name": "Curve.fi Factory Plain Pool: sdANGLE",
-      "symbol": "sdAGAG-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x48fF31bBbD8Ab553Ebe7cBD84e1eA3dBa8f54957",
-        "name": "Curve.fi Factory Plain Pool: sdANGLE",
-        "symbol": "sdAGAG-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xa5f483571C126B173E33c327e8A293A3492E4566": {
-    "protocolToken": {
-      "address": "0xa5f483571C126B173E33c327e8A293A3492E4566",
-      "name": "Curve.fi Factory Plain Pool: dfxCAD/CADC",
-      "symbol": "dfx2CAD-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9CA41a2DaB3CEE15308998868ca644e2e3be5C59",
-        "name": "Curve.fi Factory Plain Pool: dfxCAD/CADC",
-        "symbol": "dfx2CAD-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x663FC22e92f26C377Ddf3C859b560C4732ee639a": {
-    "protocolToken": {
-      "address": "0x663FC22e92f26C377Ddf3C859b560C4732ee639a",
-      "name": "Curve.fi Factory Plain Pool: sdCRV",
-      "symbol": "sdCRVCRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf7b55C3732aD8b2c2dA7c24f30A69f55c54FB717",
-        "name": "Curve.fi Factory Plain Pool: sdCRV",
-        "symbol": "sdCRVCRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xd5d3efC90fFB38987005FdeA303B68306aA5C624": {
-    "protocolToken": {
-      "address": "0xd5d3efC90fFB38987005FdeA303B68306aA5C624",
-      "name": "Curve.fi Factory USD Metapool: USDD/3CRV",
-      "symbol": "USDD3CRV3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xe6b5CC1B4b47305c58392CE3D359B10282FC36Ea",
-        "name": "Curve.fi Factory USD Metapool: USDD/3CRV",
-        "symbol": "USDD3CRV3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xF668E6D326945d499e5B35E7CD2E82aCFbcFE6f0": {
-    "protocolToken": {
-      "address": "0xF668E6D326945d499e5B35E7CD2E82aCFbcFE6f0",
-      "name": "Curve.fi Factory Plain Pool: stETH concentrated",
-      "symbol": "STETHETH_C-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x828b154032950C8ff7CF8085D841723Db2696056",
-        "name": "Curve.fi Factory Plain Pool: stETH concentrated",
-        "symbol": "STETHETH_C-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xE277Dd681d966e83F68e5bC7FBfeAf5f1341195F": {
-    "protocolToken": {
-      "address": "0xE277Dd681d966e83F68e5bC7FBfeAf5f1341195F",
-      "name": "Curve.fi Factory USD Metapool: home",
-      "symbol": "HOME+3crv3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5c6A6Cf9Ae657A73b98454D17986AF41fC7b44ee",
-        "name": "Curve.fi Factory USD Metapool: home",
-        "symbol": "HOME+3crv3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x389Fc079a15354E9cbcE8258433CC0F85B755A42": {
-    "protocolToken": {
-      "address": "0x389Fc079a15354E9cbcE8258433CC0F85B755A42",
-      "name": "Curve.fi Factory USD Metapool: LUSDFRAXBP",
-      "symbol": "LUSDFRAXBP3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x497CE58F34605B9944E6b15EcafE6b001206fd25",
-        "name": "Curve.fi Factory USD Metapool: LUSDFRAXBP",
-        "symbol": "LUSDFRAXBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xD6e48Cc0597a1Ee12a8BeEB88e22bFDb81777164": {
-    "protocolToken": {
-      "address": "0xD6e48Cc0597a1Ee12a8BeEB88e22bFDb81777164",
-      "name": "Curve.fi Factory USD Metapool: apeUSDFRAXBP",
-      "symbol": "APEUSDBP3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x04b727C7e246CA70d496ecF52E6b6280f3c8077D",
-        "name": "Curve.fi Factory USD Metapool: apeUSDFRAXBP",
-        "symbol": "APEUSDBP3CRV-f",
         "decimals": 18
       }
     ]
@@ -2974,40 +1631,6 @@
       }
     ]
   },
-  "0x1750a3a3d80A3F5333BBe9c4695B0fAd41061ab1": {
-    "protocolToken": {
-      "address": "0x1750a3a3d80A3F5333BBe9c4695B0fAd41061ab1",
-      "name": "Curve.fi Factory Plain Pool: ibKRW/sKRW",
-      "symbol": "ibKRW+sKRW-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x8461A004b50d321CB22B7d034969cE6803911899",
-        "name": "Curve.fi Factory Plain Pool: ibKRW/sKRW",
-        "symbol": "ibKRW+sKRW-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x99fb76F75501039089AAC8f20f487bf84E51d76F": {
-    "protocolToken": {
-      "address": "0x99fb76F75501039089AAC8f20f487bf84E51d76F",
-      "name": "Curve.fi Factory Plain Pool: ibEUR/sEUR",
-      "symbol": "ibEUR+sEUR-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x19b080FE1ffA0553469D20Ca36219F17Fcf03859",
-        "name": "Curve.fi Factory Plain Pool: ibEUR/sEUR",
-        "symbol": "ibEUR+sEUR-f",
-        "decimals": 18
-      }
-    ]
-  },
   "0xa8Ea11465A1375BF42463C3B613dFC54248b9C7B": {
     "protocolToken": {
       "address": "0xa8Ea11465A1375BF42463C3B613dFC54248b9C7B",
@@ -3089,23 +1712,6 @@
         "address": "0x0AD66FeC8dB84F8A3365ADA04aB23ce607ac6E24",
         "name": "Curve.fi Factory Plain Pool: pitchFXS/FXS",
         "symbol": "pitchFXS-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x0eC3d1f5d737593ff4aEDB8E22EB33a1886ddB9a": {
-    "protocolToken": {
-      "address": "0x0eC3d1f5d737593ff4aEDB8E22EB33a1886ddB9a",
-      "name": "Curve.fi Factory USD Metapool: tBTC/wBTC/sBTC",
-      "symbol": "TBTCSBTC23CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xF95AAa7EBB1620e46221B73588502960Ef63dBa0",
-        "name": "Curve.fi Factory USD Metapool: tBTC/wBTC/sBTC",
-        "symbol": "TBTCSBTC23CRV-f",
         "decimals": 18
       }
     ]
@@ -3501,91 +2107,6 @@
       }
     ]
   },
-  "0x1Db233c2D10e6076d347f5FC87d575b4F8b88Ca7": {
-    "protocolToken": {
-      "address": "0x1Db233c2D10e6076d347f5FC87d575b4F8b88Ca7",
-      "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP",
-      "symbol": "DUSDFRAXBP3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC73151DcA19ffF7A16aE421a9fb35455832d66d3",
-        "name": "Curve.fi Factory USD Metapool: DUSD/FRAXBP",
-        "symbol": "DUSDFRAXBP3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4e227d29b33B77113F84bcC189a6F886755a1f24": {
-    "protocolToken": {
-      "address": "0x4e227d29b33B77113F84bcC189a6F886755a1f24",
-      "name": "Curve.fi Factory Plain Pool: msETH/WETH",
-      "symbol": "msETHWETH-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xa4c567c662349BeC3D0fB94C4e7f85bA95E208e4",
-        "name": "Curve.fi Factory Plain Pool: msETH/WETH",
-        "symbol": "msETHWETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8b87c8d75a620Df2271eD06B161de6cf811221b6": {
-    "protocolToken": {
-      "address": "0x8b87c8d75a620Df2271eD06B161de6cf811221b6",
-      "name": "Curve.fi Factory Plain Pool: pETH",
-      "symbol": "pETH-WETH-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x1C5F80b6B68A9E1Ef25926EeE00b5255791b996B",
-        "name": "Curve.fi Factory Plain Pool: pETH",
-        "symbol": "pETH-WETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x59063699125def4aA6D3Dbf384E1144BBb1083a1": {
-    "protocolToken": {
-      "address": "0x59063699125def4aA6D3Dbf384E1144BBb1083a1",
-      "name": "Curve.fi Factory USD Metapool: eUSD/3CRV",
-      "symbol": "eUSD3CRV3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2673099769201c08E9A5e63b25FBaF25541A6557",
-        "name": "Curve.fi Factory USD Metapool: eUSD/3CRV",
-        "symbol": "eUSD3CRV3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x7671299eA7B4bbE4f3fD305A994e6443b4be680E": {
-    "protocolToken": {
-      "address": "0x7671299eA7B4bbE4f3fD305A994e6443b4be680E",
-      "name": "Curve.fi Factory Pool: ETHx-ETH",
-      "symbol": "ethx-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x59Ab5a5b5d617E478a2479B0cAD80DA7e2831492",
-        "name": "Curve.fi Factory Pool: ETHx-ETH",
-        "symbol": "ethx-f",
-        "decimals": 18
-      }
-    ]
-  },
   "0x009aCD89535DAbC270C93F9b39D3232105Fef453": {
     "protocolToken": {
       "address": "0x009aCD89535DAbC270C93F9b39D3232105Fef453",
@@ -3667,23 +2188,6 @@
         "address": "0xF3A43307DcAFa93275993862Aae628fCB50dC768",
         "name": "Curve.fi Factory Crypto Pool: cvxFxs/Fxs",
         "symbol": "cvxFXSFXS-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xE1D520B1263D6Be5678568BD699c84F7f9086023": {
-    "protocolToken": {
-      "address": "0xE1D520B1263D6Be5678568BD699c84F7f9086023",
-      "name": "Curve.fi Factory Crypto Pool: ibEUR/USDC",
-      "symbol": "ibEURUSDC-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x8682Fbf0CbF312C891532BA9F1A91e44f81ad7DF",
-        "name": "Curve.fi Factory Crypto Pool: ibEUR/USDC",
-        "symbol": "ibEURUSDC-f",
         "decimals": 18
       }
     ]
@@ -3820,159 +2324,6 @@
         "address": "0xF57ccaD8122B898A147Cc8601B1ECA88B1662c7E",
         "name": "Curve.fi Factory Crypto Pool: cvxFxs/FraxBP",
         "symbol": "cvxFxsFrax-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xa8c8fad10b3F6CCcB7e8A450D4721717313d0A53": {
-    "protocolToken": {
-      "address": "0xa8c8fad10b3F6CCcB7e8A450D4721717313d0A53",
-      "name": "Curve.fi Factory Crypto Pool: MMX/USDT",
-      "symbol": "MMX/USDT-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xd39de8FcEcb7f2e0c3dEb198D8e33663AFA0e977",
-        "name": "Curve.fi Factory Crypto Pool: MMX/USDT",
-        "symbol": "MMX/USDT-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x9A3dCece0968b8a94AfF643C9c72127a2C1D80dc": {
-    "protocolToken": {
-      "address": "0x9A3dCece0968b8a94AfF643C9c72127a2C1D80dc",
-      "name": "Curve.fi Factory Crypto Pool: PRISMA/ETH",
-      "symbol": "PRISMAETH-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xb34e1a3D07f9D180Bc2FDb9Fd90B8994423e33c1",
-        "name": "Curve.fi Factory Crypto Pool: PRISMA/ETH",
-        "symbol": "PRISMAETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x02C26E2013D7476E69aD3B453F025A43116B448D": {
-    "protocolToken": {
-      "address": "0x02C26E2013D7476E69aD3B453F025A43116B448D",
-      "name": "Curve.fi Factory Crypto Pool: PRISMA/mkUSD",
-      "symbol": "mkPRISMA-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x067079c14B85169e6a29703769dadDef90816f4C",
-        "name": "Curve.fi Factory Crypto Pool: PRISMA/mkUSD",
-        "symbol": "mkPRISMA-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4eD9bc48315AC2D9DbA8a951eE8808ab1D9826F9": {
-    "protocolToken": {
-      "address": "0x4eD9bc48315AC2D9DbA8a951eE8808ab1D9826F9",
-      "name": "Curve.fi Factory Crypto Pool: wstETH/USDV",
-      "symbol": "wstETHUSDV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x939b08547a4a586C1300714AA4EBF5CB43c1119C",
-        "name": "Curve.fi Factory Crypto Pool: wstETH/USDV",
-        "symbol": "wstETHUSDV-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8F4ecCfaa4B6B0042970baDE0E3e9F3bE272B55f": {
-    "protocolToken": {
-      "address": "0x8F4ecCfaa4B6B0042970baDE0E3e9F3bE272B55f",
-      "name": "Curve.fi Factory Crypto Pool: ETH+/pxETH",
-      "symbol": "ETH+pxETH-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x982bcd444C9445c15CCe3eca506ef01E8348Fe5D",
-        "name": "Curve.fi Factory Crypto Pool: ETH+/pxETH",
-        "symbol": "ETH+pxETH-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8A111B47B31bBa40C2F0D2f9a8Cf6B6C4B50114E": {
-    "protocolToken": {
-      "address": "0x8A111B47B31bBa40C2F0D2f9a8Cf6B6C4B50114E",
-      "name": "Curve.fi Factory Crypto Pool: CVG/FRAXBP",
-      "symbol": "CVGFRAXBP-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x421E13b4e805993A0d50aD8c6c47A4F693f04424",
-        "name": "Curve.fi Factory Crypto Pool: CVG/FRAXBP",
-        "symbol": "CVGFRAXBP-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x49865b21d1482377B14e9bE112F029edAcf56fb4": {
-    "protocolToken": {
-      "address": "0x49865b21d1482377B14e9bE112F029edAcf56fb4",
-      "name": "Curve.fi Factory Crypto Pool: pxETH/mkUSD",
-      "symbol": "pxETHmkUSD-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x6ade6971Ca3d90990C30d39c78b0534C7166e07b",
-        "name": "Curve.fi Factory Crypto Pool: pxETH/mkUSD",
-        "symbol": "pxETHmkUSD-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xab78AE97cBedE5B1f6Bb212D839f920147020aE7": {
-    "protocolToken": {
-      "address": "0xab78AE97cBedE5B1f6Bb212D839f920147020aE7",
-      "name": "Curve.fi Factory Crypto Pool: BSGG/USDT",
-      "symbol": "BSGGUSDT-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xd0Fb39E59037fC6Ae8aF5cb495CeA690ED501fDd",
-        "name": "Curve.fi Factory Crypto Pool: BSGG/USDT",
-        "symbol": "BSGGUSDT-f",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x233DbFF998FeEDf68770DA91E6b87bF6422A8471": {
-    "protocolToken": {
-      "address": "0x233DbFF998FeEDf68770DA91E6b87bF6422A8471",
-      "name": "Curve.fi Factory Crypto Pool: ETH/XYO",
-      "symbol": "ETHXYO-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x393DaD6c76D962Abba489a77dBf37ae948A4A6ee",
-        "name": "Curve.fi Factory Crypto Pool: ETH/XYO",
-        "symbol": "ETHXYO-f",
         "decimals": 18
       }
     ]
@@ -4504,6 +2855,1536 @@
       }
     ]
   },
+  "0xCFc25170633581Bf896CB6CDeE170e3E3Aa59503": {
+    "protocolToken": {
+      "address": "0xCFc25170633581Bf896CB6CDeE170e3E3Aa59503",
+      "name": "Curve.fi FRAX/USDC",
+      "symbol": "crvFRAX",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
+        "name": "Curve.fi FRAX/USDC",
+        "symbol": "crvFRAX",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x2932a86df44Fe8D2A706d8e9c5d51c24883423F5": {
+    "protocolToken": {
+      "address": "0x2932a86df44Fe8D2A706d8e9c5d51c24883423F5",
+      "name": "Curve.fi ETH/frxETH",
+      "symbol": "frxETHCRV",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf43211935C781D5ca1a41d2041F397B8A7366C7A",
+        "name": "Curve.fi ETH/frxETH",
+        "symbol": "frxETHCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x6D787113F23bED1D5e1530402B3f364D0A6e5Af3": {
+    "protocolToken": {
+      "address": "0x6D787113F23bED1D5e1530402B3f364D0A6e5Af3",
+      "name": "Curve.fi wBTC/sBTC",
+      "symbol": "crvWSBTC",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x051d7e5609917Bd9b73f04BAc0DED8Dd46a74301",
+        "name": "Curve.fi wBTC/sBTC",
+        "symbol": "crvWSBTC",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x50161102a240b1456d770Dbb55c76d8dc2D160Aa": {
+    "protocolToken": {
+      "address": "0x50161102a240b1456d770Dbb55c76d8dc2D160Aa",
+      "name": "Curve.fi ETH/wBETH",
+      "symbol": "ETHwBETHCRV",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6",
+        "name": "Curve.fi ETH/wBETH",
+        "symbol": "ETHwBETHCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xE2c422d954DB416a69Fb29137fe552cCe0E160E9": {
+    "protocolToken": {
+      "address": "0xE2c422d954DB416a69Fb29137fe552cCe0E160E9",
+      "name": "fFRAX/crvUSD-ng",
+      "symbol": "FRAXcrvUSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4253Ac4046fBfDafcFE125d067B6d89f6923843E",
+        "name": "fFRAX/crvUSD-ng",
+        "symbol": "FRAXcrvUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x621Ef98282aC42d2bF4c20Fc73912a16599e12Fb": {
+    "protocolToken": {
+      "address": "0x621Ef98282aC42d2bF4c20Fc73912a16599e12Fb",
+      "name": "silocrvUSD/crvUSD",
+      "symbol": "silocrvUSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x67701d67b60a96473BFc4873e7a484035c8609B0",
+        "name": "silocrvUSD/crvUSD",
+        "symbol": "silocrvUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xe6c76b3Ce14973D070C0fE5C75e102Aba9DeFae1": {
+    "protocolToken": {
+      "address": "0xe6c76b3Ce14973D070C0fE5C75e102Aba9DeFae1",
+      "name": "eUSD/crvUSD",
+      "symbol": "eUSDcrvUSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x91285c4fC766ffF6F3acAfeEC7a0423275257faE",
+        "name": "eUSD/crvUSD",
+        "symbol": "eUSDcrvUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8f8E854EF0dc76D88D2e217D3c2653672d13b252": {
+    "protocolToken": {
+      "address": "0x8f8E854EF0dc76D88D2e217D3c2653672d13b252",
+      "name": "rsETH/sfrxETH",
+      "symbol": "rsETHsfrx",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3772ba91B46f456AE487CB0974040c861c045810",
+        "name": "rsETH/sfrxETH",
+        "symbol": "rsETHsfrx",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xC840E5Ed7A1b6A9C1A6BF1ecAcA6DDb151b2fd6e": {
+    "protocolToken": {
+      "address": "0xC840E5Ed7A1b6A9C1A6BF1ecAcA6DDb151b2fd6e",
+      "name": "mkUSDUSDe",
+      "symbol": "mkUSDUSDe",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1ab3D612EA7df26117554ddDD379764EBcE1A5Ad",
+        "name": "mkUSDUSDe",
+        "symbol": "mkUSDUSDe",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8DfF75976F22db58D7c3Fd7b68d782238B0DbE30": {
+    "protocolToken": {
+      "address": "0x8DfF75976F22db58D7c3Fd7b68d782238B0DbE30",
+      "name": "vETH/ETH",
+      "symbol": "vETHETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6685fcFCe05e7502bf9f0AA03B36025b09374726",
+        "name": "vETH/ETH",
+        "symbol": "vETHETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8B859fb47b6377a84B61D3891774De462560742C": {
+    "protocolToken": {
+      "address": "0x8B859fb47b6377a84B61D3891774De462560742C",
+      "name": "uniETH/ETH",
+      "symbol": "uniETH ETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0f2F4D68308dB60d36268a602EF273421A227021",
+        "name": "uniETH/ETH",
+        "symbol": "uniETH ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x50e40d992a575544C34FdD17745C3fD842028aA1": {
+    "protocolToken": {
+      "address": "0x50e40d992a575544C34FdD17745C3fD842028aA1",
+      "name": "xETH/pxETH",
+      "symbol": "xETHpxETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3C91EAeac42DfaEad5F356167c52837e443b9f94",
+        "name": "xETH/pxETH",
+        "symbol": "xETHpxETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x870a462DC15232df76ae0018DBBa989b0A5e3892": {
+    "protocolToken": {
+      "address": "0x870a462DC15232df76ae0018DBBa989b0A5e3892",
+      "name": "LYU/USD",
+      "symbol": "LYUUSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x31b46c84e4fb0704dE69DBf4B054b5Cb81Aa3736",
+        "name": "LYU/USD",
+        "symbol": "LYUUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x55e5adb2Cb00bFdb085440Ca6a5EC628705b2E7F": {
+    "protocolToken": {
+      "address": "0x55e5adb2Cb00bFdb085440Ca6a5EC628705b2E7F",
+      "name": "rswETH/ETH",
+      "symbol": "rswETH/ETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xeE04382c4cA6c450213923fE0f0daB19b0ff3939",
+        "name": "rswETH/ETH",
+        "symbol": "rswETH/ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xE8d52f614Fb6c11760b2D1e2Bf7c7e8b4C5C0438": {
+    "protocolToken": {
+      "address": "0xE8d52f614Fb6c11760b2D1e2Bf7c7e8b4C5C0438",
+      "name": "ezETH/WETH",
+      "symbol": "ezETH-WETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x85dE3ADd465a219EE25E04d22c39aB027cF5C12E",
+        "name": "ezETH/WETH",
+        "symbol": "ezETH-WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x0Bfb387B87e8Bf173a10A7DCf786B0b7875F6771": {
+    "protocolToken": {
+      "address": "0x0Bfb387B87e8Bf173a10A7DCf786B0b7875F6771",
+      "name": "weeTH/rswETH",
+      "symbol": "weeTH/rswE",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x278cfB6f06B1EFc09d34fC7127d6060C61d629Db",
+        "name": "weeTH/rswETH",
+        "symbol": "weeTH/rswE",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x63DC752E11D4c9D0f2160DA20EdF2111FECB0a66": {
+    "protocolToken": {
+      "address": "0x63DC752E11D4c9D0f2160DA20EdF2111FECB0a66",
+      "name": "cvgSDT/SDT",
+      "symbol": "cvgSDTSDT",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC6628f00F29cc89a87BBeE7554C4725611200fD7",
+        "name": "cvgSDT/SDT",
+        "symbol": "cvgSDTSDT",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xB6Ec26A3433D6CD11084c2094F12c4E571806D06": {
+    "protocolToken": {
+      "address": "0xB6Ec26A3433D6CD11084c2094F12c4E571806D06",
+      "name": "pufETH/wstETH",
+      "symbol": "crvPufETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB3c8Ce1eE157b0DCAa96897C9170aEe6281706c9",
+        "name": "pufETH/wstETH",
+        "symbol": "crvPufETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x1B0E9F245f08dbFc80bc4119746c190B867dd837": {
+    "protocolToken": {
+      "address": "0x1B0E9F245f08dbFc80bc4119746c190B867dd837",
+      "name": "pUSD-3CRV-A1000",
+      "symbol": "pUSD3crv",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2482DFb5A65D901d137742AB1095f26374509352",
+        "name": "pUSD-3CRV-A1000",
+        "symbol": "pUSD3crv",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x088A9770bc30627791F42b551D474E8Fd44808a2": {
+    "protocolToken": {
+      "address": "0x088A9770bc30627791F42b551D474E8Fd44808a2",
+      "name": "mkUSD/Paypool",
+      "symbol": "mkUSDPay",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9e10f9Fb6F0D32B350CEe2618662243d4f24C64a",
+        "name": "mkUSD/Paypool",
+        "symbol": "mkUSDPay",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x4B092818708A721cB187dFACF41f440ADb79044D": {
+    "protocolToken": {
+      "address": "0x4B092818708A721cB187dFACF41f440ADb79044D",
+      "name": "DOLA/FRAXPYUSD",
+      "symbol": "crvDOLA",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xef484de8C07B6e2d732A92B5F78e81B38f99f95E",
+        "name": "DOLA/FRAXPYUSD",
+        "symbol": "crvDOLA",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xf16b07241Bbbf676324FaDEE6Bd6611423Faa4ae": {
+    "protocolToken": {
+      "address": "0xf16b07241Bbbf676324FaDEE6Bd6611423Faa4ae",
+      "name": "USDe/DAI",
+      "symbol": "USDeDAI",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xF36a4BA50C603204c3FC6d2dA8b78A7b69CBC67d",
+        "name": "USDe/DAI",
+        "symbol": "USDeDAI",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x62c9d3561b42023576ca44AE54b63B9124C471b8": {
+    "protocolToken": {
+      "address": "0x62c9d3561b42023576ca44AE54b63B9124C471b8",
+      "name": "mkUSD/ULTRA",
+      "symbol": "MKULTRA",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC236BAE6e35b3Fb7335e1c35CA0862Ce92bd5DE3",
+        "name": "mkUSD/ULTRA",
+        "symbol": "MKULTRA",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x330Cfd12e0E97B0aDF46158D2A81E8Bd2985c6cB": {
+    "protocolToken": {
+      "address": "0x330Cfd12e0E97B0aDF46158D2A81E8Bd2985c6cB",
+      "name": "sDAI/sUSDe",
+      "symbol": "MtEthena",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x167478921b907422F8E88B43C4Af2B8BEa278d3A",
+        "name": "sDAI/sUSDe",
+        "symbol": "MtEthena",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x4B2a6685BEc19bdb28bB0127466809BfE0156114": {
+    "protocolToken": {
+      "address": "0x4B2a6685BEc19bdb28bB0127466809BfE0156114",
+      "name": "\"pxETH/vETH\"",
+      "symbol": "\"pxveth\"",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F20EEa5bc667F4601E35af15868F3Bc6e447050",
+        "name": "\"pxETH/vETH\"",
+        "symbol": "\"pxveth\"",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xB1A829a05E618F7C4f50Cb86f8F64Fb86e42dE5a": {
+    "protocolToken": {
+      "address": "0xB1A829a05E618F7C4f50Cb86f8F64Fb86e42dE5a",
+      "name": "crvUSD/zunUSD",
+      "symbol": "CRVZUNUSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8C24b3213FD851db80245FCCc42c40B94Ac9a745",
+        "name": "crvUSD/zunUSD",
+        "symbol": "CRVZUNUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x94E4fd3747dCD100D333E896D7352C5FbCCF4cE7": {
+    "protocolToken": {
+      "address": "0x94E4fd3747dCD100D333E896D7352C5FbCCF4cE7",
+      "name": "crvUSD/fxUSD",
+      "symbol": "fxUSDcrvUS",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8fFC7b89412eFD0D17EDEa2018F6634eA4C2FCb2",
+        "name": "crvUSD/fxUSD",
+        "symbol": "fxUSDcrvUS",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x5d552497f8fE3317565Ee76bCc57fAd80c70A911": {
+    "protocolToken": {
+      "address": "0x5d552497f8fE3317565Ee76bCc57fAd80c70A911",
+      "name": "pyUSD/fxUSD",
+      "symbol": "fxUSDpyUSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd6982da59F1D26476E259559508f4135135cf9b8",
+        "name": "pyUSD/fxUSD",
+        "symbol": "fxUSDpyUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xC58706e1C2D7C56d1a79407401a0647630fe6413": {
+    "protocolToken": {
+      "address": "0xC58706e1C2D7C56d1a79407401a0647630fe6413",
+      "name": "Dola/fxUSD",
+      "symbol": "fxUSDDola",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x189B4e49B5cAf33565095097b4B960F14032C7D0",
+        "name": "Dola/fxUSD",
+        "symbol": "fxUSDDola",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xb2A385f10DAF66D5eA1418A2BB819b85F1bc3a5B": {
+    "protocolToken": {
+      "address": "0xb2A385f10DAF66D5eA1418A2BB819b85F1bc3a5B",
+      "name": "Frax/fxUSD",
+      "symbol": "fxUSDFrax",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1EE81c56e42EC34039D993d12410d437DdeA341E",
+        "name": "Frax/fxUSD",
+        "symbol": "fxUSDFrax",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xec303960CF0456aC304Af45C0aDDe34921a10Fdf": {
+    "protocolToken": {
+      "address": "0xec303960CF0456aC304Af45C0aDDe34921a10Fdf",
+      "name": "GHO/fxUSD",
+      "symbol": "fxUSDGHO",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x74345504Eaea3D9408fC69Ae7EB2d14095643c5b",
+        "name": "GHO/fxUSD",
+        "symbol": "fxUSDGHO",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x29b45B633b0C281245055D6713F167818E73e38c": {
+    "protocolToken": {
+      "address": "0x29b45B633b0C281245055D6713F167818E73e38c",
+      "name": "ULTRA-USDC",
+      "symbol": "ULTRAUSDC",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC03FEF1c425956A3Cd5762022E511e0d4148B3D6",
+        "name": "ULTRA-USDC",
+        "symbol": "ULTRAUSDC",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xf4FA0C7833e778fB9FB392eC36217e17C9133976": {
+    "protocolToken": {
+      "address": "0xf4FA0C7833e778fB9FB392eC36217e17C9133976",
+      "name": "pufETH/wstETH",
+      "symbol": "pufETHwstE",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xEEda34A377dD0ca676b9511EE1324974fA8d980D",
+        "name": "pufETH/wstETH",
+        "symbol": "pufETHwstE",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x4717C25df44e280ec5b31aCBd8C194e1eD24efe2": {
+    "protocolToken": {
+      "address": "0x4717C25df44e280ec5b31aCBd8C194e1eD24efe2",
+      "name": "GHO/crvUSD",
+      "symbol": "GHOcrvUSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x635EF0056A597D13863B73825CcA297236578595",
+        "name": "GHO/crvUSD",
+        "symbol": "GHOcrvUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x55A3A857598B500Fd844610ED875ec73Ff296C4b": {
+    "protocolToken": {
+      "address": "0x55A3A857598B500Fd844610ED875ec73Ff296C4b",
+      "name": "shezUSD/USDC",
+      "symbol": "shezUSDUSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x66267c6E24fBcdeBf06AE9104e0ccFb9C8b2AE08",
+        "name": "shezUSD/USDC",
+        "symbol": "shezUSDUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x90EFD41e75360FFC7FD1d3C5Fc0e4f43E8BcD9BC": {
+    "protocolToken": {
+      "address": "0x90EFD41e75360FFC7FD1d3C5Fc0e4f43E8BcD9BC",
+      "name": "revPool",
+      "symbol": "revPool",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdf9015472Ea23e3BeA6fbD6092915F9Ed6980a99",
+        "name": "revPool",
+        "symbol": "revPool",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x44f30D79f62a3D5340030d64806cD73239889F07": {
+    "protocolToken": {
+      "address": "0x44f30D79f62a3D5340030d64806cD73239889F07",
+      "name": "zunETH/frxETH",
+      "symbol": "ZUNFRXETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3A65cbaebBFecbeA5D0CB523ab56fDbda7fF9aAA",
+        "name": "zunETH/frxETH",
+        "symbol": "ZUNFRXETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x16A3a047fC1D388d5846a73ACDb475b11228c299": {
+    "protocolToken": {
+      "address": "0x16A3a047fC1D388d5846a73ACDb475b11228c299",
+      "name": "CVG/ETH",
+      "symbol": "CVGETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x004C167d27ADa24305b76D80762997Fa6EB8d9B2",
+        "name": "CVG/ETH",
+        "symbol": "CVGETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xa5Dc66685bD13A0924505807c29F8C65dDa0d207": {
+    "protocolToken": {
+      "address": "0xa5Dc66685bD13A0924505807c29F8C65dDa0d207",
+      "name": "crvUSD/CJPY",
+      "symbol": "crvUSDCJPY",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xca546aE6c3B2BB9Fba2b6e5EeB0881097CecE5B0",
+        "name": "crvUSD/CJPY",
+        "symbol": "crvUSDCJPY",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xC798130644b8962a357dfBe8BB30b19b681AA7D4": {
+    "protocolToken": {
+      "address": "0xC798130644b8962a357dfBe8BB30b19b681AA7D4",
+      "name": "ETH/CJPY",
+      "symbol": "ETHCJPY",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x592878b920101946Fb5915aB97961bC546f211CC",
+        "name": "ETH/CJPY",
+        "symbol": "ETHCJPY",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x696dbfe3B5861120B2c4b7d5c28B1325E8b232F4": {
+    "protocolToken": {
+      "address": "0x696dbfe3B5861120B2c4b7d5c28B1325E8b232F4",
+      "name": "ZETA/crvUSD",
+      "symbol": "ZETACRVUSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x119806f0e93a213029b599D7bBAE50bD965C2cC4",
+        "name": "ZETA/crvUSD",
+        "symbol": "ZETACRVUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x85D44861D024CB7603Ba906F2Dc9569fC02083F6": {
+    "protocolToken": {
+      "address": "0x85D44861D024CB7603Ba906F2Dc9569fC02083F6",
+      "name": "TricryptoUSDC",
+      "symbol": "crvUSDCWBTCWETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
+        "name": "TricryptoUSDC",
+        "symbol": "crvUSDCWBTCWETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xF29FfF074f5cF755b55FbB3eb10A29203ac91EA2": {
+    "protocolToken": {
+      "address": "0xF29FfF074f5cF755b55FbB3eb10A29203ac91EA2",
+      "name": "TricryptoUSDT",
+      "symbol": "crvUSDTWBTCWETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4",
+        "name": "TricryptoUSDT",
+        "symbol": "crvUSDTWBTCWETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x60d3d7eBBC44Dc810A743703184f062d00e6dB7e": {
+    "protocolToken": {
+      "address": "0x60d3d7eBBC44Dc810A743703184f062d00e6dB7e",
+      "name": "TricryptoLLAMA",
+      "symbol": "crvCRVUSDTBTCWSTETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2889302a794dA87fBF1D6Db415C1492194663D13",
+        "name": "TricryptoLLAMA",
+        "symbol": "crvCRVUSDTBTCWSTETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x4Fc86cd0F9b650280Fa783e3116258e0E0496A2c": {
+    "protocolToken": {
+      "address": "0x4Fc86cd0F9b650280Fa783e3116258e0E0496A2c",
+      "name": "TricryptoINV",
+      "symbol": "crvUSDCWETHINV",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5426178799ee0a0181A89b4f57eFddfAb49941Ec",
+        "name": "TricryptoINV",
+        "symbol": "crvUSDCWETHINV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8D867BEf70C6733ff25Cc0D1caa8aA6c38B24817": {
+    "protocolToken": {
+      "address": "0x8D867BEf70C6733ff25Cc0D1caa8aA6c38B24817",
+      "name": "TriCRV",
+      "symbol": "crvUSDETHCRV",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14",
+        "name": "TriCRV",
+        "symbol": "crvUSDETHCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xb901a92F2c385AfA0A019e8A307a59A570239ca4": {
+    "protocolToken": {
+      "address": "0xb901a92F2c385AfA0A019e8A307a59A570239ca4",
+      "name": "TriSILO",
+      "symbol": "crvUSDETHSILO",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x86bF09aCB47AB31686bE413d614E9ded3666a1d3",
+        "name": "TriSILO",
+        "symbol": "crvUSDETHSILO",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xeA012f5b25Fa0D8e46123B85f585d0A5075e96b5": {
+    "protocolToken": {
+      "address": "0xeA012f5b25Fa0D8e46123B85f585d0A5075e96b5",
+      "name": "TryLSD",
+      "symbol": "TryLSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2570f1bD5D2735314FC102eb12Fc1aFe9e6E7193",
+        "name": "TryLSD",
+        "symbol": "TryLSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x2DD2b7E07dD433B758B98A3889a63cbF48ef0D99": {
+    "protocolToken": {
+      "address": "0x2DD2b7E07dD433B758B98A3889a63cbF48ef0D99",
+      "name": "triSDT",
+      "symbol": "triSDT",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x954313005C56b555bdC41B84D6c63B69049d7847",
+        "name": "triSDT",
+        "symbol": "triSDT",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x5ccDe4BEC0F4006c3826b51EDF0D227D12EA33FA": {
+    "protocolToken": {
+      "address": "0x5ccDe4BEC0F4006c3826b51EDF0D227D12EA33FA",
+      "name": "TriDBR",
+      "symbol": "crvDBRINV",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC7DE47b9Ca2Fc753D6a2F167D8b3e19c6D18b19a",
+        "name": "TriDBR",
+        "symbol": "crvDBRINV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x331d6F25A382B4961A983d6ddc6974A48E51462c": {
+    "protocolToken": {
+      "address": "0x331d6F25A382B4961A983d6ddc6974A48E51462c",
+      "name": "TriRSR",
+      "symbol": "crvRSReUSDETH+",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xDB6925eA42897ca786a045B252D95aA7370f44b4",
+        "name": "TriRSR",
+        "symbol": "crvRSReUSDETH+",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x1750a3a3d80A3F5333BBe9c4695B0fAd41061ab1": {
+    "protocolToken": {
+      "address": "0x1750a3a3d80A3F5333BBe9c4695B0fAd41061ab1",
+      "name": "Curve.fi Factory Plain Pool: ibKRW/sKRW",
+      "symbol": "ibKRW+sKRW-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8461A004b50d321CB22B7d034969cE6803911899",
+        "name": "Curve.fi Factory Plain Pool: ibKRW/sKRW",
+        "symbol": "ibKRW+sKRW-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x99fb76F75501039089AAC8f20f487bf84E51d76F": {
+    "protocolToken": {
+      "address": "0x99fb76F75501039089AAC8f20f487bf84E51d76F",
+      "name": "Curve.fi Factory Plain Pool: ibEUR/sEUR",
+      "symbol": "ibEUR+sEUR-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x19b080FE1ffA0553469D20Ca36219F17Fcf03859",
+        "name": "Curve.fi Factory Plain Pool: ibEUR/sEUR",
+        "symbol": "ibEUR+sEUR-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x25f0cE4E2F8dbA112D9b115710AC297F816087CD": {
+    "protocolToken": {
+      "address": "0x25f0cE4E2F8dbA112D9b115710AC297F816087CD",
+      "name": "Curve.fi Factory USD Metapool: Origin Dollar",
+      "symbol": "OUSD3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x87650D7bbfC3A9F10587d7778206671719d9910D",
+        "name": "Curve.fi Factory USD Metapool: Origin Dollar",
+        "symbol": "OUSD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xdC69D4cB5b86388Fff0b51885677e258883534ae": {
+    "protocolToken": {
+      "address": "0xdC69D4cB5b86388Fff0b51885677e258883534ae",
+      "name": "Curve.fi Factory USD Metapool: FEI Metapool",
+      "symbol": "FEI3CRV3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x06cb22615BA53E60D67Bf6C341a0fD5E718E1655",
+        "name": "Curve.fi Factory USD Metapool: FEI Metapool",
+        "symbol": "FEI3CRV3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x903dA6213a5A12B61c821598154EfAd98C3B20E4": {
+    "protocolToken": {
+      "address": "0x903dA6213a5A12B61c821598154EfAd98C3B20E4",
+      "name": "Curve.fi Factory Plain Pool: cvxCRV",
+      "symbol": "cvxcrv-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9D0464996170c6B9e75eED71c68B99dDEDf279e8",
+        "name": "Curve.fi Factory Plain Pool: cvxCRV",
+        "symbol": "cvxcrv-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x9AF13a7B1f1Bbf1A2B05c6fBF23ac23A9E573b4E": {
+    "protocolToken": {
+      "address": "0x9AF13a7B1f1Bbf1A2B05c6fBF23ac23A9E573b4E",
+      "name": "Curve.fi Factory USD Metapool: USDM",
+      "symbol": "USDM3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5B3b5DF2BF2B6543f78e053bD91C4Bdd820929f1",
+        "name": "Curve.fi Factory USD Metapool: USDM",
+        "symbol": "USDM3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8Fa728F393588E8D8dD1ca397E9a710E53fA553a": {
+    "protocolToken": {
+      "address": "0x8Fa728F393588E8D8dD1ca397E9a710E53fA553a",
+      "name": "Curve.fi Factory USD Metapool: DOLA-3pool Curve LP",
+      "symbol": "DOLA3POOL3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xAA5A67c256e27A5d80712c51971408db3370927D",
+        "name": "Curve.fi Factory USD Metapool: DOLA-3pool Curve LP",
+        "symbol": "DOLA3POOL3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xeFF437A56A22D7dD86C1202A308536ED8C7da7c1": {
+    "protocolToken": {
+      "address": "0xeFF437A56A22D7dD86C1202A308536ED8C7da7c1",
+      "name": "Curve.fi Factory Plain Pool: ibJPY/sJPY",
+      "symbol": "ibJPY+sJPY-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8818a9bb44Fbf33502bE7c15c500d0C783B73067",
+        "name": "Curve.fi Factory Plain Pool: ibJPY/sJPY",
+        "symbol": "ibJPY+sJPY-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x05ca5c01629a8E5845f12ea3A03fF7331932233A": {
+    "protocolToken": {
+      "address": "0x05ca5c01629a8E5845f12ea3A03fF7331932233A",
+      "name": "Curve.fi Factory Plain Pool: ibAUD/sAUD",
+      "symbol": "ibAUD+sAUD-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3F1B0278A9ee595635B61817630cC19DE792f506",
+        "name": "Curve.fi Factory Plain Pool: ibAUD/sAUD",
+        "symbol": "ibAUD+sAUD-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x63d9f3aB7d0c528797A12a0684E50C397E9e79dC": {
+    "protocolToken": {
+      "address": "0x63d9f3aB7d0c528797A12a0684E50C397E9e79dC",
+      "name": "Curve.fi Factory Plain Pool: ibGBP/sGBP",
+      "symbol": "ibGBP+sGBP-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD6Ac1CB9019137a896343Da59dDE6d097F710538",
+        "name": "Curve.fi Factory Plain Pool: ibGBP/sGBP",
+        "symbol": "ibGBP+sGBP-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x2fA53e8fa5fAdb81f4332C8EcE39Fe62eA2f919E": {
+    "protocolToken": {
+      "address": "0x2fA53e8fa5fAdb81f4332C8EcE39Fe62eA2f919E",
+      "name": "Curve.fi Factory Plain Pool: ibCHF/sCHF",
+      "symbol": "ibCHF+sCHF-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9c2C8910F113181783c249d8F6Aa41b51Cde0f0c",
+        "name": "Curve.fi Factory Plain Pool: ibCHF/sCHF",
+        "symbol": "ibCHF+sCHF-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xb07d00e0eE9b1b2eb9f1B483924155Af7AF0c8Fa": {
+    "protocolToken": {
+      "address": "0xb07d00e0eE9b1b2eb9f1B483924155Af7AF0c8Fa",
+      "name": "Curve.fi Factory USD Metapool: PWRD Metapool",
+      "symbol": "PWRD3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xbcb91E689114B9Cc865AD7871845C95241Df4105",
+        "name": "Curve.fi Factory USD Metapool: PWRD Metapool",
+        "symbol": "PWRD3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x1b759A88543931F4Bb983bCA4194306039cb979C": {
+    "protocolToken": {
+      "address": "0x1b759A88543931F4Bb983bCA4194306039cb979C",
+      "name": "Curve.fi Factory Plain Pool: Badger Locked CVX",
+      "symbol": "bveCVX-CVX-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04c90C198b2eFF55716079bc06d7CCc4aa4d7512",
+        "name": "Curve.fi Factory Plain Pool: Badger Locked CVX",
+        "symbol": "bveCVX-CVX-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xC95bdf13A08A547E4dD9f29B00aB7fF08C5d093d": {
+    "protocolToken": {
+      "address": "0xC95bdf13A08A547E4dD9f29B00aB7fF08C5d093d",
+      "name": "Curve.fi Factory USD Metapool: Paxos Dollar (USDP)",
+      "symbol": "pax-usdp3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc270b3B858c335B6BA5D5b10e2Da8a09976005ad",
+        "name": "Curve.fi Factory USD Metapool: Paxos Dollar (USDP)",
+        "symbol": "pax-usdp3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x346C7BB1A7a6A30c8e81c14e90FC2f0FBddc54d8": {
+    "protocolToken": {
+      "address": "0x346C7BB1A7a6A30c8e81c14e90FC2f0FBddc54d8",
+      "name": "Curve.fi Factory BTC Metapool: ibBTC",
+      "symbol": "ibbtc/sbtcCRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xFbdCA68601f835b27790D98bbb8eC7f05FDEaA9B",
+        "name": "Curve.fi Factory BTC Metapool: ibBTC",
+        "symbol": "ibbtc/sbtcCRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x1E212e054d74ed136256fc5a5DDdB4867c6E003F": {
+    "protocolToken": {
+      "address": "0x1E212e054d74ed136256fc5a5DDdB4867c6E003F",
+      "name": "Curve.fi Factory Plain Pool: 3EURpool",
+      "symbol": "3EURpool-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xb9446c4Ef5EBE66268dA6700D26f96273DE3d571",
+        "name": "Curve.fi Factory Plain Pool: 3EURpool",
+        "symbol": "3EURpool-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x38039dD47636154273b287F74C432Cac83Da97e2": {
+    "protocolToken": {
+      "address": "0x38039dD47636154273b287F74C432Cac83Da97e2",
+      "name": "Curve.fi Factory Plain Pool: agEUR/ibEUR",
+      "symbol": "ag+ib-EUR-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB37D6c07482Bc11cd28a1f11f1a6ad7b66Dec933",
+        "name": "Curve.fi Factory Plain Pool: agEUR/ibEUR",
+        "symbol": "ag+ib-EUR-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x6F98dA2D5098604239C07875C6B7Fd583BC520b9": {
+    "protocolToken": {
+      "address": "0x6F98dA2D5098604239C07875C6B7Fd583BC520b9",
+      "name": "Curve.fi Factory USD Metapool: Bean",
+      "symbol": "BEAN3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3a70DfA7d2262988064A2D051dd47521E43c9BdD",
+        "name": "Curve.fi Factory USD Metapool: Bean",
+        "symbol": "BEAN3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8aD7e0e6EDc61bC48ca0DD07f9021c249044eD30": {
+    "protocolToken": {
+      "address": "0x8aD7e0e6EDc61bC48ca0DD07f9021c249044eD30",
+      "name": "Curve.fi Factory Plain Pool: rETH/wstETH",
+      "symbol": "rETHwstETH-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x447Ddd4960d9fdBF6af9a790560d0AF76795CB08",
+        "name": "Curve.fi Factory Plain Pool: rETH/wstETH",
+        "symbol": "rETHwstETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x03fFC218C7A9306D21193565CbDc4378952faA8c": {
+    "protocolToken": {
+      "address": "0x03fFC218C7A9306D21193565CbDc4378952faA8c",
+      "name": "Curve.fi Factory Plain Pool: sdANGLE",
+      "symbol": "sdAGAG-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x48fF31bBbD8Ab553Ebe7cBD84e1eA3dBa8f54957",
+        "name": "Curve.fi Factory Plain Pool: sdANGLE",
+        "symbol": "sdAGAG-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x663FC22e92f26C377Ddf3C859b560C4732ee639a": {
+    "protocolToken": {
+      "address": "0x663FC22e92f26C377Ddf3C859b560C4732ee639a",
+      "name": "Curve.fi Factory Plain Pool: sdCRV",
+      "symbol": "sdCRVCRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf7b55C3732aD8b2c2dA7c24f30A69f55c54FB717",
+        "name": "Curve.fi Factory Plain Pool: sdCRV",
+        "symbol": "sdCRVCRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xd5d3efC90fFB38987005FdeA303B68306aA5C624": {
+    "protocolToken": {
+      "address": "0xd5d3efC90fFB38987005FdeA303B68306aA5C624",
+      "name": "Curve.fi Factory USD Metapool: USDD/3CRV",
+      "symbol": "USDD3CRV3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe6b5CC1B4b47305c58392CE3D359B10282FC36Ea",
+        "name": "Curve.fi Factory USD Metapool: USDD/3CRV",
+        "symbol": "USDD3CRV3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xF668E6D326945d499e5B35E7CD2E82aCFbcFE6f0": {
+    "protocolToken": {
+      "address": "0xF668E6D326945d499e5B35E7CD2E82aCFbcFE6f0",
+      "name": "Curve.fi Factory Plain Pool: stETH concentrated",
+      "symbol": "STETHETH_C-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x828b154032950C8ff7CF8085D841723Db2696056",
+        "name": "Curve.fi Factory Plain Pool: stETH concentrated",
+        "symbol": "STETHETH_C-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xE277Dd681d966e83F68e5bC7FBfeAf5f1341195F": {
+    "protocolToken": {
+      "address": "0xE277Dd681d966e83F68e5bC7FBfeAf5f1341195F",
+      "name": "Curve.fi Factory USD Metapool: home",
+      "symbol": "HOME+3crv3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5c6A6Cf9Ae657A73b98454D17986AF41fC7b44ee",
+        "name": "Curve.fi Factory USD Metapool: home",
+        "symbol": "HOME+3crv3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x389Fc079a15354E9cbcE8258433CC0F85B755A42": {
+    "protocolToken": {
+      "address": "0x389Fc079a15354E9cbcE8258433CC0F85B755A42",
+      "name": "Curve.fi Factory USD Metapool: LUSDFRAXBP",
+      "symbol": "LUSDFRAXBP3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x497CE58F34605B9944E6b15EcafE6b001206fd25",
+        "name": "Curve.fi Factory USD Metapool: LUSDFRAXBP",
+        "symbol": "LUSDFRAXBP3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xD6e48Cc0597a1Ee12a8BeEB88e22bFDb81777164": {
+    "protocolToken": {
+      "address": "0xD6e48Cc0597a1Ee12a8BeEB88e22bFDb81777164",
+      "name": "Curve.fi Factory USD Metapool: apeUSDFRAXBP",
+      "symbol": "APEUSDBP3CRV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04b727C7e246CA70d496ecF52E6b6280f3c8077D",
+        "name": "Curve.fi Factory USD Metapool: apeUSDFRAXBP",
+        "symbol": "APEUSDBP3CRV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x95f00391cB5EebCd190EB58728B4CE23DbFa6ac1": {
+    "protocolToken": {
+      "address": "0x95f00391cB5EebCd190EB58728B4CE23DbFa6ac1",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
+      "symbol": "crvUSDUSDC-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E",
+        "name": "Curve.fi Factory Plain Pool: crvUSD/USDC",
+        "symbol": "crvUSDUSDC-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x4e6bB6B7447B7B2Aa268C16AB87F4Bb48BF57939": {
+    "protocolToken": {
+      "address": "0x4e6bB6B7447B7B2Aa268C16AB87F4Bb48BF57939",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/USDT",
+      "symbol": "crvUSDUSDT-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x390f3595bCa2Df7d23783dFd126427CCeb997BF4",
+        "name": "Curve.fi Factory Plain Pool: crvUSD/USDT",
+        "symbol": "crvUSDUSDT-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x5c07440a172805d566Faf7eBAf16EF068aC05f43": {
+    "protocolToken": {
+      "address": "0x5c07440a172805d566Faf7eBAf16EF068aC05f43",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/USDP",
+      "symbol": "crvUSDUSDP-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCa978A0528116DDA3cbA9ACD3e68bc6191CA53D0",
+        "name": "Curve.fi Factory Plain Pool: crvUSD/USDP",
+        "symbol": "crvUSDUSDP-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xfcAf4EC80a94a5409141Af16a1DcA950a6973a39": {
+    "protocolToken": {
+      "address": "0xfcAf4EC80a94a5409141Af16a1DcA950a6973a39",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/TUSD",
+      "symbol": "crvUSDTUSD-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x34D655069F4cAc1547E4C8cA284FfFF5ad4A8db0",
+        "name": "Curve.fi Factory Plain Pool: crvUSD/TUSD",
+        "symbol": "crvUSDTUSD-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x96424E6b5eaafe0c3B36CA82068d574D44BE4e3c": {
+    "protocolToken": {
+      "address": "0x96424E6b5eaafe0c3B36CA82068d574D44BE4e3c",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/Frax",
+      "symbol": "crvUSDFRAX-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0CD6f267b2086bea681E922E19D40512511BE538",
+        "name": "Curve.fi Factory Plain Pool: crvUSD/Frax",
+        "symbol": "crvUSDFRAX-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x533B5AeE744647C20e33653F03676c471bb8e67B": {
+    "protocolToken": {
+      "address": "0x533B5AeE744647C20e33653F03676c471bb8e67B",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/MIM",
+      "symbol": "crvUSDMIM-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xBe426b0f37c112dd20d5866769c8034171567b31",
+        "name": "Curve.fi Factory Plain Pool: crvUSD/MIM",
+        "symbol": "crvUSDMIM-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x512a68DD5433563Bad526C8C2838c39deBc9a756": {
+    "protocolToken": {
+      "address": "0x512a68DD5433563Bad526C8C2838c39deBc9a756",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/SUSD",
+      "symbol": "crvUSDSUSD-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x94cC50e4521bD271C1a997a3A4Dc815C2F920b41",
+        "name": "Curve.fi Factory Plain Pool: crvUSD/SUSD",
+        "symbol": "crvUSDSUSD-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xFc58C946A2D541cfA29Ad8c16FC2994323e34458": {
+    "protocolToken": {
+      "address": "0xFc58C946A2D541cfA29Ad8c16FC2994323e34458",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/GHO",
+      "symbol": "crvUSDGHO-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x86152dF0a0E321Afb3B0B9C4deb813184F365ADa",
+        "name": "Curve.fi Factory Plain Pool: crvUSD/GHO",
+        "symbol": "crvUSDGHO-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xEcAD6745058377744c09747b2715c0170B5699e5": {
+    "protocolToken": {
+      "address": "0xEcAD6745058377744c09747b2715c0170B5699e5",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/DOLA",
+      "symbol": "crvUSDDOLA-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8272E1A3dBef607C04AA6e5BD3a1A134c8ac063B",
+        "name": "Curve.fi Factory Plain Pool: crvUSD/DOLA",
+        "symbol": "crvUSDDOLA-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xDe14d2B848a7a1373E155Cc4db9B649f4BE24296": {
+    "protocolToken": {
+      "address": "0xDe14d2B848a7a1373E155Cc4db9B649f4BE24296",
+      "name": "Curve.fi Factory Plain Pool: crvUSD/GUSD",
+      "symbol": "crvUSDGUSD-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xeCDd0cE505da71cd9dE855CD6804BA1e8C7bdB07",
+        "name": "Curve.fi Factory Plain Pool: crvUSD/GUSD",
+        "symbol": "crvUSDGUSD-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x4E21418095d32d15c6e2B96A9910772613A50d50": {
+    "protocolToken": {
+      "address": "0x4E21418095d32d15c6e2B96A9910772613A50d50",
+      "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
+      "symbol": "frxeth-ng-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9c3B46C0Ceb5B9e304FCd6D88Fc50f7DD24B31Bc",
+        "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
+        "symbol": "frxeth-ng-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x5010263AC1978297F56048C7D2B02316a3435404": {
+    "protocolToken": {
+      "address": "0x5010263AC1978297F56048C7D2B02316a3435404",
+      "name": "Curve.fi Factory Plain Pool: tBTC/WBTC",
+      "symbol": "2BTC-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB7ECB2AA52AA64a717180E030241bC75Cd946726",
+        "name": "Curve.fi Factory Plain Pool: tBTC/WBTC",
+        "symbol": "2BTC-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x0e5bdb5afe132D1c6A6C67f6D8eB6133dD607e36": {
+    "protocolToken": {
+      "address": "0x0e5bdb5afe132D1c6A6C67f6D8eB6133dD607e36",
+      "name": "Curve.fi Factory Plain Pool: mkUSD/crvUSD",
+      "symbol": "mkcrvUSD-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3de254A0f838a844F727fee81040e0FA7884B935",
+        "name": "Curve.fi Factory Plain Pool: mkUSD/crvUSD",
+        "symbol": "mkcrvUSD-f",
+        "decimals": 18
+      }
+    ]
+  },
   "0x9CeD5fC96F6f28530BBBbBf34c3634De50b682b7": {
     "protocolToken": {
       "address": "0x9CeD5fC96F6f28530BBBbBf34c3634De50b682b7",
@@ -4534,6 +4415,142 @@
         "address": "0xfffAE954601cFF1195a8E20342db7EE66d56436B",
         "name": "Curve.fi Factory Crypto Pool: ETHx-wstETH",
         "symbol": "ETHxwstETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xa8c8fad10b3F6CCcB7e8A450D4721717313d0A53": {
+    "protocolToken": {
+      "address": "0xa8c8fad10b3F6CCcB7e8A450D4721717313d0A53",
+      "name": "Curve.fi Factory Crypto Pool: MMX/USDT",
+      "symbol": "MMX/USDT-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd39de8FcEcb7f2e0c3dEb198D8e33663AFA0e977",
+        "name": "Curve.fi Factory Crypto Pool: MMX/USDT",
+        "symbol": "MMX/USDT-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x9A3dCece0968b8a94AfF643C9c72127a2C1D80dc": {
+    "protocolToken": {
+      "address": "0x9A3dCece0968b8a94AfF643C9c72127a2C1D80dc",
+      "name": "Curve.fi Factory Crypto Pool: PRISMA/ETH",
+      "symbol": "PRISMAETH-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xb34e1a3D07f9D180Bc2FDb9Fd90B8994423e33c1",
+        "name": "Curve.fi Factory Crypto Pool: PRISMA/ETH",
+        "symbol": "PRISMAETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x02C26E2013D7476E69aD3B453F025A43116B448D": {
+    "protocolToken": {
+      "address": "0x02C26E2013D7476E69aD3B453F025A43116B448D",
+      "name": "Curve.fi Factory Crypto Pool: PRISMA/mkUSD",
+      "symbol": "mkPRISMA-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x067079c14B85169e6a29703769dadDef90816f4C",
+        "name": "Curve.fi Factory Crypto Pool: PRISMA/mkUSD",
+        "symbol": "mkPRISMA-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x4eD9bc48315AC2D9DbA8a951eE8808ab1D9826F9": {
+    "protocolToken": {
+      "address": "0x4eD9bc48315AC2D9DbA8a951eE8808ab1D9826F9",
+      "name": "Curve.fi Factory Crypto Pool: wstETH/USDV",
+      "symbol": "wstETHUSDV-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x939b08547a4a586C1300714AA4EBF5CB43c1119C",
+        "name": "Curve.fi Factory Crypto Pool: wstETH/USDV",
+        "symbol": "wstETHUSDV-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x8F4ecCfaa4B6B0042970baDE0E3e9F3bE272B55f": {
+    "protocolToken": {
+      "address": "0x8F4ecCfaa4B6B0042970baDE0E3e9F3bE272B55f",
+      "name": "Curve.fi Factory Crypto Pool: ETH+/pxETH",
+      "symbol": "ETH+pxETH-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x982bcd444C9445c15CCe3eca506ef01E8348Fe5D",
+        "name": "Curve.fi Factory Crypto Pool: ETH+/pxETH",
+        "symbol": "ETH+pxETH-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x49865b21d1482377B14e9bE112F029edAcf56fb4": {
+    "protocolToken": {
+      "address": "0x49865b21d1482377B14e9bE112F029edAcf56fb4",
+      "name": "Curve.fi Factory Crypto Pool: pxETH/mkUSD",
+      "symbol": "pxETHmkUSD-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6ade6971Ca3d90990C30d39c78b0534C7166e07b",
+        "name": "Curve.fi Factory Crypto Pool: pxETH/mkUSD",
+        "symbol": "pxETHmkUSD-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xab78AE97cBedE5B1f6Bb212D839f920147020aE7": {
+    "protocolToken": {
+      "address": "0xab78AE97cBedE5B1f6Bb212D839f920147020aE7",
+      "name": "Curve.fi Factory Crypto Pool: BSGG/USDT",
+      "symbol": "BSGGUSDT-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd0Fb39E59037fC6Ae8aF5cb495CeA690ED501fDd",
+        "name": "Curve.fi Factory Crypto Pool: BSGG/USDT",
+        "symbol": "BSGGUSDT-f",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x233DbFF998FeEDf68770DA91E6b87bF6422A8471": {
+    "protocolToken": {
+      "address": "0x233DbFF998FeEDf68770DA91E6b87bF6422A8471",
+      "name": "Curve.fi Factory Crypto Pool: ETH/XYO",
+      "symbol": "ETHXYO-f",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x393DaD6c76D962Abba489a77dBf37ae948A4A6ee",
+        "name": "Curve.fi Factory Crypto Pool: ETH/XYO",
+        "symbol": "ETHXYO-f",
         "decimals": 18
       }
     ]
