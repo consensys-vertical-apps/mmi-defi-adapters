@@ -1,7 +1,23 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import swc from 'unplugin-swc'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    swc.vite({
+      jsc: {
+        parser: {
+          syntax: 'typescript',
+          decorators: true,
+        },
+        transform: {
+          decoratorMetadata: true,
+          decoratorVersion: '2022-03',
+          react: {
+            runtime: 'automatic',
+          },
+        },
+      },
+    }),
+  ],
 })

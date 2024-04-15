@@ -53,6 +53,7 @@
     "build-docs": "typedoc --plugin typedoc-plugin-markdown --plugin typedoc-plugin-mdn-links --theme markdown --hideBreadcrumbs false --hideInPageTOC false --readme none --gitRemote origin --gitRevision main --out ./docs --sort source-order --entryPoints src/types/ --entryPointStrategy expand --excludePrivate false"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.24.1",
     "@typechain/ethers-v6": "^0.5.0",
     "@types/eslint": "^8.44.1",
     "@types/ethereum-block-by-date": "^1.4.1",
@@ -64,6 +65,7 @@
     "@types/react-dom": "^18.2.24",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
+    "@vitejs/plugin-react": "^4.2.1",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "chalk": "^4.1.2",
     "commander": "^11.0.0",
@@ -96,7 +98,9 @@
     "typedoc-plugin-markdown": "^3.16.0",
     "typedoc-plugin-mdn-links": "^3.1.0",
     "typescript": "^5.1.6",
-    "vite": "^5.2.8"
+    "unplugin-swc": "^1.4.5",
+    "vite": "^5.2.8",
+    "vite-plugin-babel": "^1.2.0"
   },
   "dependencies": {
     "ethers": "^6.7.1",
