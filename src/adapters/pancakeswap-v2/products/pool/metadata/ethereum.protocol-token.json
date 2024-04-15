@@ -39,26 +39,6 @@
       "decimals": 18
     }
   },
-  "0x829e9CC8D05d0D55B4494Ecb5a43D71546dd4DDb": {
-    "protocolToken": {
-      "address": "0x829e9CC8D05d0D55B4494Ecb5a43D71546dd4DDb",
-      "name": "Pancake LPs CAPS / WETH",
-      "symbol": "Cake-LP/CAPS/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x03Be5C903c727Ee2C8C4e9bc0AcC860Cca4715e2",
-      "name": "Ternoa",
-      "symbol": "CAPS",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x17C1Ae82D99379240059940093762c5e4539aba5": {
     "protocolToken": {
       "address": "0x17C1Ae82D99379240059940093762c5e4539aba5",
@@ -119,24 +99,24 @@
       "decimals": 18
     }
   },
-  "0x067317B70dCdCf20896694B861a30c2d1B88cf83": {
+  "0x829e9CC8D05d0D55B4494Ecb5a43D71546dd4DDb": {
     "protocolToken": {
-      "address": "0x067317B70dCdCf20896694B861a30c2d1B88cf83",
-      "name": "Pancake LPs 888 / USDT",
-      "symbol": "Cake-LP/888/USDT",
+      "address": "0x829e9CC8D05d0D55B4494Ecb5a43D71546dd4DDb",
+      "name": "Pancake LPs CAPS / WETH",
+      "symbol": "Cake-LP/CAPS/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x52DCB3b4cCdE6389D73905e1BEa2C7A9c7D781Ef",
-      "name": "Portfolio 8",
-      "symbol": "888",
-      "decimals": 8
+      "address": "0x03Be5C903c727Ee2C8C4e9bc0AcC860Cca4715e2",
+      "name": "Ternoa",
+      "symbol": "CAPS",
+      "decimals": 18
     },
     "token1": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
     }
   },
   "0xA39dB4c234f36503b89A2f52F4dC5a13afC2FF33": {
@@ -159,6 +139,26 @@
       "decimals": 18
     }
   },
+  "0x067317B70dCdCf20896694B861a30c2d1B88cf83": {
+    "protocolToken": {
+      "address": "0x067317B70dCdCf20896694B861a30c2d1B88cf83",
+      "name": "Pancake LPs 888 / USDT",
+      "symbol": "Cake-LP/888/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x52DCB3b4cCdE6389D73905e1BEa2C7A9c7D781Ef",
+      "name": "Portfolio 8",
+      "symbol": "888",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
   "0x87D2405BB6afF83E0DD89d6D9D4ba76A80F9F3FC": {
     "protocolToken": {
       "address": "0x87D2405BB6afF83E0DD89d6D9D4ba76A80F9F3FC",
@@ -171,6 +171,26 @@
       "name": "PANCAKE INU",
       "symbol": "PCI",
       "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xF48E495598f6B4571C80CdeB61CAf680c071a5D9": {
+    "protocolToken": {
+      "address": "0xF48E495598f6B4571C80CdeB61CAf680c071a5D9",
+      "name": "Pancake LPs TSUCAKE / WETH",
+      "symbol": "Cake-LP/TSUCAKE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4850ea923E38d0427f3cA4bD543cB35dEb96f47e",
+      "name": "Dejitaru Tsucake",
+      "symbol": "TSUCAKE",
+      "decimals": 9
     },
     "token1": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -197,26 +217,6 @@
       "name": "Tether USD",
       "symbol": "USDT",
       "decimals": 6
-    }
-  },
-  "0xF48E495598f6B4571C80CdeB61CAf680c071a5D9": {
-    "protocolToken": {
-      "address": "0xF48E495598f6B4571C80CdeB61CAf680c071a5D9",
-      "name": "Pancake LPs TSUCAKE / WETH",
-      "symbol": "Cake-LP/TSUCAKE/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x4850ea923E38d0427f3cA4bD543cB35dEb96f47e",
-      "name": "Dejitaru Tsucake",
-      "symbol": "TSUCAKE",
-      "decimals": 9
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
     }
   },
   "0x6cCA86CC27EB8c7C2d10B0672FE392CFC88e62ff": {

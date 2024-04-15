@@ -98,5 +98,765 @@
       "symbol": "WAVAX",
       "decimals": 18
     }
+  },
+  "0x1b0e691802E463426BC6c8395ed4C811D92e96d8": {
+    "protocolToken": {
+      "address": "0x1b0e691802E463426BC6c8395ed4C811D92e96d8",
+      "name": "Uniswap V2 WAVAX / LIZARD",
+      "symbol": "UNI-V2/WAVAX/LIZARD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xeD0d09ee0F32f7b5AFaE6f2d728189C5E355b52a",
+      "name": "LIZARD",
+      "symbol": "LIZARD",
+      "decimals": 18
+    }
+  },
+  "0xb16EdD09482B66e6adD52032381363989afef310": {
+    "protocolToken": {
+      "address": "0xb16EdD09482B66e6adD52032381363989afef310",
+      "name": "Uniswap V2 HONK / WAVAX",
+      "symbol": "UNI-V2/HONK/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x27B614bF529E64abb9dd3496C09EA9063c5996a2",
+      "name": "Honk Inu",
+      "symbol": "HONK",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xDa2aa0000bac90b3C8dbac51cA50607D2A39F632": {
+    "protocolToken": {
+      "address": "0xDa2aa0000bac90b3C8dbac51cA50607D2A39F632",
+      "name": "Uniswap V2 $COQ / WAVAX",
+      "symbol": "UNI-V2/$COQ/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x243d58A4e2a500d1f3771c2332fE62d6C09cE98F",
+      "name": "coqwifhat",
+      "symbol": "$COQ",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xdf1Aa61231eA420041CFd9e92B4D6E3e5575DfeD": {
+    "protocolToken": {
+      "address": "0xdf1Aa61231eA420041CFd9e92B4D6E3e5575DfeD",
+      "name": "Uniswap V2 USDt / USDC",
+      "symbol": "UNI-V2/USDt/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
+      "name": "TetherToken",
+      "symbol": "USDt",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0xc97CAa998BcA902eBaB6E00B5501e70F0E9174ae": {
+    "protocolToken": {
+      "address": "0xc97CAa998BcA902eBaB6E00B5501e70F0E9174ae",
+      "name": "Uniswap V2 SEEYUH / WAVAX",
+      "symbol": "UNI-V2/SEEYUH/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x676376D0EA251D37d3E04Bcc447B89B670A119Fa",
+      "name": "Seeyuh",
+      "symbol": "SEEYUH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x38792a22D7f977f7f83271cAE8237981D85CE8a2": {
+    "protocolToken": {
+      "address": "0x38792a22D7f977f7f83271cAE8237981D85CE8a2",
+      "name": "Uniswap V2 ZOINK / WAVAX",
+      "symbol": "UNI-V2/ZOINK/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x189Fb5e51ac45644dCeae28F156E0456BAab1b2B",
+      "name": "Zoink Token",
+      "symbol": "ZOINK",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xB81a037E395361868843c5315F61c7e1405ab744": {
+    "protocolToken": {
+      "address": "0xB81a037E395361868843c5315F61c7e1405ab744",
+      "name": "Uniswap V2 ZTC / WAVAX",
+      "symbol": "UNI-V2/ZTC/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA4C592B722136AeF5497534A6BA796e18baaacE5",
+      "name": "ZTC",
+      "symbol": "ZTC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x39517474d6c166b5D4D4a50587d1535B273E9694": {
+    "protocolToken": {
+      "address": "0x39517474d6c166b5D4D4a50587d1535B273E9694",
+      "name": "Uniswap V2 ZOINK / WAVAX",
+      "symbol": "UNI-V2/ZOINK/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0a8999C96B55c5a3683469904D6490ecE9aB6BbF",
+      "name": "ZOINK",
+      "symbol": "ZOINK",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x49176952e6FaD1997E97739cA0a9AC05dD562c89": {
+    "protocolToken": {
+      "address": "0x49176952e6FaD1997E97739cA0a9AC05dD562c89",
+      "name": "Uniswap V2 Z1 / Z2",
+      "symbol": "UNI-V2/Z1/Z2",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA0f6eb5140efa9A6138473AF25BA378E1A16E1c0",
+      "name": "Z1",
+      "symbol": "Z1",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xb39F113bA5C0Acda437ff4cb5BcB4fe6D9EfdcF5",
+      "name": "Z2",
+      "symbol": "Z2",
+      "decimals": 18
+    }
+  },
+  "0x91f9703aBE6FAA14FA0AcD2e11fc7DDe60f24d48": {
+    "protocolToken": {
+      "address": "0x91f9703aBE6FAA14FA0AcD2e11fc7DDe60f24d48",
+      "name": "Uniswap V2 Z3 / Z2",
+      "symbol": "UNI-V2/Z3/Z2",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3B0634F577d4FBf86CA7F744406d932eCc629Ca7",
+      "name": "Z3",
+      "symbol": "Z3",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xb39F113bA5C0Acda437ff4cb5BcB4fe6D9EfdcF5",
+      "name": "Z2",
+      "symbol": "Z2",
+      "decimals": 18
+    }
+  },
+  "0x746C8cb107508033dFb7F6B0E94ec7600Efc99a7": {
+    "protocolToken": {
+      "address": "0x746C8cb107508033dFb7F6B0E94ec7600Efc99a7",
+      "name": "Uniswap V2 USDt / WAVAX",
+      "symbol": "UNI-V2/USDt/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
+      "name": "TetherToken",
+      "symbol": "USDt",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x8657DF611418CBFf3320240e9892Eb524B50CcEA": {
+    "protocolToken": {
+      "address": "0x8657DF611418CBFf3320240e9892Eb524B50CcEA",
+      "name": "Uniswap V2 WAVAX / SAMO",
+      "symbol": "UNI-V2/WAVAX/SAMO",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xE817D13E6f8DD494646a611fDDB77640fE404910",
+      "name": "Samoyed",
+      "symbol": "SAMO",
+      "decimals": 0
+    }
+  },
+  "0xb3FB09994cDcE12d233Bd4117C056b7485E37f1C": {
+    "protocolToken": {
+      "address": "0xb3FB09994cDcE12d233Bd4117C056b7485E37f1C",
+      "name": "Uniswap V2 Z5 / WAVAX",
+      "symbol": "UNI-V2/Z5/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x96CC2a65263f1391CeddEC636ca9Cb8510c473Dd",
+      "name": "Z5",
+      "symbol": "Z5",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xD23C8C4f58e560A3fbC5EF1d21D34A046b34aCf9": {
+    "protocolToken": {
+      "address": "0xD23C8C4f58e560A3fbC5EF1d21D34A046b34aCf9",
+      "name": "Uniswap V2 Z6 / WAVAX",
+      "symbol": "UNI-V2/Z6/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xa054635Eb3dd75dF0Da8E2a5f8E61d323DE76a57",
+      "name": "Z6",
+      "symbol": "Z6",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xcd0986903E7E11C3B54efB6705A0c9b8a6646AF9": {
+    "protocolToken": {
+      "address": "0xcd0986903E7E11C3B54efB6705A0c9b8a6646AF9",
+      "name": "Uniswap V2 Z7 / WAVAX",
+      "symbol": "UNI-V2/Z7/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1C52383C7f473e06118399322aDaE5203Bf9E6fE",
+      "name": "Z7",
+      "symbol": "Z7",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xA82b6634943f87cfe1485d55655c366885d4B945": {
+    "protocolToken": {
+      "address": "0xA82b6634943f87cfe1485d55655c366885d4B945",
+      "name": "Uniswap V2 WAVAX / CHIKON",
+      "symbol": "UNI-V2/WAVAX/CHIKON",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xf46888250FD3DFaBc2998d5510f7972177FC1adD",
+      "name": "Chikon",
+      "symbol": "CHIKON",
+      "decimals": 0
+    }
+  },
+  "0xFdD160C1e4fBD2B0476B9c003B2A18A71cDA430b": {
+    "protocolToken": {
+      "address": "0xFdD160C1e4fBD2B0476B9c003B2A18A71cDA430b",
+      "name": "Uniswap V2 WAVAX / WUD",
+      "symbol": "UNI-V2/WAVAX/WUD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc152d0f645f740ae239e5203c9B8AEDA26C87d51",
+      "name": "Cathie WUD",
+      "symbol": "WUD",
+      "decimals": 18
+    }
+  },
+  "0x7F3db609a2f97e53e4c5400f3A6F60eB7858A695": {
+    "protocolToken": {
+      "address": "0x7F3db609a2f97e53e4c5400f3A6F60eB7858A695",
+      "name": "Uniswap V2 WUD / WAVAX",
+      "symbol": "UNI-V2/WUD/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4387A887974F64C6d5c3A1d0E644517296b83263",
+      "name": "Cathie WUD",
+      "symbol": "WUD",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x3377b0AE28AE68017D178BFE8CF704a9F5dB6Cc4": {
+    "protocolToken": {
+      "address": "0x3377b0AE28AE68017D178BFE8CF704a9F5dB6Cc4",
+      "name": "Uniswap V2 WAVAX / BEEs",
+      "symbol": "UNI-V2/WAVAX/BEEs",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xde8232cf3CcA014554e3B607e0fd554FBFdb20c6",
+      "name": "BEEs",
+      "symbol": "BEEs",
+      "decimals": 18
+    }
+  },
+  "0x0CB193E49a14A455F764fE7996997599ba1edaEB": {
+    "protocolToken": {
+      "address": "0x0CB193E49a14A455F764fE7996997599ba1edaEB",
+      "name": "Uniswap V2 COQ / WAVAX",
+      "symbol": "UNI-V2/COQ/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x420FcA0121DC28039145009570975747295f2329",
+      "name": "COQINU",
+      "symbol": "COQ",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xE31A1FE58B77f0c5e5E19FE9B2D1e9857FC0c96c": {
+    "protocolToken": {
+      "address": "0xE31A1FE58B77f0c5e5E19FE9B2D1e9857FC0c96c",
+      "name": "Uniswap V2 REDBERRY / WAVAX",
+      "symbol": "UNI-V2/REDBERRY/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x412AF84b76D8E5044c2C01b9050F03dE953633Bd",
+      "name": "One RedBerry",
+      "symbol": "REDBERRY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x9B96489Dd686DAFd613FeA5223f31900b95B5153": {
+    "protocolToken": {
+      "address": "0x9B96489Dd686DAFd613FeA5223f31900b95B5153",
+      "name": "Uniswap V2 LBGT / WAVAX",
+      "symbol": "UNI-V2/LBGT/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x08871E46B1B914F82CDd33191724fF874695a53D",
+      "name": "Liseberg Token",
+      "symbol": "LBGT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xB48E094e53B8Ef5C62861AB089540d60D37e0368": {
+    "protocolToken": {
+      "address": "0xB48E094e53B8Ef5C62861AB089540d60D37e0368",
+      "name": "Uniswap V2 WAVAX / SOME",
+      "symbol": "UNI-V2/WAVAX/SOME",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xCAe48d23e0980Fdb3c00f12f283dFCcF83260047",
+      "name": "SMURFOFMEME",
+      "symbol": "SOME",
+      "decimals": 18
+    }
+  },
+  "0xAD6813Bd220f06c484294AE74752cb3BB4B7E9dD": {
+    "protocolToken": {
+      "address": "0xAD6813Bd220f06c484294AE74752cb3BB4B7E9dD",
+      "name": "Uniswap V2 WAVAX / TEST_TWO",
+      "symbol": "UNI-V2/WAVAX/TEST_TWO",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xFA2d7c0d24D113225F12f61D68063DC5A6012e7C",
+      "name": "test_two",
+      "symbol": "TEST_TWO",
+      "decimals": 18
+    }
+  },
+  "0xB5AB3B2924C1Fd017E73E95627f6A0958c39c00C": {
+    "protocolToken": {
+      "address": "0xB5AB3B2924C1Fd017E73E95627f6A0958c39c00C",
+      "name": "Uniswap V2 KIMBO / WAVAX",
+      "symbol": "UNI-V2/KIMBO/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x184ff13B3EBCB25Be44e860163A5D8391Dd568c1",
+      "name": "Kimbo",
+      "symbol": "KIMBO",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x7a8fe1F02073401F06F177a272073Faf0E216895": {
+    "protocolToken": {
+      "address": "0x7a8fe1F02073401F06F177a272073Faf0E216895",
+      "name": "Uniswap V2 WETH.e / USDC",
+      "symbol": "UNI-V2/WETH.e/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
+      "name": "Wrapped Ether",
+      "symbol": "WETH.e",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x3A77c6CCcC9923320756F858ff3D43BFc0638181": {
+    "protocolToken": {
+      "address": "0x3A77c6CCcC9923320756F858ff3D43BFc0638181",
+      "name": "Uniswap V2 NO / WAVAX",
+      "symbol": "UNI-V2/NO/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xa121530B688F3dbC3d6755Daeed7Ef57F72893c5",
+      "name": "NO CHILL",
+      "symbol": "NO",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xBB083e6EBad11C301C11a2d96124C2331cdF0190": {
+    "protocolToken": {
+      "address": "0xBB083e6EBad11C301C11a2d96124C2331cdF0190",
+      "name": "Uniswap V2 CJI / WAVAX",
+      "symbol": "UNI-V2/CJI/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x8470a91d7c9b6bbD7654A59180d5c2EE0737761F",
+      "name": "COQ JOE INU",
+      "symbol": "CJI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xe323229bf227d62B77d6c2eB1865560185bBa494": {
+    "protocolToken": {
+      "address": "0xe323229bf227d62B77d6c2eB1865560185bBa494",
+      "name": "Uniswap V2 aDXN / aXEN",
+      "symbol": "UNI-V2/aDXN/aXEN",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x80f0C1c49891dcFDD40b6e0F960F84E6042bcB6F",
+      "name": "DBXen Token on Avalanche",
+      "symbol": "aDXN",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC0C5AA69Dbe4d6DDdfBc89c0957686ec60F24389",
+      "name": "XEN Crypto",
+      "symbol": "aXEN",
+      "decimals": 18
+    }
+  },
+  "0xbD139b8f313a2756B41f8AD1114Fee8d7474e58f": {
+    "protocolToken": {
+      "address": "0xbD139b8f313a2756B41f8AD1114Fee8d7474e58f",
+      "name": "Uniswap V2 WAW / WAVAX",
+      "symbol": "UNI-V2/WAW/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xAa90C8688D6aB241d6d0038832839981d1656099",
+      "name": "WAW",
+      "symbol": "WAW",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0xeaEa9C4398B1483E7Eac45e2A6CA314a01A72a60": {
+    "protocolToken": {
+      "address": "0xeaEa9C4398B1483E7Eac45e2A6CA314a01A72a60",
+      "name": "Uniswap V2 WAVAX / TsT",
+      "symbol": "UNI-V2/WAVAX/TsT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc09692cBFE8c5b530a7B2274BeE06Ff18Eb3D850",
+      "name": "testt",
+      "symbol": "TsT",
+      "decimals": 18
+    }
+  },
+  "0x66337363194aFFAba2eD775898fA8B51E9C25867": {
+    "protocolToken": {
+      "address": "0x66337363194aFFAba2eD775898fA8B51E9C25867",
+      "name": "Uniswap V2 WAVAX / Test",
+      "symbol": "UNI-V2/WAVAX/Test",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe0E7fd2478113B6C1Cd95F2936DEeb690a40B879",
+      "name": "Test",
+      "symbol": "Test",
+      "decimals": 18
+    }
+  },
+  "0xfC6a7a051E55B4baE02E5dA7144b3f22cC7eBFc1": {
+    "protocolToken": {
+      "address": "0xfC6a7a051E55B4baE02E5dA7144b3f22cC7eBFc1",
+      "name": "Uniswap V2 WAVAX / WANG",
+      "symbol": "UNI-V2/WAVAX/WANG",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xCfa46F6eD7f65b28E87F51662f1760F3e1261eF1",
+      "name": "WANG INU",
+      "symbol": "WANG",
+      "decimals": 18
+    }
+  },
+  "0x7AEB864fCc49E7fB084eAE9b30f5fBA29cD45DAD": {
+    "protocolToken": {
+      "address": "0x7AEB864fCc49E7fB084eAE9b30f5fBA29cD45DAD",
+      "name": "Uniswap V2 EARN / WAVAX",
+      "symbol": "UNI-V2/EARN/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x806cc7A21BD85E960857aC1e097802fAbaD6F594",
+      "name": "HOLD",
+      "symbol": "EARN",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x5Ea41A6e7a74b3bdc795cE2595Fe184aED45B835": {
+    "protocolToken": {
+      "address": "0x5Ea41A6e7a74b3bdc795cE2595Fe184aED45B835",
+      "name": "Uniswap V2 Homies / WAVAX",
+      "symbol": "UNI-V2/Homies/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x85b18EAcA6b8dD8D95f545a75c545BEA62dd6dA8",
+      "name": "Avax Homies",
+      "symbol": "Homies",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x49B9482443a3E09F0d526C082999f3a4f2a1253c": {
+    "protocolToken": {
+      "address": "0x49B9482443a3E09F0d526C082999f3a4f2a1253c",
+      "name": "Uniswap V2 WAVAX / DVONAI",
+      "symbol": "UNI-V2/WAVAX/DVONAI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xed851B600B8ebeF4287d25FA2e21a08928d2C286",
+      "name": "Devon AI",
+      "symbol": "DVONAI",
+      "decimals": 18
+    }
+  },
+  "0xA9a0Ce88e00d226bb965D7BFb0C434979e4FCBb7": {
+    "protocolToken": {
+      "address": "0xA9a0Ce88e00d226bb965D7BFb0C434979e4FCBb7",
+      "name": "Uniswap V2 WAVAX / aXEN",
+      "symbol": "UNI-V2/WAVAX/aXEN",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC0C5AA69Dbe4d6DDdfBc89c0957686ec60F24389",
+      "name": "XEN Crypto",
+      "symbol": "aXEN",
+      "decimals": 18
+    }
+  },
+  "0xc0ca74965738b8875F3aBc70d9DC59Bff104bC6c": {
+    "protocolToken": {
+      "address": "0xc0ca74965738b8875F3aBc70d9DC59Bff104bC6c",
+      "name": "Uniswap V2 PNG / WAVAX",
+      "symbol": "UNI-V2/PNG/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x60781C2586D68229fde47564546784ab3fACA982",
+      "name": "Pangolin",
+      "symbol": "PNG",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
   }
 }
