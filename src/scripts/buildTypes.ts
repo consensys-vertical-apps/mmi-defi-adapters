@@ -78,7 +78,14 @@ async function buildSchemas() {
   const defiProvider = new DefiProvider()
   const support = defiProvider.getSupport()
 
-  let writeActionInputs: any[] = []
+  const writeActionInputs: {
+    protocolKey: string
+    protocolId: string
+    productId: string
+    writeActionInputs: string[]
+    fullProductName: string
+    productAdapterPath: string
+  }[] = []
 
   for (const [protocolId, protocolAdapters] of Object.entries(support)) {
     const protocolKey = Object.keys(Protocol).find(
