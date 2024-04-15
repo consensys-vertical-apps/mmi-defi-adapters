@@ -10,6 +10,7 @@ import { WriteActions } from '../../../../types/writeActions'
 import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 import { Protocol } from '../../../protocols'
+import { GetTransactionParams } from '../../../supportedProtocols'
 import { PoolContract__factory } from '../../contracts'
 
 export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
@@ -50,7 +51,13 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
     return reserveData.liquidityRate
   }
 
-  getTransactionParams({ action, inputs }: GetTransactionParams) {
+  getTransactionParams({
+    action,
+    inputs,
+  }: Extract<
+    GetTransactionParams,
+    { protocolId: typeof Protocol.AaveV3; productId: 'a-token' }
+  >) {
     const poolContract = PoolContract__factory.connect(
       getAddress(this.chainId),
       this.provider,
@@ -131,33 +138,3 @@ export const WriteActionInputs = {
     onBehalfOf: z.string(),
   }),
 }
-
-const commonFields = {
-  protocolId: z.literal(Protocol.AaveV3),
-  productId: z.literal('a-token'),
-  chainId: z.nativeEnum(Chain),
-}
-
-export const GetTransactionParamsSchema = z.discriminatedUnion('action', [
-  z.object({
-    ...commonFields,
-    action: z.literal(WriteActions.Deposit),
-    inputs: WriteActionInputs[WriteActions.Deposit],
-  }),
-  z.object({
-    ...commonFields,
-    action: z.literal(WriteActions.Withdraw),
-    inputs: WriteActionInputs[WriteActions.Withdraw],
-  }),
-  z.object({
-    ...commonFields,
-    action: z.literal(WriteActions.Borrow),
-    inputs: WriteActionInputs[WriteActions.Borrow],
-  }),
-  z.object({
-    ...commonFields,
-    action: z.literal(WriteActions.Repay),
-    inputs: WriteActionInputs[WriteActions.Repay],
-  }),
-])
-export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>

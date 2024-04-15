@@ -31,13 +31,13 @@ import { testCases as quickswapV2TestCases } from './quickswap-v2/tests/testCase
 import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as stakeWiseTestCases } from './stakewise/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
+import type { GetTransactionParams } from './supportedProtocols'
 import { testCases as sushiswapV2TestCases } from './sushiswap-v2/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
-import { GetTransactionParams } from '.'
 
 const TEST_TIMEOUT = 300000
 

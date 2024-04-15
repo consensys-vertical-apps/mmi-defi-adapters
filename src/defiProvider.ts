@@ -1,6 +1,7 @@
 import { getAddress } from 'ethers'
-import { GetTransactionParams, supportedProtocols } from './adapters'
 import { Protocol } from './adapters/protocols'
+import { supportedProtocols } from './adapters/supportedProtocols'
+import type { GetTransactionParams } from './adapters/supportedProtocols'
 import { Config, IConfig } from './config'
 import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'

@@ -1,4 +1,4 @@
-import { GetTransactionParams } from '../adapters'
+import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import type { Chain } from '../core/constants/chains'
 import type { TimePeriod } from '../core/constants/timePeriod'
 

@@ -9,6 +9,7 @@ import {
 } from '../../../../types/adapter'
 import { WriteActions } from '../../../../types/writeActions'
 import { Protocol } from '../../../protocols'
+import { GetTransactionParams } from '../../../supportedProtocols'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
 
@@ -40,7 +41,13 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
     return await super.buildMetadata()
   }
 
-  getTransactionParams({ action, inputs }: GetTransactionParams) {
+  getTransactionParams({
+    action,
+    inputs,
+  }: Extract<
+    GetTransactionParams,
+    { protocolId: typeof Protocol.CompoundV2; productId: 'supply-market' }
+  >) {
     const poolContract = CUSDCv3__factory.connect(
       contractAddresses[this.chainId]!.cUSDCv3Address,
       this.provider,
@@ -69,27 +76,3 @@ export const WriteActionInputs = {
     amount: z.string(),
   }),
 }
-
-const commonFields = {
-  protocolId: z.literal(Protocol.CompoundV2),
-  productId: z.literal('supply-market'),
-  chainId: z.nativeEnum(Chain),
-}
-
-const DepositParams = z.object({
-  ...commonFields,
-  action: z.literal(WriteActions.Deposit),
-  inputs: WriteActionInputs[WriteActions.Deposit],
-})
-
-const WithdrawParams = z.object({
-  ...commonFields,
-  action: z.literal(WriteActions.Withdraw),
-  inputs: WriteActionInputs[WriteActions.Withdraw],
-})
-
-export const GetTransactionParamsSchema = z.discriminatedUnion('action', [
-  DepositParams,
-  WithdrawParams,
-])
-export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>
