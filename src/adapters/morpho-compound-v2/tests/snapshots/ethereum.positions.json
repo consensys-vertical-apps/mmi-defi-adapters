@@ -20,7 +20,7 @@
           "balance": 1500650341135201.8,
           "balanceRaw": "150065034113520166445824n",
           "name": "Compound Dai",
-          "symbol": "CDAI",
+          "symbol": "cDAI",
           "decimals": 8,
           "type": "protocol",
           "tokens": [
@@ -41,8 +41,8 @@
           "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
           "balance": 2.67849105,
           "balanceRaw": "267849105n",
-          "name": "cWBTC",
-          "symbol": "CWBTC",
+          "name": "Compound Wrapped BTC",
+          "symbol": "cWBTC",
           "decimals": 8,
           "type": "protocol",
           "tokens": [
@@ -80,14 +80,14 @@
           "balance": 231940653060.85007,
           "balanceRaw": "23194065306085005919n",
           "name": "Compound Ether",
-          "symbol": "CETH",
+          "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
           "tokens": [
             {
               "address": "0x0000000000000000000000000000000000000000",
-              "name": "Ethereum",
               "symbol": "ETH",
+              "name": "Ethereum",
               "decimals": 18,
               "balanceRaw": "23194065306085005919n",
               "type": "underlying",
@@ -101,8 +101,8 @@
           "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
           "balance": 1150.55137192,
           "balanceRaw": "115055137192n",
-          "name": "Compound Tether",
-          "symbol": "CUSDT",
+          "name": "Compound USDT",
+          "symbol": "cUSDT",
           "decimals": 8,
           "type": "protocol",
           "tokens": [

@@ -18,14 +18,14 @@
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
-          "symbol": "FUSDC",
+          "symbol": "fUSDC",
           "decimals": 8
         },
         "tokens": [
           {
             "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
             "name": "Flux USDC",
-            "symbol": "FUSDC",
+            "symbol": "fUSDC",
             "decimals": 8,
             "balanceRaw": "5904626346n",
             "type": "underlying",
@@ -53,14 +53,14 @@
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
-          "symbol": "FUSDC",
+          "symbol": "fUSDC",
           "decimals": 8
         },
         "tokens": [
           {
             "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
             "name": "Flux USDC",
-            "symbol": "FUSDC",
+            "symbol": "fUSDC",
             "decimals": 8,
             "balanceRaw": "485651552n",
             "type": "underlying",
@@ -88,14 +88,14 @@
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
-          "symbol": "FUSDC",
+          "symbol": "fUSDC",
           "decimals": 8
         },
         "tokens": [
           {
             "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
             "name": "Flux USDC",
-            "symbol": "FUSDC",
+            "symbol": "fUSDC",
             "decimals": 8,
             "balanceRaw": "86159087n",
             "type": "underlying",
@@ -123,14 +123,14 @@
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
-          "symbol": "FUSDC",
+          "symbol": "fUSDC",
           "decimals": 8
         },
         "tokens": [
           {
             "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
             "name": "Flux USDC",
-            "symbol": "FUSDC",
+            "symbol": "fUSDC",
             "decimals": 8,
             "balanceRaw": "55171600384n",
             "type": "underlying",

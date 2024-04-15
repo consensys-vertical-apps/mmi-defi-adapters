@@ -16,9 +16,31 @@
       "success": true,
       "tokens": [
         {
+          "address": "0x1dD7950c266fB1be96180a8FDb0591F70200E018",
+          "name": "Flux OUSG",
+          "symbol": "fOUSG",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "675180802913981n",
+          "tokens": [
+            {
+              "address": "0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92",
+              "name": "Ondo Short-Term U.S. Government Bond Fund",
+              "symbol": "OUSG",
+              "decimals": 18,
+              "totalSupplyRaw": "135036160582796134012001n",
+              "type": "underlying",
+              "totalSupply": 135036.16058279615,
+              "price": 100.56674786015039,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92/logo.png"
+            }
+          ],
+          "totalSupply": 6751808.02913981
+        },
+        {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
-          "symbol": "FUSDC",
+          "symbol": "fUSDC",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "47633217353326925n",
@@ -40,7 +62,7 @@
         {
           "address": "0xe2bA8693cE7474900A045757fe0efCa900F6530b",
           "name": "Flux DAI",
-          "symbol": "FDAI",
+          "symbol": "fDAI",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "5805167755600607n",
@@ -62,7 +84,7 @@
         {
           "address": "0x81994b9607e06ab3d5cF3AffF9a67374f05F27d7",
           "name": "Flux USDT",
-          "symbol": "FUSDT",
+          "symbol": "fUSDT",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "5431307156531223n",
@@ -84,7 +106,7 @@
         {
           "address": "0x1C9A2d6b33B4826757273D47ebEe0e2DddcD978B",
           "name": "Flux FRAX",
-          "symbol": "FFRAX",
+          "symbol": "fFRAX",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "1515150868583056n",
@@ -102,28 +124,6 @@
             }
           ],
           "totalSupply": 15151508.68583056
-        },
-        {
-          "address": "0x1dD7950c266fB1be96180a8FDb0591F70200E018",
-          "name": "Flux OUSG",
-          "symbol": "fOUSG",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "675180802913981n",
-          "tokens": [
-            {
-              "address": "0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92",
-              "name": "OUSG",
-              "symbol": "OUSG",
-              "decimals": 18,
-              "totalSupplyRaw": "135036160582796134012001n",
-              "type": "underlying",
-              "totalSupply": 135036.16058279615,
-              "price": 100.56674786015039,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92/logo.png"
-            }
-          ],
-          "totalSupply": 6751808.02913981
         }
       ]
     },

@@ -18,7 +18,7 @@
         {
           "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
           "name": "Compound Dai",
-          "symbol": "CDAI",
+          "symbol": "cDAI",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "8085368317705084n",
@@ -40,7 +40,7 @@
         {
           "address": "0x70e36f6BF80a52b3B46b3aF8e106CC0ed743E8e4",
           "name": "Compound Collateral",
-          "symbol": "CCOMP",
+          "symbol": "cCOMP",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "57281303795n",
@@ -62,7 +62,7 @@
         {
           "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
           "name": "Compound Ether",
-          "symbol": "CETH",
+          "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "168911325712n",
@@ -80,94 +80,6 @@
             }
           ],
           "totalSupply": 1689.11325712
-        },
-        {
-          "address": "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
-          "name": "cUNI",
-          "symbol": "CUNI",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "127118648273381n",
-          "tokens": [
-            {
-              "address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-              "name": "Uniswap",
-              "symbol": "UNI",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "25899572076335990068275n",
-              "totalSupply": 25899.57207633599,
-              "price": 6.085508958375799,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png"
-            }
-          ],
-          "totalSupply": 1271186.48273381
-        },
-        {
-          "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
-          "name": "Compound USD Coin",
-          "symbol": "CUSDC",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "1185643329335488n",
-          "tokens": [
-            {
-              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "totalSupplyRaw": "275922915602n",
-              "totalSupply": 275922.915602,
-              "price": 1.0024558287249463,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            }
-          ],
-          "totalSupply": 11856433.29335488
-        },
-        {
-          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
-          "name": "Compound Tether",
-          "symbol": "CUSDT",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "29914220413858661n",
-          "tokens": [
-            {
-              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "type": "underlying",
-              "totalSupplyRaw": "6829117378279n",
-              "totalSupply": 6829117.378279,
-              "price": 1.00196806175604,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
-            }
-          ],
-          "totalSupply": 299142204.1385866
-        },
-        {
-          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
-          "name": "cWBTC",
-          "symbol": "CWBTC",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "2706138503590n",
-          "tokens": [
-            {
-              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-              "name": "Wrapped BTC",
-              "symbol": "WBTC",
-              "decimals": 8,
-              "type": "underlying",
-              "totalSupplyRaw": "54331196859n",
-              "totalSupply": 543.31196859,
-              "price": 41148.936307614546,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
-            }
-          ],
-          "totalSupply": 27061.3850359
         },
         {
           "address": "0x7713DD9Ca933848F6819F38B8352D9A15EA73F67",
@@ -190,6 +102,94 @@
             }
           ],
           "totalSupply": 1309.14388873
+        },
+        {
+          "address": "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
+          "name": "Compound Uniswap",
+          "symbol": "cUNI",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "127118648273381n",
+          "tokens": [
+            {
+              "address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+              "name": "Uniswap",
+              "symbol": "UNI",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "25899572076335990068275n",
+              "totalSupply": 25899.57207633599,
+              "price": 6.085508958375799,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png"
+            }
+          ],
+          "totalSupply": 1271186.48273381
+        },
+        {
+          "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
+          "name": "Compound USD Coin",
+          "symbol": "cUSDC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "1185643329335488n",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "275922915602n",
+              "totalSupply": 275922.915602,
+              "price": 1.0024558287249463,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "totalSupply": 11856433.29335488
+        },
+        {
+          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
+          "name": "Compound USDT",
+          "symbol": "cUSDT",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "29914220413858661n",
+          "tokens": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "6829117378279n",
+              "totalSupply": 6829117.378279,
+              "price": 1.00196806175604,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "totalSupply": 299142204.1385866
+        },
+        {
+          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
+          "name": "Compound Wrapped BTC",
+          "symbol": "cWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "2706138503590n",
+          "tokens": [
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "type": "underlying",
+              "totalSupplyRaw": "54331196859n",
+              "totalSupply": 543.31196859,
+              "price": 41148.936307614546,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
+            }
+          ],
+          "totalSupply": 27061.3850359
         }
       ]
     },
@@ -210,7 +210,7 @@
         {
           "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
           "name": "Compound Dai",
-          "symbol": "CDAI",
+          "symbol": "cDAI",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "7230842743123040n",
@@ -232,7 +232,7 @@
         {
           "address": "0x70e36f6BF80a52b3B46b3aF8e106CC0ed743E8e4",
           "name": "Compound Collateral",
-          "symbol": "CCOMP",
+          "symbol": "cCOMP",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "17128741593n",
@@ -254,7 +254,7 @@
         {
           "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
           "name": "Compound Ether",
-          "symbol": "CETH",
+          "symbol": "cETH",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "117587667598n",
@@ -272,94 +272,6 @@
             }
           ],
           "totalSupply": 1175.87667598
-        },
-        {
-          "address": "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
-          "name": "cUNI",
-          "symbol": "CUNI",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "9522077826727n",
-          "tokens": [
-            {
-              "address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-              "name": "Uniswap",
-              "symbol": "UNI",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "1940059498268273696226n",
-              "totalSupply": 1940.0594982682737,
-              "price": 6.085508958375799,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png"
-            }
-          ],
-          "totalSupply": 95220.77826727
-        },
-        {
-          "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
-          "name": "Compound USD Coin",
-          "symbol": "CUSDC",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "23647457069383491n",
-          "tokens": [
-            {
-              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "totalSupplyRaw": "5503236209186n",
-              "totalSupply": 5503236.209186,
-              "price": 1.0024558287249463,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
-            }
-          ],
-          "totalSupply": 236474570.6938349
-        },
-        {
-          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
-          "name": "Compound Tether",
-          "symbol": "CUSDT",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "3480984227261788n",
-          "tokens": [
-            {
-              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "type": "underlying",
-              "totalSupplyRaw": "794673889241n",
-              "totalSupply": 794673.889241,
-              "price": 1.00196806175604,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
-            }
-          ],
-          "totalSupply": 34809842.27261788
-        },
-        {
-          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
-          "name": "cWBTC",
-          "symbol": "CWBTC",
-          "decimals": 8,
-          "type": "protocol",
-          "totalSupplyRaw": "369044999n",
-          "tokens": [
-            {
-              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-              "name": "Wrapped BTC",
-              "symbol": "WBTC",
-              "decimals": 8,
-              "type": "underlying",
-              "totalSupplyRaw": "7409323n",
-              "totalSupply": 0.07409323,
-              "price": 41148.936307614546,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
-            }
-          ],
-          "totalSupply": 3.69044999
         },
         {
           "address": "0x7713DD9Ca933848F6819F38B8352D9A15EA73F67",
@@ -382,6 +294,94 @@
             }
           ],
           "totalSupply": 2.6e-7
+        },
+        {
+          "address": "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
+          "name": "Compound Uniswap",
+          "symbol": "cUNI",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "9522077826727n",
+          "tokens": [
+            {
+              "address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+              "name": "Uniswap",
+              "symbol": "UNI",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "1940059498268273696226n",
+              "totalSupply": 1940.0594982682737,
+              "price": 6.085508958375799,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png"
+            }
+          ],
+          "totalSupply": 95220.77826727
+        },
+        {
+          "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
+          "name": "Compound USD Coin",
+          "symbol": "cUSDC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "23647457069383491n",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "5503236209186n",
+              "totalSupply": 5503236.209186,
+              "price": 1.0024558287249463,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "totalSupply": 236474570.6938349
+        },
+        {
+          "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
+          "name": "Compound USDT",
+          "symbol": "cUSDT",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "3480984227261788n",
+          "tokens": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "794673889241n",
+              "totalSupply": 794673.889241,
+              "price": 1.00196806175604,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "totalSupply": 34809842.27261788
+        },
+        {
+          "address": "0xccF4429DB6322D5C611ee964527D42E5d685DD6a",
+          "name": "Compound Wrapped BTC",
+          "symbol": "cWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "369044999n",
+          "tokens": [
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "type": "underlying",
+              "totalSupplyRaw": "7409323n",
+              "totalSupply": 0.07409323,
+              "price": 41148.936307614546,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
+            }
+          ],
+          "totalSupply": 3.69044999
         }
       ]
     }

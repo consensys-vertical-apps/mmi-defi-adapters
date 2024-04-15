@@ -34,7 +34,7 @@
           },
           {
             "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-            "name": "Convex Finance",
+            "name": "Convex Token",
             "symbol": "CVX",
             "decimals": 18,
             "balanceRaw": "8112882418495028699n",

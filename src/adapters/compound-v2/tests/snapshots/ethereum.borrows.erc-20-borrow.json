@@ -17,8 +17,8 @@
         "transactionHash": "0xd82c3b0f320ceed7f2bda0405485dbcaf1a9e1ce4fd23b6229da71abcd08e19b",
         "protocolToken": {
           "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
-          "name": "Compound Tether",
-          "symbol": "CUSDT",
+          "name": "Compound USDT",
+          "symbol": "cUSDT",
           "decimals": 8
         },
         "tokens": [

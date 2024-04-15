@@ -17,14 +17,14 @@
         "protocolToken": {
           "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
           "name": "Compound Ether",
-          "symbol": "CETH",
+          "symbol": "cETH",
           "decimals": 8
         },
         "tokens": [
           {
             "address": "0x0000000000000000000000000000000000000000",
-            "name": "Ethereum",
             "symbol": "ETH",
+            "name": "Ethereum",
             "decimals": 18,
             "balanceRaw": "23255740599711088328n",
             "type": "underlying",

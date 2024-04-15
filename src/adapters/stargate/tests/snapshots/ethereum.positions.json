@@ -63,7 +63,7 @@
           "tokens": [
             {
               "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
-              "name": "Stargate Finance",
+              "name": "StargateToken",
               "symbol": "STG",
               "decimals": 18,
               "type": "underlying",

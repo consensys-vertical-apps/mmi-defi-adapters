@@ -170,28 +170,6 @@
           "totalSupply": 1846.043618993153
         },
         {
-          "address": "0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97",
-          "name": "Aave Arbitrum EURS",
-          "symbol": "aArbEURS",
-          "decimals": 2,
-          "type": "protocol",
-          "totalSupplyRaw": "4027158n",
-          "tokens": [
-            {
-              "address": "0xD22a58f79e9481D1a88e00c343885A588b34b68B",
-              "name": "STASIS EURS Token",
-              "symbol": "EURS",
-              "decimals": 2,
-              "totalSupplyRaw": "1945466n",
-              "type": "underlying",
-              "totalSupply": 19454.66,
-              "price": 1.1812315021578164,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xD22a58f79e9481D1a88e00c343885A588b34b68B/logo.png"
-            }
-          ],
-          "totalSupply": 40271.58
-        },
-        {
           "address": "0x513c7E3a9c69cA3e22550eF58AC1C0088e918FFf",
           "name": "Aave Arbitrum wstETH",
           "symbol": "aArbwstETH",
@@ -494,28 +472,6 @@
           "totalSupply": 0
         },
         {
-          "address": "0xF15F26710c827DDe8ACBA678682F3Ce24f2Fb56E",
-          "name": "Aave Arbitrum Stable Debt EURS",
-          "symbol": "stableDebtArbEURS",
-          "decimals": 2,
-          "type": "protocol",
-          "totalSupplyRaw": "1179895n",
-          "tokens": [
-            {
-              "address": "0xD22a58f79e9481D1a88e00c343885A588b34b68B",
-              "name": "STASIS EURS Token",
-              "symbol": "EURS",
-              "decimals": 2,
-              "totalSupplyRaw": "0n",
-              "type": "underlying",
-              "totalSupply": 0,
-              "price": 1.1812315021578164,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xD22a58f79e9481D1a88e00c343885A588b34b68B/logo.png"
-            }
-          ],
-          "totalSupply": 11798.95
-        },
-        {
           "address": "0x08Cb71192985E936C7Cd166A8b268035e400c3c3",
           "name": "Aave Arbitrum Stable Debt wstETH",
           "symbol": "stableDebtArbwstETH",
@@ -816,28 +772,6 @@
             }
           ],
           "totalSupply": 0
-        },
-        {
-          "address": "0x4a1c3aD6Ed28a636ee1751C69071f6be75DEb8B8",
-          "name": "Aave Arbitrum Variable Debt EURS",
-          "symbol": "variableDebtArbEURS",
-          "decimals": 2,
-          "type": "protocol",
-          "totalSupplyRaw": "901850n",
-          "tokens": [
-            {
-              "address": "0xD22a58f79e9481D1a88e00c343885A588b34b68B",
-              "name": "STASIS EURS Token",
-              "symbol": "EURS",
-              "decimals": 2,
-              "totalSupplyRaw": "0n",
-              "type": "underlying",
-              "totalSupply": 0,
-              "price": 1.1812315021578164,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xD22a58f79e9481D1a88e00c343885A588b34b68B/logo.png"
-            }
-          ],
-          "totalSupply": 9018.5
         },
         {
           "address": "0x77CA01483f379E58174739308945f044e1a764dc",
