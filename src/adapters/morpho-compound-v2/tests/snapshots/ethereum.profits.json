@@ -292,8 +292,8 @@
                 "tokens": [
                   {
                     "address": "0x0000000000000000000000000000000000000000",
-                    "name": "Ethereum",
                     "symbol": "ETH",
+                    "name": "Ethereum",
                     "decimals": 18,
                     "balanceRaw": "23199934133431144720n",
                     "type": "underlying",
@@ -316,8 +316,8 @@
                 "tokens": [
                   {
                     "address": "0x0000000000000000000000000000000000000000",
-                    "name": "Ethereum",
                     "symbol": "ETH",
+                    "name": "Ethereum",
                     "decimals": 18,
                     "balanceRaw": "23198365556748593453n",
                     "type": "underlying",

@@ -23,12 +23,12 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Linea,
     method: 'prices',
-    blockNumber: 2584657,
+    blockNumber: 3711207,
   },
   {
     chainId: Chain.Linea,
     method: 'tvl',
-    blockNumber: 2584705,
+    blockNumber: 3711207,
   },
   {
     chainId: Chain.Linea,
