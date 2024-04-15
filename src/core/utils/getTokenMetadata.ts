@@ -2,7 +2,6 @@ import { ethers, getAddress, isError } from 'ethers'
 import { Erc20, Erc20__factory } from '../../contracts'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
-
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
