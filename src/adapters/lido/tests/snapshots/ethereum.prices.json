@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18377483,
+  "blockNumber": 19661884,
   "snapshot": [
     {
       "protocolId": "lido",
@@ -65,8 +65,8 @@
               "symbol": "stETH",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "1143352787597958150n",
-              "underlyingRate": 1.143352787597958,
+              "underlyingRateRaw": "1163738796554130296n",
+              "underlyingRate": 1.1637387965541304,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ]

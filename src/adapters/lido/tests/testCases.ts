@@ -59,12 +59,12 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
     method: 'prices',
-    blockNumber: 18377483,
+    blockNumber: 19661884,
   },
   {
     chainId: Chain.Ethereum,
     method: 'tvl',
-    blockNumber: 18377483,
+    blockNumber: 19661884,
   },
   {
     chainId: Chain.Ethereum,

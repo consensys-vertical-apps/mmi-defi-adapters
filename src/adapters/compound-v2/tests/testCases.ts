@@ -109,7 +109,7 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
     method: 'prices',
-    blockNumber: 19383091,
+    blockNumber: 19661878,
   },
   {
     method: 'tx-params',

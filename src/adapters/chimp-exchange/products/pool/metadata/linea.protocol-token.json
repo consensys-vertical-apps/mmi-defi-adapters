@@ -32,6 +32,32 @@
       }
     ]
   },
+  "0xD2E846D6A2C1696b77678f1936DF9B7FD3F25F8D": {
+    "poolId": "0xd2e846d6a2c1696b77678f1936df9b7fd3f25f8d000200000000000000000003",
+    "totalSupplyType": "0",
+    "protocolToken": {
+      "address": "0xD2E846D6A2C1696b77678f1936DF9B7FD3F25F8D",
+      "name": "50USDC-50USDT",
+      "symbol": "50USDC-50USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6,
+        "index": 0
+      },
+      {
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6,
+        "index": 1
+      }
+    ]
+  },
   "0xe38DF7880EF9408e9933Fd0e96abcC3CebF76006": {
     "poolId": "0xe38df7880ef9408e9933fd0e96abcc3cebf76006000200000000000000000001",
     "totalSupplyType": "0",
@@ -72,58 +98,6 @@
         "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
         "name": "Tether USD",
         "symbol": "USDT",
-        "decimals": 6,
-        "index": 0
-      },
-      {
-        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18,
-        "index": 1
-      }
-    ]
-  },
-  "0xD2E846D6A2C1696b77678f1936DF9B7FD3F25F8D": {
-    "poolId": "0xd2e846d6a2c1696b77678f1936df9b7fd3f25f8d000200000000000000000003",
-    "totalSupplyType": "0",
-    "protocolToken": {
-      "address": "0xD2E846D6A2C1696b77678f1936DF9B7FD3F25F8D",
-      "name": "50USDC-50USDT",
-      "symbol": "50USDC-50USDT",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-        "name": "USDC",
-        "symbol": "USDC",
-        "decimals": 6,
-        "index": 0
-      },
-      {
-        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
-        "name": "Tether USD",
-        "symbol": "USDT",
-        "decimals": 6,
-        "index": 1
-      }
-    ]
-  },
-  "0xB4Ff092d031C7Fd7EB988AAc8BD9feB248AD4DE4": {
-    "poolId": "0xb4ff092d031c7fd7eb988aac8bd9feb248ad4de4000200000000000000000004",
-    "totalSupplyType": "0",
-    "protocolToken": {
-      "address": "0xB4Ff092d031C7Fd7EB988AAc8BD9feB248AD4DE4",
-      "name": "50USDC-50WETH",
-      "symbol": "50USDC-50WETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-        "name": "USDC",
-        "symbol": "USDC",
         "decimals": 6,
         "index": 0
       },

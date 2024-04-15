@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18377483,
+  "blockNumber": 19661884,
   "snapshot": [
     {
       "protocolId": "lido",
@@ -21,21 +21,21 @@
           "symbol": "stETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "8827483127693819205147046n",
+          "totalSupplyRaw": "9391867043243646285936132n",
           "tokens": [
             {
               "address": "0x0000000000000000000000000000000000000000",
               "symbol": "ETH",
               "name": "Ethereum",
               "decimals": 18,
-              "totalSupplyRaw": "661021422603205147046n",
+              "totalSupplyRaw": "7177864073643285936132n",
               "type": "underlying",
-              "totalSupply": 661.0214226032051,
-              "price": 1577.5088,
+              "totalSupply": 7177.864073643286,
+              "price": 3148.07,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
-          "totalSupply": 8827483.127693819
+          "totalSupply": 9391867.043243647
         }
       ]
     },
@@ -59,14 +59,14 @@
           "symbol": "wstETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "3205621796701989888280098n",
+          "totalSupplyRaw": "3008728118502432069309853n",
           "tokens": [
             {
               "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
               "name": "Liquid staked Ether 2.0",
               "symbol": "stETH",
               "decimals": 18,
-              "totalSupplyRaw": "3665156618272929270930708n",
+              "totalSupplyRaw": "3501373640831872986700494n",
               "type": "underlying",
               "tokens": [
                 {
@@ -75,17 +75,17 @@
                   "symbol": "ETH",
                   "decimals": 18,
                   "type": "underlying",
-                  "totalSupplyRaw": "3665156618272929270930708n",
-                  "totalSupply": 3665156.6182729295,
-                  "price": 1577.5088,
+                  "totalSupplyRaw": "3501373640831872986700494n",
+                  "totalSupply": 3501373.640831873,
+                  "price": 3148.07,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
                 }
               ],
-              "totalSupply": 3665156.6182729295,
+              "totalSupply": 3501373.640831873,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "totalSupply": 3205621.79670199
+          "totalSupply": 3008728.118502432
         }
       ]
     }

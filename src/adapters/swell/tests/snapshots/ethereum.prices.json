@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18642232,
+  "blockNumber": 19661890,
   "snapshot": [
     {
       "protocolId": "swell",
@@ -29,8 +29,8 @@
               "symbol": "ETH",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "1042967713787556695n",
-              "underlyingRate": 1.0429677137875566,
+              "underlyingRateRaw": "1056692539200457486n",
+              "underlyingRate": 1.0566925392004576,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ]

@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19312585,
+  "blockNumber": 19661885,
   "snapshot": [
     {
       "protocolId": "morpho-blue",
@@ -17,47 +17,57 @@
       "tokens": [
         {
           "type": "protocol",
-          "totalSupplyRaw": "11765470084767173034162n",
-          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "name": "Wrapped Ether",
-          "symbol": "WETH",
-          "decimals": 18,
-          "totalSupply": 11765.470084767174,
-          "price": 3116.9843
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "20161998251473n",
+          "totalSupplyRaw": "51170521518120n",
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "name": "USD Coin",
           "symbol": "USDC",
           "decimals": 6,
-          "totalSupply": 20161998.251473,
-          "price": 1.0051725601862647
+          "totalSupply": 51170521.51812,
+          "price": 0.9996262135294435
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "7043381601258n",
+          "totalSupplyRaw": "31618928024941462582557n",
+          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "name": "Wrapped Ether",
+          "symbol": "WETH",
+          "decimals": 18,
+          "totalSupply": 31618.928024941462,
+          "price": 3148.07
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "21851190090898n",
           "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
           "name": "Tether USD",
           "symbol": "USDT",
           "decimals": 6,
-          "totalSupply": 7043381.601258,
-          "price": 1.0007160676787201
+          "totalSupply": 21851190.090898,
+          "price": 1.0015210739210858
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "580216873265n",
+          "totalSupplyRaw": "302537599740838967223487775n",
+          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+          "name": "Dai Stablecoin",
+          "symbol": "DAI",
+          "decimals": 18,
+          "totalSupply": 302537599.74083894,
+          "price": 1.0008388019504717
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "4841089515856n",
           "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
           "name": "PayPal USD",
           "symbol": "PYUSD",
           "decimals": 6,
-          "totalSupply": 580216.873265,
-          "price": 1.0016242113623204
+          "totalSupply": 4841089.515856,
+          "price": 0.7741878827967211
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "16928005569678775822101n",
+          "totalSupplyRaw": "21350343401651654637063n",
           "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
           "name": "Wrapped liquid staked Ether 2.0",
           "symbol": "wstETH",
@@ -69,7 +79,7 @@
               "symbol": "stETH",
               "decimals": 18,
               "type": "underlying",
-              "totalSupplyRaw": "19609049117838907432578n",
+              "totalSupplyRaw": "24846222936255513087602n",
               "tokens": [
                 {
                   "address": "0x0000000000000000000000000000000000000000",
@@ -77,51 +87,92 @@
                   "symbol": "ETH",
                   "decimals": 18,
                   "type": "underlying",
-                  "totalSupplyRaw": "19609049117838907432578n",
-                  "totalSupply": 19609.049117838906,
-                  "price": 3116.9843,
+                  "totalSupplyRaw": "24846222936255513087602n",
+                  "totalSupply": 24846.22293625551,
+                  "price": 3148.07,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
                 }
               ],
-              "totalSupply": 19609.049117838906,
+              "totalSupply": 24846.22293625551,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "totalSupply": 16928.005569678775
+          "totalSupply": 21350.343401651655
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "27261990801n",
+          "totalSupplyRaw": "69572542619n",
           "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
           "name": "Wrapped BTC",
           "symbol": "WBTC",
           "decimals": 8,
-          "totalSupply": 272.61990801,
-          "price": 52083.27934691615
+          "totalSupply": 695.72542619,
+          "price": 64587.82340895568
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "9952469500519552n",
+          "totalSupplyRaw": "238681837715399813875676009n",
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18,
+          "totalSupply": 238681837.7153998,
+          "price": 1.00144502012366
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "86109486272629780468883780n",
+          "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+          "name": "Staked USDe",
+          "symbol": "sUSDe",
+          "decimals": 18,
+          "totalSupply": 86109486.27262978
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "10883856609073047782521n",
           "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
           "name": "Renzo Restaked ETH",
           "symbol": "ezETH",
           "decimals": 18,
-          "totalSupply": 0.009952469500519551,
-          "price": 3132.1979150933616
+          "totalSupply": 10883.856609073047,
+          "price": 3172.2117904738793
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "958896770746967396739n",
+          "totalSupplyRaw": "7456233689190857320855n",
           "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
           "name": "Wrapped eETH",
           "symbol": "weETH",
           "decimals": 18,
-          "totalSupply": 958.8967707469674,
-          "price": 3207.2459771906597
+          "totalSupply": 7456.233689190857,
+          "price": 3256.3930693935904
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "348251904272976007628n",
+          "totalSupplyRaw": "11901678022322745263258733n",
+          "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+          "name": "Savings Dai",
+          "symbol": "sDAI",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "12771275279804171516964274n",
+              "totalSupply": 12771275.279804172,
+              "price": 1.0008388019504717,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            }
+          ],
+          "totalSupply": 11901678.022322746
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "612682066143635831423n",
           "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
           "name": "Staked ETH",
           "symbol": "osETH",
@@ -133,13 +184,22 @@
               "symbol": "ETH",
               "decimals": 18,
               "type": "underlying",
-              "totalSupplyRaw": "351328285447942422687n",
-              "totalSupply": 351.32828544794245,
-              "price": 3116.9843,
+              "totalSupplyRaw": "621076666765928271694n",
+              "totalSupply": 621.0766667659283,
+              "price": 3148.07,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
-          "totalSupply": 348.251904272976
+          "totalSupply": 612.6820661436358
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "332970995998433038482n",
+          "address": "0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6",
+          "name": "Autocompounding Pirex Ether",
+          "symbol": "apxETH",
+          "decimals": 18,
+          "totalSupply": 332.970995998433
         }
       ]
     },
@@ -159,43 +219,53 @@
       "tokens": [
         {
           "type": "protocol",
-          "totalSupplyRaw": "10823842523755794361809n",
-          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "name": "Wrapped Ether",
-          "symbol": "WETH",
-          "decimals": 18,
-          "totalSupply": 10823.842523755795,
-          "price": 3116.9843
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "17021731540170n",
+          "totalSupplyRaw": "30572613792930n",
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "name": "USD Coin",
           "symbol": "USDC",
           "decimals": 6,
-          "totalSupply": 17021731.54017,
-          "price": 1.0051725601862647
+          "totalSupply": 30572613.79293,
+          "price": 0.9996262135294435
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "5580655956569n",
+          "totalSupplyRaw": "26361297645260470083718n",
+          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "name": "Wrapped Ether",
+          "symbol": "WETH",
+          "decimals": 18,
+          "totalSupply": 26361.29764526047,
+          "price": 3148.07
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "18193276491266n",
           "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
           "name": "Tether USD",
           "symbol": "USDT",
           "decimals": 6,
-          "totalSupply": 5580655.956569,
-          "price": 1.0007160676787201
+          "totalSupply": 18193276.491266,
+          "price": 1.0015210739210858
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "538977584916n",
+          "totalSupplyRaw": "233068966359363911711881911n",
+          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+          "name": "Dai Stablecoin",
+          "symbol": "DAI",
+          "decimals": 18,
+          "totalSupply": 233068966.3593639,
+          "price": 1.0008388019504717
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "2661694744540n",
           "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
           "name": "PayPal USD",
           "symbol": "PYUSD",
           "decimals": 6,
-          "totalSupply": 538977.584916,
-          "price": 1.0016242113623204
+          "totalSupply": 2661694.74454,
+          "price": 0.7741878827967211
         }
       ]
     }

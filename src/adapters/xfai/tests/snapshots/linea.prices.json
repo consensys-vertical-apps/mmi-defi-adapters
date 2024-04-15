@@ -1,5 +1,5 @@
 {
-  "blockNumber": 3711207,
+  "blockNumber": 3717681,
   "snapshot": [
     {
       "protocolId": "xfai",
@@ -159,8 +159,8 @@
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "underlyingRateRaw": "1253585380n",
-              "underlyingRate": 1.25358538e-9,
+              "underlyingRateRaw": "1252909720n",
+              "underlyingRate": 1.25290972e-9,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ]
@@ -189,8 +189,8 @@
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "underlyingRateRaw": "79924493n",
-              "underlyingRate": 7.9924493e-11,
+              "underlyingRateRaw": "81351092n",
+              "underlyingRate": 8.1351092e-11,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ]
@@ -219,8 +219,8 @@
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "underlyingRateRaw": "40843768n",
-              "underlyingRate": 4.0843768e-11,
+              "underlyingRateRaw": "41503086n",
+              "underlyingRate": 4.1503086e-11,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ]
@@ -569,8 +569,8 @@
               "name": "Wrapped liquid staked Ether 2.0",
               "symbol": "wstETH",
               "decimals": 18,
-              "underlyingRateRaw": "247384629861n",
-              "underlyingRate": 2.47384629861e-7,
+              "underlyingRateRaw": "246996380926n",
+              "underlyingRate": 2.46996380926e-7,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F/logo.png"
             },
             {
@@ -579,8 +579,8 @@
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "underlyingRateRaw": "287754766258n",
-              "underlyingRate": 2.87754766258e-7,
+              "underlyingRateRaw": "288207535751n",
+              "underlyingRate": 2.88207535751e-7,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ]
@@ -609,8 +609,8 @@
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "underlyingRateRaw": "2725101250n",
-              "underlyingRate": 2.72510125e-9,
+              "underlyingRateRaw": "2722902949n",
+              "underlyingRate": 2.722902949e-9,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ]

@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18527822,
+  "blockNumber": 19661884,
   "snapshot": [
     {
       "protocolId": "maker",
@@ -29,8 +29,8 @@
               "symbol": "DAI",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "1042004043771287123n",
-              "underlyingRate": 1.0420040437712872,
+              "underlyingRateRaw": "1073065096858645706n",
+              "underlyingRate": 1.0730650968586457,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ]

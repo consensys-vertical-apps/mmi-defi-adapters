@@ -1,5 +1,5 @@
 {
-  "blockNumber": 3711207,
+  "blockNumber": 3717682,
   "snapshot": [
     {
       "protocolId": "xfai",
@@ -151,9 +151,9 @@
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
-              "totalSupplyRaw": "799070270n",
+              "totalSupplyRaw": "799502089n",
               "type": "underlying",
-              "totalSupply": 7.9907027,
+              "totalSupply": 7.99502089,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
             },
             {
@@ -182,9 +182,9 @@
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "totalSupplyRaw": "12970844189n",
+              "totalSupplyRaw": "12743878826n",
               "type": "underlying",
-              "totalSupply": 12970.844189,
+              "totalSupply": 12743.878826,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             },
             {
@@ -213,9 +213,9 @@
               "name": "USDC",
               "symbol": "USDC",
               "decimals": 6,
-              "totalSupplyRaw": "26024725531n",
+              "totalSupplyRaw": "25614682752n",
               "type": "underlying",
-              "totalSupply": 26024.725531,
+              "totalSupply": 25614.682752,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             },
             {
@@ -244,9 +244,9 @@
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "totalSupplyRaw": "9261780589097764688448n",
+              "totalSupplyRaw": "9113566105333405017758n",
               "type": "underlying",
-              "totalSupply": 9261.780589097765,
+              "totalSupply": 9113.566105333404,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
             },
             {
@@ -337,9 +337,9 @@
               "name": "XFIT",
               "symbol": "XFIT",
               "decimals": 18,
-              "totalSupplyRaw": "17291370829348440958337281n",
+              "totalSupplyRaw": "17525049836872675799387951n",
               "type": "underlying",
-              "totalSupply": 17291370.82934844,
+              "totalSupply": 17525049.836872675,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x8C56017B172226fE024dEa197748FC1eaccC82B1/logo.png"
             },
             {
@@ -353,8 +353,8 @@
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
             }
           ],
-          "totalSupplyRaw": "54034468601361141999112n",
-          "totalSupply": 54034.46860136114
+          "totalSupplyRaw": "54034810986430273133806n",
+          "totalSupply": 54034.810986430275
         },
         {
           "type": "protocol",
@@ -585,9 +585,9 @@
               "name": "Wrapped liquid staked Ether 2.0",
               "symbol": "wstETH",
               "decimals": 18,
-              "totalSupplyRaw": "545834578444675032n",
+              "totalSupplyRaw": "544977937940090351n",
               "type": "underlying",
-              "totalSupply": 0.545834578444675,
+              "totalSupply": 0.5449779379400903,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F/logo.png"
             },
             {
@@ -616,9 +616,9 @@
               "name": "USDT+",
               "symbol": "USDT+",
               "decimals": 6,
-              "totalSupplyRaw": "385309319n",
+              "totalSupplyRaw": "385620706n",
               "type": "underlying",
-              "totalSupply": 385.309319,
+              "totalSupply": 385.620706,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x1E1F509963A6D33e169D9497b11c7DbFe73B7F13/logo.png"
             },
             {

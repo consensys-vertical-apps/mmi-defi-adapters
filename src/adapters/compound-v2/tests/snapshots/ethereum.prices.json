@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19383091,
+  "blockNumber": 19661878,
   "snapshot": [
     {
       "protocolId": "compound-v2",
@@ -29,8 +29,8 @@
               "symbol": "BAT",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20677142287847383n",
-              "underlyingRate": 0.020677142287847384,
+              "underlyingRateRaw": "20677162068756636n",
+              "underlyingRate": 0.020677162068756635,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0D8775F648430679A709E98d2b0Cb6250d2887EF/logo.png"
             }
           ]
@@ -49,8 +49,8 @@
               "symbol": "DAI",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "22857185342290278n",
-              "underlyingRate": 0.022857185342290278,
+              "underlyingRateRaw": "23167420053374119n",
+              "underlyingRate": 0.02316742005337412,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ]
@@ -69,8 +69,8 @@
               "name": "Ethereum",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20093889084515912n",
-              "underlyingRate": 0.020093889084515912,
+              "underlyingRateRaw": "20095021374360193n",
+              "underlyingRate": 0.020095021374360193,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ]
@@ -109,8 +109,8 @@
               "symbol": "USDC",
               "decimals": 6,
               "type": "underlying",
-              "underlyingRateRaw": "23629n",
-              "underlyingRate": 0.023629,
+              "underlyingRateRaw": "23784n",
+              "underlyingRate": 0.023784,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ]
@@ -129,8 +129,8 @@
               "symbol": "USDT",
               "decimals": 6,
               "type": "underlying",
-              "underlyingRateRaw": "23250n",
-              "underlyingRate": 0.02325,
+              "underlyingRateRaw": "23552n",
+              "underlyingRate": 0.023552,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ]
@@ -169,8 +169,8 @@
               "symbol": "ZRX",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20697231646525522n",
-              "underlyingRate": 0.02069723164652552,
+              "underlyingRateRaw": "20699797132128139n",
+              "underlyingRate": 0.02069979713212814,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xE41d2489571d322189246DaFA5ebDe1F4699F498/logo.png"
             }
           ]
@@ -209,8 +209,8 @@
               "symbol": "UNI",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20395890688866951n",
-              "underlyingRate": 0.02039589068886695,
+              "underlyingRateRaw": "20409162004721725n",
+              "underlyingRate": 0.020409162004721725,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png"
             }
           ]
@@ -229,8 +229,8 @@
               "symbol": "COMP",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20549982807325173n",
-              "underlyingRate": 0.020549982807325173,
+              "underlyingRateRaw": "20553052747996586n",
+              "underlyingRate": 0.020553052747996587,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xc00e94Cb662C3520282E6f5717214004A7f26888/logo.png"
             }
           ]
@@ -249,8 +249,8 @@
               "symbol": "WBTC",
               "decimals": 8,
               "type": "underlying",
-              "underlyingRateRaw": "2007743n",
-              "underlyingRate": 0.02007743,
+              "underlyingRateRaw": "2007762n",
+              "underlyingRate": 0.02007762,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ]
@@ -269,8 +269,8 @@
               "symbol": "LINK",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20217473841319103n",
-              "underlyingRate": 0.020217473841319104,
+              "underlyingRateRaw": "20219240851341448n",
+              "underlyingRate": 0.020219240851341448,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png"
             }
           ]
@@ -289,8 +289,8 @@
               "symbol": "MKR",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20234706157254661n",
-              "underlyingRate": 0.020234706157254662,
+              "underlyingRateRaw": "20272454012695325n",
+              "underlyingRate": 0.020272454012695326,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2/logo.png"
             }
           ]
@@ -309,8 +309,8 @@
               "symbol": "SUSHI",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20591146309483988n",
-              "underlyingRate": 0.020591146309483988,
+              "underlyingRateRaw": "20610310787377243n",
+              "underlyingRate": 0.020610310787377243,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png"
             }
           ]
@@ -329,8 +329,8 @@
               "symbol": "AAVE",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20679196219828398n",
-              "underlyingRate": 0.0206791962198284,
+              "underlyingRateRaw": "20686973771558162n",
+              "underlyingRate": 0.020686973771558162,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
             }
           ]
@@ -349,8 +349,8 @@
               "symbol": "YFI",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20407591658308782n",
-              "underlyingRate": 0.02040759165830878,
+              "underlyingRateRaw": "20407742731556198n",
+              "underlyingRate": 0.020407742731556197,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.png"
             }
           ]
@@ -369,8 +369,8 @@
               "symbol": "TUSD",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "22351342637598824n",
-              "underlyingRate": 0.022351342637598824,
+              "underlyingRateRaw": "22667815386320724n",
+              "underlyingRate": 0.022667815386320723,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0000000000085d4780B73119b644AE5ecd22b376/logo.png"
             }
           ]
@@ -389,8 +389,8 @@
               "symbol": "USDP",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20981154132174150n",
-              "underlyingRate": 0.02098115413217415,
+              "underlyingRateRaw": "21264206951788974n",
+              "underlyingRate": 0.021264206951788975,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
             }
           ]

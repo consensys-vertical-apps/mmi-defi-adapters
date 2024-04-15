@@ -1,5 +1,5 @@
 {
-  "blockNumber": 18183880,
+  "blockNumber": 19661875,
   "snapshot": [
     {
       "protocolId": "aave-v2",
@@ -21,21 +21,21 @@
           "symbol": "AUSDT",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "318575685890988n",
+          "totalSupplyRaw": "159554955422045n",
           "tokens": [
             {
               "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "totalSupplyRaw": "63603254515157n",
+              "totalSupplyRaw": "27216898694409n",
               "type": "underlying",
-              "totalSupply": 63603254.515157,
-              "price": 0.9970067951643083,
+              "totalSupply": 27216898.694409,
+              "price": 1.001519665395309,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "totalSupply": 318575685.890988
+          "totalSupply": 159554955.422045
         },
         {
           "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
@@ -43,21 +43,21 @@
           "symbol": "AWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "2039476173601n",
+          "totalSupplyRaw": "1004398601138n",
           "tokens": [
             {
               "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
-              "totalSupplyRaw": "1689927976519n",
+              "totalSupplyRaw": "861757779876n",
               "type": "underlying",
-              "totalSupply": 16899.27976519,
-              "price": 26604.83144926859,
+              "totalSupply": 8617.57779876,
+              "price": 64602.38846347084,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
-          "totalSupply": 20394.76173601
+          "totalSupply": 10043.98601138
         },
         {
           "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
@@ -65,21 +65,21 @@
           "symbol": "AWETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "408024736662627829072230n",
+          "totalSupplyRaw": "235716042539956904761652n",
           "tokens": [
             {
               "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "totalSupplyRaw": "199822884858493474568576n",
+              "totalSupplyRaw": "182667725980269443638102n",
               "type": "underlying",
-              "totalSupply": 199822.88485849346,
-              "price": 1595.09,
+              "totalSupply": 182667.72598026943,
+              "price": 3148.07,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
-          "totalSupply": 408024.73666262784
+          "totalSupply": 235716.0425399569
         },
         {
           "address": "0xFFC97d72E13E01096502Cb8Eb52dEe56f74DAD7B",
@@ -87,21 +87,21 @@
           "symbol": "AAAVE",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "142342461393987389647807n",
+          "totalSupplyRaw": "130005444635822283851483n",
           "tokens": [
             {
               "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
               "name": "Aave",
               "symbol": "AAVE",
               "decimals": 18,
-              "totalSupplyRaw": "142342461393987389647804n",
+              "totalSupplyRaw": "130005444635822283851482n",
               "type": "underlying",
-              "totalSupply": 142342.46139398738,
-              "price": 62.70189419562039,
+              "totalSupply": 130005.44463582228,
+              "price": 86.29775757417804,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
             }
           ],
-          "totalSupply": 142342.46139398738
+          "totalSupply": 130005.44463582228
         },
         {
           "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
@@ -109,21 +109,21 @@
           "symbol": "ADAI",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "88341009337565042973173653n",
+          "totalSupplyRaw": "72020398426579606367857456n",
           "tokens": [
             {
               "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "totalSupplyRaw": "21747689336442291646146197n",
+              "totalSupplyRaw": "12442943975038954325090704n",
               "type": "underlying",
-              "totalSupply": 21747689.33644229,
-              "price": 0.9996949586138943,
+              "totalSupply": 12442943.975038955,
+              "price": 1.0008387934938712,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
-          "totalSupply": 88341009.33756505
+          "totalSupply": 72020398.42657961
         },
         {
           "address": "0x6C5024Cd4F8A59110119C56f8933403A539555EB",
@@ -131,21 +131,21 @@
           "symbol": "ASUSD",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "1898812656723605002410389n",
+          "totalSupplyRaw": "2101300792862667056592661n",
           "tokens": [
             {
               "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
               "name": "Synth sUSD",
               "symbol": "SUSD",
               "decimals": 18,
-              "totalSupplyRaw": "950204158148320155392031n",
+              "totalSupplyRaw": "780105266530125710276577n",
               "type": "underlying",
-              "totalSupply": 950204.1581483202,
-              "price": 0.9953919849152228,
+              "totalSupply": 780105.2665301258,
+              "price": 0.9998051739761944,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
           ],
-          "totalSupply": 1898812.656723605
+          "totalSupply": 2101300.7928626672
         },
         {
           "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
@@ -153,21 +153,21 @@
           "symbol": "AUSDC",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "397367914982129n",
+          "totalSupplyRaw": "243422719199426n",
           "tokens": [
             {
               "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "totalSupplyRaw": "44468768353096n",
+              "totalSupplyRaw": "24296045394605n",
               "type": "underlying",
-              "totalSupply": 44468768.353096,
-              "price": 0.9967911242920605,
+              "totalSupply": 24296045.394605,
+              "price": 0.9995995625990828,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "totalSupply": 397367914.982129
+          "totalSupply": 243422719.199426
         },
         {
           "address": "0xD37EE7e4f452C6638c96536e68090De8cBcdb583",
@@ -175,21 +175,21 @@
           "symbol": "AGUSD",
           "decimals": 2,
           "type": "protocol",
-          "totalSupplyRaw": "103396315n",
+          "totalSupplyRaw": "71236621n",
           "tokens": [
             {
               "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
               "name": "Gemini Dollar",
               "symbol": "GUSD",
               "decimals": 2,
-              "totalSupplyRaw": "31608075n",
+              "totalSupplyRaw": "21888244n",
               "type": "underlying",
-              "totalSupply": 316080.75,
-              "price": 0.997297769765884,
+              "totalSupply": 218882.44,
+              "price": 1.0282697146250066,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo.png"
             }
           ],
-          "totalSupply": 1033963.15
+          "totalSupply": 712366.21
         },
         {
           "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
@@ -197,14 +197,14 @@
           "symbol": "ASTETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "691964604338350211088014n",
+          "totalSupplyRaw": "202777024820705751667918n",
           "tokens": [
             {
               "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
               "name": "Liquid staked Ether 2.0",
               "symbol": "stETH",
               "decimals": 18,
-              "totalSupplyRaw": "691964604338350211087628n",
+              "totalSupplyRaw": "202777024820705751667563n",
               "type": "underlying",
               "tokens": [
                 {
@@ -213,17 +213,17 @@
                   "symbol": "ETH",
                   "decimals": 18,
                   "type": "underlying",
-                  "totalSupplyRaw": "691964604338350211087628n",
-                  "totalSupply": 691964.6043383502,
-                  "price": 1595.09,
+                  "totalSupplyRaw": "202777024820705751667563n",
+                  "totalSupply": 202777.02482070576,
+                  "price": 3148.07,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
                 }
               ],
-              "totalSupply": 691964.6043383502,
+              "totalSupply": 202777.02482070576,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
             }
           ],
-          "totalSupply": 691964.6043383502
+          "totalSupply": 202777.02482070576
         },
         {
           "address": "0x2e8F4bdbE3d47d7d7DE490437AeA9915D930F1A3",
@@ -231,21 +231,21 @@
           "symbol": "aUSDP",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "531213032088029261712916n",
+          "totalSupplyRaw": "34341597378989094242920487n",
           "tokens": [
             {
               "address": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
               "name": "Pax Dollar",
               "symbol": "USDP",
               "decimals": 18,
-              "totalSupplyRaw": "113620131906435715949982n",
+              "totalSupplyRaw": "5659329400619735573403595n",
               "type": "underlying",
-              "totalSupply": 113620.13190643572,
-              "price": 0.9971450117426609,
+              "totalSupply": 5659329.400619736,
+              "price": 1.0035473744256849,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
             }
           ],
-          "totalSupply": 531213.0320880293
+          "totalSupply": 34341597.37898909
         },
         {
           "address": "0xd4937682df3C8aEF4FE912A96A74121C0829E664",
@@ -253,21 +253,21 @@
           "symbol": "aFRAX",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "2661131293985170512436038n",
+          "totalSupplyRaw": "862707775530679355920400n",
           "tokens": [
             {
               "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
               "name": "Frax",
               "symbol": "FRAX",
               "decimals": 18,
-              "totalSupplyRaw": "581280963173273631241164n",
+              "totalSupplyRaw": "248285232064604269339074n",
               "type": "underlying",
-              "totalSupply": 581280.9631732736,
-              "price": 0.9977361477345874,
+              "totalSupply": 248285.23206460426,
+              "price": 0.9990163220407992,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ],
-          "totalSupply": 2661131.2939851703
+          "totalSupply": 862707.7755306794
         },
         {
           "address": "0xce1871f791548600cb59efbefFC9c38719142079",
@@ -275,21 +275,21 @@
           "symbol": "aLUSD",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "717613593918813419132382n",
+          "totalSupplyRaw": "421601153625062002386725n",
           "tokens": [
             {
               "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
               "name": "Liquity USD",
               "symbol": "LUSD",
               "decimals": 18,
-              "totalSupplyRaw": "349604320594236201107888n",
+              "totalSupplyRaw": "48503878255661173482375n",
               "type": "underlying",
-              "totalSupply": 349604.3205942362,
-              "price": 0.9944395823083637,
+              "totalSupply": 48503.87825566118,
+              "price": 0.9996849605599816,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
           ],
-          "totalSupply": 717613.5939188134
+          "totalSupply": 421601.153625062
         }
       ]
     },
@@ -313,7 +313,7 @@
           "symbol": "stableDebtUSDT",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "3762995139075n",
+          "totalSupplyRaw": "2760471587366n",
           "tokens": [
             {
               "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
@@ -323,11 +323,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9970067951643083,
+              "price": 1.001519665395309,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "totalSupply": 3762995.139075
+          "totalSupply": 2760471.587366
         },
         {
           "address": "0x51B039b9AFE64B78758f8Ef091211b5387eA717c",
@@ -335,7 +335,7 @@
           "symbol": "stableDebtWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "34861895556n",
+          "totalSupplyRaw": "7631847n",
           "tokens": [
             {
               "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
@@ -345,11 +345,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 26604.83144926859,
+              "price": 64602.38846347084,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
-          "totalSupply": 348.61895556
+          "totalSupply": 0.07631847
         },
         {
           "address": "0x4e977830ba4bd783C0BB7F15d3e243f73FF57121",
@@ -357,7 +357,7 @@
           "symbol": "stableDebtWETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "120550148559275152701n",
+          "totalSupplyRaw": "0n",
           "tokens": [
             {
               "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -367,11 +367,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1595.09,
+              "price": 3148.07,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
-          "totalSupply": 120.55014855927516
+          "totalSupply": 0
         },
         {
           "address": "0x079D6a3E844BcECf5720478A718Edb6575362C5f",
@@ -389,7 +389,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 62.70189419562039,
+              "price": 86.29775757417804,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
             }
           ],
@@ -401,7 +401,7 @@
           "symbol": "stableDebtDAI",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "952112424145916340764568n",
+          "totalSupplyRaw": "894622564802322526516567n",
           "tokens": [
             {
               "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
@@ -411,11 +411,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9996949586138943,
+              "price": 1.0008387934938712,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
-          "totalSupply": 952112.4241459164
+          "totalSupply": 894622.5648023225
         },
         {
           "address": "0x30B0f7324feDF89d8eff397275F8983397eFe4af",
@@ -433,7 +433,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9953919849152228,
+              "price": 0.9998051739761944,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
           ],
@@ -445,7 +445,7 @@
           "symbol": "stableDebtUSDC",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "5836745634580n",
+          "totalSupplyRaw": "1387863839413n",
           "tokens": [
             {
               "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
@@ -455,11 +455,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9967911242920605,
+              "price": 0.9995995625990828,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "totalSupply": 5836745.63458
+          "totalSupply": 1387863.839413
         },
         {
           "address": "0xf8aC64ec6Ff8E0028b37EB89772d21865321bCe0",
@@ -477,7 +477,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.997297769765884,
+              "price": 1.0282697146250066,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo.png"
             }
           ],
@@ -499,7 +499,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9971450117426609,
+              "price": 1.0035473744256849,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
             }
           ],
@@ -521,7 +521,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9977361477345874,
+              "price": 0.9990163220407992,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ],
@@ -551,7 +551,7 @@
                   "type": "underlying",
                   "totalSupplyRaw": "0n",
                   "totalSupply": 0,
-                  "price": 1595.09,
+                  "price": 3148.07,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
                 }
               ],
@@ -567,7 +567,7 @@
           "symbol": "stableDebtLUSD",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "44097018792904949620950n",
+          "totalSupplyRaw": "0n",
           "tokens": [
             {
               "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
@@ -577,11 +577,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9944395823083637,
+              "price": 0.9996849605599816,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
           ],
-          "totalSupply": 44097.01879290495
+          "totalSupply": 0
         }
       ]
     },
@@ -605,7 +605,7 @@
           "symbol": "variableDebtUSDT",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "251221324940728n",
+          "totalSupplyRaw": "129580258852985n",
           "tokens": [
             {
               "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
@@ -615,11 +615,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9970067951643083,
+              "price": 1.001519665395309,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
             }
           ],
-          "totalSupply": 251221324.940728
+          "totalSupply": 129580258.852985
         },
         {
           "address": "0x9c39809Dec7F95F5e0713634a4D0701329B3b4d2",
@@ -627,7 +627,7 @@
           "symbol": "variableDebtWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "314686271229n",
+          "totalSupplyRaw": "142633116236n",
           "tokens": [
             {
               "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
@@ -637,11 +637,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 26604.83144926859,
+              "price": 64602.38846347084,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
           ],
-          "totalSupply": 3146.86271229
+          "totalSupply": 1426.33116236
         },
         {
           "address": "0xF63B34710400CAd3e044cFfDcAb00a0f32E33eCf",
@@ -649,7 +649,7 @@
           "symbol": "variableDebtWETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "207889958167992842063567n",
+          "totalSupplyRaw": "53023384289585598826843n",
           "tokens": [
             {
               "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -659,11 +659,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1595.09,
+              "price": 3148.07,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
             }
           ],
-          "totalSupply": 207889.95816799285
+          "totalSupply": 53023.3842895856
         },
         {
           "address": "0xF7DBA49d571745D9d7fcb56225B05BEA803EBf3C",
@@ -681,7 +681,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 62.70189419562039,
+              "price": 86.29775757417804,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png"
             }
           ],
@@ -693,7 +693,7 @@
           "symbol": "variableDebtDAI",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "65641467291337439444451644n",
+          "totalSupplyRaw": "58681990887623261208909066n",
           "tokens": [
             {
               "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
@@ -703,11 +703,11 @@
               "totalSupplyRaw": "49950049950049950n",
               "type": "underlying",
               "totalSupply": 0.04995004995004995,
-              "price": 0.9996949586138943,
+              "price": 1.0008387934938712,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
             }
           ],
-          "totalSupply": 65641467.29133744
+          "totalSupply": 58681990.88762326
         },
         {
           "address": "0xdC6a3Ab17299D9C2A412B0e0a4C1f55446AE0817",
@@ -715,7 +715,7 @@
           "symbol": "variableDebtSUSD",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "948679477383696886572252n",
+          "totalSupplyRaw": "1321336362085403452959245n",
           "tokens": [
             {
               "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
@@ -725,11 +725,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9953919849152228,
+              "price": 0.9998051739761944,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png"
             }
           ],
-          "totalSupply": 948679.4773836969
+          "totalSupply": 1321336.3620854034
         },
         {
           "address": "0x619beb58998eD2278e08620f97007e1116D5D25b",
@@ -737,7 +737,7 @@
           "symbol": "variableDebtUSDC",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "347062521887698n",
+          "totalSupplyRaw": "217737430466349n",
           "tokens": [
             {
               "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
@@ -747,11 +747,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9967911242920605,
+              "price": 0.9995995625990828,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
           ],
-          "totalSupply": 347062521.887698
+          "totalSupply": 217737430.466349
         },
         {
           "address": "0x279AF5b99540c1A3A7E3CDd326e19659401eF99e",
@@ -759,7 +759,7 @@
           "symbol": "variableDebtGUSD",
           "decimals": 2,
           "type": "protocol",
-          "totalSupplyRaw": "71792029n",
+          "totalSupplyRaw": "49351091n",
           "tokens": [
             {
               "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
@@ -769,11 +769,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.997297769765884,
+              "price": 1.0282697146250066,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo.png"
             }
           ],
-          "totalSupply": 717920.29
+          "totalSupply": 493510.91
         },
         {
           "address": "0xFDb93B3b10936cf81FA59A02A7523B6e2149b2B7",
@@ -781,7 +781,7 @@
           "symbol": "variableDebtUSDP",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "417636165962371818158248n",
+          "totalSupplyRaw": "28682147227516355833834955n",
           "tokens": [
             {
               "address": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
@@ -791,11 +791,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9971450117426609,
+              "price": 1.0035473744256849,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8E870D67F660D95d5be530380D0eC0bd388289E1/logo.png"
             }
           ],
-          "totalSupply": 417636.1659623718
+          "totalSupply": 28682147.227516357
         },
         {
           "address": "0xfE8F19B17fFeF0fDbfe2671F248903055AFAA8Ca",
@@ -803,7 +803,7 @@
           "symbol": "variableDebtFRAX",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "2079904814877186689637637n",
+          "totalSupplyRaw": "614443278090307884383835n",
           "tokens": [
             {
               "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
@@ -813,11 +813,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9977361477345874,
+              "price": 0.9990163220407992,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png"
             }
           ],
-          "totalSupply": 2079904.8148771867
+          "totalSupply": 614443.2780903078
         },
         {
           "address": "0xA9DEAc9f00Dc4310c35603FCD9D34d1A750f81Db",
@@ -843,7 +843,7 @@
                   "type": "underlying",
                   "totalSupplyRaw": "0n",
                   "totalSupply": 0,
-                  "price": 1595.09,
+                  "price": 3148.07,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
                 }
               ],
@@ -859,7 +859,7 @@
           "symbol": "variableDebtLUSD",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "323686926935923381560854n",
+          "totalSupplyRaw": "373318088367613808820987n",
           "tokens": [
             {
               "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
@@ -869,11 +869,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9944395823083637,
+              "price": 0.9996849605599816,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png"
             }
           ],
-          "totalSupply": 323686.9269359234
+          "totalSupply": 373318.0883676138
         }
       ]
     }

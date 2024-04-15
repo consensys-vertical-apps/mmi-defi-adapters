@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19544644,
+  "blockNumber": 19661876,
   "snapshot": [
     {
       "protocolId": "angle-protocol",
@@ -21,7 +21,7 @@
           "symbol": "stEUR",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "3508816194463727952531937n",
+          "totalSupplyRaw": "3498368904193372593618257n",
           "tokens": [
             {
               "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
@@ -29,13 +29,13 @@
               "symbol": "AGEUR",
               "decimals": 18,
               "type": "underlying",
-              "totalSupplyRaw": "3582460196516600813762580n",
-              "totalSupply": 3582460.196516601,
-              "price": 1.0794474825405207,
+              "totalSupplyRaw": "3577143658634856809712379n",
+              "totalSupply": 3577143.658634857,
+              "price": 1.0582216241662743,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8/logo.png"
             }
           ],
-          "totalSupply": 3508816.194463728
+          "totalSupply": 3498368.9041933725
         },
         {
           "address": "0x0022228a2cc5E7eF0274A7Baa600d44da5aB5776",
@@ -43,7 +43,7 @@
           "symbol": "stUSD",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "1000000000000000000n",
+          "totalSupplyRaw": "382632722322386799044n",
           "tokens": [
             {
               "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
@@ -51,12 +51,12 @@
               "symbol": "USDA",
               "decimals": 18,
               "type": "underlying",
-              "totalSupplyRaw": "1000000000000000000n",
-              "totalSupply": 1,
+              "totalSupplyRaw": "383341980846730200906n",
+              "totalSupply": 383.3419808467302,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0000206329b97DB379d5E1Bf586BbDB969C63274/logo.png"
             }
           ],
-          "totalSupply": 1
+          "totalSupply": 382.6327223223868
         }
       ]
     }
