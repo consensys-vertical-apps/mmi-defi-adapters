@@ -7,7 +7,10 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
-import { WriteActions } from '../../../../types/writeActions'
+import {
+  WriteActionInputSchemas,
+  WriteActions,
+} from '../../../../types/writeActions'
 import { Protocol } from '../../../protocols'
 import { GetTransactionParams } from '../../../supportedProtocols'
 import { contractAddresses } from '../../common/contractAddresses'
@@ -76,4 +79,4 @@ export const WriteActionInputs = {
     asset: z.string(),
     amount: z.string(),
   }),
-}
+} satisfies WriteActionInputSchemas

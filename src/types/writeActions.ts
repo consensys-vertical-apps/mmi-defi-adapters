@@ -1,3 +1,5 @@
+import type { z } from 'zod'
+
 /**
  * Update manually
  *
@@ -15,3 +17,8 @@ export const WriteActions = {
   Repay: 'repay',
 } as const
 export type WriteActions = (typeof WriteActions)[keyof typeof WriteActions]
+
+export type WriteActionInputSchemas = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [keyof in WriteActions]?: z.ZodObject<any>
+}

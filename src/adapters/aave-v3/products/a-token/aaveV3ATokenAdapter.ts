@@ -6,7 +6,10 @@ import {
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
-import { WriteActions } from '../../../../types/writeActions'
+import {
+  WriteActions,
+  WriteActionInputSchemas,
+} from '../../../../types/writeActions'
 import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 import { Protocol } from '../../../protocols'
@@ -137,4 +140,4 @@ export const WriteActionInputs = {
     interestRateMode: z.number(),
     onBehalfOf: z.string(),
   }),
-}
+} satisfies WriteActionInputSchemas
