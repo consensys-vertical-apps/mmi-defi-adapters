@@ -16,13 +16,13 @@
       }
     ]
   },
-  "0xC2b1DF84112619D190193E48148000e3990Bf627": {
+  "0xDB3fd1bfC67b5D4325cb31C04E0Cae52f1787FD6": {
     "protocolToken": {
-      "address": "0xC2b1DF84112619D190193E48148000e3990Bf627",
+      "address": "0xDB3fd1bfC67b5D4325cb31C04E0Cae52f1787FD6",
       "name": "Curve.fi WBTC/renBTC",
       "symbol": "btcCRV",
       "decimals": 18,
-      "guageType": "gauge-v4"
+      "guageType": "n-gauge"
     },
     "underlyingTokens": [
       {
@@ -118,23 +118,6 @@
       }
     ]
   },
-  "0x7C0AC20C3CA8c6257ea099131081D8199bf6B8F6": {
-    "protocolToken": {
-      "address": "0x7C0AC20C3CA8c6257ea099131081D8199bf6B8F6",
-      "name": "Curve.fi Factory USD Metapool: REUSD/2CRV",
-      "symbol": "REUSD3CRV-f",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xae0babD1483ed944BeEd2e112021Ed01301A83aC",
-        "name": "Curve.fi Factory USD Metapool: REUSD/2CRV",
-        "symbol": "REUSD3CRV-f",
-        "decimals": 18
-      }
-    ]
-  },
   "0xd6DAcdCB438f048cF90e53415872cDb3FCC95421": {
     "protocolToken": {
       "address": "0xd6DAcdCB438f048cF90e53415872cDb3FCC95421",
@@ -203,6 +186,23 @@
       }
     ]
   },
+  "0x2A1a064348b1ad9ca8b983016606Ea84Eca8C620": {
+    "protocolToken": {
+      "address": "0x2A1a064348b1ad9ca8b983016606Ea84Eca8C620",
+      "name": "FXN/ETH",
+      "symbol": "FXNETH",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5f0985A8aAd85e82fD592a23Cc0501e4345fb18c",
+        "name": "FXN/ETH",
+        "symbol": "FXNETH",
+        "decimals": 18
+      }
+    ]
+  },
   "0x5839337bf070Fea56595A5027e83Cd7126b23884": {
     "protocolToken": {
       "address": "0x5839337bf070Fea56595A5027e83Cd7126b23884",
@@ -216,23 +216,6 @@
         "address": "0xF7Fed8Ae0c5B78c19Aadd68b700696933B0Cefd9",
         "name": "fETH/ETH/xETH",
         "symbol": "fxETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x0B5f23b68c07bBDeDBb18D822d20b4F0E5B7594f": {
-    "protocolToken": {
-      "address": "0x0B5f23b68c07bBDeDBb18D822d20b4F0E5B7594f",
-      "name": "TricryptoFRAX",
-      "symbol": "FRAXTBTCFRXETH",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3c64d44Ab19D63F09ebaD38fd7b913Ab7E15e341",
-        "name": "TricryptoFRAX",
-        "symbol": "FRAXTBTCFRXETH",
         "decimals": 18
       }
     ]
@@ -254,23 +237,6 @@
       }
     ]
   },
-  "0xD889439f2918F52d07aa5ACe784Cc46382483361": {
-    "protocolToken": {
-      "address": "0xD889439f2918F52d07aa5ACe784Cc46382483361",
-      "name": "CURVEBOBR Pool",
-      "symbol": "BobrPool",
-      "decimals": 18,
-      "guageType": "n-gauge"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7142ccf2C2092fE82b05Ef5659252c92413369B5",
-        "name": "CURVEBOBR Pool",
-        "symbol": "BobrPool",
-        "decimals": 18
-      }
-    ]
-  },
   "0xB08FEf57bFcc5f7bF0EF69C0c090849d497C8F8A": {
     "protocolToken": {
       "address": "0xB08FEf57bFcc5f7bF0EF69C0c090849d497C8F8A",
@@ -284,6 +250,23 @@
         "address": "0x845C8bc94610807fCbaB5dd2bc7aC9DAbaFf3c55",
         "name": "TriCRV-ARBITRUM",
         "symbol": "crvUSDARBCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x25E822B65a58Ce1A53DbC327d4fA489351FB1Df0": {
+    "protocolToken": {
+      "address": "0x25E822B65a58Ce1A53DbC327d4fA489351FB1Df0",
+      "name": "CRV/asdCRV/vsdCRV",
+      "symbol": "VASDCRV",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB85246768Cfea42b0c935265Db798C9Ae457646f",
+        "name": "CRV/asdCRV/vsdCRV",
+        "symbol": "VASDCRV",
         "decimals": 18
       }
     ]
@@ -403,6 +386,40 @@
         "address": "0x4070C044ABc8d9d22447DFE4B032405970878d06",
         "name": "MIM/crvUSD",
         "symbol": "MIMcrvUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xd68089D9dAa2da7888B7Ef54158480e09ecC3580": {
+    "protocolToken": {
+      "address": "0xd68089D9dAa2da7888B7Ef54158480e09ecC3580",
+      "name": "Overnight max stable yield",
+      "symbol": "USD++",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1446999B0b0E4f7aDA6Ee73f2Ae12a2cfdc5D9E7",
+        "name": "Overnight max stable yield",
+        "symbol": "USD++",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x5C5480A5C90EAcb8f31028f0f0eA9a716d04028D": {
+    "protocolToken": {
+      "address": "0x5C5480A5C90EAcb8f31028f0f0eA9a716d04028D",
+      "name": "zunUSD/crvUSD",
+      "symbol": "ZUNCRVUSD",
+      "decimals": 18,
+      "guageType": "n-gauge"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8958AE46De6b33293DDdc6cDfbe36900f4631851",
+        "name": "zunUSD/crvUSD",
+        "symbol": "ZUNCRVUSD",
         "decimals": 18
       }
     ]

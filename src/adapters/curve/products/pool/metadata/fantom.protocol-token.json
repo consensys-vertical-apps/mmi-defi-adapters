@@ -387,5 +387,52 @@
       }
     ],
     "lpTokenManager": "0x5EcaC5fB1d9634F9E1c2DaB2381B9AdAAda5F80b"
+  },
+  "0x7D04f016749c215E52138b06Bb35Ee8491e739fd": {
+    "protocolToken": {
+      "address": "0x7D04f016749c215E52138b06Bb35Ee8491e739fd",
+      "name": "CrossCurve crvUSDT",
+      "symbol": "xCRVUSDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x41a4dd96f623818Ebf95fb2Bd98978229614aF64",
+        "name": "scrvUSDT_e",
+        "symbol": "scrvUSDT_e",
+        "decimals": 18
+      },
+      {
+        "address": "0xC9bE2D86262805cE9e848b76be6123132dc1a43A",
+        "name": "scrvUSDT_ar",
+        "symbol": "scrvUSDT_ar",
+        "decimals": 18
+      },
+      {
+        "address": "0x1D28D76a49D25d3c97f50AC93dA433EBEDbe05c8",
+        "name": "scrvUSDT_o",
+        "symbol": "scrvUSDT_o",
+        "decimals": 18
+      },
+      {
+        "address": "0x9be1Ae6175b106f26439CebAf2217D7815F684af",
+        "name": "sav3CRV_av",
+        "symbol": "sav3CRV_av",
+        "decimals": 18
+      },
+      {
+        "address": "0xf1738b8c7B805d86671D258D5FFe85204DB4DE4d",
+        "name": "scrvUSDT_p",
+        "symbol": "scrvUSDT_p",
+        "decimals": 18
+      },
+      {
+        "address": "0xeE4c758c85a2B4Dd7375c1F1d4B59518770846c6",
+        "name": "scrvUSDT_b",
+        "symbol": "scrvUSDT_b",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x7D04f016749c215E52138b06Bb35Ee8491e739fd"
   }
 }
