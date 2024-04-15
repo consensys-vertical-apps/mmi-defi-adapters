@@ -219,26 +219,6 @@
       "decimals": 18
     }
   },
-  "0x96337674D5545f357BA353aAa6312d614DcF20cC": {
-    "protocolToken": {
-      "address": "0x96337674D5545f357BA353aAa6312d614DcF20cC",
-      "name": "SushiSwap LP Token SUSHI / WBNB",
-      "symbol": "SLP/SUSHI/WBNB",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x947950BcC74888a40Ffa2593C5798F11Fc9124C4",
-      "name": "SushiToken",
-      "symbol": "SUSHI",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-      "name": "Wrapped BNB",
-      "symbol": "WBNB",
-      "decimals": 18
-    }
-  },
   "0xE5f12d6436b629c7cE1762bc407dF7414DbcdFc7": {
     "protocolToken": {
       "address": "0xE5f12d6436b629c7cE1762bc407dF7414DbcdFc7",
@@ -251,6 +231,26 @@
       "name": "TEE-Coin on BSC",
       "symbol": "BTEC",
       "decimals": 9
+    },
+    "token1": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "decimals": 18
+    }
+  },
+  "0x96337674D5545f357BA353aAa6312d614DcF20cC": {
+    "protocolToken": {
+      "address": "0x96337674D5545f357BA353aAa6312d614DcF20cC",
+      "name": "SushiSwap LP Token SUSHI / WBNB",
+      "symbol": "SLP/SUSHI/WBNB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x947950BcC74888a40Ffa2593C5798F11Fc9124C4",
+      "name": "SushiToken",
+      "symbol": "SUSHI",
+      "decimals": 18
     },
     "token1": {
       "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",

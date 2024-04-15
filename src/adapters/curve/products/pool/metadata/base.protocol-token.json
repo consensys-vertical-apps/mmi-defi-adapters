@@ -1,4 +1,27 @@
 {
+  "0x98244d93D42b42aB3E3A4D12A5dc0B3e7f8F32f9": {
+    "protocolToken": {
+      "address": "0x98244d93D42b42aB3E3A4D12A5dc0B3e7f8F32f9",
+      "name": "Curve.fi Factory Crypto Pool: cbETH/WETH",
+      "symbol": "cbeth-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22",
+        "name": "Coinbase Wrapped Staked ETH",
+        "symbol": "cbETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x11C1fBd4b3De66bC0565779b35171a6CF3E71f59"
+  },
   "0xf6C5F01C7F3148891ad0e19DF78743D31E390D1f": {
     "protocolToken": {
       "address": "0xf6C5F01C7F3148891ad0e19DF78743D31E390D1f",
@@ -56,29 +79,6 @@
       }
     ],
     "lpTokenManager": "0xda3de145054ED30Ee937865D31B500505C4bDfe7"
-  },
-  "0x98244d93D42b42aB3E3A4D12A5dc0B3e7f8F32f9": {
-    "protocolToken": {
-      "address": "0x98244d93D42b42aB3E3A4D12A5dc0B3e7f8F32f9",
-      "name": "Curve.fi Factory Crypto Pool: cbETH/WETH",
-      "symbol": "cbeth-f",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4200000000000000000000000000000000000006",
-        "symbol": "ETH",
-        "name": "Ethereum",
-        "decimals": 18
-      },
-      {
-        "address": "0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22",
-        "name": "Coinbase Wrapped Staked ETH",
-        "symbol": "cbETH",
-        "decimals": 18
-      }
-    ],
-    "lpTokenManager": "0x11C1fBd4b3De66bC0565779b35171a6CF3E71f59"
   },
   "0x6DfE79cecE4f64c1a34F48cF5802492aB595257E": {
     "protocolToken": {

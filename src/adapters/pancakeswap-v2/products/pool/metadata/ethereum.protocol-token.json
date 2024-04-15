@@ -108,7 +108,7 @@
     },
     "token0": {
       "address": "0x03Be5C903c727Ee2C8C4e9bc0AcC860Cca4715e2",
-      "name": "Ternoa",
+      "name": "Capsule Coin",
       "symbol": "CAPS",
       "decimals": 18
     },
@@ -208,7 +208,7 @@
     },
     "token0": {
       "address": "0x7dA2641000Cbb407C329310C461b2cB9c70C3046",
-      "name": "Delysium",
+      "name": "AGI Token",
       "symbol": "AGI",
       "decimals": 18
     },
@@ -234,7 +234,7 @@
     },
     "token1": {
       "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
-      "name": "Stargate Finance",
+      "name": "StargateToken",
       "symbol": "STG",
       "decimals": 18
     }

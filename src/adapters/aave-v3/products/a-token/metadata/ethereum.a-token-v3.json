@@ -78,7 +78,7 @@
     },
     "underlyingToken": {
       "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-      "name": "Chainlink Token",
+      "name": "ChainLink Token",
       "symbol": "LINK",
       "decimals": 18
     }
@@ -92,7 +92,7 @@
     },
     "underlyingToken": {
       "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
-      "name": "Aave",
+      "name": "Aave Token",
       "symbol": "AAVE",
       "decimals": 18
     }
@@ -107,7 +107,7 @@
     "underlyingToken": {
       "address": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
       "name": "Coinbase Wrapped Staked ETH",
-      "symbol": "CBETH",
+      "symbol": "cbETH",
       "decimals": 18
     }
   },
@@ -135,7 +135,7 @@
     "underlyingToken": {
       "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
       "name": "Rocket Pool ETH",
-      "symbol": "RETH",
+      "symbol": "rETH",
       "decimals": 18
     }
   },
@@ -148,7 +148,7 @@
     },
     "underlyingToken": {
       "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
-      "name": "Liquity USD",
+      "name": "LUSD Stablecoin",
       "symbol": "LUSD",
       "decimals": 18
     }
@@ -164,20 +164,6 @@
       "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
       "name": "Curve DAO Token",
       "symbol": "CRV",
-      "decimals": 18
-    }
-  },
-  "0x8A458A9dc9048e005d22849F470891b840296619": {
-    "protocolToken": {
-      "address": "0x8A458A9dc9048e005d22849F470891b840296619",
-      "name": "Aave Ethereum MKR",
-      "symbol": "aEthMKR",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
-      "name": "Maker",
-      "symbol": "MKR",
       "decimals": 18
     }
   },
@@ -204,7 +190,7 @@
     },
     "underlyingToken": {
       "address": "0xba100000625a3754423978a60c9317c58a424e3D",
-      "name": "Balancer (BAL)",
+      "name": "Balancer",
       "symbol": "BAL",
       "decimals": 18
     }
@@ -302,7 +288,7 @@
     },
     "underlyingToken": {
       "address": "0xD33526068D116cE69F19A9ee46F0bd304F21A51f",
-      "name": "Rocket Pool",
+      "name": "Rocket Pool Protocol",
       "symbol": "RPL",
       "decimals": 18
     }
@@ -330,8 +316,8 @@
     },
     "underlyingToken": {
       "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-      "name": "crvUSD",
-      "symbol": "CRVUSD",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
       "decimals": 18
     }
   },
@@ -360,6 +346,20 @@
       "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
       "name": "Wrapped eETH",
       "symbol": "weETH",
+      "decimals": 18
+    }
+  },
+  "0x8A458A9dc9048e005d22849F470891b840296619": {
+    "protocolToken": {
+      "address": "0x8A458A9dc9048e005d22849F470891b840296619",
+      "name": "Aave Ethereum MKR",
+      "symbol": "aEthMKR",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "name": "Maker",
+      "symbol": "MKR",
       "decimals": 18
     }
   }
