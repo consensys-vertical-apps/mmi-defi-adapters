@@ -38,7 +38,8 @@ const ConfigSchema = z
         base: z
           .string()
           .default(
-            process.env.DEFI_ADAPTERS_PROVIDER_BASE || 'https://1rpc.io/base',
+            process.env.DEFI_ADAPTERS_PROVIDER_BASE ||
+              'https://base-mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
           ),
         arbitrum: z
           .string()
