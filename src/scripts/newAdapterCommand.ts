@@ -382,7 +382,7 @@ async function addProtocol({ protocolKey, protocolId }: NewAdapterAnswers) {
 }
 
 /**
- * @description Writes changes to include new adapter in src/adapters/index.ts file
+ * @description Writes changes to include new adapter in src/adapters/supportedProtocols.ts file
  */
 async function exportAdapter({
   protocolKey,
@@ -391,7 +391,7 @@ async function exportAdapter({
   adapterClassName,
   chainKeys,
 }: NewAdapterAnswers) {
-  const adaptersFile = path.resolve('./src/adapters/index.ts')
+  const adaptersFile = path.resolve('./src/adapters/supportedProtocols.ts')
   const contents = await fs.readFile(adaptersFile, 'utf-8')
   const ast = parse(contents, {
     parser: require('recast/parsers/typescript'),
