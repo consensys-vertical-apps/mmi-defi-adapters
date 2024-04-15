@@ -50,7 +50,7 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
   }: Extract<
     GetTransactionParams,
     { protocolId: typeof Protocol.CompoundV2; productId: 'borrow-market' }
-  >) {
+  >): Promise<{ to: string; data: string }> {
     const poolContract = CUSDCv3__factory.connect(
       contractAddresses[this.chainId]!.cUSDCv3Address,
       this.provider,

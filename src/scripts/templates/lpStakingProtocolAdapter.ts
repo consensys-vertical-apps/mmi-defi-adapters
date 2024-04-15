@@ -77,7 +77,10 @@ export function lpStakingAdapterTemplate({
   // getTransactionParams({
   //   action,
   //   inputs,
-  // }: GetTransactionParams): Promise<{ to: string; data: string }> {
+  // }: Extract<
+  //   GetTransactionParams,
+  //   { protocolId: typeof Protocol.${protocolKey}; productId: '${productId}' }
+  // >): Promise<{ to: string; data: string }> {
   //   // Example switch case structure for implementation:
   //   switch (action) {
   //     case WriteActions.Deposit: {
@@ -116,5 +119,10 @@ export function lpStakingAdapterTemplate({
       throw new NotImplementedError()
     }
   }
+
+  // export const WriteActionInputs = {
+  //   [WriteActions.Deposit]: z.object({}),
+  //   [WriteActions.Withdraw]: z.object({}),
+  // } satisfies WriteActionInputSchemas
   `
 }

@@ -134,8 +134,6 @@ export function simplePoolAdapterTemplate({
       throw new NotImplementedError()
     }
 
-
-
     /**
    * Retrieves transaction parameters for specific actions based on provided inputs.
    *
@@ -156,7 +154,10 @@ export function simplePoolAdapterTemplate({
   // getTransactionParams({
   //   action,
   //   inputs,
-  // }: GetTransactionParams): Promise<{ to: string; data: string }> {
+  // }: Extract<
+  //   GetTransactionParams,
+  //   { protocolId: typeof Protocol.${protocolKey}; productId: '${productId}' }
+  // >): Promise<{ to: string; data: string }> {
   //   // Example switch case structure for implementation:
   //   switch (action) {
   //     case WriteActions.Deposit: {
@@ -212,5 +213,10 @@ export function simplePoolAdapterTemplate({
       return poolMetadata
     }
   }
+
+  // export const WriteActionInputs = {
+  //   [WriteActions.Deposit]: z.object({}),
+  //   [WriteActions.Withdraw]: z.object({}),
+  // } satisfies WriteActionInputSchemas
   `
 }

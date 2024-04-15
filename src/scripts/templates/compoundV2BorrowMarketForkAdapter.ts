@@ -36,6 +36,11 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
         },
       }
     }
+  
+    @CacheToFile({ fileKey: 'protocol-token' })
+    async buildMetadata() {
+      return await super.buildMetadata()
+    }
 
     /**
    * Retrieves transaction parameters for specific actions based on provided inputs.
@@ -57,7 +62,10 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
   // getTransactionParams({
   //   action,
   //   inputs,
-  // }: GetTransactionParams): Promise<{ to: string; data: string }> {
+  // }: Extract<
+  //   GetTransactionParams,
+  //   { protocolId: typeof Protocol.${protocolKey}; productId: '${productId}' }
+  // >): Promise<{ to: string; data: string }> {
   //   // Example switch case structure for implementation:
   //   switch (action) {
   //     case WriteActions.Deposit: {
@@ -75,11 +83,11 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
   //     }
   //   }
   // }
-  
-    @CacheToFile({ fileKey: 'protocol-token' })
-    async buildMetadata() {
-      return await super.buildMetadata()
-    }
   }
+
+  // export const WriteActionInputs = {
+  //   [WriteActions.Deposit]: z.object({}),
+  //   [WriteActions.Withdraw]: z.object({}),
+  // } satisfies WriteActionInputSchemas
   `
 }

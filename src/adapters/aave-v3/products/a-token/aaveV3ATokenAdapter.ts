@@ -60,7 +60,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   }: Extract<
     GetTransactionParams,
     { protocolId: typeof Protocol.AaveV3; productId: 'a-token' }
-  >) {
+  >): Promise<{ to: string; data: string }> {
     const poolContract = PoolContract__factory.connect(
       getAddress(this.chainId),
       this.provider,
