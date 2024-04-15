@@ -261,9 +261,8 @@ async function addImportsAndSchemas(
     },
   )
 
-  const schemaExportStatement = `export const GetTransactionParamsSchema = z.union([${schemas.join(
-    ',',
-  )}])
+  const schemaExportStatement = `
+  export const GetTransactionParamsSchema = z.union([${schemas.join(',')}])
   `
 
   const schemaTypeExportStatement = `export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>;`

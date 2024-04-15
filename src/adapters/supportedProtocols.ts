@@ -332,6 +332,7 @@ export const WriteActionInputs = {
   CompoundV2SupplyMarketWriteActionInputs,
   CompoundV2BorrowMarketWriteActionInputs,
 }
+
 export const GetTransactionParamsSchema = z.union([
   z.discriminatedUnion('action', [
     z.object({
