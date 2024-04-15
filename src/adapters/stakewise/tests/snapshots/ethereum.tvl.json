@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19240300,
+  "blockNumber": 19661887,
   "snapshot": [
     {
       "name": "StakeWise",
@@ -21,21 +21,21 @@
           "decimals": 18,
           "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
           "type": "protocol",
-          "totalSupplyRaw": "32355203313713548236297n",
+          "totalSupplyRaw": "32296286725307283717498n",
           "tokens": [
             {
               "address": "0x0000000000000000000000000000000000000000",
               "name": "Ethereum",
               "symbol": "ETH",
               "decimals": 18,
-              "totalSupplyRaw": "57738892939803903201912n",
+              "totalSupplyRaw": "59914149506663864067892n",
               "type": "underlying",
-              "totalSupply": 57738.8929398039,
-              "price": 2823.34,
+              "totalSupply": 59914.14950666387,
+              "price": 3148.07,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ],
-          "totalSupply": 32355.203313713548
+          "totalSupply": 32296.286725307284
         }
       ]
     }

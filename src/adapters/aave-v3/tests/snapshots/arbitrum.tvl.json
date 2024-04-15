@@ -1,5 +1,5 @@
 {
-  "blockNumber": 142290717,
+  "blockNumber": 201319945,
   "snapshot": [
     {
       "protocolId": "aave-v3",
@@ -17,135 +17,135 @@
       "tokens": [
         {
           "address": "0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE",
-          "name": "Aave Arbitrum DAI",
-          "symbol": "aArbDAI",
+          "name": "Aave DAI",
+          "symbol": "ADAI",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "6224819807509250860820983n",
+          "totalSupplyRaw": "11163548484134003585288889n",
           "tokens": [
             {
               "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
               "name": "Dai Stablecoin",
               "symbol": "DAI",
               "decimals": 18,
-              "totalSupplyRaw": "1043929847700067698319005n",
+              "totalSupplyRaw": "1364419308946585435698959n",
               "type": "underlying",
-              "totalSupply": 1043929.8477000677,
-              "price": 0.9986232479523255,
+              "totalSupply": 1364419.3089465855,
+              "price": 1.0004585516527256,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ],
-          "totalSupply": 6224819.807509251
+          "totalSupply": 11163548.484134004
         },
         {
           "address": "0x191c10Aa4AF7C30e871E70C95dB0E4eb77237530",
-          "name": "Aave Arbitrum LINK",
-          "symbol": "aArbLINK",
+          "name": "Aave LINK",
+          "symbol": "ALINK",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "1110315767267423821787113n",
+          "totalSupplyRaw": "1807434363356569681555999n",
           "tokens": [
             {
               "address": "0xf97f4df75117a78c1A5a0DBb814Af92458539FB4",
               "name": "ChainLink Token",
               "symbol": "LINK",
               "decimals": 18,
-              "totalSupplyRaw": "1043278303044582982034024n",
+              "totalSupplyRaw": "1783323917138631114754021n",
               "type": "underlying",
-              "totalSupply": 1043278.303044583,
-              "price": 7.662793573022694,
+              "totalSupply": 1783323.9171386312,
+              "price": 14.002942222161433,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             }
           ],
-          "totalSupply": 1110315.767267424
+          "totalSupply": 1807434.3633565698
         },
         {
           "address": "0x625E7708f30cA75bfd92586e17077590C60eb4cD",
-          "name": "Aave Arbitrum USDC",
-          "symbol": "aArbUSDC",
+          "name": "Aave USDC",
+          "symbol": "AUSDC",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "32267417872735n",
+          "totalSupplyRaw": "14884701962593n",
           "tokens": [
             {
               "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
               "name": "USD Coin (Arb1)",
-              "symbol": "USDC",
+              "symbol": "USDC.E",
               "decimals": 6,
-              "totalSupplyRaw": "2998317297711n",
+              "totalSupplyRaw": "1280307627384n",
               "type": "underlying",
-              "totalSupply": 2998317.297711,
-              "price": 0.9996410100815493,
+              "totalSupply": 1280307.627384,
+              "price": 1.0020312201667658,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
             }
           ],
-          "totalSupply": 32267417.872735
+          "totalSupply": 14884701.962593
         },
         {
           "address": "0x078f358208685046a11C85e8ad32895DED33A249",
-          "name": "Aave Arbitrum WBTC",
-          "symbol": "aArbWBTC",
+          "name": "Aave WBTC",
+          "symbol": "AWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "189019244221n",
+          "totalSupplyRaw": "327537418976n",
           "tokens": [
             {
               "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
-              "totalSupplyRaw": "172010062399n",
+              "totalSupplyRaw": "317121093227n",
               "type": "underlying",
-              "totalSupply": 1720.10062399,
-              "price": 29959.90930303581,
+              "totalSupply": 3171.21093227,
+              "price": 64560.11041754604,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
           ],
-          "totalSupply": 1890.19244221
+          "totalSupply": 3275.37418976
         },
         {
           "address": "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8",
-          "name": "Aave Arbitrum WETH",
-          "symbol": "aArbWETH",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "42968411062193892097580n",
+          "totalSupplyRaw": "61231045448803446270623n",
           "tokens": [
             {
               "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "totalSupplyRaw": "23061676476612926562820n",
+              "totalSupplyRaw": "10962662620754946331033n",
               "type": "underlying",
-              "totalSupply": 23061.676476612927,
-              "price": 1618.51032551,
+              "totalSupply": 10962.662620754947,
+              "price": 3148.23871539,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
-          "totalSupply": 42968.41106219389
+          "totalSupply": 61231.045448803445
         },
         {
           "address": "0x6ab707Aca953eDAeFBc4fD23bA73294241490620",
-          "name": "Aave Arbitrum USDT",
-          "symbol": "aArbUSDT",
+          "name": "Aave USDT",
+          "symbol": "AUSDT",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "16720741548423n",
+          "totalSupplyRaw": "43565558188514n",
           "tokens": [
             {
               "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
               "name": "Tether USD",
               "symbol": "USDT",
               "decimals": 6,
-              "totalSupplyRaw": "3042898229935n",
+              "totalSupplyRaw": "1759264144865n",
               "type": "underlying",
-              "totalSupply": 3042898.229935,
-              "price": 1.0003658433003375,
+              "totalSupply": 1759264.144865,
+              "price": 1.0025742277323721,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
             }
           ],
-          "totalSupply": 16720741.548423
+          "totalSupply": 43565558.188514
         },
         {
           "address": "0xf329e36C7bF6E5E86ce2150875a84Ce77f477375",
@@ -153,43 +153,21 @@
           "symbol": "aArbAAVE",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "1846043618993152938696n",
+          "totalSupplyRaw": "3599998231734541421610n",
           "tokens": [
             {
               "address": "0xba5DdD1f9d7F570dc94a51479a000E3BCE967196",
-              "name": "Aave Token",
+              "name": "Aave",
               "symbol": "AAVE",
               "decimals": 18,
-              "totalSupplyRaw": "1846043618992304627070n",
+              "totalSupplyRaw": "3599998241009511992398n",
               "type": "underlying",
-              "totalSupply": 1846.0436189923046,
-              "price": 66.41107794210195,
+              "totalSupply": 3599.998241009512,
+              "price": 86.30819166917489,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xba5DdD1f9d7F570dc94a51479a000E3BCE967196/logo.png"
             }
           ],
-          "totalSupply": 1846.043618993153
-        },
-        {
-          "address": "0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97",
-          "name": "Aave Arbitrum EURS",
-          "symbol": "aArbEURS",
-          "decimals": 2,
-          "type": "protocol",
-          "totalSupplyRaw": "4027158n",
-          "tokens": [
-            {
-              "address": "0xD22a58f79e9481D1a88e00c343885A588b34b68B",
-              "name": "STASIS EURS Token",
-              "symbol": "EURS",
-              "decimals": 2,
-              "totalSupplyRaw": "1945466n",
-              "type": "underlying",
-              "totalSupply": 19454.66,
-              "price": 1.1812315021578164,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xD22a58f79e9481D1a88e00c343885A588b34b68B/logo.png"
-            }
-          ],
-          "totalSupply": 40271.58
+          "totalSupply": 3599.9982317345416
         },
         {
           "address": "0x513c7E3a9c69cA3e22550eF58AC1C0088e918FFf",
@@ -197,21 +175,21 @@
           "symbol": "aArbwstETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "29037154559861762074278n",
+          "totalSupplyRaw": "54760543128299958955344n",
           "tokens": [
             {
               "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
               "name": "Wrapped liquid staked Ether 2.0",
               "symbol": "wstETH",
               "decimals": 18,
-              "totalSupplyRaw": "28473801756950405016292n",
+              "totalSupplyRaw": "54388519953726658392467n",
               "type": "underlying",
-              "totalSupply": 28473.801756950405,
-              "price": 1850.3310309407516,
+              "totalSupply": 54388.51995372666,
+              "price": 3646.832466019532,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
             }
           ],
-          "totalSupply": 29037.154559861763
+          "totalSupply": 54760.543128299956
         },
         {
           "address": "0x8Eb270e296023E9D92081fdF967dDd7878724424",
@@ -219,21 +197,21 @@
           "symbol": "aArbrETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "1862154877310039485659n",
+          "totalSupplyRaw": "2809765940958013970740n",
           "tokens": [
             {
               "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
               "name": "Rocket Pool ETH",
-              "symbol": "rETH",
+              "symbol": "RETH",
               "decimals": 18,
-              "totalSupplyRaw": "1609007261524074538743n",
+              "totalSupplyRaw": "2757103413437894022719n",
               "type": "underlying",
-              "totalSupply": 1609.0072615240745,
-              "price": 1759.5160545495023,
+              "totalSupply": 2757.1034134378942,
+              "price": 3457.756454559548,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8/logo.png"
             }
           ],
-          "totalSupply": 1862.1548773100394
+          "totalSupply": 2809.7659409580137
         },
         {
           "address": "0x8ffDf2DE812095b1D19CB146E4c004587C0A0692",
@@ -241,21 +219,21 @@
           "symbol": "aArbLUSD",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "1705135668104204712407232n",
+          "totalSupplyRaw": "1092146707850608526416645n",
           "tokens": [
             {
               "address": "0x93b346b6BC2548dA6A1E7d98E9a421B42541425b",
-              "name": "LUSD Stablecoin",
+              "name": "Liquity USD",
               "symbol": "LUSD",
               "decimals": 18,
-              "totalSupplyRaw": "747412692452077193921722n",
+              "totalSupplyRaw": "242277944225822661163961n",
               "type": "underlying",
-              "totalSupply": 747412.6924520772,
-              "price": 1.000122852426951,
+              "totalSupply": 242277.94422582266,
+              "price": 1.000338063823018,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x93b346b6BC2548dA6A1E7d98E9a421B42541425b/logo.png"
             }
           ],
-          "totalSupply": 1705135.6681042048
+          "totalSupply": 1092146.7078506085
         },
         {
           "address": "0x724dc807b04555b71ed48a6896b6F41593b8C637",
@@ -263,21 +241,21 @@
           "symbol": "aArbUSDCn",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "14413123328748n",
+          "totalSupplyRaw": "133328107579330n",
           "tokens": [
             {
               "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "totalSupplyRaw": "1372205203034n",
+              "totalSupplyRaw": "17568399151704n",
               "type": "underlying",
-              "totalSupply": 1372205.203034,
-              "price": 0.9997249008510016,
+              "totalSupply": 17568399.151704,
+              "price": 1.0020411581602247,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
             }
           ],
-          "totalSupply": 14413123.328748
+          "totalSupply": 133328107.57933
         },
         {
           "address": "0x38d693cE1dF5AaDF7bC62595A37D667aD57922e5",
@@ -285,21 +263,21 @@
           "symbol": "aArbFRAX",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "21756903525976106314585n",
+          "totalSupplyRaw": "340038764446631962535018n",
           "tokens": [
             {
               "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
               "name": "Frax",
               "symbol": "FRAX",
               "decimals": 18,
-              "totalSupplyRaw": "6021024683742976921739n",
+              "totalSupplyRaw": "40315913654206890787009n",
               "type": "underlying",
-              "totalSupply": 6021.024683742977,
-              "price": 1.0304268005786055,
+              "totalSupply": 40315.91365420689,
+              "price": 0.9830184278493347,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             }
           ],
-          "totalSupply": 21756.903525976108
+          "totalSupply": 340038.76444663195
         },
         {
           "address": "0x6533afac2E7BCCB20dca161449A13A32D391fb00",
@@ -307,21 +285,21 @@
           "symbol": "aArbARB",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "10796935504836914303931549n",
+          "totalSupplyRaw": "25413774718858470053100858n",
           "tokens": [
             {
               "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
               "name": "Arbitrum",
               "symbol": "ARB",
               "decimals": 18,
-              "totalSupplyRaw": "8794208528797243238013402n",
+              "totalSupplyRaw": "23602064362756709817751774n",
               "type": "underlying",
-              "totalSupply": 8794208.528797243,
-              "price": 0.8010937155646519,
+              "totalSupply": 23602064.36275671,
+              "price": 1.1991216132004363,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
             }
           ],
-          "totalSupply": 10796935.504836915
+          "totalSupply": 25413774.71885847
         }
       ]
     },
@@ -345,7 +323,7 @@
           "symbol": "stableDebtArbDAI",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "1239916402386781357511423n",
+          "totalSupplyRaw": "842483290376209328608523n",
           "tokens": [
             {
               "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
@@ -355,11 +333,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9986232479523255,
+              "price": 1.0004585516527256,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ],
-          "totalSupply": 1239916.4023867813
+          "totalSupply": 842483.2903762093
         },
         {
           "address": "0x89D976629b7055ff1ca02b927BA3e020F22A44e4",
@@ -377,7 +355,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 7.662793573022694,
+              "price": 14.002942222161433,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             }
           ],
@@ -389,21 +367,21 @@
           "symbol": "stableDebtArbUSDC",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "3248155974761n",
+          "totalSupplyRaw": "5240193520110n",
           "tokens": [
             {
               "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
               "name": "USD Coin (Arb1)",
-              "symbol": "USDC",
+              "symbol": "USDC.E",
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9996410100815493,
+              "price": 1.0020312201667658,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
             }
           ],
-          "totalSupply": 3248155.974761
+          "totalSupply": 5240193.52011
         },
         {
           "address": "0x633b207Dd676331c413D4C013a6294B0FE47cD0e",
@@ -421,7 +399,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 29959.90930303581,
+              "price": 64560.11041754604,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
           ],
@@ -443,7 +421,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1618.51032551,
+              "price": 3148.23871539,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
@@ -455,7 +433,7 @@
           "symbol": "stableDebtArbUSDT",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "2936785322611n",
+          "totalSupplyRaw": "2536776424077n",
           "tokens": [
             {
               "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
@@ -465,11 +443,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1.0003658433003375,
+              "price": 1.0025742277323721,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
             }
           ],
-          "totalSupply": 2936785.322611
+          "totalSupply": 2536776.424077
         },
         {
           "address": "0xfAeF6A702D15428E588d4C0614AEFb4348D83D48",
@@ -481,39 +459,17 @@
           "tokens": [
             {
               "address": "0xba5DdD1f9d7F570dc94a51479a000E3BCE967196",
-              "name": "Aave Token",
+              "name": "Aave",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 66.41107794210195,
+              "price": 86.30819166917489,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xba5DdD1f9d7F570dc94a51479a000E3BCE967196/logo.png"
             }
           ],
           "totalSupply": 0
-        },
-        {
-          "address": "0xF15F26710c827DDe8ACBA678682F3Ce24f2Fb56E",
-          "name": "Aave Arbitrum Stable Debt EURS",
-          "symbol": "stableDebtArbEURS",
-          "decimals": 2,
-          "type": "protocol",
-          "totalSupplyRaw": "1179895n",
-          "tokens": [
-            {
-              "address": "0xD22a58f79e9481D1a88e00c343885A588b34b68B",
-              "name": "STASIS EURS Token",
-              "symbol": "EURS",
-              "decimals": 2,
-              "totalSupplyRaw": "0n",
-              "type": "underlying",
-              "totalSupply": 0,
-              "price": 1.1812315021578164,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xD22a58f79e9481D1a88e00c343885A588b34b68B/logo.png"
-            }
-          ],
-          "totalSupply": 11798.95
         },
         {
           "address": "0x08Cb71192985E936C7Cd166A8b268035e400c3c3",
@@ -531,7 +487,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1850.3310309407516,
+              "price": 3646.832466019532,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
             }
           ],
@@ -548,12 +504,12 @@
             {
               "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
               "name": "Rocket Pool ETH",
-              "symbol": "rETH",
+              "symbol": "RETH",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1759.5160545495023,
+              "price": 3457.756454559548,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8/logo.png"
             }
           ],
@@ -569,13 +525,13 @@
           "tokens": [
             {
               "address": "0x93b346b6BC2548dA6A1E7d98E9a421B42541425b",
-              "name": "LUSD Stablecoin",
+              "name": "Liquity USD",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1.000122852426951,
+              "price": 1.000338063823018,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x93b346b6BC2548dA6A1E7d98E9a421B42541425b/logo.png"
             }
           ],
@@ -597,7 +553,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9997249008510016,
+              "price": 1.0020411581602247,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
             }
           ],
@@ -619,7 +575,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1.0304268005786055,
+              "price": 0.9830184278493347,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             }
           ],
@@ -641,7 +597,7 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.8010937155646519,
+              "price": 1.1991216132004363,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
             }
           ],
@@ -669,7 +625,7 @@
           "symbol": "variableDebtArbDAI",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "3941251594233267334707352n",
+          "totalSupplyRaw": "8959703723871466070198059n",
           "tokens": [
             {
               "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
@@ -679,11 +635,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9986232479523255,
+              "price": 1.0004585516527256,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo.png"
             }
           ],
-          "totalSupply": 3941251.5942332675
+          "totalSupply": 8959703.723871466
         },
         {
           "address": "0x953A573793604aF8d41F306FEb8274190dB4aE0e",
@@ -691,7 +647,7 @@
           "symbol": "variableDebtArbLINK",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "67038638723100880179860n",
+          "totalSupplyRaw": "24110564144456419856142n",
           "tokens": [
             {
               "address": "0xf97f4df75117a78c1A5a0DBb814Af92458539FB4",
@@ -701,11 +657,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 7.662793573022694,
+              "price": 14.002942222161433,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xf97f4df75117a78c1A5a0DBb814Af92458539FB4/logo.png"
             }
           ],
-          "totalSupply": 67038.63872310088
+          "totalSupply": 24110.56414445642
         },
         {
           "address": "0xFCCf3cAbbe80101232d343252614b6A3eE81C989",
@@ -713,21 +669,21 @@
           "symbol": "variableDebtArbUSDC",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "26022073569735n",
+          "totalSupplyRaw": "8368056763674n",
           "tokens": [
             {
               "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
               "name": "USD Coin (Arb1)",
-              "symbol": "USDC",
+              "symbol": "USDC.E",
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9996410100815493,
+              "price": 1.0020312201667658,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo.png"
             }
           ],
-          "totalSupply": 26022073.569735
+          "totalSupply": 8368056.763674
         },
         {
           "address": "0x92b42c66840C7AD907b4BF74879FF3eF7c529473",
@@ -735,7 +691,7 @@
           "symbol": "variableDebtArbWBTC",
           "decimals": 8,
           "type": "protocol",
-          "totalSupplyRaw": "17009363539n",
+          "totalSupplyRaw": "10416393572n",
           "tokens": [
             {
               "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
@@ -745,11 +701,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 29959.90930303581,
+              "price": 64560.11041754604,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f/logo.png"
             }
           ],
-          "totalSupply": 170.09363539
+          "totalSupply": 104.16393572
         },
         {
           "address": "0x0c84331e39d6658Cd6e6b9ba04736cC4c4734351",
@@ -757,7 +713,7 @@
           "symbol": "variableDebtArbWETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "19907131776987691157136n",
+          "totalSupplyRaw": "50270174003407577843161n",
           "tokens": [
             {
               "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
@@ -767,11 +723,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1618.51032551,
+              "price": 3148.23871539,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
-          "totalSupply": 19907.13177698769
+          "totalSupply": 50270.17400340758
         },
         {
           "address": "0xfb00AC187a8Eb5AFAE4eACE434F493Eb62672df7",
@@ -779,7 +735,7 @@
           "symbol": "variableDebtArbUSDT",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "10741742655640n",
+          "totalSupplyRaw": "39274122756162n",
           "tokens": [
             {
               "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
@@ -789,11 +745,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1.0003658433003375,
+              "price": 1.0025742277323721,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
             }
           ],
-          "totalSupply": 10741742.65564
+          "totalSupply": 39274122.756162
         },
         {
           "address": "0xE80761Ea617F66F96274eA5e8c37f03960ecC679",
@@ -805,39 +761,17 @@
           "tokens": [
             {
               "address": "0xba5DdD1f9d7F570dc94a51479a000E3BCE967196",
-              "name": "Aave Token",
+              "name": "Aave",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 66.41107794210195,
+              "price": 86.30819166917489,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xba5DdD1f9d7F570dc94a51479a000E3BCE967196/logo.png"
             }
           ],
           "totalSupply": 0
-        },
-        {
-          "address": "0x4a1c3aD6Ed28a636ee1751C69071f6be75DEb8B8",
-          "name": "Aave Arbitrum Variable Debt EURS",
-          "symbol": "variableDebtArbEURS",
-          "decimals": 2,
-          "type": "protocol",
-          "totalSupplyRaw": "901850n",
-          "tokens": [
-            {
-              "address": "0xD22a58f79e9481D1a88e00c343885A588b34b68B",
-              "name": "STASIS EURS Token",
-              "symbol": "EURS",
-              "decimals": 2,
-              "totalSupplyRaw": "0n",
-              "type": "underlying",
-              "totalSupply": 0,
-              "price": 1.1812315021578164,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xD22a58f79e9481D1a88e00c343885A588b34b68B/logo.png"
-            }
-          ],
-          "totalSupply": 9018.5
         },
         {
           "address": "0x77CA01483f379E58174739308945f044e1a764dc",
@@ -845,7 +779,7 @@
           "symbol": "variableDebtArbwstETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "563355892233600403070n",
+          "totalSupplyRaw": "372024368047848414425n",
           "tokens": [
             {
               "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
@@ -855,11 +789,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1850.3310309407516,
+              "price": 3646.832466019532,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
             }
           ],
-          "totalSupply": 563.3558922336005
+          "totalSupply": 372.02436804784844
         },
         {
           "address": "0xCE186F6Cccb0c955445bb9d10C59caE488Fea559",
@@ -867,21 +801,21 @@
           "symbol": "variableDebtArbrETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "253153046699666084915n",
+          "totalSupplyRaw": "52662734368045291616n",
           "tokens": [
             {
               "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
               "name": "Rocket Pool ETH",
-              "symbol": "rETH",
+              "symbol": "RETH",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1759.5160545495023,
+              "price": 3457.756454559548,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8/logo.png"
             }
           ],
-          "totalSupply": 253.15304669966608
+          "totalSupply": 52.66273436804529
         },
         {
           "address": "0xA8669021776Bc142DfcA87c21b4A52595bCbB40a",
@@ -889,21 +823,21 @@
           "symbol": "variableDebtArbLUSD",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "957738552252425422724744n",
+          "totalSupplyRaw": "850056591950650836239711n",
           "tokens": [
             {
               "address": "0x93b346b6BC2548dA6A1E7d98E9a421B42541425b",
-              "name": "LUSD Stablecoin",
+              "name": "Liquity USD",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1.000122852426951,
+              "price": 1.000338063823018,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x93b346b6BC2548dA6A1E7d98E9a421B42541425b/logo.png"
             }
           ],
-          "totalSupply": 957738.5522524255
+          "totalSupply": 850056.5919506508
         },
         {
           "address": "0xf611aEb5013fD2c0511c9CD55c7dc5C1140741A6",
@@ -911,7 +845,7 @@
           "symbol": "variableDebtArbUSDCn",
           "decimals": 6,
           "type": "protocol",
-          "totalSupplyRaw": "13041448501189n",
+          "totalSupplyRaw": "115772305727433n",
           "tokens": [
             {
               "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
@@ -921,11 +855,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.9997249008510016,
+              "price": 1.0020411581602247,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
             }
           ],
-          "totalSupply": 13041448.501189
+          "totalSupply": 115772305.727433
         },
         {
           "address": "0x5D557B07776D12967914379C71a1310e917C7555",
@@ -933,7 +867,7 @@
           "symbol": "variableDebtArbFRAX",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "15736510044422707075738n",
+          "totalSupplyRaw": "299863976968915699958432n",
           "tokens": [
             {
               "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
@@ -943,11 +877,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 1.0304268005786055,
+              "price": 0.9830184278493347,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo.png"
             }
           ],
-          "totalSupply": 15736.510044422706
+          "totalSupply": 299863.9769689157
         },
         {
           "address": "0x44705f578135cC5d703b4c9c122528C73Eb87145",
@@ -955,7 +889,7 @@
           "symbol": "variableDebtArbARB",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "2002823379886886832460259n",
+          "totalSupplyRaw": "1811738855151055342964530n",
           "tokens": [
             {
               "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
@@ -965,11 +899,11 @@
               "totalSupplyRaw": "0n",
               "type": "underlying",
               "totalSupply": 0,
-              "price": 0.8010937155646519,
+              "price": 1.1991216132004363,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x912CE59144191C1204E64559FE8253a0e49E6548/logo.png"
             }
           ],
-          "totalSupply": 2002823.3798868868
+          "totalSupply": 1811738.8551510554
         }
       ]
     }

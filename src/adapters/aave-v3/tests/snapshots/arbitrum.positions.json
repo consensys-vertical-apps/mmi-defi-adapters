@@ -17,8 +17,8 @@
       "tokens": [
         {
           "address": "0x078f358208685046a11C85e8ad32895DED33A249",
-          "name": "Aave Arbitrum WBTC",
-          "symbol": "aArbWBTC",
+          "name": "Aave WBTC",
+          "symbol": "AWBTC",
           "decimals": 8,
           "balanceRaw": "768788n",
           "type": "protocol",
@@ -39,8 +39,8 @@
         },
         {
           "address": "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8",
-          "name": "Aave Arbitrum WETH",
-          "symbol": "aArbWETH",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
           "decimals": 18,
           "balanceRaw": "75374552376746320n",
           "type": "protocol",

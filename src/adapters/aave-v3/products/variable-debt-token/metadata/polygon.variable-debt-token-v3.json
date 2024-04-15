@@ -111,34 +111,6 @@
       "decimals": 18
     }
   },
-  "0x77CA01483f379E58174739308945f044e1a764dc": {
-    "protocolToken": {
-      "address": "0x77CA01483f379E58174739308945f044e1a764dc",
-      "name": "Aave Polygon Variable Debt CRV",
-      "symbol": "variableDebtPolCRV",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
-      "name": "CRV (PoS)",
-      "symbol": "CRV",
-      "decimals": 18
-    }
-  },
-  "0x34e2eD44EF7466D5f9E0b782B5c08b57475e7907": {
-    "protocolToken": {
-      "address": "0x34e2eD44EF7466D5f9E0b782B5c08b57475e7907",
-      "name": "Aave Polygon Variable Debt SUSHI",
-      "symbol": "variableDebtPolSUSHI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a",
-      "name": "SushiToken (PoS)",
-      "symbol": "SUSHI",
-      "decimals": 18
-    }
-  },
   "0xCE186F6Cccb0c955445bb9d10C59caE488Fea559": {
     "protocolToken": {
       "address": "0xCE186F6Cccb0c955445bb9d10C59caE488Fea559",
@@ -150,34 +122,6 @@
       "address": "0x385Eeac5cB85A38A9a07A70c73e0a3271CfB54A7",
       "name": "Aavegotchi GHST Token (PoS)",
       "symbol": "GHST",
-      "decimals": 18
-    }
-  },
-  "0xA8669021776Bc142DfcA87c21b4A52595bCbB40a": {
-    "protocolToken": {
-      "address": "0xA8669021776Bc142DfcA87c21b4A52595bCbB40a",
-      "name": "Aave Polygon Variable Debt BAL",
-      "symbol": "variableDebtPolBAL",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3",
-      "name": "Balancer (PoS)",
-      "symbol": "BAL",
-      "decimals": 18
-    }
-  },
-  "0xf611aEb5013fD2c0511c9CD55c7dc5C1140741A6": {
-    "protocolToken": {
-      "address": "0xf611aEb5013fD2c0511c9CD55c7dc5C1140741A6",
-      "name": "Aave Polygon Variable Debt DPI",
-      "symbol": "variableDebtPolDPI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369",
-      "name": "DefiPulse Index (PoS)",
-      "symbol": "DPI",
       "decimals": 18
     }
   },
@@ -193,20 +137,6 @@
       "name": "STASIS EURS Token (PoS)",
       "symbol": "EURS",
       "decimals": 2
-    }
-  },
-  "0x3ca5FA07689F266e907439aFd1fBB59c44fe12f6": {
-    "protocolToken": {
-      "address": "0x3ca5FA07689F266e907439aFd1fBB59c44fe12f6",
-      "name": "Aave Polygon Variable Debt AGEUR",
-      "symbol": "variableDebtPolAGEUR",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xE0B52e49357Fd4DAf2c15e02058DCE6BC0057db4",
-      "name": "agEUR",
-      "symbol": "agEUR",
-      "decimals": 18
     }
   },
   "0x6b030Ff3FB9956B1B69f475B77aE0d3Cf2CC5aFa": {

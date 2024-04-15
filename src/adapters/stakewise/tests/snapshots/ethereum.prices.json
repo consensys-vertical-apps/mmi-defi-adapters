@@ -1,5 +1,5 @@
 {
-  "blockNumber": 19260323,
+  "blockNumber": 19661887,
   "snapshot": [
     {
       "name": "StakeWise",
@@ -29,8 +29,8 @@
               "symbol": "ETH",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "1008173665332233420n",
-              "underlyingRate": 1.0081736653322335,
+              "underlyingRateRaw": "1013701417701048580n",
+              "underlyingRate": 1.0137014177010486,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
             }
           ]

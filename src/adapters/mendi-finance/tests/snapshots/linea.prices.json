@@ -1,5 +1,5 @@
 {
-  "blockNumber": 1597881,
+  "blockNumber": 3717652,
   "snapshot": [
     {
       "protocolId": "mendi-finance",
@@ -29,8 +29,8 @@
               "symbol": "USDC",
               "decimals": 6,
               "type": "underlying",
-              "underlyingRateRaw": "20242n",
-              "underlyingRate": 0.020242,
+              "underlyingRateRaw": "20807n",
+              "underlyingRate": 0.020807,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
             }
           ]
@@ -49,8 +49,8 @@
               "symbol": "USDT",
               "decimals": 6,
               "type": "underlying",
-              "underlyingRateRaw": "20295n",
-              "underlyingRate": 0.020295,
+              "underlyingRateRaw": "20892n",
+              "underlyingRate": 0.020892,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
             }
           ]
@@ -69,8 +69,8 @@
               "symbol": "WETH",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20540421873034071n",
-              "underlyingRate": 0.020540421873034072,
+              "underlyingRateRaw": "20950100932002628n",
+              "underlyingRate": 0.020950100932002627,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
             }
           ]
@@ -89,8 +89,8 @@
               "symbol": "DAI",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20290871026473242n",
-              "underlyingRate": 0.020290871026473242,
+              "underlyingRateRaw": "20823321370861256n",
+              "underlyingRate": 0.020823321370861257,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
             }
           ]
@@ -109,8 +109,8 @@
               "symbol": "WBTC",
               "decimals": 8,
               "type": "underlying",
-              "underlyingRateRaw": "2010038n",
-              "underlyingRate": 0.02010038,
+              "underlyingRateRaw": "2025539n",
+              "underlyingRate": 0.02025539,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
             }
           ]
@@ -129,9 +129,29 @@
               "symbol": "wstETH",
               "decimals": 18,
               "type": "underlying",
-              "underlyingRateRaw": "20157913411514401n",
-              "underlyingRate": 0.020157913411514402,
+              "underlyingRateRaw": "20537791475348950n",
+              "underlyingRate": 0.02053779147534895,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x8a90D208666Deec08123444F67Bf5B1836074a67",
+          "name": "Mendi Renzo Restaked ETH",
+          "symbol": "meezETH",
+          "decimals": 8,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+              "name": "Renzo Restaked ETH",
+              "symbol": "ezETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "20000000096826381n",
+              "underlyingRate": 0.02000000009682638,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2416092f143378750bb29b79eD961ab195CcEea5/logo.png"
             }
           ]
         }

@@ -26,7 +26,7 @@ export const testCases: TestCase[] = [
     key: 'reth',
     chainId: Chain.Ethereum,
     method: 'prices',
-    blockNumber: 19074240,
+    blockNumber: 19661887,
   },
   {
     key: 'reth',

@@ -1,24 +1,4 @@
 {
-  "0x3730c99811FEa9cA1Dd977dDd6D3b80F8a0BEbeA": {
-    "protocolToken": {
-      "address": "0x3730c99811FEa9cA1Dd977dDd6D3b80F8a0BEbeA",
-      "name": "SushiSwap LP Token WAVAX / FAE",
-      "symbol": "SLP/WAVAX/FAE",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xCD1bb91f4eCa93217421316480cA7D7C315827E5",
-      "name": "Lucky Fairy",
-      "symbol": "FAE",
-      "decimals": 9
-    }
-  },
   "0x4CF9dC05c715812FeAD782DC98de0168029e05C8": {
     "protocolToken": {
       "address": "0x4CF9dC05c715812FeAD782DC98de0168029e05C8",
@@ -99,63 +79,23 @@
       "decimals": 6
     }
   },
-  "0x4d308C46EA9f234ea515cC51F16fba776451cac8": {
+  "0x29488375275eBB2dFB09C1E5D6119D677606da7B": {
     "protocolToken": {
-      "address": "0x4d308C46EA9f234ea515cC51F16fba776451cac8",
-      "name": "SushiSwap LP Token wMEMO / MIM",
-      "symbol": "SLP/wMEMO/MIM",
+      "address": "0x29488375275eBB2dFB09C1E5D6119D677606da7B",
+      "name": "SushiSwap LP Token Rex / WAVAX",
+      "symbol": "SLP/Rex/WAVAX",
       "decimals": 18
     },
     "token0": {
-      "address": "0x0da67235dD5787D67955420C84ca1cEcd4E5Bb3b",
-      "name": "Wrapped MEMO",
-      "symbol": "wMEMO",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0x130966628846BFd36ff31a822705796e8cb8C18D",
-      "name": "Magic Internet Money",
-      "symbol": "MIM",
-      "decimals": 18
-    }
-  },
-  "0x9E163143f6Eedd99388295E9F2b60a71303e0c90": {
-    "protocolToken": {
-      "address": "0x9E163143f6Eedd99388295E9F2b60a71303e0c90",
-      "name": "SushiSwap LP Token BSGG / WAVAX",
-      "symbol": "SLP/BSGG/WAVAX",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x63682bDC5f875e9bF69E201550658492C9763F89",
-      "name": "Betswap.gg",
-      "symbol": "BSGG",
+      "address": "0xA33fAc40f62B7Aa975d8835EAa8a4df8b74161bd",
+      "name": "Rex",
+      "symbol": "Rex",
       "decimals": 18
     },
     "token1": {
       "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
       "name": "Wrapped AVAX",
       "symbol": "WAVAX",
-      "decimals": 18
-    }
-  },
-  "0x459Eb852799057912138519eab28c8E0c227C42c": {
-    "protocolToken": {
-      "address": "0x459Eb852799057912138519eab28c8E0c227C42c",
-      "name": "SushiSwap LP Token USDC.e / DAI.e",
-      "symbol": "SLP/USDC.e/DAI.e",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
-      "name": "USD Coin",
-      "symbol": "USDC.e",
-      "decimals": 6
-    },
-    "token1": {
-      "address": "0xd586E7F844cEa2F87f50152665BCbc2C279D8d70",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI.e",
       "decimals": 18
     }
   },
@@ -179,11 +119,11 @@
       "decimals": 6
     }
   },
-  "0x3E105e5ACB4dAb409Fb365ba72D7793210ae6e59": {
+  "0x4d308C46EA9f234ea515cC51F16fba776451cac8": {
     "protocolToken": {
-      "address": "0x3E105e5ACB4dAb409Fb365ba72D7793210ae6e59",
-      "name": "SushiSwap LP Token wMEMO / WAVAX",
-      "symbol": "SLP/wMEMO/WAVAX",
+      "address": "0x4d308C46EA9f234ea515cC51F16fba776451cac8",
+      "name": "SushiSwap LP Token wMEMO / MIM",
+      "symbol": "SLP/wMEMO/MIM",
       "decimals": 18
     },
     "token0": {
@@ -193,9 +133,29 @@
       "decimals": 18
     },
     "token1": {
-      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
+      "address": "0x130966628846BFd36ff31a822705796e8cb8C18D",
+      "name": "Magic Internet Money",
+      "symbol": "MIM",
+      "decimals": 18
+    }
+  },
+  "0x459Eb852799057912138519eab28c8E0c227C42c": {
+    "protocolToken": {
+      "address": "0x459Eb852799057912138519eab28c8E0c227C42c",
+      "name": "SushiSwap LP Token USDC.e / DAI.e",
+      "symbol": "SLP/USDC.e/DAI.e",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
+      "name": "USD Coin",
+      "symbol": "USDC.e",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xd586E7F844cEa2F87f50152665BCbc2C279D8d70",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI.e",
       "decimals": 18
     }
   },
@@ -219,26 +179,6 @@
       "decimals": 6
     }
   },
-  "0x29488375275eBB2dFB09C1E5D6119D677606da7B": {
-    "protocolToken": {
-      "address": "0x29488375275eBB2dFB09C1E5D6119D677606da7B",
-      "name": "SushiSwap LP Token Rex / WAVAX",
-      "symbol": "SLP/Rex/WAVAX",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xA33fAc40f62B7Aa975d8835EAa8a4df8b74161bd",
-      "name": "Rex",
-      "symbol": "Rex",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
-      "decimals": 18
-    }
-  },
   "0x4ed65dAB34d5FD4b1eb384432027CE47E90E1185": {
     "protocolToken": {
       "address": "0x4ed65dAB34d5FD4b1eb384432027CE47E90E1185",
@@ -251,6 +191,26 @@
       "name": "USD Coin",
       "symbol": "USDC.e",
       "decimals": 6
+    },
+    "token1": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18
+    }
+  },
+  "0x3E105e5ACB4dAb409Fb365ba72D7793210ae6e59": {
+    "protocolToken": {
+      "address": "0x3E105e5ACB4dAb409Fb365ba72D7793210ae6e59",
+      "name": "SushiSwap LP Token wMEMO / WAVAX",
+      "symbol": "SLP/wMEMO/WAVAX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0da67235dD5787D67955420C84ca1cEcd4E5Bb3b",
+      "name": "Wrapped MEMO",
+      "symbol": "wMEMO",
+      "decimals": 18
     },
     "token1": {
       "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
@@ -276,46 +236,6 @@
       "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
       "name": "Wrapped AVAX",
       "symbol": "WAVAX",
-      "decimals": 18
-    }
-  },
-  "0x2FdE1c280a623950b10b6483B9a0C23549c9B515": {
-    "protocolToken": {
-      "address": "0x2FdE1c280a623950b10b6483B9a0C23549c9B515",
-      "name": "SushiSwap LP Token WETH.e / WAVAX",
-      "symbol": "SLP/WETH.e/WAVAX",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
-      "name": "Wrapped Ether",
-      "symbol": "WETH.e",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
-      "decimals": 18
-    }
-  },
-  "0xE5Dc9c75D4514A5a7fe370e636560699bA83C702": {
-    "protocolToken": {
-      "address": "0xE5Dc9c75D4514A5a7fe370e636560699bA83C702",
-      "name": "SushiSwap LP Token WAVAX / ETH",
-      "symbol": "SLP/WAVAX/ETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15",
-      "name": "Ether",
-      "symbol": "ETH",
       "decimals": 18
     }
   },
@@ -379,44 +299,24 @@
       "decimals": 18
     }
   },
-  "0x55dE93B08c2772d677f1263C3ea91B9d7D4CE79d": {
+  "0x9E163143f6Eedd99388295E9F2b60a71303e0c90": {
     "protocolToken": {
-      "address": "0x55dE93B08c2772d677f1263C3ea91B9d7D4CE79d",
-      "name": "SushiSwap LP Token WETH.e / WBTC.e",
-      "symbol": "SLP/WETH.e/WBTC.e",
+      "address": "0x9E163143f6Eedd99388295E9F2b60a71303e0c90",
+      "name": "SushiSwap LP Token BSGG / WAVAX",
+      "symbol": "SLP/BSGG/WAVAX",
       "decimals": 18
     },
     "token0": {
-      "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
-      "name": "Wrapped Ether",
-      "symbol": "WETH.e",
+      "address": "0x63682bDC5f875e9bF69E201550658492C9763F89",
+      "name": "Betswap.gg",
+      "symbol": "BSGG",
       "decimals": 18
     },
     "token1": {
-      "address": "0x50b7545627a5162F82A992c33b87aDc75187B218",
-      "name": "Wrapped BTC",
-      "symbol": "WBTC.e",
-      "decimals": 8
-    }
-  },
-  "0x669328b7aDbcc15da8949FAadd78a09EF025c1F8": {
-    "protocolToken": {
-      "address": "0x669328b7aDbcc15da8949FAadd78a09EF025c1F8",
-      "name": "SushiSwap LP Token WETH.e / USDC.e",
-      "symbol": "SLP/WETH.e/USDC.e",
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
       "decimals": 18
-    },
-    "token0": {
-      "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
-      "name": "Wrapped Ether",
-      "symbol": "WETH.e",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
-      "name": "USD Coin",
-      "symbol": "USDC.e",
-      "decimals": 6
     }
   },
   "0x0b212115882252E3640839feACF6CD45a8f419F5": {
@@ -439,24 +339,24 @@
       "decimals": 6
     }
   },
-  "0xe1051D42F623a1794D347AEbeB2612bed2ffC667": {
+  "0x3730c99811FEa9cA1Dd977dDd6D3b80F8a0BEbeA": {
     "protocolToken": {
-      "address": "0xe1051D42F623a1794D347AEbeB2612bed2ffC667",
-      "name": "SushiSwap LP Token WBTC.e / WAVAX",
-      "symbol": "SLP/WBTC.e/WAVAX",
+      "address": "0x3730c99811FEa9cA1Dd977dDd6D3b80F8a0BEbeA",
+      "name": "SushiSwap LP Token WAVAX / FAE",
+      "symbol": "SLP/WAVAX/FAE",
       "decimals": 18
     },
     "token0": {
-      "address": "0x50b7545627a5162F82A992c33b87aDc75187B218",
-      "name": "Wrapped BTC",
-      "symbol": "WBTC.e",
-      "decimals": 8
-    },
-    "token1": {
       "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
       "name": "Wrapped AVAX",
       "symbol": "WAVAX",
       "decimals": 18
+    },
+    "token1": {
+      "address": "0xCD1bb91f4eCa93217421316480cA7D7C315827E5",
+      "name": "Lucky Fairy",
+      "symbol": "FAE",
+      "decimals": 9
     }
   },
   "0x97dE211811E65998759B51ca6C70074bFbD700a5": {
@@ -476,66 +376,6 @@
       "address": "0xE0474c15BC7f8213eE5bfB42f9E68B2d6BE2e136",
       "name": "Valhalla",
       "symbol": "VAL",
-      "decimals": 9
-    }
-  },
-  "0xF93c610dD478d2E9Fa47aa00eE3b726C6aC1C376": {
-    "protocolToken": {
-      "address": "0xF93c610dD478d2E9Fa47aa00eE3b726C6aC1C376",
-      "name": "SushiSwap LP Token wMEMO / USDC.e",
-      "symbol": "SLP/wMEMO/USDC.e",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0da67235dD5787D67955420C84ca1cEcd4E5Bb3b",
-      "name": "Wrapped MEMO",
-      "symbol": "wMEMO",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
-      "name": "USD Coin",
-      "symbol": "USDC.e",
-      "decimals": 6
-    }
-  },
-  "0x58A21026799D1bf3b968A15383Db05f61e2bac43": {
-    "protocolToken": {
-      "address": "0x58A21026799D1bf3b968A15383Db05f61e2bac43",
-      "name": "SushiSwap LP Token EVDC / WAVAX",
-      "symbol": "SLP/EVDC/WAVAX",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x704EAE6d452Ca63Ce479C59727177c5f3bA0D90C",
-      "name": "Electric Vehicle Direct Currency",
-      "symbol": "EVDC",
-      "decimals": 8
-    },
-    "token1": {
-      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
-      "decimals": 18
-    }
-  },
-  "0x6cb6cb160bd629AAF07d2e51B3a435d909d01Dd0": {
-    "protocolToken": {
-      "address": "0x6cb6cb160bd629AAF07d2e51B3a435d909d01Dd0",
-      "name": "SushiSwap LP Token MIM / TIME",
-      "symbol": "SLP/MIM/TIME",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x130966628846BFd36ff31a822705796e8cb8C18D",
-      "name": "Magic Internet Money",
-      "symbol": "MIM",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
-      "name": "Time",
-      "symbol": "TIME",
       "decimals": 9
     }
   },
@@ -559,44 +399,24 @@
       "decimals": 6
     }
   },
-  "0x55CF10BFbC6a9deAeB3c7ec0dd96D3C1179CB948": {
+  "0x6cb6cb160bd629AAF07d2e51B3a435d909d01Dd0": {
     "protocolToken": {
-      "address": "0x55CF10BFbC6a9deAeB3c7ec0dd96D3C1179CB948",
-      "name": "SushiSwap LP Token WAVAX / DAI.e",
-      "symbol": "SLP/WAVAX/DAI.e",
+      "address": "0x6cb6cb160bd629AAF07d2e51B3a435d909d01Dd0",
+      "name": "SushiSwap LP Token MIM / TIME",
+      "symbol": "SLP/MIM/TIME",
       "decimals": 18
     },
     "token0": {
-      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
+      "address": "0x130966628846BFd36ff31a822705796e8cb8C18D",
+      "name": "Magic Internet Money",
+      "symbol": "MIM",
       "decimals": 18
     },
     "token1": {
-      "address": "0xd586E7F844cEa2F87f50152665BCbc2C279D8d70",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI.e",
-      "decimals": 18
-    }
-  },
-  "0x47F1C2a9c9027A10C3b13D1c40DD976C5014339B": {
-    "protocolToken": {
-      "address": "0x47F1C2a9c9027A10C3b13D1c40DD976C5014339B",
-      "name": "SushiSwap LP Token WAVAX / USDT",
-      "symbol": "SLP/WAVAX/USDT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xde3A24028580884448a5397872046a019649b084",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
+      "address": "0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
+      "name": "Time",
+      "symbol": "TIME",
+      "decimals": 9
     }
   },
   "0xb44CE3F27D1FC145fd3CBD4F59C32cb9BE154b33": {
@@ -616,46 +436,6 @@
       "address": "0xd586E7F844cEa2F87f50152665BCbc2C279D8d70",
       "name": "Dai Stablecoin",
       "symbol": "DAI.e",
-      "decimals": 18
-    }
-  },
-  "0x204AE948FAe55288b39c24Fb3132eF69c5EC26F2": {
-    "protocolToken": {
-      "address": "0x204AE948FAe55288b39c24Fb3132eF69c5EC26F2",
-      "name": "SushiSwap LP Token WAVAX / TIME",
-      "symbol": "SLP/WAVAX/TIME",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-      "name": "Wrapped AVAX",
-      "symbol": "WAVAX",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
-      "name": "Time",
-      "symbol": "TIME",
-      "decimals": 9
-    }
-  },
-  "0x783C0Eff1112F3C4139Dcb661c3Fc57CA9Ba6f3b": {
-    "protocolToken": {
-      "address": "0x783C0Eff1112F3C4139Dcb661c3Fc57CA9Ba6f3b",
-      "name": "SushiSwap LP Token sifu / WETH.e",
-      "symbol": "SLP/sifu/WETH.e",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x237917E8a998b37759c8EE2fAa529D60c66c2927",
-      "name": "Sifu",
-      "symbol": "sifu",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
-      "name": "Wrapped Ether",
-      "symbol": "WETH.e",
       "decimals": 18
     }
   },

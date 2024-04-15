@@ -37,7 +37,7 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Arbitrum,
     method: 'tvl',
-    blockNumber: 142290717,
+    blockNumber: 201319945,
   },
 
   {
