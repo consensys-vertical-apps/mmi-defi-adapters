@@ -205,21 +205,35 @@ async function addImportsAndSchemas(
     },
     visitExportNamedDeclaration(path) {
       if (
-        !n.VariableDeclaration.check(path.node.declaration) ||
-        path.node.declaration.declarations.length !== 1 ||
-        !n.VariableDeclarator.check(path.node.declaration.declarations[0]) ||
-        !n.Identifier.check(path.node.declaration.declarations[0].id) ||
-        path.node.declaration.declarations[0].id.name !==
-          'GetTransactionParamsSchema'
+        n.VariableDeclaration.check(path.node.declaration) &&
+        path.node.declaration.declarations.length === 1 &&
+        n.VariableDeclarator.check(path.node.declaration.declarations[0]) &&
+        n.Identifier.check(path.node.declaration.declarations[0].id) &&
+        ['WriteActionInputs', 'GetTransactionParamsSchema'].includes(
+          path.node.declaration.declarations[0].id.name,
+        )
       ) {
-        return false
+        path.prune()
       }
 
-      path.prune()
+      if (
+        n.TSTypeAliasDeclaration.check(path.node.declaration) &&
+        path.node.declaration.id.name === 'GetTransactionParams'
+      ) {
+        path.prune()
+      }
 
       this.traverse(path)
     },
   })
+
+  const writeActionInputsExportStatement = `
+  export const WriteActionInputs = {
+    ${productsInputs
+      .map(({ fullProductName }) => `${fullProductName}WriteActionInputs`)
+      .join(',')}
+  }
+  `
 
   const schemas = productsInputs.map(
     ({ protocolKey, productId, writeActionInputs }) => {
@@ -240,9 +254,18 @@ async function addImportsAndSchemas(
     },
   )
 
-  const exportStatement = `export const GetTransactionParamsSchema = z.union([${schemas.join(
+  const schemaExportStatement = `export const GetTransactionParamsSchema = z.union([${schemas.join(
     ',',
-  )}])`
+  )}])
+  `
 
-  await writeCodeFile(adaptersFile, print(ast).code + exportStatement)
+  const schemaTypeExportStatement = `export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>;`
+
+  await writeCodeFile(
+    adaptersFile,
+    print(ast).code +
+      writeActionInputsExportStatement +
+      schemaExportStatement +
+      schemaTypeExportStatement,
+  )
 }

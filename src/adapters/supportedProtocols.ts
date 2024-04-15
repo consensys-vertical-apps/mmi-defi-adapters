@@ -329,11 +329,9 @@ export const supportedProtocols: Record<
 
 export const WriteActionInputs = {
   AaveV3ATokenWriteActionInputs,
-  CompoundV2BorrowMarketWriteActionInputs,
   CompoundV2SupplyMarketWriteActionInputs,
+  CompoundV2BorrowMarketWriteActionInputs,
 }
-
-export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>
 export const GetTransactionParamsSchema = z.union([
   z.discriminatedUnion('action', [
     z.object({
@@ -404,3 +402,4 @@ export const GetTransactionParamsSchema = z.union([
     }),
   ]),
 ])
+export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>
