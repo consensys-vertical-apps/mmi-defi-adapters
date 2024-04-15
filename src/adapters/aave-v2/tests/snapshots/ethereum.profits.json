@@ -17,8 +17,8 @@
       "tokens": [
         {
           "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
-          "name": "Aave WBTC",
-          "symbol": "AWBTC",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
           "profit": 176590.4113893248,
@@ -34,8 +34,8 @@
         },
         {
           "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
-          "name": "Aave WETH",
-          "symbol": "AWETH",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
           "profit": 102263.49377987906,

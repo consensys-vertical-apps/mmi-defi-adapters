@@ -17,8 +17,8 @@
       "tokens": [
         {
           "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
-          "name": "Aave DAI",
-          "symbol": "ADAI",
+          "name": "Aave interest bearing DAI",
+          "symbol": "aDAI",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "22327464242762902294238156n",
@@ -39,8 +39,8 @@
         },
         {
           "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
-          "name": "Aave WETH",
-          "symbol": "AWETH",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "24063325311925421122354n",
@@ -61,8 +61,8 @@
         },
         {
           "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
-          "name": "Aave USDC",
-          "symbol": "AUSDC",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "29390622078847n",
@@ -83,8 +83,8 @@
         },
         {
           "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-          "name": "Aave USDT",
-          "symbol": "AUSDT",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "7575252642062n",
@@ -105,8 +105,8 @@
         },
         {
           "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
-          "name": "Aave WBTC",
-          "symbol": "AWBTC",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "7582505794n",
@@ -127,8 +127,8 @@
         },
         {
           "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
-          "name": "Aave Interest Bearing STETH",
-          "symbol": "ASTETH",
+          "name": "Aave interest bearing STETH",
+          "symbol": "aSTETH",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "0n",
@@ -161,8 +161,8 @@
         },
         {
           "address": "0x8dAE6Cb04688C62d939ed9B68d32Bc62e49970b1",
-          "name": "Aave CRV",
-          "symbol": "ACRV",
+          "name": "Aave interest bearing CRV",
+          "symbol": "aCRV",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "63925210171284044112n",
@@ -186,8 +186,8 @@
       "tokens": [
         {
           "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
-          "name": "Aave DAI",
-          "symbol": "ADAI",
+          "name": "Aave interest bearing DAI",
+          "symbol": "aDAI",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "15366381729800216201129171n",
@@ -208,8 +208,8 @@
         },
         {
           "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
-          "name": "Aave WETH",
-          "symbol": "AWETH",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "92595172201439033475834n",
@@ -230,8 +230,8 @@
         },
         {
           "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
-          "name": "Aave USDC",
-          "symbol": "AUSDC",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "33276700232816n",
@@ -252,8 +252,8 @@
         },
         {
           "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-          "name": "Aave USDT",
-          "symbol": "AUSDT",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "15278819769895n",
@@ -274,8 +274,8 @@
         },
         {
           "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
-          "name": "Aave WBTC",
-          "symbol": "AWBTC",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "136156182687n",
@@ -296,8 +296,8 @@
         },
         {
           "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
-          "name": "Aave Interest Bearing STETH",
-          "symbol": "ASTETH",
+          "name": "Aave interest bearing STETH",
+          "symbol": "aSTETH",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "37165414976040088623210n",
@@ -330,8 +330,8 @@
         },
         {
           "address": "0x8dAE6Cb04688C62d939ed9B68d32Bc62e49970b1",
-          "name": "Aave CRV",
-          "symbol": "ACRV",
+          "name": "Aave interest bearing CRV",
+          "symbol": "aCRV",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "425036720363530208838929n",

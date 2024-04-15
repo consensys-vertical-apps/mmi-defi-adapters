@@ -17,8 +17,8 @@
       "tokens": [
         {
           "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-          "name": "Aave USDT",
-          "symbol": "AUSDT",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "159554955422045n",
@@ -39,8 +39,8 @@
         },
         {
           "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
-          "name": "Aave WBTC",
-          "symbol": "AWBTC",
+          "name": "Aave interest bearing WBTC",
+          "symbol": "aWBTC",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "1004398601138n",
@@ -61,8 +61,8 @@
         },
         {
           "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
-          "name": "Aave WETH",
-          "symbol": "AWETH",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "235716042539956904761652n",
@@ -83,15 +83,15 @@
         },
         {
           "address": "0xFFC97d72E13E01096502Cb8Eb52dEe56f74DAD7B",
-          "name": "Aave AAVE",
-          "symbol": "AAAVE",
+          "name": "Aave interest bearing AAVE",
+          "symbol": "aAAVE",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "130005444635822283851483n",
           "tokens": [
             {
               "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
-              "name": "Aave",
+              "name": "Aave Token",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "130005444635822283851482n",
@@ -105,8 +105,8 @@
         },
         {
           "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
-          "name": "Aave DAI",
-          "symbol": "ADAI",
+          "name": "Aave interest bearing DAI",
+          "symbol": "aDAI",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "72020398426579606367857456n",
@@ -127,8 +127,8 @@
         },
         {
           "address": "0x6C5024Cd4F8A59110119C56f8933403A539555EB",
-          "name": "Aave SUSD",
-          "symbol": "ASUSD",
+          "name": "Aave interest bearing SUSD",
+          "symbol": "aSUSD",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "2101300792862667056592661n",
@@ -136,7 +136,7 @@
             {
               "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
               "name": "Synth sUSD",
-              "symbol": "SUSD",
+              "symbol": "sUSD",
               "decimals": 18,
               "totalSupplyRaw": "780105266530125710276577n",
               "type": "underlying",
@@ -149,8 +149,8 @@
         },
         {
           "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
-          "name": "Aave USDC",
-          "symbol": "AUSDC",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "243422719199426n",
@@ -171,15 +171,15 @@
         },
         {
           "address": "0xD37EE7e4f452C6638c96536e68090De8cBcdb583",
-          "name": "Aave GUSD",
-          "symbol": "AGUSD",
+          "name": "Aave interest bearing GUSD",
+          "symbol": "aGUSD",
           "decimals": 2,
           "type": "protocol",
           "totalSupplyRaw": "71236621n",
           "tokens": [
             {
               "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
-              "name": "Gemini Dollar",
+              "name": "Gemini dollar",
               "symbol": "GUSD",
               "decimals": 2,
               "totalSupplyRaw": "21888244n",
@@ -190,40 +190,6 @@
             }
           ],
           "totalSupply": 712366.21
-        },
-        {
-          "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
-          "name": "Aave Interest Bearing STETH",
-          "symbol": "ASTETH",
-          "decimals": 18,
-          "type": "protocol",
-          "totalSupplyRaw": "202777024820705751667918n",
-          "tokens": [
-            {
-              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-              "name": "Liquid staked Ether 2.0",
-              "symbol": "stETH",
-              "decimals": 18,
-              "totalSupplyRaw": "202777024820705751667563n",
-              "type": "underlying",
-              "tokens": [
-                {
-                  "address": "0x0000000000000000000000000000000000000000",
-                  "name": "Ethereum",
-                  "symbol": "ETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "totalSupplyRaw": "202777024820705751667563n",
-                  "totalSupply": 202777.02482070576,
-                  "price": 3148.07,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
-                }
-              ],
-              "totalSupply": 202777.02482070576,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
-            }
-          ],
-          "totalSupply": 202777.02482070576
         },
         {
           "address": "0x2e8F4bdbE3d47d7d7DE490437AeA9915D930F1A3",
@@ -270,6 +236,40 @@
           "totalSupply": 862707.7755306794
         },
         {
+          "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
+          "name": "Aave interest bearing STETH",
+          "symbol": "aSTETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "202777024820705751667918n",
+          "tokens": [
+            {
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+              "name": "Liquid staked Ether 2.0",
+              "symbol": "stETH",
+              "decimals": 18,
+              "totalSupplyRaw": "202777024820705751667563n",
+              "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0x0000000000000000000000000000000000000000",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "202777024820705751667563n",
+                  "totalSupply": 202777.02482070576,
+                  "price": 3148.07,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
+              "totalSupply": 202777.02482070576,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+            }
+          ],
+          "totalSupply": 202777.02482070576
+        },
+        {
           "address": "0xce1871f791548600cb59efbefFC9c38719142079",
           "name": "Aave interest bearing LUSD",
           "symbol": "aLUSD",
@@ -279,7 +279,7 @@
           "tokens": [
             {
               "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
-              "name": "Liquity USD",
+              "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "48503878255661173482375n",
@@ -383,7 +383,7 @@
           "tokens": [
             {
               "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
-              "name": "Aave",
+              "name": "Aave Token",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "0n",
@@ -428,7 +428,7 @@
             {
               "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
               "name": "Synth sUSD",
-              "symbol": "SUSD",
+              "symbol": "sUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
@@ -471,7 +471,7 @@
           "tokens": [
             {
               "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
-              "name": "Gemini Dollar",
+              "name": "Gemini dollar",
               "symbol": "GUSD",
               "decimals": 2,
               "totalSupplyRaw": "0n",
@@ -571,7 +571,7 @@
           "tokens": [
             {
               "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
-              "name": "Liquity USD",
+              "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
@@ -675,7 +675,7 @@
           "tokens": [
             {
               "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
-              "name": "Aave",
+              "name": "Aave Token",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "0n",
@@ -720,7 +720,7 @@
             {
               "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
               "name": "Synth sUSD",
-              "symbol": "SUSD",
+              "symbol": "sUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
@@ -763,7 +763,7 @@
           "tokens": [
             {
               "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
-              "name": "Gemini Dollar",
+              "name": "Gemini dollar",
               "symbol": "GUSD",
               "decimals": 2,
               "totalSupplyRaw": "0n",
@@ -863,7 +863,7 @@
           "tokens": [
             {
               "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
-              "name": "Liquity USD",
+              "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",

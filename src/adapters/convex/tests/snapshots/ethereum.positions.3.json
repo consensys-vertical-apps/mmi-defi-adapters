@@ -25,8 +25,8 @@
           "tokens": [
             {
               "address": "0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2",
-              "name": "LP-cCurve",
-              "symbol": "CCURVE",
+              "name": "Curve.fi cDAI/cUSDC",
+              "symbol": "cDAI+cUSDC",
               "decimals": 18,
               "balanceRaw": "128997493050015238077933n",
               "type": "underlying",
@@ -34,7 +34,7 @@
                 {
                   "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
                   "name": "Compound Dai",
-                  "symbol": "CDAI",
+                  "symbol": "cDAI",
                   "decimals": 8,
                   "type": "underlying",
                   "balanceRaw": "234816797172236n",
@@ -57,7 +57,7 @@
                 {
                   "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
                   "name": "Compound USD Coin",
-                  "symbol": "CUSDC",
+                  "symbol": "cUSDC",
                   "decimals": 8,
                   "type": "underlying",
                   "balanceRaw": "403550943329222n",
@@ -135,8 +135,8 @@
                 },
                 {
                   "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-                  "name": "crvUSD",
-                  "symbol": "CRVUSD",
+                  "name": "Curve.Fi USD Stablecoin",
+                  "symbol": "crvUSD",
                   "decimals": 18,
                   "type": "underlying",
                   "balanceRaw": "18608637197791561008453n",
@@ -210,7 +210,7 @@
             },
             {
               "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-              "name": "Convex Finance",
+              "name": "Convex Token",
               "symbol": "CVX",
               "decimals": 18,
               "balanceRaw": "5100813534806061084n",
@@ -221,8 +221,8 @@
             },
             {
               "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
-              "name": "LP 3pool Curve",
-              "symbol": "3CRV",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "symbol": "3Crv",
               "decimals": 18,
               "balanceRaw": "107897204776540558069n",
               "type": "underlying-claimable",

@@ -160,7 +160,7 @@
             {
               "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
               "name": "Rocket Pool ETH",
-              "symbol": "RETH",
+              "symbol": "rETH",
               "decimals": 18,
               "type": "underlying",
               "totalSupplyRaw": "1112093539286503400257n",
@@ -194,7 +194,7 @@
             {
               "address": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
               "name": "Coinbase Wrapped Staked ETH",
-              "symbol": "CBETH",
+              "symbol": "cbETH",
               "decimals": 18,
               "type": "underlying",
               "totalSupplyRaw": "2398033845056377066n",

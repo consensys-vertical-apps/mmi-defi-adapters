@@ -17,8 +17,8 @@
       "tokens": [
         {
           "address": "0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE",
-          "name": "Aave DAI",
-          "symbol": "ADAI",
+          "name": "Aave Arbitrum DAI",
+          "symbol": "aArbDAI",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "11163548484134003585288889n",
@@ -39,8 +39,8 @@
         },
         {
           "address": "0x191c10Aa4AF7C30e871E70C95dB0E4eb77237530",
-          "name": "Aave LINK",
-          "symbol": "ALINK",
+          "name": "Aave Arbitrum LINK",
+          "symbol": "aArbLINK",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "1807434363356569681555999n",
@@ -61,8 +61,8 @@
         },
         {
           "address": "0x625E7708f30cA75bfd92586e17077590C60eb4cD",
-          "name": "Aave USDC",
-          "symbol": "AUSDC",
+          "name": "Aave Arbitrum USDC",
+          "symbol": "aArbUSDC",
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "14884701962593n",
@@ -70,7 +70,7 @@
             {
               "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
               "name": "USD Coin (Arb1)",
-              "symbol": "USDC.E",
+              "symbol": "USDC",
               "decimals": 6,
               "totalSupplyRaw": "1280307627384n",
               "type": "underlying",
@@ -83,8 +83,8 @@
         },
         {
           "address": "0x078f358208685046a11C85e8ad32895DED33A249",
-          "name": "Aave WBTC",
-          "symbol": "AWBTC",
+          "name": "Aave Arbitrum WBTC",
+          "symbol": "aArbWBTC",
           "decimals": 8,
           "type": "protocol",
           "totalSupplyRaw": "327537418976n",
@@ -105,8 +105,8 @@
         },
         {
           "address": "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8",
-          "name": "Aave WETH",
-          "symbol": "AWETH",
+          "name": "Aave Arbitrum WETH",
+          "symbol": "aArbWETH",
           "decimals": 18,
           "type": "protocol",
           "totalSupplyRaw": "61231045448803446270623n",
@@ -127,8 +127,8 @@
         },
         {
           "address": "0x6ab707Aca953eDAeFBc4fD23bA73294241490620",
-          "name": "Aave USDT",
-          "symbol": "AUSDT",
+          "name": "Aave Arbitrum USDT",
+          "symbol": "aArbUSDT",
           "decimals": 6,
           "type": "protocol",
           "totalSupplyRaw": "43565558188514n",
@@ -157,7 +157,7 @@
           "tokens": [
             {
               "address": "0xba5DdD1f9d7F570dc94a51479a000E3BCE967196",
-              "name": "Aave",
+              "name": "Aave Token",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "3599998241009511992398n",
@@ -202,7 +202,7 @@
             {
               "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
               "name": "Rocket Pool ETH",
-              "symbol": "RETH",
+              "symbol": "rETH",
               "decimals": 18,
               "totalSupplyRaw": "2757103413437894022719n",
               "type": "underlying",
@@ -223,7 +223,7 @@
           "tokens": [
             {
               "address": "0x93b346b6BC2548dA6A1E7d98E9a421B42541425b",
-              "name": "Liquity USD",
+              "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "242277944225822661163961n",
@@ -372,7 +372,7 @@
             {
               "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
               "name": "USD Coin (Arb1)",
-              "symbol": "USDC.E",
+              "symbol": "USDC",
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
@@ -459,7 +459,7 @@
           "tokens": [
             {
               "address": "0xba5DdD1f9d7F570dc94a51479a000E3BCE967196",
-              "name": "Aave",
+              "name": "Aave Token",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "0n",
@@ -504,7 +504,7 @@
             {
               "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
               "name": "Rocket Pool ETH",
-              "symbol": "RETH",
+              "symbol": "rETH",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
@@ -525,7 +525,7 @@
           "tokens": [
             {
               "address": "0x93b346b6BC2548dA6A1E7d98E9a421B42541425b",
-              "name": "Liquity USD",
+              "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
@@ -674,7 +674,7 @@
             {
               "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
               "name": "USD Coin (Arb1)",
-              "symbol": "USDC.E",
+              "symbol": "USDC",
               "decimals": 6,
               "totalSupplyRaw": "0n",
               "type": "underlying",
@@ -761,7 +761,7 @@
           "tokens": [
             {
               "address": "0xba5DdD1f9d7F570dc94a51479a000E3BCE967196",
-              "name": "Aave",
+              "name": "Aave Token",
               "symbol": "AAVE",
               "decimals": 18,
               "totalSupplyRaw": "0n",
@@ -806,7 +806,7 @@
             {
               "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
               "name": "Rocket Pool ETH",
-              "symbol": "RETH",
+              "symbol": "rETH",
               "decimals": 18,
               "totalSupplyRaw": "0n",
               "type": "underlying",
@@ -827,7 +827,7 @@
           "tokens": [
             {
               "address": "0x93b346b6BC2548dA6A1E7d98E9a421B42541425b",
-              "name": "Liquity USD",
+              "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "totalSupplyRaw": "0n",
