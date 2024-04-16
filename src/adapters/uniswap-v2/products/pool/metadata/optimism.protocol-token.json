@@ -1818,5 +1818,25 @@
       "symbol": "opDXN",
       "decimals": 18
     }
+  },
+  "0x1Dd2B76fF7D68F7b9C3607fE4C889A4903354550": {
+    "protocolToken": {
+      "address": "0x1Dd2B76fF7D68F7b9C3607fE4C889A4903354550",
+      "name": "Uniswap V2 HOUND / USDT",
+      "symbol": "UNI-V2/HOUND/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x145e8E710689bDA7FD70ADE87E34301990DE4594",
+      "name": "$Hound on Optimism",
+      "symbol": "HOUND",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
   }
 }

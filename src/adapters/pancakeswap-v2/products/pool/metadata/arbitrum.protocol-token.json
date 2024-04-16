@@ -262,8 +262,8 @@
   "0xDcCc6d5757290727514FDEF7db68aC8540445167": {
     "protocolToken": {
       "address": "0xDcCc6d5757290727514FDEF7db68aC8540445167",
-      "name": "Pancake LPs Cake / USDC.E",
-      "symbol": "Cake-LP/Cake/USDC.E",
+      "name": "Pancake LPs Cake / USDC",
+      "symbol": "Cake-LP/Cake/USDC",
       "decimals": 18
     },
     "token0": {
@@ -275,7 +275,7 @@
     "token1": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC.E",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
@@ -328,7 +328,7 @@
     },
     "token0": {
       "address": "0x9dB8a10C7FE60d84397860b3aF2E686D4F90C2b7",
-      "name": "ArbiSwap",
+      "name": "Arbiswap Token",
       "symbol": "ARBI",
       "decimals": 18
     },
@@ -602,8 +602,8 @@
   "0x71472057aeab56360e7207AD412150Db2F049AE7": {
     "protocolToken": {
       "address": "0x71472057aeab56360e7207AD412150Db2F049AE7",
-      "name": "Pancake LPs USDT / USDC.E",
-      "symbol": "Cake-LP/USDT/USDC.E",
+      "name": "Pancake LPs USDT / USDC",
+      "symbol": "Cake-LP/USDT/USDC",
       "decimals": 18
     },
     "token0": {
@@ -615,15 +615,15 @@
     "token1": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC.E",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
   "0xF91Cb08DF79A668fBe8038308ab1B0187A9F61a9": {
     "protocolToken": {
       "address": "0xF91Cb08DF79A668fBe8038308ab1B0187A9F61a9",
-      "name": "Pancake LPs WETH / USDC.E",
-      "symbol": "Cake-LP/WETH/USDC.E",
+      "name": "Pancake LPs WETH / USDC",
+      "symbol": "Cake-LP/WETH/USDC",
       "decimals": 18
     },
     "token0": {
@@ -635,7 +635,7 @@
     "token1": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC.E",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
@@ -662,8 +662,8 @@
   "0xB271713DceAD767cF81c4155df5e000F382C63a3": {
     "protocolToken": {
       "address": "0xB271713DceAD767cF81c4155df5e000F382C63a3",
-      "name": "Pancake LPs ARB / USDC.E",
-      "symbol": "Cake-LP/ARB/USDC.E",
+      "name": "Pancake LPs ARB / USDC",
+      "symbol": "Cake-LP/ARB/USDC",
       "decimals": 18
     },
     "token0": {
@@ -675,7 +675,7 @@
     "token1": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC.E",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
@@ -2002,14 +2002,14 @@
   "0x9D02Ed49267AADE9832A90337839512F6b71339d": {
     "protocolToken": {
       "address": "0x9D02Ed49267AADE9832A90337839512F6b71339d",
-      "name": "Pancake LPs IZI / USDT",
-      "symbol": "Cake-LP/IZI/USDT",
+      "name": "Pancake LPs iZi / USDT",
+      "symbol": "Cake-LP/iZi/USDT",
       "decimals": 18
     },
     "token0": {
       "address": "0x60D01EC2D5E98Ac51C8B4cF84DfCCE98D527c747",
       "name": "izumi Token",
-      "symbol": "IZI",
+      "symbol": "iZi",
       "decimals": 18
     },
     "token1": {
@@ -2154,7 +2154,7 @@
     },
     "token1": {
       "address": "0xBfbCFe8873fE28Dfa25f1099282b088D52bbAD9C",
-      "name": "Equilibria Finance",
+      "name": "Equilibria Token",
       "symbol": "EQB",
       "decimals": 18
     }
@@ -2402,8 +2402,8 @@
   "0xcB10940fe57322E0560EcEaEa59687f207eAA040": {
     "protocolToken": {
       "address": "0xcB10940fe57322E0560EcEaEa59687f207eAA040",
-      "name": "Pancake LPs Megabrain / USDC.E",
-      "symbol": "Cake-LP/Megabrain/USDC.E",
+      "name": "Pancake LPs Megabrain / USDC",
+      "symbol": "Cake-LP/Megabrain/USDC",
       "decimals": 18
     },
     "token0": {
@@ -2415,7 +2415,7 @@
     "token1": {
       "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
       "name": "USD Coin (Arb1)",
-      "symbol": "USDC.E",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
@@ -2582,14 +2582,14 @@
   "0x3A1C3a3ec7c4DF82BF50c3E977995087BA6D1362": {
     "protocolToken": {
       "address": "0x3A1C3a3ec7c4DF82BF50c3E977995087BA6D1362",
-      "name": "Pancake LPs AXLUSDC / WARP",
-      "symbol": "Cake-LP/AXLUSDC/WARP",
+      "name": "Pancake LPs axlUSDC / WARP",
+      "symbol": "Cake-LP/axlUSDC/WARP",
       "decimals": 18
     },
     "token0": {
       "address": "0xEB466342C4d449BC9f53A865D5Cb90586f405215",
-      "name": "Axelar USDC",
-      "symbol": "AXLUSDC",
+      "name": "Axelar Wrapped USDC",
+      "symbol": "axlUSDC",
       "decimals": 6
     },
     "token1": {
@@ -2714,7 +2714,7 @@
     },
     "token1": {
       "address": "0xa61F74247455A40b01b0559ff6274441FAfa22A3",
-      "name": "Magpie",
+      "name": "Magpie Token",
       "symbol": "MGP",
       "decimals": 18
     }
@@ -3968,7 +3968,7 @@
     },
     "token0": {
       "address": "0x3d9907F9a368ad0a51Be60f7Da3b97cf940982D8",
-      "name": "Camelot Token",
+      "name": "Camelot token",
       "symbol": "GRAIL",
       "decimals": 18
     },

@@ -88,7 +88,7 @@
     },
     "token0": {
       "address": "0x9EA3b5b4EC044b70375236A281986106457b20EF",
-      "name": "Delta Financial",
+      "name": "DELTA.financial - deep DeFi derivatives",
       "symbol": "DELTA",
       "decimals": 18
     },
@@ -108,7 +108,7 @@
     },
     "token0": {
       "address": "0x269616D549D7e8Eaa82DFb17028d0B212D11232A",
-      "name": "Punk Vault  NFTX ",
+      "name": "CryptoPunks",
       "symbol": "PUNK",
       "decimals": 18
     },
@@ -122,14 +122,14 @@
   "0x3E04863DBa602713Bb5d0edbf7DB7C3A9A2B6027": {
     "protocolToken": {
       "address": "0x3E04863DBa602713Bb5d0edbf7DB7C3A9A2B6027",
-      "name": "SushiSwap LP Token UWU / WETH",
-      "symbol": "SLP/UWU/WETH",
+      "name": "SushiSwap LP Token UwU / WETH",
+      "symbol": "SLP/UwU/WETH",
       "decimals": 18
     },
     "token0": {
       "address": "0x55C08ca52497e2f1534B59E2917BF524D4765257",
       "name": "UwU Lend",
-      "symbol": "UWU",
+      "symbol": "UwU",
       "decimals": 18
     },
     "token1": {
@@ -168,7 +168,7 @@
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
@@ -308,7 +308,7 @@
     },
     "token0": {
       "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-      "name": "Chainlink Token",
+      "name": "ChainLink Token",
       "symbol": "LINK",
       "decimals": 18
     },
@@ -328,28 +328,8 @@
     },
     "token0": {
       "address": "0xa5f2211B9b8170F694421f2046281775E8468044",
-      "name": "THORSwap",
+      "name": "THORSwap Token",
       "symbol": "THOR",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x15A8E38942F9e353BEc8812763fb3C104c89eCf4": {
-    "protocolToken": {
-      "address": "0x15A8E38942F9e353BEc8812763fb3C104c89eCf4",
-      "name": "SushiSwap LP Token MILADY / WETH",
-      "symbol": "SLP/MILADY/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x227c7DF69D3ed1ae7574A1a7685fDEd90292EB48",
-      "name": "Milady Vault  NFTX ",
-      "symbol": "MILADY",
       "decimals": 18
     },
     "token1": {
@@ -376,6 +356,26 @@
       "address": "0xd084944d3c05CD115C09d072B9F44bA3E0E45921",
       "name": "Manifold Finance",
       "symbol": "FOLD",
+      "decimals": 18
+    }
+  },
+  "0x15A8E38942F9e353BEc8812763fb3C104c89eCf4": {
+    "protocolToken": {
+      "address": "0x15A8E38942F9e353BEc8812763fb3C104c89eCf4",
+      "name": "SushiSwap LP Token MILADY / WETH",
+      "symbol": "SLP/MILADY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x227c7DF69D3ed1ae7574A1a7685fDEd90292EB48",
+      "name": "Milady Maker",
+      "symbol": "MILADY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -439,26 +439,6 @@
       "decimals": 18
     }
   },
-  "0x088ee5007C98a9677165D78dD2109AE4a3D04d0C": {
-    "protocolToken": {
-      "address": "0x088ee5007C98a9677165D78dD2109AE4a3D04d0C",
-      "name": "SushiSwap LP Token YFI / WETH",
-      "symbol": "SLP/YFI/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
-      "name": "yearn.finance",
-      "symbol": "YFI",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x1b803Af96F37AE51Fa753E13E1D2E372dFA17791": {
     "protocolToken": {
       "address": "0x1b803Af96F37AE51Fa753E13E1D2E372dFA17791",
@@ -479,17 +459,17 @@
       "decimals": 18
     }
   },
-  "0x99B42F2B49C395D2a77D973f6009aBb5d67dA343": {
+  "0x088ee5007C98a9677165D78dD2109AE4a3D04d0C": {
     "protocolToken": {
-      "address": "0x99B42F2B49C395D2a77D973f6009aBb5d67dA343",
-      "name": "SushiSwap LP Token YGG / WETH",
-      "symbol": "SLP/YGG/WETH",
+      "address": "0x088ee5007C98a9677165D78dD2109AE4a3D04d0C",
+      "name": "SushiSwap LP Token YFI / WETH",
+      "symbol": "SLP/YFI/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x25f8087EAD173b73D6e8B84329989A8eEA16CF73",
-      "name": "Yield Guild Games",
-      "symbol": "YGG",
+      "address": "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
+      "name": "yearn.finance",
+      "symbol": "YFI",
       "decimals": 18
     },
     "token1": {
@@ -508,7 +488,7 @@
     },
     "token0": {
       "address": "0x903bEF1736CDdf2A537176cf3C64579C3867A881",
-      "name": "ichifarm",
+      "name": "ichi.farm",
       "symbol": "ICHI",
       "decimals": 9
     },
@@ -528,9 +508,29 @@
     },
     "token0": {
       "address": "0xa693B19d2931d498c5B318dF961919BB4aee87a5",
-      "name": "UST Token",
+      "name": "UST",
       "symbol": "UST",
       "decimals": 6
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x99B42F2B49C395D2a77D973f6009aBb5d67dA343": {
+    "protocolToken": {
+      "address": "0x99B42F2B49C395D2a77D973f6009aBb5d67dA343",
+      "name": "SushiSwap LP Token YGG / WETH",
+      "symbol": "SLP/YGG/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x25f8087EAD173b73D6e8B84329989A8eEA16CF73",
+      "name": "Yield Guild Games Token",
+      "symbol": "YGG",
+      "decimals": 18
     },
     "token1": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -554,68 +554,8 @@
     },
     "token1": {
       "address": "0x3472A5A71965499acd81997a54BBA8D852C6E53d",
-      "name": "BADGER",
+      "name": "Badger",
       "symbol": "BADGER",
-      "decimals": 18
-    }
-  },
-  "0x161a4987adc70A642A247bD689A54EFe3190BE42": {
-    "protocolToken": {
-      "address": "0x161a4987adc70A642A247bD689A54EFe3190BE42",
-      "name": "SushiSwap LP Token NRCH / WETH",
-      "symbol": "SLP/NRCH/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x69fa8e7F6bf1ca1fB0de61e1366f7412b827CC51",
-      "name": "Enreach",
-      "symbol": "NRCH",
-      "decimals": 9
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x95cFa1f48faD82232772d3B1415Ad4393517F3b5": {
-    "protocolToken": {
-      "address": "0x95cFa1f48faD82232772d3B1415Ad4393517F3b5",
-      "name": "SushiSwap LP Token XRUNE / WETH",
-      "symbol": "SLP/XRUNE/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x69fa0feE221AD11012BAb0FdB45d444D3D2Ce71c",
-      "name": "Thorstarter",
-      "symbol": "XRUNE",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x1E888882D0F291DD88C5605108c72d414f29D460": {
-    "protocolToken": {
-      "address": "0x1E888882D0F291DD88C5605108c72d414f29D460",
-      "name": "SushiSwap LP Token USDC / QUARTZ",
-      "symbol": "SLP/USDC/QUARTZ",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
-    },
-    "token1": {
-      "address": "0xbA8A621b4a54e61C442F5Ec623687e2a942225ef",
-      "name": "Sandclock",
-      "symbol": "QUARTZ",
       "decimals": 18
     }
   },
@@ -639,6 +579,86 @@
       "decimals": 18
     }
   },
+  "0x161a4987adc70A642A247bD689A54EFe3190BE42": {
+    "protocolToken": {
+      "address": "0x161a4987adc70A642A247bD689A54EFe3190BE42",
+      "name": "SushiSwap LP Token NRCH / WETH",
+      "symbol": "SLP/NRCH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x69fa8e7F6bf1ca1fB0de61e1366f7412b827CC51",
+      "name": "EnreachDAO",
+      "symbol": "NRCH",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x95cFa1f48faD82232772d3B1415Ad4393517F3b5": {
+    "protocolToken": {
+      "address": "0x95cFa1f48faD82232772d3B1415Ad4393517F3b5",
+      "name": "SushiSwap LP Token XRUNE / WETH",
+      "symbol": "SLP/XRUNE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x69fa0feE221AD11012BAb0FdB45d444D3D2Ce71c",
+      "name": "XRUNE Token",
+      "symbol": "XRUNE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x7cF6A842e72c4bD7Bc92e0C17EBDaa95AC1e7825": {
+    "protocolToken": {
+      "address": "0x7cF6A842e72c4bD7Bc92e0C17EBDaa95AC1e7825",
+      "name": "SushiSwap LP Token WETH / RAIL",
+      "symbol": "SLP/WETH/RAIL",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe76C6c83af64e4C60245D8C7dE953DF673a7A33D",
+      "name": "Rail",
+      "symbol": "RAIL",
+      "decimals": 18
+    }
+  },
+  "0x1E888882D0F291DD88C5605108c72d414f29D460": {
+    "protocolToken": {
+      "address": "0x1E888882D0F291DD88C5605108c72d414f29D460",
+      "name": "SushiSwap LP Token USDC / QUARTZ",
+      "symbol": "SLP/USDC/QUARTZ",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xbA8A621b4a54e61C442F5Ec623687e2a942225ef",
+      "name": "Sandclock",
+      "symbol": "QUARTZ",
+      "decimals": 18
+    }
+  },
   "0xc5E5551E7434484Adbf2Ccd9669BEFecB1273eB4": {
     "protocolToken": {
       "address": "0xc5E5551E7434484Adbf2Ccd9669BEFecB1273eB4",
@@ -659,57 +679,17 @@
       "decimals": 18
     }
   },
-  "0xb5De0C3753b6E1B4dBA616Db82767F17513E6d4E": {
-    "protocolToken": {
-      "address": "0xb5De0C3753b6E1B4dBA616Db82767F17513E6d4E",
-      "name": "SushiSwap LP Token SPELL / WETH",
-      "symbol": "SLP/SPELL/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x090185f2135308BaD17527004364eBcC2D37e5F6",
-      "name": "Spell Token",
-      "symbol": "SPELL",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x9461173740D27311b176476FA27e94C681b1Ea6b": {
     "protocolToken": {
       "address": "0x9461173740D27311b176476FA27e94C681b1Ea6b",
-      "name": "SushiSwap LP Token YVBOOST / WETH",
-      "symbol": "SLP/YVBOOST/WETH",
+      "name": "SushiSwap LP Token yvBOOST / WETH",
+      "symbol": "SLP/yvBOOST/WETH",
       "decimals": 18
     },
     "token0": {
       "address": "0x9d409a0A012CFbA9B15F6D4B36Ac57A46966Ab9a",
       "name": "Yearn Compounding veCRV yVault",
-      "symbol": "YVBOOST",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0xD75EA151a61d06868E31F8988D28DFE5E9df57B4": {
-    "protocolToken": {
-      "address": "0xD75EA151a61d06868E31F8988D28DFE5E9df57B4",
-      "name": "SushiSwap LP Token AAVE / WETH",
-      "symbol": "SLP/AAVE/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
-      "name": "Aave",
-      "symbol": "AAVE",
+      "symbol": "yvBOOST",
       "decimals": 18
     },
     "token1": {
@@ -728,8 +708,48 @@
     },
     "token0": {
       "address": "0x579CEa1889991f68aCc35Ff5c3dd0621fF29b0C9",
-      "name": "IQ",
+      "name": "Everipedia IQ",
       "symbol": "IQ",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xD75EA151a61d06868E31F8988D28DFE5E9df57B4": {
+    "protocolToken": {
+      "address": "0xD75EA151a61d06868E31F8988D28DFE5E9df57B4",
+      "name": "SushiSwap LP Token AAVE / WETH",
+      "symbol": "SLP/AAVE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+      "name": "Aave Token",
+      "symbol": "AAVE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xb5De0C3753b6E1B4dBA616Db82767F17513E6d4E": {
+    "protocolToken": {
+      "address": "0xb5De0C3753b6E1B4dBA616Db82767F17513E6d4E",
+      "name": "SushiSwap LP Token SPELL / WETH",
+      "symbol": "SLP/SPELL/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x090185f2135308BaD17527004364eBcC2D37e5F6",
+      "name": "Spell Token",
+      "symbol": "SPELL",
       "decimals": 18
     },
     "token1": {
@@ -774,7 +794,7 @@
     },
     "token1": {
       "address": "0xe28b3B32B6c345A34Ff64674606124Dd5Aceca30",
-      "name": "Injective",
+      "name": "Injective Token",
       "symbol": "INJ",
       "decimals": 18
     }
@@ -859,23 +879,43 @@
       "decimals": 18
     }
   },
-  "0x7cF6A842e72c4bD7Bc92e0C17EBDaa95AC1e7825": {
+  "0xBa13afEcda9beB75De5c56BbAF696b880a5A50dD": {
     "protocolToken": {
-      "address": "0x7cF6A842e72c4bD7Bc92e0C17EBDaa95AC1e7825",
-      "name": "SushiSwap LP Token WETH / RAIL",
-      "symbol": "SLP/WETH/RAIL",
+      "address": "0xBa13afEcda9beB75De5c56BbAF696b880a5A50dD",
+      "name": "SushiSwap LP Token MKR / WETH",
+      "symbol": "SLP/MKR/WETH",
       "decimals": 18
     },
     "token0": {
+      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "name": "Maker",
+      "symbol": "MKR",
+      "decimals": 18
+    },
+    "token1": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimals": 18
+    }
+  },
+  "0xc7175038323562cB68E4BbdD379E9fE65134937f": {
+    "protocolToken": {
+      "address": "0xc7175038323562cB68E4BbdD379E9fE65134937f",
+      "name": "SushiSwap LP Token $MAID / WETH",
+      "symbol": "SLP/$MAID/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4Af698B479D0098229DC715655c667Ceb6cd8433",
+      "name": "MaidCoin",
+      "symbol": "$MAID",
+      "decimals": 18
     },
     "token1": {
-      "address": "0xe76C6c83af64e4C60245D8C7dE953DF673a7A33D",
-      "name": "Rail",
-      "symbol": "RAIL",
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -890,46 +930,6 @@
       "address": "0xBA11D00c5f74255f56a5E366F4F77f5A186d7f55",
       "name": "BandToken",
       "symbol": "BAND",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0xc7175038323562cB68E4BbdD379E9fE65134937f": {
-    "protocolToken": {
-      "address": "0xc7175038323562cB68E4BbdD379E9fE65134937f",
-      "name": "SushiSwap LP Token MAID / WETH",
-      "symbol": "SLP/MAID/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x4Af698B479D0098229DC715655c667Ceb6cd8433",
-      "name": "MaidCoin",
-      "symbol": "MAID",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0xBa13afEcda9beB75De5c56BbAF696b880a5A50dD": {
-    "protocolToken": {
-      "address": "0xBa13afEcda9beB75De5c56BbAF696b880a5A50dD",
-      "name": "SushiSwap LP Token MKR / WETH",
-      "symbol": "SLP/MKR/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
-      "name": "Maker",
-      "symbol": "MKR",
       "decimals": 18
     },
     "token1": {
@@ -959,6 +959,26 @@
       "decimals": 18
     }
   },
+  "0xe339c1D0A744053CbCeb0D2dc2d13967c8a69586": {
+    "protocolToken": {
+      "address": "0xe339c1D0A744053CbCeb0D2dc2d13967c8a69586",
+      "name": "SushiSwap LP Token MEEB / WETH",
+      "symbol": "SLP/MEEB/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x641927E970222B10b2E8CDBC96b1B4F427316f16",
+      "name": "Meebits",
+      "symbol": "MEEB",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0x5c596C6a65f628Fc1090853D8eB1927651E9d9B2": {
     "protocolToken": {
       "address": "0x5c596C6a65f628Fc1090853D8eB1927651E9d9B2",
@@ -970,26 +990,6 @@
       "address": "0x9AB7bb7FdC60f4357ECFef43986818A2A3569c62",
       "name": "Guild of Guardians",
       "symbol": "GOG",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0xe339c1D0A744053CbCeb0D2dc2d13967c8a69586": {
-    "protocolToken": {
-      "address": "0xe339c1D0A744053CbCeb0D2dc2d13967c8a69586",
-      "name": "SushiSwap LP Token MEEB / WETH",
-      "symbol": "SLP/MEEB/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x641927E970222B10b2E8CDBC96b1B4F427316f16",
-      "name": "MEEB Vault  NFTX ",
-      "symbol": "MEEB",
       "decimals": 18
     },
     "token1": {
@@ -1014,7 +1014,7 @@
     },
     "token1": {
       "address": "0xD417144312DbF50465b1C641d016962017Ef6240",
-      "name": "Covalent",
+      "name": "Covalent Query Token",
       "symbol": "CQT",
       "decimals": 18
     }
@@ -1022,8 +1022,8 @@
   "0x10B47177E92Ef9D5C6059055d92DdF6290848991": {
     "protocolToken": {
       "address": "0x10B47177E92Ef9D5C6059055d92DdF6290848991",
-      "name": "SushiSwap LP Token WETH / YVECRV-DAO",
-      "symbol": "SLP/WETH/YVECRV-DAO",
+      "name": "SushiSwap LP Token WETH / yveCRV-DAO",
+      "symbol": "SLP/WETH/yveCRV-DAO",
       "decimals": 18
     },
     "token0": {
@@ -1035,7 +1035,7 @@
     "token1": {
       "address": "0xc5bDdf9843308380375a611c18B50Fb9341f502A",
       "name": "veCRV-DAO yVault",
-      "symbol": "YVECRV-DAO",
+      "symbol": "yveCRV-DAO",
       "decimals": 18
     }
   },
@@ -1079,6 +1079,46 @@
       "decimals": 18
     }
   },
+  "0x69d4f0e72A9De650dd3Fe1f185Ed3bF1E9E7E3ED": {
+    "protocolToken": {
+      "address": "0x69d4f0e72A9De650dd3Fe1f185Ed3bF1E9E7E3ED",
+      "name": "SushiSwap LP Token WBTC / ROBO",
+      "symbol": "SLP/WBTC/ROBO",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0x6FC2f1044A3b9bB3e43A43EC8F840843Ed753061",
+      "name": "Robo Token",
+      "symbol": "ROBO",
+      "decimals": 18
+    }
+  },
+  "0x36e2FCCCc59e5747Ff63a03ea2e5C0c2C14911e7": {
+    "protocolToken": {
+      "address": "0x36e2FCCCc59e5747Ff63a03ea2e5C0c2C14911e7",
+      "name": "SushiSwap LP Token xSUSHI / WETH",
+      "symbol": "SLP/xSUSHI/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272",
+      "name": "SushiBar",
+      "symbol": "xSUSHI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0xA1d7b2d891e3A1f9ef4bBC5be20630C2FEB1c470": {
     "protocolToken": {
       "address": "0xA1d7b2d891e3A1f9ef4bBC5be20630C2FEB1c470",
@@ -1099,46 +1139,6 @@
       "decimals": 18
     }
   },
-  "0x69d4f0e72A9De650dd3Fe1f185Ed3bF1E9E7E3ED": {
-    "protocolToken": {
-      "address": "0x69d4f0e72A9De650dd3Fe1f185Ed3bF1E9E7E3ED",
-      "name": "SushiSwap LP Token WBTC / ROBO",
-      "symbol": "SLP/WBTC/ROBO",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-      "name": "Wrapped BTC",
-      "symbol": "WBTC",
-      "decimals": 8
-    },
-    "token1": {
-      "address": "0x6FC2f1044A3b9bB3e43A43EC8F840843Ed753061",
-      "name": "Robo",
-      "symbol": "ROBO",
-      "decimals": 18
-    }
-  },
-  "0x36e2FCCCc59e5747Ff63a03ea2e5C0c2C14911e7": {
-    "protocolToken": {
-      "address": "0x36e2FCCCc59e5747Ff63a03ea2e5C0c2C14911e7",
-      "name": "SushiSwap LP Token XSUSHI / WETH",
-      "symbol": "SLP/XSUSHI/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272",
-      "name": "SushiBar",
-      "symbol": "XSUSHI",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x05767d9EF41dC40689678fFca0608878fb3dE906": {
     "protocolToken": {
       "address": "0x05767d9EF41dC40689678fFca0608878fb3dE906",
@@ -1148,28 +1148,8 @@
     },
     "token0": {
       "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-      "name": "Convex Finance",
+      "name": "Convex Token",
       "symbol": "CVX",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x39F49254d6EAf6B2B2549DFeC4Ed93CF6bae167F": {
-    "protocolToken": {
-      "address": "0x39F49254d6EAf6B2B2549DFeC4Ed93CF6bae167F",
-      "name": "SushiSwap LP Token OMNI / WETH",
-      "symbol": "SLP/OMNI/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x9e20461bc2c4c980f62f1B279D71734207a6A356",
-      "name": "OmniCat",
-      "symbol": "OMNI",
       "decimals": 18
     },
     "token1": {
@@ -1219,6 +1199,26 @@
       "decimals": 18
     }
   },
+  "0x39F49254d6EAf6B2B2549DFeC4Ed93CF6bae167F": {
+    "protocolToken": {
+      "address": "0x39F49254d6EAf6B2B2549DFeC4Ed93CF6bae167F",
+      "name": "SushiSwap LP Token OMNI / WETH",
+      "symbol": "SLP/OMNI/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x9e20461bc2c4c980f62f1B279D71734207a6A356",
+      "name": "OmniCat",
+      "symbol": "OMNI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0x22b15c7Ee1186A7C7CFfB2D942e20Fc228F6E4Ed": {
     "protocolToken": {
       "address": "0x22b15c7Ee1186A7C7CFfB2D942e20Fc228F6E4Ed",
@@ -1234,8 +1234,28 @@
     },
     "token1": {
       "address": "0xCB56b52316041A62B6b5D0583DcE4A8AE7a3C629",
-      "name": "Cigarettes",
+      "name": "Cigarette Token",
       "symbol": "CIG",
+      "decimals": 18
+    }
+  },
+  "0x698AbbBC986C59D02941E18BC96fe2396493339B": {
+    "protocolToken": {
+      "address": "0x698AbbBC986C59D02941E18BC96fe2396493339B",
+      "name": "SushiSwap LP Token SQGL / WETH",
+      "symbol": "SLP/SQGL/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x8d137e3337eb1B58A222Fef2B2Cc7C423903d9cf",
+      "name": "Chromie Squiggle",
+      "symbol": "SQGL",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -1254,42 +1274,22 @@
     },
     "token1": {
       "address": "0xcB84d72e61e383767C4DFEb2d8ff7f4FB89abc6e",
-      "name": "Vega Protocol",
+      "name": "VEGA",
       "symbol": "VEGA",
-      "decimals": 18
-    }
-  },
-  "0x7825dE5586E4d2FD04459091bbe783fa243E1bf3": {
-    "protocolToken": {
-      "address": "0x7825dE5586E4d2FD04459091bbe783fa243E1bf3",
-      "name": "SushiSwap LP Token FTT / WETH",
-      "symbol": "SLP/FTT/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x50D1c9771902476076eCFc8B2A83Ad6b9355a4c9",
-      "name": "FTX",
-      "symbol": "FTT",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
       "decimals": 18
     }
   },
   "0x164FE0239d703379Bddde3c80e4d4800A1cd452B": {
     "protocolToken": {
       "address": "0x164FE0239d703379Bddde3c80e4d4800A1cd452B",
-      "name": "SushiSwap LP Token BTC2X-FLI / WBTC",
-      "symbol": "SLP/BTC2X-FLI/WBTC",
+      "name": "SushiSwap LP Token BTC2x-FLI / WBTC",
+      "symbol": "SLP/BTC2x-FLI/WBTC",
       "decimals": 18
     },
     "token0": {
       "address": "0x0B498ff89709d3838a063f1dFA463091F9801c2b",
       "name": "BTC 2x Flexible Leverage Index",
-      "symbol": "BTC2X-FLI",
+      "symbol": "BTC2x-FLI",
       "decimals": 18
     },
     "token1": {
@@ -1299,17 +1299,17 @@
       "decimals": 8
     }
   },
-  "0x698AbbBC986C59D02941E18BC96fe2396493339B": {
+  "0x7825dE5586E4d2FD04459091bbe783fa243E1bf3": {
     "protocolToken": {
-      "address": "0x698AbbBC986C59D02941E18BC96fe2396493339B",
-      "name": "SushiSwap LP Token SQGL / WETH",
-      "symbol": "SLP/SQGL/WETH",
+      "address": "0x7825dE5586E4d2FD04459091bbe783fa243E1bf3",
+      "name": "SushiSwap LP Token FTX Token / WETH",
+      "symbol": "SLP/FTX Token/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x8d137e3337eb1B58A222Fef2B2Cc7C423903d9cf",
-      "name": "SQGL Vault  NFTX ",
-      "symbol": "SQGL",
+      "address": "0x50D1c9771902476076eCFc8B2A83Ad6b9355a4c9",
+      "name": "FTT",
+      "symbol": "FTX Token",
       "decimals": 18
     },
     "token1": {
@@ -1322,34 +1322,14 @@
   "0xF1F85b2C54a2bD284B1cf4141D64fD171Bd85539": {
     "protocolToken": {
       "address": "0xF1F85b2C54a2bD284B1cf4141D64fD171Bd85539",
-      "name": "SushiSwap LP Token SUSD / WETH",
-      "symbol": "SLP/SUSD/WETH",
+      "name": "SushiSwap LP Token sUSD / WETH",
+      "symbol": "SLP/sUSD/WETH",
       "decimals": 18
     },
     "token0": {
       "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
       "name": "Synth sUSD",
-      "symbol": "SUSD",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x5a70513ec742EBbFB99094c7fd3096a0a3e25B86": {
-    "protocolToken": {
-      "address": "0x5a70513ec742EBbFB99094c7fd3096a0a3e25B86",
-      "name": "SushiSwap LP Token WFLOW / WETH",
-      "symbol": "SLP/WFLOW/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x5c147e74D63B1D31AA3Fd78Eb229B65161983B2b",
-      "name": "Wrapped Flow",
-      "symbol": "WFLOW",
+      "symbol": "sUSD",
       "decimals": 18
     },
     "token1": {
@@ -1379,17 +1359,17 @@
       "decimals": 8
     }
   },
-  "0x2979fa622CcB9F6B8925ca831f30C405077730c6": {
+  "0x5a70513ec742EBbFB99094c7fd3096a0a3e25B86": {
     "protocolToken": {
-      "address": "0x2979fa622CcB9F6B8925ca831f30C405077730c6",
-      "name": "SushiSwap LP Token SUKU / WETH",
-      "symbol": "SLP/SUKU/WETH",
+      "address": "0x5a70513ec742EBbFB99094c7fd3096a0a3e25B86",
+      "name": "SushiSwap LP Token WFLOW / WETH",
+      "symbol": "SLP/WFLOW/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x0763fdCCF1aE541A5961815C0872A8c5Bc6DE4d7",
-      "name": "SUKU",
-      "symbol": "SUKU",
+      "address": "0x5c147e74D63B1D31AA3Fd78Eb229B65161983B2b",
+      "name": "Wrapped Flow",
+      "symbol": "WFLOW",
       "decimals": 18
     },
     "token1": {
@@ -1419,6 +1399,26 @@
       "decimals": 18
     }
   },
+  "0x2979fa622CcB9F6B8925ca831f30C405077730c6": {
+    "protocolToken": {
+      "address": "0x2979fa622CcB9F6B8925ca831f30C405077730c6",
+      "name": "SushiSwap LP Token SUKU / WETH",
+      "symbol": "SLP/SUKU/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0763fdCCF1aE541A5961815C0872A8c5Bc6DE4d7",
+      "name": "SUKU",
+      "symbol": "SUKU",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0x001b6450083E531A5a7Bf310BD2c1Af4247E23D4": {
     "protocolToken": {
       "address": "0x001b6450083E531A5a7Bf310BD2c1Af4247E23D4",
@@ -1428,7 +1428,7 @@
     },
     "token0": {
       "address": "0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828",
-      "name": "UMA",
+      "name": "UMA Voting Token v1",
       "symbol": "UMA",
       "decimals": 18
     },
@@ -1439,24 +1439,24 @@
       "decimals": 18
     }
   },
-  "0x18Cd890F4e23422DC4aa8C2D6E0Bd3F3bD8873d8": {
+  "0xF7ac1F571856d7dbfBb56728C48823A2a19E4326": {
     "protocolToken": {
-      "address": "0x18Cd890F4e23422DC4aa8C2D6E0Bd3F3bD8873d8",
-      "name": "SushiSwap LP Token WETH / IMX",
-      "symbol": "SLP/WETH/IMX",
+      "address": "0xF7ac1F571856d7dbfBb56728C48823A2a19E4326",
+      "name": "SushiSwap LP Token CLNY / USDC",
+      "symbol": "SLP/CLNY/USDC",
       "decimals": 18
     },
     "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
+      "address": "0x3E828ac5C480069D4765654Fb4b8733b910b13b2",
+      "name": "Colony Network Token",
+      "symbol": "CLNY",
       "decimals": 18
     },
     "token1": {
-      "address": "0xF57e7e7C23978C3cAEC3C3548E3D615c346e79fF",
-      "name": "ImmutableX",
-      "symbol": "IMX",
-      "decimals": 18
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
     }
   },
   "0xa1181481bEb2dc5De0DaF2c85392d81C704BF75D": {
@@ -1479,31 +1479,11 @@
       "decimals": 18
     }
   },
-  "0xF7ac1F571856d7dbfBb56728C48823A2a19E4326": {
+  "0x18Cd890F4e23422DC4aa8C2D6E0Bd3F3bD8873d8": {
     "protocolToken": {
-      "address": "0xF7ac1F571856d7dbfBb56728C48823A2a19E4326",
-      "name": "SushiSwap LP Token CLNY / USDC",
-      "symbol": "SLP/CLNY/USDC",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x3E828ac5C480069D4765654Fb4b8733b910b13b2",
-      "name": "Colony Network",
-      "symbol": "CLNY",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
-    }
-  },
-  "0x58Dc5a51fE44589BEb22E8CE67720B5BC5378009": {
-    "protocolToken": {
-      "address": "0x58Dc5a51fE44589BEb22E8CE67720B5BC5378009",
-      "name": "SushiSwap LP Token WETH / CRV",
-      "symbol": "SLP/WETH/CRV",
+      "address": "0x18Cd890F4e23422DC4aa8C2D6E0Bd3F3bD8873d8",
+      "name": "SushiSwap LP Token WETH / IMX",
+      "symbol": "SLP/WETH/IMX",
       "decimals": 18
     },
     "token0": {
@@ -1513,49 +1493,9 @@
       "decimals": 18
     },
     "token1": {
-      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-      "name": "Curve DAO Token",
-      "symbol": "CRV",
-      "decimals": 18
-    }
-  },
-  "0x557B08a0CAb46BfE22471B65522757ea92a9e7A5": {
-    "protocolToken": {
-      "address": "0x557B08a0CAb46BfE22471B65522757ea92a9e7A5",
-      "name": "SushiSwap LP Token C98 / WETH",
-      "symbol": "SLP/C98/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xAE12C5930881c53715B369ceC7606B70d8EB229f",
-      "name": "Coin98",
-      "symbol": "C98",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x0A2F9b5360b5C7b6D3CE826971425B3b8B766519": {
-    "protocolToken": {
-      "address": "0x0A2F9b5360b5C7b6D3CE826971425B3b8B766519",
-      "name": "SushiSwap LP Token WIZARD / WETH",
-      "symbol": "SLP/WIZARD/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x87931E7AD81914e7898d07c68F145fC0A553D8Fb",
-      "name": "WIZARD Vault  NFTX ",
-      "symbol": "WIZARD",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
+      "address": "0xF57e7e7C23978C3cAEC3C3548E3D615c346e79fF",
+      "name": "Immutable X",
+      "symbol": "IMX",
       "decimals": 18
     }
   },
@@ -1579,6 +1519,66 @@
       "decimals": 18
     }
   },
+  "0x58Dc5a51fE44589BEb22E8CE67720B5BC5378009": {
+    "protocolToken": {
+      "address": "0x58Dc5a51fE44589BEb22E8CE67720B5BC5378009",
+      "name": "SushiSwap LP Token WETH / CRV",
+      "symbol": "SLP/WETH/CRV",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "name": "Curve DAO Token",
+      "symbol": "CRV",
+      "decimals": 18
+    }
+  },
+  "0x0A2F9b5360b5C7b6D3CE826971425B3b8B766519": {
+    "protocolToken": {
+      "address": "0x0A2F9b5360b5C7b6D3CE826971425B3b8B766519",
+      "name": "SushiSwap LP Token WIZARD / WETH",
+      "symbol": "SLP/WIZARD/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x87931E7AD81914e7898d07c68F145fC0A553D8Fb",
+      "name": "Forgotten Runes Wizards Cult",
+      "symbol": "WIZARD",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x557B08a0CAb46BfE22471B65522757ea92a9e7A5": {
+    "protocolToken": {
+      "address": "0x557B08a0CAb46BfE22471B65522757ea92a9e7A5",
+      "name": "SushiSwap LP Token C98 / WETH",
+      "symbol": "SLP/C98/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xAE12C5930881c53715B369ceC7606B70d8EB229f",
+      "name": "Coin98",
+      "symbol": "C98",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0x481DdaF90C59d91F3e480E6793122E62612CA5A9": {
     "protocolToken": {
       "address": "0x481DdaF90C59d91F3e480E6793122E62612CA5A9",
@@ -1588,7 +1588,7 @@
     },
     "token0": {
       "address": "0xb05097849BCA421A3f51B249BA6CCa4aF4b97cb9",
-      "name": "Float Protocol  Float",
+      "name": "Float Protocol: FLOAT",
       "symbol": "FLOAT",
       "decimals": 18
     },
@@ -1622,8 +1622,8 @@
   "0x18d98D452072Ac2EB7b74ce3DB723374360539f1": {
     "protocolToken": {
       "address": "0x18d98D452072Ac2EB7b74ce3DB723374360539f1",
-      "name": "SushiSwap LP Token WBTC / IBBTC",
-      "symbol": "SLP/WBTC/IBBTC",
+      "name": "SushiSwap LP Token WBTC / ibBTC",
+      "symbol": "SLP/WBTC/ibBTC",
       "decimals": 18
     },
     "token0": {
@@ -1634,16 +1634,16 @@
     },
     "token1": {
       "address": "0xc4E15973E6fF2A35cC804c2CF9D2a1b817a8b40F",
-      "name": "Badger Interest Bearing Bitcoin",
-      "symbol": "IBBTC",
+      "name": "Interest-Bearing BTC",
+      "symbol": "ibBTC",
       "decimals": 18
     }
   },
   "0xd227083b6feB1a40A975D74575311Fb907fB960f": {
     "protocolToken": {
       "address": "0xd227083b6feB1a40A975D74575311Fb907fB960f",
-      "name": "SushiSwap LP Token WBTC / ONEBTC",
-      "symbol": "SLP/WBTC/ONEBTC",
+      "name": "SushiSwap LP Token WBTC / oneBTC",
+      "symbol": "SLP/WBTC/oneBTC",
       "decimals": 18
     },
     "token0": {
@@ -1654,8 +1654,8 @@
     },
     "token1": {
       "address": "0xC88F47067dB2E25851317A2FDaE73a22c0777c37",
-      "name": "Legacy oneBTC",
-      "symbol": "ONEBTC",
+      "name": "oneBTC",
+      "symbol": "oneBTC",
       "decimals": 9
     }
   },
@@ -1670,6 +1670,26 @@
       "address": "0x808507121B80c02388fAd14726482e061B8da827",
       "name": "Pendle",
       "symbol": "PENDLE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xa2D81bEdf22201A77044CDF3Ab4d9dC1FfBc391B": {
+    "protocolToken": {
+      "address": "0xa2D81bEdf22201A77044CDF3Ab4d9dC1FfBc391B",
+      "name": "SushiSwap LP Token ibEUR / WETH",
+      "symbol": "SLP/ibEUR/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x96E61422b6A9bA0e068B6c5ADd4fFaBC6a4aae27",
+      "name": "Iron Bank EUR",
+      "symbol": "ibEUR",
       "decimals": 18
     },
     "token1": {
@@ -1699,37 +1719,17 @@
       "decimals": 18
     }
   },
-  "0xa2D81bEdf22201A77044CDF3Ab4d9dC1FfBc391B": {
+  "0xC4b26b26d720467d96E18f08664A888d4116cEa6": {
     "protocolToken": {
-      "address": "0xa2D81bEdf22201A77044CDF3Ab4d9dC1FfBc391B",
-      "name": "SushiSwap LP Token IBEUR / WETH",
-      "symbol": "SLP/IBEUR/WETH",
+      "address": "0xC4b26b26d720467d96E18f08664A888d4116cEa6",
+      "name": "SushiSwap LP Token UFT / WETH",
+      "symbol": "SLP/UFT/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x96E61422b6A9bA0e068B6c5ADd4fFaBC6a4aae27",
-      "name": "Iron Bank EUR",
-      "symbol": "IBEUR",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0xf169CeA51EB51774cF107c88309717ddA20be167": {
-    "protocolToken": {
-      "address": "0xf169CeA51EB51774cF107c88309717ddA20be167",
-      "name": "SushiSwap LP Token CREAM / WETH",
-      "symbol": "SLP/CREAM/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x2ba592F78dB6436527729929AAf6c908497cB200",
-      "name": "Cream",
-      "symbol": "CREAM",
+      "address": "0x0202Be363B8a4820f3F4DE7FaF5224fF05943AB1",
+      "name": "UniLend Finance Token",
+      "symbol": "UFT",
       "decimals": 18
     },
     "token1": {
@@ -1759,17 +1759,17 @@
       "decimals": 18
     }
   },
-  "0xC4b26b26d720467d96E18f08664A888d4116cEa6": {
+  "0xf169CeA51EB51774cF107c88309717ddA20be167": {
     "protocolToken": {
-      "address": "0xC4b26b26d720467d96E18f08664A888d4116cEa6",
-      "name": "SushiSwap LP Token UFT / WETH",
-      "symbol": "SLP/UFT/WETH",
+      "address": "0xf169CeA51EB51774cF107c88309717ddA20be167",
+      "name": "SushiSwap LP Token CREAM / WETH",
+      "symbol": "SLP/CREAM/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x0202Be363B8a4820f3F4DE7FaF5224fF05943AB1",
-      "name": "UniLend Finance",
-      "symbol": "UFT",
+      "address": "0x2ba592F78dB6436527729929AAf6c908497cB200",
+      "name": "Cream",
+      "symbol": "CREAM",
       "decimals": 18
     },
     "token1": {
@@ -1828,7 +1828,7 @@
     },
     "token0": {
       "address": "0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5",
-      "name": "Pickle Finance",
+      "name": "PickleToken",
       "symbol": "PICKLE",
       "decimals": 18
     },
@@ -1850,6 +1850,26 @@
       "address": "0xad32A8e6220741182940c5aBF610bDE99E737b2D",
       "name": "PieDAO DOUGH v2",
       "symbol": "DOUGH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xdaC0324DEbd1F036323C0e207A4cd8e78ee6BDFF": {
+    "protocolToken": {
+      "address": "0xdaC0324DEbd1F036323C0e207A4cd8e78ee6BDFF",
+      "name": "SushiSwap LP Token XFT / WETH",
+      "symbol": "SLP/XFT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x76BC677d444f1E9d57dAf5187ee2b7dC852745aE",
+      "name": "Offshift",
+      "symbol": "XFT",
       "decimals": 18
     },
     "token1": {
@@ -1914,8 +1934,48 @@
     },
     "token1": {
       "address": "0xF17e65822b568B3903685a7c9F496CF7656Cc6C2",
-      "name": "Biconomy",
+      "name": "Biconomy Token",
       "symbol": "BICO",
+      "decimals": 18
+    }
+  },
+  "0x938625591ADb4e865b882377e2c965F9f9b85E34": {
+    "protocolToken": {
+      "address": "0x938625591ADb4e865b882377e2c965F9f9b85E34",
+      "name": "SushiSwap LP Token BANK / WETH",
+      "symbol": "SLP/BANK/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x24A6A37576377F63f194Caa5F518a60f45b42921",
+      "name": "Float Bank",
+      "symbol": "BANK",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x195b2Ed7DfB2Bb19c63B8B06677D46934C0c4EeA": {
+    "protocolToken": {
+      "address": "0x195b2Ed7DfB2Bb19c63B8B06677D46934C0c4EeA",
+      "name": "SushiSwap LP Token stkATOM / WETH",
+      "symbol": "SLP/stkATOM/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x44017598f2AF1bD733F9D87b5017b4E7c1B28DDE",
+      "name": "pSTAKE Staked ATOM",
+      "symbol": "stkATOM",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -1934,68 +1994,8 @@
     },
     "token1": {
       "address": "0xE80C0cd204D654CEbe8dd64A4857cAb6Be8345a3",
-      "name": "JPEG d",
+      "name": "JPEG’d Governance Token",
       "symbol": "JPEG",
-      "decimals": 18
-    }
-  },
-  "0x195b2Ed7DfB2Bb19c63B8B06677D46934C0c4EeA": {
-    "protocolToken": {
-      "address": "0x195b2Ed7DfB2Bb19c63B8B06677D46934C0c4EeA",
-      "name": "SushiSwap LP Token STKATOM / WETH",
-      "symbol": "SLP/STKATOM/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x44017598f2AF1bD733F9D87b5017b4E7c1B28DDE",
-      "name": "pSTAKE Staked ATOM",
-      "symbol": "STKATOM",
-      "decimals": 6
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x938625591ADb4e865b882377e2c965F9f9b85E34": {
-    "protocolToken": {
-      "address": "0x938625591ADb4e865b882377e2c965F9f9b85E34",
-      "name": "SushiSwap LP Token BANK / WETH",
-      "symbol": "SLP/BANK/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x24A6A37576377F63f194Caa5F518a60f45b42921",
-      "name": "Float Protocol",
-      "symbol": "BANK",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0xdaC0324DEbd1F036323C0e207A4cd8e78ee6BDFF": {
-    "protocolToken": {
-      "address": "0xdaC0324DEbd1F036323C0e207A4cd8e78ee6BDFF",
-      "name": "SushiSwap LP Token XFT / WETH",
-      "symbol": "SLP/XFT/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x76BC677d444f1E9d57dAf5187ee2b7dC852745aE",
-      "name": "Offshift",
-      "symbol": "XFT",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -2068,7 +2068,7 @@
     },
     "token0": {
       "address": "0x5f944B0c4315Cb7c3a846b025AB4045da44abf6c",
-      "name": "Pancake Games",
+      "name": "PANCAKE GAMES",
       "symbol": "GCAKE",
       "decimals": 18
     },
@@ -2077,26 +2077,6 @@
       "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimals": 18
-    }
-  },
-  "0x18C12a654F982F68a91e8e6A4170Ca1Fcb9D60A2": {
-    "protocolToken": {
-      "address": "0x18C12a654F982F68a91e8e6A4170Ca1Fcb9D60A2",
-      "name": "SushiSwap LP Token WAN / USDT",
-      "symbol": "SLP/WAN/USDT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x135B810e48e4307AB2a59ea294A6f1724781bD3C",
-      "name": "WAN@ethereum",
-      "symbol": "WAN",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
     }
   },
   "0x1F44E67eb4b8438EFe62847AfFb5B8E528E3f465": {
@@ -2119,24 +2099,24 @@
       "decimals": 8
     }
   },
-  "0xEa59A3Da9CaD8ECE406a353DDEde0e7D17604d28": {
+  "0x18C12a654F982F68a91e8e6A4170Ca1Fcb9D60A2": {
     "protocolToken": {
-      "address": "0xEa59A3Da9CaD8ECE406a353DDEde0e7D17604d28",
-      "name": "SushiSwap LP Token WETH / SHX",
-      "symbol": "SLP/WETH/SHX",
+      "address": "0x18C12a654F982F68a91e8e6A4170Ca1Fcb9D60A2",
+      "name": "SushiSwap LP Token WAN / USDT",
+      "symbol": "SLP/WAN/USDT",
       "decimals": 18
     },
     "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
+      "address": "0x135B810e48e4307AB2a59ea294A6f1724781bD3C",
+      "name": "WAN@ethereum",
+      "symbol": "WAN",
       "decimals": 18
     },
     "token1": {
-      "address": "0xEe7527841A932d2912224E20a405e1a1FF747084",
-      "name": "Stronghold Token",
-      "symbol": "SHX",
-      "decimals": 18
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
     }
   },
   "0x77337FF10206480739a768124A18f3aA8C089153": {
@@ -2159,17 +2139,97 @@
       "decimals": 18
     }
   },
+  "0x7F517657496C09c43CC28D0cA131E35dCD557E02": {
+    "protocolToken": {
+      "address": "0x7F517657496C09c43CC28D0cA131E35dCD557E02",
+      "name": "SushiSwap LP Token DAI / RAIL",
+      "symbol": "SLP/DAI/RAIL",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe76C6c83af64e4C60245D8C7dE953DF673a7A33D",
+      "name": "Rail",
+      "symbol": "RAIL",
+      "decimals": 18
+    }
+  },
   "0x29Cf1EA0A2CCEf2B489f67292C5294C5FA59E5D0": {
     "protocolToken": {
       "address": "0x29Cf1EA0A2CCEf2B489f67292C5294C5FA59E5D0",
-      "name": "SushiSwap LP Token SUNDER / WETH",
-      "symbol": "SLP/SUNDER/WETH",
+      "name": "SushiSwap LP Token Sunder / WETH",
+      "symbol": "SLP/Sunder/WETH",
       "decimals": 18
     },
     "token0": {
       "address": "0xbDbf245c690d54b67C6e610A28486A2C6dE08bE6",
-      "name": "Sunder Goverance",
-      "symbol": "SUNDER",
+      "name": "Sunder Goverance Token",
+      "symbol": "Sunder",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xEa59A3Da9CaD8ECE406a353DDEde0e7D17604d28": {
+    "protocolToken": {
+      "address": "0xEa59A3Da9CaD8ECE406a353DDEde0e7D17604d28",
+      "name": "SushiSwap LP Token WETH / SHX",
+      "symbol": "SLP/WETH/SHX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xEe7527841A932d2912224E20a405e1a1FF747084",
+      "name": "Stronghold SHx",
+      "symbol": "SHX",
+      "decimals": 7
+    }
+  },
+  "0x57024267e8272618f9c5037D373043a8646507e5": {
+    "protocolToken": {
+      "address": "0x57024267e8272618f9c5037D373043a8646507e5",
+      "name": "SushiSwap LP Token BPT / WETH",
+      "symbol": "SLP/BPT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0eC9F76202a7061eB9b3a7D6B59D36215A7e37da",
+      "name": "BlackPool Token",
+      "symbol": "BPT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x0Eee7f7319013df1f24F5eaF83004fCf9cF49245": {
+    "protocolToken": {
+      "address": "0x0Eee7f7319013df1f24F5eaF83004fCf9cF49245",
+      "name": "SushiSwap LP Token BAO / WETH",
+      "symbol": "SLP/BAO/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x374CB8C27130E2c9E04F44303f3c8351B9De61C1",
+      "name": "BaoToken",
+      "symbol": "BAO",
       "decimals": 18
     },
     "token1": {
@@ -2199,46 +2259,6 @@
       "decimals": 18
     }
   },
-  "0x57024267e8272618f9c5037D373043a8646507e5": {
-    "protocolToken": {
-      "address": "0x57024267e8272618f9c5037D373043a8646507e5",
-      "name": "SushiSwap LP Token BPT / WETH",
-      "symbol": "SLP/BPT/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0eC9F76202a7061eB9b3a7D6B59D36215A7e37da",
-      "name": "BlackPool",
-      "symbol": "BPT",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x0Eee7f7319013df1f24F5eaF83004fCf9cF49245": {
-    "protocolToken": {
-      "address": "0x0Eee7f7319013df1f24F5eaF83004fCf9cF49245",
-      "name": "SushiSwap LP Token BAO / WETH",
-      "symbol": "SLP/BAO/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x374CB8C27130E2c9E04F44303f3c8351B9De61C1",
-      "name": "Bao Finance",
-      "symbol": "BAO",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0xA5c475167f03B1556C054E0dA78192cd2779087F": {
     "protocolToken": {
       "address": "0xA5c475167f03B1556C054E0dA78192cd2779087F",
@@ -2259,23 +2279,23 @@
       "decimals": 6
     }
   },
-  "0xC558F600B34A5f69dD2f0D06Cb8A88d829B7420a": {
+  "0x8a83b072ca48c217c1ef676445A9a545c110A45B": {
     "protocolToken": {
-      "address": "0xC558F600B34A5f69dD2f0D06Cb8A88d829B7420a",
-      "name": "SushiSwap LP Token LDO / WETH",
-      "symbol": "SLP/LDO/WETH",
+      "address": "0x8a83b072ca48c217c1ef676445A9a545c110A45B",
+      "name": "SushiSwap LP Token WETH / CURIO",
+      "symbol": "SLP/WETH/CURIO",
       "decimals": 18
     },
     "token0": {
-      "address": "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32",
-      "name": "Lido DAO Token",
-      "symbol": "LDO",
-      "decimals": 18
-    },
-    "token1": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "name": "Wrapped Ether",
       "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xE97e496E8494232ee128c1a8cAe0b2B7936f3CaA",
+      "name": "Curio Cards",
+      "symbol": "CURIO",
       "decimals": 18
     }
   },
@@ -2299,23 +2319,23 @@
       "decimals": 18
     }
   },
-  "0x8a83b072ca48c217c1ef676445A9a545c110A45B": {
+  "0xC558F600B34A5f69dD2f0D06Cb8A88d829B7420a": {
     "protocolToken": {
-      "address": "0x8a83b072ca48c217c1ef676445A9a545c110A45B",
-      "name": "SushiSwap LP Token WETH / CURIO",
-      "symbol": "SLP/WETH/CURIO",
+      "address": "0xC558F600B34A5f69dD2f0D06Cb8A88d829B7420a",
+      "name": "SushiSwap LP Token LDO / WETH",
+      "symbol": "SLP/LDO/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
+      "address": "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32",
+      "name": "Lido DAO Token",
+      "symbol": "LDO",
       "decimals": 18
     },
     "token1": {
-      "address": "0xE97e496E8494232ee128c1a8cAe0b2B7936f3CaA",
-      "name": "Curio Cards",
-      "symbol": "CURIO",
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -2328,7 +2348,7 @@
     },
     "token0": {
       "address": "0x6fB3e0A217407EFFf7Ca062D46c26E5d60a14d69",
-      "name": "IoTeX",
+      "name": "IoTeX Network",
       "symbol": "IOTX",
       "decimals": 18
     },
@@ -2337,6 +2357,26 @@
       "name": "Tether USD",
       "symbol": "USDT",
       "decimals": 6
+    }
+  },
+  "0x8E1e093f84844f2119901619abDc229470415d63": {
+    "protocolToken": {
+      "address": "0x8E1e093f84844f2119901619abDc229470415d63",
+      "name": "SushiSwap LP Token FEWGO / WETH",
+      "symbol": "SLP/FEWGO/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x60e46a4Dd91D10506D8eFA2caA266E7191fe7Ea8",
+      "name": "Fewmans Gold",
+      "symbol": "FEWGO",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
     }
   },
   "0xcCB42AAaB2ea1f8012C30418eE3FCe550954D827": {
@@ -2348,7 +2388,7 @@
     },
     "token0": {
       "address": "0x57B946008913B82E4dF85f501cbAeD910e58D26C",
-      "name": "Marlin",
+      "name": "Marlin POND",
       "symbol": "POND",
       "decimals": 18
     },
@@ -2379,37 +2419,17 @@
       "decimals": 18
     }
   },
-  "0x8E1e093f84844f2119901619abDc229470415d63": {
+  "0x24E2adF50C49633039757ab08bFF489b7C5bD6B2": {
     "protocolToken": {
-      "address": "0x8E1e093f84844f2119901619abDc229470415d63",
-      "name": "SushiSwap LP Token FEWGO / WETH",
-      "symbol": "SLP/FEWGO/WETH",
+      "address": "0x24E2adF50C49633039757ab08bFF489b7C5bD6B2",
+      "name": "SushiSwap LP Token RARE / WETH",
+      "symbol": "SLP/RARE/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x60e46a4Dd91D10506D8eFA2caA266E7191fe7Ea8",
-      "name": "Fewmans Gold",
-      "symbol": "FEWGO",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x0E26A21013f2F8C0362cFae608b4e69a249D5EFc": {
-    "protocolToken": {
-      "address": "0x0E26A21013f2F8C0362cFae608b4e69a249D5EFc",
-      "name": "SushiSwap LP Token FTM / WETH",
-      "symbol": "SLP/FTM/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x4E15361FD6b4BB609Fa63C81A2be19d873717870",
-      "name": "Fantom",
-      "symbol": "FTM",
+      "address": "0xba5BDe662c17e2aDFF1075610382B9B691296350",
+      "name": "SuperRare",
+      "symbol": "RARE",
       "decimals": 18
     },
     "token1": {
@@ -2439,26 +2459,6 @@
       "decimals": 18
     }
   },
-  "0x24E2adF50C49633039757ab08bFF489b7C5bD6B2": {
-    "protocolToken": {
-      "address": "0x24E2adF50C49633039757ab08bFF489b7C5bD6B2",
-      "name": "SushiSwap LP Token RARE / WETH",
-      "symbol": "SLP/RARE/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xba5BDe662c17e2aDFF1075610382B9B691296350",
-      "name": "SuperRare Token",
-      "symbol": "RARE",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0xF1e34D19F63B69EaA70952F2f64f735849959833": {
     "protocolToken": {
       "address": "0xF1e34D19F63B69EaA70952F2f64f735849959833",
@@ -2474,28 +2474,8 @@
     },
     "token1": {
       "address": "0xDA0c94c73D127eE191955FB46bACd7FF999b2bcd",
-      "name": "Construct",
+      "name": "Stakeborg Standard",
       "symbol": "STANDARD",
-      "decimals": 18
-    }
-  },
-  "0x6db0fe375ccB8AC3c2a0984D678Bcd99981Ddcb6": {
-    "protocolToken": {
-      "address": "0x6db0fe375ccB8AC3c2a0984D678Bcd99981Ddcb6",
-      "name": "SushiSwap LP Token eETH / WETH",
-      "symbol": "SLP/eETH/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
-      "name": "ether.fi ETH",
-      "symbol": "eETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -2519,43 +2499,23 @@
       "decimals": 18
     }
   },
-  "0xc83cE8612164eF7A13d17DDea4271DD8e8EEbE5d": {
+  "0x0E26A21013f2F8C0362cFae608b4e69a249D5EFc": {
     "protocolToken": {
-      "address": "0xc83cE8612164eF7A13d17DDea4271DD8e8EEbE5d",
-      "name": "SushiSwap LP Token YEL / WETH",
-      "symbol": "SLP/YEL/WETH",
+      "address": "0x0E26A21013f2F8C0362cFae608b4e69a249D5EFc",
+      "name": "SushiSwap LP Token FTM / WETH",
+      "symbol": "SLP/FTM/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x7815bDa662050D84718B988735218CFfd32f75ea",
-      "name": "Yel Finance",
-      "symbol": "YEL",
+      "address": "0x4E15361FD6b4BB609Fa63C81A2be19d873717870",
+      "name": "Fantom Token",
+      "symbol": "FTM",
       "decimals": 18
     },
     "token1": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "name": "Wrapped Ether",
       "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x62CCB80f72CC5C975C5Bc7fb4433D3c336CE5CeB": {
-    "protocolToken": {
-      "address": "0x62CCB80f72CC5C975C5Bc7fb4433D3c336CE5CeB",
-      "name": "SushiSwap LP Token WETH / SUPER",
-      "symbol": "SLP/WETH/SUPER",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55",
-      "name": "SuperVerse",
-      "symbol": "SUPER",
       "decimals": 18
     }
   },
@@ -2570,86 +2530,6 @@
       "address": "0x557B933a7C2c45672B610F8954A3deB39a51A8Ca",
       "name": "REVV",
       "symbol": "REVV",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0xbE172880996FA4F154F930f310139f03108e8ca6": {
-    "protocolToken": {
-      "address": "0xbE172880996FA4F154F930f310139f03108e8ca6",
-      "name": "SushiSwap LP Token LIL / WETH",
-      "symbol": "SLP/LIL/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x18222A762Bf67024193De25e1CdC7AA6e614C695",
-      "name": "Lil Nouns",
-      "symbol": "LIL",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x7c03cF21483FA45006E81669b991AF3A16733A44": {
-    "protocolToken": {
-      "address": "0x7c03cF21483FA45006E81669b991AF3A16733A44",
-      "name": "SushiSwap LP Token CRE8 / USDT",
-      "symbol": "SLP/CRE8/USDT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xc36b4311B21Fc0c2eAd46f1eA6ce97c9C4D98D3d",
-      "name": "Creaticles",
-      "symbol": "CRE8",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
-    }
-  },
-  "0x724934F5FDD0E938664a39b0B484D055e24f680E": {
-    "protocolToken": {
-      "address": "0x724934F5FDD0E938664a39b0B484D055e24f680E",
-      "name": "SushiSwap LP Token WALLET / USDT",
-      "symbol": "SLP/WALLET/USDT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x88800092fF476844f74dC2FC427974BBee2794Ae",
-      "name": "Ambire Wallet",
-      "symbol": "WALLET",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
-    }
-  },
-  "0xB84C45174Bfc6b8F3EaeCBae11deE63114f5c1b2": {
-    "protocolToken": {
-      "address": "0xB84C45174Bfc6b8F3EaeCBae11deE63114f5c1b2",
-      "name": "SushiSwap LP Token SOS / WETH",
-      "symbol": "SLP/SOS/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x3b484b82567a09e2588A13D54D032153f0c0aEe0",
-      "name": "OpenDAO",
-      "symbol": "SOS",
       "decimals": 18
     },
     "token1": {
@@ -2674,29 +2554,149 @@
     },
     "token1": {
       "address": "0xE60779CC1b2c1d0580611c526a8DF0E3f870EC48",
-      "name": "unshETHing Token",
+      "name": "unshETHing_Token",
       "symbol": "USH",
       "decimals": 18
     }
   },
-  "0x67E4423340b56C119749A570aFa460f031AC29d6": {
+  "0x7c03cF21483FA45006E81669b991AF3A16733A44": {
     "protocolToken": {
-      "address": "0x67E4423340b56C119749A570aFa460f031AC29d6",
-      "name": "SushiSwap LP Token LINA / USDC",
-      "symbol": "SLP/LINA/USDC",
+      "address": "0x7c03cF21483FA45006E81669b991AF3A16733A44",
+      "name": "SushiSwap LP Token CRE8 / USDT",
+      "symbol": "SLP/CRE8/USDT",
       "decimals": 18
     },
     "token0": {
-      "address": "0x3E9BC21C9b189C09dF3eF1B824798658d5011937",
-      "name": "Linear",
-      "symbol": "LINA",
+      "address": "0xc36b4311B21Fc0c2eAd46f1eA6ce97c9C4D98D3d",
+      "name": "Creaticles",
+      "symbol": "CRE8",
       "decimals": 18
     },
     "token1": {
-      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "name": "USD Coin",
-      "symbol": "USDC",
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
       "decimals": 6
+    }
+  },
+  "0x6db0fe375ccB8AC3c2a0984D678Bcd99981Ddcb6": {
+    "protocolToken": {
+      "address": "0x6db0fe375ccB8AC3c2a0984D678Bcd99981Ddcb6",
+      "name": "SushiSwap LP Token eETH / WETH",
+      "symbol": "SLP/eETH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
+      "name": "ether.fi ETH",
+      "symbol": "eETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x724934F5FDD0E938664a39b0B484D055e24f680E": {
+    "protocolToken": {
+      "address": "0x724934F5FDD0E938664a39b0B484D055e24f680E",
+      "name": "SushiSwap LP Token WALLET / USDT",
+      "symbol": "SLP/WALLET/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x88800092fF476844f74dC2FC427974BBee2794Ae",
+      "name": "Ambire Wallet",
+      "symbol": "WALLET",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xbE172880996FA4F154F930f310139f03108e8ca6": {
+    "protocolToken": {
+      "address": "0xbE172880996FA4F154F930f310139f03108e8ca6",
+      "name": "SushiSwap LP Token LIL / WETH",
+      "symbol": "SLP/LIL/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x18222A762Bf67024193De25e1CdC7AA6e614C695",
+      "name": "Lil Nouns",
+      "symbol": "LIL",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x62CCB80f72CC5C975C5Bc7fb4433D3c336CE5CeB": {
+    "protocolToken": {
+      "address": "0x62CCB80f72CC5C975C5Bc7fb4433D3c336CE5CeB",
+      "name": "SushiSwap LP Token WETH / SUPER",
+      "symbol": "SLP/WETH/SUPER",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55",
+      "name": "SuperFarm",
+      "symbol": "SUPER",
+      "decimals": 18
+    }
+  },
+  "0xB84C45174Bfc6b8F3EaeCBae11deE63114f5c1b2": {
+    "protocolToken": {
+      "address": "0xB84C45174Bfc6b8F3EaeCBae11deE63114f5c1b2",
+      "name": "SushiSwap LP Token SOS / WETH",
+      "symbol": "SLP/SOS/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3b484b82567a09e2588A13D54D032153f0c0aEe0",
+      "name": "SOS",
+      "symbol": "SOS",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xc83cE8612164eF7A13d17DDea4271DD8e8EEbE5d": {
+    "protocolToken": {
+      "address": "0xc83cE8612164eF7A13d17DDea4271DD8e8EEbE5d",
+      "name": "SushiSwap LP Token YEL / WETH",
+      "symbol": "SLP/YEL/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x7815bDa662050D84718B988735218CFfd32f75ea",
+      "name": "YEL Token",
+      "symbol": "YEL",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
     }
   },
   "0x610468b2C5D1bd72c2093c47A6D2DA68037c34e2": {
@@ -2717,6 +2717,26 @@
       "name": "Wrapped TON",
       "symbol": "WTON",
       "decimals": 27
+    }
+  },
+  "0x67E4423340b56C119749A570aFa460f031AC29d6": {
+    "protocolToken": {
+      "address": "0x67E4423340b56C119749A570aFa460f031AC29d6",
+      "name": "SushiSwap LP Token LINA / USDC",
+      "symbol": "SLP/LINA/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3E9BC21C9b189C09dF3eF1B824798658d5011937",
+      "name": "Linear Token",
+      "symbol": "LINA",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
     }
   },
   "0x7cD4eba939f87e0c22FfAA54edf311ec39C48cF1": {
@@ -2742,80 +2762,20 @@
   "0xD9a13CF1c0A61FFC2e82CBdC641f45F37C2B1C1c": {
     "protocolToken": {
       "address": "0xD9a13CF1c0A61FFC2e82CBdC641f45F37C2B1C1c",
-      "name": "SushiSwap LP Token GAME / WETH",
-      "symbol": "SLP/GAME/WETH",
+      "name": "SushiSwap LP Token Game / WETH",
+      "symbol": "SLP/Game/WETH",
       "decimals": 18
     },
     "token0": {
       "address": "0x882e5b370D595E50c24b2a0e7a94e87Cc32ADdA1",
-      "name": "X-Consoles",
-      "symbol": "GAME",
+      "name": "Game",
+      "symbol": "Game",
       "decimals": 18
     },
     "token1": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "name": "Wrapped Ether",
       "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x60Bce13608701789Ab9c8Faa9B82dE115Ea8744d": {
-    "protocolToken": {
-      "address": "0x60Bce13608701789Ab9c8Faa9B82dE115Ea8744d",
-      "name": "SushiSwap LP Token WDOGE / WETH",
-      "symbol": "SLP/WDOGE/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x35a532d376FFd9a705d0Bb319532837337A398E7",
-      "name": "Wrapped DogeCoin",
-      "symbol": "WDOGE",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x6469B34a2a4723163C4902dbBdEa728D20693C12": {
-    "protocolToken": {
-      "address": "0x6469B34a2a4723163C4902dbBdEa728D20693C12",
-      "name": "SushiSwap LP Token NEAR / WETH",
-      "symbol": "SLP/NEAR/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x85F17Cf997934a597031b2E18a9aB6ebD4B9f6a4",
-      "name": "NEAR",
-      "symbol": "NEAR",
-      "decimals": 24
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x0b1ed1d00197Ce84F0C86003Ec4c7f2f06538aBC": {
-    "protocolToken": {
-      "address": "0x0b1ed1d00197Ce84F0C86003Ec4c7f2f06538aBC",
-      "name": "SushiSwap LP Token WETH / SYLO",
-      "symbol": "SLP/WETH/SYLO",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xf293d23BF2CDc05411Ca0edDD588eb1977e8dcd4",
-      "name": "Sylo",
-      "symbol": "SYLO",
       "decimals": 18
     }
   },
@@ -2834,7 +2794,7 @@
     },
     "token1": {
       "address": "0xe9F84dE264E91529aF07Fa2C746e934397810334",
-      "name": "SAKE",
+      "name": "Sake",
       "symbol": "SAK3",
       "decimals": 18
     }
@@ -2848,28 +2808,8 @@
     },
     "token0": {
       "address": "0x16ba8Efe847EBDFef99d399902ec29397D403C30",
-      "name": "Oh  Finance",
+      "name": "Oh! Finance",
       "symbol": "OH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x1bEC4db6c3Bc499F3DbF289F5499C30d541FEc97": {
-    "protocolToken": {
-      "address": "0x1bEC4db6c3Bc499F3DbF289F5499C30d541FEc97",
-      "name": "SushiSwap LP Token MANA / WETH",
-      "symbol": "SLP/MANA/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
-      "name": "Decentraland",
-      "symbol": "MANA",
       "decimals": 18
     },
     "token1": {
@@ -2899,37 +2839,17 @@
       "decimals": 6
     }
   },
-  "0x7F517657496C09c43CC28D0cA131E35dCD557E02": {
+  "0x60Bce13608701789Ab9c8Faa9B82dE115Ea8744d": {
     "protocolToken": {
-      "address": "0x7F517657496C09c43CC28D0cA131E35dCD557E02",
-      "name": "SushiSwap LP Token DAI / RAIL",
-      "symbol": "SLP/DAI/RAIL",
+      "address": "0x60Bce13608701789Ab9c8Faa9B82dE115Ea8744d",
+      "name": "SushiSwap LP Token WDOGE / WETH",
+      "symbol": "SLP/WDOGE/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xe76C6c83af64e4C60245D8C7dE953DF673a7A33D",
-      "name": "Rail",
-      "symbol": "RAIL",
-      "decimals": 18
-    }
-  },
-  "0x8F9ef75CD6E610Dd8Acf8611c344573032fB9c3d": {
-    "protocolToken": {
-      "address": "0x8F9ef75CD6E610Dd8Acf8611c344573032fB9c3d",
-      "name": "SushiSwap LP Token WASABI / WETH",
-      "symbol": "SLP/WASABI/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x896e145568624a498c5a909187363AE947631503",
-      "name": "Wasabi",
-      "symbol": "WASABI",
+      "address": "0x35a532d376FFd9a705d0Bb319532837337A398E7",
+      "name": "Wrapped DogeCoin",
+      "symbol": "WDOGE",
       "decimals": 18
     },
     "token1": {
@@ -2948,7 +2868,7 @@
     },
     "token0": {
       "address": "0xADE00C28244d5CE17D72E40330B1c318cD12B7c3",
-      "name": "AdEx Token",
+      "name": "AdEx Network",
       "symbol": "ADX",
       "decimals": 18
     },
@@ -2956,6 +2876,26 @@
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "name": "Wrapped Ether",
       "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x0b1ed1d00197Ce84F0C86003Ec4c7f2f06538aBC": {
+    "protocolToken": {
+      "address": "0x0b1ed1d00197Ce84F0C86003Ec4c7f2f06538aBC",
+      "name": "SushiSwap LP Token WETH / SYLO",
+      "symbol": "SLP/WETH/SYLO",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xf293d23BF2CDc05411Ca0edDD588eb1977e8dcd4",
+      "name": "Sylo",
+      "symbol": "SYLO",
       "decimals": 18
     }
   },
@@ -2968,7 +2908,7 @@
     },
     "token0": {
       "address": "0x84cA8bc7997272c7CfB4D0Cd3D55cd942B3c9419",
-      "name": "DIAdata",
+      "name": "DIAToken",
       "symbol": "DIA",
       "decimals": 18
     },
@@ -2979,18 +2919,18 @@
       "decimals": 6
     }
   },
-  "0x75507bab932Fc47531Bf1654f243C088A3Fa1F69": {
+  "0x6469B34a2a4723163C4902dbBdEa728D20693C12": {
     "protocolToken": {
-      "address": "0x75507bab932Fc47531Bf1654f243C088A3Fa1F69",
-      "name": "SushiSwap LP Token NST / WETH",
-      "symbol": "SLP/NST/WETH",
+      "address": "0x6469B34a2a4723163C4902dbBdEa728D20693C12",
+      "name": "SushiSwap LP Token NEAR / WETH",
+      "symbol": "SLP/NEAR/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x70Bef3bB2f001dA2fDDb207dAe696cD9FAFf3f5d",
-      "name": "Ninja Squad",
-      "symbol": "NST",
-      "decimals": 18
+      "address": "0x85F17Cf997934a597031b2E18a9aB6ebD4B9f6a4",
+      "name": "NEAR",
+      "symbol": "NEAR",
+      "decimals": 24
     },
     "token1": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -2999,17 +2939,17 @@
       "decimals": 18
     }
   },
-  "0x4C8aD9cc39A619Bc7d1C48afcF6f2831298017a9": {
+  "0x1bEC4db6c3Bc499F3DbF289F5499C30d541FEc97": {
     "protocolToken": {
-      "address": "0x4C8aD9cc39A619Bc7d1C48afcF6f2831298017a9",
-      "name": "SushiSwap LP Token KITTY / WETH",
-      "symbol": "SLP/KITTY/WETH",
+      "address": "0x1bEC4db6c3Bc499F3DbF289F5499C30d541FEc97",
+      "name": "SushiSwap LP Token MANA / WETH",
+      "symbol": "SLP/MANA/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x9b9fB226E98C4e90DB2830C9aefa9cfcBE3b000a",
-      "name": "KITTY Vault  NFTX ",
-      "symbol": "KITTY",
+      "address": "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
+      "name": "Decentraland MANA",
+      "symbol": "MANA",
       "decimals": 18
     },
     "token1": {
@@ -3028,8 +2968,48 @@
     },
     "token0": {
       "address": "0x3155BA85D5F96b2d030a4966AF206230e46849cb",
-      "name": "THORChain ETHRUNE",
+      "name": "THORChain ETH.RUNE",
       "symbol": "RUNE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x4C8aD9cc39A619Bc7d1C48afcF6f2831298017a9": {
+    "protocolToken": {
+      "address": "0x4C8aD9cc39A619Bc7d1C48afcF6f2831298017a9",
+      "name": "SushiSwap LP Token KITTY / WETH",
+      "symbol": "SLP/KITTY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x9b9fB226E98C4e90DB2830C9aefa9cfcBE3b000a",
+      "name": "CryptoKitties [Gen 0]",
+      "symbol": "KITTY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x8F9ef75CD6E610Dd8Acf8611c344573032fB9c3d": {
+    "protocolToken": {
+      "address": "0x8F9ef75CD6E610Dd8Acf8611c344573032fB9c3d",
+      "name": "SushiSwap LP Token WASABI / WETH",
+      "symbol": "SLP/WASABI/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x896e145568624a498c5a909187363AE947631503",
+      "name": "Wasabi",
+      "symbol": "WASABI",
       "decimals": 18
     },
     "token1": {
@@ -3059,6 +3039,26 @@
       "decimals": 18
     }
   },
+  "0xB1035d946D6548FEca96341485D28eBA463AD9cB": {
+    "protocolToken": {
+      "address": "0xB1035d946D6548FEca96341485D28eBA463AD9cB",
+      "name": "SushiSwap LP Token UNQT / WETH",
+      "symbol": "SLP/UNQT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xa80f2C8f61c56546001f5FC2eb8D6E4e72c45d4C",
+      "name": "Unique Utility Token",
+      "symbol": "UNQT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0x265E4776011d61b52e9aB37827590Ab7EFbdaE89": {
     "protocolToken": {
       "address": "0x265E4776011d61b52e9aB37827590Ab7EFbdaE89",
@@ -3079,17 +3079,37 @@
       "decimals": 18
     }
   },
-  "0xB1035d946D6548FEca96341485D28eBA463AD9cB": {
+  "0x75507bab932Fc47531Bf1654f243C088A3Fa1F69": {
     "protocolToken": {
-      "address": "0xB1035d946D6548FEca96341485D28eBA463AD9cB",
-      "name": "SushiSwap LP Token UNQT / WETH",
-      "symbol": "SLP/UNQT/WETH",
+      "address": "0x75507bab932Fc47531Bf1654f243C088A3Fa1F69",
+      "name": "SushiSwap LP Token NST / WETH",
+      "symbol": "SLP/NST/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0xa80f2C8f61c56546001f5FC2eb8D6E4e72c45d4C",
-      "name": "Unique Utility",
-      "symbol": "UNQT",
+      "address": "0x70Bef3bB2f001dA2fDDb207dAe696cD9FAFf3f5d",
+      "name": "Ninja Squad Token",
+      "symbol": "NST",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x96F5b7C2bE10dC7dE02Fa8858A8f1Bd19C2fA72A": {
+    "protocolToken": {
+      "address": "0x96F5b7C2bE10dC7dE02Fa8858A8f1Bd19C2fA72A",
+      "name": "SushiSwap LP Token DAO / WETH",
+      "symbol": "SLP/DAO/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0f51bb10119727a7e5eA3538074fb341F56B09Ad",
+      "name": "DAO Maker",
+      "symbol": "DAO",
       "decimals": 18
     },
     "token1": {
@@ -3119,26 +3139,6 @@
       "decimals": 18
     }
   },
-  "0x96F5b7C2bE10dC7dE02Fa8858A8f1Bd19C2fA72A": {
-    "protocolToken": {
-      "address": "0x96F5b7C2bE10dC7dE02Fa8858A8f1Bd19C2fA72A",
-      "name": "SushiSwap LP Token DAO / WETH",
-      "symbol": "SLP/DAO/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0f51bb10119727a7e5eA3538074fb341F56B09Ad",
-      "name": "DAO Maker",
-      "symbol": "DAO",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x0b5D2c4bC698753d2E2229E81D1E3244569aE2e9": {
     "protocolToken": {
       "address": "0x0b5D2c4bC698753d2E2229E81D1E3244569aE2e9",
@@ -3159,26 +3159,6 @@
       "decimals": 8
     }
   },
-  "0xE4eBD836832F1a8A81641111A5b081a2f90B9430": {
-    "protocolToken": {
-      "address": "0xE4eBD836832F1a8A81641111A5b081a2f90B9430",
-      "name": "SushiSwap LP Token DYDX / WETH",
-      "symbol": "SLP/DYDX/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x92D6C1e31e14520e676a687F0a93788B716BEff5",
-      "name": "dYdX",
-      "symbol": "DYDX",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0xF3D4206b8f2B7C63290661c99a2b494aEf3b8c30": {
     "protocolToken": {
       "address": "0xF3D4206b8f2B7C63290661c99a2b494aEf3b8c30",
@@ -3194,68 +3174,8 @@
     },
     "token1": {
       "address": "0xdcDc1c1cC33AA817CbDBe8F5E2390BF7cc43dc4B",
-      "name": "AVASTR Vault  NFTX ",
+      "name": "Avastars",
       "symbol": "AVASTR",
-      "decimals": 18
-    }
-  },
-  "0x9D0bEEc8D63ef6484686d1F8470be62a210B7dBd": {
-    "protocolToken": {
-      "address": "0x9D0bEEc8D63ef6484686d1F8470be62a210B7dBd",
-      "name": "SushiSwap LP Token WETH / DOGEP",
-      "symbol": "SLP/WETH/DOGEP",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xE7eaec9Bca79d537539C00C58Ae93117fB7280b9",
-      "name": "Doge Protocol",
-      "symbol": "DOGEP",
-      "decimals": 18
-    }
-  },
-  "0x4b893b0E9c2FE8bF5D531d0C9C603b1483b4Ce30": {
-    "protocolToken": {
-      "address": "0x4b893b0E9c2FE8bF5D531d0C9C603b1483b4Ce30",
-      "name": "SushiSwap LP Token CVXCRV / WETH",
-      "symbol": "SLP/CVXCRV/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7",
-      "name": "Convex CRV",
-      "symbol": "CVXCRV",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0xa416Df4D96cd547337A3e8893bf3F01C2a2AF5C0": {
-    "protocolToken": {
-      "address": "0xa416Df4D96cd547337A3e8893bf3F01C2a2AF5C0",
-      "name": "SushiSwap LP Token WETH / DOGEGF",
-      "symbol": "SLP/WETH/DOGEGF",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xfb130d93E49DcA13264344966A611dc79a456Bc5",
-      "name": "DogeGF",
-      "symbol": "DOGEGF",
       "decimals": 18
     }
   },
@@ -3268,8 +3188,48 @@
     },
     "token0": {
       "address": "0x1C9922314ED1415c95b9FD453c3818fd41867d0B",
-      "name": "Tower",
+      "name": "TOWER",
       "symbol": "TOWER",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x9D0bEEc8D63ef6484686d1F8470be62a210B7dBd": {
+    "protocolToken": {
+      "address": "0x9D0bEEc8D63ef6484686d1F8470be62a210B7dBd",
+      "name": "SushiSwap LP Token WETH / dogep",
+      "symbol": "SLP/WETH/dogep",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xE7eaec9Bca79d537539C00C58Ae93117fB7280b9",
+      "name": "Doge Protocol",
+      "symbol": "dogep",
+      "decimals": 18
+    }
+  },
+  "0x4b893b0E9c2FE8bF5D531d0C9C603b1483b4Ce30": {
+    "protocolToken": {
+      "address": "0x4b893b0E9c2FE8bF5D531d0C9C603b1483b4Ce30",
+      "name": "SushiSwap LP Token cvxCRV / WETH",
+      "symbol": "SLP/cvxCRV/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7",
+      "name": "Convex CRV",
+      "symbol": "cvxCRV",
       "decimals": 18
     },
     "token1": {
@@ -3296,6 +3256,46 @@
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "name": "Wrapped Ether",
       "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xE4eBD836832F1a8A81641111A5b081a2f90B9430": {
+    "protocolToken": {
+      "address": "0xE4eBD836832F1a8A81641111A5b081a2f90B9430",
+      "name": "SushiSwap LP Token DYDX / WETH",
+      "symbol": "SLP/DYDX/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x92D6C1e31e14520e676a687F0a93788B716BEff5",
+      "name": "dYdX",
+      "symbol": "DYDX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xa416Df4D96cd547337A3e8893bf3F01C2a2AF5C0": {
+    "protocolToken": {
+      "address": "0xa416Df4D96cd547337A3e8893bf3F01C2a2AF5C0",
+      "name": "SushiSwap LP Token WETH / DOGEGF",
+      "symbol": "SLP/WETH/DOGEGF",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xfb130d93E49DcA13264344966A611dc79a456Bc5",
+      "name": "DogeGF",
+      "symbol": "DOGEGF",
       "decimals": 18
     }
   },
@@ -3408,7 +3408,7 @@
     },
     "token0": {
       "address": "0x45080a6531d671DDFf20DB42f93792a489685e32",
-      "name": "Finance Vote",
+      "name": "Finance.Vote Token",
       "symbol": "FVT",
       "decimals": 18
     },
@@ -3439,26 +3439,6 @@
       "decimals": 18
     }
   },
-  "0xD46004eEd3885E0A74D452811C80eB41270a5728": {
-    "protocolToken": {
-      "address": "0xD46004eEd3885E0A74D452811C80eB41270a5728",
-      "name": "SushiSwap LP Token BUILD / DAI",
-      "symbol": "SLP/BUILD/DAI",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x57b59f981730c6257dF57cF6F0D98283749A9Eeb",
-      "name": "BUILD",
-      "symbol": "BUILD",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI",
-      "decimals": 18
-    }
-  },
   "0xaFa43241cf1A1d12268E75f1e7258b805E708Da5": {
     "protocolToken": {
       "address": "0xaFa43241cf1A1d12268E75f1e7258b805E708Da5",
@@ -3474,8 +3454,28 @@
     },
     "token1": {
       "address": "0xf65B5C5104c4faFD4b709d9D60a185eAE063276c",
-      "name": "Truebit Protocol",
+      "name": "Truebit",
       "symbol": "TRU",
+      "decimals": 18
+    }
+  },
+  "0xD46004eEd3885E0A74D452811C80eB41270a5728": {
+    "protocolToken": {
+      "address": "0xD46004eEd3885E0A74D452811C80eB41270a5728",
+      "name": "SushiSwap LP Token BUILD / DAI",
+      "symbol": "SLP/BUILD/DAI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x57b59f981730c6257dF57cF6F0D98283749A9Eeb",
+      "name": "Build Token",
+      "symbol": "BUILD",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
       "decimals": 18
     }
   },
@@ -3548,7 +3548,7 @@
     },
     "token0": {
       "address": "0x6FC2f1044A3b9bB3e43A43EC8F840843Ed753061",
-      "name": "Robo",
+      "name": "Robo Token",
       "symbol": "ROBO",
       "decimals": 18
     },
@@ -3579,17 +3579,17 @@
       "decimals": 18
     }
   },
-  "0x57FBc21Ca3C157A26b6eA57334D6b082bE1060a7": {
+  "0x0beC54c89a7d9F15C4e7fAA8d47ADEdF374462eD": {
     "protocolToken": {
-      "address": "0x57FBc21Ca3C157A26b6eA57334D6b082bE1060a7",
-      "name": "SushiSwap LP Token BAD / WETH",
-      "symbol": "SLP/BAD/WETH",
+      "address": "0x0beC54c89a7d9F15C4e7fAA8d47ADEdF374462eD",
+      "name": "SushiSwap LP Token BiFi / WETH",
+      "symbol": "SLP/BiFi/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x32b86b99441480a7E5BD3A26c124ec2373e3F015",
-      "name": "Bad Idea AI",
-      "symbol": "BAD",
+      "address": "0x2791BfD60D232150Bff86b39B7146c0eaAA2BA81",
+      "name": "BiFi",
+      "symbol": "BiFi",
       "decimals": 18
     },
     "token1": {
@@ -3599,17 +3599,17 @@
       "decimals": 18
     }
   },
-  "0x0beC54c89a7d9F15C4e7fAA8d47ADEdF374462eD": {
+  "0x57FBc21Ca3C157A26b6eA57334D6b082bE1060a7": {
     "protocolToken": {
-      "address": "0x0beC54c89a7d9F15C4e7fAA8d47ADEdF374462eD",
-      "name": "SushiSwap LP Token BIFI / WETH",
-      "symbol": "SLP/BIFI/WETH",
+      "address": "0x57FBc21Ca3C157A26b6eA57334D6b082bE1060a7",
+      "name": "SushiSwap LP Token BAD / WETH",
+      "symbol": "SLP/BAD/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x2791BfD60D232150Bff86b39B7146c0eaAA2BA81",
-      "name": "BiFi",
-      "symbol": "BIFI",
+      "address": "0x32b86b99441480a7E5BD3A26c124ec2373e3F015",
+      "name": "BAD IDEA AI",
+      "symbol": "BAD",
       "decimals": 18
     },
     "token1": {
@@ -3694,7 +3694,7 @@
     },
     "token1": {
       "address": "0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de",
-      "name": "Siren",
+      "name": "SIREN",
       "symbol": "SI",
       "decimals": 18
     }
@@ -3708,7 +3708,7 @@
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
@@ -3728,7 +3728,7 @@
     },
     "token0": {
       "address": "0x98968f0747E0A261532cAcC0BE296375F5c08398",
-      "name": "MOONCAT Vault  NFTX ",
+      "name": "MoonCats",
       "symbol": "MOONCAT",
       "decimals": 18
     },
@@ -3759,26 +3759,6 @@
       "decimals": 18
     }
   },
-  "0x72075636be2603b91BE1cDA70fAB6ef21cA86989": {
-    "protocolToken": {
-      "address": "0x72075636be2603b91BE1cDA70fAB6ef21cA86989",
-      "name": "SushiSwap LP Token POWR / WETH",
-      "symbol": "SLP/POWR/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x595832F8FC6BF59c85C527fEC3740A1b7a361269",
-      "name": "PowerLedger",
-      "symbol": "POWR",
-      "decimals": 6
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0xb473c2606F7AC371518B13d2d097C34C38ca33d5": {
     "protocolToken": {
       "address": "0xb473c2606F7AC371518B13d2d097C34C38ca33d5",
@@ -3788,7 +3768,7 @@
     },
     "token0": {
       "address": "0x1C9922314ED1415c95b9FD453c3818fd41867d0B",
-      "name": "Tower",
+      "name": "TOWER",
       "symbol": "TOWER",
       "decimals": 18
     },
@@ -3819,26 +3799,6 @@
       "decimals": 18
     }
   },
-  "0xEa9b00b169dDA4CBC9fA0a64b0d1e4A6a23a3f34": {
-    "protocolToken": {
-      "address": "0xEa9b00b169dDA4CBC9fA0a64b0d1e4A6a23a3f34",
-      "name": "SushiSwap LP Token WXRP / USDC",
-      "symbol": "SLP/WXRP/USDC",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x39fBBABf11738317a448031930706cd3e612e1B9",
-      "name": "Wrapped XRP",
-      "symbol": "WXRP",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
-    }
-  },
   "0x913e197AB56469bE9C6F1F1c84520a2ec8a05ebb": {
     "protocolToken": {
       "address": "0x913e197AB56469bE9C6F1F1c84520a2ec8a05ebb",
@@ -3854,8 +3814,48 @@
     },
     "token1": {
       "address": "0xc690F7C7FcfFA6a82b79faB7508c466FEfdfc8c5",
-      "name": "Lympo",
+      "name": "Lympo tokens",
       "symbol": "LYM",
+      "decimals": 18
+    }
+  },
+  "0xd3E31f8Aac930e354283CA3EFDa1e22525F98AF1": {
+    "protocolToken": {
+      "address": "0xd3E31f8Aac930e354283CA3EFDa1e22525F98AF1",
+      "name": "SushiSwap LP Token PHUNK / WETH",
+      "symbol": "SLP/PHUNK/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB39185e33E8c28e0BB3DbBCe24DA5dEA6379Ae91",
+      "name": "CryptoPhunks",
+      "symbol": "PHUNK",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x72075636be2603b91BE1cDA70fAB6ef21cA86989": {
+    "protocolToken": {
+      "address": "0x72075636be2603b91BE1cDA70fAB6ef21cA86989",
+      "name": "SushiSwap LP Token POWR / WETH",
+      "symbol": "SLP/POWR/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x595832F8FC6BF59c85C527fEC3740A1b7a361269",
+      "name": "PowerLedger",
+      "symbol": "POWR",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -3874,7 +3874,7 @@
     },
     "token1": {
       "address": "0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
-      "name": "Pillar",
+      "name": "PILLAR",
       "symbol": "PLR",
       "decimals": 18
     }
@@ -3899,26 +3899,6 @@
       "decimals": 6
     }
   },
-  "0x611CDe65deA90918c0078ac0400A72B0D25B9bb1": {
-    "protocolToken": {
-      "address": "0x611CDe65deA90918c0078ac0400A72B0D25B9bb1",
-      "name": "SushiSwap LP Token REN / WETH",
-      "symbol": "SLP/REN/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x408e41876cCCDC0F92210600ef50372656052a38",
-      "name": "Republic Token",
-      "symbol": "REN",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0xE56DB0b80Bed4A9151691046E52aCbb51F61753F": {
     "protocolToken": {
       "address": "0xE56DB0b80Bed4A9151691046E52aCbb51F61753F",
@@ -3939,6 +3919,26 @@
       "decimals": 18
     }
   },
+  "0xEa9b00b169dDA4CBC9fA0a64b0d1e4A6a23a3f34": {
+    "protocolToken": {
+      "address": "0xEa9b00b169dDA4CBC9fA0a64b0d1e4A6a23a3f34",
+      "name": "SushiSwap LP Token WXRP / USDC",
+      "symbol": "SLP/WXRP/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x39fBBABf11738317a448031930706cd3e612e1B9",
+      "name": "Wrapped XRP",
+      "symbol": "WXRP",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
   "0x34b13F8CD184F55d0Bd4Dd1fe6C07D46f245c7eD": {
     "protocolToken": {
       "address": "0x34b13F8CD184F55d0Bd4Dd1fe6C07D46f245c7eD",
@@ -3948,7 +3948,7 @@
     },
     "token0": {
       "address": "0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b",
-      "name": "DeFi Pulse Index",
+      "name": "DefiPulse Index",
       "symbol": "DPI",
       "decimals": 18
     },
@@ -3959,17 +3959,37 @@
       "decimals": 18
     }
   },
-  "0xd3E31f8Aac930e354283CA3EFDa1e22525F98AF1": {
+  "0x65f550d18Cac8E19A97E73108618b443bf301d20": {
     "protocolToken": {
-      "address": "0xd3E31f8Aac930e354283CA3EFDa1e22525F98AF1",
-      "name": "SushiSwap LP Token PHUNK / WETH",
-      "symbol": "SLP/PHUNK/WETH",
+      "address": "0x65f550d18Cac8E19A97E73108618b443bf301d20",
+      "name": "SushiSwap LP Token BONDLY / WETH",
+      "symbol": "SLP/BONDLY/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0xB39185e33E8c28e0BB3DbBCe24DA5dEA6379Ae91",
-      "name": "PHUNK Vault  NFTX ",
-      "symbol": "PHUNK",
+      "address": "0x91dFbEE3965baAEE32784c2d546B7a0C62F268c9",
+      "name": "Bondly",
+      "symbol": "BONDLY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x611CDe65deA90918c0078ac0400A72B0D25B9bb1": {
+    "protocolToken": {
+      "address": "0x611CDe65deA90918c0078ac0400A72B0D25B9bb1",
+      "name": "SushiSwap LP Token REN / WETH",
+      "symbol": "SLP/REN/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x408e41876cCCDC0F92210600ef50372656052a38",
+      "name": "Republic Token",
+      "symbol": "REN",
       "decimals": 18
     },
     "token1": {
@@ -3990,26 +4010,6 @@
       "address": "0x72377f31e30a405282b522d588AEbbea202b4f23",
       "name": "Varen",
       "symbol": "VRN",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x65f550d18Cac8E19A97E73108618b443bf301d20": {
-    "protocolToken": {
-      "address": "0x65f550d18Cac8E19A97E73108618b443bf301d20",
-      "name": "SushiSwap LP Token BONDLY / WETH",
-      "symbol": "SLP/BONDLY/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x91dFbEE3965baAEE32784c2d546B7a0C62F268c9",
-      "name": "Forj",
-      "symbol": "BONDLY",
       "decimals": 18
     },
     "token1": {
@@ -4048,7 +4048,7 @@
     },
     "token0": {
       "address": "0x321C2fE4446C7c963dc41Dd58879AF648838f98D",
-      "name": "Cryptex Finance",
+      "name": "Cryptex",
       "symbol": "CTX",
       "decimals": 18
     },
@@ -4068,7 +4068,7 @@
     },
     "token0": {
       "address": "0x6A68DE599E8E0b1856E322CE5Bd11c5C3C79712B",
-      "name": "iBetYou",
+      "name": "I Bet You",
       "symbol": "IBY",
       "decimals": 18
     },
@@ -4108,7 +4108,7 @@
     },
     "token0": {
       "address": "0x4A64515E5E1d1073e83f30cB97BEd20400b66E10",
-      "name": "Wrapped Zcash",
+      "name": "Wrapped ZEC",
       "symbol": "WZEC",
       "decimals": 18
     },
@@ -4134,28 +4134,8 @@
     },
     "token1": {
       "address": "0xeEAA40B28A2d1b0B08f6f97bB1DD4B75316c6107",
-      "name": "CVI",
+      "name": "GOVI",
       "symbol": "GOVI",
-      "decimals": 18
-    }
-  },
-  "0x0F8086D08A69eBD8e3a130A87A3b6A260723976f": {
-    "protocolToken": {
-      "address": "0x0F8086D08A69eBD8e3a130A87A3b6A260723976f",
-      "name": "SushiSwap LP Token AUCTION / WETH",
-      "symbol": "SLP/AUCTION/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xA9B1Eb5908CfC3cdf91F9B8B3a74108598009096",
-      "name": "Bounce",
-      "symbol": "AUCTION",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -4168,7 +4148,7 @@
     },
     "token0": {
       "address": "0x383518188C0C6d7730D91b2c03a03C837814a899",
-      "name": "Olympus v1",
+      "name": "Olympus",
       "symbol": "OHM",
       "decimals": 9
     },
@@ -4199,24 +4179,44 @@
       "decimals": 18
     }
   },
-  "0x2d9824A63f8f63CF1eEE95D957099ba1f78bbBcB": {
+  "0x0F8086D08A69eBD8e3a130A87A3b6A260723976f": {
     "protocolToken": {
-      "address": "0x2d9824A63f8f63CF1eEE95D957099ba1f78bbBcB",
-      "name": "SushiSwap LP Token PROS / USDC",
-      "symbol": "SLP/PROS/USDC",
+      "address": "0x0F8086D08A69eBD8e3a130A87A3b6A260723976f",
+      "name": "SushiSwap LP Token Auction / WETH",
+      "symbol": "SLP/Auction/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x8642A849D0dcb7a15a974794668ADcfbe4794B56",
-      "name": "Prosper",
-      "symbol": "PROS",
+      "address": "0xA9B1Eb5908CfC3cdf91F9B8B3a74108598009096",
+      "name": "Bounce Token",
+      "symbol": "Auction",
       "decimals": 18
     },
     "token1": {
-      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x44D34985826578e5ba24ec78c93bE968549BB918": {
+    "protocolToken": {
+      "address": "0x44D34985826578e5ba24ec78c93bE968549BB918",
+      "name": "SushiSwap LP Token BOR / WETH",
+      "symbol": "SLP/BOR/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3c9d6c1C73b31c837832c72E04D3152f051fc1A9",
+      "name": "BoringDAO",
+      "symbol": "BOR",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
     }
   },
   "0x4556C4488CC16D5e9552cC1a99a529c1392E4fe9": {
@@ -4279,6 +4279,26 @@
       "decimals": 8
     }
   },
+  "0x2d9824A63f8f63CF1eEE95D957099ba1f78bbBcB": {
+    "protocolToken": {
+      "address": "0x2d9824A63f8f63CF1eEE95D957099ba1f78bbBcB",
+      "name": "SushiSwap LP Token PROS / USDC",
+      "symbol": "SLP/PROS/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x8642A849D0dcb7a15a974794668ADcfbe4794B56",
+      "name": "Prosper",
+      "symbol": "PROS",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
   "0x153b4c29E692faf10255fe435E290e9cfb2351b5": {
     "protocolToken": {
       "address": "0x153b4c29E692faf10255fe435E290e9cfb2351b5",
@@ -4288,7 +4308,7 @@
     },
     "token0": {
       "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-      "name": "Chainlink Token",
+      "name": "ChainLink Token",
       "symbol": "LINK",
       "decimals": 18
     },
@@ -4297,46 +4317,6 @@
       "name": "SushiswapV2 IL Protection",
       "symbol": "sil",
       "decimals": 8
-    }
-  },
-  "0x44D34985826578e5ba24ec78c93bE968549BB918": {
-    "protocolToken": {
-      "address": "0x44D34985826578e5ba24ec78c93bE968549BB918",
-      "name": "SushiSwap LP Token BOR / WETH",
-      "symbol": "SLP/BOR/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x3c9d6c1C73b31c837832c72E04D3152f051fc1A9",
-      "name": "BoringDAO",
-      "symbol": "BOR",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x0652687E87a4b8b5370b05bc298Ff00d205D9B5f": {
-    "protocolToken": {
-      "address": "0x0652687E87a4b8b5370b05bc298Ff00d205D9B5f",
-      "name": "SushiSwap LP Token WETH / ONX",
-      "symbol": "SLP/WETH/ONX",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xE0aD1806Fd3E7edF6FF52Fdb822432e847411033",
-      "name": "OnX Finance",
-      "symbol": "ONX",
-      "decimals": 18
     }
   },
   "0x1Ad651a07B98464aa42F6cad68D0CE8639B659A5": {
@@ -4354,8 +4334,28 @@
     },
     "token1": {
       "address": "0xC4c346eDc55504574cCEB00AA1091d22404A4bC3",
-      "name": "MEZZ",
+      "name": "MEZZ Token",
       "symbol": "MEZZ",
+      "decimals": 18
+    }
+  },
+  "0xBE844f05e3eadA9453156E3FE5C39891B4245BC6": {
+    "protocolToken": {
+      "address": "0xBE844f05e3eadA9453156E3FE5C39891B4245BC6",
+      "name": "SushiSwap LP Token KKO / WETH",
+      "symbol": "SLP/KKO/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x368C5290b13cAA10284Db58B4ad4F3E9eE8bf4c9",
+      "name": "Kineko",
+      "symbol": "KKO",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -4379,17 +4379,17 @@
       "decimals": 18
     }
   },
-  "0xBE844f05e3eadA9453156E3FE5C39891B4245BC6": {
+  "0x9EbC2A125b1DaF3b8a56cB52FA81F89a199E2b38": {
     "protocolToken": {
-      "address": "0xBE844f05e3eadA9453156E3FE5C39891B4245BC6",
-      "name": "SushiSwap LP Token KKO / WETH",
-      "symbol": "SLP/KKO/WETH",
+      "address": "0x9EbC2A125b1DaF3b8a56cB52FA81F89a199E2b38",
+      "name": "SushiSwap LP Token INSUR / WETH",
+      "symbol": "SLP/INSUR/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x368C5290b13cAA10284Db58B4ad4F3E9eE8bf4c9",
-      "name": "KKO Protocol",
-      "symbol": "KKO",
+      "address": "0x544c42fBB96B39B21DF61cf322b5EDC285EE7429",
+      "name": "InsurAce",
+      "symbol": "INSUR",
       "decimals": 18
     },
     "token1": {
@@ -4408,29 +4408,9 @@
     },
     "token0": {
       "address": "0x607F4C5BB672230e8672085532f7e901544a7375",
-      "name": "iExec RLC Token",
+      "name": "iEx.ec Network Token",
       "symbol": "RLC",
       "decimals": 9
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x64AaE17164aa665c50FBFE6176b50F33afae1c3D": {
-    "protocolToken": {
-      "address": "0x64AaE17164aa665c50FBFE6176b50F33afae1c3D",
-      "name": "SushiSwap LP Token PLBT / WETH",
-      "symbol": "SLP/PLBT/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0AfFa06e7Fbe5bC9a764C979aA66E8256A631f02",
-      "name": "Polybius",
-      "symbol": "PLBT",
-      "decimals": 6
     },
     "token1": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -4499,26 +4479,6 @@
       "decimals": 18
     }
   },
-  "0x9EbC2A125b1DaF3b8a56cB52FA81F89a199E2b38": {
-    "protocolToken": {
-      "address": "0x9EbC2A125b1DaF3b8a56cB52FA81F89a199E2b38",
-      "name": "SushiSwap LP Token INSUR / WETH",
-      "symbol": "SLP/INSUR/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x544c42fBB96B39B21DF61cf322b5EDC285EE7429",
-      "name": "InsurAce",
-      "symbol": "INSUR",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x5E63360E891BD60C69445970256C260b0A6A54c6": {
     "protocolToken": {
       "address": "0x5E63360E891BD60C69445970256C260b0A6A54c6",
@@ -4528,7 +4488,7 @@
     },
     "token0": {
       "address": "0x80fB784B7eD66730e8b1DBd9820aFD29931aab03",
-      "name": "ETHLend Token",
+      "name": "EthLend Token",
       "symbol": "LEND",
       "decimals": 18
     },
@@ -4542,14 +4502,14 @@
   "0xF9a0483b7ACe75319cb78C0f1c69A04d581F3D1A": {
     "protocolToken": {
       "address": "0xF9a0483b7ACe75319cb78C0f1c69A04d581F3D1A",
-      "name": "SushiSwap LP Token STKXPRT / WETH",
-      "symbol": "SLP/STKXPRT/WETH",
+      "name": "SushiSwap LP Token stkXPRT / WETH",
+      "symbol": "SLP/stkXPRT/WETH",
       "decimals": 18
     },
     "token0": {
       "address": "0x45e007750Cc74B1D2b4DD7072230278d9602C499",
-      "name": "pSTAKE Staked XPRT",
-      "symbol": "STKXPRT",
+      "name": "Persistence Staked XPRT",
+      "symbol": "stkXPRT",
       "decimals": 6
     },
     "token1": {
@@ -4574,7 +4534,7 @@
     },
     "token1": {
       "address": "0xd779eEA9936B4e323cDdff2529eb6F13d0A4d66e",
-      "name": "EnterDAO",
+      "name": "ENTER Governance Token",
       "symbol": "ENTR",
       "decimals": 18
     }
@@ -4588,7 +4548,7 @@
     },
     "token0": {
       "address": "0x1117aC6Ad6Cdf1A3BC543baD3B133724620522d5",
-      "name": "MODA DAO",
+      "name": "moda",
       "symbol": "MODA",
       "decimals": 18
     },
@@ -4599,18 +4559,78 @@
       "decimals": 18
     }
   },
+  "0x0652687E87a4b8b5370b05bc298Ff00d205D9B5f": {
+    "protocolToken": {
+      "address": "0x0652687E87a4b8b5370b05bc298Ff00d205D9B5f",
+      "name": "SushiSwap LP Token WETH / ONX",
+      "symbol": "SLP/WETH/ONX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xE0aD1806Fd3E7edF6FF52Fdb822432e847411033",
+      "name": "OnX.finance",
+      "symbol": "ONX",
+      "decimals": 18
+    }
+  },
   "0x41bFBa56B9Ba48D0a83775d89c247180617266bc": {
     "protocolToken": {
       "address": "0x41bFBa56B9Ba48D0a83775d89c247180617266bc",
-      "name": "SushiSwap LP Token SGTV2 / WETH",
-      "symbol": "SLP/SGTV2/WETH",
+      "name": "SushiSwap LP Token SGT / WETH",
+      "symbol": "SLP/SGT/WETH",
       "decimals": 18
     },
     "token0": {
       "address": "0x24C19F7101c1731b85F1127EaA0407732E36EcDD",
-      "name": "SharedStake Governance v2",
-      "symbol": "SGTV2",
+      "name": "Sharedstake.finance",
+      "symbol": "SGT",
       "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x717385e1a702F90B6Eb8Cd23150702Ca7217b626": {
+    "protocolToken": {
+      "address": "0x717385e1a702F90B6Eb8Cd23150702Ca7217b626",
+      "name": "SushiSwap LP Token WETH / COTI",
+      "symbol": "SLP/WETH/COTI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xDDB3422497E61e13543BeA06989C0789117555c5",
+      "name": "COTI Token",
+      "symbol": "COTI",
+      "decimals": 18
+    }
+  },
+  "0x64AaE17164aa665c50FBFE6176b50F33afae1c3D": {
+    "protocolToken": {
+      "address": "0x64AaE17164aa665c50FBFE6176b50F33afae1c3D",
+      "name": "SushiSwap LP Token PLBT / WETH",
+      "symbol": "SLP/PLBT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0AfFa06e7Fbe5bC9a764C979aA66E8256A631f02",
+      "name": "Polybius Token",
+      "symbol": "PLBT",
+      "decimals": 6
     },
     "token1": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -4642,14 +4662,34 @@
   "0x3c34Dad27AB51C51dCC0a322eE4f18519D47f3E1": {
     "protocolToken": {
       "address": "0x3c34Dad27AB51C51dCC0a322eE4f18519D47f3E1",
-      "name": "SushiSwap LP Token RETH2 / WETH",
-      "symbol": "SLP/RETH2/WETH",
+      "name": "SushiSwap LP Token rETH2 / WETH",
+      "symbol": "SLP/rETH2/WETH",
       "decimals": 18
     },
     "token0": {
       "address": "0x20BC832ca081b91433ff6c17f85701B6e92486c5",
-      "name": "rETH2",
-      "symbol": "RETH2",
+      "name": "StakeWise Reward ETH2",
+      "symbol": "rETH2",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x69b39B89f9274a16e8A19B78E5eB47a4d91dAc9E": {
+    "protocolToken": {
+      "address": "0x69b39B89f9274a16e8A19B78E5eB47a4d91dAc9E",
+      "name": "SushiSwap LP Token FARM / WETH",
+      "symbol": "SLP/FARM/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xa0246c9032bC3A600820415aE600c6388619A14D",
+      "name": "FARM Reward Token",
+      "symbol": "FARM",
       "decimals": 18
     },
     "token1": {
@@ -4699,23 +4739,23 @@
       "decimals": 18
     }
   },
-  "0x717385e1a702F90B6Eb8Cd23150702Ca7217b626": {
+  "0x1976BF5cC90BAc01E3aE21A6E5971A393638bCFA": {
     "protocolToken": {
-      "address": "0x717385e1a702F90B6Eb8Cd23150702Ca7217b626",
-      "name": "SushiSwap LP Token WETH / COTI",
-      "symbol": "SLP/WETH/COTI",
+      "address": "0x1976BF5cC90BAc01E3aE21A6E5971A393638bCFA",
+      "name": "SushiSwap LP Token SATA / WETH",
+      "symbol": "SLP/SATA/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
+      "address": "0x3ebb4A4e91Ad83BE51F8d596533818b246F4bEe1",
+      "name": "Signata",
+      "symbol": "SATA",
       "decimals": 18
     },
     "token1": {
-      "address": "0xDDB3422497E61e13543BeA06989C0789117555c5",
-      "name": "COTI",
-      "symbol": "COTI",
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -4739,37 +4779,17 @@
       "decimals": 6
     }
   },
-  "0x69b39B89f9274a16e8A19B78E5eB47a4d91dAc9E": {
-    "protocolToken": {
-      "address": "0x69b39B89f9274a16e8A19B78E5eB47a4d91dAc9E",
-      "name": "SushiSwap LP Token FARM / WETH",
-      "symbol": "SLP/FARM/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xa0246c9032bC3A600820415aE600c6388619A14D",
-      "name": "FARM Reward Token",
-      "symbol": "FARM",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x4e726311E7036d7be9A9B2A1E9e00c48aEEc28Ae": {
     "protocolToken": {
       "address": "0x4e726311E7036d7be9A9B2A1E9e00c48aEEc28Ae",
-      "name": "SushiSwap LP Token GM / WETH",
-      "symbol": "SLP/GM/WETH",
+      "name": "SushiSwap LP Token gm / WETH",
+      "symbol": "SLP/gm/WETH",
       "decimals": 18
     },
     "token0": {
       "address": "0x7F0693074F8064cFbCf9fA6E5A3Fa0e4F58CcCCF",
       "name": "we love gm",
-      "symbol": "GM",
+      "symbol": "gm",
       "decimals": 18
     },
     "token1": {
@@ -4819,17 +4839,17 @@
       "decimals": 18
     }
   },
-  "0x1976BF5cC90BAc01E3aE21A6E5971A393638bCFA": {
+  "0x07D5695a24904CC1B6e3bd57cC7780B90618e3c4": {
     "protocolToken": {
-      "address": "0x1976BF5cC90BAc01E3aE21A6E5971A393638bCFA",
-      "name": "SushiSwap LP Token SATA / WETH",
-      "symbol": "SLP/SATA/WETH",
+      "address": "0x07D5695a24904CC1B6e3bd57cC7780B90618e3c4",
+      "name": "SushiSwap LP Token MIM / WETH",
+      "symbol": "SLP/MIM/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x3ebb4A4e91Ad83BE51F8d596533818b246F4bEe1",
-      "name": "Signata",
-      "symbol": "SATA",
+      "address": "0x99D8a9C45b2ecA8864373A26D1459e3Dff1e17F3",
+      "name": "Magic Internet Money",
+      "symbol": "MIM",
       "decimals": 18
     },
     "token1": {
@@ -4859,6 +4879,46 @@
       "decimals": 18
     }
   },
+  "0x328dFd0139e26cB0FEF7B0742B49b0fe4325F821": {
+    "protocolToken": {
+      "address": "0x328dFd0139e26cB0FEF7B0742B49b0fe4325F821",
+      "name": "SushiSwap LP Token INV / WETH",
+      "symbol": "SLP/INV/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x41D5D79431A913C4aE7d69a668ecdfE5fF9DFB68",
+      "name": "Inverse DAO",
+      "symbol": "INV",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xD3c41c080a73181e108E0526475a690F3616a859": {
+    "protocolToken": {
+      "address": "0xD3c41c080a73181e108E0526475a690F3616a859",
+      "name": "SushiSwap LP Token DEXTF / WETH",
+      "symbol": "SLP/DEXTF/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x5F64Ab1544D28732F0A24F4713c2C8ec0dA089f0",
+      "name": "DEXTF Token",
+      "symbol": "DEXTF",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0x37FC088cFD67349Be00f5504D00ddB7F2274b3f6": {
     "protocolToken": {
       "address": "0x37FC088cFD67349Be00f5504D00ddB7F2274b3f6",
@@ -4870,26 +4930,6 @@
       "address": "0x72B886d09C117654aB7dA13A14d603001dE0B777",
       "name": "XDEFI",
       "symbol": "XDEFI",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x07D5695a24904CC1B6e3bd57cC7780B90618e3c4": {
-    "protocolToken": {
-      "address": "0x07D5695a24904CC1B6e3bd57cC7780B90618e3c4",
-      "name": "SushiSwap LP Token MIM / WETH",
-      "symbol": "SLP/MIM/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x99D8a9C45b2ecA8864373A26D1459e3Dff1e17F3",
-      "name": "Magic Internet Money",
-      "symbol": "MIM",
       "decimals": 18
     },
     "token1": {
@@ -4919,66 +4959,6 @@
       "decimals": 18
     }
   },
-  "0xD3c41c080a73181e108E0526475a690F3616a859": {
-    "protocolToken": {
-      "address": "0xD3c41c080a73181e108E0526475a690F3616a859",
-      "name": "SushiSwap LP Token DEXTF / WETH",
-      "symbol": "SLP/DEXTF/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x5F64Ab1544D28732F0A24F4713c2C8ec0dA089f0",
-      "name": "Domani Protocol",
-      "symbol": "DEXTF",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x328dFd0139e26cB0FEF7B0742B49b0fe4325F821": {
-    "protocolToken": {
-      "address": "0x328dFd0139e26cB0FEF7B0742B49b0fe4325F821",
-      "name": "SushiSwap LP Token INV / WETH",
-      "symbol": "SLP/INV/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x41D5D79431A913C4aE7d69a668ecdfE5fF9DFB68",
-      "name": "Inverse Finance",
-      "symbol": "INV",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x7f8F7Dd53D1F3ac1052565e3ff451D7fE666a311": {
-    "protocolToken": {
-      "address": "0x7f8F7Dd53D1F3ac1052565e3ff451D7fE666a311",
-      "name": "SushiSwap LP Token MATIC / WETH",
-      "symbol": "SLP/MATIC/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
-      "name": "Matic Network Token",
-      "symbol": "MATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0xe93527D1F8c586353b13826C501fa5a69bCE2b0E": {
     "protocolToken": {
       "address": "0xe93527D1F8c586353b13826C501fa5a69bCE2b0E",
@@ -4999,23 +4979,23 @@
       "decimals": 18
     }
   },
-  "0x53162D78dCa413d9e28cf62799D17a9E278B60E8": {
+  "0x295685c8FE08D8192981d21Ea1fe856a07443920": {
     "protocolToken": {
-      "address": "0x53162D78dCa413d9e28cf62799D17a9E278B60E8",
-      "name": "SushiSwap LP Token APW / WETH",
-      "symbol": "SLP/APW/WETH",
+      "address": "0x295685c8FE08D8192981d21Ea1fe856a07443920",
+      "name": "SushiSwap LP Token WETH / GODS",
+      "symbol": "SLP/WETH/GODS",
       "decimals": 18
     },
     "token0": {
-      "address": "0x4104b135DBC9609Fc1A9490E61369036497660c8",
-      "name": "APWine Token",
-      "symbol": "APW",
-      "decimals": 18
-    },
-    "token1": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "name": "Wrapped Ether",
       "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xccC8cb5229B0ac8069C51fd58367Fd1e622aFD97",
+      "name": "Gods Unchained",
+      "symbol": "GODS",
       "decimals": 18
     }
   },
@@ -5039,6 +5019,26 @@
       "decimals": 18
     }
   },
+  "0x7f8F7Dd53D1F3ac1052565e3ff451D7fE666a311": {
+    "protocolToken": {
+      "address": "0x7f8F7Dd53D1F3ac1052565e3ff451D7fE666a311",
+      "name": "SushiSwap LP Token MATIC / WETH",
+      "symbol": "SLP/MATIC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
+      "name": "Matic Token",
+      "symbol": "MATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0xa39DE66D8690d5923fA5E579B19908EfB43C8033": {
     "protocolToken": {
       "address": "0xa39DE66D8690d5923fA5E579B19908EfB43C8033",
@@ -5048,7 +5048,7 @@
     },
     "token0": {
       "address": "0x2781246fe707bB15CeE3e5ea354e2154a2877B16",
-      "name": "Elysia",
+      "name": "ELYSIA",
       "symbol": "EL",
       "decimals": 18
     },
@@ -5082,8 +5082,8 @@
   "0xf79a07cd3488BBaFB86dF1bAd09a6168D935c017": {
     "protocolToken": {
       "address": "0xf79a07cd3488BBaFB86dF1bAd09a6168D935c017",
-      "name": "SushiSwap LP Token ALPHA / IBETHV2",
-      "symbol": "SLP/ALPHA/IBETHV2",
+      "name": "SushiSwap LP Token ALPHA / ibETHv2",
+      "symbol": "SLP/ALPHA/ibETHv2",
       "decimals": 18
     },
     "token0": {
@@ -5095,28 +5095,8 @@
     "token1": {
       "address": "0xeEa3311250FE4c3268F8E684f7C87A82fF183Ec1",
       "name": "Interest Bearing Ether v2",
-      "symbol": "IBETHV2",
+      "symbol": "ibETHv2",
       "decimals": 8
-    }
-  },
-  "0x295685c8FE08D8192981d21Ea1fe856a07443920": {
-    "protocolToken": {
-      "address": "0x295685c8FE08D8192981d21Ea1fe856a07443920",
-      "name": "SushiSwap LP Token WETH / GODS",
-      "symbol": "SLP/WETH/GODS",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xccC8cb5229B0ac8069C51fd58367Fd1e622aFD97",
-      "name": "Gods Unchained",
-      "symbol": "GODS",
-      "decimals": 18
     }
   },
   "0xEF4F1D5007B4FF88c1A56261fec00264AF6001Fb": {
@@ -5128,7 +5108,7 @@
     },
     "token0": {
       "address": "0x93ED3FBe21207Ec2E8f2d3c3de6e058Cb73Bc04d",
-      "name": "Pinakion Token",
+      "name": "Pinakion",
       "symbol": "PNK",
       "decimals": 18
     },
@@ -5179,6 +5159,26 @@
       "decimals": 18
     }
   },
+  "0xdab6d56915D36060c8d6cf29A7A84910Da614603": {
+    "protocolToken": {
+      "address": "0xdab6d56915D36060c8d6cf29A7A84910Da614603",
+      "name": "SushiSwap LP Token Metis / WETH",
+      "symbol": "SLP/Metis/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
+      "name": "Metis Token",
+      "symbol": "Metis",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0x4f8DFe04b61A0E20Ed7FD7d7BaC2b856b652AB95": {
     "protocolToken": {
       "address": "0x4f8DFe04b61A0E20Ed7FD7d7BaC2b856b652AB95",
@@ -5214,7 +5214,7 @@
     },
     "token1": {
       "address": "0xE7F4c89032A2488D327323548AB0459676269331",
-      "name": "WAIFU Vault  NFTX ",
+      "name": "Waifusion",
       "symbol": "WAIFU",
       "decimals": 18
     }
@@ -5228,28 +5228,8 @@
     },
     "token0": {
       "address": "0x5cE188B44266c7B4bbC67Afa3D16b2eB24eD1065",
-      "name": "UWU Vault  NFTX ",
+      "name": "uwucrew",
       "symbol": "UWU",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0xdab6d56915D36060c8d6cf29A7A84910Da614603": {
-    "protocolToken": {
-      "address": "0xdab6d56915D36060c8d6cf29A7A84910Da614603",
-      "name": "SushiSwap LP Token METIS / WETH",
-      "symbol": "SLP/METIS/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
-      "name": "Metis",
-      "symbol": "METIS",
       "decimals": 18
     },
     "token1": {
@@ -5314,28 +5294,8 @@
     },
     "token1": {
       "address": "0xC7a8B45E184138114E6085C82936A8Db93DD156a",
-      "name": "MASK Vault  NFTX ",
+      "name": "Hashmasks",
       "symbol": "MASK",
-      "decimals": 18
-    }
-  },
-  "0xfffAE4A0F4AC251F4705717cD24CaDcCc9f33E06": {
-    "protocolToken": {
-      "address": "0xfffAE4A0F4AC251F4705717cD24CaDcCc9f33E06",
-      "name": "SushiSwap LP Token OHM / WETH",
-      "symbol": "SLP/OHM/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x383518188C0C6d7730D91b2c03a03C837814a899",
-      "name": "Olympus v1",
-      "symbol": "OHM",
-      "decimals": 9
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -5348,7 +5308,7 @@
     },
     "token0": {
       "address": "0x46e98FFE40E408bA6412bEb670507e083C8B95ff",
-      "name": "Primate",
+      "name": "PRIMATE",
       "symbol": "PRIMATE",
       "decimals": 18
     },
@@ -5379,6 +5339,46 @@
       "decimals": 18
     }
   },
+  "0xfffAE4A0F4AC251F4705717cD24CaDcCc9f33E06": {
+    "protocolToken": {
+      "address": "0xfffAE4A0F4AC251F4705717cD24CaDcCc9f33E06",
+      "name": "SushiSwap LP Token OHM / WETH",
+      "symbol": "SLP/OHM/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x383518188C0C6d7730D91b2c03a03C837814a899",
+      "name": "Olympus",
+      "symbol": "OHM",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x53162D78dCa413d9e28cf62799D17a9E278B60E8": {
+    "protocolToken": {
+      "address": "0x53162D78dCa413d9e28cf62799D17a9E278B60E8",
+      "name": "SushiSwap LP Token APW / WETH",
+      "symbol": "SLP/APW/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4104b135DBC9609Fc1A9490E61369036497660c8",
+      "name": "APWine Token",
+      "symbol": "APW",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0xF8937Dc1CA081161527c0bC1eb6379420195C894": {
     "protocolToken": {
       "address": "0xF8937Dc1CA081161527c0bC1eb6379420195C894",
@@ -5388,7 +5388,7 @@
     },
     "token0": {
       "address": "0x2BA8349123de45E931a8C8264c332E6e9CF593F9",
-      "name": "Blockchain Monster Hunt",
+      "name": "Blockchain Monster Coin",
       "symbol": "BCMC",
       "decimals": 18
     },
@@ -5397,6 +5397,26 @@
       "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimals": 18
+    }
+  },
+  "0x8597fa0773888107E2867D36dd87Fe5bAFeAb328": {
+    "protocolToken": {
+      "address": "0x8597fa0773888107E2867D36dd87Fe5bAFeAb328",
+      "name": "SushiSwap LP Token WETH / SLP",
+      "symbol": "SLP/WETH/SLP",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xCC8Fa225D80b9c7D42F96e9570156c65D6cAAa25",
+      "name": "Smooth Love Potion",
+      "symbol": "SLP",
+      "decimals": 0
     }
   },
   "0x22DEF8cF4E481417cb014D9dc64975BA12E3a184": {
@@ -5408,7 +5428,7 @@
     },
     "token0": {
       "address": "0x73968b9a57c6E53d41345FD57a6E6ae27d6CDB2F",
-      "name": "Stake DAO",
+      "name": "Stake DAO Token",
       "symbol": "SDT",
       "decimals": 18
     },
@@ -5448,7 +5468,7 @@
     },
     "token0": {
       "address": "0x20d60c6eb195868d4643f2c9B0809e4De6Cc003d",
-      "name": "PlayNity",
+      "name": "PlayNity token",
       "symbol": "PLY",
       "decimals": 6
     },
@@ -5457,26 +5477,6 @@
       "name": "Tether USD",
       "symbol": "USDT",
       "decimals": 6
-    }
-  },
-  "0x8597fa0773888107E2867D36dd87Fe5bAFeAb328": {
-    "protocolToken": {
-      "address": "0x8597fa0773888107E2867D36dd87Fe5bAFeAb328",
-      "name": "SushiSwap LP Token WETH / SLP",
-      "symbol": "SLP/WETH/SLP",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xCC8Fa225D80b9c7D42F96e9570156c65D6cAAa25",
-      "name": "Smooth Love Potion",
-      "symbol": "SLP",
-      "decimals": 0
     }
   },
   "0x132eEb05d5CB6829Bd34F552cDe0b6b708eF5014": {
@@ -5488,7 +5488,7 @@
     },
     "token0": {
       "address": "0x1b40183EFB4Dd766f11bDa7A7c3AD8982e998421",
-      "name": "Vesper",
+      "name": "VesperToken",
       "symbol": "VSP",
       "decimals": 18
     },
@@ -5528,7 +5528,7 @@
     },
     "token0": {
       "address": "0x8888801aF4d980682e47f1A9036e589479e835C5",
-      "name": "88mphapp",
+      "name": "88mph.app",
       "symbol": "MPH",
       "decimals": 18
     },
@@ -5554,7 +5554,7 @@
     },
     "token1": {
       "address": "0xD4e12B224C316664EbB647F69abC1fb8bB2697C7",
-      "name": "Bribe Protocol",
+      "name": "Bribe Token",
       "symbol": "BRIBE",
       "decimals": 18
     }
@@ -5568,7 +5568,7 @@
     },
     "token0": {
       "address": "0x374CB8C27130E2c9E04F44303f3c8351B9De61C1",
-      "name": "Bao Finance",
+      "name": "BaoToken",
       "symbol": "BAO",
       "decimals": 18
     },
@@ -5614,7 +5614,7 @@
     },
     "token1": {
       "address": "0xa92E7c82B11d10716aB534051B271D2f6aEf7Df5",
-      "name": "Ara",
+      "name": "Ara Token",
       "symbol": "ARA",
       "decimals": 18
     }
@@ -5639,26 +5639,6 @@
       "decimals": 18
     }
   },
-  "0xf5ca27927Ffb16BD8C870Dcb49750146CCe8217c": {
-    "protocolToken": {
-      "address": "0xf5ca27927Ffb16BD8C870Dcb49750146CCe8217c",
-      "name": "SushiSwap LP Token WOO / USDC",
-      "symbol": "SLP/WOO/USDC",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x4691937a7508860F876c9c0a2a617E7d9E945D4B",
-      "name": "Wootrade Network",
-      "symbol": "WOO",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
-    }
-  },
   "0x17A2194D55f52Fd0C711e0e42B41975494bb109B": {
     "protocolToken": {
       "address": "0x17A2194D55f52Fd0C711e0e42B41975494bb109B",
@@ -5679,6 +5659,26 @@
       "decimals": 18
     }
   },
+  "0xf5ca27927Ffb16BD8C870Dcb49750146CCe8217c": {
+    "protocolToken": {
+      "address": "0xf5ca27927Ffb16BD8C870Dcb49750146CCe8217c",
+      "name": "SushiSwap LP Token WOO / USDC",
+      "symbol": "SLP/WOO/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4691937a7508860F876c9c0a2a617E7d9E945D4B",
+      "name": "Wootrade Network",
+      "symbol": "WOO",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
   "0x9c86BC3C72Ab97c2234CBA8c6c7069009465AE86": {
     "protocolToken": {
       "address": "0x9c86BC3C72Ab97c2234CBA8c6c7069009465AE86",
@@ -5688,7 +5688,7 @@
     },
     "token0": {
       "address": "0x2B89bF8ba858cd2FCee1faDa378D5cd6936968Be",
-      "name": "Secret  ERC20 ",
+      "name": "Wrapped SCRT",
       "symbol": "WSCRT",
       "decimals": 6
     },
@@ -5734,7 +5734,7 @@
     },
     "token1": {
       "address": "0xf8C3527CC04340b208C854E985240c02F7B7793f",
-      "name": "Frontier",
+      "name": "Frontier Token",
       "symbol": "FRONT",
       "decimals": 18
     }
@@ -5754,7 +5754,7 @@
     },
     "token1": {
       "address": "0xcAaa93712BDAc37f736C323C93D4D5fDEFCc31CC",
-      "name": "CRD Network",
+      "name": "CryptalDash",
       "symbol": "CRD",
       "decimals": 18
     }
@@ -5822,8 +5822,8 @@
   "0xA67e36255BdC1CB457532E05dEBDC896e28ed753": {
     "protocolToken": {
       "address": "0xA67e36255BdC1CB457532E05dEBDC896e28ed753",
-      "name": "SushiSwap LP Token USDC / ETHBTCMOON",
-      "symbol": "SLP/USDC/ETHBTCMOON",
+      "name": "SushiSwap LP Token USDC / RATIOMOON",
+      "symbol": "SLP/USDC/RATIOMOON",
       "decimals": 18
     },
     "token0": {
@@ -5835,7 +5835,7 @@
     "token1": {
       "address": "0xe2D8F9557fD46AD134C8fb5Eabf6f4DA3E0d3f68",
       "name": "ETHBTC 2x Long",
-      "symbol": "ETHBTCMOON",
+      "symbol": "RATIOMOON",
       "decimals": 18
     }
   },
@@ -6034,7 +6034,7 @@
     },
     "token1": {
       "address": "0xf474E526ADe9aD2CC2B66ffCE528B1A51B91FCdC",
-      "name": "LevX DAO",
+      "name": "LevX DAŌh..Geez",
       "symbol": "LEVX",
       "decimals": 18
     }
@@ -6054,7 +6054,7 @@
     },
     "token1": {
       "address": "0xf16e81dce15B08F326220742020379B855B87DF9",
-      "name": "Popsicle Finance",
+      "name": "IceToken",
       "symbol": "ICE",
       "decimals": 18
     }
@@ -6119,26 +6119,6 @@
       "decimals": 6
     }
   },
-  "0xF39fF863730268C9bb867b3a69d031d1C1614b31": {
-    "protocolToken": {
-      "address": "0xF39fF863730268C9bb867b3a69d031d1C1614b31",
-      "name": "SushiSwap LP Token XFT / WETH",
-      "symbol": "SLP/XFT/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xABe580E7ee158dA464b51ee1a83Ac0289622e6be",
-      "name": "Offshift",
-      "symbol": "XFT",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0xaf491D603DB3c1138a5ee5DB35Eb0C7b6c4541a2": {
     "protocolToken": {
       "address": "0xaf491D603DB3c1138a5ee5DB35Eb0C7b6c4541a2",
@@ -6156,6 +6136,26 @@
       "address": "0xad32A8e6220741182940c5aBF610bDE99E737b2D",
       "name": "PieDAO DOUGH v2",
       "symbol": "DOUGH",
+      "decimals": 18
+    }
+  },
+  "0x1035487Ca79068f6617aE75eD3c844CE2D8A0c2a": {
+    "protocolToken": {
+      "address": "0x1035487Ca79068f6617aE75eD3c844CE2D8A0c2a",
+      "name": "SushiSwap LP Token SHOPX / WETH",
+      "symbol": "SLP/SHOPX/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x7BEF710a5759d197EC0Bf621c3Df802C2D60D848",
+      "name": "SPLYT SHOPX",
+      "symbol": "SHOPX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -6268,8 +6268,28 @@
     },
     "token0": {
       "address": "0x875773784Af8135eA0ef43b5a374AaD105c5D39e",
-      "name": "Idle DAO Token",
+      "name": "Idle",
       "symbol": "IDLE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xF39fF863730268C9bb867b3a69d031d1C1614b31": {
+    "protocolToken": {
+      "address": "0xF39fF863730268C9bb867b3a69d031d1C1614b31",
+      "name": "SushiSwap LP Token XFT / WETH",
+      "symbol": "SLP/XFT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xABe580E7ee158dA464b51ee1a83Ac0289622e6be",
+      "name": "Offshift",
+      "symbol": "XFT",
       "decimals": 18
     },
     "token1": {
@@ -6334,7 +6354,7 @@
     },
     "token1": {
       "address": "0xe9F84dE264E91529aF07Fa2C746e934397810334",
-      "name": "SAKE",
+      "name": "Sake",
       "symbol": "SAK3",
       "decimals": 18
     }
@@ -6348,7 +6368,7 @@
     },
     "token0": {
       "address": "0x8B7C94bC9ec137D67fbddb203B2814F0F1F9b377",
-      "name": "WHALE Vault  NFTX ",
+      "name": "Weird Whales",
       "symbol": "WHALE",
       "decimals": 18
     },
@@ -6379,46 +6399,6 @@
       "decimals": 18
     }
   },
-  "0xC60C650Bf09226FeB8646DBabB1B35b5332e3fD2": {
-    "protocolToken": {
-      "address": "0xC60C650Bf09226FeB8646DBabB1B35b5332e3fD2",
-      "name": "SushiSwap LP Token WETH / MFER",
-      "symbol": "SLP/WETH/MFER",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xDF7A2593A70fF1e69b5a20644Ae848558A2F7C86",
-      "name": "mfers",
-      "symbol": "MFER",
-      "decimals": 18
-    }
-  },
-  "0x404e716257C4f4BCC43B967514520b98c0C09dd5": {
-    "protocolToken": {
-      "address": "0x404e716257C4f4BCC43B967514520b98c0C09dd5",
-      "name": "SushiSwap LP Token HEART / WETH",
-      "symbol": "SLP/HEART/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x710Aa623c2c881b0d7357bCf9aEedf660E606C22",
-      "name": "Hearts",
-      "symbol": "HEART",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x3F4B1011Af32642BBb12Eaec693Fb14cA37ac69d": {
     "protocolToken": {
       "address": "0x3F4B1011Af32642BBb12Eaec693Fb14cA37ac69d",
@@ -6430,26 +6410,6 @@
       "address": "0x69Ec436a1EAEFeF15E75543969f800eC2aFC4490",
       "name": "Allstarz",
       "symbol": "STARZ",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0x201e6a9E75df132a8598720433Af35fe8d73e94D": {
-    "protocolToken": {
-      "address": "0x201e6a9E75df132a8598720433Af35fe8d73e94D",
-      "name": "SushiSwap LP Token ANT / WETH",
-      "symbol": "SLP/ANT/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xa117000000f279D81A1D3cc75430fAA017FA5A2e",
-      "name": "Aragon Network Token",
-      "symbol": "ANT",
       "decimals": 18
     },
     "token1": {
@@ -6479,6 +6439,66 @@
       "decimals": 18
     }
   },
+  "0xC60C650Bf09226FeB8646DBabB1B35b5332e3fD2": {
+    "protocolToken": {
+      "address": "0xC60C650Bf09226FeB8646DBabB1B35b5332e3fD2",
+      "name": "SushiSwap LP Token WETH / MFER",
+      "symbol": "SLP/WETH/MFER",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xDF7A2593A70fF1e69b5a20644Ae848558A2F7C86",
+      "name": "mfers",
+      "symbol": "MFER",
+      "decimals": 18
+    }
+  },
+  "0x201e6a9E75df132a8598720433Af35fe8d73e94D": {
+    "protocolToken": {
+      "address": "0x201e6a9E75df132a8598720433Af35fe8d73e94D",
+      "name": "SushiSwap LP Token ANT / WETH",
+      "symbol": "SLP/ANT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xa117000000f279D81A1D3cc75430fAA017FA5A2e",
+      "name": "Aragon Network Token",
+      "symbol": "ANT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x404e716257C4f4BCC43B967514520b98c0C09dd5": {
+    "protocolToken": {
+      "address": "0x404e716257C4f4BCC43B967514520b98c0C09dd5",
+      "name": "SushiSwap LP Token HEART / WETH",
+      "symbol": "SLP/HEART/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x710Aa623c2c881b0d7357bCf9aEedf660E606C22",
+      "name": "Hearts",
+      "symbol": "HEART",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0x5fA4370164a2FaBEef159B893299D59fF5dC1e6d": {
     "protocolToken": {
       "address": "0x5fA4370164a2FaBEef159B893299D59fF5dC1e6d",
@@ -6488,7 +6508,7 @@
     },
     "token0": {
       "address": "0x01597E397605Bf280674Bf292623460b4204C375",
-      "name": "Bent Finance",
+      "name": "Bent Token",
       "symbol": "BENT",
       "decimals": 18
     },
@@ -6568,7 +6588,7 @@
     },
     "token0": {
       "address": "0x35e78b3982E87ecfD5b3f3265B601c046cDBe232",
-      "name": "SideShift",
+      "name": "SideShift Token",
       "symbol": "XAI",
       "decimals": 18
     },
@@ -6599,6 +6619,26 @@
       "decimals": 18
     }
   },
+  "0x613C836DF6695c10f0f4900528B6931441Ac5d5a": {
+    "protocolToken": {
+      "address": "0x613C836DF6695c10f0f4900528B6931441Ac5d5a",
+      "name": "SushiSwap LP Token BOND / WETH",
+      "symbol": "SLP/BOND/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0391D2021f89DC339F60Fff84546EA23E337750f",
+      "name": "BarnBridge Governance Token",
+      "symbol": "BOND",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0xBb19141e045B133169D7C7160c5E54A54Cc821b2": {
     "protocolToken": {
       "address": "0xBb19141e045B133169D7C7160c5E54A54Cc821b2",
@@ -6608,7 +6648,7 @@
     },
     "token0": {
       "address": "0x8a854288a5976036A725879164Ca3e91d30c6A1B",
-      "name": "Guaranteed Entrance Token",
+      "name": "GET",
       "symbol": "GET",
       "decimals": 18
     },
@@ -6650,6 +6690,26 @@
       "address": "0x0000000000085d4780B73119b644AE5ecd22b376",
       "name": "TrueUSD",
       "symbol": "TUSD",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xA7a8eDfda2B8bF1e5084E2765811Effee21Ef918": {
+    "protocolToken": {
+      "address": "0xA7a8eDfda2B8bF1e5084E2765811Effee21Ef918",
+      "name": "SushiSwap LP Token WXRP / WETH",
+      "symbol": "SLP/WXRP/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x39fBBABf11738317a448031930706cd3e612e1B9",
+      "name": "Wrapped XRP",
+      "symbol": "WXRP",
       "decimals": 18
     },
     "token1": {
@@ -6702,34 +6762,34 @@
   "0x321198908BD33B066252d63d363667e3f7094A34": {
     "protocolToken": {
       "address": "0x321198908BD33B066252d63d363667e3f7094A34",
-      "name": "SushiSwap LP Token SUSHI / XSUSHI",
-      "symbol": "SLP/SUSHI/XSUSHI",
+      "name": "SushiSwap LP Token SUSHI / xSUSHI",
+      "symbol": "SLP/SUSHI/xSUSHI",
       "decimals": 18
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
     "token1": {
       "address": "0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272",
       "name": "SushiBar",
-      "symbol": "XSUSHI",
+      "symbol": "xSUSHI",
       "decimals": 18
     }
   },
-  "0xA7a8eDfda2B8bF1e5084E2765811Effee21Ef918": {
+  "0xD920a4bDa8eCf4Ac06eA2897f9a5A38A55E9aC6e": {
     "protocolToken": {
-      "address": "0xA7a8eDfda2B8bF1e5084E2765811Effee21Ef918",
-      "name": "SushiSwap LP Token WXRP / WETH",
-      "symbol": "SLP/WXRP/WETH",
+      "address": "0xD920a4bDa8eCf4Ac06eA2897f9a5A38A55E9aC6e",
+      "name": "SushiSwap LP Token SHPING / WETH",
+      "symbol": "SLP/SHPING/WETH",
       "decimals": 18
     },
     "token0": {
-      "address": "0x39fBBABf11738317a448031930706cd3e612e1B9",
-      "name": "Wrapped XRP",
-      "symbol": "WXRP",
+      "address": "0x7C84e62859D0715eb77d1b1C4154Ecd6aBB21BEC",
+      "name": "Shping Coin",
+      "symbol": "SHPING",
       "decimals": 18
     },
     "token1": {
@@ -6754,48 +6814,8 @@
     },
     "token1": {
       "address": "0xd26114cd6EE289AccF82350c8d8487fedB8A0C07",
-      "name": "OmiseGO",
+      "name": "OMGToken",
       "symbol": "OMG",
-      "decimals": 18
-    }
-  },
-  "0x613C836DF6695c10f0f4900528B6931441Ac5d5a": {
-    "protocolToken": {
-      "address": "0x613C836DF6695c10f0f4900528B6931441Ac5d5a",
-      "name": "SushiSwap LP Token BOND / WETH",
-      "symbol": "SLP/BOND/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0391D2021f89DC339F60Fff84546EA23E337750f",
-      "name": "BarnBridge Governance Token",
-      "symbol": "BOND",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
-  "0xD920a4bDa8eCf4Ac06eA2897f9a5A38A55E9aC6e": {
-    "protocolToken": {
-      "address": "0xD920a4bDa8eCf4Ac06eA2897f9a5A38A55E9aC6e",
-      "name": "SushiSwap LP Token SHPING / WETH",
-      "symbol": "SLP/SHPING/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x7C84e62859D0715eb77d1b1C4154Ecd6aBB21BEC",
-      "name": "Shping",
-      "symbol": "SHPING",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -6848,7 +6868,7 @@
     },
     "token0": {
       "address": "0x327673aE6B33Bd3d90f0096870059994f30Dc8AF",
-      "name": "Lympo Market",
+      "name": "Lympo Market Token",
       "symbol": "LMT",
       "decimals": 18
     },
@@ -6874,28 +6894,8 @@
     },
     "token1": {
       "address": "0xcB84d72e61e383767C4DFEb2d8ff7f4FB89abc6e",
-      "name": "Vega Protocol",
+      "name": "VEGA",
       "symbol": "VEGA",
-      "decimals": 18
-    }
-  },
-  "0x5547C8aaFc9c3709261b986B633C338e924D85C6": {
-    "protocolToken": {
-      "address": "0x5547C8aaFc9c3709261b986B633C338e924D85C6",
-      "name": "SushiSwap LP Token FLMTS / WETH",
-      "symbol": "SLP/FLMTS/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xA4251eA8a5e71d3F10E3Dc224F073bc8a61b4BCd",
-      "name": "Filaments",
-      "symbol": "FLMTS",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -6910,6 +6910,26 @@
       "address": "0x8Ab7404063Ec4DBcfd4598215992DC3F8EC853d7",
       "name": "Akropolis",
       "symbol": "AKRO",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x5547C8aaFc9c3709261b986B633C338e924D85C6": {
+    "protocolToken": {
+      "address": "0x5547C8aaFc9c3709261b986B633C338e924D85C6",
+      "name": "SushiSwap LP Token FLMTS / WETH",
+      "symbol": "SLP/FLMTS/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA4251eA8a5e71d3F10E3Dc224F073bc8a61b4BCd",
+      "name": "Filaments",
+      "symbol": "FLMTS",
       "decimals": 18
     },
     "token1": {
@@ -6968,7 +6988,7 @@
     },
     "token0": {
       "address": "0x4eE4f96838454E67Fce92B2c53b0f1a97D047179",
-      "name": "MeebitsDAO Pool",
+      "name": "meebitsdaopool",
       "symbol": "MBBT",
       "decimals": 18
     },
@@ -7054,7 +7074,7 @@
     },
     "token1": {
       "address": "0x875773784Af8135eA0ef43b5a374AaD105c5D39e",
-      "name": "Idle DAO Token",
+      "name": "Idle",
       "symbol": "IDLE",
       "decimals": 18
     }
@@ -7094,7 +7114,7 @@
     },
     "token1": {
       "address": "0xec67005c4E498Ec7f55E092bd1d35cbC47C91892",
-      "name": "Enzyme Finance",
+      "name": "Melon Token",
       "symbol": "MLN",
       "decimals": 18
     }
@@ -7199,6 +7219,46 @@
       "decimals": 18
     }
   },
+  "0x43ddAa598F84c5C71388763F851DfC4c7E9dEc84": {
+    "protocolToken": {
+      "address": "0x43ddAa598F84c5C71388763F851DfC4c7E9dEc84",
+      "name": "SushiSwap LP Token WETH / QUIDD",
+      "symbol": "SLP/WETH/QUIDD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xDA9FDAb21bC4A5811134A6E0Ba6CA06624e67c07",
+      "name": "QUIDD",
+      "symbol": "QUIDD",
+      "decimals": 18
+    }
+  },
+  "0x6463Bd6026A2E7bFab5851b62969A92f7cca0eB6": {
+    "protocolToken": {
+      "address": "0x6463Bd6026A2E7bFab5851b62969A92f7cca0eB6",
+      "name": "SushiSwap LP Token HEGIC / WETH",
+      "symbol": "SLP/HEGIC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x584bC13c7D411c00c01A62e8019472dE68768430",
+      "name": "Hegic",
+      "symbol": "HEGIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0x0de56b00b45a07b15Ca09661336f785E7E4D1d45": {
     "protocolToken": {
       "address": "0x0de56b00b45a07b15Ca09661336f785E7E4D1d45",
@@ -7208,7 +7268,7 @@
     },
     "token0": {
       "address": "0x4C3A8ECeB656Ec63eaE80a4ebD565E4887DB6160",
-      "name": "SokuSwap",
+      "name": "Soku",
       "symbol": "SOKU",
       "decimals": 18
     },
@@ -7268,7 +7328,7 @@
     },
     "token0": {
       "address": "0x42B4dF7e402A71EAE743c6C5410CE3BBb63aEf22",
-      "name": "HDPUNK Vault  NFTX ",
+      "name": "HD Punks",
       "symbol": "HDPUNK",
       "decimals": 18
     },
@@ -7299,46 +7359,6 @@
       "decimals": 18
     }
   },
-  "0x43ddAa598F84c5C71388763F851DfC4c7E9dEc84": {
-    "protocolToken": {
-      "address": "0x43ddAa598F84c5C71388763F851DfC4c7E9dEc84",
-      "name": "SushiSwap LP Token WETH / QUIDD",
-      "symbol": "SLP/WETH/QUIDD",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xDA9FDAb21bC4A5811134A6E0Ba6CA06624e67c07",
-      "name": "Quidd",
-      "symbol": "QUIDD",
-      "decimals": 18
-    }
-  },
-  "0x6463Bd6026A2E7bFab5851b62969A92f7cca0eB6": {
-    "protocolToken": {
-      "address": "0x6463Bd6026A2E7bFab5851b62969A92f7cca0eB6",
-      "name": "SushiSwap LP Token HEGIC / WETH",
-      "symbol": "SLP/HEGIC/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x584bC13c7D411c00c01A62e8019472dE68768430",
-      "name": "Hegic",
-      "symbol": "HEGIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x2c51eaa1BCc7b013C3f1D5985cDcB3c56DC3fbc1": {
     "protocolToken": {
       "address": "0x2c51eaa1BCc7b013C3f1D5985cDcB3c56DC3fbc1",
@@ -7348,7 +7368,7 @@
     },
     "token0": {
       "address": "0x2d94AA3e47d9D5024503Ca8491fcE9A2fB4DA198",
-      "name": "Bankless DAO",
+      "name": "Bankless Token",
       "symbol": "BANK",
       "decimals": 18
     },
@@ -7462,14 +7482,14 @@
   "0x0589e281D35ee1Acf6D4fd32f1fbA60EFfb5281B": {
     "protocolToken": {
       "address": "0x0589e281D35ee1Acf6D4fd32f1fbA60EFfb5281B",
-      "name": "SushiSwap LP Token ALUSD / WETH",
-      "symbol": "SLP/ALUSD/WETH",
+      "name": "SushiSwap LP Token alUSD / WETH",
+      "symbol": "SLP/alUSD/WETH",
       "decimals": 18
     },
     "token0": {
       "address": "0xBC6DA0FE9aD5f3b0d58160288917AA56653660E9",
       "name": "Alchemix USD",
-      "symbol": "ALUSD",
+      "symbol": "alUSD",
       "decimals": 18
     },
     "token1": {
@@ -7508,7 +7528,7 @@
     },
     "token0": {
       "address": "0xA487bF43cF3b10dffc97A9A744cbB7036965d3b9",
-      "name": "Deri Protocol",
+      "name": "Deri",
       "symbol": "DERI",
       "decimals": 18
     },
@@ -7542,8 +7562,8 @@
   "0x293257b771a43Da650FCba80Bc83249Ada198449": {
     "protocolToken": {
       "address": "0x293257b771a43Da650FCba80Bc83249Ada198449",
-      "name": "SushiSwap LP Token USDT / ABBC",
-      "symbol": "SLP/USDT/ABBC",
+      "name": "SushiSwap LP Token USDT / WABBC",
+      "symbol": "SLP/USDT/WABBC",
       "decimals": 18
     },
     "token0": {
@@ -7554,29 +7574,9 @@
     },
     "token1": {
       "address": "0xe83cE6bfb580583bd6A62B4Be7b34fC25F02910D",
-      "name": "ABBC Coin",
-      "symbol": "ABBC",
-      "decimals": 18
-    }
-  },
-  "0x1035487Ca79068f6617aE75eD3c844CE2D8A0c2a": {
-    "protocolToken": {
-      "address": "0x1035487Ca79068f6617aE75eD3c844CE2D8A0c2a",
-      "name": "SushiSwap LP Token SHOPX / WETH",
-      "symbol": "SLP/SHOPX/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x7BEF710a5759d197EC0Bf621c3Df802C2D60D848",
-      "name": "SHOPX",
-      "symbol": "SHOPX",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
+      "name": "Wrapped ABBC",
+      "symbol": "WABBC",
+      "decimals": 8
     }
   },
   "0xB890c95AD231022f778a86e3D7Ed5517aF0e5251": {
@@ -7622,14 +7622,14 @@
   "0xf3e9F381c5aDa26304fD612BaF9bB7C599FA63a2": {
     "protocolToken": {
       "address": "0xf3e9F381c5aDa26304fD612BaF9bB7C599FA63a2",
-      "name": "SushiSwap LP Token SUSD / sil",
-      "symbol": "SLP/SUSD/sil",
+      "name": "SushiSwap LP Token sUSD / sil",
+      "symbol": "SLP/sUSD/sil",
       "decimals": 18
     },
     "token0": {
       "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
       "name": "Synth sUSD",
-      "symbol": "SUSD",
+      "symbol": "sUSD",
       "decimals": 18
     },
     "token1": {
@@ -7642,8 +7642,8 @@
   "0x986627dB5E4AAE987f580feB63D475992e5aC0AE": {
     "protocolToken": {
       "address": "0x986627dB5E4AAE987f580feB63D475992e5aC0AE",
-      "name": "SushiSwap LP Token WETH / WONE",
-      "symbol": "SLP/WETH/WONE",
+      "name": "SushiSwap LP Token WETH / 1ONE",
+      "symbol": "SLP/WETH/1ONE",
       "decimals": 18
     },
     "token0": {
@@ -7654,8 +7654,8 @@
     },
     "token1": {
       "address": "0xD5cd84D6f044AbE314Ee7E414d37cae8773ef9D3",
-      "name": "Wrapped Harmony",
-      "symbol": "WONE",
+      "name": "Harmony ONE",
+      "symbol": "1ONE",
       "decimals": 18
     }
   },
@@ -7722,8 +7722,8 @@
   "0xBE1E98685fB293144325440C16f69954Ffcb790C": {
     "protocolToken": {
       "address": "0xBE1E98685fB293144325440C16f69954Ffcb790C",
-      "name": "SushiSwap LP Token WETH / PWING",
-      "symbol": "SLP/WETH/PWING",
+      "name": "SushiSwap LP Token WETH / pWING",
+      "symbol": "SLP/WETH/pWING",
       "decimals": 18
     },
     "token0": {
@@ -7735,7 +7735,7 @@
     "token1": {
       "address": "0xDb0f18081b505A7DE20B18ac41856BCB4Ba86A1a",
       "name": "Poly Ontology Wing Token",
-      "symbol": "PWING",
+      "symbol": "pWING",
       "decimals": 9
     }
   },
@@ -7774,7 +7774,7 @@
     },
     "token1": {
       "address": "0xE4AE84448DB5CFE1DaF1e6fb172b469c161CB85F",
-      "name": "Utopia Genesis Foundation",
+      "name": "Utopia Open Platform",
       "symbol": "UOP",
       "decimals": 18
     }
@@ -7790,6 +7790,26 @@
       "address": "0x4fE83213D56308330EC302a8BD641f1d0113A4Cc",
       "name": "NuCypher",
       "symbol": "NU",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xb270176bA6075196dF88B855c3Ec7776871Fdb33": {
+    "protocolToken": {
+      "address": "0xb270176bA6075196dF88B855c3Ec7776871Fdb33",
+      "name": "SushiSwap LP Token TORN / WETH",
+      "symbol": "SLP/TORN/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x77777FeDdddFfC19Ff86DB637967013e6C6A116C",
+      "name": "TornadoCash",
+      "symbol": "TORN",
       "decimals": 18
     },
     "token1": {
@@ -7819,26 +7839,6 @@
       "decimals": 18
     }
   },
-  "0xb270176bA6075196dF88B855c3Ec7776871Fdb33": {
-    "protocolToken": {
-      "address": "0xb270176bA6075196dF88B855c3Ec7776871Fdb33",
-      "name": "SushiSwap LP Token TORN / WETH",
-      "symbol": "SLP/TORN/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x77777FeDdddFfC19Ff86DB637967013e6C6A116C",
-      "name": "Tornado Cash",
-      "symbol": "TORN",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0xBFf6CbF2e7d2cd0705329c735a37bE33241298e9": {
     "protocolToken": {
       "address": "0xBFf6CbF2e7d2cd0705329c735a37bE33241298e9",
@@ -7848,7 +7848,7 @@
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
@@ -7868,7 +7868,7 @@
     },
     "token0": {
       "address": "0x9F9913853f749b3fE6D6D4e16a1Cc3C1656B6D51",
-      "name": "BITT",
+      "name": "BITTOKEN",
       "symbol": "BITT",
       "decimals": 18
     },
@@ -7919,26 +7919,6 @@
       "decimals": 18
     }
   },
-  "0xe57F5b89905a0a5C4668Efa4569961c5921d505F": {
-    "protocolToken": {
-      "address": "0xe57F5b89905a0a5C4668Efa4569961c5921d505F",
-      "name": "SushiSwap LP Token AEON / WETH",
-      "symbol": "SLP/AEON/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x9c306AAfA45e10E71b3ED7e347260E41dDf9873F",
-      "name": "Project AEON",
-      "symbol": "AEON",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0x383bC55d62125642452Ac613A16586ec37F8C177": {
     "protocolToken": {
       "address": "0x383bC55d62125642452Ac613A16586ec37F8C177",
@@ -7959,6 +7939,26 @@
       "decimals": 18
     }
   },
+  "0xe57F5b89905a0a5C4668Efa4569961c5921d505F": {
+    "protocolToken": {
+      "address": "0xe57F5b89905a0a5C4668Efa4569961c5921d505F",
+      "name": "SushiSwap LP Token AEON / WETH",
+      "symbol": "SLP/AEON/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x9c306AAfA45e10E71b3ED7e347260E41dDf9873F",
+      "name": "Project AEON",
+      "symbol": "AEON",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
   "0x2Ef2cb6af83de4171A69EE2f7C677079fFD9BcD0": {
     "protocolToken": {
       "address": "0x2Ef2cb6af83de4171A69EE2f7C677079fFD9BcD0",
@@ -7974,7 +7974,7 @@
     },
     "token1": {
       "address": "0xD91E9a0fEf7C0fa4EBdAF4d0aCF55888949A2a9b",
-      "name": "MCN Ventures",
+      "name": "MCN.VENTURES",
       "symbol": "MCN",
       "decimals": 18
     }
@@ -8042,8 +8042,8 @@
   "0xCd7a2b621e297a6A466f2De472462C296A4EF258": {
     "protocolToken": {
       "address": "0xCd7a2b621e297a6A466f2De472462C296A4EF258",
-      "name": "SushiSwap LP Token USDC / ITG",
-      "symbol": "SLP/USDC/ITG",
+      "name": "SushiSwap LP Token USDC / $ITG",
+      "symbol": "SLP/USDC/$ITG",
       "decimals": 18
     },
     "token0": {
@@ -8054,8 +8054,8 @@
     },
     "token1": {
       "address": "0xF88b137cfa667065955ABD17525e89EDCF4D6426",
-      "name": "iTrust Governance",
-      "symbol": "ITG",
+      "name": "iTrust Governance Token",
+      "symbol": "$ITG",
       "decimals": 18
     }
   },
@@ -8074,29 +8074,9 @@
     },
     "token1": {
       "address": "0xc5102fE9359FD9a28f877a67E36B0F050d81a3CC",
-      "name": "Hop Protocol",
+      "name": "Hop",
       "symbol": "HOP",
       "decimals": 18
-    }
-  },
-  "0xBBBdB106A806173d1eEa1640961533fF3114d69A": {
-    "protocolToken": {
-      "address": "0xBBBdB106A806173d1eEa1640961533fF3114d69A",
-      "name": "SushiSwap LP Token XYZ / USDC",
-      "symbol": "SLP/XYZ/USDC",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x618679dF9EfCd19694BB1daa8D00718Eacfa2883",
-      "name": "Universe XYZ",
-      "symbol": "XYZ",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
     }
   },
   "0x64C2F792038f1FB55da1A9a22749971eAC94463E": {
@@ -8130,6 +8110,26 @@
       "address": "0x0aFEE744B6d9fF2B78f76Fe10b3E0199C413Fd34",
       "name": "Store-Of-Value Token",
       "symbol": "SOV",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0xBBBdB106A806173d1eEa1640961533fF3114d69A": {
+    "protocolToken": {
+      "address": "0xBBBdB106A806173d1eEa1640961533fF3114d69A",
+      "name": "SushiSwap LP Token XYZ / USDC",
+      "symbol": "SLP/XYZ/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x618679dF9EfCd19694BB1daa8D00718Eacfa2883",
+      "name": "XYZ Governance Token",
+      "symbol": "XYZ",
       "decimals": 18
     },
     "token1": {
@@ -8208,13 +8208,13 @@
     },
     "token0": {
       "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-      "name": "Chainlink Token",
+      "name": "ChainLink Token",
       "symbol": "LINK",
       "decimals": 18
     },
     "token1": {
       "address": "0xA95C5ebB86E0dE73B4fB8c47A45B792CFeA28C23",
-      "name": "stake link",
+      "name": "stake.link",
       "symbol": "SDL",
       "decimals": 18
     }
@@ -8228,7 +8228,7 @@
     },
     "token0": {
       "address": "0x9ba60bA98413A60dB4C651D4afE5C937bbD8044B",
-      "name": "Yearn Lazy Ape",
+      "name": "Yearn Lazy Ape Index",
       "symbol": "YLA",
       "decimals": 18
     },
@@ -8262,14 +8262,14 @@
   "0x9597384dCF235E973Aee5AE852Fd936E9F27D4b0": {
     "protocolToken": {
       "address": "0x9597384dCF235E973Aee5AE852Fd936E9F27D4b0",
-      "name": "SushiSwap LP Token NON / USDC",
-      "symbol": "SLP/NON/USDC",
+      "name": "SushiSwap LP Token OS / USDC",
+      "symbol": "SLP/OS/USDC",
       "decimals": 18
     },
     "token0": {
       "address": "0x6100dd79fCAA88420750DceE3F735d168aBcB771",
-      "name": "NONbeta",
-      "symbol": "NON",
+      "name": "Ethereans",
+      "symbol": "OS",
       "decimals": 18
     },
     "token1": {
@@ -8297,26 +8297,6 @@
       "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimals": 18
-    }
-  },
-  "0x9b880Dd096eF74eF7e4b771526Bd9584e0B8f7B5": {
-    "protocolToken": {
-      "address": "0x9b880Dd096eF74eF7e4b771526Bd9584e0B8f7B5",
-      "name": "SushiSwap LP Token XCRMRK / USDT",
-      "symbol": "SLP/XCRMRK/USDT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x471Ea49dd8E60E697f4cac262b5fafCc307506e4",
-      "name": "xcRMRK",
-      "symbol": "XCRMRK",
-      "decimals": 10
-    },
-    "token1": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
     }
   },
   "0x69e92E881AA0e90218C45622d50f26073782E0C9": {
@@ -8368,7 +8348,7 @@
     },
     "token0": {
       "address": "0x374CB8C27130E2c9E04F44303f3c8351B9De61C1",
-      "name": "Bao Finance",
+      "name": "BaoToken",
       "symbol": "BAO",
       "decimals": 18
     },
@@ -8397,6 +8377,26 @@
       "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimals": 18
+    }
+  },
+  "0x9b880Dd096eF74eF7e4b771526Bd9584e0B8f7B5": {
+    "protocolToken": {
+      "address": "0x9b880Dd096eF74eF7e4b771526Bd9584e0B8f7B5",
+      "name": "SushiSwap LP Token xcRMRK / USDT",
+      "symbol": "SLP/xcRMRK/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x471Ea49dd8E60E697f4cac262b5fafCc307506e4",
+      "name": "xcRMRK",
+      "symbol": "xcRMRK",
+      "decimals": 10
+    },
+    "token1": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
     }
   },
   "0xc73eE6632B08D890E67aA30e667B55cFDF281D96": {
@@ -8428,7 +8428,7 @@
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
@@ -8468,13 +8468,13 @@
     },
     "token0": {
       "address": "0x374CB8C27130E2c9E04F44303f3c8351B9De61C1",
-      "name": "Bao Finance",
+      "name": "BaoToken",
       "symbol": "BAO",
       "decimals": 18
     },
     "token1": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     }
@@ -8488,7 +8488,7 @@
     },
     "token0": {
       "address": "0x410e731c2970Dce3AdD351064AcF5cE9E33FDBf0",
-      "name": "ONBUFF",
+      "name": "Onbuff Token",
       "symbol": "ONIT",
       "decimals": 18
     },
@@ -8534,7 +8534,7 @@
     },
     "token1": {
       "address": "0x88536C9B2C4701b8dB824e6A16829D5B5Eb84440",
-      "name": "Atlas USV",
+      "name": "Universal Store of Value",
       "symbol": "USV",
       "decimals": 9
     }
@@ -8568,7 +8568,7 @@
     },
     "token0": {
       "address": "0x79256DB1BDB6259315a1a3D7Dd237F69cADFd8FC",
-      "name": "Typhoon Cash",
+      "name": "Typhoon",
       "symbol": "PHOON",
       "decimals": 18
     },
@@ -8602,14 +8602,14 @@
   "0x14739Ff9bf136155DCd5603D771A66102985d162": {
     "protocolToken": {
       "address": "0x14739Ff9bf136155DCd5603D771A66102985d162",
-      "name": "SushiSwap LP Token XSUSHI / USDT",
-      "symbol": "SLP/XSUSHI/USDT",
+      "name": "SushiSwap LP Token xSUSHI / USDT",
+      "symbol": "SLP/xSUSHI/USDT",
       "decimals": 18
     },
     "token0": {
       "address": "0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272",
       "name": "SushiBar",
-      "symbol": "XSUSHI",
+      "symbol": "xSUSHI",
       "decimals": 18
     },
     "token1": {
@@ -8648,7 +8648,7 @@
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
@@ -8682,14 +8682,14 @@
   "0xBD506dcA103B64C6F4DEeBd4E294916cC2eeCE9D": {
     "protocolToken": {
       "address": "0xBD506dcA103B64C6F4DEeBd4E294916cC2eeCE9D",
-      "name": "SushiSwap LP Token STRM / USDT",
-      "symbol": "SLP/STRM/USDT",
+      "name": "SushiSwap LP Token WSTRM / USDT",
+      "symbol": "SLP/WSTRM/USDT",
       "decimals": 18
     },
     "token0": {
       "address": "0x94a7f270cd12545A277E656266Aef5e27dF3Eb28",
-      "name": "StreamCoin",
-      "symbol": "STRM",
+      "name": "Wrapped Stream",
+      "symbol": "WSTRM",
       "decimals": 18
     },
     "token1": {
@@ -8728,8 +8728,28 @@
     },
     "token0": {
       "address": "0x043C308BB8a5aE96D0093444be7f56459F1340b1",
-      "name": "SumSwap",
+      "name": "SUM",
       "symbol": "SUM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x807FdBcb54DC5d01B99A5aa7FCE883A759D27CBe": {
+    "protocolToken": {
+      "address": "0x807FdBcb54DC5d01B99A5aa7FCE883A759D27CBe",
+      "name": "SushiSwap LP Token DAWN / USDT",
+      "symbol": "SLP/DAWN/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x580c8520dEDA0a441522AEAe0f9F7A5f29629aFa",
+      "name": "Dawn",
+      "symbol": "DAWN",
       "decimals": 18
     },
     "token1": {
@@ -8754,42 +8774,22 @@
     },
     "token1": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
-    }
-  },
-  "0x807FdBcb54DC5d01B99A5aa7FCE883A759D27CBe": {
-    "protocolToken": {
-      "address": "0x807FdBcb54DC5d01B99A5aa7FCE883A759D27CBe",
-      "name": "SushiSwap LP Token DAWN / USDT",
-      "symbol": "SLP/DAWN/USDT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x580c8520dEDA0a441522AEAe0f9F7A5f29629aFa",
-      "name": "Dawn Protocol",
-      "symbol": "DAWN",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
     }
   },
   "0xd597924b16Cc1904d808285bC9044fd51CEEEaD7": {
     "protocolToken": {
       "address": "0xd597924b16Cc1904d808285bC9044fd51CEEEaD7",
-      "name": "SushiSwap LP Token XSUSHI / USDC",
-      "symbol": "SLP/XSUSHI/USDC",
+      "name": "SushiSwap LP Token xSUSHI / USDC",
+      "symbol": "SLP/xSUSHI/USDC",
       "decimals": 18
     },
     "token0": {
       "address": "0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272",
       "name": "SushiBar",
-      "symbol": "XSUSHI",
+      "symbol": "xSUSHI",
       "decimals": 18
     },
     "token1": {
@@ -8808,7 +8808,7 @@
     },
     "token0": {
       "address": "0x97872EAfd79940C7b24f7BCc1EADb1457347ADc9",
-      "name": "Strips Finance",
+      "name": "Strips Token",
       "symbol": "STRP",
       "decimals": 18
     },
@@ -8822,14 +8822,14 @@
   "0x2751e2fBb84F119575aBd56ef652bA8f1F6445b8": {
     "protocolToken": {
       "address": "0x2751e2fBb84F119575aBd56ef652bA8f1F6445b8",
-      "name": "SushiSwap LP Token JEUR / USDC",
-      "symbol": "SLP/JEUR/USDC",
+      "name": "SushiSwap LP Token jEUR / USDC",
+      "symbol": "SLP/jEUR/USDC",
       "decimals": 18
     },
     "token0": {
       "address": "0x0f17BC9a994b87b5225cFb6a2Cd4D667ADb4F20B",
       "name": "Jarvis Synthetic Euro",
-      "symbol": "JEUR",
+      "symbol": "jEUR",
       "decimals": 18
     },
     "token1": {
@@ -8868,7 +8868,7 @@
     },
     "token0": {
       "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-      "name": "Chainlink Token",
+      "name": "ChainLink Token",
       "symbol": "LINK",
       "decimals": 18
     },
@@ -8894,7 +8894,7 @@
     },
     "token1": {
       "address": "0xe1590A6FA0CFf9C960181cb77d8a873601772f64",
-      "name": "WallStreetBets DApp",
+      "name": "pTokens WSB",
       "symbol": "WSB",
       "decimals": 18
     }
@@ -8902,14 +8902,14 @@
   "0x54bcf4948e32A8706C286416e3ced37284F17fc9": {
     "protocolToken": {
       "address": "0x54bcf4948e32A8706C286416e3ced37284F17fc9",
-      "name": "SushiSwap LP Token MARS / USDT",
-      "symbol": "SLP/MARS/USDT",
+      "name": "SushiSwap LP Token Mars / USDT",
+      "symbol": "SLP/Mars/USDT",
       "decimals": 18
     },
     "token0": {
       "address": "0x66C0DDEd8433c9EA86C8cf91237B14e10b4d70B7",
-      "name": "Mars",
-      "symbol": "MARS",
+      "name": "MarsToken",
+      "symbol": "Mars",
       "decimals": 18
     },
     "token1": {
@@ -8934,7 +8934,7 @@
     },
     "token1": {
       "address": "0xFb782396c9b20E564A64896181c7AC8d8979d5F4",
-      "name": "Divergence Protocol",
+      "name": "DivergenceProtocol",
       "symbol": "DIVER",
       "decimals": 18
     }
@@ -8948,7 +8948,7 @@
     },
     "token0": {
       "address": "0x01e0E2e61f554eCAaeC0cC933E739Ad90f24a86d",
-      "name": "GTON",
+      "name": "Graviton",
       "symbol": "GTON",
       "decimals": 18
     },
@@ -8982,14 +8982,14 @@
   "0x097b21e4784c2B224FD8B880939f75B2E9f4dBa5": {
     "protocolToken": {
       "address": "0x097b21e4784c2B224FD8B880939f75B2E9f4dBa5",
-      "name": "SushiSwap LP Token MIS / USDT",
-      "symbol": "SLP/MIS/USDT",
+      "name": "SushiSwap LP Token MIS3 / USDT",
+      "symbol": "SLP/MIS3/USDT",
       "decimals": 18
     },
     "token0": {
       "address": "0x024B6e7DC26F4d5579bDD936F8d7BC31f2339999",
-      "name": "Mithril Share",
-      "symbol": "MIS",
+      "name": "MIS3",
+      "symbol": "MIS3",
       "decimals": 18
     },
     "token1": {
@@ -9014,7 +9014,7 @@
     },
     "token1": {
       "address": "0xa4E27ea37D18bb0f483779f9E75A6024EFa5E73e",
-      "name": "Monastery Finance",
+      "name": "Monastery",
       "symbol": "MONK",
       "decimals": 9
     }
@@ -9048,7 +9048,7 @@
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
@@ -9074,7 +9074,7 @@
     },
     "token1": {
       "address": "0xAB2A7B5876D707e0126B3A75EF7781c77c8877EE",
-      "name": "Quadency",
+      "name": "Quadency Token",
       "symbol": "QUAD",
       "decimals": 18
     }
@@ -9088,7 +9088,7 @@
     },
     "token0": {
       "address": "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
-      "name": "Matic Network Token",
+      "name": "Matic Token",
       "symbol": "MATIC",
       "decimals": 18
     },
@@ -9122,14 +9122,14 @@
   "0x5271d250bf9528981846A9dD94A97Cbbe7318817": {
     "protocolToken": {
       "address": "0x5271d250bf9528981846A9dD94A97Cbbe7318817",
-      "name": "SushiSwap LP Token IBEUR / USDC",
-      "symbol": "SLP/IBEUR/USDC",
+      "name": "SushiSwap LP Token ibEUR / USDC",
+      "symbol": "SLP/ibEUR/USDC",
       "decimals": 18
     },
     "token0": {
       "address": "0x96E61422b6A9bA0e068B6c5ADd4fFaBC6a4aae27",
       "name": "Iron Bank EUR",
-      "symbol": "IBEUR",
+      "symbol": "ibEUR",
       "decimals": 18
     },
     "token1": {
@@ -9162,14 +9162,14 @@
   "0xB4203CA2fAbB2Fac4457785bc905aADa1876a70E": {
     "protocolToken": {
       "address": "0xB4203CA2fAbB2Fac4457785bc905aADa1876a70E",
-      "name": "SushiSwap LP Token JCHF / USDC",
-      "symbol": "SLP/JCHF/USDC",
+      "name": "SushiSwap LP Token jCHF / USDC",
+      "symbol": "SLP/jCHF/USDC",
       "decimals": 18
     },
     "token0": {
       "address": "0x53dfEa0A8CC2A2A2e425E1C174Bc162999723ea0",
       "name": "Jarvis Synthetic Swiss Franc",
-      "symbol": "JCHF",
+      "symbol": "jCHF",
       "decimals": 18
     },
     "token1": {
@@ -9188,7 +9188,7 @@
     },
     "token0": {
       "address": "0x3155BA85D5F96b2d030a4966AF206230e46849cb",
-      "name": "THORChain ETHRUNE",
+      "name": "THORChain ETH.RUNE",
       "symbol": "RUNE",
       "decimals": 18
     },
@@ -9222,14 +9222,14 @@
   "0x0Cfe7968e7c34A51217a7C9b9dc1690F416E027e": {
     "protocolToken": {
       "address": "0x0Cfe7968e7c34A51217a7C9b9dc1690F416E027e",
-      "name": "SushiSwap LP Token CDAI / DAI",
-      "symbol": "SLP/CDAI/DAI",
+      "name": "SushiSwap LP Token cDAI / DAI",
+      "symbol": "SLP/cDAI/DAI",
       "decimals": 18
     },
     "token0": {
       "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
       "name": "Compound Dai",
-      "symbol": "CDAI",
+      "symbol": "cDAI",
       "decimals": 8
     },
     "token1": {
@@ -9248,7 +9248,7 @@
     },
     "token0": {
       "address": "0x25f8087EAD173b73D6e8B84329989A8eEA16CF73",
-      "name": "Yield Guild Games",
+      "name": "Yield Guild Games Token",
       "symbol": "YGG",
       "decimals": 18
     },
@@ -9374,7 +9374,7 @@
     },
     "token1": {
       "address": "0xe4815AE53B124e7263F08dcDBBB757d41Ed658c6",
-      "name": "ZKSpace",
+      "name": "Zks",
       "symbol": "ZKS",
       "decimals": 18
     }
@@ -9434,7 +9434,7 @@
     },
     "token1": {
       "address": "0xDDdddd4301A082e62E84e43F474f044423921918",
-      "name": "Rhino fi",
+      "name": "DeversiFi Token",
       "symbol": "DVF",
       "decimals": 18
     }
@@ -9459,26 +9459,6 @@
       "decimals": 18
     }
   },
-  "0x75620Bb562504A29853C2D1ba3D2C7E6085140B1": {
-    "protocolToken": {
-      "address": "0x75620Bb562504A29853C2D1ba3D2C7E6085140B1",
-      "name": "SushiSwap LP Token jGBP / USDC",
-      "symbol": "SLP/jGBP/USDC",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x7409856CAE628f5d578B285B45669b36E7005283",
-      "name": "Jarvis Synthetic British Pound",
-      "symbol": "jGBP",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "decimals": 6
-    }
-  },
   "0x3CC5519fB7f811159f30BA21dC2258341872Dd67": {
     "protocolToken": {
       "address": "0x3CC5519fB7f811159f30BA21dC2258341872Dd67",
@@ -9496,6 +9476,26 @@
       "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
       "name": "Tether USD",
       "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x75620Bb562504A29853C2D1ba3D2C7E6085140B1": {
+    "protocolToken": {
+      "address": "0x75620Bb562504A29853C2D1ba3D2C7E6085140B1",
+      "name": "SushiSwap LP Token jGBP / USDC",
+      "symbol": "SLP/jGBP/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x7409856CAE628f5d578B285B45669b36E7005283",
+      "name": "Jarvis Synthetic British Pound",
+      "symbol": "jGBP",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
       "decimals": 6
     }
   },
@@ -9548,13 +9548,13 @@
     },
     "token0": {
       "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-      "name": "Chainlink Token",
+      "name": "ChainLink Token",
       "symbol": "LINK",
       "decimals": 18
     },
     "token1": {
       "address": "0x76306F029f8F99EFFE509534037Ba7030999E3CF",
-      "name": "Acreage Coin",
+      "name": "Acreage",
       "symbol": "ACR",
       "decimals": 18
     }
@@ -9608,7 +9608,7 @@
     },
     "token0": {
       "address": "0x47b9F01B16E9C9cb99191DCA68c9cc5bF6403957",
-      "name": "Onston",
+      "name": "ONSTON",
       "symbol": "ONSTON",
       "decimals": 18
     },
@@ -9642,14 +9642,14 @@
   "0xE60EC4e49dd46dbE45EE79308b00405897310227": {
     "protocolToken": {
       "address": "0xE60EC4e49dd46dbE45EE79308b00405897310227",
-      "name": "SushiSwap LP Token ONEWING / USDC",
-      "symbol": "SLP/ONEWING/USDC",
+      "name": "SushiSwap LP Token oneWING / USDC",
+      "symbol": "SLP/oneWING/USDC",
       "decimals": 18
     },
     "token0": {
       "address": "0x8F041A3940a5e6FB580075C3774E15FcFA0E1618",
       "name": "oneWING",
-      "symbol": "ONEWING",
+      "symbol": "oneWING",
       "decimals": 9
     },
     "token1": {
@@ -9688,7 +9688,7 @@
     },
     "token0": {
       "address": "0x1864cE27E9F7517047933CaAE530674e8C70b8A7",
-      "name": "Pibble",
+      "name": "Pibble Token",
       "symbol": "PIB",
       "decimals": 18
     },
@@ -9728,7 +9728,7 @@
     },
     "token0": {
       "address": "0xce20BB92CCF9BbF5091ef85649E71E552819AD8c",
-      "name": "Smart Game Finance",
+      "name": "Smart game",
       "symbol": "SMART",
       "decimals": 18
     },
@@ -9814,7 +9814,7 @@
     },
     "token1": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     }
@@ -9834,7 +9834,7 @@
     },
     "token1": {
       "address": "0xDe5eA375FFBDc8b25a80fe13D631E8Ba0AB4BB02",
-      "name": "Gera Coin",
+      "name": "Gera",
       "symbol": "GERA",
       "decimals": 18
     }
@@ -9842,14 +9842,14 @@
   "0x62934EEA2F6A5f1f81392aDc88D89dcA91B685ea": {
     "protocolToken": {
       "address": "0x62934EEA2F6A5f1f81392aDc88D89dcA91B685ea",
-      "name": "SushiSwap LP Token XSUSHI / XSUc25-0531",
-      "symbol": "SLP/XSUSHI/XSUc25-0531",
+      "name": "SushiSwap LP Token xSUSHI / XSUc25-0531",
+      "symbol": "SLP/xSUSHI/XSUc25-0531",
       "decimals": 18
     },
     "token0": {
       "address": "0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272",
       "name": "SushiBar",
-      "symbol": "XSUSHI",
+      "symbol": "xSUSHI",
       "decimals": 18
     },
     "token1": {
@@ -9862,14 +9862,14 @@
   "0xaB3F8E0214D862Bf7965d3CeC7431d7C1A85cb34": {
     "protocolToken": {
       "address": "0xaB3F8E0214D862Bf7965d3CeC7431d7C1A85cb34",
-      "name": "SushiSwap LP Token NTRUMP / DAI",
-      "symbol": "SLP/NTRUMP/DAI",
+      "name": "SushiSwap LP Token nTrump / DAI",
+      "symbol": "SLP/nTrump/DAI",
       "decimals": 18
     },
     "token0": {
       "address": "0x44Ea84a85616F8e9cD719Fc843DE31D852ad7240",
       "name": "NO Donald Trump",
-      "symbol": "NTRUMP",
+      "symbol": "nTrump",
       "decimals": 15
     },
     "token1": {
@@ -9948,7 +9948,7 @@
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
@@ -10128,7 +10128,7 @@
     },
     "token0": {
       "address": "0x86ed939B500E121C0C5f493F399084Db596dAd20",
-      "name": "SpaceChain  ERC 20 ",
+      "name": "SpaceChainV2",
       "symbol": "SPC",
       "decimals": 18
     },
@@ -10208,7 +10208,7 @@
     },
     "token0": {
       "address": "0x5DE8ab7E27f6E7A1fFf3E5B337584Aa43961BEeF",
-      "name": "SmarDex",
+      "name": "SmarDex Token",
       "symbol": "SDEX",
       "decimals": 18
     },
@@ -10228,7 +10228,7 @@
     },
     "token0": {
       "address": "0x3155BA85D5F96b2d030a4966AF206230e46849cb",
-      "name": "THORChain ETHRUNE",
+      "name": "THORChain ETH.RUNE",
       "symbol": "RUNE",
       "decimals": 18
     },
@@ -10282,8 +10282,8 @@
   "0xEb1C3021eb23A9B5A0e54BeEcB2C24C72d630c8B": {
     "protocolToken": {
       "address": "0xEb1C3021eb23A9B5A0e54BeEcB2C24C72d630c8B",
-      "name": "SushiSwap LP Token USDC / GAAS",
-      "symbol": "SLP/USDC/GAAS",
+      "name": "SushiSwap LP Token USDC / Gaas",
+      "symbol": "SLP/USDC/Gaas",
       "decimals": 18
     },
     "token0": {
@@ -10294,9 +10294,9 @@
     },
     "token1": {
       "address": "0xB4dFfa52fEe44BD493f12D85829D775EC8017691",
-      "name": "Congruent",
-      "symbol": "GAAS",
-      "decimals": 18
+      "name": "Congruent DAO Token",
+      "symbol": "Gaas",
+      "decimals": 9
     }
   },
   "0xA42f219D4394216d851d75Dcb6B742595146379c": {
@@ -10328,13 +10328,13 @@
     },
     "token0": {
       "address": "0x3155BA85D5F96b2d030a4966AF206230e46849cb",
-      "name": "THORChain ETHRUNE",
+      "name": "THORChain ETH.RUNE",
       "symbol": "RUNE",
       "decimals": 18
     },
     "token1": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     }
@@ -10354,7 +10354,7 @@
     },
     "token1": {
       "address": "0xf34B1Db61ACa1a371fE97BAd2606c9f534fb9D7D",
-      "name": "ArbiSmart",
+      "name": "Arbismart Token",
       "symbol": "RBIS",
       "decimals": 18
     }
@@ -10374,7 +10374,7 @@
     },
     "token1": {
       "address": "0xEd1480d12bE41d92F36f5f7bDd88212E381A3677",
-      "name": "FIAT DAO",
+      "name": "FIAT DAO Token",
       "symbol": "FDT",
       "decimals": 18
     }
@@ -10388,7 +10388,7 @@
     },
     "token0": {
       "address": "0x054D64b73d3D8A21Af3D764eFd76bCaA774f3Bb2",
-      "name": "Plasma Finance",
+      "name": "Plasma",
       "symbol": "PPAY",
       "decimals": 18
     },
@@ -10408,7 +10408,7 @@
     },
     "token0": {
       "address": "0x4eE4f96838454E67Fce92B2c53b0f1a97D047179",
-      "name": "MeebitsDAO Pool",
+      "name": "meebitsdaopool",
       "symbol": "MBBT",
       "decimals": 18
     },
@@ -10522,14 +10522,14 @@
   "0xD8b4CBCbb768088B9ea39b65e9533f481711d127": {
     "protocolToken": {
       "address": "0xD8b4CBCbb768088B9ea39b65e9533f481711d127",
-      "name": "SushiSwap LP Token ERSDL / USDC",
-      "symbol": "SLP/ERSDL/USDC",
+      "name": "SushiSwap LP Token eRSDL / USDC",
+      "symbol": "SLP/eRSDL/USDC",
       "decimals": 18
     },
     "token0": {
       "address": "0x5218E472cFCFE0b64A064F055B43b4cdC9EfD3A6",
-      "name": "unFederalReserve Token",
-      "symbol": "ERSDL",
+      "name": "UnFederalReserveToken",
+      "symbol": "eRSDL",
       "decimals": 18
     },
     "token1": {
@@ -10608,7 +10608,7 @@
     },
     "token0": {
       "address": "0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828",
-      "name": "UMA",
+      "name": "UMA Voting Token v1",
       "symbol": "UMA",
       "decimals": 18
     },
@@ -10628,7 +10628,7 @@
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
@@ -10668,7 +10668,7 @@
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
@@ -10734,7 +10734,7 @@
     },
     "token1": {
       "address": "0xF55a93b613D172b86c2Ba3981a849DaE2aeCDE2f",
-      "name": "Your Futures Exchange",
+      "name": "YFX",
       "symbol": "YFX",
       "decimals": 18
     }
@@ -10808,7 +10808,7 @@
     },
     "token0": {
       "address": "0x501acE9c35E60f03A2af4d484f49F9B1EFde9f40",
-      "name": "SOLACE",
+      "name": "solace",
       "symbol": "SOLACE",
       "decimals": 18
     },
@@ -10848,7 +10848,7 @@
     },
     "token0": {
       "address": "0x490e3f4af13e1616EC97A8C6600c1061a8D0253e",
-      "name": "Terran Coin",
+      "name": "TERRAN",
       "symbol": "TRR",
       "decimals": 18
     },
@@ -10868,7 +10868,7 @@
     },
     "token0": {
       "address": "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-      "name": "SushiSwap",
+      "name": "SushiToken",
       "symbol": "SUSHI",
       "decimals": 18
     },
@@ -10902,14 +10902,14 @@
   "0x0D33D674F6eef1991e9aaB561189b26eBED7c576": {
     "protocolToken": {
       "address": "0x0D33D674F6eef1991e9aaB561189b26eBED7c576",
-      "name": "SushiSwap LP Token FUSDT / USDT",
-      "symbol": "SLP/FUSDT/USDT",
+      "name": "SushiSwap LP Token fUSDT / USDT",
+      "symbol": "SLP/fUSDT/USDT",
       "decimals": 18
     },
     "token0": {
       "address": "0xADc234a4e90E2045f353F5d4fCdE66144d23b458",
       "name": "Fluid USDT",
-      "symbol": "FUSDT",
+      "symbol": "fUSDT",
       "decimals": 6
     },
     "token1": {
@@ -10974,7 +10974,7 @@
     },
     "token1": {
       "address": "0xEd04915c23f00A313a544955524EB7DBD823143d",
-      "name": "Alchemy Pay",
+      "name": "Alchemy",
       "symbol": "ACH",
       "decimals": 8
     }
@@ -11014,7 +11014,7 @@
     },
     "token1": {
       "address": "0xbbBBBBB5AA847A2003fbC6b5C16DF0Bd1E725f61",
-      "name": "BProtocol",
+      "name": "B.Protocol",
       "symbol": "BPRO",
       "decimals": 18
     }
@@ -11042,40 +11042,40 @@
   "0xB5c40E038c997c2946B24dC179F7CdcD279d8847": {
     "protocolToken": {
       "address": "0xB5c40E038c997c2946B24dC179F7CdcD279d8847",
-      "name": "SushiSwap LP Token STFIRO / STETH",
-      "symbol": "SLP/STFIRO/STETH",
+      "name": "SushiSwap LP Token stFIRO / stETH",
+      "symbol": "SLP/stFIRO/stETH",
       "decimals": 18
     },
     "token0": {
       "address": "0x160B1E5aaBFD70B2FC40Af815014925D71CEEd7E",
-      "name": "stakedFIRO",
-      "symbol": "STFIRO",
+      "name": "stakedFiro",
+      "symbol": "stFIRO",
       "decimals": 8
     },
     "token1": {
       "address": "0xDFe66B14D37C77F4E9b180cEb433d1b164f0281D",
       "name": "stakedETH",
-      "symbol": "STETH",
+      "symbol": "stETH",
       "decimals": 18
     }
   },
   "0x91A48c69Ec3f3cE855FE5054F82D2bef8Fd66C43": {
     "protocolToken": {
       "address": "0x91A48c69Ec3f3cE855FE5054F82D2bef8Fd66C43",
-      "name": "SushiSwap LP Token ONT / PWING",
-      "symbol": "SLP/ONT/PWING",
+      "name": "SushiSwap LP Token pONT / pWING",
+      "symbol": "SLP/pONT/pWING",
       "decimals": 18
     },
     "token0": {
       "address": "0xcb46C550539ac3DB72dc7aF7c89B11c306C727c2",
-      "name": "Ontology",
-      "symbol": "ONT",
-      "decimals": 18
+      "name": "Poly Ontology Token",
+      "symbol": "pONT",
+      "decimals": 9
     },
     "token1": {
       "address": "0xDb0f18081b505A7DE20B18ac41856BCB4Ba86A1a",
       "name": "Poly Ontology Wing Token",
-      "symbol": "PWING",
+      "symbol": "pWING",
       "decimals": 9
     }
   },
@@ -11088,13 +11088,13 @@
     },
     "token0": {
       "address": "0x3449FC1Cd036255BA1EB19d65fF4BA2b8903A69a",
-      "name": "Basis Cash",
+      "name": "BAC",
       "symbol": "BAC",
       "decimals": 18
     },
     "token1": {
       "address": "0xC36824905dfF2eAAEE7EcC09fCC63abc0af5Abc5",
-      "name": "Basis Bond",
+      "name": "BAB",
       "symbol": "BAB",
       "decimals": 18
     }

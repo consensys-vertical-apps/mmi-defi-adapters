@@ -28,7 +28,7 @@
               "type": "underlying",
               "balanceRaw": "0n",
               "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-              "name": "Chainlink Token",
+              "name": "ChainLink Token",
               "symbol": "LINK",
               "decimals": 18,
               "balance": 0,

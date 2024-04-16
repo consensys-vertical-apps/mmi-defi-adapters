@@ -89,8 +89,8 @@
         },
         {
           "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
-          "name": "RETH / ETH",
-          "symbol": "RETH / ETH",
+          "name": "rETH / ETH",
+          "symbol": "rETH / ETH",
           "decimals": 18,
           "tokenId": "3062541302288446171170371466885913903213",
           "type": "protocol",

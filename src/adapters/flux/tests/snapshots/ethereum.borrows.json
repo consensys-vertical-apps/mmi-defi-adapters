@@ -18,7 +18,7 @@
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
-          "symbol": "FUSDC",
+          "symbol": "fUSDC",
           "decimals": 8
         },
         "tokens": [
@@ -41,7 +41,7 @@
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
-          "symbol": "FUSDC",
+          "symbol": "fUSDC",
           "decimals": 8
         },
         "tokens": [
@@ -64,7 +64,7 @@
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
-          "symbol": "FUSDC",
+          "symbol": "fUSDC",
           "decimals": 8
         },
         "tokens": [
@@ -87,7 +87,7 @@
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
-          "symbol": "FUSDC",
+          "symbol": "fUSDC",
           "decimals": 8
         },
         "tokens": [
@@ -110,7 +110,7 @@
         "protocolToken": {
           "address": "0x465a5a630482f3abD6d3b84B39B29b07214d19e5",
           "name": "Flux USDC",
-          "symbol": "FUSDC",
+          "symbol": "fUSDC",
           "decimals": 8
         },
         "tokens": [

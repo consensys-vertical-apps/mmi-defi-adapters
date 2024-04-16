@@ -100,7 +100,7 @@
     "underlyingToken": {
       "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
       "name": "Synth sUSD",
-      "symbol": "SUSD",
+      "symbol": "sUSD",
       "decimals": 18
     }
   },
@@ -114,7 +114,7 @@
     },
     "underlyingToken": {
       "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
-      "name": "Liquity USD",
+      "name": "LUSD Stablecoin",
       "symbol": "LUSD",
       "decimals": 18
     }
@@ -144,8 +144,8 @@
     },
     "underlyingToken": {
       "address": "0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
-      "name": "Metis",
-      "symbol": "METIS",
+      "name": "Metis Token",
+      "symbol": "Metis",
       "decimals": 18
     }
   },

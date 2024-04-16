@@ -17,6 +17,16 @@
       "tokens": [
         {
           "type": "protocol",
+          "totalSupplyRaw": "302537599740838967223487775n",
+          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+          "name": "Dai Stablecoin",
+          "symbol": "DAI",
+          "decimals": 18,
+          "totalSupply": 302537599.74083894,
+          "price": 1.0008388019504717
+        },
+        {
+          "type": "protocol",
           "totalSupplyRaw": "51170521518120n",
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "name": "USD Coin",
@@ -47,16 +57,6 @@
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "302537599740838967223487775n",
-          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-          "name": "Dai Stablecoin",
-          "symbol": "DAI",
-          "decimals": 18,
-          "totalSupply": 302537599.74083894,
-          "price": 1.0008388019504717
-        },
-        {
-          "type": "protocol",
           "totalSupplyRaw": "4841089515856n",
           "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
           "name": "PayPal USD",
@@ -64,6 +64,16 @@
           "decimals": 6,
           "totalSupply": 4841089.515856,
           "price": 0.7741878827967211
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "238681837715399813875676009n",
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18,
+          "totalSupply": 238681837.7153998,
+          "price": 1.00144502012366
         },
         {
           "type": "protocol",
@@ -101,26 +111,6 @@
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "69572542619n",
-          "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-          "name": "Wrapped BTC",
-          "symbol": "WBTC",
-          "decimals": 8,
-          "totalSupply": 695.72542619,
-          "price": 64587.82340895568
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "238681837715399813875676009n",
-          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-          "name": "USDe",
-          "symbol": "USDe",
-          "decimals": 18,
-          "totalSupply": 238681837.7153998,
-          "price": 1.00144502012366
-        },
-        {
-          "type": "protocol",
           "totalSupplyRaw": "86109486272629780468883780n",
           "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
           "name": "Staked USDe",
@@ -137,6 +127,16 @@
           "decimals": 18,
           "totalSupply": 10883.856609073047,
           "price": 3172.2117904738793
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "69572542619n",
+          "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+          "name": "Wrapped BTC",
+          "symbol": "WBTC",
+          "decimals": 8,
+          "totalSupply": 695.72542619,
+          "price": 64587.82340895568
         },
         {
           "type": "protocol",
@@ -219,6 +219,16 @@
       "tokens": [
         {
           "type": "protocol",
+          "totalSupplyRaw": "233068966359363911711881911n",
+          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+          "name": "Dai Stablecoin",
+          "symbol": "DAI",
+          "decimals": 18,
+          "totalSupply": 233068966.3593639,
+          "price": 1.0008388019504717
+        },
+        {
+          "type": "protocol",
           "totalSupplyRaw": "30572613792930n",
           "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
           "name": "USD Coin",
@@ -246,16 +256,6 @@
           "decimals": 6,
           "totalSupply": 18193276.491266,
           "price": 1.0015210739210858
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "233068966359363911711881911n",
-          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-          "name": "Dai Stablecoin",
-          "symbol": "DAI",
-          "decimals": 18,
-          "totalSupply": 233068966.3593639,
-          "price": 1.0008388019504717
         },
         {
           "type": "protocol",

@@ -42,7 +42,7 @@
     },
     "underlyingToken": {
       "address": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
-      "name": "Curve fi USDC USDT",
+      "name": "Curve.fi USDC/USDT",
       "symbol": "2CRV",
       "decimals": 18
     },
@@ -246,11 +246,20 @@
     },
     "underlyingToken": {
       "address": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
-      "name": "Curve fi USDC USDT",
+      "name": "Curve.fi USDC/USDT",
       "symbol": "2CRV",
       "decimals": 18
     },
     "extraRewardTokens": [
+      {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      },
       {
         "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
         "token": {
@@ -266,15 +275,6 @@
           "address": "0xb952A807345991BD529FDded05009F5e80Fe8F45",
           "name": "Convex Token",
           "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
           "decimals": 18
         }
       }
@@ -450,40 +450,6 @@
       }
     ]
   },
-  "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3": {
-    "protocolToken": {
-      "address": "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3",
-      "name": "Curve.fi Factory Plain Pool: frxETH/WETH Convex Deposit",
-      "symbol": "cvxfrxETHWETH-f",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x1DeB3b1cA6afca0FF9C5cE9301950dC98Ac0D523",
-      "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
-      "symbol": "frxETHWETH-f",
-      "decimals": 18
-    },
-    "extraRewardTokens": [
-      {
-        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-        "token": {
-          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
-          "name": "Curve DAO Token",
-          "symbol": "CRV",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-        "token": {
-          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
-          "symbol": "CVX",
-          "decimals": 18
-        }
-      }
-    ]
-  },
   "0x11F2217fa1D5c44Eae310b9b985E2964FC47D8f9": {
     "protocolToken": {
       "address": "0x11F2217fa1D5c44Eae310b9b985E2964FC47D8f9",
@@ -517,6 +483,15 @@
         }
       },
       {
+        "manager": "0xA3d1a8DEB97B111454B294E2324EfAD13a9d8396",
+        "token": {
+          "address": "0xA3d1a8DEB97B111454B294E2324EfAD13a9d8396",
+          "name": "OVN",
+          "symbol": "OVN",
+          "decimals": 18
+        }
+      },
+      {
         "manager": "0x9d2F299715D94d8A7E6F5eaa8E654E8c74a988A7",
         "token": {
           "address": "0x9d2F299715D94d8A7E6F5eaa8E654E8c74a988A7",
@@ -524,13 +499,38 @@
           "symbol": "FXS",
           "decimals": 18
         }
+      }
+    ]
+  },
+  "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3": {
+    "protocolToken": {
+      "address": "0xd2D8BEB901f90163bE4667A85cDDEbB7177eb3E3",
+      "name": "Curve.fi Factory Plain Pool: frxETH/WETH Convex Deposit",
+      "symbol": "cvxfrxETHWETH-f",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x1DeB3b1cA6afca0FF9C5cE9301950dC98Ac0D523",
+      "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
+      "symbol": "frxETHWETH-f",
+      "decimals": 18
+    },
+    "extraRewardTokens": [
+      {
+        "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "token": {
+          "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+          "name": "Curve DAO Token",
+          "symbol": "CRV",
+          "decimals": 18
+        }
       },
       {
-        "manager": "0xA3d1a8DEB97B111454B294E2324EfAD13a9d8396",
+        "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
-          "address": "0xA3d1a8DEB97B111454B294E2324EfAD13a9d8396",
-          "name": "OVN",
-          "symbol": "OVN",
+          "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
+          "name": "Convex Token",
+          "symbol": "CVX",
           "decimals": 18
         }
       }
@@ -563,7 +563,7 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
           "decimals": 18
         }
@@ -597,7 +597,7 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
           "decimals": 18
         }
@@ -631,7 +631,7 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
           "decimals": 18
         }
@@ -665,7 +665,7 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
           "decimals": 18
         }
@@ -687,6 +687,15 @@
     },
     "extraRewardTokens": [
       {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      },
+      {
         "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
         "token": {
           "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
@@ -699,17 +708,8 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
           "decimals": 18
         }
       }
@@ -742,7 +742,7 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
           "decimals": 18
         }
@@ -776,7 +776,7 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
           "decimals": 18
         }
@@ -798,6 +798,15 @@
     },
     "extraRewardTokens": [
       {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      },
+      {
         "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
         "token": {
           "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
@@ -810,17 +819,8 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
           "decimals": 18
         }
       },
@@ -850,6 +850,15 @@
     },
     "extraRewardTokens": [
       {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      },
+      {
         "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
         "token": {
           "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
@@ -862,17 +871,8 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
           "decimals": 18
         }
       },
@@ -902,6 +902,15 @@
     },
     "extraRewardTokens": [
       {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      },
+      {
         "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
         "token": {
           "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
@@ -914,17 +923,8 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
           "decimals": 18
         }
       },
@@ -954,6 +954,15 @@
     },
     "extraRewardTokens": [
       {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      },
+      {
         "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
         "token": {
           "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
@@ -966,17 +975,8 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
           "decimals": 18
         }
       },
@@ -1006,6 +1006,15 @@
     },
     "extraRewardTokens": [
       {
+        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "token": {
+          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+          "name": "Arbitrum",
+          "symbol": "ARB",
+          "decimals": 18
+        }
+      },
+      {
         "manager": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
         "token": {
           "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
@@ -1018,17 +1027,8 @@
         "manager": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
         "token": {
           "address": "0xaAFcFD42c9954C6689ef1901e03db742520829c5",
-          "name": "Convex Finance",
+          "name": "Convex Token",
           "symbol": "CVX",
-          "decimals": 18
-        }
-      },
-      {
-        "manager": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-        "token": {
-          "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
-          "name": "Arbitrum",
-          "symbol": "ARB",
           "decimals": 18
         }
       },

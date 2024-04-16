@@ -17338,5 +17338,125 @@
       "symbol": "dino",
       "decimals": 18
     }
+  },
+  "0x36715B696D0A394AFfD31a77e4aF4b2b170DD1DA": {
+    "protocolToken": {
+      "address": "0x36715B696D0A394AFfD31a77e4aF4b2b170DD1DA",
+      "name": "Uniswap V2 LUT3 / USDT",
+      "symbol": "UNI-V2/LUT3/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x339f666ea7C7E6F0feceD5A21712113BA47cB146",
+      "name": "LimitedUseToken",
+      "symbol": "LUT3",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xA1303aC37aB85F52D231F4c597B6674968f088Bf": {
+    "protocolToken": {
+      "address": "0xA1303aC37aB85F52D231F4c597B6674968f088Bf",
+      "name": "Uniswap V2 WMATIC / pshiba",
+      "symbol": "UNI-V2/WMATIC/pshiba",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xEa809653Af8A58C8A819305cCAd179B9eA0E258D",
+      "name": "Pink Shiba Inu",
+      "symbol": "pshiba",
+      "decimals": 18
+    }
+  },
+  "0xc51FED3DEF71436e7edD479E96A2007CC8430730": {
+    "protocolToken": {
+      "address": "0xc51FED3DEF71436e7edD479E96A2007CC8430730",
+      "name": "Uniswap V2 LUT4 / USDT",
+      "symbol": "UNI-V2/LUT4/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4ce22168EF48A9245813BAD9e8C934Bd4522E1Ce",
+      "name": "LimitedUseToken",
+      "symbol": "LUT4",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xb9F5DD29C7FD1caf676D0Cb0c5676c1774733761": {
+    "protocolToken": {
+      "address": "0xb9F5DD29C7FD1caf676D0Cb0c5676c1774733761",
+      "name": "Uniswap V2 FSE / USDT",
+      "symbol": "UNI-V2/FSE/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x45b5a130D80F10b16c66Ce49f75Ed4A9C2e6ea8d",
+      "name": "Flse",
+      "symbol": "FSE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x54D2c97B4BB8A0a805f3B4a7DB3861749E99DD23": {
+    "protocolToken": {
+      "address": "0x54D2c97B4BB8A0a805f3B4a7DB3861749E99DD23",
+      "name": "Uniswap V2 HOUND / USDT",
+      "symbol": "UNI-V2/HOUND/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x427A8b31beb4a95d8F0AfD374fA74b783C183069",
+      "name": "$Hound on Polygon",
+      "symbol": "HOUND",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x87785BF3Cd09D1A6a927C8896574B92ce6Ddd08d": {
+    "protocolToken": {
+      "address": "0x87785BF3Cd09D1A6a927C8896574B92ce6Ddd08d",
+      "name": "Uniswap V2 USDC / sUSDC",
+      "symbol": "UNI-V2/USDC/sUSDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      "name": "USD Coin (PoS)",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x6D13f2CbA08e704e12748Ae200ed79a9eb72A2D8",
+      "name": "SureYield USDC",
+      "symbol": "sUSDC",
+      "decimals": 6
+    }
   }
 }
