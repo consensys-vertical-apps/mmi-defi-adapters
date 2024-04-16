@@ -29,11 +29,11 @@ export const questionsJson: Record<string, QuestionConfig> = {
     question:
       "Is your product a fork of one of the following? Please select from the list below or enter 'No' if none apply.",
     type: 'list',
-    choices: ['Uniswap v2', 'Curve governance vesting', 'No'],
+    choices: ['No', 'Uniswap v2', 'Curve governance vesting'],
     next: {
+      No: 'defiAssetStructure',
       'Uniswap v2': 'end',
       'Curve governance vesting': 'end',
-      No: 'defiAssetStructure',
     },
   },
   defiAssetStructure: {

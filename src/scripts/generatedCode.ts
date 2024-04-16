@@ -26,7 +26,7 @@ import { helpers } from './helpers'
 export class aaveAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
-  productId = ''
+  productId = 'pool'
   protocolId: Protocol
   chainId: Chain
 

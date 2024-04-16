@@ -91,6 +91,11 @@ async function askQuestion(
   ])
   const answer = answers[key]
 
+  if (answer == 'Uniswap v2' || answer == 'Curve governance vesting') {
+    console.log('Generate fork template')
+    return
+  }
+
   const hasOutcomes = questionConfig.outcomes
 
   createAdapterAnswers[key] = answer
