@@ -284,12 +284,12 @@ Implement the `getTransactionParams` method within your adapter.
 The easier way is to set a switch statement using the `WriteAction` as discriminator, this should allow TypeScript language server to determine the correct type within the switch statement entry.
 
 ```
-getTransactionParams({
+async getTransactionParams({
   action,
   inputs,
 }: Extract<
   GetTransactionParams,
-  { protocolId: typeof Protocol.Your-Protocol-Key; productId: 'Your-Product-Id' }
+  { protocolId: typeof Protocol.YourProtocolKey; productId: 'YourProductId' }
 >): Promise<{ to: string; data: string }> {
   switch (action) {
     case WriteActions.Deposit: {
