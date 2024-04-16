@@ -9,5 +9,8 @@ export type {
   DefiProfitsResponse,
 } from './types/response'
 export { WriteActions } from './types/writeActions'
-export type { GetTransactionParams } from './adapters'
-export { GetTransactionParamsSchema, WriteActionInputs } from './adapters'
+export type { GetTransactionParams } from './adapters/supportedProtocols'
+export {
+  GetTransactionParamsSchema,
+  WriteActionInputs,
+} from './adapters/supportedProtocols'

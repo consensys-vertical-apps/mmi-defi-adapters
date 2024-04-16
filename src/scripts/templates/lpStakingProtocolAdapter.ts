@@ -63,7 +63,7 @@ export function lpStakingAdapterTemplate({
    * Implementation Steps:
    * 1. Implement logic for handling predefined actions (e.g., Supply, Withdraw). Consider the examples provided as a starting point.
    * 2. For new actions (e.g., Stake, Flash Loan), first extend the \`WriteActions\` object to include these new actions.
-   * 3. Export WriteActionInputs, GetTransactionParamsSchema and GetTransactionParams from this file.
+   * 3. Export a WriteActionInputs object that satisfies WriteActionInputSchemas from this file.
    * 4. Implement the method logic for each action, extracting necessary inputs and populating transactions accordingly.
    *
    * Example Implementations:
@@ -77,7 +77,10 @@ export function lpStakingAdapterTemplate({
   // getTransactionParams({
   //   action,
   //   inputs,
-  // }: GetTransactionParams): Promise<{ to: string; data: string }> {
+  // }: Extract<
+  //   GetTransactionParams,
+  //   { protocolId: typeof Protocol.${protocolKey}; productId: '${productId}' }
+  // >): Promise<{ to: string; data: string }> {
   //   // Example switch case structure for implementation:
   //   switch (action) {
   //     case WriteActions.Deposit: {
@@ -116,5 +119,10 @@ export function lpStakingAdapterTemplate({
       throw new NotImplementedError()
     }
   }
+
+  // export const WriteActionInputs = {
+  //   [WriteActions.Deposit]: z.object({}),
+  //   [WriteActions.Withdraw]: z.object({}),
+  // } satisfies WriteActionInputSchemas
   `
 }

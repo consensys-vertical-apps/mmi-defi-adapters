@@ -7,8 +7,12 @@ import {
   PositionType,
   AssetType,
 } from '../../../../types/adapter'
-import { WriteActions } from '../../../../types/writeActions'
+import {
+  WriteActionInputSchemas,
+  WriteActions,
+} from '../../../../types/writeActions'
 import { Protocol } from '../../../protocols'
+import { GetTransactionParams } from '../../../supportedProtocols'
 import { contractAddresses } from '../../common/contractAddresses'
 import { CUSDCv3__factory } from '../../contracts'
 
@@ -40,7 +44,13 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
     return await super.buildMetadata()
   }
 
-  getTransactionParams({ action, inputs }: GetTransactionParams) {
+  getTransactionParams({
+    action,
+    inputs,
+  }: Extract<
+    GetTransactionParams,
+    { protocolId: typeof Protocol.CompoundV2; productId: 'borrow-market' }
+  >): Promise<{ to: string; data: string }> {
     const poolContract = CUSDCv3__factory.connect(
       contractAddresses[this.chainId]!.cUSDCv3Address,
       this.provider,
@@ -69,24 +79,4 @@ export const WriteActionInputs = {
     asset: z.string(),
     amount: z.string(),
   }),
-}
-
-const commonFields = {
-  protocolId: z.literal(Protocol.CompoundV2),
-  productId: z.literal('borrow-market'),
-  chainId: z.nativeEnum(Chain),
-}
-
-export const GetTransactionParamsSchema = z.discriminatedUnion('action', [
-  z.object({
-    ...commonFields,
-    action: z.literal(WriteActions.Borrow),
-    inputs: WriteActionInputs[WriteActions.Borrow],
-  }),
-  z.object({
-    ...commonFields,
-    action: z.literal(WriteActions.Repay),
-    inputs: WriteActionInputs[WriteActions.Repay],
-  }),
-])
-export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>
+} satisfies WriteActionInputSchemas

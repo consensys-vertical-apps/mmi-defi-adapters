@@ -78,6 +78,15 @@ async function buildSchemas() {
   const defiProvider = new DefiProvider()
   const support = defiProvider.getSupport()
 
+  const writeActionInputs: {
+    protocolKey: string
+    protocolId: string
+    productId: string
+    writeActionInputs: string[]
+    fullProductName: string
+    productAdapterPath: string
+  }[] = []
+
   for (const [protocolId, protocolAdapters] of Object.entries(support)) {
     const protocolKey = Object.keys(Protocol).find(
       (protocolKey) =>
@@ -95,28 +104,37 @@ async function buildSchemas() {
       const { WriteActionInputs } = await import(adapterFilePath)
 
       if (WriteActionInputs) {
-        await addWriteActionSchemas({
+        const fullProductName = `${protocolKey}${pascalCase(productId)}`
+        const productAdapterPath = `./${protocolId}/products/${productId}/${lowerFirst(
+          `${fullProductName}`,
+        )}Adapter`
+
+        writeActionInputs.push({
           protocolKey,
           protocolId,
           productId,
+          writeActionInputs: Object.keys(WriteActionInputs),
+          fullProductName,
+          productAdapterPath,
         })
       }
     }
   }
+
+  await addImportsAndSchemas(writeActionInputs)
 }
 
-async function addWriteActionSchemas({
-  protocolKey,
-  protocolId,
-  productId,
-}: {
-  protocolKey: string
-  protocolId: string
-  productId: string
-}) {
-  const fullProductname = `${protocolKey}${pascalCase(productId)}`
-
-  const adaptersFile = path.resolve('./src/adapters/index.ts')
+async function addImportsAndSchemas(
+  productsInputs: {
+    protocolKey: string
+    protocolId: string
+    productId: string
+    writeActionInputs: string[]
+    fullProductName: string
+    productAdapterPath: string
+  }[],
+) {
+  const adaptersFile = path.resolve('./src/adapters/supportedProtocols.ts')
   const contents = fs.readFileSync(adaptersFile, 'utf-8')
   const ast = parse(contents, {
     parser: require('recast/parsers/typescript'),
@@ -125,42 +143,22 @@ async function addWriteActionSchemas({
   visit(ast, {
     visitImportDeclaration(path) {
       const node = path.node
-      if (
-        node.source.value ===
-        `./${protocolId}/products/${productId}/${lowerFirst(
-          fullProductname,
-        )}Adapter`
-      ) {
-        const getTransactionParamsImportName = 'GetTransactionParamsSchema'
+      const productInputs = productsInputs.find(
+        ({ productAdapterPath }) => node.source.value === productAdapterPath,
+      )
+      if (productInputs) {
+        const importName = 'WriteActionInputs'
         if (
           !node.specifiers!.some(
             (specifier) =>
               n.ImportSpecifier.check(specifier) &&
-              specifier.imported.name === getTransactionParamsImportName,
+              specifier.imported.name === importName,
           )
         ) {
           node.specifiers!.push(
             b.importSpecifier(
-              b.identifier(getTransactionParamsImportName),
-              b.identifier(
-                `${fullProductname}${getTransactionParamsImportName}`,
-              ),
-            ),
-          )
-        }
-
-        const writeActionsImportName = 'WriteActionInputs'
-        if (
-          !node.specifiers!.some(
-            (specifier) =>
-              n.ImportSpecifier.check(specifier) &&
-              specifier.imported.name === writeActionsImportName,
-          )
-        ) {
-          node.specifiers!.push(
-            b.importSpecifier(
-              b.identifier(writeActionsImportName),
-              b.identifier(`${fullProductname}${writeActionsImportName}`),
+              b.identifier(importName),
+              b.identifier(`${productInputs.fullProductName}${importName}`),
             ),
           )
         }
@@ -175,53 +173,105 @@ async function addWriteActionSchemas({
         return false
       }
 
-      if (node.id.name === 'WriteActionInputs') {
-        if (
-          !n.ObjectExpression.check(node.init) ||
-          node.init.properties.some(
-            (property) =>
-              n.ObjectProperty.check(property) &&
-              n.Identifier.check(property.key) &&
-              property.key.name === `${fullProductname}WriteActionInputs`,
-          )
-        ) {
-          return false
-        }
-
-        const objectProperty = b.objectProperty(
-          b.identifier(`${fullProductname}${node.id.name}`),
-          b.identifier(`${fullProductname}${node.id.name}`),
+      if (
+        node.id.name === 'WriteActionInputs' &&
+        n.ObjectExpression.check(node.init) &&
+        node.init.properties.every(
+          (property) =>
+            n.ObjectProperty.check(property) &&
+            n.Identifier.check(property.key),
         )
-        objectProperty.shorthand = true
-        node.init.properties.push(objectProperty)
+      ) {
+        productsInputs.forEach(({ fullProductName }) => {
+          if (
+            !n.ObjectExpression.check(node.init) ||
+            node.init.properties.some(
+              (property) =>
+                n.ObjectProperty.check(property) &&
+                n.Identifier.check(property.key) &&
+                property.key.name === `${fullProductName}WriteActionInputs`,
+            )
+          ) {
+            return false
+          }
+
+          const objectProperty = b.objectProperty(
+            b.identifier(`${fullProductName}${(node.id as n.Identifier).name}`),
+            b.identifier(`${fullProductName}${(node.id as n.Identifier).name}`),
+          )
+          objectProperty.shorthand = true
+          node.init.properties.push(objectProperty)
+        })
+
         sortEntries(
           node.init.properties,
           (entry) => ((entry as n.ObjectProperty).key as n.Identifier).name,
         )
-      } else if (node.id.name === 'GetTransactionParamsSchema') {
-        if (
-          !n.CallExpression.check(node.init) ||
-          !n.ArrayExpression.check(node.init.arguments[0]) ||
-          node.init.arguments[0].elements.some(
-            (element) =>
-              n.Identifier.check(element) &&
-              element.name === `${fullProductname}GetTransactionParamsSchema`,
-          )
-        ) {
-          return false
-        }
-
-        node.init.arguments[0].elements.push(
-          b.identifier(`${fullProductname}${node.id.name}`),
-        )
-        sortEntries(
-          node.init.arguments[0].elements,
-          (entry) => (entry as n.Identifier).name,
-        )
       }
+      this.traverse(path)
+    },
+    visitExportNamedDeclaration(path) {
+      if (
+        n.VariableDeclaration.check(path.node.declaration) &&
+        path.node.declaration.declarations.length === 1 &&
+        n.VariableDeclarator.check(path.node.declaration.declarations[0]) &&
+        n.Identifier.check(path.node.declaration.declarations[0].id) &&
+        ['WriteActionInputs', 'GetTransactionParamsSchema'].includes(
+          path.node.declaration.declarations[0].id.name,
+        )
+      ) {
+        path.prune()
+      }
+
+      if (
+        n.TSTypeAliasDeclaration.check(path.node.declaration) &&
+        path.node.declaration.id.name === 'GetTransactionParams'
+      ) {
+        path.prune()
+      }
+
       this.traverse(path)
     },
   })
 
-  await writeCodeFile(adaptersFile, print(ast).code)
+  const writeActionInputsExportStatement = `
+  export const WriteActionInputs = {
+    ${productsInputs
+      .map(({ fullProductName }) => `${fullProductName}WriteActionInputs`)
+      .join(',')}
+  }
+  `
+
+  const schemas = productsInputs.map(
+    ({ protocolKey, productId, writeActionInputs }) => {
+      const actionSchemas = writeActionInputs.map((action) => {
+        return `
+        z.object({
+          protocolId: z.literal(Protocol.${protocolKey}),
+          productId: z.literal('${productId}'),
+          chainId: z.nativeEnum(Chain),
+          action: z.literal('${action}'),
+          inputs:
+            WriteActionInputs['${protocolKey}${pascalCase(
+              productId,
+            )}WriteActionInputs']['${action}'],
+        })`
+      })
+      return `z.discriminatedUnion('action', [${actionSchemas.join(',')}])`
+    },
+  )
+
+  const schemaExportStatement = `
+  export const GetTransactionParamsSchema = z.union([${schemas.join(',')}])
+  `
+
+  const schemaTypeExportStatement = `export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>;`
+
+  await writeCodeFile(
+    adaptersFile,
+    print(ast).code +
+      writeActionInputsExportStatement +
+      schemaExportStatement +
+      schemaTypeExportStatement,
+  )
 }

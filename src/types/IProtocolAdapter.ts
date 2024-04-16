@@ -1,5 +1,5 @@
-import { GetTransactionParams } from '../adapters'
 import type { Protocol } from '../adapters/protocols'
+import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
 import type {

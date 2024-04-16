@@ -1,6 +1,6 @@
 import { Command } from 'commander'
-import { GetTransactionParams } from '../adapters'
 import { Protocol } from '../adapters/protocols'
+import type { GetTransactionParams } from '../adapters/supportedProtocols'
 import { Chain } from '../core/constants/chains'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
