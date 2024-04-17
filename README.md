@@ -6,7 +6,7 @@
 
 This library is designed to simplify and standardise the process of fetching data and interacting with various DeFi protocols, which often have unique interfaces and data structures. Our adapters 1) fetch and transform underlying protocol data into a standardised format that can be easily used by portfolio dashboards and 2) generate transaction params to create and update protocol positions.
 
-# Our Goals 🎯
+## Our Goals 🎯
 
 1. Connect users with DeFi protocols
 2. Benefit the wider ecosystem
@@ -20,13 +20,13 @@ This library is designed to simplify and standardise the process of fetching dat
    - Withdrawals by address
    - Crafted transactions params
 
-# 🎥 DeFi Adapter Tutorial
+## 🎥 DeFi Adapter Tutorial
 
 Check out the tutorial video below for an intro to our library and how to build an adapter:
 
 [![DeFi Adapter Tutorial](video-thumbnail.png)](https://drive.google.com/file/d/1EL5PEOQa_OgscANi3mAxBXdT25LqMsKv/view)
 
-# Adapter Template Overview
+## Adapter Template Overview
 
 We offer a variety of templates to streamline the creation of new adapters using the command `npm run new-adapter`. Below is a detailed overview of each template available:
 
@@ -44,7 +44,7 @@ Each template is designed to facilitate specific scenarios in the development of
 
 Forks of popular protocols we also provide protocol-specific templates can be found [here](README.md#adapter-templates-for-forks-of-popular-protocols)
 
-# Quick Start
+## Quick Start
 
 This project requires Node 20. Ensure you're using the correct version (e.g. run `nvm use`)
 
@@ -70,7 +70,7 @@ To build an adapter follow these steps:
    - `npm run deposits 0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5 18262162 18262164 0xC36442b4a4522E871399CD717aBDD847Ab11FE88 pool uniswap-v3 1 573046`
    - `npm run withdrawals 0x4Ffc5F22770ab6046c8D66DABAe3A9CD1E7A03e7 17979753 17979755 0xdf0770df86a8034b3efef0a1bb3c889b8332ff56 pool stargate 1`
 
-# Adapter Templates for Forks of Popular Protocols
+## Adapter Templates for Forks of Popular Protocols
 
 We supply a set of templates that can be used for forks of popular protocols and products.
 
@@ -94,11 +94,11 @@ Using one of these templates can bootstrap a new protocol by just adding a few s
      - Protocol details
      - Comptroller contract addresses for each chain
 
-# Documentation 📖
+## Documentation 📖
 
 Detailed documentation on the adapter methods can be found [here](./docs/interfaces/IProtocolAdapter.IProtocolAdapter.md).
 
-# Portfolio dashboard
+## Portfolio dashboard
 
 The DeFi adapter library is the engine behind MetaMask's retail and institutional portfolio dashboards 🦊.
 
@@ -106,9 +106,9 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
 ![Alt text](dashboard.png)
 
-# Example adapter user story
+## Example adapter user story
 
-> ## User Story: Implement New DeFi Adapter for [Your Protocol Name]
+> ### User Story: Implement New DeFi Adapter for [Your Protocol Name]
 >
 > **As a** adapter developer,  
 > **I want to** implement a new DeFi adapter that follows the IProtocolAdapter interface,  
@@ -116,7 +116,7 @@ In this example, the user holds positions in both Stargate and Uniswap.
 >
 > ---
 >
-> ### Acceptance Criteria:
+> #### Acceptance Criteria:
 >
 > 1. **Multiple Products Consideration:** Ensure that protocols with multiple products (e.g., farming, staking, pools) are supported by one adapter each.
 > 2. **Adapter Implementation:** Successfully add a new DeFi adapter implementing the IProtocolAdapter to support the product.
@@ -131,11 +131,11 @@ In this example, the user holds positions in both Stargate and Uniswap.
 >
 > ---
 >
-> ### Additional Notes/Comments:
+> #### Additional Notes/Comments:
 >
 > The IProtocolAdapter interface has been documented with TSDocs, detailed descriptions of the methods and properties can be found [here](./docs/interfaces/iProtocolAdapter.IProtocolAdapter.md).
 
-# FAQ section
+## FAQ section
 
 1. What is a DeFi adapter?
 
@@ -192,19 +192,19 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
     Please reach out to us directly. We value feedback.
 
-# Overview of this library
+## Overview of this library
 
 From left to right, get-onchain-data and convert to standardise format.
 
 ![Alt text](high-level.png)
 
-# Getting Started 🏁
+## Getting Started 🏁
 
-## Contributing
+### Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Requirements
+### Requirements
 
 - Node v20
 
@@ -212,7 +212,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 To get specific details on available commands, run `npm run adapters-cli`. For arguments and options for specific commands, use `npm run positions -- --help`.
 
-## Adding a new Adapter (CLI)
+### Adding a new Adapter (CLI)
 
 This project requires Node 18. Ensure you're using the correct version (e.g. run `nvm use`)
 
@@ -220,11 +220,11 @@ Run the following command to add a new adapter `npm run new-adapter`
 
 This will start an interactive process in the command line to create a new adapter. Running `npm run new-adapter -- --help` shows available options for defaults.
 
-## Contract Factories
+### Contract Factories
 
 Add a JSON file with the ABI of any new contract to the folder `src/adapter/<protocol-name>/contracts/abis`. Run `npm run build-types` to generate factories and ABIs for those contracts automatically.
 
-## Test Snapshots
+### Test Snapshots
 
 In order to maintain integrity, it is possible to create test snapshots.
 
@@ -242,18 +242,18 @@ Once the tests are DeFined, running `npm run build-snapshots -- -p <protocol-nam
 
 Running `npm run test` validates snapshots match results.
 
-## Write Actions for adapters
+### Write Actions for adapters
 
 Product adapters can implement the `getTransactionParams` method to return an object that can be used to form a transaction (usually `to` and `data`).
 
-### Determine the actions supported by the product adapter
+#### Determine the actions supported by the product adapter
 First of all, it is necessary to determine what actions that product adapter supports. There's a list of available actions which can be extended when the needs arise (entries need to be added to [this constant declaration](src/types/writeActions.ts). The current supported actions are:
 - Deposit
 - Withdraw
 - Borrow
 - Repay
 
-### Create input schemas for every action
+#### Create input schemas for every action
 After that, an object called `WriteActionInputs` needs to be exported from that adapter file. The object includes a list of the available actions and the respective Zod schemas for the input.
 
 We use Zod schemas because it is a popular library that allows us to create appropriate types in the background to validate the input. Here is a [list of primitives that Zod supports](https://zod.dev/?id=primitives).
@@ -278,7 +278,7 @@ export const WriteActionInputs = {
 
 After creating that input schema, and making sure that the project is building with `npm run build:watch`, it is necessary to run `npm run build-types` so that the types and schemas are correctly generated.
 
-### Implement getTransactionParams method logic
+#### Implement getTransactionParams method logic
 Implement the `getTransactionParams` method within your adapter.
 
 The easier way is to set a switch statement using the `WriteAction` as discriminator, this should allow TypeScript language server to determine the correct type within the switch statement entry.
@@ -310,7 +310,7 @@ async getTransactionParams({
 ```
 
 
-# Versioning and Publishing (internal use only)
+## Versioning and Publishing (internal use only)
 
 To version and publish:
 
@@ -321,7 +321,7 @@ To version and publish:
 
 Please note: You no longer need to manually bump the package version or push tags.
 
-# Update Average Blocks Per Day (internal use only)
+## Update Average Blocks Per Day (internal use only)
 
 To update all averages, run `npm run adapters-cli block-average`. To update a specific chain, run `npm run adapters-cli block-average -- --chain 1`.
 
