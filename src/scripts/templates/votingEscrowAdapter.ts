@@ -4,7 +4,7 @@ export function votingEscrowAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: NewAdapterAnswers) {
+}: Pick<NewAdapterAnswers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
   return `import { getAddress } from 'ethers'
 
   import { VotingEscrow } from '../../../core/adapters/votingEscrow'

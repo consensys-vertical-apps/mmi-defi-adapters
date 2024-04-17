@@ -1,11 +1,9 @@
-import { GetTransactionParams } from '../adapters'
 import { Protocol } from '../adapters/protocols'
 import { AdaptersController } from '../core/adaptersController'
 import { Chain } from '../core/constants/chains'
 import { IMetadataBuilder, CacheToFile } from '../core/decorators/cacheToFile'
-import { NotImplementedError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { IProtocolAdapter } from '../types/IProtocolAdapter'
+import { logger } from '../core/utils/logger'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -19,9 +17,21 @@ import {
   ProtocolTokenTvl,
   UnwrapInput,
   UnwrapExchangeRate,
+  Underlying,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
+import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { helpers } from './helpers'
+import { RewardsAdapter } from './rewardAdapter'
+import { NotImplementedError } from '../core/errors/errors'
+
+type Metadata = Record<
+  string,
+  {
+    protocolToken: Erc20Metadata
+    underlyingTokens: Erc20Metadata[]
+  }
+>
 
 export class adapterClassNameAdapter
   implements IProtocolAdapter, IMetadataBuilder
@@ -67,8 +77,8 @@ export class adapterClassNameAdapter
   }
 
   @CacheToFile({ fileKey: 'protocol-token' })
-  async buildMetadata() {
-    return '{{buildMetadata}}' as any
+  async buildMetadata(): Promise<Metadata> {
+    return '{{buildMetadata}}' as unknown as Metadata
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
@@ -79,11 +89,21 @@ export class adapterClassNameAdapter
     return '{{getPositions}}' as any
   }
 
-  async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+  async getWithdrawals({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
     return '{{getWithdrawals}}' as any
   }
 
-  async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+  async getDeposits({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
     return '{{getDeposits}}' as any
   }
 
@@ -96,4 +116,34 @@ export class adapterClassNameAdapter
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
     return '{{unwrap}}' as any
   }
+
+  private async getProtocolToken(protocolTokenAddress: string) {
+    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
+  }
+  private async getUnderlyingTokens(protocolTokenAddress: string) {
+    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingTokens
+  }
+
+  private async fetchPoolMetadata(protocolTokenAddress: string) {
+    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
+
+    if (!poolMetadata) {
+      logger.error(
+        {
+          protocolTokenAddress,
+          protocol: this.protocolId,
+          chainId: this.chainId,
+          product: this.productId,
+        },
+        'Protocol token pool not found',
+      )
+      throw new Error('Protocol token pool not found')
+    }
+
+    return poolMetadata
+  }
+
+  //getRewardPositions
+
+  //getRewardWithdrawals
 }

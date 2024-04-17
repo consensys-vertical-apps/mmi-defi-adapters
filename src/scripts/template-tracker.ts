@@ -1,27 +1,30 @@
-import { QuestionConfig } from './newAdapter2Command'
+// TODO Check if any key in T is 'getPositions'
+// - if not, call GetPositionsOptions<value>
+// - if yes, add value to the output
+// type GetPositionsOptions<T, Value = 'getPositions', Output = []> =
 
-export const questionsJson: Record<string, QuestionConfig> = {
+export const questionsJson = {
   appName: {
-    question: 'Please enter the name of your app.',
+    question: 'Enter the name of your app.',
     type: 'text',
     next: 'appId',
   },
   appId: {
-    question: 'Please enter an ID for your app.',
+    question: 'Enter an ID for your app.',
     type: 'text',
     next: 'productId',
     outcomes: undefined,
   },
   productId: {
-    question: 'Please enter a product ID for your app',
+    question: 'Enter a product ID for your app',
     type: 'text',
-    next: 'forkCheck',
+    next: 'chainIds',
     outcomes: undefined,
   },
   chainIds: {
-    question: 'Please select the chains the product is on',
+    question: 'Select the chains the product is on',
     type: 'checkbox',
-    choices: ['Uniswap v2', 'Curve governance vesting', 'No'],
+    choices: ['Ethereum', 'Polygon'],
     next: 'forkCheck',
     outcomes: undefined,
   },
@@ -29,11 +32,23 @@ export const questionsJson: Record<string, QuestionConfig> = {
     question:
       "Is your product a fork of one of the following? Please select from the list below or enter 'No' if none apply.",
     type: 'list',
-    choices: ['No', 'Uniswap v2', 'Curve governance vesting'],
+    choices: ['No', 'Uniswap v2', 'Curve governance vesting', 'Compound v2'],
     next: {
       No: 'defiAssetStructure',
       'Uniswap v2': 'end',
       'Curve governance vesting': 'end',
+      'Compound v2': 'end',
+    },
+    outcomes: {
+      'Uniswap v2': {
+        template: 'UniswapV2',
+      },
+      'Curve governance vesting': {
+        template: 'CurveGovernanceVesting',
+      },
+      'Compound v2': {
+        template: 'CompoundV2',
+      },
     },
   },
   defiAssetStructure: {
@@ -47,32 +62,53 @@ export const questionsJson: Record<string, QuestionConfig> = {
       'Contract position (Morpho)',
       'Other',
     ],
-    next: 'balanceQueryMethod',
+    next: {
+      'Single token (Lido)': 'erc20Event',
+      'Multiple tokens (Aave, Compound)': 'erc20Event',
+      'Non fungible token (Uniswap V3)': 'balanceQueryMethod',
+      'Contract position (Morpho)': 'balanceQueryMethod',
+      Other: 'erc20Event',
+    },
     outcomes: {
       'Single token (Lido)': {
-        buildMetadataFunction: 'hardCoded',
-        getPositionsImplementation: 'onePosition',
-        withdrawalsFunction: 'useWithdrawalHelper',
-        depositsFunction: 'useDepositsHelper',
+        buildMetadataFunction: 'singleProtocolToken',
+        defiAssetStructure: 'singleProtocolToken',
       },
       'Multiple tokens (Aave, Compound)': {
-        buildMetadataFunction: 'factoryContract',
-        getPositionsImplementation: 'multiplePositions',
-        withdrawalsFunction: 'useWithdrawalHelper',
-        depositsFunction: 'useDepositsHelper',
+        buildMetadataFunction: 'multipleProtocolTokens',
+        defiAssetStructure: 'multipleProtocolTokens',
       },
       'Non fungible token (Uniswap V3)': {
         buildMetadataFunction: 'notImplementedError',
         withdrawalsFunction: 'notImplementedError',
         depositsFunction: 'notImplementedError',
+        defiAssetStructure: 'nft',
       },
       'Contract position (Morpho)': {
         buildMetadataFunction: 'notImplementedError',
         withdrawalsFunction: 'notImplementedError',
         depositsFunction: 'notImplementedError',
+        defiAssetStructure: 'contractPosition',
       },
       Other: {
         buildMetadataFunction: 'notImplementedError',
+        withdrawalsFunction: 'notImplementedError',
+        depositsFunction: 'notImplementedError',
+        defiAssetStructure: 'other',
+      },
+    },
+  },
+  erc20Event: {
+    question:
+      'Can ERC20 transfer mint and burn events be used to determine deposits and withdrawals',
+    type: 'confirm',
+    next: 'balanceQueryMethod',
+    outcomes: {
+      true: {
+        withdrawalsFunction: 'useWithdrawalHelper',
+        depositsFunction: 'useDepositsHelper',
+      },
+      false: {
         withdrawalsFunction: 'notImplementedError',
         depositsFunction: 'notImplementedError',
       },
@@ -92,20 +128,21 @@ export const questionsJson: Record<string, QuestionConfig> = {
       },
     },
   },
+
   underlyingTokens: {
     question: 'How many underlying tokens does your DeFi asset represent?',
     type: 'list',
     choices: ['1 (Lido)', 'More than 1 (Curve, GMX. Uniswap)'],
     next: {
-      '1 (Lido)': 'additionalRewards',
-      'More than 1 (Curve, GMX)': 'additionalRewards',
+      '1 (Lido)': 'unwrapSimpleMapping',
+      'More than 1 (Curve, GMX. Uniswap)': 'additionalRewards',
     },
     outcomes: {
       true: {
-        getUnderlying: 'useArray',
+        underlyingTokens: 'multiple',
       },
       false: {
-        getUnderlying: 'useObject',
+        underlyingTokens: 'single',
       },
     },
   },
@@ -129,11 +166,11 @@ export const questionsJson: Record<string, QuestionConfig> = {
     next: 'end',
     outcomes: {
       true: {
-        rewards: true,
+        rewards: 'addRewards',
       },
       false: {
-        rewards: false,
+        rewards: 'noRewards',
       },
     },
   },
-}
+} as const

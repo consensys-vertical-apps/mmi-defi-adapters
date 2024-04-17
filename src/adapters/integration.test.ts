@@ -24,7 +24,6 @@ import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testC
 import { testCases as morphoAaveV3TestCases } from './morpho-aave-v3/tests/testCases'
 import { testCases as morphoBlueTestCases } from './morpho-blue/tests/testCases'
 import { testCases as morphoCompoundV2TestCases } from './morpho-compound-v2/tests/testCases'
-
 import { testCases as pancakeswapV2TestCases } from './pancakeswap-v2/tests/testCases'
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'

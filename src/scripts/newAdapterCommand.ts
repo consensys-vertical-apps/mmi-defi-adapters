@@ -31,7 +31,7 @@ import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
 import b = types.builders
 
-type TemplateBuilder = (adapterSettings: NewAdapterAnswers) => string
+export type TemplateBuilder = (adapterSettings: NewAdapterAnswers) => string
 
 export type NewAdapterAnswers = {
   protocolKey: string
