@@ -31,6 +31,7 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
   GetEventsRequestInput,
+  ContractTransaction,
 } from './types/response'
 
 export class DefiProvider {
@@ -333,7 +334,7 @@ export class DefiProvider {
 
   async getTransactionParams(input: GetTransactionParams): Promise<
     AdapterResponse<{
-      params: { to: string; data: string }
+      params: ContractTransaction
     }>
   > {
     const { protocolId, chainId, productId } = input

@@ -56,7 +56,7 @@ export class FluxBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
   // }: Extract<
   //   GetTransactionParams,
   //   { protocolId: typeof Protocol.Flux; productId: 'borrow-market' }
-  // >): Promise<{ to: string; data: string }> {
+  // >): Promise<ContractTransaction> {
   //   // Example switch case structure for implementation:
   //   switch (action) {
   //     case WriteActions.Deposit: {

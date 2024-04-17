@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
-  AssetType,
-  PositionType,
+import { AssetType, PositionType } from '../../../../types/adapter'
+import type {
+  ContractTransaction,
   ProtocolDetails,
 } from '../../../../types/adapter'
 import {
@@ -60,7 +60,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   }: Extract<
     GetTransactionParams,
     { protocolId: typeof Protocol.AaveV3; productId: 'a-token' }
-  >): Promise<{ to: string; data: string }> {
+  >): Promise<ContractTransaction> {
     const poolContract = PoolContract__factory.connect(
       getAddress(this.chainId),
       this.provider,

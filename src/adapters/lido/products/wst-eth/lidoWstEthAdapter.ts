@@ -129,7 +129,7 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
   // }: Extract<
   //   GetTransactionParams,
   //   { protocolId: typeof Protocol.Lido; productId: 'wst-eth' }
-  // >): Promise<{ to: string; data: string }> {
+  // >): Promise<ContractTransaction> {
   //   // Example switch case structure for implementation:
   //   switch (action) {
   //     case WriteActions.Deposit: {

@@ -3,6 +3,7 @@
 /* eslint-disable */
 export { BalanceChecker__factory } from "./BalanceChecker__factory";
 export { CompoundV2Cerc20__factory } from "./CompoundV2Cerc20__factory";
+export { CompoundV2Cether__factory } from "./CompoundV2Cether__factory";
 export { CompoundV2Comptroller__factory } from "./CompoundV2Comptroller__factory";
 export { Erc20__factory } from "./Erc20__factory";
 export { Multicall__factory } from "./Multicall__factory";

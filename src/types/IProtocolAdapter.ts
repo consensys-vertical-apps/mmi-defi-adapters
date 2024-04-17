@@ -12,6 +12,7 @@ import type {
   MovementsByBlock,
   GetTotalValueLockedInput,
   ProtocolTokenTvl,
+  ContractTransaction,
 } from './adapter'
 import type { Erc20Metadata } from './erc20Metadata'
 
@@ -75,7 +76,7 @@ export interface IProtocolAdapter {
    */
   getTransactionParams?(
     input: GetTransactionParams,
-  ): Promise<{ to: string; data: string }>
+  ): Promise<ContractTransaction>
 
   /**
    *

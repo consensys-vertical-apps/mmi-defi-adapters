@@ -94,7 +94,7 @@ export function uniswapV2PoolForkAdapterTemplate({
   // }: Extract<
   //   GetTransactionParams,
   //   { protocolId: typeof Protocol.${protocolKey}; productId: '${productId}' }
-  // >): Promise<{ to: string; data: string }> {
+  // >): Promise<ContractTransaction> {
   //   // Example switch case structure for implementation:
   //   switch (action) {
   //     case WriteActions.Deposit: {

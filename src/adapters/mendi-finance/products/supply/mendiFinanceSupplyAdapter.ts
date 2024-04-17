@@ -255,7 +255,7 @@ export class MendiFinanceSupplyAdapter
   // }: Extract<
   //   GetTransactionParams,
   //   { protocolId: typeof Protocol.MendiFinance; productId: 'supply' }
-  // >): Promise<{ to: string; data: string }> {
+  // >): Promise<ContractTransaction> {
   //   // Example switch case structure for implementation:
   //   switch (action) {
   //     case WriteActions.Deposit: {

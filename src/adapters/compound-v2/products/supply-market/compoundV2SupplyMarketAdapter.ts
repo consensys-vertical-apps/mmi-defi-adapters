@@ -2,10 +2,10 @@ import { z } from 'zod'
 import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import {
+import { PositionType, AssetType } from '../../../../types/adapter'
+import type {
+  ContractTransaction,
   ProtocolDetails,
-  PositionType,
-  AssetType,
 } from '../../../../types/adapter'
 import {
   WriteActionInputSchemas,
@@ -50,7 +50,7 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
   }: Extract<
     GetTransactionParams,
     { protocolId: typeof Protocol.CompoundV2; productId: 'supply-market' }
-  >): Promise<{ to: string; data: string }> {
+  >): Promise<ContractTransaction> {
     const poolContract = CUSDCv3__factory.connect(
       contractAddresses[this.chainId]!.cUSDCv3Address,
       this.provider,
