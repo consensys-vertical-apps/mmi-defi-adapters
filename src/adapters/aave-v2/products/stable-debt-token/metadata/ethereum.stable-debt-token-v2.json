@@ -50,7 +50,7 @@
     },
     "underlyingToken": {
       "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
-      "name": "Aave",
+      "name": "Aave Token",
       "symbol": "AAVE",
       "decimals": 18
     }
@@ -79,7 +79,7 @@
     "underlyingToken": {
       "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
       "name": "Synth sUSD",
-      "symbol": "SUSD",
+      "symbol": "sUSD",
       "decimals": 18
     }
   },
@@ -106,7 +106,7 @@
     },
     "underlyingToken": {
       "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
-      "name": "Gemini Dollar",
+      "name": "Gemini dollar",
       "symbol": "GUSD",
       "decimals": 2
     }
@@ -162,7 +162,7 @@
     },
     "underlyingToken": {
       "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
-      "name": "Liquity USD",
+      "name": "LUSD Stablecoin",
       "symbol": "LUSD",
       "decimals": 18
     }

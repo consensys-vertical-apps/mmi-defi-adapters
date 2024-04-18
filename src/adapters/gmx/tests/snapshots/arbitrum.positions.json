@@ -48,7 +48,7 @@
             {
               "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
               "name": "USD Coin (Arb1)",
-              "symbol": "USDC.E",
+              "symbol": "USDC",
               "decimals": 6,
               "type": "underlying",
               "balanceRaw": "408572860317n",

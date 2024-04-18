@@ -19,8 +19,8 @@
           "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
           "balance": 1500.3469004180388,
           "balanceRaw": "1500346900418038679310n",
-          "name": "Aave WETH",
-          "symbol": "AWETH",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
           "tokens": [
@@ -57,8 +57,8 @@
           "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
           "balance": 4850738.222458,
           "balanceRaw": "4850738222458n",
-          "name": "Aave USDC",
-          "symbol": "AUSDC",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
           "decimals": 6,
           "type": "protocol",
           "tokens": [
@@ -79,8 +79,8 @@
           "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
           "balance": 1.199221,
           "balanceRaw": "1199221n",
-          "name": "Aave USDT",
-          "symbol": "AUSDT",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
           "decimals": 6,
           "type": "protocol",
           "tokens": [

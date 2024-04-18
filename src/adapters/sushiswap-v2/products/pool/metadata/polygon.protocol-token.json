@@ -239,26 +239,6 @@
       "decimals": 18
     }
   },
-  "0x2385b2BE5B0005dF8e23cf695A83B400B10e717E": {
-    "protocolToken": {
-      "address": "0x2385b2BE5B0005dF8e23cf695A83B400B10e717E",
-      "name": "SushiSwap LP Token WETH / OMNI",
-      "symbol": "SLP/WETH/OMNI",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0x9e20461bc2c4c980f62f1B279D71734207a6A356",
-      "name": "OmniCat",
-      "symbol": "OMNI",
-      "decimals": 18
-    }
-  },
   "0xc1214b61965594b3e08Ea4950747d5A077Cd1886": {
     "protocolToken": {
       "address": "0xc1214b61965594b3e08Ea4950747d5A077Cd1886",
@@ -276,6 +256,26 @@
       "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
       "name": "Wrapped Ether",
       "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x2385b2BE5B0005dF8e23cf695A83B400B10e717E": {
+    "protocolToken": {
+      "address": "0x2385b2BE5B0005dF8e23cf695A83B400B10e717E",
+      "name": "SushiSwap LP Token WETH / OMNI",
+      "symbol": "SLP/WETH/OMNI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x9e20461bc2c4c980f62f1B279D71734207a6A356",
+      "name": "OmniCat",
+      "symbol": "OMNI",
       "decimals": 18
     }
   },
@@ -339,26 +339,6 @@
       "decimals": 18
     }
   },
-  "0xf69e93771F11AECd8E554aA165C3Fe7fd811530c": {
-    "protocolToken": {
-      "address": "0xf69e93771F11AECd8E554aA165C3Fe7fd811530c",
-      "name": "SushiSwap LP Token WMATIC / GHST",
-      "symbol": "SLP/WMATIC/GHST",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0x385Eeac5cB85A38A9a07A70c73e0a3271CfB54A7",
-      "name": "Aavegotchi GHST Token (PoS)",
-      "symbol": "GHST",
-      "decimals": 18
-    }
-  },
   "0xDE990994309BC08E57aca82B1A19170AD84323E8": {
     "protocolToken": {
       "address": "0xDE990994309BC08E57aca82B1A19170AD84323E8",
@@ -376,6 +356,26 @@
       "address": "0x67eB41A14C0fe5CD701FC9d5A3D6597A72F641a6",
       "name": "Giddy Token",
       "symbol": "GIDDY",
+      "decimals": 18
+    }
+  },
+  "0xf69e93771F11AECd8E554aA165C3Fe7fd811530c": {
+    "protocolToken": {
+      "address": "0xf69e93771F11AECd8E554aA165C3Fe7fd811530c",
+      "name": "SushiSwap LP Token WMATIC / GHST",
+      "symbol": "SLP/WMATIC/GHST",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x385Eeac5cB85A38A9a07A70c73e0a3271CfB54A7",
+      "name": "Aavegotchi GHST Token (PoS)",
+      "symbol": "GHST",
       "decimals": 18
     }
   },
@@ -459,26 +459,6 @@
       "decimals": 18
     }
   },
-  "0xD8E7d368ab9BDF0010A9934B0e801B3F38CECEF6": {
-    "protocolToken": {
-      "address": "0xD8E7d368ab9BDF0010A9934B0e801B3F38CECEF6",
-      "name": "SushiSwap LP Token GFC / WETH",
-      "symbol": "SLP/GFC/WETH",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x071AC29d569a47EbfFB9e57517F855Cb577DCc4C",
-      "name": "GCOIN",
-      "symbol": "GFC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    }
-  },
   "0xDb995F975F1Bfc3B2157495c47E4efB31196B2CA": {
     "protocolToken": {
       "address": "0xDb995F975F1Bfc3B2157495c47E4efB31196B2CA",
@@ -496,6 +476,26 @@
       "address": "0xD838290e877E0188a4A44700463419ED96c16107",
       "name": "Toucan Protocol: Nature Carbon Tonne",
       "symbol": "NCT",
+      "decimals": 18
+    }
+  },
+  "0xD8E7d368ab9BDF0010A9934B0e801B3F38CECEF6": {
+    "protocolToken": {
+      "address": "0xD8E7d368ab9BDF0010A9934B0e801B3F38CECEF6",
+      "name": "SushiSwap LP Token GFC / WETH",
+      "symbol": "SLP/GFC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x071AC29d569a47EbfFB9e57517F855Cb577DCc4C",
+      "name": "GCOIN",
+      "symbol": "GFC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     }
   },
@@ -579,26 +579,6 @@
       "decimals": 18
     }
   },
-  "0x014Ac2A53Aa6fBA4DcD93FdE6d3c787B79a1a6E6": {
-    "protocolToken": {
-      "address": "0x014Ac2A53Aa6fBA4DcD93FdE6d3c787B79a1a6E6",
-      "name": "SushiSwap LP Token WMATIC / IXT",
-      "symbol": "SLP/WMATIC/IXT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xE06Bd4F5aAc8D0aA337D13eC88dB6defC6eAEefE",
-      "name": "PlanetIX",
-      "symbol": "IXT",
-      "decimals": 18
-    }
-  },
   "0xc2755915a85C6f6c1C0F3a86ac8C058F11Caa9C9": {
     "protocolToken": {
       "address": "0xc2755915a85C6f6c1C0F3a86ac8C058F11Caa9C9",
@@ -617,6 +597,26 @@
       "name": "(PoS) Tether USD",
       "symbol": "USDT",
       "decimals": 6
+    }
+  },
+  "0x014Ac2A53Aa6fBA4DcD93FdE6d3c787B79a1a6E6": {
+    "protocolToken": {
+      "address": "0x014Ac2A53Aa6fBA4DcD93FdE6d3c787B79a1a6E6",
+      "name": "SushiSwap LP Token WMATIC / IXT",
+      "symbol": "SLP/WMATIC/IXT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xE06Bd4F5aAc8D0aA337D13eC88dB6defC6eAEefE",
+      "name": "PlanetIX",
+      "symbol": "IXT",
+      "decimals": 18
     }
   },
   "0xadd053A09F95E565B25d8b9B84D0fcFaa962465E": {
@@ -859,26 +859,6 @@
       "decimals": 18
     }
   },
-  "0x1E67124681b402064CD0ABE8ed1B5c79D2e02f64": {
-    "protocolToken": {
-      "address": "0x1E67124681b402064CD0ABE8ed1B5c79D2e02f64",
-      "name": "SushiSwap LP Token USDC / BCT",
-      "symbol": "SLP/USDC/BCT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-      "name": "USD Coin (PoS)",
-      "symbol": "USDC",
-      "decimals": 6
-    },
-    "token1": {
-      "address": "0x2F800Db0fdb5223b3C3f354886d907A671414A7F",
-      "name": "Base Carbon Tonne",
-      "symbol": "BCT",
-      "decimals": 18
-    }
-  },
   "0x73a041fEf8271c619791e0aF6a6224945b7A446F": {
     "protocolToken": {
       "address": "0x73a041fEf8271c619791e0aF6a6224945b7A446F",
@@ -896,6 +876,26 @@
       "address": "0xf796969fA47Fb0748c80b8B153cBb895E88cBD54",
       "name": "Ocavu Network Token",
       "symbol": "OCAVU",
+      "decimals": 18
+    }
+  },
+  "0x1E67124681b402064CD0ABE8ed1B5c79D2e02f64": {
+    "protocolToken": {
+      "address": "0x1E67124681b402064CD0ABE8ed1B5c79D2e02f64",
+      "name": "SushiSwap LP Token USDC / BCT",
+      "symbol": "SLP/USDC/BCT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      "name": "USD Coin (PoS)",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x2F800Db0fdb5223b3C3f354886d907A671414A7F",
+      "name": "Base Carbon Tonne",
+      "symbol": "BCT",
       "decimals": 18
     }
   },
@@ -1199,26 +1199,6 @@
       "decimals": 18
     }
   },
-  "0x55FF76BFFC3Cdd9D5FdbBC2ece4528ECcE45047e": {
-    "protocolToken": {
-      "address": "0x55FF76BFFC3Cdd9D5FdbBC2ece4528ECcE45047e",
-      "name": "SushiSwap LP Token WMATIC / USDT",
-      "symbol": "SLP/WMATIC/USDT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
-      "name": "(PoS) Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
-    }
-  },
   "0x7b23afe559433aaCE4D61ED65E225A74094defcB": {
     "protocolToken": {
       "address": "0x7b23afe559433aaCE4D61ED65E225A74094defcB",
@@ -1237,6 +1217,26 @@
       "name": "Royale",
       "symbol": "ROY",
       "decimals": 18
+    }
+  },
+  "0x55FF76BFFC3Cdd9D5FdbBC2ece4528ECcE45047e": {
+    "protocolToken": {
+      "address": "0x55FF76BFFC3Cdd9D5FdbBC2ece4528ECcE45047e",
+      "name": "SushiSwap LP Token WMATIC / USDT",
+      "symbol": "SLP/WMATIC/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
     }
   },
   "0x116Ff0d1Caa91a6b94276b3471f33dbeB52073E7": {
@@ -1279,26 +1279,6 @@
       "decimals": 6
     }
   },
-  "0x4642dAFC5281bA5a8D35B2896e0D925b23C6883C": {
-    "protocolToken": {
-      "address": "0x4642dAFC5281bA5a8D35B2896e0D925b23C6883C",
-      "name": "SushiSwap LP Token WETH / MVI",
-      "symbol": "SLP/WETH/MVI",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xfe712251173A2cd5F5bE2B46Bb528328EA3565E1",
-      "name": "Metaverse Index (PoS)",
-      "symbol": "MVI",
-      "decimals": 18
-    }
-  },
   "0x7e24A40439fabCf42Ef75099bCAE123C6D8dc0E9": {
     "protocolToken": {
       "address": "0x7e24A40439fabCf42Ef75099bCAE123C6D8dc0E9",
@@ -1336,6 +1316,26 @@
       "address": "0xAEc815Ae1E9AB58f49692aeC2840FfC82C56F7E5",
       "name": "IDOL",
       "symbol": "IDOL",
+      "decimals": 18
+    }
+  },
+  "0x4642dAFC5281bA5a8D35B2896e0D925b23C6883C": {
+    "protocolToken": {
+      "address": "0x4642dAFC5281bA5a8D35B2896e0D925b23C6883C",
+      "name": "SushiSwap LP Token WETH / MVI",
+      "symbol": "SLP/WETH/MVI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xfe712251173A2cd5F5bE2B46Bb528328EA3565E1",
+      "name": "Metaverse Index (PoS)",
+      "symbol": "MVI",
       "decimals": 18
     }
   },
@@ -2079,26 +2079,6 @@
       "decimals": 18
     }
   },
-  "0x8c78A1C338e593fc88Fc96327Dced3138EAdf5d1": {
-    "protocolToken": {
-      "address": "0x8c78A1C338e593fc88Fc96327Dced3138EAdf5d1",
-      "name": "SushiSwap LP Token WMATIC / ZOLT",
-      "symbol": "SLP/WMATIC/ZOLT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xd6a5c5ADc3905b354b8D945D9D73142F54254989",
-      "name": "ZOLT",
-      "symbol": "ZOLT",
-      "decimals": 18
-    }
-  },
   "0xc879Bc72136cb6519b5e0e456bC9d727e106C582": {
     "protocolToken": {
       "address": "0xc879Bc72136cb6519b5e0e456bC9d727e106C582",
@@ -2137,6 +2117,26 @@
       "name": "Woofy",
       "symbol": "WOOFY",
       "decimals": 12
+    }
+  },
+  "0x8c78A1C338e593fc88Fc96327Dced3138EAdf5d1": {
+    "protocolToken": {
+      "address": "0x8c78A1C338e593fc88Fc96327Dced3138EAdf5d1",
+      "name": "SushiSwap LP Token WMATIC / ZOLT",
+      "symbol": "SLP/WMATIC/ZOLT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xd6a5c5ADc3905b354b8D945D9D73142F54254989",
+      "name": "ZOLT",
+      "symbol": "ZOLT",
+      "decimals": 18
     }
   },
   "0xF850c261AdC576E6713D14af590a40d55936a982": {
@@ -2299,26 +2299,6 @@
       "decimals": 18
     }
   },
-  "0x85f5e5e0e93D1FCeBB72aa5a5E449Aa8cb9a1083": {
-    "protocolToken": {
-      "address": "0x85f5e5e0e93D1FCeBB72aa5a5E449Aa8cb9a1083",
-      "name": "SushiSwap LP Token WMATIC / CPR",
-      "symbol": "SLP/WMATIC/CPR",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xaa404804Ba583c025Fa64c9a276A6127CEB355c6",
-      "name": "CIPHER",
-      "symbol": "CPR",
-      "decimals": 2
-    }
-  },
   "0x9fACDD2B79fDCA9978945BED0Cc35FcFe32B45b4": {
     "protocolToken": {
       "address": "0x9fACDD2B79fDCA9978945BED0Cc35FcFe32B45b4",
@@ -2337,6 +2317,26 @@
       "name": "USD Coin (PoS)",
       "symbol": "USDC",
       "decimals": 6
+    }
+  },
+  "0x85f5e5e0e93D1FCeBB72aa5a5E449Aa8cb9a1083": {
+    "protocolToken": {
+      "address": "0x85f5e5e0e93D1FCeBB72aa5a5E449Aa8cb9a1083",
+      "name": "SushiSwap LP Token WMATIC / CPR",
+      "symbol": "SLP/WMATIC/CPR",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xaa404804Ba583c025Fa64c9a276A6127CEB355c6",
+      "name": "CIPHER",
+      "symbol": "CPR",
+      "decimals": 2
     }
   },
   "0x5aB6064E07a3bbd95FD143247C100f454B662B55": {
@@ -2499,26 +2499,6 @@
       "decimals": 18
     }
   },
-  "0xa6ea6904651C11B937e8c9f5d632ef7B77f30e39": {
-    "protocolToken": {
-      "address": "0xa6ea6904651C11B937e8c9f5d632ef7B77f30e39",
-      "name": "SushiSwap LP Token WMATIC / GAJ",
-      "symbol": "SLP/WMATIC/GAJ",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xF4B0903774532AEe5ee567C02aaB681a81539e92",
-      "name": "PolyGaj Token",
-      "symbol": "GAJ",
-      "decimals": 18
-    }
-  },
   "0xAb0454B98dAf4A02EA29292E6A8882FB2C787DD4": {
     "protocolToken": {
       "address": "0xAb0454B98dAf4A02EA29292E6A8882FB2C787DD4",
@@ -2536,6 +2516,26 @@
       "address": "0x6002410dDA2Fb88b4D0dc3c1D562F7761191eA80",
       "name": "The Employment Commons Work Token (PoS)",
       "symbol": "WORK",
+      "decimals": 18
+    }
+  },
+  "0xa6ea6904651C11B937e8c9f5d632ef7B77f30e39": {
+    "protocolToken": {
+      "address": "0xa6ea6904651C11B937e8c9f5d632ef7B77f30e39",
+      "name": "SushiSwap LP Token WMATIC / GAJ",
+      "symbol": "SLP/WMATIC/GAJ",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xF4B0903774532AEe5ee567C02aaB681a81539e92",
+      "name": "PolyGaj Token",
+      "symbol": "GAJ",
       "decimals": 18
     }
   },
@@ -2779,26 +2779,6 @@
       "decimals": 18
     }
   },
-  "0xfb659315E36aE39917014DA60F362b600e8Cd0cA": {
-    "protocolToken": {
-      "address": "0xfb659315E36aE39917014DA60F362b600e8Cd0cA",
-      "name": "SushiSwap LP Token WMATIC / $DG",
-      "symbol": "SLP/WMATIC/$DG",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0x2a93172c8DCCbfBC60a39d56183B7279a2F647b4",
-      "name": "decentral.games (PoS)",
-      "symbol": "$DG",
-      "decimals": 18
-    }
-  },
   "0x1Fec149e363b9c3282C2C3509f171cE2Ac77dd27": {
     "protocolToken": {
       "address": "0x1Fec149e363b9c3282C2C3509f171cE2Ac77dd27",
@@ -2816,6 +2796,26 @@
       "address": "0x34d4ab47Bee066F361fA52d792e69AC7bD05ee23",
       "name": "RaiderAurum",
       "symbol": "AURUM",
+      "decimals": 18
+    }
+  },
+  "0xfb659315E36aE39917014DA60F362b600e8Cd0cA": {
+    "protocolToken": {
+      "address": "0xfb659315E36aE39917014DA60F362b600e8Cd0cA",
+      "name": "SushiSwap LP Token WMATIC / $DG",
+      "symbol": "SLP/WMATIC/$DG",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x2a93172c8DCCbfBC60a39d56183B7279a2F647b4",
+      "name": "decentral.games (PoS)",
+      "symbol": "$DG",
       "decimals": 18
     }
   },
@@ -2959,26 +2959,6 @@
       "decimals": 18
     }
   },
-  "0xc2FEC6e52A2e4622eb91E5ae4f23F0eA73c47Aa2": {
-    "protocolToken": {
-      "address": "0xc2FEC6e52A2e4622eb91E5ae4f23F0eA73c47Aa2",
-      "name": "SushiSwap LP Token WMATIC / xUSD",
-      "symbol": "SLP/WMATIC/xUSD",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0x3A3e7650f8B9f667dA98F236010fBf44Ee4B2975",
-      "name": "xDollar Stablecoin",
-      "symbol": "xUSD",
-      "decimals": 18
-    }
-  },
   "0x1B99906477B913D6E35aB5ebea851fC319CA8FE1": {
     "protocolToken": {
       "address": "0x1B99906477B913D6E35aB5ebea851fC319CA8FE1",
@@ -3016,6 +2996,26 @@
       "address": "0xFbdd194376de19a88118e84E279b977f165d01b8",
       "name": "beefy.finance",
       "symbol": "BIFI",
+      "decimals": 18
+    }
+  },
+  "0xc2FEC6e52A2e4622eb91E5ae4f23F0eA73c47Aa2": {
+    "protocolToken": {
+      "address": "0xc2FEC6e52A2e4622eb91E5ae4f23F0eA73c47Aa2",
+      "name": "SushiSwap LP Token WMATIC / xUSD",
+      "symbol": "SLP/WMATIC/xUSD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x3A3e7650f8B9f667dA98F236010fBf44Ee4B2975",
+      "name": "xDollar Stablecoin",
+      "symbol": "xUSD",
       "decimals": 18
     }
   },
@@ -3119,26 +3119,6 @@
       "decimals": 18
     }
   },
-  "0x32e228A6086c684F1391C0935cB34C296e0DD9Cb": {
-    "protocolToken": {
-      "address": "0x32e228A6086c684F1391C0935cB34C296e0DD9Cb",
-      "name": "SushiSwap LP Token WMATIC / BCT",
-      "symbol": "SLP/WMATIC/BCT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0x2F800Db0fdb5223b3C3f354886d907A671414A7F",
-      "name": "Base Carbon Tonne",
-      "symbol": "BCT",
-      "decimals": 18
-    }
-  },
   "0xC43D6163A14D98d459F58a5bD21f180244dB3192": {
     "protocolToken": {
       "address": "0xC43D6163A14D98d459F58a5bD21f180244dB3192",
@@ -3176,6 +3156,26 @@
       "address": "0xCE4e6DA9c509Cb33C23d748713c681C959f68658",
       "name": "PolyYield Token",
       "symbol": "YIELD",
+      "decimals": 18
+    }
+  },
+  "0x32e228A6086c684F1391C0935cB34C296e0DD9Cb": {
+    "protocolToken": {
+      "address": "0x32e228A6086c684F1391C0935cB34C296e0DD9Cb",
+      "name": "SushiSwap LP Token WMATIC / BCT",
+      "symbol": "SLP/WMATIC/BCT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x2F800Db0fdb5223b3C3f354886d907A671414A7F",
+      "name": "Base Carbon Tonne",
+      "symbol": "BCT",
       "decimals": 18
     }
   },
@@ -3219,26 +3219,6 @@
       "decimals": 6
     }
   },
-  "0x5C981300A2FD35aeD8427B2d6d004e0Ab11602b0": {
-    "protocolToken": {
-      "address": "0x5C981300A2FD35aeD8427B2d6d004e0Ab11602b0",
-      "name": "SushiSwap LP Token BCT / miMATIC",
-      "symbol": "SLP/BCT/miMATIC",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x2F800Db0fdb5223b3C3f354886d907A671414A7F",
-      "name": "Base Carbon Tonne",
-      "symbol": "BCT",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xa3Fa99A148fA48D14Ed51d610c367C61876997F1",
-      "name": "miMATIC",
-      "symbol": "miMATIC",
-      "decimals": 18
-    }
-  },
   "0x47Ee7e6a997bA0d1b02B1dE786A6324F8e8CEF20": {
     "protocolToken": {
       "address": "0x47Ee7e6a997bA0d1b02B1dE786A6324F8e8CEF20",
@@ -3257,6 +3237,26 @@
       "name": "USD Coin (PoS)",
       "symbol": "USDC",
       "decimals": 6
+    }
+  },
+  "0x5C981300A2FD35aeD8427B2d6d004e0Ab11602b0": {
+    "protocolToken": {
+      "address": "0x5C981300A2FD35aeD8427B2d6d004e0Ab11602b0",
+      "name": "SushiSwap LP Token BCT / miMATIC",
+      "symbol": "SLP/BCT/miMATIC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2F800Db0fdb5223b3C3f354886d907A671414A7F",
+      "name": "Base Carbon Tonne",
+      "symbol": "BCT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xa3Fa99A148fA48D14Ed51d610c367C61876997F1",
+      "name": "miMATIC",
+      "symbol": "miMATIC",
+      "decimals": 18
     }
   },
   "0xDBF5d66d77a83B96763c965D193D0fdD1f8A184B": {
@@ -3459,26 +3459,6 @@
       "decimals": 18
     }
   },
-  "0xa641C96dA7060481AE54684f716651c4041867c4": {
-    "protocolToken": {
-      "address": "0xa641C96dA7060481AE54684f716651c4041867c4",
-      "name": "SushiSwap LP Token USDC / sKLIMA",
-      "symbol": "SLP/USDC/sKLIMA",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-      "name": "USD Coin (PoS)",
-      "symbol": "USDC",
-      "decimals": 6
-    },
-    "token1": {
-      "address": "0xb0C22d8D350C67420f06F48936654f567C73E8C8",
-      "name": "Staked Klima",
-      "symbol": "sKLIMA",
-      "decimals": 9
-    }
-  },
   "0x163c45fB7F84848786a16D8cdb396f78787d6D99": {
     "protocolToken": {
       "address": "0x163c45fB7F84848786a16D8cdb396f78787d6D99",
@@ -3497,6 +3477,26 @@
       "name": "Darkcoin",
       "symbol": "DARK",
       "decimals": 18
+    }
+  },
+  "0xa641C96dA7060481AE54684f716651c4041867c4": {
+    "protocolToken": {
+      "address": "0xa641C96dA7060481AE54684f716651c4041867c4",
+      "name": "SushiSwap LP Token USDC / sKLIMA",
+      "symbol": "SLP/USDC/sKLIMA",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      "name": "USD Coin (PoS)",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xb0C22d8D350C67420f06F48936654f567C73E8C8",
+      "name": "Staked Klima",
+      "symbol": "sKLIMA",
+      "decimals": 9
     }
   },
   "0x82D5BcC22856a3316f993340662D6253b3bC3f76": {
@@ -3559,6 +3559,26 @@
       "decimals": 18
     }
   },
+  "0x1fC05157e66300377b637E93262B355d405F71c6": {
+    "protocolToken": {
+      "address": "0x1fC05157e66300377b637E93262B355d405F71c6",
+      "name": "SushiSwap LP Token WMATIC / SAND",
+      "symbol": "SLP/WMATIC/SAND",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683",
+      "name": "SAND",
+      "symbol": "SAND",
+      "decimals": 18
+    }
+  },
   "0x97A95deb56d689802F02f50c25EBCda5d0A49591": {
     "protocolToken": {
       "address": "0x97A95deb56d689802F02f50c25EBCda5d0A49591",
@@ -3596,26 +3616,6 @@
       "address": "0x6664C64C8582e62dA861Fcac33a627b0f92fF0F8",
       "name": "CZDiamond",
       "symbol": "CZDIAMOND",
-      "decimals": 18
-    }
-  },
-  "0x1fC05157e66300377b637E93262B355d405F71c6": {
-    "protocolToken": {
-      "address": "0x1fC05157e66300377b637E93262B355d405F71c6",
-      "name": "SushiSwap LP Token WMATIC / SAND",
-      "symbol": "SLP/WMATIC/SAND",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683",
-      "name": "SAND",
-      "symbol": "SAND",
       "decimals": 18
     }
   },
@@ -4219,6 +4219,26 @@
       "decimals": 18
     }
   },
+  "0xcE955D4e7AA7228a12DFF628Ad620820F3b405C8": {
+    "protocolToken": {
+      "address": "0xcE955D4e7AA7228a12DFF628Ad620820F3b405C8",
+      "name": "SushiSwap LP Token WMATIC / KOM",
+      "symbol": "SLP/WMATIC/KOM",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xC004e2318722EA2b15499D6375905d75Ee5390B8",
+      "name": "Kommunitas",
+      "symbol": "KOM",
+      "decimals": 8
+    }
+  },
   "0xcb09A616723b2317DedD03F2EccB7398b76BbC9F": {
     "protocolToken": {
       "address": "0xcb09A616723b2317DedD03F2EccB7398b76BbC9F",
@@ -4259,26 +4279,6 @@
       "decimals": 18
     }
   },
-  "0xe427B62B495C1dFe1Fe9F78bEbFcEB877ad05DCE": {
-    "protocolToken": {
-      "address": "0xe427B62B495C1dFe1Fe9F78bEbFcEB877ad05DCE",
-      "name": "SushiSwap LP Token NHT / USDT",
-      "symbol": "SLP/NHT/USDT",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x84342e932797FC62814189f01F0Fb05F52519708",
-      "name": "Neighbourhoods Token",
-      "symbol": "NHT",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
-      "name": "(PoS) Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
-    }
-  },
   "0x1482A37Dc62a17d1008F6e7E82ad2962C1f11e76": {
     "protocolToken": {
       "address": "0x1482A37Dc62a17d1008F6e7E82ad2962C1f11e76",
@@ -4299,26 +4299,6 @@
       "decimals": 18
     }
   },
-  "0xcE955D4e7AA7228a12DFF628Ad620820F3b405C8": {
-    "protocolToken": {
-      "address": "0xcE955D4e7AA7228a12DFF628Ad620820F3b405C8",
-      "name": "SushiSwap LP Token WMATIC / KOM",
-      "symbol": "SLP/WMATIC/KOM",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xC004e2318722EA2b15499D6375905d75Ee5390B8",
-      "name": "Kommunitas",
-      "symbol": "KOM",
-      "decimals": 8
-    }
-  },
   "0x75F7e1C11Eb186810E0f6323D2652647E4C97E6D": {
     "protocolToken": {
       "address": "0x75F7e1C11Eb186810E0f6323D2652647E4C97E6D",
@@ -4337,6 +4317,26 @@
       "name": "Electron",
       "symbol": "ELECTRON",
       "decimals": 18
+    }
+  },
+  "0xe427B62B495C1dFe1Fe9F78bEbFcEB877ad05DCE": {
+    "protocolToken": {
+      "address": "0xe427B62B495C1dFe1Fe9F78bEbFcEB877ad05DCE",
+      "name": "SushiSwap LP Token NHT / USDT",
+      "symbol": "SLP/NHT/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x84342e932797FC62814189f01F0Fb05F52519708",
+      "name": "Neighbourhoods Token",
+      "symbol": "NHT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
     }
   },
   "0x48BFCaCB989360792e89daDbb546eC29B839Ba0C": {
@@ -4739,6 +4739,26 @@
       "decimals": 18
     }
   },
+  "0x7736C061f651aDd44c3118b00Ef9B14168a75FD9": {
+    "protocolToken": {
+      "address": "0x7736C061f651aDd44c3118b00Ef9B14168a75FD9",
+      "name": "SushiSwap LP Token WMATIC / WOLF",
+      "symbol": "SLP/WMATIC/WOLF",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xc0E1eB1F09699990Fd9AeB6Fda02bBb9ec97b751",
+      "name": "PolyWolf Token",
+      "symbol": "WOLF",
+      "decimals": 18
+    }
+  },
   "0x7d97A4A28950d96e1864B1E20eb5814659Ce933E": {
     "protocolToken": {
       "address": "0x7d97A4A28950d96e1864B1E20eb5814659Ce933E",
@@ -4779,6 +4799,26 @@
       "decimals": 9
     }
   },
+  "0x2B65025b4e0D4D176663857D59C01719B4ED7e93": {
+    "protocolToken": {
+      "address": "0x2B65025b4e0D4D176663857D59C01719B4ED7e93",
+      "name": "SushiSwap LP Token WMATIC / NCR",
+      "symbol": "SLP/WMATIC/NCR",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xDA6f726E2088F129D3Ecb2257206AdF7D8537Ba5",
+      "name": "Neos Credits (PoS)",
+      "symbol": "NCR",
+      "decimals": 18
+    }
+  },
   "0xbeF2DD804649A3C5420F08A7C84A9562Df001ebb": {
     "protocolToken": {
       "address": "0xbeF2DD804649A3C5420F08A7C84A9562Df001ebb",
@@ -4817,46 +4857,6 @@
       "name": "USD Coin (PoS)",
       "symbol": "USDC",
       "decimals": 6
-    }
-  },
-  "0x7736C061f651aDd44c3118b00Ef9B14168a75FD9": {
-    "protocolToken": {
-      "address": "0x7736C061f651aDd44c3118b00Ef9B14168a75FD9",
-      "name": "SushiSwap LP Token WMATIC / WOLF",
-      "symbol": "SLP/WMATIC/WOLF",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xc0E1eB1F09699990Fd9AeB6Fda02bBb9ec97b751",
-      "name": "PolyWolf Token",
-      "symbol": "WOLF",
-      "decimals": 18
-    }
-  },
-  "0x2B65025b4e0D4D176663857D59C01719B4ED7e93": {
-    "protocolToken": {
-      "address": "0x2B65025b4e0D4D176663857D59C01719B4ED7e93",
-      "name": "SushiSwap LP Token WMATIC / NCR",
-      "symbol": "SLP/WMATIC/NCR",
-      "decimals": 18
-    },
-    "token0": {
-      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-      "name": "Wrapped Matic",
-      "symbol": "WMATIC",
-      "decimals": 18
-    },
-    "token1": {
-      "address": "0xDA6f726E2088F129D3Ecb2257206AdF7D8537Ba5",
-      "name": "Neos Credits (PoS)",
-      "symbol": "NCR",
-      "decimals": 18
     }
   },
   "0xFDd0da66f53fF1137d52c32826cD7d45ec549876": {

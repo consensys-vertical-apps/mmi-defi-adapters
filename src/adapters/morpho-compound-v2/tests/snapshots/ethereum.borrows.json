@@ -16,8 +16,8 @@
       {
         "protocolToken": {
           "address": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
-          "name": "Compound Tether",
-          "symbol": "CUSDT",
+          "name": "Compound USDT",
+          "symbol": "cUSDT",
           "decimals": 8
         },
         "tokens": [

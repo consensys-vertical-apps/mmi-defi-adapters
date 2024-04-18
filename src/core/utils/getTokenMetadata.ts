@@ -2,8 +2,6 @@ import { ethers, getAddress, isError } from 'ethers'
 import { Erc20, Erc20__factory } from '../../contracts'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
-import TOKEN_METADATA_ARBITRUM from '../metadata/token-metadata-arbitrum.json'
-import TOKEN_METADATA_ETHEREUM from '../metadata/token-metadata-ethereum.json'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { extractErrorMessage } from './extractErrorMessage'
 import { logger } from './logger'
@@ -21,18 +19,14 @@ const REAL_ESTATE_TOKEN_METADATA = {
   decimals: 18,
 }
 
-const CHAIN_METADATA: Partial<
-  Record<Chain, Record<string, Erc20Metadata | undefined>>
-> = {
-  [Chain.Ethereum]: TOKEN_METADATA_ETHEREUM,
-  [Chain.Arbitrum]: TOKEN_METADATA_ARBITRUM,
-}
-
 export async function getTokenMetadata(
   tokenAddress: string,
   chainId: Chain,
   provider: CustomJsonRpcProvider,
 ): Promise<Erc20Metadata> {
+  /**
+   * Manage troublesome token
+   */
   if (
     getAddress(tokenAddress) === REAL_ESTATE_TOKEN_METADATA.address &&
     chainId == Chain.Ethereum
@@ -46,19 +40,9 @@ export async function getTokenMetadata(
     }
   }
 
-  const fileMetadata = CHAIN_METADATA[chainId]
-  if (fileMetadata) {
-    const fileTokenMetadata = fileMetadata[tokenAddress.toLowerCase()]
-    if (fileTokenMetadata) {
-      return {
-        address: getAddress(fileTokenMetadata.address),
-        name: fileTokenMetadata.name,
-        symbol: fileTokenMetadata.symbol,
-        decimals: fileTokenMetadata.decimals,
-      }
-    }
-  }
-
+  /**
+   * Manage native tokens which dont have smart contract and therefore no methods for name, decimal, symbol
+   */
   const onChainTokenMetadata = await getOnChainTokenMetadata(
     tokenAddress,
     chainId,

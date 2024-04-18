@@ -17,8 +17,8 @@
       "tokens": [
         {
           "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
-          "name": "Aave WETH",
-          "symbol": "AWETH",
+          "name": "Aave interest bearing WETH",
+          "symbol": "aWETH",
           "decimals": 18,
           "type": "protocol",
           "profit": 261809.87185779866,
@@ -37,8 +37,8 @@
                 "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
                 "balance": 1601.694857704288,
                 "balanceRaw": "1601694857704288137344n",
-                "name": "Aave WETH",
-                "symbol": "AWETH",
+                "name": "Aave interest bearing WETH",
+                "symbol": "aWETH",
                 "decimals": 18,
                 "type": "protocol",
                 "tokens": [
@@ -61,8 +61,8 @@
                 "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
                 "balance": 1301.6251684541232,
                 "balanceRaw": "1301625168454123348293n",
-                "name": "Aave WETH",
-                "symbol": "AWETH",
+                "name": "Aave interest bearing WETH",
+                "symbol": "aWETH",
                 "decimals": 18,
                 "type": "protocol",
                 "tokens": [
@@ -87,8 +87,8 @@
               {
                 "protocolToken": {
                   "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
-                  "name": "Aave WETH",
-                  "symbol": "AWETH",
+                  "name": "Aave interest bearing WETH",
+                  "symbol": "aWETH",
                   "decimals": 18
                 },
                 "tokens": [
@@ -109,8 +109,8 @@
               {
                 "protocolToken": {
                   "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
-                  "name": "Aave WETH",
-                  "symbol": "AWETH",
+                  "name": "Aave interest bearing WETH",
+                  "symbol": "aWETH",
                   "decimals": 18
                 },
                 "tokens": [
@@ -151,8 +151,8 @@
       "tokens": [
         {
           "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
-          "name": "Aave USDC",
-          "symbol": "AUSDC",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
           "decimals": 6,
           "type": "protocol",
           "profit": 3615.985499629751,
@@ -171,8 +171,8 @@
                 "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
                 "balance": 4905196.58078,
                 "balanceRaw": "4905196580780n",
-                "name": "Aave USDC",
-                "symbol": "AUSDC",
+                "name": "Aave interest bearing USDC",
+                "symbol": "aUSDC",
                 "decimals": 6,
                 "type": "protocol",
                 "tokens": [
@@ -193,8 +193,8 @@
                 "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
                 "balance": 1.215035,
                 "balanceRaw": "1215035n",
-                "name": "Aave USDT",
-                "symbol": "AUSDT",
+                "name": "Aave interest bearing USDT",
+                "symbol": "aUSDT",
                 "decimals": 6,
                 "type": "protocol",
                 "tokens": [
@@ -217,8 +217,8 @@
                 "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
                 "balance": 4404051.438873,
                 "balanceRaw": "4404051438873n",
-                "name": "Aave USDC",
-                "symbol": "AUSDC",
+                "name": "Aave interest bearing USDC",
+                "symbol": "aUSDC",
                 "decimals": 6,
                 "type": "protocol",
                 "tokens": [
@@ -239,8 +239,8 @@
                 "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
                 "balance": 1.214558,
                 "balanceRaw": "1214558n",
-                "name": "Aave USDT",
-                "symbol": "AUSDT",
+                "name": "Aave interest bearing USDT",
+                "symbol": "aUSDT",
                 "decimals": 6,
                 "type": "protocol",
                 "tokens": [
@@ -263,8 +263,8 @@
               {
                 "protocolToken": {
                   "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
-                  "name": "Aave USDC",
-                  "symbol": "AUSDC",
+                  "name": "Aave interest bearing USDC",
+                  "symbol": "aUSDC",
                   "decimals": 6
                 },
                 "tokens": [
@@ -289,8 +289,8 @@
         },
         {
           "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
-          "name": "Aave USDT",
-          "symbol": "AUSDT",
+          "name": "Aave interest bearing USDT",
+          "symbol": "aUSDT",
           "decimals": 6,
           "type": "protocol",
           "profit": 0.0016852304093175619,
@@ -309,8 +309,8 @@
                 "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
                 "balance": 4905196.58078,
                 "balanceRaw": "4905196580780n",
-                "name": "Aave USDC",
-                "symbol": "AUSDC",
+                "name": "Aave interest bearing USDC",
+                "symbol": "aUSDC",
                 "decimals": 6,
                 "type": "protocol",
                 "tokens": [
@@ -331,8 +331,8 @@
                 "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
                 "balance": 1.215035,
                 "balanceRaw": "1215035n",
-                "name": "Aave USDT",
-                "symbol": "AUSDT",
+                "name": "Aave interest bearing USDT",
+                "symbol": "aUSDT",
                 "decimals": 6,
                 "type": "protocol",
                 "tokens": [
@@ -355,8 +355,8 @@
                 "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
                 "balance": 4404051.438873,
                 "balanceRaw": "4404051438873n",
-                "name": "Aave USDC",
-                "symbol": "AUSDC",
+                "name": "Aave interest bearing USDC",
+                "symbol": "aUSDC",
                 "decimals": 6,
                 "type": "protocol",
                 "tokens": [
@@ -377,8 +377,8 @@
                 "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
                 "balance": 1.214558,
                 "balanceRaw": "1214558n",
-                "name": "Aave USDT",
-                "symbol": "AUSDT",
+                "name": "Aave interest bearing USDT",
+                "symbol": "aUSDT",
                 "decimals": 6,
                 "type": "protocol",
                 "tokens": [

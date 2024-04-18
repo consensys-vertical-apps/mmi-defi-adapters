@@ -16,8 +16,8 @@
       {
         "protocolToken": {
           "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
-          "name": "Aave USDC",
-          "symbol": "AUSDC",
+          "name": "Aave interest bearing USDC",
+          "symbol": "aUSDC",
           "decimals": 6
         },
         "tokens": [

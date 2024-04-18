@@ -146,7 +146,7 @@
             {
               "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
               "name": "Synth sUSD",
-              "symbol": "SUSD",
+              "symbol": "sUSD",
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1000198000000000000n",
@@ -165,7 +165,7 @@
           "tokens": [
             {
               "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
-              "name": "Liquity USD",
+              "name": "LUSD Stablecoin",
               "symbol": "LUSD",
               "decimals": 18,
               "type": "underlying",
@@ -205,8 +205,8 @@
           "tokens": [
             {
               "address": "0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
-              "name": "Metis",
-              "symbol": "METIS",
+              "name": "Metis Token",
+              "symbol": "Metis",
               "decimals": 18,
               "type": "underlying",
               "underlyingRateRaw": "1001970093020673291n",
@@ -301,7 +301,7 @@
           "tokens": [
             {
               "address": "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
-              "name": "Stargate Finance",
+              "name": "StargateToken",
               "symbol": "STG",
               "decimals": 18,
               "type": "underlying",
