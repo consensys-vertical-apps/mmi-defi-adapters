@@ -22,9 +22,15 @@ This library is designed to simplify and standardise the process of fetching dat
 
 ## 🎥 DeFi Adapter Tutorial
 
-Check out the tutorial video below for an intro to our library and how to build an adapter:
+### Create Read Adapter
+The tutorial video below shows an intro to our library and how to build an adapter:
 
 [![DeFi Adapter Tutorial](video-thumbnail.png)](https://drive.google.com/file/d/1EL5PEOQa_OgscANi3mAxBXdT25LqMsKv/view)
+
+### Add Write Adapter Support to Read Adapter
+The tutorial video below shows an intro to on how to add write adapter actions to an existing adapter:
+
+[![DeFi Adapter Write Actions Tutorial](video-write-thumbnail.png)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view)
 
 ## Adapter Template Overview
 
@@ -244,7 +250,7 @@ Running `npm run test` validates snapshots match results.
 
 ### Write Actions for adapters
 
-Product adapters can implement the `getTransactionParams` method to return an object that can be used to form a transaction (usually `to` and `data`).
+Product adapters should implement the `getTransactionParams` method to return an object that can be used to form a transaction (usually `to` and `data`).
 
 #### Determine the actions supported by the product adapter
 First of all, it is necessary to determine what actions that product adapter supports. There's a list of available actions which can be extended when the needs arise (entries need to be added to [this constant declaration](src/types/writeActions.ts). The current supported actions are:
@@ -308,12 +314,6 @@ async getTransactionParams({
   }
 }
 ```
-
-#### Video tutorial
-Check out the tutorial video below for an intro to on how to build write adapter actions:
-
-[![DeFi Adapter Write Actions Tutorial](video-thumbnail.png)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view)
-
 
 ## Versioning and Publishing (internal use only)
 
