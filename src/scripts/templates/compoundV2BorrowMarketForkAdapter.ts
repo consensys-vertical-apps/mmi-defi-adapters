@@ -65,7 +65,7 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
   // }: Extract<
   //   GetTransactionParams,
   //   { protocolId: typeof Protocol.${protocolKey}; productId: '${productId}' }
-  // >): Promise<ContractTransaction> {
+  // >): Promise<{ to: string; data: string }> {
   //   // Example switch case structure for implementation:
   //   switch (action) {
   //     case WriteActions.Deposit: {

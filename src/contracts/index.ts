@@ -3,7 +3,6 @@
 /* eslint-disable */
 export type { BalanceChecker } from "./BalanceChecker";
 export type { CompoundV2Cerc20 } from "./CompoundV2Cerc20";
-export type { CompoundV2Cether } from "./CompoundV2Cether";
 export type { CompoundV2Comptroller } from "./CompoundV2Comptroller";
 export type { Erc20 } from "./Erc20";
 export type { Multicall } from "./Multicall";
@@ -12,7 +11,6 @@ export type { UniswapV2Pair } from "./UniswapV2Pair";
 export * as factories from "./factories";
 export { BalanceChecker__factory } from "./factories/BalanceChecker__factory";
 export { CompoundV2Cerc20__factory } from "./factories/CompoundV2Cerc20__factory";
-export { CompoundV2Cether__factory } from "./factories/CompoundV2Cether__factory";
 export { CompoundV2Comptroller__factory } from "./factories/CompoundV2Comptroller__factory";
 export { Erc20__factory } from "./factories/Erc20__factory";
 export { Multicall__factory } from "./factories/Multicall__factory";

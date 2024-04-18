@@ -6,7 +6,6 @@ import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
 import { DefiProvider } from '../defiProvider'
-import { ContractTransaction } from '../types/adapter'
 import { AdapterResponse, GetEventsRequestInput } from '../types/response'
 import {
   chainFilter,
@@ -144,7 +143,7 @@ function transactionParamsCommand(
   commandName: string,
   feature: (input: GetTransactionParams) => Promise<
     AdapterResponse<{
-      params: ContractTransaction
+      params: { to: string; data: string }
     }>
   >,
   chainProviders: Record<Chain, CustomJsonRpcProvider>,

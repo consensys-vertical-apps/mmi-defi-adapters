@@ -59,7 +59,7 @@ export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   // }: Extract<
   //   GetTransactionParams,
   //   { protocolId: typeof Protocol.Flux; productId: 'supply-market' }
-  // >): Promise<ContractTransaction> {
+  // >): Promise<{ to: string; data: string }> {
   //   // Example switch case structure for implementation:
   //   switch (action) {
   //     case WriteActions.Deposit: {

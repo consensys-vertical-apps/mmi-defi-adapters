@@ -1,4 +1,3 @@
-export type { ContractTransaction } from 'ethers'
 import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
