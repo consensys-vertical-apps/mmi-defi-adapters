@@ -16,6 +16,23 @@ import {
   exportAdapter,
   NewAdapterAnswers,
 } from './newAdapterCommand'
+import { Erc20Metadata } from '../types/erc20Metadata'
+
+type Metadata = Record<
+  string,
+  {
+    protocolToken: Erc20Metadata
+    underlyingTokens: Erc20Metadata[]
+  }
+>
+
+export const PLACEHOLDER_BUILD_METADATA =
+  '{{buildMetadata}}' as unknown as Metadata
+export const PLACEHOLDER_GET_PROTOCOL_TOKENS = '{{getProtocolTokens}}' as any
+export const PLACEHOLDER_GET_POSITIONS = '{{getPositions}}' as any
+export const PLACEHOLDER_GET_WITHDRAWALS = '{{getWithdrawals}}' as any
+export const PLACEHOLDER_GET_DEPOSITS = '{{getDeposits}}' as any
+export const PLACEHOLDER_UNWRAP = '{{unwrap}}' as any
 
 export interface QuestionConfig {
   question: string
@@ -193,12 +210,12 @@ function generateCode(
     .replace(/{{productId}}/g, answers.productId)
 
   if (outcomes.unwrap) {
-    const replace = /return '{{unwrap}}' as any/g
+    const regex = new RegExp('return PLACEHOLDER_UNWRAP', 'g')
 
     switch (outcomes.unwrap) {
       case 'useOneToOneMethod':
         updatedTemplate = updatedTemplate.replace(
-          replace,
+          regex,
           `return helpers.unwrapOneToOne({
             protocolToken: await this.getProtocolToken(_input.protocolTokenAddress),
             underlyingTokens: await this.getUnderlyingTokens(_input.protocolTokenAddress)
@@ -207,7 +224,7 @@ function generateCode(
         break
       default:
         updatedTemplate = updatedTemplate.replace(
-          replace,
+          regex,
           'throw new NotImplementedError()',
         )
         break
@@ -215,7 +232,7 @@ function generateCode(
   }
 
   if (outcomes.getPositions && outcomes.defiAssetStructure) {
-    const replace = /return '{{getPositions}}' as any/g
+    const replace = new RegExp('return PLACEHOLDER_GET_POSITIONS', 'g')
 
     switch (`${outcomes.getPositions}_${outcomes.defiAssetStructure}`) {
       case 'useBalanceOfHelper_singleProtocolToken':
@@ -239,7 +256,7 @@ function generateCode(
   }
 
   if (outcomes.buildMetadataFunction && outcomes.underlyingTokens) {
-    const regex = /return '{{buildMetadata}}' as unknown as Metadata/g
+    const regex = new RegExp('return PLACEHOLDER_BUILD_METADATA', 'g')
 
     switch (`${outcomes.buildMetadataFunction}_${outcomes.underlyingTokens}`) {
       case 'singleProtocolToken_oneUnderlying':
@@ -296,8 +313,11 @@ function generateCode(
   }
 
   if (outcomes.withdrawalsFunction && outcomes.depositsFunction) {
-    const regexWithdrawals = /return '{{getWithdrawals}}' as any/g
-    const regexDeposits = /return '{{getDeposits}}' as any/g
+    const regexWithdrawals = new RegExp(
+      'return PLACEHOLDER_GET_WITHDRAWALS',
+      'g',
+    )
+    const regexDeposits = new RegExp('return PLACEHOLDER_GET_DEPOSITS', 'g')
 
     switch (`${outcomes.withdrawalsFunction}_${outcomes.depositsFunction}`) {
       case 'useWithdrawalHelper_useDepositsHelper':
@@ -332,8 +352,8 @@ function generateCode(
   }
 
   if (outcomes.rewards) {
-    const regexRewardPositions = /\/\/getRewardPositions/g
-    const regexRewardWithdrawals = /\/\/getRewardWithdrawals/g
+    const regexRewardPositions = /\/\/PLACEHOLDER_GET_REWARD_POSITIONS/g
+    const regexRewardWithdrawals = /\/\/PLACEHOLDER_GET_REWARD_WITHDRAWALS/g
     const regexGetPositionsFunctionName = /getPositions/g
     const regexGetWithdrawalsFunctionName = /getWithdrawals/g
     switch (outcomes.rewards) {
@@ -387,6 +407,29 @@ function generateCode(
         updatedTemplate = updatedTemplate.replace(regexRewardWithdrawals, '')
         break
     }
+  }
+
+  const regexProtocolTokens = new RegExp(
+    'return PLACEHOLDER_GET_PROTOCOL_TOKENS',
+    'g',
+  )
+  switch (outcomes.defiAssetStructure) {
+    case 'singleProtocolToken' || 'multiProtocolToken':
+      updatedTemplate = updatedTemplate.replace(
+        regexProtocolTokens,
+        `return Object.values(await this.buildMetadata()).map(
+          ({ protocolToken }) => protocolToken,
+        )`,
+      )
+
+      break
+    default:
+      updatedTemplate = updatedTemplate.replace(
+        regexProtocolTokens,
+        'throw new NotImplementedError()',
+      )
+
+      break
   }
 
   return updatedTemplate

@@ -27,6 +27,14 @@ import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { helpers } from '../../../../scripts/helpers'
 import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import {
+  PLACEHOLDER_BUILD_METADATA,
+  PLACEHOLDER_GET_DEPOSITS,
+  PLACEHOLDER_GET_POSITIONS,
+  PLACEHOLDER_GET_PROTOCOL_TOKENS,
+  PLACEHOLDER_GET_WITHDRAWALS,
+  PLACEHOLDER_UNWRAP,
+} from '../../../../scripts/newAdapter2Command'
 
 type Metadata = Record<
   string,
@@ -79,15 +87,15 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<Metadata> {
-    return '{{buildMetadata}}' as unknown as Metadata
+    return PLACEHOLDER_BUILD_METADATA
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return '{{getProtocolTokens}}' as any
+    return PLACEHOLDER_GET_PROTOCOL_TOKENS
   }
 
   async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    return '{{getPositions}}' as any
+    return PLACEHOLDER_GET_POSITIONS
   }
 
   async getWithdrawals({
@@ -96,7 +104,7 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return '{{getWithdrawals}}' as any
+    return PLACEHOLDER_GET_WITHDRAWALS
   }
 
   async getDeposits({
@@ -105,7 +113,7 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return '{{getDeposits}}' as any
+    return PLACEHOLDER_GET_DEPOSITS
   }
 
   async getTotalValueLocked(
@@ -115,7 +123,7 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
   }
 
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    return '{{unwrap}}' as any
+    return PLACEHOLDER_UNWRAP
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {
@@ -144,7 +152,7 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
     return poolMetadata
   }
 
-  //getRewardPositions
+  //PLACEHOLDER_GET_REWARD_POSITIONS
 
-  //getRewardWithdrawals
+  //PLACEHOLDER_GET_REWARD_WITHDRAWALS
 }
