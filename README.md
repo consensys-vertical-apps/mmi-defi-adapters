@@ -309,6 +309,11 @@ async getTransactionParams({
 }
 ```
 
+#### Video tutorial
+Check out the tutorial video below for an intro to on how to build write adapter actions:
+
+[![DeFi Adapter Write Actions Tutorial](video-thumbnail.png)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view)
+
 
 ## Versioning and Publishing (internal use only)
 
