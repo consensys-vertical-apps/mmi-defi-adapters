@@ -1,6 +1,8 @@
+import { getAddress } from 'ethers'
 import { Erc20__factory } from '../contracts'
 import { TransferEvent } from '../contracts/Erc20'
 import { ZERO_ADDRESS } from '../core/constants/ZERO_ADDRESS'
+import { Chain } from '../core/constants/chains'
 import {
   MaxMovementLimitExceededError,
   NotImplementedError,
@@ -17,6 +19,16 @@ import {
   UnwrapExchangeRate,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
+import { nativeToken, nativeTokenAddresses } from '../core/utils/nativeTokens'
+import { getOnChainTokenMetadata } from '../core/utils/getTokenMetadata'
+import { logger } from '../core/utils/logger'
+
+export const REAL_ESTATE_TOKEN_METADATA = {
+  address: getAddress('0x6b8734ad31D42F5c05A86594314837C416ADA984'),
+  name: 'Real Estate USD (REUSD)',
+  symbol: 'Real Estate USD (REUSD)',
+  decimals: 18,
+}
 
 class Helpers {
   async getBalanceOfTokens({
@@ -128,8 +140,36 @@ class Helpers {
     throw new NotImplementedError()
   }
 
-  getTokenMetadata(): any {
-    throw new NotImplementedError()
+  async getTokenMetadata(
+    tokenAddress: string,
+    chainId: Chain,
+    provider: CustomJsonRpcProvider,
+  ): Promise<Erc20Metadata> {
+    if (
+      getAddress(tokenAddress) === REAL_ESTATE_TOKEN_METADATA.address &&
+      chainId == Chain.Ethereum
+    ) {
+      return REAL_ESTATE_TOKEN_METADATA
+    }
+    if (nativeTokenAddresses.includes(tokenAddress)) {
+      return {
+        address: getAddress(tokenAddress),
+        ...nativeToken[chainId],
+      }
+    }
+
+    const onChainTokenMetadata = await getOnChainTokenMetadata(
+      tokenAddress,
+      chainId,
+      provider,
+    )
+    if (onChainTokenMetadata) {
+      return onChainTokenMetadata
+    }
+
+    const errorMessage = 'Cannot find token metadata for token'
+    logger.error({ tokenAddress, chainId }, errorMessage)
+    throw new Error(errorMessage)
   }
 
   async getPositionsAndRewards(
@@ -181,7 +221,6 @@ class Helpers {
       fromBlock,
       toBlock,
     }: GetEventsInput) => Promise<MovementsByBlock[]>,
-    blockNumber?: number,
   ): Promise<MovementsByBlock[]> {
     const withdrawalMethods = [
       getWithdrawalsWithoutRewards,

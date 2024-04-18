@@ -1,9 +1,12 @@
-import { Protocol } from '../adapters/protocols'
-import { AdaptersController } from '../core/adaptersController'
-import { Chain } from '../core/constants/chains'
-import { IMetadataBuilder, CacheToFile } from '../core/decorators/cacheToFile'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
-import { logger } from '../core/utils/logger'
+import { Protocol } from '../../../protocols'
+import { AdaptersController } from '../../../../core/adaptersController'
+import { Chain } from '../../../../core/constants/chains'
+import {
+  IMetadataBuilder,
+  CacheToFile,
+} from '../../../../core/decorators/cacheToFile'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { logger } from '../../../../core/utils/logger'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -18,12 +21,12 @@ import {
   UnwrapInput,
   UnwrapExchangeRate,
   Underlying,
-} from '../types/adapter'
-import { Erc20Metadata } from '../types/erc20Metadata'
-import { IProtocolAdapter } from '../types/IProtocolAdapter'
-import { helpers } from './helpers'
-import { RewardsAdapter } from './rewardAdapter'
-import { NotImplementedError } from '../core/errors/errors'
+} from '../../../../types/adapter'
+import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
+import { helpers } from '../../../../scripts/helpers'
+import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
+import { NotImplementedError } from '../../../../core/errors/errors'
 
 type Metadata = Record<
   string,
@@ -33,9 +36,7 @@ type Metadata = Record<
   }
 >
 
-export class adapterClassNameAdapter
-  implements IProtocolAdapter, IMetadataBuilder
-{
+export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
   productId = '{{productId}}'
   protocolId: Protocol
   chainId: Chain
@@ -63,8 +64,8 @@ export class adapterClassNameAdapter
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: '{{appName}}',
-      description: '{{appName}} defi adapter',
+      name: '{{protocolKey}}',
+      description: '{{protocolKey}} defi adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
       positionType: PositionType.Supply,
@@ -110,7 +111,7 @@ export class adapterClassNameAdapter
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
-    return '{{getTotalValueLocked}}' as any
+    throw new NotImplementedError()
   }
 
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {

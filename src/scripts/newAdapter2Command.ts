@@ -1,29 +1,40 @@
 import { readFile, writeFile } from 'fs/promises'
 import { Command } from 'commander'
 import { prompt } from 'inquirer'
-import { pascalCase } from '../core/utils/caseConversion'
-import { questionsJson } from './template-tracker'
+import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
+import { questionsJson } from './questionnaire'
 import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
 import { compoundV2SupplyMarketForkAdapterTemplate } from './templates/compoundV2SupplyMarketForkAdapter'
 import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
 import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
+import { Chain } from '../core/constants/chains'
+import { writeCodeFile } from '../core/utils/writeCodeFile'
+import path from 'path'
+import {
+  buildIntegrationTests,
+  addProtocol,
+  exportAdapter,
+  NewAdapterAnswers,
+} from './newAdapterCommand'
 
 export interface QuestionConfig {
   question: string
   type: string
   choices?: readonly string[] // Only needed for certain types of questions, e.g., 'list'
   next: Record<string, string> | string
+  //eslint-disable-next-line
   outcomes?: Record<string, any>
+  validate?: (input: string) => boolean | string
 }
 
-export interface Outcomes {
+export type Outcomes = {
   rewards: 'addRewards' | 'noRewards'
   getPositions: 'useBalanceOfHelper' | 'notImplementedError'
   buildMetadataFunction:
     | 'singleProtocolToken'
     | 'multipleProtocolTokens'
     | 'notImplementedError'
-  getPositionsImplementation: 'onePosition' | 'array'
+  underlyingTokens: 'oneUnderlying' | 'multipleUnderlying'
   defiAssetStructure:
     | 'singleProtocolToken'
     | 'multipleProtocolTokens'
@@ -32,97 +43,79 @@ export interface Outcomes {
   unwrap: 'useOneToOneMethod' | 'notImplementedError'
   withdrawalsFunction: 'useWithdrawalHelper' | 'notImplementedError'
   depositsFunction: 'useDepositsHelper' | 'notImplementedError'
-  forkCheck: 'No' | 'UniswapV2' | 'Convex'
-  productId: string
-  appId: string
-  appName: string
-  chainIds: ['Ethereum']
+  template: 'CompoundV2' | 'CurveGovernanceVesting' | 'UniswapV2'
 }
 
-// // use if you want to skip questions
-// const exampleAnswers: Outcomes = {
-//   rewards: true,
-//   getPositions: 'useBalanceOfHelper' as 'useBalanceOfHelper',
-//   buildMetadataFunction: 'singleProtocolToken' as 'singleProtocolToken',
-//   getPositionsImplementation: 'array' as 'array',
-//   withdrawalsFunction: 'useWithdrawalHelper' as 'useWithdrawalHelper',
-//   depositsFunction: 'useDepositsHelper' as 'useDepositsHelper',
-//   forkCheck: 'UniswapV2' as 'UniswapV2',
-//   productId: 'defi-product',
-//   appId: 'app-id',
-//   appName: 'MyDeFiApp',
-//   chainIds: ['Ethereum'],
-// }
+type Answers = Record<keyof typeof questionsJson, string> & {
+  chainKeys: (keyof typeof Chain)[]
+  adapterClassName: string
+}
 
 async function initiateQuestionnaire() {
-  const createAdapterAnswers: Record<string, any> = {}
+  const firstQuestionId = 'protocolKey'
 
-  await askQuestion('appName', createAdapterAnswers)
+  const [answers, outcomes] = (await askQuestion(firstQuestionId)) as [
+    Answers,
+    Outcomes,
+  ]
 
-  console.log('End of questionnaire', createAdapterAnswers.outcomes)
+  // create adapter class name
+  answers.adapterClassName = adapterClassName(
+    answers.protocolKey,
+    answers.productId,
+  )
 
   console.log('End of questionnaire')
 
-  console.log('AAAAAAAAAAAAAAAAAAAAA', createAdapterAnswers.outcomes.template)
-
-  switch (createAdapterAnswers.outcomes.template) {
+  switch (outcomes.template) {
     case 'UniswapV2': {
       const code = uniswapV2PoolForkAdapterTemplate({
-        protocolKey: createAdapterAnswers.outcomes.appName,
-        productId: createAdapterAnswers.outcomes.productId,
-        adapterClassName: `${createAdapterAnswers.outcomes.appName}${pascalCase(
-          createAdapterAnswers.outcomes.productId,
-        )}Adapter`,
-        chainKeys: createAdapterAnswers.outcomes.chainIds, // TODO Rename to chainKeys
+        protocolKey: answers.protocolId,
+        productId: answers.productId,
+        adapterClassName: answers.adapterClassName,
+        chainKeys: answers.chainKeys, // TODO Rename to chainKeys
       })
 
-      await writeFile('src/scripts/generatedCode.ts', code)
+      await createAdapterFile(answers, code)
       break
     }
     case 'CurveGovernanceVesting': {
       const code = votingEscrowAdapterTemplate({
-        protocolKey: createAdapterAnswers.outcomes.appName,
-        productId: createAdapterAnswers.outcomes.productId,
-        adapterClassName: `${createAdapterAnswers.outcomes.appName}${pascalCase(
-          createAdapterAnswers.outcomes.productId,
-        )}Adapter`,
+        protocolKey: answers.protocolId,
+        productId: answers.productId,
+        adapterClassName: answers.adapterClassName,
       })
 
-      await writeFile('src/scripts/generatedCode.ts', code)
+      await createAdapterFile(answers, code)
       break
     }
     case 'CompoundV2': {
       const supplyMarketCode = compoundV2SupplyMarketForkAdapterTemplate({
-        protocolKey: createAdapterAnswers.outcomes.appName,
-        productId: createAdapterAnswers.outcomes.productId,
-        adapterClassName: `${createAdapterAnswers.outcomes.appName}${pascalCase(
-          createAdapterAnswers.outcomes.productId,
-        )}Adapter`,
+        protocolKey: answers.protocolId,
+        productId: answers.productId,
+        adapterClassName: answers.adapterClassName,
       })
 
-      await writeFile('src/scripts/generatedCodeSupply.ts', supplyMarketCode)
+      await createAdapterFile(answers, supplyMarketCode)
 
       const borrowMarketCode = compoundV2BorrowMarketForkAdapterTemplate({
-        protocolKey: createAdapterAnswers.outcomes.appName,
-        productId: createAdapterAnswers.outcomes.productId,
-        adapterClassName: `${createAdapterAnswers.outcomes.appName}${pascalCase(
-          createAdapterAnswers.outcomes.productId,
-        )}Adapter`,
+        protocolKey: answers.protocolId,
+        productId: answers.productId,
+        adapterClassName: answers.adapterClassName,
       })
 
-      await writeFile('src/scripts/generatedCodeBorrow.ts', borrowMarketCode)
+      await createAdapterFile(answers, borrowMarketCode)
 
       break
     }
-    default: {
-      const blankTemplate = await readBlankTemplate(
-        'src/scripts/blankAdapter.ts',
-      )
+    default:
+      {
+        await buildAdapterFromBlackTemplate(answers, outcomes)
+      }
 
-      const code = generateCode(createAdapterAnswers.outcomes, blankTemplate!)
-
-      await writeFile('src/scripts/generatedCode.ts', code)
-    }
+      await buildIntegrationTests(answers)
+      await addProtocol(answers)
+      await exportAdapter(answers)
   }
 
   console.log('The file has been saved!')
@@ -130,33 +123,37 @@ async function initiateQuestionnaire() {
 
 async function askQuestion(
   key: keyof typeof questionsJson,
-  createAdapterAnswers: Record<string, any>,
+  answers = {} as Answers,
+  outcomes = {} as Outcomes,
 ) {
   const questionConfig: QuestionConfig = questionsJson[key]
 
-  const answers = await prompt([
-    {
-      type: questionConfig.type,
-      name: key,
-      message: questionConfig.question,
-      choices: questionConfig.choices,
-    },
-  ])
-  const answer = answers[key]
+  // Step1: ask question and get answer
+  const answer = (
+    await prompt([
+      {
+        type: questionConfig.type,
+        name: key,
+        message: questionConfig.question,
+        choices: questionConfig.choices,
+        validate: questionConfig.validate,
+      },
+    ])
+  )[key]
 
-  const hasOutcomes = questionConfig.outcomes
+  // Step2: add answer to answers
+  answers[key] = answer
 
-  createAdapterAnswers[key] = answer
+  // Step3: add outcome to outcomes
+  outcomes = {
+    ...questionConfig.outcomes![answer],
+    ...outcomes,
+  }
 
-  if (hasOutcomes) {
-    createAdapterAnswers['outcomes'] = {
+  if (questionConfig.outcomes![answer]) {
+    outcomes = {
       ...questionConfig.outcomes![answer],
-      ...createAdapterAnswers['outcomes'],
-    }
-  } else {
-    createAdapterAnswers['outcomes'] = {
-      [key]: answer,
-      ...createAdapterAnswers['outcomes'],
+      ...outcomes,
     }
   }
 
@@ -164,12 +161,13 @@ async function askQuestion(
     questionConfig.next === 'end' ||
     (questionConfig.next as Record<string, string>)[answer] === 'end'
   ) {
-    return answers.outcomes
+    return [answers, outcomes]
   }
 
+  //eslint-disable-next-line
   //@ts-ignore
   const nextQuestion = questionConfig.next[answer] || questionConfig.next
-  await askQuestion(nextQuestion, createAdapterAnswers)
+  return await askQuestion(nextQuestion, answers, outcomes)
 }
 
 export function newAdapter2Command(program: Command) {
@@ -183,17 +181,21 @@ async function readBlankTemplate(filePath: string) {
   return readFile(filePath, { encoding: 'utf8' })
 }
 
-function generateCode(answers: Outcomes, defaultTemplate: string): string {
+function generateCode(
+  answers: Answers,
+  outcomes: Outcomes,
+  defaultTemplate: string,
+): string {
   let updatedTemplate = defaultTemplate
-    .replace(/adapterClassName/g, answers.appName)
-    .replace(/{{appName}}/g, answers.appName)
-    .replace(/{{appId}}/g, answers.appId)
+    .replace(/adapterClassName/g, answers.adapterClassName)
+    .replace(/{{protocolId}}/g, answers.protocolId)
+    .replace(/{{protocolKey}}/g, answers.protocolKey)
     .replace(/{{productId}}/g, answers.productId)
 
-  if (answers.unwrap) {
+  if (outcomes.unwrap) {
     const replace = /return '{{unwrap}}' as any/g
 
-    switch (answers.unwrap) {
+    switch (outcomes.unwrap) {
       case 'useOneToOneMethod':
         updatedTemplate = updatedTemplate.replace(
           replace,
@@ -212,10 +214,10 @@ function generateCode(answers: Outcomes, defaultTemplate: string): string {
     }
   }
 
-  if (answers.getPositions && answers.defiAssetStructure) {
+  if (outcomes.getPositions && outcomes.defiAssetStructure) {
     const replace = /return '{{getPositions}}' as any/g
 
-    switch (`${answers.getPositions}_${answers.defiAssetStructure}`) {
+    switch (`${outcomes.getPositions}_${outcomes.defiAssetStructure}`) {
       case 'useBalanceOfHelper_singleProtocolToken':
       case 'useBalanceOfHelper_multipleProtocolTokens':
         updatedTemplate = updatedTemplate.replace(
@@ -236,34 +238,52 @@ function generateCode(answers: Outcomes, defaultTemplate: string): string {
     }
   }
 
-  if (answers.buildMetadataFunction && answers.getPositionsImplementation) {
+  if (outcomes.buildMetadataFunction && outcomes.underlyingTokens) {
     const regex = /return '{{buildMetadata}}' as unknown as Metadata/g
 
-    switch (
-      `${answers.buildMetadataFunction}_${answers.getPositionsImplementation}`
-    ) {
-      case 'hardCoded_onePosition':
+    switch (`${outcomes.buildMetadataFunction}_${outcomes.underlyingTokens}`) {
+      case 'singleProtocolToken_oneUnderlying':
         updatedTemplate = updatedTemplate.replace(
           regex,
-          `return {protocolToken : helpers.getTokenMetadata() , underlyingToken : helpers.getTokenMetadata()}`,
+          `return {protocolToken : helpers.getTokenMetadata(
+            '0x', 
+            this.chainId,
+            this.provider,
+          ) , underlyingToken : [helpers.getTokenMetadata(
+            '0x', 
+            this.chainId,
+            this.provider,
+          )] }`,
         )
         break
-      case 'hardCoded_array':
+      case 'singleProtocolToken_multipleUnderlying':
         updatedTemplate = updatedTemplate.replace(
           regex,
-          `return{protocolToken : helpers.getTokenMetadata() , underlyingTokens : [helpers.getTokenMetadata(), helpers.getTokenMetadata()]}`,
+          `return {protocolToken :  helpers.getTokenMetadata(
+            '0x', 
+            this.chainId,
+            this.provider,
+          ) , underlyingToken : [ helpers.getTokenMetadata(
+            '0x', 
+            this.chainId,
+            this.provider,
+          ), helpers.getTokenMetadata(
+            '0x', 
+            this.chainId,
+            this.provider,
+          )]}`,
         )
         break
-      case 'factory_onePosition':
+      case 'multipleProtocolTokens_oneUnderlying':
         updatedTemplate = updatedTemplate.replace(
           regex,
-          `return {protocolToken : helpers.getTokenMetadata() , underlyingTokens : [helpers.getTokenMetadata(), helpers.getTokenMetadata()]}`, // needs updating
+          `throw new NotImplementedError()`,
         )
         break
-      case 'factory_array':
+      case 'multipleProtocolTokens_multipleUnderlying':
         updatedTemplate = updatedTemplate.replace(
           regex,
-          `return {protocolToken : helpers.getTokenMetadata() , underlyingTokens : [helpers.getTokenMetadata(), helpers.getTokenMetadata()]}`, // needs updating
+          `throw new NotImplementedError()`,
         )
         break
       default:
@@ -275,11 +295,11 @@ function generateCode(answers: Outcomes, defaultTemplate: string): string {
     }
   }
 
-  if (answers.withdrawalsFunction && answers.depositsFunction) {
+  if (outcomes.withdrawalsFunction && outcomes.depositsFunction) {
     const regexWithdrawals = /return '{{getWithdrawals}}' as any/g
     const regexDeposits = /return '{{getDeposits}}' as any/g
 
-    switch (`${answers.withdrawalsFunction}_${answers.depositsFunction}`) {
+    switch (`${outcomes.withdrawalsFunction}_${outcomes.depositsFunction}`) {
       case 'useWithdrawalHelper_useDepositsHelper':
         updatedTemplate = updatedTemplate.replace(
           regexWithdrawals,
@@ -311,61 +331,105 @@ function generateCode(answers: Outcomes, defaultTemplate: string): string {
     }
   }
 
-  const regexRewardPositions = /\/\/getRewardPositions/g
-  const regexRewardWithdrawals = /\/\/getRewardWithdrawals/g
-  const regexGetPositionsFunctionName = /getPositions/g
-  const regexGetWithdrawalsFunctionName = /getWithdrawals/g
-  switch (answers.rewards) {
-    case 'addRewards':
-      updatedTemplate = updatedTemplate.replace(
-        regexGetPositionsFunctionName,
-        `getPositionsWithoutRewards`,
-      )
-      updatedTemplate = updatedTemplate.replace(
-        /implements/g,
-        `extends RewardsAdapter implements`,
-      )
-      updatedTemplate = updatedTemplate.replace(
-        /this.provider = provider/g,
-        `super()
-        this.provider = provider`,
-      )
+  if (outcomes.rewards) {
+    const regexRewardPositions = /\/\/getRewardPositions/g
+    const regexRewardWithdrawals = /\/\/getRewardWithdrawals/g
+    const regexGetPositionsFunctionName = /getPositions/g
+    const regexGetWithdrawalsFunctionName = /getWithdrawals/g
+    switch (outcomes.rewards) {
+      case 'addRewards':
+        updatedTemplate = updatedTemplate.replace(
+          regexGetPositionsFunctionName,
+          `getPositionsWithoutRewards`,
+        )
+        updatedTemplate = updatedTemplate.replace(
+          /implements/g,
+          `extends RewardsAdapter implements`,
+        )
+        updatedTemplate = updatedTemplate.replace(
+          /this.provider = provider/g,
+          `super()
+          this.provider = provider`,
+        )
 
-      updatedTemplate = updatedTemplate.replace(
-        regexRewardPositions,
-        `async getRewardPositions({
-          userAddress,
-          protocolTokenAddress,
-          blockNumber,
-        }: {
-          userAddress: string
-          blockNumber?: number
-          protocolTokenAddress: string
-        }): Promise<Underlying[]> {
-          throw new NotImplementedError()
-        }`,
-      )
+        updatedTemplate = updatedTemplate.replace(
+          regexRewardPositions,
+          `async getRewardPositions({
+            userAddress,
+            protocolTokenAddress,
+            blockNumber,
+          }: {
+            userAddress: string
+            blockNumber?: number
+            protocolTokenAddress: string
+          }): Promise<Underlying[]> {
+            throw new NotImplementedError()
+          }`,
+        )
 
-      updatedTemplate = updatedTemplate.replace(
-        regexGetWithdrawalsFunctionName,
-        `getWithdrawalsWithoutRewards`,
-      )
-      updatedTemplate = updatedTemplate.replace(
-        regexRewardWithdrawals,
-        `async getRewardWithdrawals({
-          userAddress,
-          protocolTokenAddress,
-        }: GetEventsInput): Promise<MovementsByBlock[]> {
-          throw new NotImplementedError()
-        }`,
-      )
+        updatedTemplate = updatedTemplate.replace(
+          regexGetWithdrawalsFunctionName,
+          `getWithdrawalsWithoutRewards`,
+        )
+        updatedTemplate = updatedTemplate.replace(
+          regexRewardWithdrawals,
+          `async getRewardWithdrawals({
+            userAddress,
+            protocolTokenAddress,
+          }: GetEventsInput): Promise<MovementsByBlock[]> {
+            throw new NotImplementedError()
+          }`,
+        )
 
-      break
-    default:
-      updatedTemplate = updatedTemplate.replace(regexRewardPositions, '')
-      updatedTemplate = updatedTemplate.replace(regexRewardWithdrawals, '')
-      break
+        break
+      default:
+        updatedTemplate = updatedTemplate.replace(regexRewardPositions, '')
+        updatedTemplate = updatedTemplate.replace(regexRewardWithdrawals, '')
+        break
+    }
   }
 
   return updatedTemplate
+}
+
+/**
+ * @description Creates a new adapter using the template
+ */
+async function buildAdapterFromBlackTemplate(
+  answers: Answers,
+  outcomes: Outcomes,
+) {
+  const blankTemplate = await readBlankTemplate(
+    'src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
+  )
+
+  const code = generateCode(answers, outcomes, blankTemplate!)
+
+  await createAdapterFile(answers, code)
+}
+
+async function createAdapterFile(answers: Answers, code: string) {
+  const adapterFilePath = buildAdapterFilePath(
+    answers.protocolId,
+    answers.productId,
+    answers.adapterClassName,
+  )
+
+  await writeCodeFile(adapterFilePath, code)
+}
+
+export function buildAdapterFilePath(
+  protocolId: string,
+  productId: string,
+  adapterClassName: string,
+): string {
+  const productPath = path.resolve(
+    `./src/adapters/${protocolId}/products/${productId}`,
+  )
+
+  return path.resolve(productPath, `${lowerFirst(adapterClassName)}.ts`)
+}
+
+export function adapterClassName(protocolKey: string, productId: string) {
+  return `${protocolKey}${pascalCase(productId)}Adapter`
 }

@@ -3,7 +3,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'import', 'prettier','unused-imports'],
-  ignorePatterns: ["src/scripts/blankAdapter.ts"],
+  ignorePatterns: ["src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts"],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',

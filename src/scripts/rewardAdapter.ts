@@ -5,16 +5,7 @@ import {
   MovementsByBlock,
   Underlying,
 } from '../types/adapter'
-import { Erc20Metadata } from '../types/erc20Metadata'
 import { helpers } from './helpers'
-
-type Metadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
 
 export abstract class RewardsAdapter {
   abstract getPositionsWithoutRewards({

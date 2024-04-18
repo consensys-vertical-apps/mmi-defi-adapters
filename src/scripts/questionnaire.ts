@@ -3,30 +3,43 @@
 // - if yes, add value to the output
 // type GetPositionsOptions<T, Value = 'getPositions', Output = []> =
 
+import { Chain } from '../core/constants/chains'
+import {
+  isKebabCase,
+  isPascalCase,
+  kebabCase,
+} from '../core/utils/caseConversion'
+
 export const questionsJson = {
-  appName: {
-    question: 'Enter the name of your app.',
+  protocolKey: {
+    question: 'Enter the name of your protocol in PascalCase.',
     type: 'text',
-    next: 'appId',
+    next: 'protocolId',
+    validate: (input: string) =>
+      isPascalCase(input) || 'Value must be PascalCase',
+    outcomes: {},
   },
-  appId: {
-    question: 'Enter an ID for your app.',
+  protocolId: {
+    question: 'Enter an ID for your protocol in kebab-case.',
     type: 'text',
     next: 'productId',
-    outcomes: undefined,
+    validate: (input: string) =>
+      isKebabCase(input) || 'Value must be kebab-case',
+    outcomes: {},
   },
   productId: {
-    question: 'Enter a product ID for your app',
+    question: 'Enter a product ID for your product',
     type: 'text',
-    next: 'chainIds',
-    outcomes: undefined,
+    next: 'chainKeys',
+    outcomes: {},
   },
-  chainIds: {
+  chainKeys: {
     question: 'Select the chains the product is on',
     type: 'checkbox',
-    choices: ['Ethereum', 'Polygon'],
+    choices: Object.keys(Chain),
+    default: ['Ethereum'],
     next: 'forkCheck',
-    outcomes: undefined,
+    outcomes: {},
   },
   forkCheck: {
     question:
@@ -53,31 +66,33 @@ export const questionsJson = {
   },
   defiAssetStructure: {
     question:
-      "What is the structure of your product's DeFi assets? (Select from the list below)",
+      "What is the structure of your product's DeFi asset(s)? (Select from the list below)",
     type: 'list',
     choices: [
-      'Single token (Lido)',
-      'Multiple tokens (Aave, Compound)',
+      'Single ERC20 protocol token (Like stETH)',
+      'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC)',
       'Non fungible token (Uniswap V3)',
       'Contract position (Morpho)',
       'Other',
     ],
     next: {
-      'Single token (Lido)': 'erc20Event',
-      'Multiple tokens (Aave, Compound)': 'erc20Event',
+      'Single ERC20 protocol token (Like stETH)': 'erc20Event',
+      'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC)':
+        'erc20Event',
       'Non fungible token (Uniswap V3)': 'balanceQueryMethod',
       'Contract position (Morpho)': 'balanceQueryMethod',
       Other: 'erc20Event',
     },
     outcomes: {
-      'Single token (Lido)': {
+      'Single ERC20 protocol token (Like stETH)': {
         buildMetadataFunction: 'singleProtocolToken',
         defiAssetStructure: 'singleProtocolToken',
       },
-      'Multiple tokens (Aave, Compound)': {
-        buildMetadataFunction: 'multipleProtocolTokens',
-        defiAssetStructure: 'multipleProtocolTokens',
-      },
+      'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC )':
+        {
+          buildMetadataFunction: 'multipleProtocolTokens',
+          defiAssetStructure: 'multipleProtocolTokens',
+        },
       'Non fungible token (Uniswap V3)': {
         buildMetadataFunction: 'notImplementedError',
         withdrawalsFunction: 'notImplementedError',
@@ -139,10 +154,10 @@ export const questionsJson = {
     },
     outcomes: {
       true: {
-        underlyingTokens: 'multiple',
+        underlyingTokens: 'oneUnderlying',
       },
       false: {
-        underlyingTokens: 'single',
+        underlyingTokens: 'multipleUnderlying',
       },
     },
   },
