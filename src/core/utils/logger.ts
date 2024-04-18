@@ -1,4 +1,4 @@
-import { pino } from 'pino'
+import { default as pino } from 'pino'
 
 export const logger = pino({
   msgPrefix: '[Defi Adapters] ',
