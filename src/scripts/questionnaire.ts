@@ -71,16 +71,16 @@ export const questionsJson = {
     choices: [
       'Single ERC20 protocol token (Like stETH)',
       'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC)',
-      'Non fungible token (Uniswap V3)',
-      'Contract position (Morpho)',
+      'Non fungible token (Like Uniswap V3)',
+      'Contract position (Like Morpho)',
       'Other',
     ],
     next: {
       'Single ERC20 protocol token (Like stETH)': 'erc20Event',
       'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC)':
         'erc20Event',
-      'Non fungible token (Uniswap V3)': 'balanceQueryMethod',
-      'Contract position (Morpho)': 'balanceQueryMethod',
+      'Non fungible token (Like Uniswap V3)': 'balanceQueryMethod',
+      'Contract position (Like Morpho)': 'balanceQueryMethod',
       Other: 'erc20Event',
     },
     outcomes: {
@@ -93,13 +93,13 @@ export const questionsJson = {
           buildMetadataFunction: 'multipleProtocolTokens',
           defiAssetStructure: 'multipleProtocolTokens',
         },
-      'Non fungible token (Uniswap V3)': {
+      'Non fungible token (Like Uniswap V3)': {
         buildMetadataFunction: 'notImplementedError',
         withdrawalsFunction: 'notImplementedError',
         depositsFunction: 'notImplementedError',
         defiAssetStructure: 'nft',
       },
-      'Contract position (Morpho)': {
+      'Contract position (Like Morpho)': {
         buildMetadataFunction: 'notImplementedError',
         withdrawalsFunction: 'notImplementedError',
         depositsFunction: 'notImplementedError',
@@ -114,8 +114,7 @@ export const questionsJson = {
     },
   },
   erc20Event: {
-    question:
-      'Can ERC20 transfer mint and burn events be used to determine deposits and withdrawals',
+    question: `Can the Transfer event of your protocol's ERC20 token(s) be used to accurately track deposits into and withdrawals from the user's defi position?`,
     type: 'confirm',
     next: 'balanceQueryMethod',
     outcomes: {
@@ -147,16 +146,16 @@ export const questionsJson = {
   underlyingTokens: {
     question: 'How many underlying tokens does your DeFi asset represent?',
     type: 'list',
-    choices: ['1 (Lido)', 'More than 1 (Curve, GMX. Uniswap)'],
+    choices: ['1 (Like stEth)', 'More than 1 (Like Curve.fi DAI/USDC/USDT)'],
     next: {
-      '1 (Lido)': 'unwrapSimpleMapping',
-      'More than 1 (Curve, GMX. Uniswap)': 'additionalRewards',
+      '1 (Like stEth)': 'unwrapSimpleMapping',
+      'More than 1 (Like Curve.fi DAI/USDC/USDT)': 'additionalRewards',
     },
     outcomes: {
-      true: {
+      '1 (Like stEth)': {
         underlyingTokens: 'oneUnderlying',
       },
-      false: {
+      'More than 1 (Like Curve.fi DAI/USDC/USDT)': {
         underlyingTokens: 'multipleUnderlying',
       },
     },

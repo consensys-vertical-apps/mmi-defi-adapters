@@ -84,6 +84,9 @@ class Helpers {
     }
     const underlyingToken = underlyingTokens[0]!
 
+    // Always pegged one to one to underlying
+    const pricePerShareRaw = BigInt(10 ** protocolToken.decimals)
+
     return {
       ...protocolToken,
       baseRate: 1,
@@ -92,7 +95,7 @@ class Helpers {
         {
           ...underlyingToken,
           type: TokenType.Underlying,
-          underlyingRateRaw: 1n,
+          underlyingRateRaw: pricePerShareRaw,
         },
       ],
     }
@@ -111,12 +114,11 @@ class Helpers {
     }
     provider: CustomJsonRpcProvider
   }): Promise<MovementsByBlock[]> {
-    this.getErc20Movements({
+    return this.getErc20Movements({
       protocolToken,
-      filter: { fromBlock, toBlock, from: userAddress, to: ZERO_ADDRESS },
+      filter: { fromBlock, toBlock, from: userAddress, to: undefined },
       provider,
     })
-    throw new NotImplementedError()
   }
 
   deposits({
@@ -132,12 +134,11 @@ class Helpers {
     }
     provider: CustomJsonRpcProvider
   }): Promise<MovementsByBlock[]> {
-    this.getErc20Movements({
+    return this.getErc20Movements({
       protocolToken,
-      filter: { fromBlock, toBlock, from: ZERO_ADDRESS, to: userAddress },
+      filter: { fromBlock, toBlock, from: undefined, to: userAddress },
       provider,
     })
-    throw new NotImplementedError()
   }
 
   async getTokenMetadata(
@@ -255,8 +256,8 @@ class Helpers {
     filter: {
       fromBlock: number
       toBlock: number
-      from: string
-      to: string
+      from?: string
+      to?: string
     }
     provider: CustomJsonRpcProvider
   }): Promise<MovementsByBlock[]> {

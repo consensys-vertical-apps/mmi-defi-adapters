@@ -28,6 +28,7 @@ import { helpers } from '../../../../scripts/helpers'
 import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import {
+  PLACEHOLDER_ASSET_TYPE,
   PLACEHOLDER_BUILD_METADATA,
   PLACEHOLDER_GET_DEPOSITS,
   PLACEHOLDER_GET_POSITIONS,
@@ -80,7 +81,7 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.NonStandardErc20,
+        type: PLACEHOLDER_ASSET_TYPE,
       },
     }
   }

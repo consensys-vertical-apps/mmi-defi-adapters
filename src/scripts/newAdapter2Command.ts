@@ -17,6 +17,7 @@ import {
   NewAdapterAnswers,
 } from './newAdapterCommand'
 import { Erc20Metadata } from '../types/erc20Metadata'
+import chalk from 'chalk'
 
 type Metadata = Record<
   string,
@@ -26,13 +27,13 @@ type Metadata = Record<
   }
 >
 
-export const PLACEHOLDER_BUILD_METADATA =
-  '{{buildMetadata}}' as unknown as Metadata
-export const PLACEHOLDER_GET_PROTOCOL_TOKENS = '{{getProtocolTokens}}' as any
-export const PLACEHOLDER_GET_POSITIONS = '{{getPositions}}' as any
-export const PLACEHOLDER_GET_WITHDRAWALS = '{{getWithdrawals}}' as any
-export const PLACEHOLDER_GET_DEPOSITS = '{{getDeposits}}' as any
-export const PLACEHOLDER_UNWRAP = '{{unwrap}}' as any
+export const PLACEHOLDER_BUILD_METADATA = '' as unknown as Metadata
+export const PLACEHOLDER_GET_PROTOCOL_TOKENS = '' as any
+export const PLACEHOLDER_GET_POSITIONS = '' as any
+export const PLACEHOLDER_GET_WITHDRAWALS = '' as any
+export const PLACEHOLDER_GET_DEPOSITS = '' as any
+export const PLACEHOLDER_UNWRAP = '' as any
+export const PLACEHOLDER_ASSET_TYPE = '' as any
 
 export interface QuestionConfig {
   question: string
@@ -71,10 +72,7 @@ type Answers = Record<keyof typeof questionsJson, string> & {
 async function initiateQuestionnaire() {
   const firstQuestionId = 'protocolKey'
 
-  const [answers, outcomes] = (await askQuestion(firstQuestionId)) as [
-    Answers,
-    Outcomes,
-  ]
+  const [answers, outcomes] = await askQuestion(firstQuestionId)
 
   // create adapter class name
   answers.adapterClassName = adapterClassName(
@@ -133,6 +131,14 @@ async function initiateQuestionnaire() {
       await buildIntegrationTests(answers)
       await addProtocol(answers)
       await exportAdapter(answers)
+
+      console.log(
+        chalk`\n{bold New adapter created at: {bgBlack.red src/adapters/${
+          answers.protocolId
+        }/products/${answers.productId}/${lowerFirst(
+          answers.adapterClassName,
+        )}.ts}}\n`,
+      )
   }
 
   console.log('The file has been saved!')
@@ -142,7 +148,7 @@ async function askQuestion(
   key: keyof typeof questionsJson,
   answers = {} as Answers,
   outcomes = {} as Outcomes,
-) {
+): Promise<[Answers, Outcomes]> {
   const questionConfig: QuestionConfig = questionsJson[key]
 
   // Step1: ask question and get answer
@@ -198,16 +204,36 @@ async function readBlankTemplate(filePath: string) {
   return readFile(filePath, { encoding: 'utf8' })
 }
 
-function generateCode(
+function generateAdapter(
   answers: Answers,
   outcomes: Outcomes,
-  defaultTemplate: string,
+  blankAdapter: string,
 ): string {
-  let updatedTemplate = defaultTemplate
+  let updatedTemplate = blankAdapter
     .replace(/adapterClassName/g, answers.adapterClassName)
     .replace(/{{protocolId}}/g, answers.protocolId)
     .replace(/{{protocolKey}}/g, answers.protocolKey)
     .replace(/{{productId}}/g, answers.productId)
+
+  if (outcomes.defiAssetStructure) {
+    const regex = new RegExp('return PLACEHOLDER_ASSET_TYPE', 'g')
+
+    switch (outcomes.defiAssetStructure) {
+      case 'singleProtocolToken' || 'multipleProtocolTokens':
+        updatedTemplate = updatedTemplate.replace(
+          regex,
+          `AssetType.StandardErc20`,
+        )
+        break
+
+      default:
+        updatedTemplate = updatedTemplate.replace(
+          regex,
+          `AssetType.NonStandardErc20`,
+        )
+        break
+    }
+  }
 
   if (outcomes.unwrap) {
     const regex = new RegExp('return PLACEHOLDER_UNWRAP', 'g')
@@ -262,33 +288,50 @@ function generateCode(
       case 'singleProtocolToken_oneUnderlying':
         updatedTemplate = updatedTemplate.replace(
           regex,
-          `return {protocolToken : helpers.getTokenMetadata(
-            '0x', 
+          `const protocolToken = await helpers.getTokenMetadata(
+            getAddress('0x'),
             this.chainId,
             this.provider,
-          ) , underlyingToken : [helpers.getTokenMetadata(
-            '0x', 
+          )
+      
+          const underlyingTokens = await helpers.getTokenMetadata(
+            getAddress('0x'),
             this.chainId,
             this.provider,
-          )] }`,
+          )
+          return {
+            [protocolToken.address]: {
+              protocolToken: protocolToken,
+              underlyingTokens: [underlyingTokens],
+            },
+          }`,
         )
         break
       case 'singleProtocolToken_multipleUnderlying':
         updatedTemplate = updatedTemplate.replace(
           regex,
-          `return {protocolToken :  helpers.getTokenMetadata(
-            '0x', 
+          `    const protocolToken = await helpers.getTokenMetadata(
+            '0x',
             this.chainId,
             this.provider,
-          ) , underlyingToken : [ helpers.getTokenMetadata(
-            '0x', 
+          )
+      
+          const underlyingTokensOne = await helpers.getTokenMetadata(
+            '0x',
             this.chainId,
             this.provider,
-          ), helpers.getTokenMetadata(
-            '0x', 
+          )
+          const underlyingTokensTwo = await helpers.getTokenMetadata(
+            '0x',
             this.chainId,
             this.provider,
-          )]}`,
+          )
+          return {
+            [protocolToken.address]: {
+              protocolToken: protocolToken,
+              underlyingTokens: [underlyingTokensOne, underlyingTokensTwo],
+            },
+          }`,
         )
         break
       case 'multipleProtocolTokens_oneUnderlying':
@@ -446,7 +489,7 @@ async function buildAdapterFromBlackTemplate(
     'src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
   )
 
-  const code = generateCode(answers, outcomes, blankTemplate!)
+  const code = generateAdapter(answers, outcomes, blankTemplate!)
 
   await createAdapterFile(answers, code)
 }
