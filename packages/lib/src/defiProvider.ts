@@ -96,6 +96,14 @@ export class DefiProvider {
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
+      // const xxx = await fetch('foo', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: '{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",true], "id":1}',
+      // })
+      // console.log('TEST FETCH REQUEST', await xxx.json())
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const startTime = Date.now()

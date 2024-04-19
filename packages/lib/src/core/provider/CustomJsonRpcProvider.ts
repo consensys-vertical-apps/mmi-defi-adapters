@@ -27,6 +27,7 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
 
   constructor({
     fetchRequest,
+    url,
     chainId,
     customOptions: {
       rpcCallTimeoutInMs,
@@ -37,11 +38,12 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
     jsonRpcProviderOptions,
   }: {
     fetchRequest: FetchRequest
+    url: string
     chainId: Chain
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
   }) {
-    super(fetchRequest, chainId, jsonRpcProviderOptions)
+    super(url, chainId, jsonRpcProviderOptions)
     this.chainId = chainId
     this.callRetryHandler = retryHandlerFactory({
       timeoutInMs: rpcCallTimeoutInMs,

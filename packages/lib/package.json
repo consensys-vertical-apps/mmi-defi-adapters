@@ -71,6 +71,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "ethereum-block-by-date": "^1.4.9",
+    "https-proxy-agent": "^7.0.4",
     "inquirer": "^8.2.6",
     "jest": "^29.7.0",
     "lodash": "^4.17.21",

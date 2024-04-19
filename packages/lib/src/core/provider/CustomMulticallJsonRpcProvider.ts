@@ -24,18 +24,20 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
 
   constructor({
     fetchRequest,
+    url,
     chainId,
     multicallQueue,
     customOptions,
     jsonRpcProviderOptions,
   }: {
     fetchRequest: FetchRequest
+    url: string
     chainId: Chain
     multicallQueue: MulticallQueue
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
   }) {
-    super({ fetchRequest, chainId, customOptions, jsonRpcProviderOptions })
+    super({ fetchRequest, url, chainId, customOptions, jsonRpcProviderOptions })
     this.multicallQueue = multicallQueue
     this.cache = {}
   }

@@ -1,4 +1,5 @@
 import { FetchRequest, Network } from 'ethers'
+import { HttpsProxyAgent } from 'https-proxy-agent'
 import { IConfig } from '../../config'
 import { Multicall__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
@@ -33,15 +34,27 @@ export class ChainProvider {
       throw new Error('Url missing')
     }
 
+    const newUrl = url
+
+    if (chainId === 1) {
+      console.log('RPC SETUP', {
+        chainId,
+        url,
+        newUrl,
+      })
+    }
+
     // Set Enable-Failover header
     // Infura will forward rpc requests to backup provider incase of failures
-    const fetchRequest = new FetchRequest(url)
+    // const fetchRequest = new FetchRequest(url)
+    const fetchRequest = new FetchRequest('/foo')
     fetchRequest.setHeader('Enable-Failover', 'true')
 
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, `Using standard provider`)
       return new CustomJsonRpcProvider({
         fetchRequest,
+        url: newUrl,
         chainId,
         customOptions,
         jsonRpcProviderOptions: {
@@ -50,10 +63,11 @@ export class ChainProvider {
       })
     }
 
-    logger.debug({ chainId, url }, 'Using multicall queue provider')
+    logger.debug({ chainId, newUrl }, 'Using multicall queue provider')
 
     const provider = new CustomJsonRpcProvider({
-      fetchRequest: fetchRequest,
+      fetchRequest,
+      url: newUrl,
       chainId,
       customOptions,
       jsonRpcProviderOptions: {
@@ -78,6 +92,7 @@ export class ChainProvider {
 
     return new CustomMulticallJsonRpcProvider({
       fetchRequest,
+      url,
       chainId,
       multicallQueue,
       customOptions,
