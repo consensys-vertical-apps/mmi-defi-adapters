@@ -1,0 +1,190 @@
+{
+  "blockNumber": 19220229,
+  "snapshot": [
+    {
+      "protocolId": "morpho-blue",
+      "name": "MorphoBlue",
+      "description": "Morpho Blue DeFi adapter on the supply side",
+      "siteUrl": "https://app.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "market-supply",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "name": "Wrapped Ether",
+          "symbol": "WETH",
+          "decimals": 18,
+          "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
+          "type": "protocol",
+          "profit": 810854.0412724614,
+          "performance": 0.03025340912801406,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 3890.817345741645,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 26798180.90427146,
+            "endPositionValue": 27612925.762889665
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
+                "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "balanceRaw": "10525735128645301130728n",
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                    "name": "Wrapped Ether",
+                    "symbol": "WETH",
+                    "decimals": 18,
+                    "balanceRaw": "10525735128645301130728n",
+                    "type": "underlying",
+                    "balance": 10525.735128645301,
+                    "price": 2623.37266,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                  }
+                ],
+                "balance": 10525.735128645301
+              }
+            ],
+            "rawStartPositionValues": [
+              {
+                "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
+                "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "balanceRaw": "10523906417119828577200n",
+                "type": "protocol",
+                "tokens": [
+                  {
+                    "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                    "name": "Wrapped Ether",
+                    "symbol": "WETH",
+                    "decimals": 18,
+                    "balanceRaw": "10523906417119828577200n",
+                    "type": "underlying",
+                    "balance": 10523.906417119828,
+                    "price": 2546.41003465,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+                  }
+                ],
+                "balance": 10523.906417119828
+              }
+            ],
+            "rawWithdrawals": [],
+            "rawDeposits": [
+              {
+                "protocolToken": {
+                  "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
+                  "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "symbol": "WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                    "name": "Wrapped Ether",
+                    "symbol": "WETH",
+                    "decimals": 18,
+                    "balanceRaw": "44235510232851213n",
+                    "type": "underlying",
+                    "price": 2551.17715,
+                    "balance": 0.044235510232851216
+                  }
+                ],
+                "blockNumber": 19213387,
+                "transactionHash": "0xf2d1658edae2e84c3ba007e4e6b7baa2d9d32c8aeedbb00824bdd1d5995add47"
+              },
+              {
+                "protocolToken": {
+                  "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
+                  "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "symbol": "WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                    "name": "Wrapped Ether",
+                    "symbol": "WETH",
+                    "decimals": 18,
+                    "balanceRaw": "210000000000000000n",
+                    "type": "underlying",
+                    "price": 2658,
+                    "balance": 0.21
+                  }
+                ],
+                "blockNumber": 19215156,
+                "transactionHash": "0xc588dbed7a607d59dbc302ea61d04693e93bec9ab9c140ef3636f62369e4fc87"
+              },
+              {
+                "protocolToken": {
+                  "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
+                  "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "symbol": "WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                    "name": "Wrapped Ether",
+                    "symbol": "WETH",
+                    "decimals": 18,
+                    "balanceRaw": "190000000000000000n",
+                    "type": "underlying",
+                    "price": 2646.02934142,
+                    "balance": 0.19
+                  }
+                ],
+                "blockNumber": 19217548,
+                "transactionHash": "0xf536e2257d9e73071a948ec874e3cfe400d7cbdebe315df61631a9517eca0cf9"
+              },
+              {
+                "protocolToken": {
+                  "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
+                  "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "symbol": "WETH",
+                  "decimals": 18
+                },
+                "tokens": [
+                  {
+                    "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                    "name": "Wrapped Ether",
+                    "symbol": "WETH",
+                    "decimals": 18,
+                    "balanceRaw": "1012588906763201872n",
+                    "type": "underlying",
+                    "price": 2683.25984,
+                    "balance": 1.012588906763202
+                  }
+                ],
+                "blockNumber": 19218975,
+                "transactionHash": "0x29bdb531aeecdd0897fc511e0ecd52d840d57c6329fb90fc9dd04229a4702191"
+              }
+            ],
+            "rawRepays": [],
+            "rawBorrows": []
+          }
+        }
+      ],
+      "fromBlock": 19213083,
+      "toBlock": 19220229
+    }
+  ]
+}

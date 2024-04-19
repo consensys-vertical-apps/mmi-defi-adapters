@@ -1,0 +1,181 @@
+{
+  "blockNumber": 3717652,
+  "snapshot": [
+    {
+      "protocolId": "mendi-finance",
+      "name": "MendiFinance",
+      "description": "MendiFinance borrow adapter",
+      "siteUrl": "https://mendi.finance/:",
+      "iconUrl": "https://mendi.finance/mendi-token.svg",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "supply",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
+          "name": "Mendi USD Coin",
+          "symbol": "meUSDC",
+          "decimals": 8,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "underlyingRateRaw": "20807n",
+              "underlyingRate": 0.020807,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xf669C3C03D9fdF4339e19214A749E52616300E89",
+          "name": "Mendi USD Tether",
+          "symbol": "meUSDT",
+          "decimals": 8,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "underlyingRateRaw": "20892n",
+              "underlyingRate": 0.020892,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xAd7f33984bed10518012013D4aB0458D37FEE6F3",
+          "name": "Mendi Wrapped Ether",
+          "symbol": "meWETH",
+          "decimals": 8,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "20950100932002628n",
+              "underlyingRate": 0.020950100932002627,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x1f27f81C1D13Dd96A3b75d42e3d5d92b709869AA",
+          "name": "Mendi Dai Stablecoin",
+          "symbol": "meDAI",
+          "decimals": 8,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "20823321370861256n",
+              "underlyingRate": 0.020823321370861257,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x9be5e24F05bBAfC28Da814bD59284878b388a40f",
+          "name": "Mendi Wrapped BTC",
+          "symbol": "meWBTC",
+          "decimals": 8,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "type": "underlying",
+              "underlyingRateRaw": "2025539n",
+              "underlyingRate": 0.02025539,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0xCeEd853798ff1c95cEB4dC48f68394eb7A86A782",
+          "name": "Mendi Wrapped liquid staked Ether 2.0",
+          "symbol": "mewstETH",
+          "decimals": 8,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "20537791475348950n",
+              "underlyingRate": 0.02053779147534895,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F/logo.png"
+            }
+          ]
+        },
+        {
+          "address": "0x8a90D208666Deec08123444F67Bf5B1836074a67",
+          "name": "Mendi Renzo Restaked ETH",
+          "symbol": "meezETH",
+          "decimals": 8,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+              "name": "Renzo Restaked ETH",
+              "symbol": "ezETH",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "20000000096826381n",
+              "underlyingRate": 0.02000000009682638,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2416092f143378750bb29b79eD961ab195CcEea5/logo.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "protocolId": "mendi-finance",
+      "name": "MendiFinance",
+      "description": "MendiFinance borrow adapter",
+      "siteUrl": "https://mendi.finance/:",
+      "iconUrl": "https://mendi.finance/mendi-token.svg",
+      "positionType": "borrow",
+      "chainId": 59144,
+      "productId": "borrow",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": false,
+      "error": {
+        "message": "Not Implemented (at MendiFinanceBorrowAdapter.unwrapProtocolToken)",
+        "details": {
+          "name": "NotImplementedError"
+        }
+      }
+    }
+  ]
+}

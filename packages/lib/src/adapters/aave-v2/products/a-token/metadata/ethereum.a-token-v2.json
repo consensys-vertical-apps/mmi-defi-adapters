@@ -1,0 +1,170 @@
+{
+  "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811": {
+    "protocolToken": {
+      "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+      "name": "Aave USDT",
+      "symbol": "AUSDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656": {
+    "protocolToken": {
+      "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
+      "name": "Aave WBTC",
+      "symbol": "AWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e": {
+    "protocolToken": {
+      "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
+      "name": "Aave WETH",
+      "symbol": "AWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xFFC97d72E13E01096502Cb8Eb52dEe56f74DAD7B": {
+    "protocolToken": {
+      "address": "0xFFC97d72E13E01096502Cb8Eb52dEe56f74DAD7B",
+      "name": "Aave AAVE",
+      "symbol": "AAAVE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+      "name": "Aave",
+      "symbol": "AAVE",
+      "decimals": 18
+    }
+  },
+  "0x028171bCA77440897B824Ca71D1c56caC55b68A3": {
+    "protocolToken": {
+      "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
+      "name": "Aave DAI",
+      "symbol": "ADAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x6C5024Cd4F8A59110119C56f8933403A539555EB": {
+    "protocolToken": {
+      "address": "0x6C5024Cd4F8A59110119C56f8933403A539555EB",
+      "name": "Aave SUSD",
+      "symbol": "ASUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
+      "name": "Synth sUSD",
+      "symbol": "SUSD",
+      "decimals": 18
+    }
+  },
+  "0xBcca60bB61934080951369a648Fb03DF4F96263C": {
+    "protocolToken": {
+      "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+      "name": "Aave USDC",
+      "symbol": "AUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0xD37EE7e4f452C6638c96536e68090De8cBcdb583": {
+    "protocolToken": {
+      "address": "0xD37EE7e4f452C6638c96536e68090De8cBcdb583",
+      "name": "Aave GUSD",
+      "symbol": "AGUSD",
+      "decimals": 2
+    },
+    "underlyingToken": {
+      "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
+      "name": "Gemini Dollar",
+      "symbol": "GUSD",
+      "decimals": 2
+    }
+  },
+  "0x1982b2F5814301d4e9a8b0201555376e62F82428": {
+    "protocolToken": {
+      "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
+      "name": "Aave Interest Bearing STETH",
+      "symbol": "ASTETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "name": "Liquid staked Ether 2.0",
+      "symbol": "stETH",
+      "decimals": 18
+    }
+  },
+  "0x2e8F4bdbE3d47d7d7DE490437AeA9915D930F1A3": {
+    "protocolToken": {
+      "address": "0x2e8F4bdbE3d47d7d7DE490437AeA9915D930F1A3",
+      "name": "Aave interest bearing USDP",
+      "symbol": "aUSDP",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
+      "name": "Pax Dollar",
+      "symbol": "USDP",
+      "decimals": 18
+    }
+  },
+  "0xd4937682df3C8aEF4FE912A96A74121C0829E664": {
+    "protocolToken": {
+      "address": "0xd4937682df3C8aEF4FE912A96A74121C0829E664",
+      "name": "Aave interest bearing FRAX",
+      "symbol": "aFRAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    }
+  },
+  "0xce1871f791548600cb59efbefFC9c38719142079": {
+    "protocolToken": {
+      "address": "0xce1871f791548600cb59efbefFC9c38719142079",
+      "name": "Aave interest bearing LUSD",
+      "symbol": "aLUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
+      "name": "Liquity USD",
+      "symbol": "LUSD",
+      "decimals": 18
+    }
+  }
+}

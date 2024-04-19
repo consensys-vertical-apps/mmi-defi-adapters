@@ -1,0 +1,198 @@
+{
+  "0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC": {
+    "protocolToken": {
+      "address": "0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC",
+      "name": "Aave Polygon Variable Debt DAI",
+      "symbol": "variableDebtPolDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+      "name": "(PoS) Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x953A573793604aF8d41F306FEb8274190dB4aE0e": {
+    "protocolToken": {
+      "address": "0x953A573793604aF8d41F306FEb8274190dB4aE0e",
+      "name": "Aave Polygon Variable Debt LINK",
+      "symbol": "variableDebtPolLINK",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+      "name": "ChainLink Token",
+      "symbol": "LINK",
+      "decimals": 18
+    }
+  },
+  "0xFCCf3cAbbe80101232d343252614b6A3eE81C989": {
+    "protocolToken": {
+      "address": "0xFCCf3cAbbe80101232d343252614b6A3eE81C989",
+      "name": "Aave Polygon Variable Debt USDC",
+      "symbol": "variableDebtPolUSDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      "name": "USD Coin (PoS)",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x92b42c66840C7AD907b4BF74879FF3eF7c529473": {
+    "protocolToken": {
+      "address": "0x92b42c66840C7AD907b4BF74879FF3eF7c529473",
+      "name": "Aave Polygon Variable Debt WBTC",
+      "symbol": "variableDebtPolWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+      "name": "(PoS) Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x0c84331e39d6658Cd6e6b9ba04736cC4c4734351": {
+    "protocolToken": {
+      "address": "0x0c84331e39d6658Cd6e6b9ba04736cC4c4734351",
+      "name": "Aave Polygon Variable Debt WETH",
+      "symbol": "variableDebtPolWETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xfb00AC187a8Eb5AFAE4eACE434F493Eb62672df7": {
+    "protocolToken": {
+      "address": "0xfb00AC187a8Eb5AFAE4eACE434F493Eb62672df7",
+      "name": "Aave Polygon Variable Debt USDT",
+      "symbol": "variableDebtPolUSDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "(PoS) Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xE80761Ea617F66F96274eA5e8c37f03960ecC679": {
+    "protocolToken": {
+      "address": "0xE80761Ea617F66F96274eA5e8c37f03960ecC679",
+      "name": "Aave Polygon Variable Debt AAVE",
+      "symbol": "variableDebtPolAAVE",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
+      "name": "Aave (PoS)",
+      "symbol": "AAVE",
+      "decimals": 18
+    }
+  },
+  "0x4a1c3aD6Ed28a636ee1751C69071f6be75DEb8B8": {
+    "protocolToken": {
+      "address": "0x4a1c3aD6Ed28a636ee1751C69071f6be75DEb8B8",
+      "name": "Aave Polygon Variable Debt WMATIC",
+      "symbol": "variableDebtPolWMATIC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC",
+      "decimals": 18
+    }
+  },
+  "0xCE186F6Cccb0c955445bb9d10C59caE488Fea559": {
+    "protocolToken": {
+      "address": "0xCE186F6Cccb0c955445bb9d10C59caE488Fea559",
+      "name": "Aave Polygon Variable Debt GHST",
+      "symbol": "variableDebtPolGHST",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x385Eeac5cB85A38A9a07A70c73e0a3271CfB54A7",
+      "name": "Aavegotchi GHST Token (PoS)",
+      "symbol": "GHST",
+      "decimals": 18
+    }
+  },
+  "0x5D557B07776D12967914379C71a1310e917C7555": {
+    "protocolToken": {
+      "address": "0x5D557B07776D12967914379C71a1310e917C7555",
+      "name": "Aave Polygon Variable Debt EURS",
+      "symbol": "variableDebtPolEURS",
+      "decimals": 2
+    },
+    "underlyingToken": {
+      "address": "0xE111178A87A3BFf0c8d18DECBa5798827539Ae99",
+      "name": "STASIS EURS Token (PoS)",
+      "symbol": "EURS",
+      "decimals": 2
+    }
+  },
+  "0x6b030Ff3FB9956B1B69f475B77aE0d3Cf2CC5aFa": {
+    "protocolToken": {
+      "address": "0x6b030Ff3FB9956B1B69f475B77aE0d3Cf2CC5aFa",
+      "name": "Aave Polygon Variable Debt STMATIC",
+      "symbol": "variableDebtPolSTMATIC",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x3A58a54C066FdC0f2D55FC9C89F0415C92eBf3C4",
+      "name": "Staked MATIC (PoS)",
+      "symbol": "stMATIC",
+      "decimals": 18
+    }
+  },
+  "0xB5b46F918C2923fC7f26DB76e8a6A6e9C4347Cf9": {
+    "protocolToken": {
+      "address": "0xB5b46F918C2923fC7f26DB76e8a6A6e9C4347Cf9",
+      "name": "Aave Polygon Variable Debt MATICX",
+      "symbol": "variableDebtPolMATICX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xfa68FB4628DFF1028CFEc22b4162FCcd0d45efb6",
+      "name": "Liquid Staking Matic (PoS)",
+      "symbol": "MaticX",
+      "decimals": 18
+    }
+  },
+  "0x77fA66882a8854d883101Fb8501BD3CaD347Fc32": {
+    "protocolToken": {
+      "address": "0x77fA66882a8854d883101Fb8501BD3CaD347Fc32",
+      "name": "Aave Polygon Variable Debt wstETH",
+      "symbol": "variableDebtPolwstETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x03b54A6e9a984069379fae1a4fC4dBAE93B3bCCD",
+      "name": "Wrapped liquid staked Ether 2.0 (PoS)",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xE701126012EC0290822eEA17B794454d1AF8b030": {
+    "protocolToken": {
+      "address": "0xE701126012EC0290822eEA17B794454d1AF8b030",
+      "name": "Aave Polygon Variable Debt USDCn",
+      "symbol": "variableDebtPolUSDCn",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  }
+}

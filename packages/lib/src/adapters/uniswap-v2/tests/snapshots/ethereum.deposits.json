@@ -1,0 +1,64 @@
+{
+  "snapshot": {
+    "protocolId": "uniswap-v2",
+    "name": "UniswapV2",
+    "description": "UniswapV2 pool adapter",
+    "siteUrl": "https://v2.info.uniswap.org/home",
+    "iconUrl": "https://cryptologos.cc/logos/uniswap-uni-logo.svg",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "pool",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0xb80124c84b41c043cfa21b9a26040fca84947c3f8b95a0e63e064068fb8fcdea",
+        "protocolToken": {
+          "address": "0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852",
+          "name": "Uniswap V2 WETH / USDT",
+          "symbol": "UNI-V2/WETH/USDT",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852",
+            "name": "Uniswap V2 WETH / USDT",
+            "symbol": "UNI-V2/WETH/USDT",
+            "decimals": 18,
+            "balanceRaw": "546481749212n",
+            "type": "underlying",
+            "blockNumber": 19234494,
+            "tokens": [
+              {
+                "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "24977692199154616n",
+                "balance": 0.024977692199154616,
+                "price": 2818.4,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "name": "Tether USD",
+                "symbol": "USDT",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "70302780n",
+                "balance": 70.30278,
+                "price": 1.001706447953756,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+              }
+            ],
+            "balance": 5.46481749212e-7
+          }
+        ],
+        "blockNumber": 19234494
+      }
+    ]
+  }
+}

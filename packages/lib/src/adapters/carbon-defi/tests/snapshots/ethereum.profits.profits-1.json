@@ -1,0 +1,203 @@
+{
+  "blockNumber": 19184953,
+  "snapshot": [
+    {
+      "protocolId": "carbon-defi",
+      "name": "CarbonDeFi",
+      "description": "CarbonDeFi adapter for strategy balances",
+      "siteUrl": "https://carbondefi.xyz",
+      "iconUrl": "https://app.carbondefi.xyz/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "strategies",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "HEX / ETH",
+          "symbol": "HEX / ETH",
+          "decimals": 18,
+          "tokenId": "14291859410679415465461733512134264881242",
+          "type": "protocol",
+          "profit": 0.15571780103181165,
+          "performance": 0.032268089439080806,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 4.82575212039723,
+            "endPositionValue": 4.981469921429041
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "ETH / USDC",
+          "symbol": "ETH / USDC",
+          "decimals": 18,
+          "tokenId": "1701411834604692317316873037158841057386",
+          "type": "protocol",
+          "profit": 55.448998894487886,
+          "performance": 0.004075734305815083,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 13604.664763200006,
+            "endPositionValue": 13660.113762094494
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "WBTC / USDC",
+          "symbol": "WBTC / USDC",
+          "decimals": 18,
+          "tokenId": "4083388403051261561560495289181218537579",
+          "type": "protocol",
+          "profit": -46.07262002188145,
+          "performance": -0.005417963742151313,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 8503.678174041706,
+            "endPositionValue": 8457.605554019825
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "WBTC / ETH",
+          "symbol": "WBTC / ETH",
+          "decimals": 18,
+          "tokenId": "9187623906865338513511114400657741709420",
+          "type": "protocol",
+          "profit": 27.14709749880967,
+          "performance": 0.004075734305814947,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 6660.6641802136755,
+            "endPositionValue": 6687.811277712485
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "RETH / ETH",
+          "symbol": "RETH / ETH",
+          "decimals": 18,
+          "tokenId": "3062541302288446171170371466885913903213",
+          "type": "protocol",
+          "profit": 14.766728354225961,
+          "performance": 0.004119140240569403,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 3584.905463715094,
+            "endPositionValue": 3599.67219206932
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "SNX / ETH",
+          "symbol": "SNX / ETH",
+          "decimals": 18,
+          "tokenId": "28583718821358830930923467024268529762546",
+          "type": "protocol",
+          "profit": 12.949491775639672,
+          "performance": 0.004073806036788404,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 3178.72074877881,
+            "endPositionValue": 3191.6702405544497
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "FXS / ETH",
+          "symbol": "FXS / ETH",
+          "decimals": 18,
+          "tokenId": "37771342728224169444434581424926271471943",
+          "type": "protocol",
+          "profit": 4.266143429352951,
+          "performance": 0.004044528774186581,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 1054.7936898312562,
+            "endPositionValue": 1059.0598332606091
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "RPL / ETH",
+          "symbol": "RPL / ETH",
+          "decimals": 18,
+          "tokenId": "38111625095145107907897956032358039683400",
+          "type": "protocol",
+          "profit": -1.7943687329169506,
+          "performance": -0.0022311954648582964,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 804.2185282188673,
+            "endPositionValue": 802.4241594859503
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "LBR / ETH",
+          "symbol": "LBR / ETH",
+          "decimals": 18,
+          "tokenId": "55806308175033908007993435618809986679260",
+          "type": "protocol",
+          "profit": -21.09913729347724,
+          "performance": -0.08588924812564896,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 245.65516352653273,
+            "endPositionValue": 224.5560262330555
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "LINK / ETH",
+          "symbol": "LINK / ETH",
+          "decimals": 18,
+          "tokenId": "20416942015256307807802476445906092687837",
+          "type": "protocol",
+          "profit": -20.919316617050526,
+          "performance": -0.01651251607430233,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 1266.8763817045603,
+            "endPositionValue": 1245.9570650875098
+          }
+        }
+      ],
+      "fromBlock": 19177807,
+      "toBlock": 19184953
+    }
+  ]
+}

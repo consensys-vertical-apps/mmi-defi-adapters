@@ -1,0 +1,133 @@
+{
+  "blockNumber": 18412988,
+  "snapshot": [
+    {
+      "protocolId": "uniswap-v3",
+      "name": "UniswapV3",
+      "description": "UniswapV3 defi adapter",
+      "siteUrl": "https://uniswap.org/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "tokenId": "587543",
+          "name": "VGX / USDT - 1.0%",
+          "symbol": "VGX / USDT - 1.0%",
+          "decimals": 18,
+          "balanceRaw": "3051906688142n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
+              "name": "Voyager VGX",
+              "symbol": "VGX",
+              "decimals": 8,
+              "balanceRaw": "137262192279n",
+              "type": "underlying",
+              "balance": 1372.62192279,
+              "price": 0.1024214812661522,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
+            },
+            {
+              "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
+              "name": "Voyager VGX",
+              "symbol": "VGX",
+              "decimals": 8,
+              "balanceRaw": "59840960204n",
+              "type": "underlying-claimable",
+              "balance": 598.40960204,
+              "price": 0.1024214812661522,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "balanceRaw": "860865290n",
+              "type": "underlying",
+              "balance": 860.86529,
+              "price": 0.9993556525657175,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "balanceRaw": "64741188n",
+              "type": "underlying-claimable",
+              "balance": 64.741188,
+              "price": 0.9993556525657175,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": 0.000003051906688142
+        },
+        {
+          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "tokenId": "587789",
+          "name": "VGX / USDT - 1.0%",
+          "symbol": "VGX / USDT - 1.0%",
+          "decimals": 18,
+          "balanceRaw": "1824645007152n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
+              "name": "Voyager VGX",
+              "symbol": "VGX",
+              "decimals": 8,
+              "balanceRaw": "522568969405n",
+              "type": "underlying",
+              "balance": 5225.68969405,
+              "price": 0.1024214812661522,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
+            },
+            {
+              "address": "0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d",
+              "name": "Voyager VGX",
+              "symbol": "VGX",
+              "decimals": 8,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "balance": 0,
+              "price": 0.1024214812661522,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x3C4B6E6e1eA3D4863700D7F76b36B7f3D3f13E3d/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "balanceRaw": "0n",
+              "type": "underlying",
+              "balance": 0,
+              "price": 0.9993556525657175,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "balanceRaw": "0n",
+              "type": "underlying-claimable",
+              "balance": 0,
+              "price": 0.9993556525657175,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": 0.000001824645007152
+        }
+      ]
+    }
+  ]
+}

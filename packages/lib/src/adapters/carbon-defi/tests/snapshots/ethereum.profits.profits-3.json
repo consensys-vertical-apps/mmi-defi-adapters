@@ -1,0 +1,1973 @@
+{
+  "blockNumber": 19184953,
+  "snapshot": [
+    {
+      "protocolId": "carbon-defi",
+      "name": "CarbonDeFi",
+      "description": "CarbonDeFi adapter for strategy balances",
+      "siteUrl": "https://carbondefi.xyz",
+      "iconUrl": "https://app.carbondefi.xyz/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "strategies",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "ETH / stETH",
+          "symbol": "ETH / stETH",
+          "decimals": 18,
+          "tokenId": "680564733841876926926749214863536422914",
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "ETH / stETH",
+                "symbol": "ETH / stETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "680564733841876926926749214863536422914",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "balance": 0,
+                    "price": 2421.72692,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                    "name": "Liquid staked Ether 2.0",
+                    "symbol": "stETH",
+                    "decimals": 18,
+                    "tokens": [
+                      {
+                        "address": "0x0000000000000000000000000000000000000000",
+                        "name": "Ethereum",
+                        "symbol": "ETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "0n",
+                        "balance": 0,
+                        "price": 2421.72692,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      }
+                    ],
+                    "balance": 0,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / USDT",
+                "symbol": "USDC / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1020847100762815390390123822295304634371",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "100256523n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 100.256523,
+                    "price": 0.9974515833602204,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / DAI",
+                "symbol": "USDC / DAI",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1361129467683753853853498429727072845828",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "50000000n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 50,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "30000000000064988n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.03000000000006499,
+                    "price": 0.9984701441151138,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "DAI / USDT",
+                "symbol": "DAI / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "2041694201525630780780247644590609268742",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "5820057695805493n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.005820057695805493,
+                    "price": 0.9984701441151138,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "40070413n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 40.070413,
+                    "price": 0.9974515833602204,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "BBS / USDC",
+                "symbol": "BBS / USDC",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "32667107224410092492483962313449748300520",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "4796297636542810062982n",
+                    "address": "0xFe459828c90c0BA4bC8b42F5C5D44F316700B430",
+                    "name": "BBS",
+                    "symbol": "BBS",
+                    "decimals": 18,
+                    "balance": 4796.29763654281,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFe459828c90c0BA4bC8b42F5C5D44F316700B430/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ],
+                "balance": 1
+              }
+            ],
+            "rawStartPositionValues": [
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "ETH / stETH",
+                "symbol": "ETH / stETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "680564733841876926926749214863536422914",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "balance": 0,
+                    "price": 2289.69086146,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                    "name": "Liquid staked Ether 2.0",
+                    "symbol": "stETH",
+                    "decimals": 18,
+                    "tokens": [
+                      {
+                        "address": "0x0000000000000000000000000000000000000000",
+                        "name": "Ethereum",
+                        "symbol": "ETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "0n",
+                        "balance": 0,
+                        "price": 2289.69086146,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      }
+                    ],
+                    "balance": 0,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / USDT",
+                "symbol": "USDC / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1020847100762815390390123822295304634371",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "100256523n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 100.256523,
+                    "price": 1.0027057369860566,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / DAI",
+                "symbol": "USDC / DAI",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1361129467683753853853498429727072845828",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "50000000n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 50,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "30000000000064988n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.03000000000006499,
+                    "price": 1.0021616484031988,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "DAI / USDT",
+                "symbol": "DAI / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "2041694201525630780780247644590609268742",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "5820057695805493n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.005820057695805493,
+                    "price": 1.0021616484031988,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "40070413n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 40.070413,
+                    "price": 1.0027057369860566,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "BBS / USDC",
+                "symbol": "BBS / USDC",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "32667107224410092492483962313449748300520",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "4796297636542810062982n",
+                    "address": "0xFe459828c90c0BA4bC8b42F5C5D44F316700B430",
+                    "name": "BBS",
+                    "symbol": "BBS",
+                    "decimals": 18,
+                    "balance": 4796.29763654281,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFe459828c90c0BA4bC8b42F5C5D44F316700B430/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ],
+                "balance": 1
+              }
+            ],
+            "rawWithdrawals": [],
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "USDC / USDT",
+          "symbol": "USDC / USDT",
+          "decimals": 18,
+          "tokenId": "1020847100762815390390123822295304634371",
+          "type": "protocol",
+          "profit": -0.5267631738341834,
+          "performance": -0.00523997562996819,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 100.52779078237454,
+            "endPositionValue": 100.00102760854035
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "ETH / stETH",
+                "symbol": "ETH / stETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "680564733841876926926749214863536422914",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "balance": 0,
+                    "price": 2421.72692,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                    "name": "Liquid staked Ether 2.0",
+                    "symbol": "stETH",
+                    "decimals": 18,
+                    "tokens": [
+                      {
+                        "address": "0x0000000000000000000000000000000000000000",
+                        "name": "Ethereum",
+                        "symbol": "ETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "0n",
+                        "balance": 0,
+                        "price": 2421.72692,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      }
+                    ],
+                    "balance": 0,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / USDT",
+                "symbol": "USDC / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1020847100762815390390123822295304634371",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "100256523n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 100.256523,
+                    "price": 0.9974515833602204,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / DAI",
+                "symbol": "USDC / DAI",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1361129467683753853853498429727072845828",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "50000000n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 50,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "30000000000064988n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.03000000000006499,
+                    "price": 0.9984701441151138,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "DAI / USDT",
+                "symbol": "DAI / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "2041694201525630780780247644590609268742",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "5820057695805493n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.005820057695805493,
+                    "price": 0.9984701441151138,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "40070413n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 40.070413,
+                    "price": 0.9974515833602204,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "BBS / USDC",
+                "symbol": "BBS / USDC",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "32667107224410092492483962313449748300520",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "4796297636542810062982n",
+                    "address": "0xFe459828c90c0BA4bC8b42F5C5D44F316700B430",
+                    "name": "BBS",
+                    "symbol": "BBS",
+                    "decimals": 18,
+                    "balance": 4796.29763654281,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFe459828c90c0BA4bC8b42F5C5D44F316700B430/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ],
+                "balance": 1
+              }
+            ],
+            "rawStartPositionValues": [
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "ETH / stETH",
+                "symbol": "ETH / stETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "680564733841876926926749214863536422914",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "balance": 0,
+                    "price": 2289.69086146,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                    "name": "Liquid staked Ether 2.0",
+                    "symbol": "stETH",
+                    "decimals": 18,
+                    "tokens": [
+                      {
+                        "address": "0x0000000000000000000000000000000000000000",
+                        "name": "Ethereum",
+                        "symbol": "ETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "0n",
+                        "balance": 0,
+                        "price": 2289.69086146,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      }
+                    ],
+                    "balance": 0,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / USDT",
+                "symbol": "USDC / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1020847100762815390390123822295304634371",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "100256523n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 100.256523,
+                    "price": 1.0027057369860566,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / DAI",
+                "symbol": "USDC / DAI",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1361129467683753853853498429727072845828",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "50000000n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 50,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "30000000000064988n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.03000000000006499,
+                    "price": 1.0021616484031988,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "DAI / USDT",
+                "symbol": "DAI / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "2041694201525630780780247644590609268742",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "5820057695805493n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.005820057695805493,
+                    "price": 1.0021616484031988,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "40070413n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 40.070413,
+                    "price": 1.0027057369860566,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "BBS / USDC",
+                "symbol": "BBS / USDC",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "32667107224410092492483962313449748300520",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "4796297636542810062982n",
+                    "address": "0xFe459828c90c0BA4bC8b42F5C5D44F316700B430",
+                    "name": "BBS",
+                    "symbol": "BBS",
+                    "decimals": 18,
+                    "balance": 4796.29763654281,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFe459828c90c0BA4bC8b42F5C5D44F316700B430/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ],
+                "balance": 1
+              }
+            ],
+            "rawWithdrawals": [],
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "USDC / DAI",
+          "symbol": "USDC / DAI",
+          "decimals": 18,
+          "tokenId": "1361129467683753853853498429727072845828",
+          "type": "protocol",
+          "profit": -0.2821952106543719,
+          "performance": -0.0056228778666402,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 50.186971395661864,
+            "endPositionValue": 49.90477618500749
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "ETH / stETH",
+                "symbol": "ETH / stETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "680564733841876926926749214863536422914",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "balance": 0,
+                    "price": 2421.72692,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                    "name": "Liquid staked Ether 2.0",
+                    "symbol": "stETH",
+                    "decimals": 18,
+                    "tokens": [
+                      {
+                        "address": "0x0000000000000000000000000000000000000000",
+                        "name": "Ethereum",
+                        "symbol": "ETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "0n",
+                        "balance": 0,
+                        "price": 2421.72692,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      }
+                    ],
+                    "balance": 0,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / USDT",
+                "symbol": "USDC / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1020847100762815390390123822295304634371",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "100256523n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 100.256523,
+                    "price": 0.9974515833602204,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / DAI",
+                "symbol": "USDC / DAI",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1361129467683753853853498429727072845828",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "50000000n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 50,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "30000000000064988n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.03000000000006499,
+                    "price": 0.9984701441151138,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "DAI / USDT",
+                "symbol": "DAI / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "2041694201525630780780247644590609268742",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "5820057695805493n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.005820057695805493,
+                    "price": 0.9984701441151138,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "40070413n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 40.070413,
+                    "price": 0.9974515833602204,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "BBS / USDC",
+                "symbol": "BBS / USDC",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "32667107224410092492483962313449748300520",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "4796297636542810062982n",
+                    "address": "0xFe459828c90c0BA4bC8b42F5C5D44F316700B430",
+                    "name": "BBS",
+                    "symbol": "BBS",
+                    "decimals": 18,
+                    "balance": 4796.29763654281,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFe459828c90c0BA4bC8b42F5C5D44F316700B430/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ],
+                "balance": 1
+              }
+            ],
+            "rawStartPositionValues": [
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "ETH / stETH",
+                "symbol": "ETH / stETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "680564733841876926926749214863536422914",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "balance": 0,
+                    "price": 2289.69086146,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                    "name": "Liquid staked Ether 2.0",
+                    "symbol": "stETH",
+                    "decimals": 18,
+                    "tokens": [
+                      {
+                        "address": "0x0000000000000000000000000000000000000000",
+                        "name": "Ethereum",
+                        "symbol": "ETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "0n",
+                        "balance": 0,
+                        "price": 2289.69086146,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      }
+                    ],
+                    "balance": 0,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / USDT",
+                "symbol": "USDC / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1020847100762815390390123822295304634371",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "100256523n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 100.256523,
+                    "price": 1.0027057369860566,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / DAI",
+                "symbol": "USDC / DAI",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1361129467683753853853498429727072845828",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "50000000n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 50,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "30000000000064988n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.03000000000006499,
+                    "price": 1.0021616484031988,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "DAI / USDT",
+                "symbol": "DAI / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "2041694201525630780780247644590609268742",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "5820057695805493n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.005820057695805493,
+                    "price": 1.0021616484031988,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "40070413n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 40.070413,
+                    "price": 1.0027057369860566,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "BBS / USDC",
+                "symbol": "BBS / USDC",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "32667107224410092492483962313449748300520",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "4796297636542810062982n",
+                    "address": "0xFe459828c90c0BA4bC8b42F5C5D44F316700B430",
+                    "name": "BBS",
+                    "symbol": "BBS",
+                    "decimals": 18,
+                    "balance": 4796.29763654281,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFe459828c90c0BA4bC8b42F5C5D44F316700B430/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ],
+                "balance": 1
+              }
+            ],
+            "rawWithdrawals": [],
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "DAI / USDT",
+          "symbol": "DAI / USDT",
+          "decimals": 18,
+          "tokenId": "2041694201525630780780247644590609268742",
+          "type": "protocol",
+          "profit": -0.2105575905206507,
+          "performance": -0.005239749720007075,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 40.1846656371149,
+            "endPositionValue": 39.974108046594246
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "ETH / stETH",
+                "symbol": "ETH / stETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "680564733841876926926749214863536422914",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "balance": 0,
+                    "price": 2421.72692,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                    "name": "Liquid staked Ether 2.0",
+                    "symbol": "stETH",
+                    "decimals": 18,
+                    "tokens": [
+                      {
+                        "address": "0x0000000000000000000000000000000000000000",
+                        "name": "Ethereum",
+                        "symbol": "ETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "0n",
+                        "balance": 0,
+                        "price": 2421.72692,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      }
+                    ],
+                    "balance": 0,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / USDT",
+                "symbol": "USDC / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1020847100762815390390123822295304634371",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "100256523n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 100.256523,
+                    "price": 0.9974515833602204,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / DAI",
+                "symbol": "USDC / DAI",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1361129467683753853853498429727072845828",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "50000000n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 50,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "30000000000064988n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.03000000000006499,
+                    "price": 0.9984701441151138,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "DAI / USDT",
+                "symbol": "DAI / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "2041694201525630780780247644590609268742",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "5820057695805493n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.005820057695805493,
+                    "price": 0.9984701441151138,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "40070413n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 40.070413,
+                    "price": 0.9974515833602204,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "BBS / USDC",
+                "symbol": "BBS / USDC",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "32667107224410092492483962313449748300520",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "4796297636542810062982n",
+                    "address": "0xFe459828c90c0BA4bC8b42F5C5D44F316700B430",
+                    "name": "BBS",
+                    "symbol": "BBS",
+                    "decimals": 18,
+                    "balance": 4796.29763654281,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFe459828c90c0BA4bC8b42F5C5D44F316700B430/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ],
+                "balance": 1
+              }
+            ],
+            "rawStartPositionValues": [
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "ETH / stETH",
+                "symbol": "ETH / stETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "680564733841876926926749214863536422914",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "balance": 0,
+                    "price": 2289.69086146,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                    "name": "Liquid staked Ether 2.0",
+                    "symbol": "stETH",
+                    "decimals": 18,
+                    "tokens": [
+                      {
+                        "address": "0x0000000000000000000000000000000000000000",
+                        "name": "Ethereum",
+                        "symbol": "ETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "0n",
+                        "balance": 0,
+                        "price": 2289.69086146,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      }
+                    ],
+                    "balance": 0,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / USDT",
+                "symbol": "USDC / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1020847100762815390390123822295304634371",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "100256523n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 100.256523,
+                    "price": 1.0027057369860566,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / DAI",
+                "symbol": "USDC / DAI",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1361129467683753853853498429727072845828",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "50000000n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 50,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "30000000000064988n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.03000000000006499,
+                    "price": 1.0021616484031988,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "DAI / USDT",
+                "symbol": "DAI / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "2041694201525630780780247644590609268742",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "5820057695805493n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.005820057695805493,
+                    "price": 1.0021616484031988,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "40070413n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 40.070413,
+                    "price": 1.0027057369860566,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "BBS / USDC",
+                "symbol": "BBS / USDC",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "32667107224410092492483962313449748300520",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "4796297636542810062982n",
+                    "address": "0xFe459828c90c0BA4bC8b42F5C5D44F316700B430",
+                    "name": "BBS",
+                    "symbol": "BBS",
+                    "decimals": 18,
+                    "balance": 4796.29763654281,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFe459828c90c0BA4bC8b42F5C5D44F316700B430/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ],
+                "balance": 1
+              }
+            ],
+            "rawWithdrawals": [],
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
+          }
+        },
+        {
+          "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+          "name": "BBS / USDC",
+          "symbol": "BBS / USDC",
+          "decimals": 18,
+          "tokenId": "32667107224410092492483962313449748300520",
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0
+          },
+          "rawValues": {
+            "rawEndPositionValues": [
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "ETH / stETH",
+                "symbol": "ETH / stETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "680564733841876926926749214863536422914",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "balance": 0,
+                    "price": 2421.72692,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                    "name": "Liquid staked Ether 2.0",
+                    "symbol": "stETH",
+                    "decimals": 18,
+                    "tokens": [
+                      {
+                        "address": "0x0000000000000000000000000000000000000000",
+                        "name": "Ethereum",
+                        "symbol": "ETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "0n",
+                        "balance": 0,
+                        "price": 2421.72692,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      }
+                    ],
+                    "balance": 0,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / USDT",
+                "symbol": "USDC / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1020847100762815390390123822295304634371",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "100256523n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 100.256523,
+                    "price": 0.9974515833602204,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / DAI",
+                "symbol": "USDC / DAI",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1361129467683753853853498429727072845828",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "50000000n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 50,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "30000000000064988n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.03000000000006499,
+                    "price": 0.9984701441151138,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "DAI / USDT",
+                "symbol": "DAI / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "2041694201525630780780247644590609268742",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "5820057695805493n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.005820057695805493,
+                    "price": 0.9984701441151138,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "40070413n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 40.070413,
+                    "price": 0.9974515833602204,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "BBS / USDC",
+                "symbol": "BBS / USDC",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "32667107224410092492483962313449748300520",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "4796297636542810062982n",
+                    "address": "0xFe459828c90c0BA4bC8b42F5C5D44F316700B430",
+                    "name": "BBS",
+                    "symbol": "BBS",
+                    "decimals": 18,
+                    "balance": 4796.29763654281,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFe459828c90c0BA4bC8b42F5C5D44F316700B430/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 0.9974964416136795,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ],
+                "balance": 1
+              }
+            ],
+            "rawStartPositionValues": [
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "ETH / stETH",
+                "symbol": "ETH / stETH",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "680564733841876926926749214863536422914",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "balance": 0,
+                    "price": 2289.69086146,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                    "name": "Liquid staked Ether 2.0",
+                    "symbol": "stETH",
+                    "decimals": 18,
+                    "tokens": [
+                      {
+                        "address": "0x0000000000000000000000000000000000000000",
+                        "name": "Ethereum",
+                        "symbol": "ETH",
+                        "decimals": 18,
+                        "type": "underlying",
+                        "balanceRaw": "0n",
+                        "balance": 0,
+                        "price": 2289.69086146,
+                        "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                      }
+                    ],
+                    "balance": 0,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / USDT",
+                "symbol": "USDC / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1020847100762815390390123822295304634371",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "100256523n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 100.256523,
+                    "price": 1.0027057369860566,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "USDC / DAI",
+                "symbol": "USDC / DAI",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "1361129467683753853853498429727072845828",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "50000000n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 50,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "30000000000064988n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.03000000000006499,
+                    "price": 1.0021616484031988,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "DAI / USDT",
+                "symbol": "DAI / USDT",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "2041694201525630780780247644590609268742",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "5820057695805493n",
+                    "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                    "name": "Dai Stablecoin",
+                    "symbol": "DAI",
+                    "decimals": 18,
+                    "balance": 0.005820057695805493,
+                    "price": 1.0021616484031988,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "40070413n",
+                    "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                    "name": "Tether USD",
+                    "symbol": "USDT",
+                    "decimals": 6,
+                    "balance": 40.070413,
+                    "price": 1.0027057369860566,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+                  }
+                ],
+                "balance": 1
+              },
+              {
+                "address": "0x3660F04B79751e31128f6378eAC70807e38f554E",
+                "name": "BBS / USDC",
+                "symbol": "BBS / USDC",
+                "decimals": 18,
+                "type": "protocol",
+                "tokenId": "32667107224410092492483962313449748300520",
+                "balanceRaw": "1000000000000000000n",
+                "tokens": [
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "4796297636542810062982n",
+                    "address": "0xFe459828c90c0BA4bC8b42F5C5D44F316700B430",
+                    "name": "BBS",
+                    "symbol": "BBS",
+                    "decimals": 18,
+                    "balance": 4796.29763654281,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xFe459828c90c0BA4bC8b42F5C5D44F316700B430/logo.png"
+                  },
+                  {
+                    "type": "underlying",
+                    "balanceRaw": "0n",
+                    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "balance": 0,
+                    "price": 1.003138130924194,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+                  }
+                ],
+                "balance": 1
+              }
+            ],
+            "rawWithdrawals": [],
+            "rawDeposits": [],
+            "rawRepays": [],
+            "rawBorrows": []
+          }
+        }
+      ],
+      "fromBlock": 19134931,
+      "toBlock": 19184953
+    }
+  ]
+}

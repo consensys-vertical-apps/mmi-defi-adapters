@@ -1,0 +1,59 @@
+{
+  "blockNumber": 18412988,
+  "snapshot": [
+    {
+      "protocolId": "uniswap-v3",
+      "name": "UniswapV3",
+      "description": "UniswapV3 defi adapter",
+      "siteUrl": "https://uniswap.org/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "name": "VGX / USDT - 1.0%",
+          "symbol": "VGX / USDT - 1.0%",
+          "decimals": 18,
+          "tokenId": "587543",
+          "type": "protocol",
+          "profit": 111.4191642355122,
+          "performance": 0.10972210667537179,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 1015.4668700006043,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 1126.8860342361165
+          }
+        },
+        {
+          "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+          "name": "VGX / USDT - 1.0%",
+          "symbol": "VGX / USDT - 1.0%",
+          "decimals": 18,
+          "tokenId": "587789",
+          "type": "protocol",
+          "profit": 12.968736022741496,
+          "performance": 0.0248322319594823,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 522.2541430791252,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 535.2228791018667
+          }
+        }
+      ],
+      "fromBlock": 18362966,
+      "toBlock": 18412988
+    }
+  ]
+}

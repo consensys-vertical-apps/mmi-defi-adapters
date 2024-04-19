@@ -1,0 +1,17 @@
+{
+  "snapshot": {
+    "protocolId": "aave-v3",
+    "name": "Aave v3 AToken",
+    "description": "Aave v3 defi adapter for yield-generating token",
+    "siteUrl": "https://aave.com/",
+    "iconUrl": "https://aave.com/favicon.ico",
+    "positionType": "lend",
+    "chainId": 1,
+    "productId": "a-token",
+    "success": true,
+    "params": {
+      "to": "0x5FAab9E1adbddaD0a08734BE8a52185Fd6558E14",
+      "data": "0xa415bcad000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000008ac7230489e80000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000005b541d54e79052b34188db9a43f7b00ea8e2c4b1"
+    }
+  }
+}

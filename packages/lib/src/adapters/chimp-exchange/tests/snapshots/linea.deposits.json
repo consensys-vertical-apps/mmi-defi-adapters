@@ -1,0 +1,135 @@
+{
+  "snapshot": {
+    "protocolId": "chimp-exchange",
+    "name": "ChimpExchange",
+    "description": "ChimpExchange pool adapter",
+    "siteUrl": "https://app.chimp.exchange",
+    "iconUrl": "https://",
+    "positionType": "supply",
+    "chainId": 59144,
+    "productId": "pool",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x7ef11599d074cfb0c89fc253145a7f3d11d67ac51cdd1b254b67c1b2323d94ec",
+        "protocolToken": {
+          "address": "0x90D8053f7E29FaAF5189BdcE796a516E29F1F5d3",
+          "name": "Chimp USDC-DAI-USDT Stable Pool",
+          "symbol": "USDC-DAI-USDT",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+            "name": "USDC",
+            "symbol": "USDC",
+            "decimals": 6,
+            "balanceRaw": "100000n",
+            "type": "underlying",
+            "balance": 0.1
+          },
+          {
+            "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+            "name": "Dai Stablecoin",
+            "symbol": "DAI",
+            "decimals": 18,
+            "balanceRaw": "1000000000000000000n",
+            "type": "underlying",
+            "balance": 1
+          },
+          {
+            "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 6,
+            "balanceRaw": "1000000n",
+            "type": "underlying",
+            "balance": 1
+          }
+        ],
+        "blockNumber": 759469
+      },
+      {
+        "transactionHash": "0xe74428f84e9c90f2e7d943a10d3859e64c7e0cd38132c4dde782d0f5247b62c5",
+        "protocolToken": {
+          "address": "0x90D8053f7E29FaAF5189BdcE796a516E29F1F5d3",
+          "name": "Chimp USDC-DAI-USDT Stable Pool",
+          "symbol": "USDC-DAI-USDT",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+            "name": "USDC",
+            "symbol": "USDC",
+            "decimals": 6,
+            "balanceRaw": "900000n",
+            "type": "underlying",
+            "balance": 0.9
+          },
+          {
+            "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+            "name": "Dai Stablecoin",
+            "symbol": "DAI",
+            "decimals": 18,
+            "balanceRaw": "0n",
+            "type": "underlying",
+            "balance": 0
+          },
+          {
+            "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 6,
+            "balanceRaw": "0n",
+            "type": "underlying",
+            "balance": 0
+          }
+        ],
+        "blockNumber": 760370
+      },
+      {
+        "transactionHash": "0xcab5bb34294c17915ec2c3d501b2a66a424b6c9e71ceda4562365eb41dd28a21",
+        "protocolToken": {
+          "address": "0x90D8053f7E29FaAF5189BdcE796a516E29F1F5d3",
+          "name": "Chimp USDC-DAI-USDT Stable Pool",
+          "symbol": "USDC-DAI-USDT",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+            "name": "USDC",
+            "symbol": "USDC",
+            "decimals": 6,
+            "balanceRaw": "999000000n",
+            "type": "underlying",
+            "balance": 999
+          },
+          {
+            "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+            "name": "Dai Stablecoin",
+            "symbol": "DAI",
+            "decimals": 18,
+            "balanceRaw": "999000000000000000000n",
+            "type": "underlying",
+            "balance": 999
+          },
+          {
+            "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "decimals": 6,
+            "balanceRaw": "999000000n",
+            "type": "underlying",
+            "balance": 999
+          }
+        ],
+        "blockNumber": 760382
+      }
+    ]
+  }
+}

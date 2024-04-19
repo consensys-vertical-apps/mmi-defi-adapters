@@ -1,0 +1,155 @@
+{
+  "blockNumber": 1498597,
+  "snapshot": [
+    {
+      "protocolId": "chimp-exchange",
+      "name": "ChimpExchange",
+      "description": "ChimpExchange pool adapter",
+      "siteUrl": "https://app.chimp.exchange",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "pool",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x90D8053f7E29FaAF5189BdcE796a516E29F1F5d3",
+          "name": "Chimp USDC-DAI-USDT Stable Pool",
+          "symbol": "USDC-DAI-USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "totalSupplyRaw": "2127532354n",
+              "type": "underlying",
+              "totalSupply": 2127.532354,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "totalSupplyRaw": "697211897686265463110n",
+              "type": "underlying",
+              "totalSupply": 697.2118976862655,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
+            },
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "totalSupplyRaw": "1083270116n",
+              "type": "underlying",
+              "totalSupply": 1083.270116,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "3813413987853259358679n",
+          "totalSupply": 3813.413987853259
+        },
+        {
+          "address": "0xD2E846D6A2C1696b77678f1936DF9B7FD3F25F8D",
+          "name": "50USDC-50USDT",
+          "symbol": "50USDC-50USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "totalSupplyRaw": "1n",
+              "type": "underlying",
+              "totalSupply": 0.000001,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "totalSupplyRaw": "1n",
+              "type": "underlying",
+              "totalSupply": 0.000001,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "1000000n",
+          "totalSupply": 1e-12
+        },
+        {
+          "address": "0xe38DF7880EF9408e9933Fd0e96abcC3CebF76006",
+          "name": "50USDC-50WETH",
+          "symbol": "50USDC-50WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "totalSupplyRaw": "8050409498n",
+              "type": "underlying",
+              "totalSupply": 8050.409498,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "totalSupplyRaw": "3478357629090545092n",
+              "type": "underlying",
+              "totalSupply": 3.478357629090545,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "300249694415489425553n",
+          "totalSupply": 300.24969441548944
+        },
+        {
+          "address": "0xFEe637c94e85b23472745F6B5EdE2e4c0AD12a94",
+          "name": "50USDT-50WETH",
+          "symbol": "50USDT-50WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "0n",
+          "totalSupply": 0
+        }
+      ]
+    }
+  ]
+}

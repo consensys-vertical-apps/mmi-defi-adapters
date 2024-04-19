@@ -1,0 +1,40 @@
+{
+  "blockNumber": 18642232,
+  "snapshot": [
+    {
+      "protocolId": "swell",
+      "name": "Swell swETH",
+      "description": "Swell pool adapter",
+      "siteUrl": "https://app.swellnetwork.io/",
+      "iconUrl": "https://app.swellnetwork.io/logo.svg",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "sw-eth",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf951E335afb289353dc249e82926178EaC7DEd78",
+          "name": "Swell Ethereum",
+          "symbol": "SWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 22424.67918117778,
+          "performance": 0.07532001535337463,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 55574.05755429158,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 242151.30901619027,
+            "endPositionValue": 320150.0457516596
+          }
+        }
+      ],
+      "fromBlock": 18592210,
+      "toBlock": 18642232
+    }
+  ]
+}

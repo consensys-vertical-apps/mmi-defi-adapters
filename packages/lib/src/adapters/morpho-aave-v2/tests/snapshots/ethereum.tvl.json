@@ -1,0 +1,343 @@
+{
+  "blockNumber": 19661885,
+  "snapshot": [
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the borrow side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "optimizer-borrow",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
+          "name": "Aave DAI",
+          "symbol": "ADAI",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "22327464242762902294238156n",
+          "tokens": [
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "22327464242762902294238156n",
+              "totalSupply": 22327464.2427629,
+              "price": 1.0008388019504717,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            }
+          ],
+          "totalSupply": 22327464.2427629
+        },
+        {
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "24063325311925421122354n",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "24063325311925421122354n",
+              "totalSupply": 24063.325311925422,
+              "price": 3148.07,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "totalSupply": 24063.325311925422
+        },
+        {
+          "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+          "name": "Aave USDC",
+          "symbol": "AUSDC",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "29390622078847n",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "29390622078847n",
+              "totalSupply": 29390622.078847,
+              "price": 0.9996262135294435,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "totalSupply": 29390622.078847
+        },
+        {
+          "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+          "name": "Aave USDT",
+          "symbol": "AUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "7575252642062n",
+          "tokens": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "7575252642062n",
+              "totalSupply": 7575252.642062,
+              "price": 1.0015210739210858,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "totalSupply": 7575252.642062
+        },
+        {
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
+          "name": "Aave WBTC",
+          "symbol": "AWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "7582505794n",
+          "tokens": [
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "type": "underlying",
+              "totalSupplyRaw": "7582505794n",
+              "totalSupply": 75.82505794,
+              "price": 64587.82340895568,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
+            }
+          ],
+          "totalSupply": 75.82505794
+        },
+        {
+          "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
+          "name": "Aave Interest Bearing STETH",
+          "symbol": "ASTETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "0n",
+          "tokens": [
+            {
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+              "name": "Liquid staked Ether 2.0",
+              "symbol": "stETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "0n",
+              "tokens": [
+                {
+                  "address": "0x0000000000000000000000000000000000000000",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "0n",
+                  "totalSupply": 0,
+                  "price": 3148.07,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+            }
+          ],
+          "totalSupply": 0
+        },
+        {
+          "address": "0x8dAE6Cb04688C62d939ed9B68d32Bc62e49970b1",
+          "name": "Aave CRV",
+          "symbol": "ACRV",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "63925210171284044112n",
+          "totalSupply": 63.92521017128404
+        }
+      ]
+    },
+    {
+      "protocolId": "morpho-aave-v2",
+      "name": "MorphoAaveV2",
+      "description": "MorphoAaveV2 defi adapter on the supply side",
+      "siteUrl": "https://aavev2.morpho.org/",
+      "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "optimizer-supply",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
+          "name": "Aave DAI",
+          "symbol": "ADAI",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "15366381729800216201129171n",
+          "tokens": [
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "15366381729800216201129171n",
+              "totalSupply": 15366381.729800217,
+              "price": 1.0008388019504717,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            }
+          ],
+          "totalSupply": 15366381.729800217
+        },
+        {
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "92595172201439033475834n",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "92595172201439033475834n",
+              "totalSupply": 92595.17220143904,
+              "price": 3148.07,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "totalSupply": 92595.17220143904
+        },
+        {
+          "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+          "name": "Aave USDC",
+          "symbol": "AUSDC",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "33276700232816n",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "33276700232816n",
+              "totalSupply": 33276700.232816,
+              "price": 0.9996262135294435,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "totalSupply": 33276700.232816
+        },
+        {
+          "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+          "name": "Aave USDT",
+          "symbol": "AUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "15278819769895n",
+          "tokens": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "15278819769895n",
+              "totalSupply": 15278819.769895,
+              "price": 1.0015210739210858,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "totalSupply": 15278819.769895
+        },
+        {
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
+          "name": "Aave WBTC",
+          "symbol": "AWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "136156182687n",
+          "tokens": [
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "type": "underlying",
+              "totalSupplyRaw": "136156182687n",
+              "totalSupply": 1361.56182687,
+              "price": 64587.82340895568,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
+            }
+          ],
+          "totalSupply": 1361.56182687
+        },
+        {
+          "address": "0x1982b2F5814301d4e9a8b0201555376e62F82428",
+          "name": "Aave Interest Bearing STETH",
+          "symbol": "ASTETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "37165414976040088623210n",
+          "tokens": [
+            {
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+              "name": "Liquid staked Ether 2.0",
+              "symbol": "stETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "37165414976040088623210n",
+              "tokens": [
+                {
+                  "address": "0x0000000000000000000000000000000000000000",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "37165414976040088623210n",
+                  "totalSupply": 37165.41497604009,
+                  "price": 3148.07,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
+              "totalSupply": 37165.41497604009,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+            }
+          ],
+          "totalSupply": 37165.41497604009
+        },
+        {
+          "address": "0x8dAE6Cb04688C62d939ed9B68d32Bc62e49970b1",
+          "name": "Aave CRV",
+          "symbol": "ACRV",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "425036720363530208838929n",
+          "totalSupply": 425036.7203635302
+        }
+      ]
+    }
+  ]
+}

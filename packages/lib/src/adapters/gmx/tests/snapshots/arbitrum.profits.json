@@ -1,0 +1,40 @@
+{
+  "blockNumber": 151045028,
+  "snapshot": [
+    {
+      "protocolId": "gmx",
+      "name": "GMX",
+      "description": "GMX Liquidity Provider Token adapter",
+      "siteUrl": "https://https://app.gmx.io",
+      "iconUrl": "https://gmx.io//static/media/ic_gmx_40.72a1053e8344ef876100ac72aff70ead.svg",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "glp",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4277f8F2c384827B5273592FF7CeBd9f2C1ac258",
+          "name": "GMX LP",
+          "symbol": "GLP",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.0020204680424669164,
+          "performance": -0.00002292482882541336,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 81.48475562442427,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 6.649732002681709,
+            "endPositionValue": 88.13246715906351
+          }
+        }
+      ],
+      "fromBlock": 148803082,
+      "toBlock": 151045028
+    }
+  ]
+}

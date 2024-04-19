@@ -1,0 +1,53 @@
+{
+  "snapshot": {
+    "protocolId": "compound-v2",
+    "name": "CompoundV2",
+    "description": "CompoundV2 supply market adapter",
+    "siteUrl": "https:",
+    "iconUrl": "https://",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "supply-market",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0xeb538a0da6ab6e2aca0de6ec7a422949b6d8c6b495f2689abb24194012d55068",
+        "protocolToken": {
+          "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+          "name": "Compound Ether",
+          "symbol": "CETH",
+          "decimals": 8
+        },
+        "tokens": [
+          {
+            "address": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
+            "name": "Compound Ether",
+            "symbol": "CETH",
+            "decimals": 8,
+            "balanceRaw": "49766382937n",
+            "type": "underlying",
+            "blockNumber": 19382067,
+            "tokens": [
+              {
+                "address": "0x0000000000000000000000000000000000000000",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "9999999999821682315n",
+                "balance": 9.999999999821682,
+                "price": 3810.53843492,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 497.66382937
+          }
+        ],
+        "blockNumber": 19382067
+      }
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "blockNumber": 19262683,
+  "snapshot": [
+    {
+      "protocolId": "aave-v2",
+      "name": "Aave v2 AToken",
+      "description": "Aave v2 defi adapter for yield-generating token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "lend",
+      "chainId": 1,
+      "productId": "a-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656",
+          "name": "Aave WBTC",
+          "symbol": "AWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": 176590.4113893248,
+          "performance": 0.00917657223434845,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 19243613.72412419,
+            "endPositionValue": 19420204.135513514
+          }
+        },
+        {
+          "address": "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e",
+          "name": "Aave WETH",
+          "symbol": "AWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 102263.49377987906,
+          "performance": 0.037631222755336466,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 2717517.1650614813,
+            "endPositionValue": 2819780.6588413604
+          }
+        }
+      ],
+      "fromBlock": 19255537,
+      "toBlock": 19262683
+    },
+    {
+      "protocolId": "aave-v2",
+      "name": "Aave v2 VariableDebtToken",
+      "description": "Aave v2 defi adapter for variable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "variable-debt-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x531842cEbbdD378f8ee36D171d6cC9C4fcf475Ec",
+          "name": "Aave variable debt bearing USDT",
+          "symbol": "variableDebtUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": 10319.915351901203,
+          "performance": 0.0009876698713141483,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 250721.98276408552,
+            "startPositionValue": -10448749.781311033,
+            "endPositionValue": -10689151.848723218
+          }
+        },
+        {
+          "address": "0x9c39809Dec7F95F5e0713634a4D0701329B3b4d2",
+          "name": "Aave variable debt bearing WBTC",
+          "symbol": "variableDebtWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": -1439.2549771374324,
+          "performance": -0.009198036380442405,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": -156474.1557445555,
+            "endPositionValue": -157913.41072169293
+          }
+        },
+        {
+          "address": "0x6C3c78838c761c6Ac7bE9F59fe808ea2A6E4379d",
+          "name": "Aave variable debt bearing DAI",
+          "symbol": "variableDebtDAI",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -72.7161392524722,
+          "performance": -0.00019078336241985943,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": -381145.0764372464,
+            "endPositionValue": -381217.7925764989
+          }
+        },
+        {
+          "address": "0x619beb58998eD2278e08620f97007e1116D5D25b",
+          "name": "Aave variable debt bearing USDC",
+          "symbol": "variableDebtUSDC",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": 11077.385828933213,
+          "performance": 0.0035166749856958964,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": -3149960.082745937,
+            "endPositionValue": -3138882.696917004
+          }
+        }
+      ],
+      "fromBlock": 19255537,
+      "toBlock": 19262683
+    }
+  ]
+}

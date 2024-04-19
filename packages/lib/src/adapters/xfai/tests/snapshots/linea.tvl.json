@@ -1,0 +1,672 @@
+{
+  "blockNumber": 3717682,
+  "snapshot": [
+    {
+      "protocolId": "xfai",
+      "name": "Xfai",
+      "description": "Xfai pool adapter",
+      "siteUrl": "https://xfai.com",
+      "iconUrl": "https://assets.xfai.com/favicon.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "dex",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "type": "protocol",
+          "address": "0x0Ab89ed59d510d64FD3f44e973e13A7909dA3BA7",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x60D01EC2D5E98Ac51C8B4cF84DfCCE98D527c747",
+              "name": "izumi Token",
+              "symbol": "iZi",
+              "decimals": 18,
+              "totalSupplyRaw": "19980000434093409n",
+              "type": "underlying",
+              "totalSupply": 0.01998000043409341,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x60D01EC2D5E98Ac51C8B4cF84DfCCE98D527c747/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "1000n",
+          "totalSupply": 1e-15
+        },
+        {
+          "type": "protocol",
+          "address": "0x497d4cBeA7E45C5f2D4146D90e67eBAaee4f8084",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x6EF95B6f3b0F39508e3E04054Be96D5eE39eDE0d",
+              "name": "Symbiosis",
+              "symbol": "SIS",
+              "decimals": 18,
+              "totalSupplyRaw": "1352173181n",
+              "type": "underlying",
+              "totalSupply": 1.352173181e-9,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x6EF95B6f3b0F39508e3E04054Be96D5eE39eDE0d/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "1000n",
+          "totalSupply": 1e-15
+        },
+        {
+          "type": "protocol",
+          "address": "0xa076804861a21dD0ba2ea82C776F1AeFa9d12e57",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xe7DC30E9Bc08A1Dd1a2909D0f0e1Af4539398F01",
+              "name": "LINEAten",
+              "symbol": "TFS",
+              "decimals": 18,
+              "totalSupplyRaw": "80364561357377240968n",
+              "type": "underlying",
+              "totalSupply": 80.36456135737724,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe7DC30E9Bc08A1Dd1a2909D0f0e1Af4539398F01/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "103320824619241207n",
+          "totalSupply": 0.1033208246192412
+        },
+        {
+          "type": "protocol",
+          "address": "0x98E7cF03DeB846899B0Ac164CB77B05b940BF415",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+              "name": "Mendi Finance",
+              "symbol": "MENDI",
+              "decimals": 18,
+              "totalSupplyRaw": "9925657707222671948n",
+              "type": "underlying",
+              "totalSupply": 9.925657707222673,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x43E8809ea748EFf3204ee01F08872F063e44065f/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "115542200082913429n",
+          "totalSupply": 0.11554220008291342
+        },
+        {
+          "type": "protocol",
+          "address": "0x101c6e1e717f13fb351C0B51FFaa8839034F474D",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "totalSupplyRaw": "799502089n",
+              "type": "underlying",
+              "totalSupply": 7.99502089,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "361560447775636n",
+          "totalSupply": 0.000361560447775636
+        },
+        {
+          "type": "protocol",
+          "address": "0xB694ce4c96fb60DB5ad8b25dfF567c59f7a49a4E",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "totalSupplyRaw": "12743878826n",
+              "type": "underlying",
+              "totalSupply": 12743.878826,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "223296419649971n",
+          "totalSupply": 0.000223296419649971
+        },
+        {
+          "type": "protocol",
+          "address": "0xabBe925Cf6913A5af177Fb735dd817b02da0883f",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "totalSupplyRaw": "25614682752n",
+              "type": "underlying",
+              "totalSupply": 25614.682752,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "442504401058380n",
+          "totalSupply": 0.00044250440105838
+        },
+        {
+          "type": "protocol",
+          "address": "0x2c8852Fa100f712341Ce2213bc02456C077Bf263",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "totalSupplyRaw": "9113566105333405017758n",
+              "type": "underlying",
+              "totalSupply": 9113.566105333404,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "160950197091439214178n",
+          "totalSupply": 160.9501970914392
+        },
+        {
+          "type": "protocol",
+          "address": "0xf9365008401f0dC5477bdb80A59a5B0EB850332A",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x99AD925C1Dc14Ac7cc6ca1244eeF8043C74E99d5",
+              "name": "SHIBA INU",
+              "symbol": "SHIB",
+              "decimals": 18,
+              "totalSupplyRaw": "151n",
+              "type": "underlying",
+              "totalSupply": 1.51e-16,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x99AD925C1Dc14Ac7cc6ca1244eeF8043C74E99d5/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "1000n",
+          "totalSupply": 1e-15
+        },
+        {
+          "type": "protocol",
+          "address": "0xe6E03246cb57415a3978199612C0f2A6C7AE7e15",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xd2bc272EA0154A93bf00191c8a1DB23E67643EC5",
+              "name": "Pax Dollar",
+              "symbol": "USDP",
+              "decimals": 18,
+              "totalSupplyRaw": "1n",
+              "type": "underlying",
+              "totalSupply": 1e-18,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xd2bc272EA0154A93bf00191c8a1DB23E67643EC5/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "1000n",
+          "totalSupply": 1e-15
+        },
+        {
+          "type": "protocol",
+          "address": "0xb477d53aad75E1DF767C09507DAB2aD98C506A24",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x8C56017B172226fE024dEa197748FC1eaccC82B1",
+              "name": "XFIT",
+              "symbol": "XFIT",
+              "decimals": 18,
+              "totalSupplyRaw": "17525049836872675799387951n",
+              "type": "underlying",
+              "totalSupply": 17525049.836872675,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x8C56017B172226fE024dEa197748FC1eaccC82B1/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "54034810986430273133806n",
+          "totalSupply": 54034.810986430275
+        },
+        {
+          "type": "protocol",
+          "address": "0xF8Bc6D80320049494BB7Da57289b445bDF61BA39",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xe322E20738386766F769b0a6083f4141083d26d0",
+              "name": "THORChain ETH.RUNE",
+              "symbol": "RUNE",
+              "decimals": 18,
+              "totalSupplyRaw": "43n",
+              "type": "underlying",
+              "totalSupply": 4.3e-17,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe322E20738386766F769b0a6083f4141083d26d0/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "1000n",
+          "totalSupply": 1e-15
+        },
+        {
+          "type": "protocol",
+          "address": "0x122eeA08C5709004D5994bDF817eB72caf2a7701",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x2442Bd7AE83b51F6664De408A385375fe4a84F52",
+              "name": "Maker",
+              "symbol": "MKR",
+              "decimals": 18,
+              "totalSupplyRaw": "958233539464259122n",
+              "type": "underlying",
+              "totalSupply": 0.9582335394642592,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2442Bd7AE83b51F6664De408A385375fe4a84F52/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "1007633061456199845n",
+          "totalSupply": 1.0076330614562
+        },
+        {
+          "type": "protocol",
+          "address": "0x9dbFb1294A65A627727A996792324dEB494Fe469",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xe516a5CFf996cc399EFBb48355FD5Ab83438E7a9",
+              "name": "Gnosis Token",
+              "symbol": "GNO",
+              "decimals": 18,
+              "totalSupplyRaw": "71440207278062047n",
+              "type": "underlying",
+              "totalSupply": 0.07144020727806205,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe516a5CFf996cc399EFBb48355FD5Ab83438E7a9/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "34233847899512016n",
+          "totalSupply": 0.03423384789951202
+        },
+        {
+          "type": "protocol",
+          "address": "0x822381b9cd4df63C2d54d7871674C1b5d13e3962",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x0A79e44c99505c7f388CA30c787ff97217E73ecC",
+              "name": "Frax Share",
+              "symbol": "FXS",
+              "decimals": 18,
+              "totalSupplyRaw": "482343n",
+              "type": "underlying",
+              "totalSupply": 4.82343e-13,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x0A79e44c99505c7f388CA30c787ff97217E73ecC/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "11010n",
+          "totalSupply": 1.101e-14
+        },
+        {
+          "type": "protocol",
+          "address": "0xaa5Ea279Fe54fB8ff0FdE6f5073cdb2A77F8fFB6",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x9D36f49D3d42B3A9BcC0f5Ac76fF8ef78fB2bC01",
+              "name": "LBR",
+              "symbol": "LBR",
+              "decimals": 18,
+              "totalSupplyRaw": "736n",
+              "type": "underlying",
+              "totalSupply": 7.36e-16,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x9D36f49D3d42B3A9BcC0f5Ac76fF8ef78fB2bC01/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "1000n",
+          "totalSupply": 1e-15
+        },
+        {
+          "type": "protocol",
+          "address": "0x65a68da6E532B6Ccb29b6F61aFd792B6672864C1",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x1578f35532FA091EcED8638730F9dB829930ce16",
+              "name": "agEUR",
+              "symbol": "agEUR",
+              "decimals": 18,
+              "totalSupplyRaw": "1423977131963555726218n",
+              "type": "underlying",
+              "totalSupply": 1423.9771319635556,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x1578f35532FA091EcED8638730F9dB829930ce16/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "26070055410571021231n",
+          "totalSupply": 26.070055410571022
+        },
+        {
+          "type": "protocol",
+          "address": "0x9A8AEB02b90b67e23469bb01eCAB86F3512A77f8",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116",
+              "name": "StakeStone Ether",
+              "symbol": "STONE",
+              "decimals": 18,
+              "totalSupplyRaw": "5522965628985411625n",
+              "type": "underlying",
+              "totalSupply": 5.522965628985411,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "5545902403761611431n",
+          "totalSupply": 5.545902403761612
+        },
+        {
+          "type": "protocol",
+          "address": "0xBDb4b1aBb18CC982206155d852aFc400ba47136b",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "totalSupplyRaw": "544977937940090351n",
+              "type": "underlying",
+              "totalSupply": 0.5449779379400903,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "1485402158721n",
+          "totalSupply": 0.000001485402158721
+        },
+        {
+          "type": "protocol",
+          "address": "0xc25A92d948990CaBa6e9C0fbe1402a481a77AdfF",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x1E1F509963A6D33e169D9497b11c7DbFe73B7F13",
+              "name": "USDT+",
+              "symbol": "USDT+",
+              "decimals": 6,
+              "totalSupplyRaw": "385620706n",
+              "type": "underlying",
+              "totalSupply": 385.620706,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x1E1F509963A6D33e169D9497b11c7DbFe73B7F13/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "6660595310621n",
+          "totalSupply": 0.000006660595310621
+        },
+        {
+          "type": "protocol",
+          "address": "0x9140A1f3f3112a4cEeDa15c7D07d61fC1b6A5061",
+          "name": "Xfai Liquidity Token",
+          "symbol": "XFAI-LP",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+              "name": "USD+",
+              "symbol": "USD+",
+              "decimals": 6,
+              "totalSupplyRaw": "466788247n",
+              "type": "underlying",
+              "totalSupply": 466.788247,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376/logo.png"
+            },
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "totalSupplyRaw": "0n",
+              "type": "underlying",
+              "totalSupply": 0,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+            }
+          ],
+          "totalSupplyRaw": "8079899188290n",
+          "totalSupply": 0.00000807989918829
+        }
+      ]
+    }
+  ]
+}

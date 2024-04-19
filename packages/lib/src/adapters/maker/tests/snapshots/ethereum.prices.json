@@ -1,0 +1,41 @@
+{
+  "blockNumber": 19661884,
+  "snapshot": [
+    {
+      "protocolId": "maker",
+      "name": "Maker",
+      "description": "Maker sDAI adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "s-dai",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+          "name": "Savings Dai",
+          "symbol": "sDAI",
+          "decimals": 18,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "name": "Dai Stablecoin",
+              "symbol": "DAI",
+              "decimals": 18,
+              "type": "underlying",
+              "underlyingRateRaw": "1073065096858645706n",
+              "underlyingRate": 1.0730650968586457,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
