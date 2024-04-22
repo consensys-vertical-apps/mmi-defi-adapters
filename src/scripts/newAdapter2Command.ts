@@ -105,8 +105,6 @@ async function initiateQuestionnaire() {
                                                              ` +
       colorReset,
   )
-  console.log('\n')
-  console.log('\n')
 
   const firstQuestionId = 'protocolKey'
 
@@ -161,7 +159,7 @@ async function initiateQuestionnaire() {
     }
     default:
       {
-        await buildAdapterFromBlackTemplate(answers, outcomes)
+        await buildAdapterFromBlankTemplate(answers, outcomes)
       }
 
       await buildIntegrationTests(answers)
@@ -240,11 +238,11 @@ export function newAdapter2Command(program: Command) {
     .action(initiateQuestionnaire)
 }
 
-async function readBlankTemplate(filePath: string) {
+export async function readBlankTemplate(filePath: string) {
   return readFile(filePath, { encoding: 'utf8' })
 }
 
-function generateAdapter(
+export function generateAdapter(
   answers: Answers,
   outcomes: Outcomes,
   blankAdapter: string,
@@ -268,7 +266,7 @@ function generateAdapter(
 /**
  * @description Creates a new adapter using the template
  */
-async function buildAdapterFromBlackTemplate(
+async function buildAdapterFromBlankTemplate(
   answers: Answers,
   outcomes: Outcomes,
 ) {
