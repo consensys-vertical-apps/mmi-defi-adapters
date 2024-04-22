@@ -1,38 +1,18 @@
-import {
-  DefiPositionResponse,
-  DefiProvider,
-} from '@metamask-institutional/defi-adapters'
-import { useEffect, useState } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Positions } from './Positions'
+
+const queryClient = new QueryClient()
 
 function App() {
-  const [positions, setPositions] = useState<DefiPositionResponse[]>([])
-
-  useEffect(() => {
-    const init = async () => {
-      const provider = new DefiProvider()
-      const positions = await provider.getPositions({
-        userAddress: '0x92832b0f4435e1c4510bd601727356b738c99312',
-        filterProtocolIds: ['lido'],
-        filterChainIds: [1],
-      })
-
-      setPositions(positions)
-    }
-    init()
-  }, [])
-
   return (
-    <>
-      {/* <TableDemo /> */}
-      <pre>
-        {JSON.stringify(
-          positions,
-          (_, value) =>
-            typeof value === 'bigint' ? `${value.toString()}n` : value,
-          2,
-        )}
-      </pre>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <div className="w-[70%] mx-auto">
+        <header className="text-center py-4">
+          <h1 className="text-2xl font-bold">DeFi Adapters Library</h1>
+        </header>
+        <Positions />
+      </div>
+    </QueryClientProvider>
   )
 }
 

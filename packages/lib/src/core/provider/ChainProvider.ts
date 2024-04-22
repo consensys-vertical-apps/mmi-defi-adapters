@@ -34,27 +34,16 @@ export class ChainProvider {
       throw new Error('Url missing')
     }
 
-    const newUrl = url
-
-    if (chainId === 1) {
-      console.log('RPC SETUP', {
-        chainId,
-        url,
-        newUrl,
-      })
-    }
-
     // Set Enable-Failover header
     // Infura will forward rpc requests to backup provider incase of failures
-    // const fetchRequest = new FetchRequest(url)
-    const fetchRequest = new FetchRequest('/foo')
+    const fetchRequest = new FetchRequest(url)
     fetchRequest.setHeader('Enable-Failover', 'true')
 
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, `Using standard provider`)
       return new CustomJsonRpcProvider({
         fetchRequest,
-        url: newUrl,
+        url,
         chainId,
         customOptions,
         jsonRpcProviderOptions: {
@@ -63,11 +52,11 @@ export class ChainProvider {
       })
     }
 
-    logger.debug({ chainId, newUrl }, 'Using multicall queue provider')
+    logger.debug({ chainId, url }, 'Using multicall queue provider')
 
     const provider = new CustomJsonRpcProvider({
       fetchRequest,
-      url: newUrl,
+      url,
       chainId,
       customOptions,
       jsonRpcProviderOptions: {

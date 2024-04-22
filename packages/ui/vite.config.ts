@@ -49,20 +49,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  server: {
-    proxy: {
-      // Proxying requests from /api to your target API
-      '/mainnet': {
-        target: 'https://mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/mainnet/, ''),
-      },
-      '/foo': {
-        target: 'https://mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/foo/, ''),
-      },
-      // '/foo': 'https://mainnet.infura.io/v3/abafec30d6aa45ffa0c763b5552a2d02',
-    },
-  },
 })
