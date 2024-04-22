@@ -1,8 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import {
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { provider } from './defiProvider'
 import {
   DefiPositionResponse,
@@ -41,17 +38,15 @@ export function Positions() {
   const queryClient = useQueryClient()
   const { register, handleSubmit } = useForm<{
     userAddress: string
-    filterProcotolIds?: Protocol[]
   }>()
   const [userAddress, setUserAddress] = useState('')
 
   const onSubmit: SubmitHandler<{
     userAddress: string
-    filterProcotolIds?: Protocol[]
   }> = async (data) => {
     setUserAddress(data.userAddress)
     await queryClient.invalidateQueries({
-      queryKey: ['repoData', userAddress],
+      queryKey: ['positions', userAddress],
     })
   }
 
@@ -64,7 +59,6 @@ export function Positions() {
         <Input
           type="text"
           {...register('userAddress')}
-          defaultValue={userAddress}
           placeholder="User Address"
           className="p-2 mb-4 border border-gray-300 rounded"
         />
@@ -81,18 +75,15 @@ export function Positions() {
 }
 
 function PositionsDisplay({ userAddress }: { userAddress: string }) {
-  const { isPending, error, data, isFetching } = useQuery({
-    queryKey: ['repoData', userAddress],
-    queryFn: () =>
-      provider.getPositions({
-        userAddress,
-      }),
+  const { isPending, error, data, isFetching, isRefetching } = useQuery({
+    queryKey: ['positions', userAddress],
+    queryFn: () => provider.getPositions({ userAddress }),
     enabled: userAddress.length > 0,
   })
 
   if (userAddress.length === 0) return null
 
-  if (isPending || isFetching) return 'Loading...'
+  if (isPending || isFetching || isRefetching) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
 
