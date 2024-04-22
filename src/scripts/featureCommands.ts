@@ -188,7 +188,20 @@ function transactionParamsCommand(
           asset,
         },
       ) => {
-        const txInputParams: string[] = inputs.split(',')
+        const txInputParams = inputs
+          .split(',')
+          .reduce((inputParams: Record<string, string>, param: string) => {
+            const [key, value] = param.split(':')
+
+            if (!key || !value) {
+              throw new Error('Invalid input params')
+            }
+
+            return {
+              ...inputParams,
+              [key]: value,
+            }
+          }, {})
 
         const protocolId = protocolFilter(protocol)
         const chainId = chainFilter(chain)
