@@ -12,9 +12,11 @@ import {
 
 export const questionsJson = {
   protocolKey: {
-    question: 'Enter the name of your protocol in PascalCase.',
+    question: 'Enter the name of your protocol in PascalCase',
     type: 'text',
     next: 'protocolId',
+    default: () => 'LenderV2',
+
     validate: (input: string) =>
       isPascalCase(input) || 'Value must be PascalCase',
     outcomes: {},
@@ -23,21 +25,26 @@ export const questionsJson = {
     question: 'Enter an ID for your protocol in kebab-case.',
     type: 'text',
     next: 'productId',
+    default: ({ protocolKey }: { protocolKey: string }) =>
+      kebabCase(protocolKey),
     validate: (input: string) =>
       isKebabCase(input) || 'Value must be kebab-case',
     outcomes: {},
   },
   productId: {
-    question: 'Enter a product ID for your product',
+    question: 'Enter a product ID for your product in kebab-case.',
     type: 'text',
     next: 'chainKeys',
+    default: () => 'farming',
     outcomes: {},
   },
   chainKeys: {
     question: 'Select the chains the product is on',
     type: 'checkbox',
     choices: Object.keys(Chain),
-    default: ['Ethereum'],
+    default: () => {
+      return ['Ethereum']
+    },
     next: 'forkCheck',
     outcomes: {},
   },

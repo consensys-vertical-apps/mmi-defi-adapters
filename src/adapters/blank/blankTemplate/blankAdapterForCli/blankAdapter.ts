@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { Protocol } from '../../../protocols'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
@@ -27,15 +28,7 @@ import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { helpers } from '../../../../scripts/helpers'
 import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import {
-  PLACEHOLDER_ASSET_TYPE,
-  PLACEHOLDER_BUILD_METADATA,
-  PLACEHOLDER_GET_DEPOSITS,
-  PLACEHOLDER_GET_POSITIONS,
-  PLACEHOLDER_GET_PROTOCOL_TOKENS,
-  PLACEHOLDER_GET_WITHDRAWALS,
-  PLACEHOLDER_UNWRAP,
-} from '../../../../scripts/newAdapter2Command'
+import { Replacements } from '../../../../scripts/replacements'
 
 type Metadata = Record<
   string,
@@ -81,22 +74,22 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: PLACEHOLDER_ASSET_TYPE,
+        type: Replacements.ASSET_TYPE.placeholder,
       },
     }
   }
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<Metadata> {
-    return PLACEHOLDER_BUILD_METADATA
+    return Replacements.BUILD_METADATA.placeholder
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return PLACEHOLDER_GET_PROTOCOL_TOKENS
+    return Replacements.GET_PROTOCOL_TOKENS.placeholder
   }
 
   async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    return PLACEHOLDER_GET_POSITIONS
+    return Replacements.GET_POSITIONS.placeholder
   }
 
   async getWithdrawals({
@@ -105,7 +98,7 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return PLACEHOLDER_GET_WITHDRAWALS
+    return Replacements.GET_WITHDRAWALS.placeholder
   }
 
   async getDeposits({
@@ -114,7 +107,7 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return PLACEHOLDER_GET_DEPOSITS
+    return Replacements.GET_DEPOSITS.placeholder
   }
 
   async getTotalValueLocked(
@@ -124,7 +117,7 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
   }
 
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    return PLACEHOLDER_UNWRAP
+    return Replacements.UNWRAP.placeholder
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {
@@ -153,7 +146,7 @@ export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
     return poolMetadata
   }
 
-  //PLACEHOLDER_GET_REWARD_POSITIONS
+  //Replacements.GET_REWARD_POSITIONS.placeholder
 
-  //PLACEHOLDER_GET_REWARD_WITHDRAWALS
+  //Replacements.GET_REWARD_WITHDRAWALS.placeholder
 }

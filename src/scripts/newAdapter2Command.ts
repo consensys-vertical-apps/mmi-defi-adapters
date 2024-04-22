@@ -18,22 +18,11 @@ import {
 } from './newAdapterCommand'
 import { Erc20Metadata } from '../types/erc20Metadata'
 import chalk from 'chalk'
+import { Replacements } from './replacements'
 
-type Metadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
-
-export const PLACEHOLDER_BUILD_METADATA = '' as unknown as Metadata
-export const PLACEHOLDER_GET_PROTOCOL_TOKENS = '' as any
-export const PLACEHOLDER_GET_POSITIONS = '' as any
-export const PLACEHOLDER_GET_WITHDRAWALS = '' as any
-export const PLACEHOLDER_GET_DEPOSITS = '' as any
-export const PLACEHOLDER_UNWRAP = '' as any
-export const PLACEHOLDER_ASSET_TYPE = '' as any
+const colorReset = '\x1b[0m'
+const colorBlue = '\x1b[38;2;0;112;243m'
+const styleBold = '\x1b[1m'
 
 export interface QuestionConfig {
   question: string
@@ -43,6 +32,8 @@ export interface QuestionConfig {
   //eslint-disable-next-line
   outcomes?: Record<string, any>
   validate?: (input: string) => boolean | string
+  suffix?: string
+  default?: any
 }
 
 export type Outcomes = {
@@ -70,6 +61,53 @@ type Answers = Record<keyof typeof questionsJson, string> & {
 }
 
 async function initiateQuestionnaire() {
+  console.log(
+    colorBlue +
+      styleBold +
+      `                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+      +-.                                .-+                 
+     -###*==:                        :-=*#%#=                
+     #######+====-              :====+#######.               
+    *#########*+====..........====+*#########*               
+    :############+==-........-==+############:               
+     ##############*=:......:=*##############                
+     =###############+......+###############=                
+     +#############*==......==*#############+                
+     -###########*====......====*###########-                
+     .#######+--======:....:======-:=#######.                
+       --:....-=======:....:=======-.....--                  
+       ......-+****+++-....-++++****-......                  
+      ........:+***##*-....-*##***+-........                 
+      .........:=-+%@*=....=*%%*-=:.........                 
+     ...........-....:-....-:....-...........                
+     ========++++-....-....-....-++++========                
+     :=======+**+===:........:===+**+=======-                
+      ========+*+===--@@@@@@--===+*=========.                
+      :==========:...=@@@@@@=...:==========-                 
+       ==-:.      ....:::::::...      .:-==                  
+                     .::::::.                                
+                                                             
+                                                             
+                                                             
+                                                             
+            Create new DeFi Adapter!                                              
+                                                             
+                                                             
+                                                             
+                                                             ` +
+      colorReset,
+  )
+  console.log('\n')
+  console.log('\n')
+
   const firstQuestionId = 'protocolKey'
 
   const [answers, outcomes] = await askQuestion(firstQuestionId)
@@ -79,8 +117,6 @@ async function initiateQuestionnaire() {
     answers.protocolKey,
     answers.productId,
   )
-
-  console.log('End of questionnaire')
 
   switch (outcomes.template) {
     case 'UniswapV2': {
@@ -159,7 +195,11 @@ async function askQuestion(
         name: key,
         message: questionConfig.question,
         choices: questionConfig.choices,
+        default: questionConfig?.default?.(answers),
+        prefix: chalk.blue('?'),
+        suffix: questionConfig.suffix,
         validate: questionConfig.validate,
+        pageSize: 9990,
       },
     ])
   )[key]
@@ -209,273 +249,20 @@ function generateAdapter(
   outcomes: Outcomes,
   blankAdapter: string,
 ): string {
-  let updatedTemplate = blankAdapter
-    .replace(/adapterClassName/g, answers.adapterClassName)
-    .replace(/{{protocolId}}/g, answers.protocolId)
-    .replace(/{{protocolKey}}/g, answers.protocolKey)
-    .replace(/{{productId}}/g, answers.productId)
-
-  if (outcomes.defiAssetStructure) {
-    const regex = new RegExp('return PLACEHOLDER_ASSET_TYPE', 'g')
-
-    switch (outcomes.defiAssetStructure) {
-      case 'singleProtocolToken' || 'multipleProtocolTokens':
-        updatedTemplate = updatedTemplate.replace(
-          regex,
-          `AssetType.StandardErc20`,
-        )
-        break
-
-      default:
-        updatedTemplate = updatedTemplate.replace(
-          regex,
-          `AssetType.NonStandardErc20`,
-        )
-        break
-    }
-  }
-
-  if (outcomes.unwrap) {
-    const regex = new RegExp('return PLACEHOLDER_UNWRAP', 'g')
-
-    switch (outcomes.unwrap) {
-      case 'useOneToOneMethod':
-        updatedTemplate = updatedTemplate.replace(
-          regex,
-          `return helpers.unwrapOneToOne({
-            protocolToken: await this.getProtocolToken(_input.protocolTokenAddress),
-            underlyingTokens: await this.getUnderlyingTokens(_input.protocolTokenAddress)
-          })`,
-        )
-        break
-      default:
-        updatedTemplate = updatedTemplate.replace(
-          regex,
-          'throw new NotImplementedError()',
-        )
-        break
-    }
-  }
-
-  if (outcomes.getPositions && outcomes.defiAssetStructure) {
-    const replace = new RegExp('return PLACEHOLDER_GET_POSITIONS', 'g')
-
-    switch (`${outcomes.getPositions}_${outcomes.defiAssetStructure}`) {
-      case 'useBalanceOfHelper_singleProtocolToken':
-      case 'useBalanceOfHelper_multipleProtocolTokens':
-        updatedTemplate = updatedTemplate.replace(
-          replace,
-          `return helpers.getBalanceOfTokens({
-            ..._input,
-            protocolTokens: await this.getProtocolTokens(),
-            provider: this.provider
-          })`,
-        )
-        break
-      default:
-        updatedTemplate = updatedTemplate.replace(
-          replace,
-          'throw new NotImplementedError()',
-        )
-        break
-    }
-  }
-
-  if (outcomes.buildMetadataFunction && outcomes.underlyingTokens) {
-    const regex = new RegExp('return PLACEHOLDER_BUILD_METADATA', 'g')
-
-    switch (`${outcomes.buildMetadataFunction}_${outcomes.underlyingTokens}`) {
-      case 'singleProtocolToken_oneUnderlying':
-        updatedTemplate = updatedTemplate.replace(
-          regex,
-          `const protocolToken = await helpers.getTokenMetadata(
-            getAddress('0x'),
-            this.chainId,
-            this.provider,
-          )
-      
-          const underlyingTokens = await helpers.getTokenMetadata(
-            getAddress('0x'),
-            this.chainId,
-            this.provider,
-          )
-          return {
-            [protocolToken.address]: {
-              protocolToken: protocolToken,
-              underlyingTokens: [underlyingTokens],
-            },
-          }`,
-        )
-        break
-      case 'singleProtocolToken_multipleUnderlying':
-        updatedTemplate = updatedTemplate.replace(
-          regex,
-          `    const protocolToken = await helpers.getTokenMetadata(
-            '0x',
-            this.chainId,
-            this.provider,
-          )
-      
-          const underlyingTokensOne = await helpers.getTokenMetadata(
-            '0x',
-            this.chainId,
-            this.provider,
-          )
-          const underlyingTokensTwo = await helpers.getTokenMetadata(
-            '0x',
-            this.chainId,
-            this.provider,
-          )
-          return {
-            [protocolToken.address]: {
-              protocolToken: protocolToken,
-              underlyingTokens: [underlyingTokensOne, underlyingTokensTwo],
-            },
-          }`,
-        )
-        break
-      case 'multipleProtocolTokens_oneUnderlying':
-        updatedTemplate = updatedTemplate.replace(
-          regex,
-          `throw new NotImplementedError()`,
-        )
-        break
-      case 'multipleProtocolTokens_multipleUnderlying':
-        updatedTemplate = updatedTemplate.replace(
-          regex,
-          `throw new NotImplementedError()`,
-        )
-        break
-      default:
-        updatedTemplate = updatedTemplate.replace(
-          regex,
-          'throw new NotImplementedError()',
-        )
-        break
-    }
-  }
-
-  if (outcomes.withdrawalsFunction && outcomes.depositsFunction) {
-    const regexWithdrawals = new RegExp(
-      'return PLACEHOLDER_GET_WITHDRAWALS',
-      'g',
-    )
-    const regexDeposits = new RegExp('return PLACEHOLDER_GET_DEPOSITS', 'g')
-
-    switch (`${outcomes.withdrawalsFunction}_${outcomes.depositsFunction}`) {
-      case 'useWithdrawalHelper_useDepositsHelper':
-        updatedTemplate = updatedTemplate.replace(
-          regexWithdrawals,
-          `return helpers.withdrawals({
-            protocolToken: await this.getProtocolToken(protocolTokenAddress),
-            filter: { fromBlock, toBlock, userAddress },
-            provider: this.provider,
-          })`,
-        )
-        updatedTemplate = updatedTemplate.replace(
-          regexDeposits,
-          `return helpers.deposits({
-            protocolToken: await this.getProtocolToken(protocolTokenAddress),
-            filter: { fromBlock, toBlock, userAddress },
-            provider: this.provider,
-          })`,
-        )
-        break
-      default:
-        updatedTemplate = updatedTemplate.replace(
-          regexWithdrawals,
-          'throw new NotImplementedError()',
-        )
-        updatedTemplate = updatedTemplate.replace(
-          regexDeposits,
-          'throw new NotImplementedError()',
-        )
-        break
-    }
-  }
-
-  if (outcomes.rewards) {
-    const regexRewardPositions = /\/\/PLACEHOLDER_GET_REWARD_POSITIONS/g
-    const regexRewardWithdrawals = /\/\/PLACEHOLDER_GET_REWARD_WITHDRAWALS/g
-    const regexGetPositionsFunctionName = /getPositions/g
-    const regexGetWithdrawalsFunctionName = /getWithdrawals/g
-    switch (outcomes.rewards) {
-      case 'addRewards':
-        updatedTemplate = updatedTemplate.replace(
-          regexGetPositionsFunctionName,
-          `getPositionsWithoutRewards`,
-        )
-        updatedTemplate = updatedTemplate.replace(
-          /implements/g,
-          `extends RewardsAdapter implements`,
-        )
-        updatedTemplate = updatedTemplate.replace(
-          /this.provider = provider/g,
-          `super()
-          this.provider = provider`,
-        )
-
-        updatedTemplate = updatedTemplate.replace(
-          regexRewardPositions,
-          `async getRewardPositions({
-            userAddress,
-            protocolTokenAddress,
-            blockNumber,
-          }: {
-            userAddress: string
-            blockNumber?: number
-            protocolTokenAddress: string
-          }): Promise<Underlying[]> {
-            throw new NotImplementedError()
-          }`,
-        )
-
-        updatedTemplate = updatedTemplate.replace(
-          regexGetWithdrawalsFunctionName,
-          `getWithdrawalsWithoutRewards`,
-        )
-        updatedTemplate = updatedTemplate.replace(
-          regexRewardWithdrawals,
-          `async getRewardWithdrawals({
-            userAddress,
-            protocolTokenAddress,
-          }: GetEventsInput): Promise<MovementsByBlock[]> {
-            throw new NotImplementedError()
-          }`,
-        )
-
-        break
-      default:
-        updatedTemplate = updatedTemplate.replace(regexRewardPositions, '')
-        updatedTemplate = updatedTemplate.replace(regexRewardWithdrawals, '')
-        break
-    }
-  }
-
-  const regexProtocolTokens = new RegExp(
-    'return PLACEHOLDER_GET_PROTOCOL_TOKENS',
-    'g',
+  return Object.keys(Replacements).reduce(
+    (currentTemplate, replace: string) => {
+      // Check if the operation exists in the Replacements object
+      const replacement = Replacements[replace as keyof typeof Replacements]
+      if (replacement) {
+        // Apply the replacement operation
+        return replacement.replace(outcomes, currentTemplate, answers)
+      } else {
+        console.warn(`Replacement operation '${replace}' not found.`)
+        return currentTemplate
+      }
+    },
+    blankAdapter,
   )
-  switch (outcomes.defiAssetStructure) {
-    case 'singleProtocolToken' || 'multiProtocolToken':
-      updatedTemplate = updatedTemplate.replace(
-        regexProtocolTokens,
-        `return Object.values(await this.buildMetadata()).map(
-          ({ protocolToken }) => protocolToken,
-        )`,
-      )
-
-      break
-    default:
-      updatedTemplate = updatedTemplate.replace(
-        regexProtocolTokens,
-        'throw new NotImplementedError()',
-      )
-
-      break
-  }
-
-  return updatedTemplate
 }
 
 /**
