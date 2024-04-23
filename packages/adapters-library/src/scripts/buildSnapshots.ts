@@ -200,7 +200,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
             }
           })()
 
-          const filePath = `./src/adapters/${protocolId}/tests/snapshots/${
+          const filePath = `./packages/adapters-library/src/adapters/${protocolId}/tests/snapshots/${
             ChainName[testCase.chainId]
           }.${testCase.method}${
             testCase.key ? `.${kebabCase(testCase.key)}` : ''
@@ -237,7 +237,7 @@ async function updateBlockNumber(
   blockNumber: number,
 ) {
   const testCasesFile = path.resolve(
-    `./src/adapters/${protocolId}/tests/testCases.ts`,
+    `./packages/adapters-library/src/adapters/${protocolId}/tests/testCases.ts`,
   )
   const contents = await fs.readFile(testCasesFile, 'utf-8')
   const ast = parse(contents, {
@@ -324,7 +324,7 @@ async function updateFilters(
   })
 
   const testCasesFile = path.resolve(
-    `./src/adapters/${protocolId}/tests/testCases.ts`,
+    `./packages/adapters-library/src/adapters/${protocolId}/tests/testCases.ts`,
   )
   const contents = await fs.readFile(testCasesFile, 'utf-8')
   const ast = parse(contents, {

@@ -135,7 +135,7 @@ async function addStaticImport({
   fileKey: string
 }) {
   const adapterMetadataFile = path.resolve(
-    './src/core/metadata/AdapterMetadata.ts',
+    './packages/adapters-library/src/core/metadata/AdapterMetadata.ts',
   )
   const contents = await fs.readFile(adapterMetadataFile, 'utf-8')
   const ast = parse(contents, {
