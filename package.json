@@ -1,9 +1,15 @@
 {
-  "name": "my-monorepo",
+  "name": "defi-adapters-monorepo",
+  "description": "Defi adapters monorepo for MMI Dashboard",
+  "author": "MMI Team",
+  "license": "MIT",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "npm run dev -w packages/ui -- --force",
     "build": "npm run build -w packages/lib",
