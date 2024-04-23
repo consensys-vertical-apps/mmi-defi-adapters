@@ -25,4 +25,4 @@
 
 #### Defined in
 
-[erc20Metadata.ts:1](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L1)
+[src/types/erc20Metadata.ts:1](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L1)

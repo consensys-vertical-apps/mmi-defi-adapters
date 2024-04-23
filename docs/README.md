@@ -10,7 +10,7 @@
 - [adapter](modules/adapter.md)
 - [deepPartial](modules/deepPartial.md)
 - [erc20Metadata](modules/erc20Metadata.md)
-- [getTransactionParamsInput](modules/getTransactionParamsInput.md)
 - [json](modules/json.md)
 - [response](modules/response.md)
 - [testCase](modules/testCase.md)
+- [writeActions](modules/writeActions.md)

@@ -1,40 +1,40 @@
-[@metamask-institutional/defi-adapters](../README.md) / [adapter](../modules/adapter.md) / TokenBalance
+[@metamask-institutional/defi-adapters](../README.md) / [adapter](../modules/adapter.md) / TokenTvl
 
-# Interface: TokenBalance
+# Interface: TokenTvl
 
-[adapter](../modules/adapter.md).TokenBalance
+[adapter](../modules/adapter.md).TokenTvl
 
 ## Hierarchy
 
 - [`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata)
 
-  ↳ **`TokenBalance`**
+  ↳ **`TokenTvl`**
 
-  ↳↳ [`Underlying`](adapter.Underlying.md)
+  ↳↳ [`UnderlyingTokenTvl`](adapter.UnderlyingTokenTvl.md)
 
-  ↳↳ [`ProtocolPosition`](adapter.ProtocolPosition.md)
+  ↳↳ [`ProtocolTokenTvl`](adapter.ProtocolTokenTvl.md)
 
 ## Table of contents
 
 ### Properties
 
-- [balanceRaw](adapter.TokenBalance.md#balanceraw)
-- [address](adapter.TokenBalance.md#address)
-- [name](adapter.TokenBalance.md#name)
-- [symbol](adapter.TokenBalance.md#symbol)
-- [decimals](adapter.TokenBalance.md#decimals)
+- [totalSupplyRaw](adapter.TokenTvl.md#totalsupplyraw)
+- [address](adapter.TokenTvl.md#address)
+- [name](adapter.TokenTvl.md#name)
+- [symbol](adapter.TokenTvl.md#symbol)
+- [decimals](adapter.TokenTvl.md#decimals)
 
 ## Properties
 
-### balanceRaw
+### totalSupplyRaw
 
-• **balanceRaw**: `bigint`
+• **totalSupplyRaw**: `bigint`
 
-User's balance raw
+Total underlying token locked in pool raw
 
 #### Defined in
 
-[src/types/adapter.ts:188](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L188)
+[src/types/adapter.ts:253](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L253)
 
 ___
 

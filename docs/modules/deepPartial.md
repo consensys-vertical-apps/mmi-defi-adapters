@@ -22,4 +22,4 @@
 
 #### Defined in
 
-[deepPartial.ts:1](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/deepPartial.ts#L1)
+[src/types/deepPartial.ts:1](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/deepPartial.ts#L1)
