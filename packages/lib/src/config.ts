@@ -85,6 +85,9 @@ const ConfigSchema = z
     rpcGetLogsRetries: z
       .number()
       .default(Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_RETRIES) || 1),
+    enableFailover: z
+      .boolean()
+      .default(process.env.DEFI_ADAPTERS_USE_FAILOVER !== 'false'),
   })
   .default({})
 

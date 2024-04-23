@@ -16,6 +16,7 @@ export type CustomJsonRpcProviderOptions = {
   rpcCallRetries: number
   rpcGetLogsTimeoutInMs: number
   rpcGetLogsRetries: number
+  enableFailover: boolean
 }
 
 export class CustomJsonRpcProvider extends JsonRpcProvider {
@@ -25,8 +26,9 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
 
   logsRetryHandler: ReturnType<typeof retryHandlerFactory>
 
+  enableFailover: boolean
+
   constructor({
-    fetchRequest,
     url,
     chainId,
     customOptions: {
@@ -34,10 +36,10 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
       rpcCallRetries,
       rpcGetLogsTimeoutInMs,
       rpcGetLogsRetries,
+      enableFailover,
     },
     jsonRpcProviderOptions,
   }: {
-    fetchRequest: FetchRequest
     url: string
     chainId: Chain
     customOptions: CustomJsonRpcProviderOptions
@@ -53,6 +55,7 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
       timeoutInMs: rpcGetLogsTimeoutInMs,
       maxRetries: rpcGetLogsRetries,
     })
+    this.enableFailover = enableFailover
   }
 
   /**
@@ -74,5 +77,15 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
 
   async getLogs(filter: Filter | FilterByBlockHash): Promise<Array<Log>> {
     return this.logsRetryHandler(() => super.getLogs(filter))
+  }
+
+  // Set Enable-Failover header
+  // Infura will forward rpc requests to backup provider incase of failures
+  _getConnection(): FetchRequest {
+    const request = super._getConnection()
+    if (this.enableFailover) {
+      request.setHeader('Enable-Failover', 'true')
+    }
+    return request
   }
 }

@@ -1,8 +1,4 @@
-import {
-  FetchRequest,
-  JsonRpcApiProviderOptions,
-  TransactionRequest,
-} from 'ethers'
+import { JsonRpcApiProviderOptions, TransactionRequest } from 'ethers'
 import { Chain } from '../constants/chains'
 import {
   CustomJsonRpcProvider,
@@ -23,21 +19,19 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   private cache: Record<string, Promise<CacheEntry>>
 
   constructor({
-    fetchRequest,
     url,
     chainId,
     multicallQueue,
     customOptions,
     jsonRpcProviderOptions,
   }: {
-    fetchRequest: FetchRequest
     url: string
     chainId: Chain
     multicallQueue: MulticallQueue
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
   }) {
-    super({ fetchRequest, url, chainId, customOptions, jsonRpcProviderOptions })
+    super({ url, chainId, customOptions, jsonRpcProviderOptions })
     this.multicallQueue = multicallQueue
     this.cache = {}
   }

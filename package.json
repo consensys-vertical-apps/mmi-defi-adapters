@@ -3,5 +3,31 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "dev": "npm run dev -w packages/ui -- --force",
+    "build": "npm run build -w packages/lib",
+    "build:watch": "npm run build:watch -w packages/lib",
+    "adapters-cli": "node --env-file=.env packages/lib/dist/scripts/index.js",
+    "build-metadata": "npm run adapters-cli build-metadata --",
+    "build-types": "npm run adapters-cli build-types --",
+    "new-adapter": "npm run adapters-cli new-adapter --",
+    "build-snapshots": "npm run adapters-cli build-snapshots --",
+    "positions": "npm run adapters-cli positions --",
+    "profits": "npm run adapters-cli profits --",
+    "unwrap": "npm run adapters-cli unwrap --",
+    "tvl": "npm run adapters-cli tvl --",
+    "deposits": "npm run adapters-cli deposits --",
+    "withdrawals": "npm run adapters-cli withdrawals --",
+    "stress": "npm run adapters-cli stress --",
+    "support": "npm run adapters-cli support --",
+    "fix": "npm run fix -ws",
+    "lint": "npm run lint -ws",
+    "prettier": "npm run prettier -ws",
+    "test": "npm run test -w packages/lib",
+    "test:tsc": "npm run test:tsc -w packages/lib",
+    "test:integration": "npm run test:integration -w packages/lib",
+    "test:cov": "npm run test:coverage -w packages/lib",
+    "build-docs": "npm run build-docs -w packages/lib"
+  }
 }

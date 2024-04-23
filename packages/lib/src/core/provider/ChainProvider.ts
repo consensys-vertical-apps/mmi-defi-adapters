@@ -1,5 +1,4 @@
-import { FetchRequest, Network } from 'ethers'
-import { HttpsProxyAgent } from 'https-proxy-agent'
+import { Network } from 'ethers'
 import { IConfig } from '../../config'
 import { Multicall__factory } from '../../contracts'
 import { Chain } from '../constants/chains'
@@ -34,15 +33,9 @@ export class ChainProvider {
       throw new Error('Url missing')
     }
 
-    // Set Enable-Failover header
-    // Infura will forward rpc requests to backup provider incase of failures
-    const fetchRequest = new FetchRequest(url)
-    fetchRequest.setHeader('Enable-Failover', 'true')
-
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, `Using standard provider`)
       return new CustomJsonRpcProvider({
-        fetchRequest,
         url,
         chainId,
         customOptions,
@@ -55,7 +48,6 @@ export class ChainProvider {
     logger.debug({ chainId, url }, 'Using multicall queue provider')
 
     const provider = new CustomJsonRpcProvider({
-      fetchRequest,
       url,
       chainId,
       customOptions,
@@ -80,7 +72,6 @@ export class ChainProvider {
     })
 
     return new CustomMulticallJsonRpcProvider({
-      fetchRequest,
       url,
       chainId,
       multicallQueue,
@@ -97,6 +88,7 @@ export class ChainProvider {
       rpcCallRetries: config.rpcCallRetries,
       rpcGetLogsTimeoutInMs: config.rpcGetLogsTimeoutInMs,
       rpcGetLogsRetries: config.rpcGetLogsRetries,
+      enableFailover: config.enableFailover,
     }
     return {
       [Chain.Ethereum]: this.provider({
