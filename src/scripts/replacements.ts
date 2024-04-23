@@ -1,6 +1,7 @@
 import { Answers } from 'inquirer'
 import { Outcomes } from './newAdapter2Command'
 
+//eslint-disable-next-line
 const EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK = '' as any
 
 export const Replacements = {
@@ -96,7 +97,7 @@ export const Replacements = {
     replace: (
       outcomes: Outcomes,
       updatedTemplate: string,
-      answers: Answers,
+      _answers: Answers,
     ): string => {
       const regexProtocolTokens = new RegExp(
         'return Replacements.GET_PROTOCOL_TOKENS.placeholder',
@@ -128,7 +129,7 @@ export const Replacements = {
     replace: (
       outcomes: Outcomes,
       updatedTemplate: string,
-      answers: Answers,
+      _answers: Answers,
     ): string => {
       if (outcomes.getPositions && outcomes.defiAssetStructure) {
         const replace = new RegExp(
@@ -141,7 +142,7 @@ export const Replacements = {
             outcomes.defiAssetStructure == 'singleProtocolToken':
             updatedTemplate = updatedTemplate.replace(
               replace,
-              `return helpers.getBalanceOfToken({
+              `return helpers.getBalanceOfTokens({
                 ..._input,
                 protocolTokens: await this.getProtocolTokens(),
                 provider: this.provider
@@ -175,7 +176,7 @@ export const Replacements = {
     replace: (
       outcomes: Outcomes,
       updatedTemplate: string,
-      answers: Answers,
+      _answers: Answers,
     ): string => {
       if (outcomes.withdrawalsFunction) {
         const regexWithdrawals = new RegExp(
@@ -212,7 +213,7 @@ export const Replacements = {
     replace: (
       outcomes: Outcomes,
       updatedTemplate: string,
-      answers: Answers,
+      _answers: Answers,
     ): string => {
       if (outcomes.depositsFunction) {
         const regexDeposits = new RegExp(

@@ -1,28 +1,30 @@
-import { readFile, writeFile } from 'fs/promises'
+import { readFile } from 'fs/promises'
+import path from 'path'
+import chalk from 'chalk'
 import { Command } from 'commander'
 import { prompt } from 'inquirer'
-import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
-import { questionsJson } from './questionnaire'
-import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
-import { compoundV2SupplyMarketForkAdapterTemplate } from './templates/compoundV2SupplyMarketForkAdapter'
-import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
-import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
 import { Chain } from '../core/constants/chains'
+import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
-import path from 'path'
 import {
   buildIntegrationTests,
   addProtocol,
   exportAdapter,
-  NewAdapterAnswers,
 } from './newAdapterCommand'
-import { Erc20Metadata } from '../types/erc20Metadata'
-import chalk from 'chalk'
-import { Replacements } from './replacements'
+import { questionsJson } from './questionnaire'
 
-const colorReset = '\x1b[0m'
-const colorBlue = '\x1b[38;2;0;112;243m'
-const styleBold = '\x1b[1m'
+import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
+import { compoundV2SupplyMarketForkAdapterTemplate } from './templates/compoundV2SupplyMarketForkAdapter'
+import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
+import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
+import { generateAdapter } from './generateAdapter'
+import type { DefiProvider } from '../defiProvider'
+
+const colorBlue = chalk.rgb(0, 112, 243).bold
+const boldWhiteBg = chalk.bgWhite.bold
+const boldText = chalk.bold
+const greenBrightText = chalk.italic
+const bluePrefix = chalk.blue('?')
 
 export interface QuestionConfig {
   question: string
@@ -32,8 +34,11 @@ export interface QuestionConfig {
   //eslint-disable-next-line
   outcomes?: Record<string, any>
   validate?: (input: string) => boolean | string
+  validateProductId?: (
+    defiProvider: DefiProvider,
+  ) => (input: string) => boolean | string
   suffix?: string
-  default?: any
+  default?: (answers: Answers, defiAdapter?: DefiProvider) => string | string[]
 }
 
 export type Outcomes = {
@@ -52,19 +57,37 @@ export type Outcomes = {
   unwrap: 'useOneToOneMethod' | 'notImplementedError'
   withdrawalsFunction: 'useWithdrawalHelper' | 'notImplementedError'
   depositsFunction: 'useDepositsHelper' | 'notImplementedError'
-  template: 'CompoundV2' | 'CurveGovernanceVesting' | 'UniswapV2'
+  template: 'CompoundV2' | 'CurveGovernanceVesting' | 'UniswapV2' | 'No'
 }
 
-type Answers = Record<keyof typeof questionsJson, string> & {
+export type Answers = {
   chainKeys: (keyof typeof Chain)[]
   adapterClassName: string
+  protocolId: string
+  productId: string
+  protocolKey: string
+  forkCheck: string
+  erc20Event: string
+  balanceQueryMethod: string
+  unwrapSimpleMapping: string
+  additionalRewards: string
 }
 
-async function initiateQuestionnaire() {
-  console.log(
-    colorBlue +
-      styleBold +
-      `                                                                        
+export async function newAdapter2Command(
+  program: Command,
+  defiProvider: DefiProvider,
+) {
+  program
+    .command('new-adapter2')
+    .description('Start the interactive CLI questionnaire')
+    .action(initiateQuestionnaire(defiProvider))
+}
+
+function initiateQuestionnaire(defiProvider: DefiProvider) {
+  return async () => {
+    console.log(
+      colorBlue(
+        `                                                                        
                                                                         
                                                                         
                                                                         
@@ -102,84 +125,159 @@ async function initiateQuestionnaire() {
                                                              
                                                              
                                                              
-                                                             ` +
-      colorReset,
-  )
+                                                             `,
+      ),
+    )
 
-  const firstQuestionId = 'protocolKey'
+    const firstQuestionId = 'protocolKey'
 
-  const [answers, outcomes] = await askQuestion(firstQuestionId)
+    const listQuestionsAnswers = await prompt({
+      type: 'confirm',
+      name: 'viewAllQuestions',
+      message:
+        'Would you like to view all questions? This will help you know what to look for in the protocol.',
+      prefix: chalk.blue('?'),
+    })
 
-  // create adapter class name
-  answers.adapterClassName = adapterClassName(
-    answers.protocolKey,
-    answers.productId,
-  )
-
-  switch (outcomes.template) {
-    case 'UniswapV2': {
-      const code = uniswapV2PoolForkAdapterTemplate({
-        protocolKey: answers.protocolId,
-        productId: answers.productId,
-        adapterClassName: answers.adapterClassName,
-        chainKeys: answers.chainKeys, // TODO Rename to chainKeys
-      })
-
-      await createAdapterFile(answers, code)
-      break
-    }
-    case 'CurveGovernanceVesting': {
-      const code = votingEscrowAdapterTemplate({
-        protocolKey: answers.protocolId,
-        productId: answers.productId,
-        adapterClassName: answers.adapterClassName,
-      })
-
-      await createAdapterFile(answers, code)
-      break
-    }
-    case 'CompoundV2': {
-      const supplyMarketCode = compoundV2SupplyMarketForkAdapterTemplate({
-        protocolKey: answers.protocolId,
-        productId: answers.productId,
-        adapterClassName: answers.adapterClassName,
-      })
-
-      await createAdapterFile(answers, supplyMarketCode)
-
-      const borrowMarketCode = compoundV2BorrowMarketForkAdapterTemplate({
-        protocolKey: answers.protocolId,
-        productId: answers.productId,
-        adapterClassName: answers.adapterClassName,
-      })
-
-      await createAdapterFile(answers, borrowMarketCode)
-
-      break
-    }
-    default:
-      {
-        await buildAdapterFromBlankTemplate(answers, outcomes)
-      }
-
-      await buildIntegrationTests(answers)
-      await addProtocol(answers)
-      await exportAdapter(answers)
-
+    if (listQuestionsAnswers['viewAllQuestions']) {
+      console.log()
       console.log(
-        chalk`\n{bold New adapter created at: {bgBlack.red src/adapters/${
-          answers.protocolId
-        }/products/${answers.productId}/${lowerFirst(
-          answers.adapterClassName,
-        )}.ts}}\n`,
+        boldWhiteBg(
+          '                                            All questions                                              ',
+        ),
       )
-  }
 
-  console.log('The file has been saved!')
+      Object.keys(questionsJson).forEach((questionKey, index) => {
+        const question =
+          questionsJson[questionKey as keyof typeof questionsJson]
+        console.log(
+          greenBrightText(
+            boldText(`Q${index + 1} ${pascalCase(questionKey)}: `),
+          ) + greenBrightText(`${question.question}`),
+        )
+
+        // Check if the question has choices and print them
+        if ('choices' in question) {
+          console.log(greenBrightText('Options:'))
+          question.choices.forEach((choice: string, index: number) => {
+            console.log(greenBrightText(`  ${index + 1}. ${choice}`))
+          })
+        }
+        if (question.type === 'confirm') {
+          console.log(greenBrightText('Options:'))
+          console.log(greenBrightText(` 1. Yes`))
+          console.log(greenBrightText(` 2. No`))
+        }
+        if (question.type === 'text') {
+          console.log(greenBrightText('Options:'))
+          console.log(
+            greenBrightText(` 1. string`) +
+              ` (e.g ` +
+              greenBrightText(question.default({} as Answers)) +
+              `)`,
+          )
+        }
+
+        console.log()
+      })
+      console.log()
+      console.log(
+        boldWhiteBg(
+          '                                            All questions end                                              ',
+        ),
+      )
+      console.log()
+      const start = await prompt({
+        type: 'confirm',
+        name: 'start',
+        message: 'Ready to answer the questions? ',
+        prefix: bluePrefix,
+      })
+
+      if (!start['start']) {
+        console.log('Goodbye!')
+        return
+      }
+    }
+
+    const [answers, outcomes] = await askQuestion(
+      firstQuestionId,
+
+      defiProvider,
+    )
+
+    // create adapter class name
+    answers.adapterClassName = adapterClassName(
+      answers.protocolKey,
+      answers.productId,
+    )
+
+    switch (outcomes.template) {
+      case 'UniswapV2': {
+        const code = uniswapV2PoolForkAdapterTemplate({
+          protocolKey: answers.protocolId,
+          productId: answers.productId,
+          adapterClassName: answers.adapterClassName,
+          chainKeys: answers.chainKeys, // TODO Rename to chainKeys
+        })
+
+        await createAdapterFile(answers, code)
+        break
+      }
+      case 'CurveGovernanceVesting': {
+        const code = votingEscrowAdapterTemplate({
+          protocolKey: answers.protocolId,
+          productId: answers.productId,
+          adapterClassName: answers.adapterClassName,
+        })
+
+        await createAdapterFile(answers, code)
+        break
+      }
+      case 'CompoundV2': {
+        const supplyMarketCode = compoundV2SupplyMarketForkAdapterTemplate({
+          protocolKey: answers.protocolId,
+          productId: answers.productId,
+          adapterClassName: answers.adapterClassName,
+        })
+
+        await createAdapterFile(answers, supplyMarketCode)
+
+        const borrowMarketCode = compoundV2BorrowMarketForkAdapterTemplate({
+          protocolKey: answers.protocolId,
+          productId: answers.productId,
+          adapterClassName: answers.adapterClassName,
+        })
+
+        await createAdapterFile(answers, borrowMarketCode)
+
+        break
+      }
+      default:
+        {
+          await buildAdapterFromBlankTemplate(answers, outcomes)
+        }
+
+        await buildIntegrationTests(answers)
+        await addProtocol(answers)
+        await exportAdapter(answers)
+
+        console.log(
+          chalk`\n{bold New adapter created at: {bgBlack.red src/adapters/${
+            answers.protocolId
+          }/products/${answers.productId}/${lowerFirst(
+            answers.adapterClassName,
+          )}.ts}}\n`,
+        )
+    }
+
+    console.log('The file has been saved!')
+  }
 }
 
 async function askQuestion(
   key: keyof typeof questionsJson,
+  defiProvider: DefiProvider,
   answers = {} as Answers,
   outcomes = {} as Outcomes,
 ): Promise<[Answers, Outcomes]> {
@@ -196,14 +294,16 @@ async function askQuestion(
         default: questionConfig?.default?.(answers),
         prefix: chalk.blue('?'),
         suffix: questionConfig.suffix,
-        validate: questionConfig.validate,
+        validate:
+          questionConfig?.validateProductId?.(defiProvider) ??
+          questionConfig.validate,
         pageSize: 9990,
       },
     ])
   )[key]
 
   // Step2: add answer to answers
-  answers[key] = answer
+  answers[key as keyof Answers] = answer
 
   // Step3: add outcome to outcomes
   outcomes = {
@@ -228,44 +328,13 @@ async function askQuestion(
   //eslint-disable-next-line
   //@ts-ignore
   const nextQuestion = questionConfig.next[answer] || questionConfig.next
-  return await askQuestion(nextQuestion, answers, outcomes)
-}
-
-export function newAdapter2Command(program: Command) {
-  program
-    .command('new-adapter2')
-    .description('Start the interactive CLI questionnaire')
-    .action(initiateQuestionnaire)
+  return await askQuestion(nextQuestion, defiProvider, answers, outcomes)
 }
 
 export async function readBlankTemplate(filePath: string) {
   return readFile(filePath, { encoding: 'utf8' })
 }
 
-export function generateAdapter(
-  answers: Answers,
-  outcomes: Outcomes,
-  blankAdapter: string,
-): string {
-  return Object.keys(Replacements).reduce(
-    (currentTemplate, replace: string) => {
-      // Check if the operation exists in the Replacements object
-      const replacement = Replacements[replace as keyof typeof Replacements]
-      if (replacement) {
-        // Apply the replacement operation
-        return replacement.replace(outcomes, currentTemplate, answers)
-      } else {
-        console.warn(`Replacement operation '${replace}' not found.`)
-        return currentTemplate
-      }
-    },
-    blankAdapter,
-  )
-}
-
-/**
- * @description Creates a new adapter using the template
- */
 async function buildAdapterFromBlankTemplate(
   answers: Answers,
   outcomes: Outcomes,

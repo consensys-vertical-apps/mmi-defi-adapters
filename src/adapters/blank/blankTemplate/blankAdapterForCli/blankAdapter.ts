@@ -38,7 +38,7 @@ type Metadata = Record<
   }
 >
 
-export class adapterClassName implements IProtocolAdapter, IMetadataBuilder {
+export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
   productId = '{{productId}}'
   protocolId: Protocol
   chainId: Chain

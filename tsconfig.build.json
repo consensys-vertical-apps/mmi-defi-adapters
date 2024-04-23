@@ -1,5 +1,5 @@
 {
   "extends": "./tsconfig",
-  "exclude": ["**/*.test.*", "**/__mocks__/*", "**/__tests__/*"],
+  "exclude": ["**/*.test.*", "**/__mocks__/*", "**/__tests__/*",  "**/__snapshots__/*"],
   "hooks": [ "copy-files" ]
 }

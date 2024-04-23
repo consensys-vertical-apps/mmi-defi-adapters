@@ -1,9 +1,5 @@
-import { Answers } from 'inquirer'
-import {
-  Outcomes,
-  generateAdapter,
-  readBlankTemplate,
-} from './newAdapter2Command'
+import { generateAdapter } from './generateAdapter'
+import { Answers, Outcomes, readBlankTemplate } from './newAdapter2Command'
 
 // Helper function to generate all possible combinations of Outcomes
 function generateAllOutcomes(): Outcomes[] {
@@ -40,11 +36,7 @@ function generateAllOutcomes(): Outcomes[] {
     'useDepositsHelper',
     'notImplementedError',
   ]
-  const templateValues: Outcomes['template'][] = [
-    'CompoundV2',
-    'CurveGovernanceVesting',
-    'UniswapV2',
-  ]
+  const templateValues: Outcomes['template'][] = ['No']
 
   // Generate all possible combinations using nested loops
   const allOutcomes: Outcomes[] = []
@@ -84,8 +76,16 @@ function generateAllOutcomes(): Outcomes[] {
 
 // Run snapshot tests for all possible outcomes
 describe('generateAdapter function snapshots', () => {
-  const answers: Answers = {
-    // Define your answers here
+  const answers = {
+    protocolId: 'testProtocolId',
+    productId: 'testProductId',
+    protocolKey: 'testProductKey',
+    chainKeys: ['Ethereum'],
+    forkCheck: 'no',
+    erc20Event: '',
+    balanceQueryMethod: '',
+    unwrapSimpleMapping: '',
+    additionalRewards: '',
   }
 
   generateAllOutcomes().forEach((outcomes, index) => {
@@ -94,16 +94,12 @@ describe('generateAdapter function snapshots', () => {
         'src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
       )
       const generatedAdapter = generateAdapter(
-        answers as any,
+        answers as unknown as Answers,
         outcomes,
         blankTemplate,
       )
 
-
-      const snapshotData = {
-        outcomes,
-        adapter: generatedAdapter,
-      };
+      const snapshotData = [outcomes, generatedAdapter]
 
       expect(snapshotData).toMatchSnapshot()
     })

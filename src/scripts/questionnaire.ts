@@ -3,12 +3,20 @@
 // - if yes, add value to the output
 // type GetPositionsOptions<T, Value = 'getPositions', Output = []> =
 
+import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import {
   isKebabCase,
   isPascalCase,
   kebabCase,
 } from '../core/utils/caseConversion'
+import type { DefiProvider } from '../defiProvider'
+import { Answers } from './newAdapter2Command'
+
+// NEED TO ADD A QUESTION?
+// 1. Add question below
+// 2. Make sure you correctly implement next, if different path needed use an object for next
+// 3. Outcomes are used in the replacement methods (see replacements.js) to add code snippets to blank template
 
 export const questionsJson = {
   protocolKey: {
@@ -24,18 +32,11 @@ export const questionsJson = {
   protocolId: {
     question: 'Enter an ID for your protocol in kebab-case.',
     type: 'text',
-    next: 'productId',
+    next: 'chainKeys',
     default: ({ protocolKey }: { protocolKey: string }) =>
-      kebabCase(protocolKey),
+      protocolKey ? kebabCase(protocolKey) : 'lender-v2',
     validate: (input: string) =>
       isKebabCase(input) || 'Value must be kebab-case',
-    outcomes: {},
-  },
-  productId: {
-    question: 'Enter a product ID for your product in kebab-case.',
-    type: 'text',
-    next: 'chainKeys',
-    default: () => 'farming',
     outcomes: {},
   },
   chainKeys: {
@@ -45,8 +46,47 @@ export const questionsJson = {
     default: () => {
       return ['Ethereum']
     },
-    next: 'forkCheck',
+    next: 'productId',
     outcomes: {},
+  },
+  productId: {
+    question: 'Enter a product ID for your product in kebab-case.',
+    type: 'text',
+    next: 'forkCheck',
+    default: () => 'farming',
+    outcomes: {},
+    // validateProductId: (defiProvider: DefiProvider) => {
+    //   return ({ productId, protocolKey, protocolId, chainKeys }: Answers) => {
+    //     if (!isKebabCase(productId)) {
+    //       return 'Value must be kebab-case'
+    //     }
+
+    //     if (!protocolId) {
+    //       return true
+    //     }
+
+    //     // Check if that productId already exists for that protocol
+    //     const productExists = chainKeys.some((chainKey) => {
+    //       const chainId = Chain[chainKey]
+
+    //       try {
+    //         return defiProvider.adaptersController.fetchAdapter(
+    //           chainId,
+    //           protocolId as Protocol,
+    //           productId,
+    //         )
+    //       } catch (_) {
+    //         return false
+    //       }
+    //     })
+
+    //     if (productExists) {
+    //       return 'ProductId already exists for that Protocol and one of the chains selected'
+    //     }
+
+    //     return true
+    //   }
+    // },
   },
   forkCheck: {
     question:
@@ -69,6 +109,7 @@ export const questionsJson = {
       'Compound v2': {
         template: 'CompoundV2',
       },
+      No: { template: 'No' },
     },
   },
   defiAssetStructure: {

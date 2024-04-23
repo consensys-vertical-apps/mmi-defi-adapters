@@ -21,7 +21,7 @@ featureCommands(program, defiProvider)
 
 newAdapterCommand(program, defiProvider)
 
-newAdapter2Command(program)
+newAdapter2Command(program, defiProvider)
 
 blockAverage(program, chainProviders)
 
