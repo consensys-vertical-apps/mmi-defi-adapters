@@ -3,15 +3,12 @@
 // - if yes, add value to the output
 // type GetPositionsOptions<T, Value = 'getPositions', Output = []> =
 
-import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import {
   isKebabCase,
   isPascalCase,
   kebabCase,
 } from '../core/utils/caseConversion'
-import type { DefiProvider } from '../defiProvider'
-import { Answers } from './newAdapter2Command'
 
 // NEED TO ADD A QUESTION?
 // 1. Add question below
