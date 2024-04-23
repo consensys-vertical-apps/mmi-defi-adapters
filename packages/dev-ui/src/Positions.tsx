@@ -4,7 +4,6 @@ import { provider } from './defiProvider'
 import {
   DefiPositionResponse,
   ChainName,
-  Protocol,
 } from '@metamask-institutional/defi-adapters'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
 import {

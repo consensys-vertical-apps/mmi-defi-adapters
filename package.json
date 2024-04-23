@@ -30,12 +30,22 @@
     "support": "npm run adapters-cli support --",
     "fix": "npm run fix -ws",
     "lint": "npm run lint -ws",
-    "prettier": "npm run prettier -ws",
     "test": "npm run test -w packages/adapters-library",
     "test:tsc": "npm run test:tsc -w packages/adapters-library",
     "test:integration": "npm run test:integration -w packages/adapters-library",
     "test:cov": "npm run test:cov -w packages/adapters-library",
     "build-docs": "npm run build-docs -w packages/adapters-library",
     "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "prettier": "^3.0.0"
   }
 }

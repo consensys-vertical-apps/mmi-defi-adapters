@@ -9,11 +9,7 @@ import {
   CardDescription,
   CardContent,
 } from '@/components/ui/card'
-import { Underlying } from '@metamask-institutional/defi-adapters/dist/types/adapter'
-import {
-  DefiProfitsResponse,
-  DisplayPosition,
-} from '@metamask-institutional/defi-adapters/dist/types/response'
+import { DefiProfitsResponse } from '@metamask-institutional/defi-adapters/dist/types/response'
 import {
   Table,
   TableHeader,
@@ -271,45 +267,4 @@ function formatDecimal(amount: number) {
     minimumFractionDigits: 0,
     maximumFractionDigits: 4,
   })
-}
-
-function resolveUnderlyings(
-  tokens: DisplayPosition<Underlying>[] | undefined,
-): {
-  name: string
-  symbol: string
-  iconUrl: string
-  balance: number
-  price: number
-  total: number | undefined
-}[] {
-  const result: {
-    name: string
-    symbol: string
-    iconUrl: string
-    balance: number
-    price: number
-    total: number | undefined
-  }[] = []
-
-  if (!tokens) {
-    return result
-  }
-
-  for (const token of tokens) {
-    if (token.tokens && token.tokens.length > 0) {
-      result.push(...resolveUnderlyings(token.tokens))
-    } else {
-      result.push({
-        balance: token.balance,
-        name: token.name,
-        symbol: token.symbol,
-        iconUrl: token.iconUrl,
-        price: token.price,
-        total: token.price && token.balance * token.price,
-      })
-    }
-  }
-
-  return result
 }
