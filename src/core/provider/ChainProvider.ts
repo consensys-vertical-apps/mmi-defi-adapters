@@ -23,11 +23,13 @@ export class ChainProvider {
     chainId,
     enableMulticallQueue,
     customOptions,
+    enableFailover,
   }: {
     url: string
     chainId: Chain
     enableMulticallQueue: boolean
     customOptions: CustomJsonRpcProviderOptions
+    enableFailover: boolean
   }): CustomJsonRpcProvider {
     if (!url) {
       throw new Error('Url missing')
@@ -36,7 +38,9 @@ export class ChainProvider {
     // Set Enable-Failover header
     // Infura will forward rpc requests to backup provider incase of failures
     const fetchRequest = new FetchRequest(url)
-    fetchRequest.setHeader('Enable-Failover', 'true')
+    if (enableFailover) {
+      fetchRequest.setHeader('Enable-Failover', 'true')
+    }
 
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, `Using standard provider`)
@@ -53,7 +57,7 @@ export class ChainProvider {
     logger.debug({ chainId, url }, 'Using multicall queue provider')
 
     const provider = new CustomJsonRpcProvider({
-      fetchRequest: fetchRequest,
+      fetchRequest,
       chainId,
       customOptions,
       jsonRpcProviderOptions: {
@@ -88,66 +92,62 @@ export class ChainProvider {
   }
 
   private initializeProviders(config: IConfig) {
-    const customOptions = {
-      rpcCallTimeoutInMs: config.rpcCallTimeoutInMs,
-      rpcCallRetries: config.rpcCallRetries,
-      rpcGetLogsTimeoutInMs: config.rpcGetLogsTimeoutInMs,
-      rpcGetLogsRetries: config.rpcGetLogsRetries,
+    const commonProviderSettings = {
+      enableMulticallQueue: config.useMulticallInterceptor,
+      customOptions: {
+        rpcCallTimeoutInMs: config.rpcCallTimeoutInMs,
+        rpcCallRetries: config.rpcCallRetries,
+        rpcGetLogsTimeoutInMs: config.rpcGetLogsTimeoutInMs,
+        rpcGetLogsRetries: config.rpcGetLogsRetries,
+      },
+      enableFailover: config.enableFailover,
     }
+
     return {
       [Chain.Ethereum]: this.provider({
+        ...commonProviderSettings,
         url: config.provider.ethereum,
         chainId: Chain.Ethereum,
-        enableMulticallQueue: config.useMulticallInterceptor,
-        customOptions,
       }),
       [Chain.Optimism]: this.provider({
+        ...commonProviderSettings,
         url: config.provider.optimism,
         chainId: Chain.Optimism,
-        enableMulticallQueue: config.useMulticallInterceptor,
-        customOptions,
       }),
       [Chain.Bsc]: this.provider({
+        ...commonProviderSettings,
         url: config.provider.bsc,
         chainId: Chain.Bsc,
-        enableMulticallQueue: config.useMulticallInterceptor,
-        customOptions,
       }),
       [Chain.Polygon]: this.provider({
+        ...commonProviderSettings,
         url: config.provider.polygon,
         chainId: Chain.Polygon,
-        enableMulticallQueue: config.useMulticallInterceptor,
-        customOptions,
       }),
       [Chain.Fantom]: this.provider({
+        ...commonProviderSettings,
         url: config.provider.fantom,
         chainId: Chain.Fantom,
-        enableMulticallQueue: config.useMulticallInterceptor,
-        customOptions,
       }),
       [Chain.Arbitrum]: this.provider({
+        ...commonProviderSettings,
         url: config.provider.arbitrum,
         chainId: Chain.Arbitrum,
-        enableMulticallQueue: config.useMulticallInterceptor,
-        customOptions,
       }),
       [Chain.Avalanche]: this.provider({
+        ...commonProviderSettings,
         url: config.provider.avalanche,
         chainId: Chain.Avalanche,
-        enableMulticallQueue: config.useMulticallInterceptor,
-        customOptions,
       }),
       [Chain.Linea]: this.provider({
+        ...commonProviderSettings,
         url: config.provider.linea,
         chainId: Chain.Linea,
-        enableMulticallQueue: config.useMulticallInterceptor,
-        customOptions,
       }),
       [Chain.Base]: this.provider({
+        ...commonProviderSettings,
         url: config.provider.base,
         chainId: Chain.Base,
-        enableMulticallQueue: config.useMulticallInterceptor,
-        customOptions,
       }),
     }
   }

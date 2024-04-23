@@ -96,7 +96,7 @@ async function buildSchemas() {
     for (const adapterSupport of protocolAdapters) {
       const productId = adapterSupport.protocolDetails.productId
       const adapterFilePath = path.resolve(
-        `./lib/main/adapters/${protocolId}/products/${productId}/${lowerFirst(
+        `./dist/adapters/${protocolId}/products/${productId}/${lowerFirst(
           protocolKey,
         )}${pascalCase(productId)}Adapter`,
       )
