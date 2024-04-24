@@ -25,13 +25,13 @@
 
 ### type
 
-• **type**: `"underlying"`
+• **type**: ``"underlying"``
 
 #### Defined in
 
-[adapter.ts:220](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L220)
+[src/types/adapter.ts:220](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L220)
 
----
+___
 
 ### underlyingRateRaw
 
@@ -39,9 +39,9 @@
 
 #### Defined in
 
-[adapter.ts:221](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L221)
+[src/types/adapter.ts:221](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L221)
 
----
+___
 
 ### address
 
@@ -55,9 +55,9 @@ Erc20Metadata.address
 
 #### Defined in
 
-[erc20Metadata.ts:5](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L5)
+[src/types/erc20Metadata.ts:5](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L5)
 
----
+___
 
 ### name
 
@@ -71,9 +71,9 @@ Erc20Metadata.name
 
 #### Defined in
 
-[erc20Metadata.ts:10](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L10)
+[src/types/erc20Metadata.ts:10](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L10)
 
----
+___
 
 ### symbol
 
@@ -87,9 +87,9 @@ Erc20Metadata.symbol
 
 #### Defined in
 
-[erc20Metadata.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L15)
+[src/types/erc20Metadata.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L15)
 
----
+___
 
 ### decimals
 
@@ -103,4 +103,4 @@ Erc20Metadata.decimals
 
 #### Defined in
 
-[erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+[src/types/erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)

@@ -26,26 +26,26 @@
 
 ### baseRate
 
-• **baseRate**: `1`
+• **baseRate**: ``1``
 
 Always equal to 1
 We are finding the underlying value of 1 LP token
 
 #### Defined in
 
-[adapter.ts:229](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L229)
+[src/types/adapter.ts:229](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L229)
 
----
+___
 
 ### type
 
-• **type**: `"protocol"`
+• **type**: ``"protocol"``
 
 #### Defined in
 
-[adapter.ts:230](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L230)
+[src/types/adapter.ts:230](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L230)
 
----
+___
 
 ### tokens
 
@@ -53,9 +53,9 @@ We are finding the underlying value of 1 LP token
 
 #### Defined in
 
-[adapter.ts:231](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L231)
+[src/types/adapter.ts:231](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L231)
 
----
+___
 
 ### address
 
@@ -69,9 +69,9 @@ Erc20Metadata.address
 
 #### Defined in
 
-[erc20Metadata.ts:5](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L5)
+[src/types/erc20Metadata.ts:5](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L5)
 
----
+___
 
 ### name
 
@@ -85,9 +85,9 @@ Erc20Metadata.name
 
 #### Defined in
 
-[erc20Metadata.ts:10](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L10)
+[src/types/erc20Metadata.ts:10](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L10)
 
----
+___
 
 ### symbol
 
@@ -101,9 +101,9 @@ Erc20Metadata.symbol
 
 #### Defined in
 
-[erc20Metadata.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L15)
+[src/types/erc20Metadata.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L15)
 
----
+___
 
 ### decimals
 
@@ -117,4 +117,4 @@ Erc20Metadata.decimals
 
 #### Defined in
 
-[erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+[src/types/erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)

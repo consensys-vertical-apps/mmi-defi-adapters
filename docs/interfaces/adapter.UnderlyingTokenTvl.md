@@ -6,7 +6,7 @@
 
 ## Hierarchy
 
-- [`Erc20Metadata`](../modules/erc20Metadata.md#erc20metadata)
+- [`TokenTvl`](adapter.TokenTvl.md)
 
   ↳ **`UnderlyingTokenTvl`**
 
@@ -14,8 +14,10 @@
 
 ### Properties
 
-- [type](adapter.UnderlyingTokenTvl.md#type)
 - [totalSupplyRaw](adapter.UnderlyingTokenTvl.md#totalsupplyraw)
+- [type](adapter.UnderlyingTokenTvl.md#type)
+- [tokens](adapter.UnderlyingTokenTvl.md#tokens)
+- [priceRaw](adapter.UnderlyingTokenTvl.md#priceraw)
 - [address](adapter.UnderlyingTokenTvl.md#address)
 - [name](adapter.UnderlyingTokenTvl.md#name)
 - [symbol](adapter.UnderlyingTokenTvl.md#symbol)
@@ -23,25 +25,49 @@
 
 ## Properties
 
-### type
-
-• **type**: ``"underlying"``
-
-#### Defined in
-
-[adapter.ts:250](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L250)
-
-___
-
 ### totalSupplyRaw
 
 • **totalSupplyRaw**: `bigint`
 
 Total underlying token locked in pool raw
 
+#### Inherited from
+
+[TokenTvl](adapter.TokenTvl.md).[totalSupplyRaw](adapter.TokenTvl.md#totalsupplyraw)
+
 #### Defined in
 
-[adapter.ts:254](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L254)
+[src/types/adapter.ts:253](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L253)
+
+___
+
+### type
+
+• **type**: ``"underlying"``
+
+#### Defined in
+
+[src/types/adapter.ts:257](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L257)
+
+___
+
+### tokens
+
+• `Optional` **tokens**: [`UnderlyingTokenTvl`](adapter.UnderlyingTokenTvl.md)[]
+
+#### Defined in
+
+[src/types/adapter.ts:258](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L258)
+
+___
+
+### priceRaw
+
+• `Optional` **priceRaw**: `bigint`
+
+#### Defined in
+
+[src/types/adapter.ts:259](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/adapter.ts#L259)
 
 ___
 
@@ -53,11 +79,11 @@ Token address
 
 #### Inherited from
 
-Erc20Metadata.address
+[TokenTvl](adapter.TokenTvl.md).[address](adapter.TokenTvl.md#address)
 
 #### Defined in
 
-[erc20Metadata.ts:5](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L5)
+[src/types/erc20Metadata.ts:5](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L5)
 
 ___
 
@@ -69,11 +95,11 @@ Name of token
 
 #### Inherited from
 
-Erc20Metadata.name
+[TokenTvl](adapter.TokenTvl.md).[name](adapter.TokenTvl.md#name)
 
 #### Defined in
 
-[erc20Metadata.ts:10](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L10)
+[src/types/erc20Metadata.ts:10](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L10)
 
 ___
 
@@ -85,11 +111,11 @@ Token symbol
 
 #### Inherited from
 
-Erc20Metadata.symbol
+[TokenTvl](adapter.TokenTvl.md).[symbol](adapter.TokenTvl.md#symbol)
 
 #### Defined in
 
-[erc20Metadata.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L15)
+[src/types/erc20Metadata.ts:15](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L15)
 
 ___
 
@@ -101,8 +127,8 @@ Token decimals
 
 #### Inherited from
 
-Erc20Metadata.decimals
+[TokenTvl](adapter.TokenTvl.md).[decimals](adapter.TokenTvl.md#decimals)
 
 #### Defined in
 
-[erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)
+[src/types/erc20Metadata.ts:20](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/erc20Metadata.ts#L20)

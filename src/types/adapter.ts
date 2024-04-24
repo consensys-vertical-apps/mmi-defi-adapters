@@ -309,6 +309,8 @@ export interface PositionProfits extends Erc20Metadata, UnderlyingProfitValues {
 export interface CalculationData {
   withdrawals: number
   deposits: number
+  repays: number
+  borrows: number
   startPositionValue: number
   endPositionValue: number
   hasTokensWithoutUSDPrices?: boolean

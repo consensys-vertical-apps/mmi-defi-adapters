@@ -14,10 +14,10 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "main": "lib/main/index.js",
-  "types": "lib/main/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "lib/main",
+    "dist",
     "CHANGELOG.md",
     "LICENSE",
     "README.md"
@@ -26,7 +26,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
-    "adapters-cli": "node --env-file=.env lib/main/scripts/index.js",
+    "adapters-cli": "node --env-file=.env dist/scripts/index.js",
     "build-metadata": "npm run adapters-cli build-metadata --",
     "build-types": "npm run adapters-cli build-types --",
     "new-adapter": "npm run adapters-cli new-adapter --",

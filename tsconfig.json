@@ -2,7 +2,7 @@
   "compilerOptions": {
     "incremental": true,
     "target": "es2020",
-    "outDir": "lib/main",
+    "outDir": "dist",
     "rootDir": "src",
     "moduleResolution": "node",
     "module": "commonjs",
@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
     "types": ["node", "jest"]
   },
   "include": ["src", "src/adapters/**/metadata/*.json"]

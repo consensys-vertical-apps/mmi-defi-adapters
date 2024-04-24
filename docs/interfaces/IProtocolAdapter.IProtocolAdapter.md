@@ -36,7 +36,7 @@ Unique identifier of the protocol.
 
 #### Defined in
 
-[IProtocolAdapter.ts:22](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L22)
+[src/types/IProtocolAdapter.ts:22](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L22)
 
 ___
 
@@ -48,7 +48,7 @@ Unique identifier of the blockchain network.
 
 #### Defined in
 
-[IProtocolAdapter.ts:27](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L27)
+[src/types/IProtocolAdapter.ts:27](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L27)
 
 ___
 
@@ -60,7 +60,7 @@ Unique identifier for this protocol adapter
 
 #### Defined in
 
-[IProtocolAdapter.ts:32](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L32)
+[src/types/IProtocolAdapter.ts:32](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L32)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[IProtocolAdapter.ts:34](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L34)
+[src/types/IProtocolAdapter.ts:34](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L34)
 
 ## Methods
 
@@ -90,7 +90,7 @@ Returns high level metadata for the protocol
 
 #### Defined in
 
-[IProtocolAdapter.ts:41](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L41)
+[src/types/IProtocolAdapter.ts:41](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L41)
 
 ___
 
@@ -110,7 +110,7 @@ Returns array of pool tokens (lp tokens) for the protocol
 
 #### Defined in
 
-[IProtocolAdapter.ts:48](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L48)
+[src/types/IProtocolAdapter.ts:48](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L48)
 
 ___
 
@@ -136,7 +136,7 @@ Returns array of user positions opened in this protocol
 
 #### Defined in
 
-[IProtocolAdapter.ts:57](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L57)
+[src/types/IProtocolAdapter.ts:57](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L57)
 
 ___
 
@@ -162,7 +162,7 @@ Returns "price" of lp-tokens in the form of the underlying tokens. Unwraps token
 
 #### Defined in
 
-[IProtocolAdapter.ts:67](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L67)
+[src/types/IProtocolAdapter.ts:67](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L67)
 
 ___
 
@@ -174,7 +174,7 @@ ___
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `input` | [`GetTransactionParamsInput`](../modules/getTransactionParamsInput.md#gettransactionparamsinput) | tx input params |
+| `input` | { `protocolId`: ``"aave-v3"`` ; `productId`: ``"a-token"`` ; `chainId`: ``1`` \| ``10`` \| ``56`` \| ``137`` \| ``250`` \| ``8453`` \| ``42161`` \| ``43114`` \| ``59144`` ; `action`: ``"deposit"`` ; `inputs`: { asset: string; amount: string; onBehalfOf: string; referralCode: number; }  } \| { `protocolId`: ``"aave-v3"`` ; `productId`: ``"a-token"`` ; `chainId`: ``1`` \| ``10`` \| ``56`` \| ``137`` \| ``250`` \| ``8453`` \| ``42161`` \| ``43114`` \| ``59144`` ; `action`: ``"withdraw"`` ; `inputs`: { to: string; asset: string; amount: string; }  } \| { `protocolId`: ``"aave-v3"`` ; `productId`: ``"a-token"`` ; `chainId`: ``1`` \| ``10`` \| ``56`` \| ``137`` \| ``250`` \| ``8453`` \| ``42161`` \| ``43114`` \| ``59144`` ; `action`: ``"borrow"`` ; `inputs`: { asset: string; amount: string; onBehalfOf: string; referralCode: number; interestRateMode: number; }  } \| { `protocolId`: ``"aave-v3"`` ; `productId`: ``"a-token"`` ; `chainId`: ``1`` \| ``10`` \| ``56`` \| ``137`` \| ``250`` \| ``8453`` \| ``42161`` \| ``43114`` \| ``59144`` ; `action`: ``"repay"`` ; `inputs`: { asset: string; amount: string; onBehalfOf: string; interestRateMode: number; }  } \| { `protocolId`: ``"compound-v2"`` ; `productId`: ``"supply-market"`` ; `chainId`: ``1`` \| ``10`` \| ``56`` \| ``137`` \| ``250`` \| ``8453`` \| ``42161`` \| ``43114`` \| ``59144`` ; `action`: ``"deposit"`` ; `inputs`: { asset: string; amount: string; }  } \| { `protocolId`: ``"compound-v2"`` ; `productId`: ``"supply-market"`` ; `chainId`: ``1`` \| ``10`` \| ``56`` \| ``137`` \| ``250`` \| ``8453`` \| ``42161`` \| ``43114`` \| ``59144`` ; `action`: ``"withdraw"`` ; `inputs`: { asset: string; amount: string; }  } \| { `protocolId`: ``"compound-v2"`` ; `productId`: ``"borrow-market"`` ; `chainId`: ``1`` \| ``10`` \| ``56`` \| ``137`` \| ``250`` \| ``8453`` \| ``42161`` \| ``43114`` \| ``59144`` ; `action`: ``"borrow"`` ; `inputs`: { asset: string; amount: string; }  } \| { `protocolId`: ``"compound-v2"`` ; `productId`: ``"borrow-market"`` ; `chainId`: ``1`` \| ``10`` \| ``56`` \| ``137`` \| ``250`` \| ``8453`` \| ``42161`` \| ``43114`` \| ``59144`` ; `action`: ``"repay"`` ; `inputs`: { asset: string; amount: string; }  } | tx input params |
 
 #### Returns
 
@@ -188,7 +188,7 @@ Returns tx params
 
 #### Defined in
 
-[IProtocolAdapter.ts:76](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L76)
+[src/types/IProtocolAdapter.ts:76](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L76)
 
 ___
 
@@ -214,7 +214,7 @@ Returns the user's withdrawals from a position
 
 #### Defined in
 
-[IProtocolAdapter.ts:87](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L87)
+[src/types/IProtocolAdapter.ts:87](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L87)
 
 ___
 
@@ -240,7 +240,7 @@ Returns the user's deposits to a position
 
 #### Defined in
 
-[IProtocolAdapter.ts:96](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L96)
+[src/types/IProtocolAdapter.ts:96](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L96)
 
 ___
 
@@ -266,7 +266,7 @@ Returns the user's withdrawals from a position
 
 #### Defined in
 
-[IProtocolAdapter.ts:104](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L104)
+[src/types/IProtocolAdapter.ts:104](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L104)
 
 ___
 
@@ -292,7 +292,7 @@ Returns the user's deposits to a position
 
 #### Defined in
 
-[IProtocolAdapter.ts:113](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L113)
+[src/types/IProtocolAdapter.ts:113](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L113)
 
 ___
 
@@ -318,4 +318,4 @@ Returns the Tvl per pool defined in the underlying token
 
 #### Defined in
 
-[IProtocolAdapter.ts:122](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L122)
+[src/types/IProtocolAdapter.ts:122](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/IProtocolAdapter.ts#L122)

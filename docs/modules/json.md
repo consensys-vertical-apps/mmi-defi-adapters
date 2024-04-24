@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[json.ts:1](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/json.ts#L1)
+[src/types/json.ts:1](https://github.com/consensys-vertical-apps/mmi-defi-adapters/blob/main/src/types/json.ts#L1)
