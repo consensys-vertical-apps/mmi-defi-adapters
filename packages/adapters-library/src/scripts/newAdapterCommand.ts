@@ -267,7 +267,9 @@ async function buildIntegrationTests({
 
   await writeCodeFile(testCasesFilePath, testCases(productId))
 
-  const testsFile = path.resolve('./packages/adapters-library/src/adapters/integration.test.ts')
+  const testsFile = path.resolve(
+    './packages/adapters-library/src/adapters/integration.test.ts',
+  )
   const contents = await fs.readFile(testsFile, 'utf-8')
   const ast = parse(contents, {
     parser: require('recast/parsers/typescript'),
@@ -356,7 +358,9 @@ function buildImportTestCasesEntry(protocolId: string, protocolKey: string) {
  * @description Writes changes to include new adapter in src/adapters/protocols.ts file
  */
 async function addProtocol({ protocolKey, protocolId }: NewAdapterAnswers) {
-  const protocolsFile = path.resolve('./packages/adapters-library/src/adapters/protocols.ts')
+  const protocolsFile = path.resolve(
+    './packages/adapters-library/src/adapters/protocols.ts',
+  )
   const contents = await fs.readFile(protocolsFile, 'utf-8')
   const ast = parse(contents, {
     parser: require('recast/parsers/typescript'),
@@ -391,7 +395,9 @@ async function exportAdapter({
   adapterClassName,
   chainKeys,
 }: NewAdapterAnswers) {
-  const adaptersFile = path.resolve('./packages/adapters-library/src/adapters/supportedProtocols.ts')
+  const adaptersFile = path.resolve(
+    './packages/adapters-library/src/adapters/supportedProtocols.ts',
+  )
   const contents = await fs.readFile(adaptersFile, 'utf-8')
   const ast = parse(contents, {
     parser: require('recast/parsers/typescript'),

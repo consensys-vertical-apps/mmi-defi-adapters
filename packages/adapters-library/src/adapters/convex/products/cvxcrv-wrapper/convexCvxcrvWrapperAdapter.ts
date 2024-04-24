@@ -153,12 +153,10 @@ export class ConvexCvxcrvWrapperAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
-    const protocolRewardTokens = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
+    const protocolRewardTokens =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
     const responsePromises = protocolRewardTokens.map(
       async (extraRewardToken) => {
         const cvxcrvContract = CvxcrvWrapper__factory.connect(
@@ -248,9 +246,8 @@ export class ConvexCvxcrvWrapperAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingTokens } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return underlyingTokens
   }

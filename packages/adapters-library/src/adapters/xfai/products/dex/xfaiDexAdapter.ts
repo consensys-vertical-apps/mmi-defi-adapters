@@ -265,9 +265,8 @@ export class XfaiDexAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingTokens } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return underlyingTokens
   }

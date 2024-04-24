@@ -189,9 +189,8 @@ export class StargatePoolAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingToken } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return [underlyingToken]
   }

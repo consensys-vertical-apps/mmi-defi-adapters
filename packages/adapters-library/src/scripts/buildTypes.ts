@@ -134,7 +134,9 @@ async function addImportsAndSchemas(
     productAdapterPath: string
   }[],
 ) {
-  const adaptersFile = path.resolve('./packages/adapters-library/src/adapters/supportedProtocols.ts')
+  const adaptersFile = path.resolve(
+    './packages/adapters-library/src/adapters/supportedProtocols.ts',
+  )
   const contents = fs.readFileSync(adaptersFile, 'utf-8')
   const ast = parse(contents, {
     parser: require('recast/parsers/typescript'),

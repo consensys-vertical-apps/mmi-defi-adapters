@@ -195,9 +195,8 @@ export abstract class UniswapV2PoolForkAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { token0, token1 } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { token0, token1 } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return [token0, token1]
   }

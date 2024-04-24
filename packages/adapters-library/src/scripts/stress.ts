@@ -52,9 +52,8 @@ export function stressCommand(program: Command, defiProvider: DefiProvider) {
         console.log(`Protocols: ${filterProtocolIds.join(',')}`)
       }
 
-      const blockNumbers = await defiProvider.getStableBlockNumbers(
-        filterChainIds,
-      )
+      const blockNumbers =
+        await defiProvider.getStableBlockNumbers(filterChainIds)
 
       const start = Date.now()
 

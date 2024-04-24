@@ -303,9 +303,8 @@ export class ConvexStakingAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const { protocolToken, extraRewardTokens } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { protocolToken, extraRewardTokens } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     const responsePromises = extraRewardTokens!.map(
       async (extraRewardToken) => {

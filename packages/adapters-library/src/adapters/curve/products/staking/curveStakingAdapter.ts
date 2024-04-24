@@ -135,13 +135,11 @@ export class CurveStakingAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const [underlyingLpToken] = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const [underlyingLpToken] =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
 
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     //// curve staking contracts dont have transfer events so use underlying lp token events instead
     const movements = await this.getProtocolTokenMovements({
@@ -169,13 +167,11 @@ export class CurveStakingAdapter
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    const [underlyingLpToken] = await this.fetchUnderlyingTokensMetadata(
-      protocolTokenAddress,
-    )
+    const [underlyingLpToken] =
+      await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
 
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     //// curve staking contracts dont have transfer events so use underlying lp token events instead
     const movements = await this.getProtocolTokenMovements({
@@ -199,9 +195,8 @@ export class CurveStakingAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingTokens } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return underlyingTokens
   }

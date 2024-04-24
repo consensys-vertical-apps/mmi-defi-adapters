@@ -143,9 +143,8 @@ export class ChimpExchangePoolAdapter
   }: GetEventsInput & { filterPredicate: (total: bigint) => boolean }): Promise<
     MovementsByBlock[]
   > {
-    const { poolId, protocolToken } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { poolId, protocolToken } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     const vaultContract = Vault__factory.connect(
       vaultContractAddresses[this.chainId]!,
@@ -364,9 +363,8 @@ export class ChimpExchangePoolAdapter
   protected async fetchUnderlyingTokensMetadata(
     protocolTokenAddress: string,
   ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { underlyingTokens } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     return underlyingTokens.map(({ index: _tokenIndex, ...token }) => token)
   }

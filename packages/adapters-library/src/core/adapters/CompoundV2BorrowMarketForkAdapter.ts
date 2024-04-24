@@ -111,9 +111,8 @@ export abstract class CompoundV2BorrowMarketForkAdapter
         return undefined
       }
 
-      const { protocolToken, underlyingToken } = await this.fetchPoolMetadata(
-        poolContractAddress,
-      )
+      const { protocolToken, underlyingToken } =
+        await this.fetchPoolMetadata(poolContractAddress)
 
       const poolContract = CompoundV2Cerc20__factory.connect(
         poolContractAddress,
@@ -191,9 +190,8 @@ export abstract class CompoundV2BorrowMarketForkAdapter
   }: GetEventsInput & {
     extractAmount: (logs: LogDescription) => bigint | undefined
   }): Promise<MovementsByBlock[]> {
-    const { protocolToken, underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { protocolToken, underlyingToken } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     const cTokenContract = CompoundV2Cerc20__factory.connect(
       protocolTokenAddress,

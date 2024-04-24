@@ -100,9 +100,8 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     blockNumber,
     protocolTokenAddress,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const protocolTokenMetadata = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolTokenMetadata =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const underlyingTokenConversionRate = await this.unwrapProtocolToken(
       protocolTokenMetadata,
@@ -124,9 +123,8 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
 
       filter: {
         fromBlock,
@@ -144,9 +142,8 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
 
       filter: {
         fromBlock,
@@ -164,9 +161,8 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
 
       filter: {
         fromBlock,
@@ -184,9 +180,8 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     return await this.getProtocolTokenMovements({
-      protocolToken: await this.fetchProtocolTokenMetadata(
-        protocolTokenAddress,
-      ),
+      protocolToken:
+        await this.fetchProtocolTokenMetadata(protocolTokenAddress),
 
       filter: {
         fromBlock,

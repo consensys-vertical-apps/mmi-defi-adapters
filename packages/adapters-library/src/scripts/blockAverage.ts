@@ -85,7 +85,8 @@ async function getAverageBlocksPerDay(
 async function updateAverages(
   averageBlocksPerDayMap: Partial<Record<Chain, number>>,
 ) {
-  const averageBlocksFile = './packages/adapters-library/src/core/constants/AVERAGE_BLOCKS_PER_DAY.ts'
+  const averageBlocksFile =
+    './packages/adapters-library/src/core/constants/AVERAGE_BLOCKS_PER_DAY.ts'
   const contents = await fs.readFile(averageBlocksFile, 'utf-8')
   const ast = parse(contents, {
     parser: require('recast/parsers/typescript'),

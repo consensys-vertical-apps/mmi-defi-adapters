@@ -230,9 +230,8 @@ export class CurveRewardAdapter
 
     const withdrawn = endBalance - startBalance
 
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenAddress,
-    )
+    const protocolToken =
+      await this.fetchProtocolTokenMetadata(protocolTokenAddress)
 
     const gauge = await this.fetchGauge(protocolTokenAddress)
     const extraRewardTokens: MovementsByBlock[] = []

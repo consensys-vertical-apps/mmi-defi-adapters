@@ -267,9 +267,8 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
       const loanMetadata = await this._fetchLoanTokenMetadata(marketId)
 
       if (collateralAmount > 0n && positionType === PositionType.Supply) {
-        const collateralMetadata = await this._fetchCollateralTokenMetadata(
-          marketId,
-        )
+        const collateralMetadata =
+          await this._fetchCollateralTokenMetadata(marketId)
 
         protocolTokens.push({
           tokenId: marketId,
