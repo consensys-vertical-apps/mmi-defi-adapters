@@ -35,7 +35,7 @@ export interface QuestionConfig {
   validate?: (input: string) => boolean | string
   validateProductId?: (
     defiProvider: DefiProvider,
-  ) => (input: string) => boolean | string
+  ) => (input: Answers) => boolean | string
   suffix?: string
   default?: (answers: Answers, defiAdapter?: DefiProvider) => string | string[]
 }

@@ -3,12 +3,15 @@
 // - if yes, add value to the output
 // type GetPositionsOptions<T, Value = 'getPositions', Output = []> =
 
+import { Answers } from 'inquirer'
+import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
 import {
   isKebabCase,
   isPascalCase,
   kebabCase,
 } from '../core/utils/caseConversion'
+import { DefiProvider } from '../defiProvider'
 
 // NEED TO ADD A QUESTION?
 // 1. Add question below
@@ -52,38 +55,38 @@ export const questionsJson = {
     next: 'forkCheck',
     default: () => 'farming',
     outcomes: {},
-    // validateProductId: (defiProvider: DefiProvider) => {
-    //   return ({ productId, protocolKey, protocolId, chainKeys }: Answers) => {
-    //     if (!isKebabCase(productId)) {
-    //       return 'Value must be kebab-case'
-    //     }
+    validateProductId: (defiProvider: DefiProvider) => {
+      return ({ productId, protocolId, chainKeys }: Answers) => {
+        if (!isKebabCase(productId)) {
+          return 'Value must be kebab-case'
+        }
 
-    //     if (!protocolId) {
-    //       return true
-    //     }
+        if (!protocolId) {
+          return true
+        }
 
-    //     // Check if that productId already exists for that protocol
-    //     const productExists = chainKeys.some((chainKey) => {
-    //       const chainId = Chain[chainKey]
+        // Check if that productId already exists for that protocol
+        const productExists = chainKeys.some((chainKey: keyof typeof Chain) => {
+          const chainId = Chain[chainKey as keyof typeof Chain]
 
-    //       try {
-    //         return defiProvider.adaptersController.fetchAdapter(
-    //           chainId,
-    //           protocolId as Protocol,
-    //           productId,
-    //         )
-    //       } catch (_) {
-    //         return false
-    //       }
-    //     })
+          try {
+            return defiProvider.adaptersController.fetchAdapter(
+              chainId,
+              protocolId as Protocol,
+              productId,
+            )
+          } catch (_) {
+            return false
+          }
+        })
 
-    //     if (productExists) {
-    //       return 'ProductId already exists for that Protocol and one of the chains selected'
-    //     }
+        if (productExists) {
+          return 'ProductId already exists for that Protocol and one of the chains selected'
+        }
 
-    //     return true
-    //   }
-    // },
+        return true
+      }
+    },
   },
   forkCheck: {
     question:
@@ -159,7 +162,7 @@ export const questionsJson = {
     },
   },
   erc20Event: {
-    question: `Can the Transfer event of your protocol's ERC20 token(s) be used to accurately track deposits into and withdrawals from the user's defi position?`,
+    question: `Can Mint and Burn Transfer event of your protocol's ERC20 token(s) be used to accurately track deposits into and withdrawals from the user's defi position?`,
     type: 'confirm',
     next: 'balanceQueryMethod',
     outcomes: {

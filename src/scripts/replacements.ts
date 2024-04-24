@@ -306,7 +306,7 @@ export const Replacements = {
       answers: Answers,
     ): string => {
       return updatedTemplate.replace(
-        /{{Replacements.PRODUCT_ID.placeholder}}/g,
+        /Replacements.PRODUCT_ID.placeholder/g,
         answers.protocolId,
       )
     },
@@ -332,7 +332,7 @@ export const Replacements = {
       answers: Answers,
     ): string => {
       return updatedTemplate.replace(
-        /{{Replacements.PROTOCOL_KEY.placeholder}}/g,
+        /Replacements.PROTOCOL_KEY.placeholder/g,
         answers.protocolKey,
       )
     },
@@ -345,7 +345,7 @@ export const Replacements = {
       answers: Answers,
     ): string => {
       return updatedTemplate.replace(
-        /Replacements.ADAPTER_CLASS_NAME.placeholder/g,
+        /ADAPTER_CLASS_NAME/g,
         answers.adapterClassName,
       )
     },

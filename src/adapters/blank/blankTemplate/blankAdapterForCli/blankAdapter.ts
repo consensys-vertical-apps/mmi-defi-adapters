@@ -39,7 +39,7 @@ type Metadata = Record<
 >
 
 export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
-  productId = '{{productId}}'
+  productId = 'Replacements.PRODUCT_ID.placeholder'
   protocolId: Protocol
   chainId: Chain
 
@@ -66,8 +66,8 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: '{{protocolKey}}',
-      description: '{{protocolKey}} defi adapter',
+      name: 'Replacements.PROTOCOL_KEY.placeholder',
+      description: 'Replacements.PROTOCOL_KEY.placeholder defi adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
       positionType: PositionType.Supply,

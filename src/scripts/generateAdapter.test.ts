@@ -79,8 +79,9 @@ describe('generateAdapter function snapshots', () => {
   const answers = {
     protocolId: 'testProtocolId',
     productId: 'testProductId',
-    protocolKey: 'testProductKey',
+    protocolKey: 'TestProductKey',
     chainKeys: ['Ethereum'],
+    adapterClassName: 'TestProtocolAdapter',
     forkCheck: 'no',
     erc20Event: '',
     balanceQueryMethod: '',
