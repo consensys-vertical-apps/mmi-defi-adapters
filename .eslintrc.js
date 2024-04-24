@@ -14,7 +14,7 @@ module.exports = {
     jest: true,
   },
   rules: {
-    'prettier/prettier': ['error'],
+    'prettier/prettier': 'error',
 
     'arrow-body-style': 'off', // Disabled as per eslint-plugin-prettier recommendation
     'prefer-arrow-callback': 'off', // Disabled as per eslint-plugin-prettier recommendation
