@@ -32,10 +32,11 @@ export interface QuestionConfig {
   next: Record<string, string> | string
   //eslint-disable-next-line
   outcomes?: Record<string, any>
-  validate?: (input: string) => boolean | string
+  validate?: (input: string, answers: Answers) => boolean | string
   validateProductId?: (
     defiProvider: DefiProvider,
-  ) => (input: Answers) => boolean | string
+    answers: Answers,
+  ) => (input: string) => boolean | string
   suffix?: string
   default?: (answers: Answers, defiAdapter?: DefiProvider) => string | string[]
 }
@@ -294,7 +295,7 @@ async function askQuestion(
         prefix: chalk.blue('?'),
         suffix: questionConfig.suffix,
         validate:
-          questionConfig?.validateProductId?.(defiProvider) ??
+          questionConfig?.validateProductId?.(defiProvider, answers) ??
           questionConfig.validate,
         pageSize: 9990,
       },

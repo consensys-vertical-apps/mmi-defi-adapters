@@ -55,30 +55,32 @@ export const questionsJson = {
     next: 'forkCheck',
     default: () => 'farming',
     outcomes: {},
-    validateProductId: (defiProvider: DefiProvider) => {
-      return ({ productId, protocolId, chainKeys }: Answers) => {
+    validateProductId: (defiProvider: DefiProvider, answers: Answers) => {
+      return (productId: string) => {
         if (!isKebabCase(productId)) {
           return 'Value must be kebab-case'
         }
 
-        if (!protocolId) {
+        if (!answers.protocolId) {
           return true
         }
 
         // Check if that productId already exists for that protocol
-        const productExists = chainKeys.some((chainKey: keyof typeof Chain) => {
-          const chainId = Chain[chainKey as keyof typeof Chain]
+        const productExists = answers.chainKeys.some(
+          (chainKey: keyof typeof Chain) => {
+            const chainId = Chain[chainKey as keyof typeof Chain]
 
-          try {
-            return defiProvider.adaptersController.fetchAdapter(
-              chainId,
-              protocolId as Protocol,
-              productId,
-            )
-          } catch (_) {
-            return false
-          }
-        })
+            try {
+              return defiProvider.adaptersController.fetchAdapter(
+                chainId,
+                answers.protocolId as Protocol,
+                productId,
+              )
+            } catch (_) {
+              return false
+            }
+          },
+        )
 
         if (productExists) {
           return 'ProductId already exists for that Protocol and one of the chains selected'
