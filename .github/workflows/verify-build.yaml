@@ -30,9 +30,6 @@ jobs:
       - name: Verify eslint config
         run: npm run lint
 
-      - name: Verify prettier config
-        run: npm run prettier
-
       - name: Build
         run: npm run build
 
