@@ -1,4 +1,5 @@
 import { Protocol } from '../adapters/protocols'
+import { WriteActionInputs } from '../adapters/supportedProtocols'
 import {
   AssetType,
   PositionType,
@@ -7,9 +8,11 @@ import {
 import { Erc20Metadata } from '../types/erc20Metadata'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Support } from '../types/response'
+import { WriteActions } from '../types/writeActions'
 import { Chain } from './constants/chains'
 import { AdapterMissingError, NotImplementedError } from './errors/errors'
 import { CustomJsonRpcProvider } from './provider/CustomJsonRpcProvider'
+import { pascalCase } from './utils/caseConversion'
 
 export class AdaptersController {
   private adapters: Map<Chain, Map<Protocol, Map<string, IProtocolAdapter>>> =
@@ -205,7 +208,7 @@ export class AdaptersController {
           support[protocolId] = []
         }
 
-        for (const [_productId, adapter] of products.entries()) {
+        for (const [productId, adapter] of products.entries()) {
           let product = support[protocolId]!.find(
             (productEntry) =>
               adapter.getProtocolDetails().productId ===
@@ -213,9 +216,25 @@ export class AdaptersController {
           )
 
           if (!product) {
+            const protocolKey = Object.entries(Protocol).find(
+              ([_, value]) => value === protocolId,
+            )![0]
+
+            const productWriteActions:
+              | Partial<Record<WriteActions, unknown>>
+              | undefined =
+              WriteActionInputs[
+                `${protocolKey}${pascalCase(productId)}WriteActionInputs` as keyof typeof WriteActionInputs
+              ]
+
             product = {
               protocolDetails: adapter.getProtocolDetails(),
               chains: [],
+              ...(productWriteActions && {
+                writeActions: Object.keys(
+                  productWriteActions,
+                ) as WriteActions[],
+              }),
             }
 
             support[protocolId]!.push(product)
