@@ -3,7 +3,10 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'import', 'prettier', 'unused-imports'],
-  ignorePatterns: ['rebuild-and-restart.js'],
+  ignorePatterns: [
+    'src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
+    'rebuild-and-restart.js',
+  ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',

@@ -4,7 +4,7 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: NewAdapterAnswers) {
+}: Pick<NewAdapterAnswers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
   return `
   import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'
