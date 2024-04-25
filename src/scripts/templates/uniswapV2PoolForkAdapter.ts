@@ -5,7 +5,10 @@ export function uniswapV2PoolForkAdapterTemplate({
   adapterClassName,
   productId,
   chainKeys,
-}: NewAdapterAnswers) {
+}: Pick<
+  NewAdapterAnswers,
+  'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
+>) {
   return `
   import {
     UniswapV2PoolForkAdapter,

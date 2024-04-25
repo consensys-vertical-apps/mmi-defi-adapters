@@ -64,6 +64,7 @@ function runAllTests() {
   runProtocolTests(Protocol.MorphoAaveV3, morphoAaveV3TestCases)
   runProtocolTests(Protocol.MorphoBlue, morphoBlueTestCases)
   runProtocolTests(Protocol.MorphoCompoundV2, morphoCompoundV2TestCases)
+
   runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
   runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
   runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)

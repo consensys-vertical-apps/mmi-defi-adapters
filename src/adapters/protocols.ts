@@ -18,6 +18,7 @@ export const Protocol = {
   MorphoAaveV3: 'morpho-aave-v3',
   MorphoBlue: 'morpho-blue',
   MorphoCompoundV2: 'morpho-compound-v2',
+
   PancakeswapV2: 'pancakeswap-v2',
   PricesV2: 'prices-v2',
   QuickswapV2: 'quickswap-v2',

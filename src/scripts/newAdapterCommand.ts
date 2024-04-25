@@ -31,7 +31,7 @@ import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
 import b = types.builders
 
-type TemplateBuilder = (adapterSettings: NewAdapterAnswers) => string
+export type TemplateBuilder = (adapterSettings: NewAdapterAnswers) => string
 
 export type NewAdapterAnswers = {
   protocolKey: string
@@ -254,11 +254,15 @@ async function buildAdapterFromTemplate(adapterSettings: NewAdapterAnswers) {
 /**
  * @description Creates a new file for integration tests if it doesn't exist
  */
-async function buildIntegrationTests({
+export async function buildIntegrationTests({
   protocolId,
   protocolKey,
   productId,
-}: NewAdapterAnswers) {
+}: {
+  protocolId: string
+  protocolKey: string
+  productId: string
+}) {
   const testCasesFilePath = `./src/adapters/${protocolId}/tests/testCases.ts`
 
   if (await fileExists(testCasesFilePath)) {
@@ -355,7 +359,13 @@ function buildImportTestCasesEntry(protocolId: string, protocolKey: string) {
 /**
  * @description Writes changes to include new adapter in src/adapters/protocols.ts file
  */
-async function addProtocol({ protocolKey, protocolId }: NewAdapterAnswers) {
+export async function addProtocol({
+  protocolKey,
+  protocolId,
+}: {
+  protocolKey: string
+  protocolId: string
+}) {
   const protocolsFile = path.resolve('./src/adapters/protocols.ts')
   const contents = await fs.readFile(protocolsFile, 'utf-8')
   const ast = parse(contents, {
@@ -384,13 +394,19 @@ async function addProtocol({ protocolKey, protocolId }: NewAdapterAnswers) {
 /**
  * @description Writes changes to include new adapter in src/adapters/supportedProtocols.ts file
  */
-async function exportAdapter({
+export async function exportAdapter({
   protocolKey,
   protocolId,
   productId,
   adapterClassName,
   chainKeys,
-}: NewAdapterAnswers) {
+}: {
+  protocolKey: string
+  protocolId: string
+  productId: string
+  adapterClassName: string
+  chainKeys: (keyof typeof Chain)[]
+}) {
   const adaptersFile = path.resolve('./src/adapters/supportedProtocols.ts')
   const contents = await fs.readFile(adaptersFile, 'utf-8')
   const ast = parse(contents, {
@@ -632,7 +648,7 @@ function buildAdapterEntry(adapterClassName: string) {
   return b.identifier(`${adapterClassName}`)
 }
 
-function buildAdapterFilePath(
+export function buildAdapterFilePath(
   protocolId: string,
   productId: string,
   adapterClassName: string,
