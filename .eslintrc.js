@@ -4,7 +4,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'import', 'prettier', 'unused-imports'],
   ignorePatterns: [
-    'src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
+    'packages/adapters-library/src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
     'rebuild-and-restart.js',
   ],
   extends: [
