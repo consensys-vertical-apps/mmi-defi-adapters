@@ -11,7 +11,8 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "dev": "npm run dev -w packages/dev-ui -- --force",
+    "dev": "nodemon",
+    "dev:ui": "npm run dev -w packages/dev-ui -- --force",
     "build": "npm run build -w packages/adapters-library",
     "build:watch": "npm run build:watch -w packages/adapters-library",
     "adapters-cli": "node --env-file=.env packages/adapters-library/dist/scripts/index.js",
@@ -50,6 +51,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "nodemon": "^3.1.0",
     "prettier": "^3.0.0",
     "typescript": "^5.2.2"
   }
