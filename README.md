@@ -57,7 +57,7 @@ This project requires Node 20. Ensure you're using the correct version (e.g. run
 To build an adapter follow these steps:
 
 1. Install the necessary packages with `npm i`
-2. Build the project with `npm run build:watch`
+2. Run the project with `npm run dev`. This will keep the project running in the background and serve a web ui to test any changes.
 3. To build an adapter run:
    - `npm run new-adapter`
 4. To create a typescript-smart-contract class create a json file with your abi and add it to your ${protocolName}/contracts/abis/ folder, then run:
