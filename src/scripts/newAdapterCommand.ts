@@ -407,7 +407,7 @@ export async function exportAdapter({
   adapterClassName: string
   chainKeys: (keyof typeof Chain)[]
 }) {
-  const adaptersFile = path.resolve('./src/adapters/index.ts')
+  const adaptersFile = path.resolve('./src/adapters/supportedProtocols.ts')
   const contents = await fs.readFile(adaptersFile, 'utf-8')
   const ast = parse(contents, {
     parser: require('recast/parsers/typescript'),
