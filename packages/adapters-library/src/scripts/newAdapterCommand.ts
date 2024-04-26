@@ -27,6 +27,7 @@ import { simplePoolAdapterTemplate } from './templates/simplePoolAdapter'
 import { testCases } from './templates/testCases'
 import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
 import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
+import { writeOnlyDeFiAdapter } from './templates/writeOnlyDeFiAdapter'
 import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
 import b = types.builders
@@ -43,15 +44,20 @@ export type NewAdapterAnswers = {
 }
 
 const Templates: Record<string, TemplateBuilder> = {
-  ['DefaultAdapter']: defaultAdapterTemplate,
-  ['SimplePoolAdapter']: simplePoolAdapterTemplate,
+  ['DefaultAdapter (blank adapter - hard mode) ']: defaultAdapterTemplate,
+  ['SimplePoolAdapter (your DeFi token(s) follows ERC20 standard)']:
+    simplePoolAdapterTemplate,
   ['UniswapV2PoolForkAdapter']: uniswapV2PoolForkAdapterTemplate,
-  ['LpStakingAdapter']: lpStakingAdapterTemplate,
+  ['LpStakingAdapter (lp token and supports rewards)']:
+    lpStakingAdapterTemplate,
   ['CompoundV2SupplyMarketForkAdapter']:
     compoundV2SupplyMarketForkAdapterTemplate,
   ['CompoundV2BorrowMarketForkAdapter']:
     compoundV2BorrowMarketForkAdapterTemplate,
-  ['VotingEscrowAdapter']: votingEscrowAdapterTemplate,
+  ['VotingEscrowAdapter (like curve and stargate voting escrow)']:
+    votingEscrowAdapterTemplate,
+  ['WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)']:
+    writeOnlyDeFiAdapter,
 }
 
 export function newAdapterCommand(
@@ -187,6 +193,7 @@ export function newAdapterCommand(
             choices: Object.keys(Templates),
             default: template ? template : undefined,
             filter: (input: string) => Templates[input],
+            pageSize: 9990,
           },
         ]
 
