@@ -38,12 +38,12 @@ jobs:
           if [ ! -f .env ]; then
             touch .env
           fi
-          npm run new-adapter -- -p test-default-adapter-protocol -pd pool -c 1 -t DefaultAdapter -y
+          npm run new-adapter -- -p test-default-adapter-protocol -pd pool -c 1 -t "DefaultAdapter (blank adapter - hard mode)" -y
           npm run build
 
       - name: Create new adapter with SimplePoolAdapter template
         run: |
-          npm run new-adapter -- -p test-simple-pool-adapter-protocol -pd pool -c 1 -t SimplePoolAdapter -y
+          npm run new-adapter -- -p test-simple-pool-adapter-protocol -pd pool -c 1 -t "SimplePoolAdapter (your DeFi token(s) follows ERC20 standard)" -y
           npm run build
           npm run build-metadata -- -p test-simple-pool-adapter-protocol
           npm run build
@@ -55,7 +55,7 @@ jobs:
 
       - name: Create new adapter with LpStakingAdapter template
         run: |
-          npm run new-adapter -- -p test-lp-staking-adapter -pd pool -c 1,10,42161 -t LpStakingAdapter -y
+          npm run new-adapter -- -p test-lp-staking-adapter -pd pool -c 1,10,42161 -t "LpStakingAdapter (lp token and supports rewards)" -y
           npm run build
 
       - name: Create new adapter with CompoundV2SupplyMarketForkAdapter template
@@ -70,12 +70,12 @@ jobs:
 
       - name: Create new adapter with VotingEscrow template
         run: |
-          npm run new-adapter -- -p test-voting-escrow supply -c 1,10,42161 -t VotingEscrowAdapter -y
+          npm run new-adapter -- -p test-voting-escrow supply -c 1,10,42161 -t "VotingEscrowAdapter (like curve and stargate voting escrow)" -y
           npm run build
 
       - name: Create new adapter with WriteOnlyAdapter template
         run: |
-          npm run new-adapter -- -p writeOnlyAdapter write -c 1,10,42161 -t 'WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)' -y
+          npm run new-adapter -- -p writeOnlyAdapter write -c 1,10,42161 -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)" -y
           npm run build
 
   run-tests:
