@@ -23,14 +23,24 @@ This library is designed to simplify and standardise the process of fetching dat
 ## 🎥 DeFi Adapter Tutorial
 
 ### Create Read Adapter
-The tutorial video below shows an intro to our library and how to build an adapter:
+
+The tutorial video below shows an intro to our library and how to build a read adapter:
 
 [![DeFi Adapter Tutorial](video-thumbnail.png)](https://drive.google.com/file/d/1EL5PEOQa_OgscANi3mAxBXdT25LqMsKv/view)
 
-### Add Write Adapter Support to Read Adapter
-The tutorial video below shows an intro to on how to add write adapter actions to an existing adapter:
+### Add Write-Adapter/GetTransactionParams support
+
+The tutorial video below shows an intro to on how to add write adapter actions to an existing read adapter:
+
+Don't have a read adapter? And don't intend to create a read adapter? Then:
+
+1. Choose the "WriteOnlyAdapterTemplate" on our create-new-adapter-cli
+2. Implement the buildMetadata() method and run `npm run build-metadata -- -p <protocol-id>` to create a json file snapshot of your protocol metadata (Note: you can watch Read tutorial video for more info about buildMetadata function or view other implemented adapters)
+3. Then follow the video tutorial below:
 
 [![DeFi Adapter Write Actions Tutorial](video-write-thumbnail.png)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view)
+
+See section "Write Actions for adapters" below for more information after watching the tutorial.
 
 ## Adapter Template Overview
 
@@ -253,13 +263,16 @@ Running `npm run test` validates snapshots match results.
 Product adapters should implement the `getTransactionParams` method to return an object that can be used to form a transaction (usually `to` and `data`).
 
 #### Determine the actions supported by the product adapter
+
 First of all, it is necessary to determine what actions that product adapter supports. There's a list of available actions which can be extended when the needs arise (entries need to be added to [this constant declaration](src/types/writeActions.ts). The current supported actions are:
+
 - Deposit
 - Withdraw
 - Borrow
 - Repay
 
 #### Create input schemas for every action
+
 After that, an object called `WriteActionInputs` needs to be exported from that adapter file. The object includes a list of the available actions and the respective Zod schemas for the input.
 
 We use Zod schemas because it is a popular library that allows us to create appropriate types in the background to validate the input. Here is a [list of primitives that Zod supports](https://zod.dev/?id=primitives).
@@ -285,6 +298,7 @@ export const WriteActionInputs = {
 After creating that input schema, and making sure that the project is building with `npm run build:watch`, it is necessary to run `npm run build-types` so that the types and schemas are correctly generated.
 
 #### Implement getTransactionParams method logic
+
 Implement the `getTransactionParams` method within your adapter.
 
 The easier way is to set a switch statement using the `WriteAction` as discriminator, this should allow TypeScript language server to determine the correct type within the switch statement entry.

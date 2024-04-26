@@ -73,6 +73,11 @@ jobs:
           npm run new-adapter -- -p test-voting-escrow supply -c 1,10,42161 -t VotingEscrowAdapter -y
           npm run build
 
+      - name: Create new adapter with WriteOnlyAdapter template
+        run: |
+          npm run new-adapter -- -p writeOnlyAdapter write -c 1,10,42161 -t 'WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)' -y
+          npm run build
+
   run-tests:
     runs-on: ubuntu-latest
 

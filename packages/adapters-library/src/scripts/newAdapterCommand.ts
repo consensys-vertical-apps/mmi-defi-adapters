@@ -44,7 +44,7 @@ export type NewAdapterAnswers = {
 }
 
 const Templates: Record<string, TemplateBuilder> = {
-  ['DefaultAdapter (blank adapter - hard mode) ']: defaultAdapterTemplate,
+  ['DefaultAdapter (blank adapter - hard mode)']: defaultAdapterTemplate,
   ['SimplePoolAdapter (your DeFi token(s) follows ERC20 standard)']:
     simplePoolAdapterTemplate,
   ['UniswapV2PoolForkAdapter']: uniswapV2PoolForkAdapterTemplate,
