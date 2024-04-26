@@ -85,7 +85,7 @@ export function featureCommands(program: Command, defiProvider: DefiProvider) {
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
 
-      const data = defiProvider.getSupport({
+      const data = await defiProvider.getSupport({
         filterChainIds,
         filterProtocolIds,
       })
