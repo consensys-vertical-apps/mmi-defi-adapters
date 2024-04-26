@@ -551,11 +551,11 @@ export class DefiProvider {
     })
   }
 
-  getSupport(input?: {
+  async getSupport(input?: {
     filterChainIds?: Chain[] | undefined
     filterProtocolIds?: Protocol[] | undefined
   }) {
-    return this.adaptersController.getSupport(input)
+    return await this.adaptersController.getSupport(input)
   }
 
   private async runForAllProtocolsAndChains<ReturnType extends object>({

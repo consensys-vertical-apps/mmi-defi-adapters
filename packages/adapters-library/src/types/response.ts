@@ -113,6 +113,7 @@ export type Support = Partial<
     {
       protocolDetails: ProtocolDetails
       chains: Chain[]
+      protocolTokenAddresses?: Partial<Record<Chain, string[]>>
       writeActions?: WriteActions[]
     }[]
   >
