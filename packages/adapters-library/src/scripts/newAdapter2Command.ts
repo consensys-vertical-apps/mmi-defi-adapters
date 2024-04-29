@@ -60,19 +60,12 @@ export type Outcomes = {
   template: keyof typeof Templates | 'No'
 }
 
-export type Answers = {
+export type Answers = Omit<
+  Record<keyof typeof questionsJson, string>,
+  'chainKeys'
+> & {
   chainKeys: (keyof typeof Chain)[]
   adapterClassName: string
-  protocolId: string
-  productId: string
-  protocolKey: string
-  forkCheck: string
-  erc20Event: string
-  balanceQueryMethod: string
-  unwrapSimpleMapping: string
-  additionalRewards: string
-  defiAssetStructure: string
-  underlyingTokens: string
 }
 
 export async function newAdapter2Command(
@@ -157,6 +150,7 @@ function calculateDefaultAnswers(answers: Answers) {
   answers = Object.keys(questionsJson).reduce((acc, key) => {
     acc[key as keyof Answers] = questionsJson[
       key as keyof typeof questionsJson
+      //eslint-disable-next-line
     ].default(answers) as any
     return acc
   }, {} as Answers)
@@ -172,8 +166,9 @@ function calculateAdapterOutcomes(answers: Answers) {
     // Step3: add outcome to outcomes
     if ('outcomes' in questionConfig) {
       acc = {
-        //@ts-ignore
-        ...questionConfig.outcomes![answer],
+        ...(questionConfig.outcomes![
+          answer as keyof typeof questionConfig.outcomes
+        ] as {}),
         ...acc,
       }
     }
