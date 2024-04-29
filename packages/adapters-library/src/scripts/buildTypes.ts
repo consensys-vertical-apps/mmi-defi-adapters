@@ -24,12 +24,16 @@ export function buildContractTypes(program: Command) {
 }
 
 async function buildGlobalContractTypes() {
-  const contractsDirectory = path.resolve('src/contracts')
+  const contractsDirectory = path.resolve(
+    'packages/adapters-library/src/contracts',
+  )
   await buildContractTypesForFolder(contractsDirectory)
 }
 
 async function builAdapterContracts() {
-  const adaptersFolderPath = path.resolve('src/adapters')
+  const adaptersFolderPath = path.resolve(
+    'packages/adapters-library/src/adapters',
+  )
   const adaptersFolderEntries = fs.readdirSync(adaptersFolderPath, {
     withFileTypes: true,
   })

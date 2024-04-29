@@ -253,24 +253,21 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
 
         break
       }
-      default:
-        {
-          await buildAdapterFromBlankTemplate(answers, outcomes)
-        }
-
-        await buildIntegrationTests(answers)
-        await addProtocol(answers)
-        await exportAdapter(answers)
-
-        console.log(
-          chalk`\n{bold New adapter created at: {bgBlack.red src/adapters/${
-            answers.protocolId
-          }/products/${answers.productId}/${lowerFirst(
-            answers.adapterClassName,
-          )}.ts}}\n`,
-        )
+      default: {
+        await buildAdapterFromBlankTemplate(answers, outcomes)
+      }
     }
+    await buildIntegrationTests(answers)
+    await addProtocol(answers)
+    await exportAdapter(answers)
 
+    console.log(
+      chalk`\n{bold New adapter created at: {bgBlack.red src/adapters/${
+        answers.protocolId
+      }/products/${answers.productId}/${lowerFirst(
+        answers.adapterClassName,
+      )}.ts}}\n`,
+    )
     console.log('The file has been saved!')
   }
 }
@@ -340,7 +337,7 @@ async function buildAdapterFromBlankTemplate(
   outcomes: Outcomes,
 ) {
   const blankTemplate = await readBlankTemplate(
-    'src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
+    './packages/adapters-library/src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
   )
 
   const code = generateAdapter(answers, outcomes, blankTemplate!)
@@ -364,7 +361,7 @@ export function buildAdapterFilePath(
   adapterClassName: string,
 ): string {
   const productPath = path.resolve(
-    `./src/adapters/${protocolId}/products/${productId}`,
+    `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}`,
   )
 
   return path.resolve(productPath, `${lowerFirst(adapterClassName)}.ts`)
