@@ -14,10 +14,7 @@ import {
   exportAdapter,
 } from './newAdapterCommand'
 import { questionsJson } from './questionnaire'
-import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
-import { compoundV2SupplyMarketForkAdapterTemplate } from './templates/compoundV2SupplyMarketForkAdapter'
-import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
-import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
+import { Templates } from './templates/templates'
 
 const colorBlue = chalk.rgb(0, 112, 243).bold
 const boldWhiteBg = chalk.bgWhite.bold
@@ -60,7 +57,7 @@ export type Outcomes = {
   unwrap: 'useOneToOneMethod' | 'notImplementedError'
   withdrawalsFunction: 'useWithdrawalHelper' | 'notImplementedError'
   depositsFunction: 'useDepositsHelper' | 'notImplementedError'
-  template: 'CompoundV2' | 'CurveGovernanceVesting' | 'UniswapV2' | 'No'
+  template: keyof typeof Templates | 'No'
 }
 
 export type Answers = {
@@ -103,7 +100,10 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
     let answers = {} as Answers
 
     if (!skipQuestions) {
-      await welcome()
+      const isExit = await welcome()
+      if (isExit) {
+        return
+      }
 
       const firstQuestionId = 'protocolKey'
 
@@ -121,51 +121,21 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
 
     const outcomes = calculateAdapterOutcomes(answers)
 
-    console.log(answers, outcomes)
+    console.log({ answers, outcomes })
 
     switch (outcomes.template) {
-      case 'UniswapV2': {
-        const code = uniswapV2PoolForkAdapterTemplate({
-          protocolKey: answers.protocolId,
-          productId: answers.productId,
-          adapterClassName: answers.adapterClassName,
-          chainKeys: answers.chainKeys, // TODO Rename to chainKeys
-        })
-
-        await createAdapterFile(answers, code)
-        break
-      }
-      case 'CurveGovernanceVesting': {
-        const code = votingEscrowAdapterTemplate({
-          protocolKey: answers.protocolId,
-          productId: answers.productId,
-          adapterClassName: answers.adapterClassName,
-        })
-
-        await createAdapterFile(answers, code)
-        break
-      }
-      case 'CompoundV2': {
-        const supplyMarketCode = compoundV2SupplyMarketForkAdapterTemplate({
-          protocolKey: answers.protocolId,
-          productId: answers.productId,
-          adapterClassName: answers.adapterClassName,
-        })
-
-        await createAdapterFile(answers, supplyMarketCode)
-
-        const borrowMarketCode = compoundV2BorrowMarketForkAdapterTemplate({
-          protocolKey: answers.protocolId,
-          productId: answers.productId,
-          adapterClassName: answers.adapterClassName,
-        })
-
-        await createAdapterFile(answers, borrowMarketCode)
-
+      case 'No': {
+        await buildAdapterFromBlankTemplate(answers, outcomes)
         break
       }
       default: {
-        await buildAdapterFromBlankTemplate(answers, outcomes)
+        console.log({ outcomes })
+
+        const templates = Templates[outcomes.template]!
+        for (const template of templates) {
+          const code = template(answers)
+          await createAdapterFile(answers, code)
+        }
       }
     }
     await buildIntegrationTests(answers)
@@ -321,7 +291,7 @@ async function welcome() {
 
     if (!start['start']) {
       console.log('Goodbye!')
-      return
+      return true
     }
   }
 }

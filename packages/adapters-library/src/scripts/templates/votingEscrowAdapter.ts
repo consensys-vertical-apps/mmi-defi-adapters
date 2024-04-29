@@ -1,10 +1,13 @@
-import { NewAdapterAnswers } from '../newAdapterCommand'
+import { Answers } from '../newAdapter2Command'
 
 export function votingEscrowAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: Pick<NewAdapterAnswers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
+}: Pick<
+  Answers,
+  'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
+>) {
   return `import { getAddress } from 'ethers'
   import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
   import { NotImplementedError } from '../../../../core/errors/errors'

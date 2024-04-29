@@ -1,10 +1,13 @@
-import { NewAdapterAnswers } from '../newAdapterCommand'
+import { Answers } from '../newAdapter2Command'
 
 export function lpStakingAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: NewAdapterAnswers) {
+}: Pick<
+  Answers,
+  'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
+>) {
   return `
   import {
     LpStakingAdapter,

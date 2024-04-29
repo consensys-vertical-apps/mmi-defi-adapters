@@ -12,6 +12,7 @@ import {
   kebabCase,
 } from '../core/utils/caseConversion'
 import { DefiProvider } from '../defiProvider'
+import { Templates } from './templates/templates'
 
 // NEED TO ADD A QUESTION?
 // 1. Add question below
@@ -91,25 +92,19 @@ export const questionsJson = {
     question:
       "Is your product a fork of one of the following? Please select from the list below or enter 'No' if none apply.",
     type: 'list',
-    choices: ['No', 'Uniswap v2', 'Curve governance vesting', 'Compound v2'],
+    choices: ['No', ...Object.keys(Templates)],
     default: () => 'No',
     next: {
       No: 'defiAssetStructure',
-      'Uniswap v2': 'end',
-      'Curve governance vesting': 'end',
-      'Compound v2': 'end',
+      ...Object.keys(Templates).reduce((acc, templateName) => {
+        return { [templateName]: 'end', ...acc }
+      }, {}),
     },
     outcomes: {
-      'Uniswap v2': {
-        template: 'UniswapV2',
-      },
-      'Curve governance vesting': {
-        template: 'CurveGovernanceVesting',
-      },
-      'Compound v2': {
-        template: 'CompoundV2',
-      },
       No: { template: 'No' },
+      ...Object.keys(Templates).reduce((acc, templateName) => {
+        return { [templateName]: { template: templateName }, ...acc }
+      }, {}),
     },
   },
   defiAssetStructure: {

@@ -1,10 +1,13 @@
-import { NewAdapterAnswers } from '../newAdapterCommand'
+import { Answers } from '../newAdapter2Command'
 
 export function simplePoolAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: NewAdapterAnswers) {
+}: Pick<
+  Answers,
+  'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
+>) {
   return `
   import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
   import {

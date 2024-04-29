@@ -1,10 +1,13 @@
-import { NewAdapterAnswers } from '../newAdapterCommand'
+import { Answers } from '../newAdapter2Command'
 
 export function defaultAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: NewAdapterAnswers) {
+}: Pick<
+  Answers,
+  'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
+>) {
   return `
   import { AdaptersController } from '../../../../core/adaptersController'
   import { Chain } from '../../../../core/constants/chains'
