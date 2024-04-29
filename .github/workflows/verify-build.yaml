@@ -82,11 +82,11 @@ jobs:
         run: |
           npm run new-adapter2 -- -y -t No
           npm run build
-          npm run new-adapter2 -- -y -t CurveGovernanceVesting
+          npm run new-adapter2 -- -y -t "VotingEscrowAdapter (like curve and stargate voting escrow)"
           npm run build
-          npm run new-adapter2 -- -y -t CompoundV2
+          npm run new-adapter2 -- -y -t UniswapV2PoolForkAdapter
           npm run build
-          npm run new-adapter2 -- -y -t CurveGovernanceVesting
+          npm run new-adapter2 -- -y -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)"
           npm run build
 
   run-tests:
