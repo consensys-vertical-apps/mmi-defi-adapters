@@ -168,7 +168,7 @@ function calculateAdapterOutcomes(answers: Answers) {
       acc = {
         ...(questionConfig.outcomes![
           answer as keyof typeof questionConfig.outcomes
-        ] as {}),
+        ] as object),
         ...acc,
       }
     }
