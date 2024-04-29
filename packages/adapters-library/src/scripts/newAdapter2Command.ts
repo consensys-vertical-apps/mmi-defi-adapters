@@ -31,14 +31,17 @@ export interface QuestionConfig {
   choices?: readonly string[] // Only needed for certain types of questions, e.g., 'list'
   next: Record<string, string> | string
   //eslint-disable-next-line
-  outcomes?: Record<string, any>
+  outcomes?: Record<keyof Answers, any>
   validate?: (input: string, answers: Answers) => boolean | string
   validateProductId?: (
     defiProvider: DefiProvider,
     answers: Answers,
   ) => (input: string) => boolean | string
   suffix?: string
-  default?: (answers: Answers, defiAdapter?: DefiProvider) => string | string[]
+  default: (
+    answers: Answers,
+    defiAdapter?: DefiProvider,
+  ) => string | boolean | (keyof typeof Chain)[]
 }
 
 export type Outcomes = {
@@ -71,6 +74,8 @@ export type Answers = {
   balanceQueryMethod: string
   unwrapSimpleMapping: string
   additionalRewards: string
+  defiAssetStructure: string
+  underlyingTokens: string
 }
 
 export async function newAdapter2Command(
@@ -80,137 +85,43 @@ export async function newAdapter2Command(
   program
     .command('new-adapter2')
     .description('Start the interactive CLI questionnaire')
+    .option('-y, --yes', 'Skip prompts and use default values')
+    .option('-t, --template <template>', 'Template to use')
     .action(initiateQuestionnaire(defiProvider))
 }
 
 function initiateQuestionnaire(defiProvider: DefiProvider) {
-  return async () => {
-    console.log(
-      colorBlue(
-        `                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-      +-.                                .-+                 
-     -###*==:                        :-=*#%#=                
-     #######+====-              :====+#######.               
-    *#########*+====..........====+*#########*               
-    :############+==-........-==+############:               
-     ##############*=:......:=*##############                
-     =###############+......+###############=                
-     +#############*==......==*#############+                
-     -###########*====......====*###########-                
-     .#######+--======:....:======-:=#######.                
-       --:....-=======:....:=======-.....--                  
-       ......-+****+++-....-++++****-......                  
-      ........:+***##*-....-*##***+-........                 
-      .........:=-+%@*=....=*%%*-=:.........                 
-     ...........-....:-....-:....-...........                
-     ========++++-....-....-....-++++========                
-     :=======+**+===:........:===+**+=======-                
-      ========+*+===--@@@@@@--===+*=========.                
-      :==========:...=@@@@@@=...:==========-                 
-       ==-:.      ....:::::::...      .:-==                  
-                     .::::::.                                
-                                                             
-                                                             
-                                                             
-                                                             
-            Create new DeFi Adapter!                                              
-                                                             
-                                                             
-                                                             
-                                                             `,
-      ),
-    )
+  return async ({
+    yes: skipQuestions,
+    template,
+  }: {
+    yes: boolean
+    template: Outcomes['template']
+  }) => {
+    console.log({ skipQuestions })
 
-    const firstQuestionId = 'protocolKey'
+    let answers = {} as Answers
 
-    const listQuestionsAnswers = await prompt({
-      type: 'confirm',
-      name: 'viewAllQuestions',
-      message:
-        'Would you like to view all questions? This will help you know what to look for in the protocol.',
-      prefix: chalk.blue('?'),
-    })
+    if (!skipQuestions) {
+      await welcome()
 
-    if (listQuestionsAnswers['viewAllQuestions']) {
-      console.log()
-      console.log(
-        boldWhiteBg(
-          '                                            All questions                                              ',
-        ),
-      )
+      const firstQuestionId = 'protocolKey'
 
-      Object.keys(questionsJson).forEach((questionKey, index) => {
-        const question =
-          questionsJson[questionKey as keyof typeof questionsJson]
-        console.log(
-          greenBrightText(
-            boldText(`Q${index + 1} ${pascalCase(questionKey)}: `),
-          ) + greenBrightText(`${question.question}`),
-        )
-
-        // Check if the question has choices and print them
-        if ('choices' in question) {
-          console.log(greenBrightText('Options:'))
-          question.choices.forEach((choice: string, index: number) => {
-            console.log(greenBrightText(`  ${index + 1}. ${choice}`))
-          })
-        }
-        if (question.type === 'confirm') {
-          console.log(greenBrightText('Options:'))
-          console.log(greenBrightText(` 1. Yes`))
-          console.log(greenBrightText(` 2. No`))
-        }
-        if (question.type === 'text') {
-          console.log(greenBrightText('Options:'))
-          console.log(
-            greenBrightText(` 1. string`) +
-              ` (e.g ` +
-              greenBrightText(question.default({} as Answers)) +
-              `)`,
-          )
-        }
-
-        console.log()
-      })
-      console.log()
-      console.log(
-        boldWhiteBg(
-          '                                            All questions end                                              ',
-        ),
-      )
-      console.log()
-      const start = await prompt({
-        type: 'confirm',
-        name: 'start',
-        message: 'Ready to answer the questions? ',
-        prefix: bluePrefix,
-      })
-
-      if (!start['start']) {
-        console.log('Goodbye!')
-        return
-      }
+      answers = await askQuestion(firstQuestionId, defiProvider)
+    } else {
+      answers = calculateDefaultAnswers(answers)
     }
 
-    const [answers, outcomes] = await askQuestion(
-      firstQuestionId,
-
-      defiProvider,
-    )
-
-    // create adapter class name
     answers.adapterClassName = adapterClassName(
       answers.protocolKey,
       answers.productId,
     )
+
+    answers.forkCheck = template ?? answers.forkCheck
+
+    const outcomes = calculateAdapterOutcomes(answers)
+
+    console.log(answers, outcomes)
 
     switch (outcomes.template) {
       case 'UniswapV2': {
@@ -272,13 +183,156 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
   }
 }
 
+function calculateDefaultAnswers(answers: Answers) {
+  answers = Object.keys(questionsJson).reduce((acc, key) => {
+    acc[key as keyof Answers] = questionsJson[
+      key as keyof typeof questionsJson
+    ].default(answers) as any
+    return acc
+  }, {} as Answers)
+  return answers
+}
+
+function calculateAdapterOutcomes(answers: Answers) {
+  return Object.keys(questionsJson).reduce((acc, key) => {
+    const answer = answers[key as keyof Answers]
+
+    const questionConfig = questionsJson[key as keyof typeof questionsJson]
+
+    // Step3: add outcome to outcomes
+    if ('outcomes' in questionConfig) {
+      acc = {
+        //@ts-ignore
+        ...questionConfig.outcomes![answer],
+        ...acc,
+      }
+    }
+
+    return acc
+  }, {} as Outcomes)
+}
+
+async function welcome() {
+  console.log(
+    colorBlue(
+      `                                                                        
+                                                                          
+                                                                          
+                                                                          
+                                                                          
+                                                                          
+                                                                          
+                                                                          
+                                                                          
+        +-.                                .-+                 
+       -###*==:                        :-=*#%#=                
+       #######+====-              :====+#######.               
+      *#########*+====..........====+*#########*               
+      :############+==-........-==+############:               
+       ##############*=:......:=*##############                
+       =###############+......+###############=                
+       +#############*==......==*#############+                
+       -###########*====......====*###########-                
+       .#######+--======:....:======-:=#######.                
+         --:....-=======:....:=======-.....--                  
+         ......-+****+++-....-++++****-......                  
+        ........:+***##*-....-*##***+-........                 
+        .........:=-+%@*=....=*%%*-=:.........                 
+       ...........-....:-....-:....-...........                
+       ========++++-....-....-....-++++========                
+       :=======+**+===:........:===+**+=======-                
+        ========+*+===--@@@@@@--===+*=========.                
+        :==========:...=@@@@@@=...:==========-                 
+         ==-:.      ....:::::::...      .:-==                  
+                       .::::::.                                
+                                                               
+                                                               
+                                                               
+                                                               
+              Create new DeFi Adapter!                                              
+                                                               
+                                                               
+                                                               
+                                                               `,
+    ),
+  )
+
+  const listQuestionsAnswers = await prompt({
+    type: 'confirm',
+    name: 'viewAllQuestions',
+    message:
+      'Would you like to view all questions? This will help you know what to look for in the protocol.',
+    prefix: chalk.blue('?'),
+  })
+
+  if (listQuestionsAnswers['viewAllQuestions']) {
+    console.log()
+    console.log(
+      boldWhiteBg(
+        '                                            All questions                                              ',
+      ),
+    )
+
+    Object.keys(questionsJson).forEach((questionKey, index) => {
+      const question = questionsJson[questionKey as keyof typeof questionsJson]
+      console.log(
+        greenBrightText(
+          boldText(`Q${index + 1} ${pascalCase(questionKey)}: `),
+        ) + greenBrightText(`${question.question}`),
+      )
+
+      // Check if the question has choices and print them
+      if ('choices' in question) {
+        console.log(greenBrightText('Options:'))
+        question.choices.forEach((choice: string, index: number) => {
+          console.log(greenBrightText(`  ${index + 1}. ${choice}`))
+        })
+      }
+      if (question.type === 'confirm') {
+        console.log(greenBrightText('Options:'))
+        console.log(greenBrightText(` 1. Yes`))
+        console.log(greenBrightText(` 2. No`))
+      }
+      if (question.type === 'text') {
+        console.log(greenBrightText('Options:'))
+        console.log(
+          greenBrightText(` 1. string`) +
+            ` (e.g ` +
+            greenBrightText(question.default({} as Answers)) +
+            `)`,
+        )
+      }
+
+      console.log()
+    })
+    console.log()
+    console.log(
+      boldWhiteBg(
+        '                                            All questions end                                              ',
+      ),
+    )
+    console.log()
+    const start = await prompt({
+      type: 'confirm',
+      name: 'start',
+      message: 'Ready to answer the questions? ',
+      prefix: bluePrefix,
+    })
+
+    if (!start['start']) {
+      console.log('Goodbye!')
+      return
+    }
+  }
+}
+
 async function askQuestion(
   key: keyof typeof questionsJson,
   defiProvider: DefiProvider,
   answers = {} as Answers,
   outcomes = {} as Outcomes,
-): Promise<[Answers, Outcomes]> {
-  const questionConfig: QuestionConfig = questionsJson[key]
+): Promise<Answers> {
+  const questionConfig = questionsJson[key] as QuestionConfig
 
   // Step1: ask question and get answer
   const answer = (
@@ -302,24 +356,11 @@ async function askQuestion(
   // Step2: add answer to answers
   answers[key as keyof Answers] = answer
 
-  // Step3: add outcome to outcomes
-  outcomes = {
-    ...questionConfig.outcomes![answer],
-    ...outcomes,
-  }
-
-  if (questionConfig.outcomes![answer]) {
-    outcomes = {
-      ...questionConfig.outcomes![answer],
-      ...outcomes,
-    }
-  }
-
   if (
     questionConfig.next === 'end' ||
     (questionConfig.next as Record<string, string>)[answer] === 'end'
   ) {
-    return [answers, outcomes]
+    return answers
   }
 
   //eslint-disable-next-line
