@@ -5,14 +5,21 @@ export function writeOnlyDeFiAdapter({
   adapterClassName,
   productId,
 }: NewAdapterAnswers) {
-  return `import { z } from "zod";
-  import { WriteOnlyDeFiAdapter } from "../../../core/adapters/writeOnlyAdapter";
-  import { CacheToFile } from "../../../core/decorators/cacheToFile";
-  import { ProtocolDetails, PositionType, AssetType } from "../../../types/adapter";
-  import { WriteActions, WriteActionInputSchemas } from "../../../types/writeActions";
-  import { Protocol } from "../../protocols";
-  import { GetTransactionParams } from "../../supportedProtocols";
-  import { NotImplementedError } from "../../../core/errors/errors";
+  return `import { z } from 'zod'
+  import { WriteOnlyDeFiAdapter } from '../../../../core/adapters/writeOnlyAdapter'
+  import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+  import {
+    ProtocolDetails,
+    PositionType,
+    AssetType,
+  } from '../../../../types/adapter'
+  import {
+    WriteActions,
+    WriteActionInputSchemas,
+  } from '../../../../types/writeActions'
+  import { Protocol } from '../../../protocols'
+  import { GetTransactionParams } from '../../../supportedProtocols'
+  import { NotImplementedError } from '../../../../core/errors/errors'
   
   export class ${adapterClassName} extends WriteOnlyDeFiAdapter {
     productId = '${productId}'

@@ -270,7 +270,7 @@ export async function buildIntegrationTests({
   protocolKey: string
   productId: string
 }) {
-  const testCasesFilePath = `./src/adapters/${protocolId}/tests/testCases.ts`
+  const testCasesFilePath = `./packages/adapters-library/src/adapters/${protocolId}/tests/testCases.ts`
 
   if (await fileExists(testCasesFilePath)) {
     return

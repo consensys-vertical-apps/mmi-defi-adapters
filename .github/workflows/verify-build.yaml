@@ -75,7 +75,7 @@ jobs:
 
       - name: Create new adapter with WriteOnlyAdapter template
         run: |
-          npm run new-adapter -- -p writeOnlyAdapter write -c 1,10,42161 -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)" -y
+          npm run new-adapter -- -p writeOnlyAdapter -pd write -c 1,10,42161 -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)" -y
           npm run build
 
   run-tests:
