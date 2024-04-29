@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "incremental": false
+  },
+  "exclude": [
+    "**/*.test.*",
+    "**/__mocks__/*",
+    "**/__tests__/*",
+    "**/__snapshots__/*",
+    "src/scripts/**"
+  ],
+  "hooks": ["copy-files"]
+}

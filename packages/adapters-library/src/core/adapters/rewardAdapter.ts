@@ -4,7 +4,7 @@ import {
   GetEventsInput,
   MovementsByBlock,
   Underlying,
-} from '../types/adapter'
+} from '../../types/adapter'
 import { helpers } from './helpers'
 
 export abstract class RewardsAdapter {
