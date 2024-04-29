@@ -176,6 +176,11 @@ export interface GetPositionsInput {
 
 export interface GetTotalValueLockedInput {
   /**
+   * Optional filter for tokens that will be queried
+   */
+  protocolTokenAddresses?: string[]
+
+  /**
    * Optional override param
    */
   blockNumber?: number

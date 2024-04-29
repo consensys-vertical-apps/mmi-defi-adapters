@@ -23,6 +23,7 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Linea,
     method: 'tvl',
+    filterProtocolTokens: ['0x90D8053f7E29FaAF5189BdcE796a516E29F1F5d3'],
     blockNumber: 1498597,
   },
   {

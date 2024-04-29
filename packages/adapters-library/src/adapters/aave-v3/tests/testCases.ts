@@ -37,6 +37,7 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Arbitrum,
     method: 'tvl',
+    filterProtocolTokens: ['0x625E7708f30cA75bfd92586e17077590C60eb4cD'],
     blockNumber: 201319945,
   },
 

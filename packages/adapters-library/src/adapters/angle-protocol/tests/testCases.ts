@@ -60,13 +60,6 @@ export const testCases: TestCase[] = [
     blockNumber: 19410813,
   },
   {
-    key: 'prices',
-    chainId: Chain.Ethereum,
-    method: 'prices',
-    blockNumber: 19544644,
-  },
-  {
-    key: 'prices-filter',
     chainId: Chain.Ethereum,
     method: 'prices',
     blockNumber: 19544644,

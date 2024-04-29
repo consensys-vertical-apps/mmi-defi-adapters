@@ -72,12 +72,13 @@ export type TestCase = {
     }
   | {
       method: 'prices'
-      blockNumber?: number
       filterProtocolToken?: string
+      blockNumber?: number
       filterTokenId?: string
     }
   | {
       method: 'tvl'
+      filterProtocolTokens?: string[]
       blockNumber?: number
     }
   | {
