@@ -37,10 +37,10 @@ export function votingEscrowAdapterTemplate({
     }
   
     addresses = {
-      veToken: getAddress('0x...'),
-      underlyingToken: getAddress('0x...'),
-      rewardToken: getAddress('0x...'),
-      feeDistributor: getAddress('0x...'),
+      veToken: "getAddress('0x...')",
+      underlyingToken: "getAddress('0x...')",
+      rewardToken: "getAddress('0x...')",
+      feeDistributor: "getAddress('0x...')",
     }
   
     async getRewardBalance({
