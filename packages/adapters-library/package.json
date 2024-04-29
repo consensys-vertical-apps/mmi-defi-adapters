@@ -26,7 +26,6 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
-    "build:prod": "tsc -p tsconfig.build.prod.json",
     "fix": "eslint \"src/**/*.ts\" --fix",
     "lint": "eslint \"src/**/*.ts\"",
     "test": "jest",
