@@ -26,7 +26,7 @@ This library is designed to simplify and standardise the process of fetching dat
 
 The tutorial video below shows an intro to our library and how to build a read adapter:
 
-[![DeFi Adapter Tutorial](video-thumbnail.png)](https://drive.google.com/file/d/1EL5PEOQa_OgscANi3mAxBXdT25LqMsKv/view)
+[![DeFi Adapter Tutorial](packages/adapters-library/readme-assets/video-thumbnail.png)](https://drive.google.com/file/d/1EL5PEOQa_OgscANi3mAxBXdT25LqMsKv/view)
 
 ### Add Write-Adapter/GetTransactionParams support
 
@@ -38,7 +38,7 @@ Don't have a read adapter? And don't intend to create a read adapter? Then:
 2. Implement the buildMetadata() method and run `npm run build-metadata -- -p <protocol-id>` to create a json file snapshot of your protocol metadata (Note: you can watch Read tutorial video for more info about buildMetadata function or view other implemented adapters)
 3. Then follow the video tutorial below:
 
-[![DeFi Adapter Write Actions Tutorial](video-write-thumbnail.png)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view)
+[![DeFi Adapter Write Actions Tutorial](packages/adapters-library/readme-assets/video-write-thumbnail.png)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view)
 
 See section "Write Actions for adapters" below for more information after watching the tutorial.
 
@@ -120,7 +120,7 @@ The DeFi adapter library is the engine behind MetaMask's retail and institutiona
 
 In this example, the user holds positions in both Stargate and Uniswap.
 
-![Alt text](dashboard.png)
+![Alt text](packages/adapters-library/readme-assets/dashboard.png)
 
 ## Example adapter user story
 
@@ -212,7 +212,7 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
 From left to right, get-onchain-data and convert to standardise format.
 
-![Alt text](high-level.png)
+![Alt text](packages/adapters-library/readme-assets/high-level.png)
 
 ## Getting Started 🏁
 
