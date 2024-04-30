@@ -15,6 +15,7 @@ import {
 } from './newAdapterCommand'
 import { questionsJson } from './questionnaire'
 import { Templates } from './templates/templates'
+import { logger } from '../core/utils/logger'
 
 const colorBlue = chalk.rgb(0, 112, 243).bold
 const boldWhiteBg = chalk.bgWhite.bold
@@ -83,13 +84,11 @@ export async function newAdapter2Command(
 function initiateQuestionnaire(defiProvider: DefiProvider) {
   return async ({
     yes: skipQuestions,
-    template,
+    template: inputTemplate,
   }: {
     yes: boolean
     template: Outcomes['template']
   }) => {
-    console.log({ skipQuestions })
-
     let answers = {} as Answers
 
     if (!skipQuestions) {
@@ -102,7 +101,13 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
 
       answers = await askQuestion(firstQuestionId, defiProvider)
     } else {
-      answers = calculateDefaultAnswers(answers)
+      answers = calculateDefaultAnswers(inputTemplate)
+      console.log({ answers, inputTemplate })
+      answers.productId =
+        answers.productId +
+        '-' +
+        answers.forkCheck.replace(/[^\w\s]/gi, '').replace(/\s+/g, '') +
+        'Template'
     }
 
     answers.adapterClassName = adapterClassName(
@@ -110,25 +115,31 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
       answers.productId,
     )
 
-    answers.forkCheck = template ?? answers.forkCheck
+    answers.forkCheck = inputTemplate ?? answers.forkCheck
 
     const outcomes = calculateAdapterOutcomes(answers)
 
-    console.log({ answers, outcomes })
-
-    switch (outcomes.template) {
-      case 'No': {
+    switch (true) {
+      case outcomes.template == 'No': {
         await buildAdapterFromBlankTemplate(answers, outcomes)
         break
       }
-      default: {
-        console.log({ outcomes })
-
-        const templates = Templates[outcomes.template]!
-        for (const template of templates) {
-          const code = template(answers)
-          await createAdapterFile(answers, code)
+      case Object.keys(Templates).includes(outcomes.template):
+        {
+          const templates = Templates[outcomes.template]!
+          for (const template of templates) {
+            const code = template(answers)
+            await createAdapterFile(answers, code)
+          }
         }
+        break
+      default: {
+        logger.error('Template not found: ' + answers.forkCheck)
+        logger.error(
+          'Must be one of these values: No, ' +
+            Object.keys(Templates).join(', '),
+        )
+        throw new Error('No template with name: ' + answers.forkCheck)
       }
     }
     await buildIntegrationTests(answers)
@@ -146,14 +157,18 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
   }
 }
 
-function calculateDefaultAnswers(answers: Answers) {
-  answers = Object.keys(questionsJson).reduce((acc, key) => {
+function calculateDefaultAnswers(inputTemplate?: string) {
+  const answers = Object.keys(questionsJson).reduce((acc, key) => {
     acc[key as keyof Answers] = questionsJson[
       key as keyof typeof questionsJson
       //eslint-disable-next-line
-    ].default(answers) as any
+    ].default(acc) as any
     return acc
   }, {} as Answers)
+
+  if (inputTemplate) {
+    answers.forkCheck = inputTemplate
+  }
   return answers
 }
 
