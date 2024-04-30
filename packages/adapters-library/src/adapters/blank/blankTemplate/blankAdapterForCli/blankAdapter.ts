@@ -25,10 +25,10 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
-import { helpers } from '../../../../scripts/helpers'
-import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
+import { helpers } from '../../../../core/adapters/helpers'
+import { RewardsAdapter } from '../../../../core/adapters/rewardAdapter'
 import { NotImplementedError } from '../../../../core/errors/errors'
-import { Replacements } from '../../../../scripts/replacements'
+import { ReplacementPlaceholder } from '../../../../core/adapters/replacementPlaceholder'
 
 type Metadata = Record<
   string,
@@ -39,7 +39,7 @@ type Metadata = Record<
 >
 
 export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
-  productId = 'Replacements.PRODUCT_ID.placeholder'
+  productId = 'ReplacementPlaceholder.PRODUCT_ID'
   protocolId: Protocol
   chainId: Chain
 
@@ -66,30 +66,30 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'Replacements.PROTOCOL_KEY.placeholder',
-      description: 'Replacements.PROTOCOL_KEY.placeholder defi adapter',
+      name: 'ReplacementPlaceholder.PROTOCOL_KEY',
+      description: 'ReplacementPlaceholder.PROTOCOL_KEY defi adapter',
       siteUrl: 'https:',
       iconUrl: 'https://',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: Replacements.ASSET_TYPE.placeholder,
+        type: ReplacementPlaceholder.ASSET_TYPE,
       },
     }
   }
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<Metadata> {
-    return Replacements.BUILD_METADATA.placeholder
+    return ReplacementPlaceholder.BUILD_METADATA
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Replacements.GET_PROTOCOL_TOKENS.placeholder
+    return ReplacementPlaceholder.GET_PROTOCOL_TOKENS
   }
 
   async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    return Replacements.GET_POSITIONS.placeholder
+    return ReplacementPlaceholder.GET_POSITIONS
   }
 
   async getWithdrawals({
@@ -98,7 +98,7 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return Replacements.GET_WITHDRAWALS.placeholder
+    return ReplacementPlaceholder.GET_WITHDRAWALS
   }
 
   async getDeposits({
@@ -107,7 +107,7 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return Replacements.GET_DEPOSITS.placeholder
+    return ReplacementPlaceholder.GET_DEPOSITS
   }
 
   async getTotalValueLocked(
@@ -117,7 +117,7 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
   }
 
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    return Replacements.UNWRAP.placeholder
+    return ReplacementPlaceholder.UNWRAP
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {
@@ -146,7 +146,7 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
     return poolMetadata
   }
 
-  //Replacements.GET_REWARD_POSITIONS.placeholder
+  //ReplacementPlaceholder.GET_REWARD_POSITIONS
 
-  //Replacements.GET_REWARD_WITHDRAWALS.placeholder
+  //ReplacementPlaceholder.GET_REWARD_WITHDRAWALS
 }

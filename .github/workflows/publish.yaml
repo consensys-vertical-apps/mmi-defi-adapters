@@ -59,7 +59,7 @@ jobs:
         run: git push origin main --tags
 
       - name: Build
-        run: npm run build
+        run: npm run build:prod
 
       - name: Publish
         run: npm publish -w packages/adapters-library
