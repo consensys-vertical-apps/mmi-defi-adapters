@@ -5,6 +5,7 @@ import { Command } from 'commander'
 import { prompt } from 'inquirer'
 import { Chain } from '../core/constants/chains'
 import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
+import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import type { DefiProvider } from '../defiProvider'
 import { generateAdapter } from './generateAdapter'
@@ -15,7 +16,6 @@ import {
 } from './newAdapterCommand'
 import { questionsJson } from './questionnaire'
 import { Templates } from './templates/templates'
-import { logger } from '../core/utils/logger'
 
 const colorBlue = chalk.rgb(0, 112, 243).bold
 const boldWhiteBg = chalk.bgWhite.bold
