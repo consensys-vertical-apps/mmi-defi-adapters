@@ -92,7 +92,7 @@ describe('generateAdapter function snapshots', () => {
   generateAllOutcomes().forEach((outcomes, index) => {
     it(`should match snapshot for outcomes ${index}`, async () => {
       const blankTemplate = await readBlankTemplate(
-        'packages/adapters-library/src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
+        'src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
       )
       const generatedAdapter = generateAdapter(
         answers as unknown as Answers,
