@@ -53,7 +53,7 @@ jobs:
           git config user.email "${GITHUB_ACTOR}"@users.noreply.github.com
 
       - name: Update package version
-        run: npm version ${{ github.event.inputs.semver }} -w packages/adapters-library -m "Upgrade to %s"
+        run: npm version ${{ github.event.inputs.semver }} --workspaces && git add **/package.json; npm version ${{ github.event.inputs.semver }} --include-workspace-root --force
 
       - name: Push new version tag to main branch
         run: git push origin main --tags
