@@ -25,12 +25,12 @@ This library is designed to simplify and standardise the process of fetching dat
 ### Create Read Adapter
 The tutorial video below shows an intro to our library and how to build an adapter:
 
-[![DeFi Adapter Tutorial](video-thumbnail.png)](https://drive.google.com/file/d/1EL5PEOQa_OgscANi3mAxBXdT25LqMsKv/view)
+[![DeFi Adapter Tutorial](readme-assets/video-thumbnail.png)](https://drive.google.com/file/d/1EL5PEOQa_OgscANi3mAxBXdT25LqMsKv/view)
 
 ### Add Write Adapter Support to Read Adapter
 The tutorial video below shows an intro to on how to add write adapter actions to an existing adapter:
 
-[![DeFi Adapter Write Actions Tutorial](video-write-thumbnail.png)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view)
+[![DeFi Adapter Write Actions Tutorial](readme-assets/video-write-thumbnail.png)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view)
 
 ## Adapter Template Overview
 
@@ -110,7 +110,7 @@ The DeFi adapter library is the engine behind MetaMask's retail and institutiona
 
 In this example, the user holds positions in both Stargate and Uniswap.
 
-![Alt text](dashboard.png)
+![Alt text](readme-assets/dashboard.png)
 
 ## Example adapter user story
 
@@ -202,7 +202,7 @@ In this example, the user holds positions in both Stargate and Uniswap.
 
 From left to right, get-onchain-data and convert to standardise format.
 
-![Alt text](high-level.png)
+![Alt text](readme-assets/high-level.png)
 
 ## Getting Started 🏁
 

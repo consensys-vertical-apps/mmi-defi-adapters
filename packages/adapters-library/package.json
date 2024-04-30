@@ -20,7 +20,8 @@
     "dist",
     "CHANGELOG.md",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "readme-assets/**"
   ],
   "sideEffects": false,
   "scripts": {
