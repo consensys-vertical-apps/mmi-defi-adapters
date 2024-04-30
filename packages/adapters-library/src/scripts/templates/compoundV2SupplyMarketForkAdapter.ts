@@ -1,10 +1,10 @@
-import { NewAdapterAnswers } from '../newAdapterCommand'
+import { Answers } from '../newAdapter2Command'
 
 export function compoundV2SupplyMarketForkAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: Pick<NewAdapterAnswers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
+}: Pick<Answers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
   return `
   import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'

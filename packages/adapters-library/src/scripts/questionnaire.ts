@@ -12,6 +12,7 @@ import {
   kebabCase,
 } from '../core/utils/caseConversion'
 import { DefiProvider } from '../defiProvider'
+import { Templates } from './templates/templates'
 
 // NEED TO ADD A QUESTION?
 // 1. Add question below
@@ -27,7 +28,6 @@ export const questionsJson = {
 
     validate: (input: string) =>
       isPascalCase(input) || 'Value must be PascalCase',
-    outcomes: {},
   },
   protocolId: {
     question: 'Enter an ID for your protocol in kebab-case.',
@@ -37,24 +37,22 @@ export const questionsJson = {
       protocolKey ? kebabCase(protocolKey) : 'lender-v2',
     validate: (input: string) =>
       isKebabCase(input) || 'Value must be kebab-case',
-    outcomes: {},
   },
   chainKeys: {
     question: 'Select the chains the product is on',
     type: 'checkbox',
     choices: Object.keys(Chain),
     default: () => {
-      return ['Ethereum']
+      return [Object.keys(Chain)[0]] as (keyof typeof Chain)[]
     },
     next: 'productId',
-    outcomes: {},
   },
   productId: {
     question: 'Enter a product ID for your product in kebab-case.',
     type: 'text',
     next: 'forkCheck',
     default: () => 'farming',
-    outcomes: {},
+
     validateProductId: (defiProvider: DefiProvider, answers: Answers) => {
       return (productId: string) => {
         if (!isKebabCase(productId)) {
@@ -94,30 +92,26 @@ export const questionsJson = {
     question:
       "Is your product a fork of one of the following? Please select from the list below or enter 'No' if none apply.",
     type: 'list',
-    choices: ['No', 'Uniswap v2', 'Curve governance vesting', 'Compound v2'],
+    choices: ['No', ...Object.keys(Templates)],
+    default: () => 'No',
     next: {
       No: 'defiAssetStructure',
-      'Uniswap v2': 'end',
-      'Curve governance vesting': 'end',
-      'Compound v2': 'end',
+      ...Object.keys(Templates).reduce((acc, templateName) => {
+        return { [templateName]: 'end', ...acc }
+      }, {}),
     },
     outcomes: {
-      'Uniswap v2': {
-        template: 'UniswapV2',
-      },
-      'Curve governance vesting': {
-        template: 'CurveGovernanceVesting',
-      },
-      'Compound v2': {
-        template: 'CompoundV2',
-      },
       No: { template: 'No' },
+      ...Object.keys(Templates).reduce((acc, templateName) => {
+        return { [templateName]: { template: templateName }, ...acc }
+      }, {}),
     },
   },
   defiAssetStructure: {
     question:
       "What is the structure of your product's DeFi asset(s)? (Select from the list below)",
     type: 'list',
+    default: () => 'Single ERC20 protocol token (Like stETH)',
     choices: [
       'Single ERC20 protocol token (Like stETH)',
       'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC)',
@@ -167,6 +161,7 @@ export const questionsJson = {
     question: `Can Mint and Burn Transfer event of your protocol's ERC20 token(s) be used to accurately track deposits into and withdrawals from the user's defi position?`,
     type: 'confirm',
     next: 'balanceQueryMethod',
+    default: () => true,
     outcomes: {
       true: {
         withdrawalsFunction: 'useWithdrawalHelper',
@@ -183,6 +178,7 @@ export const questionsJson = {
       'Is the balanceOf(address) function used to query the asset balance in your product',
     type: 'confirm',
     next: 'underlyingTokens',
+    default: () => true,
     outcomes: {
       true: {
         getPositions: 'useBalanceOfHelper',
@@ -196,6 +192,7 @@ export const questionsJson = {
   underlyingTokens: {
     question: 'How many underlying tokens does your DeFi asset represent?',
     type: 'list',
+    default: () => '1 (Like stEth)',
     choices: ['1 (Like stEth)', 'More than 1 (Like Curve.fi DAI/USDC/USDT)'],
     next: {
       '1 (Like stEth)': 'unwrapSimpleMapping',
@@ -213,6 +210,7 @@ export const questionsJson = {
   unwrapSimpleMapping: {
     question: 'Is your defi token mapped one to one to the underlying token',
     type: 'confirm',
+    default: () => true,
     next: 'additionalRewards',
     outcomes: {
       true: {
@@ -227,6 +225,7 @@ export const questionsJson = {
     question:
       'Does your product offer additional rewards beyond the primary earnings? (Yes/No)',
     type: 'confirm',
+    default: () => true,
     next: 'end',
     outcomes: {
       true: {

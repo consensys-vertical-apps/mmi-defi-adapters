@@ -1,10 +1,13 @@
-import { NewAdapterAnswers } from '../newAdapterCommand'
+import { Answers } from '../newAdapter2Command'
 
 export function writeOnlyDeFiAdapter({
   protocolKey,
   adapterClassName,
   productId,
-}: NewAdapterAnswers) {
+}: Pick<
+  Answers,
+  'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
+>) {
   return `import { z } from 'zod'
   import { WriteOnlyDeFiAdapter } from '../../../../core/adapters/writeOnlyAdapter'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'

@@ -70,12 +70,23 @@ jobs:
 
       - name: Create new adapter with VotingEscrow template
         run: |
-          npm run new-adapter -- -p test-voting-escrow supply -c 1,10,42161 -t "VotingEscrowAdapter (like curve and stargate voting escrow)" -y
+          npm run new-adapter -- -p test-voting-escrow -pd supply -c 1,10,42161 -t "VotingEscrowAdapter (like curve and stargate voting escrow)" -y
           npm run build
 
       - name: Create new adapter with WriteOnlyAdapter template
         run: |
           npm run new-adapter -- -p writeOnlyAdapter -pd write -c 1,10,42161 -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)" -y
+          npm run build
+
+      - name: Create new adapter with new CLI
+        run: |
+          npm run new-adapter2 -- -y -t No
+          npm run build
+          npm run new-adapter2 -- -y -t "VotingEscrowAdapter (like curve and stargate voting escrow)"
+          npm run build
+          npm run new-adapter2 -- -y -t UniswapV2PoolForkAdapter
+          npm run build
+          npm run new-adapter2 -- -y -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)"
           npm run build
 
   run-tests:
