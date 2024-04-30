@@ -23,11 +23,13 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Linea,
     method: 'prices',
+    filterProtocolToken: '0xB694ce4c96fb60DB5ad8b25dfF567c59f7a49a4E',
     blockNumber: 3717681,
   },
   {
     chainId: Chain.Linea,
     method: 'tvl',
+    filterProtocolTokens: ['0xB694ce4c96fb60DB5ad8b25dfF567c59f7a49a4E'],
     blockNumber: 3717682,
   },
   {

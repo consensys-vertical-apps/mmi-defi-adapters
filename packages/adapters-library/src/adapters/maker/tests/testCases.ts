@@ -25,6 +25,7 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
     method: 'prices',
+    filterProtocolToken: '0x83F20F44975D03b1b09e64809B757c47f942BEeA',
     blockNumber: 19661884,
   },
 ]

@@ -193,67 +193,73 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   }
 
   async getTotalValueLocked({
+    protocolTokenAddresses,
     blockNumber,
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    return Promise.all(
-      protocolTokens.map(async (protocolTokenMetadata) => {
-        const protocolTokenContact = Erc20__factory.connect(
-          protocolTokenMetadata.address,
-          this.provider,
-        )
+    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        protocolTokenAddresses &&
+        !protocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
 
-        const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
-          protocolTokenMetadata.address,
-        )
+      const protocolTokenContact = Erc20__factory.connect(
+        protocolToken.address,
+        this.provider,
+      )
 
-        const underlyingTokenBalances = filterMapAsync(
-          underlyingTokens,
-          async (underlyingToken) => {
-            if (underlyingToken.address == ZERO_ADDRESS) {
-              const balanceOf = await this.provider
-                .getBalance(protocolTokenMetadata.address, blockNumber)
-                .catch(() => 0n)
-              return {
-                ...underlyingToken,
-                totalSupplyRaw: balanceOf,
-                type: TokenType.Underlying,
-              }
-            }
+      const underlyingTokens = await this.fetchUnderlyingTokensMetadata(
+        protocolToken.address,
+      )
 
-            const contract = Erc20__factory.connect(
-              underlyingToken.address,
-              this.provider,
-            )
-
-            const balanceOf = await contract
-              .balanceOf(protocolTokenMetadata.address, {
-                blockTag: blockNumber,
-              })
+      const underlyingTokenBalances = filterMapAsync(
+        underlyingTokens,
+        async (underlyingToken) => {
+          if (underlyingToken.address == ZERO_ADDRESS) {
+            const balanceOf = await this.provider
+              .getBalance(protocolToken.address, blockNumber)
               .catch(() => 0n)
-
             return {
               ...underlyingToken,
               totalSupplyRaw: balanceOf,
               type: TokenType.Underlying,
             }
-          },
-        )
+          }
 
-        const [protocolTokenTotalSupply, tokens] = await Promise.all([
-          protocolTokenContact.totalSupply({ blockTag: blockNumber }),
-          underlyingTokenBalances,
-        ])
+          const contract = Erc20__factory.connect(
+            underlyingToken.address,
+            this.provider,
+          )
 
-        return {
-          ...protocolTokenMetadata,
-          type: TokenType.Protocol,
-          totalSupplyRaw: protocolTokenTotalSupply,
-          tokens,
-        }
-      }),
-    )
+          const balanceOf = await contract
+            .balanceOf(protocolToken.address, {
+              blockTag: blockNumber,
+            })
+            .catch(() => 0n)
+
+          return {
+            ...underlyingToken,
+            totalSupplyRaw: balanceOf,
+            type: TokenType.Underlying,
+          }
+        },
+      )
+
+      const [protocolTokenTotalSupply, tokens] = await Promise.all([
+        protocolTokenContact.totalSupply({ blockTag: blockNumber }),
+        underlyingTokenBalances,
+      ])
+
+      return {
+        ...protocolToken,
+        type: TokenType.Protocol,
+        totalSupplyRaw: protocolTokenTotalSupply,
+        tokens,
+      }
+    })
   }
 
   /**

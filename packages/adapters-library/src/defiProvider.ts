@@ -523,16 +523,21 @@ export class DefiProvider {
   async getTotalValueLocked({
     filterProtocolIds,
     filterChainIds,
+    filterProtocolTokens,
     blockNumbers,
   }: {
     filterProtocolIds?: Protocol[]
     filterChainIds?: Chain[]
+    filterProtocolTokens?: string[]
     blockNumbers?: Partial<Record<Chain, number>>
   }): Promise<TotalValueLockResponse[]> {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      const tokens = await adapter.getTotalValueLocked({ blockNumber })
+      const tokens = await adapter.getTotalValueLocked({
+        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        blockNumber,
+      })
 
       await unwrap(adapter, blockNumber, tokens, 'totalSupplyRaw')
 

@@ -23,6 +23,7 @@ export const testCases: TestCase[] = [
   {
     chainId: Chain.Ethereum,
     method: 'prices',
+    filterProtocolToken: '0xf951E335afb289353dc249e82926178EaC7DEd78',
     blockNumber: 19661890,
   },
   {

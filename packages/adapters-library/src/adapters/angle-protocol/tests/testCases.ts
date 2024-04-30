@@ -60,21 +60,15 @@ export const testCases: TestCase[] = [
     blockNumber: 19410813,
   },
   {
-    key: 'prices',
     chainId: Chain.Ethereum,
     method: 'prices',
-    blockNumber: 19544644,
-  },
-  {
-    key: 'prices-filter',
-    chainId: Chain.Ethereum,
-    method: 'prices',
-    blockNumber: 19544644,
     filterProtocolToken: '0x004626A008B1aCdC4c74ab51644093b155e59A23',
+    blockNumber: 19544644,
   },
   {
     chainId: Chain.Ethereum,
     method: 'tvl',
+    filterProtocolTokens: ['0x004626A008B1aCdC4c74ab51644093b155e59A23'],
     blockNumber: 19661876,
   },
 ]

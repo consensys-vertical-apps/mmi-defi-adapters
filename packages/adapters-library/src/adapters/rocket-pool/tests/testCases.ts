@@ -26,12 +26,14 @@ export const testCases: TestCase[] = [
     key: 'reth',
     chainId: Chain.Ethereum,
     method: 'prices',
+    filterProtocolToken: '0xae78736Cd615f374D3085123A210448E74Fc6393',
     blockNumber: 19661887,
   },
   {
     key: 'reth',
     chainId: Chain.Ethereum,
     method: 'tvl',
+    filterProtocolTokens: ['0xae78736Cd615f374D3085123A210448E74Fc6393'],
     blockNumber: 19074240,
   },
   {
