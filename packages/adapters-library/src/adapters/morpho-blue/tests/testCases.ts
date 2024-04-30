@@ -55,12 +55,16 @@ export const testCases: TestCase[] = [
     },
     blockNumber: 19220228 + 1,
   },
-  // TODO Check results
-  // {
-  //   chainId: Chain.Ethereum,
-  //   method: 'tvl',
-  //   blockNumber: 19661885,
-  // },
+  {
+    // TODO Check results
+    chainId: Chain.Ethereum,
+    method: 'tvl',
+    filterProtocolTokens: [
+      '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+      '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0',
+    ],
+    blockNumber: 19661885,
+  },
   {
     chainId: Chain.Ethereum,
     method: 'deposits',
