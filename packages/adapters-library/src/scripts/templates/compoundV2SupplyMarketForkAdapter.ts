@@ -7,6 +7,7 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
 }: Pick<Answers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
   return `
   import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
+  import { Chain } from '../../../../core/constants/chains'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'
   import { NotImplementedError } from '../../../../core/errors/errors'
   import {
@@ -19,7 +20,7 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
   export class ${adapterClassName} extends CompoundV2SupplyMarketForkAdapter {
     productId = '${productId}'
   
-    contractAddresses = {}
+    contractAddresses: Partial<Record<Chain, { comptrollerAddress: string }>> = {}
   
     getProtocolDetails(): ProtocolDetails {
       return {

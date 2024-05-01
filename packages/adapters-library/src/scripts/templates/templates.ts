@@ -9,10 +9,8 @@ export type TemplateBuilder = (adapterSettings: Answers) => string
 
 export const Templates: Record<string, TemplateBuilder[]> = {
   ['UniswapV2PoolForkAdapter']: [uniswapV2PoolForkAdapterTemplate],
-  ['CompoundV2']: [
-    compoundV2SupplyMarketForkAdapterTemplate,
-    compoundV2BorrowMarketForkAdapterTemplate,
-  ],
+  ['CompoundV2 Supply Market']: [compoundV2SupplyMarketForkAdapterTemplate],
+  ['CompoundV2 Borrow Market']: [compoundV2BorrowMarketForkAdapterTemplate],
   ['VotingEscrowAdapter (like curve and stargate voting escrow)']: [
     votingEscrowAdapterTemplate,
   ],
