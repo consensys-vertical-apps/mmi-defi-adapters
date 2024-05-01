@@ -97,6 +97,70 @@ class Helpers {
     }
   }
 
+  async unwrapTokenAsRatio({
+    protocolToken,
+    underlyingTokens,
+    provider,
+    blockNumber,
+  }: {
+    protocolToken: Erc20Metadata
+    underlyingTokens: Erc20Metadata[]
+    provider: CustomJsonRpcProvider
+    blockNumber?: number
+  }): Promise<UnwrapExchangeRate> {
+    if (underlyingTokens.length !== 1) {
+      throw new Error('Missing Underlying tokens')
+    }
+
+    const protocolTokenContract = Erc20__factory.connect(
+      protocolToken.address,
+      provider,
+    )
+
+    const protocolTokenTotalSupply = await protocolTokenContract.totalSupply({
+      blockTag: blockNumber,
+    })
+
+    const prices = await Promise.all(
+      underlyingTokens.map(async (underlyingToken) => {
+        const underlyingTokenContract = Erc20__factory.connect(
+          underlyingToken.address,
+          provider,
+        )
+
+        const reserve = await underlyingTokenContract.balanceOf(
+          protocolToken.address,
+          {
+            blockTag: blockNumber,
+          },
+        )
+
+        // AssetReserve / ProtocolTokenSupply / 10 ** ProtocolTokenDecimals
+        // Moved last division as multiplication at the top
+        // Division sometimes is not exact, so it needs rounding
+        return BigInt(
+          Math.round(
+            (Number(reserve) * 10 ** protocolToken.decimals) /
+              Number(protocolTokenTotalSupply),
+          ),
+        )
+      }),
+    )
+
+    return {
+      ...protocolToken,
+      baseRate: 1,
+      type: TokenType.Protocol,
+      tokens: prices.map((price, index) => {
+        return {
+          ...underlyingTokens[index]!,
+          type: TokenType.Underlying,
+          underlyingRateRaw: price,
+        }
+      }),
+    }
+  }
+
   withdrawals({
     protocolToken,
     filter: { fromBlock, toBlock, userAddress },

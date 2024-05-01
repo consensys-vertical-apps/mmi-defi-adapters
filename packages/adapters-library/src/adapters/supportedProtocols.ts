@@ -6,23 +6,14 @@ import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { AaveV2ATokenPoolAdapter } from './aave-v2/products/a-token/aaveV2ATokenAdapter'
 import { AaveV2StableDebtTokenPoolAdapter } from './aave-v2/products/stable-debt-token/aaveV2StableDebtTokenAdapter'
 import { AaveV2VariableDebtTokenPoolAdapter } from './aave-v2/products/variable-debt-token/aaveV2VariableDebtTokenAdapter'
-import {
-  AaveV3ATokenPoolAdapter,
-  WriteActionInputs as AaveV3ATokenWriteActionInputs,
-} from './aave-v3/products/a-token/aaveV3ATokenAdapter'
+import { AaveV3ATokenPoolAdapter } from './aave-v3/products/a-token/aaveV3ATokenAdapter'
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
 import { AngleProtocolSavingsAdapter } from './angle-protocol/products/savings/angleProtocolSavingsAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
-import {
-  CompoundV2BorrowMarketAdapter,
-  WriteActionInputs as CompoundV2BorrowMarketWriteActionInputs,
-} from './compound-v2/products/borrow-market/compoundV2BorrowMarketAdapter'
-import {
-  CompoundV2SupplyMarketAdapter,
-  WriteActionInputs as CompoundV2SupplyMarketWriteActionInputs,
-} from './compound-v2/products/supply-market/compoundV2SupplyMarketAdapter'
+import { CompoundV2BorrowMarketAdapter } from './compound-v2/products/borrow-market/compoundV2BorrowMarketAdapter'
+import { CompoundV2SupplyMarketAdapter } from './compound-v2/products/supply-market/compoundV2SupplyMarketAdapter'
 import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/convexCvxcrvWrapperAdapter'
 import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
 import { ConvexSidechainStakingAdapter } from './convex/products/sidechain-staking/convexSidechainStakingAdapter'
@@ -31,6 +22,7 @@ import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { CurveVotingEscrowAdapter } from './curve/products/voting-escrow/curveVotingEscrowAdapter'
+import { EthenaStakedUsdeAdapter } from './ethena/products/staked-usde/ethenaStakedUsdeAdapter'
 import { FluxBorrowMarketAdapter } from './flux/products/borrow-market/fluxBorrowMarketAdapter'
 import { FluxSupplyMarketAdapter } from './flux/products/supply-market/fluxSupplyMarketAdapter'
 import { GmxGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
@@ -194,6 +186,10 @@ export const supportedProtocols: Record<
     [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
   },
 
+  [Protocol.Ethena]: {
+    [Chain.Ethereum]: [EthenaStakedUsdeAdapter],
+  },
+
   [Protocol.Flux]: {
     [Chain.Ethereum]: [FluxSupplyMarketAdapter, FluxBorrowMarketAdapter],
   },
@@ -209,7 +205,6 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [IZiSwapPoolAdapter],
     [Chain.Linea]: [IZiSwapPoolAdapter],
   },
-
   [Protocol.Lido]: {
     [Chain.Ethereum]: [LidoStEthAdapter, LidoWstEthAdapter],
   },
@@ -327,80 +322,7 @@ export const supportedProtocols: Record<
   },
 }
 
-export const WriteActionInputs = {
-  AaveV3ATokenWriteActionInputs,
-  CompoundV2SupplyMarketWriteActionInputs,
-  CompoundV2BorrowMarketWriteActionInputs,
-}
+export const WriteActionInputs = {}
 
-export const GetTransactionParamsSchema = z.union([
-  z.discriminatedUnion('action', [
-    z.object({
-      protocolId: z.literal(Protocol.AaveV3),
-      productId: z.literal('a-token'),
-      chainId: z.nativeEnum(Chain),
-      action: z.literal('deposit'),
-      inputs: WriteActionInputs['AaveV3ATokenWriteActionInputs']['deposit'],
-    }),
-    z.object({
-      protocolId: z.literal(Protocol.AaveV3),
-      productId: z.literal('a-token'),
-      chainId: z.nativeEnum(Chain),
-      action: z.literal('withdraw'),
-      inputs: WriteActionInputs['AaveV3ATokenWriteActionInputs']['withdraw'],
-    }),
-    z.object({
-      protocolId: z.literal(Protocol.AaveV3),
-      productId: z.literal('a-token'),
-      chainId: z.nativeEnum(Chain),
-      action: z.literal('borrow'),
-      inputs: WriteActionInputs['AaveV3ATokenWriteActionInputs']['borrow'],
-    }),
-    z.object({
-      protocolId: z.literal(Protocol.AaveV3),
-      productId: z.literal('a-token'),
-      chainId: z.nativeEnum(Chain),
-      action: z.literal('repay'),
-      inputs: WriteActionInputs['AaveV3ATokenWriteActionInputs']['repay'],
-    }),
-  ]),
-  z.discriminatedUnion('action', [
-    z.object({
-      protocolId: z.literal(Protocol.CompoundV2),
-      productId: z.literal('supply-market'),
-      chainId: z.nativeEnum(Chain),
-      action: z.literal('deposit'),
-      inputs:
-        WriteActionInputs['CompoundV2SupplyMarketWriteActionInputs']['deposit'],
-    }),
-    z.object({
-      protocolId: z.literal(Protocol.CompoundV2),
-      productId: z.literal('supply-market'),
-      chainId: z.nativeEnum(Chain),
-      action: z.literal('withdraw'),
-      inputs:
-        WriteActionInputs['CompoundV2SupplyMarketWriteActionInputs'][
-          'withdraw'
-        ],
-    }),
-  ]),
-  z.discriminatedUnion('action', [
-    z.object({
-      protocolId: z.literal(Protocol.CompoundV2),
-      productId: z.literal('borrow-market'),
-      chainId: z.nativeEnum(Chain),
-      action: z.literal('borrow'),
-      inputs:
-        WriteActionInputs['CompoundV2BorrowMarketWriteActionInputs']['borrow'],
-    }),
-    z.object({
-      protocolId: z.literal(Protocol.CompoundV2),
-      productId: z.literal('borrow-market'),
-      chainId: z.nativeEnum(Chain),
-      action: z.literal('repay'),
-      inputs:
-        WriteActionInputs['CompoundV2BorrowMarketWriteActionInputs']['repay'],
-    }),
-  ]),
-])
+export const GetTransactionParamsSchema = z.union([])
 export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>

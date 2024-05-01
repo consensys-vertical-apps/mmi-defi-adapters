@@ -1,0 +1,43 @@
+{
+  "blockNumber": 19774108,
+  "snapshot": [
+    {
+      "protocolId": "ethena",
+      "name": "Ethena",
+      "description": "Ethena defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "ethena",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+          "name": "Staked USDe",
+          "symbol": "sUSDe",
+          "decimals": 18,
+          "balanceRaw": "7870541785346265726254504n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+              "name": "USDe",
+              "symbol": "USDe",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "8313727239252473606916375n",
+              "balance": 8313727.239252473,
+              "price": 0.9957018764566514,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
+            }
+          ],
+          "balance": 7870541.785346266
+        }
+      ]
+    }
+  ]
+}

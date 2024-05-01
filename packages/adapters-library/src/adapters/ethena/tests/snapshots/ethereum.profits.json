@@ -1,0 +1,40 @@
+{
+  "blockNumber": 19632370,
+  "snapshot": [
+    {
+      "protocolId": "ethena",
+      "name": "Ethena",
+      "description": "Ethena defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "ethena",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+          "name": "Staked USDe",
+          "symbol": "sUSDe",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 64.15234410960693,
+          "performance": 0.0002298042891779719,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 279160.77780395193,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 279224.93014806154
+          }
+        }
+      ],
+      "fromBlock": 19625224,
+      "toBlock": 19632370
+    }
+  ]
+}
