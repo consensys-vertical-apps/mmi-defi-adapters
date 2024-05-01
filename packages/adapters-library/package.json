@@ -27,8 +27,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
-    "fix": "eslint \"src/**/*.ts\" --fix",
-    "lint": "eslint \"src/**/*.ts\"",
+    "fix": "npm run lint -- --apply",
+    "lint": "biome check \"src/**/*.ts\"",
     "test": "jest",
     "test:tsc": "tsc --noEmit -p tsconfig.json",
     "test:integration": "jest src/adapters/integration.test.ts",
