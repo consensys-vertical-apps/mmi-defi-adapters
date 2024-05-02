@@ -23,10 +23,13 @@ import {
   UnwrapInput,
   UnwrapExchangeRate,
   AssetType,
+  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
+import { filterMapAsync } from '../../../../core/utils/filters'
+import { Erc20__factory } from '../../../../contracts'
 
 type Metadata = Record<
   string,
@@ -68,8 +71,9 @@ export class EthenaStakedUsdeAdapter
       protocolId: this.protocolId,
       name: 'Ethena',
       description: 'Ethena defi adapter',
-      siteUrl: 'https:',
-      iconUrl: 'https://',
+      siteUrl: 'https://ethena.fi/',
+      iconUrl:
+        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57e114b691db790c35207b2e685d4a43181e6061/logo.png',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
@@ -140,10 +144,34 @@ export class EthenaStakedUsdeAdapter
     })
   }
 
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
+  async getTotalValueLocked({
+    protocolTokenAddresses,
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        protocolTokenAddresses &&
+        !protocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
+
+      const protocolTokenContact = Erc20__factory.connect(
+        protocolToken.address,
+        this.provider,
+      )
+
+      const protocolTokenTotalSupply = await protocolTokenContact.totalSupply({
+        blockTag: blockNumber,
+      })
+      return {
+        ...protocolToken,
+        type: TokenType.Protocol,
+        totalSupplyRaw: protocolTokenTotalSupply,
+      }
+    })
   }
 
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {

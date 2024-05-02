@@ -35,6 +35,12 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
+    method: 'tvl',
+    filterProtocolTokens: ['0x9D39A5DE30e57443BfF2A8307A4256c8797A3497'],
+    blockNumber: 19776342,
+  },
+  {
+    chainId: Chain.Ethereum,
     method: 'deposits',
     input: {
       userAddress: '0x3636BC1Bb4f61b04AA73D974F068AF0d0743Fa01',
@@ -44,18 +50,4 @@ export const testCases: TestCase[] = [
       productId: 'ethena',
     },
   },
-
-  // {
-  //   method: 'tx-params',
-  //   key: 'supply',
-  //   chainId: Chain.Ethereum,
-  //   input: {
-  //     productId: 'staked-usde',
-  //     action: WriteActions.Deposit,
-  //     inputs: {
-  //       asset: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-  //       amount: '10000000000000000000',
-  //     },
-  //   },
-  // },
 ]
