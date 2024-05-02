@@ -25,7 +25,8 @@ function generateAllOutcomes(): Outcomes[] {
     'contractPosition',
   ]
   const unwrapValues: Outcomes['unwrap'][] = [
-    'useOneToOneMethod',
+    'useUnwrapOneToOneMethod',
+    'useUnwrapRatioMethod',
     'notImplementedError',
   ]
   const withdrawalsFunctionValues: Outcomes['withdrawalsFunction'][] = [

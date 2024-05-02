@@ -195,7 +195,7 @@ export const questionsJson = {
     default: () => '1 (Like stEth)',
     choices: ['1 (Like stEth)', 'More than 1 (Like Curve.fi DAI/USDC/USDT)'],
     next: {
-      '1 (Like stEth)': 'unwrapSimpleMapping',
+      '1 (Like stEth)': 'unwrapOneUnderlying',
       'More than 1 (Like Curve.fi DAI/USDC/USDT)': 'additionalRewards',
     },
     outcomes: {
@@ -203,20 +203,51 @@ export const questionsJson = {
         underlyingTokens: 'oneUnderlying',
       },
       'More than 1 (Like Curve.fi DAI/USDC/USDT)': {
-        underlyingTokens: 'multipleUnderlying',
+        underlyingTokens: 'unwrapMultipleUnderlying',
       },
     },
   },
-  unwrapSimpleMapping: {
-    question: 'Is your defi token mapped one to one to the underlying token',
-    type: 'confirm',
-    default: () => true,
+  unwrapOneUnderlying: {
+    question:
+      'Regarding your DeFi token, how is its relationship to the underlying asset structured? Please select one of the following options',
+    type: 'list',
+    default: () => 'One-to-one mapping to the underlying asset',
+    choices: [
+      'One-to-one mapping to the underlying asset',
+      'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying asset, where the underlying token is owned by the protocol token smart contract.',
+      'Other',
+    ],
     next: 'additionalRewards',
     outcomes: {
-      true: {
-        unwrap: 'useOneToOneMethod',
+      'One-to-one mapping to the underlying asset': {
+        unwrap: 'useUnwrapOneToOneMethod',
       },
-      false: {
+      'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying asset, where the underlying token is owned by the protocol token smart contract.':
+        {
+          unwrap: 'useUnwrapRatioMethod',
+        },
+      Other: {
+        unwrap: 'notImplementedError',
+      },
+    },
+  },
+  unwrapMultipleUnderlying: {
+    question:
+      'Regarding your DeFi token, how is its relationship to the underlying assets structured? Please select one of the following options',
+    type: 'list',
+    default: () =>
+      'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying assets, where underlying tokens are owned by the protocol token smart contract.',
+    choices: [
+      'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying assets, where underlying tokens are owned by the protocol token smart contract.',
+      'Other',
+    ],
+    next: 'additionalRewards',
+    outcomes: {
+      'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying assets, where underlying tokens are owned by the protocol token smart contract.':
+        {
+          unwrap: 'useUnwrapRatioMethod',
+        },
+      Other: {
         unwrap: 'notImplementedError',
       },
     },

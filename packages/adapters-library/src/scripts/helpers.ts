@@ -47,10 +47,8 @@ export class Helpers {
     protocolTokens,
     protocolTokenAddresses,
     blockNumber,
-    provider,
   }: GetPositionsInput & {
     protocolTokens: Erc20Metadata[]
-    provider: CustomJsonRpcProvider
   }): Promise<ProtocolPosition[]> {
     return filterMapAsync(protocolTokens, async (protocolToken) => {
       if (
@@ -62,7 +60,7 @@ export class Helpers {
 
       const tokenContract = Erc20__factory.connect(
         protocolToken.address,
-        provider,
+        this.provider,
       )
 
       const balanceOf = await tokenContract
@@ -115,12 +113,10 @@ export class Helpers {
   async unwrapTokenAsRatio({
     protocolToken,
     underlyingTokens,
-    provider,
     blockNumber,
   }: {
     protocolToken: Erc20Metadata
     underlyingTokens: Erc20Metadata[]
-    provider: CustomJsonRpcProvider
     blockNumber?: number
   }): Promise<UnwrapExchangeRate> {
     if (underlyingTokens.length !== 1) {
@@ -129,7 +125,7 @@ export class Helpers {
 
     const protocolTokenContract = Erc20__factory.connect(
       protocolToken.address,
-      provider,
+      this.provider,
     )
 
     const protocolTokenTotalSupply = await protocolTokenContract.totalSupply({
@@ -140,7 +136,7 @@ export class Helpers {
       underlyingTokens.map(async (underlyingToken) => {
         const underlyingTokenContract = Erc20__factory.connect(
           underlyingToken.address,
-          provider,
+          this.provider,
         )
 
         const reserve = await underlyingTokenContract.balanceOf(
@@ -179,7 +175,6 @@ export class Helpers {
   withdrawals({
     protocolToken,
     filter: { fromBlock, toBlock, userAddress },
-    provider,
   }: {
     protocolToken: Erc20Metadata & { tokenId?: string }
     filter: {
@@ -187,12 +182,10 @@ export class Helpers {
       toBlock: number
       userAddress: string
     }
-    provider: CustomJsonRpcProvider
   }): Promise<MovementsByBlock[]> {
     return this.getErc20Movements({
       protocolToken,
       filter: { fromBlock, toBlock, from: userAddress, to: undefined },
-      provider,
     })
   }
 
@@ -232,7 +225,6 @@ export class Helpers {
   deposits({
     protocolToken,
     filter: { fromBlock, toBlock, userAddress },
-    provider,
   }: {
     protocolToken: Erc20Metadata & { tokenId?: string }
     filter: {
@@ -240,44 +232,38 @@ export class Helpers {
       toBlock: number
       userAddress: string
     }
-    provider: CustomJsonRpcProvider
   }): Promise<MovementsByBlock[]> {
     return this.getErc20Movements({
       protocolToken,
       filter: { fromBlock, toBlock, from: undefined, to: userAddress },
-      provider,
     })
   }
 
-  async getTokenMetadata(
-    tokenAddress: string,
-    chainId: Chain,
-    provider: CustomJsonRpcProvider,
-  ): Promise<Erc20Metadata> {
+  async getTokenMetadata(tokenAddress: string): Promise<Erc20Metadata> {
     if (
       getAddress(tokenAddress) === REAL_ESTATE_TOKEN_METADATA.address &&
-      chainId == Chain.Ethereum
+      this.chainId == Chain.Ethereum
     ) {
       return REAL_ESTATE_TOKEN_METADATA
     }
     if (nativeTokenAddresses.includes(tokenAddress)) {
       return {
         address: getAddress(tokenAddress),
-        ...nativeToken[chainId],
+        ...nativeToken[this.chainId],
       }
     }
 
     const onChainTokenMetadata = await getOnChainTokenMetadata(
       tokenAddress,
-      chainId,
-      provider,
+      this.chainId,
+      this.provider,
     )
     if (onChainTokenMetadata) {
       return onChainTokenMetadata
     }
 
     const errorMessage = 'Cannot find token metadata for token'
-    logger.error({ tokenAddress, chainId }, errorMessage)
+    logger.error({ tokenAddress, chainId: this.chainId }, errorMessage)
     throw new Error(errorMessage)
   }
 
@@ -358,7 +344,6 @@ export class Helpers {
   private async getErc20Movements({
     protocolToken,
     filter: { fromBlock, toBlock, from, to },
-    provider,
   }: {
     protocolToken: Erc20Metadata & { tokenId?: string }
     filter: {
@@ -367,11 +352,10 @@ export class Helpers {
       from?: string
       to?: string
     }
-    provider: CustomJsonRpcProvider
   }): Promise<MovementsByBlock[]> {
     const protocolTokenContract = Erc20__factory.connect(
       protocolToken.address,
-      provider,
+      this.provider,
     )
 
     const filter = protocolTokenContract.filters.Transfer(from, to)
@@ -416,6 +400,3 @@ export class Helpers {
     )
   }
 }
-
-// ignore will update if you like pattern
-export const helpers = new Helpers({} as any)

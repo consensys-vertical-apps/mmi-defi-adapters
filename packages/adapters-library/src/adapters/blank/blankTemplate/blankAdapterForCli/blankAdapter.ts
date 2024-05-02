@@ -25,7 +25,7 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
-import { helpers } from '../../../../scripts/helpers'
+import { Helpers } from '../../../../scripts/helpers'
 import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { Replacements } from '../../../../scripts/replacements'
@@ -42,6 +42,7 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
   productId = 'Replacements.PRODUCT_ID.placeholder'
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   private provider: CustomJsonRpcProvider
 
@@ -52,11 +53,13 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   /**

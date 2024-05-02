@@ -85,14 +85,10 @@ export class EthenaStakedUsdeAdapter
   async buildMetadata(): Promise<Metadata> {
     const protocolToken = await this.helpers.getTokenMetadata(
       getAddress('0x9D39A5DE30e57443BfF2A8307A4256c8797A3497'),
-      this.chainId,
-      this.provider,
     )
 
     const underlyingTokens = await this.helpers.getTokenMetadata(
       getAddress('0x4c9EDD5852cd905f086C759E8383e09bff1E68B3'),
-      this.chainId,
-      this.provider,
     )
     return {
       [protocolToken.address]: {
@@ -112,7 +108,6 @@ export class EthenaStakedUsdeAdapter
     return this.helpers.getBalanceOfTokens({
       ..._input,
       protocolTokens: await this.getProtocolTokens(),
-      provider: this.provider,
     })
   }
 
@@ -125,7 +120,6 @@ export class EthenaStakedUsdeAdapter
     return this.helpers.withdrawals({
       protocolToken: await this.getProtocolToken(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
-      provider: this.provider,
     })
   }
 
@@ -138,7 +132,6 @@ export class EthenaStakedUsdeAdapter
     return this.helpers.deposits({
       protocolToken: await this.getProtocolToken(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
-      provider: this.provider,
     })
   }
 
@@ -161,7 +154,7 @@ export class EthenaStakedUsdeAdapter
       underlyingTokens: await this.getUnderlyingTokens(
         _input.protocolTokenAddress,
       ),
-      provider: this.provider,
+
       blockNumber: _input.blockNumber,
     })
   }
