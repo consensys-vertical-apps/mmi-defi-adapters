@@ -31,6 +31,7 @@ import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { CurveVotingEscrowAdapter } from './curve/products/voting-escrow/curveVotingEscrowAdapter'
+import { EthenaStakedUsdeAdapter } from './ethena/products/staked-usde/ethenaStakedUsdeAdapter'
 import { FluxBorrowMarketAdapter } from './flux/products/borrow-market/fluxBorrowMarketAdapter'
 import { FluxSupplyMarketAdapter } from './flux/products/supply-market/fluxSupplyMarketAdapter'
 import { GmxGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
@@ -194,6 +195,10 @@ export const supportedProtocols: Record<
     [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
   },
 
+  [Protocol.Ethena]: {
+    [Chain.Ethereum]: [EthenaStakedUsdeAdapter],
+  },
+
   [Protocol.Flux]: {
     [Chain.Ethereum]: [FluxSupplyMarketAdapter, FluxBorrowMarketAdapter],
   },
@@ -209,7 +214,6 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [IZiSwapPoolAdapter],
     [Chain.Linea]: [IZiSwapPoolAdapter],
   },
-
   [Protocol.Lido]: {
     [Chain.Ethereum]: [LidoStEthAdapter, LidoWstEthAdapter],
   },

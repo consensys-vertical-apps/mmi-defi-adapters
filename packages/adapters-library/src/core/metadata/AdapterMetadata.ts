@@ -67,6 +67,7 @@ import CurveStakingFantomProtocolToken from '../../adapters/curve/products/staki
 import CurveStakingOptimismProtocolToken from '../../adapters/curve/products/staking/metadata/optimism.protocol-token.json'
 import CurveStakingPolygonProtocolToken from '../../adapters/curve/products/staking/metadata/polygon.protocol-token.json'
 import CurveVotingEscrowEthereumProtocolToken from '../../adapters/curve/products/voting-escrow/metadata/ethereum.protocol-token.json'
+import EthenaEthenaEthereumProtocolToken from '../../adapters/ethena/products/ethena/metadata/ethereum.protocol-token.json'
 import FluxBorrowMarketEthereumProtocolToken from '../../adapters/flux/products/borrow-market/metadata/ethereum.protocol-token.json'
 import FluxSupplyMarketEthereumProtocolToken from '../../adapters/flux/products/supply-market/metadata/ethereum.protocol-token.json'
 import GmxGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
@@ -724,6 +725,15 @@ export const MetadataFiles = new Map<string, Json>([
   ],
   [
     metadataKey({
+      protocolId: Protocol.Ethena,
+      productId: 'ethena',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    EthenaEthenaEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
       protocolId: Protocol.Flux,
       productId: 'borrow-market',
       chainId: Chain.Ethereum,
@@ -920,7 +930,6 @@ export const MetadataFiles = new Map<string, Json>([
     }),
     StargatePoolEthereumLpToken,
   ],
-
   [
     metadataKey({
       protocolId: Protocol.Stargate,

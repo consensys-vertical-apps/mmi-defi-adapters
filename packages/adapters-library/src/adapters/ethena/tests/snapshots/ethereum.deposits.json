@@ -1,0 +1,53 @@
+{
+  "snapshot": {
+    "protocolId": "ethena",
+    "name": "Ethena",
+    "description": "Ethena defi adapter",
+    "siteUrl": "https://ethena.fi/",
+    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x57e114b691db790c35207b2e685d4a43181e6061/logo.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "ethena",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0xdc1441a209ae39844cd1930093f2be0231e0c8f10ca6c66fb409cda8be0db7ba",
+        "protocolToken": {
+          "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+          "name": "Staked USDe",
+          "symbol": "sUSDe",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+            "name": "Staked USDe",
+            "symbol": "sUSDe",
+            "decimals": 18,
+            "balanceRaw": "2100862289939429413866n",
+            "type": "underlying",
+            "blockNumber": 19776211,
+            "tokens": [
+              {
+                "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+                "name": "USDe",
+                "symbol": "USDe",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "2219381349568012504027n",
+                "balance": 2219.3813495680124,
+                "price": 0.9979462818054942,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
+              }
+            ],
+            "balance": 2100.8622899394295
+          }
+        ],
+        "blockNumber": 19776211
+      }
+    ]
+  }
+}
