@@ -80,7 +80,7 @@ async function buildContractTypesForFolder(contractsDirectory: string) {
 
 async function buildSchemas() {
   const defiProvider = new DefiProvider()
-  const support = defiProvider.getSupport()
+  const support = await defiProvider.getSupport()
 
   const writeActionInputs: {
     protocolKey: string
@@ -99,15 +99,8 @@ async function buildSchemas() {
 
     for (const adapterSupport of protocolAdapters) {
       const productId = adapterSupport.protocolDetails.productId
-      const adapterFilePath = path.resolve(
-        `./packages/adapters-library/dist/adapters/${protocolId}/products/${productId}/${lowerFirst(
-          protocolKey,
-        )}${pascalCase(productId)}Adapter`,
-      )
 
-      const { WriteActionInputs } = await import(adapterFilePath)
-
-      if (WriteActionInputs) {
+      if (adapterSupport.writeActions) {
         const fullProductName = `${protocolKey}${pascalCase(productId)}`
         const productAdapterPath = `./${protocolId}/products/${productId}/${lowerFirst(
           `${fullProductName}`,
@@ -117,7 +110,7 @@ async function buildSchemas() {
           protocolKey,
           protocolId,
           productId,
-          writeActionInputs: Object.keys(WriteActionInputs),
+          writeActionInputs: adapterSupport.writeActions,
           fullProductName,
           productAdapterPath,
         })
