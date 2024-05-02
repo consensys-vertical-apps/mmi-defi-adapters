@@ -330,6 +330,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             const response = await defiProvider.getTotalValueLocked({
               filterProtocolIds: [protocolId],
               filterChainIds: [testCase.chainId],
+              filterProtocolTokens: testCase.filterProtocolTokens,
               blockNumbers: { [testCase.chainId]: blockNumber },
             })
 

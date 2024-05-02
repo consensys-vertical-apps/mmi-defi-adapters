@@ -198,6 +198,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     const protocolTokens = await this.getProtocolTokens()
 
+    console.log('AAAAAAA', { protocolTokens, protocolTokenAddresses })
     return await filterMapAsync(protocolTokens, async (protocolToken) => {
       if (
         protocolTokenAddresses &&
