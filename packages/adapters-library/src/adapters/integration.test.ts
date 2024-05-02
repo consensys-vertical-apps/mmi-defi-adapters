@@ -30,6 +30,7 @@ import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as quickswapV2TestCases } from './quickswap-v2/tests/testCases'
 import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
+import { testCases as sonneTestCases } from './sonne/tests/testCases'
 import { testCases as stakeWiseTestCases } from './stakewise/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import type { GetTransactionParams } from './supportedProtocols'
@@ -70,6 +71,7 @@ function runAllTests() {
   runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
   runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
   runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
+  runProtocolTests(Protocol.Sonne, sonneTestCases)
   runProtocolTests(Protocol.StakeWise, stakeWiseTestCases)
   runProtocolTests(Protocol.Stargate, stargateTestCases)
   runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)

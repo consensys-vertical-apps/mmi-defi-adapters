@@ -23,6 +23,7 @@ export const Protocol = {
   PricesV2: 'prices-v2',
   QuickswapV2: 'quickswap-v2',
   RocketPool: 'rocket-pool',
+  Sonne: 'sonne',
   StakeWise: 'stakewise',
   Stargate: 'stargate',
   SushiswapV2: 'sushiswap-v2',
