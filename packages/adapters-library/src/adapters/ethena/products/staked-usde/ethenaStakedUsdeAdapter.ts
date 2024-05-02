@@ -1,15 +1,15 @@
 import { getAddress } from 'ethers'
+import { Erc20__factory } from '../../../../contracts'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
+import { filterMapAsync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
 import { helpers } from '../../../../scripts/helpers'
-import { Replacements } from '../../../../scripts/replacements'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -28,8 +28,6 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import { Erc20__factory } from '../../../../contracts'
 
 type Metadata = Record<
   string,
