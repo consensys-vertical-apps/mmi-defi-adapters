@@ -116,6 +116,19 @@
           "name": "Staked USDe",
           "symbol": "sUSDe",
           "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+              "name": "USDe",
+              "symbol": "USDe",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "90432284471258504987040984n",
+              "totalSupply": 90432284.4712585,
+              "price": 1.00144502012366,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
+            }
+          ],
           "totalSupply": 86109486.27262978
         },
         {
