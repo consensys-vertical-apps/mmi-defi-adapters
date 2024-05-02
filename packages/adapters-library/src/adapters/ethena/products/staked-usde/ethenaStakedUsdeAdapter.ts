@@ -1,5 +1,4 @@
 import { getAddress } from 'ethers'
-import { Erc20__factory } from '../../../../contracts'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -7,9 +6,8 @@ import {
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { filterMapAsync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
-import { helpers } from '../../../../scripts/helpers'
+import { Helpers } from '../../../../scripts/helpers'
 import {
   ProtocolAdapterParams,
   ProtocolDetails,
@@ -23,7 +21,6 @@ import {
   UnwrapInput,
   UnwrapExchangeRate,
   AssetType,
-  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
@@ -47,17 +44,20 @@ export class EthenaStakedUsdeAdapter
   private provider: CustomJsonRpcProvider
 
   adaptersController: AdaptersController
+  helpers: Helpers
 
   constructor({
     provider,
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
   /**
@@ -83,13 +83,13 @@ export class EthenaStakedUsdeAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<Metadata> {
-    const protocolToken = await helpers.getTokenMetadata(
+    const protocolToken = await this.helpers.getTokenMetadata(
       getAddress('0x9D39A5DE30e57443BfF2A8307A4256c8797A3497'),
       this.chainId,
       this.provider,
     )
 
-    const underlyingTokens = await helpers.getTokenMetadata(
+    const underlyingTokens = await this.helpers.getTokenMetadata(
       getAddress('0x4c9EDD5852cd905f086C759E8383e09bff1E68B3'),
       this.chainId,
       this.provider,
@@ -109,7 +109,7 @@ export class EthenaStakedUsdeAdapter
   }
 
   async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    return helpers.getBalanceOfTokens({
+    return this.helpers.getBalanceOfTokens({
       ..._input,
       protocolTokens: await this.getProtocolTokens(),
       provider: this.provider,
@@ -122,7 +122,7 @@ export class EthenaStakedUsdeAdapter
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return helpers.withdrawals({
+    return this.helpers.withdrawals({
       protocolToken: await this.getProtocolToken(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
       provider: this.provider,
@@ -135,7 +135,7 @@ export class EthenaStakedUsdeAdapter
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return helpers.deposits({
+    return this.helpers.deposits({
       protocolToken: await this.getProtocolToken(protocolTokenAddress),
       filter: { fromBlock, toBlock, userAddress },
       provider: this.provider,
@@ -148,32 +148,15 @@ export class EthenaStakedUsdeAdapter
   }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     const protocolTokens = await this.getProtocolTokens()
 
-    return await filterMapAsync(protocolTokens, async (protocolToken) => {
-      if (
-        protocolTokenAddresses &&
-        !protocolTokenAddresses.includes(protocolToken.address)
-      ) {
-        return undefined
-      }
-
-      const protocolTokenContact = Erc20__factory.connect(
-        protocolToken.address,
-        this.provider,
-      )
-
-      const protocolTokenTotalSupply = await protocolTokenContact.totalSupply({
-        blockTag: blockNumber,
-      })
-      return {
-        ...protocolToken,
-        type: TokenType.Protocol,
-        totalSupplyRaw: protocolTokenTotalSupply,
-      }
+    return await this.helpers.tvl({
+      protocolTokens,
+      filterProtocolTokenAddresses: protocolTokenAddresses,
+      blockNumber,
     })
   }
 
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    return helpers.unwrapTokenAsRatio({
+    return this.helpers.unwrapTokenAsRatio({
       protocolToken: await this.getProtocolToken(_input.protocolTokenAddress),
       underlyingTokens: await this.getUnderlyingTokens(
         _input.protocolTokenAddress,

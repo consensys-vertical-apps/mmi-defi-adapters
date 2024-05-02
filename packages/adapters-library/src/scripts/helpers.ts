@@ -13,6 +13,7 @@ import {
   GetPositionsInput,
   MovementsByBlock,
   ProtocolPosition,
+  ProtocolTokenTvl,
   TokenType,
   Underlying,
   UnwrapExchangeRate,
@@ -26,7 +27,21 @@ export const REAL_ESTATE_TOKEN_METADATA = {
   decimals: 18,
 }
 
-class Helpers {
+export class Helpers {
+  provider: CustomJsonRpcProvider
+  chainId: Chain
+
+  constructor({
+    provider,
+    chainId,
+  }: {
+    provider: CustomJsonRpcProvider
+    chainId: Chain
+  }) {
+    this.provider = provider
+    this.chainId = chainId
+  }
+
   async getBalanceOfTokens({
     userAddress,
     protocolTokens,
@@ -178,6 +193,39 @@ class Helpers {
       protocolToken,
       filter: { fromBlock, toBlock, from: userAddress, to: undefined },
       provider,
+    })
+  }
+
+  async tvl({
+    protocolTokens,
+    filterProtocolTokenAddresses,
+    blockNumber,
+  }: {
+    protocolTokens: Erc20Metadata[]
+    filterProtocolTokenAddresses: string[] | undefined
+    blockNumber: number | undefined
+  }): Promise<ProtocolTokenTvl[]> {
+    return await filterMapAsync(protocolTokens, async (protocolToken) => {
+      if (
+        filterProtocolTokenAddresses &&
+        !filterProtocolTokenAddresses.includes(protocolToken.address)
+      ) {
+        return undefined
+      }
+
+      const protocolTokenContact = Erc20__factory.connect(
+        protocolToken.address,
+        this.provider,
+      )
+
+      const protocolTokenTotalSupply = await protocolTokenContact.totalSupply({
+        blockTag: blockNumber,
+      })
+      return {
+        ...protocolToken,
+        type: TokenType.Protocol,
+        totalSupplyRaw: protocolTokenTotalSupply,
+      }
     })
   }
 
@@ -369,4 +417,5 @@ class Helpers {
   }
 }
 
-export const helpers = new Helpers()
+// ignore will update if you like pattern
+export const helpers = new Helpers({} as any)
