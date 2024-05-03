@@ -214,6 +214,7 @@ export const supportedProtocols: Record<
     [Chain.Arbitrum]: [IZiSwapPoolAdapter],
     [Chain.Linea]: [IZiSwapPoolAdapter],
   },
+
   [Protocol.Lido]: {
     [Chain.Ethereum]: [LidoStEthAdapter, LidoWstEthAdapter],
   },

@@ -22,6 +22,7 @@
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
     "test": "jest",
+    "test:update:adapter-snapshot": "jest src/scripts/generateAdapter.test.ts -u",
     "test:tsc": "tsc --noEmit -p tsconfig.json",
     "test:integration": "jest src/adapters/integration.test.ts",
     "test:cov": "jest src --ci --coverage",

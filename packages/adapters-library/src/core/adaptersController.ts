@@ -1,5 +1,6 @@
 import { Protocol } from '../adapters/protocols'
 import { WriteActionInputs } from '../adapters/supportedProtocols'
+import { Helpers } from '../scripts/helpers'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import {
   AssetType,
@@ -57,6 +58,7 @@ export class AdaptersController {
                 chainId,
                 protocolId,
                 adaptersController: this,
+                helpers: new Helpers({ provider, chainId }),
               })
 
               const productId = adapter.productId

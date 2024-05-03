@@ -55,7 +55,10 @@ export type Outcomes = {
     | 'multipleProtocolTokens'
     | 'nft'
     | 'contractPosition'
-  unwrap: 'useOneToOneMethod' | 'notImplementedError'
+  unwrap:
+    | 'useUnwrapOneToOneMethod'
+    | 'useUnwrapRatioMethod'
+    | 'notImplementedError'
   withdrawalsFunction: 'useWithdrawalHelper' | 'notImplementedError'
   depositsFunction: 'useDepositsHelper' | 'notImplementedError'
   template: keyof typeof Templates | 'No'

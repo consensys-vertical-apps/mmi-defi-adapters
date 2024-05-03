@@ -2,6 +2,7 @@ import type { Protocol } from '../adapters/protocols'
 import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
 import type { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
+import { Helpers } from '../scripts/helpers'
 import type { Erc20Metadata } from './erc20Metadata'
 
 export const TokenType = {
@@ -327,4 +328,5 @@ export interface ProtocolAdapterParams {
   chainId: Chain
   protocolId: Protocol
   adaptersController: AdaptersController
+  helpers: Helpers
 }

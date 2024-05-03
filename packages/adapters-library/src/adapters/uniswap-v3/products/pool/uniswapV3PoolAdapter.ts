@@ -76,12 +76,14 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     super({
       provider,
       chainId,
       protocolId,
       adaptersController,
+      helpers,
     })
     this.provider = provider
     this.chainId = chainId

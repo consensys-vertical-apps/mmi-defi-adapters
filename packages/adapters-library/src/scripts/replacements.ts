@@ -16,16 +16,12 @@ export const Replacements = {
             outcomes.underlyingTokens === 'oneUnderlying':
             return blankAdapter.replace(
               regex,
-              `const protocolToken = await helpers.getTokenMetadata(
-                  getAddress('0x'),
-                  this.chainId,
-                  this.provider,
+              `const protocolToken = await this.helpers.getTokenMetadata(
+                  getAddress('0x')
                 )
             
-                const underlyingTokens = await helpers.getTokenMetadata(
-                  getAddress('0x'),
-                  this.chainId,
-                  this.provider,
+                const underlyingTokens = await this.helpers.getTokenMetadata(
+                  getAddress('0x')
                 )
                 return {
                   [protocolToken.address]: {
@@ -38,21 +34,15 @@ export const Replacements = {
             outcomes.underlyingTokens === 'multipleUnderlying':
             return blankAdapter.replace(
               regex,
-              `const protocolToken = await helpers.getTokenMetadata(
-                  '0x',
-                  this.chainId,
-                  this.provider,
+              `const protocolToken = await this.helpers.getTokenMetadata(
+                  '0x'
                 )
             
-                const underlyingTokensOne = await helpers.getTokenMetadata(
-                  '0x',
-                  this.chainId,
-                  this.provider,
+                const underlyingTokensOne = await this.helpers.getTokenMetadata(
+                  '0x'
                 )
-                const underlyingTokensTwo = await helpers.getTokenMetadata(
-                  '0x',
-                  this.chainId,
-                  this.provider,
+                const underlyingTokensTwo = await this.helpers.getTokenMetadata(
+                  '0x'
                 )
                 return {
                   [protocolToken.address]: {
@@ -124,20 +114,18 @@ export const Replacements = {
             outcomes.defiAssetStructure === 'singleProtocolToken':
             return updatedTemplate.replace(
               replace,
-              `return helpers.getBalanceOfTokens({
-                ..._input,
-                protocolTokens: await this.getProtocolTokens(),
-                provider: this.provider
+              `return this.helpers.getBalanceOfTokens({
+                ...input,
+                protocolTokens: await this.getProtocolTokens()
               })`,
             )
           case outcomes.getPositions === 'useBalanceOfHelper' &&
             outcomes.defiAssetStructure === 'multipleProtocolTokens':
             return updatedTemplate.replace(
               replace,
-              `return helpers.getBalanceOfTokens({
-                ..._input,
-                protocolTokens: await this.getProtocolTokens(),
-                provider: this.provider
+              `return this.helpers.getBalanceOfTokens({
+                ...input,
+                protocolTokens: await this.getProtocolTokens()
               })`,
             )
           default:
@@ -166,10 +154,9 @@ export const Replacements = {
           case 'useWithdrawalHelper':
             return updatedTemplate.replace(
               regexWithdrawals,
-              `return helpers.withdrawals({
+              `return this.helpers.withdrawals({
                   protocolToken: await this.getProtocolToken(protocolTokenAddress),
-                  filter: { fromBlock, toBlock, userAddress },
-                  provider: this.provider,
+                  filter: { fromBlock, toBlock, userAddress }
                 })`,
             )
 
@@ -198,10 +185,9 @@ export const Replacements = {
           case 'useDepositsHelper':
             return updatedTemplate.replace(
               regexDeposits,
-              `return helpers.deposits({
+              `return this.helpers.deposits({
                   protocolToken: await this.getProtocolToken(protocolTokenAddress),
-                  filter: { fromBlock, toBlock, userAddress },
-                  provider: this.provider,
+                  filter: { fromBlock, toBlock, userAddress }
                 })`,
             )
 
@@ -223,12 +209,21 @@ export const Replacements = {
         const regex = /return Replacements.UNWRAP.placeholder/g
 
         switch (outcomes.unwrap) {
-          case 'useOneToOneMethod':
+          case 'useUnwrapOneToOneMethod':
             return updatedTemplate.replace(
               regex,
-              `return helpers.unwrapOneToOne({
-                  protocolToken: await this.getProtocolToken(_input.protocolTokenAddress),
-                  underlyingTokens: await this.getUnderlyingTokens(_input.protocolTokenAddress)
+              `return this.helpers.unwrapOneToOne({
+                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
+                  underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress)
+                })`,
+            )
+          case 'useUnwrapRatioMethod':
+            return updatedTemplate.replace(
+              regex,
+              `return this.helpers.unwrapTokenAsRatio({
+                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
+                  underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
+                  blockNumber
                 })`,
             )
           default:
@@ -246,7 +241,7 @@ export const Replacements = {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (outcomes: Outcomes, updatedTemplate: string): string => {
       if (outcomes.defiAssetStructure) {
-        const regex = /return Replacements.ASSET_TYPE.placeholder/
+        const regex = /Replacements.ASSET_TYPE.placeholder/g
 
         switch (outcomes.defiAssetStructure) {
           case 'singleProtocolToken' || 'multipleProtocolTokens':
@@ -254,6 +249,36 @@ export const Replacements = {
 
           default:
             return updatedTemplate.replace(regex, 'AssetType.NonStandardErc20')
+        }
+      }
+
+      return updatedTemplate
+    },
+  },
+  TVL: {
+    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
+    replace: (outcomes: Outcomes, updatedTemplate: string): string => {
+      if (outcomes.defiAssetStructure) {
+        const regex = /return Replacements.TVL.placeholder/g
+
+        switch (outcomes.defiAssetStructure) {
+          case 'singleProtocolToken' || 'multipleProtocolTokens':
+            return updatedTemplate.replace(
+              regex,
+              `const protocolTokens = await this.getProtocolTokens()
+            
+              return await this.helpers.tvl({
+                protocolTokens,
+                filterProtocolTokenAddresses: protocolTokenAddresses,
+                blockNumber,
+              })`,
+            )
+
+          default:
+            return updatedTemplate.replace(
+              regex,
+              'throw new NotImplementedError()',
+            )
         }
       }
 
@@ -395,7 +420,7 @@ export const Replacements = {
               .replace(/implements/g, 'extends RewardsAdapter implements')
               .replace(
                 /this.provider = provider/g,
-                `super()
+                `super({ helpers })
                 this.provider = provider`,
               )
         }
