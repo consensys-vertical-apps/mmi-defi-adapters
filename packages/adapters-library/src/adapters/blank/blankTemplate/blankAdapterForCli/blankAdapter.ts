@@ -91,7 +91,7 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
     return Replacements.GET_PROTOCOL_TOKENS.placeholder
   }
 
-  async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
+  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
     return Replacements.GET_POSITIONS.placeholder
   }
 
@@ -113,13 +113,18 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
     return Replacements.GET_DEPOSITS.placeholder
   }
 
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
+  async getTotalValueLocked({
+    protocolTokenAddresses,
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     return Replacements.TVL.placeholder
   }
 
-  async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
+  async unwrap({
+    protocolTokenAddress,
+    tokenId,
+    blockNumber,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
     return Replacements.UNWRAP.placeholder
   }
 

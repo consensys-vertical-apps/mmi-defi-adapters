@@ -133,7 +133,7 @@ export const Replacements = {
             updatedTemplate = updatedTemplate.replace(
               replace,
               `return this.helpers.getBalanceOfTokens({
-                ..._input,
+                ...input,
                 protocolTokens: await this.getProtocolTokens()
               })`,
             )
@@ -143,7 +143,7 @@ export const Replacements = {
             updatedTemplate = updatedTemplate.replace(
               replace,
               `return this.helpers.getBalanceOfTokens({
-                ..._input,
+                ...input,
                 protocolTokens: await this.getProtocolTokens()
               })`,
             )
@@ -240,8 +240,8 @@ export const Replacements = {
             updatedTemplate = updatedTemplate.replace(
               regex,
               `return this.helpers.unwrapOneToOne({
-                  protocolToken: await this.getProtocolToken(_input.protocolTokenAddress),
-                  underlyingTokens: await this.getUnderlyingTokens(_input.protocolTokenAddress)
+                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
+                  underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress)
                 })`,
             )
             break
@@ -249,9 +249,9 @@ export const Replacements = {
             updatedTemplate = updatedTemplate.replace(
               regex,
               `return this.helpers.unwrapTokenAsRatio({
-                  protocolToken: await this.getProtocolToken(_input.protocolTokenAddress),
-                  underlyingTokens: await this.getUnderlyingTokens(_input.protocolTokenAddress),
-                  blockNumber: _input.blockNumber
+                  protocolToken: await this.getProtocolToken(protocolTokenAddress),
+                  underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
+                  blockNumber
                 })`,
             )
             break
