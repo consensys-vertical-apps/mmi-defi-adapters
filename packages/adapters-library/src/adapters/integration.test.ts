@@ -18,7 +18,6 @@ import { testCases as ethenaTestCases } from './ethena/tests/testCases'
 import { testCases as fluxTestCases } from './flux/tests/testCases'
 import { testCases as gmxTestCases } from './gmx/tests/testCases'
 import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
-import { testCases as lenderV2TestCases } from './lender-v-2/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
@@ -60,7 +59,6 @@ function runAllTests() {
   runProtocolTests(Protocol.Flux, fluxTestCases)
   runProtocolTests(Protocol.Gmx, gmxTestCases)
   runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
-  runProtocolTests(Protocol.LenderV2, lenderV2TestCases)
   runProtocolTests(Protocol.Lido, lidoTestCases)
   runProtocolTests(Protocol.Maker, makerTestCases)
   runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
@@ -68,7 +66,6 @@ function runAllTests() {
   runProtocolTests(Protocol.MorphoAaveV3, morphoAaveV3TestCases)
   runProtocolTests(Protocol.MorphoBlue, morphoBlueTestCases)
   runProtocolTests(Protocol.MorphoCompoundV2, morphoCompoundV2TestCases)
-
   runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
   runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
   runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
