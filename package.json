@@ -5,7 +5,9 @@
   "author": "MMI Team",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "engines": {
     "node": ">=20.0.0"
   },

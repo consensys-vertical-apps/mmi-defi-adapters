@@ -18,7 +18,7 @@
     "rules": {
       "recommended": true,
       "suspicious": {
-        "noRedeclare": "off",
+        "noRedeclare": "off", // TODO: Remove when they fix the issue
         "noArrayIndexKey": "off"
       },
       "style": {
