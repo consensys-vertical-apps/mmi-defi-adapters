@@ -291,6 +291,37 @@ export const Replacements = {
       return updatedTemplate
     },
   },
+  TVL: {
+    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
+    replace: (outcomes: Outcomes, updatedTemplate: string): string => {
+      if (outcomes.defiAssetStructure) {
+        const regex = new RegExp('return Replacements.TVL.placeholder', 'g')
+
+        switch (outcomes.defiAssetStructure) {
+          case 'singleProtocolToken' || 'multipleProtocolTokens':
+            updatedTemplate = updatedTemplate.replace(
+              regex,
+              `const protocolTokens = await this.getProtocolTokens()
+            
+              return await this.helpers.tvl({
+                protocolTokens,
+                filterProtocolTokenAddresses: protocolTokenAddresses,
+                blockNumber,
+              })`,
+            )
+            break
+
+          default:
+            updatedTemplate = updatedTemplate.replace(
+              regex,
+              'throw new NotImplementedError()',
+            )
+            break
+        }
+      }
+      return updatedTemplate
+    },
+  },
   PRODUCT_ID: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (

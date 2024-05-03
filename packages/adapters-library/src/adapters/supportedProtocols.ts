@@ -36,7 +36,6 @@ import { FluxBorrowMarketAdapter } from './flux/products/borrow-market/fluxBorro
 import { FluxSupplyMarketAdapter } from './flux/products/supply-market/fluxSupplyMarketAdapter'
 import { GmxGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { IZiSwapPoolAdapter } from './iziswap/products/pool/iZiSwapPoolAdapter'
-import { LenderV2FarmingNoTemplateAdapter } from './lender-v-2/products/farming-NoTemplate/lenderV2FarmingNoTemplateAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { MakerSDaiAdapter } from './maker/products/s-dai/makerSDaiAdapter'
@@ -214,10 +213,6 @@ export const supportedProtocols: Record<
     [Chain.Base]: [IZiSwapPoolAdapter],
     [Chain.Arbitrum]: [IZiSwapPoolAdapter],
     [Chain.Linea]: [IZiSwapPoolAdapter],
-  },
-
-  [Protocol.LenderV2]: {
-    [Chain.Ethereum]: [LenderV2FarmingNoTemplateAdapter],
   },
 
   [Protocol.Lido]: {

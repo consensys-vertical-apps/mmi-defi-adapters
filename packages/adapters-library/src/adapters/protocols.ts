@@ -12,7 +12,6 @@ export const Protocol = {
   Flux: 'flux',
   Gmx: 'gmx',
   IZiSwap: 'iziswap',
-  LenderV2: 'lender-v-2',
   Lido: 'lido',
   Maker: 'maker',
   MendiFinance: 'mendi-finance',

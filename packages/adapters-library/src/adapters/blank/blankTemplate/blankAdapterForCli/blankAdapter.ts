@@ -116,7 +116,7 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
   async getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
+    return Replacements.TVL.placeholder
   }
 
   async unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
