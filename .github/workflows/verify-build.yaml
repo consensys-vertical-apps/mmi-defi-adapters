@@ -27,7 +27,7 @@ jobs:
       - name: Verify tsc config
         run: npm run test:tsc
 
-      - name: Verify there are no linting errors
+      - name: Verify there are no linting and formatting errors
         run: npm run lint
 
       - name: Build
