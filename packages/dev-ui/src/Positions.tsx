@@ -1,37 +1,37 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { provider } from './defiProvider'
-import {
-  DefiPositionResponse,
-  ChainName,
-} from '@metamask-institutional/defi-adapters'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
+import { Button } from '@/components/ui/button'
 import {
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
 } from '@/components/ui/card'
-import { Underlying } from '@metamask-institutional/defi-adapters/dist/types/adapter'
-import { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
+import { Input } from '@/components/ui/input'
 import {
   Table,
-  TableHeader,
-  TableRow,
-  TableHead,
   TableBody,
   TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from '@/components/ui/table'
 import {
-  TooltipProvider,
   Tooltip,
-  TooltipTrigger,
   TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
+import {
+  ChainName,
+  DefiPositionResponse,
+} from '@metamask-institutional/defi-adapters'
+import { Underlying } from '@metamask-institutional/defi-adapters/dist/types/adapter'
+import { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { provider } from './defiProvider'
 
 export function Positions() {
   const queryClient = useQueryClient()
@@ -84,7 +84,7 @@ function PositionsDisplay({ userAddress }: { userAddress: string }) {
 
   if (isPending || isFetching || isRefetching) return 'Loading...'
 
-  if (error) return 'An error has occurred: ' + error.message
+  if (error) return `An error has occurred: ${error.message}`
 
   const successfulPositions = data.filter(
     (position): position is DefiPositionResponse & { success: true } =>
@@ -93,7 +93,7 @@ function PositionsDisplay({ userAddress }: { userAddress: string }) {
 
   const groupedPositions = successfulPositions.reduce(
     (acc, position) => {
-      const key = position.protocolId + '#' + position.chainId
+      const key = `${position.protocolId}#${position.chainId}`
       if (!acc[key]) {
         acc[key] = []
       }
