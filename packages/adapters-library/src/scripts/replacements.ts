@@ -464,7 +464,7 @@ export const Replacements = {
             )
             updatedTemplate = updatedTemplate.replace(
               /this.provider = provider/g,
-              `super()
+              `super({ helpers })
                 this.provider = provider`,
             )
 
