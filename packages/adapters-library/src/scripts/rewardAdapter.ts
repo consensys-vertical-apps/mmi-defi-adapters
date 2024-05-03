@@ -5,9 +5,14 @@ import {
   MovementsByBlock,
   Underlying,
 } from '../types/adapter'
-import { helpers } from './helpers'
+import { Helpers } from './helpers'
 
 export abstract class RewardsAdapter {
+  helpers: Helpers
+  constructor({ helpers }: { helpers: Helpers }) {
+    this.helpers = helpers
+  }
+
   abstract getPositionsWithoutRewards({
     userAddress,
     blockNumber,
@@ -43,7 +48,7 @@ export abstract class RewardsAdapter {
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    return helpers.getPositionsAndRewards(
+    return this.helpers.getPositionsAndRewards(
       userAddress,
       this.getPositionsWithoutRewards({
         userAddress,
@@ -61,7 +66,7 @@ export abstract class RewardsAdapter {
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return helpers.getWithdrawalsAndRewardWithdrawals(
+    return this.helpers.getWithdrawalsAndRewardWithdrawals(
       userAddress,
       protocolTokenAddress,
       fromBlock,

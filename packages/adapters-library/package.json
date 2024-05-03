@@ -30,6 +30,7 @@
     "fix": "eslint \"src/**/*.ts\" --fix",
     "lint": "eslint \"src/**/*.ts\"",
     "test": "jest",
+    "test:update:adapter-snapshot": "jest src/scripts/generateAdapter.test.ts -u",
     "test:tsc": "tsc --noEmit -p tsconfig.json",
     "test:integration": "jest src/adapters/integration.test.ts",
     "test:cov": "jest src --ci --coverage",
