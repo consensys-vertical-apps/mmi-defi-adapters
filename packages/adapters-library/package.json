@@ -16,19 +16,11 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md",
-    "readme-assets/**"
-  ],
+  "files": ["dist", "CHANGELOG.md", "LICENSE", "README.md", "readme-assets/**"],
   "sideEffects": false,
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
-    "fix": "npm run lint -- --apply",
-    "lint": "biome check src",
     "test": "jest",
     "test:tsc": "tsc --noEmit -p tsconfig.json",
     "test:integration": "jest src/adapters/integration.test.ts",

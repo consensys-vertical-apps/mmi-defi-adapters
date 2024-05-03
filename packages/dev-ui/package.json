@@ -7,9 +7,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "fix": "npm run lint -- --apply",
-    "lint": "biome check src"
+    "dev": "vite"
   },
   "devDependencies": {
     "@heroicons/react": "^2.1.3",

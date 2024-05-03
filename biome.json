@@ -1,5 +1,12 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "files": {
+    "ignore": [
+      "packages/adapters-library/src/**/contracts/**",
+      "packages/adapters-library/src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts",
+      "packages/adapters-library/dist/**"
+    ]
+  },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",

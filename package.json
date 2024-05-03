@@ -5,9 +5,7 @@
   "author": "MMI Team",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "engines": {
     "node": ">=20.0.0"
   },
@@ -30,8 +28,8 @@
     "withdrawals": "npm run adapters-cli withdrawals --",
     "stress": "npm run adapters-cli stress --",
     "support": "npm run adapters-cli support --",
-    "fix": "npm run fix -ws",
-    "lint": "npm run lint -ws",
+    "lint": "biome check .",
+    "fix": "npm run lint -- --apply",
     "test": "npm run test -w packages/adapters-library",
     "test:tsc": "npm run test:tsc -w packages/adapters-library",
     "test:integration": "npm run test:integration -w packages/adapters-library",
