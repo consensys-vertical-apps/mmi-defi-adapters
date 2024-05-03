@@ -27,10 +27,6 @@ export function lpStakingAdapterTemplate({
     GetPositionsInput,
     MovementsByBlock,
     ProtocolPosition,
-    GetAprInput,
-    ProtocolTokenApr,
-    GetApyInput,
-    ProtocolTokenApy,
   } from '../../../../types/adapter'
   import { Protocol } from '../../../protocols'
   
