@@ -1,10 +1,10 @@
 import {
-  CompoundV2Comptroller__factory,
   CompoundV2Cerc20__factory,
+  CompoundV2Comptroller__factory,
 } from '../../contracts'
 import { Erc20Metadata } from '../../types/erc20Metadata'
-import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
+import { Chain } from '../constants/chains'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 

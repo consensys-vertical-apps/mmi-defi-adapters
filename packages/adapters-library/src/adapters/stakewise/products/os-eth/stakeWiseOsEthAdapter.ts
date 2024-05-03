@@ -1,23 +1,23 @@
-import { parseEther, getAddress } from 'ethers'
+import { getAddress, parseEther } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
-  GetTotalValueLockedInput,
-  UnwrappedTokenExchangeRate,
-  ProtocolTokenTvl,
-  ProtocolDetails,
-  PositionType,
-  TokenBalance,
-  Underlying,
   AssetType,
+  GetTotalValueLockedInput,
+  PositionType,
+  ProtocolDetails,
+  ProtocolTokenTvl,
+  TokenBalance,
   TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
+  OsEthController__factory,
   OsEth__factory,
   Vault__factory,
   VaultsRegistry__factory,
-  OsEthController__factory,
 } from '../../contracts'
 
 const amount1 = parseEther('1')

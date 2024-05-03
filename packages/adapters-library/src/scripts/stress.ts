@@ -43,7 +43,7 @@ export function stressCommand(program: Command, defiProvider: DefiProvider) {
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
 
-      console.log(`Run stress test`)
+      console.log('Run stress test')
       console.log(`Iterations: ${addresses.length}`)
       if (filterChainIds) {
         console.log(`Chains: ${filterChainIds.join(',')}`)

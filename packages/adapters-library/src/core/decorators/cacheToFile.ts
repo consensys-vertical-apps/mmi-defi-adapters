@@ -9,7 +9,7 @@ export interface IMetadataBuilder {
 
 export function CacheToFile({ fileKey }: { fileKey: string }) {
   return function actualDecorator(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: Decorator code
     originalMethod: any,
     _context: ClassMethodDecoratorContext,
   ) {
@@ -38,7 +38,7 @@ export function CacheToFile({ fileKey }: { fileKey: string }) {
             chainId: this.chainId,
             fileKey,
           },
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          // biome-ignore lint/suspicious/noExplicitAny: Decorator code
         } as any
       }
 

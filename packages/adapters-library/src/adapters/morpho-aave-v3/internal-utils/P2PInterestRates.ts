@@ -91,8 +91,6 @@ export interface RateParams {
 export default class P2PInterestRates {
   __MATHS__ = new MorphoAaveMath()
 
-  constructor() {}
-
   public computeP2PIndexes({
     p2pIndexCursor,
     lastBorrowIndexes,
@@ -256,8 +254,8 @@ export default class P2PInterestRates {
       lastPoolBorrowIndex,
     )
 
-    let p2pSupplyGrowthFactor
-    let p2pBorrowGrowthFactor
+    let p2pSupplyGrowthFactor: bigint
+    let p2pBorrowGrowthFactor: bigint
 
     if (poolSupplyGrowthFactor <= poolBorrowGrowthFactor) {
       const p2pGrowthFactor = this._weightedAverage(
@@ -303,7 +301,7 @@ export default class P2PInterestRates {
     scaledP2PTotal: bigint,
     proportionIdle: bigint,
   ): bigint {
-    if (scaledP2PTotal == 0n || (scaledDelta == 0n && proportionIdle == 0n))
+    if (scaledP2PTotal === 0n || (scaledDelta === 0n && proportionIdle === 0n))
       return (
         this.__MATHS__.indexMul(lastIndexes.p2pIndex, p2pGrowthFactor) /
         BigInt(1e4)

@@ -1,6 +1,6 @@
 import { Protocol } from '../adapters/protocols'
-import { ProtocolAdapterParams } from '../types/adapter'
 import { IProtocolAdapter } from '../types/IProtocolAdapter'
+import { ProtocolAdapterParams } from '../types/adapter'
 import { AdaptersController } from './adaptersController'
 import { Chain } from './constants/chains'
 import { AdapterMissingError } from './errors/errors'
@@ -61,7 +61,9 @@ describe('AdaptersController', () => {
             Partial<
               Record<
                 Chain,
-                (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
+                (new (
+                  input: ProtocolAdapterParams,
+                ) => IProtocolAdapter)[]
               >
             >
           >,

@@ -1,6 +1,6 @@
 import { Protocol } from '../../adapters/protocols'
-import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { Erc20Metadata } from '../../types/erc20Metadata'
 import {
   AdapterMissingError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
@@ -56,7 +56,7 @@ export async function unwrap(
           decimals: unwrappedTokenExchangeRate.decimals,
           type: unwrappedTokenExchangeRate.type,
           [fieldToUpdate]:
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
             (((token as any)[fieldToUpdate] as bigint) *
               unwrappedTokenExchangeRate.underlyingRateRaw) /
             10n ** BigInt(token.decimals),
@@ -99,7 +99,7 @@ async function fetchPrice(
   token: Erc20Metadata & { priceRaw?: bigint },
   blockNumber: number | undefined,
 ) {
-  let priceAdapter
+  let priceAdapter: IProtocolAdapter
   try {
     priceAdapter = adapter.adaptersController.fetchAdapter(
       adapter.chainId,

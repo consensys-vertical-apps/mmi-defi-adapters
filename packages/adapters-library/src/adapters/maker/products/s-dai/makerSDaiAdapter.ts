@@ -3,15 +3,15 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { RAY_POSITIONS } from '../../../../core/constants/RAY'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import {
-  ProtocolDetails,
-  PositionType,
-  GetTotalValueLockedInput,
-  TokenBalance,
-  ProtocolTokenTvl,
-  UnwrappedTokenExchangeRate,
-  Underlying,
-  TokenType,
   AssetType,
+  GetTotalValueLockedInput,
+  PositionType,
+  ProtocolDetails,
+  ProtocolTokenTvl,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { McdPot__factory } from '../../contracts'

@@ -19,6 +19,6 @@ export const WriteActions = {
 export type WriteActions = (typeof WriteActions)[keyof typeof WriteActions]
 
 export type WriteActionInputSchemas = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: Generic ZodObject schema
   [keyof in WriteActions]?: z.ZodObject<any>
 }

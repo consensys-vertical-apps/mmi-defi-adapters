@@ -33,10 +33,10 @@ export async function queryCurvePools(
 
   const transformed: CurvePoolAdapterMetadata = {}
 
-  // eslint-disable-next-line
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const transformData = async (data: any) => {
     await Promise.all(
-      // eslint-disable-next-line
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       data.data.poolData.map(async (pool: any) => {
         if (pool.usdTotal < minVolumeUSD) {
           return
@@ -54,7 +54,7 @@ export async function queryCurvePools(
           ),
           underlyingTokens: await Promise.all(
             pool.coins.map(
-              // eslint-disable-next-line
+              // biome-ignore lint/suspicious/noExplicitAny: <explanation>
               async (coin: any) =>
                 await getTokenMetadata(coin.address, chainId, provider),
             ),
@@ -82,10 +82,10 @@ export async function queryCurveGauges(
 
   const transformed: CurveStakingAdapterMetadata = {}
 
-  // eslint-disable-next-line
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const transformData = async (data: any) => {
     await Promise.all(
-      // eslint-disable-next-line
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       data.data.poolData.map(async (pool: any) => {
         if (!pool.gaugeAddress) {
           return

@@ -1,5 +1,5 @@
-import { GetPositionsInput } from '../../types/adapter'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { GetPositionsInput } from '../../types/adapter'
 import { SimplePoolAdapter } from '../adapters/SimplePoolAdapter'
 
 export function AddClaimableRewards({
@@ -29,7 +29,7 @@ export function AddClaimableRewards({
             protocolTokens.map(async (protocolToken) => {
               const isSupported = (
                 await rewardAdapter.getProtocolTokens()
-              ).find((token) => token.address == protocolToken.address)
+              ).find((token) => token.address === protocolToken.address)
 
               if (!isSupported) {
                 return
@@ -40,7 +40,7 @@ export function AddClaimableRewards({
                 protocolTokenAddresses: [protocolToken.address],
               })
 
-              if (reward && reward.tokens && reward.tokens.length > 0) {
+              if (reward?.tokens && reward.tokens.length > 0) {
                 protocolToken.tokens = [
                   ...(protocolToken.tokens ?? []),
                   ...reward.tokens,

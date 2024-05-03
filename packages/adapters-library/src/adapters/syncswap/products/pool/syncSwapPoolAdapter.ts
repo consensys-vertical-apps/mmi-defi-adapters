@@ -1,22 +1,22 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  ProtocolDetails,
-  PositionType,
-  TokenBalance,
-  UnwrappedTokenExchangeRate,
-  Underlying,
-  GetPositionsInput,
-  ProtocolPosition,
-  TokenType,
-  GetEventsInput,
-  MovementsByBlock,
   AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  MovementsByBlock,
+  PositionType,
+  ProtocolDetails,
+  ProtocolPosition,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
@@ -244,7 +244,7 @@ export class SyncSwapPoolAdapter extends SimplePoolAdapter {
 
     const [token0, token1] = await poolContract.getAssets()
     if (!token0 || !token1) {
-      throw new Error(`Invalid Token`)
+      throw new Error('Invalid Token')
     }
     const [token0Metadata, token1Metadata, protocolTokenMetadata] =
       await Promise.all([
@@ -327,9 +327,9 @@ export class SyncSwapPoolAdapter extends SimplePoolAdapter {
           index + FETCH_POOLS_ENTERED_BATCH_COUNT,
         ),
       )
-    } else {
-      return results.concat(pools)
     }
+
+    return results.concat(pools)
   }
 
   private multiCallGetEnteredPoolsFn(

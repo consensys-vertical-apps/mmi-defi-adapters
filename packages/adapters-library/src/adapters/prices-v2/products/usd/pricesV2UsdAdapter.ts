@@ -5,23 +5,23 @@ import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { nativeTokenAddresses } from '../../../../core/utils/nativeTokens'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
+  AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  PositionType,
-  GetPositionsInput,
-  GetEventsInput,
-  MovementsByBlock,
-  GetTotalValueLockedInput,
-  UnwrapInput,
-  UnwrapExchangeRate,
-  ProtocolTokenTvl,
   ProtocolPosition,
+  ProtocolTokenTvl,
   TokenType,
-  AssetType,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { ChainLink__factory, OneInchOracle__factory } from '../../contracts'
 import { priceAdapterConfig } from './priceV2Config'

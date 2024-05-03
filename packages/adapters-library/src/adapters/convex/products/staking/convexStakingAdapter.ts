@@ -6,21 +6,21 @@ import {
 } from '../../../../core/adapters/LpStakingProtocolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  ProtocolDetails,
-  PositionType,
-  TokenType,
-  ProtocolPosition,
-  GetEventsInput,
-  MovementsByBlock,
   AssetType,
+  GetEventsInput,
   GetPositionsInputWithTokenAddresses,
+  MovementsByBlock,
+  PositionType,
+  ProtocolDetails,
+  ProtocolPosition,
+  TokenType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
@@ -134,7 +134,7 @@ export class ConvexStakingAdapter
           blockTag: blockNumber,
         })
 
-        if (crvRewardBalance == 0n) return
+        if (crvRewardBalance === 0n) return
 
         const { protocolToken } = await this.fetchPoolMetadata(protocolAddress)
         const crvRewardMetadata = await this.getCrv()
@@ -202,7 +202,7 @@ export class ConvexStakingAdapter
               blockTag: blockNumber,
             })
 
-            if (balance == 0n) return
+            if (balance === 0n) return
 
             return {
               type: TokenType.UnderlyingClaimable,

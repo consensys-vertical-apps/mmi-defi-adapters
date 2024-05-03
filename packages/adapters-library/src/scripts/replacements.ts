@@ -1,23 +1,20 @@
 import { Answers } from 'inquirer'
 import { Outcomes } from './newAdapter2Command'
 
-//eslint-disable-next-line
+// biome-ignore lint/suspicious/noExplicitAny: Useful for this placeholder
 const EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK = '' as any
 
 export const Replacements = {
   BUILD_METADATA: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (outcomes: Outcomes, blankAdapter: string) => {
+    replace: (outcomes: Outcomes, blankAdapter: string): string => {
       if (outcomes.buildMetadataFunction && outcomes.underlyingTokens) {
-        const regex = new RegExp(
-          'return Replacements.BUILD_METADATA.placeholder',
-          'g',
-        )
+        const regex = /return·Replacements.BUILD_METADATA.placeholder/g
 
         switch (true) {
           case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
             outcomes.underlyingTokens === 'oneUnderlying':
-            blankAdapter = blankAdapter.replace(
+            return blankAdapter.replace(
               regex,
               `const protocolToken = await helpers.getTokenMetadata(
                   getAddress('0x'),
@@ -37,10 +34,9 @@ export const Replacements = {
                   },
                 }`,
             )
-            break
           case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
             outcomes.underlyingTokens === 'multipleUnderlying':
-            blankAdapter = blankAdapter.replace(
+            return blankAdapter.replace(
               regex,
               `const protocolToken = await helpers.getTokenMetadata(
                   '0x',
@@ -65,27 +61,23 @@ export const Replacements = {
                   },
                 }`,
             )
-            break
           case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
             outcomes.underlyingTokens === 'oneUnderlying':
-            blankAdapter = blankAdapter.replace(
-              regex,
-              `throw new NotImplementedError()`,
-            )
-            break
-          case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
-            outcomes.underlyingTokens === 'multipleUnderlying':
-            blankAdapter = blankAdapter.replace(
-              regex,
-              `throw new NotImplementedError()`,
-            )
-            break
-          default:
-            blankAdapter = blankAdapter.replace(
+            return blankAdapter.replace(
               regex,
               'throw new NotImplementedError()',
             )
-            break
+          case outcomes.buildMetadataFunction === 'multipleProtocolTokens' &&
+            outcomes.underlyingTokens === 'multipleUnderlying':
+            return blankAdapter.replace(
+              regex,
+              'throw new NotImplementedError()',
+            )
+          default:
+            return blankAdapter.replace(
+              regex,
+              'throw new NotImplementedError()',
+            )
         }
       }
 
@@ -99,29 +91,22 @@ export const Replacements = {
       updatedTemplate: string,
       _answers: Answers,
     ): string => {
-      const regexProtocolTokens = new RegExp(
-        'return Replacements.GET_PROTOCOL_TOKENS.placeholder',
-        'g',
-      )
+      const regexProtocolTokens =
+        /return Replacements.GET_PROTOCOL_TOKENS.placeholder/g
       switch (outcomes.defiAssetStructure) {
         case 'singleProtocolToken' || 'multiProtocolToken':
-          updatedTemplate = updatedTemplate.replace(
+          return updatedTemplate.replace(
             regexProtocolTokens,
             `return Object.values(await this.buildMetadata()).map(
                   ({ protocolToken }) => protocolToken,
                 )`,
           )
-
-          break
         default:
-          updatedTemplate = updatedTemplate.replace(
+          return updatedTemplate.replace(
             regexProtocolTokens,
             'throw new NotImplementedError()',
           )
-
-          break
       }
-      return updatedTemplate
     },
   },
   GET_POSITIONS: {
@@ -132,15 +117,12 @@ export const Replacements = {
       _answers: Answers,
     ): string => {
       if (outcomes.getPositions && outcomes.defiAssetStructure) {
-        const replace = new RegExp(
-          'return Replacements.GET_POSITIONS.placeholder',
-          'g',
-        )
+        const replace = /return Replacements.GET_POSITIONS.placeholder/g
 
         switch (true) {
-          case outcomes.getPositions == 'useBalanceOfHelper' &&
-            outcomes.defiAssetStructure == 'singleProtocolToken':
-            updatedTemplate = updatedTemplate.replace(
+          case outcomes.getPositions === 'useBalanceOfHelper' &&
+            outcomes.defiAssetStructure === 'singleProtocolToken':
+            return updatedTemplate.replace(
               replace,
               `return helpers.getBalanceOfTokens({
                 ..._input,
@@ -148,10 +130,9 @@ export const Replacements = {
                 provider: this.provider
               })`,
             )
-            break
-          case outcomes.getPositions == 'useBalanceOfHelper' &&
-            outcomes.defiAssetStructure == 'multipleProtocolTokens':
-            updatedTemplate = updatedTemplate.replace(
+          case outcomes.getPositions === 'useBalanceOfHelper' &&
+            outcomes.defiAssetStructure === 'multipleProtocolTokens':
+            return updatedTemplate.replace(
               replace,
               `return helpers.getBalanceOfTokens({
                 ..._input,
@@ -159,15 +140,14 @@ export const Replacements = {
                 provider: this.provider
               })`,
             )
-            break
           default:
-            updatedTemplate = updatedTemplate.replace(
+            return updatedTemplate.replace(
               replace,
               'throw new NotImplementedError()',
             )
-            break
         }
       }
+
       return updatedTemplate
     },
   },
@@ -179,14 +159,12 @@ export const Replacements = {
       _answers: Answers,
     ): string => {
       if (outcomes.withdrawalsFunction) {
-        const regexWithdrawals = new RegExp(
-          'return Replacements.GET_WITHDRAWALS.placeholder',
-          'g',
-        )
+        const regexWithdrawals =
+          /return Replacements.GET_WITHDRAWALS.placeholder/g
 
         switch (outcomes.withdrawalsFunction) {
           case 'useWithdrawalHelper':
-            updatedTemplate = updatedTemplate.replace(
+            return updatedTemplate.replace(
               regexWithdrawals,
               `return helpers.withdrawals({
                   protocolToken: await this.getProtocolToken(protocolTokenAddress),
@@ -195,16 +173,14 @@ export const Replacements = {
                 })`,
             )
 
-            break
           default:
-            updatedTemplate = updatedTemplate.replace(
+            return updatedTemplate.replace(
               regexWithdrawals,
               'throw new NotImplementedError()',
             )
-
-            break
         }
       }
+
       return updatedTemplate
     },
   },
@@ -216,14 +192,11 @@ export const Replacements = {
       _answers: Answers,
     ): string => {
       if (outcomes.depositsFunction) {
-        const regexDeposits = new RegExp(
-          'return Replacements.GET_DEPOSITS.placeholder',
-          'g',
-        )
+        const regexDeposits = /return Replacements.GET_DEPOSITS.placeholder/g
 
         switch (outcomes.depositsFunction) {
           case 'useDepositsHelper':
-            updatedTemplate = updatedTemplate.replace(
+            return updatedTemplate.replace(
               regexDeposits,
               `return helpers.deposits({
                   protocolToken: await this.getProtocolToken(protocolTokenAddress),
@@ -231,15 +204,15 @@ export const Replacements = {
                   provider: this.provider,
                 })`,
             )
-            break
+
           default:
-            updatedTemplate = updatedTemplate.replace(
+            return updatedTemplate.replace(
               regexDeposits,
               'throw new NotImplementedError()',
             )
-            break
         }
       }
+
       return updatedTemplate
     },
   },
@@ -247,26 +220,25 @@ export const Replacements = {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (outcomes: Outcomes, updatedTemplate: string): string => {
       if (outcomes.unwrap) {
-        const regex = new RegExp('return Replacements.UNWRAP.placeholder', 'g')
+        const regex = /return Replacements.UNWRAP.placeholder/g
 
         switch (outcomes.unwrap) {
           case 'useOneToOneMethod':
-            updatedTemplate = updatedTemplate.replace(
+            return updatedTemplate.replace(
               regex,
               `return helpers.unwrapOneToOne({
                   protocolToken: await this.getProtocolToken(_input.protocolTokenAddress),
                   underlyingTokens: await this.getUnderlyingTokens(_input.protocolTokenAddress)
                 })`,
             )
-            break
           default:
-            updatedTemplate = updatedTemplate.replace(
+            return updatedTemplate.replace(
               regex,
               'throw new NotImplementedError()',
             )
-            break
         }
       }
+
       return updatedTemplate
     },
   },
@@ -274,27 +246,17 @@ export const Replacements = {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (outcomes: Outcomes, updatedTemplate: string): string => {
       if (outcomes.defiAssetStructure) {
-        const regex = new RegExp(
-          'return Replacements.ASSET_TYPE.placeholder',
-          'g',
-        )
+        const regex = /return Replacements.ASSET_TYPE.placeholder/
 
         switch (outcomes.defiAssetStructure) {
           case 'singleProtocolToken' || 'multipleProtocolTokens':
-            updatedTemplate = updatedTemplate.replace(
-              regex,
-              `AssetType.StandardErc20`,
-            )
-            break
+            return updatedTemplate.replace(regex, 'AssetType.StandardErc20')
 
           default:
-            updatedTemplate = updatedTemplate.replace(
-              regex,
-              `AssetType.NonStandardErc20`,
-            )
-            break
+            return updatedTemplate.replace(regex, 'AssetType.NonStandardErc20')
         }
       }
+
       return updatedTemplate
     },
   },
@@ -359,7 +321,7 @@ export const Replacements = {
 
         switch (outcomes.rewards) {
           case 'addRewards':
-            updatedTemplate = updatedTemplate.replace(
+            return updatedTemplate.replace(
               regexRewardPositions,
               `async getRewardPositions({
                   userAddress,
@@ -374,13 +336,11 @@ export const Replacements = {
                 }`,
             )
 
-            break
           default:
-            updatedTemplate = updatedTemplate.replace(regexRewardPositions, '')
-
-            break
+            return updatedTemplate.replace(regexRewardPositions, '')
         }
       }
+
       return updatedTemplate
     },
   },
@@ -396,29 +356,26 @@ export const Replacements = {
         const regexGetWithdrawalsFunctionName = RegExp(/getWithdrawals/, 'g')
         switch (outcomes.rewards) {
           case 'addRewards':
-            updatedTemplate = updatedTemplate.replace(
-              regexGetWithdrawalsFunctionName,
-              `getWithdrawalsWithoutRewards`,
-            )
-            updatedTemplate = updatedTemplate.replace(
-              regexRewardWithdrawals,
-              `async getRewardWithdrawals({
+            return updatedTemplate
+              .replace(
+                regexGetWithdrawalsFunctionName,
+                'getWithdrawalsWithoutRewards',
+              )
+              .replace(
+                regexRewardWithdrawals,
+                `async getRewardWithdrawals({
                   userAddress,
                   protocolTokenAddress,
                 }: GetEventsInput): Promise<MovementsByBlock[]> {
                   throw new NotImplementedError()
                 }`,
-            )
+              )
 
-            break
           default:
-            updatedTemplate = updatedTemplate.replace(
-              regexRewardWithdrawals,
-              '',
-            )
-            break
+            return updatedTemplate.replace(regexRewardWithdrawals, '')
         }
       }
+
       return updatedTemplate
     },
   },
@@ -430,25 +387,20 @@ export const Replacements = {
 
         switch (outcomes.rewards) {
           case 'addRewards':
-            updatedTemplate = updatedTemplate.replace(
-              regexGetPositionsFunctionName,
-              `getPositionsWithoutRewards`,
-            )
-            updatedTemplate = updatedTemplate.replace(
-              /implements/g,
-              `extends RewardsAdapter implements`,
-            )
-            updatedTemplate = updatedTemplate.replace(
-              /this.provider = provider/g,
-              `super()
+            return updatedTemplate
+              .replace(
+                regexGetPositionsFunctionName,
+                'getPositionsWithoutRewards',
+              )
+              .replace(/implements/g, 'extends RewardsAdapter implements')
+              .replace(
+                /this.provider = provider/g,
+                `super()
                 this.provider = provider`,
-            )
-
-            break
-          default:
-            break
+              )
         }
       }
+
       return updatedTemplate
     },
   },

@@ -1,30 +1,30 @@
-import { getAddress, WeiPerEther } from 'ethers'
+import { WeiPerEther, getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
+  AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  PositionType,
-  GetPositionsInput,
-  GetEventsInput,
-  MovementsByBlock,
-  GetTotalValueLockedInput,
-  ProtocolTokenTvl,
   ProtocolPosition,
-  AssetType,
+  ProtocolTokenTvl,
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { Savings, Savings__factory } from '../../contracts'
 
@@ -201,7 +201,7 @@ export class AngleProtocolSavingsAdapter
         blockTag: input.blockNumber,
       })
 
-      if (balance == 0n) {
+      if (balance === 0n) {
         return undefined
       }
 

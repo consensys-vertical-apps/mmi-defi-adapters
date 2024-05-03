@@ -1,4 +1,4 @@
-import { spawn } from 'child_process'
+import { spawn } from 'node:child_process'
 import { JsonRpcProvider, TransactionRequest, ethers } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'

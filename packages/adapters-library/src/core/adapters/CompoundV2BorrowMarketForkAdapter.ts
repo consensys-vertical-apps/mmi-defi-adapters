@@ -1,25 +1,25 @@
 import { LogDescription } from 'ethers'
 import { Protocol } from '../../adapters/protocols'
 import {
-  CompoundV2Comptroller__factory,
   CompoundV2Cerc20__factory,
+  CompoundV2Comptroller__factory,
 } from '../../contracts'
 import { BorrowEvent, RepayBorrowEvent } from '../../contracts/CompoundV2Cerc20'
+import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
   ProtocolAdapterParams,
   ProtocolDetails,
-  GetPositionsInput,
   ProtocolPosition,
-  TokenType,
-  GetEventsInput,
-  MovementsByBlock,
-  UnwrapInput,
-  UnwrapExchangeRate,
-  GetTotalValueLockedInput,
   ProtocolTokenTvl,
+  TokenType,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { IMetadataBuilder } from '../decorators/cacheToFile'

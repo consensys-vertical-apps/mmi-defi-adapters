@@ -36,7 +36,7 @@ class BaseError extends Error {
     const match = callerLine.match(/at\s+(?:new\s+)?([^\s]+)\s+\(/)
 
     // Return the matched "Class.method" or an empty string if not found
-    return match && match[1] ? match[1] : ''
+    return match?.[1] ? match[1] : ''
   }
 }
 

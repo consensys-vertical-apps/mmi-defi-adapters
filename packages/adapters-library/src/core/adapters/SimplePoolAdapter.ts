@@ -1,27 +1,27 @@
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
 import { TransferEvent } from '../../contracts/Erc20'
+import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
-  UnwrappedTokenExchangeRate,
-  Underlying,
   GetEventsInput,
   GetPositionsInput,
-  UnwrapInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   ProtocolAdapterParams,
   ProtocolDetails,
-  UnwrapExchangeRate,
   ProtocolPosition,
   ProtocolTokenTvl,
   TokenBalance,
   TokenType,
+  Underlying,
+  UnwrapExchangeRate,
+  UnwrapInput,
+  UnwrappedTokenExchangeRate,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { AdaptersController } from '../adaptersController'
-import { Chain } from '../constants/chains'
 import { ZERO_ADDRESS } from '../constants/ZERO_ADDRESS'
+import { Chain } from '../constants/chains'
 import { MaxMovementLimitExceededError } from '../errors/errors'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
@@ -77,7 +77,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
         })
         .catch(() => 0n) // contract might not be deployed at requested blockNumber
 
-      if (balanceOf == 0n) {
+      if (balanceOf === 0n) {
         return undefined
       }
 
@@ -218,7 +218,7 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
       const underlyingTokenBalances = filterMapAsync(
         underlyingTokens,
         async (underlyingToken) => {
-          if (underlyingToken.address == ZERO_ADDRESS) {
+          if (underlyingToken.address === ZERO_ADDRESS) {
             const balanceOf = await this.provider
               .getBalance(protocolToken.address, blockNumber)
               .catch(() => 0n)

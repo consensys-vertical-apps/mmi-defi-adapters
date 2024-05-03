@@ -7,7 +7,7 @@ export function bigintJsonParse(text: string) {
   })
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: Type could be narrower
 export function bigintJsonStringify(value: any, space?: number) {
   return JSON.stringify(
     value,

@@ -99,10 +99,10 @@ export class MulticallQueue {
         results = await this.multicallContract.aggregate3.staticCall(
           callsToProcess.map(({ callParams }) => callParams),
           {
-            blockTag: blockTag == LATEST ? undefined : blockTag,
+            blockTag: blockTag === LATEST ? undefined : blockTag,
           },
         )
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // biome-ignore lint/suspicious/noExplicitAny: Error is checked
       } catch (error: any) {
         callsToProcess.forEach(({ reject }) => {
           reject(
@@ -205,7 +205,7 @@ export class MulticallQueue {
       logger.error(callParams, 'Data is required when using MulticallQueue')
       throw new Error('Data is required when using MulticallQueue')
     }
-    const blockTagStr = blockTag ? '0x' + blockTag.toString(16) : LATEST
+    const blockTagStr = blockTag ? `0x${blockTag.toString(16)}` : LATEST
 
     return { to, data, blockTag: blockTagStr }
   }

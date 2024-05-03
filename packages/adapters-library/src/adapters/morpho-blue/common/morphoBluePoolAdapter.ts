@@ -9,27 +9,32 @@ import { filterMapAsync } from '../../../core/utils/filters'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
-  GetPositionsInput,
   GetEventsInput,
+  GetPositionsInput,
   GetTotalValueLockedInput,
-  UnwrapInput,
   MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  UnwrapExchangeRate,
-  ProtocolTokenTvl,
   ProtocolPosition,
+  ProtocolTokenTvl,
   TokenType,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
 import { MarketParamsStruct, MarketStruct } from '../contracts/AdaptiveCurveIrm'
+import { SupplyEvent } from '../contracts/MorphoBlue'
+import {
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+} from '../contracts/common'
 import {
   AdaptiveCurveIrm__factory,
   MorphoBlue__factory,
 } from '../contracts/factories'
-import { MarketParams, MarketData } from '../internal-utils/Blue'
+import { MarketData, MarketParams } from '../internal-utils/Blue'
 import { MorphoBlueMath } from '../internal-utils/MorphoBlue.maths'
 
 type MorphoBlueAdapterMetadata = Record<
@@ -158,11 +163,11 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
 
   // get the market token metadata
   private async _fetchMarketMetadata(id: string) {
-    id = id.toLowerCase()
-    const marketMetadata = (await this.buildMetadata())[id]
+    const lowerCaseId = id.toLowerCase()
+    const marketMetadata = (await this.buildMetadata())[lowerCaseId]
 
     if (!marketMetadata) {
-      logger.error({ id }, 'id market not found')
+      logger.error({ id: lowerCaseId }, 'id market not found')
       throw new Error('id market not found')
     }
 
@@ -546,7 +551,13 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
     const protocolToken = await this._fetchTokenMetadata(tokenId)
     const underlyingToken = await this._fetchLoanTokenMetadata(tokenId)
 
-    let filter
+    let filter: TypedDeferredTopicFilter<
+      TypedContractEvent<
+        SupplyEvent.InputTuple,
+        SupplyEvent.OutputTuple,
+        SupplyEvent.OutputObject
+      >
+    >
     switch (eventType) {
       case 'supplied':
         filter = morphoBlue.filters.Supply(tokenId, undefined, userAddress)

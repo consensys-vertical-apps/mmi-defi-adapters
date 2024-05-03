@@ -1,8 +1,8 @@
 import { FetchRequest, Network } from 'ethers'
 import { IConfig } from '../../config'
 import { Multicall__factory } from '../../contracts'
-import { Chain } from '../constants/chains'
 import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
+import { Chain } from '../constants/chains'
 import { logger } from '../utils/logger'
 import {
   CustomJsonRpcProvider,
@@ -43,7 +43,7 @@ export class ChainProvider {
     }
 
     if (!enableMulticallQueue) {
-      logger.debug({ chainId }, `Using standard provider`)
+      logger.debug({ chainId }, 'Using standard provider')
       return new CustomJsonRpcProvider({
         fetchRequest,
         chainId,

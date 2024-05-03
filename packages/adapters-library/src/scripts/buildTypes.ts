@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import { Command } from 'commander'
 import { parse, print, types, visit } from 'recast'
 import { glob, runTypeChain } from 'typechain'
@@ -264,7 +264,8 @@ async function addImportsAndSchemas(
   export const GetTransactionParamsSchema = z.union([${schemas.join(',')}])
   `
 
-  const schemaTypeExportStatement = `export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>;`
+  const schemaTypeExportStatement =
+    'export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>;'
 
   await writeCodeFile(
     adaptersFile,

@@ -1,4 +1,4 @@
-import { Underlying, MovementsByBlock } from '../../types/adapter'
+import { MovementsByBlock, Underlying } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { logger } from './logger'
 
@@ -55,7 +55,7 @@ export function aggregateFiatBalancesFromMovements(
     if (
       !price &&
       price !== 0n &&
-      (!currentToken.tokens || currentToken.tokens.length == 0)
+      (!currentToken.tokens || currentToken.tokens.length === 0)
     ) {
       logger.warn(
         `Unable to calculate profits, missing USD price for token movement: ${currentToken.address}`,

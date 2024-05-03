@@ -1,9 +1,9 @@
 export function Profiling(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: Decorator code
   originalMethod: (input: any) => unknown,
   context: ClassMethodDecoratorContext,
 ) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: Decorator code
   async function replacementMethod(this: any, input: any) {
     const key = JSON.stringify({
       methodName: context.name,

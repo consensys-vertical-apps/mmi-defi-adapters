@@ -1,5 +1,5 @@
-import { promises as fs } from 'fs'
-import path from 'path'
+import { promises as fs } from 'node:fs'
+import path from 'node:path'
 import { Command } from 'commander'
 import { parse, print, types, visit } from 'recast'
 import { Protocol } from '../adapters/protocols'

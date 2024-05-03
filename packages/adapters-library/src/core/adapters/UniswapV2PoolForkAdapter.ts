@@ -4,8 +4,8 @@ import {
 } from '../../contracts'
 import {
   TokenBalance,
-  Underlying,
   TokenType,
+  Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'

@@ -1,19 +1,19 @@
 import { getAddress } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
 import { TransferEvent } from '../../../../contracts/Erc20'
-import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { Chain } from '../../../../core/constants/chains'
 import { IMetadataBuilder } from '../../../../core/decorators/cacheToFile'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  ProtocolDetails,
-  PositionType,
+  AssetType,
+  GetEventsInput,
   GetPositionsInput,
+  MovementsByBlock,
+  PositionType,
+  ProtocolDetails,
   ProtocolPosition,
   TokenType,
-  GetEventsInput,
-  MovementsByBlock,
-  AssetType,
   Underlying,
 } from '../../../../types/adapter'
 import { GaugeType } from '../../common/getPoolData'
@@ -66,9 +66,8 @@ export class CurveRewardAdapter
   minterAddress() {
     if (this.chainId === Chain.Ethereum) {
       return '0xd061D61a4d941c39E5453435B6345Dc261C2fcE0'
-    } else {
-      return '0xabc000d88f23bb45525e447528dbf656a9d55bf5'
     }
+    return '0xabc000d88f23bb45525e447528dbf656a9d55bf5'
   }
 
   async getPositions({
@@ -158,7 +157,7 @@ export class CurveRewardAdapter
                 const address = await contract.reward_tokens(i, {
                   blockTag: blockNumber,
                 })
-                if (address == ZERO_ADDRESS) return
+                if (address === ZERO_ADDRESS) return
                 const balanceRaw = await contract.claimable_reward(
                   userAddress,
                   address,
@@ -244,7 +243,7 @@ export class CurveRewardAdapter
       await Promise.all(
         Array.from({ length: 4 }).map(async (_, i) => {
           const address = await contract.reward_tokens(i)
-          if (address == ZERO_ADDRESS) return
+          if (address === ZERO_ADDRESS) return
 
           const claimed = await Erc20__factory.connect(address, this.provider)
           const filter = claimed.filters.Transfer(

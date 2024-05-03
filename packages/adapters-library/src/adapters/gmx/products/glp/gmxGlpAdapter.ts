@@ -1,30 +1,30 @@
 import { getAddress } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  ProtocolDetails,
-  PositionType,
-  GetEventsInput,
-  MovementsByBlock,
-  GetTotalValueLockedInput,
-  ProtocolTokenTvl,
-  TokenType,
-  UnwrapInput,
-  GetPositionsInput,
-  ProtocolPosition,
-  UnwrapExchangeRate,
-  TokenBalance,
-  Underlying,
-  UnwrappedTokenExchangeRate,
   AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  PositionType,
+  ProtocolDetails,
+  ProtocolPosition,
+  ProtocolTokenTvl,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrapExchangeRate,
+  UnwrapInput,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {

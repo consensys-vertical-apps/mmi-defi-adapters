@@ -1,23 +1,23 @@
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
-  ProtocolDetails,
-  PositionType,
+  AssetType,
   GetTotalValueLockedInput,
+  PositionType,
+  ProtocolDetails,
   ProtocolTokenTvl,
-  UnwrappedTokenExchangeRate,
   TokenBalance,
   Underlying,
-  AssetType,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Cerc20__factory, Comptroller__factory } from '../../contracts'

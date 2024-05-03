@@ -2,22 +2,31 @@
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "formatter": {
     "enabled": true,
-	"indentStyle": "space",
-	"indentWidth": 2,
-    "ignore": [
-      "packages/adapters-library/src/**/contracts/**"
-    ]
+    "indentStyle": "space",
+    "indentWidth": 2
   },
   "organizeImports": { "enabled": true },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "suspicious": {
+        "noRedeclare": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "useImportType": "off",
+        "useExponentiationOperator": "off"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "useLiteralKeys": "off"
+      },
+      "performance": {
+        "noAccumulatingSpread": "off"
+      }
     },
-    "ignore": [
-      "packages/adapters-library/src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts",
-      "rebuild-and-restart.js"
-    ]
+    "ignore": ["rebuild-and-restart.js"]
   },
   "javascript": {
     "formatter": {

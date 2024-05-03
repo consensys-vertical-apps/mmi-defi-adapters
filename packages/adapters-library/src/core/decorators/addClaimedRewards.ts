@@ -1,5 +1,5 @@
-import { GetEventsInput } from '../../types/adapter'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { GetEventsInput } from '../../types/adapter'
 import { SimplePoolAdapter } from '../adapters/SimplePoolAdapter'
 
 export function AddClaimedRewards({
@@ -26,7 +26,7 @@ export function AddClaimedRewards({
           )
 
           const isSupported = (await rewardAdapter.getProtocolTokens()).find(
-            (token) => token.address == input.protocolTokenAddress,
+            (token) => token.address === input.protocolTokenAddress,
           )
 
           if (!isSupported) {

@@ -3,30 +3,30 @@ import { Erc20__factory } from '../../../../contracts'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { logger } from '../../../../core/utils/logger'
 import { helpers } from '../../../../scripts/helpers'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
+  AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  PositionType,
-  GetPositionsInput,
   ProtocolPosition,
-  GetEventsInput,
-  MovementsByBlock,
-  GetTotalValueLockedInput,
   ProtocolTokenTvl,
-  UnwrapInput,
-  UnwrapExchangeRate,
-  AssetType,
   TokenType,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 
 type Metadata = Record<

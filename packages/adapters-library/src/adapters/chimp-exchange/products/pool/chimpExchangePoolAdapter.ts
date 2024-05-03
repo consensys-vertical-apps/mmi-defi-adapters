@@ -2,29 +2,29 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
-  ProtocolDetails,
-  PositionType,
-  GetTotalValueLockedInput,
-  TokenBalance,
-  ProtocolTokenTvl,
-  UnwrappedTokenExchangeRate,
-  Underlying,
-  GetEventsInput,
-  TokenType,
-  MovementsByBlock,
   AssetType,
+  GetEventsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  PositionType,
+  ProtocolDetails,
+  ProtocolTokenTvl,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
-  Vault__factory,
   BalancerPoolDataQueries__factory,
+  Vault__factory,
 } from '../../contracts'
 import { PoolBalanceChangedEvent } from '../../contracts/Vault'
 

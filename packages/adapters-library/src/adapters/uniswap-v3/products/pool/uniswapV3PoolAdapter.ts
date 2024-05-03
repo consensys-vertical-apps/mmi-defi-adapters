@@ -7,22 +7,22 @@ import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcPr
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
+  AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  PositionType,
-  GetPositionsInput,
-  GetEventsInput,
-  MovementsByBlock,
-  GetTotalValueLockedInput,
-  UnwrapInput,
-  UnwrapExchangeRate,
-  ProtocolTokenTvl,
   ProtocolPosition,
+  ProtocolTokenTvl,
+  TokenBalance,
   TokenType,
   Underlying,
-  TokenBalance,
+  UnwrapExchangeRate,
+  UnwrapInput,
   UnwrappedTokenExchangeRate,
-  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
@@ -156,7 +156,7 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
           blockTag: blockNumber,
         })
 
-        if (position.liquidity == 0n) {
+        if (position.liquidity === 0n) {
           return undefined
         }
 

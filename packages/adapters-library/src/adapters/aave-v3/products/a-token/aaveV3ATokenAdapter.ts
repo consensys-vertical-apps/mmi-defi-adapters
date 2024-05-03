@@ -7,8 +7,8 @@ import {
   ProtocolDetails,
 } from '../../../../types/adapter'
 import {
-  WriteActions,
   WriteActionInputSchemas,
+  WriteActions,
 } from '../../../../types/writeActions'
 import { AaveBasePoolAdapter } from '../../../aave-v2/common/aaveBasePoolAdapter'
 import { ProtocolDataProvider } from '../../../aave-v2/contracts'
@@ -108,7 +108,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
 }
 
 const getAddress = (chainId: Chain) => {
-  if (chainId == Chain.Ethereum) {
+  if (chainId === Chain.Ethereum) {
     return '0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2'
   }
 

@@ -56,7 +56,7 @@ class Helpers {
         })
         .catch(() => 0n) // contract might not be deployed at requested blockNumber
 
-      if (balanceOf == 0n) {
+      if (balanceOf === 0n) {
         return undefined
       }
 
@@ -208,7 +208,7 @@ class Helpers {
   ): Promise<Erc20Metadata> {
     if (
       getAddress(tokenAddress) === REAL_ESTATE_TOKEN_METADATA.address &&
-      chainId == Chain.Ethereum
+      chainId === Chain.Ethereum
     ) {
       return REAL_ESTATE_TOKEN_METADATA
     }
