@@ -1,33 +1,33 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { provider } from './defiProvider'
-import { ChainName, TimePeriod } from '@metamask-institutional/defi-adapters'
+import { Button } from '@/components/ui/button'
 import {
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
 } from '@/components/ui/card'
-import { DefiProfitsResponse } from '@metamask-institutional/defi-adapters/dist/types/response'
+import { Input } from '@/components/ui/input'
 import {
   Table,
-  TableHeader,
-  TableRow,
-  TableHead,
   TableBody,
   TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from '@/components/ui/table'
-import { useState } from 'react'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { JsonDisplay } from './JsonDisplay'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { ChainName, TimePeriod } from '@metamask-institutional/defi-adapters'
+import { DefiProfitsResponse } from '@metamask-institutional/defi-adapters/dist/types/response'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { JsonDisplay } from './JsonDisplay'
+import { provider } from './defiProvider'
 
 export function Profits() {
   const queryClient = useQueryClient()
@@ -96,7 +96,7 @@ function ProfitsDisplay({
 
   if (isPending || isFetching || isRefetching) return 'Loading...'
 
-  if (error) return 'An error has occurred: ' + error.message
+  if (error) return `An error has occurred: ${error.message}`
 
   const successfulResults = data.filter(
     (adapterResult): adapterResult is DefiProfitsResponse & { success: true } =>
@@ -105,7 +105,7 @@ function ProfitsDisplay({
 
   const groupedResults = successfulResults.reduce(
     (acc, adapterResult) => {
-      const key = adapterResult.protocolId + '#' + adapterResult.chainId
+      const key = `${adapterResult.protocolId}#${adapterResult.chainId}`
       if (!acc[key]) {
         acc[key] = []
       }

@@ -27,7 +27,7 @@ jobs:
       - name: Verify tsc config
         run: npm run test:tsc
 
-      - name: Verify eslint config
+      - name: Verify there are no linting and formatting errors
         run: npm run lint
 
       - name: Build
@@ -108,13 +108,14 @@ jobs:
       - name: Run tests
         run: npm run test:cov
         env:
-          ETHEREUM_PROVIDER_URL: ${{ secrets.ETHEREUM_PROVIDER_URL }}
-          OPTIMISM_PROVIDER_URL: ${{ secrets.OPTIMISM_PROVIDER_URL }}
-          BSC_PROVIDER_URL: ${{ secrets.BSC_PROVIDER_URL }}
-          POLYGON_PROVIDER_URL: ${{ secrets.POLYGON_PROVIDER_URL }}
-          FANTOM_PROVIDER_URL: ${{ secrets.FANTOM_PROVIDER_URL }}
-          BASE_PROVIDER_URL: ${{ secrets.BASE_PROVIDER_URL }}
-          ARBITRUM_PROVIDER_URL: ${{ secrets.ARBITRUM_PROVIDER_URL }}
-          AVALANCHE_PROVIDER_URL: ${{ secrets.AVALANCHE_PROVIDER_URL }}
-          LINEA_PROVIDER_URL: ${{ secrets.LINEA_PROVIDER_URL }}
-          ENABLE_MULTICALL_QUEUE: true
+          DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_BSC: ${{ secrets.BSC_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_POLYGON: ${{ secrets.POLYGON_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_FANTOM: ${{ secrets.FANTOM_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_BASE: ${{ secrets.BASE_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_ARBITRUM: ${{ secrets.ARBITRUM_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
+          DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
+          DEFI_ADAPTERS_USE_MULTICALL_INTERCEPTOR: true
+          DEFI_ADAPTERS_LOG_LEVEL: warn

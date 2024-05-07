@@ -1,35 +1,40 @@
 import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../core/adaptersController'
-import { Chain } from '../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
+import { Chain } from '../../../core/constants/chains'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
-  GetPositionsInput,
   GetEventsInput,
+  GetPositionsInput,
   GetTotalValueLockedInput,
-  UnwrapInput,
   MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  UnwrapExchangeRate,
-  ProtocolTokenTvl,
   ProtocolPosition,
+  ProtocolTokenTvl,
   TokenBalance,
   TokenType,
   Underlying,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'
 import {
-  MorphoAaveV2__factory,
   AToken__factory,
   MorphoAaveV2Lens__factory,
+  MorphoAaveV2__factory,
 } from '../contracts'
+import { SuppliedEvent } from '../contracts/MorphoAaveV2'
+import {
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+} from '../contracts/common'
 
 type MorphoAaveV2PeerToPoolAdapterMetadata = Record<
   string,
@@ -181,7 +186,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       userAddress: string,
       blockNumber: number,
     ): Promise<bigint> => {
-      let balanceRaw
+      let balanceRaw: bigint
       if (positionType === PositionType.Supply) {
         ;[, , balanceRaw] = await lensContract.getCurrentSupplyBalanceInOf(
           market.address,
@@ -317,7 +322,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     const positionType = this.getProtocolDetails().positionType
     return Promise.all(
       tokens.map(async (tokenMetadata) => {
-        let totalValueRaw
+        let totalValueRaw: bigint
 
         if (positionType === PositionType.Supply) {
           const [poolSupply, p2pSupply] =
@@ -368,7 +373,13 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       this.provider,
     )
 
-    let filter
+    let filter: TypedDeferredTopicFilter<
+      TypedContractEvent<
+        SuppliedEvent.InputTuple,
+        SuppliedEvent.OutputTuple,
+        SuppliedEvent.OutputObject
+      >
+    >
     switch (eventType) {
       case 'supplied':
         filter = morphoAaveV2Contract.filters.Supplied(

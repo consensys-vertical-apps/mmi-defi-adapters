@@ -1,5 +1,5 @@
-import { promises as fs } from 'fs'
-import path from 'path'
+import { promises as fs } from 'node:fs'
+import path from 'node:path'
 import { ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
@@ -396,7 +396,7 @@ async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
   )
 
   return bigintJsonParse(expectedString) as {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: Type could be narrower
     snapshot: any
     blockNumber?: number
   }

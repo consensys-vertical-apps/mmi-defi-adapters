@@ -1,3 +1,0 @@
-packages/adapters-library/src/**/contracts/*
-!packages/adapters-library/src/**/contracts/abis/
-packages/adapters-library/src/**/contracts/abis/*/*

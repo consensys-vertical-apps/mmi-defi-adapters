@@ -1,17 +1,17 @@
 import { formatUnits } from 'ethers'
 import { priceAdapterConfig } from '../adapters/prices-v2/products/usd/priceV2Config'
 import { enrichMovements, enrichPositionBalance } from '../responseAdapters'
+import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import {
-  ProfitsWithRange,
   GetEventsInput,
-  PositionType,
-  TokenType,
   MovementsByBlock,
+  PositionType,
+  ProfitsWithRange,
   ProtocolPosition,
+  TokenType,
   Underlying,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
-import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { aggregateFiatBalances } from './utils/aggregateFiatBalances'
 import { aggregateFiatBalancesFromMovements } from './utils/aggregateFiatBalancesFromMovements'
 import { calculateDeFiAttributionPerformance } from './utils/calculateDeFiAttributionPerformance'
@@ -34,8 +34,8 @@ export async function getProfits({
   tokenIds?: string[]
   includeRawValues?: boolean
 }): Promise<ProfitsWithRange> {
-  let endPositionValues: ReturnType<typeof aggregateFiatBalances>,
-    startPositionValues: ReturnType<typeof aggregateFiatBalances>
+  let endPositionValues: ReturnType<typeof aggregateFiatBalances>
+  let startPositionValues: ReturnType<typeof aggregateFiatBalances>
 
   let rawEndPositionValues: ProtocolPosition[]
 

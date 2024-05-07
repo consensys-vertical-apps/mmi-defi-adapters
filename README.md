@@ -86,6 +86,8 @@ To build an adapter follow these steps:
    - `npm run deposits 0x30cb2c51fc4f031fa5f326d334e1f5da00e19ab5 18262162 18262164 0xC36442b4a4522E871399CD717aBDD847Ab11FE88 pool uniswap-v3 1 573046`
    - `npm run withdrawals 0x4Ffc5F22770ab6046c8D66DABAe3A9CD1E7A03e7 17979753 17979755 0xdf0770df86a8034b3efef0a1bb3c889b8332ff56 pool stargate 1`
 
+Note: For automatic file formatting in vscode, install the [biome extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome)
+
 ## Adapter Templates for Forks of Popular Protocols
 
 We supply a set of templates that can be used for forks of popular protocols and products.

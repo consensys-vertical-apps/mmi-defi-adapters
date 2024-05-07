@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+import { promises as fs } from 'node:fs'
 import { Command } from 'commander'
 import EthDater from 'ethereum-block-by-date'
 import { ethers } from 'ethers'
@@ -69,7 +69,7 @@ async function getAverageBlocksPerDay(
   }
 
   // EthDater types throw when using an ethersv6 provider, it is supported though
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: We are using ethersv6, but it requires an ethersv5 object
   const dater = new EthDater(provider as any)
 
   // 30 days * 24 hours/day * 60 minutes/hour * 60 seconds/minute

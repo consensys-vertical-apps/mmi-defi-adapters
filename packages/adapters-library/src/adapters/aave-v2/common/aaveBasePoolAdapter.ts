@@ -5,10 +5,10 @@ import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
-  UnwrappedTokenExchangeRate,
-  Underlying,
   TokenBalance,
   TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { Protocol } from '../../protocols'

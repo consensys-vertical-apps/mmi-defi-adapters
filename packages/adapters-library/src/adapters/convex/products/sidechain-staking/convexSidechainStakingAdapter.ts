@@ -6,23 +6,23 @@ import {
 } from '../../../../core/adapters/LpStakingProtocolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
+  AssetType,
   GetEventsInput,
   GetPositionsInput,
-  MovementsByBlock,
-  ProtocolPosition,
-  TokenType,
   GetPositionsInputWithTokenAddresses,
-  AssetType,
+  MovementsByBlock,
   PositionType,
   ProtocolDetails,
+  ProtocolPosition,
+  TokenType,
 } from '../../../../types/adapter'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import {

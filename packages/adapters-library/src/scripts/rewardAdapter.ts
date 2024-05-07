@@ -1,8 +1,8 @@
 import {
-  GetPositionsInput,
-  ProtocolPosition,
   GetEventsInput,
+  GetPositionsInput,
   MovementsByBlock,
+  ProtocolPosition,
   Underlying,
 } from '../types/adapter'
 import { Helpers } from './helpers'

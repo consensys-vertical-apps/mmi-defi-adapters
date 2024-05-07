@@ -29,7 +29,7 @@ export async function getTokenMetadata(
    */
   if (
     getAddress(tokenAddress) === REAL_ESTATE_TOKEN_METADATA.address &&
-    chainId == Chain.Ethereum
+    chainId === Chain.Ethereum
   ) {
     return REAL_ESTATE_TOKEN_METADATA
   }

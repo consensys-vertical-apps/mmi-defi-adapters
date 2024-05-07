@@ -1,4 +1,4 @@
-import { Underlying, ProtocolPosition } from '../../types/adapter'
+import { ProtocolPosition, Underlying } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { logger } from './logger'
 
@@ -62,7 +62,7 @@ export function aggregateFiatBalances(
     if (
       !price &&
       price !== 0n &&
-      (!currentToken.tokens || currentToken.tokens.length == 0)
+      (!currentToken.tokens || currentToken.tokens.length === 0)
     ) {
       logger.warn(
         `Unable to calculate profits, missing USD price for token position ${currentToken.address}`,

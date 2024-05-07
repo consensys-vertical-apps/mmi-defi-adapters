@@ -16,19 +16,11 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md",
-    "readme-assets/**"
-  ],
+  "files": ["dist", "CHANGELOG.md", "LICENSE", "README.md", "readme-assets/**"],
   "sideEffects": false,
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
-    "fix": "eslint \"src/**/*.ts\" --fix",
-    "lint": "eslint \"src/**/*.ts\"",
     "test": "jest",
     "test:update:adapter-snapshot": "jest src/scripts/generateAdapter.test.ts -u",
     "test:tsc": "tsc --noEmit -p tsconfig.json",

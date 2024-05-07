@@ -3,9 +3,9 @@ import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/Com
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
-  ProtocolDetails,
-  PositionType,
   AssetType,
+  PositionType,
+  ProtocolDetails,
 } from '../../../../types/adapter'
 import {
   WriteActionInputSchemas,

@@ -5,19 +5,19 @@ import {
 } from '../../../../core/adapters/LpStakingProtocolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  ProtocolDetails,
-  PositionType,
   AssetType,
   GetEventsInput,
   GetPositionsInput,
   MovementsByBlock,
+  PositionType,
+  ProtocolDetails,
   ProtocolPosition,
 } from '../../../../types/adapter'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'

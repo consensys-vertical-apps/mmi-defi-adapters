@@ -4,15 +4,15 @@ import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
 import { Helpers } from '../scripts/helpers'
 import type {
-  ProtocolDetails,
-  GetPositionsInput,
-  ProtocolPosition,
-  UnwrapInput,
-  UnwrapExchangeRate,
   GetEventsInput,
-  MovementsByBlock,
+  GetPositionsInput,
   GetTotalValueLockedInput,
+  MovementsByBlock,
+  ProtocolDetails,
+  ProtocolPosition,
   ProtocolTokenTvl,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from './adapter'
 import type { Erc20Metadata } from './erc20Metadata'
 

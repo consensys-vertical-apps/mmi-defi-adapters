@@ -9,7 +9,7 @@ export function retryHandlerFactory({
 }) {
   return async function retryHandler<T>(
     action: () => Promise<T>,
-    retryCount: number = 0,
+    retryCount = 0,
   ): Promise<T> {
     try {
       return await new Promise<T>((resolve, reject) => {

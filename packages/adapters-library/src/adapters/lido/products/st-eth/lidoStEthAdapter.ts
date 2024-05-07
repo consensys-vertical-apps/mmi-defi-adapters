@@ -3,13 +3,13 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
-  ProtocolDetails,
+  AssetType,
   PositionType,
-  TokenType,
+  ProtocolDetails,
   TokenBalance,
+  TokenType,
   Underlying,
   UnwrappedTokenExchangeRate,
-  AssetType,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 

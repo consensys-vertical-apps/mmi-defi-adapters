@@ -1,24 +1,24 @@
 import { ZeroAddress, getAddress } from 'ethers'
 import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
-import { Chain } from '../../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
+import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
-  ProtocolDetails,
-  PositionType,
   GetTotalValueLockedInput,
-  TokenBalance,
+  PositionType,
+  ProtocolDetails,
   ProtocolTokenTvl,
-  UnwrappedTokenExchangeRate,
-  Underlying,
+  TokenBalance,
   TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { XfaiFactory__factory, XfaiPool__factory } from '../../contracts'
@@ -129,7 +129,7 @@ export class XfaiDexAdapter
     const poolMeta = await this.fetchPoolMetadata(poolAddress)
 
     const nonEthToken = poolMeta.underlyingTokens.find(
-      (t) => t.address != ZERO_ADDRESS,
+      (t) => t.address !== ZERO_ADDRESS,
     )!
 
     const [totalSupply, [tokenAmount, ethAmount]] = await Promise.all([
@@ -169,7 +169,7 @@ export class XfaiDexAdapter
         const underlyingTokenBalances = filterMapAsync(
           underlyingTokens,
           async (underlyingToken: Erc20Metadata) => {
-            if (underlyingToken.address == ZERO_ADDRESS) {
+            if (underlyingToken.address === ZERO_ADDRESS) {
               const balanceOf = await this.provider
                 .getBalance(protocolToken.address, blockNumber)
                 .catch(() => 0n)
@@ -230,7 +230,7 @@ export class XfaiDexAdapter
     const poolMeta = await this.fetchPoolMetadata(poolAddress)
 
     const nonEthToken = poolMeta.underlyingTokens.find(
-      (t) => t.address != ZERO_ADDRESS,
+      (t) => t.address !== ZERO_ADDRESS,
     )!
 
     const [totalSupply, [tokenAmount, ethAmount]] = await Promise.all([

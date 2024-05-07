@@ -5,9 +5,9 @@ import {
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
-  ProtocolDetails,
-  PositionType,
   AssetType,
+  PositionType,
+  ProtocolDetails,
 } from '../../../../types/adapter'
 
 export class SushiswapV2PoolAdapter extends UniswapV2PoolForkAdapter {

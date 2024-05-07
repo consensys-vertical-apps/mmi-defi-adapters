@@ -2,13 +2,13 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import {
-  ProtocolDetails,
+  AssetType,
   PositionType,
+  ProtocolDetails,
   TokenBalance,
   TokenType,
-  UnwrappedTokenExchangeRate,
   Underlying,
-  AssetType,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { SwEth__factory } from '../../contracts'

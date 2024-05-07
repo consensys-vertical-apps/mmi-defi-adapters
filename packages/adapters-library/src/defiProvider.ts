@@ -14,23 +14,23 @@ import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { logger } from './core/utils/logger'
 import { unwrap } from './core/utils/unwrap'
 import {
-  enrichPositionBalance,
-  enrichUnwrappedTokenExchangeRates,
   enrichMovements,
+  enrichPositionBalance,
   enrichTotalValueLocked,
+  enrichUnwrappedTokenExchangeRates,
 } from './responseAdapters'
+import { IProtocolAdapter } from './types/IProtocolAdapter'
 import { PositionType } from './types/adapter'
 import { DeepPartial } from './types/deepPartial'
-import { IProtocolAdapter } from './types/IProtocolAdapter'
 import {
+  AdapterErrorResponse,
   AdapterResponse,
   DefiMovementsResponse,
   DefiPositionResponse,
   DefiProfitsResponse,
-  AdapterErrorResponse,
+  GetEventsRequestInput,
   PricePerShareResponse,
   TotalValueLockResponse,
-  GetEventsRequestInput,
 } from './types/response'
 
 export class DefiProvider {
@@ -611,7 +611,7 @@ export class DefiProvider {
               )
 
             if (
-              method == 'getPositions' &&
+              method === 'getPositions' &&
               !this.parsedConfig.values.enableUsdPricesOnPositions
             ) {
               chainProtocolAdapters =

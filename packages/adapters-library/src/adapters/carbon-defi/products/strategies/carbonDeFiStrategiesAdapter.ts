@@ -3,23 +3,23 @@ import { Chain } from '../../../../core/constants/chains'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
+  AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  PositionType,
-  GetPositionsInput,
-  GetEventsInput,
-  MovementsByBlock,
-  GetTotalValueLockedInput,
-  UnwrapInput,
-  UnwrapExchangeRate,
-  ProtocolTokenTvl,
   ProtocolPosition,
+  ProtocolTokenTvl,
   TokenType,
-  AssetType,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { CarbonController__factory, Voucher__factory } from '../../contracts'
 import {
@@ -172,7 +172,9 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     if (!tokenId) {
       throw new Error('TokenId required to get CarbonDeFi withdrawals')
-    } else if (!contractAddresses[this.chainId]) {
+    }
+
+    if (!contractAddresses[this.chainId]) {
       return []
     }
 
@@ -195,7 +197,9 @@ export class CarbonDeFiStrategiesAdapter implements IProtocolAdapter {
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     if (!tokenId) {
       throw new Error('TokenId required to get CarbonDeFi withdrawals')
-    } else if (!contractAddresses[this.chainId]) {
+    }
+
+    if (!contractAddresses[this.chainId]) {
       return []
     }
 

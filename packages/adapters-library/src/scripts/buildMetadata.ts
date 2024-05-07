@@ -1,5 +1,5 @@
-import { promises as fs } from 'fs'
-import path from 'path'
+import { promises as fs } from 'node:fs'
+import path from 'node:path'
 import { Command } from 'commander'
 import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
@@ -92,7 +92,7 @@ export function buildMetadata(
     })
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: type of value is asserted in method
 function isIMetadataBuilder(value: any): value is IMetadataBuilder {
   return (
     typeof value === 'object' &&

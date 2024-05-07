@@ -3,21 +3,21 @@ import { Erc20__factory } from '../../../../contracts'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { logger } from '../../../../core/utils/logger'
 import {
-  ProtocolDetails,
-  PositionType,
-  GetTotalValueLockedInput,
-  TokenBalance,
-  ProtocolTokenTvl,
-  UnwrappedTokenExchangeRate,
-  Underlying,
-  TokenType,
   AssetType,
+  GetTotalValueLockedInput,
+  PositionType,
+  ProtocolDetails,
+  ProtocolTokenTvl,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { queryCurvePools } from '../../common/getPoolData'
@@ -123,7 +123,7 @@ export class CurvePoolAdapter
 
     const balances = await Promise.all(
       underlyingTokens.map(async (token) => {
-        if (token.address == '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE') {
+        if (token.address === '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE') {
           return this.provider.getBalance(lpTokenManager, blockNumber)
         }
 

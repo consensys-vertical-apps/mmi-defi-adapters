@@ -73,10 +73,10 @@ export class MorphoAaveMath {
     poolSupplyRate: bigint,
     poolBorrowRate: bigint,
     p2pIndexCursor: bigint,
-    reserveFactor: bigint = 0n,
-    supplyProportionDelta: bigint = 0n,
-    borrowProportionDelta: bigint = 0n,
-    proportionIdle: bigint = 0n,
+    reserveFactor = 0n,
+    supplyProportionDelta = 0n,
+    borrowProportionDelta = 0n,
+    proportionIdle = 0n,
   ) {
     const midRate = this._computeMidRate(
       poolSupplyRate,
@@ -142,10 +142,10 @@ export class MorphoAaveMath {
     poolSupplyRate: bigint,
     poolBorrowRate: bigint,
     p2pIndexCursor: bigint,
-    supplyProportionDelta: bigint = 0n,
-    borrowProportionDelta: bigint = 0n,
-    proportionIdle: bigint = 0n,
-    reserveFactor: bigint = 0n,
+    supplyProportionDelta = 0n,
+    borrowProportionDelta = 0n,
+    proportionIdle = 0n,
+    reserveFactor = 0n,
   ) {
     const { p2pBorrowRate, p2pSupplyRate } = this._computeP2PRates(
       poolSupplyRate,

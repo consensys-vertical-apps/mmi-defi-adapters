@@ -4,15 +4,15 @@ import type {
   MovementsByBlock,
   ProfitsWithRange,
   ProtocolDetails,
-  UnwrapExchangeRate,
   ProtocolPosition,
   ProtocolTokenTvl,
-  Underlying,
-  UnwrappedTokenExchangeRate,
-  UnderlyingTokenTvl,
-  TokenType,
   TokenBalance,
   TokenTvl,
+  TokenType,
+  Underlying,
+  UnderlyingTokenTvl,
+  UnwrapExchangeRate,
+  UnwrappedTokenExchangeRate,
 } from './adapter'
 import { WriteActions } from './writeActions'
 
@@ -30,7 +30,7 @@ export type GetEventsRequestInput = {
 export type AdapterErrorResponse = {
   error: {
     message: string
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: We don't know the type
     details?: any
   }
 }

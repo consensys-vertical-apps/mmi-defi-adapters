@@ -1,24 +1,24 @@
 import { Protocol } from '../../adapters/protocols'
 import { Erc20__factory } from '../../contracts'
+import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
   ProtocolAdapterParams,
   ProtocolDetails,
-  GetPositionsInput,
-  Underlying,
-  TokenType,
-  UnwrapInput,
   ProtocolPosition,
-  GetEventsInput,
-  MovementsByBlock,
-  GetTotalValueLockedInput,
   ProtocolTokenTvl,
+  TokenType,
+  Underlying,
   UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
-import { IMetadataBuilder, CacheToFile } from '../decorators/cacheToFile'
+import { CacheToFile, IMetadataBuilder } from '../decorators/cacheToFile'
 import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { getErc20Movements } from '../utils/erc20Movements'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
@@ -245,7 +245,7 @@ export abstract class VotingEscrow
       protocolTokenPromise,
     ])
 
-    if (amount == 0n) {
+    if (amount === 0n) {
       return []
     }
 
@@ -257,8 +257,9 @@ export abstract class VotingEscrow
       blockNumber: input.blockNumber,
     })
 
-    const nameWithUnlockTime =
-      protocolToken.name + ` - Unlock time ${unixTimestampToDateString(end)}`
+    const nameWithUnlockTime = `${
+      protocolToken.name
+    } - Unlock time ${unixTimestampToDateString(end)}`
 
     const tokens = [unwrappedToken]
 

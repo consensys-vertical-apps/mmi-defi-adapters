@@ -14,10 +14,10 @@ export function generateAdapter(
       if (replacement) {
         // Apply the replacement operation
         return replacement.replace(outcomes, currentTemplate, answers)
-      } else {
-        console.warn(`Replacement operation '${replace}' not found.`)
-        return currentTemplate
       }
+
+      console.warn(`Replacement operation '${replace}' not found.`)
+      return currentTemplate
     },
     blankAdapter,
   )

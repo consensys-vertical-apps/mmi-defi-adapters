@@ -125,7 +125,7 @@ function addressCommand(
       const filterProtocolIds = multiProtocolFilter(protocols)
       const filterChainIds = multiChainFilter(chains)
 
-      const includeRawValues = raw == 'true'
+      const includeRawValues = raw === 'true'
 
       const data = await feature({
         userAddress,
@@ -293,12 +293,12 @@ function addressEventsCommand(
       ) => {
         const data = await feature({
           userAddress,
-          fromBlock: parseInt(fromBlock, 10),
-          toBlock: parseInt(toBlock, 10),
+          fromBlock: Number.parseInt(fromBlock, 10),
+          toBlock: Number.parseInt(toBlock, 10),
           protocolTokenAddress,
           productId,
           protocolId,
-          chainId: parseInt(chainId) as Chain,
+          chainId: Number.parseInt(chainId) as Chain,
           tokenId,
         })
 

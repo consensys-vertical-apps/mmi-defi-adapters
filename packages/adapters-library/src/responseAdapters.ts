@@ -1,16 +1,16 @@
 import { formatUnits } from 'ethers'
-import { USD } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter'
 import { priceAdapterConfig } from './adapters/prices-v2/products/usd/priceV2Config'
+import { USD } from './adapters/prices-v2/products/usd/pricesV2UsdAdapter'
 import { Chain } from './core/constants/chains'
 import { buildTrustAssetIconUrl } from './core/utils/buildIconUrl'
 import {
   MovementsByBlock,
-  UnwrapExchangeRate,
   TokenBalance,
-  Underlying,
-  TokenType,
   TokenTvl,
+  TokenType,
+  Underlying,
   UnderlyingTokenTvl,
+  UnwrapExchangeRate,
 } from './types/adapter'
 import {
   DisplayMovementsByBlock,
@@ -68,7 +68,7 @@ export function enrichUnwrappedTokenExchangeRates(
                   unwrappedTokenExchangeRate.decimals,
                 ),
                 iconUrl:
-                  unwrappedTokenExchangeRate.address != USD
+                  unwrappedTokenExchangeRate.address !== USD
                     ? buildTrustAssetIconUrl(
                         chainId,
                         unwrappedTokenExchangeRate.address,

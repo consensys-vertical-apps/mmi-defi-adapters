@@ -1,13 +1,13 @@
 import {
-  GetPositionsInput,
-  ProtocolPosition,
   GetEventsInput,
-  MovementsByBlock,
-  TokenBalance,
-  Underlying,
-  TokenType,
-  UnwrappedTokenExchangeRate,
+  GetPositionsInput,
   GetPositionsInputWithTokenAddresses,
+  MovementsByBlock,
+  ProtocolPosition,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
@@ -108,7 +108,7 @@ export abstract class LpStakingAdapter
     position: ProtocolPosition,
     newPositions?: ProtocolPosition,
   ) {
-    if (newPositions && newPositions.tokens && newPositions.tokens.length > 0) {
+    if (newPositions?.tokens && newPositions.tokens.length > 0) {
       position.tokens = [...(position.tokens ?? []), ...newPositions.tokens]
     }
   }

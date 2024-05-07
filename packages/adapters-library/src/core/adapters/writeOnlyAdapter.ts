@@ -1,18 +1,18 @@
 import { Protocol } from '../../adapters/protocols'
+import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
   GetEventsInput,
   GetPositionsInput,
-  UnwrapInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   ProtocolAdapterParams,
   ProtocolDetails,
-  UnwrapExchangeRate,
   ProtocolPosition,
   ProtocolTokenTvl,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
-import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { IMetadataBuilder } from '../decorators/cacheToFile'

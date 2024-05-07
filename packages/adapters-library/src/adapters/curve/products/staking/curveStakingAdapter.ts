@@ -2,26 +2,26 @@ import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AddClaimableRewards } from '../../../../core/decorators/addClaimableRewards'
 import { AddClaimedRewards } from '../../../../core/decorators/addClaimedRewards'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { logger } from '../../../../core/utils/logger'
 import {
-  ProtocolDetails,
-  PositionType,
-  GetEventsInput,
-  MovementsByBlock,
-  GetTotalValueLockedInput,
-  TokenBalance,
-  ProtocolTokenTvl,
-  UnwrappedTokenExchangeRate,
-  Underlying,
-  ProtocolAdapterParams,
-  TokenType,
-  GetPositionsInput,
-  ProtocolPosition,
   AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  PositionType,
+  ProtocolAdapterParams,
+  ProtocolDetails,
+  ProtocolPosition,
+  ProtocolTokenTvl,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {
@@ -35,10 +35,6 @@ export class CurveStakingAdapter
   implements IMetadataBuilder
 {
   productId = 'staking'
-
-  constructor(params: ProtocolAdapterParams) {
-    super(params)
-  }
 
   @AddClaimableRewards({ rewardAdapterIds: ['reward'] })
   getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {

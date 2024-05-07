@@ -69,7 +69,7 @@ export class Helpers {
         })
         .catch(() => 0n) // contract might not be deployed at requested blockNumber
 
-      if (balanceOf == 0n) {
+      if (balanceOf === 0n) {
         return undefined
       }
 
@@ -242,7 +242,7 @@ export class Helpers {
   async getTokenMetadata(tokenAddress: string): Promise<Erc20Metadata> {
     if (
       getAddress(tokenAddress) === REAL_ESTATE_TOKEN_METADATA.address &&
-      this.chainId == Chain.Ethereum
+      this.chainId === Chain.Ethereum
     ) {
       return REAL_ESTATE_TOKEN_METADATA
     }

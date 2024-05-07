@@ -8,13 +8,13 @@ import {
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
-  UnwrappedTokenExchangeRate,
-  Underlying,
+  AssetType,
   PositionType,
   ProtocolDetails,
   TokenBalance,
   TokenType,
-  AssetType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import {

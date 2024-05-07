@@ -1,19 +1,19 @@
 import { CompoundV2Cerc20__factory } from '../../contracts'
 import {
-  TokenBalance,
-  Underlying,
-  TokenType,
-  UnwrappedTokenExchangeRate,
   GetEventsInput,
   MovementsByBlock,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { Chain } from '../constants/chains'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
 import { NotImplementedError } from '../errors/errors'
 import { logger } from '../utils/logger'
-import { buildMetadata } from './compoundV2BuildMetadata'
 import { SimplePoolAdapter } from './SimplePoolAdapter'
+import { buildMetadata } from './compoundV2BuildMetadata'
 
 export abstract class CompoundV2SupplyMarketForkAdapter
   extends SimplePoolAdapter

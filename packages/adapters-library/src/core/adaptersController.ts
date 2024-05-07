@@ -1,13 +1,13 @@
 import { Protocol } from '../adapters/protocols'
 import { WriteActionInputs } from '../adapters/supportedProtocols'
 import { Helpers } from '../scripts/helpers'
+import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import {
   AssetType,
   PositionType,
   ProtocolAdapterParams,
 } from '../types/adapter'
 import { Erc20Metadata } from '../types/erc20Metadata'
-import { IProtocolAdapter } from '../types/IProtocolAdapter'
 import { Support } from '../types/response'
 import { WriteActions } from '../types/writeActions'
 import { Chain } from './constants/chains'
@@ -34,7 +34,9 @@ export class AdaptersController {
         Partial<
           Record<
             Chain,
-            (new (input: ProtocolAdapterParams) => IProtocolAdapter)[]
+            (new (
+              input: ProtocolAdapterParams,
+            ) => IProtocolAdapter)[]
           >
         >
       >
@@ -117,7 +119,7 @@ export class AdaptersController {
             assetDetails: { type: assetType },
           } = adapter.getProtocolDetails()
 
-          if (assetType == AssetType.NonStandardErc20) {
+          if (assetType === AssetType.NonStandardErc20) {
             continue
           }
 
@@ -149,7 +151,7 @@ export class AdaptersController {
 
       const existingAdapter = chainAdaptersMap.get(tokenAddress)
       const isPriceAdapter =
-        existingAdapter?.getProtocolDetails().positionType ==
+        existingAdapter?.getProtocolDetails().positionType ===
         PositionType.FiatPrices
 
       if (existingAdapter && !isPriceAdapter) {
@@ -226,7 +228,9 @@ export class AdaptersController {
               | Partial<Record<WriteActions, unknown>>
               | undefined =
               WriteActionInputs[
-                `${protocolKey}${pascalCase(productId)}WriteActionInputs` as keyof typeof WriteActionInputs
+                `${protocolKey}${pascalCase(
+                  productId,
+                )}WriteActionInputs` as keyof typeof WriteActionInputs
               ]
 
             product = {

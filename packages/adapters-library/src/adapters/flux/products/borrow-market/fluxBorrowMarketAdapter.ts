@@ -1,9 +1,9 @@
 import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
-  ProtocolDetails,
-  PositionType,
   AssetType,
+  PositionType,
+  ProtocolDetails,
 } from '../../../../types/adapter'
 import { contractAddresses } from '../../common/contractAddresses'
 

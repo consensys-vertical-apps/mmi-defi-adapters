@@ -1,7 +1,7 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Positions } from './Positions'
 import { Profits } from './Profits'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 const queryClient = new QueryClient()
 

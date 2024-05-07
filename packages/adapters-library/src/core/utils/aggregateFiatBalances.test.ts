@@ -1,4 +1,4 @@
-import { Underlying, ProtocolPosition, TokenType } from '../../types/adapter'
+import { ProtocolPosition, TokenType, Underlying } from '../../types/adapter'
 import { aggregateFiatBalances } from './aggregateFiatBalances'
 
 const balanceRaw = 2000000000000000000n

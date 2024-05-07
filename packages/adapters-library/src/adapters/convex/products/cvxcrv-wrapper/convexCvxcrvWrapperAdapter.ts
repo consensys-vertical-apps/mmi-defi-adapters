@@ -2,27 +2,27 @@ import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import {
-  IMetadataBuilder,
   CacheToFile,
+  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
-  ProtocolDetails,
-  PositionType,
-  GetTotalValueLockedInput,
-  TokenBalance,
-  ProtocolTokenTvl,
-  UnwrappedTokenExchangeRate,
-  Underlying,
-  GetPositionsInput,
-  ProtocolPosition,
-  TokenType,
-  GetEventsInput,
-  MovementsByBlock,
   AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  PositionType,
+  ProtocolDetails,
+  ProtocolPosition,
+  ProtocolTokenTvl,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { CvxcrvWrapper__factory } from '../../contracts'
@@ -84,7 +84,7 @@ export class ConvexCvxcrvWrapperAdapter
       blockTag: blockNumber,
     })
 
-    if (lpTokenBalance == 0n) {
+    if (lpTokenBalance === 0n) {
       return []
     }
 
@@ -99,7 +99,7 @@ export class ConvexCvxcrvWrapperAdapter
         type: TokenType.Protocol,
         tokens: extraRewards.map((result) => {
           const rewardTokenMetadata = extraRewardTokens.find(
-            (token) => token.address == getAddress(result.token),
+            (token) => token.address === getAddress(result.token),
           )
 
           return {

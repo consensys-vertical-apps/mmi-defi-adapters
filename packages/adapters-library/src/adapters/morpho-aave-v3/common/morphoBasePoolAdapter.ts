@@ -1,35 +1,40 @@
 import { getAddress } from 'ethers'
 import { min } from 'evm-maths/lib/utils'
 import { AdaptersController } from '../../../core/adaptersController'
-import { Chain } from '../../../core/constants/chains'
 import { ZERO_ADDRESS } from '../../../core/constants/ZERO_ADDRESS'
+import { Chain } from '../../../core/constants/chains'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvider'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
 import {
-  GetPositionsInput,
   GetEventsInput,
+  GetPositionsInput,
   GetTotalValueLockedInput,
-  UnwrapInput,
   MovementsByBlock,
   PositionType,
   ProtocolAdapterParams,
   ProtocolDetails,
-  UnwrapExchangeRate,
-  ProtocolTokenTvl,
   ProtocolPosition,
+  ProtocolTokenTvl,
   TokenBalance,
   TokenType,
   Underlying,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../../types/adapter'
 import { Erc20Metadata } from '../../../types/erc20Metadata'
 import {
-  MorphoAaveV3__factory,
   AToken__factory,
   AaveV3Pool__factory,
+  MorphoAaveV3__factory,
 } from '../../morpho-aave-v2/contracts'
+import { SuppliedEvent } from '../../morpho-aave-v2/contracts/MorphoAaveV3'
+import {
+  TypedContractEvent,
+  TypedDeferredTopicFilter,
+} from '../../morpho-aave-v2/contracts/common'
 import { Protocol } from '../../protocols'
 import { MorphoAaveMath } from '../internal-utils/AaveV3.maths'
 import P2PInterestRates from '../internal-utils/P2PInterestRates'
@@ -214,7 +219,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
       userAddress: string,
       blockNumber: number,
     ): Promise<bigint> => {
-      let balanceRaw
+      let balanceRaw: bigint
       if (positionType === PositionType.Supply) {
         const [supplyBalance, collateralBalance] = await Promise.all([
           morphoAaveV3.supplyBalance(market.address, userAddress, {
@@ -386,7 +391,7 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     const positionType = this.getProtocolDetails().positionType
     return Promise.all(
       tokens.map(async (tokenMetadata) => {
-        let totalValueRaw
+        let totalValueRaw: bigint
         const { underlyingToken } = await this.fetchPoolMetadata(
           tokenMetadata.address,
         )
@@ -569,7 +574,13 @@ export abstract class MorphoBasePoolAdapter implements IMetadataBuilder {
     const [underlyingToken] =
       await this.fetchUnderlyingTokensMetadata(protocolTokenAddress)
 
-    let filter
+    let filter: TypedDeferredTopicFilter<
+      TypedContractEvent<
+        SuppliedEvent.InputTuple,
+        SuppliedEvent.OutputTuple,
+        SuppliedEvent.OutputObject
+      >
+    >
     switch (eventType) {
       case 'supplied':
         filter = morphoAaveV3Contract.filters.Supplied(

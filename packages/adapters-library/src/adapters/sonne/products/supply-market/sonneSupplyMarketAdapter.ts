@@ -2,9 +2,9 @@ import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/Com
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
-  ProtocolDetails,
-  PositionType,
   AssetType,
+  PositionType,
+  ProtocolDetails,
 } from '../../../../types/adapter'
 
 export class SonneSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {

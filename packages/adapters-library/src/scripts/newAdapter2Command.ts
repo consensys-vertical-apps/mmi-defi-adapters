@@ -1,5 +1,5 @@
-import { readFile } from 'fs/promises'
-import path from 'path'
+import { readFile } from 'node:fs/promises'
+import path from 'node:path'
 import chalk from 'chalk'
 import { Command } from 'commander'
 import { prompt } from 'inquirer'
@@ -10,8 +10,8 @@ import { writeCodeFile } from '../core/utils/writeCodeFile'
 import type { DefiProvider } from '../defiProvider'
 import { generateAdapter } from './generateAdapter'
 import {
-  buildIntegrationTests,
   addProtocol,
+  buildIntegrationTests,
   exportAdapter,
 } from './newAdapterCommand'
 import { questionsJson } from './questionnaire'
@@ -28,7 +28,7 @@ export interface QuestionConfig {
   type: string
   choices?: readonly string[] // Only needed for certain types of questions, e.g., 'list'
   next: Record<string, string> | string
-  //eslint-disable-next-line
+  // biome-ignore lint/suspicious/noExplicitAny: Too broad to define
   outcomes?: Record<keyof Answers, any>
   validate?: (input: string, answers: Answers) => boolean | string
   validateProductId?: (
@@ -106,11 +106,9 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
     } else {
       answers = calculateDefaultAnswers(inputTemplate)
       console.log({ answers, inputTemplate })
-      answers.productId =
-        answers.productId +
-        '-' +
-        answers.forkCheck.replace(/[^\w\s]/gi, '').replace(/\s+/g, '') +
-        'Template'
+      answers.productId = `${answers.productId}-${answers.forkCheck
+        .replace(/[^\w\s]/gi, '')
+        .replace(/\s+/g, '')}Template`
     }
 
     answers.adapterClassName = adapterClassName(
@@ -123,7 +121,7 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
     const outcomes = calculateAdapterOutcomes(answers)
 
     switch (true) {
-      case outcomes.template == 'No': {
+      case outcomes.template === 'No': {
         await buildAdapterFromBlankTemplate(answers, outcomes)
         break
       }
@@ -137,12 +135,13 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
         }
         break
       default: {
-        logger.error('Template not found: ' + answers.forkCheck)
+        logger.error(`Template not found: ${answers.forkCheck}`)
         logger.error(
-          'Must be one of these values: No, ' +
-            Object.keys(Templates).join(', '),
+          `Must be one of these values: No, ${Object.keys(Templates).join(
+            ', ',
+          )}`,
         )
-        throw new Error('No template with name: ' + answers.forkCheck)
+        throw new Error(`No template with name: ${answers.forkCheck}`)
       }
     }
     await buildIntegrationTests(answers)
@@ -164,7 +163,7 @@ function calculateDefaultAnswers(inputTemplate?: string) {
   const answers = Object.keys(questionsJson).reduce((acc, key) => {
     acc[key as keyof Answers] = questionsJson[
       key as keyof typeof questionsJson
-      //eslint-disable-next-line
+      // biome-ignore lint/suspicious/noExplicitAny: Not sure - TODO
     ].default(acc) as any
     return acc
   }, {} as Answers)
@@ -183,7 +182,7 @@ function calculateAdapterOutcomes(answers: Answers) {
 
     // Step3: add outcome to outcomes
     if ('outcomes' in questionConfig) {
-      acc = {
+      return {
         ...(questionConfig.outcomes![
           answer as keyof typeof questionConfig.outcomes
         ] as object),
@@ -273,16 +272,15 @@ async function welcome() {
       }
       if (question.type === 'confirm') {
         console.log(greenBrightText('Options:'))
-        console.log(greenBrightText(` 1. Yes`))
-        console.log(greenBrightText(` 2. No`))
+        console.log(greenBrightText(' 1. Yes'))
+        console.log(greenBrightText(' 2. No'))
       }
       if (question.type === 'text') {
         console.log(greenBrightText('Options:'))
         console.log(
-          greenBrightText(` 1. string`) +
-            ` (e.g ` +
-            greenBrightText(question.default({} as Answers)) +
-            `)`,
+          `${greenBrightText(' 1. string')} (e.g ${greenBrightText(
+            question.default({} as Answers),
+          )}`,
         )
       }
 
@@ -346,7 +344,6 @@ async function askQuestion(
     return answers
   }
 
-  //eslint-disable-next-line
   //@ts-ignore
   const nextQuestion = questionConfig.next[answer] || questionConfig.next
   return await askQuestion(nextQuestion, defiProvider, answers, outcomes)
