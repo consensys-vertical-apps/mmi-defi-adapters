@@ -89,6 +89,10 @@ import PancakeswapV2PoolEthereumProtocolToken from '../../adapters/pancakeswap-v
 import PancakeswapV2PoolLineaProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/linea.protocol-token.json'
 import { Protocol } from '../../adapters/protocols'
 import QuickswapV2PoolPolygonProtocolToken from '../../adapters/quickswap-v2/products/pool/metadata/polygon.protocol-token.json'
+import SonneBorrowMarketBaseProtocolToken from '../../adapters/sonne/products/borrow-market/metadata/base.protocol-token.json'
+import SonneBorrowMarketOptimismProtocolToken from '../../adapters/sonne/products/borrow-market/metadata/optimism.protocol-token.json'
+import SonneSupplyMarketBaseProtocolToken from '../../adapters/sonne/products/supply-market/metadata/base.protocol-token.json'
+import SonneSupplyMarketOptimismProtocolToken from '../../adapters/sonne/products/supply-market/metadata/optimism.protocol-token.json'
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
 import StargateVotingEscrowEthereumProtocolToken from '../../adapters/stargate/products/voting-escrow/metadata/ethereum.protocol-token.json'
@@ -911,6 +915,42 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     QuickswapV2PoolPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Sonne,
+      productId: 'borrow-market',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    SonneBorrowMarketBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Sonne,
+      productId: 'borrow-market',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    SonneBorrowMarketOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Sonne,
+      productId: 'supply-market',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    SonneSupplyMarketBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Sonne,
+      productId: 'supply-market',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    SonneSupplyMarketOptimismProtocolToken,
   ],
   [
     metadataKey({

@@ -1,0 +1,170 @@
+{
+  "0xf7B5965f5C117Eb1B5450187c9DcFccc3C317e8E": {
+    "protocolToken": {
+      "address": "0xf7B5965f5C117Eb1B5450187c9DcFccc3C317e8E",
+      "name": "Sonne Wrapped Ether",
+      "symbol": "soWETH",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0xEC8FEa79026FfEd168cCf5C627c7f486D77b765F": {
+    "protocolToken": {
+      "address": "0xEC8FEa79026FfEd168cCf5C627c7f486D77b765F",
+      "name": "Sonne USDC",
+      "symbol": "soUSDC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x5Ff29E4470799b982408130EFAaBdeeAE7f66a10": {
+    "protocolToken": {
+      "address": "0x5Ff29E4470799b982408130EFAaBdeeAE7f66a10",
+      "name": "Sonne USDT",
+      "symbol": "soUSDT",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x5569b83de187375d43FBd747598bfe64fC8f6436": {
+    "protocolToken": {
+      "address": "0x5569b83de187375d43FBd747598bfe64fC8f6436",
+      "name": "Sonne DAI",
+      "symbol": "soDAI",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x8cD6b19A07d754bF36AdEEE79EDF4F2134a8F571": {
+    "protocolToken": {
+      "address": "0x8cD6b19A07d754bF36AdEEE79EDF4F2134a8F571",
+      "name": "Sonne OP",
+      "symbol": "soOP",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
+      "decimals": 18
+    }
+  },
+  "0xd14451E0Fa44B18f08aeB1E4a4d092B823CaCa68": {
+    "protocolToken": {
+      "address": "0xd14451E0Fa44B18f08aeB1E4a4d092B823CaCa68",
+      "name": "Sonne SUSD",
+      "symbol": "soSUSD",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
+      "name": "Synth sUSD",
+      "symbol": "sUSD",
+      "decimals": 18
+    }
+  },
+  "0xD7dAabd899D1fAbbC3A9ac162568939CEc0393Cc": {
+    "protocolToken": {
+      "address": "0xD7dAabd899D1fAbbC3A9ac162568939CEc0393Cc",
+      "name": "Sonne Synthetix Network Token",
+      "symbol": "soSNX",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
+      "name": "Synthetix Network Token",
+      "symbol": "SNX",
+      "decimals": 18
+    }
+  },
+  "0x33865E09A572d4F1CC4d75Afc9ABcc5D3d4d867D": {
+    "protocolToken": {
+      "address": "0x33865E09A572d4F1CC4d75Afc9ABcc5D3d4d867D",
+      "name": "Sonne Wrapped Bitcoin",
+      "symbol": "soWBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0xAFdf91f120DEC93c65fd63DBD5ec372e5dcA5f82": {
+    "protocolToken": {
+      "address": "0xAFdf91f120DEC93c65fd63DBD5ec372e5dcA5f82",
+      "name": "Sonne Liquity USD",
+      "symbol": "soLUSD",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+      "name": "LUSD Stablecoin",
+      "symbol": "LUSD",
+      "decimals": 18
+    }
+  },
+  "0x26AaB17f27CD1c8d06a0Ad8E4a1Af8B1032171d5": {
+    "protocolToken": {
+      "address": "0x26AaB17f27CD1c8d06a0Ad8E4a1Af8B1032171d5",
+      "name": "Sonne Wrapped liquid staked Ether 2.0",
+      "symbol": "sowstETH",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xE7De932d50EfC9ea0a7a409Fc015B4f71443528e": {
+    "protocolToken": {
+      "address": "0xE7De932d50EfC9ea0a7a409Fc015B4f71443528e",
+      "name": "Sonne miMatic",
+      "symbol": "soMAI",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0xdFA46478F9e5EA86d57387849598dbFB2e964b02",
+      "name": "Mai Stablecoin",
+      "symbol": "MAI",
+      "decimals": 18
+    }
+  },
+  "0x1AfD1fF9E441973B7D34c7B8AbE91d94F1B23ce0": {
+    "protocolToken": {
+      "address": "0x1AfD1fF9E441973B7D34c7B8AbE91d94F1B23ce0",
+      "name": "Sonne USD Coin",
+      "symbol": "soUSDCnative",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  }
+}

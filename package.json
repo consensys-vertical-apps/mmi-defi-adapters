@@ -5,7 +5,9 @@
   "author": "MMI Team",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "engines": {
     "node": ">=20.0.0"
   },
@@ -28,7 +30,7 @@
     "withdrawals": "npm run adapters-cli withdrawals --",
     "stress": "npm run adapters-cli stress --",
     "support": "npm run adapters-cli support --",
-    "lint": "biome check .",
+    "lint": "biome check packages",
     "fix": "npm run lint -- --apply",
     "test": "npm run test -w packages/adapters-library",
     "test:update:adapter-snapshot": "npm run test:update:adapter-snapshot -w packages/adapters-library",
@@ -39,10 +41,10 @@
     "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; patch-package"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.2",
-    "@types/node": "^20.12.7",
+    "@biomejs/biome": "^1.7.3",
+    "@types/node": "^20.12.10",
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.4.5"
   }
 }

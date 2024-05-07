@@ -1,0 +1,235 @@
+{
+  "blockNumber": 119518821,
+  "snapshot": [
+    {
+      "protocolId": "sonne",
+      "name": "Sonne",
+      "description": "Sonne supply market adapter",
+      "siteUrl": "",
+      "iconUrl": "",
+      "positionType": "supply",
+      "chainId": 10,
+      "productId": "supply-market",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf7B5965f5C117Eb1B5450187c9DcFccc3C317e8E",
+          "name": "Sonne Wrapped Ether",
+          "symbol": "soWETH",
+          "decimals": 8,
+          "balanceRaw": "218579171832n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4200000000000000000000000000000000000006",
+              "symbol": "ETH",
+              "name": "Ethereum",
+              "decimals": 18,
+              "balanceRaw": "45549338996417344316n",
+              "type": "underlying",
+              "balance": 45.54933899641735,
+              "price": 2921.57546867,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
+            }
+          ],
+          "balance": 2185.79171832
+        },
+        {
+          "address": "0x8cD6b19A07d754bF36AdEEE79EDF4F2134a8F571",
+          "name": "Sonne OP",
+          "symbol": "soOP",
+          "decimals": 8,
+          "balanceRaw": "19525653785146n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4200000000000000000000000000000000000042",
+              "name": "Optimism",
+              "symbol": "OP",
+              "decimals": 18,
+              "balanceRaw": "4279303295312441251855n",
+              "type": "underlying",
+              "balance": 4279.303295312441,
+              "price": 2.6826700627658924,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000042/logo.png"
+            }
+          ],
+          "balance": 195256.53785146
+        },
+        {
+          "address": "0xD7dAabd899D1fAbbC3A9ac162568939CEc0393Cc",
+          "name": "Sonne Synthetix Network Token",
+          "symbol": "soSNX",
+          "decimals": 8,
+          "balanceRaw": "24275388303733n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
+              "name": "Synthetix Network Token",
+              "symbol": "SNX",
+              "decimals": 18,
+              "balanceRaw": "5394820811382096730223n",
+              "type": "underlying",
+              "balance": 5394.8208113820965,
+              "price": 2.570900862222286,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4/logo.png"
+            }
+          ],
+          "balance": 242753.88303733
+        },
+        {
+          "address": "0x33865E09A572d4F1CC4d75Afc9ABcc5D3d4d867D",
+          "name": "Sonne Wrapped Bitcoin",
+          "symbol": "soWBTC",
+          "decimals": 8,
+          "balanceRaw": "45641496344n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+              "name": "Wrapped BTC",
+              "symbol": "WBTC",
+              "decimals": 8,
+              "balanceRaw": "933034515n",
+              "type": "underlying",
+              "balance": 9.33034515,
+              "price": 57651.04769709457,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x68f180fcCe6836688e9084f035309E29Bf0A2095/logo.png"
+            }
+          ],
+          "balance": 456.41496344
+        },
+        {
+          "address": "0x26AaB17f27CD1c8d06a0Ad8E4a1Af8B1032171d5",
+          "name": "Sonne Wrapped liquid staked Ether 2.0",
+          "symbol": "sowstETH",
+          "decimals": 8,
+          "balanceRaw": "5342732785n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "balanceRaw": "1084266879629912438n",
+              "type": "underlying",
+              "balance": 1.0842668796299124,
+              "price": 3399.5332972209817,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb/logo.png"
+            }
+          ],
+          "balance": 53.42732785
+        }
+      ]
+    },
+    {
+      "protocolId": "sonne",
+      "name": "Sonne",
+      "description": "Sonne borrow market adapter",
+      "siteUrl": "",
+      "iconUrl": "",
+      "positionType": "borrow",
+      "chainId": 10,
+      "productId": "borrow-market",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xEC8FEa79026FfEd168cCf5C627c7f486D77b765F",
+          "name": "Sonne USDC",
+          "symbol": "soUSDC",
+          "decimals": 8,
+          "balanceRaw": "1n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "231810478853n",
+              "type": "underlying",
+              "balance": 231810.478853,
+              "price": 0.9993228848676068,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x7F5c764cBc14f9669B88837ca1490cCa17c31607/logo.png"
+            }
+          ],
+          "balance": 1e-8
+        },
+        {
+          "address": "0xAFdf91f120DEC93c65fd63DBD5ec372e5dcA5f82",
+          "name": "Sonne Liquity USD",
+          "symbol": "soLUSD",
+          "decimals": 8,
+          "balanceRaw": "1n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+              "name": "LUSD Stablecoin",
+              "symbol": "LUSD",
+              "decimals": 18,
+              "balanceRaw": "75984932685082984616480n",
+              "type": "underlying",
+              "balance": 75984.93268508298,
+              "price": 0.9988484379403944,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0xc40F949F8a4e094D1b49a23ea9241D289B7b2819/logo.png"
+            }
+          ],
+          "balance": 1e-8
+        },
+        {
+          "address": "0xd14451E0Fa44B18f08aeB1E4a4d092B823CaCa68",
+          "name": "Sonne SUSD",
+          "symbol": "soSUSD",
+          "decimals": 8,
+          "balanceRaw": "1n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
+              "name": "Synth sUSD",
+              "symbol": "sUSD",
+              "decimals": 18,
+              "balanceRaw": "85895091938321264090826n",
+              "type": "underlying",
+              "balance": 85895.09193832126,
+              "price": 0.9924916664911172,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9/logo.png"
+            }
+          ],
+          "balance": 1e-8
+        },
+        {
+          "address": "0x1AfD1fF9E441973B7D34c7B8AbE91d94F1B23ce0",
+          "name": "Sonne USD Coin",
+          "symbol": "soUSDCnative",
+          "decimals": 8,
+          "balanceRaw": "1n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "36359863683n",
+              "type": "underlying",
+              "balance": 36359.863683,
+              "price": 1.0000472125868909,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85/logo.png"
+            }
+          ],
+          "balance": 1e-8
+        }
+      ]
+    }
+  ]
+}

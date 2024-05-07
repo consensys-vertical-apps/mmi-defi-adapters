@@ -1,0 +1,100 @@
+{
+  "0xb864BA2aab1f53BC3af7AE49a318202dD3fd54C2": {
+    "protocolToken": {
+      "address": "0xb864BA2aab1f53BC3af7AE49a318202dD3fd54C2",
+      "name": "SonneBase Dai Stablecoin",
+      "symbol": "sobDAI",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x225886C9beb5eeE254F79d58bbD80cf9F200D4d0": {
+    "protocolToken": {
+      "address": "0x225886C9beb5eeE254F79d58bbD80cf9F200D4d0",
+      "name": "SonneBase USD Base Coin",
+      "symbol": "sobUSDbC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA",
+      "name": "USD Base Coin",
+      "symbol": "USDbC",
+      "decimals": 6
+    }
+  },
+  "0x5F5c479fe590cD4442A05aE4a941dd991A633B8E": {
+    "protocolToken": {
+      "address": "0x5F5c479fe590cD4442A05aE4a941dd991A633B8E",
+      "name": "SonneBase Wrapped Ether",
+      "symbol": "sobWETH",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0xfd68F92B45b633bbe0f475294C1A86aecD62985A": {
+    "protocolToken": {
+      "address": "0xfd68F92B45b633bbe0f475294C1A86aecD62985A",
+      "name": "SonneBase USD Coin",
+      "symbol": "sobUSDC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x6C91bEECEEDda2089307fAb818E12757948BF489": {
+    "protocolToken": {
+      "address": "0x6C91bEECEEDda2089307fAb818E12757948BF489",
+      "name": "SonneBase Coinbase Wrapped Staked ETH",
+      "symbol": "sobcbETH",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22",
+      "name": "Coinbase Wrapped Staked ETH",
+      "symbol": "cbETH",
+      "decimals": 18
+    }
+  },
+  "0x7A6468053cDCd7E8fE507D7edB77336f5057D206": {
+    "protocolToken": {
+      "address": "0x7A6468053cDCd7E8fE507D7edB77336f5057D206",
+      "name": "SonneBase Wrapped liquid staked Ether 2.0",
+      "symbol": "sobwstETH",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xfa78196Ace4048c4cCCe6d3d97890D7b6c8F59DA": {
+    "protocolToken": {
+      "address": "0xfa78196Ace4048c4cCCe6d3d97890D7b6c8F59DA",
+      "name": "SonneBase Aerodrome",
+      "symbol": "sobAERO",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+      "name": "Aerodrome",
+      "symbol": "AERO",
+      "decimals": 18
+    }
+  }
+}

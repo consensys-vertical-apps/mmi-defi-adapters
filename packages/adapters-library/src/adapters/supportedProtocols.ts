@@ -54,6 +54,8 @@ import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
 import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
 import { RocketPoolRethAdapter } from './rocket-pool/products/reth/rocketPoolRethAdapter'
+import { SonneBorrowMarketAdapter } from './sonne/products/borrow-market/sonneBorrowMarketAdapter'
+import { SonneSupplyMarketAdapter } from './sonne/products/supply-market/sonneSupplyMarketAdapter'
 import { StakeWiseOsEthAdapter } from './stakewise/products/os-eth/stakeWiseOsEthAdapter'
 import { StargatePoolAdapter } from './stargate/products/pool/stargatePoolAdapter'
 import { StargateVotingEscrowAdapter } from './stargate/products/voting-escrow/stargateVotingEscrowAdapter'
@@ -279,6 +281,11 @@ export const supportedProtocols: Record<
 
   [Protocol.RocketPool]: {
     [Chain.Ethereum]: [RocketPoolRethAdapter],
+  },
+
+  [Protocol.Sonne]: {
+    [Chain.Optimism]: [SonneSupplyMarketAdapter, SonneBorrowMarketAdapter],
+    [Chain.Base]: [SonneSupplyMarketAdapter, SonneBorrowMarketAdapter],
   },
 
   [Protocol.StakeWise]: {

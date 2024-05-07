@@ -175,6 +175,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   snapshot: await defiProvider.getTotalValueLocked({
                     filterChainIds: [chainId],
                     filterProtocolIds: [protocolId],
+                    filterProtocolTokens: testCase.filterProtocolTokens,
                     blockNumbers: {
                       [chainId]: blockNumber,
                     },
