@@ -207,12 +207,9 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
             testCase.key ? `.${kebabCase(testCase.key)}` : ''
           }.json`
 
-          await fs.mkdir(path.dirname(filePath), { recursive: true })
-
-          await fs.writeFile(
+          await writeCodeFile(
             filePath,
             bigintJsonStringify(snapshotFileContent, 2),
-            'utf-8',
           )
 
           // Update test case

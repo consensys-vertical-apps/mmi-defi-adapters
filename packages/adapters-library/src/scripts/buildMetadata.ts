@@ -118,9 +118,7 @@ async function writeMetadataToFile({
     `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/metadata/${ChainName[chainId]}.${fileKey}.json`,
   )
 
-  await fs.mkdir(path.dirname(newFilePath), { recursive: true })
-
-  await fs.writeFile(newFilePath, JSON.stringify(metadata, null, 2), 'utf-8')
+  await writeCodeFile(newFilePath, JSON.stringify(metadata, null, 2))
 }
 
 async function addStaticImport({
