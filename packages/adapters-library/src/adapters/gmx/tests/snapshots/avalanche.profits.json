@@ -1,5 +1,5 @@
 {
-  "blockNumber": 151045029,
+  "blockNumber": 45143862,
   "snapshot": [
     {
       "protocolId": "gmx",
@@ -8,7 +8,7 @@
       "siteUrl": "https://https://app.gmx.io",
       "iconUrl": "https://gmx.io//static/media/ic_gmx_40.72a1053e8344ef876100ac72aff70ead.svg",
       "positionType": "supply",
-      "chainId": 42161,
+      "chainId": 43114,
       "productId": "glp",
       "assetDetails": {
         "type": "StandardErc20"
@@ -16,25 +16,25 @@
       "success": true,
       "tokens": [
         {
-          "address": "0x4277f8F2c384827B5273592FF7CeBd9f2C1ac258",
+          "address": "0x01234181085565ed162a948b6a5e88758CD7c7b8",
           "name": "GMX LP",
           "symbol": "GLP",
           "decimals": 18,
           "type": "protocol",
-          "profit": 0.2600937635431029,
-          "performance": 0.002959903704573911,
+          "profit": 53.31171359967993,
+          "performance": 0.010547689004673752,
           "calculationData": {
-            "withdrawals": 0,
-            "deposits": 81.48475562442427,
+            "withdrawals": 269.50856553498244,
+            "deposits": 0,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 6.3876177710961395,
-            "endPositionValue": 88.13246715906351
+            "startPositionValue": 5323.858724707969,
+            "endPositionValue": 5107.661872772666
           }
         }
       ],
-      "fromBlock": 148803083,
-      "toBlock": 151045029
+      "fromBlock": 44853971,
+      "toBlock": 45143862
     }
   ]
 }
