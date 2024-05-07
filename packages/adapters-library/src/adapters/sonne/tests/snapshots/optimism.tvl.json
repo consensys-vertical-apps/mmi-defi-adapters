@@ -1,0 +1,63 @@
+{
+  "blockNumber": 119518821,
+  "snapshot": [
+    {
+      "protocolId": "sonne",
+      "name": "Sonne",
+      "description": "Sonne supply market adapter",
+      "siteUrl": "",
+      "iconUrl": "",
+      "positionType": "supply",
+      "chainId": 10,
+      "productId": "supply-market",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf7B5965f5C117Eb1B5450187c9DcFccc3C317e8E",
+          "name": "Sonne Wrapped Ether",
+          "symbol": "soWETH",
+          "decimals": 8,
+          "type": "protocol",
+          "totalSupplyRaw": "8134505697701n",
+          "tokens": [
+            {
+              "address": "0x4200000000000000000000000000000000000006",
+              "symbol": "ETH",
+              "name": "Ethereum",
+              "decimals": 18,
+              "totalSupplyRaw": "732588579339332862812n",
+              "type": "underlying",
+              "totalSupply": 732.5885793393329,
+              "price": 2921.57546867,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
+            }
+          ],
+          "totalSupply": 81345.05697701
+        }
+      ]
+    },
+    {
+      "protocolId": "sonne",
+      "name": "Sonne",
+      "description": "Sonne borrow market adapter",
+      "siteUrl": "",
+      "iconUrl": "",
+      "positionType": "borrow",
+      "chainId": 10,
+      "productId": "borrow-market",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": false,
+      "error": {
+        "message": "Not Implemented (at SonneBorrowMarketAdapter.getTotalValueLocked)",
+        "details": {
+          "name": "NotImplementedError"
+        }
+      }
+    }
+  ]
+}

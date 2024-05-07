@@ -7,6 +7,7 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
 }: Pick<NewAdapterAnswers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
   return `
   import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
+  import { Chain } from '../../../../core/constants/chains'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'
   import { NotImplementedError } from '../../../../core/errors/errors'
   import {
@@ -19,7 +20,7 @@ export function compoundV2BorrowMarketForkAdapterTemplate({
   export class ${adapterClassName} extends CompoundV2BorrowMarketForkAdapter {
     productId = '${productId}'
   
-    contractAddresses = {}
+    contractAddresses: Partial<Record<Chain, { comptrollerAddress: string }>> = {}
   
     getProtocolDetails(): ProtocolDetails {
       return {
