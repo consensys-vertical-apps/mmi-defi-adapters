@@ -21,14 +21,14 @@
           "symbol": "GLP",
           "decimals": 18,
           "type": "protocol",
-          "profit": -0.0020204680424669164,
-          "performance": -0.00002292482882541336,
+          "profit": 0.2600937635431029,
+          "performance": 0.002959903704573911,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 81.48475562442427,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 6.649732002681709,
+            "startPositionValue": 6.3876177710961395,
             "endPositionValue": 88.13246715906351
           }
         }

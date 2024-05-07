@@ -74,7 +74,7 @@ export class ChainProvider {
 
     const multicallQueue = new MulticallQueue({
       // Allow a bigger batch size for mainnet
-      maxBatchSize: 100,
+      maxBatchSize: chainId === Chain.Arbitrum ? 3 : 100,
       flushTimeoutMs: 0.1,
       multicallContract,
       chainId,
