@@ -6,7 +6,7 @@ import { glob, runTypeChain } from 'typechain'
 import { Protocol } from '../adapters/protocols'
 import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
-import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { DefiProvider } from '../defiProvider'
 import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
@@ -267,7 +267,7 @@ async function addImportsAndSchemas(
   const schemaTypeExportStatement =
     'export type GetTransactionParams = z.infer<typeof GetTransactionParamsSchema>;'
 
-  await writeCodeFile(
+  await writeAndLintFile(
     adaptersFile,
     print(ast).code +
       writeActionInputsExportStatement +

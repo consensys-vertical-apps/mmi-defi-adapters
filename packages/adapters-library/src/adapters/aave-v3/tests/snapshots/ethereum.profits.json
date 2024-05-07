@@ -1,0 +1,109 @@
+{
+  "blockNumber": 19818884,
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 AToken",
+      "description": "Aave v3 defi adapter for yield-generating token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "lend",
+      "chainId": 1,
+      "productId": "a-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x5Ee5bf7ae06D1Be5997A1A72006FE6C607eC6DE8",
+          "name": "Aave Ethereum WBTC",
+          "symbol": "aEthWBTC",
+          "decimals": 8,
+          "type": "protocol",
+          "profit": -1755.9455919846514,
+          "performance": -0.003245370009593111,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 499327.26103056525,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 41734.493652008925,
+            "endPositionValue": 539305.8090905895
+          }
+        },
+        {
+          "address": "0x5E8C8A7243651DB1384C0dDfDbE39761E8e7E51a",
+          "name": "Aave Ethereum LINK",
+          "symbol": "aEthLINK",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -1852.4179271600442,
+          "performance": -0.003605321579124914,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 142765.3049096109,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 371035.72129722865,
+            "endPositionValue": 511948.6082796795
+          }
+        },
+        {
+          "address": "0x23878914EFE38d27C4D67Ab83ed1b93A74D4086a",
+          "name": "Aave Ethereum USDT",
+          "symbol": "aEthUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": -182.72534837614512,
+          "performance": -0.00038421064953285546,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 475586.370649311,
+            "endPositionValue": 475403.64530093485
+          }
+        }
+      ],
+      "fromBlock": 19811738,
+      "toBlock": 19818884
+    },
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 VariableDebtToken",
+      "description": "Aave v3 defi adapter for variable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "variable-debt-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xeA51d7853EEFb32b6ee06b1C12E6dcCA88Be0fFE",
+          "name": "Aave Ethereum Variable Debt WETH",
+          "symbol": "variableDebtEthWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 4330.330882597831,
+          "performance": 0.011560538877318357,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 492543.8575166568,
+            "startPositionValue": -374578.6358708494,
+            "endPositionValue": -862792.1625049084
+          }
+        }
+      ],
+      "fromBlock": 19811738,
+      "toBlock": 19818884
+    }
+  ]
+}
