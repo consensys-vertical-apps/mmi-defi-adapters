@@ -1,0 +1,75 @@
+{
+  "blockNumber": 19818581,
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 AToken",
+      "description": "Aave v3 defi adapter for yield-generating token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "lend",
+      "chainId": 1,
+      "productId": "a-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8",
+          "name": "Aave Ethereum WETH",
+          "symbol": "aEthWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 75.97189729942693,
+          "performance": 0.003688467672037489,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 20597.143327397112,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 20673.11522469654
+          }
+        }
+      ],
+      "fromBlock": 19811435,
+      "toBlock": 19818581
+    },
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 VariableDebtToken",
+      "description": "Aave v3 defi adapter for variable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "variable-debt-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x6df1C1E379bC5a00a7b4C6e67A203333772f45A8",
+          "name": "Aave Ethereum Variable Debt USDT",
+          "symbol": "variableDebtEthUSDT",
+          "decimals": 6,
+          "type": "protocol",
+          "profit": -24.674981589821982,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 7735.446560274744,
+            "startPositionValue": 0,
+            "endPositionValue": -7760.121541864566
+          }
+        }
+      ],
+      "fromBlock": 19811435,
+      "toBlock": 19818581
+    }
+  ]
+}

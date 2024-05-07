@@ -1,0 +1,81 @@
+{
+  "blockNumber": 19818581,
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 AToken",
+      "description": "Aave v3 defi adapter for yield-generating token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "lend",
+      "chainId": 1,
+      "productId": "a-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8",
+          "name": "Aave Ethereum WETH",
+          "symbol": "aEthWETH",
+          "decimals": 18,
+          "balanceRaw": "6720014050643307510n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "6720014050643307510n",
+              "type": "underlying",
+              "balance": 6.720014050643307,
+              "price": 3076.35,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 6.720014050643307
+        }
+      ]
+    },
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 VariableDebtToken",
+      "description": "Aave v3 defi adapter for variable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "variable-debt-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x6df1C1E379bC5a00a7b4C6e67A203333772f45A8",
+          "name": "Aave Ethereum Variable Debt USDT",
+          "symbol": "variableDebtEthUSDT",
+          "decimals": 6,
+          "balanceRaw": "7750080824n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "balanceRaw": "7750080824n",
+              "type": "underlying",
+              "balance": 7750.080824,
+              "price": 1.0012955629873528,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+            }
+          ],
+          "balance": 7750.080824
+        }
+      ]
+    }
+  ]
+}

@@ -5,44 +5,48 @@ import { WriteActions } from '../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
-    chainId: Chain.Arbitrum,
+    chainId: Chain.Ethereum,
     method: 'positions',
+
     input: {
-      userAddress: '0x9957d6f3d37382c59db20e3cabe3e4540b52bba2',
+      userAddress: '0x4f575BDdc36c3Ec42D923AEeEc4Ada1a60ce4086',
 
       filterProtocolTokens: [
-        '0x078f358208685046a11C85e8ad32895DED33A249',
-        '0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8',
-        '0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC',
+        '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
+        '0x6df1C1E379bC5a00a7b4C6e67A203333772f45A8',
       ],
     },
-    blockNumber: 142290717,
+
+    blockNumber: 19818581,
   },
 
   {
-    chainId: Chain.Arbitrum,
+    chainId: Chain.Ethereum,
     method: 'profits',
+
     input: {
-      userAddress: '0x9957d6f3d37382c59db20e3cabe3e4540b52bba2',
+      userAddress: '0x4f575BDdc36c3Ec42D923AEeEc4Ada1a60ce4086',
       timePeriod: TimePeriod.oneDay,
 
       filterProtocolTokens: [
-        '0x078f358208685046a11C85e8ad32895DED33A249',
-        '0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8',
-        '0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC',
+        '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
+        '0x6df1C1E379bC5a00a7b4C6e67A203333772f45A8',
       ],
     },
-    blockNumber: 142290717,
+
+    blockNumber: 19818581,
   },
   {
-    chainId: Chain.Arbitrum,
+    chainId: Chain.Ethereum,
     method: 'tvl',
+
     filterProtocolTokens: [
-      '0x625E7708f30cA75bfd92586e17077590C60eb4cD',
-      '0xd94112B5B62d53C9402e7A60289c6810dEF1dC9B',
-      '0x8619d80FB0141ba7F184CbF22fd724116D9f7ffC',
+      '0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8',
+      '0x0B925eD163218f6662a35e0f0371Ac234f9E9371',
+      '0x98C23E9d8f34FEFb1B7BD6a91B7FF122F4e16F5c',
     ],
-    blockNumber: 201319946,
+
+    blockNumber: 19818582,
   },
 
   {
