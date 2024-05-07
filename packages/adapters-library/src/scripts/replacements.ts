@@ -9,7 +9,7 @@ export const Replacements = {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (outcomes: Outcomes, blankAdapter: string): string => {
       if (outcomes.buildMetadataFunction && outcomes.underlyingTokens) {
-        const regex = /return·Replacements.BUILD_METADATA.placeholder/g
+        const regex = /return Replacements.BUILD_METADATA.placeholder/g
 
         switch (true) {
           case outcomes.buildMetadataFunction === 'singleProtocolToken' &&
