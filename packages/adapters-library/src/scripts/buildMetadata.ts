@@ -12,7 +12,7 @@ import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { pascalCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
-import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { Json } from '../types/json'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import { sortEntries } from './utils/sortEntries'
@@ -118,7 +118,7 @@ async function writeMetadataToFile({
     `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}/metadata/${ChainName[chainId]}.${fileKey}.json`,
   )
 
-  await writeCodeFile(newFilePath, JSON.stringify(metadata, null, 2))
+  await writeAndLintFile(newFilePath, JSON.stringify(metadata, null, 2))
 }
 
 async function addStaticImport({
@@ -186,7 +186,7 @@ async function addStaticImport({
     },
   })
 
-  await writeCodeFile(adapterMetadataFile, print(ast).code)
+  await writeAndLintFile(adapterMetadataFile, print(ast).code)
 }
 
 /**

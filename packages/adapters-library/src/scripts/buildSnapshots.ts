@@ -9,7 +9,7 @@ import { ProviderMissingError } from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
-import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { DefiProvider } from '../defiProvider'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 import type { TestCase } from '../types/testCase'
@@ -207,7 +207,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
             testCase.key ? `.${kebabCase(testCase.key)}` : ''
           }.json`
 
-          await writeCodeFile(
+          await writeAndLintFile(
             filePath,
             bigintJsonStringify(snapshotFileContent, 2),
           )
@@ -282,7 +282,7 @@ async function updateBlockNumber(
     },
   })
 
-  await writeCodeFile(testCasesFile, print(ast).code)
+  await writeAndLintFile(testCasesFile, print(ast).code)
 }
 
 /**
@@ -413,5 +413,5 @@ async function updateFilters(
     },
   })
 
-  await writeCodeFile(testCasesFile, print(ast).code)
+  await writeAndLintFile(testCasesFile, print(ast).code)
 }

@@ -16,7 +16,7 @@ import {
 } from '../core/utils/caseConversion'
 import { filterMapSync } from '../core/utils/filters'
 import { logger } from '../core/utils/logger'
-import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { DefiProvider } from '../defiProvider'
 import { chainFilter, protocolFilter } from './commandFilters'
 import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
@@ -255,7 +255,7 @@ async function buildAdapterFromTemplate(adapterSettings: NewAdapterAnswers) {
     adapterClassName,
   )
 
-  await writeCodeFile(adapterFilePath, templateBuilder(adapterSettings))
+  await writeAndLintFile(adapterFilePath, templateBuilder(adapterSettings))
 }
 
 /**
@@ -276,7 +276,7 @@ export async function buildIntegrationTests({
     return
   }
 
-  await writeCodeFile(testCasesFilePath, testCases(productId))
+  await writeAndLintFile(testCasesFilePath, testCases(productId))
 
   const testsFile = path.resolve(
     './packages/adapters-library/src/adapters/integration.test.ts',
@@ -328,7 +328,7 @@ export async function buildIntegrationTests({
     },
   })
 
-  await writeCodeFile(testsFile, print(ast).code)
+  await writeAndLintFile(testsFile, print(ast).code)
 }
 
 /**
@@ -399,7 +399,7 @@ export async function addProtocol({
     },
   })
 
-  await writeCodeFile(protocolsFile, print(ast).code)
+  await writeAndLintFile(protocolsFile, print(ast).code)
 }
 
 /**
@@ -449,7 +449,7 @@ export async function exportAdapter({
     },
   })
 
-  await writeCodeFile(adaptersFile, print(ast).code)
+  await writeAndLintFile(adaptersFile, print(ast).code)
 }
 
 /**
