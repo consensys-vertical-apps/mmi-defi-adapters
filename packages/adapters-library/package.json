@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/defi-adapters",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Defi adapters for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
@@ -16,7 +16,13 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist", "CHANGELOG.md", "LICENSE", "README.md", "readme-assets/**"],
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "readme-assets/**"
+  ],
   "sideEffects": false,
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
