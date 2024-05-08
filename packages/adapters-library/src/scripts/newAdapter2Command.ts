@@ -43,7 +43,6 @@ export interface QuestionConfig {
 }
 
 export type Outcomes = {
-
   getPositions: 'useBalanceOfHelper' | 'notImplementedError'
   buildMetadataFunction:
     | 'singleProtocolToken'
@@ -62,16 +61,17 @@ export type Outcomes = {
   withdrawalsFunction: 'useWithdrawalHelper' | 'notImplementedError'
   depositsFunction: 'useDepositsHelper' | 'notImplementedError'
   template: keyof typeof Templates | 'No'
-  hasRewards: boolean,
+  hasRewards: boolean
   hasExtraRewards: boolean
   hasProtocolRewards: boolean
 }
 
 export type Answers = Omit<
   Record<keyof typeof questionsJson, string>,
-  'chainKeys'
+  'chainKeys' & 'rewardDetails'
 > & {
   chainKeys: (keyof typeof Chain)[]
+  rewardDetails: string[]
   adapterClassName: string
 }
 
@@ -186,11 +186,31 @@ function calculateAdapterOutcomes(answers: Answers) {
     const questionConfig = questionsJson[key as keyof typeof questionsJson]
 
     // Step3: add outcome to outcomes
-    if ('outcomes' in questionConfig) {
+    if ('outcomes' in questionConfig && Array.isArray(answer)) {
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      let outcomes: { [key: string]: any } = {}
+
+      answer.forEach((outcomeKey) => {
+        outcomes = {
+          ...outcomes,
+          ...(questionConfig.outcomes![
+            outcomeKey as keyof typeof questionConfig.outcomes
+          ] as object),
+        }
+      })
+
       return {
-        ...(questionConfig.outcomes![
-          answer as keyof typeof questionConfig.outcomes
-        ] as object),
+        ...outcomes,
+        ...acc,
+      }
+    }
+    if ('outcomes' in questionConfig && !Array.isArray(answer)) {
+      const outcomes = questionConfig.outcomes![
+        answer as keyof typeof questionConfig.outcomes
+      ] as object
+
+      return {
+        ...outcomes,
         ...acc,
       }
     }

@@ -259,15 +259,18 @@ export const questionsJson = {
     default: () => true,
     next: {
       true: 'rewardsDetails',
-      false: 'end'
+      false: 'end',
     },
-
   },
   rewardsDetails: {
     question:
       'What best describes your rewards offering, you can select more than one',
     type: 'checkbox',
-    choices: ['rewards linked to defi asset (like curve and convex)', 'extra rewards linked to defi asset (like curve permissionsless rewards', 'protocol rewards like compound\'s protocol rewards'],
+    choices: [
+      'rewards linked to defi asset (like curve and convex)',
+      'extra rewards linked to defi asset (like curve permissionsless rewards',
+      "protocol rewards like compound's protocol rewards",
+    ],
     default: () => {
       return 'rewards linked to defi asset (like curve and convex)'
     },
@@ -277,12 +280,11 @@ export const questionsJson = {
         hasRewards: true,
       },
       'extra rewards linked to defi asset (like curve permissionsless rewards': {
-        hasExtraRewards: true,
-      },
-      'protocol rewards like compound\'s protocol rewards': {
-      },
+          hasExtraRewards: true,
+        },
+      "protocol rewards like compound's protocol rewards": {
         hasProtocolRewards: true,
-
+      },
     },
   },
 } as const
