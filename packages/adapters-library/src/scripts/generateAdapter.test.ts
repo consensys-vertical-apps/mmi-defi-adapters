@@ -45,28 +45,30 @@ function generateAllOutcomes(): Outcomes[] {
   const allOutcomes: Outcomes[] = []
 
   hasRewards.forEach((hasRewards) => {
-  hasExtraRewards.forEach((hasExtraRewards) => {
-  hasProtocolRewards.forEach((hasProtocolRewards) => {
-    getPositionsValues.forEach((getPositions) => {
-      buildMetadataFunctionValues.forEach((buildMetadataFunction) => {
-        underlyingTokensValues.forEach((underlyingTokens) => {
-          defiAssetStructureValues.forEach((defiAssetStructure) => {
-            unwrapValues.forEach((unwrap) => {
-              withdrawalsFunctionValues.forEach((withdrawalsFunction) => {
-                depositsFunctionValues.forEach((depositsFunction) => {
-                  templateValues.forEach((template) => {
-                    allOutcomes.push({
-                      hasRewards,
-                      hasExtraRewards, 
-                      hasProtocolRewards,
-                      getPositions,
-                      buildMetadataFunction,
-                      underlyingTokens,
-                      defiAssetStructure,
-                      unwrap,
-                      withdrawalsFunction,
-                      depositsFunction,
-                      template,
+    hasExtraRewards.forEach((hasExtraRewards) => {
+      hasProtocolRewards.forEach((hasProtocolRewards) => {
+        getPositionsValues.forEach((getPositions) => {
+          buildMetadataFunctionValues.forEach((buildMetadataFunction) => {
+            underlyingTokensValues.forEach((underlyingTokens) => {
+              defiAssetStructureValues.forEach((defiAssetStructure) => {
+                unwrapValues.forEach((unwrap) => {
+                  withdrawalsFunctionValues.forEach((withdrawalsFunction) => {
+                    depositsFunctionValues.forEach((depositsFunction) => {
+                      templateValues.forEach((template) => {
+                        allOutcomes.push({
+                          hasRewards,
+                          hasExtraRewards,
+                          hasProtocolRewards,
+                          getPositions,
+                          buildMetadataFunction,
+                          underlyingTokens,
+                          defiAssetStructure,
+                          unwrap,
+                          withdrawalsFunction,
+                          depositsFunction,
+                          template,
+                        })
+                      })
                     })
                   })
                 })
@@ -75,8 +77,6 @@ function generateAllOutcomes(): Outcomes[] {
           })
         })
       })
-    })
-    })
     })
   })
 
