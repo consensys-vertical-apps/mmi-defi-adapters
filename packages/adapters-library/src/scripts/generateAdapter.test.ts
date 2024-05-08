@@ -4,7 +4,9 @@ import { Answers, Outcomes, readBlankTemplate } from './newAdapter2Command'
 // Helper function to generate all possible combinations of Outcomes
 function generateAllOutcomes(): Outcomes[] {
   // Define all possible values for each property in Outcomes
-  const rewardsValues: Outcomes['rewards'][] = ['addRewards', 'noRewards']
+  const hasRewards: Outcomes['hasRewards'][] = [true, false]
+  const hasExtraRewards: Outcomes['hasExtraRewards'][] = [true, false]
+  const hasProtocolRewards: Outcomes['hasProtocolRewards'][] = [true, false]
   const getPositionsValues: Outcomes['getPositions'][] = [
     'useBalanceOfHelper',
     'notImplementedError',
@@ -42,7 +44,9 @@ function generateAllOutcomes(): Outcomes[] {
   // Generate all possible combinations using nested loops
   const allOutcomes: Outcomes[] = []
 
-  rewardsValues.forEach((rewards) => {
+  hasRewards.forEach((hasRewards) => {
+  hasExtraRewards.forEach((hasExtraRewards) => {
+  hasProtocolRewards.forEach((hasProtocolRewards) => {
     getPositionsValues.forEach((getPositions) => {
       buildMetadataFunctionValues.forEach((buildMetadataFunction) => {
         underlyingTokensValues.forEach((underlyingTokens) => {
@@ -52,7 +56,9 @@ function generateAllOutcomes(): Outcomes[] {
                 depositsFunctionValues.forEach((depositsFunction) => {
                   templateValues.forEach((template) => {
                     allOutcomes.push({
-                      rewards,
+                      hasRewards,
+                      hasExtraRewards, 
+                      hasProtocolRewards,
                       getPositions,
                       buildMetadataFunction,
                       underlyingTokens,
@@ -69,6 +75,8 @@ function generateAllOutcomes(): Outcomes[] {
           })
         })
       })
+    })
+    })
     })
   })
 

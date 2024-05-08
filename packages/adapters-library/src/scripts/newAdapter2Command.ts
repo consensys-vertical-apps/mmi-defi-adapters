@@ -68,7 +68,7 @@ export type Outcomes = {
 
 export type Answers = Omit<
   Record<keyof typeof questionsJson, string>,
-  'chainKeys' & 'rewardDetails'
+  'chainKeys' | 'rewardDetails'
 > & {
   chainKeys: (keyof typeof Chain)[]
   rewardDetails: string[]

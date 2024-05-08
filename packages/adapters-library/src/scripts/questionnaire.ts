@@ -13,6 +13,7 @@ import {
 } from '../core/utils/caseConversion'
 import { DefiProvider } from '../defiProvider'
 import { Templates } from './templates/templates'
+import { adapterClassName } from './newAdapter2Command'
 
 // NEED TO ADD A QUESTION?
 // 1. Add question below
@@ -192,14 +193,17 @@ export const questionsJson = {
   underlyingTokens: {
     question: 'How many underlying tokens does your DeFi asset represent?',
     type: 'list',
-    default: () => '1 (Like stEth)',
-    choices: ['1 (Like stEth)', 'More than 1 (Like Curve.fi DAI/USDC/USDT)'],
+    default: () => '1 (Like stEth, aETH)',
+    choices: [
+      '1 (Like stEth, aETH)',
+      'More than 1 (Like Curve.fi DAI/USDC/USDT)',
+    ],
     next: {
-      '1 (Like stEth)': 'unwrapOneUnderlying',
+      '1 (Like stEth, aETH)': 'unwrapOneUnderlying',
       'More than 1 (Like Curve.fi DAI/USDC/USDT)': 'additionalRewards',
     },
     outcomes: {
-      '1 (Like stEth)': {
+      '1 (Like stEth, aETH)': {
         underlyingTokens: 'oneUnderlying',
       },
       'More than 1 (Like Curve.fi DAI/USDC/USDT)': {
@@ -279,7 +283,8 @@ export const questionsJson = {
       'rewards linked to defi asset (like curve and convex)': {
         hasRewards: true,
       },
-      'extra rewards linked to defi asset (like curve permissionsless rewards': {
+      'extra rewards linked to defi asset (like curve permissionsless rewards':
+        {
           hasExtraRewards: true,
         },
       "protocol rewards like compound's protocol rewards": {
@@ -288,3 +293,5 @@ export const questionsJson = {
     },
   },
 } as const
+
+
