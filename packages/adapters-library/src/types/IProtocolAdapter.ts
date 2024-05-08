@@ -148,14 +148,4 @@ export interface IProtocolAdapter {
     protocolTokenAddress,
     tokenId,
   }: GetEventsInput): Promise<MovementsByBlock[]>
-
-  getProtocolRewardPositions?(
-    input: GetRewardPositionsInput,
-  ): Promise<UnderlyingReward[]>
-
-  getProtocolRewardWithdrawals?({
-    userAddress,
-    protocolTokenAddress,
-    tokenId,
-  }: GetEventsInput): Promise<MovementsByBlock[]>
 }
