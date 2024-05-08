@@ -9,6 +9,7 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { buildTrustAssetIconUrl } from '../../../../core/utils/buildIconUrl'
 import { filterMapAsync } from '../../../../core/utils/filters'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
@@ -16,11 +17,13 @@ import {
   AssetType,
   GetEventsInput,
   GetPositionsInputWithTokenAddresses,
+  GetRewardPositionsInput,
   MovementsByBlock,
   PositionType,
   ProtocolDetails,
   ProtocolPosition,
   TokenType,
+  UnderlyingReward,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
@@ -120,60 +123,62 @@ export class ConvexStakingAdapter
   async getRewardPositions({
     userAddress,
     blockNumber,
-    protocolTokenAddresses,
-  }: GetPositionsInputWithTokenAddresses): Promise<ProtocolPosition[]> {
-    const balances = await filterMapAsync(
-      protocolTokenAddresses,
-      async (protocolAddress) => {
-        const rewardManager = ConvexRewardsFactory__factory.connect(
-          protocolAddress,
-          this.provider,
-        )
+    protocolTokenAddress,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+    throw new NotImplementedError()
 
-        const crvRewardBalance = await rewardManager.earned(userAddress, {
-          blockTag: blockNumber,
-        })
+    // const balances = await filterMapAsync(
+    //   protocolTokenAddresses,
+    //   async (protocolAddress) => {
+    //     const rewardManager = ConvexRewardsFactory__factory.connect(
+    //       protocolAddress,
+    //       this.provider
+    //     );
 
-        if (crvRewardBalance === 0n) return
+    //     const crvRewardBalance = await rewardManager.earned(userAddress, {
+    //       blockTag: blockNumber,
+    //     });
 
-        const { protocolToken } = await this.fetchPoolMetadata(protocolAddress)
-        const crvRewardMetadata = await this.getCrv()
-        const convexRewardMetadata = await this.getMinter()
+    //     if (crvRewardBalance === 0n) return;
 
-        const cvxTokenContract = CvxMint__factory.connect(
-          convexRewardMetadata.address,
-          this.provider,
-        )
-        const cvxSupply = await cvxTokenContract.totalSupply({
-          blockTag: blockNumber,
-        })
+    //     const { protocolToken } = await this.fetchPoolMetadata(protocolAddress);
+    //     const crvRewardMetadata = await this.getCrv();
+    //     const convexRewardMetadata = await this.getMinter();
 
-        const cvxBalance = GetCVXMintAmount(crvRewardBalance, cvxSupply)
+    //     const cvxTokenContract = CvxMint__factory.connect(
+    //       convexRewardMetadata.address,
+    //       this.provider
+    //     );
+    //     const cvxSupply = await cvxTokenContract.totalSupply({
+    //       blockTag: blockNumber,
+    //     });
 
-        const result: ProtocolPosition = {
-          ...protocolToken,
-          type: TokenType.Reward,
+    //     const cvxBalance = GetCVXMintAmount(crvRewardBalance, cvxSupply);
 
-          balanceRaw: 0n,
-          tokens: [
-            {
-              ...crvRewardMetadata!,
-              type: TokenType.UnderlyingClaimable,
-              balanceRaw: crvRewardBalance,
-            },
-            {
-              ...convexRewardMetadata,
-              type: TokenType.UnderlyingClaimable,
-              balanceRaw: cvxBalance,
-            },
-          ],
-        }
+    //     const result: ProtocolPosition = {
+    //       ...protocolToken,
+    //       type: TokenType.Reward,
 
-        return result
-      },
-    )
+    //       balanceRaw: 0n,
+    //       tokens: [
+    //         {
+    //           ...crvRewardMetadata!,
+    //           type: TokenType.UnderlyingClaimable,
+    //           balanceRaw: crvRewardBalance,
+    //         },
+    //         {
+    //           ...convexRewardMetadata,
+    //           type: TokenType.UnderlyingClaimable,
+    //           balanceRaw: cvxBalance,
+    //         },
+    //       ],
+    //     };
 
-    return balances
+    //     return result;
+    //   }
+    // );
+
+    // return balances;
   }
   async getExtraRewardPositions({
     userAddress,

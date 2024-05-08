@@ -15,10 +15,12 @@ import {
   AssetType,
   GetEventsInput,
   GetPositionsInput,
+  GetRewardPositionsInput,
   MovementsByBlock,
   PositionType,
   ProtocolDetails,
   ProtocolPosition,
+  UnderlyingReward,
 } from '../../../../types/adapter'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import { ConvexFactory__factory } from '../../contracts'
@@ -33,8 +35,8 @@ export class ConvexPoolAdapter
   productId = 'pool'
 
   async getRewardPositions(
-    _input: GetPositionsInput,
-  ): Promise<ProtocolPosition[]> {
+    _input: GetRewardPositionsInput,
+  ): Promise<UnderlyingReward[]> {
     throw new NotImplementedError()
   }
   async getExtraRewardPositions(

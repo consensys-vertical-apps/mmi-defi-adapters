@@ -257,14 +257,32 @@ export const questionsJson = {
       'Does your product offer additional rewards beyond the primary earnings? (Yes/No)',
     type: 'confirm',
     default: () => true,
+    next: {
+      true: 'rewardsDetails',
+      false: 'end'
+    },
+
+  },
+  rewardsDetails: {
+    question:
+      'What best describes your rewards offering, you can select more than one',
+    type: 'checkbox',
+    choices: ['rewards linked to defi asset (like curve and convex)', 'extra rewards linked to defi asset (like curve permissionsless rewards', 'protocol rewards like compound\'s protocol rewards'],
+    default: () => {
+      return 'rewards linked to defi asset (like curve and convex)'
+    },
     next: 'end',
     outcomes: {
-      true: {
-        rewards: 'addRewards',
+      'rewards linked to defi asset (like curve and convex)': {
+        hasRewards: true,
       },
-      false: {
-        rewards: 'noRewards',
+      'extra rewards linked to defi asset (like curve permissionsless rewards': {
+        hasExtraRewards: true,
       },
+      'protocol rewards like compound\'s protocol rewards': {
+      },
+        hasProtocolRewards: true,
+
     },
   },
 } as const

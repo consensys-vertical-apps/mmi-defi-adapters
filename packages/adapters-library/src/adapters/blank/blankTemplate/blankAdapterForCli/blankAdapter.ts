@@ -157,4 +157,8 @@ export class ADAPTER_CLASS_NAME implements IProtocolAdapter, IMetadataBuilder {
   //Replacements.GET_REWARD_POSITIONS.placeholder
 
   //Replacements.GET_REWARD_WITHDRAWALS.placeholder
+
+  //Replacements.GET_EXTRA_REWARD_POSITIONS.placeholder
+
+  //Replacements.GET_EXTRA_REWARD_WITHDRAWALS.placeholder
 }

@@ -23,6 +23,7 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   TokenType,
+  UnderlyingReward,
 } from '../../../../types/adapter'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import {
@@ -179,7 +180,7 @@ export class ConvexSidechainStakingAdapter
    */
   async getRewardPositions(
     _input: GetPositionsInput,
-  ): Promise<ProtocolPosition[]> {
+  ): Promise<UnderlyingReward[]> {
     throw new NotImplementedError()
   }
 

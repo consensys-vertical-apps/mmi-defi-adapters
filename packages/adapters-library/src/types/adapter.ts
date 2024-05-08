@@ -174,6 +174,12 @@ export interface GetPositionsInput {
    */
   tokenIds?: string[]
 }
+export interface GetRewardPositionsInput {
+  userAddress: string
+  blockNumber?: number
+  protocolTokenAddress: string
+  tokenId?: string
+}
 
 export interface GetTotalValueLockedInput {
   /**
@@ -203,6 +209,14 @@ export interface Underlying extends TokenBalance {
   type: typeof TokenType.Underlying | typeof TokenType.UnderlyingClaimable
   priceRaw?: bigint
   tokens?: Underlying[]
+}
+
+/**
+ * Reward position
+ * The reward token may be a simple erc20 such as Dai.
+ */
+export type UnderlyingReward = Omit<Underlying, 'type'> & {
+  type: typeof TokenType.UnderlyingClaimable
 }
 
 /**

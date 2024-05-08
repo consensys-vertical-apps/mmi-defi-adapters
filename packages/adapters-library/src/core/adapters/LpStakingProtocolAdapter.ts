@@ -2,11 +2,13 @@ import {
   GetEventsInput,
   GetPositionsInput,
   GetPositionsInputWithTokenAddresses,
+  GetRewardPositionsInput,
   MovementsByBlock,
   ProtocolPosition,
   TokenBalance,
   TokenType,
   Underlying,
+  UnderlyingReward,
   UnwrappedTokenExchangeRate,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
@@ -40,8 +42,8 @@ export abstract class LpStakingAdapter
   abstract getRewardPositions({
     userAddress,
     blockNumber,
-    protocolTokenAddresses,
-  }: GetPositionsInputWithTokenAddresses): Promise<ProtocolPosition[]>
+    protocolTokenAddress,
+  }: GetRewardPositionsInput): Promise<UnderlyingReward[]>
 
   abstract getExtraRewardPositions({
     userAddress,
@@ -118,49 +120,50 @@ export abstract class LpStakingAdapter
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const stakingPositions = await super.getPositions({
-      userAddress,
-      blockNumber,
-      protocolTokenAddresses,
-    })
+    throw new NotImplementedError()
+    // const stakingPositions = await super.getPositions({
+    //   userAddress,
+    //   blockNumber,
+    //   protocolTokenAddresses,
+    // });
 
-    await Promise.all(
-      stakingPositions.map(async (position) => {
-        const [rewardTokensPositions, extraRewardTokensPositions] =
-          await Promise.allSettled([
-            this.getRewardPositions({
-              userAddress,
-              blockNumber,
-              protocolTokenAddresses: [position.address],
-            }),
-            this.getExtraRewardPositions({
-              userAddress,
-              blockNumber,
-              protocolTokenAddresses: [position.address],
-            }),
-          ])
+    // await Promise.all(
+    //   stakingPositions.map(async (position) => {
+    //     const [rewardTokensPositions, extraRewardTokensPositions] =
+    //       await Promise.allSettled([
+    //         this.getRewardPositions({
+    //           userAddress,
+    //           blockNumber,
+    //           protocolTokenAddresses: [position.address],
+    //         }),
+    //         this.getExtraRewardPositions({
+    //           userAddress,
+    //           blockNumber,
+    //           protocolTokenAddresses: [position.address],
+    //         }),
+    //       ]);
 
-        if (rewardTokensPositions.status === 'fulfilled') {
-          this.addTokensToPosition(position, rewardTokensPositions.value[0])
-        } else {
-          this.handleError(rewardTokensPositions.reason, 'getRewardPositions')
-        }
+    //     if (rewardTokensPositions.status === 'fulfilled') {
+    //       this.addTokensToPosition(position, rewardTokensPositions.value[0]);
+    //     } else {
+    //       this.handleError(rewardTokensPositions.reason, 'getRewardPositions');
+    //     }
 
-        if (extraRewardTokensPositions.status === 'fulfilled') {
-          this.addTokensToPosition(
-            position,
-            extraRewardTokensPositions.value[0],
-          )
-        } else {
-          this.handleError(
-            extraRewardTokensPositions.reason,
-            'getExtraRewardPositions',
-          )
-        }
-      }),
-    )
+    //     if (extraRewardTokensPositions.status === 'fulfilled') {
+    //       this.addTokensToPosition(
+    //         position,
+    //         extraRewardTokensPositions.value[0]
+    //       );
+    //     } else {
+    //       this.handleError(
+    //         extraRewardTokensPositions.reason,
+    //         'getExtraRewardPositions'
+    //       );
+    //     }
+    //   })
+    // );
 
-    return stakingPositions
+    // return stakingPositions;
   }
 
   protected async getUnderlyingTokenBalances({

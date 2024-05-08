@@ -352,11 +352,8 @@ export const Replacements = {
                   userAddress,
                   protocolTokenAddress,
                   blockNumber,
-                }: {
-                  userAddress: string
-                  blockNumber?: number
-                  protocolTokenAddress: string
-                }): Promise<Underlying[]> {
+                  tokenId,
+                }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
                   throw new NotImplementedError()
                 }`,
             )
@@ -378,23 +375,17 @@ export const Replacements = {
           'g',
         )
 
-        const regexGetWithdrawalsFunctionName = RegExp(/getWithdrawals/, 'g')
         switch (outcomes.rewards) {
           case 'addRewards':
-            return updatedTemplate
-              .replace(
-                regexGetWithdrawalsFunctionName,
-                'getWithdrawalsWithoutRewards',
-              )
-              .replace(
-                regexRewardWithdrawals,
-                `async getRewardWithdrawals({
+            return updatedTemplate.replace(
+              regexRewardWithdrawals,
+              `async getRewardWithdrawals({
                   userAddress,
                   protocolTokenAddress,
                 }: GetEventsInput): Promise<MovementsByBlock[]> {
                   throw new NotImplementedError()
                 }`,
-              )
+            )
 
           default:
             return updatedTemplate.replace(regexRewardWithdrawals, '')
@@ -404,25 +395,58 @@ export const Replacements = {
       return updatedTemplate
     },
   },
-  IMPLEMENTS_REWARDS_ADAPTER: {
+  GET_EXTRA_REWARD_POSITIONS: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (outcomes: Outcomes, updatedTemplate: string): string => {
-      if (outcomes.rewards) {
-        const regexGetPositionsFunctionName = /getPositions/g
+      if (outcomes.hasRewards) {
+        const regexRewardPositions =
+          /\/\/Replacements.GET_EXTRA_REWARD_POSITIONS.placeholder/g
 
-        switch (outcomes.rewards) {
-          case 'addRewards':
-            return updatedTemplate
-              .replace(
-                regexGetPositionsFunctionName,
-                'getPositionsWithoutRewards',
-              )
-              .replace(/implements/g, 'extends RewardsAdapter implements')
-              .replace(
-                /this.provider = provider/g,
-                `super({ helpers })
-                this.provider = provider`,
-              )
+        switch (outcomes.hasRewards) {
+          case true:
+            return updatedTemplate.replace(
+              regexRewardPositions,
+              `async getExtraRewardPositions({
+                  userAddress,
+                  protocolTokenAddress,
+                  blockNumber,
+                  tokenId,
+                }: GetRewardPositionsInput): Promise<UnderlyingReward[]> {
+                  throw new NotImplementedError()
+                }`,
+            )
+
+          default:
+            return updatedTemplate.replace(regexRewardPositions, '')
+        }
+      }
+
+      return updatedTemplate
+    },
+  },
+  GET_EXTRA_REWARD_WITHDRAWALS: {
+    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
+    replace: (outcomes: Outcomes, updatedTemplate: string): string => {
+      if (outcomes.hasExtraRewards) {
+        const regexRewardWithdrawals = RegExp(
+          /\/\/Replacements.GET_EXTRA_REWARD_WITHDRAWALS.placeholder/,
+          'g',
+        )
+
+        switch (outcomes.hasExtraRewards) {
+          case true:
+            return updatedTemplate.replace(
+              regexRewardWithdrawals,
+              `async getExtraRewardWithdrawals({
+                  userAddress,
+                  protocolTokenAddress,
+                }: GetEventsInput): Promise<MovementsByBlock[]> {
+                  throw new NotImplementedError()
+                }`,
+            )
+
+          default:
+            return updatedTemplate.replace(regexRewardWithdrawals, '')
         }
       }
 

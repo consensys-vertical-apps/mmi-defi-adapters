@@ -43,7 +43,7 @@ export interface QuestionConfig {
 }
 
 export type Outcomes = {
-  rewards: 'addRewards' | 'noRewards'
+
   getPositions: 'useBalanceOfHelper' | 'notImplementedError'
   buildMetadataFunction:
     | 'singleProtocolToken'
@@ -62,6 +62,9 @@ export type Outcomes = {
   withdrawalsFunction: 'useWithdrawalHelper' | 'notImplementedError'
   depositsFunction: 'useDepositsHelper' | 'notImplementedError'
   template: keyof typeof Templates | 'No'
+  hasRewards: boolean,
+  hasExtraRewards: boolean
+  hasProtocolRewards: boolean
 }
 
 export type Answers = Omit<
@@ -119,6 +122,8 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
     answers.forkCheck = inputTemplate ?? answers.forkCheck
 
     const outcomes = calculateAdapterOutcomes(answers)
+
+    console.log(outcomes, answers)
 
     switch (true) {
       case outcomes.template === 'No': {
