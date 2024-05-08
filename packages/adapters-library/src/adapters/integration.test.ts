@@ -1,10 +1,11 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import { ChainName } from '../core/constants/chains'
+import { Chain, ChainName } from '../core/constants/chains'
 import { bigintJsonParse } from '../core/utils/bigintJson'
 import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
+import { getMetadataInvalidAddresses } from '../scripts/addressValidation'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
@@ -33,7 +34,10 @@ import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as sonneTestCases } from './sonne/tests/testCases'
 import { testCases as stakeWiseTestCases } from './stakewise/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
-import type { GetTransactionParams } from './supportedProtocols'
+import {
+  type GetTransactionParams,
+  supportedProtocols,
+} from './supportedProtocols'
 import { testCases as sushiswapV2TestCases } from './sushiswap-v2/tests/testCases'
 import { testCases as swellTestCases } from './swell/tests/testCases'
 import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
@@ -84,6 +88,46 @@ function runAllTests() {
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
   describe(protocolId, () => {
+    const protocolChains = Object.keys(supportedProtocols[protocolId]).map(
+      (chainIdKey) => Number(chainIdKey),
+    ) as Chain[]
+    for (const chainId of protocolChains) {
+      const adapters =
+        defiProvider.adaptersController.fetchChainProtocolAdapters(
+          chainId,
+          protocolId,
+        )
+
+      for (const [productId, adapter] of adapters) {
+        it(`protocol token addresses are checksumed (${protocolId} # ${productId} # ${ChainName[chainId]})`, async () => {
+          let protocolTokenAddresses: string[]
+          try {
+            protocolTokenAddresses = (await adapter.getProtocolTokens()).map(
+              (x) => x.address,
+            )
+          } catch (error) {
+            // Skip if adapter does not have protocol tokens
+            expect(true).toBeTruthy()
+            return
+          }
+
+          const invalidAddresses = getMetadataInvalidAddresses(
+            protocolTokenAddresses,
+          )
+
+          if (invalidAddresses.length > 0) {
+            throw new Error(
+              `Invalid protocol token addresses found:\n${invalidAddresses.join(
+                '\n',
+              )}`,
+            )
+          }
+
+          expect(true).toBeTruthy()
+        })
+      }
+    }
+
     const positionsTestCases = testCases.filter(
       (testCase): testCase is TestCase & { method: 'positions' } =>
         testCase.method === 'positions',

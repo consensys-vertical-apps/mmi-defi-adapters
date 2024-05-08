@@ -1,5 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import chalk from 'chalk'
 import { Command } from 'commander'
 import partition from 'lodash/partition'
 import { parse, print, types, visit } from 'recast'
@@ -14,6 +15,7 @@ import { pascalCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { Json } from '../types/json'
+import { getMetadataInvalidAddresses } from './addressValidation'
 import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
@@ -78,6 +80,23 @@ export function buildMetadata(
                 chainId: Chain
                 fileKey: string
               }
+            }
+
+            const invalidAddresses = getMetadataInvalidAddresses(metadata)
+
+            if (invalidAddresses.length > 0) {
+              console.error(
+                chalk.red(
+                  'The following addresses found in the metadata file are not in checksum format.',
+                ),
+              )
+              console.error(chalk.yellow(invalidAddresses.join('\n')))
+              console.error(
+                chalk.green(
+                  '\nPlease ensure that addresses are in checksum format by wrapping them with getAddress from the ethers package.',
+                ),
+              )
+              return
             }
 
             await writeMetadataToFile({
