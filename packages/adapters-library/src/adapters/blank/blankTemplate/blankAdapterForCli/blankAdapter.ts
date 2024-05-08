@@ -22,6 +22,8 @@ import {
   UnwrapInput,
   UnwrapExchangeRate,
   Underlying,
+  GetRewardPositionsInput,
+  UnderlyingReward,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
