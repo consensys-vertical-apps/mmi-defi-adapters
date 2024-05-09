@@ -294,33 +294,42 @@ export async function buildIntegrationTests({
 
       this.traverse(path)
     },
-    visitFunctionDeclaration(path) {
+    visitVariableDeclarator(path) {
       const node = path.node
       if (!n.Identifier.check(node.id)) {
-        // Skips any other declaration
         return false
       }
 
-      if (node.id.name === 'runAllTests') {
-        const runProtocolTestsNode = b.expressionStatement(
-          b.callExpression(b.identifier('runProtocolTests'), [
-            b.memberExpression(
-              b.identifier('Protocol'),
-              b.identifier(protocolKey),
-            ),
-            b.identifier(`${lowerFirst(protocolKey)}TestCases`),
-          ]),
-        )
+      if (
+        node.id.name === 'protocolTestCases' &&
+        n.ObjectExpression.check(node.init)
+      ) {
+        if (
+          node.init.properties.some(
+            (property) =>
+              n.ObjectProperty.check(property) &&
+              n.MemberExpression.check(property.key) &&
+              n.Identifier.check(property.key.property) &&
+              property.key.property.name === protocolKey,
+          )
+        ) {
+          return false
+        }
 
-        node.body.body.push(runProtocolTestsNode)
+        const newEntry = b.objectProperty(
+          b.memberExpression(
+            b.identifier('Protocol'),
+            b.identifier(protocolKey),
+          ),
+          b.identifier(`${lowerFirst(protocolKey)}TestCases`),
+        )
+        newEntry.computed = true
+
+        node.init.properties.push(newEntry)
 
         sortEntries(
-          node.body.body,
-          (entry) =>
-            (
-              ((entry as n.ExpressionStatement).expression as n.CallExpression)
-                .arguments[1] as n.Identifier
-            ).name,
+          node.init.properties,
+          (entry) => ((entry as n.ObjectProperty).value as n.Identifier).name,
         )
       }
 

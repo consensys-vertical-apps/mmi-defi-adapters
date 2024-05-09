@@ -6,6 +6,7 @@ import { kebabCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { getMetadataInvalidAddresses } from '../scripts/addressValidation'
+import { protocolFilter } from '../scripts/commandFilters'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
@@ -49,41 +50,59 @@ const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
 
+const filterProtocolId = protocolFilter(
+  process.env.DEFI_ADAPTERS_TEST_FILTER_PROTOCOL,
+)
+
+const protocolTestCases = {
+  [Protocol.AaveV2]: aaveV2TestCases,
+  [Protocol.AaveV3]: aaveV3TestCases,
+  [Protocol.AngleProtocol]: angleProtocolTestCases,
+  [Protocol.CarbonDeFi]: carbonDeFiTestCases,
+  [Protocol.ChimpExchange]: chimpExchangeTestCases,
+  [Protocol.CompoundV2]: compoundV2TestCases,
+  [Protocol.Convex]: convexTestCases,
+  [Protocol.Curve]: curveTestCases,
+  [Protocol.Ethena]: ethenaTestCases,
+  [Protocol.Flux]: fluxTestCases,
+  [Protocol.Gmx]: gmxTestCases,
+  [Protocol.IZiSwap]: iZiSwapTestCases,
+  [Protocol.Lido]: lidoTestCases,
+  [Protocol.Maker]: makerTestCases,
+  [Protocol.MendiFinance]: mendiFinanceTestCases,
+  [Protocol.MorphoAaveV2]: morphoAaveV2TestCases,
+  [Protocol.MorphoAaveV3]: morphoAaveV3TestCases,
+  [Protocol.MorphoBlue]: morphoBlueTestCases,
+  [Protocol.MorphoCompoundV2]: morphoCompoundV2TestCases,
+  [Protocol.PancakeswapV2]: pancakeswapV2TestCases,
+  [Protocol.PricesV2]: pricesV2TestCases,
+  [Protocol.QuickswapV2]: quickswapV2TestCases,
+  [Protocol.RocketPool]: rocketPoolTestCases,
+  [Protocol.Sonne]: sonneTestCases,
+  [Protocol.StakeWise]: stakeWiseTestCases,
+  [Protocol.Stargate]: stargateTestCases,
+  [Protocol.SushiswapV2]: sushiswapV2TestCases,
+  [Protocol.Swell]: swellTestCases,
+  [Protocol.SyncSwap]: syncSwapTestCases,
+  [Protocol.UniswapV2]: uniswapV2TestCases,
+  [Protocol.UniswapV3]: uniswapV3TestCases,
+  [Protocol.Xfai]: xfaiTestCases,
+}
+
 runAllTests()
 
 function runAllTests() {
-  runProtocolTests(Protocol.AaveV2, aaveV2TestCases)
-  runProtocolTests(Protocol.AaveV3, aaveV3TestCases)
-  runProtocolTests(Protocol.AngleProtocol, angleProtocolTestCases)
-  runProtocolTests(Protocol.CarbonDeFi, carbonDeFiTestCases)
-  runProtocolTests(Protocol.ChimpExchange, chimpExchangeTestCases)
-  runProtocolTests(Protocol.CompoundV2, compoundV2TestCases)
-  runProtocolTests(Protocol.Convex, convexTestCases)
-  runProtocolTests(Protocol.Curve, curveTestCases)
-  runProtocolTests(Protocol.Ethena, ethenaTestCases)
-  runProtocolTests(Protocol.Flux, fluxTestCases)
-  runProtocolTests(Protocol.Gmx, gmxTestCases)
-  runProtocolTests(Protocol.IZiSwap, iZiSwapTestCases)
-  runProtocolTests(Protocol.Lido, lidoTestCases)
-  runProtocolTests(Protocol.Maker, makerTestCases)
-  runProtocolTests(Protocol.MendiFinance, mendiFinanceTestCases)
-  runProtocolTests(Protocol.MorphoAaveV2, morphoAaveV2TestCases)
-  runProtocolTests(Protocol.MorphoAaveV3, morphoAaveV3TestCases)
-  runProtocolTests(Protocol.MorphoBlue, morphoBlueTestCases)
-  runProtocolTests(Protocol.MorphoCompoundV2, morphoCompoundV2TestCases)
-  runProtocolTests(Protocol.PancakeswapV2, pancakeswapV2TestCases)
-  runProtocolTests(Protocol.PricesV2, pricesV2TestCases)
-  runProtocolTests(Protocol.QuickswapV2, quickswapV2TestCases)
-  runProtocolTests(Protocol.RocketPool, rocketPoolTestCases)
-  runProtocolTests(Protocol.Sonne, sonneTestCases)
-  runProtocolTests(Protocol.StakeWise, stakeWiseTestCases)
-  runProtocolTests(Protocol.Stargate, stargateTestCases)
-  runProtocolTests(Protocol.SushiswapV2, sushiswapV2TestCases)
-  runProtocolTests(Protocol.Swell, swellTestCases)
-  runProtocolTests(Protocol.SyncSwap, syncSwapTestCases)
-  runProtocolTests(Protocol.UniswapV2, uniswapV2TestCases)
-  runProtocolTests(Protocol.UniswapV3, uniswapV3TestCases)
-  runProtocolTests(Protocol.Xfai, xfaiTestCases)
+  if (filterProtocolId) {
+    runProtocolTests(filterProtocolId, protocolTestCases[filterProtocolId])
+    return
+  }
+
+  for (const [protocolId, testCases] of Object.entries(protocolTestCases) as [
+    Protocol,
+    TestCase[],
+  ][]) {
+    runProtocolTests(protocolId, testCases)
+  }
 }
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
@@ -91,6 +110,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
     const protocolChains = Object.keys(supportedProtocols[protocolId]).map(
       (chainIdKey) => Number(chainIdKey),
     ) as Chain[]
+
     for (const chainId of protocolChains) {
       const adapters =
         defiProvider.adaptersController.fetchChainProtocolAdapters(
