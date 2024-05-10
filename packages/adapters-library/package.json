@@ -30,8 +30,8 @@
     "test": "jest",
     "test:update:adapter-snapshot": "jest src/scripts/generateAdapter.test.ts -u",
     "test:tsc": "tsc --noEmit -p tsconfig.json",
-    "test:integration": "jest src/adapters/integration.test.ts",
-    "test:cov": "jest src --ci --coverage",
+    "test:integration": "DEFI_ADAPTERS_TEST_FILTER_PROTOCOL=$npm_config_protocol jest src/adapters/integration.test.ts",
+    "test:cov": "jest src --ci --coverage --testPathIgnorePatterns='src/adapters/integration.test.ts'",
     "build-docs": "typedoc --plugin typedoc-plugin-markdown --plugin typedoc-plugin-mdn-links --theme markdown --hideBreadcrumbs false --hideInPageTOC false --readme none --gitRemote origin --gitRevision main --out ./docs --sort source-order --entryPoints src/types/ --entryPointStrategy expand --excludePrivate false"
   },
   "devDependencies": {
