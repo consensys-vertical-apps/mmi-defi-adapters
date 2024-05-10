@@ -120,6 +120,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         protocol: ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
 
