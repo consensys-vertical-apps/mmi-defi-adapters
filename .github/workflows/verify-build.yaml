@@ -121,7 +121,7 @@ jobs:
 
     strategy:
       matrix:
-        protocol: ['compound-v2', 'stargate', 'gmx']
+        protocol: ${{needs.generate-protocol-matrix.outputs.protocol-matrix}}
 
     steps:
       - uses: actions/checkout@v4
