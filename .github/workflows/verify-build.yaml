@@ -109,7 +109,7 @@ jobs:
       - id: set-matrix
         run: |
           MATRIX=$(npm run -s support | jq -r 'keys | @json')
-          echo "matrix={MATRIX}" >> "$GITHUB_OUTPUT"
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
 
   integration-tests:
     needs: generate-protocol-matrix
