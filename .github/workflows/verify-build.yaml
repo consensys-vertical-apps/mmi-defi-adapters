@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
@@ -94,11 +94,14 @@ jobs:
     outputs:
       protocol-matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
 
       - name: Install dependencies
         run: npm ci
@@ -121,9 +124,9 @@ jobs:
         protocol: ['compound-v2', 'stargate', 'gmx']
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
@@ -149,13 +152,13 @@ jobs:
           DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
           DEFI_ADAPTERS_LOG_LEVEL: warn
 
-  run-tests:
+  run-unit-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
