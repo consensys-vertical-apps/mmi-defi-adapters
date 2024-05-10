@@ -89,12 +89,36 @@ jobs:
           npm run new-adapter2 -- -y -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)"
           npm run build
 
+  generate-protocol-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - id: set-matrix
+        run: |
+          MATRIX=$(npm run -s support | jq -r 'keys | @json')
+          echo "::set-output name=matrix::${MATRIX}"
+
   integration-tests:
+    needs: generate-protocol-matrix
+
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        protocol: ['compound-v2', 'stargate', 'gmx']
+        protocol: ${{fromJson(needs.generate-protocol-matrix.outputs.matrix)}}
 
     steps:
       - uses: actions/checkout@v3
