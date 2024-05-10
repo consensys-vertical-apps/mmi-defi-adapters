@@ -121,7 +121,7 @@ jobs:
 
     strategy:
       matrix:
-        protocol: ${{needs.generate-protocol-matrix.outputs.protocol-matrix}}
+        protocol: ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
 
     steps:
       - uses: actions/checkout@v4
@@ -130,7 +130,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - run: echo ${{needs.generate-protocol-matrix.outputs.protocol-matrix}}
+      - run: echo ${{ fromJson(needs.generate-protocol-matrix.outputs.protocol-matrix) }}
 
       - name: Install dependencies
         run: npm ci
