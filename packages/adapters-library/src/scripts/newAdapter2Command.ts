@@ -25,18 +25,14 @@ const italic = chalk.italic
 const bluePrefix = chalk.blue('?')
 
 export interface QuestionConfig {
-  question: string
+  name: QuestionName
+  message: string
   type: string
   choices?: readonly string[] // Only needed for certain types of questions, e.g., 'list'
   next: () => KeyofQuestionnaire | 'end'
   // biome-ignore lint/suspicious/noExplicitAny: Too broad to define
   outcomes?: Record<keyof Answers, any>
   validate?: (input: string, answers: Answers) => boolean | string
-  validateProductId?: (
-    defiProvider: DefiProvider,
-    answers: Answers,
-  ) => (input: string) => boolean | string
-  suffix?: string
   default: (
     answers: Answers,
     defiAdapter?: DefiProvider,
@@ -129,7 +125,6 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
     const questionnaire = getQuestionnaire(defiProvider, answers)
     const outcomes = calculateAdapterOutcomes(questionnaire, answers)
 
-    console.log(outcomes, answers)
 
     switch (true) {
       case outcomes.template === 'No': {
@@ -327,10 +322,10 @@ async function askQuestion(
   outcomes = {} as Outcomes,
 ): Promise<Answers> {
 
-  console.log(nextQuestionName)
+
   const questionConfig = getQuestionnaire(defiProvider, answers)[nextQuestionName]
 
-  console.log(questionConfig)
+
 
   // Step1: ask question and get answer
   const answer = (

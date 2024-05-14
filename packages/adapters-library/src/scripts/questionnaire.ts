@@ -1,7 +1,4 @@
-// TODO Check if any key in T is 'getPositions'
-// - if not, call GetPositionsOptions<value>
-// - if yes, add value to the output
-// type GetPositionsOptions<T, Value = 'getPositions', Output = []> =
+
 
 import { Answers } from 'inquirer'
 import { Protocol } from '../adapters/protocols'
