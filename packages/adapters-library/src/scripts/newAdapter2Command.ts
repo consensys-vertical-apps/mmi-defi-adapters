@@ -9,6 +9,7 @@ import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import type { DefiProvider } from '../defiProvider'
 import { generateAdapter } from './generateAdapter'
+import { newAdapterCliLogo } from './newAdapterCliLogo'
 import {
   addProtocol,
   buildIntegrationTests,
@@ -16,28 +17,12 @@ import {
 } from './newAdapterCommand'
 import { QuestionName, getQuestionnaire } from './questionnaire'
 import { Templates } from './templates/templates'
-import { newAdapterCliLogo } from './newAdapterCliLogo'
 
 const colorBlue = chalk.rgb(0, 112, 243).bold
 const boldWhiteBg = chalk.bgWhite.bold
 const boldText = chalk.bold
 const italic = chalk.italic
 const bluePrefix = chalk.blue('?')
-
-export interface QuestionConfig {
-  name: QuestionName
-  message: string
-  type: string
-  choices?: readonly string[] // Only needed for certain types of questions, e.g., 'list'
-  next: () => KeyofQuestionnaire | 'end'
-  // biome-ignore lint/suspicious/noExplicitAny: Too broad to define
-  outcomes?: Record<keyof Answers, any>
-  validate?: (input: string, answers: Answers) => boolean | string
-  default: (
-    answers: Answers,
-    defiAdapter?: DefiProvider,
-  ) => string | boolean | (keyof typeof Chain)[]
-}
 
 export type Outcomes = {
   getPositions: 'useBalanceOfHelper' | 'notImplementedError'
@@ -63,9 +48,9 @@ export type Outcomes = {
   hasProtocolRewards: boolean
 }
 
-type Awaited<T> = T extends PromiseLike<infer U> ? U : T
 type QuestionnaireType = Awaited<ReturnType<typeof getQuestionnaire>>
 type KeyofQuestionnaire = keyof QuestionnaireType
+type ValueOfQuestionnaire = QuestionnaireType[KeyofQuestionnaire]
 
 export type Answers = Omit<
   Record<KeyofQuestionnaire, string>,
@@ -125,6 +110,7 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
     const questionnaire = getQuestionnaire(defiProvider, answers)
     const outcomes = calculateAdapterOutcomes(questionnaire, answers)
 
+    console.log(answers, outcomes)
 
     switch (true) {
       case outcomes.template === 'No': {
@@ -186,52 +172,42 @@ function calculateDefaultAnswers(
 function calculateAdapterOutcomes(
   questionnaire: QuestionnaireType,
   answers: Answers,
-) {
+): Outcomes {
   return Object.keys(questionnaire).reduce((acc, key) => {
-    const answer = answers[key as keyof Answers]
+    const answer = answers[key as keyof Answers];
+    const questionConfig = questionnaire[key as keyof QuestionnaireType];
 
-    const questionConfig = questionnaire[key as KeyofQuestionnaire]
+    // Step 3: add outcome to outcomes
+    if ('outcomes' in questionConfig) {
+      let outcomeResults: Partial<Outcomes> = {};
 
-    // Step3: add outcome to outcomes
-    if ('outcomes' in questionConfig && Array.isArray(answer)) {
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      let outcomes: { [key: string]: any } = {}
-
-      answer.forEach((outcomeKey) => {
-        outcomes = {
-          ...outcomes,
-          ...(questionConfig.outcomes![
-            outcomeKey as keyof typeof questionConfig.outcomes
-          ] as object),
-        }
-      })
+      if (Array.isArray(answer)) {
+        answer.forEach((outcomeKey) => {
+          outcomeResults = {
+            ...outcomeResults,
+            ...(questionConfig.outcomes(outcomeKey) as Partial<Outcomes>),
+          };
+        });
+      } else {
+        outcomeResults = {
+          ...outcomeResults,
+          ...(questionConfig.outcomes(answer) as Partial<Outcomes>),
+        };
+      }
 
       return {
-        ...outcomes,
         ...acc,
-      }
-    }
-    if ('outcomes' in questionConfig && !Array.isArray(answer)) {
-      const outcomes = questionConfig.outcomes![
-        answer as keyof typeof questionConfig.outcomes
-      ] as object
-
-      return {
-        ...outcomes,
-        ...acc,
-      }
+        ...outcomeResults,
+      };
     }
 
-    return acc
-  }, {} as Outcomes)
+    return acc;
+  }, {} as Outcomes);
 }
 
+
 async function welcome(defiProvider: DefiProvider) {
-  console.log(
-    colorBlue(
-      newAdapterCliLogo,
-    ),
-  )
+  showMessage(colorBlue(newAdapterCliLogo))
 
   const listQuestionsAnswers = await prompt({
     type: 'confirm',
@@ -241,78 +217,66 @@ async function welcome(defiProvider: DefiProvider) {
     prefix: chalk.blue('?'),
   })
 
-  if (listQuestionsAnswers['viewAllQuestions']) {
-    console.log()
-    console.log(
-      boldWhiteBg(
-        'See all questions below:                                                                                          ',
-      ),
-    )
-    console.log(
-      boldWhiteBg(
-        '                                                                                                                  ',
-      ),
-    )
-    console.log(
-      boldWhiteBg(
-        '                                                                                                                  ',
-      ),
-    )
+  if (listQuestionsAnswers.viewAllQuestions) {
+    displayAllQuestions(defiProvider)
 
-    const questionnaire = getQuestionnaire(defiProvider, {})
-
-
-
-    Object.keys(questionnaire).forEach((questionKey, index) => {
-      const question = questionnaire[questionKey as KeyofQuestionnaire]
-      console.log(
-        italic(boldText(`Q${index + 1} ${pascalCase(questionKey)}: `)) +
-          italic(`${question.message}`),
-      )
-
-      // Check if the question has choices and print them
-      if ('choices' in question) {
-        console.log(italic('Options:'))
-        question.choices.forEach((choice: string, index: number) => {
-          console.log(italic(`  ${index + 1}. ${choice}`))
-        })
-      }
-      if (question.type === 'confirm') {
-        console.log(italic('Options:'))
-        console.log(italic(' 1. Yes'))
-        console.log(italic(' 2. No'))
-      }
-      if (question.type === 'text') {
-        console.log(italic('Options:'))
-        console.log(`${italic(' For example')} ${italic(question.default())}`)
-      }
-
-      console.log()
-    })
-    console.log()
-    console.log(
-      boldWhiteBg(
-        'All questions end                                                                                                  ',
-      ),
-    )
-    console.log(
-      boldWhiteBg(
-        '                                                                                                                   ',
-      ),
-    )
-    console.log()
     const start = await prompt({
       type: 'confirm',
       name: 'start',
-      message: 'Ready to answer the questions? ',
+      message: 'Ready to answer the questions?',
       prefix: bluePrefix,
     })
 
-    if (!start['start']) {
-      console.log('Goodbye!')
+    if (!start.start) {
+      showMessage('Goodbye!')
       return true
     }
   }
+}
+
+function displayAllQuestions(defiProvider: DefiProvider) {
+  showMessage(boldWhiteBg('See all questions below:'))
+  showMessage(boldWhiteBg(' '.repeat(110)))
+  showMessage(boldWhiteBg(' '.repeat(110)))
+
+  const questionnaire = getQuestionnaire(defiProvider, {})
+
+  Object.keys(questionnaire).forEach((questionKey, index) => {
+    const question = questionnaire[questionKey as KeyofQuestionnaire]
+    showMessage(
+      italic(boldText(`Q${index + 1} ${pascalCase(questionKey)}: `)) +
+        italic(question.message),
+    )
+
+    displayQuestionOptions(question)
+  })
+
+  showMessage(boldWhiteBg('All questions end'))
+  showMessage(boldWhiteBg(' '.repeat(111)))
+}
+
+function displayQuestionOptions(question: ValueOfQuestionnaire) {
+  if ('choices' in question) {
+    showMessage(italic('Options:'))
+    //@ts-ignore
+    question.choices.forEach((choice: string, index: number) => {
+      showMessage(italic(`  ${index + 1}. ${choice}`))
+    })
+    //@ts-ignore
+  } else if (question.type === 'confirm') {
+    showMessage(italic('Options:'))
+    showMessage(italic(' 1. Yes'))
+    showMessage(italic(' 2. No'))
+    //@ts-ignore
+  } else if (question.type === 'text') {
+    showMessage(italic('Options:'))
+    //@ts-ignore
+    showMessage(`${italic(' For example')} ${italic(question.default())}`)
+  }
+}
+
+function showMessage(message: string) {
+  console.log(message)
 }
 
 async function askQuestion(
@@ -321,11 +285,9 @@ async function askQuestion(
   answers = {} as Answers,
   outcomes = {} as Outcomes,
 ): Promise<Answers> {
-
-
-  const questionConfig = getQuestionnaire(defiProvider, answers)[nextQuestionName]
-
-
+  const questionConfig = getQuestionnaire(defiProvider, answers)[
+    nextQuestionName
+  ]
 
   // Step1: ask question and get answer
   const answer = (

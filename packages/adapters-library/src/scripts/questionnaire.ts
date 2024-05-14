@@ -1,5 +1,3 @@
-
-
 import { Answers } from 'inquirer'
 import { Protocol } from '../adapters/protocols'
 import { Chain } from '../core/constants/chains'
@@ -32,7 +30,7 @@ export type QuestionName = (typeof QuestionName)[keyof typeof QuestionName]
 
 type QuestionAnswersType = Omit<
   {
-    [K in QuestionName]: { [key: string]: string }
+    [K in QuestionName]: { [key: string]: string | boolean }
   },
   'protocolKey' | 'protocolId' | 'chainKeys' | 'productId'
 >
@@ -45,16 +43,16 @@ export const QuestionAnswers: QuestionAnswersType = {
     }, {}),
   },
   [QuestionName.Erc20Event]: {
-    True: 'true',
-    False: 'false',
+    True: true,
+    False: false,
   },
   [QuestionName.BalanceQueryMethod]: {
-    True: 'true',
-    False: 'false',
+    True: true,
+    False: false,
   },
   [QuestionName.AdditionalRewards]: {
-    True: 'true',
-    False: 'false',
+    True: true,
+    False: false,
   },
   [QuestionName.DefiAssetStructure]: {
     Single: 'Single ERC20 protocol token (Like stETH)',
@@ -183,11 +181,13 @@ export const getQuestionnaire = (
           ? QuestionName.DefiAssetStructure
           : 'end'
       },
-      outcomes: {
-        No: { template: 'No' },
-        ...Object.keys(Templates).reduce((acc, templateName) => {
-          return { [templateName]: { template: templateName }, ...acc }
-        }, {}),
+      outcomes: (input: ForkCheckAnswers) => {
+        switch (input) {
+          case QuestionAnswers[QuestionName.ForkCheck].No:
+            return { template: 'No' }
+          default:
+            return { template: input }
+        }
       },
     },
     [QuestionName.DefiAssetStructure]: {
@@ -361,7 +361,6 @@ export const getQuestionnaire = (
             return null
         }
       },
-
     },
 
     [QuestionName.AdditionalRewards]: {
@@ -382,8 +381,7 @@ export const getQuestionnaire = (
         'What best describes your rewards offering, you can select more than one',
       type: 'checkbox',
       choices: Object.values(QuestionAnswers[QuestionName.RewardsDetails]),
-      default: () =>
-        QuestionAnswers[QuestionName.RewardsDetails].LinkedRewards,
+      default: () => QuestionAnswers[QuestionName.RewardsDetails].LinkedRewards,
       next: (_input: string) => 'end',
 
       outcomes: (input: RewardDetailsAnswers) => {

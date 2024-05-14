@@ -257,7 +257,7 @@ export const Replacements = {
     ): string => {
       return updatedTemplate.replace(
         /Replacements.PRODUCT_ID.placeholder/g,
-        answers.protocolId,
+        answers.productId,
       )
     },
   },
