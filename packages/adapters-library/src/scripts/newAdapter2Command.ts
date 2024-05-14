@@ -14,20 +14,21 @@ import {
   buildIntegrationTests,
   exportAdapter,
 } from './newAdapterCommand'
-import { questionsJson } from './questionnaire'
+import { QuestionName, getQuestionnaire } from './questionnaire'
 import { Templates } from './templates/templates'
+import { newAdapterCliLogo } from './newAdapterCliLogo'
 
 const colorBlue = chalk.rgb(0, 112, 243).bold
 const boldWhiteBg = chalk.bgWhite.bold
 const boldText = chalk.bold
-const greenBrightText = chalk.italic
+const italic = chalk.italic
 const bluePrefix = chalk.blue('?')
 
 export interface QuestionConfig {
   question: string
   type: string
   choices?: readonly string[] // Only needed for certain types of questions, e.g., 'list'
-  next: Record<string, string> | string
+  next: () => KeyofQuestionnaire | 'end'
   // biome-ignore lint/suspicious/noExplicitAny: Too broad to define
   outcomes?: Record<keyof Answers, any>
   validate?: (input: string, answers: Answers) => boolean | string
@@ -66,8 +67,12 @@ export type Outcomes = {
   hasProtocolRewards: boolean
 }
 
+type Awaited<T> = T extends PromiseLike<infer U> ? U : T
+type QuestionnaireType = Awaited<ReturnType<typeof getQuestionnaire>>
+type KeyofQuestionnaire = keyof QuestionnaireType
+
 export type Answers = Omit<
-  Record<keyof typeof questionsJson, string>,
+  Record<KeyofQuestionnaire, string>,
   'chainKeys' | 'rewardDetails'
 > & {
   chainKeys: (keyof typeof Chain)[]
@@ -98,7 +103,7 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
     let answers = {} as Answers
 
     if (!skipQuestions) {
-      const isExit = await welcome()
+      const isExit = await welcome(defiProvider)
       if (isExit) {
         return
       }
@@ -107,7 +112,8 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
 
       answers = await askQuestion(firstQuestionId, defiProvider)
     } else {
-      answers = calculateDefaultAnswers(inputTemplate)
+      const questionnaire = getQuestionnaire(defiProvider, answers)
+      answers = calculateDefaultAnswers(questionnaire, inputTemplate)
       console.log({ answers, inputTemplate })
       answers.productId = `${answers.productId}-${answers.forkCheck
         .replace(/[^\w\s]/gi, '')
@@ -120,8 +126,8 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
     )
 
     answers.forkCheck = inputTemplate ?? answers.forkCheck
-
-    const outcomes = calculateAdapterOutcomes(answers)
+    const questionnaire = getQuestionnaire(defiProvider, answers)
+    const outcomes = calculateAdapterOutcomes(questionnaire, answers)
 
     console.log(outcomes, answers)
 
@@ -164,12 +170,15 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
   }
 }
 
-function calculateDefaultAnswers(inputTemplate?: string) {
-  const answers = Object.keys(questionsJson).reduce((acc, key) => {
-    acc[key as keyof Answers] = questionsJson[
-      key as keyof typeof questionsJson
+function calculateDefaultAnswers(
+  questionnaire: QuestionnaireType,
+  inputTemplate?: string,
+) {
+  const answers = Object.keys(questionnaire).reduce((acc, key) => {
+    acc[key as keyof Answers] = questionnaire[
+      key as keyof typeof questionnaire
       // biome-ignore lint/suspicious/noExplicitAny: Not sure - TODO
-    ].default(acc) as any
+    ].default() as any
     return acc
   }, {} as Answers)
 
@@ -179,11 +188,14 @@ function calculateDefaultAnswers(inputTemplate?: string) {
   return answers
 }
 
-function calculateAdapterOutcomes(answers: Answers) {
-  return Object.keys(questionsJson).reduce((acc, key) => {
+function calculateAdapterOutcomes(
+  questionnaire: QuestionnaireType,
+  answers: Answers,
+) {
+  return Object.keys(questionnaire).reduce((acc, key) => {
     const answer = answers[key as keyof Answers]
 
-    const questionConfig = questionsJson[key as keyof typeof questionsJson]
+    const questionConfig = questionnaire[key as KeyofQuestionnaire]
 
     // Step3: add outcome to outcomes
     if ('outcomes' in questionConfig && Array.isArray(answer)) {
@@ -219,48 +231,10 @@ function calculateAdapterOutcomes(answers: Answers) {
   }, {} as Outcomes)
 }
 
-async function welcome() {
+async function welcome(defiProvider: DefiProvider) {
   console.log(
     colorBlue(
-      `                                                                        
-                                                                          
-                                                                          
-                                                                          
-                                                                          
-                                                                          
-                                                                          
-                                                                          
-                                                                          
-        +-.                                .-+                 
-       -###*==:                        :-=*#%#=                
-       #######+====-              :====+#######.               
-      *#########*+====..........====+*#########*               
-      :############+==-........-==+############:               
-       ##############*=:......:=*##############                
-       =###############+......+###############=                
-       +#############*==......==*#############+                
-       -###########*====......====*###########-                
-       .#######+--======:....:======-:=#######.                
-         --:....-=======:....:=======-.....--                  
-         ......-+****+++-....-++++****-......                  
-        ........:+***##*-....-*##***+-........                 
-        .........:=-+%@*=....=*%%*-=:.........                 
-       ...........-....:-....-:....-...........                
-       ========++++-....-....-....-++++========                
-       :=======+**+===:........:===+**+=======-                
-        ========+*+===--@@@@@@--===+*=========.                
-        :==========:...=@@@@@@=...:==========-                 
-         ==-:.      ....:::::::...      .:-==                  
-                       .::::::.                                
-                                                               
-                                                               
-                                                               
-                                                               
-              Create new DeFi Adapter!                                              
-                                                               
-                                                               
-                                                               
-                                                               `,
+      newAdapterCliLogo,
     ),
   )
 
@@ -276,37 +250,46 @@ async function welcome() {
     console.log()
     console.log(
       boldWhiteBg(
-        '                                            All questions                                              ',
+        'See all questions below:                                                                                          ',
+      ),
+    )
+    console.log(
+      boldWhiteBg(
+        '                                                                                                                  ',
+      ),
+    )
+    console.log(
+      boldWhiteBg(
+        '                                                                                                                  ',
       ),
     )
 
-    Object.keys(questionsJson).forEach((questionKey, index) => {
-      const question = questionsJson[questionKey as keyof typeof questionsJson]
+    const questionnaire = getQuestionnaire(defiProvider, {})
+
+
+
+    Object.keys(questionnaire).forEach((questionKey, index) => {
+      const question = questionnaire[questionKey as KeyofQuestionnaire]
       console.log(
-        greenBrightText(
-          boldText(`Q${index + 1} ${pascalCase(questionKey)}: `),
-        ) + greenBrightText(`${question.question}`),
+        italic(boldText(`Q${index + 1} ${pascalCase(questionKey)}: `)) +
+          italic(`${question.message}`),
       )
 
       // Check if the question has choices and print them
       if ('choices' in question) {
-        console.log(greenBrightText('Options:'))
+        console.log(italic('Options:'))
         question.choices.forEach((choice: string, index: number) => {
-          console.log(greenBrightText(`  ${index + 1}. ${choice}`))
+          console.log(italic(`  ${index + 1}. ${choice}`))
         })
       }
       if (question.type === 'confirm') {
-        console.log(greenBrightText('Options:'))
-        console.log(greenBrightText(' 1. Yes'))
-        console.log(greenBrightText(' 2. No'))
+        console.log(italic('Options:'))
+        console.log(italic(' 1. Yes'))
+        console.log(italic(' 2. No'))
       }
       if (question.type === 'text') {
-        console.log(greenBrightText('Options:'))
-        console.log(
-          `${greenBrightText(' 1. string')} (e.g ${greenBrightText(
-            question.default({} as Answers),
-          )}`,
-        )
+        console.log(italic('Options:'))
+        console.log(`${italic(' For example')} ${italic(question.default())}`)
       }
 
       console.log()
@@ -314,7 +297,12 @@ async function welcome() {
     console.log()
     console.log(
       boldWhiteBg(
-        '                                            All questions end                                              ',
+        'All questions end                                                                                                  ',
+      ),
+    )
+    console.log(
+      boldWhiteBg(
+        '                                                                                                                   ',
       ),
     )
     console.log()
@@ -333,44 +321,36 @@ async function welcome() {
 }
 
 async function askQuestion(
-  key: keyof typeof questionsJson,
+  nextQuestionName: KeyofQuestionnaire,
   defiProvider: DefiProvider,
   answers = {} as Answers,
   outcomes = {} as Outcomes,
 ): Promise<Answers> {
-  const questionConfig = questionsJson[key] as QuestionConfig
+
+  console.log(nextQuestionName)
+  const questionConfig = getQuestionnaire(defiProvider, answers)[nextQuestionName]
+
+  console.log(questionConfig)
 
   // Step1: ask question and get answer
   const answer = (
     await prompt([
       {
-        type: questionConfig.type,
-        name: key,
-        message: questionConfig.question,
-        choices: questionConfig.choices,
-        default: questionConfig?.default?.(answers),
+        ...questionConfig,
         prefix: chalk.blue('?'),
-        suffix: questionConfig.suffix,
-        validate:
-          questionConfig?.validateProductId?.(defiProvider, answers) ??
-          questionConfig.validate,
         pageSize: 9990,
       },
     ])
-  )[key]
+  )[nextQuestionName]
 
   // Step2: add answer to answers
-  answers[key as keyof Answers] = answer
+  answers[nextQuestionName as keyof Answers] = answer
 
-  if (
-    questionConfig.next === 'end' ||
-    (questionConfig.next as Record<string, string>)[answer] === 'end'
-  ) {
+  if (questionConfig.next(answer) === 'end') {
     return answers
   }
 
-  //@ts-ignore
-  const nextQuestion = questionConfig.next[answer] || questionConfig.next
+  const nextQuestion = questionConfig.next(answer) as QuestionName
   return await askQuestion(nextQuestion, defiProvider, answers, outcomes)
 }
 

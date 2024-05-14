@@ -12,188 +12,151 @@ import {
   kebabCase,
 } from '../core/utils/caseConversion'
 import { DefiProvider } from '../defiProvider'
+
 import { Templates } from './templates/templates'
-import { adapterClassName } from './newAdapter2Command'
 
-// NEED TO ADD A QUESTION?
-// 1. Add question below
-// 2. Make sure you correctly implement next, if different path needed use an object for next
-// 3. Outcomes are used in the replacement methods (see replacements.js) to add code snippets to blank template
+export const QuestionName = {
+  ProtocolKey: 'protocolKey',
+  ProtocolId: 'protocolId',
+  ChainKeys: 'chainKeys',
+  ProductId: 'productId', // corrected from 'prodicyId'
+  ForkCheck: 'forkCheck',
+  DefiAssetStructure: 'defiAssetStructure',
+  Erc20Event: 'erc20Event',
+  BalanceQueryMethod: 'balanceQueryMethod',
+  UnderlyingTokens: 'underlyingTokens',
+  UnwrapOneUnderlying: 'unwrapOneUnderlying',
+  UnwrapMultipleUnderlying: 'unwrapMultipleUnderlying',
+  AdditionalRewards: 'additionalRewards',
+  RewardsDetails: 'rewardsDetails', // corrected from 'rewardDetails'
+} as const
 
-export const answerToNextMap = {
-  protocolKey: 'protocolId',
-  protocolId: 'chainKeys',
-  chainKeys: 'productId',
-  productId: 'forkCheck',
-  forkCheck: {
-    No: 'defiAssetStructure',
+export type QuestionName = (typeof QuestionName)[keyof typeof QuestionName]
+
+type QuestionAnswersType = Omit<
+  {
+    [K in QuestionName]: { [key: string]: string }
+  },
+  'protocolKey' | 'protocolId' | 'chainKeys' | 'productId'
+>
+
+export const QuestionAnswers: QuestionAnswersType = {
+  [QuestionName.ForkCheck]: {
+    No: 'No',
     ...Object.keys(Templates).reduce((acc, templateName) => {
-      return { [templateName]: 'end', ...acc }
+      return { [templateName]: templateName, ...acc }
     }, {}),
   },
-  defiAssetStructure: {
-    'Single ERC20 protocol token (Like stETH)': 'erc20Event',
-    'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC)': 'erc20Event',
-    'Non fungible token (Like Uniswap V3)': 'balanceQueryMethod',
-    'Contract position (Like Morpho)': 'balanceQueryMethod',
-    Other: 'erc20Event',
+  [QuestionName.Erc20Event]: {
+    True: 'true',
+    False: 'false',
   },
-  erc20Event: 'balanceQueryMethod',
-  balanceQueryMethod: 'underlyingTokens',
-  underlyingTokens: {
-    '1 (Like stEth, aETH)': 'unwrapOneUnderlying',
-    'More than 1 (Like Curve.fi DAI/USDC/USDT)': 'unwrapMultipleUnderlying',
+  [QuestionName.BalanceQueryMethod]: {
+    True: 'true',
+    False: 'false',
   },
-  unwrapOneUnderlying: 'additionalRewards',
-  unwrapMultipleUnderlying: 'additionalRewards',
-  additionalRewards: {
-    true: 'rewardsDetails',
-    false: 'end',
+  [QuestionName.AdditionalRewards]: {
+    True: 'true',
+    False: 'false',
   },
-  rewardsDetails: 'end',
-} as const;
-
-export const answerToOutcomeMap = {
-  defiAssetStructure: {
-    'Single ERC20 protocol token (Like stETH)':  {
-      buildMetadataFunction: 'singleProtocolToken',
-      defiAssetStructure: 'singleProtocolToken',
-    },
-    'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC)':
-    {
-      buildMetadataFunction: 'multipleProtocolTokens',
-      defiAssetStructure: 'multipleProtocolTokens',
-    },
-    'Non fungible token (Like Uniswap V3)': {
-      buildMetadataFunction: 'notImplementedError',
-      withdrawalsFunction: 'notImplementedError',
-      depositsFunction: 'notImplementedError',
-      defiAssetStructure: 'nft',
-    },
-    'Contract position (Like Morpho)': {
-      buildMetadataFunction: 'notImplementedError',
-      withdrawalsFunction: 'notImplementedError',
-      depositsFunction: 'notImplementedError',
-      defiAssetStructure: 'contractPosition',
-    },
-    Other: {
-      buildMetadataFunction: 'notImplementedError',
-      withdrawalsFunction: 'notImplementedError',
-      depositsFunction: 'notImplementedError',
-      defiAssetStructure: 'other',
-    },
+  [QuestionName.DefiAssetStructure]: {
+    Single: 'Single ERC20 protocol token (Like stETH)',
+    Multiple:
+      'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC)',
+    NonFungible: 'Non fungible token (Like Uniswap V3)',
+    ContractPosition: 'Contract position (Like Morpho)',
+    Other: 'Other',
   },
-  erc20Event: {
-    true: {
-      withdrawalsFunction: 'useWithdrawalHelper',
-      depositsFunction: 'useDepositsHelper',
-    },
-    false: {
-      withdrawalsFunction: 'notImplementedError',
-      depositsFunction: 'notImplementedError',
-    },
+  [QuestionName.UnderlyingTokens]: {
+    One: '1 (Like stEth, aETH)',
+    Multiple: 'More than 1 (Like Curve.fi DAI/USDC/USDT)',
   },
-  balanceQueryMethod: {
-    true: {
-      getPositions: 'useBalanceOfHelper',
-    },
-    false: {
-      getPositions: 'notImplementedError',
-    },
+  [QuestionName.UnwrapOneUnderlying]: {
+    OneToOne: 'One-to-one mapping to the underlying asset',
+    DerivedValue:
+      'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying asset, where the underlying token is owned by the protocol token smart contract.',
+    Other: 'Other',
   },
-  underlyingTokens: {
-    '1 (Like stEth, aETH)': {
-      underlyingTokens: 'oneUnderlying',
-    },
-    'More than 1 (Like Curve.fi DAI/USDC/USDT)': {
-      underlyingTokens: 'unwrapMultipleUnderlying',
-    },
+  [QuestionName.UnwrapMultipleUnderlying]: {
+    DerivedValue:
+      'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying assets, where underlying tokens are owned by the protocol token smart contract.',
+    Other: 'Other',
   },
-  unwrapOneUnderlying: {
-    'One-to-one mapping to the underlying asset': {
-      unwrap: 'useUnwrapRatioMethod',
-    },
-    'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying asset, where the underlying token is owned by the protocol token smart contract.':
-    {
-      unwrap: 'useUnwrapRatioMethod',
-    },
-    Other: {
-      unwrap: 'notImplementedError',
-    },
-  },
-  unwrapMultipleUnderlying: {
-    'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying assets, where underlying tokens are owned by the protocol token smart contract.':
-    {
-      unwrap: 'useUnwrapRatioMethod',
-    },
-    Other: {
-      unwrap: 'notImplementedError',
-    },
-  },
-  rewardDetails: {
-    
-      'Rewards are linked to defi asset (like curve and convex)': {
-        hasRewards: true,
-      },
-      'Extra rewards are linked to defi asset (like curve permissionsless rewards':
-        {
-          hasExtraRewards: true,
-        },
-      "Protocol rewards like compound's protocol rewards": {
-        hasProtocolRewards: true,
-      }
+  [QuestionName.RewardsDetails]: {
+    LinkedRewards: 'Rewards are linked to defi asset (like curve and convex)',
+    ExtraRewards:
+      'Extra rewards are linked to defi asset (like curve permissionsless rewards',
+    ProtocolRewards: "Protocol rewards like compound's protocol rewards",
   },
 } as const
 
-export const questionsJson = {
-  protocolKey: {
-    question: 'Enter the name of your protocol in PascalCase',
-    type: 'text',
-    next: answerToNextMap.productId,
-    default: () => 'LenderV2',
+export type DefiAssetStructureAnswers =
+  (typeof QuestionAnswers)[typeof QuestionName.DefiAssetStructure][keyof (typeof QuestionAnswers)[typeof QuestionName.DefiAssetStructure]]
+export type UnderlyingTokensAnswers =
+  (typeof QuestionAnswers)[typeof QuestionName.UnderlyingTokens][keyof (typeof QuestionAnswers)[typeof QuestionName.UnderlyingTokens]]
+export type UnwrapOneUnderlyingAnswers =
+  (typeof QuestionAnswers)[typeof QuestionName.UnwrapOneUnderlying][keyof (typeof QuestionAnswers)[typeof QuestionName.UnwrapOneUnderlying]]
+export type UnwrapMultipleUnderlyingAnswers =
+  (typeof QuestionAnswers)[typeof QuestionName.UnwrapMultipleUnderlying][keyof (typeof QuestionAnswers)[typeof QuestionName.UnwrapMultipleUnderlying]]
+export type RewardDetailsAnswers =
+  (typeof QuestionAnswers)[typeof QuestionName.RewardsDetails][keyof (typeof QuestionAnswers)[typeof QuestionName.RewardsDetails]]
+export type ForkCheckAnswers =
+  (typeof QuestionAnswers)[typeof QuestionName.ForkCheck][keyof (typeof QuestionAnswers)[typeof QuestionName.ForkCheck]]
+export type BalanceOfQueryMethodAnswers =
+  (typeof QuestionAnswers)[typeof QuestionName.BalanceQueryMethod][keyof (typeof QuestionAnswers)[typeof QuestionName.BalanceQueryMethod]]
+export type AdditionalRewardsAnswers =
+  (typeof QuestionAnswers)[typeof QuestionName.AdditionalRewards][keyof (typeof QuestionAnswers)[typeof QuestionName.AdditionalRewards]]
+export type Erc20EventAnswers =
+  (typeof QuestionAnswers)[typeof QuestionName.Erc20Event][keyof (typeof QuestionAnswers)[typeof QuestionName.Erc20Event]]
 
-    validate: (input: string) =>
-      isPascalCase(input) || 'Value must be PascalCase',
-  },
-  protocolId: {
-    question: 'Enter an ID for your protocol in kebab-case.',
-    type: 'text',
-    next: answerToNextMap.productId,
-    default: ({ protocolKey }: { protocolKey: string }) =>
-      protocolKey ? kebabCase(protocolKey) : 'lender-v2',
-    validate: (input: string) =>
-      isKebabCase(input) || 'Value must be kebab-case',
-  },
-  chainKeys: {
-    question: 'Select the chains the product is on',
-    type: 'checkbox',
-    choices: Object.keys(Chain),
-    default: () => {
-      return [Object.keys(Chain)[0]] as (keyof typeof Chain)[]
+export const getQuestionnaire = (
+  defiProvider: DefiProvider,
+  answers: Answers,
+) => {
+  return {
+    [QuestionName.ProtocolKey]: {
+      name: QuestionName.ProtocolKey,
+      message: 'Enter the name of your protocol in PascalCase',
+      type: 'text',
+      next: (_answer: string) => QuestionName.ProtocolId,
+      default: () => 'LenderV2',
+      validate: (input: string) =>
+        isPascalCase(input) || 'Value must be PascalCase',
     },
-    next: answerToNextMap.chainKeys,
-  },
-  productId: {
-    question: 'Enter a product ID for your product in kebab-case.',
-    type: 'text',
-    next: answerToNextMap.productId,
-    default: () => 'farming',
-
-    validateProductId: (defiProvider: DefiProvider, answers: Answers) => {
-      return (productId: string) => {
+    [QuestionName.ProtocolId]: {
+      name: QuestionName.ProtocolId,
+      message: 'Enter an ID for your protocol in kebab-case.',
+      type: 'text',
+      next: (_input: string) => QuestionName.ChainKeys,
+      default: () =>
+        answers.protocolKey ? kebabCase(answers.protocolKey) : 'lender-v2',
+      validate: (input: string) =>
+        isKebabCase(input) || 'Value must be kebab-case',
+    },
+    [QuestionName.ChainKeys]: {
+      name: QuestionName.ChainKeys,
+      message: 'Select the chains the product is on',
+      type: 'checkbox',
+      choices: Object.keys(Chain),
+      default: () => [Object.keys(Chain)[0]] as (keyof typeof Chain)[],
+      next: (_input: string) => QuestionName.ProductId,
+    },
+    [QuestionName.ProductId]: {
+      name: QuestionName.ProductId,
+      message: 'Enter a product ID for your product in kebab-case.',
+      type: 'text',
+      next: (_input: string) => QuestionName.ForkCheck,
+      default: () => 'farming',
+      validate: (productId: string) => {
         if (!isKebabCase(productId)) {
           return 'Value must be kebab-case'
         }
-
         if (!answers.protocolId) {
           return true
         }
-
-        // Check if that productId already exists for that protocol
         const productExists = answers.chainKeys.some(
           (chainKey: keyof typeof Chain) => {
             const chainId = Chain[chainKey as keyof typeof Chain]
-
             try {
               return defiProvider.adaptersController.fetchAdapter(
                 chainId,
@@ -205,98 +168,245 @@ export const questionsJson = {
             }
           },
         )
-
         if (productExists) {
           return 'ProductId already exists for that Protocol and one of the chains selected'
         }
-
         return true
-      }
+      },
     },
-  },
-  forkCheck: {
-    question:
-      "Is your product a fork of one of the following? Please select from the list below or enter 'No' if none apply.",
-    type: 'list',
-    choices: ['No', ...Object.keys(Templates)],
-    default: () => 'No',
-    next: answerToNextMap.forkCheck,
-    outcomes: {
-      No: { template: 'No' },
-      ...Object.keys(Templates).reduce((acc, templateName) => {
-        return { [templateName]: { template: templateName }, ...acc }
-      }, {}),
+    [QuestionName.ForkCheck]: {
+      name: QuestionName.ForkCheck,
+      message:
+        "Is your product a fork of one of the following? Please select from the list below or enter 'No' if none apply.",
+      type: 'list',
+      choices: ['No', ...Object.keys(Templates)],
+      default: () => 'No',
+      next: (input: ForkCheckAnswers) => {
+        return input === QuestionAnswers[QuestionName.ForkCheck].No
+          ? QuestionName.DefiAssetStructure
+          : 'end'
+      },
+      outcomes: {
+        No: { template: 'No' },
+        ...Object.keys(Templates).reduce((acc, templateName) => {
+          return { [templateName]: { template: templateName }, ...acc }
+        }, {}),
+      },
     },
-  },
-  defiAssetStructure: {
-    question:
-      "What is the structure of your product's DeFi asset(s)? (Select from the list below)",
-    type: 'list',
-    default: () => 'Single ERC20 protocol token (Like stETH)',
-    choices: Object.keys(answerToOutcomeMap.defiAssetStructure),
-    next: answerToNextMap.defiAssetStructure,
-    outcomes: answerToOutcomeMap.defiAssetStructure,
-  },
-  erc20Event: {
-    question: `Can Mint and Burn Transfer event of your protocol's ERC20 token(s) be used to accurately track deposits into and withdrawals from the user's defi position?`,
-    type: 'confirm',
-    next: answerToNextMap.erc20Event,
-    default: () => true,
-    outcomes: answerToOutcomeMap.erc20Event,
-  },
-  balanceQueryMethod: {
-    question:
-      'Is the balanceOf(address) function used to query the asset balance in your product',
-    type: 'confirm',
-    next: answerToNextMap.balanceQueryMethod,
-    default: () => true,
-    outcomes: answerToOutcomeMap.balanceQueryMethod,
-  },
-
-  underlyingTokens: {
-    question: 'How many underlying tokens does your DeFi asset represent?',
-    type: 'list',
-    default: () => '1 (Like stEth, aETH)',
-    choices: Object.keys(answerToOutcomeMap.underlyingTokens),
-    next: answerToOutcomeMap.underlyingTokens,
-  },
-  unwrapOneUnderlying: {
-    question:
-      'Regarding your DeFi token, how is its relationship to the underlying asset structured? Please select one of the following options',
-    type: 'list',
-    default: () => 'One-to-one mapping to the underlying asset',
-    choices:Object.keys(answerToOutcomeMap.unwrapOneUnderlying),
-    next: answerToNextMap.unwrapOneUnderlying,
-    outcomes: answerToOutcomeMap.unwrapOneUnderlying,
-  },
-  unwrapMultipleUnderlying: {
-    question:
-      'Regarding your DeFi token, how is its relationship to the underlying assets structured? Please select one of the following options',
-    type: 'list',
-    default: () =>
-      'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying assets, where underlying tokens are owned by the protocol token smart contract.',
-    choices: Object.keys(answerToOutcomeMap.unwrapMultipleUnderlying),
-    next: answerToNextMap.unwrapMultipleUnderlying,
-    outcomes: answerToOutcomeMap.unwrapMultipleUnderlying,
-  },
-  additionalRewards: {
-    question:
-      'Does your product offer additional rewards beyond the primary earnings? (Yes/No)',
-    type: 'confirm',
-    default: () => true,
-    next: answerToNextMap.additionalRewards,
-  },
-  rewardsDetails: {
-    question:
-      'What best describes your rewards offering, you can select more than one',
-    type: 'checkbox',
-    choices: Object.keys(answerToOutcomeMap.rewardDetails),
-    default: () => {
-      return 'rewards linked to defi asset (like curve and convex)'
+    [QuestionName.DefiAssetStructure]: {
+      name: QuestionName.DefiAssetStructure,
+      message:
+        "What is the structure of your product's DeFi asset(s)? (Select from the list below)",
+      type: 'list',
+      default: () =>
+        QuestionAnswers[QuestionName.DefiAssetStructure].Single as string,
+      choices: Object.values(QuestionAnswers[QuestionName.DefiAssetStructure]),
+      next: (input: DefiAssetStructureAnswers) => {
+        switch (input) {
+          case QuestionAnswers[QuestionName.DefiAssetStructure].Single:
+          case QuestionAnswers[QuestionName.DefiAssetStructure].Multiple:
+          case QuestionAnswers[QuestionName.DefiAssetStructure].Other:
+            return QuestionName.Erc20Event
+          case QuestionAnswers[QuestionName.DefiAssetStructure].NonFungible:
+          case QuestionAnswers[QuestionName.DefiAssetStructure]
+            .ContractPosition:
+            return QuestionName.BalanceQueryMethod
+          default:
+            return 'end'
+        }
+      },
+      outcomes: (input: DefiAssetStructureAnswers) => {
+        switch (input) {
+          case QuestionAnswers[QuestionName.DefiAssetStructure].Single:
+            return {
+              buildMetadataFunction: 'singleProtocolToken',
+              defiAssetStructure: 'singleProtocolToken',
+            }
+          case QuestionAnswers[QuestionName.DefiAssetStructure].Multiple:
+            return {
+              buildMetadataFunction: 'multipleProtocolTokens',
+              defiAssetStructure: 'multipleProtocolTokens',
+            }
+          case QuestionAnswers[QuestionName.DefiAssetStructure].NonFungible:
+            return {
+              buildMetadataFunction: 'notImplementedError',
+              withdrawalsFunction: 'notImplementedError',
+              depositsFunction: 'notImplementedError',
+              defiAssetStructure: 'nft',
+            }
+          case QuestionAnswers[QuestionName.DefiAssetStructure]
+            .ContractPosition:
+            return {
+              buildMetadataFunction: 'notImplementedError',
+              withdrawalsFunction: 'notImplementedError',
+              depositsFunction: 'notImplementedError',
+              defiAssetStructure: 'contractPosition',
+            }
+          case QuestionAnswers[QuestionName.DefiAssetStructure].Other:
+            return {
+              buildMetadataFunction: 'notImplementedError',
+              withdrawalsFunction: 'notImplementedError',
+              depositsFunction: 'notImplementedError',
+              defiAssetStructure: 'other',
+            }
+          default:
+            return null
+        }
+      },
     },
-    next: answerToNextMap.rewardsDetails,
-    outcomes: answerToOutcomeMap.rewardDetails,
-  },
-} as const
+    [QuestionName.Erc20Event]: {
+      name: QuestionName.Erc20Event,
+      message:
+        "Can Mint and Burn Transfer event of your protocol's ERC20 token(s) be used to accurately track deposits into and withdrawals from the user's defi position?",
+      type: 'confirm',
+      next: (_answer: string) => QuestionName.BalanceQueryMethod,
+      default: () => true,
+      outcomes: (input: Erc20EventAnswers) => {
+        if (input === QuestionAnswers[QuestionName.Erc20Event].True) {
+          return {
+            withdrawalsFunction: 'useWithdrawalHelper',
+            depositsFunction: 'useDepositsHelper',
+          }
+        }
+        return {
+          withdrawalsFunction: 'notImplementedError',
+          depositsFunction: 'notImplementedError',
+        }
+      },
+    },
+    [QuestionName.BalanceQueryMethod]: {
+      name: QuestionName.BalanceQueryMethod,
+      message:
+        'Is the balanceOf(address) function used to query the asset balance in your product',
+      type: 'confirm',
+      next: (_answer: string) => QuestionName.UnderlyingTokens,
+      default: () => true,
+      outcomes: (input: BalanceOfQueryMethodAnswers) => {
+        if (input === QuestionAnswers[QuestionName.BalanceQueryMethod].True) {
+          return {
+            getPositions: 'useBalanceOfHelper',
+          }
+        }
+        return {
+          getPositions: 'notImplementedError',
+        }
+      },
+    },
+    [QuestionName.UnderlyingTokens]: {
+      name: QuestionName.UnderlyingTokens,
+      message: 'How many underlying tokens does your DeFi asset represent?',
+      type: 'list',
+      default: () => QuestionAnswers[QuestionName.UnderlyingTokens].One,
+      choices: Object.values(QuestionAnswers[QuestionName.UnderlyingTokens]),
+      next: (input: UnderlyingTokensAnswers) => {
+        return input === QuestionAnswers[QuestionName.UnderlyingTokens].One
+          ? QuestionName.UnwrapOneUnderlying
+          : QuestionName.UnwrapMultipleUnderlying
+      },
+      outcomes: (input: UnderlyingTokensAnswers) => {
+        if (input === QuestionAnswers[QuestionName.UnderlyingTokens].One) {
+          return {
+            underlyingTokens: 'oneUnderlying',
+          }
+        }
+        return {
+          underlyingTokens: 'unwrapMultipleUnderlying',
+        }
+      },
+    },
+    [QuestionName.UnwrapOneUnderlying]: {
+      name: QuestionName.UnwrapOneUnderlying,
+      message:
+        'Regarding your DeFi token, how is its relationship to the underlying asset structured? Please select one of the following options',
+      type: 'list',
+      default: () => QuestionAnswers[QuestionName.UnwrapOneUnderlying].OneToOne,
+      choices: Object.values(QuestionAnswers[QuestionName.UnwrapOneUnderlying]),
+      next: (_input: string) => QuestionName.AdditionalRewards,
+      outcomes: (input: UnwrapOneUnderlyingAnswers) => {
+        switch (input) {
+          case QuestionAnswers[QuestionName.UnwrapOneUnderlying].OneToOne:
+          case QuestionAnswers[QuestionName.UnwrapOneUnderlying].DerivedValue:
+            return {
+              unwrap: 'useUnwrapRatioMethod',
+            }
+          case QuestionAnswers[QuestionName.UnwrapOneUnderlying].Other:
+            return {
+              unwrap: 'notImplementedError',
+            }
+          default:
+            return null
+        }
+      },
+    },
+    [QuestionName.UnwrapMultipleUnderlying]: {
+      name: QuestionName.UnwrapMultipleUnderlying,
+      message:
+        'Regarding your DeFi token, how is its relationship to the underlying assets structured? Please select one of the following options',
+      type: 'list',
+      default: () =>
+        QuestionAnswers[QuestionName.UnwrapMultipleUnderlying].DerivedValue,
+      choices: Object.values(
+        QuestionAnswers[QuestionName.UnwrapMultipleUnderlying],
+      ),
+      next: (_input: string) => QuestionName.AdditionalRewards,
+      outcomes: (input: UnwrapMultipleUnderlyingAnswers) => {
+        switch (input) {
+          case QuestionAnswers[QuestionName.UnwrapMultipleUnderlying]
+            .DerivedValue:
+            return {
+              unwrap: 'useUnwrapRatioMethod',
+            }
+          case QuestionAnswers[QuestionName.UnwrapMultipleUnderlying].Other:
+            return {
+              unwrap: 'notImplementedError',
+            }
+          default:
+            return null
+        }
+      },
 
+    },
 
+    [QuestionName.AdditionalRewards]: {
+      name: QuestionName.AdditionalRewards,
+      message:
+        'Does your product offer additional rewards beyond the primary earnings? (Yes/No)',
+      type: 'confirm',
+      default: () => true,
+      next: (input: AdditionalRewardsAnswers) => {
+        return input === QuestionAnswers[QuestionName.AdditionalRewards].True
+          ? QuestionName.RewardsDetails
+          : 'end'
+      },
+    },
+    [QuestionName.RewardsDetails]: {
+      name: QuestionName.RewardsDetails,
+      message:
+        'What best describes your rewards offering, you can select more than one',
+      type: 'checkbox',
+      choices: Object.values(QuestionAnswers[QuestionName.RewardsDetails]),
+      default: () =>
+        QuestionAnswers[QuestionName.RewardsDetails].LinkedRewards,
+      next: (_input: string) => 'end',
+
+      outcomes: (input: RewardDetailsAnswers) => {
+        switch (input) {
+          case QuestionAnswers[QuestionName.RewardsDetails].LinkedRewards:
+            return {
+              hasRewards: true,
+            }
+          case QuestionAnswers[QuestionName.RewardsDetails].ExtraRewards:
+            return {
+              hasExtraRewards: true,
+            }
+          case QuestionAnswers[QuestionName.RewardsDetails].ProtocolRewards:
+            return {
+              hasProtocolRewards: true,
+            }
+          default:
+            return null
+        }
+      },
+    },
+  }
+}
