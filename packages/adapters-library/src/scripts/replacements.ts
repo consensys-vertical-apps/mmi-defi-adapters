@@ -1,5 +1,4 @@
-import { Answers } from 'inquirer'
-import { BlankAdapterOutcomeOptions } from './questionnaire'
+import { BlankAdapterOutcomeOptions, QuestionAnswers } from './questionnaire'
 
 // biome-ignore lint/suspicious/noExplicitAny: Useful for this placeholder
 const EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK = '' as any
@@ -69,7 +68,7 @@ export const Replacements = {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
-      _answers: Answers,
+      _answers: QuestionAnswers,
     ): string => {
       const regexProtocolTokens =
         /return Replacements.GET_PROTOCOL_TOKENS.placeholder/g
@@ -95,7 +94,7 @@ export const Replacements = {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
-      _answers: Answers,
+      _answers: QuestionAnswers,
     ): string => {
       const replace = /return Replacements.GET_POSITIONS.placeholder/g
 
@@ -131,7 +130,7 @@ export const Replacements = {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
-      _answers: Answers,
+      _answers: QuestionAnswers,
     ): string => {
       const regexWithdrawals =
         /return Replacements.GET_WITHDRAWALS.placeholder/g
@@ -159,7 +158,7 @@ export const Replacements = {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
-      _answers: Answers,
+      _answers: QuestionAnswers,
     ): string => {
       const regexDeposits = /return Replacements.GET_DEPOSITS.placeholder/g
 
@@ -268,7 +267,7 @@ export const Replacements = {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
-      answers: Answers,
+      answers: QuestionAnswers,
     ): string => {
       return updatedTemplate.replace(
         /Replacements.PRODUCT_ID.placeholder/g,
@@ -281,7 +280,7 @@ export const Replacements = {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
-      answers: Answers,
+      answers: QuestionAnswers,
     ): string => {
       return updatedTemplate.replace(
         /{{Replacements.PROTOCOL_ID.placeholder}}/g,
@@ -294,7 +293,7 @@ export const Replacements = {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
-      answers: Answers,
+      answers: QuestionAnswers,
     ): string => {
       return updatedTemplate.replace(
         /Replacements.PROTOCOL_KEY.placeholder/g,
@@ -307,11 +306,11 @@ export const Replacements = {
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
-      answers: Answers,
+      answers: QuestionAnswers,
     ): string => {
       return updatedTemplate.replace(
         /ADAPTER_CLASS_NAME/g,
-        answers.adapterClassName,
+        outcomes.adapterClassName,
       )
     },
   },

@@ -49,7 +49,6 @@ function generateAllAnswers(): QuestionAnswers[] {
                       productId: 'productId',
                       protocolId: 'protocolId',
                       protocolKey: 'productKey',
-                      adapterClassName: 'adapterClassName',
                       chainKeys: ['Ethereum'],
                       forkCheck: forkCheckAnswer,
                       erc20Event: erc20EventAnswer,

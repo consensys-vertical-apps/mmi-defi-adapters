@@ -71,16 +71,19 @@ export function initiateQuestionnaire(defiProvider: DefiProvider) {
 
     const code: string = await createCode(answers, outcomes)
 
-    await createAdapterFile(answers, code)
+    await createAdapterFile(answers, code, outcomes)
     await buildIntegrationTests(answers)
     await addProtocol(answers)
-    await exportAdapter(answers)
+    await exportAdapter({
+      ...answers,
+      adapterClassName: outcomes.adapterClassName,
+    })
 
     console.log(
       chalk`\n{bold New adapter created at: {bgBlack.red src/adapters/${
         answers.protocolId
       }/products/${answers.productId}/${lowerFirst(
-        answers.adapterClassName,
+        outcomes.adapterClassName,
       )}.ts}}\n`,
     )
     console.log('The file has been saved!')
@@ -94,7 +97,10 @@ export async function createCode(
   let code: string
   switch (true) {
     case answers.forkCheck === TemplateNames.SmartBuilder: {
-      const blankTemplate = Templates[answers.forkCheck]!(answers)
+      const blankTemplate = Templates[answers.forkCheck]!({
+        ...answers,
+        adapterClassName: outcomes.adapterClassName,
+      })
 
       code = generateAdapter(answers, outcomes, blankTemplate!)
 
@@ -103,7 +109,12 @@ export async function createCode(
     case Object.keys(Templates).includes(answers.forkCheck):
       {
         const template = Templates[answers.forkCheck]!
-        code = template(answers)
+        code = template({
+          protocolKey: answers.protocolKey,
+          adapterClassName: outcomes.adapterClassName,
+          productId: answers.productId,
+          chainKeys: answers.chainKeys,
+        })
       }
       break
     default: {
@@ -136,11 +147,6 @@ async function getAnswersAndOutcomes(
       .replace(/[^\w\s]/gi, '')
       .replace(/\s+/g, '')}Template`
   }
-
-  answers.adapterClassName = adapterClassName(
-    answers.protocolKey,
-    answers.productId,
-  )
 
   answers.forkCheck = inputTemplate ?? answers.forkCheck
 
@@ -312,11 +318,15 @@ export async function readBlankTemplate(filePath: string) {
   return readFile(filePath, { encoding: 'utf8' })
 }
 
-async function createAdapterFile(answers: QuestionAnswers, code: string) {
+async function createAdapterFile(
+  answers: QuestionAnswers,
+  code: string,
+  outcomes: BlankAdapterOutcomeOptions,
+) {
   const adapterFilePath = buildAdapterFilePath(
     answers.protocolId,
     answers.productId,
-    answers.adapterClassName,
+    outcomes.adapterClassName,
   )
 
   await writeCodeFile(adapterFilePath, code)
@@ -332,10 +342,6 @@ export function buildAdapterFilePath(
   )
 
   return path.resolve(productPath, `${lowerFirst(adapterClassName)}.ts`)
-}
-
-export function adapterClassName(protocolKey: string, productId: string) {
-  return `${protocolKey}${pascalCase(productId)}Adapter`
 }
 
 export function generateAdapter(

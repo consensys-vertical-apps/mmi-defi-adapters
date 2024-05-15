@@ -1,13 +1,16 @@
+import { Chain } from '../../core/constants/chains'
 import { QuestionAnswers } from '../questionnaire'
 
 export function lpStakingAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: Pick<
-  QuestionAnswers,
-  'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
->) {
+}: {
+  protocolKey: string
+  adapterClassName: string
+  productId: string
+  chainKeys: (keyof typeof Chain)[]
+}) {
   return `
   import {
     LpStakingAdapter,

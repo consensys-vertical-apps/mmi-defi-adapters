@@ -1,13 +1,16 @@
-import { QuestionAnswers } from '../questionnaire'
+import { Chain } from '../../core/constants/chains'
+import { BlankAdapterOutcomeOptions, QuestionAnswers } from '../questionnaire'
 
 export function writeOnlyDeFiAdapter({
   protocolKey,
   adapterClassName,
   productId,
-}: Pick<
-  QuestionAnswers,
-  'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
->) {
+}: {
+  protocolKey: string
+  adapterClassName: string
+  productId: string
+  chainKeys: (keyof typeof Chain)[]
+}) {
   return `import { z } from 'zod'
   import { WriteOnlyDeFiAdapter } from '../../../../core/adapters/writeOnlyAdapter'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'

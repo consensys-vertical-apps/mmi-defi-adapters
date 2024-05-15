@@ -5,6 +5,7 @@ import {
   isKebabCase,
   isPascalCase,
   kebabCase,
+  pascalCase,
 } from '../core/utils/caseConversion'
 import { DefiProvider } from '../defiProvider'
 
@@ -106,7 +107,6 @@ export type QuestionAnswers = {
   productId: string
   protocolId: string
   protocolKey: string
-  adapterClassName: string
   chainKeys: (keyof typeof Chain)[]
   forkCheck: (typeof QuestionAnswers)['forkCheck'][keyof (typeof QuestionAnswers)['forkCheck']]
   erc20Event: (typeof QuestionAnswers)['erc20Event'][keyof (typeof QuestionAnswers)['erc20Event']]
@@ -168,6 +168,7 @@ export const BlankAdapterOutcomeOptions = {
 } as const
 
 export type BlankAdapterOutcomeOptions = {
+  adapterClassName: string
   getPositions: (typeof BlankAdapterOutcomeOptions)['getPositions'][keyof (typeof BlankAdapterOutcomeOptions)['getPositions']]
   buildMetadataFunction: (typeof BlankAdapterOutcomeOptions)['buildMetadataFunction'][keyof (typeof BlankAdapterOutcomeOptions)['buildMetadataFunction']]
   underlyingTokens: (typeof BlankAdapterOutcomeOptions)['underlyingTokens'][keyof (typeof BlankAdapterOutcomeOptions)['underlyingTokens']]
@@ -210,6 +211,13 @@ export const getQuestionnaire = (
       type: 'text',
       default: () => 'skipped',
       next: () => 'skipped',
+      outcomes: (): Partial<BlankAdapterOutcomeOptions> => {
+        return {
+          [QuestionName.AdapterClassName]: `${answers.protocolKey}${pascalCase(
+            answers.productId,
+          )}Adapter`,
+        }
+      },
     },
     [QuestionName.ChainKeys]: {
       name: QuestionName.ChainKeys,

@@ -1,10 +1,17 @@
+import { Chain } from '../../core/constants/chains'
 import { NewAdapterAnswers } from '../newAdapterCommand'
+import { BlankAdapterOutcomeOptions, QuestionAnswers } from '../questionnaire'
 
 export function compoundV2BorrowMarketForkAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: Pick<NewAdapterAnswers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
+}: {
+  protocolKey: string
+  adapterClassName: string
+  productId: string
+  chainKeys: (keyof typeof Chain)[]
+}) {
   return `
   import { CompoundV2BorrowMarketForkAdapter } from '../../../../core/adapters/CompoundV2BorrowMarketForkAdapter'
   import { Chain } from '../../../../core/constants/chains'
