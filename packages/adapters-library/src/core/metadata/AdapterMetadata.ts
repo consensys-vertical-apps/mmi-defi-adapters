@@ -126,6 +126,8 @@ import CurveV1PoolArbitrumProtocolToken from '../../adapters/curve-v1/products/p
 
 import CurveV1PoolAvalancheProtocolToken from '../../adapters/curve-v1/products/pool/metadata/avalanche.protocol-token.json'
 
+import CurveV1StakingEthereumProtocolToken from '../../adapters/curve-v1/products/staking/metadata/ethereum.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -783,6 +785,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CurveV1PoolOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CurveV1,
+      productId: 'staking',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    CurveV1StakingEthereumProtocolToken,
   ],
   [
     metadataKey({

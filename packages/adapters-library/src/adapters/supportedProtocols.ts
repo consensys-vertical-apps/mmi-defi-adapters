@@ -68,6 +68,8 @@ import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
 import { CurveV1PoolAdapter } from './curve-v1/products/pool/curveV1PoolAdapter'
 
+import { CurveV1StakingAdapter } from './curve-v1/products/staking/curveV1StakingAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -200,7 +202,7 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.CurveV1]: {
-    [Chain.Ethereum]: [CurveV1PoolAdapter],
+    [Chain.Ethereum]: [CurveV1PoolAdapter, CurveV1StakingAdapter],
     [Chain.Optimism]: [CurveV1PoolAdapter],
     // [Chain.Polygon]: [CurveV1PoolAdapter],
     [Chain.Fantom]: [CurveV1PoolAdapter],

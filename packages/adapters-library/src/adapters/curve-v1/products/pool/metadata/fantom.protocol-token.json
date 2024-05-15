@@ -219,6 +219,29 @@
     ],
     "lpTokenManager": "0x6E6c999e1893dc2E68b4193108bEC307b6C42f96"
   },
+  "0x44C2C46C87B869e276C5B418E0B0E297651EeDB0": {
+    "protocolToken": {
+      "address": "0x44C2C46C87B869e276C5B418E0B0E297651EeDB0",
+      "name": "Curve.fi Factory Plain Pool: USDV/axlUSDC",
+      "symbol": "USDV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x953E94CaF91a1E32337d0548B9274f337920eDFA",
+        "name": "USDV",
+        "symbol": "USDV",
+        "decimals": 18
+      },
+      {
+        "address": "0x1B6382DBDEa11d97f24495C9A90b7c88469134a4",
+        "name": "Axelar Wrapped USDC",
+        "symbol": "axlUSDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x44C2C46C87B869e276C5B418E0B0E297651EeDB0"
+  },
   "0x58e57cA18B7A47112b877E31929798Cd3D703b0f": {
     "protocolToken": {
       "address": "0x58e57cA18B7A47112b877E31929798Cd3D703b0f",

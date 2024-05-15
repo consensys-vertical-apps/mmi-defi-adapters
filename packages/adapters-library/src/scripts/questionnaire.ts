@@ -292,7 +292,11 @@ export const getQuestionnaire = (
       message:
         'Select one of the following templates, we recommend the smart builder.',
       type: 'list',
-      choices: ['No', ...Object.keys(Templates)],
+      choices: Object.values(TemplateNames).sort((a, b) => {
+        if (a === 'Smart Adapter Builder') return -1
+        if (b === 'Smart Adapter Builder') return 1
+        return 0
+      }),
       default: () => TemplateNames.SmartBuilder,
       next: (input: QuestionAnswers['forkCheck']) => {
         return input === QuestionAnswers['forkCheck'].SmartBuilder

@@ -357,7 +357,7 @@ export class Helpers {
       )
   }
 
-  private async getErc20Movements({
+  async getErc20Movements({
     protocolToken,
     filter: { fromBlock, toBlock, from, to },
   }: {

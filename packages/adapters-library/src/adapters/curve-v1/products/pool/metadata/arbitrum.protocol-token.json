@@ -764,5 +764,74 @@
       }
     ],
     "lpTokenManager": "0x1c34204FCFE5314Dcf53BE2671C02c35DB58B4e3"
+  },
+  "0x3dcb7b53B6177a04a2AECE61d95bF577ECC02241": {
+    "protocolToken": {
+      "address": "0x3dcb7b53B6177a04a2AECE61d95bF577ECC02241",
+      "name": "rgUSD/USDC",
+      "symbol": "rgUSDUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x96a993f06951B01430523D0D5590192d650EBf3e",
+        "name": "Revenue Generating USD",
+        "symbol": "rgUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x3dcb7b53B6177a04a2AECE61d95bF577ECC02241"
+  },
+  "0xbdf44492aC1C81b1Bd9B9A8B075026d3E8A3225a": {
+    "protocolToken": {
+      "address": "0xbdf44492aC1C81b1Bd9B9A8B075026d3E8A3225a",
+      "name": "eUSD/rgUSD",
+      "symbol": "eUSDrgUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x12275DCB9048680c4Be40942eA4D92c74C63b844",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x96a993f06951B01430523D0D5590192d650EBf3e",
+        "name": "Revenue Generating USD",
+        "symbol": "rgUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xbdf44492aC1C81b1Bd9B9A8B075026d3E8A3225a"
+  },
+  "0x95F425c7d730Eb7673fca272c2c305f48Ed546c3": {
+    "protocolToken": {
+      "address": "0x95F425c7d730Eb7673fca272c2c305f48Ed546c3",
+      "name": "ETH+/WETH",
+      "symbol": "ETH+WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x18C14C2D707b2212e17d1579789Fc06010cfca23",
+        "name": "ETHPlus",
+        "symbol": "ETH+",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x95F425c7d730Eb7673fca272c2c305f48Ed546c3"
   }
 }
