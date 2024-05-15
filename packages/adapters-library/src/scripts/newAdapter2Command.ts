@@ -184,7 +184,7 @@ export function calculateAdapterOutcomes(
     const answer = answers[key as keyof QuestionAnswers]
     const questionConfig = questionnaire[key as keyof QuestionnaireType]
 
-    console.log({ key, acc, answer, questionConfig })
+
     // Step 3: add outcome to outcomes
     if ('outcomes' in questionConfig) {
       let outcomeResults: Partial<BlankAdapterOutcomeOptions> = {}
@@ -194,7 +194,7 @@ export function calculateAdapterOutcomes(
         answer,
       ) as Partial<BlankAdapterOutcomeOptions>
 
-      console.log({ newOutcomes, answer })
+
 
       outcomeResults = {
         ...outcomeResults,
@@ -319,7 +319,7 @@ async function askQuestion(
 }
 
 export async function readBlankTemplate(filePath: string) {
-  console.log(filePath, 'oioi')
+
   return readFile(filePath, { encoding: 'utf8' })
 }
 
@@ -342,7 +342,7 @@ export function buildAdapterFilePath(
   productId: string,
   adapterClassName: string,
 ): string {
-  console.log(productId, productId, adapterClassName)
+
 
   const productPath = path.resolve(
     `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}`,
