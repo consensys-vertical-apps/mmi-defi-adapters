@@ -75,7 +75,7 @@ jobs:
 
       - name: Create new adapter with new CLI
         run: |
-          npm run new-adapter2 -- -y -t No
+          npm run new-adapter2 -- -y -t "Smart Adapter Builder"
           npm run build
           npm run new-adapter2 -- -y -t "VotingEscrowAdapter (like curve and stargate voting escrow)"
           npm run build
