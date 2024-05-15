@@ -1,0 +1,141 @@
+{
+  "blockNumber": 19818582,
+  "snapshot": [
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 AToken",
+      "description": "Aave v3 defi adapter for yield-generating token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "lend",
+      "chainId": 1,
+      "productId": "a-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8",
+          "name": "Aave Ethereum WETH",
+          "symbol": "aEthWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "706223267547507391981271n",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "totalSupplyRaw": "190923290938805582252620n",
+              "type": "underlying",
+              "totalSupply": 190923.29093880559,
+              "price": 3076.35,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "totalSupply": 706223.2675475074
+        },
+        {
+          "address": "0x0B925eD163218f6662a35e0f0371Ac234f9E9371",
+          "name": "Aave Ethereum wstETH",
+          "symbol": "aEthwstETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "940569790583952346052384n",
+          "tokens": [
+            {
+              "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "totalSupplyRaw": "934343946906801832180956n",
+              "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                  "name": "Liquid staked Ether 2.0",
+                  "symbol": "stETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "1089377979135483491556134n",
+                  "tokens": [
+                    {
+                      "address": "0x0000000000000000000000000000000000000000",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "totalSupplyRaw": "1089377979135483491556134n",
+                      "totalSupply": 1089377.9791354835,
+                      "price": 3076.35,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "totalSupply": 1089377.9791354835,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                }
+              ],
+              "totalSupply": 934343.9469068018,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+            }
+          ],
+          "totalSupply": 940569.7905839523
+        },
+        {
+          "address": "0x98C23E9d8f34FEFb1B7BD6a91B7FF122F4e16F5c",
+          "name": "Aave Ethereum USDC",
+          "symbol": "aEthUSDC",
+          "decimals": 6,
+          "type": "protocol",
+          "totalSupplyRaw": "1276144975283710n",
+          "tokens": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "totalSupplyRaw": "272894247860207n",
+              "type": "underlying",
+              "totalSupply": 272894247.860207,
+              "price": 0.9984821821830407,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+            }
+          ],
+          "totalSupply": 1276144975.28371
+        }
+      ]
+    },
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 StableDebtToken",
+      "description": "Aave v3 defi adapter for stable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "stable-debt-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": []
+    },
+    {
+      "protocolId": "aave-v3",
+      "name": "Aave v3 VariableDebtToken",
+      "description": "Aave v3 defi adapter for variable interest-accruing token",
+      "siteUrl": "https://aave.com/",
+      "iconUrl": "https://aave.com/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "variable-debt-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": []
+    }
+  ]
+}

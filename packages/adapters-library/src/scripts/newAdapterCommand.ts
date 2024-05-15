@@ -16,7 +16,7 @@ import {
 } from '../core/utils/caseConversion'
 import { filterMapSync } from '../core/utils/filters'
 import { logger } from '../core/utils/logger'
-import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { DefiProvider } from '../defiProvider'
 import { chainFilter, protocolFilter } from './commandFilters'
 import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
@@ -255,7 +255,7 @@ async function buildAdapterFromTemplate(adapterSettings: NewAdapterAnswers) {
     adapterClassName,
   )
 
-  await writeCodeFile(adapterFilePath, templateBuilder(adapterSettings))
+  await writeAndLintFile(adapterFilePath, templateBuilder(adapterSettings))
 }
 
 /**
@@ -276,7 +276,7 @@ export async function buildIntegrationTests({
     return
   }
 
-  await writeCodeFile(testCasesFilePath, testCases(productId))
+  await writeAndLintFile(testCasesFilePath, testCases(productId))
 
   const testsFile = path.resolve(
     './packages/adapters-library/src/adapters/integration.test.ts',
@@ -294,33 +294,42 @@ export async function buildIntegrationTests({
 
       this.traverse(path)
     },
-    visitFunctionDeclaration(path) {
+    visitVariableDeclarator(path) {
       const node = path.node
       if (!n.Identifier.check(node.id)) {
-        // Skips any other declaration
         return false
       }
 
-      if (node.id.name === 'runAllTests') {
-        const runProtocolTestsNode = b.expressionStatement(
-          b.callExpression(b.identifier('runProtocolTests'), [
-            b.memberExpression(
-              b.identifier('Protocol'),
-              b.identifier(protocolKey),
-            ),
-            b.identifier(`${lowerFirst(protocolKey)}TestCases`),
-          ]),
-        )
+      if (
+        node.id.name === 'protocolTestCases' &&
+        n.ObjectExpression.check(node.init)
+      ) {
+        if (
+          node.init.properties.some(
+            (property) =>
+              n.ObjectProperty.check(property) &&
+              n.MemberExpression.check(property.key) &&
+              n.Identifier.check(property.key.property) &&
+              property.key.property.name === protocolKey,
+          )
+        ) {
+          return false
+        }
 
-        node.body.body.push(runProtocolTestsNode)
+        const newEntry = b.objectProperty(
+          b.memberExpression(
+            b.identifier('Protocol'),
+            b.identifier(protocolKey),
+          ),
+          b.identifier(`${lowerFirst(protocolKey)}TestCases`),
+        )
+        newEntry.computed = true
+
+        node.init.properties.push(newEntry)
 
         sortEntries(
-          node.body.body,
-          (entry) =>
-            (
-              ((entry as n.ExpressionStatement).expression as n.CallExpression)
-                .arguments[1] as n.Identifier
-            ).name,
+          node.init.properties,
+          (entry) => ((entry as n.ObjectProperty).value as n.Identifier).name,
         )
       }
 
@@ -328,7 +337,7 @@ export async function buildIntegrationTests({
     },
   })
 
-  await writeCodeFile(testsFile, print(ast).code)
+  await writeAndLintFile(testsFile, print(ast).code)
 }
 
 /**
@@ -399,7 +408,7 @@ export async function addProtocol({
     },
   })
 
-  await writeCodeFile(protocolsFile, print(ast).code)
+  await writeAndLintFile(protocolsFile, print(ast).code)
 }
 
 /**
@@ -449,7 +458,7 @@ export async function exportAdapter({
     },
   })
 
-  await writeCodeFile(adaptersFile, print(ast).code)
+  await writeAndLintFile(adaptersFile, print(ast).code)
 }
 
 /**

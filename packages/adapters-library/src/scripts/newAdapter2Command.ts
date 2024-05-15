@@ -6,7 +6,7 @@ import { prompt } from 'inquirer'
 import { Chain } from '../core/constants/chains'
 import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
-import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import type { DefiProvider } from '../defiProvider'
 import { newAdapterCliLogo } from './newAdapterCliLogo'
 import {
@@ -334,7 +334,7 @@ async function createAdapterFile(
     outcomes.adapterClassName,
   )
 
-  await writeCodeFile(adapterFilePath, code)
+  await writeAndLintFile(adapterFilePath, code)
 }
 
 export function buildAdapterFilePath(

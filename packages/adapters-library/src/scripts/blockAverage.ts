@@ -5,7 +5,7 @@ import { ethers } from 'ethers'
 import { parse, print, types, visit } from 'recast'
 import { Chain } from '../core/constants/chains'
 import { ProviderMissingError } from '../core/errors/errors'
-import { writeCodeFile } from '../core/utils/writeCodeFile'
+import { writeAndLintFile } from '../core/utils/writeAndLintFile'
 import { multiChainFilter } from './commandFilters'
 import n = types.namedTypes
 
@@ -114,5 +114,5 @@ async function updateAverages(
     },
   })
 
-  await writeCodeFile(averageBlocksFile, print(ast).code)
+  await writeAndLintFile(averageBlocksFile, print(ast).code)
 }
