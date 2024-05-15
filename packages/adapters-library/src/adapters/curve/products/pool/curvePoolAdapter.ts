@@ -1,37 +1,64 @@
 import { getAddress } from 'ethers'
-import { Erc20__factory } from '../../../../contracts'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { Erc20__factory } from '../../../../contracts/factories/Erc20__factory'
+import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
 import { NotImplementedError } from '../../../../core/errors/errors'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { logger } from '../../../../core/utils/logger'
+import { Helpers } from '../../../../scripts/helpers'
+import { Replacements } from '../../../../scripts/replacements'
+import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
+  GetEventsInput,
+  GetPositionsInput,
+  GetRewardPositionsInput,
   GetTotalValueLockedInput,
+  MovementsByBlock,
   PositionType,
+  ProtocolAdapterParams,
   ProtocolDetails,
+  ProtocolPosition,
   ProtocolTokenTvl,
-  TokenBalance,
   TokenType,
   Underlying,
+  UnderlyingReward,
+  UnwrapExchangeRate,
+  UnwrapInput,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { queryCurvePools } from '../../common/getPoolData'
+import { queryCurvePools } from '../../../curve/common/getPoolData'
+import { Protocol } from '../../../protocols'
 
-export const registryContract = {
-  [Chain.Ethereum]: getAddress('0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC'), // Details https://github.com/curvefi/metaregistry
-  [Chain.Polygon]: getAddress('0x47bB542B9dE58b970bA50c9dae444DDB4c16751a'),
-}
-
-export class CurvePoolAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+export class CurvePoolAdapter implements IProtocolAdapter, IMetadataBuilder {
   productId = 'pool'
+  protocolId: Protocol
+  chainId: Chain
+  helpers: Helpers
+
+  private provider: CustomJsonRpcProvider
+
+  adaptersController: AdaptersController
+
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+    helpers,
+  }: ProtocolAdapterParams) {
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolId = protocolId
+    this.adaptersController = adaptersController
+    this.helpers = helpers
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -61,53 +88,62 @@ export class CurvePoolAdapter
     )
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenBalance.address,
-    )
-
-    const prices = await this.unwrapProtocolToken(protocolToken, blockNumber)
-
-    return prices.map((underlyingTokenPriceObject) => {
-      const underlyingRateRawBigInt =
-        underlyingTokenPriceObject.underlyingRateRaw
-
-      const balanceRawBigInt = protocolTokenBalance.balanceRaw
-      const decimalsBigInt = BigInt(10 ** protocolTokenBalance.decimals)
-
-      const balanceRaw =
-        (balanceRawBigInt * underlyingRateRawBigInt) / decimalsBigInt
-
-      return {
-        address: underlyingTokenPriceObject.address,
-        name: underlyingTokenPriceObject.name,
-        symbol: underlyingTokenPriceObject.symbol,
-        decimals: underlyingTokenPriceObject.decimals,
-        type: TokenType.Underlying,
-        balanceRaw,
-      }
+  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return this.helpers.getBalanceOfTokens({
+      ...input,
+      protocolTokens: await this.getProtocolTokens(),
     })
   }
 
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
+  async getWithdrawals({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.withdrawals({
+      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getDeposits({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.deposits({
+      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getTotalValueLocked({
+    protocolTokenAddresses,
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
   }
 
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+  async unwrap({
+    blockNumber,
+    protocolTokenAddress,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const protocolTokenMetadata =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
-    return protocolToken
+    const underlyingTokenConversionRate = await this.unwrapProtocolToken(
+      protocolTokenMetadata.protocolToken,
+      blockNumber,
+    )
+
+    return {
+      ...protocolTokenMetadata.protocolToken,
+      baseRate: 1,
+      type: TokenType.Protocol,
+      tokens: underlyingTokenConversionRate,
+    }
   }
 
   protected async unwrapProtocolToken(
@@ -160,13 +196,11 @@ export class CurvePoolAdapter
     })
   }
 
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingTokens } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return underlyingTokens
+  private async getProtocolToken(protocolTokenAddress: string) {
+    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
+  }
+  private async getUnderlyingTokens(protocolTokenAddress: string) {
+    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingTokens
   }
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
