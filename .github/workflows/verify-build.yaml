@@ -53,11 +53,6 @@ jobs:
           npm run new-adapter -- -p test-uniswap-v2-pool-fork-adapter-protocol -pd pool -c 1,10,42161 -t UniswapV2PoolForkAdapter -y
           npm run build
 
-      - name: Create new adapter with LpStakingAdapter template
-        run: |
-          npm run new-adapter -- -p test-lp-staking-adapter -pd pool -c 1,10,42161 -t "LpStakingAdapter (lp token and supports rewards)" -y
-          npm run build
-
       - name: Create new adapter with CompoundV2SupplyMarketForkAdapter template
         run: |
           npm run new-adapter -- -p test-compound-v2-supply-market-fork-adapter-protocol -pd supply -c 1,10,42161 -t CompoundV2SupplyMarketForkAdapter -y

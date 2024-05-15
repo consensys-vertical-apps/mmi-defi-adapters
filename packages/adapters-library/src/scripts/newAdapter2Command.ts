@@ -182,11 +182,10 @@ export function calculateAdapterOutcomes(
 
   // Bit of a hack to add QuestionName.AdapterClassName but its a skip question that I want the answer for
   // find better way to include that answer
-  return [Object.keys(answers), QuestionName.AdapterClassName].reduce(
+  return [...Object.keys(answers), QuestionName.AdapterClassName].reduce(
     (acc, key) => {
       const answer = answers[key as keyof QuestionAnswers]
       const questionConfig = questionnaire[key as keyof QuestionnaireType]
-
       // Step 3: add outcome to outcomes
       if ('outcomes' in questionConfig) {
         let outcomeResults: Partial<BlankAdapterOutcomeOptions> = {}
