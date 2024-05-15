@@ -45,7 +45,9 @@ export class ConvexPoolAdapter
     throw new NotImplementedError()
   }
 
-  getRewardWithdrawalsLpStakingAdapter(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+  getRewardWithdrawalsLpStakingAdapter(
+    _input: GetEventsInput,
+  ): Promise<MovementsByBlock[]> {
     throw new NotImplementedError()
   }
   getExtraRewardWithdrawalsLpStakingAdapter(
