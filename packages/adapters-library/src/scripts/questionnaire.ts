@@ -61,16 +61,16 @@ export const QuestionAnswers = {
     ...TemplateNames,
   },
   [QuestionName.Erc20Event]: {
-    true: 'true',
-    false: 'false',
+    true: true,
+    false: false,
   },
   [QuestionName.BalanceQueryMethod]: {
-    true: 'true',
-    false: 'false',
+    true: true,
+    false: false,
   },
   [QuestionName.AdditionalRewards]: {
-    true: 'true',
-    false: 'false',
+    true: true,
+    false: false,
   },
   [QuestionName.DefiAssetStructure]: {
     Single: 'Single ERC20 protocol token (Like stETH)',
@@ -91,6 +91,7 @@ export const QuestionAnswers = {
     Other: 'Other',
   },
   [QuestionName.UnwrapMultipleUnderlying]: {
+    OneToOne: 'One-to-one mapping to the underlying asset',
     DerivedValue:
       'Asset value derived from the total supply of the DeFi asset divided by the total of the underlying assets, where underlying tokens are owned by the protocol token smart contract.',
     Other: 'Other',
@@ -168,6 +169,10 @@ export const BlankAdapterOutcomeOptions = {
 } as const
 
 export type BlankAdapterOutcomeOptions = {
+  productId: string
+  protocolId: string
+  protocolKey: string
+  chainKeys: (keyof typeof Chain)[]
   adapterClassName: string
   getPositions: (typeof BlankAdapterOutcomeOptions)['getPositions'][keyof (typeof BlankAdapterOutcomeOptions)['getPositions']]
   buildMetadataFunction: (typeof BlankAdapterOutcomeOptions)['buildMetadataFunction'][keyof (typeof BlankAdapterOutcomeOptions)['buildMetadataFunction']]
@@ -194,6 +199,11 @@ export const getQuestionnaire = (
       default: () => 'LenderV2',
       validate: (input: string) =>
         isPascalCase(input) || 'Value must be PascalCase',
+      outcomes: (input: string): Partial<BlankAdapterOutcomeOptions> => {
+        return {
+          [QuestionName.ProtocolKey]: input,
+        }
+      },
     },
     [QuestionName.ProtocolId]: {
       name: QuestionName.ProtocolId,
@@ -204,6 +214,11 @@ export const getQuestionnaire = (
         answers.protocolKey ? kebabCase(answers.protocolKey) : 'lender-v2',
       validate: (input: string) =>
         isKebabCase(input) || 'Value must be kebab-case',
+      outcomes: (input: string): Partial<BlankAdapterOutcomeOptions> => {
+        return {
+          [QuestionName.ProtocolId]: input,
+        }
+      },
     },
     [QuestionName.AdapterClassName]: {
       name: QuestionName.AdapterClassName,
@@ -226,6 +241,13 @@ export const getQuestionnaire = (
       choices: Object.keys(Chain),
       default: () => [Object.keys(Chain)[0]] as (keyof typeof Chain)[],
       next: (_input: string) => QuestionName.ProductId,
+      outcomes: (
+        input: (keyof typeof Chain)[],
+      ): Partial<BlankAdapterOutcomeOptions> => {
+        return {
+          [QuestionName.ChainKeys]: input,
+        }
+      },
     },
     [QuestionName.ProductId]: {
       name: QuestionName.ProductId,
@@ -233,6 +255,11 @@ export const getQuestionnaire = (
       type: 'text',
       next: (_input: string) => QuestionName.ForkCheck,
       default: () => 'farming',
+      outcomes: (input: string): Partial<BlankAdapterOutcomeOptions> => {
+        return {
+          [QuestionName.ProductId]: input,
+        }
+      },
       validate: (productId: string) => {
         if (!isKebabCase(productId)) {
           return 'Value must be kebab-case'
@@ -322,17 +349,13 @@ export const getQuestionnaire = (
               depositsFunction: 'notImplementedError',
               defiAssetStructure: 'contractPosition',
             }
-          case QuestionAnswers[QuestionName.DefiAssetStructure].Other:
+          default:
             return {
               buildMetadataFunction: 'notImplementedError',
               withdrawalsFunction: 'notImplementedError',
               depositsFunction: 'notImplementedError',
               defiAssetStructure: 'other',
             }
-          default:
-            throw new Error(
-              `Invalid outcome on questionnaire.ts defiAsset:${input}`,
-            )
         }
       },
     },
@@ -430,12 +453,10 @@ export const getQuestionnaire = (
             return {
               unwrap: 'useUnwrapRatioMethod',
             }
-          case QuestionAnswers[QuestionName.UnwrapOneUnderlying].Other:
+          default:
             return {
               unwrap: 'notImplementedError',
             }
-          default:
-            throw new Error('Questionnaire error UnwrapOneUnderlying')
         }
       },
     },
@@ -454,17 +475,19 @@ export const getQuestionnaire = (
         input: QuestionAnswers['unwrapMultipleUnderlying'],
       ): Partial<BlankAdapterOutcomeOptions> => {
         switch (input) {
+          case QuestionAnswers[QuestionName.UnwrapMultipleUnderlying].OneToOne:
+            return {
+              unwrap: 'useUnwrapOneToOneMethod',
+            }
           case QuestionAnswers[QuestionName.UnwrapMultipleUnderlying]
             .DerivedValue:
             return {
               unwrap: 'useUnwrapRatioMethod',
             }
-          case QuestionAnswers[QuestionName.UnwrapMultipleUnderlying].Other:
+          default:
             return {
               unwrap: 'notImplementedError',
             }
-          default:
-            throw new Error('Questionnaire error UnwrapMultipleUnderlying')
         }
       },
     },

@@ -184,17 +184,22 @@ export function calculateAdapterOutcomes(
     const answer = answers[key as keyof QuestionAnswers]
     const questionConfig = questionnaire[key as keyof QuestionnaireType]
 
+    console.log({ key, acc, answer, questionConfig })
     // Step 3: add outcome to outcomes
     if ('outcomes' in questionConfig) {
       let outcomeResults: Partial<BlankAdapterOutcomeOptions> = {}
 
+      const newOutcomes = questionConfig.outcomes(
+        //@ts-ignore
+        answer,
+      ) as Partial<BlankAdapterOutcomeOptions>
+
+      console.log({ newOutcomes, answer })
+
       outcomeResults = {
         ...outcomeResults,
 
-        ...(questionConfig.outcomes(
-          //@ts-ignore
-          answer,
-        ) as Partial<BlankAdapterOutcomeOptions>),
+        ...newOutcomes,
       }
       return {
         ...acc,
@@ -337,6 +342,8 @@ export function buildAdapterFilePath(
   productId: string,
   adapterClassName: string,
 ): string {
+  console.log(productId, productId, adapterClassName)
+
   const productPath = path.resolve(
     `./packages/adapters-library/src/adapters/${protocolId}/products/${productId}`,
   )
