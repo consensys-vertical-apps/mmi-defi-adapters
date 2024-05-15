@@ -1,0 +1,768 @@
+{
+  "0x7f90122BF0700F9E7e1F688fe926940E8839F353": {
+    "protocolToken": {
+      "address": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
+      "name": "Curve.fi USDC/USDT",
+      "symbol": "2CRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+        "name": "USD Coin (Arb1)",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x7f90122BF0700F9E7e1F688fe926940E8839F353"
+  },
+  "0x3E01dD8a5E1fb3481F0F589056b428Fc308AF0Fb": {
+    "protocolToken": {
+      "address": "0x3E01dD8a5E1fb3481F0F589056b428Fc308AF0Fb",
+      "name": "Curve.fi WBTC/renBTC",
+      "symbol": "btcCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0xDBf31dF14B66535aF65AaC99C32e9eA844e14501",
+        "name": "renBTC",
+        "symbol": "renBTC",
+        "decimals": 8
+      }
+    ],
+    "lpTokenManager": "0x3E01dD8a5E1fb3481F0F589056b428Fc308AF0Fb"
+  },
+  "0x8e0B8c8BB9db49a46697F3a5Bb8A308e744821D2": {
+    "protocolToken": {
+      "address": "0x8e0B8c8BB9db49a46697F3a5Bb8A308e744821D2",
+      "name": "Curve.fi USD-BTC-ETH",
+      "symbol": "crv3crypto",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x960ea3e3C7FB317332d990873d354E18d7645590"
+  },
+  "0x30dF229cefa463e991e29D42DB0bae2e122B2AC7": {
+    "protocolToken": {
+      "address": "0x30dF229cefa463e991e29D42DB0bae2e122B2AC7",
+      "name": "Curve.fi Factory USD Metapool: MIM",
+      "symbol": "MIM3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
+        "name": "Magic Internet Money",
+        "symbol": "MIM",
+        "decimals": 18
+      },
+      {
+        "address": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
+        "name": "Curve.fi USDC/USDT",
+        "symbol": "2CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x30dF229cefa463e991e29D42DB0bae2e122B2AC7"
+  },
+  "0xC9B8a3FDECB9D5b218d02555a8Baf332E5B740d5": {
+    "protocolToken": {
+      "address": "0xC9B8a3FDECB9D5b218d02555a8Baf332E5B740d5",
+      "name": "Curve.fi Factory Plain Pool: FRAXBP",
+      "symbol": "FRAXBP-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+        "name": "USD Coin (Arb1)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0xC9B8a3FDECB9D5b218d02555a8Baf332E5B740d5"
+  },
+  "0xDbcD16e622c95AcB2650b38eC799f76BFC557a0b": {
+    "protocolToken": {
+      "address": "0xDbcD16e622c95AcB2650b38eC799f76BFC557a0b",
+      "name": "Curve.fi ETH/wstETH",
+      "symbol": "wstETHCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x6eB2dc694eB516B16Dc9FBc678C60052BbdD7d80"
+  },
+  "0x2ce5Fd6f6F4a159987eac99FF5158B7B62189Acf": {
+    "protocolToken": {
+      "address": "0x2ce5Fd6f6F4a159987eac99FF5158B7B62189Acf",
+      "name": "Curve.fi Factory USD Metapool: dForce",
+      "symbol": "USX2CRV3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x641441c631e2F909700d2f41FD87F0aA6A6b4EDb",
+        "name": "dForce USD",
+        "symbol": "USX",
+        "decimals": 18
+      },
+      {
+        "address": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
+        "name": "Curve.fi USDC/USDT",
+        "symbol": "2CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x2ce5Fd6f6F4a159987eac99FF5158B7B62189Acf"
+  },
+  "0x59bF0545FCa0E5Ad48E13DA269faCD2E8C886Ba4": {
+    "protocolToken": {
+      "address": "0x59bF0545FCa0E5Ad48E13DA269faCD2E8C886Ba4",
+      "name": "Curve.fi Factory Plain Pool: VST+FRAX",
+      "symbol": "VSTFRAX-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x64343594Ab9b56e99087BfA6F2335Db24c2d1F17",
+        "name": "Vesta Stable",
+        "symbol": "VST",
+        "decimals": 18
+      },
+      {
+        "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x59bF0545FCa0E5Ad48E13DA269faCD2E8C886Ba4"
+  },
+  "0xfC78eAFf2E8290D3d608B689e93ec6954E21B6C2": {
+    "protocolToken": {
+      "address": "0xfC78eAFf2E8290D3d608B689e93ec6954E21B6C2",
+      "name": "Curve.fi Factory Plain Pool: Loopfi pDF",
+      "symbol": "pDFDF-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x93FC1235119c554576D8AB23583371fc25B803ee",
+        "name": "Loopfi DF",
+        "symbol": "pDF",
+        "decimals": 18
+      },
+      {
+        "address": "0xaE6aab43C4f3E0cea4Ab83752C278f8dEbabA689",
+        "name": "dForce",
+        "symbol": "DF",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xfC78eAFf2E8290D3d608B689e93ec6954E21B6C2"
+  },
+  "0xd92Be5A1c565Db5256cDD537B875ED46111Bd8b0": {
+    "protocolToken": {
+      "address": "0xd92Be5A1c565Db5256cDD537B875ED46111Bd8b0",
+      "name": "Curve.fi Factory USD Metapool: volt-2usd",
+      "symbol": "VOLT2USD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xb1781BF9C582A71269c6098E4155Ea8b15B35305",
+        "name": "Volta Stable Coin",
+        "symbol": "VOLT",
+        "decimals": 18
+      },
+      {
+        "address": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
+        "name": "Curve.fi USDC/USDT",
+        "symbol": "2CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xd92Be5A1c565Db5256cDD537B875ED46111Bd8b0"
+  },
+  "0x755D6688AD74661Add2FB29212ef9153D40fcA46": {
+    "protocolToken": {
+      "address": "0x755D6688AD74661Add2FB29212ef9153D40fcA46",
+      "name": "Curve.fi Factory Plain Pool: 2BTC",
+      "symbol": "2BTC-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40",
+        "name": "Arbitrum tBTC v2",
+        "symbol": "tBTC",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x755D6688AD74661Add2FB29212ef9153D40fcA46"
+  },
+  "0xb34a7d1444a707349Bc7b981B7F2E1f20F81F013": {
+    "protocolToken": {
+      "address": "0xb34a7d1444a707349Bc7b981B7F2E1f20F81F013",
+      "name": "Curve.fi Factory USD Metapool: Overnight",
+      "symbol": "USD+FRAX3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65",
+        "name": "USD+",
+        "symbol": "USD+",
+        "decimals": 6
+      },
+      {
+        "address": "0xC9B8a3FDECB9D5b218d02555a8Baf332E5B740d5",
+        "name": "Curve.fi Factory Plain Pool: FRAXBP",
+        "symbol": "FRAXBP-f",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xb34a7d1444a707349Bc7b981B7F2E1f20F81F013"
+  },
+  "0x1E2ebe2FffA7C9Fa83486188F7C19F9acD1BB990": {
+    "protocolToken": {
+      "address": "0x1E2ebe2FffA7C9Fa83486188F7C19F9acD1BB990",
+      "name": "Curve.fi Factory Plain Pool: peUSD/USDC",
+      "symbol": "peUSDUSDC-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+        "name": "USD Coin (Arb1)",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xdce765f021410B3266aA0053c93Cb4535F1e12e0",
+        "name": "peg-eUSD",
+        "symbol": "peUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x1E2ebe2FffA7C9Fa83486188F7C19F9acD1BB990"
+  },
+  "0xD2239B95890018a8f52fFD17d7F94C3A82f05389": {
+    "protocolToken": {
+      "address": "0xD2239B95890018a8f52fFD17d7F94C3A82f05389",
+      "name": "Curve.fi Factory USD Metapool: Lumi Finance USD",
+      "symbol": "LUAUSD3CRV-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1DD6b5F9281c6B4f043c02A83a46c2772024636c",
+        "name": "Lumi Finance USD",
+        "symbol": "LUAUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
+        "name": "Curve.fi USDC/USDT",
+        "symbol": "2CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xD2239B95890018a8f52fFD17d7F94C3A82f05389"
+  },
+  "0x1DeB3b1cA6afca0FF9C5cE9301950dC98Ac0D523": {
+    "protocolToken": {
+      "address": "0x1DeB3b1cA6afca0FF9C5cE9301950dC98Ac0D523",
+      "name": "Curve.fi Factory Plain Pool: frxETH/WETH",
+      "symbol": "frxETHWETH-f",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x178412e79c25968a32e89b11f63B33F733770c2A",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x1DeB3b1cA6afca0FF9C5cE9301950dC98Ac0D523"
+  },
+  "0x5f0985A8aAd85e82fD592a23Cc0501e4345fb18c": {
+    "protocolToken": {
+      "address": "0x5f0985A8aAd85e82fD592a23Cc0501e4345fb18c",
+      "name": "FXN/ETH",
+      "symbol": "FXNETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x179F38f78346F5942E95C5C59CB1da7F55Cf7CAd",
+        "name": "FXN Token",
+        "symbol": "FXN",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x5f0985A8aAd85e82fD592a23Cc0501e4345fb18c"
+  },
+  "0xF7Fed8Ae0c5B78c19Aadd68b700696933B0Cefd9": {
+    "protocolToken": {
+      "address": "0xF7Fed8Ae0c5B78c19Aadd68b700696933B0Cefd9",
+      "name": "fETH/ETH/xETH",
+      "symbol": "fxETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc608Dfb90A430Df79a8a1eDBC8be7f1A0Eb4E763",
+        "name": "Fractional ETH",
+        "symbol": "fETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x55380fe7A1910dFf29A47B622057ab4139DA42C5",
+        "name": "Leveraged ETH",
+        "symbol": "xETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xF7Fed8Ae0c5B78c19Aadd68b700696933B0Cefd9"
+  },
+  "0x82670f35306253222F8a165869B28c64739ac62e": {
+    "protocolToken": {
+      "address": "0x82670f35306253222F8a165869B28c64739ac62e",
+      "name": "Tricrypto-crvUSD",
+      "symbol": "3c-crvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x82670f35306253222F8a165869B28c64739ac62e"
+  },
+  "0x73aF1150F265419Ef8a5DB41908B700C32D49135": {
+    "protocolToken": {
+      "address": "0x73aF1150F265419Ef8a5DB41908B700C32D49135",
+      "name": "crvUSD/USDT",
+      "symbol": "crvUSDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x73aF1150F265419Ef8a5DB41908B700C32D49135"
+  },
+  "0x3aDf984c937FA6846E5a24E0A68521Bdaf767cE1": {
+    "protocolToken": {
+      "address": "0x3aDf984c937FA6846E5a24E0A68521Bdaf767cE1",
+      "name": "crvUSD/USDC.e",
+      "symbol": "crvUSDC.e",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+        "name": "USD Coin (Arb1)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x3aDf984c937FA6846E5a24E0A68521Bdaf767cE1"
+  },
+  "0x2FE7AE43591E534C256A1594D326e5779E302Ff4": {
+    "protocolToken": {
+      "address": "0x2FE7AE43591E534C256A1594D326e5779E302Ff4",
+      "name": "crvUSD/Frax",
+      "symbol": "crvUSDFRAX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x2FE7AE43591E534C256A1594D326e5779E302Ff4"
+  },
+  "0x4070C044ABc8d9d22447DFE4B032405970878d06": {
+    "protocolToken": {
+      "address": "0x4070C044ABc8d9d22447DFE4B032405970878d06",
+      "name": "MIM/crvUSD",
+      "symbol": "MIMcrvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
+        "name": "Magic Internet Money",
+        "symbol": "MIM",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x4070C044ABc8d9d22447DFE4B032405970878d06"
+  },
+  "0x845C8bc94610807fCbaB5dd2bc7aC9DAbaFf3c55": {
+    "protocolToken": {
+      "address": "0x845C8bc94610807fCbaB5dd2bc7aC9DAbaFf3c55",
+      "name": "TriCRV-ARBITRUM",
+      "symbol": "crvUSDARBCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "name": "Arbitrum",
+        "symbol": "ARB",
+        "decimals": 18
+      },
+      {
+        "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "name": "Curve DAO Token",
+        "symbol": "CRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x845C8bc94610807fCbaB5dd2bc7aC9DAbaFf3c55"
+  },
+  "0xB85246768Cfea42b0c935265Db798C9Ae457646f": {
+    "protocolToken": {
+      "address": "0xB85246768Cfea42b0c935265Db798C9Ae457646f",
+      "name": "CRV/asdCRV/vsdCRV",
+      "symbol": "VASDCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "name": "Curve DAO Token",
+        "symbol": "CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x75289388d50364c3013583d97bd70cED0e183e32",
+        "name": "Aladdin sdCRV",
+        "symbol": "asdCRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x62d5a59E0d67c0381aAd53B201B4A1B8Dcd2C833",
+        "name": "Vote Boosted sdCRV",
+        "symbol": "vsdCRV",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xB85246768Cfea42b0c935265Db798C9Ae457646f"
+  },
+  "0xec090cf6DD891D2d014beA6edAda6e05E025D93d": {
+    "protocolToken": {
+      "address": "0xec090cf6DD891D2d014beA6edAda6e05E025D93d",
+      "name": "crvUSD/USDC",
+      "symbol": "crvUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0xec090cf6DD891D2d014beA6edAda6e05E025D93d"
+  },
+  "0xE920eEdAff6c3BEd1Ef61010B64d46986634E908": {
+    "protocolToken": {
+      "address": "0xE920eEdAff6c3BEd1Ef61010B64d46986634E908",
+      "name": "FRAXFXB20241231",
+      "symbol": "FXB241231",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0xC4C98e6feccfc0f5DD8CBEa9DCFedcFa8425eD97",
+        "name": "FXB_2_DEC312024",
+        "symbol": "FXB_20241231",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xE920eEdAff6c3BEd1Ef61010B64d46986634E908"
+  },
+  "0x946adc524BD312D036776798c46ceDD948DD0A0f": {
+    "protocolToken": {
+      "address": "0x946adc524BD312D036776798c46ceDD948DD0A0f",
+      "name": "FRAXFXB20261231",
+      "symbol": "FXB261231",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0xe3f7c2e873d8F73bCa7961E2D2e18Bbde2Bda7Ec",
+        "name": "FXB_4_DEC312026",
+        "symbol": "FXB_20261231",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x946adc524BD312D036776798c46ceDD948DD0A0f"
+  },
+  "0x1446999B0b0E4f7aDA6Ee73f2Ae12a2cfdc5D9E7": {
+    "protocolToken": {
+      "address": "0x1446999B0b0E4f7aDA6Ee73f2Ae12a2cfdc5D9E7",
+      "name": "Overnight max stable yield",
+      "symbol": "USD++",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65",
+        "name": "USD+",
+        "symbol": "USD+",
+        "decimals": 6
+      },
+      {
+        "address": "0xb1084db8D3C05CEbd5FA9335dF95EE4b8a0edc30",
+        "name": "USDT+",
+        "symbol": "USDT+",
+        "decimals": 6
+      }
+    ],
+    "lpTokenManager": "0x1446999B0b0E4f7aDA6Ee73f2Ae12a2cfdc5D9E7"
+  },
+  "0x4bD135524897333bec344e50ddD85126554E58B4": {
+    "protocolToken": {
+      "address": "0x4bD135524897333bec344e50ddD85126554E58B4",
+      "name": "USDC/USDM",
+      "symbol": "usdc-usdm",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+        "name": "Mountain Protocol USD",
+        "symbol": "USDM",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x4bD135524897333bec344e50ddD85126554E58B4"
+  },
+  "0x8958AE46De6b33293DDdc6cDfbe36900f4631851": {
+    "protocolToken": {
+      "address": "0x8958AE46De6b33293DDdc6cDfbe36900f4631851",
+      "name": "zunUSD/crvUSD",
+      "symbol": "ZUNCRVUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x870908873b6f940E025A7C6879678cB82eC6C9B6",
+        "name": "Zunami USD",
+        "symbol": "zunUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x8958AE46De6b33293DDdc6cDfbe36900f4631851"
+  },
+  "0xEBEEC2EDbbc66eB9055fe772b154f34d3dd686C8": {
+    "protocolToken": {
+      "address": "0xEBEEC2EDbbc66eB9055fe772b154f34d3dd686C8",
+      "name": "zunETH/WETH",
+      "symbol": "ZUNWETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x06D65eC13465Ac5A4376dc101e1141252c4adDf8",
+        "name": "Zunami ETH",
+        "symbol": "zunETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0xEBEEC2EDbbc66eB9055fe772b154f34d3dd686C8"
+  },
+  "0x1c34204FCFE5314Dcf53BE2671C02c35DB58B4e3": {
+    "protocolToken": {
+      "address": "0x1c34204FCFE5314Dcf53BE2671C02c35DB58B4e3",
+      "name": "USDE/USDC",
+      "symbol": "USDEUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      }
+    ],
+    "lpTokenManager": "0x1c34204FCFE5314Dcf53BE2671C02c35DB58B4e3"
+  }
+}

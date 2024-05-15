@@ -8,13 +8,19 @@ import {
 } from '../core/utils/caseConversion'
 import { DefiProvider } from '../defiProvider'
 
-import { Templates } from './templates/templates'
+import { blankAdapterTemplate } from './templates/blankAdapterTemplate'
+import { compoundV2BorrowMarketForkAdapterTemplate } from './templates/compoundV2BorrowMarketForkAdapter'
+import { compoundV2SupplyMarketForkAdapterTemplate } from './templates/compoundV2SupplyMarketForkAdapter'
+import { uniswapV2PoolForkAdapterTemplate } from './templates/uniswapV2PoolForkAdapter'
+import { votingEscrowAdapterTemplate } from './templates/votingEscrowAdapter'
+import { writeOnlyDeFiAdapter } from './templates/writeOnlyDeFiAdapter'
 
 export const QuestionName = {
   ProtocolKey: 'protocolKey',
   ProtocolId: 'protocolId',
+  AdapterClassName: 'adapterClassName',
   ChainKeys: 'chainKeys',
-  ProductId: 'productId', // corrected from 'prodicyId'
+  ProductId: 'productId',
   ForkCheck: 'forkCheck',
   DefiAssetStructure: 'defiAssetStructure',
   Erc20Event: 'erc20Event',
@@ -23,36 +29,47 @@ export const QuestionName = {
   UnwrapOneUnderlying: 'unwrapOneUnderlying',
   UnwrapMultipleUnderlying: 'unwrapMultipleUnderlying',
   AdditionalRewards: 'additionalRewards',
-  RewardsDetails: 'rewardsDetails', // corrected from 'rewardDetails'
+  RewardsDetails: 'rewardsDetails',
 } as const
 
 export type QuestionName = (typeof QuestionName)[keyof typeof QuestionName]
 
-type QuestionAnswersType = Omit<
-  {
-    [K in QuestionName]: { [key: string]: string | boolean }
-  },
-  'protocolKey' | 'protocolId' | 'chainKeys' | 'productId'
->
+export const TemplateNames = {
+  UniswapV2: 'UniswapV2PoolForkAdapter',
+  CompoundSupply: 'CompoundV2 Supply Market',
+  CompoundBorrow: 'CompoundV2 Borrow Market',
+  VotingEscrow: 'VotingEscrowAdapter (like curve and stargate voting escrow)',
+  WriteAdapterOnly:
+    'WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)',
+  SmartBuilder: 'Smart Adapter Builder',
+} as const
 
-export const QuestionAnswers: QuestionAnswersType = {
+export type TemplateNames = (typeof TemplateNames)[keyof typeof TemplateNames]
+
+export const Templates = {
+  [TemplateNames.UniswapV2]: uniswapV2PoolForkAdapterTemplate,
+  [TemplateNames.CompoundSupply]: compoundV2SupplyMarketForkAdapterTemplate,
+  [TemplateNames.CompoundBorrow]: compoundV2BorrowMarketForkAdapterTemplate,
+  [TemplateNames.VotingEscrow]: votingEscrowAdapterTemplate,
+  [TemplateNames.WriteAdapterOnly]: writeOnlyDeFiAdapter,
+  [TemplateNames.SmartBuilder]: blankAdapterTemplate,
+} as const
+
+export const QuestionAnswers = {
   [QuestionName.ForkCheck]: {
-    No: 'No',
-    ...Object.keys(Templates).reduce((acc, templateName) => {
-      return { [templateName]: templateName, ...acc }
-    }, {}),
+    ...TemplateNames,
   },
   [QuestionName.Erc20Event]: {
-    True: true,
-    False: false,
+    true: 'true',
+    false: 'false',
   },
   [QuestionName.BalanceQueryMethod]: {
-    True: true,
-    False: false,
+    true: 'true',
+    false: 'false',
   },
   [QuestionName.AdditionalRewards]: {
-    True: true,
-    False: false,
+    true: 'true',
+    false: 'false',
   },
   [QuestionName.DefiAssetStructure]: {
     Single: 'Single ERC20 protocol token (Like stETH)',
@@ -85,24 +102,83 @@ export const QuestionAnswers: QuestionAnswersType = {
   },
 } as const
 
-export type DefiAssetStructureAnswers =
-  (typeof QuestionAnswers)[typeof QuestionName.DefiAssetStructure][keyof (typeof QuestionAnswers)[typeof QuestionName.DefiAssetStructure]]
-export type UnderlyingTokensAnswers =
-  (typeof QuestionAnswers)[typeof QuestionName.UnderlyingTokens][keyof (typeof QuestionAnswers)[typeof QuestionName.UnderlyingTokens]]
-export type UnwrapOneUnderlyingAnswers =
-  (typeof QuestionAnswers)[typeof QuestionName.UnwrapOneUnderlying][keyof (typeof QuestionAnswers)[typeof QuestionName.UnwrapOneUnderlying]]
-export type UnwrapMultipleUnderlyingAnswers =
-  (typeof QuestionAnswers)[typeof QuestionName.UnwrapMultipleUnderlying][keyof (typeof QuestionAnswers)[typeof QuestionName.UnwrapMultipleUnderlying]]
-export type RewardDetailsAnswers =
-  (typeof QuestionAnswers)[typeof QuestionName.RewardsDetails][keyof (typeof QuestionAnswers)[typeof QuestionName.RewardsDetails]]
-export type ForkCheckAnswers =
-  (typeof QuestionAnswers)[typeof QuestionName.ForkCheck][keyof (typeof QuestionAnswers)[typeof QuestionName.ForkCheck]]
-export type BalanceOfQueryMethodAnswers =
-  (typeof QuestionAnswers)[typeof QuestionName.BalanceQueryMethod][keyof (typeof QuestionAnswers)[typeof QuestionName.BalanceQueryMethod]]
-export type AdditionalRewardsAnswers =
-  (typeof QuestionAnswers)[typeof QuestionName.AdditionalRewards][keyof (typeof QuestionAnswers)[typeof QuestionName.AdditionalRewards]]
-export type Erc20EventAnswers =
-  (typeof QuestionAnswers)[typeof QuestionName.Erc20Event][keyof (typeof QuestionAnswers)[typeof QuestionName.Erc20Event]]
+export type QuestionAnswers = {
+  productId: string
+  protocolId: string
+  protocolKey: string
+  adapterClassName: string
+  chainKeys: (keyof typeof Chain)[]
+  forkCheck: (typeof QuestionAnswers)['forkCheck'][keyof (typeof QuestionAnswers)['forkCheck']]
+  erc20Event: (typeof QuestionAnswers)['erc20Event'][keyof (typeof QuestionAnswers)['erc20Event']]
+  balanceQueryMethod: (typeof QuestionAnswers)['balanceQueryMethod'][keyof (typeof QuestionAnswers)['balanceQueryMethod']]
+  additionalRewards: (typeof QuestionAnswers)['additionalRewards'][keyof (typeof QuestionAnswers)['additionalRewards']]
+  defiAssetStructure: (typeof QuestionAnswers)['defiAssetStructure'][keyof (typeof QuestionAnswers)['defiAssetStructure']]
+  underlyingTokens: (typeof QuestionAnswers)['underlyingTokens'][keyof (typeof QuestionAnswers)['underlyingTokens']]
+  unwrapOneUnderlying: (typeof QuestionAnswers)['unwrapOneUnderlying'][keyof (typeof QuestionAnswers)['unwrapOneUnderlying']]
+  unwrapMultipleUnderlying: (typeof QuestionAnswers)['unwrapMultipleUnderlying'][keyof (typeof QuestionAnswers)['unwrapMultipleUnderlying']]
+  rewardsDetails: (typeof QuestionAnswers)['rewardsDetails'][keyof (typeof QuestionAnswers)['rewardsDetails']][]
+}
+
+export const BlankAdapterOutcomeOptions = {
+  getPositions: {
+    useBalanceOfHelper: 'useBalanceOfHelper',
+    notImplementedError: 'notImplementedError',
+  },
+  buildMetadataFunction: {
+    singleProtocolToken: 'singleProtocolToken',
+    multipleProtocolTokens: 'multipleProtocolTokens',
+    notImplementedError: 'notImplementedError',
+  },
+  underlyingTokens: {
+    oneUnderlying: 'oneUnderlying',
+    multipleUnderlying: 'multipleUnderlying',
+  },
+  defiAssetStructure: {
+    singleProtocolToken: 'singleProtocolToken',
+    multipleProtocolTokens: 'multipleProtocolTokens',
+    nft: 'nft',
+    contractPosition: 'contractPosition',
+    other: 'other',
+  },
+  unwrap: {
+    useUnwrapOneToOneMethod: 'useUnwrapOneToOneMethod',
+    useUnwrapRatioMethod: 'useUnwrapRatioMethod',
+    notImplementedError: 'notImplementedError',
+  },
+  withdrawalsFunction: {
+    useWithdrawalHelper: 'useWithdrawalHelper',
+    notImplementedError: 'notImplementedError',
+  },
+  depositsFunction: {
+    useDepositsHelper: 'useDepositsHelper',
+    notImplementedError: 'notImplementedError',
+  },
+  hasRewards: {
+    true: true,
+    false: false,
+  },
+  hasExtraRewards: {
+    true: true,
+    false: false,
+  },
+  hasProtocolRewards: {
+    true: true,
+    false: false,
+  },
+} as const
+
+export type BlankAdapterOutcomeOptions = {
+  getPositions: (typeof BlankAdapterOutcomeOptions)['getPositions'][keyof (typeof BlankAdapterOutcomeOptions)['getPositions']]
+  buildMetadataFunction: (typeof BlankAdapterOutcomeOptions)['buildMetadataFunction'][keyof (typeof BlankAdapterOutcomeOptions)['buildMetadataFunction']]
+  underlyingTokens: (typeof BlankAdapterOutcomeOptions)['underlyingTokens'][keyof (typeof BlankAdapterOutcomeOptions)['underlyingTokens']]
+  defiAssetStructure: (typeof BlankAdapterOutcomeOptions)['defiAssetStructure'][keyof (typeof BlankAdapterOutcomeOptions)['defiAssetStructure']]
+  unwrap: (typeof BlankAdapterOutcomeOptions)['unwrap'][keyof (typeof BlankAdapterOutcomeOptions)['unwrap']]
+  withdrawalsFunction: (typeof BlankAdapterOutcomeOptions)['withdrawalsFunction'][keyof (typeof BlankAdapterOutcomeOptions)['withdrawalsFunction']]
+  depositsFunction: (typeof BlankAdapterOutcomeOptions)['depositsFunction'][keyof (typeof BlankAdapterOutcomeOptions)['depositsFunction']]
+  hasRewards: (typeof BlankAdapterOutcomeOptions)['hasRewards'][keyof (typeof BlankAdapterOutcomeOptions)['hasRewards']]
+  hasExtraRewards: (typeof BlankAdapterOutcomeOptions)['hasExtraRewards'][keyof (typeof BlankAdapterOutcomeOptions)['hasExtraRewards']]
+  hasProtocolRewards: (typeof BlankAdapterOutcomeOptions)['hasProtocolRewards'][keyof (typeof BlankAdapterOutcomeOptions)['hasProtocolRewards']]
+}
 
 export const getQuestionnaire = (
   defiProvider: DefiProvider,
@@ -127,6 +203,13 @@ export const getQuestionnaire = (
         answers.protocolKey ? kebabCase(answers.protocolKey) : 'lender-v2',
       validate: (input: string) =>
         isKebabCase(input) || 'Value must be kebab-case',
+    },
+    [QuestionName.AdapterClassName]: {
+      name: QuestionName.AdapterClassName,
+      message: 'This question is skipped, auto created',
+      type: 'text',
+      default: () => 'skipped',
+      next: () => 'skipped',
     },
     [QuestionName.ChainKeys]: {
       name: QuestionName.ChainKeys,
@@ -172,22 +255,14 @@ export const getQuestionnaire = (
     [QuestionName.ForkCheck]: {
       name: QuestionName.ForkCheck,
       message:
-        "Is your product a fork of one of the following? Please select from the list below or enter 'No' if none apply.",
+        'Select one of the following templates, we recommend the smart builder.',
       type: 'list',
       choices: ['No', ...Object.keys(Templates)],
-      default: () => 'No',
-      next: (input: ForkCheckAnswers) => {
-        return input === QuestionAnswers[QuestionName.ForkCheck].No
+      default: () => TemplateNames.SmartBuilder,
+      next: (input: QuestionAnswers['forkCheck']) => {
+        return input === QuestionAnswers['forkCheck'].SmartBuilder
           ? QuestionName.DefiAssetStructure
           : 'end'
-      },
-      outcomes: (input: ForkCheckAnswers) => {
-        switch (input) {
-          case QuestionAnswers[QuestionName.ForkCheck].No:
-            return { template: 'No' }
-          default:
-            return { template: input }
-        }
       },
     },
     [QuestionName.DefiAssetStructure]: {
@@ -195,24 +270,24 @@ export const getQuestionnaire = (
       message:
         "What is the structure of your product's DeFi asset(s)? (Select from the list below)",
       type: 'list',
-      default: () =>
-        QuestionAnswers[QuestionName.DefiAssetStructure].Single as string,
+      default: () => QuestionAnswers['defiAssetStructure'].Single as string,
       choices: Object.values(QuestionAnswers[QuestionName.DefiAssetStructure]),
-      next: (input: DefiAssetStructureAnswers) => {
+      next: (input: QuestionAnswers['defiAssetStructure']) => {
         switch (input) {
-          case QuestionAnswers[QuestionName.DefiAssetStructure].Single:
-          case QuestionAnswers[QuestionName.DefiAssetStructure].Multiple:
-          case QuestionAnswers[QuestionName.DefiAssetStructure].Other:
+          case QuestionAnswers['defiAssetStructure']['Single']:
+          case QuestionAnswers['defiAssetStructure']['Multiple']:
+          case QuestionAnswers['defiAssetStructure']['Other']:
             return QuestionName.Erc20Event
-          case QuestionAnswers[QuestionName.DefiAssetStructure].NonFungible:
-          case QuestionAnswers[QuestionName.DefiAssetStructure]
-            .ContractPosition:
+          case QuestionAnswers['defiAssetStructure']['NonFungible']:
+          case QuestionAnswers['defiAssetStructure']['ContractPosition']:
             return QuestionName.BalanceQueryMethod
           default:
             return 'end'
         }
       },
-      outcomes: (input: DefiAssetStructureAnswers) => {
+      outcomes: (
+        input: QuestionAnswers['defiAssetStructure'],
+      ): Partial<BlankAdapterOutcomeOptions> => {
         switch (input) {
           case QuestionAnswers[QuestionName.DefiAssetStructure].Single:
             return {
@@ -247,7 +322,9 @@ export const getQuestionnaire = (
               defiAssetStructure: 'other',
             }
           default:
-            return null
+            throw new Error(
+              `Invalid outcome on questionnaire.ts defiAsset:${input}`,
+            )
         }
       },
     },
@@ -258,16 +335,23 @@ export const getQuestionnaire = (
       type: 'confirm',
       next: (_answer: string) => QuestionName.BalanceQueryMethod,
       default: () => true,
-      outcomes: (input: Erc20EventAnswers) => {
-        if (input === QuestionAnswers[QuestionName.Erc20Event].True) {
+      outcomes: (
+        input: QuestionAnswers['erc20Event'],
+      ): Partial<BlankAdapterOutcomeOptions> => {
+        if (input === QuestionAnswers[QuestionName.Erc20Event].true) {
           return {
-            withdrawalsFunction: 'useWithdrawalHelper',
-            depositsFunction: 'useDepositsHelper',
+            withdrawalsFunction:
+              BlankAdapterOutcomeOptions.withdrawalsFunction
+                .useWithdrawalHelper,
+            depositsFunction:
+              BlankAdapterOutcomeOptions.depositsFunction.useDepositsHelper,
           }
         }
         return {
-          withdrawalsFunction: 'notImplementedError',
-          depositsFunction: 'notImplementedError',
+          withdrawalsFunction:
+            BlankAdapterOutcomeOptions.withdrawalsFunction.notImplementedError,
+          depositsFunction:
+            BlankAdapterOutcomeOptions.depositsFunction.notImplementedError,
         }
       },
     },
@@ -278,14 +362,18 @@ export const getQuestionnaire = (
       type: 'confirm',
       next: (_answer: string) => QuestionName.UnderlyingTokens,
       default: () => true,
-      outcomes: (input: BalanceOfQueryMethodAnswers) => {
-        if (input === QuestionAnswers[QuestionName.BalanceQueryMethod].True) {
+      outcomes: (
+        input: QuestionAnswers['balanceQueryMethod'],
+      ): Partial<BlankAdapterOutcomeOptions> => {
+        if (input === QuestionAnswers[QuestionName.BalanceQueryMethod].true) {
           return {
-            getPositions: 'useBalanceOfHelper',
+            getPositions:
+              BlankAdapterOutcomeOptions.getPositions.useBalanceOfHelper,
           }
         }
         return {
-          getPositions: 'notImplementedError',
+          getPositions:
+            BlankAdapterOutcomeOptions.getPositions.notImplementedError,
         }
       },
     },
@@ -295,19 +383,22 @@ export const getQuestionnaire = (
       type: 'list',
       default: () => QuestionAnswers[QuestionName.UnderlyingTokens].One,
       choices: Object.values(QuestionAnswers[QuestionName.UnderlyingTokens]),
-      next: (input: UnderlyingTokensAnswers) => {
-        return input === QuestionAnswers[QuestionName.UnderlyingTokens].One
+      next: (input: QuestionAnswers['underlyingTokens']) => {
+        return input === QuestionAnswers['underlyingTokens']['One']
           ? QuestionName.UnwrapOneUnderlying
           : QuestionName.UnwrapMultipleUnderlying
       },
-      outcomes: (input: UnderlyingTokensAnswers) => {
-        if (input === QuestionAnswers[QuestionName.UnderlyingTokens].One) {
+      outcomes: (
+        input: QuestionAnswers['underlyingTokens'],
+      ): Partial<BlankAdapterOutcomeOptions> => {
+        if (input === QuestionAnswers['underlyingTokens']['One']) {
           return {
-            underlyingTokens: 'oneUnderlying',
+            underlyingTokens:
+              BlankAdapterOutcomeOptions.underlyingTokens.oneUnderlying,
           }
         }
         return {
-          underlyingTokens: 'unwrapMultipleUnderlying',
+          underlyingTokens: 'multipleUnderlying',
         }
       },
     },
@@ -319,9 +410,14 @@ export const getQuestionnaire = (
       default: () => QuestionAnswers[QuestionName.UnwrapOneUnderlying].OneToOne,
       choices: Object.values(QuestionAnswers[QuestionName.UnwrapOneUnderlying]),
       next: (_input: string) => QuestionName.AdditionalRewards,
-      outcomes: (input: UnwrapOneUnderlyingAnswers) => {
+      outcomes: (
+        input: QuestionAnswers['unwrapOneUnderlying'],
+      ): Partial<BlankAdapterOutcomeOptions> => {
         switch (input) {
           case QuestionAnswers[QuestionName.UnwrapOneUnderlying].OneToOne:
+            return {
+              unwrap: 'useUnwrapOneToOneMethod',
+            }
           case QuestionAnswers[QuestionName.UnwrapOneUnderlying].DerivedValue:
             return {
               unwrap: 'useUnwrapRatioMethod',
@@ -331,7 +427,7 @@ export const getQuestionnaire = (
               unwrap: 'notImplementedError',
             }
           default:
-            return null
+            throw new Error('Questionnaire error UnwrapOneUnderlying')
         }
       },
     },
@@ -346,7 +442,9 @@ export const getQuestionnaire = (
         QuestionAnswers[QuestionName.UnwrapMultipleUnderlying],
       ),
       next: (_input: string) => QuestionName.AdditionalRewards,
-      outcomes: (input: UnwrapMultipleUnderlyingAnswers) => {
+      outcomes: (
+        input: QuestionAnswers['unwrapMultipleUnderlying'],
+      ): Partial<BlankAdapterOutcomeOptions> => {
         switch (input) {
           case QuestionAnswers[QuestionName.UnwrapMultipleUnderlying]
             .DerivedValue:
@@ -358,7 +456,7 @@ export const getQuestionnaire = (
               unwrap: 'notImplementedError',
             }
           default:
-            return null
+            throw new Error('Questionnaire error UnwrapMultipleUnderlying')
         }
       },
     },
@@ -369,8 +467,8 @@ export const getQuestionnaire = (
         'Does your product offer additional rewards beyond the primary earnings? (Yes/No)',
       type: 'confirm',
       default: () => true,
-      next: (input: AdditionalRewardsAnswers) => {
-        return input === QuestionAnswers[QuestionName.AdditionalRewards].True
+      next: (input: QuestionAnswers['additionalRewards']) => {
+        return input === QuestionAnswers[QuestionName.AdditionalRewards].true
           ? QuestionName.RewardsDetails
           : 'end'
       },
@@ -384,23 +482,30 @@ export const getQuestionnaire = (
       default: () => QuestionAnswers[QuestionName.RewardsDetails].LinkedRewards,
       next: (_input: string) => 'end',
 
-      outcomes: (input: RewardDetailsAnswers) => {
-        switch (input) {
-          case QuestionAnswers[QuestionName.RewardsDetails].LinkedRewards:
-            return {
-              hasRewards: true,
-            }
-          case QuestionAnswers[QuestionName.RewardsDetails].ExtraRewards:
-            return {
-              hasExtraRewards: true,
-            }
-          case QuestionAnswers[QuestionName.RewardsDetails].ProtocolRewards:
-            return {
-              hasProtocolRewards: true,
-            }
-          default:
-            return null
+      outcomes: (
+        input: QuestionAnswers['rewardsDetails'],
+      ): Partial<BlankAdapterOutcomeOptions> => {
+        const result: Partial<BlankAdapterOutcomeOptions> = {}
+
+        if (input.includes(QuestionAnswers['rewardsDetails'].LinkedRewards)) {
+          result.hasRewards = true
         }
+        if (
+          input.includes(
+            QuestionAnswers[QuestionName.RewardsDetails].ExtraRewards,
+          )
+        ) {
+          result.hasExtraRewards = true
+        }
+        if (
+          input.includes(
+            QuestionAnswers[QuestionName.RewardsDetails].ProtocolRewards,
+          )
+        ) {
+          result.hasProtocolRewards = true
+        }
+
+        return result
       },
     },
   }

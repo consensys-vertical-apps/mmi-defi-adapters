@@ -8,15 +8,21 @@ import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
 import { writeCodeFile } from '../core/utils/writeCodeFile'
 import type { DefiProvider } from '../defiProvider'
-import { generateAdapter } from './generateAdapter'
 import { newAdapterCliLogo } from './newAdapterCliLogo'
 import {
   addProtocol,
   buildIntegrationTests,
   exportAdapter,
 } from './newAdapterCommand'
-import { QuestionName, getQuestionnaire } from './questionnaire'
-import { Templates } from './templates/templates'
+import {
+  BlankAdapterOutcomeOptions,
+  QuestionAnswers,
+  QuestionName,
+  TemplateNames,
+  Templates,
+  getQuestionnaire,
+} from './questionnaire'
+import { Replacements } from './replacements'
 
 const colorBlue = chalk.rgb(0, 112, 243).bold
 const boldWhiteBg = chalk.bgWhite.bold
@@ -24,42 +30,9 @@ const boldText = chalk.bold
 const italic = chalk.italic
 const bluePrefix = chalk.blue('?')
 
-export type Outcomes = {
-  getPositions: 'useBalanceOfHelper' | 'notImplementedError'
-  buildMetadataFunction:
-    | 'singleProtocolToken'
-    | 'multipleProtocolTokens'
-    | 'notImplementedError'
-  underlyingTokens: 'oneUnderlying' | 'multipleUnderlying'
-  defiAssetStructure:
-    | 'singleProtocolToken'
-    | 'multipleProtocolTokens'
-    | 'nft'
-    | 'contractPosition'
-  unwrap:
-    | 'useUnwrapOneToOneMethod'
-    | 'useUnwrapRatioMethod'
-    | 'notImplementedError'
-  withdrawalsFunction: 'useWithdrawalHelper' | 'notImplementedError'
-  depositsFunction: 'useDepositsHelper' | 'notImplementedError'
-  template: keyof typeof Templates | 'No'
-  hasRewards: boolean
-  hasExtraRewards: boolean
-  hasProtocolRewards: boolean
-}
-
 type QuestionnaireType = Awaited<ReturnType<typeof getQuestionnaire>>
 type KeyofQuestionnaire = keyof QuestionnaireType
 type ValueOfQuestionnaire = QuestionnaireType[KeyofQuestionnaire]
-
-export type Answers = Omit<
-  Record<KeyofQuestionnaire, string>,
-  'chainKeys' | 'rewardDetails'
-> & {
-  chainKeys: (keyof typeof Chain)[]
-  rewardDetails: string[]
-  adapterClassName: string
-}
 
 export async function newAdapter2Command(
   program: Command,
@@ -73,69 +46,32 @@ export async function newAdapter2Command(
     .action(initiateQuestionnaire(defiProvider))
 }
 
-function initiateQuestionnaire(defiProvider: DefiProvider) {
+export function initiateQuestionnaire(defiProvider: DefiProvider) {
   return async ({
     yes: skipQuestions,
     template: inputTemplate,
   }: {
     yes: boolean
-    template: Outcomes['template']
+    template: QuestionAnswers['forkCheck']
   }) => {
-    let answers = {} as Answers
-
     if (!skipQuestions) {
-      const isExit = await welcome(defiProvider)
-      if (isExit) {
+      const exit = await welcome(defiProvider)
+      if (exit) {
         return
       }
-
-      const firstQuestionId = 'protocolKey'
-
-      answers = await askQuestion(firstQuestionId, defiProvider)
-    } else {
-      const questionnaire = getQuestionnaire(defiProvider, answers)
-      answers = calculateDefaultAnswers(questionnaire, inputTemplate)
-      console.log({ answers, inputTemplate })
-      answers.productId = `${answers.productId}-${answers.forkCheck
-        .replace(/[^\w\s]/gi, '')
-        .replace(/\s+/g, '')}Template`
     }
 
-    answers.adapterClassName = adapterClassName(
-      answers.protocolKey,
-      answers.productId,
+    const answers = await getAnswersAndOutcomes(
+      defiProvider,
+      skipQuestions,
+      inputTemplate,
     )
 
-    answers.forkCheck = inputTemplate ?? answers.forkCheck
-    const questionnaire = getQuestionnaire(defiProvider, answers)
-    const outcomes = calculateAdapterOutcomes(questionnaire, answers)
+    const outcomes = calculateAdapterOutcomes(defiProvider, answers)
 
-    console.log(answers, outcomes)
+    const code: string = await createCode(answers, outcomes)
 
-    switch (true) {
-      case outcomes.template === 'No': {
-        await buildAdapterFromBlankTemplate(answers, outcomes)
-        break
-      }
-      case Object.keys(Templates).includes(outcomes.template):
-        {
-          const templates = Templates[outcomes.template]!
-          for (const template of templates) {
-            const code = template(answers)
-            await createAdapterFile(answers, code)
-          }
-        }
-        break
-      default: {
-        logger.error(`Template not found: ${answers.forkCheck}`)
-        logger.error(
-          `Must be one of these values: No, ${Object.keys(Templates).join(
-            ', ',
-          )}`,
-        )
-        throw new Error(`No template with name: ${answers.forkCheck}`)
-      }
-    }
+    await createAdapterFile(answers, code)
     await buildIntegrationTests(answers)
     await addProtocol(answers)
     await exportAdapter(answers)
@@ -151,60 +87,118 @@ function initiateQuestionnaire(defiProvider: DefiProvider) {
   }
 }
 
+export async function createCode(
+  answers: QuestionAnswers,
+  outcomes: BlankAdapterOutcomeOptions,
+) {
+  let code: string
+  switch (true) {
+    case answers.forkCheck === TemplateNames.SmartBuilder: {
+      const blankTemplate = Templates[answers.forkCheck]!(answers)
+
+      code = generateAdapter(answers, outcomes, blankTemplate!)
+
+      break
+    }
+    case Object.keys(Templates).includes(answers.forkCheck):
+      {
+        const template = Templates[answers.forkCheck]!
+        code = template(answers)
+      }
+      break
+    default: {
+      logger.error(`Template not found: ${answers.forkCheck}`)
+      logger.error(
+        `Must be one of these values: No, ${Object.keys(Templates).join(', ')}`,
+      )
+      throw new Error(`No template with name: ${answers.forkCheck}`)
+    }
+  }
+  return code
+}
+
+async function getAnswersAndOutcomes(
+  defiProvider: DefiProvider,
+  skipQuestions: boolean,
+  inputTemplate: QuestionAnswers['forkCheck'],
+) {
+  let answers = {} as QuestionAnswers
+
+  if (!skipQuestions) {
+    const firstQuestionId = 'protocolKey'
+
+    answers = await askQuestion(firstQuestionId, defiProvider)
+  } else {
+    const questionnaire = getQuestionnaire(defiProvider, answers)
+    answers = calculateDefaultAnswers(questionnaire, inputTemplate)
+    console.log({ answers, inputTemplate })
+    answers.productId = `${answers.productId}-${answers.forkCheck
+      .replace(/[^\w\s]/gi, '')
+      .replace(/\s+/g, '')}Template`
+  }
+
+  answers.adapterClassName = adapterClassName(
+    answers.protocolKey,
+    answers.productId,
+  )
+
+  answers.forkCheck = inputTemplate ?? answers.forkCheck
+
+  return answers
+}
+
 function calculateDefaultAnswers(
   questionnaire: QuestionnaireType,
   inputTemplate?: string,
 ) {
-  const answers = Object.keys(questionnaire).reduce((acc, key) => {
-    acc[key as keyof Answers] = questionnaire[
-      key as keyof typeof questionnaire
-      // biome-ignore lint/suspicious/noExplicitAny: Not sure - TODO
-    ].default() as any
-    return acc
-  }, {} as Answers)
+  const answers = {} as QuestionAnswers
+
+  Object.keys(questionnaire).forEach((key) => {
+    const defaultValue =
+      questionnaire[key as keyof typeof questionnaire].default()
+
+    //@ts-ignore
+    answers[key as keyof typeof QuestionAnswers] = defaultValue
+  })
 
   if (inputTemplate) {
+    //@ts-ignore
     answers.forkCheck = inputTemplate
   }
   return answers
 }
 
-function calculateAdapterOutcomes(
-  questionnaire: QuestionnaireType,
-  answers: Answers,
-): Outcomes {
+export function calculateAdapterOutcomes(
+  defiProvider: DefiProvider,
+  answers: QuestionAnswers,
+): BlankAdapterOutcomeOptions {
+  const questionnaire = getQuestionnaire(defiProvider, answers)
+
   return Object.keys(questionnaire).reduce((acc, key) => {
-    const answer = answers[key as keyof Answers];
-    const questionConfig = questionnaire[key as keyof QuestionnaireType];
+    const answer = answers[key as keyof QuestionAnswers]
+    const questionConfig = questionnaire[key as keyof QuestionnaireType]
 
     // Step 3: add outcome to outcomes
     if ('outcomes' in questionConfig) {
-      let outcomeResults: Partial<Outcomes> = {};
+      let outcomeResults: Partial<BlankAdapterOutcomeOptions> = {}
 
-      if (Array.isArray(answer)) {
-        answer.forEach((outcomeKey) => {
-          outcomeResults = {
-            ...outcomeResults,
-            ...(questionConfig.outcomes(outcomeKey) as Partial<Outcomes>),
-          };
-        });
-      } else {
-        outcomeResults = {
-          ...outcomeResults,
-          ...(questionConfig.outcomes(answer) as Partial<Outcomes>),
-        };
+      outcomeResults = {
+        ...outcomeResults,
+
+        ...(questionConfig.outcomes(
+          //@ts-ignore
+          answer,
+        ) as Partial<BlankAdapterOutcomeOptions>),
       }
-
       return {
         ...acc,
         ...outcomeResults,
-      };
+      }
     }
 
-    return acc;
-  }, {} as Outcomes);
+    return acc
+  }, {} as BlankAdapterOutcomeOptions)
 }
-
 
 async function welcome(defiProvider: DefiProvider) {
   showMessage(colorBlue(newAdapterCliLogo))
@@ -282,9 +276,9 @@ function showMessage(message: string) {
 async function askQuestion(
   nextQuestionName: KeyofQuestionnaire,
   defiProvider: DefiProvider,
-  answers = {} as Answers,
-  outcomes = {} as Outcomes,
-): Promise<Answers> {
+  answers = {} as QuestionAnswers,
+  outcomes = {} as BlankAdapterOutcomeOptions,
+): Promise<QuestionAnswers> {
   const questionConfig = getQuestionnaire(defiProvider, answers)[
     nextQuestionName
   ]
@@ -300,35 +294,25 @@ async function askQuestion(
     ])
   )[nextQuestionName]
 
-  // Step2: add answer to answers
-  answers[nextQuestionName as keyof Answers] = answer
+  //@ts-ignore
+  answers[nextQuestionName as keyof QuestionAnswers] = answer
 
+  //@ts-ignore
   if (questionConfig.next(answer) === 'end') {
     return answers
   }
 
+  //@ts-ignore
   const nextQuestion = questionConfig.next(answer) as QuestionName
   return await askQuestion(nextQuestion, defiProvider, answers, outcomes)
 }
 
 export async function readBlankTemplate(filePath: string) {
+  console.log(filePath, 'oioi')
   return readFile(filePath, { encoding: 'utf8' })
 }
 
-async function buildAdapterFromBlankTemplate(
-  answers: Answers,
-  outcomes: Outcomes,
-) {
-  const blankTemplate = await readBlankTemplate(
-    './packages/adapters-library/src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts',
-  )
-
-  const code = generateAdapter(answers, outcomes, blankTemplate!)
-
-  await createAdapterFile(answers, code)
-}
-
-async function createAdapterFile(answers: Answers, code: string) {
+async function createAdapterFile(answers: QuestionAnswers, code: string) {
   const adapterFilePath = buildAdapterFilePath(
     answers.protocolId,
     answers.productId,
@@ -352,4 +336,25 @@ export function buildAdapterFilePath(
 
 export function adapterClassName(protocolKey: string, productId: string) {
   return `${protocolKey}${pascalCase(productId)}Adapter`
+}
+
+export function generateAdapter(
+  answers: QuestionAnswers,
+  outcomes: BlankAdapterOutcomeOptions,
+  blankAdapter: string,
+): string {
+  return Object.keys(Replacements).reduce(
+    (currentTemplate, replace: string) => {
+      // Check if the operation exists in the Replacements object
+      const replacement = Replacements[replace as keyof typeof Replacements]
+      if (replacement) {
+        // Apply the replacement operation
+        return replacement.replace(outcomes, currentTemplate, answers)
+      }
+
+      console.warn(`Replacement operation '${replace}' not found.`)
+      return currentTemplate
+    },
+    blankAdapter,
+  )
 }

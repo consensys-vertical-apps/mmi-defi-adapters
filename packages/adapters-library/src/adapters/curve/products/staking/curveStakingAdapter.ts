@@ -53,7 +53,7 @@ export class CurveStakingAdapter
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.StandardErc20,
+        type: AssetType.NonStandardErc20,
       },
     }
   }

@@ -1,10 +1,10 @@
-import { Answers } from '../newAdapter2Command'
+import { QuestionAnswers } from '../questionnaire'
 
 export function compoundV2SupplyMarketForkAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: Pick<Answers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
+}: Pick<QuestionAnswers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
   return `
   import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
   import { Chain } from '../../../../core/constants/chains'

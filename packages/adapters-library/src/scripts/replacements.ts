@@ -1,5 +1,5 @@
 import { Answers } from 'inquirer'
-import { Outcomes } from './newAdapter2Command'
+import { BlankAdapterOutcomeOptions } from './questionnaire'
 
 // biome-ignore lint/suspicious/noExplicitAny: Useful for this placeholder
 const EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK = '' as any
@@ -7,7 +7,10 @@ const EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK = '' as any
 export const Replacements = {
   BUILD_METADATA: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (outcomes: Outcomes, blankAdapter: string): string => {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      blankAdapter: string,
+    ): string => {
       const regex = /return Replacements.BUILD_METADATA.placeholder/g
 
       switch (true) {
@@ -64,14 +67,15 @@ export const Replacements = {
   GET_PROTOCOL_TOKENS: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
-      outcomes: Outcomes,
+      outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
       _answers: Answers,
     ): string => {
       const regexProtocolTokens =
         /return Replacements.GET_PROTOCOL_TOKENS.placeholder/g
-      switch (outcomes.defiAssetStructure) {
-        case 'singleProtocolToken' || 'multiProtocolToken':
+      switch (true) {
+        case outcomes.defiAssetStructure === 'singleProtocolToken':
+        case outcomes.defiAssetStructure === 'multipleProtocolTokens':
           return updatedTemplate.replace(
             regexProtocolTokens,
             `return Object.values(await this.buildMetadata()).map(
@@ -89,7 +93,7 @@ export const Replacements = {
   GET_POSITIONS: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
-      outcomes: Outcomes,
+      outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
       _answers: Answers,
     ): string => {
@@ -125,7 +129,7 @@ export const Replacements = {
   GET_WITHDRAWALS: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
-      outcomes: Outcomes,
+      outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
       _answers: Answers,
     ): string => {
@@ -153,7 +157,7 @@ export const Replacements = {
   GET_DEPOSITS: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
-      outcomes: Outcomes,
+      outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
       _answers: Answers,
     ): string => {
@@ -179,7 +183,10 @@ export const Replacements = {
   },
   UNWRAP: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (outcomes: Outcomes, updatedTemplate: string): string => {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+    ): string => {
       const regex = /return Replacements.UNWRAP.placeholder/g
 
       switch (outcomes.unwrap) {
@@ -210,11 +217,15 @@ export const Replacements = {
   },
   ASSET_TYPE: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (outcomes: Outcomes, updatedTemplate: string): string => {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+    ): string => {
       const regex = /Replacements.ASSET_TYPE.placeholder/g
 
       switch (outcomes.defiAssetStructure) {
-        case 'singleProtocolToken' || 'multipleProtocolTokens':
+        case 'singleProtocolToken':
+        case 'multipleProtocolTokens':
           return updatedTemplate.replace(regex, 'AssetType.StandardErc20')
 
         default:
@@ -224,11 +235,15 @@ export const Replacements = {
   },
   TVL: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (outcomes: Outcomes, updatedTemplate: string): string => {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+    ): string => {
       const regex = /return Replacements.TVL.placeholder/g
 
       switch (outcomes.defiAssetStructure) {
-        case 'singleProtocolToken' || 'multipleProtocolTokens':
+        case 'singleProtocolToken':
+        case 'multipleProtocolTokens':
           return updatedTemplate.replace(
             regex,
             `const protocolTokens = await this.getProtocolTokens()
@@ -251,7 +266,7 @@ export const Replacements = {
   PRODUCT_ID: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
-      outcomes: Outcomes,
+      outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
       answers: Answers,
     ): string => {
@@ -264,7 +279,7 @@ export const Replacements = {
   PROTOCOL_ID: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
-      outcomes: Outcomes,
+      outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
       answers: Answers,
     ): string => {
@@ -277,7 +292,7 @@ export const Replacements = {
   PROTOCOL_KEY: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
-      outcomes: Outcomes,
+      outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
       answers: Answers,
     ): string => {
@@ -290,7 +305,7 @@ export const Replacements = {
   ADAPTER_CLASS_NAME: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
-      outcomes: Outcomes,
+      outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
       answers: Answers,
     ): string => {
@@ -302,7 +317,10 @@ export const Replacements = {
   },
   GET_REWARD_POSITIONS: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (outcomes: Outcomes, updatedTemplate: string): string => {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+    ): string => {
       const regexRewardPositions =
         /\/\/Replacements.GET_REWARD_POSITIONS.placeholder/g
 
@@ -327,7 +345,10 @@ export const Replacements = {
   },
   GET_REWARD_WITHDRAWALS: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (outcomes: Outcomes, updatedTemplate: string): string => {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+    ): string => {
       const regexRewardWithdrawals = RegExp(
         /\/\/Replacements.GET_REWARD_WITHDRAWALS.placeholder/,
         'g',
@@ -352,7 +373,10 @@ export const Replacements = {
   },
   GET_EXTRA_REWARD_POSITIONS: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (outcomes: Outcomes, updatedTemplate: string): string => {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+    ): string => {
       const regexRewardPositions =
         /\/\/Replacements.GET_EXTRA_REWARD_POSITIONS.placeholder/g
 
@@ -377,7 +401,10 @@ export const Replacements = {
   },
   GET_EXTRA_REWARD_WITHDRAWALS: {
     placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (outcomes: Outcomes, updatedTemplate: string): string => {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+    ): string => {
       const regexRewardWithdrawals = RegExp(
         /\/\/Replacements.GET_EXTRA_REWARD_WITHDRAWALS.placeholder/,
         'g',

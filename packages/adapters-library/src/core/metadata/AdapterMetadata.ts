@@ -114,6 +114,18 @@ import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
+import CurveV1PoolEthereumProtocolToken from '../../adapters/curve-v1/products/pool/metadata/ethereum.protocol-token.json'
+
+import CurveV1PoolOptimismProtocolToken from '../../adapters/curve-v1/products/pool/metadata/optimism.protocol-token.json'
+
+import CurveV1PoolFantomProtocolToken from '../../adapters/curve-v1/products/pool/metadata/fantom.protocol-token.json'
+
+import CurveV1PoolBaseProtocolToken from '../../adapters/curve-v1/products/pool/metadata/base.protocol-token.json'
+
+import CurveV1PoolArbitrumProtocolToken from '../../adapters/curve-v1/products/pool/metadata/arbitrum.protocol-token.json'
+
+import CurveV1PoolAvalancheProtocolToken from '../../adapters/curve-v1/products/pool/metadata/avalanche.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -717,6 +729,60 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CurveStakingPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CurveV1,
+      productId: 'pool',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    CurveV1PoolArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CurveV1,
+      productId: 'pool',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    CurveV1PoolAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CurveV1,
+      productId: 'pool',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    CurveV1PoolBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CurveV1,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    CurveV1PoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CurveV1,
+      productId: 'pool',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    CurveV1PoolFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.CurveV1,
+      productId: 'pool',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    CurveV1PoolOptimismProtocolToken,
   ],
   [
     metadataKey({

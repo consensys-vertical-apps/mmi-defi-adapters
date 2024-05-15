@@ -1,11 +1,11 @@
-import { Answers } from '../newAdapter2Command'
+import { QuestionAnswers } from '../questionnaire'
 
 export function votingEscrowAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
 }: Pick<
-  Answers,
+  QuestionAnswers,
   'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
 >) {
   return `import { getAddress } from 'ethers'

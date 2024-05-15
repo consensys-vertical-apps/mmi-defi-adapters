@@ -1,0 +1,11 @@
+{
+  "snapshot": {
+    "success": false,
+    "error": {
+      "message": "No adapter found (at AdaptersController.fetchAdapter)",
+      "details": {
+        "name": "AdapterMissingError"
+      }
+    }
+  }
+}

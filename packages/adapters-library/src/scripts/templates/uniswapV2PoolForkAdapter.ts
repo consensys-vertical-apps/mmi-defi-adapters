@@ -1,4 +1,4 @@
-import { Answers } from '../newAdapter2Command'
+import { QuestionAnswers } from '../questionnaire'
 
 export function uniswapV2PoolForkAdapterTemplate({
   protocolKey,
@@ -6,7 +6,7 @@ export function uniswapV2PoolForkAdapterTemplate({
   productId,
   chainKeys,
 }: Pick<
-  Answers,
+  QuestionAnswers,
   'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
 >) {
   return `

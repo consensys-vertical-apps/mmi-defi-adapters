@@ -66,6 +66,8 @@ import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAd
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
+import { CurveV1PoolAdapter } from './curve-v1/products/pool/curveV1PoolAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -195,6 +197,16 @@ export const supportedProtocols: Record<
       CurveRewardAdapter,
     ],
     [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
+  },
+
+  [Protocol.CurveV1]: {
+    [Chain.Ethereum]: [CurveV1PoolAdapter],
+    [Chain.Optimism]: [CurveV1PoolAdapter],
+    // [Chain.Polygon]: [CurveV1PoolAdapter],
+    [Chain.Fantom]: [CurveV1PoolAdapter],
+    [Chain.Base]: [CurveV1PoolAdapter],
+    [Chain.Arbitrum]: [CurveV1PoolAdapter],
+    [Chain.Avalanche]: [CurveV1PoolAdapter],
   },
 
   [Protocol.Ethena]: {
