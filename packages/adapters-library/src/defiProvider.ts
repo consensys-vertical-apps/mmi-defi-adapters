@@ -107,6 +107,9 @@ export class DefiProvider {
         tokenIds: filterTokenIds,
       })
 
+      // unwrap protocol tokens
+      await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
+
       await Promise.all(
         protocolPositions.map(async (pos) => {
           const rewards = await adapter.getRewardPositions?.({
@@ -121,6 +124,10 @@ export class DefiProvider {
         }),
       )
 
+      // now unwrap reward tokens attached to the protocol tokens
+      // note if unwrap called only after attaching rewards then unwrap function thinks the reward tokens are the protocol tokens unwrapped
+      await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
+
       const endTime = Date.now()
       logger.info({
         source: 'adapter:positions',
@@ -134,8 +141,6 @@ export class DefiProvider {
         userAddress,
         blockNumber,
       })
-
-      await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
 
       const tokens = protocolPositions.map((protocolPosition) =>
         enrichPositionBalance(protocolPosition, adapter.chainId),
