@@ -34,21 +34,21 @@ export class ConvexPoolAdapter
 {
   productId = 'pool'
 
-  async getRewardPositions(
-    _input: GetRewardPositionsInput,
-  ): Promise<UnderlyingReward[]> {
+  async getRewardPositionsLpStakingAdapter(
+    _input: GetPositionsInput,
+  ): Promise<ProtocolPosition[]> {
     throw new NotImplementedError()
   }
-  async getExtraRewardPositions(
+  async getExtraRewardPositionsLpStakingAdapter(
     _input: GetPositionsInput,
   ): Promise<ProtocolPosition[]> {
     throw new NotImplementedError()
   }
 
-  getRewardWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+  getRewardWithdrawalsLpStakingAdapter(_input: GetEventsInput): Promise<MovementsByBlock[]> {
     throw new NotImplementedError()
   }
-  getExtraRewardWithdrawals(
+  getExtraRewardWithdrawalsLpStakingAdapter(
     _input: GetEventsInput,
   ): Promise<MovementsByBlock[]> {
     throw new NotImplementedError()

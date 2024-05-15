@@ -2,13 +2,11 @@ import {
   GetEventsInput,
   GetPositionsInput,
   GetPositionsInputWithTokenAddresses,
-  GetRewardPositionsInput,
   MovementsByBlock,
   ProtocolPosition,
   TokenBalance,
   TokenType,
   Underlying,
-  UnderlyingReward,
   UnwrappedTokenExchangeRate,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
@@ -39,26 +37,26 @@ export abstract class LpStakingAdapter
 {
   abstract buildMetadata(): Promise<LpStakingProtocolMetadata>
 
-  abstract getRewardPositions({
-    userAddress,
-    blockNumber,
-    protocolTokenAddress,
-  }: GetRewardPositionsInput): Promise<UnderlyingReward[]>
-
-  abstract getExtraRewardPositions({
+  abstract getRewardPositionsLpStakingAdapter({
     userAddress,
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInputWithTokenAddresses): Promise<ProtocolPosition[]>
 
-  abstract getRewardWithdrawals({
+  abstract getExtraRewardPositionsLpStakingAdapter({
+    userAddress,
+    blockNumber,
+    protocolTokenAddresses,
+  }: GetPositionsInputWithTokenAddresses): Promise<ProtocolPosition[]>
+
+  abstract getRewardWithdrawalsLpStakingAdapter({
     userAddress,
     protocolTokenAddress,
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]>
 
-  abstract getExtraRewardWithdrawals({
+  abstract getExtraRewardWithdrawalsLpStakingAdapter({
     userAddress,
     protocolTokenAddress,
     fromBlock,
@@ -73,8 +71,8 @@ export abstract class LpStakingAdapter
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     const withdrawalMethods = [
       super.getWithdrawals,
-      this.getRewardWithdrawals,
-      this.getExtraRewardWithdrawals,
+      this.getRewardWithdrawalsLpStakingAdapter,
+      this.getExtraRewardWithdrawalsLpStakingAdapter,
     ]
 
     const withdrawals = await Promise.all(
@@ -120,50 +118,49 @@ export abstract class LpStakingAdapter
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    throw new NotImplementedError()
-    // const stakingPositions = await super.getPositions({
-    //   userAddress,
-    //   blockNumber,
-    //   protocolTokenAddresses,
-    // });
+    const stakingPositions = await super.getPositions({
+      userAddress,
+      blockNumber,
+      protocolTokenAddresses,
+    })
 
-    // await Promise.all(
-    //   stakingPositions.map(async (position) => {
-    //     const [rewardTokensPositions, extraRewardTokensPositions] =
-    //       await Promise.allSettled([
-    //         this.getRewardPositions({
-    //           userAddress,
-    //           blockNumber,
-    //           protocolTokenAddresses: [position.address],
-    //         }),
-    //         this.getExtraRewardPositions({
-    //           userAddress,
-    //           blockNumber,
-    //           protocolTokenAddresses: [position.address],
-    //         }),
-    //       ]);
+    await Promise.all(
+      stakingPositions.map(async (position) => {
+        const [rewardTokensPositions, extraRewardTokensPositions] =
+          await Promise.allSettled([
+            this.getRewardPositionsLpStakingAdapter({
+              userAddress,
+              blockNumber,
+              protocolTokenAddresses: [position.address],
+            }),
+            this.getExtraRewardPositionsLpStakingAdapter({
+              userAddress,
+              blockNumber,
+              protocolTokenAddresses: [position.address],
+            }),
+          ])
 
-    //     if (rewardTokensPositions.status === 'fulfilled') {
-    //       this.addTokensToPosition(position, rewardTokensPositions.value[0]);
-    //     } else {
-    //       this.handleError(rewardTokensPositions.reason, 'getRewardPositions');
-    //     }
+        if (rewardTokensPositions.status === 'fulfilled') {
+          this.addTokensToPosition(position, rewardTokensPositions.value[0])
+        } else {
+          this.handleError(rewardTokensPositions.reason, 'getRewardPositions')
+        }
 
-    //     if (extraRewardTokensPositions.status === 'fulfilled') {
-    //       this.addTokensToPosition(
-    //         position,
-    //         extraRewardTokensPositions.value[0]
-    //       );
-    //     } else {
-    //       this.handleError(
-    //         extraRewardTokensPositions.reason,
-    //         'getExtraRewardPositions'
-    //       );
-    //     }
-    //   })
-    // );
+        if (extraRewardTokensPositions.status === 'fulfilled') {
+          this.addTokensToPosition(
+            position,
+            extraRewardTokensPositions.value[0],
+          )
+        } else {
+          this.handleError(
+            extraRewardTokensPositions.reason,
+            'getExtraRewardPositions',
+          )
+        }
+      }),
+    )
 
-    // return stakingPositions;
+    return stakingPositions
   }
 
   protected async getUnderlyingTokenBalances({
