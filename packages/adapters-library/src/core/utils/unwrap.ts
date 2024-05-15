@@ -25,8 +25,6 @@ export async function unwrap(
       return
     }
 
-    console.log(adapter.chainId, token.address)
-
     const underlyingProtocolTokenAdapter =
       await adapter.adaptersController.fetchTokenAdapter(
         adapter.chainId,

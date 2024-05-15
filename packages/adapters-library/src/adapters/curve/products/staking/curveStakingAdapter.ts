@@ -121,12 +121,6 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    console.log(
-      await this.helpers.getBalanceOfTokens({
-        ...input,
-        protocolTokens: await this.getProtocolTokens(),
-      }),
-    )
     return this.helpers.getBalanceOfTokens({
       ...input,
       protocolTokens: await this.getProtocolTokens(),
@@ -211,11 +205,6 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
     tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    console.log({
-      protocolTokenAddress,
-      tokenId,
-      blockNumber,
-    })
     return this.helpers.unwrapOneToOne({
       protocolToken: await this.getProtocolToken(protocolTokenAddress),
       underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
