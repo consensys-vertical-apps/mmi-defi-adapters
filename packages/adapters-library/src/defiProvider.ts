@@ -107,6 +107,20 @@ export class DefiProvider {
         tokenIds: filterTokenIds,
       })
 
+      await Promise.all(
+        protocolPositions.map(async (pos) => {
+          const rewards = await adapter.getRewardPositions?.({
+            userAddress,
+            blockNumber,
+            protocolTokenAddress: pos.address,
+          })
+
+          if (rewards && rewards?.length > 0) {
+            pos.tokens = [...(pos.tokens ?? []), ...rewards]
+          }
+        }),
+      )
+
       const endTime = Date.now()
       logger.info({
         source: 'adapter:positions',
@@ -302,13 +316,31 @@ export class DefiProvider {
     }
 
     const runner = async (adapter: IProtocolAdapter) => {
-      const positionsMovements = await adapter.getWithdrawals({
-        protocolTokenAddress: getAddress(protocolTokenAddress),
-        fromBlock,
-        toBlock,
-        userAddress,
-        tokenId,
-      })
+      const positionsMovementsPromises = [
+        adapter.getWithdrawals({
+          protocolTokenAddress: getAddress(protocolTokenAddress),
+          fromBlock,
+          toBlock,
+          userAddress,
+          tokenId,
+        }),
+      ]
+
+      if (typeof adapter.getRewardPositions === 'function') {
+        positionsMovementsPromises.push(
+          adapter.getRewardWithdrawals!({
+            protocolTokenAddress: getAddress(protocolTokenAddress),
+            fromBlock,
+            toBlock,
+            userAddress,
+            tokenId,
+          }),
+        )
+      }
+
+      const positionsMovements = (
+        await Promise.all(positionsMovementsPromises)
+      ).flat()
 
       await Promise.all(
         positionsMovements.map(async (positionMovements) => {

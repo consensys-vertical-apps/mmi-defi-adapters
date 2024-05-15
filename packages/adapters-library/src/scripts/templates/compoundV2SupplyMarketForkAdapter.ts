@@ -1,10 +1,16 @@
-import { Answers } from '../newAdapter2Command'
+import { Chain } from '../../core/constants/chains'
+import { BlankAdapterOutcomeOptions, QuestionAnswers } from '../questionnaire'
 
 export function compoundV2SupplyMarketForkAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: Pick<Answers, 'protocolKey' | 'adapterClassName' | 'productId'>) {
+}: {
+  protocolKey: string
+  adapterClassName: string
+  productId: string
+  chainKeys: (keyof typeof Chain)[]
+}) {
   return `
   import { CompoundV2SupplyMarketForkAdapter } from '../../../../core/adapters/CompoundV2SupplyMarketForkAdapter'
   import { Chain } from '../../../../core/constants/chains'

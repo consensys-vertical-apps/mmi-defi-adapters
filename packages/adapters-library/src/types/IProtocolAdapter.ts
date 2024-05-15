@@ -6,11 +6,14 @@ import { Helpers } from '../scripts/helpers'
 import type {
   GetEventsInput,
   GetPositionsInput,
+  GetRewardPositionsInput,
   GetTotalValueLockedInput,
   MovementsByBlock,
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
+  Underlying,
+  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from './adapter'
@@ -125,4 +128,24 @@ export interface IProtocolAdapter {
   getTotalValueLocked(
     input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]>
+
+  getRewardPositions?(
+    input: GetRewardPositionsInput,
+  ): Promise<UnderlyingReward[]>
+
+  getRewardWithdrawals?({
+    userAddress,
+    protocolTokenAddress,
+    tokenId,
+  }: GetEventsInput): Promise<MovementsByBlock[]>
+
+  getExtraRewardPositions?(
+    input: GetRewardPositionsInput,
+  ): Promise<UnderlyingReward[]>
+
+  getExtraRewardWithdrawals?({
+    userAddress,
+    protocolTokenAddress,
+    tokenId,
+  }: GetEventsInput): Promise<MovementsByBlock[]>
 }

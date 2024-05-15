@@ -117,7 +117,7 @@ export class ConvexStakingAdapter
     return metadata
   }
 
-  async getRewardPositions({
+  async getRewardPositionsLpStakingAdapter({
     userAddress,
     blockNumber,
     protocolTokenAddresses,
@@ -175,7 +175,7 @@ export class ConvexStakingAdapter
 
     return balances
   }
-  async getExtraRewardPositions({
+  async getExtraRewardPositionsLpStakingAdapter({
     userAddress,
     blockNumber,
     protocolTokenAddresses,
@@ -226,7 +226,7 @@ export class ConvexStakingAdapter
 
     return balances
   }
-  async getRewardWithdrawals({
+  async getRewardWithdrawalsLpStakingAdapter({
     userAddress,
     protocolTokenAddress,
     fromBlock,
@@ -297,7 +297,7 @@ export class ConvexStakingAdapter
 
     return await Promise.all(results)
   }
-  async getExtraRewardWithdrawals({
+  async getExtraRewardWithdrawalsLpStakingAdapter({
     userAddress,
     protocolTokenAddress,
     fromBlock,

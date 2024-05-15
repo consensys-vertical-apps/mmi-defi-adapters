@@ -139,6 +139,22 @@ export class Helpers {
           this.provider,
         )
 
+        if (
+          underlyingToken.address ===
+          '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
+        ) {
+          const reserve = this.provider.getBalance(
+            protocolToken.address,
+            blockNumber,
+          )
+          return BigInt(
+            Math.round(
+              (Number(reserve) * 10 ** protocolToken.decimals) /
+                Number(protocolTokenTotalSupply),
+            ),
+          )
+        }
+
         const reserve = await underlyingTokenContract.balanceOf(
           protocolToken.address,
           {
@@ -341,7 +357,7 @@ export class Helpers {
       )
   }
 
-  private async getErc20Movements({
+  async getErc20Movements({
     protocolToken,
     filter: { fromBlock, toBlock, from, to },
   }: {

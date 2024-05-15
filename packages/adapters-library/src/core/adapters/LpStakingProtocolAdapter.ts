@@ -37,26 +37,26 @@ export abstract class LpStakingAdapter
 {
   abstract buildMetadata(): Promise<LpStakingProtocolMetadata>
 
-  abstract getRewardPositions({
+  abstract getRewardPositionsLpStakingAdapter({
     userAddress,
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInputWithTokenAddresses): Promise<ProtocolPosition[]>
 
-  abstract getExtraRewardPositions({
+  abstract getExtraRewardPositionsLpStakingAdapter({
     userAddress,
     blockNumber,
     protocolTokenAddresses,
   }: GetPositionsInputWithTokenAddresses): Promise<ProtocolPosition[]>
 
-  abstract getRewardWithdrawals({
+  abstract getRewardWithdrawalsLpStakingAdapter({
     userAddress,
     protocolTokenAddress,
     fromBlock,
     toBlock,
   }: GetEventsInput): Promise<MovementsByBlock[]>
 
-  abstract getExtraRewardWithdrawals({
+  abstract getExtraRewardWithdrawalsLpStakingAdapter({
     userAddress,
     protocolTokenAddress,
     fromBlock,
@@ -71,8 +71,8 @@ export abstract class LpStakingAdapter
   }: GetEventsInput): Promise<MovementsByBlock[]> {
     const withdrawalMethods = [
       super.getWithdrawals,
-      this.getRewardWithdrawals,
-      this.getExtraRewardWithdrawals,
+      this.getRewardWithdrawalsLpStakingAdapter,
+      this.getExtraRewardWithdrawalsLpStakingAdapter,
     ]
 
     const withdrawals = await Promise.all(
@@ -128,12 +128,12 @@ export abstract class LpStakingAdapter
       stakingPositions.map(async (position) => {
         const [rewardTokensPositions, extraRewardTokensPositions] =
           await Promise.allSettled([
-            this.getRewardPositions({
+            this.getRewardPositionsLpStakingAdapter({
               userAddress,
               blockNumber,
               protocolTokenAddresses: [position.address],
             }),
-            this.getExtraRewardPositions({
+            this.getExtraRewardPositionsLpStakingAdapter({
               userAddress,
               blockNumber,
               protocolTokenAddresses: [position.address],

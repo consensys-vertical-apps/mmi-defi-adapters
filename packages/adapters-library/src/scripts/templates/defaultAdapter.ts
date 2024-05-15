@@ -1,13 +1,16 @@
-import { Answers } from '../newAdapter2Command'
+import { Chain } from '../../core/constants/chains'
+import { QuestionAnswers } from '../questionnaire'
 
 export function defaultAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: Pick<
-  Answers,
-  'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
->) {
+}: {
+  protocolKey: string
+  adapterClassName: string
+  productId: string
+  chainKeys: (keyof typeof Chain)[]
+}) {
   return `
   import { AdaptersController } from '../../../../core/adaptersController'
   import { Chain } from '../../../../core/constants/chains'

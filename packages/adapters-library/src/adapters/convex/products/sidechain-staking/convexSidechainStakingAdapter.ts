@@ -23,6 +23,7 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   TokenType,
+  UnderlyingReward,
 } from '../../../../types/adapter'
 import { CONVEX_FACTORY_ADDRESS } from '../../common/constants'
 import {
@@ -125,7 +126,7 @@ export class ConvexSidechainStakingAdapter
     return extraRewards
   }
 
-  async getExtraRewardPositions({
+  async getExtraRewardPositionsLpStakingAdapter({
     userAddress,
     blockNumber,
     protocolTokenAddresses,
@@ -177,7 +178,7 @@ export class ConvexSidechainStakingAdapter
   /**
    * Not available on side-chains
    */
-  async getRewardPositions(
+  async getRewardPositionsLpStakingAdapter(
     _input: GetPositionsInput,
   ): Promise<ProtocolPosition[]> {
     throw new NotImplementedError()
@@ -186,13 +187,13 @@ export class ConvexSidechainStakingAdapter
   /**
    * Not available on side-chains
    */
-  async getRewardWithdrawals(
+  async getRewardWithdrawalsLpStakingAdapter(
     _input: GetEventsInput,
   ): Promise<MovementsByBlock[]> {
     throw new NotImplementedError()
   }
 
-  async getExtraRewardWithdrawals({
+  async getExtraRewardWithdrawalsLpStakingAdapter({
     userAddress,
     protocolTokenAddress,
     fromBlock,

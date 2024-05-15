@@ -1,13 +1,16 @@
-import { Answers } from '../newAdapter2Command'
+import { Chain } from '../../core/constants/chains'
+import { BlankAdapterOutcomeOptions, QuestionAnswers } from '../questionnaire'
 
 export function votingEscrowAdapterTemplate({
   protocolKey,
   adapterClassName,
   productId,
-}: Pick<
-  Answers,
-  'protocolKey' | 'adapterClassName' | 'productId' | 'chainKeys'
->) {
+}: {
+  protocolKey: string
+  adapterClassName: string
+  productId: string
+  chainKeys: (keyof typeof Chain)[]
+}) {
   return `import { getAddress } from 'ethers'
   import { VotingEscrow } from '../../../../core/adapters/votingEscrow'
   import { NotImplementedError } from '../../../../core/errors/errors'
