@@ -180,32 +180,37 @@ export function calculateAdapterOutcomes(
 ): BlankAdapterOutcomeOptions {
   const questionnaire = getQuestionnaire(defiProvider, answers)
 
-  return Object.keys(questionnaire).reduce((acc, key) => {
-    const answer = answers[key as keyof QuestionAnswers]
-    const questionConfig = questionnaire[key as keyof QuestionnaireType]
+  // Bit of a hack to add QuestionName.AdapterClassName but its a skip question that I want the answer for
+  // find better way to include that answer
+  return [Object.keys(answers), QuestionName.AdapterClassName].reduce(
+    (acc, key) => {
+      const answer = answers[key as keyof QuestionAnswers]
+      const questionConfig = questionnaire[key as keyof QuestionnaireType]
 
-    // Step 3: add outcome to outcomes
-    if ('outcomes' in questionConfig) {
-      let outcomeResults: Partial<BlankAdapterOutcomeOptions> = {}
+      // Step 3: add outcome to outcomes
+      if ('outcomes' in questionConfig) {
+        let outcomeResults: Partial<BlankAdapterOutcomeOptions> = {}
 
-      const newOutcomes = questionConfig.outcomes(
-        //@ts-ignore
-        answer,
-      ) as Partial<BlankAdapterOutcomeOptions>
+        const newOutcomes = questionConfig.outcomes(
+          //@ts-ignore
+          answer,
+        ) as Partial<BlankAdapterOutcomeOptions>
 
-      outcomeResults = {
-        ...outcomeResults,
+        outcomeResults = {
+          ...outcomeResults,
 
-        ...newOutcomes,
+          ...newOutcomes,
+        }
+        return {
+          ...acc,
+          ...outcomeResults,
+        }
       }
-      return {
-        ...acc,
-        ...outcomeResults,
-      }
-    }
 
-    return acc
-  }, {} as BlankAdapterOutcomeOptions)
+      return acc
+    },
+    {} as BlankAdapterOutcomeOptions,
+  )
 }
 
 async function welcome(defiProvider: DefiProvider) {

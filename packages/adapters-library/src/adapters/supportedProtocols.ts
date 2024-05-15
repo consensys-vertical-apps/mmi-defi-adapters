@@ -28,7 +28,6 @@ import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
 import { ConvexSidechainStakingAdapter } from './convex/products/sidechain-staking/convexSidechainStakingAdapter'
 import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAdapter'
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
-import { CurveRewardAdapter } from './curve/products/reward/curveRewardAdapter'
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { CurveVotingEscrowAdapter } from './curve/products/voting-escrow/curveVotingEscrowAdapter'
 import { EthenaStakedUsdeAdapter } from './ethena/products/staked-usde/ethenaStakedUsdeAdapter'
@@ -65,10 +64,6 @@ import { SyncSwapPoolAdapter } from './syncswap/products/pool/syncSwapPoolAdapte
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
-
-import { CurveV1PoolAdapter } from './curve-v1/products/pool/curveV1PoolAdapter'
-
-import { CurveV1StakingAdapter } from './curve-v1/products/staking/curveV1StakingAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -160,55 +155,23 @@ export const supportedProtocols: Record<
 
   [Protocol.Convex]: {
     [Chain.Ethereum]: [
-      ConvexPoolAdapter,
-      ConvexStakingAdapter,
-      ConvexCvxcrvWrapperAdapter,
-    ],
+      CurvePoolAdapter, // dont forget to fix
 
-    [Chain.Polygon]: [ConvexSidechainStakingAdapter],
-
-    [Chain.Arbitrum]: [ConvexSidechainStakingAdapter],
+    ]
   },
 
   [Protocol.Curve]: {
     [Chain.Ethereum]: [
       CurvePoolAdapter,
       CurveStakingAdapter,
-      CurveRewardAdapter,
       CurveVotingEscrowAdapter,
     ],
-    [Chain.Polygon]: [
-      CurvePoolAdapter,
-      CurveStakingAdapter,
-      CurveRewardAdapter,
-    ],
-    [Chain.Fantom]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
-    [Chain.Arbitrum]: [
-      CurvePoolAdapter,
-      CurveStakingAdapter,
-      CurveRewardAdapter,
-    ],
-    [Chain.Avalanche]: [
-      CurvePoolAdapter,
-      CurveStakingAdapter,
-      CurveRewardAdapter,
-    ],
-    [Chain.Optimism]: [
-      CurvePoolAdapter,
-      CurveStakingAdapter,
-      CurveRewardAdapter,
-    ],
-    [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter, CurveRewardAdapter],
-  },
-
-  [Protocol.CurveV1]: {
-    [Chain.Ethereum]: [CurveV1PoolAdapter, CurveV1StakingAdapter],
-    [Chain.Optimism]: [CurveV1PoolAdapter],
-    // [Chain.Polygon]: [CurveV1PoolAdapter],
-    [Chain.Fantom]: [CurveV1PoolAdapter],
-    [Chain.Base]: [CurveV1PoolAdapter],
-    [Chain.Arbitrum]: [CurveV1PoolAdapter],
-    [Chain.Avalanche]: [CurveV1PoolAdapter],
+    [Chain.Polygon]: [CurvePoolAdapter, CurveStakingAdapter],
+    [Chain.Fantom]: [CurvePoolAdapter, CurveStakingAdapter],
+    [Chain.Arbitrum]: [CurvePoolAdapter, CurveStakingAdapter],
+    [Chain.Avalanche]: [CurvePoolAdapter, CurveStakingAdapter],
+    [Chain.Optimism]: [CurvePoolAdapter, CurveStakingAdapter],
+    [Chain.Base]: [CurvePoolAdapter, CurveStakingAdapter],
   },
 
   [Protocol.Ethena]: {

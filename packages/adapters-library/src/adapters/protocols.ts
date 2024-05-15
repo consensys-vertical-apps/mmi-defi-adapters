@@ -8,7 +8,6 @@ export const Protocol = {
   CompoundV2: 'compound-v2',
   Convex: 'convex',
   Curve: 'curve',
-  CurveV1: 'curve-v1',
   Ethena: 'ethena',
   Flux: 'flux',
   Gmx: 'gmx',
