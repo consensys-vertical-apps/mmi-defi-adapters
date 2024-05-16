@@ -12,9 +12,6 @@ This library is designed to simplify and standardise the process of fetching dat
 1. Install:
    - `nvm use` to select the environment
    - `npm i` to install dependencies 
-
-
-
 2. Run project:
    - `npm run dev` to run the project
 ### Build adapter steps      [![video](video-icon.svg)](https://drive.google.com/file/d/1Pl0yB2d1s-3oKFCXAyRhKx7rK2x43Qtf/view "Watch the build adapter steps")
@@ -34,19 +31,60 @@ This library is designed to simplify and standardise the process of fetching dat
 6. Run:
    - `npm run build-snapshots -- -p <protocol-id>` to build your snapshot tests
 
-## Add Write-Adapter/GetTransactionParams support
+## How to create a Write Adapter
 
 The tutorial video below shows an intro to on how to add write adapter actions to an existing read adapter:
 
 Don't have a read adapter? And don't intend to create a read adapter? Then:
 
-1. Choose the "WriteOnlyAdapterTemplate" on our create-new-adapter-cli
-2. Implement the buildMetadata() method and run `npm run build-metadata -- -p <protocol-id>` to create a json file snapshot of your protocol metadata (Note: you can watch Read tutorial video for more info about buildMetadata function or view other implemented adapters)
+1. Select "WriteOnlyAdapterTemplate" on our new-adapter CLI. See section "Build adapter steps" above for more information.
+2. Implement the buildMetadata() method see section "Build your DeFi asset metadata files" above for more information.
 3. Then follow the video tutorial below:
 
-[![DeFi Adapter Write Actions Tutorial](packages/adapters-library/readme-assets/video-write-thumbnail.png)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view)
+[![video](video-icon.svg)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view "Whats the build your snapshot tests")
 
-See section "Write Actions for adapters" below for more information after watching the tutorial.
+Example code for write-adapters, as described in the above video:
+
+```
+export const WriteActionInputs = {
+  [WriteActions.Deposit]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    onBehalfOf: z.string(),
+    referralCode: z.number(),
+  }),
+  [WriteActions.Withdraw]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    to: z.string(),
+  }),
+} satisfies WriteActionInputSchemas
+```
+
+```
+async getTransactionParams({
+  action,
+  inputs,
+}: Extract<
+  GetTransactionParams,
+  { protocolId: typeof Protocol.YourProtocolKey; productId: 'YourProductId' }
+>): Promise<{ to: string; data: string }> {
+  switch (action) {
+    case WriteActions.Deposit: {
+      const { asset, amount, onBehalfOf, referralCode } = inputs
+      return poolContract.supply.populateTransaction(
+        asset,
+        amount,
+        onBehalfOf,
+        referralCode,
+      )
+    }
+    case WriteActions.Withdraw: {
+      const { asset, amount, to } = inputs
+      return poolContract.withdraw.populateTransaction(asset, amount, to)
+    }
+  }
+}
 
 
 
