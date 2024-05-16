@@ -19,7 +19,7 @@
     "adapters-cli": "node --env-file=.env packages/adapters-library/dist/scripts/index.js",
     "build-metadata": "npm run adapters-cli build-metadata --",
     "build-types": "npm run adapters-cli build-types --",
-    "new-adapter": "npm run adapters-cli new-adapter --",
+    "new-adapter": "npm run adapters-cli new-adapter2 --",
     "new-adapter2": "npm run adapters-cli new-adapter2 --",
     "build-snapshots": "npm run adapters-cli build-snapshots --",
     "positions": "npm run adapters-cli positions --",
