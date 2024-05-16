@@ -26,7 +26,7 @@ This library is designed to simplify and standardise the process of fetching dat
 6. Implement the buildMetadata function in your adapter.
 7. Run:
    - `npm run build-metadata -- -p <protocol-id>` to create your metadata files
-### Build your Snapshot tests      [![video](video-icon.svg)](https://drive.google.com/file/d/1pVWcssMHTQBH-m_BjVTwpRKamIY6UUK9/view "Whats the build your snapshot tests")
+### Build your Snapshot tests      [![video](video-icon.svg)](https://drive.google.com/file/d/1pVWcssMHTQBH-m_BjVTwpRKamIY6UUK9/view "Watch the build your snapshot tests")
 8. Populate your test cases file.
 6. Run:
    - `npm run build-snapshots -- -p <protocol-id>` to build your snapshot tests
@@ -41,7 +41,7 @@ Don't have a read adapter? And don't intend to create a read adapter? Then:
 2. Implement the buildMetadata() method see section "Build your DeFi asset metadata files" above for more information.
 3. Then follow the video tutorial below:
 
-[![video](video-icon.svg)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view "Whats the build your snapshot tests")
+[![video](video-icon.svg)](https://drive.google.com/file/d/1ZNWwOkzHlc7Zt2qLy5ZRuHqoDgWSnww7/view "Watch the create write adapter tutorial")
 
 Example code for write-adapters, as described in the above video:
 
