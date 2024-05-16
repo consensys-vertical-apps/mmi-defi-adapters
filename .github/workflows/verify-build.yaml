@@ -35,55 +35,15 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create new adapter with DefaultAdapter template
-        run: |
-          if [ ! -f .env ]; then
-            touch .env
-          fi
-          npm run new-adapter -- -p test-default-adapter-protocol -pd pool -c 1 -t "DefaultAdapter (blank adapter - hard mode)" -y
-          npm run build
-
-      - name: Create new adapter with SimplePoolAdapter template
-        run: |
-          npm run new-adapter -- -p test-simple-pool-adapter-protocol -pd pool -c 1 -t "SimplePoolAdapter (your DeFi token(s) follows ERC20 standard)" -y
-          npm run build
-          npm run build-metadata -- -p test-simple-pool-adapter-protocol
-          npm run build
-
-      - name: Create new adapter with UniswapV2PoolForkAdapter template
-        run: |
-          npm run new-adapter -- -p test-uniswap-v2-pool-fork-adapter-protocol -pd pool -c 1,10,42161 -t UniswapV2PoolForkAdapter -y
-          npm run build
-
-      - name: Create new adapter with CompoundV2SupplyMarketForkAdapter template
-        run: |
-          npm run new-adapter -- -p test-compound-v2-supply-market-fork-adapter-protocol -pd supply -c 1,10,42161 -t CompoundV2SupplyMarketForkAdapter -y
-          npm run build
-
-      - name: Create new adapter with CompoundV2BorrowMarketForkAdapter template
-        run: |
-          npm run new-adapter -- -p test-compound-v2-borrow-market-fork-adapter-protocol -pd supply -c 1,10,42161 -t CompoundV2BorrowMarketForkAdapter -y
-          npm run build
-
-      - name: Create new adapter with VotingEscrow template
-        run: |
-          npm run new-adapter -- -p test-voting-escrow -pd supply -c 1,10,42161 -t "VotingEscrowAdapter (like curve and stargate voting escrow)" -y
-          npm run build
-
-      - name: Create new adapter with WriteOnlyAdapter template
-        run: |
-          npm run new-adapter -- -p writeOnlyAdapter -pd write -c 1,10,42161 -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)" -y
-          npm run build
-
       - name: Create new adapter with new CLI
         run: |
-          npm run new-adapter2 -- -y -t "Smart Adapter Builder"
+          npm run new-adapter -- -y -t "Smart Adapter Builder"
           npm run build
-          npm run new-adapter2 -- -y -t "VotingEscrowAdapter (like curve and stargate voting escrow)"
+          npm run new-adapter -- -y -t "VotingEscrowAdapter (like curve and stargate voting escrow)"
           npm run build
-          npm run new-adapter2 -- -y -t UniswapV2PoolForkAdapter
+          npm run new-adapter -- -y -t UniswapV2PoolForkAdapter
           npm run build
-          npm run new-adapter2 -- -y -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)"
+          npm run new-adapter -- -y -t "WriteOnlyDeFiAdapter (supports only create transaction params, no getPositions features)"
           npm run build
 
   generate-protocol-matrix:
