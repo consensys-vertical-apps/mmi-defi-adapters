@@ -6,7 +6,7 @@
 
 This library is designed to simplify and standardise the process of fetching data and interacting with various DeFi protocols, which often have unique interfaces and data structures. Our adapters 1) fetch and transform underlying protocol data into a standardised format that can be easily used by portfolio dashboards and 2) generate transaction params to create and update protocol positions.
 
-## How to create Read Adapter
+## How to create a Read Adapter
 
 ### Setup steps      [![video](video-icon.svg)](https://drive.google.com/file/d/1bp9Y8uxQDYxgIyMTk5945vLOwCG1JOn3/view "Watch the setup video")
 1. Install:
