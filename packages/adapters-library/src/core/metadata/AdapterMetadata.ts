@@ -52,13 +52,6 @@ import CurvePoolEthereumProtocolToken from '../../adapters/curve/products/pool/m
 import CurvePoolFantomProtocolToken from '../../adapters/curve/products/pool/metadata/fantom.protocol-token.json'
 import CurvePoolOptimismProtocolToken from '../../adapters/curve/products/pool/metadata/optimism.protocol-token.json'
 import CurvePoolPolygonProtocolToken from '../../adapters/curve/products/pool/metadata/polygon.protocol-token.json'
-import CurveRewardArbitrumProtocolToken from '../../adapters/curve/products/reward/metadata/arbitrum.protocol-token.json'
-import CurveRewardAvalancheProtocolToken from '../../adapters/curve/products/reward/metadata/avalanche.protocol-token.json'
-import CurveRewardBaseProtocolToken from '../../adapters/curve/products/reward/metadata/base.protocol-token.json'
-import CurveRewardEthereumProtocolToken from '../../adapters/curve/products/reward/metadata/ethereum.protocol-token.json'
-import CurveRewardFantomProtocolToken from '../../adapters/curve/products/reward/metadata/fantom.protocol-token.json'
-import CurveRewardOptimismProtocolToken from '../../adapters/curve/products/reward/metadata/optimism.protocol-token.json'
-import CurveRewardPolygonProtocolToken from '../../adapters/curve/products/reward/metadata/polygon.protocol-token.json'
 import CurveStakingArbitrumProtocolToken from '../../adapters/curve/products/staking/metadata/arbitrum.protocol-token.json'
 import CurveStakingAvalancheProtocolToken from '../../adapters/curve/products/staking/metadata/avalanche.protocol-token.json'
 import CurveStakingBaseProtocolToken from '../../adapters/curve/products/staking/metadata/base.protocol-token.json'
@@ -591,69 +584,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CurvePoolPolygonProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Curve,
-      productId: 'reward',
-      chainId: Chain.Arbitrum,
-      fileKey: 'protocol-token',
-    }),
-    CurveRewardArbitrumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Curve,
-      productId: 'reward',
-      chainId: Chain.Avalanche,
-      fileKey: 'protocol-token',
-    }),
-    CurveRewardAvalancheProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Curve,
-      productId: 'reward',
-      chainId: Chain.Base,
-      fileKey: 'protocol-token',
-    }),
-    CurveRewardBaseProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Curve,
-      productId: 'reward',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    CurveRewardEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Curve,
-      productId: 'reward',
-      chainId: Chain.Fantom,
-      fileKey: 'protocol-token',
-    }),
-    CurveRewardFantomProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Curve,
-      productId: 'reward',
-      chainId: Chain.Optimism,
-      fileKey: 'protocol-token',
-    }),
-    CurveRewardOptimismProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.Curve,
-      productId: 'reward',
-      chainId: Chain.Polygon,
-      fileKey: 'protocol-token',
-    }),
-    CurveRewardPolygonProtocolToken,
   ],
   [
     metadataKey({
