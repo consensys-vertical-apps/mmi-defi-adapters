@@ -62,6 +62,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Clear cache
+        run: npm cache clean --force
+
       - name: Publish
         run: npm publish -w packages/adapters-library
         env:
