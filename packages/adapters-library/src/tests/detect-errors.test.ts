@@ -16,6 +16,5 @@ describe('detect errors', () => {
     )
 
     expect(positionsWithErrors).toEqual([])
-    expect(true).toBeFalsy()
   }, 60000)
 })
