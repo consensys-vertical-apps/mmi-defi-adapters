@@ -166,7 +166,6 @@ jobs:
 
       - name: Run tests
         run: npm run test:detect-errors
-        continue-on-error: true
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
@@ -178,10 +177,3 @@ jobs:
           DEFI_ADAPTERS_PROVIDER_AVALANCHE: ${{ secrets.AVALANCHE_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_LINEA: ${{ secrets.LINEA_PROVIDER_URL }}
           DEFI_ADAPTERS_LOG_LEVEL: warn
-  
-  new-errors-present:
-    if: ${{ always() && needs.detect-errors-test.result == 'failure' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Detect errors test failed
-        run: echo "Detect errors test failed"
