@@ -107,7 +107,9 @@ export class MulticallQueue {
         callsToProcess.forEach(({ reject }) => {
           reject(
             new MulticallError({
-              message: `(${error.code}) ${error.message}`,
+              message: `${error.code ? `(${error.code}) ` : ''}${
+                error.message
+              }`,
               chainId: this.chainId,
               flushTimeoutMs: this.flushTimeoutMs,
               maxBatchSize: this.maxBatchSize,
