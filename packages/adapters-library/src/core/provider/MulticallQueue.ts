@@ -107,7 +107,7 @@ export class MulticallQueue {
         callsToProcess.forEach(({ reject }) => {
           reject(
             new MulticallError({
-              message: 'RPC provider error',
+              message: `(${error.code}) ${error.message}`,
               chainId: this.chainId,
               flushTimeoutMs: this.flushTimeoutMs,
               maxBatchSize: this.maxBatchSize,
@@ -121,7 +121,7 @@ export class MulticallQueue {
             flushTimeoutMs: this.flushTimeoutMs,
             maxBatchSize: this.maxBatchSize,
             batchSize,
-            error: error?.info?.error,
+            error,
           },
           'Multicall error when sending a batch',
         )
