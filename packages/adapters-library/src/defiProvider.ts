@@ -7,7 +7,7 @@ import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
-import { ProviderMissingError } from './core/errors/errors'
+import { NotImplementedError, ProviderMissingError } from './core/errors/errors'
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
@@ -165,7 +165,7 @@ export class DefiProvider {
 
   async getProfits({
     userAddress,
-    timePeriod = TimePeriod.sevenDays,
+    timePeriod = TimePeriod.oneDay,
     filterProtocolIds,
     filterChainIds,
     toBlockNumbersOverride,
@@ -186,6 +186,10 @@ export class DefiProvider {
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
     ) => {
+      if (adapter.chainId === Chain.Bsc) {
+        throw new Error('Profits not supported on BSC')
+      }
+
       const toBlock =
         toBlockNumbersOverride?.[adapter.chainId] ??
         (await provider.getStableBlockNumber())
