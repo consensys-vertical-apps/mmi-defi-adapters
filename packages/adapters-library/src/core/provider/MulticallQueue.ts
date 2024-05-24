@@ -121,7 +121,10 @@ export class MulticallQueue {
             flushTimeoutMs: this.flushTimeoutMs,
             maxBatchSize: this.maxBatchSize,
             batchSize,
-            error,
+            error: {
+              code: error.code,
+              message: error.message,
+            },
           },
           'Multicall error when sending a batch',
         )
