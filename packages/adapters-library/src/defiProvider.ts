@@ -7,7 +7,7 @@ import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
-import { NotImplementedError, ProviderMissingError } from './core/errors/errors'
+import { NotImplementedError, NotSupportedError, ProviderMissingError } from './core/errors/errors'
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
@@ -187,7 +187,7 @@ export class DefiProvider {
       provider: CustomJsonRpcProvider,
     ) => {
       if (adapter.chainId === Chain.Bsc) {
-        throw new Error('Profits not supported on BSC')
+        throw new NotSupportedError('Profits not supported on BSC')
       }
 
       const toBlock =

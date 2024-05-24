@@ -27,7 +27,7 @@ function filterErrors(
   return response.filter(
     (responseEntry) =>
       !responseEntry.success &&
-      !['NotApplicableError', 'NotImplementedError'].includes(
+      !['NotApplicableError', 'NotImplementedError', 'NotSupportedError'].includes(
         responseEntry.error.details?.name,
       ),
   )
