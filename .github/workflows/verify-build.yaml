@@ -165,7 +165,7 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm run test:detect-errors
+        run: npm run test:detect-errors -w packages/adapters-library
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
