@@ -89,6 +89,7 @@ const ConfigSchema = z
       .boolean()
       .default(process.env.DEFI_ADAPTERS_USE_FAILOVER !== 'false'),
   })
+  .strict()
   .default({})
 
 export type IConfig = z.infer<typeof ConfigSchema>
