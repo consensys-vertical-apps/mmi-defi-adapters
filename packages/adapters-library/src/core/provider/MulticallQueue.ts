@@ -92,7 +92,7 @@ export class MulticallQueue {
       currentPendingCalls,
     )) {
       const batchSize = callsToProcess.length
-      logger.debug({ batchSize }, 'Sending multicall batch ')
+      logger.debug({ batchSize }, 'Sending multicall batch')
 
       let results: Multicall3.ResultStructOutput[]
       try {
