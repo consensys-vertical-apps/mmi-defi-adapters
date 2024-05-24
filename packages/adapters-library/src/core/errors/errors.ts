@@ -51,6 +51,9 @@ export class NotImplementedError extends BaseError {
     super('Not Implemented')
   }
 }
+
+export class NotSupportedError extends BaseError {}
+
 export class MaxMovementLimitExceededError extends BaseError {
   constructor() {
     super('Max Movement Limit Exceeded')

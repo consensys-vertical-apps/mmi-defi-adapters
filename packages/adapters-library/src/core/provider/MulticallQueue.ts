@@ -92,7 +92,7 @@ export class MulticallQueue {
       currentPendingCalls,
     )) {
       const batchSize = callsToProcess.length
-      logger.debug({ batchSize }, 'Sending multicall batch ')
+      logger.debug({ batchSize }, 'Sending multicall batch')
 
       let results: Multicall3.ResultStructOutput[]
       try {
@@ -107,7 +107,9 @@ export class MulticallQueue {
         callsToProcess.forEach(({ reject }) => {
           reject(
             new MulticallError({
-              message: 'RPC provider error',
+              message: `${error.code ? `(${error.code}) ` : ''}${
+                error.message
+              }`,
               chainId: this.chainId,
               flushTimeoutMs: this.flushTimeoutMs,
               maxBatchSize: this.maxBatchSize,
@@ -121,7 +123,10 @@ export class MulticallQueue {
             flushTimeoutMs: this.flushTimeoutMs,
             maxBatchSize: this.maxBatchSize,
             batchSize,
-            error: error?.info?.error,
+            error: {
+              code: error.code,
+              message: error.message,
+            },
           },
           'Multicall error when sending a batch',
         )
