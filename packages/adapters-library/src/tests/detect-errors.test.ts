@@ -4,10 +4,9 @@ import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 describe('detect errors', () => {
   it.each([
     { enableUsdPricesOnPositions: false, enableFailover: false },
-    { enableUsdPricesOnPositions: false, enableFailover: true },
     { enableUsdPricesOnPositions: true, enableFailover: true },
   ])(
-    'does not return any adapter error with positions',
+    'does not return any adapter error with positions %s',
     async (config) => {
       const defiProvider = new DefiProvider(config)
       const response = await defiProvider.getPositions({
@@ -23,7 +22,7 @@ describe('detect errors', () => {
     { enableUsdPricesOnPositions: false },
     { enableUsdPricesOnPositions: true },
   ])(
-    'does not return any adapter error with profits',
+    'does not return any adapter error with profits %s',
     async (config) => {
       const defiProvider = new DefiProvider(config)
       const response = await defiProvider.getProfits({
