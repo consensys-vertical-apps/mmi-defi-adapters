@@ -35,7 +35,7 @@ jobs:
         run: npm ci
 
       - name: Test
-        run: npm run test 
+        run: npm run test:cov 
         env:
           DEFI_ADAPTERS_PROVIDER_ETHEREUM: ${{ secrets.ETHEREUM_PROVIDER_URL }}
           DEFI_ADAPTERS_PROVIDER_OPTIMISM: ${{ secrets.OPTIMISM_PROVIDER_URL }}
@@ -52,6 +52,7 @@ jobs:
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}"@users.noreply.github.com
+
 
       - name: Update package version
         run: npm version ${{ github.event.inputs.semver }} --workspaces && git add **/package.json; npm version ${{ github.event.inputs.semver }} --include-workspace-root --force

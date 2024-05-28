@@ -7,6 +7,8 @@ const config = {
     'src/**/*.ts',
     '!src/contracts/**',
     '!src/adapters/**/contracts/**',
+    '!src/**/*.test.ts',
+    '!src/scripts/**',
   ],
   setupFiles: ['dotenv/config'],
 }
