@@ -8,10 +8,9 @@ import {
   TransactionRequest,
   ethers,
 } from 'ethers'
-import { Config, IConfig } from '../../config'
 import { count } from '../../metricsCount'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS'
-import { Chain, ChainName } from '../constants/chains'
+import { Chain } from '../constants/chains'
 import { NotSupportedUnlimitedGetLogsBlockRange } from '../errors/errors'
 import { retryHandlerFactory } from './retryHandlerFactory'
 

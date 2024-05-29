@@ -64,6 +64,9 @@ const ConfigSchema = z
     useMulticallInterceptor: z
       .boolean()
       .default(process.env.DEFI_ADAPTERS_USE_MULTICALL_INTERCEPTOR !== 'false'),
+    maxBatchSize: z
+      .number()
+      .default(Number(process.env.DEFI_ADAPTERS_MULTICALL_BATCH_SIZE) || 100),
     useGetAllTransferLogs: z
       .boolean()
       .default(process.env.DEFI_ADAPTERS_USE_GET_ALL_TRANSFER_LOGS !== 'false'),
@@ -75,11 +78,15 @@ const ConfigSchema = z
     rpcCallTimeoutInMs: z
       .number()
       .default(
-        Number(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS) || 20000,
+        Number(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS) || 10000,
       ),
     rpcCallRetries: z
       .number()
-      .default(Number(process.env.DEFI_ADAPTERS_RPC_CALL_RETRIES) || 1),
+      .default(
+        process.env.DEFI_ADAPTERS_RPC_CALL_RETRIES
+          ? Number(process.env.DEFI_ADAPTERS_RPC_CALL_RETRIES)
+          : 1,
+      ),
     rpcGetLogsTimeoutInMs: z
       .number()
       .default(
@@ -87,7 +94,11 @@ const ConfigSchema = z
       ),
     rpcGetLogsRetries: z
       .number()
-      .default(Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_RETRIES) || 1),
+      .default(
+        process.env.DEFI_ADAPTERS_RPC_GETLOGS_RETRIES
+          ? Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_RETRIES)
+          : 1,
+      ),
     enableFailover: z
       .boolean()
       .default(process.env.DEFI_ADAPTERS_USE_FAILOVER !== 'false'),

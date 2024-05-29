@@ -23,12 +23,14 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     customOptions,
     jsonRpcProviderOptions,
     hasUnlimitedGetLogsRange,
+    maxBatchSize
   }: {
     fetchRequest: FetchRequest
     chainId: Chain
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
     hasUnlimitedGetLogsRange: boolean
+    maxBatchSize: number
   }) {
     super({
       fetchRequest,

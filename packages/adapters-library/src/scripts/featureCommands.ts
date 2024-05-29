@@ -5,6 +5,7 @@ import { Chain } from '../core/constants/chains'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { bigintJsonStringify } from '../core/utils/bigintJson'
 import { filterMapSync } from '../core/utils/filters'
+import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { AdapterResponse, GetEventsRequestInput } from '../types/response'
 import {

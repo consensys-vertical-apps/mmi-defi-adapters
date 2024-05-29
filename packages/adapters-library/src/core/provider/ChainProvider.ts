@@ -27,12 +27,14 @@ export class ChainProvider {
     enableMulticallQueue,
     customOptions,
     enableFailover,
+    maxBatchSize,
   }: {
     url: string
     chainId: Chain
     enableMulticallQueue: boolean
     customOptions: CustomJsonRpcProviderOptions
     enableFailover: boolean
+    maxBatchSize: number
   }): CustomJsonRpcProvider {
     if (!url) {
       throw new Error('Url missing')
@@ -78,12 +80,14 @@ export class ChainProvider {
             chainId
           ] as keyof typeof this.config.hasUnlimitedEthGethLogsBlockRangeLimit
         ],
+      maxBatchSize,
     })
   }
 
   private initializeProviders(config: IConfig) {
     const commonProviderSettings = {
       enableMulticallQueue: config.useMulticallInterceptor,
+      maxBatchSize: config.maxBatchSize,
       customOptions: {
         rpcCallTimeoutInMs: config.rpcCallTimeoutInMs,
         rpcCallRetries: config.rpcCallRetries,

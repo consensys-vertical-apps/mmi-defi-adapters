@@ -1,5 +1,4 @@
-import { ethers, getAddress } from 'ethers'
-import { contractAddresses } from './adapters/compound-v2/common/contractAddresses'
+import { getAddress } from 'ethers'
 import { Protocol } from './adapters/protocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
@@ -102,10 +101,16 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
+    const startGetPositions = Date.now()
     this.initAdapterControllerForUnwrapStage()
 
-    const runner = async (adapter: IProtocolAdapter) => {
-      const blockNumber = blockNumbers?.[adapter.chainId]
+    const runner = async (
+      adapter: IProtocolAdapter,
+      provider: CustomJsonRpcProvider,
+    ) => {
+      const blockNumber =
+        blockNumbers?.[adapter.chainId] ||
+        (await provider.getStableBlockNumber())
 
       const protocolTokenAddresses = await this.buildTokenFilter(
         userAddress,
@@ -120,6 +125,15 @@ export class DefiProvider {
 
       const startTime = Date.now()
 
+      logger.debug(
+        {
+          source: 'adapter:positions:total',
+          startTime: startGetPositions,
+          userAddress,
+        },
+        'Start position fetching',
+      )
+
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
@@ -127,8 +141,12 @@ export class DefiProvider {
         tokenIds: filterTokenIds,
       })
 
+      const getPositionsTime = Date.now()
+
       // unwrap protocol tokens
       await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
+
+      const positionsUnwrapTime = Date.now()
 
       await Promise.all(
         protocolPositions.map(async (pos) => {
@@ -144,15 +162,36 @@ export class DefiProvider {
         }),
       )
 
+      const getRewardTime = Date.now()
+
       // now unwrap reward tokens attached to the protocol tokens
       // note if unwrap called only after attaching rewards then unwrap function thinks the reward tokens are the protocol tokens unwrapped
       await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
 
+      const rewardsUnwrapTime = Date.now()
+
+      const tokens = protocolPositions.map((protocolPosition) =>
+        enrichPositionBalance(protocolPosition, adapter.chainId),
+      )
+
       const endTime = Date.now()
-      logger.info({
+
+      // for (const singleCount of Object.values(count)) {
+      //   singleCount.averageRequestTime =
+      //     singleCount.totalRequestTime / singleCount.requestCount
+      // }
+
+      logger.warn({
         source: 'adapter:positions',
         startTime,
         endTime,
+        timeDetails: {
+          getPositionsTime: getPositionsTime - startTime,
+          unwrapPositions: positionsUnwrapTime - getPositionsTime,
+          getRewardTime: getRewardTime - positionsUnwrapTime,
+          rewardsUnwrapTime: rewardsUnwrapTime - getRewardTime,
+          enrichTime: endTime - rewardsUnwrapTime,
+        },
         timeTaken: endTime - startTime,
         chainId: adapter.chainId,
         chainName: ChainName[adapter.chainId],
@@ -161,10 +200,6 @@ export class DefiProvider {
         userAddress,
         blockNumber,
       })
-
-      const tokens = protocolPositions.map((protocolPosition) =>
-        enrichPositionBalance(protocolPosition, adapter.chainId),
-      )
 
       return { tokens }
     }
@@ -182,7 +217,20 @@ export class DefiProvider {
         !result.success || (result.success && result.tokens.length > 0),
     )
 
-    logger.debug(count, 'getPositions')
+    const endGetPositions = Date.now()
+
+    logger.warn(count, 'Performance Metrics')
+
+    logger.warn(
+      {
+        source: 'adapter:positions:total',
+        startTime: startGetPositions,
+        endTime: endGetPositions,
+        timeTaken: endGetPositions - startGetPositions,
+        userAddress,
+      },
+      'End position fetching',
+    )
 
     return result
   }

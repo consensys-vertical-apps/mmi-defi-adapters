@@ -1,3 +1,5 @@
+import { logger } from '../utils/logger'
+
 const TimeoutErrorMessage = 'Operation timed out'
 
 export function retryHandlerFactory({
@@ -24,6 +26,15 @@ export function retryHandlerFactory({
           .finally(() => clearTimeout(timeout))
       })
     } catch (error) {
+      logger.error(
+        {
+          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+          error: (error as any).message,
+          retryCount,
+          maxRetries,
+        },
+        'Retrying RPC Request',
+      )
       if (
         (error instanceof Error && error.message !== TimeoutErrorMessage) ||
         retryCount >= maxRetries
