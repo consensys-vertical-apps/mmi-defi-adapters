@@ -33,6 +33,63 @@ import {
   TotalValueLockResponse,
 } from './types/response'
 
+export const count = {
+  [Chain.Ethereum]: {
+    requestCount: 0,
+    requestSize: 0,
+    totalRequestTime: 0,
+    maxRequestTime: 0,
+  },
+  [Chain.Optimism]: {
+    requestCount: 0,
+    requestSize: 0,
+    totalRequestTime: 0,
+    maxRequestTime: 0,
+  },
+  [Chain.Bsc]: {
+    requestCount: 0,
+    requestSize: 0,
+    totalRequestTime: 0,
+    maxRequestTime: 0,
+  },
+  [Chain.Polygon]: {
+    requestCount: 0,
+    requestSize: 0,
+    totalRequestTime: 0,
+    maxRequestTime: 0,
+  },
+  [Chain.Fantom]: {
+    requestCount: 0,
+    requestSize: 0,
+    totalRequestTime: 0,
+    maxRequestTime: 0,
+  },
+  [Chain.Arbitrum]: {
+    requestCount: 0,
+    requestSize: 0,
+    totalRequestTime: 0,
+    maxRequestTime: 0,
+  },
+  [Chain.Avalanche]: {
+    requestCount: 0,
+    requestSize: 0,
+    totalRequestTime: 0,
+    maxRequestTime: 0,
+  },
+  [Chain.Linea]: {
+    requestCount: 0,
+    requestSize: 0,
+    totalRequestTime: 0,
+    maxRequestTime: 0,
+  },
+  [Chain.Base]: {
+    requestCount: 0,
+    requestSize: 0,
+    totalRequestTime: 0,
+    maxRequestTime: 0,
+  },
+}
+
 export class DefiProvider {
   private parsedConfig
   chainProvider: ChainProvider
@@ -149,7 +206,7 @@ export class DefiProvider {
       return { tokens }
     }
 
-    return (
+    const result = (
       await this.runForAllProtocolsAndChains({
         runner,
         filterProtocolIds,
@@ -161,6 +218,10 @@ export class DefiProvider {
       (result) =>
         !result.success || (result.success && result.tokens.length > 0),
     )
+
+    console.log(count)
+
+    return result
   }
 
   async getProfits({
@@ -604,6 +665,14 @@ export class DefiProvider {
     return await this.adaptersController.getSupport(input)
   }
 
+  /**
+   * Runs a specified method for all protocols and chains, based on the provided filters.
+   * @param runner - The function to run for each protocol and chain.
+   * @param filterProtocolIds - Optional. An array of protocols to filter by.
+   * @param filterChainIds - Optional. An array of chains to filter by.
+   * @param method - The method to run for each protocol and chain.
+   * @returns A promise that resolves to an array of adapter responses.
+   */
   private async runForAllProtocolsAndChains<ReturnType extends object>({
     runner,
     filterProtocolIds,

@@ -4,6 +4,7 @@ import { Chain } from '../constants/chains'
 import { MulticallError } from '../errors/errors'
 import { logger } from '../utils/logger'
 import { CustomTransactionRequest } from './CustomMulticallJsonRpcProvider'
+import { count } from '../../defiProvider'
 
 interface PendingCall {
   callParams: {
@@ -94,6 +95,8 @@ export class MulticallQueue {
       const batchSize = callsToProcess.length
       logger.debug({ batchSize }, 'Sending multicall batch')
 
+      const startTime = new Date().getTime()
+
       let results: Multicall3.ResultStructOutput[]
       try {
         results = await this.multicallContract.aggregate3.staticCall(
@@ -102,6 +105,19 @@ export class MulticallQueue {
             blockTag: blockTag === LATEST ? undefined : blockTag,
           },
         )
+
+        const endTime = new Date().getTime()
+
+        const timeTaken = endTime - startTime
+
+        count[this.chainId].requestCount++
+        count[this.chainId].requestSize += batchSize
+        count[this.chainId].totalRequestTime += timeTaken
+
+        if (timeTaken > count[this.chainId].maxRequestTime) {
+          count[this.chainId].maxRequestTime = timeTaken
+        }
+
         // biome-ignore lint/suspicious/noExplicitAny: Error is checked
       } catch (error: any) {
         callsToProcess.forEach(({ reject }) => {
