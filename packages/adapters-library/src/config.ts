@@ -88,6 +88,19 @@ const ConfigSchema = z
     enableFailover: z
       .boolean()
       .default(process.env.DEFI_ADAPTERS_USE_FAILOVER !== 'false'),
+    hasUnlimitedEthGethLogsBlockRangeLimit: z
+      .object({
+        ethereum: z.boolean().default(true),
+        optimism: z.boolean().default(true),
+        bsc: z.boolean().default(false),
+        polygon: z.boolean().default(false),
+        fantom: z.boolean().default(false),
+        base: z.boolean().default(true),
+        arbitrum: z.boolean().default(true),
+        avalanche: z.boolean().default(true),
+        linea: z.boolean().default(true),
+      })
+      .default({}),
   })
   .strict()
   .default({})

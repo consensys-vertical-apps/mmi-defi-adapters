@@ -1,0 +1,83 @@
+{
+  "1": {
+    "requestCount": 32,
+    "requestSize": 3122,
+    "totalRequestTime": 104129,
+    "maxRequestTime": 3488,
+    "logRequests": 0,
+    "totalLogRequestTime": 0,
+    "maxLogRequestTime": 0
+  },
+  "10": {
+    "requestCount": 2,
+    "requestSize": 167,
+    "totalRequestTime": 3627,
+    "maxRequestTime": 2556,
+    "logRequests": 0,
+    "totalLogRequestTime": 0,
+    "maxLogRequestTime": 0
+  },
+  "56": {
+    "requestCount": 13,
+    "requestSize": 1203,
+    "totalRequestTime": 28842,
+    "maxRequestTime": 2339,
+    "logRequests": 0,
+    "totalLogRequestTime": 0,
+    "maxLogRequestTime": 0
+  },
+  "137": {
+    "requestCount": 23,
+    "requestSize": 2268,
+    "totalRequestTime": 83289,
+    "maxRequestTime": 3697,
+    "logRequests": 0,
+    "totalLogRequestTime": 0,
+    "maxLogRequestTime": 0
+  },
+  "250": {
+    "requestCount": 1,
+    "requestSize": 81,
+    "totalRequestTime": 511,
+    "maxRequestTime": 511,
+    "logRequests": 0,
+    "totalLogRequestTime": 0,
+    "maxLogRequestTime": 0
+  },
+  "8453": {
+    "requestCount": 19,
+    "requestSize": 1859,
+    "totalRequestTime": 56940,
+    "maxRequestTime": 3081,
+    "logRequests": 0,
+    "totalLogRequestTime": 0,
+    "maxLogRequestTime": 0
+  },
+  "42161": {
+    "requestCount": 16,
+    "requestSize": 1411,
+    "totalRequestTime": 157400,
+    "maxRequestTime": 10594,
+    "logRequests": 0,
+    "totalLogRequestTime": 0,
+    "maxLogRequestTime": 0
+  },
+  "43114": {
+    "requestCount": 3,
+    "requestSize": 130,
+    "totalRequestTime": 3736,
+    "maxRequestTime": 2523,
+    "logRequests": 0,
+    "totalLogRequestTime": 0,
+    "maxLogRequestTime": 0
+  },
+  "59144": {
+    "requestCount": 1,
+    "requestSize": 36,
+    "totalRequestTime": 1003,
+    "maxRequestTime": 1003,
+    "logRequests": 0,
+    "totalLogRequestTime": 0,
+    "maxLogRequestTime": 0
+  }
+}

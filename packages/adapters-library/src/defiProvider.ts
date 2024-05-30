@@ -1,4 +1,5 @@
-import { getAddress } from 'ethers'
+import { ethers, getAddress } from 'ethers'
+import { contractAddresses } from './adapters/compound-v2/common/contractAddresses'
 import { Protocol } from './adapters/protocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
@@ -11,6 +12,7 @@ import { NotSupportedError, ProviderMissingError } from './core/errors/errors'
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
+import { filterMapAsync, filterMapSync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { unwrap } from './core/utils/unwrap'
 import {
@@ -39,54 +41,81 @@ export const count = {
     requestSize: 0,
     totalRequestTime: 0,
     maxRequestTime: 0,
+    logRequests: 0,
+    totalLogRequestTime: 0,
+    maxLogRequestTime: 0,
   },
   [Chain.Optimism]: {
     requestCount: 0,
     requestSize: 0,
     totalRequestTime: 0,
     maxRequestTime: 0,
+    logRequests: 0,
+    totalLogRequestTime: 0,
+    maxLogRequestTime: 0,
   },
   [Chain.Bsc]: {
     requestCount: 0,
     requestSize: 0,
     totalRequestTime: 0,
     maxRequestTime: 0,
+    logRequests: 0,
+    totalLogRequestTime: 0,
+    maxLogRequestTime: 0,
   },
   [Chain.Polygon]: {
     requestCount: 0,
     requestSize: 0,
     totalRequestTime: 0,
     maxRequestTime: 0,
+    logRequests: 0,
+    totalLogRequestTime: 0,
+    maxLogRequestTime: 0,
   },
   [Chain.Fantom]: {
     requestCount: 0,
     requestSize: 0,
     totalRequestTime: 0,
     maxRequestTime: 0,
+    logRequests: 0,
+    totalLogRequestTime: 0,
+    maxLogRequestTime: 0,
   },
   [Chain.Arbitrum]: {
     requestCount: 0,
     requestSize: 0,
     totalRequestTime: 0,
     maxRequestTime: 0,
+    logRequests: 0,
+    totalLogRequestTime: 0,
+    maxLogRequestTime: 0,
   },
   [Chain.Avalanche]: {
     requestCount: 0,
     requestSize: 0,
     totalRequestTime: 0,
     maxRequestTime: 0,
+    logRequests: 0,
+    totalLogRequestTime: 0,
+    maxLogRequestTime: 0,
   },
   [Chain.Linea]: {
     requestCount: 0,
     requestSize: 0,
     totalRequestTime: 0,
     maxRequestTime: 0,
+    logRequests: 0,
+    totalLogRequestTime: 0,
+    maxLogRequestTime: 0,
   },
   [Chain.Base]: {
     requestCount: 0,
     requestSize: 0,
     totalRequestTime: 0,
     maxRequestTime: 0,
+    logRequests: 0,
+    totalLogRequestTime: 0,
+    maxLogRequestTime: 0,
   },
 }
 
@@ -155,6 +184,16 @@ export class DefiProvider {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
+      const protocolTokenAddresses = await this.getProtocolTokenAddressFilter(
+        userAddress,
+        adapter,
+        filterProtocolTokens,
+      )
+
+      if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
+        return { tokens: [] }
+      }
+
       const startTime = Date.now()
 
       const protocolPositions = await adapter.getPositions({
@@ -222,6 +261,85 @@ export class DefiProvider {
     console.log(count)
 
     return result
+  }
+
+  private async getProtocolTokenAddressFilter(
+    userAddress: string,
+    adapter: IProtocolAdapter,
+    filterProtocolTokens?: string[],
+  ) {
+    if (filterProtocolTokens && filterProtocolTokens.length > 0) {
+      return filterProtocolTokens.map((t) => getAddress(t))
+    }
+
+    // biome-ignore lint/correctness/noConstantCondition: <explanation>
+    if (true) {
+      return undefined
+    }
+
+    if (!(await this.filterSupported(adapter))) {
+      return undefined
+    }
+
+    const transferEventSignature = ethers.id(
+      'Transfer(address,address,uint256)',
+    )
+
+    const transferFilter = {
+      fromBlock: 0,
+      toBlock: 'latest',
+      topics: [
+        transferEventSignature,
+        null,
+        ethers.zeroPadValue(userAddress, 32), // to address
+      ],
+    }
+
+    const transferLogs =
+      await this.chainProvider.providers[adapter.chainId].getLogs(
+        transferFilter,
+      )
+
+    const matchingProtocolTokenAddresses = await filterMapAsync(
+      transferLogs,
+      async (log) => {
+        const smartContractAddress = log.address
+
+        const isAdapterToken = await this.adaptersController.fetchTokenAdapter(
+          adapter.chainId,
+          smartContractAddress,
+        )
+        if (
+          isAdapterToken?.getProtocolDetails().productId === adapter.productId
+        ) {
+          return smartContractAddress
+        }
+
+        return undefined
+      },
+    )
+    return matchingProtocolTokenAddresses
+  }
+
+  private async filterSupported(adapter: IProtocolAdapter) {
+    // we don't support these atm but something can be done here for standard NFT positions
+    if (adapter.getProtocolDetails().assetDetails.type === 'NonStandardErc20') {
+      return false
+    }
+
+    const hasUnlimitedGetLogsRange =
+      this.parsedConfig.values.hasUnlimitedEthGethLogsBlockRangeLimit[
+        ChainName[
+          adapter.chainId
+        ] as keyof typeof this.parsedConfig.values.hasUnlimitedEthGethLogsBlockRangeLimit
+      ]
+
+    // if the node provider has limits on block range then we cant build a filter
+    if (!hasUnlimitedGetLogsRange) {
+      return false
+    }
+
+    return true
   }
 
   async getProfits({

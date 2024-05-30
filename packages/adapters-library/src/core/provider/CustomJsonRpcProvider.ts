@@ -10,6 +10,7 @@ import {
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS'
 import { Chain } from '../constants/chains'
 import { retryHandlerFactory } from './retryHandlerFactory'
+import { count } from '../../defiProvider'
 
 export type CustomJsonRpcProviderOptions = {
   rpcCallTimeoutInMs: number
@@ -71,6 +72,18 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   }
 
   async getLogs(filter: Filter | FilterByBlockHash): Promise<Array<Log>> {
-    return this.logsRetryHandler(() => super.getLogs(filter))
+    const startTime = Date.now()
+    const result = await this.logsRetryHandler(() => super.getLogs(filter))
+    const endTime = Date.now()
+
+    const totalTime = endTime - startTime
+    count[this.chainId].logRequests += 1
+    count[this.chainId].totalLogRequestTime += totalTime
+
+    if (totalTime > count[this.chainId].maxRequestTime) {
+      count[this.chainId].maxRequestTime = totalTime
+    }
+
+    return result
   }
 }
