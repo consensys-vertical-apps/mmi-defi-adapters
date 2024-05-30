@@ -64,6 +64,9 @@ const ConfigSchema = z
     useMulticallInterceptor: z
       .boolean()
       .default(process.env.DEFI_ADAPTERS_USE_MULTICALL_INTERCEPTOR !== 'false'),
+    useGetAllTransferLogs: z
+      .boolean()
+      .default(process.env.DEFI_ADAPTERS_USE_GET_ALL_TRANSFER_LOGS !== 'false'),
     enableUsdPricesOnPositions: z
       .boolean()
       .default(

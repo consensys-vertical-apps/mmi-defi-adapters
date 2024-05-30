@@ -1,10 +1,23 @@
-import { AbiCoder, AddressLike, BytesLike } from 'ethers'
+import {
+  AbiCoder,
+  AddressLike,
+  BytesLike,
+  ContractRunner,
+  FetchRequest,
+  JsonRpcProvider,
+  Network,
+  TransactionRequest,
+  ethers,
+} from 'ethers'
 import { Multicall, Multicall3 } from '../../contracts/Multicall'
+import { count } from '../../metricsCount'
 import { Chain } from '../constants/chains'
 import { MulticallError } from '../errors/errors'
 import { logger } from '../utils/logger'
-import { CustomTransactionRequest } from './CustomMulticallJsonRpcProvider'
-import { count } from '../../defiProvider'
+
+import { Multicall__factory } from '../../contracts'
+import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
+import { CustomJsonRpcProvider } from './CustomJsonRpcProvider'
 
 interface PendingCall {
   callParams: {
@@ -21,25 +34,31 @@ type PendingCallsMap = Record<string | typeof LATEST, PendingCall[]>
 export class MulticallQueue {
   private chainId: Chain
   private pendingCalls: PendingCallsMap = {}
-  private multicallContract: Multicall
+  // private multicallContract: Multicall
   private flushTimeoutMs: number
   private maxBatchSize: number
   private _timer: NodeJS.Timeout | null = null
 
+  private provider: JsonRpcProvider
+
   constructor({
+    fetchRequest,
     flushTimeoutMs,
     maxBatchSize,
-    multicallContract,
     chainId,
   }: {
+    fetchRequest: FetchRequest
     flushTimeoutMs: number
     maxBatchSize: number
-    multicallContract: Multicall
+
     chainId: Chain
   }) {
     this.flushTimeoutMs = flushTimeoutMs
     this.maxBatchSize = maxBatchSize
-    this.multicallContract = multicallContract
+    this.provider = new ethers.JsonRpcProvider(
+      fetchRequest,
+      Network.from(chainId),
+    )
     this.chainId = chainId
   }
 
@@ -52,7 +71,7 @@ export class MulticallQueue {
     return this._timer
   }
 
-  async queueCall(callParams: CustomTransactionRequest): Promise<string> {
+  async queueCall(callParams: TransactionRequest): Promise<string> {
     if (callParams.from) {
       logger.error(
         'MulticallQueue unable to handle from parameter, use standard json rpc provider instead',
@@ -86,6 +105,11 @@ export class MulticallQueue {
   }
 
   private async _flush() {
+    const multicallContract = Multicall__factory.connect(
+      MULTICALL_ADDRESS,
+      this.provider,
+    )
+
     const currentPendingCalls: PendingCallsMap = this.pendingCalls
     this.pendingCalls = {}
 
@@ -95,27 +119,23 @@ export class MulticallQueue {
       const batchSize = callsToProcess.length
       logger.debug({ batchSize }, 'Sending multicall batch')
 
-      const startTime = new Date().getTime()
-
       let results: Multicall3.ResultStructOutput[]
       try {
-        results = await this.multicallContract.aggregate3.staticCall(
+        const startTime = Date.now()
+        results = await multicallContract.aggregate3.staticCall(
           callsToProcess.map(({ callParams }) => callParams),
           {
             blockTag: blockTag === LATEST ? undefined : blockTag,
           },
         )
+        const endTime = Date.now()
 
-        const endTime = new Date().getTime()
-
-        const timeTaken = endTime - startTime
-
-        count[this.chainId].requestCount++
-        count[this.chainId].requestSize += batchSize
-        count[this.chainId].totalRequestTime += timeTaken
-
-        if (timeTaken > count[this.chainId].maxRequestTime) {
-          count[this.chainId].maxRequestTime = timeTaken
+        // update metrics
+        count[this.chainId].multicallRequests.totalInternalRequest += batchSize
+        count[this.chainId].multicallRequests.total += 1
+        const totalTime = endTime - startTime
+        if (totalTime > count[this.chainId].multicallRequests.maxRequestTime) {
+          count[this.chainId].multicallRequests.maxRequestTime = totalTime
         }
 
         // biome-ignore lint/suspicious/noExplicitAny: Error is checked
@@ -207,7 +227,7 @@ export class MulticallQueue {
     }
   }
 
-  private getParams(callParams: CustomTransactionRequest) {
+  private getParams(callParams: TransactionRequest) {
     const { to, data, blockTag } = callParams
 
     if (!to && !data) {

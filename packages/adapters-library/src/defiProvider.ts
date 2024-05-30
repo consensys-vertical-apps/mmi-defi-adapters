@@ -8,13 +8,18 @@ import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
-import { NotSupportedError, ProviderMissingError } from './core/errors/errors'
+import {
+  NotSupportedError,
+  NotSupportedUnlimitedGetLogsBlockRange,
+  ProviderMissingError,
+} from './core/errors/errors'
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
 import { filterMapAsync, filterMapSync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { unwrap } from './core/utils/unwrap'
+import { count } from './metricsCount'
 import {
   enrichMovements,
   enrichPositionBalance,
@@ -34,90 +39,6 @@ import {
   PricePerShareResponse,
   TotalValueLockResponse,
 } from './types/response'
-
-export const count = {
-  [Chain.Ethereum]: {
-    requestCount: 0,
-    requestSize: 0,
-    totalRequestTime: 0,
-    maxRequestTime: 0,
-    logRequests: 0,
-    totalLogRequestTime: 0,
-    maxLogRequestTime: 0,
-  },
-  [Chain.Optimism]: {
-    requestCount: 0,
-    requestSize: 0,
-    totalRequestTime: 0,
-    maxRequestTime: 0,
-    logRequests: 0,
-    totalLogRequestTime: 0,
-    maxLogRequestTime: 0,
-  },
-  [Chain.Bsc]: {
-    requestCount: 0,
-    requestSize: 0,
-    totalRequestTime: 0,
-    maxRequestTime: 0,
-    logRequests: 0,
-    totalLogRequestTime: 0,
-    maxLogRequestTime: 0,
-  },
-  [Chain.Polygon]: {
-    requestCount: 0,
-    requestSize: 0,
-    totalRequestTime: 0,
-    maxRequestTime: 0,
-    logRequests: 0,
-    totalLogRequestTime: 0,
-    maxLogRequestTime: 0,
-  },
-  [Chain.Fantom]: {
-    requestCount: 0,
-    requestSize: 0,
-    totalRequestTime: 0,
-    maxRequestTime: 0,
-    logRequests: 0,
-    totalLogRequestTime: 0,
-    maxLogRequestTime: 0,
-  },
-  [Chain.Arbitrum]: {
-    requestCount: 0,
-    requestSize: 0,
-    totalRequestTime: 0,
-    maxRequestTime: 0,
-    logRequests: 0,
-    totalLogRequestTime: 0,
-    maxLogRequestTime: 0,
-  },
-  [Chain.Avalanche]: {
-    requestCount: 0,
-    requestSize: 0,
-    totalRequestTime: 0,
-    maxRequestTime: 0,
-    logRequests: 0,
-    totalLogRequestTime: 0,
-    maxLogRequestTime: 0,
-  },
-  [Chain.Linea]: {
-    requestCount: 0,
-    requestSize: 0,
-    totalRequestTime: 0,
-    maxRequestTime: 0,
-    logRequests: 0,
-    totalLogRequestTime: 0,
-    maxLogRequestTime: 0,
-  },
-  [Chain.Base]: {
-    requestCount: 0,
-    requestSize: 0,
-    totalRequestTime: 0,
-    maxRequestTime: 0,
-    logRequests: 0,
-    totalLogRequestTime: 0,
-    maxLogRequestTime: 0,
-  },
-}
 
 export class DefiProvider {
   private parsedConfig
@@ -184,7 +105,7 @@ export class DefiProvider {
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
-      const protocolTokenAddresses = await this.getProtocolTokenAddressFilter(
+      const protocolTokenAddresses = await this.buildTokenFilter(
         userAddress,
         adapter,
         filterProtocolTokens,
@@ -263,79 +184,78 @@ export class DefiProvider {
     return result
   }
 
-  private async getProtocolTokenAddressFilter(
+  private async buildTokenFilter(
     userAddress: string,
     adapter: IProtocolAdapter,
-    filterProtocolTokens?: string[],
+    filterProtocolTokensOverride?: string[],
   ) {
-    if (filterProtocolTokens && filterProtocolTokens.length > 0) {
-      return filterProtocolTokens.map((t) => getAddress(t))
-    }
+    try {
+      // we use the overrides if provided
+      if (
+        filterProtocolTokensOverride &&
+        filterProtocolTokensOverride.length > 0
+      ) {
+        return filterProtocolTokensOverride.map((t) => getAddress(t))
+      }
 
-    // biome-ignore lint/correctness/noConstantCondition: <explanation>
-    if (true) {
-      return undefined
-    }
+      if (!this.parsedConfig.values.useGetAllTransferLogs) {
+        return false
+      }
 
-    if (!(await this.filterSupported(adapter))) {
-      return undefined
-    }
+      const transferLogs =
+        await this.chainProvider.providers[
+          adapter.chainId
+        ].getAllTransferLogsToAddress(userAddress)
 
-    const transferEventSignature = ethers.id(
-      'Transfer(address,address,uint256)',
-    )
+      // no logs on this chain means nothing done on this chain
+      if (transferLogs.length === 0) {
+        return []
+      }
 
-    const transferFilter = {
-      fromBlock: 0,
-      toBlock: 'latest',
-      topics: [
-        transferEventSignature,
-        null,
-        ethers.zeroPadValue(userAddress, 32), // to address
-      ],
-    }
+      // we cant use the logs for this adapter
+      if (!this.filterSupported(adapter)) {
+        return false
+      }
 
-    const transferLogs =
-      await this.chainProvider.providers[adapter.chainId].getLogs(
-        transferFilter,
+      const uniqueAddresses = Array.from(
+        new Set(transferLogs.map((log) => log.address)),
       )
 
-    const matchingProtocolTokenAddresses = await filterMapAsync(
-      transferLogs,
-      async (log) => {
-        const smartContractAddress = log.address
+      // we can build the filter
+      const matchingProtocolTokenAddresses = await filterMapAsync(
+        uniqueAddresses,
+        async (address) => {
+          const isAdapterToken =
+            await this.adaptersController.isTokenBelongToAdapter(
+              address,
+              adapter.protocolId,
+              adapter.productId,
+              adapter.chainId,
+            )
+          if (isAdapterToken) {
+            return address
+          }
 
-        const isAdapterToken = await this.adaptersController.fetchTokenAdapter(
-          adapter.chainId,
-          smartContractAddress,
-        )
-        if (
-          isAdapterToken?.getProtocolDetails().productId === adapter.productId
-        ) {
-          return smartContractAddress
-        }
+          return undefined
+        },
+      )
+      return matchingProtocolTokenAddresses
+    } catch (error) {
+      // we cant use the logs on this chain
+      if (error instanceof NotSupportedUnlimitedGetLogsBlockRange) {
+        return false
+      }
 
-        return undefined
-      },
-    )
-    return matchingProtocolTokenAddresses
-  }
+      logger.warn((error as Error).message)
 
-  private async filterSupported(adapter: IProtocolAdapter) {
-    // we don't support these atm but something can be done here for standard NFT positions
-    if (adapter.getProtocolDetails().assetDetails.type === 'NonStandardErc20') {
+      // we cant use the logs on this chain
       return false
     }
+  }
 
-    const hasUnlimitedGetLogsRange =
-      this.parsedConfig.values.hasUnlimitedEthGethLogsBlockRangeLimit[
-        ChainName[
-          adapter.chainId
-        ] as keyof typeof this.parsedConfig.values.hasUnlimitedEthGethLogsBlockRangeLimit
-      ]
-
-    // if the node provider has limits on block range then we cant build a filter
-    if (!hasUnlimitedGetLogsRange) {
+  private filterSupported(adapter: IProtocolAdapter) {
+    // we don't support these atm but something can be done here for standard NFT positions
+    if (adapter.getProtocolDetails().assetDetails.type === 'NonStandardErc20') {
       return false
     }
 

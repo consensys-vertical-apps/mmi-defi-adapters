@@ -51,6 +51,11 @@ export class NotImplementedError extends BaseError {
     super('Not Implemented')
   }
 }
+export class NotSupportedUnlimitedGetLogsBlockRange extends BaseError {
+  constructor() {
+    super('This node provider does not support unlimited getLogs block range')
+  }
+}
 
 export class NotSupportedError extends BaseError {}
 

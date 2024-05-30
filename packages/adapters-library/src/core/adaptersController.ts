@@ -85,6 +85,9 @@ export class AdaptersController {
         )
       },
     )
+
+    // start building protocol tokens for unwrap flow
+    this.protocolTokens = this.buildProtocolTokens()
   }
 
   async fetchTokenAdapter(
@@ -101,7 +104,7 @@ export class AdaptersController {
     return protocolTokens.get(chainId)?.get(tokenAddress)
   }
 
-  private async buildProtocolTokens(): Promise<
+  async buildProtocolTokens(): Promise<
     Map<Chain, Map<string, IProtocolAdapter>>
   > {
     const protocolTokensAdapterMap: Map<
@@ -264,5 +267,27 @@ export class AdaptersController {
     }
 
     return support
+  }
+
+  async isTokenBelongToAdapter(
+    tokenAddress: string,
+    protocolId: Protocol,
+    productId: string,
+    chainId: Chain,
+  ) {
+    const adapter = await this.fetchTokenAdapter(chainId, tokenAddress)
+
+    if (!adapter) {
+      return false
+    }
+
+    if (protocolId !== adapter.getProtocolDetails().protocolId) {
+      return false
+    }
+    if (productId !== adapter.getProtocolDetails().productId) {
+      return false
+    }
+
+    return true
   }
 }

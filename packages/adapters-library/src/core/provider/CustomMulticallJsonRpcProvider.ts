@@ -6,6 +6,8 @@ import {
   Log,
   TransactionRequest,
 } from 'ethers'
+import { IConfig } from '../../config'
+import { count } from '../../metricsCount'
 import { Chain } from '../constants/chains'
 import {
   CustomJsonRpcProvider,
@@ -13,96 +15,65 @@ import {
 } from './CustomJsonRpcProvider'
 import { MulticallQueue } from './MulticallQueue'
 
-export interface CustomTransactionRequest extends TransactionRequest {
-  blockTag?: number
-}
-
-type CacheEntryCalls = { result: string; timestamp: number }
-type CacheEntryLogs = { result: Array<Log>; timestamp: number }
-
-const THIRTY_MINUTES = 30 * 60 * 1000
-
 export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   private multicallQueue: MulticallQueue
-  private cacheCalls: Record<string, Promise<CacheEntryCalls>>
-  private cacheLogs: Record<string, Promise<CacheEntryLogs>>
 
   constructor({
     fetchRequest,
     chainId,
-    multicallQueue,
+    config,
     customOptions,
     jsonRpcProviderOptions,
+    hasUnlimitedGetLogsRange,
   }: {
     fetchRequest: FetchRequest
     chainId: Chain
-    multicallQueue: MulticallQueue
+    config: IConfig
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
+    hasUnlimitedGetLogsRange: boolean
   }) {
-    super({ fetchRequest, chainId, customOptions, jsonRpcProviderOptions })
-    this.multicallQueue = multicallQueue
-    this.cacheCalls = {}
-    this.cacheLogs = {}
+    super({
+      config,
+      fetchRequest,
+      chainId,
+      customOptions,
+      jsonRpcProviderOptions,
+      hasUnlimitedGetLogsRange,
+    })
+    this.multicallQueue = new MulticallQueue({
+      fetchRequest,
+      maxBatchSize: 100,
+      flushTimeoutMs: 1000,
+      chainId,
+    })
   }
 
-  async call(transaction: CustomTransactionRequest): Promise<string> {
-    const key = JSON.stringify(transaction)
+  async callSuper(transaction: TransactionRequest): Promise<string> {
+    console.log('Super call')
+    const startTime = Date.now()
 
-    const cachedEntryPromise = this.cacheCalls[key]
+    const result = super.call(transaction)
 
-    if (cachedEntryPromise) {
-      const now = Date.now()
+    const endTime = Date.now()
+    const totalTime = endTime - startTime
 
-      const entry = await cachedEntryPromise
+    count[this.chainId].nonMulticallRequests.total += 1
 
-      if (now - entry.timestamp < THIRTY_MINUTES) {
-        return entry.result
-      }
+    if (totalTime > count[this.chainId].nonMulticallRequests.maxRequestTime) {
+      count[this.chainId].nonMulticallRequests.maxRequestTime = totalTime
     }
 
-    const entryPromise = (async () => {
-      const result = transaction.from
-        ? super.call(transaction)
-        : this.multicallQueue.queueCall(transaction)
-
-      return {
-        result: await result,
-        timestamp: Date.now(),
-      }
-    })()
-
-    this.cacheCalls[key] = entryPromise
-
-    return (await entryPromise).result
+    return result
   }
 
-  async getLogs(filter: Filter | FilterByBlockHash): Promise<Array<Log>> {
-    const key = JSON.stringify(filter)
-
-    const cachedEntryPromise = this.cacheLogs[key]
-
-    if (cachedEntryPromise) {
-      const now = Date.now()
-
-      const entry = await cachedEntryPromise
-
-      if (now - entry.timestamp < THIRTY_MINUTES) {
-        return entry.result
-      }
+  async call(transaction: TransactionRequest): Promise<string> {
+    if (transaction.from) {
+      console.log(transaction.from)
     }
 
-    const entryPromise = (async () => {
-      const result = super.getLogs(filter)
-
-      return {
-        result: await result,
-        timestamp: Date.now(),
-      }
-    })()
-
-    this.cacheLogs[key] = entryPromise
-
-    return (await entryPromise).result
+    return transaction.from
+      ? this.callSuper(transaction)
+      : this.multicallQueue.queueCall(transaction)
   }
 }

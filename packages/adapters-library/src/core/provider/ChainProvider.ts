@@ -1,8 +1,8 @@
 import { FetchRequest, Network } from 'ethers'
-import { IConfig } from '../../config'
+import { Config, IConfig } from '../../config'
 import { Multicall__factory } from '../../contracts'
 import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
-import { Chain } from '../constants/chains'
+import { Chain, ChainName } from '../constants/chains'
 import { logger } from '../utils/logger'
 import {
   CustomJsonRpcProvider,
@@ -14,8 +14,11 @@ import { MulticallQueue } from './MulticallQueue'
 export class ChainProvider {
   providers: Record<Chain, CustomJsonRpcProvider>
 
+  private config: IConfig
+
   constructor(config: IConfig) {
-    this.providers = this.initializeProviders(config)
+    this.config = config
+    this.providers = this.initializeProviders(this.config)
   }
 
   private provider({
@@ -45,49 +48,38 @@ export class ChainProvider {
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, 'Using standard provider')
       return new CustomJsonRpcProvider({
+        config: this.config,
         fetchRequest,
         chainId,
         customOptions,
         jsonRpcProviderOptions: {
           staticNetwork: Network.from(chainId),
         },
+        hasUnlimitedGetLogsRange:
+          this.config.hasUnlimitedEthGethLogsBlockRangeLimit[
+            ChainName[
+              chainId
+            ] as keyof typeof this.config.hasUnlimitedEthGethLogsBlockRangeLimit
+          ],
       })
     }
 
     logger.debug({ chainId, url }, 'Using multicall queue provider')
 
-    const provider = new CustomJsonRpcProvider({
-      fetchRequest,
-      chainId,
-      customOptions,
-      jsonRpcProviderOptions: {
-        staticNetwork: Network.from(chainId),
-      },
-    })
-
-    // deployed on 100+ chains at address
-    // https://www.multicall3.com/deployments
-    const multicallContract = Multicall__factory.connect(
-      MULTICALL_ADDRESS,
-      provider,
-    )
-
-    const multicallQueue = new MulticallQueue({
-      // Allow a bigger batch size for mainnet
-      maxBatchSize: 100,
-      flushTimeoutMs: 0.1,
-      multicallContract,
-      chainId,
-    })
-
     return new CustomMulticallJsonRpcProvider({
+      config: this.config,
       fetchRequest,
       chainId,
-      multicallQueue,
       customOptions,
       jsonRpcProviderOptions: {
         staticNetwork: Network.from(chainId),
       },
+      hasUnlimitedGetLogsRange:
+        this.config.hasUnlimitedEthGethLogsBlockRangeLimit[
+          ChainName[
+            chainId
+          ] as keyof typeof this.config.hasUnlimitedEthGethLogsBlockRangeLimit
+        ],
     })
   }
 
