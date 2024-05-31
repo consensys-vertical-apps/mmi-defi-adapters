@@ -28,6 +28,7 @@
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "npm run build -- --watch",
     "test": "jest src --testPathIgnorePatterns='src/adapters/integration.test.ts' --testPathIgnorePatterns='src/tests/detect-errors.test.ts'",
+    "test:file": "if [ -z \"$TEST_FILE\" ]; then echo 'No test file specified'; exit 1; else jest $TEST_FILE; fi",
     "test:detect-errors": "jest src/tests/detect-errors.test.ts",
     "test:update:adapter-snapshot": "jest src/scripts/newAdapter2Command.test.ts -u",
     "test:tsc": "tsc --noEmit -p tsconfig.json",

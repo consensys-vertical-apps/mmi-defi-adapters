@@ -1,9 +1,23 @@
-import { AbiCoder, AddressLike, BytesLike } from 'ethers'
+import {
+  AbiCoder,
+  AddressLike,
+  BytesLike,
+  ContractRunner,
+  FetchRequest,
+  JsonRpcProvider,
+  Network,
+  TransactionRequest,
+  ethers,
+} from 'ethers'
 import { Multicall, Multicall3 } from '../../contracts/Multicall'
+import { count } from '../../metricsCount'
 import { Chain } from '../constants/chains'
 import { MulticallError } from '../errors/errors'
 import { logger } from '../utils/logger'
-import { CustomTransactionRequest } from './CustomMulticallJsonRpcProvider'
+
+import { Multicall__factory } from '../../contracts'
+import { MULTICALL_ADDRESS } from '../constants/MULTICALL_ADDRESS'
+import { CustomJsonRpcProvider } from './CustomJsonRpcProvider'
 
 interface PendingCall {
   callParams: {
@@ -20,26 +34,39 @@ type PendingCallsMap = Record<string | typeof LATEST, PendingCall[]>
 export class MulticallQueue {
   private chainId: Chain
   private pendingCalls: PendingCallsMap = {}
-  private multicallContract: Multicall
+  // private multicallContract: Multicall
   private flushTimeoutMs: number
   private maxBatchSize: number
   private _timer: NodeJS.Timeout | null = null
 
+  private multicallContract: Multicall
+
+  private provider: JsonRpcProvider
+
   constructor({
+    fetchRequest,
     flushTimeoutMs,
     maxBatchSize,
-    multicallContract,
     chainId,
   }: {
+    fetchRequest: FetchRequest
     flushTimeoutMs: number
     maxBatchSize: number
-    multicallContract: Multicall
+
     chainId: Chain
   }) {
     this.flushTimeoutMs = flushTimeoutMs
     this.maxBatchSize = maxBatchSize
-    this.multicallContract = multicallContract
+    this.provider = new ethers.JsonRpcProvider(
+      fetchRequest,
+      Network.from(chainId),
+    )
     this.chainId = chainId
+
+    this.multicallContract = Multicall__factory.connect(
+      MULTICALL_ADDRESS,
+      this.provider,
+    )
   }
 
   private set timer(value: NodeJS.Timeout | null) {
@@ -51,7 +78,7 @@ export class MulticallQueue {
     return this._timer
   }
 
-  async queueCall(callParams: CustomTransactionRequest): Promise<string> {
+  async queueCall(callParams: TransactionRequest): Promise<string> {
     if (callParams.from) {
       logger.error(
         'MulticallQueue unable to handle from parameter, use standard json rpc provider instead',
@@ -96,12 +123,23 @@ export class MulticallQueue {
 
       let results: Multicall3.ResultStructOutput[]
       try {
+        const startTime = Date.now()
         results = await this.multicallContract.aggregate3.staticCall(
           callsToProcess.map(({ callParams }) => callParams),
           {
             blockTag: blockTag === LATEST ? undefined : blockTag,
           },
         )
+        const endTime = Date.now()
+
+        // update metrics
+        count[this.chainId].multicallRequests.totalInternalRequest += batchSize
+        count[this.chainId].multicallRequests.total += 1
+        const totalTime = endTime - startTime
+        if (totalTime > count[this.chainId].multicallRequests.maxRequestTime) {
+          count[this.chainId].multicallRequests.maxRequestTime = totalTime
+        }
+
         // biome-ignore lint/suspicious/noExplicitAny: Error is checked
       } catch (error: any) {
         callsToProcess.forEach(({ reject }) => {
@@ -191,7 +229,7 @@ export class MulticallQueue {
     }
   }
 
-  private getParams(callParams: CustomTransactionRequest) {
+  private getParams(callParams: TransactionRequest) {
     const { to, data, blockTag } = callParams
 
     if (!to && !data) {

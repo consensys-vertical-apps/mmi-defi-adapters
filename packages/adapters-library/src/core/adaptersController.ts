@@ -87,6 +87,10 @@ export class AdaptersController {
     )
   }
 
+  async init() {
+    await this.buildProtocolTokens()
+  }
+
   async fetchTokenAdapter(
     chainId: Chain,
     tokenAddress: string,
@@ -264,5 +268,27 @@ export class AdaptersController {
     }
 
     return support
+  }
+
+  async isTokenBelongToAdapter(
+    tokenAddress: string,
+    protocolId: Protocol,
+    productId: string,
+    chainId: Chain,
+  ) {
+    const adapter = await this.fetchTokenAdapter(chainId, tokenAddress)
+
+    if (!adapter) {
+      return false
+    }
+
+    if (protocolId !== adapter.getProtocolDetails().protocolId) {
+      return false
+    }
+    if (productId !== adapter.getProtocolDetails().productId) {
+      return false
+    }
+
+    return true
   }
 }

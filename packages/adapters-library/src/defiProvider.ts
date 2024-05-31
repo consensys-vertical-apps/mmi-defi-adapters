@@ -1,4 +1,5 @@
-import { getAddress } from 'ethers'
+import { ethers, getAddress } from 'ethers'
+import { contractAddresses } from './adapters/compound-v2/common/contractAddresses'
 import { Protocol } from './adapters/protocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
@@ -7,12 +8,18 @@ import { AdaptersController } from './core/adaptersController'
 import { AVERAGE_BLOCKS_PER_DAY } from './core/constants/AVERAGE_BLOCKS_PER_DAY'
 import { Chain, ChainName } from './core/constants/chains'
 import { TimePeriod } from './core/constants/timePeriod'
-import { NotSupportedError, ProviderMissingError } from './core/errors/errors'
+import {
+  NotSupportedError,
+  NotSupportedUnlimitedGetLogsBlockRange,
+  ProviderMissingError,
+} from './core/errors/errors'
 import { getProfits } from './core/getProfits'
 import { ChainProvider } from './core/provider/ChainProvider'
 import { CustomJsonRpcProvider } from './core/provider/CustomJsonRpcProvider'
+import { filterMapAsync, filterMapSync } from './core/utils/filters'
 import { logger } from './core/utils/logger'
 import { unwrap } from './core/utils/unwrap'
+import { count } from './metricsCount'
 import {
   enrichMovements,
   enrichPositionBalance,
@@ -95,15 +102,28 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
+    this.initAdapterControllerForUnwrapStage()
+
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
+
+      const protocolTokenAddresses = await this.buildTokenFilter(
+        userAddress,
+        adapter,
+        filterProtocolTokens,
+      )
+
+      // no transfers so we return
+      if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
+        return { tokens: [] }
+      }
 
       const startTime = Date.now()
 
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
-        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        protocolTokenAddresses,
         tokenIds: filterTokenIds,
       })
 
@@ -149,7 +169,7 @@ export class DefiProvider {
       return { tokens }
     }
 
-    return (
+    const result = (
       await this.runForAllProtocolsAndChains({
         runner,
         filterProtocolIds,
@@ -161,6 +181,89 @@ export class DefiProvider {
       (result) =>
         !result.success || (result.success && result.tokens.length > 0),
     )
+
+    logger.debug(count, 'getPositions')
+
+    return result
+  }
+
+  private async buildTokenFilter(
+    userAddress: string,
+    adapter: IProtocolAdapter,
+    filterProtocolTokensOverride?: string[],
+  ) {
+    try {
+      // we use the overrides if provided
+      if (
+        filterProtocolTokensOverride &&
+        filterProtocolTokensOverride.length > 0
+      ) {
+        return filterProtocolTokensOverride.map((t) => getAddress(t))
+      }
+
+      // env var override
+      if (!this.parsedConfig.values.useGetAllTransferLogs) {
+        return undefined
+      }
+
+      const transferLogs =
+        await this.chainProvider.providers[
+          adapter.chainId
+        ].getAllTransferLogsToAddress(userAddress)
+
+      // no logs on this chain means nothing done on this chain
+      if (transferLogs.length === 0) {
+        return []
+      }
+
+      // we cant use the logs for this adapter
+      if (!this.filterSupported(adapter)) {
+        return undefined
+      }
+
+      const uniqueAddresses = Array.from(
+        new Set(transferLogs.map((log) => log.address)),
+      )
+
+      // we can build the filter
+      const matchingProtocolTokenAddresses = await filterMapAsync(
+        uniqueAddresses,
+        async (address) => {
+          const isAdapterToken =
+            await this.adaptersController.isTokenBelongToAdapter(
+              address,
+              adapter.protocolId,
+              adapter.productId,
+              adapter.chainId,
+            )
+          if (isAdapterToken) {
+            return address
+          }
+
+          return undefined
+        },
+      )
+      return matchingProtocolTokenAddresses
+    } catch (error) {
+      // we cant use the logs on this chain
+      if (error instanceof NotSupportedUnlimitedGetLogsBlockRange) {
+        return undefined
+      }
+
+      logger.warn((error as Error).message)
+
+      // we cant use the logs on this chain
+      return undefined
+    }
+  }
+
+  private filterSupported(adapter: IProtocolAdapter) {
+    // we don't support these atm but something can be done here for standard NFT positions
+    if (adapter.getProtocolDetails().assetDetails.type === 'NonStandardErc20') {
+      return false
+    }
+
+    return true
   }
 
   async getProfits({
@@ -182,6 +285,8 @@ export class DefiProvider {
     filterTokenIds?: string[]
     includeRawValues?: boolean
   }): Promise<DefiProfitsResponse[]> {
+    this.initAdapterControllerForUnwrapStage()
+
     const runner = async (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
@@ -196,6 +301,17 @@ export class DefiProvider {
       const fromBlock =
         toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
 
+      const protocolTokenAddresses = await this.buildTokenFilter(
+        userAddress,
+        adapter,
+        filterProtocolTokens,
+      )
+
+      // no transfers so we return
+      if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
+        return { tokens: [], fromBlock, toBlock }
+      }
+
       const startTime = Date.now()
 
       const profits = await getProfits({
@@ -203,7 +319,7 @@ export class DefiProvider {
         userAddress,
         toBlock,
         fromBlock,
-        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        protocolTokenAddresses,
         tokenIds: filterTokenIds,
         includeRawValues,
       })
@@ -227,7 +343,7 @@ export class DefiProvider {
       return profits
     }
 
-    return (
+    const result = (
       await this.runForAllProtocolsAndChains({
         runner,
         filterProtocolIds,
@@ -238,6 +354,9 @@ export class DefiProvider {
       (result) =>
         !result.success || (result.success && result.tokens.length > 0),
     )
+
+    logger.debug(count, 'getPProfits')
+    return result
   }
 
   async unwrap({
@@ -604,6 +723,14 @@ export class DefiProvider {
     return await this.adaptersController.getSupport(input)
   }
 
+  /**
+   * Runs a specified method for all protocols and chains, based on the provided filters.
+   * @param runner - The function to run for each protocol and chain.
+   * @param filterProtocolIds - Optional. An array of protocols to filter by.
+   * @param filterChainIds - Optional. An array of chains to filter by.
+   * @param method - The method to run for each protocol and chain.
+   * @returns A promise that resolves to an array of adapter responses.
+   */
   private async runForAllProtocolsAndChains<ReturnType extends object>({
     runner,
     filterProtocolIds,
@@ -733,5 +860,11 @@ export class DefiProvider {
       success: false,
       error: adapterError,
     }
+  }
+
+  private initAdapterControllerForUnwrapStage() {
+    this.adaptersControllerWithoutPrices.init()
+
+    this.adaptersController.init()
   }
 }
