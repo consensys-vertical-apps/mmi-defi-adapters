@@ -1,11 +1,7 @@
 import { DefiProvider } from '../defiProvider'
 
-import {
-  calculateAdapterOutcomes,
-  createCode,
-  readBlankTemplate,
-} from './newAdapter2Command'
-import { BlankAdapterOutcomeOptions, QuestionAnswers } from './questionnaire'
+import { calculateAdapterOutcomes, createCode } from './newAdapter2Command'
+import { QuestionAnswers } from './questionnaire'
 
 function generateAllAnswers(): QuestionAnswers[] {
   const {

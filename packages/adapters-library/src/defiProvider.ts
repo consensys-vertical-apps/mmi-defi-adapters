@@ -55,9 +55,6 @@ export class DefiProvider {
       supportedProtocols,
     })
 
-    // dont need to await
-    this.adaptersController.init()
-
     const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
       supportedProtocols
 
@@ -65,9 +62,6 @@ export class DefiProvider {
       providers: this.chainProvider.providers,
       supportedProtocols: supportedProtocolsWithoutPrices,
     })
-
-    // dont need to await
-    this.adaptersControllerWithoutPrices.init()
   }
 
   async getStableBlockNumbers(
@@ -108,6 +102,8 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
+    this.initAdapterControllerForUnwrapStage()
+
     const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
@@ -289,6 +285,8 @@ export class DefiProvider {
     filterTokenIds?: string[]
     includeRawValues?: boolean
   }): Promise<DefiProfitsResponse[]> {
+    this.initAdapterControllerForUnwrapStage()
+
     const runner = async (
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
@@ -862,5 +860,11 @@ export class DefiProvider {
       success: false,
       error: adapterError,
     }
+  }
+
+  private initAdapterControllerForUnwrapStage() {
+    this.adaptersControllerWithoutPrices.init()
+
+    this.adaptersController.init()
   }
 }
