@@ -6,7 +6,6 @@ import {
   Log,
   TransactionRequest,
 } from 'ethers'
-import { IConfig } from '../../config'
 import { count } from '../../metricsCount'
 import { Chain } from '../constants/chains'
 import {
@@ -21,20 +20,17 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   constructor({
     fetchRequest,
     chainId,
-    config,
     customOptions,
     jsonRpcProviderOptions,
     hasUnlimitedGetLogsRange,
   }: {
     fetchRequest: FetchRequest
     chainId: Chain
-    config: IConfig
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
     hasUnlimitedGetLogsRange: boolean
   }) {
     super({
-      config,
       fetchRequest,
       chainId,
       customOptions,
@@ -49,7 +45,7 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     })
   }
 
-  async callSuper(transaction: TransactionRequest): Promise<string> {
+  private async callSuper(transaction: TransactionRequest): Promise<string> {
     console.log('Super call')
     const startTime = Date.now()
 

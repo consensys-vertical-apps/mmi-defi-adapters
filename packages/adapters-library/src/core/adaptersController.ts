@@ -85,9 +85,10 @@ export class AdaptersController {
         )
       },
     )
+  }
 
-    // start building protocol tokens for unwrap flow
-    this.protocolTokens = this.buildProtocolTokens()
+  async init() {
+    await this.buildProtocolTokens()
   }
 
   async fetchTokenAdapter(
@@ -104,7 +105,7 @@ export class AdaptersController {
     return protocolTokens.get(chainId)?.get(tokenAddress)
   }
 
-  async buildProtocolTokens(): Promise<
+  private async buildProtocolTokens(): Promise<
     Map<Chain, Map<string, IProtocolAdapter>>
   > {
     const protocolTokensAdapterMap: Map<

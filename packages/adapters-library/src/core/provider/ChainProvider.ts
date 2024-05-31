@@ -48,7 +48,6 @@ export class ChainProvider {
     if (!enableMulticallQueue) {
       logger.debug({ chainId }, 'Using standard provider')
       return new CustomJsonRpcProvider({
-        config: this.config,
         fetchRequest,
         chainId,
         customOptions,
@@ -67,7 +66,6 @@ export class ChainProvider {
     logger.debug({ chainId, url }, 'Using multicall queue provider')
 
     return new CustomMulticallJsonRpcProvider({
-      config: this.config,
       fetchRequest,
       chainId,
       customOptions,

@@ -55,6 +55,9 @@ export class DefiProvider {
       supportedProtocols,
     })
 
+    // dont need to await
+    this.adaptersController.init()
+
     const { [Protocol.PricesV2]: _, ...supportedProtocolsWithoutPrices } =
       supportedProtocols
 
@@ -62,6 +65,9 @@ export class DefiProvider {
       providers: this.chainProvider.providers,
       supportedProtocols: supportedProtocolsWithoutPrices,
     })
+
+    // dont need to await
+    this.adaptersControllerWithoutPrices.init()
   }
 
   async getStableBlockNumbers(
@@ -111,6 +117,7 @@ export class DefiProvider {
         filterProtocolTokens,
       )
 
+      // no transfers so we return
       if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
         return { tokens: [] }
       }
@@ -120,7 +127,7 @@ export class DefiProvider {
       const protocolPositions = await adapter.getPositions({
         userAddress,
         blockNumber,
-        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        protocolTokenAddresses,
         tokenIds: filterTokenIds,
       })
 
@@ -198,8 +205,9 @@ export class DefiProvider {
         return filterProtocolTokensOverride.map((t) => getAddress(t))
       }
 
+      // env var override
       if (!this.parsedConfig.values.useGetAllTransferLogs) {
-        return false
+        return undefined
       }
 
       const transferLogs =
@@ -214,7 +222,7 @@ export class DefiProvider {
 
       // we cant use the logs for this adapter
       if (!this.filterSupported(adapter)) {
-        return false
+        return undefined
       }
 
       const uniqueAddresses = Array.from(
@@ -243,13 +251,13 @@ export class DefiProvider {
     } catch (error) {
       // we cant use the logs on this chain
       if (error instanceof NotSupportedUnlimitedGetLogsBlockRange) {
-        return false
+        return undefined
       }
 
       logger.warn((error as Error).message)
 
       // we cant use the logs on this chain
-      return false
+      return undefined
     }
   }
 
@@ -295,6 +303,17 @@ export class DefiProvider {
       const fromBlock =
         toBlock - AVERAGE_BLOCKS_PER_DAY[adapter.chainId] * timePeriod
 
+      const protocolTokenAddresses = await this.buildTokenFilter(
+        userAddress,
+        adapter,
+        filterProtocolTokens,
+      )
+
+      // no transfers so we return
+      if (protocolTokenAddresses && protocolTokenAddresses.length === 0) {
+        return { tokens: [], fromBlock, toBlock }
+      }
+
       const startTime = Date.now()
 
       const profits = await getProfits({
@@ -302,7 +321,7 @@ export class DefiProvider {
         userAddress,
         toBlock,
         fromBlock,
-        protocolTokenAddresses: filterProtocolTokens?.map((t) => getAddress(t)),
+        protocolTokenAddresses,
         tokenIds: filterTokenIds,
         includeRawValues,
       })

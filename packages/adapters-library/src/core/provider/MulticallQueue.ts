@@ -39,6 +39,8 @@ export class MulticallQueue {
   private maxBatchSize: number
   private _timer: NodeJS.Timeout | null = null
 
+  private multicallContract: Multicall
+
   private provider: JsonRpcProvider
 
   constructor({
@@ -60,6 +62,11 @@ export class MulticallQueue {
       Network.from(chainId),
     )
     this.chainId = chainId
+
+    this.multicallContract = Multicall__factory.connect(
+      MULTICALL_ADDRESS,
+      this.provider,
+    )
   }
 
   private set timer(value: NodeJS.Timeout | null) {
@@ -105,11 +112,6 @@ export class MulticallQueue {
   }
 
   private async _flush() {
-    const multicallContract = Multicall__factory.connect(
-      MULTICALL_ADDRESS,
-      this.provider,
-    )
-
     const currentPendingCalls: PendingCallsMap = this.pendingCalls
     this.pendingCalls = {}
 
@@ -122,7 +124,7 @@ export class MulticallQueue {
       let results: Multicall3.ResultStructOutput[]
       try {
         const startTime = Date.now()
-        results = await multicallContract.aggregate3.staticCall(
+        results = await this.multicallContract.aggregate3.staticCall(
           callsToProcess.map(({ callParams }) => callParams),
           {
             blockTag: blockTag === LATEST ? undefined : blockTag,

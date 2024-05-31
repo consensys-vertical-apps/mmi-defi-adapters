@@ -48,10 +48,9 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
       rpcGetLogsRetries,
     },
     jsonRpcProviderOptions,
-    config,
+
     hasUnlimitedGetLogsRange,
   }: {
-    config: IConfig
     fetchRequest: FetchRequest
     chainId: Chain
     customOptions: CustomJsonRpcProviderOptions
