@@ -186,7 +186,7 @@ export class DefiProvider {
         !result.success || (result.success && result.tokens.length > 0),
     )
 
-    console.log(count)
+    logger.debug(count, 'getPositions')
 
     return result
   }
@@ -345,7 +345,7 @@ export class DefiProvider {
       return profits
     }
 
-    return (
+    const result = (
       await this.runForAllProtocolsAndChains({
         runner,
         filterProtocolIds,
@@ -356,6 +356,9 @@ export class DefiProvider {
       (result) =>
         !result.success || (result.success && result.tokens.length > 0),
     )
+
+    logger.debug(count, 'getPProfits')
+    return result
   }
 
   async unwrap({
