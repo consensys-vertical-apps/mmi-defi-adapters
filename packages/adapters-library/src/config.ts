@@ -75,7 +75,9 @@ const ConfigSchema = z
     rpcCallTimeoutInMs: z
       .number()
       .default(
-        Number(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS) || 10000,
+        process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS
+          ? Number(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS)
+          : 10000,
       ),
     rpcCallRetries: z
       .number()
@@ -87,7 +89,9 @@ const ConfigSchema = z
     rpcGetLogsTimeoutInMs: z
       .number()
       .default(
-        Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_TIMEOUT_IN_MS) || 10000,
+        process.env.DEFI_ADAPTERS_RPC_GETLOGS_TIMEOUT_IN_MS
+          ? Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_TIMEOUT_IN_MS)
+          : 10000,
       ),
     rpcGetLogsRetries: z
       .number()
