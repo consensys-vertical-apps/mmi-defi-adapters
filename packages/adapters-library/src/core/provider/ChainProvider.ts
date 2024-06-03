@@ -87,7 +87,6 @@ export class ChainProvider {
   private initializeProviders(config: IConfig) {
     const commonProviderSettings = {
       enableMulticallQueue: config.useMulticallInterceptor,
-      maxBatchSize: config.maxBatchSize,
       customOptions: {
         rpcCallTimeoutInMs: config.rpcCallTimeoutInMs,
         rpcCallRetries: config.rpcCallRetries,
@@ -102,46 +101,55 @@ export class ChainProvider {
         ...commonProviderSettings,
         url: config.provider.ethereum,
         chainId: Chain.Ethereum,
+        maxBatchSize: config.maxBatchSize.ethereum,
       }),
       [Chain.Optimism]: this.provider({
         ...commonProviderSettings,
         url: config.provider.optimism,
         chainId: Chain.Optimism,
+        maxBatchSize: config.maxBatchSize.optimism,
       }),
       [Chain.Bsc]: this.provider({
         ...commonProviderSettings,
         url: config.provider.bsc,
         chainId: Chain.Bsc,
+        maxBatchSize: config.maxBatchSize.bsc,
       }),
       [Chain.Polygon]: this.provider({
         ...commonProviderSettings,
         url: config.provider.polygon,
         chainId: Chain.Polygon,
+        maxBatchSize: config.maxBatchSize.polygon,
       }),
       [Chain.Fantom]: this.provider({
         ...commonProviderSettings,
         url: config.provider.fantom,
         chainId: Chain.Fantom,
+        maxBatchSize: config.maxBatchSize.fantom,
       }),
       [Chain.Arbitrum]: this.provider({
         ...commonProviderSettings,
         url: config.provider.arbitrum,
         chainId: Chain.Arbitrum,
+        maxBatchSize: config.maxBatchSize.arbitrum,
       }),
       [Chain.Avalanche]: this.provider({
         ...commonProviderSettings,
         url: config.provider.avalanche,
         chainId: Chain.Avalanche,
+        maxBatchSize: config.maxBatchSize.avalanche,
       }),
       [Chain.Linea]: this.provider({
         ...commonProviderSettings,
         url: config.provider.linea,
         chainId: Chain.Linea,
+        maxBatchSize: config.maxBatchSize.linea,
       }),
       [Chain.Base]: this.provider({
         ...commonProviderSettings,
         url: config.provider.base,
         chainId: Chain.Base,
+        maxBatchSize: config.maxBatchSize.base,
       }),
     }
   }
