@@ -75,19 +75,31 @@ const ConfigSchema = z
     rpcCallTimeoutInMs: z
       .number()
       .default(
-        Number(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS) || 20000,
+        process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS
+          ? Number(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS)
+          : 10000,
       ),
     rpcCallRetries: z
       .number()
-      .default(Number(process.env.DEFI_ADAPTERS_RPC_CALL_RETRIES) || 1),
+      .default(
+        process.env.DEFI_ADAPTERS_RPC_CALL_RETRIES
+          ? Number(process.env.DEFI_ADAPTERS_RPC_CALL_RETRIES)
+          : 0,
+      ),
     rpcGetLogsTimeoutInMs: z
       .number()
       .default(
-        Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_TIMEOUT_IN_MS) || 10000,
+        process.env.DEFI_ADAPTERS_RPC_GETLOGS_TIMEOUT_IN_MS
+          ? Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_TIMEOUT_IN_MS)
+          : 10000,
       ),
     rpcGetLogsRetries: z
       .number()
-      .default(Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_RETRIES) || 1),
+      .default(
+        process.env.DEFI_ADAPTERS_RPC_GETLOGS_RETRIES
+          ? Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_RETRIES)
+          : 0,
+      ),
     enableFailover: z
       .boolean()
       .default(process.env.DEFI_ADAPTERS_USE_FAILOVER !== 'false'),
