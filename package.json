@@ -30,6 +30,7 @@
     "withdrawals": "npm run adapters-cli withdrawals --",
     "stress": "npm run adapters-cli stress --",
     "support": "npm run adapters-cli support --",
+    "performance": "npm run adapters-cli performance --",
     "lint": "biome check packages",
     "fix": "npm run lint -- --apply",
     "test": "npm run test -w packages/adapters-library",
@@ -47,5 +48,8 @@
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "k6": "^0.0.0"
   }
 }

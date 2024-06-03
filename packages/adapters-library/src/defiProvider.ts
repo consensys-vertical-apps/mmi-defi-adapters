@@ -181,7 +181,7 @@ export class DefiProvider {
       //     singleCount.totalRequestTime / singleCount.requestCount
       // }
 
-      logger.warn({
+      logger.info({
         source: 'adapter:positions',
         startTime,
         endTime,
@@ -219,9 +219,9 @@ export class DefiProvider {
 
     const endGetPositions = Date.now()
 
-    logger.warn(count, 'Performance Metrics')
+    logger.info(count, 'Performance Metrics')
 
-    logger.warn(
+    logger.info(
       {
         source: 'adapter:positions:total',
         startTime: startGetPositions,
@@ -298,7 +298,14 @@ export class DefiProvider {
         return undefined
       }
 
-      logger.warn((error as Error).message)
+      logger.warn(
+        {
+          chainId: adapter.chainId,
+          protocolId: adapter.protocolId,
+          productId: adapter.productId,
+        },
+        (error as Error).message,
+      )
 
       // we cant use the logs on this chain
       return undefined

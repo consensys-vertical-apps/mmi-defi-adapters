@@ -26,6 +26,13 @@ export function retryHandlerFactory({
           .finally(() => clearTimeout(timeout))
       })
     } catch (error) {
+      if (
+        (error instanceof Error && error.message !== TimeoutErrorMessage) ||
+        retryCount >= maxRetries
+      ) {
+        throw error
+      }
+
       logger.error(
         {
           // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -35,12 +42,6 @@ export function retryHandlerFactory({
         },
         'Retrying RPC Request',
       )
-      if (
-        (error instanceof Error && error.message !== TimeoutErrorMessage) ||
-        retryCount >= maxRetries
-      ) {
-        throw error
-      }
 
       return retryHandler(action, retryCount + 1)
     }

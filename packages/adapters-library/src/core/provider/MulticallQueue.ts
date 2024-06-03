@@ -151,16 +151,16 @@ export class MulticallQueue {
 
         const timeTaken = endTime - startTime
 
-        logger.warn({
-          source: 'multicall-batch',
-          chainId: this.chainId,
-          batchSize,
-          blockTag,
-          // relativeStartTime: startTime - count[this.chainId].minStartTime,
-          startTime,
-          endTime,
-          timeTaken,
-        })
+        // logger.warn({
+        //   source: 'multicall-batch',
+        //   chainId: this.chainId,
+        //   batchSize,
+        //   blockTag,
+        //   // relativeStartTime: startTime - count[this.chainId].minStartTime,
+        //   startTime,
+        //   endTime,
+        //   timeTaken,
+        // })
 
         // biome-ignore lint/suspicious/noExplicitAny: Error is checked
       } catch (error: any) {
