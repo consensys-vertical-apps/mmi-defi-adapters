@@ -105,6 +105,7 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
       productId: this.productId,
       assetDetails: {
         type: AssetType.StandardErc20,
+        missingTransferEvents: true,
       },
     }
   }

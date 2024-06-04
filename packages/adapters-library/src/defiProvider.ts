@@ -262,6 +262,10 @@ export class DefiProvider {
     if (adapter.getProtocolDetails().assetDetails.type === 'NonStandardErc20') {
       return false
     }
+    // we cant use transfer events if contract is missing them
+    if (adapter.getProtocolDetails().assetDetails.missingTransferEvents) {
+      return false
+    }
 
     return true
   }
