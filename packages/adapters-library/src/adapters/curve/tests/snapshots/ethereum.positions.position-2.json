@@ -71,7 +71,8 @@
       "chainId": 1,
       "productId": "staking",
       "assetDetails": {
-        "type": "StandardErc20"
+        "type": "StandardErc20",
+        "missingTransferEvents": true
       },
       "success": true,
       "tokens": [
@@ -84,6 +85,17 @@
           "balanceRaw": "6357359611959254406n",
           "type": "protocol",
           "tokens": [
+            {
+              "name": "Curve DAO Token",
+              "symbol": "CRV",
+              "decimals": 18,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png",
+              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+              "balanceRaw": "97118831066726817n",
+              "type": "underlying-claimable",
+              "balance": 0.09711883106672682,
+              "price": 0.5718285537644536
+            },
             {
               "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
               "name": "Curve.fi DAI/USDC/USDT",
@@ -128,17 +140,6 @@
               ],
               "balance": 6.357359611959255,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490/logo.png"
-            },
-            {
-              "name": "Curve DAO Token",
-              "symbol": "CRV",
-              "decimals": 18,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png",
-              "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-              "balanceRaw": "97118831066726817n",
-              "type": "underlying-claimable",
-              "balance": 0.09711883106672682,
-              "price": 0.5718285537644536
             }
           ],
           "balance": 6.357359611959255
@@ -155,7 +156,8 @@
       "chainId": 1,
       "productId": "voting-escrow",
       "assetDetails": {
-        "type": "StandardErc20"
+        "type": "StandardErc20",
+        "missingTransferEvents": true
       },
       "success": true,
       "tokens": [
