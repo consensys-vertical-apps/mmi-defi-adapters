@@ -66,6 +66,8 @@ import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAd
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
+import { BeefyMooTokenAdapter } from './beefy/products/moo-token/beefyMooTokenAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -137,6 +139,18 @@ export const supportedProtocols: Record<
     [Chain.Bsc]: [AngleProtocolSavingsAdapter],
     [Chain.Avalanche]: [AngleProtocolSavingsAdapter],
     [Chain.Base]: [AngleProtocolSavingsAdapter],
+  },
+
+  [Protocol.Beefy]: {
+    [Chain.Ethereum]: [BeefyMooTokenAdapter],
+    [Chain.Optimism]: [BeefyMooTokenAdapter],
+    [Chain.Bsc]: [BeefyMooTokenAdapter],
+    [Chain.Polygon]: [BeefyMooTokenAdapter],
+    [Chain.Fantom]: [BeefyMooTokenAdapter],
+    [Chain.Base]: [BeefyMooTokenAdapter],
+    [Chain.Arbitrum]: [BeefyMooTokenAdapter],
+    [Chain.Avalanche]: [BeefyMooTokenAdapter],
+    [Chain.Linea]: [BeefyMooTokenAdapter],
   },
 
   [Protocol.CarbonDeFi]: {

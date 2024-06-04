@@ -107,6 +107,24 @@ import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
+import BeefyMooTokenEthereumProtocolToken from '../../adapters/beefy/products/moo-token/metadata/ethereum.protocol-token.json'
+
+import BeefyMooTokenOptimismProtocolToken from '../../adapters/beefy/products/moo-token/metadata/optimism.protocol-token.json'
+
+import BeefyMooTokenBscProtocolToken from '../../adapters/beefy/products/moo-token/metadata/bsc.protocol-token.json'
+
+import BeefyMooTokenPolygonProtocolToken from '../../adapters/beefy/products/moo-token/metadata/polygon.protocol-token.json'
+
+import BeefyMooTokenFantomProtocolToken from '../../adapters/beefy/products/moo-token/metadata/fantom.protocol-token.json'
+
+import BeefyMooTokenBaseProtocolToken from '../../adapters/beefy/products/moo-token/metadata/base.protocol-token.json'
+
+import BeefyMooTokenArbitrumProtocolToken from '../../adapters/beefy/products/moo-token/metadata/arbitrum.protocol-token.json'
+
+import BeefyMooTokenAvalancheProtocolToken from '../../adapters/beefy/products/moo-token/metadata/avalanche.protocol-token.json'
+
+import BeefyMooTokenLineaProtocolToken from '../../adapters/beefy/products/moo-token/metadata/linea.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -449,6 +467,87 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-tokens',
     }),
     AngleProtocolSavingsPolygonProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenBscProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenPolygonProtocolToken,
   ],
   [
     metadataKey({

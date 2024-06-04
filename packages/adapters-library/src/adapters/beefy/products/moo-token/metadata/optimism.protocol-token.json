@@ -1,0 +1,2090 @@
+{
+  "velodrome-v2-op-kite": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xF158b12047B2313962a816D4e45281e3BcbfFd2F",
+      "symbol": "mooVeloV2OP-KITE",
+      "name": "vAMMV2-OP/KITE",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf467C7d5a4A9C4687fFc7986aC6aD5A4c81E1404",
+        "symbol": "KITE",
+        "name": "KITE",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-hai-susd": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x28364aC61865E4b535a29928DE6E1a08328d462A",
+      "symbol": "mooVeloV2HAI-sUSD",
+      "name": "vAMMV2-HAI/sUSD",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x10398AbC267496E49106B07dd6BE13364D10dC71",
+        "symbol": "HAI",
+        "name": "HAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
+        "symbol": "sUSD",
+        "name": "sUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-hai-lusd": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x2a92920A08115a6A88C550eC7dF67eAEf0c1Edb0",
+      "symbol": "mooVeloV2HAI-LUSD",
+      "name": "vAMMV2-HAI/LUSD",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x10398AbC267496E49106B07dd6BE13364D10dC71",
+        "symbol": "HAI",
+        "name": "HAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+        "symbol": "LUSD",
+        "name": "LUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-weth-wrseth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xDbE946E16c4e0De9a44065B868265Ac05c437fB6",
+      "symbol": "mooVeloV2WETH-wrsETH",
+      "name": "vAMMV2-WETH/wrsETH",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x87eEE96D50Fb761AD85B1c982d28A042169d61b1",
+        "symbol": "wrsETH",
+        "name": "rsETHWrapper",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "aavev3-op-usdc-2": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x72683E768d3dedbBb8B08e5526aA1ee56B21041C",
+      "symbol": "mooAaveUSDC",
+      "name": "USDC",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usda-eura": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x52b76C23d65e998836604E1760399D3e0B959ED8",
+      "symbol": "mooVeloV2USDA-EURA",
+      "name": "vAMMV2-USDA/EURA",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+        "symbol": "USDA",
+        "name": "USDA",
+        "decimals": 18
+      },
+      {
+        "address": "0x9485aca5bbBE1667AD97c7fE7C4531a624C8b1ED",
+        "symbol": "EURA",
+        "name": "EURA (previously agEUR)",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usda-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x4F5310B114859B947A593F0ddE4b162672cae5af",
+      "symbol": "mooVeloV2USDA-USDC",
+      "name": "vAMMV2-USDA/USDC",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+        "symbol": "USDA",
+        "name": "USDA",
+        "decimals": 18
+      },
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usdc-sonne": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x61a0208005d62cf4c101a2751A3b3264e089E03A",
+      "symbol": "mooVeloV2USDC-SONNE",
+      "name": "SONNE-USDC vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1DB2466d9F5e10D7090E7152B68d62703a2245F0",
+        "symbol": "SONNE",
+        "name": "Sonne",
+        "decimals": 18
+      },
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usdc-snx-2": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x6A058d02bfFBaf75d9a9bdF2AA3B0F691F7777D5",
+      "symbol": "mooVeloV2USDC-SNX",
+      "name": "SNX-USDC vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
+        "symbol": "SNX",
+        "name": "Synthetix",
+        "decimals": 18
+      },
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usdv-op": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xb39f301318860fE06eEE8541c3cfde637aC86077",
+      "symbol": "mooVeloV2USDV-OP",
+      "name": "USDV-OP vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
+        "symbol": "USDV",
+        "name": "USDV",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usdv-weth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x7675DD7601E1778226b77E0de40A5F0130b4673C",
+      "symbol": "mooVeloV2USDV-WETH",
+      "name": "USDV-WETH vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
+        "symbol": "USDV",
+        "name": "USDV",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-frax-usdv": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x78f6f6b0982F18038e2eC9Bf02a0a89a86C5BAbf",
+      "symbol": "mooVeloV2FRAX-USDV",
+      "name": "USDV-FRAX sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
+        "symbol": "USDV",
+        "name": "USDV",
+        "decimals": 6
+      },
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "symbol": "FRAX",
+        "name": "Frax",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usdc-usdv": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x9F87827c7c97ab0b11E413387c8501072D8e82D9",
+      "symbol": "mooVeloV2USDC-USDV",
+      "name": "USDV-USDC sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
+        "symbol": "USDV",
+        "name": "USDV",
+        "decimals": 6
+      },
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usdv-usdce": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x480E3FC888044e038d9261A38437DeEC13C84AC5",
+      "symbol": "mooVeloV2USDV-USDCe",
+      "name": "USDV-USDCe sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
+        "symbol": "USDV",
+        "name": "USDV",
+        "decimals": 6
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usdc-alusd-2": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x60d8E0bbb7355b08c2F6d8f260d93bDe06A75A41",
+      "symbol": "mooVeloV2USDC-alUSD",
+      "name": "alUSD-USDC sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCB8FA9a76b8e203D8C3797bF438d8FB81Ea3326A",
+        "symbol": "alUSD",
+        "name": "Alchemix USD",
+        "decimals": 18
+      },
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-dola-alusd": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x21018fC785a6a7b3e3f3Df3e887a4E8CeB155d4A",
+      "symbol": "mooVeloV2DOLA-alUSD",
+      "name": "alUSD-DOLA sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCB8FA9a76b8e203D8C3797bF438d8FB81Ea3326A",
+        "symbol": "alUSD",
+        "name": "Alchemix USD",
+        "decimals": 18
+      },
+      {
+        "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+        "symbol": "DOLA",
+        "name": "Dola USD Stablecoin",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-pool-weth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x63289886Ad4Eb9364669741650cde780C9f2E7D2",
+      "symbol": "mooVeloV2POOL-ETH",
+      "name": "POOL-WETH vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x395Ae52bB17aef68C2888d941736A71dC6d4e125",
+        "symbol": "POOL",
+        "name": "PoolTogether",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usdc-weth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xdA0C8a2a21Bc6b294d4e3636eEab0f7C7dfC82d6",
+      "symbol": "mooVeloV2USDC-WETH",
+      "name": "USDC-WETH vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-lusd-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xc0C2B86540ACF7da1a5f71B3215A6D28f2269C31",
+      "symbol": "mooVeloV2USDC-LUSD",
+      "name": "sAMMV2-USDC/LUSD",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+        "symbol": "LUSD",
+        "name": "LUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usdc-stg": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xaba2b5E628641c717727128f9b9194597B310139",
+      "symbol": "mooVeloV2USDC-STG",
+      "name": "USDC-STG vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x296F55F8Fb28E498B858d0BcDA06D955B2Cb3f97",
+        "symbol": "STG",
+        "name": "StargateToken",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-susd-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x12112fcc5eA780C9A667C526601697Ca5898eBD2",
+      "symbol": "mooVeloV2USDC-sUSD",
+      "name": "sAMMV2-USDC/sUSD",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
+        "symbol": "sUSD",
+        "name": "sUSD",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usdc-next": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x2Cf5B6371734447A8A74fae1ce1653973fe0c0b5",
+      "symbol": "mooVeloV2USDC-NEXT",
+      "name": "USDC-NEXT vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
+        "symbol": "NEXT",
+        "name": "Connext",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-sonne-velo": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xb32AD6495826677EABAfd4Ee7b8E07594504Fc17",
+      "symbol": "mooVeloV2SONNE-VELO",
+      "name": "SONNE-VELO vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1DB2466d9F5e10D7090E7152B68d62703a2245F0",
+        "symbol": "SONNE",
+        "name": "Sonne",
+        "decimals": 18
+      },
+      {
+        "address": "0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
+        "symbol": "VELO",
+        "name": "Velodrome",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usdc-op": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xC1CE18ee03bED17676021ca0B84F550339c66a24",
+      "symbol": "mooVeloV2USDC-OP",
+      "name": "USDC-OP vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-dola-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x89775AE7036261bB2071Ef5a8E0C40e13cF2035D",
+      "symbol": "mooVeloV2USDC-DOLA",
+      "name": "USDC-DOLA sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+        "symbol": "DOLA",
+        "name": "Dola USD Stablecoin",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usdc-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x31250144b1ad6B04A004836C67F7f07990FF84aa",
+      "symbol": "mooVeloV2USDC-USDC.e",
+      "name": "USDC-USDC.e sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "curve-op-crvusd-usdc.e": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xd85869C544820dF304c1F420f1a4107Fe109d176",
+      "symbol": "mooCurveCrvUSD-USDC.e",
+      "name": "crvUSDC.e",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC52D7F23a2e460248Db6eE192Cb23dD12bDDCbf6",
+        "symbol": "crvUSD",
+        "name": "Curve.Fi USD Stablecoin",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "curve-op-crvusd-usdt": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xe0e1dD54334007aCcF731395d1DAD784036DF2D9",
+      "symbol": "mooCurveCrvUSD-USDT",
+      "name": "crvUSDT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC52D7F23a2e460248Db6eE192Cb23dD12bDDCbf6",
+        "symbol": "crvUSD",
+        "name": "Curve.Fi USD Stablecoin",
+        "decimals": 18
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "symbol": "USDT",
+        "name": "USDT",
+        "decimals": 6
+      }
+    ]
+  },
+  "aura-op-a-night-at-the-opara": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x32BF68dF1D113603346422fED4e4393b3c976159",
+      "symbol": "mooAuraOPANightattheOPara",
+      "name": "A Night at the OPara",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      },
+      {
+        "address": "0xd3594E879B358F430E20F82bea61e83562d49D48",
+        "symbol": "PSP",
+        "name": "ParaSwap",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-kuji-velo": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x9a2F07153964e4E02878101Be10E31e2dD474d74",
+      "symbol": "mooVeloV2KUJI-VELO",
+      "name": "KUJI-VELO vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3A18dcC9745eDcD1Ef33ecB93b0b6eBA5671e7Ca",
+        "symbol": "KUJI",
+        "name": "Kujira native asset",
+        "decimals": 6
+      },
+      {
+        "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+        "symbol": "VELOV2",
+        "name": "VelodromeV2",
+        "decimals": 18
+      }
+    ]
+  },
+  "aura-op-fraximalist-ethereum": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x416c578DFBEB2f1b07b0165a2e5F4C467F4Ed2F8",
+      "symbol": "mooAuraOPFraximalistEthereum",
+      "name": "Fraximalist Ethereum",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x484c2D6e3cDd945a8B2DF735e079178C1036578c",
+        "symbol": "sfrxETH",
+        "name": "Staked Frax Ether",
+        "decimals": 18
+      },
+      {
+        "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+        "symbol": "frxETH",
+        "name": "Frax Ether",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-kuji-weth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x587e827ed502f494C056F8756f7Aec7190195A7b",
+      "symbol": "mooVeloV2KUJI-ETH",
+      "name": "vAMM-KUJI-ETH",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3A18dcC9745eDcD1Ef33ecB93b0b6eBA5671e7Ca",
+        "symbol": "KUJI",
+        "name": "Kujira native asset",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-next-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x4f365Dfb701cb653F057C1d57cBf08fF860e8fdc",
+      "symbol": "mooVeloV2NEXT-USDC",
+      "name": "vAMM-NEXT-USDCe",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
+        "symbol": "NEXT",
+        "name": "Connext",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-wsteth-velo": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x039af31d546938876F38A5452ea844Eca7c4fC30",
+      "symbol": "mooVeloV2wstETH-VELO",
+      "name": "vAMM-wstETH-VELO",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+        "symbol": "VELOV2",
+        "name": "VelodromeV2",
+        "decimals": 18
+      },
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "symbol": "wstETH",
+        "name": "wstETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "curve-op-tbtc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x611bB2B496c9381CdcD07458b3cfC734583429f9",
+      "symbol": "mooCurveTBTC",
+      "name": "2BTC-f",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40",
+        "symbol": "tBTC",
+        "name": "tBTC v2",
+        "decimals": 18
+      },
+      {
+        "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+        "symbol": "WBTC",
+        "name": "WBTC",
+        "decimals": 8
+      }
+    ]
+  },
+  "aura-op-reth-ankreth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xb996DD8f4ec36A34CeDFD8687aDa991bC2397232",
+      "symbol": "mooAuraOPrETH-ankrETH",
+      "name": "Ankr's Galactic Harmony",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+        "symbol": "rETH",
+        "name": "Rocket Pool ETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xe05A08226c49b636ACf99c40Da8DC6aF83CE5bB3",
+        "symbol": "ankrETH",
+        "name": "Ankr Staked ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "aura-op-usdc-usdce-usdt-dai": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xC51e661EEf8d5F130Dc1bdD5Be28c1DBcE930D20",
+      "symbol": "mooAuraOPUSDC/USDCe/USDT/DAI",
+      "name": "Native Stable Beets",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "symbol": "USDT",
+        "name": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-wsteth-pendle": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x82EDb0Cb1Ec84b267A90c8A8f6aCc09aAE8857f9",
+      "symbol": "mooVeloV2wstETHPENDLE",
+      "name": "vAMMV2-wstETH/PENDLE",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "symbol": "wstETH",
+        "name": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xBC7B1Ff1c6989f006a1185318eD4E7b5796e66E1",
+        "symbol": "PENDLE",
+        "name": "Pendle",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-wsteth-snx": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x6DFc84940130756c71bc2bb9bf9e4C2d6C143Da2",
+      "symbol": "mooVeloV2wstETH-SNX",
+      "name": "wstETH-SNX vLP v2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "symbol": "wstETH",
+        "name": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
+        "symbol": "SNX",
+        "name": "Synthetix",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-weth-hop": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xCe6A02C3456f2518D5F02002ecEFFFDc4539247f",
+      "symbol": "mooVeloV2WETH-HOP",
+      "name": "HOP-ETH vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc5102fE9359FD9a28f877a67E36B0F050d81a3CC",
+        "symbol": "HOP",
+        "name": "HOP Protocol",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-weth-tbtc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xfd3B30e3145069e272E6144A9d1F3EED0fCCb2f9",
+      "symbol": "mooVeloV2ETH-tBTC",
+      "name": "tBTC-ETH vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40",
+        "symbol": "tBTC",
+        "name": "tBTC v2",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-op-frxeth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x1B9eb90884F3566AE923366B65a49B1E30cbcE28",
+      "symbol": "mooVeloV2OP-frxETH",
+      "name": "OP-frxETH vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      },
+      {
+        "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+        "symbol": "frxETH",
+        "name": "Frax Ether",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-weth-velo": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB",
+      "symbol": "mooVeloV2VELO-ETH",
+      "name": "VELO-ETH vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+        "symbol": "VELOV2",
+        "name": "VelodromeV2",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-frax-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x797c35a8032CE0A8dFcA308ac1b2276359cd463b",
+      "symbol": "mooVeloV2FRAX-USDCe",
+      "name": "FRAX-USDCe sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "symbol": "FRAX",
+        "name": "Frax",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-frax-mai": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x0980C3171E32c4508f614ceC15A3819B6cCf372c",
+      "symbol": "mooVeloV2FRAX-MAI",
+      "name": "FRAX-MAI sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "symbol": "FRAX",
+        "name": "Frax",
+        "decimals": 18
+      },
+      {
+        "address": "0xdFA46478F9e5EA86d57387849598dbFB2e964b02",
+        "symbol": "MAI",
+        "name": "Mai Stablecoin",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usdc-mta": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xb379AB37f2e7d4A0d2479c09d637bD6B20E1354d",
+      "symbol": "mooVeloV2USDC-MTA",
+      "name": "MTA-USDCe vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x929B939f8524c3Be977af57A4A0aD3fb1E374b50",
+        "symbol": "MTA",
+        "name": "Meta",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-wsteth-ldo": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x935A64d0825D86c1ca57Fe8f270e635AC1a0878A",
+      "symbol": "mooVeloV2wstETH-LDO",
+      "name": "wstETH-LDO vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "symbol": "wstETH",
+        "name": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xFdb794692724153d1488CcdBE0C56c252596735F",
+        "symbol": "LDO",
+        "name": "LDO",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-weth-lusd": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xc02DD405F37009609bD5ad8667825323aB72fD47",
+      "symbol": "mooVeloV2LUSD-ETH",
+      "name": "LUSD-ETH vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+        "symbol": "LUSD",
+        "name": "LUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-sonne-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x642F04eCAa00D443fBf2de2AaC9A9e0ACfA4FCE7",
+      "symbol": "mooVeloV2SONNE-USDCe",
+      "name": "SONNE-USDCe vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1DB2466d9F5e10D7090E7152B68d62703a2245F0",
+        "symbol": "SONNE",
+        "name": "Sonne",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-weth-seth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x600e9d1b98FACD709a18dA5a61da96BcDEE608b7",
+      "symbol": "mooVeloV2sETH-ETH",
+      "name": "sETH-ETH sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xE405de8F52ba7559f9df3C368500B6E6ae6Cee49",
+        "symbol": "sETH",
+        "name": "Synth sETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usdc-dai": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x7c2967C20B03a8004ea81e86Ac1847D00e7B4CD1",
+      "symbol": "mooVeloV2DAI-USDCe",
+      "name": "DAI-USDCe sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usdc-susd": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x182fe51442C7D65360eD1511f30be6261c2C20C1",
+      "symbol": "mooVeloV2sUSD-USDCe",
+      "name": "sUSD-USDCe sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
+        "symbol": "sUSD",
+        "name": "sUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usdc-lusd": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x972F747285c2f32699CEFFEbdcF2Ae74F4b58D0c",
+      "symbol": "mooVeloV2LUSD-USDCe",
+      "name": "LUSD-USDCe sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+        "symbol": "LUSD",
+        "name": "LUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-frax-dola": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x1973ef31F2A82B3f73b8C9Ee1c440615084d5242",
+      "symbol": "mooVeloV2DOLA-FRAX",
+      "name": "DOLA-FRAX sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+        "symbol": "DOLA",
+        "name": "Dola USD Stablecoin",
+        "decimals": 18
+      },
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "symbol": "FRAX",
+        "name": "Frax",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-frax-alusd": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x9a02ab83e5139Ae8d4c6a9711D20b90DBC50c9f0",
+      "symbol": "mooVeloV2alUSD-FRAX",
+      "name": "alUSD-FRAX sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCB8FA9a76b8e203D8C3797bF438d8FB81Ea3326A",
+        "symbol": "alUSD",
+        "name": "Alchemix USD",
+        "decimals": 18
+      },
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "symbol": "FRAX",
+        "name": "Frax",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-aleth-frxeth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x100Cd460D7f549B4cc2Ed35d4ff20ac71B377C96",
+      "symbol": "mooVeloV2alETH-frxETH",
+      "name": "alETH-frxETH sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3E29D3A9316dAB217754d13b28646B76607c5f04",
+        "symbol": "alETH",
+        "name": "Alchemix ETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+        "symbol": "frxETH",
+        "name": "Frax Ether",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-weth-reth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xD5bc7210867B2D4152E38e69A6cd41b7b917833f",
+      "symbol": "mooVelodromeV2rETH-ETH",
+      "name": "rETH-ETH vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+        "symbol": "rETH",
+        "name": "Rocket Pool ETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-wsteth-weth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x54214d0C7772eb6f71ED4De294b3f809691005C9",
+      "symbol": "mooVeloV2wstETH-WETH",
+      "name": "wstETH-ETH vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "symbol": "wstETH",
+        "name": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-wsteth-op": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x65F4e00687f4059E4A9bF8E4338dbC9f0292fe2A",
+      "symbol": "mooVeloV2wstETH-OP",
+      "name": "wstETH-OP vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "symbol": "wstETH",
+        "name": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-op-velo": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x04c4a21D7439eD05fd33469565541bF6464F7157",
+      "symbol": "mooVeloV2OP-VELO",
+      "name": "VELO-OP vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+        "symbol": "VELOV2",
+        "name": "VelodromeV2",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-aleth-weth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x1A1F0Db1050D1cAD52eEB72371EbFD7716b53a2f",
+      "symbol": "mooVeloV2alETH-WETH",
+      "name": "alETH-ETH sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3E29D3A9316dAB217754d13b28646B76607c5f04",
+        "symbol": "alETH",
+        "name": "Alchemix ETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-wusdr-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xD9E277eA320C53dE06C535f0D922A76a68CB9A9C",
+      "symbol": "mooVeloV2wUSDR-USDCe",
+      "name": "wUSDR-USDCe vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x340fE1D898ECCAad394e2ba0fC1F93d27c7b717A",
+        "symbol": "omultiwUSDR",
+        "name": "Real USD",
+        "decimals": 9
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-op-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x52cC5B5CB98C9a7fb8cCe7d4b4e8F41E26ce04a8",
+      "symbol": "mooVeloV2OP-USDCe",
+      "name": "OP-USDCe vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usdt-lusd": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x6Fb45a8183660F30EA1c6cDFDDBFdC7ef7925801",
+      "symbol": "mooVeloV2LUSD-USDT",
+      "name": "LUSD-USDT sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+        "symbol": "LUSD",
+        "name": "LUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "symbol": "USDT",
+        "name": "USDT",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usdc-mai": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xef8D6dDE0a0f0CCdaDB678366a94D93f1C449689",
+      "symbol": "mooVeloV2MAI-USDCe",
+      "name": "MAI-USDCe sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdFA46478F9e5EA86d57387849598dbFB2e964b02",
+        "symbol": "MAI",
+        "name": "Mai Stablecoin",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-usdc-dola": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x453f61390ce6DfB668bbF4D93E58c94BB0ae81f3",
+      "symbol": "mooVeloV2DOLA-USDCe",
+      "name": "DOLA-USDCe sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+        "symbol": "DOLA",
+        "name": "Dola USD Stablecoin",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-weth-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x28bAF22c85D146101198D1883281a83cBe063329",
+      "symbol": "mooVeloV2WETH-USDCe",
+      "name": "ETH-USDCe vLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-weth-frxeth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x06E0A84c71dBD037c618CCf90798474E0e6f9C91",
+      "symbol": "mooVeloV2ETH-frxETH",
+      "name": "frxETH-ETH sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+        "symbol": "frxETH",
+        "name": "Frax Ether",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-sfrxeth-frxeth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x88F72d1f49Ea88f86fc52bebB0c1d0Ef232AE483",
+      "symbol": "mooVeloV2sfrxETH-frxETH",
+      "name": "sfrxETH-frxETH sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x484c2D6e3cDd945a8B2DF735e079178C1036578c",
+        "symbol": "sfrxETH",
+        "name": "Staked Frax Ether",
+        "decimals": 18
+      },
+      {
+        "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+        "symbol": "frxETH",
+        "name": "Frax Ether",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-usdc-usdt": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x8aD01c3a425987c508A69149185383BAf6F47534",
+      "symbol": "mooVeloV2USDC-USDT",
+      "name": "USDCe-USDT sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "symbol": "USDT",
+        "name": "USDT",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-v2-alusd-mai": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xf659Fe930eEa70Bc49B6DD53d828CBaD12673a2a",
+      "symbol": "mooVeloV2alUSD-MAI",
+      "name": "alUSD-MAI sLP V2",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCB8FA9a76b8e203D8C3797bF438d8FB81Ea3326A",
+        "symbol": "alUSD",
+        "name": "Alchemix USD",
+        "decimals": 18
+      },
+      {
+        "address": "0xdFA46478F9e5EA86d57387849598dbFB2e964b02",
+        "symbol": "MAI",
+        "name": "Mai Stablecoin",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-v2-op-ageur": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x20881a4f1d09c0ec1305D84012bba8E0C97b3951",
+      "symbol": "mooVeloV2OP-agEUR",
+      "name": "vAMMV2-OP/agEUR",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9485aca5bbBE1667AD97c7fE7C4531a624C8b1ED",
+        "symbol": "EURA",
+        "name": "EURA (previously agEUR)",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      }
+    ]
+  },
+  "mmy-op-mlp": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x011028aB93B355308E4350D109F42aeCfA075604",
+      "symbol": "mooMmyMLP",
+      "name": "MLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+        "symbol": "WBTC",
+        "name": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "symbol": "USDT",
+        "name": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      },
+      {
+        "address": "0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6",
+        "symbol": "LINK",
+        "name": "ChainLink Token",
+        "decimals": 18
+      },
+      {
+        "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
+        "symbol": "SNX",
+        "name": "Synthetix",
+        "decimals": 18
+      }
+    ]
+  },
+  "curve-op-f-mim": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x5990002594b13e174885ba4D4Ec15B8a8A4485bb",
+      "symbol": "mooCurveMIM",
+      "name": "mim3CRV-f",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB153FB3d196A8eB25522705560ac152eeEc57901",
+        "symbol": "MIM",
+        "name": "Magic Internet Money",
+        "decimals": 18
+      },
+      {
+        "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "symbol": "USDT",
+        "name": "USDT",
+        "decimals": 6
+      }
+    ]
+  },
+  "stargate-op-dai": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xC7Deff444145093f1B2054DBd3E68B2878D86552",
+      "symbol": "mooStargateDAI",
+      "name": "S*DAI",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      }
+    ]
+  },
+  "hop-op-eth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xB8Ce10759feb3B63B75557f5f9933bD22127f0eC",
+      "symbol": "mooHopETH",
+      "name": "ETH-hETH LP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "hop-op-dai": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x062F29e2b5bD99523DD3508207eb2C2CbAf98D50",
+      "symbol": "mooHopDAI",
+      "name": "DAI-hDAI LP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      }
+    ]
+  },
+  "hop-op-usdt": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xD019FD6267F93ebE5A92DEBB760135a4F02a75F7",
+      "symbol": "mooHopUSDT",
+      "name": "USDT-hUSDT LP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "symbol": "USDT",
+        "name": "USDT",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-usdc-mim": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x6992333E5df2364eB1b6CF14DC0c86EB0865D6E2",
+      "symbol": "mooVeloUSDC-MIM",
+      "name": "MIM-USDCe sLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB153FB3d196A8eB25522705560ac152eeEc57901",
+        "symbol": "MIM",
+        "name": "Magic Internet Money",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "beets-rocket-fuel": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xdCC5DC90A803928Dc21556590D4620030966270F",
+      "symbol": "mooBeetsRocketFuel",
+      "name": "Rocket Fuel",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+        "symbol": "rETH",
+        "name": "Rocket Pool ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "velodrome-usdc-dola": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xa8fd81A0ec43841b64cDAE13F1F6816108fD37FF",
+      "symbol": "mooVelodromeUSDC-DOLA",
+      "name": "DOLA-USDCe sLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+        "symbol": "DOLA",
+        "name": "Dola USD Stablecoin",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "velodrome-velo-op": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x499287C138Aed9A107d748dDfd53668d104378B1",
+      "symbol": "mooVelodromeVELO-OP",
+      "name": "VELO-OP vLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
+        "symbol": "VELO",
+        "name": "Velodrome",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      }
+    ]
+  },
+  "stargate-op-usdc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0xe536F8141D8EB7B1f096934AF3329cB581bFe995",
+      "symbol": "mooStargateUSDC",
+      "name": "S*USDCe",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "stargate-op-eth": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x79149B500f0d796aA7f85e0170d16C7e79BAd3C5",
+      "symbol": "mooStargateETH",
+      "name": "S*ETH",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "curve-op-f-sbtc": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x25DE69dA4469A96974FaE79d0C41366A63317FDC",
+      "symbol": "mooCurveFsBTC",
+      "name": "sBTC-f",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x298B9B95708152ff6968aafd889c6586e9169f1D",
+        "symbol": "sBTC",
+        "name": "Synthetix: sBTC",
+        "decimals": 18
+      },
+      {
+        "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+        "symbol": "WBTC",
+        "name": "WBTC",
+        "decimals": 8
+      }
+    ]
+  },
+  "beets-happy-road": {
+    "chain": "optimism",
+    "protocolToken": {
+      "address": "0x8e829cFC629fcb61c1508a54D232aF4612E48cC9",
+      "symbol": "mooBeetHappyRoad",
+      "name": "Happy Road",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "WETH",
+        "name": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "symbol": "OP",
+        "name": "OP",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "symbol": "USDCe",
+        "name": "USDCe",
+        "decimals": 6
+      }
+    ]
+  }
+}

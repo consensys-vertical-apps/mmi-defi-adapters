@@ -1,0 +1,200 @@
+{
+  "balancer-avax-savax-avax": {
+    "chain": "avax",
+    "protocolToken": {
+      "address": "0x883b1899e6F8a896Ee22654A6deBA41Ef4BA47Cf",
+      "symbol": "mooBalancerAvaxsAVAX-WAVAX",
+      "name": "sAVAX-AVAX Avax",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2b2C81e08f1Af8835a78Bb2A90AE924ACE0eA4bE",
+        "symbol": "sAVAX",
+        "name": "sAVAX",
+        "decimals": 18
+      }
+    ]
+  },
+  "joe-auto-wavax-weth.e": {
+    "chain": "avax",
+    "protocolToken": {
+      "address": "0x5aE855220A971210575717CBC2F44fE8a1568b71",
+      "symbol": "mooJoeAutoPoolWETH.e-AVAX",
+      "name": "WETH.e-AVAX APT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
+        "symbol": "ETH",
+        "name": "WETH.e",
+        "decimals": 18
+      }
+    ]
+  },
+  "joe-auto-wavax-btcb": {
+    "chain": "avax",
+    "protocolToken": {
+      "address": "0xd4DFf7C63701f32Ad040e7A81a1404B3D164A841",
+      "symbol": "mooJoeAutoPoolBTC.b-AVAX",
+      "name": "BTC.b-AVAX APT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x152b9d0FdC40C096757F570A51E494bd4b943E50",
+        "symbol": "BTCb",
+        "name": "Bitcoin",
+        "decimals": 8
+      }
+    ]
+  },
+  "joe-auto-usdc-eurc": {
+    "chain": "avax",
+    "protocolToken": {
+      "address": "0x7AF92Ab6e5a8cC5A8aaA95DD0f78abbC676F8229",
+      "symbol": "mooJoeAutoPoolUSDC-EURC",
+      "name": "USDC-EURC APT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC891EB4cbdEFf6e073e859e987815Ed1505c2ACD",
+        "symbol": "EURC",
+        "name": "Euro Coin",
+        "decimals": 6
+      },
+      {
+        "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "joe-auto-wavax-usdc": {
+    "chain": "avax",
+    "protocolToken": {
+      "address": "0x595786A3848B1de66C6056C87BA91977935fBC46",
+      "symbol": "mooJoeAVAX-USDC",
+      "name": "AVAX-USDC APT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "stargate-avax-usdc": {
+    "chain": "avax",
+    "protocolToken": {
+      "address": "0x79F26046D122d2F26B1D37237D5C056fB580447A",
+      "symbol": "mooStargateUSDC",
+      "name": "S*USDC",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "stargate-avax-usdt": {
+    "chain": "avax",
+    "protocolToken": {
+      "address": "0xA27BF4d56870A37e37a687B8ab3740d8487Ee2C6",
+      "symbol": "mooStargateUSDT",
+      "name": "S*USDT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
+        "symbol": "USDT",
+        "name": "USDT",
+        "decimals": 6
+      }
+    ]
+  },
+  "gmx-avax-glp": {
+    "chain": "avax",
+    "protocolToken": {
+      "address": "0x22EafB9C7E2858cfDA712940896464DdAA83d053",
+      "symbol": "mooGmxGLP",
+      "name": "GLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
+        "symbol": "USDCe",
+        "name": "USDC.e",
+        "decimals": 6
+      },
+      {
+        "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x50b7545627a5162F82A992c33b87aDc75187B218",
+        "symbol": "WBTCe",
+        "name": "WBTC.e",
+        "decimals": 8
+      },
+      {
+        "address": "0x152b9d0FdC40C096757F570A51E494bd4b943E50",
+        "symbol": "BTCb",
+        "name": "Bitcoin",
+        "decimals": 8
+      },
+      {
+        "address": "0xc7198437980c041c805A1EDcbA50c1Ce5db95118",
+        "symbol": "USDTe",
+        "name": "USDT.e",
+        "decimals": 6
+      },
+      {
+        "address": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
+        "symbol": "ETH",
+        "name": "WETH.e",
+        "decimals": 18
+      }
+    ]
+  },
+  "gmx-avax-gmx": {
+    "chain": "avax",
+    "protocolToken": {
+      "address": "0x408835a5616baE0ECE4d3eF821C1D1CC88a2179E",
+      "symbol": "mooGmxGMX",
+      "name": "GMX",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x62edc0692BD897D2295872a9FFCac5425011c661",
+        "symbol": "GMX",
+        "name": "GMX",
+        "decimals": 18
+      }
+    ]
+  }
+}

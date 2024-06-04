@@ -46,6 +46,8 @@ import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
+import { testCases as beefyTestCases } from './beefy/tests/testCases'
+
 const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
@@ -58,6 +60,7 @@ const protocolTestCases = {
   [Protocol.AaveV2]: aaveV2TestCases,
   [Protocol.AaveV3]: aaveV3TestCases,
   [Protocol.AngleProtocol]: angleProtocolTestCases,
+  [Protocol.Beefy]: beefyTestCases,
   [Protocol.CarbonDeFi]: carbonDeFiTestCases,
   [Protocol.ChimpExchange]: chimpExchangeTestCases,
   [Protocol.CompoundV2]: compoundV2TestCases,

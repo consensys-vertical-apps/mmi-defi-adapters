@@ -1,0 +1,51 @@
+{
+  "blockNumber": 15374682,
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 8453,
+      "productId": "moo-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83",
+          "symbol": "mooAeroweETH-AERO",
+          "name": "vAMM-weETH/AERO",
+          "decimals": 18,
+          "logo": "https://beefy.com/icons/icon-96x96.png",
+          "balanceRaw": "1141244529723677099n",
+          "type": "protocol",
+          "balance": 1.141244529723677
+        },
+        {
+          "address": "0x4Fc0E7cDfe0CF92762eaf3CEE9133239A2197391",
+          "symbol": "mooAeroUSDC-USDbC",
+          "name": "sAMM-UDSC-USDbC",
+          "decimals": 18,
+          "logo": "https://beefy.com/icons/icon-96x96.png",
+          "balanceRaw": "484323n",
+          "type": "protocol",
+          "balance": 4.84323e-13
+        },
+        {
+          "address": "0x92868C059CfCd035ea204e3163Bd84b308dD358e",
+          "symbol": "mooAeroWETH-AERO",
+          "name": "vAMM-WETH/AERO",
+          "decimals": 18,
+          "logo": "https://beefy.com/icons/icon-96x96.png",
+          "balanceRaw": "613234192367626382n",
+          "type": "protocol",
+          "balance": 0.6132341923676263
+        }
+      ]
+    }
+  ]
+}

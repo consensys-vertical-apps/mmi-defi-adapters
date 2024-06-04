@@ -1,0 +1,896 @@
+{
+  "uniswap-gamma-polygon-matic-usdc": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c",
+      "symbol": "mooUniswapGammaMATIC-USDC",
+      "name": "xMATIC-USDC",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "symbol": "USDC",
+        "name": "USD Coin",
+        "decimals": 6
+      }
+    ]
+  },
+  "uniswap-gamma-polygon-usdc-weth": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xf9Ba6b4f3386BEe60fE1f20e82CbEce530f6cbe1",
+      "symbol": "mooUniswapGammaUSDC-ETH",
+      "name": "xUSDC-ETH",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "symbol": "USDC",
+        "name": "USD Coin",
+        "decimals": 6
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "uniswap-gamma-polygon-usdc-usdt": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x86aAd005769D9aedeb59df6e4B4b68974Bdd86fD",
+      "symbol": "mooUniswapGammaUSDC-USDT",
+      "name": "xUSDC-USDT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "symbol": "USDC",
+        "name": "USD Coin",
+        "decimals": 6
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "symbol": "USDT",
+        "name": "Tether USD",
+        "decimals": 6
+      }
+    ]
+  },
+  "uniswap-gamma-polygon-usdc-dai": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x0Aa691fE4188F6D6467269a401af393869C6e982",
+      "symbol": "mooUniswapGammaUSDC-DAI",
+      "name": "xUSDC-DAI",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "symbol": "USDC",
+        "name": "USD Coin",
+        "decimals": 6
+      },
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      }
+    ]
+  },
+  "curve-poly-asdcrv": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x5d57B68f8BaF06A88AD88B751702ac7f2aCb357d",
+      "symbol": "mooCurveAsdCRV",
+      "name": "asdCRVCRV-f",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+        "symbol": "CRV",
+        "name": "Curve Protocol",
+        "decimals": 18
+      },
+      {
+        "address": "0x75289388d50364c3013583d97bd70cED0e183e32",
+        "symbol": "asdCRV",
+        "name": "Aladdin sdCRV",
+        "decimals": 18
+      }
+    ]
+  },
+  "quick-gamma-wmatic-nativeusdc-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xaF8E862E654035eFb2c11146Ae76599e198C5B72",
+      "symbol": "mooQuickWMATIC-USDCNarrow",
+      "name": "aWMATIC-USDC",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "symbol": "USDC",
+        "name": "USD Coin",
+        "decimals": 6
+      }
+    ]
+  },
+  "quick-gamma-wmatic-usdt-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xC2a4c0682f32734cC75eB3eCC02ba6C9A546E836",
+      "symbol": "mooQuickWMATIC-USDTNarrow",
+      "name": "aWMATIC-USDT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "symbol": "USDT",
+        "name": "Tether USD",
+        "decimals": 6
+      }
+    ]
+  },
+  "quick-gamma-nativeusdc-weth-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x0514335D86463544220CBa8ca83B675AbD624525",
+      "symbol": "mooQuickUSDC-ETHNarrow",
+      "name": "aUSDC-WETH",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "symbol": "USDC",
+        "name": "USD Coin",
+        "decimals": 6
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "curve-poly-crvusd-usdc.e": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xb6D78A6eDa4318067183C4A5076E25197f4e5009",
+      "symbol": "mooCurveCrvUSD-USDC.e",
+      "name": "crvusdusde",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "symbol": "crvUSD",
+        "name": "Curve.Fi USD Stablecoin",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "curve-poly-crvusd-usdt": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xf2A28ED791B268A7CCCa16bB2e69093852cc3259",
+      "symbol": "mooCurveCrvUSD-USDT",
+      "name": "crvusdusdt",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "symbol": "crvUSD",
+        "name": "Curve.Fi USD Stablecoin",
+        "decimals": 18
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "symbol": "USDT",
+        "name": "Tether USD",
+        "decimals": 6
+      }
+    ]
+  },
+  "curve-poly-crvusd-usdc": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x7D9751c9dd4435dE4b1802b4c727d745d11110B8",
+      "symbol": "mooCurveCrvUSD-USDC",
+      "name": "crvusdusdc",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "symbol": "crvUSD",
+        "name": "Curve.Fi USD Stablecoin",
+        "decimals": 18
+      },
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "symbol": "USDC",
+        "name": "USD Coin",
+        "decimals": 6
+      }
+    ]
+  },
+  "curve-poly-crvusd-dai": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xC97f5E2169CB182ab32F9BdE30a60051008a459f",
+      "symbol": "mooCurveCrvUSD-DAI",
+      "name": "crvusddai",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "symbol": "crvUSD",
+        "name": "Curve.Fi USD Stablecoin",
+        "decimals": 18
+      },
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      }
+    ]
+  },
+  "quick-gamma-wbtc-weth-wide": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x44227C548272E2Dce4537746bcA4c8F036177B9e",
+      "symbol": "mooQuickGammaWETH-WBTCwide",
+      "name": "aWETH-WBTCwide",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "symbol": "WBTC",
+        "name": "WBTC",
+        "decimals": 8
+      }
+    ]
+  },
+  "compound-polygon-usdc": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x86F371838A321F92237DaD7b8DA5c76d2c084934",
+      "symbol": "mooCompoundBaseUSDbC",
+      "name": "pUSDCe",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "quick-gamma-weth-usdt": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x8CaA1a3809b3C67C61Eaf5524e1cB784ED6bA8B3",
+      "symbol": "mooQuickGammaUSDT-WETH",
+      "name": "aWETH-USDT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "symbol": "USDT",
+        "name": "Tether USD",
+        "decimals": 6
+      }
+    ]
+  },
+  "quick-gamma-wmatic-quick": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xc5d366eDF862F18d62831fb8333D335d625a4C00",
+      "symbol": "mooQuickGammaQUICK-MATIC",
+      "name": "aQUICK-MATIC",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB5C064F955D8e7F38fE0460C556a72987494eE17",
+        "symbol": "QUICK",
+        "name": "newQUICK",
+        "decimals": 18
+      }
+    ]
+  },
+  "quick-gamma-link-weth": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xE7d054F4d4089F5F2A192B14A13714f2e96b491e",
+      "symbol": "mooQuickGammaLINK-WETH",
+      "name": "aLINK-WETH",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+        "symbol": "LINK",
+        "name": "ChainLink Token",
+        "decimals": 18
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "quick-gamma-weth-aave": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xd6E01db636054DEF591C744285318560Bf33CBab",
+      "symbol": "mooQuickGammaAAVE-WETH",
+      "name": "aWETH-AAVE",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
+        "symbol": "AAVE",
+        "name": "AAVE",
+        "decimals": 18
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "retro-gamma-wmatic-cash": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xF42D47cAaD6fb299aCc998921EffeaDE5aBEe971",
+      "symbol": "mooRetroCASH-MATIC",
+      "name": "CASH-MATIC rLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5D066D022EDE10eFa2717eD3D79f22F949F8C175",
+        "symbol": "CASH",
+        "name": "CASH",
+        "decimals": 18
+      }
+    ]
+  },
+  "aura-polygon-gyro-matic-stmatic": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x8D0663d2d738e6078Bb77589dE4231eD9fcFd014",
+      "symbol": "mooAuraPolyGyrostMATIC-MATIC",
+      "name": "Gyroscope stMATIC-MATIC",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3A58a54C066FdC0f2D55FC9C89F0415C92eBf3C4",
+        "symbol": "stMATIC",
+        "name": "stMATIC",
+        "decimals": 18
+      }
+    ]
+  },
+  "retro-gamma-wbtc-weth": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xf552a67A82908E6C7F4382b812218d665e058C0B",
+      "symbol": "mooRetroWBTC-ETH",
+      "name": "WBTC-ETH rLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "symbol": "WBTC",
+        "name": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "retro-gamma-wmatic-maticx": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xec74671f95F0942358016da627b912143100DAF2",
+      "symbol": "mooRetroMaticX-MATIC",
+      "name": "MaticX-MATIC rLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xfa68FB4628DFF1028CFEc22b4162FCcd0d45efb6",
+        "symbol": "MaticX",
+        "name": "MaticX",
+        "decimals": 18
+      }
+    ]
+  },
+  "retro-gamma-usdc-usdt": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xAb4E02911A7d09BC8300F39332F087d51c183038",
+      "symbol": "mooRetroUSDC-USDT",
+      "name": "USDC.e-USDT rLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "symbol": "USDT",
+        "name": "Tether USD",
+        "decimals": 6
+      }
+    ]
+  },
+  "retro-gamma-wmatic-usdc-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x0fC4f2DB534Bf7525710DBf64B7081e1a3A6428f",
+      "symbol": "mooRetroUSDC-MATIC",
+      "name": "USDC.e-MATIC rLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "retro-gamma-usdc-weth-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x5268F5F2a9799f747A55f193d2E266c77653E518",
+      "symbol": "mooRetroUSDC-WETH",
+      "name": "USDC.e-WETH rLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "retro-gamma-wmatic-weth-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xD97FA4474084350D2c96285E1Fca07A9D515c800",
+      "symbol": "mooRetroMATIC-WETH",
+      "name": "MATIC-WETH rLP",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "quick-gamma-wbtc-usdc-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x4ec61a96738564CaD591841df0c8B5b6eA785E4C",
+      "symbol": "mooQuickWBTC-USDC_Narrow",
+      "name": "aWBTC-USDC.e",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "symbol": "WBTC",
+        "name": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "quick-gamma-wbtc-weth-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x06b73b12421C667A07877B0740bA299e1de73B15",
+      "symbol": "mooQuickBTC-ETH_Narrow",
+      "name": "aWBTC-ETH",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "symbol": "WBTC",
+        "name": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "quick-gamma-usdc-weth-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x4BDA6C4d2f53B2Cd7F7FAc9287902a9928002e7B",
+      "symbol": "mooQuickETH-USDC_Narrow",
+      "name": "aETH-USDC.e",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "quick-gamma-usdc-dai-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x3A1F8B9b4aB6ba1a845931eD527B6B4768Ca07B1",
+      "symbol": "mooQuickUSDC-DAI_Stable",
+      "name": "aUSDC.e-DAI",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      },
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      }
+    ]
+  },
+  "quick-gamma-wmatic-usdc-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x1d34Db65C4fe0f6A73194DBDC4a44ae05B46e6c5",
+      "symbol": "mooQuickMATIC-USDCNarrow",
+      "name": "aMATIC-USDC.e",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "quick-gamma-wmatic-weth-narrow": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x6F79CA179FE1cD131574a08B96e92744B6649128",
+      "symbol": "mooQuickMATIC-WETHNarrow",
+      "name": "aMATIC-WETH",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "quick-gamma-wmatic-weth-wide": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x346c16e7a76D224b9955c0F67e93b413Fc63ba3E",
+      "symbol": "mooQuickMATIC-WETHWide",
+      "name": "awMATIC-WETH",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "curve-poly-matic3crypto": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x23c65213458A2dcc1321f84Ab42dCaECD79C2215",
+      "symbol": "mooConvexMatic3crypto",
+      "name": "WMATICTRI-f",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "symbol": "USDT",
+        "name": "Tether USD",
+        "decimals": 6
+      },
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "symbol": "WBTC",
+        "name": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "gns-poly-gns": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xf2d0557101bEA0Eb2879151DC08d7a2603588BDe",
+      "symbol": "mooGnsGNS",
+      "name": "GNS",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xE5417Af564e4bFDA1c483642db72007871397896",
+        "symbol": "GNS",
+        "name": "GNS",
+        "decimals": 18
+      }
+    ]
+  },
+  "curve-poly-crv3crypto": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0xc65E5b6084FAd2F20e289b0d4e64F450cf386E6c",
+      "symbol": "mooCurveCrv3crypto",
+      "name": "CRVTRI-f",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x172370d5Cd63279eFa6d502DAB29171933a610AF",
+        "symbol": "CRV",
+        "name": "Curve Protocol",
+        "decimals": 18
+      },
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "symbol": "USDT",
+        "name": "Tether USD",
+        "decimals": 6
+      },
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "symbol": "WBTC",
+        "name": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "symbol": "ETH",
+        "name": "ETH",
+        "decimals": 18
+      }
+    ]
+  },
+  "stargate-polygon-usdc": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x2F4BBA9fC4F77F16829F84181eB7C8b50F639F95",
+      "symbol": "mooStargateUSDC",
+      "name": "S*USDC.e",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      }
+    ]
+  },
+  "stargate-polygon-usdt": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x1C480521100c962F7da106839a5A504B5A7457a1",
+      "symbol": "mooStargateUSDT",
+      "name": "S*USDT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "symbol": "USDT",
+        "name": "Tether USD",
+        "decimals": 6
+      }
+    ]
+  },
+  "curve-poly-eurt": {
+    "chain": "polygon",
+    "protocolToken": {
+      "address": "0x108c7a293162Adff86DA216AB5F91e56723125dc",
+      "symbol": "mooCurveEURt",
+      "name": "crvEURT",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7BDF330f423Ea880FF95fC41A280fD5eCFD3D09f",
+        "symbol": "EURt",
+        "name": "Euro Tether",
+        "decimals": 6
+      },
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "symbol": "DAI",
+        "name": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "symbol": "USDCe",
+        "name": "pUSDCe",
+        "decimals": 6
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "symbol": "USDT",
+        "name": "Tether USD",
+        "decimals": 6
+      }
+    ]
+  }
+}
