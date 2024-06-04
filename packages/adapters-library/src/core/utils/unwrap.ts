@@ -4,6 +4,7 @@ import { TokenType } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import {
   AdapterMissingError,
+  NotImplementedError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
 import { logger } from './logger'
@@ -107,7 +108,8 @@ async function fetchUnwrapExchangeRates(
       !(
         error instanceof
         ProtocolSmartContractNotDeployedAtRequestedBlockNumberError
-      )
+      ) &&
+      !(error instanceof NotImplementedError)
     ) {
       throw error
     }

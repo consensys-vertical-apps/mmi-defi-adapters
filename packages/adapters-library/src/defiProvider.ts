@@ -157,8 +157,6 @@ export class DefiProvider {
 
       const getRewardTime = Date.now()
 
-      // now unwrap reward tokens attached to the protocol tokens
-      // note if unwrap called only after attaching rewards then unwrap function thinks the reward tokens are the protocol tokens unwrapped
       await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
 
       const unwrapTime = Date.now()
