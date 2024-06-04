@@ -1,8 +1,10 @@
 import { Protocol } from '../../adapters/protocols'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { TokenType } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import {
   AdapterMissingError,
+  NotImplementedError,
   ProtocolSmartContractNotDeployedAtRequestedBlockNumberError,
 } from '../errors/errors'
 import { logger } from './logger'
@@ -10,6 +12,7 @@ import { logger } from './logger'
 type Token = Erc20Metadata & {
   tokens?: Token[]
   priceRaw?: bigint
+  type: TokenType
 }
 
 export async function unwrap(
@@ -20,9 +23,19 @@ export async function unwrap(
 ) {
   const promises = tokens.map(async (token) => {
     if (token.tokens) {
+      const hasNonRewardUnderlyings = !token.tokens.every(
+        (token) =>
+          token.type === TokenType.UnderlyingClaimable ||
+          token.type === TokenType.Reward,
+      )
+
       // Resolve underlying tokens if they exist
       await unwrap(adapter, blockNumber, token.tokens, fieldToUpdate)
-      return
+
+      // Return if there are underlying tokens that are not rewards
+      if (hasNonRewardUnderlyings) {
+        return
+      }
     }
 
     const underlyingProtocolTokenAdapter =
@@ -47,8 +60,16 @@ export async function unwrap(
       blockNumber,
     )
 
-    token.tokens = unwrapExchangeRates?.tokens?.map(
-      (unwrappedTokenExchangeRate) => {
+    if (!unwrapExchangeRates?.tokens) {
+      return
+    }
+
+    if (!token.tokens) {
+      token.tokens = []
+    }
+
+    token.tokens.push(
+      ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => {
         const underlyingToken = {
           address: unwrappedTokenExchangeRate.address,
           name: unwrappedTokenExchangeRate.name,
@@ -63,7 +84,7 @@ export async function unwrap(
         }
 
         return underlyingToken
-      },
+      }),
     )
 
     await unwrap(adapter, blockNumber, token.tokens!, fieldToUpdate)
@@ -87,7 +108,8 @@ async function fetchUnwrapExchangeRates(
       !(
         error instanceof
         ProtocolSmartContractNotDeployedAtRequestedBlockNumberError
-      )
+      ) &&
+      !(error instanceof NotImplementedError)
     ) {
       throw error
     }

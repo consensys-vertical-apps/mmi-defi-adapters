@@ -2,7 +2,6 @@ import {
   AbiCoder,
   AddressLike,
   BytesLike,
-  ContractRunner,
   FetchRequest,
   JsonRpcProvider,
   Network,
@@ -119,7 +118,6 @@ export class MulticallQueue {
       currentPendingCalls,
     )) {
       const batchSize = callsToProcess.length
-      logger.debug({ batchSize }, 'Sending multicall batch')
 
       let results: Multicall3.ResultStructOutput[]
       try {
@@ -130,6 +128,7 @@ export class MulticallQueue {
             blockTag: blockTag === LATEST ? undefined : blockTag,
           },
         )
+
         const endTime = Date.now()
 
         // update metrics
@@ -139,6 +138,18 @@ export class MulticallQueue {
         if (totalTime > count[this.chainId].multicallRequests.maxRequestTime) {
           count[this.chainId].multicallRequests.maxRequestTime = totalTime
         }
+
+        logger.debug({
+          source: 'multicall-batch',
+          chainId: this.chainId,
+          flushTimeoutMs: this.flushTimeoutMs,
+          maxBatchSize: this.maxBatchSize,
+          batchSize,
+          blockTag,
+          startTime,
+          endTime,
+          timeTaken: totalTime,
+        })
 
         // biome-ignore lint/suspicious/noExplicitAny: Error is checked
       } catch (error: any) {
@@ -157,10 +168,12 @@ export class MulticallQueue {
 
         logger.error(
           {
+            source: 'multicall-batch:error',
             chainId: this.chainId,
             flushTimeoutMs: this.flushTimeoutMs,
             maxBatchSize: this.maxBatchSize,
             batchSize,
+            blockTag,
             error: {
               code: error.code,
               message: error.message,

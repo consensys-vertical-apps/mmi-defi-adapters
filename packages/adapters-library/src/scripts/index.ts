@@ -8,6 +8,7 @@ import { buildContractTypes } from './buildTypes'
 import { featureCommands } from './featureCommands'
 import { newAdapter2Command } from './newAdapter2Command'
 import { newAdapterCommand } from './newAdapterCommand'
+import { performance } from './performance'
 import { simulateTxCommand } from './simulateTxCommand'
 import { stressCommand } from './stress'
 
@@ -34,5 +35,7 @@ buildSnapshots(program, defiProvider)
 stressCommand(program, defiProvider)
 
 simulateTxCommand(program, chainProviders)
+
+performance(program)
 
 program.parseAsync()

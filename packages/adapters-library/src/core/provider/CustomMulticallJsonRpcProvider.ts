@@ -23,12 +23,14 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     customOptions,
     jsonRpcProviderOptions,
     hasUnlimitedGetLogsRange,
+    maxBatchSize,
   }: {
     fetchRequest: FetchRequest
     chainId: Chain
     customOptions: CustomJsonRpcProviderOptions
     jsonRpcProviderOptions?: JsonRpcApiProviderOptions
     hasUnlimitedGetLogsRange: boolean
+    maxBatchSize: number
   }) {
     super({
       fetchRequest,
@@ -39,8 +41,8 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     })
     this.multicallQueue = new MulticallQueue({
       fetchRequest,
-      maxBatchSize: 100,
-      flushTimeoutMs: 1000,
+      maxBatchSize,
+      flushTimeoutMs: 100,
       chainId,
     })
   }
