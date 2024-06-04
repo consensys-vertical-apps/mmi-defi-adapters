@@ -104,10 +104,7 @@ export class DefiProvider {
     const startGetPositions = Date.now()
     this.initAdapterControllerForUnwrapStage()
 
-    const runner = async (
-      adapter: IProtocolAdapter,
-      provider: CustomJsonRpcProvider,
-    ) => {
+    const runner = async (adapter: IProtocolAdapter) => {
       const blockNumber = blockNumbers?.[adapter.chainId]
 
       const protocolTokenAddresses = await this.buildTokenFilter(
@@ -122,15 +119,6 @@ export class DefiProvider {
       }
 
       const startTime = Date.now()
-
-      logger.debug(
-        {
-          source: 'adapter:positions:total',
-          startTime: startGetPositions,
-          userAddress,
-        },
-        'Start position fetching',
-      )
 
       const protocolPositions = await adapter.getPositions({
         userAddress,
@@ -167,22 +155,17 @@ export class DefiProvider {
 
       const endTime = Date.now()
 
-      // for (const singleCount of Object.values(count)) {
-      //   singleCount.averageRequestTime =
-      //     singleCount.totalRequestTime / singleCount.requestCount
-      // }
-
       logger.info({
         source: 'adapter:positions',
         startTime,
         endTime,
+        timeTaken: endTime - startTime,
         timeDetails: {
           getPositionsTime: getPositionsTime - startTime,
           getRewardTime: getRewardTime - getPositionsTime,
           unwrapTime: unwrapTime - getRewardTime,
           enrichTime: endTime - unwrapTime,
         },
-        timeTaken: endTime - startTime,
         chainId: adapter.chainId,
         chainName: ChainName[adapter.chainId],
         protocolId: adapter.protocolId,
@@ -199,7 +182,6 @@ export class DefiProvider {
         runner,
         filterProtocolIds,
         filterChainIds,
-
         method: 'getPositions',
       })
     ).filter(
@@ -209,18 +191,15 @@ export class DefiProvider {
 
     const endGetPositions = Date.now()
 
-    logger.info(count, 'Performance Metrics')
+    logger.info({
+      source: 'positions',
+      startTime: startGetPositions,
+      endTime: endGetPositions,
+      timeTaken: endGetPositions - startGetPositions,
+      userAddress,
+    })
 
-    logger.info(
-      {
-        source: 'adapter:positions:total',
-        startTime: startGetPositions,
-        endTime: endGetPositions,
-        timeTaken: endGetPositions - startGetPositions,
-        userAddress,
-      },
-      'End position fetching',
-    )
+    logger.debug(count, 'getPositions')
 
     return result
   }
