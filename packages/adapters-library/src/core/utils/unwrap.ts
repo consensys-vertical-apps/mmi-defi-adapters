@@ -1,5 +1,6 @@
 import { Protocol } from '../../adapters/protocols'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
+import { TokenType } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import {
   AdapterMissingError,
@@ -10,6 +11,7 @@ import { logger } from './logger'
 type Token = Erc20Metadata & {
   tokens?: Token[]
   priceRaw?: bigint
+  type: TokenType
 }
 
 export async function unwrap(
@@ -20,9 +22,19 @@ export async function unwrap(
 ) {
   const promises = tokens.map(async (token) => {
     if (token.tokens) {
+      const hasNonRewardUnderlyings = !token.tokens.every(
+        (token) =>
+          token.type === TokenType.UnderlyingClaimable ||
+          token.type === TokenType.Reward,
+      )
+
       // Resolve underlying tokens if they exist
       await unwrap(adapter, blockNumber, token.tokens, fieldToUpdate)
-      return
+
+      // Return if there are underlying tokens that are not rewards
+      if (hasNonRewardUnderlyings) {
+        return
+      }
     }
 
     const underlyingProtocolTokenAdapter =
