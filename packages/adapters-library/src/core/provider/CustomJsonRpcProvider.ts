@@ -80,9 +80,17 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   async getStableBlockNumber(): Promise<number> {
     const currentBlockNumber = await this.getBlockNumber()
 
-    const blockNumberTenMinsAgo =
-      currentBlockNumber - (AVERAGE_BLOCKS_PER_10_MINUTES[this.chainId] ?? 0) // default to 0 to avoid failures
-    return blockNumberTenMinsAgo
+    const blocksToMoveBack = (() => {
+      switch (this.chainId) {
+        case Chain.Arbitrum:
+          return AVERAGE_BLOCKS_PER_10_MINUTES[this.chainId] / 4
+        default:
+          return AVERAGE_BLOCKS_PER_10_MINUTES[this.chainId]
+      }
+    })()
+
+    const stableBlockNumber = currentBlockNumber - blocksToMoveBack
+    return stableBlockNumber >= 0 ? stableBlockNumber : 0
   }
 
   async call(transaction: TransactionRequest): Promise<string> {

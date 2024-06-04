@@ -183,6 +183,7 @@ export class MulticallQueue {
             flushTimeoutMs: this.flushTimeoutMs,
             maxBatchSize: this.maxBatchSize,
             batchSize,
+            blockTag,
             error: {
               code: error.code,
               message: error.message,

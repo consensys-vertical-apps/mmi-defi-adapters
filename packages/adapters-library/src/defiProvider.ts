@@ -108,9 +108,7 @@ export class DefiProvider {
       adapter: IProtocolAdapter,
       provider: CustomJsonRpcProvider,
     ) => {
-      const blockNumber =
-        blockNumbers?.[adapter.chainId] ||
-        (await provider.getStableBlockNumber())
+      const blockNumber = blockNumbers?.[adapter.chainId]
 
       const protocolTokenAddresses = await this.buildTokenFilter(
         userAddress,
