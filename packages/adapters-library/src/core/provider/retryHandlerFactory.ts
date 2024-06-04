@@ -33,10 +33,9 @@ export function retryHandlerFactory({
         throw error
       }
 
-      logger.error(
+      logger.warn(
         {
-          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-          error: (error as any).message,
+          error: error instanceof Error ? error.message : undefined,
           retryCount,
           maxRetries,
         },
