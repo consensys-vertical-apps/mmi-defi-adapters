@@ -46,7 +46,6 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   }
 
   private async callSuper(transaction: TransactionRequest): Promise<string> {
-    console.log('Super call')
     const startTime = Date.now()
 
     const result = super.call(transaction)
@@ -64,10 +63,6 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
   }
 
   async call(transaction: TransactionRequest): Promise<string> {
-    if (transaction.from) {
-      console.log(transaction.from)
-    }
-
     return transaction.from
       ? this.callSuper(transaction)
       : this.multicallQueue.queueCall(transaction)

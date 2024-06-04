@@ -99,6 +99,7 @@ export type GetEventsInput = {
 
 export type AssetDetails = {
   type: AssetType
+  missingTransferEvents?: boolean
 }
 
 export type ProtocolDetails = {
