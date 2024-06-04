@@ -59,8 +59,16 @@ export async function unwrap(
       blockNumber,
     )
 
-    token.tokens = unwrapExchangeRates?.tokens?.map(
-      (unwrappedTokenExchangeRate) => {
+    if (!unwrapExchangeRates?.tokens) {
+      return
+    }
+
+    if (!token.tokens) {
+      token.tokens = []
+    }
+
+    token.tokens.push(
+      ...unwrapExchangeRates.tokens.map((unwrappedTokenExchangeRate) => {
         const underlyingToken = {
           address: unwrappedTokenExchangeRate.address,
           name: unwrappedTokenExchangeRate.name,
@@ -75,7 +83,7 @@ export async function unwrap(
         }
 
         return underlyingToken
-      },
+      }),
     )
 
     await unwrap(adapter, blockNumber, token.tokens!, fieldToUpdate)
