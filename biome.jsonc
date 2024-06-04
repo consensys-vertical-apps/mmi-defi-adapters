@@ -5,6 +5,7 @@
       "packages/adapters-library/src/**/contracts/**",
       "packages/adapters-library/src/adapters/blank/blankTemplate/blankAdapterForCli/blankAdapter.ts",
       "packages/adapters-library/dist/**",
+      "packages/adapters-library/coverage/**",
       "**/package.json"
     ]
   },
