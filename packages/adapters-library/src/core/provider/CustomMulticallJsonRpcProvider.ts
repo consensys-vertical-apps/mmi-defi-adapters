@@ -42,7 +42,7 @@ export class CustomMulticallJsonRpcProvider extends CustomJsonRpcProvider {
     this.multicallQueue = new MulticallQueue({
       fetchRequest,
       maxBatchSize,
-      flushTimeoutMs: 1000,
+      flushTimeoutMs: 100,
       chainId,
     })
   }

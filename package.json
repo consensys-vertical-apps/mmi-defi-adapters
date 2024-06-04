@@ -48,8 +48,5 @@
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "k6": "^0.0.0"
   }
 }
