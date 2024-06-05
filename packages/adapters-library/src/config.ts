@@ -124,7 +124,7 @@ const ConfigSchema = z
           .default(
             parseNumberEnv(
               process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_OPTIMISM,
-              100,
+              20,
             ),
           ),
         bsc: z
