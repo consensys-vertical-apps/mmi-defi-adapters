@@ -1,0 +1,52 @@
+{
+  "blockNumber": 5184581,
+  "snapshot": [
+    {
+      "protocolId": "lynex",
+      "name": "Lynex",
+      "description": "Lynex pool adapter",
+      "siteUrl": "",
+      "iconUrl": "",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "classic",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xAf453A22C59BC4796f78a176fDcc443CFD9Ab3C3",
+          "name": "VolatileV1 AMM - USDC/LYNX DOGE / WETH",
+          "symbol": "vAMM-USDC/LYNX/DOGE/WETH",
+          "decimals": 18,
+          "balanceRaw": "352928312858n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x5ed3675867Ae3E3582b819cCB88f48c836E69edE",
+              "name": "Dogecoin",
+              "symbol": "DOGE",
+              "decimals": 8,
+              "type": "underlying",
+              "balanceRaw": "532333535n",
+              "balance": 5.32333535,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x5ed3675867Ae3E3582b819cCB88f48c836E69edE/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "233985623133886n",
+              "balance": 0.000233985623133886,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 3.52928312858e-7
+        }
+      ]
+    }
+  ]
+}

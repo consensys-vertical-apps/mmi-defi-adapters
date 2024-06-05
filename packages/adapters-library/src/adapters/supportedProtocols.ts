@@ -66,6 +66,8 @@ import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAd
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
+import { LynexClassicAdapter } from './lynex/products/classic/lynexClassicAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -202,6 +204,10 @@ export const supportedProtocols: Record<
 
   [Protocol.Lido]: {
     [Chain.Ethereum]: [LidoStEthAdapter, LidoWstEthAdapter],
+  },
+
+  [Protocol.Lynex]: {
+    [Chain.Linea]: [LynexClassicAdapter],
   },
 
   [Protocol.Maker]: {
