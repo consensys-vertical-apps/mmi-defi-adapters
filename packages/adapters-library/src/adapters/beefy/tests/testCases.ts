@@ -19,5 +19,16 @@ export const testCases: TestCase[] = [
     },
 
     blockNumber: 15374682,
-  }
+  },
+  {
+    chainId: Chain.Base,
+    method: 'deposits',
+    input: {
+      fromBlock: 15190963,
+      toBlock: 15192963,
+      userAddress: '0x50fa50fa2032d85eb2dda303929bf56886aa9afb',
+      protocolTokenAddress: '0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83',
+      productId: 'moo-token',
+    },
+  },
 ]

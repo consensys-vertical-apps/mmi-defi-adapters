@@ -1,0 +1,42 @@
+{
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 8453,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x9c53b9dc09e8bde7a443b8d4674336ded1b040b741d6c5d1762677cabf2d8e56",
+        "protocolToken": {
+          "address": "0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83",
+          "symbol": "mooAeroweETH-AERO",
+          "name": "vAMM-weETH/AERO",
+          "decimals": 18,
+          "logo": "https://beefy.com/icons/icon-96x96.png"
+        },
+        "tokens": [
+          {
+            "address": "0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83",
+            "symbol": "mooAeroweETH-AERO",
+            "name": "vAMM-weETH/AERO",
+            "decimals": 18,
+            "logo": "https://beefy.com/icons/icon-96x96.png",
+            "balanceRaw": "1141244529723677099n",
+            "type": "underlying",
+            "blockNumber": 15191963,
+            "balance": 1.141244529723677
+          }
+        ],
+        "blockNumber": 15191963
+      }
+    ]
+  }
+}

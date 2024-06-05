@@ -257,7 +257,10 @@ export class BeefyMooTokenAdapter
   }
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
+    const metadata = await this.buildMetadata()
+    const poolMetadata = Object.values(metadata).find(
+      ({ protocolToken }) => protocolToken.address === protocolTokenAddress,
+    );
 
     if (!poolMetadata) {
       logger.error(
