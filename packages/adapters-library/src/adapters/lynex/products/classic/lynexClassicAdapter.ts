@@ -23,9 +23,10 @@ export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
     return {
       protocolId: this.protocolId,
       name: 'Lynex',
-      description: 'Lynex pool adapter',
-      siteUrl: '',
-      iconUrl: '',
+      description: 'Lynex classic pool adapter',
+      siteUrl: 'https://app.lynex.fi/',
+      iconUrl:
+        'https://app.lynex.fi/logo.png',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
