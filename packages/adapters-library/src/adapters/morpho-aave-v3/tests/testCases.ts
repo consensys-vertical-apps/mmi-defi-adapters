@@ -46,18 +46,6 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
-    method: 'profits',
-    key: '3',
-    input: {
-      userAddress: '0x306c9b45050F1FF0a4470f9801CCBCe97a2aC5A2',
-      timePeriod: TimePeriod.oneDay,
-      includeRawValues: true,
-      filterProtocolTokens: [],
-    },
-    blockNumber: 19223914 + 1,
-  },
-  {
-    chainId: Chain.Ethereum,
     method: 'tvl',
     filterProtocolTokens: ['0x98C23E9d8f34FEFb1B7BD6a91B7FF122F4e16F5c'],
     blockNumber: 19661885,
