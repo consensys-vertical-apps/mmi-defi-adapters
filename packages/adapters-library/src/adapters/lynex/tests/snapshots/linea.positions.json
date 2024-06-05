@@ -3,10 +3,234 @@
   "snapshot": [
     {
       "protocolId": "lynex",
+      "name": "Lynex Algebra",
+      "description": "Lynex Algebra defi adapter",
+      "siteUrl": "https://app.lynex.fi/",
+      "iconUrl": "https://app.lynex.fi/logo.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "algebra",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x5D3D9E20ad27dd61182505230D1bD075bd249E4B",
+          "tokenId": "1852",
+          "name": "USDC / WETH",
+          "symbol": "USDC / WETH",
+          "decimals": 18,
+          "balanceRaw": "2138602592n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "132056n",
+              "type": "underlying",
+              "balance": 0.132056,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+              "name": "USDC",
+              "symbol": "USDC",
+              "decimals": 6,
+              "balanceRaw": "475n",
+              "type": "underlying-claimable",
+              "balance": 0.000475,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "34633913619624n",
+              "type": "underlying",
+              "balance": 0.000034633913619624,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "145447041502n",
+              "type": "underlying-claimable",
+              "balance": 1.45447041502e-7,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 2.138602592e-9
+        },
+        {
+          "address": "0x5D3D9E20ad27dd61182505230D1bD075bd249E4B",
+          "tokenId": "3148",
+          "name": "ROXY / WETH",
+          "symbol": "ROXY / WETH",
+          "decimals": 18,
+          "balanceRaw": "34178051288927700807n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x85C2160b06D48C8B6F5ea5bAFb1a3137ee620784",
+              "name": "Roxy",
+              "symbol": "ROXY",
+              "decimals": 18,
+              "balanceRaw": "243497144836673608237685n",
+              "type": "underlying",
+              "balance": 243497.1448366736,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x85C2160b06D48C8B6F5ea5bAFb1a3137ee620784/logo.png"
+            },
+            {
+              "address": "0x85C2160b06D48C8B6F5ea5bAFb1a3137ee620784",
+              "name": "Roxy",
+              "symbol": "ROXY",
+              "decimals": 18,
+              "balanceRaw": "281535153580536188415n",
+              "type": "underlying-claimable",
+              "balance": 281.5351535805362,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x85C2160b06D48C8B6F5ea5bAFb1a3137ee620784/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "4797342452175793n",
+              "type": "underlying",
+              "balance": 0.004797342452175793,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "14717810000015n",
+              "type": "underlying-claimable",
+              "balance": 0.000014717810000015,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 34.1780512889277
+        },
+        {
+          "address": "0x5D3D9E20ad27dd61182505230D1bD075bd249E4B",
+          "tokenId": "7622",
+          "name": "CROAK / WETH",
+          "symbol": "CROAK / WETH",
+          "decimals": 18,
+          "balanceRaw": "802791651474430591n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xaCb54d07cA167934F57F829BeE2cC665e1A5ebEF",
+              "name": "CROAK",
+              "symbol": "CROAK",
+              "decimals": 18,
+              "balanceRaw": "1052310887337744571832n",
+              "type": "underlying",
+              "balance": 1052.3108873377446,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xaCb54d07cA167934F57F829BeE2cC665e1A5ebEF/logo.png"
+            },
+            {
+              "address": "0xaCb54d07cA167934F57F829BeE2cC665e1A5ebEF",
+              "name": "CROAK",
+              "symbol": "CROAK",
+              "decimals": 18,
+              "balanceRaw": "5354338094590671748n",
+              "type": "underlying-claimable",
+              "balance": 5.354338094590672,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xaCb54d07cA167934F57F829BeE2cC665e1A5ebEF/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "612437297220698n",
+              "type": "underlying",
+              "balance": 0.000612437297220698,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "3899662682117n",
+              "type": "underlying-claimable",
+              "balance": 0.000003899662682117,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 0.8027916514744305
+        },
+        {
+          "address": "0x5D3D9E20ad27dd61182505230D1bD075bd249E4B",
+          "tokenId": "7627",
+          "name": "weETH / WETH",
+          "symbol": "weETH / WETH",
+          "decimals": 18,
+          "balanceRaw": "20815793374848n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+              "name": "Wrapped eETH",
+              "symbol": "weETH",
+              "decimals": 18,
+              "balanceRaw": "20421114369753n",
+              "type": "underlying",
+              "balance": 0.000020421114369753,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6/logo.png"
+            },
+            {
+              "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+              "name": "Wrapped eETH",
+              "symbol": "weETH",
+              "decimals": 18,
+              "balanceRaw": "1028011n",
+              "type": "underlying-claimable",
+              "balance": 1.028011e-12,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "21218100343541n",
+              "type": "underlying",
+              "balance": 0.000021218100343541,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "950009n",
+              "type": "underlying-claimable",
+              "balance": 9.50009e-13,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 0.000020815793374848
+        }
+      ]
+    },
+    {
+      "protocolId": "lynex",
       "name": "Lynex",
-      "description": "Lynex pool adapter",
-      "siteUrl": "",
-      "iconUrl": "",
+      "description": "Lynex classic pool adapter",
+      "siteUrl": "https://app.lynex.fi/",
+      "iconUrl": "https://app.lynex.fi/logo.png",
       "positionType": "supply",
       "chainId": 59144,
       "productId": "classic",
