@@ -54,3 +54,5 @@ export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
   async buildMetadata() {
     return super.buildMetadata()
   }
+}
+
