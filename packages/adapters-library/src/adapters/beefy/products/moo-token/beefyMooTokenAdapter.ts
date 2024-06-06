@@ -100,95 +100,110 @@ export class BeefyMooTokenAdapter
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<Metadata> {
     type ApiVault = {
-      id: string;
-      status: "active" | "eol";
-      earnedTokenAddress: string;
-      chain: string;
-      platformId: string;
-      token: string;
-      tokenAddress: string;
-      earnedToken: string;
-      isGovVault?: boolean;
-      bridged?: object;
-      assets?: string[];
-    };
+      id: string
+      status: 'active' | 'eol'
+      earnedTokenAddress: string
+      chain: string
+      platformId: string
+      token: string
+      tokenAddress: string
+      earnedToken: string
+      isGovVault?: boolean
+      bridged?: object
+      assets?: string[]
+    }
     type ApiToken = {
-      type: string,
-      id: string,
-      symbol: string,
-      name: string,
-      chainId: string,
-      oracle: string,
-      oracleId: string,
-      address: string,
+      type: string
+      id: string
+      symbol: string
+      name: string
+      chainId: string
+      oracle: string
+      oracleId: string
+      address: string
       decimals: number
     }
     type ApiTokenList = {
       [chainId: string]: {
-        [tokenId: string]: ApiToken;
-      };
+        [tokenId: string]: ApiToken
+      }
     }
     type ApiBoost = {
-      id: string,
-      poolId: string,
+      id: string
+      poolId: string
     }
-    const vaults = await (await fetch('https://api.beefy.finance/vaults')).json() as ApiVault[]
-    const tokens = await (await fetch("https://api.beefy.finance/tokens")).json() as ApiTokenList
-    const boosts = await (await fetch("https://api.beefy.finance/boosts")).json() as ApiBoost[]
+    const vaults = (await (
+      await fetch('https://api.beefy.finance/vaults')
+    ).json()) as ApiVault[]
+    const tokens = (await (
+      await fetch('https://api.beefy.finance/tokens')
+    ).json()) as ApiTokenList
+    const boosts = (await (
+      await fetch('https://api.beefy.finance/boosts')
+    ).json()) as ApiBoost[]
 
-    const boostedVaultsMap = boosts.reduce((acc, boost) => {
-      acc[boost.poolId] = true
-      return acc
-    }, {} as Record<string, boolean>)
+    const boostedVaultsMap = boosts.reduce(
+      (acc, boost) => {
+        acc[boost.poolId] = true
+        return acc
+      },
+      {} as Record<string, boolean>,
+    )
     const chain = chainIdMap[this.chainId]
 
-    return vaults
-      .filter(vault => vault.chain === chain)
-      // remove inactive vaults, might not be a good idea to remove them completely
-      .filter(vault => vault.status === 'active')
-      // remove unsupported gov vaults
-      .filter(vault => vault.isGovVault !== true)
-      // remove unsupported bridged vaults
-      .filter(vault => Object.keys(vault.bridged||{}).length === 0)
-      // remove unsupported vaults with a boost, accounting of user balance is a bit more complex
-      .filter(vault => !boostedVaultsMap[vault.id])
-      .reduce((acc, vault) => {
-        const protocolToken = {
-          address: getAddress(vault.earnedTokenAddress),
-          symbol: vault.earnedToken,
-          name: vault.token,
-          decimals: 18,
-          logo: 'https://beefy.com/icons/icon-96x96.png',
-        }
-
-        const underlyingTokens = (vault.assets?.map((tokenId) => {
-          let token = (tokens[vault.chain] ?? {})[tokenId] || null;
-      
-
-          // remove the "W" from the token id
-          if (token && token.address === "native") {
-            token = (tokens[vault.chain] ?? {})[tokenId.slice(1)] || null;
-          }   
-          if (!token) {
-            return null
+    return (
+      vaults
+        .filter((vault) => vault.chain === chain)
+        // remove inactive vaults, might not be a good idea to remove them completely
+        .filter((vault) => vault.status === 'active')
+        // remove unsupported gov vaults
+        .filter((vault) => vault.isGovVault !== true)
+        // remove unsupported bridged vaults
+        .filter((vault) => Object.keys(vault.bridged || {}).length === 0)
+        // remove unsupported vaults with a boost, accounting of user balance is a bit more complex
+        .filter((vault) => !boostedVaultsMap[vault.id])
+        .reduce((acc, vault) => {
+          const protocolToken = {
+            address: getAddress(vault.earnedTokenAddress),
+            symbol: vault.earnedToken,
+            name: vault.token,
+            decimals: 18,
+            logo: 'https://beefy.com/icons/icon-96x96.png',
           }
 
-          return ({
-            address: getAddress(token.address),
-            symbol: token.symbol,
-            name: token.name,
-            decimals: token.decimals,
-          })
-        }) || [])
-        .filter((token): token is Erc20Metadata => !!token);
+          const underlyingTokens = (
+            vault.assets?.map((tokenId) => {
+              const chainTokens = tokens[vault.chain]
+              if (!chainTokens) {
+                return null
+              }
 
-      acc[vault.id] = {
-        protocolToken,
-        underlyingTokens,
-      }
+              let token = chainTokens[tokenId] || null
+              // remove the "W" from the token id
+              if (token && token.address === 'native') {
+                token = chainTokens[tokenId.slice(1)] || null
+              }
+              if (!token) {
+                return null
+              }
 
-      return acc
-    } , {} as Metadata)
+              return {
+                address: getAddress(token.address),
+                symbol: token.symbol,
+                name: token.name,
+                decimals: token.decimals,
+              }
+            }) || []
+          ).filter((token): token is Erc20Metadata => !!token)
+
+          acc[protocolToken.address] = {
+            protocolToken,
+            underlyingTokens,
+          }
+
+          return acc
+        }, {} as Metadata)
+    )
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
@@ -257,10 +272,7 @@ export class BeefyMooTokenAdapter
   }
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const metadata = await this.buildMetadata()
-    const poolMetadata = Object.values(metadata).find(
-      ({ protocolToken }) => protocolToken.address === protocolTokenAddress,
-    );
+    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
     if (!poolMetadata) {
       logger.error(

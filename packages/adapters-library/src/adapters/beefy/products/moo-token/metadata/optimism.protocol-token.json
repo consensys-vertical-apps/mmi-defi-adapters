@@ -1,6 +1,5 @@
 {
-  "velodrome-v2-op-kite": {
-    "chain": "optimism",
+  "0xF158b12047B2313962a816D4e45281e3BcbfFd2F": {
     "protocolToken": {
       "address": "0xF158b12047B2313962a816D4e45281e3BcbfFd2F",
       "symbol": "mooVeloV2OP-KITE",
@@ -23,8 +22,7 @@
       }
     ]
   },
-  "velodrome-v2-hai-susd": {
-    "chain": "optimism",
+  "0x28364aC61865E4b535a29928DE6E1a08328d462A": {
     "protocolToken": {
       "address": "0x28364aC61865E4b535a29928DE6E1a08328d462A",
       "symbol": "mooVeloV2HAI-sUSD",
@@ -47,8 +45,7 @@
       }
     ]
   },
-  "velodrome-v2-hai-lusd": {
-    "chain": "optimism",
+  "0x2a92920A08115a6A88C550eC7dF67eAEf0c1Edb0": {
     "protocolToken": {
       "address": "0x2a92920A08115a6A88C550eC7dF67eAEf0c1Edb0",
       "symbol": "mooVeloV2HAI-LUSD",
@@ -71,8 +68,7 @@
       }
     ]
   },
-  "velodrome-v2-weth-wrseth": {
-    "chain": "optimism",
+  "0xDbE946E16c4e0De9a44065B868265Ac05c437fB6": {
     "protocolToken": {
       "address": "0xDbE946E16c4e0De9a44065B868265Ac05c437fB6",
       "symbol": "mooVeloV2WETH-wrsETH",
@@ -95,26 +91,7 @@
       }
     ]
   },
-  "aavev3-op-usdc-2": {
-    "chain": "optimism",
-    "protocolToken": {
-      "address": "0x72683E768d3dedbBb8B08e5526aA1ee56B21041C",
-      "symbol": "mooAaveUSDC",
-      "name": "USDC",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      }
-    ]
-  },
-  "velodrome-v2-usda-eura": {
-    "chain": "optimism",
+  "0x52b76C23d65e998836604E1760399D3e0B959ED8": {
     "protocolToken": {
       "address": "0x52b76C23d65e998836604E1760399D3e0B959ED8",
       "symbol": "mooVeloV2USDA-EURA",
@@ -137,8 +114,7 @@
       }
     ]
   },
-  "velodrome-v2-usda-usdc": {
-    "chain": "optimism",
+  "0x4F5310B114859B947A593F0ddE4b162672cae5af": {
     "protocolToken": {
       "address": "0x4F5310B114859B947A593F0ddE4b162672cae5af",
       "symbol": "mooVeloV2USDA-USDC",
@@ -161,8 +137,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-sonne": {
-    "chain": "optimism",
+  "0x61a0208005d62cf4c101a2751A3b3264e089E03A": {
     "protocolToken": {
       "address": "0x61a0208005d62cf4c101a2751A3b3264e089E03A",
       "symbol": "mooVeloV2USDC-SONNE",
@@ -185,8 +160,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-snx-2": {
-    "chain": "optimism",
+  "0x6A058d02bfFBaf75d9a9bdF2AA3B0F691F7777D5": {
     "protocolToken": {
       "address": "0x6A058d02bfFBaf75d9a9bdF2AA3B0F691F7777D5",
       "symbol": "mooVeloV2USDC-SNX",
@@ -209,8 +183,7 @@
       }
     ]
   },
-  "velodrome-v2-usdv-op": {
-    "chain": "optimism",
+  "0xb39f301318860fE06eEE8541c3cfde637aC86077": {
     "protocolToken": {
       "address": "0xb39f301318860fE06eEE8541c3cfde637aC86077",
       "symbol": "mooVeloV2USDV-OP",
@@ -233,8 +206,7 @@
       }
     ]
   },
-  "velodrome-v2-usdv-weth": {
-    "chain": "optimism",
+  "0x7675DD7601E1778226b77E0de40A5F0130b4673C": {
     "protocolToken": {
       "address": "0x7675DD7601E1778226b77E0de40A5F0130b4673C",
       "symbol": "mooVeloV2USDV-WETH",
@@ -257,8 +229,7 @@
       }
     ]
   },
-  "velodrome-v2-frax-usdv": {
-    "chain": "optimism",
+  "0x78f6f6b0982F18038e2eC9Bf02a0a89a86C5BAbf": {
     "protocolToken": {
       "address": "0x78f6f6b0982F18038e2eC9Bf02a0a89a86C5BAbf",
       "symbol": "mooVeloV2FRAX-USDV",
@@ -281,8 +252,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-usdv": {
-    "chain": "optimism",
+  "0x9F87827c7c97ab0b11E413387c8501072D8e82D9": {
     "protocolToken": {
       "address": "0x9F87827c7c97ab0b11E413387c8501072D8e82D9",
       "symbol": "mooVeloV2USDC-USDV",
@@ -305,8 +275,7 @@
       }
     ]
   },
-  "velodrome-v2-usdv-usdce": {
-    "chain": "optimism",
+  "0x480E3FC888044e038d9261A38437DeEC13C84AC5": {
     "protocolToken": {
       "address": "0x480E3FC888044e038d9261A38437DeEC13C84AC5",
       "symbol": "mooVeloV2USDV-USDCe",
@@ -329,8 +298,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-alusd-2": {
-    "chain": "optimism",
+  "0x60d8E0bbb7355b08c2F6d8f260d93bDe06A75A41": {
     "protocolToken": {
       "address": "0x60d8E0bbb7355b08c2F6d8f260d93bDe06A75A41",
       "symbol": "mooVeloV2USDC-alUSD",
@@ -353,8 +321,7 @@
       }
     ]
   },
-  "velodrome-v2-dola-alusd": {
-    "chain": "optimism",
+  "0x21018fC785a6a7b3e3f3Df3e887a4E8CeB155d4A": {
     "protocolToken": {
       "address": "0x21018fC785a6a7b3e3f3Df3e887a4E8CeB155d4A",
       "symbol": "mooVeloV2DOLA-alUSD",
@@ -377,8 +344,7 @@
       }
     ]
   },
-  "velodrome-v2-pool-weth": {
-    "chain": "optimism",
+  "0x63289886Ad4Eb9364669741650cde780C9f2E7D2": {
     "protocolToken": {
       "address": "0x63289886Ad4Eb9364669741650cde780C9f2E7D2",
       "symbol": "mooVeloV2POOL-ETH",
@@ -401,8 +367,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-weth": {
-    "chain": "optimism",
+  "0xdA0C8a2a21Bc6b294d4e3636eEab0f7C7dfC82d6": {
     "protocolToken": {
       "address": "0xdA0C8a2a21Bc6b294d4e3636eEab0f7C7dfC82d6",
       "symbol": "mooVeloV2USDC-WETH",
@@ -425,8 +390,7 @@
       }
     ]
   },
-  "velodrome-v2-lusd-usdc": {
-    "chain": "optimism",
+  "0xc0C2B86540ACF7da1a5f71B3215A6D28f2269C31": {
     "protocolToken": {
       "address": "0xc0C2B86540ACF7da1a5f71B3215A6D28f2269C31",
       "symbol": "mooVeloV2USDC-LUSD",
@@ -449,8 +413,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-stg": {
-    "chain": "optimism",
+  "0xaba2b5E628641c717727128f9b9194597B310139": {
     "protocolToken": {
       "address": "0xaba2b5E628641c717727128f9b9194597B310139",
       "symbol": "mooVeloV2USDC-STG",
@@ -473,8 +436,7 @@
       }
     ]
   },
-  "velodrome-v2-susd-usdc": {
-    "chain": "optimism",
+  "0x12112fcc5eA780C9A667C526601697Ca5898eBD2": {
     "protocolToken": {
       "address": "0x12112fcc5eA780C9A667C526601697Ca5898eBD2",
       "symbol": "mooVeloV2USDC-sUSD",
@@ -497,8 +459,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-next": {
-    "chain": "optimism",
+  "0x2Cf5B6371734447A8A74fae1ce1653973fe0c0b5": {
     "protocolToken": {
       "address": "0x2Cf5B6371734447A8A74fae1ce1653973fe0c0b5",
       "symbol": "mooVeloV2USDC-NEXT",
@@ -521,8 +482,7 @@
       }
     ]
   },
-  "velodrome-v2-sonne-velo": {
-    "chain": "optimism",
+  "0xb32AD6495826677EABAfd4Ee7b8E07594504Fc17": {
     "protocolToken": {
       "address": "0xb32AD6495826677EABAfd4Ee7b8E07594504Fc17",
       "symbol": "mooVeloV2SONNE-VELO",
@@ -545,8 +505,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-op": {
-    "chain": "optimism",
+  "0xC1CE18ee03bED17676021ca0B84F550339c66a24": {
     "protocolToken": {
       "address": "0xC1CE18ee03bED17676021ca0B84F550339c66a24",
       "symbol": "mooVeloV2USDC-OP",
@@ -569,8 +528,7 @@
       }
     ]
   },
-  "velodrome-v2-dola-usdc": {
-    "chain": "optimism",
+  "0x89775AE7036261bB2071Ef5a8E0C40e13cF2035D": {
     "protocolToken": {
       "address": "0x89775AE7036261bB2071Ef5a8E0C40e13cF2035D",
       "symbol": "mooVeloV2USDC-DOLA",
@@ -593,8 +551,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-usdc": {
-    "chain": "optimism",
+  "0x31250144b1ad6B04A004836C67F7f07990FF84aa": {
     "protocolToken": {
       "address": "0x31250144b1ad6B04A004836C67F7f07990FF84aa",
       "symbol": "mooVeloV2USDC-USDC.e",
@@ -617,8 +574,7 @@
       }
     ]
   },
-  "curve-op-crvusd-usdc.e": {
-    "chain": "optimism",
+  "0xd85869C544820dF304c1F420f1a4107Fe109d176": {
     "protocolToken": {
       "address": "0xd85869C544820dF304c1F420f1a4107Fe109d176",
       "symbol": "mooCurveCrvUSD-USDC.e",
@@ -641,8 +597,7 @@
       }
     ]
   },
-  "curve-op-crvusd-usdt": {
-    "chain": "optimism",
+  "0xe0e1dD54334007aCcF731395d1DAD784036DF2D9": {
     "protocolToken": {
       "address": "0xe0e1dD54334007aCcF731395d1DAD784036DF2D9",
       "symbol": "mooCurveCrvUSD-USDT",
@@ -665,8 +620,7 @@
       }
     ]
   },
-  "aura-op-a-night-at-the-opara": {
-    "chain": "optimism",
+  "0x32BF68dF1D113603346422fED4e4393b3c976159": {
     "protocolToken": {
       "address": "0x32BF68dF1D113603346422fED4e4393b3c976159",
       "symbol": "mooAuraOPANightattheOPara",
@@ -689,8 +643,7 @@
       }
     ]
   },
-  "velodrome-v2-kuji-velo": {
-    "chain": "optimism",
+  "0x9a2F07153964e4E02878101Be10E31e2dD474d74": {
     "protocolToken": {
       "address": "0x9a2F07153964e4E02878101Be10E31e2dD474d74",
       "symbol": "mooVeloV2KUJI-VELO",
@@ -713,8 +666,7 @@
       }
     ]
   },
-  "aura-op-fraximalist-ethereum": {
-    "chain": "optimism",
+  "0x416c578DFBEB2f1b07b0165a2e5F4C467F4Ed2F8": {
     "protocolToken": {
       "address": "0x416c578DFBEB2f1b07b0165a2e5F4C467F4Ed2F8",
       "symbol": "mooAuraOPFraximalistEthereum",
@@ -737,8 +689,7 @@
       }
     ]
   },
-  "velodrome-v2-kuji-weth": {
-    "chain": "optimism",
+  "0x587e827ed502f494C056F8756f7Aec7190195A7b": {
     "protocolToken": {
       "address": "0x587e827ed502f494C056F8756f7Aec7190195A7b",
       "symbol": "mooVeloV2KUJI-ETH",
@@ -761,8 +712,7 @@
       }
     ]
   },
-  "velodrome-v2-next-usdc": {
-    "chain": "optimism",
+  "0x4f365Dfb701cb653F057C1d57cBf08fF860e8fdc": {
     "protocolToken": {
       "address": "0x4f365Dfb701cb653F057C1d57cBf08fF860e8fdc",
       "symbol": "mooVeloV2NEXT-USDC",
@@ -785,8 +735,7 @@
       }
     ]
   },
-  "velodrome-v2-wsteth-velo": {
-    "chain": "optimism",
+  "0x039af31d546938876F38A5452ea844Eca7c4fC30": {
     "protocolToken": {
       "address": "0x039af31d546938876F38A5452ea844Eca7c4fC30",
       "symbol": "mooVeloV2wstETH-VELO",
@@ -809,8 +758,7 @@
       }
     ]
   },
-  "curve-op-tbtc": {
-    "chain": "optimism",
+  "0x611bB2B496c9381CdcD07458b3cfC734583429f9": {
     "protocolToken": {
       "address": "0x611bB2B496c9381CdcD07458b3cfC734583429f9",
       "symbol": "mooCurveTBTC",
@@ -833,8 +781,7 @@
       }
     ]
   },
-  "aura-op-reth-ankreth": {
-    "chain": "optimism",
+  "0xb996DD8f4ec36A34CeDFD8687aDa991bC2397232": {
     "protocolToken": {
       "address": "0xb996DD8f4ec36A34CeDFD8687aDa991bC2397232",
       "symbol": "mooAuraOPrETH-ankrETH",
@@ -857,8 +804,7 @@
       }
     ]
   },
-  "aura-op-usdc-usdce-usdt-dai": {
-    "chain": "optimism",
+  "0xC51e661EEf8d5F130Dc1bdD5Be28c1DBcE930D20": {
     "protocolToken": {
       "address": "0xC51e661EEf8d5F130Dc1bdD5Be28c1DBcE930D20",
       "symbol": "mooAuraOPUSDC/USDCe/USDT/DAI",
@@ -893,8 +839,7 @@
       }
     ]
   },
-  "velodrome-v2-wsteth-pendle": {
-    "chain": "optimism",
+  "0x82EDb0Cb1Ec84b267A90c8A8f6aCc09aAE8857f9": {
     "protocolToken": {
       "address": "0x82EDb0Cb1Ec84b267A90c8A8f6aCc09aAE8857f9",
       "symbol": "mooVeloV2wstETHPENDLE",
@@ -917,8 +862,7 @@
       }
     ]
   },
-  "velodrome-v2-wsteth-snx": {
-    "chain": "optimism",
+  "0x6DFc84940130756c71bc2bb9bf9e4C2d6C143Da2": {
     "protocolToken": {
       "address": "0x6DFc84940130756c71bc2bb9bf9e4C2d6C143Da2",
       "symbol": "mooVeloV2wstETH-SNX",
@@ -941,8 +885,7 @@
       }
     ]
   },
-  "velodrome-v2-weth-hop": {
-    "chain": "optimism",
+  "0xCe6A02C3456f2518D5F02002ecEFFFDc4539247f": {
     "protocolToken": {
       "address": "0xCe6A02C3456f2518D5F02002ecEFFFDc4539247f",
       "symbol": "mooVeloV2WETH-HOP",
@@ -965,8 +908,7 @@
       }
     ]
   },
-  "velodrome-v2-weth-tbtc": {
-    "chain": "optimism",
+  "0xfd3B30e3145069e272E6144A9d1F3EED0fCCb2f9": {
     "protocolToken": {
       "address": "0xfd3B30e3145069e272E6144A9d1F3EED0fCCb2f9",
       "symbol": "mooVeloV2ETH-tBTC",
@@ -989,8 +931,7 @@
       }
     ]
   },
-  "velodrome-v2-op-frxeth": {
-    "chain": "optimism",
+  "0x1B9eb90884F3566AE923366B65a49B1E30cbcE28": {
     "protocolToken": {
       "address": "0x1B9eb90884F3566AE923366B65a49B1E30cbcE28",
       "symbol": "mooVeloV2OP-frxETH",
@@ -1013,8 +954,7 @@
       }
     ]
   },
-  "velodrome-v2-weth-velo": {
-    "chain": "optimism",
+  "0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB": {
     "protocolToken": {
       "address": "0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB",
       "symbol": "mooVeloV2VELO-ETH",
@@ -1037,8 +977,7 @@
       }
     ]
   },
-  "velodrome-v2-frax-usdc": {
-    "chain": "optimism",
+  "0x797c35a8032CE0A8dFcA308ac1b2276359cd463b": {
     "protocolToken": {
       "address": "0x797c35a8032CE0A8dFcA308ac1b2276359cd463b",
       "symbol": "mooVeloV2FRAX-USDCe",
@@ -1061,8 +1000,7 @@
       }
     ]
   },
-  "velodrome-v2-frax-mai": {
-    "chain": "optimism",
+  "0x0980C3171E32c4508f614ceC15A3819B6cCf372c": {
     "protocolToken": {
       "address": "0x0980C3171E32c4508f614ceC15A3819B6cCf372c",
       "symbol": "mooVeloV2FRAX-MAI",
@@ -1085,8 +1023,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-mta": {
-    "chain": "optimism",
+  "0xb379AB37f2e7d4A0d2479c09d637bD6B20E1354d": {
     "protocolToken": {
       "address": "0xb379AB37f2e7d4A0d2479c09d637bD6B20E1354d",
       "symbol": "mooVeloV2USDC-MTA",
@@ -1109,8 +1046,7 @@
       }
     ]
   },
-  "velodrome-v2-wsteth-ldo": {
-    "chain": "optimism",
+  "0x935A64d0825D86c1ca57Fe8f270e635AC1a0878A": {
     "protocolToken": {
       "address": "0x935A64d0825D86c1ca57Fe8f270e635AC1a0878A",
       "symbol": "mooVeloV2wstETH-LDO",
@@ -1133,8 +1069,7 @@
       }
     ]
   },
-  "velodrome-v2-weth-lusd": {
-    "chain": "optimism",
+  "0xc02DD405F37009609bD5ad8667825323aB72fD47": {
     "protocolToken": {
       "address": "0xc02DD405F37009609bD5ad8667825323aB72fD47",
       "symbol": "mooVeloV2LUSD-ETH",
@@ -1157,8 +1092,7 @@
       }
     ]
   },
-  "velodrome-v2-sonne-usdc": {
-    "chain": "optimism",
+  "0x642F04eCAa00D443fBf2de2AaC9A9e0ACfA4FCE7": {
     "protocolToken": {
       "address": "0x642F04eCAa00D443fBf2de2AaC9A9e0ACfA4FCE7",
       "symbol": "mooVeloV2SONNE-USDCe",
@@ -1181,8 +1115,7 @@
       }
     ]
   },
-  "velodrome-v2-weth-seth": {
-    "chain": "optimism",
+  "0x600e9d1b98FACD709a18dA5a61da96BcDEE608b7": {
     "protocolToken": {
       "address": "0x600e9d1b98FACD709a18dA5a61da96BcDEE608b7",
       "symbol": "mooVeloV2sETH-ETH",
@@ -1205,8 +1138,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-dai": {
-    "chain": "optimism",
+  "0x7c2967C20B03a8004ea81e86Ac1847D00e7B4CD1": {
     "protocolToken": {
       "address": "0x7c2967C20B03a8004ea81e86Ac1847D00e7B4CD1",
       "symbol": "mooVeloV2DAI-USDCe",
@@ -1229,8 +1161,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-susd": {
-    "chain": "optimism",
+  "0x182fe51442C7D65360eD1511f30be6261c2C20C1": {
     "protocolToken": {
       "address": "0x182fe51442C7D65360eD1511f30be6261c2C20C1",
       "symbol": "mooVeloV2sUSD-USDCe",
@@ -1253,8 +1184,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-lusd": {
-    "chain": "optimism",
+  "0x972F747285c2f32699CEFFEbdcF2Ae74F4b58D0c": {
     "protocolToken": {
       "address": "0x972F747285c2f32699CEFFEbdcF2Ae74F4b58D0c",
       "symbol": "mooVeloV2LUSD-USDCe",
@@ -1277,8 +1207,7 @@
       }
     ]
   },
-  "velodrome-v2-frax-dola": {
-    "chain": "optimism",
+  "0x1973ef31F2A82B3f73b8C9Ee1c440615084d5242": {
     "protocolToken": {
       "address": "0x1973ef31F2A82B3f73b8C9Ee1c440615084d5242",
       "symbol": "mooVeloV2DOLA-FRAX",
@@ -1301,8 +1230,7 @@
       }
     ]
   },
-  "velodrome-v2-frax-alusd": {
-    "chain": "optimism",
+  "0x9a02ab83e5139Ae8d4c6a9711D20b90DBC50c9f0": {
     "protocolToken": {
       "address": "0x9a02ab83e5139Ae8d4c6a9711D20b90DBC50c9f0",
       "symbol": "mooVeloV2alUSD-FRAX",
@@ -1325,8 +1253,7 @@
       }
     ]
   },
-  "velodrome-v2-aleth-frxeth": {
-    "chain": "optimism",
+  "0x100Cd460D7f549B4cc2Ed35d4ff20ac71B377C96": {
     "protocolToken": {
       "address": "0x100Cd460D7f549B4cc2Ed35d4ff20ac71B377C96",
       "symbol": "mooVeloV2alETH-frxETH",
@@ -1349,8 +1276,7 @@
       }
     ]
   },
-  "velodrome-v2-weth-reth": {
-    "chain": "optimism",
+  "0xD5bc7210867B2D4152E38e69A6cd41b7b917833f": {
     "protocolToken": {
       "address": "0xD5bc7210867B2D4152E38e69A6cd41b7b917833f",
       "symbol": "mooVelodromeV2rETH-ETH",
@@ -1373,8 +1299,7 @@
       }
     ]
   },
-  "velodrome-v2-wsteth-weth": {
-    "chain": "optimism",
+  "0x54214d0C7772eb6f71ED4De294b3f809691005C9": {
     "protocolToken": {
       "address": "0x54214d0C7772eb6f71ED4De294b3f809691005C9",
       "symbol": "mooVeloV2wstETH-WETH",
@@ -1397,8 +1322,7 @@
       }
     ]
   },
-  "velodrome-v2-wsteth-op": {
-    "chain": "optimism",
+  "0x65F4e00687f4059E4A9bF8E4338dbC9f0292fe2A": {
     "protocolToken": {
       "address": "0x65F4e00687f4059E4A9bF8E4338dbC9f0292fe2A",
       "symbol": "mooVeloV2wstETH-OP",
@@ -1421,8 +1345,7 @@
       }
     ]
   },
-  "velodrome-v2-op-velo": {
-    "chain": "optimism",
+  "0x04c4a21D7439eD05fd33469565541bF6464F7157": {
     "protocolToken": {
       "address": "0x04c4a21D7439eD05fd33469565541bF6464F7157",
       "symbol": "mooVeloV2OP-VELO",
@@ -1445,8 +1368,7 @@
       }
     ]
   },
-  "velodrome-v2-aleth-weth": {
-    "chain": "optimism",
+  "0x1A1F0Db1050D1cAD52eEB72371EbFD7716b53a2f": {
     "protocolToken": {
       "address": "0x1A1F0Db1050D1cAD52eEB72371EbFD7716b53a2f",
       "symbol": "mooVeloV2alETH-WETH",
@@ -1469,8 +1391,7 @@
       }
     ]
   },
-  "velodrome-v2-wusdr-usdc": {
-    "chain": "optimism",
+  "0xD9E277eA320C53dE06C535f0D922A76a68CB9A9C": {
     "protocolToken": {
       "address": "0xD9E277eA320C53dE06C535f0D922A76a68CB9A9C",
       "symbol": "mooVeloV2wUSDR-USDCe",
@@ -1493,8 +1414,7 @@
       }
     ]
   },
-  "velodrome-v2-op-usdc": {
-    "chain": "optimism",
+  "0x52cC5B5CB98C9a7fb8cCe7d4b4e8F41E26ce04a8": {
     "protocolToken": {
       "address": "0x52cC5B5CB98C9a7fb8cCe7d4b4e8F41E26ce04a8",
       "symbol": "mooVeloV2OP-USDCe",
@@ -1517,8 +1437,7 @@
       }
     ]
   },
-  "velodrome-v2-usdt-lusd": {
-    "chain": "optimism",
+  "0x6Fb45a8183660F30EA1c6cDFDDBFdC7ef7925801": {
     "protocolToken": {
       "address": "0x6Fb45a8183660F30EA1c6cDFDDBFdC7ef7925801",
       "symbol": "mooVeloV2LUSD-USDT",
@@ -1541,8 +1460,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-mai": {
-    "chain": "optimism",
+  "0xef8D6dDE0a0f0CCdaDB678366a94D93f1C449689": {
     "protocolToken": {
       "address": "0xef8D6dDE0a0f0CCdaDB678366a94D93f1C449689",
       "symbol": "mooVeloV2MAI-USDCe",
@@ -1565,8 +1483,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-dola": {
-    "chain": "optimism",
+  "0x453f61390ce6DfB668bbF4D93E58c94BB0ae81f3": {
     "protocolToken": {
       "address": "0x453f61390ce6DfB668bbF4D93E58c94BB0ae81f3",
       "symbol": "mooVeloV2DOLA-USDCe",
@@ -1589,8 +1506,7 @@
       }
     ]
   },
-  "velodrome-v2-weth-usdc": {
-    "chain": "optimism",
+  "0x28bAF22c85D146101198D1883281a83cBe063329": {
     "protocolToken": {
       "address": "0x28bAF22c85D146101198D1883281a83cBe063329",
       "symbol": "mooVeloV2WETH-USDCe",
@@ -1613,8 +1529,7 @@
       }
     ]
   },
-  "velodrome-v2-weth-frxeth": {
-    "chain": "optimism",
+  "0x06E0A84c71dBD037c618CCf90798474E0e6f9C91": {
     "protocolToken": {
       "address": "0x06E0A84c71dBD037c618CCf90798474E0e6f9C91",
       "symbol": "mooVeloV2ETH-frxETH",
@@ -1637,8 +1552,7 @@
       }
     ]
   },
-  "velodrome-v2-sfrxeth-frxeth": {
-    "chain": "optimism",
+  "0x88F72d1f49Ea88f86fc52bebB0c1d0Ef232AE483": {
     "protocolToken": {
       "address": "0x88F72d1f49Ea88f86fc52bebB0c1d0Ef232AE483",
       "symbol": "mooVeloV2sfrxETH-frxETH",
@@ -1661,8 +1575,7 @@
       }
     ]
   },
-  "velodrome-v2-usdc-usdt": {
-    "chain": "optimism",
+  "0x8aD01c3a425987c508A69149185383BAf6F47534": {
     "protocolToken": {
       "address": "0x8aD01c3a425987c508A69149185383BAf6F47534",
       "symbol": "mooVeloV2USDC-USDT",
@@ -1685,8 +1598,7 @@
       }
     ]
   },
-  "velodrome-v2-alusd-mai": {
-    "chain": "optimism",
+  "0xf659Fe930eEa70Bc49B6DD53d828CBaD12673a2a": {
     "protocolToken": {
       "address": "0xf659Fe930eEa70Bc49B6DD53d828CBaD12673a2a",
       "symbol": "mooVeloV2alUSD-MAI",
@@ -1709,32 +1621,7 @@
       }
     ]
   },
-  "velodrome-v2-op-ageur": {
-    "chain": "optimism",
-    "protocolToken": {
-      "address": "0x20881a4f1d09c0ec1305D84012bba8E0C97b3951",
-      "symbol": "mooVeloV2OP-agEUR",
-      "name": "vAMMV2-OP/agEUR",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9485aca5bbBE1667AD97c7fE7C4531a624C8b1ED",
-        "symbol": "EURA",
-        "name": "EURA (previously agEUR)",
-        "decimals": 18
-      },
-      {
-        "address": "0x4200000000000000000000000000000000000042",
-        "symbol": "OP",
-        "name": "OP",
-        "decimals": 18
-      }
-    ]
-  },
-  "mmy-op-mlp": {
-    "chain": "optimism",
+  "0x011028aB93B355308E4350D109F42aeCfA075604": {
     "protocolToken": {
       "address": "0x011028aB93B355308E4350D109F42aeCfA075604",
       "symbol": "mooMmyMLP",
@@ -1793,8 +1680,7 @@
       }
     ]
   },
-  "curve-op-f-mim": {
-    "chain": "optimism",
+  "0x5990002594b13e174885ba4D4Ec15B8a8A4485bb": {
     "protocolToken": {
       "address": "0x5990002594b13e174885ba4D4Ec15B8a8A4485bb",
       "symbol": "mooCurveMIM",
@@ -1829,8 +1715,7 @@
       }
     ]
   },
-  "stargate-op-dai": {
-    "chain": "optimism",
+  "0xC7Deff444145093f1B2054DBd3E68B2878D86552": {
     "protocolToken": {
       "address": "0xC7Deff444145093f1B2054DBd3E68B2878D86552",
       "symbol": "mooStargateDAI",
@@ -1847,8 +1732,7 @@
       }
     ]
   },
-  "hop-op-eth": {
-    "chain": "optimism",
+  "0xB8Ce10759feb3B63B75557f5f9933bD22127f0eC": {
     "protocolToken": {
       "address": "0xB8Ce10759feb3B63B75557f5f9933bD22127f0eC",
       "symbol": "mooHopETH",
@@ -1865,8 +1749,7 @@
       }
     ]
   },
-  "hop-op-dai": {
-    "chain": "optimism",
+  "0x062F29e2b5bD99523DD3508207eb2C2CbAf98D50": {
     "protocolToken": {
       "address": "0x062F29e2b5bD99523DD3508207eb2C2CbAf98D50",
       "symbol": "mooHopDAI",
@@ -1883,8 +1766,7 @@
       }
     ]
   },
-  "hop-op-usdt": {
-    "chain": "optimism",
+  "0xD019FD6267F93ebE5A92DEBB760135a4F02a75F7": {
     "protocolToken": {
       "address": "0xD019FD6267F93ebE5A92DEBB760135a4F02a75F7",
       "symbol": "mooHopUSDT",
@@ -1901,8 +1783,7 @@
       }
     ]
   },
-  "velodrome-usdc-mim": {
-    "chain": "optimism",
+  "0x6992333E5df2364eB1b6CF14DC0c86EB0865D6E2": {
     "protocolToken": {
       "address": "0x6992333E5df2364eB1b6CF14DC0c86EB0865D6E2",
       "symbol": "mooVeloUSDC-MIM",
@@ -1925,8 +1806,7 @@
       }
     ]
   },
-  "beets-rocket-fuel": {
-    "chain": "optimism",
+  "0xdCC5DC90A803928Dc21556590D4620030966270F": {
     "protocolToken": {
       "address": "0xdCC5DC90A803928Dc21556590D4620030966270F",
       "symbol": "mooBeetsRocketFuel",
@@ -1949,8 +1829,7 @@
       }
     ]
   },
-  "velodrome-usdc-dola": {
-    "chain": "optimism",
+  "0xa8fd81A0ec43841b64cDAE13F1F6816108fD37FF": {
     "protocolToken": {
       "address": "0xa8fd81A0ec43841b64cDAE13F1F6816108fD37FF",
       "symbol": "mooVelodromeUSDC-DOLA",
@@ -1973,8 +1852,7 @@
       }
     ]
   },
-  "velodrome-velo-op": {
-    "chain": "optimism",
+  "0x499287C138Aed9A107d748dDfd53668d104378B1": {
     "protocolToken": {
       "address": "0x499287C138Aed9A107d748dDfd53668d104378B1",
       "symbol": "mooVelodromeVELO-OP",
@@ -1997,8 +1875,7 @@
       }
     ]
   },
-  "stargate-op-usdc": {
-    "chain": "optimism",
+  "0xe536F8141D8EB7B1f096934AF3329cB581bFe995": {
     "protocolToken": {
       "address": "0xe536F8141D8EB7B1f096934AF3329cB581bFe995",
       "symbol": "mooStargateUSDC",
@@ -2015,8 +1892,7 @@
       }
     ]
   },
-  "stargate-op-eth": {
-    "chain": "optimism",
+  "0x79149B500f0d796aA7f85e0170d16C7e79BAd3C5": {
     "protocolToken": {
       "address": "0x79149B500f0d796aA7f85e0170d16C7e79BAd3C5",
       "symbol": "mooStargateETH",
@@ -2033,8 +1909,7 @@
       }
     ]
   },
-  "curve-op-f-sbtc": {
-    "chain": "optimism",
+  "0x25DE69dA4469A96974FaE79d0C41366A63317FDC": {
     "protocolToken": {
       "address": "0x25DE69dA4469A96974FaE79d0C41366A63317FDC",
       "symbol": "mooCurveFsBTC",
@@ -2057,8 +1932,7 @@
       }
     ]
   },
-  "beets-happy-road": {
-    "chain": "optimism",
+  "0x8e829cFC629fcb61c1508a54D232aF4612E48cC9": {
     "protocolToken": {
       "address": "0x8e829cFC629fcb61c1508a54D232aF4612E48cC9",
       "symbol": "mooBeetHappyRoad",

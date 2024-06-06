@@ -1,6 +1,28 @@
 {
-  "aura-base-weeth-weth": {
-    "chain": "base",
+  "0x3b5F990364fa9BF1Db34d9d24B0Bdca6eE4bD4B1": {
+    "protocolToken": {
+      "address": "0x3b5F990364fa9BF1Db34d9d24B0Bdca6eE4bD4B1",
+      "symbol": "mooAeroUSDz-USDC",
+      "name": "sAMM-USDz/USDC",
+      "decimals": 18,
+      "logo": "https://beefy.com/icons/icon-96x96.png"
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04D5ddf5f3a8939889F11E97f8c4BB48317F1938",
+        "symbol": "USDz",
+        "name": "Anzen USDz",
+        "decimals": 18
+      },
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "symbol": "USDC",
+        "name": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "0xc52393b27FeE4355Fe6a5DC92D25BC2Ed1B418Cb": {
     "protocolToken": {
       "address": "0xc52393b27FeE4355Fe6a5DC92D25BC2Ed1B418Cb",
       "symbol": "mooAuraBaseweETH-WETH",
@@ -17,8 +39,7 @@
       }
     ]
   },
-  "aerodrome-weth-ghst": {
-    "chain": "base",
+  "0x2494f1E2BADE141cE74d444d6F9012d7948AA362": {
     "protocolToken": {
       "address": "0x2494f1E2BADE141cE74d444d6F9012d7948AA362",
       "symbol": "mooAeroWETH-GHST",
@@ -35,8 +56,7 @@
       }
     ]
   },
-  "aerodrome-bsdeth-hyusd": {
-    "chain": "base",
+  "0xF7385b00e01eb1e29FF9786Be731A6614388Ad9A": {
     "protocolToken": {
       "address": "0xF7385b00e01eb1e29FF9786Be731A6614388Ad9A",
       "symbol": "mooAerobsdETH-hyUSD",
@@ -59,8 +79,7 @@
       }
     ]
   },
-  "aerodrome-weeth-weth": {
-    "chain": "base",
+  "0x47579C50c7AeDeA788D18927aed4c827Fe34996A": {
     "protocolToken": {
       "address": "0x47579C50c7AeDeA788D18927aed4c827Fe34996A",
       "symbol": "mooAeroweETH-WETH",
@@ -77,8 +96,7 @@
       }
     ]
   },
-  "aerodrome-weeth-aero": {
-    "chain": "base",
+  "0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83": {
     "protocolToken": {
       "address": "0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83",
       "symbol": "mooAeroweETH-AERO",
@@ -101,8 +119,7 @@
       }
     ]
   },
-  "aerodrome-weth-wrseth": {
-    "chain": "base",
+  "0xC5cD1A6d4918820201B8E4eeB6d2AdFD1CDF783d": {
     "protocolToken": {
       "address": "0xC5cD1A6d4918820201B8E4eeB6d2AdFD1CDF783d",
       "symbol": "mooAeroWETH-wrsETH",
@@ -119,8 +136,7 @@
       }
     ]
   },
-  "aerodrome-dola-rgusd": {
-    "chain": "base",
+  "0xE7A8955c4D8FC271bf9b51ad7dC4c665b199C2B3": {
     "protocolToken": {
       "address": "0xE7A8955c4D8FC271bf9b51ad7dC4c665b199C2B3",
       "symbol": "mooAeroDOLA-rgUSD",
@@ -143,8 +159,7 @@
       }
     ]
   },
-  "aerodrome-usdc-rgusd": {
-    "chain": "base",
+  "0x8C9df9654EEaD95Fb05e491FF490c5B193BFAbc9": {
     "protocolToken": {
       "address": "0x8C9df9654EEaD95Fb05e491FF490c5B193BFAbc9",
       "symbol": "mooAerorgUSD-USDC",
@@ -167,8 +182,7 @@
       }
     ]
   },
-  "aerodrome-rgusd-eusd": {
-    "chain": "base",
+  "0x998C93F7a4a7B6ebFf162083c95C70d3B8758776": {
     "protocolToken": {
       "address": "0x998C93F7a4a7B6ebFf162083c95C70d3B8758776",
       "symbol": "mooAerorgUSD-eUSD",
@@ -191,8 +205,7 @@
       }
     ]
   },
-  "equalizer-base-ichi-weth-usdbc": {
-    "chain": "base",
+  "0xf5761Ad89F84Ab4A2E41e4E5eF7bF75fFE69aa1c": {
     "protocolToken": {
       "address": "0xf5761Ad89F84Ab4A2E41e4E5eF7bF75fFE69aa1c",
       "symbol": "mooEqualizerIchiWETH-USDbC",
@@ -209,8 +222,7 @@
       }
     ]
   },
-  "equalizer-base-ichi-weth-usdc": {
-    "chain": "base",
+  "0x301BcB914074DD00759101e56761f14b03823658": {
     "protocolToken": {
       "address": "0x301BcB914074DD00759101e56761f14b03823658",
       "symbol": "mooEqualizerIchiWETH-USDC",
@@ -227,8 +239,7 @@
       }
     ]
   },
-  "equalizer-base-ichi-usdbc-weth": {
-    "chain": "base",
+  "0x9539D7c29C78207d15323EbF0A763e674011B66f": {
     "protocolToken": {
       "address": "0x9539D7c29C78207d15323EbF0A763e674011B66f",
       "symbol": "mooEqualizerIchiUSDbC-WETH",
@@ -251,8 +262,7 @@
       }
     ]
   },
-  "aerodrome-usd+-eusd": {
-    "chain": "base",
+  "0x478162ae7199A59E76bB246Cb8649542DCDd33Bd": {
     "protocolToken": {
       "address": "0x478162ae7199A59E76bB246Cb8649542DCDd33Bd",
       "symbol": "mooAeroUSD+-eUSD",
@@ -275,8 +285,7 @@
       }
     ]
   },
-  "aerodrome-usd+-wsteth": {
-    "chain": "base",
+  "0xD0f8f87e8Ce4831dD67C65000FACdee012945eeD": {
     "protocolToken": {
       "address": "0xD0f8f87e8Ce4831dD67C65000FACdee012945eeD",
       "symbol": "mooAeroUSD+-wstETH",
@@ -299,8 +308,7 @@
       }
     ]
   },
-  "aura-base-tbtc-weth": {
-    "chain": "base",
+  "0x715a4a6Afb44f87f8C4eE8d945Eb6B630A11E72c": {
     "protocolToken": {
       "address": "0x715a4a6Afb44f87f8C4eE8d945Eb6B630A11E72c",
       "symbol": "mooAuraBasetBTC-WETH",
@@ -317,8 +325,7 @@
       }
     ]
   },
-  "aerodrome-weth-normilio": {
-    "chain": "base",
+  "0xE738c3aa0F2B287d75cb8A321074Bc5bF42B5773": {
     "protocolToken": {
       "address": "0xE738c3aa0F2B287d75cb8A321074Bc5bF42B5773",
       "symbol": "mooAeroNORMILIO-ETH",
@@ -341,8 +348,7 @@
       }
     ]
   },
-  "aerodrome-usdc-mta": {
-    "chain": "base",
+  "0xa526b47455034a0dab0572826dF9b2aEB63CBb1C": {
     "protocolToken": {
       "address": "0xa526b47455034a0dab0572826dF9b2aEB63CBb1C",
       "symbol": "mooAeroMTA-USDC",
@@ -365,8 +371,7 @@
       }
     ]
   },
-  "aerodrome-weth-hop": {
-    "chain": "base",
+  "0x7E8aDe8CbBbAfaf49D44E0055aA65dbF60c3B1d8": {
     "protocolToken": {
       "address": "0x7E8aDe8CbBbAfaf49D44E0055aA65dbF60c3B1d8",
       "symbol": "mooAeroHOP-ETH",
@@ -389,8 +394,7 @@
       }
     ]
   },
-  "aerodrome-lusd-pool": {
-    "chain": "base",
+  "0xbF93166bE905Cb8E3C16bDA16a4eF3c3e46e1C1d": {
     "protocolToken": {
       "address": "0xbF93166bE905Cb8E3C16bDA16a4eF3c3e46e1C1d",
       "symbol": "mooAeroLUSD-POOL",
@@ -413,8 +417,7 @@
       }
     ]
   },
-  "aerodrome-lusd-usdc": {
-    "chain": "base",
+  "0x6C340D16a2A2f00b0F27336749BEa76fB2De501f": {
     "protocolToken": {
       "address": "0x6C340D16a2A2f00b0F27336749BEa76fB2De501f",
       "symbol": "mooAeroLUSD-USDC",
@@ -437,8 +440,7 @@
       }
     ]
   },
-  "aerodrome-usda-eura": {
-    "chain": "base",
+  "0x1345216de8C3E7e0076b862087607d63595465Ae": {
     "protocolToken": {
       "address": "0x1345216de8C3E7e0076b862087607d63595465Ae",
       "symbol": "mooAeroUSDA-EURA",
@@ -461,8 +463,7 @@
       }
     ]
   },
-  "aerodrome-usda-usdc": {
-    "chain": "base",
+  "0xb78a44BB1B12fB3F93E24a0b80AbA74FA79bEC45": {
     "protocolToken": {
       "address": "0xb78a44BB1B12fB3F93E24a0b80AbA74FA79bEC45",
       "symbol": "mooAeroUSDA-USDC",
@@ -485,8 +486,7 @@
       }
     ]
   },
-  "aerodrome-aero-ovn": {
-    "chain": "base",
+  "0xca8112A67B80E1Db2F6BA1c665a3fa22d6e4D0e9": {
     "protocolToken": {
       "address": "0xca8112A67B80E1Db2F6BA1c665a3fa22d6e4D0e9",
       "symbol": "mooAeroAERO-OVN",
@@ -509,8 +509,7 @@
       }
     ]
   },
-  "aerodrome-weth-qi": {
-    "chain": "base",
+  "0x8d2795767E17C3d0944101d1DCDF79b625601cd6": {
     "protocolToken": {
       "address": "0x8d2795767E17C3d0944101d1DCDF79b625601cd6",
       "symbol": "mooAeroWETH-QI",
@@ -533,8 +532,7 @@
       }
     ]
   },
-  "aerodrome-mog-weth": {
-    "chain": "base",
+  "0x5B9dCfa5251D2deff3ED334077ee9E9A391616C1": {
     "protocolToken": {
       "address": "0x5B9dCfa5251D2deff3ED334077ee9E9A391616C1",
       "symbol": "mooAeroMog-ETH",
@@ -557,8 +555,7 @@
       }
     ]
   },
-  "aerodrome-mog-weth-bribe": {
-    "chain": "base",
+  "0x1e348AE6FCdE7Ff3914d8821B6A4F924c5e3D09a": {
     "protocolToken": {
       "address": "0x1e348AE6FCdE7Ff3914d8821B6A4F924c5e3D09a",
       "symbol": "mooAeroBribeMog-ETH",
@@ -581,8 +578,7 @@
       }
     ]
   },
-  "aerodrome-hpc-weth": {
-    "chain": "base",
+  "0x0f13620550Be4721Afd82e24abDdDae3F2947880": {
     "protocolToken": {
       "address": "0x0f13620550Be4721Afd82e24abDdDae3F2947880",
       "symbol": "mooAeroHPC-ETH",
@@ -605,8 +601,7 @@
       }
     ]
   },
-  "aerodrome-weth-npc": {
-    "chain": "base",
+  "0x54b0EA8860B5E8b419FbDd200e05c7DC1ba97413": {
     "protocolToken": {
       "address": "0x54b0EA8860B5E8b419FbDd200e05c7DC1ba97413",
       "symbol": "mooAeroNPC-ETH",
@@ -629,8 +624,7 @@
       }
     ]
   },
-  "aerodrome-weth-chad": {
-    "chain": "base",
+  "0xe2889d1610fBe19444cd45b37e2acA236B0fdB0e": {
     "protocolToken": {
       "address": "0xe2889d1610fBe19444cd45b37e2acA236B0fdB0e",
       "symbol": "mooAeroCHAD-ETH",
@@ -653,8 +647,7 @@
       }
     ]
   },
-  "aerodrome-anime-weth": {
-    "chain": "base",
+  "0x4FC5A435B5462de83B9773C932a073db7f291C53": {
     "protocolToken": {
       "address": "0x4FC5A435B5462de83B9773C932a073db7f291C53",
       "symbol": "mooAeroANIME-ETH",
@@ -677,8 +670,7 @@
       }
     ]
   },
-  "aerodrome-aero-usd+": {
-    "chain": "base",
+  "0x74A1A64955280b021E1c32b2f8B88D48456DCB3e": {
     "protocolToken": {
       "address": "0x74A1A64955280b021E1c32b2f8B88D48456DCB3e",
       "symbol": "mooAeroUSD+-AERO",
@@ -701,8 +693,7 @@
       }
     ]
   },
-  "aerodrome-weth-rock": {
-    "chain": "base",
+  "0x2bC902E8240C862e4C26d90AFfCAaf2255ce2f4e": {
     "protocolToken": {
       "address": "0x2bC902E8240C862e4C26d90AFfCAaf2255ce2f4e",
       "symbol": "mooAeroWETH-ROCK",
@@ -725,8 +716,7 @@
       }
     ]
   },
-  "aerodrome-weth-jarvis": {
-    "chain": "base",
+  "0x2f824157912b0a2d377573A8404Cb28ED590ED86": {
     "protocolToken": {
       "address": "0x2f824157912b0a2d377573A8404Cb28ED590ED86",
       "symbol": "mooAeroWETH-JARVIS",
@@ -749,8 +739,7 @@
       }
     ]
   },
-  "aerodrome-usd+-sfrax": {
-    "chain": "base",
+  "0x5A60F3eCe2B663796Cd2b86c213Cf2274CD4fb4F": {
     "protocolToken": {
       "address": "0x5A60F3eCe2B663796Cd2b86c213Cf2274CD4fb4F",
       "symbol": "mooAeroUSD+-sFRAX",
@@ -773,8 +762,7 @@
       }
     ]
   },
-  "aerodrome-sfrxeth-aero": {
-    "chain": "base",
+  "0x8251eA1b51CCD54A26f18022cB40aA8A919Db06f": {
     "protocolToken": {
       "address": "0x8251eA1b51CCD54A26f18022cB40aA8A919Db06f",
       "symbol": "mooAerosfrxETH-AERO",
@@ -797,8 +785,7 @@
       }
     ]
   },
-  "aerodrome-sfrxeth-fxs": {
-    "chain": "base",
+  "0xd73996B73122906f4B43766DeACbD05c00FE46b4": {
     "protocolToken": {
       "address": "0xd73996B73122906f4B43766DeACbD05c00FE46b4",
       "symbol": "mooAerosfrxETH-FXS",
@@ -821,8 +808,7 @@
       }
     ]
   },
-  "aerodrome-usdc-sfrax": {
-    "chain": "base",
+  "0x9757f8aF3a5A50844eA334C538De43a5EB835e88": {
     "protocolToken": {
       "address": "0x9757f8aF3a5A50844eA334C538De43a5EB835e88",
       "symbol": "mooAeroUSDC-sFRAX",
@@ -845,8 +831,7 @@
       }
     ]
   },
-  "aerodrome-fxs-usdc": {
-    "chain": "base",
+  "0x2cCd7Ed44cD801836A32930351ccc2d64Da76170": {
     "protocolToken": {
       "address": "0x2cCd7Ed44cD801836A32930351ccc2d64Da76170",
       "symbol": "mooAeroFXS-USDC",
@@ -869,8 +854,7 @@
       }
     ]
   },
-  "aerodrome-wbasedoge-aero": {
-    "chain": "base",
+  "0x650170AfC2A0061E35E66B0Fa4f4820Cd808994c": {
     "protocolToken": {
       "address": "0x650170AfC2A0061E35E66B0Fa4f4820Cd808994c",
       "symbol": "mooAerowBaseDOGE-AERO",
@@ -893,8 +877,7 @@
       }
     ]
   },
-  "aerodrome-wbasedoge-weth": {
-    "chain": "base",
+  "0x9FC8a20520cec937448a003A396dc6691ceE0882": {
     "protocolToken": {
       "address": "0x9FC8a20520cec937448a003A396dc6691ceE0882",
       "symbol": "mooAerowBaseDOGE-ETH",
@@ -911,8 +894,7 @@
       }
     ]
   },
-  "aerodrome-rsr-bsdeth": {
-    "chain": "base",
+  "0x22a0B976b3c2f1f695e25A15b8449a785F17f8Ae": {
     "protocolToken": {
       "address": "0x22a0B976b3c2f1f695e25A15b8449a785F17f8Ae",
       "symbol": "mooAeroRSR-bsdETH",
@@ -935,8 +917,7 @@
       }
     ]
   },
-  "aerodrome-weth-bwell": {
-    "chain": "base",
+  "0xacDBb7c90C0F764cA7BB5307d18C5b211Fbd9C00": {
     "protocolToken": {
       "address": "0xacDBb7c90C0F764cA7BB5307d18C5b211Fbd9C00",
       "symbol": "mooAeroWETH-bWELL",
@@ -959,8 +940,7 @@
       }
     ]
   },
-  "aerodrome-ezeth-weth": {
-    "chain": "base",
+  "0xAB7EeE0a368079D2fBfc83599eD0148a16d0Ea09": {
     "protocolToken": {
       "address": "0xAB7EeE0a368079D2fBfc83599eD0148a16d0Ea09",
       "symbol": "mooAeroezETH-ETH",
@@ -977,8 +957,7 @@
       }
     ]
   },
-  "aerodrome-ezeth-weth-s": {
-    "chain": "base",
+  "0x90A7de0E16CA4521B1E4C3dBBA4edAA2354aB81B": {
     "protocolToken": {
       "address": "0x90A7de0E16CA4521B1E4C3dBBA4edAA2354aB81B",
       "symbol": "mooAeroezETH-ETH-s",
@@ -995,8 +974,7 @@
       }
     ]
   },
-  "compound-base-usdc": {
-    "chain": "base",
+  "0xeF6ED674486E54507d0f711C0d388BD8a1552E6F": {
     "protocolToken": {
       "address": "0xeF6ED674486E54507d0f711C0d388BD8a1552E6F",
       "symbol": "mooCompoundBaseUSDC",
@@ -1013,8 +991,7 @@
       }
     ]
   },
-  "aerodrome-weth-l2ve": {
-    "chain": "base",
+  "0xE0927cfb0F281Ae086fcd93DAd49F6e9dD318Aef": {
     "protocolToken": {
       "address": "0xE0927cfb0F281Ae086fcd93DAd49F6e9dD318Aef",
       "symbol": "mooAeroL2VE-ETH",
@@ -1031,8 +1008,7 @@
       }
     ]
   },
-  "aerodrome-weth-doginme": {
-    "chain": "base",
+  "0xe061fF2edaC3dA4F27A43df55F1Ae8118a1a916f": {
     "protocolToken": {
       "address": "0xe061fF2edaC3dA4F27A43df55F1Ae8118a1a916f",
       "symbol": "mooAerodoginme-ETH",
@@ -1049,8 +1025,7 @@
       }
     ]
   },
-  "aerodrome-snx-usdc": {
-    "chain": "base",
+  "0x5076392C96F546eB0FF98FA32AD0890f2B8e84Cb": {
     "protocolToken": {
       "address": "0x5076392C96F546eB0FF98FA32AD0890f2B8e84Cb",
       "symbol": "mooAeroSNX-USDC",
@@ -1073,8 +1048,7 @@
       }
     ]
   },
-  "aerodrome-tbtc-t": {
-    "chain": "base",
+  "0xeB508910b23cBbc735708E43Da1aA50dB2C15c07": {
     "protocolToken": {
       "address": "0xeB508910b23cBbc735708E43Da1aA50dB2C15c07",
       "symbol": "mooAerotBTC-T",
@@ -1097,8 +1071,7 @@
       }
     ]
   },
-  "aerodrome-weth-reth": {
-    "chain": "base",
+  "0x74251C0d0B74Fba6e3B3EDe8533D9Da82B4EC4a4": {
     "protocolToken": {
       "address": "0x74251C0d0B74Fba6e3B3EDe8533D9Da82B4EC4a4",
       "symbol": "mooAeroETH-rETH",
@@ -1121,8 +1094,7 @@
       }
     ]
   },
-  "aerodrome-aero-dog": {
-    "chain": "base",
+  "0xCcD171Ab4A292586F763e533C32E8b148FA0F2fF": {
     "protocolToken": {
       "address": "0xCcD171Ab4A292586F763e533C32E8b148FA0F2fF",
       "symbol": "mooAeroAERO-DOG",
@@ -1145,8 +1117,7 @@
       }
     ]
   },
-  "aerodrome-weth-dog": {
-    "chain": "base",
+  "0x8A7104cD0ce2a779917f1069Cd5d95c1c9a0b29f": {
     "protocolToken": {
       "address": "0x8A7104cD0ce2a779917f1069Cd5d95c1c9a0b29f",
       "symbol": "mooAeroWETH-DOG",
@@ -1169,8 +1140,7 @@
       }
     ]
   },
-  "aerodrome-tybg-weth": {
-    "chain": "base",
+  "0x89303abD5E328Bd5d09920641a779783A228f412": {
     "protocolToken": {
       "address": "0x89303abD5E328Bd5d09920641a779783A228f412",
       "symbol": "mooAeroTYBG-WETH",
@@ -1187,8 +1157,7 @@
       }
     ]
   },
-  "aerodrome-weth-bsdeth": {
-    "chain": "base",
+  "0xB614A6E6c21202De79DceB95AE2dd4817DD7e14b": {
     "protocolToken": {
       "address": "0xB614A6E6c21202De79DceB95AE2dd4817DD7e14b",
       "symbol": "mooAeroWETH-bsdETH",
@@ -1205,8 +1174,7 @@
       }
     ]
   },
-  "aerodrome-weth-usd+": {
-    "chain": "base",
+  "0xE20B37F6EB24c7DF62D72B587cB5406cf843Df10": {
     "protocolToken": {
       "address": "0xE20B37F6EB24c7DF62D72B587cB5406cf843Df10",
       "symbol": "mooAeroWETH-USD+",
@@ -1223,8 +1191,7 @@
       }
     ]
   },
-  "aerodrome-mai-eusd": {
-    "chain": "base",
+  "0x4d5767A102381B3286da9475E64ce2D3F0Ae88eD": {
     "protocolToken": {
       "address": "0x4d5767A102381B3286da9475E64ce2D3F0Ae88eD",
       "symbol": "mooAeroMAI-eUSD",
@@ -1247,8 +1214,7 @@
       }
     ]
   },
-  "aerodrome-usdc+-usd+": {
-    "chain": "base",
+  "0x84c6a31dB4e9a23334039F5183E6D6840257a322": {
     "protocolToken": {
       "address": "0x84c6a31dB4e9a23334039F5183E6D6840257a322",
       "symbol": "mooAeroUSDC+-USD+",
@@ -1271,8 +1237,7 @@
       }
     ]
   },
-  "aerodrome-tbtc-usdc": {
-    "chain": "base",
+  "0xC3a5b142a144135D900FC5Ef2Bb7E92a3bcB46F1": {
     "protocolToken": {
       "address": "0xC3a5b142a144135D900FC5Ef2Bb7E92a3bcB46F1",
       "symbol": "mooAerotBTC-USDC",
@@ -1295,8 +1260,7 @@
       }
     ]
   },
-  "aerodrome-usdc-aero": {
-    "chain": "base",
+  "0xc005B9833deBcF5fe6cc5bC9ba4fD74Bb382ae55": {
     "protocolToken": {
       "address": "0xc005B9833deBcF5fe6cc5bC9ba4fD74Bb382ae55",
       "symbol": "mooAeroUSDC-AERO",
@@ -1319,8 +1283,7 @@
       }
     ]
   },
-  "aerodrome-sonne-usdc": {
-    "chain": "base",
+  "0xAcd23676d95f3314D5A7538C635fFdb6E66c4f9f": {
     "protocolToken": {
       "address": "0xAcd23676d95f3314D5A7538C635fFdb6E66c4f9f",
       "symbol": "mooAeroSONNE-USDC",
@@ -1343,8 +1306,7 @@
       }
     ]
   },
-  "aerodrome-usdc-usd+": {
-    "chain": "base",
+  "0x47AE764B53a4088Fa706fa76711F20ED07fE11d7": {
     "protocolToken": {
       "address": "0x47AE764B53a4088Fa706fa76711F20ED07fE11d7",
       "symbol": "mooAeroUSDC-USD+",
@@ -1367,8 +1329,7 @@
       }
     ]
   },
-  "aerodrome-weth-usdc": {
-    "chain": "base",
+  "0x09139A80454609B69700836a9eE12Db4b5DBB15f": {
     "protocolToken": {
       "address": "0x09139A80454609B69700836a9eE12Db4b5DBB15f",
       "symbol": "mooAeroETH-USDC",
@@ -1385,8 +1346,7 @@
       }
     ]
   },
-  "aerodrome-dai-usdc": {
-    "chain": "base",
+  "0x315043e79Cc1c2a71199769087CeF61f8a4297a0": {
     "protocolToken": {
       "address": "0x315043e79Cc1c2a71199769087CeF61f8a4297a0",
       "symbol": "mooAeroDAI-USDC",
@@ -1409,8 +1369,7 @@
       }
     ]
   },
-  "aerodrome-usdc-eusd": {
-    "chain": "base",
+  "0x8bd6dF821513aECDbbaa29C1d5212b43fdCe7819": {
     "protocolToken": {
       "address": "0x8bd6dF821513aECDbbaa29C1d5212b43fdCe7819",
       "symbol": "mooAeroUSDC-eUSD",
@@ -1433,8 +1392,7 @@
       }
     ]
   },
-  "aerodrome-usdc-mai": {
-    "chain": "base",
+  "0x22F8ff24861a7F7e2ec9b19C5668b43bB69202E3": {
     "protocolToken": {
       "address": "0x22F8ff24861a7F7e2ec9b19C5668b43bB69202E3",
       "symbol": "mooAeroUSDC-MAI",
@@ -1457,8 +1415,7 @@
       }
     ]
   },
-  "aerodrome-dola-usdc": {
-    "chain": "base",
+  "0x5A47993216fa6ACaf93418f9830cee485e82d0ba": {
     "protocolToken": {
       "address": "0x5A47993216fa6ACaf93418f9830cee485e82d0ba",
       "symbol": "mooAeroDOLA-USDC",
@@ -1481,8 +1438,7 @@
       }
     ]
   },
-  "aerodrome-aero-wsteth": {
-    "chain": "base",
+  "0x06a613d3a056d4b04D7523C11d82c67Bebf9d850": {
     "protocolToken": {
       "address": "0x06a613d3a056d4b04D7523C11d82c67Bebf9d850",
       "symbol": "mooAeroAERO-wstETH",
@@ -1505,8 +1461,7 @@
       }
     ]
   },
-  "aerodrome-weth-wsteth": {
-    "chain": "base",
+  "0x507094549509Efdf63ecA34B795094065cB04008": {
     "protocolToken": {
       "address": "0x507094549509Efdf63ecA34B795094065cB04008",
       "symbol": "mooAeroWETH-wstETH",
@@ -1523,8 +1478,7 @@
       }
     ]
   },
-  "aerodrome-hyusd-eusd": {
-    "chain": "base",
+  "0xB62F13126fCD0dD49dE8fF811406554197Bd0E11": {
     "protocolToken": {
       "address": "0xB62F13126fCD0dD49dE8fF811406554197Bd0E11",
       "symbol": "mooAerohyUSD-eUSD",
@@ -1547,8 +1501,7 @@
       }
     ]
   },
-  "aerodrome-eusd-usdbc": {
-    "chain": "base",
+  "0xFB6864F1c14A90E85398B853701B01ef6a0CA3E5": {
     "protocolToken": {
       "address": "0xFB6864F1c14A90E85398B853701B01ef6a0CA3E5",
       "symbol": "mooAeroeUSD-USDbC",
@@ -1571,8 +1524,7 @@
       }
     ]
   },
-  "compound-base-eth": {
-    "chain": "base",
+  "0x62e5B9934dCB87618CFC74B222305D16C997E8c1": {
     "protocolToken": {
       "address": "0x62e5B9934dCB87618CFC74B222305D16C997E8c1",
       "symbol": "mooCompoundBaseETH",
@@ -1582,8 +1534,7 @@
     },
     "underlyingTokens": []
   },
-  "compound-base-usdbc": {
-    "chain": "base",
+  "0xD7803d3Bf95517D204CFc6211678cAb223aC4c48": {
     "protocolToken": {
       "address": "0xD7803d3Bf95517D204CFc6211678cAb223aC4c48",
       "symbol": "mooCompoundBaseUSDbC",
@@ -1600,26 +1551,7 @@
       }
     ]
   },
-  "equalizer-base-weth-usdc": {
-    "chain": "base",
-    "protocolToken": {
-      "address": "0x6cBC8465E56EBaE04cD55f6aC91f310BcEE091bA",
-      "symbol": "mooEqualizerBaseUSDC-ETH",
-      "name": "USDC-ETH vLP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      }
-    ]
-  },
-  "equalizer-base-weth-usdbc": {
-    "chain": "base",
+  "0x96C942291c6B8AbE8262F6806217A8E5B1854edb": {
     "protocolToken": {
       "address": "0x96C942291c6B8AbE8262F6806217A8E5B1854edb",
       "symbol": "mooEqualizerBaseUSDbC-ETH",
@@ -1636,8 +1568,7 @@
       }
     ]
   },
-  "aerodrome-ovn-usd+": {
-    "chain": "base",
+  "0x98bEAa72230788572e3e3Be58D91C232dda315d4": {
     "protocolToken": {
       "address": "0x98bEAa72230788572e3e3Be58D91C232dda315d4",
       "symbol": "mooAeroOVN-USD+",
@@ -1660,8 +1591,7 @@
       }
     ]
   },
-  "curve-base-usd+": {
-    "chain": "base",
+  "0x0Bc7e0B17d684Fd5c514B164185fBeAFC836e43c": {
     "protocolToken": {
       "address": "0x0Bc7e0B17d684Fd5c514B164185fBeAFC836e43c",
       "symbol": "mooCurveUSD+crvUSD-f",
@@ -1684,8 +1614,7 @@
       }
     ]
   },
-  "baseswap-weth-bsx": {
-    "chain": "base",
+  "0xaBBDBe300Cd5568105Bd0A8e3CF97B5080b5460d": {
     "protocolToken": {
       "address": "0xaBBDBe300Cd5568105Bd0A8e3CF97B5080b5460d",
       "symbol": "mooBaseSwapWETH-BSX",
@@ -1702,8 +1631,7 @@
       }
     ]
   },
-  "baseswap-usdc-usdbc": {
-    "chain": "base",
+  "0xD0B67B8cA8bF17a6483cFcf39dB8e5bA0929A4cD": {
     "protocolToken": {
       "address": "0xD0B67B8cA8bF17a6483cFcf39dB8e5bA0929A4cD",
       "symbol": "mooBaseSwapUSDC-USDbC",
@@ -1726,8 +1654,7 @@
       }
     ]
   },
-  "balancer-base-usdc-usdbc-axlusdc": {
-    "chain": "base",
+  "0x18A86f5E00200E1Df11210579fe6CdE565112bB8": {
     "protocolToken": {
       "address": "0x18A86f5E00200E1Df11210579fe6CdE565112bB8",
       "symbol": "mooBalancerBaseUSDC/USDbC/axlUSDC",
@@ -1756,8 +1683,7 @@
       }
     ]
   },
-  "balancer-base-weth-reth": {
-    "chain": "base",
+  "0x77B3B76A68B89541Cbb60d3609988376290Cb929": {
     "protocolToken": {
       "address": "0x77B3B76A68B89541Cbb60d3609988376290Cb929",
       "symbol": "mooBalancerBaseWETH-rETH",
@@ -1774,8 +1700,7 @@
       }
     ]
   },
-  "baseswap-weth-usdc": {
-    "chain": "base",
+  "0x408A31d0fF08a8bF2048b6d5c9AE27FF26934BB2": {
     "protocolToken": {
       "address": "0x408A31d0fF08a8bF2048b6d5c9AE27FF26934BB2",
       "symbol": "mooBaseSwapWETH-USDC",
@@ -1792,8 +1717,7 @@
       }
     ]
   },
-  "baseswap-weth-dai": {
-    "chain": "base",
+  "0x908D1120f3AECf52fEC8Bbd3D323579EFFe3DbB1": {
     "protocolToken": {
       "address": "0x908D1120f3AECf52fEC8Bbd3D323579EFFe3DbB1",
       "symbol": "mooBaseSwapWETH-DAI",
@@ -1810,8 +1734,7 @@
       }
     ]
   },
-  "aerodrome-dola-usd+": {
-    "chain": "base",
+  "0x3673339459D46BE8364124F06e751Dfeb06fEf2e": {
     "protocolToken": {
       "address": "0x3673339459D46BE8364124F06e751Dfeb06fEf2e",
       "symbol": "mooAeroDOLA-USD+",
@@ -1834,8 +1757,7 @@
       }
     ]
   },
-  "aerodrome-usdc-usdbc": {
-    "chain": "base",
+  "0x4Fc0E7cDfe0CF92762eaf3CEE9133239A2197391": {
     "protocolToken": {
       "address": "0x4Fc0E7cDfe0CF92762eaf3CEE9133239A2197391",
       "symbol": "mooAeroUSDC-USDbC",
@@ -1858,8 +1780,7 @@
       }
     ]
   },
-  "aerodrome-weth-dai": {
-    "chain": "base",
+  "0xd15B3cA05f6787F37E0D432938666005268baf11": {
     "protocolToken": {
       "address": "0xd15B3cA05f6787F37E0D432938666005268baf11",
       "symbol": "mooAeroWETH-DAI",
@@ -1882,8 +1803,7 @@
       }
     ]
   },
-  "baseswap-axlwbtc-usdbc": {
-    "chain": "base",
+  "0xC81C310cf5Cb1c9167808a241bBaeA7ebDFBFCFB": {
     "protocolToken": {
       "address": "0xC81C310cf5Cb1c9167808a241bBaeA7ebDFBFCFB",
       "symbol": "mooBaseSwapaxlWBTC-USDbC",
@@ -1906,8 +1826,7 @@
       }
     ]
   },
-  "baseswap-usd+-usdbc": {
-    "chain": "base",
+  "0x8EF290327aD528b620df470Ab261A99E9923e6aB": {
     "protocolToken": {
       "address": "0x8EF290327aD528b620df470Ab261A99E9923e6aB",
       "symbol": "mooBaseSwapUSD+-USDbC",
@@ -1930,8 +1849,7 @@
       }
     ]
   },
-  "curve-base-crv": {
-    "chain": "base",
+  "0xea33CcE28b3AbcE269f7D566e1F5F0F92C2b899B": {
     "protocolToken": {
       "address": "0xea33CcE28b3AbcE269f7D566e1F5F0F92C2b899B",
       "symbol": "mooCurveCRV-crvUSD",
@@ -1954,8 +1872,7 @@
       }
     ]
   },
-  "curve-base-4pool": {
-    "chain": "base",
+  "0xC3718d05478Edab1C40F84E8a7A65ca49D039A9f": {
     "protocolToken": {
       "address": "0xC3718d05478Edab1C40F84E8a7A65ca49D039A9f",
       "symbol": "mooCurve4pool",
@@ -1990,8 +1907,7 @@
       }
     ]
   },
-  "curve-base-tricrypto": {
-    "chain": "base",
+  "0x70c958d1F28f736f21140076d82B1e1e26D5e78B": {
     "protocolToken": {
       "address": "0x70c958d1F28f736f21140076d82B1e1e26D5e78B",
       "symbol": "mooCurveTriCrypto",
@@ -2014,8 +1930,7 @@
       }
     ]
   },
-  "aerodrome-dola-mai": {
-    "chain": "base",
+  "0x49a685870F7F0cF187abd3b6a8304a885c39d496": {
     "protocolToken": {
       "address": "0x49a685870F7F0cF187abd3b6a8304a885c39d496",
       "symbol": "mooAeroDOLA-MAI",
@@ -2038,8 +1953,7 @@
       }
     ]
   },
-  "aerodrome-weth-well": {
-    "chain": "base",
+  "0x7Fbdd51b59a7eA89Ea5Dd2A160D0002030e58c97": {
     "protocolToken": {
       "address": "0x7Fbdd51b59a7eA89Ea5Dd2A160D0002030e58c97",
       "symbol": "mooAeroWETH-WELL",
@@ -2062,8 +1976,7 @@
       }
     ]
   },
-  "aerodrome-weth-aero": {
-    "chain": "base",
+  "0x92868C059CfCd035ea204e3163Bd84b308dD358e": {
     "protocolToken": {
       "address": "0x92868C059CfCd035ea204e3163Bd84b308dD358e",
       "symbol": "mooAeroWETH-AERO",
@@ -2086,8 +1999,7 @@
       }
     ]
   },
-  "aerodrome-usd+-usdbc": {
-    "chain": "base",
+  "0x661413c7Baf43C53e6BEFF6567aAD4B4f58Bb10A": {
     "protocolToken": {
       "address": "0x661413c7Baf43C53e6BEFF6567aAD4B4f58Bb10A",
       "symbol": "mooAeroUSD+-USDbC",
@@ -2110,8 +2022,7 @@
       }
     ]
   },
-  "aerodrome-sonne-usdbc": {
-    "chain": "base",
+  "0x47AF3Cdd6EB64b79c20c15BBb586faF81597A5c3": {
     "protocolToken": {
       "address": "0x47AF3Cdd6EB64b79c20c15BBb586faF81597A5c3",
       "symbol": "mooAeroSONNE-USDbC",
@@ -2134,8 +2045,7 @@
       }
     ]
   },
-  "aerodrome-usdbc-thales": {
-    "chain": "base",
+  "0x27DabE148d85B5B7247BAC0de49B2f31CB2C8573": {
     "protocolToken": {
       "address": "0x27DabE148d85B5B7247BAC0de49B2f31CB2C8573",
       "symbol": "mooAeroTHALES-USDbC",
@@ -2158,8 +2068,7 @@
       }
     ]
   },
-  "aerodrome-weth-thales": {
-    "chain": "base",
+  "0x836ec60d5088c7940fB42F1E04A3e5df2199668b": {
     "protocolToken": {
       "address": "0x836ec60d5088c7940fB42F1E04A3e5df2199668b",
       "symbol": "mooAeroTHALES-ETH",
@@ -2176,8 +2085,7 @@
       }
     ]
   },
-  "aerodrome-ageur-usdbc": {
-    "chain": "base",
+  "0x55258aAE799E72444A9261DFf46c271E5a063091": {
     "protocolToken": {
       "address": "0x55258aAE799E72444A9261DFf46c271E5a063091",
       "symbol": "mooAeroagEUR-USDbC",
@@ -2200,8 +2108,7 @@
       }
     ]
   },
-  "aerodrome-aero-usdbc": {
-    "chain": "base",
+  "0xaB4Eb7D54A3282878A476F5a137b8C4756829479": {
     "protocolToken": {
       "address": "0xaB4Eb7D54A3282878A476F5a137b8C4756829479",
       "symbol": "mooAeroV2AEROUSDbC",
@@ -2224,8 +2131,7 @@
       }
     ]
   },
-  "aerodrome-mai-usdbc": {
-    "chain": "base",
+  "0xCbbB6d843C57f5FCE5774c13c7464bE9D2bbA424": {
     "protocolToken": {
       "address": "0xCbbB6d843C57f5FCE5774c13c7464bE9D2bbA424",
       "symbol": "mooAeroMAI-USDbC",
@@ -2248,8 +2154,7 @@
       }
     ]
   },
-  "aerodrome-tbtc-usdbc": {
-    "chain": "base",
+  "0x5D520c786F8223572dc821B26f516472D7Ad416D": {
     "protocolToken": {
       "address": "0x5D520c786F8223572dc821B26f516472D7Ad416D",
       "symbol": "mooAerotBTC-USDbC",
@@ -2272,8 +2177,7 @@
       }
     ]
   },
-  "aerodrome-tbtc-weth": {
-    "chain": "base",
+  "0x366E0CD6c5b8906e456432B0c8Fb62557E68282f": {
     "protocolToken": {
       "address": "0x366E0CD6c5b8906e456432B0c8Fb62557E68282f",
       "symbol": "mooAerotBTC-ETH",
@@ -2290,8 +2194,7 @@
       }
     ]
   },
-  "aerodrome-dai+-usd+": {
-    "chain": "base",
+  "0xAcb4dc75D61478cfcD60DFa87df2774b47223275": {
     "protocolToken": {
       "address": "0xAcb4dc75D61478cfcD60DFa87df2774b47223275",
       "symbol": "mooAeroDAI+-USD+",
@@ -2314,8 +2217,7 @@
       }
     ]
   },
-  "aerodrome-cbeth-weth": {
-    "chain": "base",
+  "0xd0c3E7f86338403Df99DEa1996f6C9Ed8f9D3d07": {
     "protocolToken": {
       "address": "0xd0c3E7f86338403Df99DEa1996f6C9Ed8f9D3d07",
       "symbol": "mooAerocbETH-WETH",
@@ -2332,8 +2234,7 @@
       }
     ]
   },
-  "aerodrome-dola-usdbc": {
-    "chain": "base",
+  "0xbE3F14312B08E9c6AEe6AeB27B37c08B661A7F83": {
     "protocolToken": {
       "address": "0xbE3F14312B08E9c6AEe6AeB27B37c08B661A7F83",
       "symbol": "mooAeroDOLA-USDbC",
@@ -2356,8 +2257,7 @@
       }
     ]
   },
-  "aerodrome-weth-usdbc": {
-    "chain": "base",
+  "0x961A5ba3E52c77F69e642aC18cB35650b43bC329": {
     "protocolToken": {
       "address": "0x961A5ba3E52c77F69e642aC18cB35650b43bC329",
       "symbol": "mooAeroWETH-USDbC",
@@ -2374,8 +2274,7 @@
       }
     ]
   },
-  "aerodrome-dai-usdbc": {
-    "chain": "base",
+  "0xF890d4D7AfcA27a454354155F8889457e08bdB68": {
     "protocolToken": {
       "address": "0xF890d4D7AfcA27a454354155F8889457e08bdB68",
       "symbol": "mooAeroDAI-USDbC",
@@ -2398,8 +2297,7 @@
       }
     ]
   },
-  "aerodrome-wusdr-usdbc": {
-    "chain": "base",
+  "0x8aeDd79BC918722d4948502b18deceaBeD60d044": {
     "protocolToken": {
       "address": "0x8aeDd79BC918722d4948502b18deceaBeD60d044",
       "symbol": "mooAerowUSDR-USDbC",
@@ -2422,8 +2320,7 @@
       }
     ]
   },
-  "baso-weth-usdbc": {
-    "chain": "base",
+  "0x7C72503016B98D9B89865A910adE7888fA989766": {
     "protocolToken": {
       "address": "0x7C72503016B98D9B89865A910adE7888fA989766",
       "symbol": "mooBasoWETH-USDbC",
@@ -2440,8 +2337,7 @@
       }
     ]
   },
-  "alienbase-alb": {
-    "chain": "base",
+  "0xbBdeAaa32CBCE61E0A2809edcAE8d1857c55A5DD": {
     "protocolToken": {
       "address": "0xbBdeAaa32CBCE61E0A2809edcAE8d1857c55A5DD",
       "symbol": "mooAlienBaseALB",
@@ -2458,8 +2354,7 @@
       }
     ]
   },
-  "alienbase-dai+-usd+": {
-    "chain": "base",
+  "0x1E8Be52feFa2131CE60889FB0E7438c340D4b7f4": {
     "protocolToken": {
       "address": "0x1E8Be52feFa2131CE60889FB0E7438c340D4b7f4",
       "symbol": "mooAlienBaseDAI+-USD+",
@@ -2482,8 +2377,7 @@
       }
     ]
   },
-  "alienbase-usd+-usdbc": {
-    "chain": "base",
+  "0xD89DADEd29D3C1071a2d03e4A2D31C459e6E5341": {
     "protocolToken": {
       "address": "0xD89DADEd29D3C1071a2d03e4A2D31C459e6E5341",
       "symbol": "mooAlienBaseUSD+-USDbC",
@@ -2506,8 +2400,7 @@
       }
     ]
   },
-  "swapbased-usd+-usdbc": {
-    "chain": "base",
+  "0x19F31Dd2F4AFBe302FcF9899da4B1e49757A02f4": {
     "protocolToken": {
       "address": "0x19F31Dd2F4AFBe302FcF9899da4B1e49757A02f4",
       "symbol": "mooSwapBasedUSD+-USDbC",
@@ -2530,8 +2423,7 @@
       }
     ]
   },
-  "swapbased-dai+-usd+": {
-    "chain": "base",
+  "0x5a9dfc25b356895057bc8973a531B9e5b3B72c51": {
     "protocolToken": {
       "address": "0x5a9dfc25b356895057bc8973a531B9e5b3B72c51",
       "symbol": "mooSwapBasedDAI+-USD+",
@@ -2554,8 +2446,7 @@
       }
     ]
   },
-  "alienbase-alb-weth": {
-    "chain": "base",
+  "0x1Ac6eD355900BEF4260ECc14C0F96107b4D855Ce": {
     "protocolToken": {
       "address": "0x1Ac6eD355900BEF4260ECc14C0F96107b4D855Ce",
       "symbol": "mooAlienBaseALB-WETH",
@@ -2572,8 +2463,7 @@
       }
     ]
   },
-  "alienbase-alb-usdbc": {
-    "chain": "base",
+  "0xC9C7293165df736f81E81772E2AE66559805f8Ca": {
     "protocolToken": {
       "address": "0xC9C7293165df736f81E81772E2AE66559805f8Ca",
       "symbol": "mooAlienBaseALB-USDbC",
@@ -2596,8 +2486,7 @@
       }
     ]
   },
-  "alienbase-usdbc-axlusdc": {
-    "chain": "base",
+  "0x5cca0Bd6e0C1d6fc10eBB8fFc9C8806BCcA56374": {
     "protocolToken": {
       "address": "0x5cca0Bd6e0C1d6fc10eBB8fFc9C8806BCcA56374",
       "symbol": "mooAlienBaseUSDbC-axlUSDC",
@@ -2620,8 +2509,7 @@
       }
     ]
   },
-  "bvm-weth-bvm": {
-    "chain": "base",
+  "0xa3A4a4bf50B7b0d766b99C8d4B0F0E7fD02658a6": {
     "protocolToken": {
       "address": "0xa3A4a4bf50B7b0d766b99C8d4B0F0E7fD02658a6",
       "symbol": "mooBVMBVM-ETH",
@@ -2638,8 +2526,7 @@
       }
     ]
   },
-  "baseswap-cbeth-weth": {
-    "chain": "base",
+  "0x6Dd2abBBbbf494dd2454aEd67880B9533E2b3DA1": {
     "protocolToken": {
       "address": "0x6Dd2abBBbbf494dd2454aEd67880B9533E2b3DA1",
       "symbol": "mooBaseSwapcbETH-WETH",
@@ -2656,8 +2543,7 @@
       }
     ]
   },
-  "baseswap-dai-usdbc": {
-    "chain": "base",
+  "0x94A3725124d2E71028Ee488b88566f1fb11A90C3": {
     "protocolToken": {
       "address": "0x94A3725124d2E71028Ee488b88566f1fb11A90C3",
       "symbol": "mooBaseSwapDAI-USDbC",
@@ -2680,8 +2566,7 @@
       }
     ]
   },
-  "baseswap-weth-axlusdc": {
-    "chain": "base",
+  "0xd7Dbea1F11727e6f99eB90f68EB37c23E1039409": {
     "protocolToken": {
       "address": "0xd7Dbea1F11727e6f99eB90f68EB37c23E1039409",
       "symbol": "mooBaseSwapWETH-axlUSDC",
@@ -2698,8 +2583,7 @@
       }
     ]
   },
-  "baseswap-weth-usdbc": {
-    "chain": "base",
+  "0x19D1F0A1a2FE5807958b34ADBc0d0569A93727C7": {
     "protocolToken": {
       "address": "0x19D1F0A1a2FE5807958b34ADBc0d0569A93727C7",
       "symbol": "mooBaseSwapWETH-USDbC",
@@ -2716,8 +2600,7 @@
       }
     ]
   },
-  "balancer-base-cbeth-weth": {
-    "chain": "base",
+  "0xbc15d22EA300d0965FD8a19A04CD8525834585Ef": {
     "protocolToken": {
       "address": "0xbc15d22EA300d0965FD8a19A04CD8525834585Ef",
       "symbol": "mooBalancerBasecbETH-ETH",

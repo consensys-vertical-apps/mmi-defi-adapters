@@ -1,6 +1,5 @@
 {
-  "curve-arb-eusd-usdc": {
-    "chain": "arbitrum",
+  "0x41c0d96f9c297Eb2216792a3CD50296638684705": {
     "protocolToken": {
       "address": "0x41c0d96f9c297Eb2216792a3CD50296638684705",
       "symbol": "mooCurveEUSD-USDC",
@@ -23,8 +22,7 @@
       }
     ]
   },
-  "curve-arb-eusd-crvusd": {
-    "chain": "arbitrum",
+  "0x6dB43DC0E5150586D80292C2c0888D5db43261DC": {
     "protocolToken": {
       "address": "0x6dB43DC0E5150586D80292C2c0888D5db43261DC",
       "symbol": "mooCurveEUSD-crvUSD",
@@ -47,8 +45,7 @@
       }
     ]
   },
-  "curve-arb-eusd-rgusd": {
-    "chain": "arbitrum",
+  "0x5A8D2889A3135B8e0c7B3D6f55A88374804445d0": {
     "protocolToken": {
       "address": "0x5A8D2889A3135B8e0c7B3D6f55A88374804445d0",
       "symbol": "mooCurveEUSD-rgUSD",
@@ -71,8 +68,7 @@
       }
     ]
   },
-  "curve-arb-knox-rgusd": {
-    "chain": "arbitrum",
+  "0x8Cb60b895FBFDE711622370C7140b554AC3E62Dc": {
     "protocolToken": {
       "address": "0x8Cb60b895FBFDE711622370C7140b554AC3E62Dc",
       "symbol": "mooCurveKNOX-rgUSD",
@@ -95,8 +91,7 @@
       }
     ]
   },
-  "curve-arb-rgusd-usdc": {
-    "chain": "arbitrum",
+  "0x447eEeB0bD7f6E93D0C1647498F88130603A9C61": {
     "protocolToken": {
       "address": "0x447eEeB0bD7f6E93D0C1647498F88130603A9C61",
       "symbol": "mooCurveRgUSD-USDC",
@@ -119,8 +114,7 @@
       }
     ]
   },
-  "curve-arb-eth+-eth": {
-    "chain": "arbitrum",
+  "0x11F9DEB38e26b5025C915672CbaA202f2684d03B": {
     "protocolToken": {
       "address": "0x11F9DEB38e26b5025C915672CbaA202f2684d03B",
       "symbol": "mooCurveETH+-ETH",
@@ -143,8 +137,7 @@
       }
     ]
   },
-  "stakedao-arb-fraxbp": {
-    "chain": "arbitrum",
+  "0x5B87581324115EfF1FCb64A39BD032B1c1556AAb": {
     "protocolToken": {
       "address": "0x5B87581324115EfF1FCb64A39BD032B1c1556AAb",
       "symbol": "mooStakeDaoFRAX-USDCe",
@@ -167,8 +160,7 @@
       }
     ]
   },
-  "stakedao-arb-asdcrv": {
-    "chain": "arbitrum",
+  "0x9227d33Fb11a7e7C905809e70c017ee9DB719ba0": {
     "protocolToken": {
       "address": "0x9227d33Fb11a7e7C905809e70c017ee9DB719ba0",
       "symbol": "mooStakeDaoAsdCRV",
@@ -197,8 +189,7 @@
       }
     ]
   },
-  "equilibria-arb-rseth-26sep24": {
-    "chain": "arbitrum",
+  "0x66d89d65046D8BC75E0fb14E704e50E8C7a07219": {
     "protocolToken": {
       "address": "0x66d89d65046D8BC75E0fb14E704e50E8C7a07219",
       "symbol": "mooEqb-rsETH_26SEP24",
@@ -215,8 +206,7 @@
       }
     ]
   },
-  "equilibria-arb-eeth-26sep24": {
-    "chain": "arbitrum",
+  "0x4d01a46Fc5F20cA2544204EDD376BdB619BD2D2F": {
     "protocolToken": {
       "address": "0x4d01a46Fc5F20cA2544204EDD376BdB619BD2D2F",
       "symbol": "mooEqb-eETH_26SEP24",
@@ -233,8 +223,7 @@
       }
     ]
   },
-  "equilibria-arb-ezeth-26sep24": {
-    "chain": "arbitrum",
+  "0x218337d7DAe070e219c44783A64cA107dffc533e": {
     "protocolToken": {
       "address": "0x218337d7DAe070e219c44783A64cA107dffc533e",
       "symbol": "mooEqb-ezETH_26SEP24",
@@ -251,8 +240,7 @@
       }
     ]
   },
-  "equilibria-arb-seth-eeth-27jun24": {
-    "chain": "arbitrum",
+  "0xAf570c4BcC42fe7f62E969BB147a639d74d2dAD4": {
     "protocolToken": {
       "address": "0xAf570c4BcC42fe7f62E969BB147a639d74d2dAD4",
       "symbol": "mooEqb-sETH_eETHSilo_27JUN24",
@@ -269,8 +257,7 @@
       }
     ]
   },
-  "equilibria-arb-seth-ezeth-27jun24": {
-    "chain": "arbitrum",
+  "0xE2F1DdD8A02774827764bdeC8F84B29B50195969": {
     "protocolToken": {
       "address": "0xE2F1DdD8A02774827764bdeC8F84B29B50195969",
       "symbol": "mooEqb-sETH_ezETHSilo_27JUN24",
@@ -287,8 +274,7 @@
       }
     ]
   },
-  "curve-arb-fethxeth": {
-    "chain": "arbitrum",
+  "0x2b021308797d2C19FDe3682640f2091248F78181": {
     "protocolToken": {
       "address": "0x2b021308797d2C19FDe3682640f2091248F78181",
       "symbol": "mooCurve_fETH-xETH-ETH",
@@ -317,8 +303,7 @@
       }
     ]
   },
-  "curve-arb-usdc-usdm": {
-    "chain": "arbitrum",
+  "0x1B4dD8911cd2028Ea230f82E7BD91F1651Cb4AaB": {
     "protocolToken": {
       "address": "0x1B4dD8911cd2028Ea230f82E7BD91F1651Cb4AaB",
       "symbol": "mooCurveUSDC-USDM",
@@ -341,8 +326,7 @@
       }
     ]
   },
-  "aura-arb-gyro-ausdc-ausdt": {
-    "chain": "arbitrum",
+  "0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763": {
     "protocolToken": {
       "address": "0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763",
       "symbol": "mooAuraGyroaUSDCn/aUSDTn",
@@ -365,8 +349,7 @@
       }
     ]
   },
-  "aura-arb-ezeth-wsteth": {
-    "chain": "arbitrum",
+  "0xEFAd727469e7e4e410376986AB0af8B6F9559fDc": {
     "protocolToken": {
       "address": "0xEFAd727469e7e4e410376986AB0af8B6F9559fDc",
       "symbol": "mooAuraArbezETH-wstETH",
@@ -389,8 +372,7 @@
       }
     ]
   },
-  "curve-lend-arb-arb-crvusd": {
-    "chain": "arbitrum",
+  "0x928e9075a880Bc40f55BcDB5dF3D8697E924b2c4": {
     "protocolToken": {
       "address": "0x928e9075a880Bc40f55BcDB5dF3D8697E924b2c4",
       "symbol": "mooCurveLendARB-crvUSD",
@@ -407,8 +389,7 @@
       }
     ]
   },
-  "curve-lend-arb-wbtc-crvusd": {
-    "chain": "arbitrum",
+  "0x536CF168B627727acEeCeA4f3C2059F5AA1de456": {
     "protocolToken": {
       "address": "0x536CF168B627727acEeCeA4f3C2059F5AA1de456",
       "symbol": "mooCurveLendWBTC-crvUSD",
@@ -425,8 +406,7 @@
       }
     ]
   },
-  "curve-lend-arb-weth-crvusd": {
-    "chain": "arbitrum",
+  "0xb46192aA0640AB9990228d0671DB5ecf67034D27": {
     "protocolToken": {
       "address": "0xb46192aA0640AB9990228d0671DB5ecf67034D27",
       "symbol": "mooCurveLendWETH-crvUSD",
@@ -443,8 +423,7 @@
       }
     ]
   },
-  "silo-eth-pendle-ezeth": {
-    "chain": "arbitrum",
+  "0xf15Bf589aC1F4b1Bc20c3f9A922BaA14101bC368": {
     "protocolToken": {
       "address": "0xf15Bf589aC1F4b1Bc20c3f9A922BaA14101bC368",
       "symbol": "mooSiloArbWETH(PT-ezETH)",
@@ -461,8 +440,7 @@
       }
     ]
   },
-  "equilibria-arb-eeth-27jun24": {
-    "chain": "arbitrum",
+  "0xDDf00Bb25A13e3ECd35a343B9165448cDd2228B6": {
     "protocolToken": {
       "address": "0xDDf00Bb25A13e3ECd35a343B9165448cDd2228B6",
       "symbol": "mooEqb-eETH_27JUN24",
@@ -479,8 +457,7 @@
       }
     ]
   },
-  "equilibria-arb-rseth-27jun24": {
-    "chain": "arbitrum",
+  "0x59D0C3f25cB3bD86E03D827C773892d247452227": {
     "protocolToken": {
       "address": "0x59D0C3f25cB3bD86E03D827C773892d247452227",
       "symbol": "mooEqb-rsETH_27JUN24",
@@ -497,8 +474,7 @@
       }
     ]
   },
-  "equilibria-arb-ezeth-27jun24": {
-    "chain": "arbitrum",
+  "0xdccb85017a996faF5242648B46940E80DE0A36a5": {
     "protocolToken": {
       "address": "0xdccb85017a996faF5242648B46940E80DE0A36a5",
       "symbol": "mooEqb-ezETH_27JUN24",
@@ -515,8 +491,7 @@
       }
     ]
   },
-  "aavev3-arb-usdc": {
-    "chain": "arbitrum",
+  "0x61d93cd5CcBa9072E1E58A812fbC760820075a0b": {
     "protocolToken": {
       "address": "0x61d93cd5CcBa9072E1E58A812fbC760820075a0b",
       "symbol": "mooAaveUSDC",
@@ -533,8 +508,7 @@
       }
     ]
   },
-  "curve-arb-usd+usdt+": {
-    "chain": "arbitrum",
+  "0x42189E9E398fD830CFcca2FC1B2c84823d72C658": {
     "protocolToken": {
       "address": "0x42189E9E398fD830CFcca2FC1B2c84823d72C658",
       "symbol": "mooCurveUSD+USDT+",
@@ -557,8 +531,7 @@
       }
     ]
   },
-  "equilibria-arb-gdai-26sep24": {
-    "chain": "arbitrum",
+  "0xC77Ec608FcA5e3749ba27620dF04471acD427856": {
     "protocolToken": {
       "address": "0xC77Ec608FcA5e3749ba27620dF04471acD427856",
       "symbol": "mooEqb-gDAI_26Sep24",
@@ -575,8 +548,7 @@
       }
     ]
   },
-  "equilibria-arb-glp-26sep24": {
-    "chain": "arbitrum",
+  "0x01Fc10B714FEb072E0A55eB64B42C711e681058D": {
     "protocolToken": {
       "address": "0x01Fc10B714FEb072E0A55eB64B42C711e681058D",
       "symbol": "mooEqb-GLP_26Sep24",
@@ -593,8 +565,7 @@
       }
     ]
   },
-  "curve-arb-asdcrv": {
-    "chain": "arbitrum",
+  "0xe6215a99A5811B8EB63A81D7D49ca2e810C130bD": {
     "protocolToken": {
       "address": "0xe6215a99A5811B8EB63A81D7D49ca2e810C130bD",
       "symbol": "mooCurveAsdCRV",
@@ -623,8 +594,7 @@
       }
     ]
   },
-  "gmx-arb-op-usdc": {
-    "chain": "arbitrum",
+  "0x7b607E4F0a4B4a356273c80DdD842336E34192A5": {
     "protocolToken": {
       "address": "0x7b607E4F0a4B4a356273c80DdD842336E34192A5",
       "symbol": "mooGmxOP-USDC",
@@ -647,8 +617,7 @@
       }
     ]
   },
-  "gmx-arb-near-usdc": {
-    "chain": "arbitrum",
+  "0x5Cb952d0f1C4eC6B06f39c39d7082433575C7C56": {
     "protocolToken": {
       "address": "0x5Cb952d0f1C4eC6B06f39c39d7082433575C7C56",
       "symbol": "mooGmxNEAR-USDC",
@@ -665,8 +634,7 @@
       }
     ]
   },
-  "gmx-arb-atom-usdc": {
-    "chain": "arbitrum",
+  "0x526A631910dACE04A33D10A09Ab7185A5C27d54e": {
     "protocolToken": {
       "address": "0x526A631910dACE04A33D10A09Ab7185A5C27d54e",
       "symbol": "mooGmxATOM-USDC",
@@ -683,8 +651,7 @@
       }
     ]
   },
-  "gmx-arb-bnb-usdc": {
-    "chain": "arbitrum",
+  "0x6510f2CAd573BcDc4E0eC2b749fCaea8812fD797": {
     "protocolToken": {
       "address": "0x6510f2CAd573BcDc4E0eC2b749fCaea8812fD797",
       "symbol": "mooGmxBNB-USDC",
@@ -701,8 +668,7 @@
       }
     ]
   },
-  "gmx-arb-aave-usdc": {
-    "chain": "arbitrum",
+  "0x03131d544D1A7C9c2656D390038B97e1f6a82BC5": {
     "protocolToken": {
       "address": "0x03131d544D1A7C9c2656D390038B97e1f6a82BC5",
       "symbol": "mooGmxAAVE-USDC",
@@ -725,8 +691,7 @@
       }
     ]
   },
-  "equilibria-arb-ausdc-jun24": {
-    "chain": "arbitrum",
+  "0x4C8f7Cb643D410df5762bab54729bBb6A897883C": {
     "protocolToken": {
       "address": "0x4C8f7Cb643D410df5762bab54729bBb6A897883C",
       "symbol": "mooEqb-aUSDC_27JUN24",
@@ -743,8 +708,7 @@
       }
     ]
   },
-  "aura-arb-cbeth-wsteth-reth-v2": {
-    "chain": "arbitrum",
+  "0x415B62278E684E9BB878e1DFfa9e191BB3B82bb1": {
     "protocolToken": {
       "address": "0x415B62278E684E9BB878e1DFfa9e191BB3B82bb1",
       "symbol": "mooAuraArbcbETH/wstETH/rETHV2",
@@ -773,8 +737,7 @@
       }
     ]
   },
-  "aura-arb-wsteth-sfrxeth": {
-    "chain": "arbitrum",
+  "0xC0F3f8B58E6b60619F9109f94c3E0ca2188DA726": {
     "protocolToken": {
       "address": "0xC0F3f8B58E6b60619F9109f94c3E0ca2188DA726",
       "symbol": "mooAuraArbwstETH-sfrxETH",
@@ -797,8 +760,7 @@
       }
     ]
   },
-  "aura-arb-weth-reth-v2": {
-    "chain": "arbitrum",
+  "0x81FdC9a8a233519D00f8eDFa0f8bFB7618dBf26b": {
     "protocolToken": {
       "address": "0x81FdC9a8a233519D00f8eDFa0f8bFB7618dBf26b",
       "symbol": "mooAuraArbrETH-ETHV2",
@@ -821,8 +783,7 @@
       }
     ]
   },
-  "equilibria-arb-seth": {
-    "chain": "arbitrum",
+  "0x9fb46F03853d0F068E91e67751fce367023Efd83": {
     "protocolToken": {
       "address": "0x9fb46F03853d0F068E91e67751fce367023Efd83",
       "symbol": "mooEqb-sETH_26DEC24",
@@ -839,8 +800,7 @@
       }
     ]
   },
-  "equilibria-arb-reth": {
-    "chain": "arbitrum",
+  "0x6F9750c64a3c79c13A25878BF8834dcF4A3EA916": {
     "protocolToken": {
       "address": "0x6F9750c64a3c79c13A25878BF8834dcF4A3EA916",
       "symbol": "mooEqb-rETH_26JUN25",
@@ -857,8 +817,7 @@
       }
     ]
   },
-  "curve-arb-tricrvarb": {
-    "chain": "arbitrum",
+  "0xE47CCbD0F9E80ed02EF68f35eA5074b7165c68ED": {
     "protocolToken": {
       "address": "0xE47CCbD0F9E80ed02EF68f35eA5074b7165c68ED",
       "symbol": "mooCurveTriCRV-ARB",
@@ -887,8 +846,7 @@
       }
     ]
   },
-  "curve-arb-crvusd-mim": {
-    "chain": "arbitrum",
+  "0x5abaA1fe55c8c3fC55F3f7C814Bc19e423022764": {
     "protocolToken": {
       "address": "0x5abaA1fe55c8c3fC55F3f7C814Bc19e423022764",
       "symbol": "mooCurveCrvUSD-MIM",
@@ -911,8 +869,7 @@
       }
     ]
   },
-  "curve-arb-crvusd-usdt": {
-    "chain": "arbitrum",
+  "0x25071C7Cf437F756a4AF9260aDCe5a639e143F93": {
     "protocolToken": {
       "address": "0x25071C7Cf437F756a4AF9260aDCe5a639e143F93",
       "symbol": "mooCurveCrvUSD-USDT",
@@ -935,8 +892,7 @@
       }
     ]
   },
-  "curve-arb-crvusd-usdc": {
-    "chain": "arbitrum",
+  "0x174897AD878c614D7Bc563Eaf23A4a0D75D58d2C": {
     "protocolToken": {
       "address": "0x174897AD878c614D7Bc563Eaf23A4a0D75D58d2C",
       "symbol": "mooCurveCrvUSD-USDC",
@@ -959,8 +915,7 @@
       }
     ]
   },
-  "curve-arb-crvusd-usdc.e": {
-    "chain": "arbitrum",
+  "0x36295709Ebb6df19f6D78127F8D2e5580AE7336f": {
     "protocolToken": {
       "address": "0x36295709Ebb6df19f6D78127F8D2e5580AE7336f",
       "symbol": "mooCurveCrvUSD-USDC.e",
@@ -983,8 +938,7 @@
       }
     ]
   },
-  "curve-arb-crvusd-frax": {
-    "chain": "arbitrum",
+  "0x3D92c6cb19Bfec3A385AA327a6B73f5c99505a38": {
     "protocolToken": {
       "address": "0x3D92c6cb19Bfec3A385AA327a6B73f5c99505a38",
       "symbol": "mooCurveCrvUSD-FRAX",
@@ -1007,8 +961,7 @@
       }
     ]
   },
-  "curve-arb-tricrypto-crvusd": {
-    "chain": "arbitrum",
+  "0xbbbe7D77d1E78c908cFaee3f9789909FA8DdB0e0": {
     "protocolToken": {
       "address": "0xbbbe7D77d1E78c908cFaee3f9789909FA8DdB0e0",
       "symbol": "mooCurveTriCryptoCrvUSD",
@@ -1037,8 +990,7 @@
       }
     ]
   },
-  "curve-arb-usd+fraxbp": {
-    "chain": "arbitrum",
+  "0xF2d3C18a13E0860de55B7201411D790473DF3caB": {
     "protocolToken": {
       "address": "0xF2d3C18a13E0860de55B7201411D790473DF3caB",
       "symbol": "mooCurveUSD+FRAXBP",
@@ -1067,8 +1019,7 @@
       }
     ]
   },
-  "gmx-arb-wbtc-usdc": {
-    "chain": "arbitrum",
+  "0xBE62C3b16789901066F882D94EF356f9C6aac414": {
     "protocolToken": {
       "address": "0xBE62C3b16789901066F882D94EF356f9C6aac414",
       "symbol": "mooGmxWBTCb-USDC",
@@ -1091,8 +1042,7 @@
       }
     ]
   },
-  "gmx-arb-weth-usdc": {
-    "chain": "arbitrum",
+  "0xfb1Ea0ec3F727Cb62E0c8884d0Ae9aBAb32986ED": {
     "protocolToken": {
       "address": "0xfb1Ea0ec3F727Cb62E0c8884d0Ae9aBAb32986ED",
       "symbol": "mooGmxWETH-USDC",
@@ -1115,8 +1065,7 @@
       }
     ]
   },
-  "gmx-arb-arb-usdc": {
-    "chain": "arbitrum",
+  "0x56849a2632B29593fEF937aEAF397abE1368d2C9": {
     "protocolToken": {
       "address": "0x56849a2632B29593fEF937aEAF397abE1368d2C9",
       "symbol": "mooGmxARB-USDC",
@@ -1139,8 +1088,7 @@
       }
     ]
   },
-  "gmx-arb-link-usdc": {
-    "chain": "arbitrum",
+  "0xf3C483077c0202c2bc004E139B2e78e6e0f72593": {
     "protocolToken": {
       "address": "0xf3C483077c0202c2bc004E139B2e78e6e0f72593",
       "symbol": "mooGmxLINK-USDC",
@@ -1163,8 +1111,7 @@
       }
     ]
   },
-  "gmx-arb-sol-usdc": {
-    "chain": "arbitrum",
+  "0x2fb0f56e3127818F1d36CB02D38bEE21Eeb0dC78": {
     "protocolToken": {
       "address": "0x2fb0f56e3127818F1d36CB02D38bEE21Eeb0dC78",
       "symbol": "mooGmxSOL-USDC",
@@ -1187,8 +1134,7 @@
       }
     ]
   },
-  "gmx-arb-usdc-usdce": {
-    "chain": "arbitrum",
+  "0xAc8EE83FF7093dEaA4F62fDddD19242E1Fa14C32": {
     "protocolToken": {
       "address": "0xAc8EE83FF7093dEaA4F62fDddD19242E1Fa14C32",
       "symbol": "mooGmxUSDC-USDCe",
@@ -1211,8 +1157,7 @@
       }
     ]
   },
-  "gmx-arb-usdc-usdt": {
-    "chain": "arbitrum",
+  "0xF5Ad4526f40B358D96E3d3460E9e38616046ceA7": {
     "protocolToken": {
       "address": "0xF5Ad4526f40B358D96E3d3460E9e38616046ceA7",
       "symbol": "mooGmxUSDC-USDT",
@@ -1235,8 +1180,7 @@
       }
     ]
   },
-  "gmx-arb-usdc-dai": {
-    "chain": "arbitrum",
+  "0x7dE133d98151658baAE3d1Ad94B883C452c87e79": {
     "protocolToken": {
       "address": "0x7dE133d98151658baAE3d1Ad94B883C452c87e79",
       "symbol": "mooGmxUSDC-DAI",
@@ -1259,8 +1203,7 @@
       }
     ]
   },
-  "gmx-arb-ltc-usdc": {
-    "chain": "arbitrum",
+  "0x6aEE64C2B41A05F55b883BB85473e8aeF7E98510": {
     "protocolToken": {
       "address": "0x6aEE64C2B41A05F55b883BB85473e8aeF7E98510",
       "symbol": "mooGmxLTC-USDC",
@@ -1277,8 +1220,7 @@
       }
     ]
   },
-  "gmx-arb-xrp-usdc": {
-    "chain": "arbitrum",
+  "0xCBE8989dA57e1061f18825406d961714A03E36a6": {
     "protocolToken": {
       "address": "0xCBE8989dA57e1061f18825406d961714A03E36a6",
       "symbol": "mooGmxXRP-USDC",
@@ -1295,8 +1237,7 @@
       }
     ]
   },
-  "gmx-arb-doge-usdc": {
-    "chain": "arbitrum",
+  "0xC41afF01E4167ffCA5160Ab0173086183F773dfD": {
     "protocolToken": {
       "address": "0xC41afF01E4167ffCA5160Ab0173086183F773dfD",
       "symbol": "mooGmxDOGE-USDC",
@@ -1313,8 +1254,7 @@
       }
     ]
   },
-  "gmx-arb-uni-usdc": {
-    "chain": "arbitrum",
+  "0x6699395FA0a7a3a345D790BD83AB564301B3f302": {
     "protocolToken": {
       "address": "0x6699395FA0a7a3a345D790BD83AB564301B3f302",
       "symbol": "mooGmxUNI-USDC",
@@ -1337,8 +1277,7 @@
       }
     ]
   },
-  "joe-auto-arb-weth": {
-    "chain": "arbitrum",
+  "0x1e9B8542617757c71B045444b19104Ad75560Ec1": {
     "protocolToken": {
       "address": "0x1e9B8542617757c71B045444b19104Ad75560Ec1",
       "symbol": "mooJoeAutoPoolARB-ETH",
@@ -1361,8 +1300,7 @@
       }
     ]
   },
-  "joe-auto-weth-usdc": {
-    "chain": "arbitrum",
+  "0xc452eedb65fb95BB1C3aB0dC0f9363E77f636189": {
     "protocolToken": {
       "address": "0xc452eedb65fb95BB1C3aB0dC0f9363E77f636189",
       "symbol": "mooJoeAutoPoolWETH-USDC",
@@ -1385,8 +1323,7 @@
       }
     ]
   },
-  "curve-arb-tbtc": {
-    "chain": "arbitrum",
+  "0x728C4f7C2ff43e6c069CDA03e3c5BD48436DE40C": {
     "protocolToken": {
       "address": "0x728C4f7C2ff43e6c069CDA03e3c5BD48436DE40C",
       "symbol": "mooConvexTBTC",
@@ -1409,8 +1346,7 @@
       }
     ]
   },
-  "compound-arbitrum-usdc": {
-    "chain": "arbitrum",
+  "0xb9A27ba529634017b12e3cbbbFFb6dB7908a8C8B": {
     "protocolToken": {
       "address": "0xb9A27ba529634017b12e3cbbbFFb6dB7908a8C8B",
       "symbol": "mooCompoundArbUSDC",
@@ -1427,8 +1363,7 @@
       }
     ]
   },
-  "balancer-usdc-dai-usdt-usdce": {
-    "chain": "arbitrum",
+  "0xa0d758b81f8ed6635CDE1DA91C8fe1bD48C28A09": {
     "protocolToken": {
       "address": "0xa0d758b81f8ed6635CDE1DA91C8fe1bD48C28A09",
       "symbol": "mooBalancerArb4POOL",
@@ -1463,8 +1398,7 @@
       }
     ]
   },
-  "aura-wsteth-ankreth": {
-    "chain": "arbitrum",
+  "0x5892bA611fdC1598b72a30D087d28c989d429eF7": {
     "protocolToken": {
       "address": "0x5892bA611fdC1598b72a30D087d28c989d429eF7",
       "symbol": "mooAuraArbwstETH-ankrETH",
@@ -1487,8 +1421,7 @@
       }
     ]
   },
-  "aura-rdnt-weth": {
-    "chain": "arbitrum",
+  "0x93981d31ADE2C84882a9A1ABA9Cb49978C83389a": {
     "protocolToken": {
       "address": "0x93981d31ADE2C84882a9A1ABA9Cb49978C83389a",
       "symbol": "mooAuraArbRDNT-WETH",
@@ -1511,8 +1444,7 @@
       }
     ]
   },
-  "aura-aurabal-wsteth": {
-    "chain": "arbitrum",
+  "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058": {
     "protocolToken": {
       "address": "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058",
       "symbol": "mooAuraArbauraBAL-wstETH",
@@ -1535,8 +1467,7 @@
       }
     ]
   },
-  "aura-dola-usdc-v2": {
-    "chain": "arbitrum",
+  "0xd37025aC6227334C7762AeD5929Ce3272fbb6fdC": {
     "protocolToken": {
       "address": "0xd37025aC6227334C7762AeD5929Ce3272fbb6fdC",
       "symbol": "mooAuraArbDOLA-USDC",
@@ -1559,8 +1490,7 @@
       }
     ]
   },
-  "balancer-tbtc-wbtc": {
-    "chain": "arbitrum",
+  "0xBDF4e730ED5152a7AC646BB7b514Ed624E1147C4": {
     "protocolToken": {
       "address": "0xBDF4e730ED5152a7AC646BB7b514Ed624E1147C4",
       "symbol": "mooBalancertBTC-WBTC",
@@ -1583,8 +1513,7 @@
       }
     ]
   },
-  "balancer-tbtc-weth": {
-    "chain": "arbitrum",
+  "0x71c15610F11D669d4A9e02a64e43c6D1E27c6Cad": {
     "protocolToken": {
       "address": "0x71c15610F11D669d4A9e02a64e43c6D1E27c6Cad",
       "symbol": "mooBalancertBTC-WETH",
@@ -1607,8 +1536,7 @@
       }
     ]
   },
-  "hop-arb-reth": {
-    "chain": "arbitrum",
+  "0xBA5b570e7f07de432DeE25B4C2732e7087CE458C": {
     "protocolToken": {
       "address": "0xBA5b570e7f07de432DeE25B4C2732e7087CE458C",
       "symbol": "mooHoprETH",
@@ -1625,8 +1553,7 @@
       }
     ]
   },
-  "hop-arb-magic": {
-    "chain": "arbitrum",
+  "0xC348ee7C8D2c39292B3826fe30f995bd6FacB61F": {
     "protocolToken": {
       "address": "0xC348ee7C8D2c39292B3826fe30f995bd6FacB61F",
       "symbol": "mooHopMAGIC",
@@ -1643,8 +1570,7 @@
       }
     ]
   },
-  "hop-arb-eth": {
-    "chain": "arbitrum",
+  "0xf6a1284Dc2ce247Bca885ac4F36b37E91d3bD032": {
     "protocolToken": {
       "address": "0xf6a1284Dc2ce247Bca885ac4F36b37E91d3bD032",
       "symbol": "mooHopETH",
@@ -1661,8 +1587,7 @@
       }
     ]
   },
-  "hop-arb-dai": {
-    "chain": "arbitrum",
+  "0xED8c1B73De6F006387f768fF024e33de378c0e25": {
     "protocolToken": {
       "address": "0xED8c1B73De6F006387f768fF024e33de378c0e25",
       "symbol": "mooHopDAI",
@@ -1679,8 +1604,7 @@
       }
     ]
   },
-  "hop-arb-usdt": {
-    "chain": "arbitrum",
+  "0x46034C63ad03254D6E96c655e82393E6C31E07C3": {
     "protocolToken": {
       "address": "0x46034C63ad03254D6E96c655e82393E6C31E07C3",
       "symbol": "mooHopUSDT",
@@ -1697,8 +1621,7 @@
       }
     ]
   },
-  "solidlizard-weth-arb": {
-    "chain": "arbitrum",
+  "0xFCb0101503f399B4752E5160ccd5EcE3a71719bd": {
     "protocolToken": {
       "address": "0xFCb0101503f399B4752E5160ccd5EcE3a71719bd",
       "symbol": "mooSolidLizardARB-ETH",
@@ -1721,8 +1644,7 @@
       }
     ]
   },
-  "solidlizard-arb-usdc": {
-    "chain": "arbitrum",
+  "0x0594Ec32240C78e056304b4A60f48a67c69179b4": {
     "protocolToken": {
       "address": "0x0594Ec32240C78e056304b4A60f48a67c69179b4",
       "symbol": "mooSolidLizardARB-USDC",
@@ -1745,8 +1667,7 @@
       }
     ]
   },
-  "solidlizard-sliz-weth": {
-    "chain": "arbitrum",
+  "0x5b65FB9f2C095A2EC311c4e13ef478D4BE0EC492": {
     "protocolToken": {
       "address": "0x5b65FB9f2C095A2EC311c4e13ef478D4BE0EC492",
       "symbol": "mooSolidLizardSLIZ-WETH",
@@ -1769,8 +1690,7 @@
       }
     ]
   },
-  "solidlizard-weth-usdc": {
-    "chain": "arbitrum",
+  "0xB2DefC5c3A69abe2B681C714b080A892825B2073": {
     "protocolToken": {
       "address": "0xB2DefC5c3A69abe2B681C714b080A892825B2073",
       "symbol": "mooSolidLizardWETH-USDC",
@@ -1793,8 +1713,7 @@
       }
     ]
   },
-  "gns-arb-gns": {
-    "chain": "arbitrum",
+  "0x88942cCd34cc4523e2F698DDCE9BB3eb908CC974": {
     "protocolToken": {
       "address": "0x88942cCd34cc4523e2F698DDCE9BB3eb908CC974",
       "symbol": "mooGnsGNS",
@@ -1811,8 +1730,7 @@
       }
     ]
   },
-  "gmx-arb-glp": {
-    "chain": "arbitrum",
+  "0x9dbbBaecACEDf53d5Caa295b8293c1def2055Adc": {
     "protocolToken": {
       "address": "0x9dbbBaecACEDf53d5Caa295b8293c1def2055Adc",
       "symbol": "mooGmxGLP",
@@ -1871,8 +1789,7 @@
       }
     ]
   },
-  "gmx-arb-gmx": {
-    "chain": "arbitrum",
+  "0x5B904f19fb9ccf493b623e5c8cE91603665788b0": {
     "protocolToken": {
       "address": "0x5B904f19fb9ccf493b623e5c8cE91603665788b0",
       "symbol": "mooGmxGMX",
@@ -1889,8 +1806,7 @@
       }
     ]
   },
-  "stargate-arb-eth": {
-    "chain": "arbitrum",
+  "0x562Ae83d17590d9681D5445EcfC0F56517e49f24": {
     "protocolToken": {
       "address": "0x562Ae83d17590d9681D5445EcfC0F56517e49f24",
       "symbol": "mooStargateETH",
@@ -1907,8 +1823,7 @@
       }
     ]
   },
-  "balancer-magic-usdc": {
-    "chain": "arbitrum",
+  "0x14555A3dD091AA0bd4657591B843eA4C2F83e6ef": {
     "protocolToken": {
       "address": "0x14555A3dD091AA0bd4657591B843eA4C2F83e6ef",
       "symbol": "mooBalancerMAGIC-USDC",
@@ -1931,8 +1846,7 @@
       }
     ]
   },
-  "stargate-arb-usdc": {
-    "chain": "arbitrum",
+  "0xD496eA90a454eA49e30A8fD9E053C186D4FC897D": {
     "protocolToken": {
       "address": "0xD496eA90a454eA49e30A8fD9E053C186D4FC897D",
       "symbol": "mooStargateUSDC",
@@ -1949,8 +1863,7 @@
       }
     ]
   },
-  "stargate-arb-usdt": {
-    "chain": "arbitrum",
+  "0xc7024B02a3C3893C482F5DD03193CFD1DBEC604f": {
     "protocolToken": {
       "address": "0xc7024B02a3C3893C482F5DD03193CFD1DBEC604f",
       "symbol": "mooStargateUSDT",
@@ -1967,8 +1880,7 @@
       }
     ]
   },
-  "spell-mim-crv": {
-    "chain": "arbitrum",
+  "0xDa2307A45D298e855415675bF388e2bd64351D5b": {
     "protocolToken": {
       "address": "0xDa2307A45D298e855415675bF388e2bd64351D5b",
       "symbol": "mooAbrcdbrMIM-2CRV",
@@ -1997,8 +1909,7 @@
       }
     ]
   },
-  "curve-arb-2pool": {
-    "chain": "arbitrum",
+  "0xEc7c0205a6f426c2Cb1667d783B5B4fD2f875434": {
     "protocolToken": {
       "address": "0xEc7c0205a6f426c2Cb1667d783B5B4fD2f875434",
       "symbol": "mooCurve2Pool",
@@ -2021,8 +1932,7 @@
       }
     ]
   },
-  "sushi-arb-magic-weth": {
-    "chain": "arbitrum",
+  "0x8cbaAC87FDD9Bb6C3FdB5b3C870b2443D0284fa6": {
     "protocolToken": {
       "address": "0x8cbaAC87FDD9Bb6C3FdB5b3C870b2443D0284fa6",
       "symbol": "mooSushiMAGIC-ETH",

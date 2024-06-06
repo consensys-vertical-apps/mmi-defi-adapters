@@ -1,6 +1,5 @@
 {
-  "curve-crvusd-susde": {
-    "chain": "ethereum",
+  "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5": {
     "protocolToken": {
       "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
       "symbol": "mooCurveCrvUSD-sUSDe",
@@ -23,8 +22,7 @@
       }
     ]
   },
-  "curve-lend-pufeth-crvusd": {
-    "chain": "ethereum",
+  "0x93b0Fa253980Bb5cce6c1B6ecd32185E27f4FE1C": {
     "protocolToken": {
       "address": "0x93b0Fa253980Bb5cce6c1B6ecd32185E27f4FE1C",
       "symbol": "mooCurveLendPuf-crvUSD",
@@ -41,8 +39,7 @@
       }
     ]
   },
-  "curve-lend-wbtc-crvusd": {
-    "chain": "ethereum",
+  "0xC6147915Dd5b9cb799A7262933950878aA1a0b6B": {
     "protocolToken": {
       "address": "0xC6147915Dd5b9cb799A7262933950878aA1a0b6B",
       "symbol": "mooCurveLendWBTC-crvUSD",
@@ -59,8 +56,7 @@
       }
     ]
   },
-  "curve-lend-wsteth-crvusd": {
-    "chain": "ethereum",
+  "0x499f4ec878310099b1cFb7e62BfA92D04a955A10": {
     "protocolToken": {
       "address": "0x499f4ec878310099b1cFb7e62BfA92D04a955A10",
       "symbol": "mooCurveLendWstETH-crvUSD",
@@ -77,8 +73,7 @@
       }
     ]
   },
-  "fx-dola-fxusd": {
-    "chain": "ethereum",
+  "0xdB41502E5341CDBa0658AcC4033e4480385A5D49": {
     "protocolToken": {
       "address": "0xdB41502E5341CDBa0658AcC4033e4480385A5D49",
       "symbol": "mooFxConvexDOLA-fxUSD",
@@ -101,8 +96,7 @@
       }
     ]
   },
-  "silo-eth-pendle-eeth-eth": {
-    "chain": "ethereum",
+  "0xc2CA275bC2BB07fC8167E43aB11402FA1ac54c54": {
     "protocolToken": {
       "address": "0xc2CA275bC2BB07fC8167E43aB11402FA1ac54c54",
       "symbol": "mooSiloWETH(PT-eETH)",
@@ -119,8 +113,7 @@
       }
     ]
   },
-  "curve-lend-tbtc-crvusd": {
-    "chain": "ethereum",
+  "0x0D10346Cb5Efc58A9ccF5C3cecF9273596Faf0D6": {
     "protocolToken": {
       "address": "0x0D10346Cb5Efc58A9ccF5C3cecF9273596Faf0D6",
       "symbol": "mooCurveLendTBTC-crvUSD",
@@ -137,8 +130,7 @@
       }
     ]
   },
-  "curve-lend-weth-crvusd": {
-    "chain": "ethereum",
+  "0xbDfC7bd237453D330fF9c8d2cBc6c4384a1d19D6": {
     "protocolToken": {
       "address": "0xbDfC7bd237453D330fF9c8d2cBc6c4384a1d19D6",
       "symbol": "mooCurveLendWETH-crvUSD",
@@ -155,8 +147,7 @@
       }
     ]
   },
-  "curve-lend-uwu-crvusd": {
-    "chain": "ethereum",
+  "0x4Dc0f0e627F56B72616604A6A57e4B6E020377a3": {
     "protocolToken": {
       "address": "0x4Dc0f0e627F56B72616604A6A57e4B6E020377a3",
       "symbol": "mooCurveLendUwU-crvUSD",
@@ -173,8 +164,7 @@
       }
     ]
   },
-  "curve-sdai-usdm": {
-    "chain": "ethereum",
+  "0xa11654Bb4286d0ffCc1f76AacbEf7125ad972BA8": {
     "protocolToken": {
       "address": "0xa11654Bb4286d0ffCc1f76AacbEf7125ad972BA8",
       "symbol": "mooCurve_sDAI-USDM",
@@ -197,8 +187,7 @@
       }
     ]
   },
-  "convex-tricrypto-gho": {
-    "chain": "ethereum",
+  "0xbbAD3dE35c76524F55DBf1cAFE782D6a69E0c3E6": {
     "protocolToken": {
       "address": "0xbbAD3dE35c76524F55DBf1cAFE782D6a69E0c3E6",
       "symbol": "mooCurveTriCryptoGHO",
@@ -227,8 +216,7 @@
       }
     ]
   },
-  "convex-gho-crvusd": {
-    "chain": "ethereum",
+  "0x94AcD52eDDe27357dab8FaBdF9DB4bbd54F1E85E": {
     "protocolToken": {
       "address": "0x94AcD52eDDe27357dab8FaBdF9DB4bbd54F1E85E",
       "symbol": "mooCurveGHO-crvUSD",
@@ -251,8 +239,7 @@
       }
     ]
   },
-  "fx-pyusd-fxusd": {
-    "chain": "ethereum",
+  "0x3334D380CA00FC9388E21B259673bB3d2BcD2D95": {
     "protocolToken": {
       "address": "0x3334D380CA00FC9388E21B259673bB3d2BcD2D95",
       "symbol": "mooFxConvexPYUSD-fxUSD",
@@ -275,8 +262,7 @@
       }
     ]
   },
-  "curve-lend-crv-crvusd": {
-    "chain": "ethereum",
+  "0x576D38f58cfcd6499e815095E589537088028cFB": {
     "protocolToken": {
       "address": "0x576D38f58cfcd6499e815095E589537088028cFB",
       "symbol": "mooCurveLendCRV-crvUSD",
@@ -293,8 +279,7 @@
       }
     ]
   },
-  "fx-fxn-eth": {
-    "chain": "ethereum",
+  "0x6d6947aeD08C3407bDFF56cfA509Eda98Df2E996": {
     "protocolToken": {
       "address": "0x6d6947aeD08C3407bDFF56cfA509Eda98Df2E996",
       "symbol": "mooFxConvexETH-FXN",
@@ -311,8 +296,7 @@
       }
     ]
   },
-  "fx-gho-fxusd": {
-    "chain": "ethereum",
+  "0x81F040E82aae01f3921A1c1225C86ce5C57C218b": {
     "protocolToken": {
       "address": "0x81F040E82aae01f3921A1c1225C86ce5C57C218b",
       "symbol": "mooFxConvexGHO-fxUSD",
@@ -335,8 +319,7 @@
       }
     ]
   },
-  "convex-aleth-frxeth": {
-    "chain": "ethereum",
+  "0x26F44884D9744C0EDaB6283930DF325c200020A3": {
     "protocolToken": {
       "address": "0x26F44884D9744C0EDaB6283930DF325c200020A3",
       "symbol": "mooCurveAlETH-frxETH",
@@ -359,8 +342,7 @@
       }
     ]
   },
-  "convex-alusd-fraxbp": {
-    "chain": "ethereum",
+  "0xadBE02F718327628ED9A9515EC27D3d3b4950ED2": {
     "protocolToken": {
       "address": "0xadBE02F718327628ED9A9515EC27D3d3b4950ED2",
       "symbol": "mooCurveAlUSD-FraxBP",
@@ -389,8 +371,7 @@
       }
     ]
   },
-  "aura-weeth-ezeth-rseth": {
-    "chain": "ethereum",
+  "0x5dA90BA82bED0AB701E6762D2bF44E08634d9776": {
     "protocolToken": {
       "address": "0x5dA90BA82bED0AB701E6762D2bF44E08634d9776",
       "symbol": "mooAuraweETH/ezETH/rsETH",
@@ -419,8 +400,7 @@
       }
     ]
   },
-  "aura-weeth-reth": {
-    "chain": "ethereum",
+  "0x1153211f7E810C73cC45eE09FF9A0742fBB6b467": {
     "protocolToken": {
       "address": "0x1153211f7E810C73cC45eE09FF9A0742fBB6b467",
       "symbol": "mooAuraweETH-rETH",
@@ -443,8 +423,7 @@
       }
     ]
   },
-  "aura-ezeth-eth": {
-    "chain": "ethereum",
+  "0x3E1c2C604f60ef142AADAA51aa864f8438f2aaC1": {
     "protocolToken": {
       "address": "0x3E1c2C604f60ef142AADAA51aa864f8438f2aaC1",
       "symbol": "mooAuraezETH-ETH",
@@ -461,8 +440,7 @@
       }
     ]
   },
-  "conic-eth": {
-    "chain": "ethereum",
+  "0xAf5bF2D152e6a16095588D3438B55eDc2bB28343": {
     "protocolToken": {
       "address": "0xAf5bF2D152e6a16095588D3438B55eDc2bB28343",
       "symbol": "mooConicETH",
@@ -472,8 +450,7 @@
     },
     "underlyingTokens": []
   },
-  "conic-usdc": {
-    "chain": "ethereum",
+  "0xcC3E3B9D045666AD90718A3Db28256de2C152297": {
     "protocolToken": {
       "address": "0xcC3E3B9D045666AD90718A3Db28256de2C152297",
       "symbol": "mooConicUSDC",
@@ -490,8 +467,7 @@
       }
     ]
   },
-  "conic-crvusd": {
-    "chain": "ethereum",
+  "0x26343d0cD02a52548b361bf79961AB7341965E52": {
     "protocolToken": {
       "address": "0x26343d0cD02a52548b361bf79961AB7341965E52",
       "symbol": "mooConicCrvUSD",
@@ -508,8 +484,7 @@
       }
     ]
   },
-  "aura-reth-rpl": {
-    "chain": "ethereum",
+  "0xAB28C317B34084f29d7623208b5F09C0Dd566a18": {
     "protocolToken": {
       "address": "0xAB28C317B34084f29d7623208b5F09C0Dd566a18",
       "symbol": "mooAuraRPL-rETH",
@@ -532,8 +507,7 @@
       }
     ]
   },
-  "aura-alcx-eth": {
-    "chain": "ethereum",
+  "0x9E90aD4810C9eaE0ADFc15801838Dc53cC6ed48a": {
     "protocolToken": {
       "address": "0x9E90aD4810C9eaE0ADFc15801838Dc53cC6ed48a",
       "symbol": "mooAuraALCX-ETH",
@@ -556,8 +530,7 @@
       }
     ]
   },
-  "aura-ankreth-wsteth": {
-    "chain": "ethereum",
+  "0xB2975e68b3FAc3b8ff444660cc4cee907367EB0C": {
     "protocolToken": {
       "address": "0xB2975e68b3FAc3b8ff444660cc4cee907367EB0C",
       "symbol": "mooAuraankrETH-wstETH",
@@ -580,8 +553,7 @@
       }
     ]
   },
-  "aura-sdai-3pool": {
-    "chain": "ethereum",
+  "0x8D719AD5Cc19d5413A9D11Bd39813847f352De65": {
     "protocolToken": {
       "address": "0x8D719AD5Cc19d5413A9D11Bd39813847f352De65",
       "symbol": "mooAurasDAI-3Pool",
@@ -604,8 +576,7 @@
       }
     ]
   },
-  "convex-hyusdeusd": {
-    "chain": "ethereum",
+  "0x08ab1DEfc5A6Df4b5598a68f17385936B345AE36": {
     "protocolToken": {
       "address": "0x08ab1DEfc5A6Df4b5598a68f17385936B345AE36",
       "symbol": "mooConvex_hyUSD-eUSD",
@@ -628,8 +599,7 @@
       }
     ]
   },
-  "convex-eth+": {
-    "chain": "ethereum",
+  "0x8cFE2f46052efE1a0784b0a28C802474C1dfd9D0": {
     "protocolToken": {
       "address": "0x8cFE2f46052efE1a0784b0a28C802474C1dfd9D0",
       "symbol": "mooConvexETH+",
@@ -646,8 +616,7 @@
       }
     ]
   },
-  "convex-usdc+": {
-    "chain": "ethereum",
+  "0x9d438daD90f928B00576D202693608bf0ecdbf0F": {
     "protocolToken": {
       "address": "0x9d438daD90f928B00576D202693608bf0ecdbf0F",
       "symbol": "mooConvexUSDC+",
@@ -670,8 +639,7 @@
       }
     ]
   },
-  "convex-eusdfraxbp": {
-    "chain": "ethereum",
+  "0x34892e2AcAb7Db584DE000fAa1Ca142040176b26": {
     "protocolToken": {
       "address": "0x34892e2AcAb7Db584DE000fAa1Ca142040176b26",
       "symbol": "mooConvexEUSD",
@@ -700,8 +668,7 @@
       }
     ]
   },
-  "convex-trylsd": {
-    "chain": "ethereum",
+  "0x7D02B28e5632fc027B9FCC27701e2A8965683f95": {
     "protocolToken": {
       "address": "0x7D02B28e5632fc027B9FCC27701e2A8965683f95",
       "symbol": "mooConvexTryLSD",
@@ -730,8 +697,7 @@
       }
     ]
   },
-  "compound-mainnet-eth": {
-    "chain": "ethereum",
+  "0xa95a7C9413B562f8D0581b91eC9d51A4FB5baB7e": {
     "protocolToken": {
       "address": "0xa95a7C9413B562f8D0581b91eC9d51A4FB5baB7e",
       "symbol": "mooCompoundETH",
@@ -741,8 +707,7 @@
     },
     "underlyingTokens": []
   },
-  "compound-mainnet-usdc": {
-    "chain": "ethereum",
+  "0xb0018cfD5739912318Cc27d7a68a233F826DCE0b": {
     "protocolToken": {
       "address": "0xb0018cfD5739912318Cc27d7a68a233F826DCE0b",
       "symbol": "mooCompoundUSDC",
@@ -759,8 +724,7 @@
       }
     ]
   },
-  "uniswap-eth-gamma-reth-weth": {
-    "chain": "ethereum",
+  "0x7628f57cAA83fa54909a5E46e55F0406dEcE56E6": {
     "protocolToken": {
       "address": "0x7628f57cAA83fa54909a5E46e55F0406dEcE56E6",
       "symbol": "mooUniswapGammarETH-ETH",
@@ -777,8 +741,7 @@
       }
     ]
   },
-  "convex-tricrypto-llama": {
-    "chain": "ethereum",
+  "0xBcaeC95a49D50F7336fC08017343Ddd8ED239A52": {
     "protocolToken": {
       "address": "0xBcaeC95a49D50F7336fC08017343Ddd8ED239A52",
       "symbol": "mooConvexTriCryptoLLAMA",
@@ -807,8 +770,7 @@
       }
     ]
   },
-  "aura-gho-usdc-usdt": {
-    "chain": "ethereum",
+  "0x234Fd76985dA4fD505DbAF7A48e119Cd5dFD5C8F": {
     "protocolToken": {
       "address": "0x234Fd76985dA4fD505DbAF7A48e119Cd5dFD5C8F",
       "symbol": "mooAuraGHO/USDC/USDT",
@@ -837,8 +799,7 @@
       }
     ]
   },
-  "aura-gyro-wsteth-eth": {
-    "chain": "ethereum",
+  "0xc2f9C3F4e4cdE519D5DeA9880C1CA6614E4b3d61": {
     "protocolToken": {
       "address": "0xc2f9C3F4e4cdE519D5DeA9880C1CA6614E4b3d61",
       "symbol": "mooAuraGyrowstETH-ETH",
@@ -855,8 +816,7 @@
       }
     ]
   },
-  "aura-gyro-wsteth-cbeth": {
-    "chain": "ethereum",
+  "0x4d7222Eee3c6b67F8e806D0f866B0D666D6182b3": {
     "protocolToken": {
       "address": "0x4d7222Eee3c6b67F8e806D0f866B0D666D6182b3",
       "symbol": "mooAuraGyrowstETH-cbETH",
@@ -879,8 +839,7 @@
       }
     ]
   },
-  "aura-wsteth-reth-sfrxeth-v3": {
-    "chain": "ethereum",
+  "0xd4D620B23E91031fa08045b6083878f42558d6b9": {
     "protocolToken": {
       "address": "0xd4D620B23E91031fa08045b6083878f42558d6b9",
       "symbol": "mooAurawstETH/sfrxETH/rETH V3",
@@ -909,8 +868,7 @@
       }
     ]
   },
-  "convex-tricrypto-usdc": {
-    "chain": "ethereum",
+  "0xD1BeaD7CadcCC6b6a715A6272c39F1EC54F6EC99": {
     "protocolToken": {
       "address": "0xD1BeaD7CadcCC6b6a715A6272c39F1EC54F6EC99",
       "symbol": "mooConvexTriCryptoUSDC",
@@ -933,8 +891,7 @@
       }
     ]
   },
-  "convex-oeth": {
-    "chain": "ethereum",
+  "0x31C0dac4c896cb84adFEF2F8e41cb9295EEc93c2": {
     "protocolToken": {
       "address": "0x31C0dac4c896cb84adFEF2F8e41cb9295EEc93c2",
       "symbol": "mooConvexOETH",
@@ -951,8 +908,7 @@
       }
     ]
   },
-  "convex-wbeth": {
-    "chain": "ethereum",
+  "0x56d50Ca676f9AdC1E90f29F25e0d12DeC02746eE": {
     "protocolToken": {
       "address": "0x56d50Ca676f9AdC1E90f29F25e0d12DeC02746eE",
       "symbol": "mooConvexWBETH",
@@ -969,8 +925,7 @@
       }
     ]
   },
-  "ape-ape": {
-    "chain": "ethereum",
+  "0xFc6a9D39b44a174B5Ba708dBaa437632d78B8585": {
     "protocolToken": {
       "address": "0xFc6a9D39b44a174B5Ba708dBaa437632d78B8585",
       "symbol": "mooAPE",
@@ -987,8 +942,7 @@
       }
     ]
   },
-  "convex-t": {
-    "chain": "ethereum",
+  "0x03D0F88aDc096259b49079073aED693Ba5f425EE": {
     "protocolToken": {
       "address": "0x03D0F88aDc096259b49079073aED693Ba5f425EE",
       "symbol": "mooConvexT",
@@ -1005,8 +959,7 @@
       }
     ]
   },
-  "convex-staked-cvxFPIS": {
-    "chain": "ethereum",
+  "0x83BE6565c0758f746c09f95559B45Cfb9a0FFFc4": {
     "protocolToken": {
       "address": "0x83BE6565c0758f746c09f95559B45Cfb9a0FFFc4",
       "symbol": "mooConvexCvxFPIS",
@@ -1023,8 +976,7 @@
       }
     ]
   },
-  "convex-staked-cvxFXS": {
-    "chain": "ethereum",
+  "0xCc19786F91BB1F3F3Fd9A2eA9fD9a54F7743039E": {
     "protocolToken": {
       "address": "0xCc19786F91BB1F3F3Fd9A2eA9fD9a54F7743039E",
       "symbol": "mooConvexCvxFXS",
@@ -1041,8 +993,7 @@
       }
     ]
   },
-  "convex-cvxcrv": {
-    "chain": "ethereum",
+  "0x5Bcd31a28D77a1A5Ef5e0146Ab91e6f43D7100b7": {
     "protocolToken": {
       "address": "0x5Bcd31a28D77a1A5Ef5e0146Ab91e6f43D7100b7",
       "symbol": "mooConvexCvxCRV-CRV",
@@ -1065,8 +1016,7 @@
       }
     ]
   },
-  "convex-cnc": {
-    "chain": "ethereum",
+  "0xD6F5BEF9b63bf648EeA43b80B480BE653138D116": {
     "protocolToken": {
       "address": "0xD6F5BEF9b63bf648EeA43b80B480BE653138D116",
       "symbol": "mooConvexCNC-ETH",
@@ -1083,8 +1033,7 @@
       }
     ]
   },
-  "convex-ctr": {
-    "chain": "ethereum",
+  "0xa6b53563a13de4C443FC4fd60d7127Ad54924cd3": {
     "protocolToken": {
       "address": "0xa6b53563a13de4C443FC4fd60d7127Ad54924cd3",
       "symbol": "mooConvexCTR-ETH",
@@ -1101,8 +1050,7 @@
       }
     ]
   },
-  "verse-verse-weth": {
-    "chain": "ethereum",
+  "0x445BE44783b9B04B27d23b87eD69985aBAb1BeF3": {
     "protocolToken": {
       "address": "0x445BE44783b9B04B27d23b87eD69985aBAb1BeF3",
       "symbol": "mooVerseVERSE-ETH",
@@ -1119,8 +1067,7 @@
       }
     ]
   },
-  "verse-usdc-weth": {
-    "chain": "ethereum",
+  "0x8785e892e6C7f1BcE907680cE35B580EEA7Fb24c": {
     "protocolToken": {
       "address": "0x8785e892e6C7f1BcE907680cE35B580EEA7Fb24c",
       "symbol": "mooVerseUSDC-ETH",
@@ -1137,8 +1084,7 @@
       }
     ]
   },
-  "convex-clev": {
-    "chain": "ethereum",
+  "0x7eAeA98668f1C062266B4C186F57eAfb6dF6Fbe4": {
     "protocolToken": {
       "address": "0x7eAeA98668f1C062266B4C186F57eAfb6dF6Fbe4",
       "symbol": "mooConvexCLEV-ETH",
@@ -1155,8 +1101,7 @@
       }
     ]
   },
-  "convex-clevcvx": {
-    "chain": "ethereum",
+  "0xaa43DFb8fC642Feb9887cDFFff1DAAd1cFA511B4": {
     "protocolToken": {
       "address": "0xaa43DFb8fC642Feb9887cDFFff1DAAd1cFA511B4",
       "symbol": "mooConvexClevCVX",
@@ -1179,8 +1124,7 @@
       }
     ]
   },
-  "convex-staked-cvxCRV": {
-    "chain": "ethereum",
+  "0x4115150523599D1F6C6Fa27F5A4C27D578Fd8ce5": {
     "protocolToken": {
       "address": "0x4115150523599D1F6C6Fa27F5A4C27D578Fd8ce5",
       "symbol": "mooConvexCRV",
@@ -1197,8 +1141,7 @@
       }
     ]
   },
-  "convex-cvxeth": {
-    "chain": "ethereum",
+  "0xb9548238d875fB4e12727B2750D8a0bDbc7171c7": {
     "protocolToken": {
       "address": "0xb9548238d875fB4e12727B2750D8a0bDbc7171c7",
       "symbol": "mooConvexCVX-ETH",
@@ -1215,8 +1158,7 @@
       }
     ]
   },
-  "convex-geareth": {
-    "chain": "ethereum",
+  "0x8448758c3Cad93675eACe770847aA9507f8bDe0B": {
     "protocolToken": {
       "address": "0x8448758c3Cad93675eACe770847aA9507f8bDe0B",
       "symbol": "mooConvexGEAR-ETH",
@@ -1233,8 +1175,7 @@
       }
     ]
   },
-  "convex-frxeth": {
-    "chain": "ethereum",
+  "0x4a37227BFE2aD5c5126E176e16363d5c79BC1EF5": {
     "protocolToken": {
       "address": "0x4a37227BFE2aD5c5126E176e16363d5c79BC1EF5",
       "symbol": "mooConvexFrxETH",
@@ -1251,8 +1192,7 @@
       }
     ]
   },
-  "convex-cbeth": {
-    "chain": "ethereum",
+  "0x60a1Cf0D617EeADbB48e488D9Ca3E74F50aB4b71": {
     "protocolToken": {
       "address": "0x60a1Cf0D617EeADbB48e488D9Ca3E74F50aB4b71",
       "symbol": "mooConvexCbETH",
@@ -1269,8 +1209,7 @@
       }
     ]
   },
-  "aura-aura-weth": {
-    "chain": "ethereum",
+  "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD": {
     "protocolToken": {
       "address": "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD",
       "symbol": "mooAuraAURA-WETH",
@@ -1293,8 +1232,7 @@
       }
     ]
   },
-  "aura-aurabal": {
-    "chain": "ethereum",
+  "0x44B6A414e73fb7387Ca250F44D7e43cD7d6992c2": {
     "protocolToken": {
       "address": "0x44B6A414e73fb7387Ca250F44D7e43cD7d6992c2",
       "symbol": "mooAuraBAL",
@@ -1311,8 +1249,7 @@
       }
     ]
   },
-  "convex-usdd": {
-    "chain": "ethereum",
+  "0x7f3F33B42b9734e61cb44424D130B5f6e09C9Db3": {
     "protocolToken": {
       "address": "0x7f3F33B42b9734e61cb44424D130B5f6e09C9Db3",
       "symbol": "mooConvexUSDD",
@@ -1347,8 +1284,7 @@
       }
     ]
   },
-  "convex-dolafraxbp": {
-    "chain": "ethereum",
+  "0x3fe43D4ba0a5BAcC800c7E7E782466a27ab108bf": {
     "protocolToken": {
       "address": "0x3fe43D4ba0a5BAcC800c7E7E782466a27ab108bf",
       "symbol": "mooConvexDolaFraxBP",
@@ -1377,8 +1313,7 @@
       }
     ]
   },
-  "convex-mim": {
-    "chain": "ethereum",
+  "0xd5bAd7c89028B3F7094e40DcCe83D4e6b3Fd9AA4": {
     "protocolToken": {
       "address": "0xd5bAd7c89028B3F7094e40DcCe83D4e6b3Fd9AA4",
       "symbol": "mooConvexMIM",
@@ -1413,8 +1348,7 @@
       }
     ]
   },
-  "convex-tricrypto2": {
-    "chain": "ethereum",
+  "0xe50e2fe90745A8510491F89113959a1EF01AD400": {
     "protocolToken": {
       "address": "0xe50e2fe90745A8510491F89113959a1EF01AD400",
       "symbol": "mooConvexTriCrypto",
@@ -1437,8 +1371,7 @@
       }
     ]
   },
-  "convex-fraxusdc": {
-    "chain": "ethereum",
+  "0x4fc424a840B5fB1BAf195963eC3737904440df1D": {
     "protocolToken": {
       "address": "0x4fc424a840B5fB1BAf195963eC3737904440df1D",
       "symbol": "mooConvexFraxUsdc",
@@ -1461,8 +1394,7 @@
       }
     ]
   },
-  "convex-frax": {
-    "chain": "ethereum",
+  "0xe6aB93d1c253d16733d52dD40b4929a6a04b2B08": {
     "protocolToken": {
       "address": "0xe6aB93d1c253d16733d52dD40b4929a6a04b2B08",
       "symbol": "mooConvexFrax3Crv",
@@ -1497,8 +1429,7 @@
       }
     ]
   },
-  "stargate-eth-usdc": {
-    "chain": "ethereum",
+  "0x66F5263d51174bab17Ac2bda31E51F5bcF05a69A": {
     "protocolToken": {
       "address": "0x66F5263d51174bab17Ac2bda31E51F5bcF05a69A",
       "symbol": "mooStargateUSDC",
@@ -1515,8 +1446,7 @@
       }
     ]
   },
-  "stargate-eth-usdt": {
-    "chain": "ethereum",
+  "0x61cf8d861ff3c939147c2aa1F694f9592Bf51983": {
     "protocolToken": {
       "address": "0x61cf8d861ff3c939147c2aa1F694f9592Bf51983",
       "symbol": "mooStargateUSDT",
@@ -1533,8 +1463,7 @@
       }
     ]
   },
-  "stargate-eth-eth": {
-    "chain": "ethereum",
+  "0x4dd0cF20237deb5F2bE76340838B9e2D7c70E852": {
     "protocolToken": {
       "address": "0x4dd0cF20237deb5F2bE76340838B9e2D7c70E852",
       "symbol": "mooStargateETH",
@@ -1544,8 +1473,7 @@
     },
     "underlyingTokens": []
   },
-  "aura-reth-weth": {
-    "chain": "ethereum",
+  "0xe17D6212eAa54D98187026A770dee96f7C264feC": {
     "protocolToken": {
       "address": "0xe17D6212eAa54D98187026A770dee96f7C264feC",
       "symbol": "mooAurarETH-ETH",

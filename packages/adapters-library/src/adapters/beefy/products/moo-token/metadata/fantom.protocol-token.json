@@ -1,6 +1,5 @@
 {
-  "wigo-wftm-usdc.e": {
-    "chain": "fantom",
+  "0x7F080Fc19f02E832e0820763CDF1875219013ca3": {
     "protocolToken": {
       "address": "0x7F080Fc19f02E832e0820763CDF1875219013ca3",
       "symbol": "mooWigoSwapWFTM-USDC.e",
@@ -17,8 +16,7 @@
       }
     ]
   },
-  "wigo-wftm-lzusdc": {
-    "chain": "fantom",
+  "0x0775540316A61F273B0D69be830ef4A1Eb85b67f": {
     "protocolToken": {
       "address": "0x0775540316A61F273B0D69be830ef4A1Eb85b67f",
       "symbol": "mooWigoSwapWFTM-lzUSDC",
@@ -35,8 +33,7 @@
       }
     ]
   },
-  "wigo-axlusdc-wftm": {
-    "chain": "fantom",
+  "0x6DB56D219e69576Cb5c6e384f1092c91E581fD1C": {
     "protocolToken": {
       "address": "0x6DB56D219e69576Cb5c6e384f1092c91E581fD1C",
       "symbol": "mooWigoSwapaxlUSDC-WFTM",
@@ -53,8 +50,7 @@
       }
     ]
   },
-  "beets-trio-of-the-stables": {
-    "chain": "fantom",
+  "0xEd6e49d62e960963D7376240A0b6aF869c0b5c04": {
     "protocolToken": {
       "address": "0xEd6e49d62e960963D7376240A0b6aF869c0b5c04",
       "symbol": "mooBeetsTriooftheStables",
@@ -83,8 +79,7 @@
       }
     ]
   },
-  "equalizer-ichi-wftm-lzusdc": {
-    "chain": "fantom",
+  "0xBC65cB5d6cD491A812BA3F98E551072571D74cda": {
     "protocolToken": {
       "address": "0xBC65cB5d6cD491A812BA3F98E551072571D74cda",
       "symbol": "mooEqualizerIchiWFTM-lzUSDC",
@@ -107,8 +102,7 @@
       }
     ]
   },
-  "equalizer-ichi-lzusdc-wftm": {
-    "chain": "fantom",
+  "0xE8CF01686075665Be0E47776E2Bd82AF6BeC12A1": {
     "protocolToken": {
       "address": "0xE8CF01686075665Be0E47776E2Bd82AF6BeC12A1",
       "symbol": "mooEqualizerIchilzUSDC-WFTM",
@@ -131,8 +125,7 @@
       }
     ]
   },
-  "equalizer-ichi-wftm-axlusdc": {
-    "chain": "fantom",
+  "0xfe55295462d7395C6C6586aC433509048ED26F88": {
     "protocolToken": {
       "address": "0xfe55295462d7395C6C6586aC433509048ED26F88",
       "symbol": "mooEqualizerIchiWFTM-axlUSDC",
@@ -155,8 +148,7 @@
       }
     ]
   },
-  "equalizer-ichi-axlusdc-wftm": {
-    "chain": "fantom",
+  "0xf385b50F66A0443B629EA60EB7b26713f00B225B": {
     "protocolToken": {
       "address": "0xf385b50F66A0443B629EA60EB7b26713f00B225B",
       "symbol": "mooEqualizerIchiaxlUSDC-WFTM",
@@ -179,8 +171,7 @@
       }
     ]
   },
-  "beets-layered-and-staked-fantom-opera": {
-    "chain": "fantom",
+  "0xF3099b78FD4B6b6fEb969d458c1e30710471f29C": {
     "protocolToken": {
       "address": "0xF3099b78FD4B6b6fEb969d458c1e30710471f29C",
       "symbol": "mooBeetsLayered&StakedFantomOpera",
@@ -203,8 +194,7 @@
       }
     ]
   },
-  "beets-fantom-menace": {
-    "chain": "fantom",
+  "0xEEbCc5Bd9603424fc71Fa5aC48C574235a00aa49": {
     "protocolToken": {
       "address": "0xEEbCc5Bd9603424fc71Fa5aC48C574235a00aa49",
       "symbol": "mooBeetsFantomMenace",
@@ -221,26 +211,7 @@
       }
     ]
   },
-  "stargate-fantom-lzusdc": {
-    "chain": "fantom",
-    "protocolToken": {
-      "address": "0x56d19aD7D5178878480739aCbD4536Df3e1ce946",
-      "symbol": "mooStargatelzUSDC",
-      "name": "S*lzUSDC",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x28a92dde19D9989F39A49905d7C9C2FAc7799bDf",
-        "symbol": "lzUSDC",
-        "name": "USD Coin",
-        "decimals": 6
-      }
-    ]
-  },
-  "beets-fantom-layer-of-the-opera": {
-    "chain": "fantom",
+  "0x3751792035dF0497b9CC7d053083EF0F1883eb10": {
     "protocolToken": {
       "address": "0x3751792035dF0497b9CC7d053083EF0F1883eb10",
       "symbol": "mooBeetsFantomLayerOfTheOpera",
@@ -257,8 +228,7 @@
       }
     ]
   },
-  "fvm-lzweth-frxeth": {
-    "chain": "fantom",
+  "0xE287Fb52be3437e6BfbbaE2c8a1718172549B93c": {
     "protocolToken": {
       "address": "0xE287Fb52be3437e6BfbbaE2c8a1718172549B93c",
       "symbol": "mooFVMfrxETH-lzWETH",
@@ -281,8 +251,7 @@
       }
     ]
   },
-  "fvm-axlusdc-lzusdc": {
-    "chain": "fantom",
+  "0x037D31eFD0a367830aC73D860D79f7CbA8fd1508": {
     "protocolToken": {
       "address": "0x037D31eFD0a367830aC73D860D79f7CbA8fd1508",
       "symbol": "mooFVMaxlUSDC-lzUSDC",
@@ -305,8 +274,7 @@
       }
     ]
   },
-  "fvm-fvm-wftm": {
-    "chain": "fantom",
+  "0x22ECBe303e1B624e4347aa4358AeCdceF386aC33": {
     "protocolToken": {
       "address": "0x22ECBe303e1B624e4347aa4358AeCdceF386aC33",
       "symbol": "mooFVMFVM-FTM",
@@ -323,8 +291,7 @@
       }
     ]
   },
-  "fvm-lzweth-axleth": {
-    "chain": "fantom",
+  "0x668eb07Cad60dd8ad9Af4794658ed5d41eB79E88": {
     "protocolToken": {
       "address": "0x668eb07Cad60dd8ad9Af4794658ed5d41eB79E88",
       "symbol": "mooFVMaxlETH-lzWETH",
@@ -347,8 +314,7 @@
       }
     ]
   },
-  "equalizer-wftm-lzusdc": {
-    "chain": "fantom",
+  "0xE9057c1592082D8A350264ebA66F07A9460D2Dde": {
     "protocolToken": {
       "address": "0xE9057c1592082D8A350264ebA66F07A9460D2Dde",
       "symbol": "mooEqualizerFTM-lzUSDC",
@@ -365,8 +331,7 @@
       }
     ]
   },
-  "boo-wftm-lzusdc": {
-    "chain": "fantom",
+  "0x9c9FC92f42ad10DcA0105b6b208cE128E0573a32": {
     "protocolToken": {
       "address": "0x9c9FC92f42ad10DcA0105b6b208cE128E0573a32",
       "symbol": "mooSpookyFTM-lzUSDC",
@@ -383,8 +348,7 @@
       }
     ]
   },
-  "boo-axlusdc-wftm": {
-    "chain": "fantom",
+  "0x0967749430c24a7FBB5D2b64ffed83856129F7c1": {
     "protocolToken": {
       "address": "0x0967749430c24a7FBB5D2b64ffed83856129F7c1",
       "symbol": "mooSpookyaxlUSDC-FTM",
@@ -401,8 +365,7 @@
       }
     ]
   },
-  "equalizer-axlusdc-wftm": {
-    "chain": "fantom",
+  "0xBcF8299d4FaC6b57A59a40d670e3407273431347": {
     "protocolToken": {
       "address": "0xBcF8299d4FaC6b57A59a40d670e3407273431347",
       "symbol": "mooEqualizeraxlUSDC-FTM",
@@ -419,8 +382,7 @@
       }
     ]
   },
-  "wigo-wftm-sftmx": {
-    "chain": "fantom",
+  "0x69f03b79568287FA0c7357e60BdD409054e55fD4": {
     "protocolToken": {
       "address": "0x69f03b79568287FA0c7357e60BdD409054e55fD4",
       "symbol": "mooWigoSwapFTM-sFTMx",
@@ -437,8 +399,7 @@
       }
     ]
   },
-  "geist-geist-ftm": {
-    "chain": "fantom",
+  "0xfd30cEAD8E54568fe535747929775e95Fdb6d3f7": {
     "protocolToken": {
       "address": "0xfd30cEAD8E54568fe535747929775e95Fdb6d3f7",
       "symbol": "mooGeistGEIST-WFTM",
@@ -455,8 +416,7 @@
       }
     ]
   },
-  "boo-wftm-spell": {
-    "chain": "fantom",
+  "0xB3aA62165C1Aa9472C9B16dFAB74681F61D28508": {
     "protocolToken": {
       "address": "0xB3aA62165C1Aa9472C9B16dFAB74681F61D28508",
       "symbol": "mooBooWFTM-SPELL",
@@ -473,8 +433,7 @@
       }
     ]
   },
-  "boo-mim-ftm": {
-    "chain": "fantom",
+  "0x6676C93eb0F2daEfD3b9d03De2E3b18F888cF942": {
     "protocolToken": {
       "address": "0x6676C93eb0F2daEfD3b9d03De2E3b18F888cF942",
       "symbol": "mooBooMIM-FTM",
@@ -491,8 +450,7 @@
       }
     ]
   },
-  "boo-wftm-brush": {
-    "chain": "fantom",
+  "0xC62Bec8168404CcDE75Db95F5cED342C1AD770a5": {
     "protocolToken": {
       "address": "0xC62Bec8168404CcDE75Db95F5cED342C1AD770a5",
       "symbol": "mooBooFTM-BRUSH",
@@ -509,8 +467,7 @@
       }
     ]
   },
-  "boo-wftm-beets": {
-    "chain": "fantom",
+  "0xBdd229d2bcf8f31Fa90FD04c314078dAF4e2A0A4": {
     "protocolToken": {
       "address": "0xBdd229d2bcf8f31Fa90FD04c314078dAF4e2A0A4",
       "symbol": "mooBooFTM-BEETS",
@@ -527,8 +484,7 @@
       }
     ]
   },
-  "wigo-wigo-ftm": {
-    "chain": "fantom",
+  "0x44D955415414321C26B3F87A49688545b11DbA09": {
     "protocolToken": {
       "address": "0x44D955415414321C26B3F87A49688545b11DbA09",
       "symbol": "mooWigoFTM-WIGO",
@@ -545,8 +501,7 @@
       }
     ]
   },
-  "wigo-wigo": {
-    "chain": "fantom",
+  "0xE14Cf6e87f3777f6F1D09D3076D15027cC0f4cb1": {
     "protocolToken": {
       "address": "0xE14Cf6e87f3777f6F1D09D3076D15027cC0f4cb1",
       "symbol": "mooWigoWIGO",

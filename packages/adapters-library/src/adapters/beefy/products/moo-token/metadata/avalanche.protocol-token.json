@@ -1,6 +1,5 @@
 {
-  "balancer-avax-savax-avax": {
-    "chain": "avax",
+  "0x883b1899e6F8a896Ee22654A6deBA41Ef4BA47Cf": {
     "protocolToken": {
       "address": "0x883b1899e6F8a896Ee22654A6deBA41Ef4BA47Cf",
       "symbol": "mooBalancerAvaxsAVAX-WAVAX",
@@ -17,8 +16,7 @@
       }
     ]
   },
-  "joe-auto-wavax-weth.e": {
-    "chain": "avax",
+  "0x5aE855220A971210575717CBC2F44fE8a1568b71": {
     "protocolToken": {
       "address": "0x5aE855220A971210575717CBC2F44fE8a1568b71",
       "symbol": "mooJoeAutoPoolWETH.e-AVAX",
@@ -35,8 +33,7 @@
       }
     ]
   },
-  "joe-auto-wavax-btcb": {
-    "chain": "avax",
+  "0xd4DFf7C63701f32Ad040e7A81a1404B3D164A841": {
     "protocolToken": {
       "address": "0xd4DFf7C63701f32Ad040e7A81a1404B3D164A841",
       "symbol": "mooJoeAutoPoolBTC.b-AVAX",
@@ -53,8 +50,7 @@
       }
     ]
   },
-  "joe-auto-usdc-eurc": {
-    "chain": "avax",
+  "0x7AF92Ab6e5a8cC5A8aaA95DD0f78abbC676F8229": {
     "protocolToken": {
       "address": "0x7AF92Ab6e5a8cC5A8aaA95DD0f78abbC676F8229",
       "symbol": "mooJoeAutoPoolUSDC-EURC",
@@ -77,8 +73,7 @@
       }
     ]
   },
-  "joe-auto-wavax-usdc": {
-    "chain": "avax",
+  "0x595786A3848B1de66C6056C87BA91977935fBC46": {
     "protocolToken": {
       "address": "0x595786A3848B1de66C6056C87BA91977935fBC46",
       "symbol": "mooJoeAVAX-USDC",
@@ -95,8 +90,7 @@
       }
     ]
   },
-  "stargate-avax-usdc": {
-    "chain": "avax",
+  "0x79F26046D122d2F26B1D37237D5C056fB580447A": {
     "protocolToken": {
       "address": "0x79F26046D122d2F26B1D37237D5C056fB580447A",
       "symbol": "mooStargateUSDC",
@@ -113,8 +107,7 @@
       }
     ]
   },
-  "stargate-avax-usdt": {
-    "chain": "avax",
+  "0xA27BF4d56870A37e37a687B8ab3740d8487Ee2C6": {
     "protocolToken": {
       "address": "0xA27BF4d56870A37e37a687B8ab3740d8487Ee2C6",
       "symbol": "mooStargateUSDT",
@@ -131,8 +124,7 @@
       }
     ]
   },
-  "gmx-avax-glp": {
-    "chain": "avax",
+  "0x22EafB9C7E2858cfDA712940896464DdAA83d053": {
     "protocolToken": {
       "address": "0x22EafB9C7E2858cfDA712940896464DdAA83d053",
       "symbol": "mooGmxGLP",
@@ -179,8 +171,7 @@
       }
     ]
   },
-  "gmx-avax-gmx": {
-    "chain": "avax",
+  "0x408835a5616baE0ECE4d3eF821C1D1CC88a2179E": {
     "protocolToken": {
       "address": "0x408835a5616baE0ECE4d3eF821C1D1CC88a2179E",
       "symbol": "mooGmxGMX",

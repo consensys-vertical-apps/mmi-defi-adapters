@@ -1,6 +1,5 @@
 {
-  "nile-usdc-lusd": {
-    "chain": "linea",
+  "0x7A6A9dEb7dFfA150224ece4d381f327C59a6bBab": {
     "protocolToken": {
       "address": "0x7A6A9dEb7dFfA150224ece4d381f327C59a6bBab",
       "symbol": "mooNileUSDC-LUSD",
@@ -23,8 +22,7 @@
       }
     ]
   },
-  "lynex-gamma-weeth-weth": {
-    "chain": "linea",
+  "0xb9A23E2569C262a92635D825142f310BEAfB0Be0": {
     "protocolToken": {
       "address": "0xb9A23E2569C262a92635D825142f310BEAfB0Be0",
       "symbol": "mooLynexGammaweETH-WETH",
@@ -47,8 +45,7 @@
       }
     ]
   },
-  "nile-ezeth-weth": {
-    "chain": "linea",
+  "0x063091e4532eD93CE93347C6c8338dcA0832ddb0": {
     "protocolToken": {
       "address": "0x063091e4532eD93CE93347C6c8338dcA0832ddb0",
       "symbol": "mooNileezETH-WETH",
@@ -65,8 +62,7 @@
       }
     ]
   },
-  "lynex-ichi-usdt-lynx": {
-    "chain": "linea",
+  "0x24F41b9246E6F96d8e11ba40475752BA052Fb4b2": {
     "protocolToken": {
       "address": "0x24F41b9246E6F96d8e11ba40475752BA052Fb4b2",
       "symbol": "mooLynexIchiUSDT-LYNX",
@@ -89,8 +85,7 @@
       }
     ]
   },
-  "lynex-ichi-stone-lynx": {
-    "chain": "linea",
+  "0x5AB215b3C42f97165Ab43e7FA7609cc8F8D68817": {
     "protocolToken": {
       "address": "0x5AB215b3C42f97165Ab43e7FA7609cc8F8D68817",
       "symbol": "mooLynexIchiSTONE-LYNX",
@@ -113,8 +108,7 @@
       }
     ]
   },
-  "lynex-gamma-wsteth-weth": {
-    "chain": "linea",
+  "0xcAF1A883e63bb8C3E6f099C7A2044c07112883ca": {
     "protocolToken": {
       "address": "0xcAF1A883e63bb8C3E6f099C7A2044c07112883ca",
       "symbol": "mooLynexGammawstETH-WETH",
@@ -137,8 +131,7 @@
       }
     ]
   },
-  "lynex-gamma-ezeth-weth": {
-    "chain": "linea",
+  "0x35884E8C569b9f7714A35EDf056A82535A43F5AD": {
     "protocolToken": {
       "address": "0x35884E8C569b9f7714A35EDf056A82535A43F5AD",
       "symbol": "mooLynexGammaezETH-WETH",
@@ -161,8 +154,7 @@
       }
     ]
   },
-  "lynex-gamma-stone-weth": {
-    "chain": "linea",
+  "0x1C973f35325947f30F20fE1189605A332FD9F40F": {
     "protocolToken": {
       "address": "0x1C973f35325947f30F20fE1189605A332FD9F40F",
       "symbol": "mooLynexGammaSTONE-WETH",
@@ -185,8 +177,7 @@
       }
     ]
   },
-  "lynex-stone-weth": {
-    "chain": "linea",
+  "0x1C8cfC0cFf01D59f2e4d6F547EE227Af869EfA07": {
     "protocolToken": {
       "address": "0x1C8cfC0cFf01D59f2e4d6F547EE227Af869EfA07",
       "symbol": "mooLynexSTONE-ETH",
@@ -203,8 +194,7 @@
       }
     ]
   },
-  "lynex-usdc-usd+": {
-    "chain": "linea",
+  "0x046c7CDfEd34d1DA367AC2db79135c24AF29acFf": {
     "protocolToken": {
       "address": "0x046c7CDfEd34d1DA367AC2db79135c24AF29acFf",
       "symbol": "mooLynexUSDC-USD+",
@@ -227,8 +217,7 @@
       }
     ]
   },
-  "lynex-usdt+-usd+": {
-    "chain": "linea",
+  "0x1AE57Bb562ce546032e52f755C0B7030D28Bcd47": {
     "protocolToken": {
       "address": "0x1AE57Bb562ce546032e52f755C0B7030D28Bcd47",
       "symbol": "mooLynexUSDT+-USD+",
@@ -251,8 +240,7 @@
       }
     ]
   },
-  "lynex-usdc-mendi": {
-    "chain": "linea",
+  "0x84237d2a5f8bD4e9D89F6156043E79d9D7Ed4367": {
     "protocolToken": {
       "address": "0x84237d2a5f8bD4e9D89F6156043E79d9D7Ed4367",
       "symbol": "mooLynexUSDC-MENDI",
@@ -275,8 +263,7 @@
       }
     ]
   },
-  "lynex-ichi-usdc-lynx": {
-    "chain": "linea",
+  "0x6c43Dff83D1F2936A69CcC1D10351eC6F5aDDAce": {
     "protocolToken": {
       "address": "0x6c43Dff83D1F2936A69CcC1D10351eC6F5aDDAce",
       "symbol": "mooLynexIchiUSDC-LYNX",
@@ -299,8 +286,7 @@
       }
     ]
   },
-  "lynex-ichi-weth-lynx": {
-    "chain": "linea",
+  "0x6DfF00F764a7797C8F8e1DD5624Db039192B3c76": {
     "protocolToken": {
       "address": "0x6DfF00F764a7797C8F8e1DD5624Db039192B3c76",
       "symbol": "mooLynexIchiWETH-LYNX",
@@ -323,8 +309,7 @@
       }
     ]
   },
-  "lynex-ichi-wbtc-weth": {
-    "chain": "linea",
+  "0x79356b87C9cDE886e97D0F6b8F2f758e7A6a8878": {
     "protocolToken": {
       "address": "0x79356b87C9cDE886e97D0F6b8F2f758e7A6a8878",
       "symbol": "mooLynexIchiWBTC-WETH",
@@ -347,8 +332,7 @@
       }
     ]
   },
-  "mendi-linea-lev-wsteth": {
-    "chain": "linea",
+  "0xBF71FbCe0d4Fc460D36fa1d13B397a3cd5c45220": {
     "protocolToken": {
       "address": "0xBF71FbCe0d4Fc460D36fa1d13B397a3cd5c45220",
       "symbol": "mooMendiLeveragewstETH",
@@ -365,8 +349,7 @@
       }
     ]
   },
-  "mendi-linea-lev-weth": {
-    "chain": "linea",
+  "0x23EC7f31a5c74D5Fe21aa386A7519028DBD6bA40": {
     "protocolToken": {
       "address": "0x23EC7f31a5c74D5Fe21aa386A7519028DBD6bA40",
       "symbol": "mooMendiLeverageWETH",
@@ -383,8 +366,7 @@
       }
     ]
   },
-  "mendi-linea-lev-usdc": {
-    "chain": "linea",
+  "0x9ab545Ab024a8Da2302f5b0D016F4f5501e330d1": {
     "protocolToken": {
       "address": "0x9ab545Ab024a8Da2302f5b0D016F4f5501e330d1",
       "symbol": "mooMendiLeverageUSDC",
@@ -401,8 +383,7 @@
       }
     ]
   },
-  "mendi-linea-lev-usdt": {
-    "chain": "linea",
+  "0xC3C757EA1429231C437736746Eb77A2344EAcb81": {
     "protocolToken": {
       "address": "0xC3C757EA1429231C437736746Eb77A2344EAcb81",
       "symbol": "mooMendiLeverageUSDT",
@@ -419,8 +400,7 @@
       }
     ]
   },
-  "mendi-linea-lev-wbtc": {
-    "chain": "linea",
+  "0x639041dD8cD48B52C12414235d97E1313cbbceff": {
     "protocolToken": {
       "address": "0x639041dD8cD48B52C12414235d97E1313cbbceff",
       "symbol": "mooMendiLeverageWBTC",
@@ -437,8 +417,7 @@
       }
     ]
   },
-  "mendi-linea-ezeth": {
-    "chain": "linea",
+  "0xf711cdcDDa1C5F919c94573cC4E38b4cE2207750": {
     "protocolToken": {
       "address": "0xf711cdcDDa1C5F919c94573cC4E38b4cE2207750",
       "symbol": "mooMendiezETH",
@@ -455,8 +434,7 @@
       }
     ]
   },
-  "lynex-usdc-mai": {
-    "chain": "linea",
+  "0xc8F789da67E392e0C14dcD6C81404884199d9849": {
     "protocolToken": {
       "address": "0xc8F789da67E392e0C14dcD6C81404884199d9849",
       "symbol": "mooLynexUSDC-MAI",
@@ -479,8 +457,7 @@
       }
     ]
   },
-  "lynex-usdc-usdt": {
-    "chain": "linea",
+  "0x5730Ba155FD95903c2706f1B2F8DBbBFB5e0a94c": {
     "protocolToken": {
       "address": "0x5730Ba155FD95903c2706f1B2F8DBbBFB5e0a94c",
       "symbol": "mooLynexUSDC-USDT",
@@ -503,8 +480,7 @@
       }
     ]
   },
-  "lynex-wsteth-weth": {
-    "chain": "linea",
+  "0x4859ac3c9aC0A9c35Dc807f79B78f7b9a6F4e7E4": {
     "protocolToken": {
       "address": "0x4859ac3c9aC0A9c35Dc807f79B78f7b9a6F4e7E4",
       "symbol": "mooLynexwstETH-ETH",
@@ -521,8 +497,7 @@
       }
     ]
   },
-  "lynex-gamma-usdc-lynx": {
-    "chain": "linea",
+  "0x50fA947b08F879004220C42428524eaaf4eF9473": {
     "protocolToken": {
       "address": "0x50fA947b08F879004220C42428524eaaf4eF9473",
       "symbol": "mooLynexGammaLYNX-USDC",
@@ -545,8 +520,7 @@
       }
     ]
   },
-  "lynex-gamma-wbtc-weth": {
-    "chain": "linea",
+  "0x8c0919AE1fAcD6695Ad236Ea618d1018e5c4d42c": {
     "protocolToken": {
       "address": "0x8c0919AE1fAcD6695Ad236Ea618d1018e5c4d42c",
       "symbol": "mooLynexGammaETH-WBTC",
@@ -563,8 +537,7 @@
       }
     ]
   },
-  "lynex-gamma-usdt-weth": {
-    "chain": "linea",
+  "0x7168464Ac7330EC5177694005e60FBe319DC40c2": {
     "protocolToken": {
       "address": "0x7168464Ac7330EC5177694005e60FBe319DC40c2",
       "symbol": "mooLynexGammaETH-USDT",
@@ -581,8 +554,7 @@
       }
     ]
   },
-  "lynex-gamma-usdc-weth": {
-    "chain": "linea",
+  "0xe269c87F85C725bb9BF642aAeE1650bf5796B73B": {
     "protocolToken": {
       "address": "0xe269c87F85C725bb9BF642aAeE1650bf5796B73B",
       "symbol": "mooLynexGammaETH-USDC",
@@ -599,8 +571,7 @@
       }
     ]
   },
-  "mendi-linea-wsteth": {
-    "chain": "linea",
+  "0x03BdAf7eb1b109E3C3348ee98cde734a82aea8FD": {
     "protocolToken": {
       "address": "0x03BdAf7eb1b109E3C3348ee98cde734a82aea8FD",
       "symbol": "mooMendiwstETH",
@@ -617,8 +588,7 @@
       }
     ]
   },
-  "mendi-linea-weth": {
-    "chain": "linea",
+  "0x3d80b49fc4DC9E450efAc1BD34cdEB2F303c2E81": {
     "protocolToken": {
       "address": "0x3d80b49fc4DC9E450efAc1BD34cdEB2F303c2E81",
       "symbol": "mooMendiWETH",
@@ -635,8 +605,7 @@
       }
     ]
   },
-  "mendi-linea-usdc": {
-    "chain": "linea",
+  "0xE7e6a718218d737945E6f039c161D3C3c550CBA8": {
     "protocolToken": {
       "address": "0xE7e6a718218d737945E6f039c161D3C3c550CBA8",
       "symbol": "mooMendiUSDC",
@@ -653,8 +622,7 @@
       }
     ]
   },
-  "mendi-linea-usdt": {
-    "chain": "linea",
+  "0xc46833F6217Db6586fD129cC2f61361dfCE4c21D": {
     "protocolToken": {
       "address": "0xc46833F6217Db6586fD129cC2f61361dfCE4c21D",
       "symbol": "mooMendiUSDT",
@@ -671,8 +639,7 @@
       }
     ]
   },
-  "mendi-linea-dai": {
-    "chain": "linea",
+  "0xb227116Fa19ABb3a94655dDF24E9CFa09c58d154": {
     "protocolToken": {
       "address": "0xb227116Fa19ABb3a94655dDF24E9CFa09c58d154",
       "symbol": "mooMendiDAI",
@@ -689,8 +656,7 @@
       }
     ]
   },
-  "mendi-linea-wbtc": {
-    "chain": "linea",
+  "0x879F6c5A0CEC83006771b0c271e644b635dC9666": {
     "protocolToken": {
       "address": "0x879F6c5A0CEC83006771b0c271e644b635dC9666",
       "symbol": "mooMendiWBTC",
