@@ -2,1492 +2,525 @@
   "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5": {
     "protocolToken": {
       "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
+      "name": "Moo Curve crvUSD-sUSDe",
       "symbol": "mooCurveCrvUSD-sUSDe",
-      "name": "crvU-sUSDe",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "Curve.Fi USD Stablecoin",
         "symbol": "crvUSD",
-        "name": "crvUSD",
         "decimals": 18
       },
       {
         "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
-        "symbol": "sUSDe",
         "name": "Staked USDe",
+        "symbol": "sUSDe",
         "decimals": 18
       }
-    ]
-  },
-  "0x93b0Fa253980Bb5cce6c1B6ecd32185E27f4FE1C": {
-    "protocolToken": {
-      "address": "0x93b0Fa253980Bb5cce6c1B6ecd32185E27f4FE1C",
-      "symbol": "mooCurveLendPuf-crvUSD",
-      "name": "cvcrvUSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+    ],
+    "underlyingLPToken": {
+      "address": "0x57064F49Ad7123C92560882a45518374ad982e85",
+      "name": "sUSDe/crvUSD",
+      "symbol": "crvU-sUSDe",
+      "decimals": 18
     },
-    "underlyingTokens": [
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "symbol": "crvUSD",
-        "name": "crvUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xC6147915Dd5b9cb799A7262933950878aA1a0b6B": {
-    "protocolToken": {
-      "address": "0xC6147915Dd5b9cb799A7262933950878aA1a0b6B",
-      "symbol": "mooCurveLendWBTC-crvUSD",
-      "name": "cvcrvUSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "symbol": "crvUSD",
-        "name": "crvUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x499f4ec878310099b1cFb7e62BfA92D04a955A10": {
-    "protocolToken": {
-      "address": "0x499f4ec878310099b1cFb7e62BfA92D04a955A10",
-      "symbol": "mooCurveLendWstETH-crvUSD",
-      "name": "cvcrvUSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "symbol": "crvUSD",
-        "name": "crvUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xdB41502E5341CDBa0658AcC4033e4480385A5D49": {
-    "protocolToken": {
-      "address": "0xdB41502E5341CDBa0658AcC4033e4480385A5D49",
-      "symbol": "mooFxConvexDOLA-fxUSD",
-      "name": "fxUSDDola",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x865377367054516e17014CcdED1e7d814EDC9ce4",
-        "symbol": "DOLA",
-        "name": "Dola USD Stablecoin",
-        "decimals": 18
-      },
-      {
-        "address": "0x085780639CC2cACd35E474e71f4d000e2405d8f6",
-        "symbol": "fxUSD",
-        "name": "f(x) USD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xc2CA275bC2BB07fC8167E43aB11402FA1ac54c54": {
-    "protocolToken": {
-      "address": "0xc2CA275bC2BB07fC8167E43aB11402FA1ac54c54",
-      "symbol": "mooSiloWETH(PT-eETH)",
-      "name": "WETH (PT-eETH Market)",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "symbol": "WETH",
-        "name": "WETH (PT-eETH Market)",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x0D10346Cb5Efc58A9ccF5C3cecF9273596Faf0D6": {
-    "protocolToken": {
-      "address": "0x0D10346Cb5Efc58A9ccF5C3cecF9273596Faf0D6",
-      "symbol": "mooCurveLendTBTC-crvUSD",
-      "name": "cvcrvUSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "symbol": "crvUSD",
-        "name": "crvUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xbDfC7bd237453D330fF9c8d2cBc6c4384a1d19D6": {
-    "protocolToken": {
-      "address": "0xbDfC7bd237453D330fF9c8d2cBc6c4384a1d19D6",
-      "symbol": "mooCurveLendWETH-crvUSD",
-      "name": "cvcrvUSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "symbol": "crvUSD",
-        "name": "crvUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4Dc0f0e627F56B72616604A6A57e4B6E020377a3": {
-    "protocolToken": {
-      "address": "0x4Dc0f0e627F56B72616604A6A57e4B6E020377a3",
-      "symbol": "mooCurveLendUwU-crvUSD",
-      "name": "cvcrvUSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "symbol": "crvUSD",
-        "name": "crvUSD",
-        "decimals": 18
-      }
-    ]
+    "unwrapType": "curve"
   },
   "0xa11654Bb4286d0ffCc1f76AacbEf7125ad972BA8": {
     "protocolToken": {
       "address": "0xa11654Bb4286d0ffCc1f76AacbEf7125ad972BA8",
+      "name": "Moo Curve sDAI-USDM",
       "symbol": "mooCurve_sDAI-USDM",
-      "name": "sdai-usdm",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+        "name": "Savings Dai",
         "symbol": "sDAI",
-        "name": "Savings DAI",
         "decimals": 18
       },
       {
         "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
-        "symbol": "USDM",
         "name": "Mountain Protocol USD",
+        "symbol": "USDM",
         "decimals": 18
       }
-    ]
-  },
-  "0xbbAD3dE35c76524F55DBf1cAFE782D6a69E0c3E6": {
-    "protocolToken": {
-      "address": "0xbbAD3dE35c76524F55DBf1cAFE782D6a69E0c3E6",
-      "symbol": "mooCurveTriCryptoGHO",
-      "name": "GHOBTCwstE",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+    ],
+    "underlyingLPToken": {
+      "address": "0x425BfB93370F14fF525aDb6EaEAcfE1f4e3b5802",
+      "name": "sDAI/USDM Rebase Enjoyer Pool",
+      "symbol": "sdai-usdm",
+      "decimals": 18
     },
-    "underlyingTokens": [
-      {
-        "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
-        "symbol": "GHO",
-        "name": "GHO Token",
-        "decimals": 18
-      },
-      {
-        "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-        "symbol": "WBTC",
-        "name": "Wrapped BTC",
-        "decimals": 8
-      },
-      {
-        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-        "symbol": "wstETH",
-        "name": "Lido Wrapped Staked ETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x94AcD52eDDe27357dab8FaBdF9DB4bbd54F1E85E": {
-    "protocolToken": {
-      "address": "0x94AcD52eDDe27357dab8FaBdF9DB4bbd54F1E85E",
-      "symbol": "mooCurveGHO-crvUSD",
-      "name": "GHOcrvUSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
-        "symbol": "GHO",
-        "name": "GHO Token",
-        "decimals": 18
-      },
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "symbol": "crvUSD",
-        "name": "crvUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x3334D380CA00FC9388E21B259673bB3d2BcD2D95": {
-    "protocolToken": {
-      "address": "0x3334D380CA00FC9388E21B259673bB3d2BcD2D95",
-      "symbol": "mooFxConvexPYUSD-fxUSD",
-      "name": "fxUSDpyUSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
-        "symbol": "PYUSD",
-        "name": "PayPal USD",
-        "decimals": 6
-      },
-      {
-        "address": "0x085780639CC2cACd35E474e71f4d000e2405d8f6",
-        "symbol": "fxUSD",
-        "name": "f(x) USD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x576D38f58cfcd6499e815095E589537088028cFB": {
-    "protocolToken": {
-      "address": "0x576D38f58cfcd6499e815095E589537088028cFB",
-      "symbol": "mooCurveLendCRV-crvUSD",
-      "name": "cvcrvUSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "symbol": "crvUSD",
-        "name": "crvUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6d6947aeD08C3407bDFF56cfA509Eda98Df2E996": {
-    "protocolToken": {
-      "address": "0x6d6947aeD08C3407bDFF56cfA509Eda98Df2E996",
-      "symbol": "mooFxConvexETH-FXN",
-      "name": "FXNETH-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x365AccFCa291e7D3914637ABf1F7635dB165Bb09",
-        "symbol": "FXN",
-        "name": "FXN Token",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x81F040E82aae01f3921A1c1225C86ce5C57C218b": {
-    "protocolToken": {
-      "address": "0x81F040E82aae01f3921A1c1225C86ce5C57C218b",
-      "symbol": "mooFxConvexGHO-fxUSD",
-      "name": "fxUSDGHO",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
-        "symbol": "GHO",
-        "name": "GHO Token",
-        "decimals": 18
-      },
-      {
-        "address": "0x085780639CC2cACd35E474e71f4d000e2405d8f6",
-        "symbol": "fxUSD",
-        "name": "f(x) USD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x26F44884D9744C0EDaB6283930DF325c200020A3": {
-    "protocolToken": {
-      "address": "0x26F44884D9744C0EDaB6283930DF325c200020A3",
-      "symbol": "mooCurveAlETH-frxETH",
-      "name": "alfrxETH-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x0100546F2cD4C9D97f798fFC9755E47865FF7Ee6",
-        "symbol": "alETH",
-        "name": "Alchemix ETH",
-        "decimals": 18
-      },
-      {
-        "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
-        "symbol": "frxETH",
-        "name": "Frax Ether",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xadBE02F718327628ED9A9515EC27D3d3b4950ED2": {
-    "protocolToken": {
-      "address": "0xadBE02F718327628ED9A9515EC27D3d3b4950ED2",
-      "symbol": "mooCurveAlUSD-FraxBP",
-      "name": "alUSDFRAXB3CRV-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xBC6DA0FE9aD5f3b0d58160288917AA56653660E9",
-        "symbol": "alUSD",
-        "name": "Alchemix USD",
-        "decimals": 18
-      },
-      {
-        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
-        "symbol": "FRAX",
-        "name": "Frax",
-        "decimals": 18
-      },
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      }
-    ]
+    "unwrapType": "curve"
   },
   "0x5dA90BA82bED0AB701E6762D2bF44E08634d9776": {
     "protocolToken": {
       "address": "0x5dA90BA82bED0AB701E6762D2bF44E08634d9776",
+      "name": "Moo Aura weETH/ezETH/rsETH",
       "symbol": "mooAuraweETH/ezETH/rsETH",
-      "name": "ezETH-weETH-rswETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
+        "address": "0x848a5564158d84b8A8fb68ab5D004Fae11619A54",
+        "name": "Balancer weETH/ezETH/rswETH",
+        "symbol": "weETH/ezETH/rswETH",
+        "decimals": 18
+      },
+      {
         "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+        "name": "Renzo Restaked ETH",
         "symbol": "ezETH",
-        "name": "Renzo Restaked ETH Token",
         "decimals": 18
       },
       {
         "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-        "symbol": "weETH",
         "name": "Wrapped eETH",
+        "symbol": "weETH",
         "decimals": 18
       },
       {
         "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+        "name": "rswETH",
         "symbol": "rswETH",
-        "name": "KelpDao Restaked ETH",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x848a5564158d84b8A8fb68ab5D004Fae11619A54",
+      "name": "Balancer weETH/ezETH/rswETH",
+      "symbol": "weETH/ezETH/rswETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
   },
   "0x1153211f7E810C73cC45eE09FF9A0742fBB6b467": {
     "protocolToken": {
       "address": "0x1153211f7E810C73cC45eE09FF9A0742fBB6b467",
+      "name": "Moo Aura weETH-rETH",
       "symbol": "mooAuraweETH-rETH",
-      "name": "weETH-rETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-        "symbol": "weETH",
-        "name": "Wrapped eETH",
+        "address": "0x05ff47AFADa98a98982113758878F9A8B9FddA0a",
+        "name": "Balancer weETH/rETH StablePool",
+        "symbol": "weETH/rETH",
         "decimals": 18
       },
       {
         "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
-        "symbol": "rETH",
         "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x05ff47AFADa98a98982113758878F9A8B9FddA0a",
+      "name": "Balancer weETH/rETH StablePool",
+      "symbol": "weETH/rETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
   },
   "0x3E1c2C604f60ef142AADAA51aa864f8438f2aaC1": {
     "protocolToken": {
       "address": "0x3E1c2C604f60ef142AADAA51aa864f8438f2aaC1",
+      "name": "Moo Aura ezETH-ETH",
       "symbol": "mooAuraezETH-ETH",
-      "name": "ezETH-ETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
+      {
+        "address": "0x596192bB6e41802428Ac943D2f1476C1Af25CC0E",
+        "name": "Balancer ezETH-WETH Stable Pool",
+        "symbol": "ezETH-WETH-BPT",
+        "decimals": 18
+      },
       {
         "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+        "name": "Renzo Restaked ETH",
         "symbol": "ezETH",
-        "name": "Renzo Restaked ETH Token",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
         "decimals": 18
       }
-    ]
-  },
-  "0xAf5bF2D152e6a16095588D3438B55eDc2bB28343": {
-    "protocolToken": {
-      "address": "0xAf5bF2D152e6a16095588D3438B55eDc2bB28343",
-      "symbol": "mooConicETH",
-      "name": "cncETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+    ],
+    "underlyingLPToken": {
+      "address": "0x596192bB6e41802428Ac943D2f1476C1Af25CC0E",
+      "name": "Balancer ezETH-WETH Stable Pool",
+      "symbol": "ezETH-WETH-BPT",
+      "decimals": 18
     },
-    "underlyingTokens": []
-  },
-  "0xcC3E3B9D045666AD90718A3Db28256de2C152297": {
-    "protocolToken": {
-      "address": "0xcC3E3B9D045666AD90718A3Db28256de2C152297",
-      "symbol": "mooConicUSDC",
-      "name": "cncUSDC",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      }
-    ]
-  },
-  "0x26343d0cD02a52548b361bf79961AB7341965E52": {
-    "protocolToken": {
-      "address": "0x26343d0cD02a52548b361bf79961AB7341965E52",
-      "symbol": "mooConicCrvUSD",
-      "name": "cncCRVUSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "symbol": "crvUSD",
-        "name": "crvUSD",
-        "decimals": 18
-      }
-    ]
+    "unwrapType": "balancer_aura_multi_lp_locked"
   },
   "0xAB28C317B34084f29d7623208b5F09C0Dd566a18": {
     "protocolToken": {
       "address": "0xAB28C317B34084f29d7623208b5F09C0Dd566a18",
+      "name": "Moo Aura RPL-rETH",
       "symbol": "mooAuraRPL-rETH",
-      "name": "RPL-rETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xD33526068D116cE69F19A9ee46F0bd304F21A51f",
-        "symbol": "RPL",
-        "name": "Rocket Pool",
+        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
         "decimals": 18
       },
       {
-        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
-        "symbol": "rETH",
-        "name": "Rocket Pool ETH",
+        "address": "0xD33526068D116cE69F19A9ee46F0bd304F21A51f",
+        "name": "Rocket Pool Protocol",
+        "symbol": "RPL",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x9F9d900462492D4C21e9523ca95A7CD86142F298",
+      "name": "Balancer 50rETH-50RPL",
+      "symbol": "50rETH-50RPL",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
   },
   "0x9E90aD4810C9eaE0ADFc15801838Dc53cC6ed48a": {
     "protocolToken": {
       "address": "0x9E90aD4810C9eaE0ADFc15801838Dc53cC6ed48a",
+      "name": "Moo Aura ALCX-ETH",
       "symbol": "mooAuraALCX-ETH",
-      "name": "ALCX-ETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF",
-        "symbol": "ALCX",
-        "name": "Alchemix",
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
         "decimals": 18
       },
       {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "symbol": "WETH",
-        "name": "WETH (PT-eETH Market)",
+        "address": "0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF",
+        "name": "Alchemix",
+        "symbol": "ALCX",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0xf16aEe6a71aF1A9Bc8F56975A4c2705ca7A782Bc",
+      "name": "20WETH-80ALCX",
+      "symbol": "20WETH-80ALCX",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
   },
   "0xB2975e68b3FAc3b8ff444660cc4cee907367EB0C": {
     "protocolToken": {
       "address": "0xB2975e68b3FAc3b8ff444660cc4cee907367EB0C",
+      "name": "Moo Aura ankrETH-wstETH",
       "symbol": "mooAuraankrETH-wstETH",
-      "name": "ankrETH-wstETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xE95A203B1a91a908F9B9CE46459d101078c2c3cb",
-        "symbol": "ankrETH",
-        "name": "Ankr Staked ETH",
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
         "decimals": 18
       },
       {
-        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-        "symbol": "wstETH",
-        "name": "Lido Wrapped Staked ETH",
+        "address": "0xdfE6e7e18f6Cc65FA13C8D8966013d4FdA74b6ba",
+        "name": "Balancer ankrETH/wstETH StablePool",
+        "symbol": "ankrETH/wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xE95A203B1a91a908F9B9CE46459d101078c2c3cb",
+        "name": "Ankr Staked ETH",
+        "symbol": "ankrETH",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0xdfE6e7e18f6Cc65FA13C8D8966013d4FdA74b6ba",
+      "name": "Balancer ankrETH/wstETH StablePool",
+      "symbol": "ankrETH/wstETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
   },
   "0x8D719AD5Cc19d5413A9D11Bd39813847f352De65": {
     "protocolToken": {
       "address": "0x8D719AD5Cc19d5413A9D11Bd39813847f352De65",
+      "name": "Moo Aura sDAI-3Pool",
       "symbol": "mooAurasDAI-3Pool",
-      "name": "sDAI-3POOL",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
-        "symbol": "sDAI",
-        "name": "Savings DAI",
+        "address": "0x49cbD67651fbabCE12d1df18499896ec87BEf46f",
+        "name": "Balancer sDAI/3Pool",
+        "symbol": "sDAI/3Pool",
         "decimals": 18
       },
       {
         "address": "0x79c58f70905F734641735BC61e45c19dD9Ad60bC",
-        "symbol": "bpt3POOL",
-        "name": "Balancer 3Pool BPT",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x08ab1DEfc5A6Df4b5598a68f17385936B345AE36": {
-    "protocolToken": {
-      "address": "0x08ab1DEfc5A6Df4b5598a68f17385936B345AE36",
-      "symbol": "mooConvex_hyUSD-eUSD",
-      "name": "hyUSDeUSD-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xaCdf0DBA4B9839b96221a8487e9ca660a48212be",
-        "symbol": "hyUSD",
-        "name": "High Yield USD",
+        "name": "Balancer USDC-DAI-USDT Stable Pool",
+        "symbol": "USDC-DAI-USDT",
         "decimals": 18
       },
       {
-        "address": "0xA0d69E286B938e21CBf7E51D71F6A4c8918f482F",
-        "symbol": "eUSD",
-        "name": "Electronic USD",
+        "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+        "name": "Savings Dai",
+        "symbol": "sDAI",
         "decimals": 18
       }
-    ]
-  },
-  "0x8cFE2f46052efE1a0784b0a28C802474C1dfd9D0": {
-    "protocolToken": {
-      "address": "0x8cFE2f46052efE1a0784b0a28C802474C1dfd9D0",
-      "symbol": "mooConvexETH+",
-      "name": "ETH+ETH-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+    ],
+    "underlyingLPToken": {
+      "address": "0x49cbD67651fbabCE12d1df18499896ec87BEf46f",
+      "name": "Balancer sDAI/3Pool",
+      "symbol": "sDAI/3Pool",
+      "decimals": 18
     },
-    "underlyingTokens": [
-      {
-        "address": "0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
-        "symbol": "ETH+",
-        "name": "ETHPlus",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x9d438daD90f928B00576D202693608bf0ecdbf0F": {
-    "protocolToken": {
-      "address": "0x9d438daD90f928B00576D202693608bf0ecdbf0F",
-      "symbol": "mooConvexUSDC+",
-      "name": "USDC+LP-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xFc0B1EEf20e4c68B3DCF36c4537Cfa7Ce46CA70b",
-        "symbol": "USDC+",
-        "name": "USDC Plus",
-        "decimals": 18
-      },
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      }
-    ]
-  },
-  "0x34892e2AcAb7Db584DE000fAa1Ca142040176b26": {
-    "protocolToken": {
-      "address": "0x34892e2AcAb7Db584DE000fAa1Ca142040176b26",
-      "symbol": "mooConvexEUSD",
-      "name": "eUSD3CRV-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xA0d69E286B938e21CBf7E51D71F6A4c8918f482F",
-        "symbol": "eUSD",
-        "name": "Electronic USD",
-        "decimals": 18
-      },
-      {
-        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
-        "symbol": "FRAX",
-        "name": "Frax",
-        "decimals": 18
-      },
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      }
-    ]
-  },
-  "0x7D02B28e5632fc027B9FCC27701e2A8965683f95": {
-    "protocolToken": {
-      "address": "0x7D02B28e5632fc027B9FCC27701e2A8965683f95",
-      "symbol": "mooConvexTryLSD",
-      "name": "TryLSD",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-        "symbol": "wstETH",
-        "name": "Lido Wrapped Staked ETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
-        "symbol": "rETH",
-        "name": "Rocket Pool ETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xac3E018457B222d93114458476f3E3416Abbe38F",
-        "symbol": "sfrxETH",
-        "name": "Staked Frax Ether",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xa95a7C9413B562f8D0581b91eC9d51A4FB5baB7e": {
-    "protocolToken": {
-      "address": "0xa95a7C9413B562f8D0581b91eC9d51A4FB5baB7e",
-      "symbol": "mooCompoundETH",
-      "name": "ETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": []
-  },
-  "0xb0018cfD5739912318Cc27d7a68a233F826DCE0b": {
-    "protocolToken": {
-      "address": "0xb0018cfD5739912318Cc27d7a68a233F826DCE0b",
-      "symbol": "mooCompoundUSDC",
-      "name": "USDC",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      }
-    ]
+    "unwrapType": "balancer_aura_multi_lp_locked"
   },
   "0x7628f57cAA83fa54909a5E46e55F0406dEcE56E6": {
     "protocolToken": {
       "address": "0x7628f57cAA83fa54909a5E46e55F0406dEcE56E6",
+      "name": "Moo Uniswap Gamma rETH-ETH",
       "symbol": "mooUniswapGammarETH-ETH",
-      "name": "rETH-ETH uLP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
-        "symbol": "rETH",
         "name": "Rocket Pool ETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xBcaeC95a49D50F7336fC08017343Ddd8ED239A52": {
-    "protocolToken": {
-      "address": "0xBcaeC95a49D50F7336fC08017343Ddd8ED239A52",
-      "symbol": "mooConvexTriCryptoLLAMA",
-      "name": "crvCRVUSDTBTCWSTETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
-        "symbol": "crvUSD",
-        "name": "crvUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0x18084fbA666a33d37592fA2633fD49a74DD93a88",
-        "symbol": "tBTC",
-        "name": "tBTC v2",
-        "decimals": 18
-      },
-      {
-        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-        "symbol": "wstETH",
-        "name": "Lido Wrapped Staked ETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x234Fd76985dA4fD505DbAF7A48e119Cd5dFD5C8F": {
-    "protocolToken": {
-      "address": "0x234Fd76985dA4fD505DbAF7A48e119Cd5dFD5C8F",
-      "symbol": "mooAuraGHO/USDC/USDT",
-      "name": "GHO/USDC/USDT",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
-        "symbol": "GHO",
-        "name": "GHO Token",
-        "decimals": 18
-      },
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      },
-      {
-        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-        "symbol": "USDT",
-        "name": "Tether USD",
-        "decimals": 6
-      }
-    ]
-  },
-  "0xc2f9C3F4e4cdE519D5DeA9880C1CA6614E4b3d61": {
-    "protocolToken": {
-      "address": "0xc2f9C3F4e4cdE519D5DeA9880C1CA6614E4b3d61",
-      "symbol": "mooAuraGyrowstETH-ETH",
-      "name": "Gyroscrope wstETH-ETH eth",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-        "symbol": "wstETH",
-        "name": "Lido Wrapped Staked ETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4d7222Eee3c6b67F8e806D0f866B0D666D6182b3": {
-    "protocolToken": {
-      "address": "0x4d7222Eee3c6b67F8e806D0f866B0D666D6182b3",
-      "symbol": "mooAuraGyrowstETH-cbETH",
-      "name": "Gyroscrope wstETH-cbETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-        "symbol": "wstETH",
-        "name": "Lido Wrapped Staked ETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
-        "symbol": "cbETH",
-        "name": "Coinbase Wrapped Staked ETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xd4D620B23E91031fa08045b6083878f42558d6b9": {
-    "protocolToken": {
-      "address": "0xd4D620B23E91031fa08045b6083878f42558d6b9",
-      "symbol": "mooAurawstETH/sfrxETH/rETH V3",
-      "name": "wstETH/rETH/sfrxETH V3",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-        "symbol": "wstETH",
-        "name": "Lido Wrapped Staked ETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
         "symbol": "rETH",
-        "name": "Rocket Pool ETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xac3E018457B222d93114458476f3E3416Abbe38F",
-        "symbol": "sfrxETH",
-        "name": "Staked Frax Ether",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xD1BeaD7CadcCC6b6a715A6272c39F1EC54F6EC99": {
-    "protocolToken": {
-      "address": "0xD1BeaD7CadcCC6b6a715A6272c39F1EC54F6EC99",
-      "symbol": "mooConvexTriCryptoUSDC",
-      "name": "crvUSDCWBTCWETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      },
-      {
-        "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-        "symbol": "WBTC",
-        "name": "Wrapped BTC",
-        "decimals": 8
-      }
-    ]
-  },
-  "0x31C0dac4c896cb84adFEF2F8e41cb9295EEc93c2": {
-    "protocolToken": {
-      "address": "0x31C0dac4c896cb84adFEF2F8e41cb9295EEc93c2",
-      "symbol": "mooConvexOETH",
-      "name": "OETHCRV-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x856c4Efb76C1D1AE02e20CEB03A2A6a08b0b8dC3",
-        "symbol": "OETH",
-        "name": "Origin Ether",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x56d50Ca676f9AdC1E90f29F25e0d12DeC02746eE": {
-    "protocolToken": {
-      "address": "0x56d50Ca676f9AdC1E90f29F25e0d12DeC02746eE",
-      "symbol": "mooConvexWBETH",
-      "name": "ETHwBETHCRV",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xa2E3356610840701BDf5611a53974510Ae27E2e1",
-        "symbol": "wBETH",
-        "name": "Wrapped Binance Beacon ETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xFc6a9D39b44a174B5Ba708dBaa437632d78B8585": {
-    "protocolToken": {
-      "address": "0xFc6a9D39b44a174B5Ba708dBaa437632d78B8585",
-      "symbol": "mooAPE",
-      "name": "APE",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4d224452801ACEd8B2F0aebE155379bb5D594381",
-        "symbol": "APE",
-        "name": "APE",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x03D0F88aDc096259b49079073aED693Ba5f425EE": {
-    "protocolToken": {
-      "address": "0x03D0F88aDc096259b49079073aED693Ba5f425EE",
-      "symbol": "mooConvexT",
-      "name": "crvTETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xCdF7028ceAB81fA0C6971208e83fa7872994beE5",
-        "symbol": "T",
-        "name": "Threshold Network Token",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x83BE6565c0758f746c09f95559B45Cfb9a0FFFc4": {
-    "protocolToken": {
-      "address": "0x83BE6565c0758f746c09f95559B45Cfb9a0FFFc4",
-      "symbol": "mooConvexCvxFPIS",
-      "name": "cvxFPIS",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xa2847348b58CEd0cA58d23c7e9106A49f1427Df6",
-        "symbol": "cvxFPIS",
-        "name": "cvxFPIS",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xCc19786F91BB1F3F3Fd9A2eA9fD9a54F7743039E": {
-    "protocolToken": {
-      "address": "0xCc19786F91BB1F3F3Fd9A2eA9fD9a54F7743039E",
-      "symbol": "mooConvexCvxFXS",
-      "name": "cvxFXS",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xFEEf77d3f69374f66429C91d732A244f074bdf74",
-        "symbol": "cvxFXS",
-        "name": "cvxFXS",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x5Bcd31a28D77a1A5Ef5e0146Ab91e6f43D7100b7": {
-    "protocolToken": {
-      "address": "0x5Bcd31a28D77a1A5Ef5e0146Ab91e6f43D7100b7",
-      "symbol": "mooConvexCvxCRV-CRV",
-      "name": "cvxcrv-crv-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7",
-        "symbol": "cvxCRV",
-        "name": "cvxCRV",
-        "decimals": 18
-      },
-      {
-        "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
-        "symbol": "CRV",
-        "name": "CRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xD6F5BEF9b63bf648EeA43b80B480BE653138D116": {
-    "protocolToken": {
-      "address": "0xD6F5BEF9b63bf648EeA43b80B480BE653138D116",
-      "symbol": "mooConvexCNC-ETH",
-      "name": "CNCETH-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x9aE380F0272E2162340a5bB646c354271c0F5cFC",
-        "symbol": "CNC",
-        "name": "Conic Finance Token",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xa6b53563a13de4C443FC4fd60d7127Ad54924cd3": {
-    "protocolToken": {
-      "address": "0xa6b53563a13de4C443FC4fd60d7127Ad54924cd3",
-      "symbol": "mooConvexCTR-ETH",
-      "name": "CTRETH-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xb3Ad645dB386D7F6D753B2b9C3F4B853DA6890B8",
-        "symbol": "CTR",
-        "name": "Concentrator Token",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x445BE44783b9B04B27d23b87eD69985aBAb1BeF3": {
-    "protocolToken": {
-      "address": "0x445BE44783b9B04B27d23b87eD69985aBAb1BeF3",
-      "symbol": "mooVerseVERSE-ETH",
-      "name": "VERSE-ETH LP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x249cA82617eC3DfB2589c4c17ab7EC9765350a18",
-        "symbol": "VERSE",
-        "name": "Verse",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8785e892e6C7f1BcE907680cE35B580EEA7Fb24c": {
-    "protocolToken": {
-      "address": "0x8785e892e6C7f1BcE907680cE35B580EEA7Fb24c",
-      "symbol": "mooVerseUSDC-ETH",
-      "name": "USDC-ETH LP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      }
-    ]
-  },
-  "0x7eAeA98668f1C062266B4C186F57eAfb6dF6Fbe4": {
-    "protocolToken": {
-      "address": "0x7eAeA98668f1C062266B4C186F57eAfb6dF6Fbe4",
-      "symbol": "mooConvexCLEV-ETH",
-      "name": "CLEVETH-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x72953a5C32413614d24C29c84a66AE4B59581Bbf",
-        "symbol": "CLEV",
-        "name": "CLever Token",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xaa43DFb8fC642Feb9887cDFFff1DAAd1cFA511B4": {
-    "protocolToken": {
-      "address": "0xaa43DFb8fC642Feb9887cDFFff1DAAd1cFA511B4",
-      "symbol": "mooConvexClevCVX",
-      "name": "clevCVX-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xf05e58fCeA29ab4dA01A495140B349F8410Ba904",
-        "symbol": "clevCVX",
-        "name": "CLever CVX",
-        "decimals": 18
-      },
-      {
-        "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-        "symbol": "CVX",
-        "name": "CVX",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4115150523599D1F6C6Fa27F5A4C27D578Fd8ce5": {
-    "protocolToken": {
-      "address": "0x4115150523599D1F6C6Fa27F5A4C27D578Fd8ce5",
-      "symbol": "mooConvexCRV",
-      "name": "cvxCRV",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7",
-        "symbol": "cvxCRV",
-        "name": "cvxCRV",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xb9548238d875fB4e12727B2750D8a0bDbc7171c7": {
-    "protocolToken": {
-      "address": "0xb9548238d875fB4e12727B2750D8a0bDbc7171c7",
-      "symbol": "mooConvexCVX-ETH",
-      "name": "crvCVXETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-        "symbol": "CVX",
-        "name": "CVX",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8448758c3Cad93675eACe770847aA9507f8bDe0B": {
-    "protocolToken": {
-      "address": "0x8448758c3Cad93675eACe770847aA9507f8bDe0B",
-      "symbol": "mooConvexGEAR-ETH",
-      "name": "crvGEARETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xBa3335588D9403515223F109EdC4eB7269a9Ab5D",
-        "symbol": "GEAR",
-        "name": "Gearbox",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x4a37227BFE2aD5c5126E176e16363d5c79BC1EF5": {
-    "protocolToken": {
-      "address": "0x4a37227BFE2aD5c5126E176e16363d5c79BC1EF5",
-      "symbol": "mooConvexFrxETH",
-      "name": "frxETHCRV",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
-        "symbol": "frxETH",
-        "name": "Frax Ether",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x60a1Cf0D617EeADbB48e488D9Ca3E74F50aB4b71": {
-    "protocolToken": {
-      "address": "0x60a1Cf0D617EeADbB48e488D9Ca3E74F50aB4b71",
-      "symbol": "mooConvexCbETH",
-      "name": "cbETH/ETH-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
-        "symbol": "cbETH",
-        "name": "Coinbase Wrapped Staked ETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD": {
-    "protocolToken": {
-      "address": "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD",
-      "symbol": "mooAuraAURA-WETH",
-      "name": "AURA-WETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC0c293ce456fF0ED870ADd98a0828Dd4d2903DBF",
-        "symbol": "AURA",
-        "name": "Aura",
         "decimals": 18
       },
       {
         "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
         "symbol": "WETH",
-        "name": "WETH (PT-eETH Market)",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0xa8076aE31e4B6c64D07b1Ed27889924a962a70d3",
+      "name": "xrETH-ETH05",
+      "symbol": "xrETH-ETH05",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
-  "0x44B6A414e73fb7387Ca250F44D7e43cD7d6992c2": {
+  "0x234Fd76985dA4fD505DbAF7A48e119Cd5dFD5C8F": {
     "protocolToken": {
-      "address": "0x44B6A414e73fb7387Ca250F44D7e43cD7d6992c2",
-      "symbol": "mooAuraBAL",
-      "name": "auraBAL",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "address": "0x234Fd76985dA4fD505DbAF7A48e119Cd5dFD5C8F",
+      "name": "Moo Aura GHO/USDC/USDT",
+      "symbol": "mooAuraGHO/USDC/USDT",
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x616e8BfA43F920657B3497DBf40D6b1A02D4608d",
-        "symbol": "auraBAL",
-        "name": "auraBAL",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x7f3F33B42b9734e61cb44424D130B5f6e09C9Db3": {
-    "protocolToken": {
-      "address": "0x7f3F33B42b9734e61cb44424D130B5f6e09C9Db3",
-      "symbol": "mooConvexUSDD",
-      "name": "USDD3CRV3CRV-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x0C10bF8FcB7Bf5412187A595ab97a3609160b5c6",
-        "symbol": "USDD",
-        "name": "Decentralized USD",
+        "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
+        "name": "Gho Token",
+        "symbol": "GHO",
         "decimals": 18
       },
       {
-        "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-        "symbol": "DAI",
-        "name": "DAI Stablecoin",
+        "address": "0x8353157092ED8Be69a9DF8F95af097bbF33Cb2aF",
+        "name": "Balancer GHO/USDT/USDC",
+        "symbol": "GHO/USDT/USDC",
         "decimals": 18
       },
       {
         "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
         "symbol": "USDC",
-        "name": "USDC",
         "decimals": 6
       },
       {
         "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-        "symbol": "USDT",
         "name": "Tether USD",
-        "decimals": 6
-      }
-    ]
-  },
-  "0x3fe43D4ba0a5BAcC800c7E7E782466a27ab108bf": {
-    "protocolToken": {
-      "address": "0x3fe43D4ba0a5BAcC800c7E7E782466a27ab108bf",
-      "symbol": "mooConvexDolaFraxBP",
-      "name": "DOLAFRAXBP3CRV-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x865377367054516e17014CcdED1e7d814EDC9ce4",
-        "symbol": "DOLA",
-        "name": "Dola USD Stablecoin",
-        "decimals": 18
-      },
-      {
-        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
-        "symbol": "FRAX",
-        "name": "Frax",
-        "decimals": 18
-      },
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      }
-    ]
-  },
-  "0xd5bAd7c89028B3F7094e40DcCe83D4e6b3Fd9AA4": {
-    "protocolToken": {
-      "address": "0xd5bAd7c89028B3F7094e40DcCe83D4e6b3Fd9AA4",
-      "symbol": "mooConvexMIM",
-      "name": "MIM-3LP3CRV-f",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x99D8a9C45b2ecA8864373A26D1459e3Dff1e17F3",
-        "symbol": "MIM",
-        "name": "Magic Internet Money",
-        "decimals": 18
-      },
-      {
-        "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-        "symbol": "DAI",
-        "name": "DAI Stablecoin",
-        "decimals": 18
-      },
-      {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      },
-      {
-        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
         "symbol": "USDT",
-        "name": "Tether USD",
         "decimals": 6
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x8353157092ED8Be69a9DF8F95af097bbF33Cb2aF",
+      "name": "Balancer GHO/USDT/USDC",
+      "symbol": "GHO/USDT/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
   },
-  "0xe50e2fe90745A8510491F89113959a1EF01AD400": {
+  "0xc2f9C3F4e4cdE519D5DeA9880C1CA6614E4b3d61": {
     "protocolToken": {
-      "address": "0xe50e2fe90745A8510491F89113959a1EF01AD400",
-      "symbol": "mooConvexTriCrypto",
-      "name": "crv3crypto",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "address": "0xc2f9C3F4e4cdE519D5DeA9880C1CA6614E4b3d61",
+      "name": "Moo Aura Gyro wstETH-ETH",
+      "symbol": "mooAuraGyrowstETH-ETH",
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-        "symbol": "USDT",
-        "name": "Tether USD",
-        "decimals": 6
-      },
-      {
-        "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-        "symbol": "WBTC",
-        "name": "Wrapped BTC",
-        "decimals": 8
-      }
-    ]
-  },
-  "0x4fc424a840B5fB1BAf195963eC3737904440df1D": {
-    "protocolToken": {
-      "address": "0x4fc424a840B5fB1BAf195963eC3737904440df1D",
-      "symbol": "mooConvexFraxUsdc",
-      "name": "crvFRAX",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
-        "symbol": "FRAX",
-        "name": "Frax",
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
         "decimals": 18
       },
       {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0xf01b0684C98CD7aDA480BFDF6e43876422fa1Fc1",
+      "name": "Gyroscope ECLP wstETH/wETH",
+      "symbol": "ECLP-wstETH-wETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
   },
-  "0xe6aB93d1c253d16733d52dD40b4929a6a04b2B08": {
+  "0x4d7222Eee3c6b67F8e806D0f866B0D666D6182b3": {
     "protocolToken": {
-      "address": "0xe6aB93d1c253d16733d52dD40b4929a6a04b2B08",
-      "symbol": "mooConvexFrax3Crv",
-      "name": "FRAX3CRV",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "address": "0x4d7222Eee3c6b67F8e806D0f866B0D666D6182b3",
+      "name": "Moo Aura Gyro wstETH-cbETH",
+      "symbol": "mooAuraGyrowstETH-cbETH",
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
-        "symbol": "FRAX",
-        "name": "Frax",
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
         "decimals": 18
       },
       {
-        "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-        "symbol": "DAI",
-        "name": "DAI Stablecoin",
+        "address": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
+        "name": "Coinbase Wrapped Staked ETH",
+        "symbol": "cbETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xF7A826D47c8E02835D94fb0Aa40F0cC9505cb134",
+      "name": "Gyroscope ECLP wstETH/cbETH",
+      "symbol": "ECLP-wstETH-cbETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0xd4D620B23E91031fa08045b6083878f42558d6b9": {
+    "protocolToken": {
+      "address": "0xd4D620B23E91031fa08045b6083878f42558d6b9",
+      "name": "Moo Aura wstETH/sfrxETH/rETH V3",
+      "symbol": "mooAurawstETH/sfrxETH/rETHV3",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x42ED016F826165C2e5976fe5bC3df540C5aD0Af7",
+        "name": "wstETH-rETH-sfrxETH-BPT",
+        "symbol": "wstETH-rETH-sfrxETH-BPT",
         "decimals": 18
       },
       {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
       },
       {
-        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-        "symbol": "USDT",
-        "name": "Tether USD",
-        "decimals": 6
+        "address": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+        "name": "Staked Frax Ether",
+        "symbol": "sfrxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x42ED016F826165C2e5976fe5bC3df540C5aD0Af7",
+      "name": "wstETH-rETH-sfrxETH-BPT",
+      "symbol": "wstETH-rETH-sfrxETH-BPT",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp"
   },
-  "0x66F5263d51174bab17Ac2bda31E51F5bcF05a69A": {
+  "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD": {
     "protocolToken": {
-      "address": "0x66F5263d51174bab17Ac2bda31E51F5bcF05a69A",
-      "symbol": "mooStargateUSDC",
-      "name": "S*USDC",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "address": "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD",
+      "name": "Moo Aura AURA-WETH",
+      "symbol": "mooAuraAURA-WETH",
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-        "symbol": "USDC",
-        "name": "USDC",
-        "decimals": 6
-      }
-    ]
-  },
-  "0x61cf8d861ff3c939147c2aa1F694f9592Bf51983": {
-    "protocolToken": {
-      "address": "0x61cf8d861ff3c939147c2aa1F694f9592Bf51983",
-      "symbol": "mooStargateUSDT",
-      "name": "S*USDT",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
       {
-        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-        "symbol": "USDT",
-        "name": "Tether USD",
-        "decimals": 6
+        "address": "0xC0c293ce456fF0ED870ADd98a0828Dd4d2903DBF",
+        "name": "Aura",
+        "symbol": "AURA",
+        "decimals": 18
       }
-    ]
-  },
-  "0x4dd0cF20237deb5F2bE76340838B9e2D7c70E852": {
-    "protocolToken": {
-      "address": "0x4dd0cF20237deb5F2bE76340838B9e2D7c70E852",
-      "symbol": "mooStargateETH",
-      "name": "S*ETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+    ],
+    "underlyingLPToken": {
+      "address": "0xCfCA23cA9CA720B6E98E3Eb9B6aa0fFC4a5C08B9",
+      "name": "50WETH-50AURA",
+      "symbol": "50WETH-50AURA",
+      "decimals": 18
     },
-    "underlyingTokens": []
+    "unwrapType": "balancer_aura_multi_lp"
   },
   "0xe17D6212eAa54D98187026A770dee96f7C264feC": {
     "protocolToken": {
       "address": "0xe17D6212eAa54D98187026A770dee96f7C264feC",
+      "name": "Moo Aura rETH-ETH",
       "symbol": "mooAurarETH-ETH",
-      "name": "rETH-ETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
-        "symbol": "rETH",
         "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x1E19CF2D73a72Ef1332C882F20534B6519Be0276",
+      "name": "Balancer rETH Stable Pool",
+      "symbol": "B-rETH-STABLE",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp"
   }
 }

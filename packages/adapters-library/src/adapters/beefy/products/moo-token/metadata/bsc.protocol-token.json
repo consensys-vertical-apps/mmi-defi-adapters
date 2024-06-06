@@ -2,486 +2,407 @@
   "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B": {
     "protocolToken": {
       "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
+      "name": "Moo Thena Gamma weETH-ETH Narrow",
       "symbol": "mooThenaGammaweETH-ETHNarrow",
-      "name": "aWEETH-ETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
-        "symbol": "weETH",
         "name": "Wrapped eETH",
+        "symbol": "weETH",
         "decimals": 18
       },
       {
         "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+        "name": "Ethereum Token",
         "symbol": "ETH",
-        "name": "ETH",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0xc2c05763Ea35c4db63C49631206F07215d6d0D39",
+      "name": "aWEETH-ETH",
+      "symbol": "aWEETH-ETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0x45070826065cF98C4A843fe3D811dBFc0e4bF107": {
     "protocolToken": {
       "address": "0x45070826065cF98C4A843fe3D811dBFc0e4bF107",
+      "name": "Moo Thena Gamma ETH-USDT Narrow",
       "symbol": "mooThenaGammaETH-USDTNarrow",
-      "name": "aETH-USDT",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+        "name": "Ethereum Token",
         "symbol": "ETH",
-        "name": "ETH",
         "decimals": 18
       },
       {
         "address": "0x55d398326f99059fF775485246999027B3197955",
+        "name": "Tether USD",
         "symbol": "USDT",
-        "name": "USDT",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x01DD2d28eeB95D740acb5344b1e2C99b61CC3e64",
+      "name": "aETH-USDT",
+      "symbol": "aETH-USDT",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0x56429A5A436936c596F0bd6baaae13a0c9984B86": {
     "protocolToken": {
       "address": "0x56429A5A436936c596F0bd6baaae13a0c9984B86",
+      "name": "Moo Thena Gamma ankrBNB-BTCB Narrow",
       "symbol": "mooThenaGammaankrBNB-BTCBNarrow",
-      "name": "aANKRBNB-BTCB",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x52F24a5e03aee338Da5fd9Df68D2b6FAe1178827",
-        "symbol": "ankrBNB",
         "name": "Ankr Staked BNB",
+        "symbol": "ankrBNB",
         "decimals": 18
       },
       {
         "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+        "name": "BTCB Token",
         "symbol": "BTCB",
-        "name": "BTCB",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x4589C07b77bc5271a3A84FE83e255ec370277be8",
+      "name": "aANKRBNB-BTCB",
+      "symbol": "aANKRBNB-BTCB",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0xbe8686Bce22E05a9156BC9D77344075fE32471bB": {
     "protocolToken": {
       "address": "0xbe8686Bce22E05a9156BC9D77344075fE32471bB",
+      "name": "Moo Thena Gamma ankrBNB-ANKR Narrow",
       "symbol": "mooThenaGammaankrBNB-ANKRNarrow",
-      "name": "aANKRBNB-ANKR",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x52F24a5e03aee338Da5fd9Df68D2b6FAe1178827",
-        "symbol": "ankrBNB",
         "name": "Ankr Staked BNB",
+        "symbol": "ankrBNB",
         "decimals": 18
       },
       {
         "address": "0xf307910A4c7bbc79691fD374889b36d8531B08e3",
-        "symbol": "ANKR",
         "name": "Ankr",
+        "symbol": "ANKR",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x3f8f3caefF393B1994a9968E835Fd38eCba6C1be",
+      "name": "aANKRBNB-ANKR",
+      "symbol": "aANKRBNB-ANKR",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0x2A1b2B05A3c54C86F3f3AB837cA423ad60CF35d1": {
     "protocolToken": {
       "address": "0x2A1b2B05A3c54C86F3f3AB837cA423ad60CF35d1",
-      "symbol": "mooThenaGammaFIL-BNBNarrow",
-      "name": "aFIL-BNB",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "name": "Moo Thena Gamma FIL-BNB Narrow",
+      "symbol": "mooThenaFIL-BNBNarrow",
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153",
+        "name": "Filecoin",
         "symbol": "FIL",
-        "name": "FIL",
+        "decimals": 18
+      },
+      {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0xc89004ce7becd2b39c44260327a603885da119B5",
+      "name": "aFIL-WBNB",
+      "symbol": "aFIL-WBNB",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0xA5d3c08E0afb5F4d2428630e10d31DC53a14e2E5": {
     "protocolToken": {
       "address": "0xA5d3c08E0afb5F4d2428630e10d31DC53a14e2E5",
+      "name": "Moo Thena THE-BNB Wide",
       "symbol": "mooThenaTHE-BNBWide",
-      "name": "aTHE-BNB",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11",
-        "symbol": "THE",
-        "name": "THENA",
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB",
         "decimals": 18
-      }
-    ]
-  },
-  "0x677475C26C9386BB14eE0EBE8D8f7E8Da717233B": {
-    "protocolToken": {
-      "address": "0x677475C26C9386BB14eE0EBE8D8f7E8Da717233B",
-      "symbol": "mooThenaUSDV-USDT",
-      "name": "USDV-USDT sLP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
-        "symbol": "USDV",
-        "name": "USDV",
-        "decimals": 6
       },
       {
-        "address": "0x55d398326f99059fF775485246999027B3197955",
-        "symbol": "USDT",
-        "name": "USDT",
+        "address": "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11",
+        "name": "THENA",
+        "symbol": "THE",
         "decimals": 18
       }
-    ]
-  },
-  "0x11D26A2F2BB6DF4a1fF915c919e2a0a256a61A5a": {
-    "protocolToken": {
-      "address": "0x11D26A2F2BB6DF4a1fF915c919e2a0a256a61A5a",
-      "symbol": "mooOpenOceanOOE-BNB",
-      "name": "OOE-BNB LP V2",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+    ],
+    "underlyingLPToken": {
+      "address": "0xe8EC29b75d98d3cdc47dB9797B00dCaaBeA2b15b",
+      "name": "aWBNB-THE",
+      "symbol": "aWBNB-THE",
+      "decimals": 18
     },
-    "underlyingTokens": [
-      {
-        "address": "0x8ea5219a16c2dbF1d6335A6aa0c6bd45c50347C5",
-        "symbol": "OOE",
-        "name": "Open Ocean Finance",
-        "decimals": 18
-      }
-    ]
+    "unwrapType": "gamma"
   },
   "0x4a9945B75E5c860f511CD223E838b213828a0583": {
     "protocolToken": {
       "address": "0x4a9945B75E5c860f511CD223E838b213828a0583",
+      "name": "Moo Thena BNBx-BTCB Narrow",
       "symbol": "mooThenaBNBx-BTCBNarrow",
-      "name": "aBNBX-BTCB",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x1bdd3Cf7F79cfB8EdbB955f20ad99211551BA275",
-        "symbol": "BNBx",
         "name": "Liquid Staking BNB",
+        "symbol": "BNBx",
         "decimals": 18
       },
       {
         "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+        "name": "BTCB Token",
         "symbol": "BTCB",
-        "name": "BTCB",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x0827841963Cc8a0515b5baa59782b0a0870b5f88",
+      "name": "aBNBX-BTC",
+      "symbol": "aBNBX-BTC",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0x72fC82b9955f04b20166b0Da7e1af4f893F6316a": {
     "protocolToken": {
       "address": "0x72fC82b9955f04b20166b0Da7e1af4f893F6316a",
+      "name": "Moo Thena Gamma ETH-ankrETH",
       "symbol": "mooThenaGamma_ETH-ankrETH",
-      "name": "aETH-ANKRETH",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
-        "address": "0xe05A08226c49b636ACf99c40Da8DC6aF83CE5bB3",
-        "symbol": "ankrETH",
-        "name": "Ankr Staked ETH",
+        "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+        "name": "Ethereum Token",
+        "symbol": "ETH",
         "decimals": 18
       },
       {
-        "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-        "symbol": "ETH",
-        "name": "ETH",
+        "address": "0xe05A08226c49b636ACf99c40Da8DC6aF83CE5bB3",
+        "name": "Ankr Staked ETH",
+        "symbol": "ankrETH",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x5c15842fCC12313C4f94dFB6fad1Af3f989D33e9",
+      "name": "aETH-ANKRETH",
+      "symbol": "aETH-ANKRETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0x2E65aB174847B5b20a7DAd4fc077e49E6aD38400": {
     "protocolToken": {
       "address": "0x2E65aB174847B5b20a7DAd4fc077e49E6aD38400",
+      "name": "Moo Thena Gamma USDT-USDC",
       "symbol": "mooThenaGamma_USDT-USDC",
-      "name": "aUSDT-USDC",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x55d398326f99059fF775485246999027B3197955",
+        "name": "Tether USD",
         "symbol": "USDT",
-        "name": "USDT",
         "decimals": 18
       },
       {
         "address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+        "name": "USD Coin",
         "symbol": "USDC",
-        "name": "USDC",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x5EEca990E9B7489665F4B57D27D92c78BC2AfBF2",
+      "name": "aUSDT-USDC",
+      "symbol": "aUSDT-USDC",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0x836C6BffB0B08aCa20b9380330D2532A51aA0eAD": {
     "protocolToken": {
       "address": "0x836C6BffB0B08aCa20b9380330D2532A51aA0eAD",
+      "name": "Moo Thena Gamma USDT-BNB",
       "symbol": "mooThenaGamma_USDT-BNB",
-      "name": "aUSDT-WBNB",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x55d398326f99059fF775485246999027B3197955",
+        "name": "Tether USD",
         "symbol": "USDT",
-        "name": "USDT",
+        "decimals": 18
+      },
+      {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x3ec1FFd5dc29190588608Ae9Fd4f93750e84CDA2",
+      "name": "aUSDT-WBNB",
+      "symbol": "aUSDT-WBNB",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0xbCFcE18C5c33463316f93A067b1f50d75b00dc09": {
     "protocolToken": {
       "address": "0xbCFcE18C5c33463316f93A067b1f50d75b00dc09",
+      "name": "Moo Thena Gamma ETH-BNB",
       "symbol": "mooThenaGamma_ETH-BNB",
-      "name": "aETH-WBNB",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+        "name": "Ethereum Token",
         "symbol": "ETH",
-        "name": "ETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x10bf6e7B28b1cfFb1c047D7F815953931e5Ee947",
+      "name": "aETH-WBNB",
+      "symbol": "aETH-WBNB",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0x960eE6caC56912D94cE5c83D7Fb0CD873b5c5099": {
     "protocolToken": {
       "address": "0x960eE6caC56912D94cE5c83D7Fb0CD873b5c5099",
+      "name": "Moo Thena Gamma BTCB-BNB",
       "symbol": "mooThenaGamma_BTCB-BNB",
-      "name": "aBTCB-WBNB",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+        "name": "BTCB Token",
         "symbol": "BTCB",
-        "name": "BTCB",
+        "decimals": 18
+      },
+      {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0xD3C480EC7a47596fF8D63396227d1F7dC728A7f0",
+      "name": "aBTCB-WBNB",
+      "symbol": "aBTCB-WBNB",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0x93DB73f79D4fdc5be42C0bd2812e94A271aDC7e2": {
     "protocolToken": {
       "address": "0x93DB73f79D4fdc5be42C0bd2812e94A271aDC7e2",
+      "name": "Moo Thena Gamma ankrBNB-BNB",
       "symbol": "mooThenaGamma_ankrBNB-BNB",
-      "name": "aANKRBNB-WBNB",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
       {
         "address": "0x52F24a5e03aee338Da5fd9Df68D2b6FAe1178827",
-        "symbol": "ankrBNB",
         "name": "Ankr Staked BNB",
+        "symbol": "ankrBNB",
+        "decimals": 18
+      },
+      {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB",
         "decimals": 18
       }
-    ]
+    ],
+    "underlyingLPToken": {
+      "address": "0x754Fd74e22255780a58F125300008781D8318e3A",
+      "name": "aANKRBNB-WBNB",
+      "symbol": "aANKRBNB-WBNB",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
   },
   "0x33D0F945F77660F4A9e56949500265313f6D08fb": {
     "protocolToken": {
       "address": "0x33D0F945F77660F4A9e56949500265313f6D08fb",
+      "name": "Moo Thena Gamma BNB-stkBNB",
       "symbol": "mooThenaGamma_BNB-stkBNB",
-      "name": "aWBNB-STKBNB",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+      "decimals": 18
     },
     "underlyingTokens": [
+      {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB",
+        "decimals": 18
+      },
       {
         "address": "0xc2E9d07F66A89c44062459A47a0D2Dc038E4fb16",
-        "symbol": "stkBNB",
         "name": "Staked BNB",
+        "symbol": "stkBNB",
         "decimals": 18
       }
-    ]
-  },
-  "0x9E6182054258e90228afF17952b347dCfd7cC1b1": {
-    "protocolToken": {
-      "address": "0x9E6182054258e90228afF17952b347dCfd7cC1b1",
-      "symbol": "mooThenaIDIA-BUSD",
-      "name": "IDIA-BUSD vLP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
+    ],
+    "underlyingLPToken": {
+      "address": "0x86b481fCe116DCd01fBeBb963f1358bcc466668C",
+      "name": "aWBNB-STKBNB",
+      "symbol": "aWBNB-STKBNB",
+      "decimals": 18
     },
-    "underlyingTokens": [
-      {
-        "address": "0x0b15Ddf19D47E6a86A56148fb4aFFFc6929BcB89",
-        "symbol": "IDIA",
-        "name": "Impossible Decentralized Incubator Access Token",
-        "decimals": 18
-      },
-      {
-        "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-        "symbol": "BUSD",
-        "name": "BUSD",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x5D83D13Fa899451b75f7c465C0A2590Bb3f9067f": {
-    "protocolToken": {
-      "address": "0x5D83D13Fa899451b75f7c465C0A2590Bb3f9067f",
-      "symbol": "mooThenaMAI-FRAX",
-      "name": "MAI-FRAX sLP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3F56e0c36d275367b8C502090EDF38289b3dEa0d",
-        "symbol": "MAI",
-        "name": "Mai Stablecoin",
-        "decimals": 18
-      },
-      {
-        "address": "0x90C97F71E18723b0Cf0dfa30ee176Ab653E89F40",
-        "symbol": "FRAX",
-        "name": "Frax Token",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x8399B83f27A1aeBBBDAdC4132C78ac6dE8aF0747": {
-    "protocolToken": {
-      "address": "0x8399B83f27A1aeBBBDAdC4132C78ac6dE8aF0747",
-      "symbol": "mooThenaUSDT-FRAX",
-      "name": "FRAX-USDT sLP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x90C97F71E18723b0Cf0dfa30ee176Ab653E89F40",
-        "symbol": "FRAX",
-        "name": "Frax Token",
-        "decimals": 18
-      },
-      {
-        "address": "0x55d398326f99059fF775485246999027B3197955",
-        "symbol": "USDT",
-        "name": "USDT",
-        "decimals": 18
-      }
-    ]
-  },
-  "0xf7BB9152807529f0550f0A9839867D7F349F1592": {
-    "protocolToken": {
-      "address": "0xf7BB9152807529f0550f0A9839867D7F349F1592",
-      "symbol": "mooThenaBNBx-SD",
-      "name": "SD-BNBx vLP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x3BC5AC0dFdC871B365d159f728dd1B9A0B5481E8",
-        "symbol": "SD",
-        "name": "SD",
-        "decimals": 18
-      },
-      {
-        "address": "0x1bdd3Cf7F79cfB8EdbB955f20ad99211551BA275",
-        "symbol": "BNBx",
-        "name": "Liquid Staking BNB",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x9B429B6bb5aBfD97869d6D302676a3885e9b0B2b": {
-    "protocolToken": {
-      "address": "0x9B429B6bb5aBfD97869d6D302676a3885e9b0B2b",
-      "symbol": "mooThenafrxETH-ETH",
-      "name": "frxETH-ETH sLP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x64048A7eEcF3a2F1BA9e144aAc3D7dB6e58F555e",
-        "symbol": "frxETH",
-        "name": "Frax Ether",
-        "decimals": 18
-      },
-      {
-        "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-        "symbol": "ETH",
-        "name": "ETH",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x68c39886eA459b4a59758F1e94c3d20C93d47133": {
-    "protocolToken": {
-      "address": "0x68c39886eA459b4a59758F1e94c3d20C93d47133",
-      "symbol": "mooAutoMdexETH-USDT",
-      "name": "ETH-USDT Mdex LP",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-        "symbol": "ETH",
-        "name": "ETH",
-        "decimals": 18
-      },
-      {
-        "address": "0x55d398326f99059fF775485246999027B3197955",
-        "symbol": "USDT",
-        "name": "USDT",
-        "decimals": 18
-      }
-    ]
-  },
-  "0x6BE4741AB0aD233e4315a10bc783a7B923386b71": {
-    "protocolToken": {
-      "address": "0x6BE4741AB0aD233e4315a10bc783a7B923386b71",
-      "symbol": "mooVenusBNB",
-      "name": "BNB",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": []
-  },
-  "0x0383E88A19E5c387FeBafbF51E5bA642d2ad8bE0": {
-    "protocolToken": {
-      "address": "0x0383E88A19E5c387FeBafbF51E5bA642d2ad8bE0",
-      "symbol": "mooStargateUSDT",
-      "name": "S*USDT",
-      "decimals": 18,
-      "logo": "https://beefy.com/icons/icon-96x96.png"
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x55d398326f99059fF775485246999027B3197955",
-        "symbol": "USDT",
-        "name": "USDT",
-        "decimals": 18
-      }
-    ]
+    "unwrapType": "gamma"
   }
 }

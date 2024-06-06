@@ -17,32 +17,101 @@
       "tokens": [
         {
           "address": "0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83",
+          "name": "Moo Aero weETH-AERO",
           "symbol": "mooAeroweETH-AERO",
-          "name": "vAMM-weETH/AERO",
           "decimals": 18,
-          "logo": "https://beefy.com/icons/icon-96x96.png",
           "balanceRaw": "1141244529723677099n",
           "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
+              "name": "Wrapped eETH",
+              "symbol": "weETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 3949.7911020155257,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A/logo.png"
+            },
+            {
+              "address": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+              "name": "Aerodrome",
+              "symbol": "AERO",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "1269n",
+              "balance": 1.269e-15,
+              "price": 1.0782136384365697,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x940181a94A35A4569E4529A3CDfB74e38FD98631/logo.png"
+            }
+          ],
           "balance": 1.141244529723677
         },
         {
           "address": "0x4Fc0E7cDfe0CF92762eaf3CEE9133239A2197391",
+          "name": "Moo Aero USDC-USDbC",
           "symbol": "mooAeroUSDC-USDbC",
-          "name": "sAMM-UDSC-USDbC",
           "decimals": 18,
-          "logo": "https://beefy.com/icons/icon-96x96.png",
           "balanceRaw": "484323n",
           "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 1.000854725606749,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913/logo.png"
+            },
+            {
+              "address": "0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA",
+              "name": "USD Base Coin",
+              "symbol": "USDbC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 1.0006217745791293,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA/logo.png"
+            }
+          ],
           "balance": 4.84323e-13
         },
         {
           "address": "0x92868C059CfCd035ea204e3163Bd84b308dD358e",
+          "name": "Moo Aero WETH-AERO",
           "symbol": "mooAeroWETH-AERO",
-          "name": "vAMM-WETH/AERO",
           "decimals": 18,
-          "logo": "https://beefy.com/icons/icon-96x96.png",
           "balanceRaw": "613234192367626382n",
           "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4200000000000000000000000000000000000006",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 3814.28,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x4200000000000000000000000000000000000006/logo.png"
+            },
+            {
+              "address": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+              "name": "Aerodrome",
+              "symbol": "AERO",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "1728n",
+              "balance": 1.728e-15,
+              "price": 1.0782136384365697,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x940181a94A35A4569E4529A3CDfB74e38FD98631/logo.png"
+            }
+          ],
           "balance": 0.6132341923676263
         }
       ]

@@ -1,0 +1,219 @@
+{
+  "blockNumber": 121055758,
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 10,
+      "productId": "moo-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x63289886Ad4Eb9364669741650cde780C9f2E7D2",
+          "name": "Moo VeloV2 POOL-ETH",
+          "symbol": "mooVelov2POOL-ETH",
+          "decimals": 18,
+          "balanceRaw": "100781145238460432n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x395Ae52bB17aef68C2888d941736A71dC6d4e125",
+              "name": "PoolTogether",
+              "symbol": "POOL",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "182n",
+              "balance": 1.82e-16,
+              "price": 0.5398393313466532,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x395Ae52bB17aef68C2888d941736A71dC6d4e125/logo.png"
+            },
+            {
+              "address": "0x4200000000000000000000000000000000000006",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 3795.11913439,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
+            }
+          ],
+          "balance": 0.10078114523846043
+        },
+        {
+          "address": "0xD9E277eA320C53dE06C535f0D922A76a68CB9A9C",
+          "name": "Moo VeloV2 wUSDR-USDC",
+          "symbol": "mooVeloV2wUSDR-USDC",
+          "decimals": 18,
+          "balanceRaw": "17282880n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x340fE1D898ECCAad394e2ba0fC1F93d27c7b717A",
+              "name": "Wrapped USDR",
+              "symbol": "wUSDR",
+              "decimals": 9,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 0.5747057795508217,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x340fE1D898ECCAad394e2ba0fC1F93d27c7b717A/logo.png"
+            },
+            {
+              "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 0.9995619719089541,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x7F5c764cBc14f9669B88837ca1490cCa17c31607/logo.png"
+            }
+          ],
+          "balance": 1.728288e-11
+        },
+        {
+          "address": "0x52cC5B5CB98C9a7fb8cCe7d4b4e8F41E26ce04a8",
+          "name": "Moo VeloV2 OP-USDC",
+          "symbol": "mooVeloV2OP-USDC",
+          "decimals": 18,
+          "balanceRaw": "1526898565351n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4200000000000000000000000000000000000042",
+              "name": "Optimism",
+              "symbol": "OP",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "21n",
+              "balance": 2.1e-17,
+              "price": 2.4742732049525142,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000042/logo.png"
+            },
+            {
+              "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 0.9995619719089541,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x7F5c764cBc14f9669B88837ca1490cCa17c31607/logo.png"
+            }
+          ],
+          "balance": 0.000001526898565351
+        },
+        {
+          "address": "0xef8D6dDE0a0f0CCdaDB678366a94D93f1C449689",
+          "name": "Moo VeloV2 MAI-USDC",
+          "symbol": "mooVeloV2MAI-USDC",
+          "decimals": 18,
+          "balanceRaw": "1563115291702n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 0.9995619719089541,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x7F5c764cBc14f9669B88837ca1490cCa17c31607/logo.png"
+            },
+            {
+              "address": "0xdFA46478F9e5EA86d57387849598dbFB2e964b02",
+              "name": "Mai Stablecoin",
+              "symbol": "MAI",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "55n",
+              "balance": 5.5e-17,
+              "price": 0.6101859186717147,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0xdFA46478F9e5EA86d57387849598dbFB2e964b02/logo.png"
+            }
+          ],
+          "balance": 0.000001563115291702
+        },
+        {
+          "address": "0x453f61390ce6DfB668bbF4D93E58c94BB0ae81f3",
+          "name": "Moo VeloV2 DOLA-USDC",
+          "symbol": "mooVeloV2DOLA-USDC",
+          "decimals": 18,
+          "balanceRaw": "1746665781049n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 0.9995619719089541,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x7F5c764cBc14f9669B88837ca1490cCa17c31607/logo.png"
+            },
+            {
+              "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+              "name": "Dola USD Stablecoin",
+              "symbol": "DOLA",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "39n",
+              "balance": 3.9e-17,
+              "price": 0.9723936391430908,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x8aE125E8653821E851F12A49F7765db9a9ce7384/logo.png"
+            }
+          ],
+          "balance": 0.000001746665781049
+        },
+        {
+          "address": "0x28bAF22c85D146101198D1883281a83cBe063329",
+          "name": "Moo VeloV2 WETH-USDC",
+          "symbol": "mooVeloV2WETH-USDC",
+          "decimals": 18,
+          "balanceRaw": "15468748967n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4200000000000000000000000000000000000006",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 3795.11913439,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
+            },
+            {
+              "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "0n",
+              "balance": 0,
+              "price": 0.9995619719089541,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x7F5c764cBc14f9669B88837ca1490cCa17c31607/logo.png"
+            }
+          ],
+          "balance": 1.5468748967e-8
+        }
+      ]
+    }
+  ]
+}

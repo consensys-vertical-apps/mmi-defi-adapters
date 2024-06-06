@@ -5,12 +5,9 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import { logger } from '../../../../core/utils/logger'
 import { Helpers } from '../../../../scripts/helpers'
-import { Replacements } from '../../../../scripts/replacements'
-import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import {
   AssetType,
@@ -24,33 +21,21 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  Underlying,
+  TokenType,
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-
-type Metadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
-  }
->
-
-const chainIdMap: Record<Chain, string> = {
-  [Chain.Ethereum]: 'ethereum',
-  [Chain.Optimism]: 'optimism',
-  [Chain.Bsc]: 'bsc',
-  [Chain.Polygon]: 'polygon',
-  [Chain.Fantom]: 'fantom',
-  [Chain.Base]: 'base',
-  [Chain.Arbitrum]: 'arbitrum',
-  [Chain.Avalanche]: 'avax',
-  [Chain.Linea]: 'linea',
-}
+import { breakdownFetcherMap, chainIdMap, protocolMap } from './config'
+import {
+  ApiBoost,
+  ApiPlatformId,
+  ApiVault,
+  BalanceBreakdown,
+  Metadata,
+} from './types'
 
 export class BeefyMooTokenAdapter
   implements IProtocolAdapter, IMetadataBuilder
@@ -99,45 +84,9 @@ export class BeefyMooTokenAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<Metadata> {
-    type ApiVault = {
-      id: string
-      status: 'active' | 'eol'
-      earnedTokenAddress: string
-      chain: string
-      platformId: string
-      token: string
-      tokenAddress: string
-      earnedToken: string
-      isGovVault?: boolean
-      bridged?: object
-      assets?: string[]
-    }
-    type ApiToken = {
-      type: string
-      id: string
-      symbol: string
-      name: string
-      chainId: string
-      oracle: string
-      oracleId: string
-      address: string
-      decimals: number
-    }
-    type ApiTokenList = {
-      [chainId: string]: {
-        [tokenId: string]: ApiToken
-      }
-    }
-    type ApiBoost = {
-      id: string
-      poolId: string
-    }
     const vaults = (await (
       await fetch('https://api.beefy.finance/vaults')
     ).json()) as ApiVault[]
-    const tokens = (await (
-      await fetch('https://api.beefy.finance/tokens')
-    ).json()) as ApiTokenList
     const boosts = (await (
       await fetch('https://api.beefy.finance/boosts')
     ).json()) as ApiBoost[]
@@ -150,60 +99,98 @@ export class BeefyMooTokenAdapter
       {} as Record<string, boolean>,
     )
     const chain = chainIdMap[this.chainId]
+    const supportedVaults = vaults
+      .filter((vault) => vault.chain === chain)
+      // remove inactive vaults, might not be a good idea to remove them completely
+      .filter((vault) => vault.status === 'active')
+      // remove unsupported gov vaults
+      .filter((vault) => vault.isGovVault !== true)
+      // remove unsupported bridged vaults
+      .filter((vault) => Object.keys(vault.bridged || {}).length === 0)
+      // remove unsupported vaults with a boost, accounting of user balance is a bit more complex
+      .filter((vault) => !boostedVaultsMap[vault.id])
+      // remove those where we token breakdown isn't implemented
+      .filter((vault) => {
+        const keep = !!protocolMap[vault.platformId]
+        if (!keep) {
+          logger.debug(
+            {
+              vaultId: vault.id,
+              platformId: vault.platformId,
+              vaultAddress: vault.earnedTokenAddress,
+              poolAddress: vault.tokenAddress,
+              strategyTypeId: vault.strategyTypeId,
+              chain,
+            },
+            'Protocol type not implemented',
+          )
+        }
+        return keep
+      })
 
-    return (
-      vaults
-        .filter((vault) => vault.chain === chain)
-        // remove inactive vaults, might not be a good idea to remove them completely
-        .filter((vault) => vault.status === 'active')
-        // remove unsupported gov vaults
-        .filter((vault) => vault.isGovVault !== true)
-        // remove unsupported bridged vaults
-        .filter((vault) => Object.keys(vault.bridged || {}).length === 0)
-        // remove unsupported vaults with a boost, accounting of user balance is a bit more complex
-        .filter((vault) => !boostedVaultsMap[vault.id])
-        .reduce((acc, vault) => {
-          const protocolToken = {
-            address: getAddress(vault.earnedTokenAddress),
-            symbol: vault.earnedToken,
-            name: vault.token,
-            decimals: 18,
-            logo: 'https://beefy.com/icons/icon-96x96.png',
-          }
+    // for each vault, get the latest breakdown to get the token list
+    const res: Metadata = {}
+    for (const vault of supportedVaults) {
+      const platformConfig = protocolMap[vault.platformId]
+      const protocolType =
+        typeof platformConfig === 'string'
+          ? platformConfig
+          : platformConfig[vault.strategyTypeId || 'default']
+      if (!protocolType) {
+        logger.warn(
+          {
+            vaultId: vault.id,
+            platformId: vault.platformId,
+            vaultAddress: vault.earnedTokenAddress,
+            poolAddress: vault.tokenAddress,
+            strategyTypeId: vault.strategyTypeId,
+            chain,
+          },
+          'Protocol type not found',
+        )
+        continue
+      }
 
-          const underlyingTokens = (
-            vault.assets?.map((tokenId) => {
-              const chainTokens = tokens[vault.chain]
-              if (!chainTokens) {
-                return null
-              }
+      try {
+        const [protocolToken, underlyingToken, breakdown] = await Promise.all([
+          this.helpers.getTokenMetadata(vault.earnedTokenAddress),
+          this.helpers.getTokenMetadata(vault.tokenAddress),
+          breakdownFetcherMap[protocolType](
+            {
+              protocolTokenAddress: vault.earnedTokenAddress,
+              underlyingLPTokenAddress: vault.tokenAddress,
+              blockSpec: { blockTag: undefined },
+            },
+            this.provider,
+          ),
+        ])
 
-              let token = chainTokens[tokenId] || null
-              // remove the "W" from the token id
-              if (token && token.address === 'native') {
-                token = chainTokens[tokenId.slice(1)] || null
-              }
-              if (!token) {
-                return null
-              }
+        const breakdownTokenMetadata = await Promise.all(
+          breakdown.balances.map((balance) =>
+            this.helpers.getTokenMetadata(balance.tokenAddress),
+          ),
+        )
 
-              return {
-                address: getAddress(token.address),
-                symbol: token.symbol,
-                name: token.name,
-                decimals: token.decimals,
-              }
-            }) || []
-          ).filter((token): token is Erc20Metadata => !!token)
+        res[protocolToken.address] = {
+          protocolToken,
+          underlyingTokens: breakdownTokenMetadata,
+          underlyingLPToken: underlyingToken,
+          unwrapType: protocolType,
+        }
+      } catch (e) {
+        logger.error(
+          {
+            vaultId: vault.id,
+            platformId: vault.platformId,
+            chain,
+            error: e,
+          },
+          'Failed to fetch metadata',
+        )
+      }
+    }
 
-          acc[protocolToken.address] = {
-            protocolToken,
-            underlyingTokens,
-          }
-
-          return acc
-        }, {} as Metadata)
-    )
+    return res
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
@@ -261,7 +248,50 @@ export class BeefyMooTokenAdapter
     tokenId,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    throw new NotImplementedError()
+    const metadata = await this.fetchPoolMetadata(protocolTokenAddress)
+
+    const vaultBalanceBreakdown = await breakdownFetcherMap[
+      metadata.unwrapType
+    ](
+      {
+        protocolTokenAddress,
+        underlyingLPTokenAddress: metadata.underlyingLPToken.address,
+        blockSpec: { blockTag: blockNumber },
+      },
+      this.provider,
+    )
+
+    return {
+      ...metadata.protocolToken,
+      baseRate: 1,
+      type: TokenType['Protocol'],
+      tokens: vaultBalanceBreakdown.balances.map((balance) => {
+        const token = metadata.underlyingTokens.find(
+          (token) => token.address === balance.tokenAddress,
+        )
+        if (!token) {
+          logger.error(
+            {
+              tokenAddress: balance.tokenAddress,
+              protocolTokenAddress,
+              protocol: this.protocolId,
+              chainId: this.chainId,
+              product: this.productId,
+            },
+            'Token not found',
+          )
+          throw new Error('Token not found')
+        }
+
+        return {
+          ...token,
+          underlyingRateRaw:
+            (balance.vaultBalance * BigInt(token.decimals)) /
+            vaultBalanceBreakdown.vaultTotalSupply,
+          type: TokenType['Underlying'],
+        }
+      }),
+    }
   }
 
   private async getProtocolToken(protocolTokenAddress: string) {
