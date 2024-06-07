@@ -101,7 +101,7 @@ const ConfigSchema = z
         ethereum: z.boolean().default(true),
         optimism: z.boolean().default(true),
         bsc: z.boolean().default(false),
-        polygon: z.boolean().default(false),
+        polygon: z.boolean().default(true),
         fantom: z.boolean().default(false),
         base: z.boolean().default(true),
         arbitrum: z.boolean().default(true),
@@ -124,7 +124,7 @@ const ConfigSchema = z
           .default(
             parseNumberEnv(
               process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_OPTIMISM,
-              100,
+              20,
             ),
           ),
         bsc: z

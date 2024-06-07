@@ -169,6 +169,24 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
       throw new NotSupportedUnlimitedGetLogsBlockRange()
     }
 
+    if (this.chainId === Chain.Polygon) {
+      const transferEventSignature = ethers.id(
+        'Transfer(address,address,uint256)',
+      )
+
+      const transferFilter = {
+        fromBlock: 0,
+        toBlock: 'latest',
+        topics: [
+          transferEventSignature,
+          '0x0000000000000000000000000000000000000000000000000000000000000000',
+          ethers.zeroPadValue(address, 32), // to address
+        ],
+      }
+
+      return this.getLogs(transferFilter)
+    }
+
     const transferEventSignature = ethers.id(
       'Transfer(address,address,uint256)',
     )
