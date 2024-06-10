@@ -107,6 +107,16 @@ import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
+import TanxFinanceDexEthereumProtocolTokens from '../../adapters/tanx-finance/products/dex/metadata/ethereum.protocol-tokens.json'
+
+import TanxFinanceDexOptimismProtocolTokens from '../../adapters/tanx-finance/products/dex/metadata/optimism.protocol-tokens.json'
+
+import TanxFinanceDexPolygonProtocolTokens from '../../adapters/tanx-finance/products/dex/metadata/polygon.protocol-tokens.json'
+
+import TanxFinanceDexArbitrumProtocolTokens from '../../adapters/tanx-finance/products/dex/metadata/arbitrum.protocol-tokens.json'
+
+import TanxFinanceDexLineaProtocolTokens from '../../adapters/tanx-finance/products/dex/metadata/linea.protocol-tokens.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -971,6 +981,51 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     SushiswapV2PoolPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.TanxFinance,
+      productId: 'dex',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-tokens',
+    }),
+    TanxFinanceDexArbitrumProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.TanxFinance,
+      productId: 'dex',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-tokens',
+    }),
+    TanxFinanceDexEthereumProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.TanxFinance,
+      productId: 'dex',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-tokens',
+    }),
+    TanxFinanceDexLineaProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.TanxFinance,
+      productId: 'dex',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-tokens',
+    }),
+    TanxFinanceDexOptimismProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.TanxFinance,
+      productId: 'dex',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-tokens',
+    }),
+    TanxFinanceDexPolygonProtocolTokens,
   ],
   [
     metadataKey({
