@@ -46,6 +46,8 @@ import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
+import { testCases as tanxFinanceTestCases } from './tanx-finance/tests/testCases'
+
 const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
@@ -84,6 +86,7 @@ const protocolTestCases = {
   [Protocol.SushiswapV2]: sushiswapV2TestCases,
   [Protocol.Swell]: swellTestCases,
   [Protocol.SyncSwap]: syncSwapTestCases,
+  [Protocol.TanxFinance]: tanxFinanceTestCases,
   [Protocol.UniswapV2]: uniswapV2TestCases,
   [Protocol.UniswapV3]: uniswapV3TestCases,
   [Protocol.Xfai]: xfaiTestCases,
