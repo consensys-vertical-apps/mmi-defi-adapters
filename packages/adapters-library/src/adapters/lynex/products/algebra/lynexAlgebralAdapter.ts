@@ -1,4 +1,4 @@
-import { formatUnits, getAddress } from 'ethers'
+import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
@@ -31,7 +31,6 @@ import { PositionManager__factory } from '../../contracts'
 // Parameter needed for static call request
 // Set the date in the future to ensure the static call request doesn't trigger smart contract validation
 const deadline = Math.floor(Date.now() - 1000) + 60 * 10
-
 
 const positionManagerCommonAddress = getAddress(
   '0x5D3D9E20ad27dd61182505230D1bD075bd249E4B',
@@ -106,8 +105,7 @@ export class LynexAlgebraAdapter extends SimplePoolAdapter {
       name: 'Lynex Algebra',
       description: 'Lynex Algebra defi adapter',
       siteUrl: 'https://app.lynex.fi/',
-      iconUrl:
-        'https://app.lynex.fi/logo.png',
+      iconUrl: 'https://app.lynex.fi/logo.png',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
@@ -137,7 +135,6 @@ export class LynexAlgebraAdapter extends SimplePoolAdapter {
 
     return filterMapAsync(tokenIds, async (tokenId) => {
       try {
-
         const position = await positionsManagerContract.positions(tokenId, {
           blockTag: blockNumber,
         })
@@ -177,7 +174,7 @@ export class LynexAlgebraAdapter extends SimplePoolAdapter {
 
         const nftName = this.protocolTokenName(
           token0Metadata.symbol,
-          token1Metadata.symbol
+          token1Metadata.symbol,
         )
 
         return {
@@ -247,10 +244,7 @@ export class LynexAlgebraAdapter extends SimplePoolAdapter {
     )
   }
 
-  private protocolTokenName(
-    token0Symbol: string,
-    token1Symbol: string,
-  ) {
+  private protocolTokenName(token0Symbol: string, token1Symbol: string) {
     return `${token0Symbol} / ${token1Symbol}`
   }
 
@@ -376,11 +370,11 @@ export class LynexAlgebraAdapter extends SimplePoolAdapter {
             address: protocolTokenAddress,
             name: this.protocolTokenName(
               token0Metadata.symbol,
-              token1Metadata.symbol
+              token1Metadata.symbol,
             ),
             symbol: this.protocolTokenName(
               token0Metadata.symbol,
-              token1Metadata.symbol
+              token1Metadata.symbol,
             ),
             decimals: 18,
             tokenId,
