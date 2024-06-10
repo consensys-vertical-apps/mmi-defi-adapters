@@ -107,6 +107,8 @@ import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
+import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -701,6 +703,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'glp',
     }),
     GmxGlpAvalancheGlp,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Lynex,
+      productId: 'classic',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    LynexClassicLineaProtocolToken,
   ],
   [
     metadataKey({

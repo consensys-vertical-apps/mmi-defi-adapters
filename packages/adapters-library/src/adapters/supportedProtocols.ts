@@ -38,6 +38,8 @@ import { GmxGlpAdapter } from './gmx/products/glp/gmxGlpAdapter'
 import { IZiSwapPoolAdapter } from './iziswap/products/pool/iZiSwapPoolAdapter'
 import { LidoStEthAdapter } from './lido/products/st-eth/lidoStEthAdapter'
 import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
+import { LynexAlgebraAdapter } from './lynex/products/algebra/lynexAlgebralAdapter'
+import { LynexClassicAdapter } from './lynex/products/classic/lynexClassicAdapter'
 import { MakerSDaiAdapter } from './maker/products/s-dai/makerSDaiAdapter'
 import { MendiFinanceBorrowAdapter } from './mendi-finance/products/borrow/mendiFinanceBorrowAdapter'
 import { MendiFinanceSupplyAdapter } from './mendi-finance/products/supply/mendiFinanceSupplyAdapter'
@@ -202,6 +204,10 @@ export const supportedProtocols: Record<
 
   [Protocol.Lido]: {
     [Chain.Ethereum]: [LidoStEthAdapter, LidoWstEthAdapter],
+  },
+
+  [Protocol.Lynex]: {
+    [Chain.Linea]: [LynexAlgebraAdapter, LynexClassicAdapter],
   },
 
   [Protocol.Maker]: {
