@@ -121,10 +121,6 @@ export class TanxFinanceDexAdapter
     this.helpers = helpers
   }
 
-  /**
-   * Update me.
-   * Add your protocol details
-   */
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -493,7 +489,7 @@ export class TanxFinanceDexAdapter
             starkexDepositEvents,
             userAddress,
             protocolTokenAddress,
-            tanxControllerContract.interface, // add movements to parameters to get the balance from fast withdrawal contract
+            tanxControllerContract.interface, 
             'deposit',
             'starkex',
             currentBalance,
