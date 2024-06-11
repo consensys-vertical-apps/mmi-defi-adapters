@@ -25,12 +25,12 @@
           "tokens": [
             {
               "address": "0x4200000000000000000000000000000000000006",
-              "symbol": "ETH",
               "name": "Ethereum",
+              "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "45549338996417344316n",
               "type": "underlying",
-              "balance": 45.54933899641735,
+              "balanceRaw": "45549338996417343458n",
+              "balance": 45.54933899641734,
               "price": 2921.57546867,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
             }
@@ -50,8 +50,8 @@
               "name": "Optimism",
               "symbol": "OP",
               "decimals": 18,
-              "balanceRaw": "4279303295312441251855n",
               "type": "underlying",
+              "balanceRaw": "4279303295312441165501n",
               "balance": 4279.303295312441,
               "price": 2.6826700627658924,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000042/logo.png"
@@ -72,8 +72,8 @@
               "name": "Synthetix Network Token",
               "symbol": "SNX",
               "decimals": 18,
-              "balanceRaw": "5394820811382096730223n",
               "type": "underlying",
+              "balanceRaw": "5394820811382096578656n",
               "balance": 5394.8208113820965,
               "price": 2.570900862222286,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4/logo.png"
@@ -94,9 +94,9 @@
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
-              "balanceRaw": "933034515n",
               "type": "underlying",
-              "balance": 9.33034515,
+              "balanceRaw": "933034504n",
+              "balance": 9.33034504,
               "price": 57651.04769709457,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x68f180fcCe6836688e9084f035309E29Bf0A2095/logo.png"
             }
@@ -116,8 +116,8 @@
               "name": "Wrapped liquid staked Ether 2.0",
               "symbol": "wstETH",
               "decimals": 18,
-              "balanceRaw": "1084266879629912438n",
               "type": "underlying",
+              "balanceRaw": "1084266879629912388n",
               "balance": 1.0842668796299124,
               "price": 3399.5332972209817,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb/logo.png"
