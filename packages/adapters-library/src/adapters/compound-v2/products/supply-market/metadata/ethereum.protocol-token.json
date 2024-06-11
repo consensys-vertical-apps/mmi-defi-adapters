@@ -181,6 +181,20 @@
       "decimals": 18
     }
   },
+  "0x95b4eF2869eBD94BEb4eEE400a99824BF5DC325b": {
+    "protocolToken": {
+      "address": "0x95b4eF2869eBD94BEb4eEE400a99824BF5DC325b",
+      "name": "Compound Maker",
+      "symbol": "cMKR",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "name": "Maker",
+      "symbol": "MKR",
+      "decimals": 18
+    }
+  },
   "0x4B0181102A0112A2ef11AbEE5563bb4a3176c9d7": {
     "protocolToken": {
       "address": "0x4B0181102A0112A2ef11AbEE5563bb4a3176c9d7",
@@ -206,34 +220,6 @@
       "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
       "name": "Aave Token",
       "symbol": "AAVE",
-      "decimals": 18
-    }
-  },
-  "0xF5DCe57282A584D2746FaF1593d3121Fcac444dC": {
-    "protocolToken": {
-      "address": "0xF5DCe57282A584D2746FaF1593d3121Fcac444dC",
-      "name": "Compound Dai",
-      "symbol": "cDAI",
-      "decimals": 8
-    },
-    "underlyingToken": {
-      "address": "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
-      "name": "Dai Stablecoin v1.0",
-      "symbol": "DAI",
-      "decimals": 18
-    }
-  },
-  "0x95b4eF2869eBD94BEb4eEE400a99824BF5DC325b": {
-    "protocolToken": {
-      "address": "0x95b4eF2869eBD94BEb4eEE400a99824BF5DC325b",
-      "name": "Compound Maker",
-      "symbol": "cMKR",
-      "decimals": 8
-    },
-    "underlyingToken": {
-      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
-      "name": "Maker",
-      "symbol": "MKR",
       "decimals": 18
     }
   },
@@ -276,6 +262,20 @@
       "address": "0x956F47F50A910163D8BF957Cf5846D573E7f87CA",
       "name": "Fei USD",
       "symbol": "FEI",
+      "decimals": 18
+    }
+  },
+  "0xF5DCe57282A584D2746FaF1593d3121Fcac444dC": {
+    "protocolToken": {
+      "address": "0xF5DCe57282A584D2746FaF1593d3121Fcac444dC",
+      "name": "Compound Dai",
+      "symbol": "cDAI",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
+      "name": "Dai Stablecoin v1.0",
+      "symbol": "DAI",
       "decimals": 18
     }
   }
