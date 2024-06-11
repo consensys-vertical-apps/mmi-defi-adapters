@@ -1,27 +1,60 @@
+import { Protocol } from '../../adapters/protocols'
 import { CompoundV2Cerc20__factory } from '../../contracts'
+import { Helpers } from '../../scripts/helpers'
+import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
   GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
   MovementsByBlock,
-  TokenBalance,
+  ProtocolAdapterParams,
+  ProtocolDetails,
+  ProtocolPosition,
+  ProtocolTokenTvl,
   TokenType,
-  Underlying,
-  UnwrappedTokenExchangeRate,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
+import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
-import { NotImplementedError } from '../errors/errors'
+import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { logger } from '../utils/logger'
-import { SimplePoolAdapter } from './SimplePoolAdapter'
 import { buildMetadata } from './compoundV2BuildMetadata'
 
 export abstract class CompoundV2SupplyMarketForkAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
+  implements IProtocolAdapter, IMetadataBuilder
 {
+  abstract productId: string
+
+  protocolId: Protocol
+  chainId: Chain
+  helpers: Helpers
+
+  protected provider: CustomJsonRpcProvider
+
+  adaptersController: AdaptersController
+
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+    helpers,
+  }: ProtocolAdapterParams) {
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolId = protocolId
+    this.adaptersController = adaptersController
+    this.helpers = helpers
+  }
+
   abstract contractAddresses: Partial<
     Record<Chain, { comptrollerAddress: string }>
   >
+
+  abstract getProtocolDetails(): ProtocolDetails
 
   async buildMetadata() {
     return await buildMetadata({
@@ -37,21 +70,88 @@ export abstract class CompoundV2SupplyMarketForkAdapter
     )
   }
 
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
+  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return this.helpers.getBalanceOfTokens({
+      ...input,
+      protocolTokens: await this.getProtocolTokens(),
+    })
   }
 
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
+  async getWithdrawals({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.withdrawals({
+      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
 
-    return [underlyingToken]
+  async getDeposits({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.deposits({
+      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getTotalValueLocked({
+    protocolTokenAddresses,
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    return await this.helpers.tvl({
+      protocolTokens,
+      filterProtocolTokenAddresses: protocolTokenAddresses,
+      blockNumber,
+    })
+  }
+
+  async unwrap({
+    protocolTokenAddress,
+    blockNumber,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const {
+      protocolToken,
+      underlyingTokens: [underlyingToken],
+    } = await this.fetchPoolMetadata(protocolTokenAddress)
+
+    const poolContract = CompoundV2Cerc20__factory.connect(
+      protocolTokenAddress,
+      this.provider,
+    )
+
+    const exchangeRateCurrent =
+      await poolContract.exchangeRateCurrent.staticCall({
+        blockTag: blockNumber,
+      })
+
+    // The current exchange rate is scaled by 1 * 10^(18 - 8 + Underlying Token Decimals).
+    const adjustedExchangeRate = exchangeRateCurrent / 10n ** 10n
+
+    return {
+      ...protocolToken,
+      baseRate: 1,
+      type: TokenType.Protocol,
+      tokens: [
+        {
+          ...underlyingToken!,
+          type: TokenType.Underlying,
+          underlyingRateRaw: adjustedExchangeRate,
+        },
+      ],
+    }
+  }
+
+  private async getProtocolToken(protocolTokenAddress: string) {
+    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
   }
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
@@ -71,77 +171,5 @@ export abstract class CompoundV2SupplyMarketForkAdapter
     }
 
     return poolMetadata
-  }
-
-  protected async getUnderlyingTokenBalances({
-    userAddress,
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenBalance.address,
-    )
-
-    const poolContract = CompoundV2Cerc20__factory.connect(
-      protocolTokenBalance.address,
-      this.provider,
-    )
-
-    const underlyingBalance = await poolContract.balanceOfUnderlying.staticCall(
-      userAddress,
-      {
-        blockTag: blockNumber,
-      },
-    )
-
-    const underlyingTokenBalance = {
-      ...underlyingToken,
-      balanceRaw: underlyingBalance,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
-  }
-
-  protected async unwrapProtocolToken(
-    protocolTokenMetadata: Erc20Metadata,
-    blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenMetadata.address,
-    )
-
-    const poolContract = CompoundV2Cerc20__factory.connect(
-      protocolTokenMetadata.address,
-      this.provider,
-    )
-
-    const exchangeRateCurrent =
-      await poolContract.exchangeRateCurrent.staticCall({
-        blockTag: blockNumber,
-      })
-
-    // The current exchange rate is scaled by 1 * 10^(18 - 8 + Underlying Token Decimals).
-    const adjustedExchangeRate = exchangeRateCurrent / 10n ** 10n
-
-    return [
-      {
-        ...underlyingToken,
-        type: TokenType.Underlying,
-        underlyingRateRaw: adjustedExchangeRate,
-      },
-    ]
-  }
-
-  getBorrows(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  getRepays(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
   }
 }
