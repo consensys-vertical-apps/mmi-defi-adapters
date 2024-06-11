@@ -263,16 +263,16 @@ export class TanxFinanceDexAdapter
     controllerInterface: Interface,
     eventType: 'deposit' | 'withdrawal',
     contractType: 'starkex' | 'fastWithdrawal' = 'starkex',
+    currentBalance: bigint = BigInt(0),
   ): Promise<MovementsByBlock[]> {
     const metadata = await this.buildMetadata()
-    let amount = BigInt(0)
-
+    let amount = BigInt(0) + currentBalance
 
     const transactionHashes: string[] = []
 
     if (contractType === 'starkex') {
       if (eventType === 'deposit') {
-        amount = logs
+        amount += logs
           .map((item) => {
             const log = item.args
 
@@ -311,8 +311,8 @@ export class TanxFinanceDexAdapter
               item?.protocolTokenAddress === protocolTokenAddress,
           )
           .reduce((acc, item) => item?.quantizedAmount! + acc, BigInt(0))
-      } else {
-        amount = logs
+      } else { // withdrawals
+        amount += logs
           .map((item) => {
             const log = item.args
 
@@ -350,8 +350,8 @@ export class TanxFinanceDexAdapter
           )
           .reduce((acc, item) => item?.quantizedAmount! + acc, BigInt(0))
       }
-    } else {
-      amount = logs
+    } else { // fast withdrawal contract
+      amount += logs
         .map((item) => {
           const log = item.args
 
@@ -399,6 +399,13 @@ export class TanxFinanceDexAdapter
         : []
 
     return movementsByBlock
+  }
+
+  getCurrentRawBalanceFromMovements(
+    movements: MovementsByBlock[],
+  ): bigint {
+    if (movements.length == 0) return BigInt(0)
+    return movements.reduce((acc, movement) => movement?.tokens[0]?.balanceRaw! + acc, BigInt(0))
   }
 
   async getTanxMovements(
@@ -472,6 +479,8 @@ export class TanxFinanceDexAdapter
         Withdrawal: tanxControllerContract.filters.LogWithdrawalPerformed(),
       }
 
+      const currentBalance = this.getCurrentRawBalanceFromMovements(movements)
+
       try {
         if (eventType === 'deposits') {
           const starkexDepositEvents = await tanxControllerContract.queryFilter(
@@ -486,6 +495,8 @@ export class TanxFinanceDexAdapter
             protocolTokenAddress,
             tanxControllerContract.interface, // add movements to parameters to get the balance from fast withdrawal contract
             'deposit',
+            'starkex',
+            currentBalance,
           )
           movements.push(...movement)
         } else {
@@ -502,6 +513,8 @@ export class TanxFinanceDexAdapter
             protocolTokenAddress,
             tanxControllerContract.interface,
             'withdrawal',
+            'starkex',
+            currentBalance
           )
           movements.push(...movement)
         }
