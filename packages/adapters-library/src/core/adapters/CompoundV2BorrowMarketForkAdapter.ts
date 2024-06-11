@@ -97,7 +97,7 @@ export abstract class CompoundV2BorrowMarketForkAdapter
         return undefined
       }
 
-      const { protocolToken, underlyingTokens: [underlyingToken] } =
+      const { protocolToken, underlyingToken } =
         await this.fetchPoolMetadata(poolContractAddress)
 
       const poolContract = CompoundV2Cerc20__factory.connect(
@@ -122,7 +122,7 @@ export abstract class CompoundV2BorrowMarketForkAdapter
         type: TokenType.Protocol,
         tokens: [
           {
-            ...underlyingToken!,
+            ...underlyingToken,
             balanceRaw: borrowBalance,
             type: TokenType.Underlying,
           },
@@ -184,7 +184,7 @@ export abstract class CompoundV2BorrowMarketForkAdapter
   }: GetEventsInput & {
     extractAmount: (logs: LogDescription) => bigint | undefined
   }): Promise<MovementsByBlock[]> {
-    const { protocolToken, underlyingTokens: [underlyingToken] } =
+    const { protocolToken, underlyingToken } =
       await this.fetchPoolMetadata(protocolTokenAddress)
 
     const cTokenContract = CompoundV2Cerc20__factory.connect(
@@ -252,7 +252,7 @@ export abstract class CompoundV2BorrowMarketForkAdapter
           },
           tokens: [
             {
-              ...underlyingToken!,
+              ...underlyingToken,
               balanceRaw: eventAmount,
               type: TokenType.Underlying,
               blockNumber: txReceipt.blockNumber,

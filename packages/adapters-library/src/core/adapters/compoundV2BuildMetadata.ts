@@ -12,7 +12,7 @@ export type CompoundV2MarketAdapterMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
-    underlyingTokens: Erc20Metadata[]
+    underlyingToken: Erc20Metadata
   }
 >
 
@@ -66,7 +66,7 @@ export async function buildMetadata({
 
       metadataObject[protocolToken.address] = {
         protocolToken,
-        underlyingTokens: [underlyingToken],
+        underlyingToken,
       }
     }),
   )

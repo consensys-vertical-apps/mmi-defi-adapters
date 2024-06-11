@@ -120,7 +120,7 @@ export abstract class CompoundV2SupplyMarketForkAdapter
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
     const {
       protocolToken,
-      underlyingTokens: [underlyingToken],
+      underlyingToken,
     } = await this.fetchPoolMetadata(protocolTokenAddress)
 
     const poolContract = CompoundV2Cerc20__factory.connect(
@@ -142,7 +142,7 @@ export abstract class CompoundV2SupplyMarketForkAdapter
       type: TokenType.Protocol,
       tokens: [
         {
-          ...underlyingToken!,
+          ...underlyingToken,
           type: TokenType.Underlying,
           underlyingRateRaw: adjustedExchangeRate,
         },
