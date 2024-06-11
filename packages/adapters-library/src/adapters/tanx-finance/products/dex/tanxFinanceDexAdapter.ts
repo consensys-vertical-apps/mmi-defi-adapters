@@ -62,20 +62,20 @@ type Metadata = Record<
 
 const contractAddresses: Partial<Record<Chain, Record<string, string>>> = {
   [Chain.Ethereum]: {
-    starkexContract: '0x1390f521A79BaBE99b69B37154D63D431da27A07',
-    fastWithdrawalContract: '0xe17F8e501bF5e968e39D8702B30c3A8b955d8f52',
+    starkexProxyContract: '0x1390f521A79BaBE99b69B37154D63D431da27A07',
+    bridgeContract: '0xe17F8e501bF5e968e39D8702B30c3A8b955d8f52',
   },
   [Chain.Polygon]: {
-    fastWithdrawalContract: '0x2714C5958e2b1417B3f2b7609202FFAD359a5965',
+    bridgeContract: '0x2714C5958e2b1417B3f2b7609202FFAD359a5965',
   },
   [Chain.Optimism]: {
-    fastWithdrawalContract: '0xBdd40916bBC43bE14dd7183C30a64EE4A893D97f',
+    bridgeContract: '0xBdd40916bBC43bE14dd7183C30a64EE4A893D97f',
   },
   [Chain.Arbitrum]: {
-    fastWithdrawalContract: '0x149e2C169f10914830EF39B9d184AE62BbCdF526',
+    bridgeContract: '0x149e2C169f10914830EF39B9d184AE62BbCdF526',
   },
   [Chain.Linea]: {
-    fastWithdrawalContract: '0x508f001baa00976fc1d679af880267555900ab09',
+    bridgeContract: '0x508f001baa00976fc1d679af880267555900ab09',
   },
 }
 
@@ -258,7 +258,7 @@ export class TanxFinanceDexAdapter
     protocolTokenAddress: string,
     controllerInterface: Interface,
     eventType: 'deposit' | 'withdrawal',
-    contractType: 'starkex' | 'fastWithdrawal' = 'starkex',
+    contractType: 'starkexProxyContract' | 'bridgeContract' = 'starkexProxyContract',
     currentBalance: bigint = BigInt(0),
   ): Promise<MovementsByBlock[]> {
     const metadata = await this.buildMetadata()
@@ -266,7 +266,7 @@ export class TanxFinanceDexAdapter
 
     const transactionHashes: string[] = []
 
-    if (contractType === 'starkex') {
+    if (contractType === 'starkexProxyContract') {
       if (eventType === 'deposit') {
         amount += logs
           .map((item) => {
@@ -408,17 +408,17 @@ export class TanxFinanceDexAdapter
     { userAddress, fromBlock, toBlock, protocolTokenAddress }: GetEventsInput,
     eventType: 'deposits' | 'withdrawals',
   ): Promise<MovementsByBlock[]> {
-    const tanxFastWithdrawalContract = TanxFastWithdrawal__factory.connect(
-      contractAddresses[this.chainId]!.fastWithdrawalContract!,
+    const tanxBridgeContract = TanxFastWithdrawal__factory.connect(
+      contractAddresses[this.chainId]!.bridgeContract!,
       this.provider,
     )
 
     const eventFilters = {
-      Deposit: tanxFastWithdrawalContract.filters.BridgedDeposit(
+      Deposit: tanxBridgeContract.filters.BridgedDeposit(
         userAddress,
         protocolTokenAddress,
       ),
-      Withdrawal: tanxFastWithdrawalContract.filters.BridgedWithdrawal(
+      Withdrawal: tanxBridgeContract.filters.BridgedWithdrawal(
         userAddress,
         protocolTokenAddress,
       ),
@@ -428,7 +428,7 @@ export class TanxFinanceDexAdapter
 
     try {
       if (eventType === 'deposits') {
-        const depositEvents = await tanxFastWithdrawalContract.queryFilter(
+        const depositEvents = await tanxBridgeContract.queryFilter(
           eventFilters['Deposit'],
           fromBlock,
           toBlock,
@@ -438,13 +438,13 @@ export class TanxFinanceDexAdapter
           depositEvents,
           userAddress,
           protocolTokenAddress,
-          tanxFastWithdrawalContract.interface,
+          tanxBridgeContract.interface,
           'deposit',
-          'fastWithdrawal',
+          'bridgeContract',
         )
         movements.push(...movement)
       } else {
-        const withdrawalEvents = await tanxFastWithdrawalContract.queryFilter(
+        const withdrawalEvents = await tanxBridgeContract.queryFilter(
           eventFilters['Withdrawal'],
           fromBlock,
           toBlock,
@@ -454,9 +454,9 @@ export class TanxFinanceDexAdapter
           withdrawalEvents,
           userAddress,
           protocolTokenAddress,
-          tanxFastWithdrawalContract.interface,
+          tanxBridgeContract.interface,
           'withdrawal',
-          'fastWithdrawal',
+          'bridgeContract',
         )
         movements.push(...movement)
       }
@@ -465,21 +465,21 @@ export class TanxFinanceDexAdapter
     }
 
     if (this.chainId === Chain.Ethereum) {
-      const tanxControllerContract = TanxStarkex__factory.connect(
-        contractAddresses[this.chainId]!.starkexContract!,
+      const tanxProxyContract = TanxStarkex__factory.connect(
+        contractAddresses[this.chainId]!.starkexProxyContract!,
         this.provider,
       )
 
       const starkexEventFilters = {
-        Deposit: tanxControllerContract.filters.LogDeposit(),
-        Withdrawal: tanxControllerContract.filters.LogWithdrawalPerformed(),
+        Deposit: tanxProxyContract.filters.LogDeposit(),
+        Withdrawal: tanxProxyContract.filters.LogWithdrawalPerformed(),
       }
 
       const currentBalance = this.getCurrentRawBalanceFromMovements(movements)
 
       try {
         if (eventType === 'deposits') {
-          const starkexDepositEvents = await tanxControllerContract.queryFilter(
+          const starkexDepositEvents = await tanxProxyContract.queryFilter(
             starkexEventFilters['Deposit'],
             fromBlock,
             toBlock,
@@ -489,15 +489,15 @@ export class TanxFinanceDexAdapter
             starkexDepositEvents,
             userAddress,
             protocolTokenAddress,
-            tanxControllerContract.interface, 
+            tanxProxyContract.interface, 
             'deposit',
-            'starkex',
+            'starkexProxyContract',
             currentBalance,
           )
           movements.push(...movement)
         } else {
           const starkexWithdrawalEvents =
-            await tanxControllerContract.queryFilter(
+            await tanxProxyContract.queryFilter(
               starkexEventFilters['Withdrawal'],
               fromBlock,
               toBlock,
@@ -507,9 +507,9 @@ export class TanxFinanceDexAdapter
             starkexWithdrawalEvents,
             userAddress,
             protocolTokenAddress,
-            tanxControllerContract.interface,
+            tanxProxyContract.interface,
             'withdrawal',
-            'starkex',
+            'starkexProxyContract',
             currentBalance
           )
           movements.push(...movement)
