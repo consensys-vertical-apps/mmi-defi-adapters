@@ -1,6 +1,6 @@
 {
   "name": "defi-adapters-monorepo",
-  "version": "0.12.2",
+  "version": "0.12.5",
   "description": "Defi adapters monorepo for MMI Dashboard",
   "author": "MMI Team",
   "license": "MIT",
@@ -30,6 +30,7 @@
     "withdrawals": "npm run adapters-cli withdrawals --",
     "stress": "npm run adapters-cli stress --",
     "support": "npm run adapters-cli support --",
+    "performance": "npm run adapters-cli performance --",
     "lint": "biome check packages",
     "fix": "npm run lint -- --apply",
     "test": "npm run test -w packages/adapters-library",

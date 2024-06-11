@@ -8,10 +8,9 @@ import {
   TransactionRequest,
   ethers,
 } from 'ethers'
-import { Config, IConfig } from '../../config'
 import { count } from '../../metricsCount'
 import { AVERAGE_BLOCKS_PER_10_MINUTES } from '../constants/AVERAGE_BLOCKS_PER_10_MINS'
-import { Chain, ChainName } from '../constants/chains'
+import { Chain } from '../constants/chains'
 import { NotSupportedUnlimitedGetLogsBlockRange } from '../errors/errors'
 import { retryHandlerFactory } from './retryHandlerFactory'
 
@@ -81,9 +80,17 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   async getStableBlockNumber(): Promise<number> {
     const currentBlockNumber = await this.getBlockNumber()
 
-    const blockNumberTenMinsAgo =
-      currentBlockNumber - (AVERAGE_BLOCKS_PER_10_MINUTES[this.chainId] ?? 0) // default to 0 to avoid failures
-    return blockNumberTenMinsAgo
+    const blocksToMoveBack = (() => {
+      switch (this.chainId) {
+        case Chain.Arbitrum:
+          return AVERAGE_BLOCKS_PER_10_MINUTES[this.chainId] / 4
+        default:
+          return AVERAGE_BLOCKS_PER_10_MINUTES[this.chainId]
+      }
+    })()
+
+    const stableBlockNumber = currentBlockNumber - blocksToMoveBack
+    return stableBlockNumber >= 0 ? stableBlockNumber : 0
   }
 
   async call(transaction: TransactionRequest): Promise<string> {
@@ -160,6 +167,24 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
   async getAllTransferLogsToAddress(address: string): Promise<Array<Log>> {
     if (!this.hasUnlimitedGetLogsRange) {
       throw new NotSupportedUnlimitedGetLogsBlockRange()
+    }
+
+    if (this.chainId === Chain.Polygon) {
+      const transferEventSignature = ethers.id(
+        'Transfer(address,address,uint256)',
+      )
+
+      const transferFilter = {
+        fromBlock: 0,
+        toBlock: 'latest',
+        topics: [
+          transferEventSignature,
+          '0x0000000000000000000000000000000000000000000000000000000000000000',
+          ethers.zeroPadValue(address, 32), // to address
+        ],
+      }
+
+      return this.getLogs(transferFilter)
     }
 
     const transferEventSignature = ethers.id(

@@ -1,0 +1,60 @@
+{
+  "blockNumber": 5084581,
+  "snapshot": [
+    {
+      "protocolId": "lynex",
+      "name": "Lynex Algebra",
+      "description": "Lynex Algebra defi adapter",
+      "siteUrl": "https://app.lynex.fi/",
+      "iconUrl": "https://app.lynex.fi/logo.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "algebra",
+      "assetDetails": {
+        "type": "NonStandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x5D3D9E20ad27dd61182505230D1bD075bd249E4B",
+          "name": "USDC / WETH",
+          "symbol": "USDC / WETH",
+          "decimals": 18,
+          "tokenId": "1852",
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "balanceRaw": "141690505217n",
+                "type": "underlying-claimable"
+              },
+              {
+                "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "balanceRaw": "143257448898n",
+                "type": "underlying-claimable"
+              }
+            ]
+          }
+        }
+      ],
+      "fromBlock": 5034272,
+      "toBlock": 5084581
+    }
+  ]
+}

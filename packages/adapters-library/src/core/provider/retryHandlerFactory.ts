@@ -1,3 +1,5 @@
+import { logger } from '../utils/logger'
+
 const TimeoutErrorMessage = 'Operation timed out'
 
 export function retryHandlerFactory({
@@ -30,6 +32,15 @@ export function retryHandlerFactory({
       ) {
         throw error
       }
+
+      logger.warn(
+        {
+          error: error instanceof Error ? error.message : undefined,
+          retryCount,
+          maxRetries,
+        },
+        'Retrying RPC Request',
+      )
 
       return retryHandler(action, retryCount + 1)
     }

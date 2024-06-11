@@ -75,30 +75,23 @@ const ConfigSchema = z
     rpcCallTimeoutInMs: z
       .number()
       .default(
-        process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS
-          ? Number(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS)
-          : 10000,
+        parseNumberEnv(process.env.DEFI_ADAPTERS_RPC_CALL_TIMEOUT_IN_MS, 10000),
       ),
     rpcCallRetries: z
       .number()
-      .default(
-        process.env.DEFI_ADAPTERS_RPC_CALL_RETRIES
-          ? Number(process.env.DEFI_ADAPTERS_RPC_CALL_RETRIES)
-          : 0,
-      ),
+      .default(parseNumberEnv(process.env.DEFI_ADAPTERS_RPC_CALL_RETRIES, 0)),
     rpcGetLogsTimeoutInMs: z
       .number()
       .default(
-        process.env.DEFI_ADAPTERS_RPC_GETLOGS_TIMEOUT_IN_MS
-          ? Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_TIMEOUT_IN_MS)
-          : 10000,
+        parseNumberEnv(
+          process.env.DEFI_ADAPTERS_RPC_GETLOGS_TIMEOUT_IN_MS,
+          10000,
+        ),
       ),
     rpcGetLogsRetries: z
       .number()
       .default(
-        process.env.DEFI_ADAPTERS_RPC_GETLOGS_RETRIES
-          ? Number(process.env.DEFI_ADAPTERS_RPC_GETLOGS_RETRIES)
-          : 0,
+        parseNumberEnv(process.env.DEFI_ADAPTERS_RPC_GETLOGS_RETRIES, 0),
       ),
     enableFailover: z
       .boolean()
@@ -108,12 +101,82 @@ const ConfigSchema = z
         ethereum: z.boolean().default(true),
         optimism: z.boolean().default(true),
         bsc: z.boolean().default(false),
-        polygon: z.boolean().default(false),
+        polygon: z.boolean().default(true),
         fantom: z.boolean().default(false),
         base: z.boolean().default(true),
         arbitrum: z.boolean().default(true),
         avalanche: z.boolean().default(true),
         linea: z.boolean().default(true),
+      })
+      .default({}),
+    maxBatchSize: z
+      .object({
+        ethereum: z
+          .number()
+          .default(
+            parseNumberEnv(
+              process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ETHEREUM,
+              100,
+            ),
+          ),
+        optimism: z
+          .number()
+          .default(
+            parseNumberEnv(
+              process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_OPTIMISM,
+              20,
+            ),
+          ),
+        bsc: z
+          .number()
+          .default(
+            parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_BSC, 100),
+          ),
+        polygon: z
+          .number()
+          .default(
+            parseNumberEnv(
+              process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_POLYGON,
+              100,
+            ),
+          ),
+        fantom: z
+          .number()
+          .default(
+            parseNumberEnv(
+              process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_FANTOM,
+              100,
+            ),
+          ),
+        base: z
+          .number()
+          .default(
+            parseNumberEnv(process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_BASE, 100),
+          ),
+        arbitrum: z
+          .number()
+          .default(
+            parseNumberEnv(
+              process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ARBITRUM,
+              5,
+            ),
+          ),
+        avalanche: z
+          .number()
+          .default(
+            parseNumberEnv(
+              process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_AVALANCHE,
+              100,
+            ),
+          ),
+        linea: z
+          .number()
+          .default(
+            parseNumberEnv(
+              process.env.DEFI_ADAPTERS_MAX_BATCH_SIZE_ETHEREUM,
+              100,
+            ),
+          ),
       })
       .default({}),
   })
@@ -149,4 +212,8 @@ export class Config {
   get values(): IConfig {
     return this.config
   }
+}
+
+function parseNumberEnv(env: string | undefined, defaultValue: number): number {
+  return env ? Number(env) : defaultValue
 }

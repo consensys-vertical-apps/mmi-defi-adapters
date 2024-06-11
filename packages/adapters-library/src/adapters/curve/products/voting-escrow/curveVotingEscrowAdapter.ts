@@ -23,6 +23,7 @@ export class CurveVotingEscrowAdapter extends VotingEscrow {
       productId: this.productId,
       assetDetails: {
         type: AssetType.StandardErc20,
+        missingTransferEvents: true,
       },
     }
   }

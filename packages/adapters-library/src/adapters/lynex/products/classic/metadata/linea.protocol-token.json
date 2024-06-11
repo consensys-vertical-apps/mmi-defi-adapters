@@ -1,0 +1,3502 @@
+{
+  "0xE5e19bBF39c76A8c980B48F2Ec89d0dE877bF567": {
+    "protocolToken": {
+      "address": "0xE5e19bBF39c76A8c980B48F2Ec89d0dE877bF567",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / MENDI",
+      "symbol": "vAMM-USDC/LYNX/USDC/MENDI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+      "name": "Mendi Finance",
+      "symbol": "MENDI",
+      "decimals": 18
+    }
+  },
+  "0xE9E146f5bceBD71Fb8C526EA036dE6bbFB1B0Ad7": {
+    "protocolToken": {
+      "address": "0xE9E146f5bceBD71Fb8C526EA036dE6bbFB1B0Ad7",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / MAI",
+      "symbol": "vAMM-USDC/LYNX/USDC/MAI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xf3B001D64C656e30a62fbaacA003B1336b4ce12A",
+      "name": "Mai Stablecoin",
+      "symbol": "MAI",
+      "decimals": 18
+    }
+  },
+  "0xa4477d98e519D4c1d66aEf4EfDF7cBEb84f4f778": {
+    "protocolToken": {
+      "address": "0xa4477d98e519D4c1d66aEf4EfDF7cBEb84f4f778",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / USDT",
+      "symbol": "vAMM-USDC/LYNX/USDC/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xa8e4B5401F98cf20F7e4e9323B02c40f10661f06": {
+    "protocolToken": {
+      "address": "0xa8e4B5401F98cf20F7e4e9323B02c40f10661f06",
+      "name": "VolatileV1 AMM - USDC/LYNX wstETH / WETH",
+      "symbol": "vAMM-USDC/LYNX/wstETH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xbE23da11fbF9dA0F7C13eA73A4bB511b9Bc00177": {
+    "protocolToken": {
+      "address": "0xbE23da11fbF9dA0F7C13eA73A4bB511b9Bc00177",
+      "name": "VolatileV1 AMM - USDC/LYNX USDT+ / USDT",
+      "symbol": "vAMM-USDC/LYNX/USDT+/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1E1F509963A6D33e169D9497b11c7DbFe73B7F13",
+      "name": "USDT+",
+      "symbol": "USDT+",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x7088A31d53Fc1fA300Ceb5F9103343137A62b545": {
+    "protocolToken": {
+      "address": "0x7088A31d53Fc1fA300Ceb5F9103343137A62b545",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / DUSD",
+      "symbol": "vAMM-USDC/LYNX/USDC/DUSD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xA88B54E6b76Fb97CdB8eCAE868f1458e18a953F4",
+      "name": "Davos.xyz USD",
+      "symbol": "DUSD",
+      "decimals": 18
+    }
+  },
+  "0x06324F8Abb83Fc0D161C7a8D67A1C05D524f255B": {
+    "protocolToken": {
+      "address": "0x06324F8Abb83Fc0D161C7a8D67A1C05D524f255B",
+      "name": "VolatileV1 AMM - USDC/LYNX ONEPUNCH / WETH",
+      "symbol": "vAMM-USDC/LYNX/ONEPUNCH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1F63D0EC7193964142ef6B13d901462d0E5CbB50",
+      "name": "ONEPUNCH",
+      "symbol": "ONEPUNCH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xfb26FDeb0D7151731afcCdFfB0E38D2c5f33C807": {
+    "protocolToken": {
+      "address": "0xfb26FDeb0D7151731afcCdFfB0E38D2c5f33C807",
+      "name": "VolatileV1 AMM - USDC/LYNX LINUS / WETH",
+      "symbol": "vAMM-USDC/LYNX/LINUS/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe07C2bdbb8C787962C2C6e93C11a152110E7E4d2",
+      "name": "Linus Token",
+      "symbol": "LINUS",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xb7D02ec92Fe7BF5e47fCf82Ac21575E01fe4f5f1": {
+    "protocolToken": {
+      "address": "0xb7D02ec92Fe7BF5e47fCf82Ac21575E01fe4f5f1",
+      "name": "VolatileV1 AMM - USDC/LYNX SolvBTC.m / M-BTC",
+      "symbol": "vAMM-USDC/LYNX/SolvBTC.m/M-BTC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x5FFcE65A40f6d3de5332766ffF6A28BF491C868c",
+      "name": "Free Bridged SolvBTC",
+      "symbol": "SolvBTC.m",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe4D584ae9b753e549cAE66200A6475d2f00705f7",
+      "name": "Merlin BTC",
+      "symbol": "M-BTC",
+      "decimals": 18
+    }
+  },
+  "0xc5f4C5C2077BbbaC5a8381Cf30eCdf18fde42a91": {
+    "protocolToken": {
+      "address": "0xc5f4C5C2077BbbaC5a8381Cf30eCdf18fde42a91",
+      "name": "VolatileV1 AMM - USDC/LYNX USDT+ / USD+",
+      "symbol": "vAMM-USDC/LYNX/USDT+/USD+",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1E1F509963A6D33e169D9497b11c7DbFe73B7F13",
+      "name": "USDT+",
+      "symbol": "USDT+",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+      "name": "USD+",
+      "symbol": "USD+",
+      "decimals": 6
+    }
+  },
+  "0xAAD8A008496d789f48f23C4778b4FbdDb7A1C937": {
+    "protocolToken": {
+      "address": "0xAAD8A008496d789f48f23C4778b4FbdDb7A1C937",
+      "name": "VolatileV1 AMM - USDC/LYNX axlLqdr / WETH",
+      "symbol": "vAMM-USDC/LYNX/axlLqdr/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x332c72dd7E77070740F01d2d35851c461585D5d0",
+      "name": "Axelar Wrapped Lqdr",
+      "symbol": "axlLqdr",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x1E0015f45E339C08F7c891F83E579Fbe9EA9cd37": {
+    "protocolToken": {
+      "address": "0x1E0015f45E339C08F7c891F83E579Fbe9EA9cd37",
+      "name": "VolatileV1 AMM - USDC/LYNX WBTC / SolvBTC.m",
+      "symbol": "vAMM-USDC/LYNX/WBTC/SolvBTC.m",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0x5FFcE65A40f6d3de5332766ffF6A28BF491C868c",
+      "name": "Free Bridged SolvBTC",
+      "symbol": "SolvBTC.m",
+      "decimals": 18
+    }
+  },
+  "0x6F501662A76577FBB3Bb230Be5E8e69D41d8c711": {
+    "protocolToken": {
+      "address": "0x6F501662A76577FBB3Bb230Be5E8e69D41d8c711",
+      "name": "VolatileV1 AMM - USDC/LYNX FLY / USD+",
+      "symbol": "vAMM-USDC/LYNX/FLY/USD+",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x5Ba62cbDab03aC70652293e5F5f8afC919CfFd78",
+      "name": "FlyWheel",
+      "symbol": "FLY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+      "name": "USD+",
+      "symbol": "USD+",
+      "decimals": 6
+    }
+  },
+  "0x8F3e0a2378B0B5838E0E0d99FCEcC167d47bc9A7": {
+    "protocolToken": {
+      "address": "0x8F3e0a2378B0B5838E0E0d99FCEcC167d47bc9A7",
+      "name": "VolatileV1 AMM - USDC/LYNX STONE / WETH",
+      "symbol": "vAMM-USDC/LYNX/STONE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116",
+      "name": "StakeStone Ether",
+      "symbol": "STONE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xF1866f414Ce68512a5e2923673AA376341cb6cDe": {
+    "protocolToken": {
+      "address": "0xF1866f414Ce68512a5e2923673AA376341cb6cDe",
+      "name": "VolatileV1 AMM - USDC/LYNX wDAI / USDC",
+      "symbol": "vAMM-USDC/LYNX/wDAI/USDC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x023617bAbEd6CeF5Da825BEa8363A5a9862E120F",
+      "name": "WrappedDAI",
+      "symbol": "wDAI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    }
+  },
+  "0x58AaCbccAeC30938cb2bb11653Cad726e5c4194a": {
+    "protocolToken": {
+      "address": "0x58AaCbccAeC30938cb2bb11653Cad726e5c4194a",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / USD+",
+      "symbol": "vAMM-USDC/LYNX/USDC/USD+",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+      "name": "USD+",
+      "symbol": "USD+",
+      "decimals": 6
+    }
+  },
+  "0x1bb15aA9a8bDEEa7bB3a21bd239a232c5A09b0c6": {
+    "protocolToken": {
+      "address": "0x1bb15aA9a8bDEEa7bB3a21bd239a232c5A09b0c6",
+      "name": "VolatileV1 AMM - USDC/LYNX WBTC / M-BTC",
+      "symbol": "vAMM-USDC/LYNX/WBTC/M-BTC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0xe4D584ae9b753e549cAE66200A6475d2f00705f7",
+      "name": "Merlin BTC",
+      "symbol": "M-BTC",
+      "decimals": 18
+    }
+  },
+  "0x3E78c1F766D7FE2c3dceF6aFe6609966540B6391": {
+    "protocolToken": {
+      "address": "0x3E78c1F766D7FE2c3dceF6aFe6609966540B6391",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / LYNX",
+      "symbol": "vAMM-USDC/LYNX/USDC/LYNX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    }
+  },
+  "0x8A33Eae82534b8e6CCE270538FAf83D11734F1F1": {
+    "protocolToken": {
+      "address": "0x8A33Eae82534b8e6CCE270538FAf83D11734F1F1",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / USDe",
+      "symbol": "vAMM-USDC/LYNX/USDC/USDe",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    }
+  },
+  "0x1577fb60deb25DC9d9c6f0ED736a682b849E6bfb": {
+    "protocolToken": {
+      "address": "0x1577fb60deb25DC9d9c6f0ED736a682b849E6bfb",
+      "name": "VolatileV1 AMM - USDC/LYNX M-BTC / WETH",
+      "symbol": "vAMM-USDC/LYNX/M-BTC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe4D584ae9b753e549cAE66200A6475d2f00705f7",
+      "name": "Merlin BTC",
+      "symbol": "M-BTC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x1C6Fb08C1ef4E505a4Ae3Ffc3C99E443070Df64A": {
+    "protocolToken": {
+      "address": "0x1C6Fb08C1ef4E505a4Ae3Ffc3C99E443070Df64A",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / WETH",
+      "symbol": "vAMM-USDC/LYNX/LYNX/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xCCF4Fd9f2fBE89917821e4629cb2A6B760651baF": {
+    "protocolToken": {
+      "address": "0xCCF4Fd9f2fBE89917821e4629cb2A6B760651baF",
+      "name": "VolatileV1 AMM - USDC/LYNX XRGB / WETH",
+      "symbol": "vAMM-USDC/LYNX/XRGB/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x5cc5E64AB764A0f1E97F23984E20fD4528356a6a",
+      "name": "XRGB",
+      "symbol": "XRGB",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x6Fd181396c1B6869b2592bABB461bcA2B2887f1d": {
+    "protocolToken": {
+      "address": "0x6Fd181396c1B6869b2592bABB461bcA2B2887f1d",
+      "name": "VolatileV1 AMM - USDC/LYNX ROXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/ROXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x85C2160b06D48C8B6F5ea5bAFb1a3137ee620784",
+      "name": "Roxy",
+      "symbol": "ROXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x6FB44889a9aA69F7290258D3716BfFcB33CdE184": {
+    "protocolToken": {
+      "address": "0x6FB44889a9aA69F7290258D3716BfFcB33CdE184",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / WETH",
+      "symbol": "vAMM-USDC/LYNX/USDC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x29df8A5D68937aB016A354a45510208d6e75c5cC": {
+    "protocolToken": {
+      "address": "0x29df8A5D68937aB016A354a45510208d6e75c5cC",
+      "name": "VolatileV1 AMM - USDC/LYNX LILI / WETH",
+      "symbol": "vAMM-USDC/LYNX/LILI/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xCa7d460C83678C358E8FC9b9629E8aC36D67c567",
+      "name": "Lilikoi",
+      "symbol": "LILI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xbDE12bdbEB92B0DCA3F3c37A749633a24717b24D": {
+    "protocolToken": {
+      "address": "0xbDE12bdbEB92B0DCA3F3c37A749633a24717b24D",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / A3A",
+      "symbol": "vAMM-USDC/LYNX/USDC/A3A",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x3d4b2132eD4eA0aa93903713a4dE9F98e625a5c7",
+      "name": "3A Utility Token",
+      "symbol": "A3A",
+      "decimals": 18
+    }
+  },
+  "0xba4BeCDB0394d3db69BcA50f70caCB7d2BAB0Ea9": {
+    "protocolToken": {
+      "address": "0xba4BeCDB0394d3db69BcA50f70caCB7d2BAB0Ea9",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / oLYNX",
+      "symbol": "vAMM-USDC/LYNX/LYNX/oLYNX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x63349BA5E1F71252eCD56E8F950D1A518B400b60",
+      "name": "Option LYNX Token",
+      "symbol": "oLYNX",
+      "decimals": 18
+    }
+  },
+  "0x7FEE4f637BC38e73eBf4CaEd22A1941236b79BF4": {
+    "protocolToken": {
+      "address": "0x7FEE4f637BC38e73eBf4CaEd22A1941236b79BF4",
+      "name": "VolatileV1 AMM - USDC/LYNX FAITH / WETH",
+      "symbol": "vAMM-USDC/LYNX/FAITH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x373d04A7F3594FF9011Af5084587182C0056721e",
+      "name": "Faith - LordsForsaken.com",
+      "symbol": "FAITH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xCc3880B990B11A712f2F42c0c0Db57A0ca1529A9": {
+    "protocolToken": {
+      "address": "0xCc3880B990B11A712f2F42c0c0Db57A0ca1529A9",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / NDX_2412",
+      "symbol": "vAMM-USDC/LYNX/USDC/NDX_2412",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xa09d7f02BaD175a9d6BcBeDf1A992EEAD1e33604",
+      "name": "NASDAQ 100",
+      "symbol": "NDX_2412",
+      "decimals": 18
+    }
+  },
+  "0x52555fa67687288FC70791BEaE2b92754fdd0341": {
+    "protocolToken": {
+      "address": "0x52555fa67687288FC70791BEaE2b92754fdd0341",
+      "name": "VolatileV1 AMM - USDC/LYNX LUCIA / WETH",
+      "symbol": "vAMM-USDC/LYNX/LUCIA/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4Fa0dE5d9217722A37247808c08Cde1C976879b9",
+      "name": "Lucia",
+      "symbol": "LUCIA",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x8d2a23eb25A0a8213319A4ED2984602a7C23f06B": {
+    "protocolToken": {
+      "address": "0x8d2a23eb25A0a8213319A4ED2984602a7C23f06B",
+      "name": "VolatileV1 AMM - USDC/LYNX WBTC / WETH",
+      "symbol": "vAMM-USDC/LYNX/WBTC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xCCbE14A02267a224E25431B798a128091d32B3eF": {
+    "protocolToken": {
+      "address": "0xCCbE14A02267a224E25431B798a128091d32B3eF",
+      "name": "VolatileV1 AMM - USDC/LYNX fBOMB / WETH",
+      "symbol": "vAMM-USDC/LYNX/fBOMB/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x8cf881799E3B5ab24271A9B66b6Ca2b0e575B1ef",
+      "name": "fBOMB",
+      "symbol": "fBOMB",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xf93F79C2557EbC38c6eb9D020b8Ef50B8eb97B48": {
+    "protocolToken": {
+      "address": "0xf93F79C2557EbC38c6eb9D020b8Ef50B8eb97B48",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / iNDX_2412",
+      "symbol": "vAMM-USDC/LYNX/USDC/iNDX_2412",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xA7020f1Cf5d3aAa5f6f9f376d10D0DbFf647C4Cb",
+      "name": "iNASDAQ 100",
+      "symbol": "iNDX_2412",
+      "decimals": 18
+    }
+  },
+  "0x9D2495eE468dd08E072514B6924a140632c281B1": {
+    "protocolToken": {
+      "address": "0x9D2495eE468dd08E072514B6924a140632c281B1",
+      "name": "VolatileV1 AMM - USDC/LYNX weETH / WETH",
+      "symbol": "vAMM-USDC/LYNX/weETH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xE9eaBF2a9D930314cc8fA388Be2d78C4330F3eeA": {
+    "protocolToken": {
+      "address": "0xE9eaBF2a9D930314cc8fA388Be2d78C4330F3eeA",
+      "name": "VolatileV1 AMM - USDC/LYNX PUSSASSIN / WETH",
+      "symbol": "vAMM-USDC/LYNX/PUSSASSIN/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x68F813555C507c3Cbae83f84585Af21D33D63849",
+      "name": "Linea Pussassin",
+      "symbol": "PUSSASSIN",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xaC716681656D3F22C23BF09C9b52786216827Ac3": {
+    "protocolToken": {
+      "address": "0xaC716681656D3F22C23BF09C9b52786216827Ac3",
+      "name": "VolatileV1 AMM - USDC/LYNX wstETH / WETH",
+      "symbol": "vAMM-USDC/LYNX/wstETH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x80295173FD6962F38671C39ba726309B637cA241": {
+    "protocolToken": {
+      "address": "0x80295173FD6962F38671C39ba726309B637cA241",
+      "name": "VolatileV1 AMM - USDC/LYNX ezETH / WETH",
+      "symbol": "vAMM-USDC/LYNX/ezETH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x5eC38a5E010D4Fc99c1285CA3BfeDD51eec2E193": {
+    "protocolToken": {
+      "address": "0x5eC38a5E010D4Fc99c1285CA3BfeDD51eec2E193",
+      "name": "VolatileV1 AMM - USDC/LYNX ezETH / WETH",
+      "symbol": "vAMM-USDC/LYNX/ezETH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xC6c46Cd01403AC0B28Ef92C4880f2E4Be2D410E1": {
+    "protocolToken": {
+      "address": "0xC6c46Cd01403AC0B28Ef92C4880f2E4Be2D410E1",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / USDT",
+      "symbol": "vAMM-USDC/LYNX/USDC/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xB302D7236E7B53bbB384A25608c4FB55152AC6cC": {
+    "protocolToken": {
+      "address": "0xB302D7236E7B53bbB384A25608c4FB55152AC6cC",
+      "name": "VolatileV1 AMM - USDC/LYNX WETH / XHNY",
+      "symbol": "vAMM-USDC/LYNX/WETH/XHNY",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xF3829aF0C018c8c1685B3d3d33B21cC98935fC87",
+      "name": "XHONEY",
+      "symbol": "XHNY",
+      "decimals": 6
+    }
+  },
+  "0x5e4df5861dFE516f8Ab88766Dca04A2FF7141cDf": {
+    "protocolToken": {
+      "address": "0x5e4df5861dFE516f8Ab88766Dca04A2FF7141cDf",
+      "name": "VolatileV1 AMM - USDC/LYNX DAGOBAH / WETH",
+      "symbol": "vAMM-USDC/LYNX/DAGOBAH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x9BAe5CCFb25Fe4eA94E97026470f7C225578B914",
+      "name": "DAGOBAH ",
+      "symbol": "DAGOBAH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x31f5FB5D70B00398821b0e1d1Db9bAB4A0231fC3": {
+    "protocolToken": {
+      "address": "0x31f5FB5D70B00398821b0e1d1Db9bAB4A0231fC3",
+      "name": "VolatileV1 AMM - USDC/LYNX QI / WETH",
+      "symbol": "vAMM-USDC/LYNX/QI/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xD3FDCb837DAfdb7C9C3eBD48FE22a53F6Dd3d7D7",
+      "name": "QiDao",
+      "symbol": "QI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x46E3847474B0AEb1a6b693CCC222af430896A593": {
+    "protocolToken": {
+      "address": "0x46E3847474B0AEb1a6b693CCC222af430896A593",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / LYU",
+      "symbol": "vAMM-USDC/LYNX/USDC/LYU",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xb20116eE399f15647BB1eEf9A74f6ef3b58bc951",
+      "name": "LYVE Debt Token",
+      "symbol": "LYU",
+      "decimals": 18
+    }
+  },
+  "0x94769abFbEb114cF7BA2e7B9cEF242ac70da20d6": {
+    "protocolToken": {
+      "address": "0x94769abFbEb114cF7BA2e7B9cEF242ac70da20d6",
+      "name": "VolatileV1 AMM - USDC/LYNX USDT / WETH",
+      "symbol": "vAMM-USDC/LYNX/USDT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xC5c2f8beabD4D4553063f7359C38B4f1Aa0c3808": {
+    "protocolToken": {
+      "address": "0xC5c2f8beabD4D4553063f7359C38B4f1Aa0c3808",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / LINE",
+      "symbol": "vAMM-USDC/LYNX/LYNX/LINE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x2Fab0952449378DfdF4625fE37F9603011F189ab",
+      "name": "Lineardo",
+      "symbol": "LINE",
+      "decimals": 18
+    }
+  },
+  "0x8F63B44D31FbCA1D62Ab4e32663Fb91B4a363D01": {
+    "protocolToken": {
+      "address": "0x8F63B44D31FbCA1D62Ab4e32663Fb91B4a363D01",
+      "name": "VolatileV1 AMM - USDC/LYNX FOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/FOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x5FBDF89403270a1846F5ae7D113A989F850d1566",
+      "name": "Foxy",
+      "symbol": "FOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x79B2593E1e8fF882A6F26bC2cb4854b68751887d": {
+    "protocolToken": {
+      "address": "0x79B2593E1e8fF882A6F26bC2cb4854b68751887d",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / WETH",
+      "symbol": "vAMM-USDC/LYNX/LYNX/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x53c3B77DF14d9dbE572a858ba6ed2Cc073A0cfE0": {
+    "protocolToken": {
+      "address": "0x53c3B77DF14d9dbE572a858ba6ed2Cc073A0cfE0",
+      "name": "VolatileV1 AMM - USDC/LYNX MENDI / WETH",
+      "symbol": "vAMM-USDC/LYNX/MENDI/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+      "name": "Mendi Finance",
+      "symbol": "MENDI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x22B4e0eaab455d42B316f9694b65c64772C48006": {
+    "protocolToken": {
+      "address": "0x22B4e0eaab455d42B316f9694b65c64772C48006",
+      "name": "VolatileV1 AMM - USDC/LYNX weETH / ezETH",
+      "symbol": "vAMM-USDC/LYNX/weETH/ezETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    }
+  },
+  "0x49bC134Cb005A24D32540AE23f9b50235473D14A": {
+    "protocolToken": {
+      "address": "0x49bC134Cb005A24D32540AE23f9b50235473D14A",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / MENDI",
+      "symbol": "vAMM-USDC/LYNX/USDC/MENDI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+      "name": "Mendi Finance",
+      "symbol": "MENDI",
+      "decimals": 18
+    }
+  },
+  "0xE27529456541Bdeb011a9F5f591095FDDF9E00f0": {
+    "protocolToken": {
+      "address": "0xE27529456541Bdeb011a9F5f591095FDDF9E00f0",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / ezETH",
+      "symbol": "vAMM-USDC/LYNX/USDC/ezETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    }
+  },
+  "0x878C05f03a177188937CC3DE6Cc370f961F91404": {
+    "protocolToken": {
+      "address": "0x878C05f03a177188937CC3DE6Cc370f961F91404",
+      "name": "VolatileV1 AMM - USDC/LYNX Foxy2.0 / WETH",
+      "symbol": "vAMM-USDC/LYNX/Foxy2.0/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3909ecd098F8Ee9bb7107D364639eA19DDA5A996",
+      "name": "Foxy2.0",
+      "symbol": "Foxy2.0",
+      "decimals": 4
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xbd6b43cDBE497892692e73350FCDe075eDe83D33": {
+    "protocolToken": {
+      "address": "0xbd6b43cDBE497892692e73350FCDe075eDe83D33",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / USD+",
+      "symbol": "vAMM-USDC/LYNX/USDC/USD+",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+      "name": "USD+",
+      "symbol": "USD+",
+      "decimals": 6
+    }
+  },
+  "0xa9A369b28390829b7103BB3b5b3597EA220c1250": {
+    "protocolToken": {
+      "address": "0xa9A369b28390829b7103BB3b5b3597EA220c1250",
+      "name": "VolatileV1 AMM - USDC/LYNX 🚬2PUFFS / WETH",
+      "symbol": "vAMM-USDC/LYNX/🚬2PUFFS/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x931e09aE6baD446586F6Cb6C28e2A1445bfbd26E",
+      "name": "🚬 Puff Puff Give",
+      "symbol": "🚬2PUFFS",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x9CBE4eBcF697e98efC22e2595209c5d62D8fC4F0": {
+    "protocolToken": {
+      "address": "0x9CBE4eBcF697e98efC22e2595209c5d62D8fC4F0",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / LYNX",
+      "symbol": "vAMM-USDC/LYNX/USDC/LYNX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    }
+  },
+  "0xE4dDB1DA034919BbeD2D5a203bB9991efaDa16D0": {
+    "protocolToken": {
+      "address": "0xE4dDB1DA034919BbeD2D5a203bB9991efaDa16D0",
+      "name": "VolatileV1 AMM - USDC/LYNX GOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/GOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x083F696270ba137B891c44bf27a4e470bc689C6E",
+      "name": "Goxy",
+      "symbol": "GOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xd4c69bCd53AAF29FcB47C47B81c172D72fAe62bB": {
+    "protocolToken": {
+      "address": "0xd4c69bCd53AAF29FcB47C47B81c172D72fAe62bB",
+      "name": "VolatileV1 AMM - USDC/LYNX LINDA / WETH",
+      "symbol": "vAMM-USDC/LYNX/LINDA/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x82cC61354d78b846016b559e3cCD766fa7E793D5",
+      "name": "Linda",
+      "symbol": "LINDA",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xFB957DE375cc10450D7a34aB85b1F15Ef58680b4": {
+    "protocolToken": {
+      "address": "0xFB957DE375cc10450D7a34aB85b1F15Ef58680b4",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / WETH",
+      "symbol": "vAMM-USDC/LYNX/USDC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x9e1881B7af88c468cf048E265e5AFCd92852767D": {
+    "protocolToken": {
+      "address": "0x9e1881B7af88c468cf048E265e5AFCd92852767D",
+      "name": "VolatileV1 AMM - USDC/LYNX weETH / WETH",
+      "symbol": "vAMM-USDC/LYNX/weETH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xAFbB06b87b8142E3E2492B59861C26341B57b3A1": {
+    "protocolToken": {
+      "address": "0xAFbB06b87b8142E3E2492B59861C26341B57b3A1",
+      "name": "VolatileV1 AMM - USDC/LYNX LAB1 / WETH",
+      "symbol": "vAMM-USDC/LYNX/LAB1/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x4DAABF013a1F3b5001b08272B496D02278bFa5A5",
+      "name": "LineaBank Token",
+      "symbol": "LAB1",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xC9888EAeFeD21D33Ae6BbF659778eD06F4656A67": {
+    "protocolToken": {
+      "address": "0xC9888EAeFeD21D33Ae6BbF659778eD06F4656A67",
+      "name": "VolatileV1 AMM - USDC/LYNX IOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/IOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x16e6970c536FF1f0017C06c6eD7099911f0e9427",
+      "name": "Ioxy",
+      "symbol": "IOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x90b85EA29D1Df5Fe44432E1847067e494c2D50CA": {
+    "protocolToken": {
+      "address": "0x90b85EA29D1Df5Fe44432E1847067e494c2D50CA",
+      "name": "VolatileV1 AMM - USDC/LYNX FOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/FOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x5FBDF89403270a1846F5ae7D113A989F850d1566",
+      "name": "Foxy",
+      "symbol": "FOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xB2E8EcA0AdD374AA63f6DF92DcDfDA596eaa470A": {
+    "protocolToken": {
+      "address": "0xB2E8EcA0AdD374AA63f6DF92DcDfDA596eaa470A",
+      "name": "VolatileV1 AMM - USDC/LYNX WBTC / WETH",
+      "symbol": "vAMM-USDC/LYNX/WBTC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x2Ae0bD5712afae42F8E4404fAA7C4Cd6c420283e": {
+    "protocolToken": {
+      "address": "0x2Ae0bD5712afae42F8E4404fAA7C4Cd6c420283e",
+      "name": "VolatileV1 AMM - USDC/LYNX WETH / TEST",
+      "symbol": "vAMM-USDC/LYNX/WETH/TEST",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xEa312C6609586961e740685e97EE34cFD18Afa10",
+      "name": "TestToken",
+      "symbol": "TEST",
+      "decimals": 9
+    }
+  },
+  "0x904e2BBDb669cB30f51d69DaEfdcDeB83759D833": {
+    "protocolToken": {
+      "address": "0x904e2BBDb669cB30f51d69DaEfdcDeB83759D833",
+      "name": "VolatileV1 AMM - USDC/LYNX ZERO / WETH",
+      "symbol": "vAMM-USDC/LYNX/ZERO/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
+      "name": "ZeroLend",
+      "symbol": "ZERO",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x9a146698b16DC334f9B99aF20b359649e6f4C844": {
+    "protocolToken": {
+      "address": "0x9a146698b16DC334f9B99aF20b359649e6f4C844",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / weETH",
+      "symbol": "vAMM-USDC/LYNX/LYNX/weETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    }
+  },
+  "0xD4630a296E33dfF7fdAcca2C6f192E9C78DCde13": {
+    "protocolToken": {
+      "address": "0xD4630a296E33dfF7fdAcca2C6f192E9C78DCde13",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / WBTC",
+      "symbol": "vAMM-USDC/LYNX/USDC/WBTC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x251AaE3587dD86bB66443B507497d2c9A064a4cC": {
+    "protocolToken": {
+      "address": "0x251AaE3587dD86bB66443B507497d2c9A064a4cC",
+      "name": "VolatileV1 AMM - USDC/LYNX ZERO / WETH",
+      "symbol": "vAMM-USDC/LYNX/ZERO/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
+      "name": "ZeroLend",
+      "symbol": "ZERO",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x11E29b541AbE15984c863c10F3Ef9eCBcC078031": {
+    "protocolToken": {
+      "address": "0x11E29b541AbE15984c863c10F3Ef9eCBcC078031",
+      "name": "VolatileV1 AMM - USDC/LYNX USDT / WETH",
+      "symbol": "vAMM-USDC/LYNX/USDT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xF9069043603cF745935b9f7558E1917E9A276ed9": {
+    "protocolToken": {
+      "address": "0xF9069043603cF745935b9f7558E1917E9A276ed9",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / LINUS",
+      "symbol": "vAMM-USDC/LYNX/LYNX/LINUS",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe07C2bdbb8C787962C2C6e93C11a152110E7E4d2",
+      "name": "Linus Token",
+      "symbol": "LINUS",
+      "decimals": 18
+    }
+  },
+  "0x32665DC81169176DEbFC4F2145d9Fd5FB9a27998": {
+    "protocolToken": {
+      "address": "0x32665DC81169176DEbFC4F2145d9Fd5FB9a27998",
+      "name": "VolatileV1 AMM - USDC/LYNX BOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/BOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xAD575f0493A52d2840fDa79e7555b06f8cb54BbC",
+      "name": "Boxy",
+      "symbol": "BOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x20f9106f711d41081dbbF79fEe8De92cB7547e77": {
+    "protocolToken": {
+      "address": "0x20f9106f711d41081dbbF79fEe8De92cB7547e77",
+      "name": "VolatileV1 AMM - USDC/LYNX ankrETH / wstETH",
+      "symbol": "vAMM-USDC/LYNX/ankrETH/wstETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x11D8680C7f8f82F623e840130eB06C33d9F90c89",
+      "name": "Ankr Staked ETH",
+      "symbol": "ankrETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xb456626eb905A7548869e2f82b0433A3C8431436": {
+    "protocolToken": {
+      "address": "0xb456626eb905A7548869e2f82b0433A3C8431436",
+      "name": "VolatileV1 AMM - USDC/LYNX uniETH / WETH",
+      "symbol": "vAMM-USDC/LYNX/uniETH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x15EEfE5B297136b8712291B632404B66A8eF4D25",
+      "name": "Universal ETH",
+      "symbol": "uniETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x6057F9dff137315e0eb9560F6bC3759061a5c013": {
+    "protocolToken": {
+      "address": "0x6057F9dff137315e0eb9560F6bC3759061a5c013",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / weETH",
+      "symbol": "vAMM-USDC/LYNX/USDC/weETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    }
+  },
+  "0x763c452D471D18EF55F70E383CC3fCD77eaE5CAD": {
+    "protocolToken": {
+      "address": "0x763c452D471D18EF55F70E383CC3fCD77eaE5CAD",
+      "name": "VolatileV1 AMM - USDC/LYNX OOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/OOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x9abE0D6a4E4a3aDe4aF80b25A724963563e55C07",
+      "name": "Ooxy",
+      "symbol": "OOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x6ADfE27c0430de3de2Dd32F121Af9c69cEE96D11": {
+    "protocolToken": {
+      "address": "0x6ADfE27c0430de3de2Dd32F121Af9c69cEE96D11",
+      "name": "VolatileV1 AMM - USDC/LYNX AOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/AOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xD083E58d0D80BCa7044345a8cD2f0F047e0DD746",
+      "name": "Aoxy",
+      "symbol": "AOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x5452dEdFfedCF6F9cd8D550f4E008AB66357951E": {
+    "protocolToken": {
+      "address": "0x5452dEdFfedCF6F9cd8D550f4E008AB66357951E",
+      "name": "VolatileV1 AMM - USDC/LYNX WETH / KOXY",
+      "symbol": "vAMM-USDC/LYNX/WETH/KOXY",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xE8bcdC6364173Ca0700dCF4FE7331c701845Ba72",
+      "name": "Koxy",
+      "symbol": "KOXY",
+      "decimals": 18
+    }
+  },
+  "0x248B7Ef9DD10D8534aC6b0fDcc99BEEc596f89b0": {
+    "protocolToken": {
+      "address": "0x248B7Ef9DD10D8534aC6b0fDcc99BEEc596f89b0",
+      "name": "VolatileV1 AMM - USDC/LYNX POXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/POXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0d03db343A92b5FcFdC2178d4C9bB2F862FE8737",
+      "name": "Poxy",
+      "symbol": "POXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x0E144F87C02427f1A38E36c3fB258Da691aA11E9": {
+    "protocolToken": {
+      "address": "0x0E144F87C02427f1A38E36c3fB258Da691aA11E9",
+      "name": "VolatileV1 AMM - USDC/LYNX QOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/QOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x47C35631D85ABeA1f88418DA1Aeb5ADA57FD1d25",
+      "name": "Qoxy",
+      "symbol": "QOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xA420222933F158249Ed57bf12f70dE0fC66cDc4E": {
+    "protocolToken": {
+      "address": "0xA420222933F158249Ed57bf12f70dE0fC66cDc4E",
+      "name": "VolatileV1 AMM - USDC/LYNX COXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/COXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xC8E159E286425Fb25a2949D1B952147059DFd17f",
+      "name": "Coxy",
+      "symbol": "COXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xd6F4060669F4F2fE8be4d612a8019b8aA5Cab9f8": {
+    "protocolToken": {
+      "address": "0xd6F4060669F4F2fE8be4d612a8019b8aA5Cab9f8",
+      "name": "VolatileV1 AMM - USDC/LYNX CHDR / WETH",
+      "symbol": "vAMM-USDC/LYNX/CHDR/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB4eBBFa229CD36cA8d84E900bE361D4132fD49c0",
+      "name": "Get yo cheddar!!",
+      "symbol": "CHDR",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x2CC4c3CceC1a16EFa23d8CaFd764EacEb9233486": {
+    "protocolToken": {
+      "address": "0x2CC4c3CceC1a16EFa23d8CaFd764EacEb9233486",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / USDT",
+      "symbol": "vAMM-USDC/LYNX/LYNX/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xbB9da18545F6705047b42523AAc1d558260B213c": {
+    "protocolToken": {
+      "address": "0xbB9da18545F6705047b42523AAc1d558260B213c",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / USDT",
+      "symbol": "vAMM-USDC/LYNX/LYNX/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xd02F9d76901f034820d1029732ffa6e88390c190": {
+    "protocolToken": {
+      "address": "0xd02F9d76901f034820d1029732ffa6e88390c190",
+      "name": "VolatileV1 AMM - USDC/LYNX WETH / NOXY",
+      "symbol": "vAMM-USDC/LYNX/WETH/NOXY",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xF4b17519E6137D72Ec900aC1901b0352c01C2856",
+      "name": "Noxy",
+      "symbol": "NOXY",
+      "decimals": 18
+    }
+  },
+  "0x65bD47B99deC53605e390ACb9F5508169a796Bb0": {
+    "protocolToken": {
+      "address": "0x65bD47B99deC53605e390ACb9F5508169a796Bb0",
+      "name": "VolatileV1 AMM - USDC/LYNX JOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/JOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xbf145ED36619b935Eb53c8EC4db6c9c50F5f1f2e",
+      "name": "Joxy",
+      "symbol": "JOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x57d2EF499Ace72f10Be152808F73CE75f1639Ed9": {
+    "protocolToken": {
+      "address": "0x57d2EF499Ace72f10Be152808F73CE75f1639Ed9",
+      "name": "VolatileV1 AMM - USDC/LYNX MOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/MOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x42F83B73900cfFECF7A3E34C620D9a39699CbBb0",
+      "name": "Moxy",
+      "symbol": "MOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x7a21302BD6D314C1f46797115D704D664e0635D0": {
+    "protocolToken": {
+      "address": "0x7a21302BD6D314C1f46797115D704D664e0635D0",
+      "name": "VolatileV1 AMM - USDC/LYNX TEUR / USDT",
+      "symbol": "vAMM-USDC/LYNX/TEUR/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x8A16b95EA186FE2e0AD6eAb9efB764be7846c50f",
+      "name": "TEUR",
+      "symbol": "TEUR",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x7F80ffe8E0FBBb82aeFA9d848636C73f679219C4": {
+    "protocolToken": {
+      "address": "0x7F80ffe8E0FBBb82aeFA9d848636C73f679219C4",
+      "name": "VolatileV1 AMM - USDC/LYNX dnb / WETH",
+      "symbol": "vAMM-USDC/LYNX/dnb/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xa82DAa64e9D2D9AB17619312dA3F591De1a4F06f",
+      "name": "donotbuy",
+      "symbol": "dnb",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xAf453A22C59BC4796f78a176fDcc443CFD9Ab3C3": {
+    "protocolToken": {
+      "address": "0xAf453A22C59BC4796f78a176fDcc443CFD9Ab3C3",
+      "name": "VolatileV1 AMM - USDC/LYNX DOGE / WETH",
+      "symbol": "vAMM-USDC/LYNX/DOGE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x5ed3675867Ae3E3582b819cCB88f48c836E69edE",
+      "name": "Dogecoin",
+      "symbol": "DOGE",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xD7D93bE6DFeA608961F794C0B0a2a719a038c945": {
+    "protocolToken": {
+      "address": "0xD7D93bE6DFeA608961F794C0B0a2a719a038c945",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / ZERO",
+      "symbol": "vAMM-USDC/LYNX/USDC/ZERO",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
+      "name": "ZeroLend",
+      "symbol": "ZERO",
+      "decimals": 18
+    }
+  },
+  "0x0978e09B79e9037Bb78434Fa648F72e7a112b804": {
+    "protocolToken": {
+      "address": "0x0978e09B79e9037Bb78434Fa648F72e7a112b804",
+      "name": "VolatileV1 AMM - USDC/LYNX BB / WETH",
+      "symbol": "vAMM-USDC/LYNX/BB/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1e7A4E6e10009306e37BE50bC762899D1dF75B5b",
+      "name": "BB",
+      "symbol": "BB",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xd09513F40C8B4EC890e7Dd6a0ca9c3E62BF950b5": {
+    "protocolToken": {
+      "address": "0xd09513F40C8B4EC890e7Dd6a0ca9c3E62BF950b5",
+      "name": "VolatileV1 AMM - USDC/LYNX RED / WETH",
+      "symbol": "vAMM-USDC/LYNX/RED/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x8Fd688B09BddeB8B78F70bD67e61669b305B4B35",
+      "name": "redbulll",
+      "symbol": "RED",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xd92B724E02b7D43cD13197a9E1eF4b654A856eb3": {
+    "protocolToken": {
+      "address": "0xd92B724E02b7D43cD13197a9E1eF4b654A856eb3",
+      "name": "VolatileV1 AMM - USDC/LYNX oLYNX / WETH",
+      "symbol": "vAMM-USDC/LYNX/oLYNX/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x63349BA5E1F71252eCD56E8F950D1A518B400b60",
+      "name": "Option LYNX Token",
+      "symbol": "oLYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xfbc7deb1aff394131e5C550B984023096C54388F": {
+    "protocolToken": {
+      "address": "0xfbc7deb1aff394131e5C550B984023096C54388F",
+      "name": "VolatileV1 AMM - USDC/LYNX EURO3 / USD+",
+      "symbol": "vAMM-USDC/LYNX/EURO3/USD+",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3F817b28Da4940F018C6b5c0A11C555ebB1264f9",
+      "name": "EURO3",
+      "symbol": "EURO3",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+      "name": "USD+",
+      "symbol": "USD+",
+      "decimals": 6
+    }
+  },
+  "0x399dB3758C53885E6019C576ad5aa678e6789558": {
+    "protocolToken": {
+      "address": "0x399dB3758C53885E6019C576ad5aa678e6789558",
+      "name": "VolatileV1 AMM - USDC/LYNX test2 / WETH",
+      "symbol": "vAMM-USDC/LYNX/test2/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x15C98A96cE49bA081D86290964B59589724E8107",
+      "name": "test2",
+      "symbol": "test2",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x93b6d53d8a33c92003D0c41065cb2842934C2619": {
+    "protocolToken": {
+      "address": "0x93b6d53d8a33c92003D0c41065cb2842934C2619",
+      "name": "VolatileV1 AMM - USDC/LYNX EURO3 / USD+",
+      "symbol": "vAMM-USDC/LYNX/EURO3/USD+",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3F817b28Da4940F018C6b5c0A11C555ebB1264f9",
+      "name": "EURO3",
+      "symbol": "EURO3",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+      "name": "USD+",
+      "symbol": "USD+",
+      "decimals": 6
+    }
+  },
+  "0xdB4eCdF24559fBAC12Eb4AB7574185409c09875f": {
+    "protocolToken": {
+      "address": "0xdB4eCdF24559fBAC12Eb4AB7574185409c09875f",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / DAI",
+      "symbol": "vAMM-USDC/LYNX/USDC/DAI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0xd4025fA2e6B8c1726B12eEcD0A8fd05A88b85FEA": {
+    "protocolToken": {
+      "address": "0xd4025fA2e6B8c1726B12eEcD0A8fd05A88b85FEA",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / FOXY",
+      "symbol": "vAMM-USDC/LYNX/LYNX/FOXY",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x5FBDF89403270a1846F5ae7D113A989F850d1566",
+      "name": "Foxy",
+      "symbol": "FOXY",
+      "decimals": 18
+    }
+  },
+  "0xE549E5401707c430d92FaD861d10aF9074c3274D": {
+    "protocolToken": {
+      "address": "0xE549E5401707c430d92FaD861d10aF9074c3274D",
+      "name": "VolatileV1 AMM - USDC/LYNX FOXY / WETH",
+      "symbol": "vAMM-USDC/LYNX/FOXY/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x88eFfcce9067F7A7A27e158220adc190CeDa5725",
+      "name": "Foxy",
+      "symbol": "FOXY",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x17A80E00892c9fb40EEBf8d0123D1E70A7897DDb": {
+    "protocolToken": {
+      "address": "0x17A80E00892c9fb40EEBf8d0123D1E70A7897DDb",
+      "name": "VolatileV1 AMM - USDC/LYNX FOXCONN / WETH",
+      "symbol": "vAMM-USDC/LYNX/FOXCONN/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x03e243aA9a0e753c6c749a20F56b3242C7bB6D5C",
+      "name": "FOXCONN",
+      "symbol": "FOXCONN",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x0C978a9529B01DFe1A0745b6F97e3A05A8F81023": {
+    "protocolToken": {
+      "address": "0x0C978a9529B01DFe1A0745b6F97e3A05A8F81023",
+      "name": "VolatileV1 AMM - USDC/LYNX MATIC / MENDI",
+      "symbol": "vAMM-USDC/LYNX/MATIC/MENDI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8",
+      "name": "Matic Token",
+      "symbol": "MATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+      "name": "Mendi Finance",
+      "symbol": "MENDI",
+      "decimals": 18
+    }
+  },
+  "0xFB636707412d580F5333635a0d61523bE5b09bDD": {
+    "protocolToken": {
+      "address": "0xFB636707412d580F5333635a0d61523bE5b09bDD",
+      "name": "VolatileV1 AMM - USDC/LYNX LINE / MENDI",
+      "symbol": "vAMM-USDC/LYNX/LINE/MENDI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2Fab0952449378DfdF4625fE37F9603011F189ab",
+      "name": "Lineardo",
+      "symbol": "LINE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+      "name": "Mendi Finance",
+      "symbol": "MENDI",
+      "decimals": 18
+    }
+  },
+  "0xCa2BB0D69e78D9b64E7F3aC02A4F1Ff365e3b896": {
+    "protocolToken": {
+      "address": "0xCa2BB0D69e78D9b64E7F3aC02A4F1Ff365e3b896",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / wstETH",
+      "symbol": "vAMM-USDC/LYNX/LYNX/wstETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0x4d776eb578196eE0725bdA3319B4fb615bBf0Ac5": {
+    "protocolToken": {
+      "address": "0x4d776eb578196eE0725bdA3319B4fb615bBf0Ac5",
+      "name": "VolatileV1 AMM - USDC/LYNX STONE / WETH",
+      "symbol": "vAMM-USDC/LYNX/STONE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116",
+      "name": "StakeStone Ether",
+      "symbol": "STONE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x31F0F3A927e17782c60bfFC68a805Bb0AD0b1ACD": {
+    "protocolToken": {
+      "address": "0x31F0F3A927e17782c60bfFC68a805Bb0AD0b1ACD",
+      "name": "VolatileV1 AMM - USDC/LYNX DUSD / WETH",
+      "symbol": "vAMM-USDC/LYNX/DUSD/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA88B54E6b76Fb97CdB8eCAE868f1458e18a953F4",
+      "name": "Davos.xyz USD",
+      "symbol": "DUSD",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xe400C1a76a26a4F02D5591a676fddBC66Ed07Baf": {
+    "protocolToken": {
+      "address": "0xe400C1a76a26a4F02D5591a676fddBC66Ed07Baf",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / MATIC",
+      "symbol": "vAMM-USDC/LYNX/LYNX/MATIC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8",
+      "name": "Matic Token",
+      "symbol": "MATIC",
+      "decimals": 18
+    }
+  },
+  "0x398072d50080150FF1f7fDa72F73873DCAE94CD3": {
+    "protocolToken": {
+      "address": "0x398072d50080150FF1f7fDa72F73873DCAE94CD3",
+      "name": "VolatileV1 AMM - USDC/LYNX testXsfd / WETH",
+      "symbol": "vAMM-USDC/LYNX/testXsfd/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB7cf77059c543B6892cE130E93FE9E1fC0367C35",
+      "name": "testXds",
+      "symbol": "testXsfd",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x189Aa52c0b90167EA8182c6270a358d05F5E6654": {
+    "protocolToken": {
+      "address": "0x189Aa52c0b90167EA8182c6270a358d05F5E6654",
+      "name": "VolatileV1 AMM - USDC/LYNX testXsfd / WETH",
+      "symbol": "vAMM-USDC/LYNX/testXsfd/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB7cf77059c543B6892cE130E93FE9E1fC0367C35",
+      "name": "testXds",
+      "symbol": "testXsfd",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x068892dc4C617d088ADc01840f6127C097D1E249": {
+    "protocolToken": {
+      "address": "0x068892dc4C617d088ADc01840f6127C097D1E249",
+      "name": "VolatileV1 AMM - USDC/LYNX testX / WETH",
+      "symbol": "vAMM-USDC/LYNX/testX/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xCa4552F02Ad781D8E9De267805F14720309Aae0a",
+      "name": "testX",
+      "symbol": "testX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xE34b928996cC73fC3894898102842E86AA0BA33A": {
+    "protocolToken": {
+      "address": "0xE34b928996cC73fC3894898102842E86AA0BA33A",
+      "name": "VolatileV1 AMM - USDC/LYNX USDT / USD+",
+      "symbol": "vAMM-USDC/LYNX/USDT/USD+",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+      "name": "USD+",
+      "symbol": "USD+",
+      "decimals": 6
+    }
+  },
+  "0xe8f2288c21105D9cBA6355c8833026F01e0f1cC3": {
+    "protocolToken": {
+      "address": "0xe8f2288c21105D9cBA6355c8833026F01e0f1cC3",
+      "name": "VolatileV1 AMM - USDC/LYNX oLYNX / WETH",
+      "symbol": "vAMM-USDC/LYNX/oLYNX/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x63349BA5E1F71252eCD56E8F950D1A518B400b60",
+      "name": "Option LYNX Token",
+      "symbol": "oLYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x774869310922c4e0748f9F477754a5725e383A83": {
+    "protocolToken": {
+      "address": "0x774869310922c4e0748f9F477754a5725e383A83",
+      "name": "VolatileV1 AMM - USDC/LYNX MENDI / ZERO",
+      "symbol": "vAMM-USDC/LYNX/MENDI/ZERO",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+      "name": "Mendi Finance",
+      "symbol": "MENDI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x78354f8DcCB269a615A7e0a24f9B0718FDC3C7A7",
+      "name": "ZeroLend",
+      "symbol": "ZERO",
+      "decimals": 18
+    }
+  },
+  "0xCa23b0Ff0b5E22b04633c982738e0714e91b934a": {
+    "protocolToken": {
+      "address": "0xCa23b0Ff0b5E22b04633c982738e0714e91b934a",
+      "name": "VolatileV1 AMM - USDC/LYNX WBTC / SolvBTC.m",
+      "symbol": "vAMM-USDC/LYNX/WBTC/SolvBTC.m",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0x5FFcE65A40f6d3de5332766ffF6A28BF491C868c",
+      "name": "Free Bridged SolvBTC",
+      "symbol": "SolvBTC.m",
+      "decimals": 18
+    }
+  },
+  "0x4E78173588F16Ee42B61Aa6b6BF7F02FC86a7d89": {
+    "protocolToken": {
+      "address": "0x4E78173588F16Ee42B61Aa6b6BF7F02FC86a7d89",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / WBTC",
+      "symbol": "vAMM-USDC/LYNX/LYNX/WBTC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x9832a4Cc0cfbAdDA9e535e5bfF65928e6b9c06E2": {
+    "protocolToken": {
+      "address": "0x9832a4Cc0cfbAdDA9e535e5bfF65928e6b9c06E2",
+      "name": "VolatileV1 AMM - USDC/LYNX WBTC / M-BTC",
+      "symbol": "vAMM-USDC/LYNX/WBTC/M-BTC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "token1": {
+      "address": "0xe4D584ae9b753e549cAE66200A6475d2f00705f7",
+      "name": "Merlin BTC",
+      "symbol": "M-BTC",
+      "decimals": 18
+    }
+  },
+  "0x5bcc6C14F962d8062AEf6505B6e047e86B92b366": {
+    "protocolToken": {
+      "address": "0x5bcc6C14F962d8062AEf6505B6e047e86B92b366",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / WBTC",
+      "symbol": "vAMM-USDC/LYNX/LYNX/WBTC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x087D32F6D6d95B63D418A151A45B6f8AE06Fb30F": {
+    "protocolToken": {
+      "address": "0x087D32F6D6d95B63D418A151A45B6f8AE06Fb30F",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / CROAK",
+      "symbol": "vAMM-USDC/LYNX/USDC/CROAK",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xaCb54d07cA167934F57F829BeE2cC665e1A5ebEF",
+      "name": "CROAK",
+      "symbol": "CROAK",
+      "decimals": 18
+    }
+  },
+  "0x38400DA4F6562E93875ae161d790BCB6F36eB722": {
+    "protocolToken": {
+      "address": "0x38400DA4F6562E93875ae161d790BCB6F36eB722",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / wstETH",
+      "symbol": "vAMM-USDC/LYNX/USDC/wstETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0x60890CF6dE535Dbb5dA9F1b8841481b408E011a2": {
+    "protocolToken": {
+      "address": "0x60890CF6dE535Dbb5dA9F1b8841481b408E011a2",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / DUSD",
+      "symbol": "vAMM-USDC/LYNX/USDC/DUSD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xA88B54E6b76Fb97CdB8eCAE868f1458e18a953F4",
+      "name": "Davos.xyz USD",
+      "symbol": "DUSD",
+      "decimals": 18
+    }
+  },
+  "0x0CafBb18fFE4d91A858Bb05011818c5358D99095": {
+    "protocolToken": {
+      "address": "0x0CafBb18fFE4d91A858Bb05011818c5358D99095",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / MAI",
+      "symbol": "vAMM-USDC/LYNX/USDC/MAI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xf3B001D64C656e30a62fbaacA003B1336b4ce12A",
+      "name": "Mai Stablecoin",
+      "symbol": "MAI",
+      "decimals": 18
+    }
+  },
+  "0xE9cCbDd21486Ed72844e18776f79aF10E4c07Ad5": {
+    "protocolToken": {
+      "address": "0xE9cCbDd21486Ed72844e18776f79aF10E4c07Ad5",
+      "name": "VolatileV1 AMM - USDC/LYNX weETH / USDT",
+      "symbol": "vAMM-USDC/LYNX/weETH/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xb114EffC5C76Fe697c6A2400948DcE1dE1eC2442": {
+    "protocolToken": {
+      "address": "0xb114EffC5C76Fe697c6A2400948DcE1dE1eC2442",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / ezETH",
+      "symbol": "vAMM-USDC/LYNX/USDC/ezETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    }
+  },
+  "0x2bAbfb5f0f40e77be0a9011f83A6252ECc796D54": {
+    "protocolToken": {
+      "address": "0x2bAbfb5f0f40e77be0a9011f83A6252ECc796D54",
+      "name": "VolatileV1 AMM - USDC/LYNX agEUR / USDT",
+      "symbol": "vAMM-USDC/LYNX/agEUR/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
+      "name": "agEUR",
+      "symbol": "agEUR",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xeDEa699669BdE2f4CD6A319268fB250a32D04606": {
+    "protocolToken": {
+      "address": "0xeDEa699669BdE2f4CD6A319268fB250a32D04606",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / LINUS",
+      "symbol": "vAMM-USDC/LYNX/USDC/LINUS",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xe07C2bdbb8C787962C2C6e93C11a152110E7E4d2",
+      "name": "Linus Token",
+      "symbol": "LINUS",
+      "decimals": 18
+    }
+  },
+  "0xbbD94Eef0109ec29433073E30c6ecE83Fd3C4C52": {
+    "protocolToken": {
+      "address": "0xbbD94Eef0109ec29433073E30c6ecE83Fd3C4C52",
+      "name": "VolatileV1 AMM - USDC/LYNX agEUR / USDT",
+      "symbol": "vAMM-USDC/LYNX/agEUR/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
+      "name": "agEUR",
+      "symbol": "agEUR",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0xDA5e27b907F8b2dDA973C6aEABc52011b0422dC7": {
+    "protocolToken": {
+      "address": "0xDA5e27b907F8b2dDA973C6aEABc52011b0422dC7",
+      "name": "VolatileV1 AMM - USDC/LYNX USDT / DUSD",
+      "symbol": "vAMM-USDC/LYNX/USDT/DUSD",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xA88B54E6b76Fb97CdB8eCAE868f1458e18a953F4",
+      "name": "Davos.xyz USD",
+      "symbol": "DUSD",
+      "decimals": 18
+    }
+  },
+  "0xE3164204a93bcB833f09b3FC9552680547Bb3039": {
+    "protocolToken": {
+      "address": "0xE3164204a93bcB833f09b3FC9552680547Bb3039",
+      "name": "VolatileV1 AMM - USDC/LYNX ezETH / USDT",
+      "symbol": "vAMM-USDC/LYNX/ezETH/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x00ecabF9Dc65Ea9B2468d702Ba2359f8137F776D": {
+    "protocolToken": {
+      "address": "0x00ecabF9Dc65Ea9B2468d702Ba2359f8137F776D",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / EURO3",
+      "symbol": "vAMM-USDC/LYNX/USDC/EURO3",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x3F817b28Da4940F018C6b5c0A11C555ebB1264f9",
+      "name": "EURO3",
+      "symbol": "EURO3",
+      "decimals": 18
+    }
+  },
+  "0x0aEF9098F45B6A85a3C33B5c48E47a7e91b9ba1a": {
+    "protocolToken": {
+      "address": "0x0aEF9098F45B6A85a3C33B5c48E47a7e91b9ba1a",
+      "name": "VolatileV1 AMM - USDC/LYNX MENDI / USDT",
+      "symbol": "vAMM-USDC/LYNX/MENDI/USDT",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+      "name": "Mendi Finance",
+      "symbol": "MENDI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    }
+  },
+  "0x42544dA1a642Eb32F36841CdE92f2BEd85514Fb3": {
+    "protocolToken": {
+      "address": "0x42544dA1a642Eb32F36841CdE92f2BEd85514Fb3",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / FOXY",
+      "symbol": "vAMM-USDC/LYNX/USDC/FOXY",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x5FBDF89403270a1846F5ae7D113A989F850d1566",
+      "name": "Foxy",
+      "symbol": "FOXY",
+      "decimals": 18
+    }
+  },
+  "0x23ccaFF2639695b74D11Da36bEf2B5ECefE3509E": {
+    "protocolToken": {
+      "address": "0x23ccaFF2639695b74D11Da36bEf2B5ECefE3509E",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / A3A",
+      "symbol": "vAMM-USDC/LYNX/USDC/A3A",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x3d4b2132eD4eA0aa93903713a4dE9F98e625a5c7",
+      "name": "3A Utility Token",
+      "symbol": "A3A",
+      "decimals": 18
+    }
+  },
+  "0x75D0E6a78DD8f693c73275a1A86f0ca054E5a95F": {
+    "protocolToken": {
+      "address": "0x75D0E6a78DD8f693c73275a1A86f0ca054E5a95F",
+      "name": "VolatileV1 AMM - USDC/LYNX USDC / DAI",
+      "symbol": "vAMM-USDC/LYNX/USDC/DAI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0xaB065835669eB9EDeEFe5E0Fa7aE90c8fB93B35C": {
+    "protocolToken": {
+      "address": "0xaB065835669eB9EDeEFe5E0Fa7aE90c8fB93B35C",
+      "name": "VolatileV1 AMM - USDC/LYNX USDT / bveLYNX",
+      "symbol": "vAMM-USDC/LYNX/USDT/bveLYNX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "token1": {
+      "address": "0xe8a4c9B6a2b79Fd844c9e3AdBc8Dc841eEce557B",
+      "name": "Bribe veLYNX",
+      "symbol": "bveLYNX",
+      "decimals": 18
+    }
+  },
+  "0xc97CE419663d9E1c06F48C5032ab61715A62272A": {
+    "protocolToken": {
+      "address": "0xc97CE419663d9E1c06F48C5032ab61715A62272A",
+      "name": "VolatileV1 AMM - USDC/LYNX NILE / WETH",
+      "symbol": "vAMM-USDC/LYNX/NILE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xAAAac83751090C6ea42379626435f805DDF54DC8",
+      "name": "NILE Token",
+      "symbol": "NILE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x1129a2B570906eA0d1a1CFf94C274cB17AD69a8c": {
+    "protocolToken": {
+      "address": "0x1129a2B570906eA0d1a1CFf94C274cB17AD69a8c",
+      "name": "VolatileV1 AMM - USDC/LYNX MATIC / WETH",
+      "symbol": "vAMM-USDC/LYNX/MATIC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8",
+      "name": "Matic Token",
+      "symbol": "MATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x31d5B4D07b8855b6a8cF41ed5DAe99d0F25Da329": {
+    "protocolToken": {
+      "address": "0x31d5B4D07b8855b6a8cF41ed5DAe99d0F25Da329",
+      "name": "VolatileV1 AMM - USDC/LYNX SolvBTC.m / M-BTC",
+      "symbol": "vAMM-USDC/LYNX/SolvBTC.m/M-BTC",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x5FFcE65A40f6d3de5332766ffF6A28BF491C868c",
+      "name": "Free Bridged SolvBTC",
+      "symbol": "SolvBTC.m",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe4D584ae9b753e549cAE66200A6475d2f00705f7",
+      "name": "Merlin BTC",
+      "symbol": "M-BTC",
+      "decimals": 18
+    }
+  },
+  "0xC674B36Ce15Abe09777eFeB11C47e849921D2Ca4": {
+    "protocolToken": {
+      "address": "0xC674B36Ce15Abe09777eFeB11C47e849921D2Ca4",
+      "name": "VolatileV1 AMM - USDC/LYNX WETH / ORDI",
+      "symbol": "vAMM-USDC/LYNX/WETH/ORDI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xec45e3C3C5410CBDBCe81dd35Edcf9f0f13fc2cB",
+      "name": "ORDI",
+      "symbol": "ORDI",
+      "decimals": 18
+    }
+  },
+  "0xC6B70e88332cCe9c946a45D0381A14b92AbfECf3": {
+    "protocolToken": {
+      "address": "0xC6B70e88332cCe9c946a45D0381A14b92AbfECf3",
+      "name": "VolatileV1 AMM - USDC/LYNX M-BTC / WETH",
+      "symbol": "vAMM-USDC/LYNX/M-BTC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe4D584ae9b753e549cAE66200A6475d2f00705f7",
+      "name": "Merlin BTC",
+      "symbol": "M-BTC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xFc69ad9D220d03D8644D2a1b7CE8537e587D1F4a": {
+    "protocolToken": {
+      "address": "0xFc69ad9D220d03D8644D2a1b7CE8537e587D1F4a",
+      "name": "VolatileV1 AMM - USDC/LYNX uniETH / WETH",
+      "symbol": "vAMM-USDC/LYNX/uniETH/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x15EEfE5B297136b8712291B632404B66A8eF4D25",
+      "name": "Universal ETH",
+      "symbol": "uniETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xB0290cCF9fC890415C86ac208e3b78224dc1d12A": {
+    "protocolToken": {
+      "address": "0xB0290cCF9fC890415C86ac208e3b78224dc1d12A",
+      "name": "VolatileV1 AMM - USDC/LYNX inETH / wstETH",
+      "symbol": "vAMM-USDC/LYNX/inETH/wstETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x5A7a183B6B44Dc4EC2E3d2eF43F98C5152b1d76d",
+      "name": "InceptionLRT restaked ETH",
+      "symbol": "inETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xA5d10e2350C4794d06de9Ac1B373e4114ff0F0ec": {
+    "protocolToken": {
+      "address": "0xA5d10e2350C4794d06de9Ac1B373e4114ff0F0ec",
+      "name": "VolatileV1 AMM - USDC/LYNX WETH / ORDI",
+      "symbol": "vAMM-USDC/LYNX/WETH/ORDI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xec45e3C3C5410CBDBCe81dd35Edcf9f0f13fc2cB",
+      "name": "ORDI",
+      "symbol": "ORDI",
+      "decimals": 18
+    }
+  },
+  "0x4b7BbEf16ec422Dd4c2Ca823cb3d986e4044A25e": {
+    "protocolToken": {
+      "address": "0x4b7BbEf16ec422Dd4c2Ca823cb3d986e4044A25e",
+      "name": "VolatileV1 AMM - USDC/LYNX tok / WETH",
+      "symbol": "vAMM-USDC/LYNX/tok/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xB672BB2024304a33d35afF28256C4ebddEF1d5f0",
+      "name": "testToken",
+      "symbol": "tok",
+      "decimals": 9
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x1DB4F885025B3Aa1dddAc9c10461B871fCB2C6dD": {
+    "protocolToken": {
+      "address": "0x1DB4F885025B3Aa1dddAc9c10461B871fCB2C6dD",
+      "name": "VolatileV1 AMM - USDC/LYNX test / WETH",
+      "symbol": "vAMM-USDC/LYNX/test/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x367776748E7644f8E4589ea4f9f04433912092e5",
+      "name": "test",
+      "symbol": "test",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xCeF24c763E79329F48756F5a76D08B650C6F2293": {
+    "protocolToken": {
+      "address": "0xCeF24c763E79329F48756F5a76D08B650C6F2293",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / STONE",
+      "symbol": "vAMM-USDC/LYNX/LYNX/STONE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116",
+      "name": "StakeStone Ether",
+      "symbol": "STONE",
+      "decimals": 18
+    }
+  },
+  "0xeE18362b766905cC47Df273fE0ed967c0c2827E0": {
+    "protocolToken": {
+      "address": "0xeE18362b766905cC47Df273fE0ed967c0c2827E0",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / weETH",
+      "symbol": "vAMM-USDC/LYNX/LYNX/weETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    }
+  },
+  "0x2a73093943232aFD02661a112E149c777cf01e57": {
+    "protocolToken": {
+      "address": "0x2a73093943232aFD02661a112E149c777cf01e57",
+      "name": "VolatileV1 AMM - USDC/LYNX MATIC / WETH",
+      "symbol": "vAMM-USDC/LYNX/MATIC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8",
+      "name": "Matic Token",
+      "symbol": "MATIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xF6E908E2A70E6af4D1fFA770e684f4F4F0Ab2867": {
+    "protocolToken": {
+      "address": "0xF6E908E2A70E6af4D1fFA770e684f4F4F0Ab2867",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / wstETH",
+      "symbol": "vAMM-USDC/LYNX/LYNX/wstETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xD00531070Aded5f3D5Fbe7Fc44d528769776FE40": {
+    "protocolToken": {
+      "address": "0xD00531070Aded5f3D5Fbe7Fc44d528769776FE40",
+      "name": "VolatileV1 AMM - USDC/LYNX RED / WETH",
+      "symbol": "vAMM-USDC/LYNX/RED/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x8Fd688B09BddeB8B78F70bD67e61669b305B4B35",
+      "name": "redbulll",
+      "symbol": "RED",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x8CB615373F16a727F61457213866267B70051AE5": {
+    "protocolToken": {
+      "address": "0x8CB615373F16a727F61457213866267B70051AE5",
+      "name": "VolatileV1 AMM - USDC/LYNX A3A / WETH",
+      "symbol": "vAMM-USDC/LYNX/A3A/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3d4b2132eD4eA0aa93903713a4dE9F98e625a5c7",
+      "name": "3A Utility Token",
+      "symbol": "A3A",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x0A00e92d507FdF6c8A743BcF65E08818EcF6ae7B": {
+    "protocolToken": {
+      "address": "0x0A00e92d507FdF6c8A743BcF65E08818EcF6ae7B",
+      "name": "VolatileV1 AMM - USDC/LYNX WETH / MEMEFI",
+      "symbol": "vAMM-USDC/LYNX/WETH/MEMEFI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xF01Fab742b5A70c0b15C7C39bacc60420D62A3ab",
+      "name": "MEMEFI Token",
+      "symbol": "MEMEFI",
+      "decimals": 18
+    }
+  },
+  "0x80b3b2BDC115b70F4fD5A50352F81cbd3AaF48B3": {
+    "protocolToken": {
+      "address": "0x80b3b2BDC115b70F4fD5A50352F81cbd3AaF48B3",
+      "name": "VolatileV1 AMM - USDC/LYNX weETH / FOXY",
+      "symbol": "vAMM-USDC/LYNX/weETH/FOXY",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x5FBDF89403270a1846F5ae7D113A989F850d1566",
+      "name": "Foxy",
+      "symbol": "FOXY",
+      "decimals": 18
+    }
+  },
+  "0x624dB235d1F39Ac8fe9B96814CE8ACc9E7010B05": {
+    "protocolToken": {
+      "address": "0x624dB235d1F39Ac8fe9B96814CE8ACc9E7010B05",
+      "name": "VolatileV1 AMM - USDC/LYNX ANL / WETH",
+      "symbol": "vAMM-USDC/LYNX/ANL/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x01eadE398A08d22508BA00dd93aCb5136BD48590",
+      "name": "Anal",
+      "symbol": "ANL",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x3c66E918025739E2e61D7B98Da6ca6759841fCf8": {
+    "protocolToken": {
+      "address": "0x3c66E918025739E2e61D7B98Da6ca6759841fCf8",
+      "name": "VolatileV1 AMM - USDC/LYNX SATS / WETH",
+      "symbol": "vAMM-USDC/LYNX/SATS/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xbfa536126C1C2b7cbA94807a39213fAb913950A3",
+      "name": "SATS",
+      "symbol": "SATS",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x77EaFc6d2594EF5b7430f2c69fa95961f0175FDD": {
+    "protocolToken": {
+      "address": "0x77EaFc6d2594EF5b7430f2c69fa95961f0175FDD",
+      "name": "VolatileV1 AMM - USDC/LYNX LSHIB / WETH",
+      "symbol": "vAMM-USDC/LYNX/LSHIB/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3b91a28d71eA7acD1558E9B84B79C1D140e7BC6C",
+      "name": "Linea Shiba Inu",
+      "symbol": "LSHIB",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x9262edDE191bD9B6914821e75019D327F5E42A4f": {
+    "protocolToken": {
+      "address": "0x9262edDE191bD9B6914821e75019D327F5E42A4f",
+      "name": "VolatileV1 AMM - USDC/LYNX SUE / WETH",
+      "symbol": "vAMM-USDC/LYNX/SUE/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xE112246eFA632CD670a3f872633B29018fF86966",
+      "name": "SUE",
+      "symbol": "SUE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xe9B8d8db72E15d4396BFD1619e7dd82A551e1092": {
+    "protocolToken": {
+      "address": "0xe9B8d8db72E15d4396BFD1619e7dd82A551e1092",
+      "name": "VolatileV1 AMM - USDC/LYNX CATA / WETH",
+      "symbol": "vAMM-USDC/LYNX/CATA/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x04F3A4a7b4c8B1f950273D69FdBf1186ef27B20f",
+      "name": "CATAMOTO",
+      "symbol": "CATA",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x54789D829AaC7f7c0Cecf661deEf8Bd524c42879": {
+    "protocolToken": {
+      "address": "0x54789D829AaC7f7c0Cecf661deEf8Bd524c42879",
+      "name": "VolatileV1 AMM - USDC/LYNX WETH / ALN",
+      "symbol": "vAMM-USDC/LYNX/WETH/ALN",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xF9C51a91933a576c9cC177f8da439A5cd69D33fd",
+      "name": "Alien",
+      "symbol": "ALN",
+      "decimals": 18
+    }
+  },
+  "0xEcf459bfD8764C700f05d2aff37aC40b27ADe330": {
+    "protocolToken": {
+      "address": "0xEcf459bfD8764C700f05d2aff37aC40b27ADe330",
+      "name": "VolatileV1 AMM - USDC/LYNX KJGAYQIC / WETH",
+      "symbol": "vAMM-USDC/LYNX/KJGAYQIC/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x0306deEfA3ee5268b0400A3014d6B002C2D2913c",
+      "name": "KJGAYQIC",
+      "symbol": "KJGAYQIC",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x9a9987C6853c513b1C1ADa3dB8bc8FEDf426ACce": {
+    "protocolToken": {
+      "address": "0x9a9987C6853c513b1C1ADa3dB8bc8FEDf426ACce",
+      "name": "VolatileV1 AMM - USDC/LYNX ALM / WETH",
+      "symbol": "vAMM-USDC/LYNX/ALM/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xD2F78eC9eAe17FF34CC551262A54F6fE0Dc16564",
+      "name": "ALM",
+      "symbol": "ALM",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x8954bc9a15176Ba2302Fa68C6ec6a7534B563CA0": {
+    "protocolToken": {
+      "address": "0x8954bc9a15176Ba2302Fa68C6ec6a7534B563CA0",
+      "name": "VolatileV1 AMM - USDC/LYNX CROAK / WETH",
+      "symbol": "vAMM-USDC/LYNX/CROAK/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xaCb54d07cA167934F57F829BeE2cC665e1A5ebEF",
+      "name": "CROAK",
+      "symbol": "CROAK",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x6cB078A1d428A203D569F7f092e38157590362c9": {
+    "protocolToken": {
+      "address": "0x6cB078A1d428A203D569F7f092e38157590362c9",
+      "name": "VolatileV1 AMM - USDC/LYNX Foxy / WETH",
+      "symbol": "vAMM-USDC/LYNX/Foxy/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2DFFd3B1701e6d703a444C6a1AfCCF7dd700dC97",
+      "name": "Foxy",
+      "symbol": "Foxy",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x6CE0414C17495D12e6744E0cE5330B258525975E": {
+    "protocolToken": {
+      "address": "0x6CE0414C17495D12e6744E0cE5330B258525975E",
+      "name": "VolatileV1 AMM - USDC/LYNX WETH / bveLYNX",
+      "symbol": "vAMM-USDC/LYNX/WETH/bveLYNX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe8a4c9B6a2b79Fd844c9e3AdBc8Dc841eEce557B",
+      "name": "Bribe veLYNX",
+      "symbol": "bveLYNX",
+      "decimals": 18
+    }
+  },
+  "0x49ECb11e7a0031c371eD0377057C205569d322eC": {
+    "protocolToken": {
+      "address": "0x49ECb11e7a0031c371eD0377057C205569d322eC",
+      "name": "VolatileV1 AMM - USDC/LYNX Foxy / WETH",
+      "symbol": "vAMM-USDC/LYNX/Foxy/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x2DFFd3B1701e6d703a444C6a1AfCCF7dd700dC97",
+      "name": "Foxy",
+      "symbol": "Foxy",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x31cDc18f1b682eF15b023997bE39829cFD0f0628": {
+    "protocolToken": {
+      "address": "0x31cDc18f1b682eF15b023997bE39829cFD0f0628",
+      "name": "VolatileV1 AMM - USDC/LYNX KIT / WETH",
+      "symbol": "vAMM-USDC/LYNX/KIT/WETH",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1883a51FAaFAF632ad716F0ceF50Df67F54987DE",
+      "name": "Kitty",
+      "symbol": "KIT",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x740BB4250398f2b87e70CB21f459DE4Df80012Dc": {
+    "protocolToken": {
+      "address": "0x740BB4250398f2b87e70CB21f459DE4Df80012Dc",
+      "name": "VolatileV1 AMM - USDC/LYNX MENDI / oLYNX",
+      "symbol": "vAMM-USDC/LYNX/MENDI/oLYNX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+      "name": "Mendi Finance",
+      "symbol": "MENDI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x63349BA5E1F71252eCD56E8F950D1A518B400b60",
+      "name": "Option LYNX Token",
+      "symbol": "oLYNX",
+      "decimals": 18
+    }
+  },
+  "0x1C843458Ab1D2f8198B632F519232223e9D81370": {
+    "protocolToken": {
+      "address": "0x1C843458Ab1D2f8198B632F519232223e9D81370",
+      "name": "VolatileV1 AMM - USDC/LYNX sMendi / MENDI",
+      "symbol": "vAMM-USDC/LYNX/sMendi/MENDI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x150b1e51738CdF0cCfe472594C62d7D6074921CA",
+      "name": "Staked Mendi",
+      "symbol": "sMendi",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+      "name": "Mendi Finance",
+      "symbol": "MENDI",
+      "decimals": 18
+    }
+  },
+  "0x8E9f777f2448590ccd9d547f49489948A6001d41": {
+    "protocolToken": {
+      "address": "0x8E9f777f2448590ccd9d547f49489948A6001d41",
+      "name": "VolatileV1 AMM - USDC/LYNX MENDI / uMendi",
+      "symbol": "vAMM-USDC/LYNX/MENDI/uMendi",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+      "name": "Mendi Finance",
+      "symbol": "MENDI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xcf8deDCdC62317beAEdfBee3C77C08425F284486",
+      "name": "Staked Mendi",
+      "symbol": "uMendi",
+      "decimals": 18
+    }
+  },
+  "0x56732De537ca41B06452Aa783d0FC75655ed3525": {
+    "protocolToken": {
+      "address": "0x56732De537ca41B06452Aa783d0FC75655ed3525",
+      "name": "VolatileV1 AMM - USDC/LYNX QI / MAI",
+      "symbol": "vAMM-USDC/LYNX/QI/MAI",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xD3FDCb837DAfdb7C9C3eBD48FE22a53F6Dd3d7D7",
+      "name": "QiDao",
+      "symbol": "QI",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xf3B001D64C656e30a62fbaacA003B1336b4ce12A",
+      "name": "Mai Stablecoin",
+      "symbol": "MAI",
+      "decimals": 18
+    }
+  },
+  "0x06170045bbA66914FFA03f6Cb2fc5A3F8dC0ddB7": {
+    "protocolToken": {
+      "address": "0x06170045bbA66914FFA03f6Cb2fc5A3F8dC0ddB7",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / XRGB",
+      "symbol": "vAMM-USDC/LYNX/LYNX/XRGB",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x5cc5E64AB764A0f1E97F23984E20fD4528356a6a",
+      "name": "XRGB",
+      "symbol": "XRGB",
+      "decimals": 18
+    }
+  },
+  "0xB79Dd267455DF54595938060d379b82F40eBfA63": {
+    "protocolToken": {
+      "address": "0xB79Dd267455DF54595938060d379b82F40eBfA63",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / oLYNX",
+      "symbol": "vAMM-USDC/LYNX/LYNX/oLYNX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x63349BA5E1F71252eCD56E8F950D1A518B400b60",
+      "name": "Option LYNX Token",
+      "symbol": "oLYNX",
+      "decimals": 18
+    }
+  },
+  "0x7Cac0BD586FdD087FCB7635A62280a30ddB547aF": {
+    "protocolToken": {
+      "address": "0x7Cac0BD586FdD087FCB7635A62280a30ddB547aF",
+      "name": "VolatileV1 AMM - USDC/LYNX EURO3 / FOXY",
+      "symbol": "vAMM-USDC/LYNX/EURO3/FOXY",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x3F817b28Da4940F018C6b5c0A11C555ebB1264f9",
+      "name": "EURO3",
+      "symbol": "EURO3",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x5FBDF89403270a1846F5ae7D113A989F850d1566",
+      "name": "Foxy",
+      "symbol": "FOXY",
+      "decimals": 18
+    }
+  },
+  "0xcbD199dAc72793139De3fc6026d8D0da5F833154": {
+    "protocolToken": {
+      "address": "0xcbD199dAc72793139De3fc6026d8D0da5F833154",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / FOXY",
+      "symbol": "vAMM-USDC/LYNX/LYNX/FOXY",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x5FBDF89403270a1846F5ae7D113A989F850d1566",
+      "name": "Foxy",
+      "symbol": "FOXY",
+      "decimals": 18
+    }
+  },
+  "0x2ac5966684F33384163c0f924BE2c83817A88A23": {
+    "protocolToken": {
+      "address": "0x2ac5966684F33384163c0f924BE2c83817A88A23",
+      "name": "VolatileV1 AMM - USDC/LYNX LYNX / bveLYNX",
+      "symbol": "vAMM-USDC/LYNX/LYNX/bveLYNX",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+      "name": "Lynex",
+      "symbol": "LYNX",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe8a4c9B6a2b79Fd844c9e3AdBc8Dc841eEce557B",
+      "name": "Bribe veLYNX",
+      "symbol": "bveLYNX",
+      "decimals": 18
+    }
+  },
+  "0xd9Ce0C669C3f83C2836a6748beA3A98152bC5Ec6": {
+    "protocolToken": {
+      "address": "0xd9Ce0C669C3f83C2836a6748beA3A98152bC5Ec6",
+      "name": "VolatileV1 AMM - USDC/LYNX MANA / LINA",
+      "symbol": "vAMM-USDC/LYNX/MANA/LINA",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0xbAACD8E57387eB5db90229c312F0e867f66041D0",
+      "name": "MANA",
+      "symbol": "MANA",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0xe9945Bab095157E632BCd0605c8ED8d9BAfd639D",
+      "name": "LINA",
+      "symbol": "LINA",
+      "decimals": 18
+    }
+  },
+  "0x6Fb413595E0949B85B0861233B39d8DDec872aFa": {
+    "protocolToken": {
+      "address": "0x6Fb413595E0949B85B0861233B39d8DDec872aFa",
+      "name": "VolatileV1 AMM - USDC/LYNX LUBE / LINE",
+      "symbol": "vAMM-USDC/LYNX/LUBE/LINE",
+      "decimals": 18
+    },
+    "token0": {
+      "address": "0x1bE3735Dd0C0Eb229fB11094B6c277192349EBbf",
+      "name": "LUBE",
+      "symbol": "LUBE",
+      "decimals": 18
+    },
+    "token1": {
+      "address": "0x2Fab0952449378DfdF4625fE37F9603011F189ab",
+      "name": "Lineardo",
+      "symbol": "LINE",
+      "decimals": 18
+    }
+  }
+}

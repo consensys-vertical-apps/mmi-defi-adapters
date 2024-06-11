@@ -13,6 +13,7 @@ export const Protocol = {
   Gmx: 'gmx',
   IZiSwap: 'iziswap',
   Lido: 'lido',
+  Lynex: 'lynex',
   Maker: 'maker',
   MendiFinance: 'mendi-finance',
   MorphoAaveV2: 'morpho-aave-v2',

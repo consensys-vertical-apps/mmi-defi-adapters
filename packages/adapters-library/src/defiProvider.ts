@@ -1,5 +1,4 @@
-import { ethers, getAddress } from 'ethers'
-import { contractAddresses } from './adapters/compound-v2/common/contractAddresses'
+import { getAddress } from 'ethers'
 import { Protocol } from './adapters/protocols'
 import { supportedProtocols } from './adapters/supportedProtocols'
 import type { GetTransactionParams } from './adapters/supportedProtocols'
@@ -102,6 +101,7 @@ export class DefiProvider {
     filterProtocolTokens?: string[]
     filterTokenIds?: string[]
   }): Promise<DefiPositionResponse[]> {
+    const startGetPositions = Date.now()
     this.initAdapterControllerForUnwrapStage()
 
     const runner = async (adapter: IProtocolAdapter) => {
@@ -127,8 +127,7 @@ export class DefiProvider {
         tokenIds: filterTokenIds,
       })
 
-      // unwrap protocol tokens
-      await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
+      const getPositionsTime = Date.now()
 
       await Promise.all(
         protocolPositions.map(async (pos) => {
@@ -144,16 +143,29 @@ export class DefiProvider {
         }),
       )
 
-      // now unwrap reward tokens attached to the protocol tokens
-      // note if unwrap called only after attaching rewards then unwrap function thinks the reward tokens are the protocol tokens unwrapped
+      const getRewardTime = Date.now()
+
       await unwrap(adapter, blockNumber, protocolPositions, 'balanceRaw')
 
+      const unwrapTime = Date.now()
+
+      const tokens = protocolPositions.map((protocolPosition) =>
+        enrichPositionBalance(protocolPosition, adapter.chainId),
+      )
+
       const endTime = Date.now()
+
       logger.info({
         source: 'adapter:positions',
         startTime,
         endTime,
         timeTaken: endTime - startTime,
+        timeDetails: {
+          getPositionsTime: getPositionsTime - startTime,
+          getRewardTime: getRewardTime - getPositionsTime,
+          unwrapTime: unwrapTime - getRewardTime,
+          enrichTime: endTime - unwrapTime,
+        },
         chainId: adapter.chainId,
         chainName: ChainName[adapter.chainId],
         protocolId: adapter.protocolId,
@@ -161,10 +173,6 @@ export class DefiProvider {
         userAddress,
         blockNumber,
       })
-
-      const tokens = protocolPositions.map((protocolPosition) =>
-        enrichPositionBalance(protocolPosition, adapter.chainId),
-      )
 
       return { tokens }
     }
@@ -174,13 +182,22 @@ export class DefiProvider {
         runner,
         filterProtocolIds,
         filterChainIds,
-
         method: 'getPositions',
       })
     ).filter(
       (result) =>
         !result.success || (result.success && result.tokens.length > 0),
     )
+
+    const endGetPositions = Date.now()
+
+    logger.info({
+      source: 'positions',
+      startTime: startGetPositions,
+      endTime: endGetPositions,
+      timeTaken: endGetPositions - startGetPositions,
+      userAddress,
+    })
 
     logger.debug(count, 'getPositions')
 
@@ -250,7 +267,15 @@ export class DefiProvider {
         return undefined
       }
 
-      logger.warn((error as Error).message)
+      logger.warn(
+        {
+          chainId: adapter.chainId,
+          protocolId: adapter.protocolId,
+          productId: adapter.productId,
+          message: error instanceof Error ? error.message : undefined,
+        },
+        'Error building token filter for user address',
+      )
 
       // we cant use the logs on this chain
       return undefined
@@ -260,6 +285,10 @@ export class DefiProvider {
   private filterSupported(adapter: IProtocolAdapter) {
     // we don't support these atm but something can be done here for standard NFT positions
     if (adapter.getProtocolDetails().assetDetails.type === 'NonStandardErc20') {
+      return false
+    }
+    // we cant use transfer events if contract is missing them
+    if (adapter.getProtocolDetails().assetDetails.missingTransferEvents) {
       return false
     }
 

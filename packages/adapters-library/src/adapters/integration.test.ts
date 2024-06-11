@@ -47,6 +47,7 @@ import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
 import { testCases as tanxFinanceTestCases } from './tanx-finance/tests/testCases'
+import { testCases as lynexTestCases } from './lynex/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
@@ -70,6 +71,7 @@ const protocolTestCases = {
   [Protocol.Gmx]: gmxTestCases,
   [Protocol.IZiSwap]: iZiSwapTestCases,
   [Protocol.Lido]: lidoTestCases,
+  [Protocol.Lynex]: lynexTestCases,
   [Protocol.Maker]: makerTestCases,
   [Protocol.MendiFinance]: mendiFinanceTestCases,
   [Protocol.MorphoAaveV2]: morphoAaveV2TestCases,

@@ -116,6 +116,7 @@ import TanxFinanceDexPolygonProtocolTokens from '../../adapters/tanx-finance/pro
 import TanxFinanceDexArbitrumProtocolTokens from '../../adapters/tanx-finance/products/dex/metadata/arbitrum.protocol-tokens.json'
 
 import TanxFinanceDexLineaProtocolTokens from '../../adapters/tanx-finance/products/dex/metadata/linea.protocol-tokens.json'
+import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
 
 export const MetadataFiles = new Map<string, Json>([
   [
@@ -711,6 +712,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'glp',
     }),
     GmxGlpAvalancheGlp,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Lynex,
+      productId: 'classic',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    LynexClassicLineaProtocolToken,
   ],
   [
     metadataKey({
