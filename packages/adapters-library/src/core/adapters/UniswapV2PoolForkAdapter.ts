@@ -191,9 +191,8 @@ export abstract class UniswapV2PoolForkAdapter
     protocolTokenAddress,
     blockNumber,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const { protocolToken, token0, token1 } = await this.fetchPoolMetadata(
-      protocolTokenAddress,
-    )
+    const { protocolToken, token0, token1 } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     const pairContract = UniswapV2Pair__factory.connect(
       protocolTokenAddress,
