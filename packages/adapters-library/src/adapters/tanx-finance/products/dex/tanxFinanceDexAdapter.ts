@@ -1,6 +1,6 @@
 import { BytesLike, Interface, TransactionResponse, getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
-import { Chain } from '../../../../core/constants/chains'
+import { Chain, ChainName } from '../../../../core/constants/chains'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -50,7 +50,7 @@ import {
 } from '../../contracts/TanxStarkex'
 
 type TanxErc20Metadata = Erc20Metadata & {
-  assetId: string
+  assetId?: string
 }
 
 type Metadata = Record<
@@ -65,6 +65,18 @@ const contractAddresses: Partial<Record<Chain, Record<string, string>>> = {
     starkexContract: '0x1390f521A79BaBE99b69B37154D63D431da27A07',
     fastWithdrawalContract: '0xe17F8e501bF5e968e39D8702B30c3A8b955d8f52',
   },
+  [Chain.Polygon]: {
+    fastWithdrawalContract: '0x2714C5958e2b1417B3f2b7609202FFAD359a5965',
+  },
+  [Chain.Optimism]: {
+    fastWithdrawalContract: '0xBdd40916bBC43bE14dd7183C30a64EE4A893D97f',
+  },
+  [Chain.Arbitrum]: {
+    fastWithdrawalContract: '0x149e2C169f10914830EF39B9d184AE62BbCdF526',
+  },
+  [Chain.Linea]: {
+    fastWithdrawalContract: '0x508f001baa00976fc1d679af880267555900ab09',
+  },
 }
 
 type LogDetails = {
@@ -75,6 +87,12 @@ type LogDetails = {
   protocolTokenAddress: string
   nonQuantizedAmount: bigint
   quantizedAmount: bigint
+}
+
+const AssetSymbolNameMap: Record<string | number | symbol, string> = {
+  eth: 'Ethereum',
+  usdc: 'USDC',
+  usdt: 'Tether',
 }
 
 export class TanxFinanceDexAdapter
@@ -125,31 +143,56 @@ export class TanxFinanceDexAdapter
 
   @CacheToFile({ fileKey: 'protocol-tokens' })
   async buildMetadata(): Promise<Metadata> {
-    const baseUrl = 'https://api.tanx.fi/main/stat/v2/coins/'
-    const results = await (
-      await fetch(`${baseUrl}`, {
+    const coinConfigUrl = 'https://api.tanx.fi/main/stat/v2/coins/'
+    const appAndMarketsUrl = 'https://api.tanx.fi/main/stat/v2/app-and-markets/'
+    const coinConfigResults = await (
+      await fetch(`${coinConfigUrl}`, {
+        method: 'POST',
+      })
+    ).json()
+
+    const appAndMarketsResults = await (
+      await fetch(`${appAndMarketsUrl}`, {
         method: 'POST',
       })
     ).json()
 
     const metadata = {} as Metadata
 
-    Object.keys(results.payload).forEach((key, index) => {
-      const name = results.payload[key].name
-      const tokenContract =
-        name === 'Ethereum'
-          ? '0x0000000000000000000000000000000000000000'
-          : getAddress(results.payload[key].token_contract)
-      metadata[tokenContract] = { protocolToken: {} as TanxErc20Metadata }
-      metadata[tokenContract]!.protocolToken = {
-        address: tokenContract,
-        name: name,
-        assetId: results.payload[key].stark_asset_id,
-        decimals: Number(results.payload[key].decimal),
-        symbol: results.payload[key].symbol,
-      }
-    })
+    if (this.chainId === Chain.Ethereum) {
+      Object.keys(coinConfigResults.payload).forEach((key, index) => {
+        const name = coinConfigResults.payload[key].name
+        const tokenContract =
+          name === 'Ethereum'
+            ? '0x0000000000000000000000000000000000000000'
+            : getAddress(coinConfigResults.payload[key].token_contract)
+        metadata[tokenContract] = { protocolToken: {} as TanxErc20Metadata }
+        metadata[tokenContract]!.protocolToken = {
+          address: tokenContract,
+          name: name,
+          assetId: coinConfigResults.payload[key].stark_asset_id,
+          decimals: Number(coinConfigResults.payload[key].decimal),
+          symbol: coinConfigResults.payload[key].symbol,
+        }
+      })
+    } else {
+      const networkConfig = appAndMarketsResults.payload.network_config
+      const network = ChainName[this.chainId].toUpperCase()
+      const networkConfigTokens = networkConfig[network].tokens
 
+      Object.keys(networkConfigTokens).forEach((key, index) => {
+        const tokenContract = networkConfigTokens[key].token_contract
+        metadata[tokenContract] = { protocolToken: {} as TanxErc20Metadata }
+        metadata[tokenContract]!.protocolToken = {
+          address: tokenContract,
+          name: key,
+          decimals: Number(networkConfigTokens[key].blockchain_decimal),
+          symbol: (AssetSymbolNameMap.hasOwnProperty(key)
+            ? AssetSymbolNameMap[key]
+            : key.toUpperCase())!,
+        }
+      })
+    }
     return metadata
   }
 
@@ -224,9 +267,8 @@ export class TanxFinanceDexAdapter
     const metadata = await this.buildMetadata()
     let amount = BigInt(0)
 
-    console.log(`${eventType} ${contractType} ${userAddress} ${protocolTokenAddress}`)
 
-    let transactionHashes: string[] = []
+    const transactionHashes: string[] = []
 
     if (contractType === 'starkex') {
       if (eventType === 'deposit') {
@@ -270,7 +312,6 @@ export class TanxFinanceDexAdapter
           )
           .reduce((acc, item) => item?.quantizedAmount! + acc, BigInt(0))
       } else {
-        console.log("withdrawals")
         amount = logs
           .map((item) => {
             const log = item.args
@@ -278,7 +319,7 @@ export class TanxFinanceDexAdapter
             const starkKey = `0x${(log[0] as bigint).toString(16)}`
             const assetId = `0x${(log[1] as bigint).toString(16)}`
             const nonQuantizedAmount = log[2] as bigint
-            const quantizedAmount = log[3]  as bigint
+            const quantizedAmount = log[3] as bigint
             const ethAddress = log[4] as string
 
             const token = Object.keys(metadata).find((key, index) => {
@@ -300,8 +341,6 @@ export class TanxFinanceDexAdapter
               quantizedAmount,
             }
 
-            console.log({details})
-
             return details
           })
           .filter(
@@ -313,50 +352,51 @@ export class TanxFinanceDexAdapter
       }
     } else {
       amount = logs
-      .map((item) => {
-        const log = item.args
+        .map((item) => {
+          const log = item.args
 
-        const ethAddress = log[0] as string
-        const token = log[1] as string
-        const quantizedAmount = log[2] as bigint
+          const ethAddress = log[0] as string
+          const token = log[1] as string
+          const quantizedAmount = log[2] as bigint
 
-        const details: Pick<LogDetails, "ethAddress" | "protocolTokenAddress" | "quantizedAmount"> = {
-          ethAddress,
-          protocolTokenAddress: token!,
-          quantizedAmount,
-        }
+          const details: Pick<
+            LogDetails,
+            'ethAddress' | 'protocolTokenAddress' | 'quantizedAmount'
+          > = {
+            ethAddress,
+            protocolTokenAddress: token!,
+            quantizedAmount,
+          }
 
-        transactionHashes.push(item.transactionHash)
+          transactionHashes.push(item.transactionHash)
 
-        console.log({details})
-
-        return details
-      })
-      .filter(
-        (item) =>
-          item.ethAddress === userAddress &&
-          item.protocolTokenAddress === protocolTokenAddress,
-      )
-      .reduce((acc, item) => item.quantizedAmount + acc, BigInt(0))
+          return details
+        })
+        .reduce((acc, item) => item.quantizedAmount + acc, BigInt(0))
     }
 
-    const movementsByBlock: MovementsByBlock[] = amount > 0 ? logs.filter(log => transactionHashes.includes(log.transactionHash)).map((log) => {
-      const { blockNumber, transactionHash } = log
-      return {
-        transactionHash,
-        blockNumber,
-        protocolToken: metadata[protocolTokenAddress!]?.protocolToken!,
-        tokens: [
-          {
-            type: TokenType.Underlying,
-            balanceRaw: BigInt(amount),
-            ...metadata[protocolTokenAddress!]?.protocolToken!,
-            transactionHash,
-            blockNumber,
-          },
-        ],
-      }
-    }) : []
+    const movementsByBlock: MovementsByBlock[] =
+      amount > 0
+        ? logs
+            .filter((log) => transactionHashes.includes(log.transactionHash))
+            .map((log) => {
+              const { blockNumber, transactionHash } = log
+              return {
+                transactionHash,
+                blockNumber,
+                protocolToken: metadata[protocolTokenAddress!]?.protocolToken!,
+                tokens: [
+                  {
+                    type: TokenType.Underlying,
+                    balanceRaw: BigInt(amount),
+                    ...metadata[protocolTokenAddress!]?.protocolToken!,
+                    transactionHash,
+                    blockNumber,
+                  },
+                ],
+              }
+            })
+        : []
 
     return movementsByBlock
   }
@@ -381,16 +421,15 @@ export class TanxFinanceDexAdapter
       ),
     }
 
-    let movements: MovementsByBlock[] = []
+    const movements: MovementsByBlock[] = []
 
     try {
       if (eventType === 'deposits') {
-        const depositEvents =
-          await tanxFastWithdrawalContract.queryFilter(
-            eventFilters['Deposit'],
-            fromBlock,
-            toBlock,
-          )
+        const depositEvents = await tanxFastWithdrawalContract.queryFilter(
+          eventFilters['Deposit'],
+          fromBlock,
+          toBlock,
+        )
 
         const movement = await this.formatLogData(
           depositEvents,
@@ -398,16 +437,15 @@ export class TanxFinanceDexAdapter
           protocolTokenAddress,
           tanxFastWithdrawalContract.interface,
           'deposit',
-          'fastWithdrawal'
+          'fastWithdrawal',
         )
         movements.push(...movement)
       } else {
-        const withdrawalEvents =
-          await tanxFastWithdrawalContract.queryFilter(
-            eventFilters['Withdrawal'],
-            fromBlock,
-            toBlock,
-          )
+        const withdrawalEvents = await tanxFastWithdrawalContract.queryFilter(
+          eventFilters['Withdrawal'],
+          fromBlock,
+          toBlock,
+        )
 
         const movement = await this.formatLogData(
           withdrawalEvents,
@@ -415,7 +453,7 @@ export class TanxFinanceDexAdapter
           protocolTokenAddress,
           tanxFastWithdrawalContract.interface,
           'withdrawal',
-          'fastWithdrawal'
+          'fastWithdrawal',
         )
         movements.push(...movement)
       }
@@ -443,16 +481,14 @@ export class TanxFinanceDexAdapter
           )
 
           const movement = await this.formatLogData(
-              starkexDepositEvents,
-              userAddress,
-              protocolTokenAddress,
-              tanxControllerContract.interface,
-              'deposit',
-            )
+            starkexDepositEvents,
+            userAddress,
+            protocolTokenAddress,
+            tanxControllerContract.interface, // add movements to parameters to get the balance from fast withdrawal contract
+            'deposit',
+          )
           movements.push(...movement)
-          
         } else {
-          console.log("querying")
           const starkexWithdrawalEvents =
             await tanxControllerContract.queryFilter(
               starkexEventFilters['Withdrawal'],
@@ -460,26 +496,19 @@ export class TanxFinanceDexAdapter
               toBlock,
             )
 
-            console.log({starkexWithdrawalEvents})
-            
-            const movement = await this.formatLogData(
-              starkexWithdrawalEvents,
-              userAddress,
-              protocolTokenAddress,
-              tanxControllerContract.interface,
-              'withdrawal',
-            )
-            movements.push(...movement)
-            }
+          const movement = await this.formatLogData(
+            starkexWithdrawalEvents,
+            userAddress,
+            protocolTokenAddress,
+            tanxControllerContract.interface,
+            'withdrawal',
+          )
+          movements.push(...movement)
+        }
       } catch (error) {
         console.log(error)
       }
-
-      }
-    if (movements.length > 0) {
-
-      console.log(movements[0])
-      }
+    }
     return movements
   }
 }
