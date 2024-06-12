@@ -34,8 +34,8 @@ export const fetchIchiBalanceBreakdown: VaultBalanceBreakdownFetcher = async (
     almContract.token1({ ...blockSpec }),
   ])
 
-  const position0 = basePosition[0] + limitPosition[0]
-  const position1 = basePosition[1] + limitPosition[1]
+  const position0 = basePosition.amount0 + limitPosition.amount0
+  const position1 = basePosition.amount1 + limitPosition.amount1
 
   return {
     vaultTotalSupply,

@@ -29,8 +29,8 @@
               "symbol": "stataArbUSDCn",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
+              "balanceRaw": "4055879n",
+              "balance": 4.055879,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x7CFaDFD5645B50bE87d546f42699d863648251ad/logo.png"
             },
             {
@@ -39,8 +39,8 @@
               "symbol": "stataArbUSDT",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
+              "balanceRaw": "8689833n",
+              "balance": 8.689833,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140/logo.png"
             }
           ],
@@ -60,8 +60,8 @@
               "symbol": "auraBAL",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "8n",
-              "balance": 8e-18,
+              "balanceRaw": "462940548153861472n",
+              "balance": 0.4629405481538615,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x223738a747383d6F9f827d95964e4d8E8AC754cE/logo.png"
             },
             {
@@ -70,8 +70,8 @@
               "symbol": "wstETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
+              "balanceRaw": "964023990843056n",
+              "balance": 0.000964023990843056,
               "price": 4432.459639605798,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
             }
@@ -92,8 +92,8 @@
               "symbol": "DOLA",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "83n",
-              "balance": 8.3e-17,
+              "balanceRaw": "4800910405658604898n",
+              "balance": 4.8009104056586045,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6A7661795C374c0bFC635934efAddFf3A7Ee23b6/logo.png"
             },
             {
@@ -102,8 +102,8 @@
               "symbol": "DOLA/USDC BPT",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "224333107455n",
-              "balance": 2.24333107455e-7,
+              "balanceRaw": "12462950414506675468773749904n",
+              "balance": 12462950414.506676,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x8bc65Eed474D1A00555825c91FeAb6A8255C2107/logo.png"
             },
             {
@@ -112,8 +112,8 @@
               "symbol": "USDC",
               "decimals": 6,
               "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
+              "balanceRaw": "1899843n",
+              "balance": 1.899843,
               "price": 1.0004057489052425,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
             }

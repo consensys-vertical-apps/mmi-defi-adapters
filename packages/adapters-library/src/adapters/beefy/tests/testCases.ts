@@ -5,20 +5,15 @@ import { WriteActions } from '../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
-    chainId: Chain.Base,
-    method: 'positions',
-
+    chainId: Chain.Arbitrum,
+    method: 'deposits',
     input: {
-      userAddress: '0x50fa50fa2032d85eb2dda303929bf56886aa9afb',
-
-      filterProtocolTokens: [
-        '0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83',
-        '0x4Fc0E7cDfe0CF92762eaf3CEE9133239A2197391',
-        '0x92868C059CfCd035ea204e3163Bd84b308dD358e',
-      ],
+      fromBlock: 198188138,
+      toBlock: 200597430,
+      userAddress: '0xbc0a54c02a1e80c8e25e8173a8a80baf116205b5',
+      protocolTokenAddress: '0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058',
+      productId: 'moo-token',
     },
-
-    blockNumber: 15374682,
   },
   {
     chainId: Chain.Arbitrum,
@@ -35,12 +30,64 @@ export const testCases: TestCase[] = [
     blockNumber: 219137472,
   },
   {
-    chainId: Chain.Avalanche,
-    method: 'positions',
+    chainId: Chain.Arbitrum,
+    method: 'withdrawals',
     input: {
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
+      fromBlock: 220443009,
+      toBlock: 220443209,
+      userAddress: '0xe395f0243ae29c41c865971d9e5603c16c0065b4',
+      protocolTokenAddress: '0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763',
+      productId: 'moo-token',
     },
-    blockNumber: 19187298,
+  },
+  {
+    chainId: Chain.Base,
+    method: 'deposits',
+    input: {
+      fromBlock: 15190963,
+      toBlock: 15192963,
+      userAddress: '0x50fa50fa2032d85eb2dda303929bf56886aa9afb',
+      protocolTokenAddress: '0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83',
+      productId: 'moo-token',
+    },
+  },
+  {
+    chainId: Chain.Base,
+    method: 'positions',
+
+    input: {
+      userAddress: '0x50fa50fa2032d85eb2dda303929bf56886aa9afb',
+
+      filterProtocolTokens: [
+        '0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83',
+        '0x4Fc0E7cDfe0CF92762eaf3CEE9133239A2197391',
+        '0x92868C059CfCd035ea204e3163Bd84b308dD358e',
+      ],
+    },
+
+    blockNumber: 15374682,
+  },
+  {
+    chainId: Chain.Base,
+    method: 'withdrawals',
+    input: {
+      fromBlock: 15683014,
+      toBlock: 15683214,
+      userAddress: '0xCD02B4cc9C1BBE166139cE4288941ab7ca2e2079',
+      protocolTokenAddress: '0x3b5F990364fa9BF1Db34d9d24B0Bdca6eE4bD4B1',
+      productId: 'moo-token',
+    },
+  },
+  {
+    chainId: Chain.Bsc,
+    method: 'deposits',
+    input: {
+      fromBlock: 38648545,
+      toBlock: 38648745,
+      userAddress: '0x04526c8Eb172CEe7814aEF2AE02046b71fdf9125',
+      protocolTokenAddress: '0xcCcDB0F6eCcd5f231d4737A00C554322167d814B',
+      productId: 'moo-token',
+    },
   },
   {
     chainId: Chain.Bsc,
@@ -54,6 +101,28 @@ export const testCases: TestCase[] = [
       ],
     },
     blockNumber: 39386513,
+  },
+  {
+    chainId: Chain.Bsc,
+    method: 'withdrawals',
+    input: {
+      fromBlock: 39296858,
+      toBlock: 39297114,
+      userAddress: '0x04526c8Eb172CEe7814aEF2AE02046b71fdf9125',
+      protocolTokenAddress: '0xcCcDB0F6eCcd5f231d4737A00C554322167d814B',
+      productId: 'moo-token',
+    },
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'deposits',
+    input: {
+      fromBlock: 20062163,
+      toBlock: 20068824,
+      userAddress: '0xE582B5233e2b64AaC98076B13E3DfCf072D91cC8',
+      protocolTokenAddress: '0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5',
+      productId: 'moo-token',
+    },
   },
   {
     chainId: Chain.Ethereum,
@@ -79,278 +148,144 @@ export const testCases: TestCase[] = [
     blockNumber: 20035548,
   },
   {
+    chainId: Chain.Ethereum,
+    method: 'withdrawals',
+    input: {
+      fromBlock: 20073364,
+      toBlock: 20073564,
+      userAddress: '0xf2c929c22d491c2a2c4ec92ec6c2c11e6b861428',
+      protocolTokenAddress: '0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5',
+      productId: 'moo-token',
+    },
+  },
+  {
+    chainId: Chain.Fantom,
+    method: 'deposits',
+    input: {
+      fromBlock: 79552496,
+      toBlock: 79552696,
+      userAddress: '0x5435F60E625560E899f6D5829ceDa7C40224de86',
+      protocolTokenAddress: '0xf385b50F66A0443B629EA60EB7b26713f00B225B',
+      productId: 'moo-token',
+    },
+  },
+  {
     chainId: Chain.Fantom,
     method: 'positions',
     input: {
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
+      userAddress: '0x06B4151A410350030FDDBb0a78777e6f4e817a9E',
+      filterProtocolTokens: ['0xfe55295462d7395C6C6586aC433509048ED26F88'],
     },
-    blockNumber: 82399236,
+    blockNumber: 78163555,
+  },
+  {
+    chainId: Chain.Fantom,
+    method: 'withdrawals',
+    input: {
+      fromBlock: 81963281,
+      toBlock: 81963481,
+      userAddress: '0xCc84E8B142e4fD6647350e95bb56Da32e3503867',
+      protocolTokenAddress: '0xfe55295462d7395C6C6586aC433509048ED26F88',
+      productId: 'moo-token',
+    },
+  },
+  {
+    chainId: Chain.Linea,
+    method: 'deposits',
+    input: {
+      fromBlock: 5039110,
+      toBlock: 5039310,
+      userAddress: '0x793Cf10f2542Ad8A98b5951F632BF8526Bc2aC63',
+      protocolTokenAddress: '0x35884E8C569b9f7714A35EDf056A82535A43F5AD',
+      productId: 'moo-token',
+    },
   },
   {
     chainId: Chain.Linea,
     method: 'positions',
     input: {
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-
-      filterProtocolTokens: [
-        '0xc8F789da67E392e0C14dcD6C81404884199d9849',
-        '0x5730Ba155FD95903c2706f1B2F8DBbBFB5e0a94c',
-        '0x4859ac3c9aC0A9c35Dc807f79B78f7b9a6F4e7E4',
-        '0x50fA947b08F879004220C42428524eaaf4eF9473',
-        '0x8c0919AE1fAcD6695Ad236Ea618d1018e5c4d42c',
-        '0x7168464Ac7330EC5177694005e60FBe319DC40c2',
-        '0xe269c87F85C725bb9BF642aAeE1650bf5796B73B',
-      ],
+      userAddress: '0x20782263d459e3b0EA8e3B825E5017c80248728e',
+      filterProtocolTokens: ['0x35884E8C569b9f7714A35EDf056A82535A43F5AD'],
     },
     blockNumber: 5220484,
+  },
+  {
+    chainId: Chain.Linea,
+    method: 'withdrawals',
+    input: {
+      fromBlock: 4418003,
+      toBlock: 4418113,
+      userAddress: '0x793Cf10f2542Ad8A98b5951F632BF8526Bc2aC63',
+      protocolTokenAddress: '0x35884E8C569b9f7714A35EDf056A82535A43F5AD',
+      productId: 'moo-token',
+    },
+  },
+  {
+    chainId: Chain.Optimism,
+    method: 'deposits',
+    input: {
+      fromBlock: 114733477,
+      toBlock: 114733677,
+      userAddress: '0xD00530913E32Bc8FA74a7d6Eca2CD90DA27a44a8',
+      protocolTokenAddress: '0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB',
+      productId: 'moo-token',
+    },
   },
   {
     chainId: Chain.Optimism,
     method: 'positions',
     input: {
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
+      userAddress: '0x579CaC71BB7159e7657D68f1ae429b0Ab01A9261',
 
       filterProtocolTokens: [
-        '0x63289886Ad4Eb9364669741650cde780C9f2E7D2',
-        '0xD9E277eA320C53dE06C535f0D922A76a68CB9A9C',
-        '0x52cC5B5CB98C9a7fb8cCe7d4b4e8F41E26ce04a8',
-        '0xef8D6dDE0a0f0CCdaDB678366a94D93f1C449689',
-        '0x453f61390ce6DfB668bbF4D93E58c94BB0ae81f3',
-        '0x28bAF22c85D146101198D1883281a83cBe063329',
+        '0x416c578DFBEB2f1b07b0165a2e5F4C467F4Ed2F8',
+        '0x1B9eb90884F3566AE923366B65a49B1E30cbcE28',
+        '0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB',
+        '0x04c4a21D7439eD05fd33469565541bF6464F7157',
       ],
     },
     blockNumber: 121055758,
   },
   {
+    chainId: Chain.Optimism,
+    method: 'withdrawals',
+    input: {
+      fromBlock: 119739775,
+      toBlock: 119739975,
+      userAddress: '0xD00530913E32Bc8FA74a7d6Eca2CD90DA27a44a8',
+      protocolTokenAddress: '0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB',
+      productId: 'moo-token',
+    },
+  },
+  {
+    chainId: Chain.Polygon,
+    method: 'deposits',
+    input: {
+      fromBlock: 57771024,
+      toBlock: 57771891,
+      userAddress: '0x4d2fDC2b76eca584Dc067518e179916ea178656d',
+      protocolTokenAddress: '0x86aAd005769D9aedeb59df6e4B4b68974Bdd86fD',
+      productId: 'moo-token',
+    },
+  },
+  {
     chainId: Chain.Polygon,
     method: 'positions',
     input: {
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-
-      filterProtocolTokens: [
-        '0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c',
-        '0xf9Ba6b4f3386BEe60fE1f20e82CbEce530f6cbe1',
-        '0x86aAd005769D9aedeb59df6e4B4b68974Bdd86fD',
-        '0x0Aa691fE4188F6D6467269a401af393869C6e982',
-        '0x44227C548272E2Dce4537746bcA4c8F036177B9e',
-        '0x8CaA1a3809b3C67C61Eaf5524e1cB784ED6bA8B3',
-        '0xc5d366eDF862F18d62831fb8333D335d625a4C00',
-        '0xE7d054F4d4089F5F2A192B14A13714f2e96b491e',
-        '0xd6E01db636054DEF591C744285318560Bf33CBab',
-        '0xF42D47cAaD6fb299aCc998921EffeaDE5aBEe971',
-        '0xf552a67A82908E6C7F4382b812218d665e058C0B',
-        '0xec74671f95F0942358016da627b912143100DAF2',
-        '0xAb4E02911A7d09BC8300F39332F087d51c183038',
-        '0x0fC4f2DB534Bf7525710DBf64B7081e1a3A6428f',
-        '0x5268F5F2a9799f747A55f193d2E266c77653E518',
-        '0xD97FA4474084350D2c96285E1Fca07A9D515c800',
-      ],
+      userAddress: '0x19f1c9e42cdBf308EbD266adEa7E0fAEdc299e6d',
+      filterProtocolTokens: ['0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c'],
     },
-    blockNumber: 57849653,
-  },
-  {
-    chainId: Chain.Base,
-    method: 'deposits',
-    input: {
-      fromBlock: 15190963,
-      toBlock: 15192963,
-      userAddress: '0x50fa50fa2032d85eb2dda303929bf56886aa9afb',
-      protocolTokenAddress: '0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83',
-      productId: 'moo-token',
-    },
-  },
-
-  {
-    chainId: Chain.Arbitrum,
-    method: 'deposits',
-    input: {
-      fromBlock: 219137472,
-      toBlock: 219157472,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Avalanche,
-    method: 'deposits',
-    input: {
-      fromBlock: 19187298,
-      toBlock: 19189298,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Bsc,
-    method: 'deposits',
-    input: {
-      fromBlock: 39386513,
-      toBlock: 39388513,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x2A1b2B05A3c54C86F3f3AB837cA423ad60CF35d1',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'deposits',
-    input: {
-      fromBlock: 20035548,
-      toBlock: 20037548,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x5dA90BA82bED0AB701E6762D2bF44E08634d9776',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Fantom,
-    method: 'deposits',
-    input: {
-      fromBlock: 82399236,
-      toBlock: 82401236,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x5730Ba155FD95903c2706f1B2F8DBbBFB5e0a94c',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Linea,
-    method: 'deposits',
-    input: {
-      fromBlock: 5220484,
-      toBlock: 5222484,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x4859ac3c9aC0A9c35Dc807f79B78f7b9a6F4e7E4',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Optimism,
-    method: 'deposits',
-    input: {
-      fromBlock: 121055758,
-      toBlock: 121057758,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x63289886Ad4Eb9364669741650cde780C9f2E7D2',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Polygon,
-    method: 'deposits',
-    input: {
-      fromBlock: 57849653,
-      toBlock: 57851653,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Base,
-    method: 'withdrawals',
-    input: {
-      fromBlock: 15190963,
-      toBlock: 15192963,
-      userAddress: '0x50fa50fa2032d85eb2dda303929bf56886aa9afb',
-      protocolTokenAddress: '0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Arbitrum,
-    method: 'withdrawals',
-    input: {
-      fromBlock: 219137472,
-      toBlock: 219157472,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Avalanche,
-    method: 'withdrawals',
-    input: {
-      fromBlock: 19187298,
-      toBlock: 19189298,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Bsc,
-    method: 'withdrawals',
-    input: {
-      fromBlock: 39386513,
-      toBlock: 39388513,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x2A1b2B05A3c54C86F3f3AB837cA423ad60CF35d1',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'withdrawals',
-    input: {
-      fromBlock: 20035548,
-      toBlock: 20037548,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x5dA90BA82bED0AB701E6762D2bF44E08634d9776',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Fantom,
-    method: 'withdrawals',
-    input: {
-      fromBlock: 82399236,
-      toBlock: 82401236,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x5730Ba155FD95903c2706f1B2F8DBbBFB5e0a94c',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Linea,
-    method: 'withdrawals',
-    input: {
-      fromBlock: 5220484,
-      toBlock: 5222484,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x4859ac3c9aC0A9c35Dc807f79B78f7b9a6F4e7E4',
-      productId: 'moo-token',
-    },
-  },
-  {
-    chainId: Chain.Optimism,
-    method: 'withdrawals',
-    input: {
-      fromBlock: 121055758,
-      toBlock: 121057758,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-      protocolTokenAddress: '0x63289886Ad4Eb9364669741650cde780C9f2E7D2',
-      productId: 'moo-token',
-    },
+    blockNumber: 58086367,
   },
   {
     chainId: Chain.Polygon,
     method: 'withdrawals',
     input: {
-      fromBlock: 57849653,
-      toBlock: 57851653,
-      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
+      fromBlock: 58080065,
+      toBlock: 58080265,
+      userAddress: '0xe063DC804128BCfa468221BF7CEB69Bf2728e937',
       protocolTokenAddress: '0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c',
       productId: 'moo-token',
     },
-  },
-  {
-    chainId: Chain.Ethereum,
-    method: 'prices',
-    filterProtocolToken: '0xAB28C317B34084f29d7623208b5F09C0Dd566a18',
-    blockNumber: 15374682,
   },
 ]

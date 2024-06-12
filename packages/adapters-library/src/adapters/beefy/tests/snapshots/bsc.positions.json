@@ -29,8 +29,8 @@
               "symbol": "FIL",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "10n",
-              "balance": 1e-17,
+              "balanceRaw": "597587153756073396n",
+              "balance": 0.5975871537560734,
               "price": 5.918313514114798,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153/logo.png"
             },
@@ -40,8 +40,8 @@
               "symbol": "WBNB",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
+              "balanceRaw": "547837713393585n",
+              "balance": 0.000547837713393585,
               "price": 703.9352484924416,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
             }
@@ -62,8 +62,8 @@
               "symbol": "WBNB",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
+              "balanceRaw": "17618328840546970n",
+              "balance": 0.01761832884054697,
               "price": 703.9352484924416,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
             },
@@ -73,8 +73,8 @@
               "symbol": "THE",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "337n",
-              "balance": 3.37e-16,
+              "balanceRaw": "20609389059831043911n",
+              "balance": 20.609389059831045,
               "price": 0.5146943595633771,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11/logo.png"
             }

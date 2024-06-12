@@ -16,84 +16,22 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xc8F789da67E392e0C14dcD6C81404884199d9849",
-          "name": "Moo Lynex USDC-MAI",
-          "symbol": "mooLynexUSDC-MAI",
+          "address": "0x35884E8C569b9f7714A35EDf056A82535A43F5AD",
+          "name": "Moo Lynex Gamma ezETH-WETH",
+          "symbol": "mooLynexGammaezETH-WETH",
           "decimals": 18,
-          "balanceRaw": "7045393103944n",
+          "balanceRaw": "5984274701001026470n",
           "type": "protocol",
           "tokens": [
             {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-              "name": "USDC",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
-            },
-            {
-              "address": "0xf3B001D64C656e30a62fbaacA003B1336b4ce12A",
-              "name": "Mai Stablecoin",
-              "symbol": "MAI",
+              "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+              "name": "Renzo Restaked ETH",
+              "symbol": "ezETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "128n",
-              "balance": 1.28e-16,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xf3B001D64C656e30a62fbaacA003B1336b4ce12A/logo.png"
-            }
-          ],
-          "balance": 0.000007045393103944
-        },
-        {
-          "address": "0x5730Ba155FD95903c2706f1B2F8DBbBFB5e0a94c",
-          "name": "Moo Lynex USDC-USDT",
-          "symbol": "mooLynexUSDC-USDT",
-          "decimals": 18,
-          "balanceRaw": "13491116n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-              "name": "USDC",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
-            },
-            {
-              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
-            }
-          ],
-          "balance": 1.3491116e-11
-        },
-        {
-          "address": "0x4859ac3c9aC0A9c35Dc807f79B78f7b9a6F4e7E4",
-          "name": "Moo Lynex wstETH-ETH",
-          "symbol": "mooLynexwstETH-ETH",
-          "decimals": 18,
-          "balanceRaw": "2250781058418272n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
-              "name": "Wrapped liquid staked Ether 2.0",
-              "symbol": "wstETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F/logo.png"
+              "balanceRaw": "4092814754659001146n",
+              "balance": 4.092814754659001,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2416092f143378750bb29b79eD961ab195CcEea5/logo.png"
             },
             {
               "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
@@ -101,136 +39,12 @@
               "symbol": "WETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
+              "balanceRaw": "2025949900805103987n",
+              "balance": 2.025949900805104,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
             }
           ],
-          "balance": 0.002250781058418272
-        },
-        {
-          "address": "0x50fA947b08F879004220C42428524eaaf4eF9473",
-          "name": "Moo Lynex Gamma LYNX-USDC",
-          "symbol": "mooLynexGammaLYNX-USDC",
-          "decimals": 18,
-          "balanceRaw": "58418352087869007830n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-              "name": "USDC",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
-            },
-            {
-              "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
-              "name": "Lynex",
-              "symbol": "LYNX",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "408n",
-              "balance": 4.08e-16,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af/logo.png"
-            }
-          ],
-          "balance": 58.41835208786901
-        },
-        {
-          "address": "0x8c0919AE1fAcD6695Ad236Ea618d1018e5c4d42c",
-          "name": "Moo Lynex Gamma ETH-WBTC",
-          "symbol": "mooLynexGammaETH-WBTC",
-          "decimals": 18,
-          "balanceRaw": "5321390189928581n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
-              "name": "Wrapped BTC",
-              "symbol": "WBTC",
-              "decimals": 8,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4/logo.png"
-            },
-            {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
-            }
-          ],
-          "balance": 0.005321390189928581
-        },
-        {
-          "address": "0x7168464Ac7330EC5177694005e60FBe319DC40c2",
-          "name": "Moo Lynex Gamma ETH-USDT",
-          "symbol": "mooLynexGammaETH-USDT",
-          "decimals": 18,
-          "balanceRaw": "2240343558508790n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xA219439258ca9da29E9Cc4cE5596924745e12B93/logo.png"
-            },
-            {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
-            }
-          ],
-          "balance": 0.00224034355850879
-        },
-        {
-          "address": "0xe269c87F85C725bb9BF642aAeE1650bf5796B73B",
-          "name": "Moo Lynex Gamma ETH-USDC",
-          "symbol": "mooLynexGammaETH-USDC",
-          "decimals": 18,
-          "balanceRaw": "4580175684538508n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
-              "name": "USDC",
-              "symbol": "USDC",
-              "decimals": 6,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x176211869cA2b568f2A7D4EE941E073a821EE1ff/logo.png"
-            },
-            {
-              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "0n",
-              "balance": 0,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
-            }
-          ],
-          "balance": 0.004580175684538508
+          "balance": 5.984274701001026
         }
       ]
     }

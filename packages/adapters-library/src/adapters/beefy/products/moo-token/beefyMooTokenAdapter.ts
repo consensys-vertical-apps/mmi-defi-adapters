@@ -283,11 +283,16 @@ export class BeefyMooTokenAdapter
           throw new Error('Token not found')
         }
 
+        const underlyingRateRaw =
+          vaultBalanceBreakdown.vaultTotalSupply === 0n
+            ? 0n
+            : (balance.vaultBalance *
+                10n ** BigInt(metadata.protocolToken.decimals)) /
+              vaultBalanceBreakdown.vaultTotalSupply
+
         return {
           ...token,
-          underlyingRateRaw:
-            (balance.vaultBalance * BigInt(token.decimals)) /
-            vaultBalanceBreakdown.vaultTotalSupply,
+          underlyingRateRaw,
           type: TokenType['Underlying'],
         }
       }),
