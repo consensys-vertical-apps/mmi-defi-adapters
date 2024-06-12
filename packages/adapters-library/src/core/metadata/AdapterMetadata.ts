@@ -37,6 +37,15 @@ import AngleProtocolSavingsEthereumProtocolTokens from '../../adapters/angle-pro
 import AngleProtocolSavingsLineaProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/linea.protocol-tokens.json'
 import AngleProtocolSavingsOptimismProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/optimism.protocol-tokens.json'
 import AngleProtocolSavingsPolygonProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/polygon.protocol-tokens.json'
+import BeefyMooTokenArbitrumProtocolToken from '../../adapters/beefy/products/moo-token/metadata/arbitrum.protocol-token.json'
+import BeefyMooTokenAvalancheProtocolToken from '../../adapters/beefy/products/moo-token/metadata/avalanche.protocol-token.json'
+import BeefyMooTokenBaseProtocolToken from '../../adapters/beefy/products/moo-token/metadata/base.protocol-token.json'
+import BeefyMooTokenBscProtocolToken from '../../adapters/beefy/products/moo-token/metadata/bsc.protocol-token.json'
+import BeefyMooTokenEthereumProtocolToken from '../../adapters/beefy/products/moo-token/metadata/ethereum.protocol-token.json'
+import BeefyMooTokenFantomProtocolToken from '../../adapters/beefy/products/moo-token/metadata/fantom.protocol-token.json'
+import BeefyMooTokenLineaProtocolToken from '../../adapters/beefy/products/moo-token/metadata/linea.protocol-token.json'
+import BeefyMooTokenOptimismProtocolToken from '../../adapters/beefy/products/moo-token/metadata/optimism.protocol-token.json'
+import BeefyMooTokenPolygonProtocolToken from '../../adapters/beefy/products/moo-token/metadata/polygon.protocol-token.json'
 import ChimpExchangePoolLineaProtocolToken from '../../adapters/chimp-exchange/products/pool/metadata/linea.protocol-token.json'
 import CompoundV2BorrowMarketEthereumProtocolToken from '../../adapters/compound-v2/products/borrow-market/metadata/ethereum.protocol-token.json'
 import CompoundV2SupplyMarketEthereumProtocolToken from '../../adapters/compound-v2/products/supply-market/metadata/ethereum.protocol-token.json'
@@ -65,6 +74,7 @@ import FluxBorrowMarketEthereumProtocolToken from '../../adapters/flux/products/
 import FluxSupplyMarketEthereumProtocolToken from '../../adapters/flux/products/supply-market/metadata/ethereum.protocol-token.json'
 import GmxGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GmxGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
+import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
 import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
 import MendiFinanceSupplyLineaMendi from '../../adapters/mendi-finance/products/supply/metadata/linea.mendi.json'
 import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
@@ -106,24 +116,6 @@ import UniswapV2PoolPolygonProtocolToken from '../../adapters/uniswap-v2/product
 import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea.lp-token.json'
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
-
-import BeefyMooTokenEthereumProtocolToken from '../../adapters/beefy/products/moo-token/metadata/ethereum.protocol-token.json'
-
-import BeefyMooTokenOptimismProtocolToken from '../../adapters/beefy/products/moo-token/metadata/optimism.protocol-token.json'
-
-import BeefyMooTokenBscProtocolToken from '../../adapters/beefy/products/moo-token/metadata/bsc.protocol-token.json'
-
-import BeefyMooTokenPolygonProtocolToken from '../../adapters/beefy/products/moo-token/metadata/polygon.protocol-token.json'
-
-import BeefyMooTokenFantomProtocolToken from '../../adapters/beefy/products/moo-token/metadata/fantom.protocol-token.json'
-
-import BeefyMooTokenBaseProtocolToken from '../../adapters/beefy/products/moo-token/metadata/base.protocol-token.json'
-
-import BeefyMooTokenArbitrumProtocolToken from '../../adapters/beefy/products/moo-token/metadata/arbitrum.protocol-token.json'
-
-import BeefyMooTokenAvalancheProtocolToken from '../../adapters/beefy/products/moo-token/metadata/avalanche.protocol-token.json'
-
-import BeefyMooTokenLineaProtocolToken from '../../adapters/beefy/products/moo-token/metadata/linea.protocol-token.json'
 
 export const MetadataFiles = new Map<string, Json>([
   [
@@ -800,6 +792,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'glp',
     }),
     GmxGlpAvalancheGlp,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Lynex,
+      productId: 'classic',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    LynexClassicLineaProtocolToken,
   ],
   [
     metadataKey({

@@ -11,6 +11,7 @@ import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
 import { testCases as angleProtocolTestCases } from './angle-protocol/tests/testCases'
+import { testCases as beefyTestCases } from './beefy/tests/testCases'
 import { testCases as carbonDeFiTestCases } from './carbon-defi/tests/testCases'
 import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
 import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
@@ -21,6 +22,7 @@ import { testCases as fluxTestCases } from './flux/tests/testCases'
 import { testCases as gmxTestCases } from './gmx/tests/testCases'
 import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
+import { testCases as lynexTestCases } from './lynex/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
@@ -46,8 +48,6 @@ import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
-import { testCases as beefyTestCases } from './beefy/tests/testCases'
-
 const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
@@ -71,6 +71,7 @@ const protocolTestCases = {
   [Protocol.Gmx]: gmxTestCases,
   [Protocol.IZiSwap]: iZiSwapTestCases,
   [Protocol.Lido]: lidoTestCases,
+  [Protocol.Lynex]: lynexTestCases,
   [Protocol.Maker]: makerTestCases,
   [Protocol.MendiFinance]: mendiFinanceTestCases,
   [Protocol.MorphoAaveV2]: morphoAaveV2TestCases,
