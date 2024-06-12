@@ -41,8 +41,14 @@ import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { LynexAlgebraAdapter } from './lynex/products/algebra/lynexAlgebralAdapter'
 import { LynexClassicAdapter } from './lynex/products/classic/lynexClassicAdapter'
 import { MakerSDaiAdapter } from './maker/products/s-dai/makerSDaiAdapter'
-import { MendiFinanceBorrowAdapter } from './mendi-finance/products/borrow/mendiFinanceBorrowAdapter'
-import { MendiFinanceSupplyAdapter } from './mendi-finance/products/supply/mendiFinanceSupplyAdapter'
+import { 
+  MendiFinanceBorrowMarketAdapter,
+  WriteActionInputs as MendiFinanceBorrowMarketWriteActionInputs,
+} from './mendi-finance/products/borrow-market/mendiFinanceBorrowMarketAdapter'
+import {
+  MendiFinanceSupplyMarketAdapter,
+  WriteActionInputs as MendiFinanceSupplyMarketWriteActionInputs,
+ } from './mendi-finance/products/supply-market/mendiFinanceSupplyMarketAdapter'
 import { MorphoAaveV2OptimizerBorrowAdapter } from './morpho-aave-v2/products/optimizer-borrow/morphoAaveV2OptimizerBorrowAdapter'
 import { MorphoAaveV2OptimizerSupplyAdapter } from './morpho-aave-v2/products/optimizer-supply/morphoAaveV2OptimizerSupplyAdapter'
 import { MorphoAaveV3OptimizerBorrowAdapter } from './morpho-aave-v3/products/optimizer-borrow/morphoAaveV3OptimizerBorrowAdapter'
@@ -215,7 +221,7 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.MendiFinance]: {
-    [Chain.Linea]: [MendiFinanceSupplyAdapter, MendiFinanceBorrowAdapter],
+    [Chain.Linea]: [MendiFinanceSupplyMarketAdapter, MendiFinanceBorrowMarketAdapter],
   },
 
   [Protocol.MorphoAaveV2]: {
@@ -332,6 +338,8 @@ export const WriteActionInputs = {
   AaveV3ATokenWriteActionInputs,
   CompoundV2SupplyMarketWriteActionInputs,
   CompoundV2BorrowMarketWriteActionInputs,
+  MendiFinanceSupplyMarketWriteActionInputs,
+  MendiFinanceBorrowMarketWriteActionInputs,
 }
 
 export const GetTransactionParamsSchema = z.union([
@@ -396,6 +404,44 @@ export const GetTransactionParamsSchema = z.union([
     }),
     z.object({
       protocolId: z.literal(Protocol.CompoundV2),
+      productId: z.literal('borrow-market'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('repay'),
+      inputs:
+        WriteActionInputs['CompoundV2BorrowMarketWriteActionInputs']['repay'],
+    }),
+  ]),
+  z.discriminatedUnion('action', [
+    z.object({
+      protocolId: z.literal(Protocol.MendiFinance),
+      productId: z.literal('supply-market'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('deposit'),
+      inputs:
+        WriteActionInputs['MendiFinanceSupplyMarketWriteActionInputs']['deposit'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.MendiFinance),
+      productId: z.literal('supply-market'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('withdraw'),
+      inputs:
+        WriteActionInputs['MendiFinanceSupplyMarketWriteActionInputs'][
+          'withdraw'
+        ],
+    }),
+  ]),
+  z.discriminatedUnion('action', [
+    z.object({
+      protocolId: z.literal(Protocol.MendiFinance),
+      productId: z.literal('borrow-market'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('borrow'),
+      inputs:
+        WriteActionInputs['CompoundV2BorrowMarketWriteActionInputs']['borrow'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.MendiFinance),
       productId: z.literal('borrow-market'),
       chainId: z.nativeEnum(Chain),
       action: z.literal('repay'),

@@ -65,8 +65,8 @@ import FluxBorrowMarketEthereumProtocolToken from '../../adapters/flux/products/
 import FluxSupplyMarketEthereumProtocolToken from '../../adapters/flux/products/supply-market/metadata/ethereum.protocol-token.json'
 import GmxGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GmxGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
-import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
-import MendiFinanceSupplyLineaMendi from '../../adapters/mendi-finance/products/supply/metadata/linea.mendi.json'
+import MendiFinanceBorrowMarketLineaMendi from '../../adapters/mendi-finance/products/borrow-market/metadata/linea.mendi.json'
+import MendiFinanceSupplyMarketLineaMendi from '../../adapters/mendi-finance/products/supply-market/metadata/linea.mendi.json'
 import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoAaveV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-aave-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
 import MorphoAaveV3OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v3/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
@@ -716,20 +716,20 @@ export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
       protocolId: Protocol.MendiFinance,
-      productId: 'borrow',
+      productId: 'borrow-market',
       chainId: Chain.Linea,
       fileKey: 'mendi',
     }),
-    MendiFinanceBorrowLineaMendi,
+    MendiFinanceBorrowMarketLineaMendi,
   ],
   [
     metadataKey({
       protocolId: Protocol.MendiFinance,
-      productId: 'supply',
+      productId: 'supply-market',
       chainId: Chain.Linea,
       fileKey: 'mendi',
     }),
-    MendiFinanceSupplyLineaMendi,
+    MendiFinanceSupplyMarketLineaMendi,
   ],
   [
     metadataKey({

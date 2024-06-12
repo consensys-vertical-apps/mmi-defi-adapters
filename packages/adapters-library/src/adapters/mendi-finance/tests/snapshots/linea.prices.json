@@ -4,12 +4,12 @@
     {
       "protocolId": "mendi-finance",
       "name": "MendiFinance",
-      "description": "MendiFinance borrow adapter",
+      "description": "MendiFinance supply adapter",
       "siteUrl": "https://mendi.finance/:",
       "iconUrl": "https://mendi.finance/mendi-token.svg",
       "positionType": "supply",
       "chainId": 59144,
-      "productId": "supply",
+      "productId": "supply-market",
       "assetDetails": {
         "type": "StandardErc20"
       },
@@ -45,13 +45,13 @@
       "iconUrl": "https://mendi.finance/mendi-token.svg",
       "positionType": "borrow",
       "chainId": 59144,
-      "productId": "borrow",
+      "productId": "borrow-market",
       "assetDetails": {
         "type": "NonStandardErc20"
       },
       "success": false,
       "error": {
-        "message": "Not Implemented (at MendiFinanceBorrowAdapter.unwrapProtocolToken)",
+        "message": "Not Implemented (at MendiFinanceBorrowMarketAdapter.unwrapProtocolToken)",
         "details": {
           "name": "NotImplementedError"
         }
