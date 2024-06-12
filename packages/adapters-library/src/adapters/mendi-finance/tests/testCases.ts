@@ -1,13 +1,14 @@
 import { Chain } from '../../../core/constants/chains'
 import { TimePeriod } from '../../../core/constants/timePeriod'
 import type { TestCase } from '../../../types/testCase'
+import { WriteActions } from '../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
     chainId: Chain.Linea,
     method: 'positions',
     input: {
-      userAddress: '0x61e17c36c0f177c6a46f9ae531e621d18c1acd93',
+      userAddress: '0x61e17C36c0f177c6A46F9Ae531E621D18c1aCD93',
 
       filterProtocolTokens: [
         '0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D',
@@ -22,7 +23,7 @@ export const testCases: TestCase[] = [
     chainId: Chain.Linea,
     method: 'profits',
     input: {
-      userAddress: '0x61e17c36c0f177c6a46f9ae531e621d18c1acd93',
+      userAddress: '0x61e17C36c0f177c6A46F9Ae531E621D18c1aCD93',
       timePeriod: TimePeriod.oneDay,
 
       filterProtocolTokens: [
@@ -45,5 +46,57 @@ export const testCases: TestCase[] = [
     method: 'tvl',
     filterProtocolTokens: ['0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D'],
     blockNumber: 3717652,
+  },
+  {
+    method: 'tx-params',
+    key: 'supply',
+    chainId: Chain.Linea,
+    input: {
+      productId: 'supply-market',
+      action: WriteActions.Deposit,
+      inputs: {
+        asset: '0x176211869cA2b568f2A7D4EE941E073a821EE1ff',
+        amount: '10000000000000000000',
+      },
+    },
+  },
+  {
+    method: 'tx-params',
+    key: 'withdraw',
+    chainId: Chain.Linea,
+    input: {
+      productId: 'supply-market',
+      action: WriteActions.Withdraw,
+      inputs: {
+        asset: '0x176211869cA2b568f2A7D4EE941E073a821EE1ff',
+        amount: '10000000000000000000',
+      },
+    },
+  },
+  {
+    method: 'tx-params',
+    key: 'borrow',
+    chainId: Chain.Linea,
+    input: {
+      productId: 'borrow-market',
+      action: 'borrow',
+      inputs: {
+        asset: '0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D',
+        amount: '10000000000000000000',
+      },
+    },
+  },
+  {
+    method: 'tx-params',
+    key: 'repay',
+    chainId: Chain.Linea,
+    input: {
+      productId: 'borrow-market',
+      action: 'repay',
+      inputs: {
+        asset: '0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D',
+        amount: '10000000000000000000',
+      },
+    },
   },
 ]
