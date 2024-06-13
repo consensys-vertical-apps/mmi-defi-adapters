@@ -1,0 +1,48 @@
+{
+  "0x24fB77c8C776C75F869BC65e6856AF56f57d919F": {
+    "market": "0x24fB77c8C776C75F869BC65e6856AF56f57d919F",
+    "chainId": 10,
+    "name": "Pendle Market",
+    "pt": {
+      "address": "0xF4225F061E5E01aA59DE5E615729A9180301EB07",
+      "name": "PT wstETH 26SEP2024",
+      "symbol": "PT-wstETH-26SEP2024",
+      "decimals": 18
+    },
+    "yt": {
+      "address": "0x1DFe41cc7F7860BA7f1076ca6d0fedD707c87A00",
+      "name": "YT wstETH 26SEP2024",
+      "symbol": "YT-wstETH-26SEP2024",
+      "decimals": 18
+    },
+    "lp": {
+      "address": "0x24fB77c8C776C75F869BC65e6856AF56f57d919F",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    }
+  },
+  "0x0C485Feb9E6fee816652Ea8f3beD2A8f59296E40": {
+    "market": "0x0C485Feb9E6fee816652Ea8f3beD2A8f59296E40",
+    "chainId": 10,
+    "name": "Pendle Market",
+    "pt": {
+      "address": "0xAA92Ea52612fA5ee5aba5510682485c19750CB82",
+      "name": "PT rETH 27JUN2024",
+      "symbol": "PT-rETH-27JUN2024",
+      "decimals": 18
+    },
+    "yt": {
+      "address": "0xE8F0cf61598E0d7D20f99b978BdeFF4D4222FeB8",
+      "name": "YT rETH 27JUN2024",
+      "symbol": "YT-rETH-27JUN2024",
+      "decimals": 18
+    },
+    "lp": {
+      "address": "0x0C485Feb9E6fee816652Ea8f3beD2A8f59296E40",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    }
+  }
+}

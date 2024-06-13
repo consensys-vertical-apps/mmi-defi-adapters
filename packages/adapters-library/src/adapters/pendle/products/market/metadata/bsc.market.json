@@ -1,0 +1,117 @@
+{
+  "0x080f52A881ba96EEE2268682733C857c560e5dd4": {
+    "market": "0x080f52A881ba96EEE2268682733C857c560e5dd4",
+    "chainId": 56,
+    "name": "Pendle Market",
+    "pt": {
+      "address": "0x70c1138B54ba212776d3A9d29b6160C54C31cd5d",
+      "name": "PT wbETH 26DEC2024",
+      "symbol": "PT-wbETH-26DEC2024",
+      "decimals": 18
+    },
+    "yt": {
+      "address": "0x429c77E193Ff7e6c6c3B2e1f00877B91792e87ee",
+      "name": "YT wbETH 26DEC2024",
+      "symbol": "YT-wbETH-26DEC2024",
+      "decimals": 18
+    },
+    "lp": {
+      "address": "0x080f52A881ba96EEE2268682733C857c560e5dd4",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    }
+  },
+  "0x66317Dec4a3d8d1e47b85f704E5DF675a68BB7C9": {
+    "market": "0x66317Dec4a3d8d1e47b85f704E5DF675a68BB7C9",
+    "chainId": 56,
+    "name": "Pendle Market",
+    "pt": {
+      "address": "0x5eC2ae0AFDEc891E7702344dc2A31C636B3627Eb",
+      "name": "PT Thena frxETH-ETH 27JUN2024",
+      "symbol": "PT-Thena frxETH-ETH-27JUN2024",
+      "decimals": 18
+    },
+    "yt": {
+      "address": "0x8D0884EBA8E481CcADf2F91E62170cdF79AE9C64",
+      "name": "YT Thena frxETH-ETH 27JUN2024",
+      "symbol": "YT-Thena frxETH-ETH-27JUN2024",
+      "decimals": 18
+    },
+    "lp": {
+      "address": "0x66317Dec4a3d8d1e47b85f704E5DF675a68BB7C9",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    }
+  },
+  "0xEDa1D0e1681D59dea451702963d6287b844Cb94C": {
+    "market": "0xEDa1D0e1681D59dea451702963d6287b844Cb94C",
+    "chainId": 56,
+    "name": "Pendle Market",
+    "pt": {
+      "address": "0x04eb6B56ff53f457c8E857ca8D4fbC8d9a531c0C",
+      "name": "PT ankrBNB 26JUN2025",
+      "symbol": "PT-ankrBNB-26JUN2025",
+      "decimals": 18
+    },
+    "yt": {
+      "address": "0x269f3E230C90C0a29140106D4cFB5860aF6F6827",
+      "name": "YT ankrBNB 26JUN2025",
+      "symbol": "YT-ankrBNB-26JUN2025",
+      "decimals": 18
+    },
+    "lp": {
+      "address": "0xEDa1D0e1681D59dea451702963d6287b844Cb94C",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    }
+  },
+  "0xB2eEA27aF50030A445418553c4892065cf3a720a": {
+    "market": "0xB2eEA27aF50030A445418553c4892065cf3a720a",
+    "chainId": 56,
+    "name": "Pendle Market",
+    "pt": {
+      "address": "0x5eC5033a44ffb6f21DA3A4f4CCe4163485D61747",
+      "name": "PT Renzo ezETH 26SEP2024",
+      "symbol": "PT-ezETH-26SEP2024",
+      "decimals": 18
+    },
+    "yt": {
+      "address": "0x964B6D486a89025e5557a5aF3b4CC100A3F9734c",
+      "name": "YT Renzo ezETH 26SEP2024",
+      "symbol": "YT-ezETH-26SEP2024",
+      "decimals": 18
+    },
+    "lp": {
+      "address": "0xB2eEA27aF50030A445418553c4892065cf3a720a",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    }
+  },
+  "0x27255F9aFF1868A8eFB1182471F4De2121946Fd0": {
+    "market": "0x27255F9aFF1868A8eFB1182471F4De2121946Fd0",
+    "chainId": 56,
+    "name": "Pendle Market",
+    "pt": {
+      "address": "0x0E8Ba474FCB6581059C61c328a21CFa285C7Cee7",
+      "name": "PT weETH 26SEP2024",
+      "symbol": "PT-weETH-26SEP2024",
+      "decimals": 18
+    },
+    "yt": {
+      "address": "0xBf1E6E67cE2Bd8da1ea7342354126b59B46d4000",
+      "name": "YT weETH 26SEP2024",
+      "symbol": "YT-weETH-26SEP2024",
+      "decimals": 18
+    },
+    "lp": {
+      "address": "0x27255F9aFF1868A8eFB1182471F4De2121946Fd0",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    }
+  }
+}
