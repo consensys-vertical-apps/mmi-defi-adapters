@@ -33,17 +33,15 @@ import { fetchAllAssets, fetchAllMarkets } from '../../backend/backendSdk'
 import { PendleChain } from '../../common/common'
 import { Market__factory, PendleErc20__factory } from '../../contracts'
 
-type PendleMarketMetadata = Record<
-  string,
-  {
-    market: string
-    chainId: PendleChain
-    name: string
-    pt: Erc20Metadata
-    yt: Erc20Metadata
-    lp: Erc20Metadata
-  }
->
+type PendleMarketMetadataValue = {
+  market: string
+  chainId: PendleChain
+  name: string
+  pt: Erc20Metadata
+  yt: Erc20Metadata
+  lp: Erc20Metadata
+}
+type PendleMarketMetadata = Record<string, PendleMarketMetadataValue>
 
 export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
   productId = 'market'
@@ -136,11 +134,8 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     return markets.map((markets) => markets.lp)
   }
 
-  async getPositions(_input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const [markets, allAssets] = await Promise.all([
-      Object.values(await this.buildMetadata()),
-      fetchAllAssets(this.chainId as PendleChain),
-    ])
+  async createPriceLookUpMap(): Promise<Record<string, bigint>> {
+    const allAssets = await fetchAllAssets(this.chainId as PendleChain)
     const priceLookUpMap: Record<string, bigint> = {}
     allAssets.forEach((asset) => {
       const price = BigInt(
@@ -148,6 +143,37 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
       )
       priceLookUpMap[asset.address] = price
     })
+    return priceLookUpMap
+  }
+
+  async getMetadata(
+    protocolTokenAddresses?: string[],
+  ): Promise<PendleMarketMetadataValue[]> {
+    const allMetadata = await this.buildMetadata()
+
+    if (protocolTokenAddresses && protocolTokenAddresses.length > 0) {
+      const filteredPools: PendleMarketMetadataValue[] = []
+      protocolTokenAddresses.forEach((address) => {
+        //@ts-ignore
+        filteredPools.push(allMetadata[address])
+      })
+
+      return filteredPools
+    }
+
+    return Object.values(allMetadata)
+  }
+
+  async getPositions({
+    userAddress,
+    protocolTokenAddresses,
+    blockNumber,
+  }: GetPositionsInput): Promise<ProtocolPosition[]> {
+    const [markets, priceLookUpMap] = await Promise.all([
+      this.getMetadata(protocolTokenAddresses),
+      this.createPriceLookUpMap(),
+    ])
+
     const positions: ProtocolPosition[] = await Promise.all(
       markets.map(async (value) => {
         const marketContract = Market__factory.connect(
@@ -170,9 +196,9 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
           ptMetadata,
           ytMetadata,
         ] = await Promise.all([
-          marketContract.balanceOf(_input.userAddress),
-          ptContract.balanceOf(_input.userAddress),
-          ytContract.balanceOf(_input.userAddress),
+          marketContract.balanceOf(userAddress),
+          ptContract.balanceOf(userAddress),
+          ytContract.balanceOf(userAddress),
           getTokenMetadata(value.lp.address, value.chainId, this.provider),
           getTokenMetadata(value.pt.address, value.chainId, this.provider),
           getTokenMetadata(value.yt.address, value.chainId, this.provider),
