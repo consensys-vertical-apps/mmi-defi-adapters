@@ -1,6 +1,8 @@
-import { getAddress } from 'ethers'
+import { z } from 'zod'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
+import { GetTransactionParams } from '../../../supportedProtocols'
+import { PoolContract__factory } from '../../contracts'
 import {
   CacheToFile,
   IMetadataBuilder,
@@ -13,6 +15,10 @@ import { Replacements } from '../../../../scripts/replacements'
 import { RewardsAdapter } from '../../../../scripts/rewardAdapter'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+import {
+  WriteActionInputSchemas,
+  WriteActions,
+} from '../../../../types/writeActions'
 
 import {
   AssetType,
@@ -59,7 +65,7 @@ export class SparkV1SpTokenAdapter
 {
   productId = 'sp-token'
   // protocolId: Protocol
-  // chainId: Chain
+
   // helpers: Helpers
 
   // private provider: CustomJsonRpcProvider
@@ -224,7 +230,6 @@ export class SparkV1SpTokenAdapter
         },
       ]
     }
-
   // async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
   //   return this.helpers.getBalanceOfTokens({
   //     ...input,
@@ -305,4 +310,91 @@ export class SparkV1SpTokenAdapter
 
     return poolMetadata
   }
+
+  // getTransactionParams({
+  //   action,
+  //   inputs,
+  // }: Extract<
+  //   GetTransactionParams,
+  //   { protocolId: typeof Protocol.SparkV1; productId: 'sp-token' }
+  // >): Promise<{ to: string; data: string }> {
+  //   const poolContract = PoolContract__factory.connect(
+  //     getAddress(this.chainId),
+  //     this.provider,
+  //   )
+
+  //   switch (action) {
+  //     case WriteActions.Deposit: {
+  //       const { asset, amount, onBehalfOf, referralCode } = inputs
+  //       return poolContract.supply.populateTransaction(
+  //         asset,
+  //         amount,
+  //         onBehalfOf,
+  //         referralCode,
+  //       )
+  //     }
+
+  //     case WriteActions.Withdraw: {
+  //       const { asset, amount, to } = inputs
+  //       return poolContract.withdraw.populateTransaction(asset, amount, to)
+  //     }
+
+  //     case WriteActions.Borrow: {
+  //       const { asset, amount, interestRateMode, referralCode, onBehalfOf } =
+  //         inputs
+  //       return poolContract.borrow.populateTransaction(
+  //         asset,
+  //         amount,
+  //         interestRateMode,
+  //         referralCode,
+  //         onBehalfOf,
+  //       )
+  //     }
+
+  //     case WriteActions.Repay: {
+  //       const { asset, amount, interestRateMode, onBehalfOf } = inputs
+  //       return poolContract.repay.populateTransaction(
+  //         asset,
+  //         amount,
+  //         interestRateMode,
+  //         onBehalfOf,
+  //       )
+  //     }
+  //   }
+  // }
 }
+
+const getAddress = (chainId: Chain) => {
+  if (chainId === Chain.Ethereum) {
+    return '0xC13e21B648A5Ee794902342038FF3aDAB66BE987'
+  }
+
+  throw new Error('Chain not supported')
+}
+
+export const WriteActionInputs = {
+  [WriteActions.Deposit]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    onBehalfOf: z.string(),
+    referralCode: z.number(),
+  }),
+  [WriteActions.Withdraw]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    to: z.string(),
+  }),
+  [WriteActions.Borrow]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    interestRateMode: z.number(),
+    referralCode: z.number(),
+    onBehalfOf: z.string(),
+  }),
+  [WriteActions.Repay]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    interestRateMode: z.number(),
+    onBehalfOf: z.string(),
+  }),
+} satisfies WriteActionInputSchemas

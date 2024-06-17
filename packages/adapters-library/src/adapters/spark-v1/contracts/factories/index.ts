@@ -2,3 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export { ProtocolDataProvider__factory } from "./ProtocolDataProvider__factory";
+export { PoolContract__factory}  from "./PoolContract__factory";
