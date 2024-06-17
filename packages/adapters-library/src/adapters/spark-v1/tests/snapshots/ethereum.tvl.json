@@ -84,6 +84,21 @@
           "totalSupply": 518540.2724996813
         }
       ]
+    },
+    {
+      "protocolId": "spark-v1",
+      "name": "Spark V1 VariableDebtToken",
+      "description": "Spark v1 defi adapter for variable interest-accruing token",
+      "siteUrl": "https://spark.fi",
+      "iconUrl": "https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "variable-debt-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": []
     }
   ]
 }

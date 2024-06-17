@@ -111,6 +111,8 @@ import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classi
 
 import SparkV1SpTokenEthereumSpTokenV1 from '../../adapters/spark-v1/products/sp-token/metadata/ethereum.sp-token-v1.json'
 
+import SparkV1VariableDebtTokenEthereumVariableDebtTokenV1 from '../../adapters/spark-v1/products/variable-debt-token/metadata/ethereum.variable-debt-token-v1.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -903,6 +905,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'sp-token-v1',
     }),
     SparkV1SpTokenEthereumSpTokenV1,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SparkV1,
+      productId: 'variable-debt-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'variable-debt-token-v1',
+    }),
+    SparkV1VariableDebtTokenEthereumVariableDebtTokenV1,
   ],
   [
     metadataKey({

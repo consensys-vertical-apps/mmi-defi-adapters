@@ -1,13 +1,10 @@
 import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
 import { GetTransactionParams } from '../../../supportedProtocols'
-import { PoolContract__factory } from '../../contracts'
+import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
 import {
   CacheToFile,
-  IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { logger } from '../../../../core/utils/logger'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import {
   WriteActionInputSchemas,
   WriteActions,
@@ -17,34 +14,12 @@ import {
   AssetType,
   PositionType,
   ProtocolDetails,
-  TokenBalance,
-  TokenType,
-  Underlying,
-  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import {
-  ProtocolDataProvider,
-  ProtocolDataProvider__factory,
-} from '../../contracts'
-import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+import { SparkV1BasePoolAdapter, SparkMetadata } from '../../common/SparkV1BasePoolAdapter'
 
-const PRICE_PEGGED_TO_ONE = 1
-const sparkEthereumProviderAddress = "0xFc21d6d146E6086B8359705C8b28512a983db0cb"
 
-type SparkMetadata = Record<
-  string,
-  {
-    protocolToken: Erc20Metadata
-    underlyingToken: Erc20Metadata
-  }
->
-
-export class SparkV1SpTokenAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
-{
+export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
   productId = 'sp-token'
 
   getProtocolDetails(): ProtocolDetails {
@@ -65,150 +40,21 @@ export class SparkV1SpTokenAdapter
 
   @CacheToFile({ fileKey: 'sp-token-v1' })
   async buildMetadata(): Promise<SparkMetadata> {
-    const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
-      sparkEthereumProviderAddress,
-      this.provider,
-    )
-
-    const reserveTokens = await protocolDataProviderContract.getAllReservesTokens()
-
-    const metadataObject: SparkMetadata = {}
-
-    const promises = reserveTokens.map(async ({ tokenAddress }) => {
-      const reserveConfigurationData =
-        await protocolDataProviderContract.getReserveConfigurationData(
-          tokenAddress,
-        )
-
-      if (
-        !reserveConfigurationData.isActive ||
-        reserveConfigurationData.isFrozen
-      ) {
-        return
-      }
-
-      const reserveTokenAddresses =
-        await protocolDataProviderContract.getReserveTokensAddresses(
-          tokenAddress,
-        )
-
-      const protocolTokenPromise = getTokenMetadata(
-        this.getReserveTokenAddress(reserveTokenAddresses),
-        this.chainId,
-        this.provider,
-      )
-      const underlyingTokenPromise = getTokenMetadata(
-        tokenAddress,
-      this.chainId,
-      this.provider,
-      )
-
-      const [protocolToken, underlyingToken] = await Promise.all([
-        protocolTokenPromise,
-        underlyingTokenPromise,
-      ])
-
-      metadataObject[protocolToken.address] = {
-        protocolToken,
-        underlyingToken,
-      }
-    })
-
-    await Promise.all(promises)
-
-    return metadataObject  
-  }                 
-
-  async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    return Object.values(await this.buildMetadata()).map(
-      ({ protocolToken }) => protocolToken,
-    )
-  }
+    return super.buildMetadata()
+  }                
 
   protected getReserveTokenAddress(
     reserveTokenAddresses: Awaited<
       ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
     >,
-  ): string {
-    return reserveTokenAddresses.aTokenAddress
+    ): string {
+      return reserveTokenAddresses.aTokenAddress
   }
 
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
-  }
-
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { underlyingToken } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return [underlyingToken]
-  }
-
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenBalance.address,
-    )
-
-    const underlyingTokenBalance = {
-      ...underlyingToken,
-      balanceRaw: protocolTokenBalance.balanceRaw,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
-  }
-
-  protected async unwrapProtocolToken(
-    protocolTokenMetadata: Erc20Metadata,
-    _blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-      const { underlyingToken } = await this.fetchPoolMetadata(
-        protocolTokenMetadata.address,
-      )
-
-      // Aave tokens always pegged one to one to underlying
-      const pricePerShareRaw = BigInt(
-        PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
-      )
-
-      return [
-        {
-          ...underlyingToken,
-          type: TokenType.Underlying,
-          underlyingRateRaw: pricePerShareRaw,
-        },
-      ]
-    }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
+  protected getReserveTokenRate(
+    reserveData: Awaited<ReturnType<ProtocolDataProvider['getReserveData']>>,
+  ): bigint {
+    return reserveData.variableBorrowRate
   }
 
   getTransactionParams({
