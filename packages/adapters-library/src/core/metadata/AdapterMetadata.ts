@@ -109,6 +109,14 @@ import { Chain } from '../constants/chains'
 
 import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
 
+import AngleProtocolTransmuterEthereumTransmuter from '../../adapters/angle-protocol/products/transmuter/metadata/ethereum.transmuter.json'
+
+import AngleProtocolTransmuterPolygonTransmuter from '../../adapters/angle-protocol/products/transmuter/metadata/polygon.transmuter.json'
+
+import AngleProtocolTransmuterBaseTransmuter from '../../adapters/angle-protocol/products/transmuter/metadata/base.transmuter.json'
+
+import AngleProtocolTransmuterArbitrumTransmuter from '../../adapters/angle-protocol/products/transmuter/metadata/arbitrum.transmuter.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -451,6 +459,42 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-tokens',
     }),
     AngleProtocolSavingsPolygonProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'transmuter',
+      chainId: Chain.Arbitrum,
+      fileKey: 'transmuter',
+    }),
+    AngleProtocolTransmuterArbitrumTransmuter,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'transmuter',
+      chainId: Chain.Base,
+      fileKey: 'transmuter',
+    }),
+    AngleProtocolTransmuterBaseTransmuter,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'transmuter',
+      chainId: Chain.Ethereum,
+      fileKey: 'transmuter',
+    }),
+    AngleProtocolTransmuterEthereumTransmuter,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.AngleProtocol,
+      productId: 'transmuter',
+      chainId: Chain.Polygon,
+      fileKey: 'transmuter',
+    }),
+    AngleProtocolTransmuterPolygonTransmuter,
   ],
   [
     metadataKey({

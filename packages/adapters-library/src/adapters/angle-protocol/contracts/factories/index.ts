@@ -2,3 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export { Savings__factory } from "./Savings__factory";
+export { Transmuter__factory } from "./Transmuter__factory";

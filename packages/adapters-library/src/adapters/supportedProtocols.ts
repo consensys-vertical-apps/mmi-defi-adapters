@@ -68,6 +68,8 @@ import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAd
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
+import { AngleProtocolTransmuterAdapter } from './angle-protocol/products/transmuter/angleProtocolTransmuterAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -131,14 +133,23 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.AngleProtocol]: {
-    [Chain.Ethereum]: [AngleProtocolSavingsAdapter],
+    [Chain.Ethereum]: [
+      AngleProtocolTransmuterAdapter,
+      AngleProtocolSavingsAdapter,
+    ],
     [Chain.Optimism]: [AngleProtocolSavingsAdapter],
-    [Chain.Polygon]: [AngleProtocolSavingsAdapter],
-    [Chain.Arbitrum]: [AngleProtocolSavingsAdapter],
+    [Chain.Polygon]: [
+      AngleProtocolSavingsAdapter,
+      AngleProtocolTransmuterAdapter,
+    ],
+    [Chain.Arbitrum]: [
+      AngleProtocolSavingsAdapter,
+      AngleProtocolTransmuterAdapter,
+    ],
     [Chain.Linea]: [AngleProtocolSavingsAdapter],
     [Chain.Bsc]: [AngleProtocolSavingsAdapter],
     [Chain.Avalanche]: [AngleProtocolSavingsAdapter],
-    [Chain.Base]: [AngleProtocolSavingsAdapter],
+    [Chain.Base]: [AngleProtocolSavingsAdapter, AngleProtocolTransmuterAdapter],
   },
 
   [Protocol.CarbonDeFi]: {
