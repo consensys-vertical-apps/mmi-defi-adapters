@@ -68,6 +68,8 @@ import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAd
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
+import { SparkV1SpTokenAdapter } from './spark-v1/products/sp-token/sparkV1SpTokenAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -275,6 +277,10 @@ export const supportedProtocols: Record<
   [Protocol.Sonne]: {
     [Chain.Optimism]: [SonneSupplyMarketAdapter, SonneBorrowMarketAdapter],
     [Chain.Base]: [SonneSupplyMarketAdapter, SonneBorrowMarketAdapter],
+  },
+
+  [Protocol.SparkV1]: {
+    [Chain.Ethereum]: [SparkV1SpTokenAdapter],
   },
 
   [Protocol.StakeWise]: {

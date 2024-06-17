@@ -48,6 +48,8 @@ import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
 import { testCases as lynexTestCases } from './lynex/tests/testCases'
 
+import { testCases as sparkV1TestCases } from './spark-v1/tests/testCases'
+
 const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
@@ -82,6 +84,7 @@ const protocolTestCases = {
   [Protocol.QuickswapV2]: quickswapV2TestCases,
   [Protocol.RocketPool]: rocketPoolTestCases,
   [Protocol.Sonne]: sonneTestCases,
+  [Protocol.SparkV1]: sparkV1TestCases,
   [Protocol.StakeWise]: stakeWiseTestCases,
   [Protocol.Stargate]: stargateTestCases,
   [Protocol.SushiswapV2]: sushiswapV2TestCases,

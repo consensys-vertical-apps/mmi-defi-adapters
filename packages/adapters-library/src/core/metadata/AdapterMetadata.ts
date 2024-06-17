@@ -109,6 +109,10 @@ import { Chain } from '../constants/chains'
 
 import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
 
+import SparkV1SpTokenEthereumSpToken1 from '../../adapters/spark-v1/products/sp-token/metadata/ethereum.sp-token-1.json'
+
+import SparkV1SpTokenEthereumSpTokenV1 from '../../adapters/spark-v1/products/sp-token/metadata/ethereum.sp-token-v1.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -892,6 +896,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     SonneSupplyMarketOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SparkV1,
+      productId: 'sp-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'sp-token-1',
+    }),
+    SparkV1SpTokenEthereumSpToken1,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SparkV1,
+      productId: 'sp-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'sp-token-v1',
+    }),
+    SparkV1SpTokenEthereumSpTokenV1,
   ],
   [
     metadataKey({
