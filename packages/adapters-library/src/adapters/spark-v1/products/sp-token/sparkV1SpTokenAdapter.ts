@@ -26,10 +26,13 @@ import {
   ProtocolDetails,
   ProtocolPosition,
   ProtocolTokenTvl,
-  Underlying,
   UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
+  TokenBalance,
+  TokenType,
+  Underlying,
+  UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
@@ -37,6 +40,8 @@ import {
   ProtocolDataProvider,
   ProtocolDataProvider__factory,
 } from '../../contracts'
+import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
+const PRICE_PEGGED_TO_ONE = 1
 
 const sparkEthereumProviderAddress = "0xFc21d6d146E6086B8359705C8b28512a983db0cb"
 
@@ -49,30 +54,31 @@ type SparkMetadata = Record<
 >
 
 export class SparkV1SpTokenAdapter
-  implements IProtocolAdapter, IMetadataBuilder
+  extends SimplePoolAdapter
+  implements IMetadataBuilder
 {
   productId = 'sp-token'
-  protocolId: Protocol
-  chainId: Chain
-  helpers: Helpers
+  // protocolId: Protocol
+  // chainId: Chain
+  // helpers: Helpers
 
-  private provider: CustomJsonRpcProvider
+  // private provider: CustomJsonRpcProvider
 
-  adaptersController: AdaptersController
+  // adaptersController: AdaptersController
 
-  constructor({
-    provider,
-    chainId,
-    protocolId,
-    adaptersController,
-    helpers,
-  }: ProtocolAdapterParams) {
-    this.provider = provider
-    this.chainId = chainId
-    this.protocolId = protocolId
-    this.adaptersController = adaptersController
-    this.helpers = helpers
-  }
+  // constructor({
+  //   provider,
+  //   chainId,
+  //   protocolId,
+  //   adaptersController,
+  //   helpers,
+  // }: ProtocolAdapterParams) {
+  //   this.provider = provider
+  //   this.chainId = chainId
+  //   this.protocolId = protocolId
+  //   this.adaptersController = adaptersController
+  //   this.helpers = helpers
+  // }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -160,67 +166,126 @@ export class SparkV1SpTokenAdapter
     return reserveTokenAddresses.aTokenAddress
   }
 
-  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    return this.helpers.getBalanceOfTokens({
-      ...input,
-      protocolTokens: await this.getProtocolTokens(),
-    })
+  protected async fetchProtocolTokenMetadata(
+    protocolTokenAddress: string,
+  ): Promise<Erc20Metadata> {
+    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
+
+    return protocolToken
   }
 
-  async getWithdrawals({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
+  protected async fetchUnderlyingTokensMetadata(
+    protocolTokenAddress: string,
+  ): Promise<Erc20Metadata[]> {
+    const { underlyingToken } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
+
+    return [underlyingToken]
   }
 
-  async getDeposits({
-    protocolTokenAddress,
-    fromBlock,
-    toBlock,
-    userAddress,
-  }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
+  protected async getUnderlyingTokenBalances({
+    protocolTokenBalance,
+  }: {
+    userAddress: string
+    protocolTokenBalance: TokenBalance
+    blockNumber?: number
+  }): Promise<Underlying[]> {
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenBalance.address,
+    )
+
+    const underlyingTokenBalance = {
+      ...underlyingToken,
+      balanceRaw: protocolTokenBalance.balanceRaw,
+      type: TokenType.Underlying,
+    }
+
+    return [underlyingTokenBalance]
   }
 
-  async getTotalValueLocked({
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
-    const protocolTokens = await this.getProtocolTokens()
+  protected async unwrapProtocolToken(
+    protocolTokenMetadata: Erc20Metadata,
+    _blockNumber?: number | undefined,
+  ): Promise<UnwrappedTokenExchangeRate[]> {
+      const { underlyingToken } = await this.fetchPoolMetadata(
+        protocolTokenMetadata.address,
+      )
 
-    return await this.helpers.tvl({
-      protocolTokens,
-      filterProtocolTokenAddresses: protocolTokenAddresses,
-      blockNumber,
-    })
-  }
+      // Aave tokens always pegged one to one to underlying
+      const pricePerShareRaw = BigInt(
+        PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
+      )
 
-  async unwrap({
-    protocolTokenAddress,
-    tokenId,
-    blockNumber,
-  }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    return this.helpers.unwrapOneToOne({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
-      underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
-    })
-  }
+      return [
+        {
+          ...underlyingToken,
+          type: TokenType.Underlying,
+          underlyingRateRaw: pricePerShareRaw,
+        },
+      ]
+    }
 
-  private async getProtocolToken(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
-  }
-  private async getUnderlyingTokens(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingTokens
-  }
+  // async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+  //   return this.helpers.getBalanceOfTokens({
+  //     ...input,
+  //     protocolTokens: await this.getProtocolTokens(),
+  //   })
+  // }
+
+  // async getWithdrawals({
+  //   protocolTokenAddress,
+  //   fromBlock,
+  //   toBlock,
+  //   userAddress,
+  // }: GetEventsInput): Promise<MovementsByBlock[]> {
+  //   return this.helpers.withdrawals({
+  //     protocolToken: await this.getProtocolToken(protocolTokenAddress),
+  //     filter: { fromBlock, toBlock, userAddress },
+  //   })
+  // }
+
+  // async getDeposits({
+  //   protocolTokenAddress,
+  //   fromBlock,
+  //   toBlock,
+  //   userAddress,
+  // }: GetEventsInput): Promise<MovementsByBlock[]> {
+  //   return this.helpers.deposits({
+  //     protocolToken: await this.getProtocolToken(protocolTokenAddress),
+  //     filter: { fromBlock, toBlock, userAddress },
+  //   })
+  // }
+
+  // async getTotalValueLocked({
+  //   protocolTokenAddresses,
+  //   blockNumber,
+  // }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+  //   const protocolTokens = await this.getProtocolTokens()
+
+  //   return await this.helpers.tvl({
+  //     protocolTokens,
+  //     filterProtocolTokenAddresses: protocolTokenAddresses,
+  //     blockNumber,
+  //   })
+  // }
+
+  // async unwrap({
+  //   protocolTokenAddress,
+  //   tokenId,
+  //   blockNumber,
+  // }: UnwrapInput): Promise<UnwrapExchangeRate> {
+  //   return this.helpers.unwrapOneToOne({
+  //     protocolToken: await this.getProtocolToken(protocolTokenAddress),
+  //     underlyingTokens: await this.getUnderlyingTokens(protocolTokenAddress),
+  //   })
+  // }
+
+  // private async getProtocolToken(protocolTokenAddress: string) {
+  //   return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
+  // }
+  // private async getUnderlyingTokens(protocolTokenAddress: string) {
+  //   return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingTokens
+  // }
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
