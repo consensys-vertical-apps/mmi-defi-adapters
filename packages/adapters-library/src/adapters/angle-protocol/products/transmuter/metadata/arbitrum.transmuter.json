@@ -1,0 +1,18 @@
+{
+  "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": [
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  }
+}

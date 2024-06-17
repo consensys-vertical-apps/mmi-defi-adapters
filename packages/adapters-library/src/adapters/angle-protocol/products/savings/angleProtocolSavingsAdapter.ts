@@ -1,4 +1,5 @@
 import { WeiPerEther, getAddress } from 'ethers'
+import { z } from 'zod'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -25,7 +26,12 @@ import {
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import {
+  WriteActionInputSchemas,
+  WriteActions,
+} from '../../../../types/writeActions'
 import { Protocol } from '../../../protocols'
+import { GetTransactionParams } from '../../../supportedProtocols'
 import { Savings, Savings__factory } from '../../contracts'
 
 type AngleProtocolMetadata = {
@@ -177,6 +183,38 @@ export class AngleProtocolSavingsAdapter
     }))
 
     return metadataObject
+  }
+
+  async getTransactionParams({
+    action,
+    inputs,
+  }: Extract<
+    GetTransactionParams,
+    { protocolId: typeof Protocol.AngleProtocol; productId: 'savings' }
+  >): Promise<{ to: string; data: string }> {
+    const { asset } = inputs
+    const tokens = await this.buildMetadata()
+    const token = tokens.find((t) => t.underlyingToken.address === asset)!
+    const savingContract = Savings__factory.connect(
+      token.protocolToken.address,
+      this.provider,
+    )
+    switch (action) {
+      case WriteActions.Deposit: {
+        const { amount, receiver } = inputs
+        return savingContract.deposit.populateTransaction(amount, receiver)
+      }
+      case WriteActions.Withdraw: {
+        const { owner, amount, receiver } = inputs
+        return savingContract.redeem.populateTransaction(
+          amount,
+          receiver,
+          owner,
+        )
+      }
+      default:
+        throw new Error(`Action ${action} not supported`)
+    }
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
@@ -385,3 +423,17 @@ export class AngleProtocolSavingsAdapter
   //   return { aprDecimal, ...protocolToken }
   // }
 }
+
+export const WriteActionInputs = {
+  [WriteActions.Deposit]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    receiver: z.string(),
+  }),
+  [WriteActions.Withdraw]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+    receiver: z.string(),
+    owner: z.string(),
+  }),
+} satisfies WriteActionInputSchemas

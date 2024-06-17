@@ -93,6 +93,7 @@ import { PendleStandardisedYieldTokenAdapter } from './pendle/products/standardi
 import { PendleLpTokenAdapter } from './pendle/products/lp-token/pendleLpTokenAdapter'
 
 import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
+import { AngleProtocolTransmuterAdapter } from './angle-protocol/products/transmuter/angleProtocolTransmuterAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -157,14 +158,23 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.AngleProtocol]: {
-    [Chain.Ethereum]: [AngleProtocolSavingsAdapter],
+    [Chain.Ethereum]: [
+      AngleProtocolTransmuterAdapter,
+      AngleProtocolSavingsAdapter,
+    ],
     [Chain.Optimism]: [AngleProtocolSavingsAdapter],
-    [Chain.Polygon]: [AngleProtocolSavingsAdapter],
-    [Chain.Arbitrum]: [AngleProtocolSavingsAdapter],
+    [Chain.Polygon]: [
+      AngleProtocolSavingsAdapter,
+      AngleProtocolTransmuterAdapter,
+    ],
+    [Chain.Arbitrum]: [
+      AngleProtocolSavingsAdapter,
+      AngleProtocolTransmuterAdapter,
+    ],
     [Chain.Linea]: [AngleProtocolSavingsAdapter],
     [Chain.Bsc]: [AngleProtocolSavingsAdapter],
     [Chain.Avalanche]: [AngleProtocolSavingsAdapter],
-    [Chain.Base]: [AngleProtocolSavingsAdapter],
+    [Chain.Base]: [AngleProtocolSavingsAdapter, AngleProtocolTransmuterAdapter],
   },
 
   [Protocol.Beefy]: {
