@@ -68,7 +68,7 @@ import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAd
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
-import { SparkV1SpTokenAdapter } from './spark-v1/products/sp-token/sparkV1SpTokenAdapter'
+import { SparkV1SpTokenAdapter, WriteActionInputs as SparkV1SpTokenWriteActionInputs } from './spark-v1/products/sp-token/sparkV1SpTokenAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -338,6 +338,7 @@ export const WriteActionInputs = {
   AaveV3ATokenWriteActionInputs,
   CompoundV2SupplyMarketWriteActionInputs,
   CompoundV2BorrowMarketWriteActionInputs,
+  SparkV1SpTokenWriteActionInputs
 }
 
 export const GetTransactionParamsSchema = z.union([
@@ -369,6 +370,36 @@ export const GetTransactionParamsSchema = z.union([
       chainId: z.nativeEnum(Chain),
       action: z.literal('repay'),
       inputs: WriteActionInputs['AaveV3ATokenWriteActionInputs']['repay'],
+    }),
+  ]),
+  z.discriminatedUnion('action', [
+    z.object({
+      protocolId: z.literal(Protocol.SparkV1),
+      productId: z.literal('sp-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('deposit'),
+      inputs: WriteActionInputs['SparkV1SpTokenWriteActionInputs']['deposit'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.SparkV1),
+      productId: z.literal('sp-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('withdraw'),
+      inputs: WriteActionInputs['SparkV1SpTokenWriteActionInputs']['withdraw'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.SparkV1),
+      productId: z.literal('sp-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('borrow'),
+      inputs: WriteActionInputs['SparkV1SpTokenWriteActionInputs']['borrow'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.SparkV1),
+      productId: z.literal('sp-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('repay'),
+      inputs: WriteActionInputs['SparkV1SpTokenWriteActionInputs']['repay'],
     }),
   ]),
   z.discriminatedUnion('action', [

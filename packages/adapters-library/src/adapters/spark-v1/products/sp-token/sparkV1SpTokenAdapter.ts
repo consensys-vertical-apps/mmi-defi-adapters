@@ -311,57 +311,57 @@ export class SparkV1SpTokenAdapter
     return poolMetadata
   }
 
-  // getTransactionParams({
-  //   action,
-  //   inputs,
-  // }: Extract<
-  //   GetTransactionParams,
-  //   { protocolId: typeof Protocol.SparkV1; productId: 'sp-token' }
-  // >): Promise<{ to: string; data: string }> {
-  //   const poolContract = PoolContract__factory.connect(
-  //     getAddress(this.chainId),
-  //     this.provider,
-  //   )
+  getTransactionParams({
+    action,
+    inputs,
+  }: Extract<
+    GetTransactionParams,
+    { protocolId: typeof Protocol.SparkV1; productId: 'sp-token' }
+  >): Promise<{ to: string; data: string }> {
+    const poolContract = PoolContract__factory.connect(
+      getAddress(this.chainId),
+      this.provider,
+    )
 
-  //   switch (action) {
-  //     case WriteActions.Deposit: {
-  //       const { asset, amount, onBehalfOf, referralCode } = inputs
-  //       return poolContract.supply.populateTransaction(
-  //         asset,
-  //         amount,
-  //         onBehalfOf,
-  //         referralCode,
-  //       )
-  //     }
+    switch (action) {
+      case WriteActions.Deposit: {
+        const { asset, amount, onBehalfOf, referralCode } = inputs
+        return poolContract.supply.populateTransaction(
+          asset,
+          amount,
+          onBehalfOf,
+          referralCode,
+        )
+      }
 
-  //     case WriteActions.Withdraw: {
-  //       const { asset, amount, to } = inputs
-  //       return poolContract.withdraw.populateTransaction(asset, amount, to)
-  //     }
+      case WriteActions.Withdraw: {
+        const { asset, amount, to } = inputs
+        return poolContract.withdraw.populateTransaction(asset, amount, to)
+      }
 
-  //     case WriteActions.Borrow: {
-  //       const { asset, amount, interestRateMode, referralCode, onBehalfOf } =
-  //         inputs
-  //       return poolContract.borrow.populateTransaction(
-  //         asset,
-  //         amount,
-  //         interestRateMode,
-  //         referralCode,
-  //         onBehalfOf,
-  //       )
-  //     }
+      case WriteActions.Borrow: {
+        const { asset, amount, interestRateMode, referralCode, onBehalfOf } =
+          inputs
+        return poolContract.borrow.populateTransaction(
+          asset,
+          amount,
+          interestRateMode,
+          referralCode,
+          onBehalfOf,
+        )
+      }
 
-  //     case WriteActions.Repay: {
-  //       const { asset, amount, interestRateMode, onBehalfOf } = inputs
-  //       return poolContract.repay.populateTransaction(
-  //         asset,
-  //         amount,
-  //         interestRateMode,
-  //         onBehalfOf,
-  //       )
-  //     }
-  //   }
-  // }
+      case WriteActions.Repay: {
+        const { asset, amount, interestRateMode, onBehalfOf } = inputs
+        return poolContract.repay.populateTransaction(
+          asset,
+          amount,
+          interestRateMode,
+          onBehalfOf,
+        )
+      }
+    }
+  }
 }
 
 const getAddress = (chainId: Chain) => {
