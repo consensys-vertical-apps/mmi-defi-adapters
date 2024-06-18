@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
+import { Chain } from '../core/constants/chains'
 import { DefiProvider } from '../defiProvider'
 import { blockAverage } from './blockAverage'
 import { buildMetadata } from './buildMetadata'
@@ -42,16 +43,21 @@ performance(program)
 program
   .command('copy-adapter')
   .argument('[sourceProtocolId]', 'Protocol to copy')
-  .argument('[sourceProductId]', 'Product to copy')
-  .action(async (sourceProtocolId, sourceProductId) => {
-    await copyAdapter({
-      protocolKey: 'NewProtocol',
-      protocolId: 'new-protocol',
-      productId: 'new-product',
-      chainKeys: ['Ethereum'],
-      sourceProtocolId: sourceProtocolId,
-      sourceProductId: sourceProductId,
-    })
-  })
+  .argument('[newProtocolId]', 'New protocol id (kebab-case)')
+  .argument('[newProtocolKey]', 'New protocol Key (PascalCase)')
+  .argument(
+    '[chainKeys]',
+    'List of chain keys to copy (e.g. Ethereum,Arbitrum,Linea',
+  )
+  .action(
+    async (sourceProtocolId, newProtocolId, newProtocolKey, chainKeys) => {
+      await copyAdapter({
+        protocolKey: newProtocolKey,
+        protocolId: newProtocolId,
+        chainKeys: chainKeys.split(',') as (keyof typeof Chain)[],
+        sourceProtocolId: sourceProtocolId,
+      })
+    },
+  )
 
 program.parseAsync()

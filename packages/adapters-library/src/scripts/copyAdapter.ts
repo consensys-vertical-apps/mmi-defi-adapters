@@ -20,130 +20,121 @@ import { multiChainFilter, multiProtocolFilter } from './commandFilters'
 import { sortEntries } from './utils/sortEntries'
 import n = types.namedTypes
 import b = types.builders
+import { DefiProvider } from '../defiProvider'
 import {
   addProtocol,
   buildIntegrationTests,
   exportAdapter,
 } from './newAdapterCommand'
 
+const defiProvider = new DefiProvider()
+
 export async function copyAdapter(data: {
   protocolKey: string
   protocolId: string
-  productId: string
   chainKeys: (keyof typeof Chain)[]
   sourceProtocolId: string
-  sourceProductId: string
 }) {
   // Find adapter file
   const sourceProtocolKey = Object.entries(Protocol).find(
     (protocol) => protocol[1] === data.sourceProtocolId,
   )![0]
 
-  const sourceAdapterClassName = `${sourceProtocolKey}${pascalCase(
-    data.sourceProductId,
-  )}Adapter`
-
-  const newAdapterClassName = `${data.protocolKey}${pascalCase(
-    data.productId,
-  )}Adapter`
-
-  const sourceAdapterPath = path.resolve(
-    `./packages/adapters-library/src/adapters/${
-      data.sourceProtocolId
-    }/products/${data.sourceProductId}/${lowerFirst(
-      sourceAdapterClassName,
-    )}.ts`,
+  const sourceProtocolFolder = path.resolve(
+    `./packages/adapters-library/src/adapters/${data.sourceProtocolId}`,
   )
-
-  console.log('AAAAAAAAAAAAAA', {
-    sourceProtocolKey,
-    sourceProtocolId: data.sourceProtocolId,
-    sourceProductId: data.sourceProductId,
-    sourceAdapterPath,
-  })
-
-  // Copy code and modify it
-  const fileContent = await fs.readFile(sourceAdapterPath, 'utf-8')
-
-  const newContent = fileContent
-    .replace(/export class \S*Adapter/g, `export class ${newAdapterClassName}`)
-    .replace(
-      new RegExp(`productId = '${data.sourceProductId}'`, 'g'),
-      `productId = '${data.productId}'`,
-    )
-    .replace(/name:\s*'.*'/g, `name: ''`)
-    .replace(/description:\s*'.*'/g, `description: ''`)
-    .replace(/siteUrl:\s*'.*'/g, `siteUrl: ''`)
-    .replace(/iconUrl:\s*'.*'/g, `iconUrl: ''`)
 
   const newProtocolFolder = path.resolve(
     `./packages/adapters-library/src/adapters/${data.protocolId}`,
   )
-  const newAdapterFolder = path.join(
-    newProtocolFolder,
-    `products/${data.productId}`,
-  )
 
-  await writeAndLintFile(
-    path.join(newAdapterFolder, `${lowerFirst(newAdapterClassName)}.ts`),
-    newContent,
-  )
-  console.log('COPY ADAPTER FILE', {
-    fileName: path.join(
-      newAdapterFolder,
-      `${lowerFirst(newAdapterClassName)}.ts`,
-    ),
-  })
-
-  // Copy files in the product folder (except metadata)
-  const sourceAdapterFolder = path.dirname(sourceAdapterPath)
-  const sourceAdapterSupportFiles = (await fs.readdir(sourceAdapterFolder))
-    .filter(
-      (file) =>
-        !['metadata', `${lowerFirst(sourceAdapterClassName)}.ts`].includes(
-          file,
-        ),
-    )
-    .map((file) => path.join(sourceAdapterFolder, file))
-
-  // Iterate through each source directory
-  for (const source of sourceAdapterSupportFiles) {
-    await deepCopy(source, newAdapterFolder)
-  }
-
-  // Copy all protocol folders (except products and tests)
-  const sourceProtocolFolder = path.dirname(path.dirname(sourceAdapterFolder))
-  const sourceProtocolSupportFiles = (await fs.readdir(sourceProtocolFolder))
-    .filter((file) => !['tests', 'products'].includes(file))
-    .map((file) => path.join(sourceProtocolFolder, file))
-
-  // Iterate through each source directory
-  for (const source of sourceProtocolSupportFiles) {
-    await deepCopy(source, newProtocolFolder)
-  }
-
-  // console.log('PPPPPPPPPPPPPPPPPPPP', {
-  //   sourceAdapterSupportFiles,
-  //   sourceProtocolSupportFiles,
-  // })
-
-  // New adapter tasks
-  await buildIntegrationTests({
-    protocolKey: data.protocolKey,
-    protocolId: data.protocolId,
-    productId: data.productId,
-  })
   await addProtocol({
     protocolKey: data.protocolKey,
     protocolId: data.protocolId,
   })
-  await exportAdapter({
-    protocolKey: data.protocolKey,
-    protocolId: data.protocolId,
-    productId: data.productId,
-    chainKeys: data.chainKeys,
-    adapterClassName: newAdapterClassName,
-  })
+
+  // Copy all protocol folders (except products and tests)
+  await Promise.all(
+    (await fs.readdir(sourceProtocolFolder))
+      .filter((file) => !['tests', 'products'].includes(file))
+      .map((file) =>
+        deepCopy(path.join(sourceProtocolFolder, file), newProtocolFolder),
+      ),
+  )
+
+  const productIds = (
+    await defiProvider.getSupport({
+      filterProtocolIds: [data.sourceProtocolId as Protocol],
+    })
+  )[data.sourceProtocolId as Protocol]!.map(
+    (adapter) => adapter.protocolDetails.productId,
+  )
+
+  for (const productId of productIds) {
+    const sourceAdapterClassName = `${sourceProtocolKey}${pascalCase(
+      productId,
+    )}Adapter`
+
+    const newAdapterClassName = `${data.protocolKey}${pascalCase(
+      productId,
+    )}Adapter`
+
+    const sourceAdapterPath = path.resolve(
+      `./packages/adapters-library/src/adapters/${
+        data.sourceProtocolId
+      }/products/${productId}/${lowerFirst(sourceAdapterClassName)}.ts`,
+    )
+
+    const fileContent = await fs.readFile(sourceAdapterPath, 'utf-8')
+
+    const newContent = fileContent
+      .replace(
+        /export class \S*Adapter/g,
+        `export class ${newAdapterClassName}`,
+      )
+      .replace(/name:\s*'.*'/g, `name: ''`)
+      .replace(/description:\s*'.*'/g, `description: ''`)
+      .replace(/siteUrl:\s*'.*'/g, `siteUrl: ''`)
+      .replace(/iconUrl:\s*'.*'/g, `iconUrl: ''`)
+
+    const newAdapterFolder = path.join(
+      newProtocolFolder,
+      `products/${productId}`,
+    )
+
+    await writeAndLintFile(
+      path.join(newAdapterFolder, `${lowerFirst(newAdapterClassName)}.ts`),
+      newContent,
+    )
+
+    // Copy files in the product folder (except metadata)
+    const sourceAdapterFolder = path.dirname(sourceAdapterPath)
+    await Promise.all(
+      (await fs.readdir(sourceAdapterFolder))
+        .filter(
+          (file) =>
+            !['metadata', `${lowerFirst(sourceAdapterClassName)}.ts`].includes(
+              file,
+            ),
+        )
+        .map((file) =>
+          deepCopy(path.join(sourceAdapterFolder, file), newAdapterFolder),
+        ),
+    )
+
+    await buildIntegrationTests({
+      protocolKey: data.protocolKey,
+      protocolId: data.protocolId,
+      productId,
+    })
+    await exportAdapter({
+      protocolKey: data.protocolKey,
+      protocolId: data.protocolId,
+      productId,
+      chainKeys: data.chainKeys,
+      adapterClassName: newAdapterClassName,
+    })
+  }
 }
 
 async function deepCopy(source: string, destination: string) {
@@ -168,9 +159,4 @@ async function deepCopy(source: string, destination: string) {
     path.join(destination, path.basename(source)),
     fileContent,
   )
-
-  // console.log('COPY FILE', {
-  //   source,
-  //   destination: path.join(destination, path.basename(source)),
-  // })
 }
