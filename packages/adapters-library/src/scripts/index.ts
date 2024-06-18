@@ -5,6 +5,7 @@ import { blockAverage } from './blockAverage'
 import { buildMetadata } from './buildMetadata'
 import { buildSnapshots } from './buildSnapshots'
 import { buildContractTypes } from './buildTypes'
+import { copyAdapter } from './copyAdapter'
 import { featureCommands } from './featureCommands'
 import { newAdapter2Command } from './newAdapter2Command'
 import { newAdapterCommand } from './newAdapterCommand'
@@ -37,5 +38,20 @@ stressCommand(program, defiProvider)
 simulateTxCommand(program, chainProviders)
 
 performance(program)
+
+program
+  .command('copy-adapter')
+  .argument('[sourceProtocolId]', 'Protocol to copy')
+  .argument('[sourceProductId]', 'Product to copy')
+  .action(async (sourceProtocolId, sourceProductId) => {
+    await copyAdapter({
+      protocolKey: 'NewProtocol',
+      protocolId: 'new-protocol',
+      productId: 'new-product',
+      chainKeys: ['Ethereum'],
+      sourceProtocolId: sourceProtocolId,
+      sourceProductId: sourceProductId,
+    })
+  })
 
 program.parseAsync()
