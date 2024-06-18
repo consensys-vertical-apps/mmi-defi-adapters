@@ -162,7 +162,13 @@ async function deepCopy(source: string, destination: string) {
     return
   }
 
-  await fs.copyFile(source, path.join(destination, path.basename(source)))
+  const fileContent = await fs.readFile(source, { encoding: 'utf-8' })
+
+  await writeAndLintFile(
+    path.join(destination, path.basename(source)),
+    fileContent,
+  )
+
   // console.log('COPY FILE', {
   //   source,
   //   destination: path.join(destination, path.basename(source)),
