@@ -1,25 +1,9 @@
-import { promises as fs, Stats } from 'node:fs'
+import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import chalk from 'chalk'
-import { Command } from 'commander'
-import partition from 'lodash/partition'
-import { parse, print, types, visit } from 'recast'
 import { Protocol } from '../adapters/protocols'
-import { supportedProtocols } from '../adapters/supportedProtocols'
-import { AdaptersController } from '../core/adaptersController'
-import { Chain, ChainName } from '../core/constants/chains'
-import { IMetadataBuilder } from '../core/decorators/cacheToFile'
-import { ProviderMissingError } from '../core/errors/errors'
-import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
+import { Chain } from '../core/constants/chains'
 import { lowerFirst, pascalCase } from '../core/utils/caseConversion'
-import { logger } from '../core/utils/logger'
 import { writeAndLintFile } from '../core/utils/writeAndLintFile'
-import { Json } from '../types/json'
-import { getMetadataInvalidAddresses } from './addressValidation'
-import { multiChainFilter, multiProtocolFilter } from './commandFilters'
-import { sortEntries } from './utils/sortEntries'
-import n = types.namedTypes
-import b = types.builders
 import { DefiProvider } from '../defiProvider'
 import {
   addProtocol,
