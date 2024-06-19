@@ -16,7 +16,10 @@ import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
-import { getAggregatedValues } from '../adapters/aggrigateValues'
+import {
+  getAggregatedValues,
+  getAggregatedValuesMovements,
+} from '../adapters/aggrigateValues'
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
@@ -105,12 +108,17 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               }
 
               case 'deposits': {
+                const snapshot = await defiProvider.getDeposits({
+                  ...testCase.input,
+                  chainId: chainId,
+                  protocolId: protocolId,
+                })
+
+                const aggregatedValues = getAggregatedValuesMovements(snapshot)
+
                 return {
-                  snapshot: await defiProvider.getDeposits({
-                    ...testCase.input,
-                    chainId: chainId,
-                    protocolId: protocolId,
-                  }),
+                  aggregatedValues,
+                  snapshot,
                 }
               }
 

@@ -1,5 +1,5 @@
 {
-  "blockNumber": 20112323,
+  "blockNumber": 20126536,
   "snapshot": [
     {
       "protocolId": "pendle",
@@ -25,12 +25,12 @@
           "tokens": [
             {
               "type": "underlying",
-              "underlyingRateRaw": "988335090400281441n",
+              "underlyingRateRaw": "988085047045351601n",
               "address": "0x22E12A50e3ca49FB183074235cB1db84Fe4C716D",
               "name": "SY Renzo ezETH",
               "symbol": "SY-ezETH",
               "decimals": 18,
-              "underlyingRate": 0.9883350904002814,
+              "underlyingRate": 0.9880850470453516,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x22E12A50e3ca49FB183074235cB1db84Fe4C716D/logo.png"
             }
           ]

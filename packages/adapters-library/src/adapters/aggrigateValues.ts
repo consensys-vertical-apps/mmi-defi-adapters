@@ -1,5 +1,5 @@
 import { PositionType } from '../types/adapter'
-import { DefiPositionResponse } from '../types/response'
+import { DefiMovementsResponse, DefiPositionResponse } from '../types/response'
 
 export function getAggregatedValues(
   response: DefiPositionResponse[],
@@ -7,7 +7,6 @@ export function getAggregatedValues(
   const aggregatedValues: string[] = []
 
   for (const position of response) {
-    console.log('oioi')
     if (!position.success) {
       continue
     }
@@ -25,9 +24,32 @@ export function getAggregatedValues(
 
   return aggregatedValues
 }
+export function getAggregatedValuesMovements(
+  response: DefiMovementsResponse,
+): string[] {
+  const aggregatedValues: string[] = []
+  if (!response.success) {
+    return aggregatedValues
+  }
+
+  const movements = response.movements
+
+  for (const displayMovementsByBlock of movements) {
+    const marketValue =
+      extractMarketValue(displayMovementsByBlock!.tokens!) || 0
+
+    const formattedMarketValue = `USD${marketValue
+      .toFixed(2)
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
+
+    aggregatedValues.push(formattedMarketValue)
+  }
+
+  return aggregatedValues
+}
 
 type Token = {
-  balance: number
+  balance?: number
   price?: number
   tokens?: Token[]
 }
@@ -41,7 +63,7 @@ function extractMarketValue(tokens: Token[]): number {
     marketValue +=
       token.tokens && token.tokens.length > 0
         ? extractMarketValue(token.tokens)
-        : token.balance * (token.price || 0)
+        : token.balance! * (token.price || 0)
   }
 
   return marketValue

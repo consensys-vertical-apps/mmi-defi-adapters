@@ -5,9 +5,9 @@ import {
   IMetadataBuilder,
   CacheToFile,
 } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
+
 import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
+
 import { Helpers } from '../../../../scripts/helpers'
 import {
   ProtocolAdapterParams,
@@ -21,21 +21,15 @@ import {
   ProtocolPosition,
   AssetType,
   TokenType,
-  GetRewardPositionsInput,
-  UnderlyingReward,
   UnwrapExchangeRate,
   UnwrapInput,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
-import { fetchAllAssets, fetchAllMarkets } from '../../backend/backendSdk'
-import { PendleChain } from '../../common/common'
-import {
-  Market__factory,
-  OraclePyYtLp__factory,
-  PendleErc20__factory,
-} from '../../contracts'
+import { fetchAllMarkets } from '../../backend/backendSdk'
+
+import { OraclePyYtLp__factory } from '../../contracts'
 import { logger } from '../../../../core/utils/logger'
 
 type Metadata = Record<
@@ -88,29 +82,28 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     let rate: bigint
     switch (metadata!.type) {
       case 'pt':
-        rate = await oracle.getPtToSyRate(metadata!.marketAddress, 1800, {
+        rate = await oracle.getPtToSyRate(metadata!.marketAddress, 900, {
           blockTag: blockNumber,
         })
+
         break
       case 'yt':
-        rate = await oracle.getYtToAssetRate(metadata!.marketAddress, 1800, {
+        rate = await oracle.getYtToSyRate(metadata!.marketAddress, 900, {
           blockTag: blockNumber,
         })
+
         break
       case 'lp':
-        rate = await oracle.getLpToSyRate(metadata!.marketAddress, 1800, {
+        rate = await oracle.getPtToSyRate(metadata!.marketAddress, 900, {
           blockTag: blockNumber,
         })
-        break
-      case 'sy':
-        return this.helpers.unwrapTokenAsRatio({
-          protocolToken: await this.getProtocolToken(protocolTokenAddress),
-          underlyingTokens: [
-            await this.getUnderlyingTokens(protocolTokenAddress),
-          ],
 
-          blockNumber: blockNumber,
-        })
+        break
+      case 'sy': {
+        rate = 10n ** 18n
+
+        break
+      }
 
       default:
         throw new Error('Invalid metadata type')
@@ -149,7 +142,7 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
 
   @CacheToFile({ fileKey: 'market' })
   async buildMetadata(): Promise<Metadata> {
-    const resp = await fetchAllMarkets(this.chainId as PendleChain)
+    const resp = await fetchAllMarkets(this.chainId)
 
     const metadata: Metadata = {}
 
@@ -205,15 +198,7 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
         marketAddress: market,
         type: 'sy',
       }
-      // metadata[getAddress(market)] = {
-      //   protocolToken: {
-      //     ...lp,
-      //     address: getAddress(market),
-      //   },
-      //   underlyingToken: underlyingAsset,
-      //   marketAddress: market,
-      //   type: 'market',
-      // }
+
       metadata[getAddress(lp.address)] = {
         protocolToken: lp,
         underlyingToken: underlyingAsset,
@@ -242,10 +227,6 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
 
   private async getProtocolToken(protocolTokenAddress: string) {
     return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
-  }
-
-  private async getUnderlyingTokens(protocolTokenAddress: string) {
-    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingToken
   }
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
@@ -291,14 +272,16 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     })
   }
 
-  /**
-   * Update me.
-   * Add logic to get tvl in a pool
-   *
-   */
-  async getTotalValueLocked(
-    _input: GetTotalValueLockedInput,
-  ): Promise<ProtocolTokenTvl[]> {
-    throw new NotImplementedError()
+  async getTotalValueLocked({
+    protocolTokenAddresses,
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    return await this.helpers.tvl({
+      protocolTokens,
+      filterProtocolTokenAddresses: protocolTokenAddresses,
+      blockNumber,
+    })
   }
 }

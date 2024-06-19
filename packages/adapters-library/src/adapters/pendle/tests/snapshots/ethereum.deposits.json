@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD1,052.56"],
   "snapshot": {
     "protocolId": "pendle",
     "name": "Pendle",
@@ -37,7 +38,7 @@
                 "symbol": "SY-weETH",
                 "decimals": 18,
                 "type": "underlying",
-                "balanceRaw": "288277634669468987n",
+                "balanceRaw": "288277554010817490n",
                 "tokens": [
                   {
                     "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
@@ -45,13 +46,13 @@
                     "symbol": "weETH",
                     "decimals": 18,
                     "type": "underlying",
-                    "balanceRaw": "288277634669468950n",
-                    "balance": 0.28827763466946893,
+                    "balanceRaw": "288277554010817490n",
+                    "balance": 0.2882775540108175,
                     "price": 3651.18611852538,
                     "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
                   }
                 ],
-                "balance": 0.288277634669469,
+                "balance": 0.2882775540108175,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAC0047886a985071476a1186bE89222659970d65/logo.png"
               }
             ],

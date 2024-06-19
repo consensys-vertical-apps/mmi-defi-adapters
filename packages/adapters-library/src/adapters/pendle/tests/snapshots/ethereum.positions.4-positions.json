@@ -1,6 +1,11 @@
 {
-  "blockNumber": 20119550,
-  "aggregatedValues": ["USD571,126.99", "USD846,585.37", "USD0.00", "USD0.00"],
+  "blockNumber": 20126536,
+  "aggregatedValues": [
+    "USD587,449.08",
+    "USD871,818.93",
+    "USD569,918.89",
+    "USD1,612.64"
+  ],
   "snapshot": [
     {
       "protocolId": "pendle",
@@ -30,7 +35,7 @@
               "symbol": "SY-weETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "160605561209528884873n",
+              "balanceRaw": "160621808128643288595n",
               "tokens": [
                 {
                   "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
@@ -38,13 +43,13 @@
                   "symbol": "weETH",
                   "decimals": 18,
                   "type": "underlying",
-                  "balanceRaw": "160605561209528884873n",
-                  "balance": 160.60556120952887,
-                  "price": 3556.0847721792725,
+                  "balanceRaw": "160621808128643288595n",
+                  "balance": 160.6218081286433,
+                  "price": 3657.343190215478,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
                 }
               ],
-              "balance": 160.60556120952887,
+              "balance": 160.6218081286433,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAC0047886a985071476a1186bE89222659970d65/logo.png"
             }
           ],
@@ -74,7 +79,7 @@
                   "type": "underlying",
                   "balanceRaw": "246788848677278136524n",
                   "balance": 246.78884867727814,
-                  "price": 3430.4036519761935,
+                  "price": 3532.6512467920775,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
                 }
               ],
@@ -98,7 +103,7 @@
               "symbol": "SY-zs-ezETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "161186299775142936244n",
+              "balanceRaw": "161328943595910366705n",
               "tokens": [
                 {
                   "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
@@ -106,13 +111,13 @@
                   "symbol": "ezETH",
                   "decimals": 18,
                   "type": "underlying",
-                  "balanceRaw": "0n",
-                  "balance": 0,
-                  "price": 3430.4036519761935,
+                  "balanceRaw": "161328943595910366705n",
+                  "balance": 161.32894359591037,
+                  "price": 3532.6512467920775,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
                 }
               ],
-              "balance": 161.18629977514294,
+              "balance": 161.32894359591037,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744/logo.png"
             }
           ],
@@ -132,7 +137,7 @@
               "symbol": "SY-zs-ezETH",
               "decimals": 18,
               "type": "underlying",
-              "balanceRaw": "582571063198473374n",
+              "balanceRaw": "456495097625054955n",
               "tokens": [
                 {
                   "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
@@ -140,13 +145,13 @@
                   "symbol": "ezETH",
                   "decimals": 18,
                   "type": "underlying",
-                  "balanceRaw": "0n",
-                  "balance": 0,
-                  "price": 3430.4036519761935,
+                  "balanceRaw": "456495097625054955n",
+                  "balance": 0.45649509762505497,
+                  "price": 3532.6512467920775,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
                 }
               ],
-              "balance": 0.5825710631984734,
+              "balance": 0.45649509762505497,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744/logo.png"
             }
           ],

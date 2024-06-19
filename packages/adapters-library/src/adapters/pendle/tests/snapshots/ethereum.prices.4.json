@@ -1,5 +1,5 @@
 {
-  "blockNumber": 20112323,
+  "blockNumber": 20126536,
   "snapshot": [
     {
       "protocolId": "pendle",
@@ -25,12 +25,12 @@
           "tokens": [
             {
               "type": "underlying",
-              "underlyingRateRaw": "4684057742773533n",
+              "underlyingRateRaw": "3336292399175648n",
               "address": "0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744",
               "name": "SY Zircuit Staking ezETH",
               "symbol": "SY-zs-ezETH",
               "decimals": 18,
-              "underlyingRate": 0.004684057742773533,
+              "underlyingRate": 0.003336292399175648,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744/logo.png"
             }
           ]
