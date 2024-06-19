@@ -80,7 +80,7 @@ const protocolTestCases = {
   [Protocol.MorphoBlue]: morphoBlueTestCases,
   [Protocol.MorphoCompoundV2]: morphoCompoundV2TestCases,
   [Protocol.PancakeswapV2]: pancakeswapV2TestCases,
-  [Protocol.Pendle]: testCases,
+  [Protocol.Pendle]: pendleTestCases,
   [Protocol.PricesV2]: pricesV2TestCases,
   [Protocol.QuickswapV2]: quickswapV2TestCases,
   [Protocol.RocketPool]: rocketPoolTestCases,

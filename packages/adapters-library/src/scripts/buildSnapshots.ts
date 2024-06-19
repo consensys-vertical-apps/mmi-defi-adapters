@@ -16,6 +16,7 @@ import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
+import { getAggregatedValues } from '../adapters/aggrigateValues'
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
@@ -52,16 +53,21 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     chainId,
                   ))
 
+                const snapshot = await defiProvider.getPositions({
+                  ...testCase.input,
+                  filterChainIds: [chainId],
+                  filterProtocolIds: [protocolId],
+                  blockNumbers: {
+                    [chainId]: blockNumber,
+                  },
+                })
+
+                const aggregatedValues = getAggregatedValues(snapshot)
+
                 const result = {
                   blockNumber,
-                  snapshot: await defiProvider.getPositions({
-                    ...testCase.input,
-                    filterChainIds: [chainId],
-                    filterProtocolIds: [protocolId],
-                    blockNumbers: {
-                      [chainId]: blockNumber,
-                    },
-                  }),
+                  aggregatedValues,
+                  snapshot,
                 }
 
                 await updateBlockNumber(protocolId, index, blockNumber)

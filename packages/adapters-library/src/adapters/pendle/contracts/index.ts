@@ -2,7 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { Market } from "./Market";
+export type { OraclePyYtLp } from "./OraclePyYtLp";
 export type { PendleErc20 } from "./PendleErc20";
 export * as factories from "./factories";
 export { Market__factory } from "./factories/Market__factory";
+export { OraclePyYtLp__factory } from "./factories/OraclePyYtLp__factory";
 export { PendleErc20__factory } from "./factories/PendleErc20__factory";

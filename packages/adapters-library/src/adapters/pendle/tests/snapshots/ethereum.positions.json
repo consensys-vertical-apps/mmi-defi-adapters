@@ -1,0 +1,56 @@
+{
+  "blockNumber": 20119550,
+  "aggregatedValues": ["USD1,026.90"],
+  "snapshot": [
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "market",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966",
+          "name": "PT ether.fi weETH 27JUN2024",
+          "symbol": "PT-weETH-27JUN2024",
+          "decimals": 18,
+          "balanceRaw": "301719975687554067n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xAC0047886a985071476a1186bE89222659970d65",
+              "name": "SY ether.fi weETH",
+              "symbol": "SY-weETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "288771540069155124n",
+              "tokens": [
+                {
+                  "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+                  "name": "Wrapped eETH",
+                  "symbol": "weETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "288771540069155124n",
+                  "balance": 0.2887715400691551,
+                  "price": 3556.0847721792725,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee/logo.png"
+                }
+              ],
+              "balance": 0.2887715400691551,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xAC0047886a985071476a1186bE89222659970d65/logo.png"
+            }
+          ],
+          "balance": 0.30171997568755404
+        }
+      ]
+    }
+  ]
+}

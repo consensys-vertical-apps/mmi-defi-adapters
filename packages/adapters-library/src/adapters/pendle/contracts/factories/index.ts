@@ -2,4 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export { Market__factory } from "./Market__factory";
+export { OraclePyYtLp__factory } from "./OraclePyYtLp__factory";
 export { PendleErc20__factory } from "./PendleErc20__factory";

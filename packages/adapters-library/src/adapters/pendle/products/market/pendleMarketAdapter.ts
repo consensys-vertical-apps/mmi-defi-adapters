@@ -31,22 +31,28 @@ import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { Protocol } from '../../../protocols'
 import { fetchAllAssets, fetchAllMarkets } from '../../backend/backendSdk'
 import { PendleChain } from '../../common/common'
-import { Market__factory, PendleErc20__factory } from '../../contracts'
+import {
+  Market__factory,
+  OraclePyYtLp__factory,
+  PendleErc20__factory,
+} from '../../contracts'
+import { logger } from '../../../../core/utils/logger'
 
-type PendleMarketMetadataValue = {
-  market: string
-  chainId: PendleChain
-  name: string
-  pt: Erc20Metadata
-  yt: Erc20Metadata
-  lp: Erc20Metadata
-}
-type PendleMarketMetadata = Record<string, PendleMarketMetadataValue>
+type Metadata = Record<
+  string,
+  {
+    protocolToken: Erc20Metadata
+    underlyingToken: Erc20Metadata
+    marketAddress: string
+    type: 'pt' | 'yt' | 'lp' | 'sy'
+  }
+>
 
 export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
   productId = 'market'
   protocolId: Protocol
   chainId: Chain
+  helpers: Helpers
 
   private provider: CustomJsonRpcProvider
 
@@ -57,17 +63,72 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
 
-  helpers?: Helpers | undefined
+  async unwrap({
+    blockNumber,
+    protocolTokenAddress,
+    tokenId,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const metadata = (await this.buildMetadata())[protocolTokenAddress]
+    const underlyingToken = metadata!.underlyingToken
 
-  unwrap(input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    throw new Error('Method not implemented.')
+    const oracle = OraclePyYtLp__factory.connect(
+      '0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2',
+      this.provider,
+    )
+
+    let rate: bigint
+    switch (metadata!.type) {
+      case 'pt':
+        rate = await oracle.getPtToSyRate(metadata!.marketAddress, 1800, {
+          blockTag: blockNumber,
+        })
+        break
+      case 'yt':
+        rate = await oracle.getYtToAssetRate(metadata!.marketAddress, 1800, {
+          blockTag: blockNumber,
+        })
+        break
+      case 'lp':
+        rate = await oracle.getLpToSyRate(metadata!.marketAddress, 1800, {
+          blockTag: blockNumber,
+        })
+        break
+      case 'sy':
+        return this.helpers.unwrapTokenAsRatio({
+          protocolToken: await this.getProtocolToken(protocolTokenAddress),
+          underlyingTokens: [
+            await this.getUnderlyingTokens(protocolTokenAddress),
+          ],
+
+          blockNumber: blockNumber,
+        })
+
+      default:
+        throw new Error('Invalid metadata type')
+    }
+
+    const underlying = {
+      type: TokenType.Underlying,
+
+      underlyingRateRaw: rate,
+      ...underlyingToken,
+    }
+
+    return {
+      baseRate: 1,
+      type: TokenType.Protocol,
+      ...metadata!.protocolToken!,
+      tokens: [underlying],
+    }
   }
 
   getProtocolDetails(): ProtocolDetails {
@@ -81,178 +142,153 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.NonStandardErc20,
+        type: AssetType.StandardErc20,
       },
     }
   }
 
   @CacheToFile({ fileKey: 'market' })
-  async buildMetadata(): Promise<PendleMarketMetadata> {
+  async buildMetadata(): Promise<Metadata> {
     const resp = await fetchAllMarkets(this.chainId as PendleChain)
-    const res = Object.fromEntries(
-      resp.results.map((value) => {
-        const market = getAddress(value.address)
-        const chainId = value.chainId as PendleChain
-        const name = value.name
-        const pt: Erc20Metadata = {
-          address: getAddress(value.pt.address),
-          name: value.pt.name,
-          symbol: value.pt.symbol,
-          decimals: value.pt.decimals,
-        }
-        const yt: Erc20Metadata = {
-          address: getAddress(value.yt.address),
-          name: value.yt.name,
-          symbol: value.yt.symbol,
-          decimals: value.yt.decimals,
-        }
-        const lp: Erc20Metadata = {
-          address: getAddress(value.lp.address),
-          name: value.lp.name,
-          symbol: value.lp.symbol,
-          decimals: value.lp.decimals,
-        }
-        return [
-          market,
-          {
-            market,
-            chainId,
-            name,
-            pt,
-            yt,
-            lp,
-          },
-        ]
-      }),
-    )
 
-    return res
+    const metadata: Metadata = {}
+
+    resp.results.map((value) => {
+      const market = getAddress(value.address)
+
+      const pt: Erc20Metadata = {
+        address: getAddress(value.pt.address),
+        name: value.pt.name,
+        symbol: value.pt.symbol,
+        decimals: value.pt.decimals,
+      }
+      const yt: Erc20Metadata = {
+        address: getAddress(value.yt.address),
+        name: value.yt.name,
+        symbol: value.yt.symbol,
+        decimals: value.yt.decimals,
+      }
+      const lp: Erc20Metadata = {
+        address: getAddress(value.lp.address),
+        name: value.lp.name,
+        symbol: value.lp.symbol,
+        decimals: value.lp.decimals,
+      }
+      const underlyingAsset: Erc20Metadata = {
+        address: getAddress(value.underlyingAsset?.address!),
+        name: value.underlyingAsset?.name!,
+        symbol: value.underlyingAsset?.symbol!,
+        decimals: value.underlyingAsset?.decimals!,
+      }
+      const sy: Erc20Metadata = {
+        address: getAddress(value.sy?.address!),
+        name: value.sy?.name!,
+        symbol: value.sy?.symbol!,
+        decimals: value.underlyingAsset?.decimals!,
+      }
+
+      metadata[getAddress(pt.address)] = {
+        protocolToken: pt,
+        underlyingToken: sy,
+        marketAddress: market,
+        type: 'pt',
+      }
+      metadata[getAddress(yt.address)] = {
+        protocolToken: yt,
+        underlyingToken: sy,
+        marketAddress: market,
+        type: 'yt',
+      }
+      metadata[getAddress(sy.address)] = {
+        protocolToken: sy,
+        underlyingToken: underlyingAsset,
+        marketAddress: market,
+        type: 'sy',
+      }
+      // metadata[getAddress(market)] = {
+      //   protocolToken: {
+      //     ...lp,
+      //     address: getAddress(market),
+      //   },
+      //   underlyingToken: underlyingAsset,
+      //   marketAddress: market,
+      //   type: 'market',
+      // }
+      metadata[getAddress(lp.address)] = {
+        protocolToken: lp,
+        underlyingToken: underlyingAsset,
+        marketAddress: market,
+        type: 'lp',
+      }
+
+      return
+    })
+
+    return metadata
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    const markets = Object.values(await this.buildMetadata())
-    return markets.map((markets) => markets.lp)
+    return Object.values(await this.buildMetadata()).map(
+      ({ protocolToken }) => protocolToken,
+    )
   }
 
-  async createPriceLookUpMap(): Promise<Record<string, bigint>> {
-    const allAssets = await fetchAllAssets(this.chainId as PendleChain)
-    const priceLookUpMap: Record<string, bigint> = {}
-    allAssets.forEach((asset) => {
-      const price = BigInt(
-        Math.round((asset.price?.usd ?? 0) * 10 ** asset.decimals),
-      )
-      priceLookUpMap[asset.address] = price
+  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return this.helpers.getBalanceOfTokens({
+      ...input,
+      protocolTokens: await this.getProtocolTokens(),
     })
-    return priceLookUpMap
   }
 
-  async getMetadata(
-    protocolTokenAddresses?: string[],
-  ): Promise<PendleMarketMetadataValue[]> {
-    const allMetadata = await this.buildMetadata()
+  private async getProtocolToken(protocolTokenAddress: string) {
+    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
+  }
 
-    if (protocolTokenAddresses && protocolTokenAddresses.length > 0) {
-      const filteredPools: PendleMarketMetadataValue[] = []
-      protocolTokenAddresses.forEach((address) => {
-        //@ts-ignore
-        filteredPools.push(allMetadata[address])
-      })
+  private async getUnderlyingTokens(protocolTokenAddress: string) {
+    return (await this.fetchPoolMetadata(protocolTokenAddress)).underlyingToken
+  }
 
-      return filteredPools
+  private async fetchPoolMetadata(protocolTokenAddress: string) {
+    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
+
+    if (!poolMetadata) {
+      logger.error(
+        {
+          protocolTokenAddress,
+          protocol: this.protocolId,
+          chainId: this.chainId,
+          product: this.productId,
+        },
+        'Protocol token pool not found',
+      )
+      throw new Error('Protocol token pool not found')
     }
 
-    return Object.values(allMetadata)
+    return poolMetadata
   }
 
-  async getPositions({
+  async getWithdrawals({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
     userAddress,
-    protocolTokenAddresses,
-    blockNumber,
-  }: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const [markets, priceLookUpMap] = await Promise.all([
-      this.getMetadata(protocolTokenAddresses),
-      this.createPriceLookUpMap(),
-    ])
-
-    const positions: ProtocolPosition[] = await Promise.all(
-      markets.map(async (value) => {
-        const marketContract = Market__factory.connect(
-          value.market,
-          this.provider,
-        )
-        const ptContract = PendleErc20__factory.connect(
-          value.pt.address,
-          this.provider,
-        )
-        const ytContract = PendleErc20__factory.connect(
-          value.yt.address,
-          this.provider,
-        )
-        const [
-          lpBalance,
-          ptBalance,
-          ytBalance,
-          lpMetadata,
-          ptMetadata,
-          ytMetadata,
-        ] = await Promise.all([
-          marketContract.balanceOf(userAddress),
-          ptContract.balanceOf(userAddress),
-          ytContract.balanceOf(userAddress),
-          getTokenMetadata(value.lp.address, value.chainId, this.provider),
-          getTokenMetadata(value.pt.address, value.chainId, this.provider),
-          getTokenMetadata(value.yt.address, value.chainId, this.provider),
-        ])
-        return {
-          ...lpMetadata,
-          type: TokenType.Protocol,
-          balanceRaw: lpBalance,
-          tokens: [
-            {
-              type: TokenType.Underlying,
-
-              balanceRaw: ptBalance,
-              priceRaw: priceLookUpMap[value.pt.address],
-              ...ptMetadata,
-            },
-            {
-              type: TokenType.Underlying,
-              balanceRaw: ytBalance,
-              priceRaw: priceLookUpMap[value.yt.address],
-              ...ytMetadata,
-            },
-            {
-              type: TokenType.Underlying,
-              balanceRaw: lpBalance,
-              priceRaw: priceLookUpMap[value.lp.address],
-              ...lpMetadata,
-            },
-          ],
-        }
-      }),
-    )
-    return positions.filter((pos) => {
-      const hasBalances = pos.tokens?.some((token) => {
-        return token.balanceRaw !== 0n
-      })
-      return hasBalances
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.withdrawals({
+      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
     })
   }
 
-  /**
-   * Update me.
-   * Add logic to get user's withdrawals per position by block range
-   */
-  async getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  /**
-   * Update me.
-   * Add logic to get user's deposits per position by block range
-   */
-  async getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
+  async getDeposits({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.deposits({
+      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
   }
 
   /**
