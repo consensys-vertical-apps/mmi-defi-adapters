@@ -38,15 +38,15 @@
           "symbol": "cWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": 38513.92742033032,
-          "performance": 0.4947527851761271,
+          "profit": 38513.910109253615,
+          "performance": 0.4947527582408407,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 12108.657826811803,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 65736.1337019913,
-            "endPositionValue": 116358.71894913343
+            "startPositionValue": 65736.10295066208,
+            "endPositionValue": 116358.6708867275
           }
         }
       ],

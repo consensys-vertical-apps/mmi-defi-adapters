@@ -5,6 +5,7 @@ import {
   CompoundV2Comptroller__factory,
 } from '../../contracts'
 import { BorrowEvent, RepayBorrowEvent } from '../../contracts/CompoundV2Cerc20'
+import { Helpers } from '../../scripts/helpers'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
   GetEventsInput,
@@ -32,29 +33,33 @@ import { buildMetadata } from './compoundV2BuildMetadata'
 export abstract class CompoundV2BorrowMarketForkAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
-  chainId: Chain
-  protocolId: Protocol
   abstract productId: string
+
+  protocolId: Protocol
+  chainId: Chain
+  helpers: Helpers
 
   protected provider: CustomJsonRpcProvider
 
   adaptersController: AdaptersController
-
-  abstract contractAddresses: Partial<
-    Record<Chain, { comptrollerAddress: string }>
-  >
 
   constructor({
     provider,
     chainId,
     protocolId,
     adaptersController,
+    helpers,
   }: ProtocolAdapterParams) {
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
     this.adaptersController = adaptersController
+    this.helpers = helpers
   }
+
+  abstract contractAddresses: Partial<
+    Record<Chain, { comptrollerAddress: string }>
+  >
 
   abstract getProtocolDetails(): ProtocolDetails
 
@@ -70,25 +75,6 @@ export abstract class CompoundV2BorrowMarketForkAdapter
     return Object.values(await this.buildMetadata()).map(
       ({ protocolToken }) => protocolToken,
     )
-  }
-
-  private async fetchPoolMetadata(protocolTokenAddress: string) {
-    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
-
-    if (!poolMetadata) {
-      logger.error(
-        {
-          protocolTokenAddress,
-          protocol: this.protocolId,
-          chainId: this.chainId,
-          product: this.productId,
-        },
-        'Protocol token pool not found',
-      )
-      throw new Error('Protocol token pool not found')
-    }
-
-    return poolMetadata
   }
 
   async getPositions({
@@ -143,6 +129,14 @@ export abstract class CompoundV2BorrowMarketForkAdapter
         ],
       }
     })
+  }
+
+  getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new NotImplementedError()
+  }
+
+  getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
+    throw new NotImplementedError()
   }
 
   async getBorrows({
@@ -270,21 +264,32 @@ export abstract class CompoundV2BorrowMarketForkAdapter
     })
   }
 
-  unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
-    throw new NotImplementedError()
-  }
-
-  getWithdrawals(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
-  getDeposits(_input: GetEventsInput): Promise<MovementsByBlock[]> {
-    throw new NotImplementedError()
-  }
-
   getTotalValueLocked(
     _input: GetTotalValueLockedInput,
   ): Promise<ProtocolTokenTvl[]> {
     throw new NotImplementedError()
+  }
+
+  unwrap(_input: UnwrapInput): Promise<UnwrapExchangeRate> {
+    throw new NotImplementedError()
+  }
+
+  private async fetchPoolMetadata(protocolTokenAddress: string) {
+    const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
+
+    if (!poolMetadata) {
+      logger.error(
+        {
+          protocolTokenAddress,
+          protocol: this.protocolId,
+          chainId: this.chainId,
+          product: this.productId,
+        },
+        'Protocol token pool not found',
+      )
+      throw new Error('Protocol token pool not found')
+    }
+
+    return poolMetadata
   }
 }

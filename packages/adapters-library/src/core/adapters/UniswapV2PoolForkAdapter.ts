@@ -1,20 +1,31 @@
+import { Protocol } from '../../adapters/protocols'
 import {
   UniswapV2Factory__factory,
   UniswapV2Pair__factory,
 } from '../../contracts'
+import { Helpers } from '../../scripts/helpers'
+import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
-  TokenBalance,
+  GetEventsInput,
+  GetPositionsInput,
+  GetTotalValueLockedInput,
+  MovementsByBlock,
+  ProtocolAdapterParams,
+  ProtocolDetails,
+  ProtocolPosition,
+  ProtocolTokenTvl,
   TokenType,
-  Underlying,
-  UnwrappedTokenExchangeRate,
+  UnwrapExchangeRate,
+  UnwrapInput,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
+import { AdaptersController } from '../adaptersController'
 import { Chain } from '../constants/chains'
 import { IMetadataBuilder } from '../decorators/cacheToFile'
+import { CustomJsonRpcProvider } from '../provider/CustomJsonRpcProvider'
 import { filterMapAsync } from '../utils/filters'
 import { getTokenMetadata } from '../utils/getTokenMetadata'
 import { logger } from '../utils/logger'
-import { SimplePoolAdapter } from './SimplePoolAdapter'
 
 export type UniswapV2PoolForkAdapterMetadata = Record<
   string,
@@ -35,8 +46,7 @@ export type UniswapV2PoolForkMetadataBuilder =
   | { type: 'factory'; factoryAddress: string }
 
 export abstract class UniswapV2PoolForkAdapter
-  extends SimplePoolAdapter
-  implements IMetadataBuilder
+  implements IProtocolAdapter, IMetadataBuilder
 {
   protected readonly MAX_FACTORY_PAIRS: number = 1000
   protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
@@ -45,6 +55,32 @@ export abstract class UniswapV2PoolForkAdapter
   protected readonly PROTOCOL_TOKEN_PREFIX_OVERRIDE:
     | { name: string; symbol: string }
     | undefined
+
+  abstract productId: string
+
+  protocolId: Protocol
+  chainId: Chain
+  helpers: Helpers
+
+  protected provider: CustomJsonRpcProvider
+
+  adaptersController: AdaptersController
+
+  constructor({
+    provider,
+    chainId,
+    protocolId,
+    adaptersController,
+    helpers,
+  }: ProtocolAdapterParams) {
+    this.provider = provider
+    this.chainId = chainId
+    this.protocolId = protocolId
+    this.adaptersController = adaptersController
+    this.helpers = helpers
+  }
+
+  abstract getProtocolDetails(): ProtocolDetails
 
   protected abstract chainMetadataSettings(): Partial<
     Record<Chain, UniswapV2PoolForkMetadataBuilder>
@@ -107,56 +143,59 @@ export abstract class UniswapV2PoolForkAdapter
     )
   }
 
-  protected async getUnderlyingTokenBalances({
-    protocolTokenBalance,
-    blockNumber,
-  }: {
-    userAddress: string
-    protocolTokenBalance: TokenBalance
-    blockNumber?: number
-  }): Promise<Underlying[]> {
-    const protocolToken = await this.fetchProtocolTokenMetadata(
-      protocolTokenBalance.address,
-    )
-    const pricesPerShare = await this.unwrapProtocolToken(
-      protocolToken,
-      blockNumber,
-    )
-    return pricesPerShare.map((underlyingPricePerShare) => {
-      const balanceRaw =
-        (protocolTokenBalance.balanceRaw *
-          underlyingPricePerShare.underlyingRateRaw) /
-        BigInt(10 ** protocolTokenBalance.decimals)
-
-      return {
-        address: underlyingPricePerShare.address,
-        name: underlyingPricePerShare.name,
-        symbol: underlyingPricePerShare.symbol,
-        decimals: underlyingPricePerShare.decimals,
-        type: TokenType.Underlying,
-        balanceRaw,
-      }
+  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
+    return this.helpers.getBalanceOfTokens({
+      ...input,
+      protocolTokens: await this.getProtocolTokens(),
     })
   }
 
-  protected async fetchProtocolTokenMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata> {
-    const { protocolToken } = await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return protocolToken
+  async getWithdrawals({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.withdrawals({
+      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
   }
 
-  protected async unwrapProtocolToken(
-    protocolTokenMetadata: Erc20Metadata,
-    blockNumber?: number | undefined,
-  ): Promise<UnwrappedTokenExchangeRate[]> {
-    const { token0, token1 } = await this.fetchPoolMetadata(
-      protocolTokenMetadata.address,
-    )
+  async getDeposits({
+    protocolTokenAddress,
+    fromBlock,
+    toBlock,
+    userAddress,
+  }: GetEventsInput): Promise<MovementsByBlock[]> {
+    return this.helpers.deposits({
+      protocolToken: await this.getProtocolToken(protocolTokenAddress),
+      filter: { fromBlock, toBlock, userAddress },
+    })
+  }
+
+  async getTotalValueLocked({
+    protocolTokenAddresses,
+    blockNumber,
+  }: GetTotalValueLockedInput): Promise<ProtocolTokenTvl[]> {
+    const protocolTokens = await this.getProtocolTokens()
+
+    return await this.helpers.tvl({
+      protocolTokens,
+      filterProtocolTokenAddresses: protocolTokenAddresses,
+      blockNumber,
+    })
+  }
+
+  async unwrap({
+    protocolTokenAddress,
+    blockNumber,
+  }: UnwrapInput): Promise<UnwrapExchangeRate> {
+    const { protocolToken, token0, token1 } =
+      await this.fetchPoolMetadata(protocolTokenAddress)
 
     const pairContract = UniswapV2Pair__factory.connect(
-      protocolTokenMetadata.address,
+      protocolTokenAddress,
       this.provider,
     )
 
@@ -172,40 +211,48 @@ export abstract class UniswapV2PoolForkAdapter
         // Division sometimes is not exact, so it needs rounding
         BigInt(
           Math.round(
-            (Number(reserve) * 10 ** protocolTokenMetadata.decimals) /
+            (Number(reserve) * 10 ** protocolToken.decimals) /
               Number(protocolTokenSupply),
           ),
         ),
     )
 
-    return [
-      {
-        type: TokenType.Underlying,
-        underlyingRateRaw: pricePerShare0!,
-        ...token0,
-      },
-      {
-        type: TokenType.Underlying,
-        underlyingRateRaw: pricePerShare1!,
-        ...token1,
-      },
-    ]
+    return {
+      ...protocolToken,
+      baseRate: 1,
+      type: TokenType.Protocol,
+      tokens: [
+        {
+          type: TokenType.Underlying,
+          underlyingRateRaw: pricePerShare0!,
+          ...token0,
+        },
+        {
+          type: TokenType.Underlying,
+          underlyingRateRaw: pricePerShare1!,
+          ...token1,
+        },
+      ],
+    }
   }
 
-  protected async fetchUnderlyingTokensMetadata(
-    protocolTokenAddress: string,
-  ): Promise<Erc20Metadata[]> {
-    const { token0, token1 } =
-      await this.fetchPoolMetadata(protocolTokenAddress)
-
-    return [token0, token1]
+  private async getProtocolToken(protocolTokenAddress: string) {
+    return (await this.fetchPoolMetadata(protocolTokenAddress)).protocolToken
   }
 
   private async fetchPoolMetadata(protocolTokenAddress: string) {
     const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
     if (!poolMetadata) {
-      logger.error({ protocolTokenAddress }, 'Protocol token pool not found')
+      logger.error(
+        {
+          protocolTokenAddress,
+          protocol: this.protocolId,
+          chainId: this.chainId,
+          product: this.productId,
+        },
+        'Protocol token pool not found',
+      )
       throw new Error('Protocol token pool not found')
     }
 

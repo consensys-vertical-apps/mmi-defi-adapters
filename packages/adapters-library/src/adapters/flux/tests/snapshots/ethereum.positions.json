@@ -28,9 +28,9 @@
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "balanceRaw": "10339610n",
               "type": "underlying",
-              "balance": 10.33961,
+              "balanceRaw": "10339573n",
+              "balance": 10.339573,
               "price": 0.9989063896686066,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }
