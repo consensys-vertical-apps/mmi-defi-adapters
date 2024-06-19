@@ -1,5 +1,6 @@
 {
   "blockNumber": 19383091,
+  "aggregatedValues": ["USD7,575.19", "USD116,358.72", "USD64,954.14"],
   "snapshot": [
     {
       "protocolId": "compound-v2",

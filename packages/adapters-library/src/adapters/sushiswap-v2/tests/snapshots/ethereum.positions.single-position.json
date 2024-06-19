@@ -1,5 +1,6 @@
 {
   "blockNumber": 19326319,
+  "aggregatedValues": ["USD3,688.22"],
   "snapshot": [
     {
       "protocolId": "sushiswap-v2",

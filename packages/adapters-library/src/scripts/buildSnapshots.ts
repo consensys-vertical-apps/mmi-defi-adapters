@@ -65,7 +65,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   },
                 })
 
-                const aggregatedValues = getAggregatedValues(snapshot)
+                const aggregatedValues = getAggregatedValues(snapshot, chainId)
 
                 const result = {
                   blockNumber,
@@ -114,7 +114,10 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                   protocolId: protocolId,
                 })
 
-                const aggregatedValues = getAggregatedValuesMovements(snapshot)
+                const aggregatedValues = getAggregatedValuesMovements(
+                  snapshot,
+                  chainId,
+                )
 
                 return {
                   aggregatedValues,
@@ -123,12 +126,20 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               }
 
               case 'withdrawals': {
+                const snapshot = await defiProvider.getWithdrawals({
+                  ...testCase.input,
+                  chainId: chainId,
+                  protocolId: protocolId,
+                })
+
+                const aggregatedValues = getAggregatedValuesMovements(
+                  snapshot,
+                  chainId,
+                )
+
                 return {
-                  snapshot: await defiProvider.getWithdrawals({
-                    ...testCase.input,
-                    chainId: chainId,
-                    protocolId: protocolId,
-                  }),
+                  aggregatedValues,
+                  snapshot,
                 }
               }
               case 'repays': {

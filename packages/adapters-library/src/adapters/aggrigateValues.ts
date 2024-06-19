@@ -1,10 +1,16 @@
+import { Chain } from '../core/constants/chains'
 import { PositionType } from '../types/adapter'
 import { DefiMovementsResponse, DefiPositionResponse } from '../types/response'
 
 export function getAggregatedValues(
   response: DefiPositionResponse[],
+  chainId: Chain,
 ): string[] {
   const aggregatedValues: string[] = []
+
+  if (chainId === Chain.Linea) {
+    return aggregatedValues
+  }
 
   for (const position of response) {
     if (!position.success) {
@@ -26,8 +32,14 @@ export function getAggregatedValues(
 }
 export function getAggregatedValuesMovements(
   response: DefiMovementsResponse,
+  chainId: Chain,
 ): string[] {
   const aggregatedValues: string[] = []
+
+  if (chainId === Chain.Linea) {
+    return aggregatedValues
+  }
+
   if (!response.success) {
     return aggregatedValues
   }

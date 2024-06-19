@@ -1,5 +1,6 @@
 {
   "blockNumber": 18634843,
+  "aggregatedValues": ["USD20.10", "USD64,573.29", "USD65,427.35", "USD264.53"],
   "snapshot": [
     {
       "protocolId": "convex",

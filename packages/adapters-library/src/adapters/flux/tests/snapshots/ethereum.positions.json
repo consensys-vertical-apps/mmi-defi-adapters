@@ -1,5 +1,6 @@
 {
   "blockNumber": 19321516,
+  "aggregatedValues": ["USD10.33", "USD0.10"],
   "snapshot": [
     {
       "protocolId": "flux",

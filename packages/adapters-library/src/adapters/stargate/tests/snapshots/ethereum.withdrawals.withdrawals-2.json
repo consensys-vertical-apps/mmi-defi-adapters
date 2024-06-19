@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD315.94", "USD104.98", "USD2,009.81"],
   "snapshot": {
     "protocolId": "stargate",
     "name": "Stargate",
