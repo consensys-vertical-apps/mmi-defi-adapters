@@ -25,12 +25,12 @@
           "tokens": [
             {
               "address": "0x4200000000000000000000000000000000000006",
-              "symbol": "ETH",
               "name": "Ethereum",
+              "symbol": "ETH",
               "decimals": 18,
-              "totalSupplyRaw": "732588579339332862812n",
               "type": "underlying",
-              "totalSupply": 732.5885793393329,
+              "totalSupplyRaw": "1695135700658862534706n",
+              "totalSupply": 1695.1357006588626,
               "price": 2921.57546867,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
             }
