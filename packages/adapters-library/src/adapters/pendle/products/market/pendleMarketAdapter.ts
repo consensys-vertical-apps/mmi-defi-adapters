@@ -42,6 +42,12 @@ type Metadata = Record<
   }
 >
 
+const PENDLE_ORACLE_ADDRESS_ALL_CHAINS =
+  '0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2'
+
+// unclear to me what these mean - JP
+const DURATION_15_MINS = 900
+const DURATION_30_MINS = 1800
 export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
   productId = 'market'
   protocolId: Protocol
@@ -71,49 +77,61 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     protocolTokenAddress,
     tokenId,
   }: UnwrapInput): Promise<UnwrapExchangeRate> {
-    const metadata = (await this.buildMetadata())[protocolTokenAddress]
-    const underlyingToken = metadata!.underlyingToken
+    const metadata = await this.fetchPoolMetadata(protocolTokenAddress)
+    const underlyingToken = metadata.underlyingToken
 
     const oracle = OraclePyYtLp__factory.connect(
-      '0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2',
+      PENDLE_ORACLE_ADDRESS_ALL_CHAINS,
       this.provider,
     )
 
     let rate: bigint
-    switch (metadata!.type) {
+    switch (metadata.type) {
       case 'pt':
         rate = await oracle
-          .getPtToSyRate(metadata!.marketAddress, 900, {
+          .getPtToSyRate(metadata.marketAddress, DURATION_15_MINS, {
             blockTag: blockNumber,
           })
           .catch((e) => {
-            return oracle.getYtToSyRate(metadata!.marketAddress, 1800, {
-              blockTag: blockNumber,
-            })
+            return oracle.getYtToSyRate(
+              metadata.marketAddress,
+              DURATION_30_MINS,
+              {
+                blockTag: blockNumber,
+              },
+            )
           })
 
         break
       case 'yt':
         rate = await oracle
-          .getYtToSyRate(metadata!.marketAddress, 900, {
+          .getYtToSyRate(metadata.marketAddress, DURATION_15_MINS, {
             blockTag: blockNumber,
           })
           .catch((e) => {
-            return oracle.getYtToSyRate(metadata!.marketAddress, 1800, {
-              blockTag: blockNumber,
-            })
+            return oracle.getYtToSyRate(
+              metadata.marketAddress,
+              DURATION_30_MINS,
+              {
+                blockTag: blockNumber,
+              },
+            )
           })
 
         break
       case 'lp':
         rate = await oracle
-          .getPtToSyRate(metadata!.marketAddress, 900, {
+          .getPtToSyRate(metadata.marketAddress, DURATION_15_MINS, {
             blockTag: blockNumber,
           })
           .catch((e) => {
-            return oracle.getYtToSyRate(metadata!.marketAddress, 1800, {
-              blockTag: blockNumber,
-            })
+            return oracle.getYtToSyRate(
+              metadata.marketAddress,
+              DURATION_30_MINS,
+              {
+                blockTag: blockNumber,
+              },
+            )
           })
 
         break
@@ -122,9 +140,6 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
 
         break
       }
-
-      default:
-        throw new Error('Invalid metadata type')
     }
 
     const underlying = {
@@ -137,7 +152,7 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     return {
       baseRate: 1,
       type: TokenType.Protocol,
-      ...metadata!.protocolToken!,
+      ...metadata.protocolToken,
       tokens: [underlying],
     }
   }
@@ -186,16 +201,16 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
         decimals: value.lp.decimals,
       }
       const underlyingAsset: Erc20Metadata = {
-        address: getAddress(value.underlyingAsset?.address!),
-        name: value.underlyingAsset?.name!,
-        symbol: value.underlyingAsset?.symbol!,
-        decimals: value.underlyingAsset?.decimals!,
+        address: getAddress(value.underlyingAsset.address),
+        name: value.underlyingAsset.name,
+        symbol: value.underlyingAsset.symbol,
+        decimals: value.underlyingAsset.decimals,
       }
       const sy: Erc20Metadata = {
-        address: getAddress(value.sy?.address!),
-        name: value.sy?.name!,
-        symbol: value.sy?.symbol!,
-        decimals: value.underlyingAsset?.decimals!,
+        address: getAddress(value.sy.address),
+        name: value.sy.name,
+        symbol: value.sy.symbol,
+        decimals: value.underlyingAsset.decimals,
       }
 
       metadata[getAddress(pt.address)] = {
