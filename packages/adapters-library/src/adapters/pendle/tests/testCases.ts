@@ -17,7 +17,8 @@ export const testCases: TestCase[] = [
     chainId: Chain.Ethereum,
     method: 'profits',
     input: {
-      userAddress: '0xaa62cf7caaf0c7e50deaa9d5d0b907472f00b258',
+      userAddress: '0x117C99451cae094B3a7d56C9d3A97c96900b8e7A',
+      filterProtocolTokens: ['0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966'],
     },
     blockNumber: 20126536,
   },

@@ -13,7 +13,7 @@
       "decimals": 18
     },
     "marketAddress": "0x7b246B8dBC2a640BF2D8221890cEe8327fC23917",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xC5Cd692e9b4622ab8Cdb57C83A0f99f874A169Cd": {
     "protocolToken": {
@@ -29,7 +29,7 @@
       "decimals": 18
     },
     "marketAddress": "0x7b246B8dBC2a640BF2D8221890cEe8327fC23917",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xD393D1dDd6B8811A86D925F5E14014282581bC04": {
     "protocolToken": {
@@ -45,7 +45,7 @@
       "decimals": 18
     },
     "marketAddress": "0x7b246B8dBC2a640BF2D8221890cEe8327fC23917",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x7b246B8dBC2a640BF2D8221890cEe8327fC23917": {
     "protocolToken": {
@@ -61,7 +61,7 @@
       "decimals": 18
     },
     "marketAddress": "0x7b246B8dBC2a640BF2D8221890cEe8327fC23917",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x293811f161fBFea8f417e222B226BB821548Ba63": {
     "protocolToken": {
@@ -77,7 +77,7 @@
       "decimals": 18
     },
     "marketAddress": "0x44474D98d1484C26E8d296a43a721998731Cf775",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xC20dc81e8844F8fF154A67003849cEA8e951dEdc": {
     "protocolToken": {
@@ -93,7 +93,7 @@
       "decimals": 18
     },
     "marketAddress": "0x44474D98d1484C26E8d296a43a721998731Cf775",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x35C16314D6Ee4753289E5cC15A5C5E1Dd4eaD345": {
     "protocolToken": {
@@ -109,7 +109,7 @@
       "decimals": 18
     },
     "marketAddress": "0x44474D98d1484C26E8d296a43a721998731Cf775",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x44474D98d1484C26E8d296a43a721998731Cf775": {
     "protocolToken": {
@@ -125,7 +125,7 @@
       "decimals": 18
     },
     "marketAddress": "0x44474D98d1484C26E8d296a43a721998731Cf775",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xcf44E8402a99Db82d2AccCC4d9354657Be2121Db": {
     "protocolToken": {
@@ -141,7 +141,7 @@
       "decimals": 18
     },
     "marketAddress": "0x54E28e62Ea9E8D755DC6e74674eAbE2aBfdB004E",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xA53ad7E3A87546CCa450992d54d517c3C939c2BF": {
     "protocolToken": {
@@ -157,7 +157,7 @@
       "decimals": 18
     },
     "marketAddress": "0x54E28e62Ea9E8D755DC6e74674eAbE2aBfdB004E",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xcbC72d92b2dc8187414F6734718563898740C0BC": {
     "protocolToken": {
@@ -173,7 +173,7 @@
       "decimals": 18
     },
     "marketAddress": "0x34280882267ffa6383B363E278B027Be083bBe3b",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x54E28e62Ea9E8D755DC6e74674eAbE2aBfdB004E": {
     "protocolToken": {
@@ -189,7 +189,7 @@
       "decimals": 18
     },
     "marketAddress": "0x54E28e62Ea9E8D755DC6e74674eAbE2aBfdB004E",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xb3b61D1587C05eADEC579b616c45939F19435703": {
     "protocolToken": {
@@ -205,7 +205,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9eC4c502D989F04FfA9312C9D6E3F872EC91A0F9",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x0D459a3287Afec25c0580691e9944d65fEaBb155": {
     "protocolToken": {
@@ -221,7 +221,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9eC4c502D989F04FfA9312C9D6E3F872EC91A0F9",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x9eC4c502D989F04FfA9312C9D6E3F872EC91A0F9": {
     "protocolToken": {
@@ -237,7 +237,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9eC4c502D989F04FfA9312C9D6E3F872EC91A0F9",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x2CF5Eb8dB83C9752125D5d961C4C9DfaA9178d1A": {
     "protocolToken": {
@@ -253,7 +253,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9A76925dD91A7561b58D8353f0bcE4DF1e517aBb",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x9523F7e527f8AE884DFb0a38F611AA7417Fd2845": {
     "protocolToken": {
@@ -269,7 +269,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9A76925dD91A7561b58D8353f0bcE4DF1e517aBb",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x47BA20283Be4d72D4AFB1862994F4203551539C5": {
     "protocolToken": {
@@ -285,7 +285,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9A76925dD91A7561b58D8353f0bcE4DF1e517aBb",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x9A76925dD91A7561b58D8353f0bcE4DF1e517aBb": {
     "protocolToken": {
@@ -301,7 +301,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9A76925dD91A7561b58D8353f0bcE4DF1e517aBb",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xfbd85BF7A1E1bec0da6D12964B8c05471aE8f048": {
     "protocolToken": {
@@ -317,7 +317,7 @@
       "decimals": 18
     },
     "marketAddress": "0x5546d0f27BEd4075eA03a22c58F7016E24c94EA7",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x0F28A763198035825dFAdF3455cB5b8473a7c140": {
     "protocolToken": {
@@ -333,7 +333,7 @@
       "decimals": 18
     },
     "marketAddress": "0x5546d0f27BEd4075eA03a22c58F7016E24c94EA7",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xdf7083f2A0F8a191ab5eEAFebE92ED21cD3Dd915": {
     "protocolToken": {
@@ -349,7 +349,7 @@
       "decimals": 18
     },
     "marketAddress": "0x5546d0f27BEd4075eA03a22c58F7016E24c94EA7",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x5546d0f27BEd4075eA03a22c58F7016E24c94EA7": {
     "protocolToken": {
@@ -365,7 +365,7 @@
       "decimals": 18
     },
     "marketAddress": "0x5546d0f27BEd4075eA03a22c58F7016E24c94EA7",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xf6A865c4B9b087fFDd1e0DF8b5Dbb89Ee3546f49": {
     "protocolToken": {
@@ -381,7 +381,7 @@
       "decimals": 18
     },
     "marketAddress": "0xFcbAe4635CA89866F83Add208eCcEec742678746",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x37fEc7b2f36f3bbAe956262F46ddF21830fa68ef": {
     "protocolToken": {
@@ -397,7 +397,7 @@
       "decimals": 18
     },
     "marketAddress": "0xFcbAe4635CA89866F83Add208eCcEec742678746",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x8267fdabd1b8C8645138f2dE5B0fe24988DC9820": {
     "protocolToken": {
@@ -413,7 +413,7 @@
       "decimals": 18
     },
     "marketAddress": "0xFcbAe4635CA89866F83Add208eCcEec742678746",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xFcbAe4635CA89866F83Add208eCcEec742678746": {
     "protocolToken": {
@@ -429,7 +429,7 @@
       "decimals": 18
     },
     "marketAddress": "0xFcbAe4635CA89866F83Add208eCcEec742678746",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xf431a1d9b87e8e275C9B26DC9b99641c81a2b11A": {
     "protocolToken": {
@@ -445,7 +445,7 @@
       "decimals": 18
     },
     "marketAddress": "0xbEEf0aCD30d146F8ac4Ca6665D672727b943f105",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xF88Cf36C49f19713E2BB6FdfAD02c5e73e3019d0": {
     "protocolToken": {
@@ -461,7 +461,7 @@
       "decimals": 18
     },
     "marketAddress": "0xbEEf0aCD30d146F8ac4Ca6665D672727b943f105",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xc0CA1e345bE44Ea2c83202222E5084ae3a01e9DC": {
     "protocolToken": {
@@ -477,7 +477,7 @@
       "decimals": 18
     },
     "marketAddress": "0xbEEf0aCD30d146F8ac4Ca6665D672727b943f105",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xbEEf0aCD30d146F8ac4Ca6665D672727b943f105": {
     "protocolToken": {
@@ -493,7 +493,7 @@
       "decimals": 18
     },
     "marketAddress": "0xbEEf0aCD30d146F8ac4Ca6665D672727b943f105",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x7758896b6AC966BbABcf143eFA963030f17D3EdF": {
     "protocolToken": {
@@ -509,7 +509,7 @@
       "decimals": 18
     },
     "marketAddress": "0xD0354D4e7bCf345fB117cabe41aCaDb724eccCa2",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xc3863CCcd012f8E45D72Ec87c5A9C4F77e1C7549": {
     "protocolToken": {
@@ -525,7 +525,7 @@
       "decimals": 18
     },
     "marketAddress": "0xD0354D4e7bCf345fB117cabe41aCaDb724eccCa2",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xD0354D4e7bCf345fB117cabe41aCaDb724eccCa2": {
     "protocolToken": {
@@ -541,7 +541,7 @@
       "decimals": 18
     },
     "marketAddress": "0xD0354D4e7bCf345fB117cabe41aCaDb724eccCa2",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x9014F29610E904c8269726c74ebc79f5d512DAfD": {
     "protocolToken": {
@@ -557,7 +557,7 @@
       "decimals": 6
     },
     "marketAddress": "0x30e0dC9a1D33EAc83211a1113de238b3Ce826950",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x9Ba9D392bE8b4CA159b1934E531D13Ad66dA023C": {
     "protocolToken": {
@@ -573,7 +573,7 @@
       "decimals": 6
     },
     "marketAddress": "0x30e0dC9a1D33EAc83211a1113de238b3Ce826950",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x3025680925349c9C01c0F01cf300EC963832ec64": {
     "protocolToken": {
@@ -589,7 +589,7 @@
       "decimals": 6
     },
     "marketAddress": "0x30e0dC9a1D33EAc83211a1113de238b3Ce826950",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x30e0dC9a1D33EAc83211a1113de238b3Ce826950": {
     "protocolToken": {
@@ -605,7 +605,7 @@
       "decimals": 6
     },
     "marketAddress": "0x30e0dC9a1D33EAc83211a1113de238b3Ce826950",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x6e99277F5349614AE653B8AC9C5e2F105943E8D9": {
     "protocolToken": {
@@ -621,7 +621,7 @@
       "decimals": 18
     },
     "marketAddress": "0xfb8f489df4e04609F4f4e54F586f960818B70041",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x22E250EcaF9090AB3E31916b0411d7c19e085fDE": {
     "protocolToken": {
@@ -637,7 +637,7 @@
       "decimals": 18
     },
     "marketAddress": "0xfb8f489df4e04609F4f4e54F586f960818B70041",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xeb83006b0aADdD15AD8AFbebE2f4e0937f210673": {
     "protocolToken": {
@@ -653,7 +653,7 @@
       "decimals": 18
     },
     "marketAddress": "0xfb8f489df4e04609F4f4e54F586f960818B70041",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xfb8f489df4e04609F4f4e54F586f960818B70041": {
     "protocolToken": {
@@ -669,7 +669,7 @@
       "decimals": 18
     },
     "marketAddress": "0xfb8f489df4e04609F4f4e54F586f960818B70041",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xf99985822fb361117FCf3768D34a6353E6022F5F": {
     "protocolToken": {
@@ -685,7 +685,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC374f7eC85F8C7DE3207a10bB1978bA104bdA3B2",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xf3aBC972A0f537c1119C990d422463b93227Cd83": {
     "protocolToken": {
@@ -701,7 +701,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC374f7eC85F8C7DE3207a10bB1978bA104bdA3B2",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xC374f7eC85F8C7DE3207a10bB1978bA104bdA3B2": {
     "protocolToken": {
@@ -717,7 +717,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC374f7eC85F8C7DE3207a10bB1978bA104bdA3B2",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xF77205F5A1eEab54555B13B231fa5e4e0Cf2fC1c": {
     "protocolToken": {
@@ -733,7 +733,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd1434df1E2Ad0Cb7B3701a751D01981c7Cf2Dd62",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xCfD3A9e44957D5996663b58B69A79978CcFa778f": {
     "protocolToken": {
@@ -749,7 +749,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd1434df1E2Ad0Cb7B3701a751D01981c7Cf2Dd62",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x677885afde857b70f40741ff8B60F9aFbA95Dd49": {
     "protocolToken": {
@@ -765,7 +765,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd1434df1E2Ad0Cb7B3701a751D01981c7Cf2Dd62",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xd1434df1E2Ad0Cb7B3701a751D01981c7Cf2Dd62": {
     "protocolToken": {
@@ -781,7 +781,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd1434df1E2Ad0Cb7B3701a751D01981c7Cf2Dd62",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xD961c25aDb22171B142f7e9E14dF01962D4decDf": {
     "protocolToken": {
@@ -797,7 +797,7 @@
       "decimals": 18
     },
     "marketAddress": "0xabC8ae339e3F560BF700A3f6eE85Ee719979762b",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x5A0f44FE239856091C52a4b2114aba55773b9c8d": {
     "protocolToken": {
@@ -813,7 +813,7 @@
       "decimals": 18
     },
     "marketAddress": "0xabC8ae339e3F560BF700A3f6eE85Ee719979762b",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x7f531a70A240Fba0e40169E56EedE1C6B7Ef8463": {
     "protocolToken": {
@@ -829,7 +829,7 @@
       "decimals": 18
     },
     "marketAddress": "0xabC8ae339e3F560BF700A3f6eE85Ee719979762b",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xabC8ae339e3F560BF700A3f6eE85Ee719979762b": {
     "protocolToken": {
@@ -845,7 +845,7 @@
       "decimals": 18
     },
     "marketAddress": "0xabC8ae339e3F560BF700A3f6eE85Ee719979762b",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xa5D0d71cB2601d7082E1c39cF1B6f131Bf866a33": {
     "protocolToken": {
@@ -861,7 +861,7 @@
       "decimals": 18
     },
     "marketAddress": "0x2EC8C498ec997aD963969a2c93Bf7150a1F5b213",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x1524b28167a54C5Daef3d1A511A31436ACC91ed0": {
     "protocolToken": {
@@ -877,7 +877,7 @@
       "decimals": 18
     },
     "marketAddress": "0x2EC8C498ec997aD963969a2c93Bf7150a1F5b213",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xc0dd85720E3Bc7959890127b5d3Af2D29f6C74f4": {
     "protocolToken": {
@@ -893,7 +893,7 @@
       "decimals": 18
     },
     "marketAddress": "0x2EC8C498ec997aD963969a2c93Bf7150a1F5b213",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x2EC8C498ec997aD963969a2c93Bf7150a1F5b213": {
     "protocolToken": {
@@ -909,7 +909,7 @@
       "decimals": 18
     },
     "marketAddress": "0x2EC8C498ec997aD963969a2c93Bf7150a1F5b213",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xb253Eff1104802b97aC7E3aC9FdD73AecE295a2c": {
     "protocolToken": {
@@ -925,7 +925,7 @@
       "decimals": 18
     },
     "marketAddress": "0x34280882267ffa6383B363E278B027Be083bBe3b",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x04B7Fa1e727d7290D6E24fA9b426d0c940283a95": {
     "protocolToken": {
@@ -941,7 +941,7 @@
       "decimals": 18
     },
     "marketAddress": "0x34280882267ffa6383B363E278B027Be083bBe3b",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x34280882267ffa6383B363E278B027Be083bBe3b": {
     "protocolToken": {
@@ -957,7 +957,7 @@
       "decimals": 18
     },
     "marketAddress": "0x34280882267ffa6383B363E278B027Be083bBe3b",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xe82db015E01E93381991d14b5bAA30fE73bb3240": {
     "protocolToken": {
@@ -973,7 +973,7 @@
       "decimals": 18
     },
     "marketAddress": "0x8225dD26DdFaaa321E5388e0F4C090Ba16217c21",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x9ddc69eB24329365e96Cdca508e37dDf1CD4478d": {
     "protocolToken": {
@@ -989,7 +989,7 @@
       "decimals": 18
     },
     "marketAddress": "0x8225dD26DdFaaa321E5388e0F4C090Ba16217c21",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xCb611D0BD02a74C491B75d51D6EA5558f1887Da3": {
     "protocolToken": {
@@ -1005,7 +1005,7 @@
       "decimals": 18
     },
     "marketAddress": "0x8225dD26DdFaaa321E5388e0F4C090Ba16217c21",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x8225dD26DdFaaa321E5388e0F4C090Ba16217c21": {
     "protocolToken": {
@@ -1021,7 +1021,7 @@
       "decimals": 18
     },
     "marketAddress": "0x8225dD26DdFaaa321E5388e0F4C090Ba16217c21",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x86a0ADF389Ba99006633978dDd43c5aa711DDF3E": {
     "protocolToken": {
@@ -1037,7 +1037,7 @@
       "decimals": 18
     },
     "marketAddress": "0xD547d9C74314F787aFFc587d101146e1663d046e",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xcE0BD0De35A39508916e1f63fBdaf15221c66d18": {
     "protocolToken": {
@@ -1053,7 +1053,7 @@
       "decimals": 18
     },
     "marketAddress": "0xD547d9C74314F787aFFc587d101146e1663d046e",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xb5Cd090010D4735f18306EB680D898eF9F36F044": {
     "protocolToken": {
@@ -1069,7 +1069,7 @@
       "decimals": 18
     },
     "marketAddress": "0xD547d9C74314F787aFFc587d101146e1663d046e",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xD547d9C74314F787aFFc587d101146e1663d046e": {
     "protocolToken": {
@@ -1085,7 +1085,7 @@
       "decimals": 18
     },
     "marketAddress": "0xD547d9C74314F787aFFc587d101146e1663d046e",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x330c4DD05dB16db6323505262C57CFdE5f0A78Ea": {
     "protocolToken": {
@@ -1101,7 +1101,7 @@
       "decimals": 18
     },
     "marketAddress": "0x0e1C5509B503358eA1Dac119C1D413e28Cc4b303",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x3199c7c3c972a8da5F9faD2A838383f827b735F1": {
     "protocolToken": {
@@ -1117,7 +1117,7 @@
       "decimals": 18
     },
     "marketAddress": "0x0e1C5509B503358eA1Dac119C1D413e28Cc4b303",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xaa68CA9C69a4ff22203cE189Ce4448d7401875E8": {
     "protocolToken": {
@@ -1133,7 +1133,7 @@
       "decimals": 18
     },
     "marketAddress": "0xa5fD0E8991bE631917D2d2B2d5dACfD7bFef7876",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x0e1C5509B503358eA1Dac119C1D413e28Cc4b303": {
     "protocolToken": {
@@ -1149,7 +1149,7 @@
       "decimals": 18
     },
     "marketAddress": "0x0e1C5509B503358eA1Dac119C1D413e28Cc4b303",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x880cC97A7222C6b7Ed77232143a220fd2dcB3004": {
     "protocolToken": {
@@ -1165,7 +1165,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC112B12aDDc11f988AbC1AAfb47e4C2F62fb6070",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x2C4413364623d6AC247E0AF629cEC8ACc596f646": {
     "protocolToken": {
@@ -1181,7 +1181,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC112B12aDDc11f988AbC1AAfb47e4C2F62fb6070",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xbA72de8B5B56552e537994DddFe82e7ce43409f5": {
     "protocolToken": {
@@ -1197,7 +1197,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC112B12aDDc11f988AbC1AAfb47e4C2F62fb6070",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xC112B12aDDc11f988AbC1AAfb47e4C2F62fb6070": {
     "protocolToken": {
@@ -1213,7 +1213,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC112B12aDDc11f988AbC1AAfb47e4C2F62fb6070",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x2CDB89969A8C206624C1173D1da3284B26dcB03d": {
     "protocolToken": {
@@ -1229,7 +1229,7 @@
       "decimals": 18
     },
     "marketAddress": "0xcF756c00A755172bDC073787Ea83817603dA42eF",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xb655B156816DD7bA76D99435db845E5E55B2bF49": {
     "protocolToken": {
@@ -1245,7 +1245,7 @@
       "decimals": 18
     },
     "marketAddress": "0xcF756c00A755172bDC073787Ea83817603dA42eF",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xcb6Ea7fddFdf2AFc2Bc6Bf715185A33F8E27B96b": {
     "protocolToken": {
@@ -1261,7 +1261,7 @@
       "decimals": 18
     },
     "marketAddress": "0xcF756c00A755172bDC073787Ea83817603dA42eF",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xcF756c00A755172bDC073787Ea83817603dA42eF": {
     "protocolToken": {
@@ -1277,7 +1277,7 @@
       "decimals": 18
     },
     "marketAddress": "0xcF756c00A755172bDC073787Ea83817603dA42eF",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xd187BEA2C423D908d102ebe5Ee8C65d37f4085c3": {
     "protocolToken": {
@@ -1293,7 +1293,7 @@
       "decimals": 8
     },
     "marketAddress": "0xcB71c2A73fd7588E1599DF90b88de2316585A860",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x5935cEdD7D33a32cD60e0F97cFf54A6Bbdbe7Eee": {
     "protocolToken": {
@@ -1309,7 +1309,7 @@
       "decimals": 8
     },
     "marketAddress": "0xcB71c2A73fd7588E1599DF90b88de2316585A860",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xf94A3798B18140b9Bc322314bbD36BC8e245E29B": {
     "protocolToken": {
@@ -1325,7 +1325,7 @@
       "decimals": 8
     },
     "marketAddress": "0xcB71c2A73fd7588E1599DF90b88de2316585A860",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xcB71c2A73fd7588E1599DF90b88de2316585A860": {
     "protocolToken": {
@@ -1341,7 +1341,7 @@
       "decimals": 8
     },
     "marketAddress": "0xcB71c2A73fd7588E1599DF90b88de2316585A860",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xAc0650178E8bE0c26B25673618C7BE465A40AaF9": {
     "protocolToken": {
@@ -1357,7 +1357,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd16CB4138A0f09885DefdBc1Fe4a65a8F2fb3950",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x013889973Cced40030175D138c685266b055e3F4": {
     "protocolToken": {
@@ -1373,7 +1373,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd16CB4138A0f09885DefdBc1Fe4a65a8F2fb3950",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x90f1935f733Dd8826DcA2Bd01ccFc600F20E978E": {
     "protocolToken": {
@@ -1389,7 +1389,7 @@
       "decimals": 18
     },
     "marketAddress": "0x93a82F3873e5b4fF81902663C43286d662F6721C",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xd16CB4138A0f09885DefdBc1Fe4a65a8F2fb3950": {
     "protocolToken": {
@@ -1405,7 +1405,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd16CB4138A0f09885DefdBc1Fe4a65a8F2fb3950",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x158b791A17956925a2Bc55c37B0daF8c3ACe4549": {
     "protocolToken": {
@@ -1421,7 +1421,7 @@
       "decimals": 18
     },
     "marketAddress": "0x62187066FD9C24559ffB54B0495a304ADe26d50B",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xa42374d76D4B7cF95c2c1e3661537D8c89f68fFA": {
     "protocolToken": {
@@ -1437,7 +1437,7 @@
       "decimals": 18
     },
     "marketAddress": "0x62187066FD9C24559ffB54B0495a304ADe26d50B",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x0A26e7Ab5C554232314A8d459eff0eDE72333F08": {
     "protocolToken": {
@@ -1453,7 +1453,7 @@
       "decimals": 18
     },
     "marketAddress": "0x62187066FD9C24559ffB54B0495a304ADe26d50B",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x62187066FD9C24559ffB54B0495a304ADe26d50B": {
     "protocolToken": {
@@ -1469,7 +1469,7 @@
       "decimals": 18
     },
     "marketAddress": "0x62187066FD9C24559ffB54B0495a304ADe26d50B",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x6B44fC15953fb65be99b1d32E25cFAA9362c8173": {
     "protocolToken": {
@@ -1485,7 +1485,7 @@
       "decimals": 18
     },
     "marketAddress": "0x23aEfCeD9255aD3560CDaa4A10CbFe9EC230DC5A",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x82cC3DA7D315C47557147f44984C3E805C34789c": {
     "protocolToken": {
@@ -1501,7 +1501,7 @@
       "decimals": 18
     },
     "marketAddress": "0x23aEfCeD9255aD3560CDaa4A10CbFe9EC230DC5A",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x7e16e4253CE4a1C96422a9567B23b4b5Ebc207F1": {
     "protocolToken": {
@@ -1517,7 +1517,7 @@
       "decimals": 18
     },
     "marketAddress": "0x23aEfCeD9255aD3560CDaa4A10CbFe9EC230DC5A",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x23aEfCeD9255aD3560CDaa4A10CbFe9EC230DC5A": {
     "protocolToken": {
@@ -1533,7 +1533,7 @@
       "decimals": 18
     },
     "marketAddress": "0x23aEfCeD9255aD3560CDaa4A10CbFe9EC230DC5A",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x0F44751f3555133eFd972e2B580941c3e5577b6b": {
     "protocolToken": {
@@ -1549,7 +1549,7 @@
       "decimals": 18
     },
     "marketAddress": "0xFf262396f2A35Cd7Aa24b7255E7d3f45f057Cdba",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x025417aF44EBe9521b80187514e92F6093dE78bE": {
     "protocolToken": {
@@ -1565,7 +1565,7 @@
       "decimals": 18
     },
     "marketAddress": "0xFf262396f2A35Cd7Aa24b7255E7d3f45f057Cdba",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xcb166f0148Ae815313039d735E28FCeC617B21Fe": {
     "protocolToken": {
@@ -1581,7 +1581,7 @@
       "decimals": 18
     },
     "marketAddress": "0xFf262396f2A35Cd7Aa24b7255E7d3f45f057Cdba",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xFf262396f2A35Cd7Aa24b7255E7d3f45f057Cdba": {
     "protocolToken": {
@@ -1597,7 +1597,7 @@
       "decimals": 18
     },
     "marketAddress": "0xFf262396f2A35Cd7Aa24b7255E7d3f45f057Cdba",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xac440d0eE23FA69632Aa731322C2a480dD1376e4": {
     "protocolToken": {
@@ -1613,7 +1613,7 @@
       "decimals": 18
     },
     "marketAddress": "0xa5fD0E8991bE631917D2d2B2d5dACfD7bFef7876",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x46B7f43137e4996B40Ad7E55C791949Cc3e7C734": {
     "protocolToken": {
@@ -1629,7 +1629,7 @@
       "decimals": 18
     },
     "marketAddress": "0xa5fD0E8991bE631917D2d2B2d5dACfD7bFef7876",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xa5fD0E8991bE631917D2d2B2d5dACfD7bFef7876": {
     "protocolToken": {
@@ -1645,7 +1645,7 @@
       "decimals": 18
     },
     "marketAddress": "0xa5fD0E8991bE631917D2d2B2d5dACfD7bFef7876",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xB87511364014C088e30f872EfC4a00D7efB843AC": {
     "protocolToken": {
@@ -1661,7 +1661,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC9beCdbC62efb867cB52222b34c187fB170379C6",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xED97f94dd94255637A054098604E0201C442a3FD": {
     "protocolToken": {
@@ -1677,7 +1677,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC9beCdbC62efb867cB52222b34c187fB170379C6",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xE05082B184a34668CD8A904D85FA815802BBb04c": {
     "protocolToken": {
@@ -1693,7 +1693,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC9beCdbC62efb867cB52222b34c187fB170379C6",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xC9beCdbC62efb867cB52222b34c187fB170379C6": {
     "protocolToken": {
@@ -1709,7 +1709,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC9beCdbC62efb867cB52222b34c187fB170379C6",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xBF44fbCc181e297E1532B72c6ca500fe150C5b9E": {
     "protocolToken": {
@@ -1725,7 +1725,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1806855b73881eD4E435c97C6Da58b01Be5D7390",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xDe364a895D4EC08c05A34F6883A8E41C15619Ed8": {
     "protocolToken": {
@@ -1741,7 +1741,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1806855b73881eD4E435c97C6Da58b01Be5D7390",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xb359F0A97Ca269Ae5574dc75be48b0e81eFD1dA2": {
     "protocolToken": {
@@ -1757,7 +1757,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1806855b73881eD4E435c97C6Da58b01Be5D7390",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x1806855b73881eD4E435c97C6Da58b01Be5D7390": {
     "protocolToken": {
@@ -1773,7 +1773,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1806855b73881eD4E435c97C6Da58b01Be5D7390",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x0Ba11DEe8b63f08EA25d0cc733601e8C15325a8D": {
     "protocolToken": {
@@ -1789,7 +1789,7 @@
       "decimals": 18
     },
     "marketAddress": "0x0eB3f11ed8ca69813744868D02D83D4Fbf72841e",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x41535fc6AdCb81a7af1bD4669d221983Ed4e33Af": {
     "protocolToken": {
@@ -1805,7 +1805,7 @@
       "decimals": 18
     },
     "marketAddress": "0x0eB3f11ed8ca69813744868D02D83D4Fbf72841e",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x887bdD18D042A85b9c702698eFE71E1C38d5C868": {
     "protocolToken": {
@@ -1821,7 +1821,7 @@
       "decimals": 18
     },
     "marketAddress": "0x0eB3f11ed8ca69813744868D02D83D4Fbf72841e",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x0eB3f11ed8ca69813744868D02D83D4Fbf72841e": {
     "protocolToken": {
@@ -1837,7 +1837,7 @@
       "decimals": 18
     },
     "marketAddress": "0x0eB3f11ed8ca69813744868D02D83D4Fbf72841e",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x386Bf9105eF88e79fb8CA53dCC9a4E6f04BE0102": {
     "protocolToken": {
@@ -1853,7 +1853,7 @@
       "decimals": 18
     },
     "marketAddress": "0xBBd395D4820da5C89A3bCA4FA28Af97254a0FCBe",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xAf86Da90A5C1e1a41Be3b944b16944081087b7Aa": {
     "protocolToken": {
@@ -1869,7 +1869,7 @@
       "decimals": 18
     },
     "marketAddress": "0xBBd395D4820da5C89A3bCA4FA28Af97254a0FCBe",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x60D1AfD87c5Ab1a13E27638f1e75277fEbF4908C": {
     "protocolToken": {
@@ -1885,7 +1885,7 @@
       "decimals": 18
     },
     "marketAddress": "0x386F90Eb964A477498b528a39D9405E73Ed4032b",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xBBd395D4820da5C89A3bCA4FA28Af97254a0FCBe": {
     "protocolToken": {
@@ -1901,7 +1901,7 @@
       "decimals": 18
     },
     "marketAddress": "0xBBd395D4820da5C89A3bCA4FA28Af97254a0FCBe",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966": {
     "protocolToken": {
@@ -1917,7 +1917,7 @@
       "decimals": 18
     },
     "marketAddress": "0xF32e58F92e60f4b0A37A69b95d642A471365EAe8",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xfb35Fd0095dD1096b1Ca49AD44d8C5812A201677": {
     "protocolToken": {
@@ -1933,7 +1933,7 @@
       "decimals": 18
     },
     "marketAddress": "0xF32e58F92e60f4b0A37A69b95d642A471365EAe8",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xAC0047886a985071476a1186bE89222659970d65": {
     "protocolToken": {
@@ -1949,7 +1949,7 @@
       "decimals": 18
     },
     "marketAddress": "0xe1F19CBDa26b6418B0C8E1EE978a533184496066",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xF32e58F92e60f4b0A37A69b95d642A471365EAe8": {
     "protocolToken": {
@@ -1965,7 +1965,7 @@
       "decimals": 18
     },
     "marketAddress": "0xF32e58F92e60f4b0A37A69b95d642A471365EAe8",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xB05cABCd99cf9a73b19805edefC5f67CA5d1895E": {
     "protocolToken": {
@@ -1981,7 +1981,7 @@
       "decimals": 18
     },
     "marketAddress": "0x4f43c77872Db6BA177c270986CD30c3381AF37Ee",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x0ED3A1D45DfdCf85BCc6C7BAFDC0170A357B974C": {
     "protocolToken": {
@@ -1997,7 +1997,7 @@
       "decimals": 18
     },
     "marketAddress": "0x4f43c77872Db6BA177c270986CD30c3381AF37Ee",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x730A5E2AcEbccAA5e9095723B3CB862739DA793c": {
     "protocolToken": {
@@ -2013,7 +2013,7 @@
       "decimals": 18
     },
     "marketAddress": "0x6b4740722e46048874d84306B2877600ABCea3Ae",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x4f43c77872Db6BA177c270986CD30c3381AF37Ee": {
     "protocolToken": {
@@ -2029,7 +2029,7 @@
       "decimals": 18
     },
     "marketAddress": "0x4f43c77872Db6BA177c270986CD30c3381AF37Ee",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xeEE8aED1957ca1545a0508AfB51b53cCA7e3c0d1": {
     "protocolToken": {
@@ -2045,7 +2045,7 @@
       "decimals": 18
     },
     "marketAddress": "0xDe715330043799D7a80249660d1e6b61eB3713B3",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x256Fb830945141f7927785c06b65dAbc3744213c": {
     "protocolToken": {
@@ -2061,7 +2061,7 @@
       "decimals": 18
     },
     "marketAddress": "0xDe715330043799D7a80249660d1e6b61eB3713B3",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x22E12A50e3ca49FB183074235cB1db84Fe4C716D": {
     "protocolToken": {
@@ -2077,7 +2077,7 @@
       "decimals": 18
     },
     "marketAddress": "0xcDBD5ff3E03b6828Db9C32e2131A60ABA5137901",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xDe715330043799D7a80249660d1e6b61eB3713B3": {
     "protocolToken": {
@@ -2093,7 +2093,7 @@
       "decimals": 18
     },
     "marketAddress": "0xDe715330043799D7a80249660d1e6b61eB3713B3",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xC58aa33Ce619c7f7Ac4929DF357D0Ef762edbD23": {
     "protocolToken": {
@@ -2109,7 +2109,7 @@
       "decimals": 18
     },
     "marketAddress": "0x17BE998a578fD97687b24E83954FEc86Dc20c979",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x391B570e81e354a85a496952b66ADc831715f54f": {
     "protocolToken": {
@@ -2125,7 +2125,7 @@
       "decimals": 18
     },
     "marketAddress": "0x17BE998a578fD97687b24E83954FEc86Dc20c979",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x253008ba4aE2f3E6488DC998a5321D4EB1a0c905": {
     "protocolToken": {
@@ -2141,7 +2141,7 @@
       "decimals": 18
     },
     "marketAddress": "0xA54FC268101c8b97DE19eF3141d34751a11996B2",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x17BE998a578fD97687b24E83954FEc86Dc20c979": {
     "protocolToken": {
@@ -2157,7 +2157,7 @@
       "decimals": 18
     },
     "marketAddress": "0x17BE998a578fD97687b24E83954FEc86Dc20c979",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x0869055C098Fe927E1816CAAfb16E9133e5258FE": {
     "protocolToken": {
@@ -2173,7 +2173,7 @@
       "decimals": 18
     },
     "marketAddress": "0xb4460e76D99eCaD95030204D3C25fb33C4833997",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xA99A4329c49369fB41e6CB6852535Bbf3d4f749b": {
     "protocolToken": {
@@ -2189,7 +2189,7 @@
       "decimals": 18
     },
     "marketAddress": "0xb4460e76D99eCaD95030204D3C25fb33C4833997",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x248d83f7Ac03CEbCC06d5C1A52c9B5d0EbB9936e": {
     "protocolToken": {
@@ -2205,7 +2205,7 @@
       "decimals": 18
     },
     "marketAddress": "0xb4460e76D99eCaD95030204D3C25fb33C4833997",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xb4460e76D99eCaD95030204D3C25fb33C4833997": {
     "protocolToken": {
@@ -2221,7 +2221,7 @@
       "decimals": 18
     },
     "marketAddress": "0xb4460e76D99eCaD95030204D3C25fb33C4833997",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xA0e3D7418A34057016403197064b70c127E01e19": {
     "protocolToken": {
@@ -2237,7 +2237,7 @@
       "decimals": 18
     },
     "marketAddress": "0x8f7627bD46B30E296Aa3AAbe1dF9Bfac10920B6E",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x20c8Cf9714339fd018898cB5De84c089e48d1c87": {
     "protocolToken": {
@@ -2253,7 +2253,7 @@
       "decimals": 18
     },
     "marketAddress": "0x8f7627bD46B30E296Aa3AAbe1dF9Bfac10920B6E",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x215a61deaD7e1303b8571Bb429491aeAc5f2061e": {
     "protocolToken": {
@@ -2269,7 +2269,7 @@
       "decimals": 18
     },
     "marketAddress": "0x8f7627bD46B30E296Aa3AAbe1dF9Bfac10920B6E",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x8f7627bD46B30E296Aa3AAbe1dF9Bfac10920B6E": {
     "protocolToken": {
@@ -2285,7 +2285,7 @@
       "decimals": 18
     },
     "marketAddress": "0x8f7627bD46B30E296Aa3AAbe1dF9Bfac10920B6E",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xe6FE6e1f6Ef1de6a21Cd752E805F953673A7C0F0": {
     "protocolToken": {
@@ -2301,7 +2301,7 @@
       "decimals": 6
     },
     "marketAddress": "0xb8FBF5cC2826c1C9909f59DD11633b494f46FBfe",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x6cf80D52E1724437c509A9729719ac9b566cA19F": {
     "protocolToken": {
@@ -2317,7 +2317,7 @@
       "decimals": 6
     },
     "marketAddress": "0xb8FBF5cC2826c1C9909f59DD11633b494f46FBfe",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x8c28D28bAd669afadC37b034A8070D6d7B9dFB74": {
     "protocolToken": {
@@ -2333,7 +2333,7 @@
       "decimals": 6
     },
     "marketAddress": "0xb8FBF5cC2826c1C9909f59DD11633b494f46FBfe",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xb8FBF5cC2826c1C9909f59DD11633b494f46FBfe": {
     "protocolToken": {
@@ -2349,7 +2349,7 @@
       "decimals": 6
     },
     "marketAddress": "0xb8FBF5cC2826c1C9909f59DD11633b494f46FBfe",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x988B6914866e2ad9Dc9b034387636D2641f79AA3": {
     "protocolToken": {
@@ -2365,7 +2365,7 @@
       "decimals": 18
     },
     "marketAddress": "0x93a82F3873e5b4fF81902663C43286d662F6721C",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xa2D5eb975E20205AcCC3C1a1EFAb43e99070de1A": {
     "protocolToken": {
@@ -2381,7 +2381,7 @@
       "decimals": 18
     },
     "marketAddress": "0x93a82F3873e5b4fF81902663C43286d662F6721C",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x93a82F3873e5b4fF81902663C43286d662F6721C": {
     "protocolToken": {
@@ -2397,7 +2397,7 @@
       "decimals": 18
     },
     "marketAddress": "0x93a82F3873e5b4fF81902663C43286d662F6721C",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xDDFD5e912C1949B4bDb12579002c44B7A83F9E88": {
     "protocolToken": {
@@ -2413,7 +2413,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd7E0809998693fD87E81D51dE1619fd0EE658031",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x98601E27d41ccff643da9d981dc708cf9eF1F150": {
     "protocolToken": {
@@ -2429,7 +2429,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd7E0809998693fD87E81D51dE1619fd0EE658031",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744": {
     "protocolToken": {
@@ -2445,7 +2445,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd7E0809998693fD87E81D51dE1619fd0EE658031",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xd7E0809998693fD87E81D51dE1619fd0EE658031": {
     "protocolToken": {
@@ -2461,7 +2461,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd7E0809998693fD87E81D51dE1619fd0EE658031",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xa6a0C2b9d06b769635F6C85deB6b500f49F672E8": {
     "protocolToken": {
@@ -2477,7 +2477,7 @@
       "decimals": 18
     },
     "marketAddress": "0xE6D4986Cd935529FC4505d48E926bcd36A58A0F0",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x16e1Ad37bAdc81BC08e8aC0E9d4ac1000836C8a0": {
     "protocolToken": {
@@ -2493,7 +2493,7 @@
       "decimals": 18
     },
     "marketAddress": "0xE6D4986Cd935529FC4505d48E926bcd36A58A0F0",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x440d08d85cb12352DaBac2971De81e9be702d239": {
     "protocolToken": {
@@ -2509,7 +2509,7 @@
       "decimals": 18
     },
     "marketAddress": "0xE6D4986Cd935529FC4505d48E926bcd36A58A0F0",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xE6D4986Cd935529FC4505d48E926bcd36A58A0F0": {
     "protocolToken": {
@@ -2525,7 +2525,7 @@
       "decimals": 18
     },
     "marketAddress": "0xE6D4986Cd935529FC4505d48E926bcd36A58A0F0",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x4AE5411F3863CdB640309e84CEDf4B08B8b33FfF": {
     "protocolToken": {
@@ -2541,7 +2541,7 @@
       "decimals": 18
     },
     "marketAddress": "0xe26D7f9409581f606242300fbFE63f56789F2169",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x7C2D26182adeEf96976035986cF56474feC03bDa": {
     "protocolToken": {
@@ -2557,7 +2557,7 @@
       "decimals": 18
     },
     "marketAddress": "0xe26D7f9409581f606242300fbFE63f56789F2169",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xD7DF7E085214743530afF339aFC420c7c720BFa7": {
     "protocolToken": {
@@ -2573,7 +2573,7 @@
       "decimals": 18
     },
     "marketAddress": "0xe26D7f9409581f606242300fbFE63f56789F2169",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xe26D7f9409581f606242300fbFE63f56789F2169": {
     "protocolToken": {
@@ -2589,7 +2589,7 @@
       "decimals": 18
     },
     "marketAddress": "0xe26D7f9409581f606242300fbFE63f56789F2169",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x094bE6bD31D7B860f7d2C1f280fD09F0463d7e67": {
     "protocolToken": {
@@ -2605,7 +2605,7 @@
       "decimals": 18
     },
     "marketAddress": "0x445D25a1c31445Fb29e65d12DA8E0eea38174176",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x029aad400f6092Dc735A65be95102efcc2Fe64bf": {
     "protocolToken": {
@@ -2621,7 +2621,7 @@
       "decimals": 18
     },
     "marketAddress": "0x445D25a1c31445Fb29e65d12DA8E0eea38174176",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x34349c5569e7B846c3558961552D2202760A9789": {
     "protocolToken": {
@@ -2637,7 +2637,7 @@
       "decimals": 18
     },
     "marketAddress": "0x445D25a1c31445Fb29e65d12DA8E0eea38174176",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x445D25a1c31445Fb29e65d12DA8E0eea38174176": {
     "protocolToken": {
@@ -2653,7 +2653,7 @@
       "decimals": 18
     },
     "marketAddress": "0x445D25a1c31445Fb29e65d12DA8E0eea38174176",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xf2ce61699660f0f5800bA7D962741bA582d7346B": {
     "protocolToken": {
@@ -2669,7 +2669,7 @@
       "decimals": 18
     },
     "marketAddress": "0x38100A480dBED278B0fe57bA80a75498a7dC5bB1",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x5Ae176BbcB9A4461aEEeb97c90C2a80c2078006a": {
     "protocolToken": {
@@ -2685,7 +2685,7 @@
       "decimals": 18
     },
     "marketAddress": "0x38100A480dBED278B0fe57bA80a75498a7dC5bB1",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xc430dB19339A3051192233B4c49f9aB3DC6D16b7": {
     "protocolToken": {
@@ -2701,7 +2701,7 @@
       "decimals": 18
     },
     "marketAddress": "0xBaE2Df4DfCd0c613018D6056A40077F2d1eFf28A",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x38100A480dBED278B0fe57bA80a75498a7dC5bB1": {
     "protocolToken": {
@@ -2717,7 +2717,7 @@
       "decimals": 18
     },
     "marketAddress": "0x38100A480dBED278B0fe57bA80a75498a7dC5bB1",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x5cb12D56F5346a016DBBA8CA90635d82e6D1bcEa": {
     "protocolToken": {
@@ -2733,7 +2733,7 @@
       "decimals": 18
     },
     "marketAddress": "0xA9355a5d306c67027C54De0e5a72df76Befa5694",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x4AfdB1B0f9A56922e398D29239453e6A06148eD0": {
     "protocolToken": {
@@ -2749,7 +2749,7 @@
       "decimals": 18
     },
     "marketAddress": "0xA9355a5d306c67027C54De0e5a72df76Befa5694",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9": {
     "protocolToken": {
@@ -2765,7 +2765,7 @@
       "decimals": 18
     },
     "marketAddress": "0xA9355a5d306c67027C54De0e5a72df76Befa5694",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xA9355a5d306c67027C54De0e5a72df76Befa5694": {
     "protocolToken": {
@@ -2781,7 +2781,7 @@
       "decimals": 18
     },
     "marketAddress": "0xA9355a5d306c67027C54De0e5a72df76Befa5694",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xa0021EF8970104c2d008F38D92f115ad56a9B8e1": {
     "protocolToken": {
@@ -2797,7 +2797,7 @@
       "decimals": 18
     },
     "marketAddress": "0x19588F29f9402Bb508007FeADd415c875Ee3f19F",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x1e3d13932C31d7355fCb3FEc680b0cD159dC1A07": {
     "protocolToken": {
@@ -2813,7 +2813,7 @@
       "decimals": 18
     },
     "marketAddress": "0x19588F29f9402Bb508007FeADd415c875Ee3f19F",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x42862F48eAdE25661558AFE0A630b132038553D0": {
     "protocolToken": {
@@ -2829,7 +2829,7 @@
       "decimals": 18
     },
     "marketAddress": "0x19588F29f9402Bb508007FeADd415c875Ee3f19F",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x19588F29f9402Bb508007FeADd415c875Ee3f19F": {
     "protocolToken": {
@@ -2845,7 +2845,7 @@
       "decimals": 18
     },
     "marketAddress": "0x19588F29f9402Bb508007FeADd415c875Ee3f19F",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x3d4F535539A33FEAd4D76D7b3B7A9cB5B21C73f1": {
     "protocolToken": {
@@ -2861,7 +2861,7 @@
       "decimals": 18
     },
     "marketAddress": "0x90c98ab215498B72Abfec04c651e2e496bA364C0",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x40357b9f22B4DfF0Bf56A90661b8eC106C259d29": {
     "protocolToken": {
@@ -2877,7 +2877,7 @@
       "decimals": 18
     },
     "marketAddress": "0x90c98ab215498B72Abfec04c651e2e496bA364C0",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x293C6937D8D82e05B01335F7B33FBA0c8e256E30": {
     "protocolToken": {
@@ -2893,7 +2893,7 @@
       "decimals": 18
     },
     "marketAddress": "0x90c98ab215498B72Abfec04c651e2e496bA364C0",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x90c98ab215498B72Abfec04c651e2e496bA364C0": {
     "protocolToken": {
@@ -2909,7 +2909,7 @@
       "decimals": 18
     },
     "marketAddress": "0x90c98ab215498B72Abfec04c651e2e496bA364C0",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x5282Ec643C3790E0F781508162a4Aa13fd09C528": {
     "protocolToken": {
@@ -2925,7 +2925,7 @@
       "decimals": 9
     },
     "marketAddress": "0x2084b373979415Bc93190071AF3390F92DcDD189",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x233D32d4D33eD5F2D6b8544137c8836249de372F": {
     "protocolToken": {
@@ -2941,7 +2941,7 @@
       "decimals": 9
     },
     "marketAddress": "0x2084b373979415Bc93190071AF3390F92DcDD189",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x60CceFd60bA522f9221f122BB80A1e8cbAB9285F": {
     "protocolToken": {
@@ -2957,7 +2957,7 @@
       "decimals": 9
     },
     "marketAddress": "0x2084b373979415Bc93190071AF3390F92DcDD189",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x2084b373979415Bc93190071AF3390F92DcDD189": {
     "protocolToken": {
@@ -2973,7 +2973,7 @@
       "decimals": 9
     },
     "marketAddress": "0x2084b373979415Bc93190071AF3390F92DcDD189",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x6ee2b5E19ECBa773a352E5B21415Dc419A700d1d": {
     "protocolToken": {
@@ -2989,7 +2989,7 @@
       "decimals": 18
     },
     "marketAddress": "0x7d372819240D14fB477f17b964f95F33BeB4c704",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x129e6B5DBC0Ecc12F9e486C5BC9cDF1a6A80bc6A": {
     "protocolToken": {
@@ -3005,7 +3005,7 @@
       "decimals": 18
     },
     "marketAddress": "0x7d372819240D14fB477f17b964f95F33BeB4c704",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x7d372819240D14fB477f17b964f95F33BeB4c704": {
     "protocolToken": {
@@ -3021,7 +3021,7 @@
       "decimals": 18
     },
     "marketAddress": "0x7d372819240D14fB477f17b964f95F33BeB4c704",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x9946C55a34CD105f1e0CF815025EAEcff7356487": {
     "protocolToken": {
@@ -3037,7 +3037,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9C73879F795CefA1D5239dE08d1B6Aba2D2d1434",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x87be82bBd3e6f1c0871001f8EB4C12b60462c835": {
     "protocolToken": {
@@ -3053,7 +3053,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9C73879F795CefA1D5239dE08d1B6Aba2D2d1434",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x66C68a7bcC4CBcAb43A2947A529765d86D4ef14f": {
     "protocolToken": {
@@ -3069,7 +3069,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9C73879F795CefA1D5239dE08d1B6Aba2D2d1434",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x9C73879F795CefA1D5239dE08d1B6Aba2D2d1434": {
     "protocolToken": {
@@ -3085,7 +3085,7 @@
       "decimals": 18
     },
     "marketAddress": "0x9C73879F795CefA1D5239dE08d1B6Aba2D2d1434",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xf7906F274c174A52d444175729E3fa98f9bde285": {
     "protocolToken": {
@@ -3101,7 +3101,7 @@
       "decimals": 18
     },
     "marketAddress": "0xD8F12bCDE578c653014F27379a6114F67F0e445f",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x7749F5Ed1e356EDc63D469c2fcaC9adEB56d1C2b": {
     "protocolToken": {
@@ -3117,7 +3117,7 @@
       "decimals": 18
     },
     "marketAddress": "0xD8F12bCDE578c653014F27379a6114F67F0e445f",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xD8F12bCDE578c653014F27379a6114F67F0e445f": {
     "protocolToken": {
@@ -3133,7 +3133,7 @@
       "decimals": 18
     },
     "marketAddress": "0xD8F12bCDE578c653014F27379a6114F67F0e445f",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xd810362556296c834E30C9A61d8e21a5cf29eAb4": {
     "protocolToken": {
@@ -3149,7 +3149,7 @@
       "decimals": 18
     },
     "marketAddress": "0x107a2e3cD2BB9a32B9eE2E4d51143149F8367eBa",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xf65CD2460F4F199C5AC09c74Ac05c40559C29e4F": {
     "protocolToken": {
@@ -3165,7 +3165,7 @@
       "decimals": 18
     },
     "marketAddress": "0x107a2e3cD2BB9a32B9eE2E4d51143149F8367eBa",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xC4ed348c56223C5953939e932E315F9d72Cd83fF": {
     "protocolToken": {
@@ -3181,7 +3181,7 @@
       "decimals": 18
     },
     "marketAddress": "0x107a2e3cD2BB9a32B9eE2E4d51143149F8367eBa",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x107a2e3cD2BB9a32B9eE2E4d51143149F8367eBa": {
     "protocolToken": {
@@ -3197,7 +3197,7 @@
       "decimals": 18
     },
     "marketAddress": "0x107a2e3cD2BB9a32B9eE2E4d51143149F8367eBa",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x1c085195437738d73d75DC64bC5A3E098b7f93b1": {
     "protocolToken": {
@@ -3213,7 +3213,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC8eDd52D0502Aa8b4D5C77361D4B3D300e8fC81c",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xA54Df645A042D24121a737dAA89a57EbF8E0b71c": {
     "protocolToken": {
@@ -3229,7 +3229,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC8eDd52D0502Aa8b4D5C77361D4B3D300e8fC81c",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xC8eDd52D0502Aa8b4D5C77361D4B3D300e8fC81c": {
     "protocolToken": {
@@ -3245,7 +3245,7 @@
       "decimals": 18
     },
     "marketAddress": "0xC8eDd52D0502Aa8b4D5C77361D4B3D300e8fC81c",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x248241244356D18f63d0c16082996839ecB0C7bF": {
     "protocolToken": {
@@ -3261,7 +3261,7 @@
       "decimals": 18
     },
     "marketAddress": "0xcDBD5ff3E03b6828Db9C32e2131A60ABA5137901",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x1623F1A991584A6b69baBbdbffD26E2B46485465": {
     "protocolToken": {
@@ -3277,7 +3277,7 @@
       "decimals": 18
     },
     "marketAddress": "0xcDBD5ff3E03b6828Db9C32e2131A60ABA5137901",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xcDBD5ff3E03b6828Db9C32e2131A60ABA5137901": {
     "protocolToken": {
@@ -3293,7 +3293,7 @@
       "decimals": 18
     },
     "marketAddress": "0xcDBD5ff3E03b6828Db9C32e2131A60ABA5137901",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x0a0E172511114456EC63A85FF32E45C5e0E27D63": {
     "protocolToken": {
@@ -3309,7 +3309,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1e0c2e41f3165ff6B8a660092f63E10BC0EebE26",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xf0E4244Ca93Ac36752DA5939Afd9CB73B0637b06": {
     "protocolToken": {
@@ -3325,7 +3325,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1e0c2e41f3165ff6B8a660092f63E10BC0EebE26",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x4f3A7a07A968B67F1f9692b70242f10E665d38Ad": {
     "protocolToken": {
@@ -3341,7 +3341,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1e0c2e41f3165ff6B8a660092f63E10BC0EebE26",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x1e0c2e41f3165ff6B8a660092f63E10BC0EebE26": {
     "protocolToken": {
@@ -3357,7 +3357,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1e0c2e41f3165ff6B8a660092f63E10BC0EebE26",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x6c9f097e044506712B58EAC670c9a5fd4BCceF13": {
     "protocolToken": {
@@ -3373,7 +3373,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd1D7D99764f8a52Aff007b7831cc02748b2013b5",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xdc02b77a3986da62C7A78FED73949C9767850809": {
     "protocolToken": {
@@ -3389,7 +3389,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd1D7D99764f8a52Aff007b7831cc02748b2013b5",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x4139cDC6345aFFbaC0692b43bed4D059Df3e6d65": {
     "protocolToken": {
@@ -3405,7 +3405,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd1D7D99764f8a52Aff007b7831cc02748b2013b5",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xd1D7D99764f8a52Aff007b7831cc02748b2013b5": {
     "protocolToken": {
@@ -3421,7 +3421,7 @@
       "decimals": 18
     },
     "marketAddress": "0xd1D7D99764f8a52Aff007b7831cc02748b2013b5",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x7bAf258049cc8B9A78097723dc19a8b103D4098F": {
     "protocolToken": {
@@ -3437,7 +3437,7 @@
       "decimals": 18
     },
     "marketAddress": "0x6b4740722e46048874d84306B2877600ABCea3Ae",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xE653E4048620E546AFff02D3689678896d22e236": {
     "protocolToken": {
@@ -3453,7 +3453,7 @@
       "decimals": 18
     },
     "marketAddress": "0x6b4740722e46048874d84306B2877600ABCea3Ae",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x6b4740722e46048874d84306B2877600ABCea3Ae": {
     "protocolToken": {
@@ -3469,7 +3469,7 @@
       "decimals": 18
     },
     "marketAddress": "0x6b4740722e46048874d84306B2877600ABCea3Ae",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xd4e75971eAF78a8d93D96df530f1FFf5f9F53288": {
     "protocolToken": {
@@ -3485,7 +3485,7 @@
       "decimals": 18
     },
     "marketAddress": "0xA54FC268101c8b97DE19eF3141d34751a11996B2",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x1a65eB80a2ac3ea6E41D456DdD6E9cC5728BEf7C": {
     "protocolToken": {
@@ -3501,7 +3501,7 @@
       "decimals": 18
     },
     "marketAddress": "0xA54FC268101c8b97DE19eF3141d34751a11996B2",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xA54FC268101c8b97DE19eF3141d34751a11996B2": {
     "protocolToken": {
@@ -3517,7 +3517,7 @@
       "decimals": 18
     },
     "marketAddress": "0xA54FC268101c8b97DE19eF3141d34751a11996B2",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x15fA86404BFbA8b46684552F792558128bFB6418": {
     "protocolToken": {
@@ -3533,7 +3533,7 @@
       "decimals": 18
     },
     "marketAddress": "0xBaE2Df4DfCd0c613018D6056A40077F2d1eFf28A",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xdF74bA4436478969A54eCB352093312fE97EBAa5": {
     "protocolToken": {
@@ -3549,7 +3549,7 @@
       "decimals": 18
     },
     "marketAddress": "0xBaE2Df4DfCd0c613018D6056A40077F2d1eFf28A",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xBaE2Df4DfCd0c613018D6056A40077F2d1eFf28A": {
     "protocolToken": {
@@ -3565,7 +3565,7 @@
       "decimals": 18
     },
     "marketAddress": "0xBaE2Df4DfCd0c613018D6056A40077F2d1eFf28A",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x791c1E9D38029092E8aD1E252d0Bb97261809A2c": {
     "protocolToken": {
@@ -3581,7 +3581,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1BCBDB8c8652345A5ACF04e6E74f70086c68FEfC",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x2e40D7Cfee1e7D31d1F4875e6F33B2c9a17038fF": {
     "protocolToken": {
@@ -3597,7 +3597,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1BCBDB8c8652345A5ACF04e6E74f70086c68FEfC",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xfe2d379117895Fa6144B209C13894A17aB18C86c": {
     "protocolToken": {
@@ -3613,7 +3613,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1BCBDB8c8652345A5ACF04e6E74f70086c68FEfC",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x1BCBDB8c8652345A5ACF04e6E74f70086c68FEfC": {
     "protocolToken": {
@@ -3629,7 +3629,7 @@
       "decimals": 18
     },
     "marketAddress": "0x1BCBDB8c8652345A5ACF04e6E74f70086c68FEfC",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xd351de53277c4218CC29f793263FB60E2fcFC1dC": {
     "protocolToken": {
@@ -3645,7 +3645,7 @@
       "decimals": 18
     },
     "marketAddress": "0xB1f587B354a4a363f5332e88effbbC2E4961250A",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0xdd68f5D26Bf1182d6b241108bfC01f95C030502b": {
     "protocolToken": {
@@ -3661,7 +3661,7 @@
       "decimals": 18
     },
     "marketAddress": "0xB1f587B354a4a363f5332e88effbbC2E4961250A",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x1b641894e66aec7Bf5ab86517e8D81763Cc8e19E": {
     "protocolToken": {
@@ -3677,7 +3677,7 @@
       "decimals": 18
     },
     "marketAddress": "0xB1f587B354a4a363f5332e88effbbC2E4961250A",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0xB1f587B354a4a363f5332e88effbbC2E4961250A": {
     "protocolToken": {
@@ -3693,7 +3693,7 @@
       "decimals": 18
     },
     "marketAddress": "0xB1f587B354a4a363f5332e88effbbC2E4961250A",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x5E9e4bFd81c8c03F8289b827C9B92332789b6fe1": {
     "protocolToken": {
@@ -3709,7 +3709,7 @@
       "decimals": 18
     },
     "marketAddress": "0x18bAFcaBf2d5898956AE6AC31543d9657a604165",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x5439c3Ef0072e4A19C44478CDF947F5d957e66C7": {
     "protocolToken": {
@@ -3725,7 +3725,7 @@
       "decimals": 18
     },
     "marketAddress": "0x18bAFcaBf2d5898956AE6AC31543d9657a604165",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x8DB42Af6B2de9E8AeE47F3423570d8E9c3873796": {
     "protocolToken": {
@@ -3741,7 +3741,7 @@
       "decimals": 18
     },
     "marketAddress": "0x18bAFcaBf2d5898956AE6AC31543d9657a604165",
-    "type": "sy"
+    "type": "standardisedYieldToken"
   },
   "0x18bAFcaBf2d5898956AE6AC31543d9657a604165": {
     "protocolToken": {
@@ -3757,7 +3757,7 @@
       "decimals": 18
     },
     "marketAddress": "0x18bAFcaBf2d5898956AE6AC31543d9657a604165",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0x48ee2348991A6b345B170bF5E92E2E5A16CF1edD": {
     "protocolToken": {
@@ -3773,7 +3773,7 @@
       "decimals": 18
     },
     "marketAddress": "0x386F90Eb964A477498b528a39D9405E73Ed4032b",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x633dEfD7E79f94cDb77fe469f348Bd919c4b678a": {
     "protocolToken": {
@@ -3789,7 +3789,7 @@
       "decimals": 18
     },
     "marketAddress": "0x386F90Eb964A477498b528a39D9405E73Ed4032b",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0x386F90Eb964A477498b528a39D9405E73Ed4032b": {
     "protocolToken": {
@@ -3805,7 +3805,7 @@
       "decimals": 18
     },
     "marketAddress": "0x386F90Eb964A477498b528a39D9405E73Ed4032b",
-    "type": "lp"
+    "type": "lpToken"
   },
   "0xe146E7018B3fb588c4EFbC2F211e8BB8d8C31c81": {
     "protocolToken": {
@@ -3821,7 +3821,7 @@
       "decimals": 18
     },
     "marketAddress": "0xe1F19CBDa26b6418B0C8E1EE978a533184496066",
-    "type": "pt"
+    "type": "principleToken"
   },
   "0x9c73E0A1fA310e2BDC95AF1145B9D8Daa87bD9C0": {
     "protocolToken": {
@@ -3837,7 +3837,7 @@
       "decimals": 18
     },
     "marketAddress": "0xe1F19CBDa26b6418B0C8E1EE978a533184496066",
-    "type": "yt"
+    "type": "yieldToken"
   },
   "0xe1F19CBDa26b6418B0C8E1EE978a533184496066": {
     "protocolToken": {
@@ -3853,6 +3853,262 @@
       "decimals": 18
     },
     "marketAddress": "0xe1F19CBDa26b6418B0C8E1EE978a533184496066",
-    "type": "lp"
+    "type": "lpToken"
+  },
+  "0x2ED065f447971768c1117E4A36C80F4a54eb88FA": {
+    "protocolToken": {
+      "address": "0x2ED065f447971768c1117E4A36C80F4a54eb88FA",
+      "name": "PT Mellow Steakhouse steakLRT 25JUL2024",
+      "symbol": "PT-steakLRT-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x998a1d40F097Fd36bFF15cA78Fc0673Bd2a8280C",
+      "name": "SY Mellow Steakhouse steakLRT",
+      "symbol": "SY-steakLRT",
+      "decimals": 18
+    },
+    "marketAddress": "0x464F5A15Aca6Fe787Cf54fCF1E8AF6207939d297",
+    "type": "principleToken"
+  },
+  "0xC48276dd601C83234D767F4d7d0c1B2B32BC7632": {
+    "protocolToken": {
+      "address": "0xC48276dd601C83234D767F4d7d0c1B2B32BC7632",
+      "name": "YT Mellow Steakhouse steakLRT 25JUL2024",
+      "symbol": "YT-steakLRT-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x998a1d40F097Fd36bFF15cA78Fc0673Bd2a8280C",
+      "name": "SY Mellow Steakhouse steakLRT",
+      "symbol": "SY-steakLRT",
+      "decimals": 18
+    },
+    "marketAddress": "0x464F5A15Aca6Fe787Cf54fCF1E8AF6207939d297",
+    "type": "yieldToken"
+  },
+  "0x998a1d40F097Fd36bFF15cA78Fc0673Bd2a8280C": {
+    "protocolToken": {
+      "address": "0x998a1d40F097Fd36bFF15cA78Fc0673Bd2a8280C",
+      "name": "SY Mellow Steakhouse steakLRT",
+      "symbol": "SY-steakLRT",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc",
+      "name": "Steakhouse Resteaking Vault",
+      "symbol": "steakLRT",
+      "decimals": 18
+    },
+    "marketAddress": "0x464F5A15Aca6Fe787Cf54fCF1E8AF6207939d297",
+    "type": "standardisedYieldToken"
+  },
+  "0x464F5A15Aca6Fe787Cf54fCF1E8AF6207939d297": {
+    "protocolToken": {
+      "address": "0x464F5A15Aca6Fe787Cf54fCF1E8AF6207939d297",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc",
+      "name": "Steakhouse Resteaking Vault",
+      "symbol": "steakLRT",
+      "decimals": 18
+    },
+    "marketAddress": "0x464F5A15Aca6Fe787Cf54fCF1E8AF6207939d297",
+    "type": "lpToken"
+  },
+  "0x2B91426E6F2A88B2C4Afc6c279fA8842A23EBD7F": {
+    "protocolToken": {
+      "address": "0x2B91426E6F2A88B2C4Afc6c279fA8842A23EBD7F",
+      "name": "PT Mellow Re7LRT 25JUL2024",
+      "symbol": "PT-Re7LRT-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xE833C7A12A10A44Cb8b19BdF0931053AC136F105",
+      "name": "SY Mellow Re7LRT",
+      "symbol": "SY-Re7LRT",
+      "decimals": 18
+    },
+    "marketAddress": "0x2a41384C28B3E327bEDA4ffB3D3706CAd571d5fb",
+    "type": "principleToken"
+  },
+  "0x44188731D5bb43d0AED555d29f1013AEb13bD4a2": {
+    "protocolToken": {
+      "address": "0x44188731D5bb43d0AED555d29f1013AEb13bD4a2",
+      "name": "YT Mellow Re7LRT 25JUL2024",
+      "symbol": "YT-Re7LRT-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xE833C7A12A10A44Cb8b19BdF0931053AC136F105",
+      "name": "SY Mellow Re7LRT",
+      "symbol": "SY-Re7LRT",
+      "decimals": 18
+    },
+    "marketAddress": "0x2a41384C28B3E327bEDA4ffB3D3706CAd571d5fb",
+    "type": "yieldToken"
+  },
+  "0xE833C7A12A10A44Cb8b19BdF0931053AC136F105": {
+    "protocolToken": {
+      "address": "0xE833C7A12A10A44Cb8b19BdF0931053AC136F105",
+      "name": "SY Mellow Re7LRT",
+      "symbol": "SY-Re7LRT",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x84631c0d0081FDe56DeB72F6DE77abBbF6A9f93a",
+      "name": "Re7 Labs LRT",
+      "symbol": "Re7LRT",
+      "decimals": 18
+    },
+    "marketAddress": "0x2a41384C28B3E327bEDA4ffB3D3706CAd571d5fb",
+    "type": "standardisedYieldToken"
+  },
+  "0x2a41384C28B3E327bEDA4ffB3D3706CAd571d5fb": {
+    "protocolToken": {
+      "address": "0x2a41384C28B3E327bEDA4ffB3D3706CAd571d5fb",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x84631c0d0081FDe56DeB72F6DE77abBbF6A9f93a",
+      "name": "Re7 Labs LRT",
+      "symbol": "Re7LRT",
+      "decimals": 18
+    },
+    "marketAddress": "0x2a41384C28B3E327bEDA4ffB3D3706CAd571d5fb",
+    "type": "lpToken"
+  },
+  "0x4CA48e7Dd3970F96EE74D6A573Ca5678EA1EB31b": {
+    "protocolToken": {
+      "address": "0x4CA48e7Dd3970F96EE74D6A573Ca5678EA1EB31b",
+      "name": "PT Mellow amphrETH 25JUL2024",
+      "symbol": "PT-amphrETH-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x198139F26d42F2028C10427a161e2d0e8bb00346",
+      "name": "SY Mellow amphrETH",
+      "symbol": "SY-amphrETH",
+      "decimals": 18
+    },
+    "marketAddress": "0x3B621df9B429Ed1AD64428Ea7d8D142374c45121",
+    "type": "principleToken"
+  },
+  "0x4dA430a0b5B22705ACFCC1bD5eE15603861ed98b": {
+    "protocolToken": {
+      "address": "0x4dA430a0b5B22705ACFCC1bD5eE15603861ed98b",
+      "name": "YT Mellow amphrETH 25JUL2024",
+      "symbol": "YT-amphrETH-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x198139F26d42F2028C10427a161e2d0e8bb00346",
+      "name": "SY Mellow amphrETH",
+      "symbol": "SY-amphrETH",
+      "decimals": 18
+    },
+    "marketAddress": "0x3B621df9B429Ed1AD64428Ea7d8D142374c45121",
+    "type": "yieldToken"
+  },
+  "0x198139F26d42F2028C10427a161e2d0e8bb00346": {
+    "protocolToken": {
+      "address": "0x198139F26d42F2028C10427a161e2d0e8bb00346",
+      "name": "SY Mellow amphrETH",
+      "symbol": "SY-amphrETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x5fD13359Ba15A84B76f7F87568309040176167cd",
+      "name": "Amphor Restaked ETH",
+      "symbol": "amphrETH",
+      "decimals": 18
+    },
+    "marketAddress": "0x3B621df9B429Ed1AD64428Ea7d8D142374c45121",
+    "type": "standardisedYieldToken"
+  },
+  "0x3B621df9B429Ed1AD64428Ea7d8D142374c45121": {
+    "protocolToken": {
+      "address": "0x3B621df9B429Ed1AD64428Ea7d8D142374c45121",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x5fD13359Ba15A84B76f7F87568309040176167cd",
+      "name": "Amphor Restaked ETH",
+      "symbol": "amphrETH",
+      "decimals": 18
+    },
+    "marketAddress": "0x3B621df9B429Ed1AD64428Ea7d8D142374c45121",
+    "type": "lpToken"
+  },
+  "0x997949eEA781c04E4801d9c0902540236A317B07": {
+    "protocolToken": {
+      "address": "0x997949eEA781c04E4801d9c0902540236A317B07",
+      "name": "PT Mellow rstETH 25JUL2024",
+      "symbol": "PT-rstETH-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x553cD5e6D2072723f5FE5457576Ed6D06b0905b2",
+      "name": "SY Mellow rstETH",
+      "symbol": "SY-rstETH",
+      "decimals": 18
+    },
+    "marketAddress": "0xa96FeBd6c5FAF7739d3149bfB43211Ec6844a37C",
+    "type": "principleToken"
+  },
+  "0xF04f1F279C9dA038b917538D89947f0E00672487": {
+    "protocolToken": {
+      "address": "0xF04f1F279C9dA038b917538D89947f0E00672487",
+      "name": "YT Mellow rstETH 25JUL2024",
+      "symbol": "YT-rstETH-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x553cD5e6D2072723f5FE5457576Ed6D06b0905b2",
+      "name": "SY Mellow rstETH",
+      "symbol": "SY-rstETH",
+      "decimals": 18
+    },
+    "marketAddress": "0xa96FeBd6c5FAF7739d3149bfB43211Ec6844a37C",
+    "type": "yieldToken"
+  },
+  "0x553cD5e6D2072723f5FE5457576Ed6D06b0905b2": {
+    "protocolToken": {
+      "address": "0x553cD5e6D2072723f5FE5457576Ed6D06b0905b2",
+      "name": "SY Mellow rstETH",
+      "symbol": "SY-rstETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7a4EffD87C2f3C55CA251080b1343b605f327E3a",
+      "name": "Restaking Vault ETH",
+      "symbol": "rstETH",
+      "decimals": 18
+    },
+    "marketAddress": "0xa96FeBd6c5FAF7739d3149bfB43211Ec6844a37C",
+    "type": "standardisedYieldToken"
+  },
+  "0xa96FeBd6c5FAF7739d3149bfB43211Ec6844a37C": {
+    "protocolToken": {
+      "address": "0xa96FeBd6c5FAF7739d3149bfB43211Ec6844a37C",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7a4EffD87C2f3C55CA251080b1343b605f327E3a",
+      "name": "Restaking Vault ETH",
+      "symbol": "rstETH",
+      "decimals": 18
+    },
+    "marketAddress": "0xa96FeBd6c5FAF7739d3149bfB43211Ec6844a37C",
+    "type": "lpToken"
   }
 }

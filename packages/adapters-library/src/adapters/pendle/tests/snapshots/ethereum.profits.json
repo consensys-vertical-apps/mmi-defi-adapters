@@ -13,13 +13,28 @@
       "assetDetails": {
         "type": "StandardErc20"
       },
-      "success": false,
-      "error": {
-        "message": "execution reverted (unknown custom error) (action=\"call\", data=\"0x9ca3426c000000000000000000000000000000000000000000000000000000006672eb4f000000000000000000000000000000000000000000000000000000006672f167\", reason=null, transaction={ \"data\": \"0xffec44070000000000000000000000009c73879f795cefa1d5239de08d1b6aba2d2d14340000000000000000000000000000000000000000000000000000000000000708\", \"to\": \"0x9a9Fa8338dd5E5B2188006f1Cd2Ef26d921650C2\" }, invocation=null, revert=null, code=CALL_EXCEPTION, version=6.12.0)",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966",
+          "name": "PT ether.fi weETH 27JUN2024",
+          "symbol": "PT-weETH-27JUN2024",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 3.688461292383863,
+          "performance": 0.00350429315348393,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 1052.5550034867474,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 1056.2434647791313
+          }
         }
-      }
+      ],
+      "fromBlock": 20076514,
+      "toBlock": 20126536
     }
   ]
 }

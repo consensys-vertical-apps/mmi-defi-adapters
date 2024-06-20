@@ -32,20 +32,28 @@ import { fetchAllMarkets } from '../../backend/backendSdk'
 import { logger } from '../../../../core/utils/logger'
 import { OraclePyYtLp__factory } from '../../contracts'
 
+const TokenTypes = {
+  YieldToken: 'yieldToken',
+  PrincipalToken: 'principleToken',
+  LpToken: 'lpToken',
+  StandardisedYieldToken: 'standardisedYieldToken',
+} as const
+export type TokenTypes = (typeof TokenTypes)[keyof typeof TokenTypes]
+
 type Metadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
     underlyingToken: Erc20Metadata
     marketAddress: string
-    type: 'pt' | 'yt' | 'lp' | 'sy'
+    type: TokenTypes
   }
 >
 
 const PENDLE_ORACLE_ADDRESS_ALL_CHAINS =
   '0x9a9fa8338dd5e5b2188006f1cd2ef26d921650c2'
 
-// unclear to me what these mean - JP
+// I don't know what these values mean - JP
 const DURATION_15_MINS = 900
 const DURATION_30_MINS = 1800
 export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
@@ -87,7 +95,7 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
 
     let rate: bigint
     switch (metadata.type) {
-      case 'pt':
+      case 'principleToken':
         rate = await oracle
           .getPtToSyRate(metadata.marketAddress, DURATION_15_MINS, {
             blockTag: blockNumber,
@@ -101,9 +109,12 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
               },
             )
           })
+          .catch((e) => {
+            return 10n ** 18n
+          })
 
         break
-      case 'yt':
+      case 'yieldToken':
         rate = await oracle
           .getYtToSyRate(metadata.marketAddress, DURATION_15_MINS, {
             blockTag: blockNumber,
@@ -117,9 +128,12 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
               },
             )
           })
+          .catch((e) => {
+            return 10n ** 18n
+          })
 
         break
-      case 'lp':
+      case 'lpToken':
         rate = await oracle
           .getPtToSyRate(metadata.marketAddress, DURATION_15_MINS, {
             blockTag: blockNumber,
@@ -133,9 +147,12 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
               },
             )
           })
+          .catch((e) => {
+            return 10n ** 18n
+          })
 
         break
-      case 'sy': {
+      case 'standardisedYieldToken': {
         rate = 10n ** 18n
 
         break
@@ -217,26 +234,26 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
         protocolToken: pt,
         underlyingToken: sy,
         marketAddress: market,
-        type: 'pt',
+        type: 'principleToken',
       }
       metadata[getAddress(yt.address)] = {
         protocolToken: yt,
         underlyingToken: sy,
         marketAddress: market,
-        type: 'yt',
+        type: 'yieldToken',
       }
       metadata[getAddress(sy.address)] = {
         protocolToken: sy,
         underlyingToken: underlyingAsset,
         marketAddress: market,
-        type: 'sy',
+        type: 'standardisedYieldToken',
       }
 
       metadata[getAddress(lp.address)] = {
         protocolToken: lp,
         underlyingToken: underlyingAsset,
         marketAddress: market,
-        type: 'lp',
+        type: 'lpToken',
       }
 
       return
