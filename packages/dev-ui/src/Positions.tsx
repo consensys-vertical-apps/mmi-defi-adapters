@@ -1,3 +1,9 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -25,42 +31,78 @@ import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
 import {
   ChainName,
   DefiPositionResponse,
+  Protocol,
 } from '@metamask-institutional/defi-adapters'
 import { Underlying } from '@metamask-institutional/defi-adapters/dist/types/adapter'
 import { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import Select from 'react-select'
 import { provider } from './defiProvider'
+
+type FormValues = {
+  userAddress: string
+  protocolIds: { value: string; label: string }[]
+}
 
 export function Positions() {
   const queryClient = useQueryClient()
-  const { register, handleSubmit } = useForm<{
-    userAddress: string
-  }>()
+  const {
+    handleSubmit,
+    register,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm<FormValues>()
   const [userAddress, setUserAddress] = useState('')
+  const [protocolIds, setProtocolIds] = useState<string[]>([])
 
-  const onSubmit: SubmitHandler<{
-    userAddress: string
-  }> = async (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    console.log('AAAAAAAAA', data)
     setUserAddress(data.userAddress)
+    setProtocolIds(data.protocolIds.map((protocol) => protocol.value))
     await queryClient.invalidateQueries({
       queryKey: ['positions', userAddress],
     })
   }
 
+  const protocolOptions = Object.entries(Protocol).map(([label, value]) => ({
+    value,
+    label,
+  }))
+
   return (
     <div className="flex flex-col items-center justify-start min-h-screen gap-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="p-6 bg-white rounded shadow-md w-[50%]"
+        className="p-6 bg-white rounded shadow-md w-[50%] flex flex-col gap-4"
       >
         <Input
           type="text"
           {...register('userAddress')}
           placeholder="User Address"
-          className="p-2 mb-4 border border-gray-300 rounded"
+          className="border border-gray-300 rounded"
+          required
         />
+
+        <Controller
+          control={control}
+          name="protocolIds"
+          render={({ field: { onChange, onBlur, value, name, ref } }) => (
+            <Select
+              placeholder="Protocol Filter"            
+              options={protocolOptions}
+              onChange={onChange}
+              isMulti={true}
+              onBlur={onBlur}
+              value={value}
+              name={name}
+              ref={ref}
+            />
+          )}
+        />
+
         <Button
           type="submit"
           className="p-2 text-white bg-blue-500 rounded hover:bg-blue-600"
@@ -68,15 +110,22 @@ export function Positions() {
           Search
         </Button>
       </form>
-      <PositionsDisplay userAddress={userAddress} />
+      <PositionsDisplay userAddress={userAddress} protocolIds={protocolIds} />
     </div>
   )
 }
 
-function PositionsDisplay({ userAddress }: { userAddress: string }) {
+function PositionsDisplay({
+  userAddress,
+  protocolIds,
+}: { userAddress: string; protocolIds: string[] }) {
   const { isPending, error, data, isFetching, isRefetching } = useQuery({
     queryKey: ['positions', userAddress],
-    queryFn: () => provider.getPositions({ userAddress }),
+    queryFn: () =>
+      provider.getPositions({
+        userAddress,
+        filterProtocolIds: protocolIds as Protocol[],
+      }),
     enabled: userAddress.length > 0,
   })
 
