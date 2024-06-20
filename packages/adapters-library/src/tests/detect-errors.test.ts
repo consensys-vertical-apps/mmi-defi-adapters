@@ -1,3 +1,4 @@
+import { TimePeriod } from '../core/constants/timePeriod'
 import { DefiProvider } from '../defiProvider'
 import { DefiPositionResponse, DefiProfitsResponse } from '../types/response'
 
@@ -27,6 +28,7 @@ describe('detect errors', () => {
       const defiProvider = new DefiProvider(config)
       const response = await defiProvider.getProfits({
         userAddress: '0xaa62cf7caaf0c7e50deaa9d5d0b907472f00b258',
+        timePeriod: TimePeriod.oneDay,
       })
 
       expect(filterErrors(response)).toEqual([])

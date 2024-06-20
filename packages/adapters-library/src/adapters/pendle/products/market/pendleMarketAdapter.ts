@@ -82,21 +82,39 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     let rate: bigint
     switch (metadata!.type) {
       case 'pt':
-        rate = await oracle.getPtToSyRate(metadata!.marketAddress, 900, {
-          blockTag: blockNumber,
-        })
+        rate = await oracle
+          .getPtToSyRate(metadata!.marketAddress, 900, {
+            blockTag: blockNumber,
+          })
+          .catch((e) => {
+            return oracle.getYtToSyRate(metadata!.marketAddress, 1800, {
+              blockTag: blockNumber,
+            })
+          })
 
         break
       case 'yt':
-        rate = await oracle.getYtToSyRate(metadata!.marketAddress, 900, {
-          blockTag: blockNumber,
-        })
+        rate = await oracle
+          .getYtToSyRate(metadata!.marketAddress, 900, {
+            blockTag: blockNumber,
+          })
+          .catch((e) => {
+            return oracle.getYtToSyRate(metadata!.marketAddress, 1800, {
+              blockTag: blockNumber,
+            })
+          })
 
         break
       case 'lp':
-        rate = await oracle.getPtToSyRate(metadata!.marketAddress, 900, {
-          blockTag: blockNumber,
-        })
+        rate = await oracle
+          .getPtToSyRate(metadata!.marketAddress, 900, {
+            blockTag: blockNumber,
+          })
+          .catch((e) => {
+            return oracle.getYtToSyRate(metadata!.marketAddress, 1800, {
+              blockTag: blockNumber,
+            })
+          })
 
         break
       case 'sy': {
