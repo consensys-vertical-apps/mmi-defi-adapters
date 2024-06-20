@@ -27,7 +27,7 @@ describe('detect errors', () => {
     async (config) => {
       const defiProvider = new DefiProvider(config)
       const response = await defiProvider.getProfits({
-        userAddress: '0xaa62cf7caaf0c7e50deaa9d5d0b907472f00b258',
+        userAddress: '0x117C99451cae094B3a7d56C9d3A97c96900b8e7A',
         timePeriod: TimePeriod.oneDay,
       })
 

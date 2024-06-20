@@ -1,0 +1,25 @@
+{
+  "blockNumber": 20126536,
+  "snapshot": [
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "market",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": false,
+      "error": {
+        "message": "execution reverted (unknown custom error) (action=\"call\", data=\"0x9ca3426c000000000000000000000000000000000000000000000000000000006672eb4f000000000000000000000000000000000000000000000000000000006672f167\", reason=null, transaction={ \"data\": \"0xffec44070000000000000000000000009c73879f795cefa1d5239de08d1b6aba2d2d14340000000000000000000000000000000000000000000000000000000000000708\", \"to\": \"0x9a9Fa8338dd5E5B2188006f1Cd2Ef26d921650C2\" }, invocation=null, revert=null, code=CALL_EXCEPTION, version=6.12.0)",
+        "details": {
+          "name": "Error"
+        }
+      }
+    }
+  ]
+}
