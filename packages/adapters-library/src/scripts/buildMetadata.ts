@@ -85,15 +85,21 @@ export function buildMetadata(
             const invalidAddresses = getMetadataInvalidAddresses(metadata)
 
             if (invalidAddresses.length > 0) {
+              console.error(chalk.yellow(invalidAddresses.join('\n')))
+
               console.error(
                 chalk.red(
-                  'The following addresses found in the metadata file are not in checksum format.',
+                  '\n * The above addresses found in the metadata file are not in checksum format.',
                 ),
               )
-              console.error(chalk.yellow(invalidAddresses.join('\n')))
               console.error(
                 chalk.green(
-                  '\nPlease ensure that addresses are in checksum format by wrapping them with getAddress from the ethers package.',
+                  '\n * Please ensure that addresses are in checksum format by wrapping them with getAddress from the ethers package.',
+                ),
+              )
+              console.error(
+                chalk.green(
+                  '\n * Please checksum your addresses inside the buildMetadata() method.',
                 ),
               )
               return

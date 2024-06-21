@@ -1,5 +1,6 @@
 {
   "blockNumber": 19818581,
+  "aggregatedValues": ["USD20,673.12", "USD7,760.12"],
   "snapshot": [
     {
       "protocolId": "aave-v3",

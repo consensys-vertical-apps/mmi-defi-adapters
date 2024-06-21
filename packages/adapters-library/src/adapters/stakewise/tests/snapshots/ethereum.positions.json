@@ -1,5 +1,6 @@
 {
   "blockNumber": 19240234,
+  "aggregatedValues": ["USD0.28"],
   "snapshot": [
     {
       "name": "StakeWise",

@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD577.38"],
   "snapshot": {
     "protocolId": "curve",
     "name": "Curve",

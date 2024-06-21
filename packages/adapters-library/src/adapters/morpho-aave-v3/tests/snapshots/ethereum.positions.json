@@ -1,5 +1,10 @@
 {
   "blockNumber": 18761230,
+  "aggregatedValues": [
+    "USD444,867.58",
+    "USD107,247,851.31",
+    "USD94,727,397.38"
+  ],
   "snapshot": [
     {
       "protocolId": "morpho-aave-v3",

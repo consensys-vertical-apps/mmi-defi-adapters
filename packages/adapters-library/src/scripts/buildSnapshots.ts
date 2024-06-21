@@ -16,6 +16,10 @@ import type { TestCase } from '../types/testCase'
 import { multiProtocolFilter } from './commandFilters'
 import n = types.namedTypes
 import b = types.builders
+import {
+  getAggregatedValues,
+  getAggregatedValuesMovements,
+} from '../adapters/aggrigateValues'
 
 export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
   program
@@ -52,16 +56,21 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
                     chainId,
                   ))
 
+                const snapshot = await defiProvider.getPositions({
+                  ...testCase.input,
+                  filterChainIds: [chainId],
+                  filterProtocolIds: [protocolId],
+                  blockNumbers: {
+                    [chainId]: blockNumber,
+                  },
+                })
+
+                const aggregatedValues = getAggregatedValues(snapshot, chainId)
+
                 const result = {
                   blockNumber,
-                  snapshot: await defiProvider.getPositions({
-                    ...testCase.input,
-                    filterChainIds: [chainId],
-                    filterProtocolIds: [protocolId],
-                    blockNumbers: {
-                      [chainId]: blockNumber,
-                    },
-                  }),
+                  aggregatedValues,
+                  snapshot,
                 }
 
                 await updateBlockNumber(protocolId, index, blockNumber)
@@ -99,22 +108,38 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
               }
 
               case 'deposits': {
+                const snapshot = await defiProvider.getDeposits({
+                  ...testCase.input,
+                  chainId: chainId,
+                  protocolId: protocolId,
+                })
+
+                const aggregatedValues = getAggregatedValuesMovements(
+                  snapshot,
+                  chainId,
+                )
+
                 return {
-                  snapshot: await defiProvider.getDeposits({
-                    ...testCase.input,
-                    chainId: chainId,
-                    protocolId: protocolId,
-                  }),
+                  aggregatedValues,
+                  snapshot,
                 }
               }
 
               case 'withdrawals': {
+                const snapshot = await defiProvider.getWithdrawals({
+                  ...testCase.input,
+                  chainId: chainId,
+                  protocolId: protocolId,
+                })
+
+                const aggregatedValues = getAggregatedValuesMovements(
+                  snapshot,
+                  chainId,
+                )
+
                 return {
-                  snapshot: await defiProvider.getWithdrawals({
-                    ...testCase.input,
-                    chainId: chainId,
-                    protocolId: protocolId,
-                  }),
+                  aggregatedValues,
+                  snapshot,
                 }
               }
               case 'repays': {

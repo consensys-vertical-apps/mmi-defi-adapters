@@ -1,5 +1,16 @@
 {
   "blockNumber": 119518821,
+  "aggregatedValues": [
+    "USD133,075.83",
+    "USD11,479.96",
+    "USD13,869.55",
+    "USD537,904.17",
+    "USD3,686.00",
+    "USD231,653.52",
+    "USD75,897.43",
+    "USD85,250.16",
+    "USD36,361.58"
+  ],
   "snapshot": [
     {
       "protocolId": "sonne",
