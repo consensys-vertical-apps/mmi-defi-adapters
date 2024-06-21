@@ -1,3 +1,4 @@
+import { z } from 'zod'
 import { getAddress } from 'ethers'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
@@ -6,21 +7,26 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
+import { NotImplementedError } from '../../../../core/errors/errors'
 import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
 import { logger } from '../../../../core/utils/logger'
 import {
   AssetType,
+  GetTotalValueLockedInput,
   PositionType,
   ProtocolDetails,
+  ProtocolTokenTvl,
   TokenBalance,
-  TokenType,
   Underlying,
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Cerc20__factory, Comptroller__factory } from '../../contracts'
+import { WriteActionInputSchemas, WriteActions } from '../../../../types/writeActions'
+import { GetTransactionParams } from '../../../supportedProtocols'
+import { Protocol } from '../../../protocols'
 
-type MendiFinanceSupplyAdapterMetadata = Record<
+type MendiFinanceBorrowMarketAdapterMetadata = Record<
   string,
   {
     protocolToken: Erc20Metadata
@@ -49,15 +55,15 @@ const contractAddresses: Partial<
     velocore: getAddress('0xaA18cDb16a4DD88a59f4c2f45b5c91d009549e06'),
     converter: getAddress('0xAADAa473C1bDF7317ec07c915680Af29DeBfdCb5'),
     mendi: getAddress('0x43E8809ea748EFf3204ee01F08872F063e44065f'),
-    usdcE: getAddress('0x176211869ca2b568f2a7d4ee941e073a821ee1ff'),
+    usdcE: getAddress('0x176211869cA2b568f2A7D4EE941E073a821EE1ff'),
   },
 }
 
-export class MendiFinanceSupplyAdapter
+export class MendiFinanceBorrowMarketAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
-  productId = 'supply'
+  productId = 'borrow-market'
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -66,11 +72,11 @@ export class MendiFinanceSupplyAdapter
       description: 'MendiFinance borrow adapter',
       siteUrl: 'https://mendi.finance/:',
       iconUrl: 'https://mendi.finance/mendi-token.svg',
-      positionType: PositionType.Supply,
+      positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.StandardErc20,
+        type: AssetType.NonStandardErc20,
       },
     }
   }
@@ -84,7 +90,7 @@ export class MendiFinanceSupplyAdapter
 
     const pools = await comptrollerContract.getAllMarkets()
 
-    const metadataObject: MendiFinanceSupplyAdapterMetadata = {}
+    const metadataObject: MendiFinanceBorrowMarketAdapterMetadata = {}
 
     await Promise.all(
       pools.map(async (poolContractAddress) => {
@@ -131,38 +137,18 @@ export class MendiFinanceSupplyAdapter
     )
   }
 
-  protected async getUnderlyingTokenBalances({
-    userAddress,
-    protocolTokenBalance,
-    blockNumber,
-  }: {
+  protected getUnderlyingTokenBalances(_input: {
     userAddress: string
     protocolTokenBalance: TokenBalance
-    blockNumber?: number
+    blockNumber?: number | undefined
   }): Promise<Underlying[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenBalance.address,
-    )
+    throw new NotImplementedError()
+  }
 
-    const poolContract = Cerc20__factory.connect(
-      protocolTokenBalance.address,
-      this.provider,
-    )
-
-    const underlyingBalance = await poolContract.balanceOfUnderlying.staticCall(
-      userAddress,
-      {
-        blockTag: blockNumber,
-      },
-    )
-
-    const underlyingTokenBalance = {
-      ...underlyingToken,
-      balanceRaw: underlyingBalance,
-      type: TokenType.Underlying,
-    }
-
-    return [underlyingTokenBalance]
+  async getTotalValueLocked(
+    _input: GetTotalValueLockedInput,
+  ): Promise<ProtocolTokenTvl[]> {
+    throw new NotImplementedError()
   }
 
   protected async fetchProtocolTokenMetadata(
@@ -174,33 +160,10 @@ export class MendiFinanceSupplyAdapter
   }
 
   protected async unwrapProtocolToken(
-    protocolTokenMetadata: Erc20Metadata,
-    blockNumber?: number | undefined,
+    _protocolTokenMetadata: Erc20Metadata,
+    _blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-    const { underlyingToken } = await this.fetchPoolMetadata(
-      protocolTokenMetadata.address,
-    )
-
-    const poolContract = Cerc20__factory.connect(
-      protocolTokenMetadata.address,
-      this.provider,
-    )
-
-    const exchangeRateCurrent =
-      await poolContract.exchangeRateCurrent.staticCall({
-        blockTag: blockNumber,
-      })
-
-    // The current exchange rate is scaled by 1 * 10^(18 - 8 + Underlying Token Decimals).
-    const adjustedExchangeRate = exchangeRateCurrent / 10n ** 10n
-
-    return [
-      {
-        ...underlyingToken,
-        type: TokenType.Underlying,
-        underlyingRateRaw: adjustedExchangeRate,
-      },
-    ]
+    throw new NotImplementedError()
   }
 
   protected async fetchUnderlyingTokensMetadata(
@@ -231,56 +194,82 @@ export class MendiFinanceSupplyAdapter
     return poolMetadata
   }
 
-  /**
-   * Retrieves transaction parameters for specific actions based on provided inputs.
-   *
-   * Implementation Steps:
-   * 1. Implement logic for handling predefined actions (e.g., Supply, Withdraw). Consider the examples provided as a starting point.
-   * 2. For new actions (e.g., Stake, Flash Loan), first extend the \`WriteActions\` object to include these new actions.
-   * 3. Export a WriteActionInputs object that satisfies WriteActionInputSchemas from this file.
-   * 4. Implement the method logic for each action, extracting necessary inputs and populating transactions accordingly.
-   *
-   * Example Implementations:
-   * - Deposit: Extract 'asset', 'amount', 'onBehalfOf', and 'referralCode' from inputs. Use these to populate transactions with 'poolContract.supply.populateTransaction(...)'.
-   * - Withdraw: Follow a similar approach, adapting the parameters and transaction population as necessary for the action.
-   *
-   * Ensure the implementation supports all main end-user actions. Developers are encouraged to incorporate error handling tailored to specific business logic requirements.
-   *
-   * TODO: Replace code with actual implementation logic according to your protocol's requirements and the actions supported.
-   */
-  // getTransactionParams({
-  //   action,
-  //   inputs,
-  // }: Extract<
-  //   GetTransactionParams,
-  //   { protocolId: typeof Protocol.MendiFinance; productId: 'supply' }
-  // >): Promise<{ to: string; data: string }> {
-  //   // Example switch case structure for implementation:
-  //   switch (action) {
-  //     case WriteActions.Deposit: {
-  //       const { asset, amount, onBehalfOf, referralCode } = inputs
-  //       return poolContract.supply.populateTransaction(
-  //         asset,
-  //         amount,
-  //         onBehalfOf,
-  //         referralCode,
-  //       )
-  //     }
-  //     case WriteActions.Withdraw: {
-  //       const { asset, amount, to } = inputs
-  //       return poolContract.withdraw.populateTransaction(asset, amount, to)
-  //     }
-  //   }
-  // }
+  async getTransactionParams({
+    action,
+    inputs,
+  }: Extract<
+    GetTransactionParams,
+    { protocolId: typeof Protocol.MendiFinance; productId: 'borrow-market' }
+  >): Promise<{ to: string; data: string }> {
+    const assetPool = Object.values(await this.buildMetadata()).find(
+      (pool) => pool.protocolToken.address === inputs.asset,
+    );
+
+    if(!assetPool) {
+      throw new Error('Asset pool not found');
+    }
+
+    const poolContract = Cerc20__factory.connect(
+      assetPool.protocolToken.address,
+      this.provider,
+    );
+
+    const { amount } = inputs;
+
+    switch (action) {
+      case WriteActions.Borrow: {
+        return poolContract.borrow.populateTransaction(amount)
+      }
+      case WriteActions.Repay: {
+        return poolContract.repayBorrow.populateTransaction(amount)
+      }
+    }
+  }
 }
 
-// export const WriteActionInputs = {
-//   [WriteActions.Deposit]: z.object({}),
-//   [WriteActions.Withdraw]: z.object({}),
-// } satisfies WriteActionInputSchemas
+export const WriteActionInputs = {
+  [WriteActions.Borrow]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
+  [WriteActions.Repay]: z.object({
+    asset: z.string(),
+    amount: z.string(),
+  }),
+} satisfies WriteActionInputSchemas
 
 // NOTE: The APY/APR feature has been removed as of March 2024.
 // The below contains logic that may be useful for future features or reference. For more context on this decision, refer to ticket [MMI-4731].
+
+// async getApy({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetApyInput): Promise<ProtocolTokenApy> {
+//   const apy = await this.getProtocolTokenApy({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     apyDecimal: apy * 100,
+//   }
+// }
+
+// async getApr({
+//   protocolTokenAddress,
+//   blockNumber,
+// }: GetAprInput): Promise<ProtocolTokenApr> {
+//   const apr = await this.getProtocolTokenApr({
+//     protocolTokenAddress,
+//     blockNumber,
+//   })
+
+//   return {
+//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
+//     aprDecimal: apr * 100,
+//   }
+// }
 
 // private async getProtocolTokenApy({
 //   protocolTokenAddress,
@@ -291,7 +280,7 @@ export class MendiFinanceSupplyAdapter
 //     this.provider,
 //   )
 
-//   const srpb = await poolContract.supplyRatePerBlock.staticCall({
+//   const srpb = await poolContract.borrowRatePerBlock.staticCall({
 //     blockTag: blockNumber,
 //   })
 //   const apr = (Number(srpb) * Number(SECONDS_PER_YEAR)) / Number(1e18)
@@ -365,13 +354,9 @@ export class MendiFinanceSupplyAdapter
 //     { blockTag: blockNumber },
 //   )
 
-//   const tokenSupply = await poolContract.totalSupply.staticCall({
+//   const tokenBorrows = await poolContract.totalBorrows.staticCall({
 //     blockTag: blockNumber,
 //   })
-
-//   const exchangeRateStored = await poolContract.exchangeRateStored.staticCall(
-//     { blockTag: blockNumber },
-//   )
 
 //   const underlingPrice = await oracleContract.getPrice.staticCall(
 //     protocolTokenAddress,
@@ -380,45 +365,14 @@ export class MendiFinanceSupplyAdapter
 
 //   const tokenDecimal = underlyingTokenMetadata.decimals
 
-//   const marketTotalSupply =
-//     (Number(tokenSupply) / Math.pow(10, tokenDecimal)) *
-//     (Number(exchangeRateStored) / 1e18) *
+//   const marketTotalBorrows =
+//     (Number(tokenBorrows) / Math.pow(10, tokenDecimal)) *
 //     Number(underlingPrice)
 //   const apr =
-//     (Number(supplySpeed.supplySpeed) *
+//     (Number(supplySpeed.borrowSpeed) *
 //       Number(mPriceFixed) *
 //       SECONDS_PER_YEAR) /
-//     marketTotalSupply
+//     marketTotalBorrows
 
 //   return apr
-// }
-
-// async getApy({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetApyInput): Promise<ProtocolTokenApy> {
-//   const apy = await this.getProtocolTokenApy({
-//     protocolTokenAddress,
-//     blockNumber,
-//   })
-
-//   return {
-//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-//     apyDecimal: apy * 100,
-//   }
-// }
-
-// async getApr({
-//   protocolTokenAddress,
-//   blockNumber,
-// }: GetAprInput): Promise<ProtocolTokenApr> {
-//   const apr = await this.getProtocolTokenApr({
-//     protocolTokenAddress,
-//     blockNumber,
-//   })
-
-//   return {
-//     ...(await this.fetchProtocolTokenMetadata(protocolTokenAddress)),
-//     aprDecimal: apr * 100,
-//   }
 // }
