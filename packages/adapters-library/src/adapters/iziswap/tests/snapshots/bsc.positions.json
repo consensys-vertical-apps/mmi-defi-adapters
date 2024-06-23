@@ -1,5 +1,6 @@
 {
   "blockNumber": 34467153,
+  "aggregatedValues": ["USD0.08"],
   "snapshot": [
     {
       "protocolId": "iziswap",

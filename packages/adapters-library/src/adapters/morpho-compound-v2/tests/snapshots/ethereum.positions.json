@@ -1,5 +1,11 @@
 {
   "blockNumber": 18776256,
+  "aggregatedValues": [
+    "USD150,270.81",
+    "USD110,217.06",
+    "USD50,594.54",
+    "USD115,281.57"
+  ],
   "snapshot": [
     {
       "protocolId": "morpho-compound-v2",

@@ -1,5 +1,6 @@
 {
   "blockNumber": 19277194,
+  "aggregatedValues": ["USD36,805.46", "USD3,771.20"],
   "snapshot": [
     {
       "protocolId": "uniswap-v2",

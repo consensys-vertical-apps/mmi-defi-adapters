@@ -1,5 +1,6 @@
 {
   "blockNumber": 19562097,
+  "aggregatedValues": ["USD930,175.44"],
   "snapshot": [
     {
       "protocolId": "curve",

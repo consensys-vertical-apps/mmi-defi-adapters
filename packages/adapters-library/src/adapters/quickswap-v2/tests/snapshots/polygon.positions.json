@@ -1,5 +1,6 @@
 {
   "blockNumber": 54212235,
+  "aggregatedValues": ["USD656.12"],
   "snapshot": [
     {
       "protocolId": "quickswap-v2",

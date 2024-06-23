@@ -1,0 +1,41 @@
+{
+  "blockNumber": 20126536,
+  "snapshot": [
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "market",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "baseRate": 1,
+          "type": "protocol",
+          "address": "0xeEE8aED1957ca1545a0508AfB51b53cCA7e3c0d1",
+          "name": "PT Renzo ezETH 25APR2024",
+          "symbol": "PT-ezETH-25APR2024",
+          "decimals": 18,
+          "tokens": [
+            {
+              "type": "underlying",
+              "underlyingRateRaw": "988085047045351601n",
+              "address": "0x22E12A50e3ca49FB183074235cB1db84Fe4C716D",
+              "name": "SY Renzo ezETH",
+              "symbol": "SY-ezETH",
+              "decimals": 18,
+              "underlyingRate": 0.9880850470453516,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x22E12A50e3ca49FB183074235cB1db84Fe4C716D/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
