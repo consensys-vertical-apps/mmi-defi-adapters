@@ -1,4 +1,126 @@
 {
+  "0x12fBf29ebab68ed27db7f1a3A3b733692f566535": {
+    "protocolToken": {
+      "address": "0x12fBf29ebab68ed27db7f1a3A3b733692f566535",
+      "name": "Moo VeloV2 WETH-weETH",
+      "symbol": "mooVeloV2WETH-weETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x5A7fACB970D094B6C7FF1df0eA68D99E6e73CBFF",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xd0F92F5d756Bf223574DFa3ef284a35C3c046289",
+      "name": "VolatileV2 AMM - WETH/weETH",
+      "symbol": "vAMMV2-WETH/weETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x5473C206323A5a4Ab2590C24D6CEf710002ba631": {
+    "protocolToken": {
+      "address": "0x5473C206323A5a4Ab2590C24D6CEf710002ba631",
+      "name": "Moo VeloV2 HAI-KITE",
+      "symbol": "mooVeloV2HAI-KITE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x10398AbC267496E49106B07dd6BE13364D10dC71",
+        "name": "HAI Index Token",
+        "symbol": "HAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xf467C7d5a4A9C4687fFc7986aC6aD5A4c81E1404",
+        "name": "Protocol Token",
+        "symbol": "KITE",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xf2d3941b6E1cbD3616061E556Eb06986147715d1",
+      "name": "VolatileV2 AMM - HAI/KITE",
+      "symbol": "vAMMV2-HAI/KITE",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x9567717a195D5B40f2e5B84E98B1595C72Dd1587": {
+    "protocolToken": {
+      "address": "0x9567717a195D5B40f2e5B84E98B1595C72Dd1587",
+      "name": "Moo Curve USDC-USDM",
+      "symbol": "mooCurveUSDC-USDM",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+        "name": "Mountain Protocol USD",
+        "symbol": "USDM",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xb52c9213d318956bFa26Df2656B161e3cAcbB64d",
+      "name": "USDC/USDM",
+      "symbol": "usdc-usdm",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x2160BEDE9d5559bA559Eaf88052b46b8364eE245": {
+    "protocolToken": {
+      "address": "0x2160BEDE9d5559bA559Eaf88052b46b8364eE245",
+      "name": "Moo Aura OP WETH-wrsETH",
+      "symbol": "mooAuraOPWETH-wrsETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x73A7fe27fe9545D53924E529Acf11F3073841b9e",
+        "name": "Balancer wrsETH/wETH",
+        "symbol": "wrsETH/wETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x87eEE96D50Fb761AD85B1c982d28A042169d61b1",
+        "name": "rsETHWrapper",
+        "symbol": "wrsETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x73A7fe27fe9545D53924E529Acf11F3073841b9e",
+      "name": "Balancer wrsETH/wETH",
+      "symbol": "wrsETH/wETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
   "0xF158b12047B2313962a816D4e45281e3BcbfFd2F": {
     "protocolToken": {
       "address": "0xF158b12047B2313962a816D4e45281e3BcbfFd2F",
@@ -227,35 +349,6 @@
       "address": "0x894d6Ea97767EbeCEfE01c9410f6Bd67935AA952",
       "name": "VolatileV2 AMM - USDC/SNX",
       "symbol": "vAMMV2-USDC/SNX",
-      "decimals": 18
-    },
-    "unwrapType": "solidly"
-  },
-  "0xb39f301318860fE06eEE8541c3cfde637aC86077": {
-    "protocolToken": {
-      "address": "0xb39f301318860fE06eEE8541c3cfde637aC86077",
-      "name": "Moo VeloV2 USDV-OP",
-      "symbol": "mooVeloV2USDV-OP",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
-        "name": "USDV",
-        "symbol": "USDV",
-        "decimals": 6
-      },
-      {
-        "address": "0x4200000000000000000000000000000000000042",
-        "name": "Optimism",
-        "symbol": "OP",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x77DC238E47C016A8EB65c4375fCeF9ca197e6979",
-      "name": "VolatileV2 AMM - USDV/OP",
-      "symbol": "vAMMV2-USDV/OP",
       "decimals": 18
     },
     "unwrapType": "solidly"

@@ -28,13 +28,13 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { breakdownFetcherMap, chainIdMap, protocolMap } from '../../sdk/config'
-import { ApiBoost, ApiVault } from '../../sdk/types'
+import { ApiVault } from '../../sdk/types'
 import { Metadata } from './types'
 
-export class BeefyMooTokenAdapter
+export class BeefyCowTokenAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
-  productId = 'moo-token'
+  productId = 'cow-token'
   protocolId: Protocol
   chainId: Chain
   helpers: Helpers
@@ -79,19 +79,9 @@ export class BeefyMooTokenAdapter
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<Metadata> {
     const vaults = (await (
-      await fetch('https://api.beefy.finance/vaults')
+      await fetch('https://api.beefy.finance/cow-vaults')
     ).json()) as ApiVault[]
-    const boosts = (await (
-      await fetch('https://api.beefy.finance/boosts')
-    ).json()) as ApiBoost[]
 
-    const boostedVaultsMap = boosts.reduce(
-      (acc, boost) => {
-        acc[boost.poolId] = true
-        return acc
-      },
-      {} as Record<string, boolean>,
-    )
     const chain = chainIdMap[this.chainId]
     const supportedVaults = vaults
       .filter((vault) => vault.chain === chain)
@@ -99,10 +89,6 @@ export class BeefyMooTokenAdapter
       .filter((vault) => vault.status === 'active')
       // remove unsupported gov vaults
       .filter((vault) => vault.isGovVault !== true)
-      // remove unsupported bridged vaults
-      .filter((vault) => Object.keys(vault.bridged || {}).length === 0)
-      // remove unsupported vaults with a boost, accounting of user balance is a bit more complex
-      .filter((vault) => !boostedVaultsMap[vault.id])
       // remove those where we token breakdown isn't implemented
       .filter((vault) => {
         const keep = !!protocolMap[vault.platformId]
@@ -146,29 +132,36 @@ export class BeefyMooTokenAdapter
       }
 
       try {
-        const [protocolToken, underlyingToken, breakdown] = await Promise.all([
-          this.helpers.getTokenMetadata(vault.earnedTokenAddress),
-          this.helpers.getTokenMetadata(vault.tokenAddress),
-          breakdownFetcherMap[protocolType](
+        if (
+          !vault.depositTokenAddresses ||
+          vault.depositTokenAddresses.length < 2
+        ) {
+          logger.error(
             {
-              protocolTokenAddress: vault.earnedTokenAddress,
-              underlyingLPTokenAddress: vault.tokenAddress,
-              blockSpec: { blockTag: undefined },
+              vaultId: vault.id,
+              platformId: vault.platformId,
+              vaultAddress: vault.earnedTokenAddress,
+              poolAddress: vault.tokenAddress,
+              strategyTypeId: vault.strategyTypeId,
+              depositTokenAddresses: vault.depositTokenAddresses,
+              chain,
             },
-            this.provider,
-          ),
-        ])
-
-        const breakdownTokenMetadata = await Promise.all(
-          breakdown.balances.map((balance) =>
-            this.helpers.getTokenMetadata(balance.tokenAddress),
-          ),
-        )
+            'Invalid deposit token list',
+          )
+          continue
+        }
+        const token0 = vault.depositTokenAddresses[0] as string
+        const token1 = vault.depositTokenAddresses[1] as string
+        const [protocolToken, underlyingToken0, underlyingToken1] =
+          await Promise.all([
+            this.helpers.getTokenMetadata(vault.earnedTokenAddress),
+            this.helpers.getTokenMetadata(token0),
+            this.helpers.getTokenMetadata(token1),
+          ])
 
         res[protocolToken.address] = {
           protocolToken,
-          underlyingTokens: breakdownTokenMetadata,
-          underlyingLPToken: underlyingToken,
+          underlyingTokens: [underlyingToken0, underlyingToken1],
           unwrapType: protocolType,
         }
       } catch (e) {
@@ -249,7 +242,7 @@ export class BeefyMooTokenAdapter
     ](
       {
         protocolTokenAddress,
-        underlyingLPTokenAddress: metadata.underlyingLPToken.address,
+        underlyingLPTokenAddress: protocolTokenAddress,
         blockSpec: { blockTag: blockNumber },
       },
       this.provider,

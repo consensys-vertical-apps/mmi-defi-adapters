@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { BeefyVaultV7__factory, IchiAlm__factory } from '../../../contracts'
+import { BeefyVaultV7__factory, IchiAlm__factory } from '../../contracts'
 import { VaultBalanceBreakdownFetcher } from '../types'
 
 export const fetchIchiBalanceBreakdown: VaultBalanceBreakdownFetcher = async (

@@ -13,6 +13,8 @@ import {
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
 import { AngleProtocolSavingsAdapter } from './angle-protocol/products/savings/angleProtocolSavingsAdapter'
+import { BeefyCowTokenAdapter } from './beefy/products/cow-token/beefyCowTokenAdapter'
+import { BeefyMooTokenAdapter } from './beefy/products/moo-token/beefyMooTokenAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import {
@@ -28,7 +30,6 @@ import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
 import { ConvexSidechainStakingAdapter } from './convex/products/sidechain-staking/convexSidechainStakingAdapter'
 import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAdapter'
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
-
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { CurveVotingEscrowAdapter } from './curve/products/voting-escrow/curveVotingEscrowAdapter'
 import { EthenaStakedUsdeAdapter } from './ethena/products/staked-usde/ethenaStakedUsdeAdapter'
@@ -68,8 +69,6 @@ import { SyncSwapPoolAdapter } from './syncswap/products/pool/syncSwapPoolAdapte
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
-
-import { BeefyMooTokenAdapter } from './beefy/products/moo-token/beefyMooTokenAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -146,14 +145,14 @@ export const supportedProtocols: Record<
 
   [Protocol.Beefy]: {
     [Chain.Ethereum]: [BeefyMooTokenAdapter],
-    [Chain.Optimism]: [BeefyMooTokenAdapter],
+    [Chain.Optimism]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
     [Chain.Bsc]: [BeefyMooTokenAdapter],
-    [Chain.Polygon]: [BeefyMooTokenAdapter],
+    [Chain.Polygon]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
     [Chain.Fantom]: [BeefyMooTokenAdapter],
-    [Chain.Base]: [BeefyMooTokenAdapter],
-    [Chain.Arbitrum]: [BeefyMooTokenAdapter],
-    [Chain.Avalanche]: [BeefyMooTokenAdapter],
-    [Chain.Linea]: [BeefyMooTokenAdapter],
+    [Chain.Base]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
+    [Chain.Arbitrum]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
+    [Chain.Avalanche]: [BeefyCowTokenAdapter],
+    [Chain.Linea]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
   },
 
   [Protocol.CarbonDeFi]: {

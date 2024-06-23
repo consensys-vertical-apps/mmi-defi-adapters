@@ -1,4 +1,91 @@
 {
+  "0xdeE327BF6b0182a1727caEC9C6344a0D27D6da99": {
+    "protocolToken": {
+      "address": "0xdeE327BF6b0182a1727caEC9C6344a0D27D6da99",
+      "name": "Moo Aero sfrxETH-wstETH",
+      "symbol": "mooAerosfrxETH-wstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1f55a02A049033E3419a8E2975cF3F572F4e6E9A",
+        "name": "Staked Frax Ether",
+        "symbol": "sfrxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x456c166e63634D75a4B49EDEC86cB51424D4C926",
+      "name": "Volatile AMM - sfrxETH/wstETH",
+      "symbol": "vAMM-sfrxETH/wstETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x4C756F7FecCB28FDe0BD1834D966f4eb5ff41fF3": {
+    "protocolToken": {
+      "address": "0x4C756F7FecCB28FDe0BD1834D966f4eb5ff41fF3",
+      "name": "Moo Aero sfrxETH-sFRAX",
+      "symbol": "mooAerosfrxETH-sFRAX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1f55a02A049033E3419a8E2975cF3F572F4e6E9A",
+        "name": "Staked Frax Ether",
+        "symbol": "sfrxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xe4796cCB6bB5DE2290C417Ac337F2b66CA2E770E",
+        "name": "Staked FRAX",
+        "symbol": "sFRAX",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xD73a3EF449043AAc66bFF3FEE37E83B4f8DAE998",
+      "name": "Volatile AMM - sfrxETH/sFRAX",
+      "symbol": "vAMM-sfrxETH/sFRAX",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xADa309b35f2a96f5B729BC8efA0E69ED449370B5": {
+    "protocolToken": {
+      "address": "0xADa309b35f2a96f5B729BC8efA0E69ED449370B5",
+      "name": "Moo Aero HBR-USDC",
+      "symbol": "mooAeroHBR-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x416bd43Bc76D496ff49923c20eCaf86b52Ab078d",
+        "name": "Harbor Token",
+        "symbol": "HBR",
+        "decimals": 18
+      },
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x68cfB52C74827f91E1F664fFeD634F849AEce455",
+      "name": "Volatile AMM - HBR/USDC",
+      "symbol": "vAMM-HBR/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
   "0x3b5F990364fa9BF1Db34d9d24B0Bdca6eE4bD4B1": {
     "protocolToken": {
       "address": "0x3b5F990364fa9BF1Db34d9d24B0Bdca6eE4bD4B1",
@@ -440,35 +527,6 @@
     },
     "unwrapType": "solidly"
   },
-  "0x715a4a6Afb44f87f8C4eE8d945Eb6B630A11E72c": {
-    "protocolToken": {
-      "address": "0x715a4a6Afb44f87f8C4eE8d945Eb6B630A11E72c",
-      "name": "Moo Aura Base tBTC-WETH",
-      "symbol": "mooAuraBasetBTC-WETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x236aa50979D5f3De3Bd1Eeb40E81137F22ab794b",
-        "name": "Base tBTC v2",
-        "symbol": "tBTC",
-        "decimals": 18
-      },
-      {
-        "address": "0x4200000000000000000000000000000000000006",
-        "symbol": "ETH",
-        "name": "Ethereum",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x52e281318Fed4eFFfb8E46c0847a8f9B71a461A8",
-      "name": " 50tBTC-50WETH",
-      "symbol": " 50tBTC-50WETH",
-      "decimals": 18
-    },
-    "unwrapType": "balancer_aura_lp"
-  },
   "0xE738c3aa0F2B287d75cb8A321074Bc5bF42B5773": {
     "protocolToken": {
       "address": "0xE738c3aa0F2B287d75cb8A321074Bc5bF42B5773",
@@ -900,35 +958,6 @@
       "address": "0xeB956b77D455e33b41bBE6052dBE4388dCfD729B",
       "name": "Volatile AMM - ANIME/WETH",
       "symbol": "vAMM-ANIME/WETH",
-      "decimals": 18
-    },
-    "unwrapType": "solidly"
-  },
-  "0x74A1A64955280b021E1c32b2f8B88D48456DCB3e": {
-    "protocolToken": {
-      "address": "0x74A1A64955280b021E1c32b2f8B88D48456DCB3e",
-      "name": "Moo Aero USD+-AERO",
-      "symbol": "mooAeroUSD+-AERO",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
-        "name": "Aerodrome",
-        "symbol": "AERO",
-        "decimals": 18
-      },
-      {
-        "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
-        "name": "USD+",
-        "symbol": "USD+",
-        "decimals": 6
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x267d950110D9ED57999c3451b89C35a9D278C074",
-      "name": "Volatile AMM - AERO/USD+",
-      "symbol": "vAMM-AERO/USD+",
       "decimals": 18
     },
     "unwrapType": "solidly"
@@ -2853,40 +2882,5 @@
       "decimals": 18
     },
     "unwrapType": "solidly"
-  },
-  "0xbc15d22EA300d0965FD8a19A04CD8525834585Ef": {
-    "protocolToken": {
-      "address": "0xbc15d22EA300d0965FD8a19A04CD8525834585Ef",
-      "name": "Moo Balancer Base cbETH-ETH",
-      "symbol": "mooBalanceBasecbETH-ETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22",
-        "name": "Coinbase Wrapped Staked ETH",
-        "symbol": "cbETH",
-        "decimals": 18
-      },
-      {
-        "address": "0x4200000000000000000000000000000000000006",
-        "symbol": "ETH",
-        "name": "Ethereum",
-        "decimals": 18
-      },
-      {
-        "address": "0xFb4C2E6E6e27B5b4a07a36360C89EDE29bB3c9B6",
-        "name": "Balancer cbETH/WETH StablePool",
-        "symbol": "cbETH/WETH",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0xFb4C2E6E6e27B5b4a07a36360C89EDE29bB3c9B6",
-      "name": "Balancer cbETH/WETH StablePool",
-      "symbol": "cbETH/WETH",
-      "decimals": 18
-    },
-    "unwrapType": "balancer_aura_lp"
   }
 }

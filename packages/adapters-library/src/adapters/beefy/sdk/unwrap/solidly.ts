@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers'
-import { BeefyVaultV7__factory, SolidlyPool__factory } from '../../../contracts'
+import { BeefyVaultV7__factory, SolidlyPool__factory } from '../../contracts'
 import { VaultBalanceBreakdownFetcher } from '../types'
 
 export const fetchSolidlyBalanceBreakdown: VaultBalanceBreakdownFetcher =

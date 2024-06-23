@@ -1,7 +1,5 @@
 import { Chain } from '../../../core/constants/chains'
-import { TimePeriod } from '../../../core/constants/timePeriod'
 import type { TestCase } from '../../../types/testCase'
-import { WriteActions } from '../../../types/writeActions'
 
 export const testCases: TestCase[] = [
   {
@@ -286,6 +284,75 @@ export const testCases: TestCase[] = [
       userAddress: '0xe063DC804128BCfa468221BF7CEB69Bf2728e937',
       protocolTokenAddress: '0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c',
       productId: 'moo-token',
+    },
+  },
+
+  /// cow tokens
+  {
+    chainId: Chain.Arbitrum,
+    method: 'deposits',
+    input: {
+      fromBlock: 224830313,
+      toBlock: 224830513,
+      userAddress: '0x652498c164f39e866eb8f62f7ea9f294d96aa188',
+      protocolTokenAddress: '0x073819cff8229BC2f5Af33012e69C8289779E7aC',
+      productId: 'cow-token',
+    },
+  },
+  {
+    chainId: Chain.Arbitrum,
+    method: 'positions',
+    input: {
+      userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
+
+      filterProtocolTokens: [
+        '0x168285c55a871fd2219329F680EB0CA8fB8711e4',
+        '0x663B0d9ddB6e86cB5E1F87ebCbDafb5A53a45798',
+        '0xDa3E652A86B3FD320512cadd87D6504fa18aEC65',
+        '0xc4AE801d239da28A9108a5E6caD9F5893Ad93CB2',
+        '0xB79D17BE1bd9544e0005FA0F9033f8f78CE06D4c',
+        '0x308aD09fD1577dF61Dd638cd8c81B12072c21665',
+        '0xAf4c8cEE65Fd6dD1864f4bb53dbD386B0D092063',
+        '0xFBebeDa38450bBf12aFe5B64df9aC507380C0Cca',
+        '0x92058bF6685A73D96c3919a8431fC3f4E348B0af',
+        '0xC942119Efb0Bee010F35d1cfCcCeb1230f2E172e',
+        '0xD08C0bAf1DfF8B887e9C57c6C2bac24F0c5328d3',
+        '0x4706d4a0D689211f482F4594EF3cDAc6c8B9aC00',
+        '0x391c62c26D308dbf5b5647899fa2ef98c20122F4',
+        '0xb6ca0d19D1b058B8a98E5cdcA844488F913303C7',
+        '0x89319BF331959DD5E07d03a719328fEa01f40927',
+        '0x15cfBd3Db5D24360eeac802b3dde4423eb5C3C70',
+        '0x83368b5e04d8A2C990ef9b5FE41509FafCfBa499',
+        '0x3786676C03B9518fad1724B43eB28b2Baa36588f',
+        '0x6928b8Df875877Ba65Ff53AFF182Ec6B8dFEe90F',
+        '0xB13872c632ac188596DEceF852c15F3d884CA9C9',
+        '0xEEA4114Ab4FCb82a28c514e21d656Ca78D75b1A9',
+        '0xBfaDfcbeF611D958c8998ea29FAce6bb155302fd',
+        '0x9b28956731272aD07A5d33bA6Ab6fe5e0C32707f',
+        '0x873d47401fd390eb4cA528781B28Aff7a15c640E',
+        '0x5b65c2d8866Ee0cd0D041BEb0C6ea53A1CD058Cd',
+        '0x0D1f71170d93121b48A9e8FC7400e8e6A6821500',
+        '0x275d390483ff92cbfae34f56c2dD2C30cdf092a5',
+        '0x72C378dCe9Ec6bdc49cc02003aE8C95e5996dC5E',
+        '0x7925AAaa93f71E5b1b3769eDdd2d70DeA592D17F',
+        '0x63b54B0e06028802007c5f1eaeaC03d5472B904a',
+        '0x56637eF065dc19ED71B7bD8b60DBDa9A1ba12a7e',
+        '0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763',
+        '0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058',
+        '0xd37025aC6227334C7762AeD5929Ce3272fbb6fdC',
+      ],
+    },
+    blockNumber: 224830413,
+  },
+  {
+    chainId: Chain.Arbitrum,
+    method: 'withdrawals',
+    input: {
+      fromBlock: 224790891,
+      toBlock: 224791091,
+      userAddress: '0xbba45503705fd9ed0f21b04506f091bbbb1e6e43',
+      protocolTokenAddress: '0x073819cff8229BC2f5Af33012e69C8289779E7aC',
+      productId: 'cow-token',
     },
   },
 ]

@@ -375,34 +375,5 @@
       "decimals": 18
     },
     "unwrapType": "gamma"
-  },
-  "0x33D0F945F77660F4A9e56949500265313f6D08fb": {
-    "protocolToken": {
-      "address": "0x33D0F945F77660F4A9e56949500265313f6D08fb",
-      "name": "Moo Thena Gamma BNB-stkBNB",
-      "symbol": "mooThenaGamma_BNB-stkBNB",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-        "name": "Wrapped BNB",
-        "symbol": "WBNB",
-        "decimals": 18
-      },
-      {
-        "address": "0xc2E9d07F66A89c44062459A47a0D2Dc038E4fb16",
-        "name": "Staked BNB",
-        "symbol": "stkBNB",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x86b481fCe116DCd01fBeBb963f1358bcc466668C",
-      "name": "aWBNB-STKBNB",
-      "symbol": "aWBNB-STKBNB",
-      "decimals": 18
-    },
-    "unwrapType": "gamma"
   }
 }

@@ -1,10 +1,10 @@
 import { getAddress } from 'ethers'
-import { CustomJsonRpcProvider } from '../../../../../core/provider/CustomJsonRpcProvider'
+import { CustomJsonRpcProvider } from '../../../../core/provider/CustomJsonRpcProvider'
 import {
   BalancerPool__factory,
   BalancerVault__factory,
   BeefyVaultV7__factory,
-} from '../../../contracts'
+} from '../../contracts'
 import { VaultBalanceBreakdownFetcher } from '../types'
 
 export const fetchBalancerAuraBalanceLPBreakdown: VaultBalanceBreakdownFetcher =

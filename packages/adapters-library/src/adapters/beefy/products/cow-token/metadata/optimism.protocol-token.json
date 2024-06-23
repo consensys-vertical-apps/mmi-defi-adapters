@@ -1,0 +1,370 @@
+{
+  "0x5451b6584B4D7de383A55B01E7335E137BFEA5A5": {
+    "protocolToken": {
+      "address": "0x5451b6584B4D7de383A55B01E7335E137BFEA5A5",
+      "name": "Cow Uniswap Op WETH-ZRO",
+      "symbol": "cowUniswapOpWETH-ZRO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
+        "name": "LayerZero",
+        "symbol": "ZRO",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x18A2688494cFa036C8Bc28595336639a9eb9FA53": {
+    "protocolToken": {
+      "address": "0x18A2688494cFa036C8Bc28595336639a9eb9FA53",
+      "name": "Cow Uniswap Op ZRO-USDT",
+      "symbol": "cowUniswapOpZRO-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
+        "name": "LayerZero",
+        "symbol": "ZRO",
+        "decimals": 18
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xCFf23567199817dEeC54c8D0E0d138837b20B3A8": {
+    "protocolToken": {
+      "address": "0xCFf23567199817dEeC54c8D0E0d138837b20B3A8",
+      "name": "Cow Uniswap Op CRV-WETH",
+      "symbol": "cowUniswapOpCRV-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0994206dfE8De6Ec6920FF4D779B0d950605Fb53",
+        "name": "Curve DAO Token",
+        "symbol": "CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x0Ee84708c7E4F65e4799235CB576C7E862aA4D03": {
+    "protocolToken": {
+      "address": "0x0Ee84708c7E4F65e4799235CB576C7E862aA4D03",
+      "name": "Cow Uniswap Op USDC-WBTC",
+      "symbol": "cowUniswapOpUSDC-WBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x9b9EB6B79b09A43e5d4118ED7124147Fb3c8d250": {
+    "protocolToken": {
+      "address": "0x9b9EB6B79b09A43e5d4118ED7124147Fb3c8d250",
+      "name": "Cow Uniswap Op WETH-USDT",
+      "symbol": "cowUniswapOpWETH-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x53F42Ee2feb58035e6c43B3FF796b17D9650cF4b": {
+    "protocolToken": {
+      "address": "0x53F42Ee2feb58035e6c43B3FF796b17D9650cF4b",
+      "name": "Cow Uniswap Op WETH-DAI",
+      "symbol": "cowUniswapOpWETH-DAI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x4EAb2865E76318478b7d4F63F613a0ED0A602945": {
+    "protocolToken": {
+      "address": "0x4EAb2865E76318478b7d4F63F613a0ED0A602945",
+      "name": "Cow Uniswap Op WETH-SNX",
+      "symbol": "cowUniswapOpWETH-SNX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
+        "name": "Synthetix Network Token",
+        "symbol": "SNX",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x0A90c02d6Be2EF93e939702Efc74BEC58659a4D3": {
+    "protocolToken": {
+      "address": "0x0A90c02d6Be2EF93e939702Efc74BEC58659a4D3",
+      "name": "Cow Uniswap Op WETH-USDC.e",
+      "symbol": "cowUniswapOpWETH-USDC.e",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xA2A8B06aa9d211e02E1F8CEb7706aE8bF3362Dfb": {
+    "protocolToken": {
+      "address": "0xA2A8B06aa9d211e02E1F8CEb7706aE8bF3362Dfb",
+      "name": "Cow Uniswap Op USDC-OP",
+      "symbol": "cowUniswapOpUSDC-OP",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "name": "Optimism",
+        "symbol": "OP",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xE430F5264653056BE2B556B4bB0F9Cd70fb8407B": {
+    "protocolToken": {
+      "address": "0xE430F5264653056BE2B556B4bB0F9Cd70fb8407B",
+      "name": "Cow Uniswap Op WETH-WBTC",
+      "symbol": "cowUniswapOpWETH-WBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xC884a956a18a4953356b87c1c968419c32FA4a73": {
+    "protocolToken": {
+      "address": "0xC884a956a18a4953356b87c1c968419c32FA4a73",
+      "name": "Cow Uniswap Op OP-WETH",
+      "symbol": "cowUniswapOpOP-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "name": "Optimism",
+        "symbol": "OP",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xc0Fdb17dd0811e9a6855b9bb0C6c0bbC2194C98F": {
+    "protocolToken": {
+      "address": "0xc0Fdb17dd0811e9a6855b9bb0C6c0bbC2194C98F",
+      "name": "Cow Uniswap Op USDC-WETH",
+      "symbol": "cowUniswapOpUSDC-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x25F25a45105Ea0Cad9cb116cc4f9b40124A7D02D": {
+    "protocolToken": {
+      "address": "0x25F25a45105Ea0Cad9cb116cc4f9b40124A7D02D",
+      "name": "Cow Uniswap OP tBTC-WBTC",
+      "symbol": "cowUniswapOPtBTC-WBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40",
+        "name": "Optimism tBTC v2",
+        "symbol": "tBTC",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x80D438EEdb918207c2F7F7eAC31f2F8012923F76": {
+    "protocolToken": {
+      "address": "0x80D438EEdb918207c2F7F7eAC31f2F8012923F76",
+      "name": "Cow Uniswap OP USDe-wstETH",
+      "symbol": "cowUniswapOPUSDe-wstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x0F46A74B01708E78c27DEF7160A5C5222f9dD157": {
+    "protocolToken": {
+      "address": "0x0F46A74B01708E78c27DEF7160A5C5222f9dD157",
+      "name": "Cow Uniswap OP rsETH-wstETH",
+      "symbol": "cowUniswapOPrsETH-wstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "KelpDao Restaked ETH",
+        "symbol": "rsETH",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x36183032f94652748Ab6F6ce503f801de9D1d8CB": {
+    "protocolToken": {
+      "address": "0x36183032f94652748Ab6F6ce503f801de9D1d8CB",
+      "name": "Cow Uniswap Op WLD-USDC",
+      "symbol": "cowUniswapOpWLD-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xdC6fF44d5d932Cbd77B52E5612Ba0529DC6226F1",
+        "name": "Worldcoin",
+        "symbol": "WLD",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  }
+}

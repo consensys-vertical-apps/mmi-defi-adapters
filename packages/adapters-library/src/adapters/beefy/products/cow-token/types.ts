@@ -5,7 +5,6 @@ export type MetadataEntry = {
   protocolToken: Erc20Metadata
   underlyingTokens: Erc20Metadata[]
   unwrapType: ProtocolUnwrapType
-  underlyingLPToken: Erc20Metadata
 }
 
 export type Metadata = Record<string, MetadataEntry>

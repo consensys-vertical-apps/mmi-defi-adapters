@@ -1,5 +1,11 @@
 {
   "blockNumber": 121055758,
+  "aggregatedValues": [
+    "USD3,856.48",
+    "USD2,746.63",
+    "USD1,960.75",
+    "USD3,758.45"
+  ],
   "snapshot": [
     {
       "protocolId": "beefy",

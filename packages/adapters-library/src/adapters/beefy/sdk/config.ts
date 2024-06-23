@@ -1,4 +1,4 @@
-import { Chain } from '../../../../core/constants/chains'
+import { Chain } from '../../../core/constants/chains'
 import {
   ApiPlatformId,
   ApiStrategyTypeId,
@@ -11,6 +11,7 @@ import {
   fetchBalancerAuraBalanceMultiLPBreakdown,
   fetchBalancerAuraBalanceMultiLPLockedBreakdown,
 } from './unwrap/balancer_aura'
+import { fetchBeefyClmBalanceBreakdown } from './unwrap/beefy_clm'
 import { fetchCurveBalanceBreakdown } from './unwrap/curve'
 import { fetchGammaBalanceBreakdown } from './unwrap/gamma'
 import { fetchIchiBalanceBreakdown } from './unwrap/ichi'
@@ -31,7 +32,8 @@ export const chainIdMap: Record<Chain, string> = {
 
 export const protocolMap: Record<
   ApiPlatformId,
-  Record<ApiStrategyTypeId | 'default', ProtocolUnwrapType> | ProtocolUnwrapType
+  | Partial<Record<ApiStrategyTypeId | 'default', ProtocolUnwrapType>>
+  | ProtocolUnwrapType
 > = {
   aave: 'aave_lend',
   aerodrome: 'solidly',
@@ -40,6 +42,10 @@ export const protocolMap: Record<
     lp: 'balancer_aura_lp',
     'multi-lp': 'balancer_aura_multi_lp',
     'multi-lp-locked': 'balancer_aura_multi_lp_locked',
+  },
+  beefy: {
+    default: 'beefy_clm',
+    cowcentrated: 'beefy_clm',
   },
   curve: 'curve',
   equilibria: 'pendle_equilibria',
@@ -64,4 +70,5 @@ export const breakdownFetcherMap: Record<
   ichi: fetchIchiBalanceBreakdown,
   pendle_equilibria: fetchPendleEquilibriaBalanceBreakdown,
   solidly: fetchSolidlyBalanceBreakdown,
+  beefy_clm: fetchBeefyClmBalanceBreakdown,
 }

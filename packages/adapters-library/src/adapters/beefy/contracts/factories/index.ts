@@ -3,6 +3,7 @@
 /* eslint-disable */
 export { BalancerPool__factory } from "./BalancerPool__factory";
 export { BalancerVault__factory } from "./BalancerVault__factory";
+export { BeefyVaultConcLiq__factory } from "./BeefyVaultConcLiq__factory";
 export { BeefyVaultV7__factory } from "./BeefyVaultV7__factory";
 export { CurvePool__factory } from "./CurvePool__factory";
 export { CurveToken__factory } from "./CurveToken__factory";

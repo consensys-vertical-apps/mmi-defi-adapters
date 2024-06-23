@@ -2,7 +2,7 @@ import { getAddress } from 'ethers'
 import {
   BeefyVaultV7__factory,
   GammaHypervisor__factory,
-} from '../../../contracts'
+} from '../../contracts'
 import { VaultBalanceBreakdownFetcher } from '../types'
 
 export const fetchGammaBalanceBreakdown: VaultBalanceBreakdownFetcher = async (

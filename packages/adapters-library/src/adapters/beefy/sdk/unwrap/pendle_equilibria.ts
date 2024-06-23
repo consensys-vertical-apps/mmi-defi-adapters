@@ -3,7 +3,7 @@ import {
   BeefyVaultV7__factory,
   PendleMarket__factory,
   PendleSyToken__factory,
-} from '../../../contracts'
+} from '../../contracts'
 import { VaultBalanceBreakdownFetcher } from '../types'
 
 const PENDLE_ROUTER_ADDRESS_ARBITRUM = getAddress(

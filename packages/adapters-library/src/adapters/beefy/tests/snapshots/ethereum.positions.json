@@ -1,5 +1,19 @@
 {
   "blockNumber": 20035548,
+  "aggregatedValues": [
+    "USD7.63",
+    "USD19.38",
+    "USD18.80",
+    "USD12.99",
+    "USD13.85",
+    "USD19.21",
+    "USD5.10",
+    "USD99.63",
+    "USD9.09",
+    "USD23.37",
+    "USD26.33",
+    "USD0.00"
+  ],
   "snapshot": [
     {
       "protocolId": "beefy",

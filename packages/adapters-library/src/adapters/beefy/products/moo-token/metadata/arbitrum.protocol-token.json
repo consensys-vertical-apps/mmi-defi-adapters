@@ -1,4 +1,91 @@
 {
+  "0x33eCa80Faa8D65611aA0DdA9c986d0dC5651aF42": {
+    "protocolToken": {
+      "address": "0x33eCa80Faa8D65611aA0DdA9c986d0dC5651aF42",
+      "name": "Moo Curve triRSR",
+      "symbol": "mooCurveTriRSR",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x18C14C2D707b2212e17d1579789Fc06010cfca23",
+        "name": "ETHPlus",
+        "symbol": "ETH+",
+        "decimals": 18
+      },
+      {
+        "address": "0x12275DCB9048680c4Be40942eA4D92c74C63b844",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xCa5Ca9083702c56b481D1eec86F1776FDbd2e594",
+        "name": "Reserve Rights",
+        "symbol": "RSR",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x45B47fE1bed067de6B4b89e0285E6B571A64c57C",
+      "name": "TriRSR",
+      "symbol": "ETH+eUSDRS",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xB59827f13466C8D4Dd76417011E9a2e8e3dfCFdC": {
+    "protocolToken": {
+      "address": "0xB59827f13466C8D4Dd76417011E9a2e8e3dfCFdC",
+      "name": "Moo Curve KNOX-eUSD",
+      "symbol": "mooCurveKNOX-eUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0BBF664D46becc28593368c97236FAa0fb397595",
+        "name": "KNOX Dollar",
+        "symbol": "KNOX",
+        "decimals": 18
+      },
+      {
+        "address": "0x12275DCB9048680c4Be40942eA4D92c74C63b844",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x6f33daF91d2aCAe10F5CD7BbE3f31716Ed123F1D",
+      "name": "KNOX/eUSD",
+      "symbol": "KNOXeUSD",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x4897679a3E506F0bedC118250369D782F6CCA03e": {
+    "protocolToken": {
+      "address": "0x4897679a3E506F0bedC118250369D782F6CCA03e",
+      "name": "Moo Eqb rsETH_26SEP24",
+      "symbol": "mooEqb-rsETH_26SEP24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "KelpDao Restaked ETH",
+        "symbol": "rsETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xED99fC8bdB8E9e7B8240f62f69609a125A0Fbf14",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
   "0x41c0d96f9c297Eb2216792a3CD50296638684705": {
     "protocolToken": {
       "address": "0x41c0d96f9c297Eb2216792a3CD50296638684705",
@@ -172,29 +259,6 @@
       "decimals": 18
     },
     "unwrapType": "curve"
-  },
-  "0x66d89d65046D8BC75E0fb14E704e50E8C7a07219": {
-    "protocolToken": {
-      "address": "0x66d89d65046D8BC75E0fb14E704e50E8C7a07219",
-      "name": "Moo Eqb rsETH_26SEP24",
-      "symbol": "mooEqb-rsETH_26SEP24",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
-        "name": "KelpDao Restaked ETH",
-        "symbol": "rsETH",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x1d38d4204159aA5e767aFbA8f76BE22117De61E5",
-      "name": "Pendle Market",
-      "symbol": "PENDLE-LPT",
-      "decimals": 18
-    },
-    "unwrapType": "pendle_equilibria"
   },
   "0x4d01a46Fc5F20cA2544204EDD376BdB619BD2D2F": {
     "protocolToken": {
@@ -794,35 +858,6 @@
       "address": "0x845C8bc94610807fCbaB5dd2bc7aC9DAbaFf3c55",
       "name": "TriCRV-ARBITRUM",
       "symbol": "crvUSDARBCRV",
-      "decimals": 18
-    },
-    "unwrapType": "curve"
-  },
-  "0x5abaA1fe55c8c3fC55F3f7C814Bc19e423022764": {
-    "protocolToken": {
-      "address": "0x5abaA1fe55c8c3fC55F3f7C814Bc19e423022764",
-      "name": "Moo Curve crvUSD-MIM",
-      "symbol": "mooCurveCrvUSD-MIM",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
-        "name": "Curve.Fi USD Stablecoin",
-        "symbol": "crvUSD",
-        "decimals": 18
-      },
-      {
-        "address": "0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
-        "name": "Magic Internet Money",
-        "symbol": "MIM",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x4070C044ABc8d9d22447DFE4B032405970878d06",
-      "name": "MIM/crvUSD",
-      "symbol": "MIMcrvUSD",
       "decimals": 18
     },
     "unwrapType": "curve"

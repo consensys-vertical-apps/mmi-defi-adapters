@@ -1,4 +1,33 @@
 {
+  "0x378FcE425239B0c6B43eF79E773794dd2e9979AD": {
+    "protocolToken": {
+      "address": "0x378FcE425239B0c6B43eF79E773794dd2e9979AD",
+      "name": "Moo Curve MAI-USDC.e",
+      "symbol": "mooCurveMAI-USDC.e",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xa3Fa99A148fA48D14Ed51d610c367C61876997F1",
+        "name": "miMATIC",
+        "symbol": "miMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x53C38755748745e2dd7D0a136FBCC9fB1A5B83b2",
+      "name": "Curve.fi Factory Plain Pool: MAI/USDC.e",
+      "symbol": "MAIUSDC.e-f",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
   "0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c": {
     "protocolToken": {
       "address": "0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c",
@@ -463,35 +492,6 @@
     },
     "unwrapType": "gamma"
   },
-  "0xF42D47cAaD6fb299aCc998921EffeaDE5aBEe971": {
-    "protocolToken": {
-      "address": "0xF42D47cAaD6fb299aCc998921EffeaDE5aBEe971",
-      "name": "Moo Retro CASH-MATIC",
-      "symbol": "mooRetroCASH-MATIC",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-        "name": "Wrapped Matic",
-        "symbol": "WMATIC",
-        "decimals": 18
-      },
-      {
-        "address": "0x5D066D022EDE10eFa2717eD3D79f22F949F8C175",
-        "name": "CASH",
-        "symbol": "CASH",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x839d5B563E06b4abdf02d1a9D58d8Ed33592C291",
-      "name": "xCASH-WMATIC05",
-      "symbol": "xCASH-WMATIC05",
-      "decimals": 18
-    },
-    "unwrapType": "gamma"
-  },
   "0xf552a67A82908E6C7F4382b812218d665e058C0B": {
     "protocolToken": {
       "address": "0xf552a67A82908E6C7F4382b812218d665e058C0B",
@@ -550,35 +550,6 @@
     },
     "unwrapType": "gamma"
   },
-  "0xAb4E02911A7d09BC8300F39332F087d51c183038": {
-    "protocolToken": {
-      "address": "0xAb4E02911A7d09BC8300F39332F087d51c183038",
-      "name": "Moo Retro USDC-USDT",
-      "symbol": "mooRetroUSDC-USDT",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-        "name": "USD Coin (PoS)",
-        "symbol": "USDC",
-        "decimals": 6
-      },
-      {
-        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
-        "name": "(PoS) Tether USD",
-        "symbol": "USDT",
-        "decimals": 6
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0xA7565DFeb16010153D3368E002Ec53CBfaf96e05",
-      "name": "xUSDC-USDT01",
-      "symbol": "xUSDC-USDT01",
-      "decimals": 18
-    },
-    "unwrapType": "gamma"
-  },
   "0x0fC4f2DB534Bf7525710DBf64B7081e1a3A6428f": {
     "protocolToken": {
       "address": "0x0fC4f2DB534Bf7525710DBf64B7081e1a3A6428f",
@@ -604,35 +575,6 @@
       "address": "0xBE4E30b74b558E41f5837dC86562DF44aF57A013",
       "name": "xWMATIC-USDC05",
       "symbol": "xWMATIC-USDC05",
-      "decimals": 18
-    },
-    "unwrapType": "gamma"
-  },
-  "0x5268F5F2a9799f747A55f193d2E266c77653E518": {
-    "protocolToken": {
-      "address": "0x5268F5F2a9799f747A55f193d2E266c77653E518",
-      "name": "Moo Retro USDC-WETH",
-      "symbol": "mooRetroUSDC-WETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-        "name": "USD Coin (PoS)",
-        "symbol": "USDC",
-        "decimals": 6
-      },
-      {
-        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0xe058e1FfFF9B13d3FCd4803FDb55d1Cc2fe07DDC",
-      "name": "xUSDC-WETH05",
-      "symbol": "xUSDC-WETH05",
       "decimals": 18
     },
     "unwrapType": "gamma"

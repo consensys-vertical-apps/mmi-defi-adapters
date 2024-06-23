@@ -1,4 +1,33 @@
 {
+  "0xAA3b8C08e7Fe86E1dda8FA9FE7423561Ad316e3F": {
+    "protocolToken": {
+      "address": "0xAA3b8C08e7Fe86E1dda8FA9FE7423561Ad316e3F",
+      "name": "Moo Lynex Gamma inETH-wstETH",
+      "symbol": "mooLynexGammainETH-wstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5A7a183B6B44Dc4EC2E3d2eF43F98C5152b1d76d",
+        "name": "InceptionLRT restaked ETH",
+        "symbol": "inETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xC491C1b173E932E97d9F739ccD9AE5b6d5FcE4ce",
+      "name": "ainETH-wstETH",
+      "symbol": "ainETH-wstETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
   "0x7A6A9dEb7dFfA150224ece4d381f327C59a6bBab": {
     "protocolToken": {
       "address": "0x7A6A9dEb7dFfA150224ece4d381f327C59a6bBab",
@@ -864,29 +893,6 @@
       "name": "Tether USD",
       "symbol": "USDT",
       "decimals": 6
-    },
-    "unwrapType": "aave_lend"
-  },
-  "0xb227116Fa19ABb3a94655dDF24E9CFa09c58d154": {
-    "protocolToken": {
-      "address": "0xb227116Fa19ABb3a94655dDF24E9CFa09c58d154",
-      "name": "Moo Mendi DAI",
-      "symbol": "mooMendiDAI",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
-        "name": "Dai Stablecoin",
-        "symbol": "DAI",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x4AF15ec2A0BD43Db75dd04E62FAA3B8EF36b00d5",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI",
-      "decimals": 18
     },
     "unwrapType": "aave_lend"
   },

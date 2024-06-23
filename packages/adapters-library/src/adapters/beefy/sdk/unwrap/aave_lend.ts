@@ -1,4 +1,4 @@
-import { BeefyVaultV7__factory } from '../../../contracts'
+import { BeefyVaultV7__factory } from '../../contracts'
 import { VaultBalanceBreakdownFetcher } from '../types'
 
 export const fetchAaveLendBalanceBreakdown: VaultBalanceBreakdownFetcher =

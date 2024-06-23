@@ -1,5 +1,6 @@
 {
   "blockNumber": 39386513,
+  "aggregatedValues": ["USD3.92", "USD23.01"],
   "snapshot": [
     {
       "protocolId": "beefy",
