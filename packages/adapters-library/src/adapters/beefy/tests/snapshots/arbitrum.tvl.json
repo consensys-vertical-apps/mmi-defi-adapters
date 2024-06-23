@@ -1,0 +1,101 @@
+{
+  "blockNumber": 224847857,
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "cow-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x073819cff8229BC2f5Af33012e69C8289779E7aC",
+          "name": "Cow Uniswap Arb ZRO-WETH",
+          "symbol": "cowUniswapArbZRO-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "58196431415028069161n",
+          "tokens": [
+            {
+              "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
+              "name": "LayerZero",
+              "symbol": "ZRO",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "36955901002718236143482n",
+              "totalSupply": 36955.90100271824,
+              "price": 2.97782851854609,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6985884C4392D348587B19cb9eAAf157F13271cd/logo.png"
+            },
+            {
+              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "25617709794505849142n",
+              "totalSupply": 25.61770979450585,
+              "price": 3496.77892,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
+            }
+          ],
+          "totalSupply": 58.196431415028066
+        }
+      ]
+    },
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "moo-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763",
+          "name": "Moo Aura Gyro aUSDCn/aUSDTn",
+          "symbol": "mooAuraGyroaUSDCn/aUSDTn",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "274355784478830596269063n",
+          "tokens": [
+            {
+              "address": "0x7CFaDFD5645B50bE87d546f42699d863648251ad",
+              "name": "Static Aave Arbitrum USDCn",
+              "symbol": "stataArbUSDCn",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "40602186900n",
+              "totalSupply": 40602.1869,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x7CFaDFD5645B50bE87d546f42699d863648251ad/logo.png"
+            },
+            {
+              "address": "0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140",
+              "name": "Static Aave Arbitrum USDT",
+              "symbol": "stataArbUSDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "298954249759n",
+              "totalSupply": 298954.249759,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140/logo.png"
+            }
+          ],
+          "totalSupply": 274355.7844788306
+        }
+      ]
+    }
+  ]
+}

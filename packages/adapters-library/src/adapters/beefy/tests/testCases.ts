@@ -412,4 +412,13 @@ export const testCases: TestCase[] = [
       ],
     },
   },
+  {
+    chainId: Chain.Arbitrum,
+    method: 'tvl',
+    blockNumber: 224847857,
+    filterProtocolTokens: [
+      '0x073819cff8229BC2f5Af33012e69C8289779E7aC',
+      '0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763',
+    ],
+  },
 ]
