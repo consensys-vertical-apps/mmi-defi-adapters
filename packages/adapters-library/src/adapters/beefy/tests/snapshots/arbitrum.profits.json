@@ -1,0 +1,665 @@
+{
+  "blockNumber": 224847857,
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "cow-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x168285c55a871fd2219329F680EB0CA8fB8711e4",
+          "name": "Cow Camelot WBTC-WETH",
+          "symbol": "cowCamelotWBTC-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.01069786775999404,
+          "performance": 0.0008108500648826912,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 13.193398167319307,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 13.204096035079301
+          }
+        },
+        {
+          "address": "0x663B0d9ddB6e86cB5E1F87ebCbDafb5A53a45798",
+          "name": "Cow Camelot ezETH-WETH",
+          "symbol": "cowCamelotezETH-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.02021048187754193,
+          "performance": 0.0026884069000974865,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 7.51764246580719,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 7.537852947684732
+          }
+        },
+        {
+          "address": "0xDa3E652A86B3FD320512cadd87D6504fa18aEC65",
+          "name": "Cow Camelot USDC-WETH",
+          "symbol": "cowCamelotUSDC-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.008614687931782328,
+          "performance": 0.0007024216062239445,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 12.264269571793058,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 12.27288425972484
+          }
+        },
+        {
+          "address": "0xc4AE801d239da28A9108a5E6caD9F5893Ad93CB2",
+          "name": "Cow Camelot wstETH-WETH",
+          "symbol": "cowCamelotwstETH-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.018375895167874745,
+          "performance": 0.0009659110677403528,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 19.02441723839361,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 19.042793133561485
+          }
+        },
+        {
+          "address": "0xB79D17BE1bd9544e0005FA0F9033f8f78CE06D4c",
+          "name": "Cow Uniswap Arb rETH-WETH",
+          "symbol": "cowUniswapArbrETH-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.595589557883585,
+          "performance": 0.026875654753219215,
+          "calculationData": {
+            "withdrawals": 0.9260132901913884,
+            "deposits": 23.08694530663814,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 22.756521574330336
+          }
+        },
+        {
+          "address": "0x308aD09fD1577dF61Dd638cd8c81B12072c21665",
+          "name": "Cow Uniswap Arb USDV-USDC",
+          "symbol": "cowUniswapArbUSDV-USDC",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.04443099543575002,
+          "performance": 0.02273716844691107,
+          "calculationData": {
+            "withdrawals": 18.532550637844146,
+            "deposits": 20.486663593443335,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 1.9985439510349383
+          }
+        },
+        {
+          "address": "0xAf4c8cEE65Fd6dD1864f4bb53dbD386B0D092063",
+          "name": "Cow Uniswap Arb USDe-USDT",
+          "symbol": "cowUniswapArbUSDe-USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.1405334328629655,
+          "performance": -0.02320476283401846,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 6.056232242845499,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 5.915698809982533
+          }
+        },
+        {
+          "address": "0xFBebeDa38450bBf12aFe5B64df9aC507380C0Cca",
+          "name": "Cow Uniswap Arb USDC-USDT",
+          "symbol": "cowUniswapArbUSDC-USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.015779135384374143,
+          "performance": 0.000655572219511005,
+          "calculationData": {
+            "withdrawals": 0.4915869781634074,
+            "deposits": 24.560842682964154,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 24.08503484018512
+          }
+        },
+        {
+          "address": "0x92058bF6685A73D96c3919a8431fC3f4E348B0af",
+          "name": "Cow Uniswap Arb FRAX-USDT",
+          "symbol": "cowUniswapArbFRAX-USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.045752217712585974,
+          "performance": 0.002219567732350356,
+          "calculationData": {
+            "withdrawals": 1.4413724767661433,
+            "deposits": 22.0544932415638,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 20.658872982510243
+          }
+        },
+        {
+          "address": "0xC942119Efb0Bee010F35d1cfCcCeb1230f2E172e",
+          "name": "Cow Uniswap Arb RSR-WETH",
+          "symbol": "cowUniswapArbRSR-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.6562519159293263,
+          "performance": -0.09843090150897232,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 6.66713304327002,
+            "endPositionValue": 6.010881127340694
+          }
+        },
+        {
+          "address": "0xD08C0bAf1DfF8B887e9C57c6C2bac24F0c5328d3",
+          "name": "Cow Uniswap Arb UNI-WETH",
+          "symbol": "cowUniswapArbUNI-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -1.4650226278897236,
+          "performance": -0.09258502122834233,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 15.8235382835474,
+            "endPositionValue": 14.358515655657676
+          }
+        },
+        {
+          "address": "0x4706d4a0D689211f482F4594EF3cDAc6c8B9aC00",
+          "name": "Cow Uniswap Arb WETH-DAI",
+          "symbol": "cowUniswapArbWETH-DAI",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.24502306547691433,
+          "performance": -0.014553741617306984,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 16.835743819001046,
+            "endPositionValue": 16.59072075352413
+          }
+        },
+        {
+          "address": "0x391c62c26D308dbf5b5647899fa2ef98c20122F4",
+          "name": "Cow Uniswap Arb WETH-USDT",
+          "symbol": "cowUniswapArbWETH-USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.21531320138272214,
+          "performance": -0.013384479463732162,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 16.086781855518172,
+            "endPositionValue": 15.87146865413545
+          }
+        },
+        {
+          "address": "0xb6ca0d19D1b058B8a98E5cdcA844488F913303C7",
+          "name": "Cow Uniswap Arb WBTC-USDC.e",
+          "symbol": "cowUniswapArbWBTC-USDC.e",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.33103874894586127,
+          "performance": -0.016657907796867915,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 19.872768716375322,
+            "endPositionValue": 19.54172996742946
+          }
+        },
+        {
+          "address": "0x89319BF331959DD5E07d03a719328fEa01f40927",
+          "name": "Cow Uniswap Arb WBTC-USDT",
+          "symbol": "cowUniswapArbWBTC-USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.34239426114003635,
+          "performance": -0.015544175357893882,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 22.027174376037674,
+            "endPositionValue": 21.684780114897638
+          }
+        },
+        {
+          "address": "0x15cfBd3Db5D24360eeac802b3dde4423eb5C3C70",
+          "name": "Cow Uniswap Arb rsETH-wstETH",
+          "symbol": "cowUniswapArbrsETH-wstETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.729348386016234,
+          "performance": -0.035110633422672136,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 20.772863230239214,
+            "endPositionValue": 20.04351484422298
+          }
+        },
+        {
+          "address": "0x83368b5e04d8A2C990ef9b5FE41509FafCfBa499",
+          "name": "Cow Uniswap Arb ezETH-wstETH",
+          "symbol": "cowUniswapArbezETH-wstETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.6484083896822774,
+          "performance": -0.029134304126671767,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 22.25583926299015,
+            "endPositionValue": 21.607430873307873
+          }
+        },
+        {
+          "address": "0x3786676C03B9518fad1724B43eB28b2Baa36588f",
+          "name": "Cow Uniswap Arb USDe-wstETH",
+          "symbol": "cowUniswapArbUSDe-wstETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 4.087037448863173,
+          "performance": -1.408271018512999,
+          "calculationData": {
+            "withdrawals": 18.248915859948575,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 15.346749021935606,
+            "endPositionValue": 1.184870610850204,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+                "name": "USDe",
+                "symbol": "USDe",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "17572147517420777539n"
+              },
+              {
+                "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+                "name": "USDe",
+                "symbol": "USDe",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "1081338536073177534n"
+              },
+              {
+                "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+                "name": "USDe",
+                "symbol": "USDe",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "11384053331909964625n"
+              }
+            ]
+          }
+        },
+        {
+          "address": "0x6928b8Df875877Ba65Ff53AFF182Ec6B8dFEe90F",
+          "name": "Cow Uniswap Arb ETH+-WETH",
+          "symbol": "cowUniswapArbETH+-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -1.5517234568373652,
+          "performance": -0.3730122744892615,
+          "calculationData": {
+            "withdrawals": 23.012604321024618,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 27.17258393285382,
+            "endPositionValue": 2.6082561549918353
+          }
+        },
+        {
+          "address": "0xB13872c632ac188596DEceF852c15F3d884CA9C9",
+          "name": "Cow Uniswap Arb KNOX-eUSD",
+          "symbol": "cowUniswapArbKNOX-eUSD",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 1.393343885130795,
+          "performance": 0.15426767383821918,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 9.031988688647743,
+            "endPositionValue": 10.425332573778539
+          }
+        },
+        {
+          "address": "0xEEA4114Ab4FCb82a28c514e21d656Ca78D75b1A9",
+          "name": "Cow Uniswap Arb eUSD-USDC",
+          "symbol": "cowUniswapArbeUSD-USDC",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.03165224739888828,
+          "performance": -0.0015806955111671865,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 20.024253358900374,
+            "endPositionValue": 19.992601111501486
+          }
+        },
+        {
+          "address": "0xBfaDfcbeF611D958c8998ea29FAce6bb155302fd",
+          "name": "Cow Uniswap Arb ARB-WETH",
+          "symbol": "cowUniswapArbARB-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -1.665602984755962,
+          "performance": -0.09843764782153046,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 16.920385864722565,
+            "endPositionValue": 15.254782879966603
+          }
+        },
+        {
+          "address": "0x9b28956731272aD07A5d33bA6Ab6fe5e0C32707f",
+          "name": "Cow Uniswap Arb MAGIC-WETH",
+          "symbol": "cowUniswapArbMAGIC-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -1.647877232681532,
+          "performance": -0.09389360449671887,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 17.55047366127176,
+            "endPositionValue": 15.902596428590227
+          }
+        },
+        {
+          "address": "0x873d47401fd390eb4cA528781B28Aff7a15c640E",
+          "name": "Cow Uniswap Arb SILO-WETH",
+          "symbol": "cowUniswapArbSILO-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.6203200202760613,
+          "performance": -0.06304791357168327,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 9.838866746490812,
+            "endPositionValue": 9.21854672621475
+          }
+        },
+        {
+          "address": "0x5b65c2d8866Ee0cd0D041BEb0C6ea53A1CD058Cd",
+          "name": "Cow Uniswap Arb GRT-WETH",
+          "symbol": "cowUniswapArbGRT-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -3.6850028031648705,
+          "performance": -0.616532732469468,
+          "calculationData": {
+            "withdrawals": 28.683793971954376,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 34.660772336760594,
+            "endPositionValue": 2.291975561641348
+          }
+        },
+        {
+          "address": "0x0D1f71170d93121b48A9e8FC7400e8e6A6821500",
+          "name": "Cow Uniswap Arb LINK-ETH",
+          "symbol": "cowUniswapArbLINK-ETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.9885248123382233,
+          "performance": -0.07065135318885471,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 13.991590645063026,
+            "endPositionValue": 13.003065832724802
+          }
+        },
+        {
+          "address": "0x275d390483ff92cbfae34f56c2dD2C30cdf092a5",
+          "name": "Cow Uniswap Arb PENDLE-ETH",
+          "symbol": "cowUniswapArbPENDLE-ETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0.2926976511452146,
+          "performance": 0.02103186281683018,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 13.91686764479042,
+            "endPositionValue": 14.209565295935635
+          }
+        },
+        {
+          "address": "0x72C378dCe9Ec6bdc49cc02003aE8C95e5996dC5E",
+          "name": "Cow Uniswap Arb ARB-USDC.e",
+          "symbol": "cowUniswapArbARB-USDC.e",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -1.9770273125329858,
+          "performance": -0.07502195905119367,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 26.352648445022567,
+            "endPositionValue": 24.37562113248958
+          }
+        },
+        {
+          "address": "0x7925AAaa93f71E5b1b3769eDdd2d70DeA592D17F",
+          "name": "Cow Uniswap Arb WBTC-WETH",
+          "symbol": "cowUniswapArbWBTC-WETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.14296451802008336,
+          "performance": -0.034678603595902045,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 4.122556942776595,
+            "endPositionValue": 3.9795924247565115
+          }
+        },
+        {
+          "address": "0x63b54B0e06028802007c5f1eaeaC03d5472B904a",
+          "name": "Cow Uniswap Arb wstETH-ETH",
+          "symbol": "cowUniswapArbwstETH-ETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -1.8359448911272835,
+          "performance": -0.4619356542112945,
+          "calculationData": {
+            "withdrawals": 27.674283828355154,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 31.648744068411666,
+            "endPositionValue": 2.1385153489292295
+          }
+        },
+        {
+          "address": "0x56637eF065dc19ED71B7bD8b60DBDa9A1ba12a7e",
+          "name": "Cow Uniswap Arb ETH-USDC",
+          "symbol": "cowUniswapArbETH-USDC",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.7707111661257713,
+          "performance": -0.24832634721593908,
+          "calculationData": {
+            "withdrawals": 23.202869370311653,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 26.306491578613127,
+            "endPositionValue": 2.332911042175703
+          }
+        }
+      ],
+      "fromBlock": 222605911,
+      "toBlock": 224847857
+    },
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "moo-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763",
+          "name": "Moo Aura Gyro aUSDCn/aUSDTn",
+          "symbol": "mooAuraGyroaUSDCn/aUSDTn",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 0,
+          "performance": 0,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 0,
+            "hasTokensWithoutUSDPrices": true,
+            "tokensWithoutUSDPrices": [
+              {
+                "address": "0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140",
+                "name": "Static Aave Arbitrum USDT",
+                "symbol": "stataArbUSDT",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "11859778n"
+              },
+              {
+                "address": "0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140",
+                "name": "Static Aave Arbitrum USDT",
+                "symbol": "stataArbUSDT",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "11169724n"
+              }
+            ]
+          }
+        },
+        {
+          "address": "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058",
+          "name": "Moo Aura Arb auraBAL-wstETH",
+          "symbol": "mooAuraArbauraBAL-wstETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.23929600478145296,
+          "performance": -0.06553147996079729,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 3.6516191138153196,
+            "endPositionValue": 3.4123231090338666
+          }
+        },
+        {
+          "address": "0xd37025aC6227334C7762AeD5929Ce3272fbb6fdC",
+          "name": "Moo Aura Arb DOLA-USDC",
+          "symbol": "mooAuraArbDOLA-USDC",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -0.5449708208506379,
+          "performance": -0.21357302042742224,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 2.5516838211118213,
+            "endPositionValue": 2.0067130002611835
+          }
+        }
+      ],
+      "fromBlock": 222605911,
+      "toBlock": 224847857
+    }
+  ]
+}
