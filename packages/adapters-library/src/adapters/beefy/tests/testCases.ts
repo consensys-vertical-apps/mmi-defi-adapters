@@ -29,6 +29,12 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Arbitrum,
+    method: 'prices',
+    filterProtocolToken: '0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058',
+    blockNumber: 219137472,
+  },
+  {
+    chainId: Chain.Arbitrum,
     method: 'withdrawals',
     input: {
       fromBlock: 220443009,
@@ -343,6 +349,12 @@ export const testCases: TestCase[] = [
       ],
     },
     blockNumber: 224830413,
+  },
+  {
+    chainId: Chain.Arbitrum,
+    method: 'prices',
+    filterProtocolToken: '0x073819cff8229BC2f5Af33012e69C8289779E7aC',
+    blockNumber: 224847857,
   },
   {
     chainId: Chain.Arbitrum,
