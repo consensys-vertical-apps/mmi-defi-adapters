@@ -1,6 +1,6 @@
 {
   "watch": ["packages/adapters-library"],
   "ext": "ts,tsx",
-  "ignore": ["node_modules"],
+  "ignore": ["node_modules", "dist"],
   "exec": "node rebuild-and-restart.js"
 }
