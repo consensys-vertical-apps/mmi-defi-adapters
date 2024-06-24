@@ -30,7 +30,10 @@ import {
   DefiPositionResponse,
   Protocol,
 } from '@metamask-institutional/defi-adapters'
-import { Underlying } from '@metamask-institutional/defi-adapters/dist/types/adapter'
+import {
+  TokenType,
+  Underlying,
+} from '@metamask-institutional/defi-adapters/dist/types/adapter'
 import { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
@@ -267,7 +270,7 @@ function PositionsDisplay({
                               <Table>
                                 <TableHeader>
                                   <TableRow>
-                                    <TableHead className="w-[100px]">
+                                    <TableHead className="w-[200px]">
                                       Token
                                     </TableHead>
                                     <TableHead>Balance</TableHead>
@@ -287,6 +290,8 @@ function PositionsDisplay({
                                             alt="Icon"
                                           />
                                           <span>{token.symbol}</span>
+                                          {token.type ===
+                                            'underlying-claimable' && '(reward)'}
                                         </div>
                                       </TableCell>
                                       <TableCell>
@@ -343,6 +348,7 @@ function resolveUnderlyings(
   balance: number
   price: number
   total: number | undefined
+  type: TokenType
 }[] {
   const result: {
     name: string
@@ -351,6 +357,7 @@ function resolveUnderlyings(
     balance: number
     price: number
     total: number | undefined
+    type: TokenType
   }[] = []
 
   if (!tokens) {
@@ -368,6 +375,7 @@ function resolveUnderlyings(
         iconUrl: token.iconUrl,
         price: token.price,
         total: token.price && token.balance * token.price,
+        type: token.type,
       })
     }
   }
