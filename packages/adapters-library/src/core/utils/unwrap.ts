@@ -75,7 +75,7 @@ export async function unwrap(
           name: unwrappedTokenExchangeRate.name,
           symbol: unwrappedTokenExchangeRate.symbol,
           decimals: unwrappedTokenExchangeRate.decimals,
-          type: unwrappedTokenExchangeRate.type,
+          type: resolveTokenType(token.type),
           [fieldToUpdate]:
             // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
             (((token as any)[fieldToUpdate] as bigint) *
@@ -91,6 +91,21 @@ export async function unwrap(
   })
 
   await Promise.all(promises)
+}
+
+function resolveTokenType(parentTokenType: TokenType) {
+  switch (parentTokenType) {
+    case TokenType.UnderlyingClaimable:
+      return TokenType.UnderlyingClaimable
+    case TokenType.Reward:
+      return TokenType.UnderlyingClaimable
+    case TokenType.Underlying:
+      return TokenType.Underlying
+    case TokenType.Protocol:
+      return TokenType.Underlying
+    default:
+      throw new Error('Unsupported token type')
+  }
 }
 
 async function fetchUnwrapExchangeRates(
