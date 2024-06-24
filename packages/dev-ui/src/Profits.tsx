@@ -15,6 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Tooltip,
   TooltipContent,
@@ -33,6 +34,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
+import { JsonDisplay } from './JsonDisplay'
 import { provider } from './defiProvider'
 import { useFiltersContext } from './filtersContext'
 import {
@@ -190,7 +192,7 @@ export function Profits() {
         )}
         chainIds={filtersContext.chainIds?.map((selection) => selection.value)}
       />
-      {/* <DevTool control={control} /> */}
+      <DevTool control={control} />
     </div>
   )
 }
@@ -250,141 +252,151 @@ function ProfitsDisplay({
   )
 
   return (
-    <div className="w-full">
-      {Object.entries(groupedResults).map(
-        ([protocolChainKey, protocolProfits]) => {
-          const { protocolId, chainId, iconUrl } = protocolProfits[0]
-          return (
-            <Card key={protocolChainKey}>
-              <CardHeader>
-                <CardTitle>
-                  <div className="flex gap-2 items-center">
-                    <img className="w-10 h-10" src={iconUrl} alt="Icon" />
-                    {protocolId}
-                  </div>
-                </CardTitle>
-                <CardDescription>{ChainName[chainId]}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {protocolProfits.map((profits, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className="mb-4 p-4 border border-gray-300"
-                    >
-                      <h3>{profits.name}</h3>
-                      {profits.tokens.map((token, index) => {
-                        return (
-                          <div
-                            key={index}
-                            className="mb-2 p-2 border border-gray-300"
-                          >
-                            <h4>{token.name}</h4>
-                            <Table>
-                              <TableHeader>
-                                <TableRow>
-                                  <TableHead>Profit</TableHead>
-                                  <TableHead>Performance</TableHead>
-                                  <TableHead>Start Position</TableHead>
-                                  <TableHead>End Position</TableHead>
-                                </TableRow>
-                              </TableHeader>
-                              <TableBody>
-                                <TableRow>
-                                  <TableCell>
-                                    {formatCurrency(token.profit)}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatDecimal(token.performance)}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.startPositionValue,
-                                    )}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.endPositionValue,
-                                    )}
-                                  </TableCell>
-                                </TableRow>
-                              </TableBody>
-                            </Table>
-                            <Table>
-                              <TableHeader>
-                                <TableRow>
-                                  <TableHead>Deposits</TableHead>
-                                  <TableHead>Withdrawals</TableHead>
-                                  <TableHead>Borrows</TableHead>
-                                  <TableHead>Repays</TableHead>
-                                </TableRow>
-                              </TableHeader>
-                              <TableBody>
-                                <TableRow>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.deposits,
-                                    )}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.withdrawals,
-                                    )}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.borrows,
-                                    )}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.repays,
-                                    )}
-                                  </TableCell>
-                                </TableRow>
-                              </TableBody>
-                            </Table>
-                            {token.calculationData
-                              .hasTokensWithoutUSDPrices && (
-                              <>
-                                <h5>Tokens with no prices</h5>
-                                <ul>
-                                  {token.calculationData.tokensWithoutUSDPrices?.map(
-                                    (token, index) => (
-                                      <li key={index}>
-                                        <TooltipProvider>
-                                          <Tooltip>
-                                            <TooltipTrigger>
-                                              {token.name} - Balance:{' '}
-                                              {formatDecimal(
-                                                Number(
-                                                  token.balanceRaw.toString(),
-                                                ),
-                                              )}
-                                            </TooltipTrigger>
-                                            <TooltipContent>
-                                              <p>{token.address}</p>
-                                            </TooltipContent>
-                                          </Tooltip>
-                                        </TooltipProvider>
-                                      </li>
-                                    ),
-                                  )}
-                                </ul>
-                              </>
-                            )}
-                          </div>
-                        )
-                      })}
+    <Tabs defaultValue="display" className="w-full">
+      <TabsList>
+        <TabsTrigger value="display">Display</TabsTrigger>
+        <TabsTrigger value="json">JSON</TabsTrigger>
+      </TabsList>
+      <TabsContent value="display">
+        {Object.entries(groupedResults).map(
+          ([protocolChainKey, protocolProfits]) => {
+            const { protocolId, chainId, iconUrl } = protocolProfits[0]
+            return (
+              <Card key={protocolChainKey}>
+                <CardHeader>
+                  <CardTitle>
+                    <div className="flex gap-2 items-center">
+                      <img className="w-10 h-10" src={iconUrl} alt="Icon" />
+                      {protocolId}
                     </div>
-                  )
-                })}
-              </CardContent>
-            </Card>
-          )
-        },
-      )}
-    </div>
+                  </CardTitle>
+                  <CardDescription>{ChainName[chainId]}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {protocolProfits.map((profits, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="mb-4 p-4 border border-gray-300"
+                      >
+                        <h3>{profits.name}</h3>
+                        {profits.tokens.map((token, index) => {
+                          return (
+                            <div
+                              key={index}
+                              className="mb-2 p-2 border border-gray-300"
+                            >
+                              <h4>{token.name}</h4>
+                              <Table>
+                                <TableHeader>
+                                  <TableRow>
+                                    <TableHead>Profit</TableHead>
+                                    <TableHead>Performance</TableHead>
+                                    <TableHead>Start Position</TableHead>
+                                    <TableHead>End Position</TableHead>
+                                  </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                  <TableRow>
+                                    <TableCell>
+                                      {formatCurrency(token.profit)}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatDecimal(token.performance)}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData
+                                          .startPositionValue,
+                                      )}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData.endPositionValue,
+                                      )}
+                                    </TableCell>
+                                  </TableRow>
+                                </TableBody>
+                              </Table>
+                              <Table>
+                                <TableHeader>
+                                  <TableRow>
+                                    <TableHead>Deposits</TableHead>
+                                    <TableHead>Withdrawals</TableHead>
+                                    <TableHead>Borrows</TableHead>
+                                    <TableHead>Repays</TableHead>
+                                  </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                  <TableRow>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData.deposits,
+                                      )}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData.withdrawals,
+                                      )}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData.borrows,
+                                      )}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData.repays,
+                                      )}
+                                    </TableCell>
+                                  </TableRow>
+                                </TableBody>
+                              </Table>
+                              {token.calculationData
+                                .hasTokensWithoutUSDPrices && (
+                                <>
+                                  <h5>Tokens with no prices</h5>
+                                  <ul>
+                                    {token.calculationData.tokensWithoutUSDPrices?.map(
+                                      (token, index) => (
+                                        <li key={index}>
+                                          <TooltipProvider>
+                                            <Tooltip>
+                                              <TooltipTrigger>
+                                                {token.name} - Balance:{' '}
+                                                {formatDecimal(
+                                                  Number(
+                                                    token.balanceRaw.toString(),
+                                                  ),
+                                                )}
+                                              </TooltipTrigger>
+                                              <TooltipContent>
+                                                <p>{token.address}</p>
+                                              </TooltipContent>
+                                            </Tooltip>
+                                          </TooltipProvider>
+                                        </li>
+                                      ),
+                                    )}
+                                  </ul>
+                                </>
+                              )}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    )
+                  })}
+                </CardContent>
+              </Card>
+            )
+          },
+        )}
+      </TabsContent>
+      <TabsContent value="json">
+        <JsonDisplay data={data} />
+      </TabsContent>
+    </Tabs>
   )
 }
 

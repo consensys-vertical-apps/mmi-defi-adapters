@@ -15,6 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Tooltip,
   TooltipContent,
@@ -34,6 +35,7 @@ import { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/type
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
+import { JsonDisplay } from './JsonDisplay'
 import { provider } from './defiProvider'
 import { useFiltersContext } from './filtersContext'
 import { chainOptions, protocolOptions } from './filtersOptions'
@@ -141,7 +143,7 @@ export function Positions() {
         )}
         chainIds={filtersContext.chainIds?.map((selection) => selection.value)}
       />
-      {/* <DevTool control={control} /> */}
+      <DevTool control={control} />
     </div>
   )
 }
@@ -198,109 +200,123 @@ function PositionsDisplay({
   )
 
   return (
-    <div className="w-full">
-      {Object.entries(groupedPositions).map(([protocolChainKey, positions]) => {
-        const { protocolId, chainId, iconUrl } = positions[0]
-        return (
-          <Card key={protocolChainKey}>
-            <CardHeader>
-              <CardTitle>
-                <div className="flex gap-2 items-center">
-                  <img className="w-10 h-10" src={iconUrl} alt="Icon" />
-                  {protocolId}
-                </div>
-              </CardTitle>
-              <CardDescription>{ChainName[chainId]}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {positions.map((position, index) => {
-                return (
-                  <div key={index} className="mb-4 p-4 border border-gray-300">
-                    <h3>{position.name}</h3>
-                    {position.tokens.map((token, index) => {
-                      const underlyings = resolveUnderlyings(token.tokens)
-                      return (
-                        <div
-                          key={index}
-                          className="mb-2 p-2 border border-gray-300"
-                        >
-                          <div className="flex justify-between items-center">
-                            <TooltipProvider>
-                              <Tooltip>
-                                <TooltipTrigger>
-                                  <h4>{token.name}</h4>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>
-                                    {formatTokenBalance(token.balance)} tokens
-                                  </p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
+    <Tabs defaultValue="display" className="w-full">
+      <TabsList>
+        <TabsTrigger value="display">Display</TabsTrigger>
+        <TabsTrigger value="json">JSON</TabsTrigger>
+      </TabsList>
+      <TabsContent value="display">
+        {Object.entries(groupedPositions).map(
+          ([protocolChainKey, positions]) => {
+            const { protocolId, chainId, iconUrl } = positions[0]
+            return (
+              <Card key={protocolChainKey}>
+                <CardHeader>
+                  <CardTitle>
+                    <div className="flex gap-2 items-center">
+                      <img className="w-10 h-10" src={iconUrl} alt="Icon" />
+                      {protocolId}
+                    </div>
+                  </CardTitle>
+                  <CardDescription>{ChainName[chainId]}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {positions.map((position, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="mb-4 p-4 border border-gray-300"
+                      >
+                        <h3>{position.name}</h3>
+                        {position.tokens.map((token, index) => {
+                          const underlyings = resolveUnderlyings(token.tokens)
+                          return (
+                            <div
+                              key={index}
+                              className="mb-2 p-2 border border-gray-300"
+                            >
+                              <div className="flex justify-between items-center">
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger>
+                                      <h4>{token.name}</h4>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p>
+                                        {formatTokenBalance(token.balance)}{' '}
+                                        tokens
+                                      </p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
 
-                            <div className="flex gap-2 items-center">
-                              {underlyings.some(
-                                (token) => token.total === undefined,
-                              ) && (
-                                <ExclamationTriangleIcon className="h-5 w-5 text-yellow-500" />
-                              )}
-                              {formatCurrency(
-                                underlyings.reduce(
-                                  (acc, curr) => acc + (curr.total || 0),
-                                  0,
-                                ),
-                              )}
+                                <div className="flex gap-2 items-center">
+                                  {underlyings.some(
+                                    (token) => token.total === undefined,
+                                  ) && (
+                                    <ExclamationTriangleIcon className="h-5 w-5 text-yellow-500" />
+                                  )}
+                                  {formatCurrency(
+                                    underlyings.reduce(
+                                      (acc, curr) => acc + (curr.total || 0),
+                                      0,
+                                    ),
+                                  )}
+                                </div>
+                              </div>
+                              <Table>
+                                <TableHeader>
+                                  <TableRow>
+                                    <TableHead className="w-[100px]">
+                                      Token
+                                    </TableHead>
+                                    <TableHead>Balance</TableHead>
+                                    <TableHead className="text-right">
+                                      Market Value
+                                    </TableHead>
+                                  </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                  {underlyings.map((token, index) => (
+                                    <TableRow key={index}>
+                                      <TableCell>
+                                        <div className="flex gap-2 items-center">
+                                          <img
+                                            className="w-5 h-5"
+                                            src={token.iconUrl}
+                                            alt="Icon"
+                                          />
+                                          <span>{token.symbol}</span>
+                                        </div>
+                                      </TableCell>
+                                      <TableCell>
+                                        {formatTokenBalance(token.balance)}
+                                      </TableCell>
+                                      <TableCell className="text-right">
+                                        {token.total
+                                          ? formatCurrency(token.total)
+                                          : 'NO PRICE'}
+                                      </TableCell>
+                                    </TableRow>
+                                  ))}
+                                </TableBody>
+                              </Table>
                             </div>
-                          </div>
-                          <Table>
-                            <TableHeader>
-                              <TableRow>
-                                <TableHead className="w-[100px]">
-                                  Token
-                                </TableHead>
-                                <TableHead>Balance</TableHead>
-                                <TableHead className="text-right">
-                                  Market Value
-                                </TableHead>
-                              </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                              {underlyings.map((token, index) => (
-                                <TableRow key={index}>
-                                  <TableCell>
-                                    <div className="flex gap-2 items-center">
-                                      <img
-                                        className="w-5 h-5"
-                                        src={token.iconUrl}
-                                        alt="Icon"
-                                      />
-                                      <span>{token.symbol}</span>
-                                    </div>
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatTokenBalance(token.balance)}
-                                  </TableCell>
-                                  <TableCell className="text-right">
-                                    {token.total
-                                      ? formatCurrency(token.total)
-                                      : 'NO PRICE'}
-                                  </TableCell>
-                                </TableRow>
-                              ))}
-                            </TableBody>
-                          </Table>
-                        </div>
-                      )
-                    })}
-                  </div>
-                )
-              })}
-            </CardContent>
-          </Card>
-        )
-      })}
-      {/* <JsonDisplay data={data} /> */}
-    </div>
+                          )
+                        })}
+                      </div>
+                    )
+                  })}
+                </CardContent>
+              </Card>
+            )
+          },
+        )}
+      </TabsContent>
+      <TabsContent value="json">
+        <JsonDisplay data={data} />
+      </TabsContent>
+    </Tabs>
   )
 }
 
