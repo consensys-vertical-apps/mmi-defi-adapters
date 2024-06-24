@@ -56,18 +56,38 @@ export function Profits() {
     handleSubmit,
     control,
     formState: { errors },
+    getValues,
   } = useForm<FormValues>({
     defaultValues: {
       userAddress: filtersContext.userAddress,
-      timePeriod: timePeriodOptions[0],
+      timePeriod: localStorage.getItem('defi-adapters:timePeriod')?.length
+        ? localStorage
+            .getItem('defi-adapters:timePeriod')!
+            .split(':')
+            .reduce(
+              (acc, value, index) => {
+                if (index === 0) {
+                  acc.value = Number(value) as TimePeriod
+                } else {
+                  acc.label = value
+                }
+                return acc
+              },
+              {} as {
+                value: TimePeriod
+                label: string
+              },
+            )
+        : timePeriodOptions[0],
       protocolIds: filtersContext.protocolIds,
       chainIds: filtersContext.chainIds,
     },
   })
+
   const [timePeriod, setTimePeriod] = useState<{
     value: TimePeriod
     label: string
-  }>(timePeriodOptions[0])
+  }>(getValues('timePeriod'))
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     filtersContext.setFilters({
@@ -77,6 +97,10 @@ export function Profits() {
     })
 
     setTimePeriod(data.timePeriod)
+    localStorage.setItem(
+      'defi-adapters:timePeriod',
+      `${data.timePeriod.value}:${data.timePeriod.label}`,
+    )
 
     await queryClient.invalidateQueries({
       queryKey: [
