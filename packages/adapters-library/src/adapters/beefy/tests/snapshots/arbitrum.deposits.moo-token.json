@@ -1,0 +1,109 @@
+{
+  "aggregatedValues": ["USD14.66", "USD5.67"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 42161,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x3bb7f140ca44fae371646b376a0182800873a511eeafcd5197e8de7e38cb6bd8",
+        "protocolToken": {
+          "address": "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058",
+          "name": "Moo Aura Arb auraBAL-wstETH",
+          "symbol": "mooAuraArbauraBAL-wstETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058",
+            "name": "Moo Aura Arb auraBAL-wstETH",
+            "symbol": "mooAuraArbauraBAL-wstETH",
+            "decimals": 18,
+            "balanceRaw": "156752482918640736n",
+            "type": "underlying",
+            "blockNumber": 198188238,
+            "tokens": [
+              {
+                "address": "0x223738a747383d6F9f827d95964e4d8E8AC754cE",
+                "name": "Aura BAL",
+                "symbol": "auraBAL",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "1357011969796470239n",
+                "balance": 1.3570119697964702,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x223738a747383d6F9f827d95964e4d8E8AC754cE/logo.png"
+              },
+              {
+                "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+                "name": "Wrapped liquid staked Ether 2.0",
+                "symbol": "wstETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "3804089934010578n",
+                "balance": 0.003804089934010578,
+                "price": 3852.6479179445237,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
+              }
+            ],
+            "balance": 0.15675248291864075
+          }
+        ],
+        "blockNumber": 198188238
+      },
+      {
+        "transactionHash": "0x70eba6c57dcd176b745046532bf4f996355685572fe1f40d87927882f6a1f5a2",
+        "protocolToken": {
+          "address": "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058",
+          "name": "Moo Aura Arb auraBAL-wstETH",
+          "symbol": "mooAuraArbauraBAL-wstETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058",
+            "name": "Moo Aura Arb auraBAL-wstETH",
+            "symbol": "mooAuraArbauraBAL-wstETH",
+            "decimals": 18,
+            "balanceRaw": "61366284122590941n",
+            "type": "underlying",
+            "blockNumber": 200597330,
+            "tokens": [
+              {
+                "address": "0x223738a747383d6F9f827d95964e4d8E8AC754cE",
+                "name": "Aura BAL",
+                "symbol": "auraBAL",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "534649951212101976n",
+                "balance": 0.534649951212102,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x223738a747383d6F9f827d95964e4d8E8AC754cE/logo.png"
+              },
+              {
+                "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+                "name": "Wrapped liquid staked Ether 2.0",
+                "symbol": "wstETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "1487881216067295n",
+                "balance": 0.001487881216067295,
+                "price": 3807.6214790043705,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
+              }
+            ],
+            "balance": 0.061366284122590944
+          }
+        ],
+        "blockNumber": 200597330
+      }
+    ]
+  }
+}

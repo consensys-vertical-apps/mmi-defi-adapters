@@ -1,0 +1,63 @@
+{
+  "aggregatedValues": ["USD0.00"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 42161,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x9b4ae2fc4e21cefbee646babee2554f0e7fce8e13593333fa13631d073b259fd",
+        "protocolToken": {
+          "address": "0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763",
+          "name": "Moo Aura Gyro aUSDCn/aUSDTn",
+          "symbol": "mooAuraGyroaUSDCn/aUSDTn",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763",
+            "name": "Moo Aura Gyro aUSDCn/aUSDTn",
+            "symbol": "mooAuraGyroaUSDCn/aUSDTn",
+            "decimals": 18,
+            "balanceRaw": "632424706011701076892n",
+            "type": "underlying",
+            "blockNumber": 220443109,
+            "tokens": [
+              {
+                "address": "0x7CFaDFD5645B50bE87d546f42699d863648251ad",
+                "name": "Static Aave Arbitrum USDCn",
+                "symbol": "stataArbUSDCn",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "250734893n",
+                "balance": 250.734893,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x7CFaDFD5645B50bE87d546f42699d863648251ad/logo.png"
+              },
+              {
+                "address": "0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140",
+                "name": "Static Aave Arbitrum USDT",
+                "symbol": "stataArbUSDT",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "536188006n",
+                "balance": 536.188006,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140/logo.png"
+              }
+            ],
+            "balance": 632.4247060117011
+          }
+        ],
+        "blockNumber": 220443109
+      }
+    ]
+  }
+}

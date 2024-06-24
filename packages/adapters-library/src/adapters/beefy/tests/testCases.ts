@@ -4,6 +4,7 @@ import type { TestCase } from '../../../types/testCase'
 export const testCases: TestCase[] = [
   {
     chainId: Chain.Arbitrum,
+    key: 'moo-token',
     method: 'deposits',
     input: {
       fromBlock: 198188138,
@@ -15,10 +16,10 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Arbitrum,
+    key: 'moo-token',
     method: 'positions',
     input: {
       userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
-
       filterProtocolTokens: [
         '0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763',
         '0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058',
@@ -29,12 +30,14 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Arbitrum,
+    key: 'moo-token',
     method: 'prices',
     filterProtocolToken: '0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058',
     blockNumber: 219137472,
   },
   {
     chainId: Chain.Arbitrum,
+    key: 'moo-token',
     method: 'withdrawals',
     input: {
       fromBlock: 220443009,
@@ -46,6 +49,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Base,
+    key: 'moo-token',
     method: 'deposits',
     input: {
       fromBlock: 15190963,
@@ -57,8 +61,8 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Base,
+    key: 'moo-token',
     method: 'positions',
-
     input: {
       userAddress: '0x50fa50fa2032d85eb2dda303929bf56886aa9afb',
 
@@ -73,6 +77,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Base,
+    key: 'moo-token',
     method: 'withdrawals',
     input: {
       fromBlock: 15683014,
@@ -84,6 +89,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Bsc,
+    key: 'moo-token',
     method: 'deposits',
     input: {
       fromBlock: 38648545,
@@ -95,6 +101,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Bsc,
+    key: 'moo-token',
     method: 'positions',
     input: {
       userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
@@ -108,6 +115,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Bsc,
+    key: 'moo-token',
     method: 'withdrawals',
     input: {
       fromBlock: 39296858,
@@ -119,6 +127,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
+    key: 'moo-token',
     method: 'deposits',
     input: {
       fromBlock: 20062163,
@@ -130,6 +139,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
+    key: 'moo-token',
     method: 'positions',
     input: {
       userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
@@ -153,6 +163,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Ethereum,
+    key: 'moo-token',
     method: 'withdrawals',
     input: {
       fromBlock: 20073364,
@@ -164,6 +175,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Fantom,
+    key: 'moo-token',
     method: 'deposits',
     input: {
       fromBlock: 79552496,
@@ -175,6 +187,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Fantom,
+    key: 'moo-token',
     method: 'positions',
     input: {
       userAddress: '0x06B4151A410350030FDDBb0a78777e6f4e817a9E',
@@ -184,6 +197,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Fantom,
+    key: 'moo-token',
     method: 'withdrawals',
     input: {
       fromBlock: 81963281,
@@ -195,6 +209,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Linea,
+    key: 'moo-token',
     method: 'deposits',
     input: {
       fromBlock: 5039110,
@@ -206,6 +221,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Linea,
+    key: 'moo-token',
     method: 'positions',
     input: {
       userAddress: '0x20782263d459e3b0EA8e3B825E5017c80248728e',
@@ -215,6 +231,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Linea,
+    key: 'moo-token',
     method: 'withdrawals',
     input: {
       fromBlock: 4418003,
@@ -226,6 +243,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Optimism,
+    key: 'moo-token',
     method: 'deposits',
     input: {
       fromBlock: 114733477,
@@ -237,6 +255,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Optimism,
+    key: 'moo-token',
     method: 'positions',
     input: {
       userAddress: '0x579CaC71BB7159e7657D68f1ae429b0Ab01A9261',
@@ -252,6 +271,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Optimism,
+    key: 'moo-token',
     method: 'withdrawals',
     input: {
       fromBlock: 119739775,
@@ -263,6 +283,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Polygon,
+    key: 'moo-token',
     method: 'deposits',
     input: {
       fromBlock: 57771024,
@@ -274,6 +295,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Polygon,
+    key: 'moo-token',
     method: 'positions',
     input: {
       userAddress: '0x19f1c9e42cdBf308EbD266adEa7E0fAEdc299e6d',
@@ -283,6 +305,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Polygon,
+    key: 'moo-token',
     method: 'withdrawals',
     input: {
       fromBlock: 58080065,
@@ -296,6 +319,7 @@ export const testCases: TestCase[] = [
   /// cow tokens
   {
     chainId: Chain.Arbitrum,
+    key: 'cow-token',
     method: 'deposits',
     input: {
       fromBlock: 224830313,
@@ -307,6 +331,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Arbitrum,
+    key: 'cow-token',
     method: 'positions',
     input: {
       userAddress: '0x161D61e30284A33Ab1ed227beDcac6014877B3DE',
@@ -352,12 +377,14 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Arbitrum,
+    key: 'cow-token',
     method: 'prices',
     filterProtocolToken: '0x073819cff8229BC2f5Af33012e69C8289779E7aC',
     blockNumber: 224847857,
   },
   {
     chainId: Chain.Arbitrum,
+    key: 'cow-token',
     method: 'withdrawals',
     input: {
       fromBlock: 224790891,
@@ -369,6 +396,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Arbitrum,
+    key: 'cow-token',
     method: 'profits',
     blockNumber: 224847857,
     input: {
@@ -414,6 +442,7 @@ export const testCases: TestCase[] = [
   },
   {
     chainId: Chain.Arbitrum,
+    key: 'cow-token',
     method: 'tvl',
     blockNumber: 224847857,
     filterProtocolTokens: [
