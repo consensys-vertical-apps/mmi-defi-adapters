@@ -1,9 +1,3 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -28,7 +22,9 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
+import { DevTool } from '@hookform/devtools'
 import {
+  Chain,
   ChainName,
   DefiPositionResponse,
   Protocol,
@@ -36,41 +32,50 @@ import {
 import { Underlying } from '@metamask-institutional/defi-adapters/dist/types/adapter'
 import { DisplayPosition } from '@metamask-institutional/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import Select from 'react-select'
 import { provider } from './defiProvider'
+import { useFiltersContext } from './filtersContext'
+import { chainOptions, protocolOptions } from './filtersOptions'
 
 type FormValues = {
   userAddress: string
-  protocolIds: { value: string; label: string }[]
+  protocolIds: { value: string; label: string }[] | undefined
+  chainIds: { value: number; label: string }[] | undefined
 }
 
 export function Positions() {
+  const filtersContext = useFiltersContext()
   const queryClient = useQueryClient()
   const {
     handleSubmit,
     register,
     control,
-    watch,
     formState: { errors },
-  } = useForm<FormValues>()
-  const [userAddress, setUserAddress] = useState('')
-  const [protocolIds, setProtocolIds] = useState<string[]>([])
+  } = useForm<FormValues>({
+    defaultValues: {
+      userAddress: filtersContext.userAddress,
+      protocolIds: filtersContext.protocolIds,
+      chainIds: filtersContext.chainIds,
+    },
+  })
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    console.log('AAAAAAAAA', data)
-    setUserAddress(data.userAddress)
-    setProtocolIds(data.protocolIds.map((protocol) => protocol.value))
+    filtersContext.setFilters({
+      userAddress: data.userAddress,
+      protocolIds: data.protocolIds?.length ? data.protocolIds : undefined,
+      chainIds: data.chainIds?.length ? data.chainIds : undefined,
+    })
+
     await queryClient.invalidateQueries({
-      queryKey: ['positions', userAddress],
+      queryKey: [
+        'positions',
+        data.userAddress,
+        data.protocolIds?.length ? data.protocolIds.join(',') : null,
+        data.chainIds?.length ? data.chainIds.join(',') : null,
+      ],
     })
   }
-
-  const protocolOptions = Object.entries(Protocol).map(([label, value]) => ({
-    value,
-    label,
-  }))
 
   return (
     <div className="flex flex-col items-center justify-start min-h-screen gap-4">
@@ -80,37 +85,63 @@ export function Positions() {
       >
         <Input
           type="text"
-          {...register('userAddress')}
+          {...register('userAddress', {
+            required: {
+              value: true,
+              message: 'User Address is required',
+            },
+            pattern: {
+              value: /^0x[a-fA-F0-9]{40}$/,
+              message: 'Invalid Ethereum Address',
+            },
+          })}
           placeholder="User Address"
           className="border border-gray-300 rounded"
-          required
         />
+        {errors.userAddress && <p>{errors.userAddress.message}</p>}
 
         <Controller
           control={control}
           name="protocolIds"
-          render={({ field: { onChange, onBlur, value, name, ref } }) => (
+          render={({ field }) => (
             <Select
-              placeholder="Protocol Filter"            
+              {...field}
               options={protocolOptions}
-              onChange={onChange}
               isMulti={true}
-              onBlur={onBlur}
-              value={value}
-              name={name}
-              ref={ref}
+              placeholder="Protocol Filter"
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="chainIds"
+          render={({ field }) => (
+            <Select
+              {...field}
+              options={chainOptions}
+              isMulti={true}
+              placeholder="Chain Filter"
             />
           )}
         />
 
         <Button
           type="submit"
-          className="p-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+          className="text-white bg-blue-500 rounded hover:bg-blue-600"
         >
           Search
         </Button>
       </form>
-      <PositionsDisplay userAddress={userAddress} protocolIds={protocolIds} />
+
+      <PositionsDisplay
+        userAddress={filtersContext.userAddress}
+        protocolIds={filtersContext.protocolIds?.map(
+          (selection) => selection.value,
+        )}
+        chainIds={filtersContext.chainIds?.map((selection) => selection.value)}
+      />
+      {/* <DevTool control={control} /> */}
     </div>
   )
 }
@@ -118,13 +149,25 @@ export function Positions() {
 function PositionsDisplay({
   userAddress,
   protocolIds,
-}: { userAddress: string; protocolIds: string[] }) {
+  chainIds,
+}: {
+  userAddress: string
+  protocolIds: string[] | undefined
+  chainIds: number[] | undefined
+}) {
   const { isPending, error, data, isFetching, isRefetching } = useQuery({
-    queryKey: ['positions', userAddress],
+    staleTime: 60000,
+    queryKey: [
+      'positions',
+      userAddress,
+      protocolIds?.length ? protocolIds.join(',') : null,
+      chainIds?.length ? chainIds.join(',') : null,
+    ],
     queryFn: () =>
       provider.getPositions({
         userAddress,
-        filterProtocolIds: protocolIds as Protocol[],
+        filterProtocolIds: protocolIds as Protocol[] | undefined,
+        filterChainIds: chainIds as Chain[] | undefined,
       }),
     enabled: userAddress.length > 0,
   })
@@ -134,6 +177,8 @@ function PositionsDisplay({
   if (isPending || isFetching || isRefetching) return 'Loading...'
 
   if (error) return `An error has occurred: ${error.message}`
+
+  if (data.length === 0) return 'No positions found'
 
   const successfulPositions = data.filter(
     (position): position is DefiPositionResponse & { success: true } =>
