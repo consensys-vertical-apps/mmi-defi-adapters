@@ -44,7 +44,6 @@ import ConvexCvxcrvWrapperEthereumProtocolToken from '../../adapters/convex/prod
 import ConvexPoolEthereumMetadata from '../../adapters/convex/products/pool/metadata/ethereum.metadata.json'
 import ConvexSidechainStakingArbitrumProtocolToken from '../../adapters/convex/products/sidechain-staking/metadata/arbitrum.protocol-token.json'
 import ConvexSidechainStakingPolygonProtocolToken from '../../adapters/convex/products/sidechain-staking/metadata/polygon.protocol-token.json'
-import ConvexStakingEthereumMetadata from '../../adapters/convex/products/staking/metadata/ethereum.metadata.json'
 import CurvePoolArbitrumProtocolToken from '../../adapters/curve/products/pool/metadata/arbitrum.protocol-token.json'
 import CurvePoolAvalancheProtocolToken from '../../adapters/curve/products/pool/metadata/avalanche.protocol-token.json'
 import CurvePoolBaseProtocolToken from '../../adapters/curve/products/pool/metadata/base.protocol-token.json'
@@ -112,6 +111,8 @@ import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
 import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
+
+import ConvexStakingMainnetEthereumMetadata from '../../adapters/convex/products/staking-mainnet/metadata/ethereum.metadata.json'
 
 export const MetadataFiles = new Map<string, Json>([
   [
@@ -522,11 +523,11 @@ export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
       protocolId: Protocol.Convex,
-      productId: 'staking',
+      productId: 'staking-mainnet',
       chainId: Chain.Ethereum,
       fileKey: 'metadata',
     }),
-    ConvexStakingEthereumMetadata,
+    ConvexStakingMainnetEthereumMetadata,
   ],
   [
     metadataKey({

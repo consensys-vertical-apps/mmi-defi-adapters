@@ -67,7 +67,7 @@ export const testCases: TestCase[] = [
       fromBlock: 18596961 - 1,
       toBlock: 18596961 + 1,
       protocolTokenAddress: '0xf34dff761145ff0b05e917811d488b441f33a968',
-      productId: 'staking',
+      productId: 'staking-mainnet',
     },
   },
   {
@@ -79,7 +79,7 @@ export const testCases: TestCase[] = [
       fromBlock: 18157201 - 1,
       toBlock: 18157201 + 1,
       protocolTokenAddress: '0x22ee18aca7f3ee920d01f25da85840d12d98e8ca',
-      productId: 'staking',
+      productId: 'staking-mainnet',
     },
   },
   {
@@ -92,6 +92,18 @@ export const testCases: TestCase[] = [
       toBlock: 18632773 + 1,
       protocolTokenAddress: '0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434',
       productId: 'cvxcrv-wrapper',
+    },
+  },
+  {
+    chainId: Chain.Ethereum,
+    method: 'withdrawals',
+    key: '4',
+    input: {
+      userAddress: '0xEC0c666ACd059E2bBf5DD055f1a282bF0EBf16FC',
+      fromBlock: 19279454 - 1,
+      toBlock: 19279454 + 1,
+      protocolTokenAddress: '0xf34DFF761145FF0B05e917811d488B441F33a968',
+      productId: 'staking-mainnet',
     },
   },
   {

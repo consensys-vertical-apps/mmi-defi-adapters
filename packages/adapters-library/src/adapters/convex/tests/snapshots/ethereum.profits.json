@@ -9,58 +9,6 @@
       "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
       "positionType": "supply",
       "chainId": 1,
-      "productId": "staking",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xf34DFF761145FF0B05e917811d488B441F33a968",
-          "name": "Curve.fi cDAI/cUSDC Convex Deposit",
-          "symbol": "cvxcDAI+cUSDC",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": 149.54465192332282,
-          "performance": 0.001006577487164984,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "repays": 0,
-            "borrows": 0,
-            "startPositionValue": 148567.45141848337,
-            "endPositionValue": 148716.9960704067
-          }
-        },
-        {
-          "address": "0x44D8FaB7CD8b7877D5F79974c2F501aF6E65AbBA",
-          "name": "Curve.fi Factory Plain Pool: crvUSD/USDC Convex Deposit",
-          "symbol": "cvxcrvUSDUSDC-f",
-          "decimals": 18,
-          "type": "protocol",
-          "profit": -61.39669273551408,
-          "performance": -0.0024608758463267777,
-          "calculationData": {
-            "withdrawals": 0,
-            "deposits": 0,
-            "repays": 0,
-            "borrows": 0,
-            "startPositionValue": 24949.122413939636,
-            "endPositionValue": 24887.725721204122
-          }
-        }
-      ],
-      "fromBlock": 18706497,
-      "toBlock": 18713643
-    },
-    {
-      "protocolId": "convex",
-      "name": "Convex",
-      "description": "Convex pool adapter",
-      "siteUrl": "https://www.convexfinance.com/",
-      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
-      "positionType": "supply",
-      "chainId": 1,
       "productId": "cvxcrv-wrapper",
       "assetDetails": {
         "type": "StandardErc20"
@@ -82,6 +30,59 @@
             "borrows": 0,
             "startPositionValue": 175.65119640097464,
             "endPositionValue": 177.3754150997891
+          }
+        }
+      ],
+      "fromBlock": 18706497,
+      "toBlock": 18713643
+    },
+    {
+      "protocolId": "convex",
+      "name": "Convex",
+      "description": "Convex pool adapter",
+      "siteUrl": "https://www.convexfinance.com/",
+      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "staking-mainnet",
+      "assetDetails": {
+        "type": "StandardErc20",
+        "missingTransferEvents": true
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xf34DFF761145FF0B05e917811d488B441F33a968",
+          "name": "Curve.fi cDAI/cUSDC Convex Deposit",
+          "symbol": "cvxcDAI+cUSDC",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 152.5058430194622,
+          "performance": 0.001029003068089476,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 148207.374447013,
+            "endPositionValue": 148359.88029003245
+          }
+        },
+        {
+          "address": "0x44D8FaB7CD8b7877D5F79974c2F501aF6E65AbBA",
+          "name": "Curve.fi Factory Plain Pool: crvUSD/USDC Convex Deposit",
+          "symbol": "cvxcrvUSDUSDC-f",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -63.577155271592346,
+          "performance": -0.0025798540550463715,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 24643.702285108364,
+            "endPositionValue": 24580.12512983677
           }
         }
       ],

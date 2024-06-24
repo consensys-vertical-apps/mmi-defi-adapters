@@ -1,5 +1,5 @@
 {
-  "aggregatedValues": ["USD60.01", "USD34.27"],
+  "aggregatedValues": ["USD60.01"],
   "snapshot": {
     "protocolId": "convex",
     "name": "Convex",
@@ -8,9 +8,10 @@
     "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
     "positionType": "supply",
     "chainId": 1,
-    "productId": "staking",
+    "productId": "staking-mainnet",
     "assetDetails": {
-      "type": "StandardErc20"
+      "type": "StandardErc20",
+      "missingTransferEvents": true
     },
     "success": true,
     "movements": [
@@ -42,28 +43,6 @@
             "type": "underlying",
             "price": 2.6072235934622503,
             "balance": 1.4238182149705811
-          }
-        ],
-        "blockNumber": 18157201
-      },
-      {
-        "transactionHash": "0x99d2d0067d85c4c4f643d0017b2ada6a7d4a289a6f1eabeb6c89205acff91a7d",
-        "protocolToken": {
-          "address": "0x22eE18aca7F3Ee920D01F25dA85840D12d98E8Ca",
-          "name": "Curve.fi DAI/USDC/USDT/sUSD Convex Deposit",
-          "symbol": "cvxcrvPlain3andSUSD",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F",
-            "name": "Synthetix Network Token",
-            "symbol": "SNX",
-            "decimals": 18,
-            "balanceRaw": "15995934878803391102n",
-            "type": "underlying",
-            "price": 2.14247402070486,
-            "balance": 15.995934878803391
           }
         ],
         "blockNumber": 18157201

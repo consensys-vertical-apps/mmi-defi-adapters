@@ -26,7 +26,6 @@ import {
 import { ConvexCvxcrvWrapperAdapter } from './convex/products/cvxcrv-wrapper/convexCvxcrvWrapperAdapter'
 import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
 import { ConvexSidechainStakingAdapter } from './convex/products/sidechain-staking/convexSidechainStakingAdapter'
-import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAdapter'
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
 
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
@@ -68,6 +67,8 @@ import { SyncSwapPoolAdapter } from './syncswap/products/pool/syncSwapPoolAdapte
 import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAdapter'
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
+
+import { ConvexStakingMainnetAdapter } from './convex/products/staking-mainnet/convexStakingMainnetAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -160,8 +161,8 @@ export const supportedProtocols: Record<
   [Protocol.Convex]: {
     [Chain.Ethereum]: [
       ConvexPoolAdapter,
-      ConvexStakingAdapter,
       ConvexCvxcrvWrapperAdapter,
+      ConvexStakingMainnetAdapter,
     ],
 
     [Chain.Polygon]: [ConvexSidechainStakingAdapter],

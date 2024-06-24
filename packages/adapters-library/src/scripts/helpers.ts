@@ -201,8 +201,104 @@ export class Helpers {
   }): Promise<MovementsByBlock[]> {
     return this.getErc20Movements({
       protocolToken,
-      filter: { fromBlock, toBlock, from: userAddress, to: undefined },
+      filter: {
+        fromBlock,
+        toBlock,
+        from: userAddress,
+        to: undefined,
+        smartContractAddress: protocolToken.address,
+      },
     })
+  }
+
+  /*
+   * Use this method to get the withdrawals using the underlying token transfers
+   * Some protocol tokens do not emit Transfer events when withdrawing, but they emit Transfer events when transferring the underlying token
+   */
+  async withdrawalsUsingUnderlyingTokenTransfers({
+    protocolToken,
+    filter: { fromBlock, toBlock, userAddress },
+    underlyingTokens,
+  }: {
+    protocolToken: Erc20Metadata & { tokenId?: string }
+    underlyingTokens: (Erc20Metadata & { tokenId?: string })[]
+    filter: {
+      fromBlock: number
+      toBlock: number
+      userAddress: string
+    }
+  }): Promise<MovementsByBlock[]> {
+    const underlyingTokenMovements = await Promise.all(
+      underlyingTokens.map(async (underlyingToken) => {
+        console.log({
+          fromBlock,
+          toBlock,
+          from: protocolToken.address,
+          to: userAddress,
+          smartContractAddress: underlyingToken.address,
+        })
+
+        return this.getErc20Movements({
+          protocolToken,
+          filter: {
+            fromBlock,
+            toBlock,
+            from: protocolToken.address,
+            to: userAddress,
+            smartContractAddress: underlyingToken.address,
+          },
+        })
+      }),
+    )
+
+    const filteredMovements = underlyingTokenMovements
+      .flat()
+      .filter(
+        (movement): movement is MovementsByBlock => movement !== undefined,
+      )
+
+    return filteredMovements
+  }
+
+  /*
+   * Use this method to get the deposits using the underlying token transfers
+   * Some protocol tokens do not emit Transfer events when withdrawing, but they emit Transfer events when transferring the underlying token
+   */
+  async depositsUsingUnderlyingTokenTransfers({
+    protocolToken,
+    filter: { fromBlock, toBlock, userAddress },
+    underlyingTokens,
+  }: {
+    protocolToken: Erc20Metadata & { tokenId?: string }
+    underlyingTokens: (Erc20Metadata & { tokenId?: string })[]
+    filter: {
+      fromBlock: number
+      toBlock: number
+      userAddress: string
+    }
+  }): Promise<MovementsByBlock[]> {
+    const underlyingTokenMovements = await Promise.all(
+      underlyingTokens.map(async (underlyingToken) => {
+        return this.getErc20Movements({
+          protocolToken,
+          filter: {
+            fromBlock,
+            toBlock,
+            to: protocolToken.address,
+            from: userAddress,
+            smartContractAddress: underlyingToken.address,
+          },
+        })
+      }),
+    )
+
+    const filteredMovements = underlyingTokenMovements
+      .flat()
+      .filter(
+        (movement): movement is MovementsByBlock => movement !== undefined,
+      )
+
+    return filteredMovements
   }
 
   async tvl({
@@ -251,7 +347,13 @@ export class Helpers {
   }): Promise<MovementsByBlock[]> {
     return this.getErc20Movements({
       protocolToken,
-      filter: { fromBlock, toBlock, from: undefined, to: userAddress },
+      filter: {
+        fromBlock,
+        toBlock,
+        from: undefined,
+        to: userAddress,
+        smartContractAddress: protocolToken.address,
+      },
     })
   }
 
@@ -359,7 +461,7 @@ export class Helpers {
 
   async getErc20Movements({
     protocolToken,
-    filter: { fromBlock, toBlock, from, to },
+    filter: { fromBlock, toBlock, from, to, smartContractAddress },
   }: {
     protocolToken: Erc20Metadata & { tokenId?: string }
     filter: {
@@ -367,10 +469,11 @@ export class Helpers {
       toBlock: number
       from?: string
       to?: string
+      smartContractAddress: string
     }
   }): Promise<MovementsByBlock[]> {
     const protocolTokenContract = Erc20__factory.connect(
-      protocolToken.address,
+      smartContractAddress,
       this.provider,
     )
 
