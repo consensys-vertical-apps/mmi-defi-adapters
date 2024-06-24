@@ -13,6 +13,19 @@ export const TokenType = {
 } as const
 export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
+export const UnderlyingTokenTypeMap: {
+  [key in TokenType]:
+    | typeof TokenType.Underlying
+    | typeof TokenType.UnderlyingClaimable
+} = {
+  [TokenType.UnderlyingClaimable]: TokenType.UnderlyingClaimable,
+  [TokenType.Reward]: TokenType.UnderlyingClaimable,
+  [TokenType.Underlying]: TokenType.Underlying,
+  [TokenType.Protocol]: TokenType.Underlying,
+} as const
+export type UnderlyingTokenTypeMap =
+  (typeof UnderlyingTokenTypeMap)[keyof typeof UnderlyingTokenTypeMap]
+
 export const AssetType = {
   StandardErc20: 'StandardErc20', // transferrable; fungible positions; stakeable
   NonStandardErc20: 'NonStandardErc20', // such as nft, reward position, borrow positions (borrow positions cant be transferred)

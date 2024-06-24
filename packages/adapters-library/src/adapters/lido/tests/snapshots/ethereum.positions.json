@@ -1,5 +1,6 @@
 {
   "blockNumber": 18377483,
+  "aggregatedValues": ["USD7.80", "USD142,256,435.30"],
   "snapshot": [
     {
       "protocolId": "lido",

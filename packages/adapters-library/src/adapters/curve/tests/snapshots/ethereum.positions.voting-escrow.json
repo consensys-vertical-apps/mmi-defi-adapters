@@ -1,5 +1,6 @@
 {
   "blockNumber": 19562097,
+  "aggregatedValues": ["USD930,175.44"],
   "snapshot": [
     {
       "protocolId": "curve",
@@ -48,7 +49,7 @@
                   "name": "Dai Stablecoin",
                   "symbol": "DAI",
                   "decimals": 18,
-                  "type": "underlying",
+                  "type": "underlying-claimable",
                   "balanceRaw": "5177234591288482461504n",
                   "balance": 5177.234591288482,
                   "price": 1.0018573483415525,
@@ -59,7 +60,7 @@
                   "name": "USD Coin",
                   "symbol": "USDC",
                   "decimals": 6,
-                  "type": "underlying",
+                  "type": "underlying-claimable",
                   "balanceRaw": "4692615935n",
                   "balance": 4692.615935,
                   "price": 0.9942005134620832,
@@ -70,7 +71,7 @@
                   "name": "Tether USD",
                   "symbol": "USDT",
                   "decimals": 6,
-                  "type": "underlying",
+                  "type": "underlying-claimable",
                   "balanceRaw": "4132888223n",
                   "balance": 4132.888223,
                   "price": 1.0009379619555936,

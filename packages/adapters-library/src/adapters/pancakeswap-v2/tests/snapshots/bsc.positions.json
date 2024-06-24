@@ -1,5 +1,6 @@
 {
   "blockNumber": 36672150,
+  "aggregatedValues": ["USD1,614.80", "USD1,331.83"],
   "snapshot": [
     {
       "protocolId": "pancakeswap-v2",

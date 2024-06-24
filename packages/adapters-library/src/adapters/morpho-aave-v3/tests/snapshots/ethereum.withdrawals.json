@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD14,945.38"],
   "snapshot": {
     "protocolId": "morpho-aave-v3",
     "name": "MorphoAaveV3",

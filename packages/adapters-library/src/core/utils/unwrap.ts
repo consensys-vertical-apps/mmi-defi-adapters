@@ -1,6 +1,6 @@
 import { Protocol } from '../../adapters/protocols'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
-import { TokenType } from '../../types/adapter'
+import { TokenType, UnderlyingTokenTypeMap } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import {
   AdapterMissingError,
@@ -75,7 +75,7 @@ export async function unwrap(
           name: unwrappedTokenExchangeRate.name,
           symbol: unwrappedTokenExchangeRate.symbol,
           decimals: unwrappedTokenExchangeRate.decimals,
-          type: unwrappedTokenExchangeRate.type,
+          type: UnderlyingTokenTypeMap[token.type],
           [fieldToUpdate]:
             // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
             (((token as any)[fieldToUpdate] as bigint) *

@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD1.21", "USD0.10", "USD0.02", "USD11.38"],
   "snapshot": {
     "protocolId": "flux",
     "name": "Flux",

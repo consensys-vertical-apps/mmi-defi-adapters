@@ -1,5 +1,17 @@
 {
   "blockNumber": 19184953,
+  "aggregatedValues": [
+    "USD4.98",
+    "USD13,660.11",
+    "USD8,457.61",
+    "USD6,687.81",
+    "USD3,599.67",
+    "USD3,191.67",
+    "USD1,059.06",
+    "USD802.42",
+    "USD224.56",
+    "USD1,245.96"
+  ],
   "snapshot": [
     {
       "protocolId": "carbon-defi",

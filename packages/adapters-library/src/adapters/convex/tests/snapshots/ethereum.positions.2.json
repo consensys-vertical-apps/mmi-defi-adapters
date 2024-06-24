@@ -1,5 +1,6 @@
 {
   "blockNumber": 18634843,
+  "aggregatedValues": ["USD20.10", "USD64,573.29", "USD65,427.35", "USD264.53"],
   "snapshot": [
     {
       "protocolId": "convex",
@@ -147,7 +148,7 @@
                   "name": "Liquid staked Ether 2.0",
                   "symbol": "stETH",
                   "decimals": 18,
-                  "type": "underlying",
+                  "type": "underlying-claimable",
                   "balanceRaw": "31282707399788675n",
                   "tokens": [
                     {
@@ -155,7 +156,7 @@
                       "name": "Ethereum",
                       "symbol": "ETH",
                       "decimals": 18,
-                      "type": "underlying",
+                      "type": "underlying-claimable",
                       "balanceRaw": "31282707399788675n",
                       "balance": 0.031282707399788674,
                       "price": 2055.9896,
@@ -298,7 +299,7 @@
                   "name": "Dai Stablecoin",
                   "symbol": "DAI",
                   "decimals": 18,
-                  "type": "underlying",
+                  "type": "underlying-claimable",
                   "balanceRaw": "0n",
                   "balance": 0,
                   "price": 0.9992119774262888,
@@ -309,7 +310,7 @@
                   "name": "USD Coin",
                   "symbol": "USDC",
                   "decimals": 6,
-                  "type": "underlying",
+                  "type": "underlying-claimable",
                   "balanceRaw": "0n",
                   "balance": 0,
                   "price": 1.008292872437544,
@@ -320,7 +321,7 @@
                   "name": "Tether USD",
                   "symbol": "USDT",
                   "decimals": 6,
-                  "type": "underlying",
+                  "type": "underlying-claimable",
                   "balanceRaw": "0n",
                   "balance": 0,
                   "price": 0.9993786207862668,

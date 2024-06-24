@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD42,871.67"],
   "snapshot": {
     "protocolId": "uniswap-v3",
     "name": "UniswapV3",

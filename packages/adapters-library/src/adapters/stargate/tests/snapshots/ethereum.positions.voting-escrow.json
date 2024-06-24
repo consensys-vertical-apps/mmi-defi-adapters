@@ -1,5 +1,6 @@
 {
   "blockNumber": 19582834,
+  "aggregatedValues": ["USD1,371.22"],
   "snapshot": [
     {
       "protocolId": "stargate",

@@ -1,5 +1,6 @@
 {
   "blockNumber": 19184953,
+  "aggregatedValues": ["USD24.22", "USD73.55"],
   "snapshot": [
     {
       "protocolId": "carbon-defi",

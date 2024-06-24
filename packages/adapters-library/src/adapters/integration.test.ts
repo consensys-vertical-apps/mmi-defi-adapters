@@ -47,6 +47,7 @@ import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
 import { testCases as lynexTestCases } from './lynex/tests/testCases'
+import { testCases as pendleTestCases } from './pendle/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
@@ -78,6 +79,7 @@ const protocolTestCases = {
   [Protocol.MorphoBlue]: morphoBlueTestCases,
   [Protocol.MorphoCompoundV2]: morphoCompoundV2TestCases,
   [Protocol.PancakeswapV2]: pancakeswapV2TestCases,
+  [Protocol.Pendle]: pendleTestCases,
   [Protocol.PricesV2]: pricesV2TestCases,
   [Protocol.QuickswapV2]: quickswapV2TestCases,
   [Protocol.RocketPool]: rocketPoolTestCases,

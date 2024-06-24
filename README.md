@@ -12,3 +12,5 @@ This library is designed to simplify and standardise the process of fetching dat
 
 ## Quick Start
 Refer to the [adapters-library README](./packages/adapters-library/README.md#setup-steps).
+
+> **Note:** Please note that in this library, adapter must query on-chain data to ensure accuracy and reliability, we do not accept centralised APIs to get positions, withdrawals, deposits, profits or rewards. 
