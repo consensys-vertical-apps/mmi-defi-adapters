@@ -291,7 +291,8 @@ function PositionsDisplay({
                                           />
                                           <span>{token.symbol}</span>
                                           {token.type ===
-                                            'underlying-claimable' && '(reward)'}
+                                            'underlying-claimable' &&
+                                            '(reward)'}
                                         </div>
                                       </TableCell>
                                       <TableCell>

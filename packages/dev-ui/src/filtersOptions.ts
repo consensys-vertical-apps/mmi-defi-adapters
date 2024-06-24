@@ -1,9 +1,15 @@
-import { Chain, Protocol, TimePeriod } from "@metamask-institutional/defi-adapters"
+import {
+  Chain,
+  Protocol,
+  TimePeriod,
+} from '@metamask-institutional/defi-adapters'
 
-export const protocolOptions = Object.entries(Protocol).map(([label, value]) => ({
-  value,
-  label,
-}))
+export const protocolOptions = Object.entries(Protocol).map(
+  ([label, value]) => ({
+    value,
+    label,
+  }),
+)
 
 export const chainOptions = Object.entries(Chain).map(([label, value]) => ({
   value,
