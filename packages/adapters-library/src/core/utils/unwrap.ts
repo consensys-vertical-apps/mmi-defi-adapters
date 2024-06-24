@@ -1,6 +1,6 @@
 import { Protocol } from '../../adapters/protocols'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
-import { TokenType } from '../../types/adapter'
+import { TokenType, UnderlyingTokenTypeMap } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import {
   AdapterMissingError,
@@ -75,7 +75,7 @@ export async function unwrap(
           name: unwrappedTokenExchangeRate.name,
           symbol: unwrappedTokenExchangeRate.symbol,
           decimals: unwrappedTokenExchangeRate.decimals,
-          type: resolveTokenType(token.type),
+          type: UnderlyingTokenTypeMap[token.type],
           [fieldToUpdate]:
             // biome-ignore lint/suspicious/noExplicitAny: Too many possible options
             (((token as any)[fieldToUpdate] as bigint) *
@@ -91,21 +91,6 @@ export async function unwrap(
   })
 
   await Promise.all(promises)
-}
-
-function resolveTokenType(parentTokenType: TokenType) {
-  switch (parentTokenType) {
-    case TokenType.UnderlyingClaimable:
-      return TokenType.UnderlyingClaimable
-    case TokenType.Reward:
-      return TokenType.UnderlyingClaimable
-    case TokenType.Underlying:
-      return TokenType.Underlying
-    case TokenType.Protocol:
-      return TokenType.Underlying
-    default:
-      throw new Error('Unsupported token type')
-  }
 }
 
 async function fetchUnwrapExchangeRates(
