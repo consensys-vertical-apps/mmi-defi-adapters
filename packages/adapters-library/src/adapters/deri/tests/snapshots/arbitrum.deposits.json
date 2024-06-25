@@ -1,0 +1,43 @@
+{
+  "snapshot": {
+    "protocolId": "deri",
+    "name": "Deri",
+    "description": "Deri defi adapter",
+    "siteUrl": "https:",
+    "iconUrl": "https://",
+    "positionType": "supply",
+    "chainId": 42161,
+    "productId": "pool",
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x8565caecd939f1039365c17fdfe27ffa219e9709e14213dd849292c416776c66",
+        "protocolToken": {
+          "address": "0xD849c2b7991060023e5D92b92c68f4077AE2C2Ba",
+          "name": "DLT",
+          "symbol": "DLT",
+          "decimals": 18,
+          "tokenId": "452312848583266388373385778560718648249770263156390604487522901302855073939"
+        },
+        "tokens": [
+          {
+            "type": "underlying",
+            "balanceRaw": "534443499999999999n",
+            "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+            "symbol": "ETH",
+            "name": "Ethereum",
+            "decimals": 18,
+            "transactionHash": "0x8565caecd939f1039365c17fdfe27ffa219e9709e14213dd849292c416776c66",
+            "blockNumber": 225214179,
+            "price": 3315.4637,
+            "balance": 0.5344435
+          }
+        ],
+        "blockNumber": 225214179
+      }
+    ]
+  }
+}
