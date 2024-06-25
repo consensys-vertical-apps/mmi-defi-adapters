@@ -39,11 +39,6 @@ export const PositionType = {
   Supply: 'supply',
 
   /**
-   * Providing liquidity to a lending and borrow protocol
-   */
-  Lend: 'lend',
-
-  /**
    * Getting a loan from a lending and borrow protocol
    */
   Borrow: 'borrow',
@@ -111,8 +106,8 @@ export type GetEventsInput = {
 }
 
 export type AssetDetails = {
-  type: AssetType
-  missingTransferEvents?: boolean
+  enablePositionDetectionByProtocolTokenTransfer: boolean
+  includeInUnwrap: boolean
 }
 
 export type ProtocolDetails = {

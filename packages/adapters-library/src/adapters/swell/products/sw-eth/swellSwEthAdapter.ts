@@ -27,7 +27,8 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.StandardErc20,
+        enablePositionDetectionByProtocolTokenTransfer: true,
+        includeInUnwrap: true,
       },
     }
   }

@@ -20,7 +20,8 @@ export class MorphoCompoundV2OptimizerBorrowAdapter extends MorphoBasePoolAdapte
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.NonStandardErc20,
+        enablePositionDetectionByProtocolTokenTransfer: false,
+        includeInUnwrap: false,
       },
     }
   }

@@ -20,7 +20,8 @@ export class MorphoCompoundV2OptimizerSupplyAdapter extends MorphoBasePoolAdapte
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.NonStandardErc20,
+        enablePositionDetectionByProtocolTokenTransfer: true,
+        includeInUnwrap: true,
       },
     }
   }

@@ -61,7 +61,8 @@ export class GmxGlpAdapter
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.StandardErc20,
+        enablePositionDetectionByProtocolTokenTransfer: false,
+        includeInUnwrap: false,
       },
     }
   }

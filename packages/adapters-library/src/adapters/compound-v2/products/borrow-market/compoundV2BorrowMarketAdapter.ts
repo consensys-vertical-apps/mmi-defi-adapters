@@ -34,7 +34,8 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.NonStandardErc20,
+        enablePositionDetectionByProtocolTokenTransfer: false,
+        includeInUnwrap: false,
       },
     }
   }

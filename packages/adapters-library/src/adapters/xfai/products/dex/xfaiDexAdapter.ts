@@ -48,7 +48,8 @@ export class XfaiDexAdapter
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: 'StandardErc20',
+        enablePositionDetectionByProtocolTokenTransfer: false, // might be true but contracts not verified
+        includeInUnwrap: true,
       },
     }
   }

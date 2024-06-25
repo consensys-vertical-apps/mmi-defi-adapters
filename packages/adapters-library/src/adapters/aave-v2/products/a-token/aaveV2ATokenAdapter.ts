@@ -17,11 +17,12 @@ export class AaveV2ATokenPoolAdapter extends AaveBasePoolAdapter {
       description: 'Aave v2 defi adapter for yield-generating token',
       siteUrl: 'https://aave.com/',
       iconUrl: 'https://aave.com/favicon.ico',
-      positionType: PositionType.Lend,
+      positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.StandardErc20,
+        enablePositionDetectionByProtocolTokenTransfer: true,
+        includeInUnwrap: true,
       },
     }
   }

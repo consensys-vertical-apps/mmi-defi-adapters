@@ -30,7 +30,8 @@ export class SonneBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter 
       chainId: this.chainId,
       productId: this.productId,
       assetDetails: {
-        type: AssetType.NonStandardErc20,
+        enablePositionDetectionByProtocolTokenTransfer: false,
+        includeInUnwrap: false,
       },
     }
   }
