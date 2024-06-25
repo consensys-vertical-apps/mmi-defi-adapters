@@ -1,0 +1,65 @@
+{
+  "aggregatedValues": ["USD155.46"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 8453,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x9c53b9dc09e8bde7a443b8d4674336ded1b040b741d6c5d1762677cabf2d8e56",
+        "protocolToken": {
+          "address": "0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83",
+          "name": "Moo Aero weETH-AERO",
+          "symbol": "mooAeroweETH-AERO",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xb63682961B3dC55d2aD8AD756beAEcDDe8474E83",
+            "name": "Moo Aero weETH-AERO",
+            "symbol": "mooAeroweETH-AERO",
+            "decimals": 18,
+            "balanceRaw": "1141244529723677099n",
+            "type": "underlying",
+            "blockNumber": 15191963,
+            "tokens": [
+              {
+                "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
+                "name": "Wrapped eETH",
+                "symbol": "weETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "19999999018337756n",
+                "balance": 0.019999999018337756,
+                "price": 3900.002157221372,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A/logo.png"
+              },
+              {
+                "address": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+                "name": "Aerodrome",
+                "symbol": "AERO",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "66247748405047976022n",
+                "balance": 66.24774840504797,
+                "price": 1.1692193666702413,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x940181a94A35A4569E4529A3CDfB74e38FD98631/logo.png"
+              }
+            ],
+            "balance": 1.141244529723677
+          }
+        ],
+        "blockNumber": 15191963
+      }
+    ]
+  }
+}

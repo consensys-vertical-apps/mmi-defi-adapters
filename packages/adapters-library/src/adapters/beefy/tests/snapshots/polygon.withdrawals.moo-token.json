@@ -1,0 +1,65 @@
+{
+  "aggregatedValues": ["USD819.15"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 137,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x22efed480193dae03d6aeb3d95112cec396ed4d9b2b8ecabd0e0f0325e436c67",
+        "protocolToken": {
+          "address": "0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c",
+          "name": "Moo Uniswap Gamma MATIC-USDC",
+          "symbol": "mooUniswapGammaMATIC-USDC",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c",
+            "name": "Moo Uniswap Gamma MATIC-USDC",
+            "symbol": "mooUniswapGammaMATIC-USDC",
+            "decimals": 18,
+            "balanceRaw": "874138926n",
+            "type": "underlying",
+            "blockNumber": 58080165,
+            "tokens": [
+              {
+                "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+                "name": "Wrapped Matic",
+                "symbol": "WMATIC",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "570176002230498238211n",
+                "balance": 570.1760022304983,
+                "price": 0.6459972734846504,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png"
+              },
+              {
+                "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "451568687n",
+                "balance": 451.568687,
+                "price": 0.9983276971995447,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359/logo.png"
+              }
+            ],
+            "balance": 8.74138926e-10
+          }
+        ],
+        "blockNumber": 58080165
+      }
+    ]
+  }
+}

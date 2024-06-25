@@ -1,0 +1,65 @@
+{
+  "aggregatedValues": ["USD521.65"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 42161,
+    "productId": "cow-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0xb3d06e3101304f6c1f4ab3cc74628581a71d5ffcd5f6466ec6056e7f67eaca4e",
+        "protocolToken": {
+          "address": "0x073819cff8229BC2f5Af33012e69C8289779E7aC",
+          "name": "Cow Uniswap Arb ZRO-WETH",
+          "symbol": "cowUniswapArbZRO-WETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x073819cff8229BC2f5Af33012e69C8289779E7aC",
+            "name": "Cow Uniswap Arb ZRO-WETH",
+            "symbol": "cowUniswapArbZRO-WETH",
+            "decimals": 18,
+            "balanceRaw": "148453408581279417n",
+            "type": "underlying",
+            "blockNumber": 224830413,
+            "tokens": [
+              {
+                "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
+                "name": "LayerZero",
+                "symbol": "ZRO",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "82833493639129204464n",
+                "balance": 82.8334936391292,
+                "price": 3.1134340196479866,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6985884C4392D348587B19cb9eAAf157F13271cd/logo.png"
+              },
+              {
+                "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "75292161594519628n",
+                "balance": 0.07529216159451962,
+                "price": 3503.02825366,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
+              }
+            ],
+            "balance": 0.14845340858127942
+          }
+        ],
+        "blockNumber": 224830413
+      }
+    ]
+  }
+}

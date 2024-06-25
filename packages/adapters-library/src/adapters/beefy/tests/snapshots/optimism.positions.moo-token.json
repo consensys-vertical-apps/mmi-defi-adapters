@@ -1,0 +1,168 @@
+{
+  "blockNumber": 121055758,
+  "aggregatedValues": [
+    "USD3,856.48",
+    "USD2,746.63",
+    "USD1,960.75",
+    "USD3,758.45"
+  ],
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 10,
+      "productId": "moo-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x416c578DFBEB2f1b07b0165a2e5F4C467F4Ed2F8",
+          "name": "Moo Aura OP Fraximalist Ethereum",
+          "symbol": "mooAuraOPFraximalist Ethereum",
+          "decimals": 18,
+          "balanceRaw": "3760802546930570212n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x484c2D6e3cDd945a8B2DF735e079178C1036578c",
+              "name": "Staked Frax Ether",
+              "symbol": "sfrxETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "2831190889818409152n",
+              "balance": 2.831190889818409,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x484c2D6e3cDd945a8B2DF735e079178C1036578c/logo.png"
+            },
+            {
+              "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+              "name": "Frax Ether",
+              "symbol": "frxETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "1029947379756140282n",
+              "balance": 1.0299473797561403,
+              "price": 3744.3453704806307,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x6806411765Af15Bddd26f8f544A34cC40cb9838B/logo.png"
+            },
+            {
+              "address": "0xA71021492a3966EeC735Ed1B505aFa097c7cFe6f",
+              "name": "Fraximalist Ethereum",
+              "symbol": "bpt-fraxethe",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "106312516244972701217640394522379n",
+              "balance": 106312516244972.7,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0xA71021492a3966EeC735Ed1B505aFa097c7cFe6f/logo.png"
+            }
+          ],
+          "balance": 3.76080254693057
+        },
+        {
+          "address": "0x1B9eb90884F3566AE923366B65a49B1E30cbcE28",
+          "name": "Moo VeloV2 OP-frxETH",
+          "symbol": "mooVeloV2OP-frxETH",
+          "decimals": 18,
+          "balanceRaw": "10792762915552172522n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4200000000000000000000000000000000000042",
+              "name": "Optimism",
+              "symbol": "OP",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "558277710761696468536n",
+              "balance": 558.2777107616964,
+              "price": 2.4742732049525142,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000042/logo.png"
+            },
+            {
+              "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+              "name": "Frax Ether",
+              "symbol": "frxETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "364628246986710009n",
+              "balance": 0.36462824698671004,
+              "price": 3744.3453704806307,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x6806411765Af15Bddd26f8f544A34cC40cb9838B/logo.png"
+            }
+          ],
+          "balance": 10.792762915552172
+        },
+        {
+          "address": "0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB",
+          "name": "Moo VeloV2 VELO-ETH",
+          "symbol": "mooVeloV2VELO-ETH",
+          "decimals": 18,
+          "balanceRaw": "7911831850898543369n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4200000000000000000000000000000000000006",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "257778067891746515n",
+              "balance": 0.2577780678917465,
+              "price": 3795.11913439,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
+            },
+            {
+              "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+              "name": "VelodromeV2",
+              "symbol": "VELO",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "7373034531050378844299n",
+              "balance": 7373.034531050379,
+              "price": 0.1332498540819068,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db/logo.png"
+            }
+          ],
+          "balance": 7.911831850898543
+        },
+        {
+          "address": "0x04c4a21D7439eD05fd33469565541bF6464F7157",
+          "name": "Moo VeloV2 OP-VELO",
+          "symbol": "mooVeloV2OP-VELO",
+          "decimals": 18,
+          "balanceRaw": "2073921681848830705642n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x4200000000000000000000000000000000000042",
+              "name": "Optimism",
+              "symbol": "OP",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "759965254719925628343n",
+              "balance": 759.9652547199256,
+              "price": 2.4742732049525142,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000042/logo.png"
+            },
+            {
+              "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+              "name": "VelodromeV2",
+              "symbol": "VELO",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "14094488690726664725076n",
+              "balance": 14094.488690726665,
+              "price": 0.1332498540819068,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db/logo.png"
+            }
+          ],
+          "balance": 2073.9216818488308
+        }
+      ]
+    }
+  ]
+}

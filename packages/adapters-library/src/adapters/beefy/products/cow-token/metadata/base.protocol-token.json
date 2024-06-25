@@ -1,0 +1,186 @@
+{
+  "0xc88d16c4cb87b5EEC33cA0696bBd5154492E4282": {
+    "protocolToken": {
+      "address": "0xc88d16c4cb87b5EEC33cA0696bBd5154492E4282",
+      "name": "Cow Uniswap Base WETH-ZRO",
+      "symbol": "cowUniswapBaseWETH-ZRO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
+        "name": "LayerZero",
+        "symbol": "ZRO",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xB6DDAb86739524ba19185105B545220A858F2d0e": {
+    "protocolToken": {
+      "address": "0xB6DDAb86739524ba19185105B545220A858F2d0e",
+      "name": "Cow Uniswap Base ZRO-USDC",
+      "symbol": "cowUniswapBaseZRO-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
+        "name": "LayerZero",
+        "symbol": "ZRO",
+        "decimals": 18
+      },
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xB34B8DeC4f7c5e0c20e5dda09e862Df39C3Fb285": {
+    "protocolToken": {
+      "address": "0xB34B8DeC4f7c5e0c20e5dda09e862Df39C3Fb285",
+      "name": "Cow Uniswap Base WETH-USDbC",
+      "symbol": "cowUniswapBaseWETH-USDbC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA",
+        "name": "USD Base Coin",
+        "symbol": "USDbC",
+        "decimals": 6
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xD07111A837F9D62bCa452132bDBEE2F1443666F6": {
+    "protocolToken": {
+      "address": "0xD07111A837F9D62bCa452132bDBEE2F1443666F6",
+      "name": "Cow Uniswap Base wstETH-USDC",
+      "symbol": "cowUniswapBasewstETH-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xE4d02B7997635883bf68a810d1d781990006B58C": {
+    "protocolToken": {
+      "address": "0xE4d02B7997635883bf68a810d1d781990006B58C",
+      "name": "Cow Uniswap Base USDT-WETH",
+      "symbol": "cowUniswapBaseUSDT-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0xfde4C96c8593536E31F229EA8f37b2ADa2699bb2",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xe97383FFa8AbA69FB5f182CF35E31833250586E4": {
+    "protocolToken": {
+      "address": "0xe97383FFa8AbA69FB5f182CF35E31833250586E4",
+      "name": "Cow Uniswap Base cbETH-WETH",
+      "symbol": "cowUniswapBasecbETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22",
+        "name": "Coinbase Wrapped Staked ETH",
+        "symbol": "cbETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xE39887EfF72d0AF25E4B90f52b6a6De82948D472": {
+    "protocolToken": {
+      "address": "0xE39887EfF72d0AF25E4B90f52b6a6De82948D472",
+      "name": "Cow Uniswap Base AERO-WETH",
+      "symbol": "cowUniswapBaseAERO-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+        "name": "Aerodrome",
+        "symbol": "AERO",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xA05C5A7121B351aa7003C73Ae794Ec17995440C7": {
+    "protocolToken": {
+      "address": "0xA05C5A7121B351aa7003C73Ae794Ec17995440C7",
+      "name": "Cow Uniswap Base USDC-WETH",
+      "symbol": "cowUniswapBaseUSDC-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  }
+}

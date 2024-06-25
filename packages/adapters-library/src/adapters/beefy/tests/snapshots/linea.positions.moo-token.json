@@ -1,0 +1,53 @@
+{
+  "blockNumber": 5220484,
+  "aggregatedValues": [],
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 59144,
+      "productId": "moo-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x35884E8C569b9f7714A35EDf056A82535A43F5AD",
+          "name": "Moo Lynex Gamma ezETH-WETH",
+          "symbol": "mooLynexGammaezETH-WETH",
+          "decimals": 18,
+          "balanceRaw": "5984274701001026470n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+              "name": "Renzo Restaked ETH",
+              "symbol": "ezETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "4092814754659001146n",
+              "balance": 4.092814754659001,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2416092f143378750bb29b79eD961ab195CcEea5/logo.png"
+            },
+            {
+              "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "2025949900805103987n",
+              "balance": 2.025949900805104,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+            }
+          ],
+          "balance": 5.984274701001026
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "blockNumber": 219137472,
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "cow-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": false,
+      "error": {
+        "message": "Protocol token pool not found",
+        "details": {
+          "name": "Error"
+        }
+      }
+    },
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "moo-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058",
+          "name": "Moo Aura Arb auraBAL-wstETH",
+          "symbol": "mooAuraArbauraBAL-wstETH",
+          "decimals": 18,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x223738a747383d6F9f827d95964e4d8E8AC754cE",
+              "name": "Aura BAL",
+              "symbol": "auraBAL",
+              "decimals": 18,
+              "underlyingRateRaw": "10226569563616817346n",
+              "type": "underlying",
+              "underlyingRate": 10.226569563616817,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x223738a747383d6F9f827d95964e4d8E8AC754cE/logo.png"
+            },
+            {
+              "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "underlyingRateRaw": "21295733205196414n",
+              "type": "underlying",
+              "underlyingRate": 0.021295733205196413,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

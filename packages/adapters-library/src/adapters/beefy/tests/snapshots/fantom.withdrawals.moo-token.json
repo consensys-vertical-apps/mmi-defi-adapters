@@ -1,0 +1,63 @@
+{
+  "aggregatedValues": ["USD0.00"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 250,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x90763718a0f63e8a782bbc8f4a4e9ff88e076a8bc329c9fc4786bdf2f655f43d",
+        "protocolToken": {
+          "address": "0xfe55295462d7395C6C6586aC433509048ED26F88",
+          "name": "Moo Equalizer Ichi WFTM-axlUSDC",
+          "symbol": "mooEqualizerIchiWFTM-axlUSDC",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xfe55295462d7395C6C6586aC433509048ED26F88",
+            "name": "Moo Equalizer Ichi WFTM-axlUSDC",
+            "symbol": "mooEqualizerIchiWFTM-axlUSDC",
+            "decimals": 18,
+            "balanceRaw": "73547346694322295941n",
+            "type": "underlying",
+            "blockNumber": 81963381,
+            "tokens": [
+              {
+                "address": "0x1B6382DBDEa11d97f24495C9A90b7c88469134a4",
+                "name": "Axelar Wrapped USDC",
+                "symbol": "axlUSDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "902539427n",
+                "balance": 902.539427,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/fantom/assets/0x1B6382DBDEa11d97f24495C9A90b7c88469134a4/logo.png"
+              },
+              {
+                "address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+                "name": "Wrapped Fantom",
+                "symbol": "WFTM",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "3809373925365022240089n",
+                "balance": 3809.3739253650224,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/fantom/assets/0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83/logo.png"
+              }
+            ],
+            "balance": 73.5473466943223
+          }
+        ],
+        "blockNumber": 81963381
+      }
+    ]
+  }
+}

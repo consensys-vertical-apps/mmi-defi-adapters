@@ -1,0 +1,127 @@
+{
+  "blockNumber": 219137472,
+  "aggregatedValues": ["USD0.00", "USD4.27", "USD1.90"],
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "moo-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763",
+          "name": "Moo Aura Gyro aUSDCn/aUSDTn",
+          "symbol": "mooAuraGyroaUSDCn/aUSDTn",
+          "decimals": 18,
+          "balanceRaw": "10250660934841814399n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7CFaDFD5645B50bE87d546f42699d863648251ad",
+              "name": "Static Aave Arbitrum USDCn",
+              "symbol": "stataArbUSDCn",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "4055879n",
+              "balance": 4.055879,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x7CFaDFD5645B50bE87d546f42699d863648251ad/logo.png"
+            },
+            {
+              "address": "0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140",
+              "name": "Static Aave Arbitrum USDT",
+              "symbol": "stataArbUSDT",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "8689833n",
+              "balance": 8.689833,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140/logo.png"
+            }
+          ],
+          "balance": 10.250660934841815
+        },
+        {
+          "address": "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058",
+          "name": "Moo Aura Arb auraBAL-wstETH",
+          "symbol": "mooAuraArbauraBAL-wstETH",
+          "decimals": 18,
+          "balanceRaw": "45268410416027513n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x223738a747383d6F9f827d95964e4d8E8AC754cE",
+              "name": "Aura BAL",
+              "symbol": "auraBAL",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "462940548153861472n",
+              "balance": 0.4629405481538615,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x223738a747383d6F9f827d95964e4d8E8AC754cE/logo.png"
+            },
+            {
+              "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "964023990843056n",
+              "balance": 0.000964023990843056,
+              "price": 4432.459639605798,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
+            }
+          ],
+          "balance": 0.04526841041602751
+        },
+        {
+          "address": "0xd37025aC6227334C7762AeD5929Ce3272fbb6fdC",
+          "name": "Moo Aura Arb DOLA-USDC",
+          "symbol": "mooAuraArbDOLA-USDC",
+          "decimals": 18,
+          "balanceRaw": "5550974825492273253n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x6A7661795C374c0bFC635934efAddFf3A7Ee23b6",
+              "name": "Dola USD Stablecoin",
+              "symbol": "DOLA",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "4800910405658604898n",
+              "balance": 4.8009104056586045,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6A7661795C374c0bFC635934efAddFf3A7Ee23b6/logo.png"
+            },
+            {
+              "address": "0x8bc65Eed474D1A00555825c91FeAb6A8255C2107",
+              "name": "Balancer DOLA/USDC StablePool",
+              "symbol": "DOLA/USDC BPT",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "12462950414506675468773749904n",
+              "balance": 12462950414.506676,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x8bc65Eed474D1A00555825c91FeAb6A8255C2107/logo.png"
+            },
+            {
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "balanceRaw": "1899843n",
+              "balance": 1.899843,
+              "price": 1.0004057489052425,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+            }
+          ],
+          "balance": 5.550974825492273
+        }
+      ]
+    }
+  ]
+}

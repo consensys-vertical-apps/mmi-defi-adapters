@@ -1,0 +1,88 @@
+{
+  "blockNumber": 39386513,
+  "aggregatedValues": ["USD3.92", "USD23.01"],
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 56,
+      "productId": "moo-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x2A1b2B05A3c54C86F3f3AB837cA423ad60CF35d1",
+          "name": "Moo Thena Gamma FIL-BNB Narrow",
+          "symbol": "mooThenaFIL-BNBNarrow",
+          "decimals": 18,
+          "balanceRaw": "20207175796733785n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153",
+              "name": "Filecoin",
+              "symbol": "FIL",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "597587153756073396n",
+              "balance": 0.5975871537560734,
+              "price": 5.918313514114798,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153/logo.png"
+            },
+            {
+              "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+              "name": "Wrapped BNB",
+              "symbol": "WBNB",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "547837713393585n",
+              "balance": 0.000547837713393585,
+              "price": 703.9352484924416,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
+            }
+          ],
+          "balance": 0.020207175796733784
+        },
+        {
+          "address": "0xA5d3c08E0afb5F4d2428630e10d31DC53a14e2E5",
+          "name": "Moo Thena THE-BNB Wide",
+          "symbol": "mooThenaTHE-BNBWide",
+          "decimals": 18,
+          "balanceRaw": "33741566647061253029n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+              "name": "Wrapped BNB",
+              "symbol": "WBNB",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "17618328840546970n",
+              "balance": 0.01761832884054697,
+              "price": 703.9352484924416,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
+            },
+            {
+              "address": "0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11",
+              "name": "THENA",
+              "symbol": "THE",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "20609389059831043911n",
+              "balance": 20.609389059831045,
+              "price": 0.5146943595633771,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11/logo.png"
+            }
+          ],
+          "balance": 33.741566647061255
+        }
+      ]
+    }
+  ]
+}

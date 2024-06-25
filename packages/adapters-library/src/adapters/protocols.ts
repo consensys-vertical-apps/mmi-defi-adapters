@@ -3,6 +3,7 @@ export const Protocol = {
   AaveV2: 'aave-v2',
   AaveV3: 'aave-v3',
   AngleProtocol: 'angle-protocol',
+  Beefy: 'beefy',
   CarbonDeFi: 'carbon-defi',
   ChimpExchange: 'chimp-exchange',
   CompoundV2: 'compound-v2',

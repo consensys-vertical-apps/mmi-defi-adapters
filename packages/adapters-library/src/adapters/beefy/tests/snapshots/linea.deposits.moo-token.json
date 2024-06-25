@@ -1,0 +1,63 @@
+{
+  "aggregatedValues": [],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 59144,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0xe4ea9ba81c797e6f32633e7311189c5c910f7b511ff08d20bf5813b904cdce9c",
+        "protocolToken": {
+          "address": "0x35884E8C569b9f7714A35EDf056A82535A43F5AD",
+          "name": "Moo Lynex Gamma ezETH-WETH",
+          "symbol": "mooLynexGammaezETH-WETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x35884E8C569b9f7714A35EDf056A82535A43F5AD",
+            "name": "Moo Lynex Gamma ezETH-WETH",
+            "symbol": "mooLynexGammaezETH-WETH",
+            "decimals": 18,
+            "balanceRaw": "6557137537469370059n",
+            "type": "underlying",
+            "blockNumber": 5039210,
+            "tokens": [
+              {
+                "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+                "name": "Renzo Restaked ETH",
+                "symbol": "ezETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "4809434185995871694n",
+                "balance": 4.809434185995872,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2416092f143378750bb29b79eD961ab195CcEea5/logo.png"
+              },
+              {
+                "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+                "name": "Wrapped Ether",
+                "symbol": "WETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "1874210935859005385n",
+                "balance": 1.8742109358590053,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f/logo.png"
+              }
+            ],
+            "balance": 6.55713753746937
+          }
+        ],
+        "blockNumber": 5039210
+      }
+    ]
+  }
+}

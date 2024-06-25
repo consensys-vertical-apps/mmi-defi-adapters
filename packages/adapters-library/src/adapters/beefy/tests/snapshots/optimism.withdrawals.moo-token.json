@@ -1,0 +1,65 @@
+{
+  "aggregatedValues": ["USD191.10"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 10,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x5296772178b088358607e5399db9ad251ef403f5f99e4bacb5f1f207570b7361",
+        "protocolToken": {
+          "address": "0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB",
+          "name": "Moo VeloV2 VELO-ETH",
+          "symbol": "mooVeloV2VELO-ETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB",
+            "name": "Moo VeloV2 VELO-ETH",
+            "symbol": "mooVeloV2VELO-ETH",
+            "decimals": 18,
+            "balanceRaw": "810934220198163943n",
+            "type": "underlying",
+            "blockNumber": 119739875,
+            "tokens": [
+              {
+                "address": "0x4200000000000000000000000000000000000006",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "30885593284231483n",
+                "balance": 0.03088559328423148,
+                "price": 3098.29,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
+              },
+              {
+                "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+                "name": "VelodromeV2",
+                "symbol": "VELO",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "621494502631376505970n",
+                "balance": 621.4945026313765,
+                "price": 0.15351446418842637,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db/logo.png"
+              }
+            ],
+            "balance": 0.810934220198164
+          }
+        ],
+        "blockNumber": 119739875
+      }
+    ]
+  }
+}

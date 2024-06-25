@@ -1,0 +1,64 @@
+{
+  "aggregatedValues": ["USD3,831.07"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 8453,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x1f63004f3a5dfad1506264e36ca19745fc9848281f6a52e82fb23065a7d356ef",
+        "protocolToken": {
+          "address": "0x3b5F990364fa9BF1Db34d9d24B0Bdca6eE4bD4B1",
+          "name": "Moo Aero USDz-USDC",
+          "symbol": "mooAeroUSDz-USDC",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0x3b5F990364fa9BF1Db34d9d24B0Bdca6eE4bD4B1",
+            "name": "Moo Aero USDz-USDC",
+            "symbol": "mooAeroUSDz-USDC",
+            "decimals": 18,
+            "balanceRaw": "3937159020254091n",
+            "type": "underlying",
+            "blockNumber": 15683114,
+            "tokens": [
+              {
+                "address": "0x04D5ddf5f3a8939889F11E97f8c4BB48317F1938",
+                "name": "USDz",
+                "symbol": "USDz",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "4088317906276922129545n",
+                "balance": 4088.3179062769223,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x04D5ddf5f3a8939889F11E97f8c4BB48317F1938/logo.png"
+              },
+              {
+                "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "3829640793n",
+                "balance": 3829.640793,
+                "price": 1.0003720959484237,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/base/assets/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913/logo.png"
+              }
+            ],
+            "balance": 0.003937159020254091
+          }
+        ],
+        "blockNumber": 15683114
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "aggregatedValues": ["USD6,869.24", "USD6,872.91"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 56,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x4e1891884400047ee304352a70375f8fbbf7d80ae49a6d2c53a1074bb2629d17",
+        "protocolToken": {
+          "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
+          "name": "Moo Thena Gamma weETH-ETH Narrow",
+          "symbol": "mooThenaGammaweETH-ETHNarrow",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
+            "name": "Moo Thena Gamma weETH-ETH Narrow",
+            "symbol": "mooThenaGammaweETH-ETHNarrow",
+            "decimals": 18,
+            "balanceRaw": "1736163915239060909n",
+            "type": "underlying",
+            "blockNumber": 39296958,
+            "tokens": [
+              {
+                "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
+                "name": "Wrapped eETH",
+                "symbol": "weETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "803350622596308290n",
+                "balance": 0.8033506225963083,
+                "price": 3929.8842370557427,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A/logo.png"
+              },
+              {
+                "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+                "name": "Ethereum Token",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "981631310107611284n",
+                "balance": 0.9816313101076113,
+                "price": 3781.63085961,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x2170Ed0880ac9A755fd29B2688956BD959F933F8/logo.png"
+              }
+            ],
+            "balance": 1.7361639152390609
+          }
+        ],
+        "blockNumber": 39296958
+      },
+      {
+        "transactionHash": "0xb87f00709b7eda0a6466dd4f9eb7e019dbc53c713356c465c6bb4a62545bdda2",
+        "protocolToken": {
+          "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
+          "name": "Moo Thena Gamma weETH-ETH Narrow",
+          "symbol": "mooThenaGammaweETH-ETHNarrow",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
+            "name": "Moo Thena Gamma weETH-ETH Narrow",
+            "symbol": "mooThenaGammaweETH-ETHNarrow",
+            "decimals": 18,
+            "balanceRaw": "1736730165060875050n",
+            "type": "underlying",
+            "blockNumber": 39297014,
+            "tokens": [
+              {
+                "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
+                "name": "Wrapped eETH",
+                "symbol": "weETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "803612635383756877n",
+                "balance": 0.8036126353837568,
+                "price": 3930.6979730649778,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A/logo.png"
+              },
+              {
+                "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+                "name": "Ethereum Token",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "981951469137272420n",
+                "balance": 0.9819514691372724,
+                "price": 3782.41389774,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x2170Ed0880ac9A755fd29B2688956BD959F933F8/logo.png"
+              }
+            ],
+            "balance": 1.736730165060875
+          }
+        ],
+        "blockNumber": 39297014
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "blockNumber": 224847857,
+  "snapshot": [
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "cow-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x073819cff8229BC2f5Af33012e69C8289779E7aC",
+          "name": "Cow Uniswap Arb ZRO-WETH",
+          "symbol": "cowUniswapArbZRO-WETH",
+          "decimals": 18,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
+              "name": "LayerZero",
+              "symbol": "ZRO",
+              "decimals": 18,
+              "underlyingRateRaw": "635020053706851703243n",
+              "type": "underlying",
+              "underlyingRate": 635.0200537068517,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6985884C4392D348587B19cb9eAAf157F13271cd/logo.png"
+            },
+            {
+              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "underlyingRateRaw": "440193825834664252n",
+              "type": "underlying",
+              "underlyingRate": 0.44019382583466427,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "moo-token",
+      "assetDetails": {
+        "type": "StandardErc20"
+      },
+      "success": false,
+      "error": {
+        "message": "Protocol token pool not found",
+        "details": {
+          "name": "Error"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "aggregatedValues": ["USD12,149.68", "USD2,594.69"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "moo-token",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x577cbdd6d5ee795dee98be5d771642946cc5be1bf6aae79a2ca840374c5c4fb4",
+        "protocolToken": {
+          "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
+          "name": "Moo Curve crvUSD-sUSDe",
+          "symbol": "mooCurveCrvUSD-sUSDe",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
+            "name": "Moo Curve crvUSD-sUSDe",
+            "symbol": "mooCurveCrvUSD-sUSDe",
+            "decimals": 18,
+            "balanceRaw": "12111742869831990423132n",
+            "type": "underlying",
+            "blockNumber": 20062263,
+            "tokens": [
+              {
+                "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+                "name": "Curve.Fi USD Stablecoin",
+                "symbol": "crvUSD",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "9799773934171192991997n",
+                "balance": 9799.773934171193,
+                "price": 0.9974819828655143,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E/logo.png"
+              },
+              {
+                "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+                "name": "Staked USDe",
+                "symbol": "sUSDe",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "2207143347043282957848n",
+                "tokens": [
+                  {
+                    "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+                    "name": "USDe",
+                    "symbol": "USDe",
+                    "decimals": 18,
+                    "type": "underlying",
+                    "balanceRaw": "2376750647329848549759n",
+                    "balance": 2376.7506473298486,
+                    "price": 0.9990881295337299,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
+                  }
+                ],
+                "balance": 2207.143347043283,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9D39A5DE30e57443BfF2A8307A4256c8797A3497/logo.png"
+              }
+            ],
+            "balance": 12111.74286983199
+          }
+        ],
+        "blockNumber": 20062263
+      },
+      {
+        "transactionHash": "0x9b56ec4fe75ba109904533a70d14fcb1001e125fba76deb8dedf44979034a754",
+        "protocolToken": {
+          "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
+          "name": "Moo Curve crvUSD-sUSDe",
+          "symbol": "mooCurveCrvUSD-sUSDe",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
+            "name": "Moo Curve crvUSD-sUSDe",
+            "symbol": "mooCurveCrvUSD-sUSDe",
+            "decimals": 18,
+            "balanceRaw": "2583559223625230694950n",
+            "type": "underlying",
+            "blockNumber": 20068724,
+            "tokens": [
+              {
+                "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+                "name": "Curve.Fi USD Stablecoin",
+                "symbol": "crvUSD",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "1823365763743494229021n",
+                "balance": 1823.3657637434942,
+                "price": 0.9970682364413102,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E/logo.png"
+              },
+              {
+                "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+                "name": "Staked USDe",
+                "symbol": "sUSDe",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "720087767634504149820n",
+                "tokens": [
+                  {
+                    "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+                    "name": "USDe",
+                    "symbol": "USDe",
+                    "decimals": 18,
+                    "type": "underlying",
+                    "balanceRaw": "775837471877486293352n",
+                    "balance": 775.8374718774863,
+                    "price": 1.0010696835744455,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo.png"
+                  }
+                ],
+                "balance": 720.0877676345042,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9D39A5DE30e57443BfF2A8307A4256c8797A3497/logo.png"
+              }
+            ],
+            "balance": 2583.5592236252305
+          }
+        ],
+        "blockNumber": 20068724
+      }
+    ]
+  }
+}
