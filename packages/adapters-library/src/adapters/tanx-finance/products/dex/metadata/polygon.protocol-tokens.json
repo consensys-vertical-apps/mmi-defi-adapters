@@ -1,0 +1,26 @@
+{
+  "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174": {
+    "protocolToken": {
+      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      "name": "usdc",
+      "decimals": 6,
+      "symbol": "USDC"
+    }
+  },
+  "0x0000000000000000000000000000000000001010": {
+    "protocolToken": {
+      "address": "0x0000000000000000000000000000000000001010",
+      "name": "matic",
+      "decimals": 18,
+      "symbol": "MATIC"
+    }
+  },
+  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F": {
+    "protocolToken": {
+      "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "name": "usdt",
+      "decimals": 6,
+      "symbol": "Tether"
+    }
+  }
+}

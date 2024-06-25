@@ -69,6 +69,8 @@ import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAd
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
+import { TanxFinanceDexAdapter } from './tanx-finance/products/dex/tanxFinanceDexAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -303,6 +305,14 @@ export const supportedProtocols: Record<
 
   [Protocol.SyncSwap]: {
     [Chain.Linea]: [SyncSwapPoolAdapter],
+  },
+
+  [Protocol.TanxFinance]: {
+    [Chain.Ethereum]: [TanxFinanceDexAdapter],
+    [Chain.Optimism]: [TanxFinanceDexAdapter],
+    [Chain.Polygon]: [TanxFinanceDexAdapter],
+    [Chain.Arbitrum]: [TanxFinanceDexAdapter],
+    [Chain.Linea]: [TanxFinanceDexAdapter],
   },
 
   [Protocol.UniswapV2]: {

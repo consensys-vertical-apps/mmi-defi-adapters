@@ -1,0 +1,128 @@
+{
+  "0x0000000000000000000000000000000000000000": {
+    "protocolToken": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "name": "Ethereum",
+      "assetId": "0x2705737cd248ac819034b5de474c8f0368224f72a0fda9e031499d519992d9e",
+      "decimals": 8,
+      "symbol": "eth"
+    }
+  },
+  "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599": {
+    "protocolToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Bitcoin",
+      "assetId": "0x1b407c57bf21e449daef1d99295b34196c52eca0a60172daec6f13abb191c44",
+      "decimals": 8,
+      "symbol": "btc"
+    }
+  },
+  "0xdAC17F958D2ee523a2206206994597C13D831ec7": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether",
+      "assetId": "0x2ce625e94458d39dd0bf3b45a843544dd4a14b8169045a3a3d15aa564b936c5",
+      "decimals": 6,
+      "symbol": "usdt"
+    }
+  },
+  "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USDC",
+      "assetId": "0x2893294412a4c8f915f75892b395ebbf6859ec246ec365c3b1f56f47c3a0a5d",
+      "decimals": 6,
+      "symbol": "usdc"
+    }
+  },
+  "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0": {
+    "protocolToken": {
+      "address": "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
+      "name": "Matic",
+      "assetId": "0x29ed085d11df04b59ba5830088d9ecd19c51834375a988257a1e3ff6ef82020",
+      "decimals": 8,
+      "symbol": "matic"
+    }
+  },
+  "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1": {
+    "protocolToken": {
+      "address": "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1",
+      "name": "Arbitrum",
+      "assetId": "0x157cce11fc90dadbaab735278f8da9afac477d47276e92bdd3ac248df9d4466",
+      "decimals": 8,
+      "symbol": "arb"
+    }
+  },
+  "0x514910771AF9Ca656af840dff83E8264EcF986CA": {
+    "protocolToken": {
+      "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+      "name": "Chainlink",
+      "assetId": "0xc12e72dacf06749d6b1ebaaac7eb8bc50af0844b87595ce0491b98dc3d51a6",
+      "decimals": 6,
+      "symbol": "link"
+    }
+  },
+  "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9": {
+    "protocolToken": {
+      "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+      "name": "Aave",
+      "assetId": "0x1bd57f9e8fc1ff9708906bf50ca068393e897a542dbbcc910e1877b6c33573e",
+      "decimals": 6,
+      "symbol": "aave"
+    }
+  },
+  "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2": {
+    "protocolToken": {
+      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "name": "Maker",
+      "assetId": "0x1a4af39d27ce2e3445ed084809e5bc36d03918df04b7e2b6ee3c769a9892600",
+      "decimals": 8,
+      "symbol": "mkr"
+    }
+  },
+  "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32": {
+    "protocolToken": {
+      "address": "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32",
+      "name": "Lido DAO",
+      "assetId": "0x126991b5e866f70d18ffd53f3f7a3fe4dc39dec38bbb471ff02cf602355a690",
+      "decimals": 6,
+      "symbol": "ldo"
+    }
+  },
+  "0xD33526068D116cE69F19A9ee46F0bd304F21A51f": {
+    "protocolToken": {
+      "address": "0xD33526068D116cE69F19A9ee46F0bd304F21A51f",
+      "name": "Rocket Pool",
+      "assetId": "0x128e8dbf326c5d4ba2315ce8bb0ca1d121946483a1cfe3c3b82dc099f4a8a2",
+      "decimals": 6,
+      "symbol": "rpl"
+    }
+  },
+  "0xCa14007Eff0dB1f8135f4C25B34De49AB0d42766": {
+    "protocolToken": {
+      "address": "0xCa14007Eff0dB1f8135f4C25B34De49AB0d42766",
+      "name": "Starknet Token",
+      "assetId": "0x9b52aed9614ebe56bd68be6bce36abf9f4482a82070ef614c78114913878ce",
+      "decimals": 6,
+      "symbol": "strk"
+    }
+  },
+  "0xc00e94Cb662C3520282E6f5717214004A7f26888": {
+    "protocolToken": {
+      "address": "0xc00e94Cb662C3520282E6f5717214004A7f26888",
+      "name": "Compound",
+      "assetId": "0x5acb69e0d48a3d68e394ba2d5ceb0efc00565b80d63835b410116f293975ea",
+      "decimals": 8,
+      "symbol": "comp"
+    }
+  },
+  "0xFe0c30065B384F05761f15d0CC899D4F9F9Cc0eB": {
+    "protocolToken": {
+      "address": "0xFe0c30065B384F05761f15d0CC899D4F9F9Cc0eB",
+      "name": "Ether.Fi",
+      "assetId": "0x33af06e6428d68a1abce46ffd6c5c8be99046b030d9df15e613296d17c77ff6",
+      "decimals": 8,
+      "symbol": "ethfi"
+    }
+  }
+}

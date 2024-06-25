@@ -1,0 +1,26 @@
+{
+  "0x176211869cA2b568f2A7D4EE941E073a821EE1ff": {
+    "protocolToken": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "usdc",
+      "decimals": 6,
+      "symbol": "USDC"
+    }
+  },
+  "0xA219439258ca9da29E9Cc4cE5596924745e12B93": {
+    "protocolToken": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "usdt",
+      "decimals": 6,
+      "symbol": "Tether"
+    }
+  },
+  "0x0000000000000000000000000000000000001010": {
+    "protocolToken": {
+      "address": "0x0000000000000000000000000000000000001010",
+      "name": "eth",
+      "decimals": 18,
+      "symbol": "Ethereum"
+    }
+  }
+}

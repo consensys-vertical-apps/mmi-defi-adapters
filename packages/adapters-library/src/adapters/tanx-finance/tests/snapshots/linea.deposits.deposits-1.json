@@ -1,0 +1,41 @@
+{
+  "snapshot": {
+    "protocolId": "tanx-finance",
+    "name": "TanxFinance",
+    "description": "TanxFinance defi adapter",
+    "siteUrl": "https:",
+    "iconUrl": "https://",
+    "positionType": "supply",
+    "chainId": 59144,
+    "productId": "dex",
+    "assetDetails": {
+      "type": "StandardErc20"
+    },
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0xbc24d66794e59fc861d134a52cad46a0c77409d4427525aee0c934de590eb904",
+        "blockNumber": 5338329,
+        "protocolToken": {
+          "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+          "name": "usdc",
+          "decimals": 6,
+          "symbol": "USDC"
+        },
+        "tokens": [
+          {
+            "type": "underlying",
+            "balanceRaw": "1640162n",
+            "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+            "name": "usdc",
+            "decimals": 6,
+            "symbol": "USDC",
+            "transactionHash": "0xbc24d66794e59fc861d134a52cad46a0c77409d4427525aee0c934de590eb904",
+            "blockNumber": 5338329,
+            "balance": 1.640162
+          }
+        ]
+      }
+    ]
+  }
+}
