@@ -29,7 +29,7 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: true,
         includeInUnwrap: true,
       },

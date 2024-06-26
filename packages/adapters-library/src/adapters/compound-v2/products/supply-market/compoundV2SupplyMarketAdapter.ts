@@ -33,7 +33,7 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: true,
         includeInUnwrap: true,
       },

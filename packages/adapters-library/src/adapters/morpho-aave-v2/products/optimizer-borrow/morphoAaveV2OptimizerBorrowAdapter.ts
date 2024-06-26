@@ -19,9 +19,9 @@ export class MorphoAaveV2OptimizerBorrowAdapter extends MorphoBasePoolAdapter {
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        enablePositionDetectionByProtocolTokenTransfer: true,
-        includeInUnwrap: true,
+      adapterSettings: {
+        enablePositionDetectionByProtocolTokenTransfer: false,
+        includeInUnwrap: false,
       },
     }
   }

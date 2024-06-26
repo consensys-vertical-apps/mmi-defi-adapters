@@ -8,8 +8,9 @@
     "positionType": "borrow",
     "chainId": 1,
     "productId": "market-borrow",
-    "assetDetails": {
-      "type": "NonStandardErc20"
+    "adapterSettings": {
+      "enablePositionDetectionByProtocolTokenTransfer": false,
+      "includeInUnwrap": false
     },
     "success": true,
     "movements": [

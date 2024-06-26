@@ -60,7 +60,7 @@ export class GmxGlpAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: false,
         includeInUnwrap: false,
       },

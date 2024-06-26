@@ -46,8 +46,9 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "cow-token",
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": true,
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": [
@@ -1082,8 +1083,9 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "moo-token",
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": true,
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": [

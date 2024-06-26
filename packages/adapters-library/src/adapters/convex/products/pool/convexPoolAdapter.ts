@@ -99,8 +99,9 @@ export class ConvexPoolAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
+      adapterSettings: {
+        enablePositionDetectionByProtocolTokenTransfer: false,
+        includeInUnwrap: true,
       },
     }
   }

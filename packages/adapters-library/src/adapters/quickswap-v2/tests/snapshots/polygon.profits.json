@@ -10,8 +10,9 @@
       "positionType": "supply",
       "chainId": 137,
       "productId": "pool",
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": true,
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": [

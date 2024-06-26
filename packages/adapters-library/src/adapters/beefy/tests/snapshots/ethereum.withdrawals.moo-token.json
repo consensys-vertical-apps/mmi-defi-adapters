@@ -9,8 +9,9 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "moo-token",
-    "assetDetails": {
-      "type": "StandardErc20"
+    "adapterSettings": {
+      "enablePositionDetectionByProtocolTokenTransfer": true,
+      "includeInUnwrap": true
     },
     "success": true,
     "movements": [

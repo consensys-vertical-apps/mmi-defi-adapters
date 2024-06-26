@@ -25,7 +25,7 @@ export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: true,
         includeInUnwrap: true,
       },

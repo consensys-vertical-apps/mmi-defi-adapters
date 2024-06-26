@@ -11,8 +11,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "staking",
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": false,
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": [
@@ -251,8 +252,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "cvxcrv-wrapper",
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": false,
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": [

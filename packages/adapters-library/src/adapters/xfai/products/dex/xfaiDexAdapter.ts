@@ -47,7 +47,7 @@ export class XfaiDexAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: false, // might be true but contracts not verified
         includeInUnwrap: true,
       },

@@ -19,9 +19,9 @@ export class MorphoCompoundV2OptimizerSupplyAdapter extends MorphoBasePoolAdapte
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        enablePositionDetectionByProtocolTokenTransfer: true,
-        includeInUnwrap: true,
+      adapterSettings: {
+        enablePositionDetectionByProtocolTokenTransfer: false,
+        includeInUnwrap: false,
       },
     }
   }

@@ -10,8 +10,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "optimizer-supply",
-      "assetDetails": {
-        "type": "NonStandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": false,
+        "includeInUnwrap": false
       },
       "success": true,
       "tokens": [
@@ -258,8 +259,9 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "optimizer-borrow",
-      "assetDetails": {
-        "type": "NonStandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": false,
+        "includeInUnwrap": false
       },
       "success": true,
       "tokens": [

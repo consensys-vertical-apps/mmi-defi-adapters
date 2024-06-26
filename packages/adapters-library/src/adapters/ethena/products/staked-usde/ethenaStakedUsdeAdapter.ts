@@ -75,7 +75,7 @@ export class EthenaStakedUsdeAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: true,
         includeInUnwrap: true,
       },

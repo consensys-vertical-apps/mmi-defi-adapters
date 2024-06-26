@@ -11,8 +11,9 @@
       "protocolId": "stakewise",
       "productId": "os-eth",
       "chainId": 1,
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": false,
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": [

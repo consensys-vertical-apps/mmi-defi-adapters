@@ -10,8 +10,9 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "algebra",
-      "assetDetails": {
-        "type": "NonStandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": false,
+        "includeInUnwrap": false
       },
       "success": true,
       "tokens": [

@@ -27,7 +27,7 @@ export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: true,
         includeInUnwrap: true,
       },

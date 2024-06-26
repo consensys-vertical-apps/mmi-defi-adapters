@@ -71,7 +71,7 @@ export class CurvePoolAdapter implements IProtocolAdapter, IMetadataBuilder {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: true,
         includeInUnwrap: true,
       },

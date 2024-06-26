@@ -11,8 +11,9 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "reth",
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": true,
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": [

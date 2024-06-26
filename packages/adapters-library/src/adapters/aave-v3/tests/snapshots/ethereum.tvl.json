@@ -7,11 +7,12 @@
       "description": "Aave v3 defi adapter for yield-generating token",
       "siteUrl": "https://aave.com/",
       "iconUrl": "https://aave.com/favicon.ico",
-      "positionType": "lend",
+      "positionType": "supply",
       "chainId": 1,
       "productId": "a-token",
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": true,
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": [
@@ -116,8 +117,9 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "stable-debt-token",
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": true,
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": []
@@ -131,8 +133,9 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": true,
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": []

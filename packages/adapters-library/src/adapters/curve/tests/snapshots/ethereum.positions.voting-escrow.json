@@ -11,9 +11,9 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "voting-escrow",
-      "assetDetails": {
-        "type": "StandardErc20",
-        "missingTransferEvents": true
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": false,
+        "includeInUnwrap": false
       },
       "success": true,
       "tokens": [

@@ -22,7 +22,7 @@ export class StargateVotingEscrowAdapter extends VotingEscrow {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: false,
         includeInUnwrap: true,
       },

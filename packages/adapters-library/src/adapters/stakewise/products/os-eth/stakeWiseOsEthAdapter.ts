@@ -54,7 +54,7 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
       protocolId: this.protocolId,
       productId: this.productId,
       chainId: this.chainId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: false, // this might be able to be true but im not too sure just incase leaving as false
         includeInUnwrap: true,
       },

@@ -8,8 +8,9 @@
     "positionType": "borrow",
     "chainId": 1,
     "productId": "variable-debt-token",
-    "assetDetails": {
-      "type": "StandardErc20"
+    "adapterSettings": {
+      "enablePositionDetectionByProtocolTokenTransfer": true,
+      "includeInUnwrap": true
     },
     "success": true,
     "movements": [

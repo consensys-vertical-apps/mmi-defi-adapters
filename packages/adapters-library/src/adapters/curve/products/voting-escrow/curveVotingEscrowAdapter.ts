@@ -21,7 +21,7 @@ export class CurveVotingEscrowAdapter extends VotingEscrow {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: false,
         includeInUnwrap: false,
       },

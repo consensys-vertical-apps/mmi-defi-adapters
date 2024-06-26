@@ -22,7 +22,7 @@ export class FluxBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
+      adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: false,
         includeInUnwrap: false,
       },

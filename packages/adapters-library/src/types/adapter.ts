@@ -105,7 +105,7 @@ export type GetEventsInput = {
   tokenId?: string
 }
 
-export type AssetDetails = {
+export type AdapterSettings = {
   enablePositionDetectionByProtocolTokenTransfer: boolean
   includeInUnwrap: boolean
 }
@@ -155,7 +155,7 @@ export type ProtocolDetails = {
   /**
    *
    */
-  assetDetails: AssetDetails
+  adapterSettings: AdapterSettings
 }
 
 export interface GetPositionsInputWithTokenAddresses extends GetPositionsInput {

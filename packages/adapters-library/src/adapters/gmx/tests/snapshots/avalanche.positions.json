@@ -11,8 +11,9 @@
       "positionType": "supply",
       "chainId": 43114,
       "productId": "glp",
-      "assetDetails": {
-        "type": "StandardErc20"
+      "adapterSettings": {
+        "enablePositionDetectionByProtocolTokenTransfer": false,
+        "includeInUnwrap": false
       },
       "success": true,
       "tokens": [
