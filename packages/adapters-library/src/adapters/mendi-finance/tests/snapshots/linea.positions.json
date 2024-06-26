@@ -11,10 +11,6 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "supply",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {
@@ -112,10 +108,6 @@
       "positionType": "borrow",
       "chainId": 59144,
       "productId": "borrow",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
-      },
       "success": false,
       "error": {
         "message": "Not Implemented (at MendiFinanceBorrowAdapter.getUnderlyingTokenBalances)",

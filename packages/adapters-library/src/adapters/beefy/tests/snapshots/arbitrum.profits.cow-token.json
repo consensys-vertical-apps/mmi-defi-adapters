@@ -10,10 +10,6 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "cow-token",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {
@@ -583,10 +579,6 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "moo-token",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {

@@ -11,10 +11,6 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "dex",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {

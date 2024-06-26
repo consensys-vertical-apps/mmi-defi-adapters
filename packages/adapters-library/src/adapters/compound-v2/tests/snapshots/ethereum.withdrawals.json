@@ -9,10 +9,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "supply-market",
-    "adapterSettings": {
-      "enablePositionDetectionByProtocolTokenTransfer": true,
-      "includeInUnwrap": true
-    },
     "success": true,
     "movements": [
       {

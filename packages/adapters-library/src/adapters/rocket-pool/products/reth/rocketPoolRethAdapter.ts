@@ -16,6 +16,11 @@ import { RocketTokenRETH__factory } from '../../../rocket-pool/contracts'
 export class RocketPoolRethAdapter extends SimplePoolAdapter {
   productId = 'reth'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -26,10 +31,6 @@ export class RocketPoolRethAdapter extends SimplePoolAdapter {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: true,
-        includeInUnwrap: true,
-      },
     }
   }
 

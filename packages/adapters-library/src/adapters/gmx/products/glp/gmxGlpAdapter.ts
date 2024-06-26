@@ -49,6 +49,11 @@ export class GmxGlpAdapter
 {
   productId = 'glp'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -60,10 +65,6 @@ export class GmxGlpAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: false,
-        includeInUnwrap: true,
-      },
     }
   }
 

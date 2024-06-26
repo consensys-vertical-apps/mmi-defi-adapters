@@ -61,6 +61,11 @@ export class MendiFinanceBorrowAdapter
 {
   productId = 'borrow'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -71,10 +76,6 @@ export class MendiFinanceBorrowAdapter
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: false,
-        includeInUnwrap: false,
-      },
     }
   }
 

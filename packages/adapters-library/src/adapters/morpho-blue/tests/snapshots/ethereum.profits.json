@@ -10,10 +10,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "market-supply",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
-      },
       "success": true,
       "tokens": [
         {

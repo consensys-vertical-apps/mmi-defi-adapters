@@ -10,10 +10,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "s-dai",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {

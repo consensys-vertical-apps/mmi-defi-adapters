@@ -8,10 +8,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "a-token",
-    "adapterSettings": {
-      "enablePositionDetectionByProtocolTokenTransfer": true,
-      "includeInUnwrap": true
-    },
     "success": true,
     "params": {
       "to": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",

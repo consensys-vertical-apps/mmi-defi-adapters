@@ -11,10 +11,6 @@
       "positionType": "supply",
       "chainId": 8453,
       "productId": "moo-token",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {

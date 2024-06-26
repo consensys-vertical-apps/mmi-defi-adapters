@@ -11,10 +11,6 @@
       "positionType": "supply",
       "chainId": 56,
       "productId": "pool",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
-      },
       "success": true,
       "tokens": [
         {

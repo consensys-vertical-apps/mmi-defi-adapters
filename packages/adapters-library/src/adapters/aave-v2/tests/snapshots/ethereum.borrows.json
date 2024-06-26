@@ -8,10 +8,6 @@
     "positionType": "borrow",
     "chainId": 1,
     "productId": "variable-debt-token",
-    "adapterSettings": {
-      "enablePositionDetectionByProtocolTokenTransfer": true,
-      "includeInUnwrap": true
-    },
     "success": true,
     "movements": [
       {

@@ -15,10 +15,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "optimizer-supply",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
-      },
       "success": true,
       "tokens": [
         {
@@ -100,10 +96,6 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "optimizer-borrow",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
-      },
       "success": true,
       "tokens": [
         {

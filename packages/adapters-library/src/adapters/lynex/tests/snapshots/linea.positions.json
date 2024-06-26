@@ -11,10 +11,6 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "algebra",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
-      },
       "success": true,
       "tokens": [
         {
@@ -236,10 +232,6 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "classic",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {

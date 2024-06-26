@@ -11,10 +11,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "st-eth",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {
@@ -50,10 +46,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {

@@ -8,10 +8,6 @@
     "positionType": "borrow",
     "chainId": 1,
     "productId": "market-borrow",
-    "adapterSettings": {
-      "enablePositionDetectionByProtocolTokenTransfer": false,
-      "includeInUnwrap": false
-    },
     "success": true,
     "movements": [
       {

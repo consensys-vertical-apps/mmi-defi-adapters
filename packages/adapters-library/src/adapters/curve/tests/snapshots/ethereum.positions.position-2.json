@@ -11,10 +11,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {
@@ -72,10 +68,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "staking",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {
@@ -157,10 +149,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "voting-escrow",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
-      },
       "success": true,
       "tokens": [
         {

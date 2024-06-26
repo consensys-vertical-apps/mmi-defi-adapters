@@ -19,6 +19,11 @@ import { PoolContract__factory } from '../../contracts'
 export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -29,10 +34,6 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: true,
-        includeInUnwrap: true,
-      },
     }
   }
 

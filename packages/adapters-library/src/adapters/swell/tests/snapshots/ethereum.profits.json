@@ -10,10 +10,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "sw-eth",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {

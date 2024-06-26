@@ -38,6 +38,11 @@ export class ConvexCvxcrvWrapperAdapter
 {
   productId = 'cvxcrv-wrapper'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -51,10 +56,6 @@ export class ConvexCvxcrvWrapperAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: false,
-        includeInUnwrap: true,
-      },
     }
   }
 

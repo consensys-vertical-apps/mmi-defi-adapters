@@ -9,10 +9,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "cvxcrv-wrapper",
-    "adapterSettings": {
-      "enablePositionDetectionByProtocolTokenTransfer": false,
-      "includeInUnwrap": true
-    },
     "success": true,
     "movements": [
       {

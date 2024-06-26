@@ -151,11 +151,6 @@ export type ProtocolDetails = {
    * Unique protocol-product name
    */
   productId: string
-
-  /**
-   *
-   */
-  adapterSettings: AdapterSettings
 }
 
 export interface GetPositionsInputWithTokenAddresses extends GetPositionsInput {

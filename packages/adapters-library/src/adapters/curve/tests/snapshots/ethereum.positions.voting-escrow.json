@@ -11,10 +11,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "voting-escrow",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
-      },
       "success": true,
       "tokens": [
         {

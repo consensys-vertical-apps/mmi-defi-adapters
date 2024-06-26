@@ -11,10 +11,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "voting-escrow",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {

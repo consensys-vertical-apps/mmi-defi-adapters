@@ -10,10 +10,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "savings",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {

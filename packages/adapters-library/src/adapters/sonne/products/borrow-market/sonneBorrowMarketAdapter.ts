@@ -10,6 +10,11 @@ import {
 export class SonneBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
   productId = 'borrow-market'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   contractAddresses: Partial<Record<Chain, { comptrollerAddress: string }>> = {
     [Chain.Optimism]: {
       comptrollerAddress: '0x60CF091cD3f50420d50fD7f707414d0DF4751C58',
@@ -29,10 +34,6 @@ export class SonneBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter 
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: false,
-        includeInUnwrap: false,
-      },
     }
   }
 

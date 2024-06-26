@@ -21,10 +21,6 @@
       "positionType": "supply",
       "chainId": 10,
       "productId": "supply-market",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": true,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {
@@ -148,10 +144,6 @@
       "positionType": "borrow",
       "chainId": 10,
       "productId": "borrow-market",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
-      },
       "success": true,
       "tokens": [
         {

@@ -59,6 +59,11 @@ export class MendiFinanceSupplyAdapter
 {
   productId = 'supply'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -69,10 +74,6 @@ export class MendiFinanceSupplyAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: true,
-        includeInUnwrap: true,
-      },
     }
   }
 

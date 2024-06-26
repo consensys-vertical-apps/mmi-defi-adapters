@@ -9,6 +9,11 @@ import { MorphoBluePoolAdapter } from '../../common/morphoBluePoolAdapter'
 export class MorphoBlueMarketBorrowAdapter extends MorphoBluePoolAdapter {
   productId = 'market-borrow'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -19,10 +24,6 @@ export class MorphoBlueMarketBorrowAdapter extends MorphoBluePoolAdapter {
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: false,
-        includeInUnwrap: false,
-      },
     }
   }
 

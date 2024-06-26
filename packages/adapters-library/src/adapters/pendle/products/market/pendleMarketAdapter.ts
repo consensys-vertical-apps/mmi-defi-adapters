@@ -62,6 +62,11 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
   chainId: Chain
   helpers: Helpers
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   private provider: CustomJsonRpcProvider
 
   adaptersController: AdaptersController
@@ -90,10 +95,6 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: true,
-        includeInUnwrap: true,
-      },
     }
   }
 

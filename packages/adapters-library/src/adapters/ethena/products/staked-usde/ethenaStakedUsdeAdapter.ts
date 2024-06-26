@@ -41,6 +41,11 @@ export class EthenaStakedUsdeAdapter
   protocolId: Protocol
   chainId: Chain
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   private provider: CustomJsonRpcProvider
 
   adaptersController: AdaptersController
@@ -75,10 +80,6 @@ export class EthenaStakedUsdeAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: true,
-        includeInUnwrap: true,
-      },
     }
   }
 

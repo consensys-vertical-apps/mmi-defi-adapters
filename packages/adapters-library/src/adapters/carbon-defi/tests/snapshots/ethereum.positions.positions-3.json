@@ -22,10 +22,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "strategies",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
-      },
       "success": true,
       "tokens": [
         {

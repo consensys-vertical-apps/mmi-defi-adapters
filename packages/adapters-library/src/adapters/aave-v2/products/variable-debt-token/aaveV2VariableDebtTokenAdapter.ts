@@ -10,6 +10,11 @@ import { ProtocolDataProvider } from '../../contracts'
 export class AaveV2VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'variable-debt-token'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -20,10 +25,6 @@ export class AaveV2VariableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: true,
-        includeInUnwrap: true,
-      },
     }
   }
 

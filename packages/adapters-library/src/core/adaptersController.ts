@@ -119,9 +119,7 @@ export class AdaptersController {
 
       for (const [_protocolId, protocolAdapters] of chainAdapters) {
         for (const [_productId, adapter] of protocolAdapters) {
-          const {
-            adapterSettings: { includeInUnwrap },
-          } = adapter.getProtocolDetails()
+          const { includeInUnwrap } = adapter.adapterSettings
 
           if (!includeInUnwrap) {
             continue

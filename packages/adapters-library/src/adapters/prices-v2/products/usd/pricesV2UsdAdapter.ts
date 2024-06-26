@@ -36,6 +36,11 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
   protocolId: Protocol
   chainId: Chain
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   private provider: CustomJsonRpcProvider
 
   adaptersController: AdaptersController
@@ -66,10 +71,6 @@ export class PricesV2UsdAdapter implements IProtocolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: false,
-        includeInUnwrap: false,
-      },
     }
   }
 

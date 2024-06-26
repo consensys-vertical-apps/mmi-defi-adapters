@@ -11,10 +11,6 @@
       "positionType": "supply",
       "chainId": 43114,
       "productId": "glp",
-      "adapterSettings": {
-        "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": true
-      },
       "success": true,
       "tokens": [
         {

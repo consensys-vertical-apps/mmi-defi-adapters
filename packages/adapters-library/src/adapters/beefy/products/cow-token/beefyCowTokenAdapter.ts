@@ -39,6 +39,11 @@ export class BeefyCowTokenAdapter
   chainId: Chain
   helpers: Helpers
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   private provider: CustomJsonRpcProvider
 
   adaptersController: AdaptersController
@@ -70,10 +75,6 @@ export class BeefyCowTokenAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      adapterSettings: {
-        enablePositionDetectionByProtocolTokenTransfer: true,
-        includeInUnwrap: true,
-      },
     }
   }
 

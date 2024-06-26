@@ -9,10 +9,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "staking",
-    "adapterSettings": {
-      "enablePositionDetectionByProtocolTokenTransfer": false,
-      "includeInUnwrap": true
-    },
     "success": true,
     "movements": [
       {
