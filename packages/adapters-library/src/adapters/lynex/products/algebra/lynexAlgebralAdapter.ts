@@ -49,6 +49,11 @@ export class LynexAlgebraAdapter extends SimplePoolAdapter {
   protocolId: Protocol
   chainId: Chain
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   adaptersController: AdaptersController
 
   provider: CustomJsonRpcProvider
@@ -109,9 +114,6 @@ export class LynexAlgebraAdapter extends SimplePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.NonStandardErc20,
-      },
     }
   }
 

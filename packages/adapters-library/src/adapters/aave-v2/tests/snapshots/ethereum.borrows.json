@@ -8,9 +8,6 @@
     "positionType": "borrow",
     "chainId": 1,
     "productId": "variable-debt-token",
-    "assetDetails": {
-      "type": "StandardErc20"
-    },
     "success": true,
     "movements": [
       {

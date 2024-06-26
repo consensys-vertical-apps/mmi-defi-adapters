@@ -10,6 +10,11 @@ import { contractAddresses } from '../../common/contractAddresses'
 export class FluxBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
   productId = 'borrow-market'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   contractAddresses = contractAddresses
 
   getProtocolDetails(): ProtocolDetails {
@@ -22,9 +27,6 @@ export class FluxBorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.NonStandardErc20,
-      },
     }
   }
 

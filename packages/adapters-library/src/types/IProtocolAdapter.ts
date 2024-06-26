@@ -4,6 +4,7 @@ import type { AdaptersController } from '../core/adaptersController'
 import type { Chain } from '../core/constants/chains'
 import { Helpers } from '../scripts/helpers'
 import type {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetRewardPositionsInput,
@@ -20,6 +21,8 @@ import type {
 import type { Erc20Metadata } from './erc20Metadata'
 
 export interface IProtocolAdapter {
+  adapterSettings: AdapterSettings
+
   helpers?: Helpers
 
   /**

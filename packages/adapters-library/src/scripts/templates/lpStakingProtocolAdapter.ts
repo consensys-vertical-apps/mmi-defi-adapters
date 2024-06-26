@@ -24,7 +24,6 @@ export function lpStakingAdapterTemplate({
   import {
     ProtocolDetails,
     PositionType,
-    AssetType,
     GetPositionsInputWithTokenAddresses,
     GetEventsInput,
     GetPositionsInput,
@@ -49,9 +48,6 @@ export function lpStakingAdapterTemplate({
         positionType: PositionType.Supply,
         chainId: this.chainId,
         productId: this.productId,
-        assetDetails: {
-          type: AssetType.NonStandardErc20,
-        },
       }
     }
     @CacheToFile({ fileKey: 'protocol-token' })

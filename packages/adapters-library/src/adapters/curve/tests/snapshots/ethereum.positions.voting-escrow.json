@@ -11,10 +11,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "voting-escrow",
-      "assetDetails": {
-        "type": "StandardErc20",
-        "missingTransferEvents": true
-      },
       "success": true,
       "tokens": [
         {

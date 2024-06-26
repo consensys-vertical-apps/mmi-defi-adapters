@@ -18,6 +18,11 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
     symbol: 'QUICK',
   }
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -29,9 +34,6 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

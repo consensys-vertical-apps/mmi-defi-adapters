@@ -8,9 +8,6 @@
     "positionType": "borrow",
     "chainId": 1,
     "productId": "borrow-market",
-    "assetDetails": {
-      "type": "NonStandardErc20"
-    },
     "success": true,
     "movements": [
       {

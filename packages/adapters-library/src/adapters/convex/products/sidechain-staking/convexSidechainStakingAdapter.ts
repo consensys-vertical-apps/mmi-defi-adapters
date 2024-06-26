@@ -38,6 +38,11 @@ export class ConvexSidechainStakingAdapter
 {
   productId = 'sidechain-staking'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -51,9 +56,6 @@ export class ConvexSidechainStakingAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

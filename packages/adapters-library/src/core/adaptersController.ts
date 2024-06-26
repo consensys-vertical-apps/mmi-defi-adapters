@@ -119,11 +119,9 @@ export class AdaptersController {
 
       for (const [_protocolId, protocolAdapters] of chainAdapters) {
         for (const [_productId, adapter] of protocolAdapters) {
-          const {
-            assetDetails: { type: assetType },
-          } = adapter.getProtocolDetails()
+          const { includeInUnwrap } = adapter.adapterSettings
 
-          if (assetType === AssetType.NonStandardErc20) {
+          if (!includeInUnwrap) {
             continue
           }
 

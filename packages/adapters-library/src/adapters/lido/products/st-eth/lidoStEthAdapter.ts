@@ -16,6 +16,11 @@ import { Erc20Metadata } from '../../../../types/erc20Metadata'
 export class LidoStEthAdapter extends SimplePoolAdapter {
   productId = 'st-eth'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -27,9 +32,6 @@ export class LidoStEthAdapter extends SimplePoolAdapter {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

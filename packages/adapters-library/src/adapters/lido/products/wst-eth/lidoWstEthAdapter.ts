@@ -16,6 +16,11 @@ import { WstEthToken__factory } from '../../contracts'
 export class LidoWstEthAdapter extends SimplePoolAdapter {
   productId = 'wst-eth'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -27,9 +32,6 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

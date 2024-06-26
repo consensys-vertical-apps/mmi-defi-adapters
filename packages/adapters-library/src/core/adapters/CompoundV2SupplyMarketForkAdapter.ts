@@ -3,6 +3,7 @@ import { CompoundV2Cerc20__factory } from '../../contracts'
 import { Helpers } from '../../scripts/helpers'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -27,6 +28,11 @@ export abstract class CompoundV2SupplyMarketForkAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
   abstract productId: string
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
 
   protocolId: Protocol
   chainId: Chain

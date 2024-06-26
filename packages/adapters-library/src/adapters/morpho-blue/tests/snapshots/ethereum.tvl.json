@@ -10,9 +10,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "market-supply",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -225,9 +222,6 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "market-borrow",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {

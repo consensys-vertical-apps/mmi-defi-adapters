@@ -70,6 +70,11 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
   chainId: Chain
   helpers: Helpers
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false, // Looks like most the staking tokens actually have the events apart from 0xbFcF63294aD7105dEa65aA58F8AE5BE2D9d0952A
+    includeInUnwrap: true,
+  }
+
   private provider: CustomJsonRpcProvider
 
   adaptersController: AdaptersController
@@ -103,10 +108,6 @@ export class CurveStakingAdapter implements IProtocolAdapter, IMetadataBuilder {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-        missingTransferEvents: true,
-      },
     }
   }
 

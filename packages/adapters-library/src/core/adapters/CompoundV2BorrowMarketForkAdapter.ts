@@ -8,6 +8,7 @@ import { BorrowEvent, RepayBorrowEvent } from '../../contracts/CompoundV2Cerc20'
 import { Helpers } from '../../scripts/helpers'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -34,6 +35,11 @@ export abstract class CompoundV2BorrowMarketForkAdapter
   implements IProtocolAdapter, IMetadataBuilder
 {
   abstract productId: string
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
 
   protocolId: Protocol
   chainId: Chain

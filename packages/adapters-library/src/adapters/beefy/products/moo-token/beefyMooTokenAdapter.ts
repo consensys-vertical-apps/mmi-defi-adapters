@@ -39,6 +39,11 @@ export class BeefyMooTokenAdapter
   chainId: Chain
   helpers: Helpers
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   private provider: CustomJsonRpcProvider
 
   adaptersController: AdaptersController
@@ -70,9 +75,6 @@ export class BeefyMooTokenAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

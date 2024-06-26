@@ -19,6 +19,11 @@ import { PoolContract__factory } from '../../contracts'
 export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'a-token'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -26,12 +31,9 @@ export class AaveV3ATokenPoolAdapter extends AaveBasePoolAdapter {
       description: 'Aave v3 defi adapter for yield-generating token',
       siteUrl: 'https://aave.com/',
       iconUrl: 'https://aave.com/favicon.ico',
-      positionType: PositionType.Lend,
+      positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

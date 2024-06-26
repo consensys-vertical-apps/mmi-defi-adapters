@@ -8,9 +8,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "supply-market",
-    "assetDetails": {
-      "type": "StandardErc20"
-    },
     "success": true,
     "params": {
       "to": "0xc3d688B66703497DAA19211EEdff47f25384cdc3",

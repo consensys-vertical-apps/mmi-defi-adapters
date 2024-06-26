@@ -9,9 +9,6 @@
     "positionType": "stake",
     "chainId": 1,
     "productId": "reth",
-    "assetDetails": {
-      "type": "StandardErc20"
-    },
     "success": true,
     "movements": [
       {

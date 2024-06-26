@@ -41,6 +41,11 @@ export class ConvexStakingAdapter
 {
   productId = 'staking'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: true,
+  }
+
   private async getCrv(): Promise<Erc20Metadata> {
     const convexFactory = ConvexFactory__factory.connect(
       CONVEX_FACTORY_ADDRESS,
@@ -76,9 +81,6 @@ export class ConvexStakingAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

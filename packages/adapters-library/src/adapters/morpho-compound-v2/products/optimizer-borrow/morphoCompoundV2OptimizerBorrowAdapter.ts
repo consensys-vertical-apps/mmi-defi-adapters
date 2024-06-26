@@ -9,6 +9,11 @@ import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
 export class MorphoCompoundV2OptimizerBorrowAdapter extends MorphoBasePoolAdapter {
   productId = 'optimizer-borrow'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -19,9 +24,6 @@ export class MorphoCompoundV2OptimizerBorrowAdapter extends MorphoBasePoolAdapte
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.NonStandardErc20,
-      },
     }
   }
 

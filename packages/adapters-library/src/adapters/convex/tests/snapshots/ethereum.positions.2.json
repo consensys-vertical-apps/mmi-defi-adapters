@@ -11,9 +11,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "staking",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -251,9 +248,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "cvxcrv-wrapper",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {

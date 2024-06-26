@@ -17,7 +17,6 @@ export function writeOnlyDeFiAdapter({
   import {
     ProtocolDetails,
     PositionType,
-    AssetType,
   } from '../../../../types/adapter'
   import {
     WriteActions,
@@ -44,9 +43,6 @@ export function writeOnlyDeFiAdapter({
         positionType: PositionType.Supply,
         chainId: this.chainId,
         productId: this.productId,
-        assetDetails: {
-          type: AssetType.NonStandardErc20,
-        },
       }
     }
   

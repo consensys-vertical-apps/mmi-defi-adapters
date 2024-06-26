@@ -56,6 +56,11 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
   protocolId: Protocol
   chainId: Chain
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   adaptersController: AdaptersController
 
   provider: CustomJsonRpcProvider
@@ -82,9 +87,6 @@ export class IZiSwapPoolAdapter implements IProtocolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.NonStandardErc20,
-      },
     }
   }
 

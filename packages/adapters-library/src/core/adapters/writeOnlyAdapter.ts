@@ -1,6 +1,7 @@
 import { Protocol } from '../../adapters/protocols'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -33,6 +34,11 @@ export abstract class WriteOnlyDeFiAdapter
   abstract productId: string
   protocolId: Protocol
   chainId: Chain
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
 
   provider: CustomJsonRpcProvider
 
