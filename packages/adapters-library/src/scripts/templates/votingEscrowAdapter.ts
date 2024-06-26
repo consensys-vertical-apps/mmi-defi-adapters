@@ -17,7 +17,6 @@ export function votingEscrowAdapterTemplate({
   import {
     ProtocolDetails,
     PositionType,
-    AssetType,
     GetPositionsInput,
   } from '../../../../types/adapter'
   
@@ -35,9 +34,6 @@ export function votingEscrowAdapterTemplate({
         positionType: PositionType.Staked,
         chainId: this.chainId,
         productId: this.productId,
-        assetDetails: {
-          type: AssetType.StandardErc20,
-        },
       }
     }
   
