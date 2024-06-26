@@ -21,8 +21,6 @@ import type {
 import type { Erc20Metadata } from './erc20Metadata'
 
 export interface IProtocolAdapter {
-
-
   adapterSettings: AdapterSettings
 
   helpers?: Helpers
