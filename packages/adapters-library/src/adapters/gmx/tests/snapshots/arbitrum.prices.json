@@ -12,7 +12,7 @@
       "productId": "glp",
       "adapterSettings": {
         "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": [

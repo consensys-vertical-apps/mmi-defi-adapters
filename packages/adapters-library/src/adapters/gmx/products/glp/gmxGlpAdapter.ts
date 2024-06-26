@@ -62,7 +62,7 @@ export class GmxGlpAdapter
       productId: this.productId,
       adapterSettings: {
         enablePositionDetectionByProtocolTokenTransfer: false,
-        includeInUnwrap: false,
+        includeInUnwrap: true,
       },
     }
   }

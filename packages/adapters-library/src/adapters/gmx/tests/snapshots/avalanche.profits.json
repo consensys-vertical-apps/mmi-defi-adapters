@@ -12,7 +12,7 @@
       "productId": "glp",
       "adapterSettings": {
         "enablePositionDetectionByProtocolTokenTransfer": false,
-        "includeInUnwrap": false
+        "includeInUnwrap": true
       },
       "success": true,
       "tokens": [
@@ -22,27 +22,15 @@
           "symbol": "GLP",
           "decimals": 18,
           "type": "protocol",
-          "profit": -216.19685193530222,
-          "performance": -0.040609051275522216,
+          "profit": 53.31171359967993,
+          "performance": 0.010547689004673752,
           "calculationData": {
-            "withdrawals": 0,
+            "withdrawals": 269.50856553498244,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
             "startPositionValue": 5323.858724707969,
-            "endPositionValue": 5107.661872772666,
-            "hasTokensWithoutUSDPrices": true,
-            "tokensWithoutUSDPrices": [
-              {
-                "address": "0x01234181085565ed162a948b6a5e88758CD7c7b8",
-                "name": "GMX LP",
-                "symbol": "GLP",
-                "decimals": 18,
-                "balanceRaw": "282000000000000000000n",
-                "type": "underlying",
-                "blockNumber": 45117141
-              }
-            ]
+            "endPositionValue": 5107.661872772666
           }
         }
       ],
