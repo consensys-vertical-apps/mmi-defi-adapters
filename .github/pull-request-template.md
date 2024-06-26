@@ -12,6 +12,7 @@ Write a short description of the changes included in this pull request. Include 
 - [ ] Contracts used are verified for that chain block explorer
 - [ ] Test cases with a block number have been added to the `testCases.ts` file for every relevant method that has been implemented
   - [ ] positions
+  - [ ] profits
   - [ ] prices (unwrap)
   - [ ] deposits
   - [ ] withdrawals
