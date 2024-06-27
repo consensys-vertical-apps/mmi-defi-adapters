@@ -98,14 +98,20 @@ Finally, if any reward method has been added, the implementation will have to be
 - `getExtraRewardPositions`
 - `getExtraRewardWithdrawals`
 
-## 4 Create snapshot tests
+## 4 Use the dev ui to valiate position and profit responses
+
+By accessing the dev ui at `http://localhost:5173/`, it is possible to check both a visual representation of user position and the raw json data returned for debugging purposes.
+
+It just requires adding an ethereum address and filtering by the protocol that is currently being worked on.
+
+## 5 Create snapshot tests
 The last step involves creating tests to validate the adapter results and ensure that future changes don't break it.
 
 Inside the protocol folder, there should be a folder called tests and a file called `testCases.ts` (e.g., `src/adapters/your-protocol-id/tests/testCases.ts`). This file exports an array of test cases.
 
 You need to specify the `chain` and `method` for all test cases. Optionally, you can specify a `key` to identify the file, but this is only required if you write more than one test for the same `method` and `chain`.
 
-### 4.1 Positions
+### 5.1 Positions
 To get a snapshot of the positions, you need to set `method: 'positions'` and provide an input field with the `userAddress`. Optionally, you can specify a `blockNumber`, but this is not required, and the latest will be used and recorded if it's left empty. This will run for all the products of this protocol.
 
 Example:
@@ -119,7 +125,7 @@ Example:
   }
 ```
 
-### 4.2 Profits
+### 5.2 Profits
 To get a snapshot of the profits, you need to set `method: 'profits'` and provide an `input` field with the `userAddress` and, optionally, `timePeriod`, which will default to one day if left empty. Optionally, you can specify a `blockNumber`, but this is not required, and the latest will be used and recorded if it's left empty. This will run for all the products of this protocol.
 
 Example:
@@ -133,7 +139,7 @@ Example:
   }
 ```
 
-### 4.3 Deposits/Withdrawals/Repays/Borrows
+### 5.3 Deposits/Withdrawals/Repays/Borrows
 To get a snapshot of any of these methods, set `method: 'deposits' | 'withdrawals' | 'repays' | 'borrows'`. The input field of these methods requires additional parameters to work, including `userAddress`, `fromBlock`, `toBlock`, `protocolTokenAddress`, and `productId`.
 
 Example:
@@ -151,7 +157,7 @@ Example:
   },
 ```
 
-### 4.4 TVL
+### 5.4 TVL
 To get a snapshot of the TVL implementation, set `method: 'tvl'` and specify the protocol tokens with `filterProtocolToken: ['protocol-token-address1', 'protocol-token-address2']`. Optionally, you can specify a `blockNumber`, but this is not required, and the latest will be used and recorded if it's left empty. This will run for all the products of this protocol.
 
 Example:
@@ -162,3 +168,19 @@ Example:
     filterProtocolTokens: ['0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058'],
   },
 ```
+
+### 5.5 Create and verify snapshot tests
+Once the `testCases` array is populated, run `npm run build-snapshots -- -p your-protocol-id` to generate the output for those tests.
+
+It is then possible to check that those snapshots are valid by running `npm run test:integration --protocol=your-protocol-id`.
+
+## 6 Creating a pull request
+Once satisfied with the work done and its results, run the following command to automatically fix any linting errors and get a report of those that need manual intervention.
+
+```
+npm run fix
+```
+
+After that, create a pull request against our upstream repository, go through the checklist in the template and verify that all checkboxes that apply have been checked.
+
+Please make sure you allow repository owners to make amends to your branch.
