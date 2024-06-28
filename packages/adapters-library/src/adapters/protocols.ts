@@ -26,6 +26,7 @@ export const Protocol = {
   Pendle: 'pendle',
   PricesV2: 'prices-v2',
   QuickswapV2: 'quickswap-v2',
+  Renzo: 'renzo',
   RocketPool: 'rocket-pool',
   Sonne: 'sonne',
   SparkV1: 'spark-v1',

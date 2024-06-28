@@ -86,6 +86,8 @@ import { PendleStandardisedYieldTokenAdapter } from './pendle/products/standardi
 
 import { PendleLpTokenAdapter } from './pendle/products/lp-token/pendleLpTokenAdapter'
 
+import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
+
 export const supportedProtocols: Record<
   Protocol,
   Partial<
@@ -302,6 +304,14 @@ export const supportedProtocols: Record<
 
   [Protocol.QuickswapV2]: {
     [Chain.Polygon]: [QuickswapV2PoolAdapter],
+  },
+
+  [Protocol.Renzo]: {
+    [Chain.Ethereum]: [RenzoEzEthAdapter],
+    [Chain.Bsc]: [RenzoEzEthAdapter],
+    [Chain.Base]: [RenzoEzEthAdapter],
+    [Chain.Arbitrum]: [RenzoEzEthAdapter],
+    [Chain.Linea]: [RenzoEzEthAdapter],
   },
 
   [Protocol.RocketPool]: {

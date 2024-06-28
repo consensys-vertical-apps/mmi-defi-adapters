@@ -52,6 +52,8 @@ import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
 import { testCases as deriTestCases } from './deri/tests/testCases'
 
+import { testCases as renzoTestCases } from './renzo/tests/testCases'
+
 const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
@@ -87,6 +89,7 @@ const protocolTestCases = {
   [Protocol.Pendle]: pendleTestCases,
   [Protocol.PricesV2]: pricesV2TestCases,
   [Protocol.QuickswapV2]: quickswapV2TestCases,
+  [Protocol.Renzo]: renzoTestCases,
   [Protocol.RocketPool]: rocketPoolTestCases,
   [Protocol.Sonne]: sonneTestCases,
   [Protocol.SparkV1]: sparkV1TestCases,
