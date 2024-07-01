@@ -1,0 +1,87 @@
+{
+  "0x080f52A881ba96EEE2268682733C857c560e5dd4": {
+    "protocolToken": {
+      "address": "0x080f52A881ba96EEE2268682733C857c560e5dd4",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xa2E3356610840701BDf5611a53974510Ae27E2e1",
+        "name": "Wrapped Binance Beacon ETH",
+        "symbol": "wBETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x080f52A881ba96EEE2268682733C857c560e5dd4"
+  },
+  "0x66317Dec4a3d8d1e47b85f704E5DF675a68BB7C9": {
+    "protocolToken": {
+      "address": "0x66317Dec4a3d8d1e47b85f704E5DF675a68BB7C9",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8A420aACA0c92e3f97CDcFdd852e01Ac5b609452",
+        "name": "StableV1 AMM - ETH/frxETH",
+        "symbol": "sAMM-ETH/frxETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x66317Dec4a3d8d1e47b85f704E5DF675a68BB7C9"
+  },
+  "0xEDa1D0e1681D59dea451702963d6287b844Cb94C": {
+    "protocolToken": {
+      "address": "0xEDa1D0e1681D59dea451702963d6287b844Cb94C",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x52F24a5e03aee338Da5fd9Df68D2b6FAe1178827",
+        "name": "Ankr Staked BNB",
+        "symbol": "ankrBNB",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xEDa1D0e1681D59dea451702963d6287b844Cb94C"
+  },
+  "0xB2eEA27aF50030A445418553c4892065cf3a720a": {
+    "protocolToken": {
+      "address": "0xB2eEA27aF50030A445418553c4892065cf3a720a",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xB2eEA27aF50030A445418553c4892065cf3a720a"
+  },
+  "0x27255F9aFF1868A8eFB1182471F4De2121946Fd0": {
+    "protocolToken": {
+      "address": "0x27255F9aFF1868A8eFB1182471F4De2121946Fd0",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x27255F9aFF1868A8eFB1182471F4De2121946Fd0"
+  }
+}

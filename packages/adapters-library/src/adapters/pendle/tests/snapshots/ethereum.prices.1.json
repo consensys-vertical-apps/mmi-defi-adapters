@@ -9,7 +9,24 @@
       "iconUrl": "https://app.pendle.finance/favicon.ico",
       "positionType": "supply",
       "chainId": 1,
-      "productId": "market",
+      "productId": "yield-token",
+      "success": false,
+      "error": {
+        "message": "Protocol token pool not found",
+        "details": {
+          "name": "Error"
+        }
+      }
+    },
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "principle-token",
       "success": true,
       "tokens": [
         {
@@ -33,6 +50,40 @@
           ]
         }
       ]
+    },
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "standardised-yield-token",
+      "success": false,
+      "error": {
+        "message": "Protocol token pool not found",
+        "details": {
+          "name": "Error"
+        }
+      }
+    },
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle defi adapter",
+      "siteUrl": "https:",
+      "iconUrl": "https://",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "lp-token",
+      "success": false,
+      "error": {
+        "message": "Protocol token pool not found",
+        "details": {
+          "name": "Error"
+        }
+      }
     }
   ]
 }

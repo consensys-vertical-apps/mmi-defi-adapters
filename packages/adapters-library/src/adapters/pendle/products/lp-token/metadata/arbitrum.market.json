@@ -1,0 +1,682 @@
+{
+  "0x7D49E5Adc0EAAD9C027857767638613253eF125f": {
+    "protocolToken": {
+      "address": "0x7D49E5Adc0EAAD9C027857767638613253eF125f",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1aDDD80E6039594eE970E5872D247bf0414C8903",
+        "name": "Fee + Staked GLP",
+        "symbol": "fsGLP",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x7D49E5Adc0EAAD9C027857767638613253eF125f"
+  },
+  "0xa0192f6567f8f5DC38C53323235FD08b318D2dcA": {
+    "protocolToken": {
+      "address": "0xa0192f6567f8f5DC38C53323235FD08b318D2dcA",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd85E038593d7A098614721EaE955EC2022B9B91B",
+        "name": "Gains Network DAI",
+        "symbol": "gDAI",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xa0192f6567f8f5DC38C53323235FD08b318D2dcA"
+  },
+  "0x0A21291A184cf36aD3B0a0def4A17C12Cbd66A14": {
+    "protocolToken": {
+      "address": "0x0A21291A184cf36aD3B0a0def4A17C12Cbd66A14",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB6CfcF89a7B22988bfC96632aC2A9D6daB60d641",
+        "name": "Tether USD-LP",
+        "symbol": "S*USDT",
+        "decimals": 6
+      }
+    ],
+    "marketAddress": "0x0A21291A184cf36aD3B0a0def4A17C12Cbd66A14"
+  },
+  "0x24e4Df37ea00C4954d668e3ce19fFdcffDEc2cF6": {
+    "protocolToken": {
+      "address": "0x24e4Df37ea00C4954d668e3ce19fFdcffDEc2cF6",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xBfCa4230115DE8341F3A3d5e8845fFb3337B2Be3",
+        "name": "Camelot LP",
+        "symbol": "CMLT-LP",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x24e4Df37ea00C4954d668e3ce19fFdcffDEc2cF6"
+  },
+  "0x3803D89c31dE8B7DEf55C86f2469A5ea4Db41B92": {
+    "protocolToken": {
+      "address": "0x3803D89c31dE8B7DEf55C86f2469A5ea4Db41B92",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xa6c5C7D189fA4eB5Af8ba34E63dCDD3a635D433f",
+        "name": "Camelot LP",
+        "symbol": "CMLT-LP",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x3803D89c31dE8B7DEf55C86f2469A5ea4Db41B92"
+  },
+  "0x6EA328bf810ef0F0bD1291Eb52f1529aA073cEfa": {
+    "protocolToken": {
+      "address": "0x6EA328bf810ef0F0bD1291Eb52f1529aA073cEfa",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC9da32C3b444F15412F7FeAC6104d1E258D23B1b",
+        "name": "Camelot LP",
+        "symbol": "CMLT-LP",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x6EA328bf810ef0F0bD1291Eb52f1529aA073cEfa"
+  },
+  "0x08a152834de126d2ef83D612ff36e4523FD0017F": {
+    "protocolToken": {
+      "address": "0x08a152834de126d2ef83D612ff36e4523FD0017F",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x08a152834de126d2ef83D612ff36e4523FD0017F"
+  },
+  "0x14FbC760eFaF36781cB0eb3Cb255aD976117B9Bd": {
+    "protocolToken": {
+      "address": "0x14FbC760eFaF36781cB0eb3Cb255aD976117B9Bd",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x14FbC760eFaF36781cB0eb3Cb255aD976117B9Bd"
+  },
+  "0xFd8AeE8FCC10aac1897F8D5271d112810C79e022": {
+    "protocolToken": {
+      "address": "0xFd8AeE8FCC10aac1897F8D5271d112810C79e022",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xFd8AeE8FCC10aac1897F8D5271d112810C79e022"
+  },
+  "0xC8fD1F1E059d97ec71AE566DD6ca788DC92f36AF": {
+    "protocolToken": {
+      "address": "0xC8fD1F1E059d97ec71AE566DD6ca788DC92f36AF",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xC8fD1F1E059d97ec71AE566DD6ca788DC92f36AF"
+  },
+  "0x0F249f735647992572eEa231fc24b35F7B6b34e1": {
+    "protocolToken": {
+      "address": "0x0F249f735647992572eEa231fc24b35F7B6b34e1",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4307fbDCD9Ec7AEA5a1c2958deCaa6f316952bAb",
+        "name": "HLP",
+        "symbol": "HLP",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x0F249f735647992572eEa231fc24b35F7B6b34e1"
+  },
+  "0xf617792eA9Dceb2208F4C440258B21d2f3FdB9A3": {
+    "protocolToken": {
+      "address": "0xf617792eA9Dceb2208F4C440258B21d2f3FdB9A3",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB688BA096b7Bb75d7841e47163Cd12D18B36A5bF",
+        "name": "mPendle",
+        "symbol": "mPendle",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xf617792eA9Dceb2208F4C440258B21d2f3FdB9A3"
+  },
+  "0x65819E4Ee91923499934c86e93357f633033CB0b": {
+    "protocolToken": {
+      "address": "0x65819E4Ee91923499934c86e93357f633033CB0b",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7CbaF5a14D953fF896E5B3312031515c858737C8",
+        "name": "MUX LP",
+        "symbol": "MUXLP",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x65819E4Ee91923499934c86e93357f633033CB0b"
+  },
+  "0x1C3330F1886D8B7eEC8af75C66fB6Fd6CCbe28b5": {
+    "protocolToken": {
+      "address": "0x1C3330F1886D8B7eEC8af75C66fB6Fd6CCbe28b5",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC25cEf6061Cf5dE5eb761b50E4743c1F5D7E5407",
+        "name": "GMX Market",
+        "symbol": "GM",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x1C3330F1886D8B7eEC8af75C66fB6Fd6CCbe28b5"
+  },
+  "0x9bC62257Ffe7D0f7c52A019E6Fc0AF3102F8F44E": {
+    "protocolToken": {
+      "address": "0x9bC62257Ffe7D0f7c52A019E6Fc0AF3102F8F44E",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x55ADE3B74abef55bF379FF6Ae61CB77a405Eb4A8",
+        "name": "Silo Finance Borrowable USDC Deposit in ARB Silo",
+        "symbol": "sUSDC-ARB",
+        "decimals": 6
+      }
+    ],
+    "marketAddress": "0x9bC62257Ffe7D0f7c52A019E6Fc0AF3102F8F44E"
+  },
+  "0x58F50De493B6bE3585558F95F208dE489C296E24": {
+    "protocolToken": {
+      "address": "0x58F50De493B6bE3585558F95F208dE489C296E24",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x58F50De493B6bE3585558F95F208dE489C296E24"
+  },
+  "0xE11f9786B06438456b044B3E21712228ADcAA0D1": {
+    "protocolToken": {
+      "address": "0xE11f9786B06438456b044B3E21712228ADcAA0D1",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xE11f9786B06438456b044B3E21712228ADcAA0D1"
+  },
+  "0x6F02C88650837C8dfe89F66723c4743E9cF833cd": {
+    "protocolToken": {
+      "address": "0x6F02C88650837C8dfe89F66723c4743E9cF833cd",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "KelpDao Restaked ETH",
+        "symbol": "rsETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x6F02C88650837C8dfe89F66723c4743E9cF833cd"
+  },
+  "0xACcd9A7cb5518326BeD715f90bD32CDf2fEc2D14": {
+    "protocolToken": {
+      "address": "0xACcd9A7cb5518326BeD715f90bD32CDf2fEc2D14",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC46C5DE6eCa1CA6dc3f8c5d3ce863aE326F4b2CF",
+        "name": "Silo Finance Borrowable WETH Deposit in wstETH Silo",
+        "symbol": "sWETH-wstETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xACcd9A7cb5518326BeD715f90bD32CDf2fEc2D14"
+  },
+  "0x99e9028e274FEAFA2E1D8787E1eE6DE39C6F7724": {
+    "protocolToken": {
+      "address": "0x99e9028e274FEAFA2E1D8787E1eE6DE39C6F7724",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8Be4715f1DB9e8551fEA5ef8b30A2eb99398e5d2",
+        "name": "Silo Finance Borrowable WETH Deposit in PT-weETH-25APR2024 Silo",
+        "symbol": "sWETH-PT-weETH-25APR2024",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x99e9028e274FEAFA2E1D8787E1eE6DE39C6F7724"
+  },
+  "0xBa4A858d664Ddb052158168DB04AFA3cFF5CFCC8": {
+    "protocolToken": {
+      "address": "0xBa4A858d664Ddb052158168DB04AFA3cFF5CFCC8",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x724dc807b04555b71ed48a6896b6F41593b8C637",
+        "name": "Aave Arbitrum USDCn",
+        "symbol": "aArbUSDCn",
+        "decimals": 6
+      }
+    ],
+    "marketAddress": "0xBa4A858d664Ddb052158168DB04AFA3cFF5CFCC8"
+  },
+  "0x99Ed4F0Ab6524d26B31D0aEa087eBe20D5949e0f": {
+    "protocolToken": {
+      "address": "0x99Ed4F0Ab6524d26B31D0aEa087eBe20D5949e0f",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd85E038593d7A098614721EaE955EC2022B9B91B",
+        "name": "Gains Network DAI",
+        "symbol": "gDAI",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x99Ed4F0Ab6524d26B31D0aEa087eBe20D5949e0f"
+  },
+  "0x551c423c441db0B691b5630F04d2080Caee25963": {
+    "protocolToken": {
+      "address": "0x551c423c441db0B691b5630F04d2080Caee25963",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1aDDD80E6039594eE970E5872D247bf0414C8903",
+        "name": "Fee + Staked GLP",
+        "symbol": "fsGLP",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x551c423c441db0B691b5630F04d2080Caee25963"
+  },
+  "0x0D29182b7b663A967c5c41f03FC478c075fD4A1E": {
+    "protocolToken": {
+      "address": "0x0D29182b7b663A967c5c41f03FC478c075fD4A1E",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7CbaF5a14D953fF896E5B3312031515c858737C8",
+        "name": "MUX LP",
+        "symbol": "MUXLP",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x0D29182b7b663A967c5c41f03FC478c075fD4A1E"
+  },
+  "0x5E03C94Fc5Fb2E21882000A96Df0b63d2c4312e2": {
+    "protocolToken": {
+      "address": "0x5E03C94Fc5Fb2E21882000A96Df0b63d2c4312e2",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x5E03C94Fc5Fb2E21882000A96Df0b63d2c4312e2"
+  },
+  "0x952083cde7aaa11AB8449057F7de23A970AA8472": {
+    "protocolToken": {
+      "address": "0x952083cde7aaa11AB8449057F7de23A970AA8472",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x952083cde7aaa11AB8449057F7de23A970AA8472"
+  },
+  "0x6Ae79089b2CF4be441480801bb741A531d94312b": {
+    "protocolToken": {
+      "address": "0x6Ae79089b2CF4be441480801bb741A531d94312b",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "KelpDao Restaked ETH",
+        "symbol": "rsETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x6Ae79089b2CF4be441480801bb741A531d94312b"
+  },
+  "0x2Dfaf9a5E4F293BceedE49f2dBa29aACDD88E0C4": {
+    "protocolToken": {
+      "address": "0x2Dfaf9a5E4F293BceedE49f2dBa29aACDD88E0C4",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+        "name": "USDe",
+        "symbol": "USDe",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x2Dfaf9a5E4F293BceedE49f2dBa29aACDD88E0C4"
+  },
+  "0x6aBE9Ac2df48490693BdB9d66Fa898fc9cD7cc36": {
+    "protocolToken": {
+      "address": "0x6aBE9Ac2df48490693BdB9d66Fa898fc9cD7cc36",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x22BED3E6E56266C347769189B44646D91b3150c4",
+        "name": "Silo Finance Borrowable WETH Deposit in PT-weETH-27JUN2024 Silo",
+        "symbol": "sWETH-PT-weETH-27JUN2024",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x6aBE9Ac2df48490693BdB9d66Fa898fc9cD7cc36"
+  },
+  "0xCf602767e9c82194DaF58EB67a3169d60DbAaC62": {
+    "protocolToken": {
+      "address": "0xCf602767e9c82194DaF58EB67a3169d60DbAaC62",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xEde3D8D3213D8defC37E4EdEA86448D4c692bAa6",
+        "name": "Silo Finance Borrowable WETH Deposit in PT-ezETH-27JUN2024 Silo",
+        "symbol": "sWETH-PT-ezETH-27JUN2024",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xCf602767e9c82194DaF58EB67a3169d60DbAaC62"
+  },
+  "0xf9F9779d8fF604732EBA9AD345E6A27EF5c2a9d6": {
+    "protocolToken": {
+      "address": "0xf9F9779d8fF604732EBA9AD345E6A27EF5c2a9d6",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xf9F9779d8fF604732EBA9AD345E6A27EF5c2a9d6"
+  },
+  "0x35f3dB08a6e9cB4391348b0B404F493E7ae264c0": {
+    "protocolToken": {
+      "address": "0x35f3dB08a6e9cB4391348b0B404F493E7ae264c0",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x35f3dB08a6e9cB4391348b0B404F493E7ae264c0"
+  },
+  "0xED99fC8bdB8E9e7B8240f62f69609a125A0Fbf14": {
+    "protocolToken": {
+      "address": "0xED99fC8bdB8E9e7B8240f62f69609a125A0Fbf14",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "KelpDao Restaked ETH",
+        "symbol": "rsETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xED99fC8bdB8E9e7B8240f62f69609a125A0Fbf14"
+  },
+  "0x07fA8F8d7F7969520955eE3e8A45FbEd451b43FA": {
+    "protocolToken": {
+      "address": "0x07fA8F8d7F7969520955eE3e8A45FbEd451b43FA",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7CbaF5a14D953fF896E5B3312031515c858737C8",
+        "name": "MUX LP",
+        "symbol": "MUXLP",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x07fA8F8d7F7969520955eE3e8A45FbEd451b43FA"
+  },
+  "0x766FFd36125cE45bdfcA913517ecF25A828996b4": {
+    "protocolToken": {
+      "address": "0x766FFd36125cE45bdfcA913517ecF25A828996b4",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4307fbDCD9Ec7AEA5a1c2958deCaa6f316952bAb",
+        "name": "HLP",
+        "symbol": "HLP",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x766FFd36125cE45bdfcA913517ecF25A828996b4"
+  },
+  "0x875F154f4eC93255bEAEA9367c3AdF71Cdcb4Cc0": {
+    "protocolToken": {
+      "address": "0x875F154f4eC93255bEAEA9367c3AdF71Cdcb4Cc0",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x724dc807b04555b71ed48a6896b6F41593b8C637",
+        "name": "Aave Arbitrum USDCn",
+        "symbol": "aArbUSDCn",
+        "decimals": 6
+      }
+    ],
+    "marketAddress": "0x875F154f4eC93255bEAEA9367c3AdF71Cdcb4Cc0"
+  },
+  "0xb4781463a1261F60fca37732EFa510c22DEc5ADa": {
+    "protocolToken": {
+      "address": "0xb4781463a1261F60fca37732EFa510c22DEc5ADa",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x71453D859918A1D59354324c2A70d32e53b97f67",
+        "name": "Silo Finance Borrowable WETH Deposit in PT-ezETH-26SEP2024 Silo",
+        "symbol": "sWETH-PT-ezETH-26SEP2024",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xb4781463a1261F60fca37732EFa510c22DEc5ADa"
+  },
+  "0x5f3C781B3a20299DB27C8fC5f4415D895677c885": {
+    "protocolToken": {
+      "address": "0x5f3C781B3a20299DB27C8fC5f4415D895677c885",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9d0c7DAFE3b34B51010DB522b9F17455Fa9Cea7C",
+        "name": "Silo Finance Borrowable WETH Deposit in PT-weETH-26SEP2024 Silo",
+        "symbol": "sWETH-PT-weETH-26SEP2024",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x5f3C781B3a20299DB27C8fC5f4415D895677c885"
+  },
+  "0x2aD746fa3faA0AD586021a633d10F4E2785A0349": {
+    "protocolToken": {
+      "address": "0x2aD746fa3faA0AD586021a633d10F4E2785A0349",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1E6fD3251c949E1708a5277Faa773CC88E799B99",
+        "name": "Silo Finance Borrowable WETH Deposit in PT-rsETH-26SEP2024 Silo",
+        "symbol": "sWETH-PT-rsETH-26SEP2024",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x2aD746fa3faA0AD586021a633d10F4E2785A0349"
+  },
+  "0x2fB73D98B1D60B35FD12508933578098f352cE7e": {
+    "protocolToken": {
+      "address": "0x2fB73D98B1D60B35FD12508933578098f352cE7e",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6DBd962b4f62D18F756b5DE57425574c4B8228D6",
+        "name": "Dolomite: USDC",
+        "symbol": "dUSDC",
+        "decimals": 6
+      }
+    ],
+    "marketAddress": "0x2fB73D98B1D60B35FD12508933578098f352cE7e"
+  }
+}

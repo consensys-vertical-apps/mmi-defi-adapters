@@ -1,0 +1,36 @@
+{
+  "0x24fB77c8C776C75F869BC65e6856AF56f57d919F": {
+    "protocolToken": {
+      "address": "0x24fB77c8C776C75F869BC65e6856AF56f57d919F",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x24fB77c8C776C75F869BC65e6856AF56f57d919F"
+  },
+  "0x0C485Feb9E6fee816652Ea8f3beD2A8f59296E40": {
+    "protocolToken": {
+      "address": "0x0C485Feb9E6fee816652Ea8f3beD2A8f59296E40",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x0C485Feb9E6fee816652Ea8f3beD2A8f59296E40"
+  }
+}

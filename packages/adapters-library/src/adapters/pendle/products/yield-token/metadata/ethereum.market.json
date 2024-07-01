@@ -1,0 +1,1260 @@
+{
+  "0xC5Cd692e9b4622ab8Cdb57C83A0f99f874A169Cd": {
+    "protocolToken": {
+      "address": "0xC5Cd692e9b4622ab8Cdb57C83A0f99f874A169Cd",
+      "name": "YT FRAXUSDC_CurveLP Convex 30MAR2023",
+      "symbol": "YT-FRAXUSDC_CurveLP Convex-30MAR2023",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD393D1dDd6B8811A86D925F5E14014282581bC04",
+        "name": "SY FRAXUSDC_CurveLP Convex",
+        "symbol": "SY-FRAXUSDC_CurveLP Convex",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x7b246B8dBC2a640BF2D8221890cEe8327fC23917"
+  },
+  "0xC20dc81e8844F8fF154A67003849cEA8e951dEdc": {
+    "protocolToken": {
+      "address": "0xC20dc81e8844F8fF154A67003849cEA8e951dEdc",
+      "name": "YT LOOKS Staking 30MAR2023",
+      "symbol": "YT-LOOKS Staking-30MAR2023",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x35C16314D6Ee4753289E5cC15A5C5E1Dd4eaD345",
+        "name": "SY LOOKS Staking",
+        "symbol": "SY-LOOKS Staking",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x44474D98d1484C26E8d296a43a721998731Cf775"
+  },
+  "0xA53ad7E3A87546CCa450992d54d517c3C939c2BF": {
+    "protocolToken": {
+      "address": "0xA53ad7E3A87546CCa450992d54d517c3C939c2BF",
+      "name": "YT stETH 30MAR2023",
+      "symbol": "YT-stETH-30MAR2023",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xcbC72d92b2dc8187414F6734718563898740C0BC",
+        "name": "SY stETH",
+        "symbol": "SY-stETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x54E28e62Ea9E8D755DC6e74674eAbE2aBfdB004E"
+  },
+  "0x0D459a3287Afec25c0580691e9944d65fEaBb155": {
+    "protocolToken": {
+      "address": "0x0D459a3287Afec25c0580691e9944d65fEaBb155",
+      "name": "YT stETH 29JUN2023",
+      "symbol": "YT-stETH-29JUN2023",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xcbC72d92b2dc8187414F6734718563898740C0BC",
+        "name": "SY stETH",
+        "symbol": "SY-stETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x9eC4c502D989F04FfA9312C9D6E3F872EC91A0F9"
+  },
+  "0x9523F7e527f8AE884DFb0a38F611AA7417Fd2845": {
+    "protocolToken": {
+      "address": "0x9523F7e527f8AE884DFb0a38F611AA7417Fd2845",
+      "name": "YT sAPE 29JUN2023",
+      "symbol": "YT-sAPE-29JUN2023",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x47BA20283Be4d72D4AFB1862994F4203551539C5",
+        "name": "sAPE",
+        "symbol": "sAPE",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x9A76925dD91A7561b58D8353f0bcE4DF1e517aBb"
+  },
+  "0x0F28A763198035825dFAdF3455cB5b8473a7c140": {
+    "protocolToken": {
+      "address": "0x0F28A763198035825dFAdF3455cB5b8473a7c140",
+      "name": "YT rETH-WETH_BalancerLP Aura 28DEC2023",
+      "symbol": "YT-rETH-WETH_BalancerLP Aura-28DEC2023",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xdf7083f2A0F8a191ab5eEAFebE92ED21cD3Dd915",
+        "name": "SY rETH-WETH_BalancerLP Aura",
+        "symbol": "SY-rETH-WETH_BalancerLP Aura",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x5546d0f27BEd4075eA03a22c58F7016E24c94EA7"
+  },
+  "0x37fEc7b2f36f3bbAe956262F46ddF21830fa68ef": {
+    "protocolToken": {
+      "address": "0x37fEc7b2f36f3bbAe956262F46ddF21830fa68ef",
+      "name": "YT wstETH-WETH_BalancerLP Aura 27JUN2024",
+      "symbol": "YT-wstETH-WETH_BalancerLP Aura-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8267fdabd1b8C8645138f2dE5B0fe24988DC9820",
+        "name": "SY wstETH-WETH_BalancerLP Aura",
+        "symbol": "SY-wstETH-WETH_BalancerLP Aura",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xFcbAe4635CA89866F83Add208eCcEec742678746"
+  },
+  "0xF88Cf36C49f19713E2BB6FdfAD02c5e73e3019d0": {
+    "protocolToken": {
+      "address": "0xF88Cf36C49f19713E2BB6FdfAD02c5e73e3019d0",
+      "name": "YT ankrETH-WETH_BalancerLP Aura 28MAR2024",
+      "symbol": "YT-ankrETH-WETH_BalancerLP Aura-28MAR2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc0CA1e345bE44Ea2c83202222E5084ae3a01e9DC",
+        "name": "SY ankrETH-WETH_BalancerLP Aura",
+        "symbol": "SY-ankrETH-WETH_BalancerLP Aura",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xbEEf0aCD30d146F8ac4Ca6665D672727b943f105"
+  },
+  "0xc3863CCcd012f8E45D72Ec87c5A9C4F77e1C7549": {
+    "protocolToken": {
+      "address": "0xc3863CCcd012f8E45D72Ec87c5A9C4F77e1C7549",
+      "name": "YT stETH 26DEC2024",
+      "symbol": "YT-stETH-26DEC2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xcbC72d92b2dc8187414F6734718563898740C0BC",
+        "name": "SY stETH",
+        "symbol": "SY-stETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xD0354D4e7bCf345fB117cabe41aCaDb724eccCa2"
+  },
+  "0x9Ba9D392bE8b4CA159b1934E531D13Ad66dA023C": {
+    "protocolToken": {
+      "address": "0x9Ba9D392bE8b4CA159b1934E531D13Ad66dA023C",
+      "name": "YT Stargate USDT 27JUN2024",
+      "symbol": "YT-Stargate USDT-27JUN2024",
+      "decimals": 6
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3025680925349c9C01c0F01cf300EC963832ec64",
+        "name": "SY Stargate USDT",
+        "symbol": "SY-Stargate USDT",
+        "decimals": 6
+      }
+    ],
+    "marketAddress": "0x30e0dC9a1D33EAc83211a1113de238b3Ce826950"
+  },
+  "0x22E250EcaF9090AB3E31916b0411d7c19e085fDE": {
+    "protocolToken": {
+      "address": "0x22E250EcaF9090AB3E31916b0411d7c19e085fDE",
+      "name": "YT sfrxETH 26DEC2024",
+      "symbol": "YT-sfrxETH-26DEC2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xeb83006b0aADdD15AD8AFbebE2f4e0937f210673",
+        "name": "SY sfrxETH",
+        "symbol": "SY-sfrxETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xfb8f489df4e04609F4f4e54F586f960818B70041"
+  },
+  "0xf3aBC972A0f537c1119C990d422463b93227Cd83": {
+    "protocolToken": {
+      "address": "0xf3aBC972A0f537c1119C990d422463b93227Cd83",
+      "name": "YT stETH 25DEC2025",
+      "symbol": "YT-stETH-25DEC2025",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xcbC72d92b2dc8187414F6734718563898740C0BC",
+        "name": "SY stETH",
+        "symbol": "SY-stETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xC374f7eC85F8C7DE3207a10bB1978bA104bdA3B2"
+  },
+  "0xCfD3A9e44957D5996663b58B69A79978CcFa778f": {
+    "protocolToken": {
+      "address": "0xCfD3A9e44957D5996663b58B69A79978CcFa778f",
+      "name": "YT Stafi rETH-WETH_BalancerLP Aura 27JUN2024",
+      "symbol": "YT-Stafi rETH-WETH_BalancerLP Aura-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x677885afde857b70f40741ff8B60F9aFbA95Dd49",
+        "name": "SY Stafi rETH-WETH_BalancerLP Aura",
+        "symbol": "SY-Stafi rETH-WETH_BalancerLP Aura",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xd1434df1E2Ad0Cb7B3701a751D01981c7Cf2Dd62"
+  },
+  "0x5A0f44FE239856091C52a4b2114aba55773b9c8d": {
+    "protocolToken": {
+      "address": "0x5A0f44FE239856091C52a4b2114aba55773b9c8d",
+      "name": "YT ankrETH-WETH_BalancerLP Aura 26SEP2024",
+      "symbol": "YT-ankrETH-WETH_BalancerLP Aura-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7f531a70A240Fba0e40169E56EedE1C6B7Ef8463",
+        "name": "SY ankrETH-WETH_BalancerLP Aura",
+        "symbol": "SY-ankrETH-WETH_BalancerLP Aura",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xabC8ae339e3F560BF700A3f6eE85Ee719979762b"
+  },
+  "0x1524b28167a54C5Daef3d1A511A31436ACC91ed0": {
+    "protocolToken": {
+      "address": "0x1524b28167a54C5Daef3d1A511A31436ACC91ed0",
+      "name": "YT rETH-WETH_BalancerLP Aura 26DEC2024",
+      "symbol": "YT-rETH-WETH_BalancerLP Aura-26DEC2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc0dd85720E3Bc7959890127b5d3Af2D29f6C74f4",
+        "name": "SY rETH-WETH_BalancerLP Aura",
+        "symbol": "SY-rETH-WETH_BalancerLP Aura",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x2EC8C498ec997aD963969a2c93Bf7150a1F5b213"
+  },
+  "0x04B7Fa1e727d7290D6E24fA9b426d0c940283a95": {
+    "protocolToken": {
+      "address": "0x04B7Fa1e727d7290D6E24fA9b426d0c940283a95",
+      "name": "YT stETH 30DEC2027",
+      "symbol": "YT-stETH-30DEC2027",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xcbC72d92b2dc8187414F6734718563898740C0BC",
+        "name": "SY stETH",
+        "symbol": "SY-stETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x34280882267ffa6383B363E278B027Be083bBe3b"
+  },
+  "0x9ddc69eB24329365e96Cdca508e37dDf1CD4478d": {
+    "protocolToken": {
+      "address": "0x9ddc69eB24329365e96Cdca508e37dDf1CD4478d",
+      "name": "YT swETH-BbAWeth_BalancerLP Aura 26SEP2024",
+      "symbol": "YT-swETH-BbAWeth_BalancerLP Aura-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCb611D0BD02a74C491B75d51D6EA5558f1887Da3",
+        "name": "SY swETH-BbAWeth_BalancerLP Aura",
+        "symbol": "SY-swETH-BbAWeth_BalancerLP Aura",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x8225dD26DdFaaa321E5388e0F4C090Ba16217c21"
+  },
+  "0xcE0BD0De35A39508916e1f63fBdaf15221c66d18": {
+    "protocolToken": {
+      "address": "0xcE0BD0De35A39508916e1f63fBdaf15221c66d18",
+      "name": "YT wstETH-ankrETH_BalancerLP Aura 27JUN2024",
+      "symbol": "YT-wstETH-ankrETH_BalancerLP Aura-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xb5Cd090010D4735f18306EB680D898eF9F36F044",
+        "name": "SY wstETH-ankrETH_BalancerLP Aura",
+        "symbol": "SY-wstETH-ankrETH_BalancerLP Aura",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xD547d9C74314F787aFFc587d101146e1663d046e"
+  },
+  "0x3199c7c3c972a8da5F9faD2A838383f827b735F1": {
+    "protocolToken": {
+      "address": "0x3199c7c3c972a8da5F9faD2A838383f827b735F1",
+      "name": "YT swETH 26DEC2024",
+      "symbol": "YT-swETH-26DEC2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xaa68CA9C69a4ff22203cE189Ce4448d7401875E8",
+        "name": "SY swETH",
+        "symbol": "SY-swETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x0e1C5509B503358eA1Dac119C1D413e28Cc4b303"
+  },
+  "0x2C4413364623d6AC247E0AF629cEC8ACc596f646": {
+    "protocolToken": {
+      "address": "0x2C4413364623d6AC247E0AF629cEC8ACc596f646",
+      "name": "YT ETHx-BbAWeth_BalancerLP Aura 26SEP2024",
+      "symbol": "YT-ETHx-BbAWeth_BalancerLP Aura-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xbA72de8B5B56552e537994DddFe82e7ce43409f5",
+        "name": "SY ETHx-BbAWeth_BalancerLP Aura",
+        "symbol": "SY-ETHx-BbAWeth_BalancerLP Aura",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xC112B12aDDc11f988AbC1AAfb47e4C2F62fb6070"
+  },
+  "0xb655B156816DD7bA76D99435db845E5E55B2bF49": {
+    "protocolToken": {
+      "address": "0xb655B156816DD7bA76D99435db845E5E55B2bF49",
+      "name": "YT swETH-BbAWeth_BalancerLP Aura 26SEP2024",
+      "symbol": "YT-swETH-BbAWeth_BalancerLP Aura-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xcb6Ea7fddFdf2AFc2Bc6Bf715185A33F8E27B96b",
+        "name": "SY swETH-BbAWeth_BalancerLP Aura",
+        "symbol": "SY-swETH-BbAWeth_BalancerLP Aura",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xcF756c00A755172bDC073787Ea83817603dA42eF"
+  },
+  "0x5935cEdD7D33a32cD60e0F97cFf54A6Bbdbe7Eee": {
+    "protocolToken": {
+      "address": "0x5935cEdD7D33a32cD60e0F97cFf54A6Bbdbe7Eee",
+      "name": "YT fUSDC 26DEC2024",
+      "symbol": "YT-fUSDC-26DEC2024",
+      "decimals": 6
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf94A3798B18140b9Bc322314bbD36BC8e245E29B",
+        "name": "SY fUSDC",
+        "symbol": "SY-fUSDC",
+        "decimals": 8
+      }
+    ],
+    "marketAddress": "0xcB71c2A73fd7588E1599DF90b88de2316585A860"
+  },
+  "0x013889973Cced40030175D138c685266b055e3F4": {
+    "protocolToken": {
+      "address": "0x013889973Cced40030175D138c685266b055e3F4",
+      "name": "YT sDAI 28MAR2024",
+      "symbol": "YT-sDAI-28MAR2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x90f1935f733Dd8826DcA2Bd01ccFc600F20E978E",
+        "name": "SY sDAI",
+        "symbol": "SY-sDAI",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xd16CB4138A0f09885DefdBc1Fe4a65a8F2fb3950"
+  },
+  "0xa42374d76D4B7cF95c2c1e3661537D8c89f68fFA": {
+    "protocolToken": {
+      "address": "0xa42374d76D4B7cF95c2c1e3661537D8c89f68fFA",
+      "name": "YT oETH 26DEC2024",
+      "symbol": "YT-oETH-26DEC2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0A26e7Ab5C554232314A8d459eff0eDE72333F08",
+        "name": "SY oETH",
+        "symbol": "SY-oETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x62187066FD9C24559ffB54B0495a304ADe26d50B"
+  },
+  "0x82cC3DA7D315C47557147f44984C3E805C34789c": {
+    "protocolToken": {
+      "address": "0x82cC3DA7D315C47557147f44984C3E805C34789c",
+      "name": "YT eUSD 26DEC2024",
+      "symbol": "YT-eUSD-26DEC2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7e16e4253CE4a1C96422a9567B23b4b5Ebc207F1",
+        "name": "SY eUSD",
+        "symbol": "SY-eUSD",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x23aEfCeD9255aD3560CDaa4A10CbFe9EC230DC5A"
+  },
+  "0x025417aF44EBe9521b80187514e92F6093dE78bE": {
+    "protocolToken": {
+      "address": "0x025417aF44EBe9521b80187514e92F6093dE78bE",
+      "name": "YT Stader Staking ETHx 26DEC2024",
+      "symbol": "YT-ETHx-26DEC2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xcb166f0148Ae815313039d735E28FCeC617B21Fe",
+        "name": "SY Stader Staking ETHx",
+        "symbol": "SY-ETHx",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xFf262396f2A35Cd7Aa24b7255E7d3f45f057Cdba"
+  },
+  "0x46B7f43137e4996B40Ad7E55C791949Cc3e7C734": {
+    "protocolToken": {
+      "address": "0x46B7f43137e4996B40Ad7E55C791949Cc3e7C734",
+      "name": "YT swETH 27JUN2024",
+      "symbol": "YT-swETH-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xaa68CA9C69a4ff22203cE189Ce4448d7401875E8",
+        "name": "SY swETH",
+        "symbol": "SY-swETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xa5fD0E8991bE631917D2d2B2d5dACfD7bFef7876"
+  },
+  "0xED97f94dd94255637A054098604E0201C442a3FD": {
+    "protocolToken": {
+      "address": "0xED97f94dd94255637A054098604E0201C442a3FD",
+      "name": "YT Silo crvUSD 28MAR2024",
+      "symbol": "YT-Silo crvUSD-28MAR2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xE05082B184a34668CD8A904D85FA815802BBb04c",
+        "name": "SY Silo crvUSD",
+        "symbol": "SY-Silo crvUSD",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xC9beCdbC62efb867cB52222b34c187fB170379C6"
+  },
+  "0xDe364a895D4EC08c05A34F6883A8E41C15619Ed8": {
+    "protocolToken": {
+      "address": "0xDe364a895D4EC08c05A34F6883A8E41C15619Ed8",
+      "name": "YT sFRAX 28MAR2024",
+      "symbol": "YT-sFRAX-28MAR2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xb359F0A97Ca269Ae5574dc75be48b0e81eFD1dA2",
+        "name": "SY sFRAX",
+        "symbol": "SY-sFRAX",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x1806855b73881eD4E435c97C6Da58b01Be5D7390"
+  },
+  "0x41535fc6AdCb81a7af1bD4669d221983Ed4e33Af": {
+    "protocolToken": {
+      "address": "0x41535fc6AdCb81a7af1bD4669d221983Ed4e33Af",
+      "name": "YT ePendle 26SEP2024",
+      "symbol": "YT-ePendle-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x887bdD18D042A85b9c702698eFE71E1C38d5C868",
+        "name": "SY ePendle",
+        "symbol": "SY-ePendle",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x0eB3f11ed8ca69813744868D02D83D4Fbf72841e"
+  },
+  "0xAf86Da90A5C1e1a41Be3b944b16944081087b7Aa": {
+    "protocolToken": {
+      "address": "0xAf86Da90A5C1e1a41Be3b944b16944081087b7Aa",
+      "name": "YT Silo crvUSD 27JUN2024",
+      "symbol": "YT-Silo-crvUSD-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x60D1AfD87c5Ab1a13E27638f1e75277fEbF4908C",
+        "name": "SY Silo crvUSD",
+        "symbol": "SY-Silo-crvUSD",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xBBd395D4820da5C89A3bCA4FA28Af97254a0FCBe"
+  },
+  "0xfb35Fd0095dD1096b1Ca49AD44d8C5812A201677": {
+    "protocolToken": {
+      "address": "0xfb35Fd0095dD1096b1Ca49AD44d8C5812A201677",
+      "name": "YT ether.fi weETH 27JUN2024",
+      "symbol": "YT-weETH-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xAC0047886a985071476a1186bE89222659970d65",
+        "name": "SY ether.fi weETH",
+        "symbol": "SY-weETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xF32e58F92e60f4b0A37A69b95d642A471365EAe8"
+  },
+  "0x0ED3A1D45DfdCf85BCc6C7BAFDC0170A357B974C": {
+    "protocolToken": {
+      "address": "0x0ED3A1D45DfdCf85BCc6C7BAFDC0170A357B974C",
+      "name": "YT Kelp rsETH 27JUN2024",
+      "symbol": "YT-rsETH-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x730A5E2AcEbccAA5e9095723B3CB862739DA793c",
+        "name": "SY Kelp rsETH",
+        "symbol": "SY-rsETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x4f43c77872Db6BA177c270986CD30c3381AF37Ee"
+  },
+  "0x256Fb830945141f7927785c06b65dAbc3744213c": {
+    "protocolToken": {
+      "address": "0x256Fb830945141f7927785c06b65dAbc3744213c",
+      "name": "YT Renzo ezETH 25APR2024",
+      "symbol": "YT-ezETH-25APR2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x22E12A50e3ca49FB183074235cB1db84Fe4C716D",
+        "name": "SY Renzo ezETH",
+        "symbol": "SY-ezETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xDe715330043799D7a80249660d1e6b61eB3713B3"
+  },
+  "0x391B570e81e354a85a496952b66ADc831715f54f": {
+    "protocolToken": {
+      "address": "0x391B570e81e354a85a496952b66ADc831715f54f",
+      "name": "YT Puffer ETH 27JUN2024",
+      "symbol": "YT-pufETH-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x253008ba4aE2f3E6488DC998a5321D4EB1a0c905",
+        "name": "SY Puffer ETH",
+        "symbol": "SY pufETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x17BE998a578fD97687b24E83954FEc86Dc20c979"
+  },
+  "0xA99A4329c49369fB41e6CB6852535Bbf3d4f749b": {
+    "protocolToken": {
+      "address": "0xA99A4329c49369fB41e6CB6852535Bbf3d4f749b",
+      "name": "YT Ethena USDe 4APR2024",
+      "symbol": "YT-USDe-4APR2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x248d83f7Ac03CEbCC06d5C1A52c9B5d0EbB9936e",
+        "name": "SY Ethena USDe",
+        "symbol": "SY-USDe",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xb4460e76D99eCaD95030204D3C25fb33C4833997"
+  },
+  "0x20c8Cf9714339fd018898cB5De84c089e48d1c87": {
+    "protocolToken": {
+      "address": "0x20c8Cf9714339fd018898cB5De84c089e48d1c87",
+      "name": "YT Ethena sUSDE 25APR2024",
+      "symbol": "YT-sUSDE-25APR2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x215a61deaD7e1303b8571Bb429491aeAc5f2061e",
+        "name": "SY Ethena sUSDE",
+        "symbol": "SY-sUSDE",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x8f7627bD46B30E296Aa3AAbe1dF9Bfac10920B6E"
+  },
+  "0x6cf80D52E1724437c509A9729719ac9b566cA19F": {
+    "protocolToken": {
+      "address": "0x6cf80D52E1724437c509A9729719ac9b566cA19F",
+      "name": "YT aUSDT 26SEP2024",
+      "symbol": "YT-aUSDT-26SEP2024",
+      "decimals": 6
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8c28D28bAd669afadC37b034A8070D6d7B9dFB74",
+        "name": "SY aUSDT",
+        "symbol": "SY-aUSDT",
+        "decimals": 6
+      }
+    ],
+    "marketAddress": "0xb8FBF5cC2826c1C9909f59DD11633b494f46FBfe"
+  },
+  "0xa2D5eb975E20205AcCC3C1a1EFAb43e99070de1A": {
+    "protocolToken": {
+      "address": "0xa2D5eb975E20205AcCC3C1a1EFAb43e99070de1A",
+      "name": "YT sDAI 26SEP2024",
+      "symbol": "YT-sDAI-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x90f1935f733Dd8826DcA2Bd01ccFc600F20E978E",
+        "name": "SY sDAI",
+        "symbol": "SY-sDAI",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x93a82F3873e5b4fF81902663C43286d662F6721C"
+  },
+  "0x98601E27d41ccff643da9d981dc708cf9eF1F150": {
+    "protocolToken": {
+      "address": "0x98601E27d41ccff643da9d981dc708cf9eF1F150",
+      "name": "YT Zircuit Staking ezETH 27JUN2024",
+      "symbol": "YT-zs-ezETH-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744",
+        "name": "SY Zircuit Staking ezETH",
+        "symbol": "SY-zs-ezETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xd7E0809998693fD87E81D51dE1619fd0EE658031"
+  },
+  "0x16e1Ad37bAdc81BC08e8aC0E9d4ac1000836C8a0": {
+    "protocolToken": {
+      "address": "0x16e1Ad37bAdc81BC08e8aC0E9d4ac1000836C8a0",
+      "name": "YT Autocompounding Pirex ETH 27MAR2025",
+      "symbol": "YT-apxETH-27MAR2025",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x440d08d85cb12352DaBac2971De81e9be702d239",
+        "name": "SY Autocompounding Pirex ETH",
+        "symbol": "SY-apxETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xE6D4986Cd935529FC4505d48E926bcd36A58A0F0"
+  },
+  "0x7C2D26182adeEf96976035986cF56474feC03bDa": {
+    "protocolToken": {
+      "address": "0x7C2D26182adeEf96976035986cF56474feC03bDa",
+      "name": "YT Zircuit Ether.fi weETH 27JUN2024",
+      "symbol": "YT-zs-weETH-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD7DF7E085214743530afF339aFC420c7c720BFa7",
+        "name": "SY Zircuit Ether.fi weETH",
+        "symbol": "SY-zs-weETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xe26D7f9409581f606242300fbFE63f56789F2169"
+  },
+  "0x029aad400f6092Dc735A65be95102efcc2Fe64bf": {
+    "protocolToken": {
+      "address": "0x029aad400f6092Dc735A65be95102efcc2Fe64bf",
+      "name": "YT Zircuit Staking rsETH 27JUN2024",
+      "symbol": "YT-zs-rsETH-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x34349c5569e7B846c3558961552D2202760A9789",
+        "name": "SY Zircuit Staking rsETH",
+        "symbol": "SY-zs-rsETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x445D25a1c31445Fb29e65d12DA8E0eea38174176"
+  },
+  "0x5Ae176BbcB9A4461aEEeb97c90C2a80c2078006a": {
+    "protocolToken": {
+      "address": "0x5Ae176BbcB9A4461aEEeb97c90C2a80c2078006a",
+      "name": "YT Bedrock UniETH 27JUN2024",
+      "symbol": "YT-uniETH-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc430dB19339A3051192233B4c49f9aB3DC6D16b7",
+        "name": "SY Bedrock UniETH",
+        "symbol": "SY-uniETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x38100A480dBED278B0fe57bA80a75498a7dC5bB1"
+  },
+  "0x4AfdB1B0f9A56922e398D29239453e6A06148eD0": {
+    "protocolToken": {
+      "address": "0x4AfdB1B0f9A56922e398D29239453e6A06148eD0",
+      "name": "YT rswETH 27JUN2024",
+      "symbol": "YT-rswETH-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9",
+        "name": "SY rswETH",
+        "symbol": "SY-rswETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xA9355a5d306c67027C54De0e5a72df76Befa5694"
+  },
+  "0x1e3d13932C31d7355fCb3FEc680b0cD159dC1A07": {
+    "protocolToken": {
+      "address": "0x1e3d13932C31d7355fCb3FEc680b0cD159dC1A07",
+      "name": "YT Ethena USDe 25JUL2024",
+      "symbol": "YT-USDe-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x42862F48eAdE25661558AFE0A630b132038553D0",
+        "name": "SY Ethena USDe",
+        "symbol": "SY-USDe",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x19588F29f9402Bb508007FeADd415c875Ee3f19F"
+  },
+  "0x40357b9f22B4DfF0Bf56A90661b8eC106C259d29": {
+    "protocolToken": {
+      "address": "0x40357b9f22B4DfF0Bf56A90661b8eC106C259d29",
+      "name": "YT Zircuit Staking USDe 27JUN2024",
+      "symbol": "YT-zs-USDe-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x293C6937D8D82e05B01335F7B33FBA0c8e256E30",
+        "name": "SY Zircuit Staking USDe",
+        "symbol": "SY-zs-USDe",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x90c98ab215498B72Abfec04c651e2e496bA364C0"
+  },
+  "0x233D32d4D33eD5F2D6b8544137c8836249de372F": {
+    "protocolToken": {
+      "address": "0x233D32d4D33eD5F2D6b8544137c8836249de372F",
+      "name": "YT Tensorplex Staked TAO 27JUN2024",
+      "symbol": "YT-stTAO-27JUN2024",
+      "decimals": 9
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x60CceFd60bA522f9221f122BB80A1e8cbAB9285F",
+        "name": "SY Tensorplex Staked TAO",
+        "symbol": "SY-stTAO",
+        "decimals": 9
+      }
+    ],
+    "marketAddress": "0x2084b373979415Bc93190071AF3390F92DcDD189"
+  },
+  "0x129e6B5DBC0Ecc12F9e486C5BC9cDF1a6A80bc6A": {
+    "protocolToken": {
+      "address": "0x129e6B5DBC0Ecc12F9e486C5BC9cDF1a6A80bc6A",
+      "name": "YT ether.fi weETH 26DEC2024",
+      "symbol": "YT-weETH-26DEC2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xAC0047886a985071476a1186bE89222659970d65",
+        "name": "SY ether.fi weETH",
+        "symbol": "SY-weETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x7d372819240D14fB477f17b964f95F33BeB4c704"
+  },
+  "0x87be82bBd3e6f1c0871001f8EB4C12b60462c835": {
+    "protocolToken": {
+      "address": "0x87be82bBd3e6f1c0871001f8EB4C12b60462c835",
+      "name": "YT ENA 29AUG2024",
+      "symbol": "YT-ENA-29AUG2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x66C68a7bcC4CBcAb43A2947A529765d86D4ef14f",
+        "name": "SY ENA",
+        "symbol": "SY-ENA",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x9C73879F795CefA1D5239dE08d1B6Aba2D2d1434"
+  },
+  "0x7749F5Ed1e356EDc63D469c2fcaC9adEB56d1C2b": {
+    "protocolToken": {
+      "address": "0x7749F5Ed1e356EDc63D469c2fcaC9adEB56d1C2b",
+      "name": "YT Renzo ezETH 26DEC2024",
+      "symbol": "YT-ezETH-26DEC2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x22E12A50e3ca49FB183074235cB1db84Fe4C716D",
+        "name": "SY Renzo ezETH",
+        "symbol": "SY-ezETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xD8F12bCDE578c653014F27379a6114F67F0e445f"
+  },
+  "0xf65CD2460F4F199C5AC09c74Ac05c40559C29e4F": {
+    "protocolToken": {
+      "address": "0xf65CD2460F4F199C5AC09c74Ac05c40559C29e4F",
+      "name": "YT Ethena sUSDE 25JUL2024",
+      "symbol": "YT-sUSDE-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC4ed348c56223C5953939e932E315F9d72Cd83fF",
+        "name": "SY Ethena sUSDE",
+        "symbol": "SY-sUSDE",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x107a2e3cD2BB9a32B9eE2E4d51143149F8367eBa"
+  },
+  "0xA54Df645A042D24121a737dAA89a57EbF8E0b71c": {
+    "protocolToken": {
+      "address": "0xA54Df645A042D24121a737dAA89a57EbF8E0b71c",
+      "name": "YT ether.fi weETH 26SEP2024",
+      "symbol": "YT-weETH-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xAC0047886a985071476a1186bE89222659970d65",
+        "name": "SY ether.fi weETH",
+        "symbol": "SY-weETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xC8eDd52D0502Aa8b4D5C77361D4B3D300e8fC81c"
+  },
+  "0x1623F1A991584A6b69baBbdbffD26E2B46485465": {
+    "protocolToken": {
+      "address": "0x1623F1A991584A6b69baBbdbffD26E2B46485465",
+      "name": "YT Renzo ezETH 26SEP2024",
+      "symbol": "YT-ezETH-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x22E12A50e3ca49FB183074235cB1db84Fe4C716D",
+        "name": "SY Renzo ezETH",
+        "symbol": "SY-ezETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xcDBD5ff3E03b6828Db9C32e2131A60ABA5137901"
+  },
+  "0xf0E4244Ca93Ac36752DA5939Afd9CB73B0637b06": {
+    "protocolToken": {
+      "address": "0xf0E4244Ca93Ac36752DA5939Afd9CB73B0637b06",
+      "name": "YT Swell L2 Deposit RswETH 25JUL2024",
+      "symbol": "YT-sw2Rsweth-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4f3A7a07A968B67F1f9692b70242f10E665d38Ad",
+        "name": "SY Swell L2 Deposit RswETH",
+        "symbol": "SY-sw2Rsweth",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x1e0c2e41f3165ff6B8a660092f63E10BC0EebE26"
+  },
+  "0xdc02b77a3986da62C7A78FED73949C9767850809": {
+    "protocolToken": {
+      "address": "0xdc02b77a3986da62C7A78FED73949C9767850809",
+      "name": "YT Ethena sUSDE 26SEP2024",
+      "symbol": "YT-sUSDE-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4139cDC6345aFFbaC0692b43bed4D059Df3e6d65",
+        "name": "SY Ethena sUSDE",
+        "symbol": "SY-sUSDE",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xd1D7D99764f8a52Aff007b7831cc02748b2013b5"
+  },
+  "0xE653E4048620E546AFff02D3689678896d22e236": {
+    "protocolToken": {
+      "address": "0xE653E4048620E546AFff02D3689678896d22e236",
+      "name": "YT Kelp rsETH 26SEP2024",
+      "symbol": "YT-rsETH-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x730A5E2AcEbccAA5e9095723B3CB862739DA793c",
+        "name": "SY Kelp rsETH",
+        "symbol": "SY-rsETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x6b4740722e46048874d84306B2877600ABCea3Ae"
+  },
+  "0x1a65eB80a2ac3ea6E41D456DdD6E9cC5728BEf7C": {
+    "protocolToken": {
+      "address": "0x1a65eB80a2ac3ea6E41D456DdD6E9cC5728BEf7C",
+      "name": "YT Puffer ETH 26SEP2024",
+      "symbol": "YT-pufETH-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x253008ba4aE2f3E6488DC998a5321D4EB1a0c905",
+        "name": "SY Puffer ETH",
+        "symbol": "SY pufETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xA54FC268101c8b97DE19eF3141d34751a11996B2"
+  },
+  "0xdF74bA4436478969A54eCB352093312fE97EBAa5": {
+    "protocolToken": {
+      "address": "0xdF74bA4436478969A54eCB352093312fE97EBAa5",
+      "name": "YT Bedrock UniETH 26SEP2024",
+      "symbol": "YT-uniETH-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc430dB19339A3051192233B4c49f9aB3DC6D16b7",
+        "name": "SY Bedrock UniETH",
+        "symbol": "SY-uniETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xBaE2Df4DfCd0c613018D6056A40077F2d1eFf28A"
+  },
+  "0x2e40D7Cfee1e7D31d1F4875e6F33B2c9a17038fF": {
+    "protocolToken": {
+      "address": "0x2e40D7Cfee1e7D31d1F4875e6F33B2c9a17038fF",
+      "name": "YT Karak USDE 26SEP2024",
+      "symbol": "YT-Karak-USDE-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xfe2d379117895Fa6144B209C13894A17aB18C86c",
+        "name": "SY Karak USDE",
+        "symbol": "SY-Karak-USDE",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x1BCBDB8c8652345A5ACF04e6E74f70086c68FEfC"
+  },
+  "0xdd68f5D26Bf1182d6b241108bfC01f95C030502b": {
+    "protocolToken": {
+      "address": "0xdd68f5D26Bf1182d6b241108bfC01f95C030502b",
+      "name": "YT Karak sUSDe 26SEP2024",
+      "symbol": "YT-Karak-sUSDe-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1b641894e66aec7Bf5ab86517e8D81763Cc8e19E",
+        "name": "SY Karak sUSDe",
+        "symbol": "SY-Karak-sUSDe",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xB1f587B354a4a363f5332e88effbbC2E4961250A"
+  },
+  "0x5439c3Ef0072e4A19C44478CDF947F5d957e66C7": {
+    "protocolToken": {
+      "address": "0x5439c3Ef0072e4A19C44478CDF947F5d957e66C7",
+      "name": "YT Karak WEETH 26SEP2024",
+      "symbol": "YT-Karak-WEETH-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8DB42Af6B2de9E8AeE47F3423570d8E9c3873796",
+        "name": "SY Karak WEETH",
+        "symbol": "SY-Karak-WEETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x18bAFcaBf2d5898956AE6AC31543d9657a604165"
+  },
+  "0x633dEfD7E79f94cDb77fe469f348Bd919c4b678a": {
+    "protocolToken": {
+      "address": "0x633dEfD7E79f94cDb77fe469f348Bd919c4b678a",
+      "name": "YT Silo crvUSD 26SEP2024",
+      "symbol": "YT-Silo-crvUSD-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x60D1AfD87c5Ab1a13E27638f1e75277fEbF4908C",
+        "name": "SY Silo crvUSD",
+        "symbol": "SY-Silo-crvUSD",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x386F90Eb964A477498b528a39D9405E73Ed4032b"
+  },
+  "0x9c73E0A1fA310e2BDC95AF1145B9D8Daa87bD9C0": {
+    "protocolToken": {
+      "address": "0x9c73E0A1fA310e2BDC95AF1145B9D8Daa87bD9C0",
+      "name": "YT ether.fi weETH 25JUL2024",
+      "symbol": "YT-weETH-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xAC0047886a985071476a1186bE89222659970d65",
+        "name": "SY ether.fi weETH",
+        "symbol": "SY-weETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xe1F19CBDa26b6418B0C8E1EE978a533184496066"
+  },
+  "0x28cE264D0938C1051687FEbDCeFacc2242BA9E0E": {
+    "protocolToken": {
+      "address": "0x28cE264D0938C1051687FEbDCeFacc2242BA9E0E",
+      "name": "YT Super Symbiotic LRT 29AUG2024",
+      "symbol": "YT-weETHs-29AUG2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9e8f10574ACc2c62C6e5d19500CEd39163Da37A9",
+        "name": "SY Super Symbiotic LRT",
+        "symbol": "SY-weETHs",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xcAa8ABB72A75C623BECe1f4D5c218F425d47A0D0"
+  },
+  "0xC48276dd601C83234D767F4d7d0c1B2B32BC7632": {
+    "protocolToken": {
+      "address": "0xC48276dd601C83234D767F4d7d0c1B2B32BC7632",
+      "name": "YT Mellow Steakhouse steakLRT 25JUL2024",
+      "symbol": "YT-steakLRT-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x998a1d40F097Fd36bFF15cA78Fc0673Bd2a8280C",
+        "name": "SY Mellow Steakhouse steakLRT",
+        "symbol": "SY-steakLRT",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x464F5A15Aca6Fe787Cf54fCF1E8AF6207939d297"
+  },
+  "0x44188731D5bb43d0AED555d29f1013AEb13bD4a2": {
+    "protocolToken": {
+      "address": "0x44188731D5bb43d0AED555d29f1013AEb13bD4a2",
+      "name": "YT Mellow Re7LRT 25JUL2024",
+      "symbol": "YT-Re7LRT-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xE833C7A12A10A44Cb8b19BdF0931053AC136F105",
+        "name": "SY Mellow Re7LRT",
+        "symbol": "SY-Re7LRT",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x2a41384C28B3E327bEDA4ffB3D3706CAd571d5fb"
+  },
+  "0x4dA430a0b5B22705ACFCC1bD5eE15603861ed98b": {
+    "protocolToken": {
+      "address": "0x4dA430a0b5B22705ACFCC1bD5eE15603861ed98b",
+      "name": "YT Mellow amphrETH 25JUL2024",
+      "symbol": "YT-amphrETH-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x198139F26d42F2028C10427a161e2d0e8bb00346",
+        "name": "SY Mellow amphrETH",
+        "symbol": "SY-amphrETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x3B621df9B429Ed1AD64428Ea7d8D142374c45121"
+  },
+  "0xF04f1F279C9dA038b917538D89947f0E00672487": {
+    "protocolToken": {
+      "address": "0xF04f1F279C9dA038b917538D89947f0E00672487",
+      "name": "YT Mellow rstETH 25JUL2024",
+      "symbol": "YT-rstETH-25JUL2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x553cD5e6D2072723f5FE5457576Ed6D06b0905b2",
+        "name": "SY Mellow rstETH",
+        "symbol": "SY-rstETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xa96FeBd6c5FAF7739d3149bfB43211Ec6844a37C"
+  },
+  "0x36bc05a1072ef7d763D5f11f463915aA1efb8Ca8": {
+    "protocolToken": {
+      "address": "0x36bc05a1072ef7d763D5f11f463915aA1efb8Ca8",
+      "name": "YT Zircuit Staking rsETH 22AUG2024",
+      "symbol": "YT-zs-rsETH-22AUG2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x34349c5569e7B846c3558961552D2202760A9789",
+        "name": "SY Zircuit Staking rsETH",
+        "symbol": "SY-zs-rsETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x99184849E35D91Dd85f50993bBb03A42Fc0A6FE7"
+  },
+  "0x323DA63d354c9d79DF927fd21CE5B97aDD3a50d9": {
+    "protocolToken": {
+      "address": "0x323DA63d354c9d79DF927fd21CE5B97aDD3a50d9",
+      "name": "YT Zircuit Ether.fi weETH 22AUG2024",
+      "symbol": "YT-zs-weETH-22AUG2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD7DF7E085214743530afF339aFC420c7c720BFa7",
+        "name": "SY Zircuit Ether.fi weETH",
+        "symbol": "SY-zs-weETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x6c269DFc142259c52773430b3c78503CC994a93E"
+  },
+  "0x87baF4B42c075Db7eb1932A0a49A5465e9a5Ce9f": {
+    "protocolToken": {
+      "address": "0x87baF4B42c075Db7eb1932A0a49A5465e9a5Ce9f",
+      "name": "YT Zircuit Staking ezETH 22AUG2024",
+      "symbol": "YT-zs-ezETH-22AUG2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744",
+        "name": "SY Zircuit Staking ezETH",
+        "symbol": "SY-zs-ezETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xEe6BdFAc6767eFEf0879B924feA12a3437d281A2"
+  },
+  "0x0393e1aBF08f7B80e193e06ca65346FE86A0a189": {
+    "protocolToken": {
+      "address": "0x0393e1aBF08f7B80e193e06ca65346FE86A0a189",
+      "name": "YT Zircuit Staking USDe 22AUG2024",
+      "symbol": "YT-zs-USDe-22AUG2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xD24Cfe2d0fa81369ca6291c28ac5426e16B6d57a",
+        "name": "SY Zircuit Staking USDe",
+        "symbol": "SY-zs-USDe",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0xF148a0B15712f5BfeefAdb4E6eF9739239F88b07"
+  },
+  "0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00": {
+    "protocolToken": {
+      "address": "0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00",
+      "name": "YT rswETH 26SEP2024",
+      "symbol": "YT-rswETH-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7786729eEe8b9d30fE7d91fDFf23A0f1D0C615D9",
+        "name": "SY rswETH",
+        "symbol": "SY-rswETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6"
+  }
+}
