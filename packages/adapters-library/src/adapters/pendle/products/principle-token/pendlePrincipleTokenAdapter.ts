@@ -33,12 +33,12 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { fetchAllMarkets } from '../../backend/backendSdk'
-import { OraclePyYtLp__factory } from '../../contracts'
 import {
-  PENDLE_ORACLE_ADDRESS_ALL_CHAINS,
   DURATION_15_MINS,
   DURATION_30_MINS,
+  PENDLE_ORACLE_ADDRESS_ALL_CHAINS,
 } from '../../backend/constants'
+import { OraclePyYtLp__factory } from '../../contracts'
 
 type Metadata = Record<
   string,
