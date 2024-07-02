@@ -1,10 +1,10 @@
 {
   "blockNumber": 20126536,
   "aggregatedValues": [
+    "USD1,612.64",
     "USD587,449.08",
     "USD871,818.93",
-    "USD569,918.89",
-    "USD1,612.64"
+    "USD569,918.89"
   ],
   "snapshot": [
     {
@@ -15,7 +15,54 @@
       "iconUrl": "https://app.pendle.finance/favicon.ico",
       "positionType": "supply",
       "chainId": 1,
-      "productId": "market",
+      "productId": "yield-token",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x98601E27d41ccff643da9d981dc708cf9eF1F150",
+          "name": "YT Zircuit Staking ezETH 27JUN2024",
+          "symbol": "YT-zs-ezETH-27JUN2024",
+          "decimals": 18,
+          "balanceRaw": "136827065199036097802n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744",
+              "name": "SY Zircuit Staking ezETH",
+              "symbol": "SY-zs-ezETH",
+              "decimals": 18,
+              "type": "underlying",
+              "balanceRaw": "456495097625054955n",
+              "tokens": [
+                {
+                  "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+                  "name": "Renzo Restaked ETH",
+                  "symbol": "ezETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "456495097625054955n",
+                  "balance": 0.45649509762505497,
+                  "price": 3532.6512467920775,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
+                }
+              ],
+              "balance": 0.45649509762505497,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744/logo.png"
+            }
+          ],
+          "balance": 136.8270651990361
+        }
+      ]
+    },
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "principle-token",
       "success": true,
       "tokens": [
         {
@@ -119,40 +166,6 @@
             }
           ],
           "balance": 163.82751725730944
-        },
-        {
-          "address": "0x98601E27d41ccff643da9d981dc708cf9eF1F150",
-          "name": "YT Zircuit Staking ezETH 27JUN2024",
-          "symbol": "YT-zs-ezETH-27JUN2024",
-          "decimals": 18,
-          "balanceRaw": "136827065199036097802n",
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744",
-              "name": "SY Zircuit Staking ezETH",
-              "symbol": "SY-zs-ezETH",
-              "decimals": 18,
-              "type": "underlying",
-              "balanceRaw": "456495097625054955n",
-              "tokens": [
-                {
-                  "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-                  "name": "Renzo Restaked ETH",
-                  "symbol": "ezETH",
-                  "decimals": 18,
-                  "type": "underlying",
-                  "balanceRaw": "456495097625054955n",
-                  "balance": 0.45649509762505497,
-                  "price": 3532.6512467920775,
-                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
-                }
-              ],
-              "balance": 0.45649509762505497,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744/logo.png"
-            }
-          ],
-          "balance": 136.8270651990361
         }
       ]
     }

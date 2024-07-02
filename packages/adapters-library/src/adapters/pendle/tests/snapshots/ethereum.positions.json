@@ -10,7 +10,7 @@
       "iconUrl": "https://app.pendle.finance/favicon.ico",
       "positionType": "supply",
       "chainId": 1,
-      "productId": "market",
+      "productId": "principle-token",
       "success": true,
       "tokens": [
         {

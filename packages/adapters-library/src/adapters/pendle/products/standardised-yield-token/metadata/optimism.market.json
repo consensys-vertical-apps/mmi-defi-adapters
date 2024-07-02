@@ -1,0 +1,36 @@
+{
+  "0x96A528f4414aC3CcD21342996c93f2EcdEc24286": {
+    "protocolToken": {
+      "address": "0x96A528f4414aC3CcD21342996c93f2EcdEc24286",
+      "name": "SY wstETH",
+      "symbol": "SY-wstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x24fB77c8C776C75F869BC65e6856AF56f57d919F"
+  },
+  "0x9D6d509C0354ACA187aAC6beA7d063D3Ef68e2A0": {
+    "protocolToken": {
+      "address": "0x9D6d509C0354ACA187aAC6beA7d063D3Ef68e2A0",
+      "name": "SY rETH",
+      "symbol": "SY-rETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x0C485Feb9E6fee816652Ea8f3beD2A8f59296E40"
+  }
+}
