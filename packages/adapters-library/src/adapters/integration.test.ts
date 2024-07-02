@@ -50,6 +50,8 @@ import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
 
+import { testCases as deriTestCases } from './deri/tests/testCases'
+
 const TEST_TIMEOUT = 300000
 
 const defiProvider = new DefiProvider({ useMulticallInterceptor: true })
@@ -68,6 +70,7 @@ const protocolTestCases = {
   [Protocol.CompoundV2]: compoundV2TestCases,
   [Protocol.Convex]: convexTestCases,
   [Protocol.Curve]: curveTestCases,
+  [Protocol.Deri]: deriTestCases,
   [Protocol.Ethena]: ethenaTestCases,
   [Protocol.Flux]: fluxTestCases,
   [Protocol.Gmx]: gmxTestCases,
