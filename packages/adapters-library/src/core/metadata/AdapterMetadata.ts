@@ -124,7 +124,6 @@ import { Chain } from '../constants/chains'
 
 import BeefyCowTokenAvalancheProtocolToken from '../../adapters/beefy/products/cow-token/metadata/avalanche.protocol-token.json'
 
-
 import SparkV1SpTokenEthereumSpTokenV1 from '../../adapters/spark-v1/products/sp-token/metadata/ethereum.sp-token-v1.json'
 
 import SparkV1VariableDebtTokenEthereumVariableDebtTokenV1 from '../../adapters/spark-v1/products/variable-debt-token/metadata/ethereum.variable-debt-token-v1.json'
@@ -160,7 +159,6 @@ import PendlePrincipleTokenArbitrumMarket from '../../adapters/pendle/products/p
 import PendleStandardisedYieldTokenArbitrumMarket from '../../adapters/pendle/products/standardised-yield-token/metadata/arbitrum.market.json'
 
 import PendleLpTokenArbitrumMarket from '../../adapters/pendle/products/lp-token/metadata/arbitrum.market.json'
-
 
 export const MetadataFiles = new Map<string, Json>([
   [
