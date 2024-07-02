@@ -299,7 +299,10 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.SparkV1]: {
-    [Chain.Ethereum]: [SparkV1SpTokenAdapter, SparkV1VariableDebtTokenPoolAdapter],
+    [Chain.Ethereum]: [
+      SparkV1SpTokenAdapter,
+      SparkV1VariableDebtTokenPoolAdapter,
+    ],
   },
 
   [Protocol.StakeWise]: {

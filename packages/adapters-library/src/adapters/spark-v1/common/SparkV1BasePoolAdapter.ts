@@ -1,7 +1,7 @@
 import { SimplePoolAdapter } from '../../../core/adapters/SimplePoolAdapter'
 import { IMetadataBuilder } from '../../../core/decorators/cacheToFile'
-import { Erc20Metadata } from '../../../types/erc20Metadata'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
+import { Erc20Metadata } from '../../../types/erc20Metadata'
 
 import { logger } from '../../../core/utils/logger'
 import {
@@ -17,7 +17,8 @@ import {
 } from '../../../types/adapter'
 
 const PRICE_PEGGED_TO_ONE = 1
-const sparkEthereumProviderAddress = "0xFc21d6d146E6086B8359705C8b28512a983db0cb"
+const sparkEthereumProviderAddress =
+  '0xFc21d6d146E6086B8359705C8b28512a983db0cb'
 
 export type SparkMetadata = Record<
   string,
@@ -31,15 +32,14 @@ export abstract class SparkV1BasePoolAdapter
   extends SimplePoolAdapter
   implements IMetadataBuilder
 {
-
-
   async buildMetadata(): Promise<SparkMetadata> {
     const protocolDataProviderContract = ProtocolDataProvider__factory.connect(
       sparkEthereumProviderAddress,
       this.provider,
     )
 
-    const reserveTokens = await protocolDataProviderContract.getAllReservesTokens()
+    const reserveTokens =
+      await protocolDataProviderContract.getAllReservesTokens()
 
     const metadataObject: SparkMetadata = {}
 
@@ -68,8 +68,8 @@ export abstract class SparkV1BasePoolAdapter
       )
       const underlyingTokenPromise = getTokenMetadata(
         tokenAddress,
-      this.chainId,
-      this.provider,
+        this.chainId,
+        this.provider,
       )
 
       const [protocolToken, underlyingToken] = await Promise.all([
@@ -85,8 +85,8 @@ export abstract class SparkV1BasePoolAdapter
 
     await Promise.all(promises)
 
-    return metadataObject  
-  }                 
+    return metadataObject
+  }
 
   protected abstract getReserveTokenAddress(
     reserveTokenAddresses: Awaited<
@@ -160,21 +160,21 @@ export abstract class SparkV1BasePoolAdapter
     protocolTokenMetadata: Erc20Metadata,
     _blockNumber?: number | undefined,
   ): Promise<UnwrappedTokenExchangeRate[]> {
-      const { underlyingToken } = await this.fetchPoolMetadata(
-        protocolTokenMetadata.address,
-      )
+    const { underlyingToken } = await this.fetchPoolMetadata(
+      protocolTokenMetadata.address,
+    )
 
-      // Aave tokens always pegged one to one to underlying
-      const pricePerShareRaw = BigInt(
-        PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
-      )
+    // Aave tokens always pegged one to one to underlying
+    const pricePerShareRaw = BigInt(
+      PRICE_PEGGED_TO_ONE * 10 ** protocolTokenMetadata.decimals,
+    )
 
-      return [
-        {
-          ...underlyingToken,
-          type: TokenType.Underlying,
-          underlyingRateRaw: pricePerShareRaw,
-        },
-      ]
-    }
+    return [
+      {
+        ...underlyingToken,
+        type: TokenType.Underlying,
+        underlyingRateRaw: pricePerShareRaw,
+      },
+    ]
+  }
 }

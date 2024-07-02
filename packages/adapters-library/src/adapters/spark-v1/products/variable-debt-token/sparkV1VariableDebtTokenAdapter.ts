@@ -1,17 +1,20 @@
-import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   AssetType,
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
+import { SparkV1BasePoolAdapter } from '../../common/SparkV1BasePoolAdapter'
 
-import {
-  ProtocolDataProvider,
-} from '../../contracts'
+import { ProtocolDataProvider } from '../../contracts'
 
 export class SparkV1VariableDebtTokenPoolAdapter extends SparkV1BasePoolAdapter {
   productId = 'variable-debt-token'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -19,13 +22,11 @@ export class SparkV1VariableDebtTokenPoolAdapter extends SparkV1BasePoolAdapter 
       name: 'Spark V1 VariableDebtToken',
       description: 'Spark v1 defi adapter for variable interest-accruing token',
       siteUrl: 'https://spark.fi',
-      iconUrl: 'https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico',
+      iconUrl:
+        'https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico',
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
@@ -47,5 +48,4 @@ export class SparkV1VariableDebtTokenPoolAdapter extends SparkV1BasePoolAdapter 
   ): bigint {
     return reserveData.variableBorrowRate
   }
-
 }

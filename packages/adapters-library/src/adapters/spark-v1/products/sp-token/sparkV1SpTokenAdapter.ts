@@ -1,14 +1,12 @@
 import { z } from 'zod'
 import { Chain } from '../../../../core/constants/chains'
-import { GetTransactionParams } from '../../../supportedProtocols'
-import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
-import {
-  CacheToFile,
-} from '../../../../core/decorators/cacheToFile'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
   WriteActionInputSchemas,
   WriteActions,
 } from '../../../../types/writeActions'
+import { GetTransactionParams } from '../../../supportedProtocols'
+import { PoolContract__factory, ProtocolDataProvider } from '../../contracts'
 
 import {
   AssetType,
@@ -16,11 +14,18 @@ import {
   ProtocolDetails,
 } from '../../../../types/adapter'
 import { Protocol } from '../../../protocols'
-import { SparkV1BasePoolAdapter, SparkMetadata } from '../../common/SparkV1BasePoolAdapter'
-
+import {
+  SparkMetadata,
+  SparkV1BasePoolAdapter,
+} from '../../common/SparkV1BasePoolAdapter'
 
 export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
   productId = 'sp-token'
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -28,27 +33,25 @@ export class SparkV1SpTokenAdapter extends SparkV1BasePoolAdapter {
       name: 'SparkV1',
       description: 'SparkV1 defi adapter',
       siteUrl: 'https://spark.fi',
-      iconUrl: 'https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico',
+      iconUrl:
+        'https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico',
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 
   @CacheToFile({ fileKey: 'sp-token-v1' })
   async buildMetadata(): Promise<SparkMetadata> {
     return super.buildMetadata()
-  }                
+  }
 
   protected getReserveTokenAddress(
     reserveTokenAddresses: Awaited<
       ReturnType<ProtocolDataProvider['getReserveTokensAddresses']>
     >,
-    ): string {
-      return reserveTokenAddresses.aTokenAddress
+  ): string {
+    return reserveTokenAddresses.aTokenAddress
   }
 
   protected getReserveTokenRate(
