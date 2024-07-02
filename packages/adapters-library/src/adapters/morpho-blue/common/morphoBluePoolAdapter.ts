@@ -8,7 +8,9 @@ import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvi
 import { filterMapAsync } from '../../../core/utils/filters'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
+import { IProtocolAdapter } from '../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -54,9 +56,14 @@ const morphoBlueContractAddresses: Partial<
   },
 }
 
-export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
+export abstract class MorphoBluePoolAdapter
+  implements IMetadataBuilder, IProtocolAdapter
+{
   protocolId: Protocol
   chainId: Chain
+
+  abstract productId: string
+  abstract adapterSettings: AdapterSettings
 
   protected _provider: CustomJsonRpcProvider
 
@@ -79,12 +86,15 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
   abstract getProtocolDetails(): ProtocolDetails
 
   async buildMetadata() {
-    const marketIdObjects = await this.graphQlPoolExtraction(Chain.Ethereum)
-    const marketIds = marketIdObjects.map((obj) => obj.marketId)
     const morphoBlueContract = MorphoBlue__factory.connect(
       morphoBlueContractAddresses[this.protocolId]![this.chainId]!,
       this._provider,
     )
+
+    const createMarketFilter = morphoBlueContract.filters.CreateMarket()
+    const marketIds = (
+      await morphoBlueContract.queryFilter(createMarketFilter, 0, 'latest')
+    ).map((event) => event.args.id)
 
     const metadataObject: MorphoBlueAdapterMetadata = {}
 

@@ -1,43 +1,85 @@
 {
-  "0xc581c5f70bd1afa283eed57d1418c6432cbff1d862f94eaf58fdd4e46afbb67f": {
+  "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41": {
     "protocolToken": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "tokenId": "0xc581c5f70bd1afa283eed57d1418c6432cbff1d862f94eaf58fdd4e46afbb67f",
-      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "symbol": "DAI",
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI",
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     },
     "collateralToken": {
-      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-      "name": "USDe",
-      "symbol": "USDe",
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
       "decimals": 18
     }
   },
-  "0x8e6aeb10c401de3279ac79b4b2ea15fc94b7d9cfc098d6c2a1ff7b2b26d9d02c": {
+  "0x54efdee08e272e929034a8f26f7ca34b1ebe364b275391169b28c6d7db24dbc8": {
     "protocolToken": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "tokenId": "0x8e6aeb10c401de3279ac79b4b2ea15fc94b7d9cfc098d6c2a1ff7b2b26d9d02c",
-      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "symbol": "DAI",
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x54efdee08e272e929034a8f26f7ca34b1ebe364b275391169b28c6d7db24dbc8",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x58e212060645d18eab6d9b2af3d56fbc906a92ff5667385f616f662c70372284",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI",
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
       "decimals": 18
     },
     "collateralToken": {
-      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-      "name": "USDe",
-      "symbol": "USDe",
+      "address": "0x0000000000000000000000000000000000000000",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0x08535810feadf52d61a182dc7a12ba78f9b38a829ee477e0e1d488d4e262bc0a": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x08535810feadf52d61a182dc7a12ba78f9b38a829ee477e0e1d488d4e262bc0a",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xABC56186c2Df63C338E04C9C9B9814E27983a5a9",
+      "name": "Wrapped Backed IB01 $ Treasury Bond 0-1yr",
+      "symbol": "wbIB01",
       "decimals": 18
     }
   },
@@ -62,150 +104,45 @@
       "decimals": 18
     }
   },
-  "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41": {
+  "0x495130878b7d2f1391e21589a8bcaef22cbc7e1fbbd6866127193b3cc239d8b1": {
     "protocolToken": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "tokenId": "0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41",
-      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "symbol": "WETH",
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x495130878b7d2f1391e21589a8bcaef22cbc7e1fbbd6866127193b3cc239d8b1",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xcA2A7068e551d5C4482eb34880b194E4b945712F",
+      "name": "Wrapped Backed IB01 $ Treasury Bond 0-1yr",
+      "symbol": "wbIB01",
+      "decimals": 18
+    }
+  },
+  "0x1500bf50feba561f004d35c7695d96d685fa117c4985b91a75885c4aa24b6ceb": {
+    "protocolToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "tokenId": "0x1500bf50feba561f004d35c7695d96d685fa117c4985b91a75885c4aa24b6ceb",
+      "name": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "symbol": "wstETH",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "collateralToken": {
       "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
       "name": "Wrapped liquid staked Ether 2.0",
       "symbol": "wstETH",
       "decimals": 18
-    }
-  },
-  "0x1247f1c237eceae0602eab1470a5061a6dd8f734ba88c7cdc5d6109fb0026b28": {
-    "protocolToken": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "tokenId": "0x1247f1c237eceae0602eab1470a5061a6dd8f734ba88c7cdc5d6109fb0026b28",
-      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "symbol": "DAI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI",
-      "decimals": 18
     },
     "collateralToken": {
-      "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
-      "name": "Staked USDe",
-      "symbol": "sUSDe",
-      "decimals": 18
-    }
-  },
-  "0x49bb2d114be9041a787432952927f6f144f05ad3e83196a7d062f374ee11d0ee": {
-    "protocolToken": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "tokenId": "0x49bb2d114be9041a787432952927f6f144f05ad3e83196a7d062f374ee11d0ee",
-      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "underlyingToken": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "name": "Wrapped Ether",
       "symbol": "WETH",
-      "decimals": 18
-    },
-    "collateralToken": {
-      "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-      "name": "Renzo Restaked ETH",
-      "symbol": "ezETH",
-      "decimals": 18
-    }
-  },
-  "0xa921ef34e2fc7a27ccc50ae7e4b154e16c9799d3387076c421423ef52ac4df99": {
-    "protocolToken": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "tokenId": "0xa921ef34e2fc7a27ccc50ae7e4b154e16c9799d3387076c421423ef52ac4df99",
-      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "symbol": "USDT",
-      "decimals": 6
-    },
-    "underlyingToken": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
-    },
-    "collateralToken": {
-      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-      "name": "Wrapped BTC",
-      "symbol": "WBTC",
-      "decimals": 8
-    }
-  },
-  "0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115": {
-    "protocolToken": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "tokenId": "0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115",
-      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "decimals": 18
-    },
-    "collateralToken": {
-      "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
-      "name": "Wrapped eETH",
-      "symbol": "weETH",
-      "decimals": 18
-    }
-  },
-  "0xfd8493f09eb6203615221378d89f53fcd92ff4f7d62cca87eece9a2fff59e86f": {
-    "protocolToken": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "tokenId": "0xfd8493f09eb6203615221378d89f53fcd92ff4f7d62cca87eece9a2fff59e86f",
-      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "symbol": "DAI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI",
-      "decimals": 18
-    },
-    "collateralToken": {
-      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-      "name": "USDe",
-      "symbol": "USDe",
-      "decimals": 18
-    }
-  },
-  "0x39d11026eae1c6ec02aa4c0910778664089cdd97c3fd23f68f7cd05e2e95af48": {
-    "protocolToken": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "tokenId": "0x39d11026eae1c6ec02aa4c0910778664089cdd97c3fd23f68f7cd05e2e95af48",
-      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "symbol": "DAI",
-      "decimals": 18
-    },
-    "underlyingToken": {
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI",
-      "decimals": 18
-    },
-    "collateralToken": {
-      "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
-      "name": "Staked USDe",
-      "symbol": "sUSDe",
       "decimals": 18
     }
   },
@@ -230,10 +167,556 @@
       "decimals": 8
     }
   },
-  "0x42dcfb38bb98767afb6e38ccf90d59d0d3f0aa216beb3a234f12850323d17536": {
+  "0x7dde86a1e94561d9690ec678db673c1a6396365f7d1d65e129c5fff0990ff758": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x7dde86a1e94561d9690ec678db673c1a6396365f7d1d65e129c5fff0990ff758",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xf9acc677910cc17f650416a22e2a14d5da7ccb9626db18f1bf94efe64f92b372": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0xf9acc677910cc17f650416a22e2a14d5da7ccb9626db18f1bf94efe64f92b372",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0x06f2842602373d247c4934f7656e513955ccc4c377f0febc0d9ca2c3bcc191b1": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x06f2842602373d247c4934f7656e513955ccc4c377f0febc0d9ca2c3bcc191b1",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+      "name": "Savings Dai",
+      "symbol": "sDAI",
+      "decimals": 18
+    }
+  },
+  "0xe7399fdebc318d76dfec7356caafcf8cd4b91287e139a3ec423f09aeeb656fc4": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0xe7399fdebc318d76dfec7356caafcf8cd4b91287e139a3ec423f09aeeb656fc4",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    }
+  },
+  "0x90f336c58b38a736508e12102b09b58edbb8fb3b149b380e441d45992d3c7b58": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x90f336c58b38a736508e12102b09b58edbb8fb3b149b380e441d45992d3c7b58",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    }
+  },
+  "0xd5211d0e3f4a30d5c98653d988585792bb7812221f04801be73a44ceecb11e89": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0xd5211d0e3f4a30d5c98653d988585792bb7812221f04801be73a44ceecb11e89",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
+      "name": "Staked ETH",
+      "symbol": "osETH",
+      "decimals": 18
+    }
+  },
+  "0x8c2df0d6f57680fafe2934db29e53c91e66238dbcbaeed8e5467d7c0f932cd45": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x8c2df0d6f57680fafe2934db29e53c91e66238dbcbaeed8e5467d7c0f932cd45",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x21728dD7bC8e643667331643dC5f7E300F351E72",
+      "name": "XP.AIGUILP.S",
+      "symbol": "XPE",
+      "decimals": 6
+    }
+  },
+  "0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x698fe98247a40c5771537b5786b2f3f9d78eb487b4ce4d75533cd0e94d88a115",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    }
+  },
+  "0x5c6aaf2dfecf6b2d60ef4ee8192b83c53ade0b35cb8e7f763a83a30db10502d1": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0x5c6aaf2dfecf6b2d60ef4ee8192b83c53ade0b35cb8e7f763a83a30db10502d1",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0x608929d6de2a10bacf1046ff157ae38df5b9f466fb89413211efb8f63c63833a": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0x608929d6de2a10bacf1046ff157ae38df5b9f466fb89413211efb8f63c63833a",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xdbffac82c2dc7e8aa781bd05746530b0068d80929f23ac1628580e27810bc0c5": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0xdbffac82c2dc7e8aa781bd05746530b0068d80929f23ac1628580e27810bc0c5",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    }
+  },
+  "0xa921ef34e2fc7a27ccc50ae7e4b154e16c9799d3387076c421423ef52ac4df99": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0xa921ef34e2fc7a27ccc50ae7e4b154e16c9799d3387076c421423ef52ac4df99",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0xe7e9694b754c4d4f7e21faf7223f6fa71abaeb10296a4c43a54a7977149687d2": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0xe7e9694b754c4d4f7e21faf7223f6fa71abaeb10296a4c43a54a7977149687d2",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xeb809769a0ea3fe0a405b94dbcaf1940c9d2cb1546d175cbc6898bfde817801a": {
+    "protocolToken": {
+      "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+      "tokenId": "0xeb809769a0ea3fe0a405b94dbcaf1940c9d2cb1546d175cbc6898bfde817801a",
+      "name": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+      "symbol": "wUSDM",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+      "name": "Wrapped Mountain Protocol USD",
+      "symbol": "wUSDM",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0xf8c13c80ab8666c21fc5afa13105745cae7c1da13df596eb5054319f36655cc9": {
+    "protocolToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "tokenId": "0xf8c13c80ab8666c21fc5afa13105745cae7c1da13df596eb5054319f36655cc9",
+      "name": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "name": "PayPal USD",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0x124ddf1fa02a94085d1fcc35c46c7e180ddb8a0d3ec1181cf67a75341501c9e6": {
+    "protocolToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "tokenId": "0x124ddf1fa02a94085d1fcc35c46c7e180ddb8a0d3ec1181cf67a75341501c9e6",
+      "name": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "name": "PayPal USD",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xc576cddfd1ee8332d683417548801d6835fa15fb2332a647452248987a8eded3": {
+    "protocolToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "tokenId": "0xc576cddfd1ee8332d683417548801d6835fa15fb2332a647452248987a8eded3",
+      "name": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "name": "PayPal USD",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xcA2A7068e551d5C4482eb34880b194E4b945712F",
+      "name": "Wrapped Backed IB01 $ Treasury Bond 0-1yr",
+      "symbol": "wbIB01",
+      "decimals": 18
+    }
+  },
+  "0xae1839e7d779b32e91e2128405525b7f38478f38fed74b9a4795e8ed952592b7": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0xae1839e7d779b32e91e2128405525b7f38478f38fed74b9a4795e8ed952592b7",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xcA2A7068e551d5C4482eb34880b194E4b945712F",
+      "name": "Wrapped Backed IB01 $ Treasury Bond 0-1yr",
+      "symbol": "wbIB01",
+      "decimals": 18
+    }
+  },
+  "0xf213843ac8ce2c8408182fc80c9e8f9911b420cce24adec8ea105ae44de087ad": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0xf213843ac8ce2c8408182fc80c9e8f9911b420cce24adec8ea105ae44de087ad",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+      "name": "Savings Dai",
+      "symbol": "sDAI",
+      "decimals": 18
+    }
+  },
+  "0x3c83f77bde9541f8d3d82533b19bbc1f97eb2f1098bb991728acbfbede09cc5d": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x3c83f77bde9541f8d3d82533b19bbc1f97eb2f1098bb991728acbfbede09cc5d",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+      "name": "Rocket Pool ETH",
+      "symbol": "rETH",
+      "decimals": 18
+    }
+  },
+  "0xab5423d55497b642df74011621b4c72a3c9b446e8800cf988644bcdbd747d58f": {
+    "protocolToken": {
+      "address": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+      "tokenId": "0xab5423d55497b642df74011621b4c72a3c9b446e8800cf988644bcdbd747d58f",
+      "name": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+      "symbol": "EURe",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+      "name": "Monerium EUR emoney",
+      "symbol": "EURe",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x95D7337d43340E2721960Dc402D9b9117f0d81a2",
+      "name": "Wrapped Backed GOVIES 0-6 months EURO investment grade",
+      "symbol": "wbC3M",
+      "decimals": 18
+    }
+  },
+  "0x3558ed8709ed89fc50b173e6aaa0fb5a9b5cc8af2f3bb4bfcd4e46fdc27e8a53": {
+    "protocolToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "tokenId": "0x3558ed8709ed89fc50b173e6aaa0fb5a9b5cc8af2f3bb4bfcd4e46fdc27e8a53",
+      "name": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "name": "PayPal USD",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x9337a95dcb09d10abb33fdb955dd27b46e345f5510d54d9403f570f8f37b5983": {
+    "protocolToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "tokenId": "0x9337a95dcb09d10abb33fdb955dd27b46e345f5510d54d9403f570f8f37b5983",
+      "name": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "name": "PayPal USD",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0xefcc25ddfb12eec31cc3fd568ed04b4eb568a332600df308d09dbda248edf72e": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0xefcc25ddfb12eec31cc3fd568ed04b4eb568a332600df308d09dbda248edf72e",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+      "name": "Savings Dai",
+      "symbol": "sDAI",
+      "decimals": 18
+    }
+  },
+  "0xd19c4f07a617e10dcaf899abfd88c8b6cb061863bdd4b421ff04ef2977dcc00c": {
+    "protocolToken": {
+      "address": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+      "tokenId": "0xd19c4f07a617e10dcaf899abfd88c8b6cb061863bdd4b421ff04ef2977dcc00c",
+      "name": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+      "symbol": "EURe",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+      "name": "Monerium EUR emoney",
+      "symbol": "EURe",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0x49bb2d114be9041a787432952927f6f144f05ad3e83196a7d062f374ee11d0ee": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x49bb2d114be9041a787432952927f6f144f05ad3e83196a7d062f374ee11d0ee",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    }
+  },
+  "0xb1eac1c0f3ad13fb45b01beac8458c055c903b1bff8cb882346635996a774f77": {
     "protocolToken": {
       "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "tokenId": "0x42dcfb38bb98767afb6e38ccf90d59d0d3f0aa216beb3a234f12850323d17536",
+      "tokenId": "0xb1eac1c0f3ad13fb45b01beac8458c055c903b1bff8cb882346635996a774f77",
       "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
       "symbol": "DAI",
       "decimals": 18
@@ -245,9 +728,303 @@
       "decimals": 18
     },
     "collateralToken": {
+      "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+      "name": "Savings Dai",
+      "symbol": "sDAI",
+      "decimals": 18
+    }
+  },
+  "0x4ebe73200ef920f3b0fbbaf7d9b2472538d650efed4b171a24a4f0b7ca339388": {
+    "protocolToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0x4ebe73200ef920f3b0fbbaf7d9b2472538d650efed4b171a24a4f0b7ca339388",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0x3ccaeeefe263eb204e9bec7fdc88262aa8818b88c40e1b37fbf224ff274a9d08": {
+    "protocolToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0x3ccaeeefe263eb204e9bec7fdc88262aa8818b88c40e1b37fbf224ff274a9d08",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32",
+      "name": "Lido DAO Token",
+      "symbol": "LDO",
+      "decimals": 18
+    }
+  },
+  "0x4a4485b1b7efcc440f9435dbf982fb4a428edf2e16549c75158fe8e125c9702d": {
+    "protocolToken": {
+      "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+      "tokenId": "0x4a4485b1b7efcc440f9435dbf982fb4a428edf2e16549c75158fe8e125c9702d",
+      "name": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+      "symbol": "wUSDM",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+      "name": "Wrapped Mountain Protocol USD",
+      "symbol": "wUSDM",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xa36e440fbc54d7ed744ae4895b2729642a8be5d488cdd477c59b54afbb90b5bf": {
+    "protocolToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "tokenId": "0xa36e440fbc54d7ed744ae4895b2729642a8be5d488cdd477c59b54afbb90b5bf",
+      "name": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "collateralToken": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0x3197babfc8c9f0fd05fbd5b48e2c5b3d3eeec8277586c02f933a17f5e83e067a": {
+    "protocolToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "tokenId": "0x3197babfc8c9f0fd05fbd5b48e2c5b3d3eeec8277586c02f933a17f5e83e067a",
+      "name": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "collateralToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0x3bb29b62affbedc60b8446b235aaa349d5e3bad96c09bca1d7a2d693c06669aa": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x3bb29b62affbedc60b8446b235aaa349d5e3bad96c09bca1d7a2d693c06669aa",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+      "name": "Savings Dai",
+      "symbol": "sDAI",
+      "decimals": 18
+    }
+  },
+  "0x1ca7ff6b26581fe3155f391f3960d32a033b5f7d537b1f1932b2021a6cf4f706": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0x1ca7ff6b26581fe3155f391f3960d32a033b5f7d537b1f1932b2021a6cf4f706",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+      "name": "Savings Dai",
+      "symbol": "sDAI",
+      "decimals": 18
+    }
+  },
+  "0x6d5ceaf737f6ed7f5972c46e87d359a77d36fffa484eeddf2f8188e1605fa9d4": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x6d5ceaf737f6ed7f5972c46e87d359a77d36fffa484eeddf2f8188e1605fa9d4",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x8bbd1763671eb82a75d5f7ca33a0023ffabdd9d1a3d4316f34753685ae988e80": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x8bbd1763671eb82a75d5f7ca33a0023ffabdd9d1a3d4316f34753685ae988e80",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6",
+      "name": "Autocompounding Pirex Ether",
+      "symbol": "apxETH",
+      "decimals": 18
+    }
+  },
+  "0x074973eb292ffcb3cb22c71138eed4b2ad7030f5620918d41617609f8270aa4f": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x074973eb292ffcb3cb22c71138eed4b2ad7030f5620918d41617609f8270aa4f",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0x423cb007534ac88febb8ce39f544ab303e8b757f8415ed891fc76550f8f4c965": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x423cb007534ac88febb8ce39f544ab303e8b757f8415ed891fc76550f8f4c965",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0xdc5333039bcf15f1237133f74d5806675d83d9cf19cfd4cfdd9be674842651bf": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0xdc5333039bcf15f1237133f74d5806675d83d9cf19cfd4cfdd9be674842651bf",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
       "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
       "name": "Staked USDe",
       "symbol": "sUSDe",
+      "decimals": 18
+    }
+  },
+  "0xcec858380cba2d9ca710fce3ce864d74c3f620d53826f69d08508902e09be86f": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0xcec858380cba2d9ca710fce3ce864d74c3f620d53826f69d08508902e09be86f",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    }
+  },
+  "0xbe4c211adca4400078db69af91ea0df98401adb5959510ae99edd06fee5146f7": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0xbe4c211adca4400078db69af91ea0df98401adb5959510ae99edd06fee5146f7",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xDD629E5241CbC5919847783e6C96B2De4754e438",
+      "name": "mTBILL",
+      "symbol": "mTBILL",
       "decimals": 18
     }
   },
@@ -293,10 +1070,10 @@
       "decimals": 18
     }
   },
-  "0xdb760246f6859780f6c1b272d47a8f64710777121118e56e0cdb4b8b744a3094": {
+  "0x1247f1c237eceae0602eab1470a5061a6dd8f734ba88c7cdc5d6109fb0026b28": {
     "protocolToken": {
       "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "tokenId": "0xdb760246f6859780f6c1b272d47a8f64710777121118e56e0cdb4b8b744a3094",
+      "tokenId": "0x1247f1c237eceae0602eab1470a5061a6dd8f734ba88c7cdc5d6109fb0026b28",
       "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
       "symbol": "DAI",
       "decimals": 18
@@ -308,67 +1085,25 @@
       "decimals": 18
     },
     "collateralToken": {
-      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-      "name": "USDe",
-      "symbol": "USDe",
+      "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "name": "Staked USDe",
+      "symbol": "sUSDe",
       "decimals": 18
     }
   },
-  "0x093d5b432aace8bf6c4d67494f4ac2542a499571ff7a1bcc9f8778f3200d457d": {
+  "0x39d11026eae1c6ec02aa4c0910778664089cdd97c3fd23f68f7cd05e2e95af48": {
     "protocolToken": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "tokenId": "0x093d5b432aace8bf6c4d67494f4ac2542a499571ff7a1bcc9f8778f3200d457d",
-      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "symbol": "WETH",
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0x39d11026eae1c6ec02aa4c0910778664089cdd97c3fd23f68f7cd05e2e95af48",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
       "decimals": 18
     },
     "underlyingToken": {
-      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
       "decimals": 18
-    },
-    "collateralToken": {
-      "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
-      "name": "Renzo Restaked ETH",
-      "symbol": "ezETH",
-      "decimals": 18
-    }
-  },
-  "0xcec858380cba2d9ca710fce3ce864d74c3f620d53826f69d08508902e09be86f": {
-    "protocolToken": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "tokenId": "0xcec858380cba2d9ca710fce3ce864d74c3f620d53826f69d08508902e09be86f",
-      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "symbol": "USDT",
-      "decimals": 6
-    },
-    "underlyingToken": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
-    },
-    "collateralToken": {
-      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-      "name": "USDe",
-      "symbol": "USDe",
-      "decimals": 18
-    }
-  },
-  "0xdc5333039bcf15f1237133f74d5806675d83d9cf19cfd4cfdd9be674842651bf": {
-    "protocolToken": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "tokenId": "0xdc5333039bcf15f1237133f74d5806675d83d9cf19cfd4cfdd9be674842651bf",
-      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "symbol": "USDT",
-      "decimals": 6
-    },
-    "underlyingToken": {
-      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "decimals": 6
     },
     "collateralToken": {
       "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
@@ -377,10 +1112,31 @@
       "decimals": 18
     }
   },
-  "0xd5211d0e3f4a30d5c98653d988585792bb7812221f04801be73a44ceecb11e89": {
+  "0x42dcfb38bb98767afb6e38ccf90d59d0d3f0aa216beb3a234f12850323d17536": {
+    "protocolToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0x42dcfb38bb98767afb6e38ccf90d59d0d3f0aa216beb3a234f12850323d17536",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "name": "Staked USDe",
+      "symbol": "sUSDe",
+      "decimals": 18
+    }
+  },
+  "0x27dc2546042d49c948772a38432849a60fdb41f26af32fac42336f2278591296": {
     "protocolToken": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "tokenId": "0xd5211d0e3f4a30d5c98653d988585792bb7812221f04801be73a44ceecb11e89",
+      "tokenId": "0x27dc2546042d49c948772a38432849a60fdb41f26af32fac42336f2278591296",
       "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "symbol": "WETH",
       "decimals": 18
@@ -392,9 +1148,9 @@
       "decimals": 18
     },
     "collateralToken": {
-      "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
-      "name": "Staked ETH",
-      "symbol": "osETH",
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
       "decimals": 18
     }
   },
@@ -419,46 +1175,235 @@
       "decimals": 18
     }
   },
-  "0x124ddf1fa02a94085d1fcc35c46c7e180ddb8a0d3ec1181cf67a75341501c9e6": {
+  "0xdb760246f6859780f6c1b272d47a8f64710777121118e56e0cdb4b8b744a3094": {
     "protocolToken": {
-      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
-      "tokenId": "0x124ddf1fa02a94085d1fcc35c46c7e180ddb8a0d3ec1181cf67a75341501c9e6",
-      "name": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
-      "symbol": "PYUSD",
-      "decimals": 6
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0xdb760246f6859780f6c1b272d47a8f64710777121118e56e0cdb4b8b744a3094",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
-      "name": "PayPal USD",
-      "symbol": "PYUSD",
-      "decimals": 6
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
     },
     "collateralToken": {
-      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
-      "name": "Wrapped liquid staked Ether 2.0",
-      "symbol": "wstETH",
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
       "decimals": 18
     }
   },
-  "0x9337a95dcb09d10abb33fdb955dd27b46e345f5510d54d9403f570f8f37b5983": {
+  "0x8e6aeb10c401de3279ac79b4b2ea15fc94b7d9cfc098d6c2a1ff7b2b26d9d02c": {
     "protocolToken": {
-      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
-      "tokenId": "0x9337a95dcb09d10abb33fdb955dd27b46e345f5510d54d9403f570f8f37b5983",
-      "name": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
-      "symbol": "PYUSD",
-      "decimals": 6
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0x8e6aeb10c401de3279ac79b4b2ea15fc94b7d9cfc098d6c2a1ff7b2b26d9d02c",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
     },
     "underlyingToken": {
-      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
-      "name": "PayPal USD",
-      "symbol": "PYUSD",
-      "decimals": 6
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
     },
     "collateralToken": {
-      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-      "name": "Wrapped BTC",
-      "symbol": "WBTC",
-      "decimals": 8
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    }
+  },
+  "0xc581c5f70bd1afa283eed57d1418c6432cbff1d862f94eaf58fdd4e46afbb67f": {
+    "protocolToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0xc581c5f70bd1afa283eed57d1418c6432cbff1d862f94eaf58fdd4e46afbb67f",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    }
+  },
+  "0xfd8493f09eb6203615221378d89f53fcd92ff4f7d62cca87eece9a2fff59e86f": {
+    "protocolToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0xfd8493f09eb6203615221378d89f53fcd92ff4f7d62cca87eece9a2fff59e86f",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    }
+  },
+  "0x57f4e42c0707d3ae0ae39c9343dcba78ff79fa663da040eca45717a9b0b0557f": {
+    "protocolToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0x57f4e42c0707d3ae0ae39c9343dcba78ff79fa663da040eca45717a9b0b0557f",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0x42644ceb5bf95a2c22c85ce5766942c6caeea73db07573e0048b3e340ea9e542": {
+    "protocolToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "tokenId": "0x42644ceb5bf95a2c22c85ce5766942c6caeea73db07573e0048b3e340ea9e542",
+      "name": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xAb122ae30b3eE050F0Eb30009DEec6aCC6B06D36",
+      "name": "Staked TricryptoUSDT Convex Deposit Morpho",
+      "symbol": "stkcvxcrvUSDTWBTCWETH-morpho",
+      "decimals": 18
+    }
+  },
+  "0x75514afcce6d681f80c5029f9d581e00841618c16d585bd04f8688e983dba61e": {
+    "protocolToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "tokenId": "0x75514afcce6d681f80c5029f9d581e00841618c16d585bd04f8688e983dba61e",
+      "name": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x517068E51009e0e5E2a25f91e04837e66414D8Ac",
+      "name": "Staked TricryptoUSDC Convex Deposit Morpho",
+      "symbol": "stkcvxcrvUSDCWBTCWETH-morpho",
+      "decimals": 18
+    }
+  },
+  "0x85114b25eef88f5cb19b190f01702e62d41a4ea91960d198a27addc2c11915a3": {
+    "protocolToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "tokenId": "0x85114b25eef88f5cb19b190f01702e62d41a4ea91960d198a27addc2c11915a3",
+      "name": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x19f8F160F4d0077d8527324544B5c68E883Dd592",
+      "name": "Staked TricryptoLLAMA Convex Deposit Morpho",
+      "symbol": "stkcvxcrvCRVUSDTBTCWSTETH-morpho",
+      "decimals": 18
+    }
+  },
+  "0xaf3461ee177e8774148b0607b8644a2d5ea2abe3d17ff08c6d68cd7a8b983e59": {
+    "protocolToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "tokenId": "0xaf3461ee177e8774148b0607b8644a2d5ea2abe3d17ff08c6d68cd7a8b983e59",
+      "name": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xa461249dB0C9f91de3d43582468b9DC0E712664d",
+      "name": "Staked TryLSD Convex Deposit Morpho",
+      "symbol": "stkcvxTryLSD-morpho",
+      "decimals": 18
+    }
+  },
+  "0xd1e844defc605ad0582899c6456b2f4d0aaded83b82bd60be576414d925e3034": {
+    "protocolToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "tokenId": "0xd1e844defc605ad0582899c6456b2f4d0aaded83b82bd60be576414d925e3034",
+      "name": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x7086288478ce9dF52862b5E88eD18d232e9a5213",
+      "name": "Staked TriCRV Convex Deposit Morpho",
+      "symbol": "stkcvxcrvUSDETHCRV-morpho",
+      "decimals": 18
+    }
+  },
+  "0xdffc48c16cca3880240220ab8791e5a7e5a41233ca11a5999f0dd4294d221aed": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0xdffc48c16cca3880240220ab8791e5a7e5a41233ca11a5999f0dd4294d221aed",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x454bB3cb427B21e1c052A080e21A57753cd6969e",
+      "name": "IdleCDO AA Tranche - Re7WETH",
+      "symbol": "AA_Re7WETH",
+      "decimals": 18
     }
   },
   "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d": {
@@ -482,10 +1427,10 @@
       "decimals": 18
     }
   },
-  "0x8bbd1763671eb82a75d5f7ca33a0023ffabdd9d1a3d4316f34753685ae988e80": {
+  "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40": {
     "protocolToken": {
       "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-      "tokenId": "0x8bbd1763671eb82a75d5f7ca33a0023ffabdd9d1a3d4316f34753685ae988e80",
+      "tokenId": "0x138eec0e4a1937eb92ebc70043ed539661dd7ed5a89fb92a720b341650288a40",
       "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "symbol": "WETH",
       "decimals": 18
@@ -497,9 +1442,1395 @@
       "decimals": 18
     },
     "collateralToken": {
-      "address": "0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6",
-      "name": "Autocompounding Pirex Ether",
-      "symbol": "apxETH",
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x1c4b9ce834604969d33dc277bd8473d8aee856e5a577c08427b6deeb97cc72d6": {
+    "protocolToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "tokenId": "0x1c4b9ce834604969d33dc277bd8473d8aee856e5a577c08427b6deeb97cc72d6",
+      "name": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xb0Ce26C88e4e7DCa51968b6047f44646f5064278",
+      "name": "Staked TricryptoUSDT Convex Deposit Morpho",
+      "symbol": "stkcvxcrvUSDTWBTCWETH-morpho",
+      "decimals": 18
+    }
+  },
+  "0xd95c5285ed6009b272a25a94539bd1ae5af0e9020ad482123e01539ae43844e1": {
+    "protocolToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0xd95c5285ed6009b272a25a94539bd1ae5af0e9020ad482123e01539ae43844e1",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0x06cb6aaee2279b46185dc2c8c107b4a56ff6550ea86063ec011fa4a52920841b": {
+    "protocolToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0x06cb6aaee2279b46185dc2c8c107b4a56ff6550ea86063ec011fa4a52920841b",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    }
+  },
+  "0x459687783a68f4cf4e230618f88ce135d1cd459a850f6496751c2a9c1c6e852e": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x459687783a68f4cf4e230618f88ce135d1cd459a850f6496751c2a9c1c6e852e",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    }
+  },
+  "0xa72f4af2570dca1b356aa6c1e6a804d0d3df5b23bb092189776d0dc652feabb4": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0xa72f4af2570dca1b356aa6c1e6a804d0d3df5b23bb092189776d0dc652feabb4",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+      "name": "rsETH",
+      "symbol": "rsETH",
+      "decimals": 18
+    }
+  },
+  "0x093d5b432aace8bf6c4d67494f4ac2542a499571ff7a1bcc9f8778f3200d457d": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x093d5b432aace8bf6c4d67494f4ac2542a499571ff7a1bcc9f8778f3200d457d",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    }
+  },
+  "0x355c9a4c12f60a10ab3b68507bfab21bd6913182037ffe25d94dabffea45429f": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x355c9a4c12f60a10ab3b68507bfab21bd6913182037ffe25d94dabffea45429f",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    }
+  },
+  "0xdf2654405b27b5cf7a8f5fd78337e0440d37cbc797de38b1421752671f0ed3b6": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0xdf2654405b27b5cf7a8f5fd78337e0440d37cbc797de38b1421752671f0ed3b6",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xCE8e559Ac89c2bDC97Bdb5F58705c54dB9cB77dC",
+      "name": "XP.LEVANNA.S",
+      "symbol": "XPC",
+      "decimals": 6
+    }
+  },
+  "0x36fd92f0d2624aa817adf01d1093a7da6cf3690fd01e69bd3342fe52ccdf0fcd": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x36fd92f0d2624aa817adf01d1093a7da6cf3690fd01e69bd3342fe52ccdf0fcd",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "decimals": 18
+    }
+  },
+  "0x9f93305ce26c48170a11ae960425a084ab6567bb56d61a4de631855224091702": {
+    "protocolToken": {
+      "address": "0xcbfb9B444d9735C345Df3A0F66cd89bD741692E9",
+      "tokenId": "0x9f93305ce26c48170a11ae960425a084ab6567bb56d61a4de631855224091702",
+      "name": "0xcbfb9B444d9735C345Df3A0F66cd89bD741692E9",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xcbfb9B444d9735C345Df3A0F66cd89bD741692E9",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x910836B41791e07B4AC107c0DFbc41Ffd07d2702",
+      "name": "TOKEN",
+      "symbol": "TOKEN",
+      "decimals": 6
+    }
+  },
+  "0x74ef8d7022b0ef0c0e6dc001fbda3c8bd9a3e706f03bb559c833e1dce7302d3a": {
+    "protocolToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "tokenId": "0x74ef8d7022b0ef0c0e6dc001fbda3c8bd9a3e706f03bb559c833e1dce7302d3a",
+      "name": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x0ea1a65A2c255f24Ee8D81eA6AaC54Decd9d269e",
+      "name": "Staked TricryptoUSDC Convex Deposit Morpho",
+      "symbol": "stkcvxcrvUSDCWBTCWETH-morpho",
+      "decimals": 18
+    }
+  },
+  "0x0cd36e6ecd9d846cffd921d011d2507bc4c2c421929cec65205b3cd72925367c": {
+    "protocolToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "tokenId": "0x0cd36e6ecd9d846cffd921d011d2507bc4c2c421929cec65205b3cd72925367c",
+      "name": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x3ce8Ec9f3d89aD0A2DdbCC3FDB8991BD241Fc82E",
+      "name": "Staked TricryptoLLAMA Convex Deposit Morpho",
+      "symbol": "stkcvxcrvCRVUSDTBTCWSTETH-morpho",
+      "decimals": 18
+    }
+  },
+  "0x42e157d3739f9ae3f418f5dd0977b7d51c3a677502afd9f3f594f46cc07dec6a": {
+    "protocolToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "tokenId": "0x42e157d3739f9ae3f418f5dd0977b7d51c3a677502afd9f3f594f46cc07dec6a",
+      "name": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x6BA072F0d22806F2C52e9792AF47f2D59103BEBE",
+      "name": "Staked TryLSD Convex Deposit Morpho",
+      "symbol": "stkcvxTryLSD-morpho",
+      "decimals": 18
+    }
+  },
+  "0xbd2a27358bdaf3fb902a0ad17f86d4633f9ac5377941298720b37a4d90deab96": {
+    "protocolToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "tokenId": "0xbd2a27358bdaf3fb902a0ad17f86d4633f9ac5377941298720b37a4d90deab96",
+      "name": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xAc904BAfBb5FB04Deb2b6198FdCEedE75a78Ce5a",
+      "name": "Staked TriCRV Convex Deposit Morpho",
+      "symbol": "stkcvxcrvUSDETHCRV-morpho",
+      "decimals": 18
+    }
+  },
+  "0x3c81a7e3cbcdeeecc7d9f7c45ed28ef62d63357cfcc7295e9d2b3368f0386b46": {
+    "protocolToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "tokenId": "0x3c81a7e3cbcdeeecc7d9f7c45ed28ef62d63357cfcc7295e9d2b3368f0386b46",
+      "name": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    }
+  },
+  "0x8a8650a5ed923712ca86a9b83bd12ea520131c646c4da5de3a443416e1bb8c98": {
+    "protocolToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "tokenId": "0x8a8650a5ed923712ca86a9b83bd12ea520131c646c4da5de3a443416e1bb8c98",
+      "name": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "name": "Staked USDe",
+      "symbol": "sUSDe",
+      "decimals": 18
+    }
+  },
+  "0x5109cda72b0603e1bac4631ddebd3104bea6414e686c3f7aa2cb3c65795602f0": {
+    "protocolToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "tokenId": "0x5109cda72b0603e1bac4631ddebd3104bea6414e686c3f7aa2cb3c65795602f0",
+      "name": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    }
+  },
+  "0x3df62177d8dd48708addac57caad778286f104c98a6866817b105795be0605e8": {
+    "protocolToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "tokenId": "0x3df62177d8dd48708addac57caad778286f104c98a6866817b105795be0605e8",
+      "name": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "name": "Staked USDe",
+      "symbol": "sUSDe",
+      "decimals": 18
+    }
+  },
+  "0x08cfaaa2e7797b4e1326d1d174dd364c9fb3a2a718623a3b7f97ea1debba47b8": {
+    "protocolToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "tokenId": "0x08cfaaa2e7797b4e1326d1d174dd364c9fb3a2a718623a3b7f97ea1debba47b8",
+      "name": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    }
+  },
+  "0x7e72f1671f1fd2c0900b6ef8bb6b55299d6a58fd398e3b8e05c12e3c429c401b": {
+    "protocolToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "tokenId": "0x7e72f1671f1fd2c0900b6ef8bb6b55299d6a58fd398e3b8e05c12e3c429c401b",
+      "name": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "name": "Staked USDe",
+      "symbol": "sUSDe",
+      "decimals": 18
+    }
+  },
+  "0x7f393a1095a134e75c0beedb880ecaa505f91a9384927e4040d894020d38c926": {
+    "protocolToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "tokenId": "0x7f393a1095a134e75c0beedb880ecaa505f91a9384927e4040d894020d38c926",
+      "name": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "symbol": "USDe",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xd7173026AceB6e3c654FCC9f4422FC022A4c78A6",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0x000c918917765555eade0947e9f5ad0dac5782214436ed159ef36a4c164ff306": {
+    "protocolToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "tokenId": "0x000c918917765555eade0947e9f5ad0dac5782214436ed159ef36a4c164ff306",
+      "name": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "symbol": "wstETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xd7173026AceB6e3c654FCC9f4422FC022A4c78A6",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0xcc7b191903e4750ad71898a1594d912adbb5bb1c6effcde9c38f0a798112edd1": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0xcc7b191903e4750ad71898a1594d912adbb5bb1c6effcde9c38f0a798112edd1",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966",
+      "name": "PT ether.fi weETH 27JUN2024",
+      "symbol": "PT-weETH-27JUN2024",
+      "decimals": 18
+    }
+  },
+  "0xdfd730c597116b2ab4b5ec2a10fef3e6bc1e8c9ae495ca7d2a351704592d6bbe": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0xdfd730c597116b2ab4b5ec2a10fef3e6bc1e8c9ae495ca7d2a351704592d6bbe",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+      "name": "Gauntlet WETH Prime",
+      "symbol": "gtWETH",
+      "decimals": 18
+    }
+  },
+  "0x540266e1879fff261908dcd4f4c623ce99dcd4c9ae7004e9c97ed80bfcb9ea21": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x540266e1879fff261908dcd4f4c623ce99dcd4c9ae7004e9c97ed80bfcb9ea21",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+      "name": "Re7 WETH",
+      "symbol": "Re7WETH",
+      "decimals": 18
+    }
+  },
+  "0x7f2eec1f78d0412e61fa3be531e36052460583e7f9b5c1efc1407f10c48a775d": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x7f2eec1f78d0412e61fa3be531e36052460583e7f9b5c1efc1407f10c48a775d",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xdd0f28e19C1780eb6396170735D45153D261490d",
+      "name": "Gauntlet USDC Prime",
+      "symbol": "gtUSDC",
+      "decimals": 18
+    }
+  },
+  "0x5d09770b08517329e25b7dff8f32ad7098c8b6fd075660cdabec3e717ca8068f": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x5d09770b08517329e25b7dff8f32ad7098c8b6fd075660cdabec3e717ca8068f",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x95EeF579155cd2C5510F312c8fA39208c3Be01a8",
+      "name": "Re7 USDT",
+      "symbol": "Re7USDT",
+      "decimals": 18
+    }
+  },
+  "0x70014ba4411257948ddbe73fc1d65056721c31a583fc1ead7fba4c57b5e9790d": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x70014ba4411257948ddbe73fc1d65056721c31a583fc1ead7fba4c57b5e9790d",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "name": "Maker",
+      "symbol": "MKR",
+      "decimals": 18
+    }
+  },
+  "0x6dd2c4f44111a54f4de7919ac33b3038dd03df491e8c6e77a4363ae0d6e8a872": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x6dd2c4f44111a54f4de7919ac33b3038dd03df491e8c6e77a4363ae0d6e8a872",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "name": "Maker",
+      "symbol": "MKR",
+      "decimals": 18
+    }
+  },
+  "0x97bb820669a19ba5fa6de964a466292edd67957849f9631eb8b830c382f58b7f": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x97bb820669a19ba5fa6de964a466292edd67957849f9631eb8b830c382f58b7f",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "name": "Maker",
+      "symbol": "MKR",
+      "decimals": 18
+    }
+  },
+  "0x578996c3c3ac4f100c4284b5c239673b04840e07945d04b681763c7b3401997c": {
+    "protocolToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0x578996c3c3ac4f100c4284b5c239673b04840e07945d04b681763c7b3401997c",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "name": "Maker",
+      "symbol": "MKR",
+      "decimals": 18
+    }
+  },
+  "0x6c65bb7104ae6fc1dc2cdc97fcb7df2a4747363e76135b32d9170b2520bb65eb": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x6c65bb7104ae6fc1dc2cdc97fcb7df2a4747363e76135b32d9170b2520bb65eb",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x07D1718fF05a8C53C8F05aDAEd57C0d672945f9a",
+      "name": "Aladdin rUSD",
+      "symbol": "arUSD",
+      "decimals": 18
+    }
+  },
+  "0x3e6cea6ad0e3c8fd5bb51f9bd9b9af30946f1d245543f409b6add8b754c03d8b": {
+    "protocolToken": {
+      "address": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+      "tokenId": "0x3e6cea6ad0e3c8fd5bb51f9bd9b9af30946f1d245543f409b6add8b754c03d8b",
+      "name": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+      "symbol": "EURe",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+      "name": "Monerium EUR emoney",
+      "symbol": "EURe",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x004626A008B1aCdC4c74ab51644093b155e59A23",
+      "name": "Staked EURA",
+      "symbol": "stEUR",
+      "decimals": 18
+    }
+  },
+  "0x6a6c8e41a6a7ccbea68e1e6a19ece1fdd863b2b6c9e0f71bbcd4dcbe8b1062e8": {
+    "protocolToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "tokenId": "0x6a6c8e41a6a7ccbea68e1e6a19ece1fdd863b2b6c9e0f71bbcd4dcbe8b1062e8",
+      "name": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    }
+  },
+  "0x98f593f110c5ce358a3a0bedffd12207186060f194304b980f00440bb532d3f2": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x98f593f110c5ce358a3a0bedffd12207186060f194304b980f00440bb532d3f2",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xa0021EF8970104c2d008F38D92f115ad56a9B8e1",
+      "name": "PT Ethena USDe 25JUL2024",
+      "symbol": "PT-USDe-25JUL2024",
+      "decimals": 18
+    }
+  },
+  "0x9ec52d7195bafeba7137fa4d707a0f674a04a6d658c9066bcdbebc6d81eb0011": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x9ec52d7195bafeba7137fa4d707a0f674a04a6d658c9066bcdbebc6d81eb0011",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
+      "name": "ETHPlus",
+      "symbol": "ETH+",
+      "decimals": 18
+    }
+  },
+  "0x9c765f69d8a8e40d2174824bc5107d05d7f0d0f81181048c9403262aeb1ab457": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x9c765f69d8a8e40d2174824bc5107d05d7f0d0f81181048c9403262aeb1ab457",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+      "name": "ChainLink Token",
+      "symbol": "LINK",
+      "decimals": 18
+    }
+  },
+  "0x9a525ea0f1c21880bb34bf4eb7724524e089d1bd6583699437dbe4a92ba3509d": {
+    "protocolToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "tokenId": "0x9a525ea0f1c21880bb34bf4eb7724524e089d1bd6583699437dbe4a92ba3509d",
+      "name": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "symbol": "USDe",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0x162492d45b6fc0e8d66f20746317b8e93554b8c5dcdd196454e98a0fcde027f9": {
+    "protocolToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "tokenId": "0x162492d45b6fc0e8d66f20746317b8e93554b8c5dcdd196454e98a0fcde027f9",
+      "name": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "symbol": "wstETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0x80d68c092bbfd55ff1d20443b5c3366d67413bba8d98ea89f9c24fbf6942c2f2": {
+    "protocolToken": {
+      "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "tokenId": "0x80d68c092bbfd55ff1d20443b5c3366d67413bba8d98ea89f9c24fbf6942c2f2",
+      "name": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "symbol": "sUSDe",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "name": "Staked USDe",
+      "symbol": "sUSDe",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0xc118d50277e7334ef78fed7dc33183a5b0dd5612dc936ac8f3444371d64ffbe2": {
+    "protocolToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "tokenId": "0xc118d50277e7334ef78fed7dc33183a5b0dd5612dc936ac8f3444371d64ffbe2",
+      "name": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "underlyingToken": {
+      "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "collateralToken": {
+      "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0x15ecb004887e8d2c55ceb542d329f411a410268e77aca53337513f0330a26185": {
+    "protocolToken": {
+      "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+      "tokenId": "0x15ecb004887e8d2c55ceb542d329f411a410268e77aca53337513f0330a26185",
+      "name": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+      "symbol": "ezETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0x397f43e433aac18a72478d695d8ffa9713e9da2addb778726b5b4d352eb92cfc": {
+    "protocolToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "tokenId": "0x397f43e433aac18a72478d695d8ffa9713e9da2addb778726b5b4d352eb92cfc",
+      "name": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0xff8f88210d07997346e18c58f07ad4c4859a66f4a0185595122a7f81f561e234": {
+    "protocolToken": {
+      "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "tokenId": "0xff8f88210d07997346e18c58f07ad4c4859a66f4a0185595122a7f81f561e234",
+      "name": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "symbol": "weETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0xf6968c7556ab96561faf472ea9fd7bb27c5c4b8d29834c4a09654493f5742dea": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0xf6968c7556ab96561faf472ea9fd7bb27c5c4b8d29834c4a09654493f5742dea",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0x94bb71145cb48e1ef140744b3387504d21d8dfb4a5afa7a86a6642fb1de03541": {
+    "protocolToken": {
+      "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+      "tokenId": "0x94bb71145cb48e1ef140744b3387504d21d8dfb4a5afa7a86a6642fb1de03541",
+      "name": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+      "symbol": "sDAI",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+      "name": "Savings Dai",
+      "symbol": "sDAI",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0x38e0e4e9271b14c03fc982d337c4651dd611e32aeba4d2530cc2d7edabbe7d68": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x38e0e4e9271b14c03fc982d337c4651dd611e32aeba4d2530cc2d7edabbe7d68",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x67C2A8aC5dcDE1b91299261fE16022b43d9DF69F",
+      "name": "MyToken",
+      "symbol": "MT",
+      "decimals": 18
+    }
+  },
+  "0xb7aaedc202cc26f4d714507605efdd2d03cf9f4994a814cb19bb49a513a506a8": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0xb7aaedc202cc26f4d714507605efdd2d03cf9f4994a814cb19bb49a513a506a8",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+      "name": "rsETH",
+      "symbol": "rsETH",
+      "decimals": 18
+    }
+  },
+  "0x0eed5a89c7d397d02fd0b9b8e42811ca67e50ed5aeaa4f22e506516c716cfbbf": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x0eed5a89c7d397d02fd0b9b8e42811ca67e50ed5aeaa4f22e506516c716cfbbf",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
+      "name": "pufETH",
+      "symbol": "pufETH",
+      "decimals": 18
+    }
+  },
+  "0x2b1800a3b96cc786e4ae6d8f0c8047c0000fc2587939a3fbf14301a170d76537": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0x2b1800a3b96cc786e4ae6d8f0c8047c0000fc2587939a3fbf14301a170d76537",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+      "name": "rswETH",
+      "symbol": "rswETH",
+      "decimals": 18
+    }
+  },
+  "0xeeabdcb98e9f7ec216d259a2c026bbb701971efae0b44eec79a86053f9b128b6": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0xeeabdcb98e9f7ec216d259a2c026bbb701971efae0b44eec79a86053f9b128b6",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+      "name": "rsETH",
+      "symbol": "rsETH",
+      "decimals": 18
+    }
+  },
+  "0x5125fcd427c196c8796f1a7573109ad9884e6ece3208c25a9583b5999b4e03e4": {
+    "protocolToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "tokenId": "0x5125fcd427c196c8796f1a7573109ad9884e6ece3208c25a9583b5999b4e03e4",
+      "name": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      "name": "PayPal USD",
+      "symbol": "PYUSD",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x136471a34f6ef19fE571EFFC1CA711fdb8E49f2b",
+      "name": "US Yield Coin",
+      "symbol": "USYC",
+      "decimals": 6
+    }
+  },
+  "0xbd33e0ae076c82cfd0fa8d759ea83a296190f9f98d9f79b74a0eb4a294d8bf42": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0xbd33e0ae076c82cfd0fa8d759ea83a296190f9f98d9f79b74a0eb4a294d8bf42",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    }
+  },
+  "0x28c028a1af0fa01da5b9c46bb8d999e3e8e65b8304edc09fd8cbaef03a64cb35": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x28c028a1af0fa01da5b9c46bb8d999e3e8e65b8304edc09fd8cbaef03a64cb35",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    }
+  },
+  "0xea023e57814fb9a814a5a9ee9f3e7ece5b771dd8cc703e50b911e9cde064a12d": {
+    "protocolToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "tokenId": "0xea023e57814fb9a814a5a9ee9f3e7ece5b771dd8cc703e50b911e9cde064a12d",
+      "name": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xDcEe70654261AF21C44c093C300eD3Bb97b78192",
+      "name": "Wrapped OETH",
+      "symbol": "WOETH",
+      "decimals": 18
+    }
+  },
+  "0xe4cfbee9af4ad713b41bf79f009ca02b17c001a0c0e7bd2e6a89b1111b3d3f08": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0xe4cfbee9af4ad713b41bf79f009ca02b17c001a0c0e7bd2e6a89b1111b3d3f08",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x18084fbA666a33d37592fA2633fD49a74DD93a88",
+      "name": "tBTC v2",
+      "symbol": "tBTC",
+      "decimals": 18
+    }
+  },
+  "0x55f82d3c3e0d2c64c3ca4aab01e3038489c9b3b8714ab277d9c61c2a14c1f066": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x55f82d3c3e0d2c64c3ca4aab01e3038489c9b3b8714ab277d9c61c2a14c1f066",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x6ee2b5E19ECBa773a352E5B21415Dc419A700d1d",
+      "name": "PT ether.fi weETH 26DEC2024",
+      "symbol": "PT-weETH-26DEC2024",
+      "decimals": 18
+    }
+  },
+  "0x718af3af39b183758849486340b69466e3e89b84b7884188323416621ee91cb7": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x718af3af39b183758849486340b69466e3e89b84b7884188323416621ee91cb7",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+      "name": "Uniswap",
+      "symbol": "UNI",
+      "decimals": 18
+    }
+  },
+  "0x3cc3913fc5f88bd2b5276d1be37f11a4ac79f45e209909dbeffa6fbd013ff01e": {
+    "protocolToken": {
+      "address": "0x73A15FeD60Bf67631dC6cd7Bc5B6e8da8190aCF5",
+      "tokenId": "0x3cc3913fc5f88bd2b5276d1be37f11a4ac79f45e209909dbeffa6fbd013ff01e",
+      "name": "0x73A15FeD60Bf67631dC6cd7Bc5B6e8da8190aCF5",
+      "symbol": "USD0",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x73A15FeD60Bf67631dC6cd7Bc5B6e8da8190aCF5",
+      "name": "Usual USD",
+      "symbol": "USD0",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "name": "Staked USDe",
+      "symbol": "sUSDe",
+      "decimals": 18
+    }
+  },
+  "0x62428c0cb931a0ec133a646e166914561185b7da30f7c5f877471c6718420a71": {
+    "protocolToken": {
+      "address": "0x73A15FeD60Bf67631dC6cd7Bc5B6e8da8190aCF5",
+      "tokenId": "0x62428c0cb931a0ec133a646e166914561185b7da30f7c5f877471c6718420a71",
+      "name": "0x73A15FeD60Bf67631dC6cd7Bc5B6e8da8190aCF5",
+      "symbol": "USD0",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x73A15FeD60Bf67631dC6cd7Bc5B6e8da8190aCF5",
+      "name": "Usual USD",
+      "symbol": "USD0",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "name": "USDe",
+      "symbol": "USDe",
+      "decimals": 18
+    }
+  },
+  "0xb6c1599ac357c1b23fcd46f4ef69495fb11d91bc0fa90c7c3e6ab644592c8017": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0xb6c1599ac357c1b23fcd46f4ef69495fb11d91bc0fa90c7c3e6ab644592c8017",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0x6ee2b5E19ECBa773a352E5B21415Dc419A700d1d",
+      "name": "PT ether.fi weETH 26DEC2024",
+      "symbol": "PT-weETH-26DEC2024",
+      "decimals": 18
+    }
+  },
+  "0xed9e817ac29464b3cc520bf124fb333c330021a8ae768889f414d21df35686e0": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0xed9e817ac29464b3cc520bf124fb333c330021a8ae768889f414d21df35686e0",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xf7906F274c174A52d444175729E3fa98f9bde285",
+      "name": "PT Renzo ezETH 26DEC2024",
+      "symbol": "PT-ezETH-26DEC2024",
+      "decimals": 18
+    }
+  },
+  "0x7e9c708876fa3816c46aeb08937b51aa0461c2af3865ecb306433db8a80b1d1b": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0x7e9c708876fa3816c46aeb08937b51aa0461c2af3865ecb306433db8a80b1d1b",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
+      "name": "pufETH",
+      "symbol": "pufETH",
+      "decimals": 18
+    }
+  },
+  "0xa42ba90e4d3013dee8eb0d7bb7ae0817297337eeecd525dbdd48c7b5c5e6988d": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0xa42ba90e4d3013dee8eb0d7bb7ae0817297337eeecd525dbdd48c7b5c5e6988d",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
+      "name": "pufETH",
+      "symbol": "pufETH",
+      "decimals": 18
+    }
+  },
+  "0x60fce64eeeaec462a3fdf674f786ad71e4eef6e717d848d992a8631a5cb0b4b2": {
+    "protocolToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "tokenId": "0x60fce64eeeaec462a3fdf674f786ad71e4eef6e717d848d992a8631a5cb0b4b2",
+      "name": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "underlyingToken": {
+      "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+      "name": "USDA",
+      "symbol": "USDA",
+      "decimals": 18
+    },
+    "collateralToken": {
+      "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "name": "Wrapped eETH",
+      "symbol": "weETH",
+      "decimals": 18
+    }
+  },
+  "0xbef47159fd478cdd8c34073b71f97ca796aad295a87192fcffc813fad60de9f4": {
+    "protocolToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "tokenId": "0xbef47159fd478cdd8c34073b71f97ca796aad295a87192fcffc813fad60de9f4",
+      "name": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "underlyingToken": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "collateralToken": {
+      "address": "0x35D8949372D46B7a3D5A56006AE77B215fc69bC0",
+      "name": "USD0 Liquid Bond",
+      "symbol": "USD0++",
       "decimals": 18
     }
   }
