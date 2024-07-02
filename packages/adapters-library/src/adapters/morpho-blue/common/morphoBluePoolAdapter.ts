@@ -8,7 +8,9 @@ import { CustomJsonRpcProvider } from '../../../core/provider/CustomJsonRpcProvi
 import { filterMapAsync } from '../../../core/utils/filters'
 import { getTokenMetadata } from '../../../core/utils/getTokenMetadata'
 import { logger } from '../../../core/utils/logger'
+import { IProtocolAdapter } from '../../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -54,9 +56,14 @@ const morphoBlueContractAddresses: Partial<
   },
 }
 
-export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
+export abstract class MorphoBluePoolAdapter
+  implements IMetadataBuilder, IProtocolAdapter
+{
   protocolId: Protocol
   chainId: Chain
+
+  abstract productId: string
+  abstract adapterSettings: AdapterSettings
 
   protected _provider: CustomJsonRpcProvider
 
@@ -79,12 +86,15 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
   abstract getProtocolDetails(): ProtocolDetails
 
   async buildMetadata() {
-    const marketIdObjects = await this.graphQlPoolExtraction(Chain.Ethereum)
-    const marketIds = marketIdObjects.map((obj) => obj.marketId)
     const morphoBlueContract = MorphoBlue__factory.connect(
       morphoBlueContractAddresses[this.protocolId]![this.chainId]!,
       this._provider,
     )
+
+    const createMarketFilter = morphoBlueContract.filters.CreateMarket()
+    const marketIds = (
+      await morphoBlueContract.queryFilter(createMarketFilter, 0, 'latest')
+    ).map((event) => event.args.id)
 
     const metadataObject: MorphoBlueAdapterMetadata = {}
 
@@ -616,52 +626,52 @@ export abstract class MorphoBluePoolAdapter implements IMetadataBuilder {
   }
 
   // Whitelisted markets thanks to the below graphql extraction:
-  private async graphQlPoolExtraction(chainId: typeof Chain.Ethereum): Promise<
-    {
-      marketId: string
-    }[]
-  > {
-    const numberOfMarkets = 1000
-    const minVolumeUSD = 1000000
-    const graphQueryUrl: Record<
-      typeof Chain.Ethereum,
-      {
-        url: string
-        query: string
-      }
-    > = {
-      [Chain.Ethereum]: {
-        url: 'https://api.thegraph.com/subgraphs/name/morpho-association/morpho-blue',
-        query: `{ markets(first: ${numberOfMarkets} where: {totalValueLockedUSD_gt: ${minVolumeUSD}} orderBy: totalValueLockedUSD orderDirection: desc) {id}}`,
-      },
-    }
+  // private async graphQlPoolExtraction(chainId: typeof Chain.Ethereum): Promise<
+  //   {
+  //     marketId: string
+  //   }[]
+  // > {
+  //   const numberOfMarkets = 1000
+  //   const minVolumeUSD = 1000000
+  //   const graphQueryUrl: Record<
+  //     typeof Chain.Ethereum,
+  //     {
+  //       url: string
+  //       query: string
+  //     }
+  //   > = {
+  //     [Chain.Ethereum]: {
+  //       url: 'https://api.thegraph.com/subgraphs/name/morpho-association/morpho-blue',
+  //       query: `{ markets(first: ${numberOfMarkets} where: {totalValueLockedUSD_gt: ${minVolumeUSD}} orderBy: totalValueLockedUSD orderDirection: desc) {id}}`,
+  //     },
+  //   }
 
-    const { url, query } = graphQueryUrl[chainId]
+  //   const { url, query } = graphQueryUrl[chainId]
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        query,
-      }),
-    })
+  //   const response = await fetch(url, {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //       query,
+  //     }),
+  //   })
 
-    const gqlResponse: {
-      data: {
-        markets: [
-          {
-            id: string
-          },
-        ]
-      }
-    } = await response.json()
+  //   const gqlResponse: {
+  //     data: {
+  //       markets: [
+  //         {
+  //           id: string
+  //         },
+  //       ]
+  //     }
+  //   } = await response.json()
 
-    return gqlResponse.data.markets.map((market) => {
-      return {
-        marketId: market.id,
-      }
-    })
-  }
+  //   return gqlResponse.data.markets.map((market) => {
+  //     return {
+  //       marketId: market.id,
+  //     }
+  //   })
+  // }
 }
 
 // NOTE: The APY/APR feature has been removed as of March 2024.

@@ -15,7 +15,7 @@
   "snapshot": [
     {
       "protocolId": "morpho-blue",
-      "name": "MorphoBlue",
+      "name": "MorphoBlue Supply",
       "description": "Morpho Blue DeFi adapter on the supply side",
       "siteUrl": "https://app.morpho.org/",
       "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
@@ -191,7 +191,7 @@
     },
     {
       "protocolId": "morpho-blue",
-      "name": "MorphoBlue",
+      "name": "MorphoBlue Borrow",
       "description": "Morpho Blue DeFi adapter on the borrow side",
       "siteUrl": "https://app.morpho.org/",
       "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",

@@ -3,7 +3,7 @@
   "snapshot": [
     {
       "protocolId": "morpho-blue",
-      "name": "MorphoBlue",
+      "name": "MorphoBlue Supply",
       "description": "Morpho Blue DeFi adapter on the supply side",
       "siteUrl": "https://app.morpho.org/",
       "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
@@ -14,63 +14,23 @@
       "tokens": [
         {
           "type": "protocol",
-          "totalSupplyRaw": "302537599740838967223487775n",
-          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-          "name": "Dai Stablecoin",
-          "symbol": "DAI",
-          "decimals": 18,
-          "totalSupply": 302537599.74083894,
-          "price": 1.0008388019504717
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "51170521518120n",
-          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-          "name": "USD Coin",
-          "symbol": "USDC",
-          "decimals": 6,
-          "totalSupply": 51170521.51812,
-          "price": 0.9996262135294435
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "31618928024941462582557n",
+          "totalSupplyRaw": "31618957225899334840265n",
           "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
           "name": "Wrapped Ether",
           "symbol": "WETH",
           "decimals": 18,
-          "totalSupply": 31618.928024941462,
+          "totalSupply": 31618.957225899336,
           "price": 3148.07
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "21851190090898n",
-          "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-          "name": "Tether USD",
-          "symbol": "USDT",
+          "totalSupplyRaw": "51734428976017n",
+          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+          "name": "USD Coin",
+          "symbol": "USDC",
           "decimals": 6,
-          "totalSupply": 21851190.090898,
-          "price": 1.0015210739210858
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "4841089515856n",
-          "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
-          "name": "PayPal USD",
-          "symbol": "PYUSD",
-          "decimals": 6,
-          "totalSupply": 4841089.515856,
-          "price": 0.7741878827967211
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "238681837715399813875676009n",
-          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-          "name": "USDe",
-          "symbol": "USDe",
-          "decimals": 18,
-          "totalSupply": 238681837.7153998,
-          "price": 1.00144502012366
+          "totalSupply": 51734428.976017,
+          "price": 0.9996262135294435
         },
         {
           "type": "protocol",
@@ -108,6 +68,94 @@
         },
         {
           "type": "protocol",
+          "totalSupplyRaw": "22107762984144n",
+          "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+          "name": "Tether USD",
+          "symbol": "USDT",
+          "decimals": 6,
+          "totalSupply": 22107762.984144,
+          "price": 1.0015210739210858
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "5062089328731n",
+          "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+          "name": "PayPal USD",
+          "symbol": "PYUSD",
+          "decimals": 6,
+          "totalSupply": 5062089.328731,
+          "price": 0.7741878827967211
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "49028567760236166826028n",
+          "address": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+          "name": "Monerium EUR emoney",
+          "symbol": "EURe",
+          "decimals": 18,
+          "totalSupply": 49028.56776023617,
+          "price": 1.109087777898758
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "302650946779910861532473019n",
+          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+          "name": "Dai Stablecoin",
+          "symbol": "DAI",
+          "decimals": 18,
+          "totalSupply": 302650946.77991086,
+          "price": 1.0008388019504717
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "69587543889n",
+          "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+          "name": "Wrapped BTC",
+          "symbol": "WBTC",
+          "decimals": 8,
+          "totalSupply": 695.87543889,
+          "price": 64587.82340895568
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "3000104003555598586427970n",
+          "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+          "name": "USDA",
+          "symbol": "USDA",
+          "decimals": 18,
+          "totalSupply": 3000104.0035555987
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "500000129n",
+          "address": "0xcbfb9B444d9735C345Df3A0F66cd89bD741692E9",
+          "name": "USDC",
+          "symbol": "USDC",
+          "decimals": 6,
+          "totalSupply": 500.000129
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "6000000000000000000n",
+          "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+          "name": "Frax",
+          "symbol": "FRAX",
+          "decimals": 18,
+          "totalSupply": 6,
+          "price": 0.9990163266457361
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "238681837715399813875676009n",
+          "address": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+          "name": "USDe",
+          "symbol": "USDe",
+          "decimals": 18,
+          "totalSupply": 238681837.7153998,
+          "price": 1.00144502012366
+        },
+        {
+          "type": "protocol",
           "totalSupplyRaw": "86109486272629780468883780n",
           "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
           "name": "Staked USDe",
@@ -137,16 +185,6 @@
           "decimals": 18,
           "totalSupply": 10883.856609073047,
           "price": 3172.2117904738793
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "69572542619n",
-          "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-          "name": "Wrapped BTC",
-          "symbol": "WBTC",
-          "decimals": 8,
-          "totalSupply": 695.72542619,
-          "price": 64587.82340895568
         },
         {
           "type": "protocol",
@@ -182,6 +220,15 @@
         },
         {
           "type": "protocol",
+          "totalSupplyRaw": "1406685696491721583451n",
+          "address": "0xcA2A7068e551d5C4482eb34880b194E4b945712F",
+          "name": "Wrapped Backed IB01 $ Treasury Bond 0-1yr",
+          "symbol": "wbIB01",
+          "decimals": 18,
+          "totalSupply": 1406.6856964917215
+        },
+        {
+          "type": "protocol",
           "totalSupplyRaw": "612682066143635831423n",
           "address": "0xf1C9acDc66974dFB6dEcB12aA385b9cD01190E38",
           "name": "Staked ETH",
@@ -204,18 +251,114 @@
         },
         {
           "type": "protocol",
+          "totalSupplyRaw": "5960000000n",
+          "address": "0x21728dD7bC8e643667331643dC5f7E300F351E72",
+          "name": "XP.AIGUILP.S",
+          "symbol": "XPE",
+          "decimals": 6,
+          "totalSupply": 5960
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "100000000000000n",
+          "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+          "name": "Rocket Pool ETH",
+          "symbol": "rETH",
+          "decimals": 18,
+          "tokens": [
+            {
+              "address": "0x0000000000000000000000000000000000000000",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "110370023588162n",
+              "totalSupply": 0.000110370023588162,
+              "price": 3148.07,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "totalSupply": 0.0001
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "520590261000000000000n",
+          "address": "0x95D7337d43340E2721960Dc402D9b9117f0d81a2",
+          "name": "Wrapped Backed GOVIES 0-6 months EURO investment grade",
+          "symbol": "wbC3M",
+          "decimals": 18,
+          "totalSupply": 520.590261
+        },
+        {
+          "type": "protocol",
           "totalSupplyRaw": "332970995998433038482n",
           "address": "0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6",
           "name": "Autocompounding Pirex Ether",
           "symbol": "apxETH",
           "decimals": 18,
           "totalSupply": 332.970995998433
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "7101000000000000000000n",
+          "address": "0xDD629E5241CbC5919847783e6C96B2De4754e438",
+          "name": "mTBILL",
+          "symbol": "mTBILL",
+          "decimals": 18,
+          "totalSupply": 7101
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "5000000000000000n",
+          "address": "0x454bB3cb427B21e1c052A080e21A57753cd6969e",
+          "name": "IdleCDO AA Tranche - Re7WETH",
+          "symbol": "AA_Re7WETH",
+          "decimals": 18,
+          "totalSupply": 0.005
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "9000000000000000n",
+          "address": "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+          "name": "rsETH",
+          "symbol": "rsETH",
+          "decimals": 18,
+          "totalSupply": 0.009,
+          "price": 3159.0071739589375
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "5000000000n",
+          "address": "0xCE8e559Ac89c2bDC97Bdb5F58705c54dB9cB77dC",
+          "name": "XP.LEVANNA.S",
+          "symbol": "XPC",
+          "decimals": 6,
+          "totalSupply": 5000
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "3000000000n",
+          "address": "0x910836B41791e07B4AC107c0DFbc41Ffd07d2702",
+          "name": "TOKEN",
+          "symbol": "TOKEN",
+          "decimals": 6,
+          "totalSupply": 3000
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "70030000000000000000n",
+          "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+          "name": "Maker",
+          "symbol": "MKR",
+          "decimals": 18,
+          "totalSupply": 70.03,
+          "price": 3163.2831710836317
         }
       ]
     },
     {
       "protocolId": "morpho-blue",
-      "name": "MorphoBlue",
+      "name": "MorphoBlue Borrow",
       "description": "Morpho Blue DeFi adapter on the borrow side",
       "siteUrl": "https://app.morpho.org/",
       "iconUrl": "https://cdn.morpho.org/images/v2/morpho/favicon.png",
@@ -226,53 +369,101 @@
       "tokens": [
         {
           "type": "protocol",
-          "totalSupplyRaw": "233068966359363911711881911n",
-          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-          "name": "Dai Stablecoin",
-          "symbol": "DAI",
-          "decimals": 18,
-          "totalSupply": 233068966.3593639,
-          "price": 1.0008388019504717
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "30572613792930n",
-          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-          "name": "USD Coin",
-          "symbol": "USDC",
-          "decimals": 6,
-          "totalSupply": 30572613.79293,
-          "price": 0.9996262135294435
-        },
-        {
-          "type": "protocol",
-          "totalSupplyRaw": "26361297645260470083718n",
+          "totalSupplyRaw": "26361300128429929288057n",
           "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
           "name": "Wrapped Ether",
           "symbol": "WETH",
           "decimals": 18,
-          "totalSupply": 26361.29764526047,
+          "totalSupply": 26361.300128429928,
           "price": 3148.07
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "18193276491266n",
+          "totalSupplyRaw": "31072381051044n",
+          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+          "name": "USD Coin",
+          "symbol": "USDC",
+          "decimals": 6,
+          "totalSupply": 31072381.051044,
+          "price": 0.9996262135294435
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "18386966765574n",
           "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
           "name": "Tether USD",
           "symbol": "USDT",
           "decimals": 6,
-          "totalSupply": 18193276.491266,
+          "totalSupply": 18386966.765574,
           "price": 1.0015210739210858
         },
         {
           "type": "protocol",
-          "totalSupplyRaw": "2661694744540n",
+          "totalSupplyRaw": "2794484742260n",
           "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
           "name": "PayPal USD",
           "symbol": "PYUSD",
           "decimals": 6,
-          "totalSupply": 2661694.74454,
+          "totalSupply": 2794484.74226,
           "price": 0.7741878827967211
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "49028567760236166826028n",
+          "address": "0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f",
+          "name": "Monerium EUR emoney",
+          "symbol": "EURe",
+          "decimals": 18,
+          "totalSupply": 49028.56776023617,
+          "price": 1.109087777898758
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "233169635216723041098474783n",
+          "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+          "name": "Dai Stablecoin",
+          "symbol": "DAI",
+          "decimals": 18,
+          "totalSupply": 233169635.21672305,
+          "price": 1.0008388019504717
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "15001270n",
+          "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+          "name": "Wrapped BTC",
+          "symbol": "WBTC",
+          "decimals": 8,
+          "totalSupply": 0.1500127,
+          "price": 64587.82340895568
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "3603555598586427970n",
+          "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+          "name": "USDA",
+          "symbol": "USDA",
+          "decimals": 18,
+          "totalSupply": 3.603555598586428
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "500000129n",
+          "address": "0xcbfb9B444d9735C345Df3A0F66cd89bD741692E9",
+          "name": "USDC",
+          "symbol": "USDC",
+          "decimals": 6,
+          "totalSupply": 500.000129
+        },
+        {
+          "type": "protocol",
+          "totalSupplyRaw": "6000000000000000000n",
+          "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+          "name": "Frax",
+          "symbol": "FRAX",
+          "decimals": 18,
+          "totalSupply": 6,
+          "price": 0.9990163266457361
         }
       ]
     }
