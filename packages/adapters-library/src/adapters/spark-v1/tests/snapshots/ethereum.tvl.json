@@ -1,0 +1,98 @@
+{
+  "blockNumber": 20112246,
+  "snapshot": [
+    {
+      "protocolId": "spark-v1",
+      "name": "SparkV1",
+      "description": "SparkV1 defi adapter",
+      "siteUrl": "https://spark.fi",
+      "iconUrl": "https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "sp-token",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x59cD1C87501baa753d0B5B5Ab5D8416A45cD71DB",
+          "name": "Spark WETH",
+          "symbol": "spWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "243133249923944625998155n",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "totalSupplyRaw": "88563368348047950177425n",
+              "type": "underlying",
+              "totalSupply": 88563.36834804795,
+              "price": 3526.96,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "totalSupply": 243133.24992394462
+        },
+        {
+          "address": "0x12B54025C112Aa61fAce2CDB7118740875A566E9",
+          "name": "Spark wstETH",
+          "symbol": "spwstETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "518540272499681259196516n",
+          "tokens": [
+            {
+              "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+              "name": "Wrapped liquid staked Ether 2.0",
+              "symbol": "wstETH",
+              "decimals": 18,
+              "totalSupplyRaw": "518492944686255490570005n",
+              "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+                  "name": "Liquid staked Ether 2.0",
+                  "symbol": "stETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "totalSupplyRaw": "606673463745308430784010n",
+                  "tokens": [
+                    {
+                      "address": "0x0000000000000000000000000000000000000000",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "totalSupplyRaw": "606673463745308430784010n",
+                      "totalSupply": 606673.4637453085,
+                      "price": 3526.96,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
+                  "totalSupply": 606673.4637453085,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo.png"
+                }
+              ],
+              "totalSupply": 518492.9446862555,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo.png"
+            }
+          ],
+          "totalSupply": 518540.2724996813
+        }
+      ]
+    },
+    {
+      "protocolId": "spark-v1",
+      "name": "Spark V1 VariableDebtToken",
+      "description": "Spark v1 defi adapter for variable interest-accruing token",
+      "siteUrl": "https://spark.fi",
+      "iconUrl": "https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico",
+      "positionType": "borrow",
+      "chainId": 1,
+      "productId": "variable-debt-token",
+      "success": true,
+      "tokens": []
+    }
+  ]
+}

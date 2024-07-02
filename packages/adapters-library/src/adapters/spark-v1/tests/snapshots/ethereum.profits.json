@@ -1,0 +1,37 @@
+{
+  "blockNumber": 20112246,
+  "snapshot": [
+    {
+      "protocolId": "spark-v1",
+      "name": "SparkV1",
+      "description": "SparkV1 defi adapter",
+      "siteUrl": "https://spark.fi",
+      "iconUrl": "https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "sp-token",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x59cD1C87501baa753d0B5B5Ab5D8416A45cD71DB",
+          "name": "Spark WETH",
+          "symbol": "spWETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -3394936.1272783875,
+          "performance": -0.013985627622908451,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 0,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 242744638.91184145,
+            "endPositionValue": 239349702.78456306
+          }
+        }
+      ],
+      "fromBlock": 20105100,
+      "toBlock": 20112246
+    }
+  ]
+}

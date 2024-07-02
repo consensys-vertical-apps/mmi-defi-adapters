@@ -1,0 +1,41 @@
+{
+  "blockNumber": 20112246,
+  "aggregatedValues": ["USD239,349,702.78"],
+  "snapshot": [
+    {
+      "protocolId": "spark-v1",
+      "name": "SparkV1",
+      "description": "SparkV1 defi adapter",
+      "siteUrl": "https://spark.fi",
+      "iconUrl": "https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "sp-token",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x59cD1C87501baa753d0B5B5Ab5D8416A45cD71DB",
+          "name": "Spark WETH",
+          "symbol": "spWETH",
+          "decimals": 18,
+          "balanceRaw": "67862891210720582963528n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "balanceRaw": "67862891210720582963528n",
+              "type": "underlying",
+              "balance": 67862.89121072058,
+              "price": 3526.96,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+            }
+          ],
+          "balance": 67862.89121072058
+        }
+      ]
+    }
+  ]
+}

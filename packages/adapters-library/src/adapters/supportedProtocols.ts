@@ -70,6 +70,13 @@ import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAd
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
+import {
+  SparkV1SpTokenAdapter,
+  WriteActionInputs as SparkV1SpTokenWriteActionInputs,
+} from './spark-v1/products/sp-token/sparkV1SpTokenAdapter'
+
+import { SparkV1VariableDebtTokenPoolAdapter } from './spark-v1/products/variable-debt-token/sparkV1VariableDebtTokenAdapter'
+
 import { PendleYieldTokenAdapter } from './pendle/products/yield-token/pendleYieldTokenAdapter'
 
 import { PendlePrincipleTokenAdapter } from './pendle/products/principle-token/pendlePrincipleTokenAdapter'
@@ -299,6 +306,13 @@ export const supportedProtocols: Record<
     [Chain.Base]: [SonneSupplyMarketAdapter, SonneBorrowMarketAdapter],
   },
 
+  [Protocol.SparkV1]: {
+    [Chain.Ethereum]: [
+      SparkV1SpTokenAdapter,
+      SparkV1VariableDebtTokenPoolAdapter,
+    ],
+  },
+
   [Protocol.StakeWise]: {
     [Chain.Ethereum]: [StakeWiseOsEthAdapter],
   },
@@ -381,6 +395,7 @@ export const WriteActionInputs = {
   AaveV3ATokenWriteActionInputs,
   CompoundV2SupplyMarketWriteActionInputs,
   CompoundV2BorrowMarketWriteActionInputs,
+  SparkV1SpTokenWriteActionInputs,
 }
 
 export const GetTransactionParamsSchema = z.union([
@@ -450,6 +465,36 @@ export const GetTransactionParamsSchema = z.union([
       action: z.literal('repay'),
       inputs:
         WriteActionInputs['CompoundV2BorrowMarketWriteActionInputs']['repay'],
+    }),
+  ]),
+  z.discriminatedUnion('action', [
+    z.object({
+      protocolId: z.literal(Protocol.SparkV1),
+      productId: z.literal('sp-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('deposit'),
+      inputs: WriteActionInputs['SparkV1SpTokenWriteActionInputs']['deposit'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.SparkV1),
+      productId: z.literal('sp-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('withdraw'),
+      inputs: WriteActionInputs['SparkV1SpTokenWriteActionInputs']['withdraw'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.SparkV1),
+      productId: z.literal('sp-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('borrow'),
+      inputs: WriteActionInputs['SparkV1SpTokenWriteActionInputs']['borrow'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.SparkV1),
+      productId: z.literal('sp-token'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('repay'),
+      inputs: WriteActionInputs['SparkV1SpTokenWriteActionInputs']['repay'],
     }),
   ]),
 ])

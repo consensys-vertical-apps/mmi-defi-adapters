@@ -124,6 +124,10 @@ import { Chain } from '../constants/chains'
 
 import BeefyCowTokenAvalancheProtocolToken from '../../adapters/beefy/products/cow-token/metadata/avalanche.protocol-token.json'
 
+import SparkV1SpTokenEthereumSpTokenV1 from '../../adapters/spark-v1/products/sp-token/metadata/ethereum.sp-token-v1.json'
+
+import SparkV1VariableDebtTokenEthereumVariableDebtTokenV1 from '../../adapters/spark-v1/products/variable-debt-token/metadata/ethereum.variable-debt-token-v1.json'
+
 import PendleYieldTokenEthereumMarket from '../../adapters/pendle/products/yield-token/metadata/ethereum.market.json'
 
 import PendlePrincipleTokenEthereumMarket from '../../adapters/pendle/products/principle-token/metadata/ethereum.market.json'
@@ -1209,6 +1213,24 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     SonneSupplyMarketOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SparkV1,
+      productId: 'sp-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'sp-token-v1',
+    }),
+    SparkV1SpTokenEthereumSpTokenV1,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.SparkV1,
+      productId: 'variable-debt-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'variable-debt-token-v1',
+    }),
+    SparkV1VariableDebtTokenEthereumVariableDebtTokenV1,
   ],
   [
     metadataKey({

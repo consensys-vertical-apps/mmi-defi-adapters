@@ -1,0 +1,17 @@
+{
+  "snapshot": {
+    "protocolId": "spark-v1",
+    "name": "SparkV1",
+    "description": "SparkV1 defi adapter",
+    "siteUrl": "https://spark.fi",
+    "iconUrl": "https://github.com/marsfoundation/spark-app/blob/main/packages/app/public/favicon.ico",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "sp-token",
+    "success": true,
+    "params": {
+      "to": "0xC13e21B648A5Ee794902342038FF3aDAB66BE987",
+      "data": "0x69328dec00000000000000000000000059cd1c87501baa753d0b5b5ab5d8416a45cd71db0000000000000000000000000000000000000000000000008ac7230489e80000000000000000000000000000f8de75c7b95edb6f1e639751318f117663021cf0"
+    }
+  }
+}
