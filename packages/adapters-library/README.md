@@ -20,6 +20,9 @@ Watch the [setup video](https://drive.google.com/file/d/1bp9Y8uxQDYxgIyMTk5945vL
    - `npm i` to install dependencies 
 2. Run project:
    - `npm run dev` to run the project
+
+Continue watching videos for the following steps or, alternatively, find a written version in [Steps to create a read adapter](./readme-new-adapter.md)
+
 ### Build adapter steps
 
 Watch the [build adapter video](https://drive.google.com/file/d/1Pl0yB2d1s-3oKFCXAyRhKx7rK2x43Qtf/view  "Watch the build adapter steps") for a detailed guide.
