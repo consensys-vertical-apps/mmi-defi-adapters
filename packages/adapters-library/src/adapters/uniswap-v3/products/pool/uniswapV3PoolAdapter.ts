@@ -63,6 +63,11 @@ const contractAddresses: Partial<Record<Chain, { positionManager: string }>> = {
 export const maxUint128 = BigInt(2) ** BigInt(128) - BigInt(1)
 
 export class UniswapV3PoolAdapter extends SimplePoolAdapter {
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   productId = 'pool'
   protocolId: Protocol
   chainId: Chain
@@ -128,9 +133,6 @@ export class UniswapV3PoolAdapter extends SimplePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.NonStandardErc20,
-      },
     }
   }
 

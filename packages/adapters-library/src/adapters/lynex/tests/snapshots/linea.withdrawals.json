@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": [],
   "snapshot": {
     "protocolId": "lynex",
     "name": "Lynex Algebra",
@@ -8,9 +9,6 @@
     "positionType": "supply",
     "chainId": 59144,
     "productId": "algebra",
-    "assetDetails": {
-      "type": "NonStandardErc20"
-    },
     "success": true,
     "movements": [
       {

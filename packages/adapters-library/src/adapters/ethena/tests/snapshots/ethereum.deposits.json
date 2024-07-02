@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD2,214.82"],
   "snapshot": {
     "protocolId": "ethena",
     "name": "Ethena",
@@ -8,9 +9,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "ethena",
-    "assetDetails": {
-      "type": "StandardErc20"
-    },
     "success": true,
     "movements": [
       {

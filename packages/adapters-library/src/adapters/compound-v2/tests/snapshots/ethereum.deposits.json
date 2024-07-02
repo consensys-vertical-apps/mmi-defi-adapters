@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD59,672.43"],
   "snapshot": {
     "protocolId": "compound-v2",
     "name": "CompoundV2",
@@ -8,9 +9,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "supply-market",
-    "assetDetails": {
-      "type": "StandardErc20"
-    },
     "success": true,
     "movements": [
       {

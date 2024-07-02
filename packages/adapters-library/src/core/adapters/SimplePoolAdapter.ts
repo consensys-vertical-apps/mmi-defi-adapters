@@ -31,6 +31,11 @@ export abstract class SimplePoolAdapter implements IProtocolAdapter {
   protocolId: Protocol
   abstract productId: string
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   protected provider: CustomJsonRpcProvider
 
   adaptersController: AdaptersController

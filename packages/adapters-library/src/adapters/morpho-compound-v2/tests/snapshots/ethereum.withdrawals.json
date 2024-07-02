@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD150,183.90"],
   "snapshot": {
     "protocolId": "morpho-compound-v2",
     "name": "MorphoCompoundV2",
@@ -8,9 +9,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "optimizer-supply",
-    "assetDetails": {
-      "type": "NonStandardErc20"
-    },
     "success": true,
     "movements": [
       {

@@ -1,5 +1,6 @@
 {
   "blockNumber": 18527822,
+  "aggregatedValues": ["USD5,608,461.96"],
   "snapshot": [
     {
       "protocolId": "maker",
@@ -10,9 +11,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "s-dai",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {

@@ -1,0 +1,37 @@
+{
+  "blockNumber": 20126536,
+  "snapshot": [
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "market",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xc69Ad9baB1dEE23F4605a82b3354F8E40d1E5966",
+          "name": "PT ether.fi weETH 27JUN2024",
+          "symbol": "PT-weETH-27JUN2024",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": 3.688461292383863,
+          "performance": 0.00350429315348393,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 1052.5550034867474,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 1056.2434647791313
+          }
+        }
+      ],
+      "fromBlock": 20076514,
+      "toBlock": 20126536
+    }
+  ]
+}

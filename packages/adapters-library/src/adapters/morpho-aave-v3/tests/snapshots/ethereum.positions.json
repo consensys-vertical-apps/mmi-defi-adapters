@@ -1,5 +1,10 @@
 {
   "blockNumber": 18761230,
+  "aggregatedValues": [
+    "USD444,867.58",
+    "USD107,247,851.31",
+    "USD94,727,397.38"
+  ],
   "snapshot": [
     {
       "protocolId": "morpho-aave-v3",
@@ -10,9 +15,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "optimizer-supply",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -94,9 +96,6 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "optimizer-borrow",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {

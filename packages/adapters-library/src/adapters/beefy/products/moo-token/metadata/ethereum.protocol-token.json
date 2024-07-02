@@ -1,0 +1,526 @@
+{
+  "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5": {
+    "protocolToken": {
+      "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
+      "name": "Moo Curve crvUSD-sUSDe",
+      "symbol": "mooCurveCrvUSD-sUSDe",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+        "name": "Staked USDe",
+        "symbol": "sUSDe",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x57064F49Ad7123C92560882a45518374ad982e85",
+      "name": "sUSDe/crvUSD",
+      "symbol": "crvU-sUSDe",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xa11654Bb4286d0ffCc1f76AacbEf7125ad972BA8": {
+    "protocolToken": {
+      "address": "0xa11654Bb4286d0ffCc1f76AacbEf7125ad972BA8",
+      "name": "Moo Curve sDAI-USDM",
+      "symbol": "mooCurve_sDAI-USDM",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+        "name": "Savings Dai",
+        "symbol": "sDAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+        "name": "Mountain Protocol USD",
+        "symbol": "USDM",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x425BfB93370F14fF525aDb6EaEAcfE1f4e3b5802",
+      "name": "sDAI/USDM Rebase Enjoyer Pool",
+      "symbol": "sdai-usdm",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x5dA90BA82bED0AB701E6762D2bF44E08634d9776": {
+    "protocolToken": {
+      "address": "0x5dA90BA82bED0AB701E6762D2bF44E08634d9776",
+      "name": "Moo Aura weETH/ezETH/rsETH",
+      "symbol": "mooAuraweETH/ezETH/rsETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x848a5564158d84b8A8fb68ab5D004Fae11619A54",
+        "name": "Balancer weETH/ezETH/rswETH",
+        "symbol": "weETH/ezETH/rswETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0",
+        "name": "rswETH",
+        "symbol": "rswETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x848a5564158d84b8A8fb68ab5D004Fae11619A54",
+      "name": "Balancer weETH/ezETH/rswETH",
+      "symbol": "weETH/ezETH/rswETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0x1153211f7E810C73cC45eE09FF9A0742fBB6b467": {
+    "protocolToken": {
+      "address": "0x1153211f7E810C73cC45eE09FF9A0742fBB6b467",
+      "name": "Moo Aura weETH-rETH",
+      "symbol": "mooAuraweETH-rETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x05ff47AFADa98a98982113758878F9A8B9FddA0a",
+        "name": "Balancer weETH/rETH StablePool",
+        "symbol": "weETH/rETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x05ff47AFADa98a98982113758878F9A8B9FddA0a",
+      "name": "Balancer weETH/rETH StablePool",
+      "symbol": "weETH/rETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0x3E1c2C604f60ef142AADAA51aa864f8438f2aaC1": {
+    "protocolToken": {
+      "address": "0x3E1c2C604f60ef142AADAA51aa864f8438f2aaC1",
+      "name": "Moo Aura ezETH-ETH",
+      "symbol": "mooAuraezETH-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x596192bB6e41802428Ac943D2f1476C1Af25CC0E",
+        "name": "Balancer ezETH-WETH Stable Pool",
+        "symbol": "ezETH-WETH-BPT",
+        "decimals": 18
+      },
+      {
+        "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x596192bB6e41802428Ac943D2f1476C1Af25CC0E",
+      "name": "Balancer ezETH-WETH Stable Pool",
+      "symbol": "ezETH-WETH-BPT",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0xAB28C317B34084f29d7623208b5F09C0Dd566a18": {
+    "protocolToken": {
+      "address": "0xAB28C317B34084f29d7623208b5F09C0Dd566a18",
+      "name": "Moo Aura RPL-rETH",
+      "symbol": "mooAuraRPL-rETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xD33526068D116cE69F19A9ee46F0bd304F21A51f",
+        "name": "Rocket Pool Protocol",
+        "symbol": "RPL",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x9F9d900462492D4C21e9523ca95A7CD86142F298",
+      "name": "Balancer 50rETH-50RPL",
+      "symbol": "50rETH-50RPL",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0x9E90aD4810C9eaE0ADFc15801838Dc53cC6ed48a": {
+    "protocolToken": {
+      "address": "0x9E90aD4810C9eaE0ADFc15801838Dc53cC6ed48a",
+      "name": "Moo Aura ALCX-ETH",
+      "symbol": "mooAuraALCX-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF",
+        "name": "Alchemix",
+        "symbol": "ALCX",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xf16aEe6a71aF1A9Bc8F56975A4c2705ca7A782Bc",
+      "name": "20WETH-80ALCX",
+      "symbol": "20WETH-80ALCX",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0xB2975e68b3FAc3b8ff444660cc4cee907367EB0C": {
+    "protocolToken": {
+      "address": "0xB2975e68b3FAc3b8ff444660cc4cee907367EB0C",
+      "name": "Moo Aura ankrETH-wstETH",
+      "symbol": "mooAuraankrETH-wstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xdfE6e7e18f6Cc65FA13C8D8966013d4FdA74b6ba",
+        "name": "Balancer ankrETH/wstETH StablePool",
+        "symbol": "ankrETH/wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xE95A203B1a91a908F9B9CE46459d101078c2c3cb",
+        "name": "Ankr Staked ETH",
+        "symbol": "ankrETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xdfE6e7e18f6Cc65FA13C8D8966013d4FdA74b6ba",
+      "name": "Balancer ankrETH/wstETH StablePool",
+      "symbol": "ankrETH/wstETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0x8D719AD5Cc19d5413A9D11Bd39813847f352De65": {
+    "protocolToken": {
+      "address": "0x8D719AD5Cc19d5413A9D11Bd39813847f352De65",
+      "name": "Moo Aura sDAI-3Pool",
+      "symbol": "mooAurasDAI-3Pool",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x49cbD67651fbabCE12d1df18499896ec87BEf46f",
+        "name": "Balancer sDAI/3Pool",
+        "symbol": "sDAI/3Pool",
+        "decimals": 18
+      },
+      {
+        "address": "0x79c58f70905F734641735BC61e45c19dD9Ad60bC",
+        "name": "Balancer USDC-DAI-USDT Stable Pool",
+        "symbol": "USDC-DAI-USDT",
+        "decimals": 18
+      },
+      {
+        "address": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+        "name": "Savings Dai",
+        "symbol": "sDAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x49cbD67651fbabCE12d1df18499896ec87BEf46f",
+      "name": "Balancer sDAI/3Pool",
+      "symbol": "sDAI/3Pool",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0x7628f57cAA83fa54909a5E46e55F0406dEcE56E6": {
+    "protocolToken": {
+      "address": "0x7628f57cAA83fa54909a5E46e55F0406dEcE56E6",
+      "name": "Moo Uniswap Gamma rETH-ETH",
+      "symbol": "mooUniswapGammarETH-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xa8076aE31e4B6c64D07b1Ed27889924a962a70d3",
+      "name": "xrETH-ETH05",
+      "symbol": "xrETH-ETH05",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x234Fd76985dA4fD505DbAF7A48e119Cd5dFD5C8F": {
+    "protocolToken": {
+      "address": "0x234Fd76985dA4fD505DbAF7A48e119Cd5dFD5C8F",
+      "name": "Moo Aura GHO/USDC/USDT",
+      "symbol": "mooAuraGHO/USDC/USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
+        "name": "Gho Token",
+        "symbol": "GHO",
+        "decimals": 18
+      },
+      {
+        "address": "0x8353157092ED8Be69a9DF8F95af097bbF33Cb2aF",
+        "name": "Balancer GHO/USDT/USDC",
+        "symbol": "GHO/USDT/USDC",
+        "decimals": 18
+      },
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x8353157092ED8Be69a9DF8F95af097bbF33Cb2aF",
+      "name": "Balancer GHO/USDT/USDC",
+      "symbol": "GHO/USDT/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0xc2f9C3F4e4cdE519D5DeA9880C1CA6614E4b3d61": {
+    "protocolToken": {
+      "address": "0xc2f9C3F4e4cdE519D5DeA9880C1CA6614E4b3d61",
+      "name": "Moo Aura Gyro wstETH-ETH",
+      "symbol": "mooAuraGyrowstETH-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xf01b0684C98CD7aDA480BFDF6e43876422fa1Fc1",
+      "name": "Gyroscope ECLP wstETH/wETH",
+      "symbol": "ECLP-wstETH-wETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0x4d7222Eee3c6b67F8e806D0f866B0D666D6182b3": {
+    "protocolToken": {
+      "address": "0x4d7222Eee3c6b67F8e806D0f866B0D666D6182b3",
+      "name": "Moo Aura Gyro wstETH-cbETH",
+      "symbol": "mooAuraGyrowstETH-cbETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
+        "name": "Coinbase Wrapped Staked ETH",
+        "symbol": "cbETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xF7A826D47c8E02835D94fb0Aa40F0cC9505cb134",
+      "name": "Gyroscope ECLP wstETH/cbETH",
+      "symbol": "ECLP-wstETH-cbETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp_locked"
+  },
+  "0xd4D620B23E91031fa08045b6083878f42558d6b9": {
+    "protocolToken": {
+      "address": "0xd4D620B23E91031fa08045b6083878f42558d6b9",
+      "name": "Moo Aura wstETH/sfrxETH/rETH V3",
+      "symbol": "mooAurawstETH/sfrxETH/rETHV3",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x42ED016F826165C2e5976fe5bC3df540C5aD0Af7",
+        "name": "wstETH-rETH-sfrxETH-BPT",
+        "symbol": "wstETH-rETH-sfrxETH-BPT",
+        "decimals": 18
+      },
+      {
+        "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+        "name": "Staked Frax Ether",
+        "symbol": "sfrxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x42ED016F826165C2e5976fe5bC3df540C5aD0Af7",
+      "name": "wstETH-rETH-sfrxETH-BPT",
+      "symbol": "wstETH-rETH-sfrxETH-BPT",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp"
+  },
+  "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD": {
+    "protocolToken": {
+      "address": "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD",
+      "name": "Moo Aura AURA-WETH",
+      "symbol": "mooAuraAURA-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC0c293ce456fF0ED870ADd98a0828Dd4d2903DBF",
+        "name": "Aura",
+        "symbol": "AURA",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xCfCA23cA9CA720B6E98E3Eb9B6aa0fFC4a5C08B9",
+      "name": "50WETH-50AURA",
+      "symbol": "50WETH-50AURA",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp"
+  },
+  "0xe17D6212eAa54D98187026A770dee96f7C264feC": {
+    "protocolToken": {
+      "address": "0xe17D6212eAa54D98187026A770dee96f7C264feC",
+      "name": "Moo Aura rETH-ETH",
+      "symbol": "mooAurarETH-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x1E19CF2D73a72Ef1332C882F20534B6519Be0276",
+      "name": "Balancer rETH Stable Pool",
+      "symbol": "B-rETH-STABLE",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp"
+  }
+}

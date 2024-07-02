@@ -37,6 +37,19 @@ import AngleProtocolSavingsEthereumProtocolTokens from '../../adapters/angle-pro
 import AngleProtocolSavingsLineaProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/linea.protocol-tokens.json'
 import AngleProtocolSavingsOptimismProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/optimism.protocol-tokens.json'
 import AngleProtocolSavingsPolygonProtocolTokens from '../../adapters/angle-protocol/products/savings/metadata/polygon.protocol-tokens.json'
+import BeefyCowTokenArbitrumProtocolToken from '../../adapters/beefy/products/cow-token/metadata/arbitrum.protocol-token.json'
+import BeefyCowTokenBaseProtocolToken from '../../adapters/beefy/products/cow-token/metadata/base.protocol-token.json'
+import BeefyCowTokenLineaProtocolToken from '../../adapters/beefy/products/cow-token/metadata/linea.protocol-token.json'
+import BeefyCowTokenOptimismProtocolToken from '../../adapters/beefy/products/cow-token/metadata/optimism.protocol-token.json'
+import BeefyCowTokenPolygonProtocolToken from '../../adapters/beefy/products/cow-token/metadata/polygon.protocol-token.json'
+import BeefyMooTokenArbitrumProtocolToken from '../../adapters/beefy/products/moo-token/metadata/arbitrum.protocol-token.json'
+import BeefyMooTokenBaseProtocolToken from '../../adapters/beefy/products/moo-token/metadata/base.protocol-token.json'
+import BeefyMooTokenBscProtocolToken from '../../adapters/beefy/products/moo-token/metadata/bsc.protocol-token.json'
+import BeefyMooTokenEthereumProtocolToken from '../../adapters/beefy/products/moo-token/metadata/ethereum.protocol-token.json'
+import BeefyMooTokenFantomProtocolToken from '../../adapters/beefy/products/moo-token/metadata/fantom.protocol-token.json'
+import BeefyMooTokenLineaProtocolToken from '../../adapters/beefy/products/moo-token/metadata/linea.protocol-token.json'
+import BeefyMooTokenOptimismProtocolToken from '../../adapters/beefy/products/moo-token/metadata/optimism.protocol-token.json'
+import BeefyMooTokenPolygonProtocolToken from '../../adapters/beefy/products/moo-token/metadata/polygon.protocol-token.json'
 import ChimpExchangePoolLineaProtocolToken from '../../adapters/chimp-exchange/products/pool/metadata/linea.protocol-token.json'
 import CompoundV2BorrowMarketEthereumProtocolToken from '../../adapters/compound-v2/products/borrow-market/metadata/ethereum.protocol-token.json'
 import CompoundV2SupplyMarketEthereumProtocolToken from '../../adapters/compound-v2/products/supply-market/metadata/ethereum.protocol-token.json'
@@ -65,6 +78,7 @@ import FluxBorrowMarketEthereumProtocolToken from '../../adapters/flux/products/
 import FluxSupplyMarketEthereumProtocolToken from '../../adapters/flux/products/supply-market/metadata/ethereum.protocol-token.json'
 import GmxGlpArbitrumGlp from '../../adapters/gmx/products/glp/metadata/arbitrum.glp.json'
 import GmxGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanche.glp.json'
+import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
 import MendiFinanceBorrowLineaMendi from '../../adapters/mendi-finance/products/borrow/metadata/linea.mendi.json'
 import MendiFinanceSupplyLineaMendi from '../../adapters/mendi-finance/products/supply/metadata/linea.mendi.json'
 import MorphoAaveV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-aave-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
@@ -80,6 +94,10 @@ import PancakeswapV2PoolBaseProtocolToken from '../../adapters/pancakeswap-v2/pr
 import PancakeswapV2PoolBscProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/bsc.protocol-token.json'
 import PancakeswapV2PoolEthereumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/ethereum.protocol-token.json'
 import PancakeswapV2PoolLineaProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/linea.protocol-token.json'
+import PendleMarketArbitrumMarket from '../../adapters/pendle/products/market/metadata/arbitrum.market.json'
+import PendleMarketBscMarket from '../../adapters/pendle/products/market/metadata/bsc.market.json'
+import PendleMarketEthereumMarket from '../../adapters/pendle/products/market/metadata/ethereum.market.json'
+import PendleMarketOptimismMarket from '../../adapters/pendle/products/market/metadata/optimism.market.json'
 import { Protocol } from '../../adapters/protocols'
 import QuickswapV2PoolPolygonProtocolToken from '../../adapters/quickswap-v2/products/pool/metadata/polygon.protocol-token.json'
 import SonneBorrowMarketBaseProtocolToken from '../../adapters/sonne/products/borrow-market/metadata/base.protocol-token.json'
@@ -107,7 +125,7 @@ import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea
 import { Json } from '../../types/json'
 import { Chain } from '../constants/chains'
 
-import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
+import BeefyCowTokenAvalancheProtocolToken from '../../adapters/beefy/products/cow-token/metadata/avalanche.protocol-token.json'
 
 import SparkV1SpTokenEthereumSpTokenV1 from '../../adapters/spark-v1/products/sp-token/metadata/ethereum.sp-token-v1.json'
 
@@ -455,6 +473,132 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-tokens',
     }),
     AngleProtocolSavingsPolygonProtocolTokens,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'cow-token',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    BeefyCowTokenArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'cow-token',
+      chainId: Chain.Avalanche,
+      fileKey: 'protocol-token',
+    }),
+    BeefyCowTokenAvalancheProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'cow-token',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    BeefyCowTokenBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'cow-token',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    BeefyCowTokenLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'cow-token',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    BeefyCowTokenOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'cow-token',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    BeefyCowTokenPolygonProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Base,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenBaseProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenBscProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Fantom,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenFantomProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Optimism,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenOptimismProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Beefy,
+      productId: 'moo-token',
+      chainId: Chain.Polygon,
+      fileKey: 'protocol-token',
+    }),
+    BeefyMooTokenPolygonProtocolToken,
   ],
   [
     metadataKey({
@@ -851,6 +995,42 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     PancakeswapV2PoolLineaProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'market',
+      chainId: Chain.Arbitrum,
+      fileKey: 'market',
+    }),
+    PendleMarketArbitrumMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'market',
+      chainId: Chain.Bsc,
+      fileKey: 'market',
+    }),
+    PendleMarketBscMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'market',
+      chainId: Chain.Ethereum,
+      fileKey: 'market',
+    }),
+    PendleMarketEthereumMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'market',
+      chainId: Chain.Optimism,
+      fileKey: 'market',
+    }),
+    PendleMarketOptimismMarket,
   ],
   [
     metadataKey({

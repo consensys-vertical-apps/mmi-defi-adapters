@@ -58,6 +58,11 @@ export function blankAdapterTemplate({
       protocolId: Protocol
       chainId: Chain
       helpers: Helpers
+
+      adapterSettings = {
+        enablePositionDetectionByProtocolTokenTransfer: Replacements.ENABLE_POSITION_DETECTION_BY_PROTOCOL_TOKEN_TRANSFER.placeholder,
+        includeInUnwrap: Replacements.INCLUDE_IN_UNWRAP.placeholder,
+      }
     
       private provider: CustomJsonRpcProvider
     
@@ -91,9 +96,6 @@ export function blankAdapterTemplate({
           positionType: PositionType.Supply,
           chainId: this.chainId,
           productId: this.productId,
-          assetDetails: {
-            type: Replacements.ASSET_TYPE.placeholder,
-          },
         }
       }
     

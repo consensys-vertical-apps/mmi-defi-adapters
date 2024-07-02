@@ -1,5 +1,6 @@
 {
   "blockNumber": 19383091,
+  "aggregatedValues": ["USD7,575.19", "USD116,358.67", "USD64,954.14"],
   "snapshot": [
     {
       "protocolId": "compound-v2",
@@ -10,9 +11,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "supply-market",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -25,11 +23,11 @@
           "tokens": [
             {
               "address": "0x0000000000000000000000000000000000000000",
-              "symbol": "ETH",
               "name": "Ethereum",
+              "symbol": "ETH",
               "decimals": 18,
-              "balanceRaw": "2000011696849420226n",
               "type": "underlying",
+              "balanceRaw": "2000011696849420194n",
               "balance": 2.00001169684942,
               "price": 3787.57469751,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
@@ -50,9 +48,9 @@
               "name": "Wrapped BTC",
               "symbol": "WBTC",
               "decimals": 8,
-              "balanceRaw": "174311452n",
               "type": "underlying",
-              "balance": 1.74311452,
+              "balanceRaw": "174311380n",
+              "balance": 1.7431138,
               "price": 66753.34156996949,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png"
             }
@@ -70,9 +68,6 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "borrow-market",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {

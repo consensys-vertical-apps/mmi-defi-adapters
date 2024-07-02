@@ -13,6 +13,11 @@ import {
 export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -23,9 +28,6 @@ export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

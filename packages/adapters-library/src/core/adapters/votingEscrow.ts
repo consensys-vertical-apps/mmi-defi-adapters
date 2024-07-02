@@ -51,6 +51,11 @@ export abstract class VotingEscrow
 
   adaptersController: AdaptersController
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   constructor({
     provider,
     chainId,

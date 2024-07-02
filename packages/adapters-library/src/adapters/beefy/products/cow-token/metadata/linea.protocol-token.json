@@ -1,0 +1,71 @@
+{
+  "0x97BaB27d3EC82a43aFC60ce521ac121CD6F6Cc3e": {
+    "protocolToken": {
+      "address": "0x97BaB27d3EC82a43aFC60ce521ac121CD6F6Cc3e",
+      "name": "Cow Oku Linea USDC-USDT",
+      "symbol": "cowOkuLineaUSDC-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x0Db58cB843B8AF6A8704338447c0a7e36F4D5613": {
+    "protocolToken": {
+      "address": "0x0Db58cB843B8AF6A8704338447c0a7e36F4D5613",
+      "name": "Cow Oku Linea WBTC-WETH",
+      "symbol": "cowOkuLineaWBTC-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x4d6d208e75d800957c4AF83FB9f42AabFEbc6b6D": {
+    "protocolToken": {
+      "address": "0x4d6d208e75d800957c4AF83FB9f42AabFEbc6b6D",
+      "name": "Cow Oku Linea USDC-WETH",
+      "symbol": "cowOkuLineaUSDC-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  }
+}

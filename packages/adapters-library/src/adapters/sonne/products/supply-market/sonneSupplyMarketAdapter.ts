@@ -10,6 +10,11 @@ import {
 export class SonneSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   productId = 'supply-market'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   contractAddresses: Partial<Record<Chain, { comptrollerAddress: string }>> = {
     [Chain.Optimism]: {
       comptrollerAddress: '0x60CF091cD3f50420d50fD7f707414d0DF4751C58',
@@ -29,9 +34,6 @@ export class SonneSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter 
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

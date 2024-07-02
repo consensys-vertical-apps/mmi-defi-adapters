@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD2,008,038.95"],
   "snapshot": {
     "protocolId": "rocket-pool",
     "name": "RocketPool",
@@ -8,9 +9,6 @@
     "positionType": "stake",
     "chainId": 1,
     "productId": "reth",
-    "assetDetails": {
-      "type": "StandardErc20"
-    },
     "success": true,
     "movements": [
       {

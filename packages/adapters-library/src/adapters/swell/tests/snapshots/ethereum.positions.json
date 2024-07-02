@@ -1,5 +1,6 @@
 {
   "blockNumber": 18642232,
+  "aggregatedValues": ["USD320,150.05"],
   "snapshot": [
     {
       "protocolId": "swell",
@@ -10,9 +11,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "sw-eth",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {

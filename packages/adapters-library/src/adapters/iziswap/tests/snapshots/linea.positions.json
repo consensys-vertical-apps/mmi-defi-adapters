@@ -1,5 +1,6 @@
 {
   "blockNumber": 1119633,
+  "aggregatedValues": [],
   "snapshot": [
     {
       "protocolId": "iziswap",
@@ -10,9 +11,6 @@
       "positionType": "supply",
       "chainId": 59144,
       "productId": "pool",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {

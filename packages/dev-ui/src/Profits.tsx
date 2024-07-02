@@ -15,37 +15,103 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { ChainName, TimePeriod } from '@metamask-institutional/defi-adapters'
+import { DevTool } from '@hookform/devtools'
+import {
+  Chain,
+  ChainName,
+  Protocol,
+  TimePeriod,
+} from '@metamask-institutional/defi-adapters'
 import { DefiProfitsResponse } from '@metamask-institutional/defi-adapters/dist/types/response'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import Select from 'react-select'
 import { JsonDisplay } from './JsonDisplay'
 import { provider } from './defiProvider'
+import { useFiltersContext } from './filtersContext'
+import {
+  chainOptions,
+  protocolOptions,
+  timePeriodOptions,
+} from './filtersOptions'
+
+type FormValues = {
+  userAddress: string
+  timePeriod: { value: TimePeriod; label: string }
+  protocolIds: { value: string; label: string }[] | undefined
+  chainIds: { value: number; label: string }[] | undefined
+}
 
 export function Profits() {
+  const filtersContext = useFiltersContext()
   const queryClient = useQueryClient()
-  const { register, handleSubmit } = useForm<{
-    userAddress: string
-    timePeriod: TimePeriod
-  }>()
-  const [userAddress, setUserAddress] = useState('')
-  const [timePeriod, setTimePeriod] = useState<TimePeriod>(TimePeriod.oneDay)
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+    getValues,
+  } = useForm<FormValues>({
+    defaultValues: {
+      userAddress: filtersContext.userAddress,
+      timePeriod: localStorage.getItem('defi-adapters:timePeriod')?.length
+        ? localStorage
+            .getItem('defi-adapters:timePeriod')!
+            .split(':')
+            .reduce(
+              (acc, value, index) => {
+                if (index === 0) {
+                  acc.value = Number(value) as TimePeriod
+                } else {
+                  acc.label = value
+                }
+                return acc
+              },
+              {} as {
+                value: TimePeriod
+                label: string
+              },
+            )
+        : timePeriodOptions[0],
+      protocolIds: filtersContext.protocolIds,
+      chainIds: filtersContext.chainIds,
+    },
+  })
 
-  const onSubmit: SubmitHandler<{
-    userAddress: string
-    timePeriod: TimePeriod
-  }> = async (data) => {
-    setUserAddress(data.userAddress)
+  const [timePeriod, setTimePeriod] = useState<{
+    value: TimePeriod
+    label: string
+  }>(getValues('timePeriod'))
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    filtersContext.setFilters({
+      userAddress: data.userAddress,
+      protocolIds: data.protocolIds?.length ? data.protocolIds : undefined,
+      chainIds: data.chainIds?.length ? data.chainIds : undefined,
+    })
+
     setTimePeriod(data.timePeriod)
+    localStorage.setItem(
+      'defi-adapters:timePeriod',
+      `${data.timePeriod.value}:${data.timePeriod.label}`,
+    )
+
     await queryClient.invalidateQueries({
-      queryKey: ['profits', userAddress],
+      queryKey: [
+        'profits',
+        data.userAddress,
+        data.timePeriod,
+        data.protocolIds?.length ? data.protocolIds.join(',') : null,
+        data.chainIds?.length ? data.chainIds.join(',') : null,
+      ],
     })
   }
 
@@ -53,28 +119,80 @@ export function Profits() {
     <div className="flex flex-col items-center justify-start min-h-screen gap-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="p-6 bg-white rounded shadow-md w-[50%]"
+        className="p-6 bg-white rounded shadow-md w-[50%] flex flex-col gap-4"
       >
         <Input
           type="text"
-          {...register('userAddress')}
+          {...register('userAddress', {
+            required: {
+              value: true,
+              message: 'User Address is required',
+            },
+            pattern: {
+              value: /^0x[a-fA-F0-9]{40}$/,
+              message: 'Invalid Ethereum Address',
+            },
+          })}
           placeholder="User Address"
-          className="p-2 mb-4 border border-gray-300 rounded"
+          className="border border-gray-300 rounded"
         />
-        <Input
-          type="number"
-          {...register('timePeriod')}
-          placeholder="Time Period (1, 7 or 30)"
-          className="p-2 mb-4 border border-gray-300 rounded max-w-[200px]"
+        {errors.userAddress && <p>{errors.userAddress.message}</p>}
+
+        <Controller
+          control={control}
+          name="timePeriod"
+          render={({ field }) => (
+            <Select
+              {...field}
+              placeholder="Chain Filter"
+              options={timePeriodOptions}
+            />
+          )}
         />
+
+        <Controller
+          control={control}
+          name="protocolIds"
+          render={({ field }) => (
+            <Select
+              {...field}
+              options={protocolOptions}
+              isMulti={true}
+              placeholder="Protocol Filter"
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="chainIds"
+          render={({ field }) => (
+            <Select
+              {...field}
+              options={chainOptions}
+              isMulti={true}
+              placeholder="Chain Filter"
+            />
+          )}
+        />
+
         <Button
           type="submit"
-          className="p-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+          className="text-white bg-blue-500 rounded hover:bg-blue-600"
         >
           Search
         </Button>
       </form>
-      <ProfitsDisplay userAddress={userAddress} timePeriod={timePeriod} />
+
+      <ProfitsDisplay
+        userAddress={filtersContext.userAddress}
+        timePeriod={timePeriod.value}
+        protocolIds={filtersContext.protocolIds?.map(
+          (selection) => selection.value,
+        )}
+        chainIds={filtersContext.chainIds?.map((selection) => selection.value)}
+      />
+      <DevTool control={control} />
     </div>
   )
 }
@@ -82,13 +200,29 @@ export function Profits() {
 function ProfitsDisplay({
   userAddress,
   timePeriod,
+  protocolIds,
+  chainIds,
 }: {
   userAddress: string
   timePeriod: TimePeriod
+  protocolIds: string[] | undefined
+  chainIds: number[] | undefined
 }) {
   const { isPending, error, data, isFetching, isRefetching } = useQuery({
-    queryKey: ['profits'],
-    queryFn: () => provider.getProfits({ userAddress, timePeriod }),
+    queryKey: [
+      'profits',
+      userAddress,
+      timePeriod,
+      protocolIds?.join(','),
+      chainIds?.join(','),
+    ],
+    queryFn: () =>
+      provider.getProfits({
+        userAddress,
+        timePeriod,
+        filterProtocolIds: protocolIds as Protocol[] | undefined,
+        filterChainIds: chainIds as Chain[] | undefined,
+      }),
     enabled: userAddress.length > 0,
   })
 
@@ -97,6 +231,8 @@ function ProfitsDisplay({
   if (isPending || isFetching || isRefetching) return 'Loading...'
 
   if (error) return `An error has occurred: ${error.message}`
+
+  if (data.length === 0) return 'No positions found'
 
   const successfulResults = data.filter(
     (adapterResult): adapterResult is DefiProfitsResponse & { success: true } =>
@@ -116,142 +252,151 @@ function ProfitsDisplay({
   )
 
   return (
-    <div className="w-full">
-      {Object.entries(groupedResults).map(
-        ([protocolChainKey, protocolProfits]) => {
-          const { protocolId, chainId, iconUrl } = protocolProfits[0]
-          return (
-            <Card key={protocolChainKey}>
-              <CardHeader>
-                <CardTitle>
-                  <div className="flex gap-2 items-center">
-                    <img className="w-10 h-10" src={iconUrl} alt="Icon" />
-                    {protocolId}
-                  </div>
-                </CardTitle>
-                <CardDescription>{ChainName[chainId]}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {protocolProfits.map((profits, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className="mb-4 p-4 border border-gray-300"
-                    >
-                      <h3>{profits.name}</h3>
-                      {profits.tokens.map((token, index) => {
-                        return (
-                          <div
-                            key={index}
-                            className="mb-2 p-2 border border-gray-300"
-                          >
-                            <h4>{token.name}</h4>
-                            <Table>
-                              <TableHeader>
-                                <TableRow>
-                                  <TableHead>Profit</TableHead>
-                                  <TableHead>Performance</TableHead>
-                                  <TableHead>Start Position</TableHead>
-                                  <TableHead>End Position</TableHead>
-                                </TableRow>
-                              </TableHeader>
-                              <TableBody>
-                                <TableRow>
-                                  <TableCell>
-                                    {formatCurrency(token.profit)}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatDecimal(token.performance)}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.startPositionValue,
-                                    )}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.endPositionValue,
-                                    )}
-                                  </TableCell>
-                                </TableRow>
-                              </TableBody>
-                            </Table>
-                            <Table>
-                              <TableHeader>
-                                <TableRow>
-                                  <TableHead>Deposits</TableHead>
-                                  <TableHead>Withdrawals</TableHead>
-                                  <TableHead>Borrows</TableHead>
-                                  <TableHead>Repays</TableHead>
-                                </TableRow>
-                              </TableHeader>
-                              <TableBody>
-                                <TableRow>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.deposits,
-                                    )}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.withdrawals,
-                                    )}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.borrows,
-                                    )}
-                                  </TableCell>
-                                  <TableCell>
-                                    {formatCurrency(
-                                      token.calculationData.repays,
-                                    )}
-                                  </TableCell>
-                                </TableRow>
-                              </TableBody>
-                            </Table>
-                            {token.calculationData
-                              .hasTokensWithoutUSDPrices && (
-                              <>
-                                <h5>Tokens with no prices</h5>
-                                <ul>
-                                  {token.calculationData.tokensWithoutUSDPrices?.map(
-                                    (token, index) => (
-                                      <li key={index}>
-                                        <TooltipProvider>
-                                          <Tooltip>
-                                            <TooltipTrigger>
-                                              {token.name} - Balance:{' '}
-                                              {formatDecimal(
-                                                Number(
-                                                  token.balanceRaw.toString(),
-                                                ),
-                                              )}
-                                            </TooltipTrigger>
-                                            <TooltipContent>
-                                              <p>{token.address}</p>
-                                            </TooltipContent>
-                                          </Tooltip>
-                                        </TooltipProvider>
-                                      </li>
-                                    ),
-                                  )}
-                                </ul>
-                              </>
-                            )}
-                          </div>
-                        )
-                      })}
+    <Tabs defaultValue="display" className="w-full">
+      <TabsList>
+        <TabsTrigger value="display">Display</TabsTrigger>
+        <TabsTrigger value="json">JSON</TabsTrigger>
+      </TabsList>
+      <TabsContent value="display">
+        {Object.entries(groupedResults).map(
+          ([protocolChainKey, protocolProfits]) => {
+            const { protocolId, chainId, iconUrl } = protocolProfits[0]
+            return (
+              <Card key={protocolChainKey}>
+                <CardHeader>
+                  <CardTitle>
+                    <div className="flex gap-2 items-center">
+                      <img className="w-10 h-10" src={iconUrl} alt="Icon" />
+                      {protocolId}
                     </div>
-                  )
-                })}
-              </CardContent>
-            </Card>
-          )
-        },
-      )}
-      <JsonDisplay data={data} />
-    </div>
+                  </CardTitle>
+                  <CardDescription>{ChainName[chainId]}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {protocolProfits.map((profits, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="mb-4 p-4 border border-gray-300"
+                      >
+                        <h3>{profits.name}</h3>
+                        {profits.tokens.map((token, index) => {
+                          return (
+                            <div
+                              key={index}
+                              className="mb-2 p-2 border border-gray-300"
+                            >
+                              <h4>{token.name}</h4>
+                              <Table>
+                                <TableHeader>
+                                  <TableRow>
+                                    <TableHead>Profit</TableHead>
+                                    <TableHead>Performance</TableHead>
+                                    <TableHead>Start Position</TableHead>
+                                    <TableHead>End Position</TableHead>
+                                  </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                  <TableRow>
+                                    <TableCell>
+                                      {formatCurrency(token.profit)}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatDecimal(token.performance)}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData
+                                          .startPositionValue,
+                                      )}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData.endPositionValue,
+                                      )}
+                                    </TableCell>
+                                  </TableRow>
+                                </TableBody>
+                              </Table>
+                              <Table>
+                                <TableHeader>
+                                  <TableRow>
+                                    <TableHead>Deposits</TableHead>
+                                    <TableHead>Withdrawals</TableHead>
+                                    <TableHead>Borrows</TableHead>
+                                    <TableHead>Repays</TableHead>
+                                  </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                  <TableRow>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData.deposits,
+                                      )}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData.withdrawals,
+                                      )}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData.borrows,
+                                      )}
+                                    </TableCell>
+                                    <TableCell>
+                                      {formatCurrency(
+                                        token.calculationData.repays,
+                                      )}
+                                    </TableCell>
+                                  </TableRow>
+                                </TableBody>
+                              </Table>
+                              {token.calculationData
+                                .hasTokensWithoutUSDPrices && (
+                                <>
+                                  <h5>Tokens with no prices</h5>
+                                  <ul>
+                                    {token.calculationData.tokensWithoutUSDPrices?.map(
+                                      (token, index) => (
+                                        <li key={index}>
+                                          <TooltipProvider>
+                                            <Tooltip>
+                                              <TooltipTrigger>
+                                                {token.name} - Balance:{' '}
+                                                {formatDecimal(
+                                                  Number(
+                                                    token.balanceRaw.toString(),
+                                                  ),
+                                                )}
+                                              </TooltipTrigger>
+                                              <TooltipContent>
+                                                <p>{token.address}</p>
+                                              </TooltipContent>
+                                            </Tooltip>
+                                          </TooltipProvider>
+                                        </li>
+                                      ),
+                                    )}
+                                  </ul>
+                                </>
+                              )}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    )
+                  })}
+                </CardContent>
+              </Card>
+            )
+          },
+        )}
+      </TabsContent>
+      <TabsContent value="json">
+        <JsonDisplay data={data} />
+      </TabsContent>
+    </Tabs>
   )
 }
 

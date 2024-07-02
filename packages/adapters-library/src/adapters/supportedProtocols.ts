@@ -13,6 +13,8 @@ import {
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
 import { AngleProtocolSavingsAdapter } from './angle-protocol/products/savings/angleProtocolSavingsAdapter'
+import { BeefyCowTokenAdapter } from './beefy/products/cow-token/beefyCowTokenAdapter'
+import { BeefyMooTokenAdapter } from './beefy/products/moo-token/beefyMooTokenAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import {
@@ -28,7 +30,6 @@ import { ConvexPoolAdapter } from './convex/products/pool/convexPoolAdapter'
 import { ConvexSidechainStakingAdapter } from './convex/products/sidechain-staking/convexSidechainStakingAdapter'
 import { ConvexStakingAdapter } from './convex/products/staking/convexStakingAdapter'
 import { CurvePoolAdapter } from './curve/products/pool/curvePoolAdapter'
-
 import { CurveStakingAdapter } from './curve/products/staking/curveStakingAdapter'
 import { CurveVotingEscrowAdapter } from './curve/products/voting-escrow/curveVotingEscrowAdapter'
 import { EthenaStakedUsdeAdapter } from './ethena/products/staked-usde/ethenaStakedUsdeAdapter'
@@ -52,6 +53,7 @@ import { MorphoBlueMarketSupplyAdapter } from './morpho-blue/products/market-sup
 import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
 import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
 import { PancakeswapV2PoolAdapter } from './pancakeswap-v2/products/pool/pancakeswapV2PoolAdapter'
+import { PendleMarketAdapter } from './pendle/products/market/pendleMarketAdapter'
 import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
 import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
@@ -146,6 +148,18 @@ export const supportedProtocols: Record<
     [Chain.Bsc]: [AngleProtocolSavingsAdapter],
     [Chain.Avalanche]: [AngleProtocolSavingsAdapter],
     [Chain.Base]: [AngleProtocolSavingsAdapter],
+  },
+
+  [Protocol.Beefy]: {
+    [Chain.Ethereum]: [BeefyMooTokenAdapter],
+    [Chain.Optimism]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
+    [Chain.Bsc]: [BeefyMooTokenAdapter],
+    [Chain.Polygon]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
+    [Chain.Fantom]: [BeefyMooTokenAdapter],
+    [Chain.Base]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
+    [Chain.Arbitrum]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
+    [Chain.Avalanche]: [BeefyCowTokenAdapter],
+    [Chain.Linea]: [BeefyCowTokenAdapter, BeefyMooTokenAdapter],
   },
 
   [Protocol.CarbonDeFi]: {
@@ -336,6 +350,13 @@ export const supportedProtocols: Record<
 
   [Protocol.Xfai]: {
     [Chain.Linea]: [XfaiDexAdapter],
+  },
+
+  [Protocol.Pendle]: {
+    [Chain.Ethereum]: [PendleMarketAdapter],
+    [Chain.Arbitrum]: [PendleMarketAdapter],
+    [Chain.Bsc]: [PendleMarketAdapter],
+    [Chain.Optimism]: [PendleMarketAdapter],
   },
 }
 

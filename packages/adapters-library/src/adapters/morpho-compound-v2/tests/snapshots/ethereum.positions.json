@@ -1,5 +1,11 @@
 {
   "blockNumber": 18776256,
+  "aggregatedValues": [
+    "USD150,270.81",
+    "USD110,217.06",
+    "USD50,594.54",
+    "USD115,281.57"
+  ],
   "snapshot": [
     {
       "protocolId": "morpho-compound-v2",
@@ -10,9 +16,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "optimizer-supply",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -70,9 +73,6 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "optimizer-borrow",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {

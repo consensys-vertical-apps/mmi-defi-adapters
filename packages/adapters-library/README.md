@@ -6,6 +6,8 @@
 
 This library is designed to simplify and standardise the process of fetching data and interacting with various DeFi protocols, which often have unique interfaces and data structures. Our adapters 1) fetch and transform underlying protocol data into a standardised format that can be easily used by portfolio dashboards and 2) generate transaction params to create and update protocol positions.
 
+> **Note:** Please note that in this library, adapters must query on-chain data to ensure accuracy and reliability, we do not accept centralised APIs to get positions, withdrawals, deposits, profits or rewards. 
+
 ## How to create a Read Adapter
 
 
@@ -18,6 +20,9 @@ Watch the [setup video](https://drive.google.com/file/d/1bp9Y8uxQDYxgIyMTk5945vL
    - `npm i` to install dependencies 
 2. Run project:
    - `npm run dev` to run the project
+
+Continue watching videos for the following steps or, alternatively, find a written version in [Steps to create a read adapter](./readme-new-adapter.md)
+
 ### Build adapter steps
 
 Watch the [build adapter video](https://drive.google.com/file/d/1Pl0yB2d1s-3oKFCXAyRhKx7rK2x43Qtf/view  "Watch the build adapter steps") for a detailed guide.

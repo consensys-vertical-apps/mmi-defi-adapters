@@ -13,6 +13,19 @@ export const TokenType = {
 } as const
 export type TokenType = (typeof TokenType)[keyof typeof TokenType]
 
+export const UnderlyingTokenTypeMap: {
+  [key in TokenType]:
+    | typeof TokenType.Underlying
+    | typeof TokenType.UnderlyingClaimable
+} = {
+  [TokenType.UnderlyingClaimable]: TokenType.UnderlyingClaimable,
+  [TokenType.Reward]: TokenType.UnderlyingClaimable,
+  [TokenType.Underlying]: TokenType.Underlying,
+  [TokenType.Protocol]: TokenType.Underlying,
+} as const
+export type UnderlyingTokenTypeMap =
+  (typeof UnderlyingTokenTypeMap)[keyof typeof UnderlyingTokenTypeMap]
+
 export const AssetType = {
   StandardErc20: 'StandardErc20', // transferrable; fungible positions; stakeable
   NonStandardErc20: 'NonStandardErc20', // such as nft, reward position, borrow positions (borrow positions cant be transferred)
@@ -24,11 +37,6 @@ export const PositionType = {
    * Liquidity position e.g. a dex pool
    */
   Supply: 'supply',
-
-  /**
-   * Providing liquidity to a lending and borrow protocol
-   */
-  Lend: 'lend',
 
   /**
    * Getting a loan from a lending and borrow protocol
@@ -97,9 +105,9 @@ export type GetEventsInput = {
   tokenId?: string
 }
 
-export type AssetDetails = {
-  type: AssetType
-  missingTransferEvents?: boolean
+export type AdapterSettings = {
+  enablePositionDetectionByProtocolTokenTransfer: boolean
+  includeInUnwrap: boolean
 }
 
 export type ProtocolDetails = {
@@ -143,11 +151,6 @@ export type ProtocolDetails = {
    * Unique protocol-product name
    */
   productId: string
-
-  /**
-   *
-   */
-  assetDetails: AssetDetails
 }
 
 export interface GetPositionsInputWithTokenAddresses extends GetPositionsInput {

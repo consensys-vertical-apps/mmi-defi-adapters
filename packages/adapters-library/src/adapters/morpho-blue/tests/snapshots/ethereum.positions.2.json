@@ -1,5 +1,17 @@
 {
   "blockNumber": 19425631,
+  "aggregatedValues": [
+    "USD8,785,762.33",
+    "USD1,973,272.82",
+    "USD966,810.69",
+    "USD1,425,064.67",
+    "USD6,633,896.21",
+    "USD8,249,990.72",
+    "USD1,472,692.65",
+    "USD672,336.94",
+    "USD976,963.07",
+    "USD5,306,695.11"
+  ],
   "snapshot": [
     {
       "protocolId": "morpho-blue",
@@ -10,9 +22,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "market-supply",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -189,9 +198,6 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "market-borrow",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {

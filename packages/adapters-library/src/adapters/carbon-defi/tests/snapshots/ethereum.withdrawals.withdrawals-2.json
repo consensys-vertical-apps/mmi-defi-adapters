@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD3,689.88"],
   "snapshot": {
     "protocolId": "carbon-defi",
     "name": "CarbonDeFi",
@@ -8,9 +9,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "strategies",
-    "assetDetails": {
-      "type": "NonStandardErc20"
-    },
     "success": true,
     "movements": [
       {

@@ -1,5 +1,13 @@
 {
   "blockNumber": 18183880,
+  "aggregatedValues": [
+    "USD10,363,085.23",
+    "USD1,296,164.67",
+    "USD5,290,687.54",
+    "USD79,821.48",
+    "USD366,274.05",
+    "USD3,003,204.06"
+  ],
   "snapshot": [
     {
       "protocolId": "aave-v2",
@@ -7,12 +15,9 @@
       "description": "Aave v2 defi adapter for yield-generating token",
       "siteUrl": "https://aave.com/",
       "iconUrl": "https://aave.com/favicon.ico",
-      "positionType": "lend",
+      "positionType": "supply",
       "chainId": 1,
       "productId": "a-token",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -70,9 +75,6 @@
       "positionType": "borrow",
       "chainId": 1,
       "productId": "variable-debt-token",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {

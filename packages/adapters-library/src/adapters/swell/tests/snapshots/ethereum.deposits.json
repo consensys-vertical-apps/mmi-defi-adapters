@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD5,272.65"],
   "snapshot": {
     "protocolId": "swell",
     "name": "Swell swETH",
@@ -8,9 +9,6 @@
     "positionType": "stake",
     "chainId": 1,
     "productId": "sw-eth",
-    "assetDetails": {
-      "type": "StandardErc20"
-    },
     "success": true,
     "movements": [
       {

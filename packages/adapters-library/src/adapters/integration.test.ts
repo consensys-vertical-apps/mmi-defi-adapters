@@ -11,6 +11,7 @@ import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
 import { testCases as angleProtocolTestCases } from './angle-protocol/tests/testCases'
+import { testCases as beefyTestCases } from './beefy/tests/testCases'
 import { testCases as carbonDeFiTestCases } from './carbon-defi/tests/testCases'
 import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/testCases'
 import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
@@ -21,6 +22,7 @@ import { testCases as fluxTestCases } from './flux/tests/testCases'
 import { testCases as gmxTestCases } from './gmx/tests/testCases'
 import { testCases as iZiSwapTestCases } from './iziswap/tests/testCases'
 import { testCases as lidoTestCases } from './lido/tests/testCases'
+import { testCases as lynexTestCases } from './lynex/tests/testCases'
 import { testCases as makerTestCases } from './maker/tests/testCases'
 import { testCases as mendiFinanceTestCases } from './mendi-finance/tests/testCases'
 import { testCases as morphoAaveV2TestCases } from './morpho-aave-v2/tests/testCases'
@@ -28,6 +30,7 @@ import { testCases as morphoAaveV3TestCases } from './morpho-aave-v3/tests/testC
 import { testCases as morphoBlueTestCases } from './morpho-blue/tests/testCases'
 import { testCases as morphoCompoundV2TestCases } from './morpho-compound-v2/tests/testCases'
 import { testCases as pancakeswapV2TestCases } from './pancakeswap-v2/tests/testCases'
+import { testCases as pendleTestCases } from './pendle/tests/testCases'
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as quickswapV2TestCases } from './quickswap-v2/tests/testCases'
@@ -62,6 +65,7 @@ const protocolTestCases = {
   [Protocol.AaveV2]: aaveV2TestCases,
   [Protocol.AaveV3]: aaveV3TestCases,
   [Protocol.AngleProtocol]: angleProtocolTestCases,
+  [Protocol.Beefy]: beefyTestCases,
   [Protocol.CarbonDeFi]: carbonDeFiTestCases,
   [Protocol.ChimpExchange]: chimpExchangeTestCases,
   [Protocol.CompoundV2]: compoundV2TestCases,
@@ -80,6 +84,7 @@ const protocolTestCases = {
   [Protocol.MorphoBlue]: morphoBlueTestCases,
   [Protocol.MorphoCompoundV2]: morphoCompoundV2TestCases,
   [Protocol.PancakeswapV2]: pancakeswapV2TestCases,
+  [Protocol.Pendle]: pendleTestCases,
   [Protocol.PricesV2]: pricesV2TestCases,
   [Protocol.QuickswapV2]: quickswapV2TestCases,
   [Protocol.RocketPool]: rocketPoolTestCases,

@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD1.64"],
   "snapshot": {
     "protocolId": "morpho-aave-v3",
     "name": "MorphoAaveV3",
@@ -8,9 +9,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "optimizer-supply",
-    "assetDetails": {
-      "type": "NonStandardErc20"
-    },
     "success": true,
     "movements": [
       {

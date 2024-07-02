@@ -1,5 +1,6 @@
 {
   "blockNumber": 19074240,
+  "aggregatedValues": ["USD127,716,164.58"],
   "snapshot": [
     {
       "protocolId": "rocket-pool",
@@ -10,9 +11,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "reth",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {

@@ -1,0 +1,922 @@
+{
+  "0xAA3b8C08e7Fe86E1dda8FA9FE7423561Ad316e3F": {
+    "protocolToken": {
+      "address": "0xAA3b8C08e7Fe86E1dda8FA9FE7423561Ad316e3F",
+      "name": "Moo Lynex Gamma inETH-wstETH",
+      "symbol": "mooLynexGammainETH-wstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5A7a183B6B44Dc4EC2E3d2eF43F98C5152b1d76d",
+        "name": "InceptionLRT restaked ETH",
+        "symbol": "inETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xC491C1b173E932E97d9F739ccD9AE5b6d5FcE4ce",
+      "name": "ainETH-wstETH",
+      "symbol": "ainETH-wstETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x7A6A9dEb7dFfA150224ece4d381f327C59a6bBab": {
+    "protocolToken": {
+      "address": "0x7A6A9dEb7dFfA150224ece4d381f327C59a6bBab",
+      "name": "Moo Nile USDC-LUSD",
+      "symbol": "mooNileUSDC-LUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x63bA74893621d3d12F13CEc1e86517eC3d329837",
+        "name": "LUSD Stablecoin",
+        "symbol": "LUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x641d5eAa27e516E1CF1F5C84B5EC25C45b7e3f0D",
+      "name": "Correlated - USDC/LUSD",
+      "symbol": "cAMM-USDC/LUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xb9A23E2569C262a92635D825142f310BEAfB0Be0": {
+    "protocolToken": {
+      "address": "0xb9A23E2569C262a92635D825142f310BEAfB0Be0",
+      "name": "Moo Lynex Gamma weETH-WETH",
+      "symbol": "mooLynexGammaweETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1Bf74C010E6320bab11e2e5A532b5AC15e0b8aA6",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x530071b0373Ab3029cAd32E0c19b75253e231b69",
+      "name": "aweETH-WETH",
+      "symbol": "aweETH-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x063091e4532eD93CE93347C6c8338dcA0832ddb0": {
+    "protocolToken": {
+      "address": "0x063091e4532eD93CE93347C6c8338dcA0832ddb0",
+      "name": "Moo Nile ezETH-WETH",
+      "symbol": "mooNileezETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xA9A1Fb9F6664A0B6BFB1F52724fd7b23842248C5",
+      "name": "Correlated - ezETH/WETH",
+      "symbol": "cAMM-ezETH/WETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x24F41b9246E6F96d8e11ba40475752BA052Fb4b2": {
+    "protocolToken": {
+      "address": "0x24F41b9246E6F96d8e11ba40475752BA052Fb4b2",
+      "name": "Moo Lynex Ichi USDT-LYNX",
+      "symbol": "mooLynexIchiUSDT-LYNX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+        "name": "Lynex",
+        "symbol": "LYNX",
+        "decimals": 18
+      },
+      {
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x555267747b0918ABce10335F154FbE7B636F7804",
+      "name": "ICHI Vault Liquidity",
+      "symbol": "IV-8-LYNX",
+      "decimals": 18
+    },
+    "unwrapType": "ichi"
+  },
+  "0x5AB215b3C42f97165Ab43e7FA7609cc8F8D68817": {
+    "protocolToken": {
+      "address": "0x5AB215b3C42f97165Ab43e7FA7609cc8F8D68817",
+      "name": "Moo Lynex Ichi STONE-LYNX",
+      "symbol": "mooLynexIchiSTONE-LYNX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+        "name": "Lynex",
+        "symbol": "LYNX",
+        "decimals": 18
+      },
+      {
+        "address": "0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116",
+        "name": "StakeStone Ether",
+        "symbol": "STONE",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xe57F293520CBf7d5a17629CbFB06eAbdb759a151",
+      "name": "ICHI Vault Liquidity",
+      "symbol": "IV-7-LYNX",
+      "decimals": 18
+    },
+    "unwrapType": "ichi"
+  },
+  "0xcAF1A883e63bb8C3E6f099C7A2044c07112883ca": {
+    "protocolToken": {
+      "address": "0xcAF1A883e63bb8C3E6f099C7A2044c07112883ca",
+      "name": "Moo Lynex Gamma wstETH-WETH",
+      "symbol": "mooLynexGammawstETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xEa5abd5d15B8CD168e9eFf78047DB52aF079e094",
+      "name": "awstETH-WETH",
+      "symbol": "awstETH-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x35884E8C569b9f7714A35EDf056A82535A43F5AD": {
+    "protocolToken": {
+      "address": "0x35884E8C569b9f7714A35EDf056A82535A43F5AD",
+      "name": "Moo Lynex Gamma ezETH-WETH",
+      "symbol": "mooLynexGammaezETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x392AC7d2D09042EC9fAfAEb8D52a88Dc591E9feA",
+      "name": "aezETH-WETH",
+      "symbol": "aezETH-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x1C973f35325947f30F20fE1189605A332FD9F40F": {
+    "protocolToken": {
+      "address": "0x1C973f35325947f30F20fE1189605A332FD9F40F",
+      "name": "Moo Lynex Gamma STONE-WETH",
+      "symbol": "mooLynexGammaSTONE-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116",
+        "name": "StakeStone Ether",
+        "symbol": "STONE",
+        "decimals": 18
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xcfFBFD665BEdB19B47837461A5aBf4388C560D35",
+      "name": "aSTONE-WETH",
+      "symbol": "aSTONE-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x1C8cfC0cFf01D59f2e4d6F547EE227Af869EfA07": {
+    "protocolToken": {
+      "address": "0x1C8cfC0cFf01D59f2e4d6F547EE227Af869EfA07",
+      "name": "Moo Lynex STONE-WETH",
+      "symbol": "mooLynexSTONE-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x93F4d0ab6a8B4271f4a28Db399b5E30612D21116",
+        "name": "StakeStone Ether",
+        "symbol": "STONE",
+        "decimals": 18
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x8F3e0a2378B0B5838E0E0d99FCEcC167d47bc9A7",
+      "name": "StableV1 AMM - STONE/WETH",
+      "symbol": "sAMM-STONE/WETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x046c7CDfEd34d1DA367AC2db79135c24AF29acFf": {
+    "protocolToken": {
+      "address": "0x046c7CDfEd34d1DA367AC2db79135c24AF29acFf",
+      "name": "Moo Lynex USDC-USD+",
+      "symbol": "mooLynexUSDC-USD+",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+        "name": "USD+",
+        "symbol": "USD+",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x58AaCbccAeC30938cb2bb11653Cad726e5c4194a",
+      "name": "StableV1 AMM - USDC/USD+",
+      "symbol": "sAMM-USDC/USD+",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x1AE57Bb562ce546032e52f755C0B7030D28Bcd47": {
+    "protocolToken": {
+      "address": "0x1AE57Bb562ce546032e52f755C0B7030D28Bcd47",
+      "name": "Moo Lynex USDT+-USD+",
+      "symbol": "mooLynexUSDT+-USD+",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1E1F509963A6D33e169D9497b11c7DbFe73B7F13",
+        "name": "USDT+",
+        "symbol": "USDT+",
+        "decimals": 6
+      },
+      {
+        "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+        "name": "USD+",
+        "symbol": "USD+",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xc5f4C5C2077BbbaC5a8381Cf30eCdf18fde42a91",
+      "name": "StableV1 AMM - USDT+/USD+",
+      "symbol": "sAMM-USDT+/USD+",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x84237d2a5f8bD4e9D89F6156043E79d9D7Ed4367": {
+    "protocolToken": {
+      "address": "0x84237d2a5f8bD4e9D89F6156043E79d9D7Ed4367",
+      "name": "Moo Lynex USDC-MENDI",
+      "symbol": "mooLynexUSDC-MENDI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x43E8809ea748EFf3204ee01F08872F063e44065f",
+        "name": "Mendi Finance",
+        "symbol": "MENDI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xE5e19bBF39c76A8c980B48F2Ec89d0dE877bF567",
+      "name": "VolatileV1 AMM - USDC/MENDI",
+      "symbol": "vAMM-USDC/MENDI",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x6c43Dff83D1F2936A69CcC1D10351eC6F5aDDAce": {
+    "protocolToken": {
+      "address": "0x6c43Dff83D1F2936A69CcC1D10351eC6F5aDDAce",
+      "name": "Moo Lynex Ichi USDC-LYNX",
+      "symbol": "mooLynexIchiUSDC-LYNX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+        "name": "Lynex",
+        "symbol": "LYNX",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x92ccb773da4f3974c941974bDb978bAd7efa7744",
+      "name": "ICHI Vault Liquidity",
+      "symbol": "IV-5-LYNX",
+      "decimals": 18
+    },
+    "unwrapType": "ichi"
+  },
+  "0x6DfF00F764a7797C8F8e1DD5624Db039192B3c76": {
+    "protocolToken": {
+      "address": "0x6DfF00F764a7797C8F8e1DD5624Db039192B3c76",
+      "name": "Moo Lynex Ichi WETH-LYNX",
+      "symbol": "mooLynexIchiWETH-LYNX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+        "name": "Lynex",
+        "symbol": "LYNX",
+        "decimals": 18
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x511481ef0DEB10eB5c1E36B72140718c58921265",
+      "name": "ICHI Vault Liquidity",
+      "symbol": "IV-4-LYNX",
+      "decimals": 18
+    },
+    "unwrapType": "ichi"
+  },
+  "0x79356b87C9cDE886e97D0F6b8F2f758e7A6a8878": {
+    "protocolToken": {
+      "address": "0x79356b87C9cDE886e97D0F6b8F2f758e7A6a8878",
+      "name": "Moo Lynex Ichi WBTC-WETH",
+      "symbol": "mooLynexIchiWBTC-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xAd53F20917b144cd0b100DBE75988C0E4b919Dba",
+      "name": "ICHI Vault Liquidity",
+      "symbol": "IV-3-LYNX",
+      "decimals": 18
+    },
+    "unwrapType": "ichi"
+  },
+  "0xBF71FbCe0d4Fc460D36fa1d13B397a3cd5c45220": {
+    "protocolToken": {
+      "address": "0xBF71FbCe0d4Fc460D36fa1d13B397a3cd5c45220",
+      "name": "Moo Mendi Leverage wstETH",
+      "symbol": "mooMendiLeveragewstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0x23EC7f31a5c74D5Fe21aa386A7519028DBD6bA40": {
+    "protocolToken": {
+      "address": "0x23EC7f31a5c74D5Fe21aa386A7519028DBD6bA40",
+      "name": "Moo Mendi Leverage WETH",
+      "symbol": "mooMendiLeverageWETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0x9ab545Ab024a8Da2302f5b0D016F4f5501e330d1": {
+    "protocolToken": {
+      "address": "0x9ab545Ab024a8Da2302f5b0D016F4f5501e330d1",
+      "name": "Moo Mendi Leverage USDC",
+      "symbol": "mooMendiLeverageUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0xC3C757EA1429231C437736746Eb77A2344EAcb81": {
+    "protocolToken": {
+      "address": "0xC3C757EA1429231C437736746Eb77A2344EAcb81",
+      "name": "Moo Mendi Leverage USDT",
+      "symbol": "mooMendiLeverageUSDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0x639041dD8cD48B52C12414235d97E1313cbbceff": {
+    "protocolToken": {
+      "address": "0x639041dD8cD48B52C12414235d97E1313cbbceff",
+      "name": "Moo Mendi Leverage WBTC",
+      "symbol": "mooMendiLeverageWBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0xf711cdcDDa1C5F919c94573cC4E38b4cE2207750": {
+    "protocolToken": {
+      "address": "0xf711cdcDDa1C5F919c94573cC4E38b4cE2207750",
+      "name": "Moo Mendi ezETH",
+      "symbol": "mooMendiezETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH",
+      "decimals": 18
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0xc8F789da67E392e0C14dcD6C81404884199d9849": {
+    "protocolToken": {
+      "address": "0xc8F789da67E392e0C14dcD6C81404884199d9849",
+      "name": "Moo Lynex USDC-MAI",
+      "symbol": "mooLynexUSDC-MAI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xf3B001D64C656e30a62fbaacA003B1336b4ce12A",
+        "name": "Mai Stablecoin",
+        "symbol": "MAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xE9E146f5bceBD71Fb8C526EA036dE6bbFB1B0Ad7",
+      "name": "StableV1 AMM - USDC/MAI",
+      "symbol": "sAMM-USDC/MAI",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x5730Ba155FD95903c2706f1B2F8DBbBFB5e0a94c": {
+    "protocolToken": {
+      "address": "0x5730Ba155FD95903c2706f1B2F8DBbBFB5e0a94c",
+      "name": "Moo Lynex USDC-USDT",
+      "symbol": "mooLynexUSDC-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xa4477d98e519D4c1d66aEf4EfDF7cBEb84f4f778",
+      "name": "StableV1 AMM - USDC/USDT",
+      "symbol": "sAMM-USDC/USDT",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x4859ac3c9aC0A9c35Dc807f79B78f7b9a6F4e7E4": {
+    "protocolToken": {
+      "address": "0x4859ac3c9aC0A9c35Dc807f79B78f7b9a6F4e7E4",
+      "name": "Moo Lynex wstETH-ETH",
+      "symbol": "mooLynexwstETH-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xa8e4B5401F98cf20F7e4e9323B02c40f10661f06",
+      "name": "StableV1 AMM - wstETH/WETH",
+      "symbol": "sAMM-wstETH/WETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x50fA947b08F879004220C42428524eaaf4eF9473": {
+    "protocolToken": {
+      "address": "0x50fA947b08F879004220C42428524eaaf4eF9473",
+      "name": "Moo Lynex Gamma LYNX-USDC",
+      "symbol": "mooLynexGammaLYNX-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x1a51b19CE03dbE0Cb44C1528E34a7EDD7771E9Af",
+        "name": "Lynex",
+        "symbol": "LYNX",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xcC86572Ce5a6EEe74c76c57E9ea7b08221F06bb9",
+      "name": "aUSDC-LYNEX",
+      "symbol": "aUSDC-LYNEX",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x8c0919AE1fAcD6695Ad236Ea618d1018e5c4d42c": {
+    "protocolToken": {
+      "address": "0x8c0919AE1fAcD6695Ad236Ea618d1018e5c4d42c",
+      "name": "Moo Lynex Gamma ETH-WBTC",
+      "symbol": "mooLynexGammaETH-WBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x8a9570ec97534277Ade6e46d100939FbCE4968f0",
+      "name": "aWBTC-WETH",
+      "symbol": "aWBTC-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x7168464Ac7330EC5177694005e60FBe319DC40c2": {
+    "protocolToken": {
+      "address": "0x7168464Ac7330EC5177694005e60FBe319DC40c2",
+      "name": "Moo Lynex Gamma ETH-USDT",
+      "symbol": "mooLynexGammaETH-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xF3B1125C8505f038503E002e61a78253610D4F60",
+      "name": "aUSDT-WETH",
+      "symbol": "aUSDT-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xe269c87F85C725bb9BF642aAeE1650bf5796B73B": {
+    "protocolToken": {
+      "address": "0xe269c87F85C725bb9BF642aAeE1650bf5796B73B",
+      "name": "Moo Lynex Gamma ETH-USDC",
+      "symbol": "mooLynexGammaETH-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x0B15A5E3cA0D4b492C3b476d0f807535F9B72079",
+      "name": "aUSDC-WETH",
+      "symbol": "aUSDC-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x03BdAf7eb1b109E3C3348ee98cde734a82aea8FD": {
+    "protocolToken": {
+      "address": "0x03BdAf7eb1b109E3C3348ee98cde734a82aea8FD",
+      "name": "Moo Mendi wstETH",
+      "symbol": "mooMendiwstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xB5beDd42000b71FddE22D3eE8a79Bd49A568fC8F",
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH",
+      "decimals": 18
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0x3d80b49fc4DC9E450efAc1BD34cdEB2F303c2E81": {
+    "protocolToken": {
+      "address": "0x3d80b49fc4DC9E450efAc1BD34cdEB2F303c2E81",
+      "name": "Moo Mendi WETH",
+      "symbol": "mooMendiWETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0xE7e6a718218d737945E6f039c161D3C3c550CBA8": {
+    "protocolToken": {
+      "address": "0xE7e6a718218d737945E6f039c161D3C3c550CBA8",
+      "name": "Moo Mendi USDC",
+      "symbol": "mooMendiUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+        "name": "USDC",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "name": "USDC",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0xc46833F6217Db6586fD129cC2f61361dfCE4c21D": {
+    "protocolToken": {
+      "address": "0xc46833F6217Db6586fD129cC2f61361dfCE4c21D",
+      "name": "Moo Mendi USDT",
+      "symbol": "mooMendiUSDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xA219439258ca9da29E9Cc4cE5596924745e12B93",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0x879F6c5A0CEC83006771b0c271e644b635dC9666": {
+    "protocolToken": {
+      "address": "0x879F6c5A0CEC83006771b0c271e644b635dC9666",
+      "name": "Moo Mendi WBTC",
+      "symbol": "mooMendiWBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x3aAB2285ddcDdaD8edf438C1bAB47e1a9D05a9b4",
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "decimals": 8
+    },
+    "unwrapType": "aave_lend"
+  }
+}

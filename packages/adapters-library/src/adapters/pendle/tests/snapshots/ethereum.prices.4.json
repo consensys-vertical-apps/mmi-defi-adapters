@@ -1,0 +1,38 @@
+{
+  "blockNumber": 20126536,
+  "snapshot": [
+    {
+      "protocolId": "pendle",
+      "name": "Pendle",
+      "description": "Pendle Market adapter",
+      "siteUrl": "https://www.pendle.finance",
+      "iconUrl": "https://app.pendle.finance/favicon.ico",
+      "positionType": "supply",
+      "chainId": 1,
+      "productId": "market",
+      "success": true,
+      "tokens": [
+        {
+          "baseRate": 1,
+          "type": "protocol",
+          "address": "0x98601E27d41ccff643da9d981dc708cf9eF1F150",
+          "name": "YT Zircuit Staking ezETH 27JUN2024",
+          "symbol": "YT-zs-ezETH-27JUN2024",
+          "decimals": 18,
+          "tokens": [
+            {
+              "type": "underlying",
+              "underlyingRateRaw": "3336292399175648n",
+              "address": "0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744",
+              "name": "SY Zircuit Staking ezETH",
+              "symbol": "SY-zs-ezETH",
+              "decimals": 18,
+              "underlyingRate": 0.003336292399175648,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7A493Be5c2ce014cD049Bf178a1ac0Db1B434744/logo.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

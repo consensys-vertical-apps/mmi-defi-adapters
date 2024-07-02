@@ -13,6 +13,11 @@ import {
 export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
   productId = 'classic'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   // TODO: Ammend this if pairs grow over 1,000
   protected override readonly MIN_SUBGRAPH_VOLUME: number = -1
   protected override readonly MIN_TOKEN_RESERVE: number = 0
@@ -27,9 +32,6 @@ export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

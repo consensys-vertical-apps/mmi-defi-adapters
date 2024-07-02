@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD1,717.95", "USD1,452.75", "USD1,466.56"],
   "snapshot": {
     "protocolId": "convex",
     "name": "Convex",
@@ -8,9 +9,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "cvxcrv-wrapper",
-    "assetDetails": {
-      "type": "StandardErc20"
-    },
     "success": true,
     "movements": [
       {

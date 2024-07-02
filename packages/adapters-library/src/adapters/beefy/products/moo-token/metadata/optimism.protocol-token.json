@@ -1,0 +1,2329 @@
+{
+  "0x12fBf29ebab68ed27db7f1a3A3b733692f566535": {
+    "protocolToken": {
+      "address": "0x12fBf29ebab68ed27db7f1a3A3b733692f566535",
+      "name": "Moo VeloV2 WETH-weETH",
+      "symbol": "mooVeloV2WETH-weETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x5A7fACB970D094B6C7FF1df0eA68D99E6e73CBFF",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xd0F92F5d756Bf223574DFa3ef284a35C3c046289",
+      "name": "VolatileV2 AMM - WETH/weETH",
+      "symbol": "vAMMV2-WETH/weETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x5473C206323A5a4Ab2590C24D6CEf710002ba631": {
+    "protocolToken": {
+      "address": "0x5473C206323A5a4Ab2590C24D6CEf710002ba631",
+      "name": "Moo VeloV2 HAI-KITE",
+      "symbol": "mooVeloV2HAI-KITE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x10398AbC267496E49106B07dd6BE13364D10dC71",
+        "name": "HAI Index Token",
+        "symbol": "HAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xf467C7d5a4A9C4687fFc7986aC6aD5A4c81E1404",
+        "name": "Protocol Token",
+        "symbol": "KITE",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xf2d3941b6E1cbD3616061E556Eb06986147715d1",
+      "name": "VolatileV2 AMM - HAI/KITE",
+      "symbol": "vAMMV2-HAI/KITE",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x9567717a195D5B40f2e5B84E98B1595C72Dd1587": {
+    "protocolToken": {
+      "address": "0x9567717a195D5B40f2e5B84E98B1595C72Dd1587",
+      "name": "Moo Curve USDC-USDM",
+      "symbol": "mooCurveUSDC-USDM",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+        "name": "Mountain Protocol USD",
+        "symbol": "USDM",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xb52c9213d318956bFa26Df2656B161e3cAcbB64d",
+      "name": "USDC/USDM",
+      "symbol": "usdc-usdm",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x2160BEDE9d5559bA559Eaf88052b46b8364eE245": {
+    "protocolToken": {
+      "address": "0x2160BEDE9d5559bA559Eaf88052b46b8364eE245",
+      "name": "Moo Aura OP WETH-wrsETH",
+      "symbol": "mooAuraOPWETH-wrsETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x73A7fe27fe9545D53924E529Acf11F3073841b9e",
+        "name": "Balancer wrsETH/wETH",
+        "symbol": "wrsETH/wETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x87eEE96D50Fb761AD85B1c982d28A042169d61b1",
+        "name": "rsETHWrapper",
+        "symbol": "wrsETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x73A7fe27fe9545D53924E529Acf11F3073841b9e",
+      "name": "Balancer wrsETH/wETH",
+      "symbol": "wrsETH/wETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0xF158b12047B2313962a816D4e45281e3BcbfFd2F": {
+    "protocolToken": {
+      "address": "0xF158b12047B2313962a816D4e45281e3BcbfFd2F",
+      "name": "Moo VeloV2 OP-KITE",
+      "symbol": "mooVeloV2OP-KITE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "name": "Optimism",
+        "symbol": "OP",
+        "decimals": 18
+      },
+      {
+        "address": "0xf467C7d5a4A9C4687fFc7986aC6aD5A4c81E1404",
+        "name": "Protocol Token",
+        "symbol": "KITE",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xf4638dC488F9C826DC40250515592E678E447238",
+      "name": "VolatileV2 AMM - OP/KITE",
+      "symbol": "vAMMV2-OP/KITE",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x28364aC61865E4b535a29928DE6E1a08328d462A": {
+    "protocolToken": {
+      "address": "0x28364aC61865E4b535a29928DE6E1a08328d462A",
+      "name": "Moo VeloV2 HAI-sUSD",
+      "symbol": "mooVeloV2HAI-sUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x10398AbC267496E49106B07dd6BE13364D10dC71",
+        "name": "HAI Index Token",
+        "symbol": "HAI",
+        "decimals": 18
+      },
+      {
+        "address": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
+        "name": "Synth sUSD",
+        "symbol": "sUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xbdED651C03E2bC332AA49C1ffCa391eAA3ea6B86",
+      "name": "StableV2 AMM - HAI/sUSD",
+      "symbol": "sAMMV2-HAI/sUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x2a92920A08115a6A88C550eC7dF67eAEf0c1Edb0": {
+    "protocolToken": {
+      "address": "0x2a92920A08115a6A88C550eC7dF67eAEf0c1Edb0",
+      "name": "Moo VeloV2 HAI-LUSD",
+      "symbol": "mooVeloV2HAI-LUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x10398AbC267496E49106B07dd6BE13364D10dC71",
+        "name": "HAI Index Token",
+        "symbol": "HAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+        "name": "LUSD Stablecoin",
+        "symbol": "LUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x588f26d5BefE74dC61694a7B36227C0e0C52C0f9",
+      "name": "StableV2 AMM - HAI/LUSD",
+      "symbol": "sAMMV2-HAI/LUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xDbE946E16c4e0De9a44065B868265Ac05c437fB6": {
+    "protocolToken": {
+      "address": "0xDbE946E16c4e0De9a44065B868265Ac05c437fB6",
+      "name": "Moo VeloV2 WETH-wrsETH",
+      "symbol": "mooVeloV2WETH-wrsETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x87eEE96D50Fb761AD85B1c982d28A042169d61b1",
+        "name": "rsETHWrapper",
+        "symbol": "wrsETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xE48b4E392E4FC29aC2600c3C8EFe0404A15D60D9",
+      "name": "VolatileV2 AMM - WETH/wrsETH",
+      "symbol": "vAMMV2-WETH/wrsETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x52b76C23d65e998836604E1760399D3e0B959ED8": {
+    "protocolToken": {
+      "address": "0x52b76C23d65e998836604E1760399D3e0B959ED8",
+      "name": "Moo VeloV2 USDA-EURA",
+      "symbol": "mooVeloV2USDA-EURA",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+        "name": "USDA",
+        "symbol": "USDA",
+        "decimals": 18
+      },
+      {
+        "address": "0x9485aca5bbBE1667AD97c7fE7C4531a624C8b1ED",
+        "name": "EURA (previously agEUR)",
+        "symbol": "EURA",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xce85B91A150Cd04945dcb5523fbe76F8088bEe57",
+      "name": "VolatileV2 AMM - USDA/EURA",
+      "symbol": "vAMMV2-USDA/EURA",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x4F5310B114859B947A593F0ddE4b162672cae5af": {
+    "protocolToken": {
+      "address": "0x4F5310B114859B947A593F0ddE4b162672cae5af",
+      "name": "Moo VeloV2 USDA-USDC",
+      "symbol": "mooVeloV2USDA-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+        "name": "USDA",
+        "symbol": "USDA",
+        "decimals": 18
+      },
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xE8309787A1a79461205644aEc92D0149a4a95361",
+      "name": "StableV2 AMM - USDA/USDC",
+      "symbol": "sAMMV2-USDA/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x61a0208005d62cf4c101a2751A3b3264e089E03A": {
+    "protocolToken": {
+      "address": "0x61a0208005d62cf4c101a2751A3b3264e089E03A",
+      "name": "Moo VeloV2 USDC-SONNE",
+      "symbol": "mooVeloV2USDC-SONNE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x1DB2466d9F5e10D7090E7152B68d62703a2245F0",
+        "name": "Sonne",
+        "symbol": "SONNE",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xf8Bfd2C99409cfa2AbfB94448ab967288010399e",
+      "name": "VolatileV2 AMM - USDC/SONNE",
+      "symbol": "vAMMV2-USDC/SONNE",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x6A058d02bfFBaf75d9a9bdF2AA3B0F691F7777D5": {
+    "protocolToken": {
+      "address": "0x6A058d02bfFBaf75d9a9bdF2AA3B0F691F7777D5",
+      "name": "Moo VeloV2 USDC-SNX",
+      "symbol": "mooVeloV2USDC-SNX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
+        "name": "Synthetix Network Token",
+        "symbol": "SNX",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x894d6Ea97767EbeCEfE01c9410f6Bd67935AA952",
+      "name": "VolatileV2 AMM - USDC/SNX",
+      "symbol": "vAMMV2-USDC/SNX",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x7675DD7601E1778226b77E0de40A5F0130b4673C": {
+    "protocolToken": {
+      "address": "0x7675DD7601E1778226b77E0de40A5F0130b4673C",
+      "name": "Moo VeloV2 USDV-WETH",
+      "symbol": "mooVeloV2USDV-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
+        "name": "USDV",
+        "symbol": "USDV",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x38160f7fcbf1e82A47c7aBc03A531ABDd48686f7",
+      "name": "VolatileV2 AMM - USDV/WETH",
+      "symbol": "vAMMV2-USDV/WETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x78f6f6b0982F18038e2eC9Bf02a0a89a86C5BAbf": {
+    "protocolToken": {
+      "address": "0x78f6f6b0982F18038e2eC9Bf02a0a89a86C5BAbf",
+      "name": "Moo VeloV2 FRAX-USDV",
+      "symbol": "mooVeloV2FRAX-USDV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
+        "name": "USDV",
+        "symbol": "USDV",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x03513333630B30E5caDcbbF8aDF51705c3dFD083",
+      "name": "StableV2 AMM - FRAX/USDV",
+      "symbol": "sAMMV2-FRAX/USDV",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x9F87827c7c97ab0b11E413387c8501072D8e82D9": {
+    "protocolToken": {
+      "address": "0x9F87827c7c97ab0b11E413387c8501072D8e82D9",
+      "name": "Moo VeloV2 USDC-USDV",
+      "symbol": "mooVeloV2USDC-USDV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
+        "name": "USDV",
+        "symbol": "USDV",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xfdA251c16f1aE2e0e758B8d03AAd080A636663a8",
+      "name": "StableV2 AMM - USDC/USDV",
+      "symbol": "sAMMV2-USDC/USDV",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x480E3FC888044e038d9261A38437DeEC13C84AC5": {
+    "protocolToken": {
+      "address": "0x480E3FC888044e038d9261A38437DeEC13C84AC5",
+      "name": "Moo VeloV2 USDV-USDCe",
+      "symbol": "mooVeloV2USDV-USDCe",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
+        "name": "USDV",
+        "symbol": "USDV",
+        "decimals": 6
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x73DaC4c0e02CC9d66e5Fe00569360845C241d3aE",
+      "name": "StableV2 AMM - USDV/USDC",
+      "symbol": "sAMMV2-USDV/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x60d8E0bbb7355b08c2F6d8f260d93bDe06A75A41": {
+    "protocolToken": {
+      "address": "0x60d8E0bbb7355b08c2F6d8f260d93bDe06A75A41",
+      "name": "Moo VeloV2 USDC-alUSD",
+      "symbol": "mooVeloV2USDC-alUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xCB8FA9a76b8e203D8C3797bF438d8FB81Ea3326A",
+        "name": "Alchemix USD",
+        "symbol": "alUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x124D69DaeDA338b1b31fFC8e429e39c9A991164e",
+      "name": "StableV2 AMM - USDC/alUSD",
+      "symbol": "sAMMV2-USDC/alUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x21018fC785a6a7b3e3f3Df3e887a4E8CeB155d4A": {
+    "protocolToken": {
+      "address": "0x21018fC785a6a7b3e3f3Df3e887a4E8CeB155d4A",
+      "name": "Moo VeloV2 DOLA-alUSD",
+      "symbol": "mooVeloV2DOLA-alUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+        "name": "Dola USD Stablecoin",
+        "symbol": "DOLA",
+        "decimals": 18
+      },
+      {
+        "address": "0xCB8FA9a76b8e203D8C3797bF438d8FB81Ea3326A",
+        "name": "Alchemix USD",
+        "symbol": "alUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x67C253eB6C2e69F9E1114aEeAD0DB4FA8F417AC3",
+      "name": "StableV2 AMM - DOLA/alUSD",
+      "symbol": "sAMMV2-DOLA/alUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x63289886Ad4Eb9364669741650cde780C9f2E7D2": {
+    "protocolToken": {
+      "address": "0x63289886Ad4Eb9364669741650cde780C9f2E7D2",
+      "name": "Moo VeloV2 POOL-ETH",
+      "symbol": "mooVelov2POOL-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x395Ae52bB17aef68C2888d941736A71dC6d4e125",
+        "name": "PoolTogether",
+        "symbol": "POOL",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xDB1FE6DA83698885104DA02A6e0b3b65c0B0dE80",
+      "name": "VolatileV2 AMM - POOL/WETH",
+      "symbol": "vAMMV2-POOL/WETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xdA0C8a2a21Bc6b294d4e3636eEab0f7C7dfC82d6": {
+    "protocolToken": {
+      "address": "0xdA0C8a2a21Bc6b294d4e3636eEab0f7C7dfC82d6",
+      "name": "Moo VeloV2 USDC-WETH",
+      "symbol": "mooVeloV2USDC-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xF4F2657AE744354bAcA871E56775e5083F7276Ab",
+      "name": "VolatileV2 AMM - USDC/WETH",
+      "symbol": "vAMMV2-USDC/WETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xc0C2B86540ACF7da1a5f71B3215A6D28f2269C31": {
+    "protocolToken": {
+      "address": "0xc0C2B86540ACF7da1a5f71B3215A6D28f2269C31",
+      "name": "Moo VeloV2 USDC-LUSD",
+      "symbol": "mooVeloV2USDC-LUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+        "name": "LUSD Stablecoin",
+        "symbol": "LUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x4F3da11c5caDf644ae023Dbad01008a934C993E2",
+      "name": "StableV2 AMM - USDC/LUSD",
+      "symbol": "sAMMV2-USDC/LUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xaba2b5E628641c717727128f9b9194597B310139": {
+    "protocolToken": {
+      "address": "0xaba2b5E628641c717727128f9b9194597B310139",
+      "name": "Moo VeloV2 USDC-STG",
+      "symbol": "mooVeloV2USDC-STG",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x296F55F8Fb28E498B858d0BcDA06D955B2Cb3f97",
+        "name": "StargateToken",
+        "symbol": "STG",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x1dE84E1324BaF5a9f3A49A48892fE90cE48456f1",
+      "name": "VolatileV2 AMM - USDC/STG",
+      "symbol": "vAMMV2-USDC/STG",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x12112fcc5eA780C9A667C526601697Ca5898eBD2": {
+    "protocolToken": {
+      "address": "0x12112fcc5eA780C9A667C526601697Ca5898eBD2",
+      "name": "Moo VeloV2 USDC-sUSD",
+      "symbol": "mooVeloV2USDC-sUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
+        "name": "Synth sUSD",
+        "symbol": "sUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xbC26519f936A90E78fe2C9aA2A03CC208f041234",
+      "name": "StableV2 AMM - USDC/sUSD",
+      "symbol": "sAMMV2-USDC/sUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x2Cf5B6371734447A8A74fae1ce1653973fe0c0b5": {
+    "protocolToken": {
+      "address": "0x2Cf5B6371734447A8A74fae1ce1653973fe0c0b5",
+      "name": "Moo VeloV2 USDC-NEXT",
+      "symbol": "mooVeloV2USDC-NEXT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
+        "name": "Connext",
+        "symbol": "NEXT",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xf9741DBE322ABD7FD6dd75E35beB3271236D2c11",
+      "name": "VolatileV2 AMM - USDC/NEXT",
+      "symbol": "vAMMV2-USDC/NEXT",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xb32AD6495826677EABAfd4Ee7b8E07594504Fc17": {
+    "protocolToken": {
+      "address": "0xb32AD6495826677EABAfd4Ee7b8E07594504Fc17",
+      "name": "Moo VeloV2 SONNE-VELO",
+      "symbol": "mooVeloV2SONNE-VELO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1DB2466d9F5e10D7090E7152B68d62703a2245F0",
+        "name": "Sonne",
+        "symbol": "SONNE",
+        "decimals": 18
+      },
+      {
+        "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+        "name": "VelodromeV2",
+        "symbol": "VELO",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xC4270d957C218d263e7FAE5a3bEEDC1E98B6012D",
+      "name": "VolatileV2 AMM - SONNE/VELO",
+      "symbol": "vAMMV2-SONNE/VELO",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xC1CE18ee03bED17676021ca0B84F550339c66a24": {
+    "protocolToken": {
+      "address": "0xC1CE18ee03bED17676021ca0B84F550339c66a24",
+      "name": "Moo VeloV2 USDC-OP",
+      "symbol": "mooVeloV2USDC-OP",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "name": "Optimism",
+        "symbol": "OP",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x67F56Ac099F11aD5F65E2ec804f75F2cEa6ab8C5",
+      "name": "VolatileV2 AMM - USDC/OP",
+      "symbol": "vAMMV2-USDC/OP",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x89775AE7036261bB2071Ef5a8E0C40e13cF2035D": {
+    "protocolToken": {
+      "address": "0x89775AE7036261bB2071Ef5a8E0C40e13cF2035D",
+      "name": "Moo VeloV2 USDC-DOLA",
+      "symbol": "mooVeloV2USDC-DOLA",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+        "name": "Dola USD Stablecoin",
+        "symbol": "DOLA",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xA56a25Dee5B3199A9198Bbd48715EE3D0ed98378",
+      "name": "StableV2 AMM - USDC/DOLA",
+      "symbol": "sAMMV2-USDC/DOLA",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x31250144b1ad6B04A004836C67F7f07990FF84aa": {
+    "protocolToken": {
+      "address": "0x31250144b1ad6B04A004836C67F7f07990FF84aa",
+      "name": "Moo VeloV2 USDC-USDC.e",
+      "symbol": "mooVeloV2USDC-USDCe",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x36E3c209B373b861c185ecdBb8b2EbDD98587BDb",
+      "name": "StableV2 AMM - USDC/USDC",
+      "symbol": "sAMMV2-USDC/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xd85869C544820dF304c1F420f1a4107Fe109d176": {
+    "protocolToken": {
+      "address": "0xd85869C544820dF304c1F420f1a4107Fe109d176",
+      "name": "Moo Curve crvUSD-USDC.e",
+      "symbol": "mooCurveCrvUSD-USDC.e",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC52D7F23a2e460248Db6eE192Cb23dD12bDDCbf6",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x05FA06D4Fb883F67f1cfEA0889edBff9e8358101",
+      "name": "crvUSD/USDC.e",
+      "symbol": "crvUSDC.e",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xe0e1dD54334007aCcF731395d1DAD784036DF2D9": {
+    "protocolToken": {
+      "address": "0xe0e1dD54334007aCcF731395d1DAD784036DF2D9",
+      "name": "Moo Curve crvUSD-USDT",
+      "symbol": "mooCurveCrvUSD-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC52D7F23a2e460248Db6eE192Cb23dD12bDDCbf6",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xD1b30BA128573fcd7D141C8A987961b40e047BB6",
+      "name": "crvUSD/USDT",
+      "symbol": "crvUSDT",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x32BF68dF1D113603346422fED4e4393b3c976159": {
+    "protocolToken": {
+      "address": "0x32BF68dF1D113603346422fED4e4393b3c976159",
+      "name": "Moo Aura OP A Night at the OPara",
+      "symbol": "mooAuraOPANightattheOPara",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "name": "Optimism",
+        "symbol": "OP",
+        "decimals": 18
+      },
+      {
+        "address": "0xd3594E879B358F430E20F82bea61e83562d49D48",
+        "name": "ParaSwap",
+        "symbol": "PSP",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x0244B0025264dC5f5c113d472D579C9c994A59CE",
+      "name": "A Night at the OPara",
+      "symbol": "BPT-OPARA",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0x9a2F07153964e4E02878101Be10E31e2dD474d74": {
+    "protocolToken": {
+      "address": "0x9a2F07153964e4E02878101Be10E31e2dD474d74",
+      "name": "Moo VeloV2 KUJI-VELO",
+      "symbol": "mooVeloV2KUJI-VELO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3A18dcC9745eDcD1Ef33ecB93b0b6eBA5671e7Ca",
+        "name": "Kujira native asset",
+        "symbol": "KUJI",
+        "decimals": 6
+      },
+      {
+        "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+        "name": "VelodromeV2",
+        "symbol": "VELO",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x18C830F6a32A06Cf2aC4262E977a096F12bDAB8D",
+      "name": "VolatileV2 AMM - KUJI/VELO",
+      "symbol": "vAMMV2-KUJI/VELO",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x416c578DFBEB2f1b07b0165a2e5F4C467F4Ed2F8": {
+    "protocolToken": {
+      "address": "0x416c578DFBEB2f1b07b0165a2e5F4C467F4Ed2F8",
+      "name": "Moo Aura OP Fraximalist Ethereum",
+      "symbol": "mooAuraOPFraximalist Ethereum",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x484c2D6e3cDd945a8B2DF735e079178C1036578c",
+        "name": "Staked Frax Ether",
+        "symbol": "sfrxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xA71021492a3966EeC735Ed1B505aFa097c7cFe6f",
+        "name": "Fraximalist Ethereum",
+        "symbol": "bpt-fraxethe",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xA71021492a3966EeC735Ed1B505aFa097c7cFe6f",
+      "name": "Fraximalist Ethereum",
+      "symbol": "bpt-fraxethe",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0x587e827ed502f494C056F8756f7Aec7190195A7b": {
+    "protocolToken": {
+      "address": "0x587e827ed502f494C056F8756f7Aec7190195A7b",
+      "name": "Moo Velo v2 KUJI-ETH",
+      "symbol": "mooVeloV2KUJI-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3A18dcC9745eDcD1Ef33ecB93b0b6eBA5671e7Ca",
+        "name": "Kujira native asset",
+        "symbol": "KUJI",
+        "decimals": 6
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x763C9dC392B6BEFe79Fa227056dD9279bAbb4E14",
+      "name": "VolatileV2 AMM - KUJI/WETH",
+      "symbol": "vAMMV2-KUJI/WETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x4f365Dfb701cb653F057C1d57cBf08fF860e8fdc": {
+    "protocolToken": {
+      "address": "0x4f365Dfb701cb653F057C1d57cBf08fF860e8fdc",
+      "name": "Moo Velo v2 NEXT-USDC",
+      "symbol": "mooVeloV2NEXT-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x58b9cB810A68a7f3e1E4f8Cb45D1B9B3c79705E8",
+        "name": "Connext",
+        "symbol": "NEXT",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x1e7c5572B3D5942Cf5dabf61f5Ba3FbC6B65e921",
+      "name": "VolatileV2 AMM - NEXT/USDC",
+      "symbol": "vAMMV2-NEXT/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x039af31d546938876F38A5452ea844Eca7c4fC30": {
+    "protocolToken": {
+      "address": "0x039af31d546938876F38A5452ea844Eca7c4fC30",
+      "name": "Moo Velo v2 wstETH-VELO",
+      "symbol": "mooVeloV2AwstETH-VELO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+        "name": "VelodromeV2",
+        "symbol": "VELO",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xCa72114b86Ac6d7Ab8D583c0E94C9A7DE7540610",
+      "name": "VolatileV2 AMM - wstETH/VELO",
+      "symbol": "vAMMV2-wstETH/VELO",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x611bB2B496c9381CdcD07458b3cfC734583429f9": {
+    "protocolToken": {
+      "address": "0x611bB2B496c9381CdcD07458b3cfC734583429f9",
+      "name": "Moo Curve tBTC",
+      "symbol": "mooCurveTBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40",
+        "name": "Optimism tBTC v2",
+        "symbol": "tBTC",
+        "decimals": 18
+      },
+      {
+        "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x1Dc5c0f8668a9F54ED922171d578011850ca0341",
+      "name": "Curve.fi Factory Plain Pool: 2BTC",
+      "symbol": "2BTC-f",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xb996DD8f4ec36A34CeDFD8687aDa991bC2397232": {
+    "protocolToken": {
+      "address": "0xb996DD8f4ec36A34CeDFD8687aDa991bC2397232",
+      "name": "Moo Aura OP rETH-ankrETH",
+      "symbol": "mooAuraOPrETH-ankrETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x004700ba0a4f5f22e1E78a277fCA55e36F47E09C",
+        "name": "Ankr's Galactic Harmony",
+        "symbol": "bpt-ankrgalaharm",
+        "decimals": 18
+      },
+      {
+        "address": "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xe05A08226c49b636ACf99c40Da8DC6aF83CE5bB3",
+        "name": "Ankr Staked ETH",
+        "symbol": "ankrETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x004700ba0a4f5f22e1E78a277fCA55e36F47E09C",
+      "name": "Ankr's Galactic Harmony",
+      "symbol": "bpt-ankrgalaharm",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0xC51e661EEf8d5F130Dc1bdD5Be28c1DBcE930D20": {
+    "protocolToken": {
+      "address": "0xC51e661EEf8d5F130Dc1bdD5Be28c1DBcE930D20",
+      "name": "Moo Aura OP USDC/USDCe/USDT/DAI",
+      "symbol": "mooAuraOPUSDC/USDCe/USDT/DAI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0x9Da11Ff60bfc5aF527f58fd61679c3AC98d040d9",
+        "name": "Native Stable Beets",
+        "symbol": "bpt-stablebeets",
+        "decimals": 18
+      },
+      {
+        "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x9Da11Ff60bfc5aF527f58fd61679c3AC98d040d9",
+      "name": "Native Stable Beets",
+      "symbol": "bpt-stablebeets",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp"
+  },
+  "0x82EDb0Cb1Ec84b267A90c8A8f6aCc09aAE8857f9": {
+    "protocolToken": {
+      "address": "0x82EDb0Cb1Ec84b267A90c8A8f6aCc09aAE8857f9",
+      "name": "Moo VeloV2 wstETH-PENDLE",
+      "symbol": "mooVeloV2wstETHPENDLE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xBC7B1Ff1c6989f006a1185318eD4E7b5796e66E1",
+        "name": "Pendle",
+        "symbol": "PENDLE",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x7c9a7243F6A359781996822A141A28DC48AA258b",
+      "name": "VolatileV2 AMM - wstETH/PENDLE",
+      "symbol": "vAMMV2-wstETH/PENDLE",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x6DFc84940130756c71bc2bb9bf9e4C2d6C143Da2": {
+    "protocolToken": {
+      "address": "0x6DFc84940130756c71bc2bb9bf9e4C2d6C143Da2",
+      "name": "Moo VeloV2 wstETH-SNX",
+      "symbol": "mooVeloV2wstETH-SNX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
+        "name": "Synthetix Network Token",
+        "symbol": "SNX",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x8F0364Cd47Fb819953D9096Bda1ec8017829aAa2",
+      "name": "VolatileV2 AMM - wstETH/SNX",
+      "symbol": "vAMMV2-wstETH/SNX",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xCe6A02C3456f2518D5F02002ecEFFFDc4539247f": {
+    "protocolToken": {
+      "address": "0xCe6A02C3456f2518D5F02002ecEFFFDc4539247f",
+      "name": "Moo VeloV2 WETH-HOP",
+      "symbol": "mooVeloV2WETH-HOP",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0xc5102fE9359FD9a28f877a67E36B0F050d81a3CC",
+        "name": "Hop",
+        "symbol": "HOP",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x0e88a5bfF34d39DA66bdD32B82dC89a32D7Bb6c9",
+      "name": "VolatileV2 AMM - WETH/HOP",
+      "symbol": "vAMMV2-WETH/HOP",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xfd3B30e3145069e272E6144A9d1F3EED0fCCb2f9": {
+    "protocolToken": {
+      "address": "0xfd3B30e3145069e272E6144A9d1F3EED0fCCb2f9",
+      "name": "Moo VeloV2 ETH-tBTC",
+      "symbol": "mooVeloV2ETH-tBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40",
+        "name": "Optimism tBTC v2",
+        "symbol": "tBTC",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xadBB23Bcc3C1B9810491897cb0690Cf645B858b1",
+      "name": "VolatileV2 AMM - WETH/tBTC",
+      "symbol": "vAMMV2-WETH/tBTC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x1B9eb90884F3566AE923366B65a49B1E30cbcE28": {
+    "protocolToken": {
+      "address": "0x1B9eb90884F3566AE923366B65a49B1E30cbcE28",
+      "name": "Moo VeloV2 OP-frxETH",
+      "symbol": "mooVeloV2OP-frxETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "name": "Optimism",
+        "symbol": "OP",
+        "decimals": 18
+      },
+      {
+        "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x2fE304b407c7fAb2a3c10962F14dB751468a4f5b",
+      "name": "VolatileV2 AMM - OP/frxETH",
+      "symbol": "vAMMV2-OP/frxETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB": {
+    "protocolToken": {
+      "address": "0x6C8E91f43AAB94Ee43e834517548d1b8aF6dD7CB",
+      "name": "Moo VeloV2 VELO-ETH",
+      "symbol": "mooVeloV2VELO-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+        "name": "VelodromeV2",
+        "symbol": "VELO",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x58e6433A6903886E440Ddf519eCC573c4046a6b2",
+      "name": "VolatileV2 AMM - WETH/VELO",
+      "symbol": "vAMMV2-WETH/VELO",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x797c35a8032CE0A8dFcA308ac1b2276359cd463b": {
+    "protocolToken": {
+      "address": "0x797c35a8032CE0A8dFcA308ac1b2276359cd463b",
+      "name": "Moo VeloV2 FRAX-USDC",
+      "symbol": "mooVeloV2FRAX-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x8542DD4744edEa38b8a9306268b08F4D26d38581",
+      "name": "StableV2 AMM - FRAX/USDC",
+      "symbol": "sAMMV2-FRAX/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x0980C3171E32c4508f614ceC15A3819B6cCf372c": {
+    "protocolToken": {
+      "address": "0x0980C3171E32c4508f614ceC15A3819B6cCf372c",
+      "name": "Moo VeloV2 FRAX-MAI",
+      "symbol": "mooVeloV2FRAX-MAI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0xdFA46478F9e5EA86d57387849598dbFB2e964b02",
+        "name": "Mai Stablecoin",
+        "symbol": "MAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xc37a0a37664aeB3848f98C5dD5d7AE286A1E9Ebd",
+      "name": "StableV2 AMM - FRAX/MAI",
+      "symbol": "sAMMV2-FRAX/MAI",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xb379AB37f2e7d4A0d2479c09d637bD6B20E1354d": {
+    "protocolToken": {
+      "address": "0xb379AB37f2e7d4A0d2479c09d637bD6B20E1354d",
+      "name": "Moo VeloV2 USDC-MTA",
+      "symbol": "mooVeloV2USDC-MTA",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x929B939f8524c3Be977af57A4A0aD3fb1E374b50",
+        "name": "Meta",
+        "symbol": "MTA",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x8453cc52F2108fF9D1636B6A108dB06Ac137B72F",
+      "name": "VolatileV2 AMM - USDC/MTA",
+      "symbol": "vAMMV2-USDC/MTA",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x935A64d0825D86c1ca57Fe8f270e635AC1a0878A": {
+    "protocolToken": {
+      "address": "0x935A64d0825D86c1ca57Fe8f270e635AC1a0878A",
+      "name": "Moo VeloV2 wstETH-LDO",
+      "symbol": "mooVeloV2wstETH-LDO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xFdb794692724153d1488CcdBE0C56c252596735F",
+        "name": "Lido DAO Token",
+        "symbol": "LDO",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xC5c247580A4A6E4d3811c0DA6215057aaC480bAc",
+      "name": "VolatileV2 AMM - wstETH/LDO",
+      "symbol": "vAMMV2-wstETH/LDO",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xc02DD405F37009609bD5ad8667825323aB72fD47": {
+    "protocolToken": {
+      "address": "0xc02DD405F37009609bD5ad8667825323aB72fD47",
+      "name": "Moo VeloV2 LUSD-ETH",
+      "symbol": "mooVeloV2LUSD-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+        "name": "LUSD Stablecoin",
+        "symbol": "LUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x6387765fFA609aB9A1dA1B16C455548Bfed7CbEA",
+      "name": "VolatileV2 AMM - WETH/LUSD",
+      "symbol": "vAMMV2-WETH/LUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x642F04eCAa00D443fBf2de2AaC9A9e0ACfA4FCE7": {
+    "protocolToken": {
+      "address": "0x642F04eCAa00D443fBf2de2AaC9A9e0ACfA4FCE7",
+      "name": "Moo VeloV2 SONNE-USDC",
+      "symbol": "mooVeloV2SONNE-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1DB2466d9F5e10D7090E7152B68d62703a2245F0",
+        "name": "Sonne",
+        "symbol": "SONNE",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x4E60495550071693bc8bDfFC40033d278157EAC7",
+      "name": "VolatileV2 AMM - SONNE/USDC",
+      "symbol": "vAMMV2-SONNE/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x600e9d1b98FACD709a18dA5a61da96BcDEE608b7": {
+    "protocolToken": {
+      "address": "0x600e9d1b98FACD709a18dA5a61da96BcDEE608b7",
+      "name": "Moo VeloV2 sETH-ETH",
+      "symbol": "mooVeloV2sETH-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0xE405de8F52ba7559f9df3C368500B6E6ae6Cee49",
+        "name": "Synth sETH",
+        "symbol": "sETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x5e5A37445FadeB71f23514Ae7d675Ffc644e5E5A",
+      "name": "StableV2 AMM - WETH/sETH",
+      "symbol": "sAMMV2-WETH/sETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x7c2967C20B03a8004ea81e86Ac1847D00e7B4CD1": {
+    "protocolToken": {
+      "address": "0x7c2967C20B03a8004ea81e86Ac1847D00e7B4CD1",
+      "name": "Moo VeloV2 DAI-USDC",
+      "symbol": "mooVeloV2DAI-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x19715771E30c93915A5bbDa134d782b81A820076",
+      "name": "StableV2 AMM - USDC/DAI",
+      "symbol": "sAMMV2-USDC/DAI",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x182fe51442C7D65360eD1511f30be6261c2C20C1": {
+    "protocolToken": {
+      "address": "0x182fe51442C7D65360eD1511f30be6261c2C20C1",
+      "name": "Moo VeloV2 sUSD-USDC",
+      "symbol": "mooVeloV2sUSD-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
+        "name": "Synth sUSD",
+        "symbol": "sUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x6d5BA400640226e24b50214d2bBb3D4Db8e6e15a",
+      "name": "StableV2 AMM - USDC/sUSD",
+      "symbol": "sAMMV2-USDC/sUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x972F747285c2f32699CEFFEbdcF2Ae74F4b58D0c": {
+    "protocolToken": {
+      "address": "0x972F747285c2f32699CEFFEbdcF2Ae74F4b58D0c",
+      "name": "Moo VeloV2 LUSD-USDC",
+      "symbol": "mooVeloV2LUSD-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+        "name": "LUSD Stablecoin",
+        "symbol": "LUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xf04458f7B21265b80FC340dE7Ee598e24485c5bB",
+      "name": "StableV2 AMM - USDC/LUSD",
+      "symbol": "sAMMV2-USDC/LUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x1973ef31F2A82B3f73b8C9Ee1c440615084d5242": {
+    "protocolToken": {
+      "address": "0x1973ef31F2A82B3f73b8C9Ee1c440615084d5242",
+      "name": "Moo VeloV2 DOLA-FRAX",
+      "symbol": "mooVeloV2DOLA-FRAX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+        "name": "Dola USD Stablecoin",
+        "symbol": "DOLA",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x1f8b46abe1EAbF5A60CbBB5Fb2e4a6A46fA0b6e6",
+      "name": "StableV2 AMM - FRAX/DOLA",
+      "symbol": "sAMMV2-FRAX/DOLA",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x9a02ab83e5139Ae8d4c6a9711D20b90DBC50c9f0": {
+    "protocolToken": {
+      "address": "0x9a02ab83e5139Ae8d4c6a9711D20b90DBC50c9f0",
+      "name": "Moo VeloV2 alUSD-FRAX",
+      "symbol": "mooVeloV2alUSD-FRAX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0xCB8FA9a76b8e203D8C3797bF438d8FB81Ea3326A",
+        "name": "Alchemix USD",
+        "symbol": "alUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xaF03f51DE7a0E62BF061F6Fc3931cF79166B0a29",
+      "name": "StableV2 AMM - FRAX/alUSD",
+      "symbol": "sAMMV2-FRAX/alUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x100Cd460D7f549B4cc2Ed35d4ff20ac71B377C96": {
+    "protocolToken": {
+      "address": "0x100Cd460D7f549B4cc2Ed35d4ff20ac71B377C96",
+      "name": "Moo VeloV2 alETH-frxETH",
+      "symbol": "mooVeloV2alETH-frxETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3E29D3A9316dAB217754d13b28646B76607c5f04",
+        "name": "Alchemix ETH",
+        "symbol": "alETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x1AD06Ca54de04DBe9e2817F4C13eCB406DCbeAf0",
+      "name": "StableV2 AMM - alETH/frxETH",
+      "symbol": "sAMMV2-alETH/frxETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xD5bc7210867B2D4152E38e69A6cd41b7b917833f": {
+    "protocolToken": {
+      "address": "0xD5bc7210867B2D4152E38e69A6cd41b7b917833f",
+      "name": "Moo VeloV2 WETH-rETH",
+      "symbol": "mooVeloV2WETH-rETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x7e0F65FAB1524dA9E2E5711D160541cf1199912E",
+      "name": "VolatileV2 AMM - WETH/rETH",
+      "symbol": "vAMMV2-WETH/rETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x54214d0C7772eb6f71ED4De294b3f809691005C9": {
+    "protocolToken": {
+      "address": "0x54214d0C7772eb6f71ED4De294b3f809691005C9",
+      "name": "Moo VeloV2 wstETH-WETH",
+      "symbol": "mooVeloV2wstETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x6dA98Bde0068d10DDD11b468b197eA97D96F96Bc",
+      "name": "VolatileV2 AMM - wstETH/WETH",
+      "symbol": "vAMMV2-wstETH/WETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x65F4e00687f4059E4A9bF8E4338dbC9f0292fe2A": {
+    "protocolToken": {
+      "address": "0x65F4e00687f4059E4A9bF8E4338dbC9f0292fe2A",
+      "name": "Moo VeloV2 wstETH-OP",
+      "symbol": "mooVeloV2wstETH-OP",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "name": "Optimism",
+        "symbol": "OP",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x7178F61694ba9109205B8d6F686282307625e62D",
+      "name": "VolatileV2 AMM - wstETH/OP",
+      "symbol": "vAMMV2-wstETH/OP",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x04c4a21D7439eD05fd33469565541bF6464F7157": {
+    "protocolToken": {
+      "address": "0x04c4a21D7439eD05fd33469565541bF6464F7157",
+      "name": "Moo VeloV2 OP-VELO",
+      "symbol": "mooVeloV2OP-VELO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "name": "Optimism",
+        "symbol": "OP",
+        "decimals": 18
+      },
+      {
+        "address": "0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+        "name": "VelodromeV2",
+        "symbol": "VELO",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xe9581d0F1A628B038fC8B2a7F5A7d904f0e2f937",
+      "name": "VolatileV2 AMM - OP/VELO",
+      "symbol": "vAMMV2-OP/VELO",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x1A1F0Db1050D1cAD52eEB72371EbFD7716b53a2f": {
+    "protocolToken": {
+      "address": "0x1A1F0Db1050D1cAD52eEB72371EbFD7716b53a2f",
+      "name": "Moo VeloV2 alETH-WETH",
+      "symbol": "mooVeloV2alETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3E29D3A9316dAB217754d13b28646B76607c5f04",
+        "name": "Alchemix ETH",
+        "symbol": "alETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xa1055762336F92b4B8d2eDC032A0Ce45ead6280a",
+      "name": "StableV2 AMM - alETH/WETH",
+      "symbol": "sAMMV2-alETH/WETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xD9E277eA320C53dE06C535f0D922A76a68CB9A9C": {
+    "protocolToken": {
+      "address": "0xD9E277eA320C53dE06C535f0D922A76a68CB9A9C",
+      "name": "Moo VeloV2 wUSDR-USDC",
+      "symbol": "mooVeloV2wUSDR-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x340fE1D898ECCAad394e2ba0fC1F93d27c7b717A",
+        "name": "Wrapped USDR",
+        "symbol": "wUSDR",
+        "decimals": 9
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x77b6d0279c9cEF559Ef7c32c31d9a5d8Acb664FE",
+      "name": "VolatileV2 AMM - wUSDR/USDC",
+      "symbol": "vAMMV2-wUSDR/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x52cC5B5CB98C9a7fb8cCe7d4b4e8F41E26ce04a8": {
+    "protocolToken": {
+      "address": "0x52cC5B5CB98C9a7fb8cCe7d4b4e8F41E26ce04a8",
+      "name": "Moo VeloV2 OP-USDC",
+      "symbol": "mooVeloV2OP-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "name": "Optimism",
+        "symbol": "OP",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x0df083de449F75691fc5A36477a6f3284C269108",
+      "name": "VolatileV2 AMM - OP/USDC",
+      "symbol": "vAMMV2-OP/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x6Fb45a8183660F30EA1c6cDFDDBFdC7ef7925801": {
+    "protocolToken": {
+      "address": "0x6Fb45a8183660F30EA1c6cDFDDBFdC7ef7925801",
+      "name": "Moo VeloV2 LUSD-USDT",
+      "symbol": "mooVeloV2LUSD-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+        "name": "LUSD Stablecoin",
+        "symbol": "LUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xe8B8bfF1E415258eb3d5FA8DeeE9C38406e609cd",
+      "name": "StableV2 AMM - USDT/LUSD",
+      "symbol": "sAMMV2-USDT/LUSD",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xef8D6dDE0a0f0CCdaDB678366a94D93f1C449689": {
+    "protocolToken": {
+      "address": "0xef8D6dDE0a0f0CCdaDB678366a94D93f1C449689",
+      "name": "Moo VeloV2 MAI-USDC",
+      "symbol": "mooVeloV2MAI-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xdFA46478F9e5EA86d57387849598dbFB2e964b02",
+        "name": "Mai Stablecoin",
+        "symbol": "MAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xE54e4020d1C3afDB312095D90054103E68fe34B0",
+      "name": "StableV2 AMM - USDC/MAI",
+      "symbol": "sAMMV2-USDC/MAI",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x453f61390ce6DfB668bbF4D93E58c94BB0ae81f3": {
+    "protocolToken": {
+      "address": "0x453f61390ce6DfB668bbF4D93E58c94BB0ae81f3",
+      "name": "Moo VeloV2 DOLA-USDC",
+      "symbol": "mooVeloV2DOLA-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+        "name": "Dola USD Stablecoin",
+        "symbol": "DOLA",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xB720FBC32d60BB6dcc955Be86b98D8fD3c4bA645",
+      "name": "StableV2 AMM - USDC/DOLA",
+      "symbol": "sAMMV2-USDC/DOLA",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x28bAF22c85D146101198D1883281a83cBe063329": {
+    "protocolToken": {
+      "address": "0x28bAF22c85D146101198D1883281a83cBe063329",
+      "name": "Moo VeloV2 WETH-USDC",
+      "symbol": "mooVeloV2WETH-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x0493Bf8b6DBB159Ce2Db2E0E8403E753Abd1235b",
+      "name": "VolatileV2 AMM - WETH/USDC",
+      "symbol": "vAMMV2-WETH/USDC",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x06E0A84c71dBD037c618CCf90798474E0e6f9C91": {
+    "protocolToken": {
+      "address": "0x06E0A84c71dBD037c618CCf90798474E0e6f9C91",
+      "name": "Moo VeloV2 ​ETH-frxETH",
+      "symbol": "mooVeloV2​ETH-frxETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x3f42Dc59DC4dF5cD607163bC620168f7FF7aB970",
+      "name": "StableV2 AMM - WETH/frxETH",
+      "symbol": "sAMMV2-WETH/frxETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x88F72d1f49Ea88f86fc52bebB0c1d0Ef232AE483": {
+    "protocolToken": {
+      "address": "0x88F72d1f49Ea88f86fc52bebB0c1d0Ef232AE483",
+      "name": "Moo VeloV2 sfrxETH-frxETH",
+      "symbol": "mooVeloV2sfrxETH-frxETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x484c2D6e3cDd945a8B2DF735e079178C1036578c",
+        "name": "Staked Frax Ether",
+        "symbol": "sfrxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x6806411765Af15Bddd26f8f544A34cC40cb9838B",
+        "name": "Frax Ether",
+        "symbol": "frxETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xFF5318f81Dd791e92d51b8A54fA3538832D2890D",
+      "name": "StableV2 AMM - sfrxETH/frxETH",
+      "symbol": "sAMMV2-sfrxETH/frxETH",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x8aD01c3a425987c508A69149185383BAf6F47534": {
+    "protocolToken": {
+      "address": "0x8aD01c3a425987c508A69149185383BAf6F47534",
+      "name": "Moo VeloV2 USDC-USDT",
+      "symbol": "mooVeloV2USDC-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x2B47C794c3789f499D8A54Ec12f949EeCCE8bA16",
+      "name": "StableV2 AMM - USDC/USDT",
+      "symbol": "sAMMV2-USDC/USDT",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xf659Fe930eEa70Bc49B6DD53d828CBaD12673a2a": {
+    "protocolToken": {
+      "address": "0xf659Fe930eEa70Bc49B6DD53d828CBaD12673a2a",
+      "name": "Moo VeloV2 alUSD-MAI",
+      "symbol": "mooVeloV2alUSD-MAI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xCB8FA9a76b8e203D8C3797bF438d8FB81Ea3326A",
+        "name": "Alchemix USD",
+        "symbol": "alUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xdFA46478F9e5EA86d57387849598dbFB2e964b02",
+        "name": "Mai Stablecoin",
+        "symbol": "MAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xfA09479d72E2b3f8B6dF63399772237Ad6658D76",
+      "name": "StableV2 AMM - alUSD/MAI",
+      "symbol": "sAMMV2-alUSD/MAI",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x5990002594b13e174885ba4D4Ec15B8a8A4485bb": {
+    "protocolToken": {
+      "address": "0x5990002594b13e174885ba4D4Ec15B8a8A4485bb",
+      "name": "Moo Curve MIM",
+      "symbol": "mooCurveMIM",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xB153FB3d196A8eB25522705560ac152eeEc57901",
+        "name": "Magic Internet Money",
+        "symbol": "MIM",
+        "decimals": 18
+      },
+      {
+        "address": "0x1337BedC9D22ecbe766dF105c9623922A27963EC",
+        "name": "Curve.fi DAI/USDC/USDT",
+        "symbol": "3CRV",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x810D1AaA4Cd8F21c23bB648F2dfb9DC232A01F09",
+      "name": "Curve.fi Factory USD Metapool: MIM",
+      "symbol": "mim3CRV-f",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x6992333E5df2364eB1b6CF14DC0c86EB0865D6E2": {
+    "protocolToken": {
+      "address": "0x6992333E5df2364eB1b6CF14DC0c86EB0865D6E2",
+      "name": "Moo Velo USDC-MIM",
+      "symbol": "mooVeloUSDC-MIM",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xB153FB3d196A8eB25522705560ac152eeEc57901",
+        "name": "Magic Internet Money",
+        "symbol": "MIM",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x29A20cA4968d756C7D0922a7064a1A56f4624e9a",
+      "name": "StableV1 AMM - USDC/MIM",
+      "symbol": "sAMM-USDC/MIM",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0xdCC5DC90A803928Dc21556590D4620030966270F": {
+    "protocolToken": {
+      "address": "0xdCC5DC90A803928Dc21556590D4620030966270F",
+      "name": "Moo Beets Rocket Fuel ",
+      "symbol": "mooBeetsRocketFuel",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x4Fd63966879300caFafBB35D157dC5229278Ed23",
+      "name": "Rocket Fuel",
+      "symbol": "BPT-rETH-ETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp"
+  },
+  "0xa8fd81A0ec43841b64cDAE13F1F6816108fD37FF": {
+    "protocolToken": {
+      "address": "0xa8fd81A0ec43841b64cDAE13F1F6816108fD37FF",
+      "name": "Moo Velodrome USDC-DOLA",
+      "symbol": "mooVelodromeUSDC-DOLA",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+        "name": "Dola USD Stablecoin",
+        "symbol": "DOLA",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x6C5019D345Ec05004A7E7B0623A91a0D9B8D590d",
+      "name": "StableV1 AMM - USDC/DOLA",
+      "symbol": "sAMM-USDC/DOLA",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x499287C138Aed9A107d748dDfd53668d104378B1": {
+    "protocolToken": {
+      "address": "0x499287C138Aed9A107d748dDfd53668d104378B1",
+      "name": "Moo Velodrome VELO-OP",
+      "symbol": "mooVelodromeVELO-OP",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
+        "name": "Velodrome",
+        "symbol": "VELO",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000042",
+        "name": "Optimism",
+        "symbol": "OP",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xFFD74EF185989BFF8752c818A53a47FC45388F08",
+      "name": "VolatileV1 AMM - VELO/OP",
+      "symbol": "vAMM-VELO/OP",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
+  "0x25DE69dA4469A96974FaE79d0C41366A63317FDC": {
+    "protocolToken": {
+      "address": "0x25DE69dA4469A96974FaE79d0C41366A63317FDC",
+      "name": "Moo Curve f-sBTC",
+      "symbol": "mooCurveFsBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x298B9B95708152ff6968aafd889c6586e9169f1D",
+        "name": "Synth sBTC",
+        "symbol": "sBTC",
+        "decimals": 18
+      },
+      {
+        "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x9F2fE3500B1a7E285FDc337acacE94c480e00130",
+      "name": "Curve.fi Factory Plain Pool: sBTC/wbtc",
+      "symbol": "sbtc-f",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  }
+}

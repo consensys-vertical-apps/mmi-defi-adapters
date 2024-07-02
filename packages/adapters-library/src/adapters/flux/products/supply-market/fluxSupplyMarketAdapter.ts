@@ -11,6 +11,11 @@ export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   // Expected blocks per year
   static readonly EXPECTED_BLOCKS_PER_YEAR = 2628000
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   productId = 'supply-market'
 
   contractAddresses = contractAddresses
@@ -25,9 +30,6 @@ export class FluxSupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

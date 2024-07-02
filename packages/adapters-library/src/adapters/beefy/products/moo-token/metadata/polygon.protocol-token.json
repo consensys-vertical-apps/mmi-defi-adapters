@@ -1,0 +1,814 @@
+{
+  "0x378FcE425239B0c6B43eF79E773794dd2e9979AD": {
+    "protocolToken": {
+      "address": "0x378FcE425239B0c6B43eF79E773794dd2e9979AD",
+      "name": "Moo Curve MAI-USDC.e",
+      "symbol": "mooCurveMAI-USDC.e",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xa3Fa99A148fA48D14Ed51d610c367C61876997F1",
+        "name": "miMATIC",
+        "symbol": "miMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x53C38755748745e2dd7D0a136FBCC9fB1A5B83b2",
+      "name": "Curve.fi Factory Plain Pool: MAI/USDC.e",
+      "symbol": "MAIUSDC.e-f",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c": {
+    "protocolToken": {
+      "address": "0x1B197B90c86BF04D221D94F773e5C7984d6a1D4c",
+      "name": "Moo Uniswap Gamma MATIC-USDC",
+      "symbol": "mooUniswapGammaMATIC-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xE583b04b9a8F576aa7F17ECc6eB662499B5A8793",
+      "name": "xWMATIC-USDC05",
+      "symbol": "xWMATIC-USDC05",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xf9Ba6b4f3386BEe60fE1f20e82CbEce530f6cbe1": {
+    "protocolToken": {
+      "address": "0xf9Ba6b4f3386BEe60fE1f20e82CbEce530f6cbe1",
+      "name": "Moo Uniswap Gamma USDC-ETH",
+      "symbol": "mooUniswapGammaUSDC-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x1Fd452156b12FB5D74680C5Ff166303E6dd12A78",
+      "name": "xUSDC-WETH05",
+      "symbol": "xUSDC-WETH05",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x86aAd005769D9aedeb59df6e4B4b68974Bdd86fD": {
+    "protocolToken": {
+      "address": "0x86aAd005769D9aedeb59df6e4B4b68974Bdd86fD",
+      "name": "Moo Uniswap Gamma USDC-USDT",
+      "symbol": "mooUniswapGammaUSDC-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "name": "(PoS) Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x8c6FE430cf06e56BE7c092AD3A249BF0BcB388B9",
+      "name": "xUSDC-USDT01",
+      "symbol": "xUSDC-USDT01",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x0Aa691fE4188F6D6467269a401af393869C6e982": {
+    "protocolToken": {
+      "address": "0x0Aa691fE4188F6D6467269a401af393869C6e982",
+      "name": "Moo Uniswap Gamma USDC-DAI",
+      "symbol": "mooUniswapGammaUSDC-DAI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "name": "(PoS) Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x831231E16D95Eb3D54Bf2C80968F35A5F4483447",
+      "name": "xUSDC-DAI01",
+      "symbol": "xUSDC-DAI01",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xaF8E862E654035eFb2c11146Ae76599e198C5B72": {
+    "protocolToken": {
+      "address": "0xaF8E862E654035eFb2c11146Ae76599e198C5B72",
+      "name": "Moo Quick WMATIC-USDC Narrow",
+      "symbol": "mooQuickWMATIC-USDCNarrow",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x1cf4293125913cB3Dea4aD7f2bb4795B9e896CE9",
+      "name": "aWMATIC-USDC",
+      "symbol": "aWMATIC-USDC",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xC2a4c0682f32734cC75eB3eCC02ba6C9A546E836": {
+    "protocolToken": {
+      "address": "0xC2a4c0682f32734cC75eB3eCC02ba6C9A546E836",
+      "name": "Moo Quick WMATIC-USDT Narrow",
+      "symbol": "mooQuickWMATIC-USDTNarrow",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "name": "(PoS) Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x598cA33b7F5FAB560ddC8E76D94A4b4AA52566d7",
+      "name": "awMATIC-USDT",
+      "symbol": "awMATIC-USDT",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x0514335D86463544220CBa8ca83B675AbD624525": {
+    "protocolToken": {
+      "address": "0x0514335D86463544220CBa8ca83B675AbD624525",
+      "name": "Moo Quick USDC-ETH Narrow",
+      "symbol": "mooQuickUSDC-ETHNarrow",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x3974FbDC22741A1632E024192111107b202F214f",
+      "name": "aUSDC-WETH",
+      "symbol": "aUSDC-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xb6D78A6eDa4318067183C4A5076E25197f4e5009": {
+    "protocolToken": {
+      "address": "0xb6D78A6eDa4318067183C4A5076E25197f4e5009",
+      "name": "Moo Curve crvUSD-USDC.e",
+      "symbol": "mooCurveCrvUSD-USDC.e",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x864490Cf55dc2Dee3f0ca4D06F5f80b2BB154a03",
+      "name": "crvUSD/USDC.e",
+      "symbol": "crvusdusde",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xf2A28ED791B268A7CCCa16bB2e69093852cc3259": {
+    "protocolToken": {
+      "address": "0xf2A28ED791B268A7CCCa16bB2e69093852cc3259",
+      "name": "Moo Curve crvUSD-USDT",
+      "symbol": "mooCurveCrvUSD-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "name": "(PoS) Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xA70Af99bFF6b168327f9D1480e29173e757c7904",
+      "name": "crvUSD/USDT",
+      "symbol": "crvusdusdt",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x7D9751c9dd4435dE4b1802b4c727d745d11110B8": {
+    "protocolToken": {
+      "address": "0x7D9751c9dd4435dE4b1802b4c727d745d11110B8",
+      "name": "Moo Curve crvUSD-USDC",
+      "symbol": "mooCurveCrvUSD-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x5225010A0AE133B357861782B0B865a48471b2C5",
+      "name": "crvUSD/USDC",
+      "symbol": "crvusdusdc",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xC97f5E2169CB182ab32F9BdE30a60051008a459f": {
+    "protocolToken": {
+      "address": "0xC97f5E2169CB182ab32F9BdE30a60051008a459f",
+      "name": "Moo Curve crvUSD-DAI",
+      "symbol": "mooCurveCrvUSD-DAI",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc4Ce1D6F5D98D65eE25Cf85e9F2E9DcFEe6Cb5d6",
+        "name": "Curve.Fi USD Stablecoin(PoS)",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "name": "(PoS) Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x62c949ee985b125Ff2d7ddcf4Fe7AEcB0a040E2a",
+      "name": "crvUSD/DAI",
+      "symbol": "crvusddai",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x44227C548272E2Dce4537746bcA4c8F036177B9e": {
+    "protocolToken": {
+      "address": "0x44227C548272E2Dce4537746bcA4c8F036177B9e",
+      "name": "Moo Quick Gamma WETH-WBTCwide",
+      "symbol": "mooQuickGammaWETH-WBTCwide",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "name": "(PoS) Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xadc7B4096C3059Ec578585Df36E6E1286d345367",
+      "name": "aWBTC-WETH",
+      "symbol": "aWBTC-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x8CaA1a3809b3C67C61Eaf5524e1cB784ED6bA8B3": {
+    "protocolToken": {
+      "address": "0x8CaA1a3809b3C67C61Eaf5524e1cB784ED6bA8B3",
+      "name": "Moo Quick Gamma USDT-WETH",
+      "symbol": "mooQuickGammaUSDT-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "name": "(PoS) Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x5928f9f61902b139e1c40cBa59077516734ff09f",
+      "name": "aWETH-USDT",
+      "symbol": "aWETH-USDT",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xc5d366eDF862F18d62831fb8333D335d625a4C00": {
+    "protocolToken": {
+      "address": "0xc5d366eDF862F18d62831fb8333D335d625a4C00",
+      "name": "Moo Quick Gamma QUICK-MATIC",
+      "symbol": "mooQuickGammaQUICK-MATIC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0xB5C064F955D8e7F38fE0460C556a72987494eE17",
+        "name": "QuickSwap",
+        "symbol": "QUICK",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x7f09bD2801A7b795dF29C273C4afbB0Ff15E2D63",
+      "name": "aWMATIC-QUICK",
+      "symbol": "aWMATIC-QUICK",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xE7d054F4d4089F5F2A192B14A13714f2e96b491e": {
+    "protocolToken": {
+      "address": "0xE7d054F4d4089F5F2A192B14A13714f2e96b491e",
+      "name": "Moo Quick Gamma LINK-WETH",
+      "symbol": "mooQuickGammaLINK-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+        "name": "ChainLink Token",
+        "symbol": "LINK",
+        "decimals": 18
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x3dA7e0320C04D88b71e0ada960AaD3d21f10CAdf",
+      "name": "aLINK-WETH",
+      "symbol": "aLINK-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xd6E01db636054DEF591C744285318560Bf33CBab": {
+    "protocolToken": {
+      "address": "0xd6E01db636054DEF591C744285318560Bf33CBab",
+      "name": "Moo Quick Gamma AAVE-WETH",
+      "symbol": "mooQuickGammaAAVE-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
+        "name": "Aave (PoS)",
+        "symbol": "AAVE",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x5bA383530Db75A22E028239dbc777C7Ee8CE4752",
+      "name": "aWETH-AAVE",
+      "symbol": "aWETH-AAVE",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xf552a67A82908E6C7F4382b812218d665e058C0B": {
+    "protocolToken": {
+      "address": "0xf552a67A82908E6C7F4382b812218d665e058C0B",
+      "name": "Moo Retro WBTC-ETH",
+      "symbol": "mooRetroWBTC-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "name": "(PoS) Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x336536F5bB478D8624dDcE0942fdeF5C92bC4662",
+      "name": "xWBTC-WETH05",
+      "symbol": "xWBTC-WETH05",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xec74671f95F0942358016da627b912143100DAF2": {
+    "protocolToken": {
+      "address": "0xec74671f95F0942358016da627b912143100DAF2",
+      "name": "Moo Retro MaticX-MATIC",
+      "symbol": "mooRetroMaticX-MATIC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0xfa68FB4628DFF1028CFEc22b4162FCcd0d45efb6",
+        "name": "Liquid Staking Matic (PoS)",
+        "symbol": "MaticX",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x2589469b7A72802CE02484f053CB6df869eB2689",
+      "name": "xWMATIC-MaticX01",
+      "symbol": "xWMATIC-MaticX01",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x0fC4f2DB534Bf7525710DBf64B7081e1a3A6428f": {
+    "protocolToken": {
+      "address": "0x0fC4f2DB534Bf7525710DBf64B7081e1a3A6428f",
+      "name": "Moo Retro USDC-MATIC",
+      "symbol": "mooRetroUSDC-MATIC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xBE4E30b74b558E41f5837dC86562DF44aF57A013",
+      "name": "xWMATIC-USDC05",
+      "symbol": "xWMATIC-USDC05",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0xD97FA4474084350D2c96285E1Fca07A9D515c800": {
+    "protocolToken": {
+      "address": "0xD97FA4474084350D2c96285E1Fca07A9D515c800",
+      "name": "Moo Retro MATIC-WETH",
+      "symbol": "mooRetroMATIC-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xe7806B5ba13d4B2Ab3EaB3061cB31d4a4F3390Aa",
+      "name": "xWMATIC-WETH05",
+      "symbol": "xWMATIC-WETH05",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x4ec61a96738564CaD591841df0c8B5b6eA785E4C": {
+    "protocolToken": {
+      "address": "0x4ec61a96738564CaD591841df0c8B5b6eA785E4C",
+      "name": "Moo Quick WBTC-USDC Narrow",
+      "symbol": "mooQuickWBTC-USDC_Narrow",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "name": "(PoS) Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x3f35705479d9d77c619b2aAC9dd7a64e57151506",
+      "name": "aWBTC-USDC",
+      "symbol": "aWBTC-USDC",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x06b73b12421C667A07877B0740bA299e1de73B15": {
+    "protocolToken": {
+      "address": "0x06b73b12421C667A07877B0740bA299e1de73B15",
+      "name": "Moo Quick BTC-ETH Narrow",
+      "symbol": "mooQuickBTC-ETH_Narrow",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "name": "(PoS) Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x4B9e26a02121a1C541403a611b542965Bd4b68Ce",
+      "name": "aWBTC-WETH",
+      "symbol": "aWBTC-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x4BDA6C4d2f53B2Cd7F7FAc9287902a9928002e7B": {
+    "protocolToken": {
+      "address": "0x4BDA6C4d2f53B2Cd7F7FAc9287902a9928002e7B",
+      "name": "Moo Quick USDC-ETH Narrow",
+      "symbol": "mooQuickUSDC-ETH_Narrow",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x3Cc20A6795c4b57d9817399F68E83e71C8626580",
+      "name": "aUSDC-WETH",
+      "symbol": "aUSDC-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x3A1F8B9b4aB6ba1a845931eD527B6B4768Ca07B1": {
+    "protocolToken": {
+      "address": "0x3A1F8B9b4aB6ba1a845931eD527B6B4768Ca07B1",
+      "name": "Moo Quick USDC-DAI Stable",
+      "symbol": "mooQuickUSDC-DAI_Stable",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+        "name": "(PoS) Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x9E31214Db6931727B7d63a0D2b6236DB455c0965",
+      "name": "aUSDC-DAI",
+      "symbol": "aUSDC-DAI",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x1d34Db65C4fe0f6A73194DBDC4a44ae05B46e6c5": {
+    "protocolToken": {
+      "address": "0x1d34Db65C4fe0f6A73194DBDC4a44ae05B46e6c5",
+      "name": "Moo Quick MATIC-USDC Narrow",
+      "symbol": "mooQuickMATIC-USDCNarrow",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+        "name": "USD Coin (PoS)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x04d521E2c414E6d898c6F2599FdD863Edf49e247",
+      "name": "awMATIC-USDC",
+      "symbol": "awMATIC-USDC",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x6F79CA179FE1cD131574a08B96e92744B6649128": {
+    "protocolToken": {
+      "address": "0x6F79CA179FE1cD131574a08B96e92744B6649128",
+      "name": "Moo Quick MATIC-WETH Narrow",
+      "symbol": "mooQuickMATIC-WETHNarrow",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x02203f2351E7aC6aB5051205172D3f772db7D814",
+      "name": "awMATIC-WETH",
+      "symbol": "awMATIC-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  },
+  "0x346c16e7a76D224b9955c0F67e93b413Fc63ba3E": {
+    "protocolToken": {
+      "address": "0x346c16e7a76D224b9955c0F67e93b413Fc63ba3E",
+      "name": "Moo Quick MATIC-WETH Wide",
+      "symbol": "mooQuickMATIC-WETHWide",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x81Cec323BF8C4164c66ec066F53cc053A535f03D",
+      "name": "awMATIC-WETH",
+      "symbol": "awMATIC-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "gamma"
+  }
+}

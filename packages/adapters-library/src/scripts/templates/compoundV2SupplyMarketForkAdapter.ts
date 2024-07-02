@@ -19,7 +19,6 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
   import {
     ProtocolDetails,
     PositionType,
-    AssetType,
   } from '../../../../types/adapter'
   import { Protocol } from '../../../protocols'
   
@@ -38,9 +37,6 @@ export function compoundV2SupplyMarketForkAdapterTemplate({
         positionType: PositionType.Supply,
         chainId: this.chainId,
         productId: this.productId,
-        assetDetails: {
-          type: AssetType.StandardErc20,
-        },
       }
     }
   

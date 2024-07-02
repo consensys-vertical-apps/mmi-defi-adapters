@@ -1,4 +1,18 @@
 {
+  "aggregatedValues": [
+    "USD0.00",
+    "USD0.00",
+    "USD0.00",
+    "USD0.00",
+    "USD0.00",
+    "USD1.10",
+    "USD1.20",
+    "USD0.10",
+    "USD0.01",
+    "USD0.01",
+    "USD0.20",
+    "USD10.10"
+  ],
   "snapshot": {
     "protocolId": "flux",
     "name": "Flux",
@@ -8,9 +22,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "supply-market",
-    "assetDetails": {
-      "type": "StandardErc20"
-    },
     "success": true,
     "movements": [
       {

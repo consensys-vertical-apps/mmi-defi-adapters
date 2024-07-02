@@ -1,5 +1,6 @@
 {
   "blockNumber": 19184953,
+  "aggregatedValues": ["USD62.48"],
   "snapshot": [
     {
       "protocolId": "carbon-defi",
@@ -10,9 +11,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "strategies",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {

@@ -11,6 +11,11 @@ import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
 export class StargateVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -22,9 +27,6 @@ export class StargateVotingEscrowAdapter extends VotingEscrow {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

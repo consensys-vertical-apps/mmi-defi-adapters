@@ -1,5 +1,6 @@
 {
   "blockNumber": 18634843,
+  "aggregatedValues": ["USD147,541.36", "USD24,790.67", "USD154.56"],
   "snapshot": [
     {
       "protocolId": "convex",
@@ -10,9 +11,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "staking",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -184,9 +182,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "cvxcrv-wrapper",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -232,7 +227,7 @@
                   "name": "Dai Stablecoin",
                   "symbol": "DAI",
                   "decimals": 18,
-                  "type": "underlying",
+                  "type": "underlying-claimable",
                   "balanceRaw": "38648398692674004444n",
                   "balance": 38.64839869267401,
                   "price": 0.9992119774262888,
@@ -243,7 +238,7 @@
                   "name": "USD Coin",
                   "symbol": "USDC",
                   "decimals": 6,
-                  "type": "underlying",
+                  "type": "underlying-claimable",
                   "balanceRaw": "39306196n",
                   "balance": 39.306196,
                   "price": 1.008292872437544,
@@ -254,7 +249,7 @@
                   "name": "Tether USD",
                   "symbol": "USDT",
                   "decimals": 6,
-                  "type": "underlying",
+                  "type": "underlying-claimable",
                   "balanceRaw": "32972522n",
                   "balance": 32.972522,
                   "price": 0.9993786207862668,

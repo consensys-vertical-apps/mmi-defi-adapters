@@ -1,4 +1,5 @@
 {
+  "aggregatedValues": ["USD57,238.00"],
   "snapshot": {
     "protocolId": "uniswap-v3",
     "name": "UniswapV3",
@@ -8,9 +9,6 @@
     "positionType": "supply",
     "chainId": 1,
     "productId": "pool",
-    "assetDetails": {
-      "type": "NonStandardErc20"
-    },
     "success": true,
     "movements": [
       {

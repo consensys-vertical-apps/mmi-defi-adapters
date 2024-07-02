@@ -1,5 +1,6 @@
 {
   "blockNumber": 18377483,
+  "aggregatedValues": ["USD7.80", "USD142,256,435.30"],
   "snapshot": [
     {
       "protocolId": "lido",
@@ -10,9 +11,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "st-eth",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -48,9 +46,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {

@@ -1,5 +1,6 @@
 {
   "blockNumber": 45143861,
+  "aggregatedValues": ["USD5,107.66"],
   "snapshot": [
     {
       "protocolId": "gmx",
@@ -10,9 +11,6 @@
       "positionType": "supply",
       "chainId": 43114,
       "productId": "glp",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {

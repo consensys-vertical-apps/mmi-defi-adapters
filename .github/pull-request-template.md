@@ -12,13 +12,13 @@ Write a short description of the changes included in this pull request. Include 
 - [ ] Contracts used are verified for that chain block explorer
 - [ ] Test cases with a block number have been added to the `testCases.ts` file for every relevant method that has been implemented
   - [ ] positions
-  - [ ] prices
+  - [ ] profits
+  - [ ] prices (unwrap)
   - [ ] deposits
   - [ ] withdrawals
-  - [ ] profits
+  - [ ] repays
+  - [ ] borrows
   - [ ] tvl
-  - [ ] apr
-  - [ ] apy
 - [ ] `getAddress` from `ethers`
   - [ ] Is used to parse hardcoded addresses
   - [ ] Is used to parse addresses that come from contract calls when it is not clear they'll be in checksum format

@@ -1,0 +1,1313 @@
+{
+  "0x33eCa80Faa8D65611aA0DdA9c986d0dC5651aF42": {
+    "protocolToken": {
+      "address": "0x33eCa80Faa8D65611aA0DdA9c986d0dC5651aF42",
+      "name": "Moo Curve triRSR",
+      "symbol": "mooCurveTriRSR",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x18C14C2D707b2212e17d1579789Fc06010cfca23",
+        "name": "ETHPlus",
+        "symbol": "ETH+",
+        "decimals": 18
+      },
+      {
+        "address": "0x12275DCB9048680c4Be40942eA4D92c74C63b844",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xCa5Ca9083702c56b481D1eec86F1776FDbd2e594",
+        "name": "Reserve Rights",
+        "symbol": "RSR",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x45B47fE1bed067de6B4b89e0285E6B571A64c57C",
+      "name": "TriRSR",
+      "symbol": "ETH+eUSDRS",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xB59827f13466C8D4Dd76417011E9a2e8e3dfCFdC": {
+    "protocolToken": {
+      "address": "0xB59827f13466C8D4Dd76417011E9a2e8e3dfCFdC",
+      "name": "Moo Curve KNOX-eUSD",
+      "symbol": "mooCurveKNOX-eUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0BBF664D46becc28593368c97236FAa0fb397595",
+        "name": "KNOX Dollar",
+        "symbol": "KNOX",
+        "decimals": 18
+      },
+      {
+        "address": "0x12275DCB9048680c4Be40942eA4D92c74C63b844",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x6f33daF91d2aCAe10F5CD7BbE3f31716Ed123F1D",
+      "name": "KNOX/eUSD",
+      "symbol": "KNOXeUSD",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x4897679a3E506F0bedC118250369D782F6CCA03e": {
+    "protocolToken": {
+      "address": "0x4897679a3E506F0bedC118250369D782F6CCA03e",
+      "name": "Moo Eqb rsETH_26SEP24",
+      "symbol": "mooEqb-rsETH_26SEP24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "KelpDao Restaked ETH",
+        "symbol": "rsETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xED99fC8bdB8E9e7B8240f62f69609a125A0Fbf14",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0x41c0d96f9c297Eb2216792a3CD50296638684705": {
+    "protocolToken": {
+      "address": "0x41c0d96f9c297Eb2216792a3CD50296638684705",
+      "name": "Moo Curve eUSD-USDC",
+      "symbol": "mooCurveEUSD-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x12275DCB9048680c4Be40942eA4D92c74C63b844",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x93a416206B4ae3204cFE539edfeE6BC05a62963e",
+      "name": "eUSD/USDC",
+      "symbol": "eUSDUSDC",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x6dB43DC0E5150586D80292C2c0888D5db43261DC": {
+    "protocolToken": {
+      "address": "0x6dB43DC0E5150586D80292C2c0888D5db43261DC",
+      "name": "Moo Curve eUSD-crvUSD",
+      "symbol": "mooCurveEUSD-crvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x12275DCB9048680c4Be40942eA4D92c74C63b844",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x67D11005AF05Bb1e9fDb1CFc261C23DE3E1055a1",
+      "name": "eUSD/crvUSD",
+      "symbol": "eUSDcrvUSD",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x5A8D2889A3135B8e0c7B3D6f55A88374804445d0": {
+    "protocolToken": {
+      "address": "0x5A8D2889A3135B8e0c7B3D6f55A88374804445d0",
+      "name": "Moo Curve eUSD-rgUSD",
+      "symbol": "mooCurveEUSD-rgUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x12275DCB9048680c4Be40942eA4D92c74C63b844",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x96a993f06951B01430523D0D5590192d650EBf3e",
+        "name": "Revenue Generating USD",
+        "symbol": "rgUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xbdf44492aC1C81b1Bd9B9A8B075026d3E8A3225a",
+      "name": "eUSD/rgUSD",
+      "symbol": "eUSDrgUSD",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x8Cb60b895FBFDE711622370C7140b554AC3E62Dc": {
+    "protocolToken": {
+      "address": "0x8Cb60b895FBFDE711622370C7140b554AC3E62Dc",
+      "name": "Moo Curve KNOX-rgUSD",
+      "symbol": "mooCurveKNOX-rgUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0BBF664D46becc28593368c97236FAa0fb397595",
+        "name": "KNOX Dollar",
+        "symbol": "KNOX",
+        "decimals": 18
+      },
+      {
+        "address": "0x96a993f06951B01430523D0D5590192d650EBf3e",
+        "name": "Revenue Generating USD",
+        "symbol": "rgUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x0aCacb4f6dB7708a5451B835acd39DFEbAC4EeB5",
+      "name": "KNOX/rgUSD",
+      "symbol": "KNOXrgUSD",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x447eEeB0bD7f6E93D0C1647498F88130603A9C61": {
+    "protocolToken": {
+      "address": "0x447eEeB0bD7f6E93D0C1647498F88130603A9C61",
+      "name": "Moo Curve rgUSD-USDC",
+      "symbol": "mooCurveRgUSD-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x96a993f06951B01430523D0D5590192d650EBf3e",
+        "name": "Revenue Generating USD",
+        "symbol": "rgUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x3dcb7b53B6177a04a2AECE61d95bF577ECC02241",
+      "name": "rgUSD/USDC",
+      "symbol": "rgUSDUSDC",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x11F9DEB38e26b5025C915672CbaA202f2684d03B": {
+    "protocolToken": {
+      "address": "0x11F9DEB38e26b5025C915672CbaA202f2684d03B",
+      "name": "Moo Curve ETH+-ETH",
+      "symbol": "mooCurveETH+-ETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x18C14C2D707b2212e17d1579789Fc06010cfca23",
+        "name": "ETHPlus",
+        "symbol": "ETH+",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x95F425c7d730Eb7673fca272c2c305f48Ed546c3",
+      "name": "ETH+/WETH",
+      "symbol": "ETH+WETH",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x4d01a46Fc5F20cA2544204EDD376BdB619BD2D2F": {
+    "protocolToken": {
+      "address": "0x4d01a46Fc5F20cA2544204EDD376BdB619BD2D2F",
+      "name": "Moo Eqb eETH_26SEP24",
+      "symbol": "mooEqb-eETH_26SEP24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xf9F9779d8fF604732EBA9AD345E6A27EF5c2a9d6",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0x218337d7DAe070e219c44783A64cA107dffc533e": {
+    "protocolToken": {
+      "address": "0x218337d7DAe070e219c44783A64cA107dffc533e",
+      "name": "Moo Eqb ezETH_26SEP24",
+      "symbol": "mooEqb-ezETH_26SEP24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x35f3dB08a6e9cB4391348b0B404F493E7ae264c0",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0xAf570c4BcC42fe7f62E969BB147a639d74d2dAD4": {
+    "protocolToken": {
+      "address": "0xAf570c4BcC42fe7f62E969BB147a639d74d2dAD4",
+      "name": "Moo Eqb sETH_eETHSilo_27JUN24",
+      "symbol": "mooEqb-sETH_eETHSilo_27JUN24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x22BED3E6E56266C347769189B44646D91b3150c4",
+        "name": "Silo Finance Borrowable WETH Deposit in PT-weETH-27JUN2024 Silo",
+        "symbol": "sWETH-PT-weETH-27JUN2024",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x6aBE9Ac2df48490693BdB9d66Fa898fc9cD7cc36",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0xE2F1DdD8A02774827764bdeC8F84B29B50195969": {
+    "protocolToken": {
+      "address": "0xE2F1DdD8A02774827764bdeC8F84B29B50195969",
+      "name": "Moo Eqb sETH_ezETHSilo_27JUN24",
+      "symbol": "mooEqb-sETH_ezETHSilo_27JUN24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xEde3D8D3213D8defC37E4EdEA86448D4c692bAa6",
+        "name": "Silo Finance Borrowable WETH Deposit in PT-ezETH-27JUN2024 Silo",
+        "symbol": "sWETH-PT-ezETH-27JUN2024",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xCf602767e9c82194DaF58EB67a3169d60DbAaC62",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0x1B4dD8911cd2028Ea230f82E7BD91F1651Cb4AaB": {
+    "protocolToken": {
+      "address": "0x1B4dD8911cd2028Ea230f82E7BD91F1651Cb4AaB",
+      "name": "Moo Curve USDC-USDM",
+      "symbol": "mooCurveUSDC-USDM",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+        "name": "Mountain Protocol USD",
+        "symbol": "USDM",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x4bD135524897333bec344e50ddD85126554E58B4",
+      "name": "USDC/USDM",
+      "symbol": "usdc-usdm",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763": {
+    "protocolToken": {
+      "address": "0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763",
+      "name": "Moo Aura Gyro aUSDCn/aUSDTn",
+      "symbol": "mooAuraGyroaUSDCn/aUSDTn",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7CFaDFD5645B50bE87d546f42699d863648251ad",
+        "name": "Static Aave Arbitrum USDCn",
+        "symbol": "stataArbUSDCn",
+        "decimals": 6
+      },
+      {
+        "address": "0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140",
+        "name": "Static Aave Arbitrum USDT",
+        "symbol": "stataArbUSDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x125bC5a031B2Db6733bfa35d914ffa428095978B",
+      "name": "Gyroscope ECLP AUSDC/AUSDT",
+      "symbol": "ECLP-AUSDC-AUSDT",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0xEFAd727469e7e4e410376986AB0af8B6F9559fDc": {
+    "protocolToken": {
+      "address": "0xEFAd727469e7e4e410376986AB0af8B6F9559fDc",
+      "name": "Moo Aura Arb ezETH-wstETH",
+      "symbol": "mooAuraArbezETH-wstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xB61371Ab661B1ACec81C699854D2f911070C059E",
+        "name": "Balancer ezETH/wstETH",
+        "symbol": "ezETH/wstETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xB61371Ab661B1ACec81C699854D2f911070C059E",
+      "name": "Balancer ezETH/wstETH",
+      "symbol": "ezETH/wstETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0xDDf00Bb25A13e3ECd35a343B9165448cDd2228B6": {
+    "protocolToken": {
+      "address": "0xDDf00Bb25A13e3ECd35a343B9165448cDd2228B6",
+      "name": "Moo Eqb eETH_27JUN24",
+      "symbol": "mooEqb-eETH_27JUN24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x952083cde7aaa11AB8449057F7de23A970AA8472",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0x59D0C3f25cB3bD86E03D827C773892d247452227": {
+    "protocolToken": {
+      "address": "0x59D0C3f25cB3bD86E03D827C773892d247452227",
+      "name": "Moo Eqb rsETH_27JUN24",
+      "symbol": "mooEqb-rsETH_27JUN24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "KelpDao Restaked ETH",
+        "symbol": "rsETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x6Ae79089b2CF4be441480801bb741A531d94312b",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0xdccb85017a996faF5242648B46940E80DE0A36a5": {
+    "protocolToken": {
+      "address": "0xdccb85017a996faF5242648B46940E80DE0A36a5",
+      "name": "Moo Eqb ezETH_27JUN24",
+      "symbol": "mooEqb-ezETH_27JUN24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+        "name": "Renzo Restaked ETH",
+        "symbol": "ezETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x5E03C94Fc5Fb2E21882000A96Df0b63d2c4312e2",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0x61d93cd5CcBa9072E1E58A812fbC760820075a0b": {
+    "protocolToken": {
+      "address": "0x61d93cd5CcBa9072E1E58A812fbC760820075a0b",
+      "name": "Moo Aave USDC",
+      "symbol": "mooAaveUSDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    "unwrapType": "aave_lend"
+  },
+  "0x42189E9E398fD830CFcca2FC1B2c84823d72C658": {
+    "protocolToken": {
+      "address": "0x42189E9E398fD830CFcca2FC1B2c84823d72C658",
+      "name": "Moo Curve USD+USDT+",
+      "symbol": "mooCurveUSD+USDT+",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65",
+        "name": "USD+",
+        "symbol": "USD+",
+        "decimals": 6
+      },
+      {
+        "address": "0xb1084db8D3C05CEbd5FA9335dF95EE4b8a0edc30",
+        "name": "USDT+",
+        "symbol": "USDT+",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x1446999B0b0E4f7aDA6Ee73f2Ae12a2cfdc5D9E7",
+      "name": "Overnight max stable yield",
+      "symbol": "USD++",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xC77Ec608FcA5e3749ba27620dF04471acD427856": {
+    "protocolToken": {
+      "address": "0xC77Ec608FcA5e3749ba27620dF04471acD427856",
+      "name": "Moo Eqb gDAI_26Sep24",
+      "symbol": "mooEqb-gDAI_26Sep24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xd85E038593d7A098614721EaE955EC2022B9B91B",
+        "name": "Gains Network DAI",
+        "symbol": "gDAI",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x99Ed4F0Ab6524d26B31D0aEa087eBe20D5949e0f",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0x01Fc10B714FEb072E0A55eB64B42C711e681058D": {
+    "protocolToken": {
+      "address": "0x01Fc10B714FEb072E0A55eB64B42C711e681058D",
+      "name": "Moo Eqb GLP_26Sep24",
+      "symbol": "mooEqb-GLP_26Sep24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1aDDD80E6039594eE970E5872D247bf0414C8903",
+        "name": "Fee + Staked GLP",
+        "symbol": "fsGLP",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x551c423c441db0B691b5630F04d2080Caee25963",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0xe6215a99A5811B8EB63A81D7D49ca2e810C130bD": {
+    "protocolToken": {
+      "address": "0xe6215a99A5811B8EB63A81D7D49ca2e810C130bD",
+      "name": "Moo Curve asdCRV",
+      "symbol": "mooCurveAsdCRV",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "name": "Curve DAO Token",
+        "symbol": "CRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x75289388d50364c3013583d97bd70cED0e183e32",
+        "name": "Aladdin sdCRV",
+        "symbol": "asdCRV",
+        "decimals": 18
+      },
+      {
+        "address": "0x62d5a59E0d67c0381aAd53B201B4A1B8Dcd2C833",
+        "name": "Vote Boosted sdCRV",
+        "symbol": "vsdCRV",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xB85246768Cfea42b0c935265Db798C9Ae457646f",
+      "name": "CRV/asdCRV/vsdCRV",
+      "symbol": "VASDCRV",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x4C8f7Cb643D410df5762bab54729bBb6A897883C": {
+    "protocolToken": {
+      "address": "0x4C8f7Cb643D410df5762bab54729bBb6A897883C",
+      "name": "Moo Eqb aUSDC_27JUN24",
+      "symbol": "mooEqb-aUSDC_27JUN24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x724dc807b04555b71ed48a6896b6F41593b8C637",
+        "name": "Aave Arbitrum USDCn",
+        "symbol": "aArbUSDCn",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xBa4A858d664Ddb052158168DB04AFA3cFF5CFCC8",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0x415B62278E684E9BB878e1DFfa9e191BB3B82bb1": {
+    "protocolToken": {
+      "address": "0x415B62278E684E9BB878e1DFfa9e191BB3B82bb1",
+      "name": "Moo Aura Arb cbETH/wstETH/rETHV2",
+      "symbol": "mooAuraArbcbETH/wstETH/rETHV2",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1DEBd73E752bEaF79865Fd6446b0c970EaE7732f",
+        "name": "Coinbase Wrapped Staked ETH",
+        "symbol": "cbETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x2d6CeD12420a9AF5a83765a8c48Be2aFcD1A8FEb",
+        "name": "Balancer cbETH/rETH/wstETH CSP",
+        "symbol": "cbETH/rETH/wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x2d6CeD12420a9AF5a83765a8c48Be2aFcD1A8FEb",
+      "name": "Balancer cbETH/rETH/wstETH CSP",
+      "symbol": "cbETH/rETH/wstETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp"
+  },
+  "0xC0F3f8B58E6b60619F9109f94c3E0ca2188DA726": {
+    "protocolToken": {
+      "address": "0xC0F3f8B58E6b60619F9109f94c3E0ca2188DA726",
+      "name": "Moo Aura Arb wstETH-sfrxETH",
+      "symbol": "mooAuraArbwstETH-sfrxETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x95aB45875cFFdba1E5f451B950bC2E42c0053f39",
+        "name": "Staked Frax Ether",
+        "symbol": "sfrxETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xc2598280bFeA1Fe18dFcaBD21C7165c40c6859d3",
+        "name": "Balancer wstETH/sfrxETH StablePool",
+        "symbol": "wstETH/sfrxETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xc2598280bFeA1Fe18dFcaBD21C7165c40c6859d3",
+      "name": "Balancer wstETH/sfrxETH StablePool",
+      "symbol": "wstETH/sfrxETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0x81FdC9a8a233519D00f8eDFa0f8bFB7618dBf26b": {
+    "protocolToken": {
+      "address": "0x81FdC9a8a233519D00f8eDFa0f8bFB7618dBf26b",
+      "name": "Moo Aura Arb rETH-ETHV2",
+      "symbol": "mooAuraArbrETH-ETHV2",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xd0EC47c54cA5e20aaAe4616c25C825c7f48D4069",
+        "name": "Balancer rETH/wETH StablePool",
+        "symbol": "rETH/wETH BPT",
+        "decimals": 18
+      },
+      {
+        "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xd0EC47c54cA5e20aaAe4616c25C825c7f48D4069",
+      "name": "Balancer rETH/wETH StablePool",
+      "symbol": "rETH/wETH BPT",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0x9fb46F03853d0F068E91e67751fce367023Efd83": {
+    "protocolToken": {
+      "address": "0x9fb46F03853d0F068E91e67751fce367023Efd83",
+      "name": "Moo Eqb sETH_26DEC24",
+      "symbol": "mooEqb-sETH_26DEC24",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xC46C5DE6eCa1CA6dc3f8c5d3ce863aE326F4b2CF",
+        "name": "Silo Finance Borrowable WETH Deposit in wstETH Silo",
+        "symbol": "sWETH-wstETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xACcd9A7cb5518326BeD715f90bD32CDf2fEc2D14",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0x6F9750c64a3c79c13A25878BF8834dcF4A3EA916": {
+    "protocolToken": {
+      "address": "0x6F9750c64a3c79c13A25878BF8834dcF4A3EA916",
+      "name": "Moo Eqb rETH_26JUN25",
+      "symbol": "mooEqb-rETH_26JUN25",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x14FbC760eFaF36781cB0eb3Cb255aD976117B9Bd",
+      "name": "Pendle Market",
+      "symbol": "PENDLE-LPT",
+      "decimals": 18
+    },
+    "unwrapType": "pendle_equilibria"
+  },
+  "0xE47CCbD0F9E80ed02EF68f35eA5074b7165c68ED": {
+    "protocolToken": {
+      "address": "0xE47CCbD0F9E80ed02EF68f35eA5074b7165c68ED",
+      "name": "Moo Curve TriCRV-ARB",
+      "symbol": "mooCurveTriCRV-ARB",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "name": "Arbitrum",
+        "symbol": "ARB",
+        "decimals": 18
+      },
+      {
+        "address": "0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978",
+        "name": "Curve DAO Token",
+        "symbol": "CRV",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x845C8bc94610807fCbaB5dd2bc7aC9DAbaFf3c55",
+      "name": "TriCRV-ARBITRUM",
+      "symbol": "crvUSDARBCRV",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x25071C7Cf437F756a4AF9260aDCe5a639e143F93": {
+    "protocolToken": {
+      "address": "0x25071C7Cf437F756a4AF9260aDCe5a639e143F93",
+      "name": "Moo Curve crvUSD-USDT",
+      "symbol": "mooCurveCrvUSD-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x73aF1150F265419Ef8a5DB41908B700C32D49135",
+      "name": "crvUSD/USDT",
+      "symbol": "crvUSDT",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x174897AD878c614D7Bc563Eaf23A4a0D75D58d2C": {
+    "protocolToken": {
+      "address": "0x174897AD878c614D7Bc563Eaf23A4a0D75D58d2C",
+      "name": "Moo Curve crvUSD-USDC",
+      "symbol": "mooCurveCrvUSD-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xec090cf6DD891D2d014beA6edAda6e05E025D93d",
+      "name": "crvUSD/USDC",
+      "symbol": "crvUSDC",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x36295709Ebb6df19f6D78127F8D2e5580AE7336f": {
+    "protocolToken": {
+      "address": "0x36295709Ebb6df19f6D78127F8D2e5580AE7336f",
+      "name": "Moo Curve crvUSD-USDC.e",
+      "symbol": "mooCurveCrvUSD-USDC.e",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+        "name": "USD Coin (Arb1)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x3aDf984c937FA6846E5a24E0A68521Bdaf767cE1",
+      "name": "crvUSD/USDC.e",
+      "symbol": "crvUSDC.e",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x3D92c6cb19Bfec3A385AA327a6B73f5c99505a38": {
+    "protocolToken": {
+      "address": "0x3D92c6cb19Bfec3A385AA327a6B73f5c99505a38",
+      "name": "Moo Curve crvUSD-FRAX",
+      "symbol": "mooCurveCrvUSD-FRAX",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x2FE7AE43591E534C256A1594D326e5779E302Ff4",
+      "name": "crvUSD/Frax",
+      "symbol": "crvUSDFRAX",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xbbbe7D77d1E78c908cFaee3f9789909FA8DdB0e0": {
+    "protocolToken": {
+      "address": "0xbbbe7D77d1E78c908cFaee3f9789909FA8DdB0e0",
+      "name": "Moo Curve TriCryptoCrvUSD",
+      "symbol": "mooCurveTriCryptoCrvUSD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x498Bf2B1e120FeD3ad3D42EA2165E9b73f99C1e5",
+        "name": "Curve.Fi USD Stablecoin",
+        "symbol": "crvUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x82670f35306253222F8a165869B28c64739ac62e",
+      "name": "Tricrypto-crvUSD",
+      "symbol": "3c-crvUSD",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xF2d3C18a13E0860de55B7201411D790473DF3caB": {
+    "protocolToken": {
+      "address": "0xF2d3C18a13E0860de55B7201411D790473DF3caB",
+      "name": "Moo Curve USD+FRAXBP",
+      "symbol": "mooCurveUSD+FRAXBP",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65",
+        "name": "USD+",
+        "symbol": "USD+",
+        "decimals": 6
+      },
+      {
+        "address": "0xC9B8a3FDECB9D5b218d02555a8Baf332E5B740d5",
+        "name": "Curve.fi Factory Plain Pool: FRAXBP",
+        "symbol": "FRAXBP-f",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xb34a7d1444a707349Bc7b981B7F2E1f20F81F013",
+      "name": "Curve.fi Factory USD Metapool: Overnight",
+      "symbol": "USD+FRAX3CRV-f",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0xa0d758b81f8ed6635CDE1DA91C8fe1bD48C28A09": {
+    "protocolToken": {
+      "address": "0xa0d758b81f8ed6635CDE1DA91C8fe1bD48C28A09",
+      "name": "Moo Balancer Arb 4POOL",
+      "symbol": "mooBalancerArb4POOL",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x423A1323c871aBC9d89EB06855bF5347048Fc4A5",
+        "name": "Balancer Stable 4pool",
+        "symbol": "4POOL-BPT",
+        "decimals": 18
+      },
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI",
+        "decimals": 18
+      },
+      {
+        "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+        "name": "USD Coin (Arb1)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x423A1323c871aBC9d89EB06855bF5347048Fc4A5",
+      "name": "Balancer Stable 4pool",
+      "symbol": "4POOL-BPT",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp"
+  },
+  "0x5892bA611fdC1598b72a30D087d28c989d429eF7": {
+    "protocolToken": {
+      "address": "0x5892bA611fdC1598b72a30D087d28c989d429eF7",
+      "name": "Moo Aura Arb wstETH-ankrETH",
+      "symbol": "mooAuraArbwstETH-ankrETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3FD4954a851eaD144c2FF72B1f5a38Ea5976Bd54",
+        "name": "Balancer ankrETH/wstETH StablePool",
+        "symbol": "ankrETH/wstETH-BPT",
+        "decimals": 18
+      },
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xe05A08226c49b636ACf99c40Da8DC6aF83CE5bB3",
+        "name": "Ankr Staked ETH",
+        "symbol": "ankrETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x3FD4954a851eaD144c2FF72B1f5a38Ea5976Bd54",
+      "name": "Balancer ankrETH/wstETH StablePool",
+      "symbol": "ankrETH/wstETH-BPT",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0x93981d31ADE2C84882a9A1ABA9Cb49978C83389a": {
+    "protocolToken": {
+      "address": "0x93981d31ADE2C84882a9A1ABA9Cb49978C83389a",
+      "name": "Moo Aura Arb RDNT-WETH",
+      "symbol": "mooAuraArbRDNT-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3082CC23568eA640225c2467653dB90e9250AaA0",
+        "name": "Radiant",
+        "symbol": "RDNT",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x32dF62dc3aEd2cD6224193052Ce665DC18165841",
+      "name": "RDNT-WETH",
+      "symbol": "RDNT-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058": {
+    "protocolToken": {
+      "address": "0x3bAa857646e5A0B475E75a1dbD38E7f0a6742058",
+      "name": "Moo Aura Arb auraBAL-wstETH",
+      "symbol": "mooAuraArbauraBAL-wstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x223738a747383d6F9f827d95964e4d8E8AC754cE",
+        "name": "Aura BAL",
+        "symbol": "auraBAL",
+        "decimals": 18
+      },
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xc7FA3A3527435720f0e2a4c1378335324dd4F9b3",
+      "name": "AuraBal wstETH Pool",
+      "symbol": "55auraBal-45wsteth",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0xd37025aC6227334C7762AeD5929Ce3272fbb6fdC": {
+    "protocolToken": {
+      "address": "0xd37025aC6227334C7762AeD5929Ce3272fbb6fdC",
+      "name": "Moo Aura Arb DOLA-USDC",
+      "symbol": "mooAuraArbDOLA-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6A7661795C374c0bFC635934efAddFf3A7Ee23b6",
+        "name": "Dola USD Stablecoin",
+        "symbol": "DOLA",
+        "decimals": 18
+      },
+      {
+        "address": "0x8bc65Eed474D1A00555825c91FeAb6A8255C2107",
+        "name": "Balancer DOLA/USDC StablePool",
+        "symbol": "DOLA/USDC BPT",
+        "decimals": 18
+      },
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x8bc65Eed474D1A00555825c91FeAb6A8255C2107",
+      "name": "Balancer DOLA/USDC StablePool",
+      "symbol": "DOLA/USDC BPT",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0xBDF4e730ED5152a7AC646BB7b514Ed624E1147C4": {
+    "protocolToken": {
+      "address": "0xBDF4e730ED5152a7AC646BB7b514Ed624E1147C4",
+      "name": "Moo Balancer tBTC-WBTC",
+      "symbol": "mooBalancertBTC-WBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x542F16DA0efB162D20bF4358EfA095B70A100f9E",
+        "name": "2BTC",
+        "symbol": "2BTC",
+        "decimals": 18
+      },
+      {
+        "address": "0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40",
+        "name": "Arbitrum tBTC v2",
+        "symbol": "tBTC",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x542F16DA0efB162D20bF4358EfA095B70A100f9E",
+      "name": "2BTC",
+      "symbol": "2BTC",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0x71c15610F11D669d4A9e02a64e43c6D1E27c6Cad": {
+    "protocolToken": {
+      "address": "0x71c15610F11D669d4A9e02a64e43c6D1E27c6Cad",
+      "name": "Moo Balancer tBTC-WETH",
+      "symbol": "mooBalancertBTC-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6c84a8f1c29108F47a79964b5Fe888D4f4D0dE40",
+        "name": "Arbitrum tBTC v2",
+        "symbol": "tBTC",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xc9f52540976385A84BF416903e1Ca3983c539E34",
+      "name": "50tBTC-50WETH",
+      "symbol": "50tBTC-50WETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0x14555A3dD091AA0bd4657591B843eA4C2F83e6ef": {
+    "protocolToken": {
+      "address": "0x14555A3dD091AA0bd4657591B843eA4C2F83e6ef",
+      "name": "Moo Balancer MAGIC-USDC",
+      "symbol": "mooBalancerMAGIC-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x539bdE0d7Dbd336b79148AA742883198BBF60342",
+        "name": "MAGIC",
+        "symbol": "MAGIC",
+        "decimals": 18
+      },
+      {
+        "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+        "name": "USD Coin (Arb1)",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xb3028Ca124B80CFE6E9CA57B70eF2F0CCC41eBd4",
+      "name": "50MAGIC-50USDC",
+      "symbol": "50MAGIC-50USDC",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_multi_lp"
+  }
+}

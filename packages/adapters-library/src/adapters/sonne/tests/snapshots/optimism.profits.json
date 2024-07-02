@@ -10,9 +10,6 @@
       "positionType": "supply",
       "chainId": 10,
       "productId": "supply-market",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -21,14 +18,14 @@
           "symbol": "soWETH",
           "decimals": 8,
           "type": "protocol",
-          "profit": 1990.7706898384931,
-          "performance": 0.015186861711452834,
+          "profit": 1990.7706898385077,
+          "performance": 0.015186861711452945,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 33957.324277743224,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 97127.73645848497,
+            "startPositionValue": 97127.73645848496,
             "endPositionValue": 133075.8314260667
           }
         },
@@ -72,15 +69,15 @@
           "symbol": "soWBTC",
           "decimals": 8,
           "type": "protocol",
-          "profit": 1662.7062695336062,
-          "performance": 0.003100667090937305,
+          "profit": 1662.7263641834725,
+          "performance": 0.0031007047169363364,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 2678.927653547665,
             "repays": 0,
             "borrows": 0,
-            "startPositionValue": 533562.5393499237,
-            "endPositionValue": 537904.1732730049
+            "startPositionValue": 533562.5129136586,
+            "endPositionValue": 537904.1669313897
           }
         },
         {
@@ -89,15 +86,15 @@
           "symbol": "sowstETH",
           "decimals": 8,
           "type": "protocol",
-          "profit": 61.9068963950499,
-          "performance": 0.017082031666208534,
+          "profit": 61.90689639504944,
+          "performance": 0.01708203166620841,
           "calculationData": {
             "withdrawals": 0,
             "deposits": 0,
             "repays": 0,
             "borrows": 0,
             "startPositionValue": 3624.0944639807317,
-            "endPositionValue": 3686.0013603757816
+            "endPositionValue": 3686.001360375781
           }
         }
       ],
@@ -113,9 +110,6 @@
       "positionType": "borrow",
       "chainId": 10,
       "productId": "borrow-market",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {
