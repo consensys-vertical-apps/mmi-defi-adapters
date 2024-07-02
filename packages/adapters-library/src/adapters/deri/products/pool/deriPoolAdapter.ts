@@ -27,8 +27,8 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import {
-  GatewayImplementation__factory,
   DToken__factory,
+  GatewayImplementation__factory,
   OracleImplementation__factory,
 } from '../../contracts'
 
@@ -79,7 +79,7 @@ const contractAddresses: Partial<
   },
 }
 
-export class DeriPoolAdapter extends SimplePoolAdapter {
+export class DeriPoolAdapter {
   productId = 'pool'
   protocolId: Protocol
   chainId: Chain
@@ -95,13 +95,6 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
     adaptersController,
     helpers,
   }: ProtocolAdapterParams) {
-    super({
-      provider,
-      chainId,
-      protocolId,
-      adaptersController,
-      helpers,
-    })
     this.provider = provider
     this.chainId = chainId
     this.protocolId = protocolId
@@ -174,21 +167,24 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
             tokenId,
             blockNumber,
           )
-        } else if (hexTokenId.startsWith('2')) {
+        }
+        if (hexTokenId.startsWith('2')) {
           return await this.getPTokenPosition(
             contractAddresses[this.chainId]!.mainGateway,
             contractAddresses[this.chainId]!.mainPToken,
             tokenId,
             blockNumber,
           )
-        } else if (hexTokenId.startsWith('3')) {
+        }
+        if (hexTokenId.startsWith('3')) {
           return await this.getLTokenPosition(
             contractAddresses[this.chainId]!.innoGateway,
             contractAddresses[this.chainId]!.innoLToken,
             tokenId,
             blockNumber,
           )
-        } else if (hexTokenId.startsWith('4')) {
+        }
+        if (hexTokenId.startsWith('4')) {
           return await this.getPTokenPosition(
             contractAddresses[this.chainId]!.innoGateway,
             contractAddresses[this.chainId]!.innoPToken,
@@ -213,9 +209,9 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
       contractAddresses[this.chainId]!.innoLToken,
       contractAddresses[this.chainId]!.innoPToken,
     ]
-    let tokenIds: bigint[] = []
+    const tokenIds: bigint[] = []
 
-    for (let dToken of dTokens) {
+    for (const dToken of dTokens) {
       const tokenContract = DToken__factory.connect(dToken, this.provider)
 
       const transferFilter = tokenContract.filters.Transfer(
@@ -230,7 +226,7 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
         blockNumber,
       )
 
-      for (let log of transferEventsRaw) {
+      for (const log of transferEventsRaw) {
         const tokenId = log.args.tokenId
         if (
           getAddress(
@@ -308,7 +304,7 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
       b0Included = true
     }
 
-    let tokens = [
+    const tokens = [
       this.createUnderlyingToken(
         bToken,
         bTokenMetadata,
@@ -428,7 +424,7 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
       TokenType.Underlying,
     )
 
-    let tokens = [token]
+    const tokens = [token]
     if (tdState.b0Amount > 0 && !b0Included) {
       const b0Metadata = await getTokenMetadata(
         contractAddresses[this.chainId]!.tokenB0,
@@ -491,7 +487,8 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
         toBlock,
         tokenId,
       )
-    } else if (hexTokenId.startsWith('2')) {
+    }
+    if (hexTokenId.startsWith('2')) {
       return await this.getPTokenWithdrawlMovements(
         contractAddresses[this.chainId]!.mainGateway,
         protocolTokenAddress,
@@ -499,7 +496,8 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
         toBlock,
         tokenId,
       )
-    } else if (hexTokenId.startsWith('3')) {
+    }
+    if (hexTokenId.startsWith('3')) {
       return await this.getLTokenWithdrawlMovements(
         contractAddresses[this.chainId]!.innoGateway,
         protocolTokenAddress,
@@ -507,7 +505,8 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
         toBlock,
         tokenId,
       )
-    } else if (hexTokenId.startsWith('4')) {
+    }
+    if (hexTokenId.startsWith('4')) {
       return await this.getPTokenWithdrawlMovements(
         contractAddresses[this.chainId]!.innoGateway,
         protocolTokenAddress,
@@ -539,7 +538,8 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
         toBlock,
         tokenId,
       )
-    } else if (hexTokenId.startsWith('2')) {
+    }
+    if (hexTokenId.startsWith('2')) {
       return await this.getPTokenDepositMovements(
         contractAddresses[this.chainId]!.mainGateway,
         protocolTokenAddress,
@@ -547,7 +547,8 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
         toBlock,
         tokenId,
       )
-    } else if (hexTokenId.startsWith('3')) {
+    }
+    if (hexTokenId.startsWith('3')) {
       return await this.getLTokenDepositMovements(
         contractAddresses[this.chainId]!.innoGateway,
         protocolTokenAddress,
@@ -555,7 +556,8 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
         toBlock,
         tokenId,
       )
-    } else if (hexTokenId.startsWith('4')) {
+    }
+    if (hexTokenId.startsWith('4')) {
       return await this.getPTokenDepositMovements(
         contractAddresses[this.chainId]!.innoGateway,
         protocolTokenAddress,
@@ -659,7 +661,7 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
           b0Included = true
         }
 
-        let tokens = [
+        const tokens = [
           {
             type: TokenType.Underlying,
             balanceRaw: bAmount,
@@ -740,7 +742,7 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
         let bAmount = lpState.bAmount
         let b0Amount = lpState.b0Amount
 
-        let noValueBefore = false
+        const noValueBefore = false
         const lpStateBefore = await gatewayContract.getLpState(tokenId, {
           blockTag: blockNumber - 1,
         })
@@ -759,7 +761,7 @@ export class DeriPoolAdapter extends SimplePoolAdapter {
           b0Included = true
         }
 
-        let tokens = [
+        const tokens = [
           {
             type: TokenType.Underlying,
             balanceRaw: bAmount,
