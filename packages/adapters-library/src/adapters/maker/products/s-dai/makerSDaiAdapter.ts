@@ -21,6 +21,11 @@ const MCD_POT_ADDRESS = '0x197e90f9fad81970ba7976f33cbd77088e5d7cf7'
 export class MakerSDaiAdapter extends SimplePoolAdapter {
   productId = 's-dai'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -31,9 +36,6 @@ export class MakerSDaiAdapter extends SimplePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

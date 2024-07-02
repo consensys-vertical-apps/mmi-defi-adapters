@@ -19,6 +19,11 @@ import { CUSDCv3__factory } from '../../contracts'
 export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAdapter {
   productId = 'borrow-market'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   contractAddresses: Partial<
     Record<Chain, { comptrollerAddress: string; cUSDCv3Address: string }>
   > = contractAddresses
@@ -33,9 +38,6 @@ export class CompoundV2BorrowMarketAdapter extends CompoundV2BorrowMarketForkAda
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.NonStandardErc20,
-      },
     }
   }
 

@@ -10,9 +10,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "st-eth",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -46,9 +43,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "wst-eth",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {

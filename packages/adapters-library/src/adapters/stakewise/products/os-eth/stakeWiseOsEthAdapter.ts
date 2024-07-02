@@ -25,6 +25,11 @@ const amount1 = parseEther('1')
 export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
   productId = 'os-eth'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false, // this might be able to be true but im not too sure just incase leaving as false
+    includeInUnwrap: true,
+  }
+
   #underlyingToken: Erc20Metadata = {
     address: ZERO_ADDRESS,
     name: 'Ethereum',
@@ -54,9 +59,6 @@ export class StakeWiseOsEthAdapter extends SimplePoolAdapter {
       protocolId: this.protocolId,
       productId: this.productId,
       chainId: this.chainId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

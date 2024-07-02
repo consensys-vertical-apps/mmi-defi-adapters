@@ -16,6 +16,11 @@ import { SwEth__factory } from '../../contracts'
 export class SwellSwEthAdapter extends SimplePoolAdapter {
   productId = 'sw-eth'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -26,9 +31,6 @@ export class SwellSwEthAdapter extends SimplePoolAdapter {
       positionType: PositionType.Staked,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

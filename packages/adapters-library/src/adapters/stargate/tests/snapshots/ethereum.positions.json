@@ -11,9 +11,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "pool",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {
@@ -49,9 +46,6 @@
       "positionType": "stake",
       "chainId": 1,
       "productId": "voting-escrow",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {

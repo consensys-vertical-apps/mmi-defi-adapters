@@ -11,9 +11,6 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "moo-token",
-      "assetDetails": {
-        "type": "StandardErc20"
-      },
       "success": true,
       "tokens": [
         {

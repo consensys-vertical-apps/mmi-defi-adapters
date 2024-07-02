@@ -19,6 +19,11 @@ import { CUSDCv3__factory } from '../../contracts'
 export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAdapter {
   productId = 'supply-market'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   contractAddresses: Partial<
     Record<Chain, { comptrollerAddress: string; cUSDCv3Address: string }>
   > = contractAddresses
@@ -33,9 +38,6 @@ export class CompoundV2SupplyMarketAdapter extends CompoundV2SupplyMarketForkAda
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

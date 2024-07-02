@@ -8,6 +8,10 @@ import { MorphoBasePoolAdapter } from '../../common/morphoBasePoolAdapter'
 
 export class MorphoAaveV3OptimizerSupplyAdapter extends MorphoBasePoolAdapter {
   productId = 'optimizer-supply'
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -19,9 +23,6 @@ export class MorphoAaveV3OptimizerSupplyAdapter extends MorphoBasePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.NonStandardErc20,
-      },
     }
   }
 

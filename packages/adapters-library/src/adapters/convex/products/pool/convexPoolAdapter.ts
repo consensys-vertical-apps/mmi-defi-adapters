@@ -34,6 +34,11 @@ export class ConvexPoolAdapter
 {
   productId = 'pool'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: true,
+  }
+
   async getRewardPositionsLpStakingAdapter(
     _input: GetPositionsInput,
   ): Promise<ProtocolPosition[]> {
@@ -99,9 +104,6 @@ export class ConvexPoolAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 }

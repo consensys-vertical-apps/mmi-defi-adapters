@@ -10,6 +10,11 @@ import { ProtocolDataProvider } from '../../../aave-v2/contracts'
 export class AaveV3StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
   productId = 'stable-debt-token'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -20,9 +25,6 @@ export class AaveV3StableDebtTokenPoolAdapter extends AaveBasePoolAdapter {
       positionType: PositionType.Borrow,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

@@ -11,6 +11,11 @@ import { FeeDistributor__factory, VotingEscrow__factory } from '../../contracts'
 export class CurveVotingEscrowAdapter extends VotingEscrow {
   productId = 'voting-escrow'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -21,10 +26,6 @@ export class CurveVotingEscrowAdapter extends VotingEscrow {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-        missingTransferEvents: true,
-      },
     }
   }
 

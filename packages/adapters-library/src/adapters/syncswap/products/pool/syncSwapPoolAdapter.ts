@@ -59,6 +59,11 @@ const contractAddresses: Partial<Record<Chain, SyncSwapAdapterContracts>> = {
 export class SyncSwapPoolAdapter extends SimplePoolAdapter {
   productId = 'pool'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false,
+    includeInUnwrap: false,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -69,9 +74,6 @@ export class SyncSwapPoolAdapter extends SimplePoolAdapter {
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: AssetType.NonStandardErc20,
-      },
     }
   }
 

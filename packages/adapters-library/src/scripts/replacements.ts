@@ -1,11 +1,7 @@
 import { BlankAdapterOutcomeOptions, QuestionAnswers } from './questionnaire'
 
-// biome-ignore lint/suspicious/noExplicitAny: Useful for this placeholder
-const EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK = '' as any
-
 export const Replacements = {
   BUILD_METADATA: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       blankAdapter: string,
@@ -64,7 +60,6 @@ export const Replacements = {
     },
   },
   GET_PROTOCOL_TOKENS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -90,7 +85,6 @@ export const Replacements = {
     },
   },
   GET_POSITIONS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -126,7 +120,6 @@ export const Replacements = {
     },
   },
   GET_WITHDRAWALS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -154,7 +147,6 @@ export const Replacements = {
     },
   },
   GET_DEPOSITS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -181,7 +173,6 @@ export const Replacements = {
     },
   },
   UNWRAP: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -214,26 +205,7 @@ export const Replacements = {
       }
     },
   },
-  ASSET_TYPE: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
-    replace: (
-      outcomes: BlankAdapterOutcomeOptions,
-      updatedTemplate: string,
-    ): string => {
-      const regex = /Replacements.ASSET_TYPE.placeholder/g
-
-      switch (outcomes.defiAssetStructure) {
-        case 'singleProtocolToken':
-        case 'multipleProtocolTokens':
-          return updatedTemplate.replace(regex, 'AssetType.StandardErc20')
-
-        default:
-          return updatedTemplate.replace(regex, 'AssetType.NonStandardErc20')
-      }
-    },
-  },
   TVL: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -263,7 +235,6 @@ export const Replacements = {
     },
   },
   PRODUCT_ID: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -276,7 +247,6 @@ export const Replacements = {
     },
   },
   PROTOCOL_ID: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -289,7 +259,6 @@ export const Replacements = {
     },
   },
   PROTOCOL_KEY: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -302,7 +271,6 @@ export const Replacements = {
     },
   },
   ADAPTER_CLASS_NAME: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -315,7 +283,6 @@ export const Replacements = {
     },
   },
   GET_REWARD_POSITIONS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -343,7 +310,6 @@ export const Replacements = {
     },
   },
   GET_REWARD_WITHDRAWALS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -371,7 +337,6 @@ export const Replacements = {
     },
   },
   GET_EXTRA_REWARD_POSITIONS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -399,7 +364,6 @@ export const Replacements = {
     },
   },
   GET_EXTRA_REWARD_WITHDRAWALS: {
-    placeholder: EMPTY_VALUE_FOR_BLANK_ADAPTER_HOOK,
     replace: (
       outcomes: BlankAdapterOutcomeOptions,
       updatedTemplate: string,
@@ -423,6 +387,49 @@ export const Replacements = {
 
         default:
           return updatedTemplate.replace(regexRewardWithdrawals, '')
+      }
+    },
+  },
+  ENABLE_POSITION_DETECTION_BY_PROTOCOL_TOKEN_TRANSFER: {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+      answers: QuestionAnswers,
+    ): string => {
+      const regexDetectionSetting = RegExp(
+        /Replacements.ENABLE_POSITION_DETECTION_BY_PROTOCOL_TOKEN_TRANSFER.placeholder/,
+        'g',
+      )
+
+      switch (true) {
+        case answers.erc20Event:
+          return updatedTemplate.replace(regexDetectionSetting, 'true')
+
+        default:
+          return updatedTemplate.replace(regexDetectionSetting, 'false')
+      }
+    },
+  },
+  INCLUDE_IN_UNWRAP: {
+    replace: (
+      outcomes: BlankAdapterOutcomeOptions,
+      updatedTemplate: string,
+      answers: QuestionAnswers,
+    ): string => {
+      const regexDetectionSetting = RegExp(
+        /Replacements.INCLUDE_IN_UNWRAP.placeholder/,
+        'g',
+      )
+
+      switch (true) {
+        case answers.defiAssetStructure ===
+          'Single ERC20 protocol token (Like stETH)':
+        case answers.defiAssetStructure ===
+          'Multiple ERC20 protocol tokens (Like Aave: aETH, aUSDC, Compound: cETH, cUSDC)':
+          return updatedTemplate.replace(regexDetectionSetting, 'true')
+
+        default:
+          return updatedTemplate.replace(regexDetectionSetting, 'false')
       }
     },
   },

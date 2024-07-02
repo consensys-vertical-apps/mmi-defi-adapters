@@ -37,6 +37,11 @@ export class XfaiDexAdapter
 {
   productId = 'dex'
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: false, // might be true but contracts not verified
+    includeInUnwrap: true,
+  }
+
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
@@ -47,9 +52,6 @@ export class XfaiDexAdapter
       positionType: PositionType.Supply,
       chainId: this.chainId,
       productId: this.productId,
-      assetDetails: {
-        type: 'StandardErc20',
-      },
     }
   }
 

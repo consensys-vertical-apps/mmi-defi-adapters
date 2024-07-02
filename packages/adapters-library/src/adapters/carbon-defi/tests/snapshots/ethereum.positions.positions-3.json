@@ -22,9 +22,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "strategies",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": true,
       "tokens": [
         {

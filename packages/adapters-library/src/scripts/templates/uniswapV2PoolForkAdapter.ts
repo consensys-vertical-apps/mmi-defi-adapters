@@ -23,7 +23,6 @@ export function uniswapV2PoolForkAdapterTemplate({
   import {
     ProtocolDetails,
     PositionType,
-    AssetType,
   } from '../../../../types/adapter'
   import { Protocol } from '../../../protocols'
   
@@ -40,9 +39,6 @@ export function uniswapV2PoolForkAdapterTemplate({
         positionType: PositionType.Supply,
         chainId: this.chainId,
         productId: this.productId,
-        assetDetails: {
-          type: AssetType.StandardErc20,
-        },
       }
     }
   

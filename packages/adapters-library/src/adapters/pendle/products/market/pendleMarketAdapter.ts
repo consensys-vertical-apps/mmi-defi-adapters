@@ -62,6 +62,11 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
   chainId: Chain
   helpers: Helpers
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   private provider: CustomJsonRpcProvider
 
   adaptersController: AdaptersController
@@ -78,6 +83,19 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
     this.protocolId = protocolId
     this.adaptersController = adaptersController
     this.helpers = helpers
+  }
+
+  getProtocolDetails(): ProtocolDetails {
+    return {
+      protocolId: this.protocolId,
+      name: 'Pendle',
+      description: 'Pendle Market adapter',
+      siteUrl: 'https://www.pendle.finance',
+      iconUrl: 'https://app.pendle.finance/favicon.ico',
+      positionType: PositionType.Supply,
+      chainId: this.chainId,
+      productId: this.productId,
+    }
   }
 
   async unwrap({
@@ -171,22 +189,6 @@ export class PendleMarketAdapter implements IProtocolAdapter, IMetadataBuilder {
       type: TokenType.Protocol,
       ...metadata.protocolToken,
       tokens: [underlying],
-    }
-  }
-
-  getProtocolDetails(): ProtocolDetails {
-    return {
-      protocolId: this.protocolId,
-      name: 'Pendle',
-      description: 'Pendle Market adapter',
-      siteUrl: 'https://www.pendle.finance',
-      iconUrl: 'https://app.pendle.finance/favicon.ico',
-      positionType: PositionType.Supply,
-      chainId: this.chainId,
-      productId: this.productId,
-      assetDetails: {
-        type: AssetType.StandardErc20,
-      },
     }
   }
 

@@ -234,7 +234,9 @@ export class DefiProvider {
       }
 
       // we cant use the logs for this adapter
-      if (!this.filterSupported(adapter)) {
+      if (
+        !adapter.adapterSettings.enablePositionDetectionByProtocolTokenTransfer
+      ) {
         return undefined
       }
 
@@ -280,19 +282,6 @@ export class DefiProvider {
       // we cant use the logs on this chain
       return undefined
     }
-  }
-
-  private filterSupported(adapter: IProtocolAdapter) {
-    // we don't support these atm but something can be done here for standard NFT positions
-    if (adapter.getProtocolDetails().assetDetails.type === 'NonStandardErc20') {
-      return false
-    }
-    // we cant use transfer events if contract is missing them
-    if (adapter.getProtocolDetails().assetDetails.missingTransferEvents) {
-      return false
-    }
-
-    return true
   }
 
   async getProfits({

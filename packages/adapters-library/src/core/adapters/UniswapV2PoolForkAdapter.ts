@@ -52,6 +52,11 @@ export abstract class UniswapV2PoolForkAdapter
   protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
   protected readonly MIN_TOKEN_RESERVE: number = 1
 
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
+
   protected readonly PROTOCOL_TOKEN_PREFIX_OVERRIDE:
     | { name: string; symbol: string }
     | undefined
