@@ -1,0 +1,15 @@
+{
+  "mainGateway": "0xe840Bb03fE58540841e6eBee94264d5317B88866",
+  "mainLToken": "0xC79102C36BBbA246B8Bb6aE81B50ba8544e45174",
+  "mainPToken": "0x5A9dBbC5E6BD9ECdf81D48580D861653f12Ea91E",
+  "innoGateway": "0xd91cea5B209A3c327f72283C803B60bAc2c2D8B3",
+  "innoLToken": "0x5BB30e7d81507cf171f16EbeEfBDd0E287E60a4F",
+  "innoPToken": "0x14200cC7446D9fb32f75dff1526699CD164D7c47",
+  "oracle": "0x3b823dc7087d1ba9778aB8161b791B59053a0941",
+  "tokenB0": {
+    "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+    "name": "USDC",
+    "symbol": "USDC",
+    "decimals": 6
+  }
+}

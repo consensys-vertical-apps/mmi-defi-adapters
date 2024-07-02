@@ -1,0 +1,42 @@
+{
+  "blockNumber": 225214200,
+  "aggregatedValues": ["USD1,771.93"],
+  "snapshot": [
+    {
+      "protocolId": "deri",
+      "name": "Deri",
+      "description": "Deri defi adapter",
+      "siteUrl": "https://deri.io",
+      "iconUrl": "https://deri.io/favicon.ico",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "pool",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xD849c2b7991060023e5D92b92c68f4077AE2C2Ba",
+          "tokenId": "452312848583266388373385778560718648249770263156390604487522901302855073939",
+          "name": "DLT",
+          "symbol": "DLT",
+          "decimals": 18,
+          "balanceRaw": "1771928029618349043092n",
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "balanceRaw": "534443501709383530n",
+              "type": "underlying",
+              "balance": 0.5344435017093835,
+              "price": 3315.4637,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/info/logo.png"
+            }
+          ],
+          "balance": 1771.928029618349
+        }
+      ]
+    }
+  ]
+}
