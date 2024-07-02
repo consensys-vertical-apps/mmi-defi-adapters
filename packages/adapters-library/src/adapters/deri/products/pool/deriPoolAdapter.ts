@@ -37,8 +37,8 @@ import {
   CacheToFile,
   IMetadataBuilder,
 } from '../../../../core/decorators/cacheToFile'
-import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 import { logger } from '../../../../core/utils/logger'
+import { IProtocolAdapter } from '../../../../types/IProtocolAdapter'
 
 export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
   productId = 'pool'
@@ -94,7 +94,6 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
           getAddress('0xaf88d065e77c8cc2239327c5edb3a432268e5831'),
         ),
       }
-
     }
     if (this.chainId === Chain.Linea) {
       return {
@@ -111,7 +110,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
       }
     }
 
-    if(this.chainId === Chain.Bsc){
+    if (this.chainId === Chain.Bsc) {
       return {
         mainGateway: getAddress('0x2c2e1ee20c633eae18239c0bf59cef1fc44939ac'),
         mainLToken: getAddress('0xabfc820798095f3e4bd9626db6f8ad7d57a5c76a'),
@@ -127,18 +126,14 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
     }
 
     throw new Error('Chain not supported')
-
-
-
   }
 
   private async fetchPoolMetadata() {
-    const poolMetadata = (await this.buildMetadata())
+    const poolMetadata = await this.buildMetadata()
 
     if (!poolMetadata) {
       logger.error(
         {
-          
           protocol: this.protocolId,
           chainId: this.chainId,
           product: this.productId,
@@ -349,9 +344,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
 
     let b0Included = false
     let bAmount = lpState.bAmount
-    if (
-      getAddress(bToken) === contractAddresses!.tokenB0.address
-    ) {
+    if (getAddress(bToken) === contractAddresses!.tokenB0.address) {
       bAmount += lpState.b0Amount
       b0Included = true
     }
@@ -457,9 +450,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
 
     let bAmount = tdState.bAmount
     let b0Included = false
-    if (
-      getAddress(bToken) === contractAddresses!.tokenB0.address
-    ) {
+    if (getAddress(bToken) === contractAddresses!.tokenB0.address) {
       bAmount += tdState.b0Amount
       b0Included = true
     }
@@ -700,10 +691,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
         }
 
         let b0Included = false
-        if (
-          getAddress(bToken) ===
-          contractAddresses!.tokenB0.address
-        ) {
+        if (getAddress(bToken) === contractAddresses!.tokenB0.address) {
           bAmount += lpState.b0Amount
           b0Included = true
         }
@@ -798,10 +786,7 @@ export class DeriPoolAdapter implements IProtocolAdapter, IMetadataBuilder {
         }
 
         let b0Included = false
-        if (
-          getAddress(bToken) ===
-          contractAddresses!.tokenB0.address
-        ) {
+        if (getAddress(bToken) === contractAddresses!.tokenB0.address) {
           bAmount += lpState.b0Amount
           b0Included = true
         }
