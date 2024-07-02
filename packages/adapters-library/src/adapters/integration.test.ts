@@ -36,6 +36,7 @@ import { Protocol } from './protocols'
 import { testCases as quickswapV2TestCases } from './quickswap-v2/tests/testCases'
 import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as sonneTestCases } from './sonne/tests/testCases'
+import { testCases as sparkV1TestCases } from './spark-v1/tests/testCases'
 import { testCases as stakeWiseTestCases } from './stakewise/tests/testCases'
 import { testCases as stargateTestCases } from './stargate/tests/testCases'
 import {
@@ -48,10 +49,6 @@ import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
-
-import { testCases as lynexTestCases } from './lynex/tests/testCases'
-
-import { testCases as sparkV1TestCases } from './spark-v1/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
