@@ -626,52 +626,52 @@ export abstract class MorphoBluePoolAdapter
   }
 
   // Whitelisted markets thanks to the below graphql extraction:
-  private async graphQlPoolExtraction(chainId: typeof Chain.Ethereum): Promise<
-    {
-      marketId: string
-    }[]
-  > {
-    const numberOfMarkets = 1000
-    const minVolumeUSD = 1000000
-    const graphQueryUrl: Record<
-      typeof Chain.Ethereum,
-      {
-        url: string
-        query: string
-      }
-    > = {
-      [Chain.Ethereum]: {
-        url: 'https://api.thegraph.com/subgraphs/name/morpho-association/morpho-blue',
-        query: `{ markets(first: ${numberOfMarkets} where: {totalValueLockedUSD_gt: ${minVolumeUSD}} orderBy: totalValueLockedUSD orderDirection: desc) {id}}`,
-      },
-    }
+  // private async graphQlPoolExtraction(chainId: typeof Chain.Ethereum): Promise<
+  //   {
+  //     marketId: string
+  //   }[]
+  // > {
+  //   const numberOfMarkets = 1000
+  //   const minVolumeUSD = 1000000
+  //   const graphQueryUrl: Record<
+  //     typeof Chain.Ethereum,
+  //     {
+  //       url: string
+  //       query: string
+  //     }
+  //   > = {
+  //     [Chain.Ethereum]: {
+  //       url: 'https://api.thegraph.com/subgraphs/name/morpho-association/morpho-blue',
+  //       query: `{ markets(first: ${numberOfMarkets} where: {totalValueLockedUSD_gt: ${minVolumeUSD}} orderBy: totalValueLockedUSD orderDirection: desc) {id}}`,
+  //     },
+  //   }
 
-    const { url, query } = graphQueryUrl[chainId]
+  //   const { url, query } = graphQueryUrl[chainId]
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        query,
-      }),
-    })
+  //   const response = await fetch(url, {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //       query,
+  //     }),
+  //   })
 
-    const gqlResponse: {
-      data: {
-        markets: [
-          {
-            id: string
-          },
-        ]
-      }
-    } = await response.json()
+  //   const gqlResponse: {
+  //     data: {
+  //       markets: [
+  //         {
+  //           id: string
+  //         },
+  //       ]
+  //     }
+  //   } = await response.json()
 
-    return gqlResponse.data.markets.map((market) => {
-      return {
-        marketId: market.id,
-      }
-    })
-  }
+  //   return gqlResponse.data.markets.map((market) => {
+  //     return {
+  //       marketId: market.id,
+  //     }
+  //   })
+  // }
 }
 
 // NOTE: The APY/APR feature has been removed as of March 2024.
