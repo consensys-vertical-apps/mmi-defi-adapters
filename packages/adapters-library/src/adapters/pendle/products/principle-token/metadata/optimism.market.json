@@ -1,0 +1,36 @@
+{
+  "0xF4225F061E5E01aA59DE5E615729A9180301EB07": {
+    "protocolToken": {
+      "address": "0xF4225F061E5E01aA59DE5E615729A9180301EB07",
+      "name": "PT wstETH 26SEP2024",
+      "symbol": "PT-wstETH-26SEP2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x96A528f4414aC3CcD21342996c93f2EcdEc24286",
+        "name": "SY wstETH",
+        "symbol": "SY-wstETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x24fB77c8C776C75F869BC65e6856AF56f57d919F"
+  },
+  "0xAA92Ea52612fA5ee5aba5510682485c19750CB82": {
+    "protocolToken": {
+      "address": "0xAA92Ea52612fA5ee5aba5510682485c19750CB82",
+      "name": "PT rETH 27JUN2024",
+      "symbol": "PT-rETH-27JUN2024",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x9D6d509C0354ACA187aAC6beA7d063D3Ef68e2A0",
+        "name": "SY rETH",
+        "symbol": "SY-rETH",
+        "decimals": 18
+      }
+    ],
+    "marketAddress": "0x0C485Feb9E6fee816652Ea8f3beD2A8f59296E40"
+  }
+}

@@ -53,7 +53,7 @@ import { MorphoBlueMarketSupplyAdapter } from './morpho-blue/products/market-sup
 import { MorphoCompoundV2OptimizerBorrowAdapter } from './morpho-compound-v2/products/optimizer-borrow/morphoCompoundV2OptimizerBorrowAdapter'
 import { MorphoCompoundV2OptimizerSupplyAdapter } from './morpho-compound-v2/products/optimizer-supply/morphoCompoundV2OptimizerSupplyAdapter'
 import { PancakeswapV2PoolAdapter } from './pancakeswap-v2/products/pool/pancakeswapV2PoolAdapter'
-import { PendleMarketAdapter } from './pendle/products/market/pendleMarketAdapter'
+
 import { PricesV2UsdAdapter } from './prices-v2/products/usd/pricesV2UsdAdapter'
 import { Protocol } from './protocols'
 import { QuickswapV2PoolAdapter } from './quickswap-v2/products/pool/quickswapV2PoolAdapter'
@@ -70,12 +70,22 @@ import { UniswapV2PoolAdapter } from './uniswap-v2/products/pool/uniswapV2PoolAd
 import { UniswapV3PoolAdapter } from './uniswap-v3/products/pool/uniswapV3PoolAdapter'
 import { XfaiDexAdapter } from './xfai/products/dex/xfaiDexAdapter'
 
+
 import {
   SparkV1SpTokenAdapter,
   WriteActionInputs as SparkV1SpTokenWriteActionInputs,
 } from './spark-v1/products/sp-token/sparkV1SpTokenAdapter'
 
 import { SparkV1VariableDebtTokenPoolAdapter } from './spark-v1/products/variable-debt-token/sparkV1VariableDebtTokenAdapter'
+
+import { PendleYieldTokenAdapter } from './pendle/products/yield-token/pendleYieldTokenAdapter'
+
+import { PendlePrincipleTokenAdapter } from './pendle/products/principle-token/pendlePrincipleTokenAdapter'
+
+import { PendleStandardisedYieldTokenAdapter } from './pendle/products/standardised-yield-token/pendleStandardisedYieldTokenAdapter'
+
+import { PendleLpTokenAdapter } from './pendle/products/lp-token/pendleLpTokenAdapter'
+
 
 export const supportedProtocols: Record<
   Protocol,
@@ -356,10 +366,30 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.Pendle]: {
-    [Chain.Ethereum]: [PendleMarketAdapter],
-    [Chain.Arbitrum]: [PendleMarketAdapter],
-    [Chain.Bsc]: [PendleMarketAdapter],
-    [Chain.Optimism]: [PendleMarketAdapter],
+    [Chain.Ethereum]: [
+      PendleYieldTokenAdapter,
+      PendlePrincipleTokenAdapter,
+      PendleStandardisedYieldTokenAdapter,
+      PendleLpTokenAdapter,
+    ],
+    [Chain.Arbitrum]: [
+      PendleYieldTokenAdapter,
+      PendlePrincipleTokenAdapter,
+      PendleStandardisedYieldTokenAdapter,
+      PendleLpTokenAdapter,
+    ],
+    [Chain.Bsc]: [
+      PendleYieldTokenAdapter,
+      PendlePrincipleTokenAdapter,
+      PendleStandardisedYieldTokenAdapter,
+      PendleLpTokenAdapter,
+    ],
+    [Chain.Optimism]: [
+      PendleYieldTokenAdapter,
+      PendlePrincipleTokenAdapter,
+      PendleStandardisedYieldTokenAdapter,
+      PendleLpTokenAdapter,
+    ],
   },
 }
 

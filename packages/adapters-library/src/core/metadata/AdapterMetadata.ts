@@ -94,10 +94,7 @@ import PancakeswapV2PoolBaseProtocolToken from '../../adapters/pancakeswap-v2/pr
 import PancakeswapV2PoolBscProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/bsc.protocol-token.json'
 import PancakeswapV2PoolEthereumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/ethereum.protocol-token.json'
 import PancakeswapV2PoolLineaProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/linea.protocol-token.json'
-import PendleMarketArbitrumMarket from '../../adapters/pendle/products/market/metadata/arbitrum.market.json'
-import PendleMarketBscMarket from '../../adapters/pendle/products/market/metadata/bsc.market.json'
-import PendleMarketEthereumMarket from '../../adapters/pendle/products/market/metadata/ethereum.market.json'
-import PendleMarketOptimismMarket from '../../adapters/pendle/products/market/metadata/optimism.market.json'
+
 import { Protocol } from '../../adapters/protocols'
 import QuickswapV2PoolPolygonProtocolToken from '../../adapters/quickswap-v2/products/pool/metadata/polygon.protocol-token.json'
 import SonneBorrowMarketBaseProtocolToken from '../../adapters/sonne/products/borrow-market/metadata/base.protocol-token.json'
@@ -127,9 +124,43 @@ import { Chain } from '../constants/chains'
 
 import BeefyCowTokenAvalancheProtocolToken from '../../adapters/beefy/products/cow-token/metadata/avalanche.protocol-token.json'
 
+
 import SparkV1SpTokenEthereumSpTokenV1 from '../../adapters/spark-v1/products/sp-token/metadata/ethereum.sp-token-v1.json'
 
 import SparkV1VariableDebtTokenEthereumVariableDebtTokenV1 from '../../adapters/spark-v1/products/variable-debt-token/metadata/ethereum.variable-debt-token-v1.json'
+
+import PendleYieldTokenEthereumMarket from '../../adapters/pendle/products/yield-token/metadata/ethereum.market.json'
+
+import PendlePrincipleTokenEthereumMarket from '../../adapters/pendle/products/principle-token/metadata/ethereum.market.json'
+
+import PendleStandardisedYieldTokenEthereumMarket from '../../adapters/pendle/products/standardised-yield-token/metadata/ethereum.market.json'
+
+import PendleLpTokenEthereumMarket from '../../adapters/pendle/products/lp-token/metadata/ethereum.market.json'
+
+import PendleYieldTokenOptimismMarket from '../../adapters/pendle/products/yield-token/metadata/optimism.market.json'
+
+import PendlePrincipleTokenOptimismMarket from '../../adapters/pendle/products/principle-token/metadata/optimism.market.json'
+
+import PendleStandardisedYieldTokenOptimismMarket from '../../adapters/pendle/products/standardised-yield-token/metadata/optimism.market.json'
+
+import PendleLpTokenOptimismMarket from '../../adapters/pendle/products/lp-token/metadata/optimism.market.json'
+
+import PendleYieldTokenBscMarket from '../../adapters/pendle/products/yield-token/metadata/bsc.market.json'
+
+import PendlePrincipleTokenBscMarket from '../../adapters/pendle/products/principle-token/metadata/bsc.market.json'
+
+import PendleStandardisedYieldTokenBscMarket from '../../adapters/pendle/products/standardised-yield-token/metadata/bsc.market.json'
+
+import PendleLpTokenBscMarket from '../../adapters/pendle/products/lp-token/metadata/bsc.market.json'
+
+import PendleYieldTokenArbitrumMarket from '../../adapters/pendle/products/yield-token/metadata/arbitrum.market.json'
+
+import PendlePrincipleTokenArbitrumMarket from '../../adapters/pendle/products/principle-token/metadata/arbitrum.market.json'
+
+import PendleStandardisedYieldTokenArbitrumMarket from '../../adapters/pendle/products/standardised-yield-token/metadata/arbitrum.market.json'
+
+import PendleLpTokenArbitrumMarket from '../../adapters/pendle/products/lp-token/metadata/arbitrum.market.json'
+
 
 export const MetadataFiles = new Map<string, Json>([
   [
@@ -999,38 +1030,146 @@ export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
       protocolId: Protocol.Pendle,
-      productId: 'market',
+      productId: 'lp-token',
       chainId: Chain.Arbitrum,
       fileKey: 'market',
     }),
-    PendleMarketArbitrumMarket,
+    PendleLpTokenArbitrumMarket,
   ],
   [
     metadataKey({
       protocolId: Protocol.Pendle,
-      productId: 'market',
+      productId: 'lp-token',
       chainId: Chain.Bsc,
       fileKey: 'market',
     }),
-    PendleMarketBscMarket,
+    PendleLpTokenBscMarket,
   ],
   [
     metadataKey({
       protocolId: Protocol.Pendle,
-      productId: 'market',
+      productId: 'lp-token',
       chainId: Chain.Ethereum,
       fileKey: 'market',
     }),
-    PendleMarketEthereumMarket,
+    PendleLpTokenEthereumMarket,
   ],
   [
     metadataKey({
       protocolId: Protocol.Pendle,
-      productId: 'market',
+      productId: 'lp-token',
       chainId: Chain.Optimism,
       fileKey: 'market',
     }),
-    PendleMarketOptimismMarket,
+    PendleLpTokenOptimismMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'principle-token',
+      chainId: Chain.Arbitrum,
+      fileKey: 'market',
+    }),
+    PendlePrincipleTokenArbitrumMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'principle-token',
+      chainId: Chain.Bsc,
+      fileKey: 'market',
+    }),
+    PendlePrincipleTokenBscMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'principle-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'market',
+    }),
+    PendlePrincipleTokenEthereumMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'principle-token',
+      chainId: Chain.Optimism,
+      fileKey: 'market',
+    }),
+    PendlePrincipleTokenOptimismMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'standardised-yield-token',
+      chainId: Chain.Arbitrum,
+      fileKey: 'market',
+    }),
+    PendleStandardisedYieldTokenArbitrumMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'standardised-yield-token',
+      chainId: Chain.Bsc,
+      fileKey: 'market',
+    }),
+    PendleStandardisedYieldTokenBscMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'standardised-yield-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'market',
+    }),
+    PendleStandardisedYieldTokenEthereumMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'standardised-yield-token',
+      chainId: Chain.Optimism,
+      fileKey: 'market',
+    }),
+    PendleStandardisedYieldTokenOptimismMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'yield-token',
+      chainId: Chain.Arbitrum,
+      fileKey: 'market',
+    }),
+    PendleYieldTokenArbitrumMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'yield-token',
+      chainId: Chain.Bsc,
+      fileKey: 'market',
+    }),
+    PendleYieldTokenBscMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'yield-token',
+      chainId: Chain.Ethereum,
+      fileKey: 'market',
+    }),
+    PendleYieldTokenEthereumMarket,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Pendle,
+      productId: 'yield-token',
+      chainId: Chain.Optimism,
+      fileKey: 'market',
+    }),
+    PendleYieldTokenOptimismMarket,
   ],
   [
     metadataKey({
