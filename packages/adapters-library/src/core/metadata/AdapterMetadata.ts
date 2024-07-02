@@ -160,6 +160,12 @@ import PendleStandardisedYieldTokenArbitrumMarket from '../../adapters/pendle/pr
 
 import PendleLpTokenArbitrumMarket from '../../adapters/pendle/products/lp-token/metadata/arbitrum.market.json'
 
+import DeriPoolBscProtocolMetadata from '../../adapters/deri/products/pool/metadata/bsc.protocol-metadata.json'
+
+import DeriPoolArbitrumProtocolMetadata from '../../adapters/deri/products/pool/metadata/arbitrum.protocol-metadata.json'
+
+import DeriPoolLineaProtocolMetadata from '../../adapters/deri/products/pool/metadata/linea.protocol-metadata.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -835,6 +841,33 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     CurveVotingEscrowEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Deri,
+      productId: 'pool',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-metadata',
+    }),
+    DeriPoolArbitrumProtocolMetadata,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Deri,
+      productId: 'pool',
+      chainId: Chain.Bsc,
+      fileKey: 'protocol-metadata',
+    }),
+    DeriPoolBscProtocolMetadata,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Deri,
+      productId: 'pool',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-metadata',
+    }),
+    DeriPoolLineaProtocolMetadata,
   ],
   [
     metadataKey({
