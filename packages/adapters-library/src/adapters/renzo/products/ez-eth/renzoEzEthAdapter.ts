@@ -24,8 +24,15 @@ import {
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
-import { BalancerRateProviderAddress, TokenAddresses, xRenzoDeposit } from './config'
-import { BalancerRateProvider__factory, XRenzoDeposit__factory } from '../../contracts'
+import {
+  BalancerRateProviderAddress,
+  TokenAddresses,
+  xRenzoDeposit,
+} from './config'
+import {
+  BalancerRateProvider__factory,
+  XRenzoDeposit__factory,
+} from '../../contracts'
 
 type Metadata = Record<
   string,
@@ -143,14 +150,16 @@ export class RenzoEzEthAdapter implements IProtocolAdapter, IMetadataBuilder {
   }
 
   getExchangeRate(blockNumber?: number): Promise<bigint> {
-    if (this.chainId == Chain.Ethereum) {
-      return BalancerRateProvider__factory
-        .connect(BalancerRateProviderAddress, this.provider)
-        .getRate({ blockTag: blockNumber })
+    if (this.chainId === Chain.Ethereum) {
+      return BalancerRateProvider__factory.connect(
+        BalancerRateProviderAddress,
+        this.provider,
+      ).getRate({ blockTag: blockNumber })
     }
-    return XRenzoDeposit__factory
-      .connect(xRenzoDeposit[this.chainId]!, this.provider)
-      .getRate({ blockTag: blockNumber })
+    return XRenzoDeposit__factory.connect(
+      xRenzoDeposit[this.chainId]!,
+      this.provider,
+    ).getRate({ blockTag: blockNumber })
   }
 
   async unwrap({
@@ -166,11 +175,13 @@ export class RenzoEzEthAdapter implements IProtocolAdapter, IMetadataBuilder {
       ...protocolToken,
       baseRate: 1,
       type: TokenType.Protocol,
-      tokens: [{
-        ...underlyingToken,
-        type: TokenType.Underlying,
-        underlyingRateRaw: await this.getExchangeRate(blockNumber),
-      }],
+      tokens: [
+        {
+          ...underlyingToken,
+          type: TokenType.Underlying,
+          underlyingRateRaw: await this.getExchangeRate(blockNumber),
+        },
+      ],
     }
   }
 
