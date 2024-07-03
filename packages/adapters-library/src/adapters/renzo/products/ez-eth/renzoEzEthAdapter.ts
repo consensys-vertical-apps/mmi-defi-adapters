@@ -25,14 +25,14 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import {
+  BalancerRateProvider__factory,
+  XRenzoDeposit__factory,
+} from '../../contracts'
+import {
   BalancerRateProviderAddress,
   TokenAddresses,
   xRenzoDeposit,
 } from './config'
-import {
-  BalancerRateProvider__factory,
-  XRenzoDeposit__factory,
-} from '../../contracts'
 
 type Metadata = Record<
   string,

@@ -166,10 +166,10 @@ import DeriPoolArbitrumProtocolMetadata from '../../adapters/deri/products/pool/
 
 import DeriPoolLineaProtocolMetadata from '../../adapters/deri/products/pool/metadata/linea.protocol-metadata.json'
 
-import RenzoEzEthEthereumEzEth from '../../adapters/renzo/products/ez-eth/metadata/ethereum.ez-eth.json'
-import RenzoEzEthBscEzEth from '../../adapters/renzo/products/ez-eth/metadata/bsc.ez-eth.json'
-import RenzoEzEthBaseEzEth from '../../adapters/renzo/products/ez-eth/metadata/base.ez-eth.json'
 import RenzoEzEthArbitrumEzEth from '../../adapters/renzo/products/ez-eth/metadata/arbitrum.ez-eth.json'
+import RenzoEzEthBaseEzEth from '../../adapters/renzo/products/ez-eth/metadata/base.ez-eth.json'
+import RenzoEzEthBscEzEth from '../../adapters/renzo/products/ez-eth/metadata/bsc.ez-eth.json'
+import RenzoEzEthEthereumEzEth from '../../adapters/renzo/products/ez-eth/metadata/ethereum.ez-eth.json'
 import RenzoEzEthLineaEzEth from '../../adapters/renzo/products/ez-eth/metadata/linea.ez-eth.json'
 
 export const MetadataFiles = new Map<string, Json>([
