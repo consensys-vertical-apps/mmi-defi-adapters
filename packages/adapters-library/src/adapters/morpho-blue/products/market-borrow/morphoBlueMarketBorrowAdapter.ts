@@ -17,7 +17,7 @@ export class MorphoBlueMarketBorrowAdapter extends MorphoBluePoolAdapter {
   getProtocolDetails(): ProtocolDetails {
     return {
       protocolId: this.protocolId,
-      name: 'MorphoBlue',
+      name: 'MorphoBlue Borrow',
       description: 'Morpho Blue DeFi adapter on the borrow side',
       siteUrl: 'https://app.morpho.org/',
       iconUrl: 'https://cdn.morpho.org/images/v2/morpho/favicon.png',
