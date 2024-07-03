@@ -1,0 +1,40 @@
+{
+  "blockNumber": 20111277,
+  "snapshot": [
+    {
+      "protocolId": "renzo",
+      "name": "Renzo ezETH",
+      "description": "Renzo defi adapter for ezETH",
+      "siteUrl": "https://www.renzoprotocol.com/",
+      "iconUrl": "https://www.renzoprotocol.com/favicon.ico",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "ez-eth",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+          "name": "Renzo Restaked ETH",
+          "symbol": "ezETH",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "1055968450139684274607990n",
+          "tokens": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "1068802255239547326395011n",
+              "totalSupply": 1068802.2552395472,
+              "price": 3515.78125147,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "totalSupply": 1055968.4501396844
+        }
+      ]
+    }
+  ]
+}

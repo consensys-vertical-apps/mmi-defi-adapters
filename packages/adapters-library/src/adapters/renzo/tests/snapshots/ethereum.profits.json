@@ -1,0 +1,37 @@
+{
+  "blockNumber": 20118663,
+  "snapshot": [
+    {
+      "protocolId": "renzo",
+      "name": "Renzo ezETH",
+      "description": "Renzo defi adapter for ezETH",
+      "siteUrl": "https://www.renzoprotocol.com/",
+      "iconUrl": "https://www.renzoprotocol.com/favicon.ico",
+      "positionType": "stake",
+      "chainId": 1,
+      "productId": "ez-eth",
+      "success": true,
+      "tokens": [
+        {
+          "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+          "name": "Renzo Restaked ETH",
+          "symbol": "ezETH",
+          "decimals": 18,
+          "type": "protocol",
+          "profit": -266853.9269013833,
+          "performance": -0.029978046741313415,
+          "calculationData": {
+            "withdrawals": 0,
+            "deposits": 8901644.900487328,
+            "repays": 0,
+            "borrows": 0,
+            "startPositionValue": 0,
+            "endPositionValue": 8634790.973585945
+          }
+        }
+      ],
+      "fromBlock": 20068641,
+      "toBlock": 20118663
+    }
+  ]
+}

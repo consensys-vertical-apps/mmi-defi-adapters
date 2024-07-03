@@ -1,0 +1,51 @@
+{
+  "aggregatedValues": ["USD544.89"],
+  "snapshot": {
+    "protocolId": "renzo",
+    "name": "Renzo ezETH",
+    "description": "Renzo defi adapter for ezETH",
+    "siteUrl": "https://www.renzoprotocol.com/",
+    "iconUrl": "https://www.renzoprotocol.com/favicon.ico",
+    "positionType": "stake",
+    "chainId": 1,
+    "productId": "ez-eth",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x4771ea9eee1fe63b5702371cccf767c44b9630bc0b61b9a8aeb9935448835cc6",
+        "protocolToken": {
+          "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+          "name": "Renzo Restaked ETH",
+          "symbol": "ezETH",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+            "name": "Renzo Restaked ETH",
+            "symbol": "ezETH",
+            "decimals": 18,
+            "balanceRaw": "156100995664536937n",
+            "type": "underlying",
+            "blockNumber": 20117433,
+            "tokens": [
+              {
+                "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "157999999999999999n",
+                "balance": 0.158,
+                "price": 3448.6757,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+              }
+            ],
+            "balance": 0.15610099566453695
+          }
+        ],
+        "blockNumber": 20117433
+      }
+    ]
+  }
+}
