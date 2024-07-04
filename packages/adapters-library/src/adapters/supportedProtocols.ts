@@ -424,7 +424,6 @@ export const WriteActionInputs = {
   SparkV1SpTokenWriteActionInputs,
   MendiFinanceSupplyMarketWriteActionInputs,
   MendiFinanceBorrowMarketWriteActionInputs,
-
 }
 export const GetTransactionParamsSchema = z.union([
   z.discriminatedUnion('action', [

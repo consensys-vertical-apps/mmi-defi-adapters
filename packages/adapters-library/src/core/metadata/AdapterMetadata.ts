@@ -81,7 +81,6 @@ import GmxGlpAvalancheGlp from '../../adapters/gmx/products/glp/metadata/avalanc
 
 import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
 
-
 import MendiFinanceBorrowMarketLineaMendi from '../../adapters/mendi-finance/products/borrow-market/metadata/linea.mendi.json'
 import MendiFinanceSupplyMarketLineaMendi from '../../adapters/mendi-finance/products/supply-market/metadata/linea.mendi.json'
 
