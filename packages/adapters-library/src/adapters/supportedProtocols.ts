@@ -43,14 +43,14 @@ import { LidoWstEthAdapter } from './lido/products/wst-eth/lidoWstEthAdapter'
 import { LynexAlgebraAdapter } from './lynex/products/algebra/lynexAlgebralAdapter'
 import { LynexClassicAdapter } from './lynex/products/classic/lynexClassicAdapter'
 import { MakerSDaiAdapter } from './maker/products/s-dai/makerSDaiAdapter'
-import { 
+import {
   MendiFinanceBorrowMarketAdapter,
   WriteActionInputs as MendiFinanceBorrowMarketWriteActionInputs,
 } from './mendi-finance/products/borrow-market/mendiFinanceBorrowMarketAdapter'
 import {
   MendiFinanceSupplyMarketAdapter,
   WriteActionInputs as MendiFinanceSupplyMarketWriteActionInputs,
- } from './mendi-finance/products/supply-market/mendiFinanceSupplyMarketAdapter'
+} from './mendi-finance/products/supply-market/mendiFinanceSupplyMarketAdapter'
 import { MorphoAaveV2OptimizerBorrowAdapter } from './morpho-aave-v2/products/optimizer-borrow/morphoAaveV2OptimizerBorrowAdapter'
 import { MorphoAaveV2OptimizerSupplyAdapter } from './morpho-aave-v2/products/optimizer-supply/morphoAaveV2OptimizerSupplyAdapter'
 import { MorphoAaveV3OptimizerBorrowAdapter } from './morpho-aave-v3/products/optimizer-borrow/morphoAaveV3OptimizerBorrowAdapter'
@@ -259,7 +259,10 @@ export const supportedProtocols: Record<
   },
 
   [Protocol.MendiFinance]: {
-    [Chain.Linea]: [MendiFinanceSupplyMarketAdapter, MendiFinanceBorrowMarketAdapter],
+    [Chain.Linea]: [
+      MendiFinanceSupplyMarketAdapter,
+      MendiFinanceBorrowMarketAdapter,
+    ],
   },
 
   [Protocol.MorphoAaveV2]: {

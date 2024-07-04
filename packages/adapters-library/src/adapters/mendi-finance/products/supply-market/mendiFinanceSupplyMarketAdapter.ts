@@ -1,5 +1,5 @@
-import { z } from 'zod'
 import { getAddress } from 'ethers'
+import { z } from 'zod'
 import { SimplePoolAdapter } from '../../../../core/adapters/SimplePoolAdapter'
 import { ZERO_ADDRESS } from '../../../../core/constants/ZERO_ADDRESS'
 import { Chain } from '../../../../core/constants/chains'
@@ -19,10 +19,13 @@ import {
   UnwrappedTokenExchangeRate,
 } from '../../../../types/adapter'
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
-import { WriteActionInputSchemas, WriteActions } from '../../../../types/writeActions'
-import { Cerc20__factory, Comptroller__factory } from '../../contracts'
-import { GetTransactionParams } from '../../../supportedProtocols'
+import {
+  WriteActionInputSchemas,
+  WriteActions,
+} from '../../../../types/writeActions'
 import { Protocol } from '../../../protocols'
+import { GetTransactionParams } from '../../../supportedProtocols'
+import { Cerc20__factory, Comptroller__factory } from '../../contracts'
 
 type MendiFinanceSupplyMarketAdapterMetadata = Record<
   string,
@@ -246,18 +249,18 @@ export class MendiFinanceSupplyMarketAdapter
   >): Promise<{ to: string; data: string }> {
     const assetPool = Object.values(await this.buildMetadata()).find(
       (pool) => pool.underlyingToken.address === inputs.asset,
-    );
+    )
 
-    if(!assetPool) {
-      throw new Error('Asset pool not found');
+    if (!assetPool) {
+      throw new Error('Asset pool not found')
     }
 
     const poolContract = Cerc20__factory.connect(
       assetPool.protocolToken.address,
       this.provider,
-    );
+    )
 
-    const { amount } = inputs;
+    const { amount } = inputs
 
     switch (action) {
       case WriteActions.Deposit: {
