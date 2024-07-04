@@ -9,9 +9,7 @@
       "iconUrl": "https://mendi.finance/mendi-token.svg",
       "positionType": "supply",
       "chainId": 59144,
-
       "productId": "supply-market",
-
       "success": true,
       "tokens": [
         {
@@ -171,7 +169,6 @@
       "positionType": "borrow",
       "chainId": 59144,
       "productId": "borrow-market",
-
       "success": false,
       "error": {
         "message": "Not Implemented (at MendiFinanceBorrowMarketAdapter.getUnderlyingTokenBalances)",

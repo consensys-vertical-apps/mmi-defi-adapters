@@ -42,14 +42,7 @@
       "iconUrl": "https://mendi.finance/mendi-token.svg",
       "positionType": "borrow",
       "chainId": 59144,
-<<<<<<< HEAD
-      "productId": "borrow",
-=======
       "productId": "borrow-market",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
->>>>>>> b0e0f01b (feat: :sparkles: add mendi finance write adapter)
       "success": false,
       "error": {
         "message": "Not Implemented (at MendiFinanceBorrowMarketAdapter.unwrapProtocolToken)",

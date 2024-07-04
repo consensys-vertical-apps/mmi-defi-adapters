@@ -43,9 +43,7 @@
       "iconUrl": "https://mendi.finance/mendi-token.svg",
       "positionType": "borrow",
       "chainId": 59144,
-
       "productId": "borrow-market",
-
       "success": false,
       "error": {
         "message": "Not Implemented (at MendiFinanceBorrowMarketAdapter.getTotalValueLocked)",
