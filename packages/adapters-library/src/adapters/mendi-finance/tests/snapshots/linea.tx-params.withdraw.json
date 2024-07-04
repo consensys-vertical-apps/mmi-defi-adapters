@@ -1,0 +1,17 @@
+{
+  "snapshot": {
+    "protocolId": "mendi-finance",
+    "name": "MendiFinance",
+    "description": "MendiFinance supply adapter",
+    "siteUrl": "https://mendi.finance/:",
+    "iconUrl": "https://mendi.finance/mendi-token.svg",
+    "positionType": "supply",
+    "chainId": 59144,
+    "productId": "supply-market",
+    "success": true,
+    "params": {
+      "to": "0x333D8b480BDB25eA7Be4Dd87EEB359988CE1b30D",
+      "data": "0xdb006a750000000000000000000000000000000000000000000000008ac7230489e80000"
+    }
+  }
+}
