@@ -1,10 +1,10 @@
 {
   "blockNumber": 20126536,
   "aggregatedValues": [
-    "USD1,612.64",
+    "USD1,625.08",
     "USD587,449.08",
-    "USD871,818.93",
-    "USD569,918.89"
+    "USD878,546.05",
+    "USD574,316.49"
   ],
   "snapshot": [
     {
@@ -41,8 +41,20 @@
                   "decimals": 18,
                   "type": "underlying",
                   "balanceRaw": "456495097625054955n",
+                  "tokens": [
+                    {
+                      "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "462059303234692420n",
+                      "balance": 0.4620593032346924,
+                      "price": 3517.04072193,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
                   "balance": 0.45649509762505497,
-                  "price": 3532.6512467920775,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
                 }
               ],
@@ -122,8 +134,20 @@
                   "decimals": 18,
                   "type": "underlying",
                   "balanceRaw": "246788848677278136524n",
+                  "tokens": [
+                    {
+                      "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "249796950852635900396n",
+                      "balance": 249.7969508526359,
+                      "price": 3517.04072193,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
                   "balance": 246.78884867727814,
-                  "price": 3532.6512467920775,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
                 }
               ],
@@ -156,8 +180,20 @@
                   "decimals": 18,
                   "type": "underlying",
                   "balanceRaw": "161328943595910366705n",
+                  "tokens": [
+                    {
+                      "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                      "name": "Ethereum",
+                      "symbol": "ETH",
+                      "decimals": 18,
+                      "type": "underlying",
+                      "balanceRaw": "163295377447277934612n",
+                      "balance": 163.29537744727793,
+                      "price": 3517.04072193,
+                      "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                    }
+                  ],
                   "balance": 161.32894359591037,
-                  "price": 3532.6512467920775,
                   "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
                 }
               ],

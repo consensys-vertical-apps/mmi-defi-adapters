@@ -5,7 +5,7 @@
     "USD1,973,272.82",
     "USD966,810.69",
     "USD1,425,064.67",
-    "USD6,633,896.21",
+    "USD6,633,411.87",
     "USD8,249,990.72",
     "USD1,472,692.65",
     "USD672,336.94",
@@ -180,8 +180,20 @@
               "decimals": 18,
               "balanceRaw": "1627402363063891377654n",
               "type": "underlying",
+              "tokens": [
+                {
+                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "1637906187168145023868n",
+                  "balance": 1637.906187168145,
+                  "price": 4049.93395,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
               "balance": 1627.4023630638915,
-              "price": 4076.37125087073,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
             }
           ],
