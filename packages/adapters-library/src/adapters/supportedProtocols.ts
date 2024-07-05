@@ -12,12 +12,12 @@ import {
 } from './aave-v3/products/a-token/aaveV3ATokenAdapter'
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
-import { BeefyCowTokenAdapter } from './beefy/products/cow-token/beefyCowTokenAdapter'
-import { BeefyMooTokenAdapter } from './beefy/products/moo-token/beefyMooTokenAdapter'
 import {
   AngleProtocolSavingsAdapter,
   WriteActionInputs as AngleProtocolSavingsWriteActionInputs,
 } from './angle-protocol/products/savings/angleProtocolSavingsAdapter'
+import { BeefyCowTokenAdapter } from './beefy/products/cow-token/beefyCowTokenAdapter'
+import { BeefyMooTokenAdapter } from './beefy/products/moo-token/beefyMooTokenAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import {
@@ -95,10 +95,11 @@ import { PendleStandardisedYieldTokenAdapter } from './pendle/products/standardi
 
 import { PendleLpTokenAdapter } from './pendle/products/lp-token/pendleLpTokenAdapter'
 
-import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
-import { AngleProtocolTransmuterAdapter,
+import {
+  AngleProtocolTransmuterAdapter,
   WriteActionInputs as AngleProtocolTransmuterWriteActionInputs,
 } from './angle-protocol/products/transmuter/angleProtocolTransmuterAdapter'
+import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
 
 export const supportedProtocols: Record<
   Protocol,

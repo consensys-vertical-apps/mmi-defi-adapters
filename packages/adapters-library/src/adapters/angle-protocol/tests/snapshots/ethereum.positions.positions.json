@@ -11,9 +11,6 @@
       "positionType": "supply",
       "chainId": 1,
       "productId": "transmuter",
-      "assetDetails": {
-        "type": "NonStandardErc20"
-      },
       "success": false,
       "error": {
         "message": "Not Implemented (at AngleProtocolTransmuterAdapter.getPositions)",
