@@ -1,29 +1,13 @@
-import { UniswapV2Pair__factory } from '../../../../contracts'
 import {
   UniswapV2PoolForkAdapter,
   UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
-import { NotImplementedError } from '../../../../core/errors/errors'
-import { filterMapAsync } from '../../../../core/utils/filters'
-import { getTokenMetadata } from '../../../../core/utils/getTokenMetadata'
-import {
-  GetPositionsInput,
-  PositionType,
-  ProtocolDetails,
-  ProtocolPosition,
-  TokenType,
-} from '../../../../types/adapter'
-import { Erc20Metadata } from '../../../../types/erc20Metadata'
+import { PositionType, ProtocolDetails } from '../../../../types/adapter'
 
 export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'
-
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: false,
-    includeInUnwrap: true,
-  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -36,67 +20,6 @@ export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
       chainId: this.chainId,
       productId: this.productId,
     }
-  }
-
-  async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    const transferLogs = await this.provider.getAllTransferLogsToAddress(
-      input.userAddress,
-    )
-
-    // Get all unique UniswapV2 pair addresses from the transfer logs
-    const uniswapV2Addresses = await filterMapAsync(
-      Array.from(new Set(transferLogs.map((log) => log.address))),
-      async (address) => {
-        const pairContract = UniswapV2Pair__factory.connect(
-          address,
-          this.provider,
-        )
-        try {
-          const factory = await pairContract.factory()
-
-          if (
-            factory !==
-            this.chainMetadataSettings()[this.chainId]!.factoryAddress
-          ) {
-            return undefined
-          }
-
-          return await getTokenMetadata(address, this.chainId, this.provider)
-        } catch (error) {
-          return undefined
-        }
-      },
-    )
-
-    const protocolTokenBalances = await this.helpers.getBalanceOfTokens({
-      ...input,
-      protocolTokens: uniswapV2Addresses,
-    })
-
-    return await Promise.all(
-      protocolTokenBalances.map(async (protocolTokenBalance) => {
-        const underlyingRates = await this.unwrap({
-          protocolTokenAddress: protocolTokenBalance.address,
-          blockNumber: input.blockNumber,
-        })
-
-        return {
-          ...protocolTokenBalance,
-          tokens: underlyingRates.tokens!.map((token) => {
-            return {
-              address: token.address,
-              name: token.name,
-              symbol: token.symbol,
-              decimals: token.decimals,
-              type: TokenType.Underlying,
-              balanceRaw:
-                (token.underlyingRateRaw! * protocolTokenBalance.balanceRaw) /
-                10n ** BigInt(protocolTokenBalance.decimals),
-            }
-          }),
-        }
-      }),
-    )
   }
 
   protected chainMetadataSettings(): Partial<
@@ -132,5 +55,10 @@ export class UniswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
         factoryAddress: '0x9e5A52f57b3038F1B8EeE45F28b3C1967e22799C',
       },
     }
+  }
+
+  @CacheToFile({ fileKey: 'protocol-token' })
+  async buildMetadata() {
+    return super.buildMetadata()
   }
 }

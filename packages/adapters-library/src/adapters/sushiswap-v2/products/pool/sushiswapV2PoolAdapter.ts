@@ -5,7 +5,6 @@ import {
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
 import {
-  AssetType,
   PositionType,
   ProtocolDetails,
 } from '../../../../types/adapter'
@@ -36,43 +35,31 @@ export class SushiswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   > {
     return {
       [Chain.Ethereum]: {
-        type: 'graphql',
-        subgraphUrl:
-          'https://api.thegraph.com/subgraphs/name/sushiswap/exchange',
+        type: 'logs',
         factoryAddress: '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac',
       },
       [Chain.Bsc]: {
-        type: 'graphql',
-        subgraphUrl:
-          'https://api.thegraph.com/subgraphs/name/sushiswap/bsc-exchange',
+        type: 'factory',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Polygon]: {
-        type: 'graphql',
-        subgraphUrl:
-          'https://api.thegraph.com/subgraphs/name/sushiswap/matic-exchange',
+        type: 'logs',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Fantom]: {
-        type: 'graphql',
-        subgraphUrl:
-          'https://api.thegraph.com/subgraphs/name/sushiswap/fantom-exchange',
+        type: 'factory',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Base]: {
-        type: 'factory',
+        type: 'logs',
         factoryAddress: '0x71524B4f93c58fcbF659783284E38825f0622859',
       },
       [Chain.Arbitrum]: {
-        type: 'graphql',
-        subgraphUrl:
-          'https://api.thegraph.com/subgraphs/name/sushiswap/arbitrum-exchange',
+        type: 'logs',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Avalanche]: {
-        type: 'graphql',
-        subgraphUrl:
-          'https://api.thegraph.com/subgraphs/name/sushiswap/avalanche-exchange',
+        type: 'factory',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
     }

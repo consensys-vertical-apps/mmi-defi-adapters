@@ -1,3 +1,4 @@
+import { chain } from 'lodash'
 import { Protocol } from '../../adapters/protocols'
 import {
   UniswapV2Factory__factory,
@@ -6,6 +7,7 @@ import {
 import { Helpers } from '../../scripts/helpers'
 import { IProtocolAdapter } from '../../types/IProtocolAdapter'
 import {
+  AdapterSettings,
   GetEventsInput,
   GetPositionsInput,
   GetTotalValueLockedInput,
@@ -54,14 +56,13 @@ export abstract class UniswapV2PoolForkAdapter
   protected readonly MIN_SUBGRAPH_VOLUME: number = 50000
   protected readonly MIN_TOKEN_RESERVE: number = 1
 
-  adapterSettings = {
-    enablePositionDetectionByProtocolTokenTransfer: true,
-    includeInUnwrap: true,
-  }
+  public adapterSettings: AdapterSettings
 
   protected readonly PROTOCOL_TOKEN_PREFIX_OVERRIDE:
     | { name: string; symbol: string }
     | undefined
+
+  protected metadataBased: boolean
 
   abstract productId: string
 
@@ -85,6 +86,14 @@ export abstract class UniswapV2PoolForkAdapter
     this.protocolId = protocolId
     this.adaptersController = adaptersController
     this.helpers = helpers
+
+    this.metadataBased =
+      this.chainMetadataSettings()[this.chainId]!.type !== 'logs'
+
+    this.adapterSettings = {
+      enablePositionDetectionByProtocolTokenTransfer: this.metadataBased,
+      includeInUnwrap: this.metadataBased,
+    }
   }
 
   abstract getProtocolDetails(): ProtocolDetails
@@ -98,6 +107,10 @@ export abstract class UniswapV2PoolForkAdapter
 
     if (!factoryMetadata) {
       throw new Error('Chain not supported')
+    }
+
+    if (factoryMetadata.type === 'logs') {
+      throw new NotImplementedError()
     }
 
     const pairs: {
@@ -145,7 +158,7 @@ export abstract class UniswapV2PoolForkAdapter
   }
 
   async getProtocolTokens(): Promise<Erc20Metadata[]> {
-    if (this.chainMetadataSettings()[this.chainId]!.type === 'factory') {
+    if (this.metadataBased) {
       return Object.values(await this.buildMetadata()).map(
         ({ protocolToken }) => protocolToken,
       )
@@ -155,7 +168,7 @@ export abstract class UniswapV2PoolForkAdapter
   }
 
   async getPositions(input: GetPositionsInput): Promise<ProtocolPosition[]> {
-    if (this.chainMetadataSettings()[this.chainId]!.type === 'factory') {
+    if (this.metadataBased) {
       return this.helpers.getBalanceOfTokens({
         ...input,
         protocolTokens: await this.getProtocolTokens(),
@@ -313,7 +326,7 @@ export abstract class UniswapV2PoolForkAdapter
   }
 
   protected async fetchPoolMetadata(protocolTokenAddress: string) {
-    if (this.chainMetadataSettings()[this.chainId]!.type === 'factory') {
+    if (this.metadataBased) {
       const poolMetadata = (await this.buildMetadata())[protocolTokenAddress]
 
       if (!poolMetadata) {

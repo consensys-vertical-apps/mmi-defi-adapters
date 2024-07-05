@@ -1,6 +1,12 @@
 {
-  "watch": ["packages/adapters-library"],
+  "watch": [
+    "packages/adapters-library"
+  ],
   "ext": "ts,tsx",
-  "ignore": ["node_modules", "dist"],
-  "exec": "node rebuild-and-restart.js"
+  "ignore": [
+    "node_modules",
+    "packages/adapters-library/dist"
+  ],
+  "exec": "node rebuild-and-restart.js",
+  "verbose": true
 }
