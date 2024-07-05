@@ -126,10 +126,6 @@ export class AngleProtocolTransmuterAdapter extends WriteOnlyDeFiAdapter {
           [getAddress('0x0000206329b97DB379d5E1Bf586BbDB969C63274')]:
             getAddress('0xD253b62108d1831aEd298Fc2434A5A8e4E418053'),
         },
-        [Chain.Polygon]: {
-          [getAddress('0x0000206329b97DB379d5E1Bf586BbDB969C63274')]:
-            getAddress('0x1a652Fc6768C711111dde32384F7cb98dB3dd472'),
-        },
       }
 
     const transmuter =

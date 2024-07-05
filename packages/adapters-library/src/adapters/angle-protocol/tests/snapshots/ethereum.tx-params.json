@@ -1,0 +1,20 @@
+{
+  "snapshot": {
+    "protocolId": "angle-protocol",
+    "name": "AngleProtocol",
+    "description": "AngleProtocol defi adapter",
+    "siteUrl": "https://angle.money",
+    "iconUrl": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/02%20-%20Logos/02%20-%20Logo%20Only/angle-only-fill-blue.png",
+    "positionType": "supply",
+    "chainId": 1,
+    "productId": "transmuter",
+    "assetDetails": {
+      "type": "NonStandardErc20"
+    },
+    "success": true,
+    "params": {
+      "to": "0x222222fD79264BBE280b4986F6FEfBC3524d0137",
+      "data": "0xb92567fa0000000000000000000000000000000000000000000000008ac7230489e80000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000000000000000000000000000206329b97db379d5e1bf586bbdb969c63274000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000b0b0f6f13a5158eb67724282f586a552e75b57280000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}

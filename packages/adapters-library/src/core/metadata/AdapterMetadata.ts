@@ -177,8 +177,6 @@ import RenzoEzEthLineaEzEth from '../../adapters/renzo/products/ez-eth/metadata/
 
 import AngleProtocolTransmuterEthereumTransmuter from '../../adapters/angle-protocol/products/transmuter/metadata/ethereum.transmuter.json'
 
-import AngleProtocolTransmuterPolygonTransmuter from '../../adapters/angle-protocol/products/transmuter/metadata/polygon.transmuter.json'
-
 import AngleProtocolTransmuterBaseTransmuter from '../../adapters/angle-protocol/products/transmuter/metadata/base.transmuter.json'
 
 import AngleProtocolTransmuterArbitrumTransmuter from '../../adapters/angle-protocol/products/transmuter/metadata/arbitrum.transmuter.json'
@@ -678,15 +676,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'transmuter',
     }),
     AngleProtocolTransmuterEthereumTransmuter,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.AngleProtocol,
-      productId: 'transmuter',
-      chainId: Chain.Polygon,
-      fileKey: 'transmuter',
-    }),
-    AngleProtocolTransmuterPolygonTransmuter,
   ],
   [
     metadataKey({

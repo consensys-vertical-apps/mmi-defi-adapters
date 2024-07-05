@@ -12,9 +12,12 @@ import {
 } from './aave-v3/products/a-token/aaveV3ATokenAdapter'
 import { AaveV3StableDebtTokenPoolAdapter } from './aave-v3/products/stable-debt-token/aaveV3StableDebtTokenAdapter'
 import { AaveV3VariableDebtTokenPoolAdapter } from './aave-v3/products/variable-debt-token/aaveV3VariableDebtTokenAdapter'
-import { AngleProtocolSavingsAdapter } from './angle-protocol/products/savings/angleProtocolSavingsAdapter'
 import { BeefyCowTokenAdapter } from './beefy/products/cow-token/beefyCowTokenAdapter'
 import { BeefyMooTokenAdapter } from './beefy/products/moo-token/beefyMooTokenAdapter'
+import {
+  AngleProtocolSavingsAdapter,
+  WriteActionInputs as AngleProtocolSavingsWriteActionInputs,
+} from './angle-protocol/products/savings/angleProtocolSavingsAdapter'
 import { CarbonDeFiStrategiesAdapter } from './carbon-defi/products/strategies/carbonDeFiStrategiesAdapter'
 import { ChimpExchangePoolAdapter } from './chimp-exchange/products/pool/chimpExchangePoolAdapter'
 import {
@@ -93,7 +96,9 @@ import { PendleStandardisedYieldTokenAdapter } from './pendle/products/standardi
 import { PendleLpTokenAdapter } from './pendle/products/lp-token/pendleLpTokenAdapter'
 
 import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
-import { AngleProtocolTransmuterAdapter } from './angle-protocol/products/transmuter/angleProtocolTransmuterAdapter'
+import { AngleProtocolTransmuterAdapter,
+  WriteActionInputs as AngleProtocolTransmuterWriteActionInputs,
+} from './angle-protocol/products/transmuter/angleProtocolTransmuterAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -163,10 +168,7 @@ export const supportedProtocols: Record<
       AngleProtocolSavingsAdapter,
     ],
     [Chain.Optimism]: [AngleProtocolSavingsAdapter],
-    [Chain.Polygon]: [
-      AngleProtocolSavingsAdapter,
-      AngleProtocolTransmuterAdapter,
-    ],
+    [Chain.Polygon]: [AngleProtocolSavingsAdapter],
     [Chain.Arbitrum]: [
       AngleProtocolSavingsAdapter,
       AngleProtocolTransmuterAdapter,
@@ -429,6 +431,8 @@ export const supportedProtocols: Record<
 
 export const WriteActionInputs = {
   AaveV3ATokenWriteActionInputs,
+  AngleProtocolTransmuterWriteActionInputs,
+  AngleProtocolSavingsWriteActionInputs,
   CompoundV2SupplyMarketWriteActionInputs,
   CompoundV2BorrowMarketWriteActionInputs,
   SparkV1SpTokenWriteActionInputs,
@@ -464,6 +468,46 @@ export const GetTransactionParamsSchema = z.union([
       chainId: z.nativeEnum(Chain),
       action: z.literal('repay'),
       inputs: WriteActionInputs['AaveV3ATokenWriteActionInputs']['repay'],
+    }),
+  ]),
+  z.discriminatedUnion('action', [
+    z.object({
+      protocolId: z.literal(Protocol.AngleProtocol),
+      productId: z.literal('transmuter'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('deposit'),
+      inputs:
+        WriteActionInputs['AngleProtocolTransmuterWriteActionInputs'][
+          'deposit'
+        ],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.AngleProtocol),
+      productId: z.literal('transmuter'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('withdraw'),
+      inputs:
+        WriteActionInputs['AngleProtocolTransmuterWriteActionInputs'][
+          'withdraw'
+        ],
+    }),
+  ]),
+  z.discriminatedUnion('action', [
+    z.object({
+      protocolId: z.literal(Protocol.AngleProtocol),
+      productId: z.literal('savings'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('deposit'),
+      inputs:
+        WriteActionInputs['AngleProtocolSavingsWriteActionInputs']['deposit'],
+    }),
+    z.object({
+      protocolId: z.literal(Protocol.AngleProtocol),
+      productId: z.literal('savings'),
+      chainId: z.nativeEnum(Chain),
+      action: z.literal('withdraw'),
+      inputs:
+        WriteActionInputs['AngleProtocolSavingsWriteActionInputs']['withdraw'],
     }),
   ]),
   z.discriminatedUnion('action', [
