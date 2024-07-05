@@ -1,6 +1,6 @@
 import {
   UniswapV2PoolForkAdapter,
-  UniswapV2PoolForkMetadataBuilder,
+  UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -36,7 +36,7 @@ export class LynexClassicAdapter extends UniswapV2PoolForkAdapter {
   }
 
   protected chainMetadataSettings(): Partial<
-    Record<Chain, UniswapV2PoolForkMetadataBuilder>
+    Record<Chain, UniswapV2PoolForkPositionStrategy>
   > {
     // TODO - For each supported chain, provide the settings needed to build the list of pools
     // If using subgraph (recommended for forks with an available subgraph), provide the subgraph URL and factory cotract address
