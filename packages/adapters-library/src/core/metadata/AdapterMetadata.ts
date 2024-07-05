@@ -90,8 +90,9 @@ import MorphoBlueMarketBorrowEthereumMarketBorrow from '../../adapters/morpho-bl
 import MorphoBlueMarketSupplyEthereumMarketSupply from '../../adapters/morpho-blue/products/market-supply/metadata/ethereum.market-supply.json'
 import MorphoCompoundV2OptimizerBorrowEthereumOptimizerBorrow from '../../adapters/morpho-compound-v2/products/optimizer-borrow/metadata/ethereum.optimizer-borrow.json'
 import MorphoCompoundV2OptimizerSupplyEthereumOptimizerSupply from '../../adapters/morpho-compound-v2/products/optimizer-supply/metadata/ethereum.optimizer-supply.json'
-import PancakeswapV2PoolArbitrumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
-import PancakeswapV2PoolBscProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/bsc.protocol-token.json'
+import PancakeswapV2PoolBaseProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/base.protocol-token.json'
+import PancakeswapV2PoolEthereumProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/ethereum.protocol-token.json'
+import PancakeswapV2PoolLineaProtocolToken from '../../adapters/pancakeswap-v2/products/pool/metadata/linea.protocol-token.json'
 
 import { Protocol } from '../../adapters/protocols'
 import SonneBorrowMarketBaseProtocolToken from '../../adapters/sonne/products/borrow-market/metadata/base.protocol-token.json'
@@ -101,10 +102,9 @@ import SonneSupplyMarketOptimismProtocolToken from '../../adapters/sonne/product
 import StargatePoolArbitrumLpToken from '../../adapters/stargate/products/pool/metadata/arbitrum.lp-token.json'
 import StargatePoolEthereumLpToken from '../../adapters/stargate/products/pool/metadata/ethereum.lp-token.json'
 import StargateVotingEscrowEthereumProtocolToken from '../../adapters/stargate/products/voting-escrow/metadata/ethereum.protocol-token.json'
-import SushiswapV2PoolArbitrumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
-import SushiswapV2PoolBaseProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/base.protocol-token.json'
-import SushiswapV2PoolEthereumProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/ethereum.protocol-token.json'
-import SushiswapV2PoolPolygonProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/polygon.protocol-token.json'
+import SushiswapV2PoolAvalanceProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/avalanche.protocol-token.json'
+import SushiswapV2PoolBscProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/bsc.protocol-token.json'
+import SushiswapV2PoolFantomProtocolToken from '../../adapters/sushiswap-v2/products/pool/metadata/fantom.protocol-token.json'
 import UniswapV2PoolArbitrumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/arbitrum.protocol-token.json'
 import UniswapV2PoolAvalancheProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/avalanche.protocol-token.json'
 import UniswapV2PoolBaseProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/base.protocol-token.json'
@@ -1007,19 +1007,28 @@ export const MetadataFiles = new Map<string, Json>([
     metadataKey({
       protocolId: Protocol.PancakeswapV2,
       productId: 'pool',
-      chainId: Chain.Arbitrum,
+      chainId: Chain.Base,
       fileKey: 'protocol-token',
     }),
-    PancakeswapV2PoolArbitrumProtocolToken,
+    PancakeswapV2PoolBaseProtocolToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.PancakeswapV2,
       productId: 'pool',
-      chainId: Chain.Bsc,
+      chainId: Chain.Ethereum,
       fileKey: 'protocol-token',
     }),
-    PancakeswapV2PoolBscProtocolToken,
+    PancakeswapV2PoolEthereumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.PancakeswapV2,
+      productId: 'pool',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    PancakeswapV2PoolLineaProtocolToken,
   ],
   [
     metadataKey({
@@ -1295,37 +1304,28 @@ export const MetadataFiles = new Map<string, Json>([
     metadataKey({
       protocolId: Protocol.SushiswapV2,
       productId: 'pool',
-      chainId: Chain.Arbitrum,
+      chainId: Chain.Avalanche,
       fileKey: 'protocol-token',
     }),
-    SushiswapV2PoolArbitrumProtocolToken,
+    SushiswapV2PoolAvalanceProtocolToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.SushiswapV2,
       productId: 'pool',
-      chainId: Chain.Base,
+      chainId: Chain.Bsc,
       fileKey: 'protocol-token',
     }),
-    SushiswapV2PoolBaseProtocolToken,
+    SushiswapV2PoolBscProtocolToken,
   ],
   [
     metadataKey({
       protocolId: Protocol.SushiswapV2,
       productId: 'pool',
-      chainId: Chain.Ethereum,
+      chainId: Chain.Fantom,
       fileKey: 'protocol-token',
     }),
-    SushiswapV2PoolEthereumProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.SushiswapV2,
-      productId: 'pool',
-      chainId: Chain.Polygon,
-      fileKey: 'protocol-token',
-    }),
-    SushiswapV2PoolPolygonProtocolToken,
+    SushiswapV2PoolFantomProtocolToken,
   ],
   [
     metadataKey({
