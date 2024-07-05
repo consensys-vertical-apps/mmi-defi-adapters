@@ -165,6 +165,8 @@ import RenzoEzEthBscEzEth from '../../adapters/renzo/products/ez-eth/metadata/bs
 import RenzoEzEthEthereumEzEth from '../../adapters/renzo/products/ez-eth/metadata/ethereum.ez-eth.json'
 import RenzoEzEthLineaEzEth from '../../adapters/renzo/products/ez-eth/metadata/linea.ez-eth.json'
 
+import LynexClassicLineaProtocolToken from '../../adapters/lynex/products/classic/metadata/linea.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -912,6 +914,15 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'glp',
     }),
     GmxGlpAvalancheGlp,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Lynex,
+      productId: 'classic',
+      chainId: Chain.Linea,
+      fileKey: 'protocol-token',
+    }),
+    LynexClassicLineaProtocolToken,
   ],
   [
     metadataKey({
