@@ -1,4 +1,3 @@
-import { symbol } from 'zod'
 import { Protocol } from '../../adapters/protocols'
 import {
   UniswapV2Factory__factory,
@@ -19,6 +18,7 @@ import {
   TokenType,
   UnwrapExchangeRate,
   UnwrapInput,
+  UnwrappedTokenExchangeRate,
 } from '../../types/adapter'
 import { Erc20Metadata } from '../../types/erc20Metadata'
 import { AdaptersController } from '../adaptersController'
@@ -270,46 +270,25 @@ export abstract class UniswapV2PoolForkAdapter
           blockNumber: withdrawal.blockNumber,
         })
 
+        const protocolTokenBalance = withdrawal.tokens[0]!
         const token0 = underlyingRates.tokens![0]!
         const token1 = underlyingRates.tokens![1]!
 
-        const yyyy = [
-          {
-            address: token0.address,
-            name: token0.name,
-            symbol: token0.symbol,
-            decimals: token0.decimals,
-            type: TokenType.Underlying,
-            balanceRaw:
-              (token0.underlyingRateRaw! * withdrawal.tokens[0]!.balanceRaw) /
-              10n ** BigInt(withdrawal.tokens[0]!.decimals),
-          },
-          {
-            address: token1.address,
-            name: token1.name,
-            symbol: token1.symbol,
-            decimals: token1.decimals,
-            type: TokenType.Underlying,
-            balanceRaw:
-              (token1.underlyingRateRaw! * withdrawal.tokens[0]!.balanceRaw) /
-              10n ** BigInt(withdrawal.tokens[0]!.decimals),
-          },
-        ]
-
-        const xxx: MovementsByBlock = {
+        return {
           ...withdrawal,
           protocolToken,
           tokens: [
             {
-              ...withdrawal.tokens[0]!,
+              ...protocolTokenBalance,
               name: protocolToken.name,
               symbol: protocolToken.symbol,
-              tokens: yyyy,
+              tokens: [
+                this.underlyingTokenBalance(token0, protocolTokenBalance),
+                this.underlyingTokenBalance(token1, protocolTokenBalance),
+              ],
             },
           ],
         }
-
-        return xxx
       }),
     )
   }
@@ -331,58 +310,37 @@ export abstract class UniswapV2PoolForkAdapter
       await getTokenMetadata(protocolTokenAddress, this.chainId, this.provider),
     )
 
-    const withdrawals = await this.helpers.deposits({
+    const deposits = await this.helpers.deposits({
       protocolToken,
       filter: { fromBlock, toBlock, userAddress },
     })
 
     return await Promise.all(
-      withdrawals.map(async (withdrawal) => {
+      deposits.map(async (deposit) => {
         const underlyingRates = await this.unwrap({
-          protocolTokenAddress: withdrawal.protocolToken.address,
-          blockNumber: withdrawal.blockNumber,
+          protocolTokenAddress: deposit.protocolToken.address,
+          blockNumber: deposit.blockNumber,
         })
 
+        const protocolTokenBalance = deposit.tokens[0]!
         const token0 = underlyingRates.tokens![0]!
         const token1 = underlyingRates.tokens![1]!
 
-        const yyyy = [
-          {
-            address: token0.address,
-            name: token0.name,
-            symbol: token0.symbol,
-            decimals: token0.decimals,
-            type: TokenType.Underlying,
-            balanceRaw:
-              (token0.underlyingRateRaw! * withdrawal.tokens[0]!.balanceRaw) /
-              10n ** BigInt(withdrawal.tokens[0]!.decimals),
-          },
-          {
-            address: token1.address,
-            name: token1.name,
-            symbol: token1.symbol,
-            decimals: token1.decimals,
-            type: TokenType.Underlying,
-            balanceRaw:
-              (token1.underlyingRateRaw! * withdrawal.tokens[0]!.balanceRaw) /
-              10n ** BigInt(withdrawal.tokens[0]!.decimals),
-          },
-        ]
-
-        const xxx: MovementsByBlock = {
-          ...withdrawal,
+        return {
+          ...deposit,
           protocolToken,
           tokens: [
             {
-              ...withdrawal.tokens[0]!,
+              ...protocolTokenBalance,
               name: protocolToken.name,
               symbol: protocolToken.symbol,
-              tokens: yyyy,
+              tokens: [
+                this.underlyingTokenBalance(token0, protocolTokenBalance),
+                this.underlyingTokenBalance(token1, protocolTokenBalance),
+              ],
             },
           ],
         }
-
-        return xxx
       }),
     )
   }
@@ -641,6 +599,22 @@ export abstract class UniswapV2PoolForkAdapter
       ...protocolToken,
       name: `${name} ${token0.symbol} / ${token1.symbol}`,
       symbol: `${symbol}/${token0.symbol}/${token1.symbol}`,
+    }
+  }
+
+  private underlyingTokenBalance(
+    token: UnwrappedTokenExchangeRate,
+    protocolTokenBalance: Erc20Metadata & { balanceRaw: bigint },
+  ) {
+    return {
+      address: token.address,
+      name: token.name,
+      symbol: token.symbol,
+      decimals: token.decimals,
+      type: TokenType.Underlying,
+      balanceRaw:
+        (token.underlyingRateRaw! * protocolTokenBalance.balanceRaw) /
+        10n ** BigInt(protocolTokenBalance.decimals),
     }
   }
 }
