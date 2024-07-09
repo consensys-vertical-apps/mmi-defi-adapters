@@ -15,7 +15,7 @@ export function uniswapV2PoolForkAdapterTemplate({
   return `
   import {
     UniswapV2PoolForkAdapter,
-    UniswapV2PoolForkAdapterMetadata,
+    UniswapV2PoolForkPositionStrategy,
   } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
   import { Chain } from '../../../../core/constants/chains'
   import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -43,7 +43,7 @@ export function uniswapV2PoolForkAdapterTemplate({
     }
   
     protected chainMetadataSettings(): Partial<
-      Record<Chain, UniswapV2PoolForkAdapterMetadata>
+      Record<Chain, UniswapV2PoolForkPositionStrategy>
     > {
       // TODO - For each supported chain, provide the settings needed to build the list of pools
       // If using subgraph (recommended for forks with an available subgraph), provide the subgraph URL and factory cotract address
