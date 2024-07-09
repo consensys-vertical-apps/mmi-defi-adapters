@@ -1,4 +1,3 @@
-import { chain } from 'lodash'
 import { Protocol } from '../../adapters/protocols'
 import {
   UniswapV2Factory__factory,
@@ -216,8 +215,21 @@ export abstract class UniswapV2PoolForkAdapter
           blockNumber: input.blockNumber,
         })
 
+        // Uniswap V2 always has 2 underlying tokens
+        const token0Rate = underlyingRates.tokens![0]!
+        const token1Rate = underlyingRates.tokens![1]!
+
+        const [name, symbol] = this.PROTOCOL_TOKEN_PREFIX_OVERRIDE
+          ? [
+              this.PROTOCOL_TOKEN_PREFIX_OVERRIDE.name,
+              this.PROTOCOL_TOKEN_PREFIX_OVERRIDE.symbol,
+            ]
+          : [protocolTokenBalance.name, protocolTokenBalance.symbol]
+
         return {
           ...protocolTokenBalance,
+          name: `${name} ${token0Rate.symbol} / ${token1Rate.symbol}`,
+          symbol: `${symbol}/${token0Rate.symbol}/${token1Rate.symbol}`,
           tokens: underlyingRates.tokens!.map((token) => {
             return {
               address: token.address,
