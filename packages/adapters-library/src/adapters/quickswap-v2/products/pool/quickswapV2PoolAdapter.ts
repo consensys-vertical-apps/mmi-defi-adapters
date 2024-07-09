@@ -3,10 +3,25 @@ import {
   UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
-import { PositionType, ProtocolDetails } from '../../../../types/adapter'
+import { CacheToFile } from '../../../../core/decorators/cacheToFile'
+import {
+  AssetType,
+  PositionType,
+  ProtocolDetails,
+} from '../../../../types/adapter'
 
 export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   productId = 'pool'
+
+  protected PROTOCOL_TOKEN_PREFIX_OVERRIDE = {
+    name: 'Quickswap V2',
+    symbol: 'QUICK',
+  }
+
+  adapterSettings = {
+    enablePositionDetectionByProtocolTokenTransfer: true,
+    includeInUnwrap: true,
+  }
 
   getProtocolDetails(): ProtocolDetails {
     return {
@@ -27,9 +42,16 @@ export class QuickswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   > {
     return {
       [Chain.Polygon]: {
-        type: 'logs',
+        type: 'graphql',
+        subgraphUrl:
+          'https://api.thegraph.com/subgraphs/name/sameepsi/quickswap06',
         factoryAddress: '0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32',
       },
     }
+  }
+
+  @CacheToFile({ fileKey: 'protocol-token' })
+  async buildMetadata() {
+    return super.buildMetadata()
   }
 }
