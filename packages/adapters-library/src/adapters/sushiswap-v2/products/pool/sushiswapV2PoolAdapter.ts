@@ -36,19 +36,27 @@ export class SushiswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   > {
     return {
       [Chain.Ethereum]: {
-        type: 'factory',
+        type: 'graphql',
+        subgraphUrl:
+          'https://api.thegraph.com/subgraphs/name/sushiswap/exchange',
         factoryAddress: '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac',
       },
       [Chain.Bsc]: {
-        type: 'factory',
+        type: 'graphql',
+        subgraphUrl:
+          'https://api.thegraph.com/subgraphs/name/sushiswap/bsc-exchange',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Polygon]: {
-        type: 'factory',
+        type: 'graphql',
+        subgraphUrl:
+          'https://api.thegraph.com/subgraphs/name/sushiswap/matic-exchange',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Fantom]: {
-        type: 'factory',
+        type: 'graphql',
+        subgraphUrl:
+          'https://api.thegraph.com/subgraphs/name/sushiswap/fantom-exchange',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Base]: {
@@ -56,11 +64,15 @@ export class SushiswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
         factoryAddress: '0x71524B4f93c58fcbF659783284E38825f0622859',
       },
       [Chain.Arbitrum]: {
-        type: 'factory',
+        type: 'graphql',
+        subgraphUrl:
+          'https://api.thegraph.com/subgraphs/name/sushiswap/arbitrum-exchange',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
       [Chain.Avalanche]: {
-        type: 'factory',
+        type: 'graphql',
+        subgraphUrl:
+          'https://api.thegraph.com/subgraphs/name/sushiswap/avalanche-exchange',
         factoryAddress: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
       },
     }
