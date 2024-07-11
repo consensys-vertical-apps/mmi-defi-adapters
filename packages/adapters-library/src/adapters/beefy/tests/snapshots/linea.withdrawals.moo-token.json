@@ -36,6 +36,18 @@
                 "decimals": 18,
                 "type": "underlying",
                 "balanceRaw": "5198690573614691552n",
+                "tokens": [
+                  {
+                    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "decimals": 18,
+                    "type": "underlying",
+                    "balanceRaw": "5246578853937031776n",
+                    "balance": 5.246578853937032,
+                    "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/info/logo.png"
+                  }
+                ],
                 "balance": 5.198690573614692,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/linea/assets/0x2416092f143378750bb29b79eD961ab195CcEea5/logo.png"
               },

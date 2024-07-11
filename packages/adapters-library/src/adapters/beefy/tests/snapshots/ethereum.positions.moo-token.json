@@ -1,9 +1,9 @@
 {
   "blockNumber": 20035548,
   "aggregatedValues": [
-    "USD7.63",
+    "USD7.73",
     "USD19.38",
-    "USD18.80",
+    "USD19.13",
     "USD12.99",
     "USD13.85",
     "USD19.21",
@@ -51,8 +51,20 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "1324729477379751n",
+              "tokens": [
+                {
+                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "1339841314653532n",
+                  "balance": 0.001339841314653532,
+                  "price": 3796.8250061,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
               "balance": 0.001324729477379751,
-              "price": 3767.6676905497607,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
             },
             {
@@ -160,8 +172,20 @@
               "decimals": 18,
               "type": "underlying",
               "balanceRaw": "4584656067083497n",
+              "tokens": [
+                {
+                  "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+                  "name": "Ethereum",
+                  "symbol": "ETH",
+                  "decimals": 18,
+                  "type": "underlying",
+                  "balanceRaw": "4636955481888592n",
+                  "balance": 0.004636955481888592,
+                  "price": 3796.8250061,
+                  "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+                }
+              ],
               "balance": 0.004584656067083497,
-              "price": 3767.6676905497607,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xbf5495Efe5DB9ce00f80364C8B423567e58d2110/logo.png"
             },
             {

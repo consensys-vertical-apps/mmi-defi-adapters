@@ -183,8 +183,20 @@
           "name": "Renzo Restaked ETH",
           "symbol": "ezETH",
           "decimals": 18,
-          "totalSupply": 10883.856609073047,
-          "price": 3172.2117904738793
+          "tokens": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "name": "Ethereum",
+              "symbol": "ETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "10970026099682996871688n",
+              "totalSupply": 10970.026099682997,
+              "price": 3148.07,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png"
+            }
+          ],
+          "totalSupply": 10883.856609073047
         },
         {
           "type": "protocol",
