@@ -1,6 +1,6 @@
 import {
   UniswapV2PoolForkAdapter,
-  UniswapV2PoolForkMetadataBuilder,
+  UniswapV2PoolForkPositionStrategy,
 } from '../../../../core/adapters/UniswapV2PoolForkAdapter'
 import { Chain } from '../../../../core/constants/chains'
 import { CacheToFile } from '../../../../core/decorators/cacheToFile'
@@ -32,7 +32,7 @@ export class PancakeswapV2PoolAdapter extends UniswapV2PoolForkAdapter {
   }
 
   protected chainMetadataSettings(): Partial<
-    Record<Chain, UniswapV2PoolForkMetadataBuilder>
+    Record<Chain, UniswapV2PoolForkPositionStrategy>
   > {
     return {
       [Chain.Ethereum]: {

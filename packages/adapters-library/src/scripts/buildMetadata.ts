@@ -9,7 +9,10 @@ import { supportedProtocols } from '../adapters/supportedProtocols'
 import { AdaptersController } from '../core/adaptersController'
 import { Chain, ChainName } from '../core/constants/chains'
 import { IMetadataBuilder } from '../core/decorators/cacheToFile'
-import { ProviderMissingError } from '../core/errors/errors'
+import {
+  NotImplementedError,
+  ProviderMissingError,
+} from '../core/errors/errors'
 import { CustomJsonRpcProvider } from '../core/provider/CustomJsonRpcProvider'
 import { pascalCase } from '../core/utils/caseConversion'
 import { logger } from '../core/utils/logger'
@@ -70,17 +73,31 @@ export function buildMetadata(
               continue
             }
 
-            const { metadata, fileDetails } = (await adapter.buildMetadata(
-              true,
-            )) as {
-              metadata: Json
-              fileDetails: {
-                protocolId: Protocol
-                productId: string
-                chainId: Chain
-                fileKey: string
-              }
+            const metadataDetails = (await adapter
+              .buildMetadata(true)
+              .catch((e) => {
+                if (!(e instanceof NotImplementedError)) {
+                  throw e
+                }
+
+                return undefined
+              })) as
+              | {
+                  metadata: Json
+                  fileDetails: {
+                    protocolId: Protocol
+                    productId: string
+                    chainId: Chain
+                    fileKey: string
+                  }
+                }
+              | undefined
+
+            if (!metadataDetails) {
+              continue
             }
+
+            const { metadata, fileDetails } = metadataDetails
 
             const invalidAddresses = getMetadataInvalidAddresses(metadata)
 

@@ -118,7 +118,6 @@ import UniswapV2PoolArbitrumProtocolToken from '../../adapters/uniswap-v2/produc
 import UniswapV2PoolAvalancheProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/avalanche.protocol-token.json'
 import UniswapV2PoolBaseProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/base.protocol-token.json'
 import UniswapV2PoolBscProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/bsc.protocol-token.json'
-import UniswapV2PoolEthereumProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/ethereum.protocol-token.json'
 import UniswapV2PoolOptimismProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/optimism.protocol-token.json'
 import UniswapV2PoolPolygonProtocolToken from '../../adapters/uniswap-v2/products/pool/metadata/polygon.protocol-token.json'
 import XfaiDexLineaLpToken from '../../adapters/xfai/products/dex/metadata/linea.lp-token.json'
@@ -1444,15 +1443,6 @@ export const MetadataFiles = new Map<string, Json>([
       fileKey: 'protocol-token',
     }),
     UniswapV2PoolBscProtocolToken,
-  ],
-  [
-    metadataKey({
-      protocolId: Protocol.UniswapV2,
-      productId: 'pool',
-      chainId: Chain.Ethereum,
-      fileKey: 'protocol-token',
-    }),
-    UniswapV2PoolEthereumProtocolToken,
   ],
   [
     metadataKey({
