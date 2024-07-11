@@ -274,6 +274,7 @@ export class DefiProvider {
           chainId: adapter.chainId,
           protocolId: adapter.protocolId,
           productId: adapter.productId,
+          userAddress,
           message: error instanceof Error ? error.message : undefined,
         },
         'Error building token filter for user address',
