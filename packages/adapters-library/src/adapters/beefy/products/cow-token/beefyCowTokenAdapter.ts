@@ -1,3 +1,4 @@
+import { getAddress } from 'ethers'
 import { AdaptersController } from '../../../../core/adaptersController'
 import { Chain } from '../../../../core/constants/chains'
 import {
@@ -28,7 +29,7 @@ import {
 import { Erc20Metadata } from '../../../../types/erc20Metadata'
 import { Protocol } from '../../../protocols'
 import { breakdownFetcherMap, chainIdMap, protocolMap } from '../../sdk/config'
-import { ApiVault } from '../../sdk/types'
+import { ApiGovVault, ApiVault } from '../../sdk/types'
 import { Metadata } from './types'
 
 export class BeefyCowTokenAdapter
@@ -80,59 +81,53 @@ export class BeefyCowTokenAdapter
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async buildMetadata(): Promise<Metadata> {
-    const vaults = (await (
-      await fetch('https://api.beefy.finance/cow-vaults')
-    ).json()) as ApiVault[]
-
     const chain = chainIdMap[this.chainId]
+
+    const [vaults, govVaults] = await Promise.all([
+      fetch('https://api.beefy.finance/cow-vaults')
+        .then((res) => res.json())
+        .then((res) => res as ApiVault[]),
+      fetch('https://api.beefy.finance/gov-vaults')
+        .then((res) => res.json())
+        .then((res) =>
+          (res as ApiGovVault[])
+            .filter((g) => g.status === 'active')
+            .filter((g) => g.chain === chain)
+            .filter((g) => g.version === 2),
+        ),
+    ])
+
+    let rewardPoolsPerChainAndClm: Record<
+      string /* chain */,
+      Record<string /* checksummed address */, Erc20Metadata[]>
+    > = {}
+    for (const govVault of govVaults) {
+      const chain = chainIdMap[this.chainId]
+      const rewardPool = await this.helpers.getTokenMetadata(
+        govVault.earnContractAddress,
+      )
+      rewardPoolsPerChainAndClm = {
+        ...rewardPoolsPerChainAndClm,
+        [chain]: {
+          ...rewardPoolsPerChainAndClm[chain],
+          [getAddress(govVault.tokenAddress)]: [
+            ...(rewardPoolsPerChainAndClm[chain]?.[rewardPool.address] || []),
+            rewardPool,
+          ],
+        },
+      }
+    }
+
     const supportedVaults = vaults
       .filter((vault) => vault.chain === chain)
       // remove inactive vaults, might not be a good idea to remove them completely
       .filter((vault) => vault.status === 'active')
       // remove unsupported gov vaults
       .filter((vault) => vault.isGovVault !== true)
-      // remove those where we token breakdown isn't implemented
-      .filter((vault) => {
-        const keep = !!protocolMap[vault.platformId]
-        if (!keep) {
-          logger.debug(
-            {
-              vaultId: vault.id,
-              platformId: vault.platformId,
-              vaultAddress: vault.earnedTokenAddress,
-              poolAddress: vault.tokenAddress,
-              strategyTypeId: vault.strategyTypeId,
-              chain,
-            },
-            'Protocol type not implemented',
-          )
-        }
-        return keep
-      })
 
     // for each vault, get the latest breakdown to get the token list
     const res: Metadata = {}
     for (const vault of supportedVaults) {
-      const platformConfig = protocolMap[vault.platformId]
-      const protocolType =
-        typeof platformConfig === 'string'
-          ? platformConfig
-          : platformConfig[vault.strategyTypeId || 'default']
-      if (!protocolType) {
-        logger.warn(
-          {
-            vaultId: vault.id,
-            platformId: vault.platformId,
-            vaultAddress: vault.earnedTokenAddress,
-            poolAddress: vault.tokenAddress,
-            strategyTypeId: vault.strategyTypeId,
-            chain,
-          },
-          'Protocol type not found',
-        )
-        continue
-      }
-
       try {
         if (
           !vault.depositTokenAddresses ||
@@ -164,7 +159,9 @@ export class BeefyCowTokenAdapter
         res[protocolToken.address] = {
           protocolToken,
           underlyingTokens: [underlyingToken0, underlyingToken1],
-          unwrapType: protocolType,
+          rewardPoolTokens:
+            rewardPoolsPerChainAndClm[chain]?.[protocolToken.address] ?? [],
+          unwrapType: 'beefy_clm',
         }
       } catch (e) {
         logger.error(
@@ -201,10 +198,25 @@ export class BeefyCowTokenAdapter
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.withdrawals({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
+    const metadata = await this.fetchPoolMetadata(protocolTokenAddress)
+    return Promise.all([
+      this.helpers.withdrawals({
+        protocolToken: await this.getProtocolToken(
+          metadata.protocolToken.address,
+        ),
+        filter: { fromBlock, toBlock, userAddress },
+      }),
+      ...metadata.rewardPoolTokens.map((rewardPoolToken) =>
+        this.helpers
+          .withdrawals({
+            protocolToken: rewardPoolToken,
+            filter: { fromBlock, toBlock, userAddress },
+          })
+          .then((res) =>
+            res.map((r) => ({ ...r, protocolToken: metadata.protocolToken })),
+          ),
+      ),
+    ]).then((res) => res.flat())
   }
 
   async getDeposits({
@@ -213,10 +225,25 @@ export class BeefyCowTokenAdapter
     toBlock,
     userAddress,
   }: GetEventsInput): Promise<MovementsByBlock[]> {
-    return this.helpers.deposits({
-      protocolToken: await this.getProtocolToken(protocolTokenAddress),
-      filter: { fromBlock, toBlock, userAddress },
-    })
+    const metadata = await this.fetchPoolMetadata(protocolTokenAddress)
+    return Promise.all([
+      this.helpers.deposits({
+        protocolToken: await this.getProtocolToken(
+          metadata.protocolToken.address,
+        ),
+        filter: { fromBlock, toBlock, userAddress },
+      }),
+      ...metadata.rewardPoolTokens.map((rewardPoolToken) =>
+        this.helpers
+          .deposits({
+            protocolToken: rewardPoolToken,
+            filter: { fromBlock, toBlock, userAddress },
+          })
+          .then((res) =>
+            res.map((r) => ({ ...r, protocolToken: metadata.protocolToken })),
+          ),
+      ),
+    ]).then((res) => res.flat())
   }
 
   async getTotalValueLocked({

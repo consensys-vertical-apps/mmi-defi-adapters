@@ -15,10 +15,6 @@ export const fetchBeefyClmBalanceBreakdown: VaultBalanceBreakdownFetcher =
       protocolTokenAddress,
       provider,
     )
-    const poolContract = SolidlyPool__factory.connect(
-      underlyingLPTokenAddress,
-      provider,
-    )
 
     const [balances, vaultTotalSupply, wants] = await Promise.all([
       clmContract.balances({ ...blockSpec }),

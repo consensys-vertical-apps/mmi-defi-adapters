@@ -1,4 +1,221 @@
 {
+  "0xF93402fddbC5F94fe81998aB2ef2fC6E12E26b1e": {
+    "protocolToken": {
+      "address": "0xF93402fddbC5F94fe81998aB2ef2fC6E12E26b1e",
+      "name": "Cow Uniswap Poly WBTC-USDC",
+      "symbol": "cowUniswapPolyWBTC-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "name": "(PoS) Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x82ff162e9e30311563052c6D69dEb7e1ec9e6A6a",
+        "name": "Reward Cow Uniswap Poly WBTC-USDC",
+        "symbol": "rcowUniswapPolyWBTC-USDC",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xc96153bdA547d4a6066B8a08AE239EF757BF35aE": {
+    "protocolToken": {
+      "address": "0xc96153bdA547d4a6066B8a08AE239EF757BF35aE",
+      "name": "Cow Uniswap Poly WMATIC-WBTC",
+      "symbol": "cowUniswapPolyWMATIC-WBTC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        "name": "(PoS) Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x4c58e6C9E55Ee55C06154255a352c7da013dE571",
+        "name": "Reward Cow Uniswap Poly WMATIC-WBTC",
+        "symbol": "rcowUniswapPolyWMATIC-WBTC",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x1f41a97Ccb116C7F86d7120669Bd659A303DE718": {
+    "protocolToken": {
+      "address": "0x1f41a97Ccb116C7F86d7120669Bd659A303DE718",
+      "name": "Cow Uniswap Poly USDT-LCD",
+      "symbol": "cowUniswapPolyUSDT-LCD",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        "name": "(PoS) Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xc2A45FE7d40bCAc8369371B08419DDAFd3131b4a",
+        "name": "Lucidao",
+        "symbol": "LCD",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xE2859af0575bfaE3E12013FD861437533bEdCCe1",
+        "name": "Reward Cow Uniswap Poly USDT-LCD",
+        "symbol": "rcowUniswapPolyUSDT-LCD",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x195247799ac0B36CF6b9AC5Eb84ceE3bc17fe2dB": {
+    "protocolToken": {
+      "address": "0x195247799ac0B36CF6b9AC5Eb84ceE3bc17fe2dB",
+      "name": "Cow Uniswap Poly USDC-LINK",
+      "symbol": "cowUniswapPolyUSDC-LINK",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+        "name": "ChainLink Token",
+        "symbol": "LINK",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xc9B9CC3C54d13E849c92f24AB8318A40439c0A06",
+        "name": "Reward Cow Uniswap Poly USDC-LINK",
+        "symbol": "rcowUniswapPolyUSDC-LINK",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xBC82E4724f143eebA9C5b6B7f35361380A88995c": {
+    "protocolToken": {
+      "address": "0xBC82E4724f143eebA9C5b6B7f35361380A88995c",
+      "name": "Cow Uniswap Poly WMATIC-LINK",
+      "symbol": "cowUniswapPolyWMATIC-LINK",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+        "name": "ChainLink Token",
+        "symbol": "LINK",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x784561E787E835C1b4787728025C8B71Cc1FDD46",
+        "name": "Reward Cow Uniswap Poly WMATIC-LINK",
+        "symbol": "rcowUniswapPolyWMATIC-LINK",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x69c3F6c3cc1b277BB4370E1A63EfEE19fccE0e74": {
+    "protocolToken": {
+      "address": "0x69c3F6c3cc1b277BB4370E1A63EfEE19fccE0e74",
+      "name": "Cow Uniswap Poly WETH-AAVE",
+      "symbol": "cowUniswapPolyWETH-AAVE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
+        "name": "Aave (PoS)",
+        "symbol": "AAVE",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xA4BcC2624eab34745CFE81501399E3B6Da6Df779",
+        "name": "Reward Cow Uniswap Poly WETH-AAVE",
+        "symbol": "rcowUniswapPolyWETH-AAVE",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xEefe81030D5Fb355b627a047F48b48480D5b7F09": {
+    "protocolToken": {
+      "address": "0xEefe81030D5Fb355b627a047F48b48480D5b7F09",
+      "name": "Cow Uniswap Poly WMATIC-AAVE",
+      "symbol": "cowUniswapPolyWMATIC-AAVE",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+        "name": "Wrapped Matic",
+        "symbol": "WMATIC",
+        "decimals": 18
+      },
+      {
+        "address": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
+        "name": "Aave (PoS)",
+        "symbol": "AAVE",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xf587753417dd5EA6e8eA0CBC875Bace0F1Fd97A4",
+        "name": "Reward Cow Uniswap Poly WMATIC-AAVE",
+        "symbol": "rcowUniswapPolyWMATIC-AAVE",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
   "0xa55eEB0b0ef32Bf25425C2107350b07E1e8e1346": {
     "protocolToken": {
       "address": "0xa55eEB0b0ef32Bf25425C2107350b07E1e8e1346",
@@ -17,6 +234,14 @@
         "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
         "name": "Wrapped Ether",
         "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x4eB5675C74dF65e5ce61bD26d76166259753218f",
+        "name": "Reward Cow Uniswap Poly USDC.e-WETH",
+        "symbol": "rcowUniswapPolyUSDC.e-WETH",
         "decimals": 18
       }
     ],
@@ -43,6 +268,14 @@
         "decimals": 18
       }
     ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xd29b224d938Ac074C47516D3524D416C0C2E5524",
+        "name": "Reward Cow Uniswap Poly USDC-WETH",
+        "symbol": "rcowUniswapPolyUSDC-WETH",
+        "decimals": 18
+      }
+    ],
     "unwrapType": "beefy_clm"
   },
   "0x22720E26712584a8234C5545B8DfE6a8FB48F453": {
@@ -64,6 +297,14 @@
         "name": "(PoS) Tether USD",
         "symbol": "USDT",
         "decimals": 6
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x13afcAb699e8f08516Fa4e9CcBe96c0020a9E38e",
+        "name": "Reward Cow Uniswap Poly WETH-USDT",
+        "symbol": "rcowUniswapPolyWETH-USDT",
+        "decimals": 18
       }
     ],
     "unwrapType": "beefy_clm"
@@ -89,6 +330,14 @@
         "decimals": 6
       }
     ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x827394689920d94aCC2c21BDF190E54501E8c742",
+        "name": "Reward Cow Uniswap Poly WBTC-USDC.e",
+        "symbol": "rcowUniswapPolyWBTC-USDC.e",
+        "decimals": 18
+      }
+    ],
     "unwrapType": "beefy_clm"
   },
   "0x081901d477A296CDDE2084697c25Cfd52805BA31": {
@@ -109,6 +358,14 @@
         "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
         "name": "Wrapped Ether",
         "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x74613aB5306B5D4f3746bbD7ad2FF5906E814c60",
+        "name": "Reward Cow Uniswap Poly WBTC-WETH",
+        "symbol": "rcowUniswapPolyWBTC-WETH",
         "decimals": 18
       }
     ],
@@ -135,6 +392,14 @@
         "decimals": 18
       }
     ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x4DD7bEa937B25C4d81A4C2c8F19b1BcEc501378A",
+        "name": "Reward Cow Uniswap Poly WMATIC-WETH",
+        "symbol": "rcowUniswapPolyWMATIC-WETH",
+        "decimals": 18
+      }
+    ],
     "unwrapType": "beefy_clm"
   },
   "0xa37378E6e42F8b1586E6B272A56AC285EbF44E1B": {
@@ -156,6 +421,14 @@
         "name": "(PoS) Tether USD",
         "symbol": "USDT",
         "decimals": 6
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x6fF8b3E4f9eBC8c937Fcd2E79bD16f6a0Ad47fA9",
+        "name": "Reward Cow Uniswap Poly WMATIC-USDT",
+        "symbol": "rcowUniswapPolyWMATIC-USDT",
+        "decimals": 18
       }
     ],
     "unwrapType": "beefy_clm"
@@ -181,6 +454,14 @@
         "decimals": 6
       }
     ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xb3B1D783DCFb66CfD4e748C03757D96196b3da26",
+        "name": "Reward Cow Uniswap Poly WMATIC-USDC.e",
+        "symbol": "rcowUniswapPolyWMATIC-USDC.e",
+        "decimals": 18
+      }
+    ],
     "unwrapType": "beefy_clm"
   },
   "0xD27914D1fFc272d37d3B6dD8A2adeb8bf88251C8": {
@@ -204,6 +485,14 @@
         "decimals": 6
       }
     ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xB470e9a07486d3e2510822c4B2f04e595ce3801F",
+        "name": "Reward Cow Uniswap Poly WMATIC-USDC",
+        "symbol": "rcowUniswapPolyWMATIC-USDC",
+        "decimals": 18
+      }
+    ],
     "unwrapType": "beefy_clm"
   },
   "0x7f14AAEb965028Ea56c10a1B758fB61BC90Cd770": {
@@ -224,6 +513,14 @@
         "address": "0xC3C7d422809852031b44ab29EEC9F1EfF2A58756",
         "name": "Lido DAO Token (PoS)",
         "symbol": "LDO",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xaf6EF2222bF16bC7ca86C3a04F7D427c5eFEE7C3",
+        "name": "Reward Cow Uniswap Poly WMATIC-LDO",
+        "symbol": "rcowUniswapPolyWMATIC-LDO",
         "decimals": 18
       }
     ],
@@ -250,6 +547,14 @@
         "decimals": 18
       }
     ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x004D7f1f84aa7285188404Db99fE63Edc8D568Ed",
+        "name": "Reward Cow Uniswap Poly WETH-LDO",
+        "symbol": "rcowUniswapPolyWETH-LDO",
+        "decimals": 18
+      }
+    ],
     "unwrapType": "beefy_clm"
   },
   "0xcc8f331385963894E33195961BA5D2A26194aACC": {
@@ -270,6 +575,14 @@
         "address": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
         "name": "ChainLink Token",
         "symbol": "LINK",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xdd8543d1d85f1C21865B698C8d4fE258412533ef",
+        "name": "Reward Cow Uniswap Poly USDC.e-LINK",
+        "symbol": "rcowUniswapPolyUSDC.e-LINK",
         "decimals": 18
       }
     ],
@@ -296,6 +609,14 @@
         "decimals": 18
       }
     ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xbAA0619f0441C75ed1348193b07bdd18723558e4",
+        "name": "Reward Cow Uniswap Poly LINK-WETH",
+        "symbol": "rcowUniswapPolyLINK-WETH",
+        "decimals": 18
+      }
+    ],
     "unwrapType": "beefy_clm"
   },
   "0x9b6ed34a879fc5f4a6945978d12a3c41eC500B93": {
@@ -316,6 +637,14 @@
         "address": "0xb33EaAd8d922B1083446DC23f610c2567fB5180f",
         "name": "Uniswap (PoS)",
         "symbol": "UNI",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xD63EE2E094704A35867c0E782f74cA20F78F001E",
+        "name": "Reward Cow Uniswap Poly WETH-UNI",
+        "symbol": "rcowUniswapPolyWETH-UNI",
         "decimals": 18
       }
     ],

@@ -1,5 +1,5 @@
 {
-  "blockNumber": 224847857,
+  "blockNumber": 228323745,
   "snapshot": [
     {
       "protocolId": "beefy",
@@ -25,9 +25,9 @@
               "name": "LayerZero",
               "symbol": "ZRO",
               "decimals": 18,
-              "underlyingRateRaw": "635020053706851703243n",
+              "underlyingRateRaw": "468905427603912134537n",
               "type": "underlying",
-              "underlyingRate": 635.0200537068517,
+              "underlyingRate": 468.90542760391213,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6985884C4392D348587B19cb9eAAf157F13271cd/logo.png"
             },
             {
@@ -35,9 +35,9 @@
               "name": "Wrapped Ether",
               "symbol": "WETH",
               "decimals": 18,
-              "underlyingRateRaw": "440193825834664252n",
+              "underlyingRateRaw": "611205034265624971n",
               "type": "underlying",
-              "underlyingRate": 0.44019382583466427,
+              "underlyingRate": 0.611205034265625,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ]

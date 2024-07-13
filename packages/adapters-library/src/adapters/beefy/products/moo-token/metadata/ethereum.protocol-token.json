@@ -1,4 +1,33 @@
 {
+  "0x1817CFfc44c78d5aED61420bF48Cc273E504B7BE": {
+    "protocolToken": {
+      "address": "0x1817CFfc44c78d5aED61420bF48Cc273E504B7BE",
+      "name": "Moo Curve eUSD-USDC",
+      "symbol": "mooCurve_eUSD-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xA0d69E286B938e21CBf7E51D71F6A4c8918f482F",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      },
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x08BfA22bB3e024CDfEB3eca53c0cb93bF59c4147",
+      "name": "eUSD/USDC",
+      "symbol": "eUSDUSDC",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
   "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5": {
     "protocolToken": {
       "address": "0xBF7fc2A3d96d80f47b3b89BE84afe10376CE96A5",
@@ -461,35 +490,6 @@
       "address": "0x42ED016F826165C2e5976fe5bC3df540C5aD0Af7",
       "name": "wstETH-rETH-sfrxETH-BPT",
       "symbol": "wstETH-rETH-sfrxETH-BPT",
-      "decimals": 18
-    },
-    "unwrapType": "balancer_aura_multi_lp"
-  },
-  "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD": {
-    "protocolToken": {
-      "address": "0xC2fea9942506CEF6d18b655Cb2de36d479Dc43bD",
-      "name": "Moo Aura AURA-WETH",
-      "symbol": "mooAuraAURA-WETH",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "name": "Wrapped Ether",
-        "symbol": "WETH",
-        "decimals": 18
-      },
-      {
-        "address": "0xC0c293ce456fF0ED870ADd98a0828Dd4d2903DBF",
-        "name": "Aura",
-        "symbol": "AURA",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0xCfCA23cA9CA720B6E98E3Eb9B6aa0fFC4a5C08B9",
-      "name": "50WETH-50AURA",
-      "symbol": "50WETH-50AURA",
       "decimals": 18
     },
     "unwrapType": "balancer_aura_multi_lp"

@@ -1,5 +1,5 @@
 {
-  "blockNumber": 224847857,
+  "blockNumber": 228323745,
   "snapshot": [
     {
       "protocolId": "beefy",
@@ -13,12 +13,45 @@
       "success": true,
       "tokens": [
         {
+          "address": "0xF0eB29f3E21f8F88a6c93dE44993bac27c4B519F",
+          "name": "Cow Pancake Arb WETH-USDT",
+          "symbol": "cowPancakeArbWETH-USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "37247905n",
+          "tokens": [
+            {
+              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+              "name": "Wrapped Ether",
+              "symbol": "WETH",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "6867577792640270n",
+              "totalSupply": 0.00686757779264027,
+              "price": 3296.0106,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
+            },
+            {
+              "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "13943389n",
+              "totalSupply": 13.943389,
+              "price": 0.999335582941605,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
+            }
+          ],
+          "totalSupply": 3.7247905e-11
+        },
+        {
           "address": "0x073819cff8229BC2f5Af33012e69C8289779E7aC",
           "name": "Cow Uniswap Arb ZRO-WETH",
           "symbol": "cowUniswapArbZRO-WETH",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "58196431415028069161n",
+          "totalSupplyRaw": "317509019673099745176n",
           "tokens": [
             {
               "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
@@ -26,9 +59,9 @@
               "symbol": "ZRO",
               "decimals": 18,
               "type": "underlying",
-              "totalSupplyRaw": "36955901002718236143482n",
-              "totalSupply": 36955.90100271824,
-              "price": 2.97782851854609,
+              "totalSupplyRaw": "148881702637913786230875n",
+              "totalSupply": 148881.70263791378,
+              "price": 3.89162523844112,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6985884C4392D348587B19cb9eAAf157F13271cd/logo.png"
             },
             {
@@ -37,13 +70,13 @@
               "symbol": "WETH",
               "decimals": 18,
               "type": "underlying",
-              "totalSupplyRaw": "25617709794505849142n",
-              "totalSupply": 25.61770979450585,
-              "price": 3496.77892,
+              "totalSupplyRaw": "194063111248941922778n",
+              "totalSupply": 194.06311124894194,
+              "price": 3296.0106,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
             }
           ],
-          "totalSupply": 58.196431415028066
+          "totalSupply": 317.5090196730998
         }
       ]
     },
@@ -64,7 +97,7 @@
           "symbol": "mooAuraGyroaUSDCn/aUSDTn",
           "decimals": 18,
           "type": "protocol",
-          "totalSupplyRaw": "274355784478830596269063n",
+          "totalSupplyRaw": "67818011953368510769551n",
           "tokens": [
             {
               "address": "0x7CFaDFD5645B50bE87d546f42699d863648251ad",
@@ -72,8 +105,8 @@
               "symbol": "stataArbUSDCn",
               "decimals": 6,
               "type": "underlying",
-              "totalSupplyRaw": "40602186900n",
-              "totalSupply": 40602.1869,
+              "totalSupplyRaw": "611854103n",
+              "totalSupply": 611.854103,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x7CFaDFD5645B50bE87d546f42699d863648251ad/logo.png"
             },
             {
@@ -82,12 +115,12 @@
               "symbol": "stataArbUSDT",
               "decimals": 6,
               "type": "underlying",
-              "totalSupplyRaw": "298954249759n",
-              "totalSupply": 298954.249759,
+              "totalSupplyRaw": "83185505643n",
+              "totalSupply": 83185.505643,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140/logo.png"
             }
           ],
-          "totalSupply": 274355.7844788306
+          "totalSupply": 67818.0119533685
         }
       ]
     }

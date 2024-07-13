@@ -1,4 +1,33 @@
 {
+  "0x10BD7A983E2897c36b059ce0a8C57BcC17d6b847": {
+    "protocolToken": {
+      "address": "0x10BD7A983E2897c36b059ce0a8C57BcC17d6b847",
+      "name": "Moo Aura Gyro OP Frax Symphony",
+      "symbol": "mooAuraGyroOPFrax Symphony",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2Dd1B4D4548aCCeA497050619965f91f78b3b532",
+        "name": "Staked FRAX",
+        "symbol": "sFRAX",
+        "decimals": 18
+      },
+      {
+        "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+        "name": "Frax",
+        "symbol": "FRAX",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xE906d4C4fC4c3Fe96560De86B4bf7eD89aF9A69a",
+      "name": "Frax Symphony",
+      "symbol": "bpt-fraxsym",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
   "0x12fBf29ebab68ed27db7f1a3A3b733692f566535": {
     "protocolToken": {
       "address": "0x12fBf29ebab68ed27db7f1a3A3b733692f566535",
@@ -411,64 +440,6 @@
     },
     "unwrapType": "solidly"
   },
-  "0x9F87827c7c97ab0b11E413387c8501072D8e82D9": {
-    "protocolToken": {
-      "address": "0x9F87827c7c97ab0b11E413387c8501072D8e82D9",
-      "name": "Moo VeloV2 USDC-USDV",
-      "symbol": "mooVeloV2USDC-USDV",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
-        "name": "USD Coin",
-        "symbol": "USDC",
-        "decimals": 6
-      },
-      {
-        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
-        "name": "USDV",
-        "symbol": "USDV",
-        "decimals": 6
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0xfdA251c16f1aE2e0e758B8d03AAd080A636663a8",
-      "name": "StableV2 AMM - USDC/USDV",
-      "symbol": "sAMMV2-USDC/USDV",
-      "decimals": 18
-    },
-    "unwrapType": "solidly"
-  },
-  "0x480E3FC888044e038d9261A38437DeEC13C84AC5": {
-    "protocolToken": {
-      "address": "0x480E3FC888044e038d9261A38437DeEC13C84AC5",
-      "name": "Moo VeloV2 USDV-USDCe",
-      "symbol": "mooVeloV2USDV-USDCe",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x323665443CEf804A3b5206103304BD4872EA4253",
-        "name": "USDV",
-        "symbol": "USDV",
-        "decimals": 6
-      },
-      {
-        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
-        "name": "USD Coin",
-        "symbol": "USDC",
-        "decimals": 6
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x73DaC4c0e02CC9d66e5Fe00569360845C241d3aE",
-      "name": "StableV2 AMM - USDV/USDC",
-      "symbol": "sAMMV2-USDV/USDC",
-      "decimals": 18
-    },
-    "unwrapType": "solidly"
-  },
   "0x60d8E0bbb7355b08c2F6d8f260d93bDe06A75A41": {
     "protocolToken": {
       "address": "0x60d8E0bbb7355b08c2F6d8f260d93bDe06A75A41",
@@ -874,35 +845,6 @@
       "decimals": 18
     },
     "unwrapType": "curve"
-  },
-  "0x32BF68dF1D113603346422fED4e4393b3c976159": {
-    "protocolToken": {
-      "address": "0x32BF68dF1D113603346422fED4e4393b3c976159",
-      "name": "Moo Aura OP A Night at the OPara",
-      "symbol": "mooAuraOPANightattheOPara",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x4200000000000000000000000000000000000042",
-        "name": "Optimism",
-        "symbol": "OP",
-        "decimals": 18
-      },
-      {
-        "address": "0xd3594E879B358F430E20F82bea61e83562d49D48",
-        "name": "ParaSwap",
-        "symbol": "PSP",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x0244B0025264dC5f5c113d472D579C9c994A59CE",
-      "name": "A Night at the OPara",
-      "symbol": "BPT-OPARA",
-      "decimals": 18
-    },
-    "unwrapType": "balancer_aura_lp"
   },
   "0x9a2F07153964e4E02878101Be10E31e2dD474d74": {
     "protocolToken": {
@@ -1394,35 +1336,6 @@
       "address": "0xc37a0a37664aeB3848f98C5dD5d7AE286A1E9Ebd",
       "name": "StableV2 AMM - FRAX/MAI",
       "symbol": "sAMMV2-FRAX/MAI",
-      "decimals": 18
-    },
-    "unwrapType": "solidly"
-  },
-  "0xb379AB37f2e7d4A0d2479c09d637bD6B20E1354d": {
-    "protocolToken": {
-      "address": "0xb379AB37f2e7d4A0d2479c09d637bD6B20E1354d",
-      "name": "Moo VeloV2 USDC-MTA",
-      "symbol": "mooVeloV2USDC-MTA",
-      "decimals": 18
-    },
-    "underlyingTokens": [
-      {
-        "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
-        "name": "USD Coin",
-        "symbol": "USDC",
-        "decimals": 6
-      },
-      {
-        "address": "0x929B939f8524c3Be977af57A4A0aD3fb1E374b50",
-        "name": "Meta",
-        "symbol": "MTA",
-        "decimals": 18
-      }
-    ],
-    "underlyingLPToken": {
-      "address": "0x8453cc52F2108fF9D1636B6A108dB06Ac137B72F",
-      "name": "VolatileV2 AMM - USDC/MTA",
-      "symbol": "vAMMV2-USDC/MTA",
       "decimals": 18
     },
     "unwrapType": "solidly"

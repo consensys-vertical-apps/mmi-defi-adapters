@@ -15,6 +15,16 @@ export type ApiVault = {
   bridged?: object
   assets?: string[]
 }
+
+export type ApiGovVault = {
+  id: string
+  status: 'active' | 'eol'
+  version: number
+  chain: string
+  tokenAddress: string // clm address
+  earnContractAddress: string // reward pool address
+}
+
 export type ApiBoost = {
   id: string
   poolId: string

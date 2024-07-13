@@ -20,6 +20,14 @@
         "decimals": 6
       }
     ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xfc3733F22131C32b1c05D22D3C5047Fe4044208c",
+        "name": "Reward Cow Oku Linea USDC-USDT",
+        "symbol": "rcowOkuLineaUSDC-USDT",
+        "decimals": 18
+      }
+    ],
     "unwrapType": "beefy_clm"
   },
   "0x0Db58cB843B8AF6A8704338447c0a7e36F4D5613": {
@@ -43,6 +51,14 @@
         "decimals": 18
       }
     ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x31c0b0ce930797291fAa950B6F3085D2Dd620247",
+        "name": "Reward Cow Oku Linea WBTC-WETH",
+        "symbol": "rcowOkuLineaWBTC-WETH",
+        "decimals": 18
+      }
+    ],
     "unwrapType": "beefy_clm"
   },
   "0x4d6d208e75d800957c4AF83FB9f42AabFEbc6b6D": {
@@ -63,6 +79,14 @@
         "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
         "name": "Wrapped Ether",
         "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x711d9dF7927c9e8083D682824238aC224258a656",
+        "name": "Reward Cow Oku Linea USDC-WETH",
+        "symbol": "rcowOkuLineaUSDC-WETH",
         "decimals": 18
       }
     ],
