@@ -38,8 +38,6 @@ if (!options)
     )}`,
   )
 
-const statusCounts = {}
-
 export function setup() {
   console.log('Setup hook called')
 
@@ -74,7 +72,7 @@ export default function (data) {
 
   const randomAddress = generateRandomEthAddress()
   const paddedAddress = padEthAddress(
-    '0xF977814e90dA44bFA03b6295A0616a897441aceC',
+    '0xF977814e90dA44bFA03b6295A0616a897441aceC', // has more than 10k logs
   )
 
   const payload = JSON.stringify({
@@ -100,13 +98,6 @@ export default function (data) {
   //   console.log(`Response status: ${response.status}`)
   //   console.log(`Response body: ${response.body}`)
 
-  // Track status counts
-  if (statusCounts[response.status]) {
-    statusCounts[response.status]++
-  } else {
-    statusCounts[response.status] = 1
-  }
-
   // Parse the response body
   let responseBody
   try {
@@ -129,7 +120,7 @@ export default function (data) {
 
   // Check for "rate" or "limit" in the response or error message
   const containsRateOrLimit = hasError
-    ? /rate|limit/i.test(responseBody.error.message)
+    ? /rate|limit/i.test(responseBody?.error?.message)
     : /rate|limit/i.test(JSON.stringify(responseBody))
 
   //   // Log the presence of "rate" or "limit"
@@ -158,17 +149,13 @@ export default function (data) {
   // Add checks to ensure the request status is 200 and there is no error
   check(response, {
     'status is 200': (r) => r.status === 200,
+    'status is not 400': (r) => !(r.status === 400),
+    'status is not 404': (r) => !(r.status === 404),
+    'status is not 500': (r) => !(r.status === 500),
     'response does not contain error': (r) => !hasError,
     'response or error does not contains rate or limit': (r) =>
       !containsRateOrLimit,
     'response or error does not contains more than 10000 error message': (r) =>
       !containsSpecificError,
   })
-}
-
-export function teardown(data) {
-  console.log('Test run completed. Status code summary:')
-  for (const [status, count] of Object.entries(statusCounts)) {
-    console.log(`Status ${status}: ${count}`)
-  }
 }
