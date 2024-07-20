@@ -1,4 +1,252 @@
 {
+  "0xc720D97B2327B1AE9bCC5dD135fAfa78D8c80B12": {
+    "protocolToken": {
+      "address": "0xc720D97B2327B1AE9bCC5dD135fAfa78D8c80B12",
+      "name": "Cow Uniswap Arb ETHFI-WETH",
+      "symbol": "cowUniswapArbETHFI-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7189fb5B6504bbfF6a852B13B7B82a3c118fDc27",
+        "name": "ether.fi governance token",
+        "symbol": "ETHFI",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xDf83814d107de998843FAAF587a9862b3860c56f",
+        "name": "Reward Cow Uniswap Arb ETHFI-WETH",
+        "symbol": "rcowUniswapArbETHFI-WETH",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xac8246F01197fB783Bf1A80960821835045Ec680": {
+    "protocolToken": {
+      "address": "0xac8246F01197fB783Bf1A80960821835045Ec680",
+      "name": "Cow Camelot rsETH-WETH",
+      "symbol": "cowCamelotrsETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4186BFC76E2E237523CBC30FD220FE055156b41F",
+        "name": "KelpDao Restaked ETH",
+        "symbol": "rsETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0xD9001574E23fb909657A25494f540A9B3804b16e",
+        "name": "Reward Cow Camelot rsETH-WETH",
+        "symbol": "rcowCamelotrsETH-WETH",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xeE480eb145158A176C1e4748003619360B7a2EAd": {
+    "protocolToken": {
+      "address": "0xeE480eb145158A176C1e4748003619360B7a2EAd",
+      "name": "Cow Ramses WBTC-WETH",
+      "symbol": "cowRamsesWBTC-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC",
+        "decimals": 8
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x619d064de09B2720901aFea1025cC5792Db8c818",
+        "name": "Reward Cow Ramses WBTC-WETH",
+        "symbol": "rcowRamsesWBTC-WETH",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0xD5E2F1d85CA1DE69Dba963125CA6B487B382bDC0": {
+    "protocolToken": {
+      "address": "0xD5E2F1d85CA1DE69Dba963125CA6B487B382bDC0",
+      "name": "Cow Ramses ETHFI-WETH",
+      "symbol": "cowRamsesETHFI-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7189fb5B6504bbfF6a852B13B7B82a3c118fDc27",
+        "name": "ether.fi governance token",
+        "symbol": "ETHFI",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x1496bc471fEeE0984a356642d03Db9e7A9019d3b",
+        "name": "Reward Cow Ramses ETHFI-WETH",
+        "symbol": "rcowRamsesETHFI-WETH",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x8FEf8563EC112e07013D02361C8568b4B6F394d5": {
+    "protocolToken": {
+      "address": "0x8FEf8563EC112e07013D02361C8568b4B6F394d5",
+      "name": "Cow Ramses ARB-USDC",
+      "symbol": "cowRamsesARB-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
+        "name": "Arbitrum",
+        "symbol": "ARB",
+        "decimals": 18
+      },
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x5EbD4be25c1fBE4d16D1A5b06440fF28a6c901FE",
+        "name": "Reward Cow Ramses ARB-USDC",
+        "symbol": "rcowRamsesARB-USDC",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x6b17F8f3cf06696bb4Fd90D10b3EdeF8BA36097b": {
+    "protocolToken": {
+      "address": "0x6b17F8f3cf06696bb4Fd90D10b3EdeF8BA36097b",
+      "name": "Cow Ramses WETH-USDC",
+      "symbol": "cowRamsesWETH-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      },
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x1dd2668A4Ce9b0B1B3c8a2348dC746f77c5044A3",
+        "name": "Reward Cow Ramses WETH-USDC",
+        "symbol": "rcowRamsesWETH-USDC",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x72eB356324963A85A3d06c35422b59c87e475195": {
+    "protocolToken": {
+      "address": "0x72eB356324963A85A3d06c35422b59c87e475195",
+      "name": "Cow Ramses ZRO-WETH",
+      "symbol": "cowRamsesZRO-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
+        "name": "LayerZero",
+        "symbol": "ZRO",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x5d1d05481B4F5050220637db87273AE5737B4C1e",
+        "name": "Reward Cow Ramses ZRO-WETH",
+        "symbol": "rcowRamsesZRO-WETH",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
+  "0x5D604056E2560a8515aB51a2D8e6f0620d955d36": {
+    "protocolToken": {
+      "address": "0x5D604056E2560a8515aB51a2D8e6f0620d955d36",
+      "name": "Cow Camelot ETHFI-WETH",
+      "symbol": "cowCamelotETHFI-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7189fb5B6504bbfF6a852B13B7B82a3c118fDc27",
+        "name": "ether.fi governance token",
+        "symbol": "ETHFI",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "rewardPoolTokens": [
+      {
+        "address": "0x5375dc3954693322387D329ED175EAdaF04579Fd",
+        "name": "Reward Cow Camelot ETHFI-WETH",
+        "symbol": "rcowCamelotETHFI-WETH",
+        "decimals": 18
+      }
+    ],
+    "unwrapType": "beefy_clm"
+  },
   "0xA297024a99098d52aae466AC5F48520d514262bA": {
     "protocolToken": {
       "address": "0xA297024a99098d52aae466AC5F48520d514262bA",

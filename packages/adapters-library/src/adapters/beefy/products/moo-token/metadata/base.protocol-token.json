@@ -1,4 +1,33 @@
 {
+  "0xd4F3e6FaD95Af2512462FeCe507be3C29FE7960C": {
+    "protocolToken": {
+      "address": "0xd4F3e6FaD95Af2512462FeCe507be3C29FE7960C",
+      "name": "Moo Aero USDz-sUSDz",
+      "symbol": "mooAeroUSDz-sUSDz",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04D5ddf5f3a8939889F11E97f8c4BB48317F1938",
+        "name": "USDz",
+        "symbol": "USDz",
+        "decimals": 18
+      },
+      {
+        "address": "0xe31eE12bDFDD0573D634124611e85338e2cBF0cF",
+        "name": "Staked USDz",
+        "symbol": "sUSDz",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x7818B53F423457151407103321d8F961773815D1",
+      "name": "Volatile AMM - USDz/sUSDz",
+      "symbol": "vAMM-USDz/sUSDz",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
   "0xF6DF473587A902fe32ea4f64aB3Bbe1dE82370B6": {
     "protocolToken": {
       "address": "0xF6DF473587A902fe32ea4f64aB3Bbe1dE82370B6",

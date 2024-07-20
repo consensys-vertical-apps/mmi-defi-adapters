@@ -1,4 +1,91 @@
 {
+  "0x38Fb2BbedacDCC3490ee84a1e454324C16f31dae": {
+    "protocolToken": {
+      "address": "0x38Fb2BbedacDCC3490ee84a1e454324C16f31dae",
+      "name": "Moo Curve KNOX-eUSD-v2",
+      "symbol": "mooCurveKNOX-eUSD-v2",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x0BBF664D46becc28593368c97236FAa0fb397595",
+        "name": "KNOX Dollar",
+        "symbol": "KNOX",
+        "decimals": 18
+      },
+      {
+        "address": "0x12275DCB9048680c4Be40942eA4D92c74C63b844",
+        "name": "Electronic Dollar",
+        "symbol": "eUSD",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x86EA1191a219989d2dA3a85c949a12A92f8ED3Db",
+      "name": "KNOX/eUSD",
+      "symbol": "KNOXeUSD",
+      "decimals": 18
+    },
+    "unwrapType": "curve"
+  },
+  "0x9eEd71e0Cf1681Fb4554cFcC9C1eAAC6F6307EAC": {
+    "protocolToken": {
+      "address": "0x9eEd71e0Cf1681Fb4554cFcC9C1eAAC6F6307EAC",
+      "name": "Moo Aura Gyro aUSDT/USDT",
+      "symbol": "mooAuraGyroaUSDT/USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140",
+        "name": "Static Aave Arbitrum USDT",
+        "symbol": "stataArbUSDT",
+        "decimals": 6
+      },
+      {
+        "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x14ABD18d1FA335E9F630a658a2799B33208763Fa",
+      "name": "Gyroscope 2CLP AUSDT/USDT",
+      "symbol": "2CLP-AUSDT-USDT",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
+  "0xb35EcE568Fad2559B4c1025B72A230315616C356": {
+    "protocolToken": {
+      "address": "0xb35EcE568Fad2559B4c1025B72A230315616C356",
+      "name": "Moo Aura Gyro aUSDC/USDC",
+      "symbol": "mooAuraGyroaUSDC/USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x7CFaDFD5645B50bE87d546f42699d863648251ad",
+        "name": "Static Aave Arbitrum USDCn",
+        "symbol": "stataArbUSDCn",
+        "decimals": 6
+      },
+      {
+        "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xcA8ECD05A289B1FBc2E0eAEC07360c4BFec07B61",
+      "name": "Gyroscope 2CLP AUSDC/USDC",
+      "symbol": "2CLP-AUSDC-USDC",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
+  },
   "0x9E06d77853F548d759dD7DcF6ba27ABAa71b4362": {
     "protocolToken": {
       "address": "0x9E06d77853F548d759dD7DcF6ba27ABAa71b4362",
@@ -96,6 +183,35 @@
       "decimals": 18
     },
     "unwrapType": "pendle_equilibria"
+  },
+  "0xA9Fa0C33cE278952309229FbE202A5E6108491B0": {
+    "protocolToken": {
+      "address": "0xA9Fa0C33cE278952309229FbE202A5E6108491B0",
+      "name": "Moo Balancer Gyro Arb wstETH-WETH",
+      "symbol": "mooBalancerGyrowstETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+        "name": "Wrapped Ether",
+        "symbol": "WETH",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0x7967FA58B9501600D96bD843173b9334983EE6E6",
+      "name": "Gyroscope ECLP wstETH/WETH",
+      "symbol": "ECLP-wstETH-WETH",
+      "decimals": 18
+    },
+    "unwrapType": "balancer_aura_lp"
   },
   "0x62C626af34e625244F64A3e3f19116052D8daa4D": {
     "protocolToken": {
