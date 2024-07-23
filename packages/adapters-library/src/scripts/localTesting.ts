@@ -164,7 +164,10 @@ export async function fetchAddresses(): Promise<string[]> {
     .map(({ address }) => address)
 }
 
-export function localTestingCommands(program: Command, defiProvider: DefiProvider) {
+export function localTestingCommands(
+  program: Command,
+  defiProvider: DefiProvider,
+) {
   const logsFilePath = './transferLogs.json'
   program
     .command('log-file')
