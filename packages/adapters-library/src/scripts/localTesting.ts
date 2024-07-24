@@ -9,7 +9,7 @@ type Limiter = <TaskResult>(
   task: () => Promise<TaskResult>,
 ) => Promise<TaskResult>
 
-export function getLimiter(
+function getLimiter(
   concurrency: number,
   type: 'bottleneck' | 'p-queue',
 ): Limiter {
@@ -30,16 +30,18 @@ export function getLimiter(
   }
 }
 
-export async function buildAddressLogs({
+async function buildAddressLogs({
   addresses,
   limiterType,
+  concurrency,
   printLogs,
 }: {
   addresses: string[]
   limiterType: 'bottleneck' | 'p-queue'
+  concurrency: number
   printLogs: boolean
 }) {
-  const limiter = getLimiter(30, limiterType)
+  const limiter = getLimiter(concurrency, limiterType)
   const defiProvider = new DefiProvider()
 
   const resultPromises = addresses.map((address, i) => {
@@ -129,7 +131,7 @@ export async function buildAddressLogs({
   )
 }
 
-export async function fetchAddresses(): Promise<string[]> {
+async function fetchAddresses(): Promise<string[]> {
   const tokenResponse = await fetch(`${process.env.AUTH_URL!}/oauth/token`, {
     method: 'POST',
     headers: {
@@ -172,139 +174,17 @@ export function localTestingCommands(
   program
     .command('log-file')
     .option('--pqueue', 'Use p-queue instead of bottleneck')
-    .action(async ({ pqueue }: { pqueue: boolean }) => {
-      const addresses = await fetchAddresses()
-
-      const logs = await buildAddressLogs({
-        addresses,
-        limiterType: pqueue ? 'p-queue' : 'bottleneck',
-        printLogs: true,
-      })
-
-      await fs.writeFile(logsFilePath, JSON.stringify(logs, undefined, 2))
-    })
-
-  program
-    .command('test-log-file')
-    .option('--pqueue', 'Use p-queue instead of bottleneck')
-    .option('--mode <mode>', 'options: file, preload, live', 'live')
-    .action(async ({ pqueue, mode }: { pqueue: boolean; mode: string }) => {
-      let prefetchedEventLogs: Record<
-        string,
-        {
-          chainTransferContractAddresses: Partial<Record<Chain, string[]>>
-          errors: Partial<Record<Chain, string>>
-        }
-      >
-      let addresses: string[]
-
-      if (mode === 'file') {
-        prefetchedEventLogs = JSON.parse(
-          await fs.readFile(logsFilePath, 'utf-8'),
-        )
-        addresses = Object.keys(prefetchedEventLogs)
-      } else if (mode === 'preload') {
-        addresses = await fetchAddresses()
-        prefetchedEventLogs = await buildAddressLogs({
-          addresses,
-          limiterType: pqueue ? 'p-queue' : 'bottleneck',
-          printLogs: true,
-        })
-      } else {
-        addresses = await fetchAddresses()
-      }
-
-      console.log('FETCH STABLE BLOCK NUMBERS')
-
-      const blockNumbers = await defiProvider.getStableBlockNumbers()
-
-      console.log('START FETCHING POSITIONS', blockNumbers)
-
-      const limiter = getLimiter(5, pqueue ? 'p-queue' : 'bottleneck')
-
-      const posPromises = addresses.slice(0, 100).map((userAddress, i) => {
-        return limiter(async () => {
-          const startTime = Date.now()
-          try {
-            // if (!logs[Chain.Arbitrum] || logs[Chain.Arbitrum]!.length === 0) {
-            //   const endTime = Date.now()
-
-            //   return {
-            //     userAddress,
-            //     resultLength: 0,
-            //     startTime,
-            //     endTime,
-            //     timeTaken: endTime - startTime,
-            //     error: 'NOTHING',
-            //   }
-            // }
-            console.log(`Address ${i} // ${userAddress}`)
-
-            const result = await defiProvider.getPositions({
-              userAddress,
-              blockNumbers,
-              filterChainIds: Object.values(Chain).filter(
-                (x) => x === Chain.Arbitrum,
-              ),
-              chainTransferContractAddresses:
-                prefetchedEventLogs[userAddress]
-                  ?.chainTransferContractAddresses,
-            })
-            const endTime = Date.now()
-            console.log(
-              `Address ${i} // ${userAddress} FINISHED`,
-              result.length,
-            )
-
-            return {
-              userAddress,
-              resultLength: result.length,
-              startTime,
-              endTime,
-              timeTaken: endTime - startTime,
-            }
-          } catch (e) {
-            console.log(`Address ${i} // ${userAddress} ERROR`, e)
-            const endTime = Date.now()
-
-            return {
-              userAddress,
-              resultLength: -1,
-              startTime,
-              endTime,
-              timeTaken: endTime - startTime,
-              error: e instanceof Error ? e.message : 'X',
-            }
-          }
-        })
-      })
-
-      const results = await Promise.all(posPromises)
-      for (const result of results) {
-        if (result.error) {
-          console.log('Error', result)
-        } else if (result.timeTaken > 20000) {
-          console.log('Slow result', result)
-        } else {
-          console.log('Result', result)
-        }
-      }
-    })
-
-  program
-    .command('test-limiter')
-    .option('--pqueue', 'Use p-queue instead of bottleneck')
     .option(
       '--concurrency <concurrency>',
       'number of concurrent requests',
       (value) => Number(value),
-      50,
+      10,
     )
     .option(
       '--iterations <iterations>',
       'number of iterations',
       (value) => Number(value),
-      500,
+      -1,
     )
     .action(
       async ({
@@ -312,27 +192,158 @@ export function localTestingCommands(
         concurrency,
         iterations,
       }: { pqueue: boolean; concurrency: number; iterations: number }) => {
+        const addresses = await fetchAddresses()
+
+        const logs = await buildAddressLogs({
+          addresses:
+            iterations > 0 ? addresses.slice(0, iterations) : addresses,
+          limiterType: pqueue ? 'p-queue' : 'bottleneck',
+          concurrency,
+          printLogs: true,
+        })
+
+        await fs.writeFile(logsFilePath, JSON.stringify(logs, undefined, 2))
+      },
+    )
+
+  program
+    .command('test-log-file')
+    .option('--pqueue', 'Use p-queue instead of bottleneck')
+    .option('--mode <mode>', 'options: file, preload, live', 'live')
+    .option(
+      '--concurrency <concurrency>',
+      'number of concurrent requests',
+      (value) => Number(value),
+      10,
+    )
+    .option(
+      '--iterations <iterations>',
+      'number of iterations',
+      (value) => Number(value),
+      -1,
+    )
+    .action(
+      async ({
+        pqueue,
+        mode,
+        concurrency,
+        iterations,
+      }: {
+        pqueue: boolean
+        mode: string
+        concurrency: number
+        iterations: number
+      }) => {
+        let prefetchedEventLogs: Record<
+          string,
+          {
+            chainTransferContractAddresses: Partial<Record<Chain, string[]>>
+            errors: Partial<Record<Chain, string>>
+          }
+        >
+        let addresses: string[]
+
+        if (mode === 'file') {
+          prefetchedEventLogs = JSON.parse(
+            await fs.readFile(logsFilePath, 'utf-8'),
+          )
+          addresses = Object.keys(prefetchedEventLogs)
+          addresses =
+            iterations > 0 ? addresses.slice(0, iterations) : addresses
+        } else if (mode === 'preload') {
+          addresses = await fetchAddresses()
+          addresses =
+            iterations > 0 ? addresses.slice(0, iterations) : addresses
+          prefetchedEventLogs = await buildAddressLogs({
+            addresses,
+            limiterType: pqueue ? 'p-queue' : 'bottleneck',
+            concurrency,
+            printLogs: true,
+          })
+        } else {
+          addresses = await fetchAddresses()
+          addresses =
+            iterations > 0 ? addresses.slice(0, iterations) : addresses
+        }
+
+        console.log('ADDRESSES LOADED', addresses.length)
+
+        const blockNumbers = await defiProvider.getStableBlockNumbers()
+
+        console.log('STABLE BLOCKS LOADED', blockNumbers)
+
         const limiter = getLimiter(
-          Number(concurrency),
+          concurrency,
           pqueue ? 'p-queue' : 'bottleneck',
         )
 
-        await Promise.all(
-          Array.from({ length: iterations }, (_, index) => index).map((i) => {
-            return limiter(async () => {
-              const startTime = Date.now()
-              console.log(`Index ${i}`)
-              await new Promise((resolve) =>
-                setTimeout(
-                  resolve,
-                  Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000,
+        const posPromises = addresses.slice(0, 100).map((userAddress, i) => {
+          return limiter(async () => {
+            const startTime = Date.now()
+            try {
+              // if (!logs[Chain.Arbitrum] || logs[Chain.Arbitrum]!.length === 0) {
+              //   const endTime = Date.now()
+
+              //   return {
+              //     userAddress,
+              //     resultLength: 0,
+              //     startTime,
+              //     endTime,
+              //     timeTaken: endTime - startTime,
+              //     error: 'NOTHING',
+              //   }
+              // }
+              console.log(`Address ${i} // ${userAddress}`)
+
+              const result = await defiProvider.getPositions({
+                userAddress,
+                blockNumbers,
+                filterChainIds: Object.values(Chain).filter(
+                  (x) => x !== Chain.Bsc,
                 ),
-              )
+                chainTransferContractAddresses:
+                  prefetchedEventLogs[userAddress]
+                    ?.chainTransferContractAddresses,
+              })
               const endTime = Date.now()
-              console.log(`Index ${i} // FINISHED ${endTime - startTime}`)
-            })
-          }),
-        )
+              console.log(
+                `Address ${i} // ${userAddress} FINISHED`,
+                result.length,
+              )
+
+              return {
+                userAddress,
+                resultLength: result.length,
+                startTime,
+                endTime,
+                timeTaken: endTime - startTime,
+              }
+            } catch (e) {
+              console.log(`Address ${i} // ${userAddress} ERROR`, e)
+              const endTime = Date.now()
+
+              return {
+                userAddress,
+                resultLength: -1,
+                startTime,
+                endTime,
+                timeTaken: endTime - startTime,
+                error: e instanceof Error ? e.message : 'X',
+              }
+            }
+          })
+        })
+
+        const results = await Promise.all(posPromises)
+        for (const result of results) {
+          if (result.error) {
+            console.log('Error', result)
+          } else if (result.timeTaken > 20000) {
+            console.log('Slow result', result)
+          } else {
+            console.log('Result', result)
+          }
+        }
       },
     )
 
@@ -342,6 +353,7 @@ export function localTestingCommands(
     const eventLogs = await buildAddressLogs({
       addresses,
       limiterType: 'bottleneck',
+      concurrency: 10,
       printLogs: false,
     })
 
