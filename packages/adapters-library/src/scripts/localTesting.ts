@@ -234,20 +234,29 @@ export function localTestingCommands(
         concurrency: number
         iterations: number
       }) => {
-        let prefetchedEventLogs: Record<
-          string,
-          {
-            chainTransferContractAddresses: Partial<Record<Chain, string[]>>
-            errors: Partial<Record<Chain, string>>
-          }
-        >
+        let prefetchedEventLogs:
+          | Record<
+              string,
+              {
+                chainTransferContractAddresses: Partial<Record<Chain, string[]>>
+                errors: Partial<Record<Chain, string>>
+              }
+            >
+          | undefined
         let addresses: string[]
 
         if (mode === 'file') {
-          prefetchedEventLogs = JSON.parse(
+          const parsedJson = JSON.parse(
             await fs.readFile(logsFilePath, 'utf-8'),
-          )
-          addresses = Object.keys(prefetchedEventLogs)
+          ) as Record<
+            string,
+            {
+              chainTransferContractAddresses: Partial<Record<Chain, string[]>>
+              errors: Partial<Record<Chain, string>>
+            }
+          >
+          prefetchedEventLogs = parsedJson
+          addresses = Object.keys(parsedJson)
           addresses =
             iterations > 0 ? addresses.slice(0, iterations) : addresses
         } else if (mode === 'preload') {
@@ -277,7 +286,7 @@ export function localTestingCommands(
           pqueue ? 'p-queue' : 'bottleneck',
         )
 
-        const posPromises = addresses.slice(0, 100).map((userAddress, i) => {
+        const posPromises = addresses.map((userAddress, i) => {
           return limiter(async () => {
             const startTime = Date.now()
             try {
@@ -298,11 +307,8 @@ export function localTestingCommands(
               const result = await defiProvider.getPositions({
                 userAddress,
                 blockNumbers,
-                filterChainIds: Object.values(Chain).filter(
-                  (x) => x !== Chain.Bsc,
-                ),
                 chainTransferContractAddresses:
-                  prefetchedEventLogs[userAddress]
+                  prefetchedEventLogs?.[userAddress]
                     ?.chainTransferContractAddresses,
               })
               const endTime = Date.now()
