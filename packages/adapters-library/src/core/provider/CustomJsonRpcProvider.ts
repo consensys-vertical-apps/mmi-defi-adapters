@@ -115,9 +115,9 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
           super.call(transaction),
         )
 
-      return {
+        return {
           result: result,
-        timestamp: Date.now(),
+          timestamp: Date.now(),
         }
       } catch (error) {
         logger.error({
@@ -156,9 +156,9 @@ export class CustomJsonRpcProvider extends JsonRpcProvider {
       try {
         const result = await this.logsRetryHandler(() => super.getLogs(filter))
 
-      return {
+        return {
           result: result,
-        timestamp: Date.now(),
+          timestamp: Date.now(),
         }
       } catch (error) {
         logger.error({

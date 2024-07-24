@@ -232,9 +232,9 @@ export class DefiProvider {
         : Array.from(
             new Set(
               (
-        await this.chainProvider.providers[
-          adapter.chainId
-        ].getAllTransferLogsToAddress(userAddress)
+                await this.chainProvider.providers[
+                  adapter.chainId
+                ].getAllTransferLogsToAddress(userAddress)
               ).map((log) => log.address),
             ),
           )
