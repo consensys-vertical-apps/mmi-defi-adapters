@@ -42,82 +42,83 @@ async function buildAddressLogs({
   printLogs: boolean
 }) {
   const limiter = getLimiter(concurrency, limiterType)
-  const defiProvider = new DefiProvider()
-
-  const resultPromises = addresses.map((address, i) => {
-    return limiter(async () => {
-      if (printLogs) {
-        console.log(`Logs for address ${i} // ${address}`)
-      }
-
-      const allResults = Object.values(Chain).map(async (chainId) => {
-        const provider = defiProvider.chainProvider.providers[chainId]
-        try {
-          const result = await provider.getAllTransferLogsToAddress(address)
-          return {
-            chainId,
-            result,
-          }
-        } catch (e) {
-          if (
-            e instanceof Error &&
-            e.message.includes('query returned more than 10000 results')
-          ) {
-            return { chainId, error: '10k' }
-          }
-
-          if (
-            e instanceof Error &&
-            e.message.includes(
-              'This node provider does not support unlimited getLogs',
-            )
-          ) {
-            return { chainId, error: 'no-support' }
-          }
-
-          return { chainId, error: e instanceof Error ? e.message : '?' }
-        }
-      })
-
-      const settledResults = await Promise.all(allResults)
-      if (printLogs) {
-        console.log(`Logs for address ${i} // ${address} // FINISHED`)
-      }
-
-      return {
-        userAddress: address,
-        logs: settledResults.reduce(
-          (acc, current) => {
-            if (current.result) {
-              acc[current.chainId] = Array.from(
-                new Set(current.result.map((x) => x.address)),
-              )
-            }
-
-            return acc
-          },
-          {} as Partial<Record<Chain, string[]>>,
-        ),
-        errors: settledResults.reduce(
-          (acc, x) => {
-            if (x.error) {
-              acc[x.chainId] = x.error
-            }
-
-            return acc
-          },
-          {} as Partial<Record<Chain, string>>,
-        ),
-      }
-    })
+  const defiProvider = new DefiProvider({
+    rpcGetLogsRetries: 1,
   })
 
-  return (await Promise.all(resultPromises)).reduce(
-    (acc, current) => {
-      acc[current.userAddress] = {
-        chainTransferContractAddresses: current.logs,
-        errors: current.errors,
-      }
+  const results = await Promise.all(
+    addresses.map((address, i) => {
+      return limiter(async () => {
+        if (printLogs) {
+          console.log(`Logs for address ${i} // ${address}`)
+        }
+
+        const chainResults = await Promise.all(
+          Object.values(Chain).map(async (chainId) => {
+            const provider = defiProvider.chainProvider.providers[chainId]
+            try {
+              const result = await provider.getAllTransferLogsToAddress(address)
+              return {
+                chainId,
+                result,
+              }
+            } catch (e) {
+              if (
+                e instanceof Error &&
+                e.message.includes('query returned more than 10000 results')
+              ) {
+                return { chainId, error: '10k' }
+              }
+
+              if (
+                e instanceof Error &&
+                e.message.includes(
+                  'This node provider does not support unlimited getLogs',
+                )
+              ) {
+                return { chainId, error: 'no-support' }
+              }
+
+              return { chainId, error: e instanceof Error ? e.message : '?' }
+            }
+          }),
+        )
+
+        if (printLogs) {
+          console.log(`Logs for address ${i} // ${address} // FINISHED`)
+        }
+
+        return {
+          address,
+          chainResults,
+        }
+      })
+    }),
+  )
+
+  return (await Promise.all(results)).reduce(
+    (acc, { address, chainResults }) => {
+      acc[address] = chainResults.reduce(
+        (acc, chainResult) => {
+          if (chainResult.result) {
+            acc.chainTransferContractAddresses[chainResult.chainId] =
+              Array.from(
+                new Set(chainResult.result.map((logEntry) => logEntry.address)),
+              )
+          } else {
+            acc.errors[chainResult.chainId] = chainResult.error
+          }
+
+          return acc
+        },
+        {
+          chainTransferContractAddresses: {},
+          errors: {},
+        } as {
+          chainTransferContractAddresses: Partial<Record<Chain, string[]>>
+          errors: Partial<Record<Chain, string>>
+        },
+      )
 
       return acc
     },
@@ -172,7 +173,7 @@ export function localTestingCommands(
 ) {
   const logsFilePath = './transferLogs.json'
   program
-    .command('log-file')
+    .command('build-log-file')
     .option('--pqueue', 'Use p-queue instead of bottleneck')
     .option(
       '--concurrency <concurrency>',
@@ -207,7 +208,7 @@ export function localTestingCommands(
     )
 
   program
-    .command('test-log-file')
+    .command('bulk-positions')
     .option('--pqueue', 'Use p-queue instead of bottleneck')
     .option('--mode <mode>', 'options: file, preload, live', 'live')
     .option(
@@ -290,18 +291,6 @@ export function localTestingCommands(
           return limiter(async () => {
             const startTime = Date.now()
             try {
-              // if (!logs[Chain.Arbitrum] || logs[Chain.Arbitrum]!.length === 0) {
-              //   const endTime = Date.now()
-
-              //   return {
-              //     userAddress,
-              //     resultLength: 0,
-              //     startTime,
-              //     endTime,
-              //     timeTaken: endTime - startTime,
-              //     error: 'NOTHING',
-              //   }
-              // }
               console.log(`Address ${i} // ${userAddress}`)
 
               const result = await defiProvider.getPositions({
@@ -344,7 +333,7 @@ export function localTestingCommands(
         for (const result of results) {
           if (result.error) {
             console.log('Error', result)
-          } else if (result.timeTaken > 20000) {
+          } else if (result.timeTaken > 15000) {
             console.log('Slow result', result)
           } else {
             console.log('Result', result)
