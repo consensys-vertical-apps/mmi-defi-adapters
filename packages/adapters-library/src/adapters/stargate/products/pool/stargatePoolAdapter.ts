@@ -237,7 +237,6 @@ export class StargatePoolAdapter implements IProtocolAdapter {
 
   @CacheToFile({ fileKey: 'protocol-token' })
   async getProtocolTokens(): Promise<ProtocolToken<AdditionalMetadata>[]> {
-    console.log('i should not be called for snapshot')
     const contractAddresses: Partial<Record<Chain, string>> = {
       [Chain.Ethereum]: getAddress(
         '0x06D538690AF257Da524f25D0CD52fD85b1c2173E',

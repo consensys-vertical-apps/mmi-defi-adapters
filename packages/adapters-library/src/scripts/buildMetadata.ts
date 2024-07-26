@@ -82,8 +82,6 @@ export function buildMetadata(
               | undefined
 
             if (adapter.adapterSettings.version === 2) {
-              console.log('version 2')
-
               metadataDetails = (await adapter
                 .getProtocolTokens(true)
                 .catch((e) => {
