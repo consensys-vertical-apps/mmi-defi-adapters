@@ -97,18 +97,15 @@ export const startRpcMock = (
         const key = createKey(url, slimRequestBody)
 
         const storedResponse = interceptedRequests?.[key]
-        if (!storedResponse) {
-          console.warn('A request is not being mocked')
-          return await fetch(bypass(request))
-        }
-
-        const responseBody = new TextEncoder().encode(
-          JSON.stringify({
-            result: storedResponse.response,
-            id: requestBody.id,
-            jsonrpc: '2.0',
-          }),
-        ).buffer
+        const responseBody = storedResponse
+          ? new TextEncoder().encode(
+              JSON.stringify({
+                result: storedResponse.response,
+                id: requestBody.id,
+                jsonrpc: '2.0',
+              }),
+            ).buffer
+          : await (await fetch(bypass(request))).arrayBuffer()
 
         return createResponse(responseBody)
       }),
