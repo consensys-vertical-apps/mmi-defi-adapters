@@ -7,6 +7,7 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { getMetadataInvalidAddresses } from '../scripts/addressValidation'
 import { protocolFilter } from '../scripts/commandFilters'
+import { startRpcMock } from '../scripts/rpcInterceptor'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
@@ -17,6 +18,7 @@ import { testCases as chimpExchangeTestCases } from './chimp-exchange/tests/test
 import { testCases as compoundV2TestCases } from './compound-v2/tests/testCases'
 import { testCases as convexTestCases } from './convex/tests/testCases'
 import { testCases as curveTestCases } from './curve/tests/testCases'
+import { testCases as deriTestCases } from './deri/tests/testCases'
 import { testCases as ethenaTestCases } from './ethena/tests/testCases'
 import { testCases as fluxTestCases } from './flux/tests/testCases'
 import { testCases as gmxTestCases } from './gmx/tests/testCases'
@@ -34,6 +36,7 @@ import { testCases as pendleTestCases } from './pendle/tests/testCases'
 import { testCases as pricesV2TestCases } from './prices-v2/tests/testCases'
 import { Protocol } from './protocols'
 import { testCases as quickswapV2TestCases } from './quickswap-v2/tests/testCases'
+import { testCases as renzoTestCases } from './renzo/tests/testCases'
 import { testCases as rocketPoolTestCases } from './rocket-pool/tests/testCases'
 import { testCases as sonneTestCases } from './sonne/tests/testCases'
 import { testCases as sparkV1TestCases } from './spark-v1/tests/testCases'
@@ -49,10 +52,6 @@ import { testCases as syncSwapTestCases } from './syncswap/tests/testCases'
 import { testCases as uniswapV2TestCases } from './uniswap-v2/tests/testCases'
 import { testCases as uniswapV3TestCases } from './uniswap-v3/tests/testCases'
 import { testCases as xfaiTestCases } from './xfai/tests/testCases'
-
-import { testCases as deriTestCases } from './deri/tests/testCases'
-
-import { testCases as renzoTestCases } from './renzo/tests/testCases'
 
 const TEST_TIMEOUT = 300000
 
@@ -173,9 +172,16 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'positions for test %s match',
           async (_, testCase) => {
-            const { snapshot, blockNumber } = await fetchSnapshot(
+            const { snapshot, blockNumber, rpc } = await fetchSnapshot(
               testCase,
               protocolId,
+            )
+
+            const rpcMock = startRpcMock(
+              rpc,
+              Object.values(defiProvider.chainProvider.providers).map(
+                (x) => x._getConnection().url,
+              ),
             )
 
             const response = await defiProvider.getPositions({
@@ -186,6 +192,8 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             })
 
             expect(response).toEqual(snapshot)
+
+            rpcMock.stop()
           },
           TEST_TIMEOUT,
         )
@@ -477,5 +485,7 @@ async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
     // biome-ignore lint/suspicious/noExplicitAny: Type could be narrower
     snapshot: any
     blockNumber?: number
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    rpc: any
   }
 }
