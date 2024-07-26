@@ -13,8 +13,8 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "name": "USD Coin-LP",
+          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "symbol": "S*USDC",
           "decimals": 6,
           "type": "protocol",

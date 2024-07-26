@@ -14,15 +14,15 @@
       {
         "transactionHash": "0x78969b0b8cf5bf73518d22c1ab23e16ffa06034aacb2c8e3ca291607592808dc",
         "protocolToken": {
-          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "name": "USD Coin-LP",
+          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "symbol": "S*USDC",
           "decimals": 6
         },
         "tokens": [
           {
-            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
             "name": "USD Coin-LP",
+            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
             "symbol": "S*USDC",
             "decimals": 6,
             "balanceRaw": "316547459n",
@@ -49,15 +49,15 @@
       {
         "transactionHash": "0x29d940b75ad88a018c92bdb3c4c37ffea76b2bf1ee15d92f80769b82fde90595",
         "protocolToken": {
-          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "name": "USD Coin-LP",
+          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "symbol": "S*USDC",
           "decimals": 6
         },
         "tokens": [
           {
-            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
             "name": "USD Coin-LP",
+            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
             "symbol": "S*USDC",
             "decimals": 6,
             "balanceRaw": "104921123n",
@@ -84,15 +84,15 @@
       {
         "transactionHash": "0x27eaf5751cd48efa8388f4fe73e3c4149b874c1f1d404749cfccdb1bf0cc0560",
         "protocolToken": {
-          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "name": "USD Coin-LP",
+          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "symbol": "S*USDC",
           "decimals": 6
         },
         "tokens": [
           {
-            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
             "name": "USD Coin-LP",
+            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
             "symbol": "S*USDC",
             "decimals": 6,
             "balanceRaw": "1998484715n",

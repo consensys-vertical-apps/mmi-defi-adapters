@@ -14,15 +14,15 @@
       {
         "transactionHash": "0x4d1b8d3c31ae59d1e422d18f60865fe988f212aff2ec6de00da2d271c18df59c",
         "protocolToken": {
-          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "name": "USD Coin-LP",
+          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "symbol": "S*USDC",
           "decimals": 6
         },
         "tokens": [
           {
-            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
             "name": "USD Coin-LP",
+            "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
             "symbol": "S*USDC",
             "decimals": 6,
             "balanceRaw": "649043122n",

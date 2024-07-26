@@ -69,19 +69,7 @@ export function buildMetadata(
             adaptersController.fetchChainProtocolAdapters(chainId, protocolId)
 
           for (const [_, adapter] of chainProtocolAdapters) {
-            if (!isIMetadataBuilder(adapter)) {
-              continue
-            }
-
-            const metadataDetails = (await adapter
-              .buildMetadata(true)
-              .catch((e) => {
-                if (!(e instanceof NotImplementedError)) {
-                  throw e
-                }
-
-                return undefined
-              })) as
+            let metadataDetails:
               | {
                   metadata: Json
                   fileDetails: {
@@ -92,6 +80,52 @@ export function buildMetadata(
                   }
                 }
               | undefined
+
+            if (adapter.adapterSettings.version === 2) {
+              console.log('version 2')
+
+              metadataDetails = (await adapter
+                .getProtocolTokens(true)
+                .catch((e) => {
+                  if (!(e instanceof NotImplementedError)) {
+                    throw e
+                  }
+
+                  return undefined
+                })) as
+                | {
+                    metadata: Json
+                    fileDetails: {
+                      protocolId: Protocol
+                      productId: string
+                      chainId: Chain
+                      fileKey: string
+                    }
+                  }
+                | undefined
+            }
+
+            if (isIMetadataBuilder(adapter)) {
+              metadataDetails = (await adapter
+                .buildMetadata(true)
+                .catch((e) => {
+                  if (!(e instanceof NotImplementedError)) {
+                    throw e
+                  }
+
+                  return undefined
+                })) as
+                | {
+                    metadata: Json
+                    fileDetails: {
+                      protocolId: Protocol
+                      productId: string
+                      chainId: Chain
+                      fileKey: string
+                    }
+                  }
+                | undefined
+            }
 
             if (!metadataDetails) {
               continue

@@ -1,6 +1,6 @@
 {
   "blockNumber": 18163124,
-  "aggregatedValues": ["USD31,574.59", "USD4,847.20"],
+  "aggregatedValues": ["USD31,574.58", "USD4,847.20"],
   "snapshot": [
     {
       "protocolId": "stargate",
@@ -14,8 +14,8 @@
       "success": true,
       "tokens": [
         {
-          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "name": "USD Coin-LP",
+          "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
           "symbol": "S*USDC",
           "decimals": 6,
           "balanceRaw": "31468548033n",
@@ -26,9 +26,9 @@
               "name": "USD Coin",
               "symbol": "USDC",
               "decimals": 6,
-              "balanceRaw": "31492408006n",
               "type": "underlying",
-              "balance": 31492.408006,
+              "balanceRaw": "31492401192n",
+              "balance": 31492.401192,
               "price": 1.0026095273277462,
               "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
             }

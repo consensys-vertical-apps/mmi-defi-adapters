@@ -174,6 +174,10 @@ import RenzoEzEthBscEzEth from '../../adapters/renzo/products/ez-eth/metadata/bs
 import RenzoEzEthEthereumEzEth from '../../adapters/renzo/products/ez-eth/metadata/ethereum.ez-eth.json'
 import RenzoEzEthLineaEzEth from '../../adapters/renzo/products/ez-eth/metadata/linea.ez-eth.json'
 
+import StargatePoolEthereumProtocolToken from '../../adapters/stargate/products/pool/metadata/ethereum.protocol-token.json'
+
+import StargatePoolArbitrumProtocolToken from '../../adapters/stargate/products/pool/metadata/arbitrum.protocol-token.json'
+
 export const MetadataFiles = new Map<string, Json>([
   [
     metadataKey({
@@ -1331,10 +1335,28 @@ export const MetadataFiles = new Map<string, Json>([
     metadataKey({
       protocolId: Protocol.Stargate,
       productId: 'pool',
+      chainId: Chain.Arbitrum,
+      fileKey: 'protocol-token',
+    }),
+    StargatePoolArbitrumProtocolToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool',
       chainId: Chain.Ethereum,
       fileKey: 'lp-token',
     }),
     StargatePoolEthereumLpToken,
+  ],
+  [
+    metadataKey({
+      protocolId: Protocol.Stargate,
+      productId: 'pool',
+      chainId: Chain.Ethereum,
+      fileKey: 'protocol-token',
+    }),
+    StargatePoolEthereumProtocolToken,
   ],
   [
     metadataKey({
