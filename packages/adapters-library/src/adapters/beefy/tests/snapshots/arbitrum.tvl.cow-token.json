@@ -90,39 +90,7 @@
       "chainId": 42161,
       "productId": "moo-token",
       "success": true,
-      "tokens": [
-        {
-          "address": "0xb39a6c02BB32199c5C2e937a9c96Fe8F79E18763",
-          "name": "Moo Aura Gyro aUSDCn/aUSDTn",
-          "symbol": "mooAuraGyroaUSDCn/aUSDTn",
-          "decimals": 18,
-          "type": "protocol",
-          "totalSupplyRaw": "67818011953368510769551n",
-          "tokens": [
-            {
-              "address": "0x7CFaDFD5645B50bE87d546f42699d863648251ad",
-              "name": "Static Aave Arbitrum USDCn",
-              "symbol": "stataArbUSDCn",
-              "decimals": 6,
-              "type": "underlying",
-              "totalSupplyRaw": "611854103n",
-              "totalSupply": 611.854103,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x7CFaDFD5645B50bE87d546f42699d863648251ad/logo.png"
-            },
-            {
-              "address": "0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140",
-              "name": "Static Aave Arbitrum USDT",
-              "symbol": "stataArbUSDT",
-              "decimals": 6,
-              "type": "underlying",
-              "totalSupplyRaw": "83185505643n",
-              "totalSupply": 83185.505643,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xb165a74407fE1e519d6bCbDeC1Ed3202B35a4140/logo.png"
-            }
-          ],
-          "totalSupply": 67818.0119533685
-        }
-      ]
+      "tokens": []
     },
     {
       "protocolId": "beefy",

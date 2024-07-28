@@ -35,107 +35,7 @@
       "chainId": 42161,
       "productId": "rcow-token",
       "success": true,
-      "tokens": [
-        {
-          "address": "0x7Ff5dfCA85C45f817826AD3c45Ab31757E0d37D7",
-          "name": "Reward Cow Uniswap Arb ZRO-WETH",
-          "symbol": "rcowUniswapArbZRO-WETH",
-          "decimals": 18,
-          "type": "protocol",
-          "totalSupplyRaw": "311446328280707646116n",
-          "tokens": [
-            {
-              "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
-              "name": "LayerZero",
-              "symbol": "ZRO",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "154843630725379648504894n",
-              "totalSupply": 154843.63072537965,
-              "price": 4.440770841341073,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6985884C4392D348587B19cb9eAAf157F13271cd/logo.png"
-            },
-            {
-              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "190274078158734706520n",
-              "totalSupply": 190.2740781587347,
-              "price": 3225.87948,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
-            }
-          ],
-          "totalSupply": 311.44632828070763
-        },
-        {
-          "address": "0xc82764746855370F6369A83C91E44c3D373e4ce1",
-          "name": "Reward Cow Uniswap Arb ZRO-USDT",
-          "symbol": "rcowUniswapArbZRO-USDT",
-          "decimals": 18,
-          "type": "protocol",
-          "totalSupplyRaw": "64763049831n",
-          "tokens": [
-            {
-              "address": "0x6985884C4392D348587B19cb9eAAf157F13271cd",
-              "name": "LayerZero",
-              "symbol": "ZRO",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "8246571129818866394090n",
-              "totalSupply": 8246.571129818867,
-              "price": 4.440770841341073,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x6985884C4392D348587B19cb9eAAf157F13271cd/logo.png"
-            },
-            {
-              "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
-              "name": "Tether USD",
-              "symbol": "USDT",
-              "decimals": 6,
-              "type": "underlying",
-              "totalSupplyRaw": "39090981295n",
-              "totalSupply": 39090.981295,
-              "price": 1.00019434326434,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
-            }
-          ],
-          "totalSupply": 6.4763049831e-8
-        },
-        {
-          "address": "0x5459Af5E99D5EaC068D2A10CB13c1C7E7c553ab6",
-          "name": "Reward Cow Uniswap Arb cbETH-WETH",
-          "symbol": "rcowUniswapArbcbETH-WETH",
-          "decimals": 18,
-          "type": "protocol",
-          "totalSupplyRaw": "39423288891016189378n",
-          "tokens": [
-            {
-              "address": "0x1DEBd73E752bEaF79865Fd6446b0c970EaE7732f",
-              "name": "Coinbase Wrapped Staked ETH",
-              "symbol": "cbETH",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "18335324770321772142n",
-              "totalSupply": 18.335324770321773,
-              "price": 3473.3645149600275,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x1DEBd73E752bEaF79865Fd6446b0c970EaE7732f/logo.png"
-            },
-            {
-              "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-              "name": "Wrapped Ether",
-              "symbol": "WETH",
-              "decimals": 18,
-              "type": "underlying",
-              "totalSupplyRaw": "19745222535930657534n",
-              "totalSupply": 19.745222535930658,
-              "price": 3225.87948,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/logo.png"
-            }
-          ],
-          "totalSupply": 39.42328889101619
-        }
-      ]
+      "tokens": []
     },
     {
       "protocolId": "beefy",
@@ -147,7 +47,74 @@
       "chainId": 42161,
       "productId": "rmoo-token",
       "success": true,
-      "tokens": []
+      "tokens": [
+        {
+          "address": "0x9cbB28eE98699aB491afE05653804B7aa426880b",
+          "name": "Reward Moo Beefy Uniswap USDC-USDT",
+          "symbol": "rmooBeefyUniswapUSDC-USDT",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "338496418607n",
+          "tokens": [
+            {
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "179676602372n",
+              "totalSupply": 179676.602372,
+              "price": 1.000200024837771,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+            },
+            {
+              "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "159085216767n",
+              "totalSupply": 159085.216767,
+              "price": 1.00019434326434,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
+            }
+          ],
+          "totalSupply": 3.38496418607e-7
+        },
+        {
+          "address": "0x6c69b6146536467525894527a1c47141A5D9A128",
+          "name": "Reward Moo Beefy Uniswap LDO-USDC",
+          "symbol": "rmooBeefyUniswapLDO-USDC",
+          "decimals": 18,
+          "type": "protocol",
+          "totalSupplyRaw": "74581040071n",
+          "tokens": [
+            {
+              "address": "0x13Ad51ed4F1B7e9Dc168d8a00cB3f4dDD85EfA60",
+              "name": "Lido DAO Token",
+              "symbol": "LDO",
+              "decimals": 18,
+              "type": "underlying",
+              "totalSupplyRaw": "21062381071783250045862n",
+              "totalSupply": 21062.38107178325,
+              "price": 1.5888639255027317,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x13Ad51ed4F1B7e9Dc168d8a00cB3f4dDD85EfA60/logo.png"
+            },
+            {
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "type": "underlying",
+              "totalSupplyRaw": "31192545608n",
+              "totalSupply": 31192.545608,
+              "price": 1.000200024837771,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+            }
+          ],
+          "totalSupply": 7.4581040071e-8
+        }
+      ]
     }
   ]
 }
