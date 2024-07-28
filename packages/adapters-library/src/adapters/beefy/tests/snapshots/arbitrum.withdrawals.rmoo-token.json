@@ -1,0 +1,20 @@
+{
+  "aggregatedValues": [],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 42161,
+    "productId": "rmoo-token",
+    "success": false,
+    "error": {
+      "message": "Protocol token pool not found",
+      "details": {
+        "name": "Error"
+      }
+    }
+  }
+}

@@ -44,39 +44,13 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "rcow-token",
-      "success": true,
-      "tokens": [
-        {
-          "address": "0xde05F28Cb643240cF30c308F968566487AB43183",
-          "name": "Reward Cow Uniswap Arb wstETH-USDC",
-          "symbol": "rcowUniswapArbwstETH-USDC",
-          "decimals": 18,
-          "baseRate": 1,
-          "type": "protocol",
-          "tokens": [
-            {
-              "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
-              "name": "Wrapped liquid staked Ether 2.0",
-              "symbol": "wstETH",
-              "decimals": 18,
-              "underlyingRateRaw": "130139007583189140227609162n",
-              "type": "underlying",
-              "underlyingRate": 130139007.58318914,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
-            },
-            {
-              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
-              "name": "USD Coin",
-              "symbol": "USDC",
-              "decimals": 6,
-              "underlyingRateRaw": "500041756517084998n",
-              "type": "underlying",
-              "underlyingRate": 500041756517.085,
-              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
-            }
-          ]
+      "success": false,
+      "error": {
+        "message": "Protocol token pool not found",
+        "details": {
+          "name": "Error"
         }
-      ]
+      }
     },
     {
       "protocolId": "beefy",
@@ -87,13 +61,39 @@
       "positionType": "supply",
       "chainId": 42161,
       "productId": "rmoo-token",
-      "success": false,
-      "error": {
-        "message": "Protocol token pool not found",
-        "details": {
-          "name": "Error"
+      "success": true,
+      "tokens": [
+        {
+          "address": "0x9cbB28eE98699aB491afE05653804B7aa426880b",
+          "name": "Reward Moo Beefy Uniswap USDC-USDT",
+          "symbol": "rmooBeefyUniswapUSDC-USDT",
+          "decimals": 18,
+          "baseRate": 1,
+          "type": "protocol",
+          "tokens": [
+            {
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "name": "USD Coin",
+              "symbol": "USDC",
+              "decimals": 6,
+              "underlyingRateRaw": "530807986425072764n",
+              "type": "underlying",
+              "underlyingRate": 530807986425.07275,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+            },
+            {
+              "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+              "name": "Tether USD",
+              "symbol": "USDT",
+              "decimals": 6,
+              "underlyingRateRaw": "469976070713385190n",
+              "type": "underlying",
+              "underlyingRate": 469976070713.3852,
+              "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo.png"
+            }
+          ]
         }
-      }
+      ]
     }
   ]
 }
