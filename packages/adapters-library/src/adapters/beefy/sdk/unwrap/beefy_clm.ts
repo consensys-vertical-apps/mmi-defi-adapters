@@ -1,18 +1,11 @@
 import { getAddress } from 'ethers'
-import {
-  BeefyVaultConcLiq__factory,
-  BeefyVaultV7__factory,
-  SolidlyPool__factory,
-} from '../../contracts'
+import { BeefyVaultConcLiq__factory } from '../../contracts'
 import { VaultBalanceBreakdownFetcher } from '../types'
 
 export const fetchBeefyClmBalanceBreakdown: VaultBalanceBreakdownFetcher =
-  async (
-    { protocolTokenAddress, underlyingLPTokenAddress, blockSpec },
-    provider,
-  ) => {
+  async ({ underlyingLPTokenAddress, blockSpec }, provider) => {
     const clmContract = BeefyVaultConcLiq__factory.connect(
-      protocolTokenAddress,
+      underlyingLPTokenAddress,
       provider,
     )
 

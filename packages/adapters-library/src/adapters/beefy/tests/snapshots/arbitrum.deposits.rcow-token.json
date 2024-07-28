@@ -1,0 +1,62 @@
+{
+  "aggregatedValues": ["USD176.18"],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 42161,
+    "productId": "rcow-token",
+    "success": true,
+    "movements": [
+      {
+        "transactionHash": "0x00adc1190ee7834bd1bff4818c9aa606788fe8fd7958a1b72afaf82151983f5a",
+        "protocolToken": {
+          "address": "0xde05F28Cb643240cF30c308F968566487AB43183",
+          "name": "Reward Cow Uniswap Arb wstETH-USDC",
+          "symbol": "rcowUniswapArbwstETH-USDC",
+          "decimals": 18
+        },
+        "tokens": [
+          {
+            "address": "0xde05F28Cb643240cF30c308F968566487AB43183",
+            "name": "Reward Cow Uniswap Arb wstETH-USDC",
+            "symbol": "rcowUniswapArbwstETH-USDC",
+            "decimals": 18,
+            "balanceRaw": "181973485n",
+            "type": "underlying",
+            "blockNumber": 229797761,
+            "tokens": [
+              {
+                "address": "0x5979D7b546E38E414F7E9822514be443A4800529",
+                "name": "Wrapped liquid staked Ether 2.0",
+                "symbol": "wstETH",
+                "decimals": 18,
+                "type": "underlying",
+                "balanceRaw": "28886936712948614n",
+                "balance": 0.028886936712948615,
+                "price": 3498.0494976158325,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0x5979D7b546E38E414F7E9822514be443A4800529/logo.png"
+              },
+              {
+                "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "decimals": 6,
+                "type": "underlying",
+                "balanceRaw": "75138231n",
+                "balance": 75.138231,
+                "price": 0.9999483770090385,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png"
+              }
+            ],
+            "balance": 1.81973485e-10
+          }
+        ],
+        "blockNumber": 229797761
+      }
+    ]
+  }
+}

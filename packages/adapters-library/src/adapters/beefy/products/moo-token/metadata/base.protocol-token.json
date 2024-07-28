@@ -1571,6 +1571,35 @@
     },
     "unwrapType": "solidly"
   },
+  "0x24B455e93cC41cBAC6Cde53F942Fb13db8691CBe": {
+    "protocolToken": {
+      "address": "0x24B455e93cC41cBAC6Cde53F942Fb13db8691CBe",
+      "name": "Moo Aero L2VE-AERO",
+      "symbol": "mooAeroL2VE-AERO",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+        "name": "Aerodrome",
+        "symbol": "AERO",
+        "decimals": 18
+      },
+      {
+        "address": "0xA19328fb05ce6FD204D16c2a2A98F7CF434c12F4",
+        "name": "L2VE",
+        "symbol": "L2VE",
+        "decimals": 18
+      }
+    ],
+    "underlyingLPToken": {
+      "address": "0xFC13b664e814098F08F10bA0fb23b1Bb916F344e",
+      "name": "Volatile AMM - AERO/L2VE",
+      "symbol": "vAMM-AERO/L2VE",
+      "decimals": 18
+    },
+    "unwrapType": "solidly"
+  },
   "0xE0927cfb0F281Ae086fcd93DAd49F6e9dD318Aef": {
     "protocolToken": {
       "address": "0xE0927cfb0F281Ae086fcd93DAd49F6e9dD318Aef",

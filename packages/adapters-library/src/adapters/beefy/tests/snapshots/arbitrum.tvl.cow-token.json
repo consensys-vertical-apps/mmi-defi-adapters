@@ -123,6 +123,30 @@
           "totalSupply": 67818.0119533685
         }
       ]
+    },
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "rcow-token",
+      "success": true,
+      "tokens": []
+    },
+    {
+      "protocolId": "beefy",
+      "name": "Beefy",
+      "description": "Beefy defi adapter",
+      "siteUrl": "https://beefy.com",
+      "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+      "positionType": "supply",
+      "chainId": 42161,
+      "productId": "rmoo-token",
+      "success": true,
+      "tokens": []
     }
   ],
   "rpcResponses": {

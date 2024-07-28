@@ -1,4 +1,136 @@
 {
+  "0x603492fF8943f5aC69Aa69cF09Fc96FDA2606Ee7": {
+    "protocolToken": {
+      "address": "0x603492fF8943f5aC69Aa69cF09Fc96FDA2606Ee7",
+      "name": "Cow Sushi Base WETH-USDC",
+      "symbol": "cowSushiBaseWETH-USDC",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      }
+    ]
+  },
+  "0x74aE2A0D5f3CEA0D39e29973B5F68052A9bdEac0": {
+    "protocolToken": {
+      "address": "0x74aE2A0D5f3CEA0D39e29973B5F68052A9bdEac0",
+      "name": "Cow Uniswap Base USDC-USDT",
+      "symbol": "cowUniswapBaseUSDC-USDT",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "decimals": 6
+      },
+      {
+        "address": "0xfde4C96c8593536E31F229EA8f37b2ADa2699bb2",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimals": 6
+      }
+    ]
+  },
+  "0x3d6838A880c731baaDFf4e60b3E042186FE3099A": {
+    "protocolToken": {
+      "address": "0x3d6838A880c731baaDFf4e60b3E042186FE3099A",
+      "name": "Cow Uniswap Base weETH-WETH",
+      "symbol": "cowUniswapBaseweETH-WETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
+        "name": "Wrapped eETH",
+        "symbol": "weETH",
+        "decimals": 18
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xed9E8269765D0a1b1494c8Ad3dd74BE8D496118A": {
+    "protocolToken": {
+      "address": "0xed9E8269765D0a1b1494c8Ad3dd74BE8D496118A",
+      "name": "Cow Uniswap Base WETH-doginme",
+      "symbol": "cowUniswapBaseWETH-doginme",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0x6921B130D297cc43754afba22e5EAc0FBf8Db75b",
+        "name": "doginme",
+        "symbol": "doginme",
+        "decimals": 18
+      }
+    ]
+  },
+  "0x0babFb48E1B12aF0Cf77d7520B110b4AB711fC1f": {
+    "protocolToken": {
+      "address": "0x0babFb48E1B12aF0Cf77d7520B110b4AB711fC1f",
+      "name": "Cow Uniswap Base WETH-mfer",
+      "symbol": "cowUniswapBaseWETH-mfer",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0xE3086852A4B125803C815a158249ae468A3254Ca",
+        "name": "mfercoin",
+        "symbol": "$mfer",
+        "decimals": 18
+      }
+    ]
+  },
+  "0xB7cEb91149b9E2963703eb767eBf874811B2d86b": {
+    "protocolToken": {
+      "address": "0xB7cEb91149b9E2963703eb767eBf874811B2d86b",
+      "name": "Cow Uniswap Base WETH-wstETH",
+      "symbol": "cowUniswapBaseWETH-wstETH",
+      "decimals": 18
+    },
+    "underlyingTokens": [
+      {
+        "address": "0x4200000000000000000000000000000000000006",
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "decimals": 18
+      },
+      {
+        "address": "0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH",
+        "decimals": 18
+      }
+    ]
+  },
   "0x368E49dF9df85f3538eA5A32E4369586315a4565": {
     "protocolToken": {
       "address": "0x368E49dF9df85f3538eA5A32E4369586315a4565",
@@ -19,16 +151,7 @@
         "symbol": "CHOMP",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x4C2c6C0886F24A66BF730CEB3894D15A27a818c5",
-        "name": "Reward Cow Uniswap Base WETH-CHOMP",
-        "symbol": "rcowUniswapBaseWETH-CHOMP",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xAC6d2806f356730C5C973891f1919Df966ec26c4": {
     "protocolToken": {
@@ -50,16 +173,7 @@
         "symbol": "MIGGLES",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x6EDB41DAc71FEd6Eb6b4CF785f95dB27d82A6e5E",
-        "name": "Reward Cow Uniswap Base WETH-MIGGLES",
-        "symbol": "rcowUniswapBaseWETH-MIGGLES",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x6E52B6Cec2b47Be931b305d37A4d5aadC41b37A3": {
     "protocolToken": {
@@ -81,16 +195,7 @@
         "name": "Ethereum",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x869FdeC3A02C8Ecdd14Dc71f0d9E9855053F79f6",
-        "name": "Reward Cow Uniswap Base Mog-WETH",
-        "symbol": "rcowUniswapBaseMog-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x7f45AE7f7BBCebde75121bbD14D50511E064f137": {
     "protocolToken": {
@@ -112,16 +217,7 @@
         "name": "Ethereum",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0xC8F14d8806014B5AB166e3b82654C09b6A52DE72",
-        "name": "Reward Cow Aero Mog-WETH",
-        "symbol": "rcowAeroMog-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x70019FB5E8EA37908260c22B5b69589B3e84E8b9": {
     "protocolToken": {
@@ -143,16 +239,7 @@
         "symbol": "doginme",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0xE0E20e09fE74Db4413E4eBaC8296d352576c56b5",
-        "name": "Reward Cow Aero doginme-WETH",
-        "symbol": "rcowAerodoginme-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xC6843779b3b1840a91b766a03DFa58C711D6BdB8": {
     "protocolToken": {
@@ -174,16 +261,7 @@
         "symbol": "AERO",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x13CC322903bc9249aF4b4ceDbE22847a93245b49",
-        "name": "Reward Cow Aero AERO-WETH",
-        "symbol": "rcowAeroAERO-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x6Ea7Be0d964701b8Bf0b7703F9a63122F3bEBa7C": {
     "protocolToken": {
@@ -205,16 +283,7 @@
         "symbol": "eUSD",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x491cfc4759D493E862b532dDf9E12F554cFdfAfD",
-        "name": "Reward Cow Aero eUSD-USDC",
-        "symbol": "rcowAeroeUSD-USDC",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x9b676F20baCC8E69AE806b56c5ED004Bd86FD529": {
     "protocolToken": {
@@ -236,16 +305,7 @@
         "symbol": "USD+",
         "decimals": 6
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x4aaEF6242dFE9fa01254D97c4b48cCaB780BAD60",
-        "name": "Reward Cow Aero USD+-WETH",
-        "symbol": "rcowAeroUSD+-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x787427Ae4f24be661d107c4c61C629ccBaF3Cb6F": {
     "protocolToken": {
@@ -267,16 +327,7 @@
         "name": "Ethereum",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x95b8b4cc3a0ACf3AbA57c4787886Eb78E89E1407",
-        "name": "Reward Cow Aero tBTC-WETH",
-        "symbol": "rcowAerotBTC-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xbb9bdC4e71C9C3253A5b5AA0Df54600e61A09BB2": {
     "protocolToken": {
@@ -298,16 +349,7 @@
         "symbol": "bsdETH",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x1799863Db9aCC1183a76C41A381B21D2BC8F5C9E",
-        "name": "Reward Cow Aero bsdETH-WETH",
-        "symbol": "rcowAerobsdETH-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xeEA5fAf6B98704748d29b74a273f900A55F53D9a": {
     "protocolToken": {
@@ -329,16 +371,7 @@
         "name": "Ethereum",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0xC8055944b85CE1066472477b7002015958f8f90F",
-        "name": "Reward Cow Aero cbETH-WETH",
-        "symbol": "rcowAerocbETH-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x9a62Ab7cFD5b233330eF0091Bd291D95978E9be6": {
     "protocolToken": {
@@ -360,16 +393,7 @@
         "symbol": "USDC",
         "decimals": 6
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0xD6dDBDBC6Ed81Aa71416e67bD5F17e522fD1b092",
-        "name": "Reward Cow Aero WETH-USDC",
-        "symbol": "rcowAeroWETH-USDC",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xf181Ef98Bee1fBa44acc4726054A0c2a12B48d35": {
     "protocolToken": {
@@ -391,16 +415,7 @@
         "symbol": "NORMUS",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0xd640667e3cD3efCF53A132c6f45577C5FFE2BF29",
-        "name": "Reward Cow Uniswap Base WETH-NORMUS",
-        "symbol": "rcowUniswapBaseWETH-NORMUS",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x11b6ae0bD06fA08908511F0f14a5F6B27E7dEdF3": {
     "protocolToken": {
@@ -422,16 +437,7 @@
         "name": "Ethereum",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x5D91AED3ebb65baFaae90b13558B1386894D0c40",
-        "name": "Reward Cow Uniswap Base TYBG-WETH",
-        "symbol": "rcowUniswapBaseTYGB-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0x4a06DE050548770C13B76fE013729432b84BDeC6": {
     "protocolToken": {
@@ -453,16 +459,7 @@
         "symbol": "ZRO",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x610a4016c2F095A1C507FB73BB7cD7581B58a594",
-        "name": "Reward Cow Uniswap Base WETH-ZRO",
-        "symbol": "rcowUniswapBaseWETH-ZRO",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xc88d16c4cb87b5EEC33cA0696bBd5154492E4282": {
     "protocolToken": {
@@ -484,16 +481,7 @@
         "symbol": "ZRO",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0xbd1D6eece5727c6097CEE84fdedBdc43599da54f",
-        "name": "Reward Cow Uniswap Base WETH-ZRO",
-        "symbol": "rcowUniswapBaseWETH-ZRO",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xB6DDAb86739524ba19185105B545220A858F2d0e": {
     "protocolToken": {
@@ -515,16 +503,7 @@
         "symbol": "USDC",
         "decimals": 6
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0xbF9BD114ebEaa45755Afb5cd5d6A1961d8c31930",
-        "name": "Reward Cow Uniswap Base ZRO-USDC",
-        "symbol": "rcowUniswapBaseZRO-USDC",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xB34B8DeC4f7c5e0c20e5dda09e862Df39C3Fb285": {
     "protocolToken": {
@@ -546,16 +525,7 @@
         "symbol": "USDbC",
         "decimals": 6
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x5F58A6618D84934fd7e306a6Aa5e3E83517d50B4",
-        "name": "Reward Cow Uniswap Base WETH-USDbC",
-        "symbol": "rcowUniswapBaseWETH-USDbC",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xD07111A837F9D62bCa452132bDBEE2F1443666F6": {
     "protocolToken": {
@@ -577,16 +547,7 @@
         "symbol": "wstETH",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0xB2843283ea12D615cde6FBFC11933264BC009287",
-        "name": "Reward Cow Uniswap Base wstETH-USDC",
-        "symbol": "rcowUniswapBasewstETH-USDC",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xE4d02B7997635883bf68a810d1d781990006B58C": {
     "protocolToken": {
@@ -608,16 +569,7 @@
         "symbol": "USDT",
         "decimals": 6
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x2949fd1c3A3AeF6e920B5e0ab09A81d17b99F160",
-        "name": "Reward Cow Uniswap Base USDT-WETH",
-        "symbol": "rcowUniswapBaseUSDT-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xe97383FFa8AbA69FB5f182CF35E31833250586E4": {
     "protocolToken": {
@@ -639,16 +591,7 @@
         "name": "Ethereum",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0xB8b3f205941b896909229435B043E3E1Ec3bb9c4",
-        "name": "Reward Cow Uniswap Base cbETH-WETH",
-        "symbol": "rcowUniswapBasecbETH-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xE39887EfF72d0AF25E4B90f52b6a6De82948D472": {
     "protocolToken": {
@@ -670,16 +613,7 @@
         "symbol": "AERO",
         "decimals": 18
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x986c2fbD0DC342F2073022410e052142C5903d78",
-        "name": "Reward Cow Uniswap Base AERO-WETH",
-        "symbol": "rcowUniswapBaseAERO-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   },
   "0xA05C5A7121B351aa7003C73Ae794Ec17995440C7": {
     "protocolToken": {
@@ -701,15 +635,6 @@
         "symbol": "USDC",
         "decimals": 6
       }
-    ],
-    "rewardPoolTokens": [
-      {
-        "address": "0x3C30eF5DaaF34aAEA9DCa2e265f676096EB2Bcc8",
-        "name": "Reward Cow Uniswap Base USDC-WETH",
-        "symbol": "rcowUniswapBaseUSDC-WETH",
-        "decimals": 18
-      }
-    ],
-    "unwrapType": "beefy_clm"
+    ]
   }
 }

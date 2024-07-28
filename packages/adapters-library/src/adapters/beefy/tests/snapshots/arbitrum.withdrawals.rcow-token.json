@@ -1,0 +1,15 @@
+{
+  "aggregatedValues": [],
+  "snapshot": {
+    "protocolId": "beefy",
+    "name": "Beefy",
+    "description": "Beefy defi adapter",
+    "siteUrl": "https://beefy.com",
+    "iconUrl": "https://beefy.com/icons/icon-96x96.png",
+    "positionType": "supply",
+    "chainId": 42161,
+    "productId": "rcow-token",
+    "success": true,
+    "movements": []
+  }
+}
