@@ -1,16 +1,16 @@
 import { createHash } from 'node:crypto'
-import { isArray } from 'lodash'
 import { http, bypass } from 'msw'
 import { setupServer } from 'msw/node'
-import { Json } from '../types/json'
 
 type RpcRequest = {
-  method: string
-  params: Json[]
+  jsonrpc: string
   id: number
+  method: string
+  params: unknown[]
 }
 
 type RpcResponse = {
+  jsonrpc: string
   id: number
   result?: unknown
   error?: unknown
@@ -124,8 +124,8 @@ export const startRpcMock = (
             const storedResponse = interceptedRequests?.[key]
             if (!storedResponse) {
               console.warn('RPC request not found in snapshot', {
-                key,
                 url: new URL(url).origin,
+                key,
                 request,
                 params: request.params,
               })
@@ -133,10 +133,10 @@ export const startRpcMock = (
             }
 
             return {
-              id: request.id,
               jsonrpc: '2.0',
+              id: request.id,
               ...storedResponse,
-            }
+            } as RpcResponse
           })
 
           // If there is only one request, do not return an array
@@ -146,6 +146,7 @@ export const startRpcMock = (
             ).buffer,
           )
         } catch (error) {
+          // If anything goes wrong, bypass the request
           return createResponse(
             await (await fetch(bypass(request))).arrayBuffer(),
           )
