@@ -22,7 +22,7 @@ import { startRpcSnapshot } from './rpcInterceptor'
 import n = types.namedTypes
 import b = types.builders
 
-export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
+export function buildSnapshots(program: Command) {
   program
     .command('build-snapshots')
     .option(
@@ -31,12 +31,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
     )
     .showHelpAfterError()
     .action(async ({ protocols }) => {
-      const msw = startRpcSnapshot(
-        Object.values(defiProvider.chainProvider.providers).map(
-          (provider) => provider._getConnection().url,
-        ),
-      )
-
+      const defiProvider = new DefiProvider({ useMulticallInterceptor: false })
       const filterProtocolIds = multiProtocolFilter(protocols)
 
       for (const protocolId of Object.values(Protocol)) {
@@ -51,6 +46,12 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
         ).testCases
 
         for (const [index, testCase] of testCases.entries()) {
+          const msw = startRpcSnapshot(
+            Object.values(defiProvider.chainProvider.providers).map(
+              (provider) => provider._getConnection().url,
+            ),
+          )
+
           const chainId = testCase.chainId
 
           const snapshotFileContent = await (async () => {
@@ -250,11 +251,9 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
             ),
           )
 
-          // Update test case
+          msw.stop()
         }
       }
-
-      msw.stop()
     })
 }
 
