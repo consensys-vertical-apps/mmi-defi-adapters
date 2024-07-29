@@ -74,8 +74,8 @@ export class Helpers {
       }
 
       return {
-        name: protocolToken.name,
         address: protocolToken.address,
+        name: protocolToken.name,
         symbol: protocolToken.symbol,
         decimals: protocolToken.decimals,
         balanceRaw: balanceOf,
@@ -100,8 +100,8 @@ export class Helpers {
     const pricePerShareRaw = BigInt(10 ** protocolToken.decimals)
 
     return {
-      name: protocolToken.name,
       address: protocolToken.address,
+      name: protocolToken.name,
       symbol: protocolToken.symbol,
       decimals: protocolToken.decimals,
       baseRate: 1,
@@ -181,8 +181,8 @@ export class Helpers {
     )
 
     return {
-      name: protocolToken.name,
       address: protocolToken.address,
+      name: protocolToken.name,
       symbol: protocolToken.symbol,
       decimals: protocolToken.decimals,
       baseRate: 1,
@@ -210,8 +210,8 @@ export class Helpers {
     }
 
     return {
-      name: protocolToken.name,
       address: protocolToken.address,
+      name: protocolToken.name,
       symbol: protocolToken.symbol,
       decimals: protocolToken.decimals,
       baseRate: 1,
@@ -269,8 +269,8 @@ export class Helpers {
         blockTag: blockNumber,
       })
       return {
-        name: protocolToken.name,
         address: protocolToken.address,
+        name: protocolToken.name,
         symbol: protocolToken.symbol,
         decimals: protocolToken.decimals,
         type: TokenType.Protocol,
@@ -443,16 +443,16 @@ export class Helpers {
         return {
           transactionHash,
           protocolToken: {
-            name: protocolToken.name,
             address: protocolToken.address,
+            name: protocolToken.name,
             symbol: protocolToken.symbol,
             decimals: protocolToken.decimals,
             tokenId: protocolToken.tokenId,
           },
           tokens: [
             {
-              name: protocolToken.name,
               address: protocolToken.address,
+              name: protocolToken.name,
               symbol: protocolToken.symbol,
               decimals: protocolToken.decimals,
               balanceRaw: protocolTokenMovementValueRaw,

@@ -14,8 +14,8 @@
       "success": true,
       "tokens": [
         {
-          "name": "USD Coin-LP",
           "address": "0xdf0770dF86a8034b3EFEf0A1Bb3c889B8332FF56",
+          "name": "USD Coin-LP",
           "symbol": "S*USDC",
           "decimals": 6,
           "balanceRaw": "31468548033n",
