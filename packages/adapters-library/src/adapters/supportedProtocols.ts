@@ -99,6 +99,7 @@ import { RenzoEzEthAdapter } from './renzo/products/ez-eth/renzoEzEthAdapter'
 import { SolvSolvBtcAdapter } from './solv/products/solv-btc/solvSolvBtcAdapter'
 
 import { SolvYieldMarketAdapter } from './solv/products/yield-market/solvYieldMarketAdapter'
+import { MorphoBlueVaultAdapter } from './morpho-blue/products/vault/morphoBlueVaultAdapter'
 
 export const supportedProtocols: Record<
   Protocol,
@@ -334,6 +335,7 @@ export const supportedProtocols: Record<
     [Chain.Ethereum]: [
       MorphoBlueMarketSupplyAdapter,
       MorphoBlueMarketBorrowAdapter,
+      MorphoBlueVaultAdapter,
     ],
   },
 
