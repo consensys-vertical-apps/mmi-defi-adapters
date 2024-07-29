@@ -244,7 +244,7 @@ export function buildSnapshots(program: Command, defiProvider: DefiProvider) {
             bigintJsonStringify(
               {
                 ...snapshotFileContent,
-                rpc: msw.interceptedRequests,
+                rpcResponses: msw.interceptedRequests,
               },
               2,
             ),

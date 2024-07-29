@@ -9,6 +9,14 @@ type RpcRequest = {
   id: number
 }
 
+export type RpcInterceptedRequest = Record<
+  string,
+  {
+    request: Omit<RpcRequest, 'id'>
+    response: string
+  }
+>
+
 function createKey(url: string, requestBody: Json) {
   return createHash('md5')
     .update(url + JSON.stringify(requestBody))
@@ -34,13 +42,7 @@ function createResponse(body: ArrayBuffer) {
 }
 
 export const startRpcSnapshot = (chainProviderUrls: string[]) => {
-  const interceptedRequests: Record<
-    string,
-    {
-      request: Omit<RpcRequest, 'id'>
-      response: string
-    }
-  > = {}
+  const interceptedRequests: RpcInterceptedRequest = {}
 
   const server = setupServer(
     ...chainProviderUrls.map((url) =>
@@ -77,15 +79,8 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
 }
 
 export const startRpcMock = (
-  interceptedRequests:
-    | Record<
-        string,
-        {
-          request: Omit<RpcRequest, 'id'>
-          response: string
-        }
-      >
-    | undefined,
+  // TODO When we use this for every test case, we can make this required and throw if an rpc request is not there
+  interceptedRequests: RpcInterceptedRequest | undefined,
   chainProviderUrls: string[],
 ) => {
   const server = setupServer(

@@ -7,7 +7,7 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { getMetadataInvalidAddresses } from '../scripts/addressValidation'
 import { protocolFilter } from '../scripts/commandFilters'
-import { startRpcMock } from '../scripts/rpcInterceptor'
+import { RpcInterceptedRequest, startRpcMock } from '../scripts/rpcInterceptor'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
@@ -172,15 +172,15 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'positions for test %s match',
           async (_, testCase) => {
-            const { snapshot, blockNumber, rpc } = await fetchSnapshot(
+            const { snapshot, blockNumber, rpcResponses } = await fetchSnapshot(
               testCase,
               protocolId,
             )
 
             const rpcMock = startRpcMock(
-              rpc,
+              rpcResponses,
               Object.values(defiProvider.chainProvider.providers).map(
-                (x) => x._getConnection().url,
+                (rpcProvider) => rpcProvider._getConnection().url,
               ),
             )
 
@@ -482,10 +482,8 @@ async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
   )
 
   return bigintJsonParse(expectedString) as {
-    // biome-ignore lint/suspicious/noExplicitAny: Type could be narrower
-    snapshot: any
+    snapshot: unknown
     blockNumber?: number
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    rpc: any
+    rpcResponses: RpcInterceptedRequest
   }
 }
