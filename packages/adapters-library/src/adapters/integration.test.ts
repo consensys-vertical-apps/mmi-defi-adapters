@@ -123,23 +123,13 @@ function runAllTests() {
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
   describe(protocolId, () => {
-    let rpcMockStop: () => void
+    let rpcMockStop: (() => void) | undefined
 
     beforeAll(async () => {
       const allMocks = (
         await Promise.all(
           testCases.map(async (testCase) => {
-            const expectedString = await fs.readFile(
-              path.resolve(
-                __dirname,
-                `./${protocolId}/tests/snapshots/${testKey(testCase)}.json`,
-              ),
-              'utf-8',
-            )
-
-            const { rpcResponses } = bigintJsonParse(expectedString) as {
-              rpcResponses: RpcInterceptedResponse
-            }
+            const { rpcResponses } = await loadJsonFile(testCase, protocolId)
 
             if (!rpcResponses) {
               return []
@@ -163,15 +153,13 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
       )
 
       if (Object.keys(allMocks).length > 0) {
-        const rpcMock = startRpcMock(allMocks, chainUrls)
-        rpcMockStop = rpcMock.stop
-      } else {
-        rpcMockStop = () => {}
+        const { stop } = startRpcMock(allMocks, chainUrls)
+        rpcMockStop = stop
       }
     })
 
     afterAll(() => {
-      rpcMockStop()
+      rpcMockStop?.()
     })
 
     const protocolChains = Object.keys(supportedProtocols[protocolId]).map(
@@ -533,6 +521,19 @@ function testKey({ chainId, method, key }: TestCase) {
 }
 
 async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
+  const { snapshot, blockNumber, rpcResponses } = await loadJsonFile(
+    testCase,
+    protocolId,
+  )
+
+  return {
+    snapshot,
+    blockNumber,
+    defiProvider: rpcResponses ? defiProvider : defiProviderWithMulticall,
+  }
+}
+
+async function loadJsonFile(testCase: TestCase, protocolId: Protocol) {
   const expectedString = await fs.readFile(
     path.resolve(
       __dirname,
@@ -546,27 +547,12 @@ async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
   ) as {
     snapshot: unknown
     blockNumber?: number
-    rpcResponses: RpcInterceptedResponse
-  }
-
-  let snapshotDefiProvider = defiProviderWithMulticall
-  // let rpcMockStop = () => {}
-  if (rpcResponses) {
-    // const rpcMock = startRpcMock(
-    //   rpcResponses,
-    //   Object.values(snapshotDefiProvider.chainProvider.providers).map(
-    //     (rpcProvider) => rpcProvider._getConnection().url,
-    //   ),
-    // )
-
-    snapshotDefiProvider = defiProvider
-    // rpcMockStop = rpcMock.stop
+    rpcResponses?: RpcInterceptedResponse
   }
 
   return {
     snapshot,
     blockNumber,
-    // rpcMockStop,
-    defiProvider: snapshotDefiProvider,
+    rpcResponses,
   }
 }
