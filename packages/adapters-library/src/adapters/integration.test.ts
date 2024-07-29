@@ -7,7 +7,7 @@ import { logger } from '../core/utils/logger'
 import { DefiProvider } from '../defiProvider'
 import { getMetadataInvalidAddresses } from '../scripts/addressValidation'
 import { protocolFilter } from '../scripts/commandFilters'
-import { RpcInterceptedRequest, startRpcMock } from '../scripts/rpcInterceptor'
+import { RpcInterceptedResponse, startRpcMock } from '../scripts/rpcInterceptor'
 import { TestCase } from '../types/testCase'
 import { testCases as aaveV2TestCases } from './aave-v2/tests/testCases'
 import { testCases as aaveV3TestCases } from './aave-v3/tests/testCases'
@@ -123,6 +123,50 @@ function runAllTests() {
 
 function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
   describe(protocolId, () => {
+    let rpcMockStop: () => void
+
+    beforeAll(async () => {
+      const allMocks = (
+        await Promise.all(
+          testCases.map(async (testCase) => {
+            const expectedString = await fs.readFile(
+              path.resolve(
+                __dirname,
+                `./${protocolId}/tests/snapshots/${testKey(testCase)}.json`,
+              ),
+              'utf-8',
+            )
+
+            const { rpcResponses } = bigintJsonParse(expectedString) as {
+              rpcResponses: RpcInterceptedResponse
+            }
+
+            return Object.entries(rpcResponses).map(([key, responses]) => ({
+              key,
+              responses,
+            }))
+          }),
+        )
+      )
+        .flatMap((x) => x)
+        .reduce((acc, x) => {
+          acc[x.key] = x.responses
+          return acc
+        }, {} as RpcInterceptedResponse)
+
+      const chainUrls = Object.values(defiProvider.chainProvider.providers).map(
+        (rpcProvider) => rpcProvider._getConnection().url,
+      )
+
+      const rpcMock = startRpcMock(allMocks, chainUrls)
+
+      rpcMockStop = rpcMock.stop
+    })
+
+    afterAll(() => {
+      rpcMockStop()
+    })
+
     const protocolChains = Object.keys(supportedProtocols[protocolId]).map(
       (chainIdKey) => Number(chainIdKey),
     ) as Chain[]
@@ -175,8 +219,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'positions for test %s match',
           async (_, testCase) => {
-            const { snapshot, blockNumber, rpcMockStop, defiProvider } =
-              await fetchSnapshot(testCase, protocolId)
+            const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
 
             const response = await defiProvider.getPositions({
               ...testCase.input,
@@ -186,8 +232,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             })
 
             expect(response).toEqual(snapshot)
-
-            rpcMockStop()
           },
           TEST_TIMEOUT,
         )
@@ -211,8 +255,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'profits for test %s match',
           async (_, testCase) => {
-            const { snapshot, blockNumber, rpcMockStop, defiProvider } =
-              await fetchSnapshot(testCase, protocolId)
+            const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
 
             const response = await defiProvider.getProfits({
               ...testCase.input,
@@ -222,8 +268,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             })
 
             expect(response).toEqual(snapshot)
-
-            rpcMockStop()
           },
           TEST_TIMEOUT,
         )
@@ -247,7 +291,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'deposits for test %s match',
           async (_, testCase) => {
-            const { snapshot, rpcMockStop, defiProvider } = await fetchSnapshot(
+            const { snapshot, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
             )
@@ -259,8 +303,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             })
 
             expect(response).toEqual(snapshot)
-
-            rpcMockStop()
           },
           TEST_TIMEOUT,
         )
@@ -282,7 +324,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'withdrawals for test %s match',
           async (_, testCase) => {
-            const { snapshot, rpcMockStop, defiProvider } = await fetchSnapshot(
+            const { snapshot, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
             )
@@ -294,8 +336,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             })
 
             expect(response).toEqual(snapshot)
-
-            rpcMockStop()
           },
           TEST_TIMEOUT,
         )
@@ -318,7 +358,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'repays for test %s match',
           async (_, testCase) => {
-            const { snapshot, rpcMockStop, defiProvider } = await fetchSnapshot(
+            const { snapshot, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
             )
@@ -330,8 +370,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             })
 
             expect(response).toEqual(snapshot)
-
-            rpcMockStop()
           },
           TEST_TIMEOUT,
         )
@@ -353,7 +391,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'withdrawals for test %s match',
           async (_, testCase) => {
-            const { snapshot, rpcMockStop, defiProvider } = await fetchSnapshot(
+            const { snapshot, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
             )
@@ -365,8 +403,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             })
 
             expect(response).toEqual(snapshot)
-
-            rpcMockStop()
           },
           TEST_TIMEOUT,
         )
@@ -390,8 +426,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'unwrap for test %s match',
           async (_, testCase) => {
-            const { snapshot, blockNumber, rpcMockStop, defiProvider } =
-              await fetchSnapshot(testCase, protocolId)
+            const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
 
             const response = await defiProvider.unwrap({
               filterProtocolIds: [protocolId],
@@ -401,8 +439,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             })
 
             expect(response).toEqual(snapshot)
-
-            rpcMockStop()
           },
           TEST_TIMEOUT,
         )
@@ -422,8 +458,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         it.each(tvlTestCases.map((testCase) => [testKey(testCase), testCase]))(
           'tvl for test %s match',
           async (_, testCase) => {
-            const { snapshot, blockNumber, rpcMockStop, defiProvider } =
-              await fetchSnapshot(testCase, protocolId)
+            const { snapshot, blockNumber, defiProvider } = await fetchSnapshot(
+              testCase,
+              protocolId,
+            )
 
             const response = await defiProvider.getTotalValueLocked({
               filterProtocolIds: [protocolId],
@@ -433,8 +471,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             })
 
             expect(response).toEqual(snapshot)
-
-            rpcMockStop()
           },
           TEST_TIMEOUT,
         )
@@ -459,7 +495,7 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         )(
           'tx-params for test %s match',
           async (_, testCase) => {
-            const { snapshot, rpcMockStop, defiProvider } = await fetchSnapshot(
+            const { snapshot, defiProvider } = await fetchSnapshot(
               testCase,
               protocolId,
             )
@@ -473,8 +509,6 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
             const response = await defiProvider.getTransactionParams(inputs)
 
             expect(response).toEqual(snapshot)
-
-            rpcMockStop()
           },
           TEST_TIMEOUT,
         )
@@ -505,27 +539,27 @@ async function fetchSnapshot(testCase: TestCase, protocolId: Protocol) {
   ) as {
     snapshot: unknown
     blockNumber?: number
-    rpcResponses: RpcInterceptedRequest
+    rpcResponses: RpcInterceptedResponse
   }
 
   let snapshotDefiProvider = defiProviderWithMulticall
-  let rpcMockStop = () => {}
+  // let rpcMockStop = () => {}
   if (rpcResponses) {
-    const rpcMock = startRpcMock(
-      rpcResponses,
-      Object.values(snapshotDefiProvider.chainProvider.providers).map(
-        (rpcProvider) => rpcProvider._getConnection().url,
-      ),
-    )
+    // const rpcMock = startRpcMock(
+    //   rpcResponses,
+    //   Object.values(snapshotDefiProvider.chainProvider.providers).map(
+    //     (rpcProvider) => rpcProvider._getConnection().url,
+    //   ),
+    // )
 
     snapshotDefiProvider = defiProvider
-    rpcMockStop = rpcMock.stop
+    // rpcMockStop = rpcMock.stop
   }
 
   return {
     snapshot,
     blockNumber,
-    rpcMockStop,
+    // rpcMockStop,
     defiProvider: snapshotDefiProvider,
   }
 }

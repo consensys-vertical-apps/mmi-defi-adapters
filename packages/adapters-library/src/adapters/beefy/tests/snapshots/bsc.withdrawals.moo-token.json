@@ -1,5 +1,5 @@
 {
-  "aggregatedValues": ["USD6,869.24", "USD6,872.91"],
+  "aggregatedValues": ["USD3,153.02"],
   "snapshot": {
     "protocolId": "beefy",
     "name": "Beefy",
@@ -12,97 +12,96 @@
     "success": true,
     "movements": [
       {
-        "transactionHash": "0x4e1891884400047ee304352a70375f8fbbf7d80ae49a6d2c53a1074bb2629d17",
+        "transactionHash": "0xd8a85e068899682bbb1a57e98a5a8c024e286219a15f8efe0d7d11356a5cb87d",
         "protocolToken": {
-          "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
-          "name": "Moo Thena Gamma weETH-ETH Narrow",
-          "symbol": "mooThenaGammaweETH-ETHNarrow",
+          "address": "0x45070826065cF98C4A843fe3D811dBFc0e4bF107",
+          "name": "Moo Thena Gamma ETH-USDT Narrow",
+          "symbol": "mooThenaGammaETH-USDTNarrow",
           "decimals": 18
         },
         "tokens": [
           {
-            "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
-            "name": "Moo Thena Gamma weETH-ETH Narrow",
-            "symbol": "mooThenaGammaweETH-ETHNarrow",
+            "address": "0x45070826065cF98C4A843fe3D811dBFc0e4bF107",
+            "name": "Moo Thena Gamma ETH-USDT Narrow",
+            "symbol": "mooThenaGammaETH-USDTNarrow",
             "decimals": 18,
-            "balanceRaw": "1736163915239060909n",
+            "balanceRaw": "6376367860131526308691n",
             "type": "underlying",
-            "blockNumber": 39296958,
+            "blockNumber": 40771741,
             "tokens": [
-              {
-                "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
-                "name": "Wrapped eETH",
-                "symbol": "weETH",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "803350622596308290n",
-                "balance": 0.8033506225963083,
-                "price": 3929.8842370557427,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A/logo.png"
-              },
               {
                 "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
                 "name": "Ethereum Token",
                 "symbol": "ETH",
                 "decimals": 18,
                 "type": "underlying",
-                "balanceRaw": "981631310107611284n",
-                "balance": 0.9816313101076113,
-                "price": 3781.63085961,
+                "balanceRaw": "376529089507138529n",
+                "balance": 0.37652908950713854,
+                "price": 3164.40599,
                 "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x2170Ed0880ac9A755fd29B2688956BD959F933F8/logo.png"
-              }
-            ],
-            "balance": 1.7361639152390609
-          }
-        ],
-        "blockNumber": 39296958
-      },
-      {
-        "transactionHash": "0xb87f00709b7eda0a6466dd4f9eb7e019dbc53c713356c465c6bb4a62545bdda2",
-        "protocolToken": {
-          "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
-          "name": "Moo Thena Gamma weETH-ETH Narrow",
-          "symbol": "mooThenaGammaweETH-ETHNarrow",
-          "decimals": 18
-        },
-        "tokens": [
-          {
-            "address": "0xcCcDB0F6eCcd5f231d4737A00C554322167d814B",
-            "name": "Moo Thena Gamma weETH-ETH Narrow",
-            "symbol": "mooThenaGammaweETH-ETHNarrow",
-            "decimals": 18,
-            "balanceRaw": "1736730165060875050n",
-            "type": "underlying",
-            "blockNumber": 39297014,
-            "tokens": [
-              {
-                "address": "0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A",
-                "name": "Wrapped eETH",
-                "symbol": "weETH",
-                "decimals": 18,
-                "type": "underlying",
-                "balanceRaw": "803612635383756877n",
-                "balance": 0.8036126353837568,
-                "price": 3930.6979730649778,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x04C0599Ae5A44757c0af6F9eC3b93da8976c150A/logo.png"
               },
               {
-                "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-                "name": "Ethereum Token",
-                "symbol": "ETH",
+                "address": "0x55d398326f99059fF775485246999027B3197955",
+                "name": "Tether USD",
+                "symbol": "USDT",
                 "decimals": 18,
                 "type": "underlying",
-                "balanceRaw": "981951469137272420n",
-                "balance": 0.9819514691372724,
-                "price": 3782.41389774,
-                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x2170Ed0880ac9A755fd29B2688956BD959F933F8/logo.png"
+                "balanceRaw": "1963627111479537723633n",
+                "balance": 1963.6271114795377,
+                "price": 0.9989296567479419,
+                "iconUrl": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bsc/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
               }
             ],
-            "balance": 1.736730165060875
+            "balance": 6376.367860131526
           }
         ],
-        "blockNumber": 39297014
+        "blockNumber": 40771741
       }
     ]
+  },
+  "rpcResponses": {
+    "d29dff4a575bb46f5833940d21ab3b7d": {
+      "result": [
+        {
+          "address": "0x45070826065cf98c4a843fe3d811dbfc0e4bf107",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000518b7892b898322fc77ae9c51beb88ee199bb6c3",
+            "0x0000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          "data": "0x000000000000000000000000000000000000000000000159a9e1515845477353",
+          "blockNumber": "0x26e209d",
+          "transactionHash": "0xd8a85e068899682bbb1a57e98a5a8c024e286219a15f8efe0d7d11356a5cb87d",
+          "transactionIndex": "0x4a",
+          "blockHash": "0xe1415349f8e88cf34f6585f52ddaf6604935fd2ba37eea4a91b7fde7bae05b9e",
+          "logIndex": "0xb1",
+          "removed": false
+        }
+      ]
+    },
+    "493fec8c082923d0d66702a4d74ff5dd": {
+      "result": "0x0000000000000000000000000000000000000000000032cb3c5ca2ff596d18f5"
+    },
+    "93860e26e69b9639b199e80735def575": {
+      "result": "0x000000000000000000000000000000000000000000002c3c3cf561fed7d6cae2"
+    },
+    "d8e05b6eeabf24b7ecf33a4b5caf8753": {
+      "result": "0x00000000000000000000000000000000000000000000c53413bd8d9de9a9a520"
+    },
+    "3b55475611eb93c1d2adb6ae8553d631": {
+      "result": "0x00000000000000000000000000000000000000000000000298a02bfdc0f8ab740000000000000000000000000000000000000000000034e35823da02ece1254f"
+    },
+    "fedcd904126689055ac88095f5790e87": {
+      "result": "0x0000000000000000000000002170ed0880ac9a755fd29b2688956bd959f933f8"
+    },
+    "7a0e8e0a987d578dbdb7f3eb84dd8e1c": {
+      "result": "0x00000000000000000000000055d398326f99059ff775485246999027b3197955"
+    },
+    "8243d1c2eb93888d29f85a47dc5b1e1a": {
+      "result": "0x00000000000000000000000000000000000000000000000200000000000f466800000000000000000000000000000000000000000000000000000049ad5459d80000000000000000000000000000000000000000000000000000000066a1d2560000000000000000000000000000000000000000000000000000000066a1d25600000000000000000000000000000000000000000000000200000000000f4668"
+    },
+    "253af43965ced5cbd565caeb6110f12d": {
+      "result": "0x00000000000000000000000000000000000000000000000000011f1b3d68f576"
+    }
   }
 }

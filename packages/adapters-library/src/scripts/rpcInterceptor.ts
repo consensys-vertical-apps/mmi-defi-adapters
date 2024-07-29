@@ -12,10 +12,14 @@ type RpcRequest = {
 
 type RpcResponse = {
   id: number
-  result: unknown
+  result?: unknown
+  error?: unknown
 }
 
-export type RpcInterceptedRequest = Record<string, unknown>
+export type RpcInterceptedResponse = Record<
+  string,
+  { result?: unknown; error?: unknown }
+>
 
 function createKey(url: string, { method, params }: RpcRequest) {
   return createHash('md5')
@@ -41,7 +45,7 @@ function createResponse(body: ArrayBuffer) {
 }
 
 export const startRpcSnapshot = (chainProviderUrls: string[]) => {
-  const interceptedRequests: RpcInterceptedRequest = {}
+  const interceptedRequests: RpcInterceptedResponse = {}
 
   const server = setupServer(
     ...chainProviderUrls.map((url) =>
@@ -78,9 +82,11 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
         requests.forEach((request) => {
           const key = createKey(url, request)
 
-          interceptedRequests[key] = responses.find(
+          const { result, error } = responses.find(
             (response) => response.id === request.id,
-          )!.result
+          )!
+
+          interceptedRequests[key] = { result, error }
         })
 
         return createResponse(responseArrayBuffer)
@@ -97,7 +103,7 @@ export const startRpcSnapshot = (chainProviderUrls: string[]) => {
 
 export const startRpcMock = (
   // TODO When we use this for every test case, we can make this required and throw if an rpc request is not there
-  interceptedRequests: RpcInterceptedRequest | undefined,
+  interceptedRequests: RpcInterceptedResponse | undefined,
   chainProviderUrls: string[],
 ) => {
   const server = setupServer(
@@ -117,14 +123,19 @@ export const startRpcMock = (
 
             const storedResponse = interceptedRequests?.[key]
             if (!storedResponse) {
-              console.warn('RPC request not found in snapshot', request)
+              console.warn('RPC request not found in snapshot', {
+                key,
+                url: new URL(url).origin,
+                request,
+                params: request.params,
+              })
               throw Error('RPC request not found in snapshot')
             }
 
             return {
               id: request.id,
               jsonrpc: '2.0',
-              result: storedResponse,
+              ...storedResponse,
             }
           })
 
