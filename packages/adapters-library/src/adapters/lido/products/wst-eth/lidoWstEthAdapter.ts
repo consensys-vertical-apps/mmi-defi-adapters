@@ -39,7 +39,7 @@ export class LidoWstEthAdapter extends SimplePoolAdapter {
     return [await this.fetchProtocolTokenMetadata()]
   }
 
-  // TODO Merge new lido adapter before merging this change
+  // TODO Temporary change to stop on-chain requests on init
   protected async fetchProtocolTokenMetadata(): Promise<Erc20Metadata> {
     return {
       address: '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0',
