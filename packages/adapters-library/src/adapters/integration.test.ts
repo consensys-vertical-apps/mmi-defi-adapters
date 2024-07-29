@@ -141,6 +141,10 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
               rpcResponses: RpcInterceptedResponse
             }
 
+            if (!rpcResponses) {
+              return []
+            }
+
             return Object.entries(rpcResponses).map(([key, responses]) => ({
               key,
               responses,
@@ -158,9 +162,12 @@ function runProtocolTests(protocolId: Protocol, testCases: TestCase[]) {
         (rpcProvider) => rpcProvider._getConnection().url,
       )
 
-      const rpcMock = startRpcMock(allMocks, chainUrls)
-
-      rpcMockStop = rpcMock.stop
+      if (Object.keys(allMocks).length > 0) {
+        const rpcMock = startRpcMock(allMocks, chainUrls)
+        rpcMockStop = rpcMock.stop
+      } else {
+        rpcMockStop = () => {}
+      }
     })
 
     afterAll(() => {
