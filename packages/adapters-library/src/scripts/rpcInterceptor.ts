@@ -9,7 +9,7 @@ type RpcRequest = {
   id: number
 }
 
-export type RpcInterceptedRequest = Record<string, string>
+export type RpcInterceptedRequest = Record<string, unknown>
 
 function createKey(url: string, requestBody: Json) {
   return createHash('md5')
